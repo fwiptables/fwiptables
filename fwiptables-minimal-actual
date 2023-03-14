@@ -382,14 +382,14 @@ config_output_state="new,related,established" ;
 config_output_uid="root" ;
 logserver_prefix_input="fwlog-input::" ; 
 logserver_prefix_output="fwlog-output::" ;
-logserver_tcp="no" ;
-logserver_udp="no" ;
+logserver_port_tcp="no" ;
+logserver_port_udp="no" ;
 net_ipv4_client="0/0" ; 
 net_ipv4_server="0/0" ;
 net_ipv6_client="::/0" ;
 net_ipv6_server="::/0" ;
-server_tcp="" ;
-server_udp="" ; 
+server_port_tcp="" ;
+server_port_udp="" ; 
 ####
 ####
 #### :rutina-final-config-variables:
@@ -421,7 +421,7 @@ config_close_deny="DROP"                   ## fwiptables-file-default ## DROP or
 allow_save_autolog=""                    ## fwiptables-file-default ## void or no
 ####       #### english: show date and show time
 ####       #### spanish: muestra la fecha y el tiempo
-allow_showtime="no"                    ## fwiptables-file-default ## void or no
+allow_show_time="no"                    ## fwiptables-file-default ## void or no
 ####       #### english: void for automatic command #### spanish: vacio para comando automatico
 #### favorite_text_editor        ... for example nano
 favorite_text_editor=""          ## fwiptables-file-default ## or void for autoamtic or dialog or whiptail
@@ -433,7 +433,7 @@ favorite_graphicall_dialog=""    ## fwiptables-file-default ## or void for autoa
 favorite_text_browser=""         ## fwiptables-file-default ## or void for autoamtic or command
 #### #### variables to modify for qemu
 #### #### english: look  #### spanish: apariencia
-graphic_dimension="--width=950 --height=650"   ## fwiptables-file-default ## default: "--width=950 --height=650"
+graphic_window_dimension="--width=950 --height=650"   ## fwiptables-file-default ## default: "--width=950 --height=650"
 #### #### english: look  #### spanish: apariencia
 quad="####" ; 
 cinco="#####" ;
@@ -932,7 +932,7 @@ echo $head_autolog >> $default_autolog ; fi
 #### :rutina-inicial-allow-timespam:
 ####
 ####
-if [ "$allow_showtime" != "no" ] ; then
+if [ "$allow_show_time" != "no" ] ; then
 head_timespam="$duo_md || || [ ok ] || [ Date and Time ] [ $(date) ] || || "
 echo $head_timespam ; fi
 ####
@@ -1353,19 +1353,19 @@ spa10="$(echo $cinco puertos udp para ser cliente )"
 var11="$(echo $cinco SERVER PORTS $cinco )"
 eng11="$(echo $cinco Server ports, add with ',' and join ranges with : )"
 spa11="$(echo $cinco Puertos Servidor, añadir con ',' y poner rangos con  : )"
-var12="$(echo server_tcp=ssh )"
+var12="$(echo server_port_tcp=ssh )"
 eng12="$(echo $cinco tcp ports for server )"
 spa12="$(echo $cinco puertos tcp para servidor )"
-var13="$(echo server_udp= )"
+var13="$(echo server_port_udp= )"
 eng13="$(echo $cinco udp ports for server )"
 spa13="$(echo $cinco puertos udp para servidor )"
 var14="$(echo $cinco LOG TO SERVER PORTS $cinco )"
 eng14="$(echo $cinco Log to server ports, add with ',' and join ranges with : )"
 spa14="$(echo $cinco logear para puertos de Servidor, añadir con ',' y poner rangos con : )"
-var15="$(echo logserver_tcp= )"
+var15="$(echo logserver_port_tcp= )"
 eng15="$(echo $cinco the tcp ports to log server )"
 spa15="$(echo $cinco puertos tcp para logear servidor )"
-var16="$(echo logserver_udp= )"
+var16="$(echo logserver_port_udp= )"
 eng16="$(echo $cinco the udp ports to log server )"
 spa16="$(echo $cinco puertos udp para logear servidor )"
 var17="$(echo $cinco LOG PREFIX TO SERVER $cinco )"
@@ -4445,58 +4445,58 @@ case $second_option in
 #### 
 "new-mini-config")
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$third_option"
-$favorite_graphicall_dialog --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog --text-info $graphic_window_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NEW MINI CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$favorite_graphicall_dialog --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
+$favorite_graphicall_dialog --forms $graphic_window_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$favorite_graphicall_dialog --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+$favorite_graphicall_dialog --forms $graphic_window_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "new-full-config")
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$third_option"
-$favorite_graphicall_dialog --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog --text-info $graphic_window_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NEW FULL CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$favorite_graphicall_dialog --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
+$favorite_graphicall_dialog --forms $graphic_window_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$favorite_graphicall_dialog --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+$favorite_graphicall_dialog --forms $graphic_window_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "nueva-mini-config")
 cp "$defaultminicfg_spa" "$directory_temporal/$cmd_config-$third_option"
-$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NUEVA MINI CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "nueva-completa-config")
 cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_config-$third_option"
-$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NUEVA COMPLETA CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "modify-config")
 if [ -f "$directory_config/$third_option" ] ; then $nada
-else $favorite_graphicall_dialog  --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
+else $favorite_graphicall_dialog  --forms $graphic_window_dimension --text="file not found: $third_option" ; exit ; fi 
 cp "$directory_config/$third_option" "$directory_temporal/$cmd_config-$third_option"
-$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="MODIFY CONFIG" 1> "$directory_config/$third_option"
 if [ -s "$directory_config/$third_option" ]; then $nada ; 
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="OK. file: $third_option"
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="OK. file: $third_option"
 else cp "$directory_temporal/$cmd_config-$third_option" "$directory_config/$third_option"
-$favorite_graphicall_dialog --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
+$favorite_graphicall_dialog --forms $graphic_window_dimension --text="Canceled. file: $third_option"; fi
 ;;
 #### 
 ####
@@ -4506,7 +4506,7 @@ $favorite_graphicall_dialog --forms $graphic_dimension --text="Canceled. file: $
 ####
 ####
 *)$cmd_binary "$second_option" "$third_option" "$quad_option" &> "$temporal_guifinal"
-$favorite_graphicall_dialog  --text-info $graphic_dimension --title="Gui Output || $cmd_binary ||" \
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --title="Gui Output || $cmd_binary ||" \
 --filename="$temporal_guifinal" --auto-scroll ;;
 #### 
 #### 
@@ -4529,24 +4529,24 @@ case $second_option in
 "wizard-mini")
 archivo="wizard-mini"
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
-$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$archivo" \
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --filename="$directory_temporal/$cmd_config-$archivo" \
 --editable --title="WIZARD MINI" 1> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $cmd_binary -gui custom $archivo ; $cmd_binary -gui list4;
 else rm "$directory_config/$archivo" ;
-$favorite_graphicall_dialog --info $graphic_dimension --text "Ok. $archivo canceled"; fi
+$favorite_graphicall_dialog --info $graphic_window_dimension --text "Ok. $archivo canceled"; fi
 ;;
 #### 
 #### 
 "wizard-full")
 archivo="wizard-full"
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
-$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$archivo" \
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --filename="$directory_temporal/$cmd_config-$archivo" \
 --editable --title="WIZARD FULL" 1> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $cmd_binary -gui custom $archivo ; $cmd_binary -gui list4;
 else rm "$directory_config/$archivo" ;
-$favorite_graphicall_dialog  --info $graphic_dimension --text "OK. $archivo canceled"; fi
+$favorite_graphicall_dialog  --info $graphic_window_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
 ####
@@ -4554,24 +4554,24 @@ $favorite_graphicall_dialog  --info $graphic_dimension --text "OK. $archivo canc
 #### 
 "modify-config")
 if [ -f "$directory_config/$third_option" ] ; then $nada
-else $favorite_graphicall_dialog  --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
+else $favorite_graphicall_dialog  --forms $graphic_window_dimension --text="file not found: $third_option" ; exit ; fi 
 cp "$directory_config/$third_option" "$directory_temporal/$cmd_config-$third_option"
-$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="MODIFY CONFIG" 1> "$directory_config/$third_option"
 if [ -s "$directory_config/$third_option" ]; then $nada ; 
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="OK. file: $third_option"
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="OK. file: $third_option"
 else cp "$directory_temporal/$cmd_binary-$third_option" "$directory_config/$third_option"
-$favorite_graphicall_dialog --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
+$favorite_graphicall_dialog --forms $graphic_window_dimension --text="Canceled. file: $third_option"; fi
 ;;
 #### 
 ####
 "preferences-modify")
 archivo="default"
 cp "$default_preferences" "$default_preferences.old"
-$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$default_preferences.old" \
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --filename="$default_preferences.old" \
 --editable --title="MODIFY CONFIG" 1> "$default_preferences"
 if [ ! -s "$default_preferences" ]; then cp "$default_preferences.old" "$default_preferences" ;
-$favorite_graphicall_dialog  --info $graphic_dimension --text "OK. $archivo canceled"; fi
+$favorite_graphicall_dialog  --info $graphic_window_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
 ####
@@ -4581,7 +4581,7 @@ $favorite_graphicall_dialog  --info $graphic_dimension --text "OK. $archivo canc
 ####
 ####
 *)$cmd_binary $second_option $third_option &> $temporal_guifinal
-$favorite_graphicall_dialog  --text-info $graphic_dimension --title="Gui Output || $cmd_binary ||" \
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --title="Gui Output || $cmd_binary ||" \
 --filename="$temporal_guifinal" --auto-scroll ;;
 #### 
 #### 
@@ -4597,7 +4597,7 @@ exit; fi
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]" ; exit ;; esac
-$favorite_graphicall_dialog  --forms $graphic_dimension --title="Gui Output || $cmd_binary || " --text="$($cmd_binary mini-options)"
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --title="Gui Output || $cmd_binary || " --text="$($cmd_binary mini-options)"
 exit; fi
 ####
 ####
@@ -6426,34 +6426,34 @@ done ; fi
 ####
 ####
 $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A INPUT  \
--p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_input" \
+-p tcp  -m multiport --dports $logserver_port_tcp -j LOG --log-prefix "$logserver_prefix_input" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A INPUT  \
--p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$logserver_prefix_input" \
+-p udp  -m multiport --dports $logserver_port_udp -j LOG --log-prefix "$logserver_prefix_input" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
 $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A OUTPUT \
--p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_output" \
+-p tcp -m multiport --sports $logserver_port_tcp -j LOG --log-prefix "$logserver_prefix_output" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A OUTPUT \
--p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$logserver_prefix_output" \
+-p udp -m multiport --sports $logserver_port_udp -j LOG --log-prefix "$logserver_prefix_output" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
 $allow_use_nft     $allow_use_ipv4  $command_iptables_nft    -A INPUT  \
--p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_input" \
+-p tcp  -m multiport --dports $logserver_port_tcp -j LOG --log-prefix "$logserver_prefix_input" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_nft     $allow_use_ipv4  $command_iptables_nft    -A INPUT  \
--p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$logserver_prefix_input" \
+-p udp  -m multiport --dports $logserver_port_udp -j LOG --log-prefix "$logserver_prefix_input" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
 $allow_use_nft     $allow_use_ipv4  $command_iptables_nft    -A OUTPUT \
--p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_output" \
+-p tcp -m multiport --sports $logserver_port_tcp -j LOG --log-prefix "$logserver_prefix_output" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_nft     $allow_use_ipv4  $command_iptables_nft    -A OUTPUT \
--p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$logserver_prefix_output" \
+-p udp -m multiport --sports $logserver_port_udp -j LOG --log-prefix "$logserver_prefix_output" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
@@ -6461,34 +6461,34 @@ $allow_use_nft     $allow_use_ipv4  $command_iptables_nft    -A OUTPUT \
 ####
 ####
 $allow_use_legacy  $allow_use_ipv6   $command_ip6tables_legacy -A INPUT   \
--p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_input" \
+-p tcp  -m multiport --dports $logserver_port_tcp -j LOG --log-prefix "$logserver_prefix_input" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv6   $command_ip6tables_legacy -A INPUT   \
--p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$logserver_prefix_input" \
+-p udp  -m multiport --dports $logserver_port_udp -j LOG --log-prefix "$logserver_prefix_input" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
 $allow_use_legacy  $allow_use_ipv6   $command_ip6tables_legacy -A OUTPUT  \
--p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_output" \
+-p tcp -m multiport --sports $logserver_port_tcp -j LOG --log-prefix "$logserver_prefix_output" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv6   $command_ip6tables_legacy -A OUTPUT  \
--p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$logserver_prefix_output" \
+-p udp -m multiport --sports $logserver_port_udp -j LOG --log-prefix "$logserver_prefix_output" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
 $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A INPUT   \
--p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_input" \
+-p tcp  -m multiport --dports $logserver_port_tcp -j LOG --log-prefix "$logserver_prefix_input" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A INPUT   \
--p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$logserver_prefix_input" \
+-p udp  -m multiport --dports $logserver_port_udp -j LOG --log-prefix "$logserver_prefix_input" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
 $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A OUTPUT  \
--p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_output" \
+-p tcp -m multiport --sports $logserver_port_tcp -j LOG --log-prefix "$logserver_prefix_output" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A OUTPUT  \
--p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$logserver_prefix_output" \
+-p udp -m multiport --sports $logserver_port_udp -j LOG --log-prefix "$logserver_prefix_output" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
@@ -6499,36 +6499,36 @@ $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A OUTPUT  \
 #### ipv4 legacy
 ####
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT  \
--p udp -m multiport --dports $server_udp -s $net_ipv4_server -j ACCEPT \
+-p udp -m multiport --dports $server_port_udp -s $net_ipv4_server -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT  \
--p tcp -m multiport --dports $server_tcp -s $net_ipv4_server -j ACCEPT \
+-p tcp -m multiport --dports $server_port_tcp -s $net_ipv4_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
--p udp -m multiport --sports $server_udp -d $net_ipv4_server -j ACCEPT \
+-p udp -m multiport --sports $server_port_udp -d $net_ipv4_server -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
--p tcp -m multiport --sports $server_tcp -d $net_ipv4_server -j ACCEPT \
+-p tcp -m multiport --sports $server_port_tcp -d $net_ipv4_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 #### 
 #### ipv4 nft
 ####
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
--p udp -m multiport --dports $server_udp -s $net_ipv4_server -j ACCEPT \
+-p udp -m multiport --dports $server_port_udp -s $net_ipv4_server -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
--p tcp -m multiport --dports $server_tcp -s $net_ipv4_server -j ACCEPT \
+-p tcp -m multiport --dports $server_port_tcp -s $net_ipv4_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
--p udp -m multiport --sports $server_udp -d $net_ipv4_server -j ACCEPT \
+-p udp -m multiport --sports $server_port_udp -d $net_ipv4_server -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
--p tcp -m multiport --sports $server_tcp -d $net_ipv4_server -j ACCEPT \
+-p tcp -m multiport --sports $server_port_tcp -d $net_ipv4_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
@@ -6536,18 +6536,18 @@ $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
 ####
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT  \
--p udp -m multiport --dports $server_udp -s $net_ipv6_server -j ACCEPT \
+-p udp -m multiport --dports $server_port_udp -s $net_ipv6_server -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT  \
--p tcp -m multiport --dports $server_tcp -s $net_ipv6_server -j ACCEPT \
+-p tcp -m multiport --dports $server_port_tcp -s $net_ipv6_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
--p udp -m multiport --sports $server_udp -d $net_ipv6_server -j ACCEPT \
+-p udp -m multiport --sports $server_port_udp -d $net_ipv6_server -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
--p tcp -m multiport --sports $server_tcp -d $net_ipv6_server -j ACCEPT \
+-p tcp -m multiport --sports $server_port_tcp -d $net_ipv6_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
@@ -6555,18 +6555,18 @@ $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT  \
--p udp -m multiport --dports $server_udp -s $net_ipv6_server -j ACCEPT \
+-p udp -m multiport --dports $server_port_udp -s $net_ipv6_server -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT  \
--p tcp -m multiport --dports $server_tcp -s $net_ipv6_server -j ACCEPT \
+-p tcp -m multiport --dports $server_port_tcp -s $net_ipv6_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
--p udp -m multiport --sports $server_udp -d $net_ipv6_server -j ACCEPT \
+-p udp -m multiport --sports $server_port_udp -d $net_ipv6_server -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
--p tcp -m multiport --sports $server_tcp -d $net_ipv6_server -j ACCEPT \
+-p tcp -m multiport --sports $server_port_tcp -d $net_ipv6_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####

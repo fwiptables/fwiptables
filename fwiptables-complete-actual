@@ -295,8 +295,8 @@ allow_output_maxconnect="no" ;
 allow_output_ping="no" ;
 allow_output_state="no" ;
 allow_output_uid="no" ; 
-client_tcp="ssh,http,https" ;
-client_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+client_port_tcp="ssh,http,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 config_dmz_ip4="" ;
 config_dmz_ip6="" ;
 config_input_bandwidth="12512" ; 
@@ -315,14 +315,14 @@ config_output_state="new,related,established" ;
 config_output_uid="root" ;
 logserver_prefix_input="fwlog-input::" ; 
 logserver_prefix_output="fwlog-output::" ;
-logserver_tcp="no" ;
-logserver_udp="no" ;
+logserver_port_tcp="no" ;
+logserver_port_udp="no" ;
 net_ipv4_client="0/0" ; 
 net_ipv4_server="0/0" ;
 net_ipv6_client="::/0" ;
 net_ipv6_server="::/0" ;
-server_tcp="" ;
-server_udp="" ; 
+server_port_tcp="" ;
+server_port_udp="" ; 
 ####
 ####
 #### :rutina-final-config-variables:
@@ -337,7 +337,7 @@ server_udp="" ;
 ####    allow_use_legacy="" ; allow_use_nft="" ; allow_use_ipv4="" ; allow_use_ipv6="" ; config_shield_maxtries="20" ; config_shield_port="22" ;
 ####    allow_save_autolog="" ; server_waiting="9s" ; server_ping_ipv4="fast.com" ; server_ping_ipv6="fast.com" ;
 ####    serverip_iperf_ipv4="ping.online.net" ; serverport_iperf_ipv4="5001" ; serverip_iperf_ipv6="ping6.online.net" ; serverport_iperf_ipv6="5001" ;
-####    graphic_dimension="--width=950 --height=650" ; 
+####    graphic_window_dimension="--width=950 --height=650" ; 
 ####
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
@@ -363,7 +363,7 @@ config_close_deny="DROP"                   ## fwiptables-file-default ## DROP or
 allow_save_autolog=""                    ## fwiptables-file-default ## void or no
 ####       #### english: auto time in command
 ####       #### spanish: automatico fecha de linea
-allow_showtime="no"                    ## fwiptables-file-default ## void or no
+allow_show_time="no"                    ## fwiptables-file-default ## void or no
 ####       #### english: PING server for default         
 ####       #### spanish: servidor de PING por defecto    
 server_ping_ipv4="fast.com"           ## fwiptables-file-default ## default fast.com
@@ -380,13 +380,13 @@ serverip_iperf_ipv6="ping6.online.net"   ## fwiptables-file-default ## default p
 serverport_iperf_ipv6="5001"            ## fwiptables-file-default ## default 5201
 ####       #### english: zenity GRAPHIC DIMENSIONS        
 ####       #### spanish: DIMESIONES GRAFICAS de zenity  
-graphic_dimension="--width=950 --height=650"   ## fwiptables-file-default ## default: "--width=950 --height=650"
+graphic_window_dimension="--width=950 --height=650"   ## fwiptables-file-default ## default: "--width=950 --height=650"
 ####       #### english: RADIO URL streaming audio for default
 ####       #### spanish: direccion de RADIO DE INTERNET por defecto
-radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
-radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
-radio_rockfm="http://flucast-b02-06.flumotion.com/cope/rockfm.mp3" ;  ## fwiptables-file-default ## streaming url
-radio_kissfm="http://kissfm.kissfmradio.cires21.com/kissfm.mp3" ;  ## fwiptables-file-default ## streaming url
+radio_default_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
+radio_link_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
+radio_link_rockfm="http://flucast-b02-06.flumotion.com/cope/rockfm.mp3" ;  ## fwiptables-file-default ## streaming url
+radio_link_kissfm="http://kissfm.kissfmradio.cires21.com/kissfm.mp3" ;  ## fwiptables-file-default ## streaming url
 ####       #### english: void for automatic command #### spanish: vacio para comando automatico
 #### favorite_text_editor        ... for example nano
 favorite_text_editor=""          ## fwiptables-file-default ## or void for autoamtic or dialog or whiptail
@@ -405,14 +405,14 @@ favorite_text_music=""           ## fwiptables-file-default ## or void for autoa
 #### favorite_text_editor        ,,, for example vlc
 favorite_graphicall_music=""     ## fwiptables-file-default ## or void for autoamtic or command
 #### #### variables to modify for qemu
-qemu_name="Qemu VM"						 ## fwiptables-file-default ## variable qemu
-memory_ram="1500M"						 ## fwiptables-file-default ## variable qemu
-processor_smp="4"						 ## fwiptables-file-default ## variable qemu
-architecture_vm="qemu-system-i386"			         ## fwiptables-file-default ## variable qemu
-directory_vm="/qemu"						 ## fwiptables-file-default ## variable qemu
-default_vm="default-vm"						 ## fwiptables-file-default ## variable qemu
-display_vm="gtk"						 ## fwiptables-file-default ## variable qemu						
-language_vm="es"						 ## fwiptables-file-default ## variable qemu
+qemu_title_name="Qemu VM"						 ## fwiptables-file-default ## variable qemu
+qemu_memory_ram="1500M"						 ## fwiptables-file-default ## variable qemu
+qemu_smp_processor="4"						 ## fwiptables-file-default ## variable qemu
+qemu_architecture_vm="qemu-system-i386"			         ## fwiptables-file-default ## variable qemu
+qemu_directory_vm="/qemu"						 ## fwiptables-file-default ## variable qemu
+qemu_default_vm="default-vm"						 ## fwiptables-file-default ## variable qemu
+qemu_display_vm="gtk"						 ## fwiptables-file-default ## variable qemu						
+qemu_language_vm="es"						 ## fwiptables-file-default ## variable qemu
 #### #### english: look  #### spanish: apariencia
 quad=" ####" ; 
 cinco="#####" ;
@@ -598,8 +598,7 @@ if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /de
 ####     #### spanish: lanza default para actualizar variables
 ####
 ####
-if [ ! -f "$default_preferences" ]; then touch $default_preferences    ; fi
-if [ -f "$default_preferences"   ]; then source $default_preferences   ; fi
+if [ -f "$default_preferences"   ]; then source $default_preferences ; else touch $default_preferences  ; fi
 ####
 ####
 ####  realice sane very important variables post by default_preferences
@@ -1182,7 +1181,7 @@ echo $head_autolog >> $default_autolog ; fi
 #### :rutina-inicial-allow-timespam:
 ####
 ####
-if [ "$allow_showtime" != "no" ] ; then
+if [ "$allow_show_time" != "no" ] ; then
 head_timespam="$duo_md || || [ ok ] || [ Date and Time ] [ $(date) ] || || "
 echo $head_timespam ; fi
 ####
@@ -1477,28 +1476,28 @@ spa7="$(echo $cinco varcio para ejecutar el firewall con ipv6 o no para no )"
 var8="$(echo $cinco CLIENT PORTS $cinco )"
 eng8="$(echo $cinco Client ports, add with ',' and join ranges with  : )"
 spa8="$(echo $cinco puertos Cliente, añadir con ',' y poner rangos con : )"
-var9="$(echo client_tcp=http,https,ssh )"
+var9="$(echo client_port_tcp=http,https,ssh )"
 eng9="$(echo $cinco tcp ports for client )"
 spa9="$(echo $cinco puertos tcp para ser cliente )"
-var10="$(echo client_udp=domain,domain-s,bootpc,bootps,ntp,https )"
+var10="$(echo client_port_udp=domain,domain-s,bootpc,bootps,ntp,https )"
 eng10="$(echo $cinco udp ports for client )"
 spa10="$(echo $cinco puertos udp para ser cliente )"
 var11="$(echo $cinco SERVER PORTS $cinco )"
 eng11="$(echo $cinco Server ports, add with ',' and join ranges with : )"
 spa11="$(echo $cinco Puertos Servidor, añadir con ',' y poner rangos con  : )"
-var12="$(echo server_tcp=ssh )"
+var12="$(echo server_port_tcp=ssh )"
 eng12="$(echo $cinco tcp ports for server )"
 spa12="$(echo $cinco puertos tcp para servidor )"
-var13="$(echo server_udp= )"
+var13="$(echo server_port_udp= )"
 eng13="$(echo $cinco udp ports for server )"
 spa13="$(echo $cinco puertos udp para servidor )"
 var14="$(echo $cinco LOG TO SERVER PORTS $cinco )"
 eng14="$(echo $cinco Log to server ports, add with ',' and join ranges with : )"
 spa14="$(echo $cinco logear para puertos de Servidor, añadir con ',' y poner rangos con : )"
-var15="$(echo logserver_tcp= )"
+var15="$(echo logserver_port_tcp= )"
 eng15="$(echo $cinco the tcp ports to log server )"
 spa15="$(echo $cinco puertos tcp para logear servidor )"
-var16="$(echo logserver_udp= )"
+var16="$(echo logserver_port_udp= )"
 eng16="$(echo $cinco the udp ports to log server )"
 spa16="$(echo $cinco puertos udp para logear servidor )"
 var17="$(echo $cinco LOG PREFIX TO SERVER $cinco )"
@@ -4615,58 +4614,58 @@ case $second_option in
 #### 
 "new-mini-config")
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$third_option"
-$favorite_graphicall_dialog --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog --text-info $graphic_window_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NEW MINI CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$favorite_graphicall_dialog --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
+$favorite_graphicall_dialog --forms $graphic_window_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$favorite_graphicall_dialog --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+$favorite_graphicall_dialog --forms $graphic_window_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "new-full-config")
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$third_option"
-$favorite_graphicall_dialog --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog --text-info $graphic_window_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NEW FULL CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$favorite_graphicall_dialog --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
+$favorite_graphicall_dialog --forms $graphic_window_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$favorite_graphicall_dialog --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+$favorite_graphicall_dialog --forms $graphic_window_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "nueva-mini-config")
 cp "$defaultminicfg_spa" "$directory_temporal/$cmd_config-$third_option"
-$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NUEVA MINI CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "nueva-completa-config")
 cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_config-$third_option"
-$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NUEVA COMPLETA CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "modify-config")
 if [ -f "$directory_config/$third_option" ] ; then $nada
-else $favorite_graphicall_dialog  --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
+else $favorite_graphicall_dialog  --forms $graphic_window_dimension --text="file not found: $third_option" ; exit ; fi 
 cp "$directory_config/$third_option" "$directory_temporal/$cmd_config-$third_option"
-$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="MODIFY CONFIG" 1> "$directory_config/$third_option"
 if [ -s "$directory_config/$third_option" ]; then $nada ; 
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="OK. file: $third_option"
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="OK. file: $third_option"
 else cp "$directory_temporal/$cmd_config-$third_option" "$directory_config/$third_option"
-$favorite_graphicall_dialog --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
+$favorite_graphicall_dialog --forms $graphic_window_dimension --text="Canceled. file: $third_option"; fi
 ;;
 #### 
 ####
@@ -4676,7 +4675,7 @@ $favorite_graphicall_dialog --forms $graphic_dimension --text="Canceled. file: $
 ####
 ####
 *)$cmd_binary "$second_option" "$third_option" "$quad_option" &> "$temporal_guifinal"
-$favorite_graphicall_dialog  --text-info $graphic_dimension --title="Gui Output || $cmd_binary ||" \
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --title="Gui Output || $cmd_binary ||" \
 --filename="$temporal_guifinal" --auto-scroll ;;
 #### 
 #### 
@@ -4699,24 +4698,24 @@ case $second_option in
 "wizard-mini")
 archivo="wizard-mini"
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
-$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$archivo" \
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --filename="$directory_temporal/$cmd_config-$archivo" \
 --editable --title="WIZARD MINI" 1> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $cmd_binary -gui custom $archivo ; $cmd_binary -gui list4;
 else rm "$directory_config/$archivo" ;
-$favorite_graphicall_dialog --info $graphic_dimension --text "Ok. $archivo canceled"; fi
+$favorite_graphicall_dialog --info $graphic_window_dimension --text "Ok. $archivo canceled"; fi
 ;;
 #### 
 #### 
 "wizard-full")
 archivo="wizard-full"
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
-$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$archivo" \
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --filename="$directory_temporal/$cmd_config-$archivo" \
 --editable --title="WIZARD FULL" 1> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $cmd_binary -gui custom $archivo ; $cmd_binary -gui list4;
 else rm "$directory_config/$archivo" ;
-$favorite_graphicall_dialog  --info $graphic_dimension --text "OK. $archivo canceled"; fi
+$favorite_graphicall_dialog  --info $graphic_window_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
 ####
@@ -4724,24 +4723,24 @@ $favorite_graphicall_dialog  --info $graphic_dimension --text "OK. $archivo canc
 #### 
 "modify-config")
 if [ -f "$directory_config/$third_option" ] ; then $nada
-else $favorite_graphicall_dialog  --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
+else $favorite_graphicall_dialog  --forms $graphic_window_dimension --text="file not found: $third_option" ; exit ; fi 
 cp "$directory_config/$third_option" "$directory_temporal/$cmd_config-$third_option"
-$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="MODIFY CONFIG" 1> "$directory_config/$third_option"
 if [ -s "$directory_config/$third_option" ]; then $nada ; 
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="OK. file: $third_option"
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="OK. file: $third_option"
 else cp "$directory_temporal/$cmd_binary-$third_option" "$directory_config/$third_option"
-$favorite_graphicall_dialog --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
+$favorite_graphicall_dialog --forms $graphic_window_dimension --text="Canceled. file: $third_option"; fi
 ;;
 #### 
 ####
 "preferences-modify")
 archivo="default"
 cp "$default_preferences" "$default_preferences.old"
-$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$default_preferences.old" \
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --filename="$default_preferences.old" \
 --editable --title="MODIFY CONFIG" 1> "$default_preferences"
 if [ ! -s "$default_preferences" ]; then cp "$default_preferences.old" "$default_preferences" ;
-$favorite_graphicall_dialog  --info $graphic_dimension --text "OK. $archivo canceled"; fi
+$favorite_graphicall_dialog  --info $graphic_window_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
 ####
@@ -4751,7 +4750,7 @@ $favorite_graphicall_dialog  --info $graphic_dimension --text "OK. $archivo canc
 ####
 ####
 *)$cmd_binary $second_option $third_option &> $temporal_guifinal
-$favorite_graphicall_dialog  --text-info $graphic_dimension --title="Gui Output || $cmd_binary ||" \
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --title="Gui Output || $cmd_binary ||" \
 --filename="$temporal_guifinal" --auto-scroll ;;
 #### 
 #### 
@@ -4767,7 +4766,7 @@ exit; fi
 ####
 if [ "$first_option" == "-gui" ] && [ "$second_option" == "$NULL" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]" ; exit ;; esac
-$favorite_graphicall_dialog  --forms $graphic_dimension --title="Gui Output || $cmd_binary || " --text="$($cmd_binary mini-options)"
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --title="Gui Output || $cmd_binary || " --text="$($cmd_binary mini-options)"
 exit; fi
 ####
 ####
@@ -4835,7 +4834,7 @@ case "$selection_final" in
 esac
 ####
 ####
-$favorite_graphicall_dialog --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4846,7 +4845,7 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity yad to work ]"; exit ;; esac
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list 01-Firewall-Control 02-Firewall-List-With-Conceptual 02-Firewall-List-With-Numeral \
 03-Firewall-Custom 04-Firewall-Launch 05-Options-State 06-Tool-sockets \
 07-Tool-connect 08-Tool-rule 09-Tool-forward 10-Tool-sshd 11-Tool-tcp 12-Tool-udp 13-Tool-icmp \
@@ -4856,7 +4855,7 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 ####
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "01-Firewall-Control")$cmd_binary gui-menu-firewall-control ; exit ;;
 "02-Firewall-List-With-Conceptual")$cmd_binary gui-menu-firewall-conceptual ; exit ;;
 "02-Firewall-List-With-Numeral")$cmd_binary gui-menu-firewall-numeral ; exit ;;
@@ -4887,7 +4886,7 @@ case "$selection_final" in
 esac
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4898,7 +4897,7 @@ exit; fi
 ####
 ####  
 if   [ "$first_option" == "gui-menu-firewall-launch" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "eraserules" \
 "wizard-mini" "wizard-full" "custom cfg" "off-line" "all-permisive" \
 "games-shooter" "game-wesnoth" "game-minetest" "game-freeciv" "game-widelands" \
@@ -4910,7 +4909,7 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1) $favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1) $favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help firewall-launch ;;
 "Gui Info Menu")$cmd_binary -gui info firewall-launch ;;
@@ -4945,7 +4944,7 @@ case "$selection_final" in
 "server-mumble")$cmd_binary -gui server-mumble ; $cmd_binary gui list4;;
 "server-sql")$cmd_binary -gui server-sql ; $cmd_binary gui list4;;
 "server-asterisk")$cmd_binary -gui server-asterisk ; $cmd_binary gui list4;;
-"custom cfg")archivo="$($favorite_graphicall_dialog  --entry $graphic_dimension \
+"custom cfg")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension \
 --title "[Launch Custom]" --text="$($command_ls -1 $directory_config)")" ; 
 $cmd_binary -gui custom $archivo ; $cmd_binary gui list4;;
 esac
@@ -4955,7 +4954,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4966,13 +4965,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-firewall-control" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "stop" "continue" "reset" "names" "show" "save" "load" "actual" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help firewall-control ;;
 "Gui Info Menu")$cmd_binary -gui info firewall-control ;;
@@ -4980,11 +4979,11 @@ case "$selection_final" in
 "continue")$cmd_binary -gui continue ; $cmd_binary -gui list4;;
 "reset")$cmd_binary -gui reset ; $cmd_binary -gui list4;;
 "names")$cmd_binary -gui names ;;
-"show")archivo="$($favorite_graphicall_dialog  --entry $graphic_dimension --title "[Save Firewall]" --text="$($cmd_binary names)")" ; 
+"show")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[Save Firewall]" --text="$($cmd_binary names)")" ; 
 $cmd_binary -gui show $archivo ;;
-"save")archivo="$($favorite_graphicall_dialog  --entry $graphic_dimension --title "[Save Firewall]" --text="$($cmd_binary names)")" ; 
+"save")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[Save Firewall]" --text="$($cmd_binary names)")" ; 
 $cmd_binary -gui save $archivo ;;
-"load")archivo="$($favorite_graphicall_dialog  --entry $graphic_dimension --title "[Load Firewall]" --text="$($cmd_binary names)")" ;
+"load")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[Load Firewall]" --text="$($cmd_binary names)")" ;
 $cmd_binary -gui load $archivo ; $cmd_binary -gui list4;;
 "actual")$cmd_binary -gui actual ;;
 esac
@@ -4994,7 +4993,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5005,7 +5004,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-firewall-conceptual" ] ; then 
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ls4" "ls6" "list-filter4" "list-filter6" "list-alltables" \
 "list-nat4" "list-nat6" "list-mangle4" "list-mangle6" "list-raw4" "list-raw6" \
 "list-security4" "list-security6" "list-ebtables" "list-arptables")"
@@ -5013,7 +5012,7 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help firewall-conceptual ;;
 "Gui Info Menu")$cmd_binary -gui info firewall-conceptual ;;
@@ -5039,7 +5038,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5050,7 +5049,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-firewall-numeral" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "lsn4" "lsn6" "listn-filter4" "listn-filter6" "listn-alltables" \
 "listn-nat4" "listn-nat6" "listn-mangle4" "listn-mangle6" "listn-raw4" "listn-raw6" \
 "listn-security4" "listn-security6" "list-ebtables" "list-arptables" )"
@@ -5058,7 +5057,7 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help firewall-numeral ;;
 "Gui Info Menu")$cmd_binary -gui info firewall-numeral ;;
@@ -5084,7 +5083,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5095,39 +5094,39 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-firewall-custom" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
 "names-config" "show-config" "modify-config" "del-config" "regen-config" "examples-config")"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help firewall-custom ;;
 "Gui Info Menu")$cmd_binary -gui info firewall-custom ;;
 "new-full-config")
-archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
 $cmd_binary -gui new-full-config $archivo ;;
 "nueva-completa-config")
-archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --title "[nueva-completa-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[nueva-completa-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
 $cmd_binary -gui nueva-completa-config $archivo ;;
 "new-mini-config")
-archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --title "[new-mini-config]" --text="Input file name to new mini configuration")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[new-mini-config]" --text="Input file name to new mini configuration")" ;
 $cmd_binary -gui new-mini-config $archivo ;;
 "nueva-mini-config")
-archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --title "[nueva-mini-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[nueva-mini-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
 $cmd_binary -gui nueva-mini-config $archivo ;;
 "names-config")
 $cmd_binary -gui names-config ;;
 "show-config")
-archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --title "[show-config]" --text="$($cmd_binary cfg)")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[show-config]" --text="$($cmd_binary cfg)")" ;
 $cmd_binary -gui show-config $archivo ;;
 "modify-config")
-archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --title "[modify-config]" --text="$($cmd_binary cfg)")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[modify-config]" --text="$($cmd_binary cfg)")" ;
 $cmd_binary -gui modify-config $archivo ;;
 "del-config")
-archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --title "[del-config]" --text="$($cmd_binary cfg)")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[del-config]" --text="$($cmd_binary cfg)")" ;
 $cmd_binary -gui del-config $archivo ;;
 "regen-config")$cmd_binary -gui regen-config ;;
 "examples-config")$cmd_binary gui examples-config ;;
@@ -5138,7 +5137,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5149,13 +5148,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-options-state" ]; then 
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu preferences-read preferences-modify preferences-regen ip4 ip6 version examples depends install upgrade)"
 #### 
 ####
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 Gui-Principal-Menu)$cmd_binary gui-menu ;;
 Gui-Help-Menu)$cmd_binary -gui help status-state ;;
 Gui-Info-Menu)$cmd_binary -gui info status-state ;;
@@ -5176,7 +5175,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5187,13 +5186,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-tool-connect" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "iw-scan" "iw-info" "wpa-save" "wpa-load" "dhcp-client" "ntpdate-client" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-sockets ;;
 "Gui Info Menu")$cmd_binary -gui info tool-sockets ;;
@@ -5201,13 +5200,13 @@ case "$selection_final" in
 "iw-info")$cmd_binary -gui iw-info ;;
 "wpa-load")
 $cmd_binary -gui wpa-load
-archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --title "[ Load old file ]")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[ Load old file ]")" ;
 $cmd_binary -gui wpa-load $archivo ; $cmd_binary -gui iw-info ;;
 "wpa-save")
 for dispositivo in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1); do $command_ifconfig $dispositivo up ; done
 $cmd_binary -gui iw-scan
-name_ssid="$($favorite_graphicall_dialog  --entry $graphic_dimension --title "[ TYPE : Name of ssid ]" --text="[ TYPE : Name of ssid ]" )"  ;
-pass_ssid="$($favorite_graphicall_dialog  --entry $graphic_dimension --title "[ TYPE : Pass of ssid ]" --text="PASSWORD SSID $name_ssid" )" ;
+name_ssid="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[ TYPE : Name of ssid ]" --text="[ TYPE : Name of ssid ]" )"  ;
+pass_ssid="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[ TYPE : Pass of ssid ]" --text="PASSWORD SSID $name_ssid" )" ;
 $cmd_binary wpa-save $name_ssid $pass_ssid ; $cmd_binary -gui iw-info ;;
 "dhcp-client")$cmd_binary -gui dhcp-client ;;
 "ntpdate-client")$cmd_binary -gui ntpdate-client ;;
@@ -5218,7 +5217,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5229,13 +5228,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-tool-rule" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "rule-del-num" "rule-del-shield" "rule-add-shield" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-sockets ;;
 "Gui Info Menu")$cmd_binary -gui info tool-sockets ;;
@@ -5249,7 +5248,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5260,14 +5259,14 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-tool-sockets" ] ; then
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ip4" "ip6" "info-proxy" "info-listen" "info-route" "info-nodes" \
 "info-net" "info-system" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" "ntpdate-client" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-sockets ;;
 "Gui Info Menu")$cmd_binary -gui info tool-sockets ;;
@@ -5292,7 +5291,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5303,13 +5302,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "gui-menu-tool-forward" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ipforward-list" "ipforward-on" "ipforward-off")"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-forward ;;
 "Gui Info Menu")$cmd_binary -gui info tool-forward ;;
@@ -5323,7 +5322,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5334,19 +5333,19 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-tool-sshd" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sshd-tunnel-info" "sshd-tunnel-on" "sshd-tunnel-off" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-forward ;;
 "Gui Info Menu")$cmd_binary -gui info tool-forward ;;
 "sshd-tunnel-info")$cmd_binary -gui sshd-tunnel-info ;;
 "sshd-tunnel-on")
-archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --title "[ type: user@host ]" --text "[ type: user@host ]")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[ type: user@host ]" --text "[ type: user@host ]")" ;
 $cmd_binary -gui sshd-tunnel-on $archivo ;;
 "sshd-tunnel-off")$cmd_binary -gui sshd-tunnel-off ;;
 esac
@@ -5356,7 +5355,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5367,23 +5366,23 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-tool-icmp" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "traceicmp-ip4" "traceicmp-ip6" "ping-ip4" "ping-ip6" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-icmp ;;
 "Gui Info Menu")$cmd_binary -gui info tool-icmp ;;
-"traceicmp-ip4") archivo="$($favorite_graphicall_dialog $graphic_dimension --entry --text="[ type the ip or host ]")" ;
+"traceicmp-ip4") archivo="$($favorite_graphicall_dialog $graphic_window_dimension --entry --text="[ type the ip or host ]")" ;
 $cmd_binary -gui traceicmp-ip4 $archivo ;;
-"traceicmp-ip6") archivo="$($favorite_graphicall_dialog $graphic_dimension --entry --text="[ type the ip or host ]")" ;
+"traceicmp-ip6") archivo="$($favorite_graphicall_dialog $graphic_window_dimension --entry --text="[ type the ip or host ]")" ;
 $cmd_binary -gui traceicmp-ip6 $archivo ;;
-"ping-ip4") archivo="$($favorite_graphicall_dialog $graphic_dimension --entry --text="[ type the ip or host ]")" ;
+"ping-ip4") archivo="$($favorite_graphicall_dialog $graphic_window_dimension --entry --text="[ type the ip or host ]")" ;
 $cmd_binary -gui ping-ip4 $archivo ;;
-"ping-ip6") archivo="$($favorite_graphicall_dialog $graphic_dimension --entry --text="[ type the ip or host ]")" ; 
+"ping-ip6") archivo="$($favorite_graphicall_dialog $graphic_window_dimension --entry --text="[ type the ip or host ]")" ; 
 $cmd_binary -gui ping-ip6 $archivo ;;
 esac
 ####
@@ -5392,7 +5391,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5403,23 +5402,23 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-tool-udp" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "host" "dig" "resolveip" "geoip" "ntpdate-client" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-udp ;;
 "Gui Info Menu")$cmd_binary -gui info tool-udp ;;
-"host")archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
+"host")archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
 $cmd_binary -gui host $archivo ;;
-"dig")archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
+"dig")archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
 $cmd_binary -gui dig $archivo ;;
-"resolveip")archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type the ipv6 or host to resolve with ipv6 ]")" ; 
+"resolveip")archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ type the ipv6 or host to resolve with ipv6 ]")" ; 
 $cmd_binary -gui resolveip $archivo ;;
-"geoip")archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
+"geoip")archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
 $cmd_binary -gui geoip $archivo ;;
 "ntpdate-client")$cmd_binary -gui ntpdate-client ;;
 esac
@@ -5429,7 +5428,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5440,19 +5439,19 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-tool-tcp" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "tracetcp-ip4" "tracetcp-ip6" "speed-ip4" "speed-ip6")"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-tcp ;;
 "Gui Info Menu")$cmd_binary -gui info tool-tcp ;;
-"tracetcp-ip4")archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type the ip or host ]")" ;
+"tracetcp-ip4")archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ type the ip or host ]")" ;
 $cmd_binary -gui tracetcp-ip4 $archivo  ;;
-"tracetcp-ip6")archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type the ip or host ]")" ;
+"tracetcp-ip6")archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ type the ip or host ]")" ;
 $cmd_binary -gui tracetcp-ip6 $archivo  ;;
 "speed-ip4")$cmd_binary -gui speed-ip4  ;;
 "speed-ip6")$cmd_binary -gui speed-ip6  ;;
@@ -5463,7 +5462,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5474,17 +5473,17 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-tool-sudofw" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sudofw-adduser" "sudofw-deluser" "sudofw-listuser" "aliasfw-list" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-sudofw ;;
 "Gui Info Menu")$cmd_binary -gui info tool-sudofw ;;
-"sudofw-adduser")archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type username to allow sudo: username1,username2 ]")" ;
+"sudofw-adduser")archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ type username to allow sudo: username1,username2 ]")" ;
 $cmd_binary -gui sudofw-adduser $archivo ;;
 "sudofw-deluser")$cmd_binary -gui sudofw-deluser ;;
 "sudofw-listuser")$cmd_binary -gui sudofw-listuser ;;
@@ -5496,7 +5495,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5507,13 +5506,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-tool-game" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "game-word" "game-number" "game-domain" "game-rgb" "game-hex" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-game ;;
 "Gui Info Menu")$cmd_binary -gui info tool-game ;;
@@ -5521,10 +5520,10 @@ case "$selection_final" in
 "game-number")$cmd_binary -gui game-number ;;
 "game-domain")$cmd_binary -gui game-domain ;;
 "game-rgb")
-onecolour="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type one colour in RGB with 9 digits. Example: 255000255 ]")" ;
+onecolour="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ type one colour in RGB with 9 digits. Example: 255000255 ]")" ;
 $cmd_binary gui game-rgb $onecolour ;;
 "game-hex") 
-onecolour="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type one colour in HEX with 6 digits. Example: ff00ff ]")" ;
+onecolour="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ type one colour in HEX with 6 digits. Example: ff00ff ]")" ;
 $cmd_binary gui game-hex $onecolour ;;
 esac
 ####
@@ -5533,7 +5532,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5544,13 +5543,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-tool-speed" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "free-ram" "speed-ram" "speed-disk" "speed-glx" "speed-cpu" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-speed ;;
 "Gui Info Menu")$cmd_binary -gui info tool-speed ;;
@@ -5566,7 +5565,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5577,13 +5576,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-tool-util" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "weather" "md5sum" "radio-mp3 link" "gpg-notes" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-speed ;;
 "Gui Info Menu")$cmd_binary -gui info tool-speed ;;
@@ -5591,7 +5590,7 @@ case "$selection_final" in
 "md5sum")archivo="$($favorite_graphicall_dialog --file-selection)" ;
 $cmd_binary -gui md5sum $archivo ;;
 "radio-mp3 link") 
-radio_enlace="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ typea one mp3 link ] [ example: $radio_mp3 ]")" ;
+radio_enlace="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ typea one mp3 link ] [ example: $radio_default_mp3 ]")" ;
 $cmd_binary -gui radio-mp3 $radio_enlace gui ;;
 "gpg-notes")$cmd_binary -gui gpg-notes ;;
 esac
@@ -5601,7 +5600,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5612,13 +5611,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-tool-install" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "install" "howto-upgrade" "upgrade" "clean-tmp")"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-install ;;
 "Gui Info Menu")$cmd_binary -gui info tool-install ;;
@@ -5633,7 +5632,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5644,20 +5643,20 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-tool-addblock" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "addblock-list" "addblock-list info" "addblock-on" "addblock-off" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu;;
 "Gui Help Menu")$cmd_binary -gui help tool-addblock ;;
 "Gui Info Menu")$cmd_binary -gui info tool-addblock ;;
 "addblock-list")$cmd_binary -gui addblock-list;;
 "addblock-list info")$cmd_binary -gui addblock-list info ;;
 "addblock-on")
- archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type one: fademind, mvps, adaway, stevenblack ]")" ;
+ archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ type one: fademind, mvps, adaway, stevenblack ]")" ;
  $cmd_binary -gui addblock-on $archivo;;
 "addblock-off")$cmd_binary -gui addblock-off;;
 esac
@@ -5667,7 +5666,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5678,13 +5677,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-tool-dev" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "new-versions" "dev-version" "dev-changes" "code" "intro" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu  ;;
 "Gui Help Menu")$cmd_binary -gui help tool-dev ;;
 "Gui Info Menu")$cmd_binary -gui info tool-dev ;;
@@ -5692,7 +5691,7 @@ case "$selection_final" in
 "dev-version")$cmd_binary -gui dev-version  ;;
 "dev-changes")$cmd_binary -gui dev-changes ;;
 "intro")$cmd_binary -gui intro ;;
-"code") archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type one option to show its source code ]")" 
+"code") archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ type one option to show its source code ]")" 
 $cmd_binary -gui code $archivo
 esac
 ####
@@ -5701,7 +5700,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5712,13 +5711,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-show-hardware" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "lpinfo" "lsblk" "lsusb" "lscpu" "lspci" "lsgpu" "lshw")"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help show-hardware ;;
 "Gui Info Menu")$cmd_binary -gui info show-hardware ;;
@@ -5736,7 +5735,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5747,14 +5746,14 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-show-etc" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "hosts" "protocols" "services" "hosts.allow" "hosts.deny" \
 "resolv.conf" "preferences-read" "preferences-modify" "preferences-read" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help show-etc ;;
 "Gui Info Menu")$cmd_binary -gui info show-etc ;;
@@ -5774,7 +5773,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5785,13 +5784,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-show-log" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "log-ssh" "filelog" "autolog" "log-search")"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help show-log ;;
 "Gui Info Menu")$cmd_binary -gui info show-log ;;
@@ -5799,7 +5798,7 @@ case "$selection_final" in
 "filelog")$cmd_binary -gui filelog ;;
 "autolog")$cmd_binary -gui autolog ;;
 "log-search")
-pattern="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
+pattern="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
 $cmd_binary -gui log-search $pattern;;
 esac
 ####
@@ -5808,7 +5807,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5819,13 +5818,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-help-about" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "about" "version" "depends" "config-eng" "config-spa" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help help-about ;;
 "Gui Info Menu")$cmd_binary -gui info help-about ;;
@@ -5841,7 +5840,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5852,13 +5851,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-help-help" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "mini-options" "full-options" "all-help" "readme" "leeme" "notes" "license" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help help-help ;;
 "Gui Info Menu")$cmd_binary -gui info help-help ;;
@@ -5876,7 +5875,7 @@ $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" -
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5900,16 +5899,16 @@ untexto="$cmd_binary gui-shell"
 #### cd $directory_config
 ####
 ####
-menugtk=$($favorite_graphicall_dialog  --forms $graphic_dimension --title="Gui Shell || $cmd_binary || $cmd_version ||" \
+menugtk=$($favorite_graphicall_dialog  --forms $graphic_window_dimension --title="Gui Shell || $cmd_binary || $cmd_version ||" \
 --text="$($cmd_binary mini-options)" --add-entry="$cmd_binary " )
 case $? in
 1)
 ####
 ####
-#### zenity --info $graphic_dimension --text="$cmd_binary good bye";
+#### zenity --info $graphic_window_dimension --text="$cmd_binary good bye";
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" \
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" \
 --auto-close --auto-kill ; exit;;
 esac
 ####
@@ -5932,19 +5931,19 @@ case $menugtk in
 ####
 ####
 "new-full-config")
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary new-full-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary new-full-config config.cfg ]"
 ;;
 "new-mini-config")
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary new-mini-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary new-mini-config config.cfg ]"
 ;;
 "nueva-completa-config")
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-completa-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-completa-config config.cfg ]"
 ;;
 "new-mini-config")
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-mini-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-mini-config config.cfg ]"
 ;;
 "modify-config")
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary modify-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary modify-config config.cfg ]"
 ;;
 ####
 ####
@@ -5953,19 +5952,19 @@ $favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ 
 ####
 ####
 "new-full-config ")
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary new-full-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary new-full-config config.cfg ]"
 ;;
 "new-mini-config ")
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary new-mini-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary new-mini-config config.cfg ]"
 ;;
 "nueva-completa-config ")
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-completa-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-completa-config config.cfg ]"
 ;;
 "new-mini-config ")
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-mini-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-mini-config config.cfg ]"
 ;;
 "modify-config ")
-$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary modify-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary modify-config config.cfg ]"
 ;;
 ####
 ####
@@ -6006,10 +6005,10 @@ wizard-mini*) $cmd_binary gui wizard-mini ;;
 ####
 ####
 "$NULL")
-$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye";
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=1 --text="Closing gui menu" --auto-close --auto-kill ; exit ;;
+$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye";
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=1 --text="Closing gui menu" --auto-close --auto-kill ; exit ;;
 *) fecha_temporal=$(date | $command_sed s/\ //g) ; $cmd_binary $menugtk &> /tmp/fwiptables-$fecha_temporal
-$favorite_graphicall_dialog  --text-info $graphic_dimension --title "[ $cmd_binary gui-shell ] [ $menugtk ]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --title "[ $cmd_binary gui-shell ] [ $menugtk ]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal
 ;;
 esac
@@ -6632,8 +6631,8 @@ echo
 ####
 echo
 echo "# config web example #" 
-echo "config_client_tcp=http,https ;"
-echo "config_client_udp=domain,ntp,bootpc,http ;"
+echo "config_client_port_tcp=http,https ;"
+echo "config_client_port_udp=domain,ntp,bootpc,http ;"
 ####
 ####
 #### config:  games example  ####
@@ -6641,8 +6640,8 @@ echo "config_client_udp=domain,ntp,bootpc,http ;"
 ####
 echo
 echo "# config games example #"
-echo "config_client_udp=domain,domain-s,bootpc,bootps,ntp,https,1025:65499; "
-echo "config_client_tcp=http,https"
+echo "config_client_port_udp=domain,domain-s,bootpc,bootps,ntp,https,1025:65499; "
+echo "config_client_port_tcp=http,https"
 ####
 ####
 #### config: wesnoth game example ####
@@ -6650,8 +6649,8 @@ echo "config_client_tcp=http,https"
 ####
 echo
 echo "# config web example #" 
-echo "config_client_tcp=http,https,14995:15000 ;"
-echo "config_client_udp=domain,ntp,bootpc,http ;"
+echo "config_client_port_tcp=http,https,14995:15000 ;"
+echo "config_client_port_udp=domain,ntp,bootpc,http ;"
 ####
 ####
 #### config:  torrent-example1 ####
@@ -6659,8 +6658,8 @@ echo "config_client_udp=domain,ntp,bootpc,http ;"
 ####
 echo
 echo "# config torrent example #"
-echo "config_client_udp=domain,domain-s,bootpc,bootps,ntp,https,1025:65499; "
-echo "config_client_tcp=http,https"
+echo "config_client_port_udp=domain,domain-s,bootpc,bootps,ntp,https,1025:65499; "
+echo "config_client_port_tcp=http,https"
 ####
 ####
 #### config: samba-example1 ####
@@ -6668,8 +6667,8 @@ echo "config_client_tcp=http,https"
 ####
 echo
 echo "# config samba example #"
-echo "config_client_udp=domain,domain-s,bootpc,bootps,ntp,https,137:139 ; "
-echo "config_client_tcp=http,https,ipp,microsoft-ds"
+echo "config_client_port_udp=domain,domain-s,bootpc,bootps,ntp,https,137:139 ; "
+echo "config_client_port_tcp=http,https,ipp,microsoft-ds"
 echo "allow_output_ping= ; allow_input_ping= ; "
 ####
 ####
@@ -6696,7 +6695,7 @@ echo "config_net_vpn=wesnoth.org,sourceforge.net"
 ####
 echo
 echo "# config email example #"
-echo "config_client_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps"
+echo "config_client_port_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps"
 ####
 ####
 #### config: ssh-example1 ####
@@ -6704,7 +6703,7 @@ echo "config_client_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imap
 ####
 echo
 echo "# config ssh example #"
-echo "config_client_tcp=http,https,printer,ipp,ssh,rsync,git"
+echo "config_client_port_tcp=http,https,printer,ipp,ssh,rsync,git"
 ####
 ####
 #### config: vnc-example1 ####
@@ -6712,7 +6711,7 @@ echo "config_client_tcp=http,https,printer,ipp,ssh,rsync,git"
 ####
 echo
 echo "# config vnc example #"
-echo "config_client_tcp=http,https,ssh,5900:5910"
+echo "config_client_port_tcp=http,https,ssh,5900:5910"
 ####
 ####
 #### config: ftp-example1 ####
@@ -6720,8 +6719,8 @@ echo "config_client_tcp=http,https,ssh,5900:5910"
 ####
 echo
 echo "# config ftp example #"
-echo "config_client_tcp=http,https,ftp,ftp-data,ftps,ftps-data,gsiftp,zope-ftp"
-echo "config_client_udp=domain,domain-s,bootpc,bootps,ntp,https,tftp"
+echo "config_client_port_tcp=http,https,ftp,ftp-data,ftps,ftps-data,gsiftp,zope-ftp"
+echo "config_client_port_udp=domain,domain-s,bootpc,bootps,ntp,https,tftp"
 ####
 ####
 #### config: printer-example1 ####
@@ -6729,7 +6728,7 @@ echo "config_client_udp=domain,domain-s,bootpc,bootps,ntp,https,tftp"
 ####
 echo
 echo "# config printer example #"
-echo "config_client_tcp=http,https,ipp,printer"
+echo "config_client_port_tcp=http,https,ipp,printer"
 ####
 ####
 #### config: irc-example1 ####
@@ -6737,7 +6736,7 @@ echo "config_client_tcp=http,https,ipp,printer"
 ####
 echo
 echo "# config irc example #"
-echo "config_client_tcp=http,https,ircd,ircs-u"
+echo "config_client_port_tcp=http,https,ircd,ircs-u"
 ####
 ####
 #### config: sql-example1 ####
@@ -6745,7 +6744,7 @@ echo "config_client_tcp=http,https,ircd,ircs-u"
 ####
 echo
 echo "# config sql example #"
-echo "config_client_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s"
+echo "config_client_port_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s"
 ####
 ####
 echo
@@ -8358,7 +8357,7 @@ clear ; exit; fi
 ####
 if   [ "$first_option" == "rule-del-num" ] && [ "$second_option" == "-gui" ]; then echo $give_cover
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]"; exit ;; esac
-selection="$($favorite_graphicall_dialog $graphic_dimension  \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension  \
 --list  "01 NFTABLES filter-ip4 INPUT"  "02 NFTABLES / filter-ip4 / FORWARD"  "03 NFTABLES / filter-ip4 / OUTPUT" \
 "04 XTABLES / filter-ip4  / INPUT" "05 XTABLES / filter-ip4 / FORWARD"  "06 XTABLES / filter-ip4 / OUTPUT" \
 "11 NFTABLES filter-ip6 INPUT"  "12 NFTABLES / filter-ip6 / FORWARD"  "13 NFTABLES / filter-ip6 / OUTPUT" \
@@ -8366,65 +8365,65 @@ selection="$($favorite_graphicall_dialog $graphic_dimension  \
 --column="Option list $cmd_binary" --text="Select one option" --title="Gui Menu || $cmd_binary || $(date) ")"
 case "$selection" in
 "01 NFTABLES filter-ip4 INPUT")
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L INPUT --line-numbers)" )"
-deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_iptables_nft -t filter -L INPUT --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_window_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_iptables_nft -t filter -D INPUT $deleterule)"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L INPUT --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_iptables_nft -t filter -L INPUT --line-numbers)" )" ;;
 "02 NFTABLES / filter-ip4 / FORWARD") fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="FORWARD"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L FORWARD --line-numbers)" )"
-deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_iptables_nft -t filter -L FORWARD --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_window_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_iptables_nft -t filter -D FORWARD $deleterule)"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L FORWARD --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_iptables_nft -t filter -L FORWARD --line-numbers)" )" ;;
 "03 NFTABLES / filter-ip4 / OUTPUT")  fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="OUTPUT" 
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L OUTPUT --line-numbers)" )"
-deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_iptables_nft -t filter -L OUTPUT --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_window_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_iptables_nft -t filter -D OUTPUT $deleterule)"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L OUTPUT --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_iptables_nft -t filter -L OUTPUT --line-numbers)" )" ;;
 "04 XTABLES / filter-ip4 / INPUT")     fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="INPUT"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L INPUT --line-numbers)" )"
-deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_iptables_legacy -t filter -L INPUT --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_window_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_iptables_legacy -t filter -D INPUT $deleterule)"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L INPUT --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_iptables_legacy -t filter -L INPUT --line-numbers)" )" ;;
 "05 XTABLES / filter-ip4 / FORWARD")   fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="FORWARD"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L FORWARD --line-numbers)" )"
-deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_iptables_legacy -t filter -L FORWARD --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_window_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_iptables_legacy -t filter -D FORWARD $deleterule)"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L FORWARD --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_iptables_legacy -t filter -L FORWARD --line-numbers)" )" ;;
 "06 XTABLES / filter-ip4 / OUTPUT")    fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="OUTPUT"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L OUTPUT --line-numbers)" )"
-deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_iptables_legacy -t filter -L OUTPUT --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_window_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_iptables_legacy -t filter -D OUTPUT $deleterule)"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L OUTPUT --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_iptables_legacy -t filter -L OUTPUT --line-numbers)" )" ;;
 "11 NFTABLES filter-ip6 INPUT")
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_nft -t filter -L INPUT --line-numbers)" )"
-deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_ip6tables_nft -t filter -L INPUT --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_window_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_ip6tables_nft -t filter -D INPUT $deleterule)"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_nft -t filter -L INPUT --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_ip6tables_nft -t filter -L INPUT --line-numbers)" )" ;;
 "12 NFTABLES / filter-ip6 / FORWARD") fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="FORWARD"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L FORWARD --line-numbers)" )"
-deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_iptables_nft -t filter -L FORWARD --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_window_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_ip6tables_nft -t filter -D FORWARD $deleterule)"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_nft -t filter -L FORWARD --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_ip6tables_nft -t filter -L FORWARD --line-numbers)" )" ;;
 "13 NFTABLES / filter-ip6 / OUTPUT")  fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="OUTPUT" 
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L OUTPUT --line-numbers)" )"
-deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_iptables_nft -t filter -L OUTPUT --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_window_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_ip6tables_nft -t filter -D OUTPUT $deleterule)"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_nft -t filter -L OUTPUT --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_ip6tables_nft -t filter -L OUTPUT --line-numbers)" )" ;;
 "14 XTABLES / filter-ip6 / INPUT")     fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="INPUT"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_legacy -t filter -L INPUT --line-numbers)" )"
-deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_ip6tables_legacy -t filter -L INPUT --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_window_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_ip6tables_legacy -t filter -D INPUT $deleterule)"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_legacy -t filter -L INPUT --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_ip6tables_legacy -t filter -L INPUT --line-numbers)" )" ;;
 "15 XTABLES / filter-ip6 / FORWARD")   fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="FORWARD"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_legacy -t filter -L FORWARD --line-numbers)" )"
-deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_ip6tables_legacy -t filter -L FORWARD --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_window_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_ip6tables_legacy -t filter -D FORWARD $deleterule)"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_legacy -t filter -L FORWARD --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_ip6tables_legacy -t filter -L FORWARD --line-numbers)" )" ;;
 "16 XTABLES / filter-ip6 / OUTPUT")    fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="OUTPUT"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_legacy -t filter -L OUTPUT --line-numbers)" )"
-deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_ip6tables_legacy -t filter -L OUTPUT --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_window_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_ip6tables_legacy -t filter -D OUTPUT $deleterule)"
-listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_legacy -t filter -L OUTPUT --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_window_dimension --forms --text "$($command_ip6tables_legacy -t filter -L OUTPUT --line-numbers)" )" ;;
 else) exit ;; esac ; exit; fi 
 ####
 ####
@@ -9491,7 +9490,7 @@ case "$favorite_graphicall_music" in "$NULL") echo "$tab [ fail ] [ Install a gr
 ####
 ####
 if [ "$second_option" == "$NULL" ]; then $nada
-#### emisora="$radio_mp3"
+#### emisora="$radio_default_mp3"
 echo "$duo_md [ info ] [ launch $cmd_binary radio-rockfm ]       [ for radio rockfm    ]"
 echo "$duo_md [ info ] [ launch $cmd_binary radio-kissfm ]       [ for radio kissfm    ]"
 echo "$duo_md [ info ] [ launch $cmd_binary radio-cadena100 ]    [ for radio cadena100 ]"
@@ -9524,7 +9523,7 @@ case "$second_option" in "gui"|"-gui"|"-g"|"--gui") favorite_text_music="$favori
 case "$favorite_graphicall_music" in "$NULL") echo "$tab [ fail ] [ Install a graphicall mp3 player ]"; exit ;; esac;; esac
 ####
 ####
-emisora="$radio_cadena100"
+emisora="$radio_link_cadena100"
 ####
 ####
 echo "$duo_md [  ok  ] [ $favorite_text_music $emisora ]"
@@ -9551,7 +9550,7 @@ case "$second_option" in "gui"|"-gui"|"-g"|"--gui") favorite_text_music="$favori
 case "$favorite_graphicall_music" in "$NULL") echo "$tab [ fail ] [ Install a graphicall mp3 player ]"; exit ;; esac;; esac
 ####
 ####
-emisora="$radio_rockfm"
+emisora="$radio_link_rockfm"
 ####
 ####
 echo "$duo_md [  ok  ] [ $favorite_text_music $emisora ]"
@@ -9578,7 +9577,7 @@ case "$second_option" in "gui"|"-gui"|"-g"|"--gui") favorite_text_music="$favori
 case "$favorite_graphicall_music" in "$NULL") echo "$tab [ fail ] [ Install a graphicall mp3 player ]"; exit ;; esac;; esac
 ####
 ####
-emisora="$radio_kissfm"
+emisora="$radio_link_kissfm"
 ####
 ####
 echo "$duo_md [  ok  ] [ $favorite_text_music $emisora ]"
@@ -9688,9 +9687,9 @@ clear ; exit ; fi
 ####
 if [ "$second_option" == "-gui" ] || [ "$second_option" == "gui" ] ; then
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad ]"; exit ;; esac
-$($favorite_graphicall_dialog $graphic_dimension --info --title="gui game-domain" \
+$($favorite_graphicall_dialog $graphic_window_dimension --info --title="gui game-domain" \
 --text=" Is this a country domain or a generic domain ? :  $domain_one")
-$($favorite_graphicall_dialog $graphic_dimension --info --title="gui game-domain" \
+$($favorite_graphicall_dialog $graphic_window_dimension --info --title="gui game-domain" \
 --text=" Really $domain_one is a $type_domain_one domain.")
 exit; fi
 ####
@@ -9885,7 +9884,7 @@ if [ "$second_option" == "-gui" ] ; then
 ####
 ####
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]"; exit ;; esac
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list english spanish quit )"
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
@@ -9950,14 +9949,14 @@ seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
 ####
 if [ "$cinco_caracteres" == "$palabra_aleatoria" ]; then clear 
-acierto="$($favorite_graphicall_dialog $graphic_dimension --info --title="gui game-word" --text="$text_1 $palabra_aleatoria")"
+acierto="$($favorite_graphicall_dialog $graphic_window_dimension --info --title="gui game-word" --text="$text_1 $palabra_aleatoria")"
 clear; exit; fi
 ####
 if [ "$intento" == "$intento_maximo" ]; then clear
-fallo="$($favorite_graphicall_dialog $graphic_dimension --info --title="gui game-word" --text="$text_8 $palabra_aleatoria")"
+fallo="$($favorite_graphicall_dialog $graphic_window_dimension --info --title="gui game-word" --text="$text_8 $palabra_aleatoria")"
 clear ; exit ; fi
 ####
-bucle="$($favorite_graphicall_dialog $graphic_dimension --entry --title "Play game word ole" \
+bucle="$($favorite_graphicall_dialog $graphic_window_dimension --entry --title "Play game word ole" \
 --text " $text_6 $intento /// $intento_maximo \n  $text_2 \n # $text_3 # \n \
 || $seat_1 - $seat_2 - $seat_3 - $seat_4 - $seat_5 || \n # $text_4 # \n || $contenido ||")"
 if [ "$?" != 0 ]; then clear; echo "$cinco [ ok ] [ Exit game ]" ; exit; fi
@@ -10287,7 +10286,7 @@ if [ "$second_option" == "-gui" ] || [ "$second_option" == "gui" ]; then $nada
 ####
 ####
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]"; exit ;; esac
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list english spanish quit )"
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
@@ -10335,14 +10334,14 @@ seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
 #### 
 if [ "$cinco_digitos" == "$numero_aleatorio" ]; then clear 
-acierto="$($favorite_graphicall_dialog $graphic_dimension --info --title="gui game-number" --text="$text_1 $numero_aleatorio")"
+acierto="$($favorite_graphicall_dialog $graphic_window_dimension --info --title="gui game-number" --text="$text_1 $numero_aleatorio")"
 clear; exit; fi
 ####
 if [ "$intento" == "$intento_maximo" ]; then clear
-fallo="$($favorite_graphicall_dialog $graphic_dimension --info --title="gui game-number" --text="$text_8 $numero_aleatorio")"
+fallo="$($favorite_graphicall_dialog $graphic_window_dimension --info --title="gui game-number" --text="$text_8 $numero_aleatorio")"
 clear ; exit ; fi
 ####
-bucle="$($favorite_graphicall_dialog $graphic_dimension --entry --title "Play game number ole" \
+bucle="$($favorite_graphicall_dialog $graphic_window_dimension --entry --title "Play game number ole" \
 --text " $text_6 $intento /// $intento_maximo \n  $text_2 \n # $text_3 # \n \
 || $seat_1 - $seat_2 - $seat_3 - $seat_4 - $seat_5 || \n # $text_4 # \n || $contenido ||")"
 if [ "$?" -eq "0" ]; then echo -n ; else exit; fi
@@ -10608,18 +10607,18 @@ echo "$header_ok [ $first_option ]  [ start qemu machine ] [ vm ] [ iso ] || ||"
 #### prepare static variables
 ####
 ####
-if [ "$2" == "$NULL" ] ; then qemu_vm="$directory_vm/$default_vm" ; else qemu_vm="$2" ; fi
+if [ "$2" == "$NULL" ] ; then qemu_vm="$qemu_directory_vm/$qemu_default_vm" ; else qemu_vm="$2" ; fi
 if [ "$3" == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $3"; fi
 ####
 ####
-command_qemu="$(command -v $architecture_vm)"
-qemu_options="-m $memory_ram -machine accel=kvm -k $language_vm -smp $processor_smp -rtc base=localtime -display $display_vm"
+command_qemu="$(command -v $qemu_architecture_vm)"
+qemu_options="-m $qemu_memory_ram -machine accel=kvm -k $qemu_language_vm -smp $qemu_smp_processor -rtc base=localtime -display $qemu_display_vm"
 qemu_full="$command_qemu $qemu_options -boot menu=on -hda $qemu_vm $qemu_cdrom"
 ####
 ####
 if [ ! -f "$qemu_vm" ]; then echo " VM image is not ready" ; exit ; fi 
 $qemu_full &
-echo "$duo_md [ ok ] [ started ] [ booted vm ] [ arch: $architecture_vm ] [ vm: $qemu_vm ] [ display: $display_vm ]"
+echo "$duo_md [ ok ] [ started ] [ booted vm ] [ arch: $qemu_architecture_vm ] [ vm: $qemu_vm ] [ display: $qemu_display_vm ]"
 exit
 fi
 #### :rutina-final-qemu-start:
@@ -10633,12 +10632,12 @@ echo "$header_ok [ $first_option ]  [ start qemu machine ] [ vm ] [ iso ] || ||"
 #### prepare static variables
 ####
 ####
-if [ "$2"  == "$NULL" ] ; then qemu_vm="$directory_vm/$default_vm" ; else qemu_vm="$2" ; fi
+if [ "$2"  == "$NULL" ] ; then qemu_vm="$qemu_directory_vm/$qemu_default_vm" ; else qemu_vm="$2" ; fi
 if [ "$3"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $3"; fi
 ####
 ####
-command_qemu="$(command -v $architecture_vm)"
-qemu_options="-m $memory_ram -machine accel=kvm -k $language_vm -smp $processor_smp -rtc base=localtime -display $display_vm"
+command_qemu="$(command -v $qemu_architecture_vm)"
+qemu_options="-m $qemu_memory_ram -machine accel=kvm -k $qemu_language_vm -smp $qemu_smp_processor -rtc base=localtime -display $qemu_display_vm"
 qemu_full="$command_qemu $qemu_options -boot menu=on -hda $qemu_vm $qemu_cdrom"
 ####
 ####
@@ -10662,10 +10661,10 @@ exit; fi
 #### :rutina-inicial-qemu-stop:
 if  [ "$first_option" == "qemu-stop" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ stop qemu machine ] || ||"
-ps -Af | grep -i  "$architecture_vm"
+ps -Af | grep -i  "$qemu_architecture_vm"
 echo "$duo_md [  ok  ] [ status ] [ process listed ]"
-killall -9 "$architecture_vm"
-echo "$duo_md [ ok ] [ stopped ] [ stopped all vm ] [ $architecture_vm ]"
+killall -9 "$qemu_architecture_vm"
+echo "$duo_md [ ok ] [ stopped ] [ stopped all vm ] [ $qemu_architecture_vm ]"
 exit; fi
 #### :rutina-final-qemu-stop:
 ##########   english: filelog: Read log fwiptables-filelog  ##########
@@ -10836,10 +10835,10 @@ echo "$duo_md [ info ] [ type $cmd_binary gpg-notes name-of-gpg" ; exit ; fi
 ####
 if [ "$second_option" == "gui" ] || [ "$second_option" == "-gui" ]; then
 if [ "$favorite_graphicall_dialog" == "$NULL" ]; then echo "$duo_md [ fail ] [ install zenity or yad ]"; exit ; fi
-original="$($favorite_graphicall_dialog $graphic_dimension --entry --title "  [ NAME file gpg to choose WITHOUT path ]" \
+original="$($favorite_graphicall_dialog $graphic_window_dimension --entry --title "  [ NAME file gpg to choose WITHOUT path ]" \
 --text "$($command_find $directory_default | $command_grep .gpg | $command_sed 's/\.gpg//g' )")"
 origina="$(echo "$original" | $command_sed s/\\///g -)" ;
-consigna="$($favorite_graphicall_dialog $graphic_dimension --entry --title "[ Passwowrd ]" --text "[ Passwowrd ]")"
+consigna="$($favorite_graphicall_dialog $graphic_window_dimension --entry --title "[ Passwowrd ]" --text "[ Passwowrd ]")"
 gpg_origen_gpg="$directory_default/$origina.gpg"
 gpg_firma_gpg="$directory_default/$origina.sign"
 gpg_modify_txt="$directory_temporal/$origina.modify"
@@ -10849,7 +10848,7 @@ gpg_temporal_gpg="$directory_temporal/$origina.gpg"
 ####
 if [ -f "$gpg_origen_gpg" ];  then
 $command_gpg --yes --batch --passphrase $consigna -o "$gpg_modify_txt" -d "$gpg_origen_gpg" &&
-$favorite_graphicall_dialog --text-info $graphic_dimension --filename="$gpg_modify_txt" \
+$favorite_graphicall_dialog --text-info $graphic_window_dimension --filename="$gpg_modify_txt" \
 --editable --title="MODIFY FILE" &> "$gpg_temporal_txt" &&
 $command_gpg --yes --batch --passphrase $consigna -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
 $cmd_binary clean-tmp &> /dev/null ; exit ; fi
@@ -10857,7 +10856,7 @@ $cmd_binary clean-tmp &> /dev/null ; exit ; fi
 ####
 if [ ! -f "$gpg_origen_gpg" ]; then 
 echo "File created" > "$gpg_modify_txt"
-$favorite_graphicall_dialog --text-info $graphic_dimension --filename="$gpg_modify_txt" \
+$favorite_graphicall_dialog --text-info $graphic_window_dimension --filename="$gpg_modify_txt" \
 --editable --title="MODIFY FILE" &> "$gpg_temporal_txt" ;
 $command_gpg --yes --batch --passphrase  $consigna -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
 $cmd_binary clean-tmp &> /dev/null ; exit ; fi
@@ -13845,30 +13844,30 @@ if [ "$allow_separate_rules" == "no" ]; then
 #### ipv4 legacy udp
 ####
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT \
--p udp -m multiport $config_input_state --sports $client_udp -s $net_ipv4_client -j ACCEPT \
+-p udp -m multiport $config_input_state --sports $client_port_udp -s $net_ipv4_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
--p udp -m multiport $config_output_state --dports $client_udp -d $net_ipv4_client -j ACCEPT \
+-p udp -m multiport $config_output_state --dports $client_port_udp -d $net_ipv4_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 ####
 #### 
 #### ipv4 nft udp
 ####
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
--p udp -m multiport $config_input_state --sports $client_udp -s $net_ipv4_client -j ACCEPT \
+-p udp -m multiport $config_input_state --sports $client_port_udp -s $net_ipv4_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
--p udp -m multiport $config_output_state --dports $client_udp -d $net_ipv4_client -j ACCEPT \
+-p udp -m multiport $config_output_state --dports $client_port_udp -d $net_ipv4_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 ####
 ####
 #### ipv6 legacy udp
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT \
--p udp -m multiport $config_input_state --sports $client_udp -s $net_ipv6_client -j ACCEPT \
+-p udp -m multiport $config_input_state --sports $client_port_udp -s $net_ipv6_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
--p udp -m multiport $config_output_state --dports $client_udp -d $net_ipv6_client -j ACCEPT \
+-p udp -m multiport $config_output_state --dports $client_port_udp -d $net_ipv6_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 ####
 ####
@@ -13876,10 +13875,10 @@ $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT \
--p tcp -m multiport $config_input_state --sports $client_udp -s $net_ipv6_client -j ACCEPT \
+-p tcp -m multiport $config_input_state --sports $client_port_udp -s $net_ipv6_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $client_udp -d $net_ipv6_client -j ACCEPT \
+-p tcp -m multiport $config_output_state --dports $client_port_udp -d $net_ipv6_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 ####
 ####
@@ -13888,30 +13887,30 @@ $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
 #### ipv4 legacy tcp
 ####
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT \
--p tcp -m multiport $config_input_state --sports $client_tcp -s $net_ipv4_client -j ACCEPT \
+-p tcp -m multiport $config_input_state --sports $client_port_tcp -s $net_ipv4_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $client_tcp -d $net_ipv4_client -j ACCEPT \
+-p tcp -m multiport $config_output_state --dports $client_port_tcp -d $net_ipv4_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 ####
 #### 
 #### ipv4 nft tcp
 ####
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
--p tcp -m multiport $config_input_state --sports $client_tcp -s $net_ipv4_client -j ACCEPT \
+-p tcp -m multiport $config_input_state --sports $client_port_tcp -s $net_ipv4_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $client_tcp -d $net_ipv4_client -j ACCEPT \
+-p tcp -m multiport $config_output_state --dports $client_port_tcp -d $net_ipv4_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 ####
 ####
 #### ipv6 legacy tcp
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT \
--p tcp -m multiport $config_input_state --sports $client_tcp -s $net_ipv6_client -j ACCEPT \
+-p tcp -m multiport $config_input_state --sports $client_port_tcp -s $net_ipv6_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $client_tcp -d $net_ipv6_client -j ACCEPT \
+-p tcp -m multiport $config_output_state --dports $client_port_tcp -d $net_ipv6_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 ####
 ####
@@ -13919,10 +13918,10 @@ $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT \
--p tcp -m multiport $config_input_state --sports $client_tcp -s $net_ipv6_client -j ACCEPT \
+-p tcp -m multiport $config_input_state --sports $client_port_tcp -s $net_ipv6_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $client_tcp -d $net_ipv6_client -j ACCEPT \
+-p tcp -m multiport $config_output_state --dports $client_port_tcp -d $net_ipv6_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 ####
 ####
@@ -13934,7 +13933,7 @@ fi
 ####
 ####
 if [ "$allow_separate_rules" != "no" ]; then 
-for one_udp in $(echo $client_udp | $command_sed 's/,/ /g') ;
+for one_udp in $(echo $client_port_udp | $command_sed 's/,/ /g') ;
 do
 ####
 ####
@@ -13985,7 +13984,7 @@ done; fi
 ####
 ####
 if [ "$allow_separate_rules" != "no" ]; then 
-for one_tcp in $(echo $client_tcp | $command_sed 's/,/ /g') ;
+for one_tcp in $(echo $client_port_tcp | $command_sed 's/,/ /g') ;
 do
 ####
 ####
@@ -14043,34 +14042,34 @@ done ; fi
 ####
 ####
 $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A INPUT  \
--p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_input" \
+-p tcp  -m multiport --dports $logserver_port_tcp -j LOG --log-prefix "$logserver_prefix_input" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A INPUT  \
--p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$logserver_prefix_input" \
+-p udp  -m multiport --dports $logserver_port_udp -j LOG --log-prefix "$logserver_prefix_input" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
 $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A OUTPUT \
--p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_output" \
+-p tcp -m multiport --sports $logserver_port_tcp -j LOG --log-prefix "$logserver_prefix_output" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A OUTPUT \
--p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$logserver_prefix_output" \
+-p udp -m multiport --sports $logserver_port_udp -j LOG --log-prefix "$logserver_prefix_output" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
 $allow_use_nft     $allow_use_ipv4  $command_iptables_nft    -A INPUT  \
--p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_input" \
+-p tcp  -m multiport --dports $logserver_port_tcp -j LOG --log-prefix "$logserver_prefix_input" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_nft     $allow_use_ipv4  $command_iptables_nft    -A INPUT  \
--p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$logserver_prefix_input" \
+-p udp  -m multiport --dports $logserver_port_udp -j LOG --log-prefix "$logserver_prefix_input" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
 $allow_use_nft     $allow_use_ipv4  $command_iptables_nft    -A OUTPUT \
--p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_output" \
+-p tcp -m multiport --sports $logserver_port_tcp -j LOG --log-prefix "$logserver_prefix_output" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_nft     $allow_use_ipv4  $command_iptables_nft    -A OUTPUT \
--p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$logserver_prefix_output" \
+-p udp -m multiport --sports $logserver_port_udp -j LOG --log-prefix "$logserver_prefix_output" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
@@ -14078,34 +14077,34 @@ $allow_use_nft     $allow_use_ipv4  $command_iptables_nft    -A OUTPUT \
 ####
 ####
 $allow_use_legacy  $allow_use_ipv6   $command_ip6tables_legacy -A INPUT   \
--p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_input" \
+-p tcp  -m multiport --dports $logserver_port_tcp -j LOG --log-prefix "$logserver_prefix_input" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv6   $command_ip6tables_legacy -A INPUT   \
--p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$logserver_prefix_input" \
+-p udp  -m multiport --dports $logserver_port_udp -j LOG --log-prefix "$logserver_prefix_input" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
 $allow_use_legacy  $allow_use_ipv6   $command_ip6tables_legacy -A OUTPUT  \
--p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_output" \
+-p tcp -m multiport --sports $logserver_port_tcp -j LOG --log-prefix "$logserver_prefix_output" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv6   $command_ip6tables_legacy -A OUTPUT  \
--p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$logserver_prefix_output" \
+-p udp -m multiport --sports $logserver_port_udp -j LOG --log-prefix "$logserver_prefix_output" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
 $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A INPUT   \
--p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_input" \
+-p tcp  -m multiport --dports $logserver_port_tcp -j LOG --log-prefix "$logserver_prefix_input" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A INPUT   \
--p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$logserver_prefix_input" \
+-p udp  -m multiport --dports $logserver_port_udp -j LOG --log-prefix "$logserver_prefix_input" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
 $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A OUTPUT  \
--p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_output" \
+-p tcp -m multiport --sports $logserver_port_tcp -j LOG --log-prefix "$logserver_prefix_output" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A OUTPUT  \
--p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$logserver_prefix_output" \
+-p udp -m multiport --sports $logserver_port_udp -j LOG --log-prefix "$logserver_prefix_output" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
@@ -14116,36 +14115,36 @@ $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A OUTPUT  \
 #### ipv4 legacy
 ####
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT  \
--p udp -m multiport --dports $server_udp -s $net_ipv4_server -j ACCEPT \
+-p udp -m multiport --dports $server_port_udp -s $net_ipv4_server -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT  \
--p tcp -m multiport --dports $server_tcp -s $net_ipv4_server -j ACCEPT \
+-p tcp -m multiport --dports $server_port_tcp -s $net_ipv4_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
--p udp -m multiport --sports $server_udp -d $net_ipv4_server -j ACCEPT \
+-p udp -m multiport --sports $server_port_udp -d $net_ipv4_server -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
--p tcp -m multiport --sports $server_tcp -d $net_ipv4_server -j ACCEPT \
+-p tcp -m multiport --sports $server_port_tcp -d $net_ipv4_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 #### 
 #### ipv4 nft
 ####
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
--p udp -m multiport --dports $server_udp -s $net_ipv4_server -j ACCEPT \
+-p udp -m multiport --dports $server_port_udp -s $net_ipv4_server -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
--p tcp -m multiport --dports $server_tcp -s $net_ipv4_server -j ACCEPT \
+-p tcp -m multiport --dports $server_port_tcp -s $net_ipv4_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
--p udp -m multiport --sports $server_udp -d $net_ipv4_server -j ACCEPT \
+-p udp -m multiport --sports $server_port_udp -d $net_ipv4_server -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
--p tcp -m multiport --sports $server_tcp -d $net_ipv4_server -j ACCEPT \
+-p tcp -m multiport --sports $server_port_tcp -d $net_ipv4_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
@@ -14153,18 +14152,18 @@ $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
 ####
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT  \
--p udp -m multiport --dports $server_udp -s $net_ipv6_server -j ACCEPT \
+-p udp -m multiport --dports $server_port_udp -s $net_ipv6_server -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT  \
--p tcp -m multiport --dports $server_tcp -s $net_ipv6_server -j ACCEPT \
+-p tcp -m multiport --dports $server_port_tcp -s $net_ipv6_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
--p udp -m multiport --sports $server_udp -d $net_ipv6_server -j ACCEPT \
+-p udp -m multiport --sports $server_port_udp -d $net_ipv6_server -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
--p tcp -m multiport --sports $server_tcp -d $net_ipv6_server -j ACCEPT \
+-p tcp -m multiport --sports $server_port_tcp -d $net_ipv6_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
@@ -14172,18 +14171,18 @@ $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT  \
--p udp -m multiport --dports $server_udp -s $net_ipv6_server -j ACCEPT \
+-p udp -m multiport --dports $server_port_udp -s $net_ipv6_server -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT  \
--p tcp -m multiport --dports $server_tcp -s $net_ipv6_server -j ACCEPT \
+-p tcp -m multiport --dports $server_port_tcp -s $net_ipv6_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
--p udp -m multiport --sports $server_udp -d $net_ipv6_server -j ACCEPT \
+-p udp -m multiport --sports $server_port_udp -d $net_ipv6_server -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
--p tcp -m multiport --sports $server_tcp -d $net_ipv6_server -j ACCEPT \
+-p tcp -m multiport --sports $server_port_tcp -d $net_ipv6_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
