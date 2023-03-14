@@ -4281,12 +4281,12 @@ exit; fi
 ####
 #### :rutina-final-continue:
 
-##########    english: actualfull-upgrade: upgrade in the file /usr/bin/fwiptables       ##########
-##########    spanish: actualfull-upgrade: actualiza en el archivo /usr/bin/fwiptables   ##########
-#### :rutina-inicial-actualfull-upgrade:
+##########    english: upgrade-full: upgrade in the file /usr/bin/fwiptables       ##########
+##########    spanish: upgrade-full: actualiza en el archivo /usr/bin/fwiptables   ##########
+#### :rutina-inicial-upgrade-full:
 ####
 ####
-if   [ "$first_option" == "actualfull-upgrade" ]; then echo $give_cover
+if   [ "$first_option" == "upgrade-full" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
 echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
 case "$favorite_text_browser" in "$NULL") echo "$duo_md [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
@@ -4317,13 +4317,13 @@ else echo "$duo_md [ fail ] [ install fail ]"; fi ;
 exit ; fi
 ####
 ####
-#### :rutina-final-actualfull-upgrade:
-##########    english: actualmini-upgrade: upgrade in the file /usr/bin/fwiptables       ##########
-##########    spanish: actualmini-upgrade: actualiza en el archivo /usr/bin/fwiptables   ##########
-#### :rutina-inicial-actualmini-upgrade:
+#### :rutina-final-upgrade-full:
+##########    english: upgrade-mini: upgrade in the file /usr/bin/fwiptables       ##########
+##########    spanish: upgrade-mini: actualiza en el archivo /usr/bin/fwiptables   ##########
+#### :rutina-inicial-upgrade-mini:
 ####
 ####
-if   [ "$first_option" == "actualmini-upgrade" ]; then echo $give_cover
+if   [ "$first_option" == "upgrade-mini" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
 echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
 case "$favorite_text_browser" in "$NULL") echo "$duo_md [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
@@ -4354,7 +4354,7 @@ else echo "$duo_md [ fail ] [ install fail ]"; fi ;
 exit ; fi
 ####
 ####
-#### :rutina-final-actualmini-upgrade:
+#### :rutina-final-upgrade-mini:
 ##########    english: devfull-upgrade: upgrade in the file /usr/bin/fwiptables       ##########
 ##########    spanish: devfull-upgrade: actualiza en el archivo /usr/bin/fwiptables   ##########
 #### :rutina-inicial-devfull-upgrade:

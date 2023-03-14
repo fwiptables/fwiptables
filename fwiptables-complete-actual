@@ -1359,12 +1359,12 @@ exit ; fi
 ####
 #### :rutina-final-devmini-upgrade:
 
-##########    english: actualfull-upgrade: upgrade in the file /usr/bin/fwiptables       ##########
-##########    spanish: actualfull-upgrade: actualiza en el archivo /usr/bin/fwiptables   ##########
-#### :rutina-inicial-actualfull-upgrade:
+##########    english: upgrade-full: upgrade in the file /usr/bin/fwiptables       ##########
+##########    spanish: upgrade-full: actualiza en el archivo /usr/bin/fwiptables   ##########
+#### :rutina-inicial-upgrade-full:
 ####
 ####
-if   [ "$first_option" == "actualfull-upgrade" ]; then echo $give_cover
+if   [ "$first_option" == "upgrade-full" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
 echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
 case "$favorite_text_browser" in "$NULL") echo "$duo_md [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
@@ -1395,13 +1395,13 @@ else echo "$duo_md [ fail ] [ install fail ]"; fi ;
 exit ; fi
 ####
 ####
-#### :rutina-final-actualfull-upgrade:
-##########    english: actualmini-upgrade: upgrade in the file /usr/bin/fwiptables       ##########
-##########    spanish: actualmini-upgrade: actualiza en el archivo /usr/bin/fwiptables   ##########
-#### :rutina-inicial-actualmini-upgrade:
+#### :rutina-final-upgrade-full:
+##########    english: upgrade-mini: upgrade in the file /usr/bin/fwiptables       ##########
+##########    spanish: upgrade-mini: actualiza en el archivo /usr/bin/fwiptables   ##########
+#### :rutina-inicial-upgrade-mini:
 ####
 ####
-if   [ "$first_option" == "actualmini-upgrade" ]; then echo $give_cover
+if   [ "$first_option" == "upgrade-mini" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
 echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
 case "$favorite_text_browser" in "$NULL") echo "$duo_md [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
@@ -1432,7 +1432,7 @@ else echo "$duo_md [ fail ] [ install fail ]"; fi ;
 exit ; fi
 ####
 ####
-#### :rutina-final-actualmini-upgrade:
+#### :rutina-final-upgrade-mini:
 ##########   english: regen-config: regen-config template wizard files       ##########
 ##########   spanish: regen-config: regen-configera template wizard archivos ##########
 #### :rutina-inicial-regen-config:
@@ -2870,7 +2870,7 @@ echo "$text_md   tool-util          |  weather md5sum gpg-notes                 
 echo "$text_md   tool-pdf           |  pdf-resize pdf-unite pdf-separate                                            "
 echo "$text_md   tool-mp3           |  radio-mp3 radio-cadena100 radio-rockfm                                       "
 echo "$text_md   tool-qemu          |  qemu-status qemu-stop qemu-start                                             "
-echo "$text_md   tool-install       |  install clean-tmp actualmini-upgrade actualfull-upgrade                      "
+echo "$text_md   tool-install       |  install clean-tmp upgrade-mini upgrade-full                      "
 echo "$text_md   tool-addblock      |  addblock-list addblock-on addblock-off                                       "
 echo "$text_md   tool-dev           |  new-versions dev-version dev-changes code intro                              "
 echo "$text_md   tool-computer      |  pc-halt pc-shutdown pc-reboot                                                "
@@ -2939,7 +2939,7 @@ if   [ "$first_option" == "options-state" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ List state options ] [ options-state md ]"
 echo "$title_md                                  | options-state |                          "
 echo "$text_md      options-state  |  preferences-read preferences-modify preferences-regen filelog autolog  "
-echo "$text_md                        install uninstall actualmini-upgrade actualcomplete-upgrade            "
+echo "$text_md                        install uninstall upgrade-mini actualcomplete-upgrade            "
 echo "$text_md                        ip4 ip6 version notes depends license new-versions                     "
 echo "$text_md"
 echo "$text_md   | Group | options-interface | options-firewall | options-state | options-tool | options-show | options-help   "
