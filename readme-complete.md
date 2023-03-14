@@ -1,8 +1,8 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-6.16 ] |||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-6.18 ] |||
 ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-cmd preferences-modify ] || ||
 ### || || [ ok ] || [ mini-options ] [ List mini options ] [ options-mini md ] || ||
-     Launch: /usr/bin/fwiptables-cmd [-cli-menu -gui-menu -gui-roll -gui-shell                                          
-     -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]        
+     Launch: /usr/bin/fwiptables-cmd [-cli-menu -gui-menu -gui-roll -gui-shell                                                
+     -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]              
 ### || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||                      
            firewall-control |  stop continue reset names actual show save load                                  
         firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6              
@@ -21,12 +21,12 @@
                                server-web server-print server-lamp server-news server-ftp server-mail           
                                server-teamspeak server-mumble server-sql server-asterisk server-squid           
               options-state |  preferences-read preferences-modify preferences-regen filelog autolog ip4 ip6    
-                               version notes depends license new-versions install uninstall actualfull-upgrade  
-### || ||  [ Options ]  ### [  Show all posible option: /usr/bin/fwiptables-cmd options ] ### || ||          
-           /usr/bin/fwiptables-cmd options-state            |  Show all options to preferences manager        
-           /usr/bin/fwiptables-cmd options-interface        |  Show all options to output interface           
-           /usr/bin/fwiptables-cmd options-firewall         |  Show all options to firewall manage            
-           /usr/bin/fwiptables-cmd options-tool             |  Show all options to tool working               
-           /usr/bin/fwiptables-cmd options-show             |  Show all options to read configs               
-           /usr/bin/fwiptables-cmd options-help             |  Show all options to help informations          
-           /usr/bin/fwiptables-cmd options-examples         |  Show examples                                  
+                               version notes depends license new-versions install uninstall                     
+### || ||  [ Options ]  ### [  Show all posible option: /usr/bin/fwiptables-cmd options ] ### || ||                        
+           /usr/bin/fwiptables-cmd options-state            |  Show all options to preferences manager                      
+           /usr/bin/fwiptables-cmd options-interface        |  Show all options to output interface                         
+           /usr/bin/fwiptables-cmd options-firewall         |  Show all options to firewall manage                          
+           /usr/bin/fwiptables-cmd options-tool             |  Show all options to tool working                             
+           /usr/bin/fwiptables-cmd options-show             |  Show all options to read configs                             
+           /usr/bin/fwiptables-cmd options-help             |  Show all options to help informations                        
+           /usr/bin/fwiptables-cmd options-examples         |  Show examples                                                
