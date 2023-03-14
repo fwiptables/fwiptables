@@ -2749,7 +2749,7 @@ echo "$text_md                          client-tor client-squid lan-tor lan-vpn 
 echo "$text_md                          server-web server-print server-lamp server-news server-ftp server-mail           "
 echo "$text_md                          server-teamspeak server-mumble server-sql server-asterisk server-squid           "
 echo "$text_md         options-state |  preferences-read preferences-modify preferences-regen filelog autolog ip4 ip6    "
-echo "$text_md                          version notes depends license new-versions install uninstall actualmini-upgrade  "
+echo "$text_md                          version notes depends license new-versions install uninstall                     "
 exit ; fi
 ####
 ####
