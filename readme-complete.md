@@ -1,4 +1,4 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-6.18 ] |||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-6.19 ] |||
 ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-cmd preferences-modify ] || ||
 ### || || [ ok ] || [ mini-options ] [ List mini options ] [ options-mini md ] || ||
      Launch: /usr/bin/fwiptables-cmd [-cli-menu -gui-menu -gui-roll -gui-shell                                                
