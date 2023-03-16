@@ -4625,6 +4625,279 @@ exit; fi
 ####
 ####
 #### :rutina-final-config-spa:
+##########    english: cli-menu: Manage list rules with one text menu          ##########
+##########    spanish: cli-menu: Maneja lista de reglas con un menu de texto   ##########
+#### :rutina-inicial-cli-menu:
+####
+####
+if   [ "$first_option" == "cli-menu" ]; then $nada
+case "$favorite_text_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install or dialog or whiptail to work ]" ; exit ;; esac
+menuprincipal="$($favorite_text_dialog --clear --notags --title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
+0000 "$quad $tab [$cmd_binary cli-menu] $tab $cinco" \
+0100 "$quad [ Full Options ] $cinco" \
+0200 "$quad [ Firewall Control ] $cinco" \
+0201  "$tab stop" \
+0202  "$tab continue" \
+0203  "$tab reset" \
+0204  "$tab names"  \
+0205  "$tab show" \
+0206  "$tab save" \
+0207  "$tab load" \
+0208  "$tab actual" \
+0300 "$quad [ Firewall List With Conceptual ] $cinco" \
+0301  "$tab list4" \
+0302  "$tab list6"  \
+0303  "$tab list-filter4" \
+0304  "$tab list-filter6" \
+0305  "$tab list-forward" \
+0306  "$tab list-forward6" \
+0307  "$tab list-nat4" \
+0308  "$tab list-nat6" \
+0309  "$tab list-alltables" \
+0314  "$tab list-raw4" \
+0315  "$tab list-raw6" \
+0316  "$tab list-mangle4" \
+0317  "$tab list-mangle6" \
+0318  "$tab list-security4" \
+0319  "$tab list-security6" \
+0320  "$tab list-ebtables" \
+0321  "$tab list-arptables" \
+0400 "$quad [ Firewall List With Numeral ] $cinco" \
+0401  "$tab listn4" \
+0402  "$tab listn6" \
+0403  "$tab listn-filter4" \
+0404  "$tab listn-filter6" \
+0405  "$tab listn-forward" \
+0406  "$tab listn-forward6" \
+0407  "$tab listn-nat4" \
+0408  "$tab listn-nat6" \
+0409  "$tab listn-alltables" \
+0414  "$tab listn-raw4" \
+0415  "$tab listn-raw6" \
+0416  "$tab listn-mangle4" \
+0417  "$tab listn-mangle6" \
+0418  "$tab listn-security4" \
+0419  "$tab listn-security6" \
+0420  "$tab listn-ebtables" \
+0421  "$tab listn-arptables" \
+0500 "$quad [ Firewall Launch ] $cinco" \
+0501  "$tab eraserules" \
+0502  "$tab wizard-mini" \
+0503  "$tab wizard-full" \
+0504  "$tab off-line" \
+0505  "$tab all-permisive" \
+0506  "$tab custom" \
+0507  "$tab games-shooter" \
+0508  "$tab game-wesnoth" \
+0509  "$tab game-minetest" \
+0510  "$tab game-freeciv" \
+0511  "$tab game-widelands" \
+0512  "$tab client-web" \
+0513  "$tab client-vnc" \
+0514  "$tab client-tor" \
+0515  "$tab client-vpn" \
+0516  "$tab client-torrent" \
+0517  "$tab lan-tor" \
+0518  "$tab lan-vpn" \
+0519  "$tab shield-ssh" \
+0520  "$tab server-ssh" \
+0521  "$tab server-web" \
+0522  "$tab server-vnc" \
+0523  "$tab server-print" \
+0524  "$tab server-samba" \
+0525  "$tab server-lamp" \
+0526  "$tab server-mail" \
+0527  "$tab server-ftp" \
+0528  "$tab server-news" \
+0529  "$tab server-teamspeak" \
+0530  "$tab server-mumble" \
+0531  "$tab server-sql" \
+0532  "$tab server-asterisk" \
+0600 "$quad [ Firewall Custom ] $cinco" \
+0601  "$tab new-full-config" \
+0602  "$tab nueva-completa-config" \
+0603  "$tab new-mini-config" \
+0604  "$tab nueva-mini-config" \
+0605  "$tab show-config" \
+0606  "$tab modify-config" \
+0607  "$tab del-config" \
+0608  "$tab names-config" \
+0609  "$tab regen-config" \
+0610  "$tab examples-config" \
+0700 "$quad [ Options State ] $cinco" \
+0701  "$tab preferences-read" \
+0702  "$tab preferences-modify" \
+0703  "$tab preferences-regen" \
+0704  "$tab ip4" \
+0705  "$tab ip6" \
+0706  "$tab version" \
+0707  "$tab examples" \
+0708  "$tab depends" \
+3>&1 1>&2 2>&3 )"
+################################################################################
+#### 
+#### 
+#### english: dialog choosed #### spanish: dialogo elegido
+#### 
+#### 
+case "$menuprincipal" in
+##########
+##########
+0000) clear ; $cmd_binary cli readme  ;;
+0100) clear ; $cmd_binary cli options ;;
+0200) clear ; $cmd_binary cli firewall-control ;;
+0300) clear ; $cmd_binary cli firewall-conceptual ;;
+0400) clear ; $cmd_binary cli firewall-numeral ;;
+0500) clear ; $cmd_binary cli firewall-launch ;;
+0600) clear ; $cmd_binary cli firewall-custom ;;
+0700) clear ; $cmd_binary cli default-state ;;
+################################################################################
+0201) clear ; $cmd_binary cli stop ;;
+0202) clear ; $cmd_binary cli continue ;;
+0203) clear ; $cmd_binary cli reset ;;
+0204) clear ; $cmd_binary cli names ;;
+0205) clear ; $cmd_binary names ; echo "$cincuenta"
+read -p "Type the firewall name to read   " nombrecillo
+nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_binary show $nombrecillo ;; 
+0206)archivo="$($favorite_text_dialog --stdout --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
+archivo=$(echo $archivo | $command_sed s/\\///g)
+clear ;  echo "$cincuenta saved $archivo" ; $cmd_binary save $archivo ;;
+0207) clear ; $cmd_binary names ; echo "$cincuenta"
+read -p "| Type the firewall name to restore |   " nombrecillo
+nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_binary load $nombrecillo ;;
+0208) clear ; $cmd_binary cli actual ;;
+################################################################################
+0301) clear ; $cmd_binary cli list4 ;;
+0302) clear ; $cmd_binary cli list6 ;;
+0303) clear ; $cmd_binary cli list-filter4 ;;
+0304) clear ; $cmd_binary cli list-filter6 ;;
+0305) clear ; $cmd_binary cli list-forward ;;
+0306) clear ; $cmd_binary cli list-forward6 ;;
+0307) clear ; $cmd_binary cli list-nat4 ;;
+0308) clear ; $cmd_binary cli list-nat6 ;;
+0309) clear ; $cmd_binary cli list-alltables ;;
+0314) clear ; $cmd_binary cli list-raw4 ;;
+0315) clear ; $cmd_binary cli list-raw6 ;;
+0316) clear ; $cmd_binary cli list-mangle4 ;; 
+0317) clear ; $cmd_binary cli list-mangle6 ;;
+0318) clear ; $cmd_binary cli list-security4 ;;
+0319) clear ; $cmd_binary cli list-security6 ;;
+0320) clear ; $cmd_binary cli list-ebtables ;;
+0321) clear ; $cmd_binary cli list-arptables ;;
+################################################################################
+0401) clear ; $cmd_binary cli listn4 ;;
+0402) clear ; $cmd_binary cli listn6 ;;
+0403) clear ; $cmd_binary cli listn-filter4 ;;
+0404) clear ; $cmd_binary cli listn-filter6 ;;
+0405) clear ; $cmd_binary cli listn-forward ;;
+0406) clear ; $cmd_binary cli listn-forward6 ;;
+0407) clear ; $cmd_binary cli listn-nat4 ;;
+0408) clear ; $cmd_binary cli listn-nat6 ;;
+0409) clear ; $cmd_binary cli listn-alltables ;;
+0414) clear ; $cmd_binary cli listn-raw4 ;;
+0415) clear ; $cmd_binary cli listn-raw6 ;;
+0416) clear ; $cmd_binary cli listn-mangle4 ;; 
+0417) clear ; $cmd_binary cli listn-mangle6 ;;
+0418) clear ; $cmd_binary cli listn-security4 ;;
+0419) clear ; $cmd_binary cli listn-security6 ;;
+0420) clear ; $cmd_binary cli list-ebtables ;;
+0421) clear ; $cmd_binary cli list-arptables ;;
+################################################################################
+0501) clear ; $cmd_binary cli eraserules ; $cmd_binary cli list4   ;;
+0502) clear ; $cmd_binary cli wizard-mini ; $cmd_binary cli list4  ;;
+0503) clear ; $cmd_binary cli wizard-full ; $cmd_binary cli list4  ;;
+0504) clear ; $cmd_binary cli off-line ; $cmd_binary cli list4  ;;
+0505) clear ; $cmd_binary cli all-permisive ; $cmd_binary cli list4   ;;
+0506) 
+archivo="$($favorite_text_dialog  --title "custom" --stdout --inputbox "$($command_ls $directory_config)" 0 0)"
+archivo="$(echo $archivo | $command_sed s/\\///g)" ;  clear ; $cmd_binary custom $archivo ;;
+0507) clear ; $cmd_binary cli games-shooter ; $cmd_binary cli list4  ;; 
+0508) clear ; $cmd_binary cli game-wesnoth ; $cmd_binary cli list4  ;;
+0509) clear ; $cmd_binary cli game-minetest ; $cmd_binary cli list4  ;;
+0510) clear ; $cmd_binary cli game-freeciv ; $cmd_binary cli list4  ;;
+0511) clear ; $cmd_binary cli game-widelands ; $cmd_binary cli list4  ;;
+0512) clear ; $cmd_binary cli client-web ; $cmd_binary cli list4   ;;
+0513) clear ; $cmd_binary cli client-vnc ; $cmd_binary cli list4  ;;
+0514) clear ; $cmd_binary cli client-tor ; $cmd_binary cli list4   ;;
+0515) clear ; $cmd_binary cli client-vpn ; $cmd_binary cli list4  ;;
+0516) clear ; $cmd_binary cli client-torrent ; $cmd_binary cli list4  ;;
+0517) clear ; $cmd_binary cli lan-tor ; $cmd_binary cli list4  ;;
+0518) clear ; $cmd_binary cli lan-vpn ; $cmd_binary cli list4  ;; 
+0519) clear ; $cmd_binary cli shield-ssh ; $cmd_binary cli list4  ;; 
+0520) clear ; $cmd_binary cli server-ssh ; $cmd_binary cli list4   ;;
+0521) clear ; $cmd_binary cli server-web ; $cmd_binary cli list4  ;;
+0522) clear ; $cmd_binary cli server-vnc ; $cmd_binary cli list4  ;;
+0523) clear ; $cmd_binary cli server-print ; $cmd_binary cli list4  ;;
+0524) clear ; $cmd_binary cli server-samba ; $cmd_binary cli list4  ;;
+0525) clear ; $cmd_binary cli server-lamp ; $cmd_binary cli list4  ;;
+0526) clear ; $cmd_binary cli server-mail ; $cmd_binary cli list4  ;;
+0527) clear ; $cmd_binary cli server-ftp ; $cmd_binary cli list4  ;;
+0528) clear ; $cmd_binary cli server-news ; $cmd_binary cli list4  ;;
+0529) clear ; $cmd_binary cli server-teamspeak ; $cmd_binary cli list4  ;;
+0530) clear ; $cmd_binary cli server-mumble ; $cmd_binary cli list4  ;;
+0531) clear ; $cmd_binary cli server-sql ; $cmd_binary cli list4  ;;
+0532) clear ; $cmd_binary cli server-asterisk ; $cmd_binary cli list4  ;;
+################################################################################
+0601) archivo="$($favorite_text_dialog  --stdout --title "new-full-config example: file.cfg" \
+--inputbox "$($command_ls $directory_config)" 0 0)"
+archivo=$(echo $archivo | $command_sed s/\\///g)
+clear ; $cmd_binary new-full-config $archivo ;;
+0602) archivo="$($favorite_text_dialog  --stdout --title "nueva-completa-config example: archivo.cfg" \
+--inputbox "$($command_ls $directory_config)" 0 0)"
+archivo=$(echo $archivo | $command_sed s/\\///g)
+clear ; $cmd_binary nueva-completa-config $archivo ;;
+0603) archivo="$($favorite_text_dialog  --stdout --title "new-mini-config example: file.cfg" \
+--inputbox "$($command_ls $directory_config)" 0 0)"
+archivo=$(echo $archivo | $command_sed s/\\///g)
+clear ; $cmd_binary new-mini-config $archivo ;;
+0604) archivo="$($favorite_text_dialog  --stdout --title "nueva-mini-config example: archivo.cfg" \
+--inputbox "$($command_ls $directory_config)" 0 0)"
+archivo=$(echo $archivo | $command_sed s/\\///g)
+clear ; $cmd_binary nueva-mini-config $archivo ;;
+0605) archivo="$($favorite_text_dialog  --stdout --title "show-config example: file.cfg" \
+--inputbox "$($command_ls $directory_config)" 0 0)"
+archivo=$(echo $archivo | $command_sed s/\\///g)
+clear ; $cmd_binary show-config $archivo ; echo "$tab [ info ] [ Use: Launch: $cmd_binary custom $archivo ]";;
+0606) archivo="$($favorite_text_dialog  --stdout --title "modify-config example: file.cfg" \
+--inputbox "$($command_ls $directory_config)" 0 0)"
+archivo=$(echo $archivo | $command_sed s/\\///g)
+clear ; $cmd_binary modify-config $archivo ;;
+0607) archivo="$($favorite_text_dialog  --stdout --title "del-config" --inputbox "$($command_ls $directory_config)" 0 0)"
+archivo=$(echo $archivo | $command_sed s/\\///g)
+clear ; $cmd_binary del-config $archivo ; echo "deleted $archivo" ;;
+0608) clear ; $cmd_binary cli names-config ;;
+0609) clear ; $cmd_binary cli regen-config ;;
+0610) clear ; $cmd_binary cli examples-config ;;
+################################################################################
+0701) clear ; $cmd_binary cli preferences-read ;;
+0702) clear ; $cmd_binary cli preferences-modify ;;
+0703) clear ; $cmd_binary cli preferences-regen ;;
+0704) clear ; $cmd_binary cli ip4 ;;
+0705) clear ; $cmd_binary cli ip6 ;;
+0706) clear ; $cmd_binary cli version ;;
+0707) clear ; $cmd_binary cli examples ;;
+0708) clear ; $cmd_binary cli depends ;;
+################################################################################
+*) clear ; $favorite_text_dialog  --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
+esac 
+$cmd_binary text-pause
+clear ; 
+$cmd_binary cli-menu
+exit; fi
+####
+####
+#### :rutina-final-cli-menu:
+##########    english: text-pause: do pause     ##########
+##########    spanish: text-pause: hace pausa   ##########
+#### :rutina-inicial-text-pause:
+####
+####
+if [ "$first_option" == "text-pause" ]; then $nada
+read -p '##### [ ok ] ##### Press [enter] to continue now with the cli-menu ##### '
+exit; fi
+####
+####
+#### :rutina-final-text-pause:
 ###############################################################################################################
 ###############################################################################################################
 ############################       english: default: without other valid options
