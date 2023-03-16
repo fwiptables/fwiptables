@@ -1104,6 +1104,7 @@ echo
 echo "$duo_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
 if [ -f /etc/resolv.conf.head ]; then echo ; echo "$duo_md [ info ] [ /etc/resolv.conf.head ]";  cat /etc/resolv.conf.head; fi
 if [ -f /etc/resolv.conf ];      then echo ; echo "$duo_md [ info ] [ /etc/resolv.conf ]";       cat /etc/resolv.conf; fi
+if [ -f /etc/resolv.conf.body ]; then echo ; echo "$duo_md [ info ] [ /etc/resolv.conf.body ]";  cat /etc/resolv.conf.body; fi
 if [ -f /etc/resolv.conf.tail ]; then echo ; echo "$duo_md [ info ] [ /etc/resolv.conf.tail ]";  cat /etc/resolv.conf.tail; fi
 #### cat /etc/resolv.conf | $command_grep -i nameserver | $command_grep -iv ^# | sed 's/nameserver/     nameserver/g'
 exit; fi
@@ -1143,6 +1144,7 @@ echo
 echo "$duo_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
 if [ -f /etc/resolv.conf.head ]; then echo ; echo "$duo_md [ info ] [ /etc/resolv.conf.head ]";  cat /etc/resolv.conf.head; fi
 if [ -f /etc/resolv.conf ];      then echo ; echo "$duo_md [ info ] [ /etc/resolv.conf ]";       cat /etc/resolv.conf; fi
+if [ -f /etc/resolv.conf.body ]; then echo ; echo "$duo_md [ info ] [ /etc/resolv.conf.body ]";  cat /etc/resolv.conf.body; fi
 if [ -f /etc/resolv.conf.tail ]; then echo ; echo "$duo_md [ info ] [ /etc/resolv.conf.tail ]";  cat /etc/resolv.conf.tail; fi
 #### cat /etc/resolv.conf | $command_grep -i nameserver | $command_grep -iv ^# | sed 's/nameserver/     nameserver/g'
 exit; fi
