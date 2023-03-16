@@ -4811,8 +4811,8 @@ case "$selection_final" in
 "01-Firewall-Control")$cmd_binary gui-roll-firewall-control ; exit ;;
 "02-Firewall-List-With-Conceptual")$cmd_binary gui-roll-firewall-conceptual ; exit ;;
 "02-Firewall-List-With-Numeral")$cmd_binary gui-roll-firewall-numeral ; exit ;;
-"03-Firewall-Custom")$cmd_binary gui-menu-firewall-custom ; exit ;;
-"04-Firewall-Launch")$cmd_binary gui-menu-firewall-launch ; exit ;;
+"03-Firewall-Custom")$cmd_binary gui-roll-firewall-custom ; exit ;;
+"04-Firewall-Launch")$cmd_binary gui-roll-firewall-launch ; exit ;;
 "05-Options-State")$cmd_binary gui-menu-options-state ; exit ;;
 "06-Tool-sockets")$cmd_binary gui-menu-tool-sockets ; exit ;;
 "07-Tool-connect")$cmd_binary gui-menu-tool-connect ; exit ;;
@@ -5009,6 +5009,130 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-firewall-numeral:
+##########    english: gui-roll-firewall-custom: gui roll firewall-custom: gui with roll  ##########
+##########    spanish: gui-roll-firewall-custom: gui roll firewall-custom: gui con roll   ##########
+#### :rutina-inicial-gui-roll-firewall-custom:
+####
+####
+if   [ "$first_option" == "gui-roll-firewall-custom" ] ; then echo $head_waiting_gui
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install or zenity or yad to work ]"; exit ;; esac
+####
+selection=""
+####
+if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
+gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
+names-config|show-config|modify-config|del-config|regen-config|examples-config"
+####
+####
+selection="$($command_zenity --text="gui-roll-firewall-custom" --title="gui-roll-firewall-numeral" \
+--forms --add-combo="Options" --combo-values="$gui_menu")"; fi
+####
+####
+if [ "$favorite_graphicall_dialog" == "$command_yad" ]; then 
+gui_menu="Gui-Principal-Menu" "Gui-Help-Menu" "Gui-Info-Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
+"names-config" "show-config" "modify-config" "del-config" "regen-config" "examples-config"
+####
+
+
+
+####
+selection="$($command_yad --text="gui-roll-firewall-custom" --title="gui-roll-firewall-numeral" \
+ --entry $gui_menu )"; fi
+#### 
+#### 
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+"Gui-Principal-Menu")$cmd_binary gui-menu ;;
+"Gui-Help-Menu")$cmd_binary -gui help firewall-custom ;;
+"Gui-Info-Menu")$cmd_binary -gui info firewall-custom ;;
+"new-full-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
+$cmd_binary -gui new-full-config $archivo ;;
+"nueva-completa-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[nueva-completa-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
+$cmd_binary -gui nueva-completa-config $archivo ;;
+"new-mini-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[new-mini-config]" --text="Input file name to new mini configuration")" ;
+$cmd_binary -gui new-mini-config $archivo ;;
+"nueva-mini-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[nueva-mini-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
+$cmd_binary -gui nueva-mini-config $archivo ;;
+"names-config")
+$cmd_binary -gui names-config ;;
+"show-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[show-config]" --text="$($cmd_binary cfg)")" ;
+$cmd_binary -gui show-config $archivo ;;
+"modify-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[modify-config]" --text="$($cmd_binary cfg)")" ;
+$cmd_binary -gui modify-config $archivo ;;
+"del-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[del-config]" --text="$($cmd_binary cfg)")" ;
+$cmd_binary -gui del-config $archivo ;;
+"regen-config")$cmd_binary -gui regen-config ;;
+"examples-config")$cmd_binary gui examples-config ;;
+esac
+####
+####
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-roll-firewall-custom:
+##########    english: gui-menu-firewall-custom: gui with menu   ##########
+##########    spanish: gui-menu-firewall-custom: gui con menu    ##########
+#### :rutina-inicial-gui-menu-firewall-custom:
+####
+####
+if   [ "$first_option" == "gui-menu-firewall-custom" ] ; then $nada ;
+selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
+"names-config" "show-config" "modify-config" "del-config" "regen-config" "examples-config")"
+#### 
+#### 
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+"Gui Principal Menu")$cmd_binary gui-menu ;;
+"Gui Help Menu")$cmd_binary -gui help firewall-custom ;;
+"Gui Info Menu")$cmd_binary -gui info firewall-custom ;;
+"new-full-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
+$cmd_binary -gui new-full-config $archivo ;;
+"nueva-completa-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[nueva-completa-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
+$cmd_binary -gui nueva-completa-config $archivo ;;
+"new-mini-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[new-mini-config]" --text="Input file name to new mini configuration")" ;
+$cmd_binary -gui new-mini-config $archivo ;;
+"nueva-mini-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[nueva-mini-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
+$cmd_binary -gui nueva-mini-config $archivo ;;
+"names-config")
+$cmd_binary -gui names-config ;;
+"show-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[show-config]" --text="$($cmd_binary cfg)")" ;
+$cmd_binary -gui show-config $archivo ;;
+"modify-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[modify-config]" --text="$($cmd_binary cfg)")" ;
+$cmd_binary -gui modify-config $archivo ;;
+"del-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[del-config]" --text="$($cmd_binary cfg)")" ;
+$cmd_binary -gui del-config $archivo ;;
+"regen-config")$cmd_binary -gui regen-config ;;
+"examples-config")$cmd_binary gui examples-config ;;
+esac
+####
+####
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+####
+####
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-menu-firewall-custom:
 ##########    english: gui-menu: gui menu general: gui con menu  ##########
 ##########    spanish: gui-menu: gui menu general: gui con menu  ##########
 #### :rutina-inicial-gui-menu:
