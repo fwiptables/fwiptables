@@ -4782,10 +4782,11 @@ selection=""
 ####
 if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
 gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral| \
-03-Firewall-Custom|04-Firewall-Launch|05-Options-State|06-Tool-sockets| \
-07-Tool-connect|08-Tool-rule|09-Tool-forward|10-Tool-sshd|11-Tool-tcp|12-Tool-udp|13-Tool-icmp| \
-14-Tool-sudofw|15-Tool-game|16-Tool-speed|17-Tool-util|18-Tool-install|19-Tool-addblock|20-Tool-dev| \
-21-Show-hardware|22-Show-etc|23-Show-log|24-Help-about|25-Help-help"
+03-Firewall-Custom|04-Firewall-Launch|05-Options-State"
+# |06-Tool-sockets| \
+# 07-Tool-connect|08-Tool-rule|09-Tool-forward|10-Tool-sshd|11-Tool-tcp|12-Tool-udp|13-Tool-icmp| \
+# 14-Tool-sudofw|15-Tool-game|16-Tool-speed|17-Tool-util|18-Tool-install|19-Tool-addblock|20-Tool-dev| \
+# 21-Show-hardware|22-Show-etc|23-Show-log|24-Help-about|25-Help-help
 ####
 ####
 selection="$($command_zenity --text="gui-roll" --title="gui-roll" \
@@ -4794,10 +4795,11 @@ selection="$($command_zenity --text="gui-roll" --title="gui-roll" \
 ####
 if [ "$favorite_graphicall_dialog" == "$command_yad" ]; then 
 gui_menu="01-Firewall-Control 02-Firewall-List-With-Conceptual 02-Firewall-List-With-Numeral \
-03-Firewall-Custom 04-Firewall-Launch 05-Options-State 06-Tool-sockets \
-07-Tool-connect 08-Tool-rule 09-Tool-forward 10-Tool-sshd 11-Tool-tcp 12-Tool-udp 13-Tool-icmp \
-14-Tool-sudofw 15-Tool-game 16-Tool-speed 17-Tool-util 18-Tool-install 19-Tool-addblock 20-Tool-dev \
-21-Show-hardware 22-Show-etc 23-Show-log 24-Help-about 25-Help-help"
+03-Firewall-Custom 04-Firewall-Launch 05-Options-State"
+# 06-Tool-sockets \
+# 07-Tool-connect 08-Tool-rule 09-Tool-forward 10-Tool-sshd 11-Tool-tcp 12-Tool-udp 13-Tool-icmp \
+# 14-Tool-sudofw 15-Tool-game 16-Tool-speed 17-Tool-util 18-Tool-install 19-Tool-addblock 20-Tool-dev \
+# 21-Show-hardware 22-Show-etc 23-Show-log 24-Help-about 25-Help-help
 ####
 ####
 selection="$($command_yad --text="gui-roll" --title="gui-roll" \
