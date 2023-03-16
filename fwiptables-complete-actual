@@ -4806,7 +4806,7 @@ selection="$($command_yad --text="Options" --title="Menu" \
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 "01-Firewall-Control")$cmd_binary gui-roll-firewall-control ; exit ;;
-"02-Firewall-List-With-Conceptual")$cmd_binary gui-menu-firewall-conceptual ; exit ;;
+"02-Firewall-List-With-Conceptual")$cmd_binary gui-roll-firewall-conceptual ; exit ;;
 "02-Firewall-List-With-Numeral")$cmd_binary gui-menu-firewall-numeral ; exit ;;
 "03-Firewall-Custom")$cmd_binary gui-menu-firewall-custom ; exit ;;
 "04-Firewall-Launch")$cmd_binary gui-menu-firewall-launch ; exit ;;
@@ -4880,6 +4880,62 @@ $cmd_binary -gui save $archivo ;;
 "load")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[Load Firewall]" --text="$($cmd_binary names)")" ;
 $cmd_binary -gui load $archivo ; $cmd_binary -gui list4;;
 "actual")$cmd_binary -gui actual ;;
+esac
+####
+####
+$favorite_graphicall_dialog --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+##########    english: gui-roll-firewall-conceptual: gui roll firewall-conceptual: gui with roll  ##########
+##########    spanish: gui-roll-firewall-conceptual: gui roll firewall-conceptual: gui con roll   ##########
+####
+####
+if   [ "$first_option" == "gui-roll-firewall-conceptual" ] ; then echo $head_waiting_gui
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install or zenity or yad to work ]"; exit ;; esac
+####
+selection=""
+####
+if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
+gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|ls4|ls6|list-filter4|list-filter6|list-alltables|\
+list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|list-security4|list-security6|list-ebtables|list-arptables"
+####
+####
+selection="$($command_zenity --text="Options" --title="Menu" \
+--forms --add-combo="Options" --combo-values="$gui_menu")"; fi
+####
+####
+if [ "$favorite_graphicall_dialog" == "$command_yad" ]; then 
+gui_menu="Gui-Principal-Menu" "Gui-Help-Menu" "Gui-Info-Menu" "ls4" "ls6" "list-filter4" "list-filter6" "list-alltables" \
+"list-nat4" "list-nat6" "list-mangle4" "list-mangle6" "list-raw4" "list-raw6" \
+"list-security4" "list-security6" "list-ebtables" "list-arptables"
+####
+####
+selection="$($command_yad --text="Options" --title="Menu" \
+ --entry $gui_menu )"; fi
+#### 
+#### 
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+"Gui-Principal-Menu")$cmd_binary gui-menu ;;
+"Gui-Help-Menu")$cmd_binary -gui help firewall-conceptual ;;
+"Gui-Info-Menu")$cmd_binary -gui info firewall-conceptual ;;
+"ls4")$cmd_binary -gui ls4 ;;
+"ls6")$cmd_binary -gui ls6 ;;
+"list-alltables")$cmd_binary -gui list-alltables ;;
+"list-filter4")$cmd_binary -gui list-filter4 ;;
+"list-filter6")$cmd_binary -gui list-filter6 ;;
+"list-nat4")$cmd_binary -gui list-nat4 ;;
+"list-nat6")$cmd_binary -gui list-nat6 ;;
+"list-mangle4")$cmd_binary -gui list-mangle4 ;;
+"list-mangle6")$cmd_binary -gui list-mangle6 ;;
+"list-raw4")$cmd_binary -gui list-raw4 ;;
+"list-raw6")$cmd_binary -gui list-raw6 ;;
+"list-security4")$cmd_binary -gui list-security4 ;;
+"list-security6")$cmd_binary -gui list-security6 ;;
+"list-ebtables")$cmd_binary -gui list-ebtables ;;
+"list-arptables")$cmd_binary -gui list-arptables ;;
 esac
 ####
 ####
