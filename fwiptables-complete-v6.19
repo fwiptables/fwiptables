@@ -4811,7 +4811,7 @@ case "$selection_final" in
 "02-Firewall-List-With-Numeral")$cmd_binary gui-roll-firewall-numeral ; exit ;;
 "03-Firewall-Custom")$cmd_binary gui-roll-firewall-custom ; exit ;;
 "04-Firewall-Launch")$cmd_binary gui-roll-firewall-launch ; exit ;;
-"05-Options-State")$cmd_binary gui-menu-options-state ; exit ;;
+"05-Options-State")$cmd_binary gui-roll-options-state ; exit ;;
 "06-Tool-sockets")$cmd_binary gui-menu-tool-sockets ; exit ;;
 "07-Tool-connect")$cmd_binary gui-menu-tool-connect ; exit ;;
 "08-Tool-rule")$cmd_binary gui-menu-tool-rule ; exit ;;
@@ -5073,9 +5073,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-firewall-custom:
-
-
-
 ##########    english: gui-roll-firewall-launch: gui roll firewall-launch: gui with roll  ##########
 ##########    spanish: gui-roll-firewall-launch: gui roll firewall-launch: gui con roll   ##########
 #### :rutina-inicial-gui-roll-firewall-launch:
@@ -5161,6 +5158,52 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-firewall-launch:
+##########    english: gui-roll-options-state: gui roll options-state: gui with roll  ##########
+##########    spanish: gui-roll-options-state: gui roll options-state: gui con roll   ##########
+#### :rutina-inicial-gui-roll-options-state:
+####
+####
+if   [ "$first_option" == "gui-roll-options-state" ] ; then echo $head_waiting_gui
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install or zenity or yad to work ]"; exit ;; esac
+####
+selection=""
+####
+if [ "$favorite_graphicall_dialog" == "$command_zenity" ] ; then 
+gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|preferences-read|preferences-modify|preferences-regen|ip4|ip6|version|examples|depends"
+####
+####
+selection="$($command_zenity --text="gui-roll-options-state" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
+####
+####
+if [ "$favorite_graphicall_dialog" == "$command_yad" ]; then 
+gui_menu="Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu preferences-read preferences-modify preferences-regen ip4 ip6 version examples depends"
+####
+####
+selection="$($command_yad --text="gui-roll-options-state" --title="$cmd_binary" --entry $gui_menu )"; fi
+#### 
+####
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+Gui-Principal-Menu)$cmd_binary gui-menu ;;
+Gui-Help-Menu)$cmd_binary -gui help status-state ;;
+Gui-Info-Menu)$cmd_binary -gui info status-state ;;
+preferences-read)$cmd_binary -gui preferences-read ;;
+preferences-modify)$cmd_binary -gui preferences-modify ;;
+preferences-regen)$cmd_binary -gui preferences-regen ;;
+ip4)$cmd_binary -gui ip4 ;;
+ip6)$cmd_binary -gui ip6 ;;
+version)$cmd_binary -gui version ;;
+examples)$cmd_binary -gui examples ;;
+depends)$cmd_binary -gui depends ;;
+esac
+####
+####
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-roll-options-state:
 ##########    english: gui-menu-firewall-custom: gui with menu   ##########
 ##########    spanish: gui-menu-firewall-custom: gui con menu    ##########
 #### :rutina-inicial-gui-menu-firewall-custom:
