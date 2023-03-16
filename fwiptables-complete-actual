@@ -4807,7 +4807,7 @@ selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 "01-Firewall-Control")$cmd_binary gui-roll-firewall-control ; exit ;;
 "02-Firewall-List-With-Conceptual")$cmd_binary gui-roll-firewall-conceptual ; exit ;;
-"02-Firewall-List-With-Numeral")$cmd_binary gui-menu-firewall-numeral ; exit ;;
+"02-Firewall-List-With-Numeral")$cmd_binary gui-roll-firewall-numeral ; exit ;;
 "03-Firewall-Custom")$cmd_binary gui-menu-firewall-custom ; exit ;;
 "04-Firewall-Launch")$cmd_binary gui-menu-firewall-launch ; exit ;;
 "05-Options-State")$cmd_binary gui-menu-options-state ; exit ;;
@@ -4943,6 +4943,67 @@ $favorite_graphicall_dialog --progress $graphic_window_dimension --timeout=$clos
 exit; fi
 ####
 ####
+##########    english: gui-roll-firewall-numeral: gui roll firewall-numeral: gui with roll  ##########
+##########    spanish: gui-roll-firewall-numeral: gui roll firewall-numeral: gui con roll   ##########
+####
+####
+if   [ "$first_option" == "gui-roll-firewall-numeral" ] ; then echo $head_waiting_gui
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install or zenity or yad to work ]"; exit ;; esac
+####
+selection=""
+####
+if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
+gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|lsn4|lsn6|listn-filter4|listn-filter6|listn-alltables|\
+listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|listn-raw4|listn-raw6|listn-security4|listn-security6|list-ebtables|list-arptables"
+####
+####
+selection="$($command_zenity --text="Options" --title="Menu" \
+--forms --add-combo="Options" --combo-values="$gui_menu")"; fi
+####
+####
+if [ "$favorite_graphicall_dialog" == "$command_yad" ]; then 
+gui_menu="Gui-Principal-Menu" "Gui-Help-Menu" "Gui-Info-Menu" "lsn4" "lsn6" "listn-filter4" "listn-filter6" "listn-alltables" \
+"listn-nat4" "listn-nat6" "listn-mangle4" "listn-mangle6" "listn-raw4" "listn-raw6" \
+"listn-security4" "listn-security6" "listn-ebtables" "listn-arptables"
+####
+####
+selection="$($command_yad --text="Options" --title="Menu" \
+ --entry $gui_menu )"; fi
+#### 
+#### 
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+"Gui Principal-Menu")$cmd_binary gui-menu ;;
+"Gui-Help-Menu")$cmd_binary -gui help firewall-numeral ;;
+"Gui-Info Menu")$cmd_binary -gui info firewall-numeral ;;
+"lsn4")$cmd_binary -gui lsn4 ;;
+"lsn6")$cmd_binary -gui lsn6 ;;
+"listn-alltables")$cmd_binary -gui listn-alltables ;;
+"listn-filter4")$cmd_binary -gui listn-filter4 ;;
+"listn-filter6")$cmd_binary -gui listn-filter6 ;;
+"listn-nat4")$cmd_binary -gui listn-nat4 ;;
+"listn-nat6")$cmd_binary -gui listn-nat6 ;;
+"listn-mangle4")$cmd_binary -gui listn-mangle4 ;;
+"listn-mangle6")$cmd_binary -gui listn-mangle6 ;;
+"listn-raw4")$cmd_binary -gui listn-raw4 ;;
+"listn-raw6")$cmd_binary -gui listn-raw6 ;;
+"listn-security4")$cmd_binary -gui listn-security4 ;;
+"listn-security6")$cmd_binary -gui listn-security6 ;;
+"list-ebtables")$cmd_binary -gui list-ebtables ;;
+"list-arptables")$cmd_binary -gui list-arptables ;;
+esac
+####
+####
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+####
+####
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-roll-firewall-numeral:
 ##########    english: gui-menu: gui menu general: gui con menu  ##########
 ##########    spanish: gui-menu: gui menu general: gui con menu  ##########
 #### :rutina-inicial-gui-menu:
