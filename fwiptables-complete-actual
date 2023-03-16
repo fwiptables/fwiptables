@@ -392,7 +392,7 @@ radio_link_kissfm="http://kissfm.kissfmradio.cires21.com/kissfm.mp3" ;  ## fwipt
 favorite_text_editor=""          ## fwiptables-file-default ## or void for autoamtic or command
 #### favorite_text_dialog        .... or dialog or whiptail
 favorite_text_dialog=""          ## fwiptables-file-default ## or void for autoamtic or command
-#### favorite_graphicall_dialog  ... or zenity or yad
+#### favorite_graphicall_dialog  ... or zenity
 favorite_graphicall_dialog=""    ## fwiptables-file-default ## or void for autoamtic or command
 #### favorite_text_brwoser       ... for example elinks
 favorite_text_browser=""         ## fwiptables-file-default ## or void for autoamtic or command
@@ -4608,7 +4608,7 @@ exit; fi
 ####
 if [ "$first_option" == "-gui" ] && [ "$third_option" != "$NULL" ] ; then $nada
 echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]" ; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
 case $second_option in
 #### 
 #### 
@@ -4690,7 +4690,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "-gui" ] && [ "$second_option" != "$NULL" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]" ; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
 ####
 case $second_option in
 #### 
@@ -4763,7 +4763,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "-gui" ] && [ "$second_option" == "$NULL" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]" ; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
 $favorite_graphicall_dialog  --forms $graphic_window_dimension --title="Gui Output || $cmd_binary || " --text="$($cmd_binary mini-options)"
 exit; fi
 ####
@@ -4774,7 +4774,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-roll" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install or zenity or yad to work ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 ####
 selection=""
 ####
@@ -4789,21 +4789,6 @@ gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-
 ####
 selection="$($command_zenity --text="gui-roll" --title="$cmd_binary" \
 --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
-####
-####
-if [ "$favorite_graphicall_dialog" == "$command_yad" ]; then 
-gui_menu="01-Firewall-Control 02-Firewall-List-With-Conceptual 02-Firewall-List-With-Numeral \
-03-Firewall-Custom 04-Firewall-Launch 05-Options-State"
-gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|\
-03-Firewall-Custom|04-Firewall-Launch|05-Options-State"
-# 06-Tool-sockets \
-# 07-Tool-connect 08-Tool-rule 09-Tool-forward 10-Tool-sshd 11-Tool-tcp 12-Tool-udp 13-Tool-icmp \
-# 14-Tool-sudofw 15-Tool-game 16-Tool-speed 17-Tool-util 18-Tool-install 19-Tool-addblock 20-Tool-dev \
-# 21-Show-hardware 22-Show-etc 23-Show-log 24-Help-about 25-Help-help
-####
-####
-selection="$($command_yad --text="gui-roll" --title="$cmd_binary" \
- --entry $gui_menu )"; fi
 ####
 ####
 selection_final="$(echo $selection | sed 's/\|//g')"
@@ -4848,7 +4833,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-roll-firewall-control" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install or zenity or yad to work ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 ####
 selection=""
 ####
@@ -4856,16 +4841,7 @@ if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then
 gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|stop|continue|reset|names|show|save|load|actual"
 ####
 ####
-selection="$($command_zenity --text="gui-roll-firewall-control" --title="$cmd_binary" \
---forms --add-combo="Options" --combo-values="$gui_menu")"; fi
-####
-####
-if [ "$favorite_graphicall_dialog" == "$command_yad" ]; then 
-gui_menu="Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu stop continue reset names show save load actual"
-####
-####
-selection="$($command_yad --text="gui-roll-firewall-control" --title="$cmd_binary" \
- --entry $gui_menu )"; fi
+selection="$($command_zenity --text="gui-roll-firewall-control" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
@@ -4899,7 +4875,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-roll-firewall-conceptual" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install or zenity or yad to work ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 ####
 selection=""
 ####
@@ -4908,17 +4884,7 @@ gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|ls4|ls6|list-filter4|li
 list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|list-security4|list-security6|list-ebtables|list-arptables"
 ####
 ####
-selection="$($command_zenity --text="gui-roll-firewall-conceptual" --title="$cmd_binary" \
---forms --add-combo="Options" --combo-values="$gui_menu")"; fi
-####
-####
-if [ "$favorite_graphicall_dialog" == "$command_yad" ]; then 
-gui_menu="Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu ls4 ls6 list-filter4 list-filter6 list-alltables \
-list-nat4 list-nat6 list-mangle4 list-mangle6 list-raw4 list-raw6 list-security4 list-security6 list-ebtables list-arptables"
-####
-####
-selection="$($command_yad --text="gui-roll-firewall-conceptual" --title="$cmd_binary" \
- --entry $gui_menu )"; fi
+selection="$($command_zenity --text="gui-roll-firewall-conceptual" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
@@ -4956,7 +4922,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-roll-firewall-numeral" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install or zenity or yad to work ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 ####
 selection=""
 ####
@@ -4965,20 +4931,9 @@ gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|lsn4|lsn6|listn-filter4
 listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|listn-raw4|listn-raw6|listn-security4|listn-security6|list-ebtables|list-arptables"
 ####
 ####
-selection="$($command_zenity --text="gui-roll-firewall-numeral" --title="$cmd_binary" \
---forms --add-combo="Options" --combo-values="$gui_menu")"; fi
+selection="$($command_zenity --text="gui-roll-firewall-numeral" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
 ####
 ####
-if [ "$favorite_graphicall_dialog" == "$command_yad" ]; then 
-gui_menu="Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu lsn4 lsn6 listn-filter4 listn-filter6 listn-alltables \
-listn-nat4 listn-nat6 listn-mangle4 listn-mangle6 listn-raw4 listn-raw6 \
-listn-security4 listn-security6 listn-ebtables listn-arptables"
-####
-####
-selection="$($command_yad --text="gui-roll-firewall-numeral" --title="$cmd_binary" \
- --entry $gui_menu )"; fi
-#### 
-#### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
@@ -5014,7 +4969,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-roll-firewall-custom" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install or zenity or yad to work ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 ####
 selection=""
 ####
@@ -5023,17 +4978,7 @@ gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|new-full-config|nueva-c
 names-config|show-config|modify-config|del-config|regen-config|examples-config"
 ####
 ####
-selection="$($command_zenity --text="gui-roll-firewall-custom" --title="$cmd_binary" \
---forms --add-combo="Options" --combo-values="$gui_menu")"; fi
-####
-####
-if [ "$favorite_graphicall_dialog" == "$command_yad" ]; then 
-gui_menu="Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu new-full-config nueva-completa-config new-mini-config nueva-mini-config \
-names-config show-config modify-config del-config regen-config examples-config"
-####
-####
-selection="$($command_yad --text="gui-roll-firewall-custom" --title="$cmd_binary" \
- --entry $gui_menu )"; fi
+selection="$($command_zenity --text="gui-roll-firewall-custom" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
@@ -5081,7 +5026,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-roll-firewall-launch" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install or zenity or yad to work ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 ####
 selection=""
 ####
@@ -5094,22 +5039,7 @@ server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|\
 server-news|server-mail|server-ftp|server-teamspeak|server-mumble|server-sql|server-asterisk"
 ####
 ####
-selection="$($command_zenity --text="gui-roll-firewall-launch" --title="$cmd_binary" \
---forms --add-combo="Options" --combo-values="$gui_menu")"; fi
-####
-####
-if [ "$favorite_graphicall_dialog" == "$command_yad" ]; then 
-gui_menu="Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu eraserules \
-wizard-mini wizard-full custom-cfg off-line all-permisive \
-games-shooter game-wesnoth game-minetest game-freeciv game-widelands \
-client-web client-vnc client-torrent client-vpn client-tor lan-tor lan-vpn shield-ssh \
-server-web server-vnc server-samba server-ssh server-print server-lamp \
-server-news server-mail server-ftp server-teamspeak server-mumble \
-server-sql server-asterisk"
-####
-####
-selection="$($command_yad --text="gui-roll-firewall-launch" --title="$cmd_binary" \
- --entry $gui_menu )"; fi
+selection="$($command_zenity --text="gui-roll-firewall-launch" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
@@ -5166,7 +5096,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-roll-options-state" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install or zenity or yad to work ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 ####
 selection=""
 ####
@@ -5176,13 +5106,6 @@ gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|preferences-read|prefer
 ####
 selection="$($command_zenity --text="gui-roll-options-state" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
 ####
-####
-if [ "$favorite_graphicall_dialog" == "$command_yad" ]; then 
-gui_menu="Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu preferences-read preferences-modify preferences-regen ip4 ip6 version examples depends"
-####
-####
-selection="$($command_yad --text="gui-roll-options-state" --title="$cmd_binary" --entry $gui_menu )"; fi
-#### 
 ####
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
@@ -5212,6 +5135,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-firewall-custom" ] ; then $nada ;
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
 "names-config" "show-config" "modify-config" "del-config" "regen-config" "examples-config")"
@@ -5251,10 +5175,6 @@ $cmd_binary -gui del-config $archivo ;;
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
-####
-####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
@@ -5266,7 +5186,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity yad to work ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list 01-Firewall-Control 02-Firewall-List-With-Conceptual 02-Firewall-List-With-Numeral \
 03-Firewall-Custom 04-Firewall-Launch 05-Options-State 06-Tool-sockets \
@@ -6308,7 +6228,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-shell" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]" ; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
 ####
 ####
 ####  english: principal gui  #### spanish: principal gui
@@ -8778,7 +8698,7 @@ clear ; exit; fi
 ####
 ####
 if   [ "$first_option" == "rule-del-num" ] && [ "$second_option" == "-gui" ]; then echo $give_cover
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection="$($favorite_graphicall_dialog $graphic_window_dimension  \
 --list  "01 NFTABLES filter-ip4 INPUT"  "02 NFTABLES / filter-ip4 / FORWARD"  "03 NFTABLES / filter-ip4 / OUTPUT" \
 "04 XTABLES / filter-ip4  / INPUT" "05 XTABLES / filter-ip4 / FORWARD"  "06 XTABLES / filter-ip4 / OUTPUT" \
@@ -10108,7 +10028,7 @@ clear ; exit ; fi
 ####
 ####
 if [ "$second_option" == "-gui" ] || [ "$second_option" == "gui" ] ; then
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 $($favorite_graphicall_dialog $graphic_window_dimension --info --title="gui game-domain" \
 --text=" Is this a country domain or a generic domain ? :  $domain_one")
 $($favorite_graphicall_dialog $graphic_window_dimension --info --title="gui game-domain" \
@@ -10305,7 +10225,7 @@ if [ "$second_option" == "-gui" ] ; then
 #### Choose language english or spanish
 ####
 ####
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list english spanish quit )"
 selection_final="$(echo $selection | sed 's/\|//g')"
@@ -10707,7 +10627,7 @@ if [ "$second_option" == "-gui" ] || [ "$second_option" == "gui" ]; then $nada
 #### Choose language english or spanish
 ####
 ####
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list english spanish quit )"
 selection_final="$(echo $selection | sed 's/\|//g')"
@@ -11256,7 +11176,7 @@ echo "$duo_md [ info ] [ type $cmd_binary gpg-notes name-of-gpg" ; exit ; fi
 ####
 ####
 if [ "$second_option" == "gui" ] || [ "$second_option" == "-gui" ]; then
-if [ "$favorite_graphicall_dialog" == "$NULL" ]; then echo "$duo_md [ fail ] [ install zenity or yad ]"; exit ; fi
+if [ "$favorite_graphicall_dialog" == "$NULL" ]; then echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ; fi
 original="$($favorite_graphicall_dialog $graphic_window_dimension --entry --title "  [ NAME file gpg to choose WITHOUT path ]" \
 --text "$($command_find $directory_default | $command_grep .gpg | $command_sed 's/\.gpg//g' )")"
 origina="$(echo "$original" | $command_sed s/\\///g -)" ;
