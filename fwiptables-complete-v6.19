@@ -4772,6 +4772,7 @@ exit; fi
 ####
 ##########    english: gui-roll: gui roll general: gui with roll  ##########
 ##########    spanish: gui-roll: gui roll general: gui con roll   ##########
+#### :rutina-inicial-gui-roll:
 ####
 ####
 if   [ "$first_option" == "gui-roll" ] ; then echo $head_waiting_gui
@@ -4787,7 +4788,7 @@ gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-
 21-Show-hardware|22-Show-etc|23-Show-log|24-Help-about|25-Help-help"
 ####
 ####
-selection="$($command_zenity --text="Options" --title="Menu" \
+selection="$($command_zenity --text="gui-roll" --title="gui-roll" \
 --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
 ####
 ####
@@ -4799,7 +4800,7 @@ gui_menu="01-Firewall-Control 02-Firewall-List-With-Conceptual 02-Firewall-List-
 21-Show-hardware 22-Show-etc 23-Show-log 24-Help-about 25-Help-help"
 ####
 ####
-selection="$($command_yad --text="Options" --title="Menu" \
+selection="$($command_yad --text="gui-roll" --title="gui-roll" \
  --entry $gui_menu )"; fi
 ####
 ####
@@ -4838,8 +4839,10 @@ $favorite_graphicall_dialog --progress $graphic_window_dimension --timeout=$clos
 exit; fi
 ####
 ####
+#### :rutina-final-gui-roll:
 ##########    english: gui-roll-firewall-control: gui roll firewall-control: gui with roll  ##########
 ##########    spanish: gui-roll-firewall-control: gui roll firewall-control: gui con roll   ##########
+#### :rutina-inicial-gui-roll-firewall-control:
 ####
 ####
 if   [ "$first_option" == "gui-roll-firewall-control" ] ; then echo $head_waiting_gui
@@ -4848,10 +4851,10 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 selection=""
 ####
 if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
-gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|stop|continue|reset|names|show|save||load|actual"
+gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|stop|continue|reset|names|show|save|load|actual"
 ####
 ####
-selection="$($command_zenity --text="Options" --title="Menu" \
+selection="$($command_zenity --text="gui-roll-firewall-control" --title="gui-roll-firewall-control" \
 --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
 ####
 ####
@@ -4859,16 +4862,16 @@ if [ "$favorite_graphicall_dialog" == "$command_yad" ]; then
 gui_menu="Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu stop continue reset names show save load actual"
 ####
 ####
-selection="$($command_yad --text="Options" --title="Menu" \
+selection="$($command_yad --text="gui-roll-firewall-control" --title="gui-roll-firewall-control" \
  --entry $gui_menu )"; fi
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-roll-firewall-control ;;
-"Gui Help Menu")$cmd_binary -gui help firewall-control ;;
-"Gui Info Menu")$cmd_binary -gui info firewall-control ;;
+"Gui-Principal-Menu")$cmd_binary gui-roll-firewall-control ;;
+"Gui-Help-Menu")$cmd_binary -gui help firewall-control ;;
+"Gui-Info-Menu")$cmd_binary -gui info firewall-control ;;
 "stop")$cmd_binary -gui stop ; $cmd_binary -gui list4;;
 "continue")$cmd_binary -gui continue ; $cmd_binary -gui list4;;
 "reset")$cmd_binary -gui reset ; $cmd_binary -gui list4;;
@@ -4887,8 +4890,10 @@ $favorite_graphicall_dialog --progress $graphic_window_dimension --timeout=$clos
 exit; fi
 ####
 ####
+#### :rutina-final-gui-roll-firewall-control:
 ##########    english: gui-roll-firewall-conceptual: gui roll firewall-conceptual: gui with roll  ##########
 ##########    spanish: gui-roll-firewall-conceptual: gui roll firewall-conceptual: gui con roll   ##########
+#### :rutina-inicial-gui-roll-firewall-conceptual:
 ####
 ####
 if   [ "$first_option" == "gui-roll-firewall-conceptual" ] ; then echo $head_waiting_gui
@@ -4901,7 +4906,7 @@ gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|ls4|ls6|list-filter4|li
 list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|list-security4|list-security6|list-ebtables|list-arptables"
 ####
 ####
-selection="$($command_zenity --text="Options" --title="Menu" \
+selection="$($command_zenity --text="gui-roll-firewall-conceptual" --title="gui-roll-firewall-conceptual" \
 --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
 ####
 ####
@@ -4911,7 +4916,7 @@ gui_menu="Gui-Principal-Menu" "Gui-Help-Menu" "Gui-Info-Menu" "ls4" "ls6" "list-
 "list-security4" "list-security6" "list-ebtables" "list-arptables"
 ####
 ####
-selection="$($command_yad --text="Options" --title="Menu" \
+selection="$($command_yad --text="gui-roll-firewall-conceptual" --title="gui-roll-firewall-conceptual" \
  --entry $gui_menu )"; fi
 #### 
 #### 
@@ -4943,8 +4948,10 @@ $favorite_graphicall_dialog --progress $graphic_window_dimension --timeout=$clos
 exit; fi
 ####
 ####
+#### :rutina-final-gui-roll-firewall-conceptual:
 ##########    english: gui-roll-firewall-numeral: gui roll firewall-numeral: gui with roll  ##########
 ##########    spanish: gui-roll-firewall-numeral: gui roll firewall-numeral: gui con roll   ##########
+#### :rutina-inicial-gui-roll-firewall-numeral:
 ####
 ####
 if   [ "$first_option" == "gui-roll-firewall-numeral" ] ; then echo $head_waiting_gui
@@ -4957,7 +4964,7 @@ gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|lsn4|lsn6|listn-filter4
 listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|listn-raw4|listn-raw6|listn-security4|listn-security6|list-ebtables|list-arptables"
 ####
 ####
-selection="$($command_zenity --text="Options" --title="Menu" \
+selection="$($command_zenity --text="gui-roll-firewall-numeral" --title="gui-roll-firewall-numeral" \
 --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
 ####
 ####
@@ -4967,7 +4974,7 @@ gui_menu="Gui-Principal-Menu" "Gui-Help-Menu" "Gui-Info-Menu" "lsn4" "lsn6" "lis
 "listn-security4" "listn-security6" "listn-ebtables" "listn-arptables"
 ####
 ####
-selection="$($command_yad --text="Options" --title="Menu" \
+selection="$($command_yad --text="gui-roll-firewall-numeral" --title="gui-roll-firewall-numeral" \
  --entry $gui_menu )"; fi
 #### 
 #### 
@@ -4993,10 +5000,6 @@ case "$selection_final" in
 "list-ebtables")$cmd_binary -gui list-ebtables ;;
 "list-arptables")$cmd_binary -gui list-arptables ;;
 esac
-####
-####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
