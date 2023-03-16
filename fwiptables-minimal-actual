@@ -4631,6 +4631,143 @@ exit; fi
 ####
 ####
 #### :rutina-final-config-spa:
+##########    english: gui-shell: graphic enviroment            ##########
+##########    spanish: gui-shell: entorno de comandos grafico   ##########
+#### :rutina-inicial-gui-shell:
+####
+####
+if   [ "$first_option" == "gui-shell" ] ; then echo $head_waiting_gui
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
+####
+####
+####  english: principal gui  #### spanish: principal gui
+####
+####
+titulo="$cmd_binary gui-shell"
+untexto="$cmd_binary gui-shell"
+####
+####
+#### cd $directory_config
+####
+####
+menugtk=$($favorite_graphicall_dialog  --forms $graphic_window_dimension --title="Gui Shell || $cmd_binary || $cmd_version ||" \
+--text="$($cmd_binary mini-options)" --add-entry="$cmd_binary " )
+case $? in
+1)
+####
+####
+#### zenity --info $graphic_window_dimension --text="$cmd_binary good bye";
+####
+####
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" \
+--auto-close --auto-kill ; exit;;
+esac
+####
+####
+#### english: manage some configs    ####
+#### spanish: maneja algunas configs ####
+####
+####
+case $menugtk in
+####
+####
+"game-word")$cmd_binary game-word -gui ;;
+"game-number")$cmd_binary game-number -gui ;;
+"game-domain")$cmd_binary game-domain -gui ;;
+"rule-del-num")$cmd_binary rule-del-num -gui ;;
+####
+####
+#### english: new-full-config and nueva-completa-config whithout parameters ####
+#### spanish: new-full-config and nueva-completa-config sin parametros      ####
+####
+####
+"new-full-config")
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary new-full-config config.cfg ]"
+;;
+"new-mini-config")
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary new-mini-config config.cfg ]"
+;;
+"nueva-completa-config")
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-completa-config config.cfg ]"
+;;
+"new-mini-config")
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-mini-config config.cfg ]"
+;;
+"modify-config")
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary modify-config config.cfg ]"
+;;
+####
+####
+#### english: new-full-config and nueva-completa-config whithout parameters and with one space  ####
+#### spanish: new-full-config and nueva-completa-config sin parametros y con un espacio         ####
+####
+####
+"new-full-config ")
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary new-full-config config.cfg ]"
+;;
+"new-mini-config ")
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary new-mini-config config.cfg ]"
+;;
+"nueva-completa-config ")
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-completa-config config.cfg ]"
+;;
+"new-mini-config ")
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-mini-config config.cfg ]"
+;;
+"modify-config ")
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary modify-config config.cfg ]"
+;;
+####
+####
+#### english: several options con parametros
+#### spanish: varias opciones con parametros
+####
+####
+new-full-config*)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+$cmd_binary -gui new-full-config $unarchivo
+;;
+nueva-completa-config*)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+$cmd_binary -gui nueva-completa-config $unarchivo
+;;
+new-mini-config*)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+$cmd_binary -gui new-mini-config $unarchivo
+;;
+nueva-mini-config*)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+$cmd_binary -gui nueva-mini-config $unarchivo
+;;
+modify-config*)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+$cmd_binary -gui modify-config $unarchivo
+;;
+show-config*)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+$cmd_binary -gui show-config $unarchivo
+;;
+wizard-full*) $cmd_binary gui wizard-full ;;
+wizard-mini*) $cmd_binary gui wizard-mini ;;
+####
+####
+#### english: all other otpions    ####
+#### spanish: las demas opciones   ####
+####
+####
+"$NULL")
+$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye";
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=1 --text="Closing gui menu" --auto-close --auto-kill ; exit ;;
+*) fecha_temporal=$(date | $command_sed s/\ //g) ; $cmd_binary $menugtk &> /tmp/fwiptables-$fecha_temporal
+$favorite_graphicall_dialog  --text-info $graphic_window_dimension --title "[ $cmd_binary gui-shell ] [ $menugtk ]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
+rm /tmp/fwiptables-$fecha_temporal
+;;
+esac
+$cmd_binary gui-shell
+exit ; fi
+####
+####
+#### :rutina-final-gui-shell:
 ##########    english: cli-menu: Manage list rules with one text menu          ##########
 ##########    spanish: cli-menu: Maneja lista de reglas con un menu de texto   ##########
 #### :rutina-inicial-cli-menu:
