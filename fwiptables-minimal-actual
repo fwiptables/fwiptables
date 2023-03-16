@@ -707,7 +707,12 @@ case "$list_rules_conceptual" in "$NULL") list_rules_conceptual="" ;; *) list_ru
 #### english:  alias alias simple for output gui, -txt or -cli or -gui and more
 ####
 ####
-if [ "$first_option" = "tui-menu"  ] ; then first_option="cli-menu"  ; fi
+if [ "$first_option" == "tui-menu"  ] ; then first_option="cli-menu"  ; fi
+if [ "$first_option" == "-tui-menu"  ] || [ "$first_option" == "--tui-menu"  ] ; then first_option="cli-menu"  ; fi
+if [ "$first_option" == "-cli-menu"  ] || [ "$first_option" == "--cli-menu"  ] ; then first_option="cli-menu"  ; fi
+if [ "$first_option" == "-gui-menu"  ] || [ "$first_option" == "--gui-menu"  ] ; then first_option="gui-menu"  ; fi
+if [ "$first_option" == "-gui-roll"  ] || [ "$first_option" == "--gui-roll"  ] ; then first_option="gui-roll"  ; fi
+if [ "$first_option" == "-gui-shell" ] || [ "$first_option" == "--gui-shell" ] ; then first_option="gui-shell" ; fi
 if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ]   ; then first_option="-txt"  ; fi
 if [ "$first_option" = "tui"  ] || [ "$first_option" = "-tui" ]    ; then first_option="-cli"  ; fi
 if [ "$first_option" = "txt"  ] || [ "$first_option" = "-txt"  ]   ; then first_option="-txt"  ; fi
@@ -2730,7 +2735,8 @@ exit; fi
 ####
 if [ "$first_option" = "options-mini" ] ; then echo $give_cover ; echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
-echo "    Launch: $cmd_binary [ -t|-txt -c|-cli -g|-gui -l|-log -n|-null ] first_option [ second_option ]                " 
+echo "    Launch: $cmd_binary [ -cli-menu -gui-menu -gui-roll -gui-shell "
+echo "                          -t|-txt -c|-cli -g|-gui -l|-log -n|-null ] first_option [ second_option ]                " 
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||                      "
 echo "$text_md      firewall-control |  stop continue reset names actual show save load                                  "
 echo "$text_md   firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6              "
