@@ -424,9 +424,9 @@ allow_save_autolog=""                    ## fwiptables-file-default ## void or n
 allow_show_time="no"                    ## fwiptables-file-default ## void or no
 ####       #### english: void for automatic command #### spanish: vacio para comando automatico
 #### favorite_text_editor        ... for example nano
-favorite_text_editor=""          ## fwiptables-file-default ## or void for autoamtic or dialog or whiptail
+favorite_text_editor=""          ## fwiptables-file-default ## or void for autoamtic or command
 #### favorite_text_dialog        .... or dialog or whiptail
-favorite_text_dialog=""          ## fwiptables-file-default ## or void for autoamtic or zenity or yad
+favorite_text_dialog=""          ## fwiptables-file-default ## or void for autoamtic or command
 #### favorite_graphicall_dialog  ... or zenity or yad
 favorite_graphicall_dialog=""    ## fwiptables-file-default ## or void for autoamtic or command
 #### favorite_text_brwoser       ... for example elinks
@@ -588,7 +588,7 @@ fi
 ####
 ####
 if [ "$favorite_graphicall_dialog" == "$NULL" ]; then
-if [ "$command_yad"     != "$NULL" ] ; then  favorite_graphicall_dialog="$command_yad"      ; fi
+#### if [ "$command_yad"     != "$NULL" ] ; then  favorite_graphicall_dialog="$command_yad"      ; fi
 if [ "$command_zenity"  != "$NULL" ] ; then  favorite_graphicall_dialog="$command_zenity"   ; fi
 fi
 ####

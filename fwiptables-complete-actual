@@ -389,9 +389,9 @@ radio_link_rockfm="http://flucast-b02-06.flumotion.com/cope/rockfm.mp3" ;  ## fw
 radio_link_kissfm="http://kissfm.kissfmradio.cires21.com/kissfm.mp3" ;  ## fwiptables-file-default ## streaming url
 ####       #### english: void for automatic command #### spanish: vacio para comando automatico
 #### favorite_text_editor        ... for example nano
-favorite_text_editor=""          ## fwiptables-file-default ## or void for autoamtic or dialog or whiptail
+favorite_text_editor=""          ## fwiptables-file-default ## or void for autoamtic or command
 #### favorite_text_dialog        .... or dialog or whiptail
-favorite_text_dialog=""          ## fwiptables-file-default ## or void for autoamtic or zenity or yad
+favorite_text_dialog=""          ## fwiptables-file-default ## or void for autoamtic or command
 #### favorite_graphicall_dialog  ... or zenity or yad
 favorite_graphicall_dialog=""    ## fwiptables-file-default ## or void for autoamtic or command
 #### favorite_text_brwoser       ... for example elinks
@@ -656,7 +656,7 @@ fi
 ####
 ####
 if [ "$favorite_graphicall_dialog" == "$NULL" ]; then
-if [ "$command_yad"     != "$NULL" ] ; then  favorite_graphicall_dialog="$command_yad"      ; fi
+#### if [ "$command_yad"     != "$NULL" ] ; then  favorite_graphicall_dialog="$command_yad"      ; fi
 if [ "$command_zenity"  != "$NULL" ] ; then  favorite_graphicall_dialog="$command_zenity"   ; fi
 fi
 ####
@@ -4779,7 +4779,7 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 selection=""
 ####
 if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
-gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral| \
+gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|\
 03-Firewall-Custom|04-Firewall-Launch|05-Options-State"
 # |06-Tool-sockets| \
 # 07-Tool-connect|08-Tool-rule|09-Tool-forward|10-Tool-sshd|11-Tool-tcp|12-Tool-udp|13-Tool-icmp| \
@@ -4794,6 +4794,8 @@ selection="$($command_zenity --text="gui-roll" --title="$cmd_binary" \
 if [ "$favorite_graphicall_dialog" == "$command_yad" ]; then 
 gui_menu="01-Firewall-Control 02-Firewall-List-With-Conceptual 02-Firewall-List-With-Numeral \
 03-Firewall-Custom 04-Firewall-Launch 05-Options-State"
+gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|\
+03-Firewall-Custom|04-Firewall-Launch|05-Options-State"
 # 06-Tool-sockets \
 # 07-Tool-connect 08-Tool-rule 09-Tool-forward 10-Tool-sshd 11-Tool-tcp 12-Tool-udp 13-Tool-icmp \
 # 14-Tool-sudofw 15-Tool-game 16-Tool-speed 17-Tool-util 18-Tool-install 19-Tool-addblock 20-Tool-dev \
