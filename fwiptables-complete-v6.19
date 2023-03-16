@@ -5292,8 +5292,8 @@ $cmd_binary -gui custom $archivo ; $cmd_binary gui list4;;
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -5308,7 +5308,7 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-control" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list Gui Principal Menu Gui-Help-Menu Gui-Info-Menu stop continue reset names show save load actual)"
+--list Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu stop continue reset names show save load actual)"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
@@ -5331,8 +5331,8 @@ $cmd_binary -gui load $archivo ; $cmd_binary -gui list4;;
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -5375,8 +5375,8 @@ case "$selection_final" in
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -5419,8 +5419,8 @@ case "$selection_final" in
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -5473,8 +5473,8 @@ $cmd_binary -gui del-config $archivo ;;
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -5509,8 +5509,8 @@ depends)$cmd_binary -gui depends ;;
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -5551,8 +5551,8 @@ $cmd_binary wpa-save $name_ssid $pass_ssid ; $cmd_binary -gui iw-info ;;
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -5582,8 +5582,8 @@ case "$selection_final" in
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -5625,8 +5625,8 @@ case "$selection_final" in
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -5656,8 +5656,8 @@ case "$selection_final" in
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -5689,8 +5689,8 @@ $cmd_binary -gui sshd-tunnel-on $archivo ;;
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -5725,8 +5725,8 @@ $cmd_binary -gui ping-ip6 $archivo ;;
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -5762,8 +5762,8 @@ $cmd_binary -gui geoip $archivo ;;
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -5796,8 +5796,8 @@ $cmd_binary -gui tracetcp-ip6 $archivo  ;;
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -5829,8 +5829,8 @@ $cmd_binary -gui sudofw-adduser $archivo ;;
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -5866,8 +5866,8 @@ $cmd_binary gui game-hex $onecolour ;;
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -5899,8 +5899,8 @@ case "$selection_final" in
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -5934,8 +5934,8 @@ $cmd_binary -gui radio-mp3 $radio_enlace gui ;;
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -5966,8 +5966,8 @@ case "$selection_final" in
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -6000,8 +6000,8 @@ case "$selection_final" in
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -6034,8 +6034,8 @@ $cmd_binary -gui code $archivo
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -6069,8 +6069,8 @@ case "$selection_final" in
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -6107,8 +6107,8 @@ case "$selection_final" in
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -6141,8 +6141,8 @@ $cmd_binary -gui log-search $pattern;;
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -6174,8 +6174,8 @@ case "$selection_final" in
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -6209,8 +6209,8 @@ case "$selection_final" in
 esac
 ####
 ####
-$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
