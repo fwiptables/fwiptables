@@ -4900,6 +4900,351 @@ exit; fi
 #### :rutina-final-text-pause:
 ###############################################################################################################
 ###############################################################################################################
+##########    english: gui-roll: gui roll general: gui with roll  ##########
+##########    spanish: gui-roll: gui roll general: gui con roll   ##########
+#### :rutina-inicial-gui-roll:
+####
+####
+if   [ "$first_option" == "gui-roll" ] ; then echo $head_waiting_gui
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+####
+selection=""
+####
+if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
+gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|\
+03-Firewall-Custom|04-Firewall-Launch|05-Options-State"
+####
+####
+selection="$($command_zenity --text="gui-roll" --title="$cmd_binary" \
+--forms --add-combo="Options" --combo-values="$gui_menu")"; fi
+####
+####
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
+"01-Firewall-Control")$cmd_binary gui-roll-firewall-control ; exit ;;
+"02-Firewall-List-With-Conceptual")$cmd_binary gui-roll-firewall-conceptual ; exit ;;
+"02-Firewall-List-With-Numeral")$cmd_binary gui-roll-firewall-numeral ; exit ;;
+"03-Firewall-Custom")$cmd_binary gui-roll-firewall-custom ; exit ;;
+"04-Firewall-Launch")$cmd_binary gui-roll-firewall-launch ; exit ;;
+"05-Options-State")$cmd_binary gui-roll-options-state ; exit ;;
+esac
+####
+####
+$favorite_graphicall_dialog --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-roll:
+##########    english: gui-roll-firewall-control: gui roll firewall-control: gui with roll  ##########
+##########    spanish: gui-roll-firewall-control: gui roll firewall-control: gui con roll   ##########
+#### :rutina-inicial-gui-roll-firewall-control:
+####
+####
+if   [ "$first_option" == "gui-roll-firewall-control" ] ; then echo $head_waiting_gui
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+####
+selection=""
+####
+if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
+gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|stop|continue|reset|names|show|save|load|actual"
+####
+####
+selection="$($command_zenity --text="gui-roll-firewall-control" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
+#### 
+#### 
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+"Gui-Principal-Menu")$cmd_binary gui-roll ;;
+"Gui-Help-Menu")$cmd_binary -gui help firewall-control ;;
+"Gui-Info-Menu")$cmd_binary -gui info firewall-control ;;
+"stop")$cmd_binary -gui stop ; $cmd_binary -gui list4;;
+"continue")$cmd_binary -gui continue ; $cmd_binary -gui list4;;
+"reset")$cmd_binary -gui reset ; $cmd_binary -gui list4;;
+"names")$cmd_binary -gui names ;;
+"show")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[Save Firewall]" --text="$($cmd_binary names)")" ; 
+$cmd_binary -gui show $archivo ;;
+"save")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[Save Firewall]" --text="$($cmd_binary names)")" ; 
+$cmd_binary -gui save $archivo ;;
+"load")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[Load Firewall]" --text="$($cmd_binary names)")" ;
+$cmd_binary -gui load $archivo ; $cmd_binary -gui list4;;
+"actual")$cmd_binary -gui actual ;;
+esac
+####
+####
+$favorite_graphicall_dialog --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-roll-firewall-control:
+##########    english: gui-roll-firewall-conceptual: gui roll firewall-conceptual: gui with roll  ##########
+##########    spanish: gui-roll-firewall-conceptual: gui roll firewall-conceptual: gui con roll   ##########
+#### :rutina-inicial-gui-roll-firewall-conceptual:
+####
+####
+if   [ "$first_option" == "gui-roll-firewall-conceptual" ] ; then echo $head_waiting_gui
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+####
+selection=""
+####
+if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
+gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|ls4|ls6|list-filter4|list-filter6|list-alltables|\
+list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|list-security4|list-security6|list-ebtables|list-arptables"
+####
+####
+selection="$($command_zenity --text="gui-roll-firewall-conceptual" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
+#### 
+#### 
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+"Gui-Principal-Menu")$cmd_binary gui-roll ;;
+"Gui-Help-Menu")$cmd_binary -gui help firewall-conceptual ;;
+"Gui-Info-Menu")$cmd_binary -gui info firewall-conceptual ;;
+"ls4")$cmd_binary -gui ls4 ;;
+"ls6")$cmd_binary -gui ls6 ;;
+"list-alltables")$cmd_binary -gui list-alltables ;;
+"list-filter4")$cmd_binary -gui list-filter4 ;;
+"list-filter6")$cmd_binary -gui list-filter6 ;;
+"list-nat4")$cmd_binary -gui list-nat4 ;;
+"list-nat6")$cmd_binary -gui list-nat6 ;;
+"list-mangle4")$cmd_binary -gui list-mangle4 ;;
+"list-mangle6")$cmd_binary -gui list-mangle6 ;;
+"list-raw4")$cmd_binary -gui list-raw4 ;;
+"list-raw6")$cmd_binary -gui list-raw6 ;;
+"list-security4")$cmd_binary -gui list-security4 ;;
+"list-security6")$cmd_binary -gui list-security6 ;;
+"list-ebtables")$cmd_binary -gui list-ebtables ;;
+"list-arptables")$cmd_binary -gui list-arptables ;;
+esac
+####
+####
+$favorite_graphicall_dialog --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-roll-firewall-conceptual:
+##########    english: gui-roll-firewall-numeral: gui roll firewall-numeral: gui with roll  ##########
+##########    spanish: gui-roll-firewall-numeral: gui roll firewall-numeral: gui con roll   ##########
+#### :rutina-inicial-gui-roll-firewall-numeral:
+####
+####
+if   [ "$first_option" == "gui-roll-firewall-numeral" ] ; then echo $head_waiting_gui
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+####
+selection=""
+####
+if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
+gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|lsn4|lsn6|listn-filter4|listn-filter6|listn-alltables|\
+listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|listn-raw4|listn-raw6|listn-security4|listn-security6|list-ebtables|list-arptables"
+####
+####
+selection="$($command_zenity --text="gui-roll-firewall-numeral" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
+####
+####
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+"Gui Principal-Menu")$cmd_binary gui-roll ;;
+"Gui-Help-Menu")$cmd_binary -gui help firewall-numeral ;;
+"Gui-Info Menu")$cmd_binary -gui info firewall-numeral ;;
+"lsn4")$cmd_binary -gui lsn4 ;;
+"lsn6")$cmd_binary -gui lsn6 ;;
+"listn-alltables")$cmd_binary -gui listn-alltables ;;
+"listn-filter4")$cmd_binary -gui listn-filter4 ;;
+"listn-filter6")$cmd_binary -gui listn-filter6 ;;
+"listn-nat4")$cmd_binary -gui listn-nat4 ;;
+"listn-nat6")$cmd_binary -gui listn-nat6 ;;
+"listn-mangle4")$cmd_binary -gui listn-mangle4 ;;
+"listn-mangle6")$cmd_binary -gui listn-mangle6 ;;
+"listn-raw4")$cmd_binary -gui listn-raw4 ;;
+"listn-raw6")$cmd_binary -gui listn-raw6 ;;
+"listn-security4")$cmd_binary -gui listn-security4 ;;
+"listn-security6")$cmd_binary -gui listn-security6 ;;
+"list-ebtables")$cmd_binary -gui list-ebtables ;;
+"list-arptables")$cmd_binary -gui list-arptables ;;
+esac
+####
+####
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-roll-firewall-numeral:
+##########    english: gui-roll-firewall-custom: gui roll firewall-custom: gui with roll  ##########
+##########    spanish: gui-roll-firewall-custom: gui roll firewall-custom: gui con roll   ##########
+#### :rutina-inicial-gui-roll-firewall-custom:
+####
+####
+if   [ "$first_option" == "gui-roll-firewall-custom" ] ; then echo $head_waiting_gui
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+####
+selection=""
+####
+if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
+gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
+names-config|show-config|modify-config|del-config|regen-config|examples-config"
+####
+####
+selection="$($command_zenity --text="gui-roll-firewall-custom" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
+#### 
+#### 
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+"Gui-Principal-Menu")$cmd_binary gui-roll ;;
+"Gui-Help-Menu")$cmd_binary -gui help firewall-custom ;;
+"Gui-Info-Menu")$cmd_binary -gui info firewall-custom ;;
+"new-full-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
+$cmd_binary -gui new-full-config $archivo ;;
+"nueva-completa-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[nueva-completa-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
+$cmd_binary -gui nueva-completa-config $archivo ;;
+"new-mini-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[new-mini-config]" --text="Input file name to new mini configuration")" ;
+$cmd_binary -gui new-mini-config $archivo ;;
+"nueva-mini-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[nueva-mini-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
+$cmd_binary -gui nueva-mini-config $archivo ;;
+"names-config")
+$cmd_binary -gui names-config ;;
+"show-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[show-config]" --text="$($cmd_binary cfg)")" ;
+$cmd_binary -gui show-config $archivo ;;
+"modify-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[modify-config]" --text="$($cmd_binary cfg)")" ;
+$cmd_binary -gui modify-config $archivo ;;
+"del-config")
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[del-config]" --text="$($cmd_binary cfg)")" ;
+$cmd_binary -gui del-config $archivo ;;
+"regen-config")$cmd_binary -gui regen-config ;;
+"examples-config")$cmd_binary gui examples-config ;;
+esac
+####
+####
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-roll-firewall-custom:
+##########    english: gui-roll-firewall-launch: gui roll firewall-launch: gui with roll  ##########
+##########    spanish: gui-roll-firewall-launch: gui roll firewall-launch: gui con roll   ##########
+#### :rutina-inicial-gui-roll-firewall-launch:
+####
+####
+if   [ "$first_option" == "gui-roll-firewall-launch" ] ; then echo $head_waiting_gui
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+####
+selection=""
+####
+if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
+gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|eraserules|\
+wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|\
+games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|\
+client-web|client-vnc|client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
+server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|\
+server-news|server-mail|server-ftp|server-teamspeak|server-mumble|server-sql|server-asterisk"
+####
+####
+selection="$($command_zenity --text="gui-roll-firewall-launch" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
+#### 
+#### 
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
+1) $favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+"Gui-Principal-Menu")$cmd_binary gui-roll ;;
+"Gui-Help-Menu")$cmd_binary -gui help firewall-launch ;;
+"Gui-Info-Menu")$cmd_binary -gui info firewall-launch ;;
+"eraserules")$cmd_binary -gui eraserules ; $cmd_binary gui list4;;
+"wizard-full")$cmd_binary -gui wizard-full ; $cmd_binary gui list4;;
+"wizard-mini")$cmd_binary -gui wizard-mini ; $cmd_binary gui list4;;
+"off-line")$cmd_binary -gui off-line ; $cmd_binary gui list4;;
+"all-permisive")$cmd_binary -gui all-permisive ; $cmd_binary gui list4;;
+"client-web")$cmd_binary -gui client-web ; $cmd_binary gui list4;;
+"client-vnc")$cmd_binary -gui client-vnc ; $cmd_binary gui list4;;
+"client-torrent")$cmd_binary -gui client-torrent ; $cmd_binary gui list4;;
+"client-vpn")$cmd_binary -gui client-vpn ; $cmd_binary gui list4;;
+"client-tor")$cmd_binary -gui client-tor ; $cmd_binary gui list4;;
+"games-shooter")$cmd_binary -gui games-shooter ; $cmd_binary gui list4;;
+"game-wesnoth")$cmd_binary -gui game-wesnoth ; $cmd_binary gui list4;;
+"game-minetest")$cmd_binary -gui game-minetest ; $cmd_binary gui list4;;
+"game-freeciv")$cmd_binary -gui game-freeciv ; $cmd_binary gui list4;;
+"game-widelands")$cmd_binary -gui game-widelands ; $cmd_binary gui list4;;
+"lan-tor")$cmd_binary -gui lan-tor ; $cmd_binary gui list4;;
+"lan-vpn")$cmd_binary -gui lan-vpn ; $cmd_binary gui list4;;
+"shield-ssh")$cmd_binary -gui shield-ssh ; $cmd_binary gui list4;;
+"server-ssh")$cmd_binary -gui server-ssh ; $cmd_binary gui list4;;
+"server-web")$cmd_binary -gui server-web ; $cmd_binary gui list4;;
+"server-vnc")$cmd_binary -gui server-vnc ; $cmd_binary gui list4;;
+"server-samba")$cmd_binary -gui server-samba ; $cmd_binary gui list4;;
+"server-news")$cmd_binary -gui server-news ; $cmd_binary gui list4;;
+"server-mail")$cmd_binary -gui server-mail ; $cmd_binary gui list4;;
+"server-ftp")$cmd_binary -gui server-ftp ; $cmd_binary gui list4;;
+"server-print")$cmd_binary -gui server-print ; $cmd_binary gui list4;;
+"server-lamp")$cmd_binary -gui server-lamp ; $cmd_binary gui list4;;
+"server-teamspeak")$cmd_binary -gui server-teamspeak ; $cmd_binary gui list4;;
+"server-mumble")$cmd_binary -gui server-mumble ; $cmd_binary gui list4;;
+"server-sql")$cmd_binary -gui server-sql ; $cmd_binary gui list4;;
+"server-asterisk")$cmd_binary -gui server-asterisk ; $cmd_binary gui list4;;
+"custom-cfg")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension \
+--title "[Launch Custom]" --text="$($command_ls -1 $directory_config)")" ; 
+$cmd_binary -gui custom $archivo ; $cmd_binary gui list4;;
+esac
+####
+####
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-roll-firewall-launch:
+##########    english: gui-roll-options-state: gui roll options-state: gui with roll  ##########
+##########    spanish: gui-roll-options-state: gui roll options-state: gui con roll   ##########
+#### :rutina-inicial-gui-roll-options-state:
+####
+####
+if   [ "$first_option" == "gui-roll-options-state" ] ; then echo $head_waiting_gui
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+####
+selection=""
+####
+if [ "$favorite_graphicall_dialog" == "$command_zenity" ] ; then 
+gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|preferences-read|preferences-modify|preferences-regen|ip4|ip6|version|examples|depends"
+####
+####
+selection="$($command_zenity --text="gui-roll-options-state" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
+####
+####
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+Gui-Principal-Menu)$cmd_binary gui-menu ;;
+Gui-Help-Menu)$cmd_binary -gui help status-state ;;
+Gui-Info-Menu)$cmd_binary -gui info status-state ;;
+preferences-read)$cmd_binary -gui preferences-read ;;
+preferences-modify)$cmd_binary -gui preferences-modify ;;
+preferences-regen)$cmd_binary -gui preferences-regen ;;
+ip4)$cmd_binary -gui ip4 ;;
+ip6)$cmd_binary -gui ip6 ;;
+version)$cmd_binary -gui version ;;
+examples)$cmd_binary -gui examples ;;
+depends)$cmd_binary -gui depends ;;
+esac
+####
+####
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-roll-options-state:
+###############################################################################################################
+###############################################################################################################
+####
+####
+###############################################################################################################
+###############################################################################################################
+####
+####
 ############################       english: default: without other valid options
 ############################	   spanish: default: sin otra valida opcion
 ####
