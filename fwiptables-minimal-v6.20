@@ -431,7 +431,12 @@ favorite_text_dialog=""          ## fwiptables-file-default ## or void for autoa
 favorite_graphicall_dialog=""    ## fwiptables-file-default ## or void for autoamtic or command
 #### favorite_text_brwoser       ... for example elinks
 favorite_text_browser=""         ## fwiptables-file-default ## or void for autoamtic or command
-#### #### variables to modify for qemu
+####       #### english: iperf server for default for test net SPEED                 
+####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet    
+serverip_iperf_ipv4="ping.online.net"   ## fwiptables-file-default ## default ping.online.net
+serverport_iperf_ipv4="5001"            ## fwiptables-file-default ## default 5201
+serverip_iperf_ipv6="ping6.online.net"   ## fwiptables-file-default ## default ping.online.net
+serverport_iperf_ipv6="5001"            ## fwiptables-file-default ## default 5201
 #### #### english: look  #### spanish: apariencia
 graphic_window_dimension="--width=950 --height=650"   ## fwiptables-file-default ## default: "--width=950 --height=650"
 #### #### english: look  #### spanish: apariencia
@@ -4437,6 +4442,52 @@ exit ; fi
 ####
 ####
 #### :rutina-final-devmini-upgrade:
+##########    english: speed-ip4: speed from internet        ##########
+##########    spanish: speed-ip4: velocidad desde internet   ##########
+#### :rutina-inicial-speed-ip4:
+####
+####
+if   [ "$first_option" == "speed-ip4" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ test speed ipv4 with internet ] || ||"
+case "$command_iperf"  in  $NULL) echo "$duo_md [ fail ] [ Install Iperf command ]"; exit ;; esac
+####
+####
+echo
+echo "$duo_md [ info ] Stop firewall & Run speed ip4 & Continue firewall"
+echo
+$cmd_binary stop
+echo
+echo "$duo_md [ Doing bandwidth in ipv4 to $serverip_iperf_ipv4 ] [ with max $server_waiting seconds ]"
+$command_iperf -c $serverip_iperf_ipv4 -t 4 -P 1 -p $serverport_iperf_ipv4 |tail -3
+echo
+$cmd_binary continue
+exit; fi
+####
+####
+#### :rutina-final-speed-ip4:
+##########    english: speed-ip6: speed from internet        ##########
+##########    spanish: speed-ip6: velocidad desde internet   ##########
+#### :rutina-inicial-speed-ip6:
+####
+####
+if   [ "$first_option" == "speed-ip6" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ test speed ipv6 with internet ] || ||"
+case "$command_iperf"  in  $NULL) echo "$duo_md [ fail ] [ install iperf command ]"; exit ;; esac
+####
+####
+echo
+echo "$duo_md [ info ] Stop firewall & Run speed ip4 & Continue firewall"
+echo
+$cmd_binary stop
+echo
+echo "$duo_md [ Doing bandwidth in ipv6 to $serverip_iperf_ipv6 ] [ with max $server_waiting seconds ]"
+$command_iperf -c $serverip_iperf_ipv6 -V -t 4 -P 1 -p $serverport_iperf_ipv6 | tail -3
+echo
+$cmd_binary continue
+exit; fi
+####
+####
+#### :rutina-final-speed-ip6:
 ##########    english: -gui: Manage gui con three options  ##########
 ##########    spanish: -gui: Maneja gui con tres opciones  ##########
 ####
