@@ -5118,13 +5118,10 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 ####
 selection=""
 ####
-if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
-gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|\
-03-Firewall-Custom|04-Firewall-Launch|05-Options-State"
+gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|03-Firewall-Custom|04-Firewall-Launch|05-Options-State"
 ####
 ####
-selection="$($command_zenity --text="gui-roll" --title="$cmd_binary" \
---forms --add-combo="Options" --combo-values="$gui_menu")"; fi
+selection="$($command_zenity --text="gui-roll" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"
 ####
 ####
 selection_final="$(echo $selection | sed 's/\|//g')"
@@ -5153,11 +5150,10 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 ####
 selection=""
 ####
-if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
 gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|stop|continue|reset|names|show|save|load|actual"
 ####
 ####
-selection="$($command_zenity --text="gui-roll-firewall-control" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
+selection="$($command_zenity --text="gui-roll-firewall-control" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
@@ -5195,12 +5191,11 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 ####
 selection=""
 ####
-if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
 gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|ls4|ls6|list-filter4|list-filter6|list-alltables|\
 list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|list-security4|list-security6|list-ebtables|list-arptables"
 ####
 ####
-selection="$($command_zenity --text="gui-roll-firewall-conceptual" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
+selection="$($command_zenity --text="gui-roll-firewall-conceptual" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
@@ -5242,12 +5237,11 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 ####
 selection=""
 ####
-if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
 gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|lsn4|lsn6|listn-filter4|listn-filter6|listn-alltables|\
 listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|listn-raw4|listn-raw6|listn-security4|listn-security6|list-ebtables|list-arptables"
 ####
 ####
-selection="$($command_zenity --text="gui-roll-firewall-numeral" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
+selection="$($command_zenity --text="gui-roll-firewall-numeral" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"
 ####
 ####
 selection_final="$(echo $selection | sed 's/\|//g')"
@@ -5289,12 +5283,11 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 ####
 selection=""
 ####
-if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
 gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
 names-config|show-config|modify-config|del-config|regen-config|examples-config"
 ####
 ####
-selection="$($command_zenity --text="gui-roll-firewall-custom" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
+selection="$($command_zenity --text="gui-roll-firewall-custom" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
@@ -5346,7 +5339,6 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 ####
 selection=""
 ####
-if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
 gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|eraserules|\
 wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|\
 games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|\
@@ -5355,7 +5347,7 @@ server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|\
 server-news|server-mail|server-ftp|server-teamspeak|server-mumble|server-sql|server-asterisk"
 ####
 ####
-selection="$($command_zenity --text="gui-roll-firewall-launch" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
+selection="$($command_zenity --text="gui-roll-firewall-launch" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
@@ -5416,12 +5408,11 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 ####
 selection=""
 ####
-if [ "$favorite_graphicall_dialog" == "$command_zenity" ] ; then 
 gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|preferences-read|preferences-modify|preferences-regen|\
 ip4|ip6|speed-ip4|speed-ip6|version|examples|depends|notes|license"
 ####
 ####
-selection="$($command_zenity --text="gui-roll-options-state" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
+selection="$($command_zenity --text="gui-roll-options-state" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"
 ####
 ####
 selection_final="$(echo $selection | sed 's/\|//g')"
