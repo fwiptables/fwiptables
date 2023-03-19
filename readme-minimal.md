@@ -1,4 +1,4 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-6.19 ] || ||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-6.20 ] || ||
 ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-mini preferences-modify ] || ||
 ### || || [ ok ] || [ options-mini ] [ List mini options ] [ mini-options md ] || ||
     Launch: /usr/bin/fwiptables-mini [ -cli-menu -gui-menu -gui-roll -gui-shell 
@@ -20,5 +20,5 @@
                             client-tor client-squid lan-tor lan-vpn server-ssh server-samba server-vnc       
                             server-web server-print server-lamp server-news server-ftp server-mail           
                             server-teamspeak server-mumble server-sql server-asterisk server-squid           
-           options-state |  preferences-read preferences-modify preferences-regen filelog autolog ip4 ip6    
-                            version notes depends license new-versions install uninstall                     
+           options-state |  preferences-read preferences-modify preferences-regen ip4 ip6 speed-ip4 speed-ip6
+                            filelog autolog version notes depends license new-versions install uninstall     
