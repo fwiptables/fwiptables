@@ -2761,8 +2761,9 @@ echo "$text_md                          client-vnc client-mail client-news clien
 echo "$text_md                          client-tor client-squid lan-tor lan-vpn server-ssh server-samba server-vnc       "
 echo "$text_md                          server-web server-print server-lamp server-news server-ftp server-mail           "
 echo "$text_md                          server-teamspeak server-mumble server-sql server-asterisk server-squid           "
-echo "$text_md         options-state |  preferences-read preferences-modify preferences-regen ip4 ip6 speed-ip4 speed-ip6"
-echo "$text_md                          filelog autolog version notes depends license new-versions install uninstall     "
+echo "$text_md         options-state |  preferences-read preferences-modify preferences-regen                            "
+echo "$text_md                          filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets                              "
+echo "$text_md                          version notes depends license new-versions install uninstall                     "
 exit ; fi
 ####
 ####
@@ -4488,6 +4489,22 @@ exit; fi
 ####
 ####
 #### :rutina-final-speed-ip6:
+##########    english: sockets: The sockets option  ##########
+##########    spanish: sockets: La opcion sockets   ##########
+#### :rutina-inicial-sockets:
+####
+####
+if   [ "$first_option" == "sockets" ]; then  echo $give_cover
+echo "$header_ok [ $first_option ] [ Show sockets with ss ] || ||"
+if [ "$command_ss" == "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
+echo "$duo_md [ info ] [ The ipv6 sockets ]"
+$command_ss -a6 | $command_sed 's/   / /g'
+echo "$duo_md [ info ] [ The ipv4 sockets ]"
+$command_ss -a4 | $command_sed 's/   / /g'
+exit; fi
+####
+####
+#### :rutina-final-sockets:
 ##########    english: -gui: Manage gui con three options  ##########
 ##########    spanish: -gui: Maneja gui con tres opciones  ##########
 ####
