@@ -717,6 +717,7 @@ if [ "$first_option" == "-tui-menu"  ] || [ "$first_option" == "--tui-menu"  ] ;
 if [ "$first_option" == "-cli-menu"  ] || [ "$first_option" == "--cli-menu"  ] ; then first_option="cli-menu"  ; fi
 if [ "$first_option" == "-gui-menu"  ] || [ "$first_option" == "--gui-menu"  ] ; then first_option="gui-menu"  ; fi
 if [ "$first_option" == "-gui-roll"  ] || [ "$first_option" == "--gui-roll"  ] ; then first_option="gui-roll"  ; fi
+if [ "$first_option" == "-gui-rock"  ] || [ "$first_option" == "--gui-rock"  ] ; then first_option="gui-roll"  ; fi
 if [ "$first_option" == "-gui-shell" ] || [ "$first_option" == "--gui-shell" ] ; then first_option="gui-shell" ; fi
 if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ]   ; then first_option="-txt"  ; fi
 if [ "$first_option" = "tui"  ] || [ "$first_option" = "-tui" ]    ; then first_option="-cli"  ; fi
