@@ -4947,11 +4947,12 @@ menuprincipal="$($favorite_text_dialog --clear --notags --title "Cli Menu With $
 0707  "$tab ip6" \
 0708  "$tab speed-ip4" \
 0709  "$tab speed-ip6" \
-0710  "$tab notes" \
-0711  "$tab ilicense" \
-0712  "$tab version" \
-0713  "$tab examples" \
-0714  "$tab depends" \
+0710  "$tab sockets" \
+0711  "$tab notes" \
+0712  "$tab ilicense" \
+0713  "$tab version" \
+0714  "$tab examples" \
+0715  "$tab depends" \
 3>&1 1>&2 2>&3 )"
 ################################################################################
 #### 
@@ -5097,11 +5098,12 @@ clear ; $cmd_binary del-config $archivo ; echo "deleted $archivo" ;;
 0707) clear ; $cmd_binary cli ip6 ;;
 0708) clear ; $cmd_binary cli speed-ip4 ;;
 0709) clear ; $cmd_binary cli speed-ip6 ;;
-0710) clear ; $cmd_binary cli notes ;;
-0711) clear ; $cmd_binary cli license ;;
-0712) clear ; $cmd_binary cli version ;;
-0713) clear ; $cmd_binary cli examples ;;
-0714) clear ; $cmd_binary cli depends ;;
+0710) clear ; $cmd_binary cli sockets ;;
+0711) clear ; $cmd_binary cli notes ;;
+0712) clear ; $cmd_binary cli license ;;
+0713) clear ; $cmd_binary cli version ;;
+0714) clear ; $cmd_binary cli examples ;;
+0715) clear ; $cmd_binary cli depends ;;
 ################################################################################
 *) clear ; $favorite_text_dialog  --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
 esac 
@@ -5426,7 +5428,7 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 selection=""
 ####
 gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|preferences-read|preferences-modify|preferences-regen|\
-ip4|ip6|speed-ip4|speed-ip6|version|examples|depends|notes|license"
+ip4|ip6|speed-ip4|speed-ip6|sockets|version|examples|depends|notes|license"
 ####
 ####
 selection="$($command_zenity --text="gui-roll-options-state" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"
@@ -5445,6 +5447,7 @@ ip4)$cmd_binary -gui ip4 ;;
 ip6)$cmd_binary -gui ip6 ;;
 speed-ip4)$cmd_binary -gui speed-ip4 ;;
 speed-ip6)$cmd_binary -gui speed-ip6 ;;
+sockets)$cmd_binary -gui sockets ;;
 version)$cmd_binary -gui version ;;
 examples)$cmd_binary -gui examples ;;
 depends)$cmd_binary -gui depends ;;
@@ -5743,7 +5746,7 @@ exit; fi
 if   [ "$first_option" == "gui-menu-options-state" ]; then 
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu preferences-read preferences-modify preferences-regen \
-ip4 ip6 speed-ip4 speed-ip6 license notes version examples depends)"
+ip4 ip6 speed-ip4 speed-ip6 sockets license notes version examples depends)"
 #### 
 ####
 selection_final="$(echo $selection | sed 's/\|//g')"
@@ -5759,6 +5762,7 @@ ip4)$cmd_binary -gui ip4 ;;
 ip6)$cmd_binary -gui ip6 ;;
 speed-ip4)$cmd_binary -gui speed-ip4 ;;
 speed-ip6)$cmd_binary -gui speed-ip6 ;;
+sockets)$cmd_binary -gui sockets ;;
 version)$cmd_binary -gui version ;;
 examples)$cmd_binary -gui examples ;;
 depends)$cmd_binary -gui depends ;;
