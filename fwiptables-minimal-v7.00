@@ -463,7 +463,7 @@ head_waiting_info="$duo_md  [ info ] [ info: info in plain txt format ] [ loadin
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_config $cmd_version ] || || "
+give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_config ] [ Version: $cmd_version ] || || "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
