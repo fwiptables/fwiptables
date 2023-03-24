@@ -501,8 +501,8 @@ url_web_main="https://sourceforge.net/projects/f-iptables/"
 url_web_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
 url_web_changes="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-changes?format=raw" ;
 url_index_files="https://sourceforge.net/projects/f-iptables/files/" ;
-url_complete_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-complete-v6" ;
-url_minimal_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-minimal-v6" ;
+url_complete_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-complete-v7" ;
+url_minimal_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-minimal-v7" ;
 url_web_fulldevelopment="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
 url_web_minidevelopment="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-minimal-fwiptables?format=raw" ;
 url_web_actualfull="https://sourceforge.net/projects/f-iptables/files/fwiptables-complete-actual/download" ;

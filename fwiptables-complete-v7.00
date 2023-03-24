@@ -475,8 +475,8 @@ url_web_main="https://sourceforge.net/projects/f-iptables/"
 url_web_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
 url_web_changes="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-changes?format=raw" ;
 url_index_files="https://sourceforge.net/projects/f-iptables/files/" ;
-url_complete_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-complete-v6" ;
-url_minimal_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-minimal-v6" ;
+url_complete_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-complete-v7" ;
+url_minimal_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-minimal-v7" ;
 url_web_fulldevelopment="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
 url_web_minidevelopment="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-minimal-fwiptables?format=raw" ;
 url_web_actualfull="https://sourceforge.net/projects/f-iptables/files/fwiptables-complete-actual/download" ;
@@ -4796,7 +4796,7 @@ case "$selection_final" in
 "03-Firewall-Custom")$cmd_binary gui-roll-firewall-custom ; exit ;;
 "04-Firewall-Launch")$cmd_binary gui-roll-firewall-launch ; exit ;;
 "05-Options-State")$cmd_binary gui-roll-options-state ; exit ;;
-"06-Tool-sockets")$cmd_binary gui-menu-tool-sockets ; exit ;;
+"06-Tool-sockets")$cmd_binary gui-roll-tool-sockets ; exit ;;
 "07-Tool-connect")$cmd_binary gui-menu-tool-connect ; exit ;;
 "08-Tool-rule")$cmd_binary gui-menu-tool-rule ; exit ;;
 "09-Tool-forward")$cmd_binary gui-menu-tool-forward ; exit ;;
@@ -5101,7 +5101,7 @@ selection="$($command_zenity --text="gui-roll-options-state" --title="$cmd_binar
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-Gui-Principal-Menu)$cmd_binary gui-menu ;;
+Gui-Principal-Menu)$cmd_binary gui-roll ;;
 Gui-Help-Menu)$cmd_binary -gui help status-state ;;
 Gui-Info-Menu)$cmd_binary -gui info status-state ;;
 preferences-read)$cmd_binary -gui preferences-read ;;
@@ -5113,6 +5113,50 @@ version)$cmd_binary -gui version ;;
 examples)$cmd_binary -gui examples ;;
 depends)$cmd_binary -gui depends ;;
 esac
+####
+####
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-roll-options-state:
+##########    english: gui-roll-tool-sockets: gui roll tool-sockets: gui with roll  ##########
+##########    spanish: gui-roll-tool-sockets: gui roll tool-sockets: gui con roll   ##########
+#### :rutina-inicial-gui-roll-tool-sockets:
+####
+####
+if   [ "$first_option" == "gui-roll-tool-sockets" ] ; then echo $head_waiting_gui
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+####
+selection=""
+####
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|ip4|ip6|info-route|info-nodes|info-net|info-system|\
+ss|lsof|netstat|netstat-nat|tcpdump|info-proxy|info-listen|ntpdate-client"
+####
+####
+selection="$($command_zenity --text="gui-roll-options-state" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"
+####
+####
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+"gui-principal-menu")$cmd_binary gui-roll ;;
+"gui-help-menu")$cmd_binary -gui help tool-sockets ;;
+"gui-info-menu")$cmd_binary -gui info tool-sockets ;;
+"ip4")$cmd_binary -gui ip4 ;;
+"ip6")$cmd_binary -gui ip6 ;;
+"info-route")$cmd_binary -gui route ;;
+"info-nodes")$cmd_binary -gui info-nodes ;;
+"info-net")$cmd_binary -gui info-net ;;
+"info-system")$cmd_binary -gui info-system ;;
+"ss")$cmd_binary -gui ss ;;
+"lsof")$cmd_binary -gui lsof ;;
+"netstat")$cmd_binary -gui netstat ;;
+"netstat-nat")$cmd_binary -gui netstat-nat ;;
+"tcpdump")$cmd_binary -gui tcpdump ;;
+"info-proxy")$cmd_binary -gui info-proxy ;;
+"info-listen")$cmd_binary -gui info-listen ;;
+"ntpdate-client")$cmd_binary -gui ntpdate-client ;;esac
 ####
 ####
 $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
