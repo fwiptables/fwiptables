@@ -374,8 +374,8 @@ server_traceroute_ipv4="fast.com"     ## fwiptables-file-default ## default fast
 server_traceroute_ipv6="fast.com"     ## fwiptables-file-default ## default fast.com
 ####       #### english: curl server for default for test the public ip
 ####       #### spanish: servidor de curl por defecto para testear la ip publica    
-serverip_discover_ipv4="http://ifconfig.co/ip"
-serverip_discover_ipv6="http://ifconfig.co/ip"
+serverip_discover_ipv4="http://ifconfig.co/ip" ## fwiptables-file-default ## default http://ifconfig.co/ip
+serverip_discover_ipv6="http://ifconfig.co/ip" ## fwiptables-file-default ## default http://ifconfig.co/ip
 ####       #### english: iperf server for default for test net SPEED                 
 ####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet    
 serverip_iperf_ipv4="ping.online.net"   ## fwiptables-file-default ## default ping.online.net
