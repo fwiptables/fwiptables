@@ -5092,7 +5092,7 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 ####
 selection=""
 ####
-gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|preferences-read|preferences-modify|preferences-regen|ip4|ip6|version|examples|depends"
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|preferences-modify|preferences-regen|ip4|ip6|version|examples|depends"
 ####
 ####
 selection="$($command_zenity --text="gui-roll-options-state" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"
@@ -5101,9 +5101,9 @@ selection="$($command_zenity --text="gui-roll-options-state" --title="$cmd_binar
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-Gui-Principal-Menu)$cmd_binary gui-roll ;;
-Gui-Help-Menu)$cmd_binary -gui help status-state ;;
-Gui-Info-Menu)$cmd_binary -gui info status-state ;;
+gui-principal-menu)$cmd_binary gui-roll ;;
+gui-help-menu)$cmd_binary -gui help status-state ;;
+gui-info-menu)$cmd_binary -gui info status-state ;;
 preferences-read)$cmd_binary -gui preferences-read ;;
 preferences-modify)$cmd_binary -gui preferences-modify ;;
 preferences-regen)$cmd_binary -gui preferences-regen ;;
@@ -5163,7 +5163,7 @@ $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$clo
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-options-state:
+#### :rutina-final-gui-roll-tool-sockets:
 ##########    english: gui-menu: gui menu general: gui con menu  ##########
 ##########    spanish: gui-menu: gui menu general: gui con menu  ##########
 #### :rutina-inicial-gui-menu:
