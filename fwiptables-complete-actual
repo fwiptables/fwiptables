@@ -97,7 +97,7 @@ fi
 ####
 cmd_binary="$0" ;
 cmd_config="fwiptables-cmd" ;
-cmd_version="complete-7.00" ;
+cmd_version="complete-7.01" ;
 cmd_name="Fran Complete FireWall FWiptables Generator" ;
 cmd_description="One Script in bash for iptables firewall" ;
 cmd_license="GPL v2" ;
@@ -1236,10 +1236,9 @@ exit; fi
 if [ "$first_option" == "uninstall" ] ; then
 echo "$header_ok [ $first_option ] [ $cmd_binary uninstaller ] [ uninstall md ] || ||"
 echo "$duo_md [ info ] [ $cmd_binary uninstalling ]"
-if  [ -f "/usr/bin/$config_cmd" ]; then rm /usr/bin/$cmd_config &> /dev/null
+rm /usr/bin/$cmd_config &> /dev/null
 echo "$duo_md [ info ] [ deleted binaries ]"
 echo "$duo_md [  ok  ] [ /usr/bin/$cmd_config uninstalled ]" ;
-else echo "$duo_md [ info ] [ /usr/bin/$cmd_config is not installed ]"; fi
 exit; fi
 ####
 ####
