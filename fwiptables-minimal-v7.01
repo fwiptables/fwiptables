@@ -3996,7 +3996,7 @@ echo "$duo_md [ info ] [ The config dir:        ] [ $directory_data ]"
 echo "$duo_md [ info ] [ The tmp dir:           ] [ $directory_tmp  ]"
 echo "$duo_md [ info ] [ The Command shell:     ] [ /usr/bin/$cmd_config ]"
 echo "$duo_md [  ok  ] [ Update configs and variables     ]"
-echo "$duo_md [  ok  ] [ Now. Ready to run fwiptables-cmd ]"
+echo "$duo_md [  ok  ] [ Now. Ready to run $cmd_config ]"
 exit; fi
 ####
 ####
