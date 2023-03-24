@@ -431,6 +431,10 @@ favorite_text_dialog=""          ## fwiptables-file-default ## or void for autoa
 favorite_graphicall_dialog=""    ## fwiptables-file-default ## or void for autoamtic or command
 #### favorite_text_brwoser       ... for example elinks
 favorite_text_browser=""         ## fwiptables-file-default ## or void for autoamtic or command
+####       #### english: curl server for default for test the public ip
+####       #### spanish: servidor de curl por defecto para testear la ip publica    
+serverip_discover_ipv4="http://ifconfig.co/ip"
+serverip_discover_ipv6="http://ifconfig.co/ip"
 ####       #### english: iperf server for default for test net SPEED                 
 ####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet    
 serverip_iperf_ipv4="ping.online.net"   ## fwiptables-file-default ## default ping.online.net
@@ -1099,7 +1103,7 @@ else  $command_ip -4 address | $command_grep -i  inet | $command_grep -iv 127.0.
 echo
 echo "$duo_md [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
-public_ip4="$(timeout -s SIGINT -v 8 $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
+public_ip4="$(timeout -s SIGINT -v 8 $command_curl -s -4 $serverip_discover_ipv4 -w "\n"| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip4"; fi; fi
 echo
@@ -1139,7 +1143,7 @@ else  $command_ip -6 address | $command_grep -i  inet | $command_grep -iv  "inet
 echo
 echo "$duo_md [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
-public_ip6="$(timeout -s SIGINT -v 8 $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
+public_ip6="$(timeout -s SIGINT -v 8 $command_curl -s -6 $serverip_discover_ipv6 -w "\n"| head -1)"
 if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip6"; fi; fi
 echo

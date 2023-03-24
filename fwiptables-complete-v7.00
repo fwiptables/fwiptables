@@ -372,6 +372,10 @@ server_ping_ipv6="fast.com"           ## fwiptables-file-default ## default fast
 ####       #### spanish: servidor de TRACEROUTE por defecto    
 server_traceroute_ipv4="fast.com"     ## fwiptables-file-default ## default fast.com
 server_traceroute_ipv6="fast.com"     ## fwiptables-file-default ## default fast.com
+####       #### english: curl server for default for test the public ip
+####       #### spanish: servidor de curl por defecto para testear la ip publica    
+serverip_discover_ipv4="http://ifconfig.co/ip"
+serverip_discover_ipv6="http://ifconfig.co/ip"
 ####       #### english: iperf server for default for test net SPEED                 
 ####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet    
 serverip_iperf_ipv4="ping.online.net"   ## fwiptables-file-default ## default ping.online.net
@@ -11561,13 +11565,13 @@ else $command_ip -6 address | $command_grep -i  inet | $command_grep -i -v ::1/1
 echo
 echo "$duo_md [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
 if [ "$command_curl" == "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
-public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
+public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4 $serverip_discover_ipv4 -w "\n"| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip4"; fi; fi
 echo
 echo "$duo_md [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" == "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
-public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
+public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 $serverip_discover_ipv6 -w "\n"| head -1)"
 echo "$tab $public_ip6"; fi
 echo
 echo "$duo_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
@@ -11599,7 +11603,7 @@ else  $command_ip -4 address | $command_grep -i  inet | $command_grep -i -v 127.
 echo
 echo "$duo_md [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
 if [ "$command_curl" == "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
-public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
+public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4  $serverip_discover_ipv4 -w "\n"| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip4"; fi; fi
 echo
@@ -11639,7 +11643,7 @@ else  $command_ip -6 address | $command_grep -i inet | $command_grep -iv  "inet6
 echo
 echo "$duo_md [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" == "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
-public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
+public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 $serverip_discover_ipv6 -w "\n"| head -1)"
 if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip6"; fi; fi
 echo
