@@ -5092,6 +5092,52 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-tool-sockets:
+##########    english: gui-roll-tool-connect: gui with menu   ##########
+##########    spanish: gui-roll-tool-connect: gui con menu    ##########
+#### :rutina-inicial-gui-roll-tool-connect:
+####
+####
+if   [ "$first_option" == "gui-roll-tool-connect" ] ; then echo $head_waiting_gui
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+####
+selection=""
+####
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|iw-scan|iw-info|wpa-save|wpa-load|dhcp-client|ntpdate-client"
+####
+####
+selection="$($command_zenity --text="gui-roll-options-state" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"
+####
+####
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
+1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+"gui-principal-menu")$cmd_binary gui-roll ;;
+"gui-help-menu")$cmd_binary -gui help tool-sockets ;;
+"gui-info-menu")$cmd_binary -gui info tool-sockets ;:
+"iw-scan")$cmd_binary -gui iw-scan ;;
+"iw-info")$cmd_binary -gui iw-info ;;
+"wpa-load") $cmd_binary -gui wpa-load
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[ Load old file ]")" ;
+$cmd_binary -gui wpa-load $archivo ; $cmd_binary -gui iw-info ;;
+"wpa-save") for dispositivo in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1); do $command_ifconfig $dispositivo up ; done
+$cmd_binary -gui iw-scan
+name_ssid="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[ TYPE : Name of ssid ]" --text="[ TYPE : Name of ssid ]" )"  ;
+pass_ssid="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[ TYPE : Pass of ssid ]" --text="PASSWORD SSID $name_ssid" )" ;
+$cmd_binary wpa-save $name_ssid $pass_ssid ; $cmd_binary -gui iw-info ;;
+"dhcp-client")$cmd_binary -gui dhcp-client ;;
+"ntpdate-client")$cmd_binary -gui ntpdate-client ;;
+esac
+####
+####
+#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+####
+####
+#### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-roll-tool-connect:
 ##########    english: gui-menu: gui menu general: gui con menu  ##########
 ##########    spanish: gui-menu: gui menu general: gui con menu  ##########
 #### :rutina-inicial-gui-menu:
