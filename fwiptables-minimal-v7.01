@@ -5025,7 +5025,7 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 ####
 selection=""
 ####
-gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|stop|continue|reset|names|show|save|load|actual"
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|stop|continue|reset|names|show|save|load|actual"
 ####
 ####
 selection="$($command_zenity --text="gui-roll-firewall-control" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"
@@ -5034,9 +5034,9 @@ selection="$($command_zenity --text="gui-roll-firewall-control" --title="$cmd_bi
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui-Principal-Menu")$cmd_binary gui-roll ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-control ;;
-"Gui-Info-Menu")$cmd_binary -gui info firewall-control ;;
+"gui-principal-menu")$cmd_binary gui-roll ;;
+"gui-help-menu")$cmd_binary -gui help firewall-control ;;
+"gui-info-menu")$cmd_binary -gui info firewall-control ;;
 "stop")$cmd_binary -gui stop ; $cmd_binary -gui list4;;
 "continue")$cmd_binary -gui continue ; $cmd_binary -gui list4;;
 "reset")$cmd_binary -gui reset ; $cmd_binary -gui list4;;
@@ -5066,7 +5066,7 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 ####
 selection=""
 ####
-gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|ls4|ls6|list-filter4|list-filter6|list-alltables|\
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|ls4|ls6|list-filter4|list-filter6|list-alltables|\
 list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|list-security4|list-security6|list-ebtables|list-arptables"
 ####
 ####
@@ -5076,9 +5076,9 @@ selection="$($command_zenity --text="gui-roll-firewall-conceptual" --title="$cmd
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui-Principal-Menu")$cmd_binary gui-roll ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-conceptual ;;
-"Gui-Info-Menu")$cmd_binary -gui info firewall-conceptual ;;
+"gui-principal-menu")$cmd_binary gui-roll ;;
+"gui-help-menu")$cmd_binary -gui help firewall-conceptual ;;
+"gui-info-menu")$cmd_binary -gui info firewall-conceptual ;;
 "ls4")$cmd_binary -gui ls4 ;;
 "ls6")$cmd_binary -gui ls6 ;;
 "list-alltables")$cmd_binary -gui list-alltables ;;
@@ -5112,7 +5112,7 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 ####
 selection=""
 ####
-gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|lsn4|lsn6|listn-filter4|listn-filter6|listn-alltables|\
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|lsn4|lsn6|listn-filter4|listn-filter6|listn-alltables|\
 listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|listn-raw4|listn-raw6|listn-security4|listn-security6|list-ebtables|list-arptables"
 ####
 ####
@@ -5122,9 +5122,9 @@ selection="$($command_zenity --text="gui-roll-firewall-numeral" --title="$cmd_bi
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal-Menu")$cmd_binary gui-roll ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-numeral ;;
-"Gui-Info Menu")$cmd_binary -gui info firewall-numeral ;;
+"gui-principal-menu")$cmd_binary gui-roll ;;
+"gui-help-menu")$cmd_binary -gui help firewall-numeral ;;
+"gui-info-menu")$cmd_binary -gui info firewall-numeral ;;
 "lsn4")$cmd_binary -gui lsn4 ;;
 "lsn6")$cmd_binary -gui lsn6 ;;
 "listn-alltables")$cmd_binary -gui listn-alltables ;;
@@ -5158,7 +5158,7 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 ####
 selection=""
 ####
-gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
 names-config|show-config|modify-config|del-config|regen-config|examples-config"
 ####
 ####
@@ -5168,9 +5168,9 @@ selection="$($command_zenity --text="gui-roll-firewall-custom" --title="$cmd_bin
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui-Principal-Menu")$cmd_binary gui-roll ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-custom ;;
-"Gui-Info-Menu")$cmd_binary -gui info firewall-custom ;;
+"gui-principal-menu")$cmd_binary gui-roll ;;
+"gui-help-menu")$cmd_binary -gui help firewall-custom ;;
+"gui-info-menu")$cmd_binary -gui info firewall-custom ;;
 "new-full-config")
 archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
 $cmd_binary -gui new-full-config $archivo ;;
@@ -5214,7 +5214,7 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 ####
 selection=""
 ####
-gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|eraserules|\
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|eraserules|\
 wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|\
 games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|\
 client-web|client-vnc|client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
@@ -5228,9 +5228,9 @@ selection="$($command_zenity --text="gui-roll-firewall-launch" --title="$cmd_bin
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1) $favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui-Principal-Menu")$cmd_binary gui-roll ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-launch ;;
-"Gui-Info-Menu")$cmd_binary -gui info firewall-launch ;;
+"gui-principal-menu")$cmd_binary gui-roll ;;
+"gui-help-menu")$cmd_binary -gui help firewall-launch ;;
+"gui-info-menu")$cmd_binary -gui info firewall-launch ;;
 "eraserules")$cmd_binary -gui eraserules ; $cmd_binary gui list4;;
 "wizard-full")$cmd_binary -gui wizard-full ; $cmd_binary gui list4;;
 "wizard-mini")$cmd_binary -gui wizard-mini ; $cmd_binary gui list4;;
@@ -5283,7 +5283,7 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 ####
 selection=""
 ####
-gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|preferences-read|preferences-modify|preferences-regen|\
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|preferences-modify|preferences-regen|\
 ip4|ip6|speed-ip4|speed-ip6|sockets|version|examples|depends|notes|license"
 ####
 ####
@@ -5293,9 +5293,9 @@ selection="$($command_zenity --text="gui-roll-options-state" --title="$cmd_binar
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-Gui-Principal-Menu)$cmd_binary gui-roll ;;
-Gui-Help-Menu)$cmd_binary -gui help status-state ;;
-Gui-Info-Menu)$cmd_binary -gui info status-state ;;
+gui-principal-menu)$cmd_binary gui-roll ;;
+gui-help-menu)$cmd_binary -gui help status-state ;;
+gui-info-menu)$cmd_binary -gui info status-state ;;
 preferences-read)$cmd_binary -gui preferences-read ;;
 preferences-modify)$cmd_binary -gui preferences-modify ;;
 preferences-regen)$cmd_binary -gui preferences-regen ;;
@@ -5352,7 +5352,7 @@ exit; fi
 ####  
 if   [ "$first_option" == "gui-menu-firewall-launch" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu eraserules \
+--list gui-principal-menu gui-help-menu gui-info-menu eraserules \
 wizard-mini wizard-full custom-cfg off-line all-permisive \
 games-shooter game-wesnoth game-minetest game-freeciv game-widelands \
 client-web client-vnc client-torrent client-vpn client-tor lan-tor lan-vpn shield-ssh \
@@ -5364,9 +5364,9 @@ server-sql server-asterisk)"
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1) $favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui-Principal-Menu")$cmd_binary gui-menu ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-launch ;;
-"Gui-Info-Menu")$cmd_binary -gui info firewall-launch ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help firewall-launch ;;
+"gui-info-menu")$cmd_binary -gui info firewall-launch ;;
 "eraserules")$cmd_binary -gui eraserules ; $cmd_binary gui list4;;
 "wizard-full")$cmd_binary -gui wizard-full ; $cmd_binary gui list4;;
 "wizard-mini")$cmd_binary -gui wizard-mini ; $cmd_binary gui list4;;
@@ -5420,15 +5420,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-control" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu stop continue reset names show save load actual)"
+--list gui-principal-menu gui-help-menu gui-info-menu stop continue reset names show save load actual)"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui-Principal-Menu")$cmd_binary gui-menu ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-control ;;
-"Gui-Info-Menu")$cmd_binary -gui info firewall-control ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help firewall-control ;;
+"gui-info-menu")$cmd_binary -gui info firewall-control ;;
 "stop")$cmd_binary -gui stop ; $cmd_binary -gui list4;;
 "continue")$cmd_binary -gui continue ; $cmd_binary -gui list4;;
 "reset")$cmd_binary -gui reset ; $cmd_binary -gui list4;;
@@ -5459,16 +5459,16 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-conceptual" ] ; then 
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu ls4 ls6 list-filter4 list-filter6 list-alltables \
+--list gui-principal-menu gui-help-menu gui-info-menu ls4 ls6 list-filter4 list-filter6 list-alltables \
 list-nat4 list-nat6 list-mangle4 list-mangle6 list-raw4 list-raw6 list-security4 list-security6 list-ebtables list-arptables)"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui-Principal-Menu")$cmd_binary gui-menu ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-conceptual ;;
-"Gui-Info-Menu")$cmd_binary -gui info firewall-conceptual ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help firewall-conceptual ;;
+"gui-info-menu")$cmd_binary -gui info firewall-conceptual ;;
 "ls4")$cmd_binary -gui ls4 ;;
 "ls6")$cmd_binary -gui ls6 ;;
 "list-alltables")$cmd_binary -gui list-alltables ;;
@@ -5503,16 +5503,16 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-numeral" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu lsn4 lsn6 listn-filter4 listn-filter6 listn-alltables \
+--list gui-principal-menu gui-help-menu gui-info-menu lsn4 lsn6 listn-filter4 listn-filter6 listn-alltables \
 listn-nat4 listn-nat6 listn-mangle4 listn-mangle6 listn-raw4 listn-raw6 listn-security4 listn-security6 list-ebtables list-arptables)"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui-Principal-Menu")$cmd_binary gui-menu ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-numeral ;;
-"Gui-Info-Menu")$cmd_binary -gui info firewall-numeral ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help firewall-numeral ;;
+"gui-info-menu")$cmd_binary -gui info firewall-numeral ;;
 "lsn4")$cmd_binary -gui lsn4 ;;
 "lsn6")$cmd_binary -gui lsn6 ;;
 "listn-alltables")$cmd_binary -gui listn-alltables ;;
@@ -5547,16 +5547,16 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-custom" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu new-full-config nueva-completa-config new-mini-config nueva-mini-config \
+--list gui-principal-menu gui-help-menu gui-info-menu new-full-config nueva-completa-config new-mini-config nueva-mini-config \
 names-config show-config modify-config del-config regen-config examples-config)"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui-Principal-Menu")$cmd_binary gui-menu ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-custom ;;
-"Gui-Info-Menu")$cmd_binary -gui info firewall-custom ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help firewall-custom ;;
+"gui-info-menu")$cmd_binary -gui info firewall-custom ;;
 "new-full-config")
 archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
 $cmd_binary -gui new-full-config $archivo ;;
@@ -5601,16 +5601,16 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-options-state" ]; then 
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu preferences-read preferences-modify preferences-regen \
+--list gui-principal-menu gui-help-menu gui-info-menu preferences-read preferences-modify preferences-regen \
 ip4 ip6 speed-ip4 speed-ip6 sockets license notes version examples depends)"
 #### 
 ####
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-Gui-Principal-Menu)$cmd_binary gui-menu ;;
-Gui-Help-Menu)$cmd_binary -gui help status-state ;;
-Gui-Info-Menu)$cmd_binary -gui info status-state ;;
+gui-principal-menu)$cmd_binary gui-menu ;;
+gui-help-menu)$cmd_binary -gui help status-state ;;
+gui-info-menu)$cmd_binary -gui info status-state ;;
 preferences-read)$cmd_binary -gui preferences-read ;;
 preferences-modify)$cmd_binary -gui preferences-modify ;;
 preferences-regen)$cmd_binary -gui preferences-regen ;;
