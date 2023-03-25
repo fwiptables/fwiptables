@@ -4762,7 +4762,7 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 ####
 selection=""
 ####
-gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|stop|continue|reset|names|show|save|load|actual"
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|stop|continue|reset|names|show|save|load|actual"
 ####
 ####
 selection="$($command_zenity --text="gui-roll-firewall-control" --title="$cmd_binary" --forms --add-combo="Options" --combo-values="$gui_menu")"
@@ -4771,9 +4771,9 @@ selection="$($command_zenity --text="gui-roll-firewall-control" --title="$cmd_bi
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui-Principal-Menu")$cmd_binary gui-roll ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-control ;;
-"Gui-Info-Menu")$cmd_binary -gui info firewall-control ;;
+"gui-principal-menu")$cmd_binary gui-roll ;;
+"gui-help-menu")$cmd_binary -gui help firewall-control ;;
+"gui-info-menu")$cmd_binary -gui info firewall-control ;;
 "stop")$cmd_binary -gui stop ; $cmd_binary -gui list4;;
 "continue")$cmd_binary -gui continue ; $cmd_binary -gui list4;;
 "reset")$cmd_binary -gui reset ; $cmd_binary -gui list4;;
@@ -4803,7 +4803,7 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 ####
 selection=""
 ####
-gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|ls4|ls6|list-filter4|list-filter6|list-alltables|\
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|ls4|ls6|list-filter4|list-filter6|list-alltables|\
 list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|list-security4|list-security6|list-ebtables|list-arptables"
 ####
 ####
@@ -4813,9 +4813,9 @@ selection="$($command_zenity --text="gui-roll-firewall-conceptual" --title="$cmd
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui-Principal-Menu")$cmd_binary gui-roll ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-conceptual ;;
-"Gui-Info-Menu")$cmd_binary -gui info firewall-conceptual ;;
+"gui-principal-menu")$cmd_binary gui-roll ;;
+"gui-help-menu")$cmd_binary -gui help firewall-conceptual ;;
+"gui-info-menu")$cmd_binary -gui info firewall-conceptual ;;
 "ls4")$cmd_binary -gui ls4 ;;
 "ls6")$cmd_binary -gui ls6 ;;
 "list-alltables")$cmd_binary -gui list-alltables ;;
@@ -4849,7 +4849,7 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 ####
 selection=""
 ####
-gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|lsn4|lsn6|listn-filter4|listn-filter6|listn-alltables|\
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|lsn4|lsn6|listn-filter4|listn-filter6|listn-alltables|\
 listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|listn-raw4|listn-raw6|listn-security4|listn-security6|list-ebtables|list-arptables"
 ####
 ####
@@ -4860,7 +4860,7 @@ selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal-Menu")$cmd_binary gui-roll ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-numeral ;;
+"gui-help-menu")$cmd_binary -gui help firewall-numeral ;;
 "Gui-Info Menu")$cmd_binary -gui info firewall-numeral ;;
 "lsn4")$cmd_binary -gui lsn4 ;;
 "lsn6")$cmd_binary -gui lsn6 ;;
@@ -4895,7 +4895,7 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 ####
 selection=""
 ####
-gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
 names-config|show-config|modify-config|del-config|regen-config|examples-config"
 ####
 ####
@@ -4905,9 +4905,9 @@ selection="$($command_zenity --text="gui-roll-firewall-custom" --title="$cmd_bin
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui-Principal-Menu")$cmd_binary gui-roll ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-custom ;;
-"Gui-Info-Menu")$cmd_binary -gui info firewall-custom ;;
+"gui-principal-menu")$cmd_binary gui-roll ;;
+"gui-help-menu")$cmd_binary -gui help firewall-custom ;;
+"gui-info-menu")$cmd_binary -gui info firewall-custom ;;
 "new-full-config")
 archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
 $cmd_binary -gui new-full-config $archivo ;;
@@ -4951,7 +4951,7 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install 
 ####
 selection=""
 ####
-gui_menu="Gui-Principal-Menu|Gui-Help-Menu|Gui-Info-Menu|eraserules|\
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|eraserules|\
 wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|\
 games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|\
 client-web|client-vnc|client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
@@ -4965,9 +4965,9 @@ selection="$($command_zenity --text="gui-roll-firewall-launch" --title="$cmd_bin
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1) $favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui-Principal-Menu")$cmd_binary gui-roll ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-launch ;;
-"Gui-Info-Menu")$cmd_binary -gui info firewall-launch ;;
+"gui-principal-menu")$cmd_binary gui-roll ;;
+"gui-help-menu")$cmd_binary -gui help firewall-launch ;;
+"gui-info-menu")$cmd_binary -gui info firewall-launch ;;
 "eraserules")$cmd_binary -gui eraserules ; $cmd_binary gui list4;;
 "wizard-full")$cmd_binary -gui wizard-full ; $cmd_binary gui list4;;
 "wizard-mini")$cmd_binary -gui wizard-mini ; $cmd_binary gui list4;;
@@ -5198,7 +5198,7 @@ exit; fi
 ####  
 if   [ "$first_option" == "gui-menu-firewall-launch" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu eraserules \
+--list gui-principal-menu gui-help-menu gui-info-menu eraserules \
 wizard-mini wizard-full custom-cfg off-line all-permisive \
 games-shooter game-wesnoth game-minetest game-freeciv game-widelands \
 client-web client-vnc client-torrent client-vpn client-tor lan-tor lan-vpn shield-ssh \
@@ -5210,9 +5210,9 @@ server-sql server-asterisk)"
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1) $favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui-Principal-Menu")$cmd_binary gui-menu ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-launch ;;
-"Gui-Info-Menu")$cmd_binary -gui info firewall-launch ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help firewall-launch ;;
+"gui-info-menu")$cmd_binary -gui info firewall-launch ;;
 "eraserules")$cmd_binary -gui eraserules ; $cmd_binary gui list4;;
 "wizard-full")$cmd_binary -gui wizard-full ; $cmd_binary gui list4;;
 "wizard-mini")$cmd_binary -gui wizard-mini ; $cmd_binary gui list4;;
@@ -5266,15 +5266,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-control" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu stop continue reset names show save load actual)"
+--list gui-principal-menu gui-help-menu gui-info-menu stop continue reset names show save load actual)"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui-Principal-Menu")$cmd_binary gui-menu ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-control ;;
-"Gui-Info-Menu")$cmd_binary -gui info firewall-control ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help firewall-control ;;
+"gui-info-menu")$cmd_binary -gui info firewall-control ;;
 "stop")$cmd_binary -gui stop ; $cmd_binary -gui list4;;
 "continue")$cmd_binary -gui continue ; $cmd_binary -gui list4;;
 "reset")$cmd_binary -gui reset ; $cmd_binary -gui list4;;
@@ -5305,16 +5305,16 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-conceptual" ] ; then 
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu ls4 ls6 list-filter4 list-filter6 list-alltables \
+--list gui-principal-menu gui-help-menu gui-info-menu ls4 ls6 list-filter4 list-filter6 list-alltables \
 list-nat4 list-nat6 list-mangle4 list-mangle6 list-raw4 list-raw6 list-security4 list-security6 list-ebtables list-arptables)"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui-Principal-Menu")$cmd_binary gui-menu ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-conceptual ;;
-"Gui-Info-Menu")$cmd_binary -gui info firewall-conceptual ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help firewall-conceptual ;;
+"gui-info-menu")$cmd_binary -gui info firewall-conceptual ;;
 "ls4")$cmd_binary -gui ls4 ;;
 "ls6")$cmd_binary -gui ls6 ;;
 "list-alltables")$cmd_binary -gui list-alltables ;;
@@ -5349,16 +5349,16 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-numeral" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu lsn4 lsn6 listn-filter4 listn-filter6 listn-alltables \
+--list gui-principal-menu gui-help-menu gui-info-menu lsn4 lsn6 listn-filter4 listn-filter6 listn-alltables \
 listn-nat4 listn-nat6 listn-mangle4 listn-mangle6 listn-raw4 listn-raw6 listn-security4 listn-security6 list-ebtables list-arptables)"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui-Principal-Menu")$cmd_binary gui-menu ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-numeral ;;
-"Gui-Info-Menu")$cmd_binary -gui info firewall-numeral ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help firewall-numeral ;;
+"gui-info-menu")$cmd_binary -gui info firewall-numeral ;;
 "lsn4")$cmd_binary -gui lsn4 ;;
 "lsn6")$cmd_binary -gui lsn6 ;;
 "listn-alltables")$cmd_binary -gui listn-alltables ;;
@@ -5393,16 +5393,16 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-custom" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu new-full-config nueva-completa-config new-mini-config nueva-mini-config \
+--list gui-principal-menu gui-help-menu gui-info-menu new-full-config nueva-completa-config new-mini-config nueva-mini-config \
 names-config show-config modify-config del-config regen-config examples-config)"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui-Principal-Menu")$cmd_binary gui-menu ;;
-"Gui-Help-Menu")$cmd_binary -gui help firewall-custom ;;
-"Gui-Info-Menu")$cmd_binary -gui info firewall-custom ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help firewall-custom ;;
+"gui-info-menu")$cmd_binary -gui info firewall-custom ;;
 "new-full-config")
 archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
 $cmd_binary -gui new-full-config $archivo ;;
@@ -5447,15 +5447,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-options-state" ]; then 
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu preferences-read preferences-modify preferences-regen ip4 ip6 version examples depends)"
+--list gui-principal-menu gui-help-menu gui-info-menu preferences-read preferences-modify preferences-regen ip4 ip6 version examples depends)"
 #### 
 ####
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-Gui-Principal-Menu)$cmd_binary gui-menu ;;
-Gui-Help-Menu)$cmd_binary -gui help status-state ;;
-Gui-Info-Menu)$cmd_binary -gui info status-state ;;
+gui-principal-menu)$cmd_binary gui-menu ;;
+gui-help-menu)$cmd_binary -gui help status-state ;;
+gui-info-menu)$cmd_binary -gui info status-state ;;
 preferences-read)$cmd_binary -gui preferences-read ;;
 preferences-modify)$cmd_binary -gui preferences-modify ;;
 preferences-regen)$cmd_binary -gui preferences-regen ;;
@@ -5483,15 +5483,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-tool-connect" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "iw-scan" "iw-info" "wpa-save" "wpa-load" "dhcp-client" "ntpdate-client" )"
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "iw-scan" "iw-info" "wpa-save" "wpa-load" "dhcp-client" "ntpdate-client" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu ;;
-"Gui Help Menu")$cmd_binary -gui help tool-sockets ;;
-"Gui Info Menu")$cmd_binary -gui info tool-sockets ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help tool-sockets ;;
+"gui-info-menu")$cmd_binary -gui info tool-sockets ;;
 "iw-scan")$cmd_binary -gui iw-scan ;;
 "iw-info")$cmd_binary -gui iw-info ;;
 "wpa-load")
@@ -5525,15 +5525,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-tool-rule" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "rule-del-num" "rule-del-shield" "rule-add-shield" )"
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "rule-del-num" "rule-del-shield" "rule-add-shield" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu ;;
-"Gui Help Menu")$cmd_binary -gui help tool-sockets ;;
-"Gui Info Menu")$cmd_binary -gui info tool-sockets ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help tool-sockets ;;
+"gui-info-menu")$cmd_binary -gui info tool-sockets ;;
 "rule-del-num")$cmd_binary -gui rule-del-num ;;
 "rule-del-shield")$cmd_binary -gui rule-del-shield ;;
 "rule-add-shield")$cmd_binary -gui rule-add-shield ;;
@@ -5556,16 +5556,16 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-tool-sockets" ] ; then
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ip4" "ip6" "info-proxy" "info-listen" "info-route" "info-nodes" \
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "ip4" "ip6" "info-proxy" "info-listen" "info-route" "info-nodes" \
 "info-net" "info-system" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" "ntpdate-client" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu ;;
-"Gui Help Menu")$cmd_binary -gui help tool-sockets ;;
-"Gui Info Menu")$cmd_binary -gui info tool-sockets ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help tool-sockets ;;
+"gui-info-menu")$cmd_binary -gui info tool-sockets ;;
 "ip4")$cmd_binary -gui ip4 ;;
 "ip6")$cmd_binary -gui ip6 ;;
 "info-route")$cmd_binary -gui route ;;
@@ -5599,15 +5599,15 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu-tool-forward" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ipforward-list" "ipforward-on" "ipforward-off")"
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "ipforward-list" "ipforward-on" "ipforward-off")"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu ;;
-"Gui Help Menu")$cmd_binary -gui help tool-forward ;;
-"Gui Info Menu")$cmd_binary -gui info tool-forward ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help tool-forward ;;
+"gui-info-menu")$cmd_binary -gui info tool-forward ;;
 "ipforward-list")$cmd_binary -gui ipforward-list ;;
 "ipforward-on")$cmd_binary -gui ipforward-on     ;;
 "ipforward-off")$cmd_binary -gui ipforward-off   ;;
@@ -5630,15 +5630,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-tool-sshd" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sshd-tunnel-info" "sshd-tunnel-on" "sshd-tunnel-off" )"
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "sshd-tunnel-info" "sshd-tunnel-on" "sshd-tunnel-off" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu ;;
-"Gui Help Menu")$cmd_binary -gui help tool-forward ;;
-"Gui Info Menu")$cmd_binary -gui info tool-forward ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help tool-forward ;;
+"gui-info-menu")$cmd_binary -gui info tool-forward ;;
 "sshd-tunnel-info")$cmd_binary -gui sshd-tunnel-info ;;
 "sshd-tunnel-on")
 archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[ type: user@host ]" --text "[ type: user@host ]")" ;
@@ -5663,15 +5663,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-tool-icmp" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "traceicmp-ip4" "traceicmp-ip6" "ping-ip4" "ping-ip6" )"
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "traceicmp-ip4" "traceicmp-ip6" "ping-ip4" "ping-ip6" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu ;;
-"Gui Help Menu")$cmd_binary -gui help tool-icmp ;;
-"Gui Info Menu")$cmd_binary -gui info tool-icmp ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help tool-icmp ;;
+"gui-info-menu")$cmd_binary -gui info tool-icmp ;;
 "traceicmp-ip4") archivo="$($favorite_graphicall_dialog $graphic_window_dimension --entry --text="[ type the ip or host ]")" ;
 $cmd_binary -gui traceicmp-ip4 $archivo ;;
 "traceicmp-ip6") archivo="$($favorite_graphicall_dialog $graphic_window_dimension --entry --text="[ type the ip or host ]")" ;
@@ -5699,15 +5699,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-tool-udp" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "host" "dig" "resolveip" "geoip" "ntpdate-client" )"
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "host" "dig" "resolveip" "geoip" "ntpdate-client" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu ;;
-"Gui Help Menu")$cmd_binary -gui help tool-udp ;;
-"Gui Info Menu")$cmd_binary -gui info tool-udp ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help tool-udp ;;
+"gui-info-menu")$cmd_binary -gui info tool-udp ;;
 "host")archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
 $cmd_binary -gui host $archivo ;;
 "dig")archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
@@ -5736,15 +5736,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-tool-tcp" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "tracetcp-ip4" "tracetcp-ip6" "speed-ip4" "speed-ip6")"
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "tracetcp-ip4" "tracetcp-ip6" "speed-ip4" "speed-ip6")"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu ;;
-"Gui Help Menu")$cmd_binary -gui help tool-tcp ;;
-"Gui Info Menu")$cmd_binary -gui info tool-tcp ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help tool-tcp ;;
+"gui-info-menu")$cmd_binary -gui info tool-tcp ;;
 "tracetcp-ip4")archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ type the ip or host ]")" ;
 $cmd_binary -gui tracetcp-ip4 $archivo  ;;
 "tracetcp-ip6")archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ type the ip or host ]")" ;
@@ -5770,15 +5770,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-tool-sudofw" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sudofw-adduser" "sudofw-deluser" "sudofw-listuser" "aliasfw-list" )"
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "sudofw-adduser" "sudofw-deluser" "sudofw-listuser" "aliasfw-list" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu ;;
-"Gui Help Menu")$cmd_binary -gui help tool-sudofw ;;
-"Gui Info Menu")$cmd_binary -gui info tool-sudofw ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help tool-sudofw ;;
+"gui-info-menu")$cmd_binary -gui info tool-sudofw ;;
 "sudofw-adduser")archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ type username to allow sudo: username1,username2 ]")" ;
 $cmd_binary -gui sudofw-adduser $archivo ;;
 "sudofw-deluser")$cmd_binary -gui sudofw-deluser ;;
@@ -5803,15 +5803,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-tool-game" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "game-word" "game-number" "game-domain" "game-rgb" "game-hex" )"
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "game-word" "game-number" "game-domain" "game-rgb" "game-hex" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu ;;
-"Gui Help Menu")$cmd_binary -gui help tool-game ;;
-"Gui Info Menu")$cmd_binary -gui info tool-game ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help tool-game ;;
+"gui-info-menu")$cmd_binary -gui info tool-game ;;
 "game-word")$cmd_binary -gui game-word ;;
 "game-number")$cmd_binary -gui game-number ;;
 "game-domain")$cmd_binary -gui game-domain ;;
@@ -5840,15 +5840,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-tool-speed" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "free-ram" "speed-ram" "speed-disk" "speed-glx" "speed-cpu" )"
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "free-ram" "speed-ram" "speed-disk" "speed-glx" "speed-cpu" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu ;;
-"Gui Help Menu")$cmd_binary -gui help tool-speed ;;
-"Gui Info Menu")$cmd_binary -gui info tool-speed ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help tool-speed ;;
+"gui-info-menu")$cmd_binary -gui info tool-speed ;;
 "free-ram")$cmd_binary -gui free-ram ;;
 "speed-ram")$cmd_binary -gui speed-ram ;;
 "speed-disk")$cmd_binary -gui speed-disk ;;
@@ -5873,15 +5873,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-tool-util" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "weather" "md5sum" "radio-mp3 link" "gpg-notes" )"
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "weather" "md5sum" "radio-mp3 link" "gpg-notes" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu ;;
-"Gui Help Menu")$cmd_binary -gui help tool-speed ;;
-"Gui Info Menu")$cmd_binary -gui info tool-speed ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help tool-speed ;;
+"gui-info-menu")$cmd_binary -gui info tool-speed ;;
 "weather")$cmd_binary -gui weather ;;
 "md5sum")archivo="$($favorite_graphicall_dialog --file-selection)" ;
 $cmd_binary -gui md5sum $archivo ;;
@@ -5908,15 +5908,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-tool-install" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "install" "howto-upgrade" "upgrade" "clean-tmp")"
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "install" "howto-upgrade" "upgrade" "clean-tmp")"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu ;;
-"Gui Help Menu")$cmd_binary -gui help tool-install ;;
-"Gui Info Menu")$cmd_binary -gui info tool-install ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help tool-install ;;
+"gui-info-menu")$cmd_binary -gui info tool-install ;;
 "install")$cmd_binary -gui install ;;
 "howto-upgrade")$cmd_binary -gui howto-upgrade ;;
 "upgrade")$cmd_binary -gui upgrade ;;
@@ -5940,15 +5940,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-tool-addblock" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "addblock-list" "addblock-list info" "addblock-on" "addblock-off" )"
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "addblock-list" "addblock-list info" "addblock-on" "addblock-off" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu;;
-"Gui Help Menu")$cmd_binary -gui help tool-addblock ;;
-"Gui Info Menu")$cmd_binary -gui info tool-addblock ;;
+"gui-principal-menu")$cmd_binary gui-menu;;
+"gui-help-menu")$cmd_binary -gui help tool-addblock ;;
+"gui-info-menu")$cmd_binary -gui info tool-addblock ;;
 "addblock-list")$cmd_binary -gui addblock-list;;
 "addblock-list info")$cmd_binary -gui addblock-list info ;;
 "addblock-on")
@@ -5974,15 +5974,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-tool-dev" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "new-versions" "dev-version" "dev-changes" "code" "intro" )"
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "new-versions" "dev-version" "dev-changes" "code" "intro" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu  ;;
-"Gui Help Menu")$cmd_binary -gui help tool-dev ;;
-"Gui Info Menu")$cmd_binary -gui info tool-dev ;;
+"gui-principal-menu")$cmd_binary gui-menu  ;;
+"gui-help-menu")$cmd_binary -gui help tool-dev ;;
+"gui-info-menu")$cmd_binary -gui info tool-dev ;;
 "new-versions")$cmd_binary -gui new-versions ;;
 "dev-version")$cmd_binary -gui dev-version  ;;
 "dev-changes")$cmd_binary -gui dev-changes ;;
@@ -6008,15 +6008,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-show-hardware" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "lpinfo" "lsblk" "lsusb" "lscpu" "lspci" "lsgpu" "lshw")"
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "lpinfo" "lsblk" "lsusb" "lscpu" "lspci" "lsgpu" "lshw")"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu ;;
-"Gui Help Menu")$cmd_binary -gui help show-hardware ;;
-"Gui Info Menu")$cmd_binary -gui info show-hardware ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help show-hardware ;;
+"gui-info-menu")$cmd_binary -gui info show-hardware ;;
 "lpinfo")$cmd_binary -gui lpinfo;;
 "lsblk")$cmd_binary -gui lsblk;;
 "lpusb")$cmd_binary -gui lsusb;;
@@ -6043,16 +6043,16 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-show-etc" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "hosts" "protocols" "services" "hosts.allow" "hosts.deny" \
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "hosts" "protocols" "services" "hosts.allow" "hosts.deny" \
 "resolv.conf" "preferences-read" "preferences-modify" "preferences-read" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu ;;
-"Gui Help Menu")$cmd_binary -gui help show-etc ;;
-"Gui Info Menu")$cmd_binary -gui info show-etc ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help show-etc ;;
+"gui-info-menu")$cmd_binary -gui info show-etc ;;
 "hosts")$cmd_binary -gui hosts ;;
 "protocols")$cmd_binary -gui protocols ;;
 "services")$cmd_binary -gui services ;;
@@ -6081,15 +6081,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-show-log" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "log-ssh" "filelog" "autolog" "log-search")"
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "log-ssh" "filelog" "autolog" "log-search")"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu ;;
-"Gui Help Menu")$cmd_binary -gui help show-log ;;
-"Gui Info Menu")$cmd_binary -gui info show-log ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help show-log ;;
+"gui-info-menu")$cmd_binary -gui info show-log ;;
 "log-ssh")$cmd_binary -gui log-ssh ;;
 "filelog")$cmd_binary -gui filelog ;;
 "autolog")$cmd_binary -gui autolog ;;
@@ -6115,15 +6115,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-help-about" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "about" "version" "depends" "config-eng" "config-spa" )"
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "about" "version" "depends" "config-eng" "config-spa" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu ;;
-"Gui Help Menu")$cmd_binary -gui help help-about ;;
-"Gui Info Menu")$cmd_binary -gui info help-about ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help help-about ;;
+"gui-info-menu")$cmd_binary -gui info help-about ;;
 "about")$cmd_binary -gui about ;;
 "version")$cmd_binary -gui version ;;
 "depends")$cmd_binary -gui depends ;;
@@ -6148,15 +6148,15 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-help-help" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "mini-options" "full-options" "all-help" "readme" "leeme" "notes" "license" )"
+--list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "mini-options" "full-options" "all-help" "readme" "leeme" "notes" "license" )"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"Gui Principal Menu")$cmd_binary gui-menu ;;
-"Gui Help Menu")$cmd_binary -gui help help-help ;;
-"Gui Info Menu")$cmd_binary -gui info help-help ;;
+"gui-principal-menu")$cmd_binary gui-menu ;;
+"gui-help-menu")$cmd_binary -gui help help-help ;;
+"gui-info-menu")$cmd_binary -gui info help-help ;;
 "mini-options")$cmd_binary -gui mini-options ;;
 "full-options")$cmd_binary -gui full-options ;;
 "all-help")$cmd_binary -gui all-help ;;
