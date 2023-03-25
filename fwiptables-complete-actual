@@ -4725,7 +4725,7 @@ case "$selection_final" in
 "04-Firewall-Launch")$cmd_binary gui-roll-firewall-launch ; exit ;;
 "05-Options-State")$cmd_binary gui-roll-options-state ; exit ;;
 "06-Tool-sockets")$cmd_binary gui-roll-tool-sockets ; exit ;;
-"07-Tool-connect")$cmd_binary gui-menu-tool-connect ; exit ;;
+"07-Tool-connect")$cmd_binary gui-roll-tool-connect ; exit ;;
 "08-Tool-rule")$cmd_binary gui-menu-tool-rule ; exit ;;
 "09-Tool-forward")$cmd_binary gui-menu-tool-forward ; exit ;;
 "10-Tool-sshd")$cmd_binary gui-menu-tool-sshd ; exit ;;
@@ -5113,7 +5113,7 @@ case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "gui-principal-menu")$cmd_binary gui-roll ;;
 "gui-help-menu")$cmd_binary -gui help tool-sockets ;;
-"gui-info-menu")$cmd_binary -gui info tool-sockets ;:
+"gui-info-menu")$cmd_binary -gui info tool-sockets ;;
 "iw-scan")$cmd_binary -gui iw-scan ;;
 "iw-info")$cmd_binary -gui iw-info ;;
 "wpa-load") $cmd_binary -gui wpa-load
