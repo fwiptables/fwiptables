@@ -4747,7 +4747,7 @@ case "$selection_final" in
 esac
 ####
 ####
-$favorite_graphicall_dialog --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+#### #### $favorite_graphicall_dialog --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4788,7 +4788,7 @@ $cmd_binary -gui load $archivo ; $cmd_binary -gui list4;;
 esac
 ####
 ####
-$favorite_graphicall_dialog --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+#### $favorite_graphicall_dialog --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4834,7 +4834,7 @@ case "$selection_final" in
 esac
 ####
 ####
-$favorite_graphicall_dialog --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+#### $favorite_graphicall_dialog --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4880,7 +4880,7 @@ case "$selection_final" in
 esac
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+#### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4936,7 +4936,7 @@ $cmd_binary -gui del-config $archivo ;;
 esac
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+#### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5005,7 +5005,7 @@ $cmd_binary -gui custom $archivo ; $cmd_binary gui list4;;
 esac
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+#### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5043,7 +5043,7 @@ depends)$cmd_binary -gui depends ;;
 esac
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+#### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5087,7 +5087,7 @@ case "$selection_final" in
 "ntpdate-client")$cmd_binary -gui ntpdate-client ;;esac
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+#### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5186,7 +5186,7 @@ case "$selection_final" in
 esac
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+#### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -6198,14 +6198,13 @@ untexto="$cmd_binary gui-shell"
 menugtk=$($favorite_graphicall_dialog  --forms $graphic_window_dimension --title="Gui Shell || $cmd_binary || $cmd_version ||" \
 --text="$($cmd_binary mini-options)" --add-entry="$cmd_binary " )
 case $? in
-1)
+1) exit ;;
 ####
 ####
 #### zenity --info $graphic_window_dimension --text="$cmd_binary good bye";
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" \
---auto-close --auto-kill ; exit;;
+#### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
