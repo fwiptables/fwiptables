@@ -5633,12 +5633,13 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-sshd:
 ####
 ####
-if   [ "$first_option" == "gui-menu-tool-sshd" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "sshd-tunnel-info" "sshd-tunnel-on" "sshd-tunnel-off" )"
+if   [ "$first_option" == "gui-menu-tool-sshd" ] ; then
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|sshd-tunnel-info|sshd-tunnel-on|sshd-tunnel-off"
+selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator "" --list $selection_menu)"
 #### 
-#### 
-selection_final="$(echo $selection | sed 's/\|//g')"
+####
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "gui-principal-menu")$cmd_binary gui-menu ;;
@@ -5666,12 +5667,13 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-icmp:
 ####
 ####
-if   [ "$first_option" == "gui-menu-tool-icmp" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "traceicmp-ip4" "traceicmp-ip6" "ping-ip4" "ping-ip6" )"
+if   [ "$first_option" == "gui-menu-tool-icmp" ] ; then 
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|traceicmp-ip4|traceicmp-ip6|ping-ip4|ping-ip6"
+selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator "" --list $selection_menu)"
 #### 
-#### 
-selection_final="$(echo $selection | sed 's/\|//g')"
+####
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "gui-principal-menu")$cmd_binary gui-menu ;;
@@ -5702,12 +5704,13 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-udp:
 ####
 ####
-if   [ "$first_option" == "gui-menu-tool-udp" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "host" "dig" "resolveip" "geoip" "ntpdate-client" )"
+if   [ "$first_option" == "gui-menu-tool-udp" ] ; then
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|host|dig|resolveip|geoip|ntpdate-client"
+selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator "" --list $selection_menu)"
 #### 
-#### 
-selection_final="$(echo $selection | sed 's/\|//g')"
+####
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "gui-principal-menu")$cmd_binary gui-menu ;;
@@ -5739,12 +5742,13 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-tcp:
 ####
 ####
-if   [ "$first_option" == "gui-menu-tool-tcp" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "tracetcp-ip4" "tracetcp-ip6" "speed-ip4" "speed-ip6")"
+if   [ "$first_option" == "gui-menu-tool-tcp" ] ; then
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|tracetcp-ip4|tracetcp-ip6|speed-ip4|speed-ip6"
+selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator "" --list $selection_menu)"
 #### 
-#### 
-selection_final="$(echo $selection | sed 's/\|//g')"
+####
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "gui-principal-menu")$cmd_binary gui-menu ;;
@@ -5774,11 +5778,12 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-tool-sudofw" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "sudofw-adduser" "sudofw-deluser" "sudofw-listuser" "aliasfw-list" )"
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|sudofw-adduser|sudofw-deluser|sudofw-listuser|aliasfw-list"
+selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator "" --list $selection_menu)"
 #### 
-#### 
-selection_final="$(echo $selection | sed 's/\|//g')"
+####
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "gui-principal-menu")$cmd_binary gui-menu ;;
@@ -5806,12 +5811,13 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-game:
 ####
 ####
-if   [ "$first_option" == "gui-menu-tool-game" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "game-word" "game-number" "game-domain" "game-rgb" "game-hex" )"
+if   [ "$first_option" == "gui-menu-tool-game" ] ; then
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|game-word|game-number|game-domain|game-rgb|game-hex"
+selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator "" --list $selection_menu)"
 #### 
-#### 
-selection_final="$(echo $selection | sed 's/\|//g')"
+####
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "gui-principal-menu")$cmd_binary gui-menu ;;
@@ -5843,12 +5849,13 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-speed:
 ####
 ####
-if   [ "$first_option" == "gui-menu-tool-speed" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "free-ram" "speed-ram" "speed-disk" "speed-glx" "speed-cpu" )"
+if   [ "$first_option" == "gui-menu-tool-speed" ] ; then
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|free-ram|speed-ram|speed-disk|speed-glx|speed-cpu"
+selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator "" --list $selection_menu)"
 #### 
-#### 
-selection_final="$(echo $selection | sed 's/\|//g')"
+####
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "gui-principal-menu")$cmd_binary gui-menu ;;
