@@ -5302,13 +5302,14 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-conceptual:
 ####
 ####
-if   [ "$first_option" == "gui-menu-firewall-conceptual" ] ; then 
-selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list gui-principal-menu gui-help-menu gui-info-menu ls4 ls6 list-filter4 list-filter6 list-alltables \
-list-nat4 list-nat6 list-mangle4 list-mangle6 list-raw4 list-raw6 list-security4 list-security6 list-ebtables list-arptables)"
+if   [ "$first_option" == "gui-menu-firewall-conceptual" ] ; then
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|ls4|ls6|list-filter4|list-filter6|list-alltables|\
+list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|list-security4|list-security6|list-ebtables|list-arptables"
+selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator "" --list $selection_menu)"
 #### 
-#### 
-selection_final="$(echo $selection | sed 's/\|//g')"
+####
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "gui-principal-menu")$cmd_binary gui-menu ;;
@@ -5346,13 +5347,14 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-numeral:
 ####
 ####
-if   [ "$first_option" == "gui-menu-firewall-numeral" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list gui-principal-menu gui-help-menu gui-info-menu lsn4 lsn6 listn-filter4 listn-filter6 listn-alltables \
-listn-nat4 listn-nat6 listn-mangle4 listn-mangle6 listn-raw4 listn-raw6 listn-security4 listn-security6 list-ebtables list-arptables)"
-#### 
-#### 
-selection_final="$(echo $selection | sed 's/\|//g')"
+if   [ "$first_option" == "gui-menu-firewall-numeral" ] ; then
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|lsn4|lsn6|listn-filter4|listn-filter6|listn-alltables|\
+listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|listn-raw4|listn-raw6|listn-security4|listn-security6|list-ebtables|list-arptables"
+selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator "" --list $selection_menu)"
+####
+####
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "gui-principal-menu")$cmd_binary gui-menu ;;
@@ -5390,13 +5392,14 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-custom:
 ####
 ####
-if   [ "$first_option" == "gui-menu-firewall-custom" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list gui-principal-menu gui-help-menu gui-info-menu new-full-config nueva-completa-config new-mini-config nueva-mini-config \
-names-config show-config modify-config del-config regen-config examples-config)"
-#### 
-#### 
-selection_final="$(echo $selection | sed 's/\|//g')"
+if   [ "$first_option" == "gui-menu-firewall-custom" ] ; then 
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
+names-config|show-config|modify-config|del-config|regen-config|examples-config"
+selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator "" --list $selection_menu)"
+####
+####
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "gui-principal-menu")$cmd_binary gui-menu ;;
@@ -5444,12 +5447,13 @@ exit; fi
 #### :rutina-inicial-gui-menu-options-state:
 ####
 ####
-if   [ "$first_option" == "gui-menu-options-state" ]; then 
-selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list gui-principal-menu gui-help-menu gui-info-menu preferences-read preferences-modify preferences-regen ip4 ip6 version examples depends)"
-#### 
+if   [ "$first_option" == "gui-menu-options-state" ]; then
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|preferences-modify|preferences-regen|ip4|ip6|version|examples|depends"
+selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator "" --list $selection_menu)"
 ####
-selection_final="$(echo $selection | sed 's/\|//g')"
+####
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 gui-principal-menu)$cmd_binary gui-menu ;;
@@ -5480,12 +5484,13 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-connect:
 ####
 ####
-if   [ "$first_option" == "gui-menu-tool-connect" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "iw-scan" "iw-info" "wpa-save" "wpa-load" "dhcp-client" "ntpdate-client" )"
-#### 
-#### 
-selection_final="$(echo $selection | sed 's/\|//g')"
+if   [ "$first_option" == "gui-menu-tool-connect" ] ; then
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|iw-scan|iw-info|wpa-save|wpa-load|dhcp-client|ntpdate-client"
+selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator "" --list $selection_menu)"
+####
+####
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "gui-principal-menu")$cmd_binary gui-menu ;;
@@ -5522,12 +5527,13 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-rule:
 ####
 ####
-if   [ "$first_option" == "gui-menu-tool-rule" ] ; then $nada ;
-selection="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
---list "gui-principal-menu" "gui-help-menu" "gui-info-menu" "rule-del-num" "rule-del-shield" "rule-add-shield" )"
-#### 
-#### 
-selection_final="$(echo $selection | sed 's/\|//g')"
+if   [ "$first_option" == "gui-menu-tool-rule" ] ; then 
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|rule-del-num|rule-del-shield|rule-add-shield"
+selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="Column" --text="Options" --title="Menu" --separator "" --list $selection_menu)"
+####
+####
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "gui-principal-menu")$cmd_binary gui-menu ;;
