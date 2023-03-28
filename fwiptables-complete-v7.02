@@ -1294,26 +1294,32 @@ exit; fi
 ####
 if   [ "$first_option" == "upgrade-complete" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
-echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
-case "$favorite_text_browser" in "$NULL") echo "$duo_md [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
+echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net ]"
+#### with curl
+#### download
+if  [ "$command_curl" != "$NULL" ]; then 
+echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/$cmd_config with $command_curl command ]"
+echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $command_curl browser ]"
+echo "$duo_md [ info ] [ download ] [ $url_web_actualfull ]"
+echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
+$command-curl -o $directory_temporal/$cmd_config-installer $url_web_actualfull
+chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
+#### install
+if [ -s "$directory_temporal/$cmd_config-installer" ] ;
+then echo "$duo_md [  ok  ] [ downloaded $cmd_config version ]" ;
+$directory_temporal/$cmd_config-installer install ; 
+else echo "$duo_md [ fail ] [ install fail ]"; fi ;
+exit; fi
+#### with favorite_text_browser
+#### or download
+if  [ "$favorite_text_browser" != "$NULL" ]; then echo "$duo_md [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ; fi
 echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/$cmd_config with $favorite_text_browser command ]"
 echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
-####
-####
-####  English: download fwiptables
-####  Spanish: descarga fwiptables
-####
-####
 echo "$duo_md [ info ] [ download ] [ $url_web_actualfull ]"
 echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
 $favorite_text_browser -source $url_web_actualfull &> $directory_temporal/$cmd_config-installer || echo "[ fail ] [ disconnected ]"
 chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
-####
-####
-#### English: launch install
-#### Spanish: lanza instalacion
-####
-####
+#### install
 if [ -s "$directory_temporal/$cmd_config-installer" ] ;
 then echo "$duo_md [  ok  ] [ downloaded $cmd_config version ]" ;
 $directory_temporal/$cmd_config-installer install ; 
