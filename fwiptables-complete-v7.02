@@ -1287,8 +1287,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-install:
-##########    english: upgrade-complete: upgrade in the file /usr/bin/fwiptables       ##########
-##########    spanish: upgrade-complete: actualiza en el archivo /usr/bin/fwiptables   ##########
+##########    english: upgrade-complete: upgrade in the file /usr/bin/fwiptables-cmd       ##########
+##########    spanish: upgrade-complete: actualiza en el archivo /usr/bin/fwiptables-cmd   ##########
 #### :rutina-inicial-upgrade-complete:
 ####
 ####
@@ -1302,65 +1302,63 @@ echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/$
 echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $command_curl browser ]"
 echo "$duo_md [ info ] [ download ] [ $url_web_actualfull ]"
 echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
-$command-curl -o $directory_temporal/$cmd_config-installer $url_web_actualfull
+$command_curl -s -L $url_web_actualfull -o $directory_temporal/$cmd_config-installer
 chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
 #### install
-if [ -s "$directory_temporal/$cmd_config-installer" ] ;
-then echo "$duo_md [  ok  ] [ downloaded $cmd_config version ]" ;
-$directory_temporal/$cmd_config-installer install ; 
-else echo "$duo_md [ fail ] [ install fail ]"; fi ;
-exit; fi
-#### with favorite_text_browser
-#### or download
-if  [ "$favorite_text_browser" != "$NULL" ]; then echo "$duo_md [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ; fi
-echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/$cmd_config with $favorite_text_browser command ]"
+if [ -s "$directory_temporal/$cmd_config-installer" ] ; then echo "$duo_md [  ok  ] [ downloaded $cmd_version version ]" 
+$directory_temporal/$cmd_config-installer install ; else echo "$duo_md [ fail ] [ install fail ]"; fi ; exit; fi
+#### with favorite_text_browser	
+####  download
+if  [ "$favorite_text_browser" != "$NULL" ]; then echo "$duo_md [ notice  ] [ Install or curl or a text web browser for upgrade $cmd_binary ]"; exit
+else echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/$cmd_config with $favorite_text_browser command ]"
 echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
 echo "$duo_md [ info ] [ download ] [ $url_web_actualfull ]"
 echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
 $favorite_text_browser -source $url_web_actualfull &> $directory_temporal/$cmd_config-installer || echo "[ fail ] [ disconnected ]"
 chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
 #### install
-if [ -s "$directory_temporal/$cmd_config-installer" ] ;
-then echo "$duo_md [  ok  ] [ downloaded $cmd_config version ]" ;
-$directory_temporal/$cmd_config-installer install ; 
-else echo "$duo_md [ fail ] [ install fail ]"; fi ;
+if [ -s "$directory_temporal/$cmd_config-installer" ] ; then echo "$duo_md [  ok  ] [ downloaded $cmd_version version ]" 
+$directory_temporal/$cmd_config-installer install ; else echo "$duo_md [ fail ] [ install fail ]"; fi ; exit ; fi
 ####
 ####
-exit ; fi
+fi
 ####
 ####
 #### :rutina-final-upgrade-complete:
-##########    english: upgrade-minimal: upgrade in the file /usr/bin/fwiptables       ##########
-##########    spanish: upgrade-minimal: actualiza en el archivo /usr/bin/fwiptables   ##########
+##########    english: upgrade-minimal: upgrade in the file /usr/bin/fwiptables-min       ##########
+##########    spanish: upgrade-minimal: actualiza en el archivo /usr/bin/fwiptables-min   ##########
 #### :rutina-inicial-upgrade-minimal:
 ####
 ####
 if   [ "$first_option" == "upgrade-minimal" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
-echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
-case "$favorite_text_browser" in "$NULL") echo "$duo_md [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
-echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/$cmd_config with $favorite_text_browser command ]"
+echo "$header_ok [ $first_option ] [ upgrade stable version from web ] [ upgrade md ] || ||"
+echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at stable version from sourceforge.net ]"
+#### with curl
+#### download
+if  [ "$command_curl" != "$NULL" ]; then 
+echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/$cmd_config with $command_curl command ]"
+echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $command_curl browser ]"
+echo "$duo_md [ info ] [ download ] [ $url_web_actualmini ]"
+echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
+$command_curl -s -L $url_web_actualmini -o $directory_temporal/$cmd_config-installer
+chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
+#### install
+if [ -s "$directory_temporal/$cmd_config-installer" ] ; then echo "$duo_md [  ok  ] [ downloaded $cmd_version version ]" ;
+$directory_temporal/$cmd_config-installer install ; 
+else echo "$duo_md [ fail ] [ install fail ]"; fi ; exit; fi
+#### with favorite_text_browser
+#### or download
+if  [ "$favorite_text_browser" != "$NULL" ]; then echo "$duo_md [ notice  ] [ Install or culr or a text web browser for upgrade $cmd_binary ]"; exit
+else echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/$cmd_config with $favorite_text_browser command ]"
 echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
-####
-####
-####  English: download fwiptables
-####  Spanish: descarga fwiptables
-####
-####
 echo "$duo_md [ info ] [ download ] [ $url_web_actualmini ]"
 echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
 $favorite_text_browser -source $url_web_actualmini &> $directory_temporal/$cmd_config-installer || echo "[ fail ] [ disconnected ]"
 chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
-####
-####
-#### English: launch install
-#### Spanish: lanza instalacion
-####
-####
-if [ -s "$directory_temporal/$cmd_config-installer" ] ;
-then echo "$duo_md [  ok  ] [ downloaded $cmd_config version ]" ;
+#### install
+if [ -s "$directory_temporal/$cmd_config-installer" ] ; then echo "$duo_md [  ok  ] [ downloaded $cmd_version version ]" ;
 $directory_temporal/$cmd_config-installer install ; 
-else echo "$duo_md [ fail ] [ install fail ]"; fi ;
+else echo "$duo_md [ fail ] [ install fail ]"; fi ; exit ; fi
 ####
 ####
 exit ; fi
