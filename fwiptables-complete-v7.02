@@ -58,8 +58,8 @@ PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
 if [ "$(id -u)" != "0" ] ; then echo
 echo
 echo "### [ info ] [ fwiptables needs to be root to work ]"
-echo
 echo "### [ fail ] [ Be root to work with fwiptables in your system ] [ Try with root user ]"
+echo
 exit ; fi
 ####
 ####
@@ -76,8 +76,8 @@ command_iptables_nft="$(command -v iptables-nft)"
 if [ "$command_iptables_legacy" == "$NULL" ] || [ "$command_iptables_nft" == "$NULL" ] ; then echo
 echo
 echo "### [ info ] [ fwiptables needs iptables legacy and iptables nft to work ]"
-echo
 echo "### [ fail ] [ it needs iptables to works with fwiptables in your system ]"
+echo
 fi
 ####
 ####
