@@ -5213,7 +5213,7 @@ gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|eraserules|\
 wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|\
 games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|\
 client-web|client-vnc|client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
-server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|\
+server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|server-domain|\
 server-news|server-mail|server-ftp|server-teamspeak|server-mumble|server-sql|server-asterisk"
 selection_menu="$($command_zenity --text="gui-roll-firewall-custom" --title="$cmd_binary" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
@@ -5255,6 +5255,7 @@ case "$selection_final" in
 "server-mumble")$cmd_binary -gui server-mumble ; $cmd_binary gui list4;;
 "server-sql")$cmd_binary -gui server-sql ; $cmd_binary gui list4;;
 "server-asterisk")$cmd_binary -gui server-asterisk ; $cmd_binary gui list4;;
+"server-domain")$cmd_binary -gui server-domain ; $cmd_binary gui list4;;
 "custom-cfg")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension \
 --title "[Launch Custom]" --text="$($command_ls -1 $directory_config)")" ; 
 $cmd_binary -gui custom $archivo ; $cmd_binary gui list4;;
@@ -5349,7 +5350,7 @@ gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|eraserules|\
 wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|\
 games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|\
 client-web|client-vnc|client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
-server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|\
+server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|server-domain|\
 server-news|server-mail|server-ftp|server-teamspeak|server-mumble|server-sql|server-asterisk"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="$first_option" --text="$first_option" --title="$cmd_binary" --separator=" " --list $selection_menu )"
@@ -5391,6 +5392,7 @@ case "$selection_final" in
 "server-mumble")$cmd_binary -gui server-mumble ; $cmd_binary gui list4;;
 "server-sql")$cmd_binary -gui server-sql ; $cmd_binary gui list4;;
 "server-asterisk")$cmd_binary -gui server-asterisk ; $cmd_binary gui list4;;
+"server-domain")$cmd_binary -gui server-domain ; $cmd_binary gui list4;;
 "custom-cfg")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension \
 --title "[Launch Custom]" --text="$($command_ls -1 $directory_config)")" ; 
 $cmd_binary -gui custom $archivo ; $cmd_binary gui list4;;
