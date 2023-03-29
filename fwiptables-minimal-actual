@@ -2670,6 +2670,26 @@ server_port_tcp="ssh,5432,3306,3360" ;
 fi
 ####
 ####
+####   #### english: firewall of system server-domain:
+####   #### spanish: cortafuego del sistema server-domain:
+####
+####
+if [ "$first_option" = "server-domain" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall server-domain ]" ;
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
+#### server domain and domain-s
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https," ;
+server_port_udp="domain,domain-s" ;
+client_port_tcp="http,https,ssh" ;
+server_port_tcp="ssh" ;
+fi
+####
+####
 #### :rutina-final-system-rules:
 ##########    english: new-versions: about of program      ##########
 ##########    spanish: new-versions: acerca del programa   ##########
@@ -2767,7 +2787,8 @@ echo "$text_md                          game-widelands client-web client-vnc cli
 echo "$text_md                          client-torrent client-vpn  client-ftp  client-tor client-squid          "
 echo "$text_md                          lan-tor lan-vpn server-ssh server-samba server-vnc server-web           "
 echo "$text_md                          server-print server-lamp server-news server-ftp server-mail             "
-echo "$text_md                          server-teamspeak server-mumble server-sql server-asterisk server-squid  "
+echo "$text_md                          server-teamspeak server-mumble server-sql server-asterisk               "
+echo "$text_md                          server-domain server-squid                                              " 
 echo "$text_md         options-state |  preferences-read preferences-modify preferences-regen                   "
 echo "$text_md                          filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets                     "
 echo "$text_md                          version notes depends license new-versions install uninstall            "
