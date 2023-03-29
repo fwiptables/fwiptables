@@ -1,4 +1,4 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd ] [ Version: complete-7.01 ] |||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd ] [ Version: complete-7.02 ] |||
 ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-cmd preferences-modify ] || ||
 ### || || [ ok ] || [ mini-options ] [ List mini options ] [ options-mini md ] || ||
      Launch: /usr/bin/fwiptables-cmd [-cli-menu -gui-menu -gui-roll -gui-shell                                       
@@ -21,7 +21,8 @@
                                client-torrent client-vpn  client-ftp  client-tor client-squid          
                                lan-tor lan-vpn server-ssh server-samba server-vnc server-web           
                                server-print server-lamp server-news server-ftp server-mail             
-                               server-teamspeak server-mumble server-sql server-asterisk server-squid  
+                               server-teamspeak server-mumble server-sql server-asterisk               
+                               server-domain server-squid                                              
               options-state |  preferences-read preferences-modify preferences-regen filelog autolog   
                                 ip4 ip6 version notes depends license new-versions install uninstall   
 ### || ||  [ Options ]  ### [  Show all posible option: /usr/bin/fwiptables-cmd options ] ### || ||               
