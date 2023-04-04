@@ -4008,36 +4008,36 @@ exit; fi
 ##########    spanish: install: instala fwiptables-minimal    ##########
 #### :rutina-inicial-install:
 ####
-####
-if [ "$first_option" = "install" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ Install fwiptables ] || ||"
-echo "$duo_md [ info ] [ Installing the firewall $cmd_config ]"
-cp "$zero_option" "/usr/bin/$cmd_config" &> /dev/null
-$cmd_binary preferences-regen &> /dev/null
-$cmd_binary regen-config &> /dev/null
-echo "$duo_md [ info ] [ The config dir:        ] [ $directory_data ]"
-echo "$duo_md [ info ] [ The tmp dir:           ] [ $directory_tmp  ]"
-echo "$duo_md [ info ] [ The Command shell:     ] [ /usr/bin/$cmd_config ]"
-echo "$duo_md [  ok  ] [ Update configs and variables     ]"
-echo "$duo_md [  ok  ] [ Now. Ready to run $cmd_config ]"
-exit; fi
+#### 
+#### if [ "$first_option" = "install" ]; then echo $give_cover
+#### echo "$header_ok [ $first_option ] [ Install fwiptables ] || ||"
+#### echo "$duo_md [ info ] [ Installing the firewall $cmd_config ]"
+#### cp "$zero_option" "/usr/bin/$cmd_config" &> /dev/null
+#### $cmd_binary preferences-regen &> /dev/null
+#### $cmd_binary regen-config &> /dev/null
+#### echo "$duo_md [ info ] [ The config dir:        ] [ $directory_data ]"
+#### echo "$duo_md [ info ] [ The tmp dir:           ] [ $directory_tmp  ]"
+#### echo "$duo_md [ info ] [ The Command shell:     ] [ /usr/bin/$cmd_config ]"
+#### echo "$duo_md [  ok  ] [ Update configs and variables     ]"
+#### echo "$duo_md [  ok  ] [ Now. Ready to run $cmd_config ]"
+#### exit; fi
 ####
 ####
 #### :rutina-final-install:
-##########    english: install: uninstall fwiptables-minimal    ##########
-##########    spanish: install: uninstala fwiptables-minimal    ##########
+##########    english: uninstall: uninstall fwiptables-minimal    ##########
+##########    spanish: uninstall: uninstala fwiptables-minimal    ##########
 #### :rutina-inicial-uninstall:
 ####
 ####
-if [ "$first_option" = "uninstall" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ Uninstall fwiptables ] || ||"
-echo "$duo_md [ info ] [ Uninstalling firwall $cmd_config ]"
-rm "/usr/bin/$cmd_config" &> /dev/null
-echo "$duo_md [  ok  ] [ Uninstalled /usr/bin/$cmd_config ]"
-exit; fi
+#### if [ "$first_option" = "uninstall" ]; then echo $give_cover
+#### echo "$header_ok [ $first_option ] [ Uninstall fwiptables ] || ||"
+#### echo "$duo_md [ info ] [ Uninstalling firwall $cmd_config ]"
+#### rm "/usr/bin/$cmd_config" &> /dev/null
+#### echo "$duo_md [  ok  ] [ Uninstalled /usr/bin/$cmd_config ]"
+#### exit; fi
 ####
 ####
-#### :rutina-final-install:
+#### :rutina-final-uninstall:
 ##########    english: license: license gpl v2   ##########
 ##########    spanish: license: license gpl v2   ##########
 #### :rutina-inicial-license:
