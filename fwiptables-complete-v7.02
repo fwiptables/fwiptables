@@ -97,7 +97,7 @@ fi
 ####
 cmd_binary="$0" ;
 cmd_config="fwiptables-cmd" ;
-cmd_version="complete-7.03" ;
+cmd_version="complete-7.02" ;
 cmd_name="Fran Complete FireWall FWiptables Generator" ;
 cmd_description="One Script in bash for iptables firewall" ;
 cmd_license="GPL v2" ;
@@ -2763,7 +2763,7 @@ echo "$text_md                          server-print server-lamp server-news ser
 echo "$text_md                          server-teamspeak server-mumble server-sql server-asterisk               "
 echo "$text_md                          server-domain server-squid                                              "
 echo "$text_md         options-state |  preferences-read preferences-modify preferences-regen filelog autolog   "
-echo "$text_md                          ip4 ip6 version notes depends license new-versions install uninstall   "
+echo "$text_md                           ip4 ip6 version notes depends license new-versions install uninstall   "
 echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_binary options ] ### || ||               "
 echo "$text_md      $cmd_binary options-state            |  Show all options to preferences manager             "
 echo "$text_md      $cmd_binary options-interface        |  Show all options to output interface                "
@@ -2830,7 +2830,7 @@ echo "$text_md   tool-qemu          |  qemu-status qemu-stop qemu-start         
 echo "$text_md   tool-install       |  install uninstall clean-tmp upgrade-minimal upgrade-complete             "
 echo "$text_md   tool-addblock      |  addblock-list addblock-on addblock-off                                   "
 echo "$text_md   tool-dev           |  new-versions dev-version dev-changes code intro                          "
-echo "$text_md   tool-computer      |  chroot-mount chroot-umount pc-halt pc-shutdown pc-reboot                 "
+echo "$text_md   tool-computer      |  pc-halt pc-shutdown pc-reboot                                            "
 echo "$duo_md || || [ options-show ]   || ||  ### ###                                                           "
 echo "$text_md   show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                                "
 echo "$text_md   show-log           |  log-search log-ssh filelog autolog                                       "
@@ -4256,12 +4256,6 @@ echo "$text_md"
 echo "$text_md [ english info ] [ Tool computer ]"
 echo "$text_md [ spanish info ] [ Herramienta de ordenador ]"
 echo "$text_md"
-echo "$text_md $tab chroot-mount"
-echo "$text_md $tab_lang_english           : mount several auxiliar directory in future chroot directory"
-echo "$text_md $tab_lang_spanish           : monta varios directorios auxiliares in  futuro chroot directorio"
-echo "$text_md $tab chroot-umount"
-echo "$text_md $tab_lang_english           : umount several auxiliar directory in future chroot directory"
-echo "$text_md $tab_lang_spanish           : desmonta varios directorios auxiliares in  futuro chroot directorio"
 echo "$text_md $tab pc-halt"
 echo "$text_md $tab_lang_english           : Launch halt to power off the pc"
 echo "$text_md $tab_lang_spanish           : Lanza halt para apagar el pc"
@@ -11876,52 +11870,6 @@ exit ; fi
 ####
 ####
 #### :rutina-final-gpg-notes:
-##########    english: chroot-mount: mount one chroot   ##########
-##########    spanish: chroot-mount: monta un chroot    ##########
-#### :rutina-inicial-chroot-mount:
-####
-####
-if   [ "$first_option" == "chroot-mount" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ chroot mount several auxiliar directory ] || ||"
-####
-####
-chroot_directory="$2"
-if [ "$chroot_directory" == "$NULL"  ]; then chroot_directory="$(pwd)"; fi
-echo "### Mouting bind all resources from directory: $chroot_directory for proc/ sys/ dev/ dev/pts/"
-mount -o bind /proc    $chroot_directory/proc
-mount -o bind /sys     $chroot_directory/sys
-mount -o bind /dev     $chroot_directory/dev
-mount -o bind /dev/pts $chroot_directory/dev/pts
-echo "### ok. mounted all resources"
-####
-####
-exit; fi
-####
-####
-#### :rutina-final-chroot-mount:
-##########    english: chroot-umount: mount one chroot   ##########
-##########    spanish: chroot-umount: monta un chroot    ##########
-#### :rutina-inicial-chroot-umount:
-####
-####
-if   [ "$first_option" == "chroot-umount" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ chroot mount several auxiliar directory ] || ||"
-####
-####
-chroot_directory="$2"
-if [ "$chroot_directory" == "$NULL"  ]; then chroot_directory="$(pwd)"; fi
-echo "### Unmouting bind all resources from directory: $chroot_directory for proc/ sys/ dev/ dev/pts/"
-umount $chroot_directory/proc
-umount $chroot_directory/sys
-umount $chroot_directory/dev
-umount $chroot_directory/dev/pts
-echo "### ok. unmounted all resources"
-####
-####
-exit; fi
-####
-####
-#### :rutina-final-chroot-umount:
 ##########    english: pc-halt: power off computer   ##########
 ##########    spanish: pc-halt: apaga el ordenador   ##########
 #### :rutina-inicial-pc-halt:
