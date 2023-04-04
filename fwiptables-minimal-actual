@@ -2791,7 +2791,7 @@ echo "$text_md                          server-teamspeak server-mumble server-sq
 echo "$text_md                          server-domain server-squid                                              " 
 echo "$text_md         options-state |  preferences-read preferences-modify preferences-regen                   "
 echo "$text_md                          filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets                     "
-echo "$text_md                          version notes depends license new-versions install uninstall            "
+echo "$text_md                          version notes depends license new-versions                              "
 exit ; fi
 ####
 ####
