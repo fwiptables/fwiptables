@@ -744,11 +744,11 @@ if [ "$first_option" = "-n"   ] || [ "$first_option" = "--null"  ] ; then first_
 #### english: alias simple for options commons
 ####
 ####
-if [ "$first_option" = "$NULL" ]  ; then first_option="options-mini" ; fi
+if [ "$first_option" = "$NULL" ]  ; then first_option="options" ; fi
 ####
 ####
-if [ "$first_option" = "options" ] ; then first_option="mini-options" ; fi
-if [ "$first_option" = "mini-options" ] ; then first_option="options-mini" ; fi
+if [ "$first_option" = "mini-options" ] ; then first_option="options" ; fi
+if [ "$first_option" = "options-mini" ] ; then first_option="options" ; fi
 if [ "$first_option" = "examples" ] ; then first_option="options-examples"; fi
 if [ "$first_option" = "sentlog" ] ; then first_option="filelog"; fi
 if [ "$first_option" = "radio" ] ; then first_option="radio-mp3"; fi
@@ -2765,7 +2765,7 @@ exit; fi
 #### :rutina-inicial-mini-options:
 ####
 ####
-if [ "$first_option" = "options-mini" ] ; then echo $give_cover ; echo "$message_info_rules"
+if [ "$first_option" = "options" ] ; then echo $give_cover ; echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List options ] [ options md ] || ||                              "
 echo "    Launch: $cmd_binary [ -cli-menu -gui-menu -gui-roll -gui-shell                                        "
 echo "    -t|-txt -c|-cli -g|-gui -l|-log -n|-null ] first_option [ second_option ]                             " 
