@@ -641,7 +641,7 @@ if [ "$command_editor" != "$NULL" ] ; then  favorite_text_editor="$command_edito
 fi
 ####
 ####
-#### :rutina-inicial-favorite-text-editor:
+#### :rutina-final-favorite-text-editor:
 ##########      english: search favorite text dialog: favorite text dialog     ##########
 ##########      spanish: busca preferido text dialogo: favorite text dialog    ##########
 #### :rutina-inicial-favorite-text-dialog:
@@ -653,7 +653,7 @@ if [ "$command_whiptail" != "$NULL" ] ; then  favorite_text_dialog="$command_whi
 fi
 ####
 ####
-#### :rutina-inicial-favorite-text-dialog:
+#### :rutina-final-favorite-text-dialog:
 ##########      english: search favorite dialog: favorite dialog     ##########
 ##########      spanish: busca preferido dialogo: favorite dialog   ##########
 #### :rutina-inicial-favorite-graphicall-dialog:
@@ -665,7 +665,7 @@ if [ "$command_zenity"  != "$NULL" ] ; then  favorite_graphicall_dialog="$comman
 fi
 ####
 ####
-#### :rutina-inicial-favorite-graphicall-dialog:
+#### :rutina-final-favorite-graphicall-dialog:
 ##########      english: search favorite browser: favorite browser     ##########
 ##########      spanish: busca preferido navegador: favorite browser   ##########
 #### :rutina-inicial-favorite-text-browser:
@@ -679,7 +679,7 @@ if [ "$command_elinks" != "$NULL" ] ; then  favorite_text_browser="$command_elin
 fi
 ####
 ####
-#### :rutina-inicial-favorite-text-browser:
+#### :rutina-final-favorite-text-browser:
 ##########      english: search favorite dhcp Discover ip net     ##########
 ##########      spanish: busca preferido dhcp Descubre la ip      ##########
 #### :rutina-inicial-favorite-dhcp-command:
@@ -7735,7 +7735,7 @@ exit ; fi
 if   [ "$first_option" == "code" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show source code for each option ] || ||"
 echo "$duo_md [ info ] [ code ] [ show source code for options from $cmd_binary ]"
-code_error="$duo_md  [ info ] [ Usage ] [ $cmd_binary code option_choosed ]"
+code_error="$duo_md [ info ] [ Usage ] [ $cmd_binary code option_choosed ]"
 if [ "$second_option" == "$NULL" ]; then echo "$code_error" ; echo
 salida_code="$(cat $cmd_binary | $command_grep -i  rutina-inicial \
 | $command_grep -i -v cat | $command_sed -s s/####\ :rutina-inicial-//g | \
@@ -7748,7 +7748,7 @@ value_count="$(("$value_second"-"$value_first+1"))"
 if [ ! -n "$value_first" ];   then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_second" ];  then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_count" ];   then echo; echo "$code_error" ; exit ; fi
-echo "$tab [ code ] [ option: "$second_option" ] [ show $value_count lines ] \
+echo "$duo_md [ code ] [ option: "$second_option" ] [ show $value_count lines ] \
 [ from the "$value_first" line number to "$value_second" line number ]"
 echo
 cat $cmd_binary | head -n $value_second | tail -n $value_count
