@@ -7735,7 +7735,7 @@ exit ; fi
 if   [ "$first_option" == "code" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show source code for each option ] || ||"
 echo "$duo_md [ info ] [ code ] [ show source code for options from $cmd_binary ]"
-code_error="  [ info ] [ Usage ] [ $cmd_binary code option_choosed ]"
+code_error="$duo_md  [ info ] [ Usage ] [ $cmd_binary code option_choosed ]"
 if [ "$second_option" == "$NULL" ]; then echo "$code_error" ; echo
 salida_code="$(cat $cmd_binary | $command_grep -i  rutina-inicial \
 | $command_grep -i -v cat | $command_sed -s s/####\ :rutina-inicial-//g | \

@@ -578,7 +578,7 @@ if [ "$command_editor" != "$NULL" ] ; then  favorite_text_editor="$command_edito
 fi
 ####
 ####
-#### :rutina-inicial-favorite-text-editor:
+#### :rutina-final-favorite-text-editor:
 ##########      english: search favorite text dialog: favorite text dialog     ##########
 ##########      spanish: busca preferido text dialogo: favorite text dialog    ##########
 #### :rutina-inicial-favorite-text-dialog:
@@ -590,7 +590,7 @@ if [ "$command_whiptail" != "$NULL" ] ; then  favorite_text_dialog="$command_whi
 fi
 ####
 ####
-#### :rutina-inicial-favorite-text-dialog:
+#### :rutina-final-favorite-text-dialog:
 ##########      english: search favorite dialog: favorite dialog     ##########
 ##########      spanish: busca preferido dialogo: favorite dialog   ##########
 #### :rutina-inicial-favorite-graphicall-dialog:
@@ -602,7 +602,7 @@ if [ "$command_zenity"  != "$NULL" ] ; then  favorite_graphicall_dialog="$comman
 fi
 ####
 ####
-#### :rutina-inicial-favorite-graphicall-dialog:
+#### :rutina-final-favorite-graphicall-dialog:
 ##########      english: search favorite browser: favorite browser     ##########
 ##########      spanish: busca preferido navegador: favorite browser   ##########
 #### :rutina-inicial-favorite-text-browser:
@@ -616,7 +616,7 @@ if [ "$command_elinks" != "$NULL" ] ; then  favorite_text_browser="$command_elin
 fi
 ####
 ####
-#### :rutina-inicial-favorite-text-browser:
+#### :rutina-final-favorite-text-browser:
 ##########      english: search favorite dhcp Discover ip net     ##########
 ##########      spanish: busca preferido dhcp Descubre la ip      ##########
 #### :rutina-inicial-favorite-dhcp-command:
@@ -1083,7 +1083,7 @@ exit; fi
 #### :rutina-final-preferences-regen:
 ##########    english: ip4 : get net info               ##########
 ##########    spanish: ip4 : da informacion de la red   ##########
-#### :sicontarrutina-inicial-ip4:
+#### :rutina-inicial-ip4:
 ####
 ####
 if [ "$first_option" = "ip4" ]; then echo $give_cover
@@ -2791,11 +2791,40 @@ echo "$text_md                          server-teamspeak server-mumble server-sq
 echo "$text_md                          server-domain server-squid                                              " 
 echo "$text_md         options-state |  preferences-read preferences-modify preferences-regen                   "
 echo "$text_md                          filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets                     "
-echo "$text_md                          version notes depends license new-versions                              "
+echo "$text_md                          version notes depends license new-versions code                         "
 exit ; fi
 ####
 ####
 #### :rutina-final-mini-options:
+##########     english: code: source from loop     ##########
+##########     spanish: code: fuente de la rutina  ##########
+#### :rutina-inicial-code:
+####
+####
+if   [ "$first_option" == "code" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ Show source code for each option ] || ||"
+echo "$duo_md [ info ] [ code ] [ show source code for options from $cmd_binary ]"
+code_error="$duo_md [ info ] [ Usage ] [ $cmd_binary code option_choosed ]"
+if [ "$second_option" == "$NULL" ]; then echo "$code_error" ; echo
+salida_code="$(cat $cmd_binary | $command_grep -i  rutina-inicial \
+| $command_grep -i -v cat | $command_sed -s s/####\ :rutina-inicial-//g | \
+sort | $command_sed -s s/://g )"
+echo $salida_code
+exit ; fi
+value_first="$(cat -n $cmd_binary | $command_grep  :rutina-inicial-$2: | cut -d "#" -f 1 | head -1)"
+value_second="$(cat -n $cmd_binary | $command_grep :rutina-final-$2:  | cut -d "#" -f 1 | head -1)"
+value_count="$(("$value_second"-"$value_first+1"))"
+if [ ! -n "$value_first" ];   then echo; echo "$code_error" ; exit ; fi
+if [ ! -n "$value_second" ];  then echo; echo "$code_error" ; exit ; fi
+if [ ! -n "$value_count" ];   then echo; echo "$code_error" ; exit ; fi
+echo "$duo_md [ code ] [ option: "$second_option" ] [ show $value_count lines ] \
+[ from the "$value_first" line number to "$value_second" line number ]"
+echo
+cat $cmd_binary | head -n $value_second | tail -n $value_count
+exit; fi
+####
+####
+#### :rutina-final-code:
 ##########    english: names-config: list some config       ##########
 ##########    spanish: names-config: lista alguna config    ##########
 #### :rutina-inicial-names-config:
