@@ -2830,7 +2830,7 @@ echo "$text_md   tool-qemu          |  qemu-status qemu-stop qemu-start         
 echo "$text_md   tool-install       |  install uninstall clean-tmp upgrade-minimal upgrade-complete             "
 echo "$text_md   tool-addblock      |  addblock-list addblock-on addblock-off                                   "
 echo "$text_md   tool-dev           |  new-versions dev-version dev-changes code intro                          "
-echo "$text_md   tool-computer      |  chroot-mount chroot-umount pc-halt pc-shutdown pc-reboot                 "
+echo "$text_md   tool-computer      |  chroot-mount chroot-umount chroot-on pc-halt pc-shutdown pc-reboot       "
 echo "$duo_md || || [ options-show ]   || ||  ### ###                                                           "
 echo "$text_md   show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                                "
 echo "$text_md   show-log           |  log-search log-ssh filelog autolog                                       "
@@ -4258,10 +4258,13 @@ echo "$text_md [ spanish info ] [ Herramienta de ordenador ]"
 echo "$text_md"
 echo "$text_md $tab chroot-mount"
 echo "$text_md $tab_lang_english           : mount several auxiliar directory in future chroot directory"
-echo "$text_md $tab_lang_spanish           : monta varios directorios auxiliares in  futuro chroot directorio"
+echo "$text_md $tab_lang_spanish           : monta varios directorios auxiliares en futuro chroot directorio"
 echo "$text_md $tab chroot-umount"
 echo "$text_md $tab_lang_english           : umount several auxiliar directory in future chroot directory"
-echo "$text_md $tab_lang_spanish           : desmonta varios directorios auxiliares in  futuro chroot directorio"
+echo "$text_md $tab_lang_spanish           : desmonta varios directorios auxiliares en futuro chroot directorio"
+echo "$text_md $tab chroot-on"
+echo "$text_md $tab_lang_english           : chroot at directory"
+echo "$text_md $tab_lang_spanish           : chroot a directorio"
 echo "$text_md $tab pc-halt"
 echo "$text_md $tab_lang_english           : Launch halt to power off the pc"
 echo "$text_md $tab_lang_spanish           : Lanza halt para apagar el pc"
@@ -11876,6 +11879,26 @@ exit ; fi
 ####
 ####
 #### :rutina-final-gpg-notes:
+##########    english: chroot-on: mount one chroot   ##########
+##########    spanish: chroot-on: monta un chroot    ##########
+#### :rutina-inicial-chroot-on:
+####
+####
+if   [ "$first_option" == "chroot-on" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ chroot directory ] || ||"
+####
+####
+chroot_directory="$2"
+if [ "$chroot_directory" == "$NULL"  ]; then chroot_directory="$(pwd)"; fi
+echo "### chroot at $chroot_directory"
+chroot $chroot_directory
+echo "### ok. chroot at $chroot_directory"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-chroot-on:
 ##########    english: chroot-mount: mount one chroot   ##########
 ##########    spanish: chroot-mount: monta un chroot    ##########
 #### :rutina-inicial-chroot-mount:
