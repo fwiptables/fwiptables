@@ -136,7 +136,7 @@
                load : Restore a one firewall iptables.
              actual : Show the firewall standard actual.
      
-###          [ List iptables rules numeral]
+###          [ List iptables rules conceptual. With names ]
      
                    ls4 : likes list-filter4.
                    ls6 : likes list-filter6.
@@ -157,7 +157,7 @@
          list-ebtables : List rules ebtables mac of ethernet.
          ist-arptables : List rules arptables arp.
      
-###          [ List iptables rules numeral]
+###          [ List iptables rules numeral. With numbers ]
      
                    lsn4 : likes list-filter4.
                    lsn6 : likes list-filter6.
