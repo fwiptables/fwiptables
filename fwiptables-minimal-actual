@@ -2696,25 +2696,25 @@ fi
 #### :rutina-inicial-new-versions:
 ####
 ####
-if   [ "$first_option" = "new-versions" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ show the versions in the web ] || ||"
-echo
-echo "$duo_md [ info ] [ new versions ]"
-echo "$duo_md [ info ] [ latest version ] [ $url_web_latest ]"
-echo "$duo_md [ info ] [ index version  ] [ $url_index_files ]"
-echo
-$cmd_binary index-versions
-echo
-echo "$duo_md [ info ] [ Show the last minimal version ]"
-echo "$duo_md [ info ] [ $url_minimal_files ]"
-echo
-$cmd_binary minimal-versions
-echo
-echo "$duo_md [ info ] [ Show the last complete version ]"
-echo "$duo_md [ info ] [ $url_complete_files ]"
-echo
-$cmd_binary complete-versions
-exit; fi
+# if   [ "$first_option" = "new-versions" ]; then echo $give_cover
+# echo "$header_ok [ $first_option ] [ show the versions in the web ] || ||"
+# echo
+# echo "$duo_md [ info ] [ new versions ]"
+# echo "$duo_md [ info ] [ latest version ] [ $url_web_latest ]"
+# echo "$duo_md [ info ] [ index version  ] [ $url_index_files ]"
+# echo
+# $cmd_binary index-versions
+# echo
+# echo "$duo_md [ info ] [ Show the last minimal version ]"
+# echo "$duo_md [ info ] [ $url_minimal_files ]"
+# echo
+# $cmd_binary minimal-versions
+# echo
+# echo "$duo_md [ info ] [ Show the last complete version ]"
+# echo "$duo_md [ info ] [ $url_complete_files ]"
+# echo
+# $cmd_binary complete-versions
+# exit; fi
 ####
 ####
 #### :rutina-final-new-versions:
@@ -2791,7 +2791,7 @@ echo "$text_md                          server-teamspeak server-mumble server-sq
 echo "$text_md                          server-domain server-squid                                              " 
 echo "$text_md         options-state |  preferences-read preferences-modify preferences-regen                   "
 echo "$text_md                          filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets                     "
-echo "$text_md                          version notes depends license new-versions code                         "
+echo "$text_md                          version notes depends license code                                      "
 exit ; fi
 ####
 ####
