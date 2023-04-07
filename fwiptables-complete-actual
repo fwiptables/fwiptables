@@ -813,6 +813,8 @@ if [ "$first_option" == "-i"   ] || [ "$first_option" == "--info"  ] ; then firs
 if [ "$first_option" == "-w"   ] || [ "$first_option" == "--web"  ]  ; then first_option="-web"  ; fi
 if [ "$first_option" == "-l"   ] || [ "$first_option" == "--log"  ]  ; then first_option="-log"  ; fi
 if [ "$first_option" == "-n"   ] || [ "$first_option" == "--null"  ] ; then first_option="-null" ; fi
+if [ "$first_option" = "-s"   ] || [ "$first_option" = "--silent"  ] ; then first_option="-null" ; fi
+if [ "$first_option" = "silent"   ] || [ "$first_option" = "-silent"  ] ; then first_option="-null" ; fi
 ####
 ####
 #### english: alias simple for options commons
@@ -2741,7 +2743,7 @@ fi
 if   [ "$first_option" == "mini-options" ] ; then echo $give_cover ;  echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List mini options ] [ options-mini md ] || ||"
 echo "     Launch: $zero_option [-cli-menu -gui-menu -gui-roll -gui-shell                                       "
-echo "     -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]     "
+echo "     -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -s|-silent] first_option [second_option]   "
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||             "
 echo "$text_md      firewall-control |  stop continue reset names actual show save load                         "
 echo "$text_md   firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6     "
@@ -2784,7 +2786,7 @@ if   [ "$first_option" == "options-all" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List full options ] [ full-options md ] || ||"
 echo "$duo_md || ||  [ options-interface ]  || ||  ### ###                                                      "
 echo "     Launch: $zero_option [-cli-menu -gui-menu -gui-roll -gui-shell                                       "
-echo "     -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]     "
+echo "     -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -s|-silent] first_option [second_option]   "
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||             "
 echo "$text_md      firewall-control |  stop continue reset names actual show save load                         "
 echo "$text_md   firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6     "
@@ -2848,7 +2850,7 @@ echo "$text_md  $cmd_binary -web ss                  |  Show ss with output text
 echo "$text_md  $cmd_binary -help readme             |  Show help of readme with output text plain              "
 echo "$text_md  $cmd_binary -info lsof               |  Show info of lsof with output text rst                  "
 echo "$text_md  $cmd_binary -log info-route          |  Save log info-route with output text plain              "
-echo "$text_md  $cmd_binary -null client-web         |  Launch client web firewall a null output                "
+echo "$text_md  $cmd_binary -silent client-web       |  Launch client web firewall a null output                "
 exit ; fi
 ####
 ####
@@ -2995,7 +2997,7 @@ echo "$text_md    $cmd_binary -help readme             |  Show help of readme wi
 echo "$text_md    $cmd_binary -info lsof               |  Show info of lsof with output rst          "
 echo "$text_md    $cmd_binary -web info-net            |  Show info-net with output text browser     "
 echo "$text_md    $cmd_binary -log info-route          |  Save log info-route with output txt        "
-echo "$text_md    $cmd_binary -null client-web         |  Launch client web firewall a null output   "
+echo "$text_md    $cmd_binary -silent client-web         |  Launch client web firewall a null output   "
 echo
 echo "$title_md                                      [ other examples ]                                  "
 echo "$text_md    $cmd_binary names                    |  List firewall saved                        "
@@ -3635,7 +3637,7 @@ echo "$text_md $tab_lang_spanish          : Salida ayuda en text con formato rst
 echo "$text_md $tab web OR -web OR -w"
 echo "$text_md $tab_lang_english          : Output in favorite text web browser"
 echo "$text_md $tab_lang_spanish          : Salida en favorito navegador web de texto"
-echo "$text_md $tab null OR -null OR -n"
+echo "$text_md $tab null OR -silent OR -s"
 echo "$text_md $tab_lang_english          : Output in output hidden"
 echo "$text_md $tab_lang_spanish          : Salida en salida oculta"
 echo "$text_md $tab tor OR -tor"
@@ -12555,7 +12557,7 @@ echo "$text_md         web OR -web OR -w : Output to text web browser.  | whith 
 echo "$text_md         log OR -log OR -l : Output in logfile            | whith bash backend."
 echo "$text_md       help OR -help OR -h : Output help to text in text plain format."
 echo "$text_md       info OR -info OR -i : Output help to text in text rst format."
-echo "$text_md       null OR -null OR -n : Output in null               | without backend."
+echo "$text_md   silent OR -silent OR -s : Output in null               | without backend."
 echo "$text_md               tor OR -tor : Run in torify (tor)          | whith tor backend."
 echo "$text_md"
 echo "$brake_md"
@@ -12952,7 +12954,7 @@ echo "$text_md         log O -log O -l : Salida a archivo log."
 echo "$text_md         web O -web O -w : Salida a navegador web de texto"
 echo "$text_md       help O -help O -h : Salida con ayuda a formato de texto plano."
 echo "$text_md       info O -info O -i : Salida con ayuda a formato de texto rst."
-echo "$text_md       null O -null O -n : Salida al sunidero | sin salida visual."
+echo "$text_md   silent O -silent O -n : Salida al sunidero | sin salida visual."
 echo "$text_md              tor O -tor : Ejecuta en tor, necesario daemon tor y comando torify."
 echo "$text_md"
 echo "$text_md            cli-menu O -cli-menu : modo texto with menus."

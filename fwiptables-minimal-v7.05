@@ -740,6 +740,8 @@ if [ "$first_option" = "-i"   ] || [ "$first_option" = "--info"  ] ; then first_
 if [ "$first_option" = "-w"   ] || [ "$first_option" = "--web"  ]  ; then first_option="-web"  ; fi
 if [ "$first_option" = "-l"   ] || [ "$first_option" = "--log"  ]  ; then first_option="-log"  ; fi
 if [ "$first_option" = "-n"   ] || [ "$first_option" = "--null"  ] ; then first_option="-null" ; fi
+if [ "$first_option" = "-s"   ] || [ "$first_option" = "--silent"  ] ; then first_option="-null" ; fi
+if [ "$first_option" = "silent"   ] || [ "$first_option" = "-silent"  ] ; then first_option="-null" ; fi
 ####
 ####
 #### english: alias simple for options commons
@@ -2761,15 +2763,15 @@ exit; fi
 ####
 ####
 #### :rutina-final-minimal-versions:
-##########    english: options-mini: wellcome with semi help    ##########
-##########    spanish: options-mini: bienvenida con semi ayuda  ##########
-#### :rutina-inicial-mini-options:
+##########    english: options: wellcome with semi help    ##########
+##########    spanish: options: bienvenida con semi ayuda  ##########
+#### :rutina-inicial-options:
 ####
 ####
 if [ "$first_option" = "options" ] ; then echo $give_cover ; echo "$message_info_rules"
-echo "$header_ok [ $first_option ] [ List options ] [ options md ] || ||                              "
+echo "$header_ok [ $first_option ] [ List options ] [ options md ] || ||                                        "
 echo "    Launch: $cmd_binary [ -cli-menu -gui-menu -gui-roll -gui-shell                                        "
-echo "    -t|-txt -c|-cli -g|-gui -l|-log -n|-null ] first_option [ second_option ]                             " 
+echo "    -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]                           " 
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||             "
 echo "$text_md      firewall-control |  stop continue reset names actual show save load                         "
 echo "$text_md   firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6     "
@@ -2795,7 +2797,7 @@ echo "$text_md                          version notes depends license code      
 exit ; fi
 ####
 ####
-#### :rutina-final-mini-options:
+#### :rutina-final-options:
 ##########     english: code: source from loop     ##########
 ##########     spanish: code: fuente de la rutina  ##########
 #### :rutina-inicial-code:
