@@ -1,4 +1,4 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-min ] [ Version: minimal-7.03 ] || ||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-min ] [ Version: minimal-7.04 ] || ||
 ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-min preferences-modify ] || ||
 ### || || [ ok ] || [ options ] [ List options ] [ options md ] || ||                              
     Launch: /usr/bin/fwiptables-min [ -cli-menu -gui-menu -gui-roll -gui-shell                                        
@@ -9,8 +9,7 @@
                             list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6       
                             list-security4 list-security6 list-ebtables list-arptables              
         firewall-numeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4           
-                            listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-filter6               
-                            listn-mangle4  listn-mangle6 listn-security4 listn-security6            
+                            listn-filter6 listn-nat4 listn-nat6 listn-raw4 listn-raw6               
                             listn-mangle4  listn-mangle6 listn-security4 listn-security6            
          firewall-custom |  new-full-config nueva-completa-config regen-config                      
                             new-mini-config nueva-mini-config examples-config                       
