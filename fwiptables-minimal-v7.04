@@ -2833,18 +2833,17 @@ if [ "$first_option" = "names-config" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List configs cfg ] || ||"
 echo "$duo_md [ info ] [ list configs files in cfg format ]"
 echo "$duo_md [ info ] [ folder ] [ $directory_config ]"
-echo 
+echo "$duo_md"
 default_files_cfg="default-full-english.cfg|default-full-spanish.cfg\
 |default-mini-english|default-mini-spanish|wizard-full|wizard-mini|nodefault-tmp"
-echo "$tab"
-echo "$tab [ System files ]"
+echo "$duo_md"
+echo "$duo_md [ System files ]"
 $command_ls -1 $directory_config/ | $command_grep -E -i $default_files_cfg
-echo "$tab"
-echo "$tab [ User files ]"
+echo "$duo_md"
+echo "$duo_md [ User files ]"
 $command_ls -1 $directory_config/ | $command_grep -E -iv $default_files_cfg
-echo "$tab"
-echo "$tab [ OK CFG FILES NAMES ]"
-echo 
+echo "$duo_md"
+echo "$duo_md [ OK CFG FILES NAMES ]"
 exit; fi
 ####
 ####
