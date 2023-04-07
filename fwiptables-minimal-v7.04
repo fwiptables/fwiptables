@@ -2775,7 +2775,7 @@ echo "$text_md   firewall-conceptual |  ls4 ls6 list4 list6 status list-alltable
 echo "$text_md                          list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6       "
 echo "$text_md                          list-security4 list-security6 list-ebtables list-arptables              "
 echo "$text_md      firewall-numeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4           "
-echo "$text_md                          listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-filter6               "
+echo "$text_md                          listn-filter6 listn-nat4 listn-nat6 listn-raw4 listn-raw6               "
 echo "$text_md                          listn-mangle4  listn-mangle6 listn-security4 listn-security6            "
 echo "$text_md       firewall-custom |  new-full-config nueva-completa-config regen-config                      "
 echo "$text_md                          new-mini-config nueva-mini-config examples-config                       "
