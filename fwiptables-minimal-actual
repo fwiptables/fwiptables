@@ -338,6 +338,7 @@ command_lshw="$(command -v lshw)"
 list_rules_conceptual="" ;
 config_ip4_localhost="127.0.0.1" ;
 config_ip6_localhost="::1" ;
+server_waiting="9s" ;
 allow_dmz_ip4="no" ; 
 allow_dmz_ip6="no" ;
 allow_forward_ip4="no" ; 
@@ -4359,14 +4360,14 @@ echo "$header_ok [ $first_option ]  [ test speed ipv4 with internet ] || ||"
 case "$command_iperf"  in  $NULL) echo "$duo_md [ fail ] [ Install Iperf command ]"; exit ;; esac
 ####
 ####
-echo
+echo "$duo_md"
 echo "$duo_md [ info ] Stop firewall & Run speed ip4 & Continue firewall"
-echo
+echo "$duo_md"
 $cmd_binary stop
-echo
+echo "$duo_md"
 echo "$duo_md [ Doing bandwidth in ipv4 to $serverip_iperf_ipv4 ] [ with max $server_waiting seconds ]"
 $command_iperf -c $serverip_iperf_ipv4 -t 4 -P 1 -p $serverport_iperf_ipv4 |tail -3
-echo
+echo "$duo_md"
 $cmd_binary continue
 exit; fi
 ####
@@ -4382,14 +4383,14 @@ echo "$header_ok [ $first_option ]  [ test speed ipv6 with internet ] || ||"
 case "$command_iperf"  in  $NULL) echo "$duo_md [ fail ] [ install iperf command ]"; exit ;; esac
 ####
 ####
-echo
+echo "$duo_md"
 echo "$duo_md [ info ] Stop firewall & Run speed ip4 & Continue firewall"
-echo
+echo "$duo_md"
 $cmd_binary stop
-echo
+echo "$duo_md"
 echo "$duo_md [ Doing bandwidth in ipv6 to $serverip_iperf_ipv6 ] [ with max $server_waiting seconds ]"
 $command_iperf -c $serverip_iperf_ipv6 -V -t 4 -P 1 -p $serverport_iperf_ipv6 | tail -3
-echo
+echo "$duo_md"
 $cmd_binary continue
 exit; fi
 ####
