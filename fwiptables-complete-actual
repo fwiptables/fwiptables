@@ -841,6 +841,7 @@ if [ "$first_option" == "list-fw" ] ; then first_option="names"; fi
 if [ "$first_option" == "ram" ] ; then first_option="free-ram"; fi
 if [ "$first_option" == "free" ] ; then first_option="free-ram"; fi
 if [ "$first_option" == "ram-free" ] ; then first_option="free-ram"; fi
+if [ "$first_option" == "date" ] ; then first_option="ntpdate-client"; fi
 if [ "$first_option" == "list-allrules" ] ; then first_option="list-alltables"; fi
 if [ "$first_option" == "mp3" ] ; then first_option="radio-mp3"; fi
 if [ "$first_option" == "ip" ] ; then first_option="ip4"; fi

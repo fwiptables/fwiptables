@@ -432,6 +432,8 @@ favorite_text_dialog=""          ## fwiptables-file-default ## or void for autoa
 favorite_graphicall_dialog=""    ## fwiptables-file-default ## or void for autoamtic or command
 #### favorite_text_brwoser       ... for example elinks
 favorite_text_browser=""         ## fwiptables-file-default ## or void for autoamtic or command
+#### favorite_date_command       ... for example ntpdate
+favorite_date_command=""         ## fwiptables-file-default ## or void for autoamtic or command
 ####       #### english: curl server for default for test the public ip
 ####       #### spanish: servidor de curl por defecto para testear la ip publica    
 serverip_discover_ipv4="http://ifconfig.co/ip" ## fwiptables-file-default ## default http://ifconfig.co/ip
@@ -565,6 +567,19 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 ####
 ####
 #### :rutina-final-update-variables:
+##########      english: search favorite date: favorite date command        ##########
+##########      spanish: busca preferida fecha: favorita comando de fecha   ##########
+#### :rutina-inicial-favorite-date-command:
+####
+####
+if [ "$favorite_date_command" == "$NULL" ]; then
+if [ "$command_rdate"   != "$NULL" ]; then  favorite_date_command="$command_rdate -4 -a -n"  ; fi
+if [ "$command_sntp"    != "$NULL" ]; then  favorite_date_command="$command_sntp"            ; fi
+if [ "$command_ntpdate" != "$NULL" ]; then  favorite_date_command="$command_ntpdate"         ; fi
+fi
+####
+####
+#### :rutina-final-favorite-date-command:
 ##########      english: search favorite text editor: favorite editor text     ##########
 ##########      spanish: busca preferido editor: favorite editor de texto     ##########
 #### :rutina-inicial-favorite-text-editor:
@@ -760,6 +775,7 @@ if [ "$first_option" = "cfg" ] ; then first_option="names-config" ; fi
 if [ "$first_option" = "cfg-custom" ] ; then first_option="custom" ; fi
 if [ "$first_option" = "list-fw" ] ; then first_option="names"; fi
 if [ "$first_option" = "ram-free" ] ; then first_option="free-ram"; fi
+if [ "$first_option" == "date" ] ; then first_option="ntpdate-client"; fi
 if [ "$first_option" = "list-allrules" ] ; then first_option="list-alltables"; fi
 ####
 ####
@@ -4081,6 +4097,26 @@ exit;  fi
 ####
 ####
 #### :rutina-final-license:
+##########    english: ntpdate-client: update the date and time    ##########
+##########    spanish: ntpdate-client: actualiza la fecha y hora   ##########
+#### :rutina-inicial-ntpdate-client:
+####
+####
+if   [ "$first_option" == "ntpdate-client" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ update the computer time and date from internet ] || ||"
+echo
+if [ "$favorite_date_command" == "$NULL" ]; then echo "$tab [ fail ] [ Install one ntp client ]" ; fi
+echo "$tab Old date: $($command_date)"
+echo "$tab [ Updating the time and the date .. ]"
+pool0="0.debian.pool.ntp.org"
+pool1="1.debian.pool.ntp.org"
+pool2="2.debian.pool.ntp.org"
+pool3="3.debian.pool.ntp.org"
+$favorite_date_command $pool0 && echo -e "\n With New date: $($command_date)"
+exit; fi
+####
+####
+#### :rutina-final-ntpdate-client:
 ##########    english: wizard-mini: wizard-mini      ##########
 ##########    spanish: wizard-mini: mini-asistente   ##########
 #### :rutina-inicial-wizard-mini:
