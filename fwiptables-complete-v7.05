@@ -2930,7 +2930,7 @@ echo "$text_md    tool-util         | weather md5sum gpg-notes                  
 echo "$text_md    tool-pdf          | pdf-resize pdf-unite pdf-separate                                 "
 echo "$text_md    tool-mp3          | radio-mp3 radio-cadena100 radio-rockfm                            "
 echo "$text_md    tool-qemu         | qemu-status qemu-stop qemu-start                                  "
-echo "$text_md    tool-install      | install howto-upgrade upgrade devmini-upgrade devfull-upgrade     "
+echo "$text_md    tool-install      | install howto-upgrade upgrade-minimal upgrade-complete            "
 echo "$text_md    tool-addblock     | addblock-list addblock-on addblock-off                            "
 echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                         "
 echo "$text_md    tool-computer     | pc-halt pc-shutdown pc-reboot                                     "

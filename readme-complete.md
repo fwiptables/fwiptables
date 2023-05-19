@@ -1,8 +1,8 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd ] [ Version: complete-7.04 ] |||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd ] [ Version: complete-7.05 ] |||
 ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-cmd preferences-modify ] || ||
 ### || || [ ok ] || [ mini-options ] [ List mini options ] [ options-mini md ] || ||
      Launch: /usr/bin/fwiptables-cmd [-cli-menu -gui-menu -gui-roll -gui-shell                                       
-     -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]     
+     -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -s|-silent] first_option [second_option]   
 ### || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||             
            firewall-control |  stop continue reset names actual show save load                         
         firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6     
@@ -25,10 +25,4 @@
               options-state |  preferences-read preferences-modify preferences-regen filelog autolog   
                                ip4 ip6 version notes depends license new-versions install uninstall   
 ### || ||  [ Options ]  ### [  Show all posible option: /usr/bin/fwiptables-cmd options ] ### || ||               
-           /usr/bin/fwiptables-cmd options-state            |  Show all options to preferences manager             
-           /usr/bin/fwiptables-cmd options-interface        |  Show all options to output interface                
-           /usr/bin/fwiptables-cmd options-firewall         |  Show all options to firewall manage                 
-           /usr/bin/fwiptables-cmd options-tool             |  Show all options to tool working                    
-           /usr/bin/fwiptables-cmd options-show             |  Show all options to read configs                    
-           /usr/bin/fwiptables-cmd options-help             |  Show all options to help informations               
-           /usr/bin/fwiptables-cmd options-examples         |  Show examples                                       
+      options-state|options-interface|options-firewall|options-tool|options-show|options-help|options-examples
