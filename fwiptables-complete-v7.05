@@ -2771,13 +2771,7 @@ echo "$text_md                          server-domain server-squid              
 echo "$text_md         options-state |  preferences-read preferences-modify preferences-regen filelog autolog   "
 echo "$text_md                          ip4 ip6 version notes depends license new-versions install uninstall   "
 echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_binary options ] ### || ||               "
-echo "$text_md      $cmd_binary options-state            |  Show all options to preferences manager             "
-echo "$text_md      $cmd_binary options-interface        |  Show all options to output interface                "
-echo "$text_md      $cmd_binary options-firewall         |  Show all options to firewall manage                 "
-echo "$text_md      $cmd_binary options-tool             |  Show all options to tool working                    "
-echo "$text_md      $cmd_binary options-show             |  Show all options to read configs                    "
-echo "$text_md      $cmd_binary options-help             |  Show all options to help informations               "
-echo "$text_md      $cmd_binary options-examples         |  Show examples                                       "
+echo "$text_md options-state|options-interface|options-firewall|options-tool|options-show|options-help|options-examples"
 exit ; fi
 ####
 ####
