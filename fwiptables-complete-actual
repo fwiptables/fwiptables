@@ -388,9 +388,9 @@ graphic_window_dimension="--width=950 --height=650"   ## fwiptables-file-default
 ####       #### english: RADIO URL streaming audio for default
 ####       #### spanish: direccion de RADIO DE INTERNET por defecto
 radio_default_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
-radio_link_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
-radio_link_rockfm="http://flucast-b02-06.flumotion.com/cope/rockfm.mp3" ;  ## fwiptables-file-default ## streaming url
-radio_link_kissfm="http://kissfm.kissfmradio.cires21.com/kissfm.mp3" ;  ## fwiptables-file-default ## streaming url
+link_radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
+link_radio_rockfm="http://flucast-b02-06.flumotion.com/cope/rockfm.mp3" ;  ## fwiptables-file-default ## streaming url
+link_radio_kissfm="http://kissfm.kissfmradio.cires21.com/kissfm.mp3" ;  ## fwiptables-file-default ## streaming url
 ####       #### english: void for automatic command #### spanish: vacio para comando automatico
 #### favorite_text_editor        ... for example nano
 favorite_text_editor=""          ## fwiptables-file-default ## or void for autoamtic or command
@@ -813,7 +813,7 @@ if [ "$first_option" == "-i"   ] || [ "$first_option" == "--info"  ] ; then firs
 if [ "$first_option" == "-w"   ] || [ "$first_option" == "--web"  ]  ; then first_option="-web"  ; fi
 if [ "$first_option" == "-l"   ] || [ "$first_option" == "--log"  ]  ; then first_option="-log"  ; fi
 if [ "$first_option" == "-n"   ] || [ "$first_option" == "--null"  ] ; then first_option="-null" ; fi
-if [ "$first_option" = "-s"   ] || [ "$first_option" = "--silent"  ] ; then first_option="-null" ; fi
+if [ "$first_option" = "-s"    ] || [ "$first_option" = "--silent" ] ; then first_option="-null" ; fi
 if [ "$first_option" = "silent"   ] || [ "$first_option" = "-silent"  ] ; then first_option="-null" ; fi
 ####
 ####
@@ -1346,8 +1346,10 @@ echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
 $command_curl -s -L $url_web_actualmini -o $directory_temporal/$cmd_config-installer
 chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
 #### install
-if [ -s "$directory_temporal/$cmd_config-installer" ] ; then echo "$duo_md [  ok  ] [ downloaded $cmd_version version ]" ;
-$directory_temporal/$cmd_config-installer install ; 
+if [ -s "$directory_temporal/$cmd_config-installer" ] ; then 
+cp "$directory_temporal/$cmd_config-installer" "/usr/bin/fwiptables-min"
+chmod 555 "/usr/bin/fwiptables-min"
+echo "$duo_md [ info ] [ installed ] fwiptables minimal installed in /usr/bin/fwiptables-min"
 else echo "$duo_md [ fail ] [ install fail ]"; fi ; exit; fi
 #### with favorite_text_browser
 #### or download
@@ -1360,7 +1362,9 @@ $favorite_text_browser -source $url_web_actualmini &> $directory_temporal/$cmd_c
 chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
 #### install
 if [ -s "$directory_temporal/$cmd_config-installer" ] ; then echo "$duo_md [  ok  ] [ downloaded $cmd_version version ]" ;
-$directory_temporal/$cmd_config-installer install ; 
+cp "$directory_temporal/$cmd_config-installer" "/usr/bin/fwiptables-min"
+chmod 555 "/usr/bin/fwiptables-min"
+echo "$duo_md [ info ] [ installed ] fwiptables minimal installed in /usr/bin/fwiptables-min"
 else echo "$duo_md [ fail ] [ install fail ]"; fi ; exit ; fi
 ####
 ####
@@ -10492,7 +10496,7 @@ case "$second_option" in "gui"|"-gui"|"-g"|"--gui") favorite_text_music="$favori
 case "$favorite_graphicall_music" in "$NULL") echo "$tab [ fail ] [ Install a graphicall mp3 player ]"; exit ;; esac;; esac
 ####
 ####
-emisora="$radio_link_cadena100"
+emisora="$link_radio_cadena100"
 ####
 ####
 echo "$duo_md [  ok  ] [ $favorite_text_music $emisora ]"
@@ -10519,7 +10523,7 @@ case "$second_option" in "gui"|"-gui"|"-g"|"--gui") favorite_text_music="$favori
 case "$favorite_graphicall_music" in "$NULL") echo "$tab [ fail ] [ Install a graphicall mp3 player ]"; exit ;; esac;; esac
 ####
 ####
-emisora="$radio_link_rockfm"
+emisora="$link_radio_rockfm"
 ####
 ####
 echo "$duo_md [  ok  ] [ $favorite_text_music $emisora ]"
@@ -10546,13 +10550,13 @@ case "$second_option" in "gui"|"-gui"|"-g"|"--gui") favorite_text_music="$favori
 case "$favorite_graphicall_music" in "$NULL") echo "$tab [ fail ] [ Install a graphicall mp3 player ]"; exit ;; esac;; esac
 ####
 ####
-emisora="$radio_link_kissfm"
+#### emisora="$link_radio_kissfm"
 ####
 ####
 echo "$duo_md [  ok  ] [ $favorite_text_music $emisora ]"
 echo 
 echo 
-sudo -u $(logname) $favorite_text_music $emisora
+sudo -u $(logname) $favorite_text_music $link_radio_kissfm
 exit; fi
 ####
 ####
