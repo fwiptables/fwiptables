@@ -417,6 +417,7 @@ qemu_directory_vm="/qemu"						 ## fwiptables-file-default ## variable qemu
 qemu_default_vm="default-vm"						 ## fwiptables-file-default ## variable qemu
 qemu_display_vm="gtk"						 ## fwiptables-file-default ## variable qemu						
 qemu_language_vm="es"						 ## fwiptables-file-default ## variable qemu
+qemu_accel_vm="kvm"						 ## fwiptables-file-default ## variable qemu
 #### #### english: look  #### spanish: apariencia
 quad=" ####" ; 
 cinco="#####" ;
@@ -11579,7 +11580,8 @@ if [ "$3" == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $3"; fi
 ####
 ####
 command_qemu="$(command -v $qemu_architecture_vm)"
-qemu_options="-m $qemu_memory_ram -machine accel=kvm -k $qemu_language_vm -smp $qemu_smp_processor -rtc base=localtime -display $qemu_display_vm"
+qemu_options="-m $qemu_memory_ram -machine accel=kvm -k $qemu_language_vm -smp $qemu_smp_processor \
+-accel $qemu_display_accel -rtc base=localtime -display $qemu_display_vm"
 qemu_full="$command_qemu $qemu_options -boot menu=on -hda $qemu_vm $qemu_cdrom"
 ####
 ####
@@ -11604,7 +11606,8 @@ if [ "$3"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $3"; fi
 ####
 ####
 command_qemu="$(command -v $qemu_architecture_vm)"
-qemu_options="-m $qemu_memory_ram -machine accel=kvm -k $qemu_language_vm -smp $qemu_smp_processor -rtc base=localtime -display $qemu_display_vm"
+qemu_options="-m $qemu_memory_ram -machine accel=kvm -k $qemu_language_vm -smp $qemu_smp_processor \
+-accel $qemu_display_accel -rtc base=localtime -display $qemu_display_vm"
 qemu_full="$command_qemu $qemu_options -boot menu=on -hda $qemu_vm $qemu_cdrom"
 ####
 ####
