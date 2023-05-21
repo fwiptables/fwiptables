@@ -409,15 +409,17 @@ favorite_text_music=""           ## fwiptables-file-default ## or void for autoa
 #### favorite_text_editor        ,,, for example vlc
 favorite_graphicall_music=""     ## fwiptables-file-default ## or void for autoamtic or command
 #### #### variables to modify for qemu
-qemu_title_name="Qemu VM"						 ## fwiptables-file-default ## variable qemu
+qemu_title_name="Qemu VM"					 ## fwiptables-file-default ## variable qemu
 qemu_memory_ram="1500M"						 ## fwiptables-file-default ## variable qemu
 qemu_smp_processor="4"						 ## fwiptables-file-default ## variable qemu
 qemu_architecture_vm="qemu-system-i386"			         ## fwiptables-file-default ## variable qemu
-qemu_directory_vm="/qemu"						 ## fwiptables-file-default ## variable qemu
-qemu_default_vm="default-vm"						 ## fwiptables-file-default ## variable qemu
+qemu_directory_vm="/qemu"					 ## fwiptables-file-default ## variable qemu
+qemu_default_vm="default-vm"					 ## fwiptables-file-default ## variable qemu
 qemu_display_vm="gtk"						 ## fwiptables-file-default ## variable qemu						
 qemu_language_vm="es"						 ## fwiptables-file-default ## variable qemu
-qemu_accel_vm="kvm"						 ## fwiptables-file-default ## variable qemu
+qemu_accel_vm="accel=kvm"						 ## fwiptables-file-default ## variable qemu
+qemu_time_vm="base=localtime"					 ## fwiptables-file-default ## variable qemu
+qemu_boot_vm="menu=on"						 ## fwiptables-file-default ## variable qemu
 #### #### english: look  #### spanish: apariencia
 quad=" ####" ; 
 cinco="#####" ;
@@ -11580,9 +11582,9 @@ if [ "$3" == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $3"; fi
 ####
 ####
 command_qemu="$(command -v $qemu_architecture_vm)"
-qemu_options="-m $qemu_memory_ram -machine accel=kvm -k $qemu_language_vm -smp $qemu_smp_processor \
--accel $qemu_display_accel -rtc base=localtime -display $qemu_display_vm"
-qemu_full="$command_qemu $qemu_options -boot menu=on -hda $qemu_vm $qemu_cdrom"
+qemu_options="-m $qemu_memory_ram -k $qemu_language_vm -smp $qemu_smp_processor \
+-accel $qemu_accel_vm -rtc $qemu_time_vm -display $qemu_display_vm -boot $qemu_boot_vm"
+qemu_full="$command_qemu $qemu_options -hda $qemu_vm $qemu_cdrom"
 ####
 ####
 if [ ! -f "$qemu_vm" ]; then echo " VM image is not ready" ; exit ; fi 
@@ -11606,9 +11608,9 @@ if [ "$3"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $3"; fi
 ####
 ####
 command_qemu="$(command -v $qemu_architecture_vm)"
-qemu_options="-m $qemu_memory_ram -machine accel=kvm -k $qemu_language_vm -smp $qemu_smp_processor \
--accel $qemu_display_accel -rtc base=localtime -display $qemu_display_vm"
-qemu_full="$command_qemu $qemu_options -boot menu=on -hda $qemu_vm $qemu_cdrom"
+qemu_options="-m $qemu_memory_ram -k $qemu_language_vm -smp $qemu_smp_processor \
+-accel $qemu_accel_vm -rtc $qemu_time_vm -display $qemu_display_vm -boot $qemu_boot_vm"
+qemu_full="$command_qemu $qemu_options -hda $qemu_vm $qemu_cdrom"
 ####
 ####
 if [ ! -f "$qemu_vm" ]; then echo " VM image is not ready" ; exit ; fi 
