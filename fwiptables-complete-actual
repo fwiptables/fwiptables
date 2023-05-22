@@ -387,11 +387,11 @@ serverport_iperf_ipv6="5001"            ## fwiptables-file-default ## default 52
 graphic_window_dimension="--width=950 --height=650"   ## fwiptables-file-default ## default: "--width=950 --height=650"
 ####       #### english: RADIO URL streaming audio for default
 ####       #### spanish: direccion de RADIO DE INTERNET por defecto
-radio_default_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
 link_radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
 link_radio_rockfm="http://flucast-b02-06.flumotion.com/cope/rockfm.mp3" ;  ## fwiptables-file-default ## streaming url
 link_radio_kissfm="http://kissfm.kissfmradio.cires21.com/kissfm.mp3" ;  ## fwiptables-file-default ## streaming url
 link_radio_cope="https://flucast24-h-cloud.flumotion.com/cope/net1.mp3" ;  ## fwiptables-file-default ## streaming url
+radio_default_mp3="" ;  						 ## fwiptables-file-default ## streaming url
 ####       #### english: void for automatic command #### spanish: vacio para comando automatico
 #### favorite_text_editor        ... for example nano
 favorite_text_editor=""          ## fwiptables-file-default ## or void for autoamtic or command
@@ -10460,17 +10460,17 @@ case "$third_option" in "gui"|"-gui"|"-g"|"--gui") favorite_text_music="$favorit
 case "$favorite_graphicall_music" in "$NULL") echo "$tab [ fail ] [ Install a graphicall mp3 player ]"; exit ;; esac;; esac
 ####
 ####
-if [ "$second_option" == "$NULL" ]; then $nada
-#### emisora="$radio_default_mp3"
-echo "$duo_md [ info ] [ launch $cmd_binary radio-rockfm ]       [ for radio rockfm    ]"
-echo "$duo_md [ info ] [ launch $cmd_binary radio-kissfm ]       [ for radio kissfm    ]"
-echo "$duo_md [ info ] [ launch $cmd_binary radio-cadena100 ]    [ for radio cadena100 ]"
-echo "$duo_md [ info ] [ launch $cmd_binary radio-mp3 link-mp3 ] [ to open one link    ]"
+if [ "$second_option" == "$NULL" ]; then 
+echo "$duo_md [ info ] [ launch $cmd_binary radio-rockfm    ]  [ for radio rockfm    ]"
+echo "$duo_md [ info ] [ launch $cmd_binary radio-kissfm    ]  [ for radio kissfm    ]"
+echo "$duo_md [ info ] [ launch $cmd_binary radio-cadena100 ]  [ for radio cadena100 ]"
+echo "$duo_md [ info ] [ launch $cmd_binary radio-cope      ]  [ for radio cope      ]"
+echo "$duo_md [ info ] [ launch $cmd_binary radio-mp3 link  ]  [ to open one link    ]"
 exit
 else emisora="$second_option"; fi
 ####
 ####
-echo "$duo_md [  ok  ] [ $favorite_text_music $emisora ]"
+echo "$duo_md [  ok  ] [ $favorite_text_music ] [ $emisora ]"
 echo 
 echo 
 sudo -u $(logname) $favorite_text_music $emisora
@@ -10497,7 +10497,7 @@ case "$favorite_graphicall_music" in "$NULL") echo "$tab [ fail ] [ Install a gr
 emisora="$link_radio_cadena100"
 ####
 ####
-echo "$duo_md [  ok  ] [ $favorite_text_music $emisora ]"
+echo "$duo_md [  ok  ] [ $favorite_text_music ] [ $emisora ]"
 echo 
 echo 
 sudo -u $(logname) $favorite_text_music $emisora
@@ -10524,7 +10524,7 @@ case "$favorite_graphicall_music" in "$NULL") echo "$tab [ fail ] [ Install a gr
 emisora="$link_radio_rockfm"
 ####
 ####
-echo "$duo_md [  ok  ] [ $favorite_text_music $emisora ]"
+echo "$duo_md [  ok  ] [ $favorite_text_music ] [ $emisora ]"
 echo 
 echo 
 sudo -u $(logname) $favorite_text_music $emisora
@@ -10548,13 +10548,13 @@ case "$second_option" in "gui"|"-gui"|"-g"|"--gui") favorite_text_music="$favori
 case "$favorite_graphicall_music" in "$NULL") echo "$tab [ fail ] [ Install a graphicall mp3 player ]"; exit ;; esac;; esac
 ####
 ####
-#### emisora="$link_radio_kissfm"
+emisora="$link_radio_kissfm"
 ####
 ####
-echo "$duo_md [  ok  ] [ $favorite_text_music $emisora ]"
+echo "$duo_md [  ok  ] [ $favorite_text_music ] [ $emisora ]"
 echo 
 echo 
-sudo -u $(logname) $favorite_text_music $link_radio_kissfm
+sudo -u $(logname) $favorite_text_music $emisora
 exit; fi
 ####
 ####
@@ -10575,13 +10575,13 @@ case "$second_option" in "gui"|"-gui"|"-g"|"--gui") favorite_text_music="$favori
 case "$favorite_graphicall_music" in "$NULL") echo "$tab [ fail ] [ Install a graphicall mp3 player ]"; exit ;; esac;; esac
 ####
 ####
-#### emisora="$link_radio_cope"
+emisora="$link_radio_cope"
 ####
 ####
-echo "$duo_md [  ok  ] [ $favorite_text_music $emisora ]"
+echo "$duo_md [  ok  ] [ $favorite_text_music ] [ $emisora ]"
 echo 
 echo 
-sudo -u $(logname) $favorite_text_music $link_radio_cope
+sudo -u $(logname) $favorite_text_music $emisora
 exit; fi
 ####
 ####
