@@ -391,6 +391,7 @@ radio_default_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3
 link_radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
 link_radio_rockfm="http://flucast-b02-06.flumotion.com/cope/rockfm.mp3" ;  ## fwiptables-file-default ## streaming url
 link_radio_kissfm="http://kissfm.kissfmradio.cires21.com/kissfm.mp3" ;  ## fwiptables-file-default ## streaming url
+link_radio_cope="https://flucast24-h-cloud.flumotion.com/cope/net1.mp3" ;  ## fwiptables-file-default ## streaming url
 ####       #### english: void for automatic command #### spanish: vacio para comando automatico
 #### favorite_text_editor        ... for example nano
 favorite_text_editor=""          ## fwiptables-file-default ## or void for autoamtic or command
@@ -715,9 +716,9 @@ fi
 ####
 ####
 if [ "$favorite_text_music" == "$NULL" ]; then
-if [ "$command_cvlc" != "$NULL" ]; then  favorite_text_music="$command_cvlc"     ; fi
 if [ "$command_mpg321" != "$NULL" ]; then  favorite_text_music="$command_mpg321" ; fi
 if [ "$command_mpg123" != "$NULL" ]; then  favorite_text_music="$command_mpg123" ; fi
+if [ "$command_cvlc" != "$NULL" ]; then  favorite_text_music="$command_cvlc"     ; fi
 fi
 ####
 ####
@@ -10558,6 +10559,33 @@ exit; fi
 ####
 ####
 #### :rutina-final-radio-kissfm:
+##########    english: radio-cope: url from one radio mp3    ##########
+##########    spanish: radio-cope: url de una radio en mp3   ##########
+#### :rutina-inicial-radio-cope:
+####
+####
+if   [ "$first_option" == "radio-cope" ]; then  echo $give_cover
+echo "$header_ok [ $first_option ]  [ Listen radio online ]"
+echo "$duo_md [ info ] [ for choose default radio see: preferences-read ] [ for only protocol http ] || ||"
+echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
+####
+####
+case "$favorite_text_music" in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
+case "$second_option" in "gui"|"-gui"|"-g"|"--gui") favorite_text_music="$favorite_graphicall_music" ; 
+case "$favorite_graphicall_music" in "$NULL") echo "$tab [ fail ] [ Install a graphicall mp3 player ]"; exit ;; esac;; esac
+####
+####
+#### emisora="$link_radio_cope"
+####
+####
+echo "$duo_md [  ok  ] [ $favorite_text_music $emisora ]"
+echo 
+echo 
+sudo -u $(logname) $favorite_text_music $link_radio_cope
+exit; fi
+####
+####
+#### :rutina-final-radio-cope:
 ##########    english: el tiempo: muestra el tiempo con wttr.in   ##########
 ##########    spanish: weather: show the weather with wttr.in     ##########
 #### :rutina-inicial-weather:
