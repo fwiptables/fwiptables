@@ -847,6 +847,7 @@ if [ "$first_option" == "free" ] ; then first_option="free-ram"; fi
 if [ "$first_option" == "ram-free" ] ; then first_option="free-ram"; fi
 if [ "$first_option" == "date" ] ; then first_option="ntpdate-client"; fi
 if [ "$first_option" == "list-allrules" ] ; then first_option="list-alltables"; fi
+if [ "$first_option" == "info-nodes" ] ; then first_option="nodes"; fi
 if [ "$first_option" == "mp3" ] ; then first_option="radio-mp3"; fi
 if [ "$first_option" == "ip" ] ; then first_option="ip4"; fi
 ####
@@ -950,7 +951,7 @@ wizard-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option
 nmap-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option  ;  exit ;;
 "radio") echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
 "speed-cpu") echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
-"info-nodes") echo "$message_without_cli" ;  exit ;;
+"nodes") echo "$message_without_cli" ;  exit ;;
 "game-domain")$cmd_binary game-domain -cli ; exit ;;
 "game-word")$cmd_binary game-word -cli ; exit ;;
 "game-number")$cmd_binary game-number -cli ; exit ;;
@@ -983,7 +984,7 @@ radio-*) first_option="$second_option" ; second_option="gui" ;;
 "rule-del-num") first_option="rule-del-num" ; second_option="gui" ;;
 "gpg-notes") first_option="gpg-notes" ; second_option="gui" ;;
 "clean-tmp")$cmd_binary clean-tmp &> /dev/null ; $favorite_graphicall_dialog --info --text "$(echo [ ok ] [ deleted cache $fwiptables ])"; exit ;;
-"info-nodes") echo "$message_without_gui" ;  exit ;;
+"nodes") echo "$message_without_gui" ;  exit ;;
 esac ; fi
 ####
 ####
@@ -2813,7 +2814,7 @@ echo "$duo_md || ||  [ options-state ]  || ||  ### ###                          
 echo "$text_md       options-state  |  preferences-read preferences-modify preferences-regen                    "
 echo "$text_md                         ip4 ip6 version notes examples install uninstall                         "
 echo "$duo_md || ||  [ options-tool ]  || ||  ### ###                                                           "
-echo "$text_md   tool-sockets       |  info-listen info-nodes info-route info-net info-proxy info-system        "
+echo "$text_md   tool-sockets       |  info-listen nodes info-route info-net info-proxy info-system        "
 echo "$text_md                         ip4 ip6 ss lsof tcpdump netstat netstat-nat web-cert                     "
 echo "$text_md   tool-connect       |  iw-scan iw-info wpa-save wpa-load dhcp-client ntpdate-client             "
 echo "$text_md   tool-rule          |  rule-del-num rule-del-shield rule-add-shield                             "
@@ -2917,7 +2918,7 @@ exit ; fi
 if   [ "$first_option" == "options-tool" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ Tool options ] [ options-tool md ]"
 echo "$title_md                                    | options-tool |                                     " 
-echo "$text_md    tool-sockets      | info-listen info-nodes info-route info-net info-proxy info-system "
+echo "$text_md    tool-sockets      | info-listen nodes info-route info-net info-proxy info-system "
 echo "$text_md                        ip4 ip6 ss lsof tcpdump netstat netstat-nat web-cert              "
 echo "$text_md    tool-connect      | iw-scan iw-info wpa-save wpa-load dhcp-client ntpdate-client      "
 echo "$text_md    tool-rule         | rule-del-num rule-del-shield rule-add-shield                      "
@@ -3718,7 +3719,7 @@ echo "$text_md $tab_lang_spanish          : Lista informacion de red del sistema
 echo "$text_md $tab info-sockets"
 echo "$text_md $tab_lang_english          : List system listen sockets"
 echo "$text_md $tab_lang_spanish          : Lista sockets a la escuha del sistema"
-echo "$text_md $tab info-nodes"
+echo "$text_md $tab nodes"
 echo "$text_md $tab_lang_english          : List the conentions arp in the lan"
 echo "$text_md $tab_lang_spanish          : Lista las conexiones arp en la red local"
 echo "$text_md $tab info-proxy"
@@ -5154,7 +5155,7 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-tool-sockets" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|ip4|ip6|info-proxy|info-listen|info-route|info-nodes|\
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|ip4|ip6|info-proxy|info-listen|info-route|nodes|\
 info-net|info-system|ss|lsof|netstat|netstat-nat|tcpdump|ntpdate-client"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="$first_option" --text="$first_option" --title="$cmd_binary" --separator "" --list $selection_menu)"
@@ -5168,7 +5169,7 @@ case "$selection_final" in
 "ip4")$cmd_binary -gui ip4 ;;
 "ip6")$cmd_binary -gui ip6 ;;
 "info-route")$cmd_binary -gui route ;;
-"info-nodes")$cmd_binary -gui info-nodes ;;
+"nodes")$cmd_binary -gui nodes ;;
 "info-net")$cmd_binary -gui info-net ;;
 "info-system")$cmd_binary -gui info-system ;;
 "ss")$cmd_binary -gui ss ;;
@@ -6215,7 +6216,7 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-roll-tool-sockets" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|ip4|ip6|info-proxy|info-listen|info-route|info-nodes|\
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|ip4|ip6|info-proxy|info-listen|info-route|nodes|\
 info-net|info-system|ss|lsof|netstat|netstat-nat|tcpdump|ntpdate-client"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($command_zenity --text="$first_option" --title="$cmd_binary" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
@@ -6229,7 +6230,7 @@ case "$selection_final" in
 "ip4")$cmd_binary -gui ip4 ;;
 "ip6")$cmd_binary -gui ip6 ;;
 "info-route")$cmd_binary -gui route ;;
-"info-nodes")$cmd_binary -gui info-nodes ;;
+"nodes")$cmd_binary -gui nodes ;;
 "info-net")$cmd_binary -gui info-net ;;
 "info-system")$cmd_binary -gui info-system ;;
 "ss")$cmd_binary -gui ss ;;
@@ -7114,7 +7115,7 @@ menuprincipal="$($favorite_text_dialog --clear --notags --title "Cli Menu With $
 1003  "$tab lsof" \
 1004  "$tab tcpdump" \
 1005  "$tab info-route" \
-1006  "$tab info-nodes" \
+1006  "$tab nodes" \
 1007  "$tab info-listen" \
 1008  "$tab info-proxy" \
 1009  "$tab info-net" \
@@ -7402,7 +7403,7 @@ $cmd_binary wpa-load $archivo ;;
 1003) clear ; $cmd_binary cli lsof ;;
 1004) clear ; $cmd_binary cli tcpdump ;;
 1005) clear ; $cmd_binary cli info-route ;;
-1006) clear ; $cmd_binary cli info-nodes ;;
+1006) clear ; $cmd_binary cli nodes ;;
 1007) clear ; $cmd_binary cli info-listen ;;
 1008) clear ; $cmd_binary cli info-proxy ;;
 1009) clear ; $cmd_binary cli info-net ;;
@@ -9516,12 +9517,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-tcpdump:
-##########    english: info-nodes: listen at dump from conexiones arp    ##########
-##########    spanish: info-nodes: escucha al volcado de conexiones arp  ##########
-#### :rutina-inicial-info-nodes:
+##########    english: nodes: listen at dump from conexiones arp    ##########
+##########    spanish: nodes: escucha al volcado de conexiones arp  ##########
+#### :rutina-inicial-nodes:
 ####
 ####
-if   [ "$first_option" == "info-nodes" ]; then  echo $give_cover
+if   [ "$first_option" == "nodes" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ Show the list arp-scan in the lan ] || ||"
 if [ "$command_arp_scan" == "$NULL" ]; then echo "$duo_md [ fail ] [ install arp-scan command ]" ; exit ; fi
 echo "$duo_md [ info ] [ local net: ip lan .. ]"
@@ -9532,7 +9533,7 @@ timeout -s SIGINT -v $server_waiting $command_arp_scan -l -x
 exit; fi
 ####
 ####
-#### :rutina-final-info-nodes:
+#### :rutina-final-nodes:
 ##########   english: preferences-regen:  regen preferences       ##########
 ##########   spanish: preferences-regen:  regenera preferencias   ##########
 #### :rutina-inicial-preferences-regen:
@@ -12712,7 +12713,6 @@ echo "$text_md"
 echo "$text_md"
 echo "$title_md         [ List sockets ]"
 echo "$text_md"
-echo "$text_md      info-nodes : List the conentions arp in lan."
 echo "$text_md      info-proxy : List system proxy."
 echo "$text_md     info-listen : List system listen socket list."
 echo "$text_md      info-route : Show net devices and ip route tables."
@@ -12724,6 +12724,7 @@ echo "$text_md              ss : Show net sockets with command ss."
 echo "$text_md            lsof : Show net sockets with command lsof."
 echo "$text_md         netstat : Show net sockets with command netstat."
 echo "$text_md     netstat-nat : Show net sockets with command netstat-nat."
+echo "$text_md           nodes : List the conentions arp in lan."
 echo "$text_md        web-cert : Download one ssl certificated to one web with port https(443)."
 echo "$text_md         tcpdump : Listen the connections."
 echo "$text_md"
@@ -13079,7 +13080,6 @@ echo "$text_md         server-squid : Lanza un firewall como servidor squid."
 echo "$text_md"
 echo "$title_md   [ Lista las conexiones abiertas ]."
 echo "$text_md"
-echo "$text_md      info-nodes : Lista las conexiones arp in lan."
 echo "$text_md      info-proxy : Lista proxy del sistema."
 echo "$text_md     info-listen : Lista sockets a la escucha del sistema."
 echo "$text_md      info-route : Muestra los dispositivos de red y la tabla de rutas."
@@ -13091,6 +13091,7 @@ echo "$text_md              ss : Muestra las conexiones con comando ss."
 echo "$text_md            lsof : Muestra las conexiones con command lsof."
 echo "$text_md         netstat : Muestra las conexiones con comando netstat."
 echo "$text_md     netstat-nat : Muestra las conexiones con comando netstat-nat."
+echo "$text_md           nodes : Lista las conexiones arp in lan."
 echo "$text_md        web-cert : Obtiene un certificado ssl a una web con puerto https(443)."
 echo "$text_md         tcpdump : Escuchar las conexiones ip."
 echo "$text_md"
