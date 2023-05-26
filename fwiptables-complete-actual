@@ -9523,7 +9523,7 @@ exit; fi
 ####
 if   [ "$first_option" == "info-nodes" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ Show the list arp-scan in the lan ] || ||"
-if [ $command_arp_scan == "$NULL" ]; then echo "$tab [ fail ] [ install arp-scan command ]"; exit ; fi
+if [ "$command_arp_scan" == "$NULL" ]; then echo "$duo_md [ fail ] [ install arp-scan command ]" ; exit ; fi
 echo "$duo_md [ info ] [ local net: ip lan .. ]"
 $command_ip -4 route | $command_grep -i -v default
 echo "$duo_md [ info ] [ local scan: arp lan scan .. ]"
