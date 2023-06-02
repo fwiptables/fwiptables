@@ -2022,6 +2022,26 @@ server_port_tcp="ssh" ;
 fi
 ####
 ####
+####   #### english: firewall of system client-basic:
+####   #### spanish: cortafuego del sistema client-basic:
+####
+####
+if [ "$first_option" = "client-basic" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall client-basic ]" ;
+launch_firewall="yes" ; 
+type_firewall="predesignated" ;
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### you can connect normal web
+server_port_udp="" ;
+client_port_tcp="http,https,ssh" ;
+client_port_udp="domain,bootpc,ntp" ;
+server_port_tcp="" ;
+fi
+####
+####
 ####   #### english: firewall of system client-web:
 ####   #### spanish: cortafuego del sistema client-web:
 ####
@@ -2800,13 +2820,13 @@ echo "$text_md       firewall-custom |  new-full-config nueva-completa-config re
 echo "$text_md                          new-mini-config nueva-mini-config examples-config                       "
 echo "$text_md                          show-config modify-config del-config names-config                       "
 echo "$text_md       firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive        "
-echo "$text_md                          games-udp games-shooter game-wesnoth game-minetest game-freeciv         "
-echo "$text_md                          game-widelands client-web client-vnc client-mail client-news            "
-echo "$text_md                          client-torrent client-vpn  client-ftp  client-tor client-squid          "
-echo "$text_md                          lan-tor lan-vpn server-ssh server-samba server-vnc server-web           "
-echo "$text_md                          server-print server-lamp server-news server-ftp server-mail             "
-echo "$text_md                          server-teamspeak server-mumble server-sql server-asterisk               "
-echo "$text_md                          server-domain server-squid                                              " 
+echo "$text_md                          client-basic games-udp games-shooter game-wesnoth game-minetest         "
+echo "$text_md                          game-freeciv game-widelands client-web client-vnc client-mail           "
+echo "$text_md                          client-news client-torrent client-vpn  client-ftp  client-tor           "
+echo "$text_md                          client-squid lan-tor lan-vpn server-ssh server-samba server-vnc         "
+echo "$text_md                          server-webserver-print server-lamp server-news server-ftp               "
+echo "$text_md                          server-mail server-teamspeak server-mumble server-sql                   "
+echo "$text_md                          server-asterisk server-domain server-squid                              " 
 echo "$text_md         options-state |  preferences-read preferences-modify preferences-regen                   "
 echo "$text_md                          filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes               "
 echo "$text_md                          date version notes depends license code                                 "
@@ -4862,32 +4882,33 @@ menuprincipal="$($favorite_text_dialog --clear --notags --title "Cli Menu With $
 0504  "$tab off-line" \
 0505  "$tab all-permisive" \
 0506  "$tab custom" \
-0507  "$tab games-shooter" \
-0508  "$tab game-wesnoth" \
-0509  "$tab game-minetest" \
-0510  "$tab game-freeciv" \
-0511  "$tab game-widelands" \
-0512  "$tab client-web" \
-0513  "$tab client-vnc" \
-0514  "$tab client-tor" \
-0515  "$tab client-vpn" \
-0516  "$tab client-torrent" \
-0517  "$tab lan-tor" \
-0518  "$tab lan-vpn" \
-0519  "$tab shield-ssh" \
-0520  "$tab server-ssh" \
-0521  "$tab server-web" \
-0522  "$tab server-vnc" \
-0523  "$tab server-print" \
-0524  "$tab server-samba" \
-0525  "$tab server-lamp" \
-0526  "$tab server-mail" \
-0527  "$tab server-ftp" \
-0528  "$tab server-news" \
-0529  "$tab server-teamspeak" \
-0530  "$tab server-mumble" \
-0531  "$tab server-sql" \
-0532  "$tab server-asterisk" \
+0507  "$tab client-basic" \
+0508  "$tab games-shooter" \
+0509  "$tab game-wesnoth" \
+0510  "$tab game-minetest" \
+0511 "$tab game-freeciv" \
+0512  "$tab game-widelands" \
+0513  "$tab client-web" \
+0514  "$tab client-vnc" \
+0515  "$tab client-tor" \
+0516  "$tab client-vpn" \
+0517  "$tab client-torrent" \
+0518  "$tab lan-tor" \
+0519  "$tab lan-vpn" \
+0520  "$tab shield-ssh" \
+0521  "$tab server-ssh" \
+0522  "$tab server-web" \
+0523  "$tab server-vnc" \
+0524  "$tab server-print" \
+0525  "$tab server-samba" \
+0526  "$tab server-lamp" \
+0527  "$tab server-mail" \
+0528  "$tab server-ftp" \
+0529  "$tab server-news" \
+0530  "$tab server-teamspeak" \
+0531  "$tab server-mumble" \
+0532  "$tab server-sql" \
+0533  "$tab server-asterisk" \
 0600 "$quad [ Firewall Custom ] $cinco" \
 0601  "$tab new-full-config" \
 0602  "$tab nueva-completa-config" \
@@ -4993,32 +5014,33 @@ nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_binary load $nom
 0506) 
 archivo="$($favorite_text_dialog  --title "custom" --stdout --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo="$(echo $archivo | $command_sed s/\\///g)" ;  clear ; $cmd_binary custom $archivo ;;
-0507) clear ; $cmd_binary cli games-shooter ; $cmd_binary cli list4  ;; 
-0508) clear ; $cmd_binary cli game-wesnoth ; $cmd_binary cli list4  ;;
-0509) clear ; $cmd_binary cli game-minetest ; $cmd_binary cli list4  ;;
-0510) clear ; $cmd_binary cli game-freeciv ; $cmd_binary cli list4  ;;
-0511) clear ; $cmd_binary cli game-widelands ; $cmd_binary cli list4  ;;
-0512) clear ; $cmd_binary cli client-web ; $cmd_binary cli list4   ;;
-0513) clear ; $cmd_binary cli client-vnc ; $cmd_binary cli list4  ;;
-0514) clear ; $cmd_binary cli client-tor ; $cmd_binary cli list4   ;;
-0515) clear ; $cmd_binary cli client-vpn ; $cmd_binary cli list4  ;;
-0516) clear ; $cmd_binary cli client-torrent ; $cmd_binary cli list4  ;;
-0517) clear ; $cmd_binary cli lan-tor ; $cmd_binary cli list4  ;;
-0518) clear ; $cmd_binary cli lan-vpn ; $cmd_binary cli list4  ;; 
-0519) clear ; $cmd_binary cli shield-ssh ; $cmd_binary cli list4  ;; 
-0520) clear ; $cmd_binary cli server-ssh ; $cmd_binary cli list4   ;;
-0521) clear ; $cmd_binary cli server-web ; $cmd_binary cli list4  ;;
-0522) clear ; $cmd_binary cli server-vnc ; $cmd_binary cli list4  ;;
-0523) clear ; $cmd_binary cli server-print ; $cmd_binary cli list4  ;;
-0524) clear ; $cmd_binary cli server-samba ; $cmd_binary cli list4  ;;
-0525) clear ; $cmd_binary cli server-lamp ; $cmd_binary cli list4  ;;
-0526) clear ; $cmd_binary cli server-mail ; $cmd_binary cli list4  ;;
-0527) clear ; $cmd_binary cli server-ftp ; $cmd_binary cli list4  ;;
-0528) clear ; $cmd_binary cli server-news ; $cmd_binary cli list4  ;;
-0529) clear ; $cmd_binary cli server-teamspeak ; $cmd_binary cli list4  ;;
-0530) clear ; $cmd_binary cli server-mumble ; $cmd_binary cli list4  ;;
-0531) clear ; $cmd_binary cli server-sql ; $cmd_binary cli list4  ;;
-0532) clear ; $cmd_binary cli server-asterisk ; $cmd_binary cli list4  ;;
+0507) clear ; $cmd_binary cli client-basic ; $cmd_binary cli list4    ;;
+0508) clear ; $cmd_binary cli games-shooter ; $cmd_binary cli list4   ;; 
+0509) clear ; $cmd_binary cli game-wesnoth ; $cmd_binary cli list4    ;;
+0510) clear ; $cmd_binary cli game-minetest ; $cmd_binary cli list4   ;;
+0511) clear ; $cmd_binary cli game-freeciv ; $cmd_binary cli list4    ;;
+0512) clear ; $cmd_binary cli game-widelands ; $cmd_binary cli list4  ;;
+0513) clear ; $cmd_binary cli client-web ; $cmd_binary cli list4      ;;
+0514) clear ; $cmd_binary cli client-vnc ; $cmd_binary cli list4      ;;
+0515) clear ; $cmd_binary cli client-tor ; $cmd_binary cli list4      ;;
+0516) clear ; $cmd_binary cli client-vpn ; $cmd_binary cli list4      ;;
+0517) clear ; $cmd_binary cli client-torrent ; $cmd_binary cli list4  ;;
+0518) clear ; $cmd_binary cli lan-tor ; $cmd_binary cli list4         ;;
+0519) clear ; $cmd_binary cli lan-vpn ; $cmd_binary cli list4         ;; 
+0520) clear ; $cmd_binary cli shield-ssh ; $cmd_binary cli list4      ;; 
+0521) clear ; $cmd_binary cli server-ssh ; $cmd_binary cli list4      ;;
+0522) clear ; $cmd_binary cli server-web ; $cmd_binary cli list4      ;;
+0523) clear ; $cmd_binary cli server-vnc ; $cmd_binary cli list4      ;;
+0524) clear ; $cmd_binary cli server-print ; $cmd_binary cli list4    ;;
+0525) clear ; $cmd_binary cli server-samba ; $cmd_binary cli list4    ;;
+0526) clear ; $cmd_binary cli server-lamp ; $cmd_binary cli list4     ;;
+0527) clear ; $cmd_binary cli server-mail ; $cmd_binary cli list4     ;;
+0528) clear ; $cmd_binary cli server-ftp ; $cmd_binary cli list4      ;;
+0529) clear ; $cmd_binary cli server-news ; $cmd_binary cli list4     ;;
+0530) clear ; $cmd_binary cli server-teamspeak ; $cmd_binary cli list4  ;;
+0531) clear ; $cmd_binary cli server-mumble ; $cmd_binary cli list4   ;;
+0532) clear ; $cmd_binary cli server-sql ; $cmd_binary cli list4      ;;
+0533) clear ; $cmd_binary cli server-asterisk ; $cmd_binary cli list4 ;;
 ################################################################################
 0601) archivo="$($favorite_text_dialog  --stdout --title "new-full-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
