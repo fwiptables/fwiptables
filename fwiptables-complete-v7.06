@@ -2057,6 +2057,26 @@ server_port_tcp="ssh" ;
 fi
 ####
 ####
+####   #### english: firewall of system client-basic:
+####   #### spanish: cortafuego del sistema client-basic:
+####
+####
+if [ "$first_option" = "client-basic" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall client-basic ]" ;
+launch_firewall="yes" ; 
+type_firewall="predesignated" ;
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### you can connect normal web
+server_port_udp="" ;
+client_port_tcp="http,https,ssh" ;
+client_port_udp="domain,bootpc,ntp" ;
+server_port_tcp="" ;
+fi
+####
+####
 ####   #### english: firewall of system client-web:
 ####   #### spanish: cortafuego del sistema client-web:
 ####
@@ -2766,15 +2786,15 @@ echo "$text_md       firewall-custom |  new-full-config nueva-completa-config re
 echo "$text_md                          new-mini-config nueva-mini-config examples-config                       "
 echo "$text_md                          show-config modify-config del-config names-config                       "
 echo "$text_md       firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive        "
-echo "$text_md                          games-udp games-shooter game-wesnoth game-minetest game-freeciv         "
-echo "$text_md                          game-widelands client-web client-vnc client-mail client-news            "
-echo "$text_md                          client-torrent client-vpn  client-ftp  client-tor client-squid          "
-echo "$text_md                          lan-tor lan-vpn server-ssh server-samba server-vnc server-web           "
-echo "$text_md                          server-print server-lamp server-news server-ftp server-mail             "
-echo "$text_md                          server-teamspeak server-mumble server-sql server-asterisk               "
-echo "$text_md                          server-domain server-squid                                              "
+echo "$text_md                          client-basic games-udp games-shooter game-wesnoth game-minetest         "
+echo "$text_md                          game-freeciv game-widelands client-web client-vnc client-mail           "
+echo "$text_md                          client-news client-torrent client-vpn  client-ftp  client-tor           "
+echo "$text_md                          client-squid lan-tor lan-vpn server-ssh server-samba server-vnc         "
+echo "$text_md                          server-webserver-print server-lamp server-news server-ftp               "
+echo "$text_md                          server-mail server-teamspeak server-mumble server-sql                   "
+echo "$text_md                          server-asterisk server-domain server-squid                              " 
 echo "$text_md         options-state |  preferences-read preferences-modify preferences-regen filelog autolog   "
-echo "$text_md                          ip4 ip6 version notes depends license new-versions install uninstall   "
+echo "$text_md                          ip4 ip6 version notes depends license new-versions install uninstall    "
 echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_binary options ] ### || ||               "
 echo "$text_md options-state|options-interface|options-firewall|options-tool|options-show|options-help|options-examples"
 exit ; fi
@@ -4791,8 +4811,9 @@ exit; fi
 ####  
 if   [ "$first_option" == "gui-menu-firewall-launch" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|eraserules|wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|\
-games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|client-web|client-vnc|client-torrent|client-vpn|client-tor|\
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|eraserules|wizard-mini|wizard-full|\
+custom-cfg|custom|off-line|all-permisive|client-basic|games-shooter|game-wesnoth|game-minetest|\
+game-freeciv|game-widelands|client-web|client-vnc|client-torrent|client-vpn|client-tor|\
 lan-tor|lan-vpn|shield-ssh|server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|server-domain|\
 server-news|server-mail|server-ftp|server-teamspeak|server-mumble|server-sql|server-asterisk"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
@@ -4809,6 +4830,7 @@ case "$selection_final" in
 "wizard-mini")$cmd_binary -gui wizard-mini ; $cmd_binary gui list4;;
 "off-line")$cmd_binary -gui off-line ; $cmd_binary gui list4;;
 "all-permisive")$cmd_binary -gui all-permisive ; $cmd_binary gui list4;;
+"client-basic")$cmd_binary -gui client-basic ; $cmd_binary gui list4;;
 "client-web")$cmd_binary -gui client-web ; $cmd_binary gui list4;;
 "client-vnc")$cmd_binary -gui client-vnc ; $cmd_binary gui list4;;
 "client-torrent")$cmd_binary -gui client-torrent ; $cmd_binary gui list4;;
@@ -4836,6 +4858,9 @@ case "$selection_final" in
 "server-sql")$cmd_binary -gui server-sql ; $cmd_binary gui list4;;
 "server-asterisk")$cmd_binary -gui server-asterisk ; $cmd_binary gui list4;;
 "server-domain")$cmd_binary -gui server-domain ; $cmd_binary gui list4;;
+"custom")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension \
+--title "[Launch Custom]" --text="$($command_ls -1 $directory_config)")" ; 
+$cmd_binary -gui custom $archivo ; $cmd_binary gui list4;;
 "custom-cfg")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension \
 --title "[Launch Custom]" --text="$($command_ls -1 $directory_config)")" ; 
 $cmd_binary -gui custom $archivo ; $cmd_binary gui list4;;
@@ -5852,8 +5877,9 @@ exit; fi
 ####  
 if   [ "$first_option" == "gui-roll-firewall-launch" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|eraserules|wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|\
-games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|client-web|client-vnc|client-torrent|client-vpn|client-tor|\
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|eraserules|wizard-mini|wizard-full|\
+custom|custom-cfg|off-line|all-permisive|client-basic|games-shooter|game-wesnoth|game-minetest|\
+game-freeciv|game-widelands|client-web|client-vnc|client-torrent|client-vpn|client-tor|\
 lan-tor|lan-vpn|shield-ssh|server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|server-domain|\
 server-news|server-mail|server-ftp|server-teamspeak|server-mumble|server-sql|server-asterisk"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
@@ -5870,6 +5896,7 @@ case "$selection_final" in
 "wizard-mini")$cmd_binary -gui wizard-mini ; $cmd_binary gui list4;;
 "off-line")$cmd_binary -gui off-line ; $cmd_binary gui list4;;
 "all-permisive")$cmd_binary -gui all-permisive ; $cmd_binary gui list4;;
+"client-basic")$cmd_binary -gui client-basic ; $cmd_binary gui list4;;
 "client-web")$cmd_binary -gui client-web ; $cmd_binary gui list4;;
 "client-vnc")$cmd_binary -gui client-vnc ; $cmd_binary gui list4;;
 "client-torrent")$cmd_binary -gui client-torrent ; $cmd_binary gui list4;;
@@ -5897,6 +5924,9 @@ case "$selection_final" in
 "server-sql")$cmd_binary -gui server-sql ; $cmd_binary gui list4;;
 "server-asterisk")$cmd_binary -gui server-asterisk ; $cmd_binary gui list4;;
 "server-domain")$cmd_binary -gui server-domain ; $cmd_binary gui list4;;
+"custom")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension \
+--title "[Launch Custom]" --text="$($command_ls -1 $directory_config)")" ; 
+$cmd_binary -gui custom $archivo ; $cmd_binary gui list4;;
 "custom-cfg")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension \
 --title "[Launch Custom]" --text="$($command_ls -1 $directory_config)")" ; 
 $cmd_binary -gui custom $archivo ; $cmd_binary gui list4;;
