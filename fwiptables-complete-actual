@@ -1276,6 +1276,7 @@ chmod 555 "/usr/bin/$cmd_config" &> /dev/null
 ####
 $cmd_binary preferences-regen &> /dev/null
 $cmd_binary regen-config &> /dev/null
+if [ -f "/usr/bin/$cmd_config" ]; then /usr/bin/$cmd_config version; fi
 ####
 ####
 ####
@@ -1329,6 +1330,9 @@ if [ -s "$directory_temporal/$cmd_config-installer" ] ; then echo "$duo_md [  ok
 $directory_temporal/$cmd_config-installer install ; else echo "$duo_md [ fail ] [ install fail ]"; fi ; exit ; fi
 ####
 ####
+if [ -f "/usr/bin/$cmd_config" ]; then /usr/bin/fwiptables-cmd version; fi
+####
+####
 fi
 ####
 ####
@@ -1371,6 +1375,9 @@ cp "$directory_temporal/$cmd_config-installer" "/usr/bin/fwiptables-min"
 chmod 555 "/usr/bin/fwiptables-min"
 echo "$duo_md [ info ] [ installed ] fwiptables minimal installed in /usr/bin/fwiptables-min"
 else echo "$duo_md [ fail ] [ install fail ]"; fi ; exit ; fi
+####
+####
+if [ -f "/usr/bin/$cmd_config" ]; then /usr/bin/fwiptables-min version; fi
 ####
 ####
 exit ; fi
