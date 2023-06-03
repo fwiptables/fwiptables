@@ -7081,7 +7081,7 @@ menuprincipal="$($favorite_text_dialog --clear --notags --title "Cli Menu With $
 0504  "$tab off-line" \
 0505  "$tab all-permisive" \
 0506  "$tab custom" \
-0507  "$tab custom" \
+0507  "$tab client-basic" \
 0508  "$tab games-shooter" \
 0509  "$tab game-wesnoth" \
 0510  "$tab game-minetest" \
