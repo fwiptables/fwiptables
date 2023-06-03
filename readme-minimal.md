@@ -1,8 +1,8 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-min ] [ Version: minimal-7.04 ] || ||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-min ] [ Version: minimal-7.06 ] || ||
 ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-min preferences-modify ] || ||
-### || || [ ok ] || [ options ] [ List options ] [ options md ] || ||                              
+### || || [ ok ] || [ options ] [ List options ] [ options md ] || ||                                        
     Launch: /usr/bin/fwiptables-min [ -cli-menu -gui-menu -gui-roll -gui-shell                                        
-    -t|-txt -c|-cli -g|-gui -l|-log -n|-null ] first_option [ second_option ]                             
+    -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]                           
 ### || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||             
         firewall-control |  stop continue reset names actual show save load                         
      firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6     
@@ -15,13 +15,13 @@
                             new-mini-config nueva-mini-config examples-config                       
                             show-config modify-config del-config names-config                       
          firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive        
-                            games-udp games-shooter game-wesnoth game-minetest game-freeciv         
-                            game-widelands client-web client-vnc client-mail client-news            
-                            client-torrent client-vpn  client-ftp  client-tor client-squid          
-                            lan-tor lan-vpn server-ssh server-samba server-vnc server-web           
-                            server-print server-lamp server-news server-ftp server-mail             
-                            server-teamspeak server-mumble server-sql server-asterisk               
-                            server-domain server-squid                                              
+                            client-basic games-udp games-shooter game-wesnoth game-minetest         
+                            game-freeciv game-widelands client-web client-vnc client-mail           
+                            client-news client-torrent client-vpn  client-ftp  client-tor           
+                            client-squid lan-tor lan-vpn server-ssh server-samba server-vnc         
+                            server-webserver-print server-lamp server-news server-ftp               
+                            server-mail server-teamspeak server-mumble server-sql                   
+                            server-asterisk server-domain server-squid                              
            options-state |  preferences-read preferences-modify preferences-regen                   
-                            filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets                     
-                            version notes depends license code                                      
+                            filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes               
+                            date version notes depends license code                                 

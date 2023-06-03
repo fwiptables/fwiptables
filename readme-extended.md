@@ -1,4 +1,4 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd ] [ Version: complete-7.05 ] |||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd ] [ Version: complete-7.06 ] |||
 ### || || [ ok ] || [ options-all ] [ List full options ] [ full-options md ] || ||
 ### || ||  [ options-interface ]  || ||  ### ###                                                      
      Launch: /usr/bin/fwiptables-cmd [-cli-menu -gui-menu -gui-roll -gui-shell                                       
@@ -26,7 +26,7 @@
             options-state  |  preferences-read preferences-modify preferences-regen                    
                               ip4 ip6 version notes examples install uninstall                         
 ### || ||  [ options-tool ]  || ||  ### ###                                                           
-        tool-sockets       |  info-listen info-nodes info-route info-net info-proxy info-system        
+        tool-sockets       |  info-listen nodes info-route info-net info-proxy info-system        
                               ip4 ip6 ss lsof tcpdump netstat netstat-nat web-cert                     
         tool-connect       |  iw-scan iw-info wpa-save wpa-load dhcp-client ntpdate-client             
         tool-rule          |  rule-del-num rule-del-shield rule-add-shield                             

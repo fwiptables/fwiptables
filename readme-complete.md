@@ -1,4 +1,4 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd ] [ Version: complete-7.05 ] |||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd ] [ Version: complete-7.06 ] |||
 ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-cmd preferences-modify ] || ||
 ### || || [ ok ] || [ mini-options ] [ List mini options ] [ options-mini md ] || ||
      Launch: /usr/bin/fwiptables-cmd [-cli-menu -gui-menu -gui-roll -gui-shell                                       
@@ -15,14 +15,14 @@
                                new-mini-config nueva-mini-config examples-config                       
                                show-config modify-config del-config names-config                       
             firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive        
-                               games-udp games-shooter game-wesnoth game-minetest game-freeciv         
-                               game-widelands client-web client-vnc client-mail client-news            
-                               client-torrent client-vpn  client-ftp  client-tor client-squid          
-                               lan-tor lan-vpn server-ssh server-samba server-vnc server-web           
-                               server-print server-lamp server-news server-ftp server-mail             
-                               server-teamspeak server-mumble server-sql server-asterisk               
-                               server-domain server-squid                                              
+                               client-basic games-udp games-shooter game-wesnoth game-minetest         
+                               game-freeciv game-widelands client-web client-vnc client-mail           
+                               client-news client-torrent client-vpn  client-ftp  client-tor           
+                               client-squid lan-tor lan-vpn server-ssh server-samba server-vnc         
+                               server-webserver-print server-lamp server-news server-ftp               
+                               server-mail server-teamspeak server-mumble server-sql                   
+                               server-asterisk server-domain server-squid                              
               options-state |  preferences-read preferences-modify preferences-regen filelog autolog   
-                               ip4 ip6 version notes depends license new-versions install uninstall   
+                               ip4 ip6 version notes depends license new-versions install uninstall    
 ### || ||  [ Options ]  ### [  Show all posible option: /usr/bin/fwiptables-cmd options ] ### || ||               
       options-state|options-interface|options-firewall|options-tool|options-show|options-help|options-examples
