@@ -2036,7 +2036,7 @@ allow_shield_maxtries="no" ;
 config_shield_port="" ;
 #### you can connect normal web
 server_port_udp="" ;
-client_port_tcp="http,https,ssh" ;
+client_port_tcp="http,https,ssh,ipp" ;
 client_port_udp="domain,bootpc,ntp" ;
 server_port_tcp="" ;
 fi
