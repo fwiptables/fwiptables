@@ -776,6 +776,9 @@ if [ "$first_option" = "cfg-custom" ] ; then first_option="custom" ; fi
 if [ "$first_option" = "list-fw" ] ; then first_option="names"; fi
 if [ "$first_option" = "ram-free" ] ; then first_option="free-ram"; fi
 if [ "$first_option" == "date" ] ; then first_option="ntpdate-client"; fi
+if [ "$first_option" == "ram-free" ] ; then first_option="free-ram"; fi
+if [ "$first_option" == "ram" ] ; then first_option="free-ram"; fi
+if [ "$first_option" == "free" ] ; then first_option="free-ram"; fi
 if [ "$first_option" = "list-allrules" ] ; then first_option="list-alltables"; fi
 ####
 ####
@@ -877,9 +880,6 @@ nmap-*) echo "$message_without_cli" ; $zero_option $second_option $third_option 
 "radio") echo "$message_without_cli" ; $zero_option $second_option $third_option ;  exit ;;
 "speed-cpu") echo "$message_without_cli" ; $zero_option $second_option $third_option ;  exit ;;
 "info-nodes") echo "$message_without_cli" ;  exit ;;
-"game-domain") $zero_option game-domain -cli ; exit ;;
-"game-word") $zero_option game-word -cli ; exit ;;
-"game-number") $zero_option game-number -cli ; exit ;;
 "addblock-on") echo "$message_without_cli" ; $zero_option $second_option $third_option  ;  exit ;;
 "gpg-notes") $zero_option $second_option $third_option ; exit ;;
 "clean-tmp") $zero_option $second_option $third_option ; exit ;;
@@ -2829,7 +2829,7 @@ echo "$text_md                          server-mail server-teamspeak server-mumb
 echo "$text_md                          server-asterisk server-domain server-squid                              " 
 echo "$text_md         options-state |  preferences-read preferences-modify preferences-regen                   "
 echo "$text_md                          filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes               "
-echo "$text_md                          date version notes depends license code                                 "
+echo "$text_md                          free date version notes depends license code                            "
 exit ; fi
 ####
 ####
@@ -2898,6 +2898,24 @@ exit; fi
 ####
 ####
 #### :rutina-final-text-pause:
+##########    english: free-ram: give one freedom to ram innecesary     ##########
+##########    spanish: free-ram: limpia la memoria ram                  ##########
+#### :rutina-inicial-free-ram:
+####
+####
+if   [ "$first_option" == "free-ram" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ freedom from innecesary ram ] || ||"
+case $command_tee in "$NULL") echo "$tab [ fail ] [ Install tee command ]"; exit ;; esac
+echo "$duo_md [ info ] Actual Memory"
+free -hw 
+echo 3 | $command_tee /proc/sys/vm/drop_caches &> /dev/null
+sync
+echo "$duo_md [ info ] Now with New Memory ram freedom .. Actual memory now .."
+free -hw
+exit; fi
+####
+####
+#### :rutina-final-free-ram:
 ##########     english: examples-config: Show config files examples            ##########
 ##########     spanish: examples-config: Muestra ejemplos de configuraciones   ##########
 #### :rutina-inicial-examples-config:
@@ -4556,11 +4574,6 @@ $favorite_graphicall_dialog  --forms $graphic_window_dimension --text="OK. file:
 else cp "$directory_temporal/$cmd_config-$third_option" "$directory_config/$third_option"
 $favorite_graphicall_dialog --forms $graphic_window_dimension --text="Canceled. file: $third_option"; fi
 ;;
-#### 
-####
-"game-word")$cmd_binary game-word -gui ; exit ;;
-"game-number")$cmd_binary game-number -gui ; exit ;;
-"game-domain")$cmd_binary game-domain -gui ; exit ;;
 ####
 ####
 *)$cmd_binary "$second_option" "$third_option" "$quad_option" &> "$temporal_guifinal"
@@ -4631,11 +4644,6 @@ $favorite_graphicall_dialog  --text-info $graphic_window_dimension --filename="$
 if [ ! -s "$default_preferences" ]; then cp "$default_preferences.old" "$default_preferences" ;
 $favorite_graphicall_dialog  --info $graphic_window_dimension --text "OK. $archivo canceled"; fi
 ;;
-#### 
-####
-"game-word")$cmd_binary game-word -gui ; exit ;;
-"game-number")$cmd_binary game-number -gui ; exit ;;
-"game-domain")$cmd_binary game-domain -gui ; exit ;;
 ####
 ####
 *)$cmd_binary $second_option $third_option &> $temporal_guifinal
@@ -4721,12 +4729,6 @@ esac
 ####
 ####
 case $menugtk in
-####
-####
-"game-word")$cmd_binary game-word -gui ;;
-"game-number")$cmd_binary game-number -gui ;;
-"game-domain")$cmd_binary game-domain -gui ;;
-"rule-del-num")$cmd_binary rule-del-num -gui ;;
 ####
 ####
 #### english: new-full-config and nueva-completa-config whithout parameters ####
