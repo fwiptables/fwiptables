@@ -1276,7 +1276,7 @@ chmod 555 "/usr/bin/$cmd_config" &> /dev/null
 ####
 $cmd_binary preferences-regen &> /dev/null
 $cmd_binary regen-config &> /dev/null
-if [ -f "/usr/bin/$cmd_config" ]; then /usr/bin/$cmd_config version; fi
+if [ -f "/usr/bin/$cmd_config" ]; then /usr/bin/$cmd_config ver; fi
 ####
 ####
 ####
@@ -1330,7 +1330,7 @@ if [ -s "$directory_temporal/$cmd_config-installer" ] ; then echo "$duo_md [  ok
 $directory_temporal/$cmd_config-installer install ; else echo "$duo_md [ fail ] [ install fail ]"; fi ; exit ; fi
 ####
 ####
-if [ -f "/usr/bin/$cmd_config" ]; then /usr/bin/fwiptables-cmd version; fi
+if [ -f "/usr/bin/$cmd_config" ]; then /usr/bin/fwiptables-cmd ver; fi
 ####
 ####
 fi
@@ -1377,7 +1377,7 @@ echo "$duo_md [ info ] [ installed ] fwiptables minimal installed in /usr/bin/fw
 else echo "$duo_md [ fail ] [ install fail ]"; fi ; exit ; fi
 ####
 ####
-if [ -f "/usr/bin/$cmd_config" ]; then /usr/bin/fwiptables-min version; fi
+if [ -f "/usr/bin/$cmd_config" ]; then /usr/bin/fwiptables-min ver; fi
 ####
 ####
 exit ; fi
@@ -2801,7 +2801,7 @@ echo "$text_md                          server-webserver-print server-lamp serve
 echo "$text_md                          server-mail server-teamspeak server-mumble server-sql                   "
 echo "$text_md                          server-asterisk server-domain server-squid                              " 
 echo "$text_md         options-state |  preferences-read preferences-modify preferences-regen filelog autolog   "
-echo "$text_md                          ip4 ip6 version notes depends license new-versions install uninstall    "
+echo "$text_md                          ip4 ip6 ver version notes depends license new-versions install uninstall"
 echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_binary options ] ### || ||               "
 echo "$text_md options-state|options-interface|options-firewall|options-tool|options-show|options-help|options-examples"
 exit ; fi
@@ -7579,6 +7579,19 @@ exit; fi
 ####
 ####
 #### :rutina-final-text-pause:
+##########    english: ver: system script, the version option              ##########
+##########    spanish: ver: script de sistema, la opcion mostrar version   ##########
+#### :rutina-inicial-ver:
+####
+####
+if [ "$first_option" = "ver" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ Show version about ] [ version.md] || ||"
+echo "$text_md [ program ] $cmd_name | $cmd_version | $cmd_description "
+echo "$text_md [ Temp directory ] $directory_tmp [ Data directory ] $directory_data [ Web page ] $cmd_homepage"
+exit ; fi
+####
+####
+#### :rutina-final-ver:
 ##########    english: version: system script, the version option              ##########
 ##########    spanish: version: script de sistema, la opcion mostrar version   ##########
 #### :rutina-inicial-version:
