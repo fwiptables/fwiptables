@@ -845,6 +845,7 @@ if [ "$first_option" == "list-fw" ] ; then first_option="names"; fi
 if [ "$first_option" == "ram" ] ; then first_option="free-ram"; fi
 if [ "$first_option" == "free" ] ; then first_option="free-ram"; fi
 if [ "$first_option" == "ram-free" ] ; then first_option="free-ram"; fi
+if [ "$first_option" == "sockets" ] ; then first_option="ss"; fi
 if [ "$first_option" == "date" ] ; then first_option="ntpdate-client"; fi
 if [ "$first_option" == "list-allrules" ] ; then first_option="list-alltables"; fi
 if [ "$first_option" == "info-nodes" ] ; then first_option="nodes"; fi
@@ -2800,8 +2801,9 @@ echo "$text_md                          client-squid lan-tor lan-vpn server-ssh 
 echo "$text_md                          server-webserver-print server-lamp server-news server-ftp               "
 echo "$text_md                          server-mail server-teamspeak server-mumble server-sql                   "
 echo "$text_md                          server-asterisk server-domain server-squid                              " 
-echo "$text_md         options-state |  preferences-read preferences-modify preferences-regen filelog autolog   "
-echo "$text_md                          ip4 ip6 ver version notes depends license new-versions install uninstall"
+echo "$text_md         options-state |  preferences-read preferences-modify preferences-regen                   "
+echo "$text_md                          filelog autolog ip4 ip6 sockets free date ver version                   " 
+echo "$text_md                          notes depends license new-versions install uninstall                    "
 echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_binary options ] ### || ||               "
 echo "$text_md options-state|options-interface|options-firewall|options-tool|options-show|options-help|options-examples"
 exit ; fi
@@ -7586,8 +7588,8 @@ exit; fi
 ####
 if [ "$first_option" = "ver" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ Show version about ] [ version.md] || ||"
-echo "$text_md [ program ] $cmd_name | $cmd_version | $cmd_description "
-echo "$text_md [ Temp directory ] $directory_tmp [ Data directory ] $directory_data [ Web page ] $cmd_homepage"
+echo "[ ok ] [ program ] $cmd_name | $cmd_version | $cmd_description "
+echo "[ ok ] [ Temp directory ] $directory_tmp [ Data directory ] $directory_data [ Web page ] $cmd_homepage"
 exit ; fi
 ####
 ####

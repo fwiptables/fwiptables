@@ -1274,8 +1274,8 @@ exit ; fi
 ####
 if [ "$first_option" = "ver" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ Show version about ] [ version.md] || ||"
-echo "$text_md [ program ] $cmd_name | $cmd_version | $cmd_description "
-echo "$text_md [ Temp directory ] $directory_tmp [ Data directory ] $directory_data [ Web page ] $cmd_homepage"
+echo "[ ok ] [ program ] $cmd_name | $cmd_version | $cmd_description "
+echo "[ ok ] [ Temp directory ] $directory_tmp [ Data directory ] $directory_data [ Web page ] $cmd_homepage"
 exit ; fi
 ####
 ####
