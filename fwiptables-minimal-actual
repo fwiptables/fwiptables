@@ -1267,6 +1267,19 @@ exit ; fi
 ####
 ####
 #### :rutina-final-version:
+##########    english: ver: system script, the version option              ##########
+##########    spanish: ver: script de sistema, la opcion mostrar version   ##########
+#### :rutina-inicial-ver:
+####
+####
+if [ "$first_option" = "ver" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ Show version about ] [ version.md] || ||"
+echo "$text_md [ program ] $cmd_name | $cmd_version | $cmd_description "
+echo "$text_md [ Temp directory ] $directory_tmp [ Data directory ] $directory_data [ Web page ] $cmd_homepage"
+exit ; fi
+####
+####
+#### :rutina-final-ver:
 ##########    english: notes: notes to configure iptables      ##########
 ##########    spanish: notes: notas para configurar iptables   ##########
 #### :rutina-inicial-notes:
