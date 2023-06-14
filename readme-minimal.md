@@ -1,7 +1,7 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-min ] [ Version: minimal-7.06 ] || ||
-### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-min preferences-modify ] || ||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-min ] [ Version: minimal-7.07 ] || ||
+### || || [ ok ] || [ Configure ] [ Configure: ./fwiptables-minimal-actual preferences-modify ] || ||
 ### || || [ ok ] || [ options ] [ List options ] [ options md ] || ||                                        
-    Launch: /usr/bin/fwiptables-min [ -cli-menu -gui-menu -gui-roll -gui-shell                                        
+    Launch: ./fwiptables-minimal-actual [ -cli-menu -gui-menu -gui-roll -gui-shell                                        
     -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]                           
 ### || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||             
         firewall-control |  stop continue reset names actual show save load                         
@@ -24,4 +24,4 @@
                             server-asterisk server-domain server-squid                              
            options-state |  preferences-read preferences-modify preferences-regen                   
                             filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes               
-                            date version notes depends license code                                 
+                            free date ver version notes depends license code                        
