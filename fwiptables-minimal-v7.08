@@ -89,7 +89,7 @@ fi
 ####
 cmd_binary="$0" ;
 cmd_config="fwiptables-min" ;
-cmd_version="minimal-7.07" ;
+cmd_version="minimal-7.08" ;
 cmd_name="Fran Mini FireWall FWiptables Generator" ;
 cmd_description="One Mini Script in bash for iptables firewall" ;
 cmd_license="GPL v2" ;
