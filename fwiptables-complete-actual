@@ -2805,7 +2805,7 @@ echo "$text_md          options-easy |  preferences-read preferences-modify pref
 echo "$text_md                          filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes               "
 echo "$text_md                          free date ver version notes depends license code                        "
 echo "$text_md                          install uninstall upgrade-minimal upgrade-complete                      "
-echo "$text_md               options |  full-options options-easy options-interface options-firewall           "
+echo "$text_md           options-all |  full-options options-easy options-interface options-firewall           "
 echo "$text_md                          options-tool options-show options-help options-examples                 "
 exit ; fi
 ####
