@@ -2801,11 +2801,11 @@ echo "$text_md                          client-squid lan-tor lan-vpn server-ssh 
 echo "$text_md                          server-webserver-print server-lamp server-news server-ftp               "
 echo "$text_md                          server-mail server-teamspeak server-mumble server-sql                   "
 echo "$text_md                          server-asterisk server-domain server-squid                              " 
-echo "$text_md         options-state |  preferences-read preferences-modify preferences-regen                   "
+echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen                   "
 echo "$text_md                          filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes               "
 echo "$text_md                          free date ver version notes depends license code                        "
 echo "$text_md                          install uninstall upgrade-minimal upgrade-complete                      "
-echo "$text_md               options |  full-options options-state options-interface options-firewall           "
+echo "$text_md               options |  full-options options-easy options-interface options-firewall           "
 echo "$text_md                          options-tool options-show options-help options-examples                 "
 exit ; fi
 ####
@@ -2840,9 +2840,11 @@ echo "$text_md                          lan-tor lan-vpn server-ssh server-samba 
 echo "$text_md                          server-print server-lamp server-news server-ftp server-mail             "
 echo "$text_md                          server-teamspeak server-mumble server-sql server-asterisk               "
 echo "$text_md                          server-domain server-squid                                              "
-echo "$duo_md || ||  [ options-state ]  || ||  ### ###                                                          "
-echo "$text_md       options-state  |  preferences-read preferences-modify preferences-regen                    "
-echo "$text_md                         ip4 ip6 version notes examples install uninstall                         "
+echo "$duo_md || ||  [ options-easy ]  || ||  ### ###                                                           "
+echo "$text_md         options-easy |  preferences-read preferences-modify preferences-regen                   "
+echo "$text_md                         filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes               "
+echo "$text_md                         free date ver version notes depends license code                        "
+echo "$text_md                         install uninstall upgrade-minimal upgrade-complete                      "
 echo "$duo_md || ||  [ options-tool ]  || ||  ### ###                                                           "
 echo "$text_md   tool-sockets       |  info-listen nodes info-route info-net info-proxy info-system        "
 echo "$text_md                         ip4 ip6 ss lsof tcpdump netstat netstat-nat web-cert                     "
@@ -2921,19 +2923,19 @@ exit ; fi
 #### :rutina-final-options-firewall:
 
 
-##########    english: options-state: firewall options       ##########
-##########    spanish: options-state: opciones de firewall   ##########
-#### :rutina-final-options-state:
+##########    english: options-easy: firewall options       ##########
+##########    spanish: options-easy: opciones de firewall   ##########
+#### :rutina-final-options-easy:
 ####
 ####
-if   [ "$first_option" == "options-state" ] ; then echo $give_cover
-echo "$title_md [ $first_option ] [ List state options ] [ options-state md ]"
-echo "$title_md                                  | options-state |                          "
-echo "$text_md      options-state  |  preferences-read preferences-modify preferences-regen filelog autolog  "
+if   [ "$first_option" == "options-easy" ] ; then echo $give_cover
+echo "$title_md [ $first_option ] [ List state options ] [ options-easy md ]"
+echo "$title_md                                  | options-easy |                          "
+echo "$text_md      options-easy  |  preferences-read preferences-modify preferences-regen filelog autolog  "
 echo "$text_md                        install uninstall upgrade-mini actualcomplete-upgrade            "
 echo "$text_md                        ip4 ip6 version notes depends license new-versions                     "
 echo "$text_md"
-echo "$text_md   | Group | options-interface | options-firewall | options-state | options-tool | options-show | options-help   "
+echo "$text_md   | Group | options-interface | options-firewall | options-easy | options-tool | options-show | options-help   "
 exit ; fi
 ####
 ####
@@ -2970,7 +2972,7 @@ echo "$text_md    tool-addblock     | addblock-list addblock-on addblock-off    
 echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                         "
 echo "$text_md    tool-computer     | pc-halt pc-shutdown pc-reboot                                     "
 echo "$text_md"
-echo "$text_md    | Group | options-interface | options-firewall | options-state | options-tool | options-show | options-help "
+echo "$text_md    | Group | options-interface | options-firewall | options-easy | options-tool | options-show | options-help "
 exit ; fi
 ####
 ####
@@ -2988,7 +2990,7 @@ echo "$text_md    show-log          | log-search log-ssh filelog autolog        
 echo "$text_md    show-etc          | hosts resolv.conf  protocols services                 "
 echo "$text_md                        hosts.allow hosts.deny preferences-read preferences-modify    "
 echo "$text_md"
-echo "$text_md      | Group | options-interface | options-firewall | options-state | options-tool | options-show | options-help "
+echo "$text_md      | Group | options-interface | options-firewall | options-easy | options-tool | options-show | options-help "
 exit ; fi
 ####
 ####
@@ -3005,7 +3007,7 @@ echo "$text_md  help-about         |  about version depends config-eng config-sp
 echo "$text_md  help-help          |  all-help readme leeme notes options                                      "
 echo "$text_md                        group-options mini-options full-options                                  "
 echo "$text_md"
-echo "$text_md      | Group | options-interface | options-firewall | options-state | options-tool | options-show | options-help "
+echo "$text_md      | Group | options-interface | options-firewall | options-easy | options-tool | options-show | options-help "
 exit ; fi
 ####
 ####
@@ -4769,7 +4771,7 @@ exit; fi
 if [ "$first_option" == "gui-menu" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|\
-03-Firewall-Custom|04-Firewall-Launch|05-Options-State|06-Tool-sockets|\
+03-Firewall-Custom|04-Firewall-Launch|05-options-easy|06-Tool-sockets|\
 07-Tool-connect|08-Tool-rule|09-Tool-forward|10-Tool-sshd|11-Tool-tcp|12-Tool-udp|13-Tool-icmp|\
 14-Tool-sudofw|15-Tool-game|16-Tool-speed|17-Tool-util|18-Tool-install|19-Tool-addblock|20-Tool-dev|\
 21-Show-hardware|22-Show-etc|23-Show-log|24-Help-about|25-Help-help"
@@ -4784,7 +4786,7 @@ case "$selection_final" in
 "02-Firewall-List-With-Numeral")$cmd_binary gui-menu-firewall-numeral ; exit ;;
 "03-Firewall-Custom")$cmd_binary gui-menu-firewall-custom ; exit ;;
 "04-Firewall-Launch")$cmd_binary gui-menu-firewall-launch ; exit ;;
-"05-Options-State")$cmd_binary gui-menu-options-state ; exit ;;
+"05-options-easy")$cmd_binary gui-menu-options-easy ; exit ;;
 "06-Tool-sockets")$cmd_binary gui-menu-tool-sockets ; exit ;;
 "07-Tool-connect")$cmd_binary gui-menu-tool-connect ; exit ;;
 "08-Tool-rule")$cmd_binary gui-menu-tool-rule ; exit ;;
@@ -5071,12 +5073,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-custom:
-##########    english: gui-menu-options-state: gui with menu   ##########
-##########    spanish: gui-menu-options-state: gui con menu    ##########
-#### :rutina-inicial-gui-menu-options-state:
+##########    english: gui-menu-options-easy: gui with menu   ##########
+##########    spanish: gui-menu-options-easy: gui con menu    ##########
+#### :rutina-inicial-gui-menu-options-easy:
 ####
 ####
-if   [ "$first_option" == "gui-menu-options-state" ]; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-menu-options-easy" ]; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|preferences-modify|preferences-regen|ip4|ip6|version|examples|depends"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
@@ -5107,7 +5109,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-options-state:
+#### :rutina-final-gui-menu-options-easy:
 ##########    english: gui-menu-tool-connect: gui with menu   ##########
 ##########    spanish: gui-menu-tool-connect: gui con menu    ##########
 #### :rutina-inicial-gui-menu-tool-connect:
@@ -5835,7 +5837,7 @@ exit; fi
 if [ "$first_option" == "gui-roll" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|\
-03-Firewall-Custom|04-Firewall-Launch|05-Options-State|06-Tool-sockets|\
+03-Firewall-Custom|04-Firewall-Launch|05-options-easy|06-Tool-sockets|\
 07-Tool-connect|08-Tool-rule|09-Tool-forward|10-Tool-sshd|11-Tool-tcp|12-Tool-udp|13-Tool-icmp|\
 14-Tool-sudofw|15-Tool-game|16-Tool-speed|17-Tool-util|18-Tool-install|19-Tool-addblock|20-Tool-dev|\
 21-Show-hardware|22-Show-etc|23-Show-log|24-Help-about|25-Help-help"
@@ -5850,7 +5852,7 @@ case "$selection_final" in
 "02-Firewall-List-With-Numeral")$cmd_binary gui-roll-firewall-numeral ; exit ;;
 "03-Firewall-Custom")$cmd_binary gui-roll-firewall-custom ; exit ;;
 "04-Firewall-Launch")$cmd_binary gui-roll-firewall-launch ; exit ;;
-"05-Options-State")$cmd_binary gui-roll-options-state ; exit ;;
+"05-options-easy")$cmd_binary gui-roll-options-easy ; exit ;;
 "06-Tool-sockets")$cmd_binary gui-roll-tool-sockets ; exit ;;
 "07-Tool-connect")$cmd_binary gui-roll-tool-connect ; exit ;;
 "08-Tool-rule")$cmd_binary gui-roll-tool-rule ; exit ;;
@@ -6137,12 +6139,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-firewall-custom:
-##########    english: gui-roll-options-state: gui with menu   ##########
-##########    spanish: gui-roll-options-state: gui con menu    ##########
-#### :rutina-inicial-gui-roll-options-state:
+##########    english: gui-roll-options-easy: gui with menu   ##########
+##########    spanish: gui-roll-options-easy: gui con menu    ##########
+#### :rutina-inicial-gui-roll-options-easy:
 ####
 ####
-if   [ "$first_option" == "gui-roll-options-state" ]; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-roll-options-easy" ]; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|preferences-modify|preferences-regen|ip4|ip6|version|examples|depends"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
@@ -6173,7 +6175,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-options-state:
+#### :rutina-final-gui-roll-options-easy:
 ##########    english: gui-roll-tool-connect: gui with menu   ##########
 ##########    spanish: gui-roll-tool-connect: gui con menu    ##########
 #### :rutina-inicial-gui-roll-tool-connect:
