@@ -2821,7 +2821,7 @@ if [ "$first_option" = "options" ] ; then echo $give_cover ; echo "$message_info
 echo "$header_ok [ $first_option ] [ List options ] [ options md ] || ||"
 echo "    Launch: $cmd_binary [ -cli-menu -gui-menu -gui-roll -gui-shell"
 echo "    -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]" 
-# echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||             "
+echo
 echo "$text_md      firewall-control |  stop continue reset names actual show save load                         "
 echo "$text_md   firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6     "
 echo "$text_md                          list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6       "

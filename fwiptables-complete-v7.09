@@ -623,8 +623,8 @@ case "$config_close_deny"      in "ACCEPT") ;; "DROP")   ;; "REJECT") ;; "LOG") 
 ####
 ####
 ####
-#### english: if null option is void return default to mini-options
-#### spanish: si la opcion por defecto esta vacia vuelve a mini-options
+#### english: if null option is void return default to list-options
+#### spanish: si la opcion por defecto esta vacia vuelve a list-options
 ####
 ####
 if [ "$whithout_option" == "$NULL" ] ; then whithout_option="$default_security" ; fi
@@ -828,7 +828,7 @@ if [ "$first_option" == "$NULL" ]  ; then first_option="options-mini" ; fi
 ####
 ####
 if [ "$first_option" == "options" ] ; then first_option="options-all" ; fi
-if [ "$first_option" == "options-mini" ] ; then first_option="mini-options" ; fi
+if [ "$first_option" == "options-mini" ] ; then first_option="list-options" ; fi
 if [ "$first_option" == "options-full" ] ; then first_option="options-all" ; fi
 if [ "$first_option" == "full-options" ] ; then first_option="options-all" ; fi
 if [ "$first_option" == "examples" ] ; then first_option="options-examples"; fi
@@ -1112,7 +1112,7 @@ lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third
 log-search|log-ssh|filelog|sentlog|autolog)  second_option="show-log"; third_option="" ;;
 hosts|resolv.conf|protocols|services|hosts.*|*-default)  second_option="show-etc"; third_option="" ;;
 about|version|depends|license|config-eng|config-spa)  second_option="help-about"; third_option="" ;;
-all-help|"help"|ayuda|notes|options|"info"|mini-options|full-options|group-options)
+all-help|"help"|ayuda|notes|options|"info"|list-options|full-options|group-options)
  second_option="help-help"; third_option="" ;;
 *) echo "$message_without_info" ;  exit ;;
 esac
@@ -1164,7 +1164,7 @@ lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third
 log-search|log-ssh|sentlog|filelog|autolog)  second_option="show-log"; third_option="" ;;
 hosts|resolv.conf|protocols|services|hosts.*|*-default)  second_option="show-etc"; third_option="" ;;
 about|version|depends|license|config-eng|config-spa)  second_option="help-about"; third_option="" ;;
-all-help|"help"|ayuda|notes|options|"info"|mini-options|full-options|group-options)
+all-help|"help"|ayuda|notes|options|"info"|list-options|full-options|group-options)
  second_option="help-help"; third_option="" ;;
 *) echo "$message_without_help" ;  exit ;;
 esac
@@ -2773,16 +2773,16 @@ fi
 ####
 ####
 #### :rutina-final-system-rules:
-##########    english: mini-options: wellcome with semi help    ##########
-##########    spanish: mini-options: bienvenida con semi ayuda  ##########
-#### :rutina-inicial-mini-options:
+##########    english: list-options: wellcome with semi help    ##########
+##########    spanish: list-options: bienvenida con semi ayuda  ##########
+#### :rutina-inicial-list-options:
 ####
 ####
-if   [ "$first_option" == "mini-options" ] ; then echo $give_cover ;  echo "$message_info_rules"
-echo "$header_ok [ $first_option ] [ List mini options ] [ options-mini md ] || ||"
+if   [ "$first_option" == "list-options" ] ; then echo $give_cover ;  echo "$message_info_rules"
+echo "$header_ok [ $first_option ] [ List options ] [ list-options md ] || ||"
 echo "     Launch: $zero_option [-cli-menu -gui-menu -gui-roll -gui-shell"
 echo "     -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -s|-silent] first_option [second_option]"
-# echo "$duo_md || || ### [ options: group options | first_option ] ### || ||             "
+echo
 echo "$text_md      firewall-control |  stop continue reset names actual show save load                         "
 echo "$text_md   firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6     "
 echo "$text_md                          list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6       "
@@ -2810,7 +2810,7 @@ echo "$text_md                          options-tool options-show options-help o
 exit ; fi
 ####
 ####
-#### :rutina-final-mini-options:
+#### :rutina-final-list-options:
 ##########    english: options-all: and full-options: wellcome with semi help    ##########
 ##########    spanish: options-all: and full-options: bienvenida con semi ayuda  ##########
 #### :rutina-inicial-full-options:
@@ -2874,7 +2874,7 @@ echo "$text_md   show-etc           |  hosts resolv.conf hosts.allow hosts.deny 
 echo "$duo_md || || [ options-help ]   || ||  ### ###                                                           "
 echo "$text_md   help-about         |  about version depends config-eng config-spa license                      "
 echo "$text_md   help-help          |  all-help readme leeme notes options                                      "
-echo "$text_md                         group-options mini-options full-options                                  "
+echo "$text_md                         group-options list-options full-options                                  "
 echo "$duo_md || ||  [ Examples ]  || ||  ### ###                                                               "
 echo "$text_md  $cmd_binary -cli-menu                |  All options in text menu                                "
 echo "$text_md  $cmd_binary -gui-menu                |  All options in window menu                              "
@@ -3006,7 +3006,7 @@ echo "$title_md [ $first_option ] [ Show help options ] [ options-help md ]"
 echo "$title_md                                   | options-help |                                             "
 echo "$text_md  help-about         |  about version depends config-eng config-spa license                      "
 echo "$text_md  help-help          |  all-help readme leeme notes options                                      "
-echo "$text_md                        group-options mini-options full-options                                  "
+echo "$text_md                        group-options list-options full-options                                  "
 echo "$text_md"
 echo "$text_md      | Group | options-interface | options-firewall | options-easy | options-tool | options-show | options-help "
 exit ; fi
@@ -4466,7 +4466,7 @@ echo "$text_md $tab_lang_spanish           : Muestra la ayuda en español"
 echo "$text_md $tab group-options" 
 echo "$text_md $tab_lang_english           : Show the options groups"
 echo "$text_md $tab_lang_spanish           : Muestra los grupos de opciones"
-echo "$text_md $tab mini-options"
+echo "$text_md $tab list-options"
 echo "$text_md $tab_lang_english           : Show basic options"
 echo "$text_md $tab_lang_spanish           : Muestra lista de opciones"
 echo "$text_md $tab full-options"
@@ -4760,7 +4760,7 @@ exit; fi
 ####
 if [ "$first_option" == "-gui" ] && [ "$second_option" == "$NULL" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
-$favorite_graphicall_dialog  --forms $graphic_window_dimension --title="Gui Output || $cmd_binary || " --text="$($cmd_binary mini-options)"
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --title="Gui Output || $cmd_binary || " --text="$($cmd_binary list-options)"
 exit; fi
 ####
 ####
@@ -5801,7 +5801,7 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-help-help" ] ; then echo $head_waiting_gui 
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|mini-options|full-options|all-help|readme|leeme|notes|license"
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|list-options|full-options|all-help|readme|leeme|notes|license"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="$first_option" --text="$first_option" --title="$cmd_binary" --separator "" --list $selection_menu)"
 #### 
@@ -5811,7 +5811,7 @@ case "$selection_final" in
 "gui-principal-menu")$cmd_binary gui-menu ;;
 "gui-help-menu")$cmd_binary -gui help help-help ;;
 "gui-info-menu")$cmd_binary -gui info help-help ;;
-"mini-options")$cmd_binary -gui mini-options ;;
+"list-options")$cmd_binary -gui list-options ;;
 "full-options")$cmd_binary -gui full-options ;;
 "all-help")$cmd_binary -gui all-help ;;
 "readme")$cmd_binary -gui readme ;;
@@ -6867,7 +6867,7 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-roll-help-help" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|mini-options|full-options|all-help|readme|leeme|notes|license"
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|list-options|full-options|all-help|readme|leeme|notes|license"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($command_zenity --text="$first_option" --title="$cmd_binary" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
 #### 
@@ -6877,7 +6877,7 @@ case "$selection_final" in
 "gui-principal-menu")$cmd_binary gui-roll ;;
 "gui-help-menu")$cmd_binary -gui help help-help ;;
 "gui-info-menu")$cmd_binary -gui info help-help ;;
-"mini-options")$cmd_binary -gui mini-options ;;
+"list-options")$cmd_binary -gui list-options ;;
 "full-options")$cmd_binary -gui full-options ;;
 "all-help")$cmd_binary -gui all-help ;;
 "readme")$cmd_binary -gui readme ;;
@@ -6916,7 +6916,7 @@ untexto="$cmd_binary gui-shell"
 ####
 ####
 menugtk=$($favorite_graphicall_dialog  --forms $graphic_window_dimension --title="Gui Shell || $cmd_binary || $cmd_version ||" \
---text="$($cmd_binary mini-options)" --add-entry="$cmd_binary " )
+--text="$($cmd_binary list-options)" --add-entry="$cmd_binary " )
 case $? in
 1) exit ;;
 ####
@@ -7252,7 +7252,7 @@ menuprincipal="$($favorite_text_dialog --clear --notags --title "Cli Menu With $
 2603  "$tab config-eng" \
 2604  "$tab config-spa" \
 2700 "$quad [ Show Help ] $cinco" \
-2701  "$tab mini-options" \
+2701  "$tab list-options" \
 2702  "$tab full-options" \
 2703  "$tab readme" \
 2704  "$tab leeme" \
@@ -7557,7 +7557,7 @@ clear ; $cmd_binary "log-search" "$pattern" | less ;;
 2603) clear ; $cmd_binary cli config-eng ;;
 2604) clear ; $cmd_binary cli config-spa ;;
 ################################################################################
-2701) clear ; $cmd_binary cli mini-options ;;
+2701) clear ; $cmd_binary cli list-options ;;
 2702) clear ; $cmd_binary cli full-options ;;
 2703) clear ; $cmd_binary cli readme ;;
 2704) clear ; $cmd_binary cli leeme ;;
@@ -12961,7 +12961,7 @@ echo "$text_md"
 echo "$text_md        all-help : Show help in spanish and in english."
 echo "$text_md            info : Show group options."
 echo "$text_md   group-options : show group options."
-echo "$text_md    mini-options : Show necesary options for firewall."
+echo "$text_md    list-options : Show necesary options for firewall."
 echo "$text_md    full-options : Show the full options."
 echo "$text_md         options : Show the full options."
 echo "$text_md          readme : Show help in english."
@@ -13326,7 +13326,7 @@ echo "$text_md"
 echo "$text_md        all-help : Muestra la ayuda en español y en ingles."
 echo "$text_md            info : Muestra las opciones de grupo."
 echo "$text_md   group-options : Muestra las opciones de grupo."
-echo "$text_md    mini-options : Muestra las opciones necesarias."
+echo "$text_md    list-options : Muestra las opciones necesarias."
 echo "$text_md    full-options : Muestra las opciones."
 echo "$text_md         options : Muestra las opciones."
 echo "$text_md          readme : Muestra la ayuda en ingles."
