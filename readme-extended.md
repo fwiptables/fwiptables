@@ -1,9 +1,9 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd ] [ Version: complete-7.08 ] |||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd ] [ Version: complete-7.09 ] |||
 ### || || [ ok ] || [ options-all ] [ List full options ] [ full-options md ] || ||
 ### || ||  [ options-interface ]  || ||  ### ###                                                      
      Launch: /usr/bin/fwiptables-cmd [-cli-menu -gui-menu -gui-roll -gui-shell                                       
      -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -s|-silent] first_option [second_option]   
-### || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||             
+### || ||       [ firewall ]  || ||  ### ###             
            firewall-control |  stop continue reset names actual show save load                         
         firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6     
                                list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6       
@@ -56,7 +56,7 @@
 ### || || [ options-help ]   || ||  ### ###                                                           
         help-about         |  about version depends config-eng config-spa license                      
         help-help          |  all-help readme leeme notes options                                      
-                              group-options mini-options full-options                                  
+                              group-options list-options full-options                                  
 ### || ||  [ Examples ]  || ||  ### ###                                                               
        /usr/bin/fwiptables-cmd -cli-menu                |  All options in text menu                                
        /usr/bin/fwiptables-cmd -gui-menu                |  All options in window menu                              
