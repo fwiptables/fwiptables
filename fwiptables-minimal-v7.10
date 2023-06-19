@@ -2867,6 +2867,7 @@ exit; fi
 ####
 if [ "$first_option" = "list-options" ] ; then echo $give_cover ; echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List options ] [ list-options md ] || ||"
+echo
 echo "    Launch: $cmd_binary [ -cli-menu -gui-menu -gui-roll -gui-shell"
 echo "    -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]" 
 echo
