@@ -1,7 +1,7 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd ] [ Version: complete-7.09 ] |||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd ] [ Version: complete-7.10 ] |||
 ### || || [ ok ] || [ options-all ] [ List full options ] [ full-options md ] || ||
 ### || ||  [ options-interface ]  || ||  ### ###                                                      
-     Launch: /usr/bin/fwiptables-cmd [-cli-menu -gui-menu -gui-roll -gui-shell                                       
+     Launch: ./fwiptables-complete-actual [-cli-menu -gui-menu -gui-roll -gui-shell                                       
      -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -s|-silent] first_option [second_option]   
 ### || ||       [ firewall ]  || ||  ### ###             
            firewall-control |  stop continue reset names actual show save load                         
@@ -58,14 +58,14 @@
         help-help          |  all-help readme leeme notes options                                      
                               group-options list-options full-options                                  
 ### || ||  [ Examples ]  || ||  ### ###                                                               
-       /usr/bin/fwiptables-cmd -cli-menu                |  All options in text menu                                
-       /usr/bin/fwiptables-cmd -gui-menu                |  All options in window menu                              
-       /usr/bin/fwiptables-cmd -gui-shell               |  All options in window shell                             
-       /usr/bin/fwiptables-cmd -txt list                |  List iptables rules with output txt                     
-       /usr/bin/fwiptables-cmd -cli names               |  List firewall saved with output cli text menu           
-       /usr/bin/fwiptables-cmd -gui wizard-mini         |  Generate rules with output gui window                   
-       /usr/bin/fwiptables-cmd -web ss                  |  Show ss with output text browser                        
-       /usr/bin/fwiptables-cmd -help readme             |  Show help of readme with output text plain              
-       /usr/bin/fwiptables-cmd -info lsof               |  Show info of lsof with output text rst                  
-       /usr/bin/fwiptables-cmd -log info-route          |  Save log info-route with output text plain              
-       /usr/bin/fwiptables-cmd -silent client-web       |  Launch client web firewall a null output                
+       ./fwiptables-complete-actual -cli-menu                |  All options in text menu                                
+       ./fwiptables-complete-actual -gui-menu                |  All options in window menu                              
+       ./fwiptables-complete-actual -gui-shell               |  All options in window shell                             
+       ./fwiptables-complete-actual -txt list                |  List iptables rules with output txt                     
+       ./fwiptables-complete-actual -cli names               |  List firewall saved with output cli text menu           
+       ./fwiptables-complete-actual -gui wizard-mini         |  Generate rules with output gui window                   
+       ./fwiptables-complete-actual -web ss                  |  Show ss with output text browser                        
+       ./fwiptables-complete-actual -help readme             |  Show help of readme with output text plain              
+       ./fwiptables-complete-actual -info lsof               |  Show info of lsof with output text rst                  
+       ./fwiptables-complete-actual -log info-route          |  Save log info-route with output text plain              
+       ./fwiptables-complete-actual -silent client-web       |  Launch client web firewall a null output                

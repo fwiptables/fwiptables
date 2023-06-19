@@ -1,7 +1,8 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd ] [ Version: complete-7.09 ] |||
-### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-cmd preferences-modify ] || ||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd ] [ Version: complete-7.10 ] |||
+### || || [ ok ] || [ Configure ] [ Configure: ./fwiptables-complete-actual preferences-modify ] || ||
 ### || || [ ok ] || [ list-options ] [ List options ] [ list-options md ] || ||
-     Launch: /usr/bin/fwiptables-cmd [-cli-menu -gui-menu -gui-roll -gui-shell
+
+     Launch: ./fwiptables-complete-actual [-cli-menu -gui-menu -gui-roll -gui-shell
      -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -s|-silent] first_option [second_option]
 
            firewall-control |  stop continue reset names actual show save load                         
@@ -24,7 +25,7 @@
                                server-asterisk server-domain server-squid                              
                options-easy |  preferences-read preferences-modify preferences-regen                   
                                filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes               
-                               free date ver version notes depends license code                        
+                               free date ver version notes depends license code examples               
                                install uninstall upgrade-minimal upgrade-complete                      
                 options-all |  full-options options-easy options-interface options-firewall            
-                               options-tool options-show options-help options-examples                 
+                               options-tool options-show options-help                                  
