@@ -828,6 +828,7 @@ if [ "$first_option" == "$NULL" ]  ; then first_option="options-mini" ; fi
 ####
 ####
 if [ "$first_option" == "options" ] ; then first_option="options-all" ; fi
+if [ "$first_option" == "options-examples" ] ; then first_option="examples" ; fi
 if [ "$first_option" == "options-mini" ] ; then first_option="list-options" ; fi
 if [ "$first_option" == "options-full" ] ; then first_option="options-all" ; fi
 if [ "$first_option" == "full-options" ] ; then first_option="options-all" ; fi
@@ -3015,45 +3016,51 @@ exit ; fi
 #### :rutina-final-options-show:
 ##########    english: options-examples: some example    ##########
 ##########    spanish: options-examples: algun ejemplo   ##########
+#### :rutina-inicial-examples:
 #### :rutina-inicial-options-examples:
 ####
 ####
 if [ "$first_option" == "options-examples" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List examples ] [ options-examples md ] || ||"
-echo "$text_md $tab [ list examples ]"
-echo "$text_md $tab [ Lista ejemplos ]"
-echo "$title_md                                      [ examples ]                                        "
-echo "$text_md        [ with optional output ]                  [ Example Description ]                  "
+echo "$header_ok [ $first_option ] [ List examples ] [ examples md ] || ||"
+echo
+echo "$title_md                                      [ several examples ]                            "
+echo
+echo "$text_md        [ with optional output ]                  [ Example Description ]              "
+echo
 echo "$text_md    $cmd_binary -cli-menu                |  All options in text menu                   "
 echo "$text_md    $cmd_binary -gui-menu                |  All options in window menu                 "
+echo "$text_md    $cmd_binary -gui-roll                |  All options in window roll                 "
 echo "$text_md    $cmd_binary -gui-shell               |  All options in window shell                "
+echo
 echo "$text_md    $cmd_binary -txt list                |  List iptables rules with output txt        "
 echo "$text_md    $cmd_binary -cli names               |  List firewall saved with output cli        "
-echo "$text_md    $cmd_binary -gui ss                  |  List sockets ip with output gui            "
+echo "$text_md    $cmd_binary -gui sockets             |  List sockets ip with output gui            "
+echo "$text_md    $cmd_binary -silent client-web       |  Launch client web firewall a null output   "
+echo
 echo "$text_md    $cmd_binary -help readme             |  Show help of readme with output txt plain  "
 echo "$text_md    $cmd_binary -info lsof               |  Show info of lsof with output rst          "
 echo "$text_md    $cmd_binary -web info-net            |  Show info-net with output text browser     "
 echo "$text_md    $cmd_binary -log info-route          |  Save log info-route with output txt        "
-echo "$text_md    $cmd_binary -silent client-web         |  Launch client web firewall a null output   "
 echo
-echo "$title_md                                      [ other examples ]                                  "
+echo "$title_md                                      [ other examples ]                              "
+echo
 echo "$text_md    $cmd_binary names                    |  List firewall saved                        "
 echo "$text_md    $cmd_binary names-config             |  List configs saved                         "
 echo "$text_md    $cmd_binary speed-ip4                |  get info about speed with internet ipv4    "
-echo "$text_md    $cmd_binary info-listen              |  show info about listen sockets             "
-echo "$text_md    $cmd_binary game-word                |  game with words                            "
-echo "$text_md    $cmd_binary upgrade                  |  upgrade $cmd_binary                    "
-echo "$text_md    $cmd_binary addblock-list            |  List addblocker to blacklist               "
-echo "$text_md    $cmd_binary names                    |  List firewall saved                        "
-echo "$text_md    $cmd_binary code lsof                |  source code to option lsof                 "
-echo "$text_md    $cmd_binary radio-mp3 url..          |  connect to url:// mp3                      "
-echo "$text_md    $cmd_binary dev-changes              |  show last changes in $cmd_binary       "
-echo "$text_md    $cmd_binary autolog                  |  List last optiosn with $cmd_binary     "
+echo "$text_md    $cmd_binary sockets                  |  show info about listen sockets             "
 echo "$text_md    $cmd_binary preferences-modify       |  modify default variables                   "
-echo "$text_md    $cmd_binary depends                  |  depends to $cmd_binary                 "
+echo "$text_md    $cmd_binary autolog                  |  List last optiosn with $cmd_binary         "
+echo "$text_md    $cmd_binary depends                  |  depends to $cmd_binary                     "
+echo "$text_md    $cmd_binary version                  |  version from $cmd_binary                   "
+echo
+echo "$text_md    $cmd_binary game-word                |  game with words                            "
+echo "$text_md    $cmd_binary upgrade                  |  upgrade $cmd_binary                        "
+echo "$text_md    $cmd_binary addblock-list            |  List addblocker to blacklist               "
+echo "$text_md    $cmd_binary radio-mp3 url..          |  connect to url:// mp3                      "
 exit; fi
 ####
 ####
+#### :rutina-final-examples:
 #### :rutina-final-options-examples:
 ##########    english: all-options: all options          ##########
 ##########    spanish: all-options: todas las opciones   ##########
