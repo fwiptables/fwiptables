@@ -500,7 +500,7 @@ url_web_domain="https://sourceforge.net/p/f-iptables/code/ci/master/tree/domain-
 #### spanish: si esta mal definidad definida whithout_option
 ####
 ####
-default_security="options-mini"
+default_security="list-options"
 ####
 ####
 #### fwiptables_installed=""
@@ -2781,6 +2781,7 @@ fi
 ####
 if   [ "$first_option" == "list-options" ] ; then echo $give_cover ;  echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List options ] [ list-options md ] || ||"
+echo
 echo "     Launch: $zero_option [-cli-menu -gui-menu -gui-roll -gui-shell"
 echo "     -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -s|-silent] first_option [second_option]"
 echo
@@ -2804,10 +2805,10 @@ echo "$text_md                          server-mail server-teamspeak server-mumb
 echo "$text_md                          server-asterisk server-domain server-squid                              " 
 echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen                   "
 echo "$text_md                          filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes               "
-echo "$text_md                          free date ver version notes depends license code                        "
+echo "$text_md                          free date ver version notes depends license code examples               "
 echo "$text_md                          install uninstall upgrade-minimal upgrade-complete                      "
 echo "$text_md           options-all |  full-options options-easy options-interface options-firewall            "
-echo "$text_md                          options-tool options-show options-help options-examples                 "
+echo "$text_md                          options-tool options-show options-help                                  "
 exit ; fi
 ####
 ####
