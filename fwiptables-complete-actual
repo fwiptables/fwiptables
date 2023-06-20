@@ -174,6 +174,7 @@ command_arp_scan="$(command -v arp-scan)"
 command_arptables="$(command -v arptables)"
 command_bash="$(command -v bash)"
 command_bc="$(command -v bc)"
+command_chroot="$(command -v chroot)"
 command_curl="$(command -v curl)"
 command_cut="$(command -v cut)"
 command_date="$(command -v date)"
@@ -2781,10 +2782,10 @@ fi
 ####
 if   [ "$first_option" == "list-options" ] ; then echo $give_cover ;  echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List options ] [ list-options md ] || ||"
-echo
+echo $title_md
 echo "     Launch: $zero_option [-cli-menu -gui-menu -gui-roll -gui-shell"
 echo "     -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -s|-silent] first_option [second_option]"
-echo
+echo $title_md
 echo "$text_md      firewall-control |  stop continue reset names actual show save load                         "
 echo "$text_md   firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6     "
 echo "$text_md                          list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6       "
@@ -11983,7 +11984,7 @@ echo "$header_ok [ $first_option ] [ chroot directory ] || ||"
 chroot_directory="$2"
 if [ "$chroot_directory" == "$NULL"  ]; then chroot_directory="$(pwd)"; fi
 echo "### chroot at $chroot_directory"
-chroot $chroot_directory
+$command_chroot $chroot_directory
 echo "### ok. chroot at $chroot_directory"
 ####
 ####
@@ -12002,12 +12003,15 @@ echo "$header_ok [ $first_option ] [ chroot mount several auxiliar directory ] |
 ####
 chroot_directory="$2"
 if [ "$chroot_directory" == "$NULL"  ]; then chroot_directory="$(pwd)"; fi
-echo "### Mouting bind all resources from directory: $chroot_directory for proc/ sys/ dev/ dev/pts/"
+echo "### Mouting bind all resources from directory: $chroot_directory for proc/ sys/ dev/ dev/pts/ run/"
 mount -o bind /proc    $chroot_directory/proc
 mount -o bind /sys     $chroot_directory/sys
 mount -o bind /dev     $chroot_directory/dev
 mount -o bind /dev/pts $chroot_directory/dev/pts
+mount -o bind /run     $chroot_directory/run
 echo "### ok. mounted all resources"
+echo "### go. chroot at $chroot_directory"
+$command_chroot $chroot_directory
 ####
 ####
 exit; fi
@@ -12025,11 +12029,12 @@ echo "$header_ok [ $first_option ] [ chroot mount several auxiliar directory ] |
 ####
 chroot_directory="$2"
 if [ "$chroot_directory" == "$NULL"  ]; then chroot_directory="$(pwd)"; fi
-echo "### Unmouting bind all resources from directory: $chroot_directory for proc/ sys/ dev/ dev/pts/"
+echo "### Unmouting bind all resources from directory: $chroot_directory for proc/ sys/ dev/ dev/pts/ run/"
 umount $chroot_directory/proc
 umount $chroot_directory/sys
 umount $chroot_directory/dev
 umount $chroot_directory/dev/pts
+umount $chroot_directory/run
 echo "### ok. unmounted all resources"
 ####
 ####
