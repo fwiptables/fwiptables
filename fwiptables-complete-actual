@@ -12009,7 +12009,7 @@ mount -o bind /sys     $chroot_directory/sys
 mount -o bind /dev     $chroot_directory/dev
 mount -o bind /dev/pts $chroot_directory/dev/pts
 mount -o bind /run     $chroot_directory/run
-echo "### ok. mounted all resources"
+echo "### ok. mounted all resources at $chroot_directory"
 echo "### go. chroot at $chroot_directory"
 $command_chroot $chroot_directory
 ####
@@ -12035,7 +12035,7 @@ umount $chroot_directory/sys
 umount $chroot_directory/dev
 umount $chroot_directory/dev/pts
 umount $chroot_directory/run
-echo "### ok. unmounted all resources"
+echo "### ok. unmounted all resources at $chroot_directory"
 ####
 ####
 exit; fi
