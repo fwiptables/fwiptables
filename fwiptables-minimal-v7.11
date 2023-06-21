@@ -891,11 +891,16 @@ clear; $zero_option log-search $pattern ; exit ;;
 log-*) echo "$message_without_cli" ; $zero_option $second_option $third_option ;  exit ;;
 fw-*)  echo "$message_without_cli" ; $zero_option $second_option $third_option  ;  exit ;;
 "hosts") echo "$message_without_cli" ; $zero_option hosts ; exit ;;
-*) $favorite_text_dialog --title "  Cli Output || $zero_option ||" \
---msgbox "$($zero_option $second_option $third_option)" 0 0 ;  clear ; exit ;;
 ####
 ####
-esac ; fi
+*)
+cmd_inicial="$($cmd_binary $second_option $third_option)"
+$favorite_text_dialog --clear --notags --title "Cli Menu With $cmd_version" --msgbox "$cmd_inicial" 0 0
+exit ;;
+####
+####
+esac
+fi
 ####
 ####
 #### output log
