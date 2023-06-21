@@ -1,10 +1,10 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-min ] [ Version: minimal-7.10 ] || ||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-min ] [ Version: minimal-7.11 ] || ||
 ### || || [ ok ] || [ Configure ] [ Configure: ./fwiptables-minimal-actual preferences-modify ] || ||
 ### || || [ ok ] || [ list-options ] [ List options ] [ list-options md ] || ||
-
+###
     Launch: ./fwiptables-minimal-actual [ -cli-menu -gui-menu -gui-roll -gui-shell
     -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]
-
+###
         firewall-control |  stop continue reset names actual show save load                         
      firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6     
                             list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6       
