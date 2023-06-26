@@ -89,7 +89,7 @@ fi
 ####
 cmd_binary="$0" ;
 cmd_config="fwiptables-esr" ;
-cmd_version="esr-7.11" ;
+cmd_version="esr-8.01" ;
 cmd_name="Esr FireWall FWiptables Generator" ;
 cmd_description="One Mini Script in bash for iptables firewall" ;
 cmd_license="GPL v2" ;
