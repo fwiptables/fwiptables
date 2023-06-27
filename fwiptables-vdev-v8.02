@@ -1302,94 +1302,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-install:
-##########    english: upgrade-complete: upgrade fwiptables       ##########
-##########    spanish: upgrade-complete: actualiza fwiptables     ##########
-#### :rutina-inicial-upgrade-complete:
-####
-####
-if   [ "$first_option" == "upgrade-complete" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
-echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net ]"
-#### with curl
-#### download
-if  [ "$command_curl" != "$NULL" ]; then 
-echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/$cmd_config with $command_curl command ]"
-echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $command_curl browser ]"
-echo "$duo_md [ info ] [ download ] [ $url_web_actualfull ]"
-echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
-$command_curl -s -L $url_web_actualfull -o $directory_temporal/$cmd_config-installer
-chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
-#### install
-if [ -s "$directory_temporal/$cmd_config-installer" ] ; then echo "$duo_md [  ok  ] [ downloaded $cmd_version version ]" 
-$directory_temporal/$cmd_config-installer install ; else echo "$duo_md [ fail ] [ install fail ]"; fi ; exit; fi
-#### with favorite_text_browser	
-####  download
-if  [ "$favorite_text_browser" != "$NULL" ]; then echo "$duo_md [ notice  ] [ Install or curl or a text web browser for upgrade $cmd_binary ]"; exit
-else echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/$cmd_config with $favorite_text_browser command ]"
-echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
-echo "$duo_md [ info ] [ download ] [ $url_web_actualfull ]"
-echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
-$favorite_text_browser -source $url_web_actualfull &> $directory_temporal/$cmd_config-installer || echo "[ fail ] [ disconnected ]"
-chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
-#### install
-if [ -s "$directory_temporal/$cmd_config-installer" ] ; then echo "$duo_md [  ok  ] [ downloaded $cmd_version version ]" 
-$directory_temporal/$cmd_config-installer install ; else echo "$duo_md [ fail ] [ install fail ]"; fi ; exit ; fi
-####
-####
-if [ -f "/usr/bin/$cmd_config" ]; then /usr/bin/$cmd_config ver; fi
-####
-####
-fi
-####
-####
-#### :rutina-final-upgrade-complete:
-##########    english: upgrade-esr: upgrade in the file /usr/bin/fwiptables-min       ##########
-##########    spanish: upgrade-esr: actualiza en el archivo /usr/bin/fwiptables-min   ##########
-#### :rutina-inicial-upgrade-esr:
-####
-####
-if   [ "$first_option" == "upgrade-esr" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ upgrade stable version from web ] [ upgrade md ] || ||"
-echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at stable version from sourceforge.net ]"
-#### with curl
-#### download
-if  [ "$command_curl" != "$NULL" ]; then 
-echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/$cmd_config with $command_curl command ]"
-echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $command_curl browser ]"
-echo "$duo_md [ info ] [ download ] [ $url_web_actualmini ]"
-echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
-$command_curl -s -L $url_web_actualmini -o $directory_temporal/$cmd_config-installer
-chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
-#### install
-if [ -s "$directory_temporal/$cmd_config-installer" ] ; then 
-cp "$directory_temporal/$cmd_config-installer" "/usr/bin/fwiptables-min"
-chmod 555 "/usr/bin/fwiptables-min"
-echo "$duo_md [ info ] [ installed ] fwiptables esr installed in /usr/bin/fwiptables-min"
-else echo "$duo_md [ fail ] [ install fail ]"; fi ; exit; fi
-#### with favorite_text_browser
-#### or download
-if  [ "$favorite_text_browser" != "$NULL" ]; then echo "$duo_md [ notice  ] [ Install or culr or a text web browser for upgrade $cmd_binary ]"; exit
-else echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/$cmd_config with $favorite_text_browser command ]"
-echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
-echo "$duo_md [ info ] [ download ] [ $url_web_actualmini ]"
-echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
-$favorite_text_browser -source $url_web_actualmini &> $directory_temporal/$cmd_config-installer || echo "[ fail ] [ disconnected ]"
-chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
-#### install
-if [ -s "$directory_temporal/$cmd_config-installer" ] ; then echo "$duo_md [  ok  ] [ downloaded $cmd_version version ]" ;
-cp "$directory_temporal/$cmd_config-installer" "/usr/bin/fwiptables-min"
-chmod 555 "/usr/bin/fwiptables-min"
-echo "$duo_md [ info ] [ installed ] fwiptables esr installed in /usr/bin/fwiptables-min"
-else echo "$duo_md [ fail ] [ install fail ]"; fi ; exit ; fi
-####
-####
-if [ -f "/usr/bin/$cmd_config" ]; then /usr/bin/fwiptables-min ver; fi
-####
-####
-exit ; fi
-####
-####
-#### :rutina-final-upgrade-esr:
 ##########   english: regen-config: regen-config template wizard files       ##########
 ##########   spanish: regen-config: regen-configera template wizard archivos ##########
 #### :rutina-inicial-regen-config:
@@ -2810,7 +2722,7 @@ echo "$text_md                          server-asterisk server-domain server-squ
 echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen                   "
 echo "$text_md                          filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes               "
 echo "$text_md                          free date ver version notes depends license code examples               "
-echo "$text_md                          install uninstall upgrade-fwiptables-esr upgrade-fwiptables-dev         "
+echo "$text_md                          install uninstall                                                       "
 echo "$text_md           options-all |  full-options options-easy options-interface options-firewall            "
 echo "$text_md                          options-tool options-show options-help                                  "
 exit ; fi
@@ -2850,7 +2762,7 @@ echo "$duo_md || ||  [ options-easy ]  || ||  ### ###                           
 echo "$text_md         options-easy |  preferences-read preferences-modify preferences-regen                    "
 echo "$text_md                         filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes                "
 echo "$text_md                         free date ver version notes depends license code                         "
-echo "$text_md                         install uninstall upgrade-fwiptables-esr upgrade-fwiptables-dev          "
+echo "$text_md                         install uninstall                                                        "
 echo "$duo_md || ||  [ options-tool ]  || ||  ### ###                                                           "
 echo "$text_md   tool-sockets       |  info-listen nodes info-route info-net info-proxy info-system             "
 echo "$text_md                         ip4 ip6 ss lsof tcpdump netstat netstat-nat web-cert                     "
@@ -2870,7 +2782,6 @@ echo "$text_md   tool-pdf           |  pdf-resize pdf-unite pdf-separate        
 echo "$text_md   tool-mp3           |  radio-mp3 radio-cadena100 radio-rockfm                                   "
 echo "$text_md   tool-qemu          |  qemu-status qemu-stop qemu-start                                         "
 echo "$text_md   tool-install       |  install uninstall clean-tmp                                              "
-echo "$text_md   tool-install       |  upgrade-fwiptables-esr upgrade-fwiptables-dev                            "
 echo "$text_md   tool-addblock      |  addblock-list addblock-on addblock-off                                   "
 echo "$text_md   tool-dev           |  new-versions dev-version dev-changes code intro                          "
 echo "$text_md   tool-computer      |  chroot-mount chroot-umount chroot-on pc-halt pc-shutdown pc-reboot       "
@@ -2941,7 +2852,7 @@ echo "$title_md                                  | options-easy |               
 echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen                   "
 echo "$text_md                          filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes               "
 echo "$text_md                          free date ver version notes depends license code                        "
-echo "$text_md                          install uninstall upgrade-fwiptables-esr upgrade-fwiptables-dev         "
+echo "$text_md                          install uninstall                                                       "
 echo "$text_md"
 echo "$text_md   | Group | options-interface | options-firewall | options-easy | options-tool | options-show | options-help   "
 exit ; fi
@@ -2975,7 +2886,7 @@ echo "$text_md    tool-util         | weather md5sum gpg-notes                  
 echo "$text_md    tool-pdf          | pdf-resize pdf-unite pdf-separate                                 "
 echo "$text_md    tool-mp3          | radio-mp3 radio-cadena100 radio-rockfm                            "
 echo "$text_md    tool-qemu         | qemu-status qemu-stop qemu-start                                  "
-echo "$text_md    tool-install      | install uninstall upgrade-fwiptables-esr upgrade-fwiptables-dev   "
+echo "$text_md    tool-install      | install uninstall                                                 "
 echo "$text_md    tool-addblock     | addblock-list addblock-on addblock-off                            "
 echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                         "
 echo "$text_md    tool-computer     | pc-halt pc-shutdown pc-reboot                                     "
@@ -4095,12 +4006,6 @@ echo "$text_md $tab_lang_spanish          : Desinstala esta version actual"
 echo "$text_md $tab howto-upgrade"
 echo "$text_md $tab_lang_english          : Show howto upgrade at the latest version"
 echo "$text_md $tab_lang_spanish          : Muestra como actualizar a la ultima version"
-echo "$text_md $tab upgrade-fwiptables-dev"
-echo "$text_md $tab_lang_english          : Upgrade at the latest developer version complete"
-echo "$text_md $tab_lang_spanish          : Actualiza a la ultima developer version completa"
-echo "$text_md $tab upgrade-fwiptables-esr"
-echo "$text_md $tab_lang_english          : Upgrade at the latest stable version minimal"
-echo "$text_md $tab_lang_spanish          : Actualiza a la ultima stable version minima"
 echo "$text_md $tab clean-tmp"
 echo "$text_md $tab_lang_english          : Remove temporal files of $cmd_binary"
 echo "$text_md $tab_lang_spanish          : Borra archivos temporales of $cmd_binary"
@@ -12909,8 +12814,6 @@ echo "$text_md"
 echo "$text_md              install : Install this program actual."
 echo "$text_md        howto-upgrade : Howto install the latest version."
 echo "$text_md            clean-tmp : Remove temporal files of fwiptables."
-echo "$text_md     upgrade-fwiptables-dev : Upgrade at the latest git version developer."
-echo "$text_md     upgrade-fwiptables-esr : Upgrade at the latest git version stable."
 echo "$text_md" 
 echo "$title_md         [ Tool addblock ]"
 echo "$text_md"
