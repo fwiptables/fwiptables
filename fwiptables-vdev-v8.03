@@ -97,7 +97,7 @@ fi
 ####
 cmd_binary="$0" ;
 cmd_config="fwiptables-dev" ;
-cmd_version="developer-8.02" ;
+cmd_version="developer-8.03" ;
 cmd_name="Developer Fran Complete FireWall FWiptables Generator" ;
 cmd_description="One Script in bash for iptables firewall" ;
 cmd_license="GPL v2" ;
@@ -485,9 +485,9 @@ url_web_latest="https://sourceforge.net/projects/f-iptables/files/latest/downloa
 url_web_changes="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-changes?format=raw" ;
 url_index_files="https://sourceforge.net/projects/f-iptables/files/" ;
 url_dev_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-dev-v8" ;
-url_esr_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-esr-v8" ;
+url_cmd_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-cmd-v8" ;
 url_dev_actual="https://sourceforge.net/projects/f-iptables/files/fwiptables-dev-actual/download" ;
-url_esr_actual="https://sourceforge.net/projects/f-iptables/files/fwiptables-esr-actual/download" ;
+url_cmd_actual="https://sourceforge.net/projects/f-iptables/files/fwiptables-cmd-actual/download" ;
 url_web_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
 url_web_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
 flicense="Copyleft, without warranty, gnu license GPL v2."
@@ -1213,7 +1213,7 @@ echo $head_timespam ; fi
 if  [ "$first_option" == "intro" ]; then echo "$give_cover"
 echo "$header_ok [ $first_option ] [ $cmd_binary $cmd_version intro ] [ intro md ] || ||"
 echo "$title_md    ###  Fran fwiptables intro.  ###   "
-echo "$text_md     [ done ] [ Choose fwiptables dev working like complete or minimal working like esr          "
+echo "$text_md     [ done ] [ Choose fwiptables dev working like complete or minimal working like cmd          "
 echo "$text_md     # Manage Fran Firewall # configure both iptables netfilter for linux with templates. #      "
 echo "$text_md     [ done ] [ Done with support in xtables and/or nftables and ipv4 and/or ipv6 ].             "
 echo "$text_md     [ done ] [ Ready to run in command shell cmd, cli-menu, gui-menu, and gui-shell ].          "
@@ -2783,8 +2783,8 @@ echo "$text_md   tool-mp3           |  radio-mp3 radio-cadena100 radio-rockfm   
 echo "$text_md   tool-qemu          |  qemu-status qemu-stop qemu-start                                         "
 echo "$text_md   tool-install       |  install uninstall clean-tmp                                              "
 echo "$text_md   tool-addblock      |  addblock-list addblock-on addblock-off                                   "
-echo "$text_md   tool-dev           |  new-versions dev-version dev-changes code intro                          "
-echo "$text_md   tool-computer      |  chroot-mount chroot-umount chroot-on pc-halt pc-shutdown pc-reboot       "
+echo "$text_md   tool-dev           |  code intro pc-halt pc-shutdown pc-reboot                                 "
+echo "$text_md   tool-computer      |  chroot-mount chroot-umount chroot-on                                     "
 echo "$duo_md || || [ options-show ]   || ||  ### ###                                                           "
 echo "$text_md   show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                                "
 echo "$text_md   show-log           |  log-search log-ssh filelog autolog                                       "
@@ -2888,7 +2888,7 @@ echo "$text_md    tool-mp3          | radio-mp3 radio-cadena100 radio-rockfm    
 echo "$text_md    tool-qemu         | qemu-status qemu-stop qemu-start                                  "
 echo "$text_md    tool-install      | install uninstall                                                 "
 echo "$text_md    tool-addblock     | addblock-list addblock-on addblock-off                            "
-echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                         "
+echo "$text_md    tool-dev          | code                                                              "
 echo "$text_md    tool-computer     | pc-halt pc-shutdown pc-reboot                                     "
 echo "$text_md"
 echo "$text_md    | Group | options-interface | options-firewall | options-easy | options-tool | options-show | options-help "
@@ -4048,15 +4048,6 @@ echo "$text_md"
 echo "$text_md [ english info ] [ Tool install ]"
 echo "$text_md [ spanish info ] [ Herramienta instalar ]"
 echo "$text_md"
-echo "$text_md $tab new-versions"
-echo "$text_md $tab_lang_english               : Show the list of the last versions"
-echo "$text_md $tab_lang_spanish               : Muestra el listado de las ultivas versiones"
-echo "$text_md $tab dev-version"
-echo "$text_md $tab_lang_english               : Show the link at developer version"
-echo "$text_md $tab_lang_spanish               : Muestra en enlace a la version de desarrollo"
-echo "$text_md $tab dev-changes"
-echo "$text_md $tab_lang_english               : Show the last changes"
-echo "$text_md $tab_lang_spanish               : Muestra los ultimos cambios"
 echo "$text_md $tab code"
 echo "$text_md $tab_lang_english               : Show code source from one option"
 echo "$text_md $tab_lang_spanish               : Muestra el codigo fuente de una opcion"
@@ -5540,7 +5531,7 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-tool-dev" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|new-versions|dev-version|dev-changes|code|intro"
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|code|intro"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="$first_option" --text="$first_option" --title="$cmd_binary" --separator "" --list $selection_menu)"
 #### 
@@ -5550,9 +5541,6 @@ case "$selection_final" in
 "gui-principal-menu")$cmd_binary gui-menu  ;;
 "gui-help-menu")$cmd_binary -gui help tool-dev ;;
 "gui-info-menu")$cmd_binary -gui info tool-dev ;;
-"new-versions")$cmd_binary -gui new-versions ;;
-"dev-version")$cmd_binary -gui dev-version  ;;
-"dev-changes")$cmd_binary -gui dev-changes ;;
 "intro")$cmd_binary -gui intro ;;
 "code") archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ type one option to show its source code ]")" 
 $cmd_binary -gui code $archivo
@@ -6606,7 +6594,7 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-roll-tool-dev" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|new-versions|dev-version|dev-changes|code|intro"
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|code|intro"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($command_zenity --text="$first_option" --title="$cmd_binary" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
 #### 
@@ -6616,9 +6604,6 @@ case "$selection_final" in
 "gui-principal-menu")$cmd_binary gui-roll  ;;
 "gui-help-menu")$cmd_binary -gui help tool-dev ;;
 "gui-info-menu")$cmd_binary -gui info tool-dev ;;
-"new-versions")$cmd_binary -gui new-versions ;;
-"dev-version")$cmd_binary -gui dev-version  ;;
-"dev-changes")$cmd_binary -gui dev-changes ;;
 "intro")$cmd_binary -gui intro ;;
 "code") archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --text="[ type one option to show its source code ]")" 
 $cmd_binary -gui code $archivo
@@ -11701,99 +11686,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-log-search:
-##########    english: dev-version: about of program     ##########
-##########    spanish: dev-version: acerca del programa  ##########
-#### :rutina-inicial-dev-version:
-####
-####
-if   [ "$first_option" == "dev-version" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ show the link to dev version from git repository ] || ||"
-echo $url_web_fulldevelopment
-exit; fi
-####
-####
-#### :rutina-final-dev-version:
-##########    english: dev-changes: changes in the version program        ##########
-##########    spanish: dev-changes: cambios en la version del programa    ##########
-#### :rutina-inicial-dev-changes:
-####
-#### 
-if   [ "$first_option" == "dev-changes" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ show the link to dev-changes from git repository ] || ||"
-$favorite_text_browser -source $url_web_changes
-exit; fi
-####
-####
-#### :rutina-final-dev-changes:
-##########    english: new-versions: about of program      ##########
-##########    spanish: new-versions: acerca del programa   ##########
-#### :rutina-inicial-new-versions:
-####
-####
-if   [ "$first_option" == "new-versions" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ show the versions in the web ] || ||"
-echo
-echo "$duo_md [ info ] [ new versions ]"
-echo "$duo_md [ info ] [ latest version ] [ $url_web_latest ]"
-echo "$duo_md [ info ] [ index version  ] [ $url_index_files ]"
-echo
-$cmd_binary index-versions
-echo
-echo "$duo_md [ info ] [ Show the last esr version ]"
-echo "$duo_md [ info ] [ $url_esr_files ]"
-echo
-$cmd_binary esr-versions
-echo
-echo "$duo_md [ info ] [ Show the last developer version ]"
-echo "$duo_md [ info ] [ $url_dev_files ]"
-echo
-$cmd_binary dev-versions
-exit; fi
-####
-####
-#### :rutina-final-new-versions:
-##########    english: index-versions: about of program      ##########
-##########    spanish: index-versions: acerca del programa   ##########
-#### :rutina-inicial-index-versions:
-####
-####
-if   [ "$first_option" == "index-versions" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ show the new versions in the web ] || ||"
-case $favorite_text_browser in 
-"$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
-$favorite_text_browser -dump $url_index_files | $command_grep -i fwiptables | $command_grep -E " ago |[0123456789]-[0123456789][0123456789]-[0123456789]"
-exit; fi
-####
-####
-#### :rutina-final-index-versions:
-##########    english: dev-versions: about of program      ##########
-##########    spanish: dev-versions: acerca del programa   ##########
-#### :rutina-inicial-dev-versions:
-####
-####
-if   [ "$first_option" == "dev-versions" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ show the new dev versions in the web ] || ||"
-case $favorite_text_browser in 
-"$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
-$favorite_text_browser -dump $url_dev_files | $command_grep -i fwiptables | $command_grep -E " ago |[0123456789]-[0123456789][0123456789]-[0123456789]" | $command_sed s/\<//g | $command_sed s/\>//g 
-exit; fi
-####
-####
-#### :rutina-final-dev-versions:
-##########    english: esr-versions: about of program      ##########
-##########    spanish: esr-versions: acerca del programa   ##########
-#### :rutina-inicial-esr-versions:
-####
-####
-if   [ "$first_option" == "esr-versions" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ show the new esr versions in the web ] || ||"
-case $favorite_text_browser in 
-"$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
-$favorite_text_browser -dump $url_esr_files | $command_grep -i fwiptables | $command_grep -E " ago |[0123456789]-[0123456789][0123456789]-[0123456789]" | $command_sed s/\<//g | $command_sed s/\>//g 
-exit; fi
-####
-####
-#### :rutina-final-esr-versions:
 ##########    english: gpg-notes: edit file gpg texts         ##########
 ##########    spanish: gpg-notes: edita archivo de gpg text   ##########
 #### :rutina-inicial-gpg-notes:
@@ -12832,9 +12724,6 @@ echo "$text_md         pc-shutdown : Stop computer."
 echo "$text_md"
 echo "$title_md         [ Tool dev ]"
 echo "$text_md"
-echo "$text_md    new-versions : Show the last versions."
-echo "$text_md     dev-version : Show the link at the developer version."
-echo "$text_md     dev-changes : Show the last changes."
 echo "$text_md            code : Show the source code for one option."
 echo "$text_md          md5sum : Show the md5 sum from one file."
 echo "$text_md"
@@ -13190,9 +13079,6 @@ echo "$text_md   addblock-off : Vuelve a /etc/hosts por defecto."
 echo "$text_md"
 echo "$title_md [ Herramienta de desarrollador ]."
 echo "$text_md"
-echo "$text_md    new-versions : Muestra las ultimas versiones."
-echo "$text_md     dev-version : Muestra en enlace a la version de desarrollo."
-echo "$text_md     dev-changes : Muestra los ultimos cambios."
 echo "$text_md            code : Muestra el codigo fuente para una opcion."
 echo "$text_md          md5sum : Muestra la suma md5 de un archivo"
 echo "$text_md"
@@ -13236,7 +13122,6 @@ echo "$text_md"
 echo "$text_md           About : Acerca de."
 echo "$text_md         version : Informacion de la actual version."
 echo "$text_md         Depends : Muestra las dependencias." 
-echo "$text_md    new-versions : Muestra las ultimas versiones."
 echo "$text_md      config-eng : Ejemplo de custom config con comentarios en ingles."
 echo "$text_md      config-spa : Ejemplo de custom config con comentarios en castellano."
 echo "$text_md examples-config : Muestra ejemplos de configuraciones"
