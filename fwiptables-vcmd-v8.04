@@ -2864,6 +2864,7 @@ echo "$text_md                          server-asterisk server-domain server-squ
 echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen                   "
 echo "$text_md                          filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes               "
 echo "$text_md                          date free ver version notes depends license code examples               "
+echo "$text_md                          intro clean-tmp install uninstall                                       "
 exit ; fi
 ####
 ####
@@ -4122,6 +4123,57 @@ exit; fi
 ####
 ####
 #### :rutina-final-reset:
+##########   english: intro: show intro      ##########
+##########   spanish: intro: muestra intro   ##########
+#### :rutina-inicial-intro:
+####
+####
+if  [ "$first_option" == "intro" ]; then echo "$give_cover"
+echo "$header_ok [ $first_option ] [ $cmd_binary $cmd_version intro ] [ intro md ] || ||"
+echo "$title_md    ###  Fran fwiptables intro.  ###   "
+echo "$text_md     [ done ] [ Choose fwiptables dev working like complete or minimal working like cmd          "
+echo "$text_md     # Manage Fran Firewall # configure both iptables netfilter for linux with templates. #      "
+echo "$text_md     [ done ] [ Done with support in xtables and/or nftables and ipv4 and/or ipv6 ].             "
+echo "$text_md     [ done ] [ Ready to run in command shell cmd, cli-menu, gui-menu, and gui-shell ].          "
+echo "$text_md     # Standard firewall # Create one firewall with one wizard and save it in standard file. #   "
+echo "$text_md     [ done ] [Control the firewall with the standard iptables files for all tables ].           "
+echo "$text_md     # Custom firewall # Create one firewall custom and launch your custom config firewall #.    "
+echo "$text_md     [ done ] [ Choose run iptables rules of one firewall with your own config files ].          "
+echo "$text_md     # Network tools # Use this firewall with some utilities for ipv4 and ipv6 # .               "
+echo "$text_md     [ done ] [ Gone with options-tool works with network utilities.                             "
+echo "$text_md     [ done ] [ Gone with options-show show config net files ].                                  "
+echo "$brake_md"
+echo "$title_md    ###  Fran fwiptables installer.  ###"
+echo "$text_md     # $cmd_binary $cmd_version"
+#### #### #### 
+echo "$text_md     [ info ] [ Install this version from this file    ] [ TYPE: ./fwiptables-$cmd_version install   ]" 
+echo "$text_md     [ info ] [ Uninstall fwiptables from the computer ] [ TYPE: ./fwiptables-$cmd_version uninstall ]" 
+echo "$brake_md"
+echo "$title_md    ###  Fran fwiptables project.  ###    "
+echo "$text_md     # Download the latest version $cmd_name from sourceforge"
+echo "$text_md     [ link] [ $url_web_latest ]"
+echo "$text_md     # $flicense"
+echo "$text_md     [ link ] [ $license_gpl ]"
+#### #### #### 
+exit; fi
+####
+####
+#### :rutina-final-intro:
+##########    english: clean-tmp: clean temporal files             ##########
+##########    spanish: clean-tmp: limpia de archivos temporales    ##########
+#### :rutina-inicial-clean-tmp:
+####
+####
+if   [ "$first_option" == "clean-tmp" ] ; then echo $give_cover
+echo "$header_ok [ $first_option ] [ clean $cmd_binary temporal files ] || ||"
+echo "$duo_md [ info ] [ cleaning $cmd_binary temporal files ]"
+du -cm "$directory_tmp"
+rm -rf "$directory_tmp" &> /dev/null
+echo "[  ok  ] [ cleaned temporal files ]"
+exit; fi
+####
+####
+#### :rutina-final-clean-tmp:
 ##########    english: nodes: listen at dump from conexiones arp    ##########
 ##########    spanish: nodes: escucha al volcado de conexiones arp  ##########
 #### :rutina-inicial-nodes:
