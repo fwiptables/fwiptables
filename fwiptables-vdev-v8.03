@@ -826,6 +826,7 @@ if [ "$first_option" = "silent"   ] || [ "$first_option" = "-silent"  ] ; then f
 if [ "$first_option" == "$NULL" ]  ; then first_option="options-mini" ; fi
 ####
 ####
+if [ "$first_option" == "names" ] ; then first_option="names-control" ; fi
 if [ "$first_option" == "options" ] ; then first_option="options-all" ; fi
 if [ "$first_option" == "options-examples" ] ; then first_option="examples" ; fi
 if [ "$first_option" == "options-mini" ] ; then first_option="list-options" ; fi
@@ -2701,7 +2702,7 @@ echo $title_md
 echo "     Launch: $zero_option [-cli-menu -gui-menu -gui-roll -gui-shell"
 echo "     -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -s|-silent] first_option [second_option]"
 echo $title_md
-echo "$text_md      firewall-control |  stop continue reset names actual show save load                         "
+echo "$text_md      firewall-control |  stop continue reset actual show save load names-control                 "
 echo "$text_md   firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6     "
 echo "$text_md                          list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6       "
 echo "$text_md                          list-security4 list-security6 list-ebtables list-arptables              "
@@ -9564,12 +9565,12 @@ clear; exit; fi
 ####
 ####
 #### :rutina-final-preferences-modify:
-##########    english: names: file list whith rules in iptables format          ##########
-##########    spanish: names: lista de archivos con reglas en formato iptables  ##########
-#### :rutina-inicial-names:
+##########    english: names-control: file list whith rules in iptables format          ##########
+##########    spanish: names-control: lista de archivos con reglas en formato iptables  ##########
+#### :rutina-inicial-names-control:
 ####
 ####
-if [ "$first_option" == "names" ]; then  echo $give_cover
+if [ "$first_option" == "names-control" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List names from firewall saved ] || ||"
 echo "$duo_md [ info ] [ list configs files in standard format ]"
 echo "$duo_md [ info ] [ folder ] [ $directory_fwrecover ]"
@@ -9583,7 +9584,7 @@ echo "$duo_md [  ok  ] [ Listed firewall names ]"
 exit; fi
 ####
 ####
-#### :rutina-final-names:
+#### :rutina-final-names-control:
 ##########    english: reset: reset counter rules            ##########
 ##########    spanish: reset: resetea contadores de reglas   ##########
 #### :rutina-inicial-reset:
