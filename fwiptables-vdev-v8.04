@@ -2717,7 +2717,7 @@ echo "$text_md                          client-squid lan-tor lan-vpn server-ssh 
 echo "$text_md                          server-webserver-print server-lamp server-news server-ftp               "
 echo "$text_md                          server-mail server-teamspeak server-mumble server-sql                   "
 echo "$text_md                          server-asterisk server-domain server-squid                              " 
-echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen preferences-regen "
+echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen                   "
 echo "$text_md                          filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes geoip         "
 echo "$text_md                          date free ver version notes depends license code examples intro         "
 echo "$text_md                          clean-tmp install uninstall                                             "
