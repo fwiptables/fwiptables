@@ -9684,7 +9684,7 @@ cat $directory_fwrecover/$second_option-nft-ipv4 |  $command_iptables_nft-restor
 cat $directory_fwrecover/$second_option-legacy-ipv4 | $command_iptables_legacy-restore  
 cat $directory_fwrecover/$second_option-nft-ipv6 | $command_ip6tables_nft-restore       
 cat $directory_fwrecover/$second_option-legacy-ipv6 | $command_ip6tables_legacy-restore 
-echo "$duo_md [  ok  ] [ firewall loaded ] [ $second_option ]"
+echo "$duo_md [  ok  ] [ firewall loaded ] [ $directory_fwrecover/$second_option ]"
 ####
 ####
 #### english: if no found #### spanish: si no encuentra
