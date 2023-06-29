@@ -14569,25 +14569,25 @@ fi
 $allow_use_ipv4 $allow_use_legacy $allow_input_bandwidth $command_iptables_legacy     -A  INPUT \
 -m hashlimit --hashlimit-above   "$config_input_bandwidth"kb/sec \
 --hashlimit-name maxinputlegacy  -j $config_close_deny \
--m comment --comment "bandwidth kb/s"  &> /dev/null
+-m comment --comment "input-bandwidth kb/s"  &> /dev/null
 ####
 ####
 $allow_use_ipv4 $allow_use_legacy $allow_output_bandwidth $command_iptables_legacy    -A OUTPUT \
 -m hashlimit --hashlimit-above  "$config_output_bandwidth"kb/sec \
 --hashlimit-mode dstip --hashlimit-name maxoutputlegacy -j $config_close_deny \
--m comment --comment "bandwidth kb/s"  &> /dev/null
+-m comment --comment "output-bandwidth kb/s"  &> /dev/null
 ####
 ####
 $allow_use_ipv4 $allow_use_nft $allow_input_bandwidth $command_iptables_nft           -A INPUT \
 -m hashlimit    --hashlimit-above "$config_input_bandwidth"kb/sec  \
 --hashlimit-name maxinputnft  -j $config_close_deny \
--m comment --comment "bandwidth kb/s"  &> /dev/null
+-m comment --comment "input-bandwidth kb/s"  &> /dev/null
 ####
 ####
 $allow_use_ipv4 $allow_use_nft $allow_output_bandwidth $command_iptables_nft          -A OUTPUT \
 -m hashlimit  --hashlimit-above "$config_output_bandwidth"kb/sec \
 --hashlimit-mode dstip  --hashlimit-name maxoutputnft -j $config_close_deny \
--m comment --comment "bandwidth kb/s"  &> /dev/null
+-m comment --comment "output-bandwidth kb/s"  &> /dev/null
 ####
 ####
 #######################################        english: ipv6 bandwidth
@@ -14596,22 +14596,22 @@ $allow_use_ipv4 $allow_use_nft $allow_output_bandwidth $command_iptables_nft    
 ####
 $allow_use_ipv6 $allow_use_legacy $allow_input_bandwidth $command_ip6tables_legacy -A  INPUT \
 -m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j $config_close_deny \
--m comment --comment "bandwidth kb/s"  &> /dev/null
+-m comment --comment "input-bandwidth kb/s"  &> /dev/null
 ####
 ####
 $allow_use_ipv6 $allow_use_legacy $allow_output_bandwidth $command_ip6tables_legacy -A OUTPUT \
 -m hashlimit --hashlimit-above  "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j $config_close_deny \
--m comment --comment "bandwidth kb/s"  &> /dev/null
+-m comment --comment "output-bandwidth kb/s"  &> /dev/null
 ####
 ####
 $allow_use_ipv6 $allow_use_nft $allow_input_bandwidth $command_ip6tables_nft -A  INPUT \
 -m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j $config_close_deny \
--m comment --comment "bandwidth kb/s"  &> /dev/null
+-m comment --comment "input-bandwidth kb/s"  &> /dev/null
 ####
 ####
 $allow_use_ipv6 $allow_use_nft $allow_output_bandwidth $command_ip6tables_nft -A OUTPUT \
 -m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j $config_close_deny \
--m comment --comment "bandwidth kb/s"  &> /dev/null
+-m comment --comment "output-bandwidth kb/s"  &> /dev/null
 ####
 ####
 #######################################        english: limit number of all connections
