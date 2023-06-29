@@ -1909,7 +1909,7 @@ $cmd_binary save autosave-fwiptables &> /dev/null ; exit; fi
 ####
 ####
 if [ "$first_option" == "custom" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
-echo "$duo_md [ info ] [ loading firewall custom ]" ;
+echo "$duo_md [ info ] [ loading firewall custom ]  [ $directory_config/$second_option ]" ;
 launch_firewall="yes" ;
 type_firewall="custom" ;
 name_firewall="$second_option" ;

@@ -2004,7 +2004,7 @@ $zero_option save autosave-fwiptables &> /dev/null ; exit; fi
 ####
 ####
 if [ "$first_option" = "custom" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
-echo "$duo_md [ info ] [ loading firewall custom ]" ;
+echo "$duo_md [ info ] [ loading firewall custom ] [ $directory_config/$second_option ]" ;
 launch_firewall="yes" ;
 type_firewall="custom" ;
 name_firewall="$second_option" ;
@@ -8381,7 +8381,7 @@ $launch_custom $allow_output_all $allow_use_ipv6 $allow_use_legacy $command_ip6t
 ####
 ####  
 ####
-if [ -f "$directory_config/$second_option" ]; then $cmd_binary reset
+if [ -f "$directory_config/$second_option" ]; then $cmd_binary reset &> /dev/null ;
 echo "$duo_md [  ok  ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit ; else $nada ; fi
 ####
