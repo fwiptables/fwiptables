@@ -1285,8 +1285,6 @@ $cmd_binary regen-config &> /dev/null
 if [ -f "/usr/bin/$cmd_config" ]; then /usr/bin/$cmd_config ver; fi
 ####
 ####
-####
-####
 ####   english: Show final status from installer
 ####   spanish: Muestra el estatus final desde el instalador
 ####

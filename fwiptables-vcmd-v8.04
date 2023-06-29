@@ -4174,6 +4174,64 @@ exit; fi
 ####
 ####
 #### :rutina-final-clean-tmp:
+##########   english: uninstall:      fwiptables uninstall      ##########
+##########   spanish: desinstalador:  fwiptables desistalador   ##########
+#### :rutina-inicial-uninstall:
+####
+####
+if [ "$first_option" == "uninstall" ] ; then
+echo "$header_ok [ $first_option ] [ $cmd_binary uninstaller ] [ uninstall md ] || ||"
+echo "$duo_md [ info ] [ $cmd_binary uninstalling ]"
+rm /usr/bin/$cmd_config &> /dev/null
+echo "$duo_md [ info ] [ deleted binaries ]"
+echo "$duo_md [  ok  ] [ /usr/bin/$cmd_config uninstalled ]" ;
+exit; fi
+####
+####
+#### :rutina-final-uninstall:
+##########       english: install:    fwiptables install          ##########
+##########       spanish: instalador: fwiptables instalador       ##########
+#### :rutina-inicial-install:
+####
+####
+if [ "$first_option" == "install" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ $cmd_config $cmd_version installer ] [ install md ] || ||"
+####
+####
+####  english: copy the file to temporal folder and install
+####  spanish: copia el archivo a carpeta temporal y instala
+#### 
+#### 
+echo "$duo_md [ info ] [ $cmd_config installing.. ]"
+cp "$zero_option" "$directory_temporal/fwiptables-tmp.sh" &> /dev/null
+cp "$directory_temporal/fwiptables-tmp.sh" "/usr/bin/$cmd_config" &> /dev/null 
+chmod 555 "/usr/bin/$cmd_config" &> /dev/null 
+####
+####
+####  english: generate fwiptables default config and templates
+####  spanish: genera fwiptables default configuracion y plantillas
+####
+####
+$cmd_binary preferences-regen &> /dev/null
+$cmd_binary regen-config &> /dev/null
+if [ -f "/usr/bin/$cmd_config" ]; then /usr/bin/$cmd_config ver; fi
+####
+####
+####   english: Show final status from installer
+####   spanish: Muestra el estatus final desde el instalador
+####
+####
+echo "$duo_md [ info ] [ The config dir:        ] [ $directory_data ]"
+echo "$duo_md [ info ] [ The tmp dir:           ] [ $directory_tmp  ]"
+echo "$duo_md [ info ] [ The Command shell:     ] [ /usr/bin/$cmd_config ]"
+if [ -f "/etc/sudoers.d/$cmd_config" ] ; then echo "$duo_md [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
+echo "$duo_md [ info ] [ Grant privileges to user with    ] [ $cmd_config sudofw-adduser user ]"
+echo "$duo_md [  ok  ] [ Update configs and variables     ]"
+echo "$duo_md [  ok  ] [ Now. Ready to run $cmd_config ]"
+exit; fi
+####
+####
+#### :rutina-final-install:
 ##########    english: nodes: listen at dump from conexiones arp    ##########
 ##########    spanish: nodes: escucha al volcado de conexiones arp  ##########
 #### :rutina-inicial-nodes:
