@@ -466,12 +466,13 @@ duo_md="###" ;
 header_ok="### || || [ ok ] ||" ;
 cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_waiting_cli="$duo_md [ info ] [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ]"
-head_waiting_gui="$duo_md [ info ] [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ]"
-head_waiting_log="$duo_md [ info ] [ log ] [ Wait several seconds.. ] [ With aprox several seconds ]"
-head_waiting_web="$duo_md [ info ] [ web ] [ Wait several seconds.. ] [ With aprox several seconds ]"
-head_waiting_help="$duo_md [ info ] [ help: help in rst txt format ] [ Loading.. ]"
-head_waiting_info="$duo_md  [ info ] [ info: info in plain txt format ] [ loading.. ]"
+head_waiting_txt="$duo_md [ info ] [ txt ] [ Wait several seconds.. ] [ With aprox several seconds ] [ press control-c to cancel ] "
+head_waiting_cli="$duo_md [ info ] [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ] [ press control-c to cancel ] "
+head_waiting_gui="$duo_md [ info ] [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ] [ press control-c to cancel ] "
+head_waiting_log="$duo_md [ info ] [ log ] [ Wait several seconds.. ] [ With aprox several seconds ] [ press control-c to cancel ] "
+head_waiting_web="$duo_md [ info ] [ web ] [ Wait several seconds.. ] [ With aprox several seconds ] [ press control-c to cancel ] "
+head_waiting_help="$duo_md [ info ] [ help: help in rst txt format ] [ Loading.. ] [ press control-c to cancel ] "
+head_waiting_info="$duo_md  [ info ] [ info: info in plain txt format ] [ loading.. ] [ press control-c to cancel ] "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -2870,7 +2871,7 @@ echo "$text_md                          server-asterisk server-domain server-squ
 echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen                   "
 echo "$text_md                          filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes geoip         "
 echo "$text_md                          date free ver version notes depends license code examples intro         "
-echo "$text_md                          clean-tmp install uninstall                                             "
+echo "$text_md                          clean-tmp install uninstall pc-halt pc-shutdown pc-reboot               "
 exit ; fi
 ####
 ####
@@ -4285,6 +4286,55 @@ exit;  fi
 ####
 ####
 #### :rutina-final-license:
+##########    english: pc-halt: power off computer   ##########
+##########    spanish: pc-halt: apaga el ordenador   ##########
+#### :rutina-inicial-pc-halt:
+####
+####
+if   [ "$first_option" == "pc-halt" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ power off computer ] || ||"
+demora="15"
+echo "$head_waiting_txt"
+echo "Halt to power off computer ... in $demora seconds"
+$command_sleep $demora
+$command_halt
+exit; fi
+####
+####
+#### :rutina-final-pc-halt:
+##########    english: pc-shutdown: power off computer   ##########
+##########    spanish: pc-shutdown: apaga el ordenador   ##########
+#### :rutina-inicial-pc-shutdown:
+####
+####
+if   [ "$first_option" == "pc-shutdown" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ power off computer ] || ||"
+demora="15"
+echo "Halt to power off computer ... in $demora seconds"
+echo "$head_waiting_txt"
+$command_sleep $demora
+$command_shutdown -h now
+exit; fi
+####
+####
+#### :rutina-final-pc-shutdown:
+##########    english: pc-reboot: reboot computer         ##########
+##########    spanish: pc-reboot: reinicia el ordenador   ##########
+#### :rutina-inicial-pc-shutdown:
+####
+####
+if   [ "$first_option" == "pc-reboot" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ reboot computer ] || ||"
+demora="15"
+echo "$head_waiting_txt"
+echo "Reboot to power reboot ... in $demora seconds"
+$command_sleep $demora
+$command_reboot
+exit; fi
+####
+####
+#### :rutina-final-pc-shutdown:
+
 ##########    english: ntpdate-client: update the date and time    ##########
 ##########    spanish: ntpdate-client: actualiza la fecha y hora   ##########
 #### :rutina-inicial-ntpdate-client:
