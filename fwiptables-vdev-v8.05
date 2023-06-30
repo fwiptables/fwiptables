@@ -64,7 +64,7 @@ exit ; fi
 ####
 ####
 PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
-if [ "$HOME" == "$NULL" ] ; then default_root_home="root"; else default_root_home="$HOME"; fi
+if [ "$HOME" == "$NULL" ] ; then default_root_home="/root"; else default_root_home="$HOME"; fi
 ####
 ####
 #### :rutina-final-admin:
