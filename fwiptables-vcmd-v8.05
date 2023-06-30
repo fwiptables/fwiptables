@@ -880,6 +880,7 @@ wizard-*) echo "$message_without_cli" ; $zero_option $second_option $third_optio
 "nueva-completa-config") $zero_option $second_option $third_option ;  exit ;;
 "new-mini-config") $zero_option $second_option $third_option ;  exit ;;
 "new-full-config") $zero_option $second_option $third_option ;  exit ;;
+"modify-config") $zero_option modify-config $third_option ; exit ;;
 "preferences-modify") $zero_option preferences-modify ; exit ;;
 nmap-*) echo "$message_without_cli" ; $zero_option $second_option $third_option  ;  exit ;;
 "radio") echo "$message_without_cli" ; $zero_option $second_option $third_option ;  exit ;;
