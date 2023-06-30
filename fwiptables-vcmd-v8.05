@@ -63,6 +63,10 @@ echo
 exit ; fi
 ####
 ####
+PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
+if [ "$HOME" == "$NULL" ] ; then default_root_home="root"; else default_root_home="$HOME"; fi
+####
+####
 #### :rutina-final-admin:
 ##########    english: iptables is not here               ##########
 ##########    spanish: iptables no esta instalado         ##########
@@ -147,7 +151,6 @@ $command_xhost +SI:localuser:root &> /dev/null ;
 #### :rutina-inicial-config-variables:
 ####
 ####
-default_root_home="/root"
 list_rules_conceptual="" ;
 config_ip4_localhost="127.0.0.1" ;
 config_ip6_localhost="::1" ;
@@ -4215,21 +4218,19 @@ chmod 555 "/usr/bin/$cmd_config" &> /dev/null
 ####  spanish: genera fwiptables default configuracion y plantillas
 ####
 ####
-$cmd_binary preferences-regen &> /dev/null
-$cmd_binary regen-config &> /dev/null
-if [ -f "/usr/bin/$cmd_config" ]; then /usr/bin/$cmd_config ver; fi
+/usr/bin/$cmd_config preferences-regen &> /dev/null
+/usr/bin/$cmd_config regen-config &> /dev/null
+#### if [ -f "/usr/bin/$cmd_config" ]; then /usr/bin/$cmd_config ver; fi
 ####
 ####
 ####   english: Show final status from installer
 ####   spanish: Muestra el estatus final desde el instalador
 ####
 ####
-echo "$duo_md [ info ] [ The config dir:        ] [ $directory_data ]"
-echo "$duo_md [ info ] [ The cache dir:         ] [ $directory_cache  ]"
+echo "$duo_md [ info ] [ The  config   dir:     ] [ $directory_data ]"
+echo "$duo_md [ info ] [ The  cache    dir:     ] [ $directory_cache  ]"
 echo "$duo_md [ info ] [ The Command shell:     ] [ /usr/bin/$cmd_config ]"
-if [ -f "/etc/sudoers.d/$cmd_config" ] ; then echo "$duo_md [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
-echo "$duo_md [ info ] [ Grant privileges to user with    ] [ $cmd_config sudofw-adduser user ]"
-echo "$duo_md [  ok  ] [ Update configs and variables     ]"
+echo "$duo_md [  ok  ] [ Update configs and variables  ]"
 echo "$duo_md [  ok  ] [ Now. Ready to run $cmd_config ]"
 exit; fi
 ####
