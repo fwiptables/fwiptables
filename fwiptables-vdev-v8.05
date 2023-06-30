@@ -268,6 +268,7 @@ command_qmmp="$(command -v qmmp)"
 #### :rutina-inicial-config-variables:
 ####
 ####
+default_root_home="/root"
 list_rules_conceptual="" ;
 config_ip4_localhost="127.0.0.1" ;
 config_ip6_localhost="::1" ;
@@ -515,7 +516,7 @@ default_security="list-options"
 #### spanish: directorio permanente: directorios permanentes y ruta de directorios de los archivos de configuracion
 ####
 ####
-directory_data="$HOME/.config/$cmd_config"
+directory_data="$default_root_home/.config/$cmd_config"
 if [ ! -d "$directory_data" ]; then $command_mkdir -p $directory_data &> /dev/null ; fi
 ####
 ####
@@ -564,8 +565,8 @@ default_autolog="$directory_log/default_autolog"
 #### spanish: directorio temporal
 ####
 ####
-directory_tmp="$HOME/.cache/$cmd_config"
-directory_temporal="$directory_tmp/tmp"
+directory_cache="$default_root_home/.cache/$cmd_config"
+directory_temporal="$directory_cache/tmp"
 ####
 ####
 #### english: temporal files
@@ -1290,7 +1291,7 @@ if [ -f "/usr/bin/$cmd_config" ]; then /usr/bin/$cmd_config ver; fi
 ####
 ####
 echo "$duo_md [ info ] [ The config dir:        ] [ $directory_data ]"
-echo "$duo_md [ info ] [ The tmp dir:           ] [ $directory_tmp  ]"
+echo "$duo_md [ info ] [ The cache dir:         ] [ $directory_cache  ]"
 echo "$duo_md [ info ] [ The Command shell:     ] [ /usr/bin/$cmd_config ]"
 if [ -f "/etc/sudoers.d/$cmd_config" ] ; then echo "$duo_md [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
 echo "$duo_md [ info ] [ Grant privileges to user with    ] [ $cmd_config sudofw-adduser user ]"
@@ -4469,7 +4470,7 @@ echo "$header_ok [ $first_option ] [ List for depends programs ] [ depends md ] 
 echo
 echo "$title_md [ Configuration files ]"
 echo "$text_md Directory data:          $directory_data"
-echo "$text_md Directory temp:          $directory_tmp"
+echo "$text_md Directory temp:          $directory_cache"
 echo "$text_md File Preferences:        $default_preferences"
 echo
 echo "$title_md [ Log files ]"
@@ -7494,7 +7495,7 @@ exit; fi
 if [ "$first_option" = "ver" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ Show version about ] [ version.md] || ||"
 echo "[ ok ] [ program ] $cmd_name | $cmd_version | $cmd_description "
-echo "[ ok ] [ Temp directory ] $directory_tmp [ Data directory ] $directory_data [ Web page ] $cmd_homepage"
+echo "[ ok ] [ Cache directory ] $directory_cache [ Data directory ] $directory_data [ Web page ] $cmd_homepage"
 exit ; fi
 ####
 ####
@@ -7524,8 +7525,8 @@ echo
 echo "$title_md [ MD5 sum ]"
 echo "$text_md $($command_md5sum $0)"
 echo
-echo "$title_md [ Temp directory ]"
-echo "$text_md $directory_tmp"
+echo "$title_md [ Cache directory ]"
+echo "$text_md $directory_cache"
 echo
 echo "$title_md [ Data directory ]"
 echo "$text_md $directory_data"
@@ -12344,8 +12345,8 @@ exit; fi
 if   [ "$first_option" == "clean-tmp" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ clean $cmd_binary temporal files ] || ||"
 echo "$duo_md [ info ] [ cleaning $cmd_binary temporal files ]"
-du -cm "$directory_tmp"
-rm -rf "$directory_tmp" &> /dev/null
+du -cm "$directory_cache"
+rm -rf "$directory_cache" &> /dev/null
 echo "[  ok  ] [ cleaned temporal files ]"
 exit; fi
 ####

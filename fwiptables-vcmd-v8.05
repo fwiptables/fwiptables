@@ -142,99 +142,71 @@ $command_xhost +SI:localuser:root &> /dev/null ;
 ####
 ####
 #### :rutina-final-x11:
-##########  english: permanent files: files and folders from fwiptables          ##########
-##########  spanish: archivos permanentes: archivos y carpetas desde fwiptables  ##########
-#### :rutina-inicial-files:
+##########  english: variables: variables to declare     ##########
+##########  spanish: variables: variables para declarar  ##########
+#### :rutina-inicial-config-variables:
 ####
 ####
-#### english: permanent directory:   permanent directory and path directory config files
-#### spanish: directorio permanente: directorios permanentes y ruta de directorios de los archivos de configuracion
+default_root_home="/root"
+list_rules_conceptual="" ;
+config_ip4_localhost="127.0.0.1" ;
+config_ip6_localhost="::1" ;
+server_waiting="9s" ;
+allow_dmz_ip4="no" ; 
+allow_dmz_ip6="no" ;
+allow_forward_ip4="no" ; 
+allow_forward_ip6="no" ; 
+allow_gateway_ip4="no" ;
+allow_gateway_ip6="no" ;
+allow_input_all="no" ;
+allow_input_bandwidth="no" ; 
+allow_input_maxconnect="no" ;
+allow_input_ping="no" ;
+allow_input_state="no" ;
+allow_mac_blacklist="no" ; 
+allow_mac_whitelist="no" ;
+allow_shield_maxtries="no"
+allow_net_blacklist="no" ;
+allow_net_vpn="no" ; 
+allow_others_protocols="no" ;
+allow_output_all="no" ; 
+allow_output_bandwidth="no" ;
+allow_output_gid="no" ;
+allow_output_maxconnect="no" ;
+allow_output_ping="no" ;
+allow_output_state="no" ;
+allow_output_uid="no" ; 
+client_tcp="ssh,http,https" ;
+client_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+config_dmz_ip4="" ;
+config_dmz_ip6="" ;
+config_input_bandwidth="12512" ; 
+config_input_maxconnect="72" ; 
+config_input_state="new,related,established" ;
+config_mac_blacklist=""
+config_mac_whitelist="" ;
+config_shield_maxtries="12" ;
+config_net_blacklist="yandex.com" ;
+config_net_vpn="wesnoth.org" ; 
+config_others_protocols="icmp,igmp" ;
+config_output_bandwidth="512" ;
+config_output_gid="root" ;
+config_output_maxconnect="72" ;
+config_output_state="new,related,established" ;
+config_output_uid="root" ;
+logserver_prefix_input="fwlog-input::" ; 
+logserver_prefix_output="fwlog-output::" ;
+logserver_port_tcp="no" ;
+logserver_port_udp="no" ;
+net_ipv4_client="0/0" ; 
+net_ipv4_server="0/0" ;
+net_ipv6_client="::/0" ;
+net_ipv6_server="::/0" ;
+server_port_tcp="" ;
+server_port_udp="" ; 
 ####
 ####
-directory_data="$HOME/.config/$cmd_config"
-####
-####
-#### english: directory tree 
-#### spanish: arbol de directorio
-####
-####
-directory_fwrecover="$directory_data/fwiptables-fwrecover"
-directory_default="$directory_data/fwiptables-default"
-directory_config="$directory_data/fwiptables-config"
-directory_log="$directory_data/fwiptables-log"
-directory_shell="$directory_data/fwiptables-shell"
-####
-####
-#### english: templates cfg
-#### spanish: plantillas cfg
-####
-####
-defaultcfg="$directory_config/default-full-english.cfg"             
-defaultfullcfg_eng="$directory_config/default-full-english.cfg"     
-defaultfullcfg_spa="$directory_config/default-full-spanish.cfg"     
-defaultminicfg_eng="$directory_config/default-mini-english.cfg"     
-defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
-####
-####
-#### english: default config to shell
-#### spanish: default config to shell
-####
-####
-default_preferences="$directory_shell/default_preferences"
-####
-####
-#### english: file log:     log files and path files config files
-#### spanish: archivos log: archivos log y ruta de los archivos de configuracion
-####
-####
-default_filelog="$directory_log/default_filelog"
-default_autolog="$directory_log/default_autolog"
-####
-####
-##########    english: temporal files
-##########    spanish: archivos temporales
-####
-####
-#### english: temporal directory
-#### spanish: directorio temporal
-####
-####
-directory_tmp="$HOME/.cache/$cmd_config"
-directory_temporal="$directory_tmp/.$cmd_config-$cmd_version-tmp"
-####
-####
-#### english: temporal files
-#### spanish: archivos temporales
-####
-####
-temporal_text="$directory_temporal/$first_option-$second_option-$third_option"
-temporal_textfinal="$directory_temporal/$first_option-$second_option-$third_option-textfinal"
-temporal_gui="$directory_temporal/$first_option-$second_option-$third_option"
-temporal_guifinal="$directory_temporal/$first_option-$second_option-$third_option-guifinal"
-output_log="$directory_temporal/$first_option-$second_option-$third_option"
-output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-logfinal"
-####
-####
-#### :rutina-final-files:
-##########   english: if sane config directory                       ##########
-##########   spanish: comprobar sanos directorios de configuracion   ##########
-#### :rutina-inicial-dir-sane:
-####
-####
-command_mkdir="$(command -v mkdir)"
-####
-####
-if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
-if [ ! -d "$directory_data" ]; then $command_mkdir -p $directory_data &> /dev/null ; fi
-if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
-if [ ! -d "$directory_config" ]; then $command_mkdir -p "$directory_config" &> /dev/null ; fi
-if [ ! -d "$directory_fwrecover" ]; then $command_mkdir -p "$directory_fwrecover" &> /dev/null ; fi
-if [ ! -d "$directory_default" ]; then $command_mkdir -p "$directory_default" &> /dev/null ; fi
-if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/null ; fi
-if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
-####
-####
-#### :rutina-final-dir-sane:
+#### :rutina-final-config-variables:
 ##########   english: search programs: programs path           ##########
 ##########   spanish: busca los programas: ruta de programas   ##########
 #### :rutina-inicial-command:
@@ -330,70 +302,100 @@ command_lshw="$(command -v lshw)"
 ####
 ####
 #### :rutina-final-command:
-##########  english: variables: variables to declare     ##########
-##########  spanish: variables: variables para declarar  ##########
-#### :rutina-inicial-config-variables:
+
+##########  english: permanent files: files and folders from fwiptables          ##########
+##########  spanish: archivos permanentes: archivos y carpetas desde fwiptables  ##########
+#### :rutina-inicial-files:
 ####
 ####
-list_rules_conceptual="" ;
-config_ip4_localhost="127.0.0.1" ;
-config_ip6_localhost="::1" ;
-server_waiting="9s" ;
-allow_dmz_ip4="no" ; 
-allow_dmz_ip6="no" ;
-allow_forward_ip4="no" ; 
-allow_forward_ip6="no" ; 
-allow_gateway_ip4="no" ;
-allow_gateway_ip6="no" ;
-allow_input_all="no" ;
-allow_input_bandwidth="no" ; 
-allow_input_maxconnect="no" ;
-allow_input_ping="no" ;
-allow_input_state="no" ;
-allow_mac_blacklist="no" ; 
-allow_mac_whitelist="no" ;
-allow_shield_maxtries="no"
-allow_net_blacklist="no" ;
-allow_net_vpn="no" ; 
-allow_others_protocols="no" ;
-allow_output_all="no" ; 
-allow_output_bandwidth="no" ;
-allow_output_gid="no" ;
-allow_output_maxconnect="no" ;
-allow_output_ping="no" ;
-allow_output_state="no" ;
-allow_output_uid="no" ; 
-client_tcp="ssh,http,https" ;
-client_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-config_dmz_ip4="" ;
-config_dmz_ip6="" ;
-config_input_bandwidth="12512" ; 
-config_input_maxconnect="72" ; 
-config_input_state="new,related,established" ;
-config_mac_blacklist=""
-config_mac_whitelist="" ;
-config_shield_maxtries="12" ;
-config_net_blacklist="yandex.com" ;
-config_net_vpn="wesnoth.org" ; 
-config_others_protocols="icmp,igmp" ;
-config_output_bandwidth="512" ;
-config_output_gid="root" ;
-config_output_maxconnect="72" ;
-config_output_state="new,related,established" ;
-config_output_uid="root" ;
-logserver_prefix_input="fwlog-input::" ; 
-logserver_prefix_output="fwlog-output::" ;
-logserver_port_tcp="no" ;
-logserver_port_udp="no" ;
-net_ipv4_client="0/0" ; 
-net_ipv4_server="0/0" ;
-net_ipv6_client="::/0" ;
-net_ipv6_server="::/0" ;
-server_port_tcp="" ;
-server_port_udp="" ; 
+#### english: permanent directory:   permanent directory and path directory config files
+#### spanish: directorio permanente: directorios permanentes y ruta de directorios de los archivos de configuracion
 ####
 ####
-#### :rutina-final-config-variables:
+directory_data="$default_root_home/.config/$cmd_config"
+####
+####
+#### english: directory tree 
+#### spanish: arbol de directorio
+####
+####
+directory_fwrecover="$directory_data/fwiptables-fwrecover"
+directory_default="$directory_data/fwiptables-default"
+directory_config="$directory_data/fwiptables-config"
+directory_log="$directory_data/fwiptables-log"
+directory_shell="$directory_data/fwiptables-shell"
+####
+####
+#### english: templates cfg
+#### spanish: plantillas cfg
+####
+####
+defaultcfg="$directory_config/default-full-english.cfg"             
+defaultfullcfg_eng="$directory_config/default-full-english.cfg"     
+defaultfullcfg_spa="$directory_config/default-full-spanish.cfg"     
+defaultminicfg_eng="$directory_config/default-mini-english.cfg"     
+defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
+####
+####
+#### english: default config to shell
+#### spanish: default config to shell
+####
+####
+default_preferences="$directory_shell/default_preferences"
+####
+####
+#### english: file log:     log files and path files config files
+#### spanish: archivos log: archivos log y ruta de los archivos de configuracion
+####
+####
+default_filelog="$directory_log/default_filelog"
+default_autolog="$directory_log/default_autolog"
+####
+####
+##########    english: temporal files
+##########    spanish: archivos temporales
+####
+####
+#### english: temporal directory
+#### spanish: directorio temporal
+####
+####
+directory_cache="$default_root_home/.cache/$cmd_config"
+directory_temporal="$directory_cache/tmp"
+####
+####
+#### english: temporal files
+#### spanish: archivos temporales
+####
+####
+temporal_text="$directory_temporal/$first_option-$second_option-$third_option"
+temporal_textfinal="$directory_temporal/$first_option-$second_option-$third_option-textfinal"
+temporal_gui="$directory_temporal/$first_option-$second_option-$third_option"
+temporal_guifinal="$directory_temporal/$first_option-$second_option-$third_option-guifinal"
+output_log="$directory_temporal/$first_option-$second_option-$third_option"
+output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-logfinal"
+####
+####
+#### :rutina-final-files:
+##########   english: if sane config directory                       ##########
+##########   spanish: comprobar sanos directorios de configuracion   ##########
+#### :rutina-inicial-dir-sane:
+####
+####
+command_mkdir="$(command -v mkdir)"
+####
+####
+if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
+if [ ! -d "$directory_data" ]; then $command_mkdir -p $directory_data &> /dev/null ; fi
+if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
+if [ ! -d "$directory_config" ]; then $command_mkdir -p "$directory_config" &> /dev/null ; fi
+if [ ! -d "$directory_fwrecover" ]; then $command_mkdir -p "$directory_fwrecover" &> /dev/null ; fi
+if [ ! -d "$directory_default" ]; then $command_mkdir -p "$directory_default" &> /dev/null ; fi
+if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/null ; fi
+if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
+####
+####
+#### :rutina-final-dir-sane:
 ##########   english: the basic system variables         ##########
 ##########   spanish: las variables basicas del sistema  ##########
 #### :rutina-inicial-system-variables:
@@ -1198,7 +1200,7 @@ echo "$header_ok [ $first_option ] [ List for depends programs ] [ depends md ] 
 echo
 echo "$title_md [ Configuration files ]"
 echo "$text_md Directory data:          $directory_data"
-echo "$text_md Directory temp:          $directory_tmp"
+echo "$text_md Directory temp:          $directory_cache"
 echo "$text_md File Preferences:        $default_preferences"
 echo
 echo "$title_md [ Log files ]"
@@ -1288,8 +1290,8 @@ echo
 echo "$title_md [ MD5 sum ]"
 echo "$text_md $($command_md5sum $0)"
 echo
-echo "$title_md [ Temp directory ]"
-echo "$text_md $directory_tmp"
+echo "$title_md [ Cache directory ]"
+echo "$text_md $directory_cache"
 echo
 echo "$title_md [ Data directory ]"
 echo "$text_md $directory_data"
@@ -1317,7 +1319,7 @@ exit ; fi
 if [ "$first_option" = "ver" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ Show version about ] [ version.md] || ||"
 echo "[ ok ] [ program ] $cmd_name | $cmd_version | $cmd_description "
-echo "[ ok ] [ Temp directory ] $directory_tmp [ Data directory ] $directory_data [ Web page ] $cmd_homepage"
+echo "[ ok ] [ Cache directory ] $directory_cache [ Data directory ] $directory_data [ Web page ] $cmd_homepage"
 exit ; fi
 ####
 ####
@@ -4167,8 +4169,8 @@ exit; fi
 if   [ "$first_option" == "clean-tmp" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ clean $cmd_binary temporal files ] || ||"
 echo "$duo_md [ info ] [ cleaning $cmd_binary temporal files ]"
-du -cm "$directory_tmp"
-rm -rf "$directory_tmp" &> /dev/null
+du -cm "$directory_cache"
+rm -rf "$directory_cache" &> /dev/null
 echo "[  ok  ] [ cleaned temporal files ]"
 exit; fi
 ####
@@ -4222,7 +4224,7 @@ if [ -f "/usr/bin/$cmd_config" ]; then /usr/bin/$cmd_config ver; fi
 ####
 ####
 echo "$duo_md [ info ] [ The config dir:        ] [ $directory_data ]"
-echo "$duo_md [ info ] [ The tmp dir:           ] [ $directory_tmp  ]"
+echo "$duo_md [ info ] [ The cache dir:         ] [ $directory_cache  ]"
 echo "$duo_md [ info ] [ The Command shell:     ] [ /usr/bin/$cmd_config ]"
 if [ -f "/etc/sudoers.d/$cmd_config" ] ; then echo "$duo_md [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
 echo "$duo_md [ info ] [ Grant privileges to user with    ] [ $cmd_config sudofw-adduser user ]"
