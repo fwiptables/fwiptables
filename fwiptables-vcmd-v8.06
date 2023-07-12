@@ -463,7 +463,7 @@ brake_md="---" ;
 tabz="### _ _ _ _ _ _ _ " ;
 ralla="______________________" ;
 duo_md="###" ;
-header_ok="### || || [ ok ] ||" ;
+header_ok="### || || [ ok ] ||" ; header_ok="###"
 cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_waiting_txt="$duo_md [ info ] [ txt ] [ Wait several seconds.. ] [ With aprox several seconds ] [ press control-c to cancel ] "
@@ -477,10 +477,12 @@ head_waiting_info="$duo_md  [ info ] [ info: info in plain txt format ] [ loadin
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_config ] [ Version: $cmd_version ] || || "
+give_cover="$duo_md [ Firewall ] [ Program: $cmd_config ] [ Version: $cmd_version ] || || "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_preferences="$duo_md [ info ] [ Configure ] [ Configure: $cmd_binary preferences-modify ]"
+give_preferences="$duo_md [ Configure ] [ Configure: $cmd_binary preferences-modify ]"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="echo -n" ; 
 #### #### english: echo void            #### spanish: impresion vacia
@@ -493,6 +495,7 @@ tab_lang_spanish=" spa "
 #### show_lang_spanish="##"
 #### #### info list rules
 message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ Configure: $cmd_binary preferences-modify ] || ||"
+message_info_rules="$duo_md [ Configure ] [ Configure: $cmd_binary preferences-modify ] || ||"
 #### #### english: without cli or gui   #### spanish: sin cli o gui
 message_without_cli="$duo_md [ fail ] [ cli ] [ Without support for output cli for this option ]"
 message_without_gui="$duo_md [ fail ] [ gui ] [ Without support for output gui for this option ]"
@@ -2845,33 +2848,39 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-options" ] ; then echo $give_cover ; echo "$message_info_rules"
-echo "$header_ok [ $first_option ] [ List options ] [ list-options md ] || ||"
+echo "$duo_md [ $first_option ] [ List options ] [ list-options md ] || ||"
 echo $title_md
-echo "    Launch: $cmd_binary [ -cli-menu -gui-menu -gui-roll -gui-shell"
-echo "    -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]" 
+echo "    Launch: $cmd_binary [ -cli-menu -gui-menu -gui-roll -gui-shell ]"
+echo "    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]" 
 echo $title_md
-echo "$text_md      firewall-control |  stop continue reset actual show save load names-control                 "
-echo "$text_md   firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6     "
-echo "$text_md                          list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6       "
-echo "$text_md                          list-security4 list-security6 list-ebtables list-arptables              "
-echo "$text_md      firewall-numeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4           "
-echo "$text_md                          listn-filter6 listn-nat4 listn-nat6 listn-raw4 listn-raw6               "
-echo "$text_md                          listn-mangle4  listn-mangle6 listn-security4 listn-security6            "
-echo "$text_md       firewall-custom |  new-full-config nueva-completa-config regen-config                      "
-echo "$text_md                          new-mini-config nueva-mini-config examples-config                       "
-echo "$text_md                          show-config modify-config del-config names-config                       "
-echo "$text_md       firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive        "
-echo "$text_md                          client-basic games-udp games-shooter game-wesnoth game-minetest         "
-echo "$text_md                          game-freeciv game-widelands client-web client-vnc client-mail           "
-echo "$text_md                          client-news client-torrent client-vpn  client-ftp  client-tor           "
-echo "$text_md                          client-squid lan-tor lan-vpn server-ssh server-samba server-vnc         "
-echo "$text_md                          server-webserver-print server-lamp server-news server-ftp               "
-echo "$text_md                          server-mail server-teamspeak server-mumble server-sql                   "
-echo "$text_md                          server-asterisk server-domain server-squid                              " 
-echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen                   "
-echo "$text_md                          filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes geoip         "
-echo "$text_md                          date free ver version notes depends license code examples intro         "
-echo "$text_md                          clean-tmp install uninstall pc-halt pc-shutdown pc-reboot               "
+echo "$text_md      | firewall-control |"
+echo "$text_md stop continue reset actual show save load names-control"
+echo "$text_md      | firewall-conceptual |"
+echo "$text_md ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6     "
+echo "$text_md list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6       "
+echo "$text_md list-security4 list-security6 list-ebtables list-arptables              "
+echo "$text_md      | firewall-numeral |"
+echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4           "
+echo "$text_md listn-filter6 listn-nat4 listn-nat6 listn-raw4 listn-raw6               "
+echo "$text_md listn-mangle4  listn-mangle6 listn-security4 listn-security6            "
+echo "$text_md       | firewall-custom |"
+echo "$text_md  new-full-config nueva-completa-config regen-config                      "
+echo "$text_md new-mini-config nueva-mini-config examples-config                       "
+echo "$text_md show-config modify-config del-config names-config                       "
+echo "$text_md       | firewall-launch |"
+echo "$text_md eraserules custom wizard-mini wizard-full off-line all-permisive        "
+echo "$text_md client-basic games-udp games-shooter game-wesnoth game-minetest         "
+echo "$text_md game-freeciv game-widelands client-web client-vnc client-mail           "
+echo "$text_md client-news client-torrent client-vpn  client-ftp  client-tor           "
+echo "$text_md client-squid lan-tor lan-vpn server-ssh server-samba server-vnc         "
+echo "$text_md server-webserver-print server-lamp server-news server-ftp               "
+echo "$text_md server-mail server-teamspeak server-mumble server-sql                   "
+echo "$text_md server-asterisk server-domain server-squid                              " 
+echo "$text_md        | options-easy |"
+echo "$text_md preferences-read preferences-modify preferences-regen                   "
+echo "$text_md filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes geoip         "
+echo "$text_md date free ver version notes depends license code examples intro         "
+echo "$text_md clean-tmp install uninstall pc-halt pc-shutdown pc-reboot               "
 exit ; fi
 ####
 ####
