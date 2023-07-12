@@ -7241,7 +7241,7 @@ $zero_option eraserules &> /dev/null
 #######################################        spanish: ebtables mac rules
 ####
 ####
-if [ "$allow_mac_whitelist" = "$NULL" ] ; then
+if [ "$allow_mac_whitelist" == "$NULL" ] ; then
 ####
 $command_ebtables -A INPUT  -s $config_mac_whitelist  -j ACCEPT \
 -m comment --comment "mac whitelist" &> /dev/null
@@ -7251,7 +7251,7 @@ $command_ebtables -A OUTPUT -d $config_mac_whitelist  -j ACCEPT \
 fi
 ####
 ####
-if [ "$allow_mac_blacklist" = "$NULL" ] ; then
+if [ "$allow_mac_blacklist" == "$NULL" ] ; then
 ####
 $command_ebtables -A INPUT  -s $config_mac_blacklist  -j $config_close_deny \
 -m comment --comment "mac blacklist"  &> /dev/null
@@ -7265,15 +7265,11 @@ fi
 #######################################        spanish: aceptar reglas localhost
 ####
 ####
+if [ "$config_ip4_localhost" != "$NULL" ]; then
+####
 $allow_use_legacy $command_iptables_legacy -A INPUT  -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $allow_use_legacy $command_iptables_legacy -A OUTPUT -s $config_ip4_localhost -d $config_ip4_localhost -j ACCEPT \
--m comment --comment "host localhost" &> /dev/null
-####
-####
-$allow_use_legacy $command_ip6tables_legacy -A INPUT  -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
--m comment --comment "host localhost" &> /dev/null
-$allow_use_legacy $command_ip6tables_legacy -A OUTPUT -s $config_ip6_localhost -d $config_ip6_localhost -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
@@ -7282,18 +7278,30 @@ $allow_use_nft $command_iptables_nft -A INPUT  -s $config_ip4_localhost -d $conf
 $allow_use_nft $command_iptables_nft -A OUTPUT -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
+fi
+####
+####
+if [ "$config_ip6_localhost" != "$NULL" ]; then
+####
+$allow_use_legacy $command_ip6tables_legacy -A INPUT  -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment "host localhost" &> /dev/null
+$allow_use_legacy $command_ip6tables_legacy -A OUTPUT -s $config_ip6_localhost -d $config_ip6_localhost -j ACCEPT \
+-m comment --comment "host localhost" &> /dev/null
+####
 ####
 $allow_use_nft $command_ip6tables_nft -A INPUT  -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $allow_use_nft $command_ip6tables_nft -A OUTPUT -s $config_ip6_localhost -d $config_ip6_localhost -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
+fi
+####
 ####
 ####################################### english: rules for max tries for ssh
 ####################################### spanish: reglas for max ties for ssh
 ####
 ####
-if [ "$allow_shield_maxtries" = "" ]; then
+if [ "$allow_shield_maxtries" == "$NULL" ]; then
 ####
 $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A INPUT \
 -p tcp -m multiport --dports $config_shield_port -m state --state NEW -m recent \
@@ -7341,7 +7349,7 @@ fi
 #### spanish: ipv4  ancho de banda
 ####
 ####
-if [ "$allow_input_bandwidth" == "$NULL" ] || [ "$allow_output_bandwidth" == "$NULL" ]; then
+if [ "$allow_input_bandwidth" == "$NULL" ] ; then
 ####
 $allow_use_ipv4 $allow_use_legacy $allow_input_bandwidth $command_iptables_legacy     -A  INPUT \
 -m hashlimit --hashlimit-above   "$config_input_bandwidth"kb/sec \
@@ -7349,16 +7357,21 @@ $allow_use_ipv4 $allow_use_legacy $allow_input_bandwidth $command_iptables_legac
 -m comment --comment "input-bandwidth kb/s"  &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_legacy $allow_output_bandwidth $command_iptables_legacy    -A OUTPUT \
--m hashlimit --hashlimit-above  "$config_output_bandwidth"kb/sec \
---hashlimit-mode dstip --hashlimit-name maxoutputlegacy -j $config_close_deny \
--m comment --comment "output-bandwidth kb/s"  &> /dev/null
-####
-####
 $allow_use_ipv4 $allow_use_nft $allow_input_bandwidth $command_iptables_nft           -A INPUT \
 -m hashlimit    --hashlimit-above "$config_input_bandwidth"kb/sec  \
 --hashlimit-name maxinputnft  -j $config_close_deny \
 -m comment --comment "input-bandwidth kb/s"  &> /dev/null
+####
+fi
+####
+if [ "$allow_output_bandwidth" == "$NULL" ] ; then
+####
+####
+$allow_use_ipv4 $allow_use_legacy $allow_output_bandwidth $command_iptables_legacy    -A OUTPUT \
+-m hashlimit --hashlimit-above  "$config_output_bandwidth"kb/sec \
+--hashlimit-mode dstip --hashlimit-name maxoutputlegacy -j $config_close_deny \
+-m comment --comment "output-bandwidth kb/s"  &> /dev/null
+
 ####
 ####
 $allow_use_ipv4 $allow_use_nft $allow_output_bandwidth $command_iptables_nft          -A OUTPUT \
@@ -7366,24 +7379,32 @@ $allow_use_ipv4 $allow_use_nft $allow_output_bandwidth $command_iptables_nft    
 --hashlimit-mode dstip  --hashlimit-name maxoutputnft -j $config_close_deny \
 -m comment --comment "output-bandwidth kb/s"  &> /dev/null
 ####
+fi
+####
 ####
 #############        english: ipv6 bandwidth
 #############        spanish: ipv6 ancho de banda
 ####
+####
+if [ "$allow_input_bandwidth" == "$NULL" ] ; then
 ####
 $allow_use_ipv6 $allow_use_legacy $allow_input_bandwidth $command_ip6tables_legacy -A  INPUT \
 -m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j $config_close_deny \
 -m comment --comment "input-bandwidth kb/s"  &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $allow_output_bandwidth $command_ip6tables_legacy -A OUTPUT \
--m hashlimit --hashlimit-above  "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j $config_close_deny \
--m comment --comment "output-bandwidth kb/s"  &> /dev/null
-####
-####
 $allow_use_ipv6 $allow_use_nft $allow_input_bandwidth $command_ip6tables_nft -A  INPUT \
 -m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j $config_close_deny \
 -m comment --comment "input-bandwidth kb/s"  &> /dev/null
+####
+fi
+####
+####
+if [ "$allow_output_bandwidth" == "$NULL" ] ; then
+####
+$allow_use_ipv6 $allow_use_legacy $allow_output_bandwidth $command_ip6tables_legacy -A OUTPUT \
+-m hashlimit --hashlimit-above  "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j $config_close_deny \
+-m comment --comment "output-bandwidth kb/s"  &> /dev/null
 ####
 ####
 $allow_use_ipv6 $allow_use_nft $allow_output_bandwidth $command_ip6tables_nft -A OUTPUT \
@@ -7401,15 +7422,10 @@ fi
 #### spanish: ipv4  ancho de banda
 ####
 ####
-if [ "$allow_input_maxconnect" == "$NULL" ] || [ "$allow_output_maxconnect" == "$NULL" ]; then
+if [ "$allow_input_maxconnect" == "$NULL" ]; then
 ####
 $allow_use_ipv4 $allow_use_legacy $allow_input_maxconnect  $command_iptables_legacy -A INPUT  \
 -m connlimit --connlimit-above $config_input_maxconnect   -j $config_close_deny  \
--m comment --comment "max connect"  &> /dev/null
-####
-####
-$allow_use_ipv4 $allow_use_legacy $allow_output_maxconnect $command_iptables_legacy -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect  -j $config_close_deny \
 -m comment --comment "max connect"  &> /dev/null
 ####
 ####
@@ -7417,28 +7433,45 @@ $allow_use_ipv4 $allow_use_nft $allow_input_maxconnect $command_iptables_nft   -
 -m connlimit --connlimit-above $config_input_maxconnect       -j $config_close_deny \
 -m comment --comment "max connect"  &> /dev/null
 ####
+fi
+####
+####
+if [ "$allow_output_maxconnect" == "$NULL" ]; then
+####
+$allow_use_ipv4 $allow_use_legacy $allow_output_maxconnect $command_iptables_legacy -A OUTPUT \
+-m connlimit --connlimit-above $config_output_maxconnect  -j $config_close_deny \
+-m comment --comment "max connect"  &> /dev/null
+####
 ####
 $allow_use_ipv4 $allow_use_nft $allow_output_maxconnect $command_iptables_nft  -A OUTPUT \
 -m connlimit --connlimit-above $config_output_maxconnect      -j $config_close_deny \
 -m comment --comment "max connect"  &> /dev/null
+####
+fi
 ####
 ####
 #### english: ipv6 bandwidth
 #### spanish: ipv6 ancho de banda
 ####
 ####
+if [ "$allow_input_maxconnect" == "$NULL" ]; then
+####
 $allow_use_ipv6 $allow_use_legacy $allow_input_maxconnect  $command_ip6tables_legacy -A INPUT  \
 -m connlimit --connlimit-above $config_input_maxconnect  -j $config_close_deny \
 -m comment --comment "max connect"  &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $allow_output_maxconnect $command_ip6tables_legacy -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect -j $config_close_deny \
--m comment --comment "max connect"  &> /dev/null
-####
-####
 $allow_use_ipv6 $allow_use_nft $allow_input_maxconnect $command_ip6tables_nft   -A INPUT  \
 -m connlimit --connlimit-above $config_input_maxconnect       -j $config_close_deny \
+-m comment --comment "max connect"  &> /dev/null
+####
+fi
+####
+####
+if [ "$allow_output_maxconnect" == "$NULL" ]; then
+####
+$allow_use_ipv6 $allow_use_legacy $allow_output_maxconnect $command_ip6tables_legacy -A OUTPUT \
+-m connlimit --connlimit-above $config_output_maxconnect -j $config_close_deny \
 -m comment --comment "max connect"  &> /dev/null
 ####
 ####
@@ -7664,7 +7697,7 @@ fi
 ####################################### spanish: reglas para permitir puertos cliente with separate rules
 ####
 ####
-if [ "$allow_separate_rules" = "" ]; then 
+if [ "$allow_separate_rules" = "$NULL" ]; then 
 for one_udp in $(echo $client_udp | $command_sed 's/,/ /g') ;
 do
 ####
@@ -8194,18 +8227,13 @@ done
 #### spanish: hace nat masquerade ip4 y ip6 PERMITIR GATEWAY
 ####
 ####
+if [ "$allow_gateway_ip4" == "$NULL" ]; then 
+####
+####
 $allow_use_nft    $allow_use_ipv4    $allow_gateway_ip4 $command_iptables_nft -t nat \
 -A POSTROUTING -j MASQUERADE \
 -m comment --comment "ip gateway" &>/dev/null
 $allow_use_legacy $allow_use_ipv4 $allow_gateway_ip4 $command_iptables_legacy -t nat \
--A POSTROUTING -j MASQUERADE \
--m comment --comment "ip gateway" &>/dev/null
-####
-####
-$allow_use_nft $allow_use_ipv6 $allow_gateway_ip6 $command_ip6tables_nft -t nat \
--A POSTROUTING -j MASQUERADE \
--m comment --comment "ip gateway" &>/dev/null
-$allow_use_legacy $allow_use_ipv6 $allow_gateway_ip6 $command_ip6tables_legacy -t nat \
 -A POSTROUTING -j MASQUERADE \
 -m comment --comment "ip gateway" &>/dev/null
 ####
@@ -8217,6 +8245,19 @@ $allow_use_legacy $allow_use_ipv4     $allow_gateway_ip4 $command_iptables_legac
 -A PREROUTING -j ACCEPT \
 -m comment --comment "ip gateway" &>/dev/null
 ####
+fi
+####
+####
+if [ "$allow_gateway_ip6" == "$NULL" ]; then 
+####
+####
+$allow_use_nft $allow_use_ipv6 $allow_gateway_ip6 $command_ip6tables_nft -t nat \
+-A POSTROUTING -j MASQUERADE \
+-m comment --comment "ip gateway" &>/dev/null
+$allow_use_legacy $allow_use_ipv6 $allow_gateway_ip6 $command_ip6tables_legacy -t nat \
+-A POSTROUTING -j MASQUERADE \
+-m comment --comment "ip gateway" &>/dev/null
+####
 ####
 $allow_use_nft $allow_use_ipv6 $allow_gateway_ip6 $command_ip6tables_nft -t nat \
 -A PREROUTING -j ACCEPT \
@@ -8225,11 +8266,14 @@ $allow_use_legacy $allow_use_ipv6 $allow_gateway_ip6 $command_ip6tables_legacy -
 -A PREROUTING -j ACCEPT \
 -m comment --comment "ip gatway" &>/dev/null
 ####
-####
+fi
 ####
 ####
 #### english: do DMZ nat ip4 and ip6 ALLOW GATEWAY SERVER IN LAN
 #### spanish: hace nat DMZ ip4 y ip6 PERMITIR GATEWAY SERVER IN LAN
+####
+####
+if [ "$config_dmz_ip4" == "$NULL" ]; then 
 ####
 ####
 $allow_use_nft    $allow_use_ipv4    $allow_dmz_ip4 $command_iptables_nft -t nat \
@@ -8239,6 +8283,11 @@ $allow_use_legacy $allow_use_ipv4    $allow_dmz_ip4 $command_iptables_legacy -t 
 -A PREROUTING -j DNAT --to-destination $config_dmz_ip4 \
 -m comment --comment "ip dmz" &>/dev/null
 ####
+fi
+####
+####
+if [ "$config_dmz_ip6" == "$NULL" ]; then 
+####
 ####
 $allow_use_nft $allow_use_ipv6    $allow_dmz_ip6 $command_ip6tables_nft -t nat \
 -A PREROUTING -j DNAT --to-destination $config_dmz_ip6 \
@@ -8246,6 +8295,8 @@ $allow_use_nft $allow_use_ipv6    $allow_dmz_ip6 $command_ip6tables_nft -t nat \
 $allow_use_legacy $allow_use_ipv6 $allow_dmz_ip6 $command_ip6tables_legacy -t nat \
 -A PERROUTING -j DNAT --to-destination $config_dmz_ip6 \
 -m comment --comment "ip dmz" &>/dev/null
+####
+fi
 ####
 ####
 ######################################## english: iptables ipv4 and ipv6 with forward rules ALLOW FORWARD
@@ -8285,6 +8336,9 @@ $allow_use_nft $allow_forward_ip6 $command_ip6tables_nft -A FORWARD -j ACCEPT &>
 #######################################       iptables ipv4 y ipv6 cierran la entrada, reemvio y salida con reglas de dropeo
 ####
 ####
+if [ "$config_close_deny" != "$NULL" ]; then 
+####
+####
 #### ipv4 drop rules iptables-legacy
 $allow_use_legacy $command_iptables_legacy -A INPUT -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
@@ -8319,9 +8373,14 @@ $allow_use_nft $command_ip6tables_nft -A OUTPUT -j $config_close_deny \
 $allow_use_nft $command_ip6tables_nft -A FORWARD -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
 ####
+fi
+####
 ####
 ########################################       english: iptables ipv4 and ipv6 with variable input_all
 ########################################       english: iptables ipv4 y ipv6 con variable input_all
+####
+####
+if [ "$allow_input_all" == "$NULL" ]; then 
 ####
 ####
 #### english: nft INPUT deleted
@@ -8460,10 +8519,15 @@ $launch_custom $allow_input_all $allow_use_ipv6 $allow_use_legacy $command_ip6ta
 -m comment --comment "close rule" &> /dev/null
 ####
 ####
+fi
 ####
 ####
 ########################################       english: iptables ipv4 and ipv6 with variable output_all
 ########################################       english: iptables ipv4 y ipv6 con variable output_all
+####
+####
+if [ "$allow_output_all" == "$NULL" ]; then 
+####
 ####
 ####
 #### english: nft OUTPUT deleted
@@ -8505,8 +8569,17 @@ $launch_custom $allow_output_all $allow_use_ipv6 $allow_use_legacy $command_ip6t
 -s $config_ip6_localhost -d $config_ip6_localhost -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
+fi
 ####
-#### english: legacy4 OUTPUT  limit bandwidth
+####
+################################################    english: allow output bandwidth
+################################################    spanish: acepta velocidad de conexiones de salida
+####
+####
+if [ "$allow_output_bandwidth" == "$NULL" ]; then 
+####
+####
+#### english: legacy4 OUTPUT limit bandwidth
 #### spanish: legacy6 OUTPUT limita ancho de banda
 ####
 #### 
@@ -8528,6 +8601,15 @@ $launch_custom $allow_output_all $allow_use_ipv4 $allow_use_nft $allow_output_ba
 $launch_custom $allow_output_all $allow_use_ipv6 $allow_use_nft $allow_output_bandwidth ip6tables-nft -A OUTPUT \
 -m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput  -j $config_close_deny \
 -m comment --comment "output-bandwidth kb/s" &> /dev/null
+####
+fi
+####
+####
+################################################    english: allow output maxconnect
+################################################    spanish: acepta maximo de conexiones de salida
+####
+####
+if [ "$allow_output_maxconnect" == "$NULL" ]; then 
 ####
 ####
 #### english: ipv4  limit conections numbers
@@ -8553,6 +8635,15 @@ $launch_custom $allow_output_all $allow_use_ipv6 $allow_use_nft $allow_output_ma
 -m connlimit --connlimit-above $config_output_maxconnect  -j $config_close_deny \
 -m comment --comment "output maxconnect" &> /dev/null
 ####
+fi
+####
+####
+################################################    english: allow output all
+################################################    spanish: acepta toda salida
+####
+####
+if [ "$allow_output_all" == "$NULL" ]; then 
+####
 ####
 #### english: nft OUTPUT ACCEPT all or input_state
 #### spanish: nft OUTPUT acepta todo o estado de entrada
@@ -8577,7 +8668,6 @@ $launch_custom $allow_output_all $allow_use_ipv6 $allow_use_legacy $command_ip6t
 $input_state -j ACCEPT \
 -m comment --comment "input state" &> /dev/null
 ####
-####
 #### english: nft INPUT DROP all
 #### spanish: nft INPUT deniega todo
 ####
@@ -8596,6 +8686,8 @@ $launch_custom $allow_output_all $allow_use_ipv4 $allow_use_legacy $command_ipta
 -m comment --comment "close rule" &> /dev/null
 $launch_custom $allow_output_all $allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -t filter -A OUTPUT  -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
+####
+fi
 ####
 ####
 ########################################       english: show text when active custom rules
