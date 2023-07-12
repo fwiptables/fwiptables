@@ -166,11 +166,11 @@ allow_input_bandwidth="no" ;
 allow_input_maxconnect="no" ;
 allow_input_ping="no" ;
 allow_input_state="no" ;
+allow_shield_maxtries="no" ;
 allow_mac_blacklist="no" ; 
 allow_mac_whitelist="no" ;
-allow_shield_maxtries="no"
-allow_net_blacklist="no" ;
-allow_net_vpn="no" ; 
+allow_ip_blacklist="no" ;
+allow_ip_whitelist="no" ; 
 allow_others_protocols="no" ;
 allow_output_all="no" ; 
 allow_output_bandwidth="no" ;
@@ -186,11 +186,11 @@ config_dmz_ip6="" ;
 config_input_bandwidth="12512" ; 
 config_input_maxconnect="72" ; 
 config_input_state="new,related,established" ;
-config_mac_blacklist=""
-config_mac_whitelist="" ;
 config_shield_maxtries="12" ;
-config_net_blacklist="yandex.com" ;
-config_net_vpn="wesnoth.org" ; 
+config_mac_blacklist="" ;
+config_mac_whitelist="" ;
+config_ip_blacklist="yandex.com" ;
+config_ip_whitelist="wesnoth.org" ; 
 config_others_protocols="icmp,igmp" ;
 config_output_bandwidth="512" ;
 config_output_gid="root" ;
@@ -1571,10 +1571,10 @@ spa51="$(echo $cinco vacio para permitir DIRECCION-MAC excepcionales o no )"
 var52="$(echo allow_mac_blacklist=no )"
 eng52="$(echo $cinco void to drop some excepcional MAC-ADDRESS or no )"
 spa52="$(echo $cinco vacio para denegar DIRECCION-MAC excepcionales o no )"
-var53="$(echo allow_net_vpn=no )"
+var53="$(echo allow_ip_whitelist=no )"
 eng53="$(echo $cinco void to allow some exceptional HOST/IP or no )"
 spa53="$(echo $cinco vacio para permitir HOST/IP excepcionales o no )"
-var54="$(echo allow_net_blacklist=no )"
+var54="$(echo allow_ip_blacklist=no )"
 eng54="$(echo $cinco void to drop some excepcional HOST/IP or no )"
 spa54="$(echo $cinco vacio para denegar HOST/IP excepcionales o no )"
 var55="$(echo allow_output_uid=no )"
@@ -1634,10 +1634,10 @@ spa70="$(echo $cinco permitir estos MAC-ADDRESS excepcionales )"
 var71="$(echo config_mac_blacklist=d4:12:43:01:36:2e )"
 eng71="$(echo $cinco drop this excepcional MAC-ADDRESS )"
 spa71="$(echo $cinco deniega estos MAC-ADDRESS excepcionales )"
-var72="$(echo config_net_vpn=wesnoth.org,sf.net )"
+var72="$(echo config_ip_whitelist=wesnoth.org,sf.net )"
 eng72="$(echo $cinco allow this excepcitonal HOST/IP )"
 spa72="$(echo $cinco permitir estos HOST/IP excepcionales )"
-var73="$(echo config_net_blacklist=facebook.com,www.facebook.com )"
+var73="$(echo config_ip_blacklist=facebook.com,www.facebook.com )"
 eng73="$(echo $cinco drop this excepcional HOST/IP )"
 spa73="$(echo $cinco deniega estos HOST/IP excepcionales )"
 var74="$(echo config_output_uid=root )"
@@ -1946,15 +1946,15 @@ case "$NULL" in "$allow_input_bandwidth")  ;;  *)  allow_input_bandwidth="no";; 
 case "$NULL" in "$allow_input_maxconnect") ;;  *)  allow_input_maxconnect="no";; esac
 case "$NULL" in "$allow_input_ping")       ;;  *)  allow_input_ping="no";; esac
 case "$NULL" in "$allow_input_state")      ;;  *)  allow_input_state="no";; esac
-case "$NULL" in "$allow_use_ipv4")             ;;  *)  allow_use_ipv4="no" ;; esac
-case "$NULL" in "$allow_use_ipv6")             ;;  *)  allow_use_ipv6="no" ;; esac
-case "$NULL" in "$allow_use_legacy")           ;;  *)  allow_use_legacy="no" ;; esac
+case "$NULL" in "$allow_use_ipv4")         ;;  *)  allow_use_ipv4="no" ;; esac
+case "$NULL" in "$allow_use_ipv6")         ;;  *)  allow_use_ipv6="no" ;; esac
+case "$NULL" in "$allow_use_legacy")       ;;  *)  allow_use_legacy="no" ;; esac
 case "$NULL" in "$allow_mac_blacklist")    ;;  *)  allow_mac_blacklist="no" ;; esac
 case "$NULL" in "$allow_mac_whitelist")    ;;  *)  allow_mac_whitelist="no" ;; esac
 case "$NULL" in "$allow_shield_maxtries")  ;;  *)  allow_shield_maxtries="no" ;; esac
-case "$NULL" in "$allow_net_blacklist")    ;;  *)  allow_net_blacklist="no";; esac
-case "$NULL" in "$allow_net_vpn")          ;;  *)  allow_net_vpn="no";; esac
-case "$NULL" in "$allow_use_nft")              ;;  *)  allow_use_nft="no" ;; esac
+case "$NULL" in "$allow_ip_blacklist")     ;;  *)  allow_ip_blacklist="no";; esac
+case "$NULL" in "$allow_ip_whitelist")     ;;  *)  allow_ip_whitelist="no";; esac
+case "$NULL" in "$allow_use_nft")          ;;  *)  allow_use_nft="no" ;; esac
 case "$NULL" in "$allow_only_output")      ;;  *)  allow_only_output="no" ;; esac
 case "$NULL" in "$allow_other_protocols")  ;;  *)  allow_other_protocols="no";; esac
 case "$NULL" in "$allow_others_protocols") ;;  *)  allow_others_protocols="no" ;; esac
@@ -3030,8 +3030,8 @@ echo "allow_gateway_ip4= ; "
 echo
 echo "# config vpn example #"
 echo "allow_forward_ip4= ; "
-echo "allow_net_vpn= ; "
-echo "config_net_vpn=wesnoth.org,sourceforge.net"
+echo "allow_ip_whitelist= ; "
+echo "config_ip_whitelist=wesnoth.org,sourceforge.net"
 ####
 ####
 #### config: email-example1 ####
@@ -7433,31 +7433,31 @@ fi
 ####################################### spanish: reglas de denegar para lista negra
 ####
 ####
-if [ "$allow_net_blacklist" == "$NULL" ]; then
+if [ "$allow_ip_blacklist" == "$NULL" ]; then
 ####
-for one_blacklist in $(echo $config_net_blacklist | $command_sed 's/,/ /g')
+for one_blacklist in $(echo $config_ip_blacklist | $command_sed 's/,/ /g')
 ####
 ####
 #### ipv4
 ####
 ####
 do
-$allow_use_ipv4 $allow_use_legacy $allow_net_blacklist $command_iptables_legacy  -A INPUT  \
+$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A INPUT  \
 -s $one_blacklist -j $config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_legacy $allow_net_blacklist $command_iptables_legacy  -A OUTPUT \
+$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A OUTPUT \
 -d $one_blacklist -j $config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft    $allow_net_blacklist $command_iptables_nft     -A INPUT  \
+$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A INPUT  \
 -s $one_blacklist -j $config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft    $allow_net_blacklist $command_iptables_nft     -A OUTPUT \
+$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A OUTPUT \
 -d $one_blacklist -j $config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
@@ -7465,22 +7465,22 @@ $allow_use_ipv4 $allow_use_nft    $allow_net_blacklist $command_iptables_nft    
 #### ipv6
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $allow_net_blacklist $command_ip6tables_legacy -A INPUT  \
+$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A INPUT  \
 -s $one_blacklist -j $config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $allow_net_blacklist $command_ip6tables_legacy -A OUTPUT \
+$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A OUTPUT \
 -d $one_blacklist -j $config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft    $allow_net_blacklist $command_ip6tables_nft    -A INPUT  \
+$allow_use_ipv6 $allow_use_nft  $command_ip6tables_nft    -A INPUT  \
 -s $one_blacklist -j $config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft    $allow_net_blacklist $command_ip6tables_nft    -A OUTPUT \
+$allow_use_ipv6 $allow_use_nft  $command_ip6tables_nft    -A OUTPUT \
 -d $one_blacklist -j $config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 done
@@ -7492,28 +7492,28 @@ fi
 ####################################### spanish: reglas de aceptar para vpn
 ####
 ####
-if [ "$allow_net_vpn" == "$NULL" ]; then
+if [ "$allow_ip_whitelist" == "$NULL" ]; then
 ####
-for one_vpn in $(echo $config_net_vpn | $command_sed 's/,/ /g') 
+for one_vpn in $(echo $config_ip_whitelist | $command_sed 's/,/ /g') 
 #### ipv4
 ####
 do
-$allow_use_ipv4 $allow_use_legacy $allow_net_vpn $command_iptables_legacy  -A  INPUT  \
+$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A  INPUT  \
 -s $one_vpn -j ACCEPT \
 -m comment --comment "vpn $one_vpn" &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_legacy $allow_net_vpn $command_iptables_legacy  -A  OUTPUT \
+$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A  OUTPUT \
 -d $one_vpn -j ACCEPT \
 -m comment --comment "vpn $one_vpn" &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft    $allow_net_vpn $command_iptables_nft     -A  INPUT  \
+$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A  INPUT  \
 -s $one_vpn -j ACCEPT \
 -m comment --comment "vpn $one_vpn" &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft    $allow_net_vpn $command_iptables_nft     -A  OUTPUT \
+$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A  OUTPUT \
 -d $one_vpn -j ACCEPT \
 -m comment --comment "vpn $one_vpn" &> /dev/null
 ####
@@ -7521,22 +7521,22 @@ $allow_use_ipv4 $allow_use_nft    $allow_net_vpn $command_iptables_nft     -A  O
 #### ipv6
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $allow_net_vpn $command_ip6tables_legacy -A  INPUT  \
+$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A  INPUT  \
 -s $one_vpn -j ACCEPT \
 -m comment --comment "vpn $one_vpn" &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $allow_net_vpn $command_ip6tables_legacy -A  OUTPUT \
+$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A  OUTPUT \
 -d $one_vpn -j ACCEPT \
 -m comment --comment "vpn $one_vpn" &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft    $allow_net_vpn $command_ip6tables_nft    -A  INPUT  \
+$allow_use_ipv6 $allow_use_nft $command_ip6tables_nft    -A  INPUT  \
 -s $one_vpn -j ACCEPT \
 -m comment --comment "vpn $one_vpn" &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft    $allow_net_vpn $command_ip6tables_nft    -A  OUTPUT \
+$allow_use_ipv6 $allow_use_nft  $command_ip6tables_nft    -A  OUTPUT \
 -d $one_vpn -j ACCEPT \
 -m comment --comment "vpn $one_vpn" &> /dev/null
 done
