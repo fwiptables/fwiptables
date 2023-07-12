@@ -7231,16 +7231,24 @@ $zero_option eraserules &> /dev/null
 #######################################        spanish: ebtables mac rules
 ####
 ####
-$allow_mac_whitelist $command_ebtables -A INPUT  -s $config_mac_whitelist  -j ACCEPT \
+if [ "$allow_mac_whitelist" = "$NULL" ] ; then
+####
+$command_ebtables -A INPUT  -s $config_mac_whitelist  -j ACCEPT \
 -m comment --comment "mac whitelist" &> /dev/null
-$allow_mac_whitelist $command_ebtables -A OUTPUT -d $config_mac_whitelist  -j ACCEPT \
+$command_ebtables -A OUTPUT -d $config_mac_whitelist  -j ACCEPT \
 -m comment --comment "mac whitelist" &> /dev/null
 ####
+fi
 ####
-$allow_mac_blacklist $command_ebtables -A INPUT  -s $config_mac_blacklist  -j $config_close_deny \
+####
+if [ "$allow_mac_blacklist" = "$NULL" ] ; then
+####
+$command_ebtables -A INPUT  -s $config_mac_blacklist  -j $config_close_deny \
 -m comment --comment "mac blacklist"  &> /dev/null
 $allow_mac_blacklist $command_ebtables -A OUTPUT -d $config_mac_blacklist  -j $config_close_deny \
 -m comment --comment "mac blacklist" &> /dev/null
+####
+fi
 ####
 ####
 #######################################        english: Accept  localhost rules
@@ -7275,7 +7283,8 @@ $allow_use_nft $command_ip6tables_nft -A OUTPUT -s $config_ip6_localhost -d $con
 ####################################### spanish: reglas for max ties for ssh
 ####
 ####
-if [ "$allow_shield_maxtries" = "" ]; then $nada
+if [ "$allow_shield_maxtries" = "" ]; then
+####
 $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A INPUT \
 -p tcp -m multiport --dports $config_shield_port -m state --state NEW -m recent \
 --set --name count-tries-ssh \
@@ -7310,6 +7319,7 @@ $allow_use_nft     $allow_use_ipv6  $command_ip6tables_nft -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
 --hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
+####
 fi
 ####
 ####
