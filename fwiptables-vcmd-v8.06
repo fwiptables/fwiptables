@@ -189,8 +189,8 @@ config_input_state="new,related,established" ;
 config_shield_maxtries="12" ;
 config_mac_blacklist="" ;
 config_mac_whitelist="" ;
-config_ip_blacklist="yandex.com" ;
-config_ip_whitelist="wesnoth.org" ; 
+config_ip_blacklist="yandex.com,baidu.com,google.com" ;
+config_ip_whitelist="deb.debian.org" ; 
 config_others_protocols="icmp,igmp" ;
 config_output_bandwidth="512" ;
 config_output_gid="root" ;
@@ -1637,7 +1637,7 @@ spa70="$(echo $cinco permitir estos MAC-ADDRESS excepcionales )"
 var71="$(echo config_mac_blacklist=d4:12:43:01:36:2e )"
 eng71="$(echo $cinco drop this excepcional MAC-ADDRESS )"
 spa71="$(echo $cinco deniega estos MAC-ADDRESS excepcionales )"
-var72="$(echo config_ip_whitelist=wesnoth.org,sf.net )"
+var72="$(echo config_ip_whitelist=wesnoth.org,sf.net,deb.debian.org )"
 eng72="$(echo $cinco allow this excepcitonal HOST/IP )"
 spa72="$(echo $cinco permitir estos HOST/IP excepcionales )"
 var73="$(echo config_ip_blacklist=facebook.com,www.facebook.com )"
@@ -2025,7 +2025,7 @@ name_firewall="$second_option" ;
 #### spanish: configura variables modificadas si estan ahi
 ####
 ####
-if [ -f "$directory_config/$second_option" ]; then . "$directory_config/$second_option" ; fi
+if [ -f "$directory_config/$second_option" ]; then source $directory_config/$second_option ; fi
 ####
 ####
 if [ ! -f "$directory_config/$second_option" ]; then  $zero_option cfg ; 
