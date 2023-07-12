@@ -2848,6 +2848,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-options" ] ; then echo $give_cover ; echo "$message_info_rules"
+#### echo "$duo_md [ License GPL 2 ] [ License General Public ]"
 echo "$duo_md [ $first_option ] [ List options ] [ list-options md ] || ||"
 echo $title_md
 echo "    Launch: $cmd_binary [ -cli-menu -gui-menu -gui-roll -gui-shell ]"
@@ -2864,7 +2865,7 @@ echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4    
 echo "$text_md listn-filter6 listn-nat4 listn-nat6 listn-raw4 listn-raw6               "
 echo "$text_md listn-mangle4  listn-mangle6 listn-security4 listn-security6            "
 echo "$text_md       | firewall-custom |"
-echo "$text_md  new-full-config nueva-completa-config regen-config                      "
+echo "$text_md new-full-config nueva-completa-config regen-config                      "
 echo "$text_md new-mini-config nueva-mini-config examples-config                       "
 echo "$text_md show-config modify-config del-config names-config                       "
 echo "$text_md       | firewall-launch |"
