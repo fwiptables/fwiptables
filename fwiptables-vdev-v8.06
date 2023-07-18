@@ -2702,8 +2702,8 @@ fi
 if   [ "$first_option" == "list-options" ] ; then echo $give_cover ;  echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List options ] [ list-options md ] || ||"
 echo $title_md
-echo "     Launch: $zero_option [-cli-menu -gui-menu -gui-roll -gui-shell"
-echo "     -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -s|-silent] first_option [second_option]"
+echo "     Launch: $zero_option [ -cli-menu -gui-menu -gui-roll -gui-shell ]"
+echo "     [ -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -s|-silent ] first_option [second_option]"
 echo $title_md
 echo "$text_md      | firewall-control |"
 echo "$text_md stop continue reset actual show save load names-control"
