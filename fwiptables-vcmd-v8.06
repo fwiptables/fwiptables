@@ -4513,9 +4513,9 @@ esac
 ####
 echo "$duo_md [ info ] [ saving firewall ] [ $archivofin ]"
 if [ "$command_arptables" == "$NULL"  ]; then $nada ; else
-$command_arptables-save          &> $directory_fwrecover/$archivofin-arptables; fi
+$command_arptables-save &> $directory_fwrecover/$archivofin-arptables; fi
 if [ "$command_ebtables"  == "$NULL"  ]; then $nada ; else
-$command_ebtables-save           &> $directory_fwrecover/$archivofin-ebtables; fi
+$command_ebtables-save &> $directory_fwrecover/$archivofin-ebtables; fi
 ####
 ####
 if [ "$command_iptables_nft"  == "$NULL"  ]; then $nada ; else

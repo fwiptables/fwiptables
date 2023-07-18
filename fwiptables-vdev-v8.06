@@ -824,8 +824,8 @@ if [ "$first_option" == "-i"   ] || [ "$first_option" == "--info"  ] ; then firs
 if [ "$first_option" == "-w"   ] || [ "$first_option" == "--web"  ]  ; then first_option="-web"  ; fi
 if [ "$first_option" == "-l"   ] || [ "$first_option" == "--log"  ]  ; then first_option="-log"  ; fi
 if [ "$first_option" == "-n"   ] || [ "$first_option" == "--null"  ] ; then first_option="-null" ; fi
-if [ "$first_option" = "-s"    ] || [ "$first_option" = "--silent" ] ; then first_option="-null" ; fi
-if [ "$first_option" = "silent"   ] || [ "$first_option" = "-silent"  ] ; then first_option="-null" ; fi
+if [ "$first_option" == "-s"    ] || [ "$first_option" == "--silent" ] ; then first_option="-null" ; fi
+if [ "$first_option" == "silent"   ] || [ "$first_option" == "-silent"  ] ; then first_option="-null" ; fi
 ####
 ####
 #### english: alias simple for options commons
@@ -866,7 +866,7 @@ if [ "$first_option" == "ip" ] ; then first_option="ip4"; fi
 ####
 ####
 if [ "$1" == "-n" ] ; then first_option="-null" ; fi
-if [ "$first_option"  = "md5sum"  ] ; then second_option="$2" ; third_option="$3" ; fi
+if [ "$first_option"  == "md5sum"  ] ; then second_option="$2" ; third_option="$3" ; fi
 if [ "$second_option" == "md5sum" ]  ; then third_option="$3"  ; quad_option="$4"  ; fi
 ####
 ####
@@ -1990,7 +1990,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-basic:
 ####
 ####
-if [ "$first_option" = "client-basic" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-basic" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall client-basic ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2677,7 +2677,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-domain:
 ####
 ####
-if [ "$first_option" = "server-domain" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-domain" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall server-domain ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -3180,7 +3180,7 @@ exit; fi
 #### :rutina-inicial-names-config:
 ####
 ####
-if [ "$first_option" = "names-config" ]; then echo $give_cover
+if [ "$first_option" == "names-config" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List configs cfg ] || ||"
 echo "$duo_md [ info ] [ list configs files in cfg format ]"
 echo "$duo_md [ info ] [ folder ] [ $directory_config ]"
@@ -7538,7 +7538,7 @@ exit; fi
 #### :rutina-inicial-ver:
 ####
 ####
-if [ "$first_option" = "ver" ]; then echo $give_cover
+if [ "$first_option" == "ver" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ Show version about ] [ version.md] || ||"
 echo "[ ok ] [ program ] $cmd_name | $cmd_version | $cmd_description "
 echo "[ ok ] [ Cache directory ] $directory_cache [ Data directory ] $directory_data [ Web page ] $cmd_homepage"
@@ -9761,25 +9761,25 @@ esac
 ####
 echo "$duo_md [ info ] [ saving firewall ] [ $archivofin ]"
 if [ "$command_arptables" == "$NULL"  ]; then $nada ; else
-$command_arptables-save          &> $directory_fwrecover/$archivofin-arptables; fi
-if [ "$command_ebtables"  = "$NULL"  ]; then $nada ; else
-$command_ebtables-save           &> $directory_fwrecover/$archivofin-ebtables; fi
+$command_arptables-save &> $directory_fwrecover/$archivofin-arptables; fi
+if [ "$command_ebtables"  == "$NULL"  ]; then $nada ; else
+$command_ebtables-save &> $directory_fwrecover/$archivofin-ebtables; fi
 ####
 ####
-if [ "$command_iptables_nft"  = "$NULL"  ]; then $nada ; else
+if [ "$command_iptables_nft"  == "$NULL"  ]; then $nada ; else
 $command_iptables_nft-save      &> $directory_fwrecover/$archivofin-nft-ipv4 ; fi
-if [ "$command_ip6tables_nft"  = "$NULL"  ]; then $nada ; else
+if [ "$command_ip6tables_nft"  == "$NULL"  ]; then $nada ; else
 $command_ip6tables_nft-save      &> $directory_fwrecover/$archivofin-nft-ipv6 ; fi
-if [ "$command_iptables_legacy"  = "$NULL"  ]; then $nada ; else
+if [ "$command_iptables_legacy"  == "$NULL"  ]; then $nada ; else
 $command_iptables_legacy-save    &> $directory_fwrecover/$archivofin-legacy-ipv4 ; fi
-if [ "$command_ip6tables_legacy"  = "$NULL"  ]; then $nada ; else
+if [ "$command_ip6tables_legacy"  == "$NULL"  ]; then $nada ; else
 $command_ip6tables_legacy-save   &> $directory_fwrecover/$archivofin-legacy-ipv6 ; fi
 ####
 ####
 echo "$duo_md [  ok  ] [ firewall saved ] [ $archivofin ]"
 if [ "$command_arptables" == "$NULL"  ]; then $nada ; else
 $command_ls -l $directory_fwrecover/$archivofin-arptables; fi
-if [ "$command_ebtables"  = "$NULL"  ]; then $nada ; else
+if [ "$command_ebtables"  == "$NULL"  ]; then $nada ; else
 $command_ls -l $directory_fwrecover/$archivofin-ebtables; fi
 ####
 ####
@@ -9829,7 +9829,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-show:
-##########    english: actual: show actual firewall          ##########
+##########    english: show actual firewall          ##########
 ##########    spanish: actual: muestra las reglas actuales   ##########
 #### :rutina-inicial-actual:
 ####
