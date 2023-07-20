@@ -6093,18 +6093,25 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-firewall-custom:
-##########    english: gui-roll-options-easy: gui with menu   ##########
-##########    spanish: gui-roll-options-easy: gui con menu    ##########
+##########    english: gui-roll-options-easy: gui roll options-easy: gui with roll  ##########
+##########    spanish: gui-roll-options-easy: gui roll options-easy: gui con roll   ##########
 #### :rutina-inicial-gui-roll-options-easy:
 ####
 ####
-if   [ "$first_option" == "gui-roll-options-easy" ]; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-roll-options-easy" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|preferences-modify|preferences-regen|ip4|ip6|version|examples|depends"
-selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($command_zenity --text="$first_option" --title="$cmd_binary" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+####
+selection=""
+####
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|preferences-modify|preferences-regen|\
+filelog|autolog|ip4|ip6|notes|speed-ip4|speed-ip6|sockets|nodes|geoip|date|free|ver|version|\
+depends|license|examples|intro|clean-tmp"
 ####
 ####
+selection="$($command_zenity --text="gui-roll-options-easy" --title="$cmd_binary" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+####
+####
+selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 gui-principal-menu)$cmd_binary gui-roll ;;
@@ -6113,16 +6120,26 @@ gui-info-menu)$cmd_binary -gui info status-state ;;
 preferences-read)$cmd_binary -gui preferences-read ;;
 preferences-modify)$cmd_binary -gui preferences-modify ;;
 preferences-regen)$cmd_binary -gui preferences-regen ;;
+filelog) $cmd_binary -gui filelog ;; 
+autolog) $cmd_binary -gui autolog ;;
 ip4)$cmd_binary -gui ip4 ;;
 ip6)$cmd_binary -gui ip6 ;;
+notes)$cmd_binary -gui notes ;;
+speed-ip4)$cmd_binary -gui speed-ip4 ;;
+speed-ip6)$cmd_binary -gui speed-ip6 ;;
+sockets)$cmd_binary -gui sockets ;;
+nodes) $cmd_binary -gui nodes ;;
+geoip) $cmd_binary -gui geoip ;;
+date) $cmd_binary -gui date ;;
+free) $cmd_binary -gui free ;;
+ver) $cmd_binary -gui ver ;;
 version)$cmd_binary -gui version ;;
-examples)$cmd_binary -gui examples ;;
 depends)$cmd_binary -gui depends ;;
+license) $cmd_binary -gui depends ;;
+examples)$cmd_binary -gui examples ;;
+intro) $cmd_binary -gui intro ;;
+clean-tmp) $cmd_binary -gui clean-tmp ;;
 esac
-####
-####
-#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-#### if [ "$?" -eq 0 ]; then $cmd_binary gui-roll ; exit ; fi
 ####
 ####
 #### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
