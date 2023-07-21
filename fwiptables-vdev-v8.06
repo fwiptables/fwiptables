@@ -2734,7 +2734,7 @@ echo "$text_md ip4 ip6 speed-ip4 speed-ip6 sockets nodes geoip date free ver ver
 echo "$text_md depends license code notes examples intro clean-tmp                              "
 echo "$text_md install uninstall pc-halt pc-shutdown pc-reboot                                  "
 echo "$text_md        | options-all |                                                           "
-echo "$text_md full-options options-easy options-firewall options-tool options-show options-help"
+echo "$text_md full-options options-firewall options-easy options-tool options-show options-help"
 exit ; fi
 ####
 ####
