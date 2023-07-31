@@ -2728,23 +2728,23 @@ echo "$text_md server-vnc server-webserver-print server-lamp server-news server-
 echo "$text_md server-mail server-teamspeak server-mumble server-sql server-asterisk            "
 echo "$text_md server-domain server-squid                                                       "
 echo "$title_md        | options-easy |                                                         "
-echo "$text_md preferences-read preferences-modify preferences-regen filelog autolog            "
-echo "$text_md ip4 ip6 speed-ip4 speed-ip6 sockets nodes geoip date free ver version            "
-echo "$text_md depends license code notes examples intro clean-tmp                              "
-echo "$text_md install uninstall pc-halt pc-shutdown pc-reboot                                  "
-echo "$title_md        | options-all |                                                           "
+echo "$text_md preferences-read preferences-modify preferences-regen list-options               "
+echo "$text_md clasic-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets               "
+echo "$text_md nodes geoip date free ver version notes depends license code examples            "
+echo "$text_md intro clean-tmp install uninstall pc-halt pc-shutdown pc-reboot                  "
+echo "$title_md        | options-all |                                                          "
 echo "$text_md full-options options-firewall options-easy options-tool options-show options-help"
 exit ; fi
 ####
 ####
 #### :rutina-final-list-options:
-##########    english: old-options: wellcome with semi help    ##########
-##########    spanish: old-options: bienvenida con semi ayuda  ##########
-#### :rutina-inicial-old-options:
+##########    english: clasic-options: wellcome with semi help    ##########
+##########    spanish: clasic-options: bienvenida con semi ayuda  ##########
+#### :rutina-inicial-clasic-options:
 ####
 ####
-if   [ "$first_option" == "old-options" ] ; then echo $give_cover ;  echo "$message_info_rules"
-echo "$header_ok [ $first_option ] [ List options ] [ list-options md ] || ||"
+if   [ "$first_option" == "clasic-options" ] ; then echo $give_cover ;  echo "$message_info_rules"
+echo "$header_ok [ $first_option ] [ clasic options ] [ list-options md ] || ||"
 echo $title_md
 echo "     Launch: $zero_option [-cli-menu -gui-menu -gui-roll -gui-shell"
 echo "     -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -s|-silent] first_option [second_option]"
@@ -2767,16 +2767,16 @@ echo "$text_md                          client-squid lan-tor lan-vpn server-ssh 
 echo "$text_md                          server-webserver-print server-lamp server-news server-ftp               "
 echo "$text_md                          server-mail server-teamspeak server-mumble server-sql                   "
 echo "$text_md                          server-asterisk server-domain server-squid                              " 
-echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen                   "
-echo "$text_md                          filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes geoip         "
-echo "$text_md                          date free ver version notes depends license code examples intro         "
-echo "$text_md                          clean-tmp install uninstall pc-halt pc-shutdown pc-reboot               "
+echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen list-options      "
+echo "$text_md                          clasic-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets      "
+echo "$text_md                          nodes geoip date free ver version notes depends license code examples   "
+echo "$text_md                          intro clean-tmp install uninstall pc-halt pc-shutdown pc-reboot         "
 echo "$text_md           options-all |  full-options options-easy options-interface options-firewall            "
 echo "$text_md                          options-tool options-show options-help                                  "
 exit ; fi
 ####
 ####
-#### :rutina-final-old-options:
+#### :rutina-final-clasic-options:
 ##########    english: options-all: and full-options: wellcome with semi help    ##########
 ##########    spanish: options-all: and full-options: bienvenida con semi ayuda  ##########
 #### :rutina-inicial-full-options:
