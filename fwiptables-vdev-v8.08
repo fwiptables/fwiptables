@@ -272,62 +272,62 @@ command_qmmp="$(command -v qmmp)"
 #### :rutina-inicial-config-variables:
 ####
 ####
-list_rules_conceptual="" ;
-config_ip4_localhost="127.0.0.1" ;
-config_ip6_localhost="::1" ;
-server_waiting="9s" ;
-allow_dmz_ip4="no" ; 
-allow_dmz_ip6="no" ;
-allow_forward_ip4="no" ; 
-allow_forward_ip6="no" ; 
-allow_gateway_ip4="no" ;
-allow_gateway_ip6="no" ;
-allow_input_all="no" ;
-allow_input_bandwidth="no" ; 
-allow_input_maxconnect="no" ;
-allow_input_ping="no" ;
-allow_input_state="no" ;
-allow_shield_maxtries="no" ;
-allow_mac_blacklist="no" ; 
-allow_mac_whitelist="no" ;
-allow_net_blacklist="no" ;
-allow_net_whitelist="no" ; 
-allow_others_protocols="no" ;
-allow_output_all="no" ; 
-allow_output_bandwidth="no" ;
-allow_output_gid="no" ;
-allow_output_maxconnect="no" ;
-allow_output_ping="no" ;
-allow_output_state="no" ;
-allow_output_uid="no" ; 
-client_port_tcp="ssh,http,https" ;
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_tcp="" ;
-server_port_udp="" ; 
-config_dmz_ip4="" ;
-config_dmz_ip6="" ;
-config_input_bandwidth="12512" ; 
-config_input_maxconnect="72" ; 
-config_input_state="new,related,established" ;
-config_shield_maxtries="12" ;
-config_mac_blacklist="" ;
-config_mac_whitelist="" ;
-config_net_blacklist="yandex.com" ;
-config_net_whitelist="wesnoth.org" ; 
-config_others_protocols="icmp,igmp" ;
-config_output_bandwidth="512" ;
-config_output_gid="root" ;
-config_output_maxconnect="72" ;
-config_output_state="new,related,established" ;
-config_output_uid="root" ;
-logserver_prefix_input="fwlog-input::" ; 
-logserver_prefix_output="fwlog-output::" ;
-logserver_port_tcp="no" ;
-logserver_port_udp="no" ;
-net_ipv4_client="0/0" ; 
-net_ipv4_server="0/0" ;
-net_ipv6_client="::/0" ;
-net_ipv6_server="::/0" ;
+list_rules_conceptual=""  #list-vars ; 
+config_ip4_localhost="127.0.0.1"   #list-vars ;
+config_ip6_localhost="::1"   #list-vars ;
+server_waiting="9s"   #list-vars ;
+allow_dmz_ip4="no"   #list-vars ; 
+allow_dmz_ip6="no"   #list-vars ;
+allow_forward_ip4="no"   #list-vars ; 
+allow_forward_ip6="no"   #list-vars ; 
+allow_gateway_ip4="no"   #list-vars ;
+allow_gateway_ip6="no"   #list-vars ;
+allow_input_all="no"   #list-vars ;
+allow_input_bandwidth="no"   #list-vars ;
+allow_input_maxconnect="no"   #list-vars ;
+allow_input_ping="no"    #list-vars ;
+allow_input_state="no"   #list-vars ;
+allow_shield_maxtries="no"   #list-vars ;
+allow_mac_blacklist="no"   #list-vars ; 
+allow_mac_whitelist="no"   #list-vars ;
+allow_net_blacklist="no"   #list-vars ;
+allow_net_whitelist="no"    #list-vars ; 
+allow_others_protocols="no"    #list-vars ;
+allow_output_all="no"    #list-vars ; 
+allow_output_bandwidth="no"    #list-vars ;
+allow_output_gid="no"    #list-vars ;
+allow_output_maxconnect="no"    #list-vars ;
+allow_output_ping="no"    #list-vars ;
+allow_output_state="no"    #list-vars ;
+allow_output_uid="no"    #list-vars ; 
+config_dmz_ip4=""    #list-vars ;
+config_dmz_ip6=""    #list-vars ;
+config_input_bandwidth="12512"    #list-vars ; 
+config_input_maxconnect="72"    #list-vars ; 
+config_input_state="new,related,established"    #list-vars ;
+config_shield_maxtries="12"    #list-vars ;
+config_mac_blacklist=""    #list-vars ;
+config_mac_whitelist=""    #list-vars ;
+config_net_blacklist="yandex.com,baidu.com,google.com"    #list-vars ;
+config_net_whitelist="deb.debian.org"    #list-vars ; 
+config_others_protocols="icmp,igmp"    #list-vars ;
+config_output_bandwidth="512"    #list-vars ;
+config_output_gid="root"    #list-vars ;
+config_output_maxconnect="72"    #list-vars ;
+config_output_state="new,related,established"    #list-vars ;
+config_output_uid="root"    #list-vars ;
+net_ipv4_client="0/0"    #list-vars ; 
+net_ipv4_server="0/0"    #list-vars ;
+net_ipv6_client="::/0"    #list-vars ;
+net_ipv6_server="::/0"    #list-vars ;
+client_port_tcp="ssh,http,https"    #list-vars ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https"    #list-vars ;
+server_port_tcp=""    #list-vars ;
+server_port_udp=""    #list-vars ;
+logserver_prefix_input="fwlog-input::"    #list-vars ; 
+logserver_prefix_output="fwlog-output::"    #list-vars ;
+logserver_port_tcp="no"    #list-vars ;
+logserver_port_udp="no"    #list-vars ;
 ####
 ####
 #### :rutina-final-config-variables:
@@ -10391,6 +10391,18 @@ exit; fi
 ####
 ####
 #### :rutina-final-free-ram:
+##########    english: list-var: list variables     ##########
+##########    spanish: list-var: lista variables    ##########
+#### :rutina-inicial-list-var:
+####
+####
+if   [ "$first_option" == "list-var" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ list variables ] || ||"
+cat $0 | egrep "#list-var" | cut -d "=" -f 1
+exit; fi
+####
+####
+#### :rutina-final-list-var:
 ##########    english: speed-disk: Show the speed of disc             ##########
 ##########    spanish: speed-disk: Muestra la velocidad de el disco   ##########
 #### :rutina-inicial-speed-disk:
