@@ -302,6 +302,8 @@ allow_output_state="no" ;
 allow_output_uid="no" ; 
 client_port_tcp="ssh,http,https" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_tcp="" ;
+server_port_udp="" ; 
 config_dmz_ip4="" ;
 config_dmz_ip6="" ;
 config_input_bandwidth="12512" ; 
@@ -326,8 +328,6 @@ net_ipv4_client="0/0" ;
 net_ipv4_server="0/0" ;
 net_ipv6_client="::/0" ;
 net_ipv6_server="::/0" ;
-server_port_tcp="" ;
-server_port_udp="" ; 
 ####
 ####
 #### :rutina-final-config-variables:
@@ -7629,8 +7629,8 @@ echo
 ####
 echo
 echo "# config web example #" 
-echo "config_client_port_tcp=http,https ;"
-echo "config_client_port_udp=domain,ntp,bootpc,http ;"
+echo "client_port_tcp=http,https ;"
+echo "client_port_udp=domain,ntp,bootpc,http ;"
 ####
 ####
 #### config:  games example  ####
@@ -7638,8 +7638,8 @@ echo "config_client_port_udp=domain,ntp,bootpc,http ;"
 ####
 echo
 echo "# config games example #"
-echo "config_client_port_udp=domain,domain-s,bootpc,bootps,ntp,https,1025:65499; "
-echo "config_client_port_tcp=http,https"
+echo "client_port_udp=domain,domain-s,bootpc,bootps,ntp,https,1025:65499; "
+echo "client_port_tcp=http,https"
 ####
 ####
 #### config: wesnoth game example ####
@@ -7647,8 +7647,8 @@ echo "config_client_port_tcp=http,https"
 ####
 echo
 echo "# config web example #" 
-echo "config_client_port_tcp=http,https,14995:15000 ;"
-echo "config_client_port_udp=domain,ntp,bootpc,http ;"
+echo "client_port_tcp=http,https,14995:15000 ;"
+echo "client_port_udp=domain,ntp,bootpc,http ;"
 ####
 ####
 #### config:  torrent-example1 ####
@@ -7656,8 +7656,8 @@ echo "config_client_port_udp=domain,ntp,bootpc,http ;"
 ####
 echo
 echo "# config torrent example #"
-echo "config_client_port_udp=domain,domain-s,bootpc,bootps,ntp,https,1025:65499; "
-echo "config_client_port_tcp=http,https"
+echo "client_port_udp=domain,domain-s,bootpc,bootps,ntp,https,1025:65499; "
+echo "client_port_tcp=http,https"
 ####
 ####
 #### config: samba-example1 ####
@@ -7665,8 +7665,8 @@ echo "config_client_port_tcp=http,https"
 ####
 echo
 echo "# config samba example #"
-echo "config_client_port_udp=domain,domain-s,bootpc,bootps,ntp,https,137:139 ; "
-echo "config_client_port_tcp=http,https,ipp,microsoft-ds"
+echo "client_port_udp=domain,domain-s,bootpc,bootps,ntp,https,137:139 ; "
+echo "client_port_tcp=http,https,ipp,microsoft-ds"
 echo "allow_output_ping= ; allow_input_ping= ; "
 ####
 ####
@@ -7693,7 +7693,7 @@ echo "config_net_vpn=wesnoth.org,sourceforge.net"
 ####
 echo
 echo "# config email example #"
-echo "config_client_port_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps"
+echo "client_port_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps"
 ####
 ####
 #### config: ssh-example1 ####
@@ -7701,7 +7701,7 @@ echo "config_client_port_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2
 ####
 echo
 echo "# config ssh example #"
-echo "config_client_port_tcp=http,https,printer,ipp,ssh,rsync,git"
+echo "client_port_tcp=http,https,printer,ipp,ssh,rsync,git"
 ####
 ####
 #### config: vnc-example1 ####
@@ -7709,7 +7709,7 @@ echo "config_client_port_tcp=http,https,printer,ipp,ssh,rsync,git"
 ####
 echo
 echo "# config vnc example #"
-echo "config_client_port_tcp=http,https,ssh,5900:5910"
+echo "client_port_tcp=http,https,ssh,5900:5910"
 ####
 ####
 #### config: ftp-example1 ####
@@ -7717,8 +7717,8 @@ echo "config_client_port_tcp=http,https,ssh,5900:5910"
 ####
 echo
 echo "# config ftp example #"
-echo "config_client_port_tcp=http,https,ftp,ftp-data,ftps,ftps-data,gsiftp,zope-ftp"
-echo "config_client_port_udp=domain,domain-s,bootpc,bootps,ntp,https,tftp"
+echo "client_port_tcp=http,https,ftp,ftp-data,ftps,ftps-data,gsiftp,zope-ftp"
+echo "client_port_udp=domain,domain-s,bootpc,bootps,ntp,https,tftp"
 ####
 ####
 #### config: printer-example1 ####
@@ -7726,7 +7726,7 @@ echo "config_client_port_udp=domain,domain-s,bootpc,bootps,ntp,https,tftp"
 ####
 echo
 echo "# config printer example #"
-echo "config_client_port_tcp=http,https,ipp,printer"
+echo "client_port_tcp=http,https,ipp,printer"
 ####
 ####
 #### config: irc-example1 ####
@@ -7734,7 +7734,7 @@ echo "config_client_port_tcp=http,https,ipp,printer"
 ####
 echo
 echo "# config irc example #"
-echo "config_client_port_tcp=http,https,ircd,ircs-u"
+echo "client_port_tcp=http,https,ircd,ircs-u"
 ####
 ####
 #### config: sql-example1 ####
@@ -7742,7 +7742,7 @@ echo "config_client_port_tcp=http,https,ircd,ircs-u"
 ####
 echo
 echo "# config sql example #"
-echo "config_client_port_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s"
+echo "client_port_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s"
 ####
 ####
 echo
@@ -14901,30 +14901,30 @@ if [ "$allow_separate_rules" == "no" ]; then
 #### ipv4 legacy udp
 ####
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT \
--p udp -m multiport $config_input_state --sports $client_udp -s $net_ipv4_client -j ACCEPT \
+-p udp -m multiport $config_input_state --sports $client_port_udp -s $net_ipv4_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
--p udp -m multiport $config_output_state --dports $client_udp -d $net_ipv4_client -j ACCEPT \
+-p udp -m multiport $config_output_state --dports $client_port_udp -d $net_ipv4_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 ####
 #### 
 #### ipv4 nft udp
 ####
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
--p udp -m multiport $config_input_state --sports $client_udp -s $net_ipv4_client -j ACCEPT \
+-p udp -m multiport $config_input_state --sports $client_port_udp -s $net_ipv4_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
--p udp -m multiport $config_output_state --dports $client_udp -d $net_ipv4_client -j ACCEPT \
+-p udp -m multiport $config_output_state --dports $client_port_udp -d $net_ipv4_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 ####
 ####
 #### ipv6 legacy udp
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT \
--p udp -m multiport $config_input_state --sports $client_udp -s $net_ipv6_client -j ACCEPT \
+-p udp -m multiport $config_input_state --sports $client_port_udp -s $net_ipv6_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
--p udp -m multiport $config_output_state --dports $client_udp -d $net_ipv6_client -j ACCEPT \
+-p udp -m multiport $config_output_state --dports $client_port_udp -d $net_ipv6_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 ####
 ####
@@ -14932,10 +14932,10 @@ $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT \
--p tcp -m multiport $config_input_state --sports $client_udp -s $net_ipv6_client -j ACCEPT \
+-p tcp -m multiport $config_input_state --sports $client_port_udp -s $net_ipv6_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $client_udp -d $net_ipv6_client -j ACCEPT \
+-p tcp -m multiport $config_output_state --dports $client_port_udp -d $net_ipv6_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 ####
 ####
@@ -14944,30 +14944,30 @@ $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
 #### ipv4 legacy tcp
 ####
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT \
--p tcp -m multiport $config_input_state --sports $client_tcp -s $net_ipv4_client -j ACCEPT \
+-p tcp -m multiport $config_input_state --sports $client_port_tcp -s $net_ipv4_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $client_tcp -d $net_ipv4_client -j ACCEPT \
+-p tcp -m multiport $config_output_state --dports $client_port_tcp -d $net_ipv4_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 ####
 #### 
 #### ipv4 nft tcp
 ####
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
--p tcp -m multiport $config_input_state --sports $client_tcp -s $net_ipv4_client -j ACCEPT \
+-p tcp -m multiport $config_input_state --sports $client_port_tcp -s $net_ipv4_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $client_tcp -d $net_ipv4_client -j ACCEPT \
+-p tcp -m multiport $config_output_state --dports $client_port_tcp -d $net_ipv4_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 ####
 ####
 #### ipv6 legacy tcp
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT \
--p tcp -m multiport $config_input_state --sports $client_tcp -s $net_ipv6_client -j ACCEPT \
+-p tcp -m multiport $config_input_state --sports $client_port_tcp -s $net_ipv6_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $client_tcp -d $net_ipv6_client -j ACCEPT \
+-p tcp -m multiport $config_output_state --dports $client_port_tcp -d $net_ipv6_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 ####
 ####
@@ -14975,10 +14975,10 @@ $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT \
--p tcp -m multiport $config_input_state --sports $client_tcp -s $net_ipv6_client -j ACCEPT \
+-p tcp -m multiport $config_input_state --sports $client_port_tcp -s $net_ipv6_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $client_tcp -d $net_ipv6_client -j ACCEPT \
+-p tcp -m multiport $config_output_state --dports $client_port_tcp -d $net_ipv6_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 ####
 ####
@@ -14990,7 +14990,7 @@ fi
 ####
 ####
 if [ "$allow_separate_rules" == "$NULL" ]; then 
-for one_udp in $(echo $client_udp | $command_sed 's/,/ /g') ;
+for one_udp in $(echo $client_port_udp | $command_sed 's/,/ /g') ;
 do
 ####
 ####
@@ -15041,7 +15041,7 @@ done; fi
 ####
 ####
 if [ "$allow_separate_rules" == "$NULL" ]; then 
-for one_tcp in $(echo $client_tcp | $command_sed 's/,/ /g') ;
+for one_tcp in $(echo $client_port_tcp | $command_sed 's/,/ /g') ;
 do
 ####
 ####
