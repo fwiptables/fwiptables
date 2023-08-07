@@ -2729,8 +2729,8 @@ echo "$text_md server-mail server-teamspeak server-mumble server-sql server-aste
 echo "$text_md server-domain server-squid                                                       "
 echo "$title_md        | options-easy |                                                         "
 echo "$text_md preferences-read preferences-modify preferences-regen list-options               "
-echo "$text_md clasic-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets               "
-echo "$text_md nodes geoip date free ver version notes depends license code examples            "
+echo "$text_md clasic-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes         "
+echo "$text_md geoip date free ver version notes depends license code examples list-var         "
 echo "$text_md intro clean-tmp install uninstall pc-halt pc-shutdown pc-reboot                  "
 echo "$title_md        | options-all |                                                          "
 echo "$text_md full-options options-firewall options-easy options-tool options-show options-help"
@@ -10398,7 +10398,9 @@ exit; fi
 ####
 if   [ "$first_option" == "list-var" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ list variables ] || ||"
-cat $0 | egrep "#list-var" | cut -d "=" -f 1
+echo "##########     vars to config the firewall     ##########"
+cat $0 | egrep "#list-var" | cut -d "=" -f 1 | grep -iv grep
+echo "##########     vars to config the firewall     ##########"
 exit; fi
 ####
 ####
