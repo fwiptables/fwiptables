@@ -1,4 +1,4 @@
-### [ Firewall ] [ Program: fwiptables-cmd ] [ Version: command-8.07 ] || ||
+### [ Firewall ] [ Program: fwiptables-cmd ] [ Version: command-8.08 ] || ||
 ### [ Configure ] [ Configure: /usr/bin/fwiptables-cmd preferences-modify ] || ||
 ### [ list-options ] [ List options ] [ list-options md ] || ||                      
    /usr/bin/fwiptables-cmd                                                                      
@@ -28,6 +28,6 @@
    server-domain server-squid                                                       
 ###         | options-easy |                                                         
    preferences-read preferences-modify preferences-regen list-options               
-   clasic-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets               
-   nodes geoip date free ver version notes depends license code examples            
+   clasic-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes         
+   geoip date free ver version notes depends license code examples list-var         
    intro clean-tmp install uninstall pc-halt pc-shutdown pc-reboot                  
