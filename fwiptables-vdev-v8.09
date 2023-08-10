@@ -457,7 +457,7 @@ give_cover="$duo_md [ Firewall ] [ Program: $cmd_config ] [ Version: $cmd_versio
 give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_preferences="$duo_md [ info ] [ Configure preferences with: ] [ $cmd_binary preferences-modify ]"
-give_preferences="$duo_md [ Configure ] [ Configure: $cmd_binary preferences-modify ]"
+give_preferences="$duo_md [ Configure ] [ $cmd_binary preferences-modify ]"
 #### #### info list rules
 message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ Configure: $cmd_binary preferences-modify ] || ||"
 message_info_rules="$duo_md [ Configure ] [ Configure: $cmd_binary preferences-modify ] || ||"
@@ -12307,11 +12307,11 @@ echo " [ info ] Proxy http:    $http_proxy"
 echo " [ info ] Proxy https:   $https_proxy"
 echo
 echo "$duo_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
-if [ -f /etc/resolv.conf.head ]; then echo ; echo "$duo_md [ info ] [ /etc/resolv.conf.head ]";  cat /etc/resolv.conf.head; fi
-if [ -f /etc/resolv.conf ];      then echo ; echo "$duo_md [ info ] [ /etc/resolv.conf ]";       cat /etc/resolv.conf; fi
-if [ -f /etc/resolv.conf.body ]; then echo ; echo "$duo_md [ info ] [ /etc/resolv.conf.body ]";  cat /etc/resolv.conf.body; fi
-if [ -f /etc/resolv.conf.tail ]; then echo ; echo "$duo_md [ info ] [ /etc/resolv.conf.tail ]";  cat /etc/resolv.conf.tail; fi
-#### cat /etc/resolv.conf | $command_grep -i nameserver | $command_grep -iv ^# | sed 's/nameserver/     nameserver/g'
+if [ -f /etc/resolv.conf.head ]; then echo "$duo_md [ yes ] [ /etc/resolv.conf.head ]"; fi
+if [ -f /etc/resolv.conf ];      then echo "$duo_md [ yes ] [ /etc/resolv.conf ]"     ; fi
+if [ -f /etc/resolv.conf.body ]; then echo "$duo_md [ yes ] [ /etc/resolv.conf.body ]"; fi
+if [ -f /etc/resolv.conf.tail ]; then echo "$duo_md [ yes ] [ /etc/resolv.conf.tail ]"; fi
+if [ -d /etc/resolvconf ];       then echo "$duo_md [ yes ] [ /etc/resolvconf ]"; find /etc/resolvconf ; fi
 exit; fi
 ####
 ####
@@ -12347,11 +12347,11 @@ echo " [ info ] Proxy http:    $http_proxy"
 echo " [ info ] Proxy https:   $https_proxy"
 echo
 echo "$duo_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
-if [ -f /etc/resolv.conf.head ]; then echo ; echo "$duo_md [ info ] [ /etc/resolv.conf.head ]";  cat /etc/resolv.conf.head; fi
-if [ -f /etc/resolv.conf ];      then echo ; echo "$duo_md [ info ] [ /etc/resolv.conf ]";       cat /etc/resolv.conf; fi
-if [ -f /etc/resolv.conf.body ]; then echo ; echo "$duo_md [ info ] [ /etc/resolv.conf.body ]";  cat /etc/resolv.conf.body; fi
-if [ -f /etc/resolv.conf.tail ]; then echo ; echo "$duo_md [ info ] [ /etc/resolv.conf.tail ]";  cat /etc/resolv.conf.tail; fi
-#### cat /etc/resolv.conf | $command_grep -i nameserver | $command_grep -iv ^# | sed 's/nameserver/     nameserver/g'
+if [ -f /etc/resolv.conf.head ]; then echo "$duo_md [ yes ] [ /etc/resolv.conf.head ]"; fi
+if [ -f /etc/resolv.conf ];      then echo "$duo_md [ yes ] [ /etc/resolv.conf ]"     ; fi
+if [ -f /etc/resolv.conf.body ]; then echo "$duo_md [ yes ] [ /etc/resolv.conf.body ]"; fi
+if [ -f /etc/resolv.conf.tail ]; then echo "$duo_md [ yes ] [ /etc/resolv.conf.tail ]"; fi
+if [ -d /etc/resolvconf ];       then echo "$duo_md [ yes ] [ /etc/resolvconf ]"; find /etc/resolvconf ; fi
 exit; fi
 ####
 ####
