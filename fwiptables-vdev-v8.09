@@ -460,7 +460,7 @@ give_preferences="$duo_md [ info ] [ Configure preferences with: ] [ $cmd_binary
 give_preferences="$duo_md [ Configure ] [ $cmd_binary preferences-modify ]"
 #### #### info list rules
 message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ Configure: $cmd_binary preferences-modify ] || ||"
-message_info_rules="$duo_md [ Configure ] [ Configure: $cmd_binary preferences-modify ] || ||"
+message_info_rules="$duo_md [ Configure ] [ $cmd_binary preferences-modify ] || ||"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="echo -n" ; 
 #### #### english: echo void            #### spanish: impresion vacia

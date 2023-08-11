@@ -495,7 +495,7 @@ tab_lang_spanish=" spa "
 #### show_lang_spanish="##"
 #### #### info list rules
 message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ Configure: $cmd_binary preferences-modify ] || ||"
-message_info_rules="$duo_md [ Configure ] [ Configure: $cmd_binary preferences-modify ] || ||"
+message_info_rules="$duo_md [ Configure ] [ $cmd_binary preferences-modify ] || ||"
 #### #### english: without cli or gui   #### spanish: sin cli o gui
 message_without_cli="$duo_md [ fail ] [ cli ] [ Without support for output cli for this option ]"
 message_without_gui="$duo_md [ fail ] [ gui ] [ Without support for output gui for this option ]"
