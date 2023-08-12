@@ -2013,7 +2013,7 @@ $zero_option save autosave-fwiptables &> /dev/null ; exit; fi
 #### :rutina-inicial-custom-rules:
 ####
 ####
-if [ "$first_option" == "custom" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "custom" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall custom ] [ $directory_config/$second_option ]" ;
 launch_firewall="yes" ;
 type_firewall="custom" ;
@@ -2046,7 +2046,7 @@ fi
 ####   #### spanish: cortafuego del sistema off-line:
 ####
 ####
-if [ "$first_option" == "off-line" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "off-line" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall off-line ]" ;
 launch_firewall="yes" ;
 type_firewall="off-line";
@@ -2058,7 +2058,7 @@ fi
 ####   #### spanish: cortafuego del sistema all-permisive:
 ####
 ####
-if [ "$first_option" == "all-permisive" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "all-permisive" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall all-permisive ]" ;
 launch_firewall="yes" ;
 type_firewall="all-permisive" ;
@@ -2070,7 +2070,7 @@ fi
 ####   #### spanish: cortafuego del sistema shield-ssh:
 ####
 ####
-if [ "$first_option" == "shield-ssh" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "shield-ssh" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall shield-ssh ]" ;
 launch_firewall="yes" ;
 type_firewall="shield-ssh"    ; 
@@ -2090,7 +2090,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-basic:
 ####
 ####
-if [ "$first_option" == "client-basic" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-basic" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-basic ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2110,7 +2110,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-web:
 ####
 ####
-if [ "$first_option" == "client-web" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-web" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-web ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2130,7 +2130,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-vnc:
 ####
 ####
-if [ "$first_option" == "client-vnc" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-vnc" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-vnc ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2150,7 +2150,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-torrent:
 ####
 ####
-if [ "$first_option" == "client-torrent" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-torrent" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-torrent ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2170,7 +2170,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-vpn:
 ####
 ####
-if [ "$first_option" == "client-vpn" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-vpn" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-vpn ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2190,7 +2190,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-tor:
 ####
 ####
-if [ "$first_option" == "client-tor" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-tor" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-tor ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2210,7 +2210,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-news:
 ####
 ####
-if [ "$first_option" == "client-news" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-news" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-news ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2235,7 +2235,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-mail:
 ####
 ####
-if [ "$first_option" == "client-mail" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-mail" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-mail ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2267,7 +2267,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-ftp:
 ####
 ####
-if [ "$first_option" == "client-ftp" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-ftp" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-ftp ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2287,7 +2287,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-squid:
 ####
 ####
-if [ "$first_option" == "client-squid" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-squid" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-squid ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2307,7 +2307,7 @@ fi
 ####   #### spanish: cortafuego del sistema lan-vpn:
 ####
 ####
-if [ "$first_option" == "lan-vpn" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "lan-vpn" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall lan-vpn ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2328,7 +2328,7 @@ fi
 ####   #### spanish: cortafuego del sistema lan-tor:
 ####
 ####
-if [ "$first_option" == "lan-tor" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "lan-tor" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall lan-tor ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2349,7 +2349,7 @@ fi
 ####   #### spanish: cortafuego del sistema games-shooter:
 ####
 ####
-if [ "$first_option" == "games-shooter" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "games-shooter" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall games-shooter ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2369,7 +2369,7 @@ fi
 ####   #### spanish: cortafuego del sistema games-udp:
 ####
 ####
-if [ "$first_option" == "games-udp" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "games-udp" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall games-udp ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2389,7 +2389,7 @@ fi
 ####   #### spanish: cortafuego del sistema game-wesnoth:
 ####
 ####
-if [ "$first_option" == "game-wesnoth" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "game-wesnoth" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall game-wesnoth ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2409,7 +2409,7 @@ fi
 ####   #### spanish: cortafuego del sistema game-minetest:
 ####
 ####
-if [ "$first_option" == "game-minetest" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "game-minetest" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall game-minetest ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2429,7 +2429,7 @@ fi
 ####   #### spanish: cortafuego del sistema game-freeciv:
 ####
 ####
-if [ "$first_option" == "game-freeciv" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "game-freeciv" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall game-freeciv ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2449,7 +2449,7 @@ fi
 ####   #### spanish: cortafuego del sistema game-widelands:
 ####
 ####
-if [ "$first_option" == "game-widelands" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "game-widelands" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall game-widelands ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2469,7 +2469,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-web:
 ####
 ####
-if [ "$first_option" == "server-web" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-web" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-web ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2489,7 +2489,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-vnc:
 ####
 ####
-if [ "$first_option" == "server-vnc" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-vnc" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-vnc ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2510,7 +2510,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-ftp:
 ####
 ####
-if [ "$first_option" == "server-ftp" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-ftp" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-ftp ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2529,7 +2529,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-squid:
 ####
 ####
-if [ "$first_option" == "server-squid" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-squid" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-squid ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2549,7 +2549,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-news:
 ####
 ####
-if [ "$first_option" == "server-news" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-news" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-news ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2574,7 +2574,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-mail:
 ####
 ####
-if [ "$first_option" == "server-mail" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-mail" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-mail ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2606,7 +2606,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-samba:
 ####
 ####
-if [ "$first_option" == "server-samba" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-samba" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-samba ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2626,7 +2626,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-print:
 ####
 ####
-if [ "$first_option" == "server-print" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-print" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-print ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2646,7 +2646,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-ssh:
 ####
 ####
-if [ "$first_option" == "server-ssh" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-ssh" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-ssh ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2666,7 +2666,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-lamp:
 ####
 ####
-if [ "$first_option" == "server-lamp" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-lamp" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-lamp ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2687,7 +2687,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-asterisk:
 ####
 ####
-if [ "$first_option" == "server-asterisk" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-asterisk" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-asterisk ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2709,7 +2709,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-mumble:
 ####
 ####
-if [ "$first_option" == "server-mumble" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-mumble" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-mumble ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2729,7 +2729,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-teamspeak:
 ####
 ####
-if [ "$first_option" == "server-teamspeak" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-teamspeak" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-teamspeak ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2753,7 +2753,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-sql:
 ####
 ####
-if [ "$first_option" == "server-sql" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-sql" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-sql ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2777,7 +2777,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-domain:
 ####
 ####
-if [ "$first_option" == "server-domain" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-domain" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-domain ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2846,7 +2846,7 @@ exit; fi
 #### :rutina-inicial-list-options:
 ####
 ####
-if [ "$first_option" == "list-options" ] ; then echo $give_cover ; echo "$message_info_rules"
+if [ "$first_option" == "list-options" ] ; then echo $give_cover
 echo "$duo_md [ $first_option ] [ List options ] [ list-options md ] || ||                      "
 echo "$text_md $cmd_binary                                                                      "
 echo "$text_md [ -cli-menu -gui-menu -gui-roll -gui-shell ]                                     "
@@ -2887,7 +2887,7 @@ exit ; fi
 #### :rutina-inicial-clasic-options:
 ####
 ####
-if   [ "$first_option" == "clasic-options" ] ; then echo $give_cover ;  echo "$message_info_rules"
+if   [ "$first_option" == "clasic-options" ] ; then echo $give_cover 
 echo "$header_ok [ $first_option ] [ clasic options ] [ list-options md ] || ||"
 echo $title_md
 echo "     Launch: $zero_option [-cli-menu -gui-menu -gui-roll -gui-shell"
@@ -3371,7 +3371,7 @@ exit; fi
 #### :rutina-inicial-list4:
 ####
 ####
-if [ "$first_option" == "list4-ip" ]; then echo $give_cover ; echo "$message_info_rules"
+if [ "$first_option" == "list4-ip" ]; then echo $give_cover
 echo "$header_ok [ list4 ] [ List filter ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
 "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
@@ -3405,7 +3405,7 @@ exit; fi
 #### :rutina-inicial-list6:
 ####
 ####
-if [ "$first_option" == "list6-ip" ]; then  echo $give_cover ; echo "$message_info_rules"
+if [ "$first_option" == "list6-ip" ]; then  echo $give_cover 
 echo "$header_ok [ list6 ] [ List filter ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
 legacyseis=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
 "$command_ip6tables_legacy" -t filter -L OUTPUT 1 )
@@ -3441,7 +3441,7 @@ exit; fi
 #### :rutina-inicial-listn4-ip:
 ####
 ####
-if [ "$first_option" == "listn4-ip" ]; then echo $give_cover ; echo "$message_info_rules"
+if [ "$first_option" == "listn4-ip" ]; then echo $give_cover 
 echo "$header_ok [ list4 ] [ List filter ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
 "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
@@ -3475,7 +3475,7 @@ exit; fi
 #### :rutina-inicial-listn6-ip:
 ####
 ####
-if [ "$first_option" == "listn6-ip" ]; then  echo $give_cover ; echo "$message_info_rules"
+if [ "$first_option" == "listn6-ip" ]; then  echo $give_cover 
 echo "$header_ok [ list6 ] [ List filter ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
 legacyseis=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
 "$command_ip6tables_legacy" -t filter -L OUTPUT 1 )
@@ -3617,7 +3617,6 @@ exit; fi
 ####
 if [ "$first_option" == "list-filter4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List filter ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
-echo "$message_info_rules"
 fromrules="filter-ip4"
 echo
 echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3640,7 +3639,6 @@ exit; fi
 ####
 if [ "$first_option" == "list-forward" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List filter forward ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
-echo "$message_info_rules"
 fromrules="filter-forward-ip4"
 echo
 echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3661,7 +3659,6 @@ exit; fi
 ####
 if [ "$first_option" == "list-filter6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List filter ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
-echo "$message_info_rules"
 fromrules="filter-ip6"
 echo
 echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
@@ -3684,7 +3681,6 @@ exit; fi
 ####
 if [ "$first_option" == "list-forward6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List filter forward ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
-echo "$message_info_rules"
 fromrules="filter-forward-ip6"
 echo
 echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3705,7 +3701,6 @@ exit; fi
 ####
  if [ "$first_option" == "list-nat4" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List nat ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
-echo "$message_info_rules"
 fromrules="nat-ip4"
 echo
 echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3726,7 +3721,6 @@ exit; fi
 ####
 if [ "$first_option" == "list-nat6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List nat ipv6] [ it is only sufficent or with legacy or with nft ] || ||"
-echo "$message_info_rules"
 fromrules="nat-ip6"
 echo
 echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3828,7 +3822,6 @@ exit; fi
 ####
 if [ "$first_option" == "list-mangle4" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List mangle ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
-echo "$message_info_rules"
 fromrules="mangle-ip4"
 echo
 echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3850,7 +3843,6 @@ exit; fi
 ####
 if [ "$first_option" == "list-mangle6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List mangle ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
-echo "$message_info_rules"
 fromrules="mangle-ip6"
 echo
 echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3872,7 +3864,6 @@ exit; fi
 ####
 if [ "$first_option" == "list-raw4" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List raw ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
-echo "$message_info_rules"
 fromrules="raw-ip4"
 echo
 echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3893,7 +3884,6 @@ exit; fi
 ####
 if [ "$first_option" == "list-raw6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List raw ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
-echo "$message_info_rules"
 fromrules="raw-ip6"
 echo
 echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3914,7 +3904,6 @@ exit; fi
 ####
 if [ "$first_option" == "list-security4" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List security ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
-echo "$message_info_rules"
 fromrules="security-ip4"
 echo
 echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3935,7 +3924,6 @@ exit; fi
 ####
 if [ "$first_option" == "list-security6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List security ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
-echo "$message_info_rules"
 fromrules="security-ip6"
 echo
 echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
