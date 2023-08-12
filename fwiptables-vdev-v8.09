@@ -275,6 +275,14 @@ command_qmmp="$(command -v qmmp)"
 list_rules_conceptual=""  #list-vars ; 
 config_ip4_localhost="127.0.0.1"   #list-vars ;
 config_ip6_localhost="::1"   #list-vars ;
+client_port_tcp="ssh,http,https"    #list-vars ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https"    #list-vars ;
+server_port_tcp=""    #list-vars ;
+server_port_udp=""    #list-vars ;
+logserver_prefix_input="fwlog-input::"    #list-vars ; 
+logserver_prefix_output="fwlog-output::"    #list-vars ;
+logserver_port_tcp="no"    #list-vars ;
+logserver_port_udp="no"    #list-vars ;
 server_waiting="9s"   #list-vars ;
 allow_dmz_ip4="no"   #list-vars ; 
 allow_dmz_ip6="no"   #list-vars ;
@@ -320,14 +328,6 @@ net_ipv4_client="0/0"    #list-vars ;
 net_ipv4_server="0/0"    #list-vars ;
 net_ipv6_client="::/0"    #list-vars ;
 net_ipv6_server="::/0"    #list-vars ;
-client_port_tcp="ssh,http,https"    #list-vars ;
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https"    #list-vars ;
-server_port_tcp=""    #list-vars ;
-server_port_udp=""    #list-vars ;
-logserver_prefix_input="fwlog-input::"    #list-vars ; 
-logserver_prefix_output="fwlog-output::"    #list-vars ;
-logserver_port_tcp="no"    #list-vars ;
-logserver_port_udp="no"    #list-vars ;
 ####
 ####
 #### :rutina-final-config-variables:
