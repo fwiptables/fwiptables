@@ -1,5 +1,4 @@
-### [ Firewall ] [ Program: fwiptables-dev ] [ Version: developer-8.08 ] || ||
-### [ Configure ] [ Configure: /usr/bin/fwiptables-dev preferences-modify ] || ||
+### [ Firewall _] [ Program: fwiptables-dev ] [ Version: developer-8.09 ] || ||
 ### [ list-options ] [ List options ] [ list-options md ] || ||
    /usr/bin/fwiptables-dev                                                                        
    [ -cli-menu -gui-menu -gui-roll -gui-shell ]                                        

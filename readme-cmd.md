@@ -1,5 +1,4 @@
-### [ Firewall ] [ Program: fwiptables-cmd ] [ Version: command-8.08 ] || ||
-### [ Configure ] [ Configure: /usr/bin/fwiptables-cmd preferences-modify ] || ||
+### [ Firewall _] [ Program: fwiptables-cmd ] [ Version: command-8.09 ] || ||
 ### [ list-options ] [ List options ] [ list-options md ] || ||                      
    /usr/bin/fwiptables-cmd                                                                      
    [ -cli-menu -gui-menu -gui-roll -gui-shell ]                                     
