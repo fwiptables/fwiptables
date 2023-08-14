@@ -1,4 +1,4 @@
-### [ Firewall _] [ Program: fwiptables-cmd ] [ Version: command-8.09 ] || ||
+### [ Firewall iptables ] [ Program: fwiptables-cmd ] [ Version: command-9.02 ] || ||
 ### [ list-options ] [ List options ] [ list-options md ] || ||                      
    /usr/bin/fwiptables-cmd                                                                      
    [ -cli-menu -gui-menu -gui-roll -gui-shell ]                                     
@@ -26,7 +26,7 @@
    server-mail server-teamspeak server-mumble server-sql server-asterisk            
    server-domain server-squid                                                       
 ###         | options-easy |                                                         
-   preferences-read preferences-modify preferences-regen list-options               
-   clasic-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes         
-   geoip date free ver version notes depends license code examples list-var         
-   intro clean-tmp install uninstall pc-halt pc-shutdown pc-reboot                  
+   preferences-read preferences-modify preferences-regen list-options clasic-options
+   filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes geoip intro  
+   date free ver version notes depends license code examples list-var clean-tmp     
+   install uninstall pc-halt pc-shutdown pc-reboot                  
