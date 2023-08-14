@@ -2874,10 +2874,10 @@ echo "$text_md server-vnc server-webserver-print server-lamp server-news server-
 echo "$text_md server-mail server-teamspeak server-mumble server-sql server-asterisk            "
 echo "$text_md server-domain server-squid                                                       "
 echo "$title_md        | options-easy |                                                         "
-echo "$text_md preferences-read preferences-modify preferences-regen list-options               "
-echo "$text_md clasic-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets nodes         "
-echo "$text_md geoip date free ver version notes depends license code examples list-var         "
-echo "$text_md intro clean-tmp install uninstall pc-halt pc-shutdown pc-reboot                  "
+echo "$text_md preferences-read preferences-modify preferences-regen list-options clasic-options"
+echo "$text_md filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes geoip intro  "
+echo "$text_md date free ver version notes depends license code examples list-var clean-tmp     "
+echo "$text_md install uninstall pc-halt pc-shutdown pc-reboot                  "
 exit ; fi
 ####
 ####
@@ -2912,9 +2912,9 @@ echo "$text_md                          server-webserver-print server-lamp serve
 echo "$text_md                          server-mail server-teamspeak server-mumble server-sql                   "
 echo "$text_md                          server-asterisk server-domain server-squid                              " 
 echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen list-options      "
-echo "$text_md                          clasic-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 sockets      "
-echo "$text_md                          nodes geoip date free ver version notes depends license code examples   "
-echo "$text_md                          intro clean-tmp install uninstall pc-halt pc-shutdown pc-reboot         "
+echo "$text_md                          clasic-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx    "
+echo "$text_md                          sockets nodes geoip date free ver version notes depends license code    "
+echo "$text_md                          examplesintro clean-tmp install uninstall pc-halt pc-shutdown pc-reboot "
 exit ; fi
 ####
 ####
@@ -4379,7 +4379,20 @@ exit; fi
 ####
 ####
 #### :rutina-final-pc-shutdown:
-
+##########    english: speed-glx: show frammes por seconds with mesa graphicall            ##########
+##########    spanish: speed-glx: muestra los fotogramas por segundo con graphicos mesa    ##########
+#### :rutina-inicial-speed-glx:
+####
+####
+if   [ "$first_option" == "speed-glx" ]; then  echo $give_cover
+echo "$header_ok [ $first_option ]  [ test gl mesa3D speed ] [ for default max $server_waiting seconds ] || ||"
+case $command_glxgears in "$NULL") echo "$tab [ fail ] [ Install mesa utils ]"; exit ;; esac
+vblank_mode=0  timeout -s SIGINT -v $server_waiting $command_glxgears
+echo 
+exit; fi
+####
+####
+#### :rutina-final-speed-glx:
 ##########    english: ntpdate-client: update the date and time    ##########
 ##########    spanish: ntpdate-client: actualiza la fecha y hora   ##########
 #### :rutina-inicial-ntpdate-client:
