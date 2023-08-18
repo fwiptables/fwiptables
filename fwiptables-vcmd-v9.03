@@ -3060,10 +3060,9 @@ exit; fi
 ####
 if   [ "$first_option" == "commands" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ list commands possible depends ] || ||"
-echo "##########     commands depends  ##########"
-for list_command in $(cat $cmd_binary | egrep "#list-commands" | cut -d "#" -f 1 | cut -d "=" -f 1 | sed s/command_//g )
-do echo $list_command ; done
-echo "##########     commands depends  ##########"
+echo "##########     commands possible depends  ##########"
+echo "$(cat $cmd_binary | egrep "#list-commands" | cut -d "#" -f 1 | cut -d "=" -f 1 | sed s/command_//g )"
+echo "##########     commands possible depends  ##########"
 exit; fi
 ####
 ####
