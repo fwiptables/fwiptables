@@ -94,8 +94,8 @@ fi
 cmd_binary="$0" ;
 cmd_config="fwiptables-cmd" ;
 cmd_version="command-9.03" ;
-cmd_name="Command FireWall FWiptables Generator" ;
-cmd_description="One Mini Script in bash for iptables firewall" ;
+cmd_name="Command FireWall With iptables named fwiptables" ;
+cmd_description="One Mini Script in bash command named Firewall With iptables like fwiptables" ;
 cmd_license="GPL v2" ;
 cmd_homepage="https://sourceforge.net/projects/f-iptables/" ;
 ####
@@ -305,7 +305,6 @@ command_lshw="$(command -v lshw)"
 ####
 ####
 #### :rutina-final-command:
-
 ##########  english: permanent files: files and folders from fwiptables          ##########
 ##########  spanish: archivos permanentes: archivos y carpetas desde fwiptables  ##########
 #### :rutina-inicial-files:
@@ -477,7 +476,7 @@ head_waiting_info="$duo_md  [ info ] [ info: info in plain txt format ] [ loadin
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_config ] [ Version: $cmd_version ] || || "
-give_cover="$duo_md [ Firewall iptables ] [ Program: $cmd_config ] [ Version: $cmd_version ] || || "
+give_cover="$duo_md [ Firewall With iptables ] [ Program: $cmd_config ] [ Version: $cmd_version ] || || "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -2916,7 +2915,7 @@ echo "$text_md server-asterisk server-domain server-squid                       
 echo "$title_md        | options-easy |                                                          "
 echo "$text_md preferences-read preferences-modify preferences-regen list-options clasic-options "
 echo "$text_md filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes geoip intro   "
-echo "$text_md date free ver version notes depends license code examples list-var clean-tmp      "
+echo "$text_md date free ver version notes depends license code examples variables clean-tmp     "
 echo "$text_md install uninstall pc-halt pc-shutdown pc-reboot                  "
 exit ; fi
 ####
@@ -2954,7 +2953,7 @@ echo "$text_md                          server-asterisk server-domain server-squ
 echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen list-options       "
 echo "$text_md                          clasic-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx     "
 echo "$text_md                          sockets nodes geoip date free ver version notes depends license code     "
-echo "$text_md                          examplesintro clean-tmp install uninstall pc-halt pc-shutdown pc-reboot  "
+echo "$text_md                          examples intro clean-tmp install uninstall pc-halt pc-shutdown pc-reboot "
 exit ; fi
 ####
 ####
@@ -3041,20 +3040,20 @@ exit; fi
 ####
 ####
 #### :rutina-final-free-ram:
-##########    english: list-var: list variables     ##########
-##########    spanish: list-var: lista variables    ##########
-#### :rutina-inicial-list-var:
+##########    english: variables: list variables     ##########
+##########    spanish: variables: lista variables    ##########
+#### :rutina-inicial-variables:
 ####
 ####
-if   [ "$first_option" == "list-var" ]; then echo $give_cover
+if   [ "$first_option" == "variables" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ list variables ] || ||"
-echo "##########     vars to config the firewall     ##########"
+echo "##########     variables to config one firewall choosed     ##########"
 cat $0 | egrep "#list-var" | cut -d "=" -f 1 | grep -iv grep
-echo "##########     vars to config the firewall     ##########"
+echo "##########     variables to config one firewall choosed     ##########"
 exit; fi
 ####
 ####
-#### :rutina-final-list-var:
+#### :rutina-final-variables:
 ##########     english: examples-config: Show config files examples            ##########
 ##########     spanish: examples-config: Muestra ejemplos de configuraciones   ##########
 #### :rutina-inicial-examples-config:
