@@ -146,8 +146,8 @@ $command_xhost +SI:localuser:root &> /dev/null ;
 ####
 ####
 #### :rutina-final-x11:
-##########  english: variables: variables to declare     ##########
-##########  spanish: variables: variables para declarar  ##########
+##########  english: config-ariables: variables to declare     ##########
+##########  spanish: config-variables: variables para declarar  ##########
 #### :rutina-inicial-config-variables:
 ####
 ####
@@ -215,93 +215,93 @@ net_ipv6_server="::/0"    #list-vars ;
 #### :rutina-inicial-command:
 ####
 ####
-command_editor="$(command -v editor)"
-command_vi="$(command -v vi)"
-command_vim="$(command -v vim)"
-command_pico="$(command -v pico)"
-command_nano="$(command -v nano)"
-command_arp="$(command -v arp)"
-command_arp_scan="$(command -v arp-scan)"
-command_arptables="$(command -v arptables)"
-command_bash="$(command -v bash)"
-command_bc="$(command -v bc)"
-command_curl="$(command -v curl)"
-command_cut="$(command -v cut)"
-command_date="$(command -v date)"
-command_dd="$(command -v dd)"
-command_dhclient="$(command -v dhclient)"
-command_dhclient_script="$(command -v dhclient-script)"
-command_dhcpcd="$(command -v dhcpcd)"
-command_dialog="$(command -v dialog)"
-command_whiptail="$(command -v whiptail)"
-command_dig="$(command -v dig)"
-command_ebtables="$(command -v ebtables)"
-command_elinks="$(command -v elinks)"
-command_find="$(command -v find)"
-command_fmt="$(command -v fmt)"
-command_geoiplookup="$(command -v geoiplookup)"
-command_glxgears="$(command -v glxgears)"
-command_gpg="$(command -v gpg)"
-command_grep="$(command -v grep)"
-command_egrep="$(command -v egrep)"
-command_halt="$(command -v halt)"
-command_host="$(command -v host)"
-command_ifconfig="$(command -v ifconfig)"
-command_ip="$(command -v ip)"
-command_ip6tables_legacy="$(command -v ip6tables-legacy)"
-command_ip6tables_nft="$(command -v ip6tables-nft)"
-command_iperf="$(command -v iperf)"
-command_iptables_legacy="$(command -v iptables-legacy)"
-command_iptables_nft="$(command -v iptables-nft)"
-command_iw="$(command -v iw)"
-command_links="$(command -v links)"
-command_links2="$(command -v links2)"
-command_ls="$(command -v ls)"
-command_lsof="$(command -v lsof)"
-command_lynx="$(command -v lynx)"
-command_m2r="$(command -v m2r)"
-command_md5sum="$(command -v md5sum)"
-command_mdp="$(command -v mdp)"
-command_mpg123="$(command -v mpg123)"
-command_mpg321="$(command -v mpg321)"
-command_netstat="$(command -v netstat)"
-command_netstat_nat="$(command -v netstat-nat)"
-command_nmap="$(command -v nmap)"
-command_ntpdate="$(command -v ntpdate)"
-command_openssl="$(command -v openssl)"
-command_ping="$(command -v ping)"
-command_rdate="$(command -v rdate)"
-command_reboot="$(command -v reboot)"
-command_resolveip="$(command -v resolveip)"
-command_route="$(command -v route)"
-command_sed="$(command -v sed)"
-command_shc="$(command -v shc)"
-command_shutdown="$(command -v shutdown)"
-command_sleep="$(command -v sleep)"
-command_sntp="$(command -v sntp) -S"
-command_ss="$(command -v ss)"
-command_sysctl="$(command -v sysctl)"
-command_tcpdump="$(command -v tcpdump)"
-command_tee="$(command -v tee)"
-command_torify="$(command -v torify)"
-command_traceroute="$(command -v traceroute)"
-command_txt2html="$(command -v txt2html)"
-command_uname="$(command -v uname)"
-command_wget="$(command -v wget)"
-command_wpa_passphrase="$(command -v wpa_passphrase)"
-command_wpa_supplicant="$(command -v wpa_supplicant)"
-command_xrandr="$(command -v xrandr)"
-command_zenity="$(command -v zenity)"
-command_yad="$(command -v yad)"
-command_zgrep="$(command -v zgrep)"
-command_lpinfo="$(command -v lpinfo)"
-command_lpstat="$(command -v lpstat)"
-command_lsblk="$(command -v lsblk)"
-command_lsusb="$(command -v lsusb)"
-command_lscpu="$(command -v lscpu)"
-command_lspci="$(command -v lspci)"
-command_lsgpu="$(command -v lsgpu)"
-command_lshw="$(command -v lshw)"
+command_editor="$(command -v editor)"   #list-commands ;
+command_vi="$(command -v vi)"   #list-commands ;
+command_vim="$(command -v vim)"   #list-commands ;
+command_pico="$(command -v pico)"   #list-commands ;
+command_nano="$(command -v nano)"   #list-commands ;
+command_arp="$(command -v arp)"   #list-commands ;
+command_arp_scan="$(command -v arp-scan)"   #list-commands ;
+command_arptables="$(command -v arptables)"   #list-commands ;
+command_bash="$(command -v bash)"   #list-commands ;
+command_bc="$(command -v bc)"   #list-commands ;
+command_curl="$(command -v curl)"   #list-commands ;
+command_cut="$(command -v cut)"   #list-commands ;
+command_date="$(command -v date)"   #list-commands ;
+command_dd="$(command -v dd)"   #list-commands ;
+command_dhclient="$(command -v dhclient)"   #list-commands ;
+command_dhclient_script="$(command -v dhclient-script)"   #list-commands ;
+command_dhcpcd="$(command -v dhcpcd)"   #list-commands ;
+command_dialog="$(command -v dialog)"   #list-commands ;
+command_whiptail="$(command -v whiptail)"   #list-commands ;
+command_dig="$(command -v dig)"   #list-commands ;
+command_ebtables="$(command -v ebtables)"   #list-commands ;
+command_elinks="$(command -v elinks)"   #list-commands ;
+command_find="$(command -v find)"   #list-commands ;
+command_fmt="$(command -v fmt)"   #list-commands ;
+command_geoiplookup="$(command -v geoiplookup)"   #list-commands ;
+command_glxgears="$(command -v glxgears)"   #list-commands ;
+command_gpg="$(command -v gpg)"   #list-commands ;
+command_grep="$(command -v grep)"   #list-commands ;
+command_egrep="$(command -v egrep)"   #list-commands ;
+command_halt="$(command -v halt)"   #list-commands ;
+command_host="$(command -v host)"   #list-commands ;
+command_ifconfig="$(command -v ifconfig)"   #list-commands ;
+command_ip="$(command -v ip)"   #list-commands ;
+command_ip6tables_legacy="$(command -v ip6tables-legacy)"   #list-commands ;
+command_ip6tables_nft="$(command -v ip6tables-nft)"   #list-commands ;
+command_iperf="$(command -v iperf)"   #list-commands ;
+command_iptables_legacy="$(command -v iptables-legacy)"   #list-commands ;
+command_iptables_nft="$(command -v iptables-nft)"   #list-commands ;
+command_iw="$(command -v iw)"   #list-commands ;
+command_links="$(command -v links)"   #list-commands ;
+command_links2="$(command -v links2)"   #list-commands ;
+command_ls="$(command -v ls)"   #list-commands ;
+command_lsof="$(command -v lsof)"   #list-commands ;
+command_lynx="$(command -v lynx)"   #list-commands ;
+command_m2r="$(command -v m2r)"   #list-commands ;
+command_md5sum="$(command -v md5sum)"   #list-commands ;
+command_mdp="$(command -v mdp)"   #list-commands ;
+command_mpg123="$(command -v mpg123)"   #list-commands ;
+command_mpg321="$(command -v mpg321)"   #list-commands ;
+command_netstat="$(command -v netstat)"   #list-commands ;
+command_netstat_nat="$(command -v netstat-nat)"   #list-commands ;
+command_nmap="$(command -v nmap)"   #list-commands ;
+command_ntpdate="$(command -v ntpdate)"   #list-commands ;
+command_openssl="$(command -v openssl)"   #list-commands ;
+command_ping="$(command -v ping)"   #list-commands ;
+command_rdate="$(command -v rdate)"   #list-commands ;
+command_reboot="$(command -v reboot)"   #list-commands ;
+command_resolveip="$(command -v resolveip)"   #list-commands ;
+command_route="$(command -v route)"   #list-commands ;
+command_sed="$(command -v sed)"   #list-commands ;
+command_shc="$(command -v shc)"   #list-commands ;
+command_shutdown="$(command -v shutdown)"   #list-commands ;
+command_sleep="$(command -v sleep)"   #list-commands ;
+command_sntp="$(command -v sntp) -S"   #list-commands ;
+command_ss="$(command -v ss)"   #list-commands ;
+command_sysctl="$(command -v sysctl)"   #list-commands ;
+command_tcpdump="$(command -v tcpdump)"   #list-commands ;
+command_tee="$(command -v tee)"   #list-commands ;
+command_torify="$(command -v torify)"   #list-commands ;
+command_traceroute="$(command -v traceroute)"   #list-commands ;
+command_txt2html="$(command -v txt2html)"   #list-commands ;
+command_uname="$(command -v uname)"   #list-commands ;
+command_wget="$(command -v wget)"   #list-commands ;
+command_wpa_passphrase="$(command -v wpa_passphrase)"   #list-commands ;
+command_wpa_supplicant="$(command -v wpa_supplicant)"   #list-commands ;
+command_xrandr="$(command -v xrandr)"   #list-commands ;
+command_zenity="$(command -v zenity)"   #list-commands ;
+command_yad="$(command -v yad)"   #list-commands ;
+command_zgrep="$(command -v zgrep)"   #list-commands ;
+command_lpinfo="$(command -v lpinfo)"   #list-commands ;
+command_lpstat="$(command -v lpstat)"   #list-commands ;
+command_lsblk="$(command -v lsblk)"   #list-commands ;
+command_lsusb="$(command -v lsusb)"   #list-commands ;
+command_lscpu="$(command -v lscpu)"   #list-commands ;
+command_lspci="$(command -v lspci)"   #list-commands ;
+command_lsgpu="$(command -v lsgpu)"   #list-commands ;
+command_lshw="$(command -v lshw)"   #list-commands ;
 ####
 ####
 #### :rutina-final-command:
@@ -2913,8 +2913,8 @@ echo "$text_md server-asterisk server-domain server-squid                       
 echo "$title_md        | options-easy |                                                          "
 echo "$text_md preferences-read preferences-modify preferences-regen list-options clasic-options "
 echo "$text_md filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes geoip intro   "
-echo "$text_md date free ver version notes depends license code examples variables clean-tmp     "
-echo "$text_md install uninstall pc-halt pc-shutdown pc-reboot                  "
+echo "$text_md date free ver version notes depends license code examples commands variables      "
+echo "$text_md clean-tmp install uninstall pc-halt pc-shutdown pc-reboot                  "
 exit ; fi
 ####
 ####
@@ -2951,7 +2951,8 @@ echo "$text_md                          server-asterisk server-domain server-squ
 echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen list-options       "
 echo "$text_md                          clasic-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx     "
 echo "$text_md                          sockets nodes geoip date free ver version notes depends license code     "
-echo "$text_md                          examples intro clean-tmp install uninstall pc-halt pc-shutdown pc-reboot "
+echo "$text_md                          commands variables examples intro clean-tmp                              "
+echo "$text_md                          install uninstall pc-halt pc-shutdown pc-reboot                          "
 exit ; fi
 ####
 ####
@@ -3045,9 +3046,24 @@ exit; fi
 ####
 if   [ "$first_option" == "variables" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ list variables ] || ||"
-echo "##########     variables to config one firewall choosed     ##########"
-cat $cmd_binary | egrep "#list-var" | cut -d "=" -f 1 | grep -iv grep
-echo "##########     variables to config one firewall choosed     ##########"
+echo "##########     variables to config one firewall to choose     ##########"
+cat $cmd_binary | egrep "#list-vars" | cut -d "=" -f 1
+echo "##########     variables to config one firewall to choose     ##########"
+exit; fi
+####
+####
+#### :rutina-final-variables:
+##########    english: commands: list commands     ##########
+##########    spanish: commands: lista commands    ##########
+#### :rutina-inicial-variables:
+####
+####
+if   [ "$first_option" == "commands" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ list commands possible depends ] || ||"
+echo "##########     commands depends  ##########"
+for list_command in $(cat $cmd_binary | egrep "#list-commands" | cut -d "#" -f 1 | cut -d "=" -f 1 | sed s/command_//g )
+do echo $list_command ; done
+echo "##########     commands depends  ##########"
 exit; fi
 ####
 ####
