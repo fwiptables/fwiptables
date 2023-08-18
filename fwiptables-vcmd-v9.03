@@ -118,7 +118,7 @@ second_option="$(echo $2 | $command_sed s/\\///g -)" ;
 #### #### english: variable without "/"  #### spanish: variable sin "/"
 third_option="$(echo $3 | $command_sed s/\\///g -)"  ;                       
 #### #### english: variable without "/"  #### spanish: variable sin "/"
-quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;                     
+quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;
 ####
 ####
 #### :rutina-final-order-options:
@@ -403,6 +403,13 @@ if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /de
 #### :rutina-inicial-system-variables:
 ####
 ####
+#### english: when there is not first_option #### choose "list_options" or "clasic_options"      
+#### spanish: cuando no hay first_option #### choose "list_options" or "clasic_options"         
+####
+####
+option_default_security="list-options" ## fwiptables-file-default ## when there is not one first_option 
+####  
+####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
 ####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
 allow_use_legacy=""                     ## fwiptables-file-default ## void or no
@@ -529,13 +536,6 @@ license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.tx
 url_web_domain="https://sourceforge.net/p/f-iptables/code/ci/master/tree/domain-list?format=raw"
 ####
 ####
-#### english: if wrong in whithout_option
-#### spanish: si esta mal definidad definida whithout_option
-####
-####
-default_security="list-options"
-####
-####
 #### :rutina-final-system-variables:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
@@ -565,13 +565,6 @@ case "$config_close_deny"      in
 "RETURN") ;;
 "LOG")    ;;
 *) config_close_deny="REJECT"  ;; esac
-####
-####
-#### english: if null option is void return default to list-options
-#### spanish: si la opcion por defecto esta vacia vuelve a list-options
-####
-####
-if [ "$whithout_option" == "$NULL" ] ; then whithout_option="$default_security" ; fi
 ####
 ####
 #### :rutina-final-update-variables:
@@ -770,7 +763,7 @@ if [ "$first_option" == "silent"   ] || [ "$first_option" == "-silent"  ] ; then
 #### english: alias simple for options commons
 ####
 ####
-if [ "$first_option" == "$NULL" ]  ; then first_option="options" ; fi
+if [ "$first_option" == "$NULL" ]  ; then first_option="$option_default_security" ; fi
 ####
 ####
 if [ "$first_option" == "names" ] ; then first_option="names-control" ; fi
@@ -6065,7 +6058,7 @@ exit; fi
 ####
 if [ "$launch_firewall" != "yes" ] ; then
 echo "### ### [ fail ] [ Option: $first_option ] ### [ it is not valid option. ]  ###  [ Choose a one valid option ... ] ###" ;
-$cmd_binary $default_security ;
+$cmd_binary $option_default_security ;
 exit ; fi
 ####
 ####
