@@ -5604,8 +5604,8 @@ if   [ "$first_option" == "gui-roll-firewall-launch" ] ; then echo $head_waiting
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|eraserules|\
 wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|client-basic|\
+client-web|client-git|client-vnc|client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
 games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|\
-client-web|client-vnc|client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
 server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|server-domain|\
 server-news|server-mail|server-ftp|server-teamspeak|server-mumble|server-sql|server-asterisk"
 selection_menu="$($command_zenity --text="gui-roll-firewall-custom" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
@@ -5624,6 +5624,7 @@ case "$selection_final" in
 "all-permisive")$cmd_binary -gui all-permisive ; $cmd_binary gui list4;;
 "client-basic")$cmd_binary -gui client-basic ; $cmd_binary gui list4;;
 "client-web")$cmd_binary -gui client-web ; $cmd_binary gui list4;;
+"client-git")$cmd_binary -gui client-git ; $cmd_binary gui list4;;
 "client-vnc")$cmd_binary -gui client-vnc ; $cmd_binary gui list4;;
 "client-torrent")$cmd_binary -gui client-torrent ; $cmd_binary gui list4;;
 "client-vpn")$cmd_binary -gui client-vpn ; $cmd_binary gui list4;;
@@ -5753,8 +5754,8 @@ if   [ "$first_option" == "gui-menu-firewall-launch" ] ; then echo $head_waiting
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|eraserules|\
 wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|client-basic|\
+client-web|client-git|client-vnc|client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
 games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|\
-client-web|client-vnc|client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
 server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|server-domain|\
 server-news|server-mail|server-ftp|server-teamspeak|server-mumble|server-sql|server-asterisk"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
@@ -5773,6 +5774,7 @@ case "$selection_final" in
 "client-basic")$cmd_binary -gui client-basic ; $cmd_binary gui list4;;
 "all-permisive")$cmd_binary -gui all-permisive ; $cmd_binary gui list4;;
 "client-web")$cmd_binary -gui client-web ; $cmd_binary gui list4;;
+"client-git")$cmd_binary -gui client-git ; $cmd_binary gui list4;;
 "client-vnc")$cmd_binary -gui client-vnc ; $cmd_binary gui list4;;
 "client-torrent")$cmd_binary -gui client-torrent ; $cmd_binary gui list4;;
 "client-vpn")$cmd_binary -gui client-vpn ; $cmd_binary gui list4;;
