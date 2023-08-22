@@ -407,54 +407,54 @@ if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /de
 #### spanish: cuando no hay first_option #### choose "list_options" or "clasic_options"         
 ####
 ####
-option_default_security="list-options" ## fwiptables-file-default ## when there is not one first_option
+option_default_security="list-options"    ## fwiptables-file-default ## when there is not one first_option
 ####
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
 ####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
-allow_use_legacy=""                     ## fwiptables-file-default ## void or no
-allow_use_nft="no"                          ## fwiptables-file-default ## void or no
+allow_use_legacy=""                       ## fwiptables-file-default ## void or no
+allow_use_nft="no"                        ## fwiptables-file-default ## void or no
 allow_use_ipv4=""                         ## fwiptables-file-default ## void or no
 allow_use_ipv6=""                         ## fwiptables-file-default ## void or no
 ####       #### english: separate all rules: separate all rules, void or no
 ####       #### spanish: separar todas las reglas: separar todas las reglas, vacio o no
-allow_separate_rules="no"                         ## fwiptables-file-default ## void or no
+allow_separate_rules="no"                 ## fwiptables-file-default ## void or no
 ####       #### english: ssh shield configured to works with ports choose ports tcp
 ####       #### spanish: ssh escudo configurado para funcionar con elegidos puertos tcp
 config_shield_port="22"                   ## fwiptables-file-default ##  void o ports
 ####       #### english: ssh tries per ip before shield per hour
 ####       #### spanish: intentos ssh por ip antes del escudo por hora
-config_shield_maxtries="10"                   ## fwiptables-file-default ## void or no
+config_shield_maxtries="10"               ## fwiptables-file-default ## void or no
 ####       #### english: close with deny is or DROP or REJECT
 ####       #### spanish: cierra con denegacion es o DROP or REJECT
-config_close_deny="DROP"                   ## fwiptables-file-default ## DROP or REJECT
+config_close_deny="DROP"                  ## fwiptables-file-default ## DROP or REJECT
 ####       #### english: auto log from command input
 ####       #### spanish: automatico log de linea introducida
-allow_save_autolog=""                    ## fwiptables-file-default ## void or no
+allow_save_autolog=""                     ## fwiptables-file-default ## void or no
 ####       #### english: show date and show time
 ####       #### spanish: muestra la fecha y el tiempo
-allow_show_time="no"                    ## fwiptables-file-default ## void or no
+allow_show_time="no"                      ## fwiptables-file-default ## void or no
 ####       #### english: void for automatic command #### spanish: vacio para comando automatico
 #### favorite_text_editor        ... for example nano
-favorite_text_editor=""          ## fwiptables-file-default ## or void for automatic or specify command
+favorite_text_editor=""                    ## fwiptables-file-default ## or void for automatic or specify command
 #### favorite_text_dialog        .... or dialog or whiptail
-favorite_text_dialog=""          ## fwiptables-file-default ## or void for automatic or specify command
+favorite_text_dialog=""                    ## fwiptables-file-default ## or void for automatic or specify command
 #### favorite_graphicall_dialog  zenity
-favorite_graphicall_dialog=""    ## fwiptables-file-default ## or void for automatic or specify command
+favorite_graphicall_dialog=""               ## fwiptables-file-default ## or void for automatic or specify command
 #### favorite_text_brwoser       ... for example elinks
-favorite_text_browser=""         ## fwiptables-file-default ## or void for automatic or specify command
+favorite_text_browser=""                    ## fwiptables-file-default ## or void for automatic or specify command
 #### favorite_date_command       ... for example ntpdate
-favorite_date_command=""         ## fwiptables-file-default ## or void for automatic or specify command
+favorite_date_command=""                    ## fwiptables-file-default ## or void for automatic or specify command
 ####       #### english: curl server for default for test the public ip
 ####       #### spanish: servidor de curl por defecto para testear la ip publica    
-serverip_discover_ipv4="http://ifconfig.co/ip" ## fwiptables-file-default ## default http://ifconfig.co/ip
-serverip_discover_ipv6="http://ifconfig.co/ip" ## fwiptables-file-default ## default http://ifconfig.co/ip
+serverip_discover_ipv4="http://ifconfig.co/ip"        ## fwiptables-file-default ## default http://ifconfig.co/ip
+serverip_discover_ipv6="http://ifconfig.co/ip"        ## fwiptables-file-default ## default http://ifconfig.co/ip
 ####       #### english: iperf server for default for test net SPEED                 
 ####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet    
-serverip_iperf_ipv4="ping.online.net"   ## fwiptables-file-default ## default ping.online.net
-serverport_iperf_ipv4="5001"            ## fwiptables-file-default ## default 5201
-serverip_iperf_ipv6="ping6.online.net"   ## fwiptables-file-default ## default ping.online.net
-serverport_iperf_ipv6="5001"            ## fwiptables-file-default ## default 5201
+serverip_iperf_ipv4="ping.online.net"                 ## fwiptables-file-default ## default ping.online.net
+serverport_iperf_ipv4="5001"                          ## fwiptables-file-default ## default 5201
+serverip_iperf_ipv6="ping6.online.net"                ## fwiptables-file-default ## default ping.online.net
+serverport_iperf_ipv6="5001"                          ## fwiptables-file-default ## default 5201
 #### #### english: look  #### spanish: apariencia
 graphic_window_dimension="--width=950 --height=650"   ## fwiptables-file-default ## default: "--width=950 --height=650"
 #### #### english: look  #### spanish: apariencia
