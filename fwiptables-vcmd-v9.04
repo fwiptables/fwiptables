@@ -483,7 +483,7 @@ head_waiting_info="$duo_md  [ info ] [ info: info in plain txt format ] [ loadin
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_config ] [ Version: $cmd_version ] || || "
-give_cover="$duo_md [ Firewall With iptables ] [ Program: $cmd_config ] [ Version: $cmd_version ] || || "
+give_cover="$duo_md [ $cmd_config $cmd_version ] Options: $cmd_binary options || || "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -2878,10 +2878,8 @@ exit; fi
 ####
 if [ "$first_option" == "list-options" ] ; then echo $give_cover
 echo "$duo_md [ $first_option ] [ List options ] [ list-options md ] || ||                       "
-echo "$text_md $cmd_binary                                                                       "
-echo "$text_md [ -cli-menu -gui-menu -gui-roll -gui-shell ]                                      "
-echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                    "
-echo "$text_md first_option [ second_option ]                                                    "
+echo "$text_md $cmd_binary [ -cli-menu -gui-menu -gui-roll -gui-shell ]                          "
+echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]     "
 echo "$title_md      | firewall-control |                                                        "
 echo "$text_md stop continue reset actual show save load names-control                           "
 echo "$title_md      | firewall-conceptual |                                                     "
