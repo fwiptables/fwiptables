@@ -682,6 +682,9 @@ fi
 ##########     ALIAS SIMPLE
 ####
 ####
+if [ "$first_option" == "$NULL" ]  ; then first_option="$option_default_security" ; fi
+####
+####
 #### english:  alias firewall-list with conceputal firewall-conceptual:
 ####
 ####
@@ -689,16 +692,11 @@ fi
 ####
 ####
 case "$first_option" in
-"ls4")    list_rules_conceptual="no" ; first_option="-txt" ; second_option="list4"  ;;
-"ls6")    list_rules_conceptual="no" ; first_option="-txt" ; second_option="list6"  ;;
-"list4")  list_rules_conceptual="no" ; first_option="-txt" ; second_option="list4"  ;;
-"list6")  list_rules_conceptual="no" ; first_option="-txt" ; second_option="list6"  ;;
-"status") list_rules_conceptual="no" ; first_option="status" ;;
-"ls4")    list_rules_conceptual="" ;;
-"ls6")    list_rules_conceptual="" ;;
-"list4")  list_rules_conceptual="" ;;
-"list6")  list_rules_conceptual="" ;;
-"status") list_rules_conceptual="" ;;
+"ls4")    list_rules_conceptual="" ; first_option="-txt" ; second_option="list4"  ;;
+"ls6")    list_rules_conceptual="" ; first_option="-txt" ; second_option="list6"  ;;
+"list4")  list_rules_conceptual="" ; first_option="-txt" ; second_option="list4"  ;;
+"list6")  list_rules_conceptual="" ; first_option="-txt" ; second_option="list6"  ;;
+"status") list_rules_conceptual="" ; first_option="status" ;;
 "list-alltables") list_rules_conceptual="" ;;
 "list-filter4")   list_rules_conceptual="" ;;
 "list-filter5")   list_rules_conceptual="" ;;
@@ -761,9 +759,6 @@ if [ "$first_option" == "silent"   ] || [ "$first_option" == "-silent"  ] ; then
 ####
 ####
 #### english: alias simple for options commons
-####
-####
-if [ "$first_option" == "$NULL" ]  ; then first_option="$option_default_security" ; fi
 ####
 ####
 if [ "$first_option" == "names" ] ; then first_option="names-control" ; fi
@@ -861,7 +856,8 @@ cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
 ####
 ####
-esac ; $cmd_binary "$second_option" "$third_option" "$quad_option"
+esac ; 
+$cmd_binary "$second_option" "$third_option" "$quad_option"
 ####
 ####
 exit; fi
