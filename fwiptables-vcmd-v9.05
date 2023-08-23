@@ -2892,7 +2892,7 @@ echo "$text_md regen-config examples-config show-config modify-config del-config
 echo "$title_md       | firewall-launch |                                                         "
 echo "$text_md eraserules custom wizard-mini wizard-full off-line all-permisive client-basic      "
 echo "$text_md client-web client-git client-ipp client-vnc client-mail client-news client-vpn     "
-echo "$text_md client-torrent client-vpn client-ftp  client-tor client-squid game-widelands       "
+echo "$text_md client-torrent client-vpn client-ftp client-tor client-squid game-widelands        "
 echo "$text_md games-udp games-shooter game-wesnoth game-minetest game-freeciv lan-tor lan-vpn    "
 echo "$text_md server-ssh server-samba server-vnc server-webserver-print server-lamp              "
 echo "$text_md server-news server-ftp server-mail server-teamspeak server-mumble server-sql       "
