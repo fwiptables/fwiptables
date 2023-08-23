@@ -5672,7 +5672,7 @@ selection=""
 ####
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|preferences-modify|preferences-regen|\
 filelog|autolog|ip4|ip6|notes|speed-ip4|speed-ip6|sockets|nodes|geoip|date|free|ver|version|\
-depends|license|examples|intro|clean-tmp|list-var"
+depends|commands|variables|license|examples|intro|clean-tmp"
 ####
 ####
 selection="$($command_zenity --text="gui-roll-options-easy" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
@@ -5706,7 +5706,8 @@ license) $cmd_binary -gui depends ;;
 examples)$cmd_binary -gui examples ;;
 intro) $cmd_binary -gui intro ;;
 clean-tmp) $cmd_binary -gui clean-tmp ;;
-list-var) $cmd_binary -gui list-var ;;
+variables) $cmd_binary -gui variables ;;
+commands) $cmd_binary -gui variables ;;
 esac
 ####
 ####
@@ -6007,7 +6008,7 @@ exit; fi
 if   [ "$first_option" == "gui-menu-options-easy" ]; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|preferences-modify|preferences-regen|\
-ip4|ip6|speed-ip4|speed-ip6|sockets|license|notes|version|examples|depends|list-var"
+ip4|ip6|speed-ip4|speed-ip6|sockets|license|notes|version|examples|depends|variables|commands"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="$first_option" --text="$first_option" --title="Gui-menu With $cmd_binary $cmd_version" --separator=" " --list $selection_menu )"
 #### 
@@ -6030,7 +6031,8 @@ examples)$cmd_binary -gui examples ;;
 depends)$cmd_binary -gui depends ;;
 notes)$cmd_binary -gui notes ;;
 license)$cmd_binary -gui license ;;
-list-var) $cmd_binary -gui list-var ;;
+variables) $cmd_binary -gui variables ;;
+commands) $cmd_binary -gui commands ;;
 esac
 ####
 ####
