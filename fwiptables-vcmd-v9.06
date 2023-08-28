@@ -4270,8 +4270,10 @@ exit; fi
 #### :rutina-inicial-download:
 ####
 ####
-if [ "$first_option" == "download" ] ; then
+if [ "$first_option" == "download" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_binary download ] [ download md ] || ||"
+echo
+echo "$duo_md the last version from fwiptables. Firewall With iptables"
 echo
 echo "$duo_md [ Link ] Download web link from sourceforge.com: "
 echo "    https://sourceforge.net/projects/f-iptables/files/latest/download"
