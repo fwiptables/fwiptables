@@ -1300,9 +1300,8 @@ echo "$text_md $default_autolog"
 echo
 echo "$title_md [ Default filelog ]"
 echo "$text_md $default_filelog"
-echo
-echo "$title_md [ Web page ]"
-echo "$text_md $cmd_homepage"
+echo 
+echo "type to see where download: $cmd_binary download "
 exit ; fi
 ####
 ####
@@ -1315,7 +1314,9 @@ exit ; fi
 if [ "$first_option" == "ver" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ Show version about ] [ version.md] || ||"
 echo "[ ok ] [ program ] $cmd_name | $cmd_version | $cmd_description "
-echo "[ ok ] [ Cache directory ] $directory_cache [ Data directory ] $directory_data [ Web page ] $cmd_homepage"
+echo "[ ok ] [ Cache directory ] $directory_cache " 
+echo "[ ok ] [ Data directory  ] $directory_data  " 
+echo "type to see where download: $cmd_binary download "
 exit ; fi
 ####
 ####
