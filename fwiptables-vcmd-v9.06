@@ -4191,7 +4191,7 @@ echo "$text_md And choose one firewall: eraserules, or wizard-mini, or wizard-fu
 echo "$text_md or one predesignated firewall to choose one. Gen new rules with templates"
 echo "$text_md and with shield ssh and with comments rules."
 echo
-echo "$title_md Config files."
+echo "$title_md Config Directory."
 echo
 echo "$text_md /root/.config/fwiptables-cmd"
 echo
