@@ -519,21 +519,8 @@ mensage_timeout="Closing gui menu in $close_graphicall seconds"
 ####       #### english: autovariables        #### spanish: autovariables
 launch_firewall="no" ;   #  autoconfigure with launch iptables rules
 ####       #### english: [download web link]  #### spanish: [descarga del enlace web]
-url_web_main="https://sourceforge.net/projects/f-iptables/"
-url_web_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
-url_web_changes="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-changes?format=raw" ;
-url_index_files="https://sourceforge.net/projects/f-iptables/files/" ;
-url_complete_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-complete-v7" ;
-url_minimal_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-minimal-v7" ;
-url_web_fulldevelopment="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
-url_web_minidevelopment="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-minimal-fwiptables?format=raw" ;
-url_web_actualfull="https://sourceforge.net/projects/f-iptables/files/fwiptables-complete-actual/download" ;
-url_web_actualmini="https://sourceforge.net/projects/f-iptables/files/fwiptables-minimal-actual/download" ;
-url_web_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
-url_web_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
 flicense="Copyleft, without warranty, gnu license GPL v2."
 license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
-url_web_domain="https://sourceforge.net/p/f-iptables/code/ci/master/tree/domain-list?format=raw"
 ####
 ####
 #### :rutina-final-system-variables:
@@ -2821,33 +2808,6 @@ fi
 ####
 ####
 #### :rutina-final-system-rules:
-##########    english: new-versions: about of program      ##########
-##########    spanish: new-versions: acerca del programa   ##########
-#### :rutina-inicial-new-versions:
-####
-####
-# if   [ "$first_option" == "new-versions" ]; then echo $give_cover
-# echo "$header_ok [ $first_option ] [ show the versions in the web ] || ||"
-# echo
-# echo "$duo_md [ info ] [ new versions ]"
-# echo "$duo_md [ info ] [ latest version ] [ $url_web_latest ]"
-# echo "$duo_md [ info ] [ index version  ] [ $url_index_files ]"
-# echo
-# $cmd_binary index-versions
-# echo
-# echo "$duo_md [ info ] [ Show the last minimal version ]"
-# echo "$duo_md [ info ] [ $url_minimal_files ]"
-# echo
-# $cmd_binary minimal-versions
-# echo
-# echo "$duo_md [ info ] [ Show the last complete version ]"
-# echo "$duo_md [ info ] [ $url_complete_files ]"
-# echo
-# $cmd_binary complete-versions
-# exit; fi
-####
-####
-#### :rutina-final-new-versions:
 ##########    english: ntp: update the date and time    ##########
 ##########    spanish: ntp: actualiza la fecha y hora   ##########
 #### :rutina-inicial-ntp:
@@ -4222,31 +4182,31 @@ exit; fi
 ####
 if  [ "$first_option" == "intro" ]; then echo "$give_cover"
 echo "$header_ok [ $first_option ] [ $cmd_binary $cmd_version intro ] [ intro md ] || ||"
-echo "$title_md    ###  Fran fwiptables intro.  ###   "
-echo "$text_md     [ done ] [ Choose fwiptables dev working like complete or minimal working like cmd          "
-echo "$text_md     # Manage Fran Firewall # configure both iptables netfilter for linux with templates. #      "
-echo "$text_md     [ done ] [ Done with support in xtables and/or nftables and ipv4 and/or ipv6 ].             "
-echo "$text_md     [ done ] [ Ready to run in command shell cmd, cli-menu, gui-menu, and gui-shell ].          "
-echo "$text_md     # Standard firewall # Create one firewall with one wizard and save it in standard file. #   "
-echo "$text_md     [ done ] [Control the firewall with the standard iptables files for all tables ].           "
-echo "$text_md     # Custom firewall # Create one firewall custom and launch your custom config firewall #.    "
-echo "$text_md     [ done ] [ Choose run iptables rules of one firewall with your own config files ].          "
-echo "$text_md     # Network tools # Use this firewall with some utilities for ipv4 and ipv6 # .               "
-echo "$text_md     [ done ] [ Gone with options-tool works with network utilities.                             "
-echo "$text_md     [ done ] [ Gone with options-show show config net files ].                                  "
+echo
+echo "$title_md fwiptables. Firewall With iptables."
+echo
+echo "$text_md fwiptables is one simple FRONT-END for iptables linux with COMMAND-LINE"
+echo "$text_md with CLI-MENU with GUI-MENU with GUI-ROLL with GUI-SHELL."
+echo "$text_md And choose one firewall: eraserules, or wizard-mini, or wizard-full, or custom,"
+echo "$text_md or one predesignated firewall to choose one. Gen new rules with templates"
+echo "$text_md and with shield ssh and with comments rules."
+echo
+echo "$title_md Config files."
+echo
+echo "$text_md /root/.config/fwiptables-cmd"
+echo
+echo "$title_md support in fwiptables."
+echo 
+echo "$text_md rules ipv4, rules ipv6, netfilter, neftables, tools ip, wizards for rules, save/load rules,"
+echo "$text_md rules with file, load rules with file, shield to ssh or other servers choosed,"
+echo "$text_md limit bandwidth, host whitelist, host blacklist, and other more capacities of firewall."
 echo "$brake_md"
-echo "$title_md    ###  Fran fwiptables installer.  ###"
-echo "$text_md     # $cmd_binary $cmd_version"
-#### #### #### 
+echo "$title_md Fran fwiptables installer. # $cmd_binary $cmd_version"
+echo
 echo "$text_md     [ info ] [ Install this version from this file    ] [ TYPE: ./fwiptables-$cmd_version install   ]" 
 echo "$text_md     [ info ] [ Uninstall fwiptables from the computer ] [ TYPE: ./fwiptables-$cmd_version uninstall ]" 
-echo "$brake_md"
-echo "$title_md    ###  Fran fwiptables project.  ###    "
-echo "$text_md     # Download the latest version $cmd_name from sourceforge"
-echo "$text_md     [ link] [ $url_web_latest ]"
-echo "$text_md     # $flicense"
-echo "$text_md     [ link ] [ $license_gpl ]"
-#### #### #### 
+echo
+$cmd_binary options
 exit; fi
 ####
 ####
