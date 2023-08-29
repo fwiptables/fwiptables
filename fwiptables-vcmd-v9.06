@@ -485,7 +485,7 @@ head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $seco
 give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_config ] [ Version: $cmd_version ] || || "
 give_cover="$duo_md [ $cmd_config $cmd_version ] Options: $cmd_binary options || || "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
+give_load="$duo_md [ ok ] [ Load firewall ] [ Firewall With iptables ] || ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_preferences="$duo_md [ info ] [ Configure ] [ Configure: $cmd_binary preferences-modify ]"
 give_preferences="$duo_md [ Configure ] [ $cmd_binary preferences-modify ]"
