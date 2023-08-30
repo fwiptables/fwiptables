@@ -4191,21 +4191,21 @@ echo "$text_md And choose one firewall: eraserules, or wizard-mini, or wizard-fu
 echo "$text_md or one predesignated firewall to choose one. Gen new rules with templates"
 echo "$text_md and with shield ssh and with comments rules."
 echo
-echo "$title_md Config Directory."
-echo
-echo "$text_md /root/.config/fwiptables-cmd"
-echo
-echo "$title_md support in fwiptables."
+echo "$title_md support in fwiptables.  "
 echo 
 echo "$text_md rules ipv4, rules ipv6, netfilter, neftables, tools ip, wizards for rules, save/load rules,"
 echo "$text_md rules with file, load rules with file, shield to ssh or other servers choosed,"
 echo "$text_md limit bandwidth, host whitelist, host blacklist, and other more capacities of firewall."
+echo
+echo "$title_md Config Directory.  "
+echo
+echo "$text_md /root/.config/fwiptables-cmd"
 echo "$brake_md"
 echo "$title_md Fran fwiptables installer. # $cmd_binary $cmd_version"
-echo
+echo "$brake_md"
 echo "$text_md     [ info ] [ Install this version from this file    ] [ TYPE: ./fwiptables-$cmd_version install   ]" 
 echo "$text_md     [ info ] [ Uninstall fwiptables from the computer ] [ TYPE: ./fwiptables-$cmd_version uninstall ]" 
-echo
+echo "$brake_md"
 $cmd_binary options
 exit; fi
 ####
