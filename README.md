@@ -9,21 +9,21 @@
    or one predesignated firewall to choose one. Gen new rules with templates
    and with shield ssh and with comments rules.
 
-###  Config files.
-
-   /root/.config/fwiptables-cmd
-
-###  support in fwiptables.
+###  support in fwiptables.  
 
    rules ipv4, rules ipv6, netfilter, neftables, tools ip, wizards for rules, save/load rules,
    rules with file, load rules with file, shield to ssh or other servers choosed,
    limit bandwidth, host whitelist, host blacklist, and other more capacities of firewall.
+
+###  Config Directory.  
+
+   /root/.config/fwiptables-cmd
 ---
 ###  Fran fwiptables installer. # /usr/bin/fwiptables-cmd command-9.06
-
+---
        [ info ] [ Install this version from this file    ] [ TYPE: ./fwiptables-command-9.06 install   ]
        [ info ] [ Uninstall fwiptables from the computer ] [ TYPE: ./fwiptables-command-9.06 uninstall ]
-
+---
 ### [ fwiptables-cmd command-9.06 ] Options: /usr/bin/fwiptables-cmd options || ||
 ### [ list-options ] [ List options ] [ list-options md ] || ||                        
    /usr/bin/fwiptables-cmd [ -cli-menu -gui-menu -gui-roll -gui-shell ]                           
