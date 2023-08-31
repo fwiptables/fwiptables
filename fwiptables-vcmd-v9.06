@@ -469,7 +469,7 @@ brake_md="---" ;
 tabz="### _ _ _ _ _ _ _ " ;
 ralla="______________________" ;
 duo_md="###" ;
-header_ok="### || || [ ok ] ||" ; header_ok="###"
+header_ok="###"
 cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_waiting_txt="$duo_md [ info ] [ txt ] [ Wait several seconds.. ]  [ press control-c to cancel ] "
@@ -482,12 +482,10 @@ head_waiting_info="$duo_md [ info ] [ info: info in clear txt format ] [ press c
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_config ] [ Version: $cmd_version ] || || "
-give_cover="$duo_md [ $cmd_config $cmd_version ] Options: $cmd_binary options || || "
+give_cover="$duo_md [ $cmd_config $cmd_version ] Options: $cmd_binary options "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$duo_md [ _ok_ ] [ Load firewall ] [ Firewall With iptables ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_preferences="$duo_md [ info ] [ Configure ] [ Configure: $cmd_binary preferences-modify ]"
 give_preferences="$duo_md [ Configure ] [ $cmd_binary preferences-modify ]"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="echo -n" ; 
@@ -500,8 +498,7 @@ tab_lang_spanish=" spa "
 #### show_lang_english=""
 #### show_lang_spanish="##"
 #### #### info list rules
-message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ Configure: $cmd_binary preferences-modify ] || ||"
-message_info_rules="$duo_md [ Configure ] [ $cmd_binary preferences-modify ] || ||"
+message_info_rules="$duo_md [ Configure ] [ $cmd_binary preferences-modify ]"
 #### #### english: without cli or gui   #### spanish: sin cli o gui
 message_without_cli="$duo_md [ fail ] [ cli ] [ Without support for output cli for this option ]"
 message_without_gui="$duo_md [ fail ] [ gui ] [ Without support for output gui for this option ]"
@@ -960,7 +957,7 @@ echo $head_autolog >> $default_autolog ; fi
 ####
 ####
 if [ "$allow_show_time" != "no" ] ; then
-head_timespam="$duo_md || || [ ok ] || [ Date and Time ] [ $(date) ] || || "
+head_timespam="$duo_md [ ok ] || [ Date and Time ] [ $(date) ]"
 echo $head_timespam ; fi
 ####
 ####
@@ -971,7 +968,7 @@ echo $head_timespam ; fi
 ####
 ####
 if [ "$first_option" == "filelog" ] ; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ show $default_filelog ] || ||"
+echo "$header_ok [ $first_option ]  [ show $default_filelog ] "
 if [ ! -f $default_filelog ]; then touch $default_filelog ; fi
 echo
 cat  "$default_filelog"
@@ -987,7 +984,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "autolog" ] ; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ show "$default_autolog" ] || ||"
+echo "$header_ok [ $first_option ] [ show "$default_autolog" ] "
 if [ ! -f $default_autolog ]; then touch $default_autolog ; fi
 echo
 cat  "$default_autolog"
@@ -1003,7 +1000,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "default" ] ; then echo $give_cover
-echo "$header_ok [ $first_option ] [ $cmd_binary default ] [ default md ] || ||"
+echo "$header_ok [ $first_option ] [ $cmd_binary default ] [ default md ] "
 echo "$duo_md [ info ] [ $cmd_binary default.. ]"
 echo "$duo_md [ info ] [ Autoregenerate default config for fwiptables: ] [ fwiptables preferences-regen  ]"
 echo "$duo_md [ info ] [ Show   default config for fwiptables:         ] [ fwiptables preferences-read   ]"
@@ -1018,7 +1015,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "preferences-read" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ show the default fwiptables ] || ||"
+echo "$header_ok [ $first_option ] [ show the default fwiptables ] "
 echo 
 cat $default_preferences
 echo
@@ -1034,7 +1031,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "preferences-modify" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ modify the default fwiptables ] || ||"
+echo "$header_ok [ $first_option ] [ modify the default fwiptables ] "
 echo 
 $favorite_text_editor $default_preferences
 echo "$duo_md [ info ] [ edit file $default_preferences to change variables ]"
@@ -1048,7 +1045,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "dialog-modify" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ modify the default dialog ] || ||"
+echo "$header_ok [ $first_option ] [ modify the default dialog ] "
 echo 
 $favorite_text_editor $default_dialogrc
 echo "$duo_md [ info ] [ edit file $default_dialogrc to change variables ]"
@@ -1062,7 +1059,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "preferences-read" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ read the default fwiptables ] || ||"
+echo "$header_ok [ $first_option ] [ read the default fwiptables ] "
 echo "$duo_md [ info ] [ Show file $default_preferences to read variables ]"
 ####
 ####
@@ -1083,7 +1080,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "preferences-regen" ] ; then echo $give_cover
-echo "$header_ok [ $first_option ] [ $cmd_binary preferences-regen ] [ preferences-regen md ] || ||"
+echo "$header_ok [ $first_option ] [ $cmd_binary preferences-regen ] [ preferences-regen md ] "
 rm $default_preferences
 echo "$duo_md [  ok  ] [ $cmd_binary deleted old configs ]"
 cat $cmd_binary | $command_grep fwiptables-file-default | $command_grep -iv cmd_binary &> $default_preferences
@@ -1099,7 +1096,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "ip4" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ show info about net ip4 ] || ||"
+echo "$header_ok [ $first_option ]  [ show info about net ip4 ] "
 echo
 echo "$duo_md [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
@@ -1139,7 +1136,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "ip6" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ show info about net ip6 ] || ||"
+echo "$header_ok [ $first_option ]  [ show info about net ip6 ] "
 echo
 echo "$duo_md [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
@@ -1179,7 +1176,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "depends" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List for depends programs ] [ depends md ] || ||"
+echo "$header_ok [ $first_option ] [ List for depends programs ] [ depends md ] "
 echo
 echo "$title_md [ Configuration files ]"
 echo "$text_md Directory data:          $directory_data"
@@ -1218,7 +1215,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "options-examples" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List examples ] [ examples md ] || ||"
+echo "$header_ok [ $first_option ] [ List examples ] [ examples md ] "
 echo
 echo "$title_md                                      [ several examples ]                            "
 echo
@@ -1254,7 +1251,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "version" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ Show version about ] [ version.md] || ||"
+echo "$header_ok [ $first_option ] [ Show version about ] [ version.md] "
 echo "$title_md [ Name program ]"
 echo "$text_md $cmd_name"
 echo
@@ -1299,7 +1296,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "ver" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ Show version about ] [ version.md] || ||"
+echo "$header_ok [ $first_option ] [ Show version about ] [ version.md] "
 echo "[ ok ] [ program ] $cmd_name | $cmd_version | $cmd_description "
 echo "[ ok ] [ Cache directory ] $directory_cache " 
 echo "[ ok ] [ Data directory  ] $directory_data  " 
@@ -1314,7 +1311,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "notes" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List notes about ] [ notes md ] || ||"
+echo "$header_ok [ $first_option ] [ List notes about ] [ notes md ] "
 echo "$text_md"
 echo "$text_md  [ legacy or nft ] [ whith one of them is sufficent ] [ becouse when one accept then go to the other one ]"
 echo "$text_md  [ legacy or nft ] [ con uno de ellos es suficiente ] [ porque cuando uno acepta despues va a la otro ]" 
@@ -1384,7 +1381,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "regen-config" ]; then echo "$give_cover"
-echo "$header_ok [ $first_option ] [ Generate templates wizard and cfg ] || ||"
+echo "$header_ok [ $first_option ] [ Generate templates wizard and cfg ] "
 echo "$duo_md [ info ] [ regenerating template wizard and template cfg ]"
 ####
 ####
@@ -2814,7 +2811,7 @@ fi
 ####
 ####
 if   [ "$first_option" == "ntp" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ update the computer time and date from internet ] || ||"
+echo "$header_ok [ $first_option ]  [ update the computer time and date from internet ] "
 echo
 if [ "$favorite_date_command" == "$NULL" ]; then echo "$tab [ fail ] [ Install one ntp client ]" ; fi
 echo "$tab Old date: $($command_date)"
@@ -2834,7 +2831,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-options" ] ; then echo $give_cover
-echo "$duo_md [ $first_option ] [ List options ] [ list-options md ] || ||                        "
+echo "$duo_md [ $first_option ] [ List options ] [ list-options md ]                              "
 echo "$text_md $cmd_binary [ -cli-menu -gui-menu -gui-roll -gui-shell ]                           "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]      "
 echo "$title_md      | firewall-control |                                                         "
@@ -2873,7 +2870,7 @@ exit ; fi
 ####
 ####
 if   [ "$first_option" == "clasic-options" ] ; then echo $give_cover 
-echo "$header_ok [ $first_option ] [ clasic options ] [ list-options md ] || ||"
+echo "$header_ok [ $first_option ] [ clasic options ] [ list-options md ] "
 echo $title_md
 echo "     Launch: $cmd_binary [-cli-menu -gui-menu -gui-roll -gui-shell"
 echo "     -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -s|-silent] first_option [second_option]    "
@@ -2911,7 +2908,7 @@ exit ; fi
 ####
 ####
 if   [ "$first_option" == "code" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ Show source code for each option ] || ||"
+echo "$header_ok [ $first_option ]  [ Show source code for each option ] "
 echo "$duo_md [ info ] [ code ] [ show source code for options from $cmd_binary ]"
 code_error="$duo_md [ info ] [ Usage ] [ $cmd_binary code option_choosed ]"
 if [ "$second_option" == "$NULL" ]; then echo "$code_error" ; echo
@@ -2940,7 +2937,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "names-config" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List configs cfg ] || ||"
+echo "$header_ok [ $first_option ] [ List configs cfg ] "
 echo "$duo_md [ info ] [ list configs files in cfg format ]"
 echo "$duo_md [ info ] [ folder ] [ $directory_config ]"
 echo "$duo_md"
@@ -2975,7 +2972,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "free-ram" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ freedom from innecesary ram ] || ||"
+echo "$header_ok [ $first_option ]  [ freedom from innecesary ram ] "
 case $command_tee in "$NULL") echo "$tab [ fail ] [ Install tee command ]"; exit ;; esac
 echo "$duo_md [ info ] Actual Memory"
 free -hw 
@@ -2993,7 +2990,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "variables" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ list variables ] || ||"
+echo "$header_ok [ $first_option ]  [ list variables ] "
 echo "##########     variables to config one firewall to choose     ##########"
 cat $cmd_binary | egrep "#list-vars" | cut -d "=" -f 1
 echo "##########     variables to config one firewall to choose     ##########"
@@ -3007,7 +3004,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "commands" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ list commands possible depends ] || ||"
+echo "$header_ok [ $first_option ]  [ list commands possible depends ] "
 echo "##########     commands possible depends  ##########"
 echo "$(cat $cmd_binary | egrep "#list-commands" | cut -d "#" -f 1 | cut -d "=" -f 1 | sed s/command_//g )"
 echo "##########     commands possible depends  ##########"
@@ -3021,7 +3018,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "examples-config" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ Show examples ] || ||"
+echo "$header_ok [ $first_option ] [ Show examples ] "
 echo 
 echo "[ examples ] [ examples for some services in client mode ]"
 echo
@@ -3159,7 +3156,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "eraserules" ]; then echo $give_cover 
-echo "$header_ok [ $first_option ] [ erase all iptables rules ] || ||"
+echo "$header_ok [ $first_option ] [ erase all iptables rules ] "
 ####
 ####
 #### english: table policy 
@@ -3298,7 +3295,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-alltables" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List all rules ] || ||"
+echo "$header_ok [ $first_option ] [ List all rules ] "
 echo 
 echo; echo; echo "### LIST ARPTABLES ###"
 $cmd_binary list-arptables
@@ -3335,7 +3332,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "listn-alltables" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List all rules ] || ||"
+echo "$header_ok [ $first_option ] [ List all rules ] "
 echo 
 echo; echo; echo "### LIST EBTABLES ###"
 $cmd_binary list-ebtables
@@ -3372,7 +3369,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list4-ip" ]; then echo $give_cover
-echo "$header_ok [ list4 ] [ List filter ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ list4 ] [ List filter ipv4 ] [ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
 "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
 nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
@@ -3406,7 +3403,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list6-ip" ]; then  echo $give_cover 
-echo "$header_ok [ list6 ] [ List filter ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ list6 ] [ List filter ipv6 ] [ it is only sufficent or with legacy or with nft ] "
 legacyseis=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
 "$command_ip6tables_legacy" -t filter -L OUTPUT 1 )
 nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
@@ -3442,7 +3439,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "listn4-ip" ]; then echo $give_cover 
-echo "$header_ok [ list4 ] [ List filter ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ list4 ] [ List filter ipv4 ] [ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
 "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
 nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
@@ -3476,7 +3473,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "listn6-ip" ]; then  echo $give_cover 
-echo "$header_ok [ list6 ] [ List filter ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ list6 ] [ List filter ipv6 ] [ it is only sufficent or with legacy or with nft ] "
 legacyseis=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
 "$command_ip6tables_legacy" -t filter -L OUTPUT 1 )
 nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
@@ -3548,7 +3545,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "listnum" ]; then echo $give_cover
-echo "$header_ok [ list ] [ List numerical filter ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ list ] [ List numerical filter ipv4 ] [ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
 "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
 nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
@@ -3582,7 +3579,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "listnum6" ]; then echo $give_cover
-echo "$header_ok [ list ] [ List numerical filter ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ list ] [ List numerical filter ipv6 ] [ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
 "$command_ip6tables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
 nftcuatro=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
@@ -3616,7 +3613,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-filter4" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List filter ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ $first_option ] [ List filter ipv4 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip4"
 echo
 echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3638,7 +3635,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-forward" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List filter forward ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ $first_option ] [ List filter forward ipv4 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip4"
 echo
 echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3658,7 +3655,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-filter6" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List filter ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ $first_option ] [ List filter ipv6 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip6"
 echo
 echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
@@ -3680,7 +3677,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-forward6" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List filter forward ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ $first_option ] [ List filter forward ipv6 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip6"
 echo
 echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3700,7 +3697,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" == "list-nat4" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List nat ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ $first_option ] [ List nat ipv4 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="nat-ip4"
 echo
 echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3720,7 +3717,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-nat6" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List nat ipv6] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ $first_option ] [ List nat ipv6] [ it is only sufficent or with legacy or with nft ] "
 fromrules="nat-ip6"
 echo
 echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3741,7 +3738,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "listnum-filter4" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List filter ipv4 in numerical ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ $first_option ] [ List filter ipv4 in numerical ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip4"
 echo
 echo "$duo_md [ info ] [ With rules netfilter ] [ iptables-nft ] [ $fromrules ]"  
@@ -3761,7 +3758,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-forwardnum" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List filter forward ipv4 in numerical ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ $first_option ] [ List filter forward ipv4 in numerical ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip4"
 echo
 echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3781,7 +3778,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "listnum-filter6" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List filter ipv6 in numerical ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ $first_option ] [ List filter ipv6 in numerical ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip6"
 echo
 echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
@@ -3801,7 +3798,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-forwardnum6" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List filter forward ipv6 in numerical ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ $first_option ] [ List filter forward ipv6 in numerical ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip6"
 echo
 echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3821,7 +3818,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-mangle4" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List mangle ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ $first_option ] [ List mangle ipv4 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="mangle-ip4"
 echo
 echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3842,7 +3839,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-mangle6" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List mangle ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ $first_option ] [ List mangle ipv6 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="mangle-ip6"
 echo
 echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3863,7 +3860,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-raw4" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List raw ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ $first_option ] [ List raw ipv4 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="raw-ip4"
 echo
 echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3883,7 +3880,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-raw6" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List raw ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ $first_option ] [ List raw ipv6 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="raw-ip6"
 echo
 echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3903,7 +3900,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-security4" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List security ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ $first_option ] [ List security ipv4 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="security-ip4"
 echo
 echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3923,7 +3920,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-security6" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List security ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
+echo "$header_ok [ $first_option ] [ List security ipv6 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="security-ip6"
 echo
 echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3943,7 +3940,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-ebtables" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List ebtables ] || ||"
+echo "$header_ok [ $first_option ] [ List ebtables ] "
 fromrules="ebtables"
 echo
 echo "$duo_md [ info ] [ ebtables: filter ethernet ] [ $fromrules ]"
@@ -3963,7 +3960,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-arptables" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List arptables ipv4 ] || ||"
+echo "$header_ok [ $first_option ] [ List arptables ipv4 ] "
 fromrules="arptables"
 echo
 echo "$duo_md [ info ] [ arptables: filter arptables ] [ $fromrules ]"
@@ -3979,7 +3976,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "listn-arptables" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List arptables ipv4 ] || ||"
+echo "$header_ok [ $first_option ] [ List arptables ipv4 ] "
 fromrules="arptables"
 echo
 echo "$duo_md [ info ] [ arptables: filter arptables ] [ $fromrules ]"
@@ -4146,7 +4143,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "names-control" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List names from firewall saved ] || ||"
+echo "$header_ok [ $first_option ] [ List names from firewall saved ] "
 echo "$duo_md [ info ] [ list configs files in standard format ]"
 echo "$duo_md [ info ] [ folder ] [ $directory_fwrecover ]"
 echo 
@@ -4166,7 +4163,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "reset" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ Reset the firewall ] || ||"
+echo "$header_ok [ $first_option ] [ Reset the firewall ] "
 echo "$duo_md [ info ] [ Reseting the firewall ]"
 $cmd_binary stop &> /dev/null
 $cmd_binary continue &> /dev/null
@@ -4181,7 +4178,7 @@ exit; fi
 ####
 ####
 if  [ "$first_option" == "intro" ]; then echo "$give_cover"
-echo "$header_ok [ $first_option ] [ $cmd_binary $cmd_version intro ] [ intro md ] || ||"
+echo "$header_ok [ $first_option ] [ $cmd_binary $cmd_version intro ] [ intro md ] "
 echo "$text_md"
 echo "$title_md fwiptables. Firewall With iptables."
 echo "$text_md"
@@ -4216,7 +4213,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "clean-tmp" ] ; then echo $give_cover
-echo "$header_ok [ $first_option ] [ clean $cmd_binary temporal files ] || ||"
+echo "$header_ok [ $first_option ] [ clean $cmd_binary temporal files ] "
 echo "$duo_md [ info ] [ cleaning $cmd_binary temporal files ]"
 du -cm "$directory_cache"
 rm -rf "$directory_cache" &> /dev/null
@@ -4231,7 +4228,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "download" ] ; then echo $give_cover
-echo "$header_ok [ $first_option ] [ $cmd_binary download ] [ download md ] || ||"
+echo "$header_ok [ $first_option ] [ $cmd_binary download ] [ download md ] "
 echo
 echo "$duo_md the last version from fwiptables. Firewall With iptables"
 echo
@@ -4251,7 +4248,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "uninstall" ] ; then
-echo "$header_ok [ $first_option ] [ $cmd_binary uninstaller ] [ uninstall md ] || ||"
+echo "$header_ok [ $first_option ] [ $cmd_binary uninstaller ] [ uninstall md ] "
 echo "$duo_md [ info ] [ $cmd_binary uninstalling ]"
 rm /usr/bin/$cmd_config &> /dev/null
 echo "$duo_md [ info ] [ deleted binaries ]"
@@ -4266,7 +4263,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "install" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ $cmd_config $cmd_version installer ] [ install md ] || ||"
+echo "$header_ok [ $first_option ] [ $cmd_config $cmd_version installer ] [ install md ] "
 ####
 ####
 ####  english: copy the file to temporal folder and install
@@ -4307,7 +4304,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "geoip" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ resolve the location to one ip or host ] || ||"
+echo "$header_ok [ $first_option ]  [ resolve the location to one ip or host ] "
 echo 
 case $command_geoiplookup in "$NULL") echo "$tab [ fail ] [ Install geoiplookup command ]" ; exit  ;; esac
 case "$second_option" in
@@ -4326,7 +4323,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "nodes" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ Show the list arp-scan in the lan ] || ||"
+echo "$header_ok [ $first_option ] [ Show the list arp-scan in the lan ] "
 if [ "$command_arp_scan" == "$NULL" ]; then echo "$duo_md [ fail ] [ install arp-scan command ]" ; exit ; fi
 echo "$duo_md [ info ] [ local net: ip lan .. ]"
 $command_ip -4 route | $command_grep -i -v default
@@ -4343,7 +4340,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "license" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ Show license from git sourceforge for $cmd_binary ] || ||"
+echo "$header_ok [ $first_option ]  [ Show license from git sourceforge for $cmd_binary ] "
 echo "license text for gpl v2 downloading from .. $license_gpl "
 $favorite_text_browser -source "$license_gpl" | more
 exit;  fi
@@ -4356,7 +4353,7 @@ exit;  fi
 ####
 ####
 if   [ "$first_option" == "pc-halt" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ power off computer ] || ||"
+echo "$header_ok [ $first_option ] [ power off computer ] "
 demora="15"
 echo "$head_waiting_txt"
 echo "Halt to power off computer ... in $demora seconds"
@@ -4372,7 +4369,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "pc-shutdown" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ power off computer ] || ||"
+echo "$header_ok [ $first_option ] [ power off computer ] "
 demora="15"
 echo "Halt to power off computer ... in $demora seconds"
 echo "$head_waiting_txt"
@@ -4388,7 +4385,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "pc-reboot" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ reboot computer ] || ||"
+echo "$header_ok [ $first_option ] [ reboot computer ] "
 demora="15"
 echo "$head_waiting_txt"
 echo "Reboot to power reboot ... in $demora seconds"
@@ -4404,7 +4401,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "speed-glx" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ test gl mesa3D speed ] [ for default max $time_server_waiting seconds ] || ||"
+echo "$header_ok [ $first_option ]  [ test gl mesa3D speed ] [ for default max $time_server_waiting seconds ] "
 case $command_glxgears in "$NULL") echo "$tab [ fail ] [ Install mesa utils ]"; exit ;; esac
 vblank_mode=0  timeout -s SIGINT -v $time_server_waiting $command_glxgears
 echo 
@@ -4418,7 +4415,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "ntpdate-client" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ update the computer time and date from internet ] || ||"
+echo "$header_ok [ $first_option ]  [ update the computer time and date from internet ] "
 echo
 if [ "$favorite_date_command" == "$NULL" ]; then echo "$tab [ fail ] [ Install one ntp client ]" ; fi
 echo "$tab Old date: $($command_date)"
@@ -4540,7 +4537,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "save" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ save one firewall with one name ] || ||"
+echo "$header_ok [ $first_option ]  [ save one firewall with one name ] "
 case "$second_option" in
 "$NULL") echo "$tab [ info ] [ Usage: $cmd_binary save fw-to-save ]" ; exit ;;
 *) archivofin="$second_option" ;; 
@@ -4586,7 +4583,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "show" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ show one firewall saved ] || ||"
+echo "$header_ok [ $first_option ]  [ show one firewall saved ] "
 echo 
 case "$second_option" in
 "$NULL") $cmd_binary names; echo "$tab [ info ] [ Use: $cmd_binary show file-to-show ]" ; exit ;;
@@ -4623,7 +4620,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "actual" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ show the last firewall saved ] || ||"
+echo "$header_ok [ $first_option ]  [ show the last firewall saved ] "
 echo 
 $command_arptables-save          &> $directory_fwrecover/$cmd_config-actual-arptables
 $command_ebtables-save           &> $directory_fwrecover/$cmd_config-actual-ebtables   
@@ -4655,7 +4652,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "stop" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ Stop the firewall ] || ||"
+echo "$header_ok [ $first_option ]  [ Stop the firewall ] "
 ####
 ####
 #### english: save actual fw #### spanish: guarda actual fw
@@ -4685,7 +4682,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "continue" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ Continue the stoped firewall ] || ||"
+echo "$header_ok [ $first_option ]  [ Continue the stoped firewall ] "
 ####
 ####
 #### english: restore last fw #### spanish: restaura el ultimo fw
@@ -4709,7 +4706,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "speed-ip4" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ test speed ipv4 with internet ] || ||"
+echo "$header_ok [ $first_option ]  [ test speed ipv4 with internet ] "
 case "$command_iperf"  in  $NULL) echo "$duo_md [ fail ] [ Install Iperf command ]"; exit ;; esac
 ####
 ####
@@ -4732,7 +4729,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "speed-ip6" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ test speed ipv6 with internet ] || ||"
+echo "$header_ok [ $first_option ]  [ test speed ipv6 with internet ] "
 case "$command_iperf"  in  $NULL) echo "$duo_md [ fail ] [ install iperf command ]"; exit ;; esac
 ####
 ####
@@ -4755,7 +4752,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "sockets" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ Show sockets with ss ] || ||"
+echo "$header_ok [ $first_option ] [ Show sockets with ss ] "
 if [ "$command_ss" == "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
 echo "$duo_md [ info ] [ The ipv6 sockets ]"
 $command_ss -a6 | $command_sed 's/   / /g'
@@ -4933,7 +4930,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "config-eng" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ show variables cfg from english configuration ] || ||"
+echo "$header_ok [ $first_option ] [ show variables cfg from english configuration ] "
 cat  $defaultfullcfg_eng
 exit; fi
 ####
@@ -4945,7 +4942,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "config-spa" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ show variables cfg from spanish configuration ] || ||"
+echo "$header_ok [ $first_option ] [ show variables cfg from spanish configuration ] "
 cat $defaultfullcfg_spa
 exit; fi
 ####
