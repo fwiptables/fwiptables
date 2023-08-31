@@ -1,0 +1,8 @@
+
+Extra Themes for icewm desktop
+
+web the icewm extra themes
+https://aur.archlinux.org/packages/icewm-extra-themes
+
+git the icewm extra themes
+http://github.com/bbidulock/icewm-extra-themes
