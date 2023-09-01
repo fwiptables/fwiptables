@@ -1,5 +1,5 @@
-### [ fwiptables-cmd command-9.06 ] Options: /usr/bin/fwiptables-cmd options || || 
-### [ intro ] [ /usr/bin/fwiptables-cmd command-9.06 intro ] [ intro md ] || ||
+### [ fwiptables-cmd command-9.06 ] Options: /usr/bin/fwiptables-cmd options 
+### [ intro ] [ /usr/bin/fwiptables-cmd command-9.06 intro ] [ intro md ] 
   
 ###  fwiptables. Firewall With iptables.
   
@@ -23,8 +23,8 @@
   
   
   
-### [ fwiptables-cmd command-9.06 ] Options: /usr/bin/fwiptables-cmd options || ||
-### [ list-options ] [ List options ] [ list-options md ] || ||                        
+### [ fwiptables-cmd command-9.06 ] Options: /usr/bin/fwiptables-cmd options
+### [ list-options ] [ List options ] [ list-options md ]                              
    /usr/bin/fwiptables-cmd [ -cli-menu -gui-menu -gui-roll -gui-shell ]                           
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]      
 ###       | firewall-control |                                                         
