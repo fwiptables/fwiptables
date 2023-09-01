@@ -63,14 +63,20 @@ echo
 exit ; fi
 ####
 ####
+#### :rutina-final-admin:
+##########    english: default root home                ##########
+##########    spanish: ruta del directorio de root casa ##########
+#### :rutina-inicial-default-root-home:
+####
+####
 PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
 if [ "$HOME" == "$NULL" ] ; then default_root_home="/root"; else default_root_home="$HOME"; fi
 ####
 ####
-#### :rutina-final-admin:
-##########    english: iptables is not here               ##########
-##########    spanish: iptables no esta instalado         ##########
-#### :rutina-inicial-iptables:
+#### :rutina-final-default-root-home:
+##########    english: iptables support         ##########
+##########    spanish: iptables soporte         ##########
+#### :rutina-inicial-support-iptables:
 ####
 ####
 command_iptables_legacy="$(command -v iptables-legacy)"
@@ -79,13 +85,13 @@ command_iptables_nft="$(command -v iptables-nft)"
 ####
 if [ "$command_iptables_legacy" == "$NULL" ] || [ "$command_iptables_nft" == "$NULL" ] ; then echo
 echo
-echo "### [ info ] [ fwiptables needs iptables legacy and iptables nft to work ]"
-echo "### [ fail ] [ it needs iptables to works with fwiptables in your system ]"
+echo "### [ info ] [ fwiptables needs iptables legacy and needs iptables nft to work ]"
+echo "### [ fail ] [ it needs as necesary iptables to works with fwiptables in your system operative linux ]"
 echo
 fi
 ####
 ####
-#### :rutina-final-iptables:
+#### :rutina-final-support-iptables:
 ##########     english name, description and version    ##########
 ##########     spanish: nombre, descripcion y version   ##########
 #### :rutina-inicial-name:
@@ -97,7 +103,8 @@ cmd_version="command-9.06" ;
 cmd_name="FireWall With iptables named fwiptables Command" ;
 cmd_description="One Mini Script in bash command named Firewall With iptables like fwiptables" ;
 cmd_license="GPL v2" ;
-cmd_homepage="https://sourceforge.net/projects/f-iptables/" ;
+cmd_homepage_sourceforge="https://sourceforge.net/projects/f-iptables/" ;
+cmd_homepage_github="https://github.com/fwiptables/fwiptables"
 ####
 ####
 #### :rutina-final-name:
