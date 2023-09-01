@@ -2865,8 +2865,8 @@ echo "$text_md server-news server-ftp server-mail server-teamspeak server-mumble
 echo "$text_md server-asterisk server-domain server-squid                                         "
 echo "$title_md        | options-easy |                                                           "
 echo "$text_md preferences-read preferences-modify preferences-regen list-options clasic-options  "
-echo "$text_md filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes geoip intro    "
-echo "$text_md date free ver version notes depends license code examples commands variables       "
+echo "$text_md filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes geoip webcert "
+echo "$text_md date free ver version notes depends license code examples commands variables intro "
 echo "$text_md clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot                 "
 exit ; fi
 ####
@@ -2904,8 +2904,8 @@ echo "$text_md                          server-asterisk server-domain server-squ
 echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen list-options       "
 echo "$text_md                          clasic-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx     "
 echo "$text_md                          sockets nodes geoip date free ver version notes depends license code     "
-echo "$text_md                          commands variables examples intro clean-tmp                              "
-echo "$text_md                          download install uninstall pc-halt pc-shutdown pc-reboot                 "
+echo "$text_md                          commands variables examples intro webcert clean-tmp download            "
+echo "$text_md                          install uninstall pc-halt pc-shutdown pc-reboot                          "
 exit ; fi
 ####
 ####
@@ -4770,6 +4770,24 @@ exit; fi
 ####
 ####
 #### :rutina-final-sockets:
+##########    english: webcert: get the certificate from one web       ##########
+##########    spanish: webcert: obtiene el certificado de una web      ##########
+#### :rutina-inicial-webcert:
+####
+####
+if   [ "$first_option" == "webcert" ] ; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ get one web certifcate from one server with port 443] || ||"
+case "$command_openssl"  in  $NULL) echo "$tab [ fail ] [ install openssl ]"; exit ;; esac
+####
+####
+if [ "$second_option" == "$NULL" ]; then
+echo "[ get one web certifcate ] [ Example: $cmd_binary webcert www.fast.com ]"; exit; fi
+echo
+$command_openssl s_client -connect $second_option:443 & $command_sleep 7 | exit
+exit; fi
+####
+####
+#### :rutina-final-webcert:
 ##########    english: -gui: Manage gui con three options  ##########
 ##########    spanish: -gui: Maneja gui con tres opciones  ##########
 ####
