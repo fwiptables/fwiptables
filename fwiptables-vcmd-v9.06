@@ -985,11 +985,12 @@ exit; fi
 ####
 if [ "$first_option" == "autolog" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ show "$default_autolog" ] "
+echo "$duo_md [ info ] [ last 50 lines from file showed ] [ $default_autolog ]"
 if [ ! -f $default_autolog ]; then touch $default_autolog ; fi
 echo
-cat  "$default_autolog"
+cat  "$default_autolog" | tail -50
 echo
-echo "$duo_md [ info ] [ last end of file showed ] [ $default_autolog ]"
+echo "$duo_md [ info ] [ last 50 lines from file showed ] [ $default_autolog ]"
 exit; fi
 ####
 ####
