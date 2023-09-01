@@ -4338,6 +4338,7 @@ $command_ip -4 route | $command_grep -i -v default
 echo "$duo_md [ info ] [ local scan: arp lan scan .. ]"
 #### $command_arp_scan -l -x & sleep $time_server_waiting && killall -9 $command_arp_scan
 timeout -s SIGINT -v $time_server_waiting $command_arp_scan -l -x
+#### $command_arp_scan -l -x && sleep $time_server_waiting & echo "End time defined in $time_server_waiting" & exit
 exit; fi
 ####
 ####
@@ -4411,7 +4412,7 @@ exit; fi
 if   [ "$first_option" == "speed-glx" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ test gl mesa3D speed ] [ for default max $time_server_waiting seconds ] "
 case $command_glxgears in "$NULL") echo "$tab [ fail ] [ Install mesa utils ]"; exit ;; esac
-vblank_mode=0  timeout -s SIGINT -v $time_server_waiting $command_glxgears
+vblank_mode=0 timeout -s SIGINT -v $time_server_waiting $command_glxgears
 echo 
 exit; fi
 ####
@@ -4723,7 +4724,7 @@ echo "$duo_md [ info ] Stop firewall & Run speed ip4 & Continue firewall"
 echo "$duo_md"
 $cmd_binary stop
 echo "$duo_md"
-echo "$duo_md [ Doing bandwidth in ipv4 to $serverip_iperf_ipv4 ] [ with max $time_server_waiting seconds ]"
+echo "$duo_md [ Doing bandwidth in ipv4 to $serverip_iperf_ipv4 ]"
 $command_iperf -c $serverip_iperf_ipv4 -t 4 -P 1 -p $serverport_iperf_ipv4 |tail -3
 echo "$duo_md"
 $cmd_binary continue
@@ -4746,7 +4747,7 @@ echo "$duo_md [ info ] Stop firewall & Run speed ip4 & Continue firewall"
 echo "$duo_md"
 $cmd_binary stop
 echo "$duo_md"
-echo "$duo_md [ Doing bandwidth in ipv6 to $serverip_iperf_ipv6 ] [ with max $time_server_waiting seconds ]"
+echo "$duo_md [ Doing bandwidth in ipv6 to $serverip_iperf_ipv6 ]"
 $command_iperf -c $serverip_iperf_ipv6 -V -t 4 -P 1 -p $serverport_iperf_ipv6 | tail -3
 echo "$duo_md"
 $cmd_binary continue
@@ -4783,7 +4784,7 @@ case "$command_openssl"  in  $NULL) echo "$tab [ fail ] [ install openssl ]"; ex
 if [ "$second_option" == "$NULL" ]; then
 echo "[ get one web certifcate ] [ Example: $cmd_binary webcert www.fast.com ]"; exit; fi
 echo
-$command_openssl s_client -connect $second_option:443 & $command_sleep 7 | exit
+timeout -s SIGINT -v $time_server_waiting $command_openssl s_client -connect $second_option:443
 exit; fi
 ####
 ####
