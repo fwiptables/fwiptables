@@ -482,7 +482,7 @@ head_waiting_info="$duo_md [ info ] [ info: info in clear txt format ] [ press c
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$duo_md [ $cmd_config $cmd_version ] Options: $cmd_binary options "
+give_cover="$duo_md [ $cmd_config $cmd_version ] [ Options: $cmd_binary options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$duo_md [ _ok_ ] [ Load firewall ] [ Firewall With iptables ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
