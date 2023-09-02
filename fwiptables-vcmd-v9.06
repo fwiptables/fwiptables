@@ -1320,32 +1320,47 @@ exit ; fi
 ####
 if [ "$first_option" == "notes" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List notes about ] [ notes md ]"
-echo 
-echo
+echo "$text_md"
+echo "$text_md"
 echo "$title_md           Several notes .."
-echo 
+echo "$text_md"
 echo "$text_md [ Notes ]"
+echo "$text_md"
 echo "$text_md [ legacy or nft ] whith one of them is sufficent "
+echo "$text_md"
 echo "$text_md [ allow shield maxtries ] limit a attack per bruteforce to us ssh server o other servers "
+echo "$text_md"
 echo "$text_md [ net blacklist ] excepcionals hosts has conection dropped in firewall"
+echo "$text_md"
 echo "$text_md [ net whitelist ] excepcionals hosts has conection allowed in firewall"
+echo "$text_md"
 echo "$text_md [ allow output uid/gid ] User and/or group excepcional have output conection allowed in firewall"
-echo "$text_md "
+echo "$text_md"
 echo "$text_md [ Notes ] [ Two iptables netfilter ]"
+echo "$text_md"
 echo "$text_md iptables-legacy   is    support for xtables" 
+echo "$text_md"
 echo "$text_md iptables-nft      is    support for nftables" 
-echo "$text_md "
+echo "$text_md"
+echo "$text_md"
 echo "$text_md [ Notes ] necesary ports to connect with ipv4 and ipv6 in UDP protocol"
+echo "$text_md"
 echo "$text_md ntp    : Port necesary to update the time and date"
+echo "$text_md"
 echo "$text_md bootpc : Port necesary to dhcp and get ip"
+echo "$text_md"
 echo "$text_md domain : This port is necesary to domain resolver"
+echo "$text_md"
 echo "$text_md https  : This port is necesary for udp named web html5"
-echo "$text_md "
+echo "$text_md"
+echo "$text_md"
 echo "$text_md [ Notes ] necesary protocols for ip v6"
+echo "$text_md"
 echo "$text_md ipv6-icmp : Necesary protocol in ipv6"
+echo "$text_md"
 echo "$text_md ipv4 protocols : ipv6 works too with old ipv4 procotols"
-echo "$text_md "
-echo "$text_md "
+echo "$text_md"
+echo "$text_md"
 exit; fi
 ####
 ####
@@ -2965,8 +2980,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "variables" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ list variables ] "
-echo "##########     variables to config one firewall to choose     ##########"
+echo "$header_ok [ $first_option ]  [ list variables firewall fwiptables] "
 echo "$text_md"
 echo "$title_md           Firewall variables ..."
 echo "$text_md "
@@ -3083,8 +3097,6 @@ echo "$text_md"
 echo "$text_md net_ipv6_server             #"
 echo "$text_md"
 echo "$text_md"
-#### cat $cmd_binary | egrep "#list-vars" | cut -d "=" -f 1
-echo "##########     variables to config one firewall to choose     ##########"
 exit; fi
 ####
 ####
