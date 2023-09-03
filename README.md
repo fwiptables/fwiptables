@@ -1,4 +1,4 @@
-### [ fwiptables-cmd command-9.06 ] Options: /usr/bin/fwiptables-cmd options 
+### [ fwiptables-cmd command-9.06 ] [ Options: /usr/bin/fwiptables-cmd options ]
 ### [ intro ] [ /usr/bin/fwiptables-cmd command-9.06 intro ] [ intro md ] 
   
 ###  fwiptables. Firewall With iptables.
@@ -23,7 +23,7 @@
   
   
   
-### [ fwiptables-cmd command-9.06 ] Options: /usr/bin/fwiptables-cmd options
+### [ fwiptables-cmd command-9.06 ] [ Options: /usr/bin/fwiptables-cmd options ]
 ### [ list-options ] [ List options ] [ list-options md ]                              
    /usr/bin/fwiptables-cmd [ -cli-menu -gui-menu -gui-roll -gui-shell ]                           
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]      
@@ -50,6 +50,6 @@
    server-asterisk server-domain server-squid                                         
 ###         | options-easy |                                                           
    preferences-read preferences-modify preferences-regen list-options clasic-options  
-   filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes geoip intro    
-   date free ver version notes depends license code examples commands variables       
+   filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes geoip webcert 
+   date free ver version notes depends license code examples commands variables intro 
    clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot                 
