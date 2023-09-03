@@ -14,7 +14,7 @@
    rules with file, load rules with file, shield to ssh or other servers choosed,
    limit bandwidth, host whitelist, host blacklist, and other more capacities of firewall.
   
-  
+    File location   : /usr/bin/fwiptables-cmd
     Config Directory: /root/.config/fwiptables-cmd  
   
     Install this version. TYPE: ./fwiptables-command-9.06 install     
