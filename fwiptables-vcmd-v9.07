@@ -2847,9 +2847,9 @@ echo "$text_md server-news server-ftp server-mail server-teamspeak server-mumble
 echo "$text_md server-asterisk server-domain server-squid                                           "
 echo "$title_md        | options-easy |                                                             "
 echo "$text_md preferences-read preferences-modify preferences-regen list-options clasic-options    "
-echo "$text_md filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes geoip webcert    "
-echo "$text_md date free ver version notes depends license code examples commands variables intro   "
-echo "$text_md clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot                   "
+echo "$text_md info-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes     "
+echo "$text_md geoip webcert date free ver version notes depends license code examples commands     "
+echo "$text_md variables intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot   "
 exit ; fi
 ####
 ####
@@ -2884,9 +2884,9 @@ echo "$text_md                          server-webserver-print server-lamp serve
 echo "$text_md                          server-mail server-teamspeak server-mumble server-sql                     "
 echo "$text_md                          server-asterisk server-domain server-squid                                " 
 echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen list-options        "
-echo "$text_md                          clasic-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx      "
-echo "$text_md                          sockets nodes geoip date free ver version notes depends license code      "
-echo "$text_md                          commands variables examples intro webcert clean-tmp download              "
+echo "$text_md                          clasic-options info-options filelog autolog ip4 ip6 speed-ip4 speed-ip6   "
+echo "$text_md                          speed-glx sockets nodes geoip date free ver version notes depends code    "
+echo "$text_md                          commands variables examples intro webcert clean-tmp download license      "
 echo "$text_md                          install uninstall pc-halt pc-shutdown pc-reboot                           "
 exit ; fi
 ####
@@ -2974,6 +2974,18 @@ exit; fi
 ####
 ####
 #### :rutina-final-free-ram:
+##########    english: info-options: options for fwiptables firewall      ##########
+##########    spanish: info-options: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-info-options:
+####
+####
+if   [ "$first_option" == "info-options" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ info options for firewall iptables ] "
+echo "### still work in development"
+exit; fi
+####
+####
+#### :rutina-final-info-options:
 ##########    english: variables: list variables     ##########
 ##########    spanish: variables: lista variables    ##########
 #### :rutina-inicial-variables:
