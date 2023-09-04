@@ -598,7 +598,7 @@ fi
 ####
 if [ "$favorite_graphicall_dialog" == "$NULL" ]; then
 if [ "$command_yad"     != "$NULL" ] ; then  favorite_graphicall_dialog="$command_yad"      ; fi
-#### if [ "$command_zenity"  != "$NULL" ] ; then  favorite_graphicall_dialog="$command_zenity"   ; fi
+if [ "$command_zenity"  != "$NULL" ] ; then  favorite_graphicall_dialog="$command_zenity"   ; fi
 fi
 ####
 ####
@@ -5597,7 +5597,7 @@ exit; fi
 if   [ "$first_option" == "gui-roll" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|03-Firewall-Custom|04-Firewall-Launch|05-options-easy"
-selection_menu="$($command_zenity --text="gui-roll" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+selection_menu="$($favorite_graphicall_dialog --text="gui-roll" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
@@ -5623,7 +5623,7 @@ exit; fi
 if   [ "$first_option" == "gui-roll-firewall-control" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|stop|continue|reset|names|show|save|load|actual"
-selection_menu="$($command_zenity --text="gui-roll-firewall-control" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+selection_menu="$($favorite_graphicall_dialog --text="gui-roll-firewall-control" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 #### 
 ####
@@ -5659,7 +5659,7 @@ if   [ "$first_option" == "gui-roll-firewall-conceptual" ] ; then echo $head_wai
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|ls4|ls6|list-filter4|list-filter6|list-alltables|\
 list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|list-security4|list-security6|list-ebtables|list-arptables"
-selection_menu="$($command_zenity --text="gui-roll-firewall-conceptual" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+selection_menu="$($favorite_graphicall_dialog --text="gui-roll-firewall-conceptual" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
@@ -5699,7 +5699,7 @@ if   [ "$first_option" == "gui-roll-firewall-numeral" ] ; then echo $head_waitin
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|lsn4|lsn6|listn-filter4|listn-filter6|listn-alltables|\
 listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|listn-raw4|listn-raw6|listn-security4|listn-security6|list-ebtables|list-arptables"
-selection_menu="$($command_zenity --text="gui-roll-firewall-numeral" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+selection_menu="$($favorite_graphicall_dialog --text="gui-roll-firewall-numeral" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
@@ -5739,7 +5739,7 @@ if   [ "$first_option" == "gui-roll-firewall-custom" ] ; then echo $head_waiting
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
 names-config|show-config|modify-config|del-config|regen-config|examples-config"
-selection_menu="$($command_zenity --text="gui-roll-firewall-custom" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+selection_menu="$($favorite_graphicall_dialog --text="gui-roll-firewall-custom" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 #### 
 #### 
@@ -5793,7 +5793,7 @@ client-web|client-git|client-vnc|client-torrent|client-vpn|client-tor|lan-tor|la
 games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|\
 server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|server-domain|\
 server-news|server-mail|server-ftp|server-teamspeak|server-mumble|server-sql|server-asterisk"
-selection_menu="$($command_zenity --text="gui-roll-firewall-custom" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+selection_menu="$($favorite_graphicall_dialog --text="gui-roll-firewall-custom" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 #### 
 #### 
@@ -5861,7 +5861,7 @@ filelog|autolog|ip4|ip6|notes|speed-ip4|speed-ip6|sockets|nodes|geoip|date|free|
 depends|commands|variables|license|examples|intro|clean-tmp"
 ####
 ####
-selection="$($command_zenity --text="gui-roll-options-easy" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+selection="$($favorite_graphicall_dialog --text="gui-roll-options-easy" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
 ####
 ####
 selection_final="$(echo $selection | sed 's/\|//g')"
@@ -5915,14 +5915,13 @@ selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --colum
 ####
 case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-01-Firewall-Control)$cmd_binary gui-menu-firewall-control ; exit ;;
-02-Firewall-List-With-Conceptual)$cmd_binary gui-menu-firewall-conceptual ; exit ;;
-02-Firewall-List-With-Numeral)$cmd_binary gui-menu-firewall-numeral ; exit ;;
+01-Firewall-Control*)$cmd_binary gui-menu-firewall-control ; exit ;;
+02-Firewall-List-With-Conceptual*)$cmd_binary gui-menu-firewall-conceptual ; exit ;;
+02-Firewall-List-With-Numeral*)$cmd_binary gui-menu-firewall-numeral ; exit ;;
 03-Firewall-Custom*)$cmd_binary gui-menu-firewall-custom ; exit ;;
 04-Firewall-Launch*)$cmd_binary gui-menu-firewall-launch ; exit ;;
 05-options-easy*)$cmd_binary gui-menu-options-easy ; exit ;;
 esac
-echo lo "$selection_final" 
 ####
 ####
 exit; fi
@@ -5943,49 +5942,49 @@ games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|\
 server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|server-domain|\
 server-news|server-mail|server-ftp|server-teamspeak|server-mumble|server-sql|server-asterisk"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="$first_option" --text="$first_option" --title="Gui-menu With $cmd_binary $cmd_version" --separator=" " --list $selection_menu )"
+selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="$first_option" --text="$first_option" --title="Gui-menu With $cmd_binary $cmd_version" --list $selection_menu )"
 #### 
 #### 
 case "$selection_final" in
 1) $favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
-"gui-principal-menu")$cmd_binary gui-menu ;;
-"gui-help-menu")$cmd_binary -gui help firewall-launch ;;
-"gui-info-menu")$cmd_binary -gui info firewall-launch ;;
-"eraserules")$cmd_binary -gui eraserules ; $cmd_binary gui list4;;
-"wizard-full")$cmd_binary -gui wizard-full ; $cmd_binary gui list4;;
-"wizard-mini")$cmd_binary -gui wizard-mini ; $cmd_binary gui list4;;
-"off-line")$cmd_binary -gui off-line ; $cmd_binary gui list4;;
-"client-basic")$cmd_binary -gui client-basic ; $cmd_binary gui list4;;
-"all-permisive")$cmd_binary -gui all-permisive ; $cmd_binary gui list4;;
-"client-web")$cmd_binary -gui client-web ; $cmd_binary gui list4;;
-"client-git")$cmd_binary -gui client-git ; $cmd_binary gui list4;;
-"client-vnc")$cmd_binary -gui client-vnc ; $cmd_binary gui list4;;
-"client-torrent")$cmd_binary -gui client-torrent ; $cmd_binary gui list4;;
-"client-vpn")$cmd_binary -gui client-vpn ; $cmd_binary gui list4;;
-"client-tor")$cmd_binary -gui client-tor ; $cmd_binary gui list4;;
-"games-shooter")$cmd_binary -gui games-shooter ; $cmd_binary gui list4;;
-"game-wesnoth")$cmd_binary -gui game-wesnoth ; $cmd_binary gui list4;;
-"game-minetest")$cmd_binary -gui game-minetest ; $cmd_binary gui list4;;
-"game-freeciv")$cmd_binary -gui game-freeciv ; $cmd_binary gui list4;;
-"game-widelands")$cmd_binary -gui game-widelands ; $cmd_binary gui list4;;
-"lan-tor")$cmd_binary -gui lan-tor ; $cmd_binary gui list4;;
-"lan-vpn")$cmd_binary -gui lan-vpn ; $cmd_binary gui list4;;
-"shield-ssh")$cmd_binary -gui shield-ssh ; $cmd_binary gui list4;;
-"server-ssh")$cmd_binary -gui server-ssh ; $cmd_binary gui list4;;
-"server-web")$cmd_binary -gui server-web ; $cmd_binary gui list4;;
-"server-vnc")$cmd_binary -gui server-vnc ; $cmd_binary gui list4;;
-"server-samba")$cmd_binary -gui server-samba ; $cmd_binary gui list4;;
-"server-news")$cmd_binary -gui server-news ; $cmd_binary gui list4;;
-"server-mail")$cmd_binary -gui server-mail ; $cmd_binary gui list4;;
-"server-ftp")$cmd_binary -gui server-ftp ; $cmd_binary gui list4;;
-"server-print")$cmd_binary -gui server-print ; $cmd_binary gui list4;;
-"server-lamp")$cmd_binary -gui server-lamp ; $cmd_binary gui list4;;
-"server-teamspeak")$cmd_binary -gui server-teamspeak ; $cmd_binary gui list4;;
-"server-mumble")$cmd_binary -gui server-mumble ; $cmd_binary gui list4;;
-"server-sql")$cmd_binary -gui server-sql ; $cmd_binary gui list4;;
-"server-asterisk")$cmd_binary -gui server-asterisk ; $cmd_binary gui list4;;
-"server-domain")$cmd_binary -gui server-domain ; $cmd_binary gui list4;;
-"custom-cfg")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension \
+gui-principal-menu*)$cmd_binary gui-menu ;;
+gui-help-menu*)$cmd_binary -gui help firewall-launch ;;
+gui-info-menu*)$cmd_binary -gui info firewall-launch ;;
+eraserules*)$cmd_binary -gui eraserules ; $cmd_binary gui list4;;
+wizard-full*)$cmd_binary -gui wizard-full ; $cmd_binary gui list4;;
+wizard-mini*)$cmd_binary -gui wizard-mini ; $cmd_binary gui list4;;
+off-line*)$cmd_binary -gui off-line ; $cmd_binary gui list4;;
+client-basic*)$cmd_binary -gui client-basic ; $cmd_binary gui list4;;
+all-permisive*)$cmd_binary -gui all-permisive ; $cmd_binary gui list4;;
+client-web*)$cmd_binary -gui client-web ; $cmd_binary gui list4;;
+client-git*)$cmd_binary -gui client-git ; $cmd_binary gui list4;;
+client-vnc*)$cmd_binary -gui client-vnc ; $cmd_binary gui list4;;
+client-torrent*)$cmd_binary -gui client-torrent ; $cmd_binary gui list4;;
+client-vpn*)$cmd_binary -gui client-vpn ; $cmd_binary gui list4;;
+client-tor*)$cmd_binary -gui client-tor ; $cmd_binary gui list4;;
+games-shooter*)$cmd_binary -gui games-shooter ; $cmd_binary gui list4;;
+game-wesnoth*)$cmd_binary -gui game-wesnoth ; $cmd_binary gui list4;;
+game-minetest*)$cmd_binary -gui game-minetest ; $cmd_binary gui list4;;
+game-freeciv*)$cmd_binary -gui game-freeciv ; $cmd_binary gui list4;;
+game-widelands*)$cmd_binary -gui game-widelands ; $cmd_binary gui list4;;
+lan-tor*)$cmd_binary -gui lan-tor ; $cmd_binary gui list4;;
+lan-vpn*)$cmd_binary -gui lan-vpn ; $cmd_binary gui list4;;
+shield-ssh*)$cmd_binary -gui shield-ssh ; $cmd_binary gui list4;;
+server-ssh*)$cmd_binary -gui server-ssh ; $cmd_binary gui list4;;
+server-web*)$cmd_binary -gui server-web ; $cmd_binary gui list4;;
+server-vnc*)$cmd_binary -gui server-vnc ; $cmd_binary gui list4;;
+server-samba*)$cmd_binary -gui server-samba ; $cmd_binary gui list4;;
+server-news*)$cmd_binary -gui server-news ; $cmd_binary gui list4;;
+server-mail*)$cmd_binary -gui server-mail ; $cmd_binary gui list4;;
+server-ftp*)$cmd_binary -gui server-ftp ; $cmd_binary gui list4;;
+server-print*)$cmd_binary -gui server-print ; $cmd_binary gui list4;;
+server-lamp*)$cmd_binary -gui server-lamp ; $cmd_binary gui list4;;
+server-teamspeak*)$cmd_binary -gui server-teamspeak ; $cmd_binary gui list4;;
+server-mumble*)$cmd_binary -gui server-mumble ; $cmd_binary gui list4;;
+server-sql*)$cmd_binary -gui server-sql ; $cmd_binary gui list4;;
+server-asterisk*)$cmd_binary -gui server-asterisk ; $cmd_binary gui list4;;
+server-domain*)$cmd_binary -gui server-domain ; $cmd_binary gui list4;;
+custom-cfg*)archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension \
 --title "[Launch Custom]" --text="$($command_ls -1 $directory_config)")" ; 
 $cmd_binary -gui custom $archivo ; $cmd_binary gui list4;;
 esac
