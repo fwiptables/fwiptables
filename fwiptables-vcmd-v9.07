@@ -772,18 +772,9 @@ if [ "$first_option" == "free" ] ; then first_option="free-ram"; fi
 if [ "$first_option" == "list-allrules" ] ; then first_option="list-alltables"; fi
 ####
 ####
-####  english: $1 or or $2 or $3 for complete path per file and other excepcions
-####
-####
-if [ "$1" == "-n" ] ; then first_option="-null" ; fi
-if [ "$first_option" == "md5sum"  ] ; then second_option="$2" ; third_option="$3" ; fi
-if [ "$second_option" == "md5sum" ] ; then third_option="$3"  ; quad_option="$4"  ; fi
-####
-####
 #### english:  alias simple for firewall names 
 ####
 ####
-
 if [ "$first_option" == "erase-rules" ] ; then first_option="eraserules" ; fi
 if [ "$first_option" == "offline" ] ; then first_option="off-line" ; fi
 if [ "$first_option" == "clientweb" ] ; then first_option="client-web" ; fi
@@ -1133,7 +1124,8 @@ if [ -f /etc/resolv.conf.head ]; then echo "$duo_md [ yes ] [ /etc/resolv.conf.h
 if [ -f /etc/resolv.conf ];      then echo "$duo_md [ yes ] [ /etc/resolv.conf ]"     ; fi
 if [ -f /etc/resolv.conf.body ]; then echo "$duo_md [ yes ] [ /etc/resolv.conf.body ]"; fi
 if [ -f /etc/resolv.conf.tail ]; then echo "$duo_md [ yes ] [ /etc/resolv.conf.tail ]"; fi
-if [ -d /etc/resolvconf ];       then echo "$duo_md [ yes ] [ /etc/resolvconf ]"; find /etc/resolvconf ; fi
+if [ -d /etc/resolvconf ];       then echo "$duo_md [ yes ] [ /etc/resolvconf ]";
+$command_find /etc/resolvconf ; fi
 exit; fi
 ####
 ####
@@ -1173,7 +1165,8 @@ if [ -f /etc/resolv.conf.head ]; then echo "$duo_md [ yes ] [ /etc/resolv.conf.h
 if [ -f /etc/resolv.conf ];      then echo "$duo_md [ yes ] [ /etc/resolv.conf ]"     ; fi
 if [ -f /etc/resolv.conf.body ]; then echo "$duo_md [ yes ] [ /etc/resolv.conf.body ]"; fi
 if [ -f /etc/resolv.conf.tail ]; then echo "$duo_md [ yes ] [ /etc/resolv.conf.tail ]"; fi
-if [ -d /etc/resolvconf ];       then echo "$duo_md [ yes ] [ /etc/resolvconf ]"; find /etc/resolvconf ; fi
+if [ -d /etc/resolvconf ];       then echo "$duo_md [ yes ] [ /etc/resolvconf ]";
+$command_find /etc/resolvconf ; fi
 exit; fi
 ####
 ####
@@ -3121,94 +3114,93 @@ exit; fi
 if   [ "$first_option" == "commands" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ list commands possible depends ] "
 echo "##########     commands possible depends  ##########"
-echo arp
-echo arp_scan
-echo arptables
-echo bash
-echo bc
-echo curl
-echo cut
-echo date
-echo dd
-echo dhclient
-echo dhclient_script
-echo dhcpcd
-echo dialog
-echo dig
-echo ebtables
-echo egrep
-echo editor
-echo egrep
-echo elinks
-echo find
-echo fmt
-echo geoiplookup
-echo glxgears
-echo gpg
-echo grep
-echo halt
-echo host
-echo ifconfig
-echo ip
-echo ip6tables_legacy
-echo ip6tables_nft
-echo iperf
-echo iptables_legacy
-echo iptables_nft
-echo iw
-echo links
-echo links2
-echo lpinfo
-echo lpstat
-echo ls
-echo lsblk
-echo lscpu
-echo lsgpu
-echo lshw
-echo lsof
-echo lspci
-echo lsusb
-echo lynx
-echo m2r
-echo md5sum
-echo mdp
-echo mpg123
-echo mpg321
-echo nano
-echo netstat
-echo netstat_nat
-echo nmap
-echo ntpdate
-echo openssl
-echo pico
-echo ping
-echo rdate
-echo reboot
-echo resolveip
-echo route
-echo sed
-echo shc
-echo shutdown
-echo sleep
-echo sntp
-echo ss
-echo sysctl
-echo tcpdump
-echo tee
-echo torify
-echo traceroute
-echo txt2html
-echo uname
-echo vi
-echo vim
-echo wget
-echo whiptail
-echo wpa_passphrase
-echo wpa_supplicant
-echo xrandr
-echo yad
-echo zenity
-echo zgrep
+echo arp              # optional
+echo arp_scan         # necesary in option nodes
+echo arptables        # optional
+echo bash             # necesary
+echo bc               # no necesary
+echo curl             # optional in options ip4 and ip6
+echo cut              # necesary in some options
+echo date             # necesary in option date
+echo dd               # no necesary
+echo dhclient         # no necesary 
+echo dhclient_script  # no necesary
+echo dhcpcd           # no necesary
+echo dialog           # option cli-menu and option cli
+echo dig              # no necesary     
+echo ebtables         # optional
+echo egrep            # necesary
+echo editor           # posible in option cli-menu and option cli
+echo elinks           # optional text browser
+echo find             # option ip4 and option ip6
+echo fmt              # no necesary
+echo geoiplookup      # necesary option geoip
+echo glxgears         # necesary option speed_glx
+echo gpg              # no necesary
+echo grep             # necesary
+echo halt             # necesary pc-halt
+echo host             # no necesary
+echo ifconfig         # no necesary
+echo ip               # optional in options nodes,ip4,ip6
+echo ip6tables_legacy # necesary to run fwiptables
+echo ip6tables_nft    # necesary to run fwiptables
+echo iperf            # necesary in option speed_ip4 and speed_ip6
+echo iptables_legacy  # necesary to run fwiptables
+echo iptables_nft     # necesary to run fwiptables
+echo iw               # no necesary
+echo links            # optional text browser
+echo links2           # optional text browser
+echo lpinfo           # no necesary
+echo lpstat           # no necesary
+echo ls               # necesary
+echo lsblk            # no necesary
+echo lscpu            # no necesary
+echo lsgpu            # no necesary
+echo lshw             # no necesary
+echo lsof             # no necesary
+echo lspci            # no necesary
+echo lsusb            # no necesary
+echo lynx             # optional text browser
+echo m2r              # no necesary
+echo md5sum           # necesary option version
+echo mdp              # no necesary
+echo mpg123           # no necesary
+echo mpg321           # no necesary
+echo nano             # posible in option cli-menu and option cli
+echo netstat          # no necesary
+echo netstat_nat      # no necesary
+echo nmap             # no necesary
+echo ntpdate          # no necesary
+echo openssl          # necesary in option webcert
+echo pico             # posible option cli-menu and option cli
+echo ping             # no necesary
+echo rdate            # posible in option date
+echo reboot           # necesary in pc-reboot
+echo resolveip        # no necesary
+echo route            # no necesary
+echo sed              # very necesary
+echo shc              # no necesary
+echo shutdown         # necesary in pc-shutdown
+echo sleep            # very necesary
+echo sntp             # posible in option date
+echo ss               # necesary in very fwiptables utils
+echo sysctl           # necesary
+echo tcpdump          # no necesary
+echo tee              # necesary in option free
+echo torify           # no necesary
+echo traceroute       # no necesary
+echo txt2html         # no necesary
+echo uname            # no necesary
+echo vi               # posible in option cli-menu,cli
+echo vim              # posible in option cli-menu,cli
+echo wget             # no necesary
+echo whiptail         # posible in option cli-menu,cli
+echo wpa_passphrase   # no necesary
+echo wpa_supplicant   # no necesary
+echo xrandr           # no necesary
+echo yad              # posible in option gui,gui-menu,gui-roll
+echo zenity           # posible in option gui,gui-menu,gui-roll
+echo zgrep            # no necesary
 echo "##########     commands possible depends  ##########"
 exit; fi
 ####
