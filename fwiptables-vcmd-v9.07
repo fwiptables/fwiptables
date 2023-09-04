@@ -290,6 +290,7 @@ command_ss="$(command -v ss)"   #list-commands ;
 command_sysctl="$(command -v sysctl)"   #list-commands ;
 command_tcpdump="$(command -v tcpdump)"   #list-commands ;
 command_tee="$(command -v tee)"   #list-commands ;
+command_timeout="$(command -v timeout)"   #list-commands ;
 command_torify="$(command -v torify)"   #list-commands ;
 command_traceroute="$(command -v traceroute)"   #list-commands ;
 command_txt2html="$(command -v txt2html)"   #list-commands ;
@@ -498,12 +499,6 @@ give_preferences="$duo_md [ Configure ] [ $cmd_binary preferences-modify ]"
 nada="echo -n" ; 
 #### #### english: echo void            #### spanish: impresion vacia
 nada="$(echo -n)" ; 
-#### #### several languages 
-tab_lang_english=" eng "
-tab_lang_spanish=" spa "
-#### #### your language 
-#### show_lang_english=""
-#### show_lang_spanish="##"
 #### #### info list rules
 message_info_rules="$duo_md [ Configure ] [ $cmd_binary preferences-modify ]"
 #### #### english: without cli or gui   #### spanish: sin cli o gui
@@ -516,15 +511,14 @@ message_without_info="$duo_md [ fail ] [ log ] [ Without support for output log 
 message_without_info="$duo_md [ fail ] [ null ] [ Without support for output null for this option ]"
 ####       #### english: close from graphicall with timeout in seconds #####
 ####       #### spanish: cierre desde graficos con retardo en segundos #####
-close_graphicall="1"
+time_close_graphicall="1"
 ####       #### english: message to close graphicall with timeout in seconds #####
 ####       #### spanish: mensage de cierre para graficos con retardo en segundos #####
-mensage_timeout="Closing gui menu in $close_graphicall seconds"
+mensage_with_timeout="Closing gui menu in $time_close_graphicall seconds"
 ####       #### english: autovariables        #### spanish: autovariables
-launch_firewall="no" ;   #  autoconfigure with launch iptables rules
+launch_rules_firewall="no" ;   #  autoconfigure with launch iptables rules
 ####       #### english: [download web link]  #### spanish: [descarga del enlace web]
-flicense="Copyleft, without warranty, gnu license GPL v2."
-license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
+mensage_license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
 ####
 ####
 #### :rutina-final-system-variables:
@@ -1111,7 +1105,7 @@ else  $command_ip -4 address | $command_grep -i  inet | $command_grep -iv 127.0.
 echo
 echo "$duo_md [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
 if [ "$command_curl" == "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
-public_ip4="$(timeout -s SIGINT -v 8 $command_curl -s -4 $serverip_discover_ipv4 -w "\n"| head -1)"
+public_ip4="$($command_timeout -s SIGINT -v 8 $command_curl -s -4 $serverip_discover_ipv4 -w "\n"| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip4"; fi; fi
 echo
@@ -1152,7 +1146,7 @@ else  $command_ip -6 address | $command_grep -i  inet | $command_grep -iv  "inet
 echo
 echo "$duo_md [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" == "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
-public_ip6="$(timeout -s SIGINT -v 8 $command_curl -s -6 $serverip_discover_ipv6 -w "\n"| head -1)"
+public_ip6="$($command_timeout -s SIGINT -v 8 $command_curl -s -6 $serverip_discover_ipv6 -w "\n"| head -1)"
 if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip6"; fi; fi
 echo
@@ -1925,7 +1919,7 @@ case "$NULL" in "$allow_output_ping")      ;;  *)  allow_output_ping="no";; esac
 case "$NULL" in "$allow_output_state")     ;;  *)  allow_output_state="no";; esac
 case "$NULL" in "$allow_output_uid")       ;;  *)  allow_output_uid="no";; esac
 case "$NULL" in "$choosed_iptables")       ;;  *)  choosed_iptables="no";; esac
-case "$NULL" in "$launch_firewall")        ;;  *)  launch_firewall="no" ;; esac
+case "$NULL" in "$launch_rules_firewall")  ;;  *)  launch_rules_firewall="no" ;; esac
 case "$NULL" in "$name_firewall")          ;;  *)  name_firewall="no" ;; esac
 case "$NULL" in "$type_firewall")          ;;  *)  type_firewall="no" ;; esac
 ####
@@ -1971,7 +1965,7 @@ $cmd_binary save autosave-fwiptables &> /dev/null ; exit; fi
 ####
 if [ "$first_option" == "custom" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall custom ] [ $directory_config/$second_option ]" ;
-launch_firewall="yes" ;
+launch_rules_firewall="yes" ;
 type_firewall="custom" ;
 name_firewall="$second_option" ;
 ####
@@ -2002,7 +1996,7 @@ fi
 ####
 if [ "$first_option" == "off-line" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall off-line ]" ;
-launch_firewall="yes" ;
+launch_rules_firewall="yes" ;
 type_firewall="off-line";
 name_firewall="$first_option";
 fi
@@ -2014,7 +2008,7 @@ fi
 ####
 if [ "$first_option" == "all-permisive" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall all-permisive ]" ;
-launch_firewall="yes" ;
+launch_rules_firewall="yes" ;
 type_firewall="all-permisive" ;
 name_firewall="$first_option";
 fi
@@ -2026,7 +2020,7 @@ fi
 ####
 if [ "$first_option" == "shield-ssh" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall shield-ssh ]" ;
-launch_firewall="yes" ;
+launch_rules_firewall="yes" ;
 type_firewall="shield-ssh"    ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2046,7 +2040,7 @@ fi
 ####
 if [ "$first_option" == "client-basic" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-basic ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2066,7 +2060,7 @@ fi
 ####
 if [ "$first_option" == "client-web" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-web ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2086,7 +2080,7 @@ fi
 ####
 if [ "$first_option" == "client-git" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-git ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2106,7 +2100,7 @@ fi
 ####
 if [ "$first_option" == "client-ipp" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-ipp ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2126,7 +2120,7 @@ fi
 ####
 if [ "$first_option" == "client-vnc" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-vnc ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2146,7 +2140,7 @@ fi
 ####
 if [ "$first_option" == "client-torrent" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-torrent ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2166,7 +2160,7 @@ fi
 ####
 if [ "$first_option" == "client-vpn" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-vpn ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2186,7 +2180,7 @@ fi
 ####
 if [ "$first_option" == "client-tor" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-tor ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2206,7 +2200,7 @@ fi
 ####
 if [ "$first_option" == "client-news" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-news ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2231,7 +2225,7 @@ fi
 ####
 if [ "$first_option" == "client-mail" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-mail ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2263,7 +2257,7 @@ fi
 ####
 if [ "$first_option" == "client-ftp" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-ftp ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2283,7 +2277,7 @@ fi
 ####
 if [ "$first_option" == "client-squid" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall client-squid ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2303,7 +2297,7 @@ fi
 ####
 if [ "$first_option" == "lan-vpn" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall lan-vpn ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2324,7 +2318,7 @@ fi
 ####
 if [ "$first_option" == "lan-tor" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall lan-tor ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2345,7 +2339,7 @@ fi
 ####
 if [ "$first_option" == "games-shooter" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall games-shooter ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2365,7 +2359,7 @@ fi
 ####
 if [ "$first_option" == "games-udp" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall games-udp ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2385,7 +2379,7 @@ fi
 ####
 if [ "$first_option" == "game-wesnoth" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall game-wesnoth ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2405,7 +2399,7 @@ fi
 ####
 if [ "$first_option" == "game-minetest" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall game-minetest ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2425,7 +2419,7 @@ fi
 ####
 if [ "$first_option" == "game-freeciv" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall game-freeciv ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2445,7 +2439,7 @@ fi
 ####
 if [ "$first_option" == "game-widelands" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall game-widelands ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2465,7 +2459,7 @@ fi
 ####
 if [ "$first_option" == "server-web" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-web ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2485,7 +2479,7 @@ fi
 ####
 if [ "$first_option" == "server-vnc" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-vnc ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2506,7 +2500,7 @@ fi
 ####
 if [ "$first_option" == "server-ftp" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-ftp ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2525,7 +2519,7 @@ fi
 ####
 if [ "$first_option" == "server-squid" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-squid ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2545,7 +2539,7 @@ fi
 ####
 if [ "$first_option" == "server-news" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-news ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2570,7 +2564,7 @@ fi
 ####
 if [ "$first_option" == "server-mail" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-mail ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2602,7 +2596,7 @@ fi
 ####
 if [ "$first_option" == "server-samba" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-samba ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2622,7 +2616,7 @@ fi
 ####
 if [ "$first_option" == "server-print" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-print ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2642,7 +2636,7 @@ fi
 ####
 if [ "$first_option" == "server-ssh" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-ssh ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2662,7 +2656,7 @@ fi
 ####
 if [ "$first_option" == "server-lamp" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-lamp ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2683,7 +2677,7 @@ fi
 ####
 if [ "$first_option" == "server-asterisk" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-asterisk ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2705,7 +2699,7 @@ fi
 ####
 if [ "$first_option" == "server-mumble" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-mumble ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2725,7 +2719,7 @@ fi
 ####
 if [ "$first_option" == "server-teamspeak" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-teamspeak ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2749,7 +2743,7 @@ fi
 ####
 if [ "$first_option" == "server-sql" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-sql ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -2773,7 +2767,7 @@ fi
 ####
 if [ "$first_option" == "server-domain" ]; then echo $give_cover ; echo $give_load ; 
 echo "$duo_md [ info ] [ loading firewall server-domain ]" ;
-launch_firewall="yes" ; 
+launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
@@ -3189,11 +3183,13 @@ echo "$text_md sleep            # necesary"
 echo "$text_md"
 echo "$text_md sntp             # posible in option date"
 echo "$text_md"
-echo "$text_md ss               # necesary in very fwiptables utils"
+echo "$text_md ss               # necesary in very easy utils"
 echo "$text_md"
 echo "$text_md sysctl           # necesary"
 echo "$text_md"
 echo "$text_md tee              # necesary in option free"
+echo "$text_md"
+echo "$text_md timeout          # necesary in very easy utils"
 echo "$text_md"
 echo "$text_md vi               # posible in option cli-menu,cli"
 echo "$text_md"
@@ -4527,9 +4523,7 @@ if [ "$command_arp_scan" == "$NULL" ]; then echo "$duo_md [ fail ] [ install arp
 echo "$duo_md [ info ] [ local net: ip lan .. ]"
 $command_ip -4 route | $command_grep -i -v default
 echo "$duo_md [ info ] [ local scan: arp lan scan .. ]"
-#### $command_arp_scan -l -x & sleep $time_server_waiting && killall -9 $command_arp_scan
-timeout -s SIGINT -v $time_server_waiting $command_arp_scan -l -x
-#### $command_arp_scan -l -x && sleep $time_server_waiting & echo "End time defined in $time_server_waiting" & exit
+$command_timeout -s SIGINT -v $time_server_waiting $command_arp_scan -l -x
 exit; fi
 ####
 ####
@@ -4541,7 +4535,7 @@ exit; fi
 ####
 if [ "$first_option" == "license" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show license from git sourceforge for $cmd_binary ] "
-echo "license text for gpl v2 downloading from .. $license_gpl "
+echo "license text for gpl v2 downloading from .. $mensage_license_gpl"
 $favorite_text_browser -source "$license_gpl" | more
 exit;  fi
 ####
@@ -4603,7 +4597,7 @@ exit; fi
 if   [ "$first_option" == "speed-glx" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ test gl mesa3D speed ] [ for default max $time_server_waiting seconds ] "
 case $command_glxgears in "$NULL") echo "$tab [ fail ] [ Install mesa utils ]"; exit ;; esac
-vblank_mode=0 timeout -s SIGINT -v $time_server_waiting $command_glxgears
+vblank_mode=0 $command_timeout -s SIGINT -v $time_server_waiting $command_glxgears
 echo 
 exit; fi
 ####
@@ -4635,7 +4629,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "wizard-mini" ]; then echo 
-archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
+archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
 $favorite_text_editor "$directory_temporal/$cmd_config-$archivo"
 clear
@@ -4653,7 +4647,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "wizard-full" ]; then $nada
-archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
+archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
 $favorite_text_editor "$directory_temporal/$cmd_config-$archivo"
 clear
@@ -4975,7 +4969,7 @@ case "$command_openssl"  in  $NULL) echo "$tab [ fail ] [ install openssl ]"; ex
 if [ "$second_option" == "$NULL" ]; then
 echo "[ get one web certifcate ] [ Example: $cmd_binary webcert www.fast.com ]"; exit; fi
 echo
-timeout -s SIGINT -v $time_server_waiting $command_openssl s_client -connect $second_option:443
+$command_timeout -s SIGINT -v $time_server_waiting $command_openssl s_client -connect $second_option:443
 exit; fi
 ####
 ####
@@ -5194,7 +5188,7 @@ case $? in
 #### zenity --info $graphic_window_dimension --text="$cmd_binary good bye";
 ####
 ####
-$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" \
+$favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$time_close_graphicall --text="$mensage_with_timeout" \
 --auto-close --auto-kill ; exit;;
 esac
 ####
@@ -5614,7 +5608,6 @@ case "$selection_final" in
 esac
 ####
 ####
-#### $favorite_graphicall_dialog --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5650,7 +5643,6 @@ $cmd_binary -gui load $archivo ; $cmd_binary -gui list4;;
 esac
 ####
 ####
-#### $favorite_graphicall_dialog --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5691,7 +5683,6 @@ case "$selection_final" in
 esac
 ####
 ####
-#### $favorite_graphicall_dialog --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5732,7 +5723,6 @@ case "$selection_final" in
 esac
 ####
 ####
-#### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5783,7 +5773,6 @@ $cmd_binary -gui del-config $archivo ;;
 esac
 ####
 ####
-#### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5850,7 +5839,6 @@ $cmd_binary -gui custom $archivo ; $cmd_binary gui list4;;
 esac
 ####
 ####
-#### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5906,7 +5894,6 @@ commands) $cmd_binary -gui variables ;;
 esac
 ####
 ####
-#### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5934,7 +5921,6 @@ case "$selection_final" in
 esac
 ####
 ####
-#### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -6001,11 +5987,6 @@ $cmd_binary -gui custom $archivo ; $cmd_binary gui list4;;
 esac
 ####
 ####
-#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
-####
-####
-#### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -6041,11 +6022,6 @@ $cmd_binary -gui load $archivo ; $cmd_binary -gui list4;;
 esac
 ####
 ####
-#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
-####
-####
-#### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -6086,11 +6062,6 @@ case "$selection_final" in
 esac
 ####
 ####
-#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
-####
-####
-#### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -6131,11 +6102,6 @@ case "$selection_final" in
 esac
 ####
 ####
-#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
-####
-####
-#### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -6186,11 +6152,6 @@ $cmd_binary -gui del-config $archivo ;;
 esac
 ####
 ####
-#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
-####
-####
-#### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -6231,16 +6192,10 @@ commands) $cmd_binary -gui commands ;;
 esac
 ####
 ####
-#### $favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-#### if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
-####
-####
-#### $favorite_graphicall_dialog  --progress $graphic_window_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-options-easy:
-
 ###############################################################################################################
 ###############################################################################################################
 ####
@@ -6253,7 +6208,7 @@ exit; fi
 ############################	   spanish: default: sin otra valida opcion
 ####
 ####
-if [ "$launch_firewall" != "yes" ] ; then
+if [ "$launch_rules_firewall" != "yes" ] ; then
 echo "### ### [ fail ] [ Option: $first_option ] ### [ Choose a one valid option ... ] ###" ;
 $cmd_binary $option_default_security ;
 exit ; fi
@@ -6262,7 +6217,7 @@ exit ; fi
 ###############################################################################################################
 ###############################################################################################################
 ####                                                                                            ###############
-####           Knowed now sure that:         launch_firewall="yes"                              ###############
+####           Knowed now sure that:         launch_rules_firewall="yes"                              ###############
 ####                                                                                            ###############
 ###############################################################################################################
 ###############################################################################################################
