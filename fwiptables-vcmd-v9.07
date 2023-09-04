@@ -3093,13 +3093,13 @@ echo "$text_md config_output_uid           # output gid . Example user"
 echo "$text_md"
 echo "$text_md config_output_gid           # output gid . Example users"
 echo "$text_md"
-echo "$text_md net_ipv4_client             # only client ipv4 for host or range . Example 192.168.0.1/8,10.0.0.1/16,127.0.0.1"
+echo "$text_md net_ipv4_client             # only client ipv4 for ip or host or range . Example 192.168.0.1/8,10.0.0.1/16,127.0.0.1"
 echo "$text_md"
-echo "$text_md net_ipv4_server             # only server ipv4 for host or range . Example 192.168.0.1/8"
+echo "$text_md net_ipv4_server             # only server ipv4 for ip or host or range . Example 192.168.0.1/8"
 echo "$text_md"
-echo "$text_md net_ipv6_client             # only client ipv6 for host or range"
+echo "$text_md net_ipv6_client             # only client ipv6 for ip or host or range"
 echo "$text_md"
-echo "$text_md net_ipv6_server             # only server ipv6 for host or range"
+echo "$text_md net_ipv6_server             # only server ipv6 for ip or host or range"
 echo "$text_md"
 echo "$text_md"
 exit; fi
@@ -3108,7 +3108,7 @@ exit; fi
 #### :rutina-final-variables:
 ##########    english: commands: list commands     ##########
 ##########    spanish: commands: lista commands    ##########
-#### :rutina-inicial-variables:
+#### :rutina-inicial-commands:
 ####
 ####
 if   [ "$first_option" == "commands" ]; then echo $give_cover
@@ -3209,7 +3209,7 @@ echo "##########     commands possible depends  ##########"
 exit; fi
 ####
 ####
-#### :rutina-final-variables:
+#### :rutina-final-commands:
 ##########     english: examples-config: Show config files examples            ##########
 ##########     spanish: examples-config: Muestra ejemplos de configuraciones   ##########
 #### :rutina-inicial-examples-config:
