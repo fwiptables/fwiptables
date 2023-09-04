@@ -714,17 +714,24 @@ case "$list_rules_conceptual" in "$NULL") list_rules_conceptual="" ;; *) list_ru
 #### english:  alias alias simple for output gui, -txt or -cli or -gui and more
 ####
 ####
-if [ "$first_option" == "tui-menu"  ] ; then first_option="cli-menu"  ; fi
 if [ "$first_option" == "-tui-menu"  ] || [ "$first_option" == "--tui-menu"  ] ; then first_option="cli-menu"  ; fi
 if [ "$first_option" == "-cli-menu"  ] || [ "$first_option" == "--cli-menu"  ] ; then first_option="cli-menu"  ; fi
 if [ "$first_option" == "-gui-menu"  ] || [ "$first_option" == "--gui-menu"  ] ; then first_option="gui-menu"  ; fi
 if [ "$first_option" == "-gui-roll"  ] || [ "$first_option" == "--gui-roll"  ] ; then first_option="gui-roll-zenity"  ; fi
-if [ "$first_option" == "-gui-rock"  ] || [ "$first_option" == "--gui-rock"  ] ; then first_option="gui-roll-zenity"  ; fi
+if [ "$first_option" == "-gui-rock"  ] || [ "$first_option" == "--gui-rock"  ] ; then first_option="gui-roll"  ; fi
+if [ "$first_option" == "-gui-shell"  ] || [ "$first_option" == "--gui-shell"  ] ; then first_option="gui-shell-zenity"  ; fi
 if [ "$first_option" == "-gui-shell" ] || [ "$first_option" == "--gui-shell" ] ; then first_option="gui-shell" ; fi
 if [ "$first_option" == "-gui-roll-zenity"  ] || [ "$first_option" == "--gui-roll-zenity"  ] ; 
 then first_option="gui-roll-zenity"  ; fi
 if [ "$first_option" == "-gui-roll-yad"  ] || [ "$first_option" == "--gui-roll-yad"  ] ;
 then first_option="gui-roll-yad"  ; fi
+if [ "$first_option" == "-gui-shell-zenity"  ] || [ "$first_option" == "--gui-shell-zenity"  ] ; 
+then first_option="gui-shell-zenity"  ; fi
+if [ "$first_option" == "-gui-shell-yad"  ] || [ "$first_option" == "--gui-shell-yad"  ] ;
+then first_option="gui-shell-yad"  ; fi
+if [ "$first_option" == "gui-roll"  ] ; then first_option="gui-roll-zenity"    ; fi
+if [ "$first_option" == "gui-shell"  ] ; then first_option="gui-shell-zenity"  ; fi
+if [ "$first_option" == "tui-menu"  ] ; then first_option="cli-menu"  ; fi
 if [ "$first_option" == "text" ] || [ "$first_option" == "-text" ]   ; then first_option="-txt"  ; fi
 if [ "$first_option" == "tui"  ] || [ "$first_option" == "-tui" ]    ; then first_option="-cli"  ; fi
 if [ "$first_option" == "txt"  ] || [ "$first_option" == "-txt"  ]   ; then first_option="-txt"  ; fi
@@ -2811,8 +2818,8 @@ exit; fi
 ####
 if [ "$first_option" == "list-options" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ List options ] [ list-options md ]"
-echo "$text_md $cmd_binary"
-echo "$text_md [ -cli-menu -gui-menu -gui-shell -gui-roll-zenity -gui-roll-yad ]                    "
+echo "$text_md $cmd_binary $text_md [ -cli-menu -gui-menu -gui-shell ]"
+echo "$text_md [ -gui-shell-zenity --gui-shell-yad -gui-roll-zenity -gui-roll-yad ]                 "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]        "
 echo "$title_md      | firewall-control |                                                           "
 echo "$text_md stop continue reset actual show save load names-control                              "
@@ -2851,8 +2858,8 @@ exit ; fi
 ####
 if   [ "$first_option" == "clasic-options" ] ; then echo $give_cover 
 echo "$title_md [ $first_option ] [ clasic options ] [ list-options md ] "
-echo "$text_md Launch: $cmd_binary"
-echo "$text_md [ -cli-menu -gui-menu -gui-shell-zenity -gui-shell-yad -gui-roll-zenity -gui-roll-yad ]                "
+echo "$text_md Launch: $cmd_binary $text_md [ -cli-menu -gui-menu gui-shell ]"
+echo "$text_md [ -gui-shell-zenity -gui-shell-yad -gui-roll-zenity -gui-roll-yad ]                                    "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -s|-silent ] first_option [second_option]  "
 echo $text_md
 echo "$text_md      firewall-control |  stop continue reset actual show save load names-control                       "
@@ -6028,6 +6035,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-options-easy:
+##########    english: gui-menu: gui menu general: gui con menu  ##########
+##########    spanish: gui-menu: gui menu general: gui con menu  ##########
+#### :rutina-inicial-gui-menu:
+####
+####
+if [ "$first_option" == "gui-roll-yad" ] ; then echo "still in development" ; fi
 ##########    english: gui-menu: gui menu general: gui con menu  ##########
 ##########    spanish: gui-menu: gui menu general: gui con menu  ##########
 #### :rutina-inicial-gui-menu:
