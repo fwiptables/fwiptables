@@ -1,30 +1,35 @@
-### [ fwiptables-cmd command-9.06 ] [ Options: /usr/bin/fwiptables-cmd options ]
-### [ intro ] [ /usr/bin/fwiptables-cmd command-9.06 intro ] [ intro md ] 
+### [ fwiptables-cmd command-9.07 ] [ Options: /usr/bin/fwiptables-cmd options ]
+### [ intro ] [ /usr/bin/fwiptables-cmd command-9.07 intro ] [ intro md ] 
   
 ###  fwiptables. Firewall With iptables.
   
-   fwiptables is one simple FRONT-END for iptables linux with COMMAND-LINE
-   with CLI-MENU with GUI-MENU with GUI-ROLL with GUI-SHELL.
-   And choose one firewall: eraserules, or wizard-mini, or wizard-full, or custom,
-   or one predesignated firewall to choose one. Gen new rules with templates
+   fwiptables is one simple FRONT-END for iptables linux
+   with COMMAND-LINE with CLI-MENU with GUI-MENU 
+   with GUI-ROLL with GUI-SHELL.
+   And choose one firewall: eraserules, or wizard-mini,
+   or wizard-full, or custom, or one predesignated
+   firewall to choose one. Gen new rules with templates
    and with shield ssh and with comments rules.
   
+   rules ipv4, rules ipv6, netfilter, neftables, tools ip,
+   wizards for rules, save/load rules with files,
+   shield to ssh or other servers choosed,
+   limit bandwidth, host whitelist, host blacklist,
+   and other more capacities of firewall.
   
-   rules ipv4, rules ipv6, netfilter, neftables, tools ip, wizards for rules, save/load rules,
-   rules with file, load rules with file, shield to ssh or other servers choosed,
-   limit bandwidth, host whitelist, host blacklist, and other more capacities of firewall.
+###   fwiptables. Install location.
   
     File location   : /usr/bin/fwiptables-cmd
   
-    Config Directory: /root/.config/fwiptables-cmd  
+    Config directory: /root/.config/fwiptables-cmd  
   
-    Install this version. TYPE: ./fwiptables-command-9.06 install     
+    Install this version. TYPE: ./fwiptables-command-9.07 install     
   
-    Uninstall fwiptables. TYPE: ./fwiptables-command-9.06 uninstall   
+    Uninstall fwiptables. TYPE: ./fwiptables-command-9.07 uninstall   
   
   
   
-### [ fwiptables-cmd command-9.06 ] [ Options: /usr/bin/fwiptables-cmd options ]
+### [ fwiptables-cmd command-9.07 ] [ Options: /usr/bin/fwiptables-cmd options ]
 ### [ list-options ] [ List options ] [ list-options md ]                                
    /usr/bin/fwiptables-cmd [ -cli-menu -gui-menu -gui-roll -gui-shell ]                             
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]        
@@ -51,6 +56,6 @@
    server-asterisk server-domain server-squid                                           
 ###         | options-easy |                                                             
    preferences-read preferences-modify preferences-regen list-options clasic-options    
-   filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes geoip webcert    
-   date free ver version notes depends license code examples commands variables intro   
-   clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot                   
+   info-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes     
+   geoip webcert date free ver version notes depends license code examples commands     
+   variables intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot   
