@@ -750,6 +750,11 @@ if [ "$first_option" == "-l"   ] || [ "$first_option" == "--log"  ]  ; then firs
 if [ "$first_option" == "-n"   ] || [ "$first_option" == "--null"  ] ; then first_option="-null" ; fi
 if [ "$first_option" == "-s"   ] || [ "$first_option" == "--silent"  ] ; then first_option="-null" ; fi
 if [ "$first_option" == "silent"   ] || [ "$first_option" == "-silent"  ] ; then first_option="-null" ; fi
+
+
+
+if [ "$first_option" == "gui-menu-zenity"  ] ; then echo " ## Use: $cmd_binary gui-menu"  ; exit ; fi
+if [ "$first_option" == "gui-menu-yad"     ] ; then echo " ## Use: $cmd_binary gui-menu"  ; exit ; fi
 ####
 ####
 #### english: alias simple for options commons
