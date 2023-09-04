@@ -6045,7 +6045,9 @@ exit; fi
 #### :rutina-inicial-gui-menu:
 ####
 ####
-if [ "$first_option" == "gui-roll-yad" ] ; then echo "still in development" ; fi
+if [ "$first_option" == "gui-roll-yad" ] ; then 
+echo "### still work in development"
+exit; fi
 ##########    english: gui-menu: gui menu general: gui con menu  ##########
 ##########    spanish: gui-menu: gui menu general: gui con menu  ##########
 #### :rutina-inicial-gui-menu:
