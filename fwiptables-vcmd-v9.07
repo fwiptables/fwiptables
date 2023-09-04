@@ -4536,7 +4536,7 @@ exit; fi
 if [ "$first_option" == "license" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show license from git sourceforge for $cmd_binary ] "
 echo "license text for gpl v2 downloading from .. $mensage_license_gpl"
-$favorite_text_browser -source "$license_gpl" | more
+$favorite_text_browser -source "$mensage_license_gpl" | more
 exit;  fi
 ####
 ####
