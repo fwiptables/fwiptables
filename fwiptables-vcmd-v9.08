@@ -2852,32 +2852,32 @@ exit ; fi
 if   [ "$first_option" == "clasic-options" ] ; then echo $give_cover 
 echo "$title_md [ $first_option ] [ clasic options ] [ list-options md ] "
 echo "$text_md Launch: $cmd_binary"
-echo "$text_md [ -cli-menu -gui-menu -gui-shell -gui-roll-zenity -gui-roll-yad ]                                      "
+echo "$text_md [ -cli-menu -gui-menu -gui-shell-zenity -gui-shell-yad -gui-roll-zenity -gui-roll-yad ]                "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -s|-silent ] first_option [second_option]  "
 echo $text_md
-echo "$text_md      firewall-control |  stop continue reset actual show save load names-control                   "
-echo "$text_md   firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6       "
-echo "$text_md                          list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6         "
-echo "$text_md                          list-security4 list-security6 list-ebtables list-arptables                "
-echo "$text_md      firewall-numeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4             "
-echo "$text_md                          listn-filter6 listn-nat4 listn-nat6 listn-raw4 listn-raw6                 "
-echo "$text_md                          listn-mangle4  listn-mangle6 listn-security4 listn-security6              "
-echo "$text_md       firewall-custom |  custom new-full-config nueva-completa-config regen-config                 "
-echo "$text_md                          new-mini-config nueva-mini-config examples-config                         "
-echo "$text_md                          show-config modify-config del-config names-config                         "
-echo "$text_md       firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive          "
-echo "$text_md                          client-basic games-udp games-shooter game-wesnoth game-minetest           "
-echo "$text_md                          game-freeciv game-widelands client-web client-vnc client-mail client-git  "
-echo "$text_md                          client-news client-torrent client-vpn client-ftp  client-tor client-ipp   "
-echo "$text_md                          client-squid lan-tor lan-vpn server-ssh server-samba server-vnc           "
-echo "$text_md                          server-webserver-print server-lamp server-news server-ftp                 "
-echo "$text_md                          server-mail server-teamspeak server-mumble server-sql                     "
-echo "$text_md                          server-asterisk server-domain server-squid                                " 
-echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen list-options        "
-echo "$text_md                          clasic-options info-options filelog autolog ip4 ip6 speed-ip4 speed-ip6   "
-echo "$text_md                          speed-glx sockets nodes geoip date free ver version notes depends code    "
-echo "$text_md                          commands variables examples intro webcert clean-tmp download license      "
-echo "$text_md                          install uninstall pc-halt pc-shutdown pc-reboot                           "
+echo "$text_md      firewall-control |  stop continue reset actual show save load names-control                       "
+echo "$text_md   firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6           "
+echo "$text_md                          list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6             "
+echo "$text_md                          list-security4 list-security6 list-ebtables list-arptables                    "
+echo "$text_md      firewall-numeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4                 "
+echo "$text_md                          listn-filter6 listn-nat4 listn-nat6 listn-raw4 listn-raw6                     "
+echo "$text_md                          listn-mangle4  listn-mangle6 listn-security4 listn-security6                  "
+echo "$text_md       firewall-custom |  custom new-full-config nueva-completa-config regen-config                     "
+echo "$text_md                          new-mini-config nueva-mini-config examples-config                             "
+echo "$text_md                          show-config modify-config del-config names-config                             "
+echo "$text_md       firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive              "
+echo "$text_md                          client-basic games-udp games-shooter game-wesnoth game-minetest               "
+echo "$text_md                          game-freeciv game-widelands client-web client-vnc client-mail client-git      "
+echo "$text_md                          client-news client-torrent client-vpn client-ftp  client-tor client-ipp       "
+echo "$text_md                          client-squid lan-tor lan-vpn server-ssh server-samba server-vnc               "
+echo "$text_md                          server-webserver-print server-lamp server-news server-ftp                     "
+echo "$text_md                          server-mail server-teamspeak server-mumble server-sql                         "
+echo "$text_md                          server-asterisk server-domain server-squid                                    "
+echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen list-options            "
+echo "$text_md                          clasic-options info-options filelog autolog ip4 ip6 speed-ip4 speed-ip6       "
+echo "$text_md                          speed-glx sockets nodes geoip date free ver version notes depends code        "
+echo "$text_md                          commands variables examples intro webcert clean-tmp download license          "
+echo "$text_md                          install uninstall pc-halt pc-shutdown pc-reboot                               "
 exit ; fi
 ####
 ####
@@ -5168,20 +5168,19 @@ exit; fi
 ####
 ####
 #### :rutina-final-config-spa:
-##########    english: gui-shell: graphic enviroment            ##########
-##########    spanish: gui-shell: entorno de comandos grafico   ##########
-#### :rutina-inicial-gui-shell:
+##########    english: gui-shell-zenity: graphic enviroment            ##########
+##########    spanish: gui-shell-zenity: entorno de comandos grafico   ##########
+#### :rutina-inicial-gui-shell-zenity:
 ####
 ####
-if   [ "$first_option" == "gui-shell" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
+if   [ "$first_option" == "gui-shell-zenity" ] ; then echo $head_waiting_gui
 ####
 ####
 ####  english: principal gui  #### spanish: principal gui
 ####
 ####
-titulo="$cmd_binary gui-shell"
-untexto="$cmd_binary gui-shell"
+titulo="$cmd_binary gui-shell-zenity"
+untexto="$cmd_binary gui-shell-zenity"
 ####
 ####
 #### cd $directory_config
@@ -5298,7 +5297,137 @@ $cmd_binary gui-shell
 exit ; fi
 ####
 ####
-#### :rutina-final-gui-shell:
+#### :rutina-final-gui-shell-zenity:
+##########    english: gui-shell-yad: graphic enviroment            ##########
+##########    spanish: gui-shell-yad: entorno de comandos grafico   ##########
+#### :rutina-inicial-gui-shell-yad:
+####
+####
+if   [ "$first_option" == "gui-shell-yad" ] ; then echo $head_waiting_gui
+####
+####
+####  english: principal gui  #### spanish: principal gui
+####
+####
+titulo="$cmd_binary gui-shell-yad"
+untexto="$cmd_binary gui-shell-yad"
+####
+####
+#### cd $directory_config
+####
+####
+menugtk=$($command_yad --entry $graphic_window_dimension --entry-label="$($cmd_binary list-options)" \
+--entry-text="first_option [ second_option ] " )
+case $? in
+1)
+####
+####
+#### zenity --info $graphic_window_dimension --text="$cmd_binary good bye";
+####
+####
+$command_yad  --progress $graphic_window_dimension --timeout=$time_close_graphicall --text="$mensage_with_timeout" \
+--auto-close --auto-kill ; exit;;
+esac
+####
+####
+#### english: manage some configs    ####
+#### spanish: maneja algunas configs ####
+####
+####
+case $menugtk in
+####
+####
+#### english: new-full-config and nueva-completa-config whithout parameters ####
+#### spanish: new-full-config and nueva-completa-config sin parametros      ####
+####
+####
+"new-full-config")
+$command_yad  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary new-full-config config.cfg ]"
+;;
+"new-mini-config")
+$command_yad  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary new-mini-config config.cfg ]"
+;;
+"nueva-completa-config")
+$command_yad  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-completa-config config.cfg ]"
+;;
+"new-mini-config")
+$command_yad  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-mini-config config.cfg ]"
+;;
+"modify-config")
+$command_yad  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary modify-config config.cfg ]"
+;;
+####
+####
+#### english: new-full-config and nueva-completa-config whithout parameters and with one space  ####
+#### spanish: new-full-config and nueva-completa-config sin parametros y con un espacio         ####
+####
+####
+"new-full-config ")
+$command_yad  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary new-full-config config.cfg ]"
+;;
+"new-mini-config ")
+$command_yad  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary new-mini-config config.cfg ]"
+;;
+"nueva-completa-config ")
+$command_yad  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-completa-config config.cfg ]"
+;;
+"new-mini-config ")
+$command_yad  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-mini-config config.cfg ]"
+;;
+"modify-config ")
+$command_yad  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cmd_binary modify-config config.cfg ]"
+;;
+####
+####
+#### english: several options con parametros
+#### spanish: varias opciones con parametros
+####
+####
+new-full-config*)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+$cmd_binary -gui new-full-config $unarchivo
+;;
+nueva-completa-config*)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+$cmd_binary -gui nueva-completa-config $unarchivo
+;;
+new-mini-config*)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+$cmd_binary -gui new-mini-config $unarchivo
+;;
+nueva-mini-config*)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+$cmd_binary -gui nueva-mini-config $unarchivo
+;;
+modify-config*)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+$cmd_binary -gui modify-config $unarchivo
+;;
+show-config*)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+$cmd_binary -gui show-config $unarchivo
+;;
+wizard-full*) $cmd_binary gui wizard-full ;;
+wizard-mini*) $cmd_binary gui wizard-mini ;;
+####
+####
+#### english: all other otpions    ####
+#### spanish: las demas opciones   ####
+####
+####
+"$NULL")
+$command_yad  --info $graphic_window_dimension --text="$cmd_binary good bye";
+$command_yad  --progress $graphic_window_dimension --timeout=1 --text="Closing gui menu" --auto-close --auto-kill ; exit ;;
+*) fecha_temporal=$(date | $command_sed s/\ //g) ; $cmd_binary $menugtk &> /tmp/fwiptables-$fecha_temporal
+$command_yad  --text-info $graphic_window_dimension --title="[ $cmd_binary gui-shell ] [ $menugtk ]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
+rm /tmp/fwiptables-$fecha_temporal
+;;
+esac
+$cmd_binary gui-shell-yad
+exit ; fi
+####
+####
+#### :rutina-final-gui-shell-yad:
 ##########    english: cli-menu: Manage list rules with one text menu          ##########
 ##########    spanish: cli-menu: Maneja lista de reglas con un menu de texto   ##########
 #### :rutina-inicial-cli-menu:
