@@ -2806,8 +2806,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-options" ] ; then echo $give_cover
-echo "$title_md [ $first_option ] [ List options ] [ list-options md ]                                "
-echo "$text_md $cmd_binary [ -cli-menu -gui-menu -gui-roll -gui-shell ]                             "
+echo "$title_md [ $first_option ] [ List options ] [ list-options md ]                              "
+echo "$text_md $cmd_binary [ -cli-menu -gui-menu -gui-roll-zenity -gui-roll-yad -gui-shell ]        "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]        "
 echo "$title_md      | firewall-control |                                                           "
 echo "$text_md stop continue reset actual show save load names-control                              "
@@ -2847,7 +2847,7 @@ exit ; fi
 if   [ "$first_option" == "clasic-options" ] ; then echo $give_cover 
 echo "$title_md [ $first_option ] [ clasic options ] [ list-options md ] "
 echo $title_md
-echo "     Launch: $cmd_binary [ -cli-menu -gui-menu -gui-roll -gui-shell ]                                       "
+echo "     Launch: $cmd_binary [ -cli-menu -gui-menu -gui-roll-zenity -gui-roll-yad -gui-shell ]                  "
 echo "     [ -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -s|-silent] first_option [second_option]   "
 echo $title_md
 echo "$text_md      firewall-control |  stop continue reset actual show save load names-control                   "
@@ -5589,12 +5589,12 @@ exit; fi
 #### :rutina-final-text-pause:
 ###############################################################################################################
 ###############################################################################################################
-##########    english: gui-roll: gui roll general: gui with roll  ##########
-##########    spanish: gui-roll: gui roll general: gui con roll   ##########
-#### :rutina-inicial-gui-roll:
+##########    english: gui-roll-zenity: gui roll general: gui with roll  ##########
+##########    spanish: gui-roll-zenity: gui roll general: gui con roll   ##########
+#### :rutina-inicial-gui-roll-zenity:
 ####
 ####
-if   [ "$first_option" == "gui-roll" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-roll-zenity" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|03-Firewall-Custom|04-Firewall-Launch|05-options-easy"
 selection_menu="$($favorite_graphicall_dialog --text="gui-roll" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
@@ -5602,25 +5602,25 @@ selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
-"01-Firewall-Control")$cmd_binary gui-roll-firewall-control ; exit ;;
-"02-Firewall-List-With-Conceptual")$cmd_binary gui-roll-firewall-conceptual ; exit ;;
-"02-Firewall-List-With-Numeral")$cmd_binary gui-roll-firewall-numeral ; exit ;;
-"03-Firewall-Custom")$cmd_binary gui-roll-firewall-custom ; exit ;;
-"04-Firewall-Launch")$cmd_binary gui-roll-firewall-launch ; exit ;;
-"05-options-easy")$cmd_binary gui-roll-options-easy ; exit ;;
+"01-Firewall-Control")$cmd_binary gui-roll-zenity-firewall-control ; exit ;;
+"02-Firewall-List-With-Conceptual")$cmd_binary gui-roll-zenity-firewall-conceptual ; exit ;;
+"02-Firewall-List-With-Numeral")$cmd_binary gui-roll-zenity-firewall-numeral ; exit ;;
+"03-Firewall-Custom")$cmd_binary gui-roll-zenity-firewall-custom ; exit ;;
+"04-Firewall-Launch")$cmd_binary gui-roll-zenity-firewall-launch ; exit ;;
+"05-options-easy")$cmd_binary gui-roll-zenity-options-easy ; exit ;;
 esac
 ####
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll:
-##########    english: gui-roll-firewall-control: gui roll firewall-control: gui with roll  ##########
-##########    spanish: gui-roll-firewall-control: gui roll firewall-control: gui con roll   ##########
-#### :rutina-inicial-gui-roll-firewall-control:
+#### :rutina-final-gui-roll-zenity:
+##########    english: gui-roll-zenity-firewall-control: gui roll firewall-control: gui with roll  ##########
+##########    spanish: gui-roll-zenity-firewall-control: gui roll firewall-control: gui con roll   ##########
+#### :rutina-inicial-gui-zenity-roll-firewall-control:
 ####
 ####
-if   [ "$first_option" == "gui-roll-firewall-control" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-roll-zenity-firewall-control" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|stop|continue|reset|names|show|save|load|actual"
 selection_menu="$($favorite_graphicall_dialog --text="gui-roll-firewall-control" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
@@ -5649,13 +5649,13 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-firewall-control:
-##########    english: gui-roll-firewall-conceptual: gui roll firewall-conceptual: gui with roll  ##########
-##########    spanish: gui-roll-firewall-conceptual: gui roll firewall-conceptual: gui con roll   ##########
-#### :rutina-inicial-gui-roll-firewall-conceptual:
+#### :rutina-final-gui-roll-zenity-firewall-control:
+##########    english: gui-roll-zenity-firewall-conceptual: gui roll firewall-conceptual: gui with roll  ##########
+##########    spanish: gui-roll-zenity-firewall-conceptual: gui roll firewall-conceptual: gui con roll   ##########
+#### :rutina-inicial-gui-roll-zenity-firewall-conceptual:
 ####
 ####
-if   [ "$first_option" == "gui-roll-firewall-conceptual" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-roll-zenity-firewall-conceptual" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|ls4|ls6|list-filter4|list-filter6|list-alltables|\
 list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|list-security4|list-security6|list-ebtables|list-arptables"
@@ -5689,13 +5689,13 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-firewall-conceptual:
-##########    english: gui-roll-firewall-numeral: gui roll firewall-numeral: gui with roll  ##########
-##########    spanish: gui-roll-firewall-numeral: gui roll firewall-numeral: gui con roll   ##########
-#### :rutina-inicial-gui-roll-firewall-numeral:
+#### :rutina-final-gui-roll-zenity-firewall-conceptual:
+##########    english: gui-roll-zenity-firewall-numeral: gui roll firewall-numeral: gui with roll  ##########
+##########    spanish: gui-roll-zenity-firewall-numeral: gui roll firewall-numeral: gui con roll   ##########
+#### :rutina-inicial-gui-roll-zenity-firewall-numeral:
 ####
 ####
-if   [ "$first_option" == "gui-roll-firewall-numeral" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-roll-zenity-firewall-numeral" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|lsn4|lsn6|listn-filter4|listn-filter6|listn-alltables|\
 listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|listn-raw4|listn-raw6|listn-security4|listn-security6|list-ebtables|list-arptables"
@@ -5729,13 +5729,13 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-firewall-numeral:
-##########    english: gui-roll-firewall-custom: gui roll firewall-custom: gui with roll  ##########
-##########    spanish: gui-roll-firewall-custom: gui roll firewall-custom: gui con roll   ##########
-#### :rutina-inicial-gui-roll-firewall-custom:
+#### :rutina-final-gui-roll-zenity-firewall-numeral:
+##########    english: gui-roll-zenity-firewall-custom: gui roll firewall-custom: gui with roll  ##########
+##########    spanish: gui-roll-zenity-firewall-custom: gui roll firewall-custom: gui con roll   ##########
+#### :rutina-inicial-gui-roll-zenity-firewall-custom:
 ####
 ####
-if   [ "$first_option" == "gui-roll-firewall-custom" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-roll-zenity-firewall-custom" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
 names-config|show-config|modify-config|del-config|regen-config|examples-config"
@@ -5779,13 +5779,13 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-firewall-custom:
+#### :rutina-final-gui-roll-zenity-firewall-custom:
 ##########    english: gui-roll-firewall-launch: gui roll firewall-launch: gui with roll  ##########
 ##########    spanish: gui-roll-firewall-launch: gui roll firewall-launch: gui con roll   ##########
-#### :rutina-inicial-gui-roll-firewall-launch:
+#### :rutina-inicial-gui-roll-zenity-firewall-launch:
 ####
 ####
-if   [ "$first_option" == "gui-roll-firewall-launch" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-roll-zenity-firewall-launch" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|eraserules|\
 wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|client-basic|\
@@ -5845,13 +5845,13 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-firewall-launch:
-##########    english: gui-roll-options-easy: gui roll options-easy: gui with roll  ##########
-##########    spanish: gui-roll-options-easy: gui roll options-easy: gui con roll   ##########
-#### :rutina-inicial-gui-roll-options-easy:
+#### :rutina-final-gui-roll-zenity-firewall-launch:
+##########    english: gui-roll-zenity-options-easy: gui roll options-easy: gui with roll  ##########
+##########    spanish: gui-roll-zenity-options-easy: gui roll options-easy: gui con roll   ##########
+#### :rutina-inicial-gui-roll-zenity-options-easy:
 ####
 ####
-if   [ "$first_option" == "gui-roll-options-easy" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-roll-zenity-options-easy" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 ####
 selection=""
@@ -5900,7 +5900,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-options-easy:
+#### :rutina-final-gui-roll-zenity-options-easy:
 ##########    english: gui-menu: gui menu general: gui con menu  ##########
 ##########    spanish: gui-menu: gui menu general: gui con menu  ##########
 #### :rutina-inicial-gui-menu:
