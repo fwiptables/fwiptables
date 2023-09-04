@@ -3114,93 +3114,52 @@ exit; fi
 if   [ "$first_option" == "commands" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ list commands possible depends ] "
 echo "##########     commands possible depends  ##########"
-echo arp              # optional
-echo arp_scan         # necesary in option nodes
-echo arptables        # optional
-echo bash             # necesary
-echo bc               # no necesary
-echo curl             # optional in options ip4 and ip6
-echo cut              # necesary in some options
-echo date             # necesary in option date
-echo dd               # no necesary
-echo dhclient         # no necesary 
-echo dhclient_script  # no necesary
-echo dhcpcd           # no necesary
-echo dialog           # option cli-menu and option cli
-echo dig              # no necesary     
-echo ebtables         # optional
-echo egrep            # necesary
-echo editor           # posible in option cli-menu and option cli
-echo elinks           # optional text browser
-echo find             # option ip4 and option ip6
-echo fmt              # no necesary
-echo geoiplookup      # necesary option geoip
-echo glxgears         # necesary option speed_glx
-echo gpg              # no necesary
-echo grep             # necesary
-echo halt             # necesary pc-halt
-echo host             # no necesary
-echo ifconfig         # no necesary
-echo ip               # optional in options nodes,ip4,ip6
-echo ip6tables_legacy # necesary to run fwiptables
-echo ip6tables_nft    # necesary to run fwiptables
-echo iperf            # necesary in option speed_ip4 and speed_ip6
-echo iptables_legacy  # necesary to run fwiptables
-echo iptables_nft     # necesary to run fwiptables
-echo iw               # no necesary
-echo links            # optional text browser
-echo links2           # optional text browser
-echo lpinfo           # no necesary
-echo lpstat           # no necesary
-echo ls               # necesary
-echo lsblk            # no necesary
-echo lscpu            # no necesary
-echo lsgpu            # no necesary
-echo lshw             # no necesary
-echo lsof             # no necesary
-echo lspci            # no necesary
-echo lsusb            # no necesary
-echo lynx             # optional text browser
-echo m2r              # no necesary
-echo md5sum           # necesary option version
-echo mdp              # no necesary
-echo mpg123           # no necesary
-echo mpg321           # no necesary
-echo nano             # posible in option cli-menu and option cli
-echo netstat          # no necesary
-echo netstat_nat      # no necesary
-echo nmap             # no necesary
-echo ntpdate          # no necesary
-echo openssl          # necesary in option webcert
-echo pico             # posible option cli-menu and option cli
-echo ping             # no necesary
-echo rdate            # posible in option date
-echo reboot           # necesary in pc-reboot
-echo resolveip        # no necesary
-echo route            # no necesary
-echo sed              # very necesary
-echo shc              # no necesary
-echo shutdown         # necesary in pc-shutdown
-echo sleep            # very necesary
-echo sntp             # posible in option date
-echo ss               # necesary in very fwiptables utils
-echo sysctl           # necesary
-echo tcpdump          # no necesary
-echo tee              # necesary in option free
-echo torify           # no necesary
-echo traceroute       # no necesary
-echo txt2html         # no necesary
-echo uname            # no necesary
-echo vi               # posible in option cli-menu,cli
-echo vim              # posible in option cli-menu,cli
-echo wget             # no necesary
-echo whiptail         # posible in option cli-menu,cli
-echo wpa_passphrase   # no necesary
-echo wpa_supplicant   # no necesary
-echo xrandr           # no necesary
-echo yad              # posible in option gui,gui-menu,gui-roll
-echo zenity           # posible in option gui,gui-menu,gui-roll
-echo zgrep            # no necesary
+echo "arp              # optional"
+echo "arp_scan         # necesary in option nodes"
+echo "arptables        # optional"
+echo "bash             # necesary"
+echo "bc               # no necesary"
+echo "curl             # optional in options ip4 and ip6"
+echo "cut              # necesary in some options"
+echo "date             # necesary in option date"
+echo "dialog           # posible in option cli-menu and option cli"
+echo "ebtables         # optional"
+echo "egrep            # necesary"
+echo "editor           # posible in option cli-menu and option cli"
+echo "elinks           # optional text browser"
+echo "find             # necesary in option ip4 and option ip6"
+echo "geoiplookup      # necesary option geoip"
+echo "glxgears         # necesary in option speed_glx"
+echo "grep             # necesary"
+echo "halt             # necesary pc-halt"
+echo "ip               # optional in options nodes,ip4,ip6"
+echo "ip6tables_legacy # necesary to run fwiptables"
+echo "ip6tables_nft    # necesary to run fwiptables"
+echo "iperf            # necesary in option speed_ip4 and speed_ip6"
+echo "iptables_legacy  # necesary to run fwiptables"
+echo "iptables_nft     # necesary to run fwiptables"
+echo "links            # optional text browser"
+echo "links2           # optional text browser"
+echo "ls               # necesary"
+echo "lynx             # optional text browser"
+echo "md5sum           # necesary option version"
+echo "nano             # posible in option cli-menu and option cli"
+echo "openssl          # necesary in option webcert"
+echo "pico             # posible option cli-menu and option cli"
+echo "rdate            # posible in option date"
+echo "reboot           # necesary in pc-reboot"
+echo "sed              # very necesary"
+echo "shutdown         # necesary in pc-shutdown"
+echo "sleep            # very necesary"
+echo "sntp             # posible in option date"
+echo "ss               # necesary in very fwiptables utils"
+echo "sysctl           # necesary"
+echo "tee              # necesary in option free"
+echo "vi               # posible in option cli-menu,cli"
+echo "vim              # posible in option cli-menu,cli"
+echo "whiptail         # posible in option cli-menu,cli"
+echo "yad              # posible in option gui,gui-menu,gui-roll"
+echo "zenity           # posible in option gui,gui-menu,gui-roll"
 echo "##########     commands possible depends  ##########"
 exit; fi
 ####
