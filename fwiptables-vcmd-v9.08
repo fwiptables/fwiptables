@@ -5636,11 +5636,11 @@ case "$selection_final" in
 "continue")$cmd_binary -gui continue ; $cmd_binary -gui list4;;
 "reset")$cmd_binary -gui reset ; $cmd_binary -gui list4;;
 "names")$cmd_binary -gui names ;;
-"show")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[Save Firewall]" --text="$($cmd_binary names)")" ; 
+"show")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[Save Firewall]" --entry-text="$($cmd_binary names)")" ; 
 $cmd_binary -gui show $archivo ;;
-"save")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[Save Firewall]" --text="$($cmd_binary names)")" ; 
+"save")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[Save Firewall]" --entry-text="$($cmd_binary names)")" ; 
 $cmd_binary -gui save $archivo ;;
-"load")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[Load Firewall]" --text="$($cmd_binary names)")" ;
+"load")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[Load Firewall]" --entry-text="$($cmd_binary names)")" ;
 $cmd_binary -gui load $archivo ; $cmd_binary -gui list4;;
 "actual")$cmd_binary -gui actual ;;
 esac
@@ -5749,27 +5749,27 @@ case "$selection_final" in
 "gui-help-menu")$cmd_binary -gui help firewall-custom ;;
 "gui-info-menu")$cmd_binary -gui info firewall-custom ;;
 "new-full-config")
-archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[new-full-config]" --entry-text="Input file name to new full configuration")" ;
 $cmd_binary -gui new-full-config $archivo ;;
 "nueva-completa-config")
-archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[nueva-completa-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[nueva-completa-config]" --entry-text="Introduce el nombre del nuevo archivo cfg")" ;
 $cmd_binary -gui nueva-completa-config $archivo ;;
 "new-mini-config")
-archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[new-mini-config]" --text="Input file name to new mini configuration")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[new-mini-config]" --entry-text="Input file name to new mini configuration")" ;
 $cmd_binary -gui new-mini-config $archivo ;;
 "nueva-mini-config")
-archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[nueva-mini-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[nueva-mini-config]" --entry-text=="Introduce el nombre del nuevo archivo cfg")" ;
 $cmd_binary -gui nueva-mini-config $archivo ;;
 "names-config")
 $cmd_binary -gui names-config ;;
 "show-config")
-archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[show-config]" --text="$($cmd_binary cfg)")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[show-config]" --entry-text=="$($cmd_binary cfg)")" ;
 $cmd_binary -gui show-config $archivo ;;
 "modify-config")
-archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[modify-config]" --text="$($cmd_binary cfg)")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[modify-config]" --entry-text="$($cmd_binary cfg)")" ;
 $cmd_binary -gui modify-config $archivo ;;
 "del-config")
-archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[del-config]" --text="$($cmd_binary cfg)")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[del-config]" --entry-text="$($cmd_binary cfg)")" ;
 $cmd_binary -gui del-config $archivo ;;
 "regen-config")$cmd_binary -gui regen-config ;;
 "examples-config")$cmd_binary gui examples-config ;;
@@ -5837,7 +5837,7 @@ case "$selection_final" in
 "server-asterisk")$cmd_binary -gui server-asterisk ; $cmd_binary gui list4;;
 "server-domain")$cmd_binary -gui server-domain ; $cmd_binary gui list4;;
 "custom-cfg")archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension \
---title "[Launch Custom]" --text="$($command_ls -1 $directory_config)")" ; 
+--title "[Launch Custom]" --entry-text="$($command_ls -1 $directory_config)")" ; 
 $cmd_binary -gui custom $archivo ; $cmd_binary gui list4;;
 esac
 ####
@@ -5985,7 +5985,7 @@ server-sql*)$cmd_binary -gui server-sql ; $cmd_binary gui list4;;
 server-asterisk*)$cmd_binary -gui server-asterisk ; $cmd_binary gui list4;;
 server-domain*)$cmd_binary -gui server-domain ; $cmd_binary gui list4;;
 custom-cfg*)archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension \
---title "[Launch Custom]" --text="$($command_ls -1 $directory_config)")" ; 
+--title "[Launch Custom]" --entry-text="$($command_ls -1 $directory_config)")" ; 
 $cmd_binary -gui custom $archivo ; $cmd_binary gui list4;;
 esac
 ####
@@ -6015,11 +6015,11 @@ stop*)$cmd_binary -gui stop ; $cmd_binary -gui list4;;
 continue*)$cmd_binary -gui continue ; $cmd_binary -gui list4;;
 reset*)$cmd_binary -gui reset ; $cmd_binary -gui list4;;
 names*)$cmd_binary -gui names ;;
-show*)archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[Save Firewall]" --text="$($cmd_binary names)")" ; 
+show*)archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[Save Firewall]" --entry-text="$($cmd_binary names)")" ; 
 $cmd_binary -gui show $archivo ;;
-save*)archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[Save Firewall]" --text="$($cmd_binary names)")" ; 
+save*)archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[Save Firewall]" --entry-text="$($cmd_binary names)")" ; 
 $cmd_binary -gui save $archivo ;;
-load*)archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[Load Firewall]" --text="$($cmd_binary names)")" ;
+load*)archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension --title "[Load Firewall]" --entry-text="$($cmd_binary names)")" ;
 $cmd_binary -gui load $archivo ; $cmd_binary -gui list4;;
 actual*)$cmd_binary -gui actual ;;
 esac
@@ -6128,20 +6128,20 @@ gui-principal-menu) $cmd_binary gui-menu ;;
 gui-help-menu*) $cmd_binary -gui help firewall-custom ;;
 gui-info-menu*) $cmd_binary -gui info firewall-custom ;;
 new-full-config*) archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[new-full-config]" \
---text="Input file name to new full configuration")" ; $cmd_binary -gui new-full-config $archivo ;;
+--entry-text="Input file name to new full configuration")" ; $cmd_binary -gui new-full-config $archivo ;;
 nueva-completa-config*) archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[nueva-completa-config]" \
---text="Introduce el nombre del nuevo archivo cfg")" ; $cmd_binary -gui nueva-completa-config $archivo ;;
+--entry-text="Introduce el nombre del nuevo archivo cfg")" ; $cmd_binary -gui nueva-completa-config $archivo ;;
 new-mini-config*) archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry /
---title "[new-mini-config]" --text="Input file name to new mini configuration")" ; $cmd_binary -gui new-mini-config $archivo ;;
+--title "[new-mini-config]" --entry-text="Input file name to new mini configuration")" ; $cmd_binary -gui new-mini-config $archivo ;;
 nueva-mini-config*) archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[nueva-mini-config]" \
---text="Introduce el nombre del nuevo archivo cfg")" ; $cmd_binary -gui nueva-mini-config $archivo ;;
+--entry-text="Introduce el nombre del nuevo archivo cfg")" ; $cmd_binary -gui nueva-mini-config $archivo ;;
 names-config*) $cmd_binary -gui names-config ;;
 show-config*) archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[show-config]" \
---text="$($cmd_binary cfg)")" ; $cmd_binary -gui show-config $archivo ;;
+--entry-text="$($cmd_binary cfg)")" ; $cmd_binary -gui show-config $archivo ;;
 modify-config*) archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[modify-config]" \
---text="$($cmd_binary cfg)")" ; $cmd_binary -gui modify-config $archivo ;;
+--entry-text="$($cmd_binary cfg)")" ; $cmd_binary -gui modify-config $archivo ;;
 del-config*) archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title "[del-config]" \
---text="$($cmd_binary cfg)")" ; $cmd_binary -gui del-config $archivo ;;
+--entry-text="$($cmd_binary cfg)")" ; $cmd_binary -gui del-config $archivo ;;
 regen-config*)$cmd_binary -gui regen-config ;;
 examples-config*)$cmd_binary gui examples-config ;;
 esac
