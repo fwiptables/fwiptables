@@ -6040,14 +6040,18 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-options-easy:
-##########    english: gui-menu: gui menu general: gui con menu  ##########
-##########    spanish: gui-menu: gui menu general: gui con menu  ##########
-#### :rutina-inicial-gui-menu:
+##########    english: gui-roll-yad: gui menu general: gui con menu  ##########
+##########    spanish: gui-roll-yad: gui menu general: gui con menu  ##########
+#### :rutina-inicial-gui-roll-yad:
 ####
 ####
 if [ "$first_option" == "gui-roll-yad" ] ; then 
 echo "### still work in development"
-exit; fi
+exit
+fi
+####
+####
+#### :rutina-final-gui-roll-yad:
 ##########    english: gui-menu: gui menu general: gui con menu  ##########
 ##########    spanish: gui-menu: gui menu general: gui con menu  ##########
 #### :rutina-inicial-gui-menu:
