@@ -469,13 +469,10 @@ graphic_window_dimension="--width=950 --height=650"   ## fwiptables-file-default
 quad="####" ; 
 cinco="#####" ;
 tab="     " ;
-rallica="_____" ;
-sinco=" || " ;
 title_md="### " ;
 text_md="  " ;
 brake_md="---" ;
 tabz="### _ _ _ _ _ _ _ " ;
-ralla="______________________" ;
 cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_waiting_txt="$title_md [ info ] [ txt ] [ Wait several seconds.. ]  [ press control-c to cancel ] "
@@ -750,11 +747,12 @@ if [ "$first_option" == "-l"   ] || [ "$first_option" == "--log"  ]  ; then firs
 if [ "$first_option" == "-n"   ] || [ "$first_option" == "--null"  ] ; then first_option="-null" ; fi
 if [ "$first_option" == "-s"   ] || [ "$first_option" == "--silent"  ] ; then first_option="-null" ; fi
 if [ "$first_option" == "silent"   ] || [ "$first_option" == "-silent"  ] ; then first_option="-null" ; fi
-
-
-
-if [ "$first_option" == "gui-menu-zenity"  ] ; then echo " ## Use: $cmd_binary gui-menu"  ; exit ; fi
-if [ "$first_option" == "gui-menu-yad"     ] ; then echo " ## Use: $cmd_binary gui-menu"  ; exit ; fi
+####
+####
+if [ "$first_option" == "gui-menu-zenity"  ] ; then 
+favorite_graphicall_dialog="$command_zenity" ; first_option="gui-menu" ; fi
+if [ "$first_option" == "gui-menu-yad"     ] ; then 
+favorite_graphicall_dialog="$command_yad"    ; first_option="gui-menu" ; fi
 ####
 ####
 #### english: alias simple for options commons
@@ -2823,11 +2821,11 @@ exit; fi
 ####
 if [ "$first_option" == "list-options" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ List options ] [ list-options md ]"
-echo "$text_md $cmd_binary $text_md [ -cli-menu -gui-menu -gui-shell ]"
-echo "$text_md [ -gui-shell-zenity --gui-shell-yad -gui-roll-zenity -gui-roll-yad ]                 "
-echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]        "
-echo "$title_md      | firewall-control |                                                           "
-echo "$text_md stop continue reset actual show save load names-control                              "
+echo "$text_md $cmd_binary $text_md [ -cli-menu -gui-menu -gui-shell -gui-roll ]"
+echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity --gui-shell-yad -gui-roll-zenity ]  "
+echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]          "
+echo "$title_md      | firewall-control |                                                             "
+echo "$text_md stop continue reset actual show save load names-control                                "
 echo "$title_md      | firewall-list-with-conceptual |                                              "
 echo "$text_md ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6                  "
 echo "$text_md list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6                    "
@@ -2863,9 +2861,9 @@ exit ; fi
 ####
 if   [ "$first_option" == "clasic-options" ] ; then echo $give_cover 
 echo "$title_md [ $first_option ] [ clasic options ] [ list-options md ] "
-echo "$text_md Launch: $cmd_binary $text_md [ -cli-menu -gui-menu gui-shell ]"
-echo "$text_md [ -gui-shell-zenity -gui-shell-yad -gui-roll-zenity -gui-roll-yad ]                                    "
-echo "$text_md [ -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -s|-silent ] first_option [second_option]  "
+echo "$text_md $cmd_binary $text_md [ -cli-menu -gui-menu -gui-shell -gui-roll ]"
+echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad -gui-roll-zenity ]"
+echo "$text_md [ -t|-txt -c|-cli -g|-gui -h|-help -l|-log -s|-silent ] first_option [second_option]"
 echo $text_md
 echo "$text_md      firewall-control |  stop continue reset actual show save load names-control                       "
 echo "$text_md   firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6           "
@@ -6040,18 +6038,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-options-easy:
-##########    english: gui-roll-yad: gui menu general: gui con menu  ##########
-##########    spanish: gui-roll-yad: gui menu general: gui con menu  ##########
-#### :rutina-inicial-gui-roll-yad:
-####
-####
-if [ "$first_option" == "gui-roll-yad" ] ; then 
-echo "### still work in development"
-exit
-fi
-####
-####
-#### :rutina-final-gui-roll-yad:
 ##########    english: gui-menu: gui menu general: gui con menu  ##########
 ##########    spanish: gui-menu: gui menu general: gui con menu  ##########
 #### :rutina-inicial-gui-menu:
