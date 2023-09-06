@@ -719,9 +719,11 @@ if [ "$first_option" == "-gui-rock"   ] || [ "$first_option" == "--gui-rock"  ] 
 if [ "$first_option" == "-gui-shell"  ] || [ "$first_option" == "--gui-shell" ] ; then first_option="gui-shell-zenity"  ; fi
 if [ "$first_option" == "-gui-shell"  ] || [ "$first_option" == "--gui-shell" ] ; then first_option="gui-shell" ; fi
 ####
-####
+####  it are in favorites alias:
 #### if [ "$first_option" == "cli-menu"  ] ;  then $cmd_binary cli-menu-   ; exit ; fi
 #### if [ "$first_option" == "gui-menu"  ] ;  then $cmd_binary gui-menu-   ; exit ; fi
+####
+#### is are not in favorites alias:
 if [ "$first_option" == "gui-roll"  ] ;  then $cmd_binary gui-roll-zenity   ; exit ; fi
 if [ "$first_option" == "gui-shell" ] ;  then $cmd_binary gui-shell-zenity  ; exit ; fi
 ####
@@ -1247,10 +1249,10 @@ echo "$title_md                                      [ several examples ]       
 echo
 echo "$text_md        [ with optional output ]                  [ Example Description ]              "
 echo
-echo "$text_md    $cmd_binary -cli-menu                |  All options in text menu                   "
-echo "$text_md    $cmd_binary -gui-menu                |  All options in window menu                 "
-echo "$text_md    $cmd_binary -gui-roll                |  All options in window roll                 "
-echo "$text_md    $cmd_binary -gui-shell               |  All options in window shell                "
+echo "$text_md    $cmd_binary -cli-menu-dialog         |  All options in text menu                   "
+echo "$text_md    $cmd_binary -gui-menu-yad            |  All options in window menu                 "
+echo "$text_md    $cmd_binary -gui-roll-zenity         |  All options in window roll                 "
+echo "$text_md    $cmd_binary -gui-shell-yad           |  All options in window shell                "
 echo
 echo "$text_md    $cmd_binary -txt list                |  List iptables rules with output txt        "
 echo "$text_md    $cmd_binary -cli names               |  List firewall saved with output cli        "
@@ -3000,6 +3002,16 @@ exit; fi
 ####
 if   [ "$first_option" == "info-options" ]; then echo $give_cover
 echo "$title_md [ $first_option ]  [ info options for firewall iptables ] "
+echo "$text_md"
+echo "$title_md           Firewall fwiptables-cmd info-commands ... $cmd_version"
+echo "$text_md "
+echo "$title_md Control rules"
+echo "$text_md Load . Load in reset new rules iptables the file selected"
+echo "$text_md Save . Save in file selected the rules iptables actually"
+echo "$text_md "
+echo "$text_md ..."
+echo "$text_md "
+echo "$text_md "
 echo "### still work in development"
 exit; fi
 ####
