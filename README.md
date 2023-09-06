@@ -1,5 +1,5 @@
-###  #[ fwiptables-cmd command-9.09 ] [ Options: /usr/bin/fwiptables-cmd options ]
-###  [ intro ] [ /usr/bin/fwiptables-cmd command-9.09 intro ] [ intro md ] 
+###  #[ fwiptables-cmd command-9.10 ] [ Options: /usr/bin/fwiptables-cmd options ]
+###  [ intro ] [ /usr/bin/fwiptables-cmd command-9.10 intro ] [ intro md ] 
   
 ###  fwiptables. Firewall With iptables.
   
@@ -23,15 +23,15 @@
   
     Config directory: /root/.config/fwiptables-cmd  
   
-    Install this version. TYPE: ./fwiptables-command-9.09 install     
+    Install this version. TYPE: ./fwiptables-command-9.10 install     
   
-    Uninstall fwiptables. TYPE: ./fwiptables-command-9.09 uninstall   
+    Uninstall fwiptables. TYPE: ./fwiptables-command-9.10 uninstall   
   
   
   
-### #[ fwiptables-cmd command-9.09 ] [ Options: /usr/bin/fwiptables-cmd options ]
+### #[ fwiptables-cmd command-9.10 ] [ Options: /usr/bin/fwiptables-cmd options ]
 ###  [ list-options ] [ List options ] [ list-options md ]                              
-   /usr/bin/fwiptables-cmd    [ -cli-menu-dialog cli-menu-whiptail -gui-roll-zenity ]         
+   /usr/bin/fwiptables-cmd    [ -cli-menu-dialog -cli-menu-whiptail -gui-roll-zenity ]        
    [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                  
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]        
 ###       | firewall-control |                                                           
