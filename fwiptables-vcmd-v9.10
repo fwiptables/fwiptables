@@ -720,22 +720,12 @@ if [ "$first_option" == "-gui-shell"  ] || [ "$first_option" == "--gui-shell" ] 
 if [ "$first_option" == "-gui-shell"  ] || [ "$first_option" == "--gui-shell" ] ; then first_option="gui-shell" ; fi
 ####
 ####
-if [ "$first_option" == "-cli-menu-dialog"  ] || [ "$first_option" == "--cli-menu-dialog"  ] ; 
-then first_option="cli-menu-dialog"  ; fi
-if [ "$first_option" == "-gui-roll-zenity"  ] || [ "$first_option" == "--gui-roll-zenity"  ] ; 
-then first_option="gui-roll-zenity"  ; fi
-if [ "$first_option" == "-gui-roll-yad"  ] || [ "$first_option" == "--gui-roll-yad"  ] ;
-then first_option="gui-roll-yad"  ; fi
-if [ "$first_option" == "-gui-shell-zenity"  ] || [ "$first_option" == "--gui-shell-zenity"  ] ; 
-then first_option="gui-shell-zenity"  ; fi
-if [ "$first_option" == "-gui-shell-yad"  ] || [ "$first_option" == "--gui-shell-yad"  ] ;
-then first_option="gui-shell-yad"  ; fi
+#### if [ "$first_option" == "cli-menu"  ] ;  then $cmd_binary cli-menu-   ; exit ; fi
+#### if [ "$first_option" == "gui-menu"  ] ;  then $cmd_binary gui-menu-   ; exit ; fi
+if [ "$first_option" == "gui-roll"  ] ;  then $cmd_binary gui-roll-zenity   ; exit ; fi
+if [ "$first_option" == "gui-shell" ] ;  then $cmd_binary gui-shell-zenity  ; exit ; fi
 ####
 ####
-if [ "$first_option" == "cli-menu"  ] ;  then $cmd_binary options  ; exit ; fi
-if [ "$first_option" == "gui-menu"  ] ;  then $cmd_binary options  ; exit ; fi
-if [ "$first_option" == "gui-roll"  ] ;  then $cmd_binary options  ; exit ; fi
-if [ "$first_option" == "gui-shell" ] ;  then $cmd_binary options  ; exit ; fi
 if [ "$first_option" == "text" ] || [ "$first_option" == "-text" ]   ; then first_option="-txt"  ; fi
 if [ "$first_option" == "tui"  ] || [ "$first_option" == "-tui" ]    ; then first_option="-cli"  ; fi
 if [ "$first_option" == "txt"  ] || [ "$first_option" == "-txt"  ]   ; then first_option="-txt"  ; fi
@@ -754,6 +744,24 @@ if [ "$first_option" == "-l"   ] || [ "$first_option" == "--log"  ]  ; then firs
 if [ "$first_option" == "-n"   ] || [ "$first_option" == "--null"  ] ; then first_option="-null" ; fi
 if [ "$first_option" == "-s"   ] || [ "$first_option" == "--silent"  ] ; then first_option="-null" ; fi
 if [ "$first_option" == "silent"   ] || [ "$first_option" == "-silent"  ] ; then first_option="-null" ; fi
+####
+####
+if [ "$first_option" == "-cli-menu-dialog"  ] || [ "$first_option" == "--cli-menu-dialog"  ] ; 
+then first_option="cli-menu-dialog"  ; fi
+if [ "$first_option" == "-cli-menu-whiptail"  ] || [ "$first_option" == "--cli-menu-whiptail"  ] ; 
+then first_option="cli-menu-whiptail"  ; fi
+if [ "$first_option" == "-gui-menu-zenity"  ] || [ "$first_option" == "--gui-menu-zenity"  ] ; 
+then first_option="gui-menu-zenity"  ; fi
+if [ "$first_option" == "-gui-menu-yad"  ] || [ "$first_option" == "--gui-menu-yad"  ] ;
+then first_option="gui-menu-yad"  ; fi
+if [ "$first_option" == "-gui-roll-zenity"  ] || [ "$first_option" == "--gui-roll-zenity"  ] ; 
+then first_option="gui-roll-zenity"  ; fi
+if [ "$first_option" == "-gui-roll-yad"  ] || [ "$first_option" == "--gui-roll-yad"  ] ;
+then first_option="gui-roll-yad"  ; fi
+if [ "$first_option" == "-gui-shell-zenity"  ] || [ "$first_option" == "--gui-shell-zenity"  ] ; 
+then first_option="gui-shell-zenity"  ; fi
+if [ "$first_option" == "-gui-shell-yad"  ] || [ "$first_option" == "--gui-shell-yad"  ] ;
+then first_option="gui-shell-yad"  ; fi
 ####
 ####
 if [ "$first_option" == "cli-menu-dialog"    ] ; then 
@@ -5298,8 +5306,8 @@ show-config*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
 $cmd_binary -gui show-config $unarchivo
 ;;
-wizard-full*) $cmd_binary gui wizard-full ;;
-wizard-mini*) $cmd_binary gui wizard-mini ;;
+wizard-full*) $cmd_binary -g wizard-full ;;
+wizard-mini*) $cmd_binary -g wizard-mini ;;
 ####
 ####
 #### english: all other otpions    ####
@@ -5428,8 +5436,8 @@ show-config*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
 $cmd_binary -gui show-config $unarchivo
 ;;
-wizard-full*) $cmd_binary gui wizard-full ;;
-wizard-mini*) $cmd_binary gui wizard-mini ;;
+wizard-full*) $cmd_binary -g wizard-full ;;
+wizard-mini*) $cmd_binary -g wizard-mini ;;
 ####
 ####
 #### english: all other otpions    ####
