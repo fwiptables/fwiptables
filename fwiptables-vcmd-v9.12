@@ -2017,7 +2017,7 @@ $cmd_binary save autosave-fwiptables &> /dev/null ; exit; fi
 ####
 ####
 if [ "$first_option" == "custom" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall custom ] [ $directory_config/$second_option ]" ;
+echo "$text_md [ info ] [ loading firewall custom ] [ $directory_config/$second_option ]" ;
 launch_rules_firewall="yes" ;
 type_firewall="custom" ;
 name_firewall="$second_option" ;
@@ -2048,7 +2048,7 @@ fi
 ####
 ####
 if [ "$first_option" == "off-line" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall off-line ]" ;
+echo "$text_md [ info ] [ loading firewall off-line ]" ;
 launch_rules_firewall="yes" ;
 type_firewall="off-line";
 name_firewall="$first_option";
@@ -2060,7 +2060,7 @@ fi
 ####
 ####
 if [ "$first_option" == "all-permisive" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall all-permisive ]" ;
+echo "$text_md [ info ] [ loading firewall all-permisive ]" ;
 launch_rules_firewall="yes" ;
 type_firewall="all-permisive" ;
 name_firewall="$first_option";
@@ -2072,7 +2072,7 @@ fi
 ####
 ####
 if [ "$first_option" == "shield-ssh" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall shield-ssh ]" ;
+echo "$text_md [ info ] [ loading firewall shield-ssh ]" ;
 launch_rules_firewall="yes" ;
 type_firewall="shield-ssh"    ; 
 name_firewall="$first_option" ;
@@ -2092,7 +2092,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-basic" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall client-basic ]" ;
+echo "$text_md [ info ] [ loading firewall client-basic ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
@@ -2112,7 +2112,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-web" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall client-web ]" ;
+echo "$text_md [ info ] [ loading firewall client-web ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
@@ -2132,7 +2132,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-git" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall client-git ]" ;
+echo "$text_md [ info ] [ loading firewall client-git ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
@@ -2152,7 +2152,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-ipp" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall client-ipp ]" ;
+echo "$text_md [ info ] [ loading firewall client-ipp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
@@ -2172,7 +2172,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-vnc" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall client-vnc ]" ;
+echo "$text_md [ info ] [ loading firewall client-vnc ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
@@ -2192,7 +2192,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-torrent" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall client-torrent ]" ;
+echo "$text_md [ info ] [ loading firewall client-torrent ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2212,7 +2212,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-vpn" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall client-vpn ]" ;
+echo "$text_md [ info ] [ loading firewall client-vpn ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2232,7 +2232,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-tor" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall client-tor ]" ;
+echo "$text_md [ info ] [ loading firewall client-tor ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2252,7 +2252,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-news" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall client-news ]" ;
+echo "$text_md [ info ] [ loading firewall client-news ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2277,7 +2277,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-mail" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall client-mail ]" ;
+echo "$text_md [ info ] [ loading firewall client-mail ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2309,7 +2309,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-ftp" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall client-ftp ]" ;
+echo "$text_md [ info ] [ loading firewall client-ftp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
@@ -2329,7 +2329,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-squid" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall client-squid ]" ;
+echo "$text_md [ info ] [ loading firewall client-squid ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2349,7 +2349,7 @@ fi
 ####
 ####
 if [ "$first_option" == "lan-vpn" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall lan-vpn ]" ;
+echo "$text_md [ info ] [ loading firewall lan-vpn ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2370,7 +2370,7 @@ fi
 ####
 ####
 if [ "$first_option" == "lan-tor" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall lan-tor ]" ;
+echo "$text_md [ info ] [ loading firewall lan-tor ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2391,7 +2391,7 @@ fi
 ####
 ####
 if [ "$first_option" == "games-shooter" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall games-shooter ]" ;
+echo "$text_md [ info ] [ loading firewall games-shooter ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2411,7 +2411,7 @@ fi
 ####
 ####
 if [ "$first_option" == "games-udp" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall games-udp ]" ;
+echo "$text_md [ info ] [ loading firewall games-udp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2431,7 +2431,7 @@ fi
 ####
 ####
 if [ "$first_option" == "game-wesnoth" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall game-wesnoth ]" ;
+echo "$text_md [ info ] [ loading firewall game-wesnoth ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2451,7 +2451,7 @@ fi
 ####
 ####
 if [ "$first_option" == "game-minetest" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall game-minetest ]" ;
+echo "$text_md [ info ] [ loading firewall game-minetest ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2471,7 +2471,7 @@ fi
 ####
 ####
 if [ "$first_option" == "game-freeciv" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall game-freeciv ]" ;
+echo "$text_md [ info ] [ loading firewall game-freeciv ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2491,7 +2491,7 @@ fi
 ####
 ####
 if [ "$first_option" == "game-widelands" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall game-widelands ]" ;
+echo "$text_md [ info ] [ loading firewall game-widelands ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2511,7 +2511,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-web" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall server-web ]" ;
+echo "$text_md [ info ] [ loading firewall server-web ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2531,7 +2531,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-vnc" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall server-vnc ]" ;
+echo "$text_md [ info ] [ loading firewall server-vnc ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
@@ -2552,7 +2552,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-ftp" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall server-ftp ]" ;
+echo "$text_md [ info ] [ loading firewall server-ftp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2571,7 +2571,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-squid" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall server-squid ]" ;
+echo "$text_md [ info ] [ loading firewall server-squid ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2591,7 +2591,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-news" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall server-news ]" ;
+echo "$text_md [ info ] [ loading firewall server-news ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2616,7 +2616,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-mail" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall server-mail ]" ;
+echo "$text_md [ info ] [ loading firewall server-mail ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2648,7 +2648,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-samba" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall server-samba ]" ;
+echo "$text_md [ info ] [ loading firewall server-samba ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2668,7 +2668,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-print" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall server-print ]" ;
+echo "$text_md [ info ] [ loading firewall server-print ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2688,7 +2688,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-ssh" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall server-ssh ]" ;
+echo "$text_md [ info ] [ loading firewall server-ssh ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
@@ -2708,7 +2708,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-lamp" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall server-lamp ]" ;
+echo "$text_md [ info ] [ loading firewall server-lamp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2729,7 +2729,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-asterisk" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall server-asterisk ]" ;
+echo "$text_md [ info ] [ loading firewall server-asterisk ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2751,7 +2751,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-mumble" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall server-mumble ]" ;
+echo "$text_md [ info ] [ loading firewall server-mumble ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2771,7 +2771,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-teamspeak" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall server-teamspeak ]" ;
+echo "$text_md [ info ] [ loading firewall server-teamspeak ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2795,7 +2795,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-sql" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall server-sql ]" ;
+echo "$text_md [ info ] [ loading firewall server-sql ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2819,7 +2819,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-domain" ]; then echo $give_cover ; echo $give_load ; 
-echo "$title_md [ info ] [ loading firewall server-domain ]" ;
+echo "$text_md [ info ] [ loading firewall server-domain ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -7608,7 +7608,7 @@ $allow_use_legacy $command_ip6tables_legacy -A FORWARD -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
 ####
 ####
-echo "$title_md [ _ok_ ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
+echo "$text_md [ _ok_ ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
 ####
@@ -9129,7 +9129,7 @@ fi
 ####  
 ####
 if [ -f "$directory_config/$second_option" ]; then $cmd_binary reset &> /dev/null ;
-echo "$title_md [ _ok_ ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
+echo "$text_md [ _ok_ ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit ; else $nada ; fi
 ####
 ####
