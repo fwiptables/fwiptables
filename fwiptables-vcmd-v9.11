@@ -5051,7 +5051,7 @@ exit; fi
 #### spanish: con tercera opcion
 ####
 ####
-if [ "$first_option" == "-gui" ] && [ "$third_option" != "$NULL" ] ; then $nada
+if [ "$first_option" == "gui" ] && [ "$third_option" != "$NULL" ] ; then $nada
 echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
 case $second_option in
@@ -5129,7 +5129,7 @@ exit; fi
 ##########    spanish: -gui: con segunda opcion    ##########
 ####
 ####
-if [ "$first_option" == "-gui" ] && [ "$second_option" != "$NULL" ] ; then echo $head_waiting_gui
+if [ "$first_option" == "gui" ] && [ "$second_option" != "$NULL" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
 ####
 case $second_option in
@@ -5199,7 +5199,7 @@ exit; fi
 ##########    spanish: -gui: sin mas opcion          ##########
 ####
 ####
-if [ "$first_option" == "-gui" ] && [ "$second_option" == "$NULL" ] ; then echo $head_waiting_gui
+if [ "$first_option" == "gui" ] && [ "$second_option" == "$NULL" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
 $favorite_graphicall_dialog  --forms $graphic_window_dimension --title="Gui Output || $cmd_binary || " --text="$($cmd_binary list-options)"
 exit; fi
