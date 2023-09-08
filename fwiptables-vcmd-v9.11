@@ -724,28 +724,38 @@ if [ "$first_option" == "-gui-shell"  ] || [ "$first_option" == "--gui-shell" ] 
 #### if [ "$first_option" == "gui-menu"  ] ;  then $cmd_binary gui-menu-   ; exit ; fi
 ####
 #### is are not in favorites alias:
-if [ "$first_option" == "gui-roll"  ] ;  then $cmd_binary gui-roll-zenity   ; exit ; fi
-if [ "$first_option" == "gui-shell" ] ;  then $cmd_binary gui-shell-zenity  ; exit ; fi
+if [ "$first_option" == "gui-roll"  ] ;  then first_option="gui-roll-zenity"   ; exit ; fi
+if [ "$first_option" == "gui-shell" ] ;  then first_option="gui-shell-zenity"  ; exit ; fi
 ####
 ####
-if [ "$first_option" == "text" ] || [ "$first_option" == "-text" ]   ; then first_option="-txt"  ; fi
-if [ "$first_option" == "tui"  ] || [ "$first_option" == "-tui" ]    ; then first_option="-cli"  ; fi
-if [ "$first_option" == "txt"  ] || [ "$first_option" == "-txt"  ]   ; then first_option="-txt"  ; fi
-if [ "$first_option" == "cli"  ] || [ "$first_option" == "-cli"  ]   ; then first_option="-cli"  ; fi
-if [ "$first_option" == "gui"  ] || [ "$first_option" == "-gui"  ]   ; then first_option="-gui"  ; fi
-if [ "$first_option" == "web"  ] || [ "$first_option" == "-web"  ]   ; then first_option="-web"  ; fi
-if [ "$first_option" == "tor"  ] || [ "$first_option" == "-tor"  ]   ; then first_option="-tor"  ; fi
-if [ "$first_option" == "help" ] || [ "$first_option" == "-help"  ]  ; then first_option="-help" ; fi
-if [ "$first_option" == "-h"   ] || [ "$first_option" == "--help"  ] ; then first_option="-help" ; fi
-if [ "$first_option" == "-t"   ] || [ "$first_option" == "--txt"  ]  ; then first_option="-txt"  ; fi
-if [ "$first_option" == "-c"   ] || [ "$first_option" == "--cli"  ]  ; then first_option="-cli"  ; fi
-if [ "$first_option" == "-g"   ] || [ "$first_option" == "--gui"  ]  ; then first_option="-gui"  ; fi
-if [ "$first_option" == "-i"   ] || [ "$first_option" == "--info"  ] ; then first_option="-info" ; fi
-if [ "$first_option" == "-w"   ] || [ "$first_option" == "--web"  ]  ; then first_option="-web"  ; fi
-if [ "$first_option" == "-l"   ] || [ "$first_option" == "--log"  ]  ; then first_option="-log"  ; fi
-if [ "$first_option" == "-n"   ] || [ "$first_option" == "--null"  ] ; then first_option="-null" ; fi
-if [ "$first_option" == "-s"   ] || [ "$first_option" == "--silent"  ] ; then first_option="-null" ; fi
-if [ "$first_option" == "silent"   ] || [ "$first_option" == "-silent"  ] ; then first_option="-null" ; fi
+if [ "$first_option" == "--text" ] || [ "$first_option" == "-text" ]   ; then first_option="txt"  ; fi
+if [ "$first_option" == "--tui"  ] || [ "$first_option" == "-tui" ]    ; then first_option="cli"  ; fi
+if [ "$first_option" == "--txt"  ] || [ "$first_option" == "-txt"  ]   ; then first_option="txt"  ; fi
+if [ "$first_option" == "--cli"  ] || [ "$first_option" == "-cli"  ]   ; then first_option="cli"  ; fi
+if [ "$first_option" == "--gui"  ] || [ "$first_option" == "-gui"  ]   ; then first_option="gui"  ; fi
+if [ "$first_option" == "--web"  ] || [ "$first_option" == "-web"  ]   ; then first_option="web"  ; fi
+if [ "$first_option" == "--tor"  ] || [ "$first_option" == "-tor"  ]   ; then first_option="tor"  ; fi
+if [ "$first_option" == "--help" ] || [ "$first_option" == "-help"  ]  ; then first_option="help" ; fi
+if [ "$first_option" == "-h"   ] || [ "$first_option" == "--help"  ] ; then first_option="help" ; fi
+if [ "$first_option" == "-t"   ] || [ "$first_option" == "--txt"  ]  ; then first_option="txt"  ; fi
+if [ "$first_option" == "-c"   ] || [ "$first_option" == "--cli"  ]  ; then first_option="cli"  ; fi
+if [ "$first_option" == "-g"   ] || [ "$first_option" == "--gui"  ]  ; then first_option="gui"  ; fi
+if [ "$first_option" == "-i"   ] || [ "$first_option" == "--info"  ] ; then first_option="info" ; fi
+if [ "$first_option" == "-w"   ] || [ "$first_option" == "--web"  ]  ; then first_option="web"  ; fi
+if [ "$first_option" == "-l"   ] || [ "$first_option" == "--log"  ]  ; then first_option="log"  ; fi
+if [ "$first_option" == "-n"   ] || [ "$first_option" == "--null"  ] ; then first_option="null" ; fi
+if [ "$first_option" == "-s"   ] || [ "$first_option" == "--silent"  ] ; then first_option="null" ; fi
+if [ "$first_option" == "silent"   ] || [ "$first_option" == "-silent"  ] ; then first_option="null" ; fi
+####
+####
+if [ "$first_option" == "-cli-dialog"  ] || [ "$first_option" == "--cli-dialog"  ] ; 
+then first_option="cli-dialog"  ; fi
+if [ "$first_option" == "-cli-whiptail"  ] || [ "$first_option" == "--cli-whiptail"  ] ; 
+then first_option="cli-whiptail"  ; fi
+if [ "$first_option" == "-gui-zenity"  ] || [ "$first_option" == "--gui-zenity"  ] ; 
+then first_option="gui-zenity"  ; fi
+if [ "$first_option" == "-gui-yad"  ] || [ "$first_option" == "--gui-yad"  ] ;
+then first_option="gui-yad"  ; fi
 ####
 ####
 if [ "$first_option" == "-cli-menu-dialog"  ] || [ "$first_option" == "--cli-menu-dialog"  ] ; 
@@ -766,14 +776,24 @@ if [ "$first_option" == "-gui-shell-yad"  ] || [ "$first_option" == "--gui-shell
 then first_option="gui-shell-yad"  ; fi
 ####
 ####
+if [ "$first_option" == "cli-dialog" ]         ; then
+favorite_text_dialog="$command_dialog"         ; first_option="cli" ; fi
+if [ "$first_option" == "cli-whiptail" ]       ; then
+favorite_text_dialog="$command_whiptail"       ; first_option="cli" ; fi
+if [ "$first_option" == "gui-zenity  "     ]   ; then 
+favorite_graphicall_dialog="$command_zenity"   ; first_option="gui" ; fi
+if [ "$first_option" == "gui-yad"     ]        ; then 
+favorite_graphicall_dialog="$command_yad"      ; first_option="gui" ; fi
+####
+####
 if [ "$first_option" == "cli-menu-dialog"    ] ; then 
-favorite_text_dialog="$command_dialog"       ; first_option="cli-menu" ; fi
+favorite_text_dialog="$command_dialog"         ; first_option="cli-menu" ; fi
 if [ "$first_option" == "cli-menu-whiptail"  ] ; then 
-favorite_text_dialog="$command_whiptail"     ; first_option="cli-menu" ; fi
-if [ "$first_option" == "gui-menu-zenity"  ] ; then 
-favorite_graphicall_dialog="$command_zenity" ; first_option="gui-menu" ; fi
-if [ "$first_option" == "gui-menu-yad"     ] ; then 
-favorite_graphicall_dialog="$command_yad"    ; first_option="gui-menu" ; fi
+favorite_text_dialog="$command_whiptail"       ; first_option="cli-menu" ; fi
+if [ "$first_option" == "gui-menu-zenity"  ]   ; then 
+favorite_graphicall_dialog="$command_zenity"   ; first_option="gui-menu" ; fi
+if [ "$first_option" == "gui-menu-yad"     ]   ; then 
+favorite_graphicall_dialog="$command_yad"      ; first_option="gui-menu" ; fi
 ####
 ####
 #### english: alias simple for options commons
@@ -842,7 +862,7 @@ $cmd_binary regen-config ;; esac
 #### output txt:   |||    General text without warnings
 ####
 ####
-if [ "$first_option" == "-txt" ]; then case "$second_option" in
+if [ "$first_option" == "txt" ]; then case "$second_option" in
 ####
 ####
 "list4") $cmd_binary list4-ip &> $temporal_text 
@@ -875,7 +895,7 @@ exit; fi
 #### output cli:
 ####
 ####
-if [ "$first_option" == "-cli" ]
+if [ "$first_option" == "cli" ]
 then echo "$head_waiting_cli"
 if [ "$favorite_text_dialog" == "$NULL" ]; then "### [ info ] Please install or dialog or whiptail to work with cli";  exit; fi
 case "$second_option" in
@@ -914,7 +934,7 @@ fi
 #### output log
 ####
 ####
-if [ "$first_option" == "-log" ]
+if [ "$first_option" == "log" ]
 then case "$second_option" in 
 "wizard") echo "$message_without_log" ; exit ;;
 "wizard-full") echo "$message_without_log" ; exit ;;
@@ -943,7 +963,7 @@ exit ; fi
 #### output null
 ####
 ####
-if [ "$first_option" == "-null" ]
+if [ "$first_option" == "null" ]
 then case "$second_option" in 
 "wizard") echo "$message_without_null" ; exit ;;
 "wizard-full") echo "$message_without_null" ; exit ;;
