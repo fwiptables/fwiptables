@@ -2862,7 +2862,7 @@ exit; fi
 ####
 if [ "$first_option" == "list-options" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ List options ] [ list-options md ]                              "
-echo "$text_md $cmd_binary $text_md [ -cli-menu-dialog -cli-menu-whiptail ]"
+echo "$text_md $cmd_binary $text_md [ -cli-menu-dialog -cli-menu-whiptail ]      "
 echo "$text_md [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad -gui-roll-zenity ]                  "
 echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                  "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]        "
@@ -2903,7 +2903,7 @@ exit ; fi
 ####
 if   [ "$first_option" == "clasic-options" ] ; then echo $give_cover 
 echo "$title_md [ $first_option ] [ clasic options ] [ list-options md ]                                              "
-echo "$text_md $cmd_binary $text_md [ -cli-menu-dialog -cli-menu-whiptail" 
+echo "$text_md $cmd_binary $text_md [ -cli-menu-dialog -cli-menu-whiptail         " 
 echo "$text_md [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad  -gui-roll-zenity ]                                   "
 echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                                    "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -h|-help -l|-log -s|-silent ] first_option [second_option]                   "

@@ -31,7 +31,7 @@
   
 ### #[ fwiptables-cmd command-9.11 ] [ Options: /usr/bin/fwiptables-cmd options ]
 ###  [ list-options ] [ List options ] [ list-options md ]                              
-   /usr/bin/fwiptables-cmd    [ -cli-menu-dialog -cli-menu-whiptail ]
+   /usr/bin/fwiptables-cmd    [ -cli-menu-dialog -cli-menu-whiptail ]                   
    [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad -gui-roll-zenity ]                  
    [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                  
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]        
