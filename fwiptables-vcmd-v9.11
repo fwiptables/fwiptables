@@ -748,16 +748,6 @@ if [ "$first_option" == "-s"   ] || [ "$first_option" == "--silent"  ] ; then fi
 if [ "$first_option" == "silent"   ] || [ "$first_option" == "-silent"  ] ; then first_option="null" ; fi
 ####
 ####
-if [ "$first_option" == "-cli-dialog"  ] || [ "$first_option" == "--cli-dialog"  ] ; 
-then first_option="cli-dialog"  ; fi
-if [ "$first_option" == "-cli-whiptail"  ] || [ "$first_option" == "--cli-whiptail"  ] ; 
-then first_option="cli-whiptail"  ; fi
-if [ "$first_option" == "-gui-zenity"  ] || [ "$first_option" == "--gui-zenity"  ] ; 
-then first_option="gui-zenity"  ; fi
-if [ "$first_option" == "-gui-yad"  ] || [ "$first_option" == "--gui-yad"  ] ;
-then first_option="gui-yad"  ; fi
-####
-####
 if [ "$first_option" == "-cli-menu-dialog"  ] || [ "$first_option" == "--cli-menu-dialog"  ] ; 
 then first_option="cli-menu-dialog"  ; fi
 if [ "$first_option" == "-cli-menu-whiptail"  ] || [ "$first_option" == "--cli-menu-whiptail"  ] ; 
@@ -776,11 +766,21 @@ if [ "$first_option" == "-gui-shell-yad"  ] || [ "$first_option" == "--gui-shell
 then first_option="gui-shell-yad"  ; fi
 ####
 ####
+if [ "$first_option" == "-cli-dialog"  ] || [ "$first_option" == "--cli-dialog"  ] ; 
+then first_option="cli-dialog"  ; fi
+if [ "$first_option" == "-cli-whiptail"  ] || [ "$first_option" == "--cli-whiptail"  ] ; 
+then first_option="cli-whiptail"  ; fi
+if [ "$first_option" == "-gui-zenity"  ] || [ "$first_option" == "--gui-zenity"  ] ; 
+then first_option="gui-zenity"  ; fi
+if [ "$first_option" == "-gui-yad"  ] || [ "$first_option" == "--gui-yad"  ] ;
+then first_option="gui-yad"  ; fi
+####
+####
 if [ "$first_option" == "cli-dialog" ]         ; then
 favorite_text_dialog="$command_dialog"         ; first_option="cli" ; fi
 if [ "$first_option" == "cli-whiptail" ]       ; then
 favorite_text_dialog="$command_whiptail"       ; first_option="cli" ; fi
-if [ "$first_option" == "gui-zenity  "     ]   ; then 
+if [ "$first_option" == "gui-zenity"     ]   ; then 
 favorite_graphicall_dialog="$command_zenity"   ; first_option="gui" ; fi
 if [ "$first_option" == "gui-yad"     ]        ; then 
 favorite_graphicall_dialog="$command_yad"      ; first_option="gui" ; fi
