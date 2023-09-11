@@ -23,6 +23,9 @@
   
     Config directory: /root/.config/fwiptables-cmd  
   
+###  fwiptables. install - uninstall  
+  
+    Put bit of execution. TYPE: chmod u+x ./fwiptables-command-9.12   
     Install this version. TYPE: ./fwiptables-command-9.12 install     
   
     Uninstall fwiptables. TYPE: ./fwiptables-command-9.12 uninstall   
