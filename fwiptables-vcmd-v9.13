@@ -662,7 +662,7 @@ fi
 ##########     ALIAS SIMPLE
 ####
 ####
-if [ "$first_option" == "$NULL" ]  ; then first_option="$option_default_security" ; fi
+if [ "$first_option" == "$NULL" ]  ; then "$cmd_binary" empty_option ; exit ; fi
 ####
 ####
 #### english:  alias firewall-list with conceputal firewall-conceptual:
@@ -5209,7 +5209,7 @@ exit; fi
 ####
 if [ "$first_option" == "gui" ] && [ "$second_option" == "$NULL" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
-$favorite_graphicall_dialog  --forms $graphic_window_dimension --title="Gui Output || $cmd_binary || " --text="$($cmd_binary list-options)"
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --title="Gui Output || $cmd_binary || " --text="$($cmd_binary empty-option)"
 exit; fi
 ####
 ####
