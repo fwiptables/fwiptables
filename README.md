@@ -1,44 +1,44 @@
-###  #[ fwiptables-cmd command-9.12 ] [ Options: /usr/bin/fwiptables-cmd options ]
-###  [ intro ] [ /usr/bin/fwiptables-cmd command-9.12 intro ] [ intro md ] 
+###  #[ fwiptables-cmd command-9.13 ] [ Options: /usr/bin/fwiptables-cmd options ]
+###  [ intro ] [ /usr/bin/fwiptables-cmd command-9.13 intro ] [ intro md ] 
   
-###  fwiptables. Firewall With iptables.
+###  fwiptables. Firewall With iptables.    
   
-   fwiptables is one simple FRONT-END for iptables linux
-   with COMMAND-LINE with CLI-MENU with GUI-MENU 
-   with GUI-ROLL with GUI-SHELL.
-   And choose one firewall: eraserules, or wizard-mini,
-   or wizard-full, or custom, or one predesignated
-   firewall to choose one. Gen new rules with templates
-   and with shield ssh and with comments rules.
+   fwiptables is one simple in one-file FRONT-END             
+   for iptables linux with COMMAND-LINE with CLI-MENU         
+   with GUI-MENU with GUI-ROLL with GUI-SHELL.                
+   And choose one firewall: eraserules, or wizard-mini,       
+   or wizard-full, or custom, or one predesignated            
+   firewall to choose one. Gen new rules with templates       
+   and with shield ssh and with comments rules.               
   
-   rules ipv4, rules ipv6, netfilter, neftables, tools ip,
-   wizards for rules, save/load rules with files,
-   shield to ssh or other servers choosed,
-   limit bandwidth, host whitelist, host blacklist,
-   and other more capacities of firewall.
+   rules ipv4, rules ipv6, netfilter, neftables, tools ip,    
+   wizards for rules, save/load rules with files,             
+   shield to ssh or other servers choosed,                    
+   limit bandwidth, host whitelist, host blacklist,           
+   and other more capacities of firewall.                     
   
-###   fwiptables. Install location.
+###   fwiptables. Install location.                            
   
-    File location   : /usr/bin/fwiptables-cmd
+    File location   : /usr/bin/fwiptables-cmd                 
   
-    Config directory: /root/.config/fwiptables-cmd  
+    Config directory: /root/.config/fwiptables-cmd            
   
-###  fwiptables. install - uninstall  
+###  fwiptables. install - uninstall                           
   
-    Put bit of execution. TYPE: chmod u+x ./fwiptables-command-9.12   
-    Install this version. TYPE: ./fwiptables-command-9.12 install     
+    Put bit of execution. TYPE: chmod u+x ./fwiptables-command-9.13   
+    Install this version. TYPE: ./fwiptables-command-9.13 install     
   
-    Uninstall fwiptables. TYPE: ./fwiptables-command-9.12 uninstall   
+    Uninstall fwiptables. TYPE: ./fwiptables-command-9.13 uninstall   
   
   
   
-### #[ fwiptables-cmd command-9.12 ] [ Options: /usr/bin/fwiptables-cmd options ]
-###  [ list-options ] [ List options ] [ list-options md ]             
+### #[ fwiptables-cmd command-9.13 ] [ Options: /usr/bin/fwiptables-cmd options ]
+###  [ list-options ] [ List options ] [ list-options md ]                              
 
-   /usr/bin/fwiptables-cmd [ -cli-menu-dialog -cli-menu-whiptail ]                 
-   [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad -gui-roll-zenity ]                  
+   /usr/bin/fwiptables-cmd [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                           
    [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                  
-   [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ] first_option [ second_option ]        
+   [ -gui-roll-zenity -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                  
+   [ -cli-menu-dialog -cli-menu-whiptail ] first_option [ second_option ]               
 
 ###       | firewall-control |                                                           
    stop continue reset actual show save load names-control                              
