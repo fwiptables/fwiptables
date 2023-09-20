@@ -646,7 +646,7 @@ fi
 ####
 ####
 if [ "$favorite_radio_command" == "$NULL" ]; then
-if [ "$command_cvlc" != "$NULL" ]; then  favorite_radio_command="$command_cvlc"     ; fi
+if [ "$command_cvlc" != "$NULL" ]  ; then  favorite_radio_command="$command_cvlc"   ; fi
 if [ "$command_mpg321" != "$NULL" ]; then  favorite_radio_command="$command_mpg321" ; fi
 if [ "$command_mpg123" != "$NULL" ]; then  favorite_radio_command="$command_mpg123" ; fi
 fi
@@ -906,19 +906,8 @@ wizard-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option
 "new-full-config") $cmd_binary $second_option $third_option ;  exit ;;
 "modify-config") $cmd_binary modify-config $third_option ; exit ;;
 "preferences-modify") $cmd_binary preferences-modify ; exit ;;
-nmap-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option  ;  exit ;;
 "radio") echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
-"speed-cpu") echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
-"info-nodes") echo "$message_without_cli" ;  exit ;;
-"addblock-on") echo "$message_without_cli" ; $cmd_binary $second_option $third_option  ;  exit ;;
-"gpg-notes") $cmd_binary $second_option $third_option ; exit ;;
 "clean-tmp") $cmd_binary $second_option $third_option ; exit ;;
-"log-search") 
-pattern="$($favorite_text_dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)" 
-clear; $cmd_binary log-search $pattern ; exit ;; 
-log-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
-fw-*)  echo "$message_without_cli" ; $cmd_binary $second_option $third_option  ;  exit ;;
-"hosts") echo "$message_without_cli" ; $cmd_binary hosts ; exit ;;
 ####
 ####
 *)
@@ -943,12 +932,7 @@ then case "$second_option" in
 "new-full-config") echo "$message_without_log" ; exit ;;
 "nueva-completa-config") echo "$message_without_log" ; exit ;;
 "modify-config")  echo "$message_without_log" ; exit ;;
-"gpg-notes") echo "$message_without_log" ; exit ;;
-"wpa-save") echo "$message_without_log" ; exit ;;
 pc-*) echo "$message_without_log" ; exit ;;
-game-*) echo "$message_without_log" ; exit ;;
-radio-*) echo "$message_without_log" ; exit ;;
-rule-*) echo "$message_without_log" ; exit ;;
 esac 
 ####
 ####
@@ -974,9 +958,6 @@ then case "$second_option" in
 "gpg-notes") echo "$message_without_null" ; exit ;;
 "wpa-save") echo "$message_without_null" ; exit ;;
 pc-*) echo "$message_without_null" ; exit ;;
-game-*) echo "$message_without_null" ; exit ;;
-radio-*) echo "$message_without_null" ; exit ;;
-rule-*) echo "$message_without_null" ; exit ;;
 esac
 ####
 ####
