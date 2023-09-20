@@ -99,7 +99,7 @@ fi
 ####
 cmd_binary="$0" ;
 cmd_config="fwiptables-cmd" ;
-cmd_version="command-9.13"  ;
+cmd_version="command-9.14"  ;
 cmd_name="FireWall With iptables named fwiptables Command" ;
 cmd_description="One Mini Script in bash command named Firewall With iptables like fwiptables" ;
 cmd_license="GPL v2" ;

@@ -1,38 +1,38 @@
-###  #[ fwiptables-cmd command-9.13 ] [ Options: /usr/bin/fwiptables-cmd options ]
-###  [ intro ] [ /usr/bin/fwiptables-cmd command-9.13 intro ] [ intro md ] 
+###  #[ fwiptables-cmd command-9.14 ] [ Options: /usr/bin/fwiptables-cmd options ]
+###  [ intro ] [ /usr/bin/fwiptables-cmd command-9.14 intro ] [ intro md ] 
   
 ###  fwiptables. Firewall With iptables.    
   
-   fwiptables is one simple in one-file FRONT-END             
-   for iptables linux with COMMAND-LINE with CLI-MENU         
-   with GUI-MENU with GUI-ROLL with GUI-SHELL.                
-   And choose one firewall: eraserules, or wizard-mini,       
-   or wizard-full, or custom, or one predesignated            
-   firewall to choose one. Gen new rules with templates       
-   and with shield ssh and with comments rules.               
+   fwiptables is one simple in one-file FRONT-END                     
+   for iptables linux with COMMAND-LINE with CLI-MENU                 
+   with GUI-MENU with GUI-ROLL with GUI-SHELL.                        
+   And choose one firewall: eraserules, or wizard-mini,               
+   or wizard-full, or custom, or one predesignated                    
+   firewall to choose one. Gen new rules with templates               
+   and with shield ssh and with comments rules.                       
   
-   rules ipv4, rules ipv6, netfilter, neftables, tools ip,    
-   wizards for rules, save/load rules with files,             
-   shield to ssh or other servers choosed,                    
-   limit bandwidth, host whitelist, host blacklist,           
-   and other more capacities of firewall.                     
+   rules ipv4, rules ipv6, netfilter, neftables, xtables,             
+   tools ip, wizards for rules, save/load rules with files,           
+   shield to ssh or other servers choosed,                            
+   limit bandwidth, host whitelist, host blacklist,                   
+   and other more capacities of firewall.                             
   
-###   fwiptables. Install location.                            
+###   fwiptables location.                                             
   
-    File location   : /usr/bin/fwiptables-cmd                 
+    File location   : /usr/bin/fwiptables-cmd                         
   
-    Config directory: /root/.config/fwiptables-cmd            
+    Config directory: /root/.config/fwiptables-cmd                    
   
-###  fwiptables. install - uninstall                           
+###  fwiptables install.                                               
   
-    Put bit of execution. TYPE: chmod u+x ./fwiptables-command-9.13   
-    Install this version. TYPE: ./fwiptables-command-9.13 install     
+    Put bit of execution. TYPE: chmod u+x ./fwiptables-command-9.14   
+    Install this version. TYPE: ./fwiptables-command-9.14 install     
   
-    Uninstall fwiptables. TYPE: ./fwiptables-command-9.13 uninstall   
+###  fwiptables uninstall.                                             
   
+    Uninstall fwiptables. TYPE: ./fwiptables-command-9.14 uninstall   
   
-  
-### #[ fwiptables-cmd command-9.13 ] [ Options: /usr/bin/fwiptables-cmd options ]
+### #[ fwiptables-cmd command-9.14 ] [ Options: /usr/bin/fwiptables-cmd options ]
 ###  [ list-options ] [ List options ] [ list-options md ]                              
 
    /usr/bin/fwiptables-cmd [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                           
