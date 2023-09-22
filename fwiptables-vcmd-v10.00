@@ -3098,9 +3098,17 @@ if   [ "$first_option" == "firewall-custom" ]; then
 echo "$text_md "
 echo "$title_md | firewall-custom |"
 echo "$text_md"
-echo "$text_md ..."
-echo "$text_md "
-echo "$text_md still work in development"
+echo "$text_md custom . launch a fwiptables firewall file custom"
+echo "$text_md new-full-config . create new full config in english"
+echo "$text_md new-mini-config . create new mini config in english"
+echo "$text_md nueva-completa-config . create new full config in spanish"
+echo "$text_md nueva-mini-config . create new full config in spanish"
+echo "$text_md regen-config . regen the templates"
+echo "$text_md examples-config . show several examples"
+echo "$text_md show-config . show config-file choosed"
+echo "$text_md modify-config . modify config-file choosed"
+echo "$text_md del-config . delete config-file choosed"
+echo "$text_md names-config . show the names for all config-files"
 echo "$text_md "
 exit; fi
 ####
@@ -3134,8 +3142,7 @@ echo "$title_md | options-easy |"
 echo "$text_md"
 echo "$text_md ..."
 echo "$text_md "
-echo "$text_md "
-echo "### still work in development"
+echo "$text_md still work in development"
 echo "$text_md "
 exit; fi
 ####
@@ -3151,6 +3158,7 @@ echo "$title_md [ $first_option ]  [ info options for firewall iptables ] "
 echo "$text_md"
 echo "$title_md           Firewall fwiptables-cmd info-commands ... $cmd_version"
 echo "$text_md"
+$cmd_binary parametters
 $cmd_binary firewall-control
 $cmd_binary firewall-conceptual
 $cmd_binary firewall-numeral
@@ -3162,6 +3170,41 @@ exit; fi
 ####
 ####
 #### :rutina-final-info-options:
+##########    english: parametters: options for fwiptables firewall      ##########
+##########    spanish: parametters: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-parametters:
+####
+####
+if   [ "$first_option" == "parametters" ]; then
+echo "$text_md "
+echo "$title_md | parametters |"
+echo "$text_md"
+echo "$text_md -t . output in terminal text "
+echo "$text_md -c . output in terminal cli "
+echo "$text_md -g . output in graphicall gui "
+echo "$text_md -l . output in file log stablished"
+echo "$text_md -s . output in silent text "
+echo "$text_md -txt . output in terminal text "
+echo "$text_md -cli . output in terminal cli "
+echo "$text_md -gui . output in graphicall gui "
+echo "$text_md -log . output in file log stablished"
+echo "$text_md -silent . output in silent text "
+echo "$text_md -cli-dialog . output in terminal cli with dialog"
+echo "$text_md -cli-whiptail . output in terminal cli with whiptail"
+echo "$text_md -gui-zenity . output in graphicall gui with zenity "
+echo "$text_md -gui-yad . output in graphicall gui with yad"
+echo "$text_md -cli-menu-dialog . output in terminal menu with dialog"
+echo "$text_md -cli-menu-whiptail . output in terminal menu with whiptail"
+echo "$text_md -gui-menu-zenity . output in grapicall menu with zenity "
+echo "$text_md -gui-menu-yad . output in grapicall menu with yad "
+echo "$text_md -gui-shell-zenity . output in grapicall shell with zenity "
+echo "$text_md -gui-shell-yad . output in grapicall shell with yad "
+echo "$text_md -gui-roll-zenity . output in grapicall roll with zenity "
+echo "$text_md"
+exit; fi
+####
+####
+#### :rutina-final-parametters:
 ##########    english: variables: list variables     ##########
 ##########    spanish: variables: lista variables    ##########
 #### :rutina-inicial-variables:
