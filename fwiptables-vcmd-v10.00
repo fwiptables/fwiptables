@@ -3029,6 +3029,96 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-control:
+##########    english: firewall-conceptual: options for fwiptables firewall      ##########
+##########    spanish: firewall-conceptual: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-firewall-conceptual:
+####
+####
+if   [ "$first_option" == "firewall-conceptual" ]; then
+echo "$text_md "
+echo "$title_md | firewall-conceptual |"
+echo "$text_md"
+echo "$text_md ..."
+echo "$text_md "
+echo "$text_md "
+echo "### still work in development"
+echo "$text_md "
+exit; fi
+####
+####
+#### :rutina-final-firewall-conceptual:
+##########    english: firewall-numeral: options for fwiptables firewall      ##########
+##########    spanish: firewall-numeral: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-firewall-numeral:
+####
+####
+if   [ "$first_option" == "firewall-numeral" ]; then
+echo "$text_md "
+echo "$title_md | firewall-numeral |"
+echo "$text_md"
+echo "$text_md ..."
+echo "$text_md "
+echo "$text_md "
+echo "### still work in development"
+echo "$text_md "
+exit; fi
+####
+####
+#### :rutina-final-firewall-numeral:
+##########    english: firewall-custom: options for fwiptables firewall      ##########
+##########    spanish: firewall-custom: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-firewall-custom:
+####
+####
+if   [ "$first_option" == "firewall-custom" ]; then
+echo "$text_md "
+echo "$title_md | firewall-custom |"
+echo "$text_md"
+echo "$text_md ..."
+echo "$text_md "
+echo "$text_md "
+echo "### still work in development"
+echo "$text_md "
+exit; fi
+####
+####
+#### :rutina-final-firewall-custom:
+##########    english: firewall-launch: options for fwiptables firewall      ##########
+##########    spanish: firewall-launch: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-firewall-launch:
+####
+####
+if   [ "$first_option" == "firewall-launch" ]; then
+echo "$text_md "
+echo "$title_md | firewall-launch |"
+echo "$text_md"
+echo "$text_md ..."
+echo "$text_md "
+echo "$text_md "
+echo "### still work in development"
+echo "$text_md "
+exit; fi
+####
+####
+#### :rutina-final-firewall-launch:
+##########    english: options-easy: options for fwiptables firewall      ##########
+##########    spanish: options-easy: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-options-easy:
+####
+####
+if   [ "$first_option" == "options-easy" ]; then
+echo "$text_md "
+echo "$title_md | options-easy |"
+echo "$text_md"
+echo "$text_md ..."
+echo "$text_md "
+echo "$text_md "
+echo "### still work in development"
+echo "$text_md "
+exit; fi
+####
+####
+#### :rutina-final-options-easy:
 ##########    english: info-options: options for fwiptables firewall      ##########
 ##########    spanish: info-options: opciones para fwiptables firewall    ##########
 #### :rutina-inicial-info-options:
@@ -3040,11 +3130,12 @@ echo "$text_md"
 echo "$title_md           Firewall fwiptables-cmd info-commands ... $cmd_version"
 echo "$text_md"
 $cmd_binary firewall-control
+$cmd_binary firewall-conceptual
+$cmd_binary firewall-numeral
+$cmd_binary firewall-custom
+$cmd_binary firewall-launch
+$cmd_binary options-easy
 echo "$text_md"
-echo "$text_md ..."
-echo "$text_md "
-echo "$text_md "
-echo "### still work in development"
 exit; fi
 ####
 ####
