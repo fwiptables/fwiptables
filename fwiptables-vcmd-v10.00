@@ -5479,6 +5479,7 @@ if   [ "$first_option" == "gui-shell-zenity" ] ; then echo $head_waiting_gui
 ####
 titulo="$cmd_binary gui-shell-zenity"
 untexto="$cmd_binary gui-shell-zenity"
+favorite_graphicall_dialog="$command_zenity"
 ####
 ####
 #### cd $directory_config
@@ -5591,7 +5592,7 @@ $favorite_graphicall_dialog  --text-info $graphic_window_dimension --title="[ $c
 rm /tmp/fwiptables-$fecha_temporal
 ;;
 esac
-$cmd_binary gui-shell
+$cmd_binary gui-shell-zenity
 exit ; fi
 ####
 ####
@@ -5609,6 +5610,7 @@ if   [ "$first_option" == "gui-shell-yad" ] ; then echo $head_waiting_gui
 ####
 titulo="$cmd_binary gui-shell-yad"
 untexto="$cmd_binary gui-shell-yad"
+favorite_graphicall_dialog="$command_yad"
 ####
 ####
 #### cd $directory_config
