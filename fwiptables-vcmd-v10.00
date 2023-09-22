@@ -3100,8 +3100,7 @@ echo "$title_md | firewall-custom |"
 echo "$text_md"
 echo "$text_md ..."
 echo "$text_md "
-echo "$text_md "
-echo "### still work in development"
+echo "$text_md still work in development"
 echo "$text_md "
 exit; fi
 ####
@@ -3118,8 +3117,7 @@ echo "$title_md | firewall-launch |"
 echo "$text_md"
 echo "$text_md ..."
 echo "$text_md "
-echo "$text_md "
-echo "### still work in development"
+echo "$text_md still work in development"
 echo "$text_md "
 exit; fi
 ####
