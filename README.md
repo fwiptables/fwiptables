@@ -1,5 +1,5 @@
-###  #[ fwiptables-cmd command-9.14 ] [ Options: /usr/bin/fwiptables-cmd options ]
-###  [ intro ] [ /usr/bin/fwiptables-cmd command-9.14 intro ] [ intro md ] 
+###  #[ fwiptables-cmd command-10.00 ] [ Options: /usr/bin/fwiptables-cmd options ]
+###  [ intro ] [ /usr/bin/fwiptables-cmd command-10.00 intro ] [ intro md ] 
   
 ###  fwiptables. Firewall With iptables.    
   
@@ -24,28 +24,30 @@
   
 ###  fwiptables install.                                                 
   
-    Put bit of execution. TYPE:   chmod u+x ./fwiptables-command-9.14   
-    Install this version. TYPE:   ./fwiptables-command-9.14 install     
+    Put bit of execution. TYPE:   chmod u+x ./fwiptables-command-10.00   
+    Install this version. TYPE:   ./fwiptables-command-10.00 install     
   
 ###  fwiptables uninstall.                                               
   
-    Uninstall fwiptables. TYPE:   ./fwiptables-command-9.14 uninstall   
+    Uninstall fwiptables. TYPE:   ./fwiptables-command-10.00 uninstall   
   
-### #[ fwiptables-cmd command-9.14 ] [ Options: /usr/bin/fwiptables-cmd options ]
-###  [ list-options ] [ List options ] [ list-options md ]                              
-
+### #[ fwiptables-cmd command-10.00 ] [ Options: /usr/bin/fwiptables-cmd options ]
+###  [ list-options ] [ parametters ] [ list-options md ]                              
+  
    /usr/bin/fwiptables-cmd [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                           
    [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                  
    [ -gui-roll-zenity -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                  
    [ -cli-menu-dialog -cli-menu-whiptail ] first_option [ second_option ]               
-
+  
+###  [ list-options ] [ first_option ] [ list-options md ]                              
+  
 ###       | firewall-control |                                                           
    stop continue reset actual show save load names-control                              
-###       | firewall-list-with-conceptual |                                              
+###       | firewall-conceptual |                                              
    ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6                  
    list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6                    
    list-security4 list-security6 list-ebtables list-arptables                           
-###       | firewall-list-with-numeral |                                                 
+###       | firewall-numeral |                                                 
    lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6          
    listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6              
    listn-security4 listn-security6                                                      
@@ -57,7 +59,7 @@
    client-web client-git client-ipp client-vnc client-mail client-news client-vpn       
    client-torrent client-vpn client-ftp client-tor client-squid game-widelands          
    games-udp games-shooter game-wesnoth game-minetest game-freeciv lan-tor lan-vpn      
-   server-ssh server-samba server-vnc server-webserver-print server-lamp                
+   server-ssh server-samba server-vnc server-webserver server-print server-lamp         
    server-news server-ftp server-mail server-teamspeak server-mumble server-sql         
    server-asterisk server-domain server-squid                                           
 ###         | options-easy |                                                             
