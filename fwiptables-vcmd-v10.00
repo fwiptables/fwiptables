@@ -2851,15 +2851,15 @@ echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad
 echo "$text_md [ -gui-roll-zenity -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                  "
 echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail ] first_option [ second_option ]               "
 echo "$text_md"
-echo "$title_md [ $first_option ] [ First option ] [ list-options md ]                              "
+echo "$title_md [ $first_option ] [ first_option ] [ list-options md ]                              "
 echo "$text_md"
 echo "$title_md      | firewall-control |                                                           "
 echo "$text_md stop continue reset actual show save load names-control                              "
-echo "$title_md      | firewall-list-with-conceptual |                                              "
+echo "$title_md      | firewall-conceptual |                                              "
 echo "$text_md ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6                  "
 echo "$text_md list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6                    "
 echo "$text_md list-security4 list-security6 list-ebtables list-arptables                           "
-echo "$title_md      | firewall-list-with-numeral |                                                 "
+echo "$title_md      | firewall-numeral |                                                 "
 echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6          "
 echo "$text_md listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6              "
 echo "$text_md listn-security4 listn-security6                                                      "
@@ -2896,7 +2896,7 @@ echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad
 echo "$text_md [ -gui-roll-zenity -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                    "
 echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail ] first_option [second_option]                   "
 echo "$text_md"
-echo "$title_md [ $first_option ] [ First option ] [ list-options md ]                              "
+echo "$title_md [ $first_option ] [ first_option ] [ list-options md ]                              "
 echo "$text_md"
 echo "$text_md      firewall-control |  stop continue reset actual show save load names-control                       "
 echo "$text_md   firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6           "
@@ -3007,15 +3007,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-free-ram:
-##########    english: info-options: options for fwiptables firewall      ##########
-##########    spanish: info-options: opciones para fwiptables firewall    ##########
-#### :rutina-inicial-info-options:
+##########    english: firewall-control: options for fwiptables firewall      ##########
+##########    spanish: firewall-control: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-firewall-control:
 ####
 ####
-if   [ "$first_option" == "info-options" ]; then echo $give_cover
-echo "$title_md [ $first_option ]  [ info options for firewall iptables ] "
-echo "$text_md"
-echo "$title_md           Firewall fwiptables-cmd info-commands ... $cmd_version"
+if   [ "$first_option" == "firewall-control" ]; then
 echo "$text_md "
 echo "$title_md | firewall-control |"
 echo "$text_md"
@@ -3028,11 +3025,21 @@ echo "$text_md load . reset and load new rules iptables from selected file"
 echo "$text_md save . save in the file selected the rules iptables actually"
 echo "$text_md names-control . list filenames saved in the iptables rules"
 echo "$text_md "
-echo "$title_md | firewall-list-with-conceptual |"
+exit; fi
+####
+####
+#### :rutina-final-firewall-control:
+##########    english: info-options: options for fwiptables firewall      ##########
+##########    spanish: info-options: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-info-options:
+####
+####
+if   [ "$first_option" == "info-options" ]; then echo $give_cover
+echo "$title_md [ $first_option ]  [ info options for firewall iptables ] "
 echo "$text_md"
-echo "$text_md ls4 . list ipv4 rules with names"
+echo "$title_md           Firewall fwiptables-cmd info-commands ... $cmd_version"
 echo "$text_md"
-echo "$text_md"
+$cmd_binary firewall-control
 echo "$text_md"
 echo "$text_md ..."
 echo "$text_md "
