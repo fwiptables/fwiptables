@@ -1,5 +1,5 @@
-###  #[ fwiptables-cmd command-10.00 ] [ Options: /usr/bin/fwiptables-cmd options ]
-###  [ intro ] [ /usr/bin/fwiptables-cmd command-10.00 intro ] [ intro md ] 
+###  #[ fwiptables-cmd command-10.01 ] [ Options: /usr/bin/fwiptables-cmd options ]
+###  [ intro ] [ /usr/bin/fwiptables-cmd command-10.01 intro ] [ intro md ] 
   
 ###  fwiptables. Firewall With iptables.    
   
@@ -24,22 +24,22 @@
   
 ###  fwiptables install.                                                 
   
-    Put bit of execution. TYPE:   chmod u+x ./fwiptables-command-10.00   
-    Install this version. TYPE:   ./fwiptables-command-10.00 install     
+    Put bit of execution. TYPE:   chmod u+x ./fwiptables-command-10.01   
+    Install this version. TYPE:   ./fwiptables-command-10.01 install     
   
 ###  fwiptables uninstall.                                               
   
-    Uninstall fwiptables. TYPE:   ./fwiptables-command-10.00 uninstall   
+    Uninstall fwiptables. TYPE:   ./fwiptables-command-10.01 uninstall   
   
-### #[ fwiptables-cmd command-10.00 ] [ Options: /usr/bin/fwiptables-cmd options ]
-###  [ list-options ] [ parametters ] [ list-options md ]                              
+### #[ fwiptables-cmd command-10.01 ] [ Options: /usr/bin/fwiptables-cmd options ]
+###  [ list-options ] [ parametters ]                                                   
   
    /usr/bin/fwiptables-cmd [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                           
    [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                  
    [ -gui-roll-zenity -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                  
    [ -cli-menu-dialog -cli-menu-whiptail ] first_option [ second_option ]               
   
-###  [ list-options ] [ first_option ] [ list-options md ]                              
+###  [ list-options ] [ first_option ]                                                  
   
 ###       | firewall-control |                                                           
    stop continue reset actual show save load names-control                              
