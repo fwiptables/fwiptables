@@ -455,8 +455,8 @@ favorite_text_browser=""                    ## fwiptables-file-default ## or voi
 favorite_date_command=""                    ## fwiptables-file-default ## or void for automatic or specify command
 ####       #### english: curl server for default for test the public ip
 ####       #### spanish: servidor de curl por defecto para testear la ip publica    
-serverip_discover_ipv4="http://ifconfig.co/ip"        ## fwiptables-file-default ## default http://ifconfig.co/ip
-serverip_discover_ipv6="http://ifconfig.co/ip"        ## fwiptables-file-default ## default http://ifconfig.co/ip
+serverip_discover_ipv4="https://ifconfig.co/ip"        ## fwiptables-file-default ## default http://ifconfig.co/ip
+serverip_discover_ipv6="https://ifconfig.co/ip"        ## fwiptables-file-default ## default http://ifconfig.co/ip
 ####       #### english: iperf server for default for test net SPEED                 
 ####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet    
 serverip_iperf_ipv4="ping.online.net"                 ## fwiptables-file-default ## default ping.online.net
