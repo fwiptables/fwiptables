@@ -2844,7 +2844,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-options" ] ; then echo $give_cover
-echo "$title_md [ $first_option ] [ one_optional_parametter ] first_option [ second_option ]        "
+echo "$title_md $cmd_binary [ one_optional_parametter ] first_option [ second_option ]              "
 echo "$text_md"
 echo "$text_md $cmd_binary [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                           "
 echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                  "
@@ -2887,7 +2887,7 @@ exit ; fi
 ####
 ####
 if   [ "$first_option" == "clasic-options" ] ; then echo $give_cover 
-echo "$title_md [ $first_option ] [ one_optional_parametter ] first_option [ second_option ]          "
+echo "$title_md $cmd_binary [ one_optional_parametter ] first_option [ second_option ]                "
 echo "$text_md"
 echo "$text_md $cmd_binary [ -t|-txt -c|-cli -g|-gui -h|-help -l|-log -s|-silent ]                    "   
 echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                    "
