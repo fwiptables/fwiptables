@@ -54,12 +54,12 @@
    regen-config examples-config show-config modify-config del-config names-config       
 ###        | firewall-launch |                                                           
    eraserules custom wizard-mini wizard-full off-line all-permisive client-basic        
-   client-web client-git client-ipp client-vnc client-mail client-news client-vpn       
-   client-torrent client-vpn client-ftp client-tor client-squid game-widelands          
-   games-udp games-shooter game-wesnoth game-minetest game-freeciv lan-tor lan-vpn      
-   server-ssh server-samba server-vnc server-webserver server-print server-lamp         
-   server-news server-ftp server-mail server-teamspeak server-mumble server-sql         
-   server-asterisk server-domain server-squid                                           
+   client-web client-git client-ipp client-irc client-vnc client-mail client-news       
+   client-vpn client-torrent client-vpn client-ftp client-tor client-squid              
+   game-widelands games-udp games-shooter game-wesnoth game-minetest game-freeciv       
+   lan-tor lan-vpn server-ssh server-irc server-samba server-vnc server-webserver       
+   server-print server-lamp server-news server-ftp server-mail server-teamspeak         
+   server-mumble server-sql server-asterisk server-domain server-squid                  
 ###         | options-easy |                                                             
    preferences-read preferences-modify preferences-regen list-options clasic-options    
    info-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes     
