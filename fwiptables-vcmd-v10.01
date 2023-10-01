@@ -2145,6 +2145,26 @@ config_shield_port="" ;
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,ssh,ipp" ;
+client_port_udp="domain,bootpc,ntp,https" ;
+server_port_tcp="" ;
+fi
+####
+####
+####   #### english: firewall of system client-irc:
+####   #### spanish: cortafuego del sistema client-irc:
+####
+####
+if [ "$first_option" == "client-irc" ]; then echo $give_cover ; echo $give_load ; 
+echo "$text_md [ info ] [ loading firewall client-irc ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ;
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### you can connect normal web
+server_port_udp="" ;
+client_port_tcp="http,https,ssh,ircs-u,ircd" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
 fi
@@ -2797,6 +2817,26 @@ server_port_tcp="ssh,5432,3306,3360" ;
 fi
 ####
 ####
+####   #### english: firewall of system server-irc:
+####   #### spanish: cortafuego del sistema server-irc:
+####
+####
+if [ "$first_option" == "server-irc" ]; then echo $give_cover ; echo $give_load ; 
+echo "$text_md [ info ] [ loading firewall server-irc ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ;
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### you can connect normal web
+server_port_udp="" ;
+client_port_tcp="http,https,ssh,ircs-u,ircd" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_tcp="ircs-u,ircd" ;
+fi
+####
+####
 ####   #### english: firewall of system server-domain:
 ####   #### spanish: cortafuego del sistema server-domain:
 ####
@@ -2866,12 +2906,12 @@ echo "$text_md custom new-full-config nueva-completa-config new-mini-config nuev
 echo "$text_md regen-config examples-config show-config modify-config del-config names-config       "
 echo "$title_md       | firewall-launch |                                                           "
 echo "$text_md eraserules custom wizard-mini wizard-full off-line all-permisive client-basic        "
-echo "$text_md client-web client-git client-ipp client-vnc client-mail client-news client-vpn       "
-echo "$text_md client-torrent client-vpn client-ftp client-tor client-squid game-widelands          "
-echo "$text_md games-udp games-shooter game-wesnoth game-minetest game-freeciv lan-tor lan-vpn      "
-echo "$text_md server-ssh server-samba server-vnc server-webserver server-print server-lamp         "
-echo "$text_md server-news server-ftp server-mail server-teamspeak server-mumble server-sql         "
-echo "$text_md server-asterisk server-domain server-squid                                           "
+echo "$text_md client-web client-git client-ipp client-irc client-vnc client-mail client-news       "
+echo "$text_md client-vpn client-torrent client-vpn client-ftp client-tor client-squid              "
+echo "$text_md game-widelands games-udp games-shooter game-wesnoth game-minetest game-freeciv       "
+echo "$text_md lan-tor lan-vpn server-ssh server-irc server-samba server-vnc server-webserver       "
+echo "$text_md server-print server-lamp server-news server-ftp server-mail server-teamspeak         "
+echo "$text_md server-mumble server-sql server-asterisk server-domain server-squid                  "
 echo "$title_md        | options-easy |                                                             "
 echo "$text_md preferences-read preferences-modify preferences-regen list-options clasic-options    "
 echo "$text_md info-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes     "
@@ -2906,12 +2946,12 @@ echo "$text_md                          new-mini-config nueva-mini-config exampl
 echo "$text_md                          show-config modify-config del-config names-config                             "
 echo "$text_md       firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive              "
 echo "$text_md                          client-basic games-udp games-shooter game-wesnoth game-minetest               "
-echo "$text_md                          game-freeciv game-widelands client-web client-vnc client-mail client-git      "
+echo "$text_md                          game-freeciv game-widelands client-web client-irc client-vnc client-mail      "
 echo "$text_md                          client-news client-torrent client-vpn client-ftp  client-tor client-ipp       "
-echo "$text_md                          client-squid lan-tor lan-vpn server-ssh server-samba server-vnc               "
+echo "$text_md                          client-squid client-git lan-tor lan-vpn server-ssh server-samba server-vnc               "
 echo "$text_md                          server-webserver server-print server-lamp server-news server-ftp              "
 echo "$text_md                          server-mail server-teamspeak server-mumble server-sql                         "
-echo "$text_md                          server-asterisk server-domain server-squid                                    "
+echo "$text_md                          server-asterisk server-domain server-squid server-irc                                    "
 echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen list-options            "
 echo "$text_md                          clasic-options info-options filelog autolog ip4 ip6 speed-ip4 speed-ip6       "
 echo "$text_md                          speed-glx sockets nodes geoip date free ver version notes depends code        "
