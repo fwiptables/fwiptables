@@ -2298,6 +2298,8 @@ config_shield_port="" ;
 #### POP3 (receiving mail)	Encrypted - TLS	995
 #### POP3 (receiving mail)	Encrypted - SSL	995
 #### POP3 (receiving mail)	Unencrypted	110
+#### IMAP2 143
+#### IMAPS 993
 #### negotiation submission     tls             465 and 587
 #### 
 server_port_udp="" ; 
@@ -2637,6 +2639,8 @@ config_shield_port="ssh" ;
 #### POP3 (receiving mail)	Encrypted - TLS	995
 #### POP3 (receiving mail)	Encrypted - SSL	995
 #### POP3 (receiving mail)	Unencrypted	110
+#### IMAP2 143
+#### IMAPS 993
 #### negotiation submission     tls             465 and 587
 #### 
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
