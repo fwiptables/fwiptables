@@ -2641,8 +2641,8 @@ config_shield_port="ssh" ;
 #### 
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="https" ;
-client_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587" ;
-server_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587" ;
+client_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587,143,993" ;
+server_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587,143,993" ;
 fi
 ####
 ####
