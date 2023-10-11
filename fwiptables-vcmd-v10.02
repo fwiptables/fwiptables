@@ -640,19 +640,38 @@ fi
 ####
 ####
 #### :rutina-final-favorite-date-command:
-##########      english: search favorite music player            ##########
-##########      spanish: busca preferida reproductor de musica   ##########
-#### :rutina-inicial-favorite-radio-command:
+##########      english: search favorite text music player             ##########
+##########      spanish: busca preferida texto reproductor de musica   ##########
+#### :rutina-inicial-favorite-text-music:
 ####
 ####
-if [ "$favorite_radio_command" == "$NULL" ]; then
-if [ "$command_cvlc" != "$NULL" ]  ; then  favorite_radio_command="$command_cvlc"   ; fi
-if [ "$command_mpg321" != "$NULL" ]; then  favorite_radio_command="$command_mpg321" ; fi
-if [ "$command_mpg123" != "$NULL" ]; then  favorite_radio_command="$command_mpg123" ; fi
+favorite_text_music=""
+command_mpg321="$(command -v mpg321)"
+command_mpg123="$(command -v mpg123)"
+command_cvlc="$(command -v cvlc)"
+if [ "$favorite_text_music" == "$NULL" ]; then
+if [ "$command_mpg321" != "$NULL" ]; then  favorite_text_music="$command_mpg321" ; fi
+if [ "$command_mpg123" != "$NULL" ]; then  favorite_text_music="$command_mpg123" ; fi
+if [ "$command_cvlc" != "$NULL" ]; then  favorite_text_music="$command_cvlc"     ; fi
 fi
 ####
 ####
-#### :rutina-final-favorite-radio-command:
+#### :rutina-final-favorite-text-music:
+##########      english: search favorite graphicall music player            ##########
+##########      spanish: busca preferida grafica reproductor de musica      ##########
+#### :rutina-inicial-favorite-graphicall-music:
+####
+####
+#### favorite_graphicall_music=""
+#### command_qmmp="$(command -v qmmp)"
+#### command_vlc="$(command -v vlc)"
+#### if [ "$favorite_graphicall_music" == "$NULL" ]; then
+#### if [ "$command_qmmp" != "$NULL" ]; then  favorite_graphicall_music="$command_qmmp"  ; fi
+#### if [ "$command_vlc" != "$NULL" ]; then  favorite_graphicall_music="$command_vlc"    ; fi
+#### fi
+####
+####
+#### :rutina-final-favorite-graphicall-music:
 ##########    english: ALIAS  simple y firewall y campus       ##########
 ##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
 #### :rutina-inicial-alias-simple:
@@ -806,7 +825,6 @@ if [ "$first_option" == "options-examples" ] ; then first_option="examples" ; fi
 if [ "$first_option" == "options-mini" ] ; then first_option="options" ; fi
 if [ "$first_option" == "examples" ] ; then first_option="options-examples"; fi
 if [ "$first_option" == "sentlog" ] ; then first_option="filelog"; fi
-if [ "$first_option" == "radio" ] ; then first_option="radio-mp3"; fi
 if [ "$first_option" == "regen" ] ; then first_option="regen-config"; fi
 if [ "$first_option" == "cfg" ] ; then first_option="names-config" ; fi
 if [ "$first_option" == "cfg-custom" ] ; then first_option="custom" ; fi
@@ -4937,6 +4955,44 @@ exit; fi
 ####
 ####
 #### :rutina-final-pc-shutdown:
+##########    english: radio: url from one radio mp3      ##########
+##########    spanish: radio: url de una radio en mp3     ##########
+#### :rutina-inicial-radio:
+####
+####
+if   [ "$first_option" == "radio" ] ; then  echo $give_cover
+echo "$header_ok [ $first_option ]  [ Listen radio online ]"
+echo "$duo_md [ info ] [ for only protocol http ] || ||"
+echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
+####
+####
+#### case "$second_option" in "gui"|"-gui"|"-g"|"--gui")
+#### favorite_text_music="$favorite_graphicall_music" ; esac
+####
+####
+link_radio_rockfm="http://flucast-b02-06.flumotion.com/cope/rockfm.mp3" 
+link_radio_kissfm="http://kissfm.kissfmradio.cires21.com/kissfm.mp3" 
+link_radio_cope="https://flucast24-h-cloud.flumotion.com/cope/net1.mp3" 
+link_radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3"
+####
+####
+case "$second_option" in
+"rockfm") emisora="$link_radio_rockfm";;
+"cope") emisora="$link_radio_cope" ;;
+"kissfm") emisora="$link_radio_kissfm" ;;
+"cadena100") emisora="$link_radio_cadena100" ;;
+esac
+####
+####
+echo "$duo_md [  ok  ] [ $favorite_text_music ] [ $emisora ]"
+echo 
+echo 
+sudo -u $(logname) $favorite_text_music $emisora
+exit; fi
+####
+####
+#### :rutina-final-radio:
+
 ##########    english: speed-glx: show frammes por seconds with mesa graphicall            ##########
 ##########    spanish: speed-glx: muestra los fotogramas por segundo con graphicos mesa    ##########
 #### :rutina-inicial-speed-glx:
