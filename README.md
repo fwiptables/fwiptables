@@ -1,5 +1,5 @@
-###  #[ fwiptables-cmd command-10.01 ] [ Options: /usr/bin/fwiptables-cmd options ]
-###  [ intro ] [ /usr/bin/fwiptables-cmd command-10.01 intro ] [ intro md ] 
+###  #[ fwiptables-cmd command-10.02 ] [ Options: /usr/bin/fwiptables-cmd options ]
+###  [ intro ] [ /usr/bin/fwiptables-cmd command-10.02 intro ] [ intro md ] 
   
 ###  fwiptables. Firewall With iptables.    
   
@@ -24,20 +24,21 @@
   
 ###  fwiptables install.                                                 
   
-    Put bit of execution. TYPE:   chmod u+x ./fwiptables-command-10.01   
-    Install this version. TYPE:   ./fwiptables-command-10.01 install     
+    Put bit of execution. TYPE:   chmod u+x ./fwiptables-command-10.02   
+    Install this version. TYPE:   ./fwiptables-command-10.02 install     
   
 ###  fwiptables uninstall.                                               
   
-    Uninstall fwiptables. TYPE:   ./fwiptables-command-10.01 uninstall   
+    Uninstall fwiptables. TYPE:   ./fwiptables-command-10.02 uninstall   
   
-### #[ fwiptables-cmd command-10.01 ] [ Options: /usr/bin/fwiptables-cmd options ]
-###  /usr/bin/fwiptables-cmd [ one_optional_parametter ] first_option [ second_option ]              
+### #[ fwiptables-cmd command-10.02 ] [ Options: /usr/bin/fwiptables-cmd options ]
+###  /usr/bin/fwiptables-cmd [ optional-parametter ] first_option [ second_option ]                  
   
+###       | optional-parametter |                                                        
    /usr/bin/fwiptables-cmd [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                           
    [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                  
    [ -gui-roll-zenity -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                  
-   [ -cli-menu-dialog -cli-menu-whiptail ] first_option [ second_option ]               
+   [ -cli-menu-dialog -cli-menu-whiptail ]                                              
   
 ###       | firewall-control |                                                           
    stop continue reset actual show save load names-control                              

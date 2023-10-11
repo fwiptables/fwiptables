@@ -4981,6 +4981,7 @@ case "$second_option" in
 "cope") emisora="$link_radio_cope" ;;
 "kissfm") emisora="$link_radio_kissfm" ;;
 "cadena100") emisora="$link_radio_cadena100" ;;
+*) emisora="$2" ;;
 esac
 ####
 ####
@@ -4992,7 +4993,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-radio:
-
 ##########    english: speed-glx: show frammes por seconds with mesa graphicall            ##########
 ##########    spanish: speed-glx: muestra los fotogramas por segundo con graphicos mesa    ##########
 #### :rutina-inicial-speed-glx:
