@@ -4977,6 +4977,7 @@ link_radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.
 ####
 ####
 case "$second_option" in
+"$NULL") echo " [ info ] [ launch: $cmd_binary radio link-mp3 ]"
 "rockfm") emisora="$link_radio_rockfm";;
 "cope") emisora="$link_radio_cope" ;;
 "kissfm") emisora="$link_radio_kissfm" ;;
