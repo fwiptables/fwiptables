@@ -32,9 +32,9 @@
     Uninstall fwiptables. TYPE:   ./fwiptables-command-10.02 uninstall   
   
 ### #[ fwiptables-cmd command-10.02 ] [ Options: /usr/bin/fwiptables-cmd options ]
-###  /usr/bin/fwiptables-cmd [ optional-parametter ] first_option [ second_option ]                  
+###  /usr/bin/fwiptables-cmd [ optional-output ] first_option [ second_option ]                  
   
-###       | optional-parametter |                                                        
+###       | optional-output |                                                        
    /usr/bin/fwiptables-cmd [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                           
    [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                  
    [ -gui-roll-zenity -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                  
