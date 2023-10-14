@@ -2041,7 +2041,7 @@ fi
 #### :rutina-final-custom-rules:
 ##########   english: system firewall           ##########
 ##########   spanish: cortafuegos del sistema   ##########
-#### :rutina-inicial-system-rules:
+#### :rutina-inicial-off-line:
 ####
 ####
 ####   #### english: firewall of system off-line:
@@ -2054,6 +2054,10 @@ launch_rules_firewall="yes" ;
 type_firewall="off-line";
 name_firewall="$first_option";
 fi
+#### :rutina-final-off-line:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-all-permisive:
 ####
 ####
 ####   #### english: firewall of system all-permisive:
@@ -2067,6 +2071,11 @@ type_firewall="all-permisive" ;
 name_firewall="$first_option";
 fi
 ####
+####
+#### :rutina-final-all-permisive:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-shield-ssh:
 ####
 ####   #### english: firewall of system shield-ssh:
 ####   #### spanish: cortafuego del sistema shield-ssh:
@@ -2086,6 +2095,10 @@ server_port_udp="" ;
 client_port_tcp="http,https,ssh" ;
 server_port_tcp="ssh" ;
 fi
+#### :rutina-final-shield-ssh:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-basic:
 ####
 ####
 ####   #### english: firewall of system client-basic:
@@ -2106,6 +2119,10 @@ client_port_tcp="http,https,ssh,ipp" ;
 client_port_udp="domain,bootpc,ntp" ;
 server_port_tcp="" ;
 fi
+#### :rutina-final-client-basic:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-web:
 ####
 ####
 ####   #### english: firewall of system client-web:
@@ -2126,6 +2143,10 @@ client_port_tcp="http,https,ssh" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
 fi
+#### :rutina-final-client-web:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-git:
 ####
 ####
 ####   #### english: firewall of system client-git:
@@ -2146,6 +2167,10 @@ client_port_tcp="http,https,ssh,git" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
 fi
+#### :rutina-final-client-git:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-ipp:
 ####
 ####
 ####   #### english: firewall of system client-ipp:
@@ -2166,6 +2191,10 @@ client_port_tcp="http,https,ssh,ipp" ;
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_tcp="" ;
 fi
+#### :rutina-final-client-ipp:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-irc:
 ####
 ####
 ####   #### english: firewall of system client-irc:
@@ -2186,6 +2215,10 @@ client_port_tcp="http,https,ssh,ircs-u,ircd" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
 fi
+#### :rutina-final-shield-irc:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-vnc:
 ####
 ####
 ####   #### english: firewall of system client-vnc:
@@ -2206,6 +2239,10 @@ client_port_tcp="http,https,ssh,5900:5910" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
 fi
+#### :rutina-final-shield-vnc:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-torrent:
 ####
 ####
 ####   #### english: firewall of system client-torrent:
@@ -2226,6 +2263,10 @@ server_port_udp="1025:65000" ;
 client_port_tcp="http,https,ssh,9091,51413" ;
 server_port_tcp="9091,51413" ;
 fi
+#### :rutina-final-client-torrent:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-vpn:
 ####
 ####
 ####   #### english: firewall of system client-vpn:
@@ -2246,6 +2287,10 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,500,1194,1701,4500" ;
 client_port_tcp="http,https,ssh,443,1701,1723" ; 
 server_port_tcp="" ;
 fi
+#### :rutina-final-client-vpn:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-tor:
 ####
 ####
 ####   #### english: firewall of system client-tor:
@@ -2266,6 +2311,10 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 client_port_tcp="http,https,ssh,9000:9170" ;
 server_port_tcp="9000:9170" ;
 fi
+#### :rutina-final-client-tor:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-news:
 ####
 ####
 ####   #### english: firewall of system client-news:
@@ -2291,6 +2340,10 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 client_port_tcp="http,https,ssh,119,433,563" ;
 server_port_tcp="" ;
 fi
+#### :rutina-final-client-news:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-mail:
 ####
 ####
 ####   #### english: firewall of system client-mail:
@@ -2319,12 +2372,18 @@ config_shield_port="" ;
 #### IMAP2 143
 #### IMAPS 993
 #### negotiation submission     tls             465 and 587
-#### 
+#### nttps 563
+#### nttp  119
+####
 server_port_udp="" ; 
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-client_port_tcp="http,https,ssh,25,119,433,563,25,26,995,110,465,587,143,993,smtps" ;
+client_port_tcp="http,https,ssh,25,119,563,25,995,110,465,587,143,993" ;
 server_port_tcp="" ;
 fi
+#### :rutina-final-client-mail:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-ftp:
 ####
 ####
 ####   #### english: firewall of system client-ftp:
@@ -2345,6 +2404,10 @@ server_port_udp="" ;
 client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="" ;
 fi
+#### :rutina-final-shield-ftp:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-squid:
 ####
 ####
 ####   #### english: firewall of system client-squid:
@@ -2365,6 +2428,10 @@ server_port_udp="" ;
 client_port_tcp="http,https,ssh,8080,3128" ;
 server_port_tcp="" ;
 fi
+#### :rutina-final-client-squid:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-lan-vpn:
 ####
 ####
 ####   #### english: firewall of system lan-vpn:
@@ -2386,6 +2453,10 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,500,1194,1701,4500" ;
 client_port_tcp="1701,1723" ; 
 server_port_tcp="" ;
 fi
+#### :rutina-final-lan-vpn:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-lan-tor:
 ####
 ####
 ####   #### english: firewall of system lan-tor:
@@ -2407,6 +2478,10 @@ client_port_udp="bootpc,domain,domain-s,ntp" ;
 client_port_tcp="9000:9170" ;
 server_port_tcp="9000:9170" ;
 fi
+#### :rutina-final-lan-tor:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-games-shooter:
 ####
 ####
 ####   #### english: firewall of system games-shooter:
@@ -2427,6 +2502,10 @@ server_port_udp="1025:65000" ;
 client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="" ;
 fi
+#### :rutina-final-games-shooter:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-games-udp:
 ####
 ####
 ####   #### english: firewall of system games-udp:
@@ -2447,6 +2526,10 @@ server_port_udp="1025:65000" ;
 client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="" ;
 fi
+#### :rutina-final-games-shooter:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-game-wesnoth:
 ####
 ####
 ####   #### english: firewall of system game-wesnoth:
@@ -2467,6 +2550,10 @@ server_port_udp="" ;
 client_port_tcp="http,https,ssh,14950:15050" ;
 server_port_tcp="14950:15050" ;
 fi
+#### :rutina-final-game-wesnoth:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-game-minetest:
 ####
 ####
 ####   #### english: firewall of system game-minetest:
@@ -2487,6 +2574,10 @@ server_port_udp="" ;
 client_port_tcp="http,https,ssh,25000:35000" ;
 server_port_tcp="25000:35000" ;
 fi
+#### :rutina-final-game-minetest:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-game-freeciv:
 ####
 ####
 ####   #### english: firewall of system game-freeciv:
@@ -2507,6 +2598,10 @@ server_port_udp="" ;
 client_port_tcp="http,https,ssh,5555:5556" ;
 server_port_tcp="5555:5556" ;
 fi
+#### :rutina-final-game-freeciv:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-game-widelands:
 ####
 ####
 ####   #### english: firewall of system game-widelands:
@@ -2527,6 +2622,10 @@ server_port_udp="7396" ;
 client_port_tcp="http,https,ssh,7396" ;
 server_port_tcp="7396" ;
 fi
+#### :rutina-final-game-widelands:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-web:
 ####
 ####
 ####   #### english: firewall of system server-web:
@@ -2547,6 +2646,10 @@ server_port_udp="https" ;
 client_port_tcp="http,https,ssh" ;
 server_port_tcp="http,https,ssh" ;
 fi
+#### :rutina-final-server-web:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-vnc:
 ####
 ####
 ####   #### english: firewall of system server-vnc:
@@ -2568,6 +2671,10 @@ client_port_tcp="http,https,ssh,5900:5910" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="ssh,5900:5910" ;
 fi
+#### :rutina-final-server-vnc:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-ftp:
 ####
 ####
 ####   #### english: firewall of system server-ftp:
@@ -2587,6 +2694,10 @@ server_port_udp="" ;
 client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
 fi
+#### :rutina-final-server-ftp:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-squid:
 ####
 ####
 ####   #### english: firewall of system server-squid:
@@ -2607,6 +2718,10 @@ server_port_udp="" ;
 client_port_tcp="http,https,ssh,8080,3128" ;
 server_port_tcp="http,https,ssh,8080,3128" ;
 fi
+#### :rutina-final-server-squid:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-news:
 ####
 ####
 ####   #### english: firewall of system server-news:
@@ -2632,6 +2747,10 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 client_port_tcp="http,https,ssh,119,433,563" ;
 server_port_tcp="http,https,ssh,119,433,563" ;
 fi
+#### :rutina-final-server-news:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-mail:
 ####
 ####
 ####   #### english: firewall of system server-mail:
@@ -2666,6 +2785,10 @@ server_port_udp="https" ;
 client_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587,143,993" ;
 server_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587,143,993" ;
 fi
+#### :rutina-final-server-mail:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-samba:
 ####
 ####
 ####   #### english: firewall of system server-samba:
@@ -2686,6 +2809,10 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,ldap,636,137:139" ;
 server_port_tcp="ssh,ldap,636,microsoft-ds" ; 
 server_port_udp="ntp,domain,domain-s,ldap,636,137:139" ;
 fi
+#### :rutina-final-server-mail:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-print:
 ####
 ####
 ####   #### english: firewall of system server-print:
@@ -2706,6 +2833,10 @@ server_port_udp="" ;
 client_port_tcp="http,https,ssh" ;
 server_port_tcp="ssh,printer,ipp" ;
 fi
+#### :rutina-final-server-print:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-ssh:
 ####
 ####
 ####   #### english: firewall of system server-ssh:
@@ -2726,6 +2857,10 @@ server_port_udp="" ;
 client_port_tcp="http,https,ssh" ;
 server_port_tcp="ssh" ;
 fi
+#### :rutina-final-server-ssh:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-lamp:
 ####
 ####
 ####   #### english: firewall of system server-lamp:
@@ -2747,6 +2882,10 @@ server_port_udp="https" ;
 client_port_tcp="http,https,ssh,20,21,989,990" ;
 server_port_tcp="http,https,ssh,10000,3306,5432" ;
 fi
+#### :rutina-final-server-lamp:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-asterisk:
 ####
 ####
 ####   #### english: firewall of system server-asterisk:
@@ -2769,6 +2908,10 @@ server_port_udp="5060,10000:20000,5036" ;
 client_port_tcp="http,https,ssh,5060" ;
 server_port_tcp="ssh,5060" ;
 fi
+#### :rutina-final-server-astrerisk:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-mumble:
 ####
 ####
 ####   #### english: firewall of system server-mumble:
@@ -2789,6 +2932,10 @@ server_port_udp="64738" ;
 client_port_tcp="http,https,ssh,64738" ;
 server_port_tcp="ssh,64738" ;
 fi
+#### :rutina-final-server-mumble:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-teamspeak:
 ####
 ####
 ####   #### english: firewall of system server-teamspeak:
@@ -2813,6 +2960,10 @@ server_port_udp="9987" ;
 client_port_tcp="http,https,ssh,30033,10011,10022" ;
 server_port_tcp="ssh,30033,10011,10022" ;
 fi
+#### :rutina-final-server-teamspeak:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-sql:
 ####
 ####
 ####   #### english: firewall of system server-sql:
@@ -2837,6 +2988,10 @@ server_port_udp="5432" ;
 client_port_tcp="http,https,ssh,5432,3306,3360" ;
 server_port_tcp="ssh,5432,3306,3360" ;
 fi
+#### :rutina-final-server-sql:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-irc:
 ####
 ####
 ####   #### english: firewall of system server-irc:
@@ -2857,6 +3012,10 @@ client_port_tcp="http,https,ssh,ircs-u,ircd" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="ircs-u,ircd" ;
 fi
+#### :rutina-final-server-irc:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-domain:
 ####
 ####
 ####   #### english: firewall of system server-domain:
@@ -2879,7 +3038,7 @@ server_port_tcp="ssh" ;
 fi
 ####
 ####
-#### :rutina-final-system-rules:
+#### :rutina-final-server-domain:
 ##########    english: ntp: update the date and time    ##########
 ##########    spanish: ntp: actualiza la fecha y hora   ##########
 #### :rutina-inicial-ntp:
