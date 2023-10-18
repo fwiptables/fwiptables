@@ -1,5 +1,5 @@
-###  #[ fwiptables-cmd command-10.02 ] [ Options: /usr/bin/fwiptables-cmd options ]
-###  [ intro ] [ /usr/bin/fwiptables-cmd command-10.02 intro ] [ intro md ] 
+###  #[ fwiptables-cmd command-10.03 ] [ Options: /usr/bin/fwiptables-cmd options ]
+###  [ intro ] [ /usr/bin/fwiptables-cmd command-10.03 intro ] [ intro md ] 
   
 ###  fwiptables. Firewall With iptables.    
   
@@ -24,14 +24,14 @@
   
 ###  fwiptables install.                                                 
   
-    Put bit of execution. TYPE:   chmod u+x ./fwiptables-command-10.02   
-    Install this version. TYPE:   ./fwiptables-command-10.02 install     
+    Put bit of execution. TYPE:   chmod u+x ./fwiptables-command-10.03   
+    Install this version. TYPE:   ./fwiptables-command-10.03 install     
   
 ###  fwiptables uninstall.                                               
   
-    Uninstall fwiptables. TYPE:   ./fwiptables-command-10.02 uninstall   
+    Uninstall fwiptables. TYPE:   ./fwiptables-command-10.03 uninstall   
   
-### #[ fwiptables-cmd command-10.02 ] [ Options: /usr/bin/fwiptables-cmd options ]
+### #[ fwiptables-cmd command-10.03 ] [ Options: /usr/bin/fwiptables-cmd options ]
 ###  /usr/bin/fwiptables-cmd [ optional-output ] first_option [ second_option ]                  
   
 ###       | optional-output |                                                        
