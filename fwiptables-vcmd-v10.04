@@ -1166,13 +1166,13 @@ echo " [ info ] Proxy http:    $http_proxy"
 echo " [ info ] Proxy https:   $https_proxy"
 echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
-if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.head ]"; fi
-if [ -f /etc/resolv.conf.body ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.body ]"; fi
-if [ -f /etc/resolv.conf.tail ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.tail ]"; fi
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes ] [ /etc/resolv.conf ]"     ;
 cat /etc/resolv.conf           ; fi
 if [ -d /etc/resolvconf ];       then echo "$title_md [ yes ] [ /etc/resolvconf ]";
 $command_find /etc/resolvconf  ; fi
+if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.head ]"; fi
+if [ -f /etc/resolv.conf.body ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.body ]"; fi
+if [ -f /etc/resolv.conf.tail ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.tail ]"; fi
 exit; fi
 ####
 ####
@@ -1208,13 +1208,13 @@ echo " [ info ] Proxy http:    $http_proxy"
 echo " [ info ] Proxy https:   $https_proxy"
 echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
-if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.head ]"; fi
-if [ -f /etc/resolv.conf.body ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.body ]"; fi
-if [ -f /etc/resolv.conf.tail ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.tail ]"; fi
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes ] [ /etc/resolv.conf ]"     ;
 cat /etc/resolv.conf           ; fi
 if [ -d /etc/resolvconf ];       then echo "$title_md [ yes ] [ /etc/resolvconf ]";
 $command_find /etc/resolvconf  ; fi
+if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.head ]"; fi
+if [ -f /etc/resolv.conf.body ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.body ]"; fi
+if [ -f /etc/resolv.conf.tail ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.tail ]"; fi
 exit; fi
 ####
 ####
@@ -5132,14 +5132,27 @@ link_radio_rockfm="http://flucast-b02-06.flumotion.com/cope/rockfm.mp3"
 link_radio_kissfm="http://kissfm.kissfmradio.cires21.com/kissfm.mp3" 
 link_radio_cope="https://flucast24-h-cloud.flumotion.com/cope/net1.mp3" 
 link_radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3"
+link_radio_dial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3"
+link_radio_ondacero="https://livefastly-webs.ondacero.es/ondacero/audio/master.m3u8"
+link_radio_rne="https://rtvelivestreamv3.akamaized.net/rtvesec/rne_r1_main.m3u8"
+link_radio_clasica="https://rtvelivestreamv3.akamaized.net/rtvesec/rne_r2_main.m3u8"
+link_radio_exterior="http://radioexterior.rtveradio.cires21.com/radioexterior/mp3/icecast.audio"
+link_radio_marca="https://22333.live.streamtheworld.com/RADIOMARCA_NACIONAL.mp3"
 ####
 ####
 case "$second_option" in
 "$NULL") echo " [ info ] [ launch: $cmd_binary radio link-mp3 ]" ; exit ;;
-"rockfm") emisora="$link_radio_rockfm";;
+"show") echo " [ info ] rockfm,cope,kissfm,cadena100,dial,ondacero,rne,clasica,exterior,marca" ; exit ;;
+"rockfm") emisora="$link_radio_rockfm" ;;
 "cope") emisora="$link_radio_cope" ;;
 "kissfm") emisora="$link_radio_kissfm" ;;
 "cadena100") emisora="$link_radio_cadena100" ;;
+"dial") emisora="$link_radio_dial" ;;
+"ondacero") emisora="$link_radio_ondacero" ;;
+"rne") emisora="$link_radio_rne" ;;
+"clasica") emisora="$link_radio_clasica" ;;
+"exterior") emisora="$link_radio_exterior" ;;
+"marca") emisora="$link_radio_marca" ;;
 *) emisora="$2" ;;
 esac
 ####
