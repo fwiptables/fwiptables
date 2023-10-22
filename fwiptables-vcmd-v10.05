@@ -6904,7 +6904,7 @@ exit; fi
 ####
 ####
 if [ "$launch_rules_firewall" != "yes" ] ; then
-echo "### #[ fail ] [ Option: $first_option ] # [ Choose a one valid option ... ]" ;
+echo "### #[ fail ] [ First Option: $first_option ] # [ Choose a one valid first option ... ]" ;
 $cmd_binary $option_default_security ;
 exit ; fi
 ####
