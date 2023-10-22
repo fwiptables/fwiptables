@@ -98,6 +98,7 @@ fi
 ####
 ####
 cmd_binary="$0" ;
+cmd_file="$(basename $0)" ;
 cmd_config="fwiptables-cmd" ;
 cmd_version="command-10.05"  ;
 cmd_name="fwiptables, FireWall With iptables" ;
@@ -485,7 +486,7 @@ head_waiting_info="$title_md [ info ] [ info: info in clear txt format ] [ press
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$title_md #[ $cmd_config $cmd_version ] [ Options: $cmd_binary options ]"
+give_cover="$title_md #[ $cmd_config $cmd_version ] [ Options: $cmd_file options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$title_md [ _ok_ ] [ Load firewall ] [ Firewall With iptables ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -3065,7 +3066,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-options" ] ; then echo $give_cover
-echo "$title_md $cmd_binary [ optional-output ] first_option [ second_option ]                      "
+echo "$title_md $cmd_file [ optional-output ] first_option [ second_option ]                      "
 echo "$text_md"
 echo "$title_md      | optional-output |                                                            "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       "
@@ -3109,7 +3110,7 @@ exit ; fi
 ####
 ####
 if   [ "$first_option" == "clasic-options" ] ; then echo $give_cover 
-echo "$title_md $cmd_binary [ optional-output ] first_option [ second_option ] "
+echo "$title_md $cmd_file [ optional-output ] first_option [ second_option ] "
 echo "$text_md"
 echo "$text_md    optional-paramtter |                                                                                "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                                         "
