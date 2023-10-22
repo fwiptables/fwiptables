@@ -1,5 +1,5 @@
-###  #[ fwiptables-cmd command-10.03 ] [ Options: /usr/bin/fwiptables-cmd options ]
-###  [ intro ] [ /usr/bin/fwiptables-cmd command-10.03 intro ] [ intro md ] 
+###  #[ fwiptables-cmd command-10.04 ] [ Options: /usr/bin/fwiptables-cmd options ]
+###  [ intro ] [ /usr/bin/fwiptables-cmd command-10.04 intro ] [ intro md ] 
   
 ###  fwiptables. Firewall With iptables.    
   
@@ -24,29 +24,29 @@
   
 ###  fwiptables install.                                                 
   
-    Put bit of execution. TYPE:   chmod u+x ./fwiptables-command-10.03   
-    Install this version. TYPE:   ./fwiptables-command-10.03 install     
+    Put bit of execution. TYPE:   chmod u+x ./fwiptables-command-10.04   
+    Install this version. TYPE:   ./fwiptables-command-10.04 install     
   
 ###  fwiptables uninstall.                                               
   
-    Uninstall fwiptables. TYPE:   ./fwiptables-command-10.03 uninstall   
+    Uninstall fwiptables. TYPE:   ./fwiptables-command-10.04 uninstall   
   
-### #[ fwiptables-cmd command-10.03 ] [ Options: /usr/bin/fwiptables-cmd options ]
-###  /usr/bin/fwiptables-cmd [ optional-output ] first_option [ second_option ]                  
+### #[ fwiptables-cmd command-10.04 ] [ Options: /usr/bin/fwiptables-cmd options ]
+###  /usr/bin/fwiptables-cmd [ optional-output ] first_option [ second_option ]                      
   
-###       | optional-output |                                                        
-   /usr/bin/fwiptables-cmd [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                           
+###       | optional-output |                                                            
+   [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       
+   [ -cli-dialog -cli-whiptail ] [ -gui-zenity -gui-yad ]                               
+   [ -cli-menu-dialog -cli-menu-whiptail ] [ -gui-roll-zenity ]                         
    [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                  
-   [ -gui-roll-zenity -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                  
-   [ -cli-menu-dialog -cli-menu-whiptail ]                                              
   
 ###       | firewall-control |                                                           
    stop continue reset actual show save load names-control                              
-###       | firewall-conceptual |                                              
+###       | firewall-conceptual |                                                        
    ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6                  
    list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6                    
    list-security4 list-security6 list-ebtables list-arptables                           
-###       | firewall-numeral |                                                 
+###       | firewall-numeral |                                                           
    lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6          
    listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6              
    listn-security4 listn-security6                                                      
