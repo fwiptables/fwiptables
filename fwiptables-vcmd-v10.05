@@ -3101,6 +3101,7 @@ echo "$text_md preferences-read preferences-modify preferences-regen list-option
 echo "$text_md info-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes     "
 echo "$text_md geoip webcert date free ver version notes depends license code examples commands     "
 echo "$text_md variables intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot   "
+echo "$title_md                      ||| Example: $cmd_file -gui-zenity ls4 |||  "
 exit ; fi
 ####
 ####
@@ -3142,6 +3143,7 @@ echo "$text_md                          clasic-options info-options filelog auto
 echo "$text_md                          speed-glx sockets nodes geoip date free ver version notes depends code        "
 echo "$text_md                          commands variables examples intro webcert clean-tmp download license          "
 echo "$text_md                          install uninstall pc-halt pc-shutdown pc-reboot                               "
+echo "$title_md                                        ||| Example: $cmd_file -gui-zenity ls4 |||  "
 exit ; fi
 ####
 ####
