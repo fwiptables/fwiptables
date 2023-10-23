@@ -1266,31 +1266,32 @@ exit; fi
 ####
 if [ "$first_option" == "options-examples" ]; then echo $give_cover
 echo "$title_md [ $first_option ] [ List examples ] [ examples md ] "
-echo
-echo "$title_md                                      [ several examples ]                            "
-echo
-echo "$text_md        [ with optional output ]                  [ Example Description ]              "
-echo
-echo "$text_md    $cmd_binary -cli-menu-dialog         |  All options in text menu                   "
-echo "$text_md    $cmd_binary -gui-menu-yad            |  All options in window menu                 "
-echo "$text_md    $cmd_binary -gui-roll-zenity         |  All options in window roll                 "
-echo "$text_md    $cmd_binary -gui-shell-yad           |  All options in window shell                "
-echo
-echo "$text_md    $cmd_binary -txt list                |  List iptables rules with output txt        "
-echo "$text_md    $cmd_binary -cli names               |  List firewall saved with output cli        "
-echo "$text_md    $cmd_binary -gui sockets             |  List sockets ip with output gui            "
-echo "$text_md    $cmd_binary -silent client-web       |  Launch client web firewall a null output   "
-echo
-echo "$title_md                                      [ other examples ]                              "
-echo
-echo "$text_md    $cmd_binary names                    |  List firewall saved                        "
-echo "$text_md    $cmd_binary names-config             |  List configs saved                         "
-echo "$text_md    $cmd_binary speed-ip4                |  get info about speed with internet ipv4    "
-echo "$text_md    $cmd_binary sockets                  |  show info about listen sockets             "
-echo "$text_md    $cmd_binary preferences-modify       |  modify default variables                   "
-echo "$text_md    $cmd_binary autolog                  |  List last optiosn with $cmd_binary         "
-echo "$text_md    $cmd_binary depends                  |  depends to $cmd_binary                     "
-echo "$text_md    $cmd_binary version                  |  version from $cmd_binary                   "
+echo "$text_md"
+echo "$title_md                        [ several examples *without optional otuput* ]              "
+echo "$text_md"
+echo "$text_md    $cmd_file names                    |  List firewall saved                        "
+echo "$text_md    $cmd_file names-config             |  List configs saved                         "
+echo "$text_md    $cmd_file speed-ip4                |  get info about speed with internet ipv4    "
+echo "$text_md    $cmd_file sockets                  |  show info about listen sockets             "
+echo "$text_md    $cmd_file preferences-modify       |  modify default variables                   "
+echo "$text_md    $cmd_file autolog                  |  List last optiosn with $cmd_file           "
+echo "$text_md    $cmd_file depends                  |  depends to $cmd_file                       "
+echo "$text_md    $cmd_file version                  |  version from $cmd_file                     "
+echo "$text_md"
+echo "$title_md                        [ several examples *with optional output* ]                 "
+echo "$text_md"
+echo "$text_md        [ with optional output ]                  [ Example Description ]            "
+echo "$text_md"
+echo "$text_md    $cmd_file -silent client-web       |  Launch client web firewall a null output "
+echo "$text_md    $cmd_file -txt list                |  List iptables rules with output txt      "
+echo "$text_md    $cmd_file -cli-wiptail names       |  List firewall with output cli whiptail   "
+echo "$text_md    $cmd_file -gui-yad sockets         |  List sockets ip with output gui yad      "
+echo "$text_md"
+echo "$text_md    $cmd_file -cli-menu-dialog         |  All options in text menu                 "
+echo "$text_md    $cmd_file -gui-menu-yad            |  All options in window menu               "
+echo "$text_md    $cmd_file -gui-roll-zenity         |  All options in window roll               "
+echo "$text_md    $cmd_file -gui-shell-yad           |  All options in window shell              "
+echo "$text_md"
 exit; fi
 ####
 ####
