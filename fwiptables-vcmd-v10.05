@@ -1048,7 +1048,7 @@ exit; fi
 if [ "$first_option" == "default" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ $cmd_binary default ] [ default md ] "
 echo "$title_md [ info ] [ $cmd_binary default.. ]"
-echo "$title_md [ info ] [ preferences-regen: Only works with source shell script, see preferences-example ]"
+
 echo "$title_md [ info ] [ Autoregenerate default config for fwiptables: ] [ fwiptables preferences-regen  ]"
 echo "$title_md [ info ] [ Show   default config for fwiptables:         ] [ fwiptables preferences-read   ]"
 echo "$title_md [ info ] [ Modify default config for fwiptables:         ] [ fwiptables preferences-modify ]"
@@ -1066,7 +1066,7 @@ echo "$title_md [ $first_option ] [ show the default fwiptables ] "
 echo 
 cat $default_preferences
 echo
-echo "$title_md [ info ] [ preferences-regen: Only works with source shell script, see preferences-example ]"
+
 echo "$title_md [ info ] [ Change variables with: $cmd_binary preferences-modify ]"
 echo "$title_md [ info ] [ file: $default_preferences ]"
 exit; fi
@@ -1082,7 +1082,7 @@ if [ "$first_option" == "preferences-modify" ]; then  echo $give_cover
 echo "$title_md [ $first_option ] [ modify the default fwiptables ] "
 echo 
 $favorite_text_editor $default_preferences
-echo "$title_md [ info ] [ preferences-regen: Only works with source shell script, see preferences-example ]"
+
 echo "$title_md [ info ] [ edit file $default_preferences to change variables ]"
 exit; fi
 ####
@@ -1097,7 +1097,7 @@ if [ "$first_option" == "dialog-modify" ]; then  echo $give_cover
 echo "$title_md [ $first_option ] [ modify the default dialog ] "
 echo 
 $favorite_text_editor $default_dialogrc
-echo "$title_md [ info ] [ preferences-regen: Only works with source shell script, see preferences-example ]"
+
 echo "$title_md [ info ] [ edit file $default_dialogrc to change variables ]"
 exit; fi
 ####
@@ -1110,7 +1110,7 @@ exit; fi
 ####
 if [ "$first_option" == "preferences-read" ]; then  echo $give_cover
 echo "$title_md [ $first_option ] [ read the default fwiptables ] "
-echo "$title_md [ info ] [ preferences-regen: Only works with source shell script, see preferences-example ]"
+
 echo "$title_md [ info ] [ Show file $default_preferences to read variables ]"
 ####
 ####
@@ -1121,7 +1121,7 @@ echo "$title_md [ info ] [ Show file $default_preferences to read variables ]"
 cat $default_preferences
 ####
 ####
-echo "$title_md [ info ] [ preferences-regen: Only works with source shell script, see preferences-example ]"
+
 exit; fi
 ####
 ####
@@ -1136,8 +1136,9 @@ echo "$title_md [ $first_option ] [ $cmd_binary preferences-regen ] [ preference
 rm $default_preferences
 echo "$title_md [ _ok_ ] [ $cmd_binary deleted old configs ]"
 file $cmd_binary
-cat $cmd_binary | $command_grep fwiptables-file-default | $command_grep -iv cmd_binary &> $default_preferences 
-echo "$title_md [ info ] [ preferences-regen: Only works with source shell script, see preferences-example ]"
+#### cat $cmd_binary | $command_grep fwiptables-file-default | $command_grep -iv cmd_binary &> $default_preferences 
+$cmd_binary preferences-example &> $default_preferences
+
 echo "$title_md [ _ok_ ] [ Regenerated: $cmd_binary values for default in ]"
 echo "$title_md [ _ok_ ] [ Regenerated: $default_preferences ]"
 exit; fi
@@ -1150,7 +1151,6 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "preferences-example" ] ; then echo $give_cover
-echo "$title_md [ $first_option ] [ $cmd_binary preferences-example ] [ preferences-example md ] "
 echo
 echo "option_default_security=list-options                ## when there is not one first_option"
 echo "allow_use_legacy=                                   ## void or no"
@@ -1158,7 +1158,7 @@ echo "allow_use_nft=no                                    ## void or no"
 echo "allow_use_ipv4=                                     ## void or no"
 echo "allow_use_ipv6=                                     ## void or no"
 echo "allow_separate_rules=                               ## void or no"
-echo "config_shield_port=22                               ##  void o ports"
+echo "config_shield_port=22                               ## void or ports"
 echo "config_shield_maxtries=10                           ## void or no"
 echo "config_close_deny=DROP                              ## DROP or REJECT"
 echo "allow_save_autolog=                                 ## void or no"
@@ -1174,11 +1174,8 @@ echo "serverip_iperf_ipv4=ping.online.net                 ## default ping.online
 echo "serverport_iperf_ipv4=5001                          ## default 5201"
 echo "serverip_iperf_ipv6=ping6.online.net                ## default ping.online.net"
 echo "serverport_iperf_ipv6=5001                          ## default 5201"
-echo "graphic_window_dimension=--width=950                ## default: --height=650"
+echo "graphic_window_dimension='--width=950 --height=650' ## default '--width=950 --height=650'"
 echo
-echo "$title_md [ info ] [ preferences-regen: Only works with source shell script, see preferences-example ]"
-echo "$title_md [ _ok_ ] [ Regenerated: $cmd_binary values for default in ]"
-echo "$title_md [ _ok_ ] [ Regenerated: $default_preferences ]"
 exit; fi
 ####
 ####
