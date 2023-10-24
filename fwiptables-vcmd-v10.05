@@ -102,7 +102,7 @@ cmd_file="$(basename $0)" ;
 cmd_config="fwiptables-cmd" ;
 cmd_version="command-10.05"  ;
 cmd_name="fwiptables, FireWall With iptables" ;
-cmd_description="fwiptables, One Mini Script in one-file bash" ;
+cmd_description="fwiptables, One Mini Script in one-file source shell script" ;
 cmd_license="GPL v2" ;
 cmd_homepage_sourceforge="https://sourceforge.net/projects/f-iptables/" ;
 cmd_homepage_github="https://github.com/fwiptables/fwiptables" ;
@@ -1048,7 +1048,7 @@ exit; fi
 if [ "$first_option" == "default" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ $cmd_binary default ] [ default md ] "
 echo "$title_md [ info ] [ $cmd_binary default.. ]"
-echo "$title_md [ info ] [ preferences-regen: Only works with source script bash ]"
+echo "$title_md [ info ] [ preferences-regen: Only works with source shell script, see preferences-example ]"
 echo "$title_md [ info ] [ Autoregenerate default config for fwiptables: ] [ fwiptables preferences-regen  ]"
 echo "$title_md [ info ] [ Show   default config for fwiptables:         ] [ fwiptables preferences-read   ]"
 echo "$title_md [ info ] [ Modify default config for fwiptables:         ] [ fwiptables preferences-modify ]"
@@ -1066,7 +1066,7 @@ echo "$title_md [ $first_option ] [ show the default fwiptables ] "
 echo 
 cat $default_preferences
 echo
-echo "$title_md [ info ] [ preferences-regen: Only works with source script bash ]"
+echo "$title_md [ info ] [ preferences-regen: Only works with source shell script, see preferences-example ]"
 echo "$title_md [ info ] [ Change variables with: $cmd_binary preferences-modify ]"
 echo "$title_md [ info ] [ file: $default_preferences ]"
 exit; fi
@@ -1082,7 +1082,7 @@ if [ "$first_option" == "preferences-modify" ]; then  echo $give_cover
 echo "$title_md [ $first_option ] [ modify the default fwiptables ] "
 echo 
 $favorite_text_editor $default_preferences
-echo "$title_md [ info ] [ preferences-regen: Only works with source script bash ]"
+echo "$title_md [ info ] [ preferences-regen: Only works with source shell script, see preferences-example ]"
 echo "$title_md [ info ] [ edit file $default_preferences to change variables ]"
 exit; fi
 ####
@@ -1097,7 +1097,7 @@ if [ "$first_option" == "dialog-modify" ]; then  echo $give_cover
 echo "$title_md [ $first_option ] [ modify the default dialog ] "
 echo 
 $favorite_text_editor $default_dialogrc
-echo "$title_md [ info ] [ preferences-regen: Only works with source script bash ]"
+echo "$title_md [ info ] [ preferences-regen: Only works with source shell script, see preferences-example ]"
 echo "$title_md [ info ] [ edit file $default_dialogrc to change variables ]"
 exit; fi
 ####
@@ -1110,7 +1110,7 @@ exit; fi
 ####
 if [ "$first_option" == "preferences-read" ]; then  echo $give_cover
 echo "$title_md [ $first_option ] [ read the default fwiptables ] "
-echo "$title_md [ info ] [ preferences-regen: Only works with source script bash ]"
+echo "$title_md [ info ] [ preferences-regen: Only works with source shell script, see preferences-example ]"
 echo "$title_md [ info ] [ Show file $default_preferences to read variables ]"
 ####
 ####
@@ -1121,7 +1121,7 @@ echo "$title_md [ info ] [ Show file $default_preferences to read variables ]"
 cat $default_preferences
 ####
 ####
-echo "$title_md [ info ] [ preferences-regen: Only works with source script bash ]"
+echo "$title_md [ info ] [ preferences-regen: Only works with source shell script, see preferences-example ]"
 exit; fi
 ####
 ####
@@ -1136,14 +1136,53 @@ echo "$title_md [ $first_option ] [ $cmd_binary preferences-regen ] [ preference
 rm $default_preferences
 echo "$title_md [ _ok_ ] [ $cmd_binary deleted old configs ]"
 file $cmd_binary
-cat $cmd_binary | $command_grep fwiptables-file-default | $command_grep -iv cmd_binary &> $default_preferences
-echo "$title_md [ info ] [ preferences-regen: Only works with source script bash ]"
+cat $cmd_binary | $command_grep fwiptables-file-default | $command_grep -iv cmd_binary &> $default_preferences 
+echo "$title_md [ info ] [ preferences-regen: Only works with source shell script, see preferences-example ]"
 echo "$title_md [ _ok_ ] [ Regenerated: $cmd_binary values for default in ]"
 echo "$title_md [ _ok_ ] [ Regenerated: $default_preferences ]"
 exit; fi
 ####
 ####
 #### :rutina-final-preferences-regen:
+##########   english: preferences-examples:  regen preferences       ##########
+##########   spanish: preferences-examples:  regenera preferencias   ##########
+#### :rutina-inicial-preferences-examples:
+####
+####
+if [ "$first_option" == "preferences-example" ] ; then echo $give_cover
+echo "$title_md [ $first_option ] [ $cmd_binary preferences-example ] [ preferences-example md ] "
+echo
+echo "option_default_security=list-options                ## when there is not one first_option"
+echo "allow_use_legacy=                                   ## void or no"
+echo "allow_use_nft=no                                    ## void or no"
+echo "allow_use_ipv4=                                     ## void or no"
+echo "allow_use_ipv6=                                     ## void or no"
+echo "allow_separate_rules=                               ## void or no"
+echo "config_shield_port=22                               ##  void o ports"
+echo "config_shield_maxtries=10                           ## void or no"
+echo "config_close_deny=DROP                              ## DROP or REJECT"
+echo "allow_save_autolog=                                 ## void or no"
+echo "allow_show_time=no                                  ## void or no"
+echo "favorite_text_editor=                               ## or void for automatic or specify command"
+echo "favorite_text_dialog=                               ## or void for automatic or specify command"
+echo "favorite_graphicall_dialog=                         ## or void for automatic or specify command"
+echo "favorite_text_browser=                              ## or void for automatic or specify command"
+echo "favorite_date_command=                              ## or void for automatic or specify command"
+echo "serverip_discover_ipv4=https://ifconfig.co/ip       ## default http://ifconfig.co/ip"
+echo "serverip_discover_ipv6=https://ifconfig.co/ip       ## default http://ifconfig.co/ip"
+echo "serverip_iperf_ipv4=ping.online.net                 ## default ping.online.net"
+echo "serverport_iperf_ipv4=5001                          ## default 5201"
+echo "serverip_iperf_ipv6=ping6.online.net                ## default ping.online.net"
+echo "serverport_iperf_ipv6=5001                          ## default 5201"
+echo "graphic_window_dimension=--width=950                ## default: --height=650"
+echo
+echo "$title_md [ info ] [ preferences-regen: Only works with source shell script, see preferences-example ]"
+echo "$title_md [ _ok_ ] [ Regenerated: $cmd_binary values for default in ]"
+echo "$title_md [ _ok_ ] [ Regenerated: $default_preferences ]"
+exit; fi
+####
+####
+#### :rutina-final-preferences-examples:
 ##########    english: ip4 : get net info               ##########
 ##########    spanish: ip4 : da informacion de la red   ##########
 #### :rutina-inicial-ip4:
@@ -3109,8 +3148,8 @@ echo "$text_md preferences-read preferences-modify preferences-regen list-option
 echo "$text_md info-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes     "
 echo "$text_md geoip webcert date free ver version notes depends license code examples commands     "
 echo "$text_md variables intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot   "
-echo "$title_md                     ||| Example: fwiptables-cmd -gui-zenity ls4             |||  "
-echo "$title_md                     ||| Launch : Or with source-bash Or with compiled-obash |||  "
+echo "$title_md                     ||| Example: fwiptables-cmd -gui-zenity ls4               |||  "
+echo "$title_md                     ||| Launch : Or with source-script Or with compiled-obash |||  "
 
 exit ; fi
 ####
@@ -3153,8 +3192,8 @@ echo "$text_md                        clasic-options info-options filelog autolo
 echo "$text_md                        speed-glx sockets nodes geoip date free ver version notes depends code        "
 echo "$text_md                        commands variables examples intro webcert clean-tmp download license          "
 echo "$text_md                        install uninstall pc-halt pc-shutdown pc-reboot                               "
-echo "$title_md                            ||| Example: fwiptables-cmd -gui-zenity ls4             |||  "
-echo "$title_md                            ||| Launch : Or with source-bash Or with compiled-obash |||  "
+echo "$title_md                            ||| Example: fwiptables-cmd -gui-zenity ls4               |||  "
+echo "$title_md                            ||| Launch : Or with source-script Or with compiled-obash |||  "
 exit ; fi
 ####
 ####
