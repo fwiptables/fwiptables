@@ -1,5 +1,5 @@
-###  #[ fwiptables-cmd command-10.04 ] [ Options: /usr/bin/fwiptables-cmd options ]
-###  [ intro ] [ /usr/bin/fwiptables-cmd command-10.04 intro ] [ intro md ] 
+###  #[ fwiptables-cmd command-10.05 ] [ Options: fwiptables-cmd options ]
+###  [ intro ] [ /usr/bin/fwiptables-cmd command-10.05 intro ] [ intro md ] 
   
 ###  fwiptables. Firewall With iptables.    
   
@@ -24,22 +24,22 @@
   
 ###  fwiptables install.                                                 
   
-    Put bit of execution. TYPE:   chmod u+x ./fwiptables-command-10.04   
-    Install this version. TYPE:   ./fwiptables-command-10.04 install     
+    Put bit of execution. TYPE:   chmod u+x ./fwiptables-command-10.05   
+    Install this version. TYPE:   ./fwiptables-command-10.05 install     
   
 ###  fwiptables uninstall.                                               
   
-    Uninstall fwiptables. TYPE:   ./fwiptables-command-10.04 uninstall   
+    Uninstall fwiptables. TYPE:   ./fwiptables-command-10.05 uninstall   
   
-### #[ fwiptables-cmd command-10.04 ] [ Options: /usr/bin/fwiptables-cmd options ]
-###  /usr/bin/fwiptables-cmd [ optional-output ] first_option [ second_option ]                      
-  
+### #[ fwiptables-cmd command-10.05 ] [ Options: fwiptables-cmd options ]
+###  fwiptables-cmd [ optional-output ] first_option [ second_option ]                  
+### 
 ###       | optional-output |                                                            
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       
    [ -cli-dialog -cli-whiptail ] [ -gui-zenity -gui-yad ]                               
    [ -cli-menu-dialog -cli-menu-whiptail ] [ -gui-roll-zenity ]                         
    [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                  
-  
+### 
 ###       | firewall-control |                                                           
    stop continue reset actual show save load names-control                              
 ###       | firewall-conceptual |                                                        
@@ -66,3 +66,5 @@
    info-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes     
    geoip webcert date free ver version notes depends license code examples commands     
    variables intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot   
+###                      ||| Example: fwiptables-cmd -gui-zenity ls4               |||  
+###                      ||| Launch : Or with source-script Or with compiled-obash |||  
