@@ -3142,12 +3142,13 @@ echo "$text_md lan-tor lan-vpn server-ssh server-irc server-samba server-vnc ser
 echo "$text_md server-print server-lamp server-news server-ftp server-mail server-teamspeak         "
 echo "$text_md server-mumble server-sql server-asterisk server-domain server-squid                  "
 echo "$title_md        | options-easy |                                                             "
-echo "$text_md preferences-read preferences-modify preferences-regen list-options clasic-options    "
-echo "$text_md info-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes     "
-echo "$text_md geoip webcert date free ver version notes depends license code examples commands     "
-echo "$text_md variables intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot   "
-echo "$title_md                     ||| Example: fwiptables-cmd -gui-zenity ls4               |||  "
-echo "$title_md                     ||| Launch : Or with source-script Or with compiled-obash |||  "
+echo "$text_md preferences-read preferences-modify preferences-regen preferences-examples           "
+echo "$text_md list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6         "
+echo "$text_md ip4 ip6 speed-glx sockets nodes geoip webcert date free ver version notes            "
+echo "$text_md depends license code examples commands radio variables intro clean-tmp               "
+echo "$text_md download install uninstall pc-halt pc-shutdown pc-reboot                             "
+echo "$title_md                  ||| Example: fwiptables-cmd -gui-zenity ls4               |||  "
+echo "$title_md                  ||| Launch : Or with source-script Or with compiled-obash |||  "
 
 exit ; fi
 ####
@@ -3161,11 +3162,11 @@ exit ; fi
 if   [ "$first_option" == "clasic-options" ] ; then echo $give_cover 
 echo "$title_md $cmd_file [ optional-output ] first_option [ second_option ] "
 echo "$title_md"
-echo "$text_md    optional-paramtter |                                                                                "
-echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                                         "
-echo "$text_md [ -cli-dialog -cli-whiptail ] [ -gui-zenity -gui-yad ]                                                 "
-echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail ] [ -gui-roll-zenity ]                                           "
-echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                                    "
+echo "$text_md    optional-paramtter |                                                                             "
+echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                                      "
+echo "$text_md [ -cli-dialog -cli-whiptail ] [ -gui-zenity -gui-yad ]                                              "
+echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail ] [ -gui-roll-zenity ]                                        "
+echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                                 "
 echo "$title_md"
 echo "$text_md    firewall-control |  stop continue reset actual show save load names-control                       "
 echo "$text_md firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6           "
@@ -3185,11 +3186,11 @@ echo "$text_md                        client-squid client-git lan-tor lan-vpn se
 echo "$text_md                        server-webserver server-print server-lamp server-news server-ftp              "
 echo "$text_md                        server-mail server-teamspeak server-mumble server-sql                         "
 echo "$text_md                        server-asterisk server-domain server-squid server-irc                         "
-echo "$text_md        options-easy |  preferences-read preferences-modify preferences-regen list-options            "
-echo "$text_md                        clasic-options info-options filelog autolog ip4 ip6 speed-ip4 speed-ip6       "
-echo "$text_md                        speed-glx sockets nodes geoip date free ver version notes depends code        "
-echo "$text_md                        commands variables examples intro webcert clean-tmp download license          "
-echo "$text_md                        install uninstall pc-halt pc-shutdown pc-reboot                               "
+echo "$text_md        options-easy |  preferences-read preferences-modify preferences-regen preferences-examples    "
+echo "$text_md                        list-options clasic-options info-options filelog autolog ip4 ip6 speed-ip4    "
+echo "$text_md                        speed-ip6 speed-glx sockets nodes geoip date free ver version notes depends   "
+echo "$text_md                        code commands variables examples intro webcert clean-tmp radio download       "
+echo "$text_md                        license install uninstall pc-halt pc-shutdown pc-reboot                       "
 echo "$title_md                            ||| Example: fwiptables-cmd -gui-zenity ls4               |||  "
 echo "$title_md                            ||| Launch : Or with source-script Or with compiled-obash |||  "
 exit ; fi
@@ -3285,7 +3286,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-control" ]; then
 echo "$text_md "
-echo "$title_md | firewall-control |"
+echo "$title_md | firewall-control | $cmd_file firewall-control |"
 echo "$text_md"
 echo "$text_md stop . remove the rules iptables, and save it to then if continue"
 echo "$text_md continue. reset and load latest rules iptables loaded"
@@ -3307,7 +3308,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-conceptual" ]; then
 echo "$text_md "
-echo "$title_md | firewall-conceptual |"
+echo "$title_md | firewall-conceptual | $cmd_file firewall-conceptual |"
 echo "$text_md"
 echo "$text_md ls . list filter rules ipv4 "
 echo "$text_md ls6 . list filter rules ipv6 "
@@ -3337,7 +3338,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-numeral" ]; then
 echo "$text_md "
-echo "$title_md | firewall-numeral |"
+echo "$title_md | firewall-numeral | $cmd_file firewall-numeral |"
 echo "$text_md"
 echo "$text_md lsn . list filter rules ipv4 with numbers"
 echo "$text_md lsn6 . list filter rules ipv6 with numbers"
@@ -3367,7 +3368,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-custom" ]; then
 echo "$text_md "
-echo "$title_md | firewall-custom |"
+echo "$title_md | firewall-custom | $cmd_file firewall-custom |"
 echo "$text_md"
 echo "$text_md custom . launch a fwiptables firewall file custom"
 echo "$text_md new-full-config . create new full config in english"
@@ -3392,7 +3393,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-launch" ]; then
 echo "$text_md "
-echo "$title_md | firewall-launch |"
+echo "$title_md | firewall-launch | $cmd_file firewall-launch |"
 echo "$text_md"
 echo "$text_md eraserules . remove all firewall rules"
 echo "$text_md custom . launch a one one-file saved custom"
@@ -3443,7 +3444,7 @@ exit; fi
 ####
 if   [ "$first_option" == "options-easy" ]; then
 echo "$text_md "
-echo "$title_md | options-easy |"
+echo "$title_md | options-easy | $cmd_file option-easy |"
 echo "$text_md"
 echo "$text_md preferences-read . show the preferences for fwiptables"
 echo "$text_md preferences-modify . modify the preferences for fwiptables"
@@ -3515,7 +3516,7 @@ exit; fi
 ####
 if   [ "$first_option" == "optional-output" ]; then
 echo "$text_md "
-echo "$title_md | optional-output |"
+echo "$title_md | optional-output | $cmd_file optional-ouptut |"
 echo "$text_md"
 echo "$text_md -t . output in terminal text "
 echo "$text_md -c . output in terminal cli "
