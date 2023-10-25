@@ -1154,6 +1154,7 @@ if [ "$first_option" == "preferences-example" ] ; then echo $give_cover
 echo
 echo "$title_md default option"
 echo "option_default_security=list-options                ## when there is not one first_option"
+echo
 echo "$title_md default firewall"
 echo "allow_use_legacy=                                   ## void or no"
 echo "allow_use_nft=no                                    ## void or no"
@@ -1163,9 +1164,11 @@ echo "allow_separate_rules=                               ## void or no"
 echo "config_shield_port=22                               ## void or ports"
 echo "config_shield_maxtries=10                           ## void or no"
 echo "config_close_deny=DROP                              ## DROP or REJECT"
+echo
 echo "$title_md default log"
 echo "allow_save_autolog=                                 ## void or no"
 echo "allow_show_time=no                                  ## void or no"
+echo
 echo "$title_md default programs"
 echo "favorite_text_editor=                               ## or void for automatic or specify command"
 echo "favorite_text_dialog=                               ## or void for automatic or specify command"
@@ -1173,6 +1176,7 @@ echo "favorite_text_music=                                ## or void for automat
 echo "favorite_text_browser=                              ## or void for automatic or specify command"
 echo "favorite_date_command=                              ## or void for automatic or specify command"
 echo "favorite_graphicall_dialog=                         ## or void for automatic or specify command"
+echo
 echo "$title_md default discover ip and speed ip"
 echo "serverip_discover_ipv4=https://ifconfig.co/ip       ## default http://ifconfig.co/ip"
 echo "serverip_discover_ipv6=https://ifconfig.co/ip       ## default http://ifconfig.co/ip"
@@ -1180,6 +1184,7 @@ echo "serverip_iperf_ipv4=ping.online.net                 ## default ping.online
 echo "serverport_iperf_ipv4=5001                          ## default 5201"
 echo "serverip_iperf_ipv6=ping6.online.net                ## default ping.online.net"
 echo "serverport_iperf_ipv6=5001                          ## default 5201"
+echo
 echo "$title_md default dimesion graphicall"
 echo "graphic_window_dimension='--width=950 --height=650' ## default '--width=950 --height=650'"
 echo
