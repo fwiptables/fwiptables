@@ -3147,8 +3147,8 @@ echo "$text_md list-options clasic-options info-options filelog autolog speed-ip
 echo "$text_md ip4 ip6 speed-glx sockets nodes geoip webcert date free ver version notes            "
 echo "$text_md depends license code examples commands radio variables intro clean-tmp               "
 echo "$text_md download install uninstall pc-halt pc-shutdown pc-reboot                             "
-echo "$title_md                  ||| Example: fwiptables-cmd -gui-zenity ls4               |||  "
-echo "$title_md                  ||| Launch : Or with source-script Or with compiled-obash |||  "
+echo "$title_md                  ||| Example: fwiptables-cmd -gui-zenity ls4             |||  "
+echo "$title_md                  ||| Launch : Or with source-bash Or with compiled-obash |||  "
 
 exit ; fi
 ####
@@ -3191,8 +3191,8 @@ echo "$text_md                        list-options clasic-options info-options f
 echo "$text_md                        speed-ip6 speed-glx sockets nodes geoip date free ver version notes depends   "
 echo "$text_md                        code commands variables examples intro webcert clean-tmp radio download       "
 echo "$text_md                        license install uninstall pc-halt pc-shutdown pc-reboot                       "
-echo "$title_md                            ||| Example: fwiptables-cmd -gui-zenity ls4               |||  "
-echo "$title_md                            ||| Launch : Or with source-script Or with compiled-obash |||  "
+echo "$title_md                            ||| Example: fwiptables-cmd -gui-zenity ls4             |||  "
+echo "$title_md                            ||| Launch : Or with source-bash Or with compiled-obash |||  "
 exit ; fi
 ####
 ####
