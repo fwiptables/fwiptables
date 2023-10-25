@@ -98,11 +98,12 @@ fi
 ####
 ####
 cmd_binary="$0" ;
+cmd_file="$(basename $0)" ;
 cmd_config="fwiptables-cmd" ;
-cmd_version="command-10.03"  ;
-cmd_name="FireWall With iptables named fwiptables" ;
-cmd_description="One Mini Script in one-file bash named fwiptables" ;
-cmd_license="GPL v2" ;
+cmd_version="command-10.06"  ;
+cmd_name="fwiptables, FireWall With iptables" ;
+cmd_description="fwiptables, One Mini Script in one-file" ;
+cmd_license="GPL v2, License General Public version 2" ;
 cmd_homepage_sourceforge="https://sourceforge.net/projects/f-iptables/" ;
 cmd_homepage_github="https://github.com/fwiptables/fwiptables" ;
 ####
@@ -302,6 +303,7 @@ command_xrandr="$(command -v xrandr)"   #list-commands ;
 command_zenity="$(command -v zenity)"   #list-commands ;
 command_yad="$(command -v yad)"   #list-commands ;
 command_zgrep="$(command -v zgrep)"   #list-commands ;
+command_logname="$(command -v logname)" #list-commands ;
 command_lpinfo="$(command -v lpinfo)"   #list-commands ;
 command_lpstat="$(command -v lpstat)"   #list-commands ;
 command_lsblk="$(command -v lsblk)"   #list-commands ;
@@ -485,7 +487,7 @@ head_waiting_info="$title_md [ info ] [ info: info in clear txt format ] [ press
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$title_md #[ $cmd_config $cmd_version ] [ Options: $cmd_binary options ]"
+give_cover="$title_md #[ $cmd_config $cmd_version ] [ Options: $cmd_file options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$title_md [ _ok_ ] [ Load firewall ] [ Firewall With iptables ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -528,7 +530,7 @@ mensage_license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LI
 ####
 ####
 ####
-if [ -f "$default_preferences"   ]; then source $default_preferences ; else touch $default_preferences  ; fi
+if [ -f "$default_preferences"   ]; then source $default_preferences ; fi
 ####
 ####
 ####  realice sane very important variables post by default_preferences
@@ -645,14 +647,13 @@ fi
 #### :rutina-inicial-favorite-text-music:
 ####
 ####
-favorite_text_music=""
-command_mpg321="$(command -v mpg321)"
-command_mpg123="$(command -v mpg123)"
 command_cvlc="$(command -v cvlc)"
+command_mpg123="$(command -v mpg123)"
+command_mpg321="$(command -v mpg321)"
 if [ "$favorite_text_music" == "$NULL" ]; then
-if [ "$command_mpg321" != "$NULL" ]; then  favorite_text_music="$command_mpg321" ; fi
-if [ "$command_mpg123" != "$NULL" ]; then  favorite_text_music="$command_mpg123" ; fi
 if [ "$command_cvlc" != "$NULL" ]; then  favorite_text_music="$command_cvlc"     ; fi
+if [ "$command_mpg123" != "$NULL" ]; then  favorite_text_music="$command_mpg123" ; fi
+if [ "$command_mpg321" != "$NULL" ]; then  favorite_text_music="$command_mpg321" ; fi
 fi
 ####
 ####
@@ -681,7 +682,7 @@ fi
 ##########     ALIAS SIMPLE
 ####
 ####
-if [ "$first_option" == "$NULL" ]  ; then "$cmd_binary" empty_option ; exit ; fi
+if [ "$first_option" == "$NULL" ]  ; then "$cmd_binary" empty_first_option ; exit ; fi
 ####
 ####
 #### english:  alias firewall-list with conceputal firewall-conceptual:
@@ -1047,6 +1048,7 @@ exit; fi
 if [ "$first_option" == "default" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ $cmd_binary default ] [ default md ] "
 echo "$title_md [ info ] [ $cmd_binary default.. ]"
+
 echo "$title_md [ info ] [ Autoregenerate default config for fwiptables: ] [ fwiptables preferences-regen  ]"
 echo "$title_md [ info ] [ Show   default config for fwiptables:         ] [ fwiptables preferences-read   ]"
 echo "$title_md [ info ] [ Modify default config for fwiptables:         ] [ fwiptables preferences-modify ]"
@@ -1064,6 +1066,7 @@ echo "$title_md [ $first_option ] [ show the default fwiptables ] "
 echo 
 cat $default_preferences
 echo
+
 echo "$title_md [ info ] [ Change variables with: $cmd_binary preferences-modify ]"
 echo "$title_md [ info ] [ file: $default_preferences ]"
 exit; fi
@@ -1079,6 +1082,7 @@ if [ "$first_option" == "preferences-modify" ]; then  echo $give_cover
 echo "$title_md [ $first_option ] [ modify the default fwiptables ] "
 echo 
 $favorite_text_editor $default_preferences
+
 echo "$title_md [ info ] [ edit file $default_preferences to change variables ]"
 exit; fi
 ####
@@ -1093,6 +1097,7 @@ if [ "$first_option" == "dialog-modify" ]; then  echo $give_cover
 echo "$title_md [ $first_option ] [ modify the default dialog ] "
 echo 
 $favorite_text_editor $default_dialogrc
+
 echo "$title_md [ info ] [ edit file $default_dialogrc to change variables ]"
 exit; fi
 ####
@@ -1105,6 +1110,7 @@ exit; fi
 ####
 if [ "$first_option" == "preferences-read" ]; then  echo $give_cover
 echo "$title_md [ $first_option ] [ read the default fwiptables ] "
+
 echo "$title_md [ info ] [ Show file $default_preferences to read variables ]"
 ####
 ####
@@ -1115,6 +1121,7 @@ echo "$title_md [ info ] [ Show file $default_preferences to read variables ]"
 cat $default_preferences
 ####
 ####
+
 exit; fi
 ####
 ####
@@ -1128,13 +1135,52 @@ if [ "$first_option" == "preferences-regen" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ $cmd_binary preferences-regen ] [ preferences-regen md ] "
 rm $default_preferences
 echo "$title_md [ _ok_ ] [ $cmd_binary deleted old configs ]"
-cat $cmd_binary | $command_grep fwiptables-file-default | $command_grep -iv cmd_binary &> $default_preferences
+file $cmd_binary
+#### cat $cmd_binary | $command_grep fwiptables-file-default | $command_grep -iv cmd_binary &> $default_preferences 
+$cmd_binary preferences-example &> $default_preferences
+
 echo "$title_md [ _ok_ ] [ Regenerated: $cmd_binary values for default in ]"
 echo "$title_md [ _ok_ ] [ Regenerated: $default_preferences ]"
 exit; fi
 ####
 ####
 #### :rutina-final-preferences-regen:
+##########   english: preferences-examples:  regen preferences       ##########
+##########   spanish: preferences-examples:  regenera preferencias   ##########
+#### :rutina-inicial-preferences-examples:
+####
+####
+if [ "$first_option" == "preferences-example" ] ; then echo $give_cover
+echo
+echo "option_default_security=list-options                ## when there is not one first_option"
+echo "allow_use_legacy=                                   ## void or no"
+echo "allow_use_nft=no                                    ## void or no"
+echo "allow_use_ipv4=                                     ## void or no"
+echo "allow_use_ipv6=                                     ## void or no"
+echo "allow_separate_rules=                               ## void or no"
+echo "config_shield_port=22                               ## void or ports"
+echo "config_shield_maxtries=10                           ## void or no"
+echo "config_close_deny=DROP                              ## DROP or REJECT"
+echo "allow_save_autolog=                                 ## void or no"
+echo "allow_show_time=no                                  ## void or no"
+echo "favorite_text_editor=                               ## or void for automatic or specify command"
+echo "favorite_text_dialog=                               ## or void for automatic or specify command"
+echo "favorite_text_music=                                ## or void for automatic or specify command"
+echo "favorite_text_browser=                              ## or void for automatic or specify command"
+echo "favorite_date_command=                              ## or void for automatic or specify command"
+echo "favorite_graphicall_dialog=                         ## or void for automatic or specify command"
+echo "serverip_discover_ipv4=https://ifconfig.co/ip       ## default http://ifconfig.co/ip"
+echo "serverip_discover_ipv6=https://ifconfig.co/ip       ## default http://ifconfig.co/ip"
+echo "serverip_iperf_ipv4=ping.online.net                 ## default ping.online.net"
+echo "serverport_iperf_ipv4=5001                          ## default 5201"
+echo "serverip_iperf_ipv6=ping6.online.net                ## default ping.online.net"
+echo "serverport_iperf_ipv6=5001                          ## default 5201"
+echo "graphic_window_dimension='--width=950 --height=650' ## default '--width=950 --height=650'"
+echo
+exit; fi
+####
+####
+#### :rutina-final-preferences-examples:
 ##########    english: ip4 : get net info               ##########
 ##########    spanish: ip4 : da informacion de la red   ##########
 #### :rutina-inicial-ip4:
@@ -1166,13 +1212,13 @@ echo " [ info ] Proxy http:    $http_proxy"
 echo " [ info ] Proxy https:   $https_proxy"
 echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
-if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.head ]"; fi
-if [ -f /etc/resolv.conf.body ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.body ]"; fi
-if [ -f /etc/resolv.conf.tail ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.tail ]"; fi
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes ] [ /etc/resolv.conf ]"     ;
 cat /etc/resolv.conf           ; fi
 if [ -d /etc/resolvconf ];       then echo "$title_md [ yes ] [ /etc/resolvconf ]";
 $command_find /etc/resolvconf  ; fi
+if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.head ]"; fi
+if [ -f /etc/resolv.conf.body ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.body ]"; fi
+if [ -f /etc/resolv.conf.tail ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.tail ]"; fi
 exit; fi
 ####
 ####
@@ -1208,13 +1254,13 @@ echo " [ info ] Proxy http:    $http_proxy"
 echo " [ info ] Proxy https:   $https_proxy"
 echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
-if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.head ]"; fi
-if [ -f /etc/resolv.conf.body ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.body ]"; fi
-if [ -f /etc/resolv.conf.tail ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.tail ]"; fi
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes ] [ /etc/resolv.conf ]"     ;
 cat /etc/resolv.conf           ; fi
 if [ -d /etc/resolvconf ];       then echo "$title_md [ yes ] [ /etc/resolvconf ]";
 $command_find /etc/resolvconf  ; fi
+if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.head ]"; fi
+if [ -f /etc/resolv.conf.body ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.body ]"; fi
+if [ -f /etc/resolv.conf.tail ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.tail ]"; fi
 exit; fi
 ####
 ####
@@ -1265,31 +1311,32 @@ exit; fi
 ####
 if [ "$first_option" == "options-examples" ]; then echo $give_cover
 echo "$title_md [ $first_option ] [ List examples ] [ examples md ] "
-echo
-echo "$title_md                                      [ several examples ]                            "
-echo
-echo "$text_md        [ with optional output ]                  [ Example Description ]              "
-echo
-echo "$text_md    $cmd_binary -cli-menu-dialog         |  All options in text menu                   "
-echo "$text_md    $cmd_binary -gui-menu-yad            |  All options in window menu                 "
-echo "$text_md    $cmd_binary -gui-roll-zenity         |  All options in window roll                 "
-echo "$text_md    $cmd_binary -gui-shell-yad           |  All options in window shell                "
-echo
-echo "$text_md    $cmd_binary -txt list                |  List iptables rules with output txt        "
-echo "$text_md    $cmd_binary -cli names               |  List firewall saved with output cli        "
-echo "$text_md    $cmd_binary -gui sockets             |  List sockets ip with output gui            "
-echo "$text_md    $cmd_binary -silent client-web       |  Launch client web firewall a null output   "
-echo
-echo "$title_md                                      [ other examples ]                              "
-echo
-echo "$text_md    $cmd_binary names                    |  List firewall saved                        "
-echo "$text_md    $cmd_binary names-config             |  List configs saved                         "
-echo "$text_md    $cmd_binary speed-ip4                |  get info about speed with internet ipv4    "
-echo "$text_md    $cmd_binary sockets                  |  show info about listen sockets             "
-echo "$text_md    $cmd_binary preferences-modify       |  modify default variables                   "
-echo "$text_md    $cmd_binary autolog                  |  List last optiosn with $cmd_binary         "
-echo "$text_md    $cmd_binary depends                  |  depends to $cmd_binary                     "
-echo "$text_md    $cmd_binary version                  |  version from $cmd_binary                   "
+echo "$text_md"
+echo "$title_md                        [ several examples *without optional otuput* ]              "
+echo "$text_md"
+echo "$text_md    $cmd_file names                    |  List firewall saved                        "
+echo "$text_md    $cmd_file names-config             |  List configs saved                         "
+echo "$text_md    $cmd_file speed-ip4                |  get info about speed with internet ipv4    "
+echo "$text_md    $cmd_file sockets                  |  show info about listen sockets             "
+echo "$text_md    $cmd_file preferences-modify       |  modify default variables                   "
+echo "$text_md    $cmd_file autolog                  |  List last optiosn with $cmd_file           "
+echo "$text_md    $cmd_file depends                  |  depends to $cmd_file                       "
+echo "$text_md    $cmd_file version                  |  version from $cmd_file                     "
+echo "$text_md"
+echo "$title_md                        [ several examples *with optional output* ]                 "
+echo "$text_md"
+echo "$text_md        [ with optional output ]                  [ Example Description ]            "
+echo "$text_md"
+echo "$text_md    $cmd_file -silent client-web       |  Launch client web firewall a null output "
+echo "$text_md    $cmd_file -txt list                |  List iptables rules with output txt      "
+echo "$text_md    $cmd_file -cli-wiptail names       |  List firewall with output cli whiptail   "
+echo "$text_md    $cmd_file -gui-yad sockets         |  List sockets ip with output gui yad      "
+echo "$text_md"
+echo "$text_md    $cmd_file -cli-menu-dialog         |  All options in text menu                 "
+echo "$text_md    $cmd_file -gui-menu-yad            |  All options in window menu               "
+echo "$text_md    $cmd_file -gui-roll-zenity         |  All options in window roll               "
+echo "$text_md    $cmd_file -gui-shell-yad           |  All options in window shell              "
+echo "$text_md"
 exit; fi
 ####
 ####
@@ -2114,10 +2161,10 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_port="" ;
 #### you can connect normal web
-server_port_udp="" ;
-client_port_tcp="http,https,ssh,ipp" ;
+client_port_tcp="http,https,ssh" ;
 client_port_udp="domain,bootpc,ntp" ;
 server_port_tcp="" ;
+server_port_udp="" ;
 fi
 #### :rutina-final-client-basic:
 #### ##################################################
@@ -3065,21 +3112,21 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-options" ] ; then echo $give_cover
-echo "$title_md $cmd_binary [ optional-output ] first_option [ second_option ]                  "
-echo "$text_md"
-echo "$title_md      | optional-output |                                                        "
-echo "$text_md $cmd_binary [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                           "
+echo "$title_md $cmd_file [ optional-output ] first_option [ second_option ]                  "
+echo "$title_md"
+echo "$title_md      | optional-output |                                                            "
+echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       "
+echo "$text_md [ -cli-dialog -cli-whiptail ] [ -gui-zenity -gui-yad ]                               "
+echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail ] [ -gui-roll-zenity ]                         "
 echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                  "
-echo "$text_md [ -gui-roll-zenity -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                  "
-echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail ]                                              "
-echo "$text_md"
+echo "$title_md"
 echo "$title_md      | firewall-control |                                                           "
 echo "$text_md stop continue reset actual show save load names-control                              "
-echo "$title_md      | firewall-conceptual |                                              "
+echo "$title_md      | firewall-conceptual |                                                        "
 echo "$text_md ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6                  "
 echo "$text_md list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6                    "
 echo "$text_md list-security4 list-security6 list-ebtables list-arptables                           "
-echo "$title_md      | firewall-numeral |                                                 "
+echo "$title_md      | firewall-numeral |                                                           "
 echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6          "
 echo "$text_md listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6              "
 echo "$text_md listn-security4 listn-security6                                                      "
@@ -3095,10 +3142,14 @@ echo "$text_md lan-tor lan-vpn server-ssh server-irc server-samba server-vnc ser
 echo "$text_md server-print server-lamp server-news server-ftp server-mail server-teamspeak         "
 echo "$text_md server-mumble server-sql server-asterisk server-domain server-squid                  "
 echo "$title_md        | options-easy |                                                             "
-echo "$text_md preferences-read preferences-modify preferences-regen list-options clasic-options    "
-echo "$text_md info-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes     "
-echo "$text_md geoip webcert date free ver version notes depends license code examples commands     "
-echo "$text_md variables intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot   "
+echo "$text_md preferences-read preferences-modify preferences-regen preferences-examples           "
+echo "$text_md list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6         "
+echo "$text_md ip4 ip6 speed-glx sockets nodes geoip webcert date free ver version notes            "
+echo "$text_md depends license code examples commands radio variables intro clean-tmp               "
+echo "$text_md download install uninstall pc-halt pc-shutdown pc-reboot                             "
+echo "$title_md                  ||| Example: fwiptables-cmd -gui-zenity ls4             |||  "
+echo "$title_md                  ||| Launch : Or with source-bash Or with compiled-obash |||  "
+
 exit ; fi
 ####
 ####
@@ -3109,37 +3160,39 @@ exit ; fi
 ####
 ####
 if   [ "$first_option" == "clasic-options" ] ; then echo $give_cover 
-echo "$title_md $cmd_binary [ optional-output ] first_option [ second_option ]                    "
-echo "$text_md"
-echo "$text_md    optional-paramtter |                                                                "
-echo "$text_md $cmd_binary [ -t|-txt -c|-cli -g|-gui -h|-help -l|-log -s|-silent ]                    "   
-echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                    "
-echo "$text_md [ -gui-roll-zenity -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                    "
-echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail ]                                                "
-echo "$text_md"
-echo "$text_md      firewall-control |  stop continue reset actual show save load names-control                       "
-echo "$text_md   firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6           "
-echo "$text_md                          list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6             "
-echo "$text_md                          list-security4 list-security6 list-ebtables list-arptables                    "
-echo "$text_md      firewall-numeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4                 "
-echo "$text_md                          listn-filter6 listn-nat4 listn-nat6 listn-raw4 listn-raw6                     "
-echo "$text_md                          listn-mangle4  listn-mangle6 listn-security4 listn-security6                  "
-echo "$text_md       firewall-custom |  custom new-full-config nueva-completa-config regen-config                     "
-echo "$text_md                          new-mini-config nueva-mini-config examples-config                             "
-echo "$text_md                          show-config modify-config del-config names-config                             "
-echo "$text_md       firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive              "
-echo "$text_md                          client-basic games-udp games-shooter game-wesnoth game-minetest               "
-echo "$text_md                          game-freeciv game-widelands client-web client-irc client-vnc client-mail      "
-echo "$text_md                          client-news client-torrent client-vpn client-ftp  client-tor client-ipp       "
-echo "$text_md                          client-squid client-git lan-tor lan-vpn server-ssh server-samba server-vnc               "
-echo "$text_md                          server-webserver server-print server-lamp server-news server-ftp              "
-echo "$text_md                          server-mail server-teamspeak server-mumble server-sql                         "
-echo "$text_md                          server-asterisk server-domain server-squid server-irc                                    "
-echo "$text_md          options-easy |  preferences-read preferences-modify preferences-regen list-options            "
-echo "$text_md                          clasic-options info-options filelog autolog ip4 ip6 speed-ip4 speed-ip6       "
-echo "$text_md                          speed-glx sockets nodes geoip date free ver version notes depends code        "
-echo "$text_md                          commands variables examples intro webcert clean-tmp download license          "
-echo "$text_md                          install uninstall pc-halt pc-shutdown pc-reboot                               "
+echo "$title_md $cmd_file [ optional-output ] first_option [ second_option ] "
+echo "$title_md"
+echo "$text_md    optional-paramtter |                                                                             "
+echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                                      "
+echo "$text_md [ -cli-dialog -cli-whiptail ] [ -gui-zenity -gui-yad ]                                              "
+echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail ] [ -gui-roll-zenity ]                                        "
+echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                                 "
+echo "$title_md"
+echo "$text_md    firewall-control |  stop continue reset actual show save load names-control                       "
+echo "$text_md firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6           "
+echo "$text_md                        list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6             "
+echo "$text_md                        list-security4 list-security6 list-ebtables list-arptables                    "
+echo "$text_md    firewall-numeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4                 "
+echo "$text_md                        listn-filter6 listn-nat4 listn-nat6 listn-raw4 listn-raw6                     "
+echo "$text_md                        listn-mangle4  listn-mangle6 listn-security4 listn-security6                  "
+echo "$text_md     firewall-custom |  custom new-full-config nueva-completa-config regen-config                     "
+echo "$text_md                        new-mini-config nueva-mini-config examples-config                             "
+echo "$text_md                        show-config modify-config del-config names-config                             "
+echo "$text_md     firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive              "
+echo "$text_md                        client-basic games-udp games-shooter game-wesnoth game-minetest               "
+echo "$text_md                        game-freeciv game-widelands client-web client-irc client-vnc client-mail      "
+echo "$text_md                        client-news client-torrent client-vpn client-ftp  client-tor client-ipp       "
+echo "$text_md                        client-squid client-git lan-tor lan-vpn server-ssh server-samba server-vnc    "
+echo "$text_md                        server-webserver server-print server-lamp server-news server-ftp              "
+echo "$text_md                        server-mail server-teamspeak server-mumble server-sql                         "
+echo "$text_md                        server-asterisk server-domain server-squid server-irc                         "
+echo "$text_md        options-easy |  preferences-read preferences-modify preferences-regen preferences-examples    "
+echo "$text_md                        list-options clasic-options info-options filelog autolog ip4 ip6 speed-ip4    "
+echo "$text_md                        speed-ip6 speed-glx sockets nodes geoip date free ver version notes depends   "
+echo "$text_md                        code commands variables examples intro webcert clean-tmp radio download       "
+echo "$text_md                        license install uninstall pc-halt pc-shutdown pc-reboot                       "
+echo "$title_md                            ||| Example: fwiptables-cmd -gui-zenity ls4             |||  "
+echo "$title_md                            ||| Launch : Or with source-bash Or with compiled-obash |||  "
 exit ; fi
 ####
 ####
@@ -3233,7 +3286,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-control" ]; then
 echo "$text_md "
-echo "$title_md | firewall-control |"
+echo "$title_md | firewall-control | $cmd_file firewall-control |"
 echo "$text_md"
 echo "$text_md stop . remove the rules iptables, and save it to then if continue"
 echo "$text_md continue. reset and load latest rules iptables loaded"
@@ -3255,7 +3308,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-conceptual" ]; then
 echo "$text_md "
-echo "$title_md | firewall-conceptual |"
+echo "$title_md | firewall-conceptual | $cmd_file firewall-conceptual |"
 echo "$text_md"
 echo "$text_md ls . list filter rules ipv4 "
 echo "$text_md ls6 . list filter rules ipv6 "
@@ -3285,7 +3338,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-numeral" ]; then
 echo "$text_md "
-echo "$title_md | firewall-numeral |"
+echo "$title_md | firewall-numeral | $cmd_file firewall-numeral |"
 echo "$text_md"
 echo "$text_md lsn . list filter rules ipv4 with numbers"
 echo "$text_md lsn6 . list filter rules ipv6 with numbers"
@@ -3315,7 +3368,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-custom" ]; then
 echo "$text_md "
-echo "$title_md | firewall-custom |"
+echo "$title_md | firewall-custom | $cmd_file firewall-custom |"
 echo "$text_md"
 echo "$text_md custom . launch a fwiptables firewall file custom"
 echo "$text_md new-full-config . create new full config in english"
@@ -3340,7 +3393,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-launch" ]; then
 echo "$text_md "
-echo "$title_md | firewall-launch |"
+echo "$title_md | firewall-launch | $cmd_file firewall-launch |"
 echo "$text_md"
 echo "$text_md eraserules . remove all firewall rules"
 echo "$text_md custom . launch a one one-file saved custom"
@@ -3391,7 +3444,7 @@ exit; fi
 ####
 if   [ "$first_option" == "options-easy" ]; then
 echo "$text_md "
-echo "$title_md | options-easy |"
+echo "$title_md | options-easy | $cmd_file option-easy |"
 echo "$text_md"
 echo "$text_md preferences-read . show the preferences for fwiptables"
 echo "$text_md preferences-modify . modify the preferences for fwiptables"
@@ -3463,7 +3516,7 @@ exit; fi
 ####
 if   [ "$first_option" == "optional-output" ]; then
 echo "$text_md "
-echo "$title_md | optional-output |"
+echo "$title_md | optional-output | $cmd_file optional-ouptut |"
 echo "$text_md"
 echo "$text_md -t . output in terminal text "
 echo "$text_md -c . output in terminal cli "
@@ -5124,30 +5177,41 @@ echo "$header_ok [ $first_option ]  [ Listen radio online with a one link ]"
 echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
-#### case "$second_option" in "gui"|"-gui"|"-g"|"--gui")
-#### favorite_text_music="$favorite_graphicall_music" ; esac
-####
-####
 link_radio_rockfm="http://flucast-b02-06.flumotion.com/cope/rockfm.mp3" 
 link_radio_kissfm="http://kissfm.kissfmradio.cires21.com/kissfm.mp3" 
 link_radio_cope="https://flucast24-h-cloud.flumotion.com/cope/net1.mp3" 
 link_radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3"
+link_radio_dial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3"
+link_radio_ondacero="https://livefastly-webs.ondacero.es/ondacero/audio/master.m3u8"
+link_radio_rne="https://rtvelivestreamv3.akamaized.net/rtvesec/rne_r1_main.m3u8"
+link_radio_clasica="https://rtvelivestreamv3.akamaized.net/rtvesec/rne_r2_main.m3u8"
+link_radio_exterior="http://radioexterior.rtveradio.cires21.com/radioexterior/mp3/icecast.audio"
+link_radio_marca="https://22333.live.streamtheworld.com/RADIOMARCA_NACIONAL.mp3"
 ####
 ####
 case "$second_option" in
 "$NULL") echo " [ info ] [ launch: $cmd_binary radio link-mp3 ]" ; exit ;;
-"rockfm") emisora="$link_radio_rockfm";;
+"show") echo " [ info ] rockfm,cope,kissfm,cadena100,dial,ondacero,rne,clasica,exterior,marca" ; exit ;;
+"rockfm") emisora="$link_radio_rockfm" ;;
 "cope") emisora="$link_radio_cope" ;;
 "kissfm") emisora="$link_radio_kissfm" ;;
 "cadena100") emisora="$link_radio_cadena100" ;;
+"dial") emisora="$link_radio_dial" ;;
+"ondacero") emisora="$link_radio_ondacero" ;;
+"rne") emisora="$link_radio_rne" ;;
+"clasica") emisora="$link_radio_clasica" ;;
+"exterior") emisora="$link_radio_exterior" ;;
+"marca") emisora="$link_radio_marca" ;;
 *) emisora="$2" ;;
 esac
 ####
 ####
 echo "$duo_md [  ok  ] [ $favorite_text_music ] [ $emisora ]"
 echo 
-echo 
-sudo -u $(logname) $favorite_text_music $emisora
+echo
+if [ "$($command_logname)" != "$NULL" ] ; then
+$(sudo -u $($command_logname) $favorite_text_music $emisora) ; exit
+else $favorite_text_music $emisora ; exit ; fi
 exit; fi
 ####
 ####
@@ -5695,7 +5759,7 @@ exit; fi
 ####
 if [ "$first_option" == "gui" ] && [ "$second_option" == "$NULL" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
-$favorite_graphicall_dialog  --forms $graphic_window_dimension --title="Gui Output || $cmd_binary || " --text="$($cmd_binary empty-option)"
+$favorite_graphicall_dialog  --forms $graphic_window_dimension --title="Gui Output || $cmd_binary || " --text="$($cmd_binary empty_first_option)"
 exit; fi
 ####
 ####
@@ -6891,7 +6955,7 @@ exit; fi
 ####
 ####
 if [ "$launch_rules_firewall" != "yes" ] ; then
-echo "### #[ fail ] [ Option: $first_option ] # [ Choose a one valid option ... ]" ;
+echo "### #[ fail ] [ First Option: $first_option ] # [ Choose a one valid first option ... ]" ;
 $cmd_binary $option_default_security ;
 exit ; fi
 ####
