@@ -1145,9 +1145,9 @@ exit; fi
 ####
 ####
 #### :rutina-final-preferences-regen:
-##########   english: preferences-examples:  regen preferences       ##########
-##########   spanish: preferences-examples:  regenera preferencias   ##########
-#### :rutina-inicial-preferences-examples:
+##########   english: preferences-example:  regen preferences       ##########
+##########   spanish: preferences-example:  regenera preferencias   ##########
+#### :rutina-inicial-preferences-example:
 ####
 ####
 if [ "$first_option" == "preferences-example" ] ; then echo $give_cover
@@ -1180,7 +1180,7 @@ echo
 exit; fi
 ####
 ####
-#### :rutina-final-preferences-examples:
+#### :rutina-final-preferences-example:
 ##########    english: ip4 : get net info               ##########
 ##########    spanish: ip4 : da informacion de la red   ##########
 #### :rutina-inicial-ip4:
@@ -3142,7 +3142,7 @@ echo "$text_md lan-tor lan-vpn server-ssh server-irc server-samba server-vnc ser
 echo "$text_md server-print server-lamp server-news server-ftp server-mail server-teamspeak         "
 echo "$text_md server-mumble server-sql server-asterisk server-domain server-squid                  "
 echo "$title_md        | options-easy |                                                             "
-echo "$text_md preferences-read preferences-modify preferences-regen preferences-examples           "
+echo "$text_md preferences-read preferences-modify preferences-regen preferences-example            "
 echo "$text_md list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6         "
 echo "$text_md ip4 ip6 speed-glx sockets nodes geoip webcert date free ver version notes            "
 echo "$text_md depends license code examples commands radio variables intro clean-tmp               "
@@ -3186,7 +3186,7 @@ echo "$text_md                        client-squid client-git lan-tor lan-vpn se
 echo "$text_md                        server-webserver server-print server-lamp server-news server-ftp              "
 echo "$text_md                        server-mail server-teamspeak server-mumble server-sql                         "
 echo "$text_md                        server-asterisk server-domain server-squid server-irc                         "
-echo "$text_md        options-easy |  preferences-read preferences-modify preferences-regen preferences-examples    "
+echo "$text_md        options-easy |  preferences-read preferences-modify preferences-regen preferences-example     "
 echo "$text_md                        list-options clasic-options info-options filelog autolog ip4 ip6 speed-ip4    "
 echo "$text_md                        speed-ip6 speed-glx sockets nodes geoip date free ver version notes depends   "
 echo "$text_md                        code commands variables examples intro webcert clean-tmp radio download       "
