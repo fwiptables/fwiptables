@@ -5875,30 +5875,30 @@ $favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ in
 ####
 new-full-config*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
-$cmd_binary -gui new-full-config $unarchivo
+$cmd_binary -gui-zenity new-full-config $unarchivo
 ;;
 nueva-completa-config*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
-$cmd_binary -gui nueva-completa-config $unarchivo
+$cmd_binary -gui-zenity nueva-completa-config $unarchivo
 ;;
 new-mini-config*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
-$cmd_binary -gui new-mini-config $unarchivo
+$cmd_binary -gui-zenity new-mini-config $unarchivo
 ;;
 nueva-mini-config*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
-$cmd_binary -gui nueva-mini-config $unarchivo
+$cmd_binary -gui-zenity nueva-mini-config $unarchivo
 ;;
 modify-config*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
-$cmd_binary -gui modify-config $unarchivo
+$cmd_binary -gui-zenity modify-config $unarchivo
 ;;
 show-config*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
-$cmd_binary -gui show-config $unarchivo
+$cmd_binary -gui-zenity show-config $unarchivo
 ;;
-wizard-full*) $cmd_binary -g wizard-full ;;
-wizard-mini*) $cmd_binary -g wizard-mini ;;
+wizard-full*) $cmd_binary -gui-zenity wizard-full ;;
+wizard-mini*) $cmd_binary -gui-zniety wizard-mini ;;
 ####
 ####
 #### english: all other otpions    ####
@@ -6006,30 +6006,30 @@ $command_yad  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cm
 ####
 new-full-config*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
-$cmd_binary -gui new-full-config $unarchivo
+$cmd_binary -gui-yad new-full-config $unarchivo
 ;;
 nueva-completa-config*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
-$cmd_binary -gui nueva-completa-config $unarchivo
+$cmd_binary -gui-yad nueva-completa-config $unarchivo
 ;;
 new-mini-config*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
-$cmd_binary -gui new-mini-config $unarchivo
+$cmd_binary -gui-yad new-mini-config $unarchivo
 ;;
 nueva-mini-config*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
-$cmd_binary -gui nueva-mini-config $unarchivo
+$cmd_binary -gui-yad nueva-mini-config $unarchivo
 ;;
 modify-config*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
-$cmd_binary -gui modify-config $unarchivo
+$cmd_binary -gui-yad modify-config $unarchivo
 ;;
 show-config*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
-$cmd_binary -gui show-config $unarchivo
+$cmd_binary -gui-yad show-config $unarchivo
 ;;
-wizard-full*) $cmd_binary -g wizard-full ;;
-wizard-mini*) $cmd_binary -g wizard-mini ;;
+wizard-full*) $cmd_binary -gui-yad wizard-full ;;
+wizard-mini*) $cmd_binary -gui-yad wizard-mini ;;
 ####
 ####
 #### english: all other otpions    ####
