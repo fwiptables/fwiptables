@@ -1,5 +1,5 @@
-###  #[ fwiptables-cmd command-10.05 ] [ Options: fwiptables-cmd options ]
-###  [ intro ] [ /usr/bin/fwiptables-cmd command-10.05 intro ] [ intro md ] 
+###  #[ fwiptables-cmd cmd-10-06 ] [ Options: fwiptables-cmd options ]
+###  [ intro ] [ /usr/bin/fwiptables-cmd cmd-10-06 intro ] [ intro md ] 
   
 ###  fwiptables. Firewall With iptables.    
   
@@ -24,14 +24,14 @@
   
 ###  fwiptables install.                                                 
   
-    Put bit of execution. TYPE:   chmod u+x ./fwiptables-command-10.05   
-    Install this version. TYPE:   ./fwiptables-command-10.05 install     
+    Put bit of execution. TYPE:   chmod u+x ./fwiptables-cmd-10-06   
+    Install this version. TYPE:   ./fwiptables-cmd-10-06 install     
   
 ###  fwiptables uninstall.                                               
   
-    Uninstall fwiptables. TYPE:   ./fwiptables-command-10.05 uninstall   
+    Uninstall fwiptables. TYPE:   ./fwiptables-cmd-10-06 uninstall   
   
-### #[ fwiptables-cmd command-10.05 ] [ Options: fwiptables-cmd options ]
+### #[ fwiptables-cmd cmd-10-06 ] [ Options: fwiptables-cmd options ]
 ###  fwiptables-cmd [ optional-output ] first_option [ second_option ]                  
 ### 
 ###       | optional-output |                                                            
@@ -62,9 +62,10 @@
    server-print server-lamp server-news server-ftp server-mail server-teamspeak         
    server-mumble server-sql server-asterisk server-domain server-squid                  
 ###         | options-easy |                                                             
-   preferences-read preferences-modify preferences-regen list-options clasic-options    
-   info-options filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx sockets nodes     
-   geoip webcert date free ver version notes depends license code examples commands     
-   variables intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot   
-###                      ||| Example: fwiptables-cmd -gui-zenity ls4               |||  
-###                      ||| Launch : Or with source-script Or with compiled-obash |||  
+   preferences-read preferences-modify preferences-regen preferences-example            
+   list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6         
+   ip4 ip6 speed-glx sockets nodes geoip webcert date free ver version notes            
+   depends license code examples commands radio variables intro clean-tmp               
+   download install uninstall pc-halt pc-shutdown pc-reboot                             
+###                   ||| Example: fwiptables-cmd -gui-zenity ls4             |||  
+###                   ||| Launch : Or with source-bash Or with compiled-obash |||  
