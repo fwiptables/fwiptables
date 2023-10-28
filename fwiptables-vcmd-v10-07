@@ -1161,7 +1161,7 @@ echo "$title_md default firewall"
 echo "allow_use_legacy=                                   ## void or no"
 echo "allow_use_nft=no                                    ## void or no"
 echo "allow_use_ipv4=                                     ## void or no"
-echo "allow_use_ipv6=no                                     ## void or no"
+echo "allow_use_ipv6=no                                   ## void or no"
 echo "allow_separate_rules=                               ## void or no"
 echo "config_shield_port=22                               ## void or ports"
 echo "config_shield_maxtries=10                           ## void or no"
@@ -1225,13 +1225,12 @@ echo " [ info ] Proxy http:    $http_proxy"
 echo " [ info ] Proxy https:   $https_proxy"
 echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
-if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes ] [ /etc/resolv.conf ]"     ;
+if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
 cat /etc/resolv.conf           ; fi
-if [ -d /etc/resolvconf ];       then echo "$title_md [ yes ] [ /etc/resolvconf ]";
-$command_find /etc/resolvconf  ; fi
-if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.head ]"; fi
-if [ -f /etc/resolv.conf.body ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.body ]"; fi
-if [ -f /etc/resolv.conf.tail ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.tail ]"; fi
+if [ -d /etc/resolvconf ];       then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
+if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
+if [ -f /etc/resolv.conf.body ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.body ]"; fi
+if [ -f /etc/resolv.conf.tail ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
 exit; fi
 ####
 ####
@@ -1267,13 +1266,12 @@ echo " [ info ] Proxy http:    $http_proxy"
 echo " [ info ] Proxy https:   $https_proxy"
 echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
-if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes ] [ /etc/resolv.conf ]"     ;
+if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
 cat /etc/resolv.conf           ; fi
-if [ -d /etc/resolvconf ];       then echo "$title_md [ yes ] [ /etc/resolvconf ]";
-$command_find /etc/resolvconf  ; fi
-if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.head ]"; fi
-if [ -f /etc/resolv.conf.body ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.body ]"; fi
-if [ -f /etc/resolv.conf.tail ]; then echo "$title_md [ yes ] [ /etc/resolv.conf.tail ]"; fi
+if [ -d /etc/resolvconf ];       then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
+if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
+if [ -f /etc/resolv.conf.body ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.body ]"; fi
+if [ -f /etc/resolv.conf.tail ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
 exit; fi
 ####
 ####
