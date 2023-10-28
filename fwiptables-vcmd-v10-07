@@ -1227,10 +1227,10 @@ echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
 cat /etc/resolv.conf           ; fi
-if [ -d /etc/resolvconf ];       then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
 if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
 if [ -f /etc/resolv.conf.body ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.body ]"; fi
 if [ -f /etc/resolv.conf.tail ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
+if [ -d /etc/resolvconf ];       then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
 exit; fi
 ####
 ####
@@ -1268,10 +1268,10 @@ echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
 cat /etc/resolv.conf           ; fi
-if [ -d /etc/resolvconf ];       then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
 if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
 if [ -f /etc/resolv.conf.body ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.body ]"; fi
 if [ -f /etc/resolv.conf.tail ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
+if [ -d /etc/resolvconf ];       then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
 exit; fi
 ####
 ####
@@ -3470,7 +3470,7 @@ echo "$text_md ip6 . show details from connection ipv6"
 echo "$text_md speed-ip4 . calculate bandwith ipv4"
 echo "$text_md speed-ip6 . calculate bandwith ipv6"
 echo "$text_md speed-glx . calculate speed for graphics"
-echo "$text_md sockets . show the sockets opened"
+echo "$text_md sockets . show the sockets listening"
 echo "$text_md nodes . show computers connected to lan"
 echo "$text_md geoip . show location for ip o for host"
 echo "$text_md webcert . get the ssl certificate to one web"
@@ -5586,9 +5586,9 @@ exit; fi
 if   [ "$first_option" == "sockets" ]; then 
 echo "$title_md [ $first_option ] [ Show sockets with ss ] "
 if [ "$command_ss" == "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
-echo "$title_md [ info ] [ The ipv6 sockets ]"
+echo "$title_md [ info ] [ The ipv6 listen sockets ]"
 $command_ss -l -6 | grep -F *: ;
-echo "$title_md [ info ] [ The ipv4 sockets ]"
+echo "$title_md [ info ] [ The ipv4 listen sockets ]"
 $command_ss -l -4 | grep -F *: ;
 exit; fi
 ####
