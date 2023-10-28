@@ -489,6 +489,8 @@ head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $seco
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_cover="$title_md #[ $cmd_config $cmd_version ] [ Options: $cmd_file options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
+#### give_fail="### #[ fail ] | First Option: $first_option | Choose one valid first option |"
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$title_md [ _ok_ ] [ Load firewall ] [ Firewall With iptables ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_preferences="$title_md [ Configure ] [ $cmd_binary preferences-modify ]"
@@ -1012,7 +1014,7 @@ echo $head_timespam ; fi
 #### :rutina-inicial-filelog:
 ####
 ####
-if [ "$first_option" == "filelog" ] ; then  echo $give_cover
+if [ "$first_option" == "filelog" ] ; then
 echo "$title_md [ $first_option ]  [ show $default_filelog ] "
 if [ ! -f $default_filelog ]; then touch $default_filelog ; fi
 echo
@@ -1028,7 +1030,7 @@ exit; fi
 #### :rutina-inicial-autolog:
 ####
 ####
-if [ "$first_option" == "autolog" ] ; then  echo $give_cover
+if [ "$first_option" == "autolog" ] ; then
 echo "$title_md [ $first_option ] [ show "$default_autolog" ] "
 echo "$title_md [ info ] [ last 50 lines from file showed ] [ $default_autolog ]"
 if [ ! -f $default_autolog ]; then touch $default_autolog ; fi
@@ -1045,7 +1047,7 @@ exit; fi
 #### :rutina-inicial-default:
 ####
 ####
-if [ "$first_option" == "default" ] ; then echo $give_cover
+if [ "$first_option" == "default" ] ; then 
 echo "$title_md [ $first_option ] [ $cmd_binary default ] [ default md ] "
 echo "$title_md [ info ] [ $cmd_binary default.. ]"
 
@@ -1061,7 +1063,7 @@ exit; fi
 #### :rutina-inicial-preferences-read:
 ####
 ####
-if [ "$first_option" == "preferences-read" ]; then  echo $give_cover
+if [ "$first_option" == "preferences-read" ]; then 
 echo "$title_md [ $first_option ] [ show the default fwiptables ] "
 echo 
 cat $default_preferences
@@ -1078,7 +1080,7 @@ exit; fi
 #### :rutina-inicial-preferences-modify:
 ####
 ####
-if [ "$first_option" == "preferences-modify" ]; then  echo $give_cover
+if [ "$first_option" == "preferences-modify" ]; then 
 echo "$title_md [ $first_option ] [ modify the default fwiptables ] "
 echo 
 $favorite_text_editor $default_preferences
@@ -1093,7 +1095,7 @@ exit; fi
 #### :rutina-inicial-dialog-modify:
 ####
 ####
-if [ "$first_option" == "dialog-modify" ]; then  echo $give_cover
+if [ "$first_option" == "dialog-modify" ]; then 
 echo "$title_md [ $first_option ] [ modify the default dialog ] "
 echo 
 $favorite_text_editor $default_dialogrc
@@ -1108,7 +1110,7 @@ exit; fi
 #### :rutina-inicial-preferences-read:
 ####
 ####
-if [ "$first_option" == "preferences-read" ]; then  echo $give_cover
+if [ "$first_option" == "preferences-read" ]; then 
 echo "$title_md [ $first_option ] [ read the default fwiptables ] "
 
 echo "$title_md [ info ] [ Show file $default_preferences to read variables ]"
@@ -1131,7 +1133,7 @@ exit; fi
 #### :rutina-inicial-preferences-regen:
 ####
 ####
-if [ "$first_option" == "preferences-regen" ] ; then echo $give_cover
+if [ "$first_option" == "preferences-regen" ] ; then
 echo "$title_md [ $first_option ] [ $cmd_binary preferences-regen ] [ preferences-regen md ] "
 rm $default_preferences
 echo "$title_md [ _ok_ ] [ $cmd_binary deleted old configs ]"
@@ -1150,7 +1152,7 @@ exit; fi
 #### :rutina-inicial-preferences-example:
 ####
 ####
-if [ "$first_option" == "preferences-example" ] ; then echo $give_cover
+if [ "$first_option" == "preferences-example" ] ; then
 echo
 echo "$title_md default option"
 echo "option_default_security=list-options                ## when there is not one first_option"
@@ -1197,7 +1199,7 @@ exit; fi
 #### :rutina-inicial-ip4:
 ####
 ####
-if [ "$first_option" == "ip4" ]; then echo $give_cover
+if [ "$first_option" == "ip4" ]; then
 echo "$title_md [ $first_option ]  [ show info about net ip4 ] "
 echo
 echo "$title_md [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
@@ -1239,7 +1241,7 @@ exit; fi
 #### :rutina-inicial-ip6:
 ####
 ####
-if [ "$first_option" == "ip6" ]; then echo $give_cover
+if [ "$first_option" == "ip6" ]; then
 echo "$title_md [ $first_option ]  [ show info about net ip6 ] "
 echo
 echo "$title_md [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
@@ -1281,7 +1283,7 @@ exit; fi
 #### :rutina-inicial-depends:
 ####
 ####
-if [ "$first_option" == "depends" ]; then echo $give_cover
+if [ "$first_option" == "depends" ]; then
 echo "$title_md [ $first_option ] [ List for depends programs ] [ depends md ] "
 echo
 echo "$title_md [ Configuration files ]"
@@ -1320,7 +1322,7 @@ exit; fi
 #### :rutina-inicial-examples:
 ####
 ####
-if [ "$first_option" == "options-examples" ]; then echo $give_cover
+if [ "$first_option" == "options-examples" ]; then
 echo "$title_md [ $first_option ] [ List examples ] [ examples md ] "
 echo "$text_md"
 echo "$title_md                        [ several examples *without optional otuput* ]              "
@@ -1357,7 +1359,7 @@ exit; fi
 #### :rutina-inicial-version:
 ####
 ####
-if [ "$first_option" == "version" ]; then echo $give_cover
+if [ "$first_option" == "version" ]; then 
 echo "$title_md [ $first_option ] [ Show version about ] [ version.md] "
 echo "$title_md [ Name program ]"
 echo "$text_md $cmd_name"
@@ -1402,7 +1404,7 @@ exit ; fi
 #### :rutina-inicial-ver:
 ####
 ####
-if [ "$first_option" == "ver" ]; then echo $give_cover
+if [ "$first_option" == "ver" ]; then 
 echo "$title_md [ $first_option ] [ Show version about ] [ version.md] "
 echo "[ _ok_ ] [ program ] $cmd_name | $cmd_version | $cmd_description "
 echo "[ _ok_ ] [ Cache directory ] $directory_cache " 
@@ -1417,7 +1419,7 @@ exit ; fi
 #### :rutina-inicial-notes:
 ####
 ####
-if [ "$first_option" == "notes" ]; then echo $give_cover
+if [ "$first_option" == "notes" ]; then 
 echo "$title_md [ $first_option ] [ List notes about ] [ notes md ]"
 echo "$text_md"
 echo "$text_md"
@@ -1469,7 +1471,7 @@ exit; fi
 #### :rutina-inicial-regen-config:
 ####
 ####
-if [ "$first_option" == "regen-config" ]; then echo "$give_cover"
+if [ "$first_option" == "regen-config" ]; then 
 echo "$title_md [ $first_option ] [ Generate templates wizard and cfg ] "
 echo "$title_md [ info ] [ regenerating template wizard and template cfg ]"
 ####
@@ -2075,7 +2077,7 @@ $cmd_binary save autosave-fwiptables &> /dev/null ; exit; fi
 #### :rutina-inicial-custom-rules:
 ####
 ####
-if [ "$first_option" == "custom" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "custom" ]; then 
 echo "$text_md [ info ] [ loading firewall custom ] [ $directory_config/$second_option ]" ;
 launch_rules_firewall="yes" ;
 type_firewall="custom" ;
@@ -2106,7 +2108,7 @@ fi
 ####   #### spanish: cortafuego del sistema off-line:
 ####
 ####
-if [ "$first_option" == "off-line" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "off-line" ]; then
 echo "$text_md [ info ] [ loading firewall off-line ]" ;
 launch_rules_firewall="yes" ;
 type_firewall="off-line";
@@ -2122,7 +2124,7 @@ fi
 ####   #### spanish: cortafuego del sistema all-permisive:
 ####
 ####
-if [ "$first_option" == "all-permisive" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "all-permisive" ]; then
 echo "$text_md [ info ] [ loading firewall all-permisive ]" ;
 launch_rules_firewall="yes" ;
 type_firewall="all-permisive" ;
@@ -2139,7 +2141,7 @@ fi
 ####   #### spanish: cortafuego del sistema shield-ssh:
 ####
 ####
-if [ "$first_option" == "shield-ssh" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "shield-ssh" ]; then
 echo "$text_md [ info ] [ loading firewall shield-ssh ]" ;
 launch_rules_firewall="yes" ;
 type_firewall="shield-ssh"    ; 
@@ -2163,7 +2165,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-basic:
 ####
 ####
-if [ "$first_option" == "client-basic" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "client-basic" ]; then
 echo "$text_md [ info ] [ loading firewall client-basic ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2187,7 +2189,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-web:
 ####
 ####
-if [ "$first_option" == "client-web" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "client-web" ]; then
 echo "$text_md [ info ] [ loading firewall client-web ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2211,7 +2213,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-git:
 ####
 ####
-if [ "$first_option" == "client-git" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "client-git" ]; then
 echo "$text_md [ info ] [ loading firewall client-git ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2235,7 +2237,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-ipp:
 ####
 ####
-if [ "$first_option" == "client-ipp" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "client-ipp" ]; then
 echo "$text_md [ info ] [ loading firewall client-ipp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2259,7 +2261,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-irc:
 ####
 ####
-if [ "$first_option" == "client-irc" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "client-irc" ]; then
 echo "$text_md [ info ] [ loading firewall client-irc ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2283,7 +2285,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-vnc:
 ####
 ####
-if [ "$first_option" == "client-vnc" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "client-vnc" ]; then
 echo "$text_md [ info ] [ loading firewall client-vnc ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2307,7 +2309,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-torrent:
 ####
 ####
-if [ "$first_option" == "client-torrent" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "client-torrent" ]; then
 echo "$text_md [ info ] [ loading firewall client-torrent ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2331,7 +2333,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-vpn:
 ####
 ####
-if [ "$first_option" == "client-vpn" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "client-vpn" ]; then
 echo "$text_md [ info ] [ loading firewall client-vpn ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2355,7 +2357,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-tor:
 ####
 ####
-if [ "$first_option" == "client-tor" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "client-tor" ]; then
 echo "$text_md [ info ] [ loading firewall client-tor ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2379,7 +2381,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-news:
 ####
 ####
-if [ "$first_option" == "client-news" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "client-news" ]; then
 echo "$text_md [ info ] [ loading firewall client-news ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2408,7 +2410,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-mail:
 ####
 ####
-if [ "$first_option" == "client-mail" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "client-mail" ]; then
 echo "$text_md [ info ] [ loading firewall client-mail ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2448,7 +2450,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-ftp:
 ####
 ####
-if [ "$first_option" == "client-ftp" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "client-ftp" ]; then
 echo "$text_md [ info ] [ loading firewall client-ftp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2472,7 +2474,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-squid:
 ####
 ####
-if [ "$first_option" == "client-squid" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "client-squid" ]; then
 echo "$text_md [ info ] [ loading firewall client-squid ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2496,7 +2498,7 @@ fi
 ####   #### spanish: cortafuego del sistema lan-vpn:
 ####
 ####
-if [ "$first_option" == "lan-vpn" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "lan-vpn" ]; then
 echo "$text_md [ info ] [ loading firewall lan-vpn ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2521,7 +2523,7 @@ fi
 ####   #### spanish: cortafuego del sistema lan-tor:
 ####
 ####
-if [ "$first_option" == "lan-tor" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "lan-tor" ]; then
 echo "$text_md [ info ] [ loading firewall lan-tor ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2546,7 +2548,7 @@ fi
 ####   #### spanish: cortafuego del sistema games-shooter:
 ####
 ####
-if [ "$first_option" == "games-shooter" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "games-shooter" ]; then
 echo "$text_md [ info ] [ loading firewall games-shooter ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2570,7 +2572,7 @@ fi
 ####   #### spanish: cortafuego del sistema games-udp:
 ####
 ####
-if [ "$first_option" == "games-udp" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "games-udp" ]; then
 echo "$text_md [ info ] [ loading firewall games-udp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2594,7 +2596,7 @@ fi
 ####   #### spanish: cortafuego del sistema game-wesnoth:
 ####
 ####
-if [ "$first_option" == "game-wesnoth" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "game-wesnoth" ]; then
 echo "$text_md [ info ] [ loading firewall game-wesnoth ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2618,7 +2620,7 @@ fi
 ####   #### spanish: cortafuego del sistema game-minetest:
 ####
 ####
-if [ "$first_option" == "game-minetest" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "game-minetest" ]; then
 echo "$text_md [ info ] [ loading firewall game-minetest ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2642,7 +2644,7 @@ fi
 ####   #### spanish: cortafuego del sistema game-freeciv:
 ####
 ####
-if [ "$first_option" == "game-freeciv" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "game-freeciv" ]; then
 echo "$text_md [ info ] [ loading firewall game-freeciv ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2666,7 +2668,7 @@ fi
 ####   #### spanish: cortafuego del sistema game-widelands:
 ####
 ####
-if [ "$first_option" == "game-widelands" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "game-widelands" ]; then
 echo "$text_md [ info ] [ loading firewall game-widelands ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2690,7 +2692,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-web:
 ####
 ####
-if [ "$first_option" == "server-web" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "server-web" ]; then
 echo "$text_md [ info ] [ loading firewall server-web ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2714,7 +2716,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-vnc:
 ####
 ####
-if [ "$first_option" == "server-vnc" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "server-vnc" ]; then
 echo "$text_md [ info ] [ loading firewall server-vnc ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2739,7 +2741,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-ftp:
 ####
 ####
-if [ "$first_option" == "server-ftp" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "server-ftp" ]; then
 echo "$text_md [ info ] [ loading firewall server-ftp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2762,7 +2764,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-squid:
 ####
 ####
-if [ "$first_option" == "server-squid" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "server-squid" ]; then
 echo "$text_md [ info ] [ loading firewall server-squid ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2786,7 +2788,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-news:
 ####
 ####
-if [ "$first_option" == "server-news" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "server-news" ]; then
 echo "$text_md [ info ] [ loading firewall server-news ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2815,7 +2817,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-mail:
 ####
 ####
-if [ "$first_option" == "server-mail" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "server-mail" ]; then
 echo "$text_md [ info ] [ loading firewall server-mail ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2853,7 +2855,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-samba:
 ####
 ####
-if [ "$first_option" == "server-samba" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "server-samba" ]; then
 echo "$text_md [ info ] [ loading firewall server-samba ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2877,7 +2879,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-print:
 ####
 ####
-if [ "$first_option" == "server-print" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "server-print" ]; then
 echo "$text_md [ info ] [ loading firewall server-print ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2901,7 +2903,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-ssh:
 ####
 ####
-if [ "$first_option" == "server-ssh" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "server-ssh" ]; then
 echo "$text_md [ info ] [ loading firewall server-ssh ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2925,7 +2927,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-lamp:
 ####
 ####
-if [ "$first_option" == "server-lamp" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "server-lamp" ]; then
 echo "$text_md [ info ] [ loading firewall server-lamp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2950,7 +2952,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-asterisk:
 ####
 ####
-if [ "$first_option" == "server-asterisk" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "server-asterisk" ]; then
 echo "$text_md [ info ] [ loading firewall server-asterisk ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2976,7 +2978,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-mumble:
 ####
 ####
-if [ "$first_option" == "server-mumble" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "server-mumble" ]; then
 echo "$text_md [ info ] [ loading firewall server-mumble ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -3000,7 +3002,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-teamspeak:
 ####
 ####
-if [ "$first_option" == "server-teamspeak" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "server-teamspeak" ]; then
 echo "$text_md [ info ] [ loading firewall server-teamspeak ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -3028,7 +3030,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-sql:
 ####
 ####
-if [ "$first_option" == "server-sql" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "server-sql" ]; then
 echo "$text_md [ info ] [ loading firewall server-sql ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -3056,7 +3058,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-irc:
 ####
 ####
-if [ "$first_option" == "server-irc" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "server-irc" ]; then
 echo "$text_md [ info ] [ loading firewall server-irc ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -3080,7 +3082,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-domain:
 ####
 ####
-if [ "$first_option" == "server-domain" ]; then echo $give_cover ; echo $give_load ; 
+if [ "$first_option" == "server-domain" ]; then
 echo "$text_md [ info ] [ loading firewall server-domain ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -3102,7 +3104,7 @@ fi
 #### :rutina-inicial-ntp:
 ####
 ####
-if   [ "$first_option" == "ntp" ]; then echo $give_cover
+if   [ "$first_option" == "ntp" ]; then 
 echo "$title_md [ $first_option ]  [ update the computer time and date from internet ] "
 echo
 if [ "$favorite_date_command" == "$NULL" ]; then echo "$tab [ fail ] [ Install one ntp client ]" ; fi
@@ -3122,7 +3124,7 @@ exit; fi
 #### :rutina-inicial-list-options:
 ####
 ####
-if [ "$first_option" == "list-options" ] ; then echo $give_cover
+if [ "$first_option" == "list-options" ] ; then 
 echo "$title_md $cmd_file [ optional-output ] first_option [ second_option ]                  "
 echo "$title_md"
 echo "$title_md      | optional-output |                                                            "
@@ -3170,7 +3172,7 @@ exit ; fi
 #### :rutina-inicial-clasic-options:
 ####
 ####
-if   [ "$first_option" == "clasic-options" ] ; then echo $give_cover 
+if   [ "$first_option" == "clasic-options" ] ; then  
 echo "$title_md $cmd_file [ optional-output ] first_option [ second_option ] "
 echo "$title_md"
 echo "$text_md    optional-paramtter |                                                                             "
@@ -3213,7 +3215,7 @@ exit ; fi
 #### :rutina-inicial-code:
 ####
 ####
-if   [ "$first_option" == "code" ]; then echo $give_cover
+if   [ "$first_option" == "code" ]; then 
 echo "$title_md [ $first_option ]  [ Show source code for each option ] "
 echo "$title_md [ info ] [ code ] [ show source code for options from $cmd_binary ]"
 code_error="$title_md [ info ] [ Usage ] [ $cmd_binary code option_choosed ]"
@@ -3242,7 +3244,7 @@ exit; fi
 #### :rutina-inicial-names-config:
 ####
 ####
-if [ "$first_option" == "names-config" ]; then echo $give_cover
+if [ "$first_option" == "names-config" ]; then 
 echo "$title_md [ $first_option ] [ List configs cfg ] "
 echo "$title_md [ info ] [ list configs files in cfg format ]"
 echo "$title_md [ info ] [ folder ] [ $directory_config ]"
@@ -3277,7 +3279,7 @@ exit; fi
 #### :rutina-inicial-free-ram:
 ####
 ####
-if   [ "$first_option" == "free-ram" ]; then echo $give_cover
+if   [ "$first_option" == "free-ram" ]; then 
 echo "$title_md [ $first_option ]  [ freedom from innecesary ram ] "
 case $command_tee in "$NULL") echo "$tab [ fail ] [ Install tee command ]"; exit ;; esac
 echo "$title_md [ info ] Actual Memory"
@@ -3503,7 +3505,7 @@ exit; fi
 #### :rutina-inicial-info-options:
 ####
 ####
-if   [ "$first_option" == "info-options" ]; then echo $give_cover
+if   [ "$first_option" == "info-options" ]; then 
 echo "$title_md [ $first_option ]  [ info options for firewall iptables ] "
 echo "$text_md"
 echo "$title_md           Firewall fwiptables-cmd info-options ... $cmd_version"
@@ -3560,7 +3562,7 @@ exit; fi
 #### :rutina-inicial-variables:
 ####
 ####
-if   [ "$first_option" == "variables" ]; then echo $give_cover
+if   [ "$first_option" == "variables" ]; then 
 echo "$title_md [ $first_option ]  [ list variables firewall fwiptables] "
 echo "$text_md"
 echo "$title_md           Firewall fwiptables-cmd variables ... $cmd_version"
@@ -3687,7 +3689,7 @@ exit; fi
 #### :rutina-inicial-commands:
 ####
 ####
-if   [ "$first_option" == "commands" ]; then echo $give_cover
+if   [ "$first_option" == "commands" ]; then 
 echo "$title_md [ $first_option ]  [ list commands possible depends ] "
 echo "##########     commands possible depends  ##########"
 echo "$text_md"
@@ -3793,7 +3795,7 @@ exit; fi
 #### :rutina-inicial-examples-config:
 ####
 ####
-if [ "$first_option" == "examples-config" ]; then echo $give_cover
+if [ "$first_option" == "examples-config" ]; then 
 echo "$title_md [ $first_option ] [ Show examples ] "
 echo 
 echo "[ examples ] [ examples for some services in client mode ]"
@@ -3931,7 +3933,7 @@ exit ; fi
 #### :rutina-inicial-eraserules:
 ####
 ####
-if [ "$first_option" == "eraserules" ]; then echo $give_cover 
+if [ "$first_option" == "eraserules" ]; then  
 echo "$title_md [ $first_option ] [ erase all iptables rules ] "
 ####
 ####
@@ -4070,7 +4072,7 @@ exit; fi
 #### :rutina-inicial-list-alltables:
 ####
 ####
-if [ "$first_option" == "list-alltables" ]; then  echo $give_cover
+if [ "$first_option" == "list-alltables" ]; then
 echo "$title_md [ $first_option ] [ List all rules ] "
 echo 
 echo; echo; echo "### LIST ARPTABLES ###"
@@ -4107,7 +4109,7 @@ exit; fi
 #### :rutina-inicial-listn-alltables:
 ####
 ####
-if [ "$first_option" == "listn-alltables" ]; then  echo $give_cover
+if [ "$first_option" == "listn-alltables" ]; then 
 echo "$title_md [ $first_option ] [ List all rules ] "
 echo 
 echo; echo; echo "### LIST EBTABLES ###"
@@ -4144,7 +4146,7 @@ exit; fi
 #### :rutina-inicial-list4:
 ####
 ####
-if [ "$first_option" == "list4-ip" ]; then echo $give_cover
+if [ "$first_option" == "list4-ip" ]; then 
 echo "$title_md [ list4 ] [ List filter ipv4 ] [ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
 "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
@@ -4178,7 +4180,7 @@ exit; fi
 #### :rutina-inicial-list6:
 ####
 ####
-if [ "$first_option" == "list6-ip" ]; then  echo $give_cover 
+if [ "$first_option" == "list6-ip" ]; then  
 echo "$title_md [ list6 ] [ List filter ipv6 ] [ it is only sufficent or with legacy or with nft ] "
 legacyseis=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
 "$command_ip6tables_legacy" -t filter -L OUTPUT 1 )
@@ -4214,7 +4216,7 @@ exit; fi
 #### :rutina-inicial-listn4-ip:
 ####
 ####
-if [ "$first_option" == "listn4-ip" ]; then echo $give_cover 
+if [ "$first_option" == "listn4-ip" ]; then  
 echo "$title_md [ list4 ] [ List filter ipv4 ] [ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
 "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
@@ -4248,7 +4250,7 @@ exit; fi
 #### :rutina-inicial-listn6-ip:
 ####
 ####
-if [ "$first_option" == "listn6-ip" ]; then  echo $give_cover 
+if [ "$first_option" == "listn6-ip" ]; then  
 echo "$title_md [ list6 ] [ List filter ipv6 ] [ it is only sufficent or with legacy or with nft ] "
 legacyseis=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
 "$command_ip6tables_legacy" -t filter -L OUTPUT 1 )
@@ -4320,7 +4322,7 @@ exit; fi
 #### :rutina-inicial-listnum:
 ####
 ####
-if [ "$first_option" == "listnum" ]; then echo $give_cover
+if [ "$first_option" == "listnum" ]; then 
 echo "$title_md [ list ] [ List numerical filter ipv4 ] [ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
 "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
@@ -4354,7 +4356,7 @@ exit; fi
 #### :rutina-inicial-listnum-filter6:
 ####
 ####
-if [ "$first_option" == "listnum6" ]; then echo $give_cover
+if [ "$first_option" == "listnum6" ]; then 
 echo "$title_md [ list ] [ List numerical filter ipv6 ] [ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
 "$command_ip6tables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
@@ -4388,7 +4390,7 @@ exit; fi
 #### :rutina-inicial-list-filter4:
 ####
 ####
-if [ "$first_option" == "list-filter4" ]; then echo $give_cover
+if [ "$first_option" == "list-filter4" ]; then 
 echo "$title_md [ $first_option ] [ List filter ipv4 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip4"
 echo
@@ -4410,7 +4412,7 @@ exit; fi
 #### :rutina-inicial-list-forward:
 ####
 ####
-if [ "$first_option" == "list-forward" ]; then  echo $give_cover
+if [ "$first_option" == "list-forward" ]; then 
 echo "$title_md [ $first_option ] [ List filter forward ipv4 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip4"
 echo
@@ -4430,7 +4432,7 @@ exit; fi
 #### :rutina-inicial-list-filter6:
 ####
 ####
-if [ "$first_option" == "list-filter6" ]; then  echo $give_cover
+if [ "$first_option" == "list-filter6" ]; then 
 echo "$title_md [ $first_option ] [ List filter ipv6 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip6"
 echo
@@ -4452,7 +4454,7 @@ exit; fi
 #### :rutina-inicial-list-forward6:
 ####
 ####
-if [ "$first_option" == "list-forward6" ]; then  echo $give_cover
+if [ "$first_option" == "list-forward6" ]; then 
 echo "$title_md [ $first_option ] [ List filter forward ipv6 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip6"
 echo
@@ -4472,7 +4474,7 @@ exit; fi
 #### :rutina-inicial-list-nat-4:
 ####
 ####
- if [ "$first_option" == "list-nat4" ]; then  echo $give_cover
+ if [ "$first_option" == "list-nat4" ]; then 
 echo "$title_md [ $first_option ] [ List nat ipv4 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="nat-ip4"
 echo
@@ -4492,7 +4494,7 @@ exit; fi
 #### :rutina-inicial-list-nat6:
 ####
 ####
-if [ "$first_option" == "list-nat6" ]; then echo $give_cover
+if [ "$first_option" == "list-nat6" ]; then 
 echo "$title_md [ $first_option ] [ List nat ipv6] [ it is only sufficent or with legacy or with nft ] "
 fromrules="nat-ip6"
 echo
@@ -4513,7 +4515,7 @@ exit; fi
 #### :rutina-inicial-listnum-filter4:
 ####
 ####
-if [ "$first_option" == "listnum-filter4" ]; then  echo $give_cover
+if [ "$first_option" == "listnum-filter4" ]; then 
 echo "$title_md [ $first_option ] [ List filter ipv4 in numerical ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip4"
 echo
@@ -4533,7 +4535,7 @@ exit; fi
 #### :rutina-inicial-list-forwardnum:
 ####
 ####
-if [ "$first_option" == "list-forwardnum" ]; then  echo $give_cover
+if [ "$first_option" == "list-forwardnum" ]; then 
 echo "$title_md [ $first_option ] [ List filter forward ipv4 in numerical ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip4"
 echo
@@ -4553,7 +4555,7 @@ exit; fi
 #### :rutina-inicial-listnum-filter6:
 ####
 ####
-if [ "$first_option" == "listnum-filter6" ]; then  echo $give_cover
+if [ "$first_option" == "listnum-filter6" ]; then 
 echo "$title_md [ $first_option ] [ List filter ipv6 in numerical ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip6"
 echo
@@ -4573,7 +4575,7 @@ exit; fi
 #### :rutina-inicial-list-forwardnum6:
 ####
 ####
-if [ "$first_option" == "list-forwardnum6" ]; then  echo $give_cover
+if [ "$first_option" == "list-forwardnum6" ]; then 
 echo "$title_md [ $first_option ] [ List filter forward ipv6 in numerical ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip6"
 echo
@@ -4593,7 +4595,7 @@ exit; fi
 #### :rutina-inicial-list-mangle4:
 ####
 ####
-if [ "$first_option" == "list-mangle4" ]; then  echo $give_cover
+if [ "$first_option" == "list-mangle4" ]; then 
 echo "$title_md [ $first_option ] [ List mangle ipv4 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="mangle-ip4"
 echo
@@ -4614,7 +4616,7 @@ exit; fi
 #### :rutina-inicial-list-mangle6:
 ####
 ####
-if [ "$first_option" == "list-mangle6" ]; then echo $give_cover
+if [ "$first_option" == "list-mangle6" ]; then 
 echo "$title_md [ $first_option ] [ List mangle ipv6 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="mangle-ip6"
 echo
@@ -4635,7 +4637,7 @@ exit; fi
 #### :rutina-inicial-list-raw4:
 ####
 ####
-if [ "$first_option" == "list-raw4" ]; then  echo $give_cover
+if [ "$first_option" == "list-raw4" ]; then 
 echo "$title_md [ $first_option ] [ List raw ipv4 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="raw-ip4"
 echo
@@ -4655,7 +4657,7 @@ exit; fi
 #### :rutina-inicial-list-raw6:
 ####
 ####
-if [ "$first_option" == "list-raw6" ]; then  echo $give_cover
+if [ "$first_option" == "list-raw6" ]; then 
 echo "$title_md [ $first_option ] [ List raw ipv6 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="raw-ip6"
 echo
@@ -4675,7 +4677,7 @@ exit; fi
 #### :rutina-inicial-list-security4:
 ####
 ####
-if [ "$first_option" == "list-security4" ]; then  echo $give_cover
+if [ "$first_option" == "list-security4" ]; then 
 echo "$title_md [ $first_option ] [ List security ipv4 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="security-ip4"
 echo
@@ -4695,7 +4697,7 @@ exit; fi
 #### :rutina-inicial-list-security6:
 ####
 ####
-if [ "$first_option" == "list-security6" ]; then  echo $give_cover
+if [ "$first_option" == "list-security6" ]; then 
 echo "$title_md [ $first_option ] [ List security ipv6 ] [ it is only sufficent or with legacy or with nft ] "
 fromrules="security-ip6"
 echo
@@ -4715,7 +4717,7 @@ exit; fi
 #### :rutina-inicial-list-ebtables:
 ####
 ####
-if [ "$first_option" == "list-ebtables" ]; then  echo $give_cover
+if [ "$first_option" == "list-ebtables" ]; then 
 echo "$title_md [ $first_option ] [ List ebtables ] "
 fromrules="ebtables"
 echo
@@ -4735,7 +4737,7 @@ exit; fi
 #### :rutina-inicial-list-arptables:
 ####
 ####
-if [ "$first_option" == "list-arptables" ]; then  echo $give_cover
+if [ "$first_option" == "list-arptables" ]; then 
 echo "$title_md [ $first_option ] [ List arptables ipv4 ] "
 fromrules="arptables"
 echo
@@ -4751,7 +4753,7 @@ exit; fi
 #### :rutina-inicial-list-arptables:
 ####
 ####
-if [ "$first_option" == "listn-arptables" ]; then  echo $give_cover
+if [ "$first_option" == "listn-arptables" ]; then 
 echo "$title_md [ $first_option ] [ List arptables ipv4 ] "
 fromrules="arptables"
 echo
@@ -4767,12 +4769,12 @@ exit; fi
 #### :rutina-inicial-new-full-config:
 ####
 ####
-if [ "$first_option" == "new-full-config" ] && [ "$second_option" == "$NULL" ]  ; then echo $give_cover
+if [ "$first_option" == "new-full-config" ] && [ "$second_option" == "$NULL" ]  ; then 
 echo "$tab [ info ] [ usage: ] [ $cmd_binary new-full-config config-new ]"
 exit; fi
 ####
 ####
-if [ "$first_option" == "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
+if [ "$first_option" == "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then 
 archivo="$second_option"
 cp "$defaultfullcfg_eng" "$directory_config/$archivo"
 $favorite_text_editor $directory_config/$archivo
@@ -4788,12 +4790,12 @@ exit; fi
 #### :rutina-inicial-nueva-completa-config:
 ####
 ####
-if [ "$first_option" == "nueva-completa-config" ] && [ "$second_option" == "$NULL" ]  ; then echo $give_cover
+if [ "$first_option" == "nueva-completa-config" ] && [ "$second_option" == "$NULL" ]  ; then 
 echo "$tab [ info ] [ usage: ] [ $cmd_binary nueva-completa-config config-nueva ]"
 exit; fi
 ####
 ####
-if [ "$first_option" == "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
+if [ "$first_option" == "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then 
 archivo="$second_option"
 cp "$defaultfullcfg_spa" "$directory_config/$archivo"
 $favorite_text_editor $directory_config/$archivo
@@ -4809,12 +4811,12 @@ exit; fi
 #### :rutina-inicial-new-mini-config:
 ####
 ####
-if [ "$first_option" == "new-mini-config" ] && [ "$second_option" == "$NULL" ]  ; then echo $give_cover
+if [ "$first_option" == "new-mini-config" ] && [ "$second_option" == "$NULL" ]  ; then 
 echo "$tab [ info ] [ usage: ] [ $cmd_binary new-mini-config config-new ]"
 exit; fi
 ####
 ####
-if [ "$first_option" == "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
+if [ "$first_option" == "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then 
 archivo="$second_option"
 cp "$defaultminicfg_eng" "$directory_config/$archivo"
 $favorite_text_editor $directory_config/$archivo
@@ -4830,12 +4832,12 @@ exit; fi
 #### :rutina-inicial-nueva-mini-config:
 ####
 ####
-if [ "$first_option" == "nueva-mini-config" ] && [ "$second_option" == "$NULL" ]  ; then  echo $give_cover
+if [ "$first_option" == "nueva-mini-config" ] && [ "$second_option" == "$NULL" ]  ; then 
 echo "$tab [ info ] [ usage: ] [ $cmd_binary nueva-mini-config config-nueva ]"
 exit; fi
 ####
 ####
-if [ "$first_option" == "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then  echo $give_cover
+if [ "$first_option" == "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then 
 archivo="$second_option"
 cp "$defaultminicfg_spa" "$directory_config/$archivo"
 $favorite_text_editor $directory_config/$archivo
@@ -4851,7 +4853,7 @@ exit; fi
 #### :rutina-inicial-modify-config:
 ####
 ####
-if [ "$first_option" == "modify-config" ]; then  echo $give_cover
+if [ "$first_option" == "modify-config" ]; then 
 ####
 ###
 if [ ! -f "$directory_config/$second_option" ] ; then $nada
@@ -4875,7 +4877,7 @@ clear ; exit ; fi
 #### :rutina-inicial-show-config:
 ####
 ####
-if [ "$first_option" == "show-config" ] ; then echo $give_cover
+if [ "$first_option" == "show-config" ] ; then 
 ####
 ####
 if [ ! -f "$directory_config"/"$second_option" ] ; then 
@@ -4896,7 +4898,7 @@ exit; fi
 #### :rutina-inicial-del-config:
 ####
 ####
-if [ "$first_option" == "del-config" ]; then echo $give_cover
+if [ "$first_option" == "del-config" ]; then 
 ####
 ####
 if [ ! -f $directory_config/$second_option ] ; then
@@ -4918,7 +4920,7 @@ exit ; fi
 #### :rutina-inicial-names-control:
 ####
 ####
-if [ "$first_option" == "names-control" ]; then  echo $give_cover
+if [ "$first_option" == "names-control" ]; then 
 echo "$title_md [ $first_option ] [ List names from firewall saved ] "
 echo "$title_md [ info ] [ list configs files in standard format ]"
 echo "$title_md [ info ] [ folder ] [ $directory_fwrecover ]"
@@ -4938,7 +4940,7 @@ exit; fi
 #### :rutina-inicial-reset:
 ####
 ####
-if [ "$first_option" == "reset" ]; then echo $give_cover
+if [ "$first_option" == "reset" ]; then 
 echo "$title_md [ $first_option ] [ Reset the firewall ] "
 echo "$title_md [ info ] [ Reseting the firewall ]"
 $cmd_binary stop &> /dev/null
@@ -4953,7 +4955,7 @@ exit; fi
 #### :rutina-inicial-intro:
 ####
 ####
-if  [ "$first_option" == "intro" ]; then echo "$give_cover"
+if  [ "$first_option" == "intro" ]; then 
 echo "$title_md [ $first_option ] [ $cmd_binary $cmd_version intro ] [ intro md ] "
 echo "$text_md"
 echo "$title_md fwiptables. Firewall With iptables.    "
@@ -4996,7 +4998,7 @@ exit; fi
 #### :rutina-inicial-clean-tmp:
 ####
 ####
-if   [ "$first_option" == "clean-tmp" ] ; then echo $give_cover
+if   [ "$first_option" == "clean-tmp" ] ; then 
 echo "$title_md [ $first_option ] [ clean $cmd_binary temporal files ] "
 echo "$title_md [ info ] [ cleaning $cmd_binary temporal files ]"
 du -cm "$directory_cache"
@@ -5011,7 +5013,7 @@ exit; fi
 #### :rutina-inicial-download:
 ####
 ####
-if [ "$first_option" == "download" ] ; then echo $give_cover
+if [ "$first_option" == "download" ] ; then 
 echo "$title_md [ $first_option ] [ $cmd_binary download ] [ download md ] "
 echo
 echo "$title_md the last version from fwiptables. Firewall With iptables"
@@ -5046,7 +5048,7 @@ exit; fi
 #### :rutina-inicial-install:
 ####
 ####
-if [ "$first_option" == "install" ]; then echo $give_cover
+if [ "$first_option" == "install" ]; then 
 echo "$title_md [ $first_option ] [ $cmd_config $cmd_version installer ] [ install md ] "
 ####
 ####
@@ -5087,7 +5089,7 @@ exit; fi
 #### :rutina-inicial-geoip:
 ####
 ####
-if   [ "$first_option" == "geoip" ]; then echo $give_cover
+if   [ "$first_option" == "geoip" ]; then 
 echo "$title_md [ $first_option ]  [ resolve the location to one ip or host ] "
 echo 
 case $command_geoiplookup in "$NULL") echo "$tab [ fail ] [ Install geoiplookup command ]" ; exit  ;; esac
@@ -5106,7 +5108,7 @@ exit; fi
 #### :rutina-inicial-nodes:
 ####
 ####
-if   [ "$first_option" == "nodes" ]; then  echo $give_cover
+if   [ "$first_option" == "nodes" ]; then 
 echo "$title_md [ $first_option ] [ Show the list arp-scan in the lan ] "
 if [ "$command_arp_scan" == "$NULL" ]; then echo "$title_md [ fail ] [ install arp-scan command ]" ; exit ; fi
 echo "$title_md [ info ] [ local net: ip lan .. ]"
@@ -5122,7 +5124,7 @@ exit; fi
 #### :rutina-inicial-license:
 ####
 ####
-if [ "$first_option" == "license" ]; then echo $give_cover
+if [ "$first_option" == "license" ]; then 
 echo "$title_md [ $first_option ]  [ Show license from git sourceforge for $cmd_binary ] "
 echo "license text for gpl v2 downloading from .. $mensage_license_gpl"
 $favorite_text_browser -source "$mensage_license_gpl" | more
@@ -5135,7 +5137,7 @@ exit;  fi
 #### :rutina-inicial-pc-halt:
 ####
 ####
-if   [ "$first_option" == "pc-halt" ]; then echo $give_cover
+if   [ "$first_option" == "pc-halt" ]; then 
 echo "$title_md [ $first_option ] [ power off computer ] "
 demora="15"
 echo "$head_waiting_txt"
@@ -5151,7 +5153,7 @@ exit; fi
 #### :rutina-inicial-pc-shutdown:
 ####
 ####
-if   [ "$first_option" == "pc-shutdown" ]; then echo $give_cover
+if   [ "$first_option" == "pc-shutdown" ]; then 
 echo "$title_md [ $first_option ] [ power off computer ] "
 demora="15"
 echo "Halt to power off computer ... in $demora seconds"
@@ -5167,7 +5169,7 @@ exit; fi
 #### :rutina-inicial-pc-shutdown:
 ####
 ####
-if   [ "$first_option" == "pc-reboot" ]; then echo $give_cover
+if   [ "$first_option" == "pc-reboot" ]; then 
 echo "$title_md [ $first_option ] [ reboot computer ] "
 demora="15"
 echo "$head_waiting_txt"
@@ -5183,7 +5185,7 @@ exit; fi
 #### :rutina-inicial-radio:
 ####
 ####
-if   [ "$first_option" == "radio" ] ; then  echo $give_cover
+if   [ "$first_option" == "radio" ] ; then 
 echo "$header_ok [ $first_option ]  [ Listen radio online with a one link ]"
 echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
@@ -5232,7 +5234,7 @@ exit; fi
 #### :rutina-inicial-speed-glx:
 ####
 ####
-if   [ "$first_option" == "speed-glx" ]; then  echo $give_cover
+if   [ "$first_option" == "speed-glx" ]; then 
 echo "$title_md [ $first_option ]  [ test gl mesa3D speed ] [ for default max $time_server_waiting seconds ] "
 case $command_glxgears in "$NULL") echo "$tab [ fail ] [ Install mesa utils ]"; exit ;; esac
 vblank_mode=0 $command_timeout -s SIGINT -v $time_server_waiting $command_glxgears
@@ -5246,7 +5248,7 @@ exit; fi
 #### :rutina-inicial-ntpdate-client:
 ####
 ####
-if   [ "$first_option" == "ntpdate-client" ]; then echo $give_cover
+if   [ "$first_option" == "ntpdate-client" ]; then 
 echo "$title_md [ $first_option ]  [ update the computer time and date from internet ] "
 echo
 if [ "$favorite_date_command" == "$NULL" ]; then echo "$tab [ fail ] [ Install one ntp client ]" ; fi
@@ -5315,7 +5317,7 @@ $cmd_binary names ; echo "$tab [ info ] [ usage: $cmd_binary load fw-to-load ] [
 #### English if do exist second option in load
 ####
 ####
-if [ -f $directory_fwrecover/$second_option-nft-ipv4 ] || [ -f $directory_fwrecover/$second_option-legacy-ipv4 ] ; then echo $give_cover
+if [ -f $directory_fwrecover/$second_option-nft-ipv4 ] || [ -f $directory_fwrecover/$second_option-legacy-ipv4 ] ; then 
 echo $give_load
 ####
 ####
@@ -5368,7 +5370,7 @@ exit; fi
 #### :rutina-inicial-save:
 ####
 ####
-if [ "$first_option" == "save" ]; then echo $give_cover
+if [ "$first_option" == "save" ]; then 
 echo "$title_md [ $first_option ]  [ save one firewall with one name ] "
 case "$second_option" in
 "$NULL") echo "$tab [ info ] [ Usage: $cmd_binary save fw-to-save ]" ; exit ;;
@@ -5414,7 +5416,7 @@ exit; fi
 #### :rutina-inicial-show:
 ####
 ####
-if [ "$first_option" == "show" ]; then  echo $give_cover
+if [ "$first_option" == "show" ]; then 
 echo "$title_md [ $first_option ]  [ show one firewall saved ] "
 echo 
 case "$second_option" in
@@ -5451,7 +5453,7 @@ exit; fi
 #### :rutina-inicial-actual:
 ####
 ####
-if [ "$first_option" == "actual" ]; then echo $give_cover
+if [ "$first_option" == "actual" ]; then 
 echo "$title_md [ $first_option ]  [ show the last firewall saved ] "
 echo 
 $command_arptables-save          &> $directory_fwrecover/$cmd_config-actual-arptables
@@ -5483,7 +5485,7 @@ exit; fi
 #### :rutina-inicial-stop:
 ####
 ####
-if [ "$first_option" == "stop" ]; then echo $give_cover
+if [ "$first_option" == "stop" ]; then 
 echo "$title_md [ $first_option ]  [ Stop the firewall ] "
 ####
 ####
@@ -5513,7 +5515,7 @@ exit; fi
 #### :rutina-inicial-continue:
 ####
 ####
-if [ "$first_option" == "continue" ]; then echo $give_cover
+if [ "$first_option" == "continue" ]; then 
 echo "$title_md [ $first_option ]  [ Continue the stoped firewall ] "
 ####
 ####
@@ -5537,7 +5539,7 @@ exit; fi
 #### :rutina-inicial-speed-ip4:
 ####
 ####
-if   [ "$first_option" == "speed-ip4" ]; then echo $give_cover
+if   [ "$first_option" == "speed-ip4" ]; then 
 echo "$title_md [ $first_option ]  [ test speed ipv4 with internet ] "
 case "$command_iperf"  in  $NULL) echo "$title_md [ fail ] [ Install Iperf command ]"; exit ;; esac
 ####
@@ -5560,7 +5562,7 @@ exit; fi
 #### :rutina-inicial-speed-ip6:
 ####
 ####
-if   [ "$first_option" == "speed-ip6" ]; then echo $give_cover
+if   [ "$first_option" == "speed-ip6" ]; then 
 echo "$title_md [ $first_option ]  [ test speed ipv6 with internet ] "
 case "$command_iperf"  in  $NULL) echo "$title_md [ fail ] [ install iperf command ]"; exit ;; esac
 ####
@@ -5583,7 +5585,7 @@ exit; fi
 #### :rutina-inicial-sockets:
 ####
 ####
-if   [ "$first_option" == "sockets" ]; then  echo $give_cover
+if   [ "$first_option" == "sockets" ]; then 
 echo "$title_md [ $first_option ] [ Show sockets with ss ] "
 if [ "$command_ss" == "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
 echo "$title_md [ info ] [ The ipv6 sockets ]"
@@ -5599,7 +5601,7 @@ exit; fi
 #### :rutina-inicial-webcert:
 ####
 ####
-if   [ "$first_option" == "webcert" ] ; then echo $give_cover
+if   [ "$first_option" == "webcert" ] ; then 
 echo "$title_md [ $first_option ]  [ get one web certifcate from one server with port 443] || ||"
 case "$command_openssl"  in  $NULL) echo "$tab [ fail ] [ install openssl ]"; exit ;; esac
 ####
@@ -5779,7 +5781,7 @@ exit; fi
 #### :rutina-inicial-config-eng:
 ####
 ####
-if [ "$first_option" == "config-eng" ]; then echo $give_cover
+if [ "$first_option" == "config-eng" ]; then 
 echo "$title_md [ $first_option ] [ show variables cfg from english configuration ] "
 cat  $defaultfullcfg_eng
 exit; fi
@@ -5791,7 +5793,7 @@ exit; fi
 #### :rutina-inicial-config-spa:
 ####
 ####
-if [ "$first_option" == "config-spa" ]; then echo $give_cover
+if [ "$first_option" == "config-spa" ]; then 
 echo "$title_md [ $first_option ] [ show variables cfg from spanish configuration ] "
 cat $defaultfullcfg_spa
 exit; fi
@@ -6965,7 +6967,7 @@ exit; fi
 ############################	   spanish: default: sin otra valida opcion
 ####
 ####
-if [ "$launch_rules_firewall" != "yes" ] ; then
+if [ "$launch_rules_firewall" != "yes" ] ; then echo $give_cover
 echo "### #[ fail ] | First Option: $first_option | Choose one valid first option |" ;
 $cmd_binary $option_default_security ;
 exit ; fi
