@@ -1161,7 +1161,7 @@ echo "$title_md default firewall"
 echo "allow_use_legacy=                                   ## void or no"
 echo "allow_use_nft=no                                    ## void or no"
 echo "allow_use_ipv4=                                     ## void or no"
-echo "allow_use_ipv6=                                     ## void or no"
+echo "allow_use_ipv6=no                                     ## void or no"
 echo "allow_separate_rules=                               ## void or no"
 echo "config_shield_port=22                               ## void or ports"
 echo "config_shield_maxtries=10                           ## void or no"
@@ -1208,7 +1208,7 @@ else $command_ip -4 route ; fi
 echo
 echo "$title_md [ info ] ### [ Network Listen ] [ Listen ipv4 ] ###"
 if [ "$command_ss" == "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
-else $command_ss -l4 | $command_sed 's/   / /g' ; fi
+else $command_ss -l -4 | grep -F :*  ; fi
 echo
 echo "$title_md [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
@@ -1250,7 +1250,7 @@ else $command_ip -6 route ; fi
 echo
 echo "$title_md [ info ] ### [ Network Listen ] [ Listen ipv6 ] ###"
 if [ "$command_ss" == "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
-else $command_ss -l6 | $command_sed 's/   / /g' ; fi
+else $command_ss -l -6 | grep -F :*  ; fi
 echo
 echo "$title_md [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
@@ -5589,9 +5589,9 @@ if   [ "$first_option" == "sockets" ]; then
 echo "$title_md [ $first_option ] [ Show sockets with ss ] "
 if [ "$command_ss" == "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
 echo "$title_md [ info ] [ The ipv6 sockets ]"
-$command_ss -a6 | $command_sed 's/   / /g'
+$command_ss -l -6 | grep -F *: ;
 echo "$title_md [ info ] [ The ipv4 sockets ]"
-$command_ss -a4 | $command_sed 's/   / /g'
+$command_ss -l -4 | grep -F *: ;
 exit; fi
 ####
 ####
