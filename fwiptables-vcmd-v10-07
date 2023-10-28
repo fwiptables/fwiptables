@@ -9698,7 +9698,7 @@ fi
 ####  
 ####
 if [ -f "$directory_config/$second_option" ]; then $cmd_binary reset &> /dev/null ;
-echo "$text_md [ _ok_ ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
+echo "$title_md [ _ok_ ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit ; else $nada ; fi
 ####
 ####
