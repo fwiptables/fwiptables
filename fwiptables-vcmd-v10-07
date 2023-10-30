@@ -1206,9 +1206,9 @@ echo "$title_md [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -4 route ; fi
 echo
-echo "$title_md [ info ] ### [ Network Listen ] [ Listen ipv4 ] ###"
+echo "$title_md [ info ] ### [ Network Listen ] ###"
 if [ "$command_ss" == "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
-else $command_ss -l -4 | grep -F :*  ; fi
+else $command_ss -l  | grep "\:\*" ; fi
 echo
 echo "$title_md [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
@@ -1247,9 +1247,9 @@ echo "$title_md [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -6 route ; fi
 echo
-echo "$title_md [ info ] ### [ Network Listen ] [ Listen ipv6 ] ###"
+echo "$title_md [ info ] ### [ Network Listen ] ###"
 if [ "$command_ss" == "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
-else $command_ss -l -6 | grep -F :*  ; fi
+else $command_ss -l  | grep "\:\*" ; fi
 echo
 echo "$title_md [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
@@ -5586,10 +5586,8 @@ exit; fi
 if   [ "$first_option" == "sockets" ]; then 
 echo "$title_md [ $first_option ] [ Show sockets with ss ] "
 if [ "$command_ss" == "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
-echo "$title_md [ info ] [ The ipv6 listen sockets ]"
-$command_ss -l -6 | grep -F :* ;
-echo "$title_md [ info ] [ The ipv4 listen sockets ]"
-$command_ss -l -4 | grep -F :* ;
+echo "$title_md [ info ] [ The listen sockets ]"
+$command_ss -l  | grep "\:\*"  ;
 exit; fi
 ####
 ####
