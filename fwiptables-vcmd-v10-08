@@ -104,8 +104,18 @@ cmd_version="cmd-10-08"  ;
 cmd_name="fwiptables, FireWall With iptables" ;
 cmd_description="fwiptables, One Mini Script in one-file" ;
 cmd_license="GPL v2, License General Public version 2" ;
-cmd_homepage_sourceforge="https://sourceforge.net/projects/f-iptables/" ;
-cmd_homepage_github="https://github.com/fwiptables/fwiptables" ;
+####
+#### web homepage oficial
+####
+web_homepage_sourceforge="https://sourceforge.net/projects/f-iptables/" ;
+web_homepage_github="https://github.com/fwiptables/fwiptables" ;
+web_hompage_devuan="https://git.devuan.org/fwiptables/fwiptables" ;
+####
+#### web homepage download
+####
+web_download_sourceforge="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
+web_download_github="https://github.com/fwiptables/fwiptables/releases" ;
+web_download_devuan="https://git.devuan.org/fwiptables/fwiptables/releases" ;
 ####
 ####
 #### :rutina-final-name:
@@ -5053,11 +5063,14 @@ echo "$title_md [ $first_option ] [ $cmd_binary download ] [ download md ] "
 echo
 echo "$title_md the last version from fwiptables. Firewall With iptables"
 echo
-echo "$title_md [ Link ] Download web link from sourceforge.com: "
-echo "    https://sourceforge.net/projects/f-iptables/files/latest/download"
+echo "$title_md [ Link ] [ Download web link from sourceforge.com ] "
+echo "$web_download_sourceforge"
 echo
-echo "$title_md [ Link ] Download web link from github.com: "
-echo "    https://github.com/fwiptables/fwiptables/releases"
+echo "$title_md [ Link ] [ Download web link from github.com ] "
+echo "$web_download_github"
+echo 
+echo "$title_md [ Link ] [ Download web link from git.devuan.org ] "
+echo "$web_download_devuan"
 echo 
 exit; fi
 ####
