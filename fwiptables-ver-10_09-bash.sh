@@ -3470,7 +3470,7 @@ echo "$text_md preferences-regen . recover the initials preferences for fwiptabl
 echo "$text_md list-options . list options "
 echo "$text_md clasic-options . list options "
 echo "$text_md info-options . list details for the options"
-echo "$text_md info . details from one first option"
+echo "$text_md info . details from one first option from one pattern"
 echo "$text_md filelog . show the result for the commands save with -l|-log"
 echo "$text_md autolog . list the commands launched"
 echo "$text_md ip4 . show details from connection ipv4"
@@ -5304,7 +5304,7 @@ exit; fi
 ####
 if   [ "$first_option" == "info" ]; then 
 echo "$title_md [ $first_option ]  [ info $second_option ]"
-echo "$title_md Launch:  $cmd_file [optional-output] info first_option "
+echo "$title_md Launch:  $cmd_file [optional-output] info pattern-to-search"
 $cmd_binary info-options | grep -i "$second_option"
 exit; fi
 ####
