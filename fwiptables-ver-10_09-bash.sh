@@ -3451,7 +3451,6 @@ echo "$text_md server-sql . launch a one firewall basic server"
 echo "$text_md server-asterisk . launch a one firewall basic server"
 echo "$text_md server-domain . launch a one firewall basic server"
 echo "$text_md server-squid . launch a one firewall basic server"
-echo "$text_md "
 exit; fi
 ####
 ####
@@ -5306,7 +5305,7 @@ exit; fi
 if   [ "$first_option" == "info" ]; then 
 echo "$title_md [ $first_option ]  [ info $second_option ]"
 echo "$title_md Launch:  $cmd_file [optional-output] info first_option "
-$cmd_binary info-options | grep "$second_option ."
+$cmd_binary info-options | grep -i "$second_option"
 exit; fi
 ####
 ####
