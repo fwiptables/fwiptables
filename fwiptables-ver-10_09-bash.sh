@@ -3166,7 +3166,7 @@ echo "$title_md      [ options-easy ]                                           
 echo "$text_md preferences-read preferences-modify preferences-regen preferences-example            "
 echo "$text_md list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6         "
 echo "$text_md ip4 ip6 speed-glx sockets nodes geoip webcert date free ver version notes            "
-echo "$text_md radio compile ip-forward depends license code examples commands variables            "
+echo "$text_md radio compile ip-forward depends info code info examples commands variables          "
 echo "$text_md intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot             "
 echo "$title_md                  ||| Example: fwiptables-cmd -gui-zenity ls4             |||  "
 echo "$title_md                  ||| Launch : Or with source-bash Or with compiled-obash |||  "
@@ -3211,8 +3211,8 @@ echo "$text_md        options-easy |  preferences-read preferences-modify prefer
 echo "$text_md                        ip-forward speed-ip4 speed-ip6 speed-glx code radio"
 echo "$text_md                        list-options clasic-options info-options filelog autolog ip4 ip6 "
 echo "$text_md                        sockets nodes geoip date free ver version notes depends commands "
-echo "$text_md                        variables examples intro webcert clean-tmp radio compile download"
-echo "$text_md                        license install uninstall pc-halt pc-shutdown pc-reboot          "
+echo "$text_md                        variables examples intro webcert clean-tmp radio info download   "
+echo "$text_md                        compile license install uninstall pc-halt pc-shutdown pc-reboot  "
 echo "$title_md                            ||| Example: fwiptables-cmd -gui-zenity ls4             ||| "
 echo "$title_md                            ||| Launch : Or with source-bash Or with compiled-obash ||| "
 exit ; fi
@@ -3474,6 +3474,7 @@ echo "$text_md preferences-regen . recover the initials preferences for fwiptabl
 echo "$text_md list-options . list options "
 echo "$text_md clasic-options . list options "
 echo "$text_md info-options . list details for the options"
+echo "$text_md info . details from one first option"
 echo "$text_md filelog . show the result for the commands save with -l|-log"
 echo "$text_md autolog . list the commands launched"
 echo "$text_md ip4 . show details from connection ipv4"
@@ -5300,6 +5301,19 @@ exit; fi
 ####
 ####
 #### :rutina-final-radio:
+##########    english: -info --info -i: info of first option            ##########
+##########    spanish: -info --info -i: info of primera opcion          ##########
+#### :rutina-inicial-info:
+####
+####
+if   [ "$first_option" == "info" ]; then 
+echo "$title_md [ $first_option ]  [ info-first $second_option ]"
+echo "$title_md [ Launch: ]  $cmd_file info first_option"
+$cmd_binary info-options | grep "$second_option ."
+exit; fi
+####
+####
+#### :rutina-final-info:
 ##########    english: speed-glx: show frammes por seconds with mesa graphicall            ##########
 ##########    spanish: speed-glx: muestra los fotogramas por segundo con graphicos mesa    ##########
 #### :rutina-inicial-speed-glx:
