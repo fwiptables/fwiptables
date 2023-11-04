@@ -4999,6 +4999,7 @@ echo "$title_md fwiptables uninstall.                                           
 echo "$text_md"
 echo "$text_md  Uninstall fwiptables. TYPE:   ./fwiptables-$cmd_version uninstall   " 
 echo "$text_md"
+$cmd_binary compile
 $cmd_binary options
 exit; fi
 ####
@@ -5236,12 +5237,16 @@ exit; fi
 ####
 if   [ "$first_option" == "compile" ]; then 
 echo "$title_md [ $first_option ] [ howto compile bash script ] "
-echo "$text_md Three steps to compile fwiptables script with obash."
-echo "$text_md necesary:  fwiptables in source script bash."
+echo "$text_md The script bash run with ./fwiptables-cmd it works, but if you desire ..."
 echo "$text_md"
+echo "$text_md Three steps to compile fwiptables script, it is possible with obash."
+echo "$text_md necesary:  fwiptables in source script bash."
 echo "$text_md first:     download obash from internet."
 echo "$text_md second:    compile obash command with make."
-echo "$text_md third:     example:# obash -c -o ./destination-file.bin /usr/bin/fwiptables-cmd"
+echo "$text_md third:     launch:# obash -c -o ./destination-file.bin fwiptables-ver-num.sh"
+echo
+echo "$text_md Actually file type is:"
+file -L $cmd_binary
 exit; fi
 ####
 ####
