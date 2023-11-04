@@ -3157,14 +3157,13 @@ echo "$text_md game-widelands games-udp games-shooter game-wesnoth game-minetest
 echo "$text_md lan-tor lan-vpn server-ssh server-irc server-samba server-vnc server-webserver       "
 echo "$text_md server-print server-lamp server-news server-ftp server-mail server-teamspeak         "
 echo "$text_md server-mumble server-sql server-asterisk server-domain server-squid                  "
-echo "$title_md  [ options-easy ]                                                               "
+echo "$title_md  [ options-easy ]                                                              "
 echo "$text_md preferences-read preferences-modify preferences-regen preferences-example            "
 echo "$text_md list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6         "
 echo "$text_md ip4 ip6 speed-glx sockets nodes geoip webcert date free ver version notes            "
 echo "$text_md radio compile ip-forward depends info code info examples commands variables          "
 echo "$text_md intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot             "
-echo "$title_md            ||| Example   info: fwiptables-cmd -gui-zenity info ls4        |||       "
-echo "$title_md            ||| Launched likes: Or with source-bash Or with compiled-obash |||       "
+echo "$title_md            ||| Example   info: fwiptables-cmd -gui-zenity info ls4  |||        "
 
 exit ; fi
 ####
@@ -3208,8 +3207,7 @@ echo "$text_md                        list-options clasic-options info-options f
 echo "$text_md                        sockets nodes geoip date free ver version notes depends commands "
 echo "$text_md                        variables examples intro webcert clean-tmp radio info download   "
 echo "$text_md                        compile license install uninstall pc-halt pc-shutdown pc-reboot  "
-echo "$title_md                       ||| Example   info: fwiptables-cmd -gui-zenity info ls4        ||| "
-echo "$title_md                       ||| Launched likes: Or with source-bash Or with compiled-obash ||| "
+echo "$title_md                       ||| Example   info: fwiptables-cmd -gui-zenity info ls4  ||| "
 exit ; fi
 ####
 ####
