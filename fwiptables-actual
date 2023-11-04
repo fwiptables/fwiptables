@@ -100,12 +100,22 @@ fi
 cmd_binary="$0" ;
 cmd_file="$(basename $0)" ;
 cmd_config="fwiptables-cmd" ;
-cmd_version="cmd-10-08"  ;
+cmd_version="cmd-10-09"  ;
 cmd_name="fwiptables, FireWall With iptables" ;
 cmd_description="fwiptables, One Mini Script in one-file" ;
 cmd_license="GPL v2, License General Public version 2" ;
-cmd_homepage_sourceforge="https://sourceforge.net/projects/f-iptables/" ;
-cmd_homepage_github="https://github.com/fwiptables/fwiptables" ;
+####
+#### web homepage oficial
+####
+web_homepage_sourceforge="https://sourceforge.net/projects/f-iptables/" ;
+web_homepage_github="https://github.com/fwiptables/fwiptables" ;
+web_hompage_devuan="https://git.devuan.org/fwiptables/fwiptables" ;
+####
+#### web homepage download
+####
+web_download_sourceforge="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
+web_download_github="https://github.com/fwiptables/fwiptables/releases" ;
+web_download_devuan="https://git.devuan.org/fwiptables/fwiptables/releases" ;
 ####
 ####
 #### :rutina-final-name:
@@ -3156,8 +3166,8 @@ echo "$title_md      [ options-easy ]                                           
 echo "$text_md preferences-read preferences-modify preferences-regen preferences-example            "
 echo "$text_md list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6         "
 echo "$text_md ip4 ip6 speed-glx sockets nodes geoip webcert date free ver version notes            "
-echo "$text_md radio ip-forward depends license code examples commands variables intro               "
-echo "$text_md clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot                   "
+echo "$text_md radio compile ip-forward depends license code examples commands variables            "
+echo "$text_md intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot             "
 echo "$title_md                  ||| Example: fwiptables-cmd -gui-zenity ls4             |||  "
 echo "$title_md                  ||| Launch : Or with source-bash Or with compiled-obash |||  "
 
@@ -3200,11 +3210,11 @@ echo "$text_md                        server-asterisk server-domain server-squid
 echo "$text_md        options-easy |  preferences-read preferences-modify preferences-regen preferences-example"
 echo "$text_md                        ip-forward speed-ip4 speed-ip6 speed-glx code radio"
 echo "$text_md                        list-options clasic-options info-options filelog autolog ip4 ip6 "
-echo "$text_md                        sockets nodes geoip date free ver version notes depends"
-echo "$text_md                        commands variables examples intro webcert clean-tmp radio download"
-echo "$text_md                        license install uninstall pc-halt pc-shutdown pc-reboot           "
-echo "$title_md                            ||| Example: fwiptables-cmd -gui-zenity ls4             |||  "
-echo "$title_md                            ||| Launch : Or with source-bash Or with compiled-obash |||  "
+echo "$text_md                        sockets nodes geoip date free ver version notes depends commands "
+echo "$text_md                        variables examples intro webcert clean-tmp radio compile download"
+echo "$text_md                        license install uninstall pc-halt pc-shutdown pc-reboot          "
+echo "$title_md                            ||| Example: fwiptables-cmd -gui-zenity ls4             ||| "
+echo "$title_md                            ||| Launch : Or with source-bash Or with compiled-obash ||| "
 exit ; fi
 ####
 ####
@@ -3481,6 +3491,7 @@ echo "$text_md ver. show version"
 echo "$text_md version . show version and several details"
 echo "$text_md notes . several notes for internet"
 echo "$text_md radio . listen radio from internet"
+echo "$text_md compile . show howto comopile bash script"
 echo "$text_md ip-forward . list or active or desactive forward variables"
 echo "$text_md depends . principal dependences"
 echo "$text_md license . license"
@@ -4957,7 +4968,6 @@ exit; fi
 ####
 ####
 if  [ "$first_option" == "intro" ]; then 
-echo "$title_md [ $first_option ] [ $cmd_binary $cmd_version intro ] [ intro md ] "
 echo "$text_md"
 echo "$title_md fwiptables. Firewall With iptables.    "
 echo "$text_md"
@@ -4989,6 +4999,7 @@ echo "$title_md fwiptables uninstall.                                           
 echo "$text_md"
 echo "$text_md  Uninstall fwiptables. TYPE:   ./fwiptables-$cmd_version uninstall   " 
 echo "$text_md"
+$cmd_binary compile
 $cmd_binary options
 exit; fi
 ####
@@ -5054,11 +5065,14 @@ echo "$title_md [ $first_option ] [ $cmd_binary download ] [ download md ] "
 echo
 echo "$title_md the last version from fwiptables. Firewall With iptables"
 echo
-echo "$title_md [ Link ] Download web link from sourceforge.com: "
-echo "    https://sourceforge.net/projects/f-iptables/files/latest/download"
+echo "$title_md [ Link ] [ Download web link from sourceforge.com ] "
+echo "$web_download_sourceforge"
 echo
-echo "$title_md [ Link ] Download web link from github.com: "
-echo "    https://github.com/fwiptables/fwiptables/releases"
+echo "$title_md [ Link ] [ Download web link from github.com ] "
+echo "$web_download_github"
+echo 
+echo "$title_md [ Link ] [ Download web link from git.devuan.org ] "
+echo "$web_download_devuan"
 echo 
 exit; fi
 ####
@@ -5216,6 +5230,27 @@ exit; fi
 ####
 ####
 #### :rutina-final-pc-shutdown:
+##########    english: compile: compile with obash      ##########
+##########    spanish: compile: compila with obash      ##########
+#### :rutina-inicial-compile:
+####
+####
+if   [ "$first_option" == "compile" ]; then 
+echo "$title_md [ $first_option ] [ howto compile bash script ] "
+echo "$text_md The script bash run with ./fwiptables-cmd it works, but if you desire ..."
+echo "$text_md"
+echo "$text_md Three steps to compile fwiptables script, it is possible with obash."
+echo "$text_md necesary:  fwiptables in source script bash."
+echo "$text_md first:     download obash from internet."
+echo "$text_md second:    compile obash command with make."
+echo "$text_md third:     launch:# obash -c -o ./destination-file.bin fwiptables-ver-num.sh"
+echo
+echo "$text_md Actually file type is:"
+file -L $cmd_binary
+exit; fi
+####
+####
+#### :rutina-final-compile:
 ##########    english: radio: url from one radio mp3      ##########
 ##########    spanish: radio: url de una radio en mp3     ##########
 #### :rutina-inicial-radio:
