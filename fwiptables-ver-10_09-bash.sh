@@ -879,9 +879,6 @@ if [ "$first_option" == "server-email" ] ; then first_option="server-mail" ; fi
 case "$first_option" in
 "wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|"nueva-mini-config"|"nueva-completa-config")
 $cmd_binary regen-config ;; esac
-case "$second_option" in
-"wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|"nueva-mini-config"|"nueva-completa-config")
-$cmd_binary regen-config ;; esac
 ####
 ####
 #### :rutina-final-alias-simple:
@@ -1133,7 +1130,6 @@ echo "$title_md [ info ] [ Show file $default_preferences to read variables ]"
 cat $default_preferences
 ####
 ####
-
 exit; fi
 ####
 ####
@@ -1150,7 +1146,6 @@ echo "$title_md [ _ok_ ] [ $cmd_binary deleted old configs ]"
 file $cmd_binary
 #### cat $cmd_binary | $command_grep fwiptables-file-default | $command_grep -iv cmd_binary &> $default_preferences 
 $cmd_binary preferences-example &> $default_preferences
-
 echo "$title_md [ _ok_ ] [ Regenerated: $cmd_binary values for default in ]"
 echo "$title_md [ _ok_ ] [ Regenerated: $default_preferences ]"
 exit; fi
