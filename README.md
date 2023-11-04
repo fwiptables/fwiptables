@@ -1,4 +1,3 @@
-###  [ intro ] [ /usr/bin/fwiptables-cmd cmd-10-08 intro ] [ intro md ] 
   
 ###  fwiptables. Firewall With iptables.    
   
