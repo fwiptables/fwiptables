@@ -1160,7 +1160,7 @@ exit; fi
 if [ "$first_option" == "preferences-example" ] ; then
 echo
 echo "$title_md default option"
-echo "option_default_security=gui-shell-yad               ## when there is not one first_option"
+echo "option_default_security=options               ## when there is not one first_option"
 echo
 echo "$title_md default firewall"
 echo "allow_use_legacy=                                   ## void or no"
