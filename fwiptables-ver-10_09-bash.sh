@@ -5814,15 +5814,13 @@ else rm "$directory_config/$archivo" ;
 $favorite_graphicall_dialog  --info $graphic_window_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
-####
-#### 
 #### 
 "modify-config")
 if [ -f "$directory_config/$third_option" ] ; then $nada
 else $favorite_graphicall_dialog  --forms $graphic_window_dimension --text="file not found: $third_option" ; exit ; fi 
 cp "$directory_config/$third_option" "$directory_temporal/$cmd_config-$third_option"
 $favorite_graphicall_dialog  --text-info $graphic_window_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
---editable --title="MODIFY CONFIG" 1> "$directory_config/$third_option"
+--editable --title="MODIFY CONFIG $third_option" 1> "$directory_config/$third_option"
 if [ -s "$directory_config/$third_option" ]; then $nada ; 
 $favorite_graphicall_dialog  --forms $graphic_window_dimension --text="OK. file: $third_option"
 else cp "$directory_temporal/$cmd_binary-$third_option" "$directory_config/$third_option"
@@ -5834,7 +5832,7 @@ $favorite_graphicall_dialog --forms $graphic_window_dimension --text="Canceled. 
 archivo="default"
 cp "$default_preferences" "$default_preferences.old"
 $favorite_graphicall_dialog  --text-info $graphic_window_dimension --filename="$default_preferences.old" \
---editable --title="MODIFY CONFIG" 1> "$default_preferences"
+--editable --title="MODIFY PREFERENCES" 1> "$default_preferences"
 if [ ! -s "$default_preferences" ]; then cp "$default_preferences.old" "$default_preferences" ;
 $favorite_graphicall_dialog  --info $graphic_window_dimension --text "OK. $archivo canceled"; fi
 ;;
@@ -5997,6 +5995,10 @@ $cmd_binary -gui-zenity show-config $unarchivo
 ;;
 wizard-full*) $cmd_binary -gui-zenity wizard-full ;;
 wizard-mini*) $cmd_binary -gui-zniety wizard-mini ;;
+preferences-modify*) 
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+$cmd_binary -gui-zenity preferences-modify 
+;;
 ####
 ####
 #### english: all other otpions    ####
@@ -6124,10 +6126,14 @@ $cmd_binary -gui-yad modify-config $unarchivo
 ;;
 show-config*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
-$cmd_binary -gui-yad show-config $unarchivo
+$cmd_binary -gui-yad show-config $unarchivo 
 ;;
 wizard-full*) $cmd_binary -gui-yad wizard-full ;;
 wizard-mini*) $cmd_binary -gui-yad wizard-mini ;;
+preferences-modify*)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+$cmd_binary -gui-yad preferences-modify 
+;;
 ####
 ####
 #### english: all other otpions    ####
