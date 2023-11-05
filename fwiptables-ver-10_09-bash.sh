@@ -64,16 +64,6 @@ exit ; fi
 ####
 ####
 #### :rutina-final-admin:
-##########    english: default root home                ##########
-##########    spanish: ruta del directorio de root casa ##########
-#### :rutina-inicial-default-root-home:
-####
-####
-PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
-if [ "$HOME" == "$NULL" ] ; then default_root_home="/root"; else default_root_home="$HOME"; fi
-####
-####
-#### :rutina-final-default-root-home:
 ##########    english: iptables support         ##########
 ##########    spanish: iptables soporte         ##########
 #### :rutina-inicial-support-iptables:
@@ -94,7 +84,7 @@ fi
 #### :rutina-final-support-iptables:
 ##########     english name, description and version    ##########
 ##########     spanish: nombre, descripcion y version   ##########
-#### :rutina-inicial-name:
+#### :rutina-inicial-enviroment:
 ####
 ####
 cmd_binary="$0" ;
@@ -104,6 +94,19 @@ cmd_version="cmd-10-09"  ;
 cmd_name="fwiptables, FireWall With iptables" ;
 cmd_description="fwiptables, One Mini Script in one-file" ;
 cmd_license="GPL v2, License General Public version 2" ;
+####
+#### set directory installed
+####
+directory_installed="/usr/bin"
+####
+#### prepare directory data
+####
+PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
+if [ "$HOME" == "$NULL" ] ; then default_root_home="/root"; else default_root_home="$HOME"; fi
+####
+#### set directory data
+####
+directory_data="$default_root_home/.config/$cmd_config"
 ####
 #### web homepage oficial
 ####
@@ -118,7 +121,7 @@ web_download_github="https://github.com/fwiptables/fwiptables/releases" ;
 web_download_devuan="https://git.devuan.org/fwiptables/fwiptables/releases" ;
 ####
 ####
-#### :rutina-final-name:
+#### :rutina-final-enviroment:
 ##########    english: options priority        ##########
 ##########    spanish: prioridad de opciones   ##########
 #### :rutina-inicial-order-options:
@@ -334,9 +337,6 @@ command_lshw="$(command -v lshw)"   #list-commands ;
 #### spanish: directorio permanente: directorios permanentes y ruta de directorios de los archivos de configuracion
 ####
 ####
-directory_data="$default_root_home/.config/$cmd_config"
-####
-####
 #### english: directory tree 
 #### spanish: arbol de directorio
 ####
@@ -427,7 +427,7 @@ if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /de
 #### spanish: cuando no hay first_option #### choose "list_options" or "clasic_options"         
 ####
 ####
-option_default_security="list-options"    ## fwiptables-file-default ## when there is not one first_option
+option_default_security="gui-shell-yad"    ## fwiptables-file-default ## when there is not one first_option
 ####
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
@@ -1160,7 +1160,7 @@ exit; fi
 if [ "$first_option" == "preferences-example" ] ; then
 echo
 echo "$title_md default option"
-echo "option_default_security=list-options                ## when there is not one first_option"
+echo "option_default_security=gui-shell-yad               ## when there is not one first_option"
 echo
 echo "$title_md default firewall"
 echo "allow_use_legacy=                                   ## void or no"
@@ -4984,17 +4984,17 @@ echo "$text_md and other more capacities of firewall.                           
 echo "$text_md"
 echo "$title_md  fwiptables location.                                               "
 echo "$text_md"
-echo "$text_md  File location   :   /usr/bin/fwiptables-cmd                         "
-echo "$text_md  Config directory:   /root/.config/fwiptables-cmd                    "
+echo "$text_md  File location   :   $directory_installed/$cmd_config "
+echo "$text_md  Config directory:   $directory_data      "
 echo "$text_md"
 echo "$title_md fwiptables install.                                                 "
 echo "$text_md"
-echo "$text_md  Put bit of execution. TYPE:   chmod u+x ./fwiptables-$cmd_version   "
-echo "$text_md  Install this version. TYPE:   ./fwiptables-$cmd_version install     " 
+echo "$text_md  Put bit of execution. TYPE:   chmod u+x $cmd_binary   "
+echo "$text_md  Install this version. TYPE:   $cmd_binary install     " 
 echo "$text_md"
-echo "$title_md fwiptables uninstall.                                               "
+echo "$title_md fwiptables uninstall.                                 "
 echo "$text_md"
-echo "$text_md  Uninstall fwiptables. TYPE:   ./fwiptables-$cmd_version uninstall   " 
+echo "$text_md  Uninstall fwiptables. TYPE:   $cmd_config uninstall   "
 echo "$text_md"
 $cmd_binary compile
 $cmd_binary options
@@ -5186,10 +5186,12 @@ exit;  fi
 ####
 if   [ "$first_option" == "pc-halt" ]; then 
 echo "$title_md [ $first_option ] [ power off computer ] "
-demora="15"
-echo "$head_waiting_txt"
-echo "Halt to power off computer ... in $demora seconds"
-$command_sleep $demora
+echo "Halt to power off computer ... in 15 seconds"
+$command_sleep 5
+echo "Halt to power off computer ... in 10 seconds"
+$command_sleep 5
+echo "Halt to power off computer ... in 05 seconds"
+$command_sleep 5
 $command_halt
 exit; fi
 ####
@@ -5202,10 +5204,12 @@ exit; fi
 ####
 if   [ "$first_option" == "pc-shutdown" ]; then 
 echo "$title_md [ $first_option ] [ power off computer ] "
-demora="15"
-echo "Halt to power off computer ... in $demora seconds"
-echo "$head_waiting_txt"
-$command_sleep $demora
+echo "Halt to shutdown computer ... in 15 seconds"
+$command_sleep 5
+echo "Halt to shutdown computer ... in 10 seconds"
+$command_sleep 5
+echo "Halt to shutodwn computer ... in 05 seconds"
+$command_sleep 5
 $command_shutdown -h now
 exit; fi
 ####
@@ -5218,10 +5222,12 @@ exit; fi
 ####
 if   [ "$first_option" == "pc-reboot" ]; then 
 echo "$title_md [ $first_option ] [ reboot computer ] "
-demora="15"
-echo "$head_waiting_txt"
-echo "Reboot to power reboot ... in $demora seconds"
-$command_sleep $demora
+echo "Halt to reboot computer ... in 15 seconds"
+$command_sleep 5
+echo "Halt to reboot computer ... in 10 seconds"
+$command_sleep 5
+echo "Halt to reboot computer ... in 05 seconds"
+$command_sleep 5
 $command_reboot
 exit; fi
 ####
