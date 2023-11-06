@@ -4984,10 +4984,10 @@ echo "$text_md and other more capacities of firewall.                           
 echo "$text_md"
 echo "$title_md  fwiptables location.                                               "
 echo "$text_md"
-echo "$text_md  File location   :   $directory_installed/$cmd_config "
-echo "$text_md  Config directory:   $directory_data      "
+echo "$text_md  File location   :   $directory_installed/$cmd_config  "
+echo "$text_md  Config directory:   $directory_data                   "
 echo "$text_md"
-echo "$title_md fwiptables install.                                                 "
+echo "$title_md fwiptables install.                                   "
 echo "$text_md"
 echo "$text_md  Put bit of execution. TYPE:   chmod u+x $cmd_binary   "
 echo "$text_md  Install this version. TYPE:   $cmd_binary install     " 
@@ -5239,16 +5239,17 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "compile" ]; then 
-echo "$title_md [ $first_option ] [ howto compile bash script ] "
-echo "$text_md The script bash run with ./fwiptables-cmd it works, but if you desire ..."
+echo "$title_md [ $first_option ] [ howto compile bash script with obash ] "
+echo "$text_md This script bash run with ./fwiptables-cmd it works, but if you desire compile..."
 echo "$text_md"
 echo "$text_md Three steps to compile fwiptables script, it is possible with obash."
-echo "$text_md necesary:  fwiptables in source script bash."
-echo "$text_md first:     download obash from internet."
-echo "$text_md second:    compile obash command with make."
-echo "$text_md third:     launch:# obash -c -o ./destination-file.bin fwiptables-ver-num.sh"
-echo
-echo "$text_md Actually file type is:"
+echo "$text_md"
+echo "$text_md necesary:     fwiptables in source script bash."
+echo "$text_md 1. first:     download obash from internet."
+echo "$text_md 2.second:     compile obash command with make."
+echo "$text_md 3. third:     launch:# obash -c -o ./destination-file.bin fwiptables-ver-num.sh"
+echo "$text_md"
+echo "$text_md Actually, the file type is:"
 file -L $cmd_binary
 exit; fi
 ####
