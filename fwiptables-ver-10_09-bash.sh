@@ -5310,7 +5310,7 @@ exit; fi
 ####
 if   [ "$first_option" == "info" ]; then 
 echo "$title_md [ $first_option ]  [ info $second_option ]"
-echo "$title_md Launch:  $cmd_file [optional-output] info pattern-to-search"
+echo "$title_md Launch:  $cmd_file [optional-output] info [pattern-to-search]"
 $cmd_binary info-options | grep -i "$second_option"
 exit; fi
 ####
