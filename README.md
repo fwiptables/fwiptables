@@ -30,10 +30,11 @@
     Uninstall fwiptables. TYPE:   fwiptables-cmd uninstall   
   
 ###  [ compile ] [  optionally ] [ howto compile bash script with obash ] 
-###  [This script in bash works] [but if you desire is compiling... follow that steps]
 ### 
-###  [Three steps to compile fwiptables script] [it is possible with obash.]
-  
+   This script in bash works. But if you desire is compiling... follow that steps,
+   there are three steps to compile fwiptables script, it is possible with obash.
+   when you has compiled, it does works only with your system hardware architecture.
+### 
    . 0 . necesary:     fwiptables in source script bash.
    . 1 .    first:     download obash from internet.
    . 2 .   second:     compile obash command with make.
