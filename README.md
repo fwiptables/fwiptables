@@ -22,26 +22,28 @@
   
 ###  fwiptables install.                                   
   
-    Put bit of execution. TYPE:   chmod u+x ./fwiptables-ver-10_09-bash.sh   
-    Install this version. TYPE:   ./fwiptables-ver-10_09-bash.sh install     
+    Put bit of execution. TYPE:   chmod u+x /usr/bin/fwiptables-cmd   
+    Install this version. TYPE:   /usr/bin/fwiptables-cmd install     
   
 ###  fwiptables uninstall.                                 
   
     Uninstall fwiptables. TYPE:   fwiptables-cmd uninstall   
   
-###  [ compile ] [ howto compile bash script with obash ] 
-   This script bash run with ./fwiptables-cmd it works, but if you desire compile...
+###  [ compile ] [  optionally ] [ howto compile bash script with obash ] 
+###  [This script in bash works] [but if you desire is compiling... follow that steps]
+### 
+###  [Three steps to compile fwiptables script] [it is possible with obash.]
   
-   Three steps to compile fwiptables script, it is possible with obash.
+   . 0 . necesary:     fwiptables in source script bash.
+   . 1 .    first:     download obash from internet.
+   . 2 .   second:     compile obash command with make.
+   . 3 .    third:     launch:# obash -c -o ./destination-obash.bin source-bash.sh
   
-   necesary:     fwiptables in source script bash.
-   1. first:     download obash from internet.
-   2.second:     compile obash command with make.
-   3. third:     launch:# obash -c -o ./destination-file.bin fwiptables-ver-num.sh
-  
-   Actually, the file type is:
-./fwiptables-ver-10_09-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
-###  fwiptables-ver-10_09-bash.sh [ optional-output ] first_option [ second_option ]                  
+###  Actually, the file type is:
+/usr/bin/fwiptables-cmd: Bourne-Again shell script, Unicode text, UTF-8 text executable
+### 
+### 
+###  fwiptables-cmd [optional-output] first_option [second_option]                  
 ### 
 ###   [ optional-output ]                                                            
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       
