@@ -3128,7 +3128,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-options" ] ; then 
-echo "$title_md $cmd_file [ optional-output ] first_option [ second_option ]                  "
+echo "$title_md $cmd_file [optional-output] first_option [second_option]                  "
 echo "$title_md"
 echo "$title_md  [ optional-output ]                                                            "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       "
@@ -3175,7 +3175,7 @@ exit ; fi
 ####
 ####
 if   [ "$first_option" == "clasic-options" ] ; then  
-echo "$title_md $cmd_file [ optional-output ] first_option [ second_option ] "
+echo "$title_md $cmd_file [optional-output] first_option [second_option] "
 echo "$title_md"
 echo "$text_md    optional-paramtter "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]"
