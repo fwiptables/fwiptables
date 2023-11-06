@@ -17,40 +17,52 @@
   
 ###   fwiptables location.                                               
   
-    File location   :   /usr/bin/fwiptables-cmd                         
-    Config directory:   /root/.config/fwiptables-cmd                    
+    File location   :   /usr/bin/fwiptables-cmd  
+    Config directory:   /root/.config/fwiptables-cmd                   
   
-###  fwiptables install.                                                 
+###  fwiptables install.                                   
   
-    Put bit of execution. TYPE:   chmod u+x ./fwiptables-cmd-10-08   
-    Install this version. TYPE:   ./fwiptables-cmd-10-08 install     
+    Put bit of execution. TYPE:   chmod u+x ./fwiptables-ver-10_09-bash.sh   
+    Install this version. TYPE:   ./fwiptables-ver-10_09-bash.sh install     
   
-###  fwiptables uninstall.                                               
+###  fwiptables uninstall.                                 
   
-    Uninstall fwiptables. TYPE:   ./fwiptables-cmd-10-08 uninstall   
+    Uninstall fwiptables. TYPE:   fwiptables-cmd uninstall   
   
-###  fwiptables-cmd [ optional-output ] first_option [ second_option ]                  
+###  [ compile ] [ howto compile bash script with obash ] 
+   This script bash run with ./fwiptables-cmd it works, but if you desire compile...
+  
+   Three steps to compile fwiptables script, it is possible with obash.
+  
+   necesary:     fwiptables in source script bash.
+   1. first:     download obash from internet.
+   2.second:     compile obash command with make.
+   3. third:     launch:# obash -c -o ./destination-file.bin fwiptables-ver-num.sh
+  
+   Actually, the file type is:
+./fwiptables-ver-10_09-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
+###  fwiptables-ver-10_09-bash.sh [ optional-output ] first_option [ second_option ]                  
 ### 
-###       [ optional-output ]                                                            
+###   [ optional-output ]                                                            
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       
    [ -cli-dialog -cli-whiptail ] [ -gui-zenity -gui-yad ]                               
    [ -cli-menu-dialog -cli-menu-whiptail ] [ -gui-roll-zenity ]                         
    [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                  
 ### 
-###       [ firewall-control ]                                                           
+###   [ firewall-control ]                                                           
    stop continue reset actual show save load names-control                              
-###       [ firewall-conceptual ]                                                        
+###   [ firewall-conceptual ]                                                        
    ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6                  
    list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6                    
    list-security4 list-security6 list-ebtables list-arptables                           
-###       [ firewall-numeral ]                                                           
+###   [ firewall-numeral ]                                                           
    lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6          
    listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6              
    listn-security4 listn-security6                                                      
-###       [ firewall-custom ]                                                           
+###   [ firewall-custom ]                                                           
    custom new-full-config nueva-completa-config new-mini-config nueva-mini-config       
    regen-config examples-config show-config modify-config del-config names-config       
-###       [ firewall-launch ]                                                           
+###   [ firewall-launch ]                                                           
    eraserules custom wizard-mini wizard-full off-line all-permisive client-basic        
    client-web client-git client-ipp client-irc client-vnc client-mail client-news       
    client-vpn client-torrent client-vpn client-ftp client-tor client-squid              
@@ -58,11 +70,10 @@
    lan-tor lan-vpn server-ssh server-irc server-samba server-vnc server-webserver       
    server-print server-lamp server-news server-ftp server-mail server-teamspeak         
    server-mumble server-sql server-asterisk server-domain server-squid                  
-###       [ options-easy ]                                                               
+###   [ options-easy ]                                                              
    preferences-read preferences-modify preferences-regen preferences-example            
    list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6         
    ip4 ip6 speed-glx sockets nodes geoip webcert date free ver version notes            
-   radio ip-forward depends license code examples commands variables intro               
-   clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot                   
-###                   ||| Example: fwiptables-cmd -gui-zenity ls4             |||  
-###                   ||| Launch : Or with source-bash Or with compiled-obash |||  
+   radio compile ip-forward depends info code info examples commands variables          
+   intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot             
+###             ||| Example info: fwiptables-cmd -gui-zenity info ls4  |||        
