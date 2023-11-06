@@ -5240,10 +5240,11 @@ exit; fi
 ####
 if   [ "$first_option" == "compile" ]; then 
 echo "$title_md [ $first_option ] [  optionally ] [ howto compile bash script with obash ] "
-echo "$title_md [This script in bash works] [but if you desire is compiling... follow that steps]"
 echo "$title_md"
-echo "$title_md [Three steps to compile fwiptables script] [it is possible with obash.]"
-echo "$text_md"
+echo "$text_md This script in bash works. But if you desire is compiling... follow that steps,"
+echo "$text_md there are three steps to compile fwiptables script, it is possible with obash."
+echo "$text_md when you has compiled, it does works only with your system hardware architecture."
+echo "$title_md"
 echo "$text_md . 0 . necesary:     fwiptables in source script bash."
 echo "$text_md . 1 .    first:     download obash from internet."
 echo "$text_md . 2 .   second:     compile obash command with make."
