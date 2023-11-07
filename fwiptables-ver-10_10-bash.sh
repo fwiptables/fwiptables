@@ -3163,8 +3163,8 @@ echo "$text_md list-options clasic-options info-options filelog autolog speed-ip
 echo "$text_md ip4 ip6 speed-glx sockets nodes geoip webcert date free ver version notes            "
 echo "$text_md radio compile ip-forward depends info code info examples commands variables          "
 echo "$text_md intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot             "
-echo "$title_md            ||| Example info: fwiptables-cmd -gui-zenity info ls4  |||        "
-
+echo "$title_md            ||| Example info: fwiptables-cmd -gui-shell-yad |||                "
+echo "$title_md            ||| Example info: fwiptables-cmd -gui-zenity info list |||         "
 exit ; fi
 ####
 ####
@@ -3207,7 +3207,8 @@ echo "$text_md                        list-options clasic-options info-options f
 echo "$text_md                        sockets nodes geoip date free ver version notes depends commands "
 echo "$text_md                        variables examples intro webcert clean-tmp radio info download   "
 echo "$text_md                        compile license install uninstall pc-halt pc-shutdown pc-reboot  "
-echo "$title_md                       ||| Example info: fwiptables-cmd -gui-zenity info ls4  ||| "
+echo "$title_md                       ||| Example info: fwiptables-cmd -gui-shell-yad ls4 |||     "
+echo "$title_md                       ||| Example info: fwiptables-cmd -gui-zenity info list |||  "
 exit ; fi
 ####
 ####
