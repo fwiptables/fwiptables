@@ -1158,7 +1158,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "preferences-example" ] ; then
-echo
+echo ""
 echo "$title_md default option"
 echo "without_first_option=options       ## when without one first_option, default: options"
 echo "                                   ## example1: clasic-options, Example2: gui-shell-yad"
@@ -1196,6 +1196,7 @@ echo
 echo "$title_md default dimesion graphicall"
 echo "graphic_window_dimension='--width=950 --height=650' ## default '--width=950 --height=650'"
 echo
+echo "$title_md file generated with preferences examples."
 exit; fi
 ####
 ####
