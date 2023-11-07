@@ -427,7 +427,7 @@ if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /de
 #### spanish: cuando no hay first_option #### choose "list_options" or "clasic_options"         
 ####
 ####
-option_default_security="gui-shell-yad"    ## fwiptables-file-default ## when there is not one first_option
+without_first_option="gui-shell-yad"    ## fwiptables-file-default ## when there is not one first_option
 ####
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
@@ -1160,9 +1160,9 @@ exit; fi
 if [ "$first_option" == "preferences-example" ] ; then
 echo
 echo "$title_md default option"
-echo "option_default_security=options    ## when without one first_option, default: options"
+echo "without_first_option=options       ## when without one first_option, default: options"
 echo "                                   ## example1: clasic-options, Example2: gui-shell-yad"
-echo
+echo ""
 echo "$title_md default firewall"
 echo "allow_use_legacy=                                   ## void or no"
 echo "allow_use_nft=no                                    ## void or no"
@@ -7066,7 +7066,7 @@ exit; fi
 ####
 if [ "$launch_rules_firewall" != "yes" ] ; then echo $give_cover
 echo "### #[ fail ] [ First Option: $first_option | Choose one valid first option ]" ;
-$cmd_binary $option_default_security ;
+$cmd_binary $without_first_option ;
 exit ; fi
 ####
 ####
