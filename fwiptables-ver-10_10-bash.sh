@@ -1160,8 +1160,10 @@ exit; fi
 if [ "$first_option" == "preferences-example" ] ; then
 echo ""
 echo "$title_md default option"
-echo "without_first_option=options       ## when without one first_option, default: options"
-echo "                                   ## example1: clasic-options, Example2: gui-shell-yad"
+echo "without_first_option=    " 
+echo "$title_md When fwiptables without its first_option: void or Validate field required to works"
+echo "$title_md Example1: list-options Example2: list4 example3: ip4 example4: speed-ip4"
+echo "$title_md Example5: sockets Example6: gui-menu-yad Example7: gui-shell-yad"
 echo ""
 echo "$title_md default firewall"
 echo "allow_use_legacy=                                   ## void or no"
@@ -7067,6 +7069,7 @@ exit; fi
 ####
 if [ "$launch_rules_firewall" != "yes" ] ; then echo $give_cover
 echo "### #[ fail ] [ First Option: $first_option | Choose one valid first option ]" ;
+if [ "$without_first_option" == "$NULL" ]; then without_first_option="options" ; fi 
 $cmd_binary $without_first_option ;
 exit ; fi
 ####
