@@ -147,14 +147,16 @@ quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;
 #### :rutina-inicial-x11-or-wayland:
 ####
 ####
+X11_OR_WAYLAND="$XDG_SESSION_TYPE"
+####
+####
 #### Support wayland to root
 #### english: add auth xhost for root for graphicall use 
 #### spanish: añade autorización xhost para root para uso grafico
 ####
-#### #### uncoment when are you ready:
 ####
-#### WAYLAND_DISPLAY=">0"
-#### XDG_RUNTIME_DIR="/root/run/0"
+#### WAYLAND_DISPLAY=":0"
+XDG_RUNTIME_DIR="/run/user/0"
 ####
 ####
 #### Support x11 to root
@@ -163,6 +165,7 @@ quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;
 ####
 ####
 command_xhost="$(command -v xhost)" ; 
+sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
 $command_xhost +SI:localuser:root &> /dev/null ;
 ####
 ####
@@ -507,7 +510,7 @@ head_waiting_info="$title_md [ info ] [ info: info in clear txt format ] [ press
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$title_md #[ $cmd_config $cmd_version ] [ Options: $cmd_file options ]"
+give_cover="$title_md #[ $cmd_config $cmd_version ] [ $X11_OR_WAYLAND ] [ Options: $cmd_file options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 #### give_fail="### #[ fail ] | First Option: $first_option | Choose one valid first option |"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -1433,6 +1436,18 @@ exit ; fi
 ####
 ####
 #### :rutina-final-ver:
+##########    english: expert: system script, the version option              ##########
+##########    spanish: expert: script de sistema, la opcion mostrar version   ##########
+#### :rutina-inicial-expert:
+####
+####
+if [ "$first_option" == "expert" ]; then 
+echo "$title_md [ $first_option ] [ Show expert options ] [ version.md] "
+echo "$tittle_md Still in development"
+exit ; fi
+####
+####
+#### :rutina-final-expert:
 ##########    english: notes: notes to configure iptables      ##########
 ##########    spanish: notes: notas para configurar iptables   ##########
 #### :rutina-inicial-notes:
@@ -3174,9 +3189,9 @@ echo "$text_md lan-tor lan-vpn server-ssh server-irc server-samba server-vnc ser
 echo "$text_md server-print server-lamp server-news server-ftp server-mail server-teamspeak         "
 echo "$text_md server-mumble server-sql server-asterisk server-domain server-squid                  "
 echo "$title_md  [ options-easy ]                                                              "
-echo "$text_md preferences-read preferences-modify preferences-regen preferences-example            "
+echo "$text_md preferences-read preferences-modify preferences-regen preferences-example ver        "
 echo "$text_md list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6         "
-echo "$text_md ip4 ip6 speed-glx sockets nodes geoip webcert date free ver version notes            "
+echo "$text_md ip4 ip6 speed-glx sockets nodes geoip webcert date free expert version notes         "
 echo "$text_md radio compile ip-forward depends info code info examples commands variables          "
 echo "$text_md intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot             "
 echo "$title_md            ||| Example info: fwiptables-cmd -gui-shell-yad |||                "
@@ -3218,9 +3233,9 @@ echo "$text_md                        server-webserver server-print server-lamp 
 echo "$text_md                        server-mail server-teamspeak server-mumble server-sql"
 echo "$text_md                        server-asterisk server-domain server-squid server-irc            "
 echo "$text_md        options-easy |  preferences-read preferences-modify preferences-regen preferences-example"
-echo "$text_md                        ip-forward speed-ip4 speed-ip6 speed-glx code radio"
 echo "$text_md                        list-options clasic-options info-options filelog autolog ip4 ip6 "
 echo "$text_md                        sockets nodes geoip date free ver version notes depends commands "
+echo "$text_md                        ip-forward speed-ip4 speed-ip6 speed-glx code radio expert ver"
 echo "$text_md                        variables examples intro webcert clean-tmp radio info download   "
 echo "$text_md                        compile license install uninstall pc-halt pc-shutdown pc-reboot  "
 echo "$title_md                       ||| Example info: fwiptables-cmd -gui-shell-yad ls4 |||     "
@@ -3484,6 +3499,7 @@ echo "$text_md"
 echo "$text_md preferences-read . show the preferences for fwiptables"
 echo "$text_md preferences-modify . modify the preferences for fwiptables"
 echo "$text_md preferences-regen . recover the initials preferences for fwiptables"
+echo "$text_md preferences-example . show the examples for fwiptables preference"
 echo "$text_md list-options . list options "
 echo "$text_md clasic-options . list options "
 echo "$text_md info-options . list details for the options"
@@ -6730,7 +6746,9 @@ if   [ "$first_option" == "gui-roll-zenity-options-easy" ] ; then echo $head_wai
 ####
 selection=""
 ####
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|preferences-modify|preferences-regen|\
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|\
+preferences-modify|preferences-regen|preferences-example|compile|download|\
+list-options|clasic-options|info-options|expert|\
 filelog|autolog|ip4|ip6|notes|speed-ip4|speed-ip6|sockets|nodes|geoip|date|free|ver|version|\
 depends|commands|variables|license|examples|intro|clean-tmp"
 ####
@@ -6747,6 +6765,13 @@ gui-info-menu)$cmd_binary -gui-zenity info status-state ;;
 preferences-read)$cmd_binary -gui-zenity preferences-read ;;
 preferences-modify)$cmd_binary -gui-zenity preferences-modify ;;
 preferences-regen)$cmd_binary -gui-zenity preferences-regen ;;
+preferences-example)$cmd_binary -gui-zenity preferences-example ;;
+list-options)$cmd_binary -gui-zenity list-options ;;
+clasic-options)$cmd_binary -gui-zenity clasic-options ;;
+info-options)$cmd_binary -gui-zenity info-options ;;
+expert)$cmd_binary -gui-zenity expert ;;
+compile)$cmd_binary -gui-zenity compile ;;
+download)$cmd_binary -gui-zenity download ;;
 filelog) $cmd_binary -gui-zenity filelog ;; 
 autolog) $cmd_binary -gui-zenity autolog ;;
 ip4)$cmd_binary -gui-zenity ip4 ;;
