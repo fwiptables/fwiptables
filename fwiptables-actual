@@ -90,7 +90,7 @@ fi
 cmd_binary="$0" ;
 cmd_file="$(basename $0)" ;
 cmd_config="fwiptables-cmd" ;
-cmd_version="cmd-10-09"  ;
+cmd_version="cmd-10-10"  ;
 cmd_name="fwiptables, FireWall With iptables" ;
 cmd_description="fwiptables, One Mini Script in one-file" ;
 cmd_license="GPL v2, License General Public version 2" ;
@@ -427,7 +427,7 @@ if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /de
 #### spanish: cuando no hay first_option #### choose "list_options" or "clasic_options"         
 ####
 ####
-option_default_security="gui-shell-yad"    ## fwiptables-file-default ## when there is not one first_option
+without_first_option="gui-shell-yad"    ## fwiptables-file-default ## when there is not one first_option
 ####
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
@@ -1158,10 +1158,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "preferences-example" ] ; then
-echo
+echo ""
 echo "$title_md default option"
-echo "option_default_security=options               ## when there is not one first_option"
-echo
+echo "without_first_option=    " 
+echo "$title_md When fwiptables without its first_option: void or Validate field required to works"
+echo "$title_md Example1: list-options Example2: list4 example3: ip4 example4: speed-ip4"
+echo "$title_md Example5: sockets Example6: gui-menu-yad Example7: gui-shell-yad"
+echo ""
 echo "$title_md default firewall"
 echo "allow_use_legacy=                                   ## void or no"
 echo "allow_use_nft=no                                    ## void or no"
@@ -1195,6 +1198,7 @@ echo
 echo "$title_md default dimesion graphicall"
 echo "graphic_window_dimension='--width=950 --height=650' ## default '--width=950 --height=650'"
 echo
+echo "$title_md file generated with preferences examples."
 exit; fi
 ####
 ####
@@ -3128,7 +3132,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-options" ] ; then 
-echo "$title_md $cmd_file [ optional-output ] first_option [ second_option ]                  "
+echo "$title_md $cmd_file [optional-output] first_option [second_option]                  "
 echo "$title_md"
 echo "$title_md  [ optional-output ]                                                            "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       "
@@ -3163,8 +3167,8 @@ echo "$text_md list-options clasic-options info-options filelog autolog speed-ip
 echo "$text_md ip4 ip6 speed-glx sockets nodes geoip webcert date free ver version notes            "
 echo "$text_md radio compile ip-forward depends info code info examples commands variables          "
 echo "$text_md intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot             "
-echo "$title_md            ||| Example info: fwiptables-cmd -gui-zenity info ls4  |||        "
-
+echo "$title_md            ||| Example info: fwiptables-cmd -gui-shell-yad |||                "
+echo "$title_md            ||| Example info: fwiptables-cmd -gui-zenity info list |||         "
 exit ; fi
 ####
 ####
@@ -3175,7 +3179,7 @@ exit ; fi
 ####
 ####
 if   [ "$first_option" == "clasic-options" ] ; then  
-echo "$title_md $cmd_file [ optional-output ] first_option [ second_option ] "
+echo "$title_md $cmd_file [optional-output] first_option [second_option] "
 echo "$title_md"
 echo "$text_md    optional-paramtter "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]"
@@ -3207,7 +3211,8 @@ echo "$text_md                        list-options clasic-options info-options f
 echo "$text_md                        sockets nodes geoip date free ver version notes depends commands "
 echo "$text_md                        variables examples intro webcert clean-tmp radio info download   "
 echo "$text_md                        compile license install uninstall pc-halt pc-shutdown pc-reboot  "
-echo "$title_md                       ||| Example info: fwiptables-cmd -gui-zenity info ls4  ||| "
+echo "$title_md                       ||| Example info: fwiptables-cmd -gui-shell-yad ls4 |||     "
+echo "$title_md                       ||| Example info: fwiptables-cmd -gui-zenity info list |||  "
 exit ; fi
 ####
 ####
@@ -5239,18 +5244,22 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "compile" ]; then 
-echo "$title_md [ $first_option ] [ howto compile bash script with obash ] "
-echo "$text_md This script bash run with ./fwiptables-cmd it works, but if you desire compile..."
+echo "$title_md [ $first_option ] [  optionally ] [ howto compile bash script with obash ] "
+echo "$title_md"
+echo "$text_md This script in bash works. But if you desire is compiling... follow that steps,"
+echo "$text_md there are three steps to compile fwiptables script, it is possible with obash."
+echo "$text_md when you has compiled, it does works only with your system hardware architecture."
+echo "$title_md"
+echo "$text_md . 0 . necesary:     fwiptables in source script bash."
+echo "$text_md . 1 .    first:     download obash from oficial web internet page."
+echo "$text_md . 2 .   second:     compile with obash command using command make."
+echo "$text_md . 3a .    third:     launch:# obash -c -o ./destination.bin ./source-bash.sh"
+echo "$text_md . 3b . Install AND obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd"
 echo "$text_md"
-echo "$text_md Three steps to compile fwiptables script, it is possible with obash."
-echo "$text_md"
-echo "$text_md necesary:     fwiptables in source script bash."
-echo "$text_md 1. first:     download obash from internet."
-echo "$text_md 2.second:     compile obash command with make."
-echo "$text_md 3. third:     launch:# obash -c -o ./destination-file.bin fwiptables-ver-num.sh"
-echo "$text_md"
-echo "$text_md Actually, the file type is:"
+echo "$title_md Actually, the file type is:"
 file -L $cmd_binary
+echo "$title_md"
+echo "$title_md"
 exit; fi
 ####
 ####
@@ -7061,7 +7070,8 @@ exit; fi
 ####
 if [ "$launch_rules_firewall" != "yes" ] ; then echo $give_cover
 echo "### #[ fail ] [ First Option: $first_option | Choose one valid first option ]" ;
-$cmd_binary $option_default_security ;
+if [ "$without_first_option" == "$NULL" ]; then without_first_option="options" ; fi 
+$cmd_binary $without_first_option ;
 exit ; fi
 ####
 ####

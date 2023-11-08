@@ -5251,9 +5251,10 @@ echo "$text_md there are three steps to compile fwiptables script, it is possibl
 echo "$text_md when you has compiled, it does works only with your system hardware architecture."
 echo "$title_md"
 echo "$text_md . 0 . necesary:     fwiptables in source script bash."
-echo "$text_md . 1 .    first:     download obash from internet."
-echo "$text_md . 2 .   second:     compile obash command with make."
-echo "$text_md . 3 .    third:     launch:# obash -c -o ./destination-obash.bin source-bash.sh"
+echo "$text_md . 1 .    first:     download obash from oficial web internet page."
+echo "$text_md . 2 .   second:     compile with obash command using command make."
+echo "$text_md . 3a .    third:     launch:# obash -c -o ./destination.bin ./source-bash.sh"
+echo "$text_md . 3b . Install AND obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd"
 echo "$text_md"
 echo "$title_md Actually, the file type is:"
 file -L $cmd_binary
