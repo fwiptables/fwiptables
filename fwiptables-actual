@@ -771,8 +771,8 @@ if [ "$first_option" == "-gui-shell"  ] || [ "$first_option" == "--gui-shell" ] 
 #### if [ "$first_option" == "gui-menu"  ] ;  then $cmd_binary gui-menu-   ; exit ; fi
 ####
 #### is are not in favorites alias:
-if [ "$first_option" == "gui-roll"  ] ;  then first_option="gui-roll-zenity"   ; exit ; fi
-if [ "$first_option" == "gui-shell" ] ;  then first_option="gui-shell-zenity"  ; exit ; fi
+if [ "$first_option" == "gui-roll"  ] ;  then first_option="gui-roll-zenity"   ; fi
+if [ "$first_option" == "gui-shell" ] ;  then first_option="gui-shell-zenity"  ; fi
 ####
 ####
 if [ "$first_option" == "--text" ] || [ "$first_option" == "-text" ]   ; then first_option="txt"  ; fi
