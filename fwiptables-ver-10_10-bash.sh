@@ -142,32 +142,22 @@ third_option="$(echo $3 | $command_sed s/\\///g -)"  ;
 quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;
 ####
 ####
-#### :rutina-final-order-options:
-
-
-
-XDG_RUNTIME_DIR="/root/run/0" 
-WAYLAND_DISPLAY="/root/run/0"
-
-
-
-
 ##########   english: profile y support X11       ##########
 ##########   spanish: profile y soporte de X11    ##########
 #### :rutina-inicial-x11-or-wayland:
 ####
 ####
-#### support wayland to root
+#### Support wayland to root
 #### english: add auth xhost for root for graphicall use 
 #### spanish: añade autorización xhost para root para uso grafico
 ####
 #### #### uncoment when are you ready:
 ####
+#### WAYLAND_DISPLAY=">0"
 #### XDG_RUNTIME_DIR="/root/run/0"
-#### WAYLAND_DISPLAY="/root/run/0"
 ####
 ####
-#### support x11 to root
+#### Support x11 to root
 #### english: add auth xhost for root for graphicall use 
 #### spanish: añade autorización xhost para root para uso grafico
 ####
@@ -447,7 +437,7 @@ if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /de
 #### spanish: cuando no hay first_option #### choose "list_options" or "clasic_options"         
 ####
 ####
-without_first_option="gui-shell-yad"    ## fwiptables-file-default ## when there is not one first_option
+without_first_option="options"    ## fwiptables-file-default ## when there is not one first_option
 ####
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
@@ -710,11 +700,13 @@ fi
 #### :rutina-inicial-alias-simple:
 ####
 ####
+####
+####
 ##########     ALIAS SIMPLE
 ##########     ALIAS SIMPLE
 ####
 ####
-if [ "$first_option" == "$NULL" ]  ; then "$cmd_binary" empty_first_option ; exit ; fi
+if [ "$first_option" == "$NULL" ]  ; then $cmd_binary empty_first_option ; exit ; fi
 ####
 ####
 #### english:  alias firewall-list with conceputal firewall-conceptual:
@@ -5918,7 +5910,7 @@ exit; fi
 #### :rutina-inicial-gui-shell-zenity:
 ####
 ####
-if   [ "$first_option" == "gui-shell-zenity" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-shell-zenity" ] ; then echo $head_waiting_gui ; echo $give_cover
 ####
 ####
 ####  english: principal gui  #### spanish: principal gui
@@ -6053,7 +6045,7 @@ exit ; fi
 #### :rutina-inicial-gui-shell-yad:
 ####
 ####
-if   [ "$first_option" == "gui-shell-yad" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-shell-yad" ] ; then echo $head_waiting_gui ; echo $give_cover
 ####
 ####
 ####  english: principal gui  #### spanish: principal gui
@@ -6483,7 +6475,7 @@ exit; fi
 #### :rutina-inicial-gui-roll-zenity:
 ####
 ####
-if   [ "$first_option" == "gui-roll-zenity" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-roll-zenity" ] ; then echo $head_waiting_gui ; echo $give_cover
 gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|03-Firewall-Custom|04-Firewall-Launch|05-options-easy"
 selection_menu="$($command_zenity --text="gui-roll" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
@@ -6788,7 +6780,7 @@ exit; fi
 #### :rutina-inicial-gui-menu:
 ####
 ####
-if [ "$first_option" == "gui-menu" ] ; then echo $head_waiting_gui
+if [ "$first_option" == "gui-menu" ] ; then echo $head_waiting_gui ; echo $give_cover
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="|01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|03-Firewall-Custom|04-Firewall-Launch|05-options-easy|"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
