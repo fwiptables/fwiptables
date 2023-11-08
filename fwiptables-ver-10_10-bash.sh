@@ -143,13 +143,33 @@ quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;
 ####
 ####
 #### :rutina-final-order-options:
+
+
+
+XDG_RUNTIME_DIR="/root/run/0" 
+WAYLAND_DISPLAY="/root/run/0"
+
+
+
+
 ##########   english: profile y support X11       ##########
 ##########   spanish: profile y soporte de X11    ##########
-#### :rutina-inicial-x11:
+#### :rutina-inicial-x11-or-wayland:
 ####
 ####
-####     #### english: add auth xhost for root for graphicall use 
-####     #### spanish: añade autorización xhost para root para uso grafico
+#### support wayland to root
+#### english: add auth xhost for root for graphicall use 
+#### spanish: añade autorización xhost para root para uso grafico
+####
+#### #### uncoment when are you ready:
+####
+#### XDG_RUNTIME_DIR="/root/run/0"
+#### WAYLAND_DISPLAY="/root/run/0"
+####
+####
+#### support x11 to root
+#### english: add auth xhost for root for graphicall use 
+#### spanish: añade autorización xhost para root para uso grafico
 ####
 ####
 command_xhost="$(command -v xhost)" ; 
@@ -166,7 +186,7 @@ $command_xhost +SI:localuser:root &> /dev/null ;
 ## sudo -u "$(logname)" command_xhost +NIS:root@127.0.0.1 &> /dev/null
 ####
 ####
-#### :rutina-final-x11:
+#### :rutina-final-x11-or-wayland:
 ##########  english: config-ariables: variables to declare     ##########
 ##########  spanish: config-variables: variables para declarar  ##########
 #### :rutina-inicial-config-variables:
@@ -5250,11 +5270,11 @@ echo "$text_md This script in bash works. But if you desire is compiling... foll
 echo "$text_md there are three steps to compile fwiptables script, it is possible with obash."
 echo "$text_md when you has compiled, it does works only with your system hardware architecture."
 echo "$title_md"
-echo "$text_md . 0 . necesary:     fwiptables in source script bash."
-echo "$text_md . 1 .    first:     download obash from oficial web internet page."
-echo "$text_md . 2 .   second:     compile with obash command using command make."
-echo "$text_md . 3a .    third:     launch:# obash -c -o ./destination.bin ./source-bash.sh"
-echo "$text_md . 3b . Install AND obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd"
+echo "$text_md . 0 .  Necesary: fwiptables in source script bash."
+echo "$text_md . 1 .     First: download obash from oficial web internet page."
+echo "$text_md . 2 .    Second: compile with obash command using command make."
+echo "$text_md . 3a . Or Third: run:# obash -c -o ./destination.bin ./source-bash.sh"
+echo "$text_md . 3b . Or Third: run:# obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd"
 echo "$text_md"
 echo "$title_md Actually, the file type is:"
 file -L $cmd_binary
