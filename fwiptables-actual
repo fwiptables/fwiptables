@@ -7060,7 +7060,9 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-options-easy" ]; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|preferences-modify|preferences-regen|\
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|\
+preferences-modify|preferences-regen|preferences-example|\
+list-options|clasic-options|info-options|expert|compile|download|intro|\
 ip4|ip6|speed-ip4|speed-ip6|sockets|license|notes|version|examples|depends|variables|commands"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="$first_option" --text="$first_option" --title="Gui-menu With $cmd_binary $cmd_version" --list $selection_menu )"
@@ -7074,6 +7076,14 @@ gui-info-menu*)$cmd_binary -gui info status-state ;;
 preferences-read*)$cmd_binary -gui preferences-read ;;
 preferences-modify*)$cmd_binary -gui preferences-modify ;;
 preferences-regen*)$cmd_binary -gui preferences-regen ;;
+preferences-example*)$cmd_binary -gui preferences-example ;;
+list-options*)$cmd_binary -gui list-options ;;
+clasic-options*)$cmd_binary -gui clasic-options ;;
+info-options*)$cmd_binary -gui info-options ;;
+expert*)$cmd_binary -gui expert ;;
+intro*)$cmd_binary -gui intro ;;
+compile*)$cmd_binary -gui compile ;;
+download*)$cmd_binary -gui download ;;
 ip4*)$cmd_binary -gui ip4 ;;
 ip6*)$cmd_binary -gui ip6 ;;
 speed-ip4*)$cmd_binary -gui speed-ip4 ;;
