@@ -1195,10 +1195,12 @@ echo "allow_show_time=no                                  ## void or no"
 echo
 echo "$title_md default programs"
 echo "favorite_text_editor=                               ## or void for automatic or specify command"
-echo "favorite_text_dialog=                               ## or void for automatic or specify command"
 echo "favorite_text_music=                                ## or void for automatic or specify command"
 echo "favorite_text_browser=                              ## or void for automatic or specify command"
 echo "favorite_date_command=                              ## or void for automatic or specify command"
+echo
+echo "$title_md default text-cli and graphicall-gui"
+echo "favorite_text_dialog=                               ## or void for automatic or specify command"
 echo "favorite_graphicall_dialog=                         ## or void for automatic or specify command"
 echo
 echo "$title_md default discover ip and speed ip"
@@ -1212,7 +1214,7 @@ echo
 echo "$title_md default dimesion graphicall"
 echo "graphic_window_dimension='--width=950 --height=650' ## default '--width=950 --height=650'"
 echo
-echo "$title_md file generated with preferences examples."
+echo "$title_md file generated with preferences-example"
 exit; fi
 ####
 ####
@@ -1442,7 +1444,7 @@ exit ; fi
 ####
 if [ "$first_option" == "expert" ]; then 
 echo "$title_md [ $first_option ] [ Show expert options ] [ version.md] "
-echo "$tittle_md Still in development"
+echo "$text_md upgrade . upgrade fwiptables-cmd"
 exit ; fi
 ####
 ####
@@ -5265,6 +5267,17 @@ exit; fi
 ####
 ####
 #### :rutina-final-pc-shutdown:
+##########    english: upgrade: upgrade fwiptables    ##########
+##########    spanish: upgrade: upgrade fwiptables    ##########
+#### :rutina-inicial-upgade:
+####
+####
+if   [ "$first_option" == "upgrade" ]; then
+echo "still in development"
+exit; fi
+####
+####
+#### :rutina-final-upgrade:
 ##########    english: compile: compile with obash      ##########
 ##########    spanish: compile: compila with obash      ##########
 #### :rutina-inicial-compile:
