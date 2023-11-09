@@ -7130,6 +7130,9 @@ exit; fi
 if [ "$launch_rules_firewall" != "yes" ]  ; then echo $give_cover
 echo "### #[ fail ] [ First Option: $first_option | Choose one valid first option ]" ;
 ####
+if [ "$without_first_option" != "$NULL" ] ; then 
+$cmd_binary $without_first_option ; exit ; fi
+####
 if [ "$X11_OR_WAYLAND" == "x11" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
 echo "$title_md forward to graphicall gui-shell"
 $cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
