@@ -87,13 +87,13 @@ fi
 #### :rutina-inicial-enviroment:
 ####
 ####
-cmd_binary="$0" ;
-cmd_file="$(basename $0)" ;
+cmd_binary="$0"             ;
+cmd_file="$(basename $0)"   ;
 cmd_config="fwiptables-cmd" ;
-cmd_version="cmd-10-10"  ;
-cmd_name="fwiptables, FireWall With iptables" ;
-cmd_description="fwiptables, One Mini Script in one-file" ;
-cmd_license="GPL v2, License General Public version 2" ;
+cmd_version="cmd-10-11"     ;
+cmd_name="fwiptables, FireWall With iptables"               ;
+cmd_description="fwiptables, One Mini Script in one-file"   ;
+cmd_license="GPL v2, License General Public version 2"      ;
 ####
 #### set directory installed
 ####
@@ -621,8 +621,8 @@ fi
 ####
 ####
 if [ "$favorite_graphicall_dialog" == "$NULL" ]; then
-if [ "$command_yad"     != "$NULL" ] ; then  favorite_graphicall_dialog="$command_yad"      ; fi
 if [ "$command_zenity"  != "$NULL" ] ; then  favorite_graphicall_dialog="$command_zenity"   ; fi
+if [ "$command_yad"     != "$NULL" ] ; then  favorite_graphicall_dialog="$command_yad"      ; fi
 fi
 ####
 ####
@@ -1106,7 +1106,6 @@ if [ "$first_option" == "preferences-modify" ]; then
 echo "$title_md [ $first_option ] [ modify the default fwiptables ] "
 echo 
 $favorite_text_editor $default_preferences
-
 echo "$title_md [ info ] [ edit file $default_preferences to change variables ]"
 exit; fi
 ####
@@ -7115,10 +7114,18 @@ exit; fi
 ############################	   spanish: default: sin otra valida opcion
 ####
 ####
-if [ "$launch_rules_firewall" != "yes" ] ; then echo $give_cover
+if [ "$launch_rules_firewall" != "yes" ]  ; then echo $give_cover
 echo "### #[ fail ] [ First Option: $first_option | Choose one valid first option ]" ;
-if [ "$without_first_option" == "$NULL" ]; then without_first_option="options" ; fi 
-$cmd_binary $without_first_option ;
+####
+if [ "$X11_OR_WAYLAND" == "x11" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then 
+$cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
+if [ "$X11_OR_WAYLAND" == "wayland" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
+$cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
+####
+if [ "$without_first_option" == "$NULL" ] ; then 
+without_first_option="options" 
+$cmd_binary $without_first_option ; exit ; fi
+####
 exit ; fi
 ####
 ####
