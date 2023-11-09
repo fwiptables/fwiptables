@@ -1442,7 +1442,7 @@ exit ; fi
 ####
 if [ "$first_option" == "expert" ]; then 
 echo "$title_md [ $first_option ] [ Show expert options ] [ version.md] "
-echo "$tittle_md Still in development"
+echo "$text_md upgrade . upgrade fwiptables-cmd"
 exit ; fi
 ####
 ####
@@ -5265,6 +5265,17 @@ exit; fi
 ####
 ####
 #### :rutina-final-pc-shutdown:
+##########    english: upgrade: upgrade fwiptables    ##########
+##########    spanish: upgrade: upgrade fwiptables    ##########
+#### :rutina-inicial-upgade:
+####
+####
+if   [ "$first_option" == "upgrade" ]; then
+echo "still in development"
+exit; fi
+####
+####
+#### :rutina-final-upgrade:
 ##########    english: compile: compile with obash      ##########
 ##########    spanish: compile: compila with obash      ##########
 #### :rutina-inicial-compile:
