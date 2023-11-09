@@ -88,9 +88,9 @@ fi
 ####
 ####
 cmd_binary="$0" ;
-cmd_file="$(basename $0)" ;
+cmd_file="$(basename $0)"   ;
 cmd_config="fwiptables-cmd" ;
-cmd_version="cmd-10-10"  ;
+cmd_version="cmd-10-11"     ;
 cmd_name="fwiptables, FireWall With iptables" ;
 cmd_description="fwiptables, One Mini Script in one-file" ;
 cmd_license="GPL v2, License General Public version 2" ;

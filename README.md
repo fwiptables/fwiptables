@@ -22,8 +22,8 @@
   
 ###  fwiptables install.                                   
   
-    Put bit of execution. TYPE:   chmod u+x /usr/bin/fwiptables-cmd   
-    Install this version. TYPE:   /usr/bin/fwiptables-cmd install     
+    Put bit of execution. TYPE:   chmod u+x ./fwiptables-ver-10_10-bash.sh   
+    Install this version. TYPE:   ./fwiptables-ver-10_10-bash.sh install     
   
 ###  fwiptables uninstall.                                 
   
@@ -35,16 +35,17 @@
    there are three steps to compile fwiptables script, it is possible with obash.
    when you has compiled, it does works only with your system hardware architecture.
 ### 
-   . 0 . necesary:     fwiptables in source script bash.
-   . 1 .    first:     download obash from internet.
-   . 2 .   second:     compile obash command with make.
-   . 3 .    third:     launch:# obash -c -o ./destination-obash.bin source-bash.sh
+   . 0 .  Necesary: fwiptables in source script bash.
+   . 1 .     First: download obash from oficial web internet page.
+   . 2 .    Second: compile with obash command using command make.
+   . 3a . Or Third: run:# obash -c -o ./destination.bin ./source-bash.sh
+   . 3b . Or Third: run:# obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd
   
 ###  Actually, the file type is:
-/usr/bin/fwiptables-cmd: Bourne-Again shell script, Unicode text, UTF-8 text executable
+./fwiptables-ver-10_10-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
 ### 
 ### 
-###  fwiptables-cmd [optional-output] first_option [second_option]                  
+###  fwiptables-ver-10_10-bash.sh [optional-output] first_option [second_option]                  
 ### 
 ###   [ optional-output ]                                                            
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       
@@ -74,9 +75,10 @@
    server-print server-lamp server-news server-ftp server-mail server-teamspeak         
    server-mumble server-sql server-asterisk server-domain server-squid                  
 ###   [ options-easy ]                                                              
-   preferences-read preferences-modify preferences-regen preferences-example            
+   preferences-read preferences-modify preferences-regen preferences-example ver        
    list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6         
-   ip4 ip6 speed-glx sockets nodes geoip webcert date free ver version notes            
+   ip4 ip6 speed-glx sockets nodes geoip webcert date free expert version notes         
    radio compile ip-forward depends info code info examples commands variables          
    intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot             
-###             ||| Example info: fwiptables-cmd -gui-zenity info ls4  |||        
+###             ||| Example info: fwiptables-cmd -gui-shell-yad |||                
+###             ||| Example info: fwiptables-cmd -gui-zenity info list |||         
