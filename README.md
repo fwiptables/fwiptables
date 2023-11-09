@@ -22,8 +22,8 @@
   
 ###  fwiptables install.                                   
   
-    Put bit of execution. TYPE:   chmod u+x ./fwiptables-ver-10_10-bash.sh   
-    Install this version. TYPE:   ./fwiptables-ver-10_10-bash.sh install     
+    Put bit of execution. TYPE:   chmod u+x ./fwiptables-ver-10_11-bash.sh   
+    Install this version. TYPE:   ./fwiptables-ver-10_11-bash.sh install     
   
 ###  fwiptables uninstall.                                 
   
@@ -42,10 +42,10 @@
    . 3b . Or Third: run:# obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd
   
 ###  Actually, the file type is:
-./fwiptables-ver-10_10-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
+./fwiptables-ver-10_11-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
 ### 
 ### 
-###  fwiptables-ver-10_10-bash.sh [optional-output] first_option [second_option]                  
+###  fwiptables-ver-10_11-bash.sh [optional-output] first_option [second_option]                  
 ### 
 ###   [ optional-output ]                                                            
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       
