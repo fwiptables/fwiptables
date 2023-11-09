@@ -1444,7 +1444,7 @@ exit ; fi
 ####
 if [ "$first_option" == "expert" ]; then 
 echo "$title_md [ $first_option ] [ Show expert options ] [ version.md] "
-echo "$text_md upgrade . upgrade fwiptables-cmd"
+echo "$text_md expert-upgrade . upgrade fwiptables-cmd with curl"
 exit ; fi
 ####
 ####
@@ -5207,8 +5207,15 @@ exit; fi
 ####
 if [ "$first_option" == "license" ]; then 
 echo "$title_md [ $first_option ]  [ Show license from git sourceforge for $cmd_binary ] "
+####
+if [ "$command_curl" == "$NULL" ]; then
+echo "$title_md Install curl to download/install latest version"; fi
+####
 echo "license text for gpl v2 downloading from .. $mensage_license_gpl"
-$favorite_text_browser -source "$mensage_license_gpl" | more
+echo
+echo ..................................................................
+echo
+curl -L $mensage_license_gpl --stderr /dev/null
 exit;  fi
 ####
 ####
@@ -5267,17 +5274,23 @@ exit; fi
 ####
 ####
 #### :rutina-final-pc-shutdown:
-##########    english: upgrade: upgrade fwiptables    ##########
-##########    spanish: upgrade: upgrade fwiptables    ##########
-#### :rutina-inicial-upgade:
+##########    english: expert-upgrade: upgrade fwiptables    ##########
+##########    spanish: expert-upgrade: upgrade fwiptables    ##########
+#### :rutina-inicial-expert-upgade:
 ####
 ####
-if   [ "$first_option" == "upgrade" ]; then
-echo "still in development"
+if   [ "$first_option" == "expert-upgrade" ]; then 
+####
+if [ "$command_curl" == "$NULL" ]; then
+echo "$title_md Install curl to download/install latest version"; fi
+####
+echo "$title_md Downloading fwiptables latest"
+descarga="$directory_log/fwiptables-cmd"
+$command_curl $web_download_sourceforge -s -L -o $descarga && chmod ugo+x $descarga && $descarga install
 exit; fi
 ####
 ####
-#### :rutina-final-upgrade:
+#### :rutina-final-expert-upgrade:
 ##########    english: compile: compile with obash      ##########
 ##########    spanish: compile: compila with obash      ##########
 #### :rutina-inicial-compile:
