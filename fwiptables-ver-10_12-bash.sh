@@ -440,7 +440,7 @@ if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /de
 #### spanish: cuando no hay first_option #### choose "list_options" or "clasic_options"         
 ####
 ####
-without_first_option="options"    ## fwiptables-file-default ## when there is not one first_option
+without_first_option=       ## fwiptables-file-default ## when there is not one first_option
 ####
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
@@ -698,6 +698,25 @@ fi
 ####
 ####
 #### :rutina-final-favorite-graphicall-music:
+##########     ALIAS SIMPLE
+##########     ALIAS SIMPLE
+#### :rutina-inicial-without-first-option:
+####
+####
+if [ "$first_option" == "$NULL" ] && [ "$without_first_option" == "$NULL" ] ; then 
+if [ "$X11_OR_WAYLAND" == "x11" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
+echo "$title_md forward to graphicall gui-shell"
+$cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
+if [ "$X11_OR_WAYLAND" == "wayland" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
+echo "$title_md forward to graphicall gui-shell"
+$cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
+####
+without_first_option="options" ; $cmd_binary $without_first_option ; 
+exit ; fi
+####
+####
+####
+#### :rutina-final-without-first-option:
 ##########    english: ALIAS  simple y firewall y campus       ##########
 ##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
 #### :rutina-inicial-alias-simple:
@@ -709,7 +728,6 @@ fi
 ##########     ALIAS SIMPLE
 ####
 ####
-if [ "$first_option" == "$NULL" ]  ; then $cmd_binary empty_first_option ; exit ; fi
 ####
 ####
 #### english:  alias firewall-list with conceputal firewall-conceptual:
@@ -7141,25 +7159,10 @@ exit; fi
 ####
 ####
 if [ "$launch_rules_firewall" != "yes" ]  ; then echo $give_cover
-echo "### #[ fail ] [ First Option: $first_option | Choose one valid first option ]" ;
+echo "### #[ fail ] [ First Option: $first_option | Choose one valid first option ]" ; exit ; fi
 ####
-if [ "$without_first_option" != "$NULL" ] ; then 
-$cmd_binary $without_first_option ; exit ; fi
-####
-if [ "$X11_OR_WAYLAND" == "x11" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
-echo "$title_md forward to graphicall gui-shell"
-$cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
-if [ "$X11_OR_WAYLAND" == "wayland" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
-echo "$title_md forward to graphicall gui-shell"
-$cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
-####
-if [ "$without_first_option" == "$NULL" ] ; then 
-without_first_option="options" 
-$cmd_binary $without_first_option ; exit ; fi
-####
-exit ; fi
-####
-####
+#### if [ "$without_first_option" != "$NULL" ] ; then 
+#### $cmd_binary $without_first_option ; exit ; fi
 ###############################################################################################################
 ###############################################################################################################
 ####                                                                                            ###############

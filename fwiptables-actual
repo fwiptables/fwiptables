@@ -90,7 +90,7 @@ fi
 cmd_binary="$0"             ;
 cmd_file="$(basename $0)"   ;
 cmd_config="fwiptables-cmd" ;
-cmd_version="cmd-10-11"     ;
+cmd_version="cmd-10-12"     ;
 cmd_name="fwiptables, FireWall With iptables"               ;
 cmd_description="fwiptables, One Mini Script in one-file"   ;
 cmd_license="GPL v2, License General Public version 2"      ;
@@ -440,7 +440,7 @@ if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /de
 #### spanish: cuando no hay first_option #### choose "list_options" or "clasic_options"         
 ####
 ####
-without_first_option="options"    ## fwiptables-file-default ## when there is not one first_option
+without_first_option=       ## fwiptables-file-default ## when there is not one first_option
 ####
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
@@ -698,6 +698,25 @@ fi
 ####
 ####
 #### :rutina-final-favorite-graphicall-music:
+##########     ALIAS SIMPLE
+##########     ALIAS SIMPLE
+#### :rutina-inicial-without-first-option:
+####
+####
+if [ "$first_option" == "$NULL" ] && [ "$without_first_option" == "$NULL" ] ; then 
+if [ "$X11_OR_WAYLAND" == "x11" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
+echo "$title_md forward to graphicall gui-shell"
+$cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
+if [ "$X11_OR_WAYLAND" == "wayland" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
+echo "$title_md forward to graphicall gui-shell"
+$cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
+####
+without_first_option="options" ; $cmd_binary $without_first_option ; 
+exit ; fi
+####
+####
+####
+#### :rutina-final-without-first-option:
 ##########    english: ALIAS  simple y firewall y campus       ##########
 ##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
 #### :rutina-inicial-alias-simple:
@@ -709,7 +728,6 @@ fi
 ##########     ALIAS SIMPLE
 ####
 ####
-if [ "$first_option" == "$NULL" ]  ; then $cmd_binary empty_first_option ; exit ; fi
 ####
 ####
 #### english:  alias firewall-list with conceputal firewall-conceptual:
@@ -1444,7 +1462,7 @@ exit ; fi
 ####
 if [ "$first_option" == "expert" ]; then 
 echo "$title_md [ $first_option ] [ Show expert options ] [ version.md] "
-echo "$text_md upgrade . upgrade fwiptables-cmd"
+echo "$text_md expert-upgrade . upgrade fwiptables-cmd with curl"
 exit ; fi
 ####
 ####
@@ -5207,8 +5225,15 @@ exit; fi
 ####
 if [ "$first_option" == "license" ]; then 
 echo "$title_md [ $first_option ]  [ Show license from git sourceforge for $cmd_binary ] "
+####
+if [ "$command_curl" == "$NULL" ]; then
+echo "$title_md Install curl to download/install latest version"; fi
+####
 echo "license text for gpl v2 downloading from .. $mensage_license_gpl"
-$favorite_text_browser -source "$mensage_license_gpl" | more
+echo
+echo ..................................................................
+echo
+curl -L $mensage_license_gpl --stderr /dev/null
 exit;  fi
 ####
 ####
@@ -5267,17 +5292,23 @@ exit; fi
 ####
 ####
 #### :rutina-final-pc-shutdown:
-##########    english: upgrade: upgrade fwiptables    ##########
-##########    spanish: upgrade: upgrade fwiptables    ##########
-#### :rutina-inicial-upgade:
+##########    english: expert-upgrade: upgrade fwiptables    ##########
+##########    spanish: expert-upgrade: upgrade fwiptables    ##########
+#### :rutina-inicial-expert-upgade:
 ####
 ####
-if   [ "$first_option" == "upgrade" ]; then
-echo "still in development"
+if   [ "$first_option" == "expert-upgrade" ]; then 
+####
+if [ "$command_curl" == "$NULL" ]; then
+echo "$title_md Install curl to download/install latest version"; fi
+####
+echo "$title_md Downloading fwiptables latest"
+descarga="$directory_log/fwiptables-cmd"
+$command_curl $web_download_sourceforge -s -L -o $descarga && chmod ugo+x $descarga && $descarga install
 exit; fi
 ####
 ####
-#### :rutina-final-upgrade:
+#### :rutina-final-expert-upgrade:
 ##########    english: compile: compile with obash      ##########
 ##########    spanish: compile: compila with obash      ##########
 #### :rutina-inicial-compile:
@@ -7128,22 +7159,10 @@ exit; fi
 ####
 ####
 if [ "$launch_rules_firewall" != "yes" ]  ; then echo $give_cover
-echo "### #[ fail ] [ First Option: $first_option | Choose one valid first option ]" ;
+echo "### #[ fail ] [ First Option: $first_option | Choose one valid first option ]" ; exit ; fi
 ####
-if [ "$X11_OR_WAYLAND" == "x11" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
-echo "$title_md forward to graphicall gui-shell"
-$cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
-if [ "$X11_OR_WAYLAND" == "wayland" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
-echo "$title_md forward to graphicall gui-shell"
-$cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
-####
-if [ "$without_first_option" == "$NULL" ] ; then 
-without_first_option="options" 
-$cmd_binary $without_first_option ; exit ; fi
-####
-exit ; fi
-####
-####
+#### if [ "$without_first_option" != "$NULL" ] ; then 
+#### $cmd_binary $without_first_option ; exit ; fi
 ###############################################################################################################
 ###############################################################################################################
 ####                                                                                            ###############
