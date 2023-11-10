@@ -90,7 +90,7 @@ fi
 cmd_binary="$0"             ;
 cmd_file="$(basename $0)"   ;
 cmd_config="fwiptables-cmd" ;
-cmd_version="cmd-10-12"     ;
+cmd_version="cmd-10-13"     ;
 cmd_name="fwiptables, FireWall With iptables"               ;
 cmd_description="fwiptables, One Mini Script in one-file"   ;
 cmd_license="GPL v2, License General Public version 2"      ;
@@ -698,25 +698,6 @@ fi
 ####
 ####
 #### :rutina-final-favorite-graphicall-music:
-##########     ALIAS SIMPLE
-##########     ALIAS SIMPLE
-#### :rutina-inicial-without-first-option:
-####
-####
-if [ "$first_option" == "$NULL" ] && [ "$without_first_option" == "$NULL" ] ; then 
-if [ "$X11_OR_WAYLAND" == "x11" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
-echo "$title_md forward to graphicall gui-shell"
-$cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
-if [ "$X11_OR_WAYLAND" == "wayland" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
-echo "$title_md forward to graphicall gui-shell"
-$cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
-####
-without_first_option="options" ; $cmd_binary $without_first_option ; 
-exit ; fi
-####
-####
-####
-#### :rutina-final-without-first-option:
 ##########    english: ALIAS  simple y firewall y campus       ##########
 ##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
 #### :rutina-inicial-alias-simple:
@@ -1049,6 +1030,25 @@ echo $head_timespam ; fi
 ####
 ####
 #### :rutina-final-allow-timespam:
+##########     with first option
+##########     siin primera opcion
+#### :rutina-inicial-without-first-option:
+####
+####
+if [ "$first_option" == "$NULL" ] && [ "$without_first_option" == "$NULL" ] ; then 
+if [ "$X11_OR_WAYLAND" == "x11" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
+echo "$title_md forward to graphicall gui-shell"
+$cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
+if [ "$X11_OR_WAYLAND" == "wayland" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
+echo "$title_md forward to graphicall gui-shell"
+$cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
+####
+without_first_option="options" ; $cmd_binary $without_first_option ; 
+exit ; fi
+####
+####
+####
+#### :rutina-final-without-first-option:
 ##########   english: filelog: Read log fwiptables-filelog  ##########
 ##########   spanish: filelog: Lee log  fwiptables-filelog  ##########
 #### :rutina-inicial-filelog:
@@ -1098,23 +1098,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-default:
-##########    english: preferences-read: show preferences   ##########
-##########    spanish: preferences-read: show preferences   ##########
-#### :rutina-inicial-preferences-read:
-####
-####
-if [ "$first_option" == "preferences-read" ]; then 
-echo "$title_md [ $first_option ] [ show the default fwiptables ] "
-echo 
-cat $default_preferences
-echo
-
-echo "$title_md [ info ] [ Change variables with: $cmd_binary preferences-modify ]"
-echo "$title_md [ info ] [ file: $default_preferences ]"
-exit; fi
-####
-####
-#### :rutina-final-preferences-read:
 ##########    english: preferences-modify: modify preferences   ##########
 ##########    spanish: preferences-modify: modify preferences   ##########
 #### :rutina-inicial-preferences-modify:
@@ -1151,7 +1134,6 @@ exit; fi
 ####
 if [ "$first_option" == "preferences-read" ]; then 
 echo "$title_md [ $first_option ] [ read the default fwiptables ] "
-
 echo "$title_md [ info ] [ Show file $default_preferences to read variables ]"
 ####
 ####
@@ -6221,9 +6203,7 @@ $cmd_binary -gui-yad preferences-modify
 #### spanish: las demas opciones   ####
 ####
 ####
-"$NULL")
-$command_yad  --info $graphic_window_dimension --text="$cmd_binary good bye";
-$command_yad  --progress $graphic_window_dimension --timeout=1 --text="Closing gui menu" --auto-close --auto-kill ; exit ;;
+"$NULL") exit ;;
 *) fecha_temporal=$(date | $command_sed s/\ //g) ; $cmd_binary $menugtk &> /tmp/fwiptables-$fecha_temporal
 $command_yad  --text-info $graphic_window_dimension --title="[ $cmd_binary gui-shell ] [ $menugtk ]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal
@@ -6856,7 +6836,7 @@ selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --colum
 #### 
 ####
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+1) exit ;;
 01-Firewall-Control*)$cmd_binary gui-menu-firewall-control ; exit ;;
 02-Firewall-List-With-Conceptual*)$cmd_binary gui-menu-firewall-conceptual ; exit ;;
 02-Firewall-List-With-Numeral*)$cmd_binary gui-menu-firewall-numeral ; exit ;;
@@ -6888,7 +6868,7 @@ selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --colum
 #### 
 #### 
 case "$selection_final" in
-1) $favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+1) exit ;;
 gui-principal-menu*)$cmd_binary gui-menu ;;
 gui-help-menu*)$cmd_binary -gui help firewall-launch ;;
 gui-info-menu*)$cmd_binary -gui info firewall-launch ;;
@@ -6949,7 +6929,7 @@ selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --colum
 #### 
 #### 
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+1) exit ;;
 gui-principal-menu*)$cmd_binary gui-menu ;;
 gui-help-menu*)$cmd_binary -gui help firewall-control ;;
 gui-info-menu*)$cmd_binary -gui info firewall-control ;;
@@ -6988,7 +6968,7 @@ selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --colum
 #### 
 #### 
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+1) exit ;;
 gui-principal-menu*)$cmd_binary gui-menu ;;
 gui-help-menu*)$cmd_binary -gui help firewall-conceptual ;;
 gui-info-menu*)$cmd_binary -gui info firewall-conceptual ;;
@@ -7028,7 +7008,7 @@ selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --colum
 #### 
 #### 
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+1) exit ;;
 gui-principal-menu*)$cmd_binary gui-menu ;;
 gui-help-menu*)$cmd_binary -gui help firewall-numeral ;;
 gui-info-menu*)$cmd_binary -gui info firewall-numeral ;;
@@ -7068,7 +7048,7 @@ selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --colum
 #### 
 #### 
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+1) exit ;;
 gui-principal-menu) $cmd_binary gui-menu ;;
 gui-help-menu*) $cmd_binary -gui help firewall-custom ;;
 gui-info-menu*) $cmd_binary -gui info firewall-custom ;;
@@ -7112,7 +7092,7 @@ selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --colum
 #### 
 ####
 case "$selection_final" in
-1)$favorite_graphicall_dialog  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
+1) exit ;;
 gui-principal-menu*)$cmd_binary gui-menu ;;
 gui-help-menu*)$cmd_binary -gui help status-state ;;
 gui-info-menu*)$cmd_binary -gui info status-state ;;
