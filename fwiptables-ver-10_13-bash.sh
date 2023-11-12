@@ -47,6 +47,7 @@
 ####     #### english: stablished the path        #### spanish: establece el path
 ####
 ####
+source /etc/profile
 PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
 ####
 ####
@@ -1175,7 +1176,7 @@ exit; fi
 if [ "$first_option" == "preferences-example" ] ; then
 echo ""
 echo "$title_md default option"
-echo "without_first_option=''   " 
+echo "without_first_option=   " 
 echo "$title_md When fwiptables without its first_option: void or Validate field required to works"
 echo "$title_md Example1: list-options Example2: list4 example3: ip4 example4: speed-ip4"
 echo "$title_md Example5: sockets Example6: gui-menu-yad Example7: gui-shell-yad"
@@ -7162,8 +7163,9 @@ exit; fi
 ####
 if [ "$launch_rules_firewall" != "yes" ]  ; then echo $give_cover
 echo "### #[ fail ] [ first option: $first_option | without first option: $without_first_option ]"
-$cmd_binary $without_first_option
-exit ; fi
+if [ "$without_first_option" != "$NULL" ]; then $cmd_binary $without_first_option ; exit
+else $cmd_binary options ; exit ; fi ; exit ; fi
+####
 ####
 #### if [ "$without_first_option" != "$NULL" ] ; then 
 #### $cmd_binary $without_first_option ; exit ; fi
