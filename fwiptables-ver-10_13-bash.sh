@@ -259,6 +259,7 @@ command_arp_scan="$(command -v arp-scan)"   #list-commands ;
 command_arptables="$(command -v arptables)"   #list-commands ;
 command_bash="$(command -v bash)"   #list-commands ;
 command_bc="$(command -v bc)"   #list-commands ;
+command_obash="$(command -v obash)" #list-commands ;
 command_curl="$(command -v curl)"   #list-commands ;
 command_cut="$(command -v cut)"   #list-commands ;
 command_date="$(command -v date)"   #list-commands ;
@@ -1232,8 +1233,9 @@ if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command 
 else $command_ip -4 route ; fi
 echo
 echo "$title_md [ info ] ### [ Network Listen ] ###"
-if [ "$command_ss" == "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
-else $command_ss -l  | $command_grep "\:\*" ; fi
+echo "$text_md  for network listen: $cmd_binary sockets"
+#### if [ "$command_ss" == "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
+#### else $command_ss -l  | $command_grep "\:\*" ; fi
 echo
 echo "$title_md [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
@@ -1249,9 +1251,9 @@ echo "$title_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
 echo " [ info ] Proxy http:    $http_proxy"
 echo " [ info ] Proxy https:   $https_proxy"
 echo
-echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
+echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] [ nameserver and search ] ###"
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
-cat /etc/resolv.conf           ; fi
+cat /etc/resolv.conf | $command_grep -E "nameserver|search"      ; fi
 if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
 if [ -f /etc/resolv.conf.body ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.body ]"; fi
 if [ -f /etc/resolv.conf.tail ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
@@ -1273,8 +1275,9 @@ if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command 
 else $command_ip -6 route ; fi
 echo
 echo "$title_md [ info ] ### [ Network Listen ] ###"
-if [ "$command_ss" == "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
-else $command_ss -l  | $command_grep "\:\*" ; fi
+echo "$text_md  for network listen: $cmd_binary sockets"
+#### if [ "$command_ss" == "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
+#### else $command_ss -l  | $command_grep "\:\*" ; fi
 echo
 echo "$title_md [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
@@ -1292,7 +1295,7 @@ echo " [ info ] Proxy https:   $https_proxy"
 echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
-cat /etc/resolv.conf           ; fi
+cat /etc/resolv.conf | $command_grep -E "nameserver|search"      ; fi
 if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
 if [ -f /etc/resolv.conf.body ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.body ]"; fi
 if [ -f /etc/resolv.conf.tail ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
@@ -1445,6 +1448,7 @@ exit ; fi
 if [ "$first_option" == "expert" ]; then 
 echo "$title_md [ $first_option ] [ Show expert options ] [ version.md] "
 echo "$text_md expert-upgrade . upgrade fwiptables-cmd with curl"
+echo "$text_md expert-obash . compile fwiptables-cmd to fwiptables-bin with obash"
 exit ; fi
 ####
 ####
@@ -5317,6 +5321,24 @@ exit; fi
 ####
 ####
 #### :rutina-final-compile:
+##########    english: expert-compile: compile with obash      ##########
+##########    spanish: expert-compile: compila with obash      ##########
+#### :rutina-inicial-expert-compile:
+####
+####
+if   [ "$first_option" == "expert-compile" ]; then 
+echo "$title_md [ $first_option ] [  optionally ] [ howto compile bash script with obash ] "
+echo "$title_md Compile /usr/bin/fwiptables-cmd in /usr/bin/fwiptables-bin"
+if [ "$command_obash" == "$NULL" ]; then echo "$title_md install obash to compile"; exit ; fi
+$command_obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd
+echo "$text_md"
+file -L /usr/bin/fwiptables-cmd
+echo "$title_md"
+file -L /usr/bin/fwiptables-bin
+exit; fi
+####
+####
+#### :rutina-final-expert-compile:
 ##########    english: radio: url from one radio mp3      ##########
 ##########    spanish: radio: url de una radio en mp3     ##########
 #### :rutina-inicial-radio:
