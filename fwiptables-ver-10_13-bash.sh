@@ -1176,8 +1176,8 @@ exit; fi
 if [ "$first_option" == "preferences-example" ] ; then
 echo ""
 echo "$title_md default option"
-echo "without_first_option=   " 
-echo "$title_md When fwiptables without its first_option: void or Validate field required to works"
+echo "without_first_option=options   " 
+echo "$title_md When fwiptables without its first_option: void or valid option required to works"
 echo "$title_md Example1: list-options Example2: list4 example3: ip4 example4: speed-ip4"
 echo "$title_md Example5: sockets Example6: gui-menu-yad Example7: gui-shell-yad"
 echo ""
@@ -7177,7 +7177,8 @@ else $cmd_binary options ; exit ; fi ; exit ; fi
 ###############################################################################################################
 ###############################################################################################################
 ####                                                                                            ###############
-####          ready to launch rules ..                                                          ###############
+####          ready to launch rules ..    - predesignated rules -
+###############
 ####                                                                                            ###############
 ###############################################################################################################
 ###############################################################################################################
@@ -8383,7 +8384,8 @@ exit; fi
 ###############################################################################################################
 ###############################################################################################################
 ####                                                                                            ###############
-####          ready to launch rules CUSTOM                                                      ###############
+####          ready to launch rules CUSTOM  : - custom rules -
+###############
 ####                                                                                            ###############
 ###############################################################################################################
 ###############################################################################################################
@@ -9073,23 +9075,23 @@ $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A OUTPUT  \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
-####################################### english: rules allow server ports
-####################################### spanish: reglas para permitir puertos servidor 
+####################################### english: rules allow server ports with tcp
+####################################### spanish: reglas para permitir puertos servidor tcp
+####
+####
+#### 000000000000000000000000000 without separate rules 00000000000000000000000000
+####
+####
+if [ "$allow_separate_rules" != "$NULL" ]; then 
 ####
 ####
 #### ipv4 legacy
 ####
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT  \
--p udp -m multiport --dports $server_port_udp -s $net_ipv4_server -j ACCEPT \
--m comment --comment "server udp" &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT  \
 -p tcp -m multiport --dports $server_port_tcp -s $net_ipv4_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
-$allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -d $net_ipv4_server -j ACCEPT \
--m comment --comment "server udp" &> /dev/null
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -d $net_ipv4_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
@@ -9098,16 +9100,10 @@ $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
 #### ipv4 nft
 ####
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
--p udp -m multiport --dports $server_port_udp -s $net_ipv4_server -j ACCEPT \
--m comment --comment "server udp" &> /dev/null
-$allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
 -p tcp -m multiport --dports $server_port_tcp -s $net_ipv4_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
-$allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -d $net_ipv4_server -j ACCEPT \
--m comment --comment "server udp" &> /dev/null
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -d $net_ipv4_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
@@ -9117,16 +9113,10 @@ $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
 ####
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT  \
--p udp -m multiport --dports $server_port_udp -s $net_ipv6_server -j ACCEPT \
--m comment --comment "server udp" &> /dev/null
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT  \
 -p tcp -m multiport --dports $server_port_tcp -s $net_ipv6_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -d $net_ipv6_server -j ACCEPT \
--m comment --comment "server udp" &> /dev/null
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -d $net_ipv6_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
@@ -9136,19 +9126,186 @@ $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT  \
--p udp -m multiport --dports $server_port_udp -s $net_ipv6_server -j ACCEPT \
--m comment --comment "server udp" &> /dev/null
-$allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT  \
 -p tcp -m multiport --dports $server_port_tcp -s $net_ipv6_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -d $net_ipv6_server -j ACCEPT \
--m comment --comment "server udp" &> /dev/null
-$allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -d $net_ipv6_server -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
+####
+####
+fi
+####
+####
+####################################### english: rules allow server ports with udp
+####################################### spanish: reglas para permitir puertos servidor udp
+####
+####
+if [ "$allow_separate_rules" != "$NULL" ]; then 
+####
+####
+#### ipv4 legacy
+####
+$allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT  \
+-p udp -m multiport --dports $server_port_udp -s $net_ipv4_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+$allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
+-p udp -m multiport --sports $server_port_udp -d $net_ipv4_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+####
+#### 
+#### ipv4 nft
+####
+####
+$allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
+-p udp -m multiport --dports $server_port_udp -s $net_ipv4_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+$allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
+-p udp -m multiport --sports $server_port_udp -d $net_ipv4_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+####
+####
+#### ipv6 legacy
+####
+####
+$allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT  \
+-p udp -m multiport --dports $server_port_udp -s $net_ipv6_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+$allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
+-p udp -m multiport --sports $server_port_udp -d $net_ipv6_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+####
+####
+#### ipv6 nft
+####
+####
+$allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT  \
+-p udp -m multiport --dports $server_port_udp -s $net_ipv6_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+$allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
+-p udp -m multiport --sports $server_port_udp -d $net_ipv6_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+####
+####
+fi
+####
+####
+#### 000000000000000000000000000 without separate rules 00000000000000000000000000
+####
+####
+####################################### english: rules allow server ports with tcp
+####################################### spanish: reglas para permitir puertos servidor tcp
+####
+####
+#### 000000000000000000000000000 with separate rules 00000000000000000000000000
+####
+####
+if [ "$allow_separate_rules" == "$NULL" ]; then 
+for one_tcp in $(echo $server_port_tcp | $command_sed 's/,/ /g') ;
+do
+####
+####
+#### ipv4 legacy
+####
+$allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT  \
+-p tcp -m multiport --dports $one_tcp -s $net_ipv4_server -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+$allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
+-p tcp -m multiport --sports $one_tcp -d $net_ipv4_server -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+####
+#### 
+#### ipv4 nft
+####
+$allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
+-p tcp -m multiport --dports $one_tcp -s $net_ipv4_server -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+$allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
+-p tcp -m multiport --sports $one_tcp -d $net_ipv4_server -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+####
+####
+#### ipv6 legacy
+####
+####
+$allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT  \
+-p tcp -m multiport --dports $one_tcp -s $net_ipv6_server -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+$allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
+-p tcp -m multiport --sports $one_tcp -d $net_ipv6_server -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+####
+####
+#### ipv6 nft
+####
+####
+$allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT  \
+-p tcp -m multiport --dports $one_tcp -s $net_ipv6_server -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+$allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
+-p tcp -m multiport --sports $one_tcp -d $net_ipv6_server -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+####
+####
+done; fi
+####
+####
+####################################### english: rules allow server ports with udp
+####################################### spanish: reglas para permitir puertos servidor udp
+####
+####
+if [ "$allow_separate_rules" == "$NULL" ]; then 
+for one_udp in $(echo $server_port_udp | $command_sed 's/,/ /g') ;
+do
+####
+####
+#### ipv4 legacy
+####
+$allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT  \
+-p udp -m multiport --dports $one_udp -s $net_ipv4_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+$allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
+-p udp -m multiport --sports $one_udp -d $net_ipv4_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+####
+#### 
+#### ipv4 nft
+####
+$allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
+-p udp -m multiport --dports $one_udp -s $net_ipv4_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+$allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
+-p udp -m multiport --sports $one_udp -d $net_ipv4_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+####
+####
+#### ipv6 legacy
+####
+####
+$allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT  \
+-p udp -m multiport --dports $one_udp -s $net_ipv6_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+$allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
+-p udp -m multiport --sports $one_udp -d $net_ipv6_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+####
+####
+#### ipv6 nft
+####
+####
+$allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT  \
+-p udp -m multiport --dports $one_udp -s $net_ipv6_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+$allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
+-p udp -m multiport --sports $one_udp -d $net_ipv6_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+####
+####
+done; fi
+####
+####
+#### 000000000000000000000000000 with separate rules 00000000000000000000000000
 ####
 ####
 ####################################### english: rules from input of legacy ipv4 for ping, uid, gid and protocols
