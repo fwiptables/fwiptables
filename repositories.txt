@@ -1,0 +1,7 @@
+
+### repository sourceforge
+# f-iptables at sourceforgegit over git with https
+# https://f-iptables@git.code.sf.net/p/f-iptables/code/
+### repositories github
+#
+#
