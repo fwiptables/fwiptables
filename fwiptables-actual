@@ -91,7 +91,7 @@ fi
 cmd_binary="$0"             ;
 cmd_file="$(basename $0)"   ;
 cmd_config="fwiptables-cmd" ;
-cmd_version="cmd-10-13"     ;
+cmd_version="cmd-10-14"     ;
 cmd_name="fwiptables, FireWall With iptables"               ;
 cmd_description="fwiptables, One Mini Script in one-file"   ;
 cmd_license="GPL v2, License General Public version 2"      ;
@@ -858,11 +858,10 @@ if [ "$first_option" == "regen" ] ; then first_option="regen-config"; fi
 if [ "$first_option" == "cfg" ] ; then first_option="names-config" ; fi
 if [ "$first_option" == "cfg-custom" ] ; then first_option="custom" ; fi
 if [ "$first_option" == "list-fw" ] ; then first_option="names"; fi
-if [ "$first_option" == "ram-free" ] ; then first_option="free-ram"; fi
 if [ "$first_option" == "date" ] ; then first_option="ntpdate-client"; fi
-if [ "$first_option" == "ram-free" ] ; then first_option="free-ram"; fi
-if [ "$first_option" == "ram" ] ; then first_option="free-ram"; fi
-if [ "$first_option" == "free" ] ; then first_option="free-ram"; fi
+if [ "$first_option" == "ram-free" ] ; then first_option="free"; fi
+if [ "$first_option" == "ram" ] ; then first_option="free"; fi
+if [ "$first_option" == "free-ram" ] ; then first_option="free"; fi
 if [ "$first_option" == "list-allrules" ] ; then first_option="list-alltables"; fi
 ####
 ####
@@ -3314,12 +3313,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-text-pause:
-##########    english: free-ram: give one freedom to ram innecesary     ##########
-##########    spanish: free-ram: limpia la memoria ram                  ##########
-#### :rutina-inicial-free-ram:
+##########    english: free: give one freedom to ram innecesary     ##########
+##########    spanish: free: limpia la memoria ram                  ##########
+#### :rutina-inicial-free:
 ####
 ####
-if   [ "$first_option" == "free-ram" ]; then 
+if   [ "$first_option" == "free" ]; then 
 echo "$title_md [ $first_option ]  [ freedom from innecesary ram ] "
 case $command_tee in "$NULL") echo "$tab [ fail ] [ Install tee command ]"; exit ;; esac
 echo "$title_md [ info ] Actual Memory"
@@ -3331,7 +3330,7 @@ free -hw
 exit; fi
 ####
 ####
-#### :rutina-final-free-ram:
+#### :rutina-final-free:
 ##########    english: firewall-control: options for fwiptables firewall      ##########
 ##########    spanish: firewall-control: opciones para fwiptables firewall    ##########
 #### :rutina-inicial-firewall-control:
