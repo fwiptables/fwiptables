@@ -558,6 +558,7 @@ mensage_license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LI
 ####
 ####
 if [ -f "$default_preferences"   ]; then source $default_preferences ; fi
+if [ "$first_option" = "$NULL" ]; then first_option="$without_first_option"; fi
 ####
 ####
 ####  realice sane very important variables post by default_preferences
@@ -7165,8 +7166,7 @@ exit; fi
 ####
 if [ "$launch_rules_firewall" != "yes" ]  ; then echo $give_cover
 echo "### #[ fail ] [ first option: $first_option | without first option: $without_first_option ]"
-if [ "$without_first_option" != "$NULL" ]; then $cmd_binary $without_first_option ; exit
-else $cmd_binary options ; exit ; fi ; exit ; fi
+$cmd_binary options ; exit ; fi
 ####
 ####
 #### if [ "$without_first_option" != "$NULL" ] ; then 
