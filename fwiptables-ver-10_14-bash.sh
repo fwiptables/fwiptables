@@ -5305,21 +5305,21 @@ exit; fi
 ####
 if   [ "$first_option" == "compile" ]; then 
 echo "$title_md [ $first_option ] [  optionally ] [ howto compile bash script with obash ] "
-echo "$title_md"
-echo "$text_md This script in bash works. But if you desire is compiling... follow that steps,"
-echo "$text_md there are three steps to compile fwiptables script, it is possible with obash."
-echo "$text_md when you has compiled, it does works only with your system hardware architecture."
-echo "$title_md"
-echo "$text_md . 0 .  Necesary: fwiptables in source script bash."
-echo "$text_md . 1 .     First: download obash from oficial web internet page."
-echo "$text_md . 2 .    Second: compile with obash command using command make."
-echo "$text_md . 3a . Or Third: run:# obash -c -o ./destination.bin ./source-bash.sh"
-echo "$text_md . 3b . Or Third: run:# obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd"
-echo "$text_md"
-echo "$title_md Actually, the file type is:"
+echo "$title_md   "
+echo "$text_md This script in bash works. But if you desire is compiling... follow that steps,       "
+echo "$text_md there are three steps to compile fwiptables script, it is possible with obash.        "
+echo "$text_md when you has compiled, it does works only with your system hardware architecture.     "
+echo "$title_md   "
+echo "$text_md . 0 .  Necesary: fwiptables in source script bash.                                    "
+echo "$text_md . 1 .     First: download obash from oficial web internet page.                       "
+echo "$text_md . 2 .    Second: compile with obash command using command make.                       "
+echo "$text_md . 3a . Or Third: run:# obash -c -o ./destination.bin ./source-bash.sh                 "
+echo "$text_md . 3b . Or Third: run:# obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd    "
+echo "$text_md    "
+echo "$title_md Actually, the file type is:                                                          "
 file -L $cmd_binary
-echo "$title_md"
-echo "$title_md"
+echo "$title_md  "
+echo "$title_md  "
 exit; fi
 ####
 ####
