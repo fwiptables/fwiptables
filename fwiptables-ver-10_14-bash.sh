@@ -847,6 +847,8 @@ favorite_graphicall_dialog="$command_yad"      ; first_option="gui-menu" ; fi
 #### english: alias simple for options commons
 ####
 ####
+if [ "$first_option" == "client-squid" ] ; then first_option="client-proxy" ; fi
+if [ "$first_option" == "server-squid" ] ; then first_option="server-proxy" ; fi
 if [ "$first_option" == "names" ] ; then first_option="names-control" ; fi
 if [ "$first_option" == "options" ] ; then first_option="list-options" ; fi
 if [ "$first_option" == "mini-options" ] ; then first_option="list-options" ; fi
@@ -2506,15 +2508,15 @@ fi
 #### :rutina-final-shield-ftp:
 #### ##################################################
 #### ##################################################
-#### :rutina-inicial-client-squid:
+#### :rutina-inicial-client-proxy:
 ####
 ####
-####   #### english: firewall of system client-squid:
-####   #### spanish: cortafuego del sistema client-squid:
+####   #### english: firewall of system client-proxy:
+####   #### spanish: cortafuego del sistema client-proxy:
 ####
 ####
-if [ "$first_option" == "client-squid" ]; then
-echo "$title_md [ info ] [ loading firewall client-squid ]" ;
+if [ "$first_option" == "client-proxy" ]; then
+echo "$title_md [ info ] [ loading firewall client-proxy ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2527,7 +2529,7 @@ server_port_udp="" ;
 client_port_tcp="http,https,ssh,8080,3128" ;
 server_port_tcp="" ;
 fi
-#### :rutina-final-client-squid:
+#### :rutina-final-client-proxy:
 #### ##################################################
 #### ##################################################
 #### :rutina-inicial-lan-vpn:
@@ -2796,15 +2798,15 @@ fi
 #### :rutina-final-server-ftp:
 #### ##################################################
 #### ##################################################
-#### :rutina-inicial-server-squid:
+#### :rutina-inicial-server-proxy:
 ####
 ####
-####   #### english: firewall of system server-squid:
-####   #### spanish: cortafuego del sistema server-squid:
+####   #### english: firewall of system server-proxy:
+####   #### spanish: cortafuego del sistema server-proxy:
 ####
 ####
-if [ "$first_option" == "server-squid" ]; then
-echo "$title_md [ info ] [ loading firewall server-squid ]" ;
+if [ "$first_option" == "server-proxy" ]; then
+echo "$title_md [ info ] [ loading firewall server-proxy ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2817,7 +2819,7 @@ server_port_udp="" ;
 client_port_tcp="http,https,ssh,8080,3128" ;
 server_port_tcp="http,https,ssh,8080,3128" ;
 fi
-#### :rutina-final-server-squid:
+#### :rutina-final-server-proxy:
 #### ##################################################
 #### ##################################################
 #### :rutina-inicial-server-news:
@@ -3188,11 +3190,11 @@ echo "$text_md regen-config examples-config show-config modify-config del-config
 echo "$title_md  [ firewall-launch ]                                                           "
 echo "$text_md eraserules custom wizard-mini wizard-full off-line all-permisive client-basic        "
 echo "$text_md client-web client-git client-ipp client-irc client-vnc client-mail client-news       "
-echo "$text_md client-vpn client-torrent client-vpn client-ftp client-tor client-squid              "
+echo "$text_md client-vpn client-torrent client-vpn client-ftp client-tor client-proxy              "
 echo "$text_md game-widelands games-udp games-shooter game-wesnoth game-minetest game-freeciv       "
 echo "$text_md lan-tor lan-vpn server-ssh server-irc server-samba server-vnc server-webserver       "
 echo "$text_md server-print server-lamp server-news server-ftp server-mail server-teamspeak         "
-echo "$text_md server-mumble server-sql server-asterisk server-domain server-squid                  "
+echo "$text_md server-mumble server-sql server-asterisk server-domain server-proxy                  "
 echo "$title_md  [ options-easy ]                                                              "
 echo "$text_md preferences-read preferences-modify preferences-regen preferences-example ver        "
 echo "$text_md list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6         "
@@ -3233,10 +3235,10 @@ echo "$text_md     firewall-launch |  eraserules custom wizard-mini wizard-full 
 echo "$text_md                        client-basic games-udp games-shooter game-wesnoth game-minetest"
 echo "$text_md                        game-freeciv game-widelands client-web client-irc client-vnc client-mail"
 echo "$text_md                        client-news client-torrent client-vpn client-ftp  client-tor client-ipp"
-echo "$text_md                        client-squid client-git lan-tor lan-vpn server-ssh server-samba server-vnc"
+echo "$text_md                        client-proxy client-git lan-tor lan-vpn server-ssh server-samba server-vnc"
 echo "$text_md                        server-webserver server-print server-lamp server-news server-ftp"
 echo "$text_md                        server-mail server-teamspeak server-mumble server-sql"
-echo "$text_md                        server-asterisk server-domain server-squid server-irc            "
+echo "$text_md                        server-asterisk server-domain server-proxy server-irc            "
 echo "$text_md        options-easy |  preferences-read preferences-modify preferences-regen preferences-example"
 echo "$text_md                        list-options clasic-options info-options filelog autolog ip4 ip6 "
 echo "$text_md                        sockets nodes geoip date free ver version notes depends commands "
@@ -3465,6 +3467,7 @@ echo "$text_md client-vnc . launch a one firewall vnc client"
 echo "$text_md client-mail . launch a one firewall mail client"
 echo "$text_md client-news . launch a one firewall news client"
 echo "$text_md client-vpn . launch a one firewall vpn client"
+echo "$text_md client-proxy . launch a one firewall proxy client"
 echo "$text_md games-udp . launch a one firewall udp client"
 echo "$text_md games-shooter . launch a one firewall shooter client"
 echo "$text_md games-wesnoth . launch a one firewall wesnoth client"
@@ -3487,7 +3490,7 @@ echo "$text_md server-ssh . launch a one firewall basic server"
 echo "$text_md server-sql . launch a one firewall basic server"
 echo "$text_md server-asterisk . launch a one firewall basic server"
 echo "$text_md server-domain . launch a one firewall basic server"
-echo "$text_md server-squid . launch a one firewall basic server"
+echo "$text_md server-proxy . launch a one firewall basic server"
 exit; fi
 ####
 ####
