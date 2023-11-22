@@ -2100,1047 +2100,6 @@ $cmd_binary save autosave-fwiptables &> /dev/null ; exit; fi
 ####
 ####
 #### :rutina-final-autosave:
-##########    english: ready system rules con its option               ##########
-##########    spanish: preprara reglas del sistema con sus opciones    ##########
-####
-####
-####   #### english: The first        firewall of system  
-####   #### spanish: El primero       cortafuego del sistema
-####
-####
-####
-####
-####   #### english: firewall of system custom:
-####   #### spanish: cortafuego del sistema custom:
-####
-####
-##########   english: custom firewall      ##########
-##########   spanish: custom cortafuegos   ##########
-#### :rutina-inicial-custom-rules:
-####
-####
-if [ "$first_option" == "custom" ]; then 
-echo "$title_md [ info ] [ loading firewall custom ] [ $directory_config/$second_option ]" ;
-launch_rules_firewall="yes" ;
-type_firewall="custom" ;
-name_firewall="$second_option" ;
-####
-####
-#### english: configure custom variables if there are
-#### spanish: configura variables modificadas si estan ahi
-####
-####
-if [ -f "$directory_config/$second_option" ]; then source $directory_config/$second_option ; fi
-####
-####
-if [ ! -f "$directory_config/$second_option" ]; then  $cmd_binary names-config ; 
-exit; fi
-####
-####
-fi
-####
-####
-#### :rutina-final-custom-rules:
-##########   english: system firewall           ##########
-##########   spanish: cortafuegos del sistema   ##########
-#### :rutina-inicial-off-line:
-####
-####
-####   #### english: firewall of system off-line:
-####   #### spanish: cortafuego del sistema off-line:
-####
-####
-if [ "$first_option" == "off-line" ]; then
-echo "$title_md [ info ] [ loading firewall off-line ]" ;
-launch_rules_firewall="yes" ;
-type_firewall="off-line";
-name_firewall="$first_option";
-fi
-#### :rutina-final-off-line:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-all-permisive:
-####
-####
-####   #### english: firewall of system all-permisive:
-####   #### spanish: cortafuego del sistema all-permisive:
-####
-####
-if [ "$first_option" == "all-permisive" ]; then
-echo "$title_md [ info ] [ loading firewall all-permisive ]" ;
-launch_rules_firewall="yes" ;
-type_firewall="all-permisive" ;
-name_firewall="$first_option";
-fi
-####
-####
-#### :rutina-final-all-permisive:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-shield-ssh:
-####
-####   #### english: firewall of system shield-ssh:
-####   #### spanish: cortafuego del sistema shield-ssh:
-####
-####
-if [ "$first_option" == "shield-ssh" ]; then
-echo "$title_md [ info ] [ loading firewall shield-ssh ]" ;
-launch_rules_firewall="yes" ;
-type_firewall="shield-ssh"    ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_maxtries="5" ;
-#### english: ports client and ports server
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_udp="" ;
-client_port_tcp="http,https,http-alt,ssh" ;
-server_port_tcp="ssh" ;
-fi
-#### :rutina-final-shield-ssh:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-client-basic:
-####
-####
-####   #### english: firewall of system client-basic:
-####   #### spanish: cortafuego del sistema client-basic:
-####
-####
-if [ "$first_option" == "client-basic" ]; then
-echo "$title_md [ info ] [ loading firewall client-basic ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### you can connect normal web
-client_port_tcp="http,https,http-alt,ssh" ;
-client_port_udp="domain,bootpc,ntp" ;
-server_port_tcp="" ;
-server_port_udp="" ;
-fi
-#### :rutina-final-client-basic:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-client-web:
-####
-####
-####   #### english: firewall of system client-web:
-####   #### spanish: cortafuego del sistema client-web:
-####
-####
-if [ "$first_option" == "client-web" ]; then
-echo "$title_md [ info ] [ loading firewall client-web ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### you can connect normal web
-server_port_udp="" ;
-client_port_tcp="http,https,http-alt,ssh" ;
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_tcp="" ;
-fi
-#### :rutina-final-client-web:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-client-git:
-####
-####
-####   #### english: firewall of system client-git:
-####   #### spanish: cortafuego del sistema client-git:
-####
-####
-if [ "$first_option" == "client-git" ]; then
-echo "$title_md [ info ] [ loading firewall client-git ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### you can connect normal web
-server_port_udp="" ;
-client_port_tcp="http,https,http-alt,ssh,git" ;
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_tcp="" ;
-fi
-#### :rutina-final-client-git:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-client-ipp:
-####
-####
-####   #### english: firewall of system client-ipp:
-####   #### spanish: cortafuego del sistema client-ipp:
-####
-####
-if [ "$first_option" == "client-ipp" ]; then
-echo "$title_md [ info ] [ loading firewall client-ipp ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### you can connect normal web
-server_port_udp="" ;
-client_port_tcp="http,https,http-alt,ssh,ipp" ;
-client_port_udp="domain,bootpc,ntp,https" ;
-server_port_tcp="" ;
-fi
-#### :rutina-final-client-ipp:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-client-irc:
-####
-####
-####   #### english: firewall of system client-irc:
-####   #### spanish: cortafuego del sistema client-irc:
-####
-####
-if [ "$first_option" == "client-irc" ]; then
-echo "$title_md [ info ] [ loading firewall client-irc ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### you can connect normal web
-server_port_udp="" ;
-client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_tcp="" ;
-fi
-#### :rutina-final-shield-irc:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-client-vnc:
-####
-####
-####   #### english: firewall of system client-vnc:
-####   #### spanish: cortafuego del sistema client-vnc:
-####
-####
-if [ "$first_option" == "client-vnc" ]; then
-echo "$title_md [ info ] [ loading firewall client-vnc ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### you can connect normal web and vnc
-server_port_udp="" ;
-client_port_tcp="http,https,http-alt,ssh,5900:5910" ;
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_tcp="" ;
-fi
-#### :rutina-final-shield-vnc:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-client-torrent:
-####
-####
-####   #### english: firewall of system client-torrent:
-####   #### spanish: cortafuego del sistema client-torrent:
-####
-####
-if [ "$first_option" == "client-torrent" ]; then
-echo "$title_md [ info ] [ loading firewall client-torrent ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### you can connect web normal and bittorrent too
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_udp="1025:65000" ;
-client_port_tcp="http,https,http-alt,ssh,9091,51413" ;
-server_port_tcp="9091,51413" ;
-fi
-#### :rutina-final-client-torrent:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-client-vpn:
-####
-####
-####   #### english: firewall of system client-vpn:
-####   #### spanish: cortafuego del sistema client-vpn:
-####
-####
-if [ "$first_option" == "client-vpn" ]; then
-echo "$title_md [ info ] [ loading firewall client-vpn ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### you can connect web normal and web vpn
-server_port_udp="" ;
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,500,1194,1701,4500" ; 
-client_port_tcp="http,https,http-alt,ssh,443,1701,1723" ; 
-server_port_tcp="" ;
-fi
-#### :rutina-final-client-vpn:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-client-tor:
-####
-####
-####   #### english: firewall of system client-tor:
-####   #### spanish: cortafuego del sistema client-tor:
-####
-####
-if [ "$first_option" == "client-tor" ]; then
-echo "$title_md [ info ] [ loading firewall client-tor ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### you can connect web normal and web tor
-server_port_udp="" ; 
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-client_port_tcp="http,https,http-alt,ssh,9000:9170" ;
-server_port_tcp="9000:9170" ;
-fi
-#### :rutina-final-client-tor:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-client-news:
-####
-####
-####   #### english: firewall of system client-news:
-####   #### spanish: cortafuego del sistema client-news:
-####
-####
-if [ "$first_option" == "client-news" ]; then
-echo "$title_md [ info ] [ loading firewall client-news ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### client news:
-#### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
-#### may be used when doing a bulk transfer of articles from one 
-#### server to another. When clients connect to a news server with Transport Layer Security (TLS),
-#### TCP port 563 is often used. This is sometimes referred to as NNTPS. 
-#### Alternatively, a plain-text connection over port 119 may be changed to use TLS via the STARTTLS command. 
-server_port_udp="" ; 
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-client_port_tcp="http,https,http-alt,ssh,119,433,563" ;
-server_port_tcp="" ;
-fi
-#### :rutina-final-client-news:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-client-mail:
-####
-####
-####   #### english: firewall of system client-mail:
-####   #### spanish: cortafuego del sistema client-mail:
-####
-####
-if [ "$first_option" == "client-mail" ]; then
-echo "$title_md [ info ] [ loading firewall client-mail ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### client news:
-#### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
-#### may be used when doing a bulk transfer of articles from one 
-#### server to another. When clients connect to a news server with Transport Layer Security (TLS),
-#### TCP port 563 is often used. This is sometimes referred to as NNTPS. 
-#### Alternatively, a plain-text connection over port 119 may be changed to use TLS via the STARTTLS command. 
-#### client mail:
-#### SMTP (sending mail)	Unencrypted	25* (or 26)
-#### POP3 (receiving mail)	Encrypted - TLS	995
-#### POP3 (receiving mail)	Encrypted - SSL	995
-#### POP3 (receiving mail)	Unencrypted	110
-#### IMAP2 143
-#### IMAPS 993
-#### negotiation submission     tls             465 and 587
-#### nttps 563
-#### nttp  119
-####
-server_port_udp="" ; 
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-client_port_tcp="http,https,http-alt,ssh,25,119,563,25,995,110,465,587,143,993" ;
-server_port_tcp="" ;
-fi
-#### :rutina-final-client-mail:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-client-ftp:
-####
-####
-####   #### english: firewall of system client-ftp:
-####   #### spanish: cortafuego del sistema client-ftp:
-####
-####
-if [ "$first_option" == "client-ftp" ]; then
-echo "$title_md [ info ] [ loading firewall client-ftp ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### client ftp:
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_udp="" ;
-client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
-server_port_tcp="" ;
-fi
-#### :rutina-final-shield-ftp:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-client-proxy:
-####
-####
-####   #### english: firewall of system client-proxy:
-####   #### spanish: cortafuego del sistema client-proxy:
-####
-####
-if [ "$first_option" == "client-proxy" ]; then
-echo "$title_md [ info ] [ loading firewall client-proxy ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### server http and https and ssh /tcp and https udp
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_udp="" ;
-client_port_tcp="http,https,http-alt,3128,ssh" ;
-server_port_tcp="" ;
-fi
-#### :rutina-final-client-proxy:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-lan-vpn:
-####
-####
-####   #### english: firewall of system lan-vpn:
-####   #### spanish: cortafuego del sistema lan-vpn:
-####
-####
-if [ "$first_option" == "lan-vpn" ]; then
-echo "$title_md [ info ] [ loading firewall lan-vpn ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### vpn ports to connects ports vpn
-#### with necesary ports to connect gatway and date, domain for your ip
-server_port_udp="" ;
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,500,1194,1701,4500" ; 
-client_port_tcp="1701,1723" ; 
-server_port_tcp="" ;
-fi
-#### :rutina-final-lan-vpn:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-lan-tor:
-####
-####
-####   #### english: firewall of system lan-tor:
-####   #### spanish: cortafuego del sistema lan-tor:
-####
-####
-if [ "$first_option" == "lan-tor" ]; then
-echo "$title_md [ info ] [ loading firewall lan-tor ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### lan tor, 9000:9170 for connect to tor
-#### with necesary ports to connect gatway and date, domain for your ip
-server_port_udp="" ;
-client_port_udp="bootpc,domain,domain-s,ntp" ;
-client_port_tcp="9000:9170" ;
-server_port_tcp="9000:9170" ;
-fi
-#### :rutina-final-lan-tor:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-games-shooter:
-####
-####
-####   #### english: firewall of system games-shooter:
-####   #### spanish: cortafuego del sistema games-shooter:
-####
-####
-if [ "$first_option" == "games-shooter" ]; then
-echo "$title_md [ info ] [ loading firewall games-shooter ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_udp="1025:65000" ;
-client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
-server_port_tcp="" ;
-fi
-#### :rutina-final-games-shooter:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-games-udp:
-####
-####
-####   #### english: firewall of system games-udp:
-####   #### spanish: cortafuego del sistema games-udp:
-####
-####
-if [ "$first_option" == "games-udp" ]; then
-echo "$title_md [ info ] [ loading firewall games-udp ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_udp="1025:65000" ;
-client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
-server_port_tcp="" ;
-fi
-#### :rutina-final-games-shooter:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-game-wesnoth:
-####
-####
-####   #### english: firewall of system game-wesnoth:
-####   #### spanish: cortafuego del sistema game-wesnoth:
-####
-####
-if [ "$first_option" == "game-wesnoth" ]; then
-echo "$title_md [ info ] [ loading firewall game-wesnoth ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### game wesnoth port 14999 and 15001 usually
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
-server_port_udp="" ;
-client_port_tcp="http,https,http-alt,ssh,14950:15050" ;
-server_port_tcp="14950:15050" ;
-fi
-#### :rutina-final-game-wesnoth:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-game-minetest:
-####
-####
-####   #### english: firewall of system game-minetest:
-####   #### spanish: cortafuego del sistema game-minetest:
-####
-####
-if [ "$first_option" == "game-minetest" ]; then
-echo "$title_md [ info ] [ loading firewall game-minetest ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### game minetest and minecraft porst 25k and 35k /udp
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,25000:35000" ; 
-server_port_udp="" ;
-client_port_tcp="http,https,http-alt,ssh,25000:35000" ;
-server_port_tcp="25000:35000" ;
-fi
-#### :rutina-final-game-minetest:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-game-freeciv:
-####
-####
-####   #### english: firewall of system game-freeciv:
-####   #### spanish: cortafuego del sistema game-freeciv:
-####
-####
-if [ "$first_option" == "game-freeciv" ]; then
-echo "$title_md [ info ] [ loading firewall game-freeciv ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-alllow_shield_ssh="no" ;
-config_shield_port="" ;
-#### for default 5556 port tcp perhaps 5555 too
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
-server_port_udp="" ;
-client_port_tcp="http,https,http-alt,ssh,5555:5556" ;
-server_port_tcp="5555:5556" ;
-fi
-#### :rutina-final-game-freeciv:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-game-widelands:
-####
-####
-####   #### english: firewall of system game-widelands:
-####   #### spanish: cortafuego del sistema game-widelands:
-####
-####
-if [ "$first_option" == "game-widelands" ]; then
-echo "$title_md [ info ] [ loading firewall game-widelands ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### for default 7396 port tcp and 7396 udp
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,7396" ; 
-server_port_udp="7396" ;
-client_port_tcp="ssh,http,https,http-alt,7396" ;
-server_port_tcp="7396" ;
-fi
-#### :rutina-final-game-widelands:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-server-web:
-####
-####
-####   #### english: firewall of system server-web:
-####   #### spanish: cortafuego del sistema server-web:
-####
-####
-if [ "$first_option" == "server-web" ]; then
-echo "$title_md [ info ] [ loading firewall server-web ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_port="ssh" ;
-#### server http and https and ssh /tcp and https udp
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_udp="https" ;
-client_port_tcp="http,https,http-alt,ssh" ;
-server_port_tcp="ssh,http,https,http-alt" ;
-fi
-#### :rutina-final-server-web:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-server-vnc:
-####
-####
-####   #### english: firewall of system server-vnc:
-####   #### spanish: cortafuego del sistema server-vnc:
-####
-####
-if [ "$first_option" == "server-vnc" ]; then
-echo "$title_md [ info ] [ loading firewall server-vnc ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_maxtries="20" ;
-config_shield_port="22,5900:5910"
-#### you can connect normal web and vnc
-server_port_udp="" ;
-client_port_tcp="http,https,http-alt,ssh,5900:5910" ;
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_tcp="ssh,5900:5910" ;
-fi
-#### :rutina-final-server-vnc:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-server-ftp:
-####
-####
-####   #### english: firewall of system server-ftp:
-####   #### spanish: cortafuego del sistema server-ftp:
-####
-####
-if [ "$first_option" == "server-ftp" ]; then
-echo "$title_md [ info ] [ loading firewall server-ftp ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="" ;
-#### server http and https and ssh /tcp and https udp
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_udp="" ;
-client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
-server_port_tcp="ssh,http,https,ftp,ftp-data,ftps,ftps-data" ;
-fi
-#### :rutina-final-server-ftp:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-server-proxy:
-####
-####
-####   #### english: firewall of system server-proxy:
-####   #### spanish: cortafuego del sistema server-proxy:
-####
-####
-if [ "$first_option" == "server-proxy" ]; then
-echo "$title_md [ info ] [ loading firewall server-proxy ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_port="ssh" ;
-#### server http and https and ssh /tcp and https udp
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_udp="" ;
-client_port_tcp="http,https,http-alt,3128,ssh" ;
-server_port_tcp="ssh,http,https,http-alt,3128" ;
-fi
-#### :rutina-final-server-proxy:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-server-news:
-####
-####
-####   #### english: firewall of system server-news:
-####   #### spanish: cortafuego del sistema server-news:
-####
-####
-if [ "$first_option" == "server-news" ]; then
-echo "$title_md [ info ] [ loading firewall server-news ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_port="ssh" ;
-#### client news:
-#### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
-#### may be used when doing a bulk transfer of articles from one 
-#### server to another. When clients connect to a news server with Transport Layer Security (TLS),
-#### TCP port 563 is often used. This is sometimes referred to as NNTPS. 
-#### Alternatively, a plain-text connection over port 119 may be changed to use TLS via the STARTTLS command. 
-server_port_udp="" ; 
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-client_port_tcp="http,https,http-alt,ssh,119,433,563" ;
-server_port_tcp="ssh,http,https,119,433,563" ;
-fi
-#### :rutina-final-server-news:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-server-mail:
-####
-####
-####   #### english: firewall of system server-mail:
-####   #### spanish: cortafuego del sistema server-mail:
-####
-####
-if [ "$first_option" == "server-mail" ]; then
-echo "$title_md [ info ] [ loading firewall server-mail ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_port="ssh" ;
-#### client news:
-#### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
-#### may be used when doing a bulk transfer of articles from one 
-#### server to another. When clients connect to a news server with Transport Layer Security (TLS),
-#### TCP port 563 is often used. This is sometimes referred to as NNTPS. 
-#### Alternatively, a plain-text connection over port 119 may be changed to use TLS via the STARTTLS command. 
-#### client mail:
-#### SMTP (sending mail)	Unencrypted	25* (or 26)
-#### POP3 (receiving mail)	Encrypted - TLS	995
-#### POP3 (receiving mail)	Encrypted - SSL	995
-#### POP3 (receiving mail)	Unencrypted	110
-#### IMAP2 143
-#### IMAPS 993
-#### negotiation submission     tls             465 and 587
-#### 
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_udp="https" ;
-client_port_tcp="http,https,http-alt,ssh,25,119,433,563,25:26,995,110,465,587,143,993" ;
-server_port_tcp="ssh,http,https,25,119,433,563,25:26,995,110,465,587,143,993" ;
-fi
-#### :rutina-final-server-mail:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-server-samba:
-####
-####
-####   #### english: firewall of system server-samba:
-####   #### spanish: cortafuego del sistema server-samba:
-####
-####
-if [ "$first_option" == "server-samba" ]; then
-echo "$title_md [ info ] [ loading firewall server-samba ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_port="ssh" ;
-#### server samba and active directory
-client_port_tcp="http,https,http-alt,ssh,ldap,636,microsoft-ds" ;
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,ldap,636,137:139" ;
-server_port_tcp="ssh,ldap,636,microsoft-ds" ; 
-server_port_udp="ssh,ntp,domain,domain-s,ldap,636,137:139" ;
-fi
-#### :rutina-final-server-mail:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-server-print:
-####
-####
-####   #### english: firewall of system server-print:
-####   #### spanish: cortafuego del sistema server-print:
-####
-####
-if [ "$first_option" == "server-print" ]; then
-echo "$title_md [ info ] [ loading firewall server-print ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_port="ssh" ;
-#### server ipp and printer
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_udp="" ;
-client_port_tcp="http,https,http-alt,ssh" ;
-server_port_tcp="ssh,printer,ipp" ;
-fi
-#### :rutina-final-server-print:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-server-ssh:
-####
-####
-####   #### english: firewall of system server-ssh:
-####   #### spanish: cortafuego del sistema server-ssh:
-####
-####
-if [ "$first_option" == "server-ssh" ]; then
-echo "$title_md [ info ] [ loading firewall server-ssh ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_port="ssh" ;
-#### server ssh 22/tcp
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_udp="" ;
-client_port_tcp="http,https,http-alt,ssh" ;
-server_port_tcp="ssh" ;
-fi
-#### :rutina-final-server-ssh:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-server-lamp:
-####
-####
-####   #### english: firewall of system server-lamp:
-####   #### spanish: cortafuego del sistema server-lamp:
-####
-####
-if [ "$first_option" == "server-lamp" ]; then
-echo "$title_md [ info ] [ loading firewall server-lamp ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_port="ssh" ;
-####  english: udp: 20 is ftp-data, 21 is ftp, 989 is ftps-data y 990 is ftps
-####  english: tcp: 10000 is webmin, 3306 is mysql, 5432 is postgresql
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_udp="https" ;
-client_port_tcp="http,https,http-alt,ssh,20,21,989,990" ;
-server_port_tcp="ssh,http,https,10000,3306,5432" ;
-fi
-#### :rutina-final-server-lamp:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-server-asterisk:
-####
-####
-####   #### english: firewall of system server-asterisk:
-####   #### spanish: cortafuego del sistema server-asterisk:
-####
-####
-if [ "$first_option" == "server-asterisk" ]; then
-echo "$title_md [ info ] [ loading firewall server-asterisk ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_port="ssh" ;
-####    UDP:5060 SIP (sip.conf), newer Versions support TCP:5060
-####    UDP:10000-20000 RTP (rtp.conf) for the media stream, a higher Portrange
-####    UDP:5036 IAX2
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,5060,10000:20000,5036" ;
-server_port_udp="5060,10000:20000,5036" ;
-client_port_tcp="http,https,http-alt,ssh,5060" ;
-server_port_tcp="ssh,5060" ;
-fi
-#### :rutina-final-server-astrerisk:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-server-mumble:
-####
-####
-####   #### english: firewall of system server-mumble:
-####   #### spanish: cortafuego del sistema server-mumble:
-####
-####
-if [ "$first_option" == "server-mumble" ]; then
-echo "$title_md [ info ] [ loading firewall server-mumble ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_port="ssh" ;
-#### mumble port 64738 tcp and 64738 udp
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,64738" ;
-server_port_udp="64738" ;
-client_port_tcp="http,https,http-alt,ssh,64738" ;
-server_port_tcp="ssh,64738" ;
-fi
-#### :rutina-final-server-mumble:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-server-teamspeak:
-####
-####
-####   #### english: firewall of system server-teamspeak:
-####   #### spanish: cortafuego del sistema server-teamspeak:
-####
-####
-if [ "$first_option" == "server-teamspeak" ]; then
-echo "$title_md [ info ] [ loading firewall server-teamspeak ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_port="ssh" ;
-#### Service	        Protocol	Local Port (Server)
-#### Voice	        UDP	9987
-#### Filetransfer	TCP	30033
-#### ServerQuery (raw)	TCP	10011
-#### ServerQuery (SSH)	TCP	10022
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,9987" ;
-server_port_udp="9987" ;
-client_port_tcp="http,https,http-alt,ssh,30033,10011,10022" ;
-server_port_tcp="ssh,30033,10011,10022" ;
-fi
-#### :rutina-final-server-teamspeak:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-server-sql:
-####
-####
-####   #### english: firewall of system server-sql:
-####   #### spanish: cortafuego del sistema server-sql:
-####
-####
-if [ "$first_option" == "server-sql" ]; then
-echo "$title_md [ info ] [ loading firewall server-sql ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_port="ssh" ;
-####  POSTGRESQL 5432/tcp and 5432/udp
-####  Technology	Default Port	Required
-####  MySQL Client to Server - MySQL Protocol – 3306	3306/tcp	Optional - pick at least 1
-####  MySQL Client to Server – New X Protocol – 33060	33060/tcp	Optional - pick at least 1
-####  Connects via SSH Tunnel	22/tcp	Optional - pick at least 1
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,5432" ;
-server_port_udp="5432" ;
-client_port_tcp="http,https,http-alt,ssh,5432,3306,3360" ;
-server_port_tcp="ssh,5432,3306,3360" ;
-fi
-#### :rutina-final-server-sql:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-server-irc:
-####
-####
-####   #### english: firewall of system server-irc:
-####   #### spanish: cortafuego del sistema server-irc:
-####
-####
-if [ "$first_option" == "server-irc" ]; then
-echo "$title_md [ info ] [ loading firewall server-irc ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
-#### you can connect normal web
-server_port_udp="" ;
-client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_tcp="ssh,ircs-u,ircd" ;
-fi
-#### :rutina-final-server-irc:
-#### ##################################################
-#### ##################################################
-#### :rutina-inicial-server-domain:
-####
-####
-####   #### english: firewall of system server-domain:
-####   #### spanish: cortafuego del sistema server-domain:
-####
-####
-if [ "$first_option" == "server-domain" ]; then
-echo "$title_md [ info ] [ loading firewall server-domain ]" ;
-launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
-name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_port="ssh" ;
-#### server domain and domain-s
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https," ;
-server_port_udp="domain,domain-s" ;
-client_port_tcp="http,https,http-alt,ssh" ;
-server_port_tcp="ssh" ;
-fi
-####
-####
-#### :rutina-final-server-domain:
 ##########    english: ntp: update the date and time    ##########
 ##########    spanish: ntp: actualiza la fecha y hora   ##########
 #### :rutina-inicial-ntp:
@@ -7152,6 +6111,1061 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-options-easy:
+##########    english: ready system rules con its option               ##########
+##########    spanish: preprara reglas del sistema con sus opciones    ##########
+####
+####
+####   #### english: The first        firewall of system  custom
+####   #### spanish: El primero       cortafuego del sistema custom
+####
+####
+####
+####
+####   #### english: firewall of system custom:
+####   #### spanish: cortafuego del sistema custom:
+####
+####
+##########   english: custom firewall      ##########
+##########   spanish: custom cortafuegos   ##########
+#### :rutina-inicial-custom-rules:
+####
+####
+if [ "$first_option" == "custom" ]; then 
+echo "$title_md [ info ] [ loading firewall custom ] [ $directory_config/$second_option ]" ;
+launch_rules_firewall="yes" ;
+type_firewall="custom" ;
+name_firewall="$second_option" ;
+####
+####
+#### english: configure custom variables if there are
+#### spanish: configura variables modificadas si estan ahi
+####
+####
+if [ -f "$directory_config/$second_option" ]; then source $directory_config/$second_option ; fi
+####
+####
+if [ ! -f "$directory_config/$second_option" ]; then  $cmd_binary names-config ; 
+exit; fi
+####
+####
+fi
+####
+####
+#### :rutina-final-custom-rules:
+##########    english: ready system rules con its option               ##########
+##########    spanish: preprara reglas del sistema con sus opciones    ##########
+####
+####
+####   #### english: The first        firewall of system  predesignated
+####   #### spanish: El primero       cortafuego del sistema predesignado
+####
+####
+####
+####
+####   #### english: firewall of system predesignated:
+####   #### spanish: cortafuego del sistema predesignated:
+####
+####
+##########   english: system firewall           ##########
+##########   spanish: cortafuegos del sistema   ##########
+#### :rutina-inicial-off-line:
+####
+####
+####   #### english: firewall of system off-line:
+####   #### spanish: cortafuego del sistema off-line:
+####
+####
+if [ "$first_option" == "off-line" ]; then
+echo "$title_md [ info ] [ loading firewall off-line ]" ;
+launch_rules_firewall="yes" ;
+type_firewall="off-line";
+name_firewall="$first_option";
+fi
+#### :rutina-final-off-line:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-all-permisive:
+####
+####
+####   #### english: firewall of system all-permisive:
+####   #### spanish: cortafuego del sistema all-permisive:
+####
+####
+if [ "$first_option" == "all-permisive" ]; then
+echo "$title_md [ info ] [ loading firewall all-permisive ]" ;
+launch_rules_firewall="yes" ;
+type_firewall="all-permisive" ;
+name_firewall="$first_option";
+fi
+####
+####
+#### :rutina-final-all-permisive:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-shield-ssh:
+####
+####   #### english: firewall of system shield-ssh:
+####   #### spanish: cortafuego del sistema shield-ssh:
+####
+####
+if [ "$first_option" == "shield-ssh" ]; then
+echo "$title_md [ info ] [ loading firewall shield-ssh ]" ;
+launch_rules_firewall="yes" ;
+type_firewall="shield-ssh"    ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="" ;
+config_shield_maxtries="5" ;
+#### english: ports client and ports server
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,ssh" ;
+server_port_tcp="ssh" ;
+fi
+#### :rutina-final-shield-ssh:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-basic:
+####
+####
+####   #### english: firewall of system client-basic:
+####   #### spanish: cortafuego del sistema client-basic:
+####
+####
+if [ "$first_option" == "client-basic" ]; then
+echo "$title_md [ info ] [ loading firewall client-basic ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ;
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### you can connect normal web
+client_port_tcp="http,https,http-alt,ssh" ;
+client_port_udp="domain,bootpc,ntp" ;
+server_port_tcp="" ;
+server_port_udp="" ;
+fi
+#### :rutina-final-client-basic:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-web:
+####
+####
+####   #### english: firewall of system client-web:
+####   #### spanish: cortafuego del sistema client-web:
+####
+####
+if [ "$first_option" == "client-web" ]; then
+echo "$title_md [ info ] [ loading firewall client-web ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ;
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### you can connect normal web
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,ssh" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_tcp="" ;
+fi
+#### :rutina-final-client-web:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-git:
+####
+####
+####   #### english: firewall of system client-git:
+####   #### spanish: cortafuego del sistema client-git:
+####
+####
+if [ "$first_option" == "client-git" ]; then
+echo "$title_md [ info ] [ loading firewall client-git ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ;
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### you can connect normal web
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,ssh,git" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_tcp="" ;
+fi
+#### :rutina-final-client-git:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-ipp:
+####
+####
+####   #### english: firewall of system client-ipp:
+####   #### spanish: cortafuego del sistema client-ipp:
+####
+####
+if [ "$first_option" == "client-ipp" ]; then
+echo "$title_md [ info ] [ loading firewall client-ipp ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ;
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### you can connect normal web
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,ssh,ipp" ;
+client_port_udp="domain,bootpc,ntp,https" ;
+server_port_tcp="" ;
+fi
+#### :rutina-final-client-ipp:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-irc:
+####
+####
+####   #### english: firewall of system client-irc:
+####   #### spanish: cortafuego del sistema client-irc:
+####
+####
+if [ "$first_option" == "client-irc" ]; then
+echo "$title_md [ info ] [ loading firewall client-irc ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ;
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### you can connect normal web
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_tcp="" ;
+fi
+#### :rutina-final-shield-irc:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-vnc:
+####
+####
+####   #### english: firewall of system client-vnc:
+####   #### spanish: cortafuego del sistema client-vnc:
+####
+####
+if [ "$first_option" == "client-vnc" ]; then
+echo "$title_md [ info ] [ loading firewall client-vnc ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ;
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### you can connect normal web and vnc
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,ssh,5900:5910" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_tcp="" ;
+fi
+#### :rutina-final-shield-vnc:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-torrent:
+####
+####
+####   #### english: firewall of system client-torrent:
+####   #### spanish: cortafuego del sistema client-torrent:
+####
+####
+if [ "$first_option" == "client-torrent" ]; then
+echo "$title_md [ info ] [ loading firewall client-torrent ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### you can connect web normal and bittorrent too
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_udp="1025:65000" ;
+client_port_tcp="http,https,http-alt,ssh,9091,51413" ;
+server_port_tcp="9091,51413" ;
+fi
+#### :rutina-final-client-torrent:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-vpn:
+####
+####
+####   #### english: firewall of system client-vpn:
+####   #### spanish: cortafuego del sistema client-vpn:
+####
+####
+if [ "$first_option" == "client-vpn" ]; then
+echo "$title_md [ info ] [ loading firewall client-vpn ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### you can connect web normal and web vpn
+server_port_udp="" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,500,1194,1701,4500" ; 
+client_port_tcp="http,https,http-alt,ssh,443,1701,1723" ; 
+server_port_tcp="" ;
+fi
+#### :rutina-final-client-vpn:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-tor:
+####
+####
+####   #### english: firewall of system client-tor:
+####   #### spanish: cortafuego del sistema client-tor:
+####
+####
+if [ "$first_option" == "client-tor" ]; then
+echo "$title_md [ info ] [ loading firewall client-tor ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### you can connect web normal and web tor
+server_port_udp="" ; 
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+client_port_tcp="http,https,http-alt,ssh,9000:9170" ;
+server_port_tcp="9000:9170" ;
+fi
+#### :rutina-final-client-tor:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-news:
+####
+####
+####   #### english: firewall of system client-news:
+####   #### spanish: cortafuego del sistema client-news:
+####
+####
+if [ "$first_option" == "client-news" ]; then
+echo "$title_md [ info ] [ loading firewall client-news ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### client news:
+#### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
+#### may be used when doing a bulk transfer of articles from one 
+#### server to another. When clients connect to a news server with Transport Layer Security (TLS),
+#### TCP port 563 is often used. This is sometimes referred to as NNTPS. 
+#### Alternatively, a plain-text connection over port 119 may be changed to use TLS via the STARTTLS command. 
+server_port_udp="" ; 
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+client_port_tcp="http,https,http-alt,ssh,119,433,563" ;
+server_port_tcp="" ;
+fi
+#### :rutina-final-client-news:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-mail:
+####
+####
+####   #### english: firewall of system client-mail:
+####   #### spanish: cortafuego del sistema client-mail:
+####
+####
+if [ "$first_option" == "client-mail" ]; then
+echo "$title_md [ info ] [ loading firewall client-mail ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### client news:
+#### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
+#### may be used when doing a bulk transfer of articles from one 
+#### server to another. When clients connect to a news server with Transport Layer Security (TLS),
+#### TCP port 563 is often used. This is sometimes referred to as NNTPS. 
+#### Alternatively, a plain-text connection over port 119 may be changed to use TLS via the STARTTLS command. 
+#### client mail:
+#### SMTP (sending mail)	Unencrypted	25* (or 26)
+#### POP3 (receiving mail)	Encrypted - TLS	995
+#### POP3 (receiving mail)	Encrypted - SSL	995
+#### POP3 (receiving mail)	Unencrypted	110
+#### IMAP2 143
+#### IMAPS 993
+#### negotiation submission     tls             465 and 587
+#### nttps 563
+#### nttp  119
+####
+server_port_udp="" ; 
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+client_port_tcp="http,https,http-alt,ssh,25,119,563,25,995,110,465,587,143,993" ;
+server_port_tcp="" ;
+fi
+#### :rutina-final-client-mail:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-ftp:
+####
+####
+####   #### english: firewall of system client-ftp:
+####   #### spanish: cortafuego del sistema client-ftp:
+####
+####
+if [ "$first_option" == "client-ftp" ]; then
+echo "$title_md [ info ] [ loading firewall client-ftp ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ;
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### client ftp:
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
+server_port_tcp="" ;
+fi
+#### :rutina-final-shield-ftp:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-proxy:
+####
+####
+####   #### english: firewall of system client-proxy:
+####   #### spanish: cortafuego del sistema client-proxy:
+####
+####
+if [ "$first_option" == "client-proxy" ]; then
+echo "$title_md [ info ] [ loading firewall client-proxy ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### server http and https and ssh /tcp and https udp
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,3128,ssh" ;
+server_port_tcp="" ;
+fi
+#### :rutina-final-client-proxy:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-lan-vpn:
+####
+####
+####   #### english: firewall of system lan-vpn:
+####   #### spanish: cortafuego del sistema lan-vpn:
+####
+####
+if [ "$first_option" == "lan-vpn" ]; then
+echo "$title_md [ info ] [ loading firewall lan-vpn ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### vpn ports to connects ports vpn
+#### with necesary ports to connect gatway and date, domain for your ip
+server_port_udp="" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,500,1194,1701,4500" ; 
+client_port_tcp="1701,1723" ; 
+server_port_tcp="" ;
+fi
+#### :rutina-final-lan-vpn:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-lan-tor:
+####
+####
+####   #### english: firewall of system lan-tor:
+####   #### spanish: cortafuego del sistema lan-tor:
+####
+####
+if [ "$first_option" == "lan-tor" ]; then
+echo "$title_md [ info ] [ loading firewall lan-tor ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### lan tor, 9000:9170 for connect to tor
+#### with necesary ports to connect gatway and date, domain for your ip
+server_port_udp="" ;
+client_port_udp="bootpc,domain,domain-s,ntp" ;
+client_port_tcp="9000:9170" ;
+server_port_tcp="9000:9170" ;
+fi
+#### :rutina-final-lan-tor:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-games-shooter:
+####
+####
+####   #### english: firewall of system games-shooter:
+####   #### spanish: cortafuego del sistema games-shooter:
+####
+####
+if [ "$first_option" == "games-shooter" ]; then
+echo "$title_md [ info ] [ loading firewall games-shooter ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_udp="1025:65000" ;
+client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
+server_port_tcp="" ;
+fi
+#### :rutina-final-games-shooter:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-games-udp:
+####
+####
+####   #### english: firewall of system games-udp:
+####   #### spanish: cortafuego del sistema games-udp:
+####
+####
+if [ "$first_option" == "games-udp" ]; then
+echo "$title_md [ info ] [ loading firewall games-udp ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_udp="1025:65000" ;
+client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
+server_port_tcp="" ;
+fi
+#### :rutina-final-games-shooter:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-game-wesnoth:
+####
+####
+####   #### english: firewall of system game-wesnoth:
+####   #### spanish: cortafuego del sistema game-wesnoth:
+####
+####
+if [ "$first_option" == "game-wesnoth" ]; then
+echo "$title_md [ info ] [ loading firewall game-wesnoth ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### game wesnoth port 14999 and 15001 usually
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,ssh,14950:15050" ;
+server_port_tcp="14950:15050" ;
+fi
+#### :rutina-final-game-wesnoth:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-game-minetest:
+####
+####
+####   #### english: firewall of system game-minetest:
+####   #### spanish: cortafuego del sistema game-minetest:
+####
+####
+if [ "$first_option" == "game-minetest" ]; then
+echo "$title_md [ info ] [ loading firewall game-minetest ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### game minetest and minecraft porst 25k and 35k /udp
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,25000:35000" ; 
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,ssh,25000:35000" ;
+server_port_tcp="25000:35000" ;
+fi
+#### :rutina-final-game-minetest:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-game-freeciv:
+####
+####
+####   #### english: firewall of system game-freeciv:
+####   #### spanish: cortafuego del sistema game-freeciv:
+####
+####
+if [ "$first_option" == "game-freeciv" ]; then
+echo "$title_md [ info ] [ loading firewall game-freeciv ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+alllow_shield_ssh="no" ;
+config_shield_port="" ;
+#### for default 5556 port tcp perhaps 5555 too
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,ssh,5555:5556" ;
+server_port_tcp="5555:5556" ;
+fi
+#### :rutina-final-game-freeciv:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-game-widelands:
+####
+####
+####   #### english: firewall of system game-widelands:
+####   #### spanish: cortafuego del sistema game-widelands:
+####
+####
+if [ "$first_option" == "game-widelands" ]; then
+echo "$title_md [ info ] [ loading firewall game-widelands ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### for default 7396 port tcp and 7396 udp
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,7396" ; 
+server_port_udp="7396" ;
+client_port_tcp="ssh,http,https,http-alt,7396" ;
+server_port_tcp="7396" ;
+fi
+#### :rutina-final-game-widelands:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-web:
+####
+####
+####   #### english: firewall of system server-web:
+####   #### spanish: cortafuego del sistema server-web:
+####
+####
+if [ "$first_option" == "server-web" ]; then
+echo "$title_md [ info ] [ loading firewall server-web ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
+#### server http and https and ssh /tcp and https udp
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_udp="https" ;
+client_port_tcp="http,https,http-alt,ssh" ;
+server_port_tcp="ssh,http,https,http-alt" ;
+fi
+#### :rutina-final-server-web:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-vnc:
+####
+####
+####   #### english: firewall of system server-vnc:
+####   #### spanish: cortafuego del sistema server-vnc:
+####
+####
+if [ "$first_option" == "server-vnc" ]; then
+echo "$title_md [ info ] [ loading firewall server-vnc ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ;
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
+config_shield_port="22,5900:5910"
+#### you can connect normal web and vnc
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,ssh,5900:5910" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_tcp="ssh,5900:5910" ;
+fi
+#### :rutina-final-server-vnc:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-ftp:
+####
+####
+####   #### english: firewall of system server-ftp:
+####   #### spanish: cortafuego del sistema server-ftp:
+####
+####
+if [ "$first_option" == "server-ftp" ]; then
+echo "$title_md [ info ] [ loading firewall server-ftp ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="" ;
+#### server http and https and ssh /tcp and https udp
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
+server_port_tcp="ssh,http,https,ftp,ftp-data,ftps,ftps-data" ;
+fi
+#### :rutina-final-server-ftp:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-proxy:
+####
+####
+####   #### english: firewall of system server-proxy:
+####   #### spanish: cortafuego del sistema server-proxy:
+####
+####
+if [ "$first_option" == "server-proxy" ]; then
+echo "$title_md [ info ] [ loading firewall server-proxy ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
+#### server http and https and ssh /tcp and https udp
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,3128,ssh" ;
+server_port_tcp="ssh,http,https,http-alt,3128" ;
+fi
+#### :rutina-final-server-proxy:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-news:
+####
+####
+####   #### english: firewall of system server-news:
+####   #### spanish: cortafuego del sistema server-news:
+####
+####
+if [ "$first_option" == "server-news" ]; then
+echo "$title_md [ info ] [ loading firewall server-news ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
+#### client news:
+#### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
+#### may be used when doing a bulk transfer of articles from one 
+#### server to another. When clients connect to a news server with Transport Layer Security (TLS),
+#### TCP port 563 is often used. This is sometimes referred to as NNTPS. 
+#### Alternatively, a plain-text connection over port 119 may be changed to use TLS via the STARTTLS command. 
+server_port_udp="" ; 
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+client_port_tcp="http,https,http-alt,ssh,119,433,563" ;
+server_port_tcp="ssh,http,https,119,433,563" ;
+fi
+#### :rutina-final-server-news:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-mail:
+####
+####
+####   #### english: firewall of system server-mail:
+####   #### spanish: cortafuego del sistema server-mail:
+####
+####
+if [ "$first_option" == "server-mail" ]; then
+echo "$title_md [ info ] [ loading firewall server-mail ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
+#### client news:
+#### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
+#### may be used when doing a bulk transfer of articles from one 
+#### server to another. When clients connect to a news server with Transport Layer Security (TLS),
+#### TCP port 563 is often used. This is sometimes referred to as NNTPS. 
+#### Alternatively, a plain-text connection over port 119 may be changed to use TLS via the STARTTLS command. 
+#### client mail:
+#### SMTP (sending mail)	Unencrypted	25* (or 26)
+#### POP3 (receiving mail)	Encrypted - TLS	995
+#### POP3 (receiving mail)	Encrypted - SSL	995
+#### POP3 (receiving mail)	Unencrypted	110
+#### IMAP2 143
+#### IMAPS 993
+#### negotiation submission     tls             465 and 587
+#### 
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_udp="https" ;
+client_port_tcp="http,https,http-alt,ssh,25,119,433,563,25:26,995,110,465,587,143,993" ;
+server_port_tcp="ssh,http,https,25,119,433,563,25:26,995,110,465,587,143,993" ;
+fi
+#### :rutina-final-server-mail:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-samba:
+####
+####
+####   #### english: firewall of system server-samba:
+####   #### spanish: cortafuego del sistema server-samba:
+####
+####
+if [ "$first_option" == "server-samba" ]; then
+echo "$title_md [ info ] [ loading firewall server-samba ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
+#### server samba and active directory
+client_port_tcp="http,https,http-alt,ssh,ldap,636,microsoft-ds" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,ldap,636,137:139" ;
+server_port_tcp="ssh,ldap,636,microsoft-ds" ; 
+server_port_udp="ssh,ntp,domain,domain-s,ldap,636,137:139" ;
+fi
+#### :rutina-final-server-mail:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-print:
+####
+####
+####   #### english: firewall of system server-print:
+####   #### spanish: cortafuego del sistema server-print:
+####
+####
+if [ "$first_option" == "server-print" ]; then
+echo "$title_md [ info ] [ loading firewall server-print ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
+#### server ipp and printer
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,ssh" ;
+server_port_tcp="ssh,printer,ipp" ;
+fi
+#### :rutina-final-server-print:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-ssh:
+####
+####
+####   #### english: firewall of system server-ssh:
+####   #### spanish: cortafuego del sistema server-ssh:
+####
+####
+if [ "$first_option" == "server-ssh" ]; then
+echo "$title_md [ info ] [ loading firewall server-ssh ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ;
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
+#### server ssh 22/tcp
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,ssh" ;
+server_port_tcp="ssh" ;
+fi
+#### :rutina-final-server-ssh:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-lamp:
+####
+####
+####   #### english: firewall of system server-lamp:
+####   #### spanish: cortafuego del sistema server-lamp:
+####
+####
+if [ "$first_option" == "server-lamp" ]; then
+echo "$title_md [ info ] [ loading firewall server-lamp ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
+####  english: udp: 20 is ftp-data, 21 is ftp, 989 is ftps-data y 990 is ftps
+####  english: tcp: 10000 is webmin, 3306 is mysql, 5432 is postgresql
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_udp="https" ;
+client_port_tcp="http,https,http-alt,ssh,20,21,989,990" ;
+server_port_tcp="ssh,http,https,10000,3306,5432" ;
+fi
+#### :rutina-final-server-lamp:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-asterisk:
+####
+####
+####   #### english: firewall of system server-asterisk:
+####   #### spanish: cortafuego del sistema server-asterisk:
+####
+####
+if [ "$first_option" == "server-asterisk" ]; then
+echo "$title_md [ info ] [ loading firewall server-asterisk ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
+####    UDP:5060 SIP (sip.conf), newer Versions support TCP:5060
+####    UDP:10000-20000 RTP (rtp.conf) for the media stream, a higher Portrange
+####    UDP:5036 IAX2
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,5060,10000:20000,5036" ;
+server_port_udp="5060,10000:20000,5036" ;
+client_port_tcp="http,https,http-alt,ssh,5060" ;
+server_port_tcp="ssh,5060" ;
+fi
+#### :rutina-final-server-astrerisk:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-mumble:
+####
+####
+####   #### english: firewall of system server-mumble:
+####   #### spanish: cortafuego del sistema server-mumble:
+####
+####
+if [ "$first_option" == "server-mumble" ]; then
+echo "$title_md [ info ] [ loading firewall server-mumble ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
+#### mumble port 64738 tcp and 64738 udp
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,64738" ;
+server_port_udp="64738" ;
+client_port_tcp="http,https,http-alt,ssh,64738" ;
+server_port_tcp="ssh,64738" ;
+fi
+#### :rutina-final-server-mumble:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-teamspeak:
+####
+####
+####   #### english: firewall of system server-teamspeak:
+####   #### spanish: cortafuego del sistema server-teamspeak:
+####
+####
+if [ "$first_option" == "server-teamspeak" ]; then
+echo "$title_md [ info ] [ loading firewall server-teamspeak ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
+#### Service	        Protocol	Local Port (Server)
+#### Voice	        UDP	9987
+#### Filetransfer	TCP	30033
+#### ServerQuery (raw)	TCP	10011
+#### ServerQuery (SSH)	TCP	10022
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,9987" ;
+server_port_udp="9987" ;
+client_port_tcp="http,https,http-alt,ssh,30033,10011,10022" ;
+server_port_tcp="ssh,30033,10011,10022" ;
+fi
+#### :rutina-final-server-teamspeak:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-sql:
+####
+####
+####   #### english: firewall of system server-sql:
+####   #### spanish: cortafuego del sistema server-sql:
+####
+####
+if [ "$first_option" == "server-sql" ]; then
+echo "$title_md [ info ] [ loading firewall server-sql ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
+####  POSTGRESQL 5432/tcp and 5432/udp
+####  Technology	Default Port	Required
+####  MySQL Client to Server - MySQL Protocol – 3306	3306/tcp	Optional - pick at least 1
+####  MySQL Client to Server – New X Protocol – 33060	33060/tcp	Optional - pick at least 1
+####  Connects via SSH Tunnel	22/tcp	Optional - pick at least 1
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,5432" ;
+server_port_udp="5432" ;
+client_port_tcp="http,https,http-alt,ssh,5432,3306,3360" ;
+server_port_tcp="ssh,5432,3306,3360" ;
+fi
+#### :rutina-final-server-sql:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-irc:
+####
+####
+####   #### english: firewall of system server-irc:
+####   #### spanish: cortafuego del sistema server-irc:
+####
+####
+if [ "$first_option" == "server-irc" ]; then
+echo "$title_md [ info ] [ loading firewall server-irc ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ;
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### you can connect normal web
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_tcp="ssh,ircs-u,ircd" ;
+fi
+#### :rutina-final-server-irc:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-domain:
+####
+####
+####   #### english: firewall of system server-domain:
+####   #### spanish: cortafuego del sistema server-domain:
+####
+####
+if [ "$first_option" == "server-domain" ]; then
+echo "$title_md [ info ] [ loading firewall server-domain ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
+#### server domain and domain-s
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https," ;
+server_port_udp="domain,domain-s" ;
+client_port_tcp="http,https,http-alt,ssh" ;
+server_port_tcp="ssh" ;
+fi
+####
+####
+#### :rutina-final-server-domain:
 ###############################################################################################################
 ###############################################################################################################
 ####
