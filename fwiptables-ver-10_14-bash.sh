@@ -2721,7 +2721,7 @@ config_shield_port="" ;
 #### for default 7396 port tcp and 7396 udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,7396" ; 
 server_port_udp="7396" ;
-client_port_tcp="http,https,http-alt,ssh,7396" ;
+client_port_tcp="ssh,http,https,http-alt,7396" ;
 server_port_tcp="7396" ;
 fi
 #### :rutina-final-game-widelands:
@@ -2745,8 +2745,8 @@ config_shield_port="ssh" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="https" ;
-client_port_tcp="http,https,ssh" ;
-server_port_tcp="http,https,ssh" ;
+client_port_tcp="http,https,http-alt,ssh" ;
+server_port_tcp="ssh,http,https,http-alt" ;
 fi
 #### :rutina-final-server-web:
 #### ##################################################
@@ -2769,7 +2769,7 @@ config_shield_maxtries="20" ;
 config_shield_port="22,5900:5910"
 #### you can connect normal web and vnc
 server_port_udp="" ;
-client_port_tcp="http,https,ssh,5900:5910" ;
+client_port_tcp="http,https,http-alt,ssh,5900:5910" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="ssh,5900:5910" ;
 fi
@@ -2793,8 +2793,8 @@ allow_shield_maxtries="" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
-client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
-server_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
+client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
+server_port_tcp="ssh,http,https,ftp,ftp-data,ftps,ftps-data" ;
 fi
 #### :rutina-final-server-ftp:
 #### ##################################################
@@ -2818,7 +2818,7 @@ config_shield_port="ssh" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,3128,ssh" ;
-server_port_tcp="http,https,http-alt,3128,ssh" ;
+server_port_tcp="ssh,http,https,http-alt,3128" ;
 fi
 #### :rutina-final-server-proxy:
 #### ##################################################
@@ -2846,8 +2846,8 @@ config_shield_port="ssh" ;
 #### Alternatively, a plain-text connection over port 119 may be changed to use TLS via the STARTTLS command. 
 server_port_udp="" ; 
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-client_port_tcp="http,https,ssh,119,433,563" ;
-server_port_tcp="http,https,ssh,119,433,563" ;
+client_port_tcp="http,https,http-alt,ssh,119,433,563" ;
+server_port_tcp="ssh,http,https,119,433,563" ;
 fi
 #### :rutina-final-server-news:
 #### ##################################################
@@ -2884,8 +2884,8 @@ config_shield_port="ssh" ;
 #### 
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="https" ;
-client_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587,143,993" ;
-server_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587,143,993" ;
+client_port_tcp="http,https,http-alt,ssh,25,119,433,563,25:26,995,110,465,587,143,993" ;
+server_port_tcp="ssh,http,https,25,119,433,563,25:26,995,110,465,587,143,993" ;
 fi
 #### :rutina-final-server-mail:
 #### ##################################################
@@ -2906,10 +2906,10 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 config_shield_port="ssh" ;
 #### server samba and active directory
-client_port_tcp="http,https,ssh,ldap,636,microsoft-ds" ;
+client_port_tcp="http,https,http-alt,ssh,ldap,636,microsoft-ds" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,ldap,636,137:139" ;
 server_port_tcp="ssh,ldap,636,microsoft-ds" ; 
-server_port_udp="ntp,domain,domain-s,ldap,636,137:139" ;
+server_port_udp="ssh,ntp,domain,domain-s,ldap,636,137:139" ;
 fi
 #### :rutina-final-server-mail:
 #### ##################################################
@@ -2932,7 +2932,7 @@ config_shield_port="ssh" ;
 #### server ipp and printer
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
-client_port_tcp="http,https,ssh" ;
+client_port_tcp="http,https,http-alt,ssh" ;
 server_port_tcp="ssh,printer,ipp" ;
 fi
 #### :rutina-final-server-print:
@@ -2956,7 +2956,7 @@ config_shield_port="ssh" ;
 #### server ssh 22/tcp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
-client_port_tcp="http,https,ssh" ;
+client_port_tcp="http,https,http-alt,ssh" ;
 server_port_tcp="ssh" ;
 fi
 #### :rutina-final-server-ssh:
@@ -2981,8 +2981,8 @@ config_shield_port="ssh" ;
 ####  english: tcp: 10000 is webmin, 3306 is mysql, 5432 is postgresql
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="https" ;
-client_port_tcp="http,https,ssh,20,21,989,990" ;
-server_port_tcp="http,https,ssh,10000,3306,5432" ;
+client_port_tcp="http,https,http-alt,ssh,20,21,989,990" ;
+server_port_tcp="ssh,http,https,10000,3306,5432" ;
 fi
 #### :rutina-final-server-lamp:
 #### ##################################################
@@ -3007,7 +3007,7 @@ config_shield_port="ssh" ;
 ####    UDP:5036 IAX2
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,5060,10000:20000,5036" ;
 server_port_udp="5060,10000:20000,5036" ;
-client_port_tcp="http,https,ssh,5060" ;
+client_port_tcp="http,https,http-alt,ssh,5060" ;
 server_port_tcp="ssh,5060" ;
 fi
 #### :rutina-final-server-astrerisk:
@@ -3031,7 +3031,7 @@ config_shield_port="ssh" ;
 #### mumble port 64738 tcp and 64738 udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,64738" ;
 server_port_udp="64738" ;
-client_port_tcp="http,https,ssh,64738" ;
+client_port_tcp="http,https,http-alt,ssh,64738" ;
 server_port_tcp="ssh,64738" ;
 fi
 #### :rutina-final-server-mumble:
@@ -3059,7 +3059,7 @@ config_shield_port="ssh" ;
 #### ServerQuery (SSH)	TCP	10022
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,9987" ;
 server_port_udp="9987" ;
-client_port_tcp="http,https,ssh,30033,10011,10022" ;
+client_port_tcp="http,https,http-alt,ssh,30033,10011,10022" ;
 server_port_tcp="ssh,30033,10011,10022" ;
 fi
 #### :rutina-final-server-teamspeak:
@@ -3087,7 +3087,7 @@ config_shield_port="ssh" ;
 ####  Connects via SSH Tunnel	22/tcp	Optional - pick at least 1
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,5432" ;
 server_port_udp="5432" ;
-client_port_tcp="http,https,ssh,5432,3306,3360" ;
+client_port_tcp="http,https,http-alt,ssh,5432,3306,3360" ;
 server_port_tcp="ssh,5432,3306,3360" ;
 fi
 #### :rutina-final-server-sql:
@@ -3110,9 +3110,9 @@ allow_shield_maxtries="no" ;
 config_shield_port="" ;
 #### you can connect normal web
 server_port_udp="" ;
-client_port_tcp="http,https,ssh,ircs-u,ircd" ;
+client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-server_port_tcp="ircs-u,ircd" ;
+server_port_tcp="ssh,ircs-u,ircd" ;
 fi
 #### :rutina-final-server-irc:
 #### ##################################################
@@ -3135,7 +3135,7 @@ config_shield_port="ssh" ;
 #### server domain and domain-s
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https," ;
 server_port_udp="domain,domain-s" ;
-client_port_tcp="http,https,ssh" ;
+client_port_tcp="http,https,http-alt,ssh" ;
 server_port_tcp="ssh" ;
 fi
 ####
