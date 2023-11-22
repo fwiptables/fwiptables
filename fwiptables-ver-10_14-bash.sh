@@ -2241,7 +2241,7 @@ allow_shield_maxtries="no" ;
 config_shield_port="" ;
 #### you can connect normal web
 server_port_udp="" ;
-client_port_tcp="http,https,ssh" ;
+client_port_tcp="http,https,http-alt,ssh" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
 fi
@@ -2527,7 +2527,7 @@ config_shield_port="" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
-client_port_tcp="http,https,ssh,8080,3128" ;
+client_port_tcp="http,https,http-alt,3128,ssh" ;
 server_port_tcp="" ;
 fi
 #### :rutina-final-client-proxy:
@@ -2817,8 +2817,8 @@ config_shield_port="ssh" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
-client_port_tcp="http,https,ssh,8080,3128" ;
-server_port_tcp="http,https,ssh,8080,3128" ;
+client_port_tcp="http,https,http-alt,3128,ssh" ;
+server_port_tcp="http,https,http-alt,3128,ssh" ;
 fi
 #### :rutina-final-server-proxy:
 #### ##################################################
