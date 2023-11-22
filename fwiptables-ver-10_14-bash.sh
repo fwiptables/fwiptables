@@ -1450,8 +1450,8 @@ exit ; fi
 ####
 if [ "$first_option" == "expert" ]; then 
 echo "$title_md [ $first_option ] [ Show expert options ] [ version.md] "
-echo "$text_md expert-upgrade . upgrade fwiptables-cmd with curl"
-echo "$text_md expert-obash . compile fwiptables-cmd to fwiptables-bin with obash"
+echo "$text_md expert-upgrade . upgrade the command fwiptables-cmd with command curl"
+echo "$text_md expert-obash . compile fwiptables-cmd to fwiptables-bin with command obash"
 exit ; fi
 ####
 ####
