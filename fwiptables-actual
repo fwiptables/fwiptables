@@ -1449,9 +1449,9 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "expert" ]; then 
-echo "$title_md [ $first_option ] [ Show expert options ] [ version.md] "
-echo "$text_md expert-upgrade . upgrade fwiptables-cmd with curl"
-echo "$text_md expert-obash . compile fwiptables-cmd to fwiptables-bin with obash"
+echo "$title_md [ $first_option ] [ Show expert options ] [ expert.md] "
+echo "$text_md expert-upgrade . upgrade the command fwiptables-cmd with command curl"
+echo "$text_md expert-obash . compile fwiptables-cmd to fwiptables-bin with command obash"
 exit ; fi
 ####
 ####
@@ -4284,12 +4284,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-compile:
-##########    english: expert-compile: compile with obash      ##########
-##########    spanish: expert-compile: compila with obash      ##########
-#### :rutina-inicial-expert-compile:
+##########    english: expert-obash: compile with obash      ##########
+##########    spanish: expert-obash: compila with obash      ##########
+#### :rutina-inicial-expert-obash:
 ####
 ####
-if   [ "$first_option" == "expert-compile" ]; then 
+if   [ "$first_option" == "expert-obash" ]; then 
 echo "$title_md [ $first_option ] [  optionally ] [ howto compile bash script with obash ] "
 echo "$title_md Compile /usr/bin/fwiptables-cmd in /usr/bin/fwiptables-bin"
 if [ "$command_obash" == "$NULL" ]; then echo "$title_md install obash to compile"; exit ; fi
@@ -4301,7 +4301,7 @@ file -L /usr/bin/fwiptables-bin
 exit; fi
 ####
 ####
-#### :rutina-final-expert-compile:
+#### :rutina-final-expert-obash:
 ##########    english: radio: url from one radio mp3      ##########
 ##########    spanish: radio: url de una radio en mp3     ##########
 #### :rutina-inicial-radio:
