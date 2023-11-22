@@ -2194,7 +2194,7 @@ config_shield_maxtries="5" ;
 #### english: ports client and ports server
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
-client_port_tcp="http,https,ssh" ;
+client_port_tcp="http,https,http-alt,ssh" ;
 server_port_tcp="ssh" ;
 fi
 #### :rutina-final-shield-ssh:
@@ -2216,7 +2216,7 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_port="" ;
 #### you can connect normal web
-client_port_tcp="http,https,ssh" ;
+client_port_tcp="http,https,http-alt,ssh" ;
 client_port_udp="domain,bootpc,ntp" ;
 server_port_tcp="" ;
 server_port_udp="" ;
@@ -2265,7 +2265,7 @@ allow_shield_maxtries="no" ;
 config_shield_port="" ;
 #### you can connect normal web
 server_port_udp="" ;
-client_port_tcp="http,https,ssh,git" ;
+client_port_tcp="http,https,http-alt,ssh,git" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
 fi
@@ -2289,7 +2289,7 @@ allow_shield_maxtries="no" ;
 config_shield_port="" ;
 #### you can connect normal web
 server_port_udp="" ;
-client_port_tcp="http,https,ssh,ipp" ;
+client_port_tcp="http,https,http-alt,ssh,ipp" ;
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_tcp="" ;
 fi
@@ -2313,7 +2313,7 @@ allow_shield_maxtries="no" ;
 config_shield_port="" ;
 #### you can connect normal web
 server_port_udp="" ;
-client_port_tcp="http,https,ssh,ircs-u,ircd" ;
+client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
 fi
@@ -2337,7 +2337,7 @@ allow_shield_maxtries="no" ;
 config_shield_port="" ;
 #### you can connect normal web and vnc
 server_port_udp="" ;
-client_port_tcp="http,https,ssh,5900:5910" ;
+client_port_tcp="http,https,http-alt,ssh,5900:5910" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
 fi
@@ -2362,7 +2362,7 @@ config_shield_port="" ;
 #### you can connect web normal and bittorrent too
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
-client_port_tcp="http,https,ssh,9091,51413" ;
+client_port_tcp="http,https,http-alt,ssh,9091,51413" ;
 server_port_tcp="9091,51413" ;
 fi
 #### :rutina-final-client-torrent:
@@ -2386,7 +2386,7 @@ config_shield_port="" ;
 #### you can connect web normal and web vpn
 server_port_udp="" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,500,1194,1701,4500" ; 
-client_port_tcp="http,https,ssh,443,1701,1723" ; 
+client_port_tcp="http,https,http-alt,ssh,443,1701,1723" ; 
 server_port_tcp="" ;
 fi
 #### :rutina-final-client-vpn:
@@ -2410,7 +2410,7 @@ config_shield_port="" ;
 #### you can connect web normal and web tor
 server_port_udp="" ; 
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-client_port_tcp="http,https,ssh,9000:9170" ;
+client_port_tcp="http,https,http-alt,ssh,9000:9170" ;
 server_port_tcp="9000:9170" ;
 fi
 #### :rutina-final-client-tor:
@@ -2439,7 +2439,7 @@ config_shield_port="" ;
 #### Alternatively, a plain-text connection over port 119 may be changed to use TLS via the STARTTLS command. 
 server_port_udp="" ; 
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-client_port_tcp="http,https,ssh,119,433,563" ;
+client_port_tcp="http,https,http-alt,ssh,119,433,563" ;
 server_port_tcp="" ;
 fi
 #### :rutina-final-client-news:
@@ -2479,7 +2479,7 @@ config_shield_port="" ;
 ####
 server_port_udp="" ; 
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-client_port_tcp="http,https,ssh,25,119,563,25,995,110,465,587,143,993" ;
+client_port_tcp="http,https,http-alt,ssh,25,119,563,25,995,110,465,587,143,993" ;
 server_port_tcp="" ;
 fi
 #### :rutina-final-client-mail:
@@ -2503,7 +2503,7 @@ config_shield_port="" ;
 #### client ftp:
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
-client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
+client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="" ;
 fi
 #### :rutina-final-shield-ftp:
@@ -2601,7 +2601,7 @@ config_shield_port="" ;
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
-client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
+client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="" ;
 fi
 #### :rutina-final-games-shooter:
@@ -2625,7 +2625,7 @@ config_shield_port="" ;
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
-client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
+client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="" ;
 fi
 #### :rutina-final-games-shooter:
@@ -2649,7 +2649,7 @@ config_shield_port="" ;
 #### game wesnoth port 14999 and 15001 usually
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
 server_port_udp="" ;
-client_port_tcp="http,https,ssh,14950:15050" ;
+client_port_tcp="http,https,http-alt,ssh,14950:15050" ;
 server_port_tcp="14950:15050" ;
 fi
 #### :rutina-final-game-wesnoth:
@@ -2673,7 +2673,7 @@ config_shield_port="" ;
 #### game minetest and minecraft porst 25k and 35k /udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,25000:35000" ; 
 server_port_udp="" ;
-client_port_tcp="http,https,ssh,25000:35000" ;
+client_port_tcp="http,https,http-alt,ssh,25000:35000" ;
 server_port_tcp="25000:35000" ;
 fi
 #### :rutina-final-game-minetest:
@@ -2697,7 +2697,7 @@ config_shield_port="" ;
 #### for default 5556 port tcp perhaps 5555 too
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
 server_port_udp="" ;
-client_port_tcp="http,https,ssh,5555:5556" ;
+client_port_tcp="http,https,http-alt,ssh,5555:5556" ;
 server_port_tcp="5555:5556" ;
 fi
 #### :rutina-final-game-freeciv:
@@ -2721,7 +2721,7 @@ config_shield_port="" ;
 #### for default 7396 port tcp and 7396 udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,7396" ; 
 server_port_udp="7396" ;
-client_port_tcp="http,https,ssh,7396" ;
+client_port_tcp="http,https,http-alt,ssh,7396" ;
 server_port_tcp="7396" ;
 fi
 #### :rutina-final-game-widelands:
