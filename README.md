@@ -22,30 +22,30 @@
   
 ###  fwiptables install.                                   
   
-    Put bit of execution. TYPE:   chmod u+x ./fwiptables-ver-10_13-bash.sh   
-    Install this version. TYPE:   ./fwiptables-ver-10_13-bash.sh install     
+    Put bit of execution. TYPE:   chmod u+x ./fwiptables-ver-10_14-bash.sh   
+    Install this version. TYPE:   ./fwiptables-ver-10_14-bash.sh install     
   
 ###  fwiptables uninstall.                                 
   
     Uninstall fwiptables. TYPE:   fwiptables-cmd uninstall   
   
 ###  [ compile ] [  optionally ] [ howto compile bash script with obash ] 
-### 
-   This script in bash works. But if you desire is compiling... follow that steps,
-   there are three steps to compile fwiptables script, it is possible with obash.
-   when you has compiled, it does works only with your system hardware architecture.
-### 
-   . 0 .  Necesary: fwiptables in source script bash.
-   . 1 .     First: download obash from oficial web internet page.
-   . 2 .    Second: compile with obash command using command make.
-   . 3a . Or Third: run:# obash -c -o ./destination.bin ./source-bash.sh
-   . 3b . Or Third: run:# obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd
-  
-###  Actually, the file type is:
-./fwiptables-ver-10_13-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
-### 
-### 
-###  fwiptables-ver-10_13-bash.sh [optional-output] first_option [second_option]                  
+###    
+   This script in bash works. But if you desire is compiling... follow that steps,       
+   there are three steps to compile fwiptables script, it is possible with obash.        
+   when you has compiled, it does works only with your system hardware architecture.     
+###    
+   . 0 .  Necesary: fwiptables in source script bash.                                    
+   . 1 .     First: download obash from oficial web internet page.                       
+   . 2 .    Second: compile with obash command using command make.                       
+   . 3a . Or Third: run:# obash -c -o ./destination.bin ./source-bash.sh                 
+   . 3b . Or Third: run:# obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd    
+      
+###  Actually, the file type is:                                                          
+./fwiptables-ver-10_14-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
+###   
+###   
+###  fwiptables-ver-10_14-bash.sh [optional-output] first_option [second_option]                  
 ### 
 ###   [ optional-output ]                                                            
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       
@@ -69,11 +69,11 @@
 ###   [ firewall-launch ]                                                           
    eraserules custom wizard-mini wizard-full off-line all-permisive client-basic        
    client-web client-git client-ipp client-irc client-vnc client-mail client-news       
-   client-vpn client-torrent client-vpn client-ftp client-tor client-squid              
+   client-vpn client-torrent client-vpn client-ftp client-tor client-proxy              
    game-widelands games-udp games-shooter game-wesnoth game-minetest game-freeciv       
    lan-tor lan-vpn server-ssh server-irc server-samba server-vnc server-webserver       
    server-print server-lamp server-news server-ftp server-mail server-teamspeak         
-   server-mumble server-sql server-asterisk server-domain server-squid                  
+   server-mumble server-sql server-asterisk server-domain server-proxy                  
 ###   [ options-easy ]                                                              
    preferences-read preferences-modify preferences-regen preferences-example ver        
    list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6         
