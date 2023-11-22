@@ -912,22 +912,22 @@ if [ "$first_option" == "txt" ]; then case "$second_option" in
 ####
 ####
 "list4") $cmd_binary list4-ip &> $temporal_text 
-cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal &2>1 /dev/null
+cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
 ####
 ####
 "list6") $cmd_binary list6-ip &> $temporal_text 
-cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal  &2>1 /dev/null
+cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
 ####
 ####
 "listn4") $cmd_binary listn4-ip &> $temporal_text 
-cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal &2>1 /dev/null
+cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
 ####
 ####
 "listn6") $cmd_binary listn6-ip &> $temporal_text 
-cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal  &2>1 /dev/null
+cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
 ####
 ####
