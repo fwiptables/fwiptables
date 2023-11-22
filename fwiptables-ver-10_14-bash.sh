@@ -5167,8 +5167,8 @@ chmod 555 "/usr/bin/$cmd_config" &> /dev/null
 echo "$title_md [ info ] [ The  config   dir:     ] [ $directory_data ]"
 echo "$title_md [ info ] [ The  cache    dir:     ] [ $directory_cache  ]"
 echo "$title_md [ info ] [ The Command shell:     ] [ /usr/bin/$cmd_config ]"
-echo "$title_md [ _ok_ ] [ Update configs and variables  ]"
-echo "$title_md [ _ok_ ] [ Now. Ready to run $cmd_config ]"
+echo "$title_md [ _ok_ ] [ Update preferences config file ]"
+echo "$title_md [ _ok_ ] [ Now. Ready to run $cmd_config .]"
 exit; fi
 ####
 ####
