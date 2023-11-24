@@ -166,8 +166,9 @@ XDG_RUNTIME_DIR="/run/user/0"
 ####
 ####
 command_xhost="$(command -v xhost)" ; 
+if [ "$(logname)" != "$NULL" ]; then 
 sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
-$command_xhost +SI:localuser:root &> /dev/null ;
+$command_xhost +SI:localuser:root &> /dev/null ; fi
 ####
 ####
 #### deprecated
@@ -1071,17 +1072,16 @@ exit; fi
 ##########     siin primera opcion
 #### :rutina-inicial-without-first-option:
 ####
-####
-if [ "$first_option" == "$NULL" ] && [ "$without_first_option" == "$NULL" ] ; then 
-if [ "$X11_OR_WAYLAND" == "x11" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
-echo "$title_md forward to graphicall gui-shell"
-$cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
-if [ "$X11_OR_WAYLAND" == "wayland" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
-echo "$title_md forward to graphicall gui-shell"
-$cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
-####
-without_first_option="options" ; $cmd_binary $without_first_option ; 
-exit ; fi
+#### to launch graphicall if X
+# if [ "$first_option" == "$NULL" ] && [ "$without_first_option" == "$NULL" ] ; then 
+# if [ "$X11_OR_WAYLAND" == "x11" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
+# echo "$title_md forward to graphicall gui-shell"
+# $cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
+# if [ "$X11_OR_WAYLAND" == "wayland" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
+# echo "$title_md forward to graphicall gui-shell"
+# $cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
+# without_first_option="options" ; $cmd_binary $without_first_option ; 
+# exit ; fi
 ####
 ####
 ####
