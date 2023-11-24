@@ -5688,7 +5688,8 @@ exit; fi
 if   [ "$first_option" == "gui-roll-zenity-firewall-launch" ] ; then echo $head_waiting_gui
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|eraserules|\
 wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|client-basic|\
-client-web|client-git|client-vnc|client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
+client-basic|client-web|client-mail|client-news|client-ftp|client-git|client-vnc|\
+client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
 games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|\
 server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|server-domain|\
 server-news|server-mail|server-ftp|server-teamspeak|server-mumble|server-sql|server-asterisk"
@@ -5706,8 +5707,12 @@ case "$selection_final" in
 "wizard-mini")$cmd_binary -gui-zenity wizard-mini ; $cmd_binary gui list4;;
 "off-line")$cmd_binary -gui-zenity off-line ; $cmd_binary gui list4;;
 "all-permisive")$cmd_binary -gui-zenity all-permisive ; $cmd_binary gui list4;;
-"client-basic")$cmd_binary -gui-zenity client-basic ; $cmd_binary gui list4;;
 "client-web")$cmd_binary -gui-zenity client-web ; $cmd_binary gui list4;;
+"client-ipp")$cmd_binary -gui-zenity client-ipp   ; $cmd_binary gui list4;;
+"client-irc")$cmd_binary -gui-zenity client-irc   ; $cmd_binary gui list4;;
+"client-mail")$cmd_binary -gui-zenity client-mail ; $cmd_binary gui list4;;
+"client-news")$cmd_binary -gui-zenity client-news ; $cmd_binary gui list4;;
+"client-ftp")$cmd_binary -gui-zenity client-ftp   ; $cmd_binary gui list4;;
 "client-git")$cmd_binary -gui-zenity client-git ; $cmd_binary gui list4;;
 "client-vnc")$cmd_binary -gui-zenity client-vnc ; $cmd_binary gui list4;;
 "client-torrent")$cmd_binary -gui-zenity client-torrent ; $cmd_binary gui list4;;
@@ -5844,7 +5849,8 @@ if   [ "$first_option" == "gui-menu-firewall-launch" ] ; then echo $head_waiting
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|eraserules|\
 wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|client-basic|\
-client-web|client-git|client-vnc|client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
+client-web|client-ipp|client-irc|client-mail|client-news|client-ftp|\
+client-git|client-vnc|client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
 games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|\
 server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|server-domain|\
 server-news|server-mail|server-ftp|server-teamspeak|server-mumble|server-sql|server-asterisk"
@@ -5861,9 +5867,14 @@ eraserules*)$cmd_binary -gui eraserules ; $cmd_binary gui list4;;
 wizard-full*)$cmd_binary -gui wizard-full ; $cmd_binary gui list4;;
 wizard-mini*)$cmd_binary -gui wizard-mini ; $cmd_binary gui list4;;
 off-line*)$cmd_binary -gui off-line ; $cmd_binary gui list4;;
-client-basic*)$cmd_binary -gui client-basic ; $cmd_binary gui list4;;
 all-permisive*)$cmd_binary -gui all-permisive ; $cmd_binary gui list4;;
+client-basic*)$cmd_binary -gui client-basic ; $cmd_binary gui list4;;
 client-web*)$cmd_binary -gui client-web ; $cmd_binary gui list4;;
+client-ipp*)$cmd_binary -gui client-ipp   ; $cmd_binary gui list4;;
+client-irc*)$cmd_binary -gui client-irc   ; $cmd_binary gui list4;;
+client-mail*)$cmd_binary -gui client-mail ; $cmd_binary gui list4;;
+client-news*)$cmd_binary -gui client-news ; $cmd_binary gui list4;;
+client-ftp*)$cmd_binary -gui client-ftp   ; $cmd_binary gui list4;;
 client-git*)$cmd_binary -gui client-git ; $cmd_binary gui list4;;
 client-vnc*)$cmd_binary -gui client-vnc ; $cmd_binary gui list4;;
 client-torrent*)$cmd_binary -gui client-torrent ; $cmd_binary gui list4;;
