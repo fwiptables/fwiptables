@@ -91,7 +91,7 @@ fi
 cmd_binary="$0"             ;
 cmd_file="$(basename $0)"   ;
 cmd_config="fwiptables-cmd" ;
-cmd_version="cmd-10-15"     ;
+cmd_version="cmd-10-16"     ;
 cmd_name="fwiptables, FireWall With iptables"               ;
 cmd_description="fwiptables, One Mini Script in one-file"   ;
 cmd_license="GPL v2, License General Public version 2"      ;
@@ -166,8 +166,9 @@ XDG_RUNTIME_DIR="/run/user/0"
 ####
 ####
 command_xhost="$(command -v xhost)" ; 
+if [ "$(logname)" != "$NULL" ]; then 
 sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
-$command_xhost +SI:localuser:root &> /dev/null ;
+$command_xhost +SI:localuser:root &> /dev/null ; fi
 ####
 ####
 #### deprecated
@@ -1071,17 +1072,16 @@ exit; fi
 ##########     siin primera opcion
 #### :rutina-inicial-without-first-option:
 ####
-####
-if [ "$first_option" == "$NULL" ] && [ "$without_first_option" == "$NULL" ] ; then 
-if [ "$X11_OR_WAYLAND" == "x11" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
-echo "$title_md forward to graphicall gui-shell"
-$cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
-if [ "$X11_OR_WAYLAND" == "wayland" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
-echo "$title_md forward to graphicall gui-shell"
-$cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
-####
-without_first_option="options" ; $cmd_binary $without_first_option ; 
-exit ; fi
+#### to launch graphicall if X
+# if [ "$first_option" == "$NULL" ] && [ "$without_first_option" == "$NULL" ] ; then 
+# if [ "$X11_OR_WAYLAND" == "x11" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
+# echo "$title_md forward to graphicall gui-shell"
+# $cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
+# if [ "$X11_OR_WAYLAND" == "wayland" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
+# echo "$title_md forward to graphicall gui-shell"
+# $cmd_binary gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
+# without_first_option="options" ; $cmd_binary $without_first_option ; 
+# exit ; fi
 ####
 ####
 ####
@@ -8538,6 +8538,109 @@ $allow_use_nft $command_ip6tables_nft -A OUTPUT -s $config_ip6_localhost -d $con
 fi
 ####
 ####
+####################################### english: Drop rules for blacklist
+####################################### spanish: reglas de denegar para lista negra
+####
+####
+if [ "$allow_net_blacklist" == "$NULL" ]; then
+####
+for one_blacklist in $(echo $config_net_blacklist | $command_sed 's/,/ /g'); do
+####
+####
+#### ipv4
+####
+####
+$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A INPUT  \
+-s $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
+####
+####
+$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A OUTPUT \
+-d $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
+####
+####
+$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A INPUT  \
+-s $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
+####
+####
+$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A OUTPUT \
+-d $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
+####
+####
+#### ipv6
+####
+####
+$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A INPUT  \
+-s $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
+####
+####
+$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A OUTPUT \
+-d $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
+####
+####
+$allow_use_ipv6 $allow_use_nft  $command_ip6tables_nft    -A INPUT  \
+-s $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
+####
+####
+$allow_use_ipv6 $allow_use_nft  $command_ip6tables_nft    -A OUTPUT \
+-d $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
+#### 
+done
+####
+fi
+#### 
+####
+####################################### english: Accept rules for vpn whitelist
+####################################### spanish: reglas de aceptar para vpn whitelist
+####
+####
+if [ "$allow_net_whitelist" == "$NULL" ]; then
+####
+for one_vpn in $(echo $config_net_whitelist | $command_sed 's/,/ /g'); do
+####
+####
+#### ipv4
+####
+####
+$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A  INPUT  \
+-s $one_vpn -j ACCEPT -m comment --comment "whitelist $one_vpn" &> /dev/null
+####
+####
+$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A  OUTPUT \
+-d $one_vpn -j ACCEPT -m comment --comment "whitelist $one_vpn" &> /dev/null
+####
+####
+$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A  INPUT  \
+-s $one_vpn -j ACCEPT -m comment --comment "whitelist $one_vpn" &> /dev/null
+####
+####
+$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A  OUTPUT \
+-d $one_vpn -j ACCEPT -m comment --comment "whitelist $one_vpn" &> /dev/null
+####
+####
+#### ipv6
+####
+####
+$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A  INPUT  \
+-s $one_vpn -j ACCEPT -m comment --comment "whitelist $one_vpn" &> /dev/null
+####
+####
+$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A  OUTPUT \
+-d $one_vpn -j ACCEPT -m comment --comment "whitelist $one_vpn" &> /dev/null
+####
+####
+$allow_use_ipv6 $allow_use_nft $command_ip6tables_nft    -A  INPUT  \
+-s $one_vpn -j ACCEPT -m comment --comment "whitelist $one_vpn" &> /dev/null
+####
+####
+$allow_use_ipv6 $allow_use_nft  $command_ip6tables_nft    -A  OUTPUT \
+-d $one_vpn -j ACCEPT -m comment --comment "whitelist $one_vpn" &> /dev/null
+####
+####
+done
+####
+fi
+####
+####
 ####################################### english: rules for max tries for ssh
 ####################################### spanish: reglas for max ties for ssh
 ####
@@ -8723,109 +8826,8 @@ $allow_use_ipv6 $allow_use_nft $allow_output_maxconnect $command_ip6tables_nft  
 fi
 ####
 ####
-####################################### english: Drop rules for blacklist
-####################################### spanish: reglas de denegar para lista negra
-####
-####
-if [ "$allow_net_blacklist" == "$NULL" ]; then
-####
-for one_blacklist in $(echo $config_net_blacklist | $command_sed 's/,/ /g'); do
-####
-####
-#### ipv4
-####
-####
-$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A INPUT  \
--s $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
-####
-####
-$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A OUTPUT \
--d $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
-####
-####
-$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A INPUT  \
--s $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
-####
-####
-$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A OUTPUT \
--d $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
-####
-####
-#### ipv6
-####
-####
-$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A INPUT  \
--s $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
-####
-####
-$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A OUTPUT \
--d $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
-####
-####
-$allow_use_ipv6 $allow_use_nft  $command_ip6tables_nft    -A INPUT  \
--s $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
-####
-####
-$allow_use_ipv6 $allow_use_nft  $command_ip6tables_nft    -A OUTPUT \
--d $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
-#### 
-done
-####
-fi
-#### 
-####
-####################################### english: Accept rules for vpn
-####################################### spanish: reglas de aceptar para vpn
-####
-####
-if [ "$allow_net_whitelist" == "$NULL" ]; then
-####
-for one_vpn in $(echo $config_net_whitelist | $command_sed 's/,/ /g'); do
-####
-####
-#### ipv4
-####
-####
-$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A  INPUT  \
--s $one_vpn -j ACCEPT -m comment --comment "vpn $one_vpn" &> /dev/null
-####
-####
-$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A  OUTPUT \
--d $one_vpn -j ACCEPT -m comment --comment "vpn $one_vpn" &> /dev/null
-####
-####
-$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A  INPUT  \
--s $one_vpn -j ACCEPT -m comment --comment "vpn $one_vpn" &> /dev/null
-####
-####
-$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A  OUTPUT \
--d $one_vpn -j ACCEPT -m comment --comment "vpn $one_vpn" &> /dev/null
-####
-####
-#### ipv6
-####
-####
-$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A  INPUT  \
--s $one_vpn -j ACCEPT -m comment --comment "vpn $one_vpn" &> /dev/null
-####
-####
-$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A  OUTPUT \
--d $one_vpn -j ACCEPT -m comment --comment "vpn $one_vpn" &> /dev/null
-####
-####
-$allow_use_ipv6 $allow_use_nft $command_ip6tables_nft    -A  INPUT  \
--s $one_vpn -j ACCEPT -m comment --comment "vpn $one_vpn" &> /dev/null
-####
-####
-$allow_use_ipv6 $allow_use_nft  $command_ip6tables_nft    -A  OUTPUT \
--d $one_vpn -j ACCEPT -m comment --comment "vpn $one_vpn" &> /dev/null
-####
-####
-done
-####
-fi
-####
-####
+
+
 ####################################### english: rules to allow client ports with without separate rules
 ####################################### spanish: reglas para permitir puertos cliente without separate rules
 ####
