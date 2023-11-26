@@ -2152,7 +2152,7 @@ echo "$text_md listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-m
 echo "$text_md listn-security4 listn-security6                                                      "
 echo "$title_md  [ firewall-custom ] "
 echo "$text_md custom clone-static eraserules off-line all-permisive wizard-mini wizard-full        "
-echo "$text_md custom new-full-config nueva-completa-config new-mini-config nueva-mini-config       "
+echo "$text_md new-full-config nueva-completa-config new-mini-config nueva-mini-config       "
 echo "$text_md regen-config examples-config show-config modify-config del-config names-config       "
 echo "$title_md  [ firewall-static ]                                                           "
 echo "$text_md client-basic client-web client-git client-ipp client-irc client-vnc client-mail      "
@@ -3781,13 +3781,13 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-arptables:
-##########    english: clone-static: clone config file static predesignated        ##########
+##########    english: clone-static: clone config file static static        ##########
 ##########    spanish: clone-static: clona archivo de configuracion prediseniado   ##########
 #### :rutina-inicial-clone-static:
 ####
 ####
 if [ "$first_option" == "clone-static" ] && [ "$second_option" == "$NULL" ]  ; then 
-echo "$tab [ info ] [ usage: ] [ $cmd_binary clone-static firewall-predesignated ]"
+echo "$tab [ info ] [ usage: ] [ $cmd_binary clone-static firewall-static ]"
 exit; fi
 ####
 ####
@@ -3999,7 +3999,7 @@ echo "$text_md fwiptables is one simple in one-file FRONT-END                   
 echo "$text_md for iptables linux with COMMAND-LINE with CLI-MENU                   "
 echo "$text_md with GUI-MENU with GUI-ROLL with GUI-SHELL.                          "
 echo "$text_md And choose one firewall: eraserules, or wizard-mini,                 "
-echo "$text_md or wizard-full, or custom, or one predesignated                      "
+echo "$text_md or wizard-full, or custom, or one static                      "
 echo "$text_md firewall to choose one. Gen new rules with templates                 "
 echo "$text_md and with shield ssh and with comments rules.                         "
 echo "$text_md"
@@ -6193,14 +6193,14 @@ fi
 ##########    spanish: preprara reglas del sistema con sus opciones    ##########
 ####
 ####
-####   #### english: The first        firewall of system  predesignated
+####   #### english: The first        firewall of system  static
 ####   #### spanish: El primero       cortafuego del sistema predesignado
 ####
 ####
 ####
 ####
-####   #### english: firewall of system predesignated:
-####   #### spanish: cortafuego del sistema predesignated:
+####   #### english: firewall of system static:
+####   #### spanish: cortafuego del sistema static:
 ####
 ####
 ##########   english: system firewall           ##########
@@ -6273,7 +6273,7 @@ fi
 if [ "$first_option" == "client-basic" ]; then
 echo "$title_md [ info ] [ loading firewall client-basic ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6298,7 +6298,7 @@ fi
 if [ "$first_option" == "client-web" ]; then
 echo "$title_md [ info ] [ loading firewall client-web ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6323,7 +6323,7 @@ fi
 if [ "$first_option" == "client-git" ]; then
 echo "$title_md [ info ] [ loading firewall client-git ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6348,7 +6348,7 @@ fi
 if [ "$first_option" == "client-ipp" ]; then
 echo "$title_md [ info ] [ loading firewall client-ipp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6373,7 +6373,7 @@ fi
 if [ "$first_option" == "client-irc" ]; then
 echo "$title_md [ info ] [ loading firewall client-irc ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6398,7 +6398,7 @@ fi
 if [ "$first_option" == "client-vnc" ]; then
 echo "$title_md [ info ] [ loading firewall client-vnc ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6423,7 +6423,7 @@ fi
 if [ "$first_option" == "client-torrent" ]; then
 echo "$title_md [ info ] [ loading firewall client-torrent ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6448,7 +6448,7 @@ fi
 if [ "$first_option" == "client-vpn" ]; then
 echo "$title_md [ info ] [ loading firewall client-vpn ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6472,7 +6472,7 @@ fi
 if [ "$first_option" == "client-tor" ]; then
 echo "$title_md [ info ] [ loading firewall client-tor ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6497,7 +6497,7 @@ fi
 if [ "$first_option" == "client-news" ]; then
 echo "$title_md [ info ] [ loading firewall client-news ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6527,7 +6527,7 @@ fi
 if [ "$first_option" == "client-mail" ]; then
 echo "$title_md [ info ] [ loading firewall client-mail ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6568,7 +6568,7 @@ fi
 if [ "$first_option" == "client-ftp" ]; then
 echo "$title_md [ info ] [ loading firewall client-ftp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6593,7 +6593,7 @@ fi
 if [ "$first_option" == "client-proxy" ]; then
 echo "$title_md [ info ] [ loading firewall client-proxy ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6618,7 +6618,7 @@ fi
 if [ "$first_option" == "lan-vpn" ]; then
 echo "$title_md [ info ] [ loading firewall lan-vpn ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6644,7 +6644,7 @@ fi
 if [ "$first_option" == "lan-tor" ]; then
 echo "$title_md [ info ] [ loading firewall lan-tor ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6670,7 +6670,7 @@ fi
 if [ "$first_option" == "games-shooter" ]; then
 echo "$title_md [ info ] [ loading firewall games-shooter ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6695,7 +6695,7 @@ fi
 if [ "$first_option" == "games-udp" ]; then
 echo "$title_md [ info ] [ loading firewall games-udp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6720,7 +6720,7 @@ fi
 if [ "$first_option" == "game-wesnoth" ]; then
 echo "$title_md [ info ] [ loading firewall game-wesnoth ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6745,7 +6745,7 @@ fi
 if [ "$first_option" == "game-minetest" ]; then
 echo "$title_md [ info ] [ loading firewall game-minetest ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6770,7 +6770,7 @@ fi
 if [ "$first_option" == "game-freeciv" ]; then
 echo "$title_md [ info ] [ loading firewall game-freeciv ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6795,7 +6795,7 @@ fi
 if [ "$first_option" == "game-widelands" ]; then
 echo "$title_md [ info ] [ loading firewall game-widelands ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6820,7 +6820,7 @@ fi
 if [ "$first_option" == "server-web" ]; then
 echo "$title_md [ info ] [ loading firewall server-web ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
@@ -6845,7 +6845,7 @@ fi
 if [ "$first_option" == "server-vnc" ]; then
 echo "$title_md [ info ] [ loading firewall server-vnc ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
@@ -6870,7 +6870,7 @@ fi
 if [ "$first_option" == "server-ftp" ]; then
 echo "$title_md [ info ] [ loading firewall server-ftp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6895,7 +6895,7 @@ fi
 if [ "$first_option" == "server-proxy" ]; then
 echo "$title_md [ info ] [ loading firewall server-proxy ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
@@ -6920,7 +6920,7 @@ fi
 if [ "$first_option" == "server-news" ]; then
 echo "$title_md [ info ] [ loading firewall server-news ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
@@ -6952,7 +6952,7 @@ echo "$title_md [ info ] [ loading firewall server-mail ]" ;
 ####
 ####
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ; 
 name_firewall="$first_option" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
@@ -6993,7 +6993,7 @@ fi
 if [ "$first_option" == "server-samba" ]; then
 echo "$title_md [ info ] [ loading firewall server-samba ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
@@ -7018,7 +7018,7 @@ fi
 if [ "$first_option" == "server-print" ]; then
 echo "$title_md [ info ] [ loading firewall server-print ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ; 
 name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -7042,7 +7042,7 @@ fi
 if [ "$first_option" == "server-ssh" ]; then
 echo "$title_md [ info ] [ loading firewall server-ssh ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### against brute force
 allow_shield_maxtries="" ;
@@ -7067,7 +7067,7 @@ fi
 if [ "$first_option" == "server-lamp" ]; then
 echo "$title_md [ info ] [ loading firewall server-lamp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### against brute force
 allow_shield_maxtries="" ;
@@ -7093,7 +7093,7 @@ fi
 if [ "$first_option" == "server-asterisk" ]; then
 echo "$title_md [ info ] [ loading firewall server-asterisk ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### against brute force
 allow_shield_maxtries="" ;
@@ -7120,7 +7120,7 @@ fi
 if [ "$first_option" == "server-mumble" ]; then
 echo "$title_md [ info ] [ loading firewall server-mumble ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### against brute force
 allow_shield_maxtries="" ;
@@ -7145,7 +7145,7 @@ fi
 if [ "$first_option" == "server-teamspeak" ]; then
 echo "$title_md [ info ] [ loading firewall server-teamspeak ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### against brute force
 allow_shield_maxtries="" ;
@@ -7174,7 +7174,7 @@ fi
 if [ "$first_option" == "server-sql" ]; then
 echo "$title_md [ info ] [ loading firewall server-sql ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### against brute force
 allow_shield_maxtries="" ;
@@ -7203,7 +7203,7 @@ fi
 if [ "$first_option" == "server-irc" ]; then
 echo "$title_md [ info ] [ loading firewall server-irc ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### against brute force
 allow_shield_maxtries="" ;
@@ -7228,7 +7228,7 @@ fi
 if [ "$first_option" == "server-domain" ]; then
 echo "$title_md [ info ] [ loading firewall server-domain ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### against brute force
 allow_shield_maxtries="" ;
@@ -7270,7 +7270,7 @@ $cmd_binary options ; exit ; fi
 ###############################################################################################################
 ###############################################################################################################
 ####                                                                                            ###############
-####          ready to launch rules ..    - predesignated rules -
+####          ready to launch rules ..    - static rules -
 ###############
 ####                                                                                            ###############
 ###############################################################################################################
@@ -7894,12 +7894,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-code-shield-ssh:
-########################################     english: ipv4 iptables legacy rules default predesignated
+########################################     english: ipv4 iptables legacy rules default static
 ########################################     spanish: ipv4 iptables legacy reglas predesignadas por defecto
 #### :rutina-inicial-code-rulesdefault:
 ####
 ####
-if [ "$type_firewall" == "predesignated" ];  then $cmd_binary eraserules &> /dev/null ;
+if [ "$type_firewall" == "static" ];  then $cmd_binary eraserules &> /dev/null ;
 ####
 ####
 #### loopback localhost legacy ip4
