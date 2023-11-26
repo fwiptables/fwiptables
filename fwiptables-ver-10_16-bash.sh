@@ -3781,6 +3781,25 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-arptables:
+##########    english: clone-static: clone config file static predesignated        ##########
+##########    spanish: clone-static: clona archivo de configuracion prediseniado   ##########
+#### :rutina-inicial-clone-static:
+####
+####
+if [ "$first_option" == "clone-static" ] && [ "$second_option" == "$NULL" ]  ; then 
+echo "$tab [ info ] [ usage: ] [ $cmd_binary clone-static firewall-predesignated ]"
+exit; fi
+####
+####
+if [ "$first_option" == "clone-static" ] && [ "$second_option" != "$NULL" ] ; then 
+archivo="$second_option"
+$cmd_binary code $second_option | $command_grep -E "_port_|_shield_" &> $directory_config/$archivo
+if [ -s "$directory_config/$archivo" ] ; then echo " [ _ok_ ] config created $archivo"
+else rm $directory_config/$archivo ; echo " [ fail ] config no done $archivo" ; fi
+exit; fi
+####
+####
+#### :rutina-final-clone-static:
 ##########    english: new-full-config: new-full-config option to create new configs   ##########
 ##########    spanish: new-full-config: new-full-config para cear nuevas config        ##########
 #### :rutina-inicial-new-full-config:
@@ -6233,7 +6252,8 @@ type_firewall="shield-ssh"    ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
-config_shield_maxtries="5" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### english: ports client and ports server
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -6257,7 +6277,8 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### you can connect normal web
 client_port_tcp="http,https,http-alt,ssh" ;
 client_port_udp="domain,bootpc,ntp" ;
@@ -6281,7 +6302,8 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh" ;
@@ -6305,7 +6327,8 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,git" ;
@@ -6329,7 +6352,8 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ipp" ;
@@ -6353,7 +6377,8 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
@@ -6377,7 +6402,8 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### you can connect normal web and vnc
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,5900:5910" ;
@@ -6397,11 +6423,12 @@ fi
 if [ "$first_option" == "client-torrent" ]; then
 echo "$title_md [ info ] [ loading firewall client-torrent ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### you can connect web normal and bittorrent too
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -6445,11 +6472,12 @@ fi
 if [ "$first_option" == "client-tor" ]; then
 echo "$title_md [ info ] [ loading firewall client-tor ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### you can connect web normal and web tor
 server_port_udp="" ; 
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -6469,11 +6497,12 @@ fi
 if [ "$first_option" == "client-news" ]; then
 echo "$title_md [ info ] [ loading firewall client-news ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -6498,11 +6527,12 @@ fi
 if [ "$first_option" == "client-mail" ]; then
 echo "$title_md [ info ] [ loading firewall client-mail ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -6542,7 +6572,8 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### client ftp:
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -6562,11 +6593,12 @@ fi
 if [ "$first_option" == "client-proxy" ]; then
 echo "$title_md [ info ] [ loading firewall client-proxy ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -6586,11 +6618,12 @@ fi
 if [ "$first_option" == "lan-vpn" ]; then
 echo "$title_md [ info ] [ loading firewall lan-vpn ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### vpn ports to connects ports vpn
 #### with necesary ports to connect gatway and date, domain for your ip
 server_port_udp="" ;
@@ -6611,11 +6644,12 @@ fi
 if [ "$first_option" == "lan-tor" ]; then
 echo "$title_md [ info ] [ loading firewall lan-tor ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### lan tor, 9000:9170 for connect to tor
 #### with necesary ports to connect gatway and date, domain for your ip
 server_port_udp="" ;
@@ -6640,7 +6674,8 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -6660,11 +6695,12 @@ fi
 if [ "$first_option" == "games-udp" ]; then
 echo "$title_md [ info ] [ loading firewall games-udp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -6684,11 +6720,12 @@ fi
 if [ "$first_option" == "game-wesnoth" ]; then
 echo "$title_md [ info ] [ loading firewall game-wesnoth ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### game wesnoth port 14999 and 15001 usually
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
 server_port_udp="" ;
@@ -6708,11 +6745,12 @@ fi
 if [ "$first_option" == "game-minetest" ]; then
 echo "$title_md [ info ] [ loading firewall game-minetest ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### game minetest and minecraft porst 25k and 35k /udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,25000:35000" ; 
 server_port_udp="" ;
@@ -6732,11 +6770,12 @@ fi
 if [ "$first_option" == "game-freeciv" ]; then
 echo "$title_md [ info ] [ loading firewall game-freeciv ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-alllow_shield_ssh="no" ;
-config_shield_port="" ;
+allow_shield_maxtries="no" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### for default 5556 port tcp perhaps 5555 too
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
 server_port_udp="" ;
@@ -6756,11 +6795,12 @@ fi
 if [ "$first_option" == "game-widelands" ]; then
 echo "$title_md [ info ] [ loading firewall game-widelands ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### for default 7396 port tcp and 7396 udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,7396" ; 
 server_port_udp="7396" ;
@@ -6784,6 +6824,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_port="22" ;
 config_shield_port="ssh" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -6808,7 +6849,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
-config_shield_maxtries="20" ;
+config_shield_maxtries="30" ;
 config_shield_port="22,5900:5910"
 #### you can connect normal web and vnc
 server_port_udp="" ;
@@ -6832,7 +6873,9 @@ launch_rules_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-allow_shield_maxtries="" ;
+allow_shield_maxtries="no" ;
+config_shield_maxtries="20" ;
+config_shield_port="ssh,ftp,ftp-data" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -6856,6 +6899,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -6880,6 +6924,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_port="22" ;
 config_shield_port="ssh" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
@@ -6904,12 +6949,11 @@ fi
 ####
 if [ "$first_option" == "server-mail" ]; then
 echo "$title_md [ info ] [ loading firewall server-mail ]" ;
+####
+####
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_port="ssh" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -6924,7 +6968,13 @@ config_shield_port="ssh" ;
 #### IMAP2 143
 #### IMAPS 993
 #### negotiation submission     tls             465 and 587
-#### 
+####
+#### english: max tries for each hour 
+allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
+config_shield_port="ssh" ;
+####
+####
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="https" ;
 client_port_tcp="http,https,http-alt,ssh,25,119,433,563,25:26,995,110,465,587,143,993" ;
@@ -6947,6 +6997,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 #### server samba and active directory
 client_port_tcp="http,https,http-alt,ssh,ldap,636,microsoft-ds" ;
@@ -6969,8 +7020,8 @@ echo "$title_md [ info ] [ loading firewall server-print ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 #### server ipp and printer
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -6993,8 +7044,9 @@ echo "$title_md [ info ] [ loading firewall server-ssh ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
+#### against brute force
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 #### server ssh 22/tcp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -7015,10 +7067,11 @@ fi
 if [ "$first_option" == "server-lamp" ]; then
 echo "$title_md [ info ] [ loading firewall server-lamp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="predesignated" ;
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
+#### against brute force
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 ####  english: udp: 20 is ftp-data, 21 is ftp, 989 is ftps-data y 990 is ftps
 ####  english: tcp: 10000 is webmin, 3306 is mysql, 5432 is postgresql
@@ -7040,10 +7093,11 @@ fi
 if [ "$first_option" == "server-asterisk" ]; then
 echo "$title_md [ info ] [ loading firewall server-asterisk ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="predesignated" ;
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
+#### against brute force
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 ####    UDP:5060 SIP (sip.conf), newer Versions support TCP:5060
 ####    UDP:10000-20000 RTP (rtp.conf) for the media stream, a higher Portrange
@@ -7066,10 +7120,11 @@ fi
 if [ "$first_option" == "server-mumble" ]; then
 echo "$title_md [ info ] [ loading firewall server-mumble ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="predesignated" ;
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
+#### against brute force
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 #### mumble port 64738 tcp and 64738 udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,64738" ;
@@ -7090,10 +7145,11 @@ fi
 if [ "$first_option" == "server-teamspeak" ]; then
 echo "$title_md [ info ] [ loading firewall server-teamspeak ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="predesignated" ;
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
+#### against brute force
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 #### Service	        Protocol	Local Port (Server)
 #### Voice	        UDP	9987
@@ -7118,10 +7174,11 @@ fi
 if [ "$first_option" == "server-sql" ]; then
 echo "$title_md [ info ] [ loading firewall server-sql ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="predesignated" ;
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
+#### against brute force
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 ####  POSTGRESQL 5432/tcp and 5432/udp
 ####  Technology	Default Port	Required
@@ -7148,9 +7205,10 @@ echo "$title_md [ info ] [ loading firewall server-irc ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
+#### against brute force
+allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
+config_shield_port="ssh" ;
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
@@ -7170,10 +7228,11 @@ fi
 if [ "$first_option" == "server-domain" ]; then
 echo "$title_md [ info ] [ loading firewall server-domain ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="predesignated" ;
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
+#### against brute force
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 #### server domain and domain-s
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https," ;
