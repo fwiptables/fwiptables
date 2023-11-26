@@ -5283,13 +5283,7 @@ menuprincipal="$($favorite_text_dialog --clear --notags --title "Cli Menu With $
 0419  "$tab listn-security6" \
 0420  "$tab listn-ebtables" \
 0421  "$tab listn-arptables" \
-0500 "$quad [ Firewall Launch ] $cinco" \
-0501  "$tab eraserules" \
-0502  "$tab wizard-mini" \
-0503  "$tab wizard-full" \
-0504  "$tab off-line" \
-0505  "$tab all-permisive" \
-0506  "$tab custom" \
+0500 "$quad [ Firewall Static ] $cinco" \
 0507  "$tab client-basic" \
 0508  "$tab client-web" \
 0509  "$tab client-git" \
@@ -5320,17 +5314,24 @@ menuprincipal="$($favorite_text_dialog --clear --notags --title "Cli Menu With $
 0534  "$tab server-sql" \
 0535  "$tab server-asterisk" \
 0600 "$quad [ Firewall Custom ] $cinco" \
-0601  "$tab new-full-config" \
-0602  "$tab nueva-completa-config" \
-0603  "$tab new-mini-config" \
-0604  "$tab nueva-mini-config" \
-0605  "$tab show-config" \
-0606  "$tab modify-config" \
-0607  "$tab del-config" \
-0608  "$tab names-config" \
-0609  "$tab regen-config" \
-0610  "$tab examples-config" \
-0700 "$quad [ Options State ] $cinco" \
+0601  "$tab eraserules" \
+0602  "$tab wizard-mini" \
+0603  "$tab wizard-full" \
+0604  "$tab off-line" \
+0605  "$tab all-permisive" \
+0606  "$tab custom" \
+0607  "$tab clone-static" \
+0611  "$tab new-full-config" \
+0612  "$tab nueva-completa-config" \
+0613  "$tab new-mini-config" \
+0614  "$tab nueva-mini-config" \
+0615  "$tab show-config" \
+0616  "$tab modify-config" \
+0617  "$tab del-config" \
+0618  "$tab names-config" \
+0619  "$tab regen-config" \
+0620  "$tab examples-config" \
+0700 "$quad [ Options Easy ] $cinco" \
 0701  "$tab preferences-read" \
 0702  "$tab preferences-modify" \
 0703  "$tab preferences-regen" \
@@ -5416,14 +5417,6 @@ nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_binary load $nom
 0420) clear ; $cmd_binary cli list-ebtables ;;
 0421) clear ; $cmd_binary cli list-arptables ;;
 ################################################################################
-0501) clear ; $cmd_binary cli eraserules ; $cmd_binary cli list4   ;;
-0502) clear ; $cmd_binary cli wizard-mini ; $cmd_binary cli list4  ;;
-0503) clear ; $cmd_binary cli wizard-full ; $cmd_binary cli list4  ;;
-0504) clear ; $cmd_binary cli off-line ; $cmd_binary cli list4  ;;
-0505) clear ; $cmd_binary cli all-permisive ; $cmd_binary cli list4   ;;
-0506) 
-archivo="$($favorite_text_dialog  --title "custom" --stdout --inputbox "$($command_ls $directory_config)" 0 0)"
-archivo="$(echo $archivo | $command_sed s/\\///g)" ;  clear ; $cmd_binary custom $archivo ;;
 0507) clear ; $cmd_binary cli client-basic ; $cmd_binary cli list4    ;;
 0508) clear ; $cmd_binary cli client-web ; $cmd_binary cli list4    ;;
 0509) clear ; $cmd_binary cli client-git ; $cmd_binary cli list4    ;;
@@ -5454,36 +5447,48 @@ archivo="$(echo $archivo | $command_sed s/\\///g)" ;  clear ; $cmd_binary custom
 0534) clear ; $cmd_binary cli server-sql ; $cmd_binary cli list4      ;;
 0535) clear ; $cmd_binary cli server-asterisk ; $cmd_binary cli list4 ;;
 ################################################################################
-0601) archivo="$($favorite_text_dialog  --stdout --title "new-full-config example: file.cfg" \
+0601) clear ; $cmd_binary cli eraserules ; $cmd_binary cli list4   ;;
+0602) clear ; $cmd_binary cli wizard-mini ; $cmd_binary cli list4  ;;
+0603) clear ; $cmd_binary cli wizard-full ; $cmd_binary cli list4  ;;
+0604) clear ; $cmd_binary cli off-line ; $cmd_binary cli list4  ;;
+0605) clear ; $cmd_binary cli all-permisive ; $cmd_binary cli list4   ;;
+0606) 
+archivo="$($favorite_text_dialog  --title "custom" --stdout --inputbox "$($command_ls $directory_config)" 0 0)"
+archivo="$(echo $archivo | $command_sed s/\\///g)" ;  clear ; $cmd_binary custom $archivo ;;
+
+0607) 
+archivo="$($favorite_text_dialog  --title "custom" --stdout --inputbox "$($command_ls $directory_config)" 0 0)"
+archivo="$(echo $archivo | $command_sed s/\\///g)" ;  clear ; $cmd_binary clone-static $archivo ;;
+0611) archivo="$($favorite_text_dialog  --stdout --title "new-full-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary new-full-config $archivo ;;
-0602) archivo="$($favorite_text_dialog  --stdout --title "nueva-completa-config example: archivo.cfg" \
+0612) archivo="$($favorite_text_dialog  --stdout --title "nueva-completa-config example: archivo.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary nueva-completa-config $archivo ;;
-0603) archivo="$($favorite_text_dialog  --stdout --title "new-mini-config example: file.cfg" \
+0613) archivo="$($favorite_text_dialog  --stdout --title "new-mini-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary new-mini-config $archivo ;;
-0604) archivo="$($favorite_text_dialog  --stdout --title "nueva-mini-config example: archivo.cfg" \
+0614) archivo="$($favorite_text_dialog  --stdout --title "nueva-mini-config example: archivo.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary nueva-mini-config $archivo ;;
-0605) archivo="$($favorite_text_dialog  --stdout --title "show-config example: file.cfg" \
+0615) archivo="$($favorite_text_dialog  --stdout --title "show-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary show-config $archivo ; echo "$tab [ info ] [ Use: Launch: $cmd_binary custom $archivo ]";;
-0606) archivo="$($favorite_text_dialog  --stdout --title "modify-config example: file.cfg" \
+0616) archivo="$($favorite_text_dialog  --stdout --title "modify-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary modify-config $archivo ;;
-0607) archivo="$($favorite_text_dialog  --stdout --title "del-config" --inputbox "$($command_ls $directory_config)" 0 0)"
+0617) archivo="$($favorite_text_dialog  --stdout --title "del-config" --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary del-config $archivo ; echo "deleted $archivo" ;;
-0608) clear ; $cmd_binary cli names-config ;;
-0609) clear ; $cmd_binary cli regen-config ;;
-0610) clear ; $cmd_binary cli examples-config ;;
+0618) clear ; $cmd_binary cli names-config ;;
+0619) clear ; $cmd_binary cli regen-config ;;
+0620) clear ; $cmd_binary cli examples-config ;;
 ################################################################################
 0701) clear ; $cmd_binary cli preferences-read ;;
 0702) clear ; $cmd_binary cli preferences-modify ;;
