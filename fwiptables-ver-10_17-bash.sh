@@ -721,10 +721,10 @@ fi
 ####
 ####
 ####
-#### english:  alias firewall-list with conceputal firewall-conceptual:
+#### english:  alias firewall-list with conceputal firewall-listconceptual:
 ####
 ####
-#### english:  alias firewall-list with numeral firewall-numeral:
+#### english:  alias firewall-list with numeral firewall-listnumeral:
 ####
 ####
 case "$first_option" in
@@ -2143,11 +2143,11 @@ echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad
 echo "$title_md"
 echo "$title_md  [ firewall-control ]                                                           "
 echo "$text_md stop continue reset actual show save load names-control                              "
-echo "$title_md  [ firewall-conceptual ]                                                        "
+echo "$title_md  [ firewall-listconceptual ]                                                        "
 echo "$text_md ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6                  "
 echo "$text_md list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6                    "
 echo "$text_md list-security4 list-security6 list-ebtables list-arptables                           "
-echo "$title_md  [ firewall-numeral ]                                                           "
+echo "$title_md  [ firewall-listnumeral ]                                                           "
 echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6          "
 echo "$text_md listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6              "
 echo "$text_md listn-security4 listn-security6                                                      "
@@ -2189,10 +2189,10 @@ echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail ] [ -gui-roll-zenity ]"
 echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]"
 echo "$title_md"
 echo "$text_md    firewall-control |  stop continue reset actual show save load names-control"
-echo "$text_md firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6"
+echo "$text_md firewall-listconceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6"
 echo "$text_md                        list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6"
 echo "$text_md                        list-security4 list-security6 list-ebtables list-arptables"
-echo "$text_md    firewall-numeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4"
+echo "$text_md    firewall-listnumeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4"
 echo "$text_md                        listn-filter6 listn-nat4 listn-nat6 listn-raw4 listn-raw6"
 echo "$text_md                        listn-mangle4  listn-mangle6 listn-security4 listn-security6"
 echo "$text_md     firewall-customfw |  custom eraserules wizard-mini wizard-full off-line all-permisive"
@@ -2323,14 +2323,14 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-control:
-##########    english: firewall-conceptual: options for fwiptables firewall      ##########
-##########    spanish: firewall-conceptual: opciones para fwiptables firewall    ##########
-#### :rutina-inicial-firewall-conceptual:
+##########    english: firewall-listconceptual: options for fwiptables firewall      ##########
+##########    spanish: firewall-listconceptual: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-firewall-listconceptual:
 ####
 ####
-if   [ "$first_option" == "firewall-conceptual" ]; then
+if   [ "$first_option" == "firewall-listconceptual" ]; then
 echo "$text_md "
-echo "$title_md | firewall-conceptual | $cmd_file firewall-conceptual |"
+echo "$title_md | firewall-listconceptual | $cmd_file firewall-listconceptual |"
 echo "$text_md"
 echo "$text_md ls4 . list filter rules ipv4 "
 echo "$text_md ls6 . list filter rules ipv6 "
@@ -2354,15 +2354,15 @@ echo "$text_md"
 exit; fi
 ####
 ####
-#### :rutina-final-firewall-conceptual:
-##########    english: firewall-numeral: options for fwiptables firewall      ##########
-##########    spanish: firewall-numeral: opciones para fwiptables firewall    ##########
-#### :rutina-inicial-firewall-numeral:
+#### :rutina-final-firewall-listconceptual:
+##########    english: firewall-listnumeral: options for fwiptables firewall      ##########
+##########    spanish: firewall-listnumeral: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-firewall-listnumeral:
 ####
 ####
-if   [ "$first_option" == "firewall-numeral" ]; then
+if   [ "$first_option" == "firewall-listnumeral" ]; then
 echo "$text_md "
-echo "$title_md | firewall-numeral | $cmd_file firewall-numeral |"
+echo "$title_md | firewall-listnumeral | $cmd_file firewall-listnumeral |"
 echo "$text_md"
 echo "$text_md lsn4 . list filter rules ipv4 with numbers"
 echo "$text_md lsn6 . list filter rules ipv6 with numbers"
@@ -2386,7 +2386,7 @@ echo "$text_md"
 exit; fi
 ####
 ####
-#### :rutina-final-firewall-numeral:
+#### :rutina-final-firewall-listnumeral:
 ##########    english: firewall-customfw: options for fwiptables firewall      ##########
 ##########    spanish: firewall-customfw: opciones para fwiptables firewall    ##########
 #### :rutina-inicial-firewall-customfw:
@@ -2530,8 +2530,8 @@ echo "$title_md           Firewall fwiptables-cmd info-options ... $cmd_version"
 echo "$text_md"
 $cmd_binary optional-output
 $cmd_binary firewall-control
-$cmd_binary firewall-conceptual
-$cmd_binary firewall-numeral
+$cmd_binary firewall-listconceptual
+$cmd_binary firewall-listnumeral
 $cmd_binary firewall-customfw
 $cmd_binary firewall-systemfw
 $cmd_binary options-easy
@@ -5374,8 +5374,8 @@ case "$menuprincipal" in
 0000) clear ; $cmd_binary cli readme  ;;
 0100) clear ; $cmd_binary cli options ;;
 0200) clear ; $cmd_binary cli firewall-control ;;
-0300) clear ; $cmd_binary cli firewall-conceptual ;;
-0400) clear ; $cmd_binary cli firewall-numeral ;;
+0300) clear ; $cmd_binary cli firewall-listconceptual ;;
+0400) clear ; $cmd_binary cli firewall-listnumeral ;;
 0500) clear ; $cmd_binary cli firewall-systemfw ;;
 0600) clear ; $cmd_binary cli firewall-customfw ;;
 0700) clear ; $cmd_binary cli default-state ;;
@@ -5569,8 +5569,8 @@ selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 case "$selection_final" in
 "01-Firewall-Control")$cmd_binary gui-roll-zenity-firewall-control ; exit ;;
-"02-Firewall-List-With-Conceptual")$cmd_binary gui-roll-zenity-firewall-conceptual ; exit ;;
-"02-Firewall-List-With-Numeral")$cmd_binary gui-roll-zenity-firewall-numeral ; exit ;;
+"02-Firewall-List-With-Conceptual")$cmd_binary gui-roll-zenity-firewall-listconceptual ; exit ;;
+"02-Firewall-List-With-Numeral")$cmd_binary gui-roll-zenity-firewall-listnumeral ; exit ;;
 "03-firewall-customfw")$cmd_binary gui-roll-zenity-firewall-customfw ; exit ;;
 "04-firewall-systemfw")$cmd_binary gui-roll-zenity-firewall-systemfw ; exit ;;
 "05-options-easy")$cmd_binary gui-roll-zenity-options-easy ; exit ;;
@@ -5615,23 +5615,23 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-control:
-##########    english: gui-roll-zenity-firewall-conceptual: gui roll firewall-conceptual: gui with roll  ##########
-##########    spanish: gui-roll-zenity-firewall-conceptual: gui roll firewall-conceptual: gui con roll   ##########
-#### :rutina-inicial-gui-roll-zenity-firewall-conceptual:
+##########    english: gui-roll-zenity-firewall-listconceptual: gui roll firewall-listconceptual: gui with roll  ##########
+##########    spanish: gui-roll-zenity-firewall-listconceptual: gui roll firewall-listconceptual: gui con roll   ##########
+#### :rutina-inicial-gui-roll-zenity-firewall-listconceptual:
 ####
 ####
-if   [ "$first_option" == "gui-roll-zenity-firewall-conceptual" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-roll-zenity-firewall-listconceptual" ] ; then echo $head_waiting_gui
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|ls4|ls6|list-filter4|list-filter6|list-alltables|\
 list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|list-security4|list-security6|list-ebtables|list-arptables"
-selection_menu="$($command_zenity --text="gui-roll-firewall-conceptual" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+selection_menu="$($command_zenity --text="gui-roll-firewall-listconceptual" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
 1)$command_zenity  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "gui-principal-menu")$cmd_binary gui-roll-zenity ;;
-"gui-help-menu")$cmd_binary -gui-zenity help firewall-conceptual ;;
-"gui-info-menu")$cmd_binary -gui-zenity info firewall-conceptual ;;
+"gui-help-menu")$cmd_binary -gui-zenity help firewall-listconceptual ;;
+"gui-info-menu")$cmd_binary -gui-zenity info firewall-listconceptual ;;
 "ls4")$cmd_binary -gui-zenity ls4 ;;
 "ls6")$cmd_binary -gui-zenity ls6 ;;
 "list-alltables")$cmd_binary -gui-zenity list-alltables ;;
@@ -5653,24 +5653,24 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-zenity-firewall-conceptual:
-##########    english: gui-roll-zenity-firewall-numeral: gui roll firewall-numeral: gui with roll  ##########
-##########    spanish: gui-roll-zenity-firewall-numeral: gui roll firewall-numeral: gui con roll   ##########
-#### :rutina-inicial-gui-roll-zenity-firewall-numeral:
+#### :rutina-final-gui-roll-zenity-firewall-listconceptual:
+##########    english: gui-roll-zenity-firewall-listnumeral: gui roll firewall-listnumeral: gui with roll  ##########
+##########    spanish: gui-roll-zenity-firewall-listnumeral: gui roll firewall-listnumeral: gui con roll   ##########
+#### :rutina-inicial-gui-roll-zenity-firewall-listnumeral:
 ####
 ####
-if   [ "$first_option" == "gui-roll-zenity-firewall-numeral" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-roll-zenity-firewall-listnumeral" ] ; then echo $head_waiting_gui
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|lsn4|lsn6|listn-filter4|listn-filter6|listn-alltables|\
 listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|listn-raw4|listn-raw6|listn-security4|listn-security6|list-ebtables|list-arptables"
-selection_menu="$($command_zenity --text="gui-roll-firewall-numeral" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+selection_menu="$($command_zenity --text="gui-roll-firewall-listnumeral" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
 1)$command_zenity  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "gui-principal-menu")$cmd_binary gui-roll-zenity ;;
-"gui-help-menu")$cmd_binary -gui-zenity help firewall-numeral ;;
-"gui-info-menu")$cmd_binary -gui-zenity info firewall-numeral ;;
+"gui-help-menu")$cmd_binary -gui-zenity help firewall-listnumeral ;;
+"gui-info-menu")$cmd_binary -gui-zenity info firewall-listnumeral ;;
 "lsn4")$cmd_binary -gui-zenity lsn4 ;;
 "lsn6")$cmd_binary -gui-zenity lsn6 ;;
 "listn-alltables")$cmd_binary -gui-zenity listn-alltables ;;
@@ -5692,7 +5692,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-zenity-firewall-numeral:
+#### :rutina-final-gui-roll-zenity-firewall-listnumeral:
 ##########    english: gui-roll-zenity-firewall-customfw: gui roll firewall-customfw: gui with roll  ##########
 ##########    spanish: gui-roll-zenity-firewall-customfw: gui roll firewall-customfw: gui con roll   ##########
 #### :rutina-inicial-gui-roll-zenity-firewall-customfw:
@@ -5895,8 +5895,8 @@ selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --colum
 case "$selection_final" in
 1) exit ;;
 01-Firewall-Control*)$cmd_binary gui-menu-firewall-control ; exit ;;
-02-Firewall-List-With-Conceptual*)$cmd_binary gui-menu-firewall-conceptual ; exit ;;
-02-Firewall-List-With-Numeral*)$cmd_binary gui-menu-firewall-numeral ; exit ;;
+02-Firewall-List-With-Conceptual*)$cmd_binary gui-menu-firewall-listconceptual ; exit ;;
+02-Firewall-List-With-Numeral*)$cmd_binary gui-menu-firewall-listnumeral ; exit ;;
 03-firewall-customfw*)$cmd_binary gui-menu-firewall-customfw ; exit ;;
 04-firewall-systemfw*)$cmd_binary gui-menu-firewall-systemfw ; exit ;;
 05-options-easy*)$cmd_binary gui-menu-options-easy ; exit ;;
@@ -5945,12 +5945,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-control:
-##########    english: gui-menu-firewall-conceptual: gui with menu   ##########
-##########    spanish: gui-menu-firewall-conceptual: gui con menu    ##########
-#### :rutina-inicial-gui-menu-firewall-conceptual:
+##########    english: gui-menu-firewall-listconceptual: gui with menu   ##########
+##########    spanish: gui-menu-firewall-listconceptual: gui con menu    ##########
+#### :rutina-inicial-gui-menu-firewall-listconceptual:
 ####
 ####
-if   [ "$first_option" == "gui-menu-firewall-conceptual" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-menu-firewall-listconceptual" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|ls4|ls6|list-filter4|list-filter6|list-alltables|\
 list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|list-security4|list-security6|list-ebtables|list-arptables"
@@ -5961,8 +5961,8 @@ selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --colum
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu*)$cmd_binary gui-menu ;;
-gui-help-menu*)$cmd_binary -gui help firewall-conceptual ;;
-gui-info-menu*)$cmd_binary -gui info firewall-conceptual ;;
+gui-help-menu*)$cmd_binary -gui help firewall-listconceptual ;;
+gui-info-menu*)$cmd_binary -gui info firewall-listconceptual ;;
 ls4*)$cmd_binary -gui ls4 ;;
 ls6*)$cmd_binary -gui ls6 ;;
 list-alltables*)$cmd_binary -gui list-alltables ;;
@@ -5984,13 +5984,13 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-firewall-conceptual:
-##########    english: gui-menu-firewall-numeral: gui with menu   ##########
-##########    spanish: gui-menu-firewall-numeral: gui con menu    ##########
-#### :rutina-inicial-gui-menu-firewall-numeral:
+#### :rutina-final-gui-menu-firewall-listconceptual:
+##########    english: gui-menu-firewall-listnumeral: gui with menu   ##########
+##########    spanish: gui-menu-firewall-listnumeral: gui con menu    ##########
+#### :rutina-inicial-gui-menu-firewall-listnumeral:
 ####
 ####
-if   [ "$first_option" == "gui-menu-firewall-numeral" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-menu-firewall-listnumeral" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|lsn4|lsn6|listn-filter4|listn-filter6|listn-alltables|\
 listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|listn-raw4|listn-raw6|listn-security4|listn-security6|list-ebtables|list-arptables"
@@ -6001,8 +6001,8 @@ selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --colum
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu*)$cmd_binary gui-menu ;;
-gui-help-menu*)$cmd_binary -gui help firewall-numeral ;;
-gui-info-menu*)$cmd_binary -gui info firewall-numeral ;;
+gui-help-menu*)$cmd_binary -gui help firewall-listnumeral ;;
+gui-info-menu*)$cmd_binary -gui info firewall-listnumeral ;;
 lsn4*)$cmd_binary -gui lsn4 ;;
 lsn6*)$cmd_binary -gui lsn6 ;;
 listn-alltables*)$cmd_binary -gui listn-alltables ;;
@@ -6024,7 +6024,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-firewall-numeral:
+#### :rutina-final-gui-menu-firewall-listnumeral:
 ##########    english: gui-menu-firewall-customfw: gui with menu   ##########
 ##########    spanish: gui-menu-firewall-customfw: gui con menu    ##########
 #### :rutina-inicial-gui-menu-firewall-customfw:
