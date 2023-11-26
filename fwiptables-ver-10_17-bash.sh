@@ -5349,18 +5349,18 @@ menuprincipal="$($favorite_text_dialog --clear --notags --title "Cli Menu With $
 0715  "$tab depends" \
 0716  "$tab info" \
 0717  "$tab ver" \
-0718  "$tab list-options"\
-0719  "$tab clasic-options"\
-0720  "$tab info-options"\
-0721  "$tab nodes"\
-0722  "$tab date"\
-0723  "$tab free"\
-0724  "$tab expert"\
-0725  "$tab commands"\
-0726  "$tab variables"\
-0727  "$tab intro"\
-0728  "$tab download"\
-0729  "$tab install"
+0718  "$tab list-options" \
+0719  "$tab clasic-options" \
+0720  "$tab info-options" \
+0721  "$tab nodes" \
+0722  "$tab date" \
+0723  "$tab free" \
+0724  "$tab expert" \
+0725  "$tab commands" \
+0726  "$tab variables" \
+0727  "$tab intro" \
+0728  "$tab download" \
+0729  "$tab install" \
 3>&1 1>&2 2>&3 )"
 ################################################################################
 #### 
