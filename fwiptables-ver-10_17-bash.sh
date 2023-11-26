@@ -187,62 +187,62 @@ $command_xhost +SI:localuser:root &> /dev/null ; fi
 #### :rutina-inicial-config-variables:
 ####
 ####
-list_rules_conceptual=""  #list-vars ; 
-config_ip4_localhost="127.0.0.1"   #list-vars ;
-config_ip6_localhost="::1"   #list-vars ;
-client_port_tcp="ssh,http,https"    #list-vars ;
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https"    #list-vars ;
-server_port_tcp=""    #list-vars ;
-server_port_udp=""    #list-vars ;
-logserver_prefix_input="fwlog-input::"    #list-vars ; 
-logserver_prefix_output="fwlog-output::"    #list-vars ;
-logserver_port_tcp="no"    #list-vars ;
-logserver_port_udp="no"    #list-vars ;
-time_server_waiting="9s"   #list-vars ;
-allow_dmz_ip4="no"   #list-vars ; 
-allow_dmz_ip6="no"   #list-vars ;
-allow_forward_ip4="no"   #list-vars ; 
-allow_forward_ip6="no"   #list-vars ; 
-allow_gateway_ip4="no"   #list-vars ;
-allow_gateway_ip6="no"   #list-vars ;
-allow_input_all="no"   #list-vars ;
-allow_input_bandwidth="no"   #list-vars ;
-allow_input_maxconnect="no"   #list-vars ;
-allow_input_ping="no"    #list-vars ;
-allow_input_state="no"   #list-vars ;
-allow_shield_maxtries="no"   #list-vars ;
-allow_mac_blacklist="no"   #list-vars ; 
-allow_mac_whitelist="no"   #list-vars ;
-allow_net_blacklist="no"   #list-vars ;
-allow_net_whitelist="no"    #list-vars ; 
-allow_others_protocols="no"    #list-vars ;
-allow_output_all="no"    #list-vars ; 
-allow_output_bandwidth="no"    #list-vars ;
-allow_output_gid="no"    #list-vars ;
-allow_output_maxconnect="no"    #list-vars ;
-allow_output_ping="no"    #list-vars ;
-allow_output_state="no"    #list-vars ;
-allow_output_uid="no"    #list-vars ; 
-config_dmz_ip4=""    #list-vars ;
-config_dmz_ip6=""    #list-vars ;
-config_input_bandwidth="12512"    #list-vars ; 
-config_input_maxconnect="72"    #list-vars ; 
-config_input_state="new,related,established"    #list-vars ;
-config_shield_maxtries="12"    #list-vars ;
-config_mac_blacklist=""    #list-vars ;
-config_mac_whitelist=""    #list-vars ;
-config_net_blacklist="yandex.com,baidu.com,google.com"    #list-vars ;
-config_net_whitelist="deb.debian.org"    #list-vars ; 
-config_others_protocols="icmp,igmp"    #list-vars ;
-config_output_bandwidth="512"    #list-vars ;
-config_output_gid="root"    #list-vars ;
-config_output_maxconnect="72"    #list-vars ;
-config_output_state="new,related,established"    #list-vars ;
-config_output_uid="root"    #list-vars ;
-net_ipv4_client="0/0"    #list-vars ; 
-net_ipv4_server="0/0"    #list-vars ;
-net_ipv6_client="::/0"    #list-vars ;
-net_ipv6_server="::/0"    #list-vars ;
+list_rules_conceptual=""   ; 
+config_ip4_localhost="127.0.0.1"    ;
+config_ip6_localhost="::1"    ;
+client_port_tcp="ssh,http,https"     ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https"     ;
+server_port_tcp=""     ;
+server_port_udp=""     ;
+logserver_prefix_input="fwlog-input::"     ; 
+logserver_prefix_output="fwlog-output::"     ;
+logserver_port_tcp="no"     ;
+logserver_port_udp="no"     ;
+time_server_waiting="9s"    ;
+allow_dmz_ip4="no"    ; 
+allow_dmz_ip6="no"    ;
+allow_forward_ip4="no"    ; 
+allow_forward_ip6="no"    ; 
+allow_gateway_ip4="no"    ;
+allow_gateway_ip6="no"    ;
+allow_input_all="no"    ;
+allow_input_bandwidth="no"    ;
+allow_input_maxconnect="no"    ;
+allow_input_ping="no"     ;
+allow_input_state="no"    ;
+allow_shield_maxtries="no"    ;
+allow_mac_blacklist="no"    ; 
+allow_mac_whitelist="no"    ;
+allow_net_blacklist="no"    ;
+allow_net_whitelist="no"     ; 
+allow_others_protocols="no"     ;
+allow_output_all="no"     ; 
+allow_output_bandwidth="no"     ;
+allow_output_gid="no"     ;
+allow_output_maxconnect="no"     ;
+allow_output_ping="no"     ;
+allow_output_state="no"     ;
+allow_output_uid="no"     ; 
+config_dmz_ip4=""     ;
+config_dmz_ip6=""     ;
+config_input_bandwidth="12512"     ; 
+config_input_maxconnect="72"     ; 
+config_input_state="new,related,established"     ;
+config_shield_maxtries="12"     ;
+config_mac_blacklist=""     ;
+config_mac_whitelist=""     ;
+config_net_blacklist="yandex.com,baidu.com,google.com"     ;
+config_net_whitelist="deb.debian.org"     ; 
+config_others_protocols="icmp,igmp"     ;
+config_output_bandwidth="512"     ;
+config_output_gid="root"     ;
+config_output_maxconnect="72"     ;
+config_output_state="new,related,established"     ;
+config_output_uid="root"     ;
+net_ipv4_client="0/0"     ; 
+net_ipv4_server="0/0"     ;
+net_ipv6_client="::/0"     ;
+net_ipv6_server="::/0"     ;
 ####
 ####
 #### :rutina-final-config-variables:
@@ -1195,8 +1195,6 @@ echo "allow_use_nft=no                                    ## void or no"
 echo "allow_use_ipv4=                                     ## void or no"
 echo "allow_use_ipv6=no                                   ## void or no"
 echo "allow_separate_rules=                               ## void or no"
-echo "config_shield_port=22                               ## void or ports to shield, comma separate"
-echo "config_shield_maxtries=10                           ## void or number max to try for each hour"
 echo "config_close_deny=DROP                              ## DROP or REJECT"
 echo
 echo "$title_md default log"
@@ -6258,6 +6256,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp=""    
+logserver_port_udp="no"    
 #### english: ports client and ports server
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -6308,6 +6311,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh" ;
@@ -6333,6 +6341,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,git" ;
@@ -6358,6 +6371,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ipp" ;
@@ -6383,6 +6401,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
@@ -6408,6 +6431,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### you can connect normal web and vnc
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,5900:5910" ;
@@ -6433,6 +6461,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### you can connect web normal and bittorrent too
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -6482,6 +6515,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### you can connect web normal and web tor
 server_port_udp="" ; 
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -6507,6 +6545,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -6537,6 +6580,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -6578,6 +6626,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### client ftp:
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -6603,6 +6656,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -6628,6 +6686,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### vpn ports to connects ports vpn
 #### with necesary ports to connect gatway and date, domain for your ip
 server_port_udp="" ;
@@ -6654,6 +6717,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### lan tor, 9000:9170 for connect to tor
 #### with necesary ports to connect gatway and date, domain for your ip
 server_port_udp="" ;
@@ -6680,6 +6748,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -6705,6 +6778,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -6730,6 +6808,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### game wesnoth port 14999 and 15001 usually
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
 server_port_udp="" ;
@@ -6755,6 +6838,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### game minetest and minecraft porst 25k and 35k /udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,25000:35000" ; 
 server_port_udp="" ;
@@ -6780,6 +6868,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### for default 5556 port tcp perhaps 5555 too
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
 server_port_udp="" ;
@@ -6805,6 +6898,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
 config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### for default 7396 port tcp and 7396 udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,7396" ; 
 server_port_udp="7396" ;
@@ -6830,6 +6928,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 config_shield_port="22" ;
 config_shield_port="ssh" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="https" ;
@@ -6855,6 +6958,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 config_shield_maxtries="30" ;
 config_shield_port="22,5900:5910"
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### you can connect normal web and vnc
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,5900:5910" ;
@@ -6905,6 +7013,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -6930,6 +7043,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 config_shield_port="22" ;
 config_shield_port="ssh" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -6977,7 +7095,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
-####
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 ####
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="https" ;
@@ -7003,6 +7125,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### server samba and active directory
 client_port_tcp="http,https,http-alt,ssh,ldap,636,microsoft-ds" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,ldap,636,137:139" ;
@@ -7027,6 +7154,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### server ipp and printer
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -7052,6 +7184,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### server ssh 22/tcp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -7103,6 +7240,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 ####    UDP:5060 SIP (sip.conf), newer Versions support TCP:5060
 ####    UDP:10000-20000 RTP (rtp.conf) for the media stream, a higher Portrange
 ####    UDP:5036 IAX2
@@ -7130,6 +7272,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### mumble port 64738 tcp and 64738 udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,64738" ;
 server_port_udp="64738" ;
@@ -7155,6 +7302,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### Service	        Protocol	Local Port (Server)
 #### Voice	        UDP	9987
 #### Filetransfer	TCP	30033
@@ -7184,6 +7336,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 ####  POSTGRESQL 5432/tcp and 5432/udp
 ####  Technology	Default Port	Required
 ####  MySQL Client to Server - MySQL Protocol – 3306	3306/tcp	Optional - pick at least 1
@@ -7213,6 +7370,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
@@ -7238,6 +7400,11 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="22"    
+logserver_port_udp="no"    
 #### server domain and domain-s
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https," ;
 server_port_udp="domain,domain-s" ;
