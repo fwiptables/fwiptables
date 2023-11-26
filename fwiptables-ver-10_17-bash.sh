@@ -5347,7 +5347,7 @@ menuprincipal="$($favorite_text_dialog --clear --notags --title "Cli Menu With $
 0713  "$tab version" \
 0714  "$tab examples" \
 0715  "$tab depends" \
-0716  "$tab info"\
+0716  "$tab info" \
 0717  "$tab ver" \
 0718  "$tab list-options"\
 0719  "$tab clasic-options"\
@@ -5360,7 +5360,7 @@ menuprincipal="$($favorite_text_dialog --clear --notags --title "Cli Menu With $
 0726  "$tab variables"\
 0727  "$tab intro"\
 0728  "$tab download"\
-0729  "$tab install"\
+0729  "$tab install"
 3>&1 1>&2 2>&3 )"
 ################################################################################
 #### 
