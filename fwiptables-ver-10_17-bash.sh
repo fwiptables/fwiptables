@@ -2151,11 +2151,11 @@ echo "$title_md  [ firewall-numeral ]                                           
 echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6          "
 echo "$text_md listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6              "
 echo "$text_md listn-security4 listn-security6                                                      "
-echo "$title_md  [ firewall-custom ] "
-echo "$text_md custom clone-static eraserules off-line all-permisive wizard-mini wizard-full        "
+echo "$title_md  [ firewall-customfw ] "
+echo "$text_md custom clone-systemfw eraserules off-line all-permisive wizard-mini wizard-full        "
 echo "$text_md new-full-config nueva-completa-config new-mini-config nueva-mini-config       "
 echo "$text_md regen-config examples-config show-config modify-config del-config names-config       "
-echo "$title_md  [ firewall-static ]                                                           "
+echo "$title_md  [ firewall-systemfw ]                                                           "
 echo "$text_md client-basic client-web client-git client-ipp client-irc client-vnc client-mail      "
 echo "$text_md client-news client-vpn client-torrent client-vpn client-ftp client-tor               "
 echo "$text_md client-proxy game-widelands games-udp games-shooter game-wesnoth game-minetest       "
@@ -2195,11 +2195,11 @@ echo "$text_md                        list-security4 list-security6 list-ebtable
 echo "$text_md    firewall-numeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4"
 echo "$text_md                        listn-filter6 listn-nat4 listn-nat6 listn-raw4 listn-raw6"
 echo "$text_md                        listn-mangle4  listn-mangle6 listn-security4 listn-security6"
-echo "$text_md     firewall-custom |  custom eraserules wizard-mini wizard-full off-line all-permisive"
-echo "$text_md     		      clone-static new-full-config nueva-completa-config names-config "
+echo "$text_md     firewall-customfw |  custom eraserules wizard-mini wizard-full off-line all-permisive"
+echo "$text_md     		      clone-systemfw new-full-config nueva-completa-config names-config "
 echo "$text_md                        modify-config new-mini-config nueva-mini-config examples-config"
 echo "$text_md                        show-config del-config "
-echo "$text_md     firewall-static |  client-basic games-udp games-shooter game-wesnoth game-minetest"
+echo "$text_md     firewall-systemfw |  client-basic games-udp games-shooter game-wesnoth game-minetest"
 echo "$text_md                        game-freeciv game-widelands client-web client-irc client-vnc"
 echo "$text_md                        client-mail client-news client-torrent client-vpn client-ftp"
 echo "$text_md                        client-tor client-ipp client-proxy client-git lan-tor lan-vpn"
@@ -2387,18 +2387,18 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-numeral:
-##########    english: firewall-custom: options for fwiptables firewall      ##########
-##########    spanish: firewall-custom: opciones para fwiptables firewall    ##########
-#### :rutina-inicial-firewall-custom:
+##########    english: firewall-customfw: options for fwiptables firewall      ##########
+##########    spanish: firewall-customfw: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-firewall-customfw:
 ####
 ####
-if   [ "$first_option" == "firewall-custom" ]; then
+if   [ "$first_option" == "firewall-customfw" ]; then
 echo "$text_md "
-echo "$title_md | firewall-custom | $cmd_file firewall-custom |"
+echo "$title_md | firewall-customfw | $cmd_file firewall-customfw |"
 echo "$text_md"
 echo "$text_md eraserules . remove all firewall rules"
 echo "$text_md custom . launch a one one-file saved custom"
-echo "$text_md clone-static . clone a static firewall predesignated"
+echo "$text_md clone-systemfw . clone a static firewall predesignated"
 echo "$text_md wizard-mini . launch a one mini wizard to run iptables rules"
 echo "$text_md wizard-full . launch a one full wizard to run iptables rules"
 echo "$text_md off-line . launch a one firewall only for localhost"
@@ -2417,15 +2417,15 @@ echo "$text_md "
 exit; fi
 ####
 ####
-#### :rutina-final-firewall-custom:
-##########    english: firewall-static: options for fwiptables firewall      ##########
-##########    spanish: firewall-static: opciones para fwiptables firewall    ##########
-#### :rutina-inicial-firewall-static:
+#### :rutina-final-firewall-customfw:
+##########    english: firewall-systemfw: options for fwiptables firewall      ##########
+##########    spanish: firewall-systemfw: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-firewall-systemfw:
 ####
 ####
-if   [ "$first_option" == "firewall-static" ]; then
+if   [ "$first_option" == "firewall-systemfw" ]; then
 echo "$text_md "
-echo "$title_md | firewall-static | $cmd_file firewall-static |"
+echo "$title_md | firewall-systemfw | $cmd_file firewall-systemfw |"
 echo "$text_md"
 echo "$text_md client-basic . launch a one firewall basic client"
 echo "$text_md client-web . launch a one firewall web client"
@@ -2462,7 +2462,7 @@ echo "$text_md server-proxy . launch a one firewall basic server"
 exit; fi
 ####
 ####
-#### :rutina-final-firewall-static:
+#### :rutina-final-firewall-systemfw:
 ##########    english: options-easy: options for fwiptables firewall      ##########
 ##########    spanish: options-easy: opciones para fwiptables firewall    ##########
 #### :rutina-inicial-options-easy:
@@ -2532,8 +2532,8 @@ $cmd_binary optional-output
 $cmd_binary firewall-control
 $cmd_binary firewall-conceptual
 $cmd_binary firewall-numeral
-$cmd_binary firewall-custom
-$cmd_binary firewall-static
+$cmd_binary firewall-customfw
+$cmd_binary firewall-systemfw
 $cmd_binary options-easy
 echo "$text_md"
 exit; fi
@@ -3782,17 +3782,17 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-arptables:
-##########    english: clone-static: clone config file static static        ##########
-##########    spanish: clone-static: clona archivo de configuracion prediseniado   ##########
-#### :rutina-inicial-clone-static:
+##########    english: clone-systemfw: clone config file static static        ##########
+##########    spanish: clone-systemfw: clona archivo de configuracion prediseniado   ##########
+#### :rutina-inicial-clone-systemfw:
 ####
 ####
-if [ "$first_option" == "clone-static" ] && [ "$second_option" == "$NULL" ]  ; then 
-echo "$tab [ info ] [ usage: ] [ $cmd_binary clone-static firewall-static ]"
+if [ "$first_option" == "clone-systemfw" ] && [ "$second_option" == "$NULL" ]  ; then 
+echo "$tab [ info ] [ usage: ] [ $cmd_binary clone-systemfw firewall-systemfw ]"
 exit; fi
 ####
 ####
-if [ "$first_option" == "clone-static" ] && [ "$second_option" != "$NULL" ] ; then 
+if [ "$first_option" == "clone-systemfw" ] && [ "$second_option" != "$NULL" ] ; then 
 archivo="$second_option"
 $cmd_binary code $second_option | $command_grep -E "_port_|_shield_" &> $directory_config/$archivo
 if [ -s "$directory_config/$archivo" ] ; then 
@@ -3801,7 +3801,7 @@ else rm $directory_config/$archivo ; echo " [ fail ] config no done $archivo" ; 
 exit; fi
 ####
 ####
-#### :rutina-final-clone-static:
+#### :rutina-final-clone-systemfw:
 ##########    english: new-full-config: new-full-config option to create new configs   ##########
 ##########    spanish: new-full-config: new-full-config para cear nuevas config        ##########
 #### :rutina-inicial-new-full-config:
@@ -5320,7 +5320,7 @@ menuprincipal="$($favorite_text_dialog --clear --notags --title "Cli Menu With $
 0604  "$tab off-line" \
 0605  "$tab all-permisive" \
 0606  "$tab custom" \
-0607  "$tab clone-static" \
+0607  "$tab clone-systemfw" \
 0611  "$tab new-full-config" \
 0612  "$tab nueva-completa-config" \
 0613  "$tab new-mini-config" \
@@ -5376,8 +5376,8 @@ case "$menuprincipal" in
 0200) clear ; $cmd_binary cli firewall-control ;;
 0300) clear ; $cmd_binary cli firewall-conceptual ;;
 0400) clear ; $cmd_binary cli firewall-numeral ;;
-0500) clear ; $cmd_binary cli firewall-static ;;
-0600) clear ; $cmd_binary cli firewall-custom ;;
+0500) clear ; $cmd_binary cli firewall-systemfw ;;
+0600) clear ; $cmd_binary cli firewall-customfw ;;
 0700) clear ; $cmd_binary cli default-state ;;
 ################################################################################
 0201) clear ; $cmd_binary cli stop ;;
@@ -5472,7 +5472,7 @@ archivo="$(echo $archivo | $command_sed s/\\///g)" ;  clear ; $cmd_binary custom
 
 0607) 
 archivo="$($favorite_text_dialog  --title "custom" --stdout --inputbox "$($command_ls $directory_config)" 0 0)"
-archivo="$(echo $archivo | $command_sed s/\\///g)" ;  clear ; $cmd_binary clone-static $archivo ;;
+archivo="$(echo $archivo | $command_sed s/\\///g)" ;  clear ; $cmd_binary clone-systemfw $archivo ;;
 0611) archivo="$($favorite_text_dialog  --stdout --title "new-full-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
@@ -5562,7 +5562,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-roll-zenity" ] ; then echo $head_waiting_gui ; echo $give_cover
-gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|03-Firewall-Custom|04-firewall-static|05-options-easy"
+gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|03-firewall-customfw|04-firewall-systemfw|05-options-easy"
 selection_menu="$($command_zenity --text="gui-roll" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
@@ -5571,8 +5571,8 @@ case "$selection_final" in
 "01-Firewall-Control")$cmd_binary gui-roll-zenity-firewall-control ; exit ;;
 "02-Firewall-List-With-Conceptual")$cmd_binary gui-roll-zenity-firewall-conceptual ; exit ;;
 "02-Firewall-List-With-Numeral")$cmd_binary gui-roll-zenity-firewall-numeral ; exit ;;
-"03-Firewall-Custom")$cmd_binary gui-roll-zenity-firewall-custom ; exit ;;
-"04-firewall-static")$cmd_binary gui-roll-zenity-firewall-static ; exit ;;
+"03-firewall-customfw")$cmd_binary gui-roll-zenity-firewall-customfw ; exit ;;
+"04-firewall-systemfw")$cmd_binary gui-roll-zenity-firewall-systemfw ; exit ;;
 "05-options-easy")$cmd_binary gui-roll-zenity-options-easy ; exit ;;
 esac
 ####
@@ -5693,31 +5693,31 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-numeral:
-##########    english: gui-roll-zenity-firewall-custom: gui roll firewall-custom: gui with roll  ##########
-##########    spanish: gui-roll-zenity-firewall-custom: gui roll firewall-custom: gui con roll   ##########
-#### :rutina-inicial-gui-roll-zenity-firewall-custom:
+##########    english: gui-roll-zenity-firewall-customfw: gui roll firewall-customfw: gui with roll  ##########
+##########    spanish: gui-roll-zenity-firewall-customfw: gui roll firewall-customfw: gui con roll   ##########
+#### :rutina-inicial-gui-roll-zenity-firewall-customfw:
 ####
 ####
-if   [ "$first_option" == "gui-roll-zenity-firewall-custom" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-roll-zenity-firewall-customfw" ] ; then echo $head_waiting_gui
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
-custom|clone-static|eraserules|wizard-mini|wizard-full|off-line|all-permisive|\
+custom|clone-systemfw|eraserules|wizard-mini|wizard-full|off-line|all-permisive|\
 new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
 names-config|show-config|modify-config|del-config|regen-config|examples-config"
-selection_menu="$($command_zenity --text="gui-roll-firewall-custom" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+selection_menu="$($command_zenity --text="gui-roll-firewall-customfw" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 #### 
 #### 
 case "$selection_final" in
 1)$command_zenity  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "gui-principal-menu")$cmd_binary gui-roll-zenity ;;
-"gui-help-menu")$cmd_binary -gui-zenity help firewall-custom ;;
-"gui-info-menu")$cmd_binary -gui-zenity info firewall-custom ;;
+"gui-help-menu")$cmd_binary -gui-zenity help firewall-customfw ;;
+"gui-info-menu")$cmd_binary -gui-zenity info firewall-customfw ;;
 "custom")archivo="$($command_zenity  --entry $graphic_window_dimension \
 --title="[Launch Custom]" --entry-text="cfg to launch")" ; 
 $cmd_binary -gui-zenity custom $archivo ; $cmd_binary gui list4;;
-"clone-static")archivo="$($command_zenity  --entry $graphic_window_dimension \
+"clone-systemfw")archivo="$($command_zenity  --entry $graphic_window_dimension \
 --title="[Clone firewall static]" --entry-text="firewall static to clone")" ; 
-$cmd_binary -gui-zenity clone-static $archivo ; $cmd_binary gui list4;;
+$cmd_binary -gui-zenity clone-systemfw $archivo ; $cmd_binary gui list4;;
 "eraserules")$cmd_binary -gui-zenity eraserules ; $cmd_binary gui list4;;
 "wizard-full")$cmd_binary -gui-zenity wizard-full ; $cmd_binary gui list4;;
 "wizard-mini")$cmd_binary -gui-zenity wizard-mini ; $cmd_binary gui list4;;
@@ -5754,28 +5754,28 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-zenity-firewall-custom:
-##########    english: gui-roll-firewall-static: gui roll firewall-static: gui with roll  ##########
-##########    spanish: gui-roll-firewall-static: gui roll firewall-static: gui con roll   ##########
-#### :rutina-inicial-gui-roll-zenity-firewall-static:
+#### :rutina-final-gui-roll-zenity-firewall-customfw:
+##########    english: gui-roll-firewall-systemfw: gui roll firewall-systemfw: gui with roll  ##########
+##########    spanish: gui-roll-firewall-systemfw: gui roll firewall-systemfw: gui con roll   ##########
+#### :rutina-inicial-gui-roll-zenity-firewall-systemfw:
 ####
 ####
-if   [ "$first_option" == "gui-roll-zenity-firewall-static" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-roll-zenity-firewall-systemfw" ] ; then echo $head_waiting_gui
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 client-basic|client-web|client-mail|client-news|client-ftp|client-git|client-vnc|\
 client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
 games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|server-proxy|\
 server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|server-domain|\
 server-news|server-mail|server-ftp|server-teamspeak|server-mumble|server-sql|server-asterisk"
-selection_menu="$($command_zenity --text="gui-roll-firewall-custom" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+selection_menu="$($command_zenity --text="gui-roll-firewall-customfw" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 #### 
 #### 
 case "$selection_final" in
 1) $command_zenity  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "gui-principal-menu")$cmd_binary gui-roll-zenity ;;
-"gui-help-menu")$cmd_binary -gui-zenity help firewall-static ;;
-"gui-info-menu")$cmd_binary -gui-zenity info firewall-static ;;
+"gui-help-menu")$cmd_binary -gui-zenity help firewall-systemfw ;;
+"gui-info-menu")$cmd_binary -gui-zenity info firewall-systemfw ;;
 "client-web")$cmd_binary -gui-zenity client-web ; $cmd_binary gui list4;;
 "client-ipp")$cmd_binary -gui-zenity client-ipp   ; $cmd_binary gui list4;;
 "client-irc")$cmd_binary -gui-zenity client-irc   ; $cmd_binary gui list4;;
@@ -5816,7 +5816,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-zenity-firewall-static:
+#### :rutina-final-gui-roll-zenity-firewall-systemfw:
 ##########    english: gui-roll-zenity-options-easy: gui roll options-easy: gui with roll  ##########
 ##########    spanish: gui-roll-zenity-options-easy: gui roll options-easy: gui con roll   ##########
 #### :rutina-inicial-gui-roll-zenity-options-easy:
@@ -5887,7 +5887,7 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu" ] ; then echo $head_waiting_gui ; echo $give_cover
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="|01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|03-Firewall-Custom|04-firewall-static|05-options-easy|"
+gui_menu="|01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|03-firewall-customfw|04-firewall-systemfw|05-options-easy|"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="$first_option" --text="$first_option" --title="Gui-menu With $cmd_binary $cmd_version" --list $selection_menu)"
 #### 
@@ -5897,8 +5897,8 @@ case "$selection_final" in
 01-Firewall-Control*)$cmd_binary gui-menu-firewall-control ; exit ;;
 02-Firewall-List-With-Conceptual*)$cmd_binary gui-menu-firewall-conceptual ; exit ;;
 02-Firewall-List-With-Numeral*)$cmd_binary gui-menu-firewall-numeral ; exit ;;
-03-Firewall-Custom*)$cmd_binary gui-menu-firewall-custom ; exit ;;
-04-firewall-static*)$cmd_binary gui-menu-firewall-static ; exit ;;
+03-firewall-customfw*)$cmd_binary gui-menu-firewall-customfw ; exit ;;
+04-firewall-systemfw*)$cmd_binary gui-menu-firewall-systemfw ; exit ;;
 05-options-easy*)$cmd_binary gui-menu-options-easy ; exit ;;
 esac
 ####
@@ -6025,15 +6025,15 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-numeral:
-##########    english: gui-menu-firewall-custom: gui with menu   ##########
-##########    spanish: gui-menu-firewall-custom: gui con menu    ##########
-#### :rutina-inicial-gui-menu-firewall-custom:
+##########    english: gui-menu-firewall-customfw: gui with menu   ##########
+##########    spanish: gui-menu-firewall-customfw: gui con menu    ##########
+#### :rutina-inicial-gui-menu-firewall-customfw:
 ####
 ####
-if   [ "$first_option" == "gui-menu-firewall-custom" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-menu-firewall-customfw" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
-custom|clone-static|eraserules|wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|\
+custom|clone-systemfw|eraserules|wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|\
 new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
 names-config|show-config|modify-config|del-config|regen-config|examples-config"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
@@ -6043,8 +6043,8 @@ selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --colum
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu) $cmd_binary gui-menu ;;
-gui-help-menu*) $cmd_binary -gui help firewall-custom ;;
-gui-info-menu*) $cmd_binary -gui info firewall-custom ;;
+gui-help-menu*) $cmd_binary -gui help firewall-customfw ;;
+gui-info-menu*) $cmd_binary -gui info firewall-customfw ;;
 eraserules*)$cmd_binary -gui eraserules ; $cmd_binary gui list4;;
 wizard-full*)$cmd_binary -gui wizard-full ; $cmd_binary gui list4;;
 wizard-mini*)$cmd_binary -gui wizard-mini ; $cmd_binary gui list4;;
@@ -6053,9 +6053,9 @@ all-permisive*)$cmd_binary -gui all-permisive ; $cmd_binary gui list4;;
 custom*)archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension \
 --title="[Launch Custom]" --entry-text="cfg to launch")" ; 
 $cmd_binary -gui custom $archivo ; $cmd_binary gui list4;;
-clone-static*)archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension \
+clone-systemfw*)archivo="$($favorite_graphicall_dialog  --entry $graphic_window_dimension \
 --title="[Clone static]" --entry-text="static firewall to clone config")" ; 
-$cmd_binary -gui clone-static $archivo ; $cmd_binary gui list4;;
+$cmd_binary -gui clone-systemfw $archivo ; $cmd_binary gui list4;;
 new-full-config*) archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title="[new-full-config]" \
 --entry-text="Input file name to new full configuration")" ; $cmd_binary -gui new-full-config $archivo ;;
 nueva-completa-config*) archivo="$($favorite_graphicall_dialog  $graphic_window_dimension --entry --title="[nueva-completa-config]" \
@@ -6079,13 +6079,13 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-firewall-custom:
-##########   english: gui-menu-firewall-static: gui with menu    ##########
-##########   spanish: gui-menu-firewall-static: gui con menu     ##########
-#### :rutina-inicial-gui-menu-firewall-static:
+#### :rutina-final-gui-menu-firewall-customfw:
+##########   english: gui-menu-firewall-systemfw: gui with menu    ##########
+##########   spanish: gui-menu-firewall-systemfw: gui con menu     ##########
+#### :rutina-inicial-gui-menu-firewall-systemfw:
 ####
 ####  
-if   [ "$first_option" == "gui-menu-firewall-static" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-menu-firewall-systemfw" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 client-basic|client-web|client-ipp|client-irc|client-mail|client-news|client-ftp|\
@@ -6100,8 +6100,8 @@ selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --colum
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu*)$cmd_binary gui-menu ;;
-gui-help-menu*)$cmd_binary -gui help firewall-static ;;
-gui-info-menu*)$cmd_binary -gui info firewall-static ;;
+gui-help-menu*)$cmd_binary -gui help firewall-systemfw ;;
+gui-info-menu*)$cmd_binary -gui info firewall-systemfw ;;
 client-basic*)$cmd_binary -gui client-basic ; $cmd_binary gui list4;;
 client-web*)$cmd_binary -gui client-web ; $cmd_binary gui list4;;
 client-ipp*)$cmd_binary -gui client-ipp   ; $cmd_binary gui list4;;
@@ -6142,7 +6142,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-firewall-static:
+#### :rutina-final-gui-menu-firewall-systemfw:
 ##########    english: gui-menu-options-easy: gui with menu   ##########
 ##########    spanish: gui-menu-options-easy: gui con menu    ##########
 #### :rutina-inicial-gui-menu-options-easy:
