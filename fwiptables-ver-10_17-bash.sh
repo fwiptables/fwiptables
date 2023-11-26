@@ -1405,19 +1405,22 @@ echo
 echo "$title_md [ Description program ]"
 echo "$text_md $cmd_description"
 echo
-echo "$title_md [ Launched program ]"
-echo "$text_md $cmd_binary"
-echo
 echo "$title_md [ File format ]"
 echo "$text_md $(file $cmd_binary | cut -d "," -f 1-2)"
 echo
 echo "$title_md [ MD5 sum ]"
 echo "$text_md $($command_md5sum $cmd_binary)"
 echo
-echo "$title_md [ Cache directory ]"
+echo "$title_md [ Launched program ]"
+echo "$text_md $cmd_binary"
+echo
+echo "$title_md [ Binary directory ]"
+echo "$text_md $directory_installed"
+echo
+echo "$title_md [ Cache directory  ]"
 echo "$text_md $directory_cache"
 echo
-echo "$title_md [ Data directory ]"
+echo "$title_md [ Data directory   ]"
 echo "$text_md $directory_data"
 echo
 echo "$title_md [ Default preferences ]"
@@ -1429,7 +1432,6 @@ echo
 echo "$title_md [ Default filelog ]"
 echo "$text_md $default_filelog"
 echo 
-echo "type to see where download: $cmd_binary download "
 exit ; fi
 ####
 ####
