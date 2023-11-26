@@ -4023,6 +4023,7 @@ echo "$title_md fwiptables uninstall.                                 "
 echo "$text_md"
 echo "$text_md  Uninstall fwiptables. TYPE:   $cmd_config uninstall   "
 echo "$text_md"
+$cmd_binary ver
 $cmd_binary compile
 $cmd_binary options
 exit; fi

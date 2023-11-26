@@ -394,12 +394,18 @@ default_autolog="$directory_log/default_autolog"
 ##########    spanish: archivos temporales
 ####
 ####
-#### english: temporal directory
+#### english: temporal directory probe if /run/fwiptables else /root/.cache/fwiptables
 #### spanish: directorio temporal
 ####
 ####
-directory_cache="$default_root_home/.cache/$cmd_config"
-directory_temporal="$directory_cache/tmp"
+if [ -d "/run" ]; then mkdir /run/fwiptables &> /dev/null ; directory_cache="/run/fwiptables"; fi
+if [ ! -d "/run" ]; then directory_cache="$default_root_home/.cache/fwiptables" ; fi
+####
+####
+#### 
+####
+####
+directory_temporal="$directory_cache"
 ####
 ####
 #### english: temporal files
@@ -1436,8 +1442,8 @@ exit ; fi
 if [ "$first_option" == "ver" ]; then 
 echo "$title_md [ $first_option ] [ Show version about ] [ version.md] "
 echo "[ _ok_ ] [ program ] $cmd_name | $cmd_version | $cmd_description "
-echo "[ _ok_ ] [ Cache directory ] $directory_cache " 
 echo "[ _ok_ ] [ Data directory  ] $directory_data  " 
+echo "[ _ok_ ] [ Cache directory ] $directory_cache " 
 echo "type to see where download: $cmd_binary download "
 exit ; fi
 ####
@@ -2144,17 +2150,17 @@ echo "$title_md  [ firewall-numeral ]                                           
 echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6          "
 echo "$text_md listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6              "
 echo "$text_md listn-security4 listn-security6                                                      "
-echo "$title_md  [ firewall-custom ]                                                           "
-echo "$text_md custom new-full-config nueva-completa-config new-mini-config nueva-mini-config       "
+echo "$title_md  [ firewall-custom ] "
+echo "$text_md custom clone-static eraserules off-line all-permisive wizard-mini wizard-full        "
+echo "$text_md new-full-config nueva-completa-config new-mini-config nueva-mini-config       "
 echo "$text_md regen-config examples-config show-config modify-config del-config names-config       "
-echo "$title_md  [ firewall-launch ]                                                           "
-echo "$text_md eraserules custom wizard-mini wizard-full off-line all-permisive client-basic        "
-echo "$text_md client-web client-git client-ipp client-irc client-vnc client-mail client-news       "
-echo "$text_md client-vpn client-torrent client-vpn client-ftp client-tor client-proxy              "
-echo "$text_md game-widelands games-udp games-shooter game-wesnoth game-minetest game-freeciv       "
-echo "$text_md lan-tor lan-vpn server-ssh server-irc server-samba server-vnc server-webserver       "
-echo "$text_md server-print server-lamp server-news server-ftp server-mail server-teamspeak         "
-echo "$text_md server-mumble server-sql server-asterisk server-domain server-proxy                  "
+echo "$title_md  [ firewall-static ]                                                           "
+echo "$text_md client-basic client-web client-git client-ipp client-irc client-vnc client-mail      "
+echo "$text_md client-news client-vpn client-torrent client-vpn client-ftp client-tor               "
+echo "$text_md client-proxy game-widelands games-udp games-shooter game-wesnoth game-minetest       "
+echo "$text_md game-freeciv lan-tor lan-vpn server-ssh server-irc server-samba server-vnc           "
+echo "$text_md server-print server-lamp server-news server-ftp server-mail server-webserver         "
+echo "$text_md server-teamspeak server-mumble server-sql server-asterisk server-domain server-proxy "
 echo "$title_md  [ options-easy ]                                                              "
 echo "$text_md preferences-read preferences-modify preferences-regen preferences-example ver        "
 echo "$text_md list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6         "
@@ -2188,17 +2194,18 @@ echo "$text_md                        list-security4 list-security6 list-ebtable
 echo "$text_md    firewall-numeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4"
 echo "$text_md                        listn-filter6 listn-nat4 listn-nat6 listn-raw4 listn-raw6"
 echo "$text_md                        listn-mangle4  listn-mangle6 listn-security4 listn-security6"
-echo "$text_md     firewall-custom |  custom new-full-config nueva-completa-config regen-config"
-echo "$text_md                        new-mini-config nueva-mini-config examples-config"
-echo "$text_md                        show-config modify-config del-config names-config"
-echo "$text_md     firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive"
-echo "$text_md                        client-basic games-udp games-shooter game-wesnoth game-minetest"
-echo "$text_md                        game-freeciv game-widelands client-web client-irc client-vnc client-mail"
-echo "$text_md                        client-news client-torrent client-vpn client-ftp  client-tor client-ipp"
-echo "$text_md                        client-proxy client-git lan-tor lan-vpn server-ssh server-samba server-vnc"
-echo "$text_md                        server-webserver server-print server-lamp server-news server-ftp"
-echo "$text_md                        server-mail server-teamspeak server-mumble server-sql"
-echo "$text_md                        server-asterisk server-domain server-proxy server-irc            "
+echo "$text_md     firewall-custom |  custom eraserules wizard-mini wizard-full off-line all-permisive"
+echo "$text_md     		      clone-static new-full-config nueva-completa-config names-config "
+echo "$text_md                        modify-config new-mini-config nueva-mini-config examples-config"
+echo "$text_md                        show-config del-config "
+echo "$text_md     firewall-static |  client-basic games-udp games-shooter game-wesnoth game-minetest"
+echo "$text_md                        game-freeciv game-widelands client-web client-irc client-vnc"
+echo "$text_md                        client-mail client-news client-torrent client-vpn client-ftp"
+echo "$text_md                        client-tor client-ipp client-proxy client-git lan-tor lan-vpn"
+echo "$text_md                        server-ssh server-samba server-vnc server-webserver server-print"
+echo "$text_md                        server-lamp server-news server-ftp server-mail server-teamspeak"
+echo "$text_md                        server-mumble server-sql server-asterisk server-domain "
+echo "$text_md                        server-proxy server-irc          "
 echo "$text_md        options-easy |  preferences-read preferences-modify preferences-regen preferences-example"
 echo "$text_md                        list-options clasic-options info-options filelog autolog ip4 ip6 "
 echo "$text_md                        sockets nodes geoip date free ver version notes depends commands "
@@ -2404,14 +2411,14 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-custom:
-##########    english: firewall-launch: options for fwiptables firewall      ##########
-##########    spanish: firewall-launch: opciones para fwiptables firewall    ##########
-#### :rutina-inicial-firewall-launch:
+##########    english: firewall-static: options for fwiptables firewall      ##########
+##########    spanish: firewall-static: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-firewall-static:
 ####
 ####
-if   [ "$first_option" == "firewall-launch" ]; then
+if   [ "$first_option" == "firewall-static" ]; then
 echo "$text_md "
-echo "$title_md | firewall-launch | $cmd_file firewall-launch |"
+echo "$title_md | firewall-static | $cmd_file firewall-static |"
 echo "$text_md"
 echo "$text_md eraserules . remove all firewall rules"
 echo "$text_md custom . launch a one one-file saved custom"
@@ -2454,7 +2461,7 @@ echo "$text_md server-proxy . launch a one firewall basic server"
 exit; fi
 ####
 ####
-#### :rutina-final-firewall-launch:
+#### :rutina-final-firewall-static:
 ##########    english: options-easy: options for fwiptables firewall      ##########
 ##########    spanish: options-easy: opciones para fwiptables firewall    ##########
 #### :rutina-inicial-options-easy:
@@ -2525,7 +2532,7 @@ $cmd_binary firewall-control
 $cmd_binary firewall-conceptual
 $cmd_binary firewall-numeral
 $cmd_binary firewall-custom
-$cmd_binary firewall-launch
+$cmd_binary firewall-static
 $cmd_binary options-easy
 echo "$text_md"
 exit; fi
@@ -3774,6 +3781,25 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-arptables:
+##########    english: clone-static: clone config file static static        ##########
+##########    spanish: clone-static: clona archivo de configuracion prediseniado   ##########
+#### :rutina-inicial-clone-static:
+####
+####
+if [ "$first_option" == "clone-static" ] && [ "$second_option" == "$NULL" ]  ; then 
+echo "$tab [ info ] [ usage: ] [ $cmd_binary clone-static firewall-static ]"
+exit; fi
+####
+####
+if [ "$first_option" == "clone-static" ] && [ "$second_option" != "$NULL" ] ; then 
+archivo="$second_option"
+$cmd_binary code $second_option | $command_grep -E "_port_|_shield_" &> $directory_config/$archivo
+if [ -s "$directory_config/$archivo" ] ; then echo " [ _ok_ ] config created $archivo"
+else rm $directory_config/$archivo ; echo " [ fail ] config no done $archivo" ; fi
+exit; fi
+####
+####
+#### :rutina-final-clone-static:
 ##########    english: new-full-config: new-full-config option to create new configs   ##########
 ##########    spanish: new-full-config: new-full-config para cear nuevas config        ##########
 #### :rutina-inicial-new-full-config:
@@ -3973,7 +3999,7 @@ echo "$text_md fwiptables is one simple in one-file FRONT-END                   
 echo "$text_md for iptables linux with COMMAND-LINE with CLI-MENU                   "
 echo "$text_md with GUI-MENU with GUI-ROLL with GUI-SHELL.                          "
 echo "$text_md And choose one firewall: eraserules, or wizard-mini,                 "
-echo "$text_md or wizard-full, or custom, or one predesignated                      "
+echo "$text_md or wizard-full, or custom, or one static                      "
 echo "$text_md firewall to choose one. Gen new rules with templates                 "
 echo "$text_md and with shield ssh and with comments rules.                         "
 echo "$text_md"
@@ -3997,6 +4023,7 @@ echo "$title_md fwiptables uninstall.                                 "
 echo "$text_md"
 echo "$text_md  Uninstall fwiptables. TYPE:   $cmd_config uninstall   "
 echo "$text_md"
+$cmd_binary ver
 $cmd_binary compile
 $cmd_binary options
 exit; fi
@@ -5332,7 +5359,7 @@ case "$menuprincipal" in
 0200) clear ; $cmd_binary cli firewall-control ;;
 0300) clear ; $cmd_binary cli firewall-conceptual ;;
 0400) clear ; $cmd_binary cli firewall-numeral ;;
-0500) clear ; $cmd_binary cli firewall-launch ;;
+0500) clear ; $cmd_binary cli firewall-static ;;
 0600) clear ; $cmd_binary cli firewall-custom ;;
 0700) clear ; $cmd_binary cli default-state ;;
 ################################################################################
@@ -5500,7 +5527,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-roll-zenity" ] ; then echo $head_waiting_gui ; echo $give_cover
-gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|03-Firewall-Custom|04-Firewall-Launch|05-options-easy"
+gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|03-Firewall-Custom|04-firewall-static|05-options-easy"
 selection_menu="$($command_zenity --text="gui-roll" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
@@ -5510,7 +5537,7 @@ case "$selection_final" in
 "02-Firewall-List-With-Conceptual")$cmd_binary gui-roll-zenity-firewall-conceptual ; exit ;;
 "02-Firewall-List-With-Numeral")$cmd_binary gui-roll-zenity-firewall-numeral ; exit ;;
 "03-Firewall-Custom")$cmd_binary gui-roll-zenity-firewall-custom ; exit ;;
-"04-Firewall-Launch")$cmd_binary gui-roll-zenity-firewall-launch ; exit ;;
+"04-firewall-static")$cmd_binary gui-roll-zenity-firewall-static ; exit ;;
 "05-options-easy")$cmd_binary gui-roll-zenity-options-easy ; exit ;;
 esac
 ####
@@ -5680,12 +5707,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-custom:
-##########    english: gui-roll-firewall-launch: gui roll firewall-launch: gui with roll  ##########
-##########    spanish: gui-roll-firewall-launch: gui roll firewall-launch: gui con roll   ##########
-#### :rutina-inicial-gui-roll-zenity-firewall-launch:
+##########    english: gui-roll-firewall-static: gui roll firewall-static: gui with roll  ##########
+##########    spanish: gui-roll-firewall-static: gui roll firewall-static: gui con roll   ##########
+#### :rutina-inicial-gui-roll-zenity-firewall-static:
 ####
 ####
-if   [ "$first_option" == "gui-roll-zenity-firewall-launch" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-roll-zenity-firewall-static" ] ; then echo $head_waiting_gui
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|eraserules|\
 wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|client-basic|\
 client-basic|client-web|client-mail|client-news|client-ftp|client-git|client-vnc|\
@@ -5700,8 +5727,8 @@ selection_final="$(echo $selection_menu | sed 's/\|//g')"
 case "$selection_final" in
 1) $command_zenity  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "gui-principal-menu")$cmd_binary gui-roll-zenity ;;
-"gui-help-menu")$cmd_binary -gui-zenity help firewall-launch ;;
-"gui-info-menu")$cmd_binary -gui-zenity info firewall-launch ;;
+"gui-help-menu")$cmd_binary -gui-zenity help firewall-static ;;
+"gui-info-menu")$cmd_binary -gui-zenity info firewall-static ;;
 "eraserules")$cmd_binary -gui-zenity eraserules ; $cmd_binary gui list4;;
 "wizard-full")$cmd_binary -gui-zenity wizard-full ; $cmd_binary gui list4;;
 "wizard-mini")$cmd_binary -gui-zenity wizard-mini ; $cmd_binary gui list4;;
@@ -5749,7 +5776,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-zenity-firewall-launch:
+#### :rutina-final-gui-roll-zenity-firewall-static:
 ##########    english: gui-roll-zenity-options-easy: gui roll options-easy: gui with roll  ##########
 ##########    spanish: gui-roll-zenity-options-easy: gui roll options-easy: gui con roll   ##########
 #### :rutina-inicial-gui-roll-zenity-options-easy:
@@ -5820,7 +5847,7 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu" ] ; then echo $head_waiting_gui ; echo $give_cover
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="|01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|03-Firewall-Custom|04-Firewall-Launch|05-options-easy|"
+gui_menu="|01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|03-Firewall-Custom|04-firewall-static|05-options-easy|"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="$first_option" --text="$first_option" --title="Gui-menu With $cmd_binary $cmd_version" --list $selection_menu)"
 #### 
@@ -5831,7 +5858,7 @@ case "$selection_final" in
 02-Firewall-List-With-Conceptual*)$cmd_binary gui-menu-firewall-conceptual ; exit ;;
 02-Firewall-List-With-Numeral*)$cmd_binary gui-menu-firewall-numeral ; exit ;;
 03-Firewall-Custom*)$cmd_binary gui-menu-firewall-custom ; exit ;;
-04-Firewall-Launch*)$cmd_binary gui-menu-firewall-launch ; exit ;;
+04-firewall-static*)$cmd_binary gui-menu-firewall-static ; exit ;;
 05-options-easy*)$cmd_binary gui-menu-options-easy ; exit ;;
 esac
 ####
@@ -5840,12 +5867,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu:
-##########   english: gui-menu-firewall-launch: gui with menu    ##########
-##########   spanish: gui-menu-firewall-launch: gui con menu     ##########
-#### :rutina-inicial-gui-menu-firewall-launch:
+##########   english: gui-menu-firewall-static: gui with menu    ##########
+##########   spanish: gui-menu-firewall-static: gui con menu     ##########
+#### :rutina-inicial-gui-menu-firewall-static:
 ####
 ####  
-if   [ "$first_option" == "gui-menu-firewall-launch" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-menu-firewall-static" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|eraserules|\
 wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|client-basic|\
@@ -5861,8 +5888,8 @@ selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --colum
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu*)$cmd_binary gui-menu ;;
-gui-help-menu*)$cmd_binary -gui help firewall-launch ;;
-gui-info-menu*)$cmd_binary -gui info firewall-launch ;;
+gui-help-menu*)$cmd_binary -gui help firewall-static ;;
+gui-info-menu*)$cmd_binary -gui info firewall-static ;;
 eraserules*)$cmd_binary -gui eraserules ; $cmd_binary gui list4;;
 wizard-full*)$cmd_binary -gui wizard-full ; $cmd_binary gui list4;;
 wizard-mini*)$cmd_binary -gui wizard-mini ; $cmd_binary gui list4;;
@@ -5911,7 +5938,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-firewall-launch:
+#### :rutina-final-gui-menu-firewall-static:
 ##########    english: gui-menu-firewall-control: gui with menu   ##########
 ##########    spanish: gui-menu-firewall-control: gui con menu    ##########
 #### :rutina-inicial-gui-menu-firewall-control:
@@ -6167,14 +6194,14 @@ fi
 ##########    spanish: preprara reglas del sistema con sus opciones    ##########
 ####
 ####
-####   #### english: The first        firewall of system  predesignated
+####   #### english: The first        firewall of system  static
 ####   #### spanish: El primero       cortafuego del sistema predesignado
 ####
 ####
 ####
 ####
-####   #### english: firewall of system predesignated:
-####   #### spanish: cortafuego del sistema predesignated:
+####   #### english: firewall of system static:
+####   #### spanish: cortafuego del sistema static:
 ####
 ####
 ##########   english: system firewall           ##########
@@ -6226,7 +6253,8 @@ type_firewall="shield-ssh"    ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
-config_shield_maxtries="5" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### english: ports client and ports server
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -6246,11 +6274,12 @@ fi
 if [ "$first_option" == "client-basic" ]; then
 echo "$title_md [ info ] [ loading firewall client-basic ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### you can connect normal web
 client_port_tcp="http,https,http-alt,ssh" ;
 client_port_udp="domain,bootpc,ntp" ;
@@ -6270,11 +6299,12 @@ fi
 if [ "$first_option" == "client-web" ]; then
 echo "$title_md [ info ] [ loading firewall client-web ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh" ;
@@ -6294,11 +6324,12 @@ fi
 if [ "$first_option" == "client-git" ]; then
 echo "$title_md [ info ] [ loading firewall client-git ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,git" ;
@@ -6318,11 +6349,12 @@ fi
 if [ "$first_option" == "client-ipp" ]; then
 echo "$title_md [ info ] [ loading firewall client-ipp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ipp" ;
@@ -6342,11 +6374,12 @@ fi
 if [ "$first_option" == "client-irc" ]; then
 echo "$title_md [ info ] [ loading firewall client-irc ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
@@ -6366,11 +6399,12 @@ fi
 if [ "$first_option" == "client-vnc" ]; then
 echo "$title_md [ info ] [ loading firewall client-vnc ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### you can connect normal web and vnc
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,5900:5910" ;
@@ -6390,11 +6424,12 @@ fi
 if [ "$first_option" == "client-torrent" ]; then
 echo "$title_md [ info ] [ loading firewall client-torrent ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### you can connect web normal and bittorrent too
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -6414,7 +6449,7 @@ fi
 if [ "$first_option" == "client-vpn" ]; then
 echo "$title_md [ info ] [ loading firewall client-vpn ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
@@ -6438,11 +6473,12 @@ fi
 if [ "$first_option" == "client-tor" ]; then
 echo "$title_md [ info ] [ loading firewall client-tor ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### you can connect web normal and web tor
 server_port_udp="" ; 
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -6462,11 +6498,12 @@ fi
 if [ "$first_option" == "client-news" ]; then
 echo "$title_md [ info ] [ loading firewall client-news ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -6491,11 +6528,12 @@ fi
 if [ "$first_option" == "client-mail" ]; then
 echo "$title_md [ info ] [ loading firewall client-mail ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -6531,11 +6569,12 @@ fi
 if [ "$first_option" == "client-ftp" ]; then
 echo "$title_md [ info ] [ loading firewall client-ftp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### client ftp:
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -6555,11 +6594,12 @@ fi
 if [ "$first_option" == "client-proxy" ]; then
 echo "$title_md [ info ] [ loading firewall client-proxy ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -6579,11 +6619,12 @@ fi
 if [ "$first_option" == "lan-vpn" ]; then
 echo "$title_md [ info ] [ loading firewall lan-vpn ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### vpn ports to connects ports vpn
 #### with necesary ports to connect gatway and date, domain for your ip
 server_port_udp="" ;
@@ -6604,11 +6645,12 @@ fi
 if [ "$first_option" == "lan-tor" ]; then
 echo "$title_md [ info ] [ loading firewall lan-tor ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### lan tor, 9000:9170 for connect to tor
 #### with necesary ports to connect gatway and date, domain for your ip
 server_port_udp="" ;
@@ -6629,11 +6671,12 @@ fi
 if [ "$first_option" == "games-shooter" ]; then
 echo "$title_md [ info ] [ loading firewall games-shooter ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -6653,11 +6696,12 @@ fi
 if [ "$first_option" == "games-udp" ]; then
 echo "$title_md [ info ] [ loading firewall games-udp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -6677,11 +6721,12 @@ fi
 if [ "$first_option" == "game-wesnoth" ]; then
 echo "$title_md [ info ] [ loading firewall game-wesnoth ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### game wesnoth port 14999 and 15001 usually
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
 server_port_udp="" ;
@@ -6701,11 +6746,12 @@ fi
 if [ "$first_option" == "game-minetest" ]; then
 echo "$title_md [ info ] [ loading firewall game-minetest ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### game minetest and minecraft porst 25k and 35k /udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,25000:35000" ; 
 server_port_udp="" ;
@@ -6725,11 +6771,12 @@ fi
 if [ "$first_option" == "game-freeciv" ]; then
 echo "$title_md [ info ] [ loading firewall game-freeciv ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-alllow_shield_ssh="no" ;
-config_shield_port="" ;
+allow_shield_maxtries="no" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### for default 5556 port tcp perhaps 5555 too
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
 server_port_udp="" ;
@@ -6749,11 +6796,12 @@ fi
 if [ "$first_option" == "game-widelands" ]; then
 echo "$title_md [ info ] [ loading firewall game-widelands ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
 #### for default 7396 port tcp and 7396 udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,7396" ; 
 server_port_udp="7396" ;
@@ -6773,10 +6821,11 @@ fi
 if [ "$first_option" == "server-web" ]; then
 echo "$title_md [ info ] [ loading firewall server-web ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_port="22" ;
 config_shield_port="ssh" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -6797,11 +6846,11 @@ fi
 if [ "$first_option" == "server-vnc" ]; then
 echo "$title_md [ info ] [ loading firewall server-vnc ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
-config_shield_maxtries="20" ;
+config_shield_maxtries="30" ;
 config_shield_port="22,5900:5910"
 #### you can connect normal web and vnc
 server_port_udp="" ;
@@ -6822,10 +6871,12 @@ fi
 if [ "$first_option" == "server-ftp" ]; then
 echo "$title_md [ info ] [ loading firewall server-ftp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-allow_shield_maxtries="" ;
+allow_shield_maxtries="no" ;
+config_shield_maxtries="20" ;
+config_shield_port="ssh,ftp,ftp-data" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -6845,10 +6896,11 @@ fi
 if [ "$first_option" == "server-proxy" ]; then
 echo "$title_md [ info ] [ loading firewall server-proxy ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -6869,10 +6921,11 @@ fi
 if [ "$first_option" == "server-news" ]; then
 echo "$title_md [ info ] [ loading firewall server-news ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_port="22" ;
 config_shield_port="ssh" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
@@ -6897,12 +6950,11 @@ fi
 ####
 if [ "$first_option" == "server-mail" ]; then
 echo "$title_md [ info ] [ loading firewall server-mail ]" ;
+####
+####
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ; 
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_port="ssh" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -6917,7 +6969,13 @@ config_shield_port="ssh" ;
 #### IMAP2 143
 #### IMAPS 993
 #### negotiation submission     tls             465 and 587
-#### 
+####
+#### english: max tries for each hour 
+allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
+config_shield_port="ssh" ;
+####
+####
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="https" ;
 client_port_tcp="http,https,http-alt,ssh,25,119,433,563,25:26,995,110,465,587,143,993" ;
@@ -6936,10 +6994,11 @@ fi
 if [ "$first_option" == "server-samba" ]; then
 echo "$title_md [ info ] [ loading firewall server-samba ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 #### server samba and active directory
 client_port_tcp="http,https,http-alt,ssh,ldap,636,microsoft-ds" ;
@@ -6960,10 +7019,10 @@ fi
 if [ "$first_option" == "server-print" ]; then
 echo "$title_md [ info ] [ loading firewall server-print ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ; 
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 #### server ipp and printer
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -6984,10 +7043,11 @@ fi
 if [ "$first_option" == "server-ssh" ]; then
 echo "$title_md [ info ] [ loading firewall server-ssh ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
+#### against brute force
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 #### server ssh 22/tcp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -7008,10 +7068,11 @@ fi
 if [ "$first_option" == "server-lamp" ]; then
 echo "$title_md [ info ] [ loading firewall server-lamp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ;
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
+#### against brute force
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 ####  english: udp: 20 is ftp-data, 21 is ftp, 989 is ftps-data y 990 is ftps
 ####  english: tcp: 10000 is webmin, 3306 is mysql, 5432 is postgresql
@@ -7033,10 +7094,11 @@ fi
 if [ "$first_option" == "server-asterisk" ]; then
 echo "$title_md [ info ] [ loading firewall server-asterisk ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ;
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
+#### against brute force
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 ####    UDP:5060 SIP (sip.conf), newer Versions support TCP:5060
 ####    UDP:10000-20000 RTP (rtp.conf) for the media stream, a higher Portrange
@@ -7059,10 +7121,11 @@ fi
 if [ "$first_option" == "server-mumble" ]; then
 echo "$title_md [ info ] [ loading firewall server-mumble ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ;
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
+#### against brute force
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 #### mumble port 64738 tcp and 64738 udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,64738" ;
@@ -7083,10 +7146,11 @@ fi
 if [ "$first_option" == "server-teamspeak" ]; then
 echo "$title_md [ info ] [ loading firewall server-teamspeak ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ;
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
+#### against brute force
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 #### Service	        Protocol	Local Port (Server)
 #### Voice	        UDP	9987
@@ -7111,10 +7175,11 @@ fi
 if [ "$first_option" == "server-sql" ]; then
 echo "$title_md [ info ] [ loading firewall server-sql ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ;
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
+#### against brute force
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 ####  POSTGRESQL 5432/tcp and 5432/udp
 ####  Technology	Default Port	Required
@@ -7139,11 +7204,12 @@ fi
 if [ "$first_option" == "server-irc" ]; then
 echo "$title_md [ info ] [ loading firewall server-irc ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ;
+type_firewall="static" ;
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_port="" ;
+#### against brute force
+allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
+config_shield_port="ssh" ;
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
@@ -7163,10 +7229,11 @@ fi
 if [ "$first_option" == "server-domain" ]; then
 echo "$title_md [ info ] [ loading firewall server-domain ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="static" ;
 name_firewall="$first_option" ;
-#### english: max tries for each hour 
+#### against brute force
 allow_shield_maxtries="" ;
+config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
 #### server domain and domain-s
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https," ;
@@ -7204,7 +7271,7 @@ $cmd_binary options ; exit ; fi
 ###############################################################################################################
 ###############################################################################################################
 ####                                                                                            ###############
-####          ready to launch rules ..    - predesignated rules -
+####          ready to launch rules ..    - static rules -
 ###############
 ####                                                                                            ###############
 ###############################################################################################################
@@ -7828,12 +7895,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-code-shield-ssh:
-########################################     english: ipv4 iptables legacy rules default predesignated
+########################################     english: ipv4 iptables legacy rules default static
 ########################################     spanish: ipv4 iptables legacy reglas predesignadas por defecto
 #### :rutina-inicial-code-rulesdefault:
 ####
 ####
-if [ "$type_firewall" == "predesignated" ];  then $cmd_binary eraserules &> /dev/null ;
+if [ "$type_firewall" == "static" ];  then $cmd_binary eraserules &> /dev/null ;
 ####
 ####
 #### loopback localhost legacy ip4
