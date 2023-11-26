@@ -1440,11 +1440,12 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "ver" ]; then 
-echo "$title_md [ $first_option ] [ Show version about ] [ version.md] "
-echo "[ _ok_ ] [ program ] $cmd_name | $cmd_version | $cmd_description "
-echo "[ _ok_ ] [ Data directory  ] $directory_data  " 
-echo "[ _ok_ ] [ Cache directory ] $directory_cache " 
-echo "type to see where download: $cmd_binary download "
+echo "$title_md [ $first_option ] [ Show version about ] [ version.md]    "    
+echo "[ _ok_ ] [ program ] $cmd_binary With Version $cmd_version          "     
+echo "[ _ok_ ] Details: $cmd_name | $cmd_description                      "    
+echo "[ _ok_ ] [ Binary directory ] $directory_installed                  "     
+echo "[ _ok_ ] [ Data directory   ] $directory_data                       "     
+echo "[ _ok_ ] [ Cache directory  ] $directory_cache                      "     
 exit ; fi
 ####
 ####
