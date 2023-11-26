@@ -6357,7 +6357,7 @@ config_shield_port="22" ;
 #### english: log port servers
 logserver_prefix_input="fwlog-input::"   
 logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
+logserver_port_tcp="no"    
 logserver_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
@@ -6387,7 +6387,7 @@ config_shield_port="22" ;
 #### english: log port servers
 logserver_prefix_input="fwlog-input::"   
 logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
+logserver_port_tcp="no"    
 logserver_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
@@ -6417,7 +6417,7 @@ config_shield_port="22" ;
 #### english: log port servers
 logserver_prefix_input="fwlog-input::"   
 logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
+logserver_port_tcp="no"    
 logserver_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
@@ -6447,7 +6447,7 @@ config_shield_port="22" ;
 #### english: log port servers
 logserver_prefix_input="fwlog-input::"   
 logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
+logserver_port_tcp="no"    
 logserver_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
@@ -6477,7 +6477,7 @@ config_shield_port="22" ;
 #### english: log port servers
 logserver_prefix_input="fwlog-input::"   
 logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
+logserver_port_tcp="no"    
 logserver_port_udp="no"    
 #### you can connect normal web and vnc
 server_port_udp="" ;
@@ -6507,7 +6507,7 @@ config_shield_port="22" ;
 #### english: log port servers
 logserver_prefix_input="fwlog-input::"   
 logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
+logserver_port_tcp="no"    
 logserver_port_udp="no"    
 #### you can connect web normal and bittorrent too
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -6532,7 +6532,13 @@ type_firewall="static" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
-config_shield_port="" ;
+config_shield_maxtries="12" ;
+config_shield_port="22" ;
+#### english: log port servers
+logserver_prefix_input="fwlog-input::"   
+logserver_prefix_output="fwlog-output::"  
+logserver_port_tcp="no"    
+logserver_port_udp="no"    
 #### you can connect web normal and web vpn
 server_port_udp="" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,500,1194,1701,4500" ; 
@@ -6561,7 +6567,7 @@ config_shield_port="22" ;
 #### english: log port servers
 logserver_prefix_input="fwlog-input::"   
 logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
+logserver_port_tcp="no"    
 logserver_port_udp="no"    
 #### you can connect web normal and web tor
 server_port_udp="" ; 
@@ -6591,7 +6597,7 @@ config_shield_port="22" ;
 #### english: log port servers
 logserver_prefix_input="fwlog-input::"   
 logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
+logserver_port_tcp="no"    
 logserver_port_udp="no"    
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
@@ -6626,7 +6632,7 @@ config_shield_port="22" ;
 #### english: log port servers
 logserver_prefix_input="fwlog-input::"   
 logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
+logserver_port_tcp="no"    
 logserver_port_udp="no"    
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
@@ -6672,7 +6678,7 @@ config_shield_port="22" ;
 #### english: log port servers
 logserver_prefix_input="fwlog-input::"   
 logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
+logserver_port_tcp="no"    
 logserver_port_udp="no"    
 #### client ftp:
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -6702,7 +6708,7 @@ config_shield_port="22" ;
 #### english: log port servers
 logserver_prefix_input="fwlog-input::"   
 logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
+logserver_port_tcp="no"    
 logserver_port_udp="no"    
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -6732,7 +6738,7 @@ config_shield_port="22" ;
 #### english: log port servers
 logserver_prefix_input="fwlog-input::"   
 logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
+logserver_port_tcp="no"    
 logserver_port_udp="no"    
 #### vpn ports to connects ports vpn
 #### with necesary ports to connect gatway and date, domain for your ip
@@ -6763,7 +6769,7 @@ config_shield_port="22" ;
 #### english: log port servers
 logserver_prefix_input="fwlog-input::"   
 logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
+logserver_port_tcp="no"    
 logserver_port_udp="no"    
 #### lan tor, 9000:9170 for connect to tor
 #### with necesary ports to connect gatway and date, domain for your ip
@@ -6794,7 +6800,7 @@ config_shield_port="22" ;
 #### english: log port servers
 logserver_prefix_input="fwlog-input::"   
 logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
+logserver_port_tcp="no"    
 logserver_port_udp="no"    
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -6824,7 +6830,7 @@ config_shield_port="22" ;
 #### english: log port servers
 logserver_prefix_input="fwlog-input::"   
 logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
+logserver_port_tcp="no"    
 logserver_port_udp="no"    
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -6854,7 +6860,7 @@ config_shield_port="22" ;
 #### english: log port servers
 logserver_prefix_input="fwlog-input::"   
 logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
+logserver_port_tcp="no"    
 logserver_port_udp="no"    
 #### game wesnoth port 14999 and 15001 usually
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
@@ -6884,7 +6890,7 @@ config_shield_port="22" ;
 #### english: log port servers
 logserver_prefix_input="fwlog-input::"   
 logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
+logserver_port_tcp="no"    
 logserver_port_udp="no"    
 #### game minetest and minecraft porst 25k and 35k /udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,25000:35000" ; 
@@ -6914,7 +6920,7 @@ config_shield_port="22" ;
 #### english: log port servers
 logserver_prefix_input="fwlog-input::"   
 logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
+logserver_port_tcp="no"    
 logserver_port_udp="no"    
 #### for default 5556 port tcp perhaps 5555 too
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
@@ -6944,7 +6950,7 @@ config_shield_port="22" ;
 #### english: log port servers
 logserver_prefix_input="fwlog-input::"   
 logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
+logserver_port_tcp="no"    
 logserver_port_udp="no"    
 #### for default 7396 port tcp and 7396 udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,7396" ; 
