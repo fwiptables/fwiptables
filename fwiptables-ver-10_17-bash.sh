@@ -3795,7 +3795,8 @@ exit; fi
 if [ "$first_option" == "clone-static" ] && [ "$second_option" != "$NULL" ] ; then 
 archivo="$second_option"
 $cmd_binary code $second_option | $command_grep -E "_port_|_shield_" &> $directory_config/$archivo
-if [ -s "$directory_config/$archivo" ] ; then echo " [ _ok_ ] config created $archivo"
+if [ -s "$directory_config/$archivo" ] ; then 
+cat $directory_config/$archivo ; echo " [ _ok_ ] config created $archivo"
 else rm $directory_config/$archivo ; echo " [ fail ] config no done $archivo" ; fi
 exit; fi
 ####
