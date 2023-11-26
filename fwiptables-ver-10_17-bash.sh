@@ -5237,7 +5237,7 @@ if   [ "$first_option" == "cli-menu" ]; then $nada
 case "$favorite_text_dialog" in "$NULL") echo "$title_md [ fail ] [ Install or dialog or whiptail to work ]" ; exit ;; esac
 menuprincipal="$($favorite_text_dialog --clear --notags --title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
 0000 "$quad $tab [$cmd_binary cli-menu] $tab $cinco" \
-0100 "$quad [ Full Options ] $cinco" \
+0100 "$quad [  --- Full Options --- ] $cinco" \
 0200 "$quad [ Firewall Control ] $cinco" \
 0201  "$tab stop" \
 0202  "$tab continue" \
@@ -5343,10 +5343,24 @@ menuprincipal="$($favorite_text_dialog --clear --notags --title "Cli Menu With $
 0709  "$tab speed-ip6" \
 0710  "$tab sockets" \
 0711  "$tab notes" \
-0712  "$tab ilicense" \
+0712  "$tab license" \
 0713  "$tab version" \
 0714  "$tab examples" \
 0715  "$tab depends" \
+0716  "$tab info"\
+0717  "$tab ver" \
+0718  "$tab list-options"\
+0719  "$tab clasic-options"\
+0720  "$tab info-options"\
+0721  "$tab nodes"\
+0722  "$tab date"\
+0723  "$tab free"\
+0724  "$tab expert"\
+0725  "$tab commands"\
+0726  "$tab variables"\
+0727  "$tab intro"\
+0728  "$tab download"\
+0729  "$tab install"\
 3>&1 1>&2 2>&3 )"
 ################################################################################
 #### 
@@ -5505,6 +5519,20 @@ clear ; $cmd_binary del-config $archivo ; echo "deleted $archivo" ;;
 0713) clear ; $cmd_binary cli version ;;
 0714) clear ; $cmd_binary cli examples ;;
 0715) clear ; $cmd_binary cli depends ;;
+0716) clear ; $cmd_binary cli info ;;
+0717) clear ; $cmd_binary cli ver ;;
+0718) clear ; $cmd_binary cli list-options ;;
+0719) clear ; $cmd_binary cli clasic-options ;;
+0720) clear ; $cmd_binary cli info-options ;;
+0721) clear ; $cmd_binary cli nodes ;;
+0722) clear ; $cmd_binary cli date ;;
+0723) clear ; $cmd_binary cli free ;;
+0724) clear ; $cmd_binary cli expert ;;
+0725) clear ; $cmd_binary cli commands ;;
+0726) clear ; $cmd_binary cli variables ;;
+0727) clear ; $cmd_binary cli intro ;;
+0728) clear ; $cmd_binary cli download;;
+0729) clear ; $cmd_binary cli install;;
 ################################################################################
 *) clear ; $favorite_text_dialog  --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
 esac 
