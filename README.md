@@ -5,7 +5,7 @@
    for iptables linux with COMMAND-LINE with CLI-MENU                   
    with GUI-MENU with GUI-ROLL with GUI-SHELL.                          
    And choose one firewall: eraserules, or wizard-mini,                 
-   or wizard-full, or custom, or one predesignated                      
+   or wizard-full, or custom, or one static                      
    firewall to choose one. Gen new rules with templates                 
    and with shield ssh and with comments rules.                         
   
@@ -22,13 +22,18 @@
   
 ###  fwiptables install.                                   
   
-    Put bit of execution. TYPE:   chmod u+x ./fwiptables-ver-10_15-bash.sh   
-    Install this version. TYPE:   ./fwiptables-ver-10_15-bash.sh install     
+    Put bit of execution. TYPE:   chmod u+x ./fwiptables-ver-10_16-bash.sh   
+    Install this version. TYPE:   ./fwiptables-ver-10_16-bash.sh install     
   
 ###  fwiptables uninstall.                                 
   
     Uninstall fwiptables. TYPE:   fwiptables-cmd uninstall   
   
+###  [ ver ] [ Show version about ] [ version.md] 
+[ _ok_ ] [ program ] fwiptables, FireWall With iptables | cmd-10-16 | fwiptables, One Mini Script in one-file 
+[ _ok_ ] [ Data directory  ] /root/.config/fwiptables-cmd  
+[ _ok_ ] [ Cache directory ] /run/fwiptables 
+type to see where download: ./fwiptables-ver-10_16-bash.sh download 
 ###  [ compile ] [  optionally ] [ howto compile bash script with obash ] 
 ###    
    This script in bash works. But if you desire is compiling... follow that steps,       
@@ -42,10 +47,10 @@
    . 3b . Or Third: run:# obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd    
       
 ###  Actually, the file type is:                                                          
-./fwiptables-ver-10_15-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
+./fwiptables-ver-10_16-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
 ###   
 ###   
-###  fwiptables-ver-10_15-bash.sh [optional-output] first_option [second_option]                  
+###  fwiptables-ver-10_16-bash.sh [optional-output] first_option [second_option]                  
 ### 
 ###   [ optional-output ]                                                            
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       
@@ -63,17 +68,17 @@
    lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6          
    listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6              
    listn-security4 listn-security6                                                      
-###   [ firewall-custom ]                                                           
-   custom new-full-config nueva-completa-config new-mini-config nueva-mini-config       
+###   [ firewall-custom ] 
+   custom clone-static eraserules off-line all-permisive wizard-mini wizard-full        
+   new-full-config nueva-completa-config new-mini-config nueva-mini-config       
    regen-config examples-config show-config modify-config del-config names-config       
-###   [ firewall-launch ]                                                           
-   eraserules custom wizard-mini wizard-full off-line all-permisive client-basic        
-   client-web client-git client-ipp client-irc client-vnc client-mail client-news       
-   client-vpn client-torrent client-vpn client-ftp client-tor client-proxy              
-   game-widelands games-udp games-shooter game-wesnoth game-minetest game-freeciv       
-   lan-tor lan-vpn server-ssh server-irc server-samba server-vnc server-webserver       
-   server-print server-lamp server-news server-ftp server-mail server-teamspeak         
-   server-mumble server-sql server-asterisk server-domain server-proxy                  
+###   [ firewall-static ]                                                           
+   client-basic client-web client-git client-ipp client-irc client-vnc client-mail      
+   client-news client-vpn client-torrent client-vpn client-ftp client-tor               
+   client-proxy game-widelands games-udp games-shooter game-wesnoth game-minetest       
+   game-freeciv lan-tor lan-vpn server-ssh server-irc server-samba server-vnc           
+   server-print server-lamp server-news server-ftp server-mail server-webserver         
+   server-teamspeak server-mumble server-sql server-asterisk server-domain server-proxy 
 ###   [ options-easy ]                                                              
    preferences-read preferences-modify preferences-regen preferences-example ver        
    list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6         
