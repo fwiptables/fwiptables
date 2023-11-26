@@ -182,7 +182,7 @@ $command_xhost +SI:localuser:root &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-x11-or-wayland:
-##########  english: config-ariables: variables to declare     ##########
+##########  english: config-variables: variables to declare     ##########
 ##########  spanish: config-variables: variables para declarar  ##########
 #### :rutina-inicial-config-variables:
 ####
@@ -194,6 +194,9 @@ client_port_tcp="ssh,http,https"     ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https"     ;
 server_port_tcp=""     ;
 server_port_udp=""     ;
+allow_shield_maxtries="no"    ;
+config_shield_port="22" ;
+config_shield_maxtries="12"     ;
 logserver_prefix_input="fwlog-input::"     ; 
 logserver_prefix_output="fwlog-output::"     ;
 logserver_port_tcp="no"     ;
@@ -210,7 +213,6 @@ allow_input_bandwidth="no"    ;
 allow_input_maxconnect="no"    ;
 allow_input_ping="no"     ;
 allow_input_state="no"    ;
-allow_shield_maxtries="no"    ;
 allow_mac_blacklist="no"    ; 
 allow_mac_whitelist="no"    ;
 allow_net_blacklist="no"    ;
@@ -228,7 +230,6 @@ config_dmz_ip6=""     ;
 config_input_bandwidth="12512"     ; 
 config_input_maxconnect="72"     ; 
 config_input_state="new,related,established"     ;
-config_shield_maxtries="12"     ;
 config_mac_blacklist=""     ;
 config_mac_whitelist=""     ;
 config_net_blacklist="yandex.com,baidu.com,google.com"     ;
@@ -2599,6 +2600,12 @@ echo "$text_md server_port_tcp             # example: ports1,ports2,range-begin:
 echo "$text_md"
 echo "$text_md server_port_udp             # example: ports1,ports2,range-begin:range-end"
 echo "$text_md"
+echo "$text_md allow_shield_maxtries       # void or no . void to allow shield maxtries or no"
+echo "$text_md"
+echo "$text_md config_shield_maxtries      # max tries to login for each hour then drop ip . Example 20"
+echo "$text_md"
+echo "$text_md config_shield_port          # ports to shield, if several comma separate"
+echo "$text_md"
 echo "$text_md logserver_prefix_input      # prefix to save logs in input port"
 echo "$text_md"
 echo "$text_md logserver_prefix_output     # prefix to save logs in output port"
@@ -2630,8 +2637,6 @@ echo "$text_md"
 echo "$text_md allow_input_ping            # void or no . void to allow input ping"
 echo "$text_md"
 echo "$text_md allow_input_state           # void or no . void to allow input state config with other variable"
-echo "$text_md"
-echo "$text_md allow_shield_maxtries       # void or no . void to allow shield maxtries or no"
 echo "$text_md"
 echo "$text_md allow_mac_blacklist         # void or no . void to allow mac blacklist or no"
 echo "$text_md"
@@ -2672,8 +2677,6 @@ echo "$text_md"
 echo "$text_md config_input_state          # modify with some of new,related,established,untracked,invalid"
 echo "$text_md"
 echo "$text_md config_output_state         # modify with some of new,related,established,untracked,invalid"
-echo "$text_md"
-echo "$text_md config_shield_maxtries      # max tries to login for each hour . Example 20"
 echo "$text_md"
 echo "$text_md config_mac_blacklist        # mac blacklist"
 echo "$text_md"
