@@ -1442,7 +1442,7 @@ exit ; fi
 if [ "$first_option" == "ver" ]; then 
 echo "$title_md [ $first_option ] [ Show version about ] [ version.md]    "    
 echo "[ _ok_ ] [ program ] $cmd_binary With Version $cmd_version          "     
-echo "[ _ok_ ] Details: $cmd_name | $cmd_description                      "    
+echo "[ _ok_ ] [ Details ] $cmd_name | $cmd_description                   "    
 echo "[ _ok_ ] [ Binary directory ] $directory_installed                  "     
 echo "[ _ok_ ] [ Data directory   ] $directory_data                       "     
 echo "[ _ok_ ] [ Cache directory  ] $directory_cache                      "     
@@ -5666,7 +5666,9 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-roll-zenity-firewall-custom" ] ; then echo $head_waiting_gui
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
+custom|clone-static|eraserules|wizard-mini|wizard-full|off-line|all-permisive|\
+new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
 names-config|show-config|modify-config|del-config|regen-config|examples-config"
 selection_menu="$($command_zenity --text="gui-roll-firewall-custom" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
@@ -5677,6 +5679,17 @@ case "$selection_final" in
 "gui-principal-menu")$cmd_binary gui-roll-zenity ;;
 "gui-help-menu")$cmd_binary -gui-zenity help firewall-custom ;;
 "gui-info-menu")$cmd_binary -gui-zenity info firewall-custom ;;
+"custom")archivo="$($command_zenity  --entry $graphic_window_dimension \
+--title="[Launch Custom]" --entry-text="cfg to launch")" ; 
+$cmd_binary -gui-zenity custom $archivo ; $cmd_binary gui list4;;
+"clone-static")archivo="$($command_zenity  --entry $graphic_window_dimension \
+--title="[Clone firewall static]" --entry-text="firewall static to clone")" ; 
+$cmd_binary -gui-zenity clone-static $archivo ; $cmd_binary gui list4;;
+"eraserules")$cmd_binary -gui-zenity eraserules ; $cmd_binary gui list4;;
+"wizard-full")$cmd_binary -gui-zenity wizard-full ; $cmd_binary gui list4;;
+"wizard-mini")$cmd_binary -gui-zenity wizard-mini ; $cmd_binary gui list4;;
+"off-line")$cmd_binary -gui-zenity off-line ; $cmd_binary gui list4;;
+"all-permisive")$cmd_binary -gui-zenity all-permisive ; $cmd_binary gui list4;;
 "new-full-config")
 archivo="$($command_zenity  $graphic_window_dimension --entry --title="[new-full-config]" --entry-text="Input file name to new full configuration")" ;
 $cmd_binary -gui-zenity new-full-config $archivo ;;
@@ -5715,11 +5728,10 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-roll-zenity-firewall-static" ] ; then echo $head_waiting_gui
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|eraserules|\
-wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|client-basic|\
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 client-basic|client-web|client-mail|client-news|client-ftp|client-git|client-vnc|\
 client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
-games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|\
+games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|server-proxy|\
 server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|server-domain|\
 server-news|server-mail|server-ftp|server-teamspeak|server-mumble|server-sql|server-asterisk"
 selection_menu="$($command_zenity --text="gui-roll-firewall-custom" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
@@ -5731,11 +5743,6 @@ case "$selection_final" in
 "gui-principal-menu")$cmd_binary gui-roll-zenity ;;
 "gui-help-menu")$cmd_binary -gui-zenity help firewall-static ;;
 "gui-info-menu")$cmd_binary -gui-zenity info firewall-static ;;
-"eraserules")$cmd_binary -gui-zenity eraserules ; $cmd_binary gui list4;;
-"wizard-full")$cmd_binary -gui-zenity wizard-full ; $cmd_binary gui list4;;
-"wizard-mini")$cmd_binary -gui-zenity wizard-mini ; $cmd_binary gui list4;;
-"off-line")$cmd_binary -gui-zenity off-line ; $cmd_binary gui list4;;
-"all-permisive")$cmd_binary -gui-zenity all-permisive ; $cmd_binary gui list4;;
 "client-web")$cmd_binary -gui-zenity client-web ; $cmd_binary gui list4;;
 "client-ipp")$cmd_binary -gui-zenity client-ipp   ; $cmd_binary gui list4;;
 "client-irc")$cmd_binary -gui-zenity client-irc   ; $cmd_binary gui list4;;
@@ -5757,6 +5764,7 @@ case "$selection_final" in
 "shield-ssh")$cmd_binary -gui-zenity shield-ssh ; $cmd_binary gui list4;;
 "server-ssh")$cmd_binary -gui-zenity server-ssh ; $cmd_binary gui list4;;
 "server-web")$cmd_binary -gui-zenity server-web ; $cmd_binary gui list4;;
+"server-proxy")$cmd_binary -gui-zenity server-proxy ; $cmd_binary gui list4;;
 "server-vnc")$cmd_binary -gui-zenity server-vnc ; $cmd_binary gui list4;;
 "server-samba")$cmd_binary -gui-zenity server-samba ; $cmd_binary gui list4;;
 "server-news")$cmd_binary -gui-zenity server-news ; $cmd_binary gui list4;;
@@ -5769,9 +5777,6 @@ case "$selection_final" in
 "server-sql")$cmd_binary -gui-zenity server-sql ; $cmd_binary gui list4;;
 "server-asterisk")$cmd_binary -gui-zenity server-asterisk ; $cmd_binary gui list4;;
 "server-domain")$cmd_binary -gui-zenity server-domain ; $cmd_binary gui list4;;
-"custom-cfg")archivo="$($command_zenity  --entry $graphic_window_dimension \
---title="[Launch Custom]" --entry-text="cfg to launch")" ; 
-$cmd_binary -gui-zenity custom $archivo ; $cmd_binary gui list4;;
 esac
 ####
 ####
