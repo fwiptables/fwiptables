@@ -2150,17 +2150,17 @@ echo "$title_md  [ firewall-numeral ]                                           
 echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6          "
 echo "$text_md listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6              "
 echo "$text_md listn-security4 listn-security6                                                      "
-echo "$title_md  [ firewall-custom ]                                                           "
+echo "$title_md  [ firewall-custom ] "
+echo "$text_md custom clone-static eraserules off-line all-permisive wizard-mini wizard-full        "
 echo "$text_md custom new-full-config nueva-completa-config new-mini-config nueva-mini-config       "
 echo "$text_md regen-config examples-config show-config modify-config del-config names-config       "
-echo "$title_md  [ firewall-launch ]                                                           "
-echo "$text_md eraserules custom wizard-mini wizard-full off-line all-permisive client-basic        "
-echo "$text_md client-web client-git client-ipp client-irc client-vnc client-mail client-news       "
-echo "$text_md client-vpn client-torrent client-vpn client-ftp client-tor client-proxy              "
-echo "$text_md game-widelands games-udp games-shooter game-wesnoth game-minetest game-freeciv       "
-echo "$text_md lan-tor lan-vpn server-ssh server-irc server-samba server-vnc server-webserver       "
-echo "$text_md server-print server-lamp server-news server-ftp server-mail server-teamspeak         "
-echo "$text_md server-mumble server-sql server-asterisk server-domain server-proxy                  "
+echo "$title_md  [ firewall-static ]                                                           "
+echo "$text_md client-basic client-web client-git client-ipp client-irc client-vnc client-mail      "
+echo "$text_md client-news client-vpn client-torrent client-vpn client-ftp client-tor               "
+echo "$text_md client-proxy game-widelands games-udp games-shooter game-wesnoth game-minetest       "
+echo "$text_md game-freeciv lan-tor lan-vpn server-ssh server-irc server-samba server-vnc           "
+echo "$text_md server-print server-lamp server-news server-ftp server-mail server-webserver         "
+echo "$text_md server-teamspeak server-mumble server-sql server-asterisk server-domain server-proxy "
 echo "$title_md  [ options-easy ]                                                              "
 echo "$text_md preferences-read preferences-modify preferences-regen preferences-example ver        "
 echo "$text_md list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6         "
@@ -2194,17 +2194,18 @@ echo "$text_md                        list-security4 list-security6 list-ebtable
 echo "$text_md    firewall-numeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4"
 echo "$text_md                        listn-filter6 listn-nat4 listn-nat6 listn-raw4 listn-raw6"
 echo "$text_md                        listn-mangle4  listn-mangle6 listn-security4 listn-security6"
-echo "$text_md     firewall-custom |  custom new-full-config nueva-completa-config regen-config"
-echo "$text_md                        new-mini-config nueva-mini-config examples-config"
-echo "$text_md                        show-config modify-config del-config names-config"
-echo "$text_md     firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive"
-echo "$text_md                        client-basic games-udp games-shooter game-wesnoth game-minetest"
-echo "$text_md                        game-freeciv game-widelands client-web client-irc client-vnc client-mail"
-echo "$text_md                        client-news client-torrent client-vpn client-ftp  client-tor client-ipp"
-echo "$text_md                        client-proxy client-git lan-tor lan-vpn server-ssh server-samba server-vnc"
-echo "$text_md                        server-webserver server-print server-lamp server-news server-ftp"
-echo "$text_md                        server-mail server-teamspeak server-mumble server-sql"
-echo "$text_md                        server-asterisk server-domain server-proxy server-irc            "
+echo "$text_md     firewall-custom |  custom eraserules wizard-mini wizard-full off-line all-permisive"
+echo "$text_md     		      clone-static new-full-config nueva-completa-config names-config "
+echo "$text_md                        modify-config new-mini-config nueva-mini-config examples-config"
+echo "$text_md                        show-config del-config "
+echo "$text_md     firewall-static |  client-basic games-udp games-shooter game-wesnoth game-minetest"
+echo "$text_md                        game-freeciv game-widelands client-web client-irc client-vnc"
+echo "$text_md                        client-mail client-news client-torrent client-vpn client-ftp"
+echo "$text_md                        client-tor client-ipp client-proxy client-git lan-tor lan-vpn"
+echo "$text_md                        server-ssh server-samba server-vnc server-webserver server-print"
+echo "$text_md                        server-lamp server-news server-ftp server-mail server-teamspeak"
+echo "$text_md                        server-mumble server-sql server-asterisk server-domain "
+echo "$text_md                        server-proxy server-irc          "
 echo "$text_md        options-easy |  preferences-read preferences-modify preferences-regen preferences-example"
 echo "$text_md                        list-options clasic-options info-options filelog autolog ip4 ip6 "
 echo "$text_md                        sockets nodes geoip date free ver version notes depends commands "
@@ -2410,14 +2411,14 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-custom:
-##########    english: firewall-launch: options for fwiptables firewall      ##########
-##########    spanish: firewall-launch: opciones para fwiptables firewall    ##########
-#### :rutina-inicial-firewall-launch:
+##########    english: firewall-static: options for fwiptables firewall      ##########
+##########    spanish: firewall-static: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-firewall-static:
 ####
 ####
-if   [ "$first_option" == "firewall-launch" ]; then
+if   [ "$first_option" == "firewall-static" ]; then
 echo "$text_md "
-echo "$title_md | firewall-launch | $cmd_file firewall-launch |"
+echo "$title_md | firewall-static | $cmd_file firewall-static |"
 echo "$text_md"
 echo "$text_md eraserules . remove all firewall rules"
 echo "$text_md custom . launch a one one-file saved custom"
@@ -2460,7 +2461,7 @@ echo "$text_md server-proxy . launch a one firewall basic server"
 exit; fi
 ####
 ####
-#### :rutina-final-firewall-launch:
+#### :rutina-final-firewall-static:
 ##########    english: options-easy: options for fwiptables firewall      ##########
 ##########    spanish: options-easy: opciones para fwiptables firewall    ##########
 #### :rutina-inicial-options-easy:
@@ -2531,7 +2532,7 @@ $cmd_binary firewall-control
 $cmd_binary firewall-conceptual
 $cmd_binary firewall-numeral
 $cmd_binary firewall-custom
-$cmd_binary firewall-launch
+$cmd_binary firewall-static
 $cmd_binary options-easy
 echo "$text_md"
 exit; fi
@@ -5338,7 +5339,7 @@ case "$menuprincipal" in
 0200) clear ; $cmd_binary cli firewall-control ;;
 0300) clear ; $cmd_binary cli firewall-conceptual ;;
 0400) clear ; $cmd_binary cli firewall-numeral ;;
-0500) clear ; $cmd_binary cli firewall-launch ;;
+0500) clear ; $cmd_binary cli firewall-static ;;
 0600) clear ; $cmd_binary cli firewall-custom ;;
 0700) clear ; $cmd_binary cli default-state ;;
 ################################################################################
@@ -5506,7 +5507,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-roll-zenity" ] ; then echo $head_waiting_gui ; echo $give_cover
-gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|03-Firewall-Custom|04-Firewall-Launch|05-options-easy"
+gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|03-Firewall-Custom|04-firewall-static|05-options-easy"
 selection_menu="$($command_zenity --text="gui-roll" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
@@ -5516,7 +5517,7 @@ case "$selection_final" in
 "02-Firewall-List-With-Conceptual")$cmd_binary gui-roll-zenity-firewall-conceptual ; exit ;;
 "02-Firewall-List-With-Numeral")$cmd_binary gui-roll-zenity-firewall-numeral ; exit ;;
 "03-Firewall-Custom")$cmd_binary gui-roll-zenity-firewall-custom ; exit ;;
-"04-Firewall-Launch")$cmd_binary gui-roll-zenity-firewall-launch ; exit ;;
+"04-firewall-static")$cmd_binary gui-roll-zenity-firewall-static ; exit ;;
 "05-options-easy")$cmd_binary gui-roll-zenity-options-easy ; exit ;;
 esac
 ####
@@ -5686,12 +5687,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-custom:
-##########    english: gui-roll-firewall-launch: gui roll firewall-launch: gui with roll  ##########
-##########    spanish: gui-roll-firewall-launch: gui roll firewall-launch: gui con roll   ##########
-#### :rutina-inicial-gui-roll-zenity-firewall-launch:
+##########    english: gui-roll-firewall-static: gui roll firewall-static: gui with roll  ##########
+##########    spanish: gui-roll-firewall-static: gui roll firewall-static: gui con roll   ##########
+#### :rutina-inicial-gui-roll-zenity-firewall-static:
 ####
 ####
-if   [ "$first_option" == "gui-roll-zenity-firewall-launch" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-roll-zenity-firewall-static" ] ; then echo $head_waiting_gui
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|eraserules|\
 wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|client-basic|\
 client-basic|client-web|client-mail|client-news|client-ftp|client-git|client-vnc|\
@@ -5706,8 +5707,8 @@ selection_final="$(echo $selection_menu | sed 's/\|//g')"
 case "$selection_final" in
 1) $command_zenity  --info $graphic_window_dimension --text="$cmd_binary good bye"; exit ;;
 "gui-principal-menu")$cmd_binary gui-roll-zenity ;;
-"gui-help-menu")$cmd_binary -gui-zenity help firewall-launch ;;
-"gui-info-menu")$cmd_binary -gui-zenity info firewall-launch ;;
+"gui-help-menu")$cmd_binary -gui-zenity help firewall-static ;;
+"gui-info-menu")$cmd_binary -gui-zenity info firewall-static ;;
 "eraserules")$cmd_binary -gui-zenity eraserules ; $cmd_binary gui list4;;
 "wizard-full")$cmd_binary -gui-zenity wizard-full ; $cmd_binary gui list4;;
 "wizard-mini")$cmd_binary -gui-zenity wizard-mini ; $cmd_binary gui list4;;
@@ -5755,7 +5756,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-zenity-firewall-launch:
+#### :rutina-final-gui-roll-zenity-firewall-static:
 ##########    english: gui-roll-zenity-options-easy: gui roll options-easy: gui with roll  ##########
 ##########    spanish: gui-roll-zenity-options-easy: gui roll options-easy: gui con roll   ##########
 #### :rutina-inicial-gui-roll-zenity-options-easy:
@@ -5826,7 +5827,7 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu" ] ; then echo $head_waiting_gui ; echo $give_cover
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="|01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|03-Firewall-Custom|04-Firewall-Launch|05-options-easy|"
+gui_menu="|01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|03-Firewall-Custom|04-firewall-static|05-options-easy|"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="$first_option" --text="$first_option" --title="Gui-menu With $cmd_binary $cmd_version" --list $selection_menu)"
 #### 
@@ -5837,7 +5838,7 @@ case "$selection_final" in
 02-Firewall-List-With-Conceptual*)$cmd_binary gui-menu-firewall-conceptual ; exit ;;
 02-Firewall-List-With-Numeral*)$cmd_binary gui-menu-firewall-numeral ; exit ;;
 03-Firewall-Custom*)$cmd_binary gui-menu-firewall-custom ; exit ;;
-04-Firewall-Launch*)$cmd_binary gui-menu-firewall-launch ; exit ;;
+04-firewall-static*)$cmd_binary gui-menu-firewall-static ; exit ;;
 05-options-easy*)$cmd_binary gui-menu-options-easy ; exit ;;
 esac
 ####
@@ -5846,12 +5847,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu:
-##########   english: gui-menu-firewall-launch: gui with menu    ##########
-##########   spanish: gui-menu-firewall-launch: gui con menu     ##########
-#### :rutina-inicial-gui-menu-firewall-launch:
+##########   english: gui-menu-firewall-static: gui with menu    ##########
+##########   spanish: gui-menu-firewall-static: gui con menu     ##########
+#### :rutina-inicial-gui-menu-firewall-static:
 ####
 ####  
-if   [ "$first_option" == "gui-menu-firewall-launch" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-menu-firewall-static" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|eraserules|\
 wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|client-basic|\
@@ -5867,8 +5868,8 @@ selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --colum
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu*)$cmd_binary gui-menu ;;
-gui-help-menu*)$cmd_binary -gui help firewall-launch ;;
-gui-info-menu*)$cmd_binary -gui info firewall-launch ;;
+gui-help-menu*)$cmd_binary -gui help firewall-static ;;
+gui-info-menu*)$cmd_binary -gui info firewall-static ;;
 eraserules*)$cmd_binary -gui eraserules ; $cmd_binary gui list4;;
 wizard-full*)$cmd_binary -gui wizard-full ; $cmd_binary gui list4;;
 wizard-mini*)$cmd_binary -gui wizard-mini ; $cmd_binary gui list4;;
@@ -5917,7 +5918,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-firewall-launch:
+#### :rutina-final-gui-menu-firewall-static:
 ##########    english: gui-menu-firewall-control: gui with menu   ##########
 ##########    spanish: gui-menu-firewall-control: gui con menu    ##########
 #### :rutina-inicial-gui-menu-firewall-control:
