@@ -22,18 +22,19 @@
   
 ###  fwiptables install.                                   
   
-    Put bit of execution. TYPE:   chmod u+x ./fwiptables-ver-10_16-bash.sh   
-    Install this version. TYPE:   ./fwiptables-ver-10_16-bash.sh install     
+    Put bit of execution. TYPE:   chmod u+x ./fwiptables-ver-10_17-bash.sh   
+    Install this version. TYPE:   ./fwiptables-ver-10_17-bash.sh install     
   
 ###  fwiptables uninstall.                                 
   
     Uninstall fwiptables. TYPE:   fwiptables-cmd uninstall   
   
-###  [ ver ] [ Show version about ] [ version.md] 
-[ _ok_ ] [ program ] fwiptables, FireWall With iptables | cmd-10-16 | fwiptables, One Mini Script in one-file 
-[ _ok_ ] [ Data directory  ] /root/.config/fwiptables-cmd  
-[ _ok_ ] [ Cache directory ] /run/fwiptables 
-type to see where download: ./fwiptables-ver-10_16-bash.sh download 
+###  [ ver ] [ Show version about ] [ version.md]    
+[ _ok_ ] [ program ] ./fwiptables-ver-10_17-bash.sh With Version cmd-10-17          
+[ _ok_ ] [ Details ] fwiptables, FireWall With iptables | fwiptables, One Mini Script in one-file                   
+[ _ok_ ] [ Binary directory ] /usr/bin                  
+[ _ok_ ] [ Data directory   ] /root/.config/fwiptables-cmd                       
+[ _ok_ ] [ Cache directory  ] /run/fwiptables                      
 ###  [ compile ] [  optionally ] [ howto compile bash script with obash ] 
 ###    
    This script in bash works. But if you desire is compiling... follow that steps,       
@@ -47,10 +48,10 @@ type to see where download: ./fwiptables-ver-10_16-bash.sh download
    . 3b . Or Third: run:# obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd    
       
 ###  Actually, the file type is:                                                          
-./fwiptables-ver-10_16-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
+./fwiptables-ver-10_17-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
 ###   
 ###   
-###  fwiptables-ver-10_16-bash.sh [optional-output] first_option [second_option]                  
+###  fwiptables-ver-10_17-bash.sh [optional-output] first_option [second_option]                  
 ### 
 ###   [ optional-output ]                                                            
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       
@@ -60,19 +61,19 @@ type to see where download: ./fwiptables-ver-10_16-bash.sh download
 ### 
 ###   [ firewall-control ]                                                           
    stop continue reset actual show save load names-control                              
-###   [ firewall-conceptual ]                                                        
+###   [ firewall-listconceptual ]                                                        
    ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6                  
    list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6                    
    list-security4 list-security6 list-ebtables list-arptables                           
-###   [ firewall-numeral ]                                                           
+###   [ firewall-listnumeral ]                                                           
    lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6          
    listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6              
    listn-security4 listn-security6                                                      
-###   [ firewall-custom ] 
-   custom clone-static eraserules off-line all-permisive wizard-mini wizard-full        
+###   [ firewall-customfw ] 
+   custom clone-systemfw eraserules off-line all-permisive wizard-mini wizard-full        
    new-full-config nueva-completa-config new-mini-config nueva-mini-config       
    regen-config examples-config show-config modify-config del-config names-config       
-###   [ firewall-static ]                                                           
+###   [ firewall-systemfw ]                                                           
    client-basic client-web client-git client-ipp client-irc client-vnc client-mail      
    client-news client-vpn client-torrent client-vpn client-ftp client-tor               
    client-proxy game-widelands games-udp games-shooter game-wesnoth game-minetest       
