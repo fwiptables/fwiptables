@@ -1441,7 +1441,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "ver" ]; then 
-echo "$title_md [ $first_option ] [ Show version about ] [ version.md]    "    
+echo "$title_md [ $first_option ] [ Show version about ] [ ver.md]    "    
 echo "[ _ok_ ] [ program ] $cmd_binary With Version $cmd_version          "     
 echo "[ _ok_ ] [ Details ] $cmd_name | $cmd_description                   "    
 echo "[ _ok_ ] [ Binary directory ] $directory_installed                  "     
@@ -3998,7 +3998,7 @@ exit; fi
 ####
 if  [ "$first_option" == "intro" ]; then 
 echo "$text_md"
-echo "$title_md fwiptables. Firewall With iptables.    "
+echo "$title_md fwiptables. Firewall With iptables.   [ intro.md ] "
 echo "$text_md"
 echo "$text_md fwiptables is one simple in one-file FRONT-END                       "
 echo "$text_md for iptables linux with COMMAND-LINE with CLI-MENU                   "
@@ -4296,7 +4296,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "compile" ]; then 
-echo "$title_md [ $first_option ] [  optionally ] [ howto compile bash script with obash ] "
+echo "$title_md [ $first_option ] [  optionally: howto compile bash script ] [ compile.md]  "
 echo "$title_md   "
 echo "$text_md This script in bash works. But if you desire is compiling... follow that steps,       "
 echo "$text_md there are three steps to compile fwiptables script, it is possible with obash.        "
