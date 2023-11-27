@@ -1441,12 +1441,14 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "ver" ]; then 
-echo "$title_md [ $first_option ] [ Show version about ] [ ver.md]    "    
+echo "$title_md [ $first_option ] [ Show version about ] [ ver.md ]       "    
+echo "$text_md"
 echo "[ _ok_ ] [ program ] $cmd_binary With Version $cmd_version          "     
 echo "[ _ok_ ] [ Details ] $cmd_name | $cmd_description                   "    
 echo "[ _ok_ ] [ Binary directory ] $directory_installed                  "     
 echo "[ _ok_ ] [ Data directory   ] $directory_data                       "     
 echo "[ _ok_ ] [ Cache directory  ] $directory_cache                      "     
+echo "$text_md"   
 exit ; fi
 ####
 ####
@@ -4030,6 +4032,8 @@ echo "$text_md  Uninstall fwiptables. TYPE:   $cmd_config uninstall   "
 echo "$text_md"
 $cmd_binary ver
 $cmd_binary compile
+echo "$title_md [ List general options for fwiptables ] [ options.md ]"
+echo "$text_md"
 $cmd_binary options
 exit; fi
 ####
@@ -4310,7 +4314,6 @@ echo "$text_md . 3b . Or Third: run:# obash -c -o /usr/bin/fwiptables-bin /usr/b
 echo "$text_md    "
 echo "$title_md Actually, the file type is:                                                          "
 file -L $cmd_binary
-echo "$title_md  "
 echo "$title_md  "
 exit; fi
 ####
