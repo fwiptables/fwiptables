@@ -2172,8 +2172,8 @@ echo "$text_md list-options clasic-options info-options filelog autolog speed-ip
 echo "$text_md ip4 ip6 speed-glx sockets nodes geoip webcert date free expert version notes         "
 echo "$text_md radio compile ip-forward depends info code info examples commands variables          "
 echo "$text_md intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot             "
-echo "$title_md            ||| Example info: fwiptables-cmd -gui-shell-yad |||                "
-echo "$title_md            ||| Example info: fwiptables-cmd -gui-zenity info list |||         "
+echo "$title_md            ||| Example: fwiptables-cmd -gui-shell-yad |||                "
+echo "$title_md            ||| Example: fwiptables-cmd -gui-zenity info list |||         "
 exit ; fi
 ####
 ####
@@ -2217,8 +2217,8 @@ echo "$text_md                        sockets nodes geoip date free ver version 
 echo "$text_md                        ip-forward speed-ip4 speed-ip6 speed-glx code radio expert ver"
 echo "$text_md                        variables examples intro webcert clean-tmp radio info download   "
 echo "$text_md                        compile license install uninstall pc-halt pc-shutdown pc-reboot  "
-echo "$title_md                       ||| Example info: fwiptables-cmd -gui-shell-yad ls4 |||     "
-echo "$title_md                       ||| Example info: fwiptables-cmd -gui-zenity info list |||  "
+echo "$title_md                       ||| Example: fwiptables-cmd -gui-shell-yad ls4 |||     "
+echo "$title_md                       ||| Example: fwiptables-cmd -gui-zenity info list |||  "
 exit ; fi
 ####
 ####
@@ -2322,6 +2322,7 @@ echo "$text_md show . show the rules iptables from selected file"
 echo "$text_md load . reset and load new rules iptables from selected file"
 echo "$text_md save . save in the file selected the rules iptables actually"
 echo "$text_md names-control . list filenames saved in the iptables rules"
+echo "$text_md eraserules . remove all firewall rules"
 echo "$text_md "
 exit; fi
 ####
