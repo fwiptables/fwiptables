@@ -252,6 +252,7 @@ net_ipv6_server="::/0"     ;
 #### :rutina-inicial-command:
 ####
 ####
+command_awk="$(command -v awk)"   #list-commands ;
 command_editor="$(command -v editor)"   #list-commands ;
 command_vi="$(command -v vi)"   #list-commands ;
 command_vim="$(command -v vim)"   #list-commands ;
@@ -2716,6 +2717,8 @@ if   [ "$first_option" == "commands" ]; then
 echo "$title_md [ $first_option ]  [ list commands possible depends ] "
 echo "##########     commands possible depends  ##########"
 echo "$text_md"
+echo "$text_md awk              # for sockets"
+echo "$text_md"
 echo "$text_md arp              # optional"
 echo "$text_md"
 echo "$text_md arp_scan         # necesary in option nodes"
@@ -4757,9 +4760,12 @@ exit; fi
 ####
 if   [ "$first_option" == "sockets" ]; then 
 echo "$title_md [ $first_option ] [ Show sockets with ss ] "
-if [ "$command_ss" == "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
+if [ "$command_awk" == "$NULL" ]; then 
+echo "$title_md [ fail ] [ Install ss command ]"; exit; fi
+if [ "$command_awk" == "$NULL" ]; then 
+echo "$title_md [ fail ] [ Install awk command ]"; exit; fi
 echo "$title_md [ info ] [ The listen sockets ]"
-$command_ss -l  | $command_grep "\:\*" | awk '{print $1 " " $2 " " $5}' ;
+$command_ss -l  | $command_grep "\:\*" | $command_awk '{print $1 " " $2 " " $5}' ;
 exit; fi
 ####
 ####
