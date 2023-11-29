@@ -1241,7 +1241,7 @@ if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command 
 else $command_ip -4 route ; fi
 echo
 echo "$title_md [ info ] ### [ Network Listen ] ###"
-echo "$text_md  for network listen: $cmd_binary sockets"
+echo "$text_md   Network listen: $cmd_binary sockets"
 #### if [ "$command_ss" == "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
 #### else $command_ss -l  | $command_grep "\:\*" ; fi
 echo
@@ -4279,7 +4279,7 @@ exit; fi
 #### :rutina-final-pc-shutdown:
 ##########    english: expert-upgrade: upgrade fwiptables    ##########
 ##########    spanish: expert-upgrade: upgrade fwiptables    ##########
-#### :rutina-inicial-expert-upgade:
+#### :rutina-inicial-expert-upgrade:
 ####
 ####
 if   [ "$first_option" == "expert-upgrade" ]; then 
@@ -4759,7 +4759,7 @@ if   [ "$first_option" == "sockets" ]; then
 echo "$title_md [ $first_option ] [ Show sockets with ss ] "
 if [ "$command_ss" == "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
 echo "$title_md [ info ] [ The listen sockets ]"
-$command_ss -l  | $command_grep "\:\*"  ;
+$command_ss -l  | $command_grep "\:\*" | awk '{print $1 " " $2 " " $5}' ;
 exit; fi
 ####
 ####
