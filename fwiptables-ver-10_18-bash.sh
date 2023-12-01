@@ -2156,7 +2156,7 @@ echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 lis
 echo "$text_md listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6              "
 echo "$text_md listn-security4 listn-security6                                                      "
 echo "$title_md  [ firewall-customfw ] "
-echo "$text_md custom clone-systemfw eraserules off-line all-permisive wizard-mini wizard-full        "
+echo "$text_md custom eraserules off-line all-permisive wizard-mini wizard-full clone-systemfw      "
 echo "$text_md new-full-config nueva-completa-config new-mini-config nueva-mini-config       "
 echo "$text_md regen-config examples-config show-config modify-config del-config names-config       "
 echo "$title_md  [ firewall-systemfw ]                                                           "
@@ -2199,11 +2199,11 @@ echo "$text_md                        list-security4 list-security6 list-ebtable
 echo "$text_md    firewall-listnumeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4"
 echo "$text_md                        listn-filter6 listn-nat4 listn-nat6 listn-raw4 listn-raw6"
 echo "$text_md                        listn-mangle4  listn-mangle6 listn-security4 listn-security6"
-echo "$text_md     firewall-customfw |  custom eraserules wizard-mini wizard-full off-line all-permisive"
+echo "$text_md       firewall-customfw |  custom eraserules wizard-mini wizard-full off-line all-permisive"
 echo "$text_md     		      clone-systemfw new-full-config nueva-completa-config names-config "
 echo "$text_md                        modify-config new-mini-config nueva-mini-config examples-config"
 echo "$text_md                        show-config del-config "
-echo "$text_md     firewall-systemfw |  client-basic games-udp games-shooter game-wesnoth game-minetest"
+echo "$text_md       firewall-systemfw |  client-basic games-udp games-shooter game-wesnoth game-minetest"
 echo "$text_md                        game-freeciv game-widelands client-web client-irc client-vnc"
 echo "$text_md                        client-mail client-news client-torrent client-vpn client-ftp"
 echo "$text_md                        client-tor client-ipp client-proxy client-git lan-tor lan-vpn"
@@ -2211,7 +2211,7 @@ echo "$text_md                        server-ssh server-samba server-vnc server-
 echo "$text_md                        server-lamp server-news server-ftp server-mail server-teamspeak"
 echo "$text_md                        server-mumble server-sql server-asterisk server-domain "
 echo "$text_md                        server-proxy server-irc          "
-echo "$text_md        options-easy |  preferences-read preferences-modify preferences-regen preferences-example"
+echo "$text_md           options-easy |  preferences-read preferences-modify preferences-regen preferences-example"
 echo "$text_md                        list-options clasic-options info-options filelog autolog ip4 ip6 "
 echo "$text_md                        sockets nodes geoip date free ver version notes depends commands "
 echo "$text_md                        ip-forward speed-ip4 speed-ip6 speed-glx code radio expert ver"
@@ -4766,7 +4766,7 @@ echo "$title_md [ fail ] [ Install ss command ]"; exit; fi
 if [ "$command_awk" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Install awk command ]"; exit; fi
 echo "$title_md [ info ] [ The listen sockets ]"
-$command_ss -l  | $command_grep "\:\*" | $command_awk '{print $1 " " $2 " " $5}' ;
+$command_ss -l  | $command_grep "\:\*" | $command_awk '{print $1 " " $2 " " $5 " " $6}' ;
 exit; fi
 ####
 ####
