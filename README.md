@@ -1,5 +1,5 @@
   
-###  fwiptables. Firewall With iptables.    
+###  fwiptables. Firewall With iptables.   [ intro.md ] 
   
    fwiptables is one simple in one-file FRONT-END                       
    for iptables linux with COMMAND-LINE with CLI-MENU                   
@@ -22,20 +22,22 @@
   
 ###  fwiptables install.                                   
   
-    Put bit of execution. TYPE:   chmod u+x ./fwiptables-ver-10_17-bash.sh   
-    Install this version. TYPE:   ./fwiptables-ver-10_17-bash.sh install     
+    Put bit of execution. TYPE:   chmod u+x /usr/bin/fwiptables-cmd   
+    Install this version. TYPE:   /usr/bin/fwiptables-cmd install     
   
 ###  fwiptables uninstall.                                 
   
     Uninstall fwiptables. TYPE:   fwiptables-cmd uninstall   
   
-###  [ ver ] [ Show version about ] [ version.md]    
-[ _ok_ ] [ program ] ./fwiptables-ver-10_17-bash.sh With Version cmd-10-17          
+###  [ ver ] [ Show version about ] [ ver.md ]       
+  
+[ _ok_ ] [ program ] /usr/bin/fwiptables-cmd With Version cmd-10-18          
 [ _ok_ ] [ Details ] fwiptables, FireWall With iptables | fwiptables, One Mini Script in one-file                   
 [ _ok_ ] [ Binary directory ] /usr/bin                  
 [ _ok_ ] [ Data directory   ] /root/.config/fwiptables-cmd                       
 [ _ok_ ] [ Cache directory  ] /run/fwiptables                      
-###  [ compile ] [  optionally ] [ howto compile bash script with obash ] 
+  
+###  [ compile ] [  optionally: howto compile bash script ] [ compile.md]  
 ###    
    This script in bash works. But if you desire is compiling... follow that steps,       
    there are three steps to compile fwiptables script, it is possible with obash.        
@@ -48,10 +50,11 @@
    . 3b . Or Third: run:# obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd    
       
 ###  Actually, the file type is:                                                          
-./fwiptables-ver-10_17-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
+/usr/bin/fwiptables-cmd: Bourne-Again shell script, Unicode text, UTF-8 text executable
 ###   
-###   
-###  fwiptables-ver-10_17-bash.sh [optional-output] first_option [second_option]                  
+###  [ List general options for fwiptables ] [ options.md ]
+  
+###  fwiptables-cmd [optional-output] first_option [second_option]                  
 ### 
 ###   [ optional-output ]                                                            
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       
@@ -60,7 +63,7 @@
    [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                  
 ### 
 ###   [ firewall-control ]                                                           
-   stop continue reset actual show save load names-control                              
+   stop continue reset actual show save load names-control eraserules                   
 ###   [ firewall-listconceptual ]                                                        
    ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6                  
    list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6                    
@@ -70,7 +73,7 @@
    listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6              
    listn-security4 listn-security6                                                      
 ###   [ firewall-customfw ] 
-   custom clone-systemfw eraserules off-line all-permisive wizard-mini wizard-full        
+   custom eraserules off-line all-permisive wizard-mini wizard-full clone-systemfw      
    new-full-config nueva-completa-config new-mini-config nueva-mini-config       
    regen-config examples-config show-config modify-config del-config names-config       
 ###   [ firewall-systemfw ]                                                           
@@ -86,5 +89,5 @@
    ip4 ip6 speed-glx sockets nodes geoip webcert date free expert version notes         
    radio compile ip-forward depends info code info examples commands variables          
    intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot             
-###             ||| Example info: fwiptables-cmd -gui-shell-yad |||                
-###             ||| Example info: fwiptables-cmd -gui-zenity info list |||         
+###             ||| Example: fwiptables-cmd -gui-shell-yad |||                
+###             ||| Example: fwiptables-cmd -gui-zenity info list |||         
