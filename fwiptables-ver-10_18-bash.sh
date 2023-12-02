@@ -3803,9 +3803,11 @@ exit; fi
 ####
 if [ "$first_option" == "clone-systemfw" ] && [ "$second_option" != "$NULL" ] ; then 
 archivo="$second_option"
-$cmd_binary code $second_option | $command_grep -E "_port_|_shield_" &> $directory_config/$archivo
+$cmd_binary code $second_option | $command_grep -E "_use_|_prefix_|_port_|_shield_" &> $directory_config/$archivo
 if [ -s "$directory_config/$archivo" ] ; then 
-cat $directory_config/$archivo ; echo " [ _ok_ ] config created $archivo"
+cat $directory_config/$archivo ;
+echo "$title_md [ _ok_ ] [ Config created fustomfw:  $archivo ]"
+echo "$title_md [ info ] [ Launch: fwiptables custom $archivo ]"
 else rm $directory_config/$archivo ; echo " [ fail ] config no done $archivo" ; fi
 exit; fi
 ####
@@ -6308,6 +6310,12 @@ echo "$title_md [ info ] [ loading firewall shield-ssh ]" ;
 launch_rules_firewall="yes" ;
 type_firewall="systemfw"    ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
 config_shield_maxtries="12" ;
@@ -6338,6 +6346,12 @@ echo "$title_md [ info ] [ loading firewall client-basic ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6363,6 +6377,12 @@ echo "$title_md [ info ] [ loading firewall client-web ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6393,6 +6413,18 @@ echo "$title_md [ info ] [ loading firewall client-git ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6423,6 +6455,12 @@ echo "$title_md [ info ] [ loading firewall client-ipp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6453,6 +6491,12 @@ echo "$title_md [ info ] [ loading firewall client-irc ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6483,6 +6527,12 @@ echo "$title_md [ info ] [ loading firewall client-vnc ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6513,6 +6563,12 @@ echo "$title_md [ info ] [ loading firewall client-torrent ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6543,6 +6599,12 @@ echo "$title_md [ info ] [ loading firewall client-vpn ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6573,6 +6635,12 @@ echo "$title_md [ info ] [ loading firewall client-tor ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6603,6 +6671,12 @@ echo "$title_md [ info ] [ loading firewall client-news ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6638,6 +6712,12 @@ echo "$title_md [ info ] [ loading firewall client-mail ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6684,6 +6764,12 @@ echo "$title_md [ info ] [ loading firewall client-ftp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6714,6 +6800,12 @@ echo "$title_md [ info ] [ loading firewall client-proxy ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6744,6 +6836,12 @@ echo "$title_md [ info ] [ loading firewall lan-vpn ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6775,6 +6873,12 @@ echo "$title_md [ info ] [ loading firewall lan-tor ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6806,6 +6910,12 @@ echo "$title_md [ info ] [ loading firewall games-shooter ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6836,6 +6946,12 @@ echo "$title_md [ info ] [ loading firewall games-udp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6866,6 +6982,12 @@ echo "$title_md [ info ] [ loading firewall game-wesnoth ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6896,6 +7018,12 @@ echo "$title_md [ info ] [ loading firewall game-minetest ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6926,6 +7054,12 @@ echo "$title_md [ info ] [ loading firewall game-freeciv ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6956,6 +7090,12 @@ echo "$title_md [ info ] [ loading firewall game-widelands ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6986,6 +7126,12 @@ echo "$title_md [ info ] [ loading firewall server-web ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
 config_shield_port="22" ;
@@ -7016,6 +7162,12 @@ echo "$title_md [ info ] [ loading firewall server-vnc ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
 config_shield_maxtries="30" ;
@@ -7046,6 +7198,12 @@ echo "$title_md [ info ] [ loading firewall server-ftp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="20" ;
@@ -7071,6 +7229,12 @@ echo "$title_md [ info ] [ loading firewall server-proxy ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -7101,6 +7265,12 @@ echo "$title_md [ info ] [ loading firewall server-news ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
 config_shield_port="22" ;
@@ -7138,6 +7308,12 @@ echo "$title_md [ info ] [ loading firewall server-mail ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -7183,6 +7359,12 @@ echo "$title_md [ info ] [ loading firewall server-samba ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -7213,6 +7395,13 @@ echo "$title_md [ info ] [ loading firewall server-print ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
+#### english: max tries for each hour 
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
@@ -7242,6 +7431,12 @@ echo "$title_md [ info ] [ loading firewall server-ssh ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### against brute force
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -7272,6 +7467,12 @@ echo "$title_md [ info ] [ loading firewall server-lamp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### against brute force
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -7298,6 +7499,12 @@ echo "$title_md [ info ] [ loading firewall server-asterisk ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### against brute force
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -7330,6 +7537,12 @@ echo "$title_md [ info ] [ loading firewall server-mumble ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### against brute force
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -7360,6 +7573,12 @@ echo "$title_md [ info ] [ loading firewall server-teamspeak ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### against brute force
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -7394,6 +7613,12 @@ echo "$title_md [ info ] [ loading firewall server-sql ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### against brute force
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -7428,6 +7653,12 @@ echo "$title_md [ info ] [ loading firewall server-irc ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### against brute force
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -7458,6 +7689,12 @@ echo "$title_md [ info ] [ loading firewall server-domain ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### against brute force
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
