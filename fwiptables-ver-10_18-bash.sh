@@ -8369,7 +8369,7 @@ exit; fi
 #### :rutina-inicial-code-rulesdefault:
 ####
 ####
-if [ "$type_firewall" == "static" ];  then $cmd_binary eraserules &> /dev/null ;
+if [ "$type_firewall" == "systemfw" ];  then $cmd_binary eraserules &> /dev/null ;
 ####
 ####
 #### loopback localhost legacy ip4
