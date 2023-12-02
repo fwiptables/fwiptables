@@ -91,7 +91,7 @@ fi
 cmd_binary="$0"             ;
 cmd_file="$(basename $0)"   ;
 cmd_config="fwiptables-cmd" ;
-cmd_version="cmd-10-17"     ;
+cmd_version="cmd-10-18"     ;
 cmd_name="fwiptables, FireWall With iptables"               ;
 cmd_description="fwiptables, One Mini Script in one-file"   ;
 cmd_license="GPL v2, License General Public version 2"      ;
@@ -252,6 +252,7 @@ net_ipv6_server="::/0"     ;
 #### :rutina-inicial-command:
 ####
 ####
+command_awk="$(command -v awk)"   #list-commands ;
 command_editor="$(command -v editor)"   #list-commands ;
 command_vi="$(command -v vi)"   #list-commands ;
 command_vim="$(command -v vim)"   #list-commands ;
@@ -1241,7 +1242,7 @@ if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command 
 else $command_ip -4 route ; fi
 echo
 echo "$title_md [ info ] ### [ Network Listen ] ###"
-echo "$text_md  for network listen: $cmd_binary sockets"
+echo "$text_md   Network listen: $cmd_binary sockets"
 #### if [ "$command_ss" == "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
 #### else $command_ss -l  | $command_grep "\:\*" ; fi
 echo
@@ -1441,12 +1442,14 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "ver" ]; then 
-echo "$title_md [ $first_option ] [ Show version about ] [ version.md]    "    
+echo "$title_md [ $first_option ] [ Show version about ] [ ver.md ]       "    
+echo "$text_md"
 echo "[ _ok_ ] [ program ] $cmd_binary With Version $cmd_version          "     
 echo "[ _ok_ ] [ Details ] $cmd_name | $cmd_description                   "    
 echo "[ _ok_ ] [ Binary directory ] $directory_installed                  "     
 echo "[ _ok_ ] [ Data directory   ] $directory_data                       "     
 echo "[ _ok_ ] [ Cache directory  ] $directory_cache                      "     
+echo "$text_md"   
 exit ; fi
 ####
 ####
@@ -2143,7 +2146,7 @@ echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail ] [ -gui-roll-zenity ]     
 echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                  "
 echo "$title_md"
 echo "$title_md  [ firewall-control ]                                                           "
-echo "$text_md stop continue reset actual show save load names-control                              "
+echo "$text_md stop continue reset actual show save load names-control eraserules                   "
 echo "$title_md  [ firewall-listconceptual ]                                                        "
 echo "$text_md ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6                  "
 echo "$text_md list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6                    "
@@ -2153,7 +2156,7 @@ echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 lis
 echo "$text_md listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6              "
 echo "$text_md listn-security4 listn-security6                                                      "
 echo "$title_md  [ firewall-customfw ] "
-echo "$text_md custom clone-systemfw eraserules off-line all-permisive wizard-mini wizard-full        "
+echo "$text_md custom eraserules off-line all-permisive wizard-mini wizard-full clone-systemfw      "
 echo "$text_md new-full-config nueva-completa-config new-mini-config nueva-mini-config       "
 echo "$text_md regen-config examples-config show-config modify-config del-config names-config       "
 echo "$title_md  [ firewall-systemfw ]                                                           "
@@ -2169,8 +2172,8 @@ echo "$text_md list-options clasic-options info-options filelog autolog speed-ip
 echo "$text_md ip4 ip6 speed-glx sockets nodes geoip webcert date free expert version notes         "
 echo "$text_md radio compile ip-forward depends info code info examples commands variables          "
 echo "$text_md intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot             "
-echo "$title_md            ||| Example info: fwiptables-cmd -gui-shell-yad |||                "
-echo "$title_md            ||| Example info: fwiptables-cmd -gui-zenity info list |||         "
+echo "$title_md            ||| Example: fwiptables-cmd -gui-shell-yad |||                "
+echo "$title_md            ||| Example: fwiptables-cmd -gui-zenity info list |||         "
 exit ; fi
 ####
 ####
@@ -2189,18 +2192,18 @@ echo "$text_md [ -cli-dialog -cli-whiptail ] [ -gui-zenity -gui-yad ]"
 echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail ] [ -gui-roll-zenity ]"
 echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]"
 echo "$title_md"
-echo "$text_md    firewall-control |  stop continue reset actual show save load names-control"
+echo "$text_md    firewall-control |  stop continue reset actual show save load names-control eraserules"
 echo "$text_md firewall-listconceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6"
 echo "$text_md                        list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6"
 echo "$text_md                        list-security4 list-security6 list-ebtables list-arptables"
 echo "$text_md    firewall-listnumeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4"
 echo "$text_md                        listn-filter6 listn-nat4 listn-nat6 listn-raw4 listn-raw6"
 echo "$text_md                        listn-mangle4  listn-mangle6 listn-security4 listn-security6"
-echo "$text_md     firewall-customfw |  custom eraserules wizard-mini wizard-full off-line all-permisive"
+echo "$text_md       firewall-customfw |  custom eraserules wizard-mini wizard-full off-line all-permisive"
 echo "$text_md     		      clone-systemfw new-full-config nueva-completa-config names-config "
 echo "$text_md                        modify-config new-mini-config nueva-mini-config examples-config"
 echo "$text_md                        show-config del-config "
-echo "$text_md     firewall-systemfw |  client-basic games-udp games-shooter game-wesnoth game-minetest"
+echo "$text_md       firewall-systemfw |  client-basic games-udp games-shooter game-wesnoth game-minetest"
 echo "$text_md                        game-freeciv game-widelands client-web client-irc client-vnc"
 echo "$text_md                        client-mail client-news client-torrent client-vpn client-ftp"
 echo "$text_md                        client-tor client-ipp client-proxy client-git lan-tor lan-vpn"
@@ -2208,14 +2211,14 @@ echo "$text_md                        server-ssh server-samba server-vnc server-
 echo "$text_md                        server-lamp server-news server-ftp server-mail server-teamspeak"
 echo "$text_md                        server-mumble server-sql server-asterisk server-domain "
 echo "$text_md                        server-proxy server-irc          "
-echo "$text_md        options-easy |  preferences-read preferences-modify preferences-regen preferences-example"
+echo "$text_md           options-easy |  preferences-read preferences-modify preferences-regen preferences-example"
 echo "$text_md                        list-options clasic-options info-options filelog autolog ip4 ip6 "
 echo "$text_md                        sockets nodes geoip date free ver version notes depends commands "
 echo "$text_md                        ip-forward speed-ip4 speed-ip6 speed-glx code radio expert ver"
 echo "$text_md                        variables examples intro webcert clean-tmp radio info download   "
 echo "$text_md                        compile license install uninstall pc-halt pc-shutdown pc-reboot  "
-echo "$title_md                       ||| Example info: fwiptables-cmd -gui-shell-yad ls4 |||     "
-echo "$title_md                       ||| Example info: fwiptables-cmd -gui-zenity info list |||  "
+echo "$title_md                       ||| Example: fwiptables-cmd -gui-shell-yad ls4 |||     "
+echo "$title_md                       ||| Example: fwiptables-cmd -gui-zenity info list |||  "
 exit ; fi
 ####
 ####
@@ -2319,6 +2322,7 @@ echo "$text_md show . show the rules iptables from selected file"
 echo "$text_md load . reset and load new rules iptables from selected file"
 echo "$text_md save . save in the file selected the rules iptables actually"
 echo "$text_md names-control . list filenames saved in the iptables rules"
+echo "$text_md eraserules . remove all firewall rules"
 echo "$text_md "
 exit; fi
 ####
@@ -2713,6 +2717,8 @@ exit; fi
 if   [ "$first_option" == "commands" ]; then 
 echo "$title_md [ $first_option ]  [ list commands possible depends ] "
 echo "##########     commands possible depends  ##########"
+echo "$text_md"
+echo "$text_md awk              # for sockets"
 echo "$text_md"
 echo "$text_md arp              # optional"
 echo "$text_md"
@@ -3797,9 +3803,11 @@ exit; fi
 ####
 if [ "$first_option" == "clone-systemfw" ] && [ "$second_option" != "$NULL" ] ; then 
 archivo="$second_option"
-$cmd_binary code $second_option | $command_grep -E "_port_|_shield_" &> $directory_config/$archivo
+$cmd_binary code $second_option | $command_grep -E "_use_|_prefix_|_port_|_shield_" &> $directory_config/$archivo
 if [ -s "$directory_config/$archivo" ] ; then 
-cat $directory_config/$archivo ; echo " [ _ok_ ] config created $archivo"
+cat $directory_config/$archivo ;
+echo "$title_md [ _ok_ ] [ Config created fustomfw:  $archivo ]"
+echo "$title_md [ info ] [ Launch: fwiptables custom $archivo ]"
 else rm $directory_config/$archivo ; echo " [ fail ] config no done $archivo" ; fi
 exit; fi
 ####
@@ -3998,7 +4006,7 @@ exit; fi
 ####
 if  [ "$first_option" == "intro" ]; then 
 echo "$text_md"
-echo "$title_md fwiptables. Firewall With iptables.    "
+echo "$title_md fwiptables. Firewall With iptables.   [ intro.md ] "
 echo "$text_md"
 echo "$text_md fwiptables is one simple in one-file FRONT-END                       "
 echo "$text_md for iptables linux with COMMAND-LINE with CLI-MENU                   "
@@ -4030,6 +4038,8 @@ echo "$text_md  Uninstall fwiptables. TYPE:   $cmd_config uninstall   "
 echo "$text_md"
 $cmd_binary ver
 $cmd_binary compile
+echo "$title_md [ List general options for fwiptables ] [ options.md ]"
+echo "$text_md"
 $cmd_binary options
 exit; fi
 ####
@@ -4275,7 +4285,7 @@ exit; fi
 #### :rutina-final-pc-shutdown:
 ##########    english: expert-upgrade: upgrade fwiptables    ##########
 ##########    spanish: expert-upgrade: upgrade fwiptables    ##########
-#### :rutina-inicial-expert-upgade:
+#### :rutina-inicial-expert-upgrade:
 ####
 ####
 if   [ "$first_option" == "expert-upgrade" ]; then 
@@ -4296,7 +4306,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "compile" ]; then 
-echo "$title_md [ $first_option ] [  optionally ] [ howto compile bash script with obash ] "
+echo "$title_md [ $first_option ] [  optionally: howto compile bash script ] [ compile.md]  "
 echo "$title_md   "
 echo "$text_md This script in bash works. But if you desire is compiling... follow that steps,       "
 echo "$text_md there are three steps to compile fwiptables script, it is possible with obash.        "
@@ -4310,7 +4320,6 @@ echo "$text_md . 3b . Or Third: run:# obash -c -o /usr/bin/fwiptables-bin /usr/b
 echo "$text_md    "
 echo "$title_md Actually, the file type is:                                                          "
 file -L $cmd_binary
-echo "$title_md  "
 echo "$title_md  "
 exit; fi
 ####
@@ -4754,9 +4763,12 @@ exit; fi
 ####
 if   [ "$first_option" == "sockets" ]; then 
 echo "$title_md [ $first_option ] [ Show sockets with ss ] "
-if [ "$command_ss" == "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
+if [ "$command_awk" == "$NULL" ]; then 
+echo "$title_md [ fail ] [ Install ss command ]"; exit; fi
+if [ "$command_awk" == "$NULL" ]; then 
+echo "$title_md [ fail ] [ Install awk command ]"; exit; fi
 echo "$title_md [ info ] [ The listen sockets ]"
-$command_ss -l  | $command_grep "\:\*"  ;
+$command_ss -l  | $command_grep "\:\*" | $command_awk '{print $1 " " $2 " " $5 " " $6}' ;
 exit; fi
 ####
 ####
@@ -6218,7 +6230,7 @@ exit; fi
 if [ "$first_option" == "custom" ]; then 
 echo "$title_md [ info ] [ loading firewall custom ] [ $directory_config/$second_option ]" ;
 launch_rules_firewall="yes" ;
-type_firewall="custom" ;
+type_firewall="customfw" ;
 name_firewall="$second_option" ;
 ####
 ####
@@ -6296,8 +6308,14 @@ fi
 if [ "$first_option" == "shield-ssh" ]; then
 echo "$title_md [ info ] [ loading firewall shield-ssh ]" ;
 launch_rules_firewall="yes" ;
-type_firewall="shield-ssh"    ; 
+type_firewall="systemfw"    ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
 config_shield_maxtries="12" ;
@@ -6326,8 +6344,14 @@ fi
 if [ "$first_option" == "client-basic" ]; then
 echo "$title_md [ info ] [ loading firewall client-basic ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6351,8 +6375,14 @@ fi
 if [ "$first_option" == "client-web" ]; then
 echo "$title_md [ info ] [ loading firewall client-web ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6381,8 +6411,20 @@ fi
 if [ "$first_option" == "client-git" ]; then
 echo "$title_md [ info ] [ loading firewall client-git ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6411,8 +6453,14 @@ fi
 if [ "$first_option" == "client-ipp" ]; then
 echo "$title_md [ info ] [ loading firewall client-ipp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6441,8 +6489,14 @@ fi
 if [ "$first_option" == "client-irc" ]; then
 echo "$title_md [ info ] [ loading firewall client-irc ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6471,8 +6525,14 @@ fi
 if [ "$first_option" == "client-vnc" ]; then
 echo "$title_md [ info ] [ loading firewall client-vnc ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6501,8 +6561,14 @@ fi
 if [ "$first_option" == "client-torrent" ]; then
 echo "$title_md [ info ] [ loading firewall client-torrent ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6531,8 +6597,14 @@ fi
 if [ "$first_option" == "client-vpn" ]; then
 echo "$title_md [ info ] [ loading firewall client-vpn ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ; 
+type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6561,8 +6633,14 @@ fi
 if [ "$first_option" == "client-tor" ]; then
 echo "$title_md [ info ] [ loading firewall client-tor ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6591,8 +6669,14 @@ fi
 if [ "$first_option" == "client-news" ]; then
 echo "$title_md [ info ] [ loading firewall client-news ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6626,8 +6710,14 @@ fi
 if [ "$first_option" == "client-mail" ]; then
 echo "$title_md [ info ] [ loading firewall client-mail ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6672,8 +6762,14 @@ fi
 if [ "$first_option" == "client-ftp" ]; then
 echo "$title_md [ info ] [ loading firewall client-ftp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6702,8 +6798,14 @@ fi
 if [ "$first_option" == "client-proxy" ]; then
 echo "$title_md [ info ] [ loading firewall client-proxy ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6732,8 +6834,14 @@ fi
 if [ "$first_option" == "lan-vpn" ]; then
 echo "$title_md [ info ] [ loading firewall lan-vpn ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6763,8 +6871,14 @@ fi
 if [ "$first_option" == "lan-tor" ]; then
 echo "$title_md [ info ] [ loading firewall lan-tor ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6794,8 +6908,14 @@ fi
 if [ "$first_option" == "games-shooter" ]; then
 echo "$title_md [ info ] [ loading firewall games-shooter ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ; 
+type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6824,8 +6944,14 @@ fi
 if [ "$first_option" == "games-udp" ]; then
 echo "$title_md [ info ] [ loading firewall games-udp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6854,8 +6980,14 @@ fi
 if [ "$first_option" == "game-wesnoth" ]; then
 echo "$title_md [ info ] [ loading firewall game-wesnoth ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6884,8 +7016,14 @@ fi
 if [ "$first_option" == "game-minetest" ]; then
 echo "$title_md [ info ] [ loading firewall game-minetest ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6914,8 +7052,14 @@ fi
 if [ "$first_option" == "game-freeciv" ]; then
 echo "$title_md [ info ] [ loading firewall game-freeciv ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6944,8 +7088,14 @@ fi
 if [ "$first_option" == "game-widelands" ]; then
 echo "$title_md [ info ] [ loading firewall game-widelands ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="12" ;
@@ -6974,8 +7124,14 @@ fi
 if [ "$first_option" == "server-web" ]; then
 echo "$title_md [ info ] [ loading firewall server-web ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ; 
+type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
 config_shield_port="22" ;
@@ -7004,8 +7160,14 @@ fi
 if [ "$first_option" == "server-vnc" ]; then
 echo "$title_md [ info ] [ loading firewall server-vnc ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
 config_shield_maxtries="30" ;
@@ -7034,8 +7196,14 @@ fi
 if [ "$first_option" == "server-ftp" ]; then
 echo "$title_md [ info ] [ loading firewall server-ftp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ; 
+type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="20" ;
@@ -7059,8 +7227,14 @@ fi
 if [ "$first_option" == "server-proxy" ]; then
 echo "$title_md [ info ] [ loading firewall server-proxy ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ; 
+type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -7089,8 +7263,14 @@ fi
 if [ "$first_option" == "server-news" ]; then
 echo "$title_md [ info ] [ loading firewall server-news ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ; 
+type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
 config_shield_port="22" ;
@@ -7126,8 +7306,14 @@ echo "$title_md [ info ] [ loading firewall server-mail ]" ;
 ####
 ####
 launch_rules_firewall="yes" ; 
-type_firewall="static" ; 
+type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -7171,8 +7357,14 @@ fi
 if [ "$first_option" == "server-samba" ]; then
 echo "$title_md [ info ] [ loading firewall server-samba ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ; 
+type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -7201,8 +7393,15 @@ fi
 if [ "$first_option" == "server-print" ]; then
 echo "$title_md [ info ] [ loading firewall server-print ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ; 
+type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
+#### english: max tries for each hour 
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
 config_shield_port="ssh" ;
@@ -7230,8 +7429,14 @@ fi
 if [ "$first_option" == "server-ssh" ]; then
 echo "$title_md [ info ] [ loading firewall server-ssh ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### against brute force
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -7260,8 +7465,14 @@ fi
 if [ "$first_option" == "server-lamp" ]; then
 echo "$title_md [ info ] [ loading firewall server-lamp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### against brute force
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -7286,8 +7497,14 @@ fi
 if [ "$first_option" == "server-asterisk" ]; then
 echo "$title_md [ info ] [ loading firewall server-asterisk ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### against brute force
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -7318,8 +7535,14 @@ fi
 if [ "$first_option" == "server-mumble" ]; then
 echo "$title_md [ info ] [ loading firewall server-mumble ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### against brute force
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -7348,8 +7571,14 @@ fi
 if [ "$first_option" == "server-teamspeak" ]; then
 echo "$title_md [ info ] [ loading firewall server-teamspeak ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### against brute force
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -7382,8 +7611,14 @@ fi
 if [ "$first_option" == "server-sql" ]; then
 echo "$title_md [ info ] [ loading firewall server-sql ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### against brute force
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -7416,8 +7651,14 @@ fi
 if [ "$first_option" == "server-irc" ]; then
 echo "$title_md [ info ] [ loading firewall server-irc ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### against brute force
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -7446,8 +7687,14 @@ fi
 if [ "$first_option" == "server-domain" ]; then
 echo "$title_md [ info ] [ loading firewall server-domain ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="static" ;
+type_firewall="systemfw" ;
 name_firewall="$first_option" ;
+#### english: firewall capacities
+#allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
 #### against brute force
 allow_shield_maxtries="" ;
 config_shield_maxtries="20" ;
@@ -8122,7 +8369,7 @@ exit; fi
 #### :rutina-inicial-code-rulesdefault:
 ####
 ####
-if [ "$type_firewall" == "static" ];  then $cmd_binary eraserules &> /dev/null ;
+if [ "$type_firewall" == "systemfw" ];  then $cmd_binary eraserules &> /dev/null ;
 ####
 ####
 #### loopback localhost legacy ip4
@@ -8700,7 +8947,7 @@ exit; fi
 ###############################################################################################################
 ###############################################################################################################
 ####                                                                                            ###############
-####          ready to launch rules CUSTOM  : - custom rules -
+####          ready to launch rules CUSTOM  : - customfw rules -
 ###############
 ####                                                                                            ###############
 ###############################################################################################################
