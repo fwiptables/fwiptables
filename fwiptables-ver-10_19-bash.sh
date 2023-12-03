@@ -962,7 +962,6 @@ wizard-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option
 "modify-config") $cmd_binary modify-config $third_option ; exit ;;
 "preferences-modify") $cmd_binary preferences-modify ; exit ;;
 "radio") echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
-"clean-tmp") $cmd_binary $second_option $third_option ; exit ;;
 ####
 ####
 *)
@@ -1369,7 +1368,7 @@ echo "$text_md    $cmd_file sockets                  |  show info about listen s
 echo "$text_md    $cmd_file preferences-modify       |  modify default variables                   "
 echo "$text_md    $cmd_file autolog                  |  List last optiosn with $cmd_file           "
 echo "$text_md    $cmd_file depends                  |  depends to $cmd_file                       "
-echo "$text_md    $cmd_file version                  |  version from $cmd_file                     "
+echo "$text_md    $cmd_file about                    |  about from $cmd_file                     "
 echo "$text_md"
 echo "$title_md                        [ several examples *with optional output* ]                 "
 echo "$text_md"
@@ -1389,13 +1388,13 @@ exit; fi
 ####
 ####
 #### :rutina-final-examples:
-##########    english: version: system script, the version option              ##########
-##########    spanish: version: script de sistema, la opcion mostrar version   ##########
-#### :rutina-inicial-version:
+##########    english: about: system script, the about option                  ##########
+##########    spanish: about: script de sistema, la opcion mostrar acerca de   ##########
+#### :rutina-inicial-about:
 ####
 ####
-if [ "$first_option" == "version" ]; then 
-echo "$title_md [ $first_option ] [ Show version about ] [ version.md] "
+if [ "$first_option" == "about" ]; then 
+echo "$title_md [ $first_option ] [ Show about ] [ version.md] "
 echo "$title_md [ Name program ]"
 echo "$text_md $cmd_name"
 echo
@@ -1435,7 +1434,7 @@ echo
 exit ; fi
 ####
 ####
-#### :rutina-final-version:
+#### :rutina-final-about:
 ##########    english: ver: system script, the version option              ##########
 ##########    spanish: ver: script de sistema, la opcion mostrar version   ##########
 #### :rutina-inicial-ver:
@@ -1446,6 +1445,7 @@ echo "$title_md [ $first_option ] [ Show version about ] [ ver.md ]       "
 echo "$text_md"
 echo "[ _ok_ ] [ program ] $cmd_binary With Version $cmd_version          "     
 echo "[ _ok_ ] [ Details ] $cmd_name | $cmd_description                   "    
+echo "[ _ok_ ] [ Binary file      ] $cmd_binary                           "   
 echo "[ _ok_ ] [ Binary directory ] $directory_installed                  "     
 echo "[ _ok_ ] [ Data directory   ] $directory_data                       "     
 echo "[ _ok_ ] [ Cache directory  ] $directory_cache                      "     
@@ -2169,9 +2169,9 @@ echo "$text_md server-teamspeak server-mumble server-sql server-asterisk server-
 echo "$title_md  [ options-easy ]                                                              "
 echo "$text_md preferences-read preferences-modify preferences-regen preferences-example ver        "
 echo "$text_md list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6         "
-echo "$text_md ip4 ip6 speed-glx sockets nodes geoip webcert date free expert version notes         "
+echo "$text_md ip4 ip6 speed-glx sockets nodes geoip webcert date free expert about notes           "
 echo "$text_md radio compile ip-forward depends info code info examples commands variables          "
-echo "$text_md intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot             "
+echo "$text_md intro download install uninstall pc-halt pc-shutdown pc-reboot            "
 echo "$title_md            ||| Example: fwiptables-cmd -gui-shell-yad |||                "
 echo "$title_md            ||| Example: fwiptables-cmd -gui-zenity info list |||         "
 exit ; fi
@@ -2213,10 +2213,10 @@ echo "$text_md                        server-mumble server-sql server-asterisk s
 echo "$text_md                        server-proxy server-irc          "
 echo "$text_md           options-easy |  preferences-read preferences-modify preferences-regen preferences-example"
 echo "$text_md                        list-options clasic-options info-options filelog autolog ip4 ip6 "
-echo "$text_md                        sockets nodes geoip date free ver version notes depends commands "
-echo "$text_md                        ip-forward speed-ip4 speed-ip6 speed-glx code radio expert ver"
-echo "$text_md                        variables examples intro webcert clean-tmp radio info download   "
-echo "$text_md                        compile license install uninstall pc-halt pc-shutdown pc-reboot  "
+echo "$text_md                        sockets nodes geoip date free ver about notes depends commands "  
+echo "$text_md                        ip-forward speed-ip4 speed-ip6 speed-glx code radio expert ver "  
+echo "$text_md                        variables examples intro webcert radio info download compile   "  
+echo "$text_md                        license install uninstall pc-halt pc-shutdown pc-reboot  "
 echo "$title_md                       ||| Example: fwiptables-cmd -gui-shell-yad ls4 |||     "
 echo "$title_md                       ||| Example: fwiptables-cmd -gui-zenity info list |||  "
 exit ; fi
@@ -2498,8 +2498,8 @@ echo "$text_md geoip . show location for ip o for host"
 echo "$text_md webcert . get the ssl certificate to one web"
 echo "$text_md date . update the time and date from internet"
 echo "$text_md free . freedom innecesary ram"
-echo "$text_md ver. show version"
-echo "$text_md version . show version and several details"
+echo "$text_md ver. show version and path"
+echo "$text_md about . show about and several details"
 echo "$text_md notes . several notes for internet"
 echo "$text_md radio . listen radio from internet"
 echo "$text_md compile . show howto comopile bash script"
@@ -2511,7 +2511,6 @@ echo "$text_md examples . show examples"
 echo "$text_md commands . possible commands"
 echo "$text_md variables . possible variables"
 echo "$text_md intro . intro"
-echo "$text_md clean-tmp . clean temporals"
 echo "$text_md download . show where you can download fwiptables"
 echo "$text_md install . install fwiptables"
 echo "$text_md uninstall . uninstall fwiptables"
@@ -4029,6 +4028,7 @@ echo "$text_md  Config directory:   $directory_data                   "
 echo "$text_md"
 echo "$title_md fwiptables install.                                   "
 echo "$text_md"
+echo "$text_md  su root             . TYPE:   su root                 "    
 echo "$text_md  Put bit of execution. TYPE:   chmod u+x $cmd_binary   "
 echo "$text_md  Install this version. TYPE:   $cmd_binary install     " 
 echo "$text_md"
@@ -4080,21 +4080,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-ip-forward:
-##########    english: clean-tmp: clean temporal files             ##########
-##########    spanish: clean-tmp: limpia de archivos temporales    ##########
-#### :rutina-inicial-clean-tmp:
-####
-####
-if   [ "$first_option" == "clean-tmp" ] ; then 
-echo "$title_md [ $first_option ] [ clean $cmd_binary temporal files ] "
-echo "$title_md [ info ] [ cleaning $cmd_binary temporal files ]"
-du -cm "$directory_cache"
-rm -rf "$directory_cache" &> /dev/null
-echo "[ _ok_ ] [ cleaned temporal files ]"
-exit; fi
-####
-####
-#### :rutina-final-clean-tmp:
 ##########   english: download:   where download fwiptables    ##########
 ##########   spanish: download:   donde descargar fwiptables   ##########
 #### :rutina-inicial-download:
@@ -5359,7 +5344,7 @@ menuprincipal="$($favorite_text_dialog --clear --notags --title "Cli Menu With $
 0710  "$tab sockets" \
 0711  "$tab notes" \
 0712  "$tab license" \
-0713  "$tab version" \
+0713  "$tab about" \
 0714  "$tab examples" \
 0715  "$tab depends" \
 0716  "$tab info" \
@@ -5531,7 +5516,7 @@ clear ; $cmd_binary del-config $archivo ; echo "deleted $archivo" ;;
 0710) clear ; $cmd_binary cli sockets ;;
 0711) clear ; $cmd_binary cli notes ;;
 0712) clear ; $cmd_binary cli license ;;
-0713) clear ; $cmd_binary cli version ;;
+0713) clear ; $cmd_binary cli about ;;
 0714) clear ; $cmd_binary cli examples ;;
 0715) clear ; $cmd_binary cli depends ;;
 0716) clear ; $cmd_binary cli info ;;
@@ -5844,8 +5829,9 @@ selection=""
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|compile|download|\
 list-options|clasic-options|info-options|expert|\
-filelog|autolog|ip4|ip6|notes|speed-ip4|speed-ip6|sockets|nodes|geoip|date|free|ver|version|\
-depends|commands|variables|license|examples|intro|clean-tmp"
+filelog|autolog|ip4|ip6|notes|speed-ip4|speed-ip6|\
+sockets|nodes|geoip|date|free|ver|about|\
+depends|commands|variables|license|examples|intro"
 ####
 ####
 selection="$($command_zenity --text="gui-roll-options-easy" --title="Gui-roll With $cmd_binary $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
@@ -5880,12 +5866,11 @@ geoip) $cmd_binary -gui-zenity geoip ;;
 date) $cmd_binary -gui-zenity date ;;
 free) $cmd_binary -gui-zenity free ;;
 ver) $cmd_binary -gui-zenity ver ;;
-version)$cmd_binary -gui-zenity version ;;
+about)$cmd_binary -gui-zenity about ;;
 depends)$cmd_binary -gui-zenity depends ;;
 license) $cmd_binary -gui-zenity depends ;;
 examples)$cmd_binary -gui-zenity examples ;;
 intro) $cmd_binary -gui-zenity intro ;;
-clean-tmp) $cmd_binary -gui-zenity clean-tmp ;;
 variables) $cmd_binary -gui-zenity variables ;;
 commands) $cmd_binary -gui-zenity variables ;;
 esac
@@ -6168,7 +6153,7 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Instal
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
 list-options|clasic-options|info-options|expert|compile|download|intro|\
-ip4|ip6|speed-ip4|speed-ip6|sockets|license|notes|version|examples|depends|variables|commands"
+ip4|ip6|speed-ip4|speed-ip6|sockets|license|notes|about|examples|depends|variables|commands"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog $graphic_window_dimension --column="$first_option" --text="$first_option" --title="Gui-menu With $cmd_binary $cmd_version" --list $selection_menu )"
 #### 
@@ -6194,7 +6179,7 @@ ip6*)$cmd_binary -gui ip6 ;;
 speed-ip4*)$cmd_binary -gui speed-ip4 ;;
 speed-ip6*)$cmd_binary -gui speed-ip6 ;;
 sockets*)$cmd_binary -gui sockets ;;
-version*)$cmd_binary -gui version ;;
+about*)$cmd_binary -gui about ;;
 examples*)$cmd_binary -gui examples ;;
 depends*)$cmd_binary -gui depends ;;
 notes*)$cmd_binary -gui notes ;;
