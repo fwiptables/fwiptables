@@ -858,6 +858,7 @@ favorite_graphicall_dialog="$command_yad"      ; first_option="gui-menu" ; fi
 #### english: alias simple for options commons
 ####
 ####
+if [ "$first_option" == "version" ] ; then first_option="ver" ; fi
 if [ "$first_option" == "client-squid" ] ; then first_option="client-proxy" ; fi
 if [ "$first_option" == "server-squid" ] ; then first_option="server-proxy" ; fi
 if [ "$first_option" == "names" ] ; then first_option="names-control" ; fi
@@ -1443,14 +1444,12 @@ exit ; fi
 ####
 if [ "$first_option" == "ver" ]; then 
 echo "$title_md [ $first_option ] [ Show version about ] [ ver.md ]       "    
-echo "$text_md"
 echo "[ _ok_ ] [ program ] $cmd_binary With Version $cmd_version          "     
 echo "[ _ok_ ] [ Details ] $cmd_name | $cmd_description                   "    
 echo "[ _ok_ ] [ Binary file      ] $cmd_binary                           "   
 echo "[ _ok_ ] [ Binary directory ] $directory_installed                  "     
 echo "[ _ok_ ] [ Data directory   ] $directory_data                       "     
 echo "[ _ok_ ] [ Cache directory  ] $directory_cache                      "     
-echo "$text_md"   
 exit ; fi
 ####
 ####
@@ -3809,7 +3808,9 @@ if [ -s "$directory_config/$archivo" ] ; then
 cat $directory_config/$archivo ;
 echo "$title_md [ _ok_ ] [ Config created fustomfw:  $archivo ]"
 echo "$title_md [ info ] [ Launch: fwiptables custom $archivo ]"
-else rm $directory_config/$archivo ; echo " [ fail ] config no done $archivo" ; fi
+else rm $directory_config/$archivo
+echo "$title_md [ info ] choose one systemfw to clone"
+echo "$title_md [ fail ] config no done $archivo" ; fi
 exit; fi
 ####
 ####
