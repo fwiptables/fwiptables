@@ -120,6 +120,7 @@ web_hompage_devuan="https://git.devuan.org/fwiptables/fwiptables" ;
 web_download_sourceforge="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
 web_download_github="https://github.com/fwiptables/fwiptables/releases" ;
 web_download_devuan="https://git.devuan.org/fwiptables/fwiptables/releases" ;
+git_download_sourceforge="https://sourceforge.net/p/f-iptables/code/ci/main/tree/fwiptables-actual?format=raw"
 ####
 ####
 #### :rutina-final-enviroment:
@@ -1461,7 +1462,7 @@ exit ; fi
 ####
 if [ "$first_option" == "expert" ]; then 
 echo "$title_md [ $first_option ] [ Show expert options ] [ expert.md] "
-echo "$text_md expert-upgrade . upgrade the command fwiptables-cmd with command curl"
+echo "$text_md expert-upgrade-stable . upgrade the command fwiptables-cmd with command curl"
 echo "$text_md expert-obash . compile fwiptables-cmd to fwiptables-bin with command obash"
 exit ; fi
 ####
@@ -4268,12 +4269,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-pc-shutdown:
-##########    english: expert-upgrade: upgrade fwiptables    ##########
-##########    spanish: expert-upgrade: upgrade fwiptables    ##########
-#### :rutina-inicial-expert-upgrade:
+##########    english: expert-upgrade-stable: upgrade fwiptables    ##########
+##########    spanish: expert-upgrade-stable: upgrade fwiptables    ##########
+#### :rutina-inicial-expert-upgrade-stable:
 ####
 ####
-if   [ "$first_option" == "expert-upgrade" ]; then 
+if   [ "$first_option" == "expert-upgrade-stable" ]; then 
 ####
 if [ "$command_curl" == "$NULL" ]; then
 echo "$title_md Install curl to download/install latest version"; fi
@@ -4284,7 +4285,24 @@ $command_curl $web_download_sourceforge -s -L -o $descarga && chmod ugo+x $desca
 exit; fi
 ####
 ####
-#### :rutina-final-expert-upgrade:
+#### :rutina-final-expert-upgrade-stable:
+##########    english: expert-upgrade-unstable: upgrade fwiptables    ##########
+##########    spanish: expert-upgrade-unstable: upgrade fwiptables    ##########
+#### :rutina-inicial-expert-upgrade-unstable:
+####
+####
+if   [ "$first_option" == "expert-upgrade-unstable" ]; then 
+####
+if [ "$command_curl" == "$NULL" ]; then
+echo "$title_md Install curl to download/install latest version"; fi
+####
+echo "$title_md Downloading fwiptables latest"
+descarga="$directory_log/fwiptables-cmd"
+$command_curl $web_download_sourceforge -s -L -o $descarga && chmod ugo+x $descarga && $descarga install
+exit; fi
+####
+####
+#### :rutina-final-expert-upgrade-unstable:
 ##########    english: compile: compile with obash      ##########
 ##########    spanish: compile: compila with obash      ##########
 #### :rutina-inicial-compile:
