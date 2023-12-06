@@ -1462,7 +1462,7 @@ exit ; fi
 ####
 if [ "$first_option" == "expert" ]; then 
 echo "$title_md [ $first_option ] [ Show expert options ] [ expert.md] "
-echo "$text_md expert-obash . compile fwiptables-cmd to fwiptables-bin with command obash"
+echo "$text_md expert-compile-obash . compile fwiptables-cmd to fwiptables-bin with obash"
 echo "$text_md expert-upgrade-stable . upgrade from web sourceforge fwiptables-cmd with curl"
 echo "$text_md expert-upgrade-unstable . upgrade from git sourceforge fwiptables-cmd with curl"
 exit ; fi
@@ -4013,7 +4013,7 @@ echo "$text_md fwiptables is one simple in one-file FRONT-END                   
 echo "$text_md for iptables linux with COMMAND-LINE with CLI-MENU                   "
 echo "$text_md with GUI-MENU with GUI-ROLL with GUI-SHELL.                          "
 echo "$text_md And choose one firewall: eraserules, or wizard-mini,                 "
-echo "$text_md or wizard-full, or custom, or one static                      "
+echo "$text_md or wizard-full, or custom, or one system                             "
 echo "$text_md firewall to choose one. Gen new rules with templates                 "
 echo "$text_md and with shield ssh and with comments rules.                         "
 echo "$text_md"
@@ -4021,7 +4021,7 @@ echo "$text_md rules ipv4, rules ipv6, netfilter, neftables, xtables,           
 echo "$text_md tools ip, wizards for rules, save/load rules with files,             "
 echo "$text_md shield to ssh or other servers choosed,                              "
 echo "$text_md limit bandwidth, host whitelist, host blacklist,                     "
-echo "$text_md and other more capacities of firewall.                               "
+echo "$text_md and other more capabilities of firewall.                             "
 echo "$text_md"
 echo "$title_md  fwiptables location.                                               "
 echo "$text_md"
@@ -4329,12 +4329,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-compile:
-##########    english: expert-obash: compile with obash      ##########
-##########    spanish: expert-obash: compila with obash      ##########
-#### :rutina-inicial-expert-obash:
+##########    english: expert-compile-obash: compile with obash      ##########
+##########    spanish: expert-compile-obash: compila with obash      ##########
+#### :rutina-inicial-expert-compile-obash:
 ####
 ####
-if   [ "$first_option" == "expert-obash" ]; then 
+if   [ "$first_option" == "expert-compile-obash" ]; then 
 echo "$title_md [ $first_option ] [  optionally ] [ howto compile bash script with obash ] "
 echo "$title_md Compile /usr/bin/fwiptables-cmd in /usr/bin/fwiptables-bin"
 if [ "$command_obash" == "$NULL" ]; then echo "$title_md install obash to compile"; exit ; fi
@@ -4346,7 +4346,7 @@ file -L /usr/bin/fwiptables-bin
 exit; fi
 ####
 ####
-#### :rutina-final-expert-obash:
+#### :rutina-final-expert-compile-obash:
 ##########    english: radio: url from one radio mp3      ##########
 ##########    spanish: radio: url de una radio en mp3     ##########
 #### :rutina-inicial-radio:
