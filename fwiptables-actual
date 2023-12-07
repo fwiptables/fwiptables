@@ -1249,7 +1249,7 @@ echo "$text_md   Network listen: $cmd_binary sockets"
 echo
 echo "$title_md [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
-else  $command_ip -4 address | $command_grep -i  inet | $command_grep -iv 127.0.0.1 | $command_sed 's/inet//g' | cut -d "/" -f 1 ; fi
+else  $command_ip -4 address | $command_grep -i  inet | $command_grep -iv 127.0.0.1 | $command_sed 's/inet//g' | $command_cut -d "/" -f 1 ; fi
 echo
 echo "$title_md [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
 if [ "$command_curl" == "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
@@ -1291,7 +1291,7 @@ echo "$text_md  for network listen: $cmd_binary sockets"
 echo
 echo "$title_md [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
-else  $command_ip -6 address | $command_grep -i  inet | $command_grep -iv  "inet6 ::1" | $command_sed 's/inet6//g' | cut -d "/" -f 1 ; fi
+else  $command_ip -6 address | $command_grep -i  inet | $command_grep -iv  "inet6 ::1" | $command_sed 's/inet6//g' | $command_cut -d "/" -f 1 ; fi
 echo
 echo "$title_md [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" == "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
@@ -1407,7 +1407,7 @@ echo "$title_md [ Description program ]"
 echo "$text_md $cmd_description"
 echo
 echo "$title_md [ File format ]"
-echo "$text_md $(file $cmd_binary | cut -d "," -f 1-2)"
+echo "$text_md $(file $cmd_binary | $command_cut -d "," -f 1-2)"
 echo
 echo "$title_md [ MD5 sum ]"
 echo "$text_md $($command_md5sum $cmd_binary)"
@@ -2239,8 +2239,8 @@ salida_code="$(cat $cmd_binary | $command_grep -i  rutina-inicial \
 sort | $command_sed -s s/://g )"
 echo $salida_code
 exit ; fi
-value_first="$(cat -n $cmd_binary | $command_grep  :rutina-inicial-$2: | cut -d "#" -f 1 | head -1)"
-value_second="$(cat -n $cmd_binary | $command_grep :rutina-final-$2:  | cut -d "#" -f 1 | head -1)"
+value_first="$(cat -n $cmd_binary | $command_grep  :rutina-inicial-$2: | $command_cut -d "#" -f 1 | head -1)"
+value_second="$(cat -n $cmd_binary | $command_grep :rutina-final-$2:  | $command_cut -d "#" -f 1 | head -1)"
 value_count="$(("$value_second"-"$value_first+1"))"
 if [ ! -n "$value_first" ];   then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_second" ];  then echo; echo "$code_error" ; exit ; fi
@@ -4069,13 +4069,13 @@ $command_sysctl -a | $command_grep -i  forwarding ; exit ; fi
 ####
 if   [ "$second_option" == "on" ]; then
 echo "$title_md [ $first_option ]  [ Activating.. ip forwading in kernel ] || ||"
-for a in $($command_sysctl -a | $command_grep -i  forwarding | cut -d " " -f 1)
+for a in $($command_sysctl -a | $command_grep -i  forwarding | $command_cut -d " " -f 1)
 do $command_sysctl -w $a=1 ; done ; exit ; fi
 ####
 ####
 if   [ "$second_option" == "off" ]; then
 echo "$header_ok [ $first_option ]  [ Deactivating.. ip forwading in kernel ] || ||"
-for a in $($command_sysctl -a | $command_grep -i  forwarding | cut -d " " -f 1)
+for a in $($command_sysctl -a | $command_grep -i  forwarding | $command_cut -d " " -f 1)
 do $command_sysctl -w $a=0 ; done ; exit; fi
 ####
 ####
@@ -5067,33 +5067,33 @@ $favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ in
 ####
 ####
 new-full-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-zenity new-full-config $unarchivo
 ;;
 nueva-completa-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-zenity nueva-completa-config $unarchivo
 ;;
 new-mini-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-zenity new-mini-config $unarchivo
 ;;
 nueva-mini-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-zenity nueva-mini-config $unarchivo
 ;;
 modify-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-zenity modify-config $unarchivo
 ;;
 show-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-zenity show-config $unarchivo
 ;;
 wizard-full*) $cmd_binary -gui-zenity wizard-full ;;
 wizard-mini*) $cmd_binary -gui-zniety wizard-mini ;;
 preferences-modify*) 
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-zenity preferences-modify 
 ;;
 ####
@@ -5202,33 +5202,33 @@ $command_yad  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cm
 ####
 ####
 new-full-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-yad new-full-config $unarchivo
 ;;
 nueva-completa-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-yad nueva-completa-config $unarchivo
 ;;
 new-mini-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-yad new-mini-config $unarchivo
 ;;
 nueva-mini-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-yad nueva-mini-config $unarchivo
 ;;
 modify-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-yad modify-config $unarchivo
 ;;
 show-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-yad show-config $unarchivo 
 ;;
 wizard-full*) $cmd_binary -gui-yad wizard-full ;;
 wizard-mini*) $cmd_binary -gui-yad wizard-mini ;;
 preferences-modify*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-yad preferences-modify 
 ;;
 ####
