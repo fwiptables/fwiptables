@@ -4767,12 +4767,12 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "sockets" ]; then 
-echo "$title_md [ $first_option ] [ Show sockets with ss ] "
+echo "$title_md [ $first_option ] [ Show whith ss: LISTEN sockets (and UNCONN internals) ] "
 if [ "$command_awk" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Install ss command ]"; exit; fi
 if [ "$command_awk" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Install awk command ]"; exit; fi
-echo "$title_md [ info ] [ The listen sockets ]"
+#### echo "$title_md [ info ] [ The LISTEN sockets (and UNCONN internals) ]"
 $command_ss -l  | $command_grep "\:\*" | $command_awk '{print $1 " " $2 " " $5 " " $6}' ;
 exit; fi
 ####
