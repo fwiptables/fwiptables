@@ -88,10 +88,13 @@ fi
 #### :rutina-inicial-enviroment:
 ####
 ####
-cmd_binary="$0"                           ;
-cmd_fullroute="$(command -v $cmd_binary)" ;
-cmd_basename="$(basename $0)"             ;
-cmd_readlink="$(readlink -e $0)"          ;
+#### file launched original
+cmd_binary="$0"                  ;
+#### file without its route original
+cmd_basename="$(basename $0)"    ;
+#### file with its full route original 
+cmd_fullroute="$(command -v $0)" ;
+#### others configs for fwiptables
 cmd_config="fwiptables-cmd"               ;
 cmd_version="cmd-10-19"                   ;
 cmd_name="fwiptables, FireWall With iptables"               ;
@@ -526,7 +529,7 @@ head_waiting_info="$title_md [ info ] [ info: info in clear txt format ] [ press
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$title_md #[ $cmd_config $cmd_version ] [ $X11_OR_WAYLAND ] [ Options: $cmd_basename options ]"
+give_cover="$title_md #[ $cmd_config $cmd_version ] [ $X11_OR_WAYLAND ] [ Options: $cmd_binary options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 #### give_fail="### #[ fail ] | First Option: $first_option | Choose one valid first option |"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -1367,28 +1370,28 @@ echo "$title_md [ $first_option ] [ List examples ] [ examples md ] "
 echo "$text_md"
 echo "$title_md                        [ several examples *without optional otuput* ]              "
 echo "$text_md"
-echo "$text_md    $cmd_basename names                    |  List firewall saved                        "
-echo "$text_md    $cmd_basename names-config             |  List configs saved                         "
-echo "$text_md    $cmd_basename speed-ip4                |  get info about speed with internet ipv4    "
-echo "$text_md    $cmd_basename sockets                  |  show info about listen sockets             "
-echo "$text_md    $cmd_basename preferences-modify       |  modify default variables                   "
-echo "$text_md    $cmd_basename autolog                  |  List last optiosn with $cmd_basename           "
-echo "$text_md    $cmd_basename depends                  |  depends to $cmd_basename                       "
-echo "$text_md    $cmd_basename about                    |  about from $cmd_basename                     "
+echo "$text_md    $cmd_binary names                    |  List firewall saved                        "
+echo "$text_md    $cmd_binary names-config             |  List configs saved                         "
+echo "$text_md    $cmd_binary speed-ip4                |  get info about speed with internet ipv4    "
+echo "$text_md    $cmd_binary sockets                  |  show info about listen sockets             "
+echo "$text_md    $cmd_binary preferences-modify       |  modify default variables                   "
+echo "$text_md    $cmd_binary autolog                  |  List last optiosn with $cmd_binary           "
+echo "$text_md    $cmd_binary depends                  |  depends to $cmd_binary                       "
+echo "$text_md    $cmd_binary about                    |  about from $cmd_binary                     "
 echo "$text_md"
 echo "$title_md                        [ several examples *with optional output* ]                 "
 echo "$text_md"
 echo "$text_md        [ with optional output ]                  [ Example Description ]            "
 echo "$text_md"
-echo "$text_md    $cmd_basename -silent client-web       |  Launch client web firewall a null output "
-echo "$text_md    $cmd_basename -txt list                |  List iptables rules with output txt      "
-echo "$text_md    $cmd_basename -cli-wiptail names       |  List firewall with output cli whiptail   "
-echo "$text_md    $cmd_basename -gui-yad sockets         |  List sockets ip with output gui yad      "
+echo "$text_md    $cmd_binary -silent client-web       |  Launch client web firewall a null output "
+echo "$text_md    $cmd_binary -txt list                |  List iptables rules with output txt      "
+echo "$text_md    $cmd_binary -cli-wiptail names       |  List firewall with output cli whiptail   "
+echo "$text_md    $cmd_binary -gui-yad sockets         |  List sockets ip with output gui yad      "
 echo "$text_md"
-echo "$text_md    $cmd_basename -cli-menu-dialog         |  All options in text menu                 "
-echo "$text_md    $cmd_basename -gui-menu-yad            |  All options in window menu               "
-echo "$text_md    $cmd_basename -gui-roll-zenity         |  All options in window roll               "
-echo "$text_md    $cmd_basename -gui-shell-yad           |  All options in window shell              "
+echo "$text_md    $cmd_binary -cli-menu-dialog         |  All options in text menu                 "
+echo "$text_md    $cmd_binary -gui-menu-yad            |  All options in window menu               "
+echo "$text_md    $cmd_binary -gui-roll-zenity         |  All options in window roll               "
+echo "$text_md    $cmd_binary -gui-shell-yad           |  All options in window shell              "
 echo "$text_md"
 exit; fi
 ####
@@ -1448,9 +1451,9 @@ exit ; fi
 ####
 if [ "$first_option" == "ver" ]; then 
 echo "$title_md [ $first_option ] [ Show version about ] [ ver.md ]       "    
-echo "[ _ok_ ] [ program ] $cmd_binary With Version $cmd_version          "     
+echo "[ _ok_ ] [ program ] $cmd_binary With Version $cmd_version        "     
 echo "[ _ok_ ] [ Details ] $cmd_name | $cmd_description                   "    
-echo "[ _ok_ ] [ Binary file      ] $cmd_readlink                         "   
+echo "[ _ok_ ] [ Binary file      ] $cmd_fullroute                        "   
 echo "[ _ok_ ] [ Data directory   ] $directory_data                       "     
 echo "[ _ok_ ] [ Cache directory  ] $directory_cache                      "     
 exit ; fi
@@ -2141,7 +2144,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-options" ] ; then 
-echo "$title_md $cmd_basename [optional-output] first_option [second_option]                  "
+echo "$title_md $cmd_binary [optional-output] first_option [second_option]                  "
 echo "$title_md"
 echo "$title_md  [ optional-output ]                                                            "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       "
@@ -2188,7 +2191,7 @@ exit ; fi
 ####
 ####
 if   [ "$first_option" == "clasic-options" ] ; then  
-echo "$title_md $cmd_basename [optional-output] first_option [second_option] "
+echo "$title_md $cmd_binary [optional-output] first_option [second_option] "
 echo "$title_md"
 echo "$text_md    optional-paramtter "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]"
@@ -2316,7 +2319,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-control" ]; then
 echo "$text_md "
-echo "$title_md | firewall-control | $cmd_basename firewall-control |"
+echo "$title_md | firewall-control | $cmd_binary firewall-control |"
 echo "$text_md"
 echo "$text_md stop . remove the rules iptables, and save it to then if continue"
 echo "$text_md continue. reset and load latest rules iptables loaded"
@@ -2339,7 +2342,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-listconceptual" ]; then
 echo "$text_md "
-echo "$title_md | firewall-listconceptual | $cmd_basename firewall-listconceptual |"
+echo "$title_md | firewall-listconceptual | $cmd_binary firewall-listconceptual |"
 echo "$text_md"
 echo "$text_md ls4 . list filter rules ipv4 "
 echo "$text_md ls6 . list filter rules ipv6 "
@@ -2371,7 +2374,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-listnumeral" ]; then
 echo "$text_md "
-echo "$title_md | firewall-listnumeral | $cmd_basename firewall-listnumeral |"
+echo "$title_md | firewall-listnumeral | $cmd_binary firewall-listnumeral |"
 echo "$text_md"
 echo "$text_md lsn4 . list filter rules ipv4 with numbers"
 echo "$text_md lsn6 . list filter rules ipv6 with numbers"
@@ -2403,7 +2406,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-customfw" ]; then
 echo "$text_md "
-echo "$title_md | firewall-customfw | $cmd_basename firewall-customfw |"
+echo "$title_md | firewall-customfw | $cmd_binary firewall-customfw |"
 echo "$text_md"
 echo "$text_md eraserules . remove all firewall rules"
 echo "$text_md custom . launch a one one-file saved custom"
@@ -2434,7 +2437,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-systemfw" ]; then
 echo "$text_md "
-echo "$title_md | firewall-systemfw | $cmd_basename firewall-systemfw |"
+echo "$title_md | firewall-systemfw | $cmd_binary firewall-systemfw |"
 echo "$text_md"
 echo "$text_md client-basic . launch a one firewall basic client"
 echo "$text_md client-web . launch a one firewall web client"
@@ -2479,7 +2482,7 @@ exit; fi
 ####
 if   [ "$first_option" == "options-easy" ]; then
 echo "$text_md "
-echo "$title_md | options-easy | $cmd_basename option-easy |"
+echo "$title_md | options-easy | $cmd_binary option-easy |"
 echo "$text_md"
 echo "$text_md preferences-read . show the preferences for fwiptables"
 echo "$text_md preferences-modify . modify the preferences for fwiptables"
@@ -2555,7 +2558,7 @@ exit; fi
 ####
 if   [ "$first_option" == "optional-output" ]; then
 echo "$text_md "
-echo "$title_md | optional-output | $cmd_basename optional-ouptut |"
+echo "$title_md | optional-output | $cmd_binary optional-ouptut |"
 echo "$text_md"
 echo "$text_md -t . output in terminal text "
 echo "$text_md -c . output in terminal cli "
@@ -4407,7 +4410,7 @@ exit; fi
 ####
 if   [ "$first_option" == "info" ]; then 
 echo "$title_md [ $first_option ]  [ info $second_option ]"
-echo "$title_md Launch:  $cmd_basename [optional-output] info [pattern-to-search]"
+echo "$title_md Launch:  $cmd_binary [optional-output] info [pattern-to-search]"
 $cmd_binary info-options | grep -i "$second_option"
 exit; fi
 ####
