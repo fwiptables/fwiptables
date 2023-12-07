@@ -277,6 +277,7 @@ command_whiptail="$(command -v whiptail)"   #list-commands ;
 command_dig="$(command -v dig)"   #list-commands ;
 command_ebtables="$(command -v ebtables)"   #list-commands ;
 command_elinks="$(command -v elinks)"   #list-commands ;
+command_file="$(command -v file)"    #list-commands ;
 command_find="$(command -v find)"   #list-commands ;
 command_fmt="$(command -v fmt)"   #list-commands ;
 command_geoiplookup="$(command -v geoiplookup)"   #list-commands ;
@@ -1407,10 +1408,10 @@ echo "$title_md [ Description program ]"
 echo "$text_md $cmd_description"
 echo
 echo "$title_md [ File format ]"
-echo "$text_md $(file $cmd_binary | $command_cut -d "," -f 1-2)"
+echo  $text_md "$($command_file $cmd_binary | $command_cut -d "," -f 1-2)"
 echo
 echo "$title_md [ MD5 sum ]"
-echo "$text_md $($command_md5sum $cmd_binary)"
+echo  $text_md "$($command_md5sum $cmd_binary)"
 echo
 echo "$title_md [ Launched program ]"
 echo "$text_md $cmd_binary"
