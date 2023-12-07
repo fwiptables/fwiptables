@@ -88,10 +88,12 @@ fi
 #### :rutina-inicial-enviroment:
 ####
 ####
-cmd_binary="$0"             ;
-cmd_file="$(basename $0)"   ;
-cmd_config="fwiptables-cmd" ;
-cmd_version="cmd-10-19"     ;
+cmd_binary="$0"                           ;
+cmd_fullroute="$(command -v $cmd_binary)" ;
+cmd_basename="$(basename $0)"             ;
+cmd_readlink="$(readlink -e $0)"          ;
+cmd_config="fwiptables-cmd"               ;
+cmd_version="cmd-10-19"                   ;
 cmd_name="fwiptables, FireWall With iptables"               ;
 cmd_description="fwiptables, One Mini Script in one-file"   ;
 cmd_license="GPL v2, License General Public version 2"      ;
@@ -277,6 +279,7 @@ command_whiptail="$(command -v whiptail)"   #list-commands ;
 command_dig="$(command -v dig)"   #list-commands ;
 command_ebtables="$(command -v ebtables)"   #list-commands ;
 command_elinks="$(command -v elinks)"   #list-commands ;
+command_file="$(command -v file)"    #list-commands ;
 command_find="$(command -v find)"   #list-commands ;
 command_fmt="$(command -v fmt)"   #list-commands ;
 command_geoiplookup="$(command -v geoiplookup)"   #list-commands ;
@@ -310,6 +313,7 @@ command_nmap="$(command -v nmap)"   #list-commands ;
 command_ntpdate="$(command -v ntpdate)"   #list-commands ;
 command_openssl="$(command -v openssl)"   #list-commands ;
 command_ping="$(command -v ping)"   #list-commands ;
+command_readlink="$(command -v readlink)"   #list-commands ;
 command_rdate="$(command -v rdate)"   #list-commands ;
 command_reboot="$(command -v reboot)"   #list-commands ;
 command_resolveip="$(command -v resolveip)"   #list-commands ;
@@ -522,7 +526,7 @@ head_waiting_info="$title_md [ info ] [ info: info in clear txt format ] [ press
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$title_md #[ $cmd_config $cmd_version ] [ $X11_OR_WAYLAND ] [ Options: $cmd_file options ]"
+give_cover="$title_md #[ $cmd_config $cmd_version ] [ $X11_OR_WAYLAND ] [ Options: $cmd_basename options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 #### give_fail="### #[ fail ] | First Option: $first_option | Choose one valid first option |"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -1249,7 +1253,7 @@ echo "$text_md   Network listen: $cmd_binary sockets"
 echo
 echo "$title_md [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
-else  $command_ip -4 address | $command_grep -i  inet | $command_grep -iv 127.0.0.1 | $command_sed 's/inet//g' | cut -d "/" -f 1 ; fi
+else  $command_ip -4 address | $command_grep -i  inet | $command_grep -iv 127.0.0.1 | $command_sed 's/inet//g' | $command_cut -d "/" -f 1 ; fi
 echo
 echo "$title_md [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
 if [ "$command_curl" == "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
@@ -1291,7 +1295,7 @@ echo "$text_md  for network listen: $cmd_binary sockets"
 echo
 echo "$title_md [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
-else  $command_ip -6 address | $command_grep -i  inet | $command_grep -iv  "inet6 ::1" | $command_sed 's/inet6//g' | cut -d "/" -f 1 ; fi
+else  $command_ip -6 address | $command_grep -i  inet | $command_grep -iv  "inet6 ::1" | $command_sed 's/inet6//g' | $command_cut -d "/" -f 1 ; fi
 echo
 echo "$title_md [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" == "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
@@ -1363,28 +1367,28 @@ echo "$title_md [ $first_option ] [ List examples ] [ examples md ] "
 echo "$text_md"
 echo "$title_md                        [ several examples *without optional otuput* ]              "
 echo "$text_md"
-echo "$text_md    $cmd_file names                    |  List firewall saved                        "
-echo "$text_md    $cmd_file names-config             |  List configs saved                         "
-echo "$text_md    $cmd_file speed-ip4                |  get info about speed with internet ipv4    "
-echo "$text_md    $cmd_file sockets                  |  show info about listen sockets             "
-echo "$text_md    $cmd_file preferences-modify       |  modify default variables                   "
-echo "$text_md    $cmd_file autolog                  |  List last optiosn with $cmd_file           "
-echo "$text_md    $cmd_file depends                  |  depends to $cmd_file                       "
-echo "$text_md    $cmd_file about                    |  about from $cmd_file                     "
+echo "$text_md    $cmd_basename names                    |  List firewall saved                        "
+echo "$text_md    $cmd_basename names-config             |  List configs saved                         "
+echo "$text_md    $cmd_basename speed-ip4                |  get info about speed with internet ipv4    "
+echo "$text_md    $cmd_basename sockets                  |  show info about listen sockets             "
+echo "$text_md    $cmd_basename preferences-modify       |  modify default variables                   "
+echo "$text_md    $cmd_basename autolog                  |  List last optiosn with $cmd_basename           "
+echo "$text_md    $cmd_basename depends                  |  depends to $cmd_basename                       "
+echo "$text_md    $cmd_basename about                    |  about from $cmd_basename                     "
 echo "$text_md"
 echo "$title_md                        [ several examples *with optional output* ]                 "
 echo "$text_md"
 echo "$text_md        [ with optional output ]                  [ Example Description ]            "
 echo "$text_md"
-echo "$text_md    $cmd_file -silent client-web       |  Launch client web firewall a null output "
-echo "$text_md    $cmd_file -txt list                |  List iptables rules with output txt      "
-echo "$text_md    $cmd_file -cli-wiptail names       |  List firewall with output cli whiptail   "
-echo "$text_md    $cmd_file -gui-yad sockets         |  List sockets ip with output gui yad      "
+echo "$text_md    $cmd_basename -silent client-web       |  Launch client web firewall a null output "
+echo "$text_md    $cmd_basename -txt list                |  List iptables rules with output txt      "
+echo "$text_md    $cmd_basename -cli-wiptail names       |  List firewall with output cli whiptail   "
+echo "$text_md    $cmd_basename -gui-yad sockets         |  List sockets ip with output gui yad      "
 echo "$text_md"
-echo "$text_md    $cmd_file -cli-menu-dialog         |  All options in text menu                 "
-echo "$text_md    $cmd_file -gui-menu-yad            |  All options in window menu               "
-echo "$text_md    $cmd_file -gui-roll-zenity         |  All options in window roll               "
-echo "$text_md    $cmd_file -gui-shell-yad           |  All options in window shell              "
+echo "$text_md    $cmd_basename -cli-menu-dialog         |  All options in text menu                 "
+echo "$text_md    $cmd_basename -gui-menu-yad            |  All options in window menu               "
+echo "$text_md    $cmd_basename -gui-roll-zenity         |  All options in window roll               "
+echo "$text_md    $cmd_basename -gui-shell-yad           |  All options in window shell              "
 echo "$text_md"
 exit; fi
 ####
@@ -1407,13 +1411,13 @@ echo "$title_md [ Description program ]"
 echo "$text_md $cmd_description"
 echo
 echo "$title_md [ File format ]"
-echo "$text_md $(file $cmd_binary | cut -d "," -f 1-2)"
+echo  "$text_md" "$($command_file $cmd_fullroute  )"
 echo
 echo "$title_md [ MD5 sum ]"
-echo "$text_md $($command_md5sum $cmd_binary)"
+echo  "$text_md" "$($command_md5sum $cmd_fullroute)"
 echo
 echo "$title_md [ Launched program ]"
-echo "$text_md $cmd_binary"
+echo "$text_md $cmd_fullroute"
 echo
 echo "$title_md [ Binary directory ]"
 echo "$text_md $directory_installed"
@@ -1446,8 +1450,7 @@ if [ "$first_option" == "ver" ]; then
 echo "$title_md [ $first_option ] [ Show version about ] [ ver.md ]       "    
 echo "[ _ok_ ] [ program ] $cmd_binary With Version $cmd_version          "     
 echo "[ _ok_ ] [ Details ] $cmd_name | $cmd_description                   "    
-echo "[ _ok_ ] [ Binary file      ] $cmd_binary                           "   
-echo "[ _ok_ ] [ Binary directory ] $directory_installed                  "     
+echo "[ _ok_ ] [ Binary file      ] $cmd_readlink                         "   
 echo "[ _ok_ ] [ Data directory   ] $directory_data                       "     
 echo "[ _ok_ ] [ Cache directory  ] $directory_cache                      "     
 exit ; fi
@@ -2138,7 +2141,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-options" ] ; then 
-echo "$title_md $cmd_file [optional-output] first_option [second_option]                  "
+echo "$title_md $cmd_basename [optional-output] first_option [second_option]                  "
 echo "$title_md"
 echo "$title_md  [ optional-output ]                                                            "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       "
@@ -2185,7 +2188,7 @@ exit ; fi
 ####
 ####
 if   [ "$first_option" == "clasic-options" ] ; then  
-echo "$title_md $cmd_file [optional-output] first_option [second_option] "
+echo "$title_md $cmd_basename [optional-output] first_option [second_option] "
 echo "$title_md"
 echo "$text_md    optional-paramtter "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]"
@@ -2239,8 +2242,8 @@ salida_code="$(cat $cmd_binary | $command_grep -i  rutina-inicial \
 sort | $command_sed -s s/://g )"
 echo $salida_code
 exit ; fi
-value_first="$(cat -n $cmd_binary | $command_grep  :rutina-inicial-$2: | cut -d "#" -f 1 | head -1)"
-value_second="$(cat -n $cmd_binary | $command_grep :rutina-final-$2:  | cut -d "#" -f 1 | head -1)"
+value_first="$(cat -n $cmd_binary | $command_grep  :rutina-inicial-$2: | $command_cut -d "#" -f 1 | head -1)"
+value_second="$(cat -n $cmd_binary | $command_grep :rutina-final-$2:  | $command_cut -d "#" -f 1 | head -1)"
 value_count="$(("$value_second"-"$value_first+1"))"
 if [ ! -n "$value_first" ];   then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_second" ];  then echo; echo "$code_error" ; exit ; fi
@@ -2313,7 +2316,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-control" ]; then
 echo "$text_md "
-echo "$title_md | firewall-control | $cmd_file firewall-control |"
+echo "$title_md | firewall-control | $cmd_basename firewall-control |"
 echo "$text_md"
 echo "$text_md stop . remove the rules iptables, and save it to then if continue"
 echo "$text_md continue. reset and load latest rules iptables loaded"
@@ -2336,7 +2339,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-listconceptual" ]; then
 echo "$text_md "
-echo "$title_md | firewall-listconceptual | $cmd_file firewall-listconceptual |"
+echo "$title_md | firewall-listconceptual | $cmd_basename firewall-listconceptual |"
 echo "$text_md"
 echo "$text_md ls4 . list filter rules ipv4 "
 echo "$text_md ls6 . list filter rules ipv6 "
@@ -2368,7 +2371,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-listnumeral" ]; then
 echo "$text_md "
-echo "$title_md | firewall-listnumeral | $cmd_file firewall-listnumeral |"
+echo "$title_md | firewall-listnumeral | $cmd_basename firewall-listnumeral |"
 echo "$text_md"
 echo "$text_md lsn4 . list filter rules ipv4 with numbers"
 echo "$text_md lsn6 . list filter rules ipv6 with numbers"
@@ -2400,7 +2403,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-customfw" ]; then
 echo "$text_md "
-echo "$title_md | firewall-customfw | $cmd_file firewall-customfw |"
+echo "$title_md | firewall-customfw | $cmd_basename firewall-customfw |"
 echo "$text_md"
 echo "$text_md eraserules . remove all firewall rules"
 echo "$text_md custom . launch a one one-file saved custom"
@@ -2431,7 +2434,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-systemfw" ]; then
 echo "$text_md "
-echo "$title_md | firewall-systemfw | $cmd_file firewall-systemfw |"
+echo "$title_md | firewall-systemfw | $cmd_basename firewall-systemfw |"
 echo "$text_md"
 echo "$text_md client-basic . launch a one firewall basic client"
 echo "$text_md client-web . launch a one firewall web client"
@@ -2476,7 +2479,7 @@ exit; fi
 ####
 if   [ "$first_option" == "options-easy" ]; then
 echo "$text_md "
-echo "$title_md | options-easy | $cmd_file option-easy |"
+echo "$title_md | options-easy | $cmd_basename option-easy |"
 echo "$text_md"
 echo "$text_md preferences-read . show the preferences for fwiptables"
 echo "$text_md preferences-modify . modify the preferences for fwiptables"
@@ -2552,7 +2555,7 @@ exit; fi
 ####
 if   [ "$first_option" == "optional-output" ]; then
 echo "$text_md "
-echo "$title_md | optional-output | $cmd_file optional-ouptut |"
+echo "$title_md | optional-output | $cmd_basename optional-ouptut |"
 echo "$text_md"
 echo "$text_md -t . output in terminal text "
 echo "$text_md -c . output in terminal cli "
@@ -4069,13 +4072,13 @@ $command_sysctl -a | $command_grep -i  forwarding ; exit ; fi
 ####
 if   [ "$second_option" == "on" ]; then
 echo "$title_md [ $first_option ]  [ Activating.. ip forwading in kernel ] || ||"
-for a in $($command_sysctl -a | $command_grep -i  forwarding | cut -d " " -f 1)
+for a in $($command_sysctl -a | $command_grep -i  forwarding | $command_cut -d " " -f 1)
 do $command_sysctl -w $a=1 ; done ; exit ; fi
 ####
 ####
 if   [ "$second_option" == "off" ]; then
 echo "$header_ok [ $first_option ]  [ Deactivating.. ip forwading in kernel ] || ||"
-for a in $($command_sysctl -a | $command_grep -i  forwarding | cut -d " " -f 1)
+for a in $($command_sysctl -a | $command_grep -i  forwarding | $command_cut -d " " -f 1)
 do $command_sysctl -w $a=0 ; done ; exit; fi
 ####
 ####
@@ -4404,7 +4407,7 @@ exit; fi
 ####
 if   [ "$first_option" == "info" ]; then 
 echo "$title_md [ $first_option ]  [ info $second_option ]"
-echo "$title_md Launch:  $cmd_file [optional-output] info [pattern-to-search]"
+echo "$title_md Launch:  $cmd_basename [optional-output] info [pattern-to-search]"
 $cmd_binary info-options | grep -i "$second_option"
 exit; fi
 ####
@@ -5067,33 +5070,33 @@ $favorite_graphicall_dialog  --forms $graphic_window_dimension --text="$tab [ in
 ####
 ####
 new-full-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-zenity new-full-config $unarchivo
 ;;
 nueva-completa-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-zenity nueva-completa-config $unarchivo
 ;;
 new-mini-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-zenity new-mini-config $unarchivo
 ;;
 nueva-mini-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-zenity nueva-mini-config $unarchivo
 ;;
 modify-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-zenity modify-config $unarchivo
 ;;
 show-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-zenity show-config $unarchivo
 ;;
 wizard-full*) $cmd_binary -gui-zenity wizard-full ;;
 wizard-mini*) $cmd_binary -gui-zniety wizard-mini ;;
 preferences-modify*) 
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-zenity preferences-modify 
 ;;
 ####
@@ -5202,33 +5205,33 @@ $command_yad  --forms $graphic_window_dimension --text="$tab [ info ] [ Use: $cm
 ####
 ####
 new-full-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-yad new-full-config $unarchivo
 ;;
 nueva-completa-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-yad nueva-completa-config $unarchivo
 ;;
 new-mini-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-yad new-mini-config $unarchivo
 ;;
 nueva-mini-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-yad nueva-mini-config $unarchivo
 ;;
 modify-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-yad modify-config $unarchivo
 ;;
 show-config*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-yad show-config $unarchivo 
 ;;
 wizard-full*) $cmd_binary -gui-yad wizard-full ;;
 wizard-mini*) $cmd_binary -gui-yad wizard-mini ;;
 preferences-modify*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_binary -gui-yad preferences-modify 
 ;;
 ####
