@@ -1464,10 +1464,10 @@ exit ; fi
 ####
 if [ "$first_option" == "expert" ]; then 
 echo "$title_md [ $first_option ] [ Show expert options ] [ expert.md] "
-echo "$text_md expert-compile-obash . compile fwiptables-cmd to fwiptables-bin with obash"
-echo "$text_md expert-upgrade-stable . upgrade from web sourceforge fwiptables-cmd with curl"
-echo "$text_md expert-upgrade-unstable . upgrade from git sourceforge fwiptables-cmd with curl"
-echo "$text_md expert-get-hostsdeny . download 4 file hosts blacklist to /etc/hosts.blacklist_name"
+echo "$text_md expert-compile-obash . Compile fwiptables-cmd to fwiptables-bin with obash"
+echo "$text_md expert-upgrade-stable . Upgrade from web sourceforge fwiptables-cmd with curl"
+echo "$text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables-cmd with curl"
+echo "$text_md expert-download-adblock . Download four files of blacklist hosts to /etc/hosts.blacklist"
 exit ; fi
 ####
 ####
@@ -4353,12 +4353,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-compile-obash:
-##########    english: expert-get-adblock: compile with obash      ##########
-##########    spanish: expert-get-adblock: compila with obash      ##########
+##########    english: expert-download-adblock: compile with obash      ##########
+##########    spanish: expert-download-adblock: compila with obash      ##########
 #### :rutina-inicial-expert-get-adblock:
 ####
 ####
-if   [ "$first_option" == "expert-get-adblock" ]; then 
+if   [ "$first_option" == "expert-download-adblock" ]; then 
 echo "$title_md [ $first_option ]  [ get: blacklist files / adblock files / hosts deny files ] || ||"
 blacklist_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
 blacklist_mvps="http://winhelp2002.mvps.org/hosts.txt"
@@ -4380,7 +4380,7 @@ $command_curl $blacklist_stevenblack -s -L -o /etc/hosts.blacklist_stevenblack
 exit; fi
 ####
 ####
-#### :rutina-final-expert-get-adblock:
+#### :rutina-final-expert-download-adblock:
 ##########    english: radio: url from one radio mp3      ##########
 ##########    spanish: radio: url de una radio en mp3     ##########
 #### :rutina-inicial-radio:
