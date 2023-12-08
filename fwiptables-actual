@@ -1464,6 +1464,7 @@ exit ; fi
 ####
 if [ "$first_option" == "expert" ]; then 
 echo "$title_md [ $first_option ] [ Show expert options ] [ expert.md] "
+echo "$text_md expert-show-weather . show weather"
 echo "$text_md expert-compile-obash . Compile fwiptables-cmd to fwiptables-bin with obash"
 echo "$text_md expert-upgrade-stable . Upgrade from web sourceforge fwiptables-cmd with curl"
 echo "$text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables-cmd with curl"
@@ -1472,6 +1473,14 @@ exit ; fi
 ####
 ####
 #### :rutina-final-expert:
+##########    english: weather: show the weather with wttr.in     ##########
+##########    spanish: el tiempo: muestra el tiempo con wttr.in   ##########
+#### :rutina-inicial-expert-show-weather:
+if   [ "$first_option" == "expert-show-weather" ]; then 
+case $command_curl in "$NULL") echo "$title_md [ fail ] [ Install a curl ]"; exit ;; esac
+curl -s wttr.in/?3n?T
+exit; fi
+#### :rutina-final-expert-show-weather:
 ##########    english: notes: notes to configure iptables      ##########
 ##########    spanish: notes: notas para configurar iptables   ##########
 #### :rutina-inicial-notes:
