@@ -5,7 +5,7 @@
    for iptables linux with COMMAND-LINE with CLI-MENU                   
    with GUI-MENU with GUI-ROLL with GUI-SHELL.                          
    And choose one firewall: eraserules, or wizard-mini,                 
-   or wizard-full, or custom, or one static                      
+   or wizard-full, or custom, or one system                             
    firewall to choose one. Gen new rules with templates                 
    and with shield ssh and with comments rules.                         
   
@@ -13,7 +13,7 @@
    tools ip, wizards for rules, save/load rules with files,             
    shield to ssh or other servers choosed,                              
    limit bandwidth, host whitelist, host blacklist,                     
-   and other more capacities of firewall.                               
+   and other more capabilities of firewall.                             
   
 ###   fwiptables location.                                               
   
@@ -22,6 +22,7 @@
   
 ###  fwiptables install.                                   
   
+    su root             . TYPE:   su root                 
     Put bit of execution. TYPE:   chmod u+x /usr/bin/fwiptables-cmd   
     Install this version. TYPE:   /usr/bin/fwiptables-cmd install     
   
@@ -30,13 +31,11 @@
     Uninstall fwiptables. TYPE:   fwiptables-cmd uninstall   
   
 ###  [ ver ] [ Show version about ] [ ver.md ]       
-  
-[ _ok_ ] [ program ] /usr/bin/fwiptables-cmd With Version cmd-10-18          
+[ _ok_ ] [ program ] /usr/bin/fwiptables-cmd With Version cmd-10-19        
 [ _ok_ ] [ Details ] fwiptables, FireWall With iptables | fwiptables, One Mini Script in one-file                   
-[ _ok_ ] [ Binary directory ] /usr/bin                  
+[ _ok_ ] [ Binary file      ] /usr/bin/fwiptables-cmd                        
 [ _ok_ ] [ Data directory   ] /root/.config/fwiptables-cmd                       
 [ _ok_ ] [ Cache directory  ] /run/fwiptables                      
-  
 ###  [ compile ] [  optionally: howto compile bash script ] [ compile.md]  
 ###    
    This script in bash works. But if you desire is compiling... follow that steps,       
@@ -54,7 +53,7 @@
 ###   
 ###  [ List general options for fwiptables ] [ options.md ]
   
-###  fwiptables-cmd [optional-output] first_option [second_option]                  
+###  /usr/bin/fwiptables-cmd [optional-output] first_option [second_option]                  
 ### 
 ###   [ optional-output ]                                                            
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       
@@ -86,8 +85,8 @@
 ###   [ options-easy ]                                                              
    preferences-read preferences-modify preferences-regen preferences-example ver        
    list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6         
-   ip4 ip6 speed-glx sockets nodes geoip webcert date free expert version notes         
+   ip4 ip6 speed-glx sockets nodes geoip webcert date free expert about notes           
    radio compile ip-forward depends info code info examples commands variables          
-   intro clean-tmp download install uninstall pc-halt pc-shutdown pc-reboot             
+   intro download install uninstall pc-halt pc-shutdown pc-reboot            
 ###             ||| Example: fwiptables-cmd -gui-shell-yad |||                
 ###             ||| Example: fwiptables-cmd -gui-zenity info list |||         
