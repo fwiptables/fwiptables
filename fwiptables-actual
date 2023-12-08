@@ -4362,7 +4362,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-get-adblock" ]; then 
-echo "$title_md [ $first_option ]  [ get: blacklist / adblock / hosts deny ] || ||"
+echo "$title_md [ $first_option ]  [ get: blacklist files / adblock files / hosts deny files ] || ||"
 blacklist_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
 blacklist_mvps="http://winhelp2002.mvps.org/hosts.txt"
 blacklist_adaway="https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
