@@ -1422,9 +1422,6 @@ echo
 echo "$title_md [ Launched program ]"
 echo "$text_md $cmd_realpath"
 echo
-echo "$title_md [ Binary directory ]"
-echo "$text_md $directory_installed"
-echo
 echo "$title_md [ Cache directory  ]"
 echo "$text_md $directory_cache"
 echo
