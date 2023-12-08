@@ -96,7 +96,7 @@ cmd_realpath="$(realpath $0)" ;
 cmd_basename="$(basename $0)"    ;
 #### others configs for fwiptables
 cmd_config="fwiptables-cmd"               ;
-cmd_version="cmd-10-19"                   ;
+cmd_version="cmd-10-20"                   ;
 cmd_name="fwiptables, FireWall With iptables"               ;
 cmd_description="fwiptables, One Mini Script in one-file"   ;
 cmd_license="GPL v2, License General Public version 2"      ;
