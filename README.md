@@ -23,17 +23,17 @@
 ###  fwiptables install.                                   
   
     su root             . TYPE:   su root                 
-    Put bit of execution. TYPE:   chmod u+x /usr/bin/fwiptables-cmd   
-    Install this version. TYPE:   /usr/bin/fwiptables-cmd install     
+    Put bit of execution. TYPE:   chmod u+x /root/f-iptables-version/fwiptables-ver-10_19-bash.sh   
+    Install this version. TYPE:   /root/f-iptables-version/fwiptables-ver-10_19-bash.sh install     
   
 ###  fwiptables uninstall.                                 
   
     Uninstall fwiptables. TYPE:   fwiptables-cmd uninstall   
   
 ###  [ ver ] [ Show version about ] [ ver.md ]       
-[ _ok_ ] [ program ] /usr/bin/fwiptables-cmd With Version cmd-10-19        
+[ _ok_ ] [ program ] /root/f-iptables-version/fwiptables-ver-10_19-bash.sh With Version cmd-10-19        
 [ _ok_ ] [ Details ] fwiptables, FireWall With iptables | fwiptables, One Mini Script in one-file                   
-[ _ok_ ] [ Binary file      ] /usr/bin/fwiptables-cmd                        
+[ _ok_ ] [ Binary file      ] /root/f-iptables-version/fwiptables-ver-10_19-bash.sh                        
 [ _ok_ ] [ Data directory   ] /root/.config/fwiptables-cmd                       
 [ _ok_ ] [ Cache directory  ] /run/fwiptables                      
 ###  [ compile ] [  optionally: howto compile bash script ] [ compile.md]  
@@ -49,11 +49,11 @@
    . 3b . Or Third: run:# obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd    
       
 ###  Actually, the file type is:                                                          
-/usr/bin/fwiptables-cmd: Bourne-Again shell script, Unicode text, UTF-8 text executable
+/root/f-iptables-version/fwiptables-ver-10_19-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
 ###   
 ###  [ List general options for fwiptables ] [ options.md ]
   
-###  /usr/bin/fwiptables-cmd [optional-output] first_option [second_option]                  
+###  /root/f-iptables-version/fwiptables-ver-10_19-bash.sh [optional-output] first_option [second_option]                  
 ### 
 ###   [ optional-output ]                                                            
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       
