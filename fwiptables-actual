@@ -1447,13 +1447,13 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "ver" ]; then 
-echo "$title_md [ $first_option ] [ Show version about ] [ ver.md ]       "    
-echo "$title_md [ _ok_ ] [ program ] $cmd_realpath With Version $cmd_version        "     
-echo "$title_md [ _ok_ ] [ Details ] $cmd_name | $cmd_description                   "    
-echo "$title_md [ _ok_ ] [ Binary file      ] $cmd_realpath                         "   
-echo "$title_md [ _ok_ ] [ Data directory   ] $directory_data                       "     
-echo "$title_md [ _ok_ ] [ Cache directory  ] $directory_cache                      "   
-echo "$title_md [ _ok_ ] [ File format      ] $($command_file $cmd_realpath  )      "   
+echo "$text_md [ $first_option ] [ Show version about ] [ ver.md ]       "    
+echo "$text_md [ _ok_ ] [ program ] $cmd_realpath With Version $cmd_version        "     
+echo "$text_md [ _ok_ ] [ Details ] $cmd_name | $cmd_description                   "    
+echo "$text_md [ _ok_ ] [ Binary file      ] $cmd_realpath                         "   
+echo "$text_md [ _ok_ ] [ Data directory   ] $directory_data                       "     
+echo "$text_md [ _ok_ ] [ Cache directory  ] $directory_cache                      "   
+echo "$text_md [ _ok_ ] [ File format      ] $($command_file $cmd_realpath  )      "   
 exit ; fi
 ####
 ####
