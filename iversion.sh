@@ -96,7 +96,7 @@ cmd_realpath="$(realpath $0)" ;
 cmd_basename="$(basename $0)"    ;
 #### others configs for fwiptables
 cmd_config="fwiptables-cmd"               ;
-cmd_version="cmd-10-20-dev"                   ;
+cmd_version="cmd-10-20"                   ;
 cmd_name="fwiptables, FireWall With iptables"               ;
 cmd_description="fwiptables, One Mini Script in one-file"   ;
 cmd_license="GPL v2, License General Public version 2"      ;
@@ -1448,11 +1448,12 @@ exit ; fi
 ####
 if [ "$first_option" == "ver" ]; then 
 echo "$title_md [ $first_option ] [ Show version about ] [ ver.md ]       "    
-echo "[ _ok_ ] [ program ] $cmd_realpath With Version $cmd_version        "     
-echo "[ _ok_ ] [ Details ] $cmd_name | $cmd_description                   "    
-echo "[ _ok_ ] [ Binary file      ] $cmd_realpath                         "   
-echo "[ _ok_ ] [ Data directory   ] $directory_data                       "     
-echo "[ _ok_ ] [ Cache directory  ] $directory_cache                      "     
+echo "$title_md [ _ok_ ] [ program ] $cmd_realpath With Version $cmd_version        "     
+echo "$title_md [ _ok_ ] [ Details ] $cmd_name | $cmd_description                   "    
+echo "$title_md [ _ok_ ] [ Binary file      ] $cmd_realpath                         "   
+echo "$title_md [ _ok_ ] [ Data directory   ] $directory_data                       "     
+echo "$title_md [ _ok_ ] [ Cache directory  ] $directory_cache                      "   
+echo "$title_md [ _ok_ ] [ File format      ] $($command_file $cmd_realpath  )      "   
 exit ; fi
 ####
 ####
