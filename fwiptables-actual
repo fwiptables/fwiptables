@@ -1265,8 +1265,9 @@ if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden fo
 else echo "$tab $public_ip4"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
-echo " [ info ] Proxy http:    $http_proxy"
-echo " [ info ] Proxy https:   $https_proxy"
+echo " [ info ] Proxy ftp:     $FTP_PROXY"
+echo " [ info ] Proxy http:    $HTTP_PROXY"
+echo " [ info ] Proxy https:   $HTTPS_PROXY"
 echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] [ nameserver and search ] ###"
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
@@ -1307,8 +1308,9 @@ if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden fo
 else echo "$tab $public_ip6"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
-echo " [ info ] Proxy http:    $http_proxy"
-echo " [ info ] Proxy https:   $https_proxy"
+echo " [ info ] Proxy ftp:     $FTP_PROXY"
+echo " [ info ] Proxy http:    $HTTP_PROXY"
+echo " [ info ] Proxy https:   $HTTPS_PROXY"
 echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
@@ -4816,7 +4818,7 @@ echo "$title_md [ fail ] [ Install ss command ]"; exit; fi
 if [ "$command_awk" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Install awk command ]"; exit; fi
 #### echo "$title_md [ info ] [ The LISTEN sockets (and UNCONN internals) ]"
-$command_ss -l  | $command_grep "\:\*" | $command_awk '{print $1 " " $2 " " $5 " " $6}' ;
+$command_ss -l  | $command_grep "\:\*" | $command_awk '{print $1 " " $2 " " $5}' ;
 exit; fi
 ####
 ####
