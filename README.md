@@ -17,43 +17,45 @@
   
 ###   fwiptables location.                                               
   
-    File location   :   /usr/bin/fwiptables-cmd  
-    Config directory:   /root/.config/fwiptables-cmd                   
+       File location:   /usr/bin/fwiptables-cmd    
+    Config directory:   /root/.config/fwiptables-cmd                     
+    Cache  directory:   /run/fwiptables                    
   
-###  fwiptables install.                                   
+###  fwiptables install.                                     
   
-    su root             . TYPE:   su root                 
-    Put bit of execution. TYPE:   chmod u+x /root/f-iptables-version/fwiptables-ver-10_19-bash.sh   
-    Install this version. TYPE:   /root/f-iptables-version/fwiptables-ver-10_19-bash.sh install     
+    su root             . TYPE:   su root                   
+    Put bit of execution. TYPE:   chmod 755 ./fwiptables-ver-10_20-bash.sh 
+    Install this version. TYPE:   ./fwiptables-ver-10_20-bash.sh install   
   
-###  fwiptables uninstall.                                 
+###  fwiptables uninstall.                                   
   
-    Uninstall fwiptables. TYPE:   fwiptables-cmd uninstall   
+    Uninstall fwiptables. TYPE:   fwiptables-cmd uninstall     
   
-###  [ ver ] [ Show version about ] [ ver.md ]       
-[ _ok_ ] [ program ] /root/f-iptables-version/fwiptables-ver-10_19-bash.sh With Version cmd-10-19        
-[ _ok_ ] [ Details ] fwiptables, FireWall With iptables | fwiptables, One Mini Script in one-file                   
-[ _ok_ ] [ Binary file      ] /root/f-iptables-version/fwiptables-ver-10_19-bash.sh                        
-[ _ok_ ] [ Data directory   ] /root/.config/fwiptables-cmd                       
-[ _ok_ ] [ Cache directory  ] /run/fwiptables                      
+   [ ver ] [ Show version about ] [ ver.md ]       
+   [ info ] [ program ] /root/f-iptables-version/fwiptables-ver-10_20-bash.sh With Version cmd-10-20        
+   [ info ] [ Details ] fwiptables, FireWall With iptables | fwiptables, One Mini Script in one-file                   
+   [ info ] [ Binary file     ] /root/f-iptables-version/fwiptables-ver-10_20-bash.sh                         
+   [ info ] [ Data directory  ] /root/.config/fwiptables-cmd                       
+   [ info ] [ Cache directory ] /run/fwiptables                      
+   [ info ] [ File format     ] /root/f-iptables-version/fwiptables-ver-10_20-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable      
 ###  [ compile ] [  optionally: howto compile bash script ] [ compile.md]  
 ###    
    This script in bash works. But if you desire is compiling... follow that steps,       
    there are three steps to compile fwiptables script, it is possible with obash.        
    when you has compiled, it does works only with your system hardware architecture.     
 ###    
-   . 0 .  Necesary: fwiptables in source script bash.                                    
-   . 1 .     First: download obash from oficial web internet page.                       
-   . 2 .    Second: compile with obash command using command make.                       
-   . 3a . Or Third: run:# obash -c -o ./destination.bin ./source-bash.sh                 
-   . 3b . Or Third: run:# obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd    
-      
+   [ step ] [ 0 ] Necesary: fwiptables in source script bash                            
+   [ step ] [ 1 ] Download obash from oficial web internet                      
+   [ step ] [ 2 ] Compile with obash command using command make.                
+   [ step ] [ 3a] Or run: obash -c -o ./destination.bin ./source-bash.sh        
+   [ step ] [ 3b] Or run: obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd   
+    
 ###  Actually, the file type is:                                                          
-/root/f-iptables-version/fwiptables-ver-10_19-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
+/root/f-iptables-version/fwiptables-ver-10_20-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
 ###   
-###  [ List general options for fwiptables ] [ options.md ]
+###  [ List general options for fwiptables ] [ options.md ]  
   
-###  /root/f-iptables-version/fwiptables-ver-10_19-bash.sh [optional-output] first_option [second_option]                  
+###  /root/f-iptables-version/fwiptables-ver-10_20-bash.sh [optional-output] first_option [second_option]                  
 ### 
 ###   [ optional-output ]                                                            
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       
