@@ -1453,7 +1453,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "ver" ]; then 
-echo "$text_md [ $first_option ] [ Show version about ] [ ver.md ]       "    
+echo "$title_md [ $first_option ] [ Show version about ] [ ver.md ]       "    
 echo "$text_md [ info ] [ program ] $cmd_realpath With Version $cmd_version        "     
 echo "$text_md [ info ] [ Details ] $cmd_name | $cmd_description                   "    
 echo "$text_md [ info ] [ Binary file     ] $cmd_realpath                         "   
