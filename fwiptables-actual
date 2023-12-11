@@ -1243,7 +1243,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "ip4" ]; then
-echo "$title_md [ $first_option ]  [ show info about net ip4 ] "
+echo "$title_md [ $first_option ]  [ show info about net ip4 ] [ ip4.md ]"
 echo
 echo "$title_md [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
@@ -1266,11 +1266,8 @@ if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden fo
 else echo "$text_md $public_ip4"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
-echo " [ info ] VAR. PROXY     |  VAR. UPPERCASE | VAR. LOWERCASE"
-echo " [ info ] Proxy ftp:     |  $FTP_PROXY     | $ftp_proxy "  
-echo " [ info ] Proxy http:    |  $HTTP_PROXY    | $http_proxy "
-echo " [ info ] Proxy https:   |  $HTTPS_PROXY   | $https_proxy "
-echo " Example var. uppercase: HTTPS_PROXY=https://127.0.0.1:8080"
+export | grep -i proxy
+echo " [ Example uppercase ] HTTPS_PROXY=https://127.0.0.1:8080"
 echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] [ nameserver and search ] ###"
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
@@ -1289,7 +1286,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "ip6" ]; then
-echo "$title_md [ $first_option ]  [ show info about net ip6 ] "
+echo "$title_md [ $first_option ]  [ show info about net ip6 ] [ ip6.md ] "
 echo
 echo "$title_md [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
@@ -1312,9 +1309,8 @@ if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden fo
 else echo "$tab $public_ip6"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
-echo " [ info ] Proxy ftp:     $FTP_PROXY"
-echo " [ info ] Proxy http:    $HTTP_PROXY"
-echo " [ info ] Proxy https:   $HTTPS_PROXY"
+export | grep -i proxy
+echo " [ Example uppercase ] HTTPS_PROXY=https://127.0.0.1:8080"
 echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
