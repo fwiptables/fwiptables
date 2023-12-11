@@ -499,8 +499,8 @@ favorite_text_browser=""                    ## fwiptables-file-default ## or voi
 favorite_date_command=""                    ## fwiptables-file-default ## or void for automatic or specify command
 ####       #### english: curl server for default for test the public ip
 ####       #### spanish: servidor de curl por defecto para testear la ip publica    
-serverip_discover_ipv4="https://ifconfig.co/ip"        ## fwiptables-file-default ## default http://ifconfig.co/ip
-serverip_discover_ipv6="https://ifconfig.co/ip"        ## fwiptables-file-default ## default http://ifconfig.co/ip
+serverip_discover_ipv4=""http://httpbin.org/ip""        ## fwiptables-file-default ## default http://ifconfig.co/ip
+serverip_discover_ipv6=""http://httpbin.org/ip""        ## fwiptables-file-default ## default http://ifconfig.co/ip
 ####       #### english: iperf server for default for test net SPEED                 
 ####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet    
 serverip_iperf_ipv4="ping.online.net"                 ## fwiptables-file-default ## default ping.online.net
@@ -1255,19 +1255,22 @@ echo "$text_md   Network listen: $cmd_realpath sockets"
 #### else $command_ss -l  | $command_grep "\:\*" ; fi
 echo
 echo "$title_md [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
-if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+if [ "$command_ip" == "$NULL" ] ; then echo "$title_md [ info ] [ install ip command ]"
 else  $command_ip -4 address | $command_grep -i  inet | $command_grep -iv 127.0.0.1 | $command_sed 's/inet//g' | $command_cut -d "/" -f 1 ; fi
 echo
 echo "$title_md [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
-if [ "$command_curl" == "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
-public_ip4="$($command_timeout -s SIGINT -v 8 $command_curl -s -4 $serverip_discover_ipv4 -w "\n"| head -1)"
+if [ "$command_curl" == "$NULL" ] ; then echo "$title_md [ info ] [ install curl command ]" ; else
+public_ip4="$($command_timeout -s SIGINT -v 8  $command_curl --noproxy '*' -k -s -4 \
+$serverip_discover_ipv4 -w "\n"| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
-else echo "$tab $public_ip4"; fi; fi
+else echo "$text_md $public_ip4"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
-echo " [ info ] Proxy ftp:     $FTP_PROXY"
-echo " [ info ] Proxy http:    $HTTP_PROXY"
-echo " [ info ] Proxy https:   $HTTPS_PROXY"
+echo " [ info ] VAR. PROXY     |  VAR. UPPERCASE | VAR. LOWERCASE"
+echo " [ info ] Proxy ftp:     |  $FTP_PROXY     | $ftp_proxy "  
+echo " [ info ] Proxy http:    |  $HTTP_PROXY    | $http_proxy "
+echo " [ info ] Proxy https:   |  $HTTPS_PROXY   | $https_proxy "
+echo " Example var. uppercase: HTTPS_PROXY=https://127.0.0.1:8080"
 echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] [ nameserver and search ] ###"
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
@@ -1303,7 +1306,8 @@ else  $command_ip -6 address | $command_grep -i  inet | $command_grep -iv  "inet
 echo
 echo "$title_md [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" == "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
-public_ip6="$($command_timeout -s SIGINT -v 8 $command_curl -s -6 $serverip_discover_ipv6 -w "\n"| head -1)"
+public_ip6="$($command_timeout -s SIGINT -v 8  $command_curl --noproxy '*' -k -s -6 \
+$serverip_discover_ipv6 -w "\n"| head -1)"
 if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip6"; fi; fi
 echo
