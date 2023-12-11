@@ -1450,12 +1450,12 @@ exit ; fi
 ####
 if [ "$first_option" == "ver" ]; then 
 echo "$text_md [ $first_option ] [ Show version about ] [ ver.md ]       "    
-echo "$text_md [ _ok_ ] [ program ] $cmd_realpath With Version $cmd_version        "     
-echo "$text_md [ _ok_ ] [ Details ] $cmd_name | $cmd_description                   "    
-echo "$text_md [ _ok_ ] [ Binary file      ] $cmd_realpath                         "   
-echo "$text_md [ _ok_ ] [ Data directory   ] $directory_data                       "     
-echo "$text_md [ _ok_ ] [ Cache directory  ] $directory_cache                      "   
-echo "$text_md [ _ok_ ] [ File format      ] $($command_file $cmd_realpath  )      "   
+echo "$text_md [ info ] [ program ] $cmd_realpath With Version $cmd_version        "     
+echo "$text_md [ info ] [ Details ] $cmd_name | $cmd_description                   "    
+echo "$text_md [ info ] [ Binary file     ] $cmd_realpath                         "   
+echo "$text_md [ info ] [ Data directory  ] $directory_data                       "     
+echo "$text_md [ info ] [ Cache directory ] $directory_cache                      "   
+echo "$text_md [ info ] [ File format     ] $($command_file $cmd_realpath  )      "   
 exit ; fi
 ####
 ####
@@ -4334,12 +4334,12 @@ echo "$text_md This script in bash works. But if you desire is compiling... foll
 echo "$text_md there are three steps to compile fwiptables script, it is possible with obash.        "
 echo "$text_md when you has compiled, it does works only with your system hardware architecture.     "
 echo "$title_md   "
-echo "$text_md . 0 .  Necesary: fwiptables in source script bash.                                    "
-echo "$text_md . 1 .     First: download obash from oficial web internet page.                       "
-echo "$text_md . 2 .    Second: compile with obash command using command make.                       "
-echo "$text_md . 3a . Or Third: run:# obash -c -o ./destination.bin ./source-bash.sh                 "
-echo "$text_md . 3b . Or Third: run:# obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd    "
-echo "$text_md    "
+echo "$text_md [ step ] [ 0 ] Necesary: fwiptables in source script bash                            "
+echo "$text_md [ step ] [ 1 ] Download obash from oficial web internet                      "
+echo "$text_md [ step ] [ 2 ] Compile with obash command using command make.                "
+echo "$text_md [ step ] [ 3a] Or run: obash -c -o ./destination.bin ./source-bash.sh        "
+echo "$text_md [ step ] [ 3b] Or run: obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd   "
+echo "$text_md  "
 echo "$title_md Actually, the file type is:                                                          "
 file -L $cmd_realpath
 echo "$title_md  "
