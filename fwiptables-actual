@@ -95,15 +95,15 @@ cmd_realpath="$(realpath $0)" ;
 #### file without its route absolute/relative
 cmd_basename="$(basename $0)"    ;
 #### others configs for fwiptables
-cmd_config="fwiptables-cmd"               ;
 cmd_version="cmd-10-21"                   ;
 cmd_name="fwiptables, FireWall With iptables"               ;
 cmd_description="fwiptables, One Mini Script in one-file"   ;
 cmd_license="GPL v2, License General Public version 2"      ;
 ####
-#### set directory installed
+#### set to installing   
 ####
 directory_installed="/usr/bin"
+cmd_config="fwiptables-cmd"  
 ####
 #### prepare directory data
 ####
@@ -1165,8 +1165,7 @@ echo "$title_md [ $first_option ] [ $cmd_realpath preferences-regen ] [ preferen
 rm $default_preferences
 echo "$title_md [ _ok_ ] [ $cmd_realpath deleted old configs ]"
 file $cmd_realpath
-#### cat $cmd_realpath | $command_grep fwiptables-file-default | $command_grep -iv cmd_binary &> $default_preferences 
-$cmd_realpath preferences-example &> $default_preferences
+$cmd_realpath preferences-example | grep -iv "logname:" &> $default_preferences
 echo "$title_md [ _ok_ ] [ Regenerated: $cmd_realpath values for default in ]"
 echo "$title_md [ _ok_ ] [ Regenerated: $default_preferences ]"
 exit; fi
@@ -4116,7 +4115,7 @@ exit; fi
 if [ "$first_option" == "uninstall" ] ; then
 echo "$title_md [ $first_option ] [ $cmd_realpath uninstaller ] [ uninstall md ] "
 echo "$title_md [ info ] [ $cmd_realpath uninstalling ]"
-rm /usr/bin/$cmd_config &> /dev/null
+rm $directory_installed/$cmd_config &> /dev/null
 echo "$title_md [ info ] [ deleted binaries ]"
 echo "$title_md [ _ok_ ] [ /usr/bin/$cmd_config uninstalled ]" ;
 exit; fi
@@ -4138,16 +4137,16 @@ echo "$title_md [ $first_option ] [ $cmd_config $cmd_version installer ] [ insta
 #### 
 echo "$title_md [ info ] [ $cmd_config installing.. ]"
 cp "$cmd_realpath" "$directory_temporal/fwiptables-tmp.sh" &> /dev/null
-cp "$directory_temporal/fwiptables-tmp.sh" "/usr/bin/$cmd_config" &> /dev/null 
-chmod 555 "/usr/bin/$cmd_config" &> /dev/null 
+cp "$directory_temporal/fwiptables-tmp.sh" "$directory_installed/$cmd_config" &> /dev/null 
+chmod 555 "$directory_installed/$cmd_config" &> /dev/null 
 ####
 ####
 ####  english: generate fwiptables default config and templates
 ####  spanish: genera fwiptables default configuracion y plantillas
 ####
 ####
-/usr/bin/$cmd_config preferences-regen &> /dev/null
-/usr/bin/$cmd_config regen-config &> /dev/null
+$directory_installed/$cmd_config preferences-regen &> /dev/null
+$directory_installed/$cmd_config regen-config &> /dev/null
 #### if [ -f "/usr/bin/$cmd_config" ]; then /usr/bin/$cmd_config ver; fi
 ####
 ####
