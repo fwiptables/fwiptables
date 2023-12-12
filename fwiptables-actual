@@ -508,9 +508,8 @@ serverport_iperf_ipv4="5001"                          ## fwiptables-file-default
 serverip_iperf_ipv6="ping6.online.net"                ## fwiptables-file-default ## default ping.online.net
 serverport_iperf_ipv6="5001"                          ## fwiptables-file-default ## default 5201
 #### #### english: look  #### spanish: apariencia
-graphicall_width=950
-graphicall_height=650
-graphic_window_dimension="--width=$graphicall_width --height=$graphicall_height  "
+graphicall_width=750
+graphicall_height=550
 ## fwiptables-file-default ## default: "--width=950 --height=650"
 #### #### english: look  #### spanish: apariencia
 quad="####" ; 
@@ -1234,8 +1233,8 @@ echo "serverip_iperf_ipv6=ping6.online.net                ## default ping.online
 echo "serverport_iperf_ipv6=5001                          ## default 5201"
 echo "$title_md"
 echo "$title_md # default dimesion graphicall"
-echo "grahicall_width=950                                 ## default width=950"
-echo "grahpicall_height=650                               ## default height=650"
+echo "graphicall_width=750                                ## default width=750"
+echo "graphicall_height=550                               ## default height=550"
 echo "$title_md"
 echo "$title_md file generated with preferences-example"
 exit; fi
