@@ -90,20 +90,20 @@ fi
 ####
 #### file with its route relative
 cmd_binary="$0"                  ;
-#### file with its full route absolute 
-cmd_realpath="$(realpath $0)" ;
+#### file with its full route absolute
+cmd_realpath="$(realpath $0)"    ;
 #### file without its route absolute/relative
 cmd_basename="$(basename $0)"    ;
 #### others configs for fwiptables
-cmd_version="cmd-10-21"                   ;
+cmd_version="cmd-10-22"          ;
 cmd_name="fwiptables, FireWall With iptables"               ;
 cmd_description="fwiptables, One Mini Script in one-file"   ;
 cmd_license="GPL v2, License General Public version 2"      ;
 ####
-#### set to installing   
+#### set to installing
 ####
 directory_installed="/usr/bin"
-cmd_config="fwiptables-cmd"  
+cmd_config="fwiptables-cmd"
 ####
 #### prepare directory data
 ####

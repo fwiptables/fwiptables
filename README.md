@@ -24,38 +24,32 @@
 ###  fwiptables install.                                     
   
     su root             . TYPE:   su root                   
-    Put bit of execution. TYPE:   chmod 755 ./fwiptables-ver-10_20-bash.sh 
-    Install this version. TYPE:   ./fwiptables-ver-10_20-bash.sh install   
+    Put bit of execution. TYPE:   chmod 755 ./fwiptables-ver-10_21-bash.sh 
+    Install this version. TYPE:   ./fwiptables-ver-10_21-bash.sh install   
   
 ###  fwiptables uninstall.                                   
   
     Uninstall fwiptables. TYPE:   fwiptables-cmd uninstall     
   
-   [ ver ] [ Show version about ] [ ver.md ]       
-   [ info ] [ program ] /root/f-iptables-version/fwiptables-ver-10_20-bash.sh With Version cmd-10-20        
+###  [ ver ] [ Show version about ] [ ver.md ]       
+   [ info ] [ program ] /root/f-iptables-version/fwiptables-ver-10_21-bash.sh With Version cmd-10-21        
    [ info ] [ Details ] fwiptables, FireWall With iptables | fwiptables, One Mini Script in one-file                   
-   [ info ] [ Binary file     ] /root/f-iptables-version/fwiptables-ver-10_20-bash.sh                         
+   [ info ] [ Binary file     ] /root/f-iptables-version/fwiptables-ver-10_21-bash.sh                         
    [ info ] [ Data directory  ] /root/.config/fwiptables-cmd                       
    [ info ] [ Cache directory ] /run/fwiptables                      
-   [ info ] [ File format     ] /root/f-iptables-version/fwiptables-ver-10_20-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable      
+   [ info ] [ File format     ] /root/f-iptables-version/fwiptables-ver-10_21-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable      
 ###  [ compile ] [  optionally: howto compile bash script ] [ compile.md]  
-###    
-   This script in bash works. But if you desire is compiling... follow that steps,       
-   there are three steps to compile fwiptables script, it is possible with obash.        
-   when you has compiled, it does works only with your system hardware architecture.     
-###    
-   [ step ] [ 0 ] Necesary: fwiptables in source script bash                            
+   [ info ] This bash script works fully. But if your desire is compiling...    
+   [ step ] [ 0 ] Necesary: fwiptables in source script bash                    
    [ step ] [ 1 ] Download obash from oficial web internet                      
    [ step ] [ 2 ] Compile with obash command using command make.                
    [ step ] [ 3a] Or run: obash -c -o ./destination.bin ./source-bash.sh        
    [ step ] [ 3b] Or run: obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd   
-    
 ###  Actually, the file type is:                                                          
-/root/f-iptables-version/fwiptables-ver-10_20-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
-###   
+/root/f-iptables-version/fwiptables-ver-10_21-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
 ###  [ List general options for fwiptables ] [ options.md ]  
   
-###  /root/f-iptables-version/fwiptables-ver-10_20-bash.sh [optional-output] first_option [second_option]                  
+###  /root/f-iptables-version/fwiptables-ver-10_21-bash.sh [optional-output] first_option [second_option]                  
 ### 
 ###   [ optional-output ]                                                            
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       
