@@ -3807,6 +3807,7 @@ $cmd_realpath code $second_option | $command_grep -E "_use_|_prefix_|_port_|_shi
 if [ -s "$directory_config/$archivo" ] ; then 
 cat $directory_config/$archivo ;
 echo "$title_md [ _ok_ ] [ Config created fustomfw:  $archivo ]"
+echo "$title_md [ info ] [ modify: fwiptables modify-config $archivo ]"
 echo "$title_md [ info ] [ Launch: fwiptables custom $archivo ]"
 else rm $directory_config/$archivo
 echo "$title_md [ info ] choose one systemfw to clone"
