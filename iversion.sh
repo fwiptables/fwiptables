@@ -594,7 +594,6 @@ case "$config_close_deny"      in
 "RETURN") ;;
 "LOG")    ;;
 *) config_close_deny="REJECT"  ;; esac
-#### graphicall_window_dimension="--width=$graphicall_width --height=$graphicall_height"
 ####
 ####
 #### :rutina-final-update-variables:
@@ -4851,63 +4850,97 @@ case $second_option in
 #### 
 "new-mini-config")
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$third_option"
-$favorite_graphicall_dialog --text-info --width=$graphicall_width --height=$graphicall_height --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog --text-info \
+--width=$graphicall_width --height=$graphicall_height \
+--filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NEW MINI CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$favorite_graphicall_dialog --forms --width=$graphicall_width --height=$graphicall_height --text="OK new config file: $third_option AND launch: $cmd_realpath custom $third_option" ; exit
+$favorite_graphicall_dialog --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="OK new config file: $third_option AND launch: $cmd_realpath custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$favorite_graphicall_dialog --forms --width=$graphicall_width --height=$graphicall_height --text="Canceled new file: $third_option" ; exit; fi
+$favorite_graphicall_dialog --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "new-full-config")
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$third_option"
-$favorite_graphicall_dialog --text-info --width=$graphicall_width --height=$graphicall_height --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog --text-info \
+--width=$graphicall_width --height=$graphicall_height \
+--filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NEW FULL CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$favorite_graphicall_dialog --forms --width=$graphicall_width --height=$graphicall_height --text="OK new config file: $third_option AND launch: $cmd_realpath custom $third_option" ; exit
+$favorite_graphicall_dialog --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="OK new config file: $third_option AND launch: $cmd_realpath custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$favorite_graphicall_dialog --forms --width=$graphicall_width --height=$graphicall_height --text="Canceled new file: $third_option" ; exit; fi
+$favorite_graphicall_dialog --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "nueva-mini-config")
 cp "$defaultminicfg_spa" "$directory_temporal/$cmd_config-$third_option"
-$favorite_graphicall_dialog  --text-info --width=$graphicall_width --height=$graphicall_height --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog  --text-info \
+--width=$graphicall_width --height=$graphicall_height \
+--filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NUEVA MINI CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$favorite_graphicall_dialog  --forms --width=$graphicall_width --height=$graphicall_height --text="OK new config file: $third_option AND launch: $cmd_realpath custom $third_option" ; exit
+$favorite_graphicall_dialog  --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="OK new config file: $third_option AND launch: $cmd_realpath custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$favorite_graphicall_dialog  --forms --width=$graphicall_width --height=$graphicall_height --text="Canceled new file: $third_option" ; exit; fi
+$favorite_graphicall_dialog  --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "nueva-completa-config")
 cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_config-$third_option"
-$favorite_graphicall_dialog  --text-info --width=$graphicall_width --height=$graphicall_height --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog  --text-info \
+--width=$graphicall_width --height=$graphicall_height \
+--filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NUEVA COMPLETA CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$favorite_graphicall_dialog  --forms --width=$graphicall_width --height=$graphicall_height --text="OK new config file: $third_option AND launch: $cmd_realpath custom $third_option" ; exit
+$favorite_graphicall_dialog  --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="OK new config file: $third_option AND launch: $cmd_realpath custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$favorite_graphicall_dialog  --forms --width=$graphicall_width --height=$graphicall_height --text="Canceled new file: $third_option" ; exit; fi
+$favorite_graphicall_dialog  --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "modify-config")
 if [ -f "$directory_config/$third_option" ] ; then $nada
-else $favorite_graphicall_dialog  --forms --width=$graphicall_width --height=$graphicall_height --text="file not found: $third_option" ; exit ; fi 
+else $favorite_graphicall_dialog  --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="file not found: $third_option" ; exit ; fi 
 cp "$directory_config/$third_option" "$directory_temporal/$cmd_config-$third_option"
-$favorite_graphicall_dialog  --text-info --width=$graphicall_width --height=$graphicall_height --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog  --text-info \
+--width=$graphicall_width --height=$graphicall_height \
+--filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="MODIFY CONFIG" 1> "$directory_config/$third_option"
 if [ -s "$directory_config/$third_option" ]; then $nada ; 
-$favorite_graphicall_dialog  --forms --width=$graphicall_width --height=$graphicall_height --text="OK. file: $third_option"
+$favorite_graphicall_dialog  --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="OK. file: $third_option"
 else cp "$directory_temporal/$cmd_config-$third_option" "$directory_config/$third_option"
-$favorite_graphicall_dialog --forms --width=$graphicall_width --height=$graphicall_height --text="Canceled. file: $third_option"; fi
+$favorite_graphicall_dialog --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="Canceled. file: $third_option"; fi
 ;;
 ####
 ####
 *)$cmd_realpath "$second_option" "$third_option" "$quad_option" &> "$temporal_guifinal"
-$favorite_graphicall_dialog  --text-info --width=$graphicall_width --height=$graphicall_height --title="Gui Output || $cmd_realpath ||" \
+$favorite_graphicall_dialog  --text-info \
+--width=$graphicall_width --height=$graphicall_height \
+--title="Gui Output || $cmd_realpath ||" \
 --filename="$temporal_guifinal" --auto-scroll ;;
 #### 
 #### 
