@@ -508,7 +508,10 @@ serverport_iperf_ipv4="5001"                          ## fwiptables-file-default
 serverip_iperf_ipv6="ping6.online.net"                ## fwiptables-file-default ## default ping.online.net
 serverport_iperf_ipv6="5001"                          ## fwiptables-file-default ## default 5201
 #### #### english: look  #### spanish: apariencia
-graphic_window_dimension="--width=950 --height=650"   ## fwiptables-file-default ## default: "--width=950 --height=650"
+graphicall_width=950
+graphicall_height=650
+graphic_window_dimension="--width=$graphicall_width --height=$graphicall_height  "
+## fwiptables-file-default ## default: "--width=950 --height=650"
 #### #### english: look  #### spanish: apariencia
 quad="####" ; 
 cinco="#####" ;
@@ -592,6 +595,7 @@ case "$config_close_deny"      in
 "RETURN") ;;
 "LOG")    ;;
 *) config_close_deny="REJECT"  ;; esac
+graphic_window_dimension="--width=$graphicall_width --height=$graphicall_height"
 ####
 ####
 #### :rutina-final-update-variables:
@@ -1192,46 +1196,47 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "preferences-example" ] ; then
-echo ""
-echo "$title_md default option"
+echo "$title_md"
+echo "$title_md # default option"
 echo "without_first_option=options                        ## read below"
 echo "$title_md When fwiptables without its first_option: void or valid option required to works"
 echo "$title_md Example1: list-options Example2: list4 example3: ip4 example4: speed-ip4"
 echo "$title_md Example5: sockets Example6: gui-menu-yad Example7: gui-shell-yad"
-echo ""
-echo "$title_md default firewall"
+echo "$title_md"
+echo "$title_md # default firewall"
 echo "allow_use_legacy=                                   ## void or no"
 echo "allow_use_nft=no                                    ## void or no"
 echo "allow_use_ipv4=                                     ## void or no"
 echo "allow_use_ipv6=no                                   ## void or no"
 echo "allow_separate_rules=                               ## void or no"
 echo "config_close_deny=DROP                              ## DROP or REJECT"
-echo
-echo "$title_md default log"
+echo "$title_md"
+echo "$title_md # default log"
 echo "allow_save_autolog=no                               ## void or no"
 echo "allow_show_time=no                                  ## void or no"
-echo
-echo "$title_md default programs"
+echo "$title_md"  
+echo "$title_md # default programs"
 echo "favorite_text_editor=                               ## or void for automatic or specify command"
 echo "favorite_text_music=                                ## or void for automatic or specify command"
 echo "favorite_text_browser=                              ## or void for automatic or specify command"
 echo "favorite_date_command=                              ## or void for automatic or specify command"
-echo
-echo "$title_md default text-cli and graphicall-gui"
+echo "$title_md"
+echo "$title_md # default text-cli and graphicall-gui"
 echo "favorite_text_dialog=                               ## or void for automatic or specify command"
 echo "favorite_graphicall_dialog=                         ## or void for automatic or specify command"
-echo
-echo "$title_md default discover ip and speed ip"
+echo "$title_md"
+echo "$title_md # default discover ip and speed ip"
 echo "serverip_discover_ipv4=https://ifconfig.co/ip       ## default http://ifconfig.co/ip"
 echo "serverip_discover_ipv6=https://ifconfig.co/ip       ## default http://ifconfig.co/ip"
 echo "serverip_iperf_ipv4=ping.online.net                 ## default ping.online.net"
 echo "serverport_iperf_ipv4=5001                          ## default 5201"
 echo "serverip_iperf_ipv6=ping6.online.net                ## default ping.online.net"
 echo "serverport_iperf_ipv6=5001                          ## default 5201"
-echo
-echo "$title_md default dimesion graphicall"
-echo "graphic_window_dimension='--width=950 --height=650' ## default '--width=950 --height=650'"
-echo
+echo "$title_md"
+echo "$title_md # default dimesion graphicall"
+echo "grahicall_width=950                                 ## default width=950"
+echo "grahpicall_height=650                               ## default height=650"
+echo "$title_md"
 echo "$title_md file generated with preferences-example"
 exit; fi
 ####
@@ -4806,7 +4811,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "sockets" ]; then 
-echo "$title_md [ $first_option ] [ Show whith ss: LISTEN sockets (and UNCONN internals) ] "
+echo "$title_md [ $first_option ] [ Show whith ss: LISTEN sockets (UNCONN internals) ] "
 if [ "$command_awk" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Install ss command ]"; exit; fi
 if [ "$command_awk" == "$NULL" ]; then 
