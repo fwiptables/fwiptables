@@ -1252,8 +1252,8 @@ if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden fo
 else echo "$text_md $public_ip4"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
+echo "$title_md [ info ] [ Example: ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
 export | grep "_PROXY"
-echo " [ Example uppercase: ] HTTPS_PROXY=https://127.0.0.1:8080"
 echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] [ nameserver and search ] ###"
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
@@ -1293,8 +1293,8 @@ if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden fo
 else echo "$tab $public_ip6"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
+echo "$title_md [ info ] [ Example: ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
 export | grep "_PROXY"
-echo " [ Example uppercase: ] HTTPS_PROXY=https://127.0.0.1:8080"
 echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
