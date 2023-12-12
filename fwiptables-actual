@@ -1114,7 +1114,7 @@ if [ "$first_option" == "preferences-modify" ]; then
 echo "$title_md [ $first_option ] [ modify the default fwiptables ] "
 echo 
 $favorite_text_editor $default_preferences
-echo "$title_md [ info ] [ edit file $default_preferences to change variables ]"
+echo "$title_md [ info ] [ file $default_preferences ]"
 exit; fi
 ####
 ####
@@ -1128,7 +1128,6 @@ if [ "$first_option" == "dialog-modify" ]; then
 echo "$title_md [ $first_option ] [ modify the default dialog ] "
 echo 
 $favorite_text_editor $default_dialogrc
-
 echo "$title_md [ info ] [ edit file $default_dialogrc to change variables ]"
 exit; fi
 ####
@@ -1141,14 +1140,10 @@ exit; fi
 ####
 if [ "$first_option" == "preferences-read" ]; then 
 echo "$title_md [ $first_option ] [ read the default fwiptables ] "
-echo "$title_md [ info ] [ Show file $default_preferences to read variables ]"
-####
-####
-#### english: show file
-#### spanish: muestra el archivo
 ####
 ####
 cat $default_preferences
+echo "$title_md [ info ] [ file $default_preferences ]"
 ####
 ####
 exit; fi
