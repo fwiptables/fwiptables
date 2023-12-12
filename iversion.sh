@@ -174,7 +174,8 @@ XDG_RUNTIME_DIR="/run/user/0"
 command_xhost="$(command -v xhost)" ; 
 if [ "$(logname)" != "$NULL" ]; then 
 sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
-$command_xhost +SI:localuser:root &> /dev/null ; fi
+$command_xhost +SI:localuser:root &> /dev/null ;
+else sudo $command_xhost +SI:localuser:root &> /dev/null ; fi
 ####
 ####
 #### use deprecated
