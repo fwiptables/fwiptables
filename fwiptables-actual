@@ -1252,7 +1252,7 @@ if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden fo
 else echo "$text_md $public_ip4"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
-export | grep -i proxy
+export | grep "_PROXY"
 echo " [ Example uppercase: ] HTTPS_PROXY=https://127.0.0.1:8080"
 echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] [ nameserver and search ] ###"
@@ -1293,7 +1293,7 @@ if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden fo
 else echo "$tab $public_ip6"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
-export | grep -i proxy
+export | grep "_PROXY"
 echo " [ Example uppercase: ] HTTPS_PROXY=https://127.0.0.1:8080"
 echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
