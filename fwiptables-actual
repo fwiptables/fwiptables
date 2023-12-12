@@ -1160,7 +1160,7 @@ echo "$title_md [ $first_option ] [ $cmd_realpath preferences-regen ] [ preferen
 rm $default_preferences
 echo "$title_md [ _ok_ ] [ $cmd_realpath deleted old configs ]"
 file $cmd_realpath
-$cmd_realpath preferences-example | grep -iv "logname:" &> $default_preferences
+$cmd_realpath preferences-example | $command_grep -iv logname\: &> $default_preferences
 echo "$title_md [ _ok_ ] [ Regenerated: $cmd_realpath values for default in ]"
 echo "$title_md [ _ok_ ] [ Regenerated: $default_preferences ]"
 exit; fi
