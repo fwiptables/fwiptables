@@ -4298,7 +4298,7 @@ echo "$title_md Install curl to download/install latest version"; fi
 ####
 echo "$title_md Downloading fwiptables latest"
 descarga="$directory_log/fwiptables-cmd"
-$command_curl $web_download_sourceforge -s -L -o $descarga && chmod ugo+x $descarga && $descarga install
+$command_curl $git_download_sourceforge -s -L -o $descarga && chmod ugo+x $descarga && $descarga install
 exit; fi
 ####
 ####
