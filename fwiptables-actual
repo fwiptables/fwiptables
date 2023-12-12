@@ -3802,14 +3802,16 @@ exit; fi
 ####
 if [ "$first_option" == "clone-systemfw" ] && [ "$second_option" != "$NULL" ] ; then 
 archivo="$second_option"
+case $archivo in client-*);; game-*);; games-*);; server-*);;
+*) echo "$title [ fail ] choose a valid systemfw to clone" ; exit ;; esac
 $cmd_realpath code $second_option | $command_grep -E "_use_|_prefix_|_port_|_shield_" &> $directory_config/$archivo
 if [ -s "$directory_config/$archivo" ] ; then 
 cat $directory_config/$archivo ;
-echo "$title_md [ _ok_ ] [ Config created fustomfw:  $archivo ]"
-echo "$title_md [ info ] [ modify: fwiptables modify-config $archivo ]"
-echo "$title_md [ info ] [ Launch: fwiptables custom $archivo ]"
+echo "$title_md [ _ok_ ] [ Created customfw with the name :    $archivo   ]"
+echo "$title_md [ info ] [ Modify  :  fwiptables modify-config $archivo   ]"
+echo "$title_md [ info ] [ Launch  :  fwiptables custom        $archivo   ]"
 else rm $directory_config/$archivo
-echo "$title_md [ info ] choose one systemfw to clone"
+echo "$title_md [ info ] choose one valid systemfw to clone"
 echo "$title_md [ fail ] config no done $archivo" ; fi
 exit; fi
 ####
@@ -7160,7 +7162,7 @@ server_port_udp="1025:65000" ;
 client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="" ;
 fi
-#### :rutina-final-games-shooter:
+#### :rutina-final-games-udp:
 #### ##################################################
 #### ##################################################
 #### :rutina-inicial-game-wesnoth:
