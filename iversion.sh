@@ -852,6 +852,7 @@ favorite_graphicall_dialog="$command_yad"      ; first_option="gui-menu" ; fi
 #### english: alias simple for options commons
 ####
 ####
+if [ "$first_option" == "expert" ] ; then first_option="options-expert" ; fi
 if [ "$first_option" == "version" ] ; then first_option="ver" ; fi
 if [ "$first_option" == "client-squid" ] ; then first_option="client-proxy" ; fi
 if [ "$first_option" == "server-squid" ] ; then first_option="server-proxy" ; fi
@@ -1438,22 +1439,6 @@ exit ; fi
 ####
 ####
 #### :rutina-final-ver:
-##########    english: expert: system script, the version option              ##########
-##########    spanish: expert: script de sistema, la opcion mostrar version   ##########
-#### :rutina-inicial-expert:
-####
-####
-if [ "$first_option" == "expert" ]; then 
-echo "$title_md [ $first_option ] [ Show expert options ] [ expert.md] "
-echo "$text_md expert-show-weather . show weather"
-echo "$text_md expert-compile-obash . Compile fwiptables-cmd to fwiptables-bin with obash"
-echo "$text_md expert-upgrade-stable . Upgrade from web sourceforge fwiptables-cmd with curl"
-echo "$text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables-cmd with curl"
-echo "$text_md expert-download-adblock . Download four files of blacklist hosts to /etc/hosts.blacklist"
-exit ; fi
-####
-####
-#### :rutina-final-expert:
 ##########    english: weather: show the weather with wttr.in     ##########
 ##########    spanish: el tiempo: muestra el tiempo con wttr.in   ##########
 #### :rutina-inicial-expert-show-weather:
@@ -2160,11 +2145,10 @@ echo "$text_md game-freeciv lan-tor lan-vpn server-ssh server-irc server-samba s
 echo "$text_md server-print server-lamp server-news server-ftp server-mail server-webserver         "
 echo "$text_md server-teamspeak server-mumble server-sql server-asterisk server-domain server-proxy "
 echo "$title_md  [ options-easy ]                                                              "
-echo "$text_md preferences-read preferences-modify preferences-regen preferences-example ver        "
-echo "$text_md list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6         "
-echo "$text_md ip4 ip6 speed-glx sockets nodes geoip webcert date free expert about notes           "
-echo "$text_md radio compile ip-forward depends info code info examples commands variables          "
-echo "$text_md intro download install uninstall pc-halt pc-shutdown pc-reboot            "
+echo "$text_md preferences-read preferences-modify preferences-regen preferences-example ver version"  
+echo "$text_md list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6 ip4 ip6 "
+echo "$text_md speed-glx sockets nodes geoip webcert date free expert about notes radio compile code"
+echo "$text_md ip-forward depends info examples commands variables intro download install uninstall "
 echo "$title_md            ||| Example: fwiptables-cmd -gui-zenity info list |||         "
 exit ; fi
 ####
@@ -2208,8 +2192,7 @@ echo "$text_md                        list-options clasic-options info-options f
 echo "$text_md                        sockets nodes geoip date free ver about notes depends commands "  
 echo "$text_md                        ip-forward speed-ip4 speed-ip6 speed-glx code radio expert ver "  
 echo "$text_md                        variables examples intro webcert radio info download compile   "  
-echo "$text_md                        license install uninstall pc-halt pc-shutdown pc-reboot  "
-echo "$title_md                       ||| Example: fwiptables-cmd -gui-shell-yad ls4 |||     "
+echo "$text_md                        license install uninstall   "
 echo "$title_md                       ||| Example: fwiptables-cmd -gui-zenity info list |||  "
 exit ; fi
 ####
@@ -2514,6 +2497,28 @@ exit; fi
 ####
 ####
 #### :rutina-final-options-easy:
+##########    english: options-expert: options for fwiptables firewall      ##########
+##########    spanish: options-expert: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-options-expert:
+####
+####
+if   [ "$first_option" == "options-expert" ]; then
+echo "$text_md "
+echo "$title_md | options-expert | $cmd_realpath options-expert |"
+echo "$text_md"
+echo "$text_md expert-show-weather . show weather"
+echo "$text_md expert-compile-obash . Compile fwiptables-cmd to fwiptables-bin with obash"
+echo "$text_md expert-upgrade-stable . Upgrade from web sourceforge fwiptables-cmd with curl"
+echo "$text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables-cmd with curl"
+echo "$text_md expert-download-adblock . Download four files of blacklist hosts to /etc/hosts.blacklist"
+echo "$text_md expert-pc-halt . halt computer"
+echo "$text_md expert-pc-shutdown . shutdown computer"
+echo "$text_md expert-pc-reboot . reboot computer"
+echo "$text_md "
+exit; fi
+####
+####
+#### :rutina-final-options-expert:
 ##########    english: info-options: options for fwiptables firewall      ##########
 ##########    spanish: info-options: opciones para fwiptables firewall    ##########
 #### :rutina-inicial-info-options:
@@ -2531,6 +2536,7 @@ $cmd_realpath firewall-listnumeral
 $cmd_realpath firewall-customfw
 $cmd_realpath firewall-systemfw
 $cmd_realpath options-easy
+$cmd_realpath options-expert
 echo "$text_md"
 exit; fi
 ####
@@ -4212,12 +4218,12 @@ exit;  fi
 ####
 ####
 #### :rutina-final-license:
-##########    english: pc-halt: power off computer   ##########
-##########    spanish: pc-halt: apaga el ordenador   ##########
-#### :rutina-inicial-pc-halt:
+##########    english: expert-pc-halt: power off computer   ##########
+##########    spanish: expert-pc-halt: apaga el ordenador   ##########
+#### :rutina-inicial-expert-pc-halt:
 ####
 ####
-if   [ "$first_option" == "pc-halt" ]; then 
+if   [ "$first_option" == "expert-pc-halt" ]; then 
 echo "$title_md [ $first_option ] [ power off computer ] "
 echo "Halt to power off computer ... in 15 seconds"
 $command_sleep 5
@@ -4229,13 +4235,13 @@ $command_halt
 exit; fi
 ####
 ####
-#### :rutina-final-pc-halt:
-##########    english: pc-shutdown: power off computer   ##########
-##########    spanish: pc-shutdown: apaga el ordenador   ##########
-#### :rutina-inicial-pc-shutdown:
+#### :rutina-final-expert-pc-halt:
+##########    english: expert-pc-shutdown: power off computer   ##########
+##########    spanish: expert-pc-shutdown: apaga el ordenador   ##########
+#### :rutina-inicial-expert-pc-shutdown:
 ####
 ####
-if   [ "$first_option" == "pc-shutdown" ]; then 
+if   [ "$first_option" == "expert-pc-shutdown" ]; then 
 echo "$title_md [ $first_option ] [ power off computer ] "
 echo "Halt to shutdown computer ... in 15 seconds"
 $command_sleep 5
@@ -4247,13 +4253,13 @@ $command_shutdown -h now
 exit; fi
 ####
 ####
-#### :rutina-final-pc-shutdown:
-##########    english: pc-reboot: reboot computer         ##########
-##########    spanish: pc-reboot: reinicia el ordenador   ##########
-#### :rutina-inicial-pc-shutdown:
+#### :rutina-final-expert-pc-shutdown:
+##########    english: expert-pc-reboot: reboot computer         ##########
+##########    spanish: expert-pc-reboot: reinicia el ordenador   ##########
+#### :rutina-inicial-expert-pc-reboot:
 ####
 ####
-if   [ "$first_option" == "pc-reboot" ]; then 
+if   [ "$first_option" == "expert-pc-reboot" ]; then 
 echo "$title_md [ $first_option ] [ reboot computer ] "
 echo "Halt to reboot computer ... in 15 seconds"
 $command_sleep 5
@@ -4265,7 +4271,7 @@ $command_reboot
 exit; fi
 ####
 ####
-#### :rutina-final-pc-shutdown:
+#### :rutina-final-expert-pc-reboot:
 ##########    english: expert-upgrade-stable: upgrade fwiptables    ##########
 ##########    spanish: expert-upgrade-stable: upgrade fwiptables    ##########
 #### :rutina-inicial-expert-upgrade-stable:
@@ -4428,7 +4434,7 @@ exit; fi
 if   [ "$first_option" == "info" ]; then 
 echo "$title_md [ $first_option ]  [ info $second_option ]"
 echo "$title_md Launch:  $cmd_realpath [optional-output] info [pattern-to-search]"
-$cmd_realpath info-options | grep -i "$second_option"
+$cmd_realpath info-options | $command_grep -i "$second_option"
 exit; fi
 ####
 ####
