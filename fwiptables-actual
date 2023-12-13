@@ -5092,19 +5092,6 @@ menugtk=$($command_zenity \
 --title="Gui Shell || $cmd_realpath || $cmd_version ||" \
 --text="$($cmd_realpath list-options)" \
 --add-entry="$cmd_realpath " )
-case $? in
-1)
-####
-####
-#### zenity --info --width=$graphicall_width --height=$graphicall_height --text="$cmd_realpath good bye";
-####
-####
-$favorite_graphicall_dialog \
---width=$graphicall_width --height=$graphicall_height \
---timeout=$time_close_graphicall \
---text="$mensage_with_timeout"
-exit ;;
-esac
 ####
 ####
 #### english: manage some configs    ####
@@ -5112,6 +5099,10 @@ esac
 ####
 ####
 case $menugtk in
+####
+####
+1) exit ;;
+$NULL) exit ;;
 ####
 ####
 #### english: new-full-config and nueva-completa-config whithout parameters ####
