@@ -1248,7 +1248,10 @@ else echo "$text_md $public_ip4"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
 echo "$title_md [ info ] [ Example: ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
-export | grep "_PROXY"
+listado_proxy="$(sudo -i -u root bash -c export | grep \_PROXY | wc -l)"
+if [ "$listado_proxy" -eq "0" ];
+then echo "$text_md [ info ] Without proxy in export variables"
+else sudo -i -u root bash -c export | grep "_PROXY" ; fi
 echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] [ nameserver and search ] ###"
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
@@ -1289,7 +1292,10 @@ else echo "$tab $public_ip6"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
 echo "$title_md [ info ] [ Example: ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
-export | grep "_PROXY"
+listado_proxy="$(sudo -i -u root bash -c export | grep \_PROXY | wc -l)"
+if [ "$listado_proxy" -eq "0" ];
+then echo "$text_md [ info ] Without proxy in export variables"
+else sudo -i -u root bash -c export | grep "_PROXY" ; fi
 echo
 echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
