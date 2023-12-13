@@ -1246,14 +1246,14 @@ $serverip_discover_ipv4 -w "\n"| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$text_md $public_ip4"; fi; fi
 echo
-echo "$title_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
+echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
 echo "$title_md [ info ] [ Example: ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
 listado_proxy="$(sudo -i -u root bash -c export | grep \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ];
 then echo "$text_md [ info ] Without proxy in export variables"
 else sudo -i -u root bash -c export | grep "_PROXY" ; fi
 echo
-echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] [ nameserver and search ] ###"
+echo "$title_md [ info ] ### [ Domain resolve ] [ Resolv.conf ] [ nameserver and search ] ###"
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
 cat /etc/resolv.conf | $command_grep -E "nameserver|search"      ; fi
 if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
@@ -1290,14 +1290,14 @@ $serverip_discover_ipv6 -w "\n"| head -1)"
 if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip6"; fi; fi
 echo
-echo "$title_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
+echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
 echo "$title_md [ info ] [ Example: ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
 listado_proxy="$(sudo -i -u root bash -c export | grep \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ];
 then echo "$text_md [ info ] Without proxy in export variables"
 else sudo -i -u root bash -c export | grep "_PROXY" ; fi
 echo
-echo "$title_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
+echo "$title_md [ info ] ### [ Domain resolve ] [ Resolv.conf ] ###"
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
 cat /etc/resolv.conf | $command_grep -E "nameserver|search"      ; fi
 if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
