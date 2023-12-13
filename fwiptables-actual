@@ -5087,7 +5087,7 @@ favorite_graphicall_dialog="$command_zenity"
 #### cd $directory_config
 ####
 ####
-menugtk=$($command_zenity --auto-scroll \
+menugtk=$($command_zenity \
 --forms --width=$graphicall_width --height=$graphicall_height \
 --title="Gui Shell || $cmd_realpath || $cmd_version ||" \
 --text="$($cmd_realpath list-options)" \
@@ -5099,11 +5099,11 @@ case $? in
 #### zenity --info --width=$graphicall_width --height=$graphicall_height --text="$cmd_realpath good bye";
 ####
 ####
-$favorite_graphicall_dialog  --progress \
+$favorite_graphicall_dialog \
 --width=$graphicall_width --height=$graphicall_height \
 --timeout=$time_close_graphicall \
---text="$mensage_with_timeout" \
---auto-close --auto-kill ; exit;;
+--text="$mensage_with_timeout"
+exit ;;
 esac
 ####
 ####
@@ -5216,13 +5216,7 @@ $cmd_realpath -gui-zenity preferences-modify
 #### spanish: las demas opciones   ####
 ####
 ####
-"$NULL")
-$favorite_graphicall_dialog  --info 
---width=$graphicall_width --height=$graphicall_height \
---text="$cmd_realpath good bye";
-$favorite_graphicall_dialog  --progress \
---width=$graphicall_width --height=$graphicall_height \
---timeout=1 --text="Closing gui menu" --auto-close --auto-kill ; exit ;;
+"$NULL")  exit ;;
 *) fecha_temporal=$(date | $command_sed s/\ //g) ; $cmd_realpath $menugtk &> /tmp/fwiptables-$fecha_temporal
 $favorite_graphicall_dialog  --text-info \
 --width=$graphicall_width --height=$graphicall_height \
@@ -5255,20 +5249,10 @@ favorite_graphicall_dialog="$command_yad"
 #### cd $directory_config
 ####
 ####
-menugtk=$($command_yad --auto-scroll \
---entry --width=$graphicall_width --height=$graphicall_height \
+menugtk=$($command_yad --entry \
+--width=$graphicall_width --height=$graphicall_height \
 --entry-label="$($cmd_realpath list-options)" \
 --entry-text="first_option [ second_option ] " )
-case $? in
-1)
-####
-####
-#### zenity --info --width=$graphicall_width --height=$graphicall_height --text="$cmd_realpath good bye";
-####
-####
-$command_yad  --progress --width=$graphicall_width --height=$graphicall_height --timeout=$time_close_graphicall --text="$mensage_with_timeout" \
---auto-close --auto-kill ; exit;;
-esac
 ####
 ####
 #### english: manage some configs    ####
@@ -5276,6 +5260,10 @@ esac
 ####
 ####
 case $menugtk in
+####
+####
+$NULL) exit ;;
+1) exit ;;
 ####
 ####
 #### english: new-full-config and nueva-completa-config whithout parameters ####
