@@ -2133,13 +2133,11 @@ exit; fi
 ####
 if [ "$first_option" == "list-options" ] ; then 
 echo "$title_md $cmd_realpath [optional-output] first_option [second_option]   "
-echo "$title_md"
 echo "$title_md  [ optional-output ]                                                                "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       "
 echo "$text_md [ -cli-dialog -cli-whiptail ] [ -gui-zenity -gui-yad ]                               "
 echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail ] [ -gui-roll-zenity ]                         "
 echo "$text_md [ -gui-menu-zenity -gui-menu-yad ] [ -gui-shell-zenity -gui-shell-yad ]              "
-echo "$title_md"
 echo "$title_md  [ firewall-control ]                                                               "
 echo "$text_md stop continue reset actual show save load names-control eraserules                   "
 echo "$title_md  [ firewall-listconceptual ]                                                        "
@@ -2167,7 +2165,6 @@ echo "$text_md list-options clasic-options info-options filelog autolog speed-ip
 echo "$text_md ip4 ip6 speed-glx sockets nodes geoip webcert date free expert about notes           "
 echo "$text_md radio compile ip-forward depends info code info examples commands variables          "
 echo "$text_md intro download install uninstall pc-halt pc-shutdown pc-reboot            "
-echo "$title_md            ||| Example: fwiptables-cmd -gui-shell-yad |||                "
 echo "$title_md            ||| Example: fwiptables-cmd -gui-zenity info list |||         "
 exit ; fi
 ####
