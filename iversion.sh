@@ -5087,22 +5087,22 @@ favorite_graphicall_dialog="$command_zenity"
 #### cd $directory_config
 ####
 ####
-menugtk=$($command_zenity \
+menugtk="$($command_zenity \
 --forms --width=$graphicall_width --height=$graphicall_height \
 --title="Gui Shell || $cmd_realpath || $cmd_version ||" \
 --text="$($cmd_realpath list-options)" \
---add-entry="$cmd_realpath " )
+--add-entry="$cmd_realpath " )"
 ####
 ####
 #### english: manage some configs    ####
 #### spanish: maneja algunas configs ####
 ####
 ####
-case $menugtk in
+case "$menugtk" in
 ####
 ####
-1) exit ;;
-$NULL) exit ;;
+1) $cmd_realpath gui-zenity options; exit ;;
+$NULL) $cmd_realpath gui-zenity options; exit ;;
 ####
 ####
 #### english: new-full-config and nueva-completa-config whithout parameters ####
@@ -5240,21 +5240,20 @@ favorite_graphicall_dialog="$command_yad"
 #### cd $directory_config
 ####
 ####
-menugtk=$($command_yad --entry \
+menugtk="$($command_yad --entry \
 --width=$graphicall_width --height=$graphicall_height \
---entry-label="$($cmd_realpath list-options)" \
---entry-text="first_option [ second_option ] " )
+--entry-label="$($cmd_realpath list-options)")"
 ####
 ####
 #### english: manage some configs    ####
 #### spanish: maneja algunas configs ####
 ####
 ####
-case $menugtk in
+case "$menugtk" in
 ####
 ####
-$NULL) exit ;;
-1) exit ;;
+1) $cmd_realpath gui-yad options; exit ;;
+$NULL) $cmd_realpath gui-yad options; exit ;;
 ####
 ####
 #### english: new-full-config and nueva-completa-config whithout parameters ####
