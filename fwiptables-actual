@@ -125,7 +125,7 @@ web_hompage_devuan="https://git.devuan.org/fwiptables/fwiptables" ;
 web_download_sourceforge="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
 web_download_github="https://github.com/fwiptables/fwiptables/releases" ;
 web_download_devuan="https://git.devuan.org/fwiptables/fwiptables/releases" ;
-git_download_sourceforge="https://sourceforge.net/p/f-iptables/code/ci/main/tree/fwiptables-actual?format=raw"
+git_download_sourceforge="https://sourceforge.net/p/f-iptables/code/ci/main/tree/fwiptables-actual?format=raw" ;
 ####
 ####
 #### :rutina-final-enviroment:
@@ -4296,7 +4296,7 @@ if   [ "$first_option" == "expert-upgrade-unstable" ]; then
 if [ "$command_curl" == "$NULL" ]; then
 echo "$title_md Install curl to download/install latest version"; fi
 ####
-echo "$title_md Downloading fwiptables latest"
+echo "$title_md Downloading fwiptables development latest"
 descarga="$directory_log/fwiptables-cmd"
 $command_curl $git_download_sourceforge -s -L -o $descarga && chmod ugo+x $descarga && $descarga install
 exit; fi
