@@ -1233,7 +1233,7 @@ if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command 
 else $command_ip -4 route ; fi
 echo
 echo "$title_md [ info ] ### [ Network Listen ] ###"
-echo "$text_md   Network listen: $cmd_realpath sockets"
+echo "$text_md  for network listen launch: $cmd_realpath sockets"
 echo
 echo "$title_md [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ] ; then echo "$title_md [ info ] [ install ip command ]"
@@ -1278,7 +1278,7 @@ if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command 
 else $command_ip -6 route ; fi
 echo
 echo "$title_md [ info ] ### [ Network Listen ] ###"
-echo "$text_md  for network listen: $cmd_realpath sockets"
+echo "$text_md  for network listen launch: $cmd_realpath sockets"
 echo
 echo "$title_md [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
