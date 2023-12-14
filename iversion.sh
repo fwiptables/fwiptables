@@ -1382,14 +1382,15 @@ exit; fi
 ####
 if [ "$first_option" == "about" ]; then 
 echo "$title_md [ $first_option ] [ Show about ] [ version.md] "
-echo "$title_md [ Name program ]"
+echo
+echo "$title_md [ Short Description ]"
 echo "$text_md $cmd_shortdescription"
+echo
+echo "$title_md [ Long Description ]"
+echo "$text_md $cmd_longdescription"
 echo
 echo "$title_md [ Version program ]"
 echo "$text_md $cmd_version"
-echo
-echo "$title_md [ Description program ]"
-echo "$text_md $cmd_longdescription"
 echo
 echo "$title_md [ File format ]"
 echo  "$text_md" "$($command_file $cmd_realpath  )"
@@ -1426,8 +1427,8 @@ exit ; fi
 ####
 if [ "$first_option" == "ver" ]; then 
 echo "$title_md [ $first_option ] [ Show version about ] [ ver.md ]       "    
-echo "$text_md [ info ] [ program ] $cmd_realpath With Version $cmd_version        "     
-echo "$text_md [ info ] [ Details ] $cmd_shortdescription | $cmd_longdescription                   "    
+echo "$text_md [ info ] [ program ] $cmd_realpath With Version $cmd_version       "     
+echo "$text_md [ info ] [ Details ] $cmd_shortdescription | $cmd_longdescription  "    
 echo "$text_md [ info ] [ Binary file     ] $cmd_realpath                         "   
 echo "$text_md [ info ] [ Data directory  ] $directory_data                       "     
 echo "$text_md [ info ] [ Cache directory ] $directory_cache                      "   
@@ -1439,10 +1440,14 @@ exit ; fi
 ##########    english: weather: show the weather with wttr.in     ##########
 ##########    spanish: el tiempo: muestra el tiempo con wttr.in   ##########
 #### :rutina-inicial-expert-show-weather:
+####
+####
 if   [ "$first_option" == "expert-show-weather" ]; then 
 case $command_curl in "$NULL") echo "$title_md [ fail ] [ Install a curl ]"; exit ;; esac
 curl -s wttr.in/?3n?T
 exit; fi
+####
+####
 #### :rutina-final-expert-show-weather:
 ##########    english: notes: notes to configure iptables      ##########
 ##########    spanish: notes: notas para configurar iptables   ##########
@@ -1453,7 +1458,7 @@ if [ "$first_option" == "notes" ]; then
 echo "$title_md [ $first_option ] [ List notes about ] [ notes md ]"
 echo "$text_md"
 echo "$text_md"
-echo "$title_md           Several notes .."
+echo "$title_md Several notes .."
 echo "$text_md"
 echo "$text_md [ Notes ]"
 echo "$text_md"
@@ -1487,9 +1492,9 @@ echo "$text_md"
 echo "$text_md"
 echo "$text_md [ Notes ] necesary protocols for ip v6"
 echo "$text_md"
-echo "$text_md ipv6-icmp : Necesary protocol in ipv6"
+echo "$text_md ipv6-icmp  : Necesary protocol in ipv6"
 echo "$text_md"
-echo "$text_md ipv4 protocols : ipv6 works too with old ipv4 procotols"
+echo "$text_md ipv4 ports : ipv6 works too with old ipv4 ports"
 echo "$text_md"
 echo "$text_md"
 exit; fi
@@ -2522,7 +2527,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "info-options" ]; then 
-echo "$title_md [ $first_option ]  [ info options for firewall iptables ] "
+echo "$title_md [ $first_option ]  [ info options for firewall iptables ] [ info-options.md]"
 echo "$text_md"
 echo "$title_md           Firewall fwiptables-cmd info-options ... $cmd_version"
 echo "$text_md"
@@ -2580,7 +2585,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "variables" ]; then 
-echo "$title_md [ $first_option ]  [ list variables firewall fwiptables] "
+echo "$title_md [ $first_option ]  [ list variables firewall fwiptables] [ variables.md ]"
 echo "$text_md"
 echo "$title_md           Firewall fwiptables-cmd variables ... $cmd_version"
 echo "$text_md "
@@ -2709,7 +2714,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "commands" ]; then 
-echo "$title_md [ $first_option ]  [ list commands possible depends ] "
+echo "$title_md [ $first_option ]  [ list commands possible depends ] [ depends.md ]"
 echo "##########     commands possible depends  ##########"
 echo "$text_md"
 echo "$text_md awk              # for sockets"
@@ -3344,7 +3349,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "listnum" ]; then 
-echo "$title_md [ list ] [ List numerical filter ipv4 ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ list ] [ List numerical filter ipv4 ] \
+[ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
 "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
 nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
@@ -3352,18 +3358,22 @@ nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-numerical-ip4"
 echo
 case $legacycuatro in
-"$NULL") echo "$title_md [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$title_md [ info ] [ Without rules xtables ] [ iptables-legacy ] \
+[ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
+echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] \
+[ listing rules .. ]"
 echo
 $command_iptables_legacy -t filter -v -L -n
 ;;
 esac
 echo "$text_md"
 case $nftcuatro in
-"$NULL") echo "$title_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$title_md [ info ] [ Without rules nftables ] \
+[ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
+echo "$title_md [ info ] [ With rules nftables ] [ iptables-nft ] \
+[ $fromrules ] [ listing rules .. ]" 
 echo
 $command_iptables_nft -t filter -v -L -n
 ;;
@@ -3378,7 +3388,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "listnum6" ]; then 
-echo "$title_md [ list ] [ List numerical filter ipv6 ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ list ] [ List numerical filter ipv6 ] \
+[ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
 "$command_ip6tables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
 nftcuatro=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
@@ -3386,7 +3397,8 @@ nftcuatro=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-numerical-ip6"
 echo
 case $legacycuatro in
-"$NULL") echo "$title_md [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$title_md [ info ] [ Without rules xtables ] \
+[ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
 echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
@@ -3395,7 +3407,8 @@ $command_iptables_legacy -t filter -v -L -n
 esac
 echo "$text_md"
 case $nftcuatro in
-"$NULL") echo "$title_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" ;;
+"$NULL") echo "$title_md [ info ] [ Without rules nftables ] \
+[ iptables-nft ] [ $fromrules ] [ listing rules .. ]" ;;
 *)
 echo "$title_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
@@ -3412,7 +3425,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-filter4" ]; then 
-echo "$title_md [ $first_option ] [ List filter ipv4 ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ $first_option ] [ List filter ipv4 ] \
+[ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip4"
 echo
 echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
