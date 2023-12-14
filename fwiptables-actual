@@ -1267,7 +1267,7 @@ if [ "$command_ip" == "$NULL" ] ; then echo "$text_md [ info ] [ install ip comm
 else $command_ip -6 route ; fi
 echo
 echo "$title_md [ info ] ### [ Network Listen ] ###"
-echo "$text_md  for network listen launch: $cmd_realpath sockets"
+$cmd_realpath sockets | $command_grep -iv ^# | $command_grep LISTEN
 echo
 echo "$title_md [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ] ; then echo "$text_md [ info ] [ install ip command ]"
@@ -1278,7 +1278,7 @@ if [ "$command_curl" == "$NULL" ] ; then echo "$text_md [ info ] [ install curl 
 public_ip6="$($command_timeout -s SIGINT -v 8  $command_curl --noproxy '*' -k -s -6 \
 $serverip_discover_ipv6 -w "\n"| head -1)"
 if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
-else echo "$text_md $public_ip6"; fi; fi
+else echo "$text_md   $public_ip6"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
 echo "$title_md [ info ] [ HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
