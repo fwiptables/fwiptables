@@ -4326,8 +4326,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "compile" ]; then 
-echo "$title_md [ $first_option ] [  optionally: howto compile bash script ] [ compile.md]  "
-echo "$text_md [ info ] This bash script works fully. But if your desire is compiling...    "
+echo "$title_md [ $first_option ] [  Optionally compile from bash script ] [ compile.md]    "
+echo "$text_md [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling...         "
 echo "$text_md [ step ] [ 0 ] Necesary: fwiptables in source script bash                    "
 echo "$text_md [ step ] [ 1 ] Download obash from oficial web internet                      "
 echo "$text_md [ step ] [ 2 ] Compile with obash command using command make.                "
