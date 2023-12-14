@@ -32,7 +32,7 @@
     Uninstall fwiptables. TYPE:   fwiptables-cmd uninstall     
   
 ###  [ ver ] [ Show version about ] [ ver.md ]       
-   [ info ] [ program ] /root/f-iptables-version/fwiptables-ver-11-00-bash.sh With Version cmd-10-22        
+   [ info ] [ program ] /root/f-iptables-version/fwiptables-ver-11-00-bash.sh With Version cmd-11-00        
    [ info ] [ Details ] fwiptables, FireWall With iptables | fwiptables, One Mini Script in one-file                   
    [ info ] [ Binary file     ] /root/f-iptables-version/fwiptables-ver-11-00-bash.sh                         
    [ info ] [ Data directory  ] /root/.config/fwiptables-cmd                       

@@ -92,7 +92,7 @@ fi
 ####
 cmd_realpath="$(realpath $0)"    # its full routename
 cmd_basename="$(basename $0)"    # its only filename
-cmd_version="cmd-10-22"          # its version
+cmd_version="cmd-11-00"          # its version
 directory_installed="/usr/bin"   # its directory installed
 file_installed="fwiptables-cmd"  # its filename installed
 cmd_shortdescription="fwiptables, FireWall With iptables"       # its name description short
