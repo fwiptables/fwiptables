@@ -5269,19 +5269,29 @@ $NULL) $cmd_realpath gui-yad options; exit ;;
 ####
 ####
 "new-full-config")
-$command_yad  --forms --width=$graphicall_width --height=$graphicall_height --text="$tab [ info ] [ Use: $cmd_realpath new-full-config config.cfg ]"
+$command_yad  --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="$tab [ info ] [ Use: $cmd_realpath new-full-config config.cfg ]"
 ;;
 "new-mini-config")
-$command_yad  --forms --width=$graphicall_width --height=$graphicall_height --text="$tab [ info ] [ Use: $cmd_realpath new-mini-config config.cfg ]"
+$command_yad  --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="$tab [ info ] [ Use: $cmd_realpath new-mini-config config.cfg ]"
 ;;
 "nueva-completa-config")
-$command_yad  --forms --width=$graphicall_width --height=$graphicall_height --text="$tab [ info ] [ Use: $cmd_realpath nueva-completa-config config.cfg ]"
+$command_yad  --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="$tab [ info ] [ Use: $cmd_realpath nueva-completa-config config.cfg ]"
 ;;
 "new-mini-config")
-$command_yad  --forms --width=$graphicall_width --height=$graphicall_height --text="$tab [ info ] [ Use: $cmd_realpath nueva-mini-config config.cfg ]"
+$command_yad  --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="$tab [ info ] [ Use: $cmd_realpath nueva-mini-config config.cfg ]"
 ;;
 "modify-config")
-$command_yad  --forms --width=$graphicall_width --height=$graphicall_height --text="$tab [ info ] [ Use: $cmd_realpath modify-config config.cfg ]"
+$command_yad  --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="$tab [ info ] [ Use: $cmd_realpath modify-config config.cfg ]"
 ;;
 ####
 ####
@@ -5290,19 +5300,29 @@ $command_yad  --forms --width=$graphicall_width --height=$graphicall_height --te
 ####
 ####
 "new-full-config ")
-$command_yad  --forms --width=$graphicall_width --height=$graphicall_height --text="$tab [ info ] [ Use: $cmd_realpath new-full-config config.cfg ]"
+$command_yad  --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="$tab [ info ] [ Use: $cmd_realpath new-full-config config.cfg ]"
 ;;
 "new-mini-config ")
-$command_yad  --forms --width=$graphicall_width --height=$graphicall_height --text="$tab [ info ] [ Use: $cmd_realpath new-mini-config config.cfg ]"
+$command_yad  --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="$tab [ info ] [ Use: $cmd_realpath new-mini-config config.cfg ]"
 ;;
 "nueva-completa-config ")
-$command_yad  --forms --width=$graphicall_width --height=$graphicall_height --text="$tab [ info ] [ Use: $cmd_realpath nueva-completa-config config.cfg ]"
+$command_yad  --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="$tab [ info ] [ Use: $cmd_realpath nueva-completa-config config.cfg ]"
 ;;
 "new-mini-config ")
-$command_yad  --forms --width=$graphicall_width --height=$graphicall_height --text="$tab [ info ] [ Use: $cmd_realpath nueva-mini-config config.cfg ]"
+$command_yad  --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="$tab [ info ] [ Use: $cmd_realpath nueva-mini-config config.cfg ]"
 ;;
 "modify-config ")
-$command_yad  --forms --width=$graphicall_width --height=$graphicall_height --text="$tab [ info ] [ Use: $cmd_realpath modify-config config.cfg ]"
+$command_yad  --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="$tab [ info ] [ Use: $cmd_realpath modify-config config.cfg ]"
 ;;
 ####
 ####
@@ -5347,8 +5367,12 @@ $cmd_realpath -gui-yad preferences-modify
 ####
 ####
 "$NULL") exit ;;
-*) fecha_temporal=$(date | $command_sed s/\ //g) ; $cmd_realpath $menugtk &> /tmp/fwiptables-$fecha_temporal
-$command_yad  --text-info --width=$graphicall_width --height=$graphicall_height --title="[ $cmd_realpath gui-shell ] [ $menugtk ]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
+*) fecha_temporal=$(date | $command_sed s/\ //g) ;
+$cmd_realpath $menugtk &> /tmp/fwiptables-$fecha_temporal
+$command_yad --text-info \
+--width=$graphicall_width --height=$graphicall_height \
+--title="[ $cmd_realpath gui-shell ] [ $menugtk ]" \
+--filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal
 ;;
 esac
@@ -5363,8 +5387,10 @@ exit ; fi
 ####
 ####
 if   [ "$first_option" == "cli-menu" ]; then $nada
-case "$favorite_text_dialog" in "$NULL") echo "$title_md [ fail ] [ Install or dialog or whiptail to work ]" ; exit ;; esac
-menuprincipal="$($favorite_text_dialog --clear --notags --title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
+case "$favorite_text_dialog" in "$NULL")
+echo "$title_md [ fail ] [ Install or dialog or whiptail to work ]" ; exit ;; esac
+menuprincipal="$($favorite_text_dialog --clear --notags \
+--title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
 0000 "$quad $tab [$cmd_realpath cli-menu] $tab $cinco" \
 0100 "$quad [  --- Full Options --- ] $cinco" \
 0200 "$quad [ Firewall Control ] $cinco" \
@@ -5691,8 +5717,14 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-roll-zenity" ] ; then echo $head_waiting_gui ; echo $give_cover
-gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|03-firewall-customfw|04-firewall-systemfw|05-options-easy"
-selection_menu="$($command_zenity --text="gui-roll" --title="Gui-roll With $cmd_realpath $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|\
+02-Firewall-List-With-Numeral|03-firewall-customfw|\
+04-firewall-systemfw|05-options-easy"
+selection_menu="$($command_zenity --forms \
+--text="gui-roll" \
+--title="Gui-roll With $cmd_realpath $cmd_version" \
+--add-combo="$first_option" \
+--combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
@@ -5716,13 +5748,20 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-roll-zenity-firewall-control" ] ; then echo $head_waiting_gui
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|stop|continue|reset|names|show|save|load|actual"
-selection_menu="$($command_zenity --text="gui-roll-firewall-control" --title="Gui-roll With $cmd_realpath $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
+stop|continue|reset|names|show|save|load|actual"
+selection_menu="$($command_zenity --forms \
+--text="gui-roll-firewall-control" \
+--title="Gui-roll With $cmd_realpath $cmd_version" \
+--add-combo="$first_option" \
+--combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 #### 
 ####
 case "$selection_final" in
-1)$command_zenity  --info --width=$graphicall_width --height=$graphicall_height --text="$cmd_realpath good bye"; exit ;;
+1)$command_zenity  --info \
+--width=$graphicall_width --height=$graphicall_height \
+--text="$cmd_realpath good bye"; exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
 "gui-help-menu")$cmd_realpath -gui-zenity help firewall-control ;;
 "gui-info-menu")$cmd_realpath -gui-zenity info firewall-control ;;
@@ -5758,12 +5797,18 @@ exit; fi
 if   [ "$first_option" == "gui-roll-zenity-firewall-listconceptual" ] ; then echo $head_waiting_gui
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|ls4|ls6|list-filter4|list-filter6|list-alltables|\
 list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|list-security4|list-security6|list-ebtables|list-arptables"
-selection_menu="$($command_zenity --text="gui-roll-firewall-listconceptual" --title="Gui-roll With $cmd_realpath $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+selection_menu="$($command_zenity --forms \
+--text="gui-roll-firewall-listconceptual" \
+--title="Gui-roll With $cmd_realpath $cmd_version" \
+--add-combo="$first_option" \
+--combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
-1)$command_zenity  --info --width=$graphicall_width --height=$graphicall_height --text="$cmd_realpath good bye"; exit ;;
+1)$command_zenity  --info \
+--width=$graphicall_width --height=$graphicall_height \
+--text="$cmd_realpath good bye"; exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
 "gui-help-menu")$cmd_realpath -gui-zenity help firewall-listconceptual ;;
 "gui-info-menu")$cmd_realpath -gui-zenity info firewall-listconceptual ;;
@@ -5795,14 +5840,23 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-roll-zenity-firewall-listnumeral" ] ; then echo $head_waiting_gui
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|lsn4|lsn6|listn-filter4|listn-filter6|listn-alltables|\
-listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|listn-raw4|listn-raw6|listn-security4|listn-security6|list-ebtables|list-arptables"
-selection_menu="$($command_zenity --text="gui-roll-firewall-listnumeral" --title="Gui-roll With $cmd_realpath $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|lsn4|lsn6|\
+listn-filter4|listn-filter6|listn-alltables|\
+listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|\
+listn-raw4|listn-raw6|listn-security4|listn-security6|\
+list-ebtables|list-arptables"
+selection_menu="$($command_zenity --forms \
+--text="gui-roll-firewall-listnumeral" \
+--title="Gui-roll With $cmd_realpath $cmd_version" \
+--add-combo="$first_option" \
+--combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
-1)$command_zenity  --info --width=$graphicall_width --height=$graphicall_height --text="$cmd_realpath good bye"; exit ;;
+1)$command_zenity  --info \
+--width=$graphicall_width --height=$graphicall_height \
+--text="$cmd_realpath good bye"; exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
 "gui-help-menu")$cmd_realpath -gui-zenity help firewall-listnumeral ;;
 "gui-info-menu")$cmd_realpath -gui-zenity info firewall-listnumeral ;;
@@ -5838,19 +5892,27 @@ gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 custom|clone-systemfw|eraserules|wizard-mini|wizard-full|off-line|all-permisive|\
 new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
 names-config|show-config|modify-config|del-config|regen-config|examples-config"
-selection_menu="$($command_zenity --text="gui-roll-firewall-customfw" --title="Gui-roll With $cmd_realpath $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+selection_menu="$($command_zenity --forms \
+--text="gui-roll-firewall-customfw" \
+--title="Gui-roll With $cmd_realpath $cmd_version" \
+--add-combo="$first_option" \
+--combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 #### 
 #### 
 case "$selection_final" in
-1)$command_zenity  --info --width=$graphicall_width --height=$graphicall_height --text="$cmd_realpath good bye"; exit ;;
+1)$command_zenity  --info \
+--width=$graphicall_width --height=$graphicall_height \
+--text="$cmd_realpath good bye"; exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
 "gui-help-menu")$cmd_realpath -gui-zenity help firewall-customfw ;;
 "gui-info-menu")$cmd_realpath -gui-zenity info firewall-customfw ;;
-"custom")archivo="$($command_zenity  --entry --width=$graphicall_width --height=$graphicall_height \
+"custom")archivo="$($command_zenity  --entry \
+--width=$graphicall_width --height=$graphicall_height \
 --title="[Launch Custom]" --entry-text="cfg to launch")" ; 
 $cmd_realpath -gui-zenity custom $archivo ; $cmd_realpath gui list4;;
-"clone-systemfw")archivo="$($command_zenity  --entry --width=$graphicall_width --height=$graphicall_height \
+"clone-systemfw")archivo="$($command_zenity  --entry \
+--width=$graphicall_width --height=$graphicall_height \
 --title="[Clone firewall static]" --entry-text="firewall static to clone")" ; 
 $cmd_realpath -gui-zenity clone-systemfw $archivo ; $cmd_realpath gui list4;;
 "eraserules")$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list4;;
@@ -5859,27 +5921,46 @@ $cmd_realpath -gui-zenity clone-systemfw $archivo ; $cmd_realpath gui list4;;
 "off-line")$cmd_realpath -gui-zenity off-line ; $cmd_realpath gui list4;;
 "all-permisive")$cmd_realpath -gui-zenity all-permisive ; $cmd_realpath gui list4;;
 "new-full-config")
-archivo="$($command_zenity  --width=$graphicall_width --height=$graphicall_height --entry --title="[new-full-config]" --entry-text="Input file name to new full configuration")" ;
+archivo="$($command_zenity  --entry \
+--width=$graphicall_width --height=$graphicall_height \
+--title="[new-full-config]" \
+--entry-text="Input file name to new full configuration")" ;
 $cmd_realpath -gui-zenity new-full-config $archivo ;;
 "nueva-completa-config")
-archivo="$($command_zenity  --width=$graphicall_width --height=$graphicall_height --entry --title="[nueva-completa-config]" --entry-text="Introduce el nombre del nuevo archivo cfg")" ;
+archivo="$($command_zenity --entry \
+--width=$graphicall_width --height=$graphicall_height \
+--title="[nueva-completa-config]" \
+--entry-text="Introduce el nombre del nuevo archivo cfg")" ;
 $cmd_realpath -gui-zenity nueva-completa-config $archivo ;;
 "new-mini-config")
-archivo="$($command_zenity  --width=$graphicall_width --height=$graphicall_height --entry --title="[new-mini-config]" --entry-text="Input file name to new mini configuration")" ;
+archivo="$($command_zenity --entry \
+--width=$graphicall_width --height=$graphicall_height \
+--title="[new-mini-config]" \
+--entry-text="Input file name to new mini configuration")" ;
 $cmd_realpath -gui-zenity new-mini-config $archivo ;;
 "nueva-mini-config")
-archivo="$($command_zenity  --width=$graphicall_width --height=$graphicall_height --entry --title="[nueva-mini-config]" --entry-text=="Introduce el nombre del nuevo archivo cfg")" ;
+archivo="$($command_zenity --entry \
+--width=$graphicall_width --height=$graphicall_height \
+--title="[nueva-mini-config]" \
+--entry-text=="Introduce el nombre del nuevo archivo cfg")" ;
 $cmd_realpath -gui-zenity nueva-mini-config $archivo ;;
 "names-config")
 $cmd_realpath -gui-zenity names-config ;;
 "show-config")
-archivo="$($command_zenity  --width=$graphicall_width --height=$graphicall_height --entry --title="[show-config]" --entry-text="cfg to show")" ;
+archivo="$($command_zenity --entry \ 
+--width=$graphicall_width --height=$graphicall_height \
+--title="[show-config]" \
+--entry-text="cfg to show")" ;
 $cmd_realpath -gui-zenity show-config $archivo ;;
 "modify-config")
-archivo="$($command_zenity  --width=$graphicall_width --height=$graphicall_height --entry --title="[modify-config]" --entry-text="cfg to modify")" ;
+archivo="$($command_zenity --entry \
+--width=$graphicall_width --height=$graphicall_height \
+--title="[modify-config]" --entry-text="cfg to modify")" ;
 $cmd_realpath -gui-zenity modify-config $archivo ;;
 "del-config")
-archivo="$($command_zenity  --width=$graphicall_width --height=$graphicall_height --entry --title="[del-config]" --entry-text="cfg to delete")" ;
+archivo="$($command_zenity --entry \
+--width=$graphicall_width --height=$graphicall_height \
+--title="[del-config]" --entry-text="cfg to delete")" ;
 $cmd_realpath -gui-zenity del-config $archivo ;;
 "regen-config")$cmd_realpath -gui-zenity regen-config ;;
 "examples-config")$cmd_realpath gui examples-config ;;
@@ -5902,7 +5983,11 @@ client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
 games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|server-proxy|\
 server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|server-domain|\
 server-news|server-mail|server-ftp|server-teamspeak|server-mumble|server-sql|server-asterisk"
-selection_menu="$($command_zenity --text="gui-roll-firewall-customfw" --title="Gui-roll With $cmd_realpath $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+selection_menu="$($command_zenity --forms \
+--text="gui-roll-firewall-customfw" \
+--title="Gui-roll With $cmd_realpath $cmd_version" \
+--add-combo="$first_option" \
+--combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 #### 
 #### 
@@ -5969,12 +6054,19 @@ sockets|nodes|geoip|date|free|ver|about|\
 depends|commands|variables|license|examples|intro"
 ####
 ####
-selection="$($command_zenity --text="gui-roll-options-easy" --title="Gui-roll With $cmd_realpath $cmd_version" --forms --add-combo="$first_option" --combo-values="$gui_menu")"
+selection="$($command_zenity --forms \
+--text="gui-roll-options-easy" \
+--title="Gui-roll With $cmd_realpath $cmd_version" \
+--forms \
+--add-combo="$first_option" \
+--combo-values="$gui_menu")"
 ####
 ####
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$command_zenity  --info --width=$graphicall_width --height=$graphicall_height --text="$cmd_realpath good bye"; exit ;;
+1)$command_zenity  --info \
+--width=$graphicall_width --height=$graphicall_height \
+--text="$cmd_realpath good bye"; exit ;;
 gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
 gui-help-menu)$cmd_realpath -gui-zenity help status-state ;;
 gui-info-menu)$cmd_realpath -gui-zenity info status-state ;;
