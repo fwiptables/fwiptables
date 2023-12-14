@@ -511,35 +511,31 @@ title_md="### " ;
 text_md="  " ;
 fifty_md="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_waiting_txt="$title_md [ info ] [ txt ] [ Wait several seconds.. ]  [ press control-c to cancel ] "
-head_waiting_cli="$title_md [ info ] [ cli ] [ Wait several seconds.. ]  [ press control-c to cancel ] "
-head_waiting_gui="$title_md [ info ] [ gui ] [ Wait several seconds.. ]  [ press control-c to cancel ] "
-head_waiting_log="$title_md [ info ] [ log ] [ Wait several seconds.. ]  [ press control-c to cancel ] "
-head_waiting_web="$title_md [ info ] [ web ] [ Wait several seconds.. ]  [ press control-c to cancel ] "
-head_waiting_help="$title_md [ info ] [ help: help in rst txt format ]   [ press control-c to cancel ] "
-head_waiting_info="$title_md [ info ] [ info: info in clear txt format ] [ press control-c to cancel ] "
+head_waiting_all=" [ Wait several seconds.. ]  [ press control-c to cancel ] "
+head_waiting_txt="$title_md [ info ] [ txt ] $head_waiting_all "
+head_waiting_cli="$title_md [ info ] [ cli ] $head_waiting_all "
+head_waiting_gui="$title_md [ info ] [ gui ] $head_waiting_all "
+head_waiting_log="$title_md [ info ] [ log ] $head_waiting_all "
+head_waiting_web="$title_md [ info ] [ web ] $head_waiting_all "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_autolog="[ $cmd_realpath ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
+head_autolog="[ $cmd_realpath ] [ $cmd_version ] [ $(date) ] \
+[ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$title_md #[ $file_installed $cmd_version ] [ $X11_OR_WAYLAND ] [ Options: $cmd_realpath options ]"
-#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-#### give_fail="### #[ fail ] | First Option: $first_option | Choose one valid first option |"
+give_cover="$title_md [ $file_installed $cmd_version ] [ $X11_OR_WAYLAND ] \
+[ Options: $cmd_realpath options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$title_md [ _ok_ ] [ Load firewall ] [ Firewall With iptables ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_preferences="$title_md [ Configure ] [ $cmd_realpath preferences-modify ]"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="$(echo -n)" ; 
-#### #### info list rules
-message_info_rules="$title_md [ Configure ] [ $cmd_realpath preferences-modify ]"
 #### #### english: without cli or gui   #### spanish: sin cli o gui
-message_without_cli="$title_md [ fail ] [ cli ] [ Without support for output cli for this option ]"
-message_without_gui="$title_md [ fail ] [ gui ] [ Without support for output gui for this option ]"
-message_without_web="$title_md [ fail ] [ web ] [ Without support for output web for this option ]"
-message_without_help="$title_md [ fail ] [ help in rst ] [ Without support for output rst for this option ]"
-message_without_info="$title_md [ fail ] [ info in txt ] [ Without support for output info for this option ]"
-message_without_info="$title_md [ fail ] [ log ] [ Without support for output log for this option ]"
-message_without_info="$title_md [ fail ] [ null ] [ Without support for output null for this option ]"
+message_without_support=" [ Without support for output cli for this option ] "
+message_without_cli="$title_md [ fail ] [ cli ]"
+message_without_gui="$title_md [ fail ] [ gui ] $message_without_support "
+message_without_web="$title_md [ fail ] [ web ] $message_without_support "
+message_without_info="$title_md [ fail ] [ log ] $message_without_support "
+message_without_info="$title_md [ fail ] [ null ] $message_without_support "
 ####       #### english: close from graphicall with timeout in seconds #####
 ####       #### spanish: cierre desde graficos con retardo en segundos #####
 time_close_graphicall="1"
@@ -549,7 +545,7 @@ mensage_with_timeout="Closing gui menu in $time_close_graphicall seconds"
 ####       #### english: autovariables        #### spanish: autovariables
 launch_rules_firewall="no" ;   #  autoconfigure with launch iptables rules
 ####       #### english: [download web link]  #### spanish: [descarga del enlace web]
-mensage_license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
+content_license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
 ####
 ####
 #### :rutina-final-system-variables:
@@ -568,14 +564,14 @@ if [ -f "$default_preferences"   ]; then source $default_preferences ; fi
 if [ "$first_option" = "$NULL" ]; then first_option="$without_first_option"; fi
 ####
 ####
-####  realice sane very important variables post by default_preferences
+####  realice sane with very important variables post by default_preferences
 ####
 ####
-case "$allow_use_legacy"          in "no") ;; *) allow_use_legacy=""    ;; esac
-case "$allow_use_nft"             in "no") ;; *) allow_use_nft=""       ;; esac
-case "$allow_use_ipv4"            in "no") ;; *) allow_use_ipv4=""      ;; esac
-case "$allow_use_ipv6"            in "no") ;; *) allow_use_ipv6=""      ;; esac
-case "$config_close_deny"      in
+case "$allow_use_legacy"  in "no") ;; *) allow_use_legacy=""    ;; esac
+case "$allow_use_nft"     in "no") ;; *) allow_use_nft=""       ;; esac
+case "$allow_use_ipv4"    in "no") ;; *) allow_use_ipv4=""      ;; esac
+case "$allow_use_ipv6"    in "no") ;; *) allow_use_ipv6=""      ;; esac
+case "$config_close_deny" in
 "ACCEPT") ;;
 "DROP")   ;;
 "REJECT") ;;
@@ -926,7 +922,7 @@ cat $temporal_textfinal ; exit ;;
 ####
 ####
 esac ; 
-$cmd_realpath "$second_option" "$third_option" "$title_md_option"
+$cmd_realpath "$second_option" "$third_option" "$quad_option"
 ####
 ####
 exit; fi
@@ -976,8 +972,8 @@ esac
 ####
 ####
 echo "$head_waiting_log"
-echo "### ### [ info ] [ $second_option $third_option $title_md_option ] [ $($command_date) ]" &> $output_log
-$cmd_realpath $second_option $third_option $title_md_option &>> $output_log
+echo "### ### [ info ] [ $second_option $third_option $quad_option ] [ $($command_date) ]" &> $output_log
+$cmd_realpath $second_option $third_option $quad_option &>> $output_log
 cat $output_log | $command_grep -iv Warning: &>> $default_filelog
 echo "$title_md [ _ok_ ] [ Output sended to $default_filelog ] [ show file: fwiptables filelog ]" ;
 exit ; fi
@@ -1011,7 +1007,8 @@ exit ; fi
 ####
 ####
 if [ "$allow_save_autolog" != "no" ]; then 
-head_autolog="[ $cmd_realpath ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
+head_autolog="[ $cmd_realpath ] [ $cmd_version ] \
+[ $(date) ] [ $first_option $second_option $third_option ]"
 echo $head_autolog >> $default_autolog ; fi
 ####
 ####
@@ -1087,9 +1084,12 @@ if [ "$first_option" == "default" ] ; then
 echo "$title_md [ $first_option ] [ $cmd_realpath default ] [ default md ] "
 echo "$title_md [ info ] [ $cmd_realpath default.. ]"
 
-echo "$title_md [ info ] [ Autoregenerate default config for fwiptables: ] [ fwiptables preferences-regen  ]"
-echo "$title_md [ info ] [ Show   default config for fwiptables:         ] [ fwiptables preferences-read   ]"
-echo "$title_md [ info ] [ Modify default config for fwiptables:         ] [ fwiptables preferences-modify ]"
+echo "$title_md [ info ] [ Autoregenerate default config for fwiptables: ] \
+[ fwiptables preferences-regen  ]"
+echo "$title_md [ info ] [ Show   default config for fwiptables:         ] \
+[ fwiptables preferences-read   ]"
+echo "$title_md [ info ] [ Modify default config for fwiptables:         ] \
+[ fwiptables preferences-modify ]"
 exit; fi
 ####
 ####
@@ -1165,9 +1165,10 @@ if [ "$first_option" == "preferences-example" ] ; then
 echo "$title_md"
 echo "$title_md # default option"
 echo "without_first_option=options                        ## read below"
-echo "$title_md When fwiptables without its first_option: void or valid option required to works"
-echo "$title_md Example1: list-options | Example2: list4  | example3: ip4 | example4: speed-ip4"
-echo "$title_md Example5: sockets | Example6: gui-menu-yad | Example7: gui-shell-yad"
+echo "$title_md type: void or one valid option required to works"
+echo "$title_md Example1: list-options | Example2: list4  | example3: ip4"
+echo "$title_md Example4: speed-ip4 | Example5: sockets | Example6: gui-roll"
+echo "$title_md Example7: gui-menu-yad | Example8: gui-shell-yad"
 echo "$title_md"
 echo "$title_md # default firewall"
 echo "allow_use_legacy=                                   ## void or no"
@@ -4038,8 +4039,7 @@ echo "$text_md  Uninstall fwiptables. TYPE:   $file_installed uninstall     "
 echo "$text_md"
 $cmd_realpath ver
 $cmd_realpath compile
-echo "$title_md [ List general options for fwiptables ] [ options.md ]  "
-echo "$text_md"
+echo "$title_md [ options ] [ List general options for fwiptables ] [ list-options.md ]"
 $cmd_realpath options
 exit; fi
 ####
@@ -4113,7 +4113,7 @@ echo "$title_md [ $first_option ] [ $cmd_realpath uninstaller ] [ uninstall md ]
 echo "$title_md [ info ] [ $cmd_realpath uninstalling ]"
 rm $directory_installed/$file_installed &> /dev/null
 echo "$title_md [ info ] [ deleted binaries ]"
-echo "$title_md [ _ok_ ] [ /usr/bin/$file_installed uninstalled ]" ;
+echo "$title_md [ _ok_ ] $directory_installed/$file_installed uninstalled" ;
 exit; fi
 ####
 ####
@@ -4150,11 +4150,11 @@ $directory_installed/$file_installed regen-config &> /dev/null
 ####   spanish: Muestra el estatus final desde el instalador
 ####
 ####
-echo "$title_md [ info ] [ The  config   dir:     ] [ $directory_data ]"
-echo "$title_md [ info ] [ The  cache    dir:     ] [ $directory_cache  ]"
-echo "$title_md [ info ] [ The Command shell:     ] [ /usr/bin/$file_installed ]"
+echo "$title_md [ info ] [ The  config   dir: ] [ $directory_data ]"
+echo "$title_md [ info ] [ The  cache    dir: ] [ $directory_cache  ]"
+echo "$title_md [ info ] [ The Command shell: ] [ $directory_installed/$file_installed ]"
 echo "$title_md [ _ok_ ] [ Update preferences config file ]"
-echo "$title_md [ _ok_ ] [ Now. Ready to run $file_installed .]"
+echo "$title_md [ _ok_ ] Now. Ready to run $directory_installed/$file_installed"
 exit; fi
 ####
 ####
@@ -4205,11 +4205,11 @@ echo "$title_md [ $first_option ]  [ Show license from git sourceforge for $cmd_
 if [ "$command_curl" == "$NULL" ]; then
 echo "$title_md Install curl to download/install latest version"; fi
 ####
-echo "license text for gpl v2 downloading from .. $mensage_license_gpl"
+echo "license text for gpl v2 downloading from .. $content_license_gpl"
 echo
 echo ..................................................................
 echo
-curl -L $mensage_license_gpl --stderr /dev/null
+curl -L $content_license_gpl --stderr /dev/null
 exit;  fi
 ####
 ####
@@ -4924,7 +4924,7 @@ $favorite_graphicall_dialog --forms \
 ;;
 ####
 ####
-*)$cmd_realpath "$second_option" "$third_option" "$title_md_option" &> "$temporal_guifinal"
+*)$cmd_realpath "$second_option" "$third_option" "$quad_option" &> "$temporal_guifinal"
 $favorite_graphicall_dialog  --text-info \
 --width=$graphicall_width --height=$graphicall_height \
 --title="Gui Output || $cmd_realpath ||" \
