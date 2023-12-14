@@ -58,8 +58,8 @@ PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
 ####
 if [ "$(id -u)" != "0" ] ; then echo
 echo
-echo "### [ info ] [ fwiptables needs to be root to work ]"
-echo "### [ fail ] [ Be root to work with fwiptables in your system ] [ Try with root user ]"
+echo "### [ fail ] [ fwiptables needs to be root to work ]"
+echo "### [ info ] [ Try with root user ]"
 echo
 exit ; fi
 ####
@@ -76,8 +76,7 @@ command_iptables_nft="$(command -v iptables-nft)"
 ####
 if [ "$command_iptables_legacy" == "$NULL" ] || [ "$command_iptables_nft" == "$NULL" ] ; then echo
 echo
-echo "### [ info ] [ fwiptables needs iptables legacy and needs iptables nft to work ]"
-echo "### [ fail ] [ it needs as necesary iptables to works with fwiptables in your system operative linux ]"
+echo "### [ fail ] [ fwiptables needs iptables-legacy and needs iptables-nft, to work ]"
 echo
 fi
 ####
@@ -88,11 +87,9 @@ fi
 #### :rutina-inicial-enviroment:
 ####
 ####
-#### file with its route relative
-cmd_binary="$0"                  ;
-#### file with its full route absolute
+#### file with its full route absolute, full route
 cmd_realpath="$(realpath $0)"    ;
-#### file without its route absolute/relative
+#### file without its route, only name
 cmd_basename="$(basename $0)"    ;
 #### others configs for fwiptables
 cmd_version="cmd-10-22"          ;
@@ -108,7 +105,8 @@ cmd_config="fwiptables-cmd"
 #### prepare directory data
 ####
 PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
-if [ "$HOME" == "$NULL" ] ; then default_root_home="/root"; else default_root_home="$HOME"; fi
+if [ "$HOME" == "$NULL" ] ; then default_root_home="/root"; 
+else default_root_home="$HOME"; fi
 ####
 #### set directory data
 ####
@@ -258,99 +256,99 @@ net_ipv6_server="::/0"     ;
 #### :rutina-inicial-command:
 ####
 ####
-command_awk="$(command -v awk)"   #list-commands ;
-command_editor="$(command -v editor)"   #list-commands ;
-command_vi="$(command -v vi)"   #list-commands ;
-command_vim="$(command -v vim)"   #list-commands ;
-command_pico="$(command -v pico)"   #list-commands ;
-command_nano="$(command -v nano)"   #list-commands ;
-command_arp="$(command -v arp)"   #list-commands ;
-command_arp_scan="$(command -v arp-scan)"   #list-commands ;
-command_arptables="$(command -v arptables)"   #list-commands ;
-command_bash="$(command -v bash)"   #list-commands ;
-command_bc="$(command -v bc)"   #list-commands ;
-command_obash="$(command -v obash)" #list-commands ;
-command_curl="$(command -v curl)"   #list-commands ;
-command_cut="$(command -v cut)"   #list-commands ;
-command_date="$(command -v date)"   #list-commands ;
-command_dd="$(command -v dd)"   #list-commands ;
-command_dhclient="$(command -v dhclient)"   #list-commands ;
-command_dhclient_script="$(command -v dhclient-script)"   #list-commands ;
-command_dhcpcd="$(command -v dhcpcd)"   #list-commands ;
-command_dialog="$(command -v dialog)"   #list-commands ;
-command_whiptail="$(command -v whiptail)"   #list-commands ;
-command_dig="$(command -v dig)"   #list-commands ;
-command_ebtables="$(command -v ebtables)"   #list-commands ;
-command_elinks="$(command -v elinks)"   #list-commands ;
-command_file="$(command -v file)"    #list-commands ;
-command_find="$(command -v find)"   #list-commands ;
-command_fmt="$(command -v fmt)"   #list-commands ;
-command_geoiplookup="$(command -v geoiplookup)"   #list-commands ;
-command_glxgears="$(command -v glxgears)"   #list-commands ;
-command_gpg="$(command -v gpg)"   #list-commands ;
-command_grep="$(command -v grep)"   #list-commands ;
-command_egrep="$(command -v egrep)"   #list-commands ;
-command_halt="$(command -v halt)"   #list-commands ;
-command_host="$(command -v host)"   #list-commands ;
-command_ifconfig="$(command -v ifconfig)"   #list-commands ;
-command_ip="$(command -v ip)"   #list-commands ;
-command_ip6tables_legacy="$(command -v ip6tables-legacy)"   #list-commands ;
-command_ip6tables_nft="$(command -v ip6tables-nft)"   #list-commands ;
-command_iperf="$(command -v iperf)"   #list-commands ;
-command_iptables_legacy="$(command -v iptables-legacy)"   #list-commands ;
-command_iptables_nft="$(command -v iptables-nft)"   #list-commands ;
-command_iw="$(command -v iw)"   #list-commands ;
-command_links="$(command -v links)"   #list-commands ;
-command_links2="$(command -v links2)"   #list-commands ;
-command_ls="$(command -v ls)"   #list-commands ;
-command_lsof="$(command -v lsof)"   #list-commands ;
-command_lynx="$(command -v lynx)"   #list-commands ;
-command_m2r="$(command -v m2r)"   #list-commands ;
-command_md5sum="$(command -v md5sum)"   #list-commands ;
-command_mdp="$(command -v mdp)"   #list-commands ;
-command_mpg123="$(command -v mpg123)"   #list-commands ;
-command_mpg321="$(command -v mpg321)"   #list-commands ;
-command_netstat="$(command -v netstat)"   #list-commands ;
-command_netstat_nat="$(command -v netstat-nat)"   #list-commands ;
-command_nmap="$(command -v nmap)"   #list-commands ;
-command_ntpdate="$(command -v ntpdate)"   #list-commands ;
-command_openssl="$(command -v openssl)"   #list-commands ;
-command_ping="$(command -v ping)"   #list-commands ;
-command_readlink="$(command -v readlink)"   #list-commands ;
-command_rdate="$(command -v rdate)"   #list-commands ;
-command_reboot="$(command -v reboot)"   #list-commands ;
-command_resolveip="$(command -v resolveip)"   #list-commands ;
-command_route="$(command -v route)"   #list-commands ;
-command_sed="$(command -v sed)"   #list-commands ;
-command_shc="$(command -v shc)"   #list-commands ;
-command_shutdown="$(command -v shutdown)"   #list-commands ;
-command_sleep="$(command -v sleep)"   #list-commands ;
-command_sntp="$(command -v sntp) -S"   #list-commands ;
-command_ss="$(command -v ss)"   #list-commands ;
-command_sysctl="$(command -v sysctl)"   #list-commands ;
-command_tcpdump="$(command -v tcpdump)"   #list-commands ;
-command_tee="$(command -v tee)"   #list-commands ;
-command_timeout="$(command -v timeout)"   #list-commands ;
-command_torify="$(command -v torify)"   #list-commands ;
-command_traceroute="$(command -v traceroute)"   #list-commands ;
-command_txt2html="$(command -v txt2html)"   #list-commands ;
-command_uname="$(command -v uname)"   #list-commands ;
-command_wget="$(command -v wget)"   #list-commands ;
-command_wpa_passphrase="$(command -v wpa_passphrase)"   #list-commands ;
-command_wpa_supplicant="$(command -v wpa_supplicant)"   #list-commands ;
-command_xrandr="$(command -v xrandr)"   #list-commands ;
-command_zenity="$(command -v zenity)"   #list-commands ;
-command_yad="$(command -v yad)"   #list-commands ;
-command_zgrep="$(command -v zgrep)"   #list-commands ;
-command_logname="$(command -v logname)" #list-commands ;
-command_lpinfo="$(command -v lpinfo)"   #list-commands ;
-command_lpstat="$(command -v lpstat)"   #list-commands ;
-command_lsblk="$(command -v lsblk)"   #list-commands ;
-command_lsusb="$(command -v lsusb)"   #list-commands ;
-command_lscpu="$(command -v lscpu)"   #list-commands ;
-command_lspci="$(command -v lspci)"   #list-commands ;
-command_lsgpu="$(command -v lsgpu)"   #list-commands ;
-command_lshw="$(command -v lshw)"   #list-commands ;
+command_awk="$(command -v awk)"   
+command_editor="$(command -v editor)"
+command_vi="$(command -v vi)"   
+command_vim="$(command -v vim)"
+command_pico="$(command -v pico)"
+command_nano="$(command -v nano)"
+command_arp="$(command -v arp)"
+command_arp_scan="$(command -v arp-scan)"
+command_arptables="$(command -v arptables)"
+command_bash="$(command -v bash)"
+command_bc="$(command -v bc)"
+command_obash="$(command -v obash)"
+command_curl="$(command -v curl)"
+command_cut="$(command -v cut)"
+command_date="$(command -v date)"
+command_dd="$(command -v dd)"
+command_dhclient="$(command -v dhclient)"
+command_dhclient_script="$(command -v dhclient-script)"
+command_dhcpcd="$(command -v dhcpcd)"
+command_dialog="$(command -v dialog)"
+command_whiptail="$(command -v whiptail)"
+command_dig="$(command -v dig)"
+command_ebtables="$(command -v ebtables)"
+command_elinks="$(command -v elinks)"
+command_file="$(command -v file)"
+command_find="$(command -v find)"
+command_fmt="$(command -v fmt)"
+command_geoiplookup="$(command -v geoiplookup)"
+command_glxgears="$(command -v glxgears)"
+command_gpg="$(command -v gpg)"
+command_grep="$(command -v grep)"
+command_egrep="$(command -v egrep)"
+command_halt="$(command -v halt)"
+command_host="$(command -v host)"
+command_ifconfig="$(command -v ifconfig)"
+command_ip="$(command -v ip)"
+command_ip6tables_legacy="$(command -v ip6tables-legacy)"
+command_ip6tables_nft="$(command -v ip6tables-nft)"
+command_iperf="$(command -v iperf)"
+command_iptables_legacy="$(command -v iptables-legacy)"
+command_iptables_nft="$(command -v iptables-nft)"
+command_iw="$(command -v iw)"
+command_links="$(command -v links)"
+command_links2="$(command -v links2)"
+command_ls="$(command -v ls)"
+command_lsof="$(command -v lsof)"
+command_lynx="$(command -v lynx)"
+command_m2r="$(command -v m2r)"
+command_md5sum="$(command -v md5sum)"
+command_mdp="$(command -v mdp)"
+command_mpg123="$(command -v mpg123)"
+command_mpg321="$(command -v mpg321)"
+command_netstat="$(command -v netstat)"
+command_netstat_nat="$(command -v netstat-nat)"
+command_nmap="$(command -v nmap)"
+command_ntpdate="$(command -v ntpdate)"
+command_openssl="$(command -v openssl)"
+command_ping="$(command -v ping)"
+command_readlink="$(command -v readlink)"
+command_rdate="$(command -v rdate)"
+command_reboot="$(command -v reboot)"
+command_resolveip="$(command -v resolveip)"
+command_route="$(command -v route)"
+command_sed="$(command -v sed)"
+command_shc="$(command -v shc)"
+command_shutdown="$(command -v shutdown)"
+command_sleep="$(command -v sleep)"
+command_sntp="$(command -v sntp) -S"
+command_ss="$(command -v ss)"
+command_sysctl="$(command -v sysctl)"
+command_tcpdump="$(command -v tcpdump)"
+command_tee="$(command -v tee)"
+command_timeout="$(command -v timeout)"
+command_torify="$(command -v torify)"
+command_traceroute="$(command -v traceroute)"
+command_txt2html="$(command -v txt2html)"
+command_uname="$(command -v uname)"
+command_wget="$(command -v wget)"
+command_wpa_passphrase="$(command -v wpa_passphrase)"
+command_wpa_supplicant="$(command -v wpa_supplicant)"
+command_xrandr="$(command -v xrandr)"
+command_zenity="$(command -v zenity)"
+command_yad="$(command -v yad)"
+command_zgrep="$(command -v zgrep)"
+command_logname="$(command -v logname)"
+command_lpinfo="$(command -v lpinfo)"
+command_lpstat="$(command -v lpstat)"
+command_lsblk="$(command -v lsblk)"
+command_lsusb="$(command -v lsusb)"
+command_lscpu="$(command -v lscpu)"
+command_lspci="$(command -v lspci)"
+command_lsgpu="$(command -v lsgpu)"
+command_lshw="$(command -v lshw)"
 ####
 ####
 #### :rutina-final-command:
@@ -507,19 +505,15 @@ serverip_iperf_ipv4="ping.online.net"                 ## fwiptables-file-default
 serverport_iperf_ipv4="5001"                          ## fwiptables-file-default ## default 5201
 serverip_iperf_ipv6="ping6.online.net"                ## fwiptables-file-default ## default ping.online.net
 serverport_iperf_ipv6="5001"                          ## fwiptables-file-default ## default 5201
-#### #### english: look  #### spanish: apariencia
+#### #### english: grahpicall look  #### spanish: apariencia grafica
 graphicall_width=750
 graphicall_height=550
 ## fwiptables-file-default ## default: "--width=950 --height=650"
 #### #### english: look  #### spanish: apariencia
-quad="####" ; 
-cinco="#####" ;
-tab="     " ;
 title_md="### " ;
 text_md="  " ;
-brake_md="---" ;
-tabz="### _ _ _ _ _ _ _ " ;
-cincuenta="##################################################" ;
+mixed_tab="### _ _ _ _ _ _ _ " ;
+fifty_md="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_waiting_txt="$title_md [ info ] [ txt ] [ Wait several seconds.. ]  [ press control-c to cancel ] "
 head_waiting_cli="$title_md [ info ] [ cli ] [ Wait several seconds.. ]  [ press control-c to cancel ] "
@@ -938,7 +932,7 @@ cat $temporal_textfinal ; exit ;;
 ####
 ####
 esac ; 
-$cmd_realpath "$second_option" "$third_option" "$quad_option"
+$cmd_realpath "$second_option" "$third_option" "$title_md_option"
 ####
 ####
 exit; fi
@@ -988,8 +982,8 @@ esac
 ####
 ####
 echo "$head_waiting_log"
-echo "### ### [ info ] [ $second_option $third_option $quad_option ] [ $($command_date) ]" &> $output_log
-$cmd_realpath $second_option $third_option $quad_option &>> $output_log
+echo "### ### [ info ] [ $second_option $third_option $title_md_option ] [ $($command_date) ]" &> $output_log
+$cmd_realpath $second_option $third_option $title_md_option &>> $output_log
 cat $output_log | $command_grep -iv Warning: &>> $default_filelog
 echo "$title_md [ _ok_ ] [ Output sended to $default_filelog ] [ show file: fwiptables filelog ]" ;
 exit ; fi
@@ -1229,7 +1223,7 @@ if [ "$first_option" == "ip4" ]; then
 echo "$title_md [ $first_option ]  [ show info about net ip4 ] [ ip4.md ]"
 echo
 echo "$title_md [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
-if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+if [ "$command_ip" == "$NULL" ] ; then echo "$text_md [ info ] [ install ip command ]"
 else $command_ip -4 route ; fi
 echo
 echo "$title_md [ info ] ### [ Network Listen ] ###"
@@ -1274,22 +1268,22 @@ if [ "$first_option" == "ip6" ]; then
 echo "$title_md [ $first_option ]  [ show info about net ip6 ] [ ip6.md ] "
 echo
 echo "$title_md [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
-if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+if [ "$command_ip" == "$NULL" ] ; then echo "$text_md [ info ] [ install ip command ]"
 else $command_ip -6 route ; fi
 echo
 echo "$title_md [ info ] ### [ Network Listen ] ###"
 echo "$text_md  for network listen launch: $cmd_realpath sockets"
 echo
 echo "$title_md [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
-if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+if [ "$command_ip" == "$NULL" ] ; then echo "$text_md [ info ] [ install ip command ]"
 else  $command_ip -6 address | $command_grep -i  inet | $command_grep -iv  "inet6 ::1" | $command_sed 's/inet6//g' | $command_cut -d "/" -f 1 ; fi
 echo
 echo "$title_md [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
-if [ "$command_curl" == "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
+if [ "$command_curl" == "$NULL" ] ; then echo "$text_md [ info ] [ install curl command ]" ; else
 public_ip6="$($command_timeout -s SIGINT -v 8  $command_curl --noproxy '*' -k -s -6 \
 $serverip_discover_ipv6 -w "\n"| head -1)"
 if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
-else echo "$tab $public_ip6"; fi; fi
+else echo "$text_md $public_ip6"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
 echo "$title_md [ info ] [ HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
@@ -1525,256 +1519,256 @@ echo "$title_md [ info ] [ regenerating template wizard and template cfg ]"
 ####    spanish: opciones basicas en configuracion de archivo cfg
 ####
 ####
-var0="$(echo $cinco $cmd_name from $cmd_realpath version $cmd_version $cinco )"
-var1="$(echo $cinco BEGIN NECESARY $cinco )"
-eng1="$(echo $cinco  .......... BEGIN Necesary options .......... .......... $cinco )"
-spa1="$(echo $cinco INICIO .......... Opciones Necesarias .......... .......... $cinco )"
-var2="$(echo $cinco NETFILTER $cinco )"
-eng2="$(echo $cinco the iptables firewall netfilter, choose one or two )"
-spa2="$(echo $cinco el iptables firewall netfilter, elige uno o dos )"
+var0="$(echo $title_md $cmd_name from $cmd_realpath version $cmd_version $title_md )"
+var1="$(echo $title_md BEGIN NECESARY $title_md )"
+eng1="$(echo $title_md  .......... BEGIN Necesary options .......... .......... $title_md )"
+spa1="$(echo $title_md INICIO .......... Opciones Necesarias .......... .......... $title_md )"
+var2="$(echo $title_md NETFILTER $title_md )"
+eng2="$(echo $title_md the iptables firewall netfilter, choose one or two )"
+spa2="$(echo $title_md el iptables firewall netfilter, elige uno o dos )"
 var3="$(echo allow_use_legacy= )"
-eng3="$(echo $cinco launch xtables, void to yes or type no )"
-spa3="$(echo $cinco lanza xtables, vacio para si, o escribe no )"
+eng3="$(echo $title_md launch xtables, void to yes or type no )"
+spa3="$(echo $title_md lanza xtables, vacio para si, o escribe no )"
 var4="$(echo allow_use_nft=no )"
-eng4="$(echo $cinco launch nftables, void to yes or type no )"
-spa4="$(echo $cinco lanza nftables, vacio para si, o escribe no )"
-var5="$(echo $cinco PROTOCOL IP $cinco )"
-eng5="$(echo $cinco ip protocol, modify with void or no )"
-spa5="$(echo $cinco procolo ip, modificar con vacio o no )"
+eng4="$(echo $title_md launch nftables, void to yes or type no )"
+spa4="$(echo $title_md lanza nftables, vacio para si, o escribe no )"
+var5="$(echo $title_md PROTOCOL IP $title_md )"
+eng5="$(echo $title_md ip protocol, modify with void or no )"
+spa5="$(echo $title_md procolo ip, modificar con vacio o no )"
 var6="$(echo allow_use_ipv4= )"
-eng6="$(echo $cinco void to config firewall with ipv4 or no to dont configure ipv4 )"
-spa6="$(echo $cinco varcio para ejecutar el firewall con ipv4 o no para no )"
+eng6="$(echo $title_md void to config firewall with ipv4 or no to dont configure ipv4 )"
+spa6="$(echo $title_md varcio para ejecutar el firewall con ipv4 o no para no )"
 var7="$(echo allow_use_ipv6=no )"
-eng7="$(echo $cinco void to config firewall with ipv6 or no to dont configure ipv6 )"
-spa7="$(echo $cinco varcio para ejecutar el firewall con ipv6 o no para no )"
-var8="$(echo $cinco CLIENT PORTS $cinco )"
-eng8="$(echo $cinco Client ports, add with ',' and join ranges with  : )"
-spa8="$(echo $cinco puertos Cliente, añadir con ',' y poner rangos con : )"
+eng7="$(echo $title_md void to config firewall with ipv6 or no to dont configure ipv6 )"
+spa7="$(echo $title_md varcio para ejecutar el firewall con ipv6 o no para no )"
+var8="$(echo $title_md CLIENT PORTS $title_md )"
+eng8="$(echo $title_md Client ports, add with ',' and join ranges with  : )"
+spa8="$(echo $title_md puertos Cliente, añadir con ',' y poner rangos con : )"
 var9="$(echo client_port_tcp=http,https,ssh )"
-eng9="$(echo $cinco tcp ports for client )"
-spa9="$(echo $cinco puertos tcp para ser cliente )"
+eng9="$(echo $title_md tcp ports for client )"
+spa9="$(echo $title_md puertos tcp para ser cliente )"
 var10="$(echo client_port_udp=domain,domain-s,bootpc,bootps,ntp,https )"
-eng10="$(echo $cinco udp ports for client )"
-spa10="$(echo $cinco puertos udp para ser cliente )"
-var11="$(echo $cinco SERVER PORTS $cinco )"
-eng11="$(echo $cinco Server ports, add with ',' and join ranges with : )"
-spa11="$(echo $cinco Puertos Servidor, añadir con ',' y poner rangos con  : )"
+eng10="$(echo $title_md udp ports for client )"
+spa10="$(echo $title_md puertos udp para ser cliente )"
+var11="$(echo $title_md SERVER PORTS $title_md )"
+eng11="$(echo $title_md Server ports, add with ',' and join ranges with : )"
+spa11="$(echo $title_md Puertos Servidor, añadir con ',' y poner rangos con  : )"
 var12="$(echo server_port_tcp=ssh )"
-eng12="$(echo $cinco tcp ports for server )"
-spa12="$(echo $cinco puertos tcp para servidor )"
+eng12="$(echo $title_md tcp ports for server )"
+spa12="$(echo $title_md puertos tcp para servidor )"
 var13="$(echo server_port_udp= )"
-eng13="$(echo $cinco udp ports for server )"
-spa13="$(echo $cinco puertos udp para servidor )"
-var14="$(echo $cinco LOG TO SERVER PORTS $cinco )"
-eng14="$(echo $cinco Log to server ports, add with ',' and join ranges with : )"
-spa14="$(echo $cinco logear para puertos de Servidor, añadir con ',' y poner rangos con : )"
+eng13="$(echo $title_md udp ports for server )"
+spa13="$(echo $title_md puertos udp para servidor )"
+var14="$(echo $title_md LOG TO SERVER PORTS $title_md )"
+eng14="$(echo $title_md Log to server ports, add with ',' and join ranges with : )"
+spa14="$(echo $title_md logear para puertos de Servidor, añadir con ',' y poner rangos con : )"
 var15="$(echo logserver_port_tcp= )"
-eng15="$(echo $cinco the tcp ports to log server )"
-spa15="$(echo $cinco puertos tcp para logear servidor )"
+eng15="$(echo $title_md the tcp ports to log server )"
+spa15="$(echo $title_md puertos tcp para logear servidor )"
 var16="$(echo logserver_port_udp= )"
-eng16="$(echo $cinco the udp ports to log server )"
-spa16="$(echo $cinco puertos udp para logear servidor )"
-var17="$(echo $cinco LOG PREFIX TO SERVER $cinco )"
-eng17="$(echo $cinco Log to server ports with prefix )"
-spa17="$(echo $cinco logear para puertos de servidor con prefijo )"
+eng16="$(echo $title_md the udp ports to log server )"
+spa16="$(echo $title_md puertos udp para logear servidor )"
+var17="$(echo $title_md LOG PREFIX TO SERVER $title_md )"
+eng17="$(echo $title_md Log to server ports with prefix )"
+spa17="$(echo $title_md logear para puertos de servidor con prefijo )"
 var18="$(echo logserver_prefix_input=fwlog-input:: )"
-eng18="$(echo $cinco type input prefix for logserver )"
-spa18="$(echo $cinco especifica prefijo de entrada para logserver )"
+eng18="$(echo $title_md type input prefix for logserver )"
+spa18="$(echo $title_md especifica prefijo de entrada para logserver )"
 var19="$(echo logserver_prefix_output=fwlog-output:: )"
-eng19="$(echo $cinco type output prefix for logserver )"
-spa19="$(echo $cinco especifica prefijo de salida para logserver )"
-var20="$(echo $cinco ALLOW MAXTRIES SHIELD $cinco )"
-eng20="$(echo $cinco Put one shield for ports to new connecting, with max ip to each hour )"
-spa20="$(echo $cinco Pone un escudo para los peuertos de nueva conexion, con maximo ip cada hora )"
+eng19="$(echo $title_md type output prefix for logserver )"
+spa19="$(echo $title_md especifica prefijo de salida para logserver )"
+var20="$(echo $title_md ALLOW MAXTRIES SHIELD $title_md )"
+eng20="$(echo $title_md Put one shield for ports to new connecting, with max ip to each hour )"
+spa20="$(echo $title_md Pone un escudo para los peuertos de nueva conexion, con maximo ip cada hora )"
 var21="$(echo allow_shield_maxtries=no )"
-eng21="$(echo $cinco void to allow one shield with max tries login in ssh for ip to each hour or no )"
-spa21="$(echo $cinco vacio para permitir un escudo con los intentos maximos de logins in ssh por ip a cada hora o no )"
+eng21="$(echo $title_md void to allow one shield with max tries login in ssh for ip to each hour or no )"
+spa21="$(echo $title_md vacio para permitir un escudo con los intentos maximos de logins in ssh por ip a cada hora o no )"
 var22="$(echo config_shield_maxtries=12 )"
-eng22="$(echo $cinco modify shield with number max of tries to log in us ssh server for ip at each hour )"
-spa22="$(echo $cinco modificar escudo con los maximos intentos de logeo a nuestro servidor ssh por ip a cada hora )"
+eng22="$(echo $title_md modify shield with number max of tries to log in us ssh server for ip at each hour )"
+spa22="$(echo $title_md modificar escudo con los maximos intentos de logeo a nuestro servidor ssh por ip a cada hora )"
 var23="$(echo config_shield_port=22 )"
-eng23="$(echo $cinco modify shield ssh chaging maxtries port ssh o several ports with comma separate )"
-spa23="$(echo $cinco modificar escudo ssh cambiando puerto de intentos ssh o varios puertos separados por comma )"
-var24="$(echo $cinco GENERAL RULES $cinco )"
-eng24="$(echo $cinco General rules in table )"
-spa24="$(echo $cinco Regla general en tabla )"
+eng23="$(echo $title_md modify shield ssh chaging maxtries port ssh o several ports with comma separate )"
+spa23="$(echo $title_md modificar escudo ssh cambiando puerto de intentos ssh o varios puertos separados por comma )"
+var24="$(echo $title_md GENERAL RULES $title_md )"
+eng24="$(echo $title_md General rules in table )"
+spa24="$(echo $title_md Regla general en tabla )"
 var25="$(echo allow_separate_rules= )"
-eng25="$(echo $cinco Void to separate the rules for each port or no )"
-spa25="$(echo $cinco Vacio para separar reglas por cada puerto o no )"
+eng25="$(echo $title_md Void to separate the rules for each port or no )"
+spa25="$(echo $title_md Vacio para separar reglas por cada puerto o no )"
 var26="$(echo config_close_deny=DROP )"
-eng26="$(echo $cinco choose close deny with or DROP or REJECT )"
-spa26="$(echo $cinco Elige cerrar denegacion con o DROP or REJECT )"
-var27="$(echo $cinco END NECESARY $cinco )"
-eng27="$(echo $cinco .......... END Necesary options .......... .......... $cinco )"
-spa27="$(echo $cinco FINAL .......... Opciones Necesarias .......... .......... $cinco )"
+eng26="$(echo $title_md choose close deny with or DROP or REJECT )"
+spa26="$(echo $title_md Elige cerrar denegacion con o DROP or REJECT )"
+var27="$(echo $title_md END NECESARY $title_md )"
+eng27="$(echo $title_md .......... END Necesary options .......... .......... $title_md )"
+spa27="$(echo $title_md FINAL .......... Opciones Necesarias .......... .......... $title_md )"
 ####
 ####
 #### english: advance options in configurations file cfg
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-var31="$(echo $cinco BEGIN OPTIONAL $cinco )"
-eng31="$(echo $cinco .......... BEGIN Optional options .......... .......... $cinco )"
-spa31="$(echo $cinco INICIO .......... Opciones opcionales .......... .......... $cinco )"
-var32="$(echo $cinco choose void or no $cinco )"
-eng32="$(echo $cinco Allow Other Options,  modify with void, or no )"
-spa32="$(echo $cinco Permitir Otras Opciones, modificar con vacio o no )"
+var31="$(echo $title_md BEGIN OPTIONAL $title_md )"
+eng31="$(echo $title_md .......... BEGIN Optional options .......... .......... $title_md )"
+spa31="$(echo $title_md INICIO .......... Opciones opcionales .......... .......... $title_md )"
+var32="$(echo $title_md choose void or no $title_md )"
+eng32="$(echo $title_md Allow Other Options,  modify with void, or no )"
+spa32="$(echo $title_md Permitir Otras Opciones, modificar con vacio o no )"
 # var33="$(echo allow_separate_rules=no )"
-# eng33="$(echo $cinco Separate the rules for each port or no )"
-# spa33="$(echo $cinco separar reglas por cada puerto o no )"
+# eng33="$(echo $title_md Separate the rules for each port or no )"
+# spa33="$(echo $title_md separar reglas por cada puerto o no )"
 # var34="$(echo allow_shield_maxtries=no )"
-# eng34="$(echo $cinco void to allow one shield with max tries login in ssh for ip to each hour or no )"
-# spa34="$(echo $cinco vacio para permitir un escudo con los intentos maximos de logins in ssh por ip a cada hora o no )"
+# eng34="$(echo $title_md void to allow one shield with max tries login in ssh for ip to each hour or no )"
+# spa34="$(echo $title_md vacio para permitir un escudo con los intentos maximos de logins in ssh por ip a cada hora o no )"
 var35="$(echo allow_forward_ip4=no )"
-eng35="$(echo $cinco void to yes to forward ip4, or no to no )"
-spa35="$(echo $cinco vacio para reenvios ip4, o no para no )"
+eng35="$(echo $title_md void to yes to forward ip4, or no to no )"
+spa35="$(echo $title_md vacio para reenvios ip4, o no para no )"
 var36="$(echo allow_forward_ip6=no )"
-eng36="$(echo $cinco void to allow ip forward ip6 or no )"
-spa36="$(echo $cinco vacio para permitir reenvio ip6, o no )"
+eng36="$(echo $title_md void to allow ip forward ip6 or no )"
+spa36="$(echo $title_md vacio para permitir reenvio ip6, o no )"
 var37="$(echo allow_gateway_ip4=no )"
-eng37="$(echo $cinco void to allow gateway ip4 to others nets or no )"
-spa37="$(echo $cinco vacio para permitir gateway ip4  a otras redes, o no )"
+eng37="$(echo $title_md void to allow gateway ip4 to others nets or no )"
+spa37="$(echo $title_md vacio para permitir gateway ip4  a otras redes, o no )"
 var38="$(echo allow_gateway_ip6=no )"
-eng38="$(echo $cinco void to allow gateway ip6 to other nets or no )"
-spa38="$(echo $cinco vacio para hacer gateway ip6 a otras redes o no )"
+eng38="$(echo $title_md void to allow gateway ip6 to other nets or no )"
+spa38="$(echo $title_md vacio para hacer gateway ip6 a otras redes o no )"
 var39="$(echo allow_dmz_ip4=no )"
-eng39="$(echo $cinco void to allow dmz ip4 to one host local or no )"
-spa39="$(echo $cinco vacio para permitir dmz ip4  a una host local, o no )"
+eng39="$(echo $title_md void to allow dmz ip4 to one host local or no )"
+spa39="$(echo $title_md vacio para permitir dmz ip4  a una host local, o no )"
 var40="$(echo allow_dmz_ip6=no )"
-eng40="$(echo $cinco void to allow dmz ip6 to one host local or no )"
-spa40="$(echo $cinco vacio para hacer dmz ip6 a una host local o no )"
+eng40="$(echo $title_md void to allow dmz ip6 to one host local or no )"
+spa40="$(echo $title_md vacio para hacer dmz ip6 a una host local o no )"
 var41="$(echo allow_input_all=no )"
-eng41="$(echo $cinco void when the rules are to allow input to all or no )"
-spa41="$(echo $cinco vacio, reglas para permitir toda entrada o no )"
+eng41="$(echo $title_md void when the rules are to allow input to all or no )"
+spa41="$(echo $title_md vacio, reglas para permitir toda entrada o no )"
 var42="$(echo allow_output_all=no )"
-eng42="$(echo $cinco void when the rules are to allow output to all or no )"
-spa42="$(echo $cinco vacio, reglas para permitir toda salida o no )"
+eng42="$(echo $title_md void when the rules are to allow output to all or no )"
+spa42="$(echo $title_md vacio, reglas para permitir toda salida o no )"
 var43="$(echo allow_input_state=no )"
-eng43="$(echo $cinco Selective Input state with void or no )"
-spa43="$(echo $cinco Estado de entrada selectivo con vacio o no )"
+eng43="$(echo $title_md Selective Input state with void or no )"
+spa43="$(echo $title_md Estado de entrada selectivo con vacio o no )"
 var44="$(echo allow_output_state=no )"
-eng44="$(echo $cinco Selective Output state with void or no )"
-spa44="$(echo $cinco Estado de salida selectivo con vacio o no )"
+eng44="$(echo $title_md Selective Output state with void or no )"
+spa44="$(echo $title_md Estado de salida selectivo con vacio o no )"
 var45="$(echo allow_input_bandwidth=no )"
-eng45="$(echo $cinco void to limit bandwidth input in kbits/sec for all sources or no )"
-spa45="$(echo $cinco vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no )"
+eng45="$(echo $title_md void to limit bandwidth input in kbits/sec for all sources or no )"
+spa45="$(echo $title_md vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no )"
 var46="$(echo allow_output_bandwidth=no )"
-eng46="$(echo $cinco void to limit bandwidth output in kbits/sec for each destination or no )"
-spa46="$(echo $cinco vacio limitar ancho de banda de salida en kbits/sec por cada destino o no )"
+eng46="$(echo $title_md void to limit bandwidth output in kbits/sec for each destination or no )"
+spa46="$(echo $title_md vacio limitar ancho de banda de salida en kbits/sec por cada destino o no )"
 var47="$(echo allow_input_maxconnect=no )"
-eng47="$(echo $cinco void to limit max number for input simultaneous connections or no )"
-spa47="$(echo $cinco vacio para limitar numero de conexiones simultaneas de entrada o no )"
+eng47="$(echo $title_md void to limit max number for input simultaneous connections or no )"
+spa47="$(echo $title_md vacio para limitar numero de conexiones simultaneas de entrada o no )"
 var48="$(echo allow_output_maxconnect=no )"
-eng48="$(echo $cinco void to limit max number for output simultaneous connections or no )"
-spa48="$(echo $cinco vacio para limitar numero de conexiones simultaneas de salida o no )"
+eng48="$(echo $title_md void to limit max number for output simultaneous connections or no )"
+spa48="$(echo $title_md vacio para limitar numero de conexiones simultaneas de salida o no )"
 var49="$(echo allow_input_ping=no )"
-eng49="$(echo $cinco void to allow RECIVE PING or no )"
-spa49="$(echo $cinco vacio para permitir RECIVIR PING o no )"
+eng49="$(echo $title_md void to allow RECIVE PING or no )"
+spa49="$(echo $title_md vacio para permitir RECIVIR PING o no )"
 var50="$(echo allow_output_ping=no )"
-eng50="$(echo $cinco void to allow SEND PING or no )"
-spa50="$(echo $cinco vacio para permitir ENVIAR PING o no )"
+eng50="$(echo $title_md void to allow SEND PING or no )"
+spa50="$(echo $title_md vacio para permitir ENVIAR PING o no )"
 var51="$(echo allow_mac_whitelist=no )"
-eng51="$(echo $cinco void to allow some exceptional MAC-ADDRESS or no )"
-spa51="$(echo $cinco vacio para permitir DIRECCION-MAC excepcionales o no )"
+eng51="$(echo $title_md void to allow some exceptional MAC-ADDRESS or no )"
+spa51="$(echo $title_md vacio para permitir DIRECCION-MAC excepcionales o no )"
 var52="$(echo allow_mac_blacklist=no )"
-eng52="$(echo $cinco void to drop some excepcional MAC-ADDRESS or no )"
-spa52="$(echo $cinco vacio para denegar DIRECCION-MAC excepcionales o no )"
+eng52="$(echo $title_md void to drop some excepcional MAC-ADDRESS or no )"
+spa52="$(echo $title_md vacio para denegar DIRECCION-MAC excepcionales o no )"
 var53="$(echo allow_net_whitelist=no )"
-eng53="$(echo $cinco void to allow some exceptional HOST/IP or no )"
-spa53="$(echo $cinco vacio para permitir HOST/IP excepcionales o no )"
+eng53="$(echo $title_md void to allow some exceptional HOST/IP or no )"
+spa53="$(echo $title_md vacio para permitir HOST/IP excepcionales o no )"
 var54="$(echo allow_net_blacklist=no )"
-eng54="$(echo $cinco void to drop some excepcional HOST/IP or no )"
-spa54="$(echo $cinco vacio para denegar HOST/IP excepcionales o no )"
+eng54="$(echo $title_md void to drop some excepcional HOST/IP or no )"
+spa54="$(echo $title_md vacio para denegar HOST/IP excepcionales o no )"
 var55="$(echo allow_output_uid=no )"
-eng55="$(echo $cinco void to allow excepcional USER or no )"
-spa55="$(echo $cinco vacio permite salida de paquetes de un USUARIO excepcional o no )"
+eng55="$(echo $title_md void to allow excepcional USER or no )"
+spa55="$(echo $title_md vacio permite salida de paquetes de un USUARIO excepcional o no )"
 var56="$(echo allow_output_gid=no )"
-eng56="$(echo $cinco void to allow excepcional GROUP or no )"
-spa56="$(echo $cinco vacio permite salida de paquetes de un GRUPO excepcional o no )"
+eng56="$(echo $title_md void to allow excepcional GROUP or no )"
+spa56="$(echo $title_md vacio permite salida de paquetes de un GRUPO excepcional o no )"
 var57="$(echo allow_others_protocols=no )"
-eng57="$(echo $cinco void to allow other POTOCOL-IP excepcional or no )"
-spa57="$(echo $cinco vacio para permitir otro PROTOCOLO-IP excepcional o no )"
+eng57="$(echo $title_md void to allow other POTOCOL-IP excepcional or no )"
+spa57="$(echo $title_md vacio para permitir otro PROTOCOLO-IP excepcional o no )"
 ####
 ####
 #### english: advance options in configurations file cfg
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-var58="$(echo $cinco Begin Variables $cinco.......... .......... $cinco.......... )"
-eng58="$(echo $cinco Fill Variables )"
-spa58="$(echo $cinco Rellena Variables )"
-var59="$(echo $cinco Options )"
-eng59="$(echo $cinco Other Options, add with , and join ranges with : )"
-spa59="$(echo $cinco Otras Opciones, añadir con , y poner rangos con : )"
+var58="$(echo $title_md Begin Variables $title_md.......... .......... $title_md.......... )"
+eng58="$(echo $title_md Fill Variables )"
+spa58="$(echo $title_md Rellena Variables )"
+var59="$(echo $title_md Options )"
+eng59="$(echo $title_md Other Options, add with , and join ranges with : )"
+spa59="$(echo $title_md Otras Opciones, añadir con , y poner rangos con : )"
 # var60="$(echo config_shield_maxtries=12 )"
-# eng60="$(echo $cinco modify shield with number max of tries to log in us ssh server for ip at each hour )"
-# spa60="$(echo $cinco modificar escudo con los maximos intentos de logeo a nuestro servidor ssh por ip a cada hora )"
+# eng60="$(echo $title_md modify shield with number max of tries to log in us ssh server for ip at each hour )"
+# spa60="$(echo $title_md modificar escudo con los maximos intentos de logeo a nuestro servidor ssh por ip a cada hora )"
 # var61="$(echo config_shield_port=22 )"
-# eng61="$(echo $cinco modify shield ssh chaging maxtries port ssh o several ports with comma separate )"
-# spa61="$(echo $cinco modificar escudo ssh cambiando puerto de intentos ssh o varios puertos separados por comma )"
+# eng61="$(echo $title_md modify shield ssh chaging maxtries port ssh o several ports with comma separate )"
+# spa61="$(echo $title_md modificar escudo ssh cambiando puerto de intentos ssh o varios puertos separados por comma )"
 var62="$(echo config_dmz_ip4=192.168.1.7 )"
-eng62="$(echo $cinco ip server ip lan to other external nets, nat prerouting )"
-spa62="$(echo $cinco servidor ip lan para otras redes esternas, nat prerouting )"
+eng62="$(echo $title_md ip server ip lan to other external nets, nat prerouting )"
+spa62="$(echo $title_md servidor ip lan para otras redes esternas, nat prerouting )"
 var63="$(echo config_dmz_ip6=d4:12:43:01:36:2e )"
-eng63="$(echo $cinco ip server ip lan to other external nets, nat prerouting )"
-spa63="$(echo $cinco servidor ip lan para otras redes esternas, nat prerouting )"
+eng63="$(echo $title_md ip server ip lan to other external nets, nat prerouting )"
+spa63="$(echo $title_md servidor ip lan para otras redes esternas, nat prerouting )"
 var64="$(echo config_input_state=new,related,established )"
-eng64="$(echo $cinco void for all or new,related,established,untracked,invalid )"
-spa64="$(echo $cinco modificar con vacio o new,related,established,untracked,invalid )"
+eng64="$(echo $title_md void for all or new,related,established,untracked,invalid )"
+spa64="$(echo $title_md modificar con vacio o new,related,established,untracked,invalid )"
 var65="$(echo config_output_state=new,related,established )"
-eng65="$(echo $cinco void for all or new,related,established,untracked,invalid )"
-spa65="$(echo $cinco modificar con vacio o new,related,established,untracked,invalid )"
+eng65="$(echo $title_md void for all or new,related,established,untracked,invalid )"
+spa65="$(echo $title_md modificar con vacio o new,related,established,untracked,invalid )"
 var66="$(echo config_input_bandwidth=12512 )"
-eng66="$(echo $cinco max input bandwidth in kbits/sec for all )"
-spa66="$(echo $cinco maximo entrada de ancho de banda en kbit/sec para todos )"
+eng66="$(echo $title_md max input bandwidth in kbits/sec for all )"
+spa66="$(echo $title_md maximo entrada de ancho de banda en kbit/sec para todos )"
 var67="$(echo config_output_bandwidth=512 )"
-eng67="$(echo $cinco max output bandwidth in kbits/sec for each ip )"
-spa67="$(echo $cinco maximo salida de ancho de banda en kbits/sec para cada ip )"
+eng67="$(echo $title_md max output bandwidth in kbits/sec for each ip )"
+spa67="$(echo $title_md maximo salida de ancho de banda en kbits/sec para cada ip )"
 var68="$(echo config_input_maxconnect=72 )"
-eng68="$(echo $cinco max number for input simultaneous connections )"
-spa68="$(echo $cinco maximo numero de conexiones simultaneas de entrada )"
+eng68="$(echo $title_md max number for input simultaneous connections )"
+spa68="$(echo $title_md maximo numero de conexiones simultaneas de entrada )"
 var69="$(echo config_output_maxconnect=72 )"
-eng69="$(echo $cinco max number for output simultaneous connections )"
-spa69="$(echo $cinco maximo numero de conexiones simultaneas de salida )"
+eng69="$(echo $title_md max number for output simultaneous connections )"
+spa69="$(echo $title_md maximo numero de conexiones simultaneas de salida )"
 var70="$(echo config_mac_whitelist=d4:12:43:01:36:2e )"
-eng70="$(echo $cinco allow this excepcitonal MAC-ADRESS )"
-spa70="$(echo $cinco permitir estos MAC-ADDRESS excepcionales )"
+eng70="$(echo $title_md allow this excepcitonal MAC-ADRESS )"
+spa70="$(echo $title_md permitir estos MAC-ADDRESS excepcionales )"
 var71="$(echo config_mac_blacklist=d4:12:43:01:36:2e )"
-eng71="$(echo $cinco drop this excepcional MAC-ADDRESS )"
-spa71="$(echo $cinco deniega estos MAC-ADDRESS excepcionales )"
+eng71="$(echo $title_md drop this excepcional MAC-ADDRESS )"
+spa71="$(echo $title_md deniega estos MAC-ADDRESS excepcionales )"
 var72="$(echo config_net_whitelist=wesnoth.org,sf.net,deb.debian.org )"
-eng72="$(echo $cinco allow this excepcitonal HOST/IP )"
-spa72="$(echo $cinco permitir estos HOST/IP excepcionales )"
+eng72="$(echo $title_md allow this excepcitonal HOST/IP )"
+spa72="$(echo $title_md permitir estos HOST/IP excepcionales )"
 var73="$(echo config_net_blacklist=facebook.com,www.facebook.com )"
-eng73="$(echo $cinco drop this excepcional HOST/IP )"
-spa73="$(echo $cinco deniega estos HOST/IP excepcionales )"
+eng73="$(echo $title_md drop this excepcional HOST/IP )"
+spa73="$(echo $title_md deniega estos HOST/IP excepcionales )"
 var74="$(echo config_output_uid=root )"
-eng74="$(echo $cinco allow out packages excepcional from this USER excepcional )"
-spa74="$(echo $cinco permite salida de paquetes de este USUARIO excepcional )"
+eng74="$(echo $title_md allow out packages excepcional from this USER excepcional )"
+spa74="$(echo $title_md permite salida de paquetes de este USUARIO excepcional )"
 var75="$(echo config_output_gid=root )"
-eng75="$(echo $cinco allow out packages excepcional from this GROUP excepcional )"
-spa75="$(echo $cinco permite salida de paquetes de este GRUPO excepcional )"
+eng75="$(echo $title_md allow out packages excepcional from this GROUP excepcional )"
+spa75="$(echo $title_md permite salida de paquetes de este GRUPO excepcional )"
 var76="$(echo config_others_protocols=icmp,igmp )"
-eng76="$(echo $cinco allow others protocols from /etc/protocolos )"
-spa76="$(echo $cinco permitir otros protocolos desde /etc/protocols )"
-var77="$(echo $cinco NET CLIENT AND NET SERVER $cinco )"
-eng77="$(echo $cinco Net to connect likes client or server )"
-spa77="$(echo $cinco Red para conectar como cliente o server )"
+eng76="$(echo $title_md allow others protocols from /etc/protocolos )"
+spa76="$(echo $title_md permitir otros protocolos desde /etc/protocols )"
+var77="$(echo $title_md NET CLIENT AND NET SERVER $title_md )"
+eng77="$(echo $title_md Net to connect likes client or server )"
+spa77="$(echo $title_md Red para conectar como cliente o server )"
 var78="$(echo net_ipv4_client=0/0 )"
-eng78="$(echo $cinco the net to client ipv4, all is 0/0 )"
-spa78="$(echo $cinco la red cual cliente ipv4, todos es 0/0 )"
+eng78="$(echo $title_md the net to client ipv4, all is 0/0 )"
+spa78="$(echo $title_md la red cual cliente ipv4, todos es 0/0 )"
 var79="$(echo net_ipv4_server=0/0 )"
-eng79="$(echo $cinco the net to server ipv4, all is 0/0 )"
-spa79="$(echo $cinco la red cual servidor ipv4, todos es 0/0 )"
+eng79="$(echo $title_md the net to server ipv4, all is 0/0 )"
+spa79="$(echo $title_md la red cual servidor ipv4, todos es 0/0 )"
 var80="$(echo net_ipv6_client=::/0 )"
-eng80="$(echo $cinco the net to client ipv6, all is ::/0 )"
-spa80="$(echo $cinco la red cual cliente ipv6, todos es ::/0 )"
+eng80="$(echo $title_md the net to client ipv6, all is ::/0 )"
+spa80="$(echo $title_md la red cual cliente ipv6, todos es ::/0 )"
 var81="$(echo net_ipv6_server=::/0 )"
-eng81="$(echo $cinco the net to server ipv6, all is ::/0 )"
-spa81="$(echo $cinco la red cual servidor ipv6, todos es ::/0 )"
-var82="$(echo $cinco $cinco )"
-eng82="$(echo $cinco .......... END Optional options .......... .......... $cinco )"
-spa82="$(echo $cinco FINAL .......... Opciones opcionales .......... .......... $cinco )"
+eng81="$(echo $title_md the net to server ipv6, all is ::/0 )"
+spa81="$(echo $title_md la red cual servidor ipv6, todos es ::/0 )"
+var82="$(echo $title_md $title_md )"
+eng82="$(echo $title_md .......... END Optional options .......... .......... $title_md )"
+spa82="$(echo $title_md FINAL .......... Opciones opcionales .......... .......... $title_md )"
 ####
 ####
 ##########   english: continue with autogen defaults configs cfg
@@ -1794,242 +1788,242 @@ fs="$defaultfullcfg_spa"
 ####
 ####
 echo -E "$var0"  &> $me
-echo -E "$var1"  "$tabz" "$eng1"  &>> "$me"
-echo -E "$var2"  "$tabz" "$eng2"  &>> "$me"
-echo -E "$var3"  "$tabz" "$eng3"  &>> "$me"
-echo -E "$var4"  "$tabz" "$eng4"  &>> "$me"
-echo -E "$var5"  "$tabz" "$eng5"  &>> "$me"
-echo -E "$var6"  "$tabz" "$eng6"  &>> "$me"
-echo -E "$var7"  "$tabz" "$eng7"  &>> "$me"
-echo -E "$var8"  "$tabz" "$eng8"  &>> "$me"
-echo -E "$var9"  "$tabz" "$eng9"  &>> "$me"
-echo -E "$var10" "$tabz" "$eng10" &>> "$me"
-echo -E "$var11" "$tabz" "$eng11" &>> "$me"
-echo -E "$var12" "$tabz" "$eng12" &>> "$me"
-echo -E "$var13" "$tabz" "$eng13" &>> "$me"
-echo -E "$var14" "$tabz" "$eng14" &>> "$me"
-echo -E "$var15" "$tabz" "$eng15" &>> "$me"
-echo -E "$var16" "$tabz" "$eng16" &>> "$me"
-echo -E "$var17" "$tabz" "$eng17" &>> "$me"
-echo -E "$var18" "$tabz" "$eng18" &>> "$me"
-echo -E "$var19" "$tabz" "$eng19" &>> "$me"
-echo -E "$var20" "$tabz" "$eng20" &>> "$me"
-echo -E "$var21" "$tabz" "$eng21" &>> "$me"
-echo -E "$var22" "$tabz" "$eng22" &>> "$me"
-echo -E "$var23" "$tabz" "$eng23" &>> "$me"
-echo -E "$var24" "$tabz" "$eng24" &>> "$me"
-echo -E "$var25" "$tabz" "$eng25" &>> "$me"
-echo -E "$var26" "$tabz" "$eng26" &>> "$me"
-echo -E "$var27" "$tabz" "$eng27" &>> "$me"
+echo -E "$var1"  "$text_md" "$eng1"  &>> "$me"
+echo -E "$var2"  "$text_md" "$eng2"  &>> "$me"
+echo -E "$var3"  "$text_md" "$eng3"  &>> "$me"
+echo -E "$var4"  "$text_md" "$eng4"  &>> "$me"
+echo -E "$var5"  "$text_md" "$eng5"  &>> "$me"
+echo -E "$var6"  "$text_md" "$eng6"  &>> "$me"
+echo -E "$var7"  "$text_md" "$eng7"  &>> "$me"
+echo -E "$var8"  "$text_md" "$eng8"  &>> "$me"
+echo -E "$var9"  "$text_md" "$eng9"  &>> "$me"
+echo -E "$var10" "$text_md" "$eng10" &>> "$me"
+echo -E "$var11" "$text_md" "$eng11" &>> "$me"
+echo -E "$var12" "$text_md" "$eng12" &>> "$me"
+echo -E "$var13" "$text_md" "$eng13" &>> "$me"
+echo -E "$var14" "$text_md" "$eng14" &>> "$me"
+echo -E "$var15" "$text_md" "$eng15" &>> "$me"
+echo -E "$var16" "$text_md" "$eng16" &>> "$me"
+echo -E "$var17" "$text_md" "$eng17" &>> "$me"
+echo -E "$var18" "$text_md" "$eng18" &>> "$me"
+echo -E "$var19" "$text_md" "$eng19" &>> "$me"
+echo -E "$var20" "$text_md" "$eng20" &>> "$me"
+echo -E "$var21" "$text_md" "$eng21" &>> "$me"
+echo -E "$var22" "$text_md" "$eng22" &>> "$me"
+echo -E "$var23" "$text_md" "$eng23" &>> "$me"
+echo -E "$var24" "$text_md" "$eng24" &>> "$me"
+echo -E "$var25" "$text_md" "$eng25" &>> "$me"
+echo -E "$var26" "$text_md" "$eng26" &>> "$me"
+echo -E "$var27" "$text_md" "$eng27" &>> "$me"
 ####
 ####
 #### wizard mini-spanish
 ####
 ####
 echo "$var0"  &> "$ms"
-echo "$var1"  "$tabz" "$spa1"  &>> "$ms"
-echo "$var2"  "$tabz" "$spa2"  &>> "$ms"
-echo "$var3"  "$tabz" "$spa3"  &>> "$ms"
-echo "$var4"  "$tabz" "$spa4"  &>> "$ms"
-echo "$var5"  "$tabz" "$spa5"  &>> "$ms"
-echo "$var6"  "$tabz" "$spa6"  &>> "$ms"
-echo "$var7"  "$tabz" "$spa7"  &>> "$ms"
-echo "$var8"  "$tabz" "$spa8"  &>> "$ms"
-echo "$var9"  "$tabz" "$spa9"  &>> "$ms"
-echo "$var10" "$tabz" "$spa10" &>> "$ms"
-echo "$var11" "$tabz" "$spa11" &>> "$ms"
-echo "$var12" "$tabz" "$spa12" &>> "$ms"
-echo "$var13" "$tabz" "$spa13" &>> "$ms"
-echo "$var14" "$tabz" "$spa14" &>> "$ms"
-echo "$var15" "$tabz" "$spa15" &>> "$ms"
-echo "$var16" "$tabz" "$spa16" &>> "$ms"
-echo "$var17" "$tabz" "$spa17" &>> "$ms"
-echo "$var18" "$tabz" "$spa18" &>> "$ms"
-echo "$var19" "$tabz" "$spa19" &>> "$ms"
-echo "$var20" "$tabz" "$spa20" &>> "$ms"
-echo "$var21" "$tabz" "$spa21" &>> "$ms"
-echo "$var22" "$tabz" "$spa22" &>> "$ms"
-echo "$var23" "$tabz" "$spa23" &>> "$ms"
-echo "$var24" "$tabz" "$spa24" &>> "$ms"
-echo "$var25" "$tabz" "$spa25" &>> "$ms"
-echo "$var26" "$tabz" "$spa26" &>> "$ms"
-echo "$var27" "$tabz" "$spa27" &>> "$ms"
+echo "$var1"  "$text_md" "$spa1"  &>> "$ms"
+echo "$var2"  "$text_md" "$spa2"  &>> "$ms"
+echo "$var3"  "$text_md" "$spa3"  &>> "$ms"
+echo "$var4"  "$text_md" "$spa4"  &>> "$ms"
+echo "$var5"  "$text_md" "$spa5"  &>> "$ms"
+echo "$var6"  "$text_md" "$spa6"  &>> "$ms"
+echo "$var7"  "$text_md" "$spa7"  &>> "$ms"
+echo "$var8"  "$text_md" "$spa8"  &>> "$ms"
+echo "$var9"  "$text_md" "$spa9"  &>> "$ms"
+echo "$var10" "$text_md" "$spa10" &>> "$ms"
+echo "$var11" "$text_md" "$spa11" &>> "$ms"
+echo "$var12" "$text_md" "$spa12" &>> "$ms"
+echo "$var13" "$text_md" "$spa13" &>> "$ms"
+echo "$var14" "$text_md" "$spa14" &>> "$ms"
+echo "$var15" "$text_md" "$spa15" &>> "$ms"
+echo "$var16" "$text_md" "$spa16" &>> "$ms"
+echo "$var17" "$text_md" "$spa17" &>> "$ms"
+echo "$var18" "$text_md" "$spa18" &>> "$ms"
+echo "$var19" "$text_md" "$spa19" &>> "$ms"
+echo "$var20" "$text_md" "$spa20" &>> "$ms"
+echo "$var21" "$text_md" "$spa21" &>> "$ms"
+echo "$var22" "$text_md" "$spa22" &>> "$ms"
+echo "$var23" "$text_md" "$spa23" &>> "$ms"
+echo "$var24" "$text_md" "$spa24" &>> "$ms"
+echo "$var25" "$text_md" "$spa25" &>> "$ms"
+echo "$var26" "$text_md" "$spa26" &>> "$ms"
+echo "$var27" "$text_md" "$spa27" &>> "$ms"
 ####
 ####
 #### wizard full-english
 ####
 ####
 echo -E "$var0"  &> "$fe"
-echo -E "$var1"  "$tabz" "$eng1"  &>> "$fe"
-echo -E "$var2"  "$tabz" "$eng2"  &>> "$fe"
-echo -E "$var3"  "$tabz" "$eng3"  &>> "$fe"
-echo -E "$var4"  "$tabz" "$eng4"  &>> "$fe"
-echo -E "$var5"  "$tabz" "$eng5"  &>> "$fe"
-echo -E "$var6"  "$tabz" "$eng6"  &>> "$fe"
-echo -E "$var7"  "$tabz" "$eng7"  &>> "$fe"
-echo -E "$var8"  "$tabz" "$eng8"  &>> "$fe"
-echo -E "$var9"  "$tabz" "$eng9"  &>> "$fe"
-echo -E "$var10" "$tabz" "$eng10" &>> "$fe"
-echo -E "$var11" "$tabz" "$eng11" &>> "$fe"
-echo -E "$var12" "$tabz" "$eng12" &>> "$fe"
-echo -E "$var13" "$tabz" "$eng13" &>> "$fe"
-echo -E "$var14" "$tabz" "$eng14" &>> "$fe"
-echo -E "$var15" "$tabz" "$eng15" &>> "$fe"
-echo -E "$var16" "$tabz" "$eng16" &>> "$fe"
-echo -E "$var17" "$tabz" "$eng17" &>> "$fe"
-echo -E "$var18" "$tabz" "$eng18" &>> "$fe"
-echo -E "$var19" "$tabz" "$eng19" &>> "$fe"
-echo -E "$var20" "$tabz" "$eng20" &>> "$fe"
-echo -E "$var21" "$tabz" "$eng21" &>> "$fe"
-echo -E "$var22" "$tabz" "$eng22" &>> "$fe"
-echo -E "$var23" "$tabz" "$eng23" &>> "$fe"
-echo -E "$var24" "$tabz" "$eng24" &>> "$fe"
-echo -E "$var25" "$tabz" "$eng25" &>> "$fe"
-echo -E "$var26" "$tabz" "$eng26" &>> "$fe"
-echo -E "$var27" "$tabz" "$eng27" &>> "$fe"
+echo -E "$var1"  "$text_md" "$eng1"  &>> "$fe"
+echo -E "$var2"  "$text_md" "$eng2"  &>> "$fe"
+echo -E "$var3"  "$text_md" "$eng3"  &>> "$fe"
+echo -E "$var4"  "$text_md" "$eng4"  &>> "$fe"
+echo -E "$var5"  "$text_md" "$eng5"  &>> "$fe"
+echo -E "$var6"  "$text_md" "$eng6"  &>> "$fe"
+echo -E "$var7"  "$text_md" "$eng7"  &>> "$fe"
+echo -E "$var8"  "$text_md" "$eng8"  &>> "$fe"
+echo -E "$var9"  "$text_md" "$eng9"  &>> "$fe"
+echo -E "$var10" "$text_md" "$eng10" &>> "$fe"
+echo -E "$var11" "$text_md" "$eng11" &>> "$fe"
+echo -E "$var12" "$text_md" "$eng12" &>> "$fe"
+echo -E "$var13" "$text_md" "$eng13" &>> "$fe"
+echo -E "$var14" "$text_md" "$eng14" &>> "$fe"
+echo -E "$var15" "$text_md" "$eng15" &>> "$fe"
+echo -E "$var16" "$text_md" "$eng16" &>> "$fe"
+echo -E "$var17" "$text_md" "$eng17" &>> "$fe"
+echo -E "$var18" "$text_md" "$eng18" &>> "$fe"
+echo -E "$var19" "$text_md" "$eng19" &>> "$fe"
+echo -E "$var20" "$text_md" "$eng20" &>> "$fe"
+echo -E "$var21" "$text_md" "$eng21" &>> "$fe"
+echo -E "$var22" "$text_md" "$eng22" &>> "$fe"
+echo -E "$var23" "$text_md" "$eng23" &>> "$fe"
+echo -E "$var24" "$text_md" "$eng24" &>> "$fe"
+echo -E "$var25" "$text_md" "$eng25" &>> "$fe"
+echo -E "$var26" "$text_md" "$eng26" &>> "$fe"
+echo -E "$var27" "$text_md" "$eng27" &>> "$fe"
 ##### english: advance variables
 ##### spanish: avanzadas variables
-echo -E "$var30" "$tabz" "$eng30" &>> "$fe"
-echo -E "$var31" "$tabz" "$eng31" &>> "$fe"
-echo -E "$var32" "$tabz" "$eng32" &>> "$fe"
-echo -E "$var33" "$tabz" "$eng33" &>> "$fe"
-echo -E "$var34" "$tabz" "$eng34" &>> "$fe"
-echo -E "$var35" "$tabz" "$eng35" &>> "$fe"
-echo -E "$var36" "$tabz" "$eng36" &>> "$fe"
-echo -E "$var37" "$tabz" "$eng37" &>> "$fe"
-echo -E "$var38" "$tabz" "$eng38" &>> "$fe"
-echo -E "$var39" "$tabz" "$eng39" &>> "$fe"
-echo -E "$var40" "$tabz" "$eng40" &>> "$fe"
-echo -E "$var41" "$tabz" "$eng41" &>> "$fe"
-echo -E "$var42" "$tabz" "$eng42" &>> "$fe"
-echo -E "$var43" "$tabz" "$eng43" &>> "$fe"
-echo -E "$var44" "$tabz" "$eng44" &>> "$fe"
-echo -E "$var45" "$tabz" "$eng45" &>> "$fe"
-echo -E "$var46" "$tabz" "$eng46" &>> "$fe"
-echo -E "$var47" "$tabz" "$eng47" &>> "$fe"
-echo -E "$var48" "$tabz" "$eng48" &>> "$fe"
-echo -E "$var49" "$tabz" "$eng49" &>> "$fe"
-echo -E "$var50" "$tabz" "$eng50" &>> "$fe"
-echo -E "$var51" "$tabz" "$eng51" &>> "$fe"
-echo -E "$var52" "$tabz" "$eng52" &>> "$fe"
-echo -E "$var53" "$tabz" "$eng53" &>> "$fe"
-echo -E "$var54" "$tabz" "$eng54" &>> "$fe"
-echo -E "$var55" "$tabz" "$eng55" &>> "$fe"
-echo -E "$var56" "$tabz" "$eng56" &>> "$fe"
-echo -E "$var57" "$tabz" "$eng57" &>> "$fe"
-echo -E "$var58" "$tabz" "$eng58" &>> "$fe"
-echo -E "$var59" "$tabz" "$eng59" &>> "$fe"
-echo -E "$var60" "$tabz" "$eng60" &>> "$fe"
-echo -E "$var61" "$tabz" "$eng61" &>> "$fe"
-echo -E "$var62" "$tabz" "$eng62" &>> "$fe"
-echo -E "$var63" "$tabz" "$eng63" &>> "$fe"
-echo -E "$var64" "$tabz" "$eng64" &>> "$fe"
-echo -E "$var65" "$tabz" "$eng65" &>> "$fe"
-echo -E "$var66" "$tabz" "$eng66" &>> "$fe"
-echo -E "$var67" "$tabz" "$eng67" &>> "$fe"
-echo -E "$var68" "$tabz" "$eng68" &>> "$fe"
-echo -E "$var69" "$tabz" "$eng69" &>> "$fe"
-echo -E "$var70" "$tabz" "$eng70" &>> "$fe"
-echo -E "$var71" "$tabz" "$eng71" &>> "$fe"
-echo -E "$var72" "$tabz" "$eng72" &>> "$fe"
-echo -E "$var73" "$tabz" "$eng73" &>> "$fe"
-echo -E "$var74" "$tabz" "$eng74" &>> "$fe"
-echo -E "$var75" "$tabz" "$eng75" &>> "$fe"
-echo -E "$var76" "$tabz" "$eng76" &>> "$fe"
-echo -E "$var77" "$tabz" "$eng77" &>> "$fe"
-echo -E "$var78" "$tabz" "$eng78" &>> "$fe"
-echo -E "$var79" "$tabz" "$eng79" &>> "$fe"
-echo -E "$var80" "$tabz" "$eng80" &>> "$fe"
-echo -E "$var81" "$tabz" "$eng81" &>> "$fe"
-echo -E "$var82" "$tabz" "$eng82" &>> "$fe"
+echo -E "$var30" "$text_md" "$eng30" &>> "$fe"
+echo -E "$var31" "$text_md" "$eng31" &>> "$fe"
+echo -E "$var32" "$text_md" "$eng32" &>> "$fe"
+echo -E "$var33" "$text_md" "$eng33" &>> "$fe"
+echo -E "$var34" "$text_md" "$eng34" &>> "$fe"
+echo -E "$var35" "$text_md" "$eng35" &>> "$fe"
+echo -E "$var36" "$text_md" "$eng36" &>> "$fe"
+echo -E "$var37" "$text_md" "$eng37" &>> "$fe"
+echo -E "$var38" "$text_md" "$eng38" &>> "$fe"
+echo -E "$var39" "$text_md" "$eng39" &>> "$fe"
+echo -E "$var40" "$text_md" "$eng40" &>> "$fe"
+echo -E "$var41" "$text_md" "$eng41" &>> "$fe"
+echo -E "$var42" "$text_md" "$eng42" &>> "$fe"
+echo -E "$var43" "$text_md" "$eng43" &>> "$fe"
+echo -E "$var44" "$text_md" "$eng44" &>> "$fe"
+echo -E "$var45" "$text_md" "$eng45" &>> "$fe"
+echo -E "$var46" "$text_md" "$eng46" &>> "$fe"
+echo -E "$var47" "$text_md" "$eng47" &>> "$fe"
+echo -E "$var48" "$text_md" "$eng48" &>> "$fe"
+echo -E "$var49" "$text_md" "$eng49" &>> "$fe"
+echo -E "$var50" "$text_md" "$eng50" &>> "$fe"
+echo -E "$var51" "$text_md" "$eng51" &>> "$fe"
+echo -E "$var52" "$text_md" "$eng52" &>> "$fe"
+echo -E "$var53" "$text_md" "$eng53" &>> "$fe"
+echo -E "$var54" "$text_md" "$eng54" &>> "$fe"
+echo -E "$var55" "$text_md" "$eng55" &>> "$fe"
+echo -E "$var56" "$text_md" "$eng56" &>> "$fe"
+echo -E "$var57" "$text_md" "$eng57" &>> "$fe"
+echo -E "$var58" "$text_md" "$eng58" &>> "$fe"
+echo -E "$var59" "$text_md" "$eng59" &>> "$fe"
+echo -E "$var60" "$text_md" "$eng60" &>> "$fe"
+echo -E "$var61" "$text_md" "$eng61" &>> "$fe"
+echo -E "$var62" "$text_md" "$eng62" &>> "$fe"
+echo -E "$var63" "$text_md" "$eng63" &>> "$fe"
+echo -E "$var64" "$text_md" "$eng64" &>> "$fe"
+echo -E "$var65" "$text_md" "$eng65" &>> "$fe"
+echo -E "$var66" "$text_md" "$eng66" &>> "$fe"
+echo -E "$var67" "$text_md" "$eng67" &>> "$fe"
+echo -E "$var68" "$text_md" "$eng68" &>> "$fe"
+echo -E "$var69" "$text_md" "$eng69" &>> "$fe"
+echo -E "$var70" "$text_md" "$eng70" &>> "$fe"
+echo -E "$var71" "$text_md" "$eng71" &>> "$fe"
+echo -E "$var72" "$text_md" "$eng72" &>> "$fe"
+echo -E "$var73" "$text_md" "$eng73" &>> "$fe"
+echo -E "$var74" "$text_md" "$eng74" &>> "$fe"
+echo -E "$var75" "$text_md" "$eng75" &>> "$fe"
+echo -E "$var76" "$text_md" "$eng76" &>> "$fe"
+echo -E "$var77" "$text_md" "$eng77" &>> "$fe"
+echo -E "$var78" "$text_md" "$eng78" &>> "$fe"
+echo -E "$var79" "$text_md" "$eng79" &>> "$fe"
+echo -E "$var80" "$text_md" "$eng80" &>> "$fe"
+echo -E "$var81" "$text_md" "$eng81" &>> "$fe"
+echo -E "$var82" "$text_md" "$eng82" &>> "$fe"
 ####
 ####
 #### wizard full-spanish
 ####
 ####
 echo -E "$var0"  &> "$fs"
-echo -E "$var1"  "$tabz" "$spa1" &>> "$fs"
-echo -E "$var2"  "$tabz" "$spa2" &>> "$fs"
-echo -E "$var3"  "$tabz" "$spa3" &>> "$fs"
-echo -E "$var4"  "$tabz" "$spa4" &>> "$fs"
-echo -E "$var5"  "$tabz" "$spa5" &>> "$fs"
-echo -E "$var6"  "$tabz" "$spa6" &>> "$fs"
-echo -E "$var7"  "$tabz" "$spa7" &>> "$fs"
-echo -E "$var8"  "$tabz" "$spa8" &>> "$fs"
-echo -E "$var9"  "$tabz" "$spa9" &>> "$fs"
-echo -E "$var10" "$tabz" "$spa10" &>> "$fs"
-echo -E "$var11" "$tabz" "$spa11" &>> "$fs"
-echo -E "$var12" "$tabz" "$spa12" &>> "$fs"
-echo -E "$var13" "$tabz" "$spa13" &>> "$fs"
-echo -E "$var14" "$tabz" "$spa14" &>> "$fs"
-echo -E "$var15" "$tabz" "$spa15" &>> "$fs"
-echo -E "$var16" "$tabz" "$spa16" &>> "$fs"
-echo -E "$var17" "$tabz" "$spa17" &>> "$fs"
-echo -E "$var18" "$tabz" "$spa18" &>> "$fs"
-echo -E "$var19" "$tabz" "$spa19" &>> "$fs"
-echo -E "$var20" "$tabz" "$spa20" &>> "$fs"
-echo -E "$var21" "$tabz" "$spa21" &>> "$fs"
-echo -E "$var22" "$tabz" "$spa22" &>> "$fs"
-echo -E "$var23" "$tabz" "$spa23" &>> "$fs"
-echo -E "$var24" "$tabz" "$spa24" &>> "$fs"
-echo -E "$var25" "$tabz" "$spa25" &>> "$fs"
-echo -E "$var26" "$tabz" "$spa26" &>> "$fs"
-echo -E "$var27" "$tabz" "$spa27" &>> "$fs"
+echo -E "$var1"  "$text_md" "$spa1" &>> "$fs"
+echo -E "$var2"  "$text_md" "$spa2" &>> "$fs"
+echo -E "$var3"  "$text_md" "$spa3" &>> "$fs"
+echo -E "$var4"  "$text_md" "$spa4" &>> "$fs"
+echo -E "$var5"  "$text_md" "$spa5" &>> "$fs"
+echo -E "$var6"  "$text_md" "$spa6" &>> "$fs"
+echo -E "$var7"  "$text_md" "$spa7" &>> "$fs"
+echo -E "$var8"  "$text_md" "$spa8" &>> "$fs"
+echo -E "$var9"  "$text_md" "$spa9" &>> "$fs"
+echo -E "$var10" "$text_md" "$spa10" &>> "$fs"
+echo -E "$var11" "$text_md" "$spa11" &>> "$fs"
+echo -E "$var12" "$text_md" "$spa12" &>> "$fs"
+echo -E "$var13" "$text_md" "$spa13" &>> "$fs"
+echo -E "$var14" "$text_md" "$spa14" &>> "$fs"
+echo -E "$var15" "$text_md" "$spa15" &>> "$fs"
+echo -E "$var16" "$text_md" "$spa16" &>> "$fs"
+echo -E "$var17" "$text_md" "$spa17" &>> "$fs"
+echo -E "$var18" "$text_md" "$spa18" &>> "$fs"
+echo -E "$var19" "$text_md" "$spa19" &>> "$fs"
+echo -E "$var20" "$text_md" "$spa20" &>> "$fs"
+echo -E "$var21" "$text_md" "$spa21" &>> "$fs"
+echo -E "$var22" "$text_md" "$spa22" &>> "$fs"
+echo -E "$var23" "$text_md" "$spa23" &>> "$fs"
+echo -E "$var24" "$text_md" "$spa24" &>> "$fs"
+echo -E "$var25" "$text_md" "$spa25" &>> "$fs"
+echo -E "$var26" "$text_md" "$spa26" &>> "$fs"
+echo -E "$var27" "$text_md" "$spa27" &>> "$fs"
 ##### english: advance variables
 ##### spanish: avanzadas variables
-echo -E "$var30" "$tabz" "$spa30" &>> "$fs"
-echo -E "$var31" "$tabz" "$spa31" &>> "$fs"
-echo -E "$var32" "$tabz" "$spa32" &>> "$fs"
-echo -E "$var33" "$tabz" "$spa33" &>> "$fs"
-echo -E "$var34" "$tabz" "$spa34" &>> "$fs"
-echo -E "$var35" "$tabz" "$spa35" &>> "$fs"
-echo -E "$var36" "$tabz" "$spa36" &>> "$fs"
-echo -E "$var37" "$tabz" "$spa37" &>> "$fs"
-echo -E "$var38" "$tabz" "$spa38" &>> "$fs"
-echo -E "$var39" "$tabz" "$spa39" &>> "$fs"
-echo -E "$var40" "$tabz" "$spa40" &>> "$fs"
-echo -E "$var41" "$tabz" "$spa41" &>> "$fs"
-echo -E "$var42" "$tabz" "$spa42" &>> "$fs"
-echo -E "$var43" "$tabz" "$spa43" &>> "$fs"
-echo -E "$var44" "$tabz" "$spa44" &>> "$fs"
-echo -E "$var45" "$tabz" "$spa45" &>> "$fs"
-echo -E "$var46" "$tabz" "$spa46" &>> "$fs"
-echo -E "$var47" "$tabz" "$spa47" &>> "$fs"
-echo -E "$var48" "$tabz" "$spa48" &>> "$fs"
-echo -E "$var49" "$tabz" "$spa49" &>> "$fs"
-echo -E "$var50" "$tabz" "$spa50" &>> "$fs"
-echo -E "$var51" "$tabz" "$spa51" &>> "$fs"
-echo -E "$var52" "$tabz" "$spa52" &>> "$fs"
-echo -E "$var53" "$tabz" "$spa53" &>> "$fs"
-echo -E "$var54" "$tabz" "$spa54" &>> "$fs"
-echo -E "$var55" "$tabz" "$spa55" &>> "$fs"
-echo -E "$var56" "$tabz" "$spa56" &>> "$fs"
-echo -E "$var57" "$tabz" "$spa57" &>> "$fs"
-echo -E "$var58" "$tabz" "$spa58" &>> "$fs"
-echo -E "$var59" "$tabz" "$spa59" &>> "$fs"
-echo -E "$var60" "$tabz" "$spa60" &>> "$fs"
-echo -E "$var61" "$tabz" "$spa61" &>> "$fs"
-echo -E "$var62" "$tabz" "$spa62" &>> "$fs"
-echo -E "$var63" "$tabz" "$spa63" &>> "$fs"
-echo -E "$var64" "$tabz" "$spa64" &>> "$fs"
-echo -E "$var65" "$tabz" "$spa65" &>> "$fs"
-echo -E "$var66" "$tabz" "$spa66" &>> "$fs"
-echo -E "$var67" "$tabz" "$spa67" &>> "$fs"
-echo -E "$var68" "$tabz" "$spa68" &>> "$fs"
-echo -E "$var69" "$tabz" "$spa69" &>> "$fs"
-echo -E "$var70" "$tabz" "$spa70" &>> "$fs"
-echo -E "$var71" "$tabz" "$spa71" &>> "$fs"
-echo -E "$var72" "$tabz" "$spa72" &>> "$fs"
-echo -E "$var73" "$tabz" "$spa73" &>> "$fs"
-echo -E "$var74" "$tabz" "$spa74" &>> "$fs"
-echo -E "$var75" "$tabz" "$spa75" &>> "$fs"
-echo -E "$var76" "$tabz" "$spa76" &>> "$fs"
-echo -E "$var77" "$tabz" "$spa77" &>> "$fs"
-echo -E "$var78" "$tabz" "$spa78" &>> "$fs"
-echo -E "$var79" "$tabz" "$spa79" &>> "$fs"
-echo -E "$var80" "$tabz" "$spa80" &>> "$fs"
-echo -E "$var81" "$tabz" "$spa81" &>> "$fs"
-echo -E "$var82" "$tabz" "$spa82" &>> "$fs"
+echo -E "$var30" "$text_md" "$spa30" &>> "$fs"
+echo -E "$var31" "$text_md" "$spa31" &>> "$fs"
+echo -E "$var32" "$text_md" "$spa32" &>> "$fs"
+echo -E "$var33" "$text_md" "$spa33" &>> "$fs"
+echo -E "$var34" "$text_md" "$spa34" &>> "$fs"
+echo -E "$var35" "$text_md" "$spa35" &>> "$fs"
+echo -E "$var36" "$text_md" "$spa36" &>> "$fs"
+echo -E "$var37" "$text_md" "$spa37" &>> "$fs"
+echo -E "$var38" "$text_md" "$spa38" &>> "$fs"
+echo -E "$var39" "$text_md" "$spa39" &>> "$fs"
+echo -E "$var40" "$text_md" "$spa40" &>> "$fs"
+echo -E "$var41" "$text_md" "$spa41" &>> "$fs"
+echo -E "$var42" "$text_md" "$spa42" &>> "$fs"
+echo -E "$var43" "$text_md" "$spa43" &>> "$fs"
+echo -E "$var44" "$text_md" "$spa44" &>> "$fs"
+echo -E "$var45" "$text_md" "$spa45" &>> "$fs"
+echo -E "$var46" "$text_md" "$spa46" &>> "$fs"
+echo -E "$var47" "$text_md" "$spa47" &>> "$fs"
+echo -E "$var48" "$text_md" "$spa48" &>> "$fs"
+echo -E "$var49" "$text_md" "$spa49" &>> "$fs"
+echo -E "$var50" "$text_md" "$spa50" &>> "$fs"
+echo -E "$var51" "$text_md" "$spa51" &>> "$fs"
+echo -E "$var52" "$text_md" "$spa52" &>> "$fs"
+echo -E "$var53" "$text_md" "$spa53" &>> "$fs"
+echo -E "$var54" "$text_md" "$spa54" &>> "$fs"
+echo -E "$var55" "$text_md" "$spa55" &>> "$fs"
+echo -E "$var56" "$text_md" "$spa56" &>> "$fs"
+echo -E "$var57" "$text_md" "$spa57" &>> "$fs"
+echo -E "$var58" "$text_md" "$spa58" &>> "$fs"
+echo -E "$var59" "$text_md" "$spa59" &>> "$fs"
+echo -E "$var60" "$text_md" "$spa60" &>> "$fs"
+echo -E "$var61" "$text_md" "$spa61" &>> "$fs"
+echo -E "$var62" "$text_md" "$spa62" &>> "$fs"
+echo -E "$var63" "$text_md" "$spa63" &>> "$fs"
+echo -E "$var64" "$text_md" "$spa64" &>> "$fs"
+echo -E "$var65" "$text_md" "$spa65" &>> "$fs"
+echo -E "$var66" "$text_md" "$spa66" &>> "$fs"
+echo -E "$var67" "$text_md" "$spa67" &>> "$fs"
+echo -E "$var68" "$text_md" "$spa68" &>> "$fs"
+echo -E "$var69" "$text_md" "$spa69" &>> "$fs"
+echo -E "$var70" "$text_md" "$spa70" &>> "$fs"
+echo -E "$var71" "$text_md" "$spa71" &>> "$fs"
+echo -E "$var72" "$text_md" "$spa72" &>> "$fs"
+echo -E "$var73" "$text_md" "$spa73" &>> "$fs"
+echo -E "$var74" "$text_md" "$spa74" &>> "$fs"
+echo -E "$var75" "$text_md" "$spa75" &>> "$fs"
+echo -E "$var76" "$text_md" "$spa76" &>> "$fs"
+echo -E "$var77" "$text_md" "$spa77" &>> "$fs"
+echo -E "$var78" "$text_md" "$spa78" &>> "$fs"
+echo -E "$var79" "$text_md" "$spa79" &>> "$fs"
+echo -E "$var80" "$text_md" "$spa80" &>> "$fs"
+echo -E "$var81" "$text_md" "$spa81" &>> "$fs"
+echo -E "$var82" "$text_md" "$spa82" &>> "$fs"
 ####
 ####
 echo "$title_md [ _ok_ ] [ Wizard and templates cfg regenerated ]"
@@ -2107,9 +2101,9 @@ $cmd_realpath save autosave-fwiptables &> /dev/null ; exit; fi
 if   [ "$first_option" == "ntp" ]; then 
 echo "$title_md [ $first_option ]  [ update the computer time and date from internet ] "
 echo
-if [ "$favorite_date_command" == "$NULL" ]; then echo "$tab [ fail ] [ Install one ntp client ]" ; fi
-echo "$tab Old date: $($command_date)"
-echo "$tab [ Updating the time and the date .. ]"
+if [ "$favorite_date_command" == "$NULL" ]; then echo "$text_md [ fail ] [ Install one ntp client ]" ; fi
+echo "$text_md Old date: $($command_date)"
+echo "$text_md [ Updating the time and the date .. ]"
 pool0="0.debian.pool.ntp.org"
 pool1="1.debian.pool.ntp.org"
 pool2="2.debian.pool.ntp.org"
@@ -2277,7 +2271,7 @@ exit; fi
 ####
 if   [ "$first_option" == "free" ]; then 
 echo "$title_md [ $first_option ]  [ freedom from innecesary ram ] "
-case $command_tee in "$NULL") echo "$tab [ fail ] [ Install tee command ]"; exit ;; esac
+case $command_tee in "$NULL") echo "$text_md [ fail ] [ Install tee command ]"; exit ;; esac
 echo "$title_md [ info ] Actual Memory"
 free -hw 
 echo 3 | $command_tee /proc/sys/vm/drop_caches &> /dev/null
@@ -3194,7 +3188,7 @@ echo
 $command_iptables_legacy -t filter -v -L $list_rules_conceptual
 ;;
 esac
-echo "$tab"
+echo "$text_md"
 case $nftcuatro in
 "$NULL") echo "$title_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
@@ -3228,7 +3222,7 @@ echo
 $command_ip6tables_legacy -v -L $list_rules_conceptual
 ;;
 esac
-echo $tab
+echo $text_md
 case $nftseis in
 "$NULL") echo "$title_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
@@ -3264,7 +3258,7 @@ echo
 $command_iptables_legacy -t filter -v -L -n
 ;;
 esac
-echo "$tab"
+echo "$text_md"
 case $nftcuatro in
 "$NULL") echo "$title_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
@@ -3298,7 +3292,7 @@ echo
 $command_ip6tables_legacy -v -L -n
 ;;
 esac
-echo $tab
+echo $text_md
 case $nftseis in
 "$NULL") echo "$title_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
@@ -3370,7 +3364,7 @@ echo
 $command_iptables_legacy -t filter -v -L -n
 ;;
 esac
-echo "$tab"
+echo "$text_md"
 case $nftcuatro in
 "$NULL") echo "$title_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
@@ -3404,7 +3398,7 @@ echo
 $command_iptables_legacy -t filter -v -L -n
 ;;
 esac
-echo "$tab"
+echo "$text_md"
 case $nftcuatro in
 "$NULL") echo "$title_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" ;;
 *)
@@ -3802,7 +3796,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "clone-systemfw" ] && [ "$second_option" == "$NULL" ]  ; then 
-echo "$tab [ info ] [ usage: ] [ $cmd_realpath clone-systemfw firewall-systemfw ]"
+echo "$text_md [ info ] [ usage: ] [ $cmd_realpath clone-systemfw firewall-systemfw ]"
 exit; fi
 ####
 ####
@@ -3829,7 +3823,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "new-full-config" ] && [ "$second_option" == "$NULL" ]  ; then 
-echo "$tab [ info ] [ usage: ] [ $cmd_realpath new-full-config config-new ]"
+echo "$text_md [ info ] [ usage: ] [ $cmd_realpath new-full-config config-new ]"
 exit; fi
 ####
 ####
@@ -3850,7 +3844,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "nueva-completa-config" ] && [ "$second_option" == "$NULL" ]  ; then 
-echo "$tab [ info ] [ usage: ] [ $cmd_realpath nueva-completa-config config-nueva ]"
+echo "$text_md [ info ] [ usage: ] [ $cmd_realpath nueva-completa-config config-nueva ]"
 exit; fi
 ####
 ####
@@ -3871,7 +3865,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "new-mini-config" ] && [ "$second_option" == "$NULL" ]  ; then 
-echo "$tab [ info ] [ usage: ] [ $cmd_realpath new-mini-config config-new ]"
+echo "$text_md [ info ] [ usage: ] [ $cmd_realpath new-mini-config config-new ]"
 exit; fi
 ####
 ####
@@ -3892,7 +3886,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "nueva-mini-config" ] && [ "$second_option" == "$NULL" ]  ; then 
-echo "$tab [ info ] [ usage: ] [ $cmd_realpath nueva-mini-config config-nueva ]"
+echo "$text_md [ info ] [ usage: ] [ $cmd_realpath nueva-mini-config config-nueva ]"
 exit; fi
 ####
 ####
@@ -3917,7 +3911,7 @@ if [ "$first_option" == "modify-config" ]; then
 ###
 if [ ! -f "$directory_config/$second_option" ] ; then $nada
 $cmd_realpath names-config
-echo "$tab [ info ] [ usage: ] [ $cmd_realpath modify-config config-existent ]" ; exit; fi
+echo "$text_md [ info ] [ usage: ] [ $cmd_realpath modify-config config-existent ]" ; exit; fi
 ####
 ####
 if [ -f "$directory_config/$second_option" ] ; then $nada
@@ -4179,9 +4173,9 @@ exit; fi
 if   [ "$first_option" == "geoip" ]; then 
 echo "$title_md [ $first_option ]  [ resolve the location to one ip or host ] "
 echo 
-case $command_geoiplookup in "$NULL") echo "$tab [ fail ] [ Install geoiplookup command ]" ; exit  ;; esac
+case $command_geoiplookup in "$NULL") echo "$text_md [ fail ] [ Install geoiplookup command ]" ; exit  ;; esac
 case "$second_option" in
-"$NULL") echo "$cinco Selecting host geoip to fast.com for default" ; trazador="fast.com" ;;
+"$NULL") echo "$title_md Selecting host geoip to fast.com for default" ; trazador="fast.com" ;;
 *) trazador="$second_option" ;; esac
 echo "$title_md [ _ok_ ] [ geoiplookup -i $trazador ]"
 $command_geoiplookup -i $trazador
@@ -4454,7 +4448,7 @@ exit; fi
 ####
 if   [ "$first_option" == "speed-glx" ]; then 
 echo "$title_md [ $first_option ]  [ test gl mesa3D speed ] [ for default max $time_server_waiting seconds ] "
-case $command_glxgears in "$NULL") echo "$tab [ fail ] [ Install mesa utils ]"; exit ;; esac
+case $command_glxgears in "$NULL") echo "$text_md [ fail ] [ Install mesa utils ]"; exit ;; esac
 vblank_mode=0 $command_timeout -s SIGINT -v $time_server_waiting $command_glxgears
 echo 
 exit; fi
@@ -4469,9 +4463,9 @@ exit; fi
 if   [ "$first_option" == "ntpdate-client" ]; then 
 echo "$title_md [ $first_option ]  [ update the computer time and date from internet ] "
 echo
-if [ "$favorite_date_command" == "$NULL" ]; then echo "$tab [ fail ] [ Install one ntp client ]" ; fi
-echo "$tab Old date: $($command_date)"
-echo "$tab [ Updating the time and the date .. ]"
+if [ "$favorite_date_command" == "$NULL" ]; then echo "$text_md [ fail ] [ Install one ntp client ]" ; fi
+echo "$text_md Old date: $($command_date)"
+echo "$text_md [ Updating the time and the date .. ]"
 pool0="0.debian.pool.ntp.org"
 pool1="1.debian.pool.ntp.org"
 pool2="2.debian.pool.ntp.org"
@@ -4529,7 +4523,7 @@ if [ "$first_option" == "load" ]; then
 ####
 ####
 if [ "second_option" == "$NULL" ]; then
-$cmd_realpath names ; echo "$tab [ info ] [ usage: $cmd_realpath load fw-to-load ] [ See: $cmd_realpath names ]" ; exit ; fi
+$cmd_realpath names ; echo "$text_md [ info ] [ usage: $cmd_realpath load fw-to-load ] [ See: $cmd_realpath names ]" ; exit ; fi
 ####
 ####
 #### English if do exist second option in load
@@ -4574,7 +4568,7 @@ echo "$title_md [ _ok_ ] [ firewall loaded ] [ $directory_fwrecover/$second_opti
 ####
 else
 $cmd_realpath names
-echo "$tab [ info ] [ usage: $cmd_realpath load fw-to-load ] [ See: $cmd_realpath names ]"
+echo "$text_md [ info ] [ usage: $cmd_realpath load fw-to-load ] [ See: $cmd_realpath names ]"
 fi 
 ####
 ####
@@ -4591,7 +4585,7 @@ exit; fi
 if [ "$first_option" == "save" ]; then 
 echo "$title_md [ $first_option ]  [ save one firewall with one name ] "
 case "$second_option" in
-"$NULL") echo "$tab [ info ] [ Usage: $cmd_realpath save fw-to-save ]" ; exit ;;
+"$NULL") echo "$text_md [ info ] [ Usage: $cmd_realpath save fw-to-save ]" ; exit ;;
 *) archivofin="$second_option" ;; 
 esac
 ####
@@ -4638,7 +4632,7 @@ if [ "$first_option" == "show" ]; then
 echo "$title_md [ $first_option ]  [ show one firewall saved ] "
 echo 
 case "$second_option" in
-"$NULL") $cmd_realpath names; echo "$tab [ info ] [ Use: $cmd_realpath show file-to-show ]" ; exit ;;
+"$NULL") $cmd_realpath names; echo "$text_md [ info ] [ Use: $cmd_realpath show file-to-show ]" ; exit ;;
 *) archivofin=$($command_sed 's/\///g' <<< "$second_option") ;;
 esac
 $command_ls -l $directory_fwrecover/$archivofin-arptables
@@ -4648,17 +4642,17 @@ $command_ls -l $directory_fwrecover/$archivofin-nft-ipv6
 $command_ls -l $directory_fwrecover/$archivofin-legacy-ipv4
 $command_ls -l $directory_fwrecover/$archivofin-legacy-ipv6
 echo "$title_md [ _ok_ ] [ FIREWALL LISTED ] [ $archivofin ]"
-echo "$cincuenta $archivofin-arptables"
+echo "$fifty_md $archivofin-arptables"
 cat $directory_fwrecover/$archivofin-arptables
-echo "$cincuenta $archivofin-ebtables"
+echo "$fifty_md $archivofin-ebtables"
 cat $directory_fwrecover/$archivofin-ebtables
-echo "$cincuenta $archivofin-nft-ipv4"
+echo "$fifty_md $archivofin-nft-ipv4"
 cat $directory_fwrecover/$archivofin-nft-ipv4
-echo "$cincuenta $archivofin-legacy-ipv4"
+echo "$fifty_md $archivofin-legacy-ipv4"
 cat $directory_fwrecover/$archivofin-legacy-ipv4
-echo "$cincuenta $archivofin-nft-ipv6"
+echo "$fifty_md $archivofin-nft-ipv6"
 cat $directory_fwrecover/$archivofin-nft-ipv6
-echo "$cincuenta archivofin-legacy-ipv6"
+echo "$fifty_md archivofin-legacy-ipv6"
 cat $directory_fwrecover/$archivofin-legacy-ipv6
 echo "$title_md [ _ok_ ] [ firewall readed ] [ $archivofin ]"
 echo 
@@ -4680,17 +4674,17 @@ $command_iptables_nft-save       &> $directory_fwrecover/$cmd_config-actual-nft-
 $command_iptables_legacy-save    &> $directory_fwrecover/$cmd_config-actual-legacy-ipv4
 $command_ip6tables_nft-save      &> $directory_fwrecover/$cmd_config-actual-nft-ipv6   
 $command_ip6tables_legacy-save   &> $directory_fwrecover/$cmd_config-actual-legacy-ipv6
-echo "$cincuenta arptables $cinco"
+echo "$fifty_md arptables $title_md"
 cat $directory_fwrecover/$cmd_config-actual-arptables
-echo "$cincuenta ebtables $cinco"
+echo "$fifty_md ebtables $title_md"
 cat $directory_fwrecover/$cmd_config-actual-ebtables
-echo "$cincuenta nft with ipv4 $cinco"
+echo "$fifty_md nft with ipv4 $title_md"
 cat $directory_fwrecover/$cmd_config-actual-nft-ipv4
-echo "$cincuenta legacy with ipv4 $cinco"
+echo "$fifty_md legacy with ipv4 $title_md"
 cat $directory_fwrecover/$cmd_config-actual-legacy-ipv4
-echo "$cincuenta nft with ipv6 $cinco"
+echo "$fifty_md nft with ipv6 $title_md"
 cat $directory_fwrecover/$cmd_config-actual-nft-ipv6
-echo "$cincuenta legacy with ipv6 $cinco"
+echo "$fifty_md legacy with ipv6 $title_md"
 cat $directory_fwrecover/$cmd_config-actual-legacy-ipv6
 echo
 echo "  [ _ok_ ] [ readed firewall actual ]"
@@ -4822,7 +4816,7 @@ exit; fi
 ####
 if   [ "$first_option" == "webcert" ] ; then 
 echo "$title_md [ $first_option ]  [ get one web certifcate from one server with port 443] || ||"
-case "$command_openssl"  in  $NULL) echo "$tab [ fail ] [ install openssl ]"; exit ;; esac
+case "$command_openssl"  in  $NULL) echo "$text_md [ fail ] [ install openssl ]"; exit ;; esac
 ####
 ####
 if [ "$second_option" == "$NULL" ]; then
@@ -4936,7 +4930,7 @@ $favorite_graphicall_dialog --forms \
 ;;
 ####
 ####
-*)$cmd_realpath "$second_option" "$third_option" "$quad_option" &> "$temporal_guifinal"
+*)$cmd_realpath "$second_option" "$third_option" "$title_md_option" &> "$temporal_guifinal"
 $favorite_graphicall_dialog  --text-info \
 --width=$graphicall_width --height=$graphicall_height \
 --title="Gui Output || $cmd_realpath ||" \
@@ -5120,27 +5114,27 @@ $NULL) $cmd_realpath gui-zenity options; exit ;;
 "new-full-config")
 $favorite_graphicall_dialog  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath new-full-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath new-full-config config.cfg ]"
 ;;
 "new-mini-config")
 $favorite_graphicall_dialog  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath new-mini-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath new-mini-config config.cfg ]"
 ;;
 "nueva-completa-config")
 $favorite_graphicall_dialog  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath nueva-completa-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath nueva-completa-config config.cfg ]"
 ;;
 "new-mini-config")
 $favorite_graphicall_dialog  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath nueva-mini-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath nueva-mini-config config.cfg ]"
 ;;
 "modify-config")
 $favorite_graphicall_dialog  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath modify-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath modify-config config.cfg ]"
 ;;
 ####
 ####
@@ -5151,27 +5145,27 @@ $favorite_graphicall_dialog  --forms \
 "new-full-config ")
 $favorite_graphicall_dialog  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath new-full-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath new-full-config config.cfg ]"
 ;;
 "new-mini-config ")
 $favorite_graphicall_dialog  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath new-mini-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath new-mini-config config.cfg ]"
 ;;
 "nueva-completa-config ")
 $favorite_graphicall_dialog  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath nueva-completa-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath nueva-completa-config config.cfg ]"
 ;;
 "new-mini-config ")
 $favorite_graphicall_dialog  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath nueva-mini-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath nueva-mini-config config.cfg ]"
 ;;
 "modify-config ")
 $favorite_graphicall_dialog  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath modify-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath modify-config config.cfg ]"
 ;;
 ####
 ####
@@ -5271,27 +5265,27 @@ $NULL) $cmd_realpath gui-yad options; exit ;;
 "new-full-config")
 $command_yad  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath new-full-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath new-full-config config.cfg ]"
 ;;
 "new-mini-config")
 $command_yad  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath new-mini-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath new-mini-config config.cfg ]"
 ;;
 "nueva-completa-config")
 $command_yad  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath nueva-completa-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath nueva-completa-config config.cfg ]"
 ;;
 "new-mini-config")
 $command_yad  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath nueva-mini-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath nueva-mini-config config.cfg ]"
 ;;
 "modify-config")
 $command_yad  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath modify-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath modify-config config.cfg ]"
 ;;
 ####
 ####
@@ -5302,27 +5296,27 @@ $command_yad  --forms \
 "new-full-config ")
 $command_yad  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath new-full-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath new-full-config config.cfg ]"
 ;;
 "new-mini-config ")
 $command_yad  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath new-mini-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath new-mini-config config.cfg ]"
 ;;
 "nueva-completa-config ")
 $command_yad  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath nueva-completa-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath nueva-completa-config config.cfg ]"
 ;;
 "new-mini-config ")
 $command_yad  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath nueva-mini-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath nueva-mini-config config.cfg ]"
 ;;
 "modify-config ")
 $command_yad  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="$tab [ info ] [ Use: $cmd_realpath modify-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath modify-config config.cfg ]"
 ;;
 ####
 ####
@@ -5391,131 +5385,131 @@ case "$favorite_text_dialog" in "$NULL")
 echo "$title_md [ fail ] [ Install or dialog or whiptail to work ]" ; exit ;; esac
 menuprincipal="$($favorite_text_dialog --clear --notags \
 --title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
-0000 "$quad $tab [$cmd_realpath cli-menu] $tab $cinco" \
-0100 "$quad [  --- Full Options --- ] $cinco" \
-0200 "$quad [ Firewall Control ] $cinco" \
-0201  "$tab stop" \
-0202  "$tab continue" \
-0203  "$tab reset" \
-0204  "$tab names"  \
-0205  "$tab show" \
-0206  "$tab save" \
-0207  "$tab load" \
-0208  "$tab actual" \
-0300 "$quad [ Firewall List With Conceptual ] $cinco" \
-0301  "$tab list4" \
-0302  "$tab list6"  \
-0303  "$tab list-filter4" \
-0304  "$tab list-filter6" \
-0305  "$tab list-forward" \
-0306  "$tab list-forward6" \
-0307  "$tab list-nat4" \
-0308  "$tab list-nat6" \
-0309  "$tab list-alltables" \
-0314  "$tab list-raw4" \
-0315  "$tab list-raw6" \
-0316  "$tab list-mangle4" \
-0317  "$tab list-mangle6" \
-0318  "$tab list-security4" \
-0319  "$tab list-security6" \
-0320  "$tab list-ebtables" \
-0321  "$tab list-arptables" \
-0400 "$quad [ Firewall List With Numeral ] $cinco" \
-0401  "$tab listn4" \
-0402  "$tab listn6" \
-0403  "$tab listn-filter4" \
-0404  "$tab listn-filter6" \
-0405  "$tab listn-forward" \
-0406  "$tab listn-forward6" \
-0407  "$tab listn-nat4" \
-0408  "$tab listn-nat6" \
-0409  "$tab listn-alltables" \
-0414  "$tab listn-raw4" \
-0415  "$tab listn-raw6" \
-0416  "$tab listn-mangle4" \
-0417  "$tab listn-mangle6" \
-0418  "$tab listn-security4" \
-0419  "$tab listn-security6" \
-0420  "$tab listn-ebtables" \
-0421  "$tab listn-arptables" \
-0500 "$quad [ Firewall Static ] $cinco" \
-0507  "$tab client-basic" \
-0508  "$tab client-web" \
-0509  "$tab client-git" \
-0510  "$tab games-shooter" \
-0511  "$tab game-wesnoth" \
-0512  "$tab game-minetest" \
-0513  "$tab game-freeciv" \
-0514  "$tab game-widelands" \
-0515  "$tab client-web" \
-0516  "$tab client-vnc" \
-0517  "$tab client-tor" \
-0518  "$tab client-vpn" \
-0519  "$tab client-torrent" \
-0520  "$tab lan-tor" \
-0521  "$tab lan-vpn" \
-0522  "$tab shield-ssh" \
-0523  "$tab server-ssh" \
-0524  "$tab server-web" \
-0525  "$tab server-vnc" \
-0526  "$tab server-print" \
-0527  "$tab server-samba" \
-0528  "$tab server-lamp" \
-0529  "$tab server-mail" \
-0530  "$tab server-ftp" \
-0531  "$tab server-news" \
-0532  "$tab server-teamspeak" \
-0533  "$tab server-mumble" \
-0534  "$tab server-sql" \
-0535  "$tab server-asterisk" \
-0600 "$quad [ Firewall Custom ] $cinco" \
-0601  "$tab eraserules" \
-0602  "$tab wizard-mini" \
-0603  "$tab wizard-full" \
-0604  "$tab off-line" \
-0605  "$tab all-permisive" \
-0606  "$tab custom" \
-0607  "$tab clone-systemfw" \
-0611  "$tab new-full-config" \
-0612  "$tab nueva-completa-config" \
-0613  "$tab new-mini-config" \
-0614  "$tab nueva-mini-config" \
-0615  "$tab show-config" \
-0616  "$tab modify-config" \
-0617  "$tab del-config" \
-0618  "$tab names-config" \
-0619  "$tab regen-config" \
-0620  "$tab examples-config" \
-0700 "$quad [ Options Easy ] $cinco" \
-0701  "$tab preferences-read" \
-0702  "$tab preferences-modify" \
-0703  "$tab preferences-regen" \
-0704  "$tab filelog" \
-0705  "$tab autolog" \
-0706  "$tab ip4" \
-0707  "$tab ip6" \
-0708  "$tab speed-ip4" \
-0709  "$tab speed-ip6" \
-0710  "$tab sockets" \
-0711  "$tab notes" \
-0712  "$tab license" \
-0713  "$tab about" \
-0714  "$tab examples" \
-0715  "$tab depends" \
-0716  "$tab info" \
-0717  "$tab ver" \
-0718  "$tab list-options" \
-0719  "$tab clasic-options" \
-0720  "$tab info-options" \
-0721  "$tab nodes" \
-0722  "$tab date" \
-0723  "$tab free" \
-0724  "$tab expert" \
-0725  "$tab commands" \
-0726  "$tab variables" \
-0727  "$tab intro" \
-0728  "$tab download" \
-0729  "$tab install" \
+0000 "$title_md $text_md [$cmd_realpath cli-menu] $text_md $title_md" \
+0100 "$title_md [  --- Full Options --- ] $title_md" \
+0200 "$title_md [ Firewall Control ] $title_md" \
+0201  "$text_md stop" \
+0202  "$text_md continue" \
+0203  "$text_md reset" \
+0204  "$text_md names"  \
+0205  "$text_md show" \
+0206  "$text_md save" \
+0207  "$text_md load" \
+0208  "$text_md actual" \
+0300 "$title_md [ Firewall List With Conceptual ] $title_md" \
+0301  "$text_md list4" \
+0302  "$text_md list6"  \
+0303  "$text_md list-filter4" \
+0304  "$text_md list-filter6" \
+0305  "$text_md list-forward" \
+0306  "$text_md list-forward6" \
+0307  "$text_md list-nat4" \
+0308  "$text_md list-nat6" \
+0309  "$text_md list-alltables" \
+0314  "$text_md list-raw4" \
+0315  "$text_md list-raw6" \
+0316  "$text_md list-mangle4" \
+0317  "$text_md list-mangle6" \
+0318  "$text_md list-security4" \
+0319  "$text_md list-security6" \
+0320  "$text_md list-ebtables" \
+0321  "$text_md list-arptables" \
+0400 "$title_md [ Firewall List With Numeral ] $title_md" \
+0401  "$text_md listn4" \
+0402  "$text_md listn6" \
+0403  "$text_md listn-filter4" \
+0404  "$text_md listn-filter6" \
+0405  "$text_md listn-forward" \
+0406  "$text_md listn-forward6" \
+0407  "$text_md listn-nat4" \
+0408  "$text_md listn-nat6" \
+0409  "$text_md listn-alltables" \
+0414  "$text_md listn-raw4" \
+0415  "$text_md listn-raw6" \
+0416  "$text_md listn-mangle4" \
+0417  "$text_md listn-mangle6" \
+0418  "$text_md listn-security4" \
+0419  "$text_md listn-security6" \
+0420  "$text_md listn-ebtables" \
+0421  "$text_md listn-arptables" \
+0500 "$title_md [ Firewall Static ] $title_md" \
+0507  "$text_md client-basic" \
+0508  "$text_md client-web" \
+0509  "$text_md client-git" \
+0510  "$text_md games-shooter" \
+0511  "$text_md game-wesnoth" \
+0512  "$text_md game-minetest" \
+0513  "$text_md game-freeciv" \
+0514  "$text_md game-widelands" \
+0515  "$text_md client-web" \
+0516  "$text_md client-vnc" \
+0517  "$text_md client-tor" \
+0518  "$text_md client-vpn" \
+0519  "$text_md client-torrent" \
+0520  "$text_md lan-tor" \
+0521  "$text_md lan-vpn" \
+0522  "$text_md shield-ssh" \
+0523  "$text_md server-ssh" \
+0524  "$text_md server-web" \
+0525  "$text_md server-vnc" \
+0526  "$text_md server-print" \
+0527  "$text_md server-samba" \
+0528  "$text_md server-lamp" \
+0529  "$text_md server-mail" \
+0530  "$text_md server-ftp" \
+0531  "$text_md server-news" \
+0532  "$text_md server-teamspeak" \
+0533  "$text_md server-mumble" \
+0534  "$text_md server-sql" \
+0535  "$text_md server-asterisk" \
+0600 "$title_md [ Firewall Custom ] $title_md" \
+0601  "$text_md eraserules" \
+0602  "$text_md wizard-mini" \
+0603  "$text_md wizard-full" \
+0604  "$text_md off-line" \
+0605  "$text_md all-permisive" \
+0606  "$text_md custom" \
+0607  "$text_md clone-systemfw" \
+0611  "$text_md new-full-config" \
+0612  "$text_md nueva-completa-config" \
+0613  "$text_md new-mini-config" \
+0614  "$text_md nueva-mini-config" \
+0615  "$text_md show-config" \
+0616  "$text_md modify-config" \
+0617  "$text_md del-config" \
+0618  "$text_md names-config" \
+0619  "$text_md regen-config" \
+0620  "$text_md examples-config" \
+0700 "$title_md [ Options Easy ] $title_md" \
+0701  "$text_md preferences-read" \
+0702  "$text_md preferences-modify" \
+0703  "$text_md preferences-regen" \
+0704  "$text_md filelog" \
+0705  "$text_md autolog" \
+0706  "$text_md ip4" \
+0707  "$text_md ip6" \
+0708  "$text_md speed-ip4" \
+0709  "$text_md speed-ip6" \
+0710  "$text_md sockets" \
+0711  "$text_md notes" \
+0712  "$text_md license" \
+0713  "$text_md about" \
+0714  "$text_md examples" \
+0715  "$text_md depends" \
+0716  "$text_md info" \
+0717  "$text_md ver" \
+0718  "$text_md list-options" \
+0719  "$text_md clasic-options" \
+0720  "$text_md info-options" \
+0721  "$text_md nodes" \
+0722  "$text_md date" \
+0723  "$text_md free" \
+0724  "$text_md expert" \
+0725  "$text_md commands" \
+0726  "$text_md variables" \
+0727  "$text_md intro" \
+0728  "$text_md download" \
+0729  "$text_md install" \
 3>&1 1>&2 2>&3 )"
 ################################################################################
 #### 
@@ -5539,13 +5533,13 @@ case "$menuprincipal" in
 0202) clear ; $cmd_realpath cli continue ;;
 0203) clear ; $cmd_realpath cli reset ;;
 0204) clear ; $cmd_realpath cli names ;;
-0205) clear ; $cmd_realpath names ; echo "$cincuenta"
+0205) clear ; $cmd_realpath names ; echo "$fifty_md"
 read -p "Type the firewall name to read   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_realpath show $nombrecillo ;; 
 0206)archivo="$($favorite_text_dialog --stdout --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
-clear ;  echo "$cincuenta saved $archivo" ; $cmd_realpath save $archivo ;;
-0207) clear ; $cmd_realpath names ; echo "$cincuenta"
+clear ;  echo "$fifty_md saved $archivo" ; $cmd_realpath save $archivo ;;
+0207) clear ; $cmd_realpath names ; echo "$fifty_md"
 read -p "| Type the firewall name to restore |   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_realpath load $nombrecillo ;;
 0208) clear ; $cmd_realpath cli actual ;;
@@ -5647,7 +5641,7 @@ clear ; $cmd_realpath nueva-mini-config $archivo ;;
 0615) archivo="$($favorite_text_dialog  --stdout --title "show-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
-clear ; $cmd_realpath show-config $archivo ; echo "$tab [ info ] [ Use: Launch: $cmd_realpath custom $archivo ]";;
+clear ; $cmd_realpath show-config $archivo ; echo "$text_md [ info ] [ Use: Launch: $cmd_realpath custom $archivo ]";;
 0616) archivo="$($favorite_text_dialog  --stdout --title "modify-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
@@ -9249,7 +9243,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "custom" ]; then if [ -f $directory_config/$second_option ]; 
-then source $directory_config/$second_option &> /dev/null ; else echo "$tab [ fail ] [ Config file not found ]"; exit ; fi ; fi
+then source $directory_config/$second_option &> /dev/null ; else echo "$text_md [ fail ] [ Config file not found ]"; exit ; fi ; fi
 ####
 ####
 ##############################      english: selective state of intput/oputut          #####################
