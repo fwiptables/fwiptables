@@ -24,40 +24,37 @@
 ###  fwiptables install.                                     
   
     su root             . TYPE:   su root                   
-    Put bit of execution. TYPE:   chmod 755 ./fwiptables-ver-10_21-bash.sh 
-    Install this version. TYPE:   ./fwiptables-ver-10_21-bash.sh install   
+    Put bit of execution. TYPE:   chmod 755 ./fwiptables-ver-11-00-bash.sh 
+    Install this version. TYPE:   ./fwiptables-ver-11-00-bash.sh install   
   
 ###  fwiptables uninstall.                                   
   
     Uninstall fwiptables. TYPE:   fwiptables-cmd uninstall     
   
 ###  [ ver ] [ Show version about ] [ ver.md ]       
-   [ info ] [ program ] /root/f-iptables-version/fwiptables-ver-10_21-bash.sh With Version cmd-10-21        
+   [ info ] [ program ] /root/f-iptables-version/fwiptables-ver-11-00-bash.sh With Version cmd-10-22        
    [ info ] [ Details ] fwiptables, FireWall With iptables | fwiptables, One Mini Script in one-file                   
-   [ info ] [ Binary file     ] /root/f-iptables-version/fwiptables-ver-10_21-bash.sh                         
+   [ info ] [ Binary file     ] /root/f-iptables-version/fwiptables-ver-11-00-bash.sh                         
    [ info ] [ Data directory  ] /root/.config/fwiptables-cmd                       
    [ info ] [ Cache directory ] /run/fwiptables                      
-   [ info ] [ File format     ] /root/f-iptables-version/fwiptables-ver-10_21-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable      
-###  [ compile ] [  optionally: howto compile bash script ] [ compile.md]  
-   [ info ] This bash script works fully. But if your desire is compiling...    
+   [ info ] [ File format     ] /root/f-iptables-version/fwiptables-ver-11-00-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable      
+###  [ compile ] [  Optionally compile from bash script ] [ compile.md]    
+   [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling...         
    [ step ] [ 0 ] Necesary: fwiptables in source script bash                    
    [ step ] [ 1 ] Download obash from oficial web internet                      
    [ step ] [ 2 ] Compile with obash command using command make.                
    [ step ] [ 3a] Or run: obash -c -o ./destination.bin ./source-bash.sh        
    [ step ] [ 3b] Or run: obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd   
 ###  Actually, the file type is:                                                          
-/root/f-iptables-version/fwiptables-ver-10_21-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
-###  [ List general options for fwiptables ] [ options.md ]  
-  
-###  /root/f-iptables-version/fwiptables-ver-10_21-bash.sh [optional-output] first_option [second_option]                  
-### 
-###   [ optional-output ]                                                            
+/root/f-iptables-version/fwiptables-ver-11-00-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
+###  [ options ] [ List general options for fwiptables ] [ list-options.md ]
+###  /root/f-iptables-version/fwiptables-ver-11-00-bash.sh [optional-output] first_option [second_option]   
+###   [ optional-output ]                                                                
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       
    [ -cli-dialog -cli-whiptail ] [ -gui-zenity -gui-yad ]                               
    [ -cli-menu-dialog -cli-menu-whiptail ] [ -gui-roll-zenity ]                         
-   [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                  
-### 
-###   [ firewall-control ]                                                           
+   [ -gui-menu-zenity -gui-menu-yad ] [ -gui-shell-zenity -gui-shell-yad ]              
+###   [ firewall-control ]                                                               
    stop continue reset actual show save load names-control eraserules                   
 ###   [ firewall-listconceptual ]                                                        
    ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6                  
@@ -79,10 +76,8 @@
    server-print server-lamp server-news server-ftp server-mail server-webserver         
    server-teamspeak server-mumble server-sql server-asterisk server-domain server-proxy 
 ###   [ options-easy ]                                                              
-   preferences-read preferences-modify preferences-regen preferences-example ver        
-   list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6         
-   ip4 ip6 speed-glx sockets nodes geoip webcert date free expert about notes           
-   radio compile ip-forward depends info code info examples commands variables          
-   intro download install uninstall pc-halt pc-shutdown pc-reboot            
-###             ||| Example: fwiptables-cmd -gui-shell-yad |||                
+   preferences-read preferences-modify preferences-regen preferences-example ver version
+   list-options clasic-options info-options filelog autolog speed-ip4 speed-ip6 ip4 ip6 
+   speed-glx sockets nodes geoip webcert date free expert about notes radio compile code
+   ip-forward depends info examples commands variables intro download install uninstall 
 ###             ||| Example: fwiptables-cmd -gui-zenity info list |||         
