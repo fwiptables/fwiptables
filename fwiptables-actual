@@ -104,12 +104,10 @@ cmd_license="GPL v2, License General Public version 2"          # its program li
 web_homepage_sourceforge="https://sourceforge.net/projects/f-iptables/" ;
 web_homepage_github="https://github.com/fwiptables/fwiptables" ;
 web_hompage_devuan="https://git.devuan.org/fwiptables/fwiptables" ;
-####
-#### web homepage download
-####
 web_download_sourceforge="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
 web_download_github="https://github.com/fwiptables/fwiptables/releases" ;
 web_download_devuan="https://git.devuan.org/fwiptables/fwiptables/releases" ;
+git_listado_sourceforge="https://sourceforge.net/p/f-iptables/code/ci/main/tree/"
 git_download_sourceforge="https://sourceforge.net/p/f-iptables/code/ci/main/tree/fwiptables-actual?format=raw" ;
 ####
 #### prepare directory data
@@ -1437,6 +1435,19 @@ exit ; fi
 ####
 ####
 #### :rutina-final-ver:
+##########    english: new-versions: show the latest stable versions              ##########
+##########    spanish: nuevas-versiones: muestra las ultimas versiones estables   ##########
+#### :rutina-inicial-expert-new-versions:
+####
+####
+if   [ "$first_option" == "expert-new-versions" ]; then 
+case $command_curl in "$NULL") echo "$title_md [ fail ] [ Install a curl ]"; exit ;; esac
+echo "$title_md [ info ] Still under development"
+#### $command_curl -s -L $git_listado_sourceforge
+exit; fi
+####
+####
+#### :rutina-final-expert-new-versions:
 ##########    english: weather: show the weather with wttr.in     ##########
 ##########    spanish: el tiempo: muestra el tiempo con wttr.in   ##########
 #### :rutina-inicial-expert-show-weather:
