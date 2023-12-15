@@ -101,6 +101,7 @@ cmd_license="GPL v2, License General Public version 2"          # its program li
 ####
 #### web homepage oficial
 ####
+content_license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
 web_homepage_sourceforge="https://sourceforge.net/projects/f-iptables/" ;
 web_homepage_github="https://github.com/fwiptables/fwiptables" ;
 web_hompage_devuan="https://git.devuan.org/fwiptables/fwiptables" ;
@@ -528,22 +529,14 @@ give_preferences="$title_md [ Configure ] [ $cmd_realpath preferences-modify ]"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="$(echo -n)" ; 
 #### #### english: without cli or gui   #### spanish: sin cli o gui
-message_without_support=" [ Without support for output cli for this option ] "
-message_without_cli="$title_md [ fail ] [ cli ]"
+message_without_support="[ Without support for output cli for this option ]"
+message_without_cli="$title_md [ fail ] [ cli ] $message_without_support "
 message_without_gui="$title_md [ fail ] [ gui ] $message_without_support "
 message_without_web="$title_md [ fail ] [ web ] $message_without_support "
 message_without_info="$title_md [ fail ] [ log ] $message_without_support "
 message_without_info="$title_md [ fail ] [ null ] $message_without_support "
-####       #### english: close from graphicall with timeout in seconds #####
-####       #### spanish: cierre desde graficos con retardo en segundos #####
-time_close_graphicall="1"
-####       #### english: message to close graphicall with timeout in seconds #####
-####       #### spanish: mensage de cierre para graficos con retardo en segundos #####
-mensage_with_timeout="Closing gui menu in $time_close_graphicall seconds"
 ####       #### english: autovariables        #### spanish: autovariables
 launch_rules_firewall="no" ;   #  autoconfigure with launch iptables rules
-####       #### english: [download web link]  #### spanish: [descarga del enlace web]
-content_license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
 ####
 ####
 #### :rutina-final-system-variables:
@@ -559,7 +552,8 @@ content_license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LI
 ####
 ####
 if [ -f "$default_preferences"   ]; then source $default_preferences ; fi
-if [ "$first_option" = "$NULL" ]; then first_option="$without_first_option"; fi
+if [ "$first_option" = "$NULL" ]; then first_option="$without_first_option";
+if [ "$without_first_option" = "$NULL" ]; then first_option="options"; fi ; fi
 ####
 ####
 ####  realice sane with very important variables post by default_preferences
@@ -1073,25 +1067,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-without-first-option:
-##########   english: default:  fwiptables preferences      ##########
-##########   spanish: defecto:  fwiptables preferences      ##########
-#### :rutina-inicial-default:
-####
-####
-if [ "$first_option" == "default" ] ; then 
-echo "$title_md [ $first_option ] [ $cmd_realpath default ] [ default md ] "
-echo "$title_md [ info ] [ $cmd_realpath default.. ]"
-
-echo "$title_md [ info ] [ Autoregenerate default config for fwiptables: ] \
-[ fwiptables preferences-regen  ]"
-echo "$title_md [ info ] [ Show   default config for fwiptables:         ] \
-[ fwiptables preferences-read   ]"
-echo "$title_md [ info ] [ Modify default config for fwiptables:         ] \
-[ fwiptables preferences-modify ]"
-exit; fi
-####
-####
-#### :rutina-final-default:
 ##########    english: preferences-modify: modify preferences   ##########
 ##########    spanish: preferences-modify: modify preferences   ##########
 #### :rutina-inicial-preferences-modify:
@@ -1099,7 +1074,6 @@ exit; fi
 ####
 if [ "$first_option" == "preferences-modify" ]; then 
 echo "$title_md [ $first_option ] [ modify the default fwiptables ] "
-echo 
 $favorite_text_editor $default_preferences
 echo "$title_md [ info ] [ file $default_preferences ]"
 exit; fi
@@ -1127,12 +1101,8 @@ exit; fi
 ####
 if [ "$first_option" == "preferences-read" ]; then 
 echo "$title_md [ $first_option ] [ read the default fwiptables ] "
-####
-####
 cat $default_preferences
 echo "$title_md [ info ] [ file $default_preferences ]"
-####
-####
 exit; fi
 ####
 ####
@@ -1143,7 +1113,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "preferences-regen" ] ; then
-echo "$title_md [ $first_option ] [ $cmd_realpath preferences-regen ] [ preferences-regen md ] "
+echo "$title_md [ $first_option ] [ $cmd_realpath preferences-regen ] [ preferences-regen.md ] "
 rm $default_preferences
 echo "$title_md [ _ok_ ] [ $cmd_realpath deleted old configs ]"
 file $cmd_realpath
