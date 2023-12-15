@@ -847,7 +847,7 @@ if [ "$first_option" == "options-examples" ] ; then first_option="examples" ; fi
 if [ "$first_option" == "options-mini" ] ; then first_option="options" ; fi
 if [ "$first_option" == "examples" ] ; then first_option="options-examples"; fi
 if [ "$first_option" == "sentlog" ] ; then first_option="filelog"; fi
-if [ "$first_option" == "regen" ] ; then first_option="regen-config"; fi
+if [ "$first_option" == "regen" ] ; then first_option="config-regen"; fi
 if [ "$first_option" == "cfg" ] ; then first_option="names-config" ; fi
 if [ "$first_option" == "cfg-custom" ] ; then first_option="custom" ; fi
 if [ "$first_option" == "list-fw" ] ; then first_option="names"; fi
@@ -886,7 +886,7 @@ if [ "$first_option" == "server-email" ] ; then first_option="server-mail" ; fi
 ####
 case "$first_option" in
 "wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|"nueva-mini-config"|"nueva-completa-config")
-$cmd_realpath regen-config ;; esac
+$cmd_realpath config-regen ;; esac
 ####
 ####
 #### :rutina-final-alias-simple:
@@ -1501,12 +1501,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-notes:
-##########   english: regen-config: regen-config template wizard files       ##########
-##########   spanish: regen-config: regen-configera template wizard archivos ##########
-#### :rutina-inicial-regen-config:
+##########   english: config-regen: config-regen template wizard files       ##########
+##########   spanish: config-regen: config-regenera template wizard archivos ##########
+#### :rutina-inicial-config-regen:
 ####
 ####
-if [ "$first_option" == "regen-config" ]; then 
+if [ "$first_option" == "config-regen" ]; then 
 echo "$title_md [ $first_option ] [ Generate templates wizard and cfg ] "
 echo "$title_md [ info ] [ regenerating template wizard and template cfg ]"
 ####
@@ -2030,7 +2030,7 @@ echo "$title_md [ _ok_ ] [ Wizard and templates cfg regenerated ]"
 exit ; fi
 ####
 ####
-#### :rutina-final-regen-config:
+#### :rutina-final-config-regen:
 ##########  english:  sane variables: for working sane         ########## 
 ##########  spanish:  sana variables: para funcionamiento sano ##########
 #### :rutina-inicial-sane:
@@ -2138,7 +2138,7 @@ echo "$text_md listn-security4 listn-security6                                  
 echo "$title_md  [ firewall-customfw ] "
 echo "$text_md custom eraserules off-line all-permisive wizard-mini wizard-full clone-systemfw      "
 echo "$text_md new-full-config nueva-completa-config new-mini-config nueva-mini-config       "
-echo "$text_md regen-config examples-config show-config modify-config del-config names-config       "
+echo "$text_md config-regen examples-config show-config modify-config del-config names-config       "
 echo "$title_md  [ firewall-systemfw ]                                                           "
 echo "$text_md client-basic client-web client-git client-ipp client-irc client-vnc client-mail      "
 echo "$text_md client-news client-vpn client-torrent client-vpn client-ftp client-tor               "
@@ -2389,7 +2389,7 @@ echo "$text_md new-full-config . create new full config in english"
 echo "$text_md new-mini-config . create new mini config in english"
 echo "$text_md nueva-completa-config . create new full config in spanish"
 echo "$text_md nueva-mini-config . create new full config in spanish"
-echo "$text_md regen-config . regen the templates"
+echo "$text_md config-regen . regen the templates"
 echo "$text_md examples-config . show several examples"
 echo "$text_md show-config . show config-file choosed"
 echo "$text_md modify-config . modify config-file choosed"
@@ -2704,6 +2704,11 @@ echo "$text_md"
 echo "$text_md net_ipv6_server             # only server ipv6 for ip or host or range"
 echo "$text_md"
 echo "$text_md"
+echo "$title_md    # Other variable descriptions:"
+echo "$title_md"
+echo "$title_md English description with: $cmd_basename config-eng"
+echo "$title_md Spanish description with: $cmd_basename config-spa"
+echo "$title_md"
 exit; fi
 ####
 ####
@@ -4156,7 +4161,7 @@ chmod 555 "$directory_installed/$file_installed" &> /dev/null
 ####
 ####
 $directory_installed/$file_installed preferences-regen &> /dev/null
-$directory_installed/$file_installed regen-config &> /dev/null
+$directory_installed/$file_installed config-regen &> /dev/null
 #### if [ -f "/usr/bin/$file_installed" ]; then /usr/bin/$file_installed ver; fi
 ####
 ####
@@ -4490,6 +4495,7 @@ exit; fi
 ####
 if [ "$first_option" == "wizard-mini" ]; then echo 
 archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
+$cmd_realpath config-regen
 cp "$defaultminicfg_eng" "$directory_temporal/$file_installed-$archivo"
 $favorite_text_editor "$directory_temporal/$file_installed-$archivo"
 clear
@@ -4508,6 +4514,7 @@ exit; fi
 ####
 if [ "$first_option" == "wizard-full" ]; then $nada
 archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
+$cmd_realpath config-regen
 cp "$defaultfullcfg_eng" "$directory_temporal/$file_installed-$archivo"
 $favorite_text_editor "$directory_temporal/$file_installed-$archivo"
 clear
@@ -5486,7 +5493,7 @@ menuprincipal="$($favorite_text_dialog --clear --notags \
 0616  "$text_md modify-config" \
 0617  "$text_md del-config" \
 0618  "$text_md names-config" \
-0619  "$text_md regen-config" \
+0619  "$text_md config-regen" \
 0620  "$text_md examples-config" \
 0700 "$title_md [ Options Easy ] $title_md" \
 0701  "$text_md preferences-read" \
@@ -5658,7 +5665,7 @@ clear ; $cmd_realpath modify-config $archivo ;;
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_realpath del-config $archivo ; echo "deleted $archivo" ;;
 0618) clear ; $cmd_realpath cli names-config ;;
-0619) clear ; $cmd_realpath cli regen-config ;;
+0619) clear ; $cmd_realpath cli config-regen ;;
 0620) clear ; $cmd_realpath cli examples-config ;;
 ################################################################################
 0701) clear ; $cmd_realpath cli preferences-read ;;
@@ -5893,7 +5900,7 @@ if   [ "$first_option" == "gui-roll-zenity-firewall-customfw" ] ; then echo $hea
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 custom|clone-systemfw|eraserules|wizard-mini|wizard-full|off-line|all-permisive|\
 new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
-names-config|show-config|modify-config|del-config|regen-config|examples-config"
+names-config|show-config|modify-config|del-config|config-regen|examples-config"
 selection_menu="$($command_zenity --forms \
 --text="gui-roll-firewall-customfw" \
 --title="Gui-roll With $cmd_realpath $cmd_version" \
@@ -5964,7 +5971,7 @@ archivo="$($command_zenity --entry \
 --width=$graphicall_width --height=$graphicall_height \
 --title="[del-config]" --entry-text="cfg to delete")" ;
 $cmd_realpath -gui-zenity del-config $archivo ;;
-"regen-config")$cmd_realpath -gui-zenity regen-config ;;
+"config-regen")$cmd_realpath -gui-zenity config-regen ;;
 "examples-config")$cmd_realpath gui examples-config ;;
 esac
 ####
@@ -6289,7 +6296,7 @@ case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Instal
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 custom|clone-systemfw|eraserules|wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|\
 new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
-names-config|show-config|modify-config|del-config|regen-config|examples-config"
+names-config|show-config|modify-config|del-config|config-regen|examples-config"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog \
 --width=$graphicall_width --height=$graphicall_height \
@@ -6355,7 +6362,7 @@ del-config*) archivo="$($favorite_graphicall_dialog --entry \
 --title="[del-config]" \
 --entry-text="cfg to delete" )";
 $cmd_realpath -gui del-config $archivo ;;
-regen-config*)$cmd_realpath -gui regen-config ;;
+config-regen*)$cmd_realpath -gui config-regen ;;
 examples-config*)$cmd_realpath gui examples-config ;;
 esac
 ####
