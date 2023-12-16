@@ -92,7 +92,7 @@ fi
 ####
 cmd_realpath="$(realpath $0)"    # its full routename
 cmd_basename="$(basename $0)"    # its only filename
-cmd_version="cmd-11-02"          # its version
+cmd_version="cmd-11-01"          # its version
 directory_installed="/usr/bin"   # its directory installed
 file_installed="fwiptables-cmd"  # its filename installed
 cmd_shortdescription="fwiptables, FireWall With iptables"       # its name description short
@@ -133,11 +133,11 @@ zero_dir="$(pwd)" ;
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_option="$cmd_realpath" ;
 #### #### english: variables to launch   #### spanish: variables a lanzar
-first_option="$(echo $1 | $command_sed s/\\///g -)"  ;
+first_option="$(echo $1 | $command_sed s/\\///g -)"  ;                       
 #### #### english: variable without "/"  #### spanish: variable sin "/"
-second_option="$(echo $2 | $command_sed s/\\///g -)" ;
+second_option="$(echo $2 | $command_sed s/\\///g -)" ;                       
 #### #### english: variable without "/"  #### spanish: variable sin "/"
-third_option="$(echo $3 | $command_sed s/\\///g -)"  ;
+third_option="$(echo $3 | $command_sed s/\\///g -)"  ;                       
 #### #### english: variable without "/"  #### spanish: variable sin "/"
 quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;
 ####
@@ -183,7 +183,7 @@ else sudo -u 0 $command_xhost +SI:localuser:root &> /dev/null ; fi
 #### :rutina-inicial-config-variables:
 ####
 ####
-list_rules_conceptual=""   ;
+list_rules_conceptual=""   ; 
 config_ip4_localhost="127.0.0.1"    ;
 config_ip6_localhost="::1"    ;
 client_port_tcp="ssh,http,https"     ;
@@ -193,15 +193,15 @@ server_port_udp=""     ;
 allow_shield_maxtries="no"    ;
 config_shield_port="22" ;
 config_shield_maxtries="12"     ;
-logserver_prefix_input="fwlog-input::"     ;
+logserver_prefix_input="fwlog-input::"     ; 
 logserver_prefix_output="fwlog-output::"     ;
 logserver_port_tcp="no"     ;
 logserver_port_udp="no"     ;
 time_server_waiting="9s"    ;
-allow_dmz_ip4="no"    ;
+allow_dmz_ip4="no"    ; 
 allow_dmz_ip6="no"    ;
-allow_forward_ip4="no"    ;
-allow_forward_ip6="no"    ;
+allow_forward_ip4="no"    ; 
+allow_forward_ip6="no"    ; 
 allow_gateway_ip4="no"    ;
 allow_gateway_ip6="no"    ;
 allow_input_all="no"    ;
@@ -209,34 +209,34 @@ allow_input_bandwidth="no"    ;
 allow_input_maxconnect="no"    ;
 allow_input_ping="no"     ;
 allow_input_state="no"    ;
-allow_mac_blacklist="no"    ;
+allow_mac_blacklist="no"    ; 
 allow_mac_whitelist="no"    ;
 allow_net_blacklist="no"    ;
-allow_net_whitelist="no"     ;
+allow_net_whitelist="no"     ; 
 allow_others_protocols="no"     ;
-allow_output_all="no"     ;
+allow_output_all="no"     ; 
 allow_output_bandwidth="no"     ;
 allow_output_gid="no"     ;
 allow_output_maxconnect="no"     ;
 allow_output_ping="no"     ;
 allow_output_state="no"     ;
-allow_output_uid="no"     ;
+allow_output_uid="no"     ; 
 config_dmz_ip4=""     ;
 config_dmz_ip6=""     ;
-config_input_bandwidth="12512"     ;
-config_input_maxconnect="72"     ;
+config_input_bandwidth="12512"     ; 
+config_input_maxconnect="72"     ; 
 config_input_state="new,related,established"     ;
 config_mac_blacklist=""     ;
 config_mac_whitelist=""     ;
 config_net_blacklist="yandex.com,baidu.com,google.com"     ;
-config_net_whitelist="deb.debian.org"     ;
+config_net_whitelist="deb.debian.org"     ; 
 config_others_protocols="icmp,igmp"     ;
 config_output_bandwidth="512"     ;
 config_output_gid="root"     ;
 config_output_maxconnect="72"     ;
 config_output_state="new,related,established"     ;
 config_output_uid="root"     ;
-net_ipv4_client="0/0"     ;
+net_ipv4_client="0/0"     ; 
 net_ipv4_server="0/0"     ;
 net_ipv6_client="::/0"     ;
 net_ipv6_server="::/0"     ;
@@ -248,9 +248,9 @@ net_ipv6_server="::/0"     ;
 #### :rutina-inicial-command:
 ####
 ####
-command_awk="$(command -v awk)"
+command_awk="$(command -v awk)"   
 command_editor="$(command -v editor)"
-command_vi="$(command -v vi)"
+command_vi="$(command -v vi)"   
 command_vim="$(command -v vim)"
 command_pico="$(command -v pico)"
 command_nano="$(command -v nano)"
@@ -371,10 +371,10 @@ directory_shell="$directory_data/fwiptables-shell"
 #### spanish: plantillas cfg
 ####
 ####
-defaultcfg="$directory_config/default-full-english.cfg"
-defaultfullcfg_eng="$directory_config/default-full-english.cfg"
-defaultfullcfg_spa="$directory_config/default-full-spanish.cfg"
-defaultminicfg_eng="$directory_config/default-mini-english.cfg"
+defaultcfg="$directory_config/default-full-english.cfg"             
+defaultfullcfg_eng="$directory_config/default-full-english.cfg"     
+defaultfullcfg_spa="$directory_config/default-full-spanish.cfg"     
+defaultminicfg_eng="$directory_config/default-mini-english.cfg"     
 defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 ####
 ####
@@ -447,8 +447,8 @@ if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /de
 #### :rutina-inicial-system-variables:
 ####
 ####
-#### english: when there is not first_option #### choose "list_options" or "clasic_options"
-#### spanish: cuando no hay first_option #### choose "list_options" or "clasic_options"
+#### english: when there is not first_option #### choose "list_options" or "clasic_options"      
+#### spanish: cuando no hay first_option #### choose "list_options" or "clasic_options"         
 ####
 ####
 without_first_option=       ## fwiptables-file-default ## when there is not one first_option
@@ -490,11 +490,11 @@ favorite_text_browser=""                    ## fwiptables-file-default ## or voi
 #### favorite_date_command       ... for example ntpdate
 favorite_date_command=""                    ## fwiptables-file-default ## or void for automatic or specify command
 ####       #### english: curl server for default for test the public ip
-####       #### spanish: servidor de curl por defecto para testear la ip publica
+####       #### spanish: servidor de curl por defecto para testear la ip publica    
 serverip_discover_ipv4=""http://httpbin.org/ip""        ## fwiptables-file-default ## default http://ifconfig.co/ip
 serverip_discover_ipv6=""http://httpbin.org/ip""        ## fwiptables-file-default ## default http://ifconfig.co/ip
-####       #### english: iperf server for default for test net SPEED
-####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet
+####       #### english: iperf server for default for test net SPEED                 
+####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet    
 serverip_iperf_ipv4="ping.online.net"                 ## fwiptables-file-default ## default ping.online.net
 serverport_iperf_ipv4="5001"                          ## fwiptables-file-default ## default 5201
 serverip_iperf_ipv6="ping6.online.net"                ## fwiptables-file-default ## default ping.online.net
