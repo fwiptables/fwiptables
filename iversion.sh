@@ -817,61 +817,35 @@ esac
 ####
 #### english: alias simple for options commons
 ####
-#### working-here.
-###  case "$first_option" in
-###  "expert") first_option="options-expert" ;;
-###  "version") first_option="ver" ;;
-if [ "$first_option" == "expert" ] ; then first_option="options-expert" ; fi
-if [ "$first_option" == "version" ] ; then first_option="ver" ; fi
-if [ "$first_option" == "client-squid" ] ; then first_option="client-proxy" ; fi
-if [ "$first_option" == "server-squid" ] ; then first_option="server-proxy" ; fi
-if [ "$first_option" == "names" ] ; then first_option="names-control" ; fi
-if [ "$first_option" == "options" ] ; then first_option="list-options" ; fi
-if [ "$first_option" == "mini-options" ] ; then first_option="list-options" ; fi
-if [ "$first_option" == "options-examples" ] ; then first_option="examples" ; fi
-if [ "$first_option" == "options-mini" ] ; then first_option="options" ; fi
-if [ "$first_option" == "examples" ] ; then first_option="options-examples"; fi
-if [ "$first_option" == "sentlog" ] ; then first_option="filelog"; fi
-if [ "$first_option" == "regen" ] ; then first_option="config-regen"; fi
-if [ "$first_option" == "cfg" ] ; then first_option="names-config" ; fi
-if [ "$first_option" == "cfg-custom" ] ; then first_option="custom" ; fi
-if [ "$first_option" == "list-fw" ] ; then first_option="names"; fi
-if [ "$first_option" == "date" ] ; then first_option="ntpdate-client"; fi
-if [ "$first_option" == "ram-free" ] ; then first_option="free"; fi
-if [ "$first_option" == "ram" ] ; then first_option="free"; fi
-if [ "$first_option" == "free-ram" ] ; then first_option="free"; fi
-if [ "$first_option" == "list-allrules" ] ; then first_option="list-alltables"; fi
 ####
-####
-#### english:  alias simple for firewall names 
-####
-####
-if [ "$first_option" == "erase-rules" ] ; then first_option="eraserules" ; fi
-if [ "$first_option" == "offline" ] ; then first_option="off-line" ; fi
-if [ "$first_option" == "clientweb" ] ; then first_option="client-web" ; fi
-if [ "$first_option" == "clientvpn" ] ; then first_option="client-vpn" ; fi
-if [ "$first_option" == "game-minecraft" ] ; then first_option="game-minetest" ; fi
-if [ "$first_option" == "game-westnoth" ] ; then first_option="game-wesnoth" ; fi
-if [ "$first_option" == "allpermisive" ] ; then first_option="all-permisive" ; fi
-if [ "$first_option" == "torbrowser" ] ; then first_option="client-tor" ; fi
-if [ "$first_option" == "tor-browser" ] ; then first_option="client-tor" ; fi
-if [ "$first_option" == "client-email" ] ; then first_option="client-mail" ; fi
-if [ "$first_option" == "onlyweb-tor" ] ; then first_option="lan-tor" ; fi
-if [ "$first_option" == "serversamba" ] ; then first_option="server-samba" ; fi
-if [ "$first_option" == "serverprint" ] ; then first_option="server-print" ; fi
-if [ "$first_option" == "serverweb" ] ; then first_option="server-web" ; fi
-if [ "$first_option" == "serverssh" ] ; then first_option="server-ssh" ; fi
-if [ "$first_option" == "serverlamp" ] ; then first_option="server-lamp" ; fi
-if [ "$first_option" == "server-ts" ] ; then first_option="server-teamspeak" ; fi
-if [ "$first_option" == "server-email" ] ; then first_option="server-mail" ; fi
+case "$first_option" in
+"expert") first_option="options-expert" ;;
+"version") first_option="ver" ;;
+"client-squid") first_option="client-proxy" ;;
+"server-squid") first_option="server-proxy" ;;
+"names") first_option="names-control" ;;
+"options") first_option="list-options" ;;
+"mini-options") first_option="list-options" ;;
+"options-mini") first_option="list-options" ;;
+"sentlog") first_option="filelog" ;;
+"regen") first_option="config-regen" ;;
+"cfg") first_option="names-config" ;;
+"cfg-custom") first_option="custom" ;;
+"custom-cfg") first_option="custom" ;;
+"list-fw") first_option="names" ;;
+"date") first_option="ntpdate-client" ;;
+"ram-free") first_option="free" ;;
+"free-ram") first_option="free" ;;
+"ram") first_option="free" ;;
+"list-allrules") first_option="list-alltables" ;;
+esac
 ####
 ####
 #### english:  alias simple for regenerate configurations templates
 ####
 ####
 case "$first_option" in
-"wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|"nueva-mini-config"|"nueva-completa-config")
-$cmd_realpath config-regen ;; esac
+"wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|"nueva-mini-config"|"nueva-completa-config") $cmd_realpath config-regen ;; esac
 ####
 ####
 #### :rutina-final-alias-simple:
@@ -884,32 +858,20 @@ $cmd_realpath config-regen ;; esac
 ####
 ####
 if [ "$first_option" == "txt" ]; then case "$second_option" in
-####
-####
 "list4") $cmd_realpath list4-ip &> $temporal_text 
 cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
-####
-####
 "list6") $cmd_realpath list6-ip &> $temporal_text 
 cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
-####
-####
 "listn4") $cmd_realpath listn4-ip &> $temporal_text 
 cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
-####
-####
 "listn6") $cmd_realpath listn6-ip &> $temporal_text 
 cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
-####
-####
-esac ; 
+esac
 $cmd_realpath "$second_option" "$third_option" "$quad_option"
-####
-####
 exit; fi
 ####
 ####
@@ -928,16 +890,10 @@ wizard-*) echo "$message_without_cli" ; $cmd_realpath $second_option $third_opti
 "modify-config") $cmd_realpath modify-config $third_option ; exit ;;
 "preferences-modify") $cmd_realpath preferences-modify ; exit ;;
 "radio") echo "$message_without_cli" ; $cmd_realpath $second_option $third_option ;  exit ;;
-####
-####
-*)
-cmd_inicial="$($cmd_realpath $second_option $third_option)"
+*) cmd_inicial="$($cmd_realpath $second_option $third_option)"
 $favorite_text_dialog --clear --notags --title "Cli Menu With $cmd_version" --msgbox "$cmd_inicial" 0 0
 exit ;;
-####
-####
-esac
-fi
+esac ; fi
 ####
 ####
 #### output log
