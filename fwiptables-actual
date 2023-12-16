@@ -742,6 +742,7 @@ case "$first_option" in
 "--cli-menu") first_option="cli-menu" ;;
 "-gui-menu") first_option="gui-menu" ;;
 "--gui-menu") first_option="gui-menu" ;;
+"gui-roll") first_option="gui-roll-zenity" ;;
 "-gui-roll") first_option="gui-roll-zenity" ;;
 "--gui-roll") first_option="gui-roll-zenity" ;;
 "-gui-rock") first_option="gui-roll-zenity" ;;
