@@ -142,6 +142,7 @@ third_option="$(echo $3 | $command_sed s/\\///g -)"  ;
 quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;
 ####
 ####
+#### :rutina-inicial-order-options:
 ##########   english: profile y support X11       ##########
 ##########   spanish: profile y soporte de X11    ##########
 #### :rutina-inicial-x11-or-wayland:
@@ -161,20 +162,21 @@ XDG_RUNTIME_DIR="/run/user/0"
 #### spanish: añade autorización xhost para root para uso grafico
 ####
 ####
+command_sudo="$(command -v sudo) --login"
 command_xhost="$(command -v xhost)" ; 
 if [ "$(logname)" != "$NULL" ] && [ "$(id -u)" == 0 ]; then 
-sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
-else sudo -u 0 $command_xhost +SI:localuser:root &> /dev/null ; fi
+$command_sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
+else $command_sudo -u 0 $command_xhost +SI:localuser:root &> /dev/null ; fi
 ####
 ####
 #### use deprecated
-## sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
-## sudo -u "$(logname)" command_xhost +root@127.0.0.1 &> /dev/null
-## sudo -u "$(logname)" command_xhost +INET:root@127.0.0.1 &> /dev/null
-## sudo -u "$(logname)" command_xhost +INET6:root@127.0.0.1 &> /dev/null
-## sudo -u "$(logname)" command_xhost +DNET:root@127.0.0.1 &> /dev/null
-## sudo -u "$(logname)" command_xhost +KRB:root@127.0.0.1 &> /dev/null
-## sudo -u "$(logname)" command_xhost +NIS:root@127.0.0.1 &> /dev/null
+## $command_sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
+## $command_sudo -u "$(logname)" command_xhost +root@127.0.0.1 &> /dev/null
+## $command_sudo -u "$(logname)" command_xhost +INET:root@127.0.0.1 &> /dev/null
+## $command_sudo -u "$(logname)" command_xhost +INET6:root@127.0.0.1 &> /dev/null
+## $command_sudo -u "$(logname)" command_xhost +DNET:root@127.0.0.1 &> /dev/null
+## $command_sudo -u "$(logname)" command_xhost +KRB:root@127.0.0.1 &> /dev/null
+## $command_sudo -u "$(logname)" command_xhost +NIS:root@127.0.0.1 &> /dev/null
 ####
 ####
 #### :rutina-final-x11-or-wayland:
@@ -736,6 +738,7 @@ case "$list_rules_conceptual" in "$NULL") list_rules_conceptual="" ;; *) list_ru
 ####
 ####
 case "$first_option" in
+"tui-menu") first_option="cli-menu" ;;
 "-tui-menu") first_option="cli-menu" ;;
 "--tui-menu") first_option="cli-menu" ;;
 "-cli-menu") first_option="cli-menu" ;;
@@ -745,8 +748,10 @@ case "$first_option" in
 "gui-roll") first_option="gui-roll-zenity" ;;
 "-gui-roll") first_option="gui-roll-zenity" ;;
 "--gui-roll") first_option="gui-roll-zenity" ;;
+"gui-rock") first_option="gui-roll-zenity" ;;
 "-gui-rock") first_option="gui-roll-zenity" ;;
 "--gui-rock") first_option="gui-roll-zenity" ;;
+"gui-shell") first_option="gui-shell-zenity" ;;
 "-gui-shell") first_option="gui-shell-zenity" ;;
 "--gui-shell") first_option="gui-shell-zenity" ;;
 esac
@@ -1153,10 +1158,10 @@ echo
 echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
 echo "$title_md [ info ] [ HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
 echo "$title_md [ info ] [ Example: ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
-listado_proxy="$(sudo -i -u root bash -c export | grep \_PROXY | wc -l)"
+listado_proxy="$($command_sudo -i -u root bash -c export | grep \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ];
 then echo "$text_md [ info ] Without proxy in export variables"
-else sudo -i -u root bash -c export | grep "_PROXY" ; fi
+else $command_sudo -i -u root bash -c export | grep "_PROXY" ; fi
 echo
 echo "$title_md [ info ] ### [ Domain resolve ] [ Resolv.conf ] [ nameserver and search ] ###"
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
@@ -1198,10 +1203,10 @@ echo
 echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
 echo "$title_md [ info ] [ HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
 echo "$title_md [ info ] [ Example: ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
-listado_proxy="$(sudo -i -u root bash -c export | grep \_PROXY | wc -l)"
+listado_proxy="$($command_sudo -i -u root bash -c export | grep \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ];
 then echo "$text_md [ info ] Without proxy in export variables"
-else sudo -i -u root bash -c export | grep "_PROXY" ; fi
+else $command_sudo -i -u root bash -c export | grep "_PROXY" ; fi
 echo
 echo "$title_md [ info ] ### [ Domain resolve ] [ Resolv.conf ] ###"
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
@@ -4363,7 +4368,7 @@ echo "$duo_md [  ok  ] [ $favorite_text_music ] [ $emisora ]"
 echo 
 echo
 if [ "$($command_logname)" != "$NULL" ] ; then
-$(sudo -u $($command_logname) $favorite_text_music $emisora) ; exit
+$($command_sudo -u $($command_logname) $favorite_text_music $emisora) ; exit
 else $favorite_text_music $emisora ; exit ; fi
 exit; fi
 ####
