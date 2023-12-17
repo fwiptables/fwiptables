@@ -56,15 +56,24 @@ PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
 #### :rutina-inicial-admin:
 ####
 ####
-if [ "$(id -u)" != "0" ] ; then echo
-echo
-echo "### [ fail ] [ fwiptables needs to be root to work ]"
+if [ "$(id -u)" != "0" ] ; then echo ; echo
+echo "### [ fail ] [ fwiptables needs root to work ]"
 echo "### [ info ] [ Try with root user ]"
-echo
-exit ; fi
+echo ; exit ; fi
 ####
 ####
 #### :rutina-final-admin:
+##########    english: #### use sudo to logname xhosts    ##########
+#### :rutina-inicial-sudo:
+####
+####
+command_sudo="$(command -v sudo)"
+if [ "$command_sudo" == "$NULL" ] ; then echo ; echo
+echo "### [ fail ] [ fwiptables needs sudo to works in graphics xorg/wayland ]"
+echo ; exit ; else command_sudo="$(command -v sudo) --login"; fi
+####
+####
+#### :rutina-final-sudo:
 ##########    english: iptables support         ##########
 ##########    spanish: iptables soporte         ##########
 #### :rutina-inicial-support-iptables:
@@ -74,11 +83,9 @@ command_iptables_legacy="$(command -v iptables-legacy)"
 command_iptables_nft="$(command -v iptables-nft)"
 ####
 ####
-if [ "$command_iptables_legacy" == "$NULL" ] || [ "$command_iptables_nft" == "$NULL" ] ; then echo
-echo
-echo "### [ fail ] [ fwiptables needs iptables-legacy and needs iptables-nft to work ]"
-echo
-fi
+if [ "$command_iptables_legacy" == "$NULL" ] || [ "$command_iptables_nft" == "$NULL" ];
+then echo ; echo ; echo "### [ fail ] [ fwiptables needs to work iptables legacy/nft ]"
+echo ; fi
 ####
 ####
 #### :rutina-final-support-iptables:
@@ -162,7 +169,6 @@ XDG_RUNTIME_DIR="/run/user/0"
 #### spanish: añade autorización xhost para root para uso grafico
 ####
 ####
-command_sudo="$(command -v sudo) --login"
 command_xhost="$(command -v xhost)" ; 
 if [ "$(logname)" != "$NULL" ] && [ "$(id -u)" == 0 ]; then 
 $command_sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
