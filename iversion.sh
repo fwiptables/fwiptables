@@ -4700,6 +4700,30 @@ exit; fi
 ####
 ####
 #### :rutina-final-continue:
+##########    english: config-eng: several options to config in english        ##########
+##########    spanish: config-eng: varias opciones para configurar en ingles   ##########
+#### :rutina-inicial-config-eng:
+####
+####
+if [ "$first_option" == "config-eng" ]; then 
+echo "$title_md [ $first_option ] [ show variables cfg from english configuration ] "
+cat  $defaultfullcfg_eng
+exit; fi
+####
+####
+#### :rutina-final-config-eng:
+##########    english: config-spa: several options to config in spanish         ##########
+##########    spanish: config-spa: varias opciones para configurar en spanish   ##########
+#### :rutina-inicial-config-spa:
+####
+####
+if [ "$first_option" == "config-spa" ]; then 
+echo "$title_md [ $first_option ] [ show variables cfg from spanish configuration ] "
+cat $defaultfullcfg_spa
+exit; fi
+####
+####
+#### :rutina-final-config-spa:
 ##########    english: speed-ip4: speed from internet        ##########
 ##########    spanish: speed-ip4: velocidad desde internet   ##########
 #### :rutina-inicial-speed-ip4:
@@ -4757,7 +4781,6 @@ if [ "$command_awk" == "$NULL" ]; then
 echo "$title_md [ fail ] [ Install ss command ]"; exit; fi
 if [ "$command_awk" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Install awk command ]"; exit; fi
-#### echo "$title_md [ info ] [ The LISTEN sockets (and UNCONN internals) ]"
 $command_ss -l  | $command_grep "\:\*" | $command_awk '{print $1 " " $2 " " $5}' ;
 exit; fi
 ####
@@ -4769,12 +4792,15 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "webcert" ] ; then 
-echo "$title_md [ $first_option ]  [ get one web certifcate from one server with port 443] || ||"
-case "$command_openssl"  in  $NULL) echo "$text_md [ fail ] [ install openssl ]"; exit ;; esac
+echo "$title_md [ $first_option ] \
+[ get one web certifcate from one server with port 443] || ||"
+case "$command_openssl"  in  $NULL)
+echo "$text_md [ fail ] [ install openssl ]"; exit ;; esac
 ####
 ####
 if [ "$second_option" == "$NULL" ]; then
-echo "[ get one web certifcate ] [ Example: $cmd_realpath webcert www.fast.com ]"; exit; fi
+echo "[ get one web certifcate ] \
+[ Example: $cmd_realpath webcert www.fast.com ]"; exit; fi
 echo
 $command_timeout -s SIGINT -v $time_server_waiting $command_openssl s_client -connect $second_option:443
 exit; fi
@@ -4789,9 +4815,10 @@ exit; fi
 #### spanish: con tercera opcion
 ####
 ####
-if [ "$first_option" == "gui" ] && [ "$third_option" != "$NULL" ] ; then $nada
-echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
+if [ "$first_option" == "gui" ] && [ "$third_option" != "$NULL" ]
+then echo $head_waiting_gui
+####
+####
 case $second_option in
 #### 
 #### 
@@ -4901,8 +4928,9 @@ exit; fi
 ##########    spanish: -gui: con segunda opcion    ##########
 ####
 ####
-if [ "$first_option" == "gui" ] && [ "$second_option" != "$NULL" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
+if [ "$first_option" == "gui" ] && [ "$second_option" != "$NULL" ]
+then echo $head_waiting_gui
+####
 ####
 case $second_option in
 #### 
@@ -4991,46 +5019,23 @@ exit; fi
 ##########    spanish: -gui: sin mas opcion          ##########
 ####
 ####
-if [ "$first_option" == "gui" ] && [ "$second_option" == "$NULL" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
+if [ "$first_option" == "gui" ] && [ "$second_option" == "$NULL" ]
+then echo $head_waiting_gui
+####
+####
 $favorite_graphicall_dialog  --forms \
 --width=$graphicall_width --height=$graphicall_height \
 --title="Gui Output || $cmd_realpath || " \
---text="$($cmd_realpath empty_first_option)"
+--text="$($cmd_realpath empty_first_option)" 
 exit; fi
 ####
 ####
-##########    english: config-eng: several options to config in english        ##########
-##########    spanish: config-eng: varias opciones para configurar en ingles   ##########
-#### :rutina-inicial-config-eng:
-####
-####
-if [ "$first_option" == "config-eng" ]; then 
-echo "$title_md [ $first_option ] [ show variables cfg from english configuration ] "
-cat  $defaultfullcfg_eng
-exit; fi
-####
-####
-#### :rutina-final-config-eng:
-##########    english: config-spa: several options to config in spanish         ##########
-##########    spanish: config-spa: varias opciones para configurar en spanish   ##########
-#### :rutina-inicial-config-spa:
-####
-####
-if [ "$first_option" == "config-spa" ]; then 
-echo "$title_md [ $first_option ] [ show variables cfg from spanish configuration ] "
-cat $defaultfullcfg_spa
-exit; fi
-####
-####
-#### :rutina-final-config-spa:
 ##########    english: gui-shell-zenity: graphic enviroment            ##########
 ##########    spanish: gui-shell-zenity: entorno de comandos grafico   ##########
 #### :rutina-inicial-gui-shell-zenity:
 ####
 ####
-if [ "$first_option" == "gui-shell-zenity" ]
-then echo $head_waiting_gui ; echo $give_cover
+if   [ "$first_option" == "gui-shell-zenity" ] ; then echo $head_waiting_gui ; echo $give_cover
 ####
 ####
 ####  english: principal gui  #### spanish: principal gui
@@ -5153,7 +5158,7 @@ unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_realpath -gui-zenity show-config $unarchivo
 ;;
 wizard-full*) $cmd_realpath -gui-zenity wizard-full ;;
-wizard-mini*) $cmd_realpath -gui-zniety wizard-mini ;;
+wizard-mini*) $cmd_realpath -gui-zenity wizard-mini ;;
 preferences-modify*) 
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_realpath -gui-zenity preferences-modify 
@@ -5316,8 +5321,8 @@ $cmd_realpath -gui-yad preferences-modify
 #### spanish: las demas opciones   ####
 ####
 ####
-"$NULL") exit ;;
-*) fecha_temporal=$(date | $command_sed s/\ //g) ;
+*)
+fecha_temporal=$(date | $command_sed s/\ //g) ;
 $cmd_realpath $menugtk &> /tmp/fwiptables-$fecha_temporal
 $command_yad --text-info \
 --width=$graphicall_width --height=$graphicall_height \
