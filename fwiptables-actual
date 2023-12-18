@@ -5664,6 +5664,18 @@ exit; fi
 ####
 ####
 #### :rutina-final-text-pause:
+##########    english: graphicall-pause: do pause     ##########
+##########    spanish: graphicall-pause: hace pausa   ##########
+#### :rutina-inicial-graphicall-pause:
+####
+####
+if [ "$first_option" == "graphicall-pause" ]
+then $favorite_graphicall_dialog --forms \
+--text="wait a moment, usually 1 minute max."
+exit; fi
+####
+####
+#### :rutina-final-graphicall-pause:
 ###############################################################################################################
 ###############################################################################################################
 ##########    english: gui-roll-zenity: gui roll general: gui with roll  ##########
