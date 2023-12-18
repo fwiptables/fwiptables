@@ -815,8 +815,14 @@ esac
 case "$first_option" in
 "cli-dialog") favorite_text_dialog="$command_dialog" ; first_option="cli" ;;
 "cli-whiptail") favorite_text_dialog="$command_whiptail" ; first_option="cli" ;;
-"gui-zenity")favorite_graphicall_dialog="$command_zenity" ; first_option="gui" ;;
-"gui-yad")favorite_graphicall_dialog="$command_yad" ; first_option="gui" ;;
+"gui-zenity")
+favorite_graphicall_dialog="$command_zenity" ; first_option="gui" 
+#### $favorite_graphicall_dialog --forms --text="please, wait several seconds" & 
+;;
+"gui-yad")
+favorite_graphicall_dialog="$command_yad" ; first_option="gui" 
+####$favorite_graphicall_dialog --forms --text="please, wait several seconds" &
+;;
 "cli-menu-dialog") favorite_text_dialog="$command_dialog" ; first_option="cli-menu" ;;
 "cli-menu-whiptail") favorite_text_dialog="$command_whiptail" ; first_option="cli-menu" ;;
 "gui-menu-zenity") favorite_graphicall_dialog="$command_zenity" ; first_option="gui-menu" ;;
