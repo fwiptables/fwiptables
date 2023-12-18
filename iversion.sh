@@ -5664,7 +5664,8 @@ exit; fi
 #### :rutina-inicial-gui-roll-zenity:
 ####
 ####
-if   [ "$first_option" == "gui-roll-zenity" ] ; then echo $head_waiting_gui ; echo $give_cover
+if [ "$first_option" == "gui-roll-zenity" ]
+then echo $head_waiting_gui ; echo $give_cover
 gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|\
 02-Firewall-List-With-Numeral|03-firewall-customfw|\
 04-firewall-systemfw|05-options-easy|06-options-expert"
@@ -5696,7 +5697,8 @@ exit; fi
 #### :rutina-inicial-gui-zenity-roll-firewall-control:
 ####
 ####
-if   [ "$first_option" == "gui-roll-zenity-firewall-control" ] ; then echo $head_waiting_gui
+if [ "$first_option" == "gui-roll-zenity-firewall-control" ]
+then echo $head_waiting_gui ; echo $give_cover
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 stop|continue|reset|names|show|save|load|actual"
 selection_menu="$($command_zenity --forms \
@@ -5743,9 +5745,13 @@ exit; fi
 #### :rutina-inicial-gui-roll-zenity-firewall-listconceptual:
 ####
 ####
-if   [ "$first_option" == "gui-roll-zenity-firewall-listconceptual" ] ; then echo $head_waiting_gui
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|ls4|ls6|list-filter4|list-filter6|list-alltables|\
-list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|list-security4|list-security6|list-ebtables|list-arptables"
+if [ "$first_option" == "gui-roll-zenity-firewall-listconceptual" ]
+then echo $head_waiting_gui ; echo $give_cover
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
+ls4|ls6|list-filter4|list-filter6|list-alltables|\
+list-nat4|list-nat6|list-mangle4|list-mangle6|\
+list-raw4|list-raw6|list-security4|list-security6|\
+list-ebtables|list-arptables"
 selection_menu="$($command_zenity --forms \
 --text="gui-roll-firewall-listconceptual" \
 --title="Gui-roll With $cmd_realpath $cmd_version" \
@@ -5788,7 +5794,8 @@ exit; fi
 #### :rutina-inicial-gui-roll-zenity-firewall-listnumeral:
 ####
 ####
-if   [ "$first_option" == "gui-roll-zenity-firewall-listnumeral" ] ; then echo $head_waiting_gui
+if [ "$first_option" == "gui-roll-zenity-firewall-listnumeral" ]
+then echo $head_waiting_gui ; echo $give_cover
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|lsn4|lsn6|\
 listn-filter4|listn-filter6|listn-alltables|\
 listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|\
@@ -5836,7 +5843,8 @@ exit; fi
 #### :rutina-inicial-gui-roll-zenity-firewall-customfw:
 ####
 ####
-if   [ "$first_option" == "gui-roll-zenity-firewall-customfw" ] ; then echo $head_waiting_gui
+if [ "$first_option" == "gui-roll-zenity-firewall-customfw" ]
+then echo $head_waiting_gui ; echo $give_cover
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 custom|clone-systemfw|eraserules|wizard-mini|wizard-full|off-line|all-permisive|\
 new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
@@ -5925,7 +5933,8 @@ exit; fi
 #### :rutina-inicial-gui-roll-zenity-firewall-systemfw:
 ####
 ####
-if   [ "$first_option" == "gui-roll-zenity-firewall-systemfw" ] ; then echo $head_waiting_gui
+if [ "$first_option" == "gui-roll-zenity-firewall-systemfw" ]
+then echo $head_waiting_gui ; echo $give_cover
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 client-basic|client-web|client-mail|client-news|client-ftp|client-git|client-vnc|\
 client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
@@ -5991,8 +6000,8 @@ exit; fi
 #### :rutina-inicial-gui-roll-zenity-options-easy:
 ####
 ####
-if   [ "$first_option" == "gui-roll-zenity-options-easy" ]
-then echo $head_waiting_gui
+if [ "$first_option" == "gui-roll-zenity-options-easy" ]
+then echo $head_waiting_gui ; echo $give_cover
 ####
 ####
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|\
@@ -6061,7 +6070,7 @@ exit; fi
 #### :rutina-inicial-gui-roll-zenity-options-expert:
 ####
 ####
-if [ "$first_option" == "gui-roll-zenity-options-expert" ] ;
+if [ "$first_option" == "gui-roll-zenity-options-expert" ]
 then echo $head_waiting_gui ; echo $give_cover
 ####
 ####
@@ -6100,9 +6109,13 @@ exit; fi
 #### :rutina-inicial-gui-menu:
 ####
 ####
-if [ "$first_option" == "gui-menu" ] ; then echo $head_waiting_gui ; echo $give_cover
-case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="|01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral|03-firewall-customfw|04-firewall-systemfw|05-options-easy|06-options-expert"
+if [ "$first_option" == "gui-menu" ]
+then echo $head_waiting_gui ; echo $give_cover
+case "$favorite_graphicall_dialog" in "$NULL")
+echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+gui_menu="|01-Firewall-Control|02-Firewall-List-With-Conceptual|\
+02-Firewall-List-With-Numeral|03-firewall-customfw|04-firewall-systemfw|\
+05-options-easy|06-options-expert"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog \
 --width=$graphicall_width --height=$graphicall_height \
@@ -6133,9 +6146,12 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-control:
 ####
 ####
-if   [ "$first_option" == "gui-menu-firewall-control" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|stop|continue|reset|names|show|save|load|actual"
+if   [ "$first_option" == "gui-menu-firewall-control" ]
+then echo $head_waiting_gui ; echo $give_cover
+case "$favorite_graphicall_dialog" in "$NULL")
+echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
+stop|continue|reset|names|show|save|load|actual"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog \
 --width=$graphicall_width --height=$graphicall_height \
@@ -6182,10 +6198,14 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-listconceptual:
 ####
 ####
-if   [ "$first_option" == "gui-menu-firewall-listconceptual" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|ls4|ls6|list-filter4|list-filter6|list-alltables|\
-list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|list-security4|list-security6|list-ebtables|list-arptables"
+if   [ "$first_option" == "gui-menu-firewall-listconceptual" ]
+then echo $head_waiting_gui ; echo $give_cover
+case "$favorite_graphicall_dialog" in "$NULL")
+echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
+ls4|ls6|list-filter4|list-filter6|list-alltables|\
+list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|\
+list-security4|list-security6|list-ebtables|list-arptables"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog \
 --width=$graphicall_width --height=$graphicall_height \
@@ -6226,10 +6246,15 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-listnumeral:
 ####
 ####
-if   [ "$first_option" == "gui-menu-firewall-listnumeral" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|lsn4|lsn6|listn-filter4|listn-filter6|listn-alltables|\
-listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|listn-raw4|listn-raw6|listn-security4|listn-security6|list-ebtables|list-arptables"
+if   [ "$first_option" == "gui-menu-firewall-listnumeral" ]
+then echo $head_waiting_gui ; echo $give_cover
+case "$favorite_graphicall_dialog" in "$NULL")
+echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|lsn4|lsn6|\
+listn-filter4|listn-filter6|listn-alltables|\
+listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|\
+listn-raw4|listn-raw6|listn-security4|listn-security6|\
+list-ebtables|list-arptables"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog \
 --width=$graphicall_width --height=$graphicall_height \
@@ -6271,8 +6296,10 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-customfw:
 ####
 ####
-if   [ "$first_option" == "gui-menu-firewall-customfw" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+if [ "$first_option" == "gui-menu-firewall-customfw" ]
+then echo $head_waiting_gui ; echo $give_cover
+case "$favorite_graphicall_dialog" in "$NULL")
+echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 custom|clone-systemfw|eraserules|wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|\
 new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
@@ -6356,8 +6383,10 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-systemfw:
 ####
 ####  
-if   [ "$first_option" == "gui-menu-firewall-systemfw" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+if [ "$first_option" == "gui-menu-firewall-systemfw" ]
+then echo $head_waiting_gui ; echo $give_cover
+case "$favorite_graphicall_dialog" in "$NULL")
+echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 client-basic|client-web|client-ipp|client-irc|client-mail|client-news|client-ftp|\
 client-git|client-vnc|client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
@@ -6424,8 +6453,10 @@ exit; fi
 #### :rutina-inicial-gui-menu-options-easy:
 ####
 ####
-if   [ "$first_option" == "gui-menu-options-easy" ]; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+if [ "$first_option" == "gui-menu-options-easy" ]
+then echo $head_waiting_gui ; echo $give_cover
+case "$favorite_graphicall_dialog" in "$NULL")
+echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
 list-options|clasic-options|info-options|expert|compile|download|intro|\
@@ -6479,8 +6510,10 @@ exit; fi
 #### :rutina-inicial-gui-menu-options-expert:
 ####
 ####
-if [ "$first_option" == "gui-menu-options-expert" ] ; then echo $head_waiting_gui ; echo $give_cover
-case "$favorite_graphicall_dialog" in "$NULL") echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+if [ "$first_option" == "gui-menu-options-expert" ]
+then echo $head_waiting_gui ; echo $give_cover
+case "$favorite_graphicall_dialog" in "$NULL")
+echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="|01-expert-show-weather|02-expert-compile-obash|03-expert-upgrade-stable\
 |04-expert-upgrade-unstable|05-expert-download-adblock|06-expert-pc-halt\
 |07-expert-pc-shutdown|08-expert-pc-reboot"
