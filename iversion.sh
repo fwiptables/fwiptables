@@ -5029,7 +5029,8 @@ exit; fi
 #### :rutina-inicial-gui-shell-zenity:
 ####
 ####
-if   [ "$first_option" == "gui-shell-zenity" ] ; then echo $head_waiting_gui ; echo $give_cover
+if [ "$first_option" == "gui-shell-zenity" ]
+then echo $head_waiting_gui ; echo $give_cover
 ####
 ####
 ####  english: principal gui  #### spanish: principal gui
@@ -5197,6 +5198,7 @@ favorite_graphicall_dialog="$command_yad"
 ####
 ####
 menugtk="$($command_yad --entry \
+--title="Gui Shell || $cmd_realpath || $cmd_version ||" \
 --width=$graphicall_width --height=$graphicall_height \
 --entry-label="$($cmd_realpath list-options)")"
 ####
