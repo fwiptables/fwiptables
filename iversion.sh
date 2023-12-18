@@ -4380,8 +4380,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-radio:
-##########    english: -info --info -i: info of first option            ##########
-##########    spanish: -info --info -i: info of primera opcion          ##########
+##########    english: info: info of first option            ##########
+##########    spanish: info: info of primera opcion          ##########
 #### :rutina-inicial-info:
 ####
 ####
@@ -5733,8 +5733,8 @@ case "$selection_final" in
 --width=$graphicall_width --height=$graphicall_height \
 --text="$cmd_realpath good bye"; exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
-"gui-help-menu")$cmd_realpath -gui-zenity help firewall-control ;;
-"gui-info-menu")$cmd_realpath -gui-zenity info firewall-control ;;
+"gui-help-menu")$cmd_realpath -gui-zenity firewall-control ;;
+"gui-info-menu")$cmd_realpath -gui-zenity firewall-control ;;
 "stop")$cmd_realpath -gui-zenity stop ; $cmd_realpath -gui-zenity list4;;
 "continue")$cmd_realpath -gui-zenity continue ; $cmd_realpath -gui-zenity list4;;
 "reset")$cmd_realpath -gui-zenity reset ; $cmd_realpath -gui-zenity list4;;
@@ -5784,8 +5784,8 @@ case "$selection_final" in
 --width=$graphicall_width --height=$graphicall_height \
 --text="$cmd_realpath good bye"; exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
-"gui-help-menu")$cmd_realpath -gui-zenity help firewall-listconceptual ;;
-"gui-info-menu")$cmd_realpath -gui-zenity info firewall-listconceptual ;;
+"gui-help-menu")$cmd_realpath -gui-zenity firewall-listconceptual ;;
+"gui-info-menu")$cmd_realpath -gui-zenity firewall-listconceptual ;;
 "ls4")$cmd_realpath -gui-zenity ls4 ;;
 "ls6")$cmd_realpath -gui-zenity ls6 ;;
 "list-alltables")$cmd_realpath -gui-zenity list-alltables ;;
@@ -5833,8 +5833,8 @@ case "$selection_final" in
 --width=$graphicall_width --height=$graphicall_height \
 --text="$cmd_realpath good bye"; exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
-"gui-help-menu")$cmd_realpath -gui-zenity help firewall-listnumeral ;;
-"gui-info-menu")$cmd_realpath -gui-zenity info firewall-listnumeral ;;
+"gui-help-menu")$cmd_realpath -gui-zenity firewall-listnumeral ;;
+"gui-info-menu")$cmd_realpath -gui-zenity firewall-listnumeral ;;
 "lsn4")$cmd_realpath -gui-zenity lsn4 ;;
 "lsn6")$cmd_realpath -gui-zenity lsn6 ;;
 "listn-alltables")$cmd_realpath -gui-zenity listn-alltables ;;
@@ -5881,8 +5881,8 @@ case "$selection_final" in
 --width=$graphicall_width --height=$graphicall_height \
 --text="$cmd_realpath good bye"; exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
-"gui-help-menu")$cmd_realpath -gui-zenity help firewall-customfw ;;
-"gui-info-menu")$cmd_realpath -gui-zenity info firewall-customfw ;;
+"gui-help-menu")$cmd_realpath -gui-zenity firewall-customfw ;;
+"gui-info-menu")$cmd_realpath -gui-zenity firewall-customfw ;;
 "custom")archivo="$($command_zenity  --entry \
 --width=$graphicall_width --height=$graphicall_height \
 --title="[Launch Custom]" --entry-text="cfg to launch")" ; 
@@ -5971,8 +5971,8 @@ selection_final="$(echo $selection_menu | sed 's/\|//g')"
 case "$selection_final" in
 1) $command_zenity  --info --width=$graphicall_width --height=$graphicall_height --text="$cmd_realpath good bye"; exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
-"gui-help-menu")$cmd_realpath -gui-zenity help firewall-systemfw ;;
-"gui-info-menu")$cmd_realpath -gui-zenity info firewall-systemfw ;;
+"gui-help-menu")$cmd_realpath -gui-zenity firewall-systemfw ;;
+"gui-info-menu")$cmd_realpath -gui-zenity firewall-systemfw ;;
 "client-web")$cmd_realpath -gui-zenity client-web ; $cmd_realpath gui list4;;
 "client-ipp")$cmd_realpath -gui-zenity client-ipp   ; $cmd_realpath gui list4;;
 "client-irc")$cmd_realpath -gui-zenity client-irc   ; $cmd_realpath gui list4;;
@@ -6045,8 +6045,8 @@ case "$selection_final" in
 --width=$graphicall_width --height=$graphicall_height \
 --text="$cmd_realpath good bye"; exit ;;
 gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
-gui-help-menu)$cmd_realpath -gui-zenity help status-state ;;
-gui-info-menu)$cmd_realpath -gui-zenity info status-state ;;
+gui-help-menu)$cmd_realpath -gui-zenity options-easy ;;
+gui-info-menu)$cmd_realpath -gui-zenity options-easy ;;
 preferences-read)$cmd_realpath -gui-zenity preferences-read ;;
 preferences-modify)$cmd_realpath -gui-zenity preferences-modify ;;
 preferences-regen)$cmd_realpath -gui-zenity preferences-regen ;;
@@ -6115,7 +6115,7 @@ case "$selection_final" in
 05-expert-download-adblock)$cmd_realpath -gui-zenity expert-download-adlock ;;
 06-expert-pc-halt) $cmd_realpath -gui-zenity expert-pc-halt ;;
 07-expert-pc-shutdown) $cmd_realpath -gui-zenity expert-pc-shutdown ;;
-08-expert-pc-reboot) $cmd_realpath -gui-zenty expert-pc-reboot ;;
+08-expert-pc-reboot) $cmd_realpath -gui-zenity expert-pc-reboot ;;
 esac
 ####
 ####
@@ -6130,8 +6130,6 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu" ]
 then echo $head_waiting_gui ; echo $give_cover
-case "$favorite_graphicall_dialog" in "$NULL")
-echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="|01-Firewall-Control|02-Firewall-List-With-Conceptual|\
 02-Firewall-List-With-Numeral|03-firewall-customfw|04-firewall-systemfw|\
 05-options-easy|06-options-expert"
@@ -6183,8 +6181,8 @@ selection_final="$($favorite_graphicall_dialog \
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu*)$cmd_realpath gui-menu ;;
-gui-help-menu*)$cmd_realpath -gui help firewall-control ;;
-gui-info-menu*)$cmd_realpath -gui info firewall-control ;;
+gui-help-menu*)$cmd_realpath -gui firewallcontrol ;;
+gui-info-menu*)$cmd_realpath -gui firewall-control ;;
 stop*)$cmd_realpath -gui stop ; $cmd_realpath -gui list4;;
 continue*)$cmd_realpath -gui continue ; $cmd_realpath -gui list4;;
 reset*)$cmd_realpath -gui reset ; $cmd_realpath -gui list4;;
@@ -6236,8 +6234,8 @@ selection_final="$($favorite_graphicall_dialog \
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu*)$cmd_realpath gui-menu ;;
-gui-help-menu*)$cmd_realpath -gui help firewall-listconceptual ;;
-gui-info-menu*)$cmd_realpath -gui info firewall-listconceptual ;;
+gui-help-menu*)$cmd_realpath -gui firewall-listconceptual ;;
+gui-info-menu*)$cmd_realpath -gui firewall-listconceptual ;;
 ls4*)$cmd_realpath -gui ls4 ;;
 ls6*)$cmd_realpath -gui ls6 ;;
 list-alltables*)$cmd_realpath -gui list-alltables ;;
@@ -6286,8 +6284,8 @@ selection_final="$($favorite_graphicall_dialog \
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu*)$cmd_realpath gui-menu ;;
-gui-help-menu*)$cmd_realpath -gui help firewall-listnumeral ;;
-gui-info-menu*)$cmd_realpath -gui info firewall-listnumeral ;;
+gui-help-menu*)$cmd_realpath -gui firewall-listnumeral ;;
+gui-info-menu*)$cmd_realpath -gui firewall-listnumeral ;;
 lsn4*)$cmd_realpath -gui lsn4 ;;
 lsn6*)$cmd_realpath -gui lsn6 ;;
 listn-alltables*)$cmd_realpath -gui listn-alltables ;;
@@ -6335,8 +6333,8 @@ selection_final="$($favorite_graphicall_dialog \
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu) $cmd_realpath gui-menu ;;
-gui-help-menu*) $cmd_realpath -gui help firewall-customfw ;;
-gui-info-menu*) $cmd_realpath -gui info firewall-customfw ;;
+gui-help-menu*) $cmd_realpath -gui firewall-customfw ;;
+gui-info-menu*) $cmd_realpath -gui firewall-customfw ;;
 eraserules*)$cmd_realpath -gui eraserules ; $cmd_realpath gui list4;;
 wizard-full*)$cmd_realpath -gui wizard-full ; $cmd_realpath gui list4;;
 wizard-mini*)$cmd_realpath -gui wizard-mini ; $cmd_realpath gui list4;;
@@ -6424,8 +6422,8 @@ selection_final="$($favorite_graphicall_dialog \
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu*)$cmd_realpath gui-menu ;;
-gui-help-menu*)$cmd_realpath -gui help firewall-systemfw ;;
-gui-info-menu*)$cmd_realpath -gui info firewall-systemfw ;;
+gui-help-menu*)$cmd_realpath -gui firewall-systemfw ;;
+gui-info-menu*)$cmd_realpath -gui firewall-systemfw ;;
 client-basic*)$cmd_realpath -gui client-basic ; $cmd_realpath gui list4;;
 client-web*)$cmd_realpath -gui client-web ; $cmd_realpath gui list4;;
 client-ipp*)$cmd_realpath -gui client-ipp   ; $cmd_realpath gui list4;;
@@ -6492,8 +6490,8 @@ selection_final="$($favorite_graphicall_dialog \
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu*)$cmd_realpath gui-menu ;;
-gui-help-menu*)$cmd_realpath -gui help status-state ;;
-gui-info-menu*)$cmd_realpath -gui info status-state ;;
+gui-help-menu*)$cmd_realpath -gui options-easy ;;
+gui-info-menu*)$cmd_realpath -gui options-easy ;;
 preferences-read*)$cmd_realpath -gui preferences-read ;;
 preferences-modify*)$cmd_realpath -gui preferences-modify ;;
 preferences-regen*)$cmd_realpath -gui preferences-regen ;;
