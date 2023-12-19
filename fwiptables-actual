@@ -4284,7 +4284,7 @@ echo "$text_md [ step ] [ 0 ] Necesary: fwiptables in source script bash        
 echo "$text_md [ step ] [ 1 ] Download obash from oficial web internet                      "
 echo "$text_md [ step ] [ 2 ] Compile with obash command using command make.                "
 echo "$text_md [ step ] [ 3a] Or run: obash -c -o ./destination.bin ./source-bash.sh        "
-echo "$text_md [ step ] [ 3b] Or run: obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd   "
+echo "$text_md [ step ] [ 3b] Or run: obash -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd   "
 echo "$title_md Actually, the file type is:                                                          "
 file -L $cmd_realpath
 exit; fi
@@ -4300,11 +4300,10 @@ if   [ "$first_option" == "expert-compile-obash" ]; then
 echo "$title_md [ $first_option ] [  optionally ] [ howto compile bash script with obash ] "
 echo "$title_md Compile /usr/bin/fwiptables-cmd in /usr/bin/fwiptables-bin"
 if [ "$command_obash" == "$NULL" ]; then echo "$title_md install obash to compile"; exit ; fi
-$command_obash -c -o /usr/bin/fwiptables-bin /usr/bin/fwiptables-cmd
+$command_obash -c -o $directory_installed/$file_installed.bin $directory_installed/$file_installed
 echo "$text_md"
-file -L /usr/bin/fwiptables-cmd
-echo "$title_md"
-file -L /usr/bin/fwiptables-bin
+file -L $directory_installed/$file_installed
+file -L $directory_installed/$file_installed.bin
 exit; fi
 ####
 ####
