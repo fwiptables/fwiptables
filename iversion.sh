@@ -829,7 +829,7 @@ favorite_graphicall_dialog="$command_zenity" ; first_option="gui"
 ;;
 "gui-yad")
 favorite_graphicall_dialog="$command_yad" ; first_option="gui" 
-####$favorite_graphicall_dialog --forms --text="please, wait several seconds" &
+#### $favorite_graphicall_dialog --forms --text="please, wait several seconds" &
 ;;
 "cli-menu-dialog") favorite_text_dialog="$command_dialog" ; first_option="cli-menu" ;;
 "cli-menu-whiptail") favorite_text_dialog="$command_whiptail" ; first_option="cli-menu" ;;
@@ -1040,6 +1040,40 @@ exit; fi
 ####
 ####
 #### :rutina-final-without-first-option:
+##########    english: expert-wpa-new: example from a file wpa_supplicant   ##########
+##########    spanish: expert-wpa-new: ejemplo de un archivo wpa_supplicant ##########
+#### :rutina-inicial-expert-wpa-new:
+####
+####
+if [ "$first_option" == "expert-txtwpa-new" ]; then
+if [ "$command_wpa_passphrase" == "$NULL" ]
+then echo "$title_md [ fail ] Install wpa_passphrase"; exit; fi
+if [ "$command_wpa_supplicant" == "$NULL" ]
+then echo "$title_md [ fail ] Install wpa_passphrase"; exit; fi
+if [ "$second_option" == "$NULL" ]; then 
+echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
+####
+####
+cp $directory_wpa/default_wpa $directory_wpa/wpa_$second_option
+editor $directory_wpa/wpa_$second_option
+exit; fi
+####
+####
+if [ "$first_option" == "expert-guiwpa-new" ]; then
+if [ "$command_wpa_passphrase" == "$NULL" ]
+then echo "$title_md [ fail ] Install wpa_passphrase"; exit; fi
+if [ "$command_wpa_supplicant" == "$NULL" ]
+then echo "$title_md [ fail ] Install wpa_passphrase"; exit; fi
+if [ "$second_option" == "$NULL" ]; then 
+echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
+####
+####
+cp $directory_wpa/default_wpa $directory_wpa/wpa_$second_option
+editor $directory_wpa/wpa_$second_option
+exit; fi
+####
+####
+#### :rutina-inicial-expert-wpa-regen:
 ##########    english: expert-wpa-regen: example from a file wpa_supplicant   ##########
 ##########    spanish: expert-wpa-regen: ejemplo de un archivo wpa_supplicant ##########
 #### :rutina-inicial-expert-wpa-regen:
@@ -2498,7 +2532,7 @@ echo "$text_md expert-compile-obash . Compile fwiptables-cmd to fwiptables-bin w
 echo "$text_md expert-upgrade-stable . Upgrade from web sourceforge fwiptables-cmd with curl"
 echo "$text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables-cmd with curl"
 echo "$text_md expert-download-adblock . Download four files of blacklist hosts to /etc/hosts.blacklist"
-echo "$text_md expert-wpa-create . nameconfig to create wifi config"
+echo "$text_md expert-wpa-new . nameconfig to create wifi config"
 echo "$text_md expert-wpa-connect . nameconfig to connect wifi config"
 echo "$text_md expert-pc-halt . halt computer"
 echo "$text_md expert-pc-shutdown . shutdown computer"
