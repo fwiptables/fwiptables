@@ -626,8 +626,8 @@ fi
 ####
 ####
 if [ "$favorite_graphicall_dialog" == "$NULL" ]; then
-if [ "$command_zenity"  != "$NULL" ] ; then  favorite_graphicall_dialog="$command_zenity"   ; fi
 if [ "$command_yad"     != "$NULL" ] ; then  favorite_graphicall_dialog="$command_yad"      ; fi
+if [ "$command_zenity"  != "$NULL" ] ; then  favorite_graphicall_dialog="$command_zenity"   ; fi
 fi
 ####
 ####
@@ -777,6 +777,11 @@ case "$first_option" in
 "-gui") first_option="gui" ;;
 "-silent") first_option="null" ;;
 "--silent") first_option="null" ;;
+"t") first_option="txt" ;;
+"c") first_option="cli" ;;
+"g") first_option="gui" ;;
+"l") first_option="log" ;;
+"s") first_option="null" ;;
 "-t") first_option="txt" ;;
 "-c") first_option="cli" ;;
 "-g") first_option="gui" ;;
@@ -932,7 +937,8 @@ echo "$head_waiting_log"
 echo "### ### [ info ] [ $second_option $third_option $quad_option ] [ $($command_date) ]" &> $output_log
 $cmd_realpath $second_option $third_option $quad_option &>> $output_log
 cat $output_log | $command_grep -iv Warning: &>> $default_filelog
-echo "$title_md [ _ok_ ] [ Output sended to $default_filelog ] [ show file: fwiptables filelog ]" ;
+echo "$title_md [ info ] [ Output sended to: $default_filelog ]"
+echo "$title_md [ _ok_ ] [ show file: fwiptables filelog ]" ;
 exit ; fi
 ####
 ####
