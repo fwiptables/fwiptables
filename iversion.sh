@@ -352,6 +352,7 @@ command_lshw="$(command -v lshw)"
 command_cvlc="$(command -v cvlc)"
 command_mpg123="$(command -v mpg123)"
 command_mpg321="$(command -v mpg321)"
+command_uuid="$(command -v uuid)"
 ####
 ####
 #### :rutina-final-command:
@@ -4300,8 +4301,9 @@ if   [ "$first_option" == "expert-compile-obash" ]; then
 echo "$title_md [ $first_option ] [  optionally ] [ howto compile bash script with obash ] "
 echo "$title_md Compile /usr/bin/fwiptables-cmd in /usr/bin/fwiptables-bin"
 if [ "$command_obash" == "$NULL" ]; then echo "$title_md install obash to compile"; exit ; fi
-$command_obash -c -o $directory_installed/$file_installed.bin $directory_installed/$file_installed
-echo "$text_md"
+if [ "$command_uuid" == "$NULL" ]; then echo "$title_md install uuid to compile"; exit ; fi
+$command_obash -r -c -o $directory_installed/$file_installed.bin $directory_installed/$file_installed
+echo "$title then:"
 file -L $directory_installed/$file_installed
 file -L $directory_installed/$file_installed.bin
 exit; fi
