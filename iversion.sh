@@ -1045,6 +1045,10 @@ exit; fi
 #### :rutina-inicial-expert-wpa-new:
 ####
 ####
+if [ "$first_option" == "expert-wpa-new" ]
+then first_option="expert-txtwpa-new"; fi
+####
+####
 if [ "$first_option" == "expert-txtwpa-new" ]; then
 if [ "$command_wpa_passphrase" == "$NULL" ]
 then echo "$title_md [ fail ] Install wpa_passphrase"; exit; fi
@@ -1054,8 +1058,9 @@ if [ "$second_option" == "$NULL" ]; then
 echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
 ####
 ####
-cp $directory_wpa/default_wpa $directory_wpa/wpa_$second_option
-editor $directory_wpa/wpa_$second_option
+$cmd_realpath expert-wpa-regen
+cp $directory_wpa/defaultwpa $directory_wpa/wpaconfig_$second_option
+editor $directory_wpa/wpaconfig_$second_option
 exit; fi
 ####
 ####
@@ -1068,12 +1073,113 @@ if [ "$second_option" == "$NULL" ]; then
 echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
 ####
 ####
-cp $directory_wpa/default_wpa $directory_wpa/wpa_$second_option
-editor $directory_wpa/wpa_$second_option
+$cmd_realpath expert-wpa-regen
+cp $directory_wpa/defaultwpa $directory_wpa/wpaconfig_$second_option
+editor $directory_wpa/wpaconfig_$second_option
 exit; fi
 ####
 ####
-#### :rutina-inicial-expert-wpa-regen:
+#### :rutina-inicial-expert-wpa-new:
+##########    english: expert-wpa-modify: example from a file wpa_supplicant   ##########
+##########    spanish: expert-wpa-modify: ejemplo de un archivo wpa_supplicant ##########
+#### :rutina-inicial-expert-wpa-modify:
+####
+####
+if [ "$first_option" == "expert-wpa-modify" ]
+then first_option="expert-txtwpa-modify"; fi
+####
+####
+if [ "$first_option" == "expert-txtwpa-modify" ]; then
+if [ "$command_wpa_passphrase" == "$NULL" ]
+then echo "$title_md [ fail ] Install wpa_passphrase"; exit; fi
+if [ "$command_wpa_supplicant" == "$NULL" ]
+then echo "$title_md [ fail ] Install wpa_passphrase"; exit; fi
+if [ "$second_option" == "$NULL" ]; then 
+echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
+####
+####
+editor $directory_wpa/wpaconfig_$second_option
+exit; fi
+####
+####
+if [ "$first_option" == "expert-guiwpa-modify" ]; then
+if [ "$command_wpa_passphrase" == "$NULL" ]
+then echo "$title_md [ fail ] Install wpa_passphrase"; exit; fi
+if [ "$command_wpa_supplicant" == "$NULL" ]
+then echo "$title_md [ fail ] Install wpa_passphrase"; exit; fi
+if [ "$second_option" == "$NULL" ]; then 
+echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
+####
+####
+editor $directory_wpa/wpaconfig_$second_option
+exit; fi
+####
+####
+#### :rutina-inicial-expert-wpa-modify:
+##########    english: expert-wpa-list: example from a file wpa_supplicant   ##########
+##########    spanish: expert-wpa-list: ejemplo de un archivo wpa_supplicant ##########
+#### :rutina-inicial-expert-wpa-list:
+####
+####
+if [ "$first_option" == "expert-wpa-list" ]
+then ls "$directory_wpa" ; exit ; fi
+####
+####
+#### :rutina-inicial-expert-wpa-list:
+##########    english: expert-wpa-show: example from a file wpa_supplicant   ##########
+##########    spanish: expert-wpa-show: ejemplo de un archivo wpa_supplicant ##########
+#### :rutina-inicial-expert-wpa-show:
+####
+####
+if [ "$first_option" == "expert-wpa-show" ]; then
+####
+####
+if [ "$second_option" == "$NULL" ]
+ls "$directory_wpa"
+then echo "$title_md [ info ] use: $first_option nameconfig"; exit ; fi
+####
+####
+if [ -f "$directory_wpa/wpaconfig_$second_option" ]; then
+echo "$title_md wpa config:"
+cat "$directory_wpa/wpaconfig_$second_option"
+echo "$title_md wpa connect:"
+cat "$directory_wpa/wpaconnect_$second_option"
+else echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
+exit; fi
+####
+####
+#### :rutina-inicial-expert-wpa-show:
+##########    english: expert-wpa-connect: example from a file wpa_supplicant   ##########
+##########    spanish: expert-wpa-connect: ejemplo de un archivo wpa_supplicant ##########
+#### :rutina-inicial-expert-wpa-connect:
+####
+####
+if [ "$first_option" == "expert-wpa-connect" ]; then
+####
+####
+if [ "$command_wpa_passphrase" == "$NULL" ]
+then echo "$title_md [ fail ] Install wpa_passphrase"; exit; fi
+if [ "$command_wpa_supplicant" == "$NULL" ]
+then echo "$title_md [ fail ] Install wpa_passphrase"; exit; fi
+if [ "$second_option" == "$NULL" ]
+then echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
+####
+####
+if [ -f "$directory_wpa/wpaconfig_$second_option" ]
+####
+then source $directory_wpa/wpaconfig_$second_option
+$command_wpa_passphrase $wifi_wpa_ssid $wifi_wpa_password \
+&> $directory_wpa/wpaconnect_$second_option
+$command_wpa_supplicant -D nl80211 -i $wifi_wpa_device -c \
+$directory_wpa/wpaconnect_$second_option
+if [ "$(command -v $wifi_wpa_dhcp)" == "$NULL" ]
+then echo "$title_md [ fail ] bad dhcp client"; exit; fi
+####
+else echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
+exit; fi
+####
+####
+#### :rutina-inicial-expert-wpa-connect:
 ##########    english: expert-wpa-regen: example from a file wpa_supplicant   ##########
 ##########    spanish: expert-wpa-regen: ejemplo de un archivo wpa_supplicant ##########
 #### :rutina-inicial-expert-wpa-regen:
@@ -1082,7 +1188,7 @@ if [ "$command_wpa_passphrase" == "$NULL" ]; then echo "$title_md [ fail ] Insta
 if [ "$command_wpa_supplicant" == "$NULL" ]; then echo "$title_md [ fail ] Install wpa_passphrase"; fi
 ####
 ####
-$cmd_realpath expert-wpa-example &> $directory_wpa/default_wpa
+$cmd_realpath expert-wpa-example &> $directory_wpa/defaultwpa
 exit; fi
 ####
 ####
@@ -1093,14 +1199,11 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "expert-wpa-example" ]; then
-if [ "$command_wpa_passphrase" == "$NULL" ]; then echo "$title_md [ fail ] Install wpa_passphrase"; fi
-if [ "$command_wpa_supplicant" == "$NULL" ]; then echo "$title_md [ fail ] Install wpa_passphrase"; fi
-####
-####
 echo "$title_md necesary to get wifi access"
-echo "wifi_wpa_ssid=              # wifi name:       type name for wireless net"
-echo "wifi_wpa_password=          # wifi password:   type password to wireless"
-echo "wifi_wpa_dhcp=              # wifi ip dinamic: let it to void or type no"
+echo "wifi_wpa_device=		                  # wifi device:     type wifi device"
+echo "wifi_wpa_ssid=                              # wifi net:        type name for wireless net"
+echo "wifi_wpa_password=                          # wifi password:   type password to wireless"
+echo "wifi_wpa_dhcp=/usr/bin/dhclient-script      # wifi ip dinamic: program for dhcp"
 exit; fi
 ####
 ####
