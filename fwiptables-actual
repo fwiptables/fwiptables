@@ -1040,6 +1040,37 @@ exit; fi
 ####
 ####
 #### :rutina-final-without-first-option:
+##########    english: expert-wpa-regen: example from a file wpa_supplicant   ##########
+##########    spanish: expert-wpa-regen: ejemplo de un archivo wpa_supplicant ##########
+#### :rutina-inicial-expert-wpa-regen:
+if [ "$first_option" == "expert-wpa-regen" ]; then
+if [ "$command_wpa_passphrase" == "$NULL" ]; then echo "$title_md [ fail ] Install wpa_passphrase"; fi
+if [ "$command_wpa_supplicant" == "$NULL" ]; then echo "$title_md [ fail ] Install wpa_passphrase"; fi
+####
+####
+$cmd_realpath expert-wpa-example &> $directory_wpa/default_wpa
+exit; fi
+####
+####
+#### :rutina-inicial-expert-wpa-regen:
+##########    english: expert-wpa-example: example from a file wpa_supplicant   ##########
+##########    spanish: expert-wpa-example: ejemplo de un archivo wpa_supplicant ##########
+#### :rutina-inicial-expert-wpa-example:
+####
+####
+if [ "$first_option" == "expert-wpa-example" ]; then
+if [ "$command_wpa_passphrase" == "$NULL" ]; then echo "$title_md [ fail ] Install wpa_passphrase"; fi
+if [ "$command_wpa_supplicant" == "$NULL" ]; then echo "$title_md [ fail ] Install wpa_passphrase"; fi
+####
+####
+echo "$title_md necesary to get wifi access"
+echo "wifi_wpa_ssid=              # wifi name:       type name for wireless net"
+echo "wifi_wpa_password=          # wifi password:   type password to wireless"
+echo "wifi_wpa_dhcp=              # wifi ip dinamic: let it to void or type no"
+exit; fi
+####
+####
+#### :rutina-inicial-expert-wpa-example:
 ##########    english: preferences-modify: modify preferences   ##########
 ##########    spanish: preferences-modify: modify preferences   ##########
 #### :rutina-inicial-preferences-modify:
