@@ -372,8 +372,9 @@ command_uuid="$(command -v uuid)"
 directory_fwrecover="$directory_data/fwiptables-fwrecover"
 directory_default="$directory_data/fwiptables-default"
 directory_config="$directory_data/fwiptables-config"
-directory_log="$directory_data/fwiptables-log"
 directory_shell="$directory_data/fwiptables-shell"
+directory_log="$directory_data/fwiptables-log"
+directory_wpa="$directory_data/fwiptables-wpa"
 ####
 ####
 #### english: templates cfg
@@ -441,13 +442,14 @@ output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-
 command_mkdir="$(command -v mkdir)"
 ####
 ####
-if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
-if [ ! -d "$directory_data" ]; then $command_mkdir -p $directory_data &> /dev/null ; fi
-if [ ! -d "$directory_config" ]; then $command_mkdir -p "$directory_config" &> /dev/null ; fi
 if [ ! -d "$directory_fwrecover" ]; then $command_mkdir -p "$directory_fwrecover" &> /dev/null ; fi
+if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
 if [ ! -d "$directory_default" ]; then $command_mkdir -p "$directory_default" &> /dev/null ; fi
-if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/null ; fi
+if [ ! -d "$directory_config" ]; then $command_mkdir -p "$directory_config" &> /dev/null ; fi
 if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
+if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/null ; fi
+if [ ! -d "$directory_data" ]; then $command_mkdir -p $directory_data &> /dev/null ; fi
+if [ ! -d "$directory_wpa" ]; then $command_mkdir -p "$directory_wpa" &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-dir-sane:
@@ -2465,6 +2467,8 @@ echo "$text_md expert-compile-obash . Compile fwiptables-cmd to fwiptables-bin w
 echo "$text_md expert-upgrade-stable . Upgrade from web sourceforge fwiptables-cmd with curl"
 echo "$text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables-cmd with curl"
 echo "$text_md expert-download-adblock . Download four files of blacklist hosts to /etc/hosts.blacklist"
+echo "$text_md expert-wpa-create . nameconfig to create wifi config"
+echo "$text_md expert-wpa-connect . nameconfig to connect wifi config"
 echo "$text_md expert-pc-halt . halt computer"
 echo "$text_md expert-pc-shutdown . shutdown computer"
 echo "$text_md expert-pc-reboot . reboot computer"
