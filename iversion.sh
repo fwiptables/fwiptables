@@ -1122,7 +1122,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "expert-wpa-list" ]
-then ls "$directory_wpa" ; exit ; fi
+then ls -1 "$directory_wpa" | cut -d "_" -f 2-
+exit ; fi
 ####
 ####
 #### :rutina-inicial-expert-wpa-list:
@@ -1166,15 +1167,16 @@ then echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
 ####
 ####
 if [ -f "$directory_wpa/wpaconfig_$second_option" ]
-####
 then source $directory_wpa/wpaconfig_$second_option
+####
+####
 $command_wpa_passphrase $wifi_wpa_ssid $wifi_wpa_password \
 &> $directory_wpa/wpaconnect_$second_option
-$command_wpa_supplicant -D nl80211 -i $wifi_wpa_device -c \
-$directory_wpa/wpaconnect_$second_option
+$command_wpa_supplicant -D $wifi_wpa_driver -i $wifi_wpa_device -c \
+"$directory_wpa/wpaconnect_$second_option" &
+$command_ifconfig $wifi_wpa_device:1 $wifi_wpa_ip
 if [ "$(command -v $wifi_wpa_dhcp)" == "$NULL" ]
-then echo "$title_md [ fail ] bad dhcp client"; exit; fi
-####
+then echo "$title_md [ fail ] $wifi_wpa_dhcp not found"; exit; fi
 else echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
 exit; fi
 ####
@@ -1199,11 +1201,19 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "expert-wpa-example" ]; then
-echo "$title_md necesary to get wifi access"
-echo "wifi_wpa_device=		                  # wifi device:     type wifi device"
-echo "wifi_wpa_ssid=                              # wifi net:        type name for wireless net"
-echo "wifi_wpa_password=                          # wifi password:   type password to wireless"
-echo "wifi_wpa_dhcp=/usr/bin/dhclient-script      # wifi ip dinamic: program for dhcp"
+echo "$title_md data necesary to get wifi access"
+echo "wifi_wpa_driver=nl80211"
+echo "$title_md wifi driver:     nl80211 or wext"
+echo "wifi_wpa_device=wlan0"
+echo "$title_md wifi device:     type wifi device"
+echo "wifi_wpa_ssid=none"
+echo "$title_md wifi net:        type name for wireless net"
+echo "wifi_wpa_password=none"
+echo "$title_md wifi password:   type password to wireless"
+echo "wifi_wpa_dhcp="
+echo "$title_md wifi ip dinamic: if program for dhcp"
+echo "wifi_wpa_ip="
+echo "$title_md wifi ip static:  if choose one static ip for this net"
 exit; fi
 ####
 ####
@@ -5078,8 +5088,8 @@ $favorite_graphicall_dialog  --forms \
 #### 
 #### 
 "modify-config")
-if [ -f "$directory_config/$third_option" ] ; then $nada
-else $favorite_graphicall_dialog  --forms \
+if [ ! -f "$directory_config/$third_option" ]
+then $favorite_graphicall_dialog  --forms \
 --width=$graphicall_width --height=$graphicall_height \
 --text="file not found: $third_option" ; exit ; fi 
 cp "$directory_config/$third_option" "$directory_temporal/$file_installed-$third_option"
@@ -5095,6 +5105,34 @@ else cp "$directory_temporal/$file_installed-$third_option" "$directory_config/$
 $favorite_graphicall_dialog --forms \
 --width=$graphicall_width --height=$graphicall_height \
 --text="Canceled. file: $third_option"; fi
+;;
+####
+####
+"expert-wpa-new")
+$cmd_realpath expert-wpa-regen
+cp $directory_wpa/defaultwpa $directory_wpa/wpaconfig_$third_option
+$cmd_realpath gui expert-wpa-modify $third_option
+;;
+####
+####
+"expert-wpa-modify")
+if [ ! -f "$directory_wpa/wpaconfig_$third_option" ]
+then $favorite_graphicall_dialog  --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="file not found: wpaconfig_$third_option" ; exit ; fi 
+cp "$directory_wpa/wpaconfig_$third_option" "$directory_temporal/$file_installed-$third_option"
+$favorite_graphicall_dialog  --text-info \
+--width=$graphicall_width --height=$graphicall_height \
+--filename="$directory_temporal/$file_installed-$third_option" \
+--editable --title="MODIFY CONFIG" 1> "$directory_wpa/wpaconfig_$third_option"
+if [ -s "$directory_wpa/wpaconfig_$third_option" ]; then  
+$favorite_graphicall_dialog  --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="OK. file: $third_option"
+else cp "$directory_temporal/$file_installed-$third_option" "$directory_wpa/wpaconfig_$third_option"
+$favorite_graphicall_dialog --forms \
+--width=$graphicall_width --height=$graphicall_height \
+--text="Canceled. file: wpaconfig_$third_option"; fi
 ;;
 ####
 ####
