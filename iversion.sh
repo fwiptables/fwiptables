@@ -1136,14 +1136,12 @@ if [ "$first_option" == "expert-wpa-show" ]; then
 ####
 ####
 if [ "$second_option" == "$NULL" ]
-ls "$directory_wpa"
-then echo "$title_md [ info ] use: $first_option nameconfig"; exit ; fi
-####
-####
+then $cmd_realpath expert-wpa-list
+echo "$title_md [ info ] use: $first_option nameconfig" ; exit ; fi
 if [ -f "$directory_wpa/wpaconfig_$second_option" ]; then
-echo "$title_md wpa config:"
+echo "$title_md $title_md $title_md $title_md wpa config_:"
 cat "$directory_wpa/wpaconfig_$second_option"
-echo "$title_md wpa connect:"
+echo "$title_md $title_md $title_md $title_md wpa connect_:"
 cat "$directory_wpa/wpaconnect_$second_option"
 else echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
 exit; fi
