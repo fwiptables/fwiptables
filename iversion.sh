@@ -1602,7 +1602,7 @@ exit ; fi
 ####
 if [ "$first_option" == "ver" ]; then 
 echo "$title_md [ $first_option ] [ Show version about ] [ ver.md ]       "    
-echo "$text_md [ info ] [ program ] $cmd_realpath With Version $cmd_version       "     
+echo "$text_md [ info ] [ Program ] $cmd_realpath With Version $cmd_version       "     
 echo "$text_md [ info ] [ Details ] $cmd_shortdescription | $cmd_longdescription  "    
 echo "$text_md [ info ] [ Binary file     ] $cmd_realpath                         "   
 echo "$text_md [ info ] [ Data directory  ] $directory_data                       "     
@@ -4492,9 +4492,10 @@ echo "$title_md Install curl to show stable latest version"; fi
 ####
 ####
 echo "$title_md Show the fwiptables stable latest"
+echo "$title_md show the last stable is:"
 descarga="$directory_log/fwiptables-cmd"
-$command_curl $web_download_sourceforge -s -L -o $descarga &\
-echo "$title_md show stable is $descarga"
+$command_curl $web_download_sourceforge -s -L -o $descarga \
+&& chmod ugo+x $descarga && $descarga version | $command_grep -E -i "program|details"
 exit; fi
 ####
 ####
