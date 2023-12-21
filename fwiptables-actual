@@ -44,7 +44,7 @@
 #####################################################################################
 ####
 ####
-####     #### english: stablished the path        #### spanish: establece el path
+####     #### english: stablished the path  #### spanish: establece el path
 ####
 ####
 source /etc/profile
@@ -1028,7 +1028,7 @@ exit; fi
 ####
 #### :rutina-final-autolog:
 ##########     with first option
-##########     siin primera opcion
+##########     sin primera opcion
 #### :rutina-inicial-without-first-option:
 ####
 #### to launch graphicall if X
@@ -1299,16 +1299,16 @@ echo "$title_md Example4: speed-ip4 | Example5: sockets | Example6: gui-roll"
 echo "$title_md Example7: gui-menu-yad | Example8: gui-shell-yad"
 echo "$title_md"
 echo "$title_md # default firewall"
-echo "allow_use_legacy=                                   ## void or no"
-echo "allow_use_nft=no                                    ## void or no"
-echo "allow_use_ipv4=                                     ## void or no"
-echo "allow_use_ipv6=no                                   ## void or no"
-echo "allow_separate_rules=                               ## void or no"
-echo "config_close_deny=DROP                              ## DROP or REJECT"
+echo "allow_use_legacy=                                   ## or void or no"
+echo "allow_use_nft=no                                    ## or void or no"
+echo "allow_use_ipv4=                                     ## or void or no"
+echo "allow_use_ipv6=no                                   ## or void or no"
+echo "allow_separate_rules=                               ## or void or no"
+echo "config_close_deny=DROP                              ## or DROP or REJECT"
 echo "$title_md"
 echo "$title_md # default log"
-echo "allow_save_autolog=no                               ## void or no"
-echo "allow_show_time=no                                  ## void or no"
+echo "allow_save_autolog=no                               ## or void or no"
+echo "allow_show_time=no                                  ## or void or no"
 echo "$title_md"  
 echo "$title_md # default programs"
 echo "favorite_text_editor=                               ## or void for automatic or specify command"
@@ -1346,7 +1346,8 @@ if [ "$first_option" == "ip4" ]; then
 echo "$title_md [ $first_option ]  [ show info about net ip4 ] [ ip4.md ]"
 echo
 echo "$title_md [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
-if [ "$command_ip" == "$NULL" ] ; then echo "$text_md [ info ] [ install ip command ]"
+if [ "$command_ip" == "$NULL" ]
+then echo "$text_md [ info ] [ install ip command ]"
 else $command_ip -4 route ; fi
 echo
 echo "$title_md [ info ] ### [ Network Listen ] ###"
@@ -1378,7 +1379,8 @@ then echo "$text_md [ info ] Without proxy in export variables"
 else $command_sudo -u root bash -c export | grep "_PROXY" ; fi
 echo
 echo "$title_md [ info ] ### [ Domain resolve ] [ nameserver and search ] ###"
-if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
+if [ -f /etc/resolv.conf ]
+then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"
 cat /etc/resolv.conf | $command_grep -E "nameserver|search"      ; fi
 if [ -f /etc/resolv.conf.head ]
 then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
@@ -1401,7 +1403,8 @@ if [ "$first_option" == "ip6" ]; then
 echo "$title_md [ $first_option ]  [ show info about net ip6 ] [ ip6.md ] "
 echo
 echo "$title_md [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
-if [ "$command_ip" == "$NULL" ] ; then echo "$text_md [ info ] \
+if [ "$command_ip" == "$NULL" ]
+then echo "$text_md [ info ] \
 [ install ip command ]"
 else $command_ip -6 route ; fi
 echo
@@ -1417,8 +1420,8 @@ $command_cut -d "/" -f 1 ; fi
 echo
 echo "$title_md [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" == "$NULL" ]
-then echo "$text_md [ info ] [ install curl command ]" ; else
-public_ip6="$($command_timeout -s SIGINT -v 8  $command_curl \
+then echo "$text_md [ info ] [ install curl command ]"
+else public_ip6="$($command_timeout -s SIGINT -v 8  $command_curl \
 --noproxy '*' -k -s -6 $serverip_discover_ipv6 -w "\n"| head -1)"
 if [ "$public_ip6" == "<!DOCTYPE html>" ]
 then echo "fail: public ip hidden for dns server" ;
@@ -1498,14 +1501,22 @@ echo "$title_md [ $first_option ] [ List examples ] [ examples md ] "
 echo "$text_md"
 echo "$title_md [ several examples *without optional otuput* ]   "
 echo "$text_md"
-echo "$text_md    $cmd_realpath names                    |  List firewall saved                        "
-echo "$text_md    $cmd_realpath names-config             |  List configs saved                         "
-echo "$text_md    $cmd_realpath speed-ip4                |  get info about speed with internet ipv4    "
-echo "$text_md    $cmd_realpath sockets                  |  show info about listen sockets             "
-echo "$text_md    $cmd_realpath preferences-modify       |  modify default variables                   "
-echo "$text_md    $cmd_realpath autolog                  |  List last optiosn with $cmd_realpath           "
-echo "$text_md    $cmd_realpath depends                  |  depends to $cmd_realpath                       "
-echo "$text_md    $cmd_realpath about                    |  about from $cmd_realpath                     "
+echo "$text_md    $cmd_realpath names                    | \
+List firewall saved  "
+echo "$text_md    $cmd_realpath names-config             | \
+List configs saved                         "
+echo "$text_md    $cmd_realpath speed-ip4                | \
+get info about speed with internet ipv4    "
+echo "$text_md    $cmd_realpath sockets                  | \
+show info about listen sockets             "
+echo "$text_md    $cmd_realpath preferences-modify       | \
+modify default variables                   "
+echo "$text_md    $cmd_realpath autolog                  | \
+List last optiosn with $cmd_realpath           "
+echo "$text_md    $cmd_realpath depends                  | \
+depends to $cmd_realpath                       "
+echo "$text_md    $cmd_realpath about                    | \
+about from $cmd_realpath                     "
 echo "$text_md"
 echo "$title_md [ several examples *with optional output* ]      "
 echo "$text_md"
