@@ -27,8 +27,8 @@
 ####
 ####
 ####                 ## fwiptables license in source program
-####   English: This program has gpl license GPL v2, this program is copyleft, it is free.
-####   Spanish: Este programa tiene licencia GPL v2, este programa es copyleft, esto es libre.
+####   English: This program has gpl license GPL v2
+####   Spanish: Este programa tiene licencia GPL v2
 ####
 ####
 ####                 ## fwiptables comments in source program
@@ -83,8 +83,10 @@ command_iptables_legacy="$(command -v iptables-legacy)"
 command_iptables_nft="$(command -v iptables-nft)"
 ####
 ####
-if [ "$command_iptables_legacy" == "$NULL" ] || [ "$command_iptables_nft" == "$NULL" ];
-then echo ; echo ; echo "### [ fail ] [ fwiptables needs to work iptables legacy/nft ]"
+if [ "$command_iptables_legacy" == "$NULL" ] || \
+[ "$command_iptables_nft" == "$NULL" ];
+then echo ; echo ; 
+echo "### [ fail ] [ fwiptables needs to work iptables legacy/nft ]"
 echo ; fi
 ####
 ####
@@ -411,8 +413,11 @@ default_autolog="$directory_log/default_autolog"
 #### spanish: directorio temporal
 ####
 ####
-if [ -d "/run" ]; then mkdir /run/fwiptables &> /dev/null ; directory_cache="/run/fwiptables"; fi
-if [ ! -d "/run" ]; then directory_cache="$default_root_home/.cache/fwiptables" ; fi
+if [ -d "/run" ]; then mkdir /run/fwiptables &> /dev/null
+directory_cache="/run/fwiptables"; fi
+if [ ! -d "/run" ]
+then directory_cache="$default_root_home/.cache/fwiptables"
+fi
 ####
 ####
 #### 
@@ -1157,11 +1162,14 @@ if [ "$first_option" == "expert-wpa-connect" ]; then
 ####
 ####
 if [ "$command_wpa_passphrase" == "$NULL" ]
-then echo "$title_md [ fail ] Install wpa_passphrase"; exit; fi
+then echo "$title_md [ fail ] Install wpa_passphrase"
+exit; fi
 if [ "$command_wpa_supplicant" == "$NULL" ]
-then echo "$title_md [ fail ] Install wpa_passphrase"; exit; fi
+then echo "$title_md [ fail ] Install wpa_passphrase"
+exit; fi
 if [ "$second_option" == "$NULL" ]
-then echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
+then echo "$title_md [ fail ] use: $first_option nameconfig"
+exit ; fi
 ####
 ####
 if [ -f "$directory_wpa/wpaconfig_$second_option" ]
@@ -1184,8 +1192,10 @@ exit; fi
 ##########    spanish: expert-wpa-regen: ejemplo de un archivo wpa_supplicant ##########
 #### :rutina-inicial-expert-wpa-regen:
 if [ "$first_option" == "expert-wpa-regen" ]; then
-if [ "$command_wpa_passphrase" == "$NULL" ]; then echo "$title_md [ fail ] Install wpa_passphrase"; fi
-if [ "$command_wpa_supplicant" == "$NULL" ]; then echo "$title_md [ fail ] Install wpa_passphrase"; fi
+if [ "$command_wpa_passphrase" == "$NULL" ]
+then echo "$title_md [ fail ] Install wpa_passphrase"; fi
+if [ "$command_wpa_supplicant" == "$NULL" ]
+then echo "$title_md [ fail ] Install wpa_passphrase"; fi
 ####
 ####
 $cmd_realpath expert-wpa-example &> $directory_wpa/defaultwpa
@@ -1262,7 +1272,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "preferences-regen" ] ; then
-echo "$title_md [ $first_option ] [ $cmd_realpath preferences-regen ] [ preferences-regen.md ] "
+echo "$title_md [ $first_option ] [ $cmd_realpath preferences-regen ] \
+[ preferences-regen.md ] "
 rm $default_preferences
 echo "$title_md [ _ok_ ] [ $cmd_realpath deleted old configs ]"
 file $cmd_realpath
@@ -1339,17 +1350,22 @@ if [ "$command_ip" == "$NULL" ] ; then echo "$text_md [ info ] [ install ip comm
 else $command_ip -4 route ; fi
 echo
 echo "$title_md [ info ] ### [ Network Listen ] ###"
-$cmd_realpath sockets | $command_grep -iv ^# | $command_grep LISTEN
+$cmd_realpath sockets | $command_grep -iv ^#
 echo
 echo "$title_md [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
-if [ "$command_ip" == "$NULL" ] ; then echo "$title_md [ info ] [ install ip command ]"
-else  $command_ip -4 address | $command_grep -i  inet | $command_grep -iv 127.0.0.1 | $command_sed 's/inet//g' | $command_cut -d "/" -f 1 ; fi
+if [ "$command_ip" == "$NULL" ]
+then echo "$title_md [ info ] [ install ip command ]"
+else  $command_ip -4 address | $command_grep -i  inet | \
+$command_grep -iv 127.0.0.1 | $command_sed 's/inet//g' | \
+$command_cut -d "/" -f 1 ; fi
 echo
 echo "$title_md [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
-if [ "$command_curl" == "$NULL" ] ; then echo "$title_md [ info ] [ install curl command ]" ; else
-public_ip4="$($command_timeout -s SIGINT -v 8  $command_curl --noproxy '*' -k -s -4 \
-$serverip_discover_ipv4 -w "\n"| head -1)"
-if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
+if [ "$command_curl" == "$NULL" ]
+then echo "$title_md [ info ] [ install curl command ]" ; else
+public_ip4="$($command_timeout -s SIGINT -v 8  $command_curl \
+--noproxy '*' -k -s -4 $serverip_discover_ipv4 -w "\n"| head -1)"
+if [ "$public_ip4" == "<!DOCTYPE html>" ]
+then echo "fail: public ip hidden for dns server" ;
 else echo "$text_md   $public_ip4"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
@@ -1361,13 +1377,17 @@ if [ "$listado_proxy" -eq "0" ];
 then echo "$text_md [ info ] Without proxy in export variables"
 else $command_sudo -u root bash -c export | grep "_PROXY" ; fi
 echo
-echo "$title_md [ info ] ### [ Domain resolve ] [ Resolv.conf ] [ nameserver and search ] ###"
+echo "$title_md [ info ] ### [ Domain resolve ] [ nameserver and search ] ###"
 if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
 cat /etc/resolv.conf | $command_grep -E "nameserver|search"      ; fi
-if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
-if [ -f /etc/resolv.conf.body ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.body ]"; fi
-if [ -f /etc/resolv.conf.tail ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
-if [ -d /etc/resolvconf ];       then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
+if [ -f /etc/resolv.conf.head ]
+then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
+if [ -f /etc/resolv.conf.body ]
+then echo "$title_md [ yes file ]      [ /etc/resolv.conf.body ]"; fi
+if [ -f /etc/resolv.conf.tail ]
+then echo "$title_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
+if [ -d /etc/resolvconf ]
+then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
 exit; fi
 ####
 ####
@@ -1381,21 +1401,27 @@ if [ "$first_option" == "ip6" ]; then
 echo "$title_md [ $first_option ]  [ show info about net ip6 ] [ ip6.md ] "
 echo
 echo "$title_md [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
-if [ "$command_ip" == "$NULL" ] ; then echo "$text_md [ info ] [ install ip command ]"
+if [ "$command_ip" == "$NULL" ] ; then echo "$text_md [ info ] \
+[ install ip command ]"
 else $command_ip -6 route ; fi
 echo
 echo "$title_md [ info ] ### [ Network Listen ] ###"
-$cmd_realpath sockets | $command_grep -iv ^# | $command_grep LISTEN
+$cmd_realpath sockets | $command_grep -iv ^# 
 echo
 echo "$title_md [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
-if [ "$command_ip" == "$NULL" ] ; then echo "$text_md [ info ] [ install ip command ]"
-else  $command_ip -6 address | $command_grep -i  inet | $command_grep -iv  "inet6 ::1" | $command_sed 's/inet6//g' | $command_cut -d "/" -f 1 ; fi
+if [ "$command_ip" == "$NULL" ]
+then echo "$text_md [ info ] [ install ip command ]"
+else  $command_ip -6 address | $command_grep -i  inet | \
+$command_grep -iv  "inet6 ::1" | $command_sed 's/inet6//g' | \
+$command_cut -d "/" -f 1 ; fi
 echo
 echo "$title_md [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
-if [ "$command_curl" == "$NULL" ] ; then echo "$text_md [ info ] [ install curl command ]" ; else
-public_ip6="$($command_timeout -s SIGINT -v 8  $command_curl --noproxy '*' -k -s -6 \
-$serverip_discover_ipv6 -w "\n"| head -1)"
-if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
+if [ "$command_curl" == "$NULL" ]
+then echo "$text_md [ info ] [ install curl command ]" ; else
+public_ip6="$($command_timeout -s SIGINT -v 8  $command_curl \
+--noproxy '*' -k -s -6 $serverip_discover_ipv6 -w "\n"| head -1)"
+if [ "$public_ip6" == "<!DOCTYPE html>" ]
+then echo "fail: public ip hidden for dns server" ;
 else echo "$text_md   $public_ip6"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
@@ -1408,12 +1434,17 @@ then echo "$text_md [ info ] Without proxy in export variables"
 else $command_sudo -u root bash -c export | grep "_PROXY" ; fi
 echo
 echo "$title_md [ info ] ### [ Domain resolve ] [ Resolv.conf ] ###"
-if [ -f /etc/resolv.conf ]     ; then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
+if [ -f /etc/resolv.conf ]
+then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
 cat /etc/resolv.conf | $command_grep -E "nameserver|search"      ; fi
-if [ -f /etc/resolv.conf.head ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
-if [ -f /etc/resolv.conf.body ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.body ]"; fi
-if [ -f /etc/resolv.conf.tail ]; then echo "$title_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
-if [ -d /etc/resolvconf ];       then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
+if [ -f /etc/resolv.conf.head ]
+then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
+if [ -f /etc/resolv.conf.body ]
+then echo "$title_md [ yes file ]      [ /etc/resolv.conf.body ]"; fi
+if [ -f /etc/resolv.conf.tail ]
+then echo "$title_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
+if [ -d /etc/resolvconf ]
+then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
 exit; fi
 ####
 ####
@@ -1449,9 +1480,9 @@ echo "$text_md arptables:               $command_arptables"
 echo "$text_md ebtables:                $command_ebtables"
 echo
 echo "$title_md [ Automatic favorites ]"
-echo "$text_md Automatic text editor:    Text editor command      :   $favorite_text_editor"
-echo "$text_md Automatic text browser:   Text browser command     :   $favorite_text_browser"
-echo "$text_md Automatic text date:      rdate or sntp or ntpdate :   $favorite_date_command"
+echo "$text_md Automatic text editor:   $favorite_text_editor"
+echo "$text_md Automatic text browser:  $favorite_text_browser"
+echo "$text_md Automatic text date:     $favorite_date_command"
 echo 
 exit; fi
 ####
@@ -1465,7 +1496,7 @@ exit; fi
 if [ "$first_option" == "options-examples" ]; then
 echo "$title_md [ $first_option ] [ List examples ] [ examples md ] "
 echo "$text_md"
-echo "$title_md                        [ several examples *without optional otuput* ]              "
+echo "$title_md [ several examples *without optional otuput* ]   "
 echo "$text_md"
 echo "$text_md    $cmd_realpath names                    |  List firewall saved                        "
 echo "$text_md    $cmd_realpath names-config             |  List configs saved                         "
@@ -1476,19 +1507,27 @@ echo "$text_md    $cmd_realpath autolog                  |  List last optiosn wi
 echo "$text_md    $cmd_realpath depends                  |  depends to $cmd_realpath                       "
 echo "$text_md    $cmd_realpath about                    |  about from $cmd_realpath                     "
 echo "$text_md"
-echo "$title_md                        [ several examples *with optional output* ]                 "
+echo "$title_md [ several examples *with optional output* ]      "
 echo "$text_md"
-echo "$text_md        [ with optional output ]                  [ Example Description ]            "
+echo "$text_md        [ with optional output ] [ Example Description ]  "
 echo "$text_md"
-echo "$text_md    $cmd_realpath -silent client-web       |  Launch client web firewall a null output "
-echo "$text_md    $cmd_realpath -txt list                |  List iptables rules with output txt      "
-echo "$text_md    $cmd_realpath -cli-wiptail names       |  List firewall with output cli whiptail   "
-echo "$text_md    $cmd_realpath -gui-yad sockets         |  List sockets ip with output gui yad      "
+echo "$text_md    $cmd_realpath -silent client-web       |  \
+Launch client web firewall a null output "
+echo "$text_md    $cmd_realpath -txt list                |  \
+List iptables rules with output txt      "
+echo "$text_md    $cmd_realpath -cli-wiptail names       |  \
+List firewall with output cli whiptail   "
+echo "$text_md    $cmd_realpath -gui-yad sockets         |  \
+List sockets ip with output gui yad      "
 echo "$text_md"
-echo "$text_md    $cmd_realpath -cli-menu-dialog         |  All options in text menu                 "
-echo "$text_md    $cmd_realpath -gui-menu-yad            |  All options in window menu               "
-echo "$text_md    $cmd_realpath -gui-roll-zenity         |  All options in window roll               "
-echo "$text_md    $cmd_realpath -gui-shell-yad           |  All options in window shell              "
+echo "$text_md    $cmd_realpath -cli-menu-dialog         |  \
+All options in text menu                 "
+echo "$text_md    $cmd_realpath -gui-menu-yad            |  \
+All options in window menu               "
+echo "$text_md    $cmd_realpath -gui-roll-zenity         |  \
+All options in window roll               "
+echo "$text_md    $cmd_realpath -gui-shell-yad           |  \
+All options in window shell              "
 echo "$text_md"
 exit; fi
 ####
@@ -1512,10 +1551,10 @@ echo "$title_md [ Version program ]"
 echo "$text_md $cmd_version"
 echo
 echo "$title_md [ File format ]"
-echo  "$text_md" "$($command_file $cmd_realpath  )"
+echo "$text_md" "$($command_file $cmd_realpath  )"
 echo
 echo "$title_md [ MD5 sum ]"
-echo  "$text_md" "$($command_md5sum $cmd_realpath)"
+echo "$text_md" "$($command_md5sum $cmd_realpath)"
 echo
 echo "$title_md [ Launched program ]"
 echo "$text_md $cmd_realpath"
@@ -4978,7 +5017,7 @@ if [ "$command_awk" == "$NULL" ]; then
 echo "$title_md [ fail ] [ Install ss command ]"; exit; fi
 if [ "$command_awk" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Install awk command ]"; exit; fi
-$command_ss -l  | $command_grep "\:\*" | command_grep LISTEN |\
+$command_ss -l  | $command_grep "\:\*" | $command_grep LISTEN |\
 $command_awk '{print $1 " " $2 " " $5}' ;
 exit; fi
 ####
