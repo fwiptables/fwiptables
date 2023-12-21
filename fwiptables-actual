@@ -1353,9 +1353,9 @@ if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden fo
 else echo "$text_md   $public_ip4"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
-echo "$title_md [ info ] [ HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
+echo "$title_md [ info ] [ ALL_PROXY, HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
 echo "$title_md [ info ] [ Example: ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
-echo "$title_md [ info ] [ Example: ] [ And then: ] source /rute/file-of-declare-proxy
+echo "$title_md [ info ] [ Example: ] [ And then: ] source /rute/file-of-declare-proxy"
 listado_proxy="$($command_sudo -u root bash -c export | grep \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ];
 then echo "$text_md [ info ] Without proxy in export variables"
@@ -1399,9 +1399,9 @@ if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden fo
 else echo "$text_md   $public_ip6"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
-echo "$title_md [ info ] [ HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
+echo "$title_md [ info ] [ ALL_PROXY, HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
 echo "$title_md [ info ] [ Example: ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
-echo "$title_md [ info ] [ Example: ] [ And then: ] source /rute/file-of-declare-proxy
+echo "$title_md [ info ] [ Example: ] [ And then: ] source /rute/file-of-declare-proxy"
 listado_proxy="$($command_sudo -u root bash -c export | grep \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ];
 then echo "$text_md [ info ] Without proxy in export variables"
@@ -4973,12 +4973,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "sockets" ]; then 
-echo "$title_md [ $first_option ] [ Show whith ss: LISTEN sockets (UNCONN internals) ] "
+echo "$title_md [ $first_option ] [ Show whith ss: LISTEN sockets ] "
 if [ "$command_awk" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Install ss command ]"; exit; fi
 if [ "$command_awk" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Install awk command ]"; exit; fi
-$command_ss -l  | $command_grep "\:\*" | $command_awk '{print $1 " " $2 " " $5}' ;
+$command_ss -l  | $command_grep "\:\*" | command_grep LISTEN |\
+$command_awk '{print $1 " " $2 " " $5}' ;
 exit; fi
 ####
 ####
