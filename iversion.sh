@@ -4479,6 +4479,26 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-pc-reboot:
+##########    english: expert-new-version: upgrade fwiptables    ##########
+##########    spanish: expert-new-version: upgrade fwiptables    ##########
+#### :rutina-inicial-expert-new-version:
+####
+####
+if   [ "$first_option" == "expert-new-version" ]; then 
+####
+####
+if [ "$command_curl" == "$NULL" ]; then
+echo "$title_md Install curl to show stable latest version"; fi
+####
+####
+echo "$title_md Show the fwiptables stable latest"
+descarga="$directory_log/fwiptables-cmd"
+$command_curl $web_download_sourceforge -s -L -o $descarga &\
+echo "$title_md show stable is $descarga"
+exit; fi
+####
+####
+#### :rutina-final-expert-new-version:
 ##########    english: expert-upgrade-stable: upgrade fwiptables    ##########
 ##########    spanish: expert-upgrade-stable: upgrade fwiptables    ##########
 #### :rutina-inicial-expert-upgrade-stable:
