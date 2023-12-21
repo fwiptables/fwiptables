@@ -1541,14 +1541,20 @@ exit; fi
 if [ "$first_option" == "about" ]; then 
 echo "$title_md [ $first_option ] [ Show about ] [ version.md] "
 echo
+echo "$title_md [ Basename program ]"
+echo "$text_md $cmd_basename"
+echo
+echo "$title_md [ Realpath program ]"
+echo "$text_md $cmd_realpath"
+echo
+echo "$title_md [ Version program ]"
+echo "$text_md $cmd_version"
+echo
 echo "$title_md [ Short Description ]"
 echo "$text_md $cmd_shortdescription"
 echo
 echo "$title_md [ Long Description ]"
 echo "$text_md $cmd_longdescription"
-echo
-echo "$title_md [ Version program ]"
-echo "$text_md $cmd_version"
 echo
 echo "$title_md [ File format ]"
 echo "$text_md" "$($command_file $cmd_realpath  )"
