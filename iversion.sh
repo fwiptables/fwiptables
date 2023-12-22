@@ -6400,9 +6400,10 @@ if [ "$first_option" == "gui-roll-zenity-options-expert" ]
 then echo $head_waiting_gui ; echo $give_cover
 ####
 ####
-gui_menu="01-expert-show-weather|02-expert-compile-obash|03-expert-upgrade-stable|\
-04-expert-upgrade-unstable|05-expert-download-adblock|06-expert-pc-halt|\
-07-expert-pc-shutdown|08-expert-pc-reboot"
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
+expert-show-weather|expert-compile-obash|expert-upgrade-stable|\
+expert-upgrade-unstable|expert-download-adblock|expert-pc-halt|\
+expert-pc-shutdown|expert-pc-reboot"
 ####
 ####
 selection="$($command_zenity --forms \
@@ -6415,14 +6416,17 @@ selection="$($command_zenity --forms \
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1) exit ;;
-01-expert-show-weather)$cmd_realpath -gui-zenity expert-show-weather ;;
-02-expert-compile-obash)$cmd_realpath -gui-zenity expert-compile-obash ;;
-03-expert-upgrade-stable) $cmd_realpath -gui-zenity expert-upgrade-stable ;;
-04-expert-upgrade-unstable) $cmd_realpath -gui-zenity expert-upgrade-unstable ;;
-05-expert-download-adblock)$cmd_realpath -gui-zenity expert-download-adlock ;;
-06-expert-pc-halt) $cmd_realpath -gui-zenity expert-pc-halt ;;
-07-expert-pc-shutdown) $cmd_realpath -gui-zenity expert-pc-shutdown ;;
-08-expert-pc-reboot) $cmd_realpath -gui-zenity expert-pc-reboot ;;
+gui-principal-menu) $cmd_realpath gui-roll-zenity ;;
+gui-help-menu) $cmd_realpath gui-zenity options-expert ;;
+gui-info-menu) $cmd_realpath gui-zenity options-expert ;;
+expert-show-weather)$cmd_realpath -gui-zenity expert-show-weather ;;
+expert-compile-obash)$cmd_realpath -gui-zenity expert-compile-obash ;;
+expert-upgrade-stable) $cmd_realpath -gui-zenity expert-upgrade-stable ;;
+expert-upgrade-unstable) $cmd_realpath -gui-zenity expert-upgrade-unstable ;;
+expert-download-adblock)$cmd_realpath -gui-zenity expert-download-adlock ;;
+expert-pc-halt) $cmd_realpath -gui-zenity expert-pc-halt ;;
+expert-pc-shutdown) $cmd_realpath -gui-zenity expert-pc-shutdown ;;
+expert-pc-reboot) $cmd_realpath -gui-zenity expert-pc-reboot ;;
 esac
 ####
 ####
@@ -6838,9 +6842,10 @@ if [ "$first_option" == "gui-menu-options-expert" ]
 then echo $head_waiting_gui ; echo $give_cover
 case "$favorite_graphicall_dialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="|01-expert-show-weather|02-expert-compile-obash|03-expert-upgrade-stable\
-|04-expert-upgrade-unstable|05-expert-download-adblock|06-expert-pc-halt\
-|07-expert-pc-shutdown|08-expert-pc-reboot"
+gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
+expert-show-weather|expert-compile-obash|expert-upgrade-stable|\
+expert-upgrade-unstable|expert-download-adblock|expert-pc-halt|\
+expert-pc-shutdown|expert-pc-reboot"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog \
 --width=$graphicall_width --height=$graphicall_height \
@@ -6852,14 +6857,17 @@ selection_final="$($favorite_graphicall_dialog \
 ####
 case "$selection_final" in
 1) exit ;;
-01-expert-show-weather*)$cmd_realpath -gui expert-show-weather ;;
-02-expert-compile-obash*)$cmd_realpath -gui expert-compile-obash ;;
-03-expert-upgrade-stable*) $cmd_realpath -gui expert-upgrade-stable ;;
-04-expert-upgrade-unstable*) $cmd_realpath -gui expert-upgrade-unstable ;;
-05-expert-download-adblock*)$cmd_realpath -gui expert-download-adlock ;;
-06-expert-pc-halt*) $cmd_realpath -gui expert-pc-halt ;;
-07-expert-pc-shutdown*) $cmd_realpath -gui expert-pc-shutdown ;;
-08-expert-pc-reboot*) $cmd_realpath -gui expert-pc-reboot ;;
+gui-principal-menu*)$cmd_realpath gui-menu-zenity ;;
+gui-help-menu*)$cmd_realpath gui-zenity options-expert ;;
+gui-info-menu*)$cmd_realpath gui-zenity options-expert ;;
+expert-show-weather*)$cmd_realpath -gui expert-show-weather ;;
+expert-compile-obash*)$cmd_realpath -gui expert-compile-obash ;;
+expert-upgrade-stable*) $cmd_realpath -gui expert-upgrade-stable ;;
+expert-upgrade-unstable*) $cmd_realpath -gui expert-upgrade-unstable ;;
+expert-download-adblock*)$cmd_realpath -gui expert-download-adlock ;;
+expert-pc-halt*) $cmd_realpath -gui expert-pc-halt ;;
+expert-pc-shutdown*) $cmd_realpath -gui expert-pc-shutdown ;;
+expert-pc-reboot*) $cmd_realpath -gui expert-pc-reboot ;;
 esac
 ####
 ####
