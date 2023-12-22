@@ -685,9 +685,7 @@ fi
 ####
 ####
 if [ "$favorite_text_music" == "$NULL" ]; then
-if [ "$command_cvlc" != "$NULL" ]; then  favorite_text_music="$command_cvlc"     ; fi
-if [ "$command_mpg123" != "$NULL" ]; then  favorite_text_music="$command_mpg123" ; fi
-if [ "$command_mpg321" != "$NULL" ]; then  favorite_text_music="$command_mpg321" ; fi
+if [ "$command_cvlc" != "$NULL" ]; then  favorite_text_music="$command_cvlc"          ; fi
 fi
 ####
 ####
@@ -917,7 +915,7 @@ wizard-*) echo "$message_without_cli" ; $cmd_realpath $second_option $third_opti
 "new-full-config") $cmd_realpath $second_option $third_option ;  exit ;;
 "modify-config") $cmd_realpath modify-config $third_option ; exit ;;
 "preferences-modify") $cmd_realpath preferences-modify ; exit ;;
-"radio") echo "$message_without_cli" ; $cmd_realpath $second_option $third_option ;  exit ;;
+"expert-radio-online") echo "$message_without_cli" ; $cmd_realpath $second_option $third_option ;  exit ;;
 *) cmd_inicial="$($cmd_realpath $second_option $third_option)"
 $favorite_text_dialog --clear --notags --title "Cli Menu With $cmd_version" --msgbox "$cmd_inicial" 0 0
 exit ;;
@@ -2323,11 +2321,11 @@ echo "$title_md  [ firewall-listnumeral ]                                       
 echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6          "
 echo "$text_md listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6              "
 echo "$text_md listn-security4 listn-security6                                                      "
-echo "$title_md  [ firewall-customfw ] "
+echo "$title_md  [ firewall-customfw ]                                                              "
 echo "$text_md custom eraserules off-line all-permisive wizard-mini wizard-full clone-systemfw      "
-echo "$text_md new-full-config nueva-completa-config new-mini-config nueva-mini-config       "
+echo "$text_md new-full-config nueva-completa-config new-mini-config nueva-mini-config              "
 echo "$text_md config-regen examples-config show-config modify-config del-config names-config       "
-echo "$title_md  [ firewall-systemfw ]                                                           "
+echo "$title_md  [ firewall-systemfw ]                                                              "
 echo "$text_md client-basic client-web client-git client-ipp client-irc client-vnc client-mail      "
 echo "$text_md client-news client-vpn client-torrent client-vpn client-ftp client-tor               "
 echo "$text_md client-proxy game-widelands games-udp games-shooter game-wesnoth game-minetest       "
@@ -2336,10 +2334,10 @@ echo "$text_md server-print server-lamp server-news server-ftp server-mail serve
 echo "$text_md server-teamspeak server-mumble server-sql server-asterisk server-domain server-proxy "
 echo "$title_md  [ options-easy ]                                                              "
 echo "$text_md preferences-read preferences-modify preferences-regen preferences-example version    "  
-echo "$text_md list-options clasic-options info  filelog autolog speed-ip4 speed-ip6 ip4 ip6 code   "
-echo "$text_md speed-glx sockets nodes geoip webcert date free expert about notes radio compile     "
-echo "$text_md ip-forward depends examples commands variables intro download install uninstall      "
-echo "$title_md            ||| Example: fwiptables-cmd -gui-zenity info list |||         "
+echo "$text_md list-options clasic-options info filelog autolog speed-ip4 speed-ip6 speed-glx       "
+echo "$text_md ip4 ip6 code sockets nodes geoip webcert date free expert about notes                "
+echo "$text_md ip-forward depends examples commands variables intro install uninstall               "
+echo "$title_md            ||| Example: fwiptables-cmd -gui-zenity info list |||                    "
 exit ; fi
 ####
 ####
@@ -2380,8 +2378,8 @@ echo "$text_md                        server-proxy server-irc          "
 echo "$text_md           options-easy |  preferences-read preferences-modify preferences-regen preferences-example"
 echo "$text_md                        list-options clasic-options info-options filelog autolog ip4 ip6 "
 echo "$text_md                        sockets nodes geoip date free ver about notes depends commands "  
-echo "$text_md                        ip-forward speed-ip4 speed-ip6 speed-glx code radio expert ver "  
-echo "$text_md                        variables examples intro webcert radio info download compile   "  
+echo "$text_md                        ip-forward speed-ip4 speed-ip6 speed-glx code expert version "  
+echo "$text_md                        variables examples intro webcert info   "  
 echo "$text_md                        license install uninstall   "
 echo "$title_md                       ||| Example: fwiptables-cmd -gui-zenity info list |||  "
 exit ; fi
@@ -2666,7 +2664,6 @@ echo "$text_md free . freedom innecesary ram"
 echo "$text_md ver. show version and path"
 echo "$text_md about . show about and several details"
 echo "$text_md notes . several notes for internet"
-echo "$text_md radio . listen radio from internet"
 echo "$text_md compile . show howto comopile bash script"
 echo "$text_md ip-forward . list or active or desactive forward variables"
 echo "$text_md depends . principal dependences"
@@ -2698,7 +2695,7 @@ echo "$title_md | options-expert | $cmd_realpath options-expert |"
 echo "$text_md"
 echo "$text_md expert-show-weather . show weather"
 echo "$text_md expert-compile-obash . Compile fwiptables-cmd to fwiptables-bin with obash"
-echo "$text_md expert-new-version . Show fwiptables-cmd with curl"
+echo "$text_md expert-new-version . Show version fwiptables-cmd stable with curl"
 echo "$text_md expert-upgrade-stable . Upgrade from web sourceforge fwiptables-cmd with curl"
 echo "$text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables-cmd with curl"
 echo "$text_md expert-download-adblock . Download four files of blacklist hosts to /etc/hosts.blacklist"
@@ -2706,6 +2703,7 @@ echo "$text_md expert-wpa-list . nameconfig to list wifi config"
 echo "$text_md expert-wpa-new . nameconfig to create wifi config"
 echo "$text_md expert-wpa-modify . nameconfig to modify wifi config"
 echo "$text_md expert-wpa-connect . nameconfig to connect wifi config"
+echo "$text_md expert-radio-online . listen radio from internet"
 echo "$text_md expert-pc-halt . halt computer"
 echo "$text_md expert-pc-shutdown . shutdown computer"
 echo "$text_md expert-pc-reboot . reboot computer"
@@ -4606,12 +4604,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-download-adblock:
-##########    english: radio: url from one radio mp3      ##########
-##########    spanish: radio: url de una radio en mp3     ##########
-#### :rutina-inicial-radio:
+##########    english: expert-radio-online: url from one radio mp3      ##########
+##########    spanish: expert-radio-online: url de una radio en mp3     ##########
+#### :rutina-inicial-expert-radio-online:
 ####
 ####
-if   [ "$first_option" == "radio" ] ; then 
+if   [ "$first_option" == "expert-radio-online" ] ; then 
 echo "$header_ok [ $first_option ]  [ Listen radio online with a one link ]"
 echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
@@ -4629,8 +4627,13 @@ link_radio_marca="https://22333.live.streamtheworld.com/RADIOMARCA_NACIONAL.mp3"
 ####
 ####
 case "$second_option" in
-"$NULL") echo " [ info ] [ launch: $cmd_realpath radio link-mp3 ]" ; exit ;;
-"show") echo " [ info ] rockfm,cope,kissfm,cadena100,dial,ondacero,rne,clasica,exterior,marca" ; exit ;;
+"$NULL")
+echo " [ info ] [ launch: $cmd_realpath expert-radio-online link-mp3 ]"
+echo " [ info ] [ launch: $cmd_realpath expert-radio-online show ]"
+exit ;;
+"show")
+echo " [ info ] rockfm,cope,kissfm,cadena100,dial,ondacero,rne,clasica,exterior,marca"
+exit ;;
 "rockfm") emisora="$link_radio_rockfm" ;;
 "cope") emisora="$link_radio_cope" ;;
 "kissfm") emisora="$link_radio_kissfm" ;;
@@ -4645,16 +4648,16 @@ case "$second_option" in
 esac
 ####
 ####
-echo "$duo_md [  ok  ] [ $favorite_text_music ] [ $emisora ]"
+echo "$duo_md [ info ] [ $favorite_text_music ] [ $emisora ]"
 echo 
 echo
 if [ "$($command_logname)" != "$NULL" ] ; then
-$($command_sudo -u $($command_logname) $favorite_text_music $emisora) ; exit
+$($command_sudo -u $($command_logname) $favorite_text_music "$emisora") ; exit
 else $favorite_text_music $emisora ; exit ; fi
 exit; fi
 ####
 ####
-#### :rutina-final-radio:
+#### :rutina-final-expert-radio-online:
 ##########    english: info: info of first option            ##########
 ##########    spanish: info: info of primera opcion          ##########
 #### :rutina-inicial-info:
