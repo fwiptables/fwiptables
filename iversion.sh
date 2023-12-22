@@ -2333,9 +2333,9 @@ echo "$text_md game-freeciv lan-tor lan-vpn server-ssh server-irc server-samba s
 echo "$text_md server-print server-lamp server-news server-ftp server-mail server-webserver         "
 echo "$text_md server-teamspeak server-mumble server-sql server-asterisk server-domain server-proxy "
 echo "$title_md  [ options-easy ]                                                              "
-echo "$text_md preferences-read preferences-modify preferences-regen preferences-example version    "  
-echo "$text_md list-options clasic-options info filelog autolog speed-ip4 speed-ip6 speed-glx       "
-echo "$text_md ip4 ip6 code sockets nodes geoip webcert date free expert about notes                "
+echo "$text_md preferences-read preferences-modify preferences-regen preferences-example info       "  
+echo "$text_md list-options clasic-options filelog autolog speed-ip4 speed-ip6 speed-glx            "
+echo "$text_md ip4 ip6 code sockets nodes geoip webcert date free expert about notes version        "
 echo "$text_md ip-forward depends examples commands variables intro install uninstall               "
 echo "$title_md            ||| Example: fwiptables-cmd -gui-zenity info list |||                    "
 exit ; fi
