@@ -208,6 +208,7 @@ logserver_prefix_output="fwlog-output::"     ;
 logserver_port_tcp="no"     ;
 logserver_port_udp="no"     ;
 time_server_waiting="9s"    ;
+allow_string_close="no"
 allow_dmz_ip4="no"    ;
 allow_dmz_ip6="no"    ;
 allow_forward_ip4="no"    ;
@@ -231,6 +232,7 @@ allow_output_maxconnect="no"     ;
 allow_output_ping="no"     ;
 allow_output_state="no"     ;
 allow_output_uid="no"     ;
+config_string_close="" ;
 config_dmz_ip4=""     ;
 config_dmz_ip6=""     ;
 config_input_bandwidth="12512"     ;
@@ -1805,6 +1807,9 @@ spa32="$(echo $title_md Permitir Otras Opciones, modificar con vacio o no )"
 # var34="$(echo allow_shield_maxtries=no )"
 # eng34="$(echo $title_md void to allow one shield with max tries login in ssh for ip to each hour or no )"
 # spa34="$(echo $title_md vacio para permitir un escudo con los intentos maximos de logins in ssh por ip a cada hora o no )"
+var34="$(echo allow_string_close=no )"
+eng34="$(echo $title_md void to if drop string, or no to no )"
+spa34="$(echo $title_md vacio para denegar cadena, o no para no )"
 var35="$(echo allow_forward_ip4=no )"
 eng35="$(echo $title_md void to yes to forward ip4, or no to no )"
 spa35="$(echo $title_md vacio para reenvios ip4, o no para no )"
@@ -1891,7 +1896,9 @@ spa59="$(echo $title_md Otras Opciones, añadir con , y poner rangos con : )"
 # spa60="$(echo $title_md modificar escudo con los maximos intentos de logeo a nuestro servidor ssh por ip a cada hora )"
 # var61="$(echo config_shield_port=22 )"
 # eng61="$(echo $title_md modify shield ssh chaging maxtries port ssh o several ports with comma separate )"
-# spa61="$(echo $title_md modificar escudo ssh cambiando puerto de intentos ssh o varios puertos separados por comma )"
+var61="$(echo config_string_close=.fb.com,.facebook.com )"
+eng61="$(echo $title_md drop connection with header string, if several, comma separate )"
+spa61="$(echo $title_md bloquea conexion con cadena de cabecera, si hay varios, seperados por comas )"
 var62="$(echo config_dmz_ip4=192.168.1.7 )"
 eng62="$(echo $title_md ip server ip lan to other external nets, nat prerouting )"
 spa62="$(echo $title_md servidor ip lan para otras redes esternas, nat prerouting )"
@@ -2223,6 +2230,7 @@ exit ; fi
 ####
 ####
 case "$NULL" in "$allow_autosave")         ;;  *)  allow_autosave="no" ;;  esac
+case "$NULL" in "$allow_string_close")     ;;  *)  allow_string_close="no" ;;  esac
 case "$NULL" in "$allow_dmz_ip4")          ;;  *)  allow_dmz_ip4="no" ;; esac
 case "$NULL" in "$allow_dmz_ip6")          ;;  *)  allow_dmz_ip6="no" ;; esac
 case "$NULL" in "$allow_forward_ip4")      ;;  *)  allow_forward_ip4="no" ;; esac
@@ -9837,6 +9845,58 @@ $allow_use_ipv6 $allow_use_nft $command_ip6tables_nft    -A  INPUT  \
 ####
 $allow_use_ipv6 $allow_use_nft  $command_ip6tables_nft    -A  OUTPUT \
 -d $one_vpn -j ACCEPT -m comment --comment "whitelist $one_vpn" &> /dev/null
+####
+####
+done
+####
+fi
+####
+####
+####################################### english: drop for string in header
+####################################### spanish: deniega para cadena in cabecera
+####
+####
+if [ "$allow_string_close" == "$NULL" ]; then
+####
+for string_close in $(echo $config_string_close | $command_sed 's/,/ /g'); do
+####
+####
+#### ipv4
+####
+####holahola
+$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A  INPUT  \
+-m string --string $string_close --algo bm -j $config_close_deny &> /dev/null
+####
+####
+$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A  OUTPUT \
+-m string --string $string_close --algo bm -j $config_close_deny &> /dev/null
+####
+####
+$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A  INPUT  \
+-m string --string $string_close --algo bm -j $config_close_deny &> /dev/null
+####
+####
+$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A  OUTPUT \
+-m string --string $string_close --algo bm -j $config_close_deny &> /dev/null
+####
+####
+#### ipv6
+####
+####
+$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A  INPUT  \
+-m string --string $string_close --algo bm -j $config_close_deny &> /dev/null
+####
+####
+$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A  OUTPUT \
+-m string --string $string_close --algo bm -j $config_close_deny &> /dev/null
+####
+####
+$allow_use_ipv6 $allow_use_nft $command_ip6tables_nft    -A  INPUT  \
+-m string --string $string_close --algo bm -j $config_close_deny &> /dev/null
+####
+####
+$allow_use_ipv6 $allow_use_nft  $command_ip6tables_nft    -A  OUTPUT \
+-m string --string $string_close --algo bm -j $config_close_deny &> /dev/null
 ####
 ####
 done
