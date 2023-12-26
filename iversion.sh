@@ -912,16 +912,19 @@ if [ "$first_option" == "cli" ]
 then echo "$head_waiting_cli"
 if [ "$favorite_text_dialog" == "$NULL" ]; then "### [ info ] Please install or dialog or whiptail to work with cli";  exit; fi
 case "$second_option" in
-wizard-*) echo "$message_without_cli" ; $cmd_realpath $second_option $third_option ;  exit ;;
+wizard-*) echo "$message_without_cli"
+$cmd_realpath $second_option $third_option ;  exit ;;
 "nueva-mini-config")  $cmd_realpath $second_option $third_option ;  exit ;;
 "nueva-completa-config") $cmd_realpath $second_option $third_option ;  exit ;;
 "new-mini-config") $cmd_realpath $second_option $third_option ;  exit ;;
 "new-full-config") $cmd_realpath $second_option $third_option ;  exit ;;
 "modify-config") $cmd_realpath modify-config $third_option ; exit ;;
 "preferences-modify") $cmd_realpath preferences-modify ; exit ;;
-"expert-radio-online") echo "$message_without_cli" ; $cmd_realpath $second_option $third_option ;  exit ;;
+"expert-radio-online")
+echo "$message_without_cli" ; $cmd_realpath $second_option $third_option ;  exit ;;
 *) cmd_inicial="$($cmd_realpath $second_option $third_option)"
-$favorite_text_dialog --clear --notags --title "Cli Menu With $cmd_version" --msgbox "$cmd_inicial" 0 0
+$favorite_text_dialog --clear --notags --title \
+"Cli Menu With $cmd_version" --msgbox "$cmd_inicial" 0 0
 exit ;;
 esac ; fi
 ####
@@ -943,7 +946,8 @@ esac
 ####
 ####
 echo "$head_waiting_log"
-echo "### ### [ info ] [ $second_option $third_option $quad_option ] [ $($command_date) ]" &> $output_log
+echo "### ### [ info ] [ $second_option $third_option $quad_option ] \
+[ $($command_date) ]" &> $output_log
 $cmd_realpath $second_option $third_option $quad_option &>> $output_log
 cat $output_log | $command_grep -iv Warning: &>> $default_filelog
 echo "$title_md [ info ] [ Output sended to: $default_filelog ]"
@@ -2301,9 +2305,11 @@ $cmd_realpath save autosave-fwiptables &> /dev/null ; exit; fi
 ####
 ####
 if   [ "$first_option" == "ntp" ]; then 
-echo "$title_md [ $first_option ]  [ update the computer time and date from internet ] "
+echo "$title_md [ $first_option ] \
+[ update the computer time and date from internet ] "
 echo
-if [ "$favorite_date_command" == "$NULL" ]; then echo "$text_md [ fail ] [ Install one ntp client ]" ; fi
+if [ "$favorite_date_command" == "$NULL" ]
+then echo "$text_md [ fail ] [ Install one ntp client ]" ; fi
 echo "$text_md Old date: $($command_date)"
 echo "$text_md [ Updating the time and the date .. ]"
 pool0="0.debian.pool.ntp.org"
@@ -2474,7 +2480,8 @@ exit; fi
 ####
 if   [ "$first_option" == "free" ]; then 
 echo "$title_md [ $first_option ]  [ freedom from innecesary ram ] "
-case $command_tee in "$NULL") echo "$text_md [ fail ] [ Install tee command ]"; exit ;; esac
+case $command_tee in "$NULL")
+echo "$text_md [ fail ] [ Install tee command ]"; exit ;; esac
 echo "$title_md [ info ] Actual Memory"
 free -hw 
 echo 3 | $command_tee /proc/sys/vm/drop_caches &> /dev/null
@@ -3382,7 +3389,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list4-ip" ]; then 
-echo "$title_md [ list4 ] [ List filter ipv4 ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ list4 ] [ List filter ipv4 ] \
+[ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
 "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
 nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
@@ -3390,18 +3398,22 @@ nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-ip4"
 echo
 case $legacycuatro in
-"$NULL") echo "$title_md [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$title_md [ info ] [ Without rules xtables ] \
+[ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
+echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] \
+[ $fromrules ] [ listing rules .. ]"
 echo
 $command_iptables_legacy -t filter -v -L $list_rules_conceptual
 ;;
 esac
 echo "$text_md"
 case $nftcuatro in
-"$NULL") echo "$title_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$title_md [ info ] [ Without rules nftables ] \
+[ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
+echo "$title_md [ info ] [ With rules nftables ] [ iptables-nft ] \
+[ $fromrules ] [ listing rules .. ]" 
 echo
 $command_iptables_nft -t filter -v -L $list_rules_conceptual
 ;;
@@ -3416,7 +3428,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list6-ip" ]; then  
-echo "$title_md [ list6 ] [ List filter ipv6 ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ list6 ] [ List filter ipv6 ] \
+[ it is only sufficent or with legacy or with nft ] "
 legacyseis=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
 "$command_ip6tables_legacy" -t filter -L OUTPUT 1 )
 nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
@@ -3424,18 +3437,22 @@ nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-ip6"
 echo
 case $legacyseis in
-"$NULL") echo "$title_md [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$title_md [ info ] [ Without rules xtables ] \
+[ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]" 
+echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] \
+[ $fromrules ] [ listing rules .. ]" 
 echo
 $command_ip6tables_legacy -v -L $list_rules_conceptual
 ;;
 esac
 echo $text_md
 case $nftseis in
-"$NULL") echo "$title_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$title_md [ info ] [ Without rules nftables ] \
+[ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
+echo "$title_md [ info ] [ With rules nftables ] [ iptables-nft ] \
+[ $fromrules ] [ listing rules .. ]" 
 echo
 $command_ip6tables_nft -v -L $list_rules_conceptual
 ;;
@@ -3452,7 +3469,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "listn4-ip" ]; then  
-echo "$title_md [ list4 ] [ List filter ipv4 ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ list4 ] [ List filter ipv4 ] \
+[ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
 "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
 nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
@@ -3460,18 +3478,22 @@ nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-ip4"
 echo
 case $legacycuatro in
-"$NULL") echo "$title_md [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$title_md [ info ] [ Without rules xtables ] \
+[ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
+echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] \
+[ $fromrules ] [ listing rules .. ]"
 echo
 $command_iptables_legacy -t filter -v -L -n
 ;;
 esac
 echo "$text_md"
 case $nftcuatro in
-"$NULL") echo "$title_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$title_md [ info ] [ Without rules nftables ] \
+[ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
+echo "$title_md [ info ] [ With rules nftables ] [ iptables-nft ] \
+[ $fromrules ] [ listing rules .. ]" 
 echo
 $command_iptables_nft -t filter -v -L -n
 ;;
@@ -3486,7 +3508,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "listn6-ip" ]; then  
-echo "$title_md [ list6 ] [ List filter ipv6 ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ list6 ] [ List filter ipv6 ] \
+[ it is only sufficent or with legacy or with nft ] "
 legacyseis=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
 "$command_ip6tables_legacy" -t filter -L OUTPUT 1 )
 nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
@@ -3494,18 +3517,22 @@ nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-ip6"
 echo
 case $legacyseis in
-"$NULL") echo "$title_md [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$title_md [ info ] [ Without rules xtables ] \
+[ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]" 
+echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] \
+[ $fromrules ] [ listing rules .. ]" 
 echo
 $command_ip6tables_legacy -v -L -n
 ;;
 esac
 echo $text_md
 case $nftseis in
-"$NULL") echo "$title_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$title_md [ info ] [ Without rules nftables ] \
+[ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
+echo "$title_md [ info ] [ With rules nftables ] [ iptables-nft ] \
+[ $fromrules ] [ listing rules .. ]" 
 echo
 $command_ip6tables_nft -v -L -n
 ;;
@@ -3567,11 +3594,12 @@ nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-numerical-ip4"
 echo
 case $legacycuatro in
-"$NULL") echo "$title_md [ info ] [ Without rules xtables ] [ iptables-legacy ] \
+"$NULL")
+echo "$title_md [ info ] [ Without rules xtables ] [ iptables-legacy ] \
 [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] \
-[ listing rules .. ]"
+echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] \
+[ $fromrules ] [ listing rules .. ]"
 echo
 $command_iptables_legacy -t filter -v -L -n
 ;;
@@ -3609,7 +3637,8 @@ case $legacycuatro in
 "$NULL") echo "$title_md [ info ] [ Without rules xtables ] \
 [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$title_md [ info ] [ With rules xtables ] \
+[ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t filter -v -L -n
 ;;
@@ -3619,7 +3648,8 @@ case $nftcuatro in
 "$NULL") echo "$title_md [ info ] [ Without rules nftables ] \
 [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" ;;
 *)
-echo "$title_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo "$title_md [ info ] [ With rules nftables ] \
+[ iptables-nft ] [ $fromrules ]" 
 echo
 $command_iptables_nft -t filter -v -L -n
 ;;
@@ -3638,11 +3668,13 @@ echo "$title_md [ $first_option ] [ List filter ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip4"
 echo
-echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$title_md [ info ] [ With rules xtables ] \
+[ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t filter -v -L $list_rules_conceptual
 echo
-echo "$title_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo "$title_md [ info ] [ With rules nftables ] \
+[ iptables-nft ] [ $fromrules ]" 
 echo
 $command_iptables_nft -t filter -v -L $list_rules_conceptual
 ####
@@ -3657,7 +3689,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-forward" ]; then 
-echo "$title_md [ $first_option ] [ List filter forward ipv4 ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ $first_option ] [ List filter forward ipv4 ] \
+[ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip4"
 echo
 echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3699,7 +3732,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-forward6" ]; then 
-echo "$title_md [ $first_option ] [ List filter forward ipv6 ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ $first_option ] [ List filter forward ipv6 ] \
+[ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip6"
 echo
 echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3719,7 +3753,8 @@ exit; fi
 ####
 ####
  if [ "$first_option" == "list-nat4" ]; then 
-echo "$title_md [ $first_option ] [ List nat ipv4 ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ $first_option ] [ List nat ipv4 ] \
+[ it is only sufficent or with legacy or with nft ] "
 fromrules="nat-ip4"
 echo
 echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3739,7 +3774,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-nat6" ]; then 
-echo "$title_md [ $first_option ] [ List nat ipv6] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ $first_option ] [ List nat ipv6] \
+[ it is only sufficent or with legacy or with nft ] "
 fromrules="nat-ip6"
 echo
 echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3760,7 +3796,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "listnum-filter4" ]; then 
-echo "$title_md [ $first_option ] [ List filter ipv4 in numerical ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ $first_option ] [ List filter ipv4 in numerical ] \
+[ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip4"
 echo
 echo "$title_md [ info ] [ With rules netfilter ] [ iptables-nft ] [ $fromrules ]"  
@@ -3780,7 +3817,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-forwardnum" ]; then 
-echo "$title_md [ $first_option ] [ List filter forward ipv4 in numerical ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ $first_option ] [ List filter forward ipv4 in numerical ] \
+[ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip4"
 echo
 echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3800,7 +3838,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "listnum-filter6" ]; then 
-echo "$title_md [ $first_option ] [ List filter ipv6 in numerical ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ $first_option ] [ List filter ipv6 in numerical ] \
+[ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip6"
 echo
 echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
@@ -3820,7 +3859,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-forwardnum6" ]; then 
-echo "$title_md [ $first_option ] [ List filter forward ipv6 in numerical ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ $first_option ] [ List filter forward ipv6 in numerical ] \
+[ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip6"
 echo
 echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3840,7 +3880,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-mangle4" ]; then 
-echo "$title_md [ $first_option ] [ List mangle ipv4 ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ $first_option ] [ List mangle ipv4 ] \
+[ it is only sufficent or with legacy or with nft ] "
 fromrules="mangle-ip4"
 echo
 echo "$title_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3861,7 +3902,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-mangle6" ]; then 
-echo "$title_md [ $first_option ] [ List mangle ipv6 ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ $first_option ] [ List mangle ipv6 ] \
+[ it is only sufficent or with legacy or with nft ] "
 fromrules="mangle-ip6"
 echo
 echo "$title_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3882,7 +3924,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-raw4" ]; then 
-echo "$title_md [ $first_option ] [ List raw ipv4 ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ $first_option ] [ List raw ipv4 ] \
+[ it is only sufficent or with legacy or with nft ] "
 fromrules="raw-ip4"
 echo
 echo "$title_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3902,7 +3945,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-raw6" ]; then 
-echo "$title_md [ $first_option ] [ List raw ipv6 ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ $first_option ] [ List raw ipv6 ] \
+[ it is only sufficent or with legacy or with nft ] "
 fromrules="raw-ip6"
 echo
 echo "$title_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3922,7 +3966,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-security4" ]; then 
-echo "$title_md [ $first_option ] [ List security ipv4 ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ $first_option ] [ List security ipv4 ] \
+[ it is only sufficent or with legacy or with nft ] "
 fromrules="security-ip4"
 echo
 echo "$title_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3942,7 +3987,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-security6" ]; then 
-echo "$title_md [ $first_option ] [ List security ipv6 ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ $first_option ] [ List security ipv6 ] \
+[ it is only sufficent or with legacy or with nft ] "
 fromrules="security-ip6"
 echo
 echo "$title_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -4197,7 +4243,8 @@ echo "$title_md [ info ] [ list configs files in standard format ]"
 echo "$title_md [ info ] [ folder ] [ $directory_fwrecover ]"
 echo 
 echo "$title_md [ info ] [ Listing firewall names ]"
-$command_ls -1 $directory_fwrecover | $command_sed s/\-legacy\-ipv6//g | $command_sed s/\-nft\-ipv6//g | \
+$command_ls -1 $directory_fwrecover | $command_sed s/\-legacy\-ipv6//g | \
+$command_sed s/\-nft\-ipv6//g | \
 $command_sed s/\-legacy\-ipv4//g | $command_sed s/\-nft\-ipv4//g | \
 $command_sed s/\-arptables//g | $command_sed s/\-ebtables//g | sort -u 
 echo
@@ -4347,7 +4394,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "install" ]; then 
-echo "$title_md [ $first_option ] [ $file_installed $cmd_version installer ] [ install md ] "
+echo "$title_md [ $first_option ] \
+[ $file_installed $cmd_version installer ] [ install md ] "
 ####
 ####
 ####  english: copy the file to temporal folder and install
@@ -4390,9 +4438,11 @@ exit; fi
 if   [ "$first_option" == "geoip" ]; then 
 echo "$title_md [ $first_option ]  [ resolve the location to one ip or host ] "
 echo 
-case $command_geoiplookup in "$NULL") echo "$text_md [ fail ] [ Install geoiplookup command ]" ; exit  ;; esac
+case $command_geoiplookup in "$NULL")
+echo "$text_md [ fail ] [ Install geoiplookup command ]" ; exit  ;; esac
 case "$second_option" in
-"$NULL") echo "$title_md Selecting host geoip to fast.com for default" ; trazador="fast.com" ;;
+"$NULL")
+echo "$title_md Selecting host geoip to fast.com for default" ; trazador="fast.com" ;;
 *) trazador="$second_option" ;; esac
 echo "$title_md [ _ok_ ] [ geoiplookup -i $trazador ]"
 $command_geoiplookup -i $trazador
@@ -4408,7 +4458,8 @@ exit; fi
 ####
 if   [ "$first_option" == "nodes" ]; then 
 echo "$title_md [ $first_option ] [ Show the list arp-scan in the lan ] "
-if [ "$command_arp_scan" == "$NULL" ]; then echo "$title_md [ fail ] [ install arp-scan command ]" ; exit ; fi
+if [ "$command_arp_scan" == "$NULL" ]; then
+echo "$title_md [ fail ] [ install arp-scan command ]" ; exit ; fi
 echo "$title_md [ info ] [ local net: ip lan .. ]"
 $command_ip -4 route | $command_grep -i -v default
 echo "$title_md [ info ] [ local scan: arp lan scan .. ]"
@@ -4423,7 +4474,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "license" ]; then 
-echo "$title_md [ $first_option ]  [ Show license from git sourceforge for $cmd_realpath ] "
+echo "$title_md [ $first_option ] \
+[ Show license from git sourceforge for $cmd_realpath ] "
 ####
 if [ "$command_curl" == "$NULL" ]; then
 echo "$title_md Install curl to download/install latest version"; fi
@@ -4507,7 +4559,8 @@ echo "$title_md Show the fwiptables stable latest"
 echo "$title_md show the last stable is:"
 descarga="$directory_log/fwiptables-cmd"
 $command_curl $web_download_sourceforge -s -L -o $descarga \
-&& chmod ugo+x $descarga && $descarga version | $command_grep -E -i "program|details"
+&& chmod ugo+x $descarga && $descarga version | \
+$command_grep -E -i "program|details"
 exit; fi
 ####
 ####
@@ -4563,8 +4616,8 @@ echo "$text_md [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling
 echo "$text_md [ step ] [ 0 ] Necesary: fwiptables in source script bash                    "
 echo "$text_md [ step ] [ 1 ] Download obash from oficial web internet                      "
 echo "$text_md [ step ] [ 2 ] Compile with obash command using command make.                "
-echo "$text_md [ step ] [ 3a] Or run: obash -c -o ./destination.bin ./source-bash.sh        "
-echo "$text_md [ step ] [ 3b] Or run: obash -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd   "
+echo "$text_md [ step ] [ 3a] Or run: obash -r -c -o ./destination.bin ./source-bash.sh        "
+echo "$text_md [ step ] [ 3b] Or run: obash -r -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd"
 echo "$title_md Actually, the file type is:                                                          "
 file -L $cmd_realpath
 exit; fi
@@ -4690,8 +4743,10 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "speed-glx" ]; then 
-echo "$title_md [ $first_option ]  [ test gl mesa3D speed ] [ for default max $time_server_waiting seconds ] "
-case $command_glxgears in "$NULL") echo "$text_md [ fail ] [ Install mesa utils ]"; exit ;; esac
+echo "$title_md [ $first_option ]  [ test gl mesa3D speed ] \
+[ for default max $time_server_waiting seconds ] "
+case $command_glxgears in "$NULL")
+echo "$text_md [ fail ] [ Install mesa utils ]"; exit ;; esac
 vblank_mode=0 $command_timeout -s SIGINT -v $time_server_waiting $command_glxgears
 echo 
 exit; fi
@@ -4704,9 +4759,11 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "ntpdate-client" ]; then 
-echo "$title_md [ $first_option ]  [ update the computer time and date from internet ] "
+echo "$title_md [ $first_option ] \
+[ update the computer time and date from internet ] "
 echo
-if [ "$favorite_date_command" == "$NULL" ]; then echo "$text_md [ fail ] [ Install one ntp client ]" ; fi
+if [ "$favorite_date_command" == "$NULL" ]; then
+echo "$text_md [ fail ] [ Install one ntp client ]" ; fi
 echo "$text_md Old date: $($command_date)"
 echo "$text_md [ Updating the time and the date .. ]"
 pool0="0.debian.pool.ntp.org"
@@ -4729,8 +4786,10 @@ $cmd_realpath config-regen
 cp "$defaultminicfg_eng" "$directory_temporal/$file_installed-$archivo"
 $favorite_text_editor "$directory_temporal/$file_installed-$archivo"
 clear
-$favorite_text_dialog --clear --title "Run this wizard" --yesno "Run this wizard" 0 0 && clear \
-&& cp "$directory_temporal/$file_installed-$archivo" "$directory_config/$archivo" && $cmd_realpath custom $archivo || clear
+$favorite_text_dialog --clear --title "Run this wizard" \
+--yesno "Run this wizard" 0 0 && clear \
+&& cp "$directory_temporal/$file_installed-$archivo" \
+"$directory_config/$archivo" && $cmd_realpath custom $archivo || clear
 ####
 ####
 exit; fi
@@ -4748,8 +4807,10 @@ $cmd_realpath config-regen
 cp "$defaultfullcfg_eng" "$directory_temporal/$file_installed-$archivo"
 $favorite_text_editor "$directory_temporal/$file_installed-$archivo"
 clear
-$favorite_text_dialog --clear --title "Run this wizard" --yesno "Run this wizard" 0 0 && clear \
-&& cp "$directory_temporal/$file_installed-$archivo" "$directory_config/$archivo" && $cmd_realpath custom $archivo || clear 
+$favorite_text_dialog --clear --title "Run this wizard" --yesno \
+"Run this wizard" 0 0 && clear && \
+cp "$directory_temporal/$file_installed-$archivo" "$directory_config/$archivo" \
+&& $cmd_realpath custom $archivo || clear 
 ####
 ####
 exit; fi
@@ -4768,13 +4829,16 @@ if [ "$first_option" == "load" ]; then
 ####
 ####
 if [ "second_option" == "$NULL" ]; then
-$cmd_realpath names ; echo "$text_md [ info ] [ usage: $cmd_realpath load fw-to-load ] [ See: $cmd_realpath names ]" ; exit ; fi
+$cmd_realpath names ; echo "$text_md [ info ] \
+[ usage: $cmd_realpath load fw-to-load ] \
+[ See: $cmd_realpath names ]" ; exit ; fi
 ####
 ####
 #### English if do exist second option in load
 ####
 ####
-if [ -f $directory_fwrecover/$second_option-nft-ipv4 ] || [ -f $directory_fwrecover/$second_option-legacy-ipv4 ] ; then 
+if [ -f $directory_fwrecover/$second_option-nft-ipv4 ] || \
+[ -f $directory_fwrecover/$second_option-legacy-ipv4 ] ; then 
 echo $give_load
 ####
 ####
@@ -4794,11 +4858,13 @@ $cmd_realpath eraserules &> /dev/null
 ####
 ####
 if [ -f "$directory_fwrecover/$second_option-ebtables" ]; then
-cat $directory_fwrecover/$second_option-ebtables | $command_ebtables-restore &> /dev/null; fi
+cat $directory_fwrecover/$second_option-ebtables | \
+$command_ebtables-restore &> /dev/null; fi
 ####
 ####
 if [ -f "$directory_fwrecover/$second_option-arptables" ]; then
-cat $directory_fwrecover/$second_option-arptables | $command_arptables-restore &> /dev/null; fi
+cat $directory_fwrecover/$second_option-arptables | \
+$command_arptables-restore &> /dev/null; fi
 ####
 #### 
 cat $directory_fwrecover/$second_option-nft-ipv4 |  $command_iptables_nft-restore       
