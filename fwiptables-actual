@@ -101,7 +101,7 @@ echo ; fi
 ####
 cmd_realpath="$(realpath $0)"    # its full routename
 cmd_basename="$(basename $0)"    # its only filename
-cmd_version="cmd-11-04"          # its version
+cmd_version="cmd-11-05"          # its version
 file_installed="fwiptables-cmd"  # its filename installed
 directory_installed="/usr/bin"   # its directory installed
 cmd_shortdescription="fwiptables, FireWall With iptables"       # its name description short
@@ -122,7 +122,7 @@ git_download_sourceforge="https://sourceforge.net/p/f-iptables/code/ci/main/tree
 ####
 #### prepare directory data
 ####
-if [ "$HOME" == "$NULL" ] ; then default_root_home="/root"; 
+if [ "$HOME" == "$NULL" ] ; then default_root_home="/root";
 else default_root_home="$HOME"; fi
 ####
 #### set directory data
@@ -2351,8 +2351,8 @@ echo "$text_md server-teamspeak server-mumble server-sql server-asterisk server-
 echo "$title_md  [ options-easy ]                                                              "
 echo "$text_md preferences-read preferences-modify preferences-regen preferences-example info       "  
 echo "$text_md list-options clasic-options filelog autolog speed-ip4 speed-ip6 speed-glx            "
-echo "$text_md ip4 ip6 code sockets nodes geoip webcert date free expert about notes version        "
-echo "$text_md ip-forward depends examples commands variables intro install uninstall               "
+echo "$text_md ip4 ip6 code sockets nodes date free expert about notes version ip-forward           "
+echo "$text_md examples depends commands variables intro install uninstall                          "
 echo "$title_md            ||| Example: fwiptables-cmd -gui-zenity info list |||                    "
 exit ; fi
 ####
@@ -2393,9 +2393,9 @@ echo "$text_md                        server-mumble server-sql server-asterisk s
 echo "$text_md                        server-proxy server-irc          "
 echo "$text_md           options-easy |  preferences-read preferences-modify preferences-regen preferences-example"
 echo "$text_md                        list-options clasic-options info-options filelog autolog ip4 ip6 "
-echo "$text_md                        sockets nodes geoip date free ver about notes depends commands "  
+echo "$text_md                        sockets nodes free ver about notes depends commands "  
 echo "$text_md                        ip-forward speed-ip4 speed-ip6 speed-glx code expert version "  
-echo "$text_md                        variables examples intro webcert info   "  
+echo "$text_md                        variables examples intro info   "  
 echo "$text_md                        license install uninstall   "
 echo "$title_md                       ||| Example: fwiptables-cmd -gui-zenity info list |||  "
 exit ; fi
@@ -2673,8 +2673,6 @@ echo "$text_md speed-ip6 . calculate bandwith ipv6"
 echo "$text_md speed-glx . calculate speed for graphics"
 echo "$text_md sockets . show the sockets listening"
 echo "$text_md nodes . show computers connected to lan"
-echo "$text_md geoip . show location for ip o for host"
-echo "$text_md webcert . get the ssl certificate to one web"
 echo "$text_md date . update the time and date from internet"
 echo "$text_md free . freedom innecesary ram"
 echo "$text_md version . show version and path"
@@ -2705,6 +2703,8 @@ echo "$text_md "
 echo "$title_md | options-expert | $cmd_realpath options-expert |"
 echo "$text_md"
 echo "$text_md expert-show-weather . show weather"
+echo "$text_md expert-show-geoip . show location for ip o for host"
+echo "$text_md expert-show-webcert . show web certificate ssl from one web"
 echo "$text_md expert-compile-obash . Compile fwiptables-cmd to fwiptables-bin with obash"
 echo "$text_md expert-new-version . Show version fwiptables-cmd stable with curl"
 echo "$text_md expert-upgrade-stable . Upgrade from web sourceforge fwiptables-cmd with curl"
@@ -2740,8 +2740,9 @@ $cmd_realpath firewall-listnumeral
 $cmd_realpath firewall-customfw
 $cmd_realpath firewall-systemfw
 $cmd_realpath options-easy
-$cmd_realpath options-expert
-echo "$text_md"
+echo "$title_md"
+echo "$title_md for expert options: $cmd_realpath options-expert"
+echo "$title_md"
 exit; fi
 ####
 ####
@@ -4380,9 +4381,9 @@ exit; fi
 ####
 ####
 #### :rutina-final-install:
-##########    english: geoip: host to resolve and locate       ##########
-##########    spanish: geoip: host para resolver y localizar   ##########
-#### :rutina-inicial-geoip:
+##########    english: expert-show-geoip: host to resolve and locate       ##########
+##########    spanish: expert-show-geoip: host para resolver y localizar   ##########
+#### :rutina-inicial-expert-show-geoip:
 ####
 ####
 if   [ "$first_option" == "geoip" ]; then 
@@ -4398,7 +4399,7 @@ echo
 exit; fi
 ####
 ####
-#### :rutina-final-geoip:
+#### :rutina-final-expert-show-geoip:
 ##########    english: nodes: listen at dump from conexiones arp    ##########
 ##########    spanish: nodes: escucha al volcado de conexiones arp  ##########
 #### :rutina-inicial-nodes:
@@ -5076,12 +5077,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-sockets:
-##########    english: webcert: get the certificate from one web       ##########
-##########    spanish: webcert: obtiene el certificado de una web      ##########
-#### :rutina-inicial-webcert:
+##########    english: expert-show-webcert: get the certificate from one web       ##########
+##########    spanish: expert-show-webcert: obtiene el certificado de una web      ##########
+#### :rutina-inicial-expert-show-webcert:
 ####
 ####
-if   [ "$first_option" == "webcert" ] ; then 
+if   [ "$first_option" == "expert-show-webcert" ] ; then 
 echo "$title_md [ $first_option ] \
 [ get one web certifcate from one server with port 443] || ||"
 case "$command_openssl"  in  $NULL)
@@ -5096,7 +5097,7 @@ $command_timeout -s SIGINT -v $time_server_waiting $command_openssl s_client -co
 exit; fi
 ####
 ####
-#### :rutina-final-webcert:
+#### :rutina-final-expert-show-webcert:
 ##########    english: -gui: Manage gui con three options  ##########
 ##########    spanish: -gui: Maneja gui con tres opciones  ##########
 ####
@@ -6342,10 +6343,10 @@ then echo $head_waiting_gui ; echo $give_cover
 ####
 ####
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|\
-preferences-modify|preferences-regen|preferences-example|compile|download|\
+preferences-modify|preferences-regen|preferences-example|\
 list-options|clasic-options|info-options|expert|\
 filelog|autolog|ip4|ip6|notes|speed-ip4|speed-ip6|\
-sockets|nodes|geoip|date|free|ver|about|\
+sockets|nodes|date|free|ver|about|\
 depends|commands|variables|license|examples|intro"
 ####
 ####
@@ -6373,8 +6374,6 @@ list-options)$cmd_realpath -gui-zenity list-options ;;
 clasic-options)$cmd_realpath -gui-zenity clasic-options ;;
 info-options)$cmd_realpath -gui-zenity info-options ;;
 expert)$cmd_realpath -gui-zenity expert ;;
-compile)$cmd_realpath -gui-zenity compile ;;
-download)$cmd_realpath -gui-zenity download ;;
 filelog) $cmd_realpath -gui-zenity filelog ;; 
 autolog) $cmd_realpath -gui-zenity autolog ;;
 ip4)$cmd_realpath -gui-zenity ip4 ;;
@@ -6384,7 +6383,6 @@ speed-ip4)$cmd_realpath -gui-zenity speed-ip4 ;;
 speed-ip6)$cmd_realpath -gui-zenity speed-ip6 ;;
 sockets)$cmd_realpath -gui-zenity sockets ;;
 nodes) $cmd_realpath -gui-zenity nodes ;;
-geoip) $cmd_realpath -gui-zenity geoip ;;
 date) $cmd_realpath -gui-zenity date ;;
 free) $cmd_realpath -gui-zenity free ;;
 ver) $cmd_realpath -gui-zenity ver ;;

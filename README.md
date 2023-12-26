@@ -24,20 +24,20 @@
 ###  fwiptables install.                                     
   
     su root             . TYPE:   su root                   
-    Put bit of execution. TYPE:   chmod 755 ./fwiptables-version-11-03-bash.sh 
-    Install this version. TYPE:   ./fwiptables-version-11-03-bash.sh install   
+    Put bit of execution. TYPE:   chmod 755 ./fwiptables-version-11-04-bash.sh 
+    Install this version. TYPE:   ./fwiptables-version-11-04-bash.sh install   
   
 ###  fwiptables uninstall.                                   
   
     Uninstall fwiptables. TYPE:   fwiptables-cmd uninstall     
   
 ###  [ ver ] [ Show version about ] [ ver.md ]       
-   [ info ] [ Program ] /root/f-iptables-version/fwiptables-version-11-03-bash.sh With Version cmd-11-03       
+   [ info ] [ Program ] /root/f-iptables-version/fwiptables-version-11-04-bash.sh With Version cmd-11-04       
    [ info ] [ Details ] fwiptables, FireWall With iptables | fwiptables, One Mini Script in one-file  
-   [ info ] [ Binary file     ] /root/f-iptables-version/fwiptables-version-11-03-bash.sh                         
+   [ info ] [ Binary file     ] /root/f-iptables-version/fwiptables-version-11-04-bash.sh                         
    [ info ] [ Data directory  ] /root/.config/fwiptables-cmd                       
    [ info ] [ Cache directory ] /run/fwiptables                      
-   [ info ] [ File format     ] /root/f-iptables-version/fwiptables-version-11-03-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable      
+   [ info ] [ File format     ] /root/f-iptables-version/fwiptables-version-11-04-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable      
 ###  [ compile ] [  Optionally compile from bash script ] [ compile.md]    
    [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling...         
    [ step ] [ 0 ] Necesary: fwiptables in source script bash                    
@@ -46,9 +46,9 @@
    [ step ] [ 3a] Or run: obash -c -o ./destination.bin ./source-bash.sh        
    [ step ] [ 3b] Or run: obash -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd   
 ###  Actually, the file type is:                                                          
-/root/f-iptables-version/fwiptables-version-11-03-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
+/root/f-iptables-version/fwiptables-version-11-04-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
 ###  [ options ] [ List general options for fwiptables ] [ list-options.md ]
-###  /root/f-iptables-version/fwiptables-version-11-03-bash.sh [optional-output] first_option [second_option]   
+###  /root/f-iptables-version/fwiptables-version-11-04-bash.sh [optional-output] first_option [second_option]   
 ###   [ optional-output ]                                                                
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       
    [ -cli-dialog -cli-whiptail ] [ -gui-zenity -gui-yad ]                               
@@ -76,8 +76,8 @@
    server-print server-lamp server-news server-ftp server-mail server-webserver         
    server-teamspeak server-mumble server-sql server-asterisk server-domain server-proxy 
 ###   [ options-easy ]                                                              
-   preferences-read preferences-modify preferences-regen preferences-example version    
-   list-options clasic-options info filelog autolog speed-ip4 speed-ip6 speed-glx       
-   ip4 ip6 code sockets nodes geoip webcert date free expert about notes                
+   preferences-read preferences-modify preferences-regen preferences-example info       
+   list-options clasic-options filelog autolog speed-ip4 speed-ip6 speed-glx            
+   ip4 ip6 code sockets nodes geoip webcert date free expert about notes version        
    ip-forward depends examples commands variables intro install uninstall               
 ###             ||| Example: fwiptables-cmd -gui-zenity info list |||                    
