@@ -2411,21 +2411,22 @@ if   [ "$first_option" == "code" ]; then
 echo "$title_md [ $first_option ]  [ Show source code for each option ] "
 echo "$title_md [ info ] [ code ] [ show source code for options from $cmd_realpath ]"
 code_error="$title_md [ info ] [ Usage ] [ $cmd_realpath code option_choosed ]"
-if [ "$second_option" == "$NULL" ]; then echo "$code_error" ; echo
+if [ "$second_option" == "$NULL" ]; then echo "$code_error"
 salida_code="$(cat $cmd_realpath | $command_grep -i  rutina-inicial \
 | $command_grep -i -v cat | $command_sed -s s/####\ :rutina-inicial-//g | \
 sort | $command_sed -s s/://g )"
 echo $salida_code
 exit ; fi
-value_first="$(cat -n $cmd_realpath | $command_grep  :rutina-inicial-$2: | $command_cut -d "#" -f 1 | head -1)"
-value_second="$(cat -n $cmd_realpath | $command_grep :rutina-final-$2:  | $command_cut -d "#" -f 1 | head -1)"
+value_first="$(cat -n $cmd_realpath | $command_grep  :rutina-inicial-$2: | \
+$command_cut -d "#" -f 1 | head -1)"
+value_second="$(cat -n $cmd_realpath | $command_grep :rutina-final-$2:  | \
+$command_cut -d "#" -f 1 | head -1)"
 value_count="$(("$value_second"-"$value_first+1"))"
 if [ ! -n "$value_first" ];   then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_second" ];  then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_count" ];   then echo; echo "$code_error" ; exit ; fi
 echo "$title_md [ code ] [ option: "$second_option" ] [ show $value_count lines ] \
 [ from the "$value_first" line number to "$value_second" line number ]"
-echo
 cat $cmd_realpath | head -n $value_second | tail -n $value_count
 exit; fi
 ####
