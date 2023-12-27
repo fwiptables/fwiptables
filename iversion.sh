@@ -4943,7 +4943,8 @@ if [ "$first_option" == "show" ]; then
 echo "$title_md [ $first_option ]  [ show one firewall saved ] "
 echo 
 case "$second_option" in
-"$NULL") $cmd_realpath names; echo "$text_md [ info ] [ Use: $cmd_realpath show file-to-show ]" ; exit ;;
+"$NULL") $cmd_realpath names
+echo "$text_md [ info ] [ Use: $cmd_realpath show file-to-show ]" ; exit ;;
 *) archivofin=$($command_sed 's/\///g' <<< "$second_option") ;;
 esac
 $command_ls -l $directory_fwrecover/$archivofin-arptables
@@ -5088,7 +5089,8 @@ exit; fi
 ####
 if   [ "$first_option" == "speed-ip4" ]; then 
 echo "$title_md [ $first_option ]  [ test speed ipv4 with internet ] "
-case "$command_iperf"  in  $NULL) echo "$title_md [ fail ] [ Install Iperf command ]"; exit ;; esac
+case "$command_iperf"  in  $NULL)
+echo "$title_md [ fail ] [ Install Iperf command ]"; exit ;; esac
 ####
 ####
 echo "$title_md"
@@ -5111,7 +5113,8 @@ exit; fi
 ####
 if   [ "$first_option" == "speed-ip6" ]; then 
 echo "$title_md [ $first_option ]  [ test speed ipv6 with internet ] "
-case "$command_iperf"  in  $NULL) echo "$title_md [ fail ] [ install iperf command ]"; exit ;; esac
+case "$command_iperf"  in  $NULL)
+echo "$title_md [ fail ] [ install iperf command ]"; exit ;; esac
 ####
 ####
 echo "$title_md"
@@ -5160,7 +5163,8 @@ if [ "$second_option" == "$NULL" ]; then
 echo "[ get one web certifcate ] \
 [ Example: $cmd_realpath webcert www.fast.com ]"; exit; fi
 echo
-$command_timeout -s SIGINT -v $time_server_waiting $command_openssl s_client -connect $second_option:443
+$command_timeout -s SIGINT -v $time_server_waiting \
+$command_openssl s_client -connect $second_option:443
 exit; fi
 ####
 ####
@@ -5189,7 +5193,8 @@ $favorite_graphicall_dialog --text-info \
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 $favorite_graphicall_dialog --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="OK new config file: $third_option AND launch: $cmd_realpath custom $third_option" ; exit
+--text="OK new config file: $third_option \
+AND launch: $cmd_realpath custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
 $favorite_graphicall_dialog --forms \
 --width=$graphicall_width --height=$graphicall_height \
@@ -5206,7 +5211,8 @@ $favorite_graphicall_dialog --text-info \
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 $favorite_graphicall_dialog --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="OK new config file: $third_option AND launch: $cmd_realpath custom $third_option" ; exit
+--text="OK new config file: $third_option \
+AND launch: $cmd_realpath custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
 $favorite_graphicall_dialog --forms \
 --width=$graphicall_width --height=$graphicall_height \
@@ -5223,7 +5229,8 @@ $favorite_graphicall_dialog  --text-info \
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 $favorite_graphicall_dialog  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="OK new config file: $third_option AND launch: $cmd_realpath custom $third_option" ; exit
+--text="OK new config file: $third_option \
+AND launch: $cmd_realpath custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
 $favorite_graphicall_dialog  --forms \
 --width=$graphicall_width --height=$graphicall_height \
@@ -5240,7 +5247,8 @@ $favorite_graphicall_dialog  --text-info \
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 $favorite_graphicall_dialog  --forms \
 --width=$graphicall_width --height=$graphicall_height \
---text="OK new config file: $third_option AND launch: $cmd_realpath custom $third_option" ; exit
+--text="OK new config file: $third_option \
+AND launch: $cmd_realpath custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
 $favorite_graphicall_dialog  --forms \
 --width=$graphicall_width --height=$graphicall_height \
@@ -5421,7 +5429,8 @@ exit; fi
 #### :rutina-inicial-gui-shell-zenity:
 ####
 ####
-if   [ "$first_option" == "gui-shell-zenity" ] ; then echo $head_waiting_gui ; echo $give_cover
+if   [ "$first_option" == "gui-shell-zenity" ]
+then echo $head_waiting_gui ; echo $give_cover
 ####
 ####
 ####  english: principal gui  #### spanish: principal gui
@@ -5556,7 +5565,8 @@ $cmd_realpath -gui-zenity preferences-modify
 ####
 ####
 "$NULL")  exit ;;
-*) fecha_temporal=$(date | $command_sed s/\ //g) ; $cmd_realpath $menugtk &> /tmp/fwiptables-$fecha_temporal
+*) fecha_temporal=$(date | $command_sed s/\ //g)
+$cmd_realpath $menugtk &> /tmp/fwiptables-$fecha_temporal
 $favorite_graphicall_dialog  --text-info \
 --width=$graphicall_width --height=$graphicall_height \
 --title="[ $cmd_realpath gui-shell ] [ $menugtk ]" \
@@ -5574,7 +5584,8 @@ exit ; fi
 #### :rutina-inicial-gui-shell-yad:
 ####
 ####
-if   [ "$first_option" == "gui-shell-yad" ] ; then echo $head_waiting_gui ; echo $give_cover
+if   [ "$first_option" == "gui-shell-yad" ]
+then echo $head_waiting_gui ; echo $give_cover
 ####
 ####
 ####  english: principal gui  #### spanish: principal gui
@@ -5729,7 +5740,8 @@ exit ; fi
 ####
 if   [ "$first_option" == "cli-menu" ]; then $nada
 case "$favorite_text_dialog" in "$NULL")
-echo "$title_md [ fail ] [ Install or dialog or whiptail to work ]" ; exit ;; esac
+echo "$title_md [ fail ] [ Install or dialog or whiptail to work ]"
+exit ;; esac
 menuprincipal="$($favorite_text_dialog --clear --notags \
 --title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
 0000 "$title_md $text_md [$cmd_realpath cli-menu] $text_md $title_md" \
