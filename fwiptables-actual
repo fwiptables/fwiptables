@@ -535,9 +535,6 @@ head_waiting_gui="$title_md [ info ] [ gui ] $head_waiting_all "
 head_waiting_log="$title_md [ info ] [ log ] $head_waiting_all "
 head_waiting_web="$title_md [ info ] [ web ] $head_waiting_all "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_autolog="[ $cmd_realpath ] [ $cmd_version ] [ $(date) ] \
-[ $first_option $second_option $third_option ]"
-#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_cover="$title_md [ $file_installed $cmd_version ] [ $X11_OR_WAYLAND ] \
 [ Options: $cmd_realpath options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -983,8 +980,8 @@ exit ; fi
 ####
 ####
 if [ "$allow_save_autolog" != "no" ]; then 
-head_autolog="[ $cmd_realpath ] [ $cmd_version ] \
-[ $(date) ] [ $first_option $second_option $third_option ]"
+head_autolog="date: $(date) realpath: $cmd_realpath version: $cmd_version \
+options: $first_option $second_option $third_option"
 echo $head_autolog >> $default_autolog ; fi
 ####
 ####
@@ -1313,7 +1310,7 @@ echo "allow_separate_rules=                               ## or void or no"
 echo "config_close_deny=DROP                              ## or DROP or REJECT"
 echo "$title_md"
 echo "$title_md # default log"
-echo "allow_save_autolog=no                               ## or void or no"
+echo "allow_save_autolog=                                 ## or void or no"
 echo "allow_show_time=no                                  ## or void or no"
 echo "$title_md"  
 echo "$title_md # default programs"
@@ -1558,13 +1555,13 @@ exit; fi
 if [ "$first_option" == "about" ]; then 
 echo "$title_md [ $first_option ] [ Show about ] [ version.md] "
 echo
-echo "$title_md [ Basename program ]"
+echo "$title_md [ Basename Program ]"
 echo "$text_md $cmd_basename"
 echo
-echo "$title_md [ Realpath program ]"
+echo "$title_md [ Realpath Program ]"
 echo "$text_md $cmd_realpath"
 echo
-echo "$title_md [ Version program ]"
+echo "$title_md [ Version Program ]"
 echo "$text_md $cmd_version"
 echo
 echo "$title_md [ Short Description ]"
@@ -1573,28 +1570,28 @@ echo
 echo "$title_md [ Long Description ]"
 echo "$text_md $cmd_longdescription"
 echo
-echo "$title_md [ File format ]"
+echo "$title_md [ File Format ]"
 echo "$text_md" "$($command_file $cmd_realpath  )"
 echo
-echo "$title_md [ MD5 sum ]"
+echo "$title_md [ MD5 Sum ]"
 echo "$text_md" "$($command_md5sum $cmd_realpath)"
 echo
-echo "$title_md [ Launched program ]"
+echo "$title_md [ Launched Program ]"
 echo "$text_md $cmd_realpath"
 echo
-echo "$title_md [ Cache directory  ]"
+echo "$title_md [ Cache Directory  ]"
 echo "$text_md $directory_cache"
 echo
-echo "$title_md [ Data directory   ]"
+echo "$title_md [ Data Directory   ]"
 echo "$text_md $directory_data"
 echo
-echo "$title_md [ Default preferences ]"
+echo "$title_md [ Default Preferences ]"
 echo "$text_md $default_preferences"
 echo
-echo "$title_md [ Default autolog ]"
+echo "$title_md [ Default Autolog ]"
 echo "$text_md $default_autolog"
 echo
-echo "$title_md [ Default filelog ]"
+echo "$title_md [ Default Filelog ]"
 echo "$text_md $default_filelog"
 echo 
 exit ; fi
