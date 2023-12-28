@@ -992,8 +992,8 @@ echo $head_autolog >> $default_autolog ; fi
 ####
 ####
 if [ "$allow_show_time" != "no" ] ; then
-head_timespam="$title_md [ _ok_ ] || [ Date and Time ] [ $(date) ]"
-echo $head_timespam ; fi
+config_show_timespam="$title_md [ _ok_ ] || [ Date and Time ] [ $(date) ]"
+echo $config_show_timespam ; fi
 ####
 ####
 #### :rutina-final-allow-timespam:
@@ -3715,7 +3715,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-filter6" ]; then 
-echo "$title_md [ $first_option ] [ List filter ipv6 ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ $first_option ] [ List filter ipv6 ] \
+[ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip6"
 echo
 echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
@@ -4059,7 +4060,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-arptables:
-##########    english: clone-systemfw: clone config file static static        ##########
+##########    english: clone-systemfw: clone config file static static               ##########
 ##########    spanish: clone-systemfw: clona archivo de configuracion prediseniado   ##########
 #### :rutina-inicial-clone-systemfw:
 ####
@@ -4073,7 +4074,8 @@ if [ "$first_option" == "clone-systemfw" ] && [ "$second_option" != "$NULL" ] ; 
 archivo="$second_option"
 case $archivo in client-*);; game-*);; games-*);; server-*);;
 *) echo "$title [ fail ] choose a valid systemfw to clone" ; exit ;; esac
-$cmd_realpath code $second_option | $command_grep -E "_use_|_prefix_|_port_|_shield_" &> $directory_config/$archivo
+$cmd_realpath code $second_option | $command_grep -E "_use_|_prefix_|_port_|_shield_" \
+&> $directory_config/$archivo
 if [ -s "$directory_config/$archivo" ] ; then 
 cat $directory_config/$archivo ;
 echo "$title_md [ _ok_ ] [ Created customfw with the name :    $archivo   ]"
@@ -4180,7 +4182,8 @@ if [ "$first_option" == "modify-config" ]; then
 ###
 if [ ! -f "$directory_config/$second_option" ] ; then $nada
 $cmd_realpath names-config
-echo "$text_md [ info ] [ usage: ] [ $cmd_realpath modify-config config-existent ]" ; exit; fi
+echo "$text_md [ info ] [ usage: ] [ $cmd_realpath modify-config config-existent ]"
+exit; fi
 ####
 ####
 if [ -f "$directory_config/$second_option" ] ; then $nada
@@ -4224,7 +4227,8 @@ if [ "$first_option" == "del-config" ]; then
 ####
 ####
 if [ ! -f $directory_config/$second_option ] ; then
-echo "$title_md [ info ] [ usage: ] [ $cmd_realpath del-config config-old ]" ; exit ; fi
+echo "$title_md [ info ] [ usage: ] [ $cmd_realpath del-config config-old ]"
+exit ; fi
 ####
 ####
 if [ -f $directory_config/$second_option ] ; then
@@ -4409,7 +4413,8 @@ echo "$title_md [ $first_option ] \
 #### 
 echo "$title_md [ info ] [ $file_installed installing.. ]"
 cp "$cmd_realpath" "$directory_temporal/fwiptables-tmp.sh" &> /dev/null
-cp "$directory_temporal/fwiptables-tmp.sh" "$directory_installed/$file_installed" &> /dev/null 
+cp "$directory_temporal/fwiptables-tmp.sh" "$directory_installed/$file_installed" \
+&> /dev/null 
 chmod 555 "$directory_installed/$file_installed" &> /dev/null 
 ####
 ####
@@ -4419,7 +4424,6 @@ chmod 555 "$directory_installed/$file_installed" &> /dev/null
 ####
 $directory_installed/$file_installed preferences-regen &> /dev/null
 $directory_installed/$file_installed config-regen &> /dev/null
-#### if [ -f "/usr/bin/$file_installed" ]; then /usr/bin/$file_installed ver; fi
 ####
 ####
 ####   english: Show final status from installer
@@ -4616,14 +4620,21 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "compile" ]; then 
-echo "$title_md [ $first_option ] [  Optionally compile from bash script ] [ compile.md]    "
-echo "$text_md [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling...         "
-echo "$text_md [ step ] [ 0 ] Necesary: fwiptables in source script bash                    "
-echo "$text_md [ step ] [ 1 ] Download obash from oficial web internet                      "
-echo "$text_md [ step ] [ 2 ] Compile with obash command using command make.                "
-echo "$text_md [ step ] [ 3a] Or run: obash -r -c -o ./destination.bin ./source-bash.sh        "
-echo "$text_md [ step ] [ 3b] Or run: obash -r -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd"
-echo "$title_md Actually, the file type is:                                                          "
+echo "$title_md [ $first_option ] \
+[  Optionally compile from bash script ] [ compile.md]    "
+echo "$text_md [ info ] \
+BASH SCRIPT WORKS fully. But if your desire is compiling...                       "
+echo "$text_md [ step ] \
+[ 0 ] Necesary: fwiptables in source script bash                                  "
+echo "$text_md [ step ] \
+[ 1 ] Download obash from oficial web internet                                    "
+echo "$text_md [ step ] \
+[ 2 ] Compile with obash command using command make.                              "
+echo "$text_md [ step ] \
+[ 3a] Or run: obash -r -c -o ./destination.bin ./source-bash.sh                   "
+echo "$text_md [ step ] \
+[ 3b] Or run: obash -r -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd  "
+echo "$title_md Actually, the file type is:  "
 file -L $cmd_realpath
 exit; fi
 ####
@@ -4635,10 +4646,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-compile-obash" ]; then 
-echo "$title_md [ $first_option ] [  optionally ] [ howto compile bash script with obash ] "
+echo "$title_md [ $first_option ] \
+[  optionally ] [ howto compile bash script with obash ] "
 echo "$title_md Compile /usr/bin/fwiptables-cmd in /usr/bin/fwiptables-bin"
-if [ "$command_obash" == "$NULL" ]; then echo "$title_md install obash to compile"; exit ; fi
-if [ "$command_uuid" == "$NULL" ]; then echo "$title_md install uuid to compile"; exit ; fi
+if [ "$command_obash" == "$NULL" ]
+then echo "$title_md install obash to compile"; exit ; fi
+if [ "$command_uuid" == "$NULL" ]
+then echo "$title_md install uuid to compile"; exit ; fi
 $command_obash -r -c -o $directory_installed/$file_installed.bin $directory_installed/$file_installed
 echo "$title then:"
 file -L $directory_installed/$file_installed
@@ -4901,7 +4915,8 @@ exit; fi
 if [ "$first_option" == "save" ]; then 
 echo "$title_md [ $first_option ]  [ save one firewall with one name ] "
 case "$second_option" in
-"$NULL") echo "$text_md [ info ] [ Usage: $cmd_realpath save fw-to-save ]" ; exit ;;
+"$NULL") echo "$text_md [ info ] [ Usage: $cmd_realpath save fw-to-save ]"
+exit ;;
 *) archivofin="$second_option" ;; 
 esac
 ####
@@ -5899,13 +5914,16 @@ case "$menuprincipal" in
 0204) clear ; $cmd_realpath cli names ;;
 0205) clear ; $cmd_realpath names ; echo "$fifty_md"
 read -p "Type the firewall name to read   " nombrecillo
-nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_realpath show $nombrecillo ;; 
-0206)archivo="$($favorite_text_dialog --stdout --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
+nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
+$cmd_realpath show $nombrecillo ;; 
+0206)archivo="$($favorite_text_dialog --stdout \
+--title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ;  echo "$fifty_md saved $archivo" ; $cmd_realpath save $archivo ;;
 0207) clear ; $cmd_realpath names ; echo "$fifty_md"
 read -p "| Type the firewall name to restore |   " nombrecillo
-nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_realpath load $nombrecillo ;;
+nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
+$cmd_realpath load $nombrecillo ;;
 0208) clear ; $cmd_realpath cli actual ;;
 ################################################################################
 0301) clear ; $cmd_realpath cli list4 ;;
@@ -5980,37 +5998,48 @@ nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_realpath load $n
 0604) clear ; $cmd_realpath cli off-line ; $cmd_realpath cli list4  ;;
 0605) clear ; $cmd_realpath cli all-permisive ; $cmd_realpath cli list4   ;;
 0606) 
-archivo="$($favorite_text_dialog  --title "custom" --stdout --inputbox "$($command_ls $directory_config)" 0 0)"
-archivo="$(echo $archivo | $command_sed s/\\///g)" ;  clear ; $cmd_realpath custom $archivo ;;
-
+archivo="$($favorite_text_dialog  --title "custom" --stdout \
+--inputbox "$($command_ls $directory_config)" 0 0)"
+archivo="$(echo $archivo | $command_sed s/\\///g)"
+clear ; $cmd_realpath custom $archivo ;;
 0607) 
-archivo="$($favorite_text_dialog  --title "custom" --stdout --inputbox "$($command_ls $directory_config)" 0 0)"
-archivo="$(echo $archivo | $command_sed s/\\///g)" ;  clear ; $cmd_realpath clone-systemfw $archivo ;;
-0611) archivo="$($favorite_text_dialog  --stdout --title "new-full-config example: file.cfg" \
+archivo="$($favorite_text_dialog  --title "custom" --stdout \
+--inputbox "$($command_ls $directory_config)" 0 0)"
+archivo="$(echo $archivo | $command_sed s/\\///g)"
+clear ; $cmd_realpath clone-systemfw $archivo ;;
+0611) archivo="$($favorite_text_dialog  --stdout \
+--title "new-full-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_realpath new-full-config $archivo ;;
-0612) archivo="$($favorite_text_dialog  --stdout --title "nueva-completa-config example: archivo.cfg" \
+0612) archivo="$($favorite_text_dialog  --stdout \
+--title "nueva-completa-config example: archivo.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_realpath nueva-completa-config $archivo ;;
-0613) archivo="$($favorite_text_dialog  --stdout --title "new-mini-config example: file.cfg" \
+0613) archivo="$($favorite_text_dialog  --stdout \
+--title "new-mini-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_realpath new-mini-config $archivo ;;
-0614) archivo="$($favorite_text_dialog  --stdout --title "nueva-mini-config example: archivo.cfg" \
+0614) archivo="$($favorite_text_dialog  --stdout \
+--title "nueva-mini-config example: archivo.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_realpath nueva-mini-config $archivo ;;
-0615) archivo="$($favorite_text_dialog  --stdout --title "show-config example: file.cfg" \
+0615) archivo="$($favorite_text_dialog  --stdout \
+--title "show-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
-clear ; $cmd_realpath show-config $archivo ; echo "$text_md [ info ] [ Use: Launch: $cmd_realpath custom $archivo ]";;
-0616) archivo="$($favorite_text_dialog  --stdout --title "modify-config example: file.cfg" \
+clear ; $cmd_realpath show-config $archivo
+echo "$text_md [ info ] [ Use: Launch: $cmd_realpath custom $archivo ]";;
+0616) archivo="$($favorite_text_dialog  --stdout \
+--title "modify-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_realpath modify-config $archivo ;;
-0617) archivo="$($favorite_text_dialog  --stdout --title "del-config" --inputbox "$($command_ls $directory_config)" 0 0)"
+0617) archivo="$($favorite_text_dialog  --stdout \
+--title "del-config" --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_realpath del-config $archivo ; echo "deleted $archivo" ;;
 0618) clear ; $cmd_realpath cli names-config ;;
@@ -6047,7 +6076,8 @@ clear ; $cmd_realpath del-config $archivo ; echo "deleted $archivo" ;;
 0728) clear ; $cmd_realpath cli download;;
 0729) clear ; $cmd_realpath cli install;;
 ################################################################################
-*) clear ; $favorite_text_dialog  --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
+*) clear ; $favorite_text_dialog  --msgbox "fwiptables good bye" 0 0
+clear ; exit ;;
 esac 
 $cmd_realpath text-pause
 clear ; 
@@ -6062,7 +6092,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "text-pause" ]; then $nada
-read -p '##### [ _ok_ ] ##### Press [enter] to continue now with the cli-menu ##### '
+read -p '$title_md [ _ok_ ] $title_md Press [enter] \
+to continue now with the cli-menu $title_md'
 exit; fi
 ####
 ####
@@ -6079,10 +6110,10 @@ exit; fi
 ####
 ####
 #### :rutina-final-graphicall-pause:
-###############################################################################################################
-###############################################################################################################
-##########    english: gui-roll-zenity: gui roll general: gui with roll  ##########
-##########    spanish: gui-roll-zenity: gui roll general: gui con roll   ##########
+##################################################################################
+##################################################################################
+##########    english: gui-roll-zenity: gui roll general: gui with roll  #########
+##########    spanish: gui-roll-zenity: gui roll general: gui con roll   #########
 #### :rutina-inicial-gui-roll-zenity:
 ####
 ####
@@ -6100,13 +6131,20 @@ selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
-"01-Firewall-Control")$cmd_realpath gui-roll-zenity-firewall-control ; exit ;;
-"02-Firewall-List-With-Conceptual")$cmd_realpath gui-roll-zenity-firewall-listconceptual ; exit ;;
-"02-Firewall-List-With-Numeral")$cmd_realpath gui-roll-zenity-firewall-listnumeral ; exit ;;
-"03-firewall-customfw")$cmd_realpath gui-roll-zenity-firewall-customfw ; exit ;;
-"04-firewall-systemfw")$cmd_realpath gui-roll-zenity-firewall-systemfw ; exit ;;
-"05-options-easy")$cmd_realpath gui-roll-zenity-options-easy ; exit ;;
-"06-options-expert")$cmd_realpath gui-roll-zenity-options-expert ; exit ;;
+"01-Firewall-Control")
+$cmd_realpath gui-roll-zenity-firewall-control ; exit ;;
+"02-Firewall-List-With-Conceptual")
+$cmd_realpath gui-roll-zenity-firewall-listconceptual ; exit ;;
+"02-Firewall-List-With-Numeral")
+$cmd_realpath gui-roll-zenity-firewall-listnumeral ; exit ;;
+"03-firewall-customfw")
+$cmd_realpath gui-roll-zenity-firewall-customfw ; exit ;;
+"04-firewall-systemfw")
+$cmd_realpath gui-roll-zenity-firewall-systemfw ; exit ;;
+"05-options-easy")
+$cmd_realpath gui-roll-zenity-options-easy ; exit ;;
+"06-options-expert")
+$cmd_realpath gui-roll-zenity-options-expert ; exit ;;
 esac
 ####
 ####
@@ -6138,9 +6176,12 @@ case "$selection_final" in
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
 "gui-help-menu")$cmd_realpath -gui-zenity firewall-control ;;
 "gui-info-menu")$cmd_realpath -gui-zenity firewall-control ;;
-"stop")$cmd_realpath -gui-zenity stop ; $cmd_realpath -gui-zenity list4;;
-"continue")$cmd_realpath -gui-zenity continue ; $cmd_realpath -gui-zenity list4;;
-"reset")$cmd_realpath -gui-zenity reset ; $cmd_realpath -gui-zenity list4;;
+"stop")$cmd_realpath -gui-zenity stop
+$cmd_realpath -gui-zenity list4;;
+"continue")$cmd_realpath -gui-zenity continue
+$cmd_realpath -gui-zenity list4;;
+"reset")$cmd_realpath -gui-zenity reset
+$cmd_realpath -gui-zenity list4;;
 "names")$cmd_realpath -gui-zenity names ;;
 "show")archivo="$($favorite_graphicall_dialog  --entry \
 --width=$graphicall_width --height=$graphicall_height \
@@ -6153,7 +6194,8 @@ $cmd_realpath -gui-zenity save $archivo ;;
 "load")archivo="$($favorite_graphicall_dialog  --entry \
 --width=$graphicall_width --height=$graphicall_height \
 --title="[Load Firewall]" --entry-text="cfg to load")" ;
-$cmd_realpath -gui-zenity load $archivo ; $cmd_realpath -gui-zenity list4;;
+$cmd_realpath -gui-zenity load $archivo
+$cmd_realpath -gui-zenity list4;;
 "actual")$cmd_realpath -gui-zenity actual ;;
 esac
 ####
