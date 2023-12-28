@@ -865,6 +865,7 @@ case "$first_option" in
 "free-ram") first_option="free" ;;
 "ram") first_option="free" ;;
 "list-allrules") first_option="list-alltables" ;;
+"new-version") first_option="expert-new-version" ;;
 esac
 ####
 ####
@@ -4558,18 +4559,35 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-new-version" ]; then 
-####
-####
 if [ "$command_curl" == "$NULL" ]; then
 echo "$title_md Install curl to show stable latest version"; fi
 ####
+#### actually
+####
+echo "$title_md Show the fwiptables actually installed is"
+$cmd_realpath version | $command_grep -E -i "program|details"
+####
+#### latest stable
 ####
 echo "$title_md Show the fwiptables stable latest"
-echo "$title_md show the last stable is:"
+echo "$title_md show the lastest stable is:"
 descarga="$directory_log/fwiptables-cmd"
 $command_curl $web_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
 $command_grep -E -i "program|details"
+rm $descarga
+####
+#### latest unstable
+####
+echo "$title_md Show the fwiptables unstable latest"
+echo "$title_md show the latest unstable is:"
+descarga="$directory_log/fwiptables-cmd"
+$command_curl $git_download_sourceforge -s -L -o $descarga \
+&& chmod ugo+x $descarga && $descarga version | \
+$command_grep -E -i "program|details"
+rm $descarga
+####
+####
 exit; fi
 ####
 ####
