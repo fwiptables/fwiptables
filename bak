@@ -535,9 +535,6 @@ head_waiting_gui="$title_md [ info ] [ gui ] $head_waiting_all "
 head_waiting_log="$title_md [ info ] [ log ] $head_waiting_all "
 head_waiting_web="$title_md [ info ] [ web ] $head_waiting_all "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_autolog="[ $cmd_realpath ] [ $cmd_version ] [ $(date) ] \
-[ $first_option $second_option $third_option ]"
-#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_cover="$title_md [ $file_installed $cmd_version ] [ $X11_OR_WAYLAND ] \
 [ Options: $cmd_realpath options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -868,6 +865,7 @@ case "$first_option" in
 "free-ram") first_option="free" ;;
 "ram") first_option="free" ;;
 "list-allrules") first_option="list-alltables" ;;
+"new-version") first_option="expert-new-version" ;;
 esac
 ####
 ####
@@ -983,8 +981,8 @@ exit ; fi
 ####
 ####
 if [ "$allow_save_autolog" != "no" ]; then 
-head_autolog="[ $cmd_realpath ] [ $cmd_version ] \
-[ $(date) ] [ $first_option $second_option $third_option ]"
+head_autolog="date: $(date) realpath: $cmd_realpath version: $cmd_version \
+options: $first_option $second_option $third_option"
 echo $head_autolog >> $default_autolog ; fi
 ####
 ####
@@ -995,8 +993,8 @@ echo $head_autolog >> $default_autolog ; fi
 ####
 ####
 if [ "$allow_show_time" != "no" ] ; then
-head_timespam="$title_md [ _ok_ ] || [ Date and Time ] [ $(date) ]"
-echo $head_timespam ; fi
+config_show_timespam="$title_md [ _ok_ ] || [ Date and Time ] [ $(date) ]"
+echo $config_show_timespam ; fi
 ####
 ####
 #### :rutina-final-allow-timespam:
@@ -1313,7 +1311,7 @@ echo "allow_separate_rules=                               ## or void or no"
 echo "config_close_deny=DROP                              ## or DROP or REJECT"
 echo "$title_md"
 echo "$title_md # default log"
-echo "allow_save_autolog=no                               ## or void or no"
+echo "allow_save_autolog=                                 ## or void or no"
 echo "allow_show_time=no                                  ## or void or no"
 echo "$title_md"  
 echo "$title_md # default programs"
@@ -3718,7 +3716,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-filter6" ]; then 
-echo "$title_md [ $first_option ] [ List filter ipv6 ] [ it is only sufficent or with legacy or with nft ] "
+echo "$title_md [ $first_option ] [ List filter ipv6 ] \
+[ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip6"
 echo
 echo "$title_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
@@ -4062,7 +4061,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-arptables:
-##########    english: clone-systemfw: clone config file static static        ##########
+##########    english: clone-systemfw: clone config file static static               ##########
 ##########    spanish: clone-systemfw: clona archivo de configuracion prediseniado   ##########
 #### :rutina-inicial-clone-systemfw:
 ####
@@ -4076,7 +4075,8 @@ if [ "$first_option" == "clone-systemfw" ] && [ "$second_option" != "$NULL" ] ; 
 archivo="$second_option"
 case $archivo in client-*);; game-*);; games-*);; server-*);;
 *) echo "$title [ fail ] choose a valid systemfw to clone" ; exit ;; esac
-$cmd_realpath code $second_option | $command_grep -E "_use_|_prefix_|_port_|_shield_" &> $directory_config/$archivo
+$cmd_realpath code $second_option | $command_grep -E "_use_|_prefix_|_port_|_shield_" \
+&> $directory_config/$archivo
 if [ -s "$directory_config/$archivo" ] ; then 
 cat $directory_config/$archivo ;
 echo "$title_md [ _ok_ ] [ Created customfw with the name :    $archivo   ]"
@@ -4183,7 +4183,8 @@ if [ "$first_option" == "modify-config" ]; then
 ###
 if [ ! -f "$directory_config/$second_option" ] ; then $nada
 $cmd_realpath names-config
-echo "$text_md [ info ] [ usage: ] [ $cmd_realpath modify-config config-existent ]" ; exit; fi
+echo "$text_md [ info ] [ usage: ] [ $cmd_realpath modify-config config-existent ]"
+exit; fi
 ####
 ####
 if [ -f "$directory_config/$second_option" ] ; then $nada
@@ -4227,7 +4228,8 @@ if [ "$first_option" == "del-config" ]; then
 ####
 ####
 if [ ! -f $directory_config/$second_option ] ; then
-echo "$title_md [ info ] [ usage: ] [ $cmd_realpath del-config config-old ]" ; exit ; fi
+echo "$title_md [ info ] [ usage: ] [ $cmd_realpath del-config config-old ]"
+exit ; fi
 ####
 ####
 if [ -f $directory_config/$second_option ] ; then
@@ -4412,7 +4414,8 @@ echo "$title_md [ $first_option ] \
 #### 
 echo "$title_md [ info ] [ $file_installed installing.. ]"
 cp "$cmd_realpath" "$directory_temporal/fwiptables-tmp.sh" &> /dev/null
-cp "$directory_temporal/fwiptables-tmp.sh" "$directory_installed/$file_installed" &> /dev/null 
+cp "$directory_temporal/fwiptables-tmp.sh" "$directory_installed/$file_installed" \
+&> /dev/null 
 chmod 555 "$directory_installed/$file_installed" &> /dev/null 
 ####
 ####
@@ -4422,7 +4425,6 @@ chmod 555 "$directory_installed/$file_installed" &> /dev/null
 ####
 $directory_installed/$file_installed preferences-regen &> /dev/null
 $directory_installed/$file_installed config-regen &> /dev/null
-#### if [ -f "/usr/bin/$file_installed" ]; then /usr/bin/$file_installed ver; fi
 ####
 ####
 ####   english: Show final status from installer
@@ -4557,18 +4559,35 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-new-version" ]; then 
-####
-####
 if [ "$command_curl" == "$NULL" ]; then
 echo "$title_md Install curl to show stable latest version"; fi
 ####
+#### actually
+####
+echo "$title_md Show the fwiptables actually installed is"
+$cmd_realpath version | $command_grep -E -i "program|details"
+####
+#### latest stable
 ####
 echo "$title_md Show the fwiptables stable latest"
-echo "$title_md show the last stable is:"
+echo "$title_md show the lastest stable is:"
 descarga="$directory_log/fwiptables-cmd"
 $command_curl $web_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
 $command_grep -E -i "program|details"
+rm $descarga
+####
+#### latest unstable
+####
+echo "$title_md Show the fwiptables unstable latest"
+echo "$title_md show the latest unstable is:"
+descarga="$directory_log/fwiptables-cmd"
+$command_curl $git_download_sourceforge -s -L -o $descarga \
+&& chmod ugo+x $descarga && $descarga version | \
+$command_grep -E -i "program|details"
+rm $descarga
+####
+####
 exit; fi
 ####
 ####
@@ -4619,14 +4638,21 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "compile" ]; then 
-echo "$title_md [ $first_option ] [  Optionally compile from bash script ] [ compile.md]    "
-echo "$text_md [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling...         "
-echo "$text_md [ step ] [ 0 ] Necesary: fwiptables in source script bash                    "
-echo "$text_md [ step ] [ 1 ] Download obash from oficial web internet                      "
-echo "$text_md [ step ] [ 2 ] Compile with obash command using command make.                "
-echo "$text_md [ step ] [ 3a] Or run: obash -r -c -o ./destination.bin ./source-bash.sh        "
-echo "$text_md [ step ] [ 3b] Or run: obash -r -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd"
-echo "$title_md Actually, the file type is:                                                          "
+echo "$title_md [ $first_option ] \
+[  Optionally compile from bash script ] [ compile.md]    "
+echo "$text_md [ info ] \
+BASH SCRIPT WORKS fully. But if your desire is compiling...                       "
+echo "$text_md [ step ] \
+[ 0 ] Necesary: fwiptables in source script bash                                  "
+echo "$text_md [ step ] \
+[ 1 ] Download obash from oficial web internet                                    "
+echo "$text_md [ step ] \
+[ 2 ] Compile with obash command using command make.                              "
+echo "$text_md [ step ] \
+[ 3a] Or run: obash -r -c -o ./destination.bin ./source-bash.sh                   "
+echo "$text_md [ step ] \
+[ 3b] Or run: obash -r -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd  "
+echo "$title_md Actually, the file type is:  "
 file -L $cmd_realpath
 exit; fi
 ####
@@ -4638,10 +4664,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-compile-obash" ]; then 
-echo "$title_md [ $first_option ] [  optionally ] [ howto compile bash script with obash ] "
+echo "$title_md [ $first_option ] \
+[  optionally ] [ howto compile bash script with obash ] "
 echo "$title_md Compile /usr/bin/fwiptables-cmd in /usr/bin/fwiptables-bin"
-if [ "$command_obash" == "$NULL" ]; then echo "$title_md install obash to compile"; exit ; fi
-if [ "$command_uuid" == "$NULL" ]; then echo "$title_md install uuid to compile"; exit ; fi
+if [ "$command_obash" == "$NULL" ]
+then echo "$title_md install obash to compile"; exit ; fi
+if [ "$command_uuid" == "$NULL" ]
+then echo "$title_md install uuid to compile"; exit ; fi
 $command_obash -r -c -o $directory_installed/$file_installed.bin $directory_installed/$file_installed
 echo "$title then:"
 file -L $directory_installed/$file_installed
@@ -4904,7 +4933,8 @@ exit; fi
 if [ "$first_option" == "save" ]; then 
 echo "$title_md [ $first_option ]  [ save one firewall with one name ] "
 case "$second_option" in
-"$NULL") echo "$text_md [ info ] [ Usage: $cmd_realpath save fw-to-save ]" ; exit ;;
+"$NULL") echo "$text_md [ info ] [ Usage: $cmd_realpath save fw-to-save ]"
+exit ;;
 *) archivofin="$second_option" ;; 
 esac
 ####
@@ -5902,13 +5932,16 @@ case "$menuprincipal" in
 0204) clear ; $cmd_realpath cli names ;;
 0205) clear ; $cmd_realpath names ; echo "$fifty_md"
 read -p "Type the firewall name to read   " nombrecillo
-nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_realpath show $nombrecillo ;; 
-0206)archivo="$($favorite_text_dialog --stdout --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
+nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
+$cmd_realpath show $nombrecillo ;; 
+0206)archivo="$($favorite_text_dialog --stdout \
+--title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ;  echo "$fifty_md saved $archivo" ; $cmd_realpath save $archivo ;;
 0207) clear ; $cmd_realpath names ; echo "$fifty_md"
 read -p "| Type the firewall name to restore |   " nombrecillo
-nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_realpath load $nombrecillo ;;
+nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
+$cmd_realpath load $nombrecillo ;;
 0208) clear ; $cmd_realpath cli actual ;;
 ################################################################################
 0301) clear ; $cmd_realpath cli list4 ;;
@@ -5983,37 +6016,48 @@ nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_realpath load $n
 0604) clear ; $cmd_realpath cli off-line ; $cmd_realpath cli list4  ;;
 0605) clear ; $cmd_realpath cli all-permisive ; $cmd_realpath cli list4   ;;
 0606) 
-archivo="$($favorite_text_dialog  --title "custom" --stdout --inputbox "$($command_ls $directory_config)" 0 0)"
-archivo="$(echo $archivo | $command_sed s/\\///g)" ;  clear ; $cmd_realpath custom $archivo ;;
-
+archivo="$($favorite_text_dialog  --title "custom" --stdout \
+--inputbox "$($command_ls $directory_config)" 0 0)"
+archivo="$(echo $archivo | $command_sed s/\\///g)"
+clear ; $cmd_realpath custom $archivo ;;
 0607) 
-archivo="$($favorite_text_dialog  --title "custom" --stdout --inputbox "$($command_ls $directory_config)" 0 0)"
-archivo="$(echo $archivo | $command_sed s/\\///g)" ;  clear ; $cmd_realpath clone-systemfw $archivo ;;
-0611) archivo="$($favorite_text_dialog  --stdout --title "new-full-config example: file.cfg" \
+archivo="$($favorite_text_dialog  --title "custom" --stdout \
+--inputbox "$($command_ls $directory_config)" 0 0)"
+archivo="$(echo $archivo | $command_sed s/\\///g)"
+clear ; $cmd_realpath clone-systemfw $archivo ;;
+0611) archivo="$($favorite_text_dialog  --stdout \
+--title "new-full-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_realpath new-full-config $archivo ;;
-0612) archivo="$($favorite_text_dialog  --stdout --title "nueva-completa-config example: archivo.cfg" \
+0612) archivo="$($favorite_text_dialog  --stdout \
+--title "nueva-completa-config example: archivo.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_realpath nueva-completa-config $archivo ;;
-0613) archivo="$($favorite_text_dialog  --stdout --title "new-mini-config example: file.cfg" \
+0613) archivo="$($favorite_text_dialog  --stdout \
+--title "new-mini-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_realpath new-mini-config $archivo ;;
-0614) archivo="$($favorite_text_dialog  --stdout --title "nueva-mini-config example: archivo.cfg" \
+0614) archivo="$($favorite_text_dialog  --stdout \
+--title "nueva-mini-config example: archivo.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_realpath nueva-mini-config $archivo ;;
-0615) archivo="$($favorite_text_dialog  --stdout --title "show-config example: file.cfg" \
+0615) archivo="$($favorite_text_dialog  --stdout \
+--title "show-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
-clear ; $cmd_realpath show-config $archivo ; echo "$text_md [ info ] [ Use: Launch: $cmd_realpath custom $archivo ]";;
-0616) archivo="$($favorite_text_dialog  --stdout --title "modify-config example: file.cfg" \
+clear ; $cmd_realpath show-config $archivo
+echo "$text_md [ info ] [ Use: Launch: $cmd_realpath custom $archivo ]";;
+0616) archivo="$($favorite_text_dialog  --stdout \
+--title "modify-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_realpath modify-config $archivo ;;
-0617) archivo="$($favorite_text_dialog  --stdout --title "del-config" --inputbox "$($command_ls $directory_config)" 0 0)"
+0617) archivo="$($favorite_text_dialog  --stdout \
+--title "del-config" --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_realpath del-config $archivo ; echo "deleted $archivo" ;;
 0618) clear ; $cmd_realpath cli names-config ;;
@@ -6050,7 +6094,8 @@ clear ; $cmd_realpath del-config $archivo ; echo "deleted $archivo" ;;
 0728) clear ; $cmd_realpath cli download;;
 0729) clear ; $cmd_realpath cli install;;
 ################################################################################
-*) clear ; $favorite_text_dialog  --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
+*) clear ; $favorite_text_dialog  --msgbox "fwiptables good bye" 0 0
+clear ; exit ;;
 esac 
 $cmd_realpath text-pause
 clear ; 
@@ -6065,7 +6110,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "text-pause" ]; then $nada
-read -p '##### [ _ok_ ] ##### Press [enter] to continue now with the cli-menu ##### '
+read -p '$title_md [ _ok_ ] $title_md Press [enter] \
+to continue now with the cli-menu $title_md'
 exit; fi
 ####
 ####
@@ -6082,10 +6128,10 @@ exit; fi
 ####
 ####
 #### :rutina-final-graphicall-pause:
-###############################################################################################################
-###############################################################################################################
-##########    english: gui-roll-zenity: gui roll general: gui with roll  ##########
-##########    spanish: gui-roll-zenity: gui roll general: gui con roll   ##########
+##################################################################################
+##################################################################################
+##########    english: gui-roll-zenity: gui roll general: gui with roll  #########
+##########    spanish: gui-roll-zenity: gui roll general: gui con roll   #########
 #### :rutina-inicial-gui-roll-zenity:
 ####
 ####
@@ -6103,13 +6149,20 @@ selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
-"01-Firewall-Control")$cmd_realpath gui-roll-zenity-firewall-control ; exit ;;
-"02-Firewall-List-With-Conceptual")$cmd_realpath gui-roll-zenity-firewall-listconceptual ; exit ;;
-"02-Firewall-List-With-Numeral")$cmd_realpath gui-roll-zenity-firewall-listnumeral ; exit ;;
-"03-firewall-customfw")$cmd_realpath gui-roll-zenity-firewall-customfw ; exit ;;
-"04-firewall-systemfw")$cmd_realpath gui-roll-zenity-firewall-systemfw ; exit ;;
-"05-options-easy")$cmd_realpath gui-roll-zenity-options-easy ; exit ;;
-"06-options-expert")$cmd_realpath gui-roll-zenity-options-expert ; exit ;;
+"01-Firewall-Control")
+$cmd_realpath gui-roll-zenity-firewall-control ; exit ;;
+"02-Firewall-List-With-Conceptual")
+$cmd_realpath gui-roll-zenity-firewall-listconceptual ; exit ;;
+"02-Firewall-List-With-Numeral")
+$cmd_realpath gui-roll-zenity-firewall-listnumeral ; exit ;;
+"03-firewall-customfw")
+$cmd_realpath gui-roll-zenity-firewall-customfw ; exit ;;
+"04-firewall-systemfw")
+$cmd_realpath gui-roll-zenity-firewall-systemfw ; exit ;;
+"05-options-easy")
+$cmd_realpath gui-roll-zenity-options-easy ; exit ;;
+"06-options-expert")
+$cmd_realpath gui-roll-zenity-options-expert ; exit ;;
 esac
 ####
 ####
@@ -6141,9 +6194,12 @@ case "$selection_final" in
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
 "gui-help-menu")$cmd_realpath -gui-zenity firewall-control ;;
 "gui-info-menu")$cmd_realpath -gui-zenity firewall-control ;;
-"stop")$cmd_realpath -gui-zenity stop ; $cmd_realpath -gui-zenity list4;;
-"continue")$cmd_realpath -gui-zenity continue ; $cmd_realpath -gui-zenity list4;;
-"reset")$cmd_realpath -gui-zenity reset ; $cmd_realpath -gui-zenity list4;;
+"stop")$cmd_realpath -gui-zenity stop
+$cmd_realpath -gui-zenity list4;;
+"continue")$cmd_realpath -gui-zenity continue
+$cmd_realpath -gui-zenity list4;;
+"reset")$cmd_realpath -gui-zenity reset
+$cmd_realpath -gui-zenity list4;;
 "names")$cmd_realpath -gui-zenity names ;;
 "show")archivo="$($favorite_graphicall_dialog  --entry \
 --width=$graphicall_width --height=$graphicall_height \
@@ -6156,7 +6212,8 @@ $cmd_realpath -gui-zenity save $archivo ;;
 "load")archivo="$($favorite_graphicall_dialog  --entry \
 --width=$graphicall_width --height=$graphicall_height \
 --title="[Load Firewall]" --entry-text="cfg to load")" ;
-$cmd_realpath -gui-zenity load $archivo ; $cmd_realpath -gui-zenity list4;;
+$cmd_realpath -gui-zenity load $archivo
+$cmd_realpath -gui-zenity list4;;
 "actual")$cmd_realpath -gui-zenity actual ;;
 esac
 ####
@@ -6551,13 +6608,20 @@ selection_final="$($favorite_graphicall_dialog \
 ####
 case "$selection_final" in
 1) exit ;;
-01-Firewall-Control*)$cmd_realpath gui-menu-firewall-control ; exit ;;
-02-Firewall-List-With-Conceptual*)$cmd_realpath gui-menu-firewall-listconceptual ; exit ;;
-02-Firewall-List-With-Numeral*)$cmd_realpath gui-menu-firewall-listnumeral ; exit ;;
-03-firewall-customfw*)$cmd_realpath gui-menu-firewall-customfw ; exit ;;
-04-firewall-systemfw*)$cmd_realpath gui-menu-firewall-systemfw ; exit ;;
-05-options-easy*)$cmd_realpath gui-menu-options-easy ; exit ;;
-06-options-expert*) $cmd_realpath gui-menu-options-expert ; exit ;;
+01-Firewall-Control*)
+$cmd_realpath gui-menu-firewall-control ; exit ;;
+02-Firewall-List-With-Conceptual*)
+$cmd_realpath gui-menu-firewall-listconceptual ; exit ;;
+02-Firewall-List-With-Numeral*)
+$cmd_realpath gui-menu-firewall-listnumeral ; exit ;;
+03-firewall-customfw*)
+$cmd_realpath gui-menu-firewall-customfw ; exit ;;
+04-firewall-systemfw*)
+$cmd_realpath gui-menu-firewall-systemfw ; exit ;;
+05-options-easy*)
+$cmd_realpath gui-menu-options-easy ; exit ;;
+06-options-expert*)
+$cmd_realpath gui-menu-options-expert ; exit ;;
 esac
 ####
 ####
@@ -6725,9 +6789,12 @@ then echo $head_waiting_gui ; echo $give_cover
 case "$favorite_graphicall_dialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
-custom|clone-systemfw|eraserules|wizard-mini|wizard-full|custom-cfg|off-line|all-permisive|\
-new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
-names-config|show-config|modify-config|del-config|config-regen|examples-config"
+custom|clone-systemfw|eraserules|wizard-mini|wizard-full|\
+custom-cfg|off-line|all-permisive|\
+new-full-config|nueva-completa-config|\
+new-mini-config|nueva-mini-config|\
+names-config|show-config|modify-config|\
+del-config|config-regen|examples-config"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog \
 --width=$graphicall_width --height=$graphicall_height \
@@ -6742,11 +6809,16 @@ case "$selection_final" in
 gui-principal-menu) $cmd_realpath gui-menu ;;
 gui-help-menu*) $cmd_realpath -gui firewall-customfw ;;
 gui-info-menu*) $cmd_realpath -gui firewall-customfw ;;
-eraserules*)$cmd_realpath -gui eraserules ; $cmd_realpath gui list4;;
-wizard-full*)$cmd_realpath -gui wizard-full ; $cmd_realpath gui list4;;
-wizard-mini*)$cmd_realpath -gui wizard-mini ; $cmd_realpath gui list4;;
-off-line*)$cmd_realpath -gui off-line ; $cmd_realpath gui list4;;
-all-permisive*)$cmd_realpath -gui all-permisive ; $cmd_realpath gui list4;;
+eraserules*)$cmd_realpath -gui eraserules
+$cmd_realpath gui list4;;
+wizard-full*)$cmd_realpath -gui wizard-full
+$cmd_realpath gui list4;;
+wizard-mini*)$cmd_realpath -gui wizard-mini
+$cmd_realpath gui list4;;
+off-line*)$cmd_realpath -gui off-line
+$cmd_realpath gui list4;;
+all-permisive*)$cmd_realpath -gui all-permisive
+$cmd_realpath gui list4;;
 custom*)archivo="$($favorite_graphicall_dialog  --entry \
 --width=$graphicall_width --height=$graphicall_height \
 --title="[Launch Custom]" \
@@ -6812,11 +6884,15 @@ then echo $head_waiting_gui ; echo $give_cover
 case "$favorite_graphicall_dialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
-client-basic|client-web|client-ipp|client-irc|client-mail|client-news|client-ftp|\
-client-git|client-vnc|client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
+client-basic|client-web|client-ipp|client-irc|\
+client-mail|client-news|client-ftp|\
+client-git|client-vnc|client-torrent|client-vpn|\
+client-tor|lan-tor|lan-vpn|shield-ssh|\
 games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|\
-server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|server-domain|\
-server-news|server-mail|server-ftp|server-teamspeak|server-mumble|server-sql|server-asterisk"
+server-web|server-vnc|server-samba|server-ssh|\
+server-print|server-lamp|server-domain|\
+server-news|server-mail|server-ftp|server-teamspeak|\
+server-mumble|server-sql|server-asterisk"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog \
 --width=$graphicall_width --height=$graphicall_height \
@@ -6884,7 +6960,8 @@ echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
 list-options|clasic-options|info-options|expert|compile|download|intro|\
-ip4|ip6|speed-ip4|speed-ip6|sockets|license|notes|about|examples|depends|variables|commands"
+ip4|ip6|speed-ip4|speed-ip6|sockets|license|notes|about|\
+examples|depends|variables|commands"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog \
 --width=$graphicall_width --height=$graphicall_height \
@@ -6991,7 +7068,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "custom" ]; then 
-echo "$title_md [ info ] [ loading firewall custom ] [ $directory_config/$second_option ]" ;
+echo "$title_md [ info ] [ loading firewall custom ] \
+[ $directory_config/$second_option ]" ;
 launch_rules_firewall="yes" ;
 type_firewall="customfw" ;
 name_firewall="$second_option" ;
@@ -7001,11 +7079,12 @@ name_firewall="$second_option" ;
 #### spanish: configura variables modificadas si estan ahi
 ####
 ####
-if [ -f "$directory_config/$second_option" ]; then source $directory_config/$second_option ; fi
+if [ -f "$directory_config/$second_option" ]
+then source $directory_config/$second_option ; fi
 ####
 ####
-if [ ! -f "$directory_config/$second_option" ]; then  $cmd_realpath names-config ; 
-exit; fi
+if [ ! -f "$directory_config/$second_option" ]
+then  $cmd_realpath names-config ; exit; fi
 ####
 ####
 fi
@@ -8615,13 +8694,17 @@ $allow_use_nft $allow_use_ipv6   $command_ip6tables_nft -A FORWARD \
 #### spanish: ipv6-icmp acepta en legacy y acepta en nft
 ####
 ####
-$allow_use_legacy $allow_use_ipv6 $command_ip6tables_legacy -A INPUT -p ipv6-icmp -j ACCEPT \
+$allow_use_legacy $allow_use_ipv6 $command_ip6tables_legacy \
+-A INPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "nexthop ip6" &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT -p ipv6-icmp -j ACCEPT \
+$allow_use_legacy $allow_use_ipv6 $command_ip6tables_legacy \
+-A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "nexthop ip6" &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tables_nft -A INPUT -p ipv6-icmp -j ACCEPT \
+$allow_use_nft $allow_use_ipv6 $command_ip6tables_nft \
+-A INPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "nexthop ip6" &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT \
+$allow_use_nft $allow_use_ipv6 $command_ip6tables_nft \
+-A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "nexthop ip6" &> /dev/null
 ####
 ####
@@ -8629,35 +8712,48 @@ $allow_use_nft $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT -p ipv6-icmp -j 
 #### spanish: cierra con drop legacy y cierra con drop nft
 ####
 ####
-$allow_use_legacy $command_iptables_legacy -A INPUT -j $config_close_deny \
+$allow_use_legacy $command_iptables_legacy \
+-A INPUT -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
-$allow_use_legacy $command_iptables_legacy -A OUTPUT -j $config_close_deny \
+$allow_use_legacy $command_iptables_legacy \
+-A OUTPUT -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
-$allow_use_nft $command_iptables_nft -A INPUT -j $config_close_deny \
+$allow_use_nft $command_iptables_nft -A \
+INPUT -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
-$allow_use_nft $command_iptables_nft -A OUTPUT -j $config_close_deny \
+$allow_use_nft $command_iptables_nft \
+-A OUTPUT -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
-$allow_use_legacy $command_ip6tables_legacy -A INPUT -j $config_close_deny \
+$allow_use_legacy $command_ip6tables_legacy \
+-A INPUT -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
-$allow_use_legacy $command_ip6tables_legacy -A OUTPUT -j $config_close_deny \
+$allow_use_legacy $command_ip6tables_legacy \
+-A OUTPUT -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
-$allow_use_nft $command_ip6tables_nft -A INPUT -j $config_close_deny \
+$allow_use_nft $command_ip6tables_nft \
+-A INPUT -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
-$allow_use_nft $command_ip6tables_nft -A OUTPUT -j $config_close_deny \
--m comment --comment "close rule" &> /dev/null
-####
-####
-$allow_use_legacy $command_iptables_nft -A FORWARD -j $config_close_deny \
--m comment --comment "close rule" &> /dev/null
-$allow_use_nft $command_iptables_nft -A FORWARD -j $config_close_deny \
--m comment --comment "close rule" &> /dev/null
-$allow_use_legacy $command_ip6tables_nft -A FORWARD -j $config_close_deny \
--m comment --comment "close rule" &> /dev/null
-$allow_use_nft $command_ip6tables_nft -A FORWARD -j $config_close_deny \
+$allow_use_nft $command_ip6tables_nft \
+-A OUTPUT -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
 ####
 ####
-echo "$title_md [ _ok_ ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
+$allow_use_legacy $command_iptables_nft \
+-A FORWARD -j $config_close_deny \
+-m comment --comment "close rule" &> /dev/null
+$allow_use_nft $command_iptables_nft \
+-A FORWARD -j $config_close_deny \
+-m comment --comment "close rule" &> /dev/null
+$allow_use_legacy $command_ip6tables_nft \
+-A FORWARD -j $config_close_deny \
+-m comment --comment "close rule" &> /dev/null
+$allow_use_nft $command_ip6tables_nft \
+-A FORWARD -j $config_close_deny \
+-m comment --comment "close rule" &> /dev/null
+####
+####
+echo "$title_md [ _ok_ ] [ Launched: firewall ] \
+[ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
 ####
@@ -8670,7 +8766,8 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$type_firewall" == "off-line" ];  then $cmd_realpath eraserules &> /dev/null ;
+if [ "$type_firewall" == "off-line" ]
+then $cmd_realpath eraserules &> /dev/null ;
 ####
 ####
 #### english: legacy ipv4 127.0.0.1 acept
@@ -8729,36 +8826,49 @@ $allow_use_nft $command_ip6tables_nft -A OUTPUT \
 ########################################     spanish: cierra en off-line
 ####
 ####
-$allow_use_legacy $command_iptables_legacy -A INPUT -j $config_close_deny \
+$allow_use_legacy $command_iptables_legacy \
+-A INPUT -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
-$allow_use_legacy $command_iptables_legacy -A OUTPUT -j $config_close_deny \
+$allow_use_legacy $command_iptables_legacy \
+-A OUTPUT -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
-$allow_use_legacy $command_iptables_legacy -A FORWARD -j $config_close_deny \
--m comment --comment "close rule" &> /dev/null
-####
-$allow_use_nft $command_iptables_nft -A INPUT -j $config_close_deny \
--m comment --comment "close rule" &> /dev/null
-$allow_use_nft $command_iptables_nft -A OUTPUT -j $config_close_deny \
--m comment --comment "close rule" &> /dev/null
-$allow_use_nft $command_iptables_nft -A FORWARD -j $config_close_deny \
+$allow_use_legacy $command_iptables_legacy \
+-A FORWARD -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
 ####
-$allow_use_legacy $command_ip6tables_legacy -A INPUT -j $config_close_deny \
+$allow_use_nft $command_iptables_nft \
+-A INPUT -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
-$allow_use_legacy $command_ip6tables_legacy -A OUTPUT -j $config_close_deny \
+$allow_use_nft $command_iptables_nft \
+-A OUTPUT -j $config_close_deny \
+-m comment --comment "close rule" &> /dev/null
+$allow_use_nft $command_iptables_nft \
+-A FORWARD -j $config_close_deny \
+-m comment --comment "close rule" &> /dev/null
+####
+$allow_use_legacy $command_ip6tables_legacy \
+-A INPUT -j $config_close_deny \
+-m comment --comment "close rule" &> /dev/null
+$allow_use_legacy $command_ip6tables_legacy \
+-A OUTPUT -j $config_close_deny \
 ç-m comment --comment "close rule" &> /dev/null
-$allow_use_legacy $command_ip6tables_legacy -A FORWARD -j $config_close_deny \
+$allow_use_legacy $command_ip6tables_legacy \
+-A FORWARD -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
 ####
-$allow_use_nft $command_ip6tables_nft -A INPUT -j $config_close_deny \
+$allow_use_nft $command_ip6tables_nft \
+-A INPUT -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
-$allow_use_nft $command_ip6tables_nft -A OUTPUT -j $config_close_deny \
+$allow_use_nft $command_ip6tables_nft \
+-A OUTPUT -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
-$allow_use_nft $command_ip6tables_nft -A FORWARD -j $config_close_deny \
+$allow_use_nft $command_ip6tables_nft \
+-A FORWARD -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
 ####
 ####  
-echo "$title_md [ _ok_ ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
+echo "$title_md [ _ok_ ] [ Launched: firewall ] \
+[ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
 ####
@@ -8768,7 +8878,8 @@ exit; fi
 #### :rutina-inicial-code-shield-ssh:
 ####
 ####
-if [ "$type_firewall" == "shield-ssh" ];  then $cmd_realpath eraserules &> /dev/null ;
+if [ "$type_firewall" == "shield-ssh" ]
+then $cmd_realpath eraserules &> /dev/null ;
 ####
 ####
 #### loopback localhost legacy ip4
@@ -8786,11 +8897,15 @@ $allow_use_legacy $command_iptables_legacy -A OUTPUT \
 #### escudo ssh legacy ipv4 
 ####
 ####
-$allow_shield_maxtries $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A INPUT \
--p tcp -m multiport --dports ssh -m state --state NEW -m recent --set --name shield-tries \
+$allow_shield_maxtries $allow_use_legacy  \
+$allow_use_ipv4  $command_iptables_legacy -A INPUT \
+-p tcp -m multiport --dports ssh -m state --state NEW \
+-m recent --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
-$allow_shield_maxtries $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A INPUT \
--m recent --name shield-tries --update --seconds 3600 --hitcount $config_shield_maxtries -j $config_close_deny \
+$allow_shield_maxtries $allow_use_legacy  $allow_use_ipv4  \
+$command_iptables_legacy -A INPUT \
+-m recent --name shield-tries --update --seconds 3600 \
+--hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
@@ -8861,11 +8976,15 @@ $allow_use_nft $command_iptables_nft -A OUTPUT \
 #### escudo ssh nft ipv4 
 ####
 ####
-$allow_shield_maxtries $allow_use_nft  $allow_use_ipv4  $command_iptables_nft -A INPUT \
--p tcp -m multiport --dports ssh -m state --state NEW -m recent --set --name shield-tries \
+$allow_shield_maxtries $allow_use_nft  $allow_use_ipv4 \
+$command_iptables_nft -A INPUT \
+-p tcp -m multiport --dports ssh -m state --state NEW \
+-m recent --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
-$allow_shield_maxtries $allow_use_nft $allow_use_ipv4  $command_iptables_nft -A INPUT \
--m recent --name shield-tries --update --seconds 3600 --hitcount $config_shield_maxtries -j $config_close_deny \
+$allow_shield_maxtries $allow_use_nft $allow_use_ipv4 \
+$command_iptables_nft -A INPUT \
+-m recent --name shield-tries --update --seconds 3600 \
+--hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
@@ -8940,11 +9059,13 @@ $allow_use_legacy  $command_ip6tables_legacy -A OUTPUT \
 #### escudo ssh legacy ipv6 
 ####
 ####
-$allow_shield_maxtries $allow_use_legacy  $allow_use_ipv6  $command_ip6tables_legacy -A INPUT \
+$allow_shield_maxtries $allow_use_legacy  $allow_use_ipv6 \
+$command_ip6tables_legacy -A INPUT \
 -p tcp -m multiport --dports ssh -m state --state NEW -m recent \
 --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
-$allow_shield_maxtries $allow_use_legacy  $allow_use_ipv6  $command_ip6tables_legacy -A INPUT \
+$allow_shield_maxtries $allow_use_legacy  $allow_use_ipv6 \
+$command_ip6tables_legacy -A INPUT \
 -m recent --name shield-tries --update --seconds 3600 \
 --hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
@@ -9018,11 +9139,14 @@ $allow_use_nft $command_ip6tables_nft -A OUTPUT \
 #### escudo ssh nft ipv6 
 ####
 ####
-$allow_shield_maxtries $allow_use_nft  $allow_use_ipv6  $command_ip6tables_nft -A INPUT \
--p tcp -m multiport --dports $config_shield_port -m state --state NEW -m recent \
+$allow_shield_maxtries $allow_use_nft  $allow_use_ipv6 \
+$command_ip6tables_nft -A INPUT \
+-p tcp -m multiport --dports $config_shield_port \
+-m state --state NEW -m recent \
 --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
-$allow_shield_maxtries $allow_use_nft     $allow_use_ipv6  $command_ip6tables_nft -A INPUT \
+$allow_shield_maxtries $allow_use_nft $allow_use_ipv6 \
+$command_ip6tables_nft -A INPUT \
 -m recent --name shield-tries --update --seconds 3600 \
 --hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
@@ -9084,13 +9208,17 @@ $allow_use_nft  $allow_use_ipv6      $command_ip6tables_nft -A OUTPUT \
 ########################################     spanish: cierra iptables 
 ####
 ####
-$allow_use_legacy $allow_use_ipv6 $command_ip6tables_legacy -A INPUT -p ipv6-icmp -j ACCEPT \
+$allow_use_legacy $allow_use_ipv6 $command_ip6tables_legacy \
+-A INPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "nexthop ip6" &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT -p ipv6-icmp -j ACCEPT \
+$allow_use_legacy $allow_use_ipv6 $command_ip6tables_legacy \
+-A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "nexthop ip6" &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tables_nft -A INPUT -p ipv6-icmp -j ACCEPT \
+$allow_use_nft $allow_use_ipv6 $command_ip6tables_nft \
+-A INPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "nexthop ip6" &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT \
+$allow_use_nft $allow_use_ipv6 $command_ip6tables_nft \
+-A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "nexthop ip6" &> /dev/null
 ####
 ####
@@ -9122,7 +9250,8 @@ $allow_use_legacy $command_ip6tables_legacy -A FORWARD -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
 ####
 ####
-echo "$title_md [ _ok_ ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
+echo "$title_md [ _ok_ ] [ Launched: firewall ] \
+[ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
 ####
@@ -9132,7 +9261,8 @@ exit; fi
 #### :rutina-inicial-code-rulesdefault:
 ####
 ####
-if [ "$type_firewall" == "systemfw" ];  then $cmd_realpath eraserules &> /dev/null ;
+if [ "$type_firewall" == "systemfw" ]
+then $cmd_realpath eraserules &> /dev/null ;
 ####
 ####
 #### loopback localhost legacy ip4
@@ -9150,11 +9280,15 @@ $allow_use_legacy $command_iptables_legacy -A OUTPUT \
 #### escudo ssh legacy ipv4 
 ####
 ####
-$allow_shield_maxtries $allow_use_legacy $allow_use_ipv4 $command_iptables_legacy -A INPUT \
--p tcp -m multiport --dports "$config_shield_port" -m state --state NEW -m recent --set --name shield-tries \
+$allow_shield_maxtries $allow_use_legacy $allow_use_ipv4 \
+$command_iptables_legacy -A INPUT \
+-p tcp -m multiport --dports "$config_shield_port" \
+-m state --state NEW -m recent --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
-$allow_shield_maxtries $allow_use_legacy $allow_use_ipv4 $command_iptables_legacy -A INPUT \
--m recent --name shield-tries --update --seconds 3600 --hitcount $config_shield_maxtries -j $config_close_deny \
+$allow_shield_maxtries $allow_use_legacy $allow_use_ipv4 \
+$command_iptables_legacy -A INPUT \
+-m recent --name shield-tries --update --seconds 3600 \
+--hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
@@ -9282,11 +9416,15 @@ $allow_use_nft $command_iptables_nft -A OUTPUT \
 #### escudo ssh nft ipv4 
 ####
 ####
-$allow_shield_maxtries $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
--p tcp -m multiport --dports "$config_shield_port" -m state --state NEW -m recent --set --name "shield-tries" \
+$allow_shield_maxtries $allow_use_nft $allow_use_ipv4 \
+$command_iptables_nft -A INPUT \
+-p tcp -m multiport --dports "$config_shield_port" \
+-m state --state NEW -m recent --set --name "shield-tries" \
 -m comment --comment "shield tries" &> /dev/null
-$allow_shield_maxtries $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
--m recent --name "shield-tries" --update --seconds 3600 --hitcount "$config_shield_maxtries" -j $config_close_deny \
+$allow_shield_maxtries $allow_use_nft $allow_use_ipv4 \
+$command_iptables_nft -A INPUT \
+-m recent --name "shield-tries" --update --seconds 3600 \
+--hitcount "$config_shield_maxtries" -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 #### 
 ####
@@ -9418,11 +9556,14 @@ $allow_use_legacy $command_ip6tables_legacy -A OUTPUT \
 #### escudo ssh legacy ipv6 
 ####
 ####
-$allow_shield_maxtries $allow_use_legacy $allow_use_ipv6 $command_ip6tables_legacy -A INPUT \
--p tcp -m multiport --dports "$config_shield_port" -m state --state NEW -m recent \
+$allow_shield_maxtries $allow_use_legacy $allow_use_ipv6 \
+$command_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --dports "$config_shield_port" \
+-m state --state NEW -m recent \
 --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
-$allow_shield_maxtries $allow_use_legacy $allow_use_ipv6 $command_ip6tables_legacy -A INPUT \
+$allow_shield_maxtries $allow_use_legacy $allow_use_ipv6 \
+$command_ip6tables_legacy -A INPUT \
 -m recent --name shield-tries --update --seconds 3600 \
 --hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
@@ -9435,8 +9576,8 @@ $allow_shield_maxtries $allow_use_legacy $allow_use_ipv6 $command_ip6tables_lega
 #### $allow_use_legacy  $allow_use_ipv6  $command_ip6tables_legacy -A INPUT \
 #### -p udp -m multiport --sports $server_port_udp -j LOG \
 #### -m comment --comment "logserver udp" &> /dev/null
-$allow_use_legacy  $allow_use_ipv6   $command_ip6tables_legacy -A INPUT \
--p tcp -m multiport --sports $server_port_tcp -j LOG \
+$allow_use_legacy  $allow_use_ipv6   $command_ip6tables_legacy \
+-A INPUT -p tcp -m multiport --sports $server_port_tcp -j LOG \
 -m comment --comment "logserver tcp" &> /dev/null
 ####
 ####
@@ -9548,11 +9689,14 @@ $allow_use_nft $command_ip6tables_nft -A OUTPUT \
 #### escudo ssh nft ipv6 
 ####
 ####
-$allow_shield_maxtries $allow_use_nft $allow_use_ipv6 $command_ip6tables_nft -A INPUT \
--p tcp -m multiport --dports "$config_shield_port" -m state --state NEW -m recent \
+$allow_shield_maxtries $allow_use_nft $allow_use_ipv6 \
+$command_ip6tables_nft -A INPUT \
+-p tcp -m multiport --dports "$config_shield_port" \
+-m state --state NEW -m recent \
 --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
-$allow_shield_maxtries $allow_use_nft $allow_use_ipv6 $command_ip6tables_nft -A INPUT \
+$allow_shield_maxtries $allow_use_nft $allow_use_ipv6 \
+$command_ip6tables_nft -A INPUT \
 -m recent --name shield-tries --update --seconds 3600 \
 --hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
@@ -9664,13 +9808,17 @@ fi
 ########################################     spanish: cierra iptables 
 ####
 ####
-$allow_use_legacy $allow_use_ipv6 $command_ip6tables_legacy -A INPUT -p ipv6-icmp -j ACCEPT \
+$allow_use_legacy $allow_use_ipv6 $command_ip6tables_legacy \
+-A INPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "nexthop ip6" &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT -p ipv6-icmp -j ACCEPT \
+$allow_use_legacy $allow_use_ipv6 $command_ip6tables_legacy \
+-A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "nexthop ip6" &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tables_nft -A INPUT -p ipv6-icmp -j ACCEPT \
+$allow_use_nft $allow_use_ipv6 $command_ip6tables_nft \
+-A INPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "nexthop ip6" &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT \
+$allow_use_nft $allow_use_ipv6 $command_ip6tables_nft \
+-A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "nexthop ip6" &> /dev/null
 ####
 ####
@@ -9702,7 +9850,8 @@ $allow_use_legacy $command_ip6tables_legacy -A FORWARD -j $config_close_deny \
 -m comment --comment "close rule" &> /dev/null
 ####
 ####
-echo "$title_md [ _ok_ ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
+echo "$title_md [ _ok_ ] [ Launched: firewall ] \
+[ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
 ####
@@ -9734,17 +9883,22 @@ exit; fi
 ##############################       spanish: sobreescribe las variables con la config cfg
 ####
 ####
-if [ "$first_option" == "custom" ]; then if [ -f $directory_config/$second_option ]; 
-then source $directory_config/$second_option &> /dev/null ; else echo "$text_md [ fail ] [ Config file not found ]"; exit ; fi ; fi
+if [ "$first_option" == "custom" ]
+then if [ -f $directory_config/$second_option ]
+then source $directory_config/$second_option &> /dev/null
+else echo "$text_md [ fail ] [ Config file not found ]"
+exit ; fi ; fi
 ####
 ####
 ##############################      english: selective state of intput/oputut          #####################
 ##############################      spanish: estado selectivo de entrada/salida        #####################
 ####
 ####
-if [ "$allow_input_state" == "$NULL" ]  ; then config_input_state="-m state --state $config_input_state"   ;
+if [ "$allow_input_state" == "$NULL" ]
+then config_input_state="-m state --state $config_input_state"
 else config_input_state="$NULL"  ; fi
-if [ "$allow_output_state" == "$NULL" ] ; then config_output_state="-m state --state $config_output_state" ;
+if [ "$allow_output_state" == "$NULL" ]
+then config_output_state="-m state --state $config_output_state"
 else config_output_state="$NULL" ; fi
 ####
 ####
@@ -9753,8 +9907,10 @@ else config_output_state="$NULL" ; fi
 ####
 ####
 config_uid_gid=no
-if [ "$allow_output_uid" == "$NULL" ]; then config_uid_gid="" ; else $nada ; fi
-if [ "$allow_output_gid" == "$NULL" ]; then config_uid_gid="" ; else $nada ; fi
+if [ "$allow_output_uid" == "$NULL" ]
+then config_uid_gid="" ; else $nada ; fi
+if [ "$allow_output_gid" == "$NULL" ]
+then config_uid_gid="" ; else $nada ; fi
 ####
 ####
 ###############################################################################################################
@@ -9795,7 +9951,8 @@ if [ "$allow_mac_blacklist" == "$NULL" ] ; then
 ####
 $command_ebtables -A INPUT  -s $config_mac_blacklist  -j $config_close_deny \
 -m comment --comment "mac blacklist"  &> /dev/null
-$allow_mac_blacklist $command_ebtables -A OUTPUT -d $config_mac_blacklist  -j $config_close_deny \
+$allow_mac_blacklist $command_ebtables -A OUTPUT \
+-d $config_mac_blacklist  -j $config_close_deny \
 -m comment --comment "mac blacklist" &> /dev/null
 ####
 fi
@@ -9807,15 +9964,19 @@ fi
 ####
 if [ "$config_ip4_localhost" != "$NULL" ]; then
 ####
-$allow_use_legacy $command_iptables_legacy -A INPUT  -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$allow_use_legacy $command_iptables_legacy -A INPUT \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
-$allow_use_legacy $command_iptables_legacy -A OUTPUT -s $config_ip4_localhost -d $config_ip4_localhost -j ACCEPT \
+$allow_use_legacy $command_iptables_legacy -A OUTPUT \
+-s $config_ip4_localhost -d $config_ip4_localhost -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
-$allow_use_nft $command_iptables_nft -A INPUT  -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$allow_use_nft $command_iptables_nft -A INPUT \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
-$allow_use_nft $command_iptables_nft -A OUTPUT -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$allow_use_nft $command_iptables_nft -A OUTPUT -s \
+$config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 fi
@@ -9823,15 +9984,19 @@ fi
 ####
 if [ "$config_ip6_localhost" != "$NULL" ]; then
 ####
-$allow_use_legacy $command_ip6tables_legacy -A INPUT  -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$allow_use_legacy $command_ip6tables_legacy -A INPUT \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
-$allow_use_legacy $command_ip6tables_legacy -A OUTPUT -s $config_ip6_localhost -d $config_ip6_localhost -j ACCEPT \
+$allow_use_legacy $command_ip6tables_legacy -A OUTPUT \
+-s $config_ip6_localhost -d $config_ip6_localhost -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
-$allow_use_nft $command_ip6tables_nft -A INPUT  -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$allow_use_nft $command_ip6tables_nft -A INPUT \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
-$allow_use_nft $command_ip6tables_nft -A OUTPUT -s $config_ip6_localhost -d $config_ip6_localhost -j ACCEPT \
+$allow_use_nft $command_ip6tables_nft -A OUTPUT \
+-s $config_ip6_localhost -d $config_ip6_localhost -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 fi
@@ -9849,39 +10014,47 @@ for one_blacklist in $(echo $config_net_blacklist | $command_sed 's/,/ /g'); do
 #### ipv4
 ####
 ####
-$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A INPUT  \
--s $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
+$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy \
+-A INPUT -s $one_blacklist -j $config_close_deny \
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A OUTPUT \
--d $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
+$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy \
+-A OUTPUT -d $one_blacklist -j $config_close_deny \
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A INPUT  \
--s $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
+$allow_use_ipv4 $allow_use_nft  $command_iptables_nft \
+-A INPUT -s $one_blacklist -j $config_close_deny \
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A OUTPUT \
--d $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
+$allow_use_ipv4 $allow_use_nft  $command_iptables_nft \
+-A OUTPUT -d $one_blacklist -j $config_close_deny \
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 #### ipv6
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A INPUT  \
--s $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
+$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy \
+-A INPUT -s $one_blacklist -j $config_close_deny \
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A OUTPUT \
--d $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
+$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy \
+-A OUTPUT -d $one_blacklist -j $config_close_deny \
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft  $command_ip6tables_nft    -A INPUT  \
--s $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
+$allow_use_ipv6 $allow_use_nft  $command_ip6tables_nft \
+-A INPUT -s $one_blacklist -j $config_close_deny \
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft  $command_ip6tables_nft    -A OUTPUT \
--d $one_blacklist -j $config_close_deny -m comment --comment "blacklist $one_blacklist" &> /dev/null
+$allow_use_ipv6 $allow_use_nft  $command_ip6tables_nft \
+-A OUTPUT -d $one_blacklist -j $config_close_deny \
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 #### 
 done
 ####
@@ -9900,39 +10073,47 @@ for one_vpn in $(echo $config_net_whitelist | $command_sed 's/,/ /g'); do
 #### ipv4
 ####
 ####
-$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A  INPUT  \
--s $one_vpn -j ACCEPT -m comment --comment "whitelist $one_vpn" &> /dev/null
+$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy \
+-A  INPUT -s $one_vpn -j ACCEPT -m comment \
+--comment "whitelist $one_vpn" &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A  OUTPUT \
--d $one_vpn -j ACCEPT -m comment --comment "whitelist $one_vpn" &> /dev/null
+$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy \
+-A  OUTPUT -d $one_vpn -j ACCEPT -m comment \
+--comment "whitelist $one_vpn" &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A  INPUT  \
--s $one_vpn -j ACCEPT -m comment --comment "whitelist $one_vpn" &> /dev/null
+$allow_use_ipv4 $allow_use_nft  $command_iptables_nft \
+-A  INPUT -s $one_vpn -j ACCEPT -m comment \
+--comment "whitelist $one_vpn" &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A  OUTPUT \
--d $one_vpn -j ACCEPT -m comment --comment "whitelist $one_vpn" &> /dev/null
+$allow_use_ipv4 $allow_use_nft  $command_iptables_nft \
+-A  OUTPUT -d $one_vpn -j ACCEPT -m comment \
+--comment "whitelist $one_vpn" &> /dev/null
 ####
 ####
 #### ipv6
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A  INPUT  \
--s $one_vpn -j ACCEPT -m comment --comment "whitelist $one_vpn" &> /dev/null
+$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy \
+-A  INPUT -s $one_vpn -j ACCEPT -m comment \
+--comment "whitelist $one_vpn" &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A  OUTPUT \
--d $one_vpn -j ACCEPT -m comment --comment "whitelist $one_vpn" &> /dev/null
+$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy \
+-A  OUTPUT -d $one_vpn -j ACCEPT -m comment \
+--comment "whitelist $one_vpn" &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft $command_ip6tables_nft    -A  INPUT  \
--s $one_vpn -j ACCEPT -m comment --comment "whitelist $one_vpn" &> /dev/null
+$allow_use_ipv6 $allow_use_nft $command_ip6tables_nft \
+-A  INPUT -s $one_vpn -j ACCEPT -m comment \
+--comment "whitelist $one_vpn" &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft  $command_ip6tables_nft    -A  OUTPUT \
--d $one_vpn -j ACCEPT -m comment --comment "whitelist $one_vpn" &> /dev/null
+$allow_use_ipv6 $allow_use_nft  $command_ip6tables_nft \
+-A  OUTPUT -d $one_vpn -j ACCEPT -m comment \
+--comment "whitelist $one_vpn" &> /dev/null
 ####
 ####
 done
@@ -9952,39 +10133,47 @@ for string_close in $(echo $config_string_denied | $command_sed 's/,/ /g'); do
 #### ipv4
 ####
 ####
-$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A  INPUT  \
--m string --string $string_close --algo bm -j $config_close_deny &> /dev/null
+$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy \
+-A  INPUT -m string --string $string_close --algo bm \
+-j $config_close_deny &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A  OUTPUT \
--m string --string $string_close --algo bm -j $config_close_deny &> /dev/null
+$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy \
+-A  OUTPUT -m string --string $string_close --algo bm \
+-j $config_close_deny &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A  INPUT  \
--m string --string $string_close --algo bm -j $config_close_deny &> /dev/null
+$allow_use_ipv4 $allow_use_nft $command_iptables_nft \
+-A  INPUT -m string --string $string_close --algo bm \
+-j $config_close_deny &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A  OUTPUT \
--m string --string $string_close --algo bm -j $config_close_deny &> /dev/null
+$allow_use_ipv4 $allow_use_nft  $command_iptables_nft \
+-A  OUTPUT -m string --string $string_close --algo bm \
+-j $config_close_deny &> /dev/null
 ####
 ####
 #### ipv6
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A  INPUT  \
--m string --string $string_close --algo bm -j $config_close_deny &> /dev/null
+$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy \
+-A  INPUT -m string --string $string_close --algo bm \
+-j $config_close_deny &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A  OUTPUT \
--m string --string $string_close --algo bm -j $config_close_deny &> /dev/null
+$allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy \
+-A  OUTPUT -m string --string $string_close --algo bm \
+-j $config_close_deny &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft $command_ip6tables_nft    -A  INPUT  \
--m string --string $string_close --algo bm -j $config_close_deny &> /dev/null
+$allow_use_ipv6 $allow_use_nft $command_ip6tables_nft \
+-A  INPUT -m string --string $string_close --algo bm \
+-j $config_close_deny &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft  $command_ip6tables_nft    -A  OUTPUT \
--m string --string $string_close --algo bm -j $config_close_deny &> /dev/null
+$allow_use_ipv6 $allow_use_nft $command_ip6tables_nft \
+-A  OUTPUT -m string --string $string_close --algo bm \
+-j $config_close_deny &> /dev/null
 ####
 ####
 done
