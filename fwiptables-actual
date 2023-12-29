@@ -8036,7 +8036,7 @@ name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 config_shield_maxtries="20" ;
-config_shield_port="ssh,ftp,ftp-data" ;
+config_shield_port="ssh,ftp" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -8209,7 +8209,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,ldap,636,137:139" ;
 server_port_tcp="ssh,ldap,636,microsoft-ds" ; 
 server_port_udp="ssh,ntp,domain,domain-s,ldap,636,137:139" ;
 fi
-#### :rutina-final-server-mail:
+#### :rutina-final-server-samba:
 #### ##################################################
 #### ##################################################
 #### :rutina-inicial-server-print:
