@@ -1377,10 +1377,10 @@ echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
 echo "$title_md [ info ] [ ALL_PROXY, HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
 echo "$title_md [ info ] [ Example:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
 echo "$title_md [ info ] [ And then: ] source /directory/file-of-declare-proxy"
-listado_proxy="$($command_sudo -u root bash -c export | grep \_PROXY | wc -l)"
+listado_proxy="$($command_sudo -u root bash -c export | grep -i \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ];
 then echo "$text_md [ info ] Without proxy in export variables"
-else $command_sudo -u root bash -c export | grep "_PROXY" ; fi
+else $command_sudo -u root bash -c export | grep -i "_PROXY" ; fi
 echo
 echo "$title_md [ info ] ### [ Domain resolve ] [ nameserver and search ] ###"
 if [ -f /etc/resolv.conf ]
@@ -1435,10 +1435,10 @@ echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
 echo "$title_md [ info ] [ ALL_PROXY, HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
 echo "$title_md [ info ] [ Example:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
 echo "$title_md [ info ] [ And then: ] source /directory/file-of-declare-proxy"
-listado_proxy="$($command_sudo -u root bash -c export | grep \_PROXY | wc -l)"
+listado_proxy="$($command_sudo -u root bash -c export | grep -i \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ];
 then echo "$text_md [ info ] Without proxy in export variables"
-else $command_sudo -u root bash -c export | grep "_PROXY" ; fi
+else $command_sudo -u root bash -c export | -i grep "_PROXY" ; fi
 echo
 echo "$title_md [ info ] ### [ Domain resolve ] [ Resolv.conf ] ###"
 if [ -f /etc/resolv.conf ]
