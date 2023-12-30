@@ -24,31 +24,31 @@
 ###  fwiptables install.                                     
   
     su root             . TYPE:   su root                   
-    Put bit of execution. TYPE:   chmod 755 ./fwiptables-version-11-04-bash.sh 
-    Install this version. TYPE:   ./fwiptables-version-11-04-bash.sh install   
+    Put bit of execution. TYPE:   chmod 755 ./fwiptables-version-11-05-bash.sh 
+    Install this version. TYPE:   ./fwiptables-version-11-05-bash.sh install   
   
 ###  fwiptables uninstall.                                   
   
     Uninstall fwiptables. TYPE:   fwiptables-cmd uninstall     
   
 ###  [ ver ] [ Show version about ] [ ver.md ]       
-   [ info ] [ Program ] /root/f-iptables-version/fwiptables-version-11-04-bash.sh With Version cmd-11-04       
+   [ info ] [ Program ] /root/f-iptables-version/fwiptables-version-11-05-bash.sh      
+   [ info ] [ Version ] cmd-11-05       
    [ info ] [ Details ] fwiptables, FireWall With iptables | fwiptables, One Mini Script in one-file  
-   [ info ] [ Binary file     ] /root/f-iptables-version/fwiptables-version-11-04-bash.sh                         
    [ info ] [ Data directory  ] /root/.config/fwiptables-cmd                       
    [ info ] [ Cache directory ] /run/fwiptables                      
-   [ info ] [ File format     ] /root/f-iptables-version/fwiptables-version-11-04-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable      
+   [ info ] [ File format     ] /root/f-iptables-version/fwiptables-version-11-05-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable      
 ###  [ compile ] [  Optionally compile from bash script ] [ compile.md]    
-   [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling...         
-   [ step ] [ 0 ] Necesary: fwiptables in source script bash                    
-   [ step ] [ 1 ] Download obash from oficial web internet                      
-   [ step ] [ 2 ] Compile with obash command using command make.                
-   [ step ] [ 3a] Or run: obash -c -o ./destination.bin ./source-bash.sh        
-   [ step ] [ 3b] Or run: obash -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd   
-###  Actually, the file type is:                                                          
-/root/f-iptables-version/fwiptables-version-11-04-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
+   [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling...                       
+   [ step ] [ 0 ] Necesary: fwiptables in source script bash                                  
+   [ step ] [ 1 ] Download obash from oficial web internet                                    
+   [ step ] [ 2 ] Compile with obash command using command make.                              
+   [ step ] [ 3a] Or run: obash -r -c -o ./destination.bin ./source-bash.sh                   
+   [ step ] [ 3b] Or run: obash -r -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd  
+###  Actually, the file type is:  
+/root/f-iptables-version/fwiptables-version-11-05-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
 ###  [ options ] [ List general options for fwiptables ] [ list-options.md ]
-###  /root/f-iptables-version/fwiptables-version-11-04-bash.sh [optional-output] first_option [second_option]   
+###  /root/f-iptables-version/fwiptables-version-11-05-bash.sh [optional-output] first_option [second_option]   
 ###   [ optional-output ]                                                                
    [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       
    [ -cli-dialog -cli-whiptail ] [ -gui-zenity -gui-yad ]                               
@@ -70,14 +70,14 @@
    config-regen examples-config show-config modify-config del-config names-config       
 ###   [ firewall-systemfw ]                                                              
    client-basic client-web client-git client-ipp client-irc client-vnc client-mail      
-   client-news client-vpn client-torrent client-vpn client-ftp client-tor               
-   client-proxy game-widelands games-udp games-shooter game-wesnoth game-minetest       
+   client-news client-vpn client-torrent client-vpn client-ftp client-proxy             
+   client-tor game-widelands games-udp games-shooter game-wesnoth game-minetest         
    game-freeciv lan-tor lan-vpn server-ssh server-irc server-samba server-vnc           
    server-print server-lamp server-news server-ftp server-mail server-webserver         
-   server-teamspeak server-mumble server-sql server-asterisk server-domain server-proxy 
-###   [ options-easy ]                                                              
+   server-teamspeak server-mumble server-sql server-asterisk server-proxy               
+###   [ options-easy ]                                                                   
    preferences-read preferences-modify preferences-regen preferences-example info       
    list-options clasic-options filelog autolog speed-ip4 speed-ip6 speed-glx            
-   ip4 ip6 code sockets nodes geoip webcert date free expert about notes version        
-   ip-forward depends examples commands variables intro install uninstall               
+   ip4 ip6 code sockets nodes date free expert about notes version ip-forward           
+   examples depends commands variables intro install uninstall                          
 ###             ||| Example: fwiptables-cmd -gui-zenity info list |||                    
