@@ -2735,6 +2735,8 @@ if   [ "$first_option" == "options-expert" ]; then
 echo "$text_md "
 echo "$title_md | options-expert | $cmd_realpath options-expert |"
 echo "$text_md"
+echo "$text_md expert-show-resolve . resolve domain like reslolv.conf"
+echo "$text_md expert-show-proxy . show proxy variables in the system"
 echo "$text_md expert-show-weather . show weather"
 echo "$text_md expert-show-geoip . show location for ip o for host"
 echo "$text_md expert-show-webcert . show web certificate ssl from one web"
@@ -9288,7 +9290,7 @@ exit; fi
 #### :rutina-inicial-code-rulesdefault:
 ####
 ####
-if [ "$type_firewall" == "systemfw" ]
+if [ "$type_firewall" == "systemfw1" ]
 then $cmd_realpath eraserules &> /dev/null ;
 ####
 ####
