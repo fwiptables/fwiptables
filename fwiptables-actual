@@ -234,7 +234,7 @@ allow_output_ping="no"     ;
 allow_output_state="no"     ;
 allow_output_uid="no"     ;
 config_string_denied=".fb.com,.facebook.com,xxx.html" ;
-config_string_allowed=".duckduckgo.com,sf.net"  ;
+config_string_allowed="one-string-that-like-how-a-passord,sourceforge.net"  ;
 config_dmz_ip4=""     ;
 config_dmz_ip6=""     ;
 config_input_bandwidth="12512"     ;
@@ -1930,7 +1930,7 @@ spa59="$(echo $title_md Otras Opciones, añadir con , y poner rangos con : )"
 var60="$(echo config_string_denied=.fb.com,.facebook.com,xxx.html )"
 eng60="$(echo $title_md drop connection with header string, if several, comma separate )"
 spa60="$(echo $title_md bloquea conexion con cadena de cabecera, si hay varios, seperados por comas )"
-var61="$(echo config_string_allowed=.github.com,sf.net,sourceforge.net )"
+var61="$(echo config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net )"
 eng61="$(echo $title_md allow connection with header string, if several, comma separate )"
 spa61="$(echo $title_md permite conexion con cadena de cabecera, si hay varios, seperados por comas )"
 var62="$(echo config_dmz_ip4=192.168.1.7 )"
@@ -2906,7 +2906,7 @@ echo "$text_md allow_output_gid            # void or no . void to allow output g
 echo "$text_md"
 echo "$text_md config_string_denied        # config string in header to deny"
 echo "$text_md"
-echo "$text_md config_string_allowed       # config string in header to allow"
+echo "$text_md config_string_allowed       # config string in header to allow, like a one password"
 echo "$text_md"
 echo "$text_md config_dmz_ip4              # Destination NAT"
 echo "$text_md"
