@@ -862,7 +862,6 @@ case "$first_option" in
 "free-ram") first_option="free" ;;
 "ram") first_option="free" ;;
 "list-allrules") first_option="list-alltables" ;;
-"new-version") first_option="expert-new-version" ;;
 esac
 ####
 ####
@@ -2737,8 +2736,9 @@ echo "$text_md expert-show-proxy . show proxy variables in the system"
 echo "$text_md expert-show-weather . show weather"
 echo "$text_md expert-show-geoip . show location for ip o for host"
 echo "$text_md expert-show-webcert . show web certificate ssl from one web"
+echo "$text_md expert-show-version . Show version fwiptables-cmd stable with curl"
+echo "$text_md expert-show-newversion . Show version fwiptables-cmd stable with curl"
 echo "$text_md expert-compile-obash . Compile fwiptables-cmd to fwiptables-bin with obash"
-echo "$text_md expert-new-version . Show version fwiptables-cmd stable with curl"
 echo "$text_md expert-upgrade-stable . Upgrade from web sourceforge fwiptables-cmd with curl"
 echo "$text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables-cmd with curl"
 echo "$text_md expert-download-adblock . Download four files of blacklist hosts to /etc/hosts.blacklist"
@@ -4473,13 +4473,11 @@ exit; fi
 ####
 if   [ "$first_option" == "geoip" ]; then 
 echo "$title_md [ $first_option ]  [ resolve the location to one ip or host ] "
-echo 
-case $command_geoiplookup in "$NULL")
+echo ; case $command_geoiplookup in "$NULL")
 echo "$text_md [ fail ] [ Install geoiplookup command ]" ; exit  ;; esac
-case "$second_option" in
-"$NULL")
-echo "$title_md Selecting host geoip to fast.com for default" ; trazador="fast.com" ;;
-*) trazador="$second_option" ;; esac
+case "$second_option" in "$NULL")
+echo "$title_md Selecting host geoip to fast.com for default"
+trazador="fast.com" ;; *) trazador="$second_option" ;; esac
 echo "$title_md [ _ok_ ] [ geoiplookup -i $trazador ]"
 $command_geoiplookup -i $trazador
 echo 
@@ -4579,12 +4577,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-pc-reboot:
-##########    english: expert-new-version: upgrade fwiptables    ##########
-##########    spanish: expert-new-version: upgrade fwiptables    ##########
-#### :rutina-inicial-expert-new-version:
+##########    english: expert-show-newversion: upgrade fwiptables    ##########
+##########    spanish: expert-show-newversion: upgrade fwiptables    ##########
+#### :rutina-inicial-expert-show-newversion:
 ####
 ####
-if   [ "$first_option" == "expert-new-version" ]; then 
+if   [ "$first_option" == "expert-show-newversion" ]; then 
 if [ "$command_curl" == "$NULL" ]; then
 echo "$title_md Install curl to show stable latest version"; fi
 ####
@@ -4617,7 +4615,7 @@ rm $descarga
 exit; fi
 ####
 ####
-#### :rutina-final-expert-new-version:
+#### :rutina-final-expert-show-newversion:
 ##########    english: expert-upgrade-stable: upgrade fwiptables    ##########
 ##########    spanish: expert-upgrade-stable: upgrade fwiptables    ##########
 #### :rutina-inicial-expert-upgrade-stable:
