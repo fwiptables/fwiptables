@@ -2380,7 +2380,7 @@ echo "$text_md preferences-read preferences-modify preferences-regen preferences
 echo "$text_md list-options clasic-options filelog autolog speed-ip4 speed-ip6 speed-glx            "
 echo "$text_md ip4 ip6 code sockets nodes date free expert about notes version ip-forward           "
 echo "$text_md examples depends commands variables intro install uninstall                          "
-echo "$title_md            ||| Example: fwiptables-cmd -gui-zenity info list |||                    "
+echo "$title_md            ||| Example: fwiptables-cmd -gui-zenity info |||                         "
 exit ; fi
 ####
 ####
