@@ -491,7 +491,7 @@ config_shield_port="22"                   ## fwiptables-file-default ##  void o 
 config_shield_maxtries="10"               ## fwiptables-file-default ## void or no
 ####       #### english: close with deny is or DROP or REJECT
 ####       #### spanish: cierra con denegacion es o DROP or REJECT
-config_close_deny="DROP"                  ## fwiptables-file-default ## DROP or REJECT
+config_close_deny=                        ## fwiptables-file-default ## DROP or REJECT
 ####       #### english: auto log from command input
 ####       #### spanish: automatico log de linea introducida
 allow_save_autolog=""                     ## fwiptables-file-default ## void or no
@@ -579,12 +579,9 @@ case "$allow_use_nft"     in "no") ;; *) allow_use_nft=""       ;; esac
 case "$allow_use_ipv4"    in "no") ;; *) allow_use_ipv4=""      ;; esac
 case "$allow_use_ipv6"    in "no") ;; *) allow_use_ipv6=""      ;; esac
 case "$config_close_deny" in
-"ACCEPT") ;;
 "DROP")   ;;
 "REJECT") ;;
-"RETURN") ;;
-"LOG")    ;;
-*) config_close_deny="REJECT"  ;; esac
+*) config_close_deny="DROP"  ;; esac
 ####
 ####
 #### :rutina-final-update-variables:
@@ -1308,7 +1305,7 @@ echo "allow_use_nft=no                                    ## or void or no"
 echo "allow_use_ipv4=                                     ## or void or no"
 echo "allow_use_ipv6=no                                   ## or void or no"
 echo "allow_separate_rules=                               ## or void or no"
-echo "config_close_deny=DROP                              ## or DROP or REJECT"
+echo "config_close_deny=drop                              ## or DROP or REJECT"
 echo "$title_md"
 echo "$title_md # default log"
 echo "allow_save_autolog=                                 ## or void or no"
@@ -1354,7 +1351,7 @@ if [ "$command_ip" == "$NULL" ]
 then echo "$text_md [ info ] [ install ip command ]"
 else $command_ip -4 route ; fi
 echo
-echo "$title_md [ info ] ### [ Network Listen ] ###"
+echo "$title_md [ info ] ### [ Input Ports] [ Network Listen ] ###"
 $cmd_realpath sockets | $command_grep -iv ^#
 echo
 echo "$title_md [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
@@ -1452,7 +1449,7 @@ then echo "$text_md [ info ] \
 [ install ip command ]"
 else $command_ip -6 route ; fi
 echo
-echo "$title_md [ info ] ### [ Network Listen ] ###"
+echo "$title_md [ info ] ### [ Input Ports] [ Network Listen ] ###"
 $cmd_realpath sockets | $command_grep -iv ^# 
 echo
 echo "$title_md [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
@@ -1814,7 +1811,7 @@ spa24="$(echo $title_md Regla general en tabla )"
 var25="$(echo allow_separate_rules= )"
 eng25="$(echo $title_md Void to separate the rules for each port or no )"
 spa25="$(echo $title_md Vacio para separar reglas por cada puerto o no )"
-var26="$(echo config_close_deny=DROP )"
+var26="$(echo config_close_deny= )"
 eng26="$(echo $title_md choose close deny with or DROP or REJECT )"
 spa26="$(echo $title_md Elige cerrar denegacion con o DROP or REJECT )"
 var27="$(echo $title_md END NECESARY $title_md )"
