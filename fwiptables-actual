@@ -10006,10 +10006,20 @@ $allow_use_nft $command_iptables_nft -A OUTPUT -s \
 $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
+####
+$allow_use_legacy $command_iptables_legacy -A FORWARD \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment "host localhost" &> /dev/null
+$allow_use_nft $command_iptables_nft -A FORWARD \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment "host localhost" &> /dev/null
+####
+####
 fi
 ####
 ####
 if [ "$config_ip6_localhost" != "$NULL" ]; then
+####
 ####
 $allow_use_legacy $command_ip6tables_legacy -A INPUT \
 -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
@@ -10025,6 +10035,15 @@ $allow_use_nft $command_ip6tables_nft -A INPUT \
 $allow_use_nft $command_ip6tables_nft -A OUTPUT \
 -s $config_ip6_localhost -d $config_ip6_localhost -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
+####
+####
+$allow_use_legacy $command_ip6tables_legacy -A FORWARD \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment "host localhost" &> /dev/null
+$allow_use_nft $command_ip6tables_nft -A FORWARD \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment "host localhost" &> /dev/null
+####
 ####
 fi
 ####
