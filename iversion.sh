@@ -1370,9 +1370,10 @@ then echo "fail: public ip hidden for dns server" ;
 else echo "$text_md   $public_ip4"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
-echo "$title_md [ info ] [ ALL_PROXY, HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
-echo "$title_md [ info ] [ Example:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
-echo "$title_md [ info ] [ And then: ] source /directory/file-of-declare-proxy"
+echo "$title_md [ note ] [ the file without script shell and without exit command ]"
+echo "$title_md [ note ] [ ALL_PROXY, HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
+echo "$title_md [ note ] [ Example:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
+echo "$title_md [ note ] [ And then: ] source /directory/file-of-declare-proxy"
 listado_proxy="$($command_sudo -u root bash -c export | grep -i \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ];
 then echo "$text_md [ info ] Without proxy in export variables"
@@ -1394,16 +1395,17 @@ exit; fi
 ####
 ####
 #### :rutina-final-ip4:
-##########    english: expert-show-proxy : get net info               ##########
-##########    spanish: expert-show-proxy : da informacion de la red   ##########
+##########    english: expert-show-proxy: get net info               ##########
+##########    spanish: expert-show-proxy: da informacion de la red   ##########
 #### :rutina-inicial-expert-show-proxy
 ####
 ####
 if [ "$first_option" == "expert-show-proxy" ]; then echo
 echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
-echo "$title_md [ info ] [ ALL_PROXY, HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
-echo "$title_md [ info ] [ Example:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
-echo "$title_md [ info ] [ And then: ] source /directory/file-of-declare-proxy"
+echo "$title_md [ note ] [ ALL_PROXY, HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
+echo "$title_md [ note ] [ the file without script shell and without exit command ]"
+echo "$title_md [ note ] [ Example:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
+echo "$title_md [ note ] [ And then: ] source /directory/file-of-declare-proxy"
 listado_proxy="$($command_sudo -u root bash -c export | grep -i \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ];
 then echo "$text_md [ info ] Without proxy in export variables"
@@ -1468,9 +1470,10 @@ then echo "fail: public ip hidden for dns server" ;
 else echo "$text_md   $public_ip6"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
-echo "$title_md [ info ] [ ALL_PROXY, HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
-echo "$title_md [ info ] [ Example:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
-echo "$title_md [ info ] [ And then: ] source /directory/file-of-declare-proxy"
+echo "$title_md [ note ] [ ALL_PROXY, HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
+echo "$title_md [ note ] [ the file without script shell and without exit command ]"
+echo "$title_md [ note ] [ Example:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
+echo "$title_md [ note ] [ And then: ] source /directory/file-of-declare-proxy"
 listado_proxy="$($command_sudo -u root bash -c export | grep -i \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ];
 then echo "$text_md [ info ] Without proxy in export variables"
@@ -5102,7 +5105,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "continue" ]; then 
-echo "$title_md [ $first_option ]  [ Continue the stoped firewall ] "
+echo "$title_md [ $first_option ]  [ Continue the stopped firewall ] "
 ####
 ####
 #### english: restore last fw #### spanish: restaura el ultimo fw
