@@ -10915,12 +10915,8 @@ fi
 ########################################       spanish: muestra texto cuando activas las custom reglas
 ####
 ####  
-####
-if [ -f "$directory_config/$second_option" ]
-then $cmd_realpath reset &> /dev/null
 echo "$title_md [ _ok_ ] [ Launched: firewall ] \
 [ Type: $type_firewall ] [ Name: $name_firewall ]"
-exit ; else $nada ; fi
 ####
 ####
 #### :rutina-final-code-wizard:
@@ -10936,7 +10932,7 @@ exit ; else $nada ; fi
 ####    ### Git mini tutorial: with fwiptables.
 ####
 ####
-####    # Download repository: tree methods with clone/pull/fetch https:// or ssh://
+####    # Download repository: With clone/pull/fetch https:// or ssh://
 ####
 ####    First time, download repository to folder user:
 ####    git clone https://git.code.sf.net/p/f-iptables/code
@@ -10948,7 +10944,7 @@ exit ; else $nada ; fi
 ####    # upload repository: update commit and push
 ####
 ####    Update files from local repository:  
-####    git commit -a 
+####    git commit -a OR git commit -a -m change-done
 ####    Upload files to repository from local repository:
 ####    git push ssh://f-iptables@git.code.sf.net/p/f-iptables/code
 ####
