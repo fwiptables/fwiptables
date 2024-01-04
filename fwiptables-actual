@@ -1031,7 +1031,7 @@ echo $head_autolog >> $default_autolog ; fi
 ####
 ####
 if [ "$allow_show_time" != "no" ] ; then
-config_show_timespam="$title_md [ _ok_ ] || [ Date and Time ] [ $show_actual_date ]"
+config_show_timespam="$title_md [ Date and Time ] [ $show_actual_date ]"
 echo $config_show_timespam ; fi
 ####
 ####
