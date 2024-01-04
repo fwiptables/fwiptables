@@ -957,7 +957,7 @@ echo "### ### [ info ] [ $second_option $third_option $quad_option ] \
 [ $($command_date) ]" &> $output_log
 $cmd_realpath $second_option $third_option $quad_option &> $output_log
 cat $output_log | $command_grep -iv Warning: \
-&> $directory_log/log-$first_option-$config_actual_date.txt
+&> $directory_log/log-$second_option-$config_actual_date.txt
 echo "$title_md [ _ok_ ] [ show folder: $directory_log ]" ;
 exit ; fi
 ####
@@ -986,7 +986,7 @@ sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &>
 #### send print to home output-fwiptables.pdf
 $cmd_realpath "$second_option" "$third_option" \
 | convert -page A3 text:- \
-$directory_pdf/pdf-$first_option-$config_actual_date.pdf &> /dev/null
+$directory_pdf/pdf-$second_option-$config_actual_date.pdf &> /dev/null
 echo "$title_md [ _ok_ ] [ show folder: $directory_pdf ]" ;
 exit ; fi
 ####
