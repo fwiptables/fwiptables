@@ -1374,7 +1374,7 @@ then echo "fail: public ip hidden for dns server" ;
 else echo "$text_md   $public_ip4"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
-echo "$title_md [ note ] [ the file without script shell and without exit command ]"
+echo "$title_md [ note ] [ File ] WHITHOUT script shell and WHITHOUT exit command ]"
 echo "$title_md [ note ] [ ALL_PROXY, HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
 echo "$title_md [ note ] [ Example:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
 echo "$title_md [ note ] [ And then: ] source /directory/file-of-declare-proxy"
@@ -1407,7 +1407,7 @@ exit; fi
 if [ "$first_option" == "expert-show-proxy" ]; then echo
 echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
 echo "$title_md [ note ] [ ALL_PROXY, HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
-echo "$title_md [ note ] [ the file without script shell and without exit command ]"
+echo "$title_md [ note ] [ File ] WHITHOUT script shell and WHITHOUT exit command ]"
 echo "$title_md [ note ] [ Example:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
 echo "$title_md [ note ] [ And then: ] source /directory/file-of-declare-proxy"
 listado_proxy="$($command_sudo -u root bash -c export | grep -i \_PROXY | wc -l)"
@@ -1475,7 +1475,7 @@ else echo "$text_md   $public_ip6"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
 echo "$title_md [ note ] [ ALL_PROXY, HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
-echo "$title_md [ note ] [ the file without script shell and without exit command ]"
+echo "$title_md [ note ] [ File ] WHITHOUT script shell and WHITHOUT exit command ]"
 echo "$title_md [ note ] [ Example:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
 echo "$title_md [ note ] [ And then: ] source /directory/file-of-declare-proxy"
 listado_proxy="$($command_sudo -u root bash -c export | grep -i \_PROXY | wc -l)"
