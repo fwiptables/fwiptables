@@ -1677,9 +1677,6 @@ echo
 echo "$title_md [ Default Autolog ]"
 echo "$text_md $default_autolog"
 echo
-echo "$title_md [ Default Filelog ]"
-echo "$text_md $default_filelog"
-echo 
 exit ; fi
 ####
 ####
@@ -2388,9 +2385,9 @@ exit; fi
 if [ "$first_option" == "list-options" ] ; then 
 echo "$title_md $cmd_realpath [optional-output] first_option [second_option]   "
 echo "$title_md  [ optional-output ]                                                                "
-echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       "
-echo "$text_md [ -cli-dialog -cli-whiptail ] [ -gui-zenity -gui-yad ]                               "
-echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail ] [ -gui-roll-zenity ]                         "
+echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -p|-pdf -s|-silent ]                               "
+echo "$text_md [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                                   "
+echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail -gui-roll-zenity ]                             "
 echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                  "
 echo "$title_md  [ firewall-control ]                                                               "
 echo "$text_md stop continue reset actual show save load names-control eraserules                   "
