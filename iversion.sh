@@ -364,7 +364,6 @@ command_uuid="$(command -v uuid)"
 ####
 ####
 config_actual_date="$($command_date| $command_sed -e s/\ /\-/g -)"
-#### case "$first_option" in "show-date") echo "$show_date"; exit ;; esac
 ####
 ####
 #### :rutina-final-command:
@@ -954,7 +953,7 @@ esac
 ####
 echo "$head_waiting_log"
 echo "### ### [ info ] [ $second_option $third_option $quad_option ] \
-[ $($command_date) ]" &> $output_log
+[ $show_actual_date ]" &> $output_log
 $cmd_realpath $second_option $third_option $quad_option &> $output_log
 cat $output_log | $command_grep -iv Warning: \
 &> $directory_log/log-$second_option-$config_actual_date.txt
@@ -1020,7 +1019,7 @@ exit ; fi
 ####
 ####
 if [ "$allow_save_autolog" != "no" ]; then 
-head_autolog="date: $(date) realpath: $cmd_realpath version: $cmd_version \
+head_autolog="date: $show_actual_date realpath: $cmd_realpath version: $cmd_version \
 options: $first_option $second_option $third_option"
 echo $head_autolog >> $default_autolog ; fi
 ####
@@ -1032,7 +1031,7 @@ echo $head_autolog >> $default_autolog ; fi
 ####
 ####
 if [ "$allow_show_time" != "no" ] ; then
-config_show_timespam="$title_md [ _ok_ ] || [ Date and Time ] [ $(date) ]"
+config_show_timespam="$title_md [ _ok_ ] || [ Date and Time ] [ $show_actual_date ]"
 echo $config_show_timespam ; fi
 ####
 ####
@@ -2366,13 +2365,13 @@ echo "$title_md [ $first_option ] \
 echo
 if [ "$favorite_date_command" == "$NULL" ]
 then echo "$text_md [ fail ] [ Install one ntp client ]" ; fi
-echo "$text_md Old date: $($command_date)"
+echo "$text_md Old date: $show_actual_date"
 echo "$text_md [ Updating the time and the date .. ]"
 pool0="0.debian.pool.ntp.org"
 pool1="1.debian.pool.ntp.org"
 pool2="2.debian.pool.ntp.org"
 pool3="3.debian.pool.ntp.org"
-$favorite_date_command $pool0 && echo -e "\n With New date: $($command_date)"
+$favorite_date_command $pool0 && echo -e "\n With New date: $show_actual_date"
 exit; fi
 ####
 ####
@@ -4860,13 +4859,13 @@ echo "$title_md [ $first_option ] \
 echo
 if [ "$favorite_date_command" == "$NULL" ]; then
 echo "$text_md [ fail ] [ Install one ntp client ]" ; fi
-echo "$text_md Old date: $($command_date)"
+echo "$text_md Old date: $show_actual_date"
 echo "$text_md [ Updating the time and the date .. ]"
 pool0="0.debian.pool.ntp.org"
 pool1="1.debian.pool.ntp.org"
 pool2="2.debian.pool.ntp.org"
 pool3="3.debian.pool.ntp.org"
-$favorite_date_command $pool0 && echo -e "\n With New date: $($command_date)"
+$favorite_date_command $pool0 && echo -e "\n With New date: $show_actual_date"
 exit; fi
 ####
 ####
@@ -5662,7 +5661,7 @@ $cmd_realpath -gui-zenity preferences-modify
 ####
 ####
 "$NULL")  exit ;;
-*) fecha_temporal=$(date | $command_sed s/\ //g)
+*) fecha_temporal="$show_actual_date"
 $cmd_realpath $menugtk &> /tmp/fwiptables-$fecha_temporal
 $favorite_graphicall_dialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -5816,7 +5815,7 @@ $cmd_realpath -gui-yad preferences-modify
 ####
 ####
 *)
-fecha_temporal=$(date | $command_sed s/\ //g) ;
+fecha_temporal="$show_actual_date"
 $cmd_realpath $menugtk &> /tmp/fwiptables-$fecha_temporal
 $command_yad --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
