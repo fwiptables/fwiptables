@@ -1031,7 +1031,7 @@ echo $head_autolog >> $default_autolog ; fi
 ####
 ####
 if [ "$allow_show_time" != "no" ] ; then
-config_show_timespam="$title_md [ Date and Time ] [ $show_actual_date ]"
+config_show_timespam="$title_md Date: $show_actual_date"
 echo $config_show_timespam ; fi
 ####
 ####
@@ -1353,7 +1353,7 @@ echo "config_string_algoritmo=kmp                         ## or kmp or bm"
 echo "$title_md"
 echo "$title_md # default log"
 echo "allow_save_autolog=                                 ## or void or no"
-echo "allow_show_time=no                                  ## or void or no"
+echo "allow_show_time=                                    ## or void or no"
 echo "$title_md"  
 echo "$title_md # default programs"
 echo "favorite_text_editor=                               ## or void for automatic or specify command"
