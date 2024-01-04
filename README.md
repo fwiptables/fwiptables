@@ -24,20 +24,20 @@
 ###  fwiptables install.                                     
   
     su root             . TYPE:   su root                   
-    Put bit of execution. TYPE:   chmod 755 ./fwiptables-version-11-05-bash.sh 
-    Install this version. TYPE:   ./fwiptables-version-11-05-bash.sh install   
+    Put bit of execution. TYPE:   chmod 755 ./fwiptables-version-11-06-bash.sh 
+    Install this version. TYPE:   ./fwiptables-version-11-06-bash.sh install   
   
 ###  fwiptables uninstall.                                   
   
     Uninstall fwiptables. TYPE:   fwiptables-cmd uninstall     
   
 ###  [ ver ] [ Show version about ] [ ver.md ]       
-   [ info ] [ Program ] /root/f-iptables-version/fwiptables-version-11-05-bash.sh      
-   [ info ] [ Version ] cmd-11-05       
+   [ info ] [ Program ] /root/f-iptables-version/fwiptables-version-11-06-bash.sh      
+   [ info ] [ Version ] cmd-11-06       
    [ info ] [ Details ] fwiptables, FireWall With iptables | fwiptables, One Mini Script in one-file  
    [ info ] [ Data directory  ] /root/.config/fwiptables-cmd                       
    [ info ] [ Cache directory ] /run/fwiptables                      
-   [ info ] [ File format     ] /root/f-iptables-version/fwiptables-version-11-05-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable      
+   [ info ] [ File format     ] /root/f-iptables-version/fwiptables-version-11-06-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable      
 ###  [ compile ] [  Optionally compile from bash script ] [ compile.md]    
    [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling...                       
    [ step ] [ 0 ] Necesary: fwiptables in source script bash                                  
@@ -46,14 +46,14 @@
    [ step ] [ 3a] Or run: obash -r -c -o ./destination.bin ./source-bash.sh                   
    [ step ] [ 3b] Or run: obash -r -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd  
 ###  Actually, the file type is:  
-/root/f-iptables-version/fwiptables-version-11-05-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
+/root/f-iptables-version/fwiptables-version-11-06-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
 ###  [ options ] [ List general options for fwiptables ] [ list-options.md ]
-###  /root/f-iptables-version/fwiptables-version-11-05-bash.sh [optional-output] first_option [second_option]   
+###  /root/f-iptables-version/fwiptables-version-11-06-bash.sh [optional-output] first_option [second_option]   
 ###   [ optional-output ]                                                                
-   [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]                                       
-   [ -cli-dialog -cli-whiptail ] [ -gui-zenity -gui-yad ]                               
-   [ -cli-menu-dialog -cli-menu-whiptail ] [ -gui-roll-zenity ]                         
-   [ -gui-menu-zenity -gui-menu-yad ] [ -gui-shell-zenity -gui-shell-yad ]              
+   [ -t|-txt -c|-cli -g|-gui -l|-log -p|-pdf -s|-silent ]                               
+   [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                                   
+   [ -cli-menu-dialog -cli-menu-whiptail -gui-roll-zenity ]                             
+   [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                  
 ###   [ firewall-control ]                                                               
    stop continue reset actual show save load names-control eraserules                   
 ###   [ firewall-listconceptual ]                                                        
@@ -80,4 +80,4 @@
    list-options clasic-options filelog autolog speed-ip4 speed-ip6 speed-glx            
    ip4 ip6 code sockets nodes date free expert about notes version ip-forward           
    examples depends commands variables intro install uninstall                          
-###             ||| Example: fwiptables-cmd -gui-zenity info list |||                    
+###             ||| Example: fwiptables-cmd -gui-zenity info |||                         
