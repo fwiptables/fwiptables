@@ -2814,8 +2814,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-info-options:
-##########    english: parametters: options for fwiptables firewall      ##########
-##########    spanish: parametters: opciones para fwiptables firewall    ##########
+##########    english: optional-output: options for fwiptables firewall      ##########
+##########    spanish: optional-output: opciones para fwiptables firewall    ##########
 #### :rutina-inicial-parametters:
 ####
 ####
@@ -2826,12 +2826,14 @@ echo "$text_md"
 echo "$text_md -t . output in terminal text "
 echo "$text_md -c . output in terminal cli "
 echo "$text_md -g . output in graphicall gui "
-echo "$text_md -l . output in file log stablished"
-echo "$text_md -s . output in silent text "
-echo "$text_md -txt . output in terminal text "
-echo "$text_md -cli . output in terminal cli "
-echo "$text_md -gui . output in graphicall gui "
-echo "$text_md -log . output in file log stablished"
+echo "$text_md -l . output in file text log"
+echo "$text_md -p . output in file image pdf"
+echo "$text_md -s . output in silent or null"
+echo "$text_md -txt . output in terminal text"
+echo "$text_md -cli . output in terminal cli"
+echo "$text_md -gui . output in graphicall gui"
+echo "$text_md -log . output in file text log"
+echo "$text_md -pdf . output in file image pdf"
 echo "$text_md -silent . output in silent text "
 echo "$text_md -cli-dialog . output in terminal cli with dialog"
 echo "$text_md -cli-whiptail . output in terminal cli with whiptail"
