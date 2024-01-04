@@ -363,7 +363,7 @@ command_mpg321="$(command -v mpg321)"
 command_uuid="$(command -v uuid)"
 ####
 ####
-config_actual_date="$($command_date| $command_sed -e s/\ /\-/g -)"
+show_actual_date="$($command_date| $command_sed -e s/\ /\-/g -)"
 ####
 ####
 #### :rutina-final-command:
@@ -956,8 +956,8 @@ echo "### ### [ info ] [ $second_option $third_option $quad_option ] \
 [ $show_actual_date ]" &> $output_log
 $cmd_realpath $second_option $third_option $quad_option &> $output_log
 cat $output_log | $command_grep -iv Warning: \
-&> $directory_log/log-$second_option-$config_actual_date.txt
-echo "$title_md [ _ok_ ] [ show folder: $directory_log ]" ;
+&> $directory_log/log-$second_option-$show_actual_date.txt
+echo "$title_md [ file ] [ $directory_log/log-$second_option-$show_actual_date.txt ]" ;
 exit ; fi
 ####
 ####
@@ -985,8 +985,8 @@ sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &>
 #### send print to home output-fwiptables.pdf
 $cmd_realpath "$second_option" "$third_option" \
 | convert -page A3 text:- \
-$directory_pdf/pdf-$second_option-$config_actual_date.pdf &> /dev/null
-echo "$title_md [ _ok_ ] [ show folder: $directory_pdf ]" ;
+$directory_pdf/pdf-$second_option-$show_actual_date.pdf &> /dev/null
+echo "$title_md [ file ] [ $directory_pdf/pdf-$second_option-$show_actual_date.pdf ]"
 exit ; fi
 ####
 ####
