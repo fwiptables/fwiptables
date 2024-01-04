@@ -233,6 +233,7 @@ allow_output_maxconnect="no"     ;
 allow_output_ping="no"     ;
 allow_output_state="no"     ;
 allow_output_uid="no"     ;
+config_string_algoritmo="kpm"
 config_string_denied=".fb.com,.facebook.com,xxx.html" ;
 config_string_allowed="one-string-that-like-how-a-passord,sourceforge.net"  ;
 config_dmz_ip4=""     ;
@@ -574,13 +575,13 @@ if [ "$without_first_option" = "$NULL" ]; then first_option="options"; fi ; fi
 ####  realice sane with very important variables post by default_preferences
 ####
 ####
-case "$allow_use_legacy"  in "no") ;; *) allow_use_legacy=""    ;; esac
-case "$allow_use_nft"     in "no") ;; *) allow_use_nft=""       ;; esac
-case "$allow_use_ipv4"    in "no") ;; *) allow_use_ipv4=""      ;; esac
-case "$allow_use_ipv6"    in "no") ;; *) allow_use_ipv6=""      ;; esac
-case "$config_close_deny" in
-"DROP")   ;;
-"REJECT") ;;
+case "$allow_use_legacy"  in "no")   ;; *) allow_use_legacy=""    ;; esac
+case "$allow_use_nft"     in "no")   ;; *) allow_use_nft=""       ;; esac
+case "$allow_use_ipv4"    in "no")   ;; *) allow_use_ipv4=""      ;; esac
+case "$allow_use_ipv6"    in "no")   ;; *) allow_use_ipv6=""      ;; esac
+case "$config_string_algoritmo" in "bm") ;; "kmp") ;;
+*) config_string_algoritmo="bm" ;; esac
+case "$config_close_deny" in "DROP") ;; "REJECT") ;;
 *) config_close_deny="DROP"  ;; esac
 ####
 ####
@@ -1305,6 +1306,9 @@ echo "allow_use_ipv4=                                     ## or void or no"
 echo "allow_use_ipv6=no                                   ## or void or no"
 echo "allow_separate_rules=                               ## or void or no"
 echo "config_close_deny=drop                              ## or DROP or REJECT"
+echo "$title_md"
+echo "$title_md # default string"
+echo "config_string_algoritmo=kmp                         ## or bm or kpm"
 echo "$title_md"
 echo "$title_md # default log"
 echo "allow_save_autolog=                                 ## or void or no"
@@ -2740,11 +2744,11 @@ echo "$text_md expert-show-weather . show weather"
 echo "$text_md expert-show-geoip . show location for ip o for host"
 echo "$text_md expert-show-webcert . show web certificate ssl from one web"
 echo "$text_md expert-show-version . Show version fwiptables-cmd stable with curl"
-echo "$text_md expert-show-newversion . Show version fwiptables-cmd stable with curl"
+echo "$text_md expert-show-newversion . Show version fwiptables-cmd stable/unstable with curl"
 echo "$text_md expert-compile-obash . Compile fwiptables-cmd to fwiptables-bin with obash"
 echo "$text_md expert-upgrade-stable . Upgrade from web sourceforge fwiptables-cmd with curl"
 echo "$text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables-cmd with curl"
-echo "$text_md expert-download-adblock . Download four files of blacklist hosts to /etc/hosts.blacklist"
+echo "$text_md expert-download-adblock . Download blacklist hosts to /etc/hosts.blacklist"
 echo "$text_md expert-wpa-list . nameconfig to list wifi config"
 echo "$text_md expert-wpa-new . nameconfig to create wifi config"
 echo "$text_md expert-wpa-modify . nameconfig to modify wifi config"
@@ -4591,13 +4595,12 @@ echo "$title_md Install curl to show stable latest version"; fi
 ####
 #### actually
 ####
-echo "$title_md Show the fwiptables actually installed is"
+echo "$title_md Show the version for fwiptables actually installed:"
 $cmd_realpath version | $command_grep -E -i "version"
 ####
 #### latest stable
 ####
-echo "$title_md Show the fwiptables stable latest"
-echo "$title_md show the lastest stable is:"
+echo "$title_md Show the version for fwiptables stable latest:"
 descarga="$directory_log/fwiptables-cmd"
 $command_curl $web_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
@@ -4606,8 +4609,7 @@ rm $descarga
 ####
 #### latest unstable
 ####
-echo "$title_md Show the fwiptables unstable latest"
-echo "$title_md show the latest unstable is:"
+echo "$title_md Show the version for fwiptables unstable latest:"
 descarga="$directory_log/fwiptables-cmd"
 $command_curl $git_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
@@ -9197,22 +9199,26 @@ for string_close in $(echo $config_string_denied | $command_sed 's/,/ /g'); do
 ####
 ####
 $allow_use_ipv4 $allow_use_legacy $command_iptables_legacy \
--A  INPUT -m string --string $string_close --algo bm \
+-A  INPUT -m string --string $string_close \
+--algo $config_string_algoritmo \
 -j $config_close_deny &> /dev/null
 ####
 ####
 $allow_use_ipv4 $allow_use_legacy $command_iptables_legacy \
--A  OUTPUT -m string --string $string_close --algo bm \
+-A  OUTPUT -m string --string $string_close \
+--algo $config_string_algoritmo \
 -j $config_close_deny &> /dev/null
 ####
 ####
 $allow_use_ipv4 $allow_use_nft $command_iptables_nft \
--A  INPUT -m string --string $string_close --algo bm \
+-A  INPUT -m string --string $string_close \
+--algo $config_string_algoritmo \
 -j $config_close_deny &> /dev/null
 ####
 ####
 $allow_use_ipv4 $allow_use_nft  $command_iptables_nft \
--A  OUTPUT -m string --string $string_close --algo bm \
+-A  OUTPUT -m string --string $string_close \
+--algo $config_string_algoritmo \
 -j $config_close_deny &> /dev/null
 ####
 ####
@@ -9220,22 +9226,26 @@ $allow_use_ipv4 $allow_use_nft  $command_iptables_nft \
 ####
 ####
 $allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy \
--A  INPUT -m string --string $string_close --algo bm \
+-A  INPUT -m string --string $string_close \
+--algo $config_string_algoritmo \
 -j $config_close_deny &> /dev/null
 ####
 ####
 $allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy \
--A  OUTPUT -m string --string $string_close --algo bm \
+-A  OUTPUT -m string --string $string_close \
+--algo $config_string_algoritmo \
 -j $config_close_deny &> /dev/null
 ####
 ####
 $allow_use_ipv6 $allow_use_nft $command_ip6tables_nft \
--A  INPUT -m string --string $string_close --algo bm \
+-A  INPUT -m string --string $string_close \
+--algo $config_string_algoritmo \
 -j $config_close_deny &> /dev/null
 ####
 ####
 $allow_use_ipv6 $allow_use_nft $command_ip6tables_nft \
--A  OUTPUT -m string --string $string_close --algo bm \
+-A  OUTPUT -m string --string $string_close \
+--algo $config_string_algoritmo \
 -j $config_close_deny &> /dev/null
 ####
 ####
@@ -9256,39 +9266,51 @@ for string_allow in $(echo $config_string_allowed | $command_sed 's/,/ /g'); do
 #### ipv4
 ####
 ####holahola
-$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A  INPUT  \
--m string --string $string_allow --algo bm -j ACCEPT &> /dev/null
+$allow_use_ipv4 $allow_use_legacy \
+$command_iptables_legacy  -A  INPUT  \
+-m string --string $string_allow \
+--algo $config_string_algoritmo -j ACCEPT &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_legacy $command_iptables_legacy  -A  OUTPUT \
--m string --string $string_allow --algo bm -j ACCEPT &> /dev/null
+$allow_use_ipv4 $allow_use_legacy \
+$command_iptables_legacy  -A  OUTPUT \
+-m string --string $string_allow \
+--algo $config_string_algoritmo -j ACCEPT &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A  INPUT  \
--m string --string $string_allow --algo bm -j ACCEPT &> /dev/null
+$allow_use_ipv4 $allow_use_nft  \
+$command_iptables_nft     -A  INPUT  \
+-m string --string $string_allow \
+--algo $config_string_algoritmo -j ACCEPT &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft  $command_iptables_nft     -A  OUTPUT \
--m string --string $string_allow --algo bm -j ACCEPT &> /dev/null
+$allow_use_ipv4 $allow_use_nft  \
+$command_iptables_nft     -A  OUTPUT \
+-m string --string $string_allow \
+--algo $config_string_algoritmo -j ACCEPT &> /dev/null
 ####
 ####
 #### ipv6
 ####
 ####
 $allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A  INPUT  \
--m string --string $string_allow --algo bm -j ACCEPT &> /dev/null
+-m string --string $string_allow \
+--algo $config_string_algoritmo -j ACCEPT &> /dev/null
 ####
 ####
 $allow_use_ipv6 $allow_use_legacy $command_ip6tables_legacy -A  OUTPUT \
--m string --string $string_allow --algo bm -j ACCEPT &> /dev/null
+-m string --string $string_allow \
+--algo $config_string_algoritmo -j ACCEPT &> /dev/null
 ####
 ####
 $allow_use_ipv6 $allow_use_nft $command_ip6tables_nft    -A  INPUT  \
--m string --string $string_allow --algo bm -j ACCEPT &> /dev/null
+-m string --string $string_allow \
+--algo $config_string_algoritmo -j ACCEPT &> /dev/null
 ####
 ####
 $allow_use_ipv6 $allow_use_nft  $command_ip6tables_nft    -A  OUTPUT \
--m string --string $string_allow --algo bm -j ACCEPT &> /dev/null
+-m string --string $string_allow \
+--algo $config_string_algoritmo -j ACCEPT &> /dev/null
 ####
 ####
 done
