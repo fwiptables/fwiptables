@@ -979,7 +979,7 @@ esac
 ####
 ####
 case $command_convert in "NULL") 
-echo "$title_md install imagemagick to print pdf" ; exit ;; esac
+echo "$title_md install imagemagick to print pdf to $directory_pdf" ; exit ;; esac
 echo "$head_waiting_pdf"
 #### allow print to PDF
 sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &> /dev/null
