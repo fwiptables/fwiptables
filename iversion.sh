@@ -567,18 +567,60 @@ launch_rules_firewall="no" ;   #  autoconfigure with launch iptables rules
 #### :rutina-inicial-update-variables:
 ####
 ####
-####     #### english: launch default for update variables
-####     #### spanish: lanza default para actualizar variables
+if [ -f "$default_preferences"   ]
+then source $default_preferences 
+cmd_realpath sane-variables &> /dev/null ; fi
 ####
 ####
+if [ "$first_option" = "$NULL" ]
+then first_option="$without_first_option"
+if [ "$without_first_option" = "$NULL" ]
+then first_option="options"; fi ; fi
 ####
 ####
-if [ -f "$default_preferences"   ]; then source $default_preferences ; fi
-if [ "$first_option" = "$NULL" ]; then first_option="$without_first_option";
-if [ "$without_first_option" = "$NULL" ]; then first_option="options"; fi ; fi
+#### :rutina-final-update-variables:
+##########    english: Update variables             ##########
+##########    spanish: Actualiza variables          ##########
+#### :rutina-inicial-sane-variables:
 ####
 ####
-####  realice sane with very important variables post by default_preferences
+if [ "$first_option" == "sane-variables" ]; then
+case "$NULL" in "$allow_autosave")         ;;  *)  allow_autosave="no" ;;  esac
+case "$NULL" in "$allow_string_denied")    ;;  *)  allow_string_denied="no" ;;  esac
+case "$NULL" in "$allow_dmz_ip4")          ;;  *)  allow_dmz_ip4="no" ;; esac
+case "$NULL" in "$allow_dmz_ip6")          ;;  *)  allow_dmz_ip6="no" ;; esac
+case "$NULL" in "$allow_forward_ip4")      ;;  *)  allow_forward_ip4="no" ;; esac
+case "$NULL" in "$allow_forward_ip6")      ;;  *)  allow_forward_ip6="no" ;; esac
+case "$NULL" in "$allow_gateway_ip4")      ;;  *)  allow_gateway_ip4="no" ;; esac
+case "$NULL" in "$allow_gateway_ip6")      ;;  *)  allow_gateway_ip6="no" ;; esac
+case "$NULL" in "$allow_input_all")        ;;  *)  allow_input_all="no";; esac
+case "$NULL" in "$allow_input_bandwidth")  ;;  *)  allow_input_bandwidth="no";; esac
+case "$NULL" in "$allow_input_maxconnect") ;;  *)  allow_input_maxconnect="no";; esac
+case "$NULL" in "$allow_input_ping")       ;;  *)  allow_input_ping="no";; esac
+case "$NULL" in "$allow_input_state")      ;;  *)  allow_input_state="no";; esac
+case "$NULL" in "$allow_use_ipv4")         ;;  *)  allow_use_ipv4="no" ;; esac
+case "$NULL" in "$allow_use_ipv6")         ;;  *)  allow_use_ipv6="no" ;; esac
+case "$NULL" in "$allow_use_legacy")       ;;  *)  allow_use_legacy="no" ;; esac
+case "$NULL" in "$allow_mac_blacklist")    ;;  *)  allow_mac_blacklist="no" ;; esac
+case "$NULL" in "$allow_mac_whitelist")    ;;  *)  allow_mac_whitelist="no" ;; esac
+case "$NULL" in "$allow_shield_maxtries")  ;;  *)  allow_shield_maxtries="no" ;; esac
+case "$NULL" in "$allow_net_blacklist")    ;;  *)  allow_net_blacklist="no";; esac
+case "$NULL" in "$allow_net_whitelist")    ;;  *)  allow_net_whitelist="no";; esac
+case "$NULL" in "$allow_use_nft")          ;;  *)  allow_use_nft="no" ;; esac
+case "$NULL" in "$allow_only_output")      ;;  *)  allow_only_output="no" ;; esac
+case "$NULL" in "$allow_other_protocols")  ;;  *)  allow_other_protocols="no";; esac
+case "$NULL" in "$allow_others_protocols") ;;  *)  allow_others_protocols="no" ;; esac
+case "$NULL" in "$allow_output_all")       ;;  *)  allow_output_all="no";; esac
+case "$NULL" in "$allow_output_bandwidth") ;;  *)  allow_output_bandwidth="no";; esac
+case "$NULL" in "$allow_output_gid")       ;;  *)  allow_output_gid="no";; esac
+case "$NULL" in "$allow_output_maxconnect");;  *)  allow_output_maxconnect="no";; esac
+case "$NULL" in "$allow_output_ping")      ;;  *)  allow_output_ping="no";; esac
+case "$NULL" in "$allow_output_state")     ;;  *)  allow_output_state="no";; esac
+case "$NULL" in "$allow_output_uid")       ;;  *)  allow_output_uid="no";; esac
+case "$NULL" in "$choosed_iptables")       ;;  *)  choosed_iptables="no";; esac
+case "$NULL" in "$launch_rules_firewall")  ;;  *)  launch_rules_firewall="no" ;; esac
+case "$NULL" in "$name_firewall")          ;;  *)  name_firewall="no" ;; esac
+case "$NULL" in "$type_firewall")          ;;  *)  type_firewall="no" ;; esac
 ####
 ####
 case "$allow_use_legacy"  in "no")   ;; *) allow_use_legacy=""    ;; esac
@@ -589,9 +631,10 @@ case "$config_string_algoritmo" in "bm") ;; "kmp") ;;
 *) config_string_algoritmo="bm" ;; esac
 case "$config_close_deny" in "DROP") ;; "REJECT") ;;
 *) config_close_deny="DROP"  ;; esac
+exit; fi
 ####
 ####
-#### :rutina-final-update-variables:
+#### :rutina-final-sane-variables:
 ##########      english: search favorite date: favorite date command        ##########
 ##########      spanish: busca preferida fecha: favorita comando de fecha   ##########
 #### :rutina-inicial-favorite-date-command:
@@ -1339,7 +1382,7 @@ echo "allow_use_nft=no                                    ## or void or no"
 echo "allow_use_ipv4=                                     ## or void or no"
 echo "allow_use_ipv6=no                                   ## or void or no"
 echo "allow_separate_rules=                               ## or void or no"
-echo "config_close_deny=drop                              ## or DROP or REJECT"
+echo "config_close_deny=DROP                              ## or DROP or REJECT"
 echo "$title_md"
 echo "$title_md # default string"
 echo "config_string_algoritmo=kmp                         ## or kmp or bm"
@@ -1512,10 +1555,10 @@ echo "$title_md [ note ] [ ALL_PROXY, HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PRO
 echo "$title_md [ note ] [ File: ] WHITHOUT script shell and WHITHOUT exit command ]"
 echo "$title_md [ note ] [ Example:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
 echo "$title_md [ note ] [ Then: ] source /directory/file-of-declare-proxy"
-listado_proxy="$($command_sudo -u root bash -c export | grep -i \_PROXY | wc -l)"
+listado_proxy="$($command_sudo -u root bash -c export | $command_grep -i \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ];
 then echo "$text_md [ info ] Without proxy in export variables"
-else $command_sudo -u root bash -c export | -i grep "_PROXY" ; fi
+else $command_sudo -u root bash -c export | $command_grep -i "_PROXY" ; fi
 echo
 echo "$title_md [ info ] ### [ Domain resolve ] [ Resolv.conf ] ###"
 if [ -f /etc/resolv.conf ]
@@ -2289,42 +2332,6 @@ exit ; fi
 #### :rutina-inicial-sane:
 ####
 ####
-case "$NULL" in "$allow_autosave")         ;;  *)  allow_autosave="no" ;;  esac
-case "$NULL" in "$allow_string_denied")     ;;  *)  allow_string_denied="no" ;;  esac
-case "$NULL" in "$allow_dmz_ip4")          ;;  *)  allow_dmz_ip4="no" ;; esac
-case "$NULL" in "$allow_dmz_ip6")          ;;  *)  allow_dmz_ip6="no" ;; esac
-case "$NULL" in "$allow_forward_ip4")      ;;  *)  allow_forward_ip4="no" ;; esac
-case "$NULL" in "$allow_forward_ip6")      ;;  *)  allow_forward_ip6="no" ;; esac
-case "$NULL" in "$allow_gateway_ip4")      ;;  *)  allow_gateway_ip4="no" ;; esac
-case "$NULL" in "$allow_gateway_ip6")      ;;  *)  allow_gateway_ip6="no" ;; esac
-case "$NULL" in "$allow_input_all")        ;;  *)  allow_input_all="no";; esac
-case "$NULL" in "$allow_input_bandwidth")  ;;  *)  allow_input_bandwidth="no";; esac
-case "$NULL" in "$allow_input_maxconnect") ;;  *)  allow_input_maxconnect="no";; esac
-case "$NULL" in "$allow_input_ping")       ;;  *)  allow_input_ping="no";; esac
-case "$NULL" in "$allow_input_state")      ;;  *)  allow_input_state="no";; esac
-case "$NULL" in "$allow_use_ipv4")         ;;  *)  allow_use_ipv4="no" ;; esac
-case "$NULL" in "$allow_use_ipv6")         ;;  *)  allow_use_ipv6="no" ;; esac
-case "$NULL" in "$allow_use_legacy")       ;;  *)  allow_use_legacy="no" ;; esac
-case "$NULL" in "$allow_mac_blacklist")    ;;  *)  allow_mac_blacklist="no" ;; esac
-case "$NULL" in "$allow_mac_whitelist")    ;;  *)  allow_mac_whitelist="no" ;; esac
-case "$NULL" in "$allow_shield_maxtries")  ;;  *)  allow_shield_maxtries="no" ;; esac
-case "$NULL" in "$allow_net_blacklist")    ;;  *)  allow_net_blacklist="no";; esac
-case "$NULL" in "$allow_net_whitelist")    ;;  *)  allow_net_whitelist="no";; esac
-case "$NULL" in "$allow_use_nft")          ;;  *)  allow_use_nft="no" ;; esac
-case "$NULL" in "$allow_only_output")      ;;  *)  allow_only_output="no" ;; esac
-case "$NULL" in "$allow_other_protocols")  ;;  *)  allow_other_protocols="no";; esac
-case "$NULL" in "$allow_others_protocols") ;;  *)  allow_others_protocols="no" ;; esac
-case "$NULL" in "$allow_output_all")       ;;  *)  allow_output_all="no";; esac
-case "$NULL" in "$allow_output_bandwidth") ;;  *)  allow_output_bandwidth="no";; esac
-case "$NULL" in "$allow_output_gid")       ;;  *)  allow_output_gid="no";; esac
-case "$NULL" in "$allow_output_maxconnect");;  *)  allow_output_maxconnect="no";; esac
-case "$NULL" in "$allow_output_ping")      ;;  *)  allow_output_ping="no";; esac
-case "$NULL" in "$allow_output_state")     ;;  *)  allow_output_state="no";; esac
-case "$NULL" in "$allow_output_uid")       ;;  *)  allow_output_uid="no";; esac
-case "$NULL" in "$choosed_iptables")       ;;  *)  choosed_iptables="no";; esac
-case "$NULL" in "$launch_rules_firewall")  ;;  *)  launch_rules_firewall="no" ;; esac
-case "$NULL" in "$name_firewall")          ;;  *)  name_firewall="no" ;; esac
-case "$NULL" in "$type_firewall")          ;;  *)  type_firewall="no" ;; esac
 ####
 ####
 #### :rutina-final-sane:
@@ -7138,7 +7145,8 @@ name_firewall="$second_option" ;
 ####
 ####
 if [ -f "$directory_config/$second_option" ]
-then source $directory_config/$second_option ; fi
+then source $directory_config/$second_option
+$cmd_realpath sane-variables ; fi
 ####
 ####
 if [ ! -f "$directory_config/$second_option" ]
@@ -8630,8 +8638,13 @@ echo "### #[ fail ] [ first option: $first_option | without first option: $witho
 $cmd_realpath options ; exit ; fi
 ####
 ####
-#### if [ "$without_first_option" != "$NULL" ] ; then 
-#### $cmd_realpath $without_first_option ; exit ; fi
+#### sane variables
+#### 
+####
+$cmd_realpath sane-preferences &> /dev/null
+$cmd_realpath sane-variables &> /dev/null
+####
+####
 ###############################################################################################################
 ###############################################################################################################
 ####                                                                                            ###############
