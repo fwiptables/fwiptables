@@ -835,14 +835,8 @@ esac
 case "$first_option" in
 "cli-dialog") favorite_text_dialog="$command_dialog" ; first_option="cli" ;;
 "cli-whiptail") favorite_text_dialog="$command_whiptail" ; first_option="cli" ;;
-"gui-zenity")
-favorite_graphicall_dialog="$command_zenity" ; first_option="gui" 
-#### $favorite_graphicall_dialog --forms --text="please, wait several seconds" & 
-;;
-"gui-yad")
-favorite_graphicall_dialog="$command_yad" ; first_option="gui" 
-#### $favorite_graphicall_dialog --forms --text="please, wait several seconds" &
-;;
+"gui-zenity")favorite_graphicall_dialog="$command_zenity" ; first_option="gui" ;;
+"gui-yad")favorite_graphicall_dialog="$command_yad" ; first_option="gui" ;;
 "cli-menu-dialog") favorite_text_dialog="$command_dialog" ; first_option="cli-menu" ;;
 "cli-menu-whiptail") favorite_text_dialog="$command_whiptail" ; first_option="cli-menu" ;;
 "gui-menu-zenity") favorite_graphicall_dialog="$command_zenity" ; first_option="gui-menu" ;;
@@ -876,16 +870,66 @@ case "$first_option" in
 esac
 ####
 ####
-#### english:  alias simple for regenerate configurations templates
+#### :rutina-final-alias-simple:
+##########    ALIAS CONFIG
+##########    ALIAS CONFIG
+#### :rutina-inicial-alias-config:
+####
+####
+#### english:  alias simple for regenerate configurations templates o esquive
 ####
 ####
 case "$first_option" in
-"wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|"nueva-mini-config"|"nueva-completa-config") $cmd_realpath config-regen ;; esac
+"wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|\
+"nueva-mini-config"|"nueva-completa-config"|"preferences-modify"|\
+"modify-config"|"expert-wpa-modify"|"expert-wpa-new")
+$cmd_realpath config-regen &> /dev/null ;; esac
 ####
 ####
-#### :rutina-final-alias-simple:
-##########    ALIAS CAMPUS
-##########    ALIAS CAMPUS
+if [ "$first_option" == "cli" ]; then 
+case "$second_option" in
+"wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|\
+"nueva-mini-config"|"nueva-completa-config"|"preferences-modify"|\
+"modify-config"|"expert-wpa-modify"|"expert-wpa-new")
+$cmd_realpath config-regen &> /dev/null 
+$cmd_realpath $second_option $third_option ;; esac ; fi
+####
+####
+if [ "$first_option" == "gui" ]; then 
+case "$second_option" in
+"wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|\
+"nueva-mini-config"|"nueva-completa-config"|"preferences-modify"|\
+"modify-config"|"expert-wpa-modify"|"expert-wpa-new")
+$cmd_realpath config-regen  &> /dev/null ;; esac ; fi
+####
+####
+if [ "$first_option" == "log" ]; then 
+case "$second_option" in
+"wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|\
+"nueva-mini-config"|"nueva-completa-config"|"preferences-modify"|\
+"modify-config"|"expert-wpa-modify"|"expert-wpa-new")
+$cmd_realpath config-regen  &> /dev/null ; exit ;; esac ; fi
+####
+####
+if [ "$first_option" == "pdf" ]; then 
+case "$second_option" in
+"wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|\
+"nueva-mini-config"|"nueva-completa-config"|"preferences-modify"|\
+"modify-config"|"expert-wpa-modify"|"expert-wpa-new")
+$cmd_realpath config-regen  &> /dev/null ; exit ;; esac ; fi
+####
+####
+if [ "$first_option" == "null" ]; then 
+case "$second_option" in
+"wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|\
+"nueva-mini-config"|"nueva-completa-config"|"preferences-modify"|\
+"modify-config"|"expert-wpa-modify"|"expert-wpa-new")
+$cmd_realpath config-regen  &> /dev/null ; exit ;; esac; fi
+####
+####
+#### :rutina-final-alias-config:
+##########    ALIAS CONFIG
+##########    ALIAS CONFIG
 #### :rutina-inicial-alias-campus:
 ####
 ####
@@ -905,8 +949,7 @@ cat $temporal_textfinal ; exit ;;
 "listn6") $cmd_realpath listn6-ip &> $temporal_text 
 cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
-esac
-$cmd_realpath "$second_option" "$third_option" "$quad_option"
+esac ; $cmd_realpath "$second_option" "$third_option" "$quad_option"
 exit; fi
 ####
 ####
@@ -916,48 +959,23 @@ exit; fi
 if [ "$first_option" == "cli" ]
 then echo "$head_waiting_cli"
 if [ "$favorite_text_dialog" == "$NULL" ]; then "### [ info ] Please install or dialog or whiptail to work with cli";  exit; fi
-case "$second_option" in
-wizard-*) echo "$message_without_cli"
-$cmd_realpath $second_option $third_option ;  exit ;;
-"nueva-mini-config")  $cmd_realpath $second_option $third_option ;  exit ;;
-"nueva-completa-config") $cmd_realpath $second_option $third_option ;  exit ;;
-"new-mini-config") $cmd_realpath $second_option $third_option ;  exit ;;
-"new-full-config") $cmd_realpath $second_option $third_option ;  exit ;;
-"modify-config") $cmd_realpath modify-config $third_option ; exit ;;
-"preferences-modify") $cmd_realpath preferences-modify ; exit ;;
-"expert-radio-online")
-echo "$message_without_cli" ; $cmd_realpath $second_option $third_option ;  exit ;;
-*) cmd_inicial="$($cmd_realpath $second_option $third_option)"
+cmd_inicial="$($cmd_realpath $second_option $third_option)"
 $favorite_text_dialog --clear --notags --title \
 "Cli Menu With $cmd_version" --msgbox "$cmd_inicial" 0 0
-exit ;;
-esac ; fi
+exit ; fi
 ####
 ####
 #### output log
 ####
 ####
 if [ "$first_option" == "log" ]
-then case "$second_option" in 
-"wizard") echo "$message_without_log" ; exit ;;
-"wizard-full") echo "$message_without_log" ; exit ;;
-"new-mini-config") echo "$message_without_log" ; exit ;;
-"nueva-mini-config") echo "$message_without_log" ; exit ;;
-"new-full-config") echo "$message_without_log" ; exit ;;
-"nueva-completa-config") echo "$message_without_log" ; exit ;;
-"modify-config")  echo "$message_without_log" ; exit ;;
-"preferences-modify")  echo "$message_without_log" ; exit ;;
-pc-*) echo "$message_without_log" ; exit ;;
-esac 
-####
-####
-echo "$head_waiting_log"
+then echo "$head_waiting_log"
 echo "### ### [ info ] [ $second_option $third_option $quad_option ] \
 [ $show_actual_date ]" &> $output_log
 $cmd_realpath $second_option $third_option $quad_option &> $output_log
 cat $output_log | $command_grep -iv Warning: \
 &> $directory_log/log-$second_option-$show_actual_date.txt
-echo "$title_md [ file ] [ $directory_log/log-$second_option-$show_actual_date.txt ]" ;
+echo "$title_md [ file ] [ $directory_log/log-$second_option-$show_actual_date.txt ]"
 exit ; fi
 ####
 ####
@@ -965,19 +983,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "pdf" ]
-then case "$second_option" in 
-"wizard") echo "$message_without_pdf" ; exit ;;
-"wizard-full") echo "$message_without_pdf" ; exit ;;
-"new-mini-config") echo "$message_without_pdf" ; exit ;;
-"nueva-mini-config") echo "$message_without_pdf" ; exit ;;
-"new-full-config") echo "$message_without_pdf" ; exit ;;
-"nueva-completa-config") echo "$message_without_pdf" ; exit ;;
-"preferences-config") echo "$message_without_pdf" ; exit ;;
-pc-*) echo "$message_without_pdf" ; exit ;;
-esac
-####
-####
-case $command_convert in "NULL") 
+then case $command_convert in "NULL") 
 echo "$title_md install imagemagick to print pdf to $directory_pdf" ; exit ;; esac
 echo "$head_waiting_pdf"
 #### allow print to PDF
@@ -990,25 +996,11 @@ echo "$title_md [ file ] [ $directory_pdf/pdf-$second_option-$show_actual_date.p
 exit ; fi
 ####
 ####
-####
-####
 #### output null
 ####
 ####
 if [ "$first_option" == "null" ]
-then case "$second_option" in 
-"wizard") echo "$message_without_null" ; exit ;;
-"wizard-full") echo "$message_without_null" ; exit ;;
-"new-mini-config") echo "$message_without_null" ; exit ;;
-"nueva-mini-config") echo "$message_without_null" ; exit ;;
-"new-full-config") echo "$message_without_null" ; exit ;;
-"nueva-completa-config") echo "$message_without_null" ; exit ;;
-"preferences-config") echo "$message_without_null" ; exit ;;
-pc-*) echo "$message_without_null" ; exit ;;
-esac
-####
-####
-$cmd_realpath "$second_option" "$third_option" &> /dev/null
+then $cmd_realpath "$second_option" "$third_option" &> /dev/null
 exit ; fi
 ####
 ####
@@ -1018,8 +1010,9 @@ exit ; fi
 #### :rutina-inicial-allow-autolog:
 ####
 ####
-if [ "$allow_save_autolog" != "no" ]; then 
-head_autolog="date: $show_actual_date realpath: $cmd_realpath version: $cmd_version \
+if [ "$allow_save_autolog" != "no" ]
+then head_autolog="date: $show_actual_date \
+realpath: $cmd_realpath version: $cmd_version \
 options: $first_option $second_option $third_option"
 echo $head_autolog >> $default_autolog ; fi
 ####
@@ -1030,8 +1023,8 @@ echo $head_autolog >> $default_autolog ; fi
 #### :rutina-inicial-allow-timespam:
 ####
 ####
-if [ "$allow_show_time" != "no" ] ; then
-config_show_timespam="$title_md Date: $show_actual_date"
+if [ "$allow_show_time" != "no" ]
+then config_show_timespam="$title_md Date: $show_actual_date"
 echo $config_show_timespam ; fi
 ####
 ####
