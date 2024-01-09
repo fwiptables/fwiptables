@@ -1063,8 +1063,8 @@ exit ; fi
 ####
 if [ "$allow_save_autolog" != "no" ]
 then head_autolog="date: $show_actual_date \
-realpath: $cmd_realpath version: $cmd_version \
-options: $first_option $second_option $third_option"
+path: $cmd_realpath ver: $cmd_version \
+opt: $first_option $second_option $third_option"
 echo $head_autolog >> $default_autolog ; fi
 ####
 ####
