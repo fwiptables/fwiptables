@@ -543,23 +543,29 @@ config_graphicall_height=550
 title_md="### " ;
 text_md="  " ;
 fifty_md="##################################################" ;
-#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
+#### #### english: [characters to show] 
+#### spanish: [caracteres a mostrar]
 head_waiting_all=" [ Wait several seconds.. ]  [ press control-c to cancel ] "
 head_waiting_txt="$title_md [ info ] [ txt ] $head_waiting_all "
 head_waiting_cli="$title_md [ info ] [ cli ] $head_waiting_all "
 head_waiting_gui="$title_md [ info ] [ gui ] $head_waiting_all "
 head_waiting_log="$title_md [ info ] [ log ] $head_waiting_all "
 head_waiting_pdf="$title_md [ info ] [ pdf ] $head_waiting_all "
-#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
+#### #### english: [characters to show]
+#### spanish: [caracteres a mostrar]
 give_cover="$title_md [ $file_installed $cmd_version ] [ $X11_OR_WAYLAND ] \
 [ Options: $cmd_realpath options ]"
-#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
+#### #### english: [characters to show] 
+#### spanish: [caracteres a mostrar]
 give_load="$title_md [ _ok_ ] [ Load firewall ] [ Firewall With iptables ]"
-#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
+#### #### english: [characters to show] 
+#### spanish: [caracteres a mostrar]
 give_preferences="$title_md [ Configure ] [ $cmd_realpath preferences-modify ]"
-#### #### english: echo void            #### spanish: impresion vacia
+#### #### english: echo void            
+#### spanish: impresion vacia
 nada="$(echo -n)" ; 
-#### #### english: without cli or gui   #### spanish: sin cli o gui
+#### #### english: without cli or gui   
+#### spanish: sin cli o gui
 message_without_support="[ Without support for output cli for this option ]"
 message_without_cli="$title_md [ fail ] [ cli ] $message_without_support "
 message_without_gui="$title_md [ fail ] [ gui ] $message_without_support "
@@ -592,10 +598,14 @@ then first_option="options"; fi ; fi
 #### :rutina-inicial-sane-variables-basics:
 ####
 ####
-case "$NULL" in "$choosed_iptables")       ;;  *)  choosed_iptables="no";; esac
-case "$NULL" in "$launch_rules_firewall")  ;;  *)  launch_rules_firewall="no" ;; esac
-case "$NULL" in "$name_firewall")          ;;  *)  name_firewall="no" ;; esac
-case "$NULL" in "$type_firewall")          ;;  *)  type_firewall="no" ;; esac
+case "$NULL" in "$choosed_iptables")       ;;
+*)  choosed_iptables="no";; esac
+case "$NULL" in "$launch_rules_firewall")  ;;
+*)  launch_rules_firewall="no" ;; esac
+case "$NULL" in "$name_firewall")          ;;
+*)  name_firewall="no" ;; esac
+case "$NULL" in "$type_firewall")          ;;
+*)  type_firewall="no" ;; esac
 ####
 ####
 ####
@@ -607,9 +617,12 @@ case "$NULL" in "$type_firewall")          ;;  *)  type_firewall="no" ;; esac
 ####
 ####
 if [ "$favorite_date_command" == "$NULL" ]; then
-if [ "$command_rdate"   != "$NULL" ]; then  favorite_date_command="$command_rdate -4 -a -n"  ; fi
-if [ "$command_sntp"    != "$NULL" ]; then  favorite_date_command="$command_sntp"            ; fi
-if [ "$command_ntpdate" != "$NULL" ]; then  favorite_date_command="$command_ntpdate"         ; fi
+if [ "$command_rdate"   != "$NULL" ]; then
+favorite_date_command="$command_rdate -4 -a -n"  ; fi
+if [ "$command_sntp"    != "$NULL" ]; then
+favorite_date_command="$command_sntp"            ; fi
+if [ "$command_ntpdate" != "$NULL" ]; then
+favorite_date_command="$command_ntpdate"         ; fi
 fi
 ####
 ####
@@ -620,11 +633,16 @@ fi
 ####
 ####
 if [ "$favorite_text_editor" == "$NULL" ]; then
-if [ "$command_vi"  != "$NULL" ]  ; then    favorite_text_editor="$command_vi"      ; fi
-if [ "$command_vim"  != "$NULL" ]  ; then   favorite_text_editor="$command_vim"     ; fi
-if [ "$command_nano"  != "$NULL" ] ; then   favorite_text_editor="$command_nano"    ; fi
-if [ "$command_pico" != "$NULL" ] ; then  favorite_text_editor="$command_pico"      ; fi
-if [ "$command_editor" != "$NULL" ] ; then  favorite_text_editor="$command_editor"  ; fi
+if [ "$command_vi"  != "$NULL" ]  ; then    
+favorite_text_editor="$command_vi"      ; fi
+if [ "$command_vim"  != "$NULL" ]  ; then   
+favorite_text_editor="$command_vim"     ; fi
+if [ "$command_nano"  != "$NULL" ] ; then   
+favorite_text_editor="$command_nano"    ; fi
+if [ "$command_pico" != "$NULL" ] ; then  
+favorite_text_editor="$command_pico"    ; fi
+if [ "$command_editor" != "$NULL" ] ; then  
+favorite_text_editor="$command_editor"  ; fi
 fi
 ####
 ####
@@ -635,8 +653,10 @@ fi
 ####
 ####
 if [ "$favorite_text_dialog" == "$NULL" ]; then
-if [ "$command_dialog"  != "$NULL" ]  ; then  favorite_text_dialog="$command_dialog"    ; fi
-if [ "$command_whiptail" != "$NULL" ] ; then  favorite_text_dialog="$command_whiptail"  ; fi
+if [ "$command_dialog"  != "$NULL" ]  ; then  
+favorite_text_dialog="$command_dialog"    ; fi
+if [ "$command_whiptail" != "$NULL" ] ; then  
+favorite_text_dialog="$command_whiptail"  ; fi
 fi
 ####
 ####
@@ -647,8 +667,10 @@ fi
 ####
 ####
 if [ "$favorite_graphicall_dialog" == "$NULL" ]; then
-if [ "$command_yad"     != "$NULL" ] ; then  favorite_graphicall_dialog="$command_yad"      ; fi
-if [ "$command_zenity"  != "$NULL" ] ; then  favorite_graphicall_dialog="$command_zenity"   ; fi
+if [ "$command_yad"     != "$NULL" ] ; then  
+favorite_graphicall_dialog="$command_yad"      ; fi
+if [ "$command_zenity"  != "$NULL" ] ; then  
+favorite_graphicall_dialog="$command_zenity"   ; fi
 fi
 ####
 ####
@@ -659,10 +681,14 @@ fi
 ####
 ####
 if [ "$favorite_text_browser" == "$NULL" ]; then
-if [ "$command_links"  != "$NULL" ] ; then  favorite_text_browser="$command_links"   ; fi
-if [ "$command_links2" != "$NULL" ] ; then  favorite_text_browser="$command_links2"  ; fi
-if [ "$command_lynx"   != "$NULL" ] ; then  favorite_text_browser="$command_lynx"    ; fi
-if [ "$command_elinks" != "$NULL" ] ; then  favorite_text_browser="$command_elinks"  ; fi
+if [ "$command_links"  != "$NULL" ] ; then  
+favorite_text_browser="$command_links"   ; fi
+if [ "$command_links2" != "$NULL" ] ; then  
+favorite_text_browser="$command_links2"  ; fi
+if [ "$command_lynx"   != "$NULL" ] ; then  
+favorite_text_browser="$command_lynx"    ; fi
+if [ "$command_elinks" != "$NULL" ] ; then  
+favorite_text_browser="$command_elinks"  ; fi
 fi
 ####
 ####
@@ -673,9 +699,12 @@ fi
 ####
 ####
 if [ "$favorite_dhcp_command" == "$NULL" ]; then
-if [ "$command_dhcpcd"  != "$NULL" ] ;         then  favorite_dhcp_command="$command_dhcpcd"           ; fi
-if [ "$command_dhclient_script" != "$NULL" ] ; then  favorite_dhcp_command="$command_dhclient_script"  ; fi
-if [ "$command_dhclient"   != "$NULL" ] ;      then  favorite_dhcp_command="$command_dhclient"         ; fi
+if [ "$command_dhcpcd"  != "$NULL" ]         ; then
+favorite_dhcp_command="$command_dhcpcd"           ; fi
+if [ "$command_dhclient_script" != "$NULL" ] ; then  
+favorite_dhcp_command="$command_dhclient_script"  ; fi
+if [ "$command_dhclient"   != "$NULL" ] ;      then  
+favorite_dhcp_command="$command_dhclient"         ; fi
 fi
 ####
 ####
@@ -686,9 +715,12 @@ fi
 ####
 ####
 if [ "$favorite_date_command" == "$NULL" ]; then
-if [ "$command_rdate"   != "$NULL" ]; then  favorite_date_command="$command_rdate -4 -a -n"  ; fi
-if [ "$command_sntp"    != "$NULL" ]; then  favorite_date_command="$command_sntp"            ; fi
-if [ "$command_ntpdate" != "$NULL" ]; then  favorite_date_command="$command_ntpdate"         ; fi
+if [ "$command_rdate"   != "$NULL" ]; then  
+favorite_date_command="$command_rdate -4 -a -n"  ; fi
+if [ "$command_sntp"    != "$NULL" ]; then  
+favorite_date_command="$command_sntp"            ; fi
+if [ "$command_ntpdate" != "$NULL" ]; then  
+favorite_date_command="$command_ntpdate"         ; fi
 fi
 ####
 ####
@@ -699,7 +731,8 @@ fi
 ####
 ####
 if [ "$favorite_text_music" == "$NULL" ]; then
-if [ "$command_cvlc" != "$NULL" ]; then  favorite_text_music="$command_cvlc"          ; fi
+if [ "$command_cvlc" != "$NULL" ]; then  
+favorite_text_music="$command_cvlc"          ; fi
 fi
 ####
 ####
@@ -842,14 +875,22 @@ esac
 ####
 ####
 case "$first_option" in
-"cli-dialog") favorite_text_dialog="$command_dialog" ; first_option="cli" ;;
-"cli-whiptail") favorite_text_dialog="$command_whiptail" ; first_option="cli" ;;
-"gui-zenity")favorite_graphicall_dialog="$command_zenity" ; first_option="gui" ;;
-"gui-yad")favorite_graphicall_dialog="$command_yad" ; first_option="gui" ;;
-"cli-menu-dialog") favorite_text_dialog="$command_dialog" ; first_option="cli-menu" ;;
-"cli-menu-whiptail") favorite_text_dialog="$command_whiptail" ; first_option="cli-menu" ;;
-"gui-menu-zenity") favorite_graphicall_dialog="$command_zenity" ; first_option="gui-menu" ;;
-"gui-menu-yad") favorite_graphicall_dialog="$command_yad" ; first_option="gui-menu" ;;
+"cli-dialog")
+favorite_text_dialog="$command_dialog" ; first_option="cli" ;;
+"cli-whiptail")
+favorite_text_dialog="$command_whiptail" ; first_option="cli" ;;
+"gui-zenity")
+favorite_graphicall_dialog="$command_zenity" ; first_option="gui" ;;
+"gui-yad")
+favorite_graphicall_dialog="$command_yad" ; first_option="gui" ;;
+"cli-menu-dialog")
+favorite_text_dialog="$command_dialog" ; first_option="cli-menu" ;;
+"cli-menu-whiptail")
+favorite_text_dialog="$command_whiptail" ; first_option="cli-menu" ;;
+"gui-menu-zenity")
+favorite_graphicall_dialog="$command_zenity" ; first_option="gui-menu" ;;
+"gui-menu-yad") 
+favorite_graphicall_dialog="$command_yad" ; first_option="gui-menu" ;;
 esac
 ####
 ####
@@ -967,7 +1008,8 @@ exit; fi
 ####
 if [ "$first_option" == "cli" ]
 then echo "$head_waiting_cli"
-if [ "$favorite_text_dialog" == "$NULL" ]; then "### [ info ] Please install or dialog or whiptail to work with cli";  exit; fi
+if [ "$favorite_text_dialog" == "$NULL" ]; then 
+echo "$text_md [ info ] Please install or dialog or whiptail to work with cli";  exit; fi
 cmd_inicial="$($cmd_realpath $second_option $third_option)"
 $favorite_text_dialog --clear --notags --title \
 "Cli Menu With $cmd_version" --msgbox "$cmd_inicial" 0 0
