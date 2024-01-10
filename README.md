@@ -1,43 +1,53 @@
+### Date: mié-10-ene-2024-09:07:04-CET
   
 ###  fwiptables. Firewall With iptables.   [ intro.md ] 
   
-   fwiptables is one simple in one-file FRONT-END                       
-   for iptables linux with COMMAND-LINE with CLI-MENU                   
-   with GUI-MENU with GUI-ROLL with GUI-SHELL.                          
-   And choose one firewall: eraserules, or wizard-mini,                 
-   or wizard-full, or custom, or one system                             
-   firewall to choose one. Gen new rules with templates                 
-   and with shield ssh and with comments rules.                         
+   fwiptables is a one-file WIZARD    
+   for iptables with COMMAND-LINE     
+   with CLI-MENU with GUI-MENU        
+   with GUI-ROLL with GUI-SHELL.      
+   And choose one firewall:           
+   eraserules, or wizard-mini,        
+   or custom, or one system           
+   firewall to choose one. Gen rules  
+   with templates or wizard-full,     
+   and with shield ssh                
+   and with comments rules.           
   
-   rules ipv4, rules ipv6, netfilter, neftables, xtables,               
-   tools ip, wizards for rules, save/load rules with files,             
-   shield to ssh or other servers choosed,                              
-   limit bandwidth, host whitelist, host blacklist,                     
-   and other more capabilities of firewall.                             
+   rules ipv4, rules ipv6, netfilter,        
+   neftables, xtables,                       
+   tools ip, wizards for rules,              
+   save/load rules with files,               
+   shield to ssh or other servers choosed,   
+   string algoritmo, limit bandwidth,        
+   host whitelist, host blacklist,           
+   and other more capabilities of firewall.  
   
-###   fwiptables location.                                               
+###   fwiptables location.                    
   
        File location:   /usr/bin/fwiptables-cmd    
-    Config directory:   /root/.config/fwiptables-cmd                     
-    Cache  directory:   /run/fwiptables                    
+    Config directory:   /root/.config/fwiptables-cmd     
+    Cache  directory:   /run/fwiptables    
   
-###  fwiptables install.                                     
+###  fwiptables install.                     
   
-    su root             . TYPE:   su root                   
-    Put bit of execution. TYPE:   chmod 755 ./fwiptables-version-11-06-bash.sh 
-    Install this version. TYPE:   ./fwiptables-version-11-06-bash.sh install   
+    su root TYPE: su root                   
+    Put bit TYPE: chmod 755 ./fwiptables-version-11-07-bash.sh 
+    Install TYPE: ./fwiptables-version-11-07-bash.sh install   
   
-###  fwiptables uninstall.                                   
+###  fwiptables uninstall.                   
   
-    Uninstall fwiptables. TYPE:   fwiptables-cmd uninstall     
+    Uninstall TYPE: fwiptables-cmd uninstall  
   
+### Date: mié-10-ene-2024-09:07:05-CET
 ###  [ ver ] [ Show version about ] [ ver.md ]       
-   [ info ] [ Program ] /root/f-iptables-version/fwiptables-version-11-06-bash.sh      
-   [ info ] [ Version ] cmd-11-06       
-   [ info ] [ Details ] fwiptables, FireWall With iptables | fwiptables, One Mini Script in one-file  
+   [ info ] [ Program ] /root/f-iptables-version/fwiptables-version-11-07-bash.sh      
+   [ info ] [ Version ] cmd-11-07       
+   [ info ] [ Details ] fwiptables, FireWall With iptables | fwiptables, One Mini Script in one-file wizard  
    [ info ] [ Data directory  ] /root/.config/fwiptables-cmd                       
    [ info ] [ Cache directory ] /run/fwiptables                      
-   [ info ] [ File format     ] /root/f-iptables-version/fwiptables-version-11-06-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable      
+   [ info ] [ File format     ] /root/f-iptables-version/fwiptables-version-11-07-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable      
+### Date: mié-10-ene-2024-09:07:05-CET
 ###  [ compile ] [  Optionally compile from bash script ] [ compile.md]    
    [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling...                       
    [ step ] [ 0 ] Necesary: fwiptables in source script bash                                  
@@ -46,9 +56,10 @@
    [ step ] [ 3a] Or run: obash -r -c -o ./destination.bin ./source-bash.sh                   
    [ step ] [ 3b] Or run: obash -r -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd  
 ###  Actually, the file type is:  
-/root/f-iptables-version/fwiptables-version-11-06-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
+/root/f-iptables-version/fwiptables-version-11-07-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
 ###  [ options ] [ List general options for fwiptables ] [ list-options.md ]
-###  /root/f-iptables-version/fwiptables-version-11-06-bash.sh [optional-output] first_option [second_option]   
+### Date: mié-10-ene-2024-09:07:06-CET
+###  /root/f-iptables-version/fwiptables-version-11-07-bash.sh [optional-output] first_option [second_option]   
 ###   [ optional-output ]                                                                
    [ -t|-txt -c|-cli -g|-gui -l|-log -p|-pdf -s|-silent ]                               
    [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                                   
