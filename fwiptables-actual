@@ -507,7 +507,7 @@ config_shield_port="22"                   ## fwiptables-file-default ##  void o 
 config_shield_maxtries="10"               ## fwiptables-file-default ## void or no
 ####       #### english: close with deny is or DROP or REJECT
 ####       #### spanish: cierra con denegacion es o DROP or REJECT
-config_close_deny=                        ## fwiptables-file-default ## DROP or REJECT
+config_close_deny=DROP                        ## fwiptables-file-default ## DROP or REJECT
 ####       #### english: auto log from command input
 ####       #### spanish: automatico log de linea introducida
 allow_save_autolog=""                     ## fwiptables-file-default ## void or no
@@ -898,6 +898,7 @@ esac
 ####
 ####
 case "$first_option" in
+"config-regen") first_option="config-regen-new" ;;
 "expert") first_option="options-expert" ;;
 "version") first_option="ver" ;;
 "client-squid") first_option="client-proxy" ;;
@@ -1805,12 +1806,26 @@ exit; fi
 ####
 ####
 #### :rutina-final-notes:
-##########   english: config-regen: config-regen template wizard files       ##########
-##########   spanish: config-regen: config-regenera template wizard archivos ##########
-#### :rutina-inicial-config-regen:
+##########   english: config-regen-new: config-regen template wizard files       ##########
+##########   spanish: config-regen-new: config-regenera template wizard archivos ##########
+#### :rutina-inicial-config-regen-new:
 ####
 ####
-if [ "$first_option" == "config-regen" ]; then 
+if [ "$first_option" == "config-regen-new" ]; then 
+$cmd_realpath plantilla-mini-es &> $defaultminicfg_spa
+$cmd_realpath plantilla-mini-en &> $defaultminicfg_spa
+$cmd_realpath plantilla-full-es &> $defaultfullcfg_spa
+$cmd_realpath plantilla-full-en &> $defaultfullcfg_eng
+exit; fi
+####
+####
+#### :rutina-inicial-config-regen-new:
+##########   english: config-regen-old: config-regen template wizard files       ##########
+##########   spanish: config-regen-old: config-regenera template wizard archivos ##########
+#### :rutina-inicial-config-regen-old:
+####
+####
+if [ "$first_option" == "config-regen-old" ]; then 
 echo "$title_md [ $first_option ] [ Generate templates wizard and cfg ] "
 echo "$title_md [ info ] [ regenerating template wizard and template cfg ]"
 ####
@@ -1899,7 +1914,7 @@ spa24="$(echo $title_md Regla general en tabla )"
 var25="$(echo allow_separate_rules= )"
 eng25="$(echo $title_md Void to separate the rules for each port or no )"
 spa25="$(echo $title_md Vacio para separar reglas por cada puerto o no )"
-var26="$(echo config_close_deny= )"
+var26="$(echo config_close_deny=DROP )"
 eng26="$(echo $title_md choose close deny with or DROP or REJECT )"
 spa26="$(echo $title_md Elige cerrar denegacion con o DROP or REJECT )"
 var27="$(echo $title_md END NECESARY $title_md )"
@@ -2334,7 +2349,7 @@ echo "$title_md [ _ok_ ] [ Wizard and templates cfg regenerated ]"
 exit ; fi
 ####
 ####
-#### :rutina-final-config-regen:
+#### :rutina-final-config-regen-old:
 ##########  english:  plantilla-mini-es: for working sane         ########## 
 ##########  spanish:  plantilla-mini-es: para funcionamiento sano ##########
 #### :rutina-inicial-plantilla-mini-es
@@ -2392,7 +2407,7 @@ echo "$title_md GENERAL RULES $title_md "
 echo "$title_md Regla general en tabla "
 echo "allow_separate_rules= "
 echo "$title_md Vacio para separar reglas por cada puerto o no "
-echo "config_close_deny= "
+echo "config_close_deny=DROP "
 echo "$title_md Elige cerrar denegacion con o DROP or REJECT "
 echo "$title_md END NECESARY $title_md "
 echo "$title_md FINAL .......... Opciones Necesarias .......... .......... $title_md "
@@ -2400,6 +2415,193 @@ exit ; fi
 ####
 ####
 #### :rutina-final-plantilla-mini-es
+##########  english:  plantilla-full-es: for working sane         ########## 
+##########  spanish:  plantilla-full-es: para funcionamiento sano ##########
+#### :rutina-inicial-plantilla-full-es
+####
+####
+if [ "$first_option" == "plantilla-full-es" ]; then
+####
+####
+#### english: basic options in configurations file cfg
+#### spanish: basicas opciones in configuracion de archivo cfg
+####
+####
+echo "$title_md $cmd_shortdescription from $cmd_realpath version $cmd_version $title_md "
+echo "$title_md BEGIN NECESARY $title_md "
+echo "$title_md INICIO .......... Opciones Necesarias .......... .......... $title_md "
+echo "$title_md NETFILTER $title_md "
+echo "$title_md el iptables firewall netfilter, elige uno o dos "
+echo "allow_use_legacy= "
+echo "$title_md lanza xtables, vacio para si, o escribe no "
+echo "allow_use_nft=no "
+echo "$title_md lanza nftables, vacio para si, o escribe no "
+echo "$title_md PROTOCOL IP $title_md "
+echo "$title_md procolo ip, modificar con vacio o no "
+echo "allow_use_ipv4= "
+echo "$title_md varcio para ejecutar el firewall con ipv4 o no para no "
+echo "allow_use_ipv6=no "
+echo "$title_md varcio para ejecutar el firewall con ipv6 o no para no "
+echo "$title_md CLIENT PORTS $title_md "
+echo "$title_md puertos Cliente, añadir con ',' y poner rangos con : "
+echo "client_port_tcp=http,https,http-alt,ssh "
+echo "$title_md puertos tcp para ser cliente "
+echo "client_port_udp=domain,domain-s,bootpc,bootps,ntp,https "
+echo "$title_md puertos udp para ser cliente "
+echo "$title_md SERVER PORTS $title_md "
+echo "$title_md Puertos Servidor, añadir con ',' y poner rangos con  :"
+echo "server_port_tcp=ssh "
+echo "$title_md puertos tcp para servidor "
+echo "server_port_udp= "
+echo "$title_md puertos udp para servidor "
+echo "$title_md LOG TO SERVER PORTS $title_md "
+echo "$title_md logear para puertos de Servidor, añadir con ',' y poner rangos con : "
+echo "logserver_port_tcp= "
+echo "$title_md puertos tcp para logear servidor "
+echo "logserver_port_udp= "
+echo "$title_md puertos udp para logear servidor "
+echo "$title_md LOG PREFIX TO SERVER $title_md "
+echo "$title_md logear para puertos de servidor con prefijo "
+echo "logserver_prefix_input=fwlog-input:: "
+echo "$title_md especifica prefijo de entrada para logserver "
+echo "logserver_prefix_output=fwlog-output:: "
+echo "$title_md especifica prefijo de salida para logserver "
+echo "$title_md ALLOW MAXTRIES SHIELD $title_md )"
+echo "$title_md Pone un escudo para los peuertos de nueva conexion, con maximo ip cada hora "
+echo "allow_shield_maxtries=no "
+echo "$title_md vacio para permitir un escudo con los intentos maximos de logins por ip cada hora o no "
+echo "config_shield_maxtries=12 "
+echo "$title_md escudo con los maximos intentos de logeo a nuestro servidor por ip a cada hora "
+echo "config_shield_port=22 "
+echo "$title_md escudo cambiando puerto de intentos ssh o varios puertos separados por comas"
+echo "$title_md GENERAL RULES $title_md "
+echo "$title_md Regla general en tabla "
+echo "allow_separate_rules= "
+echo "$title_md Vacio para separar reglas por cada puerto o no "
+echo "config_close_deny=DROP "
+echo "$title_md Elige cerrar denegacion con o DROP or REJECT "
+echo "$title_md END NECESARY $title_md "
+echo "$title_md FINAL .......... Opciones Necesarias .......... .......... $title_md "
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+echo "$title_md BEGIN OPTIONAL $title_md "
+echo "$title_md INICIO .......... Opciones opcionales .......... .......... $title_md "
+echo "$title_md choose void or no $title_md "
+echo "$title_md Permitir Otras Opciones, modificar con vacio o no "
+echo "allow_string_denied=no "
+echo "$title_md vacio para denegar cadena de cabecera, o no para no "
+echo "allow_string_allowed=no "
+echo "$title_md vacio para permitir cadena, o no para no "
+echo "allow_forward_ip4=no "
+echo "$title_md vacio para reenvios ip4, o no para no "
+echo "allow_forward_ip6=no "
+echo "$title_md vacio para permitir reenvio ip6, o no "
+echo "allow_gateway_ip4=no "
+echo "$title_md vacio para permitir gateway ip4  a otras redes, o no "
+echo "allow_gateway_ip6=no "
+echo "$title_md vacio para hacer gateway ip6 a otras redes o no "
+echo "allow_dmz_ip4=no "
+echo "$title_md vacio para permitir dmz ip4  a una host local, o no "
+echo "allow_dmz_ip6=no "
+echo "$title_md vacio para hacer dmz ip6 a una host local o no "
+echo "allow_input_all=no "
+echo "$title_md vacio, reglas para permitir toda entrada o no "
+echo "allow_output_all=no "
+echo "$title_md vacio, reglas para permitir toda salida o no "
+echo "allow_input_state=no "
+echo "$title_md Estado de entrada selectivo con vacio o no "
+echo "allow_output_state=no "
+echo "$title_md Estado de salida selectivo con vacio o no "
+echo "allow_input_bandwidth=no "
+echo "$title_md vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no "
+echo "allow_output_bandwidth=no "
+echo "$title_md vacio limitar ancho de banda de salida en kbits/sec por cada destino o no "
+echo "allow_input_maxconnect=no "
+echo "$title_md vacio para limitar numero de conexiones simultaneas de entrada o no "
+echo "allow_output_maxconnect=no "
+echo "$title_md vacio para limitar numero de conexiones simultaneas de salida o no "
+echo "allow_input_ping=no "
+echo "$title_md vacio para permitir RECIVIR PING o no "
+echo "allow_output_ping=no "
+echo "$title_md vacio para permitir ENVIAR PING o no "
+echo "allow_mac_whitelist=no "
+echo "$title_md vacio para permitir DIRECCION-MAC excepcionales o no "
+echo "allow_mac_blacklist=no "
+echo "$title_md vacio para denegar DIRECCION-MAC excepcionales o no "
+echo "allow_net_whitelist=no "
+echo "$title_md vacio para permitir HOST/IP excepcionales o no"
+echo "allow_net_blacklist=no "
+echo "$title_md vacio para denegar HOST/IP excepcionales o no "
+echo "allow_output_uid=no"
+echo "$title_md vacio permite salida de paquetes de un USUARIO excepcional o no "
+echo "allow_output_gid=no"
+echo "$title_md vacio permite salida de paquetes de un GRUPO excepcional o no "
+echo "allow_others_protocols=no "
+echo "$title_md vacio para permitir otro PROTOCOLO-IP excepcional o no "
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+echo "$title_md Begin Variables $title_md.......... .......... $title_md.......... "
+echo "$title_md Rellena Variables "
+echo "$title_md Options "
+echo "$title_md Otras Opciones, añadir con , y poner rangos con : "
+echo "config_string_denied=.fb.com,.facebook.com,xxx.html "
+echo "$title_md bloquea conexion con cadena de cabecera, si hay varios, seperados por comas "
+echo "config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net "
+echo "$title_md permite conexion con cadena de cabecera, si hay varios, seperados por comas "
+echo "config_dmz_ip4=192.168.1.7 "
+echo "$title_md servidor ip lan para otras redes esternas, nat prerouting "
+echo "config_dmz_ip6=d4:12:43:01:36:2e "
+echo "$title_md servidor ip lan para otras redes esternas, nat prerouting "
+echo "config_input_state=new,related,established "
+echo "$title_md modificar con vacio o new,related,established,untracked,invalid "
+echo "config_output_state=new,related,established "
+echo "$title_md modificar con vacio o new,related,established,untracked,invalid "
+echo "config_input_bandwidth=12512 "
+echo "$title_md maximo entrada de ancho de banda en kbit/sec para todos "
+echo "config_output_bandwidth=512 "
+echo "$title_md maximo salida de ancho de banda en kbits/sec para cada ip "
+echo "config_input_maxconnect=72 "
+echo "$title_md maximo numero de conexiones simultaneas de entrada "
+echo "config_output_maxconnect=72 "
+echo "$title_md maximo numero de conexiones simultaneas de salida "
+echo "config_mac_whitelist=d4:12:43:01:36:2e "
+echo "$title_md permitir estos MAC-ADDRESS excepcionales "
+echo "config_mac_blacklist=d4:12:43:01:36:2e "
+echo "$title_md deniega estos MAC-ADDRESS excepcionales "
+echo "config_net_whitelist=wesnoth.org,sf.net,deb.debian.org "
+echo "$title_md permitir estos HOST/IP excepcionales "
+echo "config_net_blacklist=facebook.com,www.facebook.com "
+echo "$title_md deniega estos HOST/IP excepcionales "
+echo "config_output_uid=root "
+echo "$title_md permite salida de paquetes de este USUARIO excepcional "
+echo "config_output_gid=root "
+echo "$title_md permite salida de paquetes de este GRUPO excepcional "
+echo "config_others_protocols=icmp,igmp "
+echo "$title_md permitir otros protocolos desde /etc/protocols "
+echo "$title_md NET CLIENT AND NET SERVER $title_md "
+echo "$title_md Red para conectar como cliente o server "
+echo "net_ipv4_client=0/0 "
+echo "$title_md la red cual cliente ipv4, todos es 0/0 "
+echo "net_ipv4_server=0/0 "
+echo "$title_md la red cual servidor ipv4, todos es 0/0 "
+echo "net_ipv6_client=::/0 "
+echo "$title_md la red cual cliente ipv6, todos es ::/0 "
+echo "net_ipv6_server=::/0 "
+echo "$title_md la red cual servidor ipv6, todos es ::/0 "
+echo "$title_md $title_md "
+echo "$title_md FINAL .......... Opciones opcionales .......... .......... $title_md "
+exit ; fi
+####
+####
+#### :rutina-final-plantilla-full-es
 ##########  english:  plantilla-mini-en: for working sane         ########## 
 ##########  spanish:  plantilla-mini-en: para funcionamiento sano ##########
 #### :rutina-inicial-plantilla-mini-en
@@ -2457,7 +2659,7 @@ echo "$title_md GENERAL RULES $title_md "
 echo "$title_md General rules in table "
 echo "allow_separate_rules= "
 echo "$title_md Void to separate the rules for each port or no "
-echo "config_close_deny= "
+echo "config_close_deny=DROP "
 echo "$title_md choose close deny with or DROP or REJECT "
 echo "$title_md END NECESARY $title_md "
 echo "$title_md .......... END Necesary options .......... .......... $title_md "
@@ -2465,14 +2667,187 @@ exit ; fi
 ####
 ####
 #### :rutina-final-plantilla-mini-en
-##########  english:  sane variables: for working sane         ########## 
-##########  spanish:  sana variables: para funcionamiento sano ##########
-#### :rutina-inicial-sane:
+##########  english:  plantilla-full-en: for working sane         ########## 
+##########  spanish:  plantilla-full-en: para funcionamiento sano ##########
+#### :rutina-inicial-plantilla-full-en
 ####
 ####
+if [ "$first_option" == "plantilla-full-en" ]; then
+echo "$title_md $cmd_shortdescription from $cmd_realpath version $cmd_version $title_md "
+echo "$title_md BEGIN NECESARY $title_md "
+echo "$title_md  .......... BEGIN Necesary options .......... .......... $title_md "
+echo "$title_md NETFILTER $title_md "
+echo "$title_md the iptables firewall netfilter, choose one or two "
+echo "allow_use_legacy= "
+echo "$title_md launch xtables, void to yes or type no "
+echo "allow_use_nft=no "
+echo "$title_md launch nftables, void to yes or type no "
+echo "$title_md PROTOCOL IP $title_md "
+echo "$title_md ip protocol, modify with void or no "
+echo "allow_use_ipv4= "
+echo "$title_md void to config firewall with ipv4 or no to dont configure ipv4 "
+echo "allow_use_ipv6=no "
+echo "$title_md void to config firewall with ipv6 or no to dont configure ipv6 "
+echo "$title_md CLIENT PORTS $title_md "
+echo "$title_md Client ports, add with ',' and join ranges with  : "
+echo "client_port_tcp=http,https,http-alt,ssh "
+echo "$title_md tcp ports for client "
+echo "client_port_udp=domain,domain-s,bootpc,bootps,ntp,https "
+echo "$title_md udp ports for client "
+echo "$title_md SERVER PORTS $title_md "
+echo "$title_md Server ports, add with ',' and join ranges with : "
+echo "server_port_tcp=ssh "
+echo "$title_md tcp ports for server "
+echo "server_port_udp= "
+echo "$title_md udp ports for server "
+echo "$title_md LOG TO SERVER PORTS $title_md "
+echo "$title_md Log to server ports, add with ',' and join ranges with : "
+echo "logserver_port_tcp= "
+echo "$title_md the tcp ports to log server "
+echo "logserver_port_udp= "
+echo "$title_md the udp ports to log server "
+echo "$title_md LOG PREFIX TO SERVER $title_md "
+echo "$title_md Log to server ports with prefix "
+echo "logserver_prefix_input=fwlog-input:: "
+echo "$title_md type input prefix for logserver "
+echo "logserver_prefix_output=fwlog-output:: "
+echo "$title_md type output prefix for logserver "
+echo "$title_md ALLOW MAXTRIES SHIELD $title_md "
+echo "$title_md Put one shield for ports to new connecting, with max ip to each hour "
+echo "allow_shield_maxtries=no "
+echo "$title_md void to allow one shield with max tries login in ssh for ip to each hour or no "
+echo "config_shield_maxtries=12 "
+echo "$title_md modify shield with number max of tries to log in us ssh server for ip at each hour "
+echo "config_shield_port=22 "
+echo "$title_md modify shield ssh chaging maxtries port ssh o several ports with comma separate "
+echo "$title_md GENERAL RULES $title_md "
+echo "$title_md General rules in table "
+echo "allow_separate_rules= "
+echo "$title_md Void to separate the rules for each port or no "
+echo "config_close_deny=DROP "
+echo "$title_md choose close deny with or DROP or REJECT "
+echo "$title_md END NECESARY $title_md "
+echo "$title_md .......... END Necesary options .......... .......... $title_md "
 ####
 ####
-#### :rutina-final-sane:
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+echo "$title_md BEGIN OPTIONAL $title_md "
+echo "$title_md .......... BEGIN Optional options .......... .......... $title_md "
+echo "$title_md choose void or no $title_md "
+echo "$title_md Allow Other Options,  modify with void, or no "
+echo "allow_string_denied=no "
+echo "$title_md void to if drop string, or no to no "
+echo "allow_string_allowed=no "
+echo "$title_md void to if allow string, or no to no "
+echo "allow_forward_ip4=no "
+echo "$title_md void to yes to forward ip4, or no to no "
+echo "allow_forward_ip6=no "
+echo "$title_md void to allow ip forward ip6 or no "
+echo "allow_gateway_ip4=no "
+echo "$title_md void to allow gateway ip4 to others nets or no "
+echo "allow_gateway_ip6=no "
+echo "$title_md void to allow gateway ip6 to other nets or no "
+echo "allow_dmz_ip4=no "
+echo "$title_md void to allow dmz ip4 to one host local or no "
+echo "allow_dmz_ip6=no "
+echo "$title_md void to allow dmz ip6 to one host local or no "
+echo "allow_input_all=no "
+echo "$title_md void when the rules are to allow input to all or no "
+echo "allow_output_all=no "
+echo "$title_md void when the rules are to allow output to all or no "
+echo "allow_input_state=no "
+echo "$title_md Selective Input state with void or no "
+echo "allow_output_state=no "
+echo "$title_md Selective Output state with void or no "
+echo "allow_input_bandwidth=no "
+echo "$title_md void to limit bandwidth input in kbits/sec for all sources or no "
+echo "allow_output_bandwidth=no "
+echo "$title_md void to limit bandwidth output in kbits/sec for each destination or no "
+echo "allow_input_maxconnect=no "
+echo "$title_md void to limit max number for input simultaneous connections or no "
+echo "allow_output_maxconnect=no "
+echo "$title_md void to limit max number for output simultaneous connections or no "
+echo "allow_input_ping=no "
+echo "$title_md void to allow RECIVE PING or no "
+echo "allow_output_ping=no "
+echo "$title_md void to allow SEND PING or no "
+echo "allow_mac_whitelist=no "
+echo "$title_md void to allow some exceptional MAC-ADDRESS or no "
+echo "allow_mac_blacklist=no "
+echo "$title_md void to drop some excepcional MAC-ADDRESS or no "
+echo "allow_net_whitelist=no "
+echo "$title_md void to allow some exceptional HOST/IP or no "
+echo "allow_net_blacklist=no "
+echo "$title_md void to drop some excepcional HOST/IP or no "
+echo "allow_output_uid=no "
+echo "$title_md void to allow excepcional USER or no "
+echo "allow_output_gid=no "
+echo "$title_md void to allow excepcional GROUP or no "
+echo "allow_others_protocols=no "
+echo "$title_md void to allow other POTOCOL-IP excepcional or no"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+echo "$title_md Begin Variables $title_md.......... .......... $title_md.......... "
+echo "$title_md Fill Variables "
+echo "$title_md Options "
+echo "$title_md Other Options, add with , and join ranges with : "
+echo "config_string_denied=.fb.com,.facebook.com,xxx.html "
+echo "$title_md drop connection with header string, if several, comma separate "
+echo "config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net "
+echo "$title_md allow connection with header string, if several, comma separate "
+echo "config_dmz_ip4=192.168.1.7 "
+echo "$title_md ip server ip lan to other external nets, nat prerouting "
+echo "config_dmz_ip6=d4:12:43:01:36:2e "
+echo "$title_md ip server ip lan to other external nets, nat prerouting "
+echo "config_input_state=new,related,established "
+echo "$title_md void for all or new,related,established,untracked,invalid "
+echo "config_output_state=new,related,established "
+echo "$title_md void for all or new,related,established,untracked,invalid "
+echo "config_input_bandwidth=12512 "
+echo "$title_md max input bandwidth in kbits/sec for all "
+echo "config_output_bandwidth=512 "
+echo "$title_md max output bandwidh in kbits/sec for each ip "
+echo "config_input_maxconnect=72 "
+echo "$title_md max number for input simultaneous connections "
+echo "config_output_maxconnect=72 "
+echo "$title_md max number for output simultaneous connections "
+echo "config_mac_whitelist=d4:12:43:01:36:2e "
+echo "$title_md allow this excepcitonal MAC-ADRESS "
+echo "config_mac_blacklist=d4:12:43:01:36:2e "
+echo "$title_md drop this excepcional MAC-ADDRESS "
+echo "config_net_whitelist=wesnoth.org,sf.net,deb.debian.org "
+echo "$title_md allow this excepcitonal HOST/IP "
+echo "config_net_blacklist=facebook.com,www.facebook.com "
+echo "$title_md drop this excepcional HOST/IP )"
+echo "config_output_uid=root "
+echo "$title_md allow out packages excepcional from this USER excepcional "
+echo "config_output_gid=root "
+echo "$title_md allow out packages excepcional from this GROUP excepcional "
+echo "config_others_protocols=icmp,igmp "
+echo "$title_md allow others protocols from /etc/protocolos "
+echo "$title_md NET CLIENT AND NET SERVER $title_md "
+echo "$title_md Net to connect likes client or server "
+echo "net_ipv4_client=0/0 "
+echo "$title_md the net to client ipv4, all is 0/0 "
+echo "net_ipv4_server=0/0 "
+echo "$title_md the net to server ipv4, all is 0/0 "
+echo "net_ipv6_client=::/0 "
+echo "$title_md the net to client ipv6, all is ::/0 "
+echo "net_ipv6_server=::/0 "
+echo "$title_md the net to server ipv6, all is ::/0 "
+echo "$title_md $title_md "
+echo "$title_md .......... END Optional options .......... .......... $title_md"
+exit ; fi
+####
+####
+#### :rutina-final-plantilla-full-en
 ##########    english: autosave: autosave of firewall to restore standard rules                 ##########
 ##########    english: autosave: autoguardado de firewall para recuperador de reglas estandar   ##########
 #### :rutina-inicial-autosave:
@@ -7382,7 +7757,7 @@ config_shield_maxtries=12    ### modify shield with number max of tries to log i
 config_shield_port=22    ### modify shield ssh chaging maxtries port ssh o several ports with comma separate
 ### GENERAL RULES ###    ### General rules in table
 allow_separate_rules=    ### Void to separate the rules for each port or no
-config_close_deny=    ### choose close deny with or DROP or REJECT
+config_close_deny=DROP    ### choose close deny with or DROP or REJECT
 ### END NECESARY ###    ### .......... END Necesary options .......... .......... ###
     
 ### BEGIN OPTIONAL ###    ### .......... BEGIN Optional options .......... .......... ###
