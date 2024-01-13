@@ -1685,7 +1685,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "about" ]; then 
-echo "$title_md [ $first_option ] [ Show about ] [ version.md] "
+echo "$title_md [ $first_option ] [ Show about ] [ about.md ] "
 echo
 echo "$title_md [ Basename Program ]"
 echo "$text_md $cmd_basename"
@@ -1695,6 +1695,12 @@ echo "$text_md $cmd_realpath"
 echo
 echo "$title_md [ Version Program ]"
 echo "$text_md $cmd_version"
+echo
+echo "$title_md [ License Program ]"
+echo "$text_md $cmd_license"
+echo
+echo "$title_md [ Developer Program ]"
+echo "$text_md $cmd_contact"
 echo
 echo "$title_md [ Short Description ]"
 echo "$text_md $cmd_shortdescription"
@@ -1707,9 +1713,6 @@ echo "$text_md" "$($command_file $cmd_realpath  )"
 echo
 echo "$title_md [ MD5 Sum ]"
 echo "$text_md" "$($command_md5sum $cmd_realpath)"
-echo
-echo "$title_md [ Launched Program ]"
-echo "$text_md $cmd_realpath"
 echo
 echo "$title_md [ Cache Directory  ]"
 echo "$text_md $directory_cache"
