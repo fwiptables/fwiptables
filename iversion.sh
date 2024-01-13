@@ -899,6 +899,7 @@ esac
 ####
 ####
 case "$first_option" in
+"geoip") first_option="expert-show-geoip" ;;
 "config-regen") first_option="config-regen-new" ;;
 "regen") first_option="config-regen-new" ;;
 "expert") first_option="options-expert" ;;
@@ -1399,7 +1400,7 @@ echo "config_string_algoritmo=kmp                         ## or kmp or bm"
 echo "$title_md"
 echo "$title_md # default log"
 echo "allow_save_autolog=                                 ## or void or no"
-echo "allow_show_time=                                    ## or void or no"
+echo "allow_show_time=no                                  ## or void or no"
 echo "$title_md"  
 echo "$title_md # default programs"
 echo "favorite_text_editor=                               ## or void for automatic or specify command"
@@ -2398,8 +2399,8 @@ echo "$text_md server-teamspeak server-mumble server-sql server-asterisk server-
 echo "$title_md  [ options-easy ]                                                                   "
 echo "$text_md preferences-read preferences-modify preferences-regen preferences-example info       "  
 echo "$text_md list-options clasic-options filelog autolog speed-ip4 speed-ip6 speed-glx            "
-echo "$text_md ip4 ip6 code sockets nodes date free expert about notes version ip-forward           "
-echo "$text_md examples depends commands variables intro install uninstall                          "
+echo "$text_md ip4 ip6 code free sockets nodes date geoip expert ip-forward examples intro          "
+echo "$text_md about notes version depends commands variables install uninstall                     "
 echo "$title_md            ||| Example: fwiptables-cmd -gui-zenity info |||                         "
 exit ; fi
 ####
@@ -4489,7 +4490,7 @@ $directory_installed/$file_installed config-regen &> /dev/null
 echo "$title_md [ info ] [ The  config   dir: ] [ $directory_data ]"
 echo "$title_md [ info ] [ The  cache    dir: ] [ $directory_cache  ]"
 echo "$title_md [ info ] [ The Command shell: ] [ $directory_installed/$file_installed ]"
-echo "$title_md [ _ok_ ] [ Update preferences config file ]"
+echo "$title_md [ _ok_ ] [ Update preferences to config file ]"
 echo "$title_md [ _ok_ ] Now. Ready to run $directory_installed/$file_installed"
 exit; fi
 ####
@@ -4500,7 +4501,7 @@ exit; fi
 #### :rutina-inicial-expert-show-geoip:
 ####
 ####
-if   [ "$first_option" == "geoip" ]; then 
+if   [ "$first_option" == "expert-show-geoip" ]; then 
 echo "$title_md [ $first_option ]  [ resolve the location to one ip or host ] "
 echo ; case $command_geoiplookup in "$NULL")
 echo "$text_md [ fail ] [ Install geoiplookup command ]" ; exit  ;; esac
