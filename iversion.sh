@@ -104,6 +104,7 @@ cmd_basename="$(basename $0)"    # its only filename
 cmd_version="cmd-11-09"          # its version
 file_installed="fwiptables-cmd"  # its filename installed
 directory_installed="/usr/bin"   # its directory installed
+cmd_contact="fwiptables@gmx.com" # its contact
 cmd_shortdescription="fwiptables, FireWall With iptables"              # its name description short
 cmd_longdescription="fwiptables, One Mini Script in one-file wizard"   # its name description long
 cmd_license="GPL v2, License General Public version 2"                 # its program license
@@ -1734,7 +1735,9 @@ if [ "$first_option" == "ver" ]; then
 echo "$title_md [ $first_option ] [ Show version about ] [ ver.md ]       "    
 echo "$text_md [ info ] [ Program ] $cmd_realpath      "
 echo "$text_md [ info ] [ Version ] $cmd_version       "
-echo "$text_md [ info ] [ Details ] $cmd_shortdescription | $cmd_longdescription  "    
+echo "$text_md [ info ] [ Details ] $cmd_shortdescription | $cmd_longdescription  "
+echo "$text_md [ info ] [ License ] $cmd_license "
+echo "$text_md [ info ] [ Contact ] $cmd_contact  "
 echo "$text_md [ info ] [ Data directory  ] $directory_data                       "     
 echo "$text_md [ info ] [ Cache directory ] $directory_cache                      "   
 echo "$text_md [ info ] [ File format     ] $($command_file $cmd_realpath  )      "   
