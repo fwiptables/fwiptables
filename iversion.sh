@@ -737,7 +737,6 @@ favorite_text_music="$command_cvlc"          ; fi
 fi
 ####
 ####
-#### :rutina-final-favorite-text-music:
 ##########    english: ALIAS  simple y firewall y campus       ##########
 ##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
 #### :rutina-inicial-alias-simple:
@@ -1029,7 +1028,7 @@ echo "### ### [ info ] [ $second_option $third_option $quad_option ] \
 $cmd_realpath $second_option $third_option $quad_option &> $output_log
 cat $output_log | $command_grep -iv Warning: \
 &> $directory_log/log-$second_option-$show_actual_date.txt
-echo "$title_md [ file ] [ $directory_log/log-$second_option-$show_actual_date.txt ]"
+echo "$title_md [ file ] $directory_log/log-$second_option-$show_actual_date.txt"
 exit ; fi
 ####
 ####
@@ -1046,7 +1045,7 @@ sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &>
 $cmd_realpath "$second_option" "$third_option" \
 | convert -page A3 text:- \
 $directory_pdf/pdf-$second_option-$show_actual_date.pdf &> /dev/null
-echo "$title_md [ file ] [ $directory_pdf/pdf-$second_option-$show_actual_date.pdf ]"
+echo "$title_md [ file ] $directory_pdf/pdf-$second_option-$show_actual_date.pdf"
 exit ; fi
 ####
 ####
