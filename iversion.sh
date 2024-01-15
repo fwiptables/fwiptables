@@ -898,6 +898,7 @@ esac
 ####
 ####
 case "$first_option" in
+"option-examples") first_option="examples-option" ;;
 "geoip") first_option="expert-show-geoip" ;;
 "config-regen") first_option="config-regen-new" ;;
 "regen") first_option="config-regen-new" ;;
@@ -1625,12 +1626,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-depends:
-##########    english: options-examples: some example    ##########
-##########    spanish: options-examples: algun ejemplo   ##########
-#### :rutina-inicial-examples:
+##########    english: examples-option: some example    ##########
+##########    spanish: examples-option: algun ejemplo   ##########
+#### :rutina-inicial-examples-option:
 ####
 ####
-if [ "$first_option" == "options-examples" ]; then
+if [ "$first_option" == "examples-option" ]; then
 echo "$title_md [ $first_option ] [ List examples ] [ examples md ] "
 echo "$text_md"
 echo "$title_md [ several examples *without optional otuput* ]   "
@@ -1677,7 +1678,7 @@ echo "$text_md"
 exit; fi
 ####
 ####
-#### :rutina-final-examples:
+#### :rutina-final-examples-option:
 ##########    english: about: system script, the about option                  ##########
 ##########    spanish: about: script de sistema, la opcion mostrar acerca de   ##########
 #### :rutina-inicial-about:
@@ -2390,7 +2391,7 @@ echo "$text_md listn-security4 listn-security6                                  
 echo "$title_md  [ firewall-customfw ]                                                              "
 echo "$text_md custom eraserules off-line all-permisive wizard-mini wizard-full clone-systemfw      "
 echo "$text_md new-full-config nueva-completa-config new-mini-config nueva-mini-config              "
-echo "$text_md config-regen examples-config show-config modify-config del-config names-config       "
+echo "$text_md config-regen show-config modify-config del-config names-config                       "
 echo "$title_md  [ firewall-systemfw ]                                                              "
 echo "$text_md client-basic client-web client-git client-ipp client-irc client-vnc client-mail      "
 echo "$text_md client-news client-vpn client-torrent client-vpn client-ftp client-proxy             "
@@ -2400,8 +2401,8 @@ echo "$text_md server-print server-lamp server-news server-ftp server-mail serve
 echo "$text_md server-teamspeak server-mumble server-sql server-asterisk server-proxy               "
 echo "$title_md  [ options-easy ]                                                                   "
 echo "$text_md preferences-read preferences-modify preferences-regen preferences-example info       "  
-echo "$text_md list-options clasic-options filelog autolog speed-ip4 speed-ip6 speed-glx            "
-echo "$text_md ip4 ip6 code free sockets nodes date geoip expert ip-forward examples intro          "
+echo "$text_md list-options clasic-options examples-options filelog autolog speed-ip4 speed-ip6     "
+echo "$text_md ip4 ip6 speed-glx code free sockets nodes date geoip expert ip-forward intro         "
 echo "$text_md about notes version depends commands variables install uninstall                     "
 echo "$title_md            ||| Example: fwiptables-cmd -gui-zenity info |||                         "
 exit ; fi
@@ -2431,7 +2432,7 @@ echo "$text_md                        listn-filter6 listn-nat4 listn-nat6 listn-
 echo "$text_md                        listn-mangle4  listn-mangle6 listn-security4 listn-security6"
 echo "$text_md       firewall-customfw |  custom eraserules wizard-mini wizard-full off-line all-permisive"
 echo "$text_md     		      clone-systemfw new-full-config nueva-completa-config names-config "
-echo "$text_md                        modify-config new-mini-config nueva-mini-config examples-config"
+echo "$text_md                        modify-config new-mini-config nueva-mini-config "
 echo "$text_md                        show-config del-config "
 echo "$text_md       firewall-systemfw |  client-basic games-udp games-shooter game-wesnoth game-minetest"
 echo "$text_md                        game-freeciv game-widelands client-web client-irc client-vnc"
@@ -2445,7 +2446,7 @@ echo "$text_md           options-easy |  preferences-read preferences-modify pre
 echo "$text_md                        list-options clasic-options info-options filelog autolog ip4 ip6 "
 echo "$text_md                        sockets nodes free ver about notes depends commands "  
 echo "$text_md                        ip-forward speed-ip4 speed-ip6 speed-glx code expert version "  
-echo "$text_md                        variables examples intro info   "  
+echo "$text_md                        variables intro info   "  
 echo "$text_md                        license install uninstall   "
 echo "$title_md                       ||| Example: fwiptables-cmd -gui-zenity info list |||  "
 exit ; fi
@@ -2644,7 +2645,6 @@ echo "$text_md new-mini-config . create new mini config in english"
 echo "$text_md nueva-completa-config . create new full config in spanish"
 echo "$text_md nueva-mini-config . create new full config in spanish"
 echo "$text_md config-regen . regen the templates"
-echo "$text_md examples-config . show several examples"
 echo "$text_md show-config . show config-file choosed"
 echo "$text_md modify-config . modify config-file choosed"
 echo "$text_md del-config . delete config-file choosed"
@@ -2734,7 +2734,6 @@ echo "$text_md ip-forward . list or active or desactive forward variables"
 echo "$text_md depends . principal dependences"
 echo "$text_md license . license"
 echo "$text_md code . show source code from one option"
-echo "$text_md examples . show examples"
 echo "$text_md commands . possible commands"
 echo "$text_md variables . possible variables"
 echo "$text_md intro . intro"
@@ -3089,144 +3088,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-commands:
-##########     english: examples-config: Show config files examples            ##########
-##########     spanish: examples-config: Muestra ejemplos de configuraciones   ##########
-#### :rutina-inicial-examples-config:
-####
-####
-if [ "$first_option" == "examples-config" ]; then 
-echo "$title_md [ $first_option ] [ Show examples ] "
-echo 
-echo "[ examples ] [ examples for some services in client mode ]"
-echo
-####
-####
-#### config: web example ####
-####
-####
-echo
-echo "# config web example #" 
-echo "client_port_tcp=http,https ;"
-echo "client_port_udp=domain,domain-s,ntp,bootpc,http ;"
-####
-####
-#### config:  games example  ####
-####
-####
-echo
-echo "# config games example #"
-echo "client_port_udp=domain,domain-s,bootpc,bootps,ntp,https,1025:65499; "
-echo "client_port_tcp=http,https"
-####
-####
-#### config: wesnoth game example ####
-####
-####
-echo
-echo "# config web example #" 
-echo "client_port_tcp=http,https,14995:15000 ;"
-echo "client_port_udp=domain,domain-s,ntp,bootpc,http ;"
-####
-####
-#### config:  torrent-example1 ####
-####
-####
-echo
-echo "# config torrent example #"
-echo "client_port_udp=domain,domain-s,bootpc,bootps,ntp,https,1025:65499; "
-echo "client_port_tcp=http,https"
-####
-####
-#### config: samba-example1 ####
-####
-####
-echo
-echo "# config samba example #"
-echo "client_port_udp=domain,domain-s,bootpc,bootps,ntp,https,137:139 ; "
-echo "client_port_tcp=http,https,ipp,microsoft-ds"
-echo "allow_output_ping= ; allow_input_ping= ; "
-####
-####
-#### config: server gateway masquerade ##
-####
-####
-echo
-echo "# config vpn example #"
-echo "allow_gateway_ip4= ; "
-####
-####
-#### config: vpn-sample1 ##
-####
-####
-echo
-echo "# config vpn example #"
-echo "allow_forward_ip4= ; "
-echo "allow_net_whitelist= ; "
-echo "config_net_whitelist=wesnoth.org,sourceforge.net"
-####
-####
-#### config: email-example1 ####
-####
-####
-echo
-echo "# config email example #"
-echo "client_port_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps"
-####
-####
-#### config: ssh-example1 ####
-####
-####
-echo
-echo "# config ssh example #"
-echo "client_port_tcp=http,https,printer,ipp,ssh,rsync,git"
-####
-####
-#### config: vnc-example1 ####
-####
-####
-echo
-echo "# config vnc example #"
-echo "client_port_tcp=http,https,ssh,5900:5910"
-####
-####
-#### config: ftp-example1 ####
-####
-####
-echo
-echo "# config ftp example #"
-echo "client_port_tcp=http,https,ftp,ftp-data,ftps,ftps-data,gsiftp,zope-ftp"
-echo "client_port_udp=domain,domain-s,bootpc,bootps,ntp,https,tftp"
-####
-####
-#### config: printer-example1 ####
-####
-####
-echo
-echo "# config printer example #"
-echo "client_port_tcp=http,https,ipp,printer"
-####
-####
-#### config: irc-example1 ####
-####
-####
-echo
-echo "# config irc example #"
-echo "client_port_tcp=http,https,ircd,ircs-u"
-####
-####
-#### config: sql-example1 ####
-####
-####
-echo
-echo "# config sql example #"
-echo "client_port_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s"
-####
-####
-echo
-exit ; fi
-####
-####
-#### :rutina-final-examples-config:
 ##########    english: eraserules: Erase rules option   ##########
 ##########    spanish: eraserules: Opcion borra reglas  ##########
 #### :rutina-inicial-eraserules:
@@ -5930,7 +5791,6 @@ menuprincipal="$($favorite_text_dialog --clear --notags \
 0617  "$text_md del-config" \
 0618  "$text_md names-config" \
 0619  "$text_md config-regen" \
-0620  "$text_md examples-config" \
 0700 "$title_md [ Options Easy ] $title_md" \
 0701  "$text_md preferences-read" \
 0702  "$text_md preferences-modify" \
@@ -6116,7 +5976,6 @@ archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_realpath del-config $archivo ; echo "deleted $archivo" ;;
 0618) clear ; $cmd_realpath cli names-config ;;
 0619) clear ; $cmd_realpath cli config-regen ;;
-0620) clear ; $cmd_realpath cli examples-config ;;
 ################################################################################
 0701) clear ; $cmd_realpath cli preferences-read ;;
 0702) clear ; $cmd_realpath cli preferences-modify ;;
@@ -6384,7 +6243,7 @@ then echo $head_waiting_gui ; echo $give_cover
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 custom|clone-systemfw|eraserules|wizard-mini|wizard-full|off-line|all-permisive|\
 new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
-names-config|show-config|modify-config|del-config|config-regen|examples-config"
+names-config|show-config|modify-config|del-config|config-regen"
 selection_menu="$($command_zenity --forms \
 --text="gui-roll-firewall-customfw" \
 --title="Gui-roll With $cmd_realpath $cmd_version" \
@@ -6456,7 +6315,6 @@ archivo="$($command_zenity --entry \
 --title="[del-config]" --entry-text="cfg to delete")" ;
 $cmd_realpath -gui-zenity del-config $archivo ;;
 "config-regen")$cmd_realpath -gui-zenity config-regen ;;
-"examples-config")$cmd_realpath gui examples-config ;;
 esac
 ####
 ####
@@ -6848,7 +6706,7 @@ custom-cfg|off-line|all-permisive|\
 new-full-config|nueva-completa-config|\
 new-mini-config|nueva-mini-config|\
 names-config|show-config|modify-config|\
-del-config|config-regen|examples-config"
+del-config|config-regen"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_graphicall_dialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -6920,7 +6778,6 @@ del-config*) archivo="$($favorite_graphicall_dialog --entry \
 --entry-text="cfg to delete" )";
 $cmd_realpath -gui del-config $archivo ;;
 config-regen*)$cmd_realpath -gui config-regen ;;
-examples-config*)$cmd_realpath gui examples-config ;;
 esac
 ####
 ####
