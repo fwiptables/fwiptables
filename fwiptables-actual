@@ -902,7 +902,7 @@ case "$first_option" in
 "config-regen") first_option="config-regen-new" ;;
 "regen") first_option="config-regen-new" ;;
 "expert") first_option="options-expert" ;;
-"version") first_option="ver" ;;
+"ver") first_option="version" ;;
 "client-squid") first_option="client-proxy" ;;
 "server-squid") first_option="server-proxy" ;;
 "names") first_option="names-control" ;;
@@ -1698,7 +1698,7 @@ echo
 echo "$title_md [ License Program ]"
 echo "$text_md $cmd_license"
 echo
-echo "$title_md [ Developer Program ]"
+echo "$title_md [ Developer Contact ]"
 echo "$text_md $cmd_contact"
 echo
 echo "$title_md [ Short Description ]"
@@ -1729,17 +1729,17 @@ exit ; fi
 ####
 ####
 #### :rutina-final-about:
-##########    english: ver: system script, the version option              ##########
-##########    spanish: ver: script de sistema, la opcion mostrar version   ##########
-#### :rutina-inicial-ver:
+##########    english: version: system script, the version option              ##########
+##########    spanish: version: script de sistema, la opcion mostrar version   ##########
+#### :rutina-inicial-version:
 ####
 ####
-if [ "$first_option" == "ver" ]; then 
-echo "$title_md [ $first_option ] [ Show version about ] [ ver.md ]       "    
+if [ "$first_option" == "version" ]; then 
+echo "$title_md [ $first_option ] [ Show version ] [ version.md ]       "    
 echo "$text_md [ info ] [ Program ] $cmd_realpath      "
 echo "$text_md [ info ] [ Version ] $cmd_version       "
 echo "$text_md [ info ] [ Details ] $cmd_shortdescription | $cmd_longdescription  "
-echo "$text_md [ info ] [ License ] $cmd_license "
+echo "$text_md [ info ] [ License ] $cmd_license  "
 echo "$text_md [ info ] [ Contact ] $cmd_contact  "
 echo "$text_md [ info ] [ Data directory  ] $directory_data                       "     
 echo "$text_md [ info ] [ Cache directory ] $directory_cache                      "   
@@ -1747,7 +1747,7 @@ echo "$text_md [ info ] [ File format     ] $($command_file $cmd_realpath  )    
 exit ; fi
 ####
 ####
-#### :rutina-final-ver:
+#### :rutina-final-version:
 ##########    english: weather: show the weather with wttr.in     ##########
 ##########    spanish: el tiempo: muestra el tiempo con wttr.in   ##########
 #### :rutina-inicial-expert-show-weather:
