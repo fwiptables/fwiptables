@@ -1857,7 +1857,7 @@ exit; fi
 #### :rutina-final-config-regen:
 ##########  english:  plantilla-mini-es: for working sane         ########## 
 ##########  spanish:  plantilla-mini-es: para funcionamiento sano ##########
-#### :rutina-inicial-plantilla-mini-es
+#### :rutina-inicial-plantilla-mini-es:
 ####
 ####
 if [ "$first_option" == "plantilla-mini-es" ]; then
@@ -1919,10 +1919,10 @@ echo "$title_md FINAL .......... Opciones Necesarias .......... .......... $titl
 exit ; fi
 ####
 ####
-#### :rutina-final-plantilla-mini-es
+#### :rutina-final-plantilla-mini-es:
 ##########  english:  plantilla-full-es: for working sane         ########## 
 ##########  spanish:  plantilla-full-es: para funcionamiento sano ##########
-#### :rutina-inicial-plantilla-full-es
+#### :rutina-inicial-plantilla-full-es:
 ####
 ####
 if [ "$first_option" == "plantilla-full-es" ]; then
@@ -2106,10 +2106,10 @@ echo "$title_md FINAL .......... Opciones opcionales .......... .......... $titl
 exit ; fi
 ####
 ####
-#### :rutina-final-plantilla-full-es
+#### :rutina-final-plantilla-full-es:
 ##########  english:  plantilla-mini-en: for working sane         ########## 
 ##########  spanish:  plantilla-mini-en: para funcionamiento sano ##########
-#### :rutina-inicial-plantilla-mini-en
+#### :rutina-inicial-plantilla-mini-en:
 ####
 ####
 if [ "$first_option" == "plantilla-mini-en" ]; then
@@ -2171,10 +2171,10 @@ echo "$title_md .......... END Necesary options .......... .......... $title_md 
 exit ; fi
 ####
 ####
-#### :rutina-final-plantilla-mini-en
+#### :rutina-final-plantilla-mini-en:
 ##########  english:  plantilla-full-en: for working sane         ########## 
 ##########  spanish:  plantilla-full-en: para funcionamiento sano ##########
-#### :rutina-inicial-plantilla-full-en
+#### :rutina-inicial-plantilla-full-en:
 ####
 ####
 if [ "$first_option" == "plantilla-full-en" ]; then
@@ -2352,7 +2352,7 @@ echo "$title_md .......... END Optional options .......... .......... $title_md"
 exit ; fi
 ####
 ####
-#### :rutina-final-plantilla-full-en
+#### :rutina-final-plantilla-full-en:
 ##########    english: autosave: autosave of firewall to restore standard rules                 ##########
 ##########    english: autosave: autoguardado de firewall para recuperador de reglas estandar   ##########
 #### :rutina-inicial-autosave:
