@@ -900,8 +900,7 @@ esac
 case "$first_option" in
 "option-examples") first_option="examples-option" ;;
 "geoip") first_option="expert-show-geoip" ;;
-"config-regen") first_option="config-regen-new" ;;
-"regen") first_option="config-regen-new" ;;
+"regen") first_option="config-regen" ;;
 "expert") first_option="options-expert" ;;
 "ver") first_option="version" ;;
 "client-squid") first_option="client-proxy" ;;
@@ -1842,12 +1841,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-notes:
-##########   english: config-regen-new: config-regen template wizard files       ##########
-##########   spanish: config-regen-new: config-regenera template wizard archivos ##########
-#### :rutina-inicial-config-regen-new:
+##########   english: config-regen: config-regen template wizard files       ##########
+##########   spanish: config-regen: config-regenera template wizard archivos ##########
+#### :rutina-inicial-config-regen:
 ####
 ####
-if [ "$first_option" == "config-regen-new" ]; then 
+if [ "$first_option" == "config-regen" ]; then 
 $cmd_realpath plantilla-mini-es &> $defaultminicfg_spa
 $cmd_realpath plantilla-mini-en &> $defaultminicfg_eng
 $cmd_realpath plantilla-full-es &> $defaultfullcfg_spa
@@ -1855,7 +1854,7 @@ $cmd_realpath plantilla-full-en &> $defaultfullcfg_eng
 exit; fi
 ####
 ####
-#### :rutina-inicial-config-regen-new:
+#### :rutina-final-config-regen:
 ##########  english:  plantilla-mini-es: for working sane         ########## 
 ##########  spanish:  plantilla-mini-es: para funcionamiento sano ##########
 #### :rutina-inicial-plantilla-mini-es
@@ -2429,10 +2428,10 @@ echo "$text_md game-freeciv lan-tor lan-vpn server-ssh server-irc server-samba s
 echo "$text_md server-print server-lamp server-news server-ftp server-mail server-webserver         "
 echo "$text_md server-teamspeak server-mumble server-sql server-asterisk server-proxy               "
 echo "$title_md  [ options-easy ]                                                                   "
-echo "$text_md preferences-read preferences-modify preferences-regen preferences-example info       "  
-echo "$text_md list-options clasic-options examples-options filelog autolog speed-ip4 speed-ip6     "
-echo "$text_md ip4 ip6 speed-glx code free sockets nodes date geoip expert ip-forward intro         "
-echo "$text_md about notes version depends commands variables install uninstall                     "
+echo "$text_md preferences-read preferences-modify preferences-regen preferences-example version    "  
+echo "$text_md list-options clasic-options examples-options info-options info expert date intro     "
+echo "$text_md filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx free sockets nodes geoip       "
+echo "$text_md ip-forward code about notes depends commands variables install install               "
 echo "$title_md            ||| Example: fwiptables-cmd -gui-zenity info |||                         "
 exit ; fi
 ####
