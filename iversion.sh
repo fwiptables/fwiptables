@@ -440,6 +440,9 @@ mkdir -p $directory_cache_home &> /dev/null ; fi
 #### stablished which is the cache temporal.
 ####
 directory_cache="$directory_cache_home"
+####
+#### stablished a new variable
+####
 directory_temporal="$directory_cache"
 ####
 ####
@@ -1775,10 +1778,10 @@ echo "$text_md [ info ] [ Program ] $cmd_realpath      "
 echo "$text_md [ info ] [ Version ] $cmd_version       "
 echo "$text_md [ info ] [ Details ] $cmd_shortdescription | $cmd_longdescription  "
 echo "$text_md [ info ] [ License ] $cmd_license  "
-echo "$text_md [ info ] [ Contact ] $cmd_contact  "
-echo "$text_md [ info ] [ Data directory  ] $directory_data                       "     
-echo "$text_md [ info ] [ Cache directory ] $directory_cache                      "   
-echo "$text_md [ info ] [ File format     ] $($command_file $cmd_realpath  )      "   
+echo "$text_md [ info ] [ Developer Contact ] $cmd_contact  "
+echo "$text_md [ info ] [ Data  Directory   ] $directory_data                       "     
+echo "$text_md [ info ] [ Cache Directory   ] $directory_cache                      "   
+echo "$text_md [ info ] [ File  Format      ] $($command_file $cmd_realpath  )      "   
 exit ; fi
 ####
 ####
