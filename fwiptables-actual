@@ -424,16 +424,22 @@ default_autolog="$directory_log/default_autolog"
 #### spanish: directorio temporal
 ####
 ####
-if [ -d "/run" ]; then mkdir /run/fwiptables &> /dev/null
-directory_cache="/run/fwiptables"; fi
-if [ ! -d "/run" ]
-then directory_cache="$default_root_home/.cache/fwiptables"
-fi
+directory_cache_run="/run/fwiptables"
+directory_cache_home="$default_root_home/.cache/fwiptables"
 ####
 ####
-#### 
+####
+if [ -d "/run" ]; then 
+mkdir $directory_cache_run &> /dev/null ; fi
 ####
 ####
+if [ -d "$default_root_home" ]; then
+mkdir -p $directory_cache_home &> /dev/null ; fi
+####
+####
+#### stablished which is the cache temporal.
+####
+directory_cache="$directory_cache_home"
 directory_temporal="$directory_cache"
 ####
 ####
