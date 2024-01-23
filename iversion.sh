@@ -4025,7 +4025,7 @@ if [ "$first_option" == "clone-systemfw" ] && [ "$second_option" != "$NULL" ] ; 
 archivo="$second_option"
 case $archivo in client-*);; game-*);; games-*);; server-*);;
 *) echo "$title [ fail ] choose a valid systemfw to clone" ; exit ;; esac
-$cmd_realpath code $second_option | $command_grep -E "_use_|_prefix_|_port_|_shield_" \
+$cmd_realpath code $second_option | $command_grep -E "client_|server_|config_|allow_" \
 &> $directory_config/$archivo
 if [ -s "$directory_config/$archivo" ] ; then 
 cat $directory_config/$archivo ;
@@ -7201,21 +7201,91 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
-# allow_use_nft="no"             
-# allow_use_ipv4=""            
-# allow_use_ipv6=""           
-# allow_separate_rules=""
-#### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
-#### you can connect normal web
-client_port_tcp="http,https,http-alt,ssh" ;
-client_port_udp="domain,bootpc,ntp" ;
-server_port_tcp="" ;
-server_port_udp="" ;
+### fwiptables, FireWall With iptables from /usr/bin/fwiptables-cmd version cmd-11-07 ###
+### BEGIN NECESARY ###    ### .......... BEGIN Necesary options .......... .......... ###
+### NETFILTER ###    ### the iptables firewall netfilter, choose one or two
+# allow_use_legacy=    ### launch xtables, void to yes or type no
+# allow_use_nft=no    ### launch nftables, void to yes or type no
+### PROTOCOL IP ###    ### ip protocol, modify with void or no
+# allow_use_ipv4=    ### void to config firewall with ipv4 or no to dont configure ipv4
+# allow_use_ipv6=no    ### void to config firewall with ipv6 or no to dont configure ipv6
+### CLIENT PORTS ###    ### Client ports, add with , and join ranges with :
+# client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+# client_port_tcp="http,https,http-alt,ssh" ;
+### SERVER PORTS ###    ### Server ports, add with , and join ranges with :
+server_port_tcp="http,https,http-alt,ssh" ;
+server_port_udp="domain,bootpc,ntp" ;
+### LOG TO SERVER PORTS ###    ### Log to server ports, add with , and join ranges with :
+# logserver_port_tcp=    ### the tcp ports to log server
+# logserver_port_udp=    ### the udp ports to log server
+### LOG PREFIX TO SERVER ###    ### Log to server ports with prefix
+# logserver_prefix_input=fwlog-input::    ### type input prefix for logserver
+# logserver_prefix_output=fwlog-output::    ### type output prefix for logserver
+### ALLOW MAXTRIES SHIELD ###    ### Put one shield for ports to new connecting, with max ip to each hour
+# allow_shield_maxtries=no    ### void to allow one shield with max tries login in ssh for ip to each hour or no
+# config_shield_maxtries=12    ### modify shield with number max of tries to log in us ssh server for ip at each hour
+# config_shield_port=22    ### modify shield ssh chaging maxtries port ssh o several ports with comma separate
+### GENERAL RULES ###    ### General rules in table
+# allow_separate_rules=    ### Void to separate the rules for each port or no
+# config_close_deny=DROP    ### choose close deny with or DROP or REJECT
+### END NECESARY ###    ### .......... END Necesary options .......... .......... ###
+    
+### BEGIN OPTIONAL ###    ### .......... BEGIN Optional options .......... .......... ###
+### choose void or no ###    ### Allow Other Options, modify with void, or no
+# allow_string_denied=no    ### void to if drop string, or no to no
+# allow_string_allowed=no    ### void to if allow string, or no to no
+# allow_forward_ip4=no    ### void to yes to forward ip4, or no to no
+# allow_forward_ip6=no    ### void to allow ip forward ip6 or no
+# allow_gateway_ip4=no    ### void to allow gateway ip4 to others nets or no
+# allow_gateway_ip6=no    ### void to allow gateway ip6 to other nets or no
+# allow_dmz_ip4=no    ### void to allow dmz ip4 to one host local or no
+# allow_dmz_ip6=no    ### void to allow dmz ip6 to one host local or no
+# allow_input_all=no    ### void when the rules are to allow input to all or no
+# allow_output_all=no    ### void when the rules are to allow output to all or no
+# allow_input_state=no    ### Selective Input state with void or no
+# allow_output_state=no    ### Selective Output state with void or no
+# allow_input_bandwidth=no    ### void to limit bandwidth input in kbits/sec for all sources or no
+# allow_output_bandwidth=no    ### void to limit bandwidth output in kbits/sec for each destination or no
+# allow_input_maxconnect=no    ### void to limit max number for input simultaneous connections or no
+# allow_output_maxconnect=no    ### void to limit max number for output simultaneous connections or no
+# allow_input_ping=no    ### void to allow RECIVE PING or no
+# allow_output_ping=no    ### void to allow SEND PING or no
+# allow_mac_whitelist=no    ### void to allow some exceptional MAC-ADDRESS or no
+# allow_mac_blacklist=no    ### void to drop some excepcional MAC-ADDRESS or no
+# allow_net_whitelist=no    ### void to allow some exceptional HOST/IP or no
+# allow_net_blacklist=no    ### void to drop some excepcional HOST/IP or no
+# allow_output_uid=no    ### void to allow excepcional USER or no
+# allow_output_gid=no    ### void to allow excepcional GROUP or no
+# allow_others_protocols=no    ### void to allow other POTOCOL-IP excepcional or no
+### Begin Variables ### .......... .......... ### ..........    ### Fill Variables
+### Options    ### Other Options, add with , and join ranges with :
+# config_string_denied=.fb.com,.facebook.com,xxx.html    ### drop connection with header string, if several, comma separate
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net    ### allow connection with header string, if several, comma separate
+# config_dmz_ip4=192.168.1.7    ### ip server ip lan to other external nets, nat prerouting
+# config_dmz_ip6=d4:12:43:01:36:2e    ### ip server ip lan to other external nets, nat prerouting
+# config_input_state=new,related,established    ### void for all or new,related,established,untracked,invalid
+# config_output_state=new,related,established    ### void for all or new,related,established,untracked,invalid
+# config_input_bandwidth=12512    ### max input bandwidth in kbits/sec for all
+# config_output_bandwidth=512    ### max output bandwidth in kbits/sec for each ip
+# config_input_maxconnect=72    ### max number for input simultaneous connections
+# config_output_maxconnect=72    ### max number for output simultaneous connections
+# config_mac_whitelist=d4:12:43:01:36:2e    ### allow this excepcitonal MAC-ADRESS
+# config_mac_blacklist=d4:12:43:01:36:2e    ### drop this excepcional MAC-ADDRESS
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org    ### allow this excepcitonal HOST/IP
+# config_net_blacklist=facebook.com,www.facebook.com    ### drop this excepcional HOST/IP
+# config_output_uid=root    ### allow out packages excepcional from this USER excepcional
+# config_output_gid=root    ### allow out packages excepcional from this GROUP excepcional
+# config_others_protocols=icmp,igmp    ### allow others protocols from /etc/protocolos
+### NET CLIENT AND NET SERVER ###    ### Net to connect likes client or server
+# net_ipv4_client=0/0    ### the net to client ipv4, all is 0/0
+# net_ipv4_server=0/0    ### the net to server ipv4, all is 0/0
+# net_ipv6_client=::/0    ### the net to client ipv6, all is ::/0
+# net_ipv6_server=::/0    ### the net to server ipv6, all is ::/0
+### ###    ### .......... END Optional options .......... .......... ###
+#### english: ports client and ports server
 fi
+####
+####
 #### :rutina-final-client-basic:
 #### ##################################################
 #### ##################################################
