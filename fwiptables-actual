@@ -4027,7 +4027,7 @@ $cmd_realpath code $second_option | $command_grep -E "client_|server_|config_|al
 &> $directory_config/$archivo
 if [ -s "$directory_config/$archivo" ] ; then 
 cat $directory_config/$archivo ;
-echo "$title_md [ _ok_ ] [ Created customfw with the name :    $archivo   ]"
+echo "$title_md [ _ok_ ] [ Created :                           $archivo   ]"
 echo "$title_md [ info ] [ Modify  :  fwiptables modify-config $archivo   ]"
 echo "$title_md [ info ] [ Launch  :  fwiptables custom        $archivo   ]"
 else rm $directory_config/$archivo
@@ -7246,20 +7246,20 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh" ;
@@ -7282,26 +7282,20 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
-# allow_use_nft="no"             
-# allow_use_ipv4=""            
-# allow_use_ipv6=""           
-# allow_separate_rules=""
-#### english: firewall capacities
-#allow_use_legacy=""        
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,git" ;
@@ -7324,20 +7318,20 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ipp" ;
@@ -7360,27 +7354,27 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
 fi
-#### :rutina-final-shield-irc:
+#### :rutina-final-client-irc:
 #### ##################################################
 #### ##################################################
 #### :rutina-inicial-client-vnc:
@@ -7396,20 +7390,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### you can connect normal web and vnc
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,5900:5910" ;
@@ -7432,20 +7427,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### you can connect web normal and bittorrent too
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -7468,20 +7464,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### you can connect web normal and web vpn
 server_port_udp="" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,500,1194,1701,4500" ; 
@@ -7504,20 +7501,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### you can connect web normal and web tor
 server_port_udp="" ; 
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -7540,20 +7538,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -7581,20 +7580,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -7633,20 +7633,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### client ftp:
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -7669,20 +7670,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -7705,20 +7707,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### vpn ports to connects ports vpn
 #### with necesary ports to connect gatway and date, domain for your ip
 server_port_udp="" ;
@@ -7742,20 +7745,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### lan tor, 9000:9170 for connect to tor
 #### with necesary ports to connect gatway and date, domain for your ip
 server_port_udp="" ;
@@ -7779,20 +7783,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -7815,20 +7820,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -7851,20 +7857,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### game wesnoth port 14999 and 15001 usually
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
 server_port_udp="" ;
@@ -7887,20 +7894,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### game minetest and minecraft porst 25k and 35k /udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,25000:35000" ; 
 server_port_udp="" ;
@@ -7923,20 +7931,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### for default 5556 port tcp perhaps 5555 too
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
 server_port_udp="" ;
@@ -7959,20 +7968,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="12" ;
-config_shield_port="22" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="no"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### for default 7396 port tcp and 7396 udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,7396" ; 
 server_port_udp="7396" ;
@@ -7995,20 +8005,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_port="22" ;
-config_shield_port="ssh" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="https" ;
@@ -8031,20 +8042,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_maxtries="30" ;
-config_shield_port="22,5900:5910"
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"      
 #### you can connect normal web and vnc
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,5900:5910" ;
@@ -8067,15 +8079,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="20" ;
-config_shield_port="ssh,ftp" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
+#### english: log port servers
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -8098,20 +8116,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_maxtries="20" ;
-config_shield_port="ssh" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -8134,26 +8153,28 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_port="22" ;
-config_shield_port="ssh" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"       
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
 #### server to another. When clients connect to a news server with Transport Layer Security (TLS),
 #### TCP port 563 is often used. This is sometimes referred to as NNTPS. 
-#### Alternatively, a plain-text connection over port 119 may be changed to use TLS via the STARTTLS command. 
+#### Alternatively, a plain-text connection over port 119 
+#### may be changed to use TLS via the STARTTLS command. 
 server_port_udp="" ; 
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 client_port_tcp="http,https,http-alt,ssh,119,433,563" ;
@@ -8177,11 +8198,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
+#### english: max tries for each hour 
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
+#### english: log port servers
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -8198,14 +8229,6 @@ name_firewall="$first_option" ;
 #### negotiation submission     tls             465 and 587
 ####
 #### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_maxtries="20" ;
-config_shield_port="ssh" ;
-#### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
-logserver_port_udp="no"    
 ####
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="https" ;
@@ -8228,20 +8251,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_maxtries="20" ;
-config_shield_port="ssh" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### server samba and active directory
 client_port_tcp="http,https,http-alt,ssh,ldap,636,microsoft-ds" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,ldap,636,137:139" ;
@@ -8264,20 +8288,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_maxtries="20" ;
-config_shield_port="ssh" ;
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### server ipp and printer
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -8300,20 +8325,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
-#### against brute force
-allow_shield_maxtries="" ;
-config_shield_maxtries="20" ;
-config_shield_port="ssh" ;
+#### english: max tries for each hour 
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### server ssh 22/tcp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -8336,15 +8362,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
-#### against brute force
-allow_shield_maxtries="" ;
-config_shield_maxtries="20" ;
-config_shield_port="ssh" ;
+#### english: max tries for each hour 
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
+#### english: log port servers
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 ####  english: udp: 20 is ftp-data, 21 is ftp, 989 is ftps-data y 990 is ftps
 ####  english: tcp: 10000 is webmin, 3306 is mysql, 5432 is postgresql
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -8368,20 +8400,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
-#### against brute force
-allow_shield_maxtries="" ;
-config_shield_maxtries="20" ;
-config_shield_port="ssh" ;
+#### english: max tries for each hour 
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 ####    UDP:5060 SIP (sip.conf), newer Versions support TCP:5060
 ####    UDP:10000-20000 RTP (rtp.conf) for the media stream, a higher Portrange
 ####    UDP:5036 IAX2
@@ -8406,20 +8439,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
-#### against brute force
-allow_shield_maxtries="" ;
-config_shield_maxtries="20" ;
-config_shield_port="ssh" ;
+#### english: max tries for each hour 
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### mumble port 64738 tcp and 64738 udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,64738" ;
 server_port_udp="64738" ;
@@ -8442,20 +8476,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
-#### against brute force
-allow_shield_maxtries="" ;
-config_shield_maxtries="20" ;
-config_shield_port="ssh" ;
+#### english: max tries for each hour 
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### Service	        Protocol	Local Port (Server)
 #### Voice	        UDP	9987
 #### Filetransfer	TCP	30033
@@ -8482,20 +8517,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
-#### against brute force
-allow_shield_maxtries="" ;
-config_shield_maxtries="20" ;
-config_shield_port="ssh" ;
+#### english: max tries for each hour 
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 ####  POSTGRESQL 5432/tcp and 5432/udp
 ####  Technology	Default Port	Required
 ####  MySQL Client to Server - MySQL Protocol – 3306	3306/tcp	Optional - pick at least 1
@@ -8522,20 +8558,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
-#### against brute force
-allow_shield_maxtries="" ;
-config_shield_maxtries="20" ;
-config_shield_port="ssh" ;
+#### english: max tries for each hour 
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
@@ -8558,20 +8595,21 @@ launch_rules_firewall="yes" ;
 type_firewall="systemfw" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
-#allow_use_legacy=""        
+#### english: firewall capacities
+# allow_use_legacy=""        
 # allow_use_nft="no"             
 # allow_use_ipv4=""            
 # allow_use_ipv6=""           
 # allow_separate_rules=""
-#### against brute force
-allow_shield_maxtries="" ;
-config_shield_maxtries="20" ;
-config_shield_port="ssh" ;
+#### english: max tries for each hour 
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
 #### english: log port servers
-logserver_prefix_input="fwlog-input::"   
-logserver_prefix_output="fwlog-output::"  
-logserver_port_tcp="22"    
-logserver_port_udp="no"    
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
 #### server domain and domain-s
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https," ;
 server_port_udp="domain,domain-s" ;
