@@ -1429,8 +1429,8 @@ echo "serverip_iperf_ipv6=ping6.online.net                ## default ping.online
 echo "serverport_iperf_ipv6=5001                          ## default 5201"
 echo "$title_md"
 echo "$title_md # default graphicall dimension"
-echo "config_graphicall_width=750                         ## default width 750"
-echo "config_graphicall_height=550                        ## default height 550"
+echo "config_graphicall_width=800                        ## default width 1000"
+echo "config_graphicall_height=600                        ## default height 750"
 echo "$title_md"
 echo "$title_md This file has been generated from preferences-example"
 exit; fi
@@ -2408,86 +2408,44 @@ exit; fi
 ####
 if [ "$first_option" == "list-options" ] ; then 
 echo "$title_md $cmd_realpath [optional-output] first_option [second_option]   "
-echo "$title_md  [ optional-output ]                                                                "
-echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -p|-pdf -s|-silent ]                               "
-echo "$text_md [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                                   "
-echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail -gui-roll-zenity ]                             "
-echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]                  "
-echo "$title_md  [ firewall-control ]                                                               "
-echo "$text_md stop continue reset actual show save load names-control eraserules                   "
-echo "$title_md  [ firewall-listconceptual ]                                                        "
-echo "$text_md ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6                  "
-echo "$text_md list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6                    "
-echo "$text_md list-security4 list-security6 list-ebtables list-arptables                           "
-echo "$title_md  [ firewall-listnumeral ]                                                           "
-echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6          "
-echo "$text_md listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6              "
-echo "$text_md listn-security4 listn-security6                                                      "
-echo "$title_md  [ firewall-customfw ]                                                              "
-echo "$text_md custom eraserules off-line all-permisive wizard-mini wizard-full clone-systemfw      "
-echo "$text_md new-full-config nueva-completa-config new-mini-config nueva-mini-config              "
-echo "$text_md config-regen show-config modify-config del-config names-config                       "
-echo "$title_md  [ firewall-systemfw ]                                                              "
-echo "$text_md client-basic client-web client-git client-ipp client-irc client-vnc client-mail      "
-echo "$text_md client-news client-vpn client-torrent client-vpn client-ftp client-proxy             "
-echo "$text_md client-tor game-widelands games-udp games-shooter game-wesnoth game-minetest         "
-echo "$text_md game-freeciv lan-tor lan-vpn shield-ssh server-ssh server-irc server-vnc             "
-echo "$text_md server-print server-lamp server-news server-ftp server-mail server-webserver         "
-echo "$text_md server-teamspeak server-mumble server-sql server-asterisk server-proxy server-samba  "
-echo "$title_md  [ options-easy ]                                                                   "
-echo "$text_md preferences-read preferences-modify preferences-regen preferences-example version    "  
-echo "$text_md list-options clasic-options examples-options info-options info expert date intro     "
-echo "$text_md filelog autolog ip4 ip6 speed-ip4 speed-ip6 speed-glx free sockets nodes geoip       "
-echo "$text_md ip-forward code about notes depends commands variables install install               "
-echo "$title_md            ||| Example: fwiptables-cmd -gui-zenity info |||                         "
+echo "$title_md  [ optional-output ]                                                        "
+echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -p|-pdf -s|-silent ]                       "
+echo "$text_md [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                           "
+echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail -gui-roll-zenity ]                     "
+echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]          "
+echo "$title_md  [ firewall-control ]                                                       "
+echo "$text_md stop continue reset actual show save load names-control eraserules           "
+echo "$title_md  [ firewall-listconceptual ]                                                "
+echo "$text_md ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
+echo "$text_md list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6            "
+echo "$text_md list-security4 list-security6 list-ebtables list-arptables                   "
+echo "$title_md  [ firewall-listnumeral ]                                                   "
+echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6  "
+echo "$text_md listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6      "
+echo "$text_md listn-security4 listn-security6                                              "
+echo "$title_md  [ firewall-customfw ]                                                      "
+echo "$text_md custom eraserules off-line all-permisive wizard-mini wizard-full             "
+echo "$text_md new-full-config nueva-completa-config new-mini-config nueva-mini-config      "
+echo "$text_md clone-systemfw show-config modify-config del-config names-config             "
+echo "$title_md  [ firewall-systemfw ]                                                      "
+echo "$text_md client-basic client-web client-git client-ipp client-irc client-vnc          "
+echo "$text_md client-news client-vpn client-torrent client-vpn client-ftp client-proxy     "
+echo "$text_md client-mail client-tor game-widelands games-udp games-shooter game-wesnoth   "
+echo "$text_md game-minetest game-freeciv lan-tor lan-vpn shield-ssh server-ssh server-irc  "
+echo "$text_md server-vnc server-print server-lamp server-news server-ftp server-mail       "
+echo "$text_md server- webserver server-teamspeak server-mumble                             "
+echo "$text_md server-sql server-asterisk server-proxy server-samba                         "
+echo "$title_md  [ options-easy ]                                                           "
+echo "$text_md preferences-read preferences-modify preferences-regen preferences-example    "  
+echo "$text_md list-options examples-options info-options info date intro filelog autolog   "
+echo "$text_md ip4 ip6 speed-ip4 speed-ip6 speed-glx free sockets nodes geoip ip-forward    "
+echo "$text_md version code about notes depends commands variables install install          "
+echo "$title_md  [ options-expert ] expert                                                  "
+echo "$title_md            ||| Example: fwiptables-cmd -gui-zenity info |||                 "
 exit ; fi
 ####
 ####
 #### :rutina-final-list-options:
-##########    english: clasic-options: wellcome with semi help    ##########
-##########    spanish: clasic-options: bienvenida con semi ayuda  ##########
-#### :rutina-inicial-clasic-options:
-####
-####
-if   [ "$first_option" == "clasic-options" ] ; then  
-echo "$title_md $cmd_realpath [optional-output] first_option [second_option] "
-echo "$title_md"
-echo "$text_md    optional-paramtter "
-echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -s|-silent ]"
-echo "$text_md [ -cli-dialog -cli-whiptail ] [ -gui-zenity -gui-yad ]"
-echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail ] [ -gui-roll-zenity ]"
-echo "$text_md [ -gui-menu-zenity -gui-menu-yad ] [ -gui-shell-zenity -gui-shell-yad ]"
-echo "$title_md"
-echo "$text_md    firewall-control |  stop continue reset actual show save load names-control eraserules"
-echo "$text_md firewall-listconceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6"
-echo "$text_md                        list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6"
-echo "$text_md                        list-security4 list-security6 list-ebtables list-arptables"
-echo "$text_md    firewall-listnumeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4"
-echo "$text_md                        listn-filter6 listn-nat4 listn-nat6 listn-raw4 listn-raw6"
-echo "$text_md                        listn-mangle4  listn-mangle6 listn-security4 listn-security6"
-echo "$text_md       firewall-customfw |  custom eraserules wizard-mini wizard-full off-line all-permisive"
-echo "$text_md     		      clone-systemfw new-full-config nueva-completa-config names-config "
-echo "$text_md                        modify-config new-mini-config nueva-mini-config "
-echo "$text_md                        show-config del-config "
-echo "$text_md       firewall-systemfw |  client-basic games-udp games-shooter game-wesnoth game-minetest"
-echo "$text_md                        game-freeciv game-widelands client-web client-irc client-vnc"
-echo "$text_md                        client-mail client-news client-torrent client-vpn client-ftp"
-echo "$text_md                        client-tor client-ipp client-proxy client-git lan-tor lan-vpn"
-echo "$text_md                        server-ssh server-samba server-vnc server-webserver server-print"
-echo "$text_md                        server-lamp server-news server-ftp server-mail server-teamspeak"
-echo "$text_md                        server-mumble server-sql server-asterisk server-domain "
-echo "$text_md                        server-proxy server-irc          "
-echo "$text_md           options-easy |  preferences-read preferences-modify preferences-regen preferences-example"
-echo "$text_md                        list-options clasic-options info-options filelog autolog ip4 ip6 "
-echo "$text_md                        sockets nodes free ver about notes depends commands "  
-echo "$text_md                        ip-forward speed-ip4 speed-ip6 speed-glx code expert version "  
-echo "$text_md                        variables intro info   "  
-echo "$text_md                        license install uninstall   "
-echo "$title_md                       ||| Example: fwiptables-cmd -gui-zenity info list |||  "
-exit ; fi
-####
-####
-#### :rutina-final-clasic-options:
 ##########     english: code: source from loop     ##########
 ##########     spanish: code: fuente de la rutina  ##########
 #### :rutina-inicial-code:
@@ -5433,11 +5391,16 @@ favorite_graphicall_dialog="$command_zenity"
 #### cd $directory_config
 ####
 ####
-menugtk="$($command_zenity \
---forms --width=$config_graphicall_width --height=$config_graphicall_height \
+menugtk="$($command_zenity --entry \
 --title="Gui Shell || $cmd_realpath || $cmd_version ||" \
---text="$($cmd_realpath list-options)" \
---add-entry="$cmd_realpath " )"
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--text="type one option for $cmd_basename, options list: options")"
+#
+# menugtk="$($command_zenity \
+# --forms --width=$config_graphicall_width --height=$config_graphicall_height \
+# --title="Gui Shell || $cmd_realpath || $cmd_version ||" \
+# --text="$($cmd_realpath list-options)" \
+# --add-entry="$cmd_basename " )"
 ####
 ####
 #### english: manage some configs    ####
@@ -5591,7 +5554,12 @@ favorite_graphicall_dialog="$command_yad"
 menugtk="$($command_yad --entry \
 --title="Gui Shell || $cmd_realpath || $cmd_version ||" \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---entry-label="$($cmd_realpath list-options)")"
+--text="type one option for $cmd_basename, options list: options")"
+#
+#menugtk="$($command_yad --entry \
+#--title="Gui Shell || $cmd_realpath || $cmd_version ||" \
+#--width=$config_graphicall_width --height=$config_graphicall_height \
+#--entry-label="$($cmd_realpath list-options)")"
 ####
 ####
 #### english: manage some configs    ####
