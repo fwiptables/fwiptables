@@ -7265,6 +7265,7 @@ server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-client-web:
 #### ##################################################
@@ -7301,6 +7302,7 @@ server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,git" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-client-git:
 #### ##################################################
@@ -7337,6 +7339,7 @@ server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ipp" ;
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_tcp="" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-client-ipp:
 #### ##################################################
@@ -7373,6 +7376,7 @@ server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-client-irc:
 #### ##################################################
@@ -7410,6 +7414,7 @@ server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,5900:5910" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-shield-vnc:
 #### ##################################################
@@ -7447,6 +7452,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
 client_port_tcp="http,https,http-alt,ssh,9091,51413" ;
 server_port_tcp="9091,51413" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-client-torrent:
 #### ##################################################
@@ -7484,6 +7490,7 @@ server_port_udp="" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,500,1194,1701,4500" ; 
 client_port_tcp="http,https,http-alt,ssh,443,1701,1723" ; 
 server_port_tcp="" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-client-vpn:
 #### ##################################################
@@ -7521,6 +7528,7 @@ server_port_udp="" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 client_port_tcp="http,https,http-alt,ssh,9000:9170" ;
 server_port_tcp="9000:9170" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-client-tor:
 #### ##################################################
@@ -7563,6 +7571,7 @@ server_port_udp="" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 client_port_tcp="http,https,http-alt,ssh,119,433,563" ;
 server_port_tcp="" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-client-news:
 #### ##################################################
@@ -7616,6 +7625,7 @@ server_port_udp="" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 client_port_tcp="http,https,http-alt,ssh,25,119,563,25,995,110,465,587,143,993" ;
 server_port_tcp="" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-client-mail:
 #### ##################################################
@@ -7653,6 +7663,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-shield-ftp:
 #### ##################################################
@@ -7690,6 +7701,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,3128,ssh" ;
 server_port_tcp="" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-client-proxy:
 #### ##################################################
@@ -7728,6 +7740,7 @@ server_port_udp="" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,500,1194,1701,4500" ; 
 client_port_tcp="1701,1723" ; 
 server_port_tcp="" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-lan-vpn:
 #### ##################################################
@@ -7766,6 +7779,7 @@ server_port_udp="" ;
 client_port_udp="bootpc,domain,domain-s,ntp" ;
 client_port_tcp="9000:9170" ;
 server_port_tcp="9000:9170" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-lan-tor:
 #### ##################################################
@@ -7803,6 +7817,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
 client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-games-shooter:
 #### ##################################################
@@ -7840,6 +7855,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
 client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-games-udp:
 #### ##################################################
@@ -7877,6 +7893,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,14950:15050" ;
 server_port_tcp="14950:15050" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-game-wesnoth:
 #### ##################################################
@@ -7914,6 +7931,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,25000:35000" ;
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,25000:35000" ;
 server_port_tcp="25000:35000" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-game-minetest:
 #### ##################################################
@@ -7951,6 +7969,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,5555:5556" ;
 server_port_tcp="5555:5556" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-game-freeciv:
 #### ##################################################
@@ -7988,6 +8007,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,7396" ;
 server_port_udp="7396" ;
 client_port_tcp="ssh,http,https,http-alt,7396" ;
 server_port_tcp="7396" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-game-widelands:
 #### ##################################################
@@ -8025,6 +8045,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="https" ;
 client_port_tcp="http,https,http-alt,ssh" ;
 server_port_tcp="ssh,http,https,http-alt" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-server-web:
 #### ##################################################
@@ -8062,6 +8083,7 @@ server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,5900:5910" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="ssh,5900:5910" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-server-vnc:
 #### ##################################################
@@ -8099,6 +8121,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="ssh,http,https,ftp,ftp-data,ftps,ftps-data" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-server-ftp:
 #### ##################################################
@@ -8136,6 +8159,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,3128,ssh" ;
 server_port_tcp="ssh,http,https,http-alt,3128" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-server-proxy:
 #### ##################################################
@@ -8179,6 +8203,7 @@ server_port_udp="" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 client_port_tcp="http,https,http-alt,ssh,119,433,563" ;
 server_port_tcp="ssh,http,https,119,433,563" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-server-news:
 #### ##################################################
@@ -8234,6 +8259,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="https" ;
 client_port_tcp="http,https,http-alt,ssh,25,119,433,563,25:26,995,110,465,587,143,993" ;
 server_port_tcp="ssh,http,https,25,119,433,563,25:26,995,110,465,587,143,993" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-server-mail:
 #### ##################################################
@@ -8271,6 +8297,7 @@ client_port_tcp="http,https,http-alt,ssh,ldap,636,microsoft-ds" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,ldap,636,137:139" ;
 server_port_tcp="ssh,ldap,636,microsoft-ds" ; 
 server_port_udp="ssh,ntp,domain,domain-s,ldap,636,137:139" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-server-samba:
 #### ##################################################
@@ -8308,6 +8335,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh" ;
 server_port_tcp="ssh,printer,ipp" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-server-print:
 #### ##################################################
@@ -8345,6 +8373,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh" ;
 server_port_tcp="ssh" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-server-ssh:
 #### ##################################################
@@ -8383,6 +8412,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="https" ;
 client_port_tcp="http,https,http-alt,ssh,20,21,989,990" ;
 server_port_tcp="ssh,http,https,10000,3306,5432" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-server-lamp:
 #### ##################################################
@@ -8422,6 +8452,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,5060,10000:20000,5036" 
 server_port_udp="5060,10000:20000,5036" ;
 client_port_tcp="http,https,http-alt,ssh,5060" ;
 server_port_tcp="ssh,5060" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-server-astrerisk:
 #### ##################################################
@@ -8459,6 +8490,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,64738" ;
 server_port_udp="64738" ;
 client_port_tcp="http,https,http-alt,ssh,64738" ;
 server_port_tcp="ssh,64738" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-server-mumble:
 #### ##################################################
@@ -8500,6 +8532,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,9987" ;
 server_port_udp="9987" ;
 client_port_tcp="http,https,http-alt,ssh,30033,10011,10022" ;
 server_port_tcp="ssh,30033,10011,10022" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-server-teamspeak:
 #### ##################################################
@@ -8541,6 +8574,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,5432" ;
 server_port_udp="5432" ;
 client_port_tcp="http,https,http-alt,ssh,5432,3306,3360" ;
 server_port_tcp="ssh,5432,3306,3360" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-server-sql:
 #### ##################################################
@@ -8578,6 +8612,7 @@ server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="ssh,ircs-u,ircd" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 #### :rutina-final-server-irc:
 #### ##################################################
@@ -8615,6 +8650,7 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https," ;
 server_port_udp="domain,domain-s" ;
 client_port_tcp="http,https,http-alt,ssh" ;
 server_port_tcp="ssh" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
 fi
 ####
 ####
