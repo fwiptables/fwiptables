@@ -1429,8 +1429,8 @@ echo "serverip_iperf_ipv6=ping6.online.net                ## default ping.online
 echo "serverport_iperf_ipv6=5001                          ## default 5201"
 echo "$title_md"
 echo "$title_md # default graphicall dimension"
-echo "config_graphicall_width=800                        ## default width 1000"
-echo "config_graphicall_height=600                        ## default height 750"
+echo "config_graphicall_width=800                         ## default width 800"
+echo "config_graphicall_height=600                        ## default height 600"
 echo "$title_md"
 echo "$title_md This file has been generated from preferences-example"
 exit; fi
