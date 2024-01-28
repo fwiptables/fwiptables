@@ -4023,7 +4023,7 @@ if [ "$first_option" == "clone-systemfw" ] && [ "$second_option" != "$NULL" ] ; 
 archivo="$second_option"
 case $archivo in shield-*);;client-*);; game-*);; games-*);; server-*);;
 *) echo "$title [ fail ] choose a valid systemfw to clone" ; exit ;; esac
-$cmd_realpath code $second_option | $command_grep -E "client_|server_|config_|allow_" \
+$cmd_realpath code $second_option | $command_grep -E "client_|server_|config_|allow_|net_" \
 &> $directory_config/$archivo
 if [ -s "$directory_config/$archivo" ] ; then 
 cat $directory_config/$archivo ;
@@ -7121,6 +7121,64 @@ client_port_tcp="http,https,http-alt,ssh" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="ssh" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-shield-ssh:
 #### ##################################################
@@ -7158,6 +7216,64 @@ client_port_tcp="http,https,http-alt,ssh" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 ####
 ####
@@ -7197,6 +7313,64 @@ client_port_tcp="http,https,http-alt,ssh" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-client-web:
 #### ##################################################
@@ -7234,6 +7408,64 @@ client_port_tcp="http,https,http-alt,ssh,git" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-client-git:
 #### ##################################################
@@ -7271,6 +7503,64 @@ client_port_tcp="http,https,http-alt,ssh,ipp" ;
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_tcp="" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-client-ipp:
 #### ##################################################
@@ -7308,6 +7598,122 @@ client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-client-irc:
 #### ##################################################
@@ -7346,6 +7752,64 @@ client_port_tcp="http,https,http-alt,ssh,5900:5910" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-shield-vnc:
 #### ##################################################
@@ -7384,6 +7848,64 @@ server_port_udp="1025:65000" ;
 client_port_tcp="http,https,http-alt,ssh,9091,51413" ;
 server_port_tcp="9091,51413" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-client-torrent:
 #### ##################################################
@@ -7422,6 +7944,64 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,500,1194,1701,4500" ;
 client_port_tcp="http,https,http-alt,ssh,443,1701,1723" ; 
 server_port_tcp="" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-client-vpn:
 #### ##################################################
@@ -7460,6 +8040,64 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 client_port_tcp="http,https,http-alt,ssh,9000:9170" ;
 server_port_tcp="9000:9170" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-client-tor:
 #### ##################################################
@@ -7503,6 +8141,64 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 client_port_tcp="http,https,http-alt,ssh,119,433,563" ;
 server_port_tcp="" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-client-news:
 #### ##################################################
@@ -7557,6 +8253,64 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 client_port_tcp="http,https,http-alt,ssh,25,119,563,25,995,110,465,587,143,993" ;
 server_port_tcp="" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-client-mail:
 #### ##################################################
@@ -7595,6 +8349,64 @@ server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-shield-ftp:
 #### ##################################################
@@ -7633,6 +8445,64 @@ server_port_udp="" ;
 client_port_tcp="http,https,http-alt,3128,ssh" ;
 server_port_tcp="" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-client-proxy:
 #### ##################################################
@@ -7672,6 +8542,64 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,500,1194,1701,4500" ;
 client_port_tcp="1701,1723" ; 
 server_port_tcp="" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-lan-vpn:
 #### ##################################################
@@ -7711,6 +8639,64 @@ client_port_udp="bootpc,domain,domain-s,ntp" ;
 client_port_tcp="9000:9170" ;
 server_port_tcp="9000:9170" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-lan-tor:
 #### ##################################################
@@ -7749,6 +8735,64 @@ server_port_udp="1025:65000" ;
 client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-games-shooter:
 #### ##################################################
@@ -7787,6 +8831,64 @@ server_port_udp="1025:65000" ;
 client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-games-udp:
 #### ##################################################
@@ -7825,6 +8927,64 @@ server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,14950:15050" ;
 server_port_tcp="14950:15050" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-game-wesnoth:
 #### ##################################################
@@ -7863,6 +9023,64 @@ server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,25000:35000" ;
 server_port_tcp="25000:35000" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-game-minetest:
 #### ##################################################
@@ -7901,6 +9119,64 @@ server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,5555:5556" ;
 server_port_tcp="5555:5556" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-game-freeciv:
 #### ##################################################
@@ -7939,6 +9215,64 @@ server_port_udp="7396" ;
 client_port_tcp="ssh,http,https,http-alt,7396" ;
 server_port_tcp="7396" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-game-widelands:
 #### ##################################################
@@ -7977,6 +9311,64 @@ server_port_udp="https" ;
 client_port_tcp="http,https,http-alt,ssh" ;
 server_port_tcp="ssh,http,https,http-alt" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-server-web:
 #### ##################################################
@@ -8015,6 +9407,64 @@ client_port_tcp="http,https,http-alt,ssh,5900:5910" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="ssh,5900:5910" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-server-vnc:
 #### ##################################################
@@ -8053,6 +9503,64 @@ server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="ssh,http,https,ftp,ftp-data,ftps,ftps-data" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-server-ftp:
 #### ##################################################
@@ -8091,6 +9599,64 @@ server_port_udp="" ;
 client_port_tcp="http,https,http-alt,3128,ssh" ;
 server_port_tcp="ssh,http,https,http-alt,3128" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-server-proxy:
 #### ##################################################
@@ -8135,6 +9701,64 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 client_port_tcp="http,https,http-alt,ssh,119,433,563" ;
 server_port_tcp="ssh,http,https,119,433,563" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-server-news:
 #### ##################################################
@@ -8191,6 +9815,64 @@ server_port_udp="https" ;
 client_port_tcp="http,https,http-alt,ssh,25,119,433,563,25:26,995,110,465,587,143,993" ;
 server_port_tcp="ssh,http,https,25,119,433,563,25:26,995,110,465,587,143,993" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-server-mail:
 #### ##################################################
@@ -8229,6 +9911,64 @@ client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,ldap,636,137:139" ;
 server_port_tcp="ssh,ldap,636,microsoft-ds" ; 
 server_port_udp="ssh,ntp,domain,domain-s,ldap,636,137:139" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-server-samba:
 #### ##################################################
@@ -8267,6 +10007,64 @@ server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh" ;
 server_port_tcp="ssh,printer,ipp" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-server-print:
 #### ##################################################
@@ -8305,6 +10103,64 @@ server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh" ;
 server_port_tcp="ssh" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-server-ssh:
 #### ##################################################
@@ -8344,6 +10200,64 @@ server_port_udp="https" ;
 client_port_tcp="http,https,http-alt,ssh,20,21,989,990" ;
 server_port_tcp="ssh,http,https,10000,3306,5432" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-server-lamp:
 #### ##################################################
@@ -8384,6 +10298,64 @@ server_port_udp="5060,10000:20000,5036" ;
 client_port_tcp="http,https,http-alt,ssh,5060" ;
 server_port_tcp="ssh,5060" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-server-astrerisk:
 #### ##################################################
@@ -8422,6 +10394,64 @@ server_port_udp="64738" ;
 client_port_tcp="http,https,http-alt,ssh,64738" ;
 server_port_tcp="ssh,64738" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-server-mumble:
 #### ##################################################
@@ -8464,6 +10494,64 @@ server_port_udp="9987" ;
 client_port_tcp="http,https,http-alt,ssh,30033,10011,10022" ;
 server_port_tcp="ssh,30033,10011,10022" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-server-teamspeak:
 #### ##################################################
@@ -8506,6 +10594,64 @@ server_port_udp="5432" ;
 client_port_tcp="http,https,http-alt,ssh,5432,3306,3360" ;
 server_port_tcp="ssh,5432,3306,3360" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-server-sql:
 #### ##################################################
@@ -8544,6 +10690,64 @@ client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="ssh,ircs-u,ircd" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 #### :rutina-final-server-irc:
 #### ##################################################
@@ -8582,6 +10786,64 @@ server_port_udp="domain,domain-s" ;
 client_port_tcp="http,https,http-alt,ssh" ;
 server_port_tcp="ssh" ;
 # config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_dmz_ip4=192.168.1.7 
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# net_ipv4_client=0/0 
+# net_ipv4_server=0/0 
+# net_ipv6_client=::/0 
+# net_ipv6_server=::/0 
 fi
 ####
 ####
