@@ -1470,14 +1470,11 @@ then echo "fail: public ip hidden for dns server" ;
 else echo "$text_md   $public_ip4"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
-echo "$title_md [ note ] [ ALL_PROXY, HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
-echo "$title_md [ note ] [ File: ] WHITHOUT script shell and WHITHOUT exit command ]"
-echo "$title_md [ note ] [ Example:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
-echo "$title_md [ note ] [ Then: ] source /directory/file-of-declare-proxy"
-listado_proxy="$($command_sudo -u root bash -c export | grep -i \_PROXY | wc -l)"
+echo "$title_md [ note ] [ $cmd_basename with: OR expert-show-proxy OR expert-conf-proxy ]"
+listado_proxy="$($command_sudo -u root bash -c export | $command_grep -i \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ];
 then echo "$text_md [ info ] Without proxy in export variables"
-else $command_sudo -u root bash -c export | grep -i "_PROXY" ; fi
+else $command_sudo -u root bash -c export | $command_grep -i "_PROXY" ; fi
 echo
 echo "$title_md [ info ] ### [ Domain resolve ] [ nameserver and search ] ###"
 if [ -f /etc/resolv.conf ]
@@ -1539,6 +1536,10 @@ listado_proxy="$($command_sudo -u root bash -c export | grep -i \_PROXY | wc -l)
 if [ "$listado_proxy" -eq "0" ];
 then echo "$text_md [ info ] Without proxy in export variables"
 else $command_sudo -u root bash -c export | grep -i "_PROXY" ; fi
+theproxy="/etc/proxy.fwiptables" 
+if [ -f $theproxy ]; then echo ; echo ;
+echo "$title_md [ info ] [ if it is valid proxy then launch: source $theproxy ]" ; cat $theproxy
+else "$title_md [ info ] [ if it wants conf proxy then launch: $cmd_basename expert-conf-proxy ]"; fi
 exit ; fi
 ####
 ####
@@ -1599,10 +1600,7 @@ then echo "fail: public ip hidden for dns server" ;
 else echo "$text_md   $public_ip6"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
-echo "$title_md [ note ] [ ALL_PROXY, HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
-echo "$title_md [ note ] [ File: ] WHITHOUT script shell and WHITHOUT exit command ]"
-echo "$title_md [ note ] [ Example:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
-echo "$title_md [ note ] [ Then: ] source /directory/file-of-declare-proxy"
+echo "$title_md [ note ] [ $cmd_basename with: OR expert-show-proxy OR expert-conf-proxy ]"
 listado_proxy="$($command_sudo -u root bash -c export | $command_grep -i \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ];
 then echo "$text_md [ info ] Without proxy in export variables"
@@ -7213,8 +7211,8 @@ name_firewall="$first_option" ;
 # client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 # client_port_tcp="http,https,http-alt,ssh" ;
 ### SERVER PORTS ###    ### Server ports, add with , and join ranges with :
-server_port_tcp="http,https,http-alt,ssh" ;
-server_port_udp="domain,bootpc,ntp" ;
+server_port_tcp="http,https,http-alt,ssh"  #server_port_tcp
+server_port_udp="domain,bootpc,ntp"        #server_port_udp
 ### LOG TO SERVER PORTS ###    ### Log to server ports, add with , and join ranges with :
 # logserver_port_tcp=    ### the tcp ports to log server
 # logserver_port_udp=    ### the udp ports to log server
@@ -7229,60 +7227,6 @@ server_port_udp="domain,bootpc,ntp" ;
 # allow_separate_rules=    ### Void to separate the rules for each port or no
 # config_close_deny=DROP    ### choose close deny with or DROP or REJECT
 ### END NECESARY ###    ### .......... END Necesary options .......... .......... ###
-    
-### BEGIN OPTIONAL ###    ### .......... BEGIN Optional options .......... .......... ###
-### choose void or no ###    ### Allow Other Options, modify with void, or no
-# allow_string_denied=no    ### void to if drop string, or no to no
-# allow_string_allowed=no    ### void to if allow string, or no to no
-# allow_forward_ip4=no    ### void to yes to forward ip4, or no to no
-# allow_forward_ip6=no    ### void to allow ip forward ip6 or no
-# allow_gateway_ip4=no    ### void to allow gateway ip4 to others nets or no
-# allow_gateway_ip6=no    ### void to allow gateway ip6 to other nets or no
-# allow_dmz_ip4=no    ### void to allow dmz ip4 to one host local or no
-# allow_dmz_ip6=no    ### void to allow dmz ip6 to one host local or no
-# allow_input_all=no    ### void when the rules are to allow input to all or no
-# allow_output_all=no    ### void when the rules are to allow output to all or no
-# allow_input_state=no    ### Selective Input state with void or no
-# allow_output_state=no    ### Selective Output state with void or no
-# allow_input_bandwidth=no    ### void to limit bandwidth input in kbits/sec for all sources or no
-# allow_output_bandwidth=no    ### void to limit bandwidth output in kbits/sec for each destination or no
-# allow_input_maxconnect=no    ### void to limit max number for input simultaneous connections or no
-# allow_output_maxconnect=no    ### void to limit max number for output simultaneous connections or no
-# allow_input_ping=no    ### void to allow RECIVE PING or no
-# allow_output_ping=no    ### void to allow SEND PING or no
-# allow_mac_whitelist=no    ### void to allow some exceptional MAC-ADDRESS or no
-# allow_mac_blacklist=no    ### void to drop some excepcional MAC-ADDRESS or no
-# allow_net_whitelist=no    ### void to allow some exceptional HOST/IP or no
-# allow_net_blacklist=no    ### void to drop some excepcional HOST/IP or no
-# allow_output_uid=no    ### void to allow excepcional USER or no
-# allow_output_gid=no    ### void to allow excepcional GROUP or no
-# allow_others_protocols=no    ### void to allow other POTOCOL-IP excepcional or no
-### Begin Variables ### .......... .......... ### ..........    ### Fill Variables
-### Options    ### Other Options, add with , and join ranges with :
-# config_string_denied=.fb.com,.facebook.com,xxx.html    ### drop connection with header string, if several, comma separate
-# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net    ### allow connection with header string, if several, comma separate
-# config_dmz_ip4=192.168.1.7    ### ip server ip lan to other external nets, nat prerouting
-# config_dmz_ip6=d4:12:43:01:36:2e    ### ip server ip lan to other external nets, nat prerouting
-# config_input_state=new,related,established    ### void for all or new,related,established,untracked,invalid
-# config_output_state=new,related,established    ### void for all or new,related,established,untracked,invalid
-# config_input_bandwidth=12512    ### max input bandwidth in kbits/sec for all
-# config_output_bandwidth=512    ### max output bandwidth in kbits/sec for each ip
-# config_input_maxconnect=72    ### max number for input simultaneous connections
-# config_output_maxconnect=72    ### max number for output simultaneous connections
-# config_mac_whitelist=d4:12:43:01:36:2e    ### allow this excepcitonal MAC-ADRESS
-# config_mac_blacklist=d4:12:43:01:36:2e    ### drop this excepcional MAC-ADDRESS
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org    ### allow this excepcitonal HOST/IP
-# config_net_blacklist=facebook.com,www.facebook.com    ### drop this excepcional HOST/IP
-# config_output_uid=root    ### allow out packages excepcional from this USER excepcional
-# config_output_gid=root    ### allow out packages excepcional from this GROUP excepcional
-# config_others_protocols=icmp,igmp    ### allow others protocols from /etc/protocolos
-### NET CLIENT AND NET SERVER ###    ### Net to connect likes client or server
-# net_ipv4_client=0/0    ### the net to client ipv4, all is 0/0
-# net_ipv4_server=0/0    ### the net to server ipv4, all is 0/0
-# net_ipv6_client=::/0    ### the net to client ipv6, all is ::/0
-# net_ipv6_server=::/0    ### the net to server ipv6, all is ::/0
-### ###    ### .......... END Optional options .......... .......... ###
-#### english: ports client and ports server
 fi
 ####
 ####
