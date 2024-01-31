@@ -1532,7 +1532,7 @@ echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
 echo "$title_md [ note ] [ Variables  ] ALL_PROXY, HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
 echo "$title_md [ note ] [ Necesary:  ] WHITHOUT script shell and WHITHOUT exit command ]"
 echo "$title_md [ note ] [ Editable:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
-echo "$title_md [ note ] [ Automatic: ] $cmd_basename expert-conf-proxy ip"
+echo "$title_md [ note ] [ Automatic: ] $cmd_basename expert-conf-proxy ip:port"
 echo "$title_md [ note ] [ Then:      ] source /directory/file-of-declare-proxy"
 listado_proxy="$($command_sudo -u root bash -c export | grep -i \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ]; then
