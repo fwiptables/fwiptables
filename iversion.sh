@@ -1528,9 +1528,10 @@ exit ; fi
 ####
 if [ "$first_option" == "expert-show-proxy" ]; then echo
 echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
-echo "$title_md [ note ] [ ALL_PROXY, HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
-echo "$title_md [ note ] [ File: ] WHITHOUT script shell and WHITHOUT exit command ]"
-echo "$title_md [ note ] [ Example:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
+echo "$title_md [ note ] [ Variables  ] ALL_PROXY, HTTP_PROXY, HTTPS_PROXY, FTP_PROXY, NO_PROXY ]"
+echo "$title_md [ note ] [ Necesary:  ] WHITHOUT script shell and WHITHOUT exit command ]"
+echo "$title_md [ note ] [ Editable:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
+echo "$title_md [ note ] [ Automatic: ] $cmd_basename expert-conf-proxy ip"
 echo "$title_md [ note ] [ Then: ] source /directory/file-of-declare-proxy"
 listado_proxy="$($command_sudo -u root bash -c export | grep -i \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ];
@@ -5702,7 +5703,7 @@ exit ;; esac
 menuprincipal="$($favorite_text_dialog --clear --notags \
 --title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
 0000 "$title_md $text_md [$cmd_realpath cli-menu] $text_md $title_md" \
-0100 "$title_md [  --- Full Options --- ] $title_md" \
+0100 "$title_md [  --- Info Options --- ] $title_md" \
 0200 "$title_md [ Firewall Control ] $title_md" \
 0201  "$text_md stop" \
 0202  "$text_md continue" \
@@ -5809,12 +5810,10 @@ menuprincipal="$($favorite_text_dialog --clear --notags \
 0711  "$text_md notes" \
 0712  "$text_md license" \
 0713  "$text_md about" \
-0714  "$text_md examples" \
 0715  "$text_md depends" \
 0716  "$text_md info" \
-0717  "$text_md ver" \
+0717  "$text_md version" \
 0718  "$text_md list-options" \
-0719  "$text_md clasic-options" \
 0720  "$text_md info-options" \
 0721  "$text_md nodes" \
 0722  "$text_md date" \
@@ -5836,7 +5835,7 @@ case "$menuprincipal" in
 ##########
 ##########
 0000) clear ; $cmd_realpath cli readme  ;;
-0100) clear ; $cmd_realpath cli options ;;
+0100) clear ; $cmd_realpath cli info-options ;;
 0200) clear ; $cmd_realpath cli firewall-control ;;
 0300) clear ; $cmd_realpath cli firewall-listconceptual ;;
 0400) clear ; $cmd_realpath cli firewall-listnumeral ;;
@@ -5994,12 +5993,12 @@ clear ; $cmd_realpath del-config $archivo ; echo "deleted $archivo" ;;
 0711) clear ; $cmd_realpath cli notes ;;
 0712) clear ; $cmd_realpath cli license ;;
 0713) clear ; $cmd_realpath cli about ;;
-0714) clear ; $cmd_realpath cli examples ;;
+### 0714) clear ; $cmd_realpath cli examples ;;
 0715) clear ; $cmd_realpath cli depends ;;
 0716) clear ; $cmd_realpath cli info ;;
-0717) clear ; $cmd_realpath cli ver ;;
+0717) clear ; $cmd_realpath cli version ;;
 0718) clear ; $cmd_realpath cli list-options ;;
-0719) clear ; $cmd_realpath cli clasic-options ;;
+### 0719) clear ; $cmd_realpath cli clasic-options ;;
 0720) clear ; $cmd_realpath cli info-options ;;
 0721) clear ; $cmd_realpath cli nodes ;;
 0722) clear ; $cmd_realpath cli date ;;
