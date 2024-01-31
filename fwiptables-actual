@@ -1473,7 +1473,7 @@ echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
 echo "$title_md [ note ] [ $cmd_basename with: OR expert-show-proxy OR expert-conf-proxy ]"
 listado_proxy="$($command_sudo -u root bash -c export | $command_grep -i \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ];
-then echo "$text_md [ info ] Without proxy in export variables"
+then echo "$title_md [ note ] Without proxy in export variables"
 else $command_sudo -u root bash -c export | $command_grep -i "_PROXY" ; fi
 echo
 echo "$title_md [ info ] ### [ Domain resolve ] [ nameserver and search ] ###"
@@ -1534,7 +1534,7 @@ echo "$title_md [ note ] [ Example:  ] declare -x HTTPS_PROXY=https://127.0.0.1:
 echo "$title_md [ note ] [ Then: ] source /directory/file-of-declare-proxy"
 listado_proxy="$($command_sudo -u root bash -c export | grep -i \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ];
-then echo "$text_md [ info ] Without proxy in export variables"
+then echo "$title_md [ note ] Without proxy in export variables"
 else $command_sudo -u root bash -c export | grep -i "_PROXY" ; fi
 theproxy="/etc/proxy.fwiptables" 
 if [ -f $theproxy ]; then echo ; echo ;
@@ -1603,7 +1603,7 @@ echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
 echo "$title_md [ note ] [ $cmd_basename with: OR expert-show-proxy OR expert-conf-proxy ]"
 listado_proxy="$($command_sudo -u root bash -c export | $command_grep -i \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ];
-then echo "$text_md [ info ] Without proxy in export variables"
+then echo "$title_md [ note ] Without proxy in export variables"
 else $command_sudo -u root bash -c export | $command_grep -i "_PROXY" ; fi
 echo
 echo "$title_md [ info ] ### [ Domain resolve ] [ Resolv.conf ] ###"
