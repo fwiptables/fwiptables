@@ -6406,9 +6406,9 @@ then echo $head_waiting_gui ; echo $give_cover
 ####
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
-list-options|clasic-options|info-options|expert|\
+list-options|info-options|expert|\
 filelog|autolog|ip4|ip6|notes|speed-ip4|speed-ip6|\
-sockets|nodes|date|free|ver|about|\
+sockets|nodes|date|free|version|about|\
 depends|commands|variables|license|examples|intro"
 ####
 ####
@@ -6433,7 +6433,6 @@ preferences-modify)$cmd_realpath -gui-zenity preferences-modify ;;
 preferences-regen)$cmd_realpath -gui-zenity preferences-regen ;;
 preferences-example)$cmd_realpath -gui-zenity preferences-example ;;
 list-options)$cmd_realpath -gui-zenity list-options ;;
-clasic-options)$cmd_realpath -gui-zenity clasic-options ;;
 info-options)$cmd_realpath -gui-zenity info-options ;;
 expert)$cmd_realpath -gui-zenity expert ;;
 filelog) $cmd_realpath -gui-zenity filelog ;; 
@@ -6447,7 +6446,7 @@ sockets)$cmd_realpath -gui-zenity sockets ;;
 nodes) $cmd_realpath -gui-zenity nodes ;;
 date) $cmd_realpath -gui-zenity date ;;
 free) $cmd_realpath -gui-zenity free ;;
-ver) $cmd_realpath -gui-zenity ver ;;
+version) $cmd_realpath -gui-zenity version ;;
 about)$cmd_realpath -gui-zenity about ;;
 depends)$cmd_realpath -gui-zenity depends ;;
 license) $cmd_realpath -gui-zenity depends ;;
