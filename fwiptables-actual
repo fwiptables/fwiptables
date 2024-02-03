@@ -2411,7 +2411,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-options" ] ; then 
-echo "$title_md $cmd_realpath [optional-output] first_option [second_option]   "
+echo "$title_md $cmd_basename [optional-output] first_option [second_option]   "
 echo "$title_md  [ optional-output ]                                                        "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -p|-pdf -s|-silent ]                       "
 echo "$text_md [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                           "
