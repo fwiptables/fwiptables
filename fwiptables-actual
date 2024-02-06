@@ -12676,10 +12676,6 @@ done
 #### spanish: borrado nat
 ####
 ####
-#### $command_iptables_nft -t nat -F
-#### $command_iptables_legacy -t nat -F
-#### $command_ip6tables_nft -t nat -F
-#### $command_ip6tables_legacy -t nat -F
 ####
 ####
 #### english: do masquerade nat ip4 and ip6 ALLOW GATEWAY
@@ -12789,22 +12785,22 @@ $ipv6 $allow_forward $command_sysctl -w net.ipv6.conf.all.forwarding=1 &> /dev/n
 ####
 ####   ipv4 filter legacy rules forward
 $allow_use_legacy $allow_forward_ip4 $command_iptables_legacy \
--A FORWARD -j ACCEPT &> /dev/null
+-m comment --comment "allow forward" -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
 ####   ipv6 filter legacy rules forward
 $allow_use_legacy $allow_forward_ip6 $command_ip6tables_legacy \
--A FORWARD -j ACCEPT &> /dev/null
+-m comment --comment "allow forward" -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
 ####   ipv4 filter nft rules forward
 $allow_use_nft $allow_forward_ip4 $command_iptables_nft \
--A FORWARD -j ACCEPT &> /dev/null
+-m comment --comment "allow forward" -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
 ####   ipv6 filter nft rules forward
 $allow_use_nft $allow_forward_ip6 $command_ip6tables_nft \
--A FORWARD -j ACCEPT &> /dev/null
+-m comment --comment "allow forward" -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
 #######################################       iptables ipv4 and ipv6 closed with drop input, and drop forward, and drop output rules
