@@ -1450,6 +1450,11 @@ if [ "$command_ip" == "$NULL" ]
 then echo "$text_md [ info ] [ install ip command ]"
 else $command_ip -4 route ; fi
 echo
+echo "$title_md [ info ] ### [ Configured ip ] [ inet ip ] ###"
+if [ "$command_ip" == "$NULL" ]
+then echo "$text_md [ info ] [ install ip command ]"
+else $command_ifconfig | $command_egrep "flags=|inet" ; fi
+echo
 echo "$title_md [ info ] ### [ Input Ports] [ Network Listen ] ###"
 $cmd_realpath sockets | $command_grep -iv ^#
 echo
@@ -1492,9 +1497,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-ip4:
-
-
-
 ##########    english: expert-conf-proxy: get net info               ##########
 ##########    spanish: expert-conf-proxy: da informacion de la red   ##########
 #### :rutina-inicial-expert-conf-proxy
@@ -1580,9 +1582,13 @@ echo "$title_md [ $first_option ]  [ show info about net ip6 ] [ ip6.md ] "
 echo
 echo "$title_md [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ]
-then echo "$text_md [ info ] \
-[ install ip command ]"
+then echo "$text_md [ info ] [ install ip command ]"
 else $command_ip -6 route ; fi
+echo
+echo "$title_md [ info ] ### [ Configured ip ] [ inet ip ] ###"
+if [ "$command_ip" == "$NULL" ]
+then echo "$text_md [ info ] [ install ip command ]"
+else $command_ifconfig | $command_egrep "flags=|inet" ; fi
 echo
 echo "$title_md [ info ] ### [ Input Ports] [ Network Listen ] ###"
 $cmd_realpath sockets | $command_grep -iv ^# 
@@ -5844,7 +5850,7 @@ case "$menuprincipal" in
 0400) clear ; $cmd_realpath cli firewall-listnumeral ;;
 0500) clear ; $cmd_realpath cli firewall-systemfw ;;
 0600) clear ; $cmd_realpath cli firewall-customfw ;;
-0700) clear ; $cmd_realpath cli default-state ;;
+0700) clear ; $cmd_realpath cli options-easy ;;
 ################################################################################
 0201) clear ; $cmd_realpath cli stop ;;
 0202) clear ; $cmd_realpath cli continue ;;
@@ -6056,9 +6062,9 @@ exit; fi
 ####
 if [ "$first_option" == "gui-roll-zenity" ]
 then echo $head_waiting_gui ; echo $give_cover
-gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|\
-02-Firewall-List-With-Numeral|03-firewall-customfw|\
-04-firewall-systemfw|05-options-easy|06-options-expert"
+gui_menu="Info|Firewall-Control|Firewall-List-With-Conceptual|\
+Firewall-List-With-Numeral|Firewall-customfw|\
+Firewall-systemfw|Options-easy|Options-expert"
 selection_menu="$($command_zenity --forms \
 --text="gui-roll" \
 --title="Gui-roll With $cmd_realpath $cmd_version" \
@@ -6068,19 +6074,21 @@ selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
-"01-Firewall-Control")
+"Info")
+$cmd_realpath gui-zenity info ; exit ;;
+"Firewall-Control")
 $cmd_realpath gui-roll-zenity-firewall-control ; exit ;;
-"02-Firewall-List-With-Conceptual")
+"Firewall-List-With-Conceptual")
 $cmd_realpath gui-roll-zenity-firewall-listconceptual ; exit ;;
-"02-Firewall-List-With-Numeral")
+"Firewall-List-With-Numeral")
 $cmd_realpath gui-roll-zenity-firewall-listnumeral ; exit ;;
-"03-firewall-customfw")
+"Firewall-customfw")
 $cmd_realpath gui-roll-zenity-firewall-customfw ; exit ;;
-"04-firewall-systemfw")
+"Frewall-systemfw")
 $cmd_realpath gui-roll-zenity-firewall-systemfw ; exit ;;
-"05-options-easy")
+"Options-easy")
 $cmd_realpath gui-roll-zenity-options-easy ; exit ;;
-"06-options-expert")
+"Options-expert")
 $cmd_realpath gui-roll-zenity-options-expert ; exit ;;
 esac
 ####
@@ -6096,7 +6104,7 @@ exit; fi
 ####
 if [ "$first_option" == "gui-roll-zenity-firewall-control" ]
 then echo $head_waiting_gui ; echo $give_cover
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
+gui_menu="gui-principal-menu|gui-info-menu|\
 stop|continue|reset|names|show|save|load|actual"
 selection_menu="$($command_zenity --forms \
 --text="gui-roll-firewall-control" \
@@ -6111,7 +6119,6 @@ case "$selection_final" in
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="$cmd_realpath good bye"; exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
-"gui-help-menu")$cmd_realpath -gui-zenity firewall-control ;;
 "gui-info-menu")$cmd_realpath -gui-zenity firewall-control ;;
 "stop")$cmd_realpath -gui-zenity stop
 $cmd_realpath -gui-zenity list4;;
@@ -6148,7 +6155,7 @@ exit; fi
 ####
 if [ "$first_option" == "gui-roll-zenity-firewall-listconceptual" ]
 then echo $head_waiting_gui ; echo $give_cover
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
+gui_menu="gui-principal-menu|gui-info-menu|\
 ls4|ls6|list-filter4|list-filter6|list-alltables|\
 list-nat4|list-nat6|list-mangle4|list-mangle6|\
 list-raw4|list-raw6|list-security4|list-security6|\
@@ -6166,7 +6173,6 @@ case "$selection_final" in
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="$cmd_realpath good bye"; exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
-"gui-help-menu")$cmd_realpath -gui-zenity firewall-listconceptual ;;
 "gui-info-menu")$cmd_realpath -gui-zenity firewall-listconceptual ;;
 "ls4")$cmd_realpath -gui-zenity ls4 ;;
 "ls6")$cmd_realpath -gui-zenity ls6 ;;
@@ -6197,7 +6203,7 @@ exit; fi
 ####
 if [ "$first_option" == "gui-roll-zenity-firewall-listnumeral" ]
 then echo $head_waiting_gui ; echo $give_cover
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|lsn4|lsn6|\
+gui_menu="gui-principal-menu|gui-info-menu|lsn4|lsn6|\
 listn-filter4|listn-filter6|listn-alltables|\
 listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|\
 listn-raw4|listn-raw6|listn-security4|listn-security6|\
@@ -6215,7 +6221,6 @@ case "$selection_final" in
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="$cmd_realpath good bye"; exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
-"gui-help-menu")$cmd_realpath -gui-zenity firewall-listnumeral ;;
 "gui-info-menu")$cmd_realpath -gui-zenity firewall-listnumeral ;;
 "lsn4")$cmd_realpath -gui-zenity lsn4 ;;
 "lsn6")$cmd_realpath -gui-zenity lsn6 ;;
@@ -6246,7 +6251,7 @@ exit; fi
 ####
 if [ "$first_option" == "gui-roll-zenity-firewall-customfw" ]
 then echo $head_waiting_gui ; echo $give_cover
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
+gui_menu="gui-principal-menu|gui-info-menu|\
 custom|clone-systemfw|eraserules|wizard-mini|wizard-full|off-line|all-permisive|\
 new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
 names-config|show-config|modify-config|del-config|config-regen"
@@ -6263,7 +6268,6 @@ case "$selection_final" in
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="$cmd_realpath good bye"; exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
-"gui-help-menu")$cmd_realpath -gui-zenity firewall-customfw ;;
 "gui-info-menu")$cmd_realpath -gui-zenity firewall-customfw ;;
 "custom")archivo="$($command_zenity  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -6335,7 +6339,7 @@ exit; fi
 ####
 if [ "$first_option" == "gui-roll-zenity-firewall-systemfw" ]
 then echo $head_waiting_gui ; echo $give_cover
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
+gui_menu="gui-principal-menu|gui-info-menu|\
 client-basic|client-web|client-mail|client-news|client-ftp|client-git|client-vnc|\
 client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
 games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|server-proxy|\
@@ -6352,7 +6356,6 @@ selection_final="$(echo $selection_menu | sed 's/\|//g')"
 case "$selection_final" in
 1) $command_zenity  --info --width=$config_graphicall_width --height=$config_graphicall_height --text="$cmd_realpath good bye"; exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
-"gui-help-menu")$cmd_realpath -gui-zenity firewall-systemfw ;;
 "gui-info-menu")$cmd_realpath -gui-zenity firewall-systemfw ;;
 "client-web")$cmd_realpath -gui-zenity client-web ; $cmd_realpath gui list4;;
 "client-ipp")$cmd_realpath -gui-zenity client-ipp   ; $cmd_realpath gui list4;;
@@ -6404,7 +6407,7 @@ if [ "$first_option" == "gui-roll-zenity-options-easy" ]
 then echo $head_waiting_gui ; echo $give_cover
 ####
 ####
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|\
+gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
 list-options|info-options|expert|\
 filelog|autolog|ip4|ip6|notes|speed-ip4|speed-ip6|\
@@ -6426,7 +6429,6 @@ case "$selection_final" in
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="$cmd_realpath good bye"; exit ;;
 gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
-gui-help-menu)$cmd_realpath -gui-zenity options-easy ;;
 gui-info-menu)$cmd_realpath -gui-zenity options-easy ;;
 preferences-read)$cmd_realpath -gui-zenity preferences-read ;;
 preferences-modify)$cmd_realpath -gui-zenity preferences-modify ;;
@@ -6470,7 +6472,7 @@ if [ "$first_option" == "gui-roll-zenity-options-expert" ]
 then echo $head_waiting_gui ; echo $give_cover
 ####
 ####
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
+gui_menu="gui-principal-menu|gui-info-menu|\
 expert-show-weather|expert-compile-obash|expert-upgrade-stable|\
 expert-upgrade-unstable|expert-download-adblock|expert-pc-halt|\
 expert-pc-shutdown|expert-pc-reboot"
@@ -6487,7 +6489,6 @@ selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu) $cmd_realpath gui-roll-zenity ;;
-gui-help-menu) $cmd_realpath gui-zenity options-expert ;;
 gui-info-menu) $cmd_realpath gui-zenity options-expert ;;
 expert-show-weather)$cmd_realpath -gui-zenity expert-show-weather ;;
 expert-compile-obash)$cmd_realpath -gui-zenity expert-compile-obash ;;
