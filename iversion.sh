@@ -101,8 +101,8 @@ echo ; fi
 ####
 cmd_realpath="$(realpath $0)"    # its full routename
 cmd_basename="$(basename $0)"    # its only filename
-cmd_version="cmd-11-11"          # its version
-file_installed="fwiptables-cmd"  # its filename installed
+cmd_version="cmd-24-02-Dev"      # its version
+file_installed="fwiptables"      # its filename installed
 directory_installed="/usr/bin"   # its directory installed
 cmd_contact="fwiptables@gmx.com" # its contact
 cmd_shortdescription="fwiptables, FireWall With iptables"              # its name description short
@@ -237,8 +237,8 @@ allow_output_uid="no"     ;
 config_string_algoritmo="kpm"
 config_string_denied=".fb.com,.facebook.com,xxx.html" ;
 config_string_allowed="one-string-that-like-how-a-passord,sourceforge.net"  ;
-config_gateway_ip4="0.0.0.0"    ;
-config_gateway_ip6="::1"    ;
+config_gateway_ip4="0/0"    ;
+config_gateway_ip6="::/0"    ;
 config_dmz_ip4=""     ;
 config_dmz_ip6=""     ;
 config_input_bandwidth="12512"     ;
@@ -254,10 +254,10 @@ config_output_gid="root"     ;
 config_output_maxconnect="72"     ;
 config_output_state="new,related,established"     ;
 config_output_uid="root"     ;
-net_ipv4_client="0/0"     ;
-net_ipv4_server="0/0"     ;
-net_ipv6_client="::/0"     ;
-net_ipv6_server="::/0"     ;
+config_ipv4_netclient="0/0"     ;
+config_ipv4_netserver="0/0"     ;
+config_ipv6_netclient="::/0"     ;
+config_ipv6_netserver="::/0"     ;
 ####
 ####
 #### :rutina-final-config-variables:
@@ -2019,6 +2019,7 @@ echo "$title_md Permitir Otras Opciones, modificar con vacio o no "
 echo "allow_string_denied=no "
 echo "$title_md vacio para denegar cadena de cabecera, o no para no "
 echo "allow_string_allowed=no "
+echo "$title_md vacio para permitir cadena, o no para no "
 echo "allow_mac_whitelist=no "
 echo "$title_md vacio para permitir DIRECCION-MAC excepcionales o no "
 echo "allow_mac_blacklist=no "
@@ -2027,7 +2028,18 @@ echo "allow_net_whitelist=no "
 echo "$title_md vacio para permitir HOST/IP excepcionales o no"
 echo "allow_net_blacklist=no "
 echo "$title_md vacio para denegar HOST/IP excepcionales o no "
-echo "$title_md vacio para permitir cadena, o no para no "
+echo "allow_input_bandwidth=no "
+echo "$title_md vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no "
+echo "allow_output_bandwidth=no "
+echo "$title_md vacio limitar ancho de banda de salida en kbits/sec por cada destino o no "
+echo "allow_input_maxconnect=no "
+echo "$title_md vacio para limitar numero de conexiones simultaneas de entrada o no "
+echo "allow_output_maxconnect=no "
+echo "$title_md vacio para limitar numero de conexiones simultaneas de salida o no "
+echo "allow_input_ping=no "
+echo "$title_md vacio para permitir RECIVIR PING o no "
+echo "allow_output_ping=no "
+echo "$title_md vacio para permitir ENVIAR PING o no "
 echo "allow_forward_ip4=no "
 echo "$title_md vacio para reenvios ip4, o no para no "
 echo "allow_forward_ip6=no "
@@ -2048,19 +2060,6 @@ echo "allow_input_state=no "
 echo "$title_md Estado de entrada selectivo con vacio o no "
 echo "allow_output_state=no "
 echo "$title_md Estado de salida selectivo con vacio o no "
-echo "allow_input_bandwidth=no "
-echo "$title_md vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no "
-echo "allow_output_bandwidth=no "
-echo "$title_md vacio limitar ancho de banda de salida en kbits/sec por cada destino o no "
-echo "allow_input_maxconnect=no "
-echo "$title_md vacio para limitar numero de conexiones simultaneas de entrada o no "
-echo "allow_output_maxconnect=no "
-echo "$title_md vacio para limitar numero de conexiones simultaneas de salida o no "
-echo "allow_input_ping=no "
-echo "$title_md vacio para permitir RECIVIR PING o no "
-echo "allow_output_ping=no "
-echo "$title_md vacio para permitir ENVIAR PING o no "
-
 echo "allow_output_uid=no"
 echo "$title_md vacio permite salida de paquetes de un USUARIO excepcional o no "
 echo "allow_output_gid=no"
@@ -2081,15 +2080,6 @@ echo "config_string_denied=.fb.com,.facebook.com,xxx.html "
 echo "$title_md bloquea conexion con cadena de cabecera, si hay varios, seperados por comas "
 echo "config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net "
 echo "$title_md permite conexion con cadena de cabecera, si hay varios, seperados por comas "
-echo "$title_md modificar con vacio o new,related,established,untracked,invalid "
-echo "config_input_bandwidth=12512 "
-echo "$title_md maximo entrada de ancho de banda en kbit/sec para todos "
-echo "config_output_bandwidth=512 "
-echo "$title_md maximo salida de ancho de banda en kbits/sec para cada ip "
-echo "config_input_maxconnect=72 "
-echo "$title_md maximo numero de conexiones simultaneas de entrada "
-echo "config_output_maxconnect=72 "
-echo "$title_md maximo numero de conexiones simultaneas de salida "
 echo "config_mac_whitelist=d4:12:43:01:36:2e "
 echo "$title_md permitir estos MAC-ADDRESS excepcionales "
 echo "config_mac_blacklist=d4:12:43:01:36:2e "
@@ -2098,9 +2088,17 @@ echo "config_net_whitelist=wesnoth.org,sf.net,deb.debian.org "
 echo "$title_md permitir estos HOST/IP excepcionales "
 echo "config_net_blacklist=facebook.com,www.facebook.com "
 echo "$title_md deniega estos HOST/IP excepcionales "
-echo "config_gateway_ip4=0.0.0.0"
+echo "config_input_bandwidth=12512 "
+echo "$title_md maximo entrada de ancho de banda en kbit/sec para todos "
+echo "config_output_bandwidth=512 "
+echo "$title_md maximo salida de ancho de banda en kbits/sec para cada ip "
+echo "config_input_maxconnect=72 "
+echo "$title_md maximo numero de conexiones simultaneas de entrada "
+echo "config_output_maxconnect=72 "
+echo "$title_md maximo numero de conexiones simultaneas de salida "
+echo "config_gateway_ip4=0/0"
 echo "$title_md servidor puerta de enlace para tu red. Ejemplo: 192.168.0.0/24"
-echo "config_gateway_ip6=::1"
+echo "config_gateway_ip6=::/0"
 echo "$title_md server gateway for lan example: ::1"
 echo "config_dmz_ip4=192.168.1.7 "
 echo "$title_md servidor ip lan para otras redes esternas, nat prerouting "
@@ -2109,6 +2107,7 @@ echo "$title_md servidor ip lan para otras redes esternas, nat prerouting "
 echo "config_input_state=new,related,established "
 echo "$title_md modificar con vacio o new,related,established,untracked,invalid "
 echo "config_output_state=new,related,established "
+echo "$title_md modificar con vacio o new,related,established,untracked,invalid "
 echo "config_output_uid=root "
 echo "$title_md permite salida de paquetes de este USUARIO excepcional "
 echo "config_output_gid=root "
@@ -2117,13 +2116,13 @@ echo "config_others_protocols=icmp,igmp "
 echo "$title_md permitir otros protocolos desde /etc/protocols "
 echo "$title_md NET CLIENT AND NET SERVER $title_md "
 echo "$title_md Red para conectar como cliente o server "
-echo "net_ipv4_client=0/0 "
+echo "config_ipv4_netclient=0/0 "
 echo "$title_md la red cual cliente ipv4, todos es 0/0 "
-echo "net_ipv4_server=0/0 "
+echo "config_ipv4_netserver=0/0 "
 echo "$title_md la red cual servidor ipv4, todos es 0/0 "
-echo "net_ipv6_client=::/0 "
+echo "config_ipv6_netclient=::/0 "
 echo "$title_md la red cual cliente ipv6, todos es ::/0 "
-echo "net_ipv6_server=::/0 "
+echo "config_ipv6_netserver=::/0 "
 echo "$title_md la red cual servidor ipv6, todos es ::/0 "
 echo "$title_md $title_md "
 echo "$title_md FINAL .......... Opciones opcionales .......... .......... $title_md "
@@ -2270,6 +2269,7 @@ echo "$title_md Allow Other Options,  modify with void, or no "
 echo "allow_string_denied=no "
 echo "$title_md void to if drop string, or no to no "
 echo "allow_string_allowed=no "
+echo "$title_md void to if allow string, or no to no "
 echo "allow_mac_whitelist=no "
 echo "$title_md void to allow some exceptional MAC-ADDRESS or no "
 echo "allow_mac_blacklist=no "
@@ -2278,7 +2278,18 @@ echo "allow_net_whitelist=no "
 echo "$title_md void to allow some exceptional HOST/IP or no "
 echo "allow_net_blacklist=no "
 echo "$title_md void to drop some excepcional HOST/IP or no "
-echo "$title_md void to if allow string, or no to no "
+echo "allow_input_bandwidth=no "
+echo "$title_md void to limit bandwidth input in kbits/sec for all sources or no "
+echo "allow_output_bandwidth=no "
+echo "$title_md void to limit bandwidth output in kbits/sec for each destination or no "
+echo "allow_input_maxconnect=no "
+echo "$title_md void to limit max number for input simultaneous connections or no "
+echo "allow_output_maxconnect=no "
+echo "$title_md void to limit max number for output simultaneous connections or no "
+echo "allow_input_ping=no "
+echo "$title_md void to allow RECIVE PING or no "
+echo "allow_output_ping=no "
+echo "$title_md void to allow SEND PING or no "
 echo "allow_forward_ip4=no "
 echo "$title_md void to yes to forward ip4, or no to no "
 echo "allow_forward_ip6=no "
@@ -2299,18 +2310,6 @@ echo "allow_input_state=no "
 echo "$title_md Selective Input state with void or no "
 echo "allow_output_state=no "
 echo "$title_md Selective Output state with void or no "
-echo "allow_input_bandwidth=no "
-echo "$title_md void to limit bandwidth input in kbits/sec for all sources or no "
-echo "allow_output_bandwidth=no "
-echo "$title_md void to limit bandwidth output in kbits/sec for each destination or no "
-echo "allow_input_maxconnect=no "
-echo "$title_md void to limit max number for input simultaneous connections or no "
-echo "allow_output_maxconnect=no "
-echo "$title_md void to limit max number for output simultaneous connections or no "
-echo "allow_input_ping=no "
-echo "$title_md void to allow RECIVE PING or no "
-echo "allow_output_ping=no "
-echo "$title_md void to allow SEND PING or no "
 echo "allow_output_uid=no "
 echo "$title_md void to allow excepcional USER or no "
 echo "allow_output_gid=no "
@@ -2347,9 +2346,9 @@ echo "config_net_whitelist=wesnoth.org,sf.net,deb.debian.org "
 echo "$title_md allow this excepcitonal HOST/IP "
 echo "config_net_blacklist=facebook.com,www.facebook.com "
 echo "$title_md drop this excepcional HOST/IP )"
-echo "config_gateway_ip4=0.0.0.0"
+echo "config_gateway_ip4=0/0"
 echo "$title_md server gateway for lan example: 192.168.0.0/24"
-echo "config_gateway_ip6=::1"
+echo "config_gateway_ip6=::/0"
 echo "$title_md server gateway for lan example: ::1"
 echo "config_dmz_ip4=192.168.1.7 "
 echo "$title_md ip server ip lan to other external nets, nat prerouting "
@@ -2367,13 +2366,13 @@ echo "config_others_protocols=icmp,igmp "
 echo "$title_md allow others protocols from /etc/protocolos "
 echo "$title_md NET CLIENT AND NET SERVER $title_md "
 echo "$title_md Net to connect likes client or server "
-echo "net_ipv4_client=0/0 "
+echo "config_ipv4_netclient=0/0 "
 echo "$title_md the net to client ipv4, all is 0/0 "
-echo "net_ipv4_server=0/0 "
+echo "config_ipv4_netserver=0/0 "
 echo "$title_md the net to server ipv4, all is 0/0 "
-echo "net_ipv6_client=::/0 "
+echo "config_ipv6_netclient=::/0 "
 echo "$title_md the net to client ipv6, all is ::/0 "
-echo "net_ipv6_server=::/0 "
+echo "config_ipv6_netserver=::/0 "
 echo "$title_md the net to server ipv6, all is ::/0 "
 echo "$title_md $title_md "
 echo "$title_md .......... END Optional options .......... .......... $title_md"
@@ -2977,13 +2976,13 @@ echo "$text_md config_output_uid           # output gid . Example user"
 echo "$text_md"
 echo "$text_md config_output_gid           # output gid . Example users"
 echo "$text_md"
-echo "$text_md net_ipv4_client             # only client ipv4 for ip/host/range, several with comma"
+echo "$text_md config_ipv4_netclient             # only client ipv4 for ip/host/range, several with comma"
 echo "$text_md"
-echo "$text_md net_ipv4_server             # only server ipv4 for ip/host/range, several with comma"
+echo "$text_md config_ipv4_netserver             # only server ipv4 for ip/host/range, several with comma"
 echo "$text_md"
-echo "$text_md net_ipv6_client             # only client ipv6 for ip/host/range, several with comma"
+echo "$text_md config_ipv6_netclient             # only client ipv6 for ip/host/range, several with comma"
 echo "$text_md"
-echo "$text_md net_ipv6_server             # only server ipv6 for ip/host/range, several with comma"
+echo "$text_md config_ipv6_netserver             # only server ipv6 for ip/host/range, several with comma"
 echo "$text_md"
 echo "$text_md"
 echo "$title_md    # Others descriptions:"
@@ -7158,10 +7157,10 @@ server_port_tcp="ssh" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-shield-ssh:
 #### ##################################################
@@ -7255,10 +7254,10 @@ server_port_tcp="" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 ####
 ####
@@ -7354,10 +7353,10 @@ server_port_tcp="" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-client-web:
 #### ##################################################
@@ -7451,10 +7450,10 @@ server_port_tcp="" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-client-git:
 #### ##################################################
@@ -7548,10 +7547,10 @@ server_port_tcp="" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-client-ipp:
 #### ##################################################
@@ -7645,10 +7644,10 @@ server_port_tcp="" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 ####
 ####
 #### english: advance options in configurations file cfg
@@ -7705,10 +7704,10 @@ server_port_tcp="" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-client-irc:
 #### ##################################################
@@ -7803,10 +7802,10 @@ server_port_tcp="" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-shield-vnc:
 #### ##################################################
@@ -7901,10 +7900,10 @@ server_port_tcp="9091,51413" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-client-torrent:
 #### ##################################################
@@ -7999,10 +7998,10 @@ server_port_tcp="" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-client-vpn:
 #### ##################################################
@@ -8097,10 +8096,10 @@ server_port_tcp="9000:9170" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-client-tor:
 #### ##################################################
@@ -8200,10 +8199,10 @@ server_port_tcp="" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-client-news:
 #### ##################################################
@@ -8314,10 +8313,10 @@ server_port_tcp="" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-client-mail:
 #### ##################################################
@@ -8412,10 +8411,10 @@ server_port_tcp="" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-shield-ftp:
 #### ##################################################
@@ -8510,10 +8509,10 @@ server_port_tcp="" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-client-proxy:
 #### ##################################################
@@ -8609,10 +8608,10 @@ server_port_tcp="" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-lan-vpn:
 #### ##################################################
@@ -8708,10 +8707,10 @@ server_port_tcp="9000:9170" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-lan-tor:
 #### ##################################################
@@ -8806,10 +8805,10 @@ server_port_tcp="" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-games-shooter:
 #### ##################################################
@@ -8904,10 +8903,10 @@ server_port_tcp="" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-games-udp:
 #### ##################################################
@@ -9002,10 +9001,10 @@ server_port_tcp="14950:15050" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-game-wesnoth:
 #### ##################################################
@@ -9100,10 +9099,10 @@ server_port_tcp="25000:35000" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-game-minetest:
 #### ##################################################
@@ -9198,10 +9197,10 @@ server_port_tcp="5555:5556" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-game-freeciv:
 #### ##################################################
@@ -9296,10 +9295,10 @@ server_port_tcp="7396" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-game-widelands:
 #### ##################################################
@@ -9394,10 +9393,10 @@ server_port_tcp="ssh,http,https,http-alt" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-server-web:
 #### ##################################################
@@ -9492,10 +9491,10 @@ server_port_tcp="ssh,5900:5910" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-server-vnc:
 #### ##################################################
@@ -9590,10 +9589,10 @@ server_port_tcp="ssh,http,https,ftp,ftp-data,ftps,ftps-data" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-server-ftp:
 #### ##################################################
@@ -9688,10 +9687,10 @@ server_port_tcp="ssh,http,https,http-alt,3128" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-server-proxy:
 #### ##################################################
@@ -9792,10 +9791,10 @@ server_port_tcp="ssh,http,https,119,433,563" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-server-news:
 #### ##################################################
@@ -9908,10 +9907,10 @@ server_port_tcp="ssh,http,https,25,119,433,563,25:26,995,110,465,587,143,993" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-server-mail:
 #### ##################################################
@@ -10006,10 +10005,10 @@ server_port_udp="ssh,ntp,domain,domain-s,ldap,636,137:139" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-server-samba:
 #### ##################################################
@@ -10104,10 +10103,10 @@ server_port_tcp="ssh,printer,ipp" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-server-print:
 #### ##################################################
@@ -10202,10 +10201,10 @@ server_port_tcp="ssh" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-server-ssh:
 #### ##################################################
@@ -10301,10 +10300,10 @@ server_port_tcp="ssh,http,https,10000,3306,5432" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-server-lamp:
 #### ##################################################
@@ -10401,10 +10400,10 @@ server_port_tcp="ssh,5060" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-server-astrerisk:
 #### ##################################################
@@ -10499,10 +10498,10 @@ server_port_tcp="ssh,64738" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-server-mumble:
 #### ##################################################
@@ -10601,10 +10600,10 @@ server_port_tcp="ssh,30033,10011,10022" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-server-teamspeak:
 #### ##################################################
@@ -10703,10 +10702,10 @@ server_port_tcp="ssh,5432,3306,3360" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-server-sql:
 #### ##################################################
@@ -10801,10 +10800,10 @@ server_port_tcp="ssh,ircs-u,ircd" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-server-irc:
 #### ##################################################
@@ -10899,10 +10898,10 @@ server_port_tcp="ssh" ;
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
-# net_ipv4_client=0/0 
-# net_ipv4_server=0/0 
-# net_ipv6_client=::/0 
-# net_ipv6_server=::/0 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
 fi
 ####
 ####
@@ -11918,11 +11917,11 @@ if [ "$allow_separate_rules" == "no" ]; then
 ####
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT \
 -p udp -m multiport $config_input_state --sports $client_port_udp \
--s $net_ipv4_client -j ACCEPT \
+-s $config_ipv4_netclient -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
 -p udp -m multiport $config_output_state --dports $client_port_udp \
--d $net_ipv4_client -j ACCEPT \
+-d $config_ipv4_netclient -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 ####
 #### 
@@ -11930,11 +11929,11 @@ $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
 ####
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
 -p udp -m multiport $config_input_state --sports $client_port_udp \
--s $net_ipv4_client -j ACCEPT \
+-s $config_ipv4_netclient -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
 -p udp -m multiport $config_output_state --dports $client_port_udp \
--d $net_ipv4_client -j ACCEPT \
+-d $config_ipv4_netclient -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 ####
 ####
@@ -11942,11 +11941,11 @@ $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT \
 -p udp -m multiport $config_input_state --sports $client_port_udp \
--s $net_ipv6_client -j ACCEPT \
+-s $config_ipv6_netclient -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 -p udp -m multiport $config_output_state --dports $client_port_udp \
--d $net_ipv6_client -j ACCEPT \
+-d $config_ipv6_netclient -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 ####
 ####
@@ -11955,11 +11954,11 @@ $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT \
 -p tcp -m multiport $config_input_state --sports $client_port_udp \
--s $net_ipv6_client -j ACCEPT \
+-s $config_ipv6_netclient -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport $config_output_state --dports $client_port_udp \
--d $net_ipv6_client -j ACCEPT \
+-d $config_ipv6_netclient -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 ####
 ####
@@ -11969,11 +11968,11 @@ $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
 ####
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT \
 -p tcp -m multiport $config_input_state --sports $client_port_tcp \
--s $net_ipv4_client -j ACCEPT \
+-s $config_ipv4_netclient -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
 -p tcp -m multiport $config_output_state --dports $client_port_tcp \
--d $net_ipv4_client -j ACCEPT \
+-d $config_ipv4_netclient -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 ####
 #### 
@@ -11981,11 +11980,11 @@ $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
 ####
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
 -p tcp -m multiport $config_input_state --sports $client_port_tcp \
--s $net_ipv4_client -j ACCEPT \
+-s $config_ipv4_netclient -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
 -p tcp -m multiport $config_output_state --dports $client_port_tcp \
--d $net_ipv4_client -j ACCEPT \
+-d $config_ipv4_netclient -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 ####
 ####
@@ -11993,11 +11992,11 @@ $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT \
 -p tcp -m multiport $config_input_state --sports $client_port_tcp \
--s $net_ipv6_client -j ACCEPT \
+-s $config_ipv6_netclient -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 -p tcp -m multiport $config_output_state --dports $client_port_tcp \
--d $net_ipv6_client -j ACCEPT \
+-d $config_ipv6_netclient -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 ####
 ####
@@ -12006,11 +12005,11 @@ $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT \
 -p tcp -m multiport $config_input_state --sports $client_port_tcp \
--s $net_ipv6_client -j ACCEPT \
+-s $config_ipv6_netclient -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport $config_output_state --dports $client_port_tcp \
--d $net_ipv6_client -j ACCEPT \
+-d $config_ipv6_netclient -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 ####
 ####
@@ -12032,11 +12031,11 @@ do
 ####
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT \
 -p udp -m multiport $config_input_state --sports $one_udp \
--s $net_ipv4_client -j ACCEPT \
+-s $config_ipv4_netclient -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
 -p udp -m multiport $config_output_state --dports $one_udp \
--d $net_ipv4_client -j ACCEPT \
+-d $config_ipv4_netclient -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 ####
 #### 
@@ -12044,11 +12043,11 @@ $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
 ####
 $allow_use_nft $allow_use_ipv4     $command_iptables_nft -A INPUT \
 -p udp -m multiport $config_input_state --sports $one_udp \
--s $net_ipv4_client -j ACCEPT \
+-s $config_ipv4_netclient -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 $allow_use_nft $allow_use_ipv4     $command_iptables_nft -A OUTPUT \
 -p udp -m multiport $config_output_state --dports $one_udp \
--d $net_ipv4_client -j ACCEPT \
+-d $config_ipv4_netclient -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 ####
 ####
@@ -12056,11 +12055,11 @@ $allow_use_nft $allow_use_ipv4     $command_iptables_nft -A OUTPUT \
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT \
 -p udp -m multiport $config_input_state --sports $one_udp \
--s $net_ipv6_client -j ACCEPT \
+-s $config_ipv6_netclient -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 -p udp -m multiport $config_output_state --dports $one_udp \
--d $net_ipv6_client -j ACCEPT \
+-d $config_ipv6_netclient -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 ####
 ####
@@ -12069,11 +12068,11 @@ $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT \
 -p tcp -m multiport $config_input_state --sports $one_udp \
--s $net_ipv6_client -j ACCEPT \
+-s $config_ipv6_netclient -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport $config_output_state --dports $one_udp \
--d $net_ipv6_client -j ACCEPT \
+-d $config_ipv6_netclient -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 ####
 ####
@@ -12091,11 +12090,11 @@ do
 ####
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT \
 -p tcp -m multiport $config_input_state --sports $one_tcp \
--s $net_ipv4_client -j ACCEPT \
+-s $config_ipv4_netclient -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
 -p tcp -m multiport $config_output_state --dports $one_tcp \
--d $net_ipv4_client -j ACCEPT \
+-d $config_ipv4_netclient -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 ####
 #### 
@@ -12103,11 +12102,11 @@ $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
 ####
 $allow_use_nft $allow_use_ipv4     $command_iptables_nft -A INPUT \
 -p tcp -m multiport $config_input_state --sports $one_tcp \
--s $net_ipv4_client -j ACCEPT \
+-s $config_ipv4_netclient -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 $allow_use_nft $allow_use_ipv4     $command_iptables_nft -A OUTPUT \
 -p tcp -m multiport $config_output_state --dports $one_tcp \
--d $net_ipv4_client -j ACCEPT \
+-d $config_ipv4_netclient -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 ####
 ####
@@ -12115,11 +12114,11 @@ $allow_use_nft $allow_use_ipv4     $command_iptables_nft -A OUTPUT \
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT \
 -p tcp -m multiport $config_input_state --sports $one_tcp \
--s $net_ipv6_client -j ACCEPT \
+-s $config_ipv6_netclient -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 -p tcp -m multiport $config_output_state --dports $one_tcp \
--d $net_ipv6_client -j ACCEPT \
+-d $config_ipv6_netclient -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 ####
 ####
@@ -12128,11 +12127,11 @@ $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT \
 -p tcp -m multiport $config_input_state --sports $one_tcp \
--s $net_ipv6_client -j ACCEPT \
+-s $config_ipv6_netclient -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport $config_output_state --dports $one_tcp \
--d $net_ipv6_client -j ACCEPT \
+-d $config_ipv6_netclient -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 ####
 ####
@@ -12242,24 +12241,24 @@ if [ "$allow_separate_rules" != "$NULL" ]; then
 #### ipv4 legacy
 ####
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT  \
--p tcp -m multiport --dports $server_port_tcp -s $net_ipv4_server -j ACCEPT \
+-p tcp -m multiport --dports $server_port_tcp -s $config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
--p tcp -m multiport --sports $server_port_tcp -d $net_ipv4_server -j ACCEPT \
+-p tcp -m multiport --sports $server_port_tcp -d $config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 #### 
 #### ipv4 nft
 ####
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
--p tcp -m multiport --dports $server_port_tcp -s $net_ipv4_server -j ACCEPT \
+-p tcp -m multiport --dports $server_port_tcp -s $config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
--p tcp -m multiport --sports $server_port_tcp -d $net_ipv4_server -j ACCEPT \
+-p tcp -m multiport --sports $server_port_tcp -d $config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
@@ -12267,12 +12266,12 @@ $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
 ####
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT  \
--p tcp -m multiport --dports $server_port_tcp -s $net_ipv6_server -j ACCEPT \
+-p tcp -m multiport --dports $server_port_tcp -s $config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
--p tcp -m multiport --sports $server_port_tcp -d $net_ipv6_server -j ACCEPT \
+-p tcp -m multiport --sports $server_port_tcp -d $config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
@@ -12280,12 +12279,12 @@ $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT  \
--p tcp -m multiport --dports $server_port_tcp -s $net_ipv6_server -j ACCEPT \
+-p tcp -m multiport --dports $server_port_tcp -s $config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
--p tcp -m multiport --sports $server_port_tcp -d $net_ipv6_server -j ACCEPT \
+-p tcp -m multiport --sports $server_port_tcp -d $config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
@@ -12302,10 +12301,10 @@ if [ "$allow_separate_rules" != "$NULL" ]; then
 #### ipv4 legacy
 ####
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT  \
--p udp -m multiport --dports $server_port_udp -s $net_ipv4_server -j ACCEPT \
+-p udp -m multiport --dports $server_port_udp -s $config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -d $net_ipv4_server -j ACCEPT \
+-p udp -m multiport --sports $server_port_udp -d $config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 ####
 #### 
@@ -12313,10 +12312,10 @@ $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
 ####
 ####
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
--p udp -m multiport --dports $server_port_udp -s $net_ipv4_server -j ACCEPT \
+-p udp -m multiport --dports $server_port_udp -s $config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -d $net_ipv4_server -j ACCEPT \
+-p udp -m multiport --sports $server_port_udp -d $config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 ####
 ####
@@ -12324,10 +12323,10 @@ $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
 ####
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT  \
--p udp -m multiport --dports $server_port_udp -s $net_ipv6_server -j ACCEPT \
+-p udp -m multiport --dports $server_port_udp -s $config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -d $net_ipv6_server -j ACCEPT \
+-p udp -m multiport --sports $server_port_udp -d $config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 ####
 ####
@@ -12335,10 +12334,10 @@ $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT  \
--p udp -m multiport --dports $server_port_udp -s $net_ipv6_server -j ACCEPT \
+-p udp -m multiport --dports $server_port_udp -s $config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -d $net_ipv6_server -j ACCEPT \
+-p udp -m multiport --sports $server_port_udp -d $config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 ####
 ####
@@ -12363,20 +12362,20 @@ do
 #### ipv4 legacy
 ####
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT  \
--p tcp -m multiport --dports $one_tcp -s $net_ipv4_server -j ACCEPT \
+-p tcp -m multiport --dports $one_tcp -s $config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
--p tcp -m multiport --sports $one_tcp -d $net_ipv4_server -j ACCEPT \
+-p tcp -m multiport --sports $one_tcp -d $config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 #### 
 #### ipv4 nft
 ####
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
--p tcp -m multiport --dports $one_tcp -s $net_ipv4_server -j ACCEPT \
+-p tcp -m multiport --dports $one_tcp -s $config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
--p tcp -m multiport --sports $one_tcp -d $net_ipv4_server -j ACCEPT \
+-p tcp -m multiport --sports $one_tcp -d $config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
@@ -12384,10 +12383,10 @@ $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
 ####
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT  \
--p tcp -m multiport --dports $one_tcp -s $net_ipv6_server -j ACCEPT \
+-p tcp -m multiport --dports $one_tcp -s $config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
--p tcp -m multiport --sports $one_tcp -d $net_ipv6_server -j ACCEPT \
+-p tcp -m multiport --sports $one_tcp -d $config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
@@ -12395,10 +12394,10 @@ $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT  \
--p tcp -m multiport --dports $one_tcp -s $net_ipv6_server -j ACCEPT \
+-p tcp -m multiport --dports $one_tcp -s $config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
--p tcp -m multiport --sports $one_tcp -d $net_ipv6_server -j ACCEPT \
+-p tcp -m multiport --sports $one_tcp -d $config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
@@ -12417,20 +12416,20 @@ do
 #### ipv4 legacy
 ####
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A INPUT  \
--p udp -m multiport --dports $one_udp -s $net_ipv4_server -j ACCEPT \
+-p udp -m multiport --dports $one_udp -s $config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_legacy  $allow_use_ipv4 $command_iptables_legacy -A OUTPUT \
--p udp -m multiport --sports $one_udp -d $net_ipv4_server -j ACCEPT \
+-p udp -m multiport --sports $one_udp -d $config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 ####
 #### 
 #### ipv4 nft
 ####
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A INPUT \
--p udp -m multiport --dports $one_udp -s $net_ipv4_server -j ACCEPT \
+-p udp -m multiport --dports $one_udp -s $config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
--p udp -m multiport --sports $one_udp -d $net_ipv4_server -j ACCEPT \
+-p udp -m multiport --sports $one_udp -d $config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 ####
 ####
@@ -12438,10 +12437,10 @@ $allow_use_nft $allow_use_ipv4 $command_iptables_nft -A OUTPUT \
 ####
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT  \
--p udp -m multiport --dports $one_udp -s $net_ipv6_server -j ACCEPT \
+-p udp -m multiport --dports $one_udp -s $config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
--p udp -m multiport --sports $one_udp -d $net_ipv6_server -j ACCEPT \
+-p udp -m multiport --sports $one_udp -d $config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 ####
 ####
@@ -12449,10 +12448,10 @@ $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A INPUT  \
--p udp -m multiport --dports $one_udp -s $net_ipv6_server -j ACCEPT \
+-p udp -m multiport --dports $one_udp -s $config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
--p udp -m multiport --sports $one_udp -d $net_ipv6_server -j ACCEPT \
+-p udp -m multiport --sports $one_udp -d $config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 ####
 ####
