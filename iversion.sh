@@ -237,6 +237,8 @@ allow_output_uid="no"     ;
 config_string_algoritmo="kpm"
 config_string_denied=".fb.com,.facebook.com,xxx.html" ;
 config_string_allowed="one-string-that-like-how-a-passord,sourceforge.net"  ;
+config_gateway_ip4="0.0.0.0"    ;
+config_gateway_ip6="::1"    ;
 config_dmz_ip4=""     ;
 config_dmz_ip6=""     ;
 config_input_bandwidth="12512"     ;
@@ -2017,6 +2019,14 @@ echo "$title_md Permitir Otras Opciones, modificar con vacio o no "
 echo "allow_string_denied=no "
 echo "$title_md vacio para denegar cadena de cabecera, o no para no "
 echo "allow_string_allowed=no "
+echo "allow_mac_whitelist=no "
+echo "$title_md vacio para permitir DIRECCION-MAC excepcionales o no "
+echo "allow_mac_blacklist=no "
+echo "$title_md vacio para denegar DIRECCION-MAC excepcionales o no "
+echo "allow_net_whitelist=no "
+echo "$title_md vacio para permitir HOST/IP excepcionales o no"
+echo "allow_net_blacklist=no "
+echo "$title_md vacio para denegar HOST/IP excepcionales o no "
 echo "$title_md vacio para permitir cadena, o no para no "
 echo "allow_forward_ip4=no "
 echo "$title_md vacio para reenvios ip4, o no para no "
@@ -2050,14 +2060,7 @@ echo "allow_input_ping=no "
 echo "$title_md vacio para permitir RECIVIR PING o no "
 echo "allow_output_ping=no "
 echo "$title_md vacio para permitir ENVIAR PING o no "
-echo "allow_mac_whitelist=no "
-echo "$title_md vacio para permitir DIRECCION-MAC excepcionales o no "
-echo "allow_mac_blacklist=no "
-echo "$title_md vacio para denegar DIRECCION-MAC excepcionales o no "
-echo "allow_net_whitelist=no "
-echo "$title_md vacio para permitir HOST/IP excepcionales o no"
-echo "allow_net_blacklist=no "
-echo "$title_md vacio para denegar HOST/IP excepcionales o no "
+
 echo "allow_output_uid=no"
 echo "$title_md vacio permite salida de paquetes de un USUARIO excepcional o no "
 echo "allow_output_gid=no"
@@ -2078,13 +2081,6 @@ echo "config_string_denied=.fb.com,.facebook.com,xxx.html "
 echo "$title_md bloquea conexion con cadena de cabecera, si hay varios, seperados por comas "
 echo "config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net "
 echo "$title_md permite conexion con cadena de cabecera, si hay varios, seperados por comas "
-echo "config_dmz_ip4=192.168.1.7 "
-echo "$title_md servidor ip lan para otras redes esternas, nat prerouting "
-echo "config_dmz_ip6=d4:12:43:01:36:2e "
-echo "$title_md servidor ip lan para otras redes esternas, nat prerouting "
-echo "config_input_state=new,related,established "
-echo "$title_md modificar con vacio o new,related,established,untracked,invalid "
-echo "config_output_state=new,related,established "
 echo "$title_md modificar con vacio o new,related,established,untracked,invalid "
 echo "config_input_bandwidth=12512 "
 echo "$title_md maximo entrada de ancho de banda en kbit/sec para todos "
@@ -2102,6 +2098,17 @@ echo "config_net_whitelist=wesnoth.org,sf.net,deb.debian.org "
 echo "$title_md permitir estos HOST/IP excepcionales "
 echo "config_net_blacklist=facebook.com,www.facebook.com "
 echo "$title_md deniega estos HOST/IP excepcionales "
+echo "config_gateway_ip4=0.0.0.0"
+echo "$title_md servidor puerta de enlace para tu red. Ejemplo: 192.168.0.0/24"
+echo "config_gateway_ip6=::1"
+echo "$title_md server gateway for lan example: ::1"
+echo "config_dmz_ip4=192.168.1.7 "
+echo "$title_md servidor ip lan para otras redes esternas, nat prerouting "
+echo "config_dmz_ip6=d4:12:43:01:36:2e "
+echo "$title_md servidor ip lan para otras redes esternas, nat prerouting "
+echo "config_input_state=new,related,established "
+echo "$title_md modificar con vacio o new,related,established,untracked,invalid "
+echo "config_output_state=new,related,established "
 echo "config_output_uid=root "
 echo "$title_md permite salida de paquetes de este USUARIO excepcional "
 echo "config_output_gid=root "
@@ -2263,6 +2270,14 @@ echo "$title_md Allow Other Options,  modify with void, or no "
 echo "allow_string_denied=no "
 echo "$title_md void to if drop string, or no to no "
 echo "allow_string_allowed=no "
+echo "allow_mac_whitelist=no "
+echo "$title_md void to allow some exceptional MAC-ADDRESS or no "
+echo "allow_mac_blacklist=no "
+echo "$title_md void to drop some excepcional MAC-ADDRESS or no "
+echo "allow_net_whitelist=no "
+echo "$title_md void to allow some exceptional HOST/IP or no "
+echo "allow_net_blacklist=no "
+echo "$title_md void to drop some excepcional HOST/IP or no "
 echo "$title_md void to if allow string, or no to no "
 echo "allow_forward_ip4=no "
 echo "$title_md void to yes to forward ip4, or no to no "
@@ -2296,14 +2311,6 @@ echo "allow_input_ping=no "
 echo "$title_md void to allow RECIVE PING or no "
 echo "allow_output_ping=no "
 echo "$title_md void to allow SEND PING or no "
-echo "allow_mac_whitelist=no "
-echo "$title_md void to allow some exceptional MAC-ADDRESS or no "
-echo "allow_mac_blacklist=no "
-echo "$title_md void to drop some excepcional MAC-ADDRESS or no "
-echo "allow_net_whitelist=no "
-echo "$title_md void to allow some exceptional HOST/IP or no "
-echo "allow_net_blacklist=no "
-echo "$title_md void to drop some excepcional HOST/IP or no "
 echo "allow_output_uid=no "
 echo "$title_md void to allow excepcional USER or no "
 echo "allow_output_gid=no "
@@ -2324,14 +2331,6 @@ echo "config_string_denied=.fb.com,.facebook.com,xxx.html "
 echo "$title_md drop connection with header string, if several, comma separate "
 echo "config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net "
 echo "$title_md allow connection with header string, if several, comma separate "
-echo "config_dmz_ip4=192.168.1.7 "
-echo "$title_md ip server ip lan to other external nets, nat prerouting "
-echo "config_dmz_ip6=d4:12:43:01:36:2e "
-echo "$title_md ip server ip lan to other external nets, nat prerouting "
-echo "config_input_state=new,related,established "
-echo "$title_md void for all or new,related,established,untracked,invalid "
-echo "config_output_state=new,related,established "
-echo "$title_md void for all or new,related,established,untracked,invalid "
 echo "config_input_bandwidth=12512 "
 echo "$title_md max input bandwidth in kbits/sec for all "
 echo "config_output_bandwidth=512 "
@@ -2348,6 +2347,18 @@ echo "config_net_whitelist=wesnoth.org,sf.net,deb.debian.org "
 echo "$title_md allow this excepcitonal HOST/IP "
 echo "config_net_blacklist=facebook.com,www.facebook.com "
 echo "$title_md drop this excepcional HOST/IP )"
+echo "config_gateway_ip4=0.0.0.0"
+echo "$title_md server gateway for lan example: 192.168.0.0/24"
+echo "config_gateway_ip6=::1"
+echo "$title_md server gateway for lan example: ::1"
+echo "config_dmz_ip4=192.168.1.7 "
+echo "$title_md ip server ip lan to other external nets, nat prerouting "
+echo "config_dmz_ip6=d4:12:43:01:36:2e "
+echo "$title_md ip server ip lan to other external nets, nat prerouting "
+echo "config_input_state=new,related,established "
+echo "$title_md void for all or new,related,established,untracked,invalid "
+echo "config_output_state=new,related,established "
+echo "$title_md void for all or new,related,established,untracked,invalid "
 echo "config_output_uid=root "
 echo "$title_md allow out packages excepcional from this USER excepcional "
 echo "config_output_gid=root "
@@ -7130,7 +7141,13 @@ server_port_tcp="ssh" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -7138,10 +7155,6 @@ server_port_tcp="ssh" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -7225,7 +7238,13 @@ server_port_tcp="" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -7233,10 +7252,6 @@ server_port_tcp="" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -7322,7 +7337,13 @@ server_port_tcp="" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -7330,10 +7351,6 @@ server_port_tcp="" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -7417,7 +7434,13 @@ server_port_tcp="" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -7425,10 +7448,6 @@ server_port_tcp="" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -7512,7 +7531,13 @@ server_port_tcp="" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -7520,10 +7545,6 @@ server_port_tcp="" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -7607,7 +7628,13 @@ server_port_tcp="" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -7615,10 +7642,6 @@ server_port_tcp="" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -7665,7 +7688,13 @@ server_port_tcp="" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -7673,10 +7702,6 @@ server_port_tcp="" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -7761,7 +7786,13 @@ server_port_tcp="" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -7769,10 +7800,6 @@ server_port_tcp="" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -7857,7 +7884,13 @@ server_port_tcp="9091,51413" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -7865,10 +7898,6 @@ server_port_tcp="9091,51413" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -7953,7 +7982,13 @@ server_port_tcp="" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -7961,10 +7996,6 @@ server_port_tcp="" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -8049,7 +8080,13 @@ server_port_tcp="9000:9170" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -8057,10 +8094,6 @@ server_port_tcp="9000:9170" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -8150,7 +8183,13 @@ server_port_tcp="" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -8158,10 +8197,6 @@ server_port_tcp="" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -8262,7 +8297,13 @@ server_port_tcp="" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -8270,10 +8311,6 @@ server_port_tcp="" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -8358,7 +8395,13 @@ server_port_tcp="" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -8366,10 +8409,6 @@ server_port_tcp="" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -8454,7 +8493,13 @@ server_port_tcp="" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -8462,10 +8507,6 @@ server_port_tcp="" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -8551,7 +8592,13 @@ server_port_tcp="" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -8559,10 +8606,6 @@ server_port_tcp="" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -8648,7 +8691,13 @@ server_port_tcp="9000:9170" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -8656,10 +8705,6 @@ server_port_tcp="9000:9170" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -8744,7 +8789,13 @@ server_port_tcp="" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -8752,10 +8803,6 @@ server_port_tcp="" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -8840,7 +8887,13 @@ server_port_tcp="" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -8848,10 +8901,6 @@ server_port_tcp="" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -8936,7 +8985,13 @@ server_port_tcp="14950:15050" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -8944,10 +8999,6 @@ server_port_tcp="14950:15050" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -9032,7 +9083,13 @@ server_port_tcp="25000:35000" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -9040,10 +9097,6 @@ server_port_tcp="25000:35000" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -9128,7 +9181,13 @@ server_port_tcp="5555:5556" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -9136,10 +9195,6 @@ server_port_tcp="5555:5556" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -9224,7 +9279,13 @@ server_port_tcp="7396" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -9232,10 +9293,6 @@ server_port_tcp="7396" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -9320,7 +9377,13 @@ server_port_tcp="ssh,http,https,http-alt" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -9328,10 +9391,6 @@ server_port_tcp="ssh,http,https,http-alt" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -9416,7 +9475,13 @@ server_port_tcp="ssh,5900:5910" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -9424,10 +9489,6 @@ server_port_tcp="ssh,5900:5910" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -9512,7 +9573,13 @@ server_port_tcp="ssh,http,https,ftp,ftp-data,ftps,ftps-data" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -9520,10 +9587,6 @@ server_port_tcp="ssh,http,https,ftp,ftp-data,ftps,ftps-data" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -9608,7 +9671,13 @@ server_port_tcp="ssh,http,https,http-alt,3128" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -9616,10 +9685,6 @@ server_port_tcp="ssh,http,https,http-alt,3128" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -9710,7 +9775,13 @@ server_port_tcp="ssh,http,https,119,433,563" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -9718,10 +9789,6 @@ server_port_tcp="ssh,http,https,119,433,563" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -9824,7 +9891,13 @@ server_port_tcp="ssh,http,https,25,119,433,563,25:26,995,110,465,587,143,993" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -9832,10 +9905,6 @@ server_port_tcp="ssh,http,https,25,119,433,563,25:26,995,110,465,587,143,993" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -9920,7 +9989,13 @@ server_port_udp="ssh,ntp,domain,domain-s,ldap,636,137:139" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -9928,10 +10003,6 @@ server_port_udp="ssh,ntp,domain,domain-s,ldap,636,137:139" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -10016,7 +10087,13 @@ server_port_tcp="ssh,printer,ipp" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -10024,10 +10101,6 @@ server_port_tcp="ssh,printer,ipp" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -10112,7 +10185,13 @@ server_port_tcp="ssh" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -10120,10 +10199,6 @@ server_port_tcp="ssh" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -10209,7 +10284,13 @@ server_port_tcp="ssh,http,https,10000,3306,5432" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -10217,10 +10298,6 @@ server_port_tcp="ssh,http,https,10000,3306,5432" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -10307,7 +10384,13 @@ server_port_tcp="ssh,5060" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -10315,10 +10398,6 @@ server_port_tcp="ssh,5060" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -10403,7 +10482,13 @@ server_port_tcp="ssh,64738" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -10411,10 +10496,6 @@ server_port_tcp="ssh,64738" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -10503,7 +10584,13 @@ server_port_tcp="ssh,30033,10011,10022" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -10511,10 +10598,6 @@ server_port_tcp="ssh,30033,10011,10022" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -10603,7 +10686,13 @@ server_port_tcp="ssh,5432,3306,3360" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -10611,10 +10700,6 @@ server_port_tcp="ssh,5432,3306,3360" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -10699,7 +10784,13 @@ server_port_tcp="ssh,ircs-u,ircd" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -10707,10 +10798,6 @@ server_port_tcp="ssh,ircs-u,ircd" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -10795,7 +10882,13 @@ server_port_tcp="ssh" ;
 ####
 # config_string_denied=.fb.com,.facebook.com,xxx.html 
 # config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
-# config_dmz_ip4=192.168.1.7 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
 # config_dmz_ip6=d4:12:43:01:36:2e 
 # config_input_state=new,related,established 
 # config_output_state=new,related,established 
@@ -10803,10 +10896,6 @@ server_port_tcp="ssh" ;
 # config_output_bandwidth=512 
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
-# config_mac_whitelist=d4:12:43:01:36:2e 
-# config_mac_blacklist=d4:12:43:01:36:2e 
-# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
-# config_net_blacklist=facebook.com,www.facebook.com 
 # config_output_uid=root 
 # config_output_gid=root 
 # config_others_protocols=icmp,igmp 
@@ -12688,21 +12777,21 @@ if [ "$allow_gateway_ip4" == "$NULL" ]; then
 ####
 $allow_use_nft    $allow_use_ipv4    $allow_gateway_ip4 \
 $command_iptables_nft -t nat \
--A POSTROUTING -j MASQUERADE \
+-A POSTROUTING -j MASQUERADE -s $config_gateway_ip4 \
 -m comment --comment "ip gateway" &>/dev/null
 $allow_use_legacy $allow_use_ipv4 $allow_gateway_ip4 \
 $command_iptables_legacy -t nat \
--A POSTROUTING -j MASQUERADE \
+-A POSTROUTING -j MASQUERADE -s $config_gateway_ip4 \
 -m comment --comment "ip gateway" &>/dev/null
 ####
 ####
 $allow_use_nft $allow_use_ipv4 \
 $allow_gateway_ip4 $command_iptables_nft -t nat \
--A PREROUTING -j ACCEPT \
+-A PREROUTING -j ACCEPT -d $config_gateway_ip4 \
 -m comment --comment "ip gateway"  &>/dev/null
 $allow_use_legacy $allow_use_ipv4 \
 $allow_gateway_ip4 $command_iptables_legacy -t nat \
--A PREROUTING -j ACCEPT \
+-A PREROUTING -j ACCEPT -d $config_gateway_ip4 \
 -m comment --comment "ip gateway" &>/dev/null
 ####
 fi
@@ -12713,21 +12802,21 @@ if [ "$allow_gateway_ip6" == "$NULL" ]; then
 ####
 $allow_use_nft $allow_use_ipv6 $allow_gateway_ip6 \
 $command_ip6tables_nft -t nat \
--A POSTROUTING -j MASQUERADE \
+-A POSTROUTING -j MASQUERADE -s $config_gateway_ip6 \
 -m comment --comment "ip gateway" &>/dev/null
 $allow_use_legacy $allow_use_ipv6 $allow_gateway_ip6 \
 $command_ip6tables_legacy -t nat \
--A POSTROUTING -j MASQUERADE \
+-A POSTROUTING -j MASQUERADE -s $config_gateway_ip6 \
 -m comment --comment "ip gateway" &>/dev/null
 ####
 ####
 $allow_use_nft $allow_use_ipv6 $allow_gateway_ip6 \
 $command_ip6tables_nft -t nat \
--A PREROUTING -j ACCEPT \
+-A PREROUTING -j ACCEPT -d $config_gateway_ip6 \
 -m comment --comment "ip gateway" &>/dev/null
 $allow_use_legacy $allow_use_ipv6 $allow_gateway_ip6 \
 $command_ip6tables_legacy -t nat \
--A PREROUTING -j ACCEPT \
+-A PREROUTING -j ACCEPT -d $config_gateway_ip6 \
 -m comment --comment "ip gatway" &>/dev/null
 ####
 fi
