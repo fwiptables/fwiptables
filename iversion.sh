@@ -529,10 +529,10 @@ allow_show_time="no"                      ## fwiptables-file-default ## void or 
 ####       #### english: void for automatic command #### spanish: vacio para comando automatico
 #### favorite_text_editor        ... for example nano
 favorite_text_editor=""                    ## fwiptables-file-default ## or void for automatic or specify command
-#### favorite_text_dialog        .... or dialog or whiptail
-favorite_text_dialog=""                    ## fwiptables-file-default ## or void for automatic or specify command
-#### favorite_graphicall_dialog  zenity
-favorite_graphicall_dialog=""               ## fwiptables-file-default ## or void for automatic or specify command
+#### favorite_realpath_textdialog        .... or dialog or whiptail
+favorite_realpath_textdialog=""                    ## fwiptables-file-default ## or void for automatic or specify command
+#### favorite_realpath_graphicalldialog  zenity
+favorite_realpath_graphicalldialog=""               ## fwiptables-file-default ## or void for automatic or specify command
 #### favorite_text_brwoser       ... for example elinks
 favorite_text_browser=""                    ## fwiptables-file-default ## or void for automatic or specify command
 #### favorite_date_command       ... for example ntpdate
@@ -664,11 +664,11 @@ fi
 #### :rutina-inicial-favorite-text-dialog:
 ####
 ####
-if [ "$favorite_text_dialog" == "$NULL" ]; then
+if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
 if [ "$command_dialog"  != "$NULL" ]  ; then  
-favorite_text_dialog="$command_dialog"    ; fi
+favorite_realpath_textdialog="$command_dialog"    ; fi
 if [ "$command_whiptail" != "$NULL" ] ; then  
-favorite_text_dialog="$command_whiptail"  ; fi
+favorite_realpath_textdialog="$command_whiptail"  ; fi
 fi
 ####
 ####
@@ -678,11 +678,11 @@ fi
 #### :rutina-inicial-favorite-graphicall-dialog:
 ####
 ####
-if [ "$favorite_graphicall_dialog" == "$NULL" ]; then
-if [ "$command_yad"     != "$NULL" ] ; then  
-favorite_graphicall_dialog="$command_yad"      ; fi
+if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
 if [ "$command_zenity"  != "$NULL" ] ; then  
-favorite_graphicall_dialog="$command_zenity"   ; fi
+favorite_realpath_graphicalldialog="$command_zenity"   ; fi
+if [ "$command_yad"     != "$NULL" ] ; then  
+favorite_realpath_graphicalldialog="$command_yad"      ; fi
 fi
 ####
 ####
@@ -886,22 +886,42 @@ esac
 ####
 ####
 case "$first_option" in
+"cli-menu")
+favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ;;
+"gui-menu")
+favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;;
 "cli-dialog")
-favorite_text_dialog="$command_dialog" ; first_option="cli" ;;
+favorite_realpath_textdialog="$command_dialog" ; 
+favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ;
+first_option="cli" ;;
 "cli-whiptail")
-favorite_text_dialog="$command_whiptail" ; first_option="cli" ;;
+favorite_realpath_textdialog="$command_whiptail" ;
+favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ; 
+first_option="cli" ;;
 "gui-zenity")
-favorite_graphicall_dialog="$command_zenity" ; first_option="gui" ;;
+favorite_realpath_graphicalldialog="$command_zenity" ; 
+favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ; 
+first_option="gui" ;;
 "gui-yad")
-favorite_graphicall_dialog="$command_yad" ; first_option="gui" ;;
+favorite_realpath_graphicalldialog="$command_yad" ; 
+favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ; 
+first_option="gui" ;;
 "cli-menu-dialog")
-favorite_text_dialog="$command_dialog" ; first_option="cli-menu" ;;
+favorite_realpath_textdialog="$command_dialog" ; 
+favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ; 
+first_option="cli-menu" ;;
 "cli-menu-whiptail")
-favorite_text_dialog="$command_whiptail" ; first_option="cli-menu" ;;
+favorite_realpath_textdialog="$command_whiptail" ;
+favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ; 
+first_option="cli-menu" ;;
 "gui-menu-zenity")
-favorite_graphicall_dialog="$command_zenity" ; first_option="gui-menu" ;;
-"gui-menu-yad") 
-favorite_graphicall_dialog="$command_yad" ; first_option="gui-menu" ;;
+favorite_realpath_graphicalldialog="$command_zenity" ;
+favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
+first_option="gui-menu" ;;
+"gui-menu-yad")
+favorite_realpath_graphicalldialog="$command_yad" ; 
+favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
+first_option="gui-menu" ;;
 esac
 ####
 ####
@@ -909,6 +929,7 @@ esac
 ####
 ####
 case "$first_option" in
+"custom") first_option="load-custom" ;;
 "option-examples") first_option="examples-option" ;;
 "geoip") first_option="expert-show-geoip" ;;
 "regen") first_option="config-regen" ;;
@@ -921,9 +942,9 @@ case "$first_option" in
 "mini-options") first_option="list-options" ;;
 "options-mini") first_option="list-options" ;;
 "sentlog") first_option="filelog" ;;
-"cfg") first_option="names-config" ;;
-"cfg-custom") first_option="custom" ;;
-"custom-cfg") first_option="custom" ;;
+"cfg") first_option="names-custom" ;;
+"cfg-custom") first_option="load-custom" ;;
+"custom-cfg") first_option="load-custom" ;;
 "list-fw") first_option="names" ;;
 "date") first_option="ntpdate-client" ;;
 "ram-free") first_option="free" ;;
@@ -943,50 +964,50 @@ esac
 ####
 ####
 case "$first_option" in
-"wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|\
-"nueva-mini-config"|"nueva-completa-config"|"preferences-modify"|\
-"modify-config"|"expert-wpa-modify"|"expert-wpa-new")
+"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
+"modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
 $cmd_realpath config-regen &> /dev/null ;; esac
 ####
 ####
 if [ "$first_option" == "cli" ]; then 
 case "$second_option" in
-"wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|\
-"nueva-mini-config"|"nueva-completa-config"|"preferences-modify"|\
-"modify-config"|"expert-wpa-modify"|"expert-wpa-new")
+"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
+"modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
 $cmd_realpath config-regen &> /dev/null 
 $cmd_realpath $second_option $third_option ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "gui" ]; then 
 case "$second_option" in
-"wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|\
-"nueva-mini-config"|"nueva-completa-config"|"preferences-modify"|\
-"modify-config"|"expert-wpa-modify"|"expert-wpa-new")
+"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
+"modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
 $cmd_realpath config-regen  &> /dev/null ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "log" ]; then 
 case "$second_option" in
-"wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|\
-"nueva-mini-config"|"nueva-completa-config"|"preferences-modify"|\
-"modify-config"|"expert-wpa-modify"|"expert-wpa-new")
+"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
+"modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
 $cmd_realpath config-regen  &> /dev/null ; exit ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "pdf" ]; then 
 case "$second_option" in
-"wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|\
-"nueva-mini-config"|"nueva-completa-config"|"preferences-modify"|\
-"modify-config"|"expert-wpa-modify"|"expert-wpa-new")
+"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
+"modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
 $cmd_realpath config-regen  &> /dev/null ; exit ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "null" ]; then 
 case "$second_option" in
-"wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|\
-"nueva-mini-config"|"nueva-completa-config"|"preferences-modify"|\
-"modify-config"|"expert-wpa-modify"|"expert-wpa-new")
+"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
+"modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
 $cmd_realpath config-regen  &> /dev/null ; exit ;; esac; fi
 ####
 ####
@@ -1021,10 +1042,10 @@ exit; fi
 ####
 if [ "$first_option" == "cli" ]
 then echo "$head_waiting_cli"
-if [ "$favorite_text_dialog" == "$NULL" ]; then 
+if [ "$favorite_realpath_textdialog" == "$NULL" ]; then 
 echo "$text_md [ info ] Please install or dialog or whiptail to work with cli";  exit; fi
 cmd_inicial="$($cmd_realpath $second_option $third_option)"
-$favorite_text_dialog --clear --notags --title \
+$favorite_realpath_textdialog --clear --notags --title \
 "Cli Menu With $cmd_version" --msgbox "$cmd_inicial" 0 0
 exit ; fi
 ####
@@ -1069,6 +1090,13 @@ exit ; fi
 ####
 ####
 #### :rutina-final-alias-campus:
+##########     english: favorites         ##########
+##########     spanish: favoritos         ##########
+####
+####
+
+####
+####
 ##########     english: autolog:         ##########
 ##########     spanish: autoguardado     ##########
 #### :rutina-inicial-allow-autolog:
@@ -1132,12 +1160,12 @@ exit; fi
 ####
 #### to launch graphicall if X
 # if [ "$first_option" == "$NULL" ] && [ "$without_first_option" == "$NULL" ] ; then 
-# if [ "$X11_OR_WAYLAND" == "x11" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
+# if [ "$X11_OR_WAYLAND" == "x11" ] && [ "$favorite_realpath_graphicalldialog" != "$NULL" ] ; then
 # echo "$title_md forward to graphicall gui-shell"
-# $cmd_realpath gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
-# if [ "$X11_OR_WAYLAND" == "wayland" ] && [ "$favorite_graphicall_dialog" != "$NULL" ] ; then
+# $cmd_realpath gui-shell-$(basename $favorite_realpath_graphicalldialog) ; exit ; fi
+# if [ "$X11_OR_WAYLAND" == "wayland" ] && [ "$favorite_realpath_graphicalldialog" != "$NULL" ] ; then
 # echo "$title_md forward to graphicall gui-shell"
-# $cmd_realpath gui-shell-$(basename $favorite_graphicall_dialog) ; exit ; fi
+# $cmd_realpath gui-shell-$(basename $favorite_realpath_graphicalldialog) ; exit ; fi
 # without_first_option="options" ; $cmd_realpath $without_first_option ; 
 # exit ; fi
 ####
@@ -1419,8 +1447,8 @@ echo "favorite_text_browser=                              ## or void for automat
 echo "favorite_date_command=                              ## or void for automatic or specify command"
 echo "$title_md"
 echo "$title_md # default text-cli and graphicall-gui"
-echo "favorite_text_dialog=                               ## or void for automatic or specify command"
-echo "favorite_graphicall_dialog=                         ## or void for automatic or specify command"
+echo "favorite_realpath_textdialog=                               ## or void for automatic or specify command"
+echo "favorite_realpath_graphicalldialog=                         ## or void for automatic or specify command"
 echo "$title_md"
 echo "$title_md # default discover ip and speed ip"
 echo "serverip_discover_ipv4=https://ifconfig.co/ip       ## default http://ifconfig.co/ip"
@@ -1653,8 +1681,8 @@ echo "$text_md File filelog:            $default_filelog"
 echo
 echo "$title_md [ Automatic interfaces  ]"
 echo "$text_md Interface txt:           $command_bash"
-echo "$text_md Interface cli:           $favorite_text_dialog"
-echo "$text_md Interface gui:           $favorite_graphicall_dialog"
+echo "$text_md Interface cli:           $favorite_realpath_textdialog"
+echo "$text_md Interface gui:           $favorite_realpath_graphicalldialog"
 echo 
 echo "$title_md [ Automatic iptables ]"
 echo "$text_md iptables legacy:         $command_iptables_legacy"
@@ -1685,7 +1713,7 @@ echo "$title_md [ several examples *without optional otuput* ]   "
 echo "$text_md"
 echo "$text_md    $cmd_realpath names                    | \
 List firewall saved  "
-echo "$text_md    $cmd_realpath names-config             | \
+echo "$text_md    $cmd_realpath names-custom             | \
 List configs saved                         "
 echo "$text_md    $cmd_realpath speed-ip4                | \
 get info about speed with internet ipv4    "
@@ -2444,9 +2472,9 @@ echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 lis
 echo "$text_md listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6      "
 echo "$text_md listn-security4 listn-security6                                              "
 echo "$title_md  [ firewall-customfw ]                                                      "
-echo "$text_md custom eraserules off-line all-permisive wizard-mini wizard-full             "
-echo "$text_md new-full-config nueva-completa-config new-mini-config nueva-mini-config      "
-echo "$text_md clone-systemfw show-config modify-config del-config names-config             "
+echo "$text_md eraserules off-line all-permisive wizard-mini wizard-full clone-systemfw     "
+echo "$text_md new-full-custom nueva-completa-custom new-mini-custom nueva-mini-custom      "
+echo "$text_md load-custom show-custom modify-custom del-custom names-custom                "
 echo "$title_md  [ firewall-systemfw ]                                                      "
 echo "$text_md client-basic client-web client-git client-ipp client-irc client-vnc          "
 echo "$text_md client-news client-vpn client-torrent client-vpn client-ftp client-proxy     "
@@ -2496,12 +2524,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-code:
-##########    english: names-config: list some config       ##########
-##########    spanish: names-config: lista alguna config    ##########
-#### :rutina-inicial-names-config:
+##########    english: names-custom: list some config       ##########
+##########    spanish: names-custom: lista alguna config    ##########
+#### :rutina-inicial-names-custom:
 ####
 ####
-if [ "$first_option" == "names-config" ]; then 
+if [ "$first_option" == "names-custom" ]; then 
 echo "$title_md [ $first_option ] [ List configs cfg ] "
 echo "$title_md [ info ] [ list configs files in cfg format ]"
 echo "$title_md [ info ] [ folder ] [ $directory_config ]"
@@ -2515,11 +2543,11 @@ echo "$title_md"
 echo "$title_md [ User files ]"
 $command_ls -1 $directory_config/ | $command_grep -E -iv $default_files_cfg
 echo "$title_md"
-echo "$title_md [ OK CFG FILES NAMES ] [ Use: $cmd_realpath custom file-cfg ]"
+echo "$title_md [ OK CFG FILES NAMES ] [ Use: $cmd_realpath load-custom file-cfg ]"
 exit; fi
 ####
 ####
-#### :rutina-final-names-config:
+#### :rutina-final-names-custom:
 ##########    english: text-pause: do pause     ##########
 ##########    spanish: text-pause: hace pausa   ##########
 #### :rutina-inicial-text-pause:
@@ -2647,21 +2675,21 @@ echo "$text_md "
 echo "$title_md | firewall-customfw | $cmd_realpath firewall-customfw |"
 echo "$text_md"
 echo "$text_md eraserules . remove all firewall rules"
-echo "$text_md custom . launch a one one-file saved custom"
+echo "$text_md load-custom . launch a one one-file saved custom"
 echo "$text_md clone-systemfw . clone a static firewall predesignated"
 echo "$text_md wizard-mini . launch a one mini wizard to run iptables rules"
 echo "$text_md wizard-full . launch a one full wizard to run iptables rules"
 echo "$text_md off-line . launch a one firewall only for localhost"
 echo "$text_md all-permisive . launch a one firewall with all permisive"
-echo "$text_md new-full-config . create new full config in english"
-echo "$text_md new-mini-config . create new mini config in english"
-echo "$text_md nueva-completa-config . create new full config in spanish"
-echo "$text_md nueva-mini-config . create new full config in spanish"
+echo "$text_md new-full-custom . create new full config in english"
+echo "$text_md new-mini-custom . create new mini config in english"
+echo "$text_md nueva-completa-custom . create new full config in spanish"
+echo "$text_md nueva-mini-custom . create new full config in spanish"
 echo "$text_md config-regen . regen the templates"
-echo "$text_md show-config . show config-file choosed"
-echo "$text_md modify-config . modify config-file choosed"
-echo "$text_md del-config . delete config-file choosed"
-echo "$text_md names-config . show the names for all config-files"
+echo "$text_md show-custom . show config-file choosed"
+echo "$text_md modify-custom . modify config-file choosed"
+echo "$text_md del-custom . delete config-file choosed"
+echo "$text_md names-custom . show the names for all config-files"
 echo "$text_md "
 exit; fi
 ####
@@ -4006,8 +4034,8 @@ $cmd_realpath code $second_option | $command_grep -E "client_|server_|config_|al
 if [ -s "$directory_config/$archivo" ] ; then 
 cat $directory_config/$archivo ;
 echo "$title_md [ _ok_ ] [ Created :                           $archivo   ]"
-echo "$title_md [ info ] [ Modify  :  fwiptables modify-config $archivo   ]"
-echo "$title_md [ info ] [ Launch  :  fwiptables custom        $archivo   ]"
+echo "$title_md [ info ] [ Modify  :  fwiptables modify-custom $archivo   ]"
+echo "$title_md [ info ] [ Launch  :  fwiptables load-custom        $archivo   ]"
 else rm $directory_config/$archivo
 echo "$title_md [ info ] choose one valid systemfw to clone"
 echo "$title_md [ fail ] config no done $archivo" ; fi
@@ -4015,17 +4043,17 @@ exit; fi
 ####
 ####
 #### :rutina-final-clone-systemfw:
-##########    english: new-full-config: new-full-config option to create new configs   ##########
-##########    spanish: new-full-config: new-full-config para cear nuevas config        ##########
-#### :rutina-inicial-new-full-config:
+##########    english: new-full-custom: new-full-custom option to create new configs   ##########
+##########    spanish: new-full-custom: new-full-custom para cear nuevas config        ##########
+#### :rutina-inicial-new-full-custom:
 ####
 ####
-if [ "$first_option" == "new-full-config" ] && [ "$second_option" == "$NULL" ]  ; then 
-echo "$text_md [ info ] [ usage: ] [ $cmd_realpath new-full-config config-new ]"
+if [ "$first_option" == "new-full-custom" ] && [ "$second_option" == "$NULL" ]  ; then 
+echo "$text_md [ info ] [ usage: ] [ $cmd_realpath new-full-custom config-new ]"
 exit; fi
 ####
 ####
-if [ "$first_option" == "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then 
+if [ "$first_option" == "new-full-custom" ] && [ "$second_option" != "$NULL" ] ; then 
 archivo="$second_option"
 cp "$defaultfullcfg_eng" "$directory_config/$archivo"
 $favorite_text_editor $directory_config/$archivo
@@ -4035,18 +4063,18 @@ echo " [ _ok_ ] created file $archivo"
 exit; fi
 ####
 ####
-#### :rutina-final-new-full-config:
-##########    english: nueva-completa-config: create new configs                             ##########
-##########    spanish: nueva-completa-config: nueva-completa-config para cear nuevas config  ##########
-#### :rutina-inicial-nueva-completa-config:
+#### :rutina-final-new-full-custom:
+##########    english: nueva-completa-custom: create new configs                             ##########
+##########    spanish: nueva-completa-custom: nueva-completa-custom para cear nuevas config  ##########
+#### :rutina-inicial-nueva-completa-custom:
 ####
 ####
-if [ "$first_option" == "nueva-completa-config" ] && [ "$second_option" == "$NULL" ]  ; then 
-echo "$text_md [ info ] [ usage: ] [ $cmd_realpath nueva-completa-config config-nueva ]"
+if [ "$first_option" == "nueva-completa-custom" ] && [ "$second_option" == "$NULL" ]  ; then 
+echo "$text_md [ info ] [ usage: ] [ $cmd_realpath nueva-completa-custom config-nueva ]"
 exit; fi
 ####
 ####
-if [ "$first_option" == "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then 
+if [ "$first_option" == "nueva-completa-custom" ] && [ "$second_option" != "$NULL" ] ; then 
 archivo="$second_option"
 cp "$defaultfullcfg_spa" "$directory_config/$archivo"
 $favorite_text_editor $directory_config/$archivo
@@ -4056,18 +4084,18 @@ echo " [ _ok_ ] created file $archivo"
 exit; fi
 ####
 ####
-#### :rutina-final-nueva-completa-config:
-##########    english: new-mini-config: create new configs   ##########
+#### :rutina-final-nueva-completa-custom:
+##########    english: new-mini-custom: create new configs   ##########
 ##########    spanish: new--mini config: cea nuevas config   ##########
-#### :rutina-inicial-new-mini-config:
+#### :rutina-inicial-new-mini-custom:
 ####
 ####
-if [ "$first_option" == "new-mini-config" ] && [ "$second_option" == "$NULL" ]  ; then 
-echo "$text_md [ info ] [ usage: ] [ $cmd_realpath new-mini-config config-new ]"
+if [ "$first_option" == "new-mini-custom" ] && [ "$second_option" == "$NULL" ]  ; then 
+echo "$text_md [ info ] [ usage: ] [ $cmd_realpath new-mini-custom config-new ]"
 exit; fi
 ####
 ####
-if [ "$first_option" == "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then 
+if [ "$first_option" == "new-mini-custom" ] && [ "$second_option" != "$NULL" ] ; then 
 archivo="$second_option"
 cp "$defaultminicfg_eng" "$directory_config/$archivo"
 $favorite_text_editor $directory_config/$archivo
@@ -4077,18 +4105,18 @@ echo " [ _ok_ ] created file $archivo"
 exit; fi
 ####
 ####
-#### :rutina-final-new-mini-config:
-##########    english: nueva-mini-config: create new configs   ##########
-##########    spanish: nueva-mini-config: crea nuevas config   ##########
-#### :rutina-inicial-nueva-mini-config:
+#### :rutina-final-new-mini-custom:
+##########    english: nueva-mini-custom: create new configs   ##########
+##########    spanish: nueva-mini-custom: crea nuevas config   ##########
+#### :rutina-inicial-nueva-mini-custom:
 ####
 ####
-if [ "$first_option" == "nueva-mini-config" ] && [ "$second_option" == "$NULL" ]  ; then 
-echo "$text_md [ info ] [ usage: ] [ $cmd_realpath nueva-mini-config config-nueva ]"
+if [ "$first_option" == "nueva-mini-custom" ] && [ "$second_option" == "$NULL" ]  ; then 
+echo "$text_md [ info ] [ usage: ] [ $cmd_realpath nueva-mini-custom config-nueva ]"
 exit; fi
 ####
 ####
-if [ "$first_option" == "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then 
+if [ "$first_option" == "nueva-mini-custom" ] && [ "$second_option" != "$NULL" ] ; then 
 archivo="$second_option"
 cp "$defaultminicfg_spa" "$directory_config/$archivo"
 $favorite_text_editor $directory_config/$archivo
@@ -4098,42 +4126,42 @@ echo " [ _ok_ ] created file $archivo"
 exit; fi
 ####
 ####
-#### :rutina-final-nueva-mini-config:
-##########    english: modify-config: modify a one config.cfg        ##########
-##########    spanish: modify-config: modify una configuracion.cfg   ##########
-#### :rutina-inicial-modify-config:
+#### :rutina-final-nueva-mini-custom:
+##########    english: modify-custom: modify a one config.cfg        ##########
+##########    spanish: modify-custom: modify una configuracion.cfg   ##########
+#### :rutina-inicial-modify-custom:
 ####
 ####
-if [ "$first_option" == "modify-config" ]; then 
+if [ "$first_option" == "modify-custom" ]; then 
 ####
 ###
 if [ ! -f "$directory_config/$second_option" ] ; then $nada
-$cmd_realpath names-config
-echo "$text_md [ info ] [ usage: ] [ $cmd_realpath modify-config config-existent ]"
+$cmd_realpath names-custom
+echo "$text_md [ info ] [ usage: ] [ $cmd_realpath modify-custom config-existent ]"
 exit; fi
 ####
 ####
 if [ -f "$directory_config/$second_option" ] ; then $nada
 cp "$directory_config/$second_option" "$directory_temporal/$second_option" &> /dev/null
 $favorite_text_editor "$directory_config/$second_option"
-echo "$title_md [ _ok_ ] [ Custom file $second_option ]"
+echo "$title_md [ _ok_ ] [ load-custom file $second_option ]"
 clear; fi
 ####
 ####
 clear ; exit ; fi
 ####
 ####
-#### :rutina-final-modify-config:
-##########    english: show-config: show a one config          ##########
-##########    spanish: show-config: muestra una configuracion  ##########
-#### :rutina-inicial-show-config:
+#### :rutina-final-modify-custom:
+##########    english: show-custom: show a one config          ##########
+##########    spanish: show-custom: muestra una configuracion  ##########
+#### :rutina-inicial-show-custom:
 ####
 ####
-if [ "$first_option" == "show-config" ] ; then 
+if [ "$first_option" == "show-custom" ] ; then 
 ####
 ####
 if [ ! -f "$directory_config"/"$second_option" ] ; then 
-echo "$title_md [ info ] [ Usage: $cmd_realpath show-config config-cfg ]" ; exit; fi
+echo "$title_md [ info ] [ Usage: $cmd_realpath show-custom config-cfg ]" ; exit; fi
 ####
 ####
 if [ -f "$directory_config"/"$second_option" ] ; then 
@@ -4144,17 +4172,17 @@ echo  ; exit ; fi
 exit; fi
 ####
 ####
-#### :rutina-final-show-config:
-##########    english: del-config: delete a old config               ##########
-##########    spanish: del-config: elimina una vieja configuracion   ##########
-#### :rutina-inicial-del-config:
+#### :rutina-final-show-custom:
+##########    english: del-custom: delete a old config               ##########
+##########    spanish: del-custom: elimina una vieja configuracion   ##########
+#### :rutina-inicial-del-custom:
 ####
 ####
-if [ "$first_option" == "del-config" ]; then 
+if [ "$first_option" == "del-custom" ]; then 
 ####
 ####
 if [ ! -f $directory_config/$second_option ] ; then
-echo "$title_md [ info ] [ usage: ] [ $cmd_realpath del-config config-old ]"
+echo "$title_md [ info ] [ usage: ] [ $cmd_realpath del-custom config-old ]"
 exit ; fi
 ####
 ####
@@ -4167,7 +4195,7 @@ echo  ; exit ; fi
 exit ; fi
 ####
 ####
-#### :rutina-final-del-config:
+#### :rutina-final-del-custom:
 ##########    english: names-control: file list whith rules in iptables format          ##########
 ##########    spanish: names-control: lista de archivos con reglas en formato iptables  ##########
 #### :rutina-inicial-names-control:
@@ -4752,10 +4780,10 @@ $cmd_realpath config-regen
 cp "$defaultminicfg_eng" "$directory_temporal/$file_installed-$archivo"
 $favorite_text_editor "$directory_temporal/$file_installed-$archivo"
 clear
-$favorite_text_dialog --clear --title "Run this wizard" \
+$favorite_realpath_textdialog --clear --title "Run this wizard" \
 --yesno "Run this wizard" 0 0 && clear \
 && cp "$directory_temporal/$file_installed-$archivo" \
-"$directory_config/$archivo" && $cmd_realpath custom $archivo || clear
+"$directory_config/$archivo" && $cmd_realpath load-custom $archivo || clear
 ####
 ####
 exit; fi
@@ -4773,10 +4801,10 @@ $cmd_realpath config-regen
 cp "$defaultfullcfg_eng" "$directory_temporal/$file_installed-$archivo"
 $favorite_text_editor "$directory_temporal/$file_installed-$archivo"
 clear
-$favorite_text_dialog --clear --title "Run this wizard" --yesno \
+$favorite_realpath_textdialog --clear --title "Run this wizard" --yesno \
 "Run this wizard" 0 0 && clear && \
 cp "$directory_temporal/$file_installed-$archivo" "$directory_config/$archivo" \
-&& $cmd_realpath custom $archivo || clear 
+&& $cmd_realpath load-custom $archivo || clear 
 ####
 ####
 exit; fi
@@ -5151,94 +5179,94 @@ then echo $head_waiting_gui
 case $second_option in
 #### 
 #### 
-"new-mini-config")
+"new-mini-custom")
 cp "$defaultminicfg_eng" "$directory_temporal/$file_installed-$third_option"
-$favorite_graphicall_dialog --text-info \
+$favorite_realpath_graphicalldialog --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$third_option" \
 --editable --title="NEW MINI CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$favorite_graphicall_dialog --forms \
+$favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="OK new config file: $third_option \
-AND launch: $cmd_realpath custom $third_option" ; exit
+AND launch: $cmd_realpath load-custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$favorite_graphicall_dialog --forms \
+$favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
-"new-full-config")
+"new-full-custom")
 cp "$defaultfullcfg_eng" "$directory_temporal/$file_installed-$third_option"
-$favorite_graphicall_dialog --text-info \
+$favorite_realpath_graphicalldialog --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$third_option" \
 --editable --title="NEW FULL CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$favorite_graphicall_dialog --forms \
+$favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="OK new config file: $third_option \
-AND launch: $cmd_realpath custom $third_option" ; exit
+AND launch: $cmd_realpath load-custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$favorite_graphicall_dialog --forms \
+$favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
-"nueva-mini-config")
+"nueva-mini-custom")
 cp "$defaultminicfg_spa" "$directory_temporal/$file_installed-$third_option"
-$favorite_graphicall_dialog  --text-info \
+$favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$third_option" \
 --editable --title="NUEVA MINI CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$favorite_graphicall_dialog  --forms \
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="OK new config file: $third_option \
-AND launch: $cmd_realpath custom $third_option" ; exit
+AND launch: $cmd_realpath load-custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$favorite_graphicall_dialog  --forms \
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
-"nueva-completa-config")
+"nueva-completa-custom")
 cp "$defaultfullcfg_spa" "$directory_temporal/$file_installed-$third_option"
-$favorite_graphicall_dialog  --text-info \
+$favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$third_option" \
 --editable --title="NUEVA COMPLETA CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$favorite_graphicall_dialog  --forms \
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="OK new config file: $third_option \
-AND launch: $cmd_realpath custom $third_option" ; exit
+AND launch: $cmd_realpath load-custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$favorite_graphicall_dialog  --forms \
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
-"modify-config")
+"modify-custom")
 if [ ! -f "$directory_config/$third_option" ]
-then $favorite_graphicall_dialog  --forms \
+then $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="file not found: $third_option" ; exit ; fi 
 cp "$directory_config/$third_option" "$directory_temporal/$file_installed-$third_option"
-$favorite_graphicall_dialog  --text-info \
+$favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$third_option" \
 --editable --title="MODIFY CONFIG" 1> "$directory_config/$third_option"
 if [ -s "$directory_config/$third_option" ]; then $nada ; 
-$favorite_graphicall_dialog  --forms \
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="OK. file: $third_option"
 else cp "$directory_temporal/$file_installed-$third_option" "$directory_config/$third_option"
-$favorite_graphicall_dialog --forms \
+$favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="Canceled. file: $third_option"; fi
 ;;
@@ -5253,27 +5281,27 @@ $cmd_realpath gui expert-wpa-modify $third_option
 ####
 "expert-wpa-modify")
 if [ ! -f "$directory_wpa/wpaconfig_$third_option" ]
-then $favorite_graphicall_dialog  --forms \
+then $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="file not found: wpaconfig_$third_option" ; exit ; fi 
 cp "$directory_wpa/wpaconfig_$third_option" "$directory_temporal/$file_installed-$third_option"
-$favorite_graphicall_dialog  --text-info \
+$favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$third_option" \
 --editable --title="MODIFY CONFIG" 1> "$directory_wpa/wpaconfig_$third_option"
 if [ -s "$directory_wpa/wpaconfig_$third_option" ]; then  
-$favorite_graphicall_dialog  --forms \
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="OK. file: $third_option"
 else cp "$directory_temporal/$file_installed-$third_option" "$directory_wpa/wpaconfig_$third_option"
-$favorite_graphicall_dialog --forms \
+$favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="Canceled. file: wpaconfig_$third_option"; fi
 ;;
 ####
 ####
 *)$cmd_realpath "$second_option" "$third_option" "$quad_option" &> "$temporal_guifinal"
-$favorite_graphicall_dialog  --text-info \
+$favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="Gui Output || $cmd_realpath ||" \
 --filename="$temporal_guifinal" --auto-scroll ;;
@@ -5299,14 +5327,14 @@ case $second_option in
 "wizard-mini")
 archivo="wizard-mini"
 cp "$defaultminicfg_eng" "$directory_temporal/$file_installed-$archivo"
-$favorite_graphicall_dialog  --text-info \
+$favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$archivo" \
 --editable --title="WIZARD MINI" 1> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$cmd_realpath -gui custom $archivo ; $cmd_realpath -gui list4;
+$cmd_realpath -gui load-custom $archivo ; $cmd_realpath -gui list4;
 else rm "$directory_config/$archivo" ;
-$favorite_graphicall_dialog --info \
+$favorite_realpath_graphicalldialog --info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text "Ok. $archivo canceled"; fi
 ;;
@@ -5315,35 +5343,35 @@ $favorite_graphicall_dialog --info \
 "wizard-full")
 archivo="wizard-full"
 cp "$defaultfullcfg_eng" "$directory_temporal/$file_installed-$archivo"
-$favorite_graphicall_dialog  --text-info \
+$favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$archivo" \
 --editable --title="WIZARD FULL" 1> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$cmd_realpath -gui custom $archivo ; $cmd_realpath -gui list4;
+$cmd_realpath -gui load-custom $archivo ; $cmd_realpath -gui list4;
 else rm "$directory_config/$archivo" ;
-$favorite_graphicall_dialog  --info \
+$favorite_realpath_graphicalldialog  --info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text "OK. $archivo canceled"; fi
 ;;
 #### 
 #### 
-"modify-config")
+"modify-custom")
 if [ -f "$directory_config/$third_option" ] ; then $nada
-else $favorite_graphicall_dialog  --forms \
+else $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="file not found: $third_option" ; exit ; fi 
 cp "$directory_config/$third_option" "$directory_temporal/$file_installed-$third_option"
-$favorite_graphicall_dialog  --text-info \
+$favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$third_option" \
 --editable --title="MODIFY CONFIG $third_option" 1> "$directory_config/$third_option"
 if [ -s "$directory_config/$third_option" ]; then $nada ; 
-$favorite_graphicall_dialog  --forms \
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="OK. file: $third_option"
 else cp "$directory_temporal/$cmd_realpath-$third_option" "$directory_config/$third_option"
-$favorite_graphicall_dialog --forms \
+$favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="Canceled. file: $third_option"; fi
 ;;
@@ -5352,19 +5380,19 @@ $favorite_graphicall_dialog --forms \
 "preferences-modify")
 archivo="default"
 cp "$default_preferences" "$default_preferences.old"
-$favorite_graphicall_dialog  --text-info \
+$favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$default_preferences.old" \
 --editable --title="MODIFY PREFERENCES" 1> "$default_preferences"
 if [ ! -s "$default_preferences" ]; then cp "$default_preferences.old" "$default_preferences" ;
-$favorite_graphicall_dialog  --info \
+$favorite_realpath_graphicalldialog  --info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text "OK. $archivo canceled"; fi
 ;;
 ####
 ####
 *)$cmd_realpath $second_option $third_option &> $temporal_guifinal
-$favorite_graphicall_dialog  --text-info \
+$favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="Gui Output || $cmd_realpath ||" \
 --filename="$temporal_guifinal" --auto-scroll ;;
@@ -5384,7 +5412,7 @@ if [ "$first_option" == "gui" ] && [ "$second_option" == "$NULL" ]
 then echo $head_waiting_gui
 ####
 ####
-$favorite_graphicall_dialog  --forms \
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="Gui Output || $cmd_realpath || " \
 --text="$($cmd_realpath empty_first_option)" 
@@ -5405,7 +5433,7 @@ then echo $head_waiting_gui ; echo $give_cover
 ####
 titulo="$cmd_realpath gui-shell-zenity"
 untexto="$cmd_realpath gui-shell-zenity"
-favorite_graphicall_dialog="$command_zenity"
+favorite_realpath_graphicalldialog="$command_zenity"
 ####
 ####
 #### cd $directory_config
@@ -5434,65 +5462,65 @@ case "$menugtk" in
 $NULL) $cmd_realpath gui-zenity options; exit ;;
 ####
 ####
-#### english: new-full-config and nueva-completa-config whithout parameters ####
-#### spanish: new-full-config and nueva-completa-config sin parametros      ####
+#### english: new-full-custom and nueva-completa-custom whithout parameters ####
+#### spanish: new-full-custom and nueva-completa-custom sin parametros      ####
 ####
 ####
-"new-full-config")
-$favorite_graphicall_dialog  --forms \
+"new-full-custom")
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath new-full-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath new-full-custom config.cfg ]"
 ;;
-"new-mini-config")
-$favorite_graphicall_dialog  --forms \
+"new-mini-custom")
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath new-mini-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath new-mini-custom config.cfg ]"
 ;;
-"nueva-completa-config")
-$favorite_graphicall_dialog  --forms \
+"nueva-completa-custom")
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath nueva-completa-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath nueva-completa-custom config.cfg ]"
 ;;
-"new-mini-config")
-$favorite_graphicall_dialog  --forms \
+"new-mini-custom")
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath nueva-mini-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath nueva-mini-custom config.cfg ]"
 ;;
-"modify-config")
-$favorite_graphicall_dialog  --forms \
+"modify-custom")
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath modify-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath modify-custom config.cfg ]"
 ;;
 ####
 ####
-#### english: new-full-config and nueva-completa-config whithout parameters and with one space  ####
-#### spanish: new-full-config and nueva-completa-config sin parametros y con un espacio         ####
+#### english: new-full-custom and nueva-completa-custom whithout parameters and with one space  ####
+#### spanish: new-full-custom and nueva-completa-custom sin parametros y con un espacio         ####
 ####
 ####
-"new-full-config ")
-$favorite_graphicall_dialog  --forms \
+"new-full-custom ")
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath new-full-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath new-full-custom config.cfg ]"
 ;;
-"new-mini-config ")
-$favorite_graphicall_dialog  --forms \
+"new-mini-custom ")
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath new-mini-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath new-mini-custom config.cfg ]"
 ;;
-"nueva-completa-config ")
-$favorite_graphicall_dialog  --forms \
+"nueva-completa-custom ")
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath nueva-completa-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath nueva-completa-custom config.cfg ]"
 ;;
-"new-mini-config ")
-$favorite_graphicall_dialog  --forms \
+"new-mini-custom ")
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath nueva-mini-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath nueva-mini-custom config.cfg ]"
 ;;
-"modify-config ")
-$favorite_graphicall_dialog  --forms \
+"modify-custom ")
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath modify-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath modify-custom config.cfg ]"
 ;;
 ####
 ####
@@ -5500,29 +5528,29 @@ $favorite_graphicall_dialog  --forms \
 #### spanish: varias opciones con parametros
 ####
 ####
-new-full-config*)
+new-full-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-zenity new-full-config $unarchivo
+$cmd_realpath -gui-zenity new-full-custom $unarchivo
 ;;
-nueva-completa-config*)
+nueva-completa-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-zenity nueva-completa-config $unarchivo
+$cmd_realpath -gui-zenity nueva-completa-custom $unarchivo
 ;;
-new-mini-config*)
+new-mini-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-zenity new-mini-config $unarchivo
+$cmd_realpath -gui-zenity new-mini-custom $unarchivo
 ;;
-nueva-mini-config*)
+nueva-mini-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-zenity nueva-mini-config $unarchivo
+$cmd_realpath -gui-zenity nueva-mini-custom $unarchivo
 ;;
-modify-config*)
+modify-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-zenity modify-config $unarchivo
+$cmd_realpath -gui-zenity modify-custom $unarchivo
 ;;
-show-config*)
+show-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-zenity show-config $unarchivo
+$cmd_realpath -gui-zenity show-custom $unarchivo
 ;;
 wizard-full*) $cmd_realpath -gui-zenity wizard-full ;;
 wizard-mini*) $cmd_realpath -gui-zenity wizard-mini ;;
@@ -5539,7 +5567,7 @@ $cmd_realpath -gui-zenity preferences-modify
 "$NULL")  exit ;;
 *) fecha_temporal="$show_actual_date"
 $cmd_realpath $menugtk &> /tmp/fwiptables-$fecha_temporal
-$favorite_graphicall_dialog  --text-info \
+$favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[ $cmd_realpath gui-shell ] [ $menugtk ]" \
 --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
@@ -5565,7 +5593,7 @@ then echo $head_waiting_gui ; echo $give_cover
 ####
 titulo="$cmd_realpath gui-shell-yad"
 untexto="$cmd_realpath gui-shell-yad"
-favorite_graphicall_dialog="$command_yad"
+favorite_realpath_graphicalldialog="$command_yad"
 ####
 ####
 #### cd $directory_config
@@ -5593,65 +5621,65 @@ case "$menugtk" in
 $NULL) $cmd_realpath gui-yad options; exit ;;
 ####
 ####
-#### english: new-full-config and nueva-completa-config whithout parameters ####
-#### spanish: new-full-config and nueva-completa-config sin parametros      ####
+#### english: new-full-custom and nueva-completa-custom whithout parameters ####
+#### spanish: new-full-custom and nueva-completa-custom sin parametros      ####
 ####
 ####
-"new-full-config")
+"new-full-custom")
 $command_yad  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath new-full-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath new-full-custom config.cfg ]"
 ;;
-"new-mini-config")
+"new-mini-custom")
 $command_yad  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath new-mini-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath new-mini-custom config.cfg ]"
 ;;
-"nueva-completa-config")
+"nueva-completa-custom")
 $command_yad  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath nueva-completa-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath nueva-completa-custom config.cfg ]"
 ;;
-"new-mini-config")
+"new-mini-custom")
 $command_yad  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath nueva-mini-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath nueva-mini-custom config.cfg ]"
 ;;
-"modify-config")
+"modify-custom")
 $command_yad  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath modify-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath modify-custom config.cfg ]"
 ;;
 ####
 ####
-#### english: new-full-config and nueva-completa-config whithout parameters and with one space  ####
-#### spanish: new-full-config and nueva-completa-config sin parametros y con un espacio         ####
+#### english: new-full-custom and nueva-completa-custom whithout parameters and with one space  ####
+#### spanish: new-full-custom and nueva-completa-custom sin parametros y con un espacio         ####
 ####
 ####
-"new-full-config ")
+"new-full-custom ")
 $command_yad  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath new-full-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath new-full-custom config.cfg ]"
 ;;
-"new-mini-config ")
+"new-mini-custom ")
 $command_yad  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath new-mini-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath new-mini-custom config.cfg ]"
 ;;
-"nueva-completa-config ")
+"nueva-completa-custom ")
 $command_yad  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath nueva-completa-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath nueva-completa-custom config.cfg ]"
 ;;
-"new-mini-config ")
+"new-mini-custom ")
 $command_yad  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath nueva-mini-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath nueva-mini-custom config.cfg ]"
 ;;
-"modify-config ")
+"modify-custom ")
 $command_yad  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="$text_md [ info ] [ Use: $cmd_realpath modify-config config.cfg ]"
+--text="$text_md [ info ] [ Use: $cmd_realpath modify-custom config.cfg ]"
 ;;
 ####
 ####
@@ -5659,29 +5687,29 @@ $command_yad  --forms \
 #### spanish: varias opciones con parametros
 ####
 ####
-new-full-config*)
+new-full-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-yad new-full-config $unarchivo
+$cmd_realpath -gui-yad new-full-custom $unarchivo
 ;;
-nueva-completa-config*)
+nueva-completa-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-yad nueva-completa-config $unarchivo
+$cmd_realpath -gui-yad nueva-completa-custom $unarchivo
 ;;
-new-mini-config*)
+new-mini-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-yad new-mini-config $unarchivo
+$cmd_realpath -gui-yad new-mini-custom $unarchivo
 ;;
-nueva-mini-config*)
+nueva-mini-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-yad nueva-mini-config $unarchivo
+$cmd_realpath -gui-yad nueva-mini-custom $unarchivo
 ;;
-modify-config*)
+modify-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-yad modify-config $unarchivo
+$cmd_realpath -gui-yad modify-custom $unarchivo
 ;;
-show-config*)
+show-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-yad show-config $unarchivo 
+$cmd_realpath -gui-yad show-custom $unarchivo 
 ;;
 wizard-full*) $cmd_realpath -gui-yad wizard-full ;;
 wizard-mini*) $cmd_realpath -gui-yad wizard-mini ;;
@@ -5716,10 +5744,10 @@ exit ; fi
 ####
 ####
 if   [ "$first_option" == "cli-menu" ]; then $nada
-case "$favorite_text_dialog" in "$NULL")
+case "$favorite_realpath_textdialog" in "$NULL")
 echo "$title_md [ fail ] [ Install or dialog or whiptail to work ]"
 exit ;; esac
-menuprincipal="$($favorite_text_dialog --clear --notags \
+menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 --title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
 0000 "$title_md $text_md [$cmd_realpath cli-menu] $text_md $title_md" \
 0100 "$title_md [  --- Info Options --- ] $title_md" \
@@ -5798,22 +5826,22 @@ menuprincipal="$($favorite_text_dialog --clear --notags \
 0533  "$text_md server-mumble" \
 0534  "$text_md server-sql" \
 0535  "$text_md server-asterisk" \
-0600 "$title_md [ Firewall Custom ] $title_md" \
+0600 "$title_md [ Firewall load-custom ] $title_md" \
 0601  "$text_md eraserules" \
 0602  "$text_md wizard-mini" \
 0603  "$text_md wizard-full" \
 0604  "$text_md off-line" \
 0605  "$text_md all-permisive" \
-0606  "$text_md custom" \
+0606  "$text_md load-custom" \
 0607  "$text_md clone-systemfw" \
-0611  "$text_md new-full-config" \
-0612  "$text_md nueva-completa-config" \
-0613  "$text_md new-mini-config" \
-0614  "$text_md nueva-mini-config" \
-0615  "$text_md show-config" \
-0616  "$text_md modify-config" \
-0617  "$text_md del-config" \
-0618  "$text_md names-config" \
+0611  "$text_md new-full-custom" \
+0612  "$text_md nueva-completa-custom" \
+0613  "$text_md new-mini-custom" \
+0614  "$text_md nueva-mini-custom" \
+0615  "$text_md show-custom" \
+0616  "$text_md modify-custom" \
+0617  "$text_md del-custom" \
+0618  "$text_md names-custom" \
 0619  "$text_md config-regen" \
 0700 "$title_md [ Options Easy ] $title_md" \
 0701  "$text_md preferences-read" \
@@ -5870,7 +5898,7 @@ case "$menuprincipal" in
 read -p "Type the firewall name to read   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
 $cmd_realpath show $nombrecillo ;; 
-0206)archivo="$($favorite_text_dialog --stdout \
+0206)archivo="$($favorite_realpath_textdialog --stdout \
 --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ;  echo "$fifty_md saved $archivo" ; $cmd_realpath save $archivo ;;
@@ -5951,52 +5979,37 @@ $cmd_realpath load $nombrecillo ;;
 0603) clear ; $cmd_realpath cli wizard-full ; $cmd_realpath cli list4  ;;
 0604) clear ; $cmd_realpath cli off-line ; $cmd_realpath cli list4  ;;
 0605) clear ; $cmd_realpath cli all-permisive ; $cmd_realpath cli list4   ;;
-0606) 
-archivo="$($favorite_text_dialog  --title "custom" --stdout \
---inputbox "$($command_ls $directory_config)" 0 0)"
-archivo="$(echo $archivo | $command_sed s/\\///g)"
-clear ; $cmd_realpath custom $archivo ;;
-0607) 
-archivo="$($favorite_text_dialog  --title "custom" --stdout \
---inputbox "$($command_ls $directory_config)" 0 0)"
-archivo="$(echo $archivo | $command_sed s/\\///g)"
-clear ; $cmd_realpath clone-systemfw $archivo ;;
-0611) archivo="$($favorite_text_dialog  --stdout \
---title "new-full-config example: file.cfg" \
---inputbox "$($command_ls $directory_config)" 0 0)"
+0606) clear ; $cmd_realpath names-custom
+read -p "Input the custom name to load # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-clear ; $cmd_realpath new-full-config $archivo ;;
-0612) archivo="$($favorite_text_dialog  --stdout \
---title "nueva-completa-config example: archivo.cfg" \
---inputbox "$($command_ls $directory_config)" 0 0)"
+$cmd_realpath load-custom $archivo ;;
+0607) clear ; read -p "Input the systemfw name to clone # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-clear ; $cmd_realpath nueva-completa-config $archivo ;;
-0613) archivo="$($favorite_text_dialog  --stdout \
---title "new-mini-config example: file.cfg" \
---inputbox "$($command_ls $directory_config)" 0 0)"
+$cmd_realpath clone-systemfw $archivo ;;
+0611) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-clear ; $cmd_realpath new-mini-config $archivo ;;
-0614) archivo="$($favorite_text_dialog  --stdout \
---title "nueva-mini-config example: archivo.cfg" \
---inputbox "$($command_ls $directory_config)" 0 0)"
+$cmd_realpath new-full-custom $archivo ;;
+0612) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-clear ; $cmd_realpath nueva-mini-config $archivo ;;
-0615) archivo="$($favorite_text_dialog  --stdout \
---title "show-config example: file.cfg" \
---inputbox "$($command_ls $directory_config)" 0 0)"
+$cmd_realpath nueva-completa-custom $archivo ;;
+0613) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-clear ; $cmd_realpath show-config $archivo
-echo "$text_md [ info ] [ Use: Launch: $cmd_realpath custom $archivo ]";;
-0616) archivo="$($favorite_text_dialog  --stdout \
---title "modify-config example: file.cfg" \
---inputbox "$($command_ls $directory_config)" 0 0)"
+$cmd_realpath new-mini-custom $archivo ;;
+0614) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-clear ; $cmd_realpath modify-config $archivo ;;
-0617) archivo="$($favorite_text_dialog  --stdout \
---title "del-config" --inputbox "$($command_ls $directory_config)" 0 0)"
+$cmd_realpath nueva-mini-custom $archivo ;;
+0615) clear ; read -p "Input the custom to show config # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-clear ; $cmd_realpath del-config $archivo ; echo "deleted $archivo" ;;
-0618) clear ; $cmd_realpath cli names-config ;;
+$cmd_realpath show-custom $archivo ;;
+0616) clear ; $cmd_realpath names-custom
+read -p "Input the custom name to modify # " archivo
+archivo=$(echo $archivo | $command_sed s/\\///g)
+$cmd_realpath modify-custom $archivo ;;
+0617) clear ; $cmd_realpath names-custom
+read -p "Input the custom name to delete # " archivo
+archivo=$(echo $archivo | $command_sed s/\\///g)
+$cmd_realpath del-custom $archivo ;;
+0618) clear ; $cmd_realpath cli names-custom ;;
 0619) clear ; $cmd_realpath cli config-regen ;;
 ################################################################################
 0701) clear ; $cmd_realpath cli preferences-read ;;
@@ -6029,12 +6042,11 @@ clear ; $cmd_realpath del-config $archivo ; echo "deleted $archivo" ;;
 0728) clear ; $cmd_realpath cli download;;
 0729) clear ; $cmd_realpath cli install;;
 ################################################################################
-*) clear ; $favorite_text_dialog  --msgbox "fwiptables good bye" 0 0
+*) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
 clear ; exit ;;
 esac 
 $cmd_realpath text-pause
-clear ; 
-$cmd_realpath cli-menu
+clear ; $cmd_realpath cli-menu-$favorite_basename_textdialog
 exit; fi
 ####
 ####
@@ -6057,7 +6069,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "graphicall-pause" ]
-then $favorite_graphicall_dialog --forms \
+then $favorite_realpath_graphicalldialog --forms \
 --text="wait a moment, usually 1 minute max."
 exit; fi
 ####
@@ -6137,15 +6149,15 @@ $cmd_realpath -gui-zenity list4;;
 "reset")$cmd_realpath -gui-zenity reset
 $cmd_realpath -gui-zenity list4;;
 "names")$cmd_realpath -gui-zenity names ;;
-"show")archivo="$($favorite_graphicall_dialog  --entry \
+"show")archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Save Firewall]" --entry-text="cfg to show" )" ; 
 $cmd_realpath -gui-zenity show $archivo ;;
-"save")archivo="$($favorite_graphicall_dialog  --entry \
+"save")archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Save Firewall]" --entry-text="cfg to save")" ; 
 $cmd_realpath -gui-zenity save $archivo ;;
-"load")archivo="$($favorite_graphicall_dialog  --entry \
+"load")archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Load Firewall]" --entry-text="cfg to load")" ;
 $cmd_realpath -gui-zenity load $archivo
@@ -6262,9 +6274,9 @@ exit; fi
 if [ "$first_option" == "gui-roll-zenity-firewall-customfw" ]
 then echo $head_waiting_gui ; echo $give_cover
 gui_menu="gui-principal-menu|gui-info-menu|\
-custom|clone-systemfw|eraserules|wizard-mini|wizard-full|off-line|all-permisive|\
-new-full-config|nueva-completa-config|new-mini-config|nueva-mini-config|\
-names-config|show-config|modify-config|del-config|config-regen"
+load-custom|clone-systemfw|eraserules|wizard-mini|wizard-full|off-line|all-permisive|\
+new-full-custom|nueva-completa-custom|new-mini-custom|nueva-mini-custom|\
+names-custom|show-custom|modify-custom|del-custom|config-regen"
 selection_menu="$($command_zenity --forms \
 --text="gui-roll-firewall-customfw" \
 --title="Gui-roll With $cmd_realpath $cmd_version" \
@@ -6279,10 +6291,10 @@ case "$selection_final" in
 --text="$cmd_realpath good bye"; exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
 "gui-info-menu")$cmd_realpath -gui-zenity firewall-customfw ;;
-"custom")archivo="$($command_zenity  --entry \
+"load-custom")archivo="$($command_zenity  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Launch Custom]" --entry-text="cfg to launch")" ; 
-$cmd_realpath -gui-zenity custom $archivo ; $cmd_realpath gui list4;;
+$cmd_realpath -gui-zenity load-custom $archivo ; $cmd_realpath gui list4;;
 "clone-systemfw")archivo="$($command_zenity  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Clone firewall static]" --entry-text="firewall static to clone")" ; 
@@ -6292,48 +6304,48 @@ $cmd_realpath -gui-zenity clone-systemfw $archivo ; $cmd_realpath gui list4;;
 "wizard-mini")$cmd_realpath -gui-zenity wizard-mini ; $cmd_realpath gui list4;;
 "off-line")$cmd_realpath -gui-zenity off-line ; $cmd_realpath gui list4;;
 "all-permisive")$cmd_realpath -gui-zenity all-permisive ; $cmd_realpath gui list4;;
-"new-full-config")
+"new-full-custom")
 archivo="$($command_zenity  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[new-full-config]" \
+--title="[new-full-custom]" \
 --entry-text="Input file name to new full configuration")" ;
-$cmd_realpath -gui-zenity new-full-config $archivo ;;
-"nueva-completa-config")
+$cmd_realpath -gui-zenity new-full-custom $archivo ;;
+"nueva-completa-custom")
 archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[nueva-completa-config]" \
+--title="[nueva-completa-custom]" \
 --entry-text="Introduce el nombre del nuevo archivo cfg")" ;
-$cmd_realpath -gui-zenity nueva-completa-config $archivo ;;
-"new-mini-config")
+$cmd_realpath -gui-zenity nueva-completa-custom $archivo ;;
+"new-mini-custom")
 archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[new-mini-config]" \
+--title="[new-mini-custom]" \
 --entry-text="Input file name to new mini configuration")" ;
-$cmd_realpath -gui-zenity new-mini-config $archivo ;;
-"nueva-mini-config")
+$cmd_realpath -gui-zenity new-mini-custom $archivo ;;
+"nueva-mini-custom")
 archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[nueva-mini-config]" \
+--title="[nueva-mini-custom]" \
 --entry-text=="Introduce el nombre del nuevo archivo cfg")" ;
-$cmd_realpath -gui-zenity nueva-mini-config $archivo ;;
-"names-config")
-$cmd_realpath -gui-zenity names-config ;;
-"show-config")
+$cmd_realpath -gui-zenity nueva-mini-custom $archivo ;;
+"names-custom")
+$cmd_realpath -gui-zenity names-custom ;;
+"show-custom")
 archivo="$($command_zenity --entry \ 
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[show-config]" \
+--title="[show-custom]" \
 --entry-text="cfg to show")" ;
-$cmd_realpath -gui-zenity show-config $archivo ;;
-"modify-config")
+$cmd_realpath -gui-zenity show-custom $archivo ;;
+"modify-custom")
 archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[modify-config]" --entry-text="cfg to modify")" ;
-$cmd_realpath -gui-zenity modify-config $archivo ;;
-"del-config")
+--title="[modify-custom]" --entry-text="cfg to modify")" ;
+$cmd_realpath -gui-zenity modify-custom $archivo ;;
+"del-custom")
 archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[del-config]" --entry-text="cfg to delete")" ;
-$cmd_realpath -gui-zenity del-config $archivo ;;
+--title="[del-custom]" --entry-text="cfg to delete")" ;
+$cmd_realpath -gui-zenity del-custom $archivo ;;
 "config-regen")$cmd_realpath -gui-zenity config-regen ;;
 esac
 ####
@@ -6526,7 +6538,7 @@ gui_menu="|01-Firewall-Control|02-Firewall-List-With-Conceptual|\
 02-Firewall-List-With-Numeral|03-firewall-customfw|04-firewall-systemfw|\
 05-options-easy|06-options-expert"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($favorite_graphicall_dialog \
+selection_final="$($favorite_realpath_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" \
 --text="$first_option" \
@@ -6564,12 +6576,12 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-control" ]
 then echo $head_waiting_gui ; echo $give_cover
-case "$favorite_graphicall_dialog" in "$NULL")
+case "$favorite_realpath_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 stop|continue|reset|names|show|save|load|actual"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($favorite_graphicall_dialog \
+selection_final="$($favorite_realpath_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" \
 --text="$first_option" \
@@ -6586,17 +6598,17 @@ stop*)$cmd_realpath -gui stop ; $cmd_realpath -gui list4;;
 continue*)$cmd_realpath -gui continue ; $cmd_realpath -gui list4;;
 reset*)$cmd_realpath -gui reset ; $cmd_realpath -gui list4;;
 names*)$cmd_realpath -gui names ;;
-show*)archivo="$($favorite_graphicall_dialog  --entry \
+show*)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Save Firewall]" \
 --entry-text="cfg to show")" ; 
 $cmd_realpath -gui show $archivo ;;
-save*)archivo="$($favorite_graphicall_dialog  --entry \
+save*)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Save Firewall]" \
 --entry-text="cfg to save")" ; 
 $cmd_realpath -gui save $archivo ;;
-load*)archivo="$($favorite_graphicall_dialog  --entry \
+load*)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Load Firewall]" \
 --entry-text="cfg to load")" ;
@@ -6616,14 +6628,14 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-listconceptual" ]
 then echo $head_waiting_gui ; echo $give_cover
-case "$favorite_graphicall_dialog" in "$NULL")
+case "$favorite_realpath_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 ls4|ls6|list-filter4|list-filter6|list-alltables|\
 list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|\
 list-security4|list-security6|list-ebtables|list-arptables"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($favorite_graphicall_dialog \
+selection_final="$($favorite_realpath_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" --text="$first_option" \
 --title="Gui-menu With $cmd_realpath $cmd_version" \
@@ -6664,7 +6676,7 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-listnumeral" ]
 then echo $head_waiting_gui ; echo $give_cover
-case "$favorite_graphicall_dialog" in "$NULL")
+case "$favorite_realpath_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|lsn4|lsn6|\
 listn-filter4|listn-filter6|listn-alltables|\
@@ -6672,7 +6684,7 @@ listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|\
 listn-raw4|listn-raw6|listn-security4|listn-security6|\
 list-ebtables|list-arptables"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($favorite_graphicall_dialog \
+selection_final="$($favorite_realpath_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" \
 --text="$first_option" \
@@ -6714,17 +6726,17 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu-firewall-customfw" ]
 then echo $head_waiting_gui ; echo $give_cover
-case "$favorite_graphicall_dialog" in "$NULL")
+case "$favorite_realpath_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
-custom|clone-systemfw|eraserules|wizard-mini|wizard-full|\
+load-custom|clone-systemfw|eraserules|wizard-mini|wizard-full|\
 custom-cfg|off-line|all-permisive|\
-new-full-config|nueva-completa-config|\
-new-mini-config|nueva-mini-config|\
-names-config|show-config|modify-config|\
-del-config|config-regen"
+new-full-custom|nueva-completa-custom|\
+new-mini-custom|nueva-mini-custom|\
+names-custom|show-custom|modify-custom|\
+del-custom|config-regen"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($favorite_graphicall_dialog \
+selection_final="$($favorite_realpath_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" \
 --text="$first_option" \
@@ -6747,52 +6759,52 @@ off-line*)$cmd_realpath -gui off-line
 $cmd_realpath gui list4;;
 all-permisive*)$cmd_realpath -gui all-permisive
 $cmd_realpath gui list4;;
-custom*)archivo="$($favorite_graphicall_dialog  --entry \
+load-custom*)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Launch Custom]" \
 --entry-text="cfg to launch")" ; 
-$cmd_realpath -gui custom $archivo ; $cmd_realpath gui list4;;
-clone-systemfw*)archivo="$($favorite_graphicall_dialog  --entry \
+$cmd_realpath -gui load-custom $archivo ; $cmd_realpath gui list4;;
+clone-systemfw*)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Clone static]" \
 --entry-text="static firewall to clone config")" ; 
 $cmd_realpath -gui clone-systemfw $archivo ; $cmd_realpath gui list4;;
-new-full-config*) archivo="$($favorite_graphicall_dialog --entry \
+new-full-custom*) archivo="$($favorite_realpath_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[new-full-config]" \
+--title="[new-full-custom]" \
 --entry-text="Input file name to new full configuration")" ;
-$cmd_realpath -gui new-full-config $archivo ;;
-nueva-completa-config*) archivo="$($favorite_graphicall_dialog --entry \
+$cmd_realpath -gui new-full-custom $archivo ;;
+nueva-completa-custom*) archivo="$($favorite_realpath_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[nueva-completa-config]" \
+--title="[nueva-completa-custom]" \
 --entry-text="Introduce el nombre del nuevo archivo cfg")" 
-$cmd_realpath -gui nueva-completa-config $archivo ;;
-new-mini-config*) archivo="$($favorite_graphicall_dialog --entry \
+$cmd_realpath -gui nueva-completa-custom $archivo ;;
+new-mini-custom*) archivo="$($favorite_realpath_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height --entry \
---title="[new-mini-config]" \
+--title="[new-mini-custom]" \
 --entry-text="Input file name to new mini configuration")" ;
-$cmd_realpath -gui new-mini-config $archivo ;;
-nueva-mini-config*) archivo="$($favorite_graphicall_dialog --entry \
+$cmd_realpath -gui new-mini-custom $archivo ;;
+nueva-mini-custom*) archivo="$($favorite_realpath_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[nueva-mini-config]" \
+--title="[nueva-mini-custom]" \
 --entry-text="Introduce el nombre del nuevo archivo cfg")" ;
-$cmd_realpath -gui nueva-mini-config $archivo ;;
-names-config*) $cmd_realpath -gui names-config ;;
-show-config*) archivo="$($favorite_graphicall_dialog --entry \
+$cmd_realpath -gui nueva-mini-custom $archivo ;;
+names-custom*) $cmd_realpath -gui names-custom ;;
+show-custom*) archivo="$($favorite_realpath_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[show-config]" \
+--title="[show-custom]" \
 --entry-text="cfg to show")" ;
-$cmd_realpath -gui show-config $archivo ;;
-modify-config*) archivo="$($favorite_graphicall_dialog --entry \
+$cmd_realpath -gui show-custom $archivo ;;
+modify-custom*) archivo="$($favorite_realpath_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[modify-config]" \
+--title="[modify-custom]" \
 --entry-text="cfg to modify")" ;
-$cmd_realpath -gui modify-config $archivo ;;
-del-config*) archivo="$($favorite_graphicall_dialog --entry \
+$cmd_realpath -gui modify-custom $archivo ;;
+del-custom*) archivo="$($favorite_realpath_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[del-config]" \
+--title="[del-custom]" \
 --entry-text="cfg to delete" )";
-$cmd_realpath -gui del-config $archivo ;;
+$cmd_realpath -gui del-custom $archivo ;;
 config-regen*)$cmd_realpath -gui config-regen ;;
 esac
 ####
@@ -6808,7 +6820,7 @@ exit; fi
 ####  
 if [ "$first_option" == "gui-menu-firewall-systemfw" ]
 then echo $head_waiting_gui ; echo $give_cover
-case "$favorite_graphicall_dialog" in "$NULL")
+case "$favorite_realpath_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 client-basic|client-web|client-ipp|client-irc|\
@@ -6821,7 +6833,7 @@ server-print|server-lamp|server-domain|\
 server-news|server-mail|server-ftp|server-teamspeak|\
 server-mumble|server-sql|server-asterisk"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($favorite_graphicall_dialog \
+selection_final="$($favorite_realpath_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" \
 --text="$first_option" \
@@ -6882,7 +6894,7 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu-options-easy" ]
 then echo $head_waiting_gui ; echo $give_cover
-case "$favorite_graphicall_dialog" in "$NULL")
+case "$favorite_realpath_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
@@ -6890,7 +6902,7 @@ list-options|clasic-options|info-options|expert|compile|download|intro|\
 ip4|ip6|speed-ip4|speed-ip6|sockets|license|notes|about|\
 examples|depends|variables|commands"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($favorite_graphicall_dialog \
+selection_final="$($favorite_realpath_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" \
 --text="$first_option" \
@@ -6940,14 +6952,14 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu-options-expert" ]
 then echo $head_waiting_gui ; echo $give_cover
-case "$favorite_graphicall_dialog" in "$NULL")
+case "$favorite_realpath_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 expert-show-weather|expert-compile-obash|expert-upgrade-stable|\
 expert-upgrade-unstable|expert-download-adblock|expert-pc-halt|\
 expert-pc-shutdown|expert-pc-reboot"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($favorite_graphicall_dialog \
+selection_final="$($favorite_realpath_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" \
 --text="$first_option" \
@@ -6989,20 +7001,20 @@ exit; fi
 ####   #### spanish: cortafuego del sistema custom:
 ####
 ####
-##########   english: custom firewall      ##########
-##########   spanish: custom cortafuegos   ##########
+##########   english: load-custom firewall      ##########
+##########   spanish: load-custom cortafuegos   ##########
 #### :rutina-inicial-custom-rules:
 ####
 ####
-if [ "$first_option" == "custom" ]; then 
-echo "$title_md [ info ] [ loading firewall custom ] \
+if [ "$first_option" == "load-custom" ]; then 
+echo "$title_md [ info ] [ loading firewall load-custom ] \
 [ $directory_config/$second_option ]" ;
 launch_rules_firewall="yes" ;
 type_firewall="customfw" ;
 name_firewall="$second_option" ;
 ####
 ####
-#### english: configure custom variables if there are
+#### english: configure load-custom variables if there are
 #### spanish: configura variables modificadas si estan ahi
 ####
 ####
@@ -7011,7 +7023,7 @@ then source $directory_config/$second_option ; fi
 ####
 ####
 if [ ! -f "$directory_config/$second_option" ]
-then  $cmd_realpath names-config ; exit; fi
+then  $cmd_realpath names-custom ; exit; fi
 ####
 ####
 fi
@@ -11282,7 +11294,7 @@ exit; fi
 ###############################################################################################################
 ###############################################################################################################
 ####                                                                                            ###############
-####          ready to launch rules custom OR systemfw : - systemfw/customfw rules -
+####          ready to launch rules load-custom OR systemfw : - systemfw/customfw rules -
 ###############
 ####                                                                                            ###############
 ###############################################################################################################
@@ -11293,8 +11305,8 @@ exit; fi
 ###############################################################################################################
 ####                                                                                            ###############
 ####                                                                                            ###############
-####  english: Options for launch rules:     system firewall custom                             ###############
-####  spanish: Opciones para lanzar reglas:  firewall del sistema custom                        ###############
+####  english: Options for launch rules:     system firewall load-custom                             ###############
+####  spanish: Opciones para lanzar reglas:  firewall del sistema load-custom                        ###############
 ####                                                                                            ###############
 ####                                                                                            ###############
 ###############################################################################################################
@@ -11306,7 +11318,7 @@ exit; fi
 ##############################       spanish: sobreescribe las variables con la config cfg
 ####
 ####
-if [ "$first_option" == "custom" ]
+if [ "$first_option" == "load-custom" ]
 then if [ -f $directory_config/$second_option ]
 then source $directory_config/$second_option &> /dev/null
 else echo "$text_md [ fail ] [ Config file not found ]"
@@ -13306,8 +13318,8 @@ $command_ip6tables_legacy -t filter -A OUTPUT  -j $config_close_deny \
 fi
 ####
 ####
-########################################       english: show text when active custom rules
-########################################       spanish: muestra texto cuando activas las custom reglas
+########################################       english: show text when active load-custom rules
+########################################       spanish: muestra texto cuando activas las load-custom reglas
 ####
 ####  
 echo "$title_md [ _ok_ ] [ Launched: firewall ] \
