@@ -6797,8 +6797,8 @@ exit; fi
 if [ "$first_option" == "gui-menu-firewall-systemfw" ]
 then echo $head_waiting_gui ; echo $give_cover
 if [ "$second_option" == "$NULL" ]; then echo ; else
-favorite_realpath_graphicalldialog="$second_option" ; fi
-case "$favorite_realpath_graphicalldialog" in "$NULL")
+favorite_basename_graphicalldialog="$second_option" ; fi
+case "$favorite_basename_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 client-basic|client-web|client-ipp|client-irc|\
@@ -6811,7 +6811,7 @@ server-print|server-lamp|server-domain|\
 server-news|server-mail|server-ftp|server-teamspeak|\
 server-mumble|server-sql|server-asterisk"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($favorite_realpath_graphicalldialog \
+selection_final="$($favorite_basename_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" \
 --text="$first_option" \
@@ -6821,43 +6821,77 @@ selection_final="$($favorite_realpath_graphicalldialog \
 #### 
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu*)$cmd_realpath gui-menu ;;
-gui-help-menu*)$cmd_realpath -gui firewall-systemfw ;;
-gui-info-menu*)$cmd_realpath -gui firewall-systemfw ;;
-client-basic*)$cmd_realpath -gui client-basic ; $cmd_realpath gui list4;;
-client-web*)$cmd_realpath -gui client-web ; $cmd_realpath gui list4;;
-client-ipp*)$cmd_realpath -gui client-ipp   ; $cmd_realpath gui list4;;
-client-irc*)$cmd_realpath -gui client-irc   ; $cmd_realpath gui list4;;
-client-mail*)$cmd_realpath -gui client-mail ; $cmd_realpath gui list4;;
-client-news*)$cmd_realpath -gui client-news ; $cmd_realpath gui list4;;
-client-ftp*)$cmd_realpath -gui client-ftp   ; $cmd_realpath gui list4;;
-client-git*)$cmd_realpath -gui client-git ; $cmd_realpath gui list4;;
-client-vnc*)$cmd_realpath -gui client-vnc ; $cmd_realpath gui list4;;
-client-torrent*)$cmd_realpath -gui client-torrent ; $cmd_realpath gui list4;;
-client-vpn*)$cmd_realpath -gui client-vpn ; $cmd_realpath gui list4;;
-client-tor*)$cmd_realpath -gui client-tor ; $cmd_realpath gui list4;;
-games-shooter*)$cmd_realpath -gui games-shooter ; $cmd_realpath gui list4;;
-game-wesnoth*)$cmd_realpath -gui game-wesnoth ; $cmd_realpath gui list4;;
-game-minetest*)$cmd_realpath -gui game-minetest ; $cmd_realpath gui list4;;
-game-freeciv*)$cmd_realpath -gui game-freeciv ; $cmd_realpath gui list4;;
-game-widelands*)$cmd_realpath -gui game-widelands ; $cmd_realpath gui list4;;
-lan-tor*)$cmd_realpath -gui lan-tor ; $cmd_realpath gui list4;;
-lan-vpn*)$cmd_realpath -gui lan-vpn ; $cmd_realpath gui list4;;
-shield-ssh*)$cmd_realpath -gui shield-ssh ; $cmd_realpath gui list4;;
-server-ssh*)$cmd_realpath -gui server-ssh ; $cmd_realpath gui list4;;
-server-web*)$cmd_realpath -gui server-web ; $cmd_realpath gui list4;;
-server-vnc*)$cmd_realpath -gui server-vnc ; $cmd_realpath gui list4;;
-server-samba*)$cmd_realpath -gui server-samba ; $cmd_realpath gui list4;;
-server-news*)$cmd_realpath -gui server-news ; $cmd_realpath gui list4;;
-server-mail*)$cmd_realpath -gui server-mail ; $cmd_realpath gui list4;;
-server-ftp*)$cmd_realpath -gui server-ftp ; $cmd_realpath gui list4;;
-server-print*)$cmd_realpath -gui server-print ; $cmd_realpath gui list4;;
-server-lamp*)$cmd_realpath -gui server-lamp ; $cmd_realpath gui list4;;
-server-teamspeak*)$cmd_realpath -gui server-teamspeak ; $cmd_realpath gui list4;;
-server-mumble*)$cmd_realpath -gui server-mumble ; $cmd_realpath gui list4;;
-server-sql*)$cmd_realpath -gui server-sql ; $cmd_realpath gui list4;;
-server-asterisk*)$cmd_realpath -gui server-asterisk ; $cmd_realpath gui list4;;
-server-domain*)$cmd_realpath -gui server-domain ; $cmd_realpath gui list4;;
+gui-principal-menu*)$cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
+gui-help-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-systemfw ;;
+gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-systemfw ;;
+client-basic*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-basic ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+client-web*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-web ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+client-ipp*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-ipp ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+client-irc*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-irc ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+client-mail*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-mail ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+client-news*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-news ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+client-ftp*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-ftp ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+client-git*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-git ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+client-vnc*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-vnc ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+client-torrent*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-torrent ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+client-vpn*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-vpn ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+client-tor*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-tor ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+games-shooter*)$cmd_realpath -gui-$favorite_basename_graphicalldialog games-shooter ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+game-wesnoth*)$cmd_realpath -gui-$favorite_basename_graphicalldialog game-wesnoth ; 
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+game-minetest*)$cmd_realpath -gui-$favorite_basename_graphicalldialog game-minetest ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+game-freeciv*)$cmd_realpath -gui-$favorite_basename_graphicalldialog game-freeciv ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
+game-widelands*)$cmd_realpath -gui-$favorite_basename_graphicalldialog game-widelands ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+lan-tor*)$cmd_realpath -gui-$favorite_basename_graphicalldialog lan-tor ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+lan-vpn*)$cmd_realpath -gui-$favorite_basename_graphicalldialog lan-vpn ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+shield-ssh*)$cmd_realpath -gui-$favorite_basename_graphicalldialog shield-ssh ;
+ $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+server-ssh*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-ssh ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+server-web*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-web ;
+ $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+server-vnc*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-vnc ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+server-samba*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-samba ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+server-news*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-news ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+server-mail*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-mail ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+server-ftp*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-ftp ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+server-print*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-print ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+server-lamp*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-lamp ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+server-teamspeak*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-teamspeak ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
+server-mumble*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-mumble ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
+server-sql*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-sql ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
+server-asterisk*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-asterisk ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
+server-domain*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-domain ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
 esac
 ####
 ####
