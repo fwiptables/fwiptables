@@ -666,9 +666,13 @@ fi
 ####
 if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
 if [ "$command_dialog"  != "$NULL" ]  ; then  
-favorite_realpath_textdialog="$command_dialog"    ; fi
+favorite_realpath_textdialog="$command_dialog"
+favorite_basename_textdialog="$(basename $command_dialog)"
+fi
 if [ "$command_whiptail" != "$NULL" ] ; then  
-favorite_realpath_textdialog="$command_whiptail"  ; fi
+favorite_realpath_textdialog="$command_whiptail"
+favorite_basename_textdialog="$(basename $command_whiptail)"
+fi
 fi
 ####
 ####
@@ -680,9 +684,13 @@ fi
 ####
 if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
 if [ "$command_zenity"  != "$NULL" ] ; then  
-favorite_realpath_graphicalldialog="$command_zenity"   ; fi
+favorite_realpath_graphicalldialog="$command_zenity"
+favorite_basename_graphicalldialog="$(basename $command_zenity)"
+fi
 if [ "$command_yad"     != "$NULL" ] ; then  
-favorite_realpath_graphicalldialog="$command_yad"      ; fi
+favorite_realpath_graphicalldialog="$command_yad"
+favorite_basename_graphicalldialog="$(basename $command_yad)"
+fi
 fi
 ####
 ####
@@ -6086,7 +6094,7 @@ if [ "$first_option" == "gui-roll-zenity" ]
 then echo $head_waiting_gui ; echo $give_cover
 gui_menu="Info|Firewall-Control|Firewall-List-With-Conceptual|\
 Firewall-List-With-Numeral|Firewall-customfw|\
-Firewall-systemfw|Options-easy|Options-expert"
+Firewall-systemfw|Options-easy"
 selection_menu="$($command_zenity --forms \
 --text="gui-roll" \
 --title="Gui-roll With $cmd_realpath $cmd_version" \
@@ -6110,8 +6118,6 @@ $cmd_realpath gui-roll-zenity-firewall-customfw ; exit ;;
 $cmd_realpath gui-roll-zenity-firewall-systemfw ; exit ;;
 "Options-easy")
 $cmd_realpath gui-roll-zenity-options-easy ; exit ;;
-"Options-expert")
-$cmd_realpath gui-roll-zenity-options-expert ; exit ;;
 esac
 ####
 ####
@@ -6485,58 +6491,16 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-options-easy:
-##########    english: gui-roll-zenity-options-expert: gui roll general: gui with roll  ##########
-##########    spanish: gui-roll-zenity-options-expert: gui roll general: gui con roll   ##########
-#### :rutina-inicial-gui-roll-zenity-options-expert:
-####
-####
-if [ "$first_option" == "gui-roll-zenity-options-expert" ]
-then echo $head_waiting_gui ; echo $give_cover
-####
-####
-gui_menu="gui-principal-menu|gui-info-menu|\
-expert-show-weather|expert-compile-obash|expert-upgrade-stable|\
-expert-upgrade-unstable|expert-download-adblock|expert-pc-halt|\
-expert-pc-shutdown|expert-pc-reboot"
-####
-####
-selection="$($command_zenity --forms \
---text="$first_option" \
---title="Gui-roll With $cmd_realpath $cmd_version" \
---add-combo="$first_option" \
---combo-values="$gui_menu")"
-####
-####
-selection_final="$(echo $selection | sed 's/\|//g')"
-case "$selection_final" in
-1) exit ;;
-gui-principal-menu) $cmd_realpath gui-roll-zenity ;;
-gui-info-menu) $cmd_realpath gui-zenity options-expert ;;
-expert-show-weather)$cmd_realpath -gui-zenity expert-show-weather ;;
-expert-compile-obash)$cmd_realpath -gui-zenity expert-compile-obash ;;
-expert-upgrade-stable) $cmd_realpath -gui-zenity expert-upgrade-stable ;;
-expert-upgrade-unstable) $cmd_realpath -gui-zenity expert-upgrade-unstable ;;
-expert-download-adblock)$cmd_realpath -gui-zenity expert-download-adlock ;;
-expert-pc-halt) $cmd_realpath -gui-zenity expert-pc-halt ;;
-expert-pc-shutdown) $cmd_realpath -gui-zenity expert-pc-shutdown ;;
-expert-pc-reboot) $cmd_realpath -gui-zenity expert-pc-reboot ;;
-esac
-####
-####
-exit; fi
-####
-####
-#### :rutina-final-gui-roll-zenity-options-expert:
 ##########    english: gui-menu: gui menu general: gui con menu  ##########
 ##########    spanish: gui-menu: gui menu general: gui con menu  ##########
 #### :rutina-inicial-gui-menu:
 ####
 ####
-if [ "$first_option" == "gui-menu" ]
+if [ "$first_option" == "gui-menu" ] ;
 then echo $head_waiting_gui ; echo $give_cover
 gui_menu="|01-Firewall-Control|02-Firewall-List-With-Conceptual|\
 02-Firewall-List-With-Numeral|03-firewall-customfw|04-firewall-systemfw|\
-05-options-easy|06-options-expert"
+05-options-easy"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_realpath_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -6549,19 +6513,17 @@ selection_final="$($favorite_realpath_graphicalldialog \
 case "$selection_final" in
 1) exit ;;
 01-Firewall-Control*)
-$cmd_realpath gui-menu-firewall-control ; exit ;;
+$cmd_realpath gui-menu-firewall-control $favorite_basename_graphicalldialog ; exit ;;
 02-Firewall-List-With-Conceptual*)
-$cmd_realpath gui-menu-firewall-listconceptual ; exit ;;
+$cmd_realpath gui-menu-firewall-listconceptual $favorite_basename_graphicalldialog ; exit ;;
 02-Firewall-List-With-Numeral*)
-$cmd_realpath gui-menu-firewall-listnumeral ; exit ;;
+$cmd_realpath gui-menu-firewall-listnumeral $favorite_basename_graphicalldialog ; exit ;;
 03-firewall-customfw*)
-$cmd_realpath gui-menu-firewall-customfw ; exit ;;
+$cmd_realpath gui-menu-firewall-customfw $favorite_basename_graphicalldialog ; exit ;;
 04-firewall-systemfw*)
-$cmd_realpath gui-menu-firewall-systemfw ; exit ;;
+$cmd_realpath gui-menu-firewall-systemfw $favorite_basename_graphicalldialog ; exit ;;
 05-options-easy*)
-$cmd_realpath gui-menu-options-easy ; exit ;;
-06-options-expert*)
-$cmd_realpath gui-menu-options-expert ; exit ;;
+$cmd_realpath gui-menu-options-easy $favorite_basename_graphicalldialog ; exit ;;
 esac
 ####
 ####
@@ -6576,7 +6538,9 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-control" ]
 then echo $head_waiting_gui ; echo $give_cover
-case "$favorite_realpath_graphicalldialog" in "$NULL")
+if [ "$second_option" == "$NULL" ]; then echo ; else
+favorite_basename_graphicalldialog="$second_option" ; fi
+case "$favorite_basename_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 stop|continue|reset|names|show|save|load|actual"
@@ -6592,28 +6556,32 @@ selection_final="$($favorite_realpath_graphicalldialog \
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu*)$cmd_realpath gui-menu ;;
-gui-help-menu*)$cmd_realpath -gui firewallcontrol ;;
-gui-info-menu*)$cmd_realpath -gui firewall-control ;;
-stop*)$cmd_realpath -gui stop ; $cmd_realpath -gui list4;;
-continue*)$cmd_realpath -gui continue ; $cmd_realpath -gui list4;;
-reset*)$cmd_realpath -gui reset ; $cmd_realpath -gui list4;;
-names*)$cmd_realpath -gui names ;;
-show*)archivo="$($favorite_realpath_graphicalldialog  --entry \
+gui-help-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewallcontrol ;;
+gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-control ;;
+stop*)$cmd_realpath -gui-$favorite_basename_graphicalldialog stop ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
+continue*)$cmd_realpath -gui-$favorite_basename_graphicalldialog continue ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
+reset*)$cmd_realpath -gui-$favorite_basename_graphicalldialog reset ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog  list4 ;;
+names*)$cmd_realpath -gui-$favorite_basename_graphicalldialog names ;;
+show*)archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Save Firewall]" \
 --entry-text="cfg to show")" ; 
-$cmd_realpath -gui show $archivo ;;
-save*)archivo="$($favorite_realpath_graphicalldialog  --entry \
+$cmd_realpath -gui-$favorite_basename_graphicalldialog  $archivo ;;
+save*)archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Save Firewall]" \
 --entry-text="cfg to save")" ; 
-$cmd_realpath -gui save $archivo ;;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog save $archivo ;;
 load*)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Load Firewall]" \
 --entry-text="cfg to load")" ;
-$cmd_realpath -gui load $archivo ; $cmd_realpath -gui list4;;
-actual*)$cmd_realpath -gui actual ;;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog load $archivo ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog  list4;;
+actual*)$cmd_realpath -gui-$favorite_basename_graphicalldialog actual ;;
 esac
 ####
 ####
@@ -6628,6 +6596,8 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-listconceptual" ]
 then echo $head_waiting_gui ; echo $give_cover
+if [ "$second_option" == "$NULL" ]; then echo ; else
+favorite_realpath_graphicalldialog="$second_option" ; fi
 case "$favorite_realpath_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
@@ -6676,6 +6646,8 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-listnumeral" ]
 then echo $head_waiting_gui ; echo $give_cover
+if [ "$second_option" == "$NULL" ]; then echo ; else
+favorite_realpath_graphicalldialog="$second_option" ; fi
 case "$favorite_realpath_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|lsn4|lsn6|\
@@ -6726,6 +6698,8 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu-firewall-customfw" ]
 then echo $head_waiting_gui ; echo $give_cover
+if [ "$second_option" == "$NULL" ]; then echo ; else
+favorite_realpath_graphicalldialog="$second_option" ; fi
 case "$favorite_realpath_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
@@ -6820,6 +6794,8 @@ exit; fi
 ####  
 if [ "$first_option" == "gui-menu-firewall-systemfw" ]
 then echo $head_waiting_gui ; echo $give_cover
+if [ "$second_option" == "$NULL" ]; then echo ; else
+favorite_realpath_graphicalldialog="$second_option" ; fi
 case "$favorite_realpath_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
@@ -6894,6 +6870,8 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu-options-easy" ]
 then echo $head_waiting_gui ; echo $give_cover
+if [ "$second_option" == "$NULL" ]; then echo ; else
+favorite_realpath_graphicalldialog="$second_option" ; fi
 case "$favorite_realpath_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|\
@@ -6945,48 +6923,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-options-easy:
-##########    english: gui-menu-options-expert: gui menu expert: gui con menu  ##########
-##########    spanish: gui-menu-options-expert: gui menu expert: gui con menu  ##########
-#### :rutina-inicial-gui-menu-options-expert:
-####
-####
-if [ "$first_option" == "gui-menu-options-expert" ]
-then echo $head_waiting_gui ; echo $give_cover
-case "$favorite_realpath_graphicalldialog" in "$NULL")
-echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
-expert-show-weather|expert-compile-obash|expert-upgrade-stable|\
-expert-upgrade-unstable|expert-download-adblock|expert-pc-halt|\
-expert-pc-shutdown|expert-pc-reboot"
-selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($favorite_realpath_graphicalldialog \
---width=$config_graphicall_width --height=$config_graphicall_height \
---column="$first_option" \
---text="$first_option" \
---title="Gui-menu With $cmd_realpath $cmd_version" \
---list $selection_menu)"
-#### 
-####
-case "$selection_final" in
-1) exit ;;
-gui-principal-menu*)$cmd_realpath gui-menu-zenity ;;
-gui-help-menu*)$cmd_realpath gui-zenity options-expert ;;
-gui-info-menu*)$cmd_realpath gui-zenity options-expert ;;
-expert-show-weather*)$cmd_realpath -gui expert-show-weather ;;
-expert-compile-obash*)$cmd_realpath -gui expert-compile-obash ;;
-expert-upgrade-stable*) $cmd_realpath -gui expert-upgrade-stable ;;
-expert-upgrade-unstable*) $cmd_realpath -gui expert-upgrade-unstable ;;
-expert-download-adblock*)$cmd_realpath -gui expert-download-adlock ;;
-expert-pc-halt*) $cmd_realpath -gui expert-pc-halt ;;
-expert-pc-shutdown*) $cmd_realpath -gui expert-pc-shutdown ;;
-expert-pc-reboot*) $cmd_realpath -gui expert-pc-reboot ;;
-esac
-####
-####
-exit; fi
-####
-####
-#### :rutina-final-gui-menu-options-expert:
 ##########    english: ready system rules con its option               ##########
 ##########    spanish: preprara reglas del sistema con sus opciones    ##########
 ####
