@@ -6545,7 +6545,7 @@ echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 stop|continue|reset|names|show|save|load|actual"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($favorite_realpath_graphicalldialog \
+selection_final="$($favorite_basename_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" \
 --text="$first_option" \
@@ -6597,15 +6597,15 @@ exit; fi
 if   [ "$first_option" == "gui-menu-firewall-listconceptual" ]
 then echo $head_waiting_gui ; echo $give_cover
 if [ "$second_option" == "$NULL" ]; then echo ; else
-favorite_realpath_graphicalldialog="$second_option" ; fi
-case "$favorite_realpath_graphicalldialog" in "$NULL")
+favorite_basename_graphicalldialog="$second_option" ; fi
+case "$favorite_basename_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 ls4|ls6|list-filter4|list-filter6|list-alltables|\
 list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|\
 list-security4|list-security6|list-ebtables|list-arptables"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($favorite_realpath_graphicalldialog \
+selection_final="$($favorite_basename_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" --text="$first_option" \
 --title="Gui-menu With $cmd_realpath $cmd_version" \
@@ -6614,24 +6614,24 @@ selection_final="$($favorite_realpath_graphicalldialog \
 #### 
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu*)$cmd_realpath gui-menu ;;
-gui-help-menu*)$cmd_realpath -gui firewall-listconceptual ;;
-gui-info-menu*)$cmd_realpath -gui firewall-listconceptual ;;
-ls4*)$cmd_realpath -gui ls4 ;;
-ls6*)$cmd_realpath -gui ls6 ;;
-list-alltables*)$cmd_realpath -gui list-alltables ;;
-list-filter4*)$cmd_realpath -gui list-filter4 ;;
-list-filter6*)$cmd_realpath -gui list-filter6 ;;
-list-nat4*)$cmd_realpath -gui list-nat4 ;;
-list-nat6*)$cmd_realpath -gui list-nat6 ;;
-list-mangle4*)$cmd_realpath -gui list-mangle4 ;;
-list-mangle6*)$cmd_realpath -gui list-mangle6 ;;
-list-raw4*)$cmd_realpath -gui list-raw4 ;;
-list-raw6*)$cmd_realpath -gui list-raw6 ;;
-list-security4*)$cmd_realpath -gui list-security4 ;;
-list-security6*)$cmd_realpath -gui list-security6 ;;
-list-ebtables*)$cmd_realpath -gui list-ebtables ;;
-list-arptables*)$cmd_realpath -gui list-arptables ;;
+gui-principal-menu*)$cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
+gui-help-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-listconceptual ;;
+gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-listconceptual ;;
+ls4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog ls4 ;;
+ls6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog ls6 ;;
+list-alltables*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-alltables ;;
+list-filter4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-filter4 ;;
+list-filter6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-filter6 ;;
+list-nat4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-nat4 ;;
+list-nat6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-nat6 ;;
+list-mangle4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-mangle4 ;;
+list-mangle6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-mangle6 ;;
+list-raw4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-raw4 ;;
+list-raw6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-raw6 ;;
+list-security4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-security4 ;;
+list-security6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-security6 ;;
+list-ebtables*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-ebtables ;;
+list-arptables*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-arptables ;;
 esac
 ####
 ####
@@ -6647,8 +6647,8 @@ exit; fi
 if   [ "$first_option" == "gui-menu-firewall-listnumeral" ]
 then echo $head_waiting_gui ; echo $give_cover
 if [ "$second_option" == "$NULL" ]; then echo ; else
-favorite_realpath_graphicalldialog="$second_option" ; fi
-case "$favorite_realpath_graphicalldialog" in "$NULL")
+favorite_basename_graphicalldialog="$second_option" ; fi
+case "$favorite_basename_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|lsn4|lsn6|\
 listn-filter4|listn-filter6|listn-alltables|\
@@ -6656,7 +6656,7 @@ listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|\
 listn-raw4|listn-raw6|listn-security4|listn-security6|\
 list-ebtables|list-arptables"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($favorite_realpath_graphicalldialog \
+selection_final="$($favorite_basename_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" \
 --text="$first_option" \
@@ -6666,24 +6666,24 @@ selection_final="$($favorite_realpath_graphicalldialog \
 #### 
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu*)$cmd_realpath gui-menu ;;
-gui-help-menu*)$cmd_realpath -gui firewall-listnumeral ;;
-gui-info-menu*)$cmd_realpath -gui firewall-listnumeral ;;
-lsn4*)$cmd_realpath -gui lsn4 ;;
-lsn6*)$cmd_realpath -gui lsn6 ;;
-listn-alltables*)$cmd_realpath -gui listn-alltables ;;
-listn-filter4*)$cmd_realpath -gui listn-filter4 ;;
-listn-filter6*)$cmd_realpath -gui listn-filter6 ;;
-listn-nat4*)$cmd_realpath -gui listn-nat4 ;;
-listn-nat6*)$cmd_realpath -gui listn-nat6 ;;
-listn-mangle4*)$cmd_realpath -gui listn-mangle4 ;;
-listn-mangle6*)$cmd_realpath -gui listn-mangle6 ;;
-listn-raw4*)$cmd_realpath -gui listn-raw4 ;;
-listn-raw6*)$cmd_realpath -gui listn-raw6 ;;
-listn-security4*)$cmd_realpath -gui listn-security4 ;;
-listn-security6*)$cmd_realpath -gui listn-security6 ;;
-list-ebtables*)$cmd_realpath -gui list-ebtables ;;
-list-arptables*)$cmd_realpath -gui list-arptables ;;
+gui-principal-menu*)$cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
+gui-help-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-listnumeral ;;
+gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-listnumeral ;;
+lsn4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog lsn4 ;;
+lsn6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog lsn6 ;;
+listn-alltables*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-alltables ;;
+listn-filter4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-filter4 ;;
+listn-filter6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-filter6 ;;
+listn-nat4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-nat4 ;;
+listn-nat6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-nat6 ;;
+listn-mangle4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-mangle4 ;;
+listn-mangle6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-mangle6 ;;
+listn-raw4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-raw4 ;;
+listn-raw6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-raw6 ;;
+listn-security4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-security4 ;;
+listn-security6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-security6 ;;
+list-ebtables*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-ebtables ;;
+list-arptables*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-arptables ;;
 esac
 ####
 ####
@@ -6699,8 +6699,8 @@ exit; fi
 if [ "$first_option" == "gui-menu-firewall-customfw" ]
 then echo $head_waiting_gui ; echo $give_cover
 if [ "$second_option" == "$NULL" ]; then echo ; else
-favorite_realpath_graphicalldialog="$second_option" ; fi
-case "$favorite_realpath_graphicalldialog" in "$NULL")
+favorite_basename_graphicalldialog="$second_option" ; fi
+case "$favorite_basename_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
 load-custom|clone-systemfw|eraserules|wizard-mini|wizard-full|\
@@ -6710,7 +6710,7 @@ new-mini-custom|nueva-mini-custom|\
 names-custom|show-custom|modify-custom|\
 del-custom|config-regen"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($favorite_realpath_graphicalldialog \
+selection_final="$($favorite_basename_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" \
 --text="$first_option" \
@@ -6720,66 +6720,68 @@ selection_final="$($favorite_realpath_graphicalldialog \
 #### 
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu) $cmd_realpath gui-menu ;;
-gui-help-menu*) $cmd_realpath -gui firewall-customfw ;;
-gui-info-menu*) $cmd_realpath -gui firewall-customfw ;;
-eraserules*)$cmd_realpath -gui eraserules
-$cmd_realpath gui list4;;
-wizard-full*)$cmd_realpath -gui wizard-full
-$cmd_realpath gui list4;;
-wizard-mini*)$cmd_realpath -gui wizard-mini
-$cmd_realpath gui list4;;
-off-line*)$cmd_realpath -gui off-line
-$cmd_realpath gui list4;;
-all-permisive*)$cmd_realpath -gui all-permisive
-$cmd_realpath gui list4;;
-load-custom*)archivo="$($favorite_realpath_graphicalldialog  --entry \
+gui-principal-menu) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
+gui-help-menu*) $cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-customfw ;;
+gui-info-menu*) $cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-customfw ;;
+eraserules*)$cmd_realpath -gui-$favorite_basename_graphicalldialog eraserules
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
+wizard-full*)$cmd_realpath -gui-$favorite_basename_graphicalldialog wizard-full
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+wizard-mini*)$cmd_realpath -gui-$favorite_basename_graphicalldialog wizard-mini
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
+off-line*)$cmd_realpath -gui-$favorite_basename_graphicalldialog off-line
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+all-permisive*)$cmd_realpath -gui-$favorite_basename_graphicalldialog all-permisive
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+load-custom*)archivo="$($favorite_basename_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Launch Custom]" \
 --entry-text="cfg to launch")" ; 
-$cmd_realpath -gui load-custom $archivo ; $cmd_realpath gui list4;;
-clone-systemfw*)archivo="$($favorite_realpath_graphicalldialog  --entry \
+$cmd_realpath -gui-$favorite_basename_graphicalldialog load-custom $archivo ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+clone-systemfw*)archivo="$($favorite_basename_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Clone static]" \
 --entry-text="static firewall to clone config")" ; 
-$cmd_realpath -gui clone-systemfw $archivo ; $cmd_realpath gui list4;;
-new-full-custom*) archivo="$($favorite_realpath_graphicalldialog --entry \
+$cmd_realpath -gui-$favorite_basename_graphicalldialog clone-systemfw $archivo ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
+new-full-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[new-full-custom]" \
 --entry-text="Input file name to new full configuration")" ;
-$cmd_realpath -gui new-full-custom $archivo ;;
-nueva-completa-custom*) archivo="$($favorite_realpath_graphicalldialog --entry \
+$cmd_realpath -gui-$favorite_basename_graphicalldialog new-full-custom $archivo ;;
+nueva-completa-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[nueva-completa-custom]" \
 --entry-text="Introduce el nombre del nuevo archivo cfg")" 
-$cmd_realpath -gui nueva-completa-custom $archivo ;;
-new-mini-custom*) archivo="$($favorite_realpath_graphicalldialog --entry \
+$cmd_realpath -gui-$favorite_basename_graphicalldialog nueva-completa-custom $archivo ;;
+new-mini-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height --entry \
 --title="[new-mini-custom]" \
 --entry-text="Input file name to new mini configuration")" ;
-$cmd_realpath -gui new-mini-custom $archivo ;;
-nueva-mini-custom*) archivo="$($favorite_realpath_graphicalldialog --entry \
+$cmd_realpath -gui-$favorite_basename_graphicalldialog new-mini-custom $archivo ;;
+nueva-mini-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[nueva-mini-custom]" \
 --entry-text="Introduce el nombre del nuevo archivo cfg")" ;
-$cmd_realpath -gui nueva-mini-custom $archivo ;;
-names-custom*) $cmd_realpath -gui names-custom ;;
-show-custom*) archivo="$($favorite_realpath_graphicalldialog --entry \
+$cmd_realpath -gui-$favorite_basename_graphicalldialog nueva-mini-custom $archivo ;;
+names-custom*) $cmd_realpath -gui-$favorite_basename_graphicalldialog names-custom ;;
+show-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[show-custom]" \
 --entry-text="cfg to show")" ;
-$cmd_realpath -gui show-custom $archivo ;;
-modify-custom*) archivo="$($favorite_realpath_graphicalldialog --entry \
+$cmd_realpath -gui-$favorite_basename_graphicalldialog show-custom $archivo ;;
+modify-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[modify-custom]" \
 --entry-text="cfg to modify")" ;
-$cmd_realpath -gui modify-custom $archivo ;;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog modify-custom $archivo ;;
 del-custom*) archivo="$($favorite_realpath_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[del-custom]" \
 --entry-text="cfg to delete" )";
-$cmd_realpath -gui del-custom $archivo ;;
-config-regen*)$cmd_realpath -gui config-regen ;;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog del-custom $archivo ;;
+config-regen*)$cmd_realpath -gui-$favorite_basename_graphicalldialog config-regen ;;
 esac
 ####
 ####
