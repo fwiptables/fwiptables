@@ -895,9 +895,11 @@ esac
 ####
 case "$first_option" in
 "cli-menu")
-favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ;;
+favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ;
+first_option="cli-menu-$favorite_basename_textdialog" ;;
 "gui-menu")
-favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;;
+favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
+first_option="gui-menu-$favorite_basename_graphicalldialog" ;;
 "cli-dialog")
 favorite_realpath_textdialog="$command_dialog" ; 
 favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ;
@@ -1055,6 +1057,7 @@ echo "$text_md [ info ] Please install or dialog or whiptail to work with cli"; 
 cmd_inicial="$($cmd_realpath $second_option $third_option)"
 $favorite_realpath_textdialog --clear --notags --title \
 "Cli Menu With $cmd_version" --msgbox "$cmd_inicial" 0 0
+clear
 exit ; fi
 ####
 ####
@@ -6907,8 +6910,8 @@ exit; fi
 if [ "$first_option" == "gui-menu-options-easy" ]
 then echo $head_waiting_gui ; echo $give_cover
 if [ "$second_option" == "$NULL" ]; then echo ; else
-favorite_realpath_graphicalldialog="$second_option" ; fi
-case "$favorite_realpath_graphicalldialog" in "$NULL")
+favorite_basename_graphicalldialog="$second_option" ; fi
+case "$favorite_basename_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
@@ -6916,7 +6919,7 @@ list-options|clasic-options|info-options|expert|compile|download|intro|\
 ip4|ip6|speed-ip4|speed-ip6|sockets|license|notes|about|\
 examples|depends|variables|commands"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($favorite_realpath_graphicalldialog \
+selection_final="$($favorite_basename_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" \
 --text="$first_option" \
@@ -6926,32 +6929,32 @@ selection_final="$($favorite_realpath_graphicalldialog \
 ####
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu*)$cmd_realpath gui-menu ;;
-gui-help-menu*)$cmd_realpath -gui options-easy ;;
-gui-info-menu*)$cmd_realpath -gui options-easy ;;
-preferences-read*)$cmd_realpath -gui preferences-read ;;
-preferences-modify*)$cmd_realpath -gui preferences-modify ;;
-preferences-regen*)$cmd_realpath -gui preferences-regen ;;
-preferences-example*)$cmd_realpath -gui preferences-example ;;
-list-options*)$cmd_realpath -gui list-options ;;
-clasic-options*)$cmd_realpath -gui clasic-options ;;
-info-options*)$cmd_realpath -gui info-options ;;
-expert*)$cmd_realpath -gui expert ;;
-intro*)$cmd_realpath -gui intro ;;
-compile*)$cmd_realpath -gui compile ;;
-download*)$cmd_realpath -gui download ;;
-ip4*)$cmd_realpath -gui ip4 ;;
-ip6*)$cmd_realpath -gui ip6 ;;
-speed-ip4*)$cmd_realpath -gui speed-ip4 ;;
-speed-ip6*)$cmd_realpath -gui speed-ip6 ;;
-sockets*)$cmd_realpath -gui sockets ;;
-about*)$cmd_realpath -gui about ;;
-examples*)$cmd_realpath -gui examples ;;
-depends*)$cmd_realpath -gui depends ;;
-notes*)$cmd_realpath -gui notes ;;
-license*)$cmd_realpath -gui license ;;
-variables*) $cmd_realpath -gui variables ;;
-commands*) $cmd_realpath -gui commands ;;
+gui-principal-menu*)$cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
+gui-help-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog options-easy ;;
+gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog options-easy ;;
+preferences-read*)$cmd_realpath -gui-$favorite_basename_graphicalldialog preferences-read ;;
+preferences-modify*)$cmd_realpath -gui-$favorite_basename_graphicalldialog preferences-modify ;;
+preferences-regen*)$cmd_realpath -gui-$favorite_basename_graphicalldialog preferences-regen ;;
+preferences-example*)$cmd_realpath -gui-$favorite_basename_graphicalldialog preferences-example ;;
+list-options*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-options ;;
+clasic-options*)$cmd_realpath -gui-$favorite_basename_graphicalldialog clasic-options ;;
+info-options*)$cmd_realpath -gui-$favorite_basename_graphicalldialog info-options ;;
+expert*)$cmd_realpath -gui-$favorite_basename_graphicalldialog expert ;;
+intro*)$cmd_realpath -gui-$favorite_basename_graphicalldialog intro ;;
+compile*)$cmd_realpath -gui-$favorite_basename_graphicalldialog compile ;;
+download*)$cmd_realpath -gui-$favorite_basename_graphicalldialog download ;;
+ip4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog ip4 ;;
+ip6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog ip6 ;;
+speed-ip4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog speed-ip4 ;;
+speed-ip6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog speed-ip6 ;;
+sockets*)$cmd_realpath -gui-$favorite_basename_graphicalldialog sockets ;;
+about*)$cmd_realpath -gui-$favorite_basename_graphicalldialog about ;;
+examples*)$cmd_realpath -gui-$favorite_basename_graphicalldialog examples ;;
+depends*)$cmd_realpath -gui-$favorite_basename_graphicalldialog depends ;;
+notes*)$cmd_realpath -gui-$favorite_basename_graphicalldialog notes ;;
+license*)$cmd_realpath -gui-$favorite_basename_graphicalldialog license ;;
+variables*) $cmd_realpath -gui-$favorite_basename_graphicalldialog variables ;;
+commands*) $cmd_realpath -gui-$favorite_basename_graphicalldialog commands ;;
 esac
 ####
 ####
