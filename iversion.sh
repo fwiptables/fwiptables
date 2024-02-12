@@ -894,12 +894,18 @@ esac
 ####
 ####
 case "$first_option" in
+"cli")
+favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ;
+first_option="cli" ;;
+"gui")
+favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
+first_option="gui" ;;
 "cli-menu")
 favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ;
-first_option="cli-menu-$favorite_basename_textdialog" ;;
+first_option="cli-menu" ;;
 "gui-menu")
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
-first_option="gui-menu-$favorite_basename_graphicalldialog" ;;
+first_option="gui-menu" ;;
 "cli-dialog")
 favorite_realpath_textdialog="$command_dialog" ; 
 favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ;
