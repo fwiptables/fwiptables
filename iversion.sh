@@ -101,8 +101,8 @@ echo ; fi
 ####
 cmd_realpath="$(realpath $0)"    # its full routename
 cmd_basename="$(basename $0)"    # its only filename
-cmd_version="cmd-24-02-Dev"      # its version
-file_installed="fwiptables-cmd"  # its filename installed
+cmd_version="24-02-Dev"          # its version
+file_installed="fwiptables"      # its filename installed
 directory_installed="/usr/bin"   # its directory installed
 cmd_contact="fwiptables@gmx.com" # its contact
 cmd_shortdescription="fwiptables, FireWall With iptables"              # its name description short
@@ -383,39 +383,38 @@ show_actual_date="$($command_date| $command_sed -e s/\ /\-/g -)"
 #### spanish: arbol de directorio
 ####
 ####
-directory_fwrecover="$directory_data/fwiptables-fwrecover"
-directory_default="$directory_data/fwiptables-default"
-directory_config="$directory_data/fwiptables-config"
-directory_shell="$directory_data/fwiptables-shell"
-directory_log="$directory_data/fwiptables-log"
-directory_pdf="$directory_data/fwiptables-pdf"
-directory_wpa="$directory_data/fwiptables-wpa"
+default_directory_fwrecover="$directory_data/fwiptables-fwrecover"
+default_directory_default="$directory_data/fwiptables-default"
+default_directory_config="$directory_data/fwiptables-config"
+default_directory_shell="$directory_data/fwiptables-shell"
+default_directory_log="$directory_data/fwiptables-log"
+default_directory_pdf="$directory_data/fwiptables-pdf"
+default_directory_wpa="$directory_data/fwiptables-wpa"
 ####
 ####
 #### english: templates cfg
 #### spanish: plantillas cfg
 ####
 ####
-defaultcfg="$directory_config/default-full-english.cfg"
-defaultfullcfg_eng="$directory_config/default-full-english.cfg"
-defaultfullcfg_spa="$directory_config/default-full-spanish.cfg"
-defaultminicfg_eng="$directory_config/default-mini-english.cfg"
-defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
+default_fullcfg_eng="$default_directory_config/default-full-english.cfg"
+default_fullcfg_spa="$default_directory_config/default-full-spanish.cfg"
+default_minicfg_eng="$default_directory_config/default-mini-english.cfg"
+default_minicfg_spa="$default_directory_config/default-mini-spanish.cfg"
 ####
 ####
 #### english: default config to shell
 #### spanish: default config to shell
 ####
 ####
-default_preferences="$directory_shell/default_preferences"
+file_default_preferences="$default_directory_shell/file_default_preferences"
 ####
 ####
 #### english: file log:     log files and path files config files
 #### spanish: archivos log: archivos log y ruta de los archivos de configuracion
 ####
 ####
-default_filelog="$directory_log/default_filelog"
-default_autolog="$directory_log/default_autolog"
+file_default_filelog="$default_directory_log/file_default_filelog"
+file_default_autolog="$default_directory_log/file_default_autolog"
 ####
 ####
 ##########    english: temporal files
@@ -469,24 +468,24 @@ output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-
 command_mkdir="$(command -v mkdir)"
 ####
 ####
-if [ ! -d "$directory_fwrecover" ]; then 
-$command_mkdir -p "$directory_fwrecover" &> /dev/null ; fi
+if [ ! -d "$default_directory_fwrecover" ]; then 
+$command_mkdir -p "$default_directory_fwrecover" &> /dev/null ; fi
 if [ ! -d "$directory_temporal" ]; then
 $command_mkdir -p $directory_temporal &> /dev/null ; fi
-if [ ! -d "$directory_default" ]; then
-$command_mkdir -p "$directory_default" &> /dev/null ; fi
-if [ ! -d "$directory_config" ]; then
-$command_mkdir -p "$directory_config" &> /dev/null ; fi
-if [ ! -d "$directory_shell" ]; then
-$command_mkdir -p "$directory_shell" &> /dev/null ; fi
-if [ ! -d "$directory_log" ]; then
-$command_mkdir -p "$directory_log" &> /dev/null ; fi
+if [ ! -d "$default_directory_default" ]; then
+$command_mkdir -p "$default_directory_default" &> /dev/null ; fi
+if [ ! -d "$default_directory_config" ]; then
+$command_mkdir -p "$default_directory_config" &> /dev/null ; fi
+if [ ! -d "$default_directory_shell" ]; then
+$command_mkdir -p "$default_directory_shell" &> /dev/null ; fi
+if [ ! -d "$default_directory_log" ]; then
+$command_mkdir -p "$default_directory_log" &> /dev/null ; fi
 if [ ! -d "$directory_data" ]; then
 $command_mkdir -p $directory_data &> /dev/null ; fi
-if [ ! -d "$directory_wpa" ]; then
-$command_mkdir -p "$directory_wpa" &> /dev/null ; fi
-if [ ! -d "$directory_pdf" ]; then
-$command_mkdir -p "$directory_pdf" &> /dev/null ; fi
+if [ ! -d "$default_directory_wpa" ]; then
+$command_mkdir -p "$default_directory_wpa" &> /dev/null ; fi
+if [ ! -d "$default_directory_pdf" ]; then
+$command_mkdir -p "$default_directory_pdf" &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-dir-sane:
@@ -594,8 +593,8 @@ launch_rules_firewall="no" ;   #  autoconfigure with launch iptables rules
 #### :rutina-inicial-update-variables:
 ####
 ####
-if [ -f "$default_preferences"   ]
-then source $default_preferences ; fi
+if [ -f "$file_default_preferences"   ]
+then source $file_default_preferences ; fi
 ####
 ####
 if [ "$first_option" = "$NULL" ]
@@ -1076,8 +1075,8 @@ echo "### ### [ info ] [ $second_option $third_option $quad_option ] \
 [ $show_actual_date ]" &> $output_log
 $cmd_realpath $second_option $third_option $quad_option &> $output_log
 cat $output_log | $command_grep -iv Warning: \
-&> $directory_log/log-$second_option-$show_actual_date.txt
-echo "$title_md [ file ] $directory_log/log-$second_option-$show_actual_date.txt"
+&> $default_directory_log/log-$second_option-$show_actual_date.txt
+echo "$title_md [ file ] $default_directory_log/log-$second_option-$show_actual_date.txt"
 exit ; fi
 ####
 ####
@@ -1086,15 +1085,15 @@ exit ; fi
 ####
 if [ "$first_option" == "pdf" ]
 then case $command_convert in "NULL") 
-echo "$title_md install imagemagick to print pdf to $directory_pdf" ; exit ;; esac
+echo "$title_md install imagemagick to print pdf to $default_directory_pdf" ; exit ;; esac
 echo "$head_waiting_pdf"
 #### allow print to PDF
 sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &> /dev/null
 #### send print to home output-fwiptables.pdf
 $cmd_realpath "$second_option" "$third_option" \
 | convert -page A3 text:- \
-$directory_pdf/pdf-$second_option-$show_actual_date.pdf &> /dev/null
-echo "$title_md [ file ] $directory_pdf/pdf-$second_option-$show_actual_date.pdf"
+$default_directory_pdf/pdf-$second_option-$show_actual_date.pdf &> /dev/null
+echo "$title_md [ file ] $default_directory_pdf/pdf-$second_option-$show_actual_date.pdf"
 exit ; fi
 ####
 ####
@@ -1123,7 +1122,7 @@ if [ "$allow_save_autolog" != "no" ]
 then head_autolog="date: $show_actual_date \
 path: $cmd_realpath ver: $cmd_version \
 opt: $first_option $second_option $third_option"
-echo $head_autolog >> $default_autolog ; fi
+echo $head_autolog >> $file_default_autolog ; fi
 ####
 ####
 #### :rutina-final-allow-autolog:
@@ -1144,12 +1143,12 @@ echo $config_show_timespam ; fi
 ####
 ####
 if [ "$first_option" == "filelog" ] ; then
-echo "$title_md [ $first_option ]  [ show $default_filelog ] "
-if [ ! -f $default_filelog ]; then touch $default_filelog ; fi
+echo "$title_md [ $first_option ]  [ show $file_default_filelog ] "
+if [ ! -f $file_default_filelog ]; then touch $file_default_filelog ; fi
 echo
-cat  "$default_filelog"
+cat  "$file_default_filelog"
 echo 
-echo "### ### [ this file is: ] [ $default_filelog ]"
+echo "### ### [ this file is: ] [ $file_default_filelog ]"
 exit; fi
 ####
 ####
@@ -1160,13 +1159,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "autolog" ] ; then
-echo "$title_md [ $first_option ] [ show "$default_autolog" ] "
-echo "$title_md [ info ] [ last 50 lines from file showed ] [ $default_autolog ]"
-if [ ! -f $default_autolog ]; then touch $default_autolog ; fi
+echo "$title_md [ $first_option ] [ show "$file_default_autolog" ] "
+echo "$title_md [ info ] [ last 50 lines from file showed ] [ $file_default_autolog ]"
+if [ ! -f $file_default_autolog ]; then touch $file_default_autolog ; fi
 echo
-cat  "$default_autolog" | tail -50
+cat  "$file_default_autolog" | tail -50
 echo
-echo "$title_md [ info ] [ last 50 lines from file showed ] [ $default_autolog ]"
+echo "$title_md [ info ] [ last 50 lines from file showed ] [ $file_default_autolog ]"
 exit; fi
 ####
 ####
@@ -1208,8 +1207,8 @@ echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
 ####
 ####
 $cmd_realpath expert-wpa-regen
-cp $directory_wpa/defaultwpa $directory_wpa/wpaconfig_$second_option
-editor $directory_wpa/wpaconfig_$second_option
+cp $default_directory_wpa/defaultwpa $default_directory_wpa/wpaconfig_$second_option
+editor $default_directory_wpa/wpaconfig_$second_option
 exit; fi
 ####
 ####
@@ -1223,8 +1222,8 @@ echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
 ####
 ####
 $cmd_realpath expert-wpa-regen
-cp $directory_wpa/defaultwpa $directory_wpa/wpaconfig_$second_option
-editor $directory_wpa/wpaconfig_$second_option
+cp $default_directory_wpa/defaultwpa $default_directory_wpa/wpaconfig_$second_option
+editor $default_directory_wpa/wpaconfig_$second_option
 exit; fi
 ####
 ####
@@ -1247,7 +1246,7 @@ if [ "$second_option" == "$NULL" ]; then
 echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
 ####
 ####
-editor $directory_wpa/wpaconfig_$second_option
+editor $default_directory_wpa/wpaconfig_$second_option
 exit; fi
 ####
 ####
@@ -1260,7 +1259,7 @@ if [ "$second_option" == "$NULL" ]; then
 echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
 ####
 ####
-editor $directory_wpa/wpaconfig_$second_option
+editor $default_directory_wpa/wpaconfig_$second_option
 exit; fi
 ####
 ####
@@ -1271,7 +1270,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "expert-wpa-list" ]
-then ls -1 "$directory_wpa" | cut -d "_" -f 2-
+then ls -1 "$default_directory_wpa" | cut -d "_" -f 2-
 exit ; fi
 ####
 ####
@@ -1287,11 +1286,11 @@ if [ "$first_option" == "expert-wpa-show" ]; then
 if [ "$second_option" == "$NULL" ]
 then $cmd_realpath expert-wpa-list
 echo "$title_md [ info ] use: $first_option nameconfig" ; exit ; fi
-if [ -f "$directory_wpa/wpaconfig_$second_option" ]; then
+if [ -f "$default_directory_wpa/wpaconfig_$second_option" ]; then
 echo "$title_md $title_md $title_md $title_md wpa config_:"
-cat "$directory_wpa/wpaconfig_$second_option"
+cat "$default_directory_wpa/wpaconfig_$second_option"
 echo "$title_md $title_md $title_md $title_md wpa connect_:"
-cat "$directory_wpa/wpaconnect_$second_option"
+cat "$default_directory_wpa/wpaconnect_$second_option"
 else echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
 exit; fi
 ####
@@ -1316,14 +1315,14 @@ then echo "$title_md [ fail ] use: $first_option nameconfig"
 exit ; fi
 ####
 ####
-if [ -f "$directory_wpa/wpaconfig_$second_option" ]
-then source $directory_wpa/wpaconfig_$second_option
+if [ -f "$default_directory_wpa/wpaconfig_$second_option" ]
+then source $default_directory_wpa/wpaconfig_$second_option
 ####
 ####
 $command_wpa_passphrase $wifi_wpa_ssid $wifi_wpa_password \
-&> $directory_wpa/wpaconnect_$second_option
+&> $default_directory_wpa/wpaconnect_$second_option
 $command_wpa_supplicant -D $wifi_wpa_driver -i $wifi_wpa_device -c \
-"$directory_wpa/wpaconnect_$second_option" &
+"$default_directory_wpa/wpaconnect_$second_option" &
 $command_ifconfig $wifi_wpa_device:1 $wifi_wpa_ip
 if [ "$(command -v $wifi_wpa_dhcp)" == "$NULL" ]
 then echo "$title_md [ fail ] $wifi_wpa_dhcp not found"; exit; fi
@@ -1342,7 +1341,7 @@ if [ "$command_wpa_supplicant" == "$NULL" ]
 then echo "$title_md [ fail ] Install wpa_passphrase"; fi
 ####
 ####
-$cmd_realpath expert-wpa-example &> $directory_wpa/defaultwpa
+$cmd_realpath expert-wpa-example &> $default_directory_wpa/defaultwpa
 exit; fi
 ####
 ####
@@ -1377,8 +1376,8 @@ exit; fi
 ####
 if [ "$first_option" == "preferences-modify" ]; then 
 echo "$title_md [ $first_option ] [ modify the default fwiptables ] "
-$favorite_text_editor $default_preferences
-echo "$title_md [ info ] [ file $default_preferences ]"
+$favorite_text_editor $file_default_preferences
+echo "$title_md [ info ] [ file $file_default_preferences ]"
 exit; fi
 ####
 ####
@@ -1404,8 +1403,8 @@ exit; fi
 ####
 if [ "$first_option" == "preferences-read" ]; then 
 echo "$title_md [ $first_option ] [ read the default fwiptables ] "
-cat $default_preferences
-echo "$title_md [ info ] [ file $default_preferences ]"
+cat $file_default_preferences
+echo "$title_md [ info ] [ file $file_default_preferences ]"
 exit; fi
 ####
 ####
@@ -1418,12 +1417,12 @@ exit; fi
 if [ "$first_option" == "preferences-regen" ] ; then
 echo "$title_md [ $first_option ] [ $cmd_realpath preferences-regen ] \
 [ preferences-regen.md ] "
-rm $default_preferences
+rm $file_default_preferences
 echo "$title_md [ _ok_ ] [ $cmd_realpath deleted old configs ]"
 file $cmd_realpath
-$cmd_realpath preferences-example | $command_grep -v EOF &> $default_preferences
+$cmd_realpath preferences-example | $command_grep -v EOF &> $file_default_preferences
 echo "$title_md [ _ok_ ] [ Regenerated: $cmd_realpath values for default in ]"
-echo "$title_md [ _ok_ ] [ Regenerated: $default_preferences ]"
+echo "$title_md [ _ok_ ] [ Regenerated: $file_default_preferences ]"
 exit; fi
 ####
 ####
@@ -1690,11 +1689,11 @@ echo
 echo "$title_md [ Configuration files ]"
 echo "$text_md Directory data:          $directory_data"
 echo "$text_md Directory temp:          $directory_cache"
-echo "$text_md File Preferences:        $default_preferences"
+echo "$text_md File Preferences:        $file_default_preferences"
 echo
 echo "$title_md [ Log files ]"
-echo "$text_md File autolog:            $default_autolog"
-echo "$text_md File filelog:            $default_filelog"
+echo "$text_md File autolog:            $file_default_autolog"
+echo "$text_md File filelog:            $file_default_filelog"
 echo
 echo "$title_md [ Automatic interfaces  ]"
 echo "$text_md Interface txt:           $command_bash"
@@ -1813,10 +1812,10 @@ echo "$title_md [ Data Directory   ]"
 echo "$text_md $directory_data"
 echo
 echo "$title_md [ Default Preferences ]"
-echo "$text_md $default_preferences"
+echo "$text_md $file_default_preferences"
 echo
 echo "$title_md [ Default Autolog ]"
-echo "$text_md $default_autolog"
+echo "$text_md $file_default_autolog"
 echo
 exit ; fi
 ####
@@ -1911,10 +1910,10 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "config-regen" ]; then 
-$cmd_realpath plantilla-mini-es &> $defaultminicfg_spa
-$cmd_realpath plantilla-mini-en &> $defaultminicfg_eng
-$cmd_realpath plantilla-full-es &> $defaultfullcfg_spa
-$cmd_realpath plantilla-full-en &> $defaultfullcfg_eng
+$cmd_realpath plantilla-mini-es &> $default_minicfg_spa
+$cmd_realpath plantilla-mini-en &> $default_minicfg_eng
+$cmd_realpath plantilla-full-es &> $default_fullcfg_spa
+$cmd_realpath plantilla-full-en &> $default_fullcfg_eng
 exit; fi
 ####
 ####
@@ -2549,16 +2548,16 @@ exit; fi
 if [ "$first_option" == "names-custom" ]; then 
 echo "$title_md [ $first_option ] [ List configs cfg ] "
 echo "$title_md [ info ] [ list configs files in cfg format ]"
-echo "$title_md [ info ] [ folder ] [ $directory_config ]"
+echo "$title_md [ info ] [ folder ] [ $default_directory_config ]"
 echo "$title_md"
 default_files_cfg="default-full-english.cfg|default-full-spanish.cfg\
 |default-mini-english|default-mini-spanish|wizard-full|wizard-mini|nodefault-tmp"
 echo "$title_md"
 echo "$title_md [ System files ]"
-$command_ls -1 $directory_config/ | $command_grep -E -i $default_files_cfg
+$command_ls -1 $default_directory_config/ | $command_grep -E -i $default_files_cfg
 echo "$title_md"
 echo "$title_md [ User files ]"
-$command_ls -1 $directory_config/ | $command_grep -E -iv $default_files_cfg
+$command_ls -1 $default_directory_config/ | $command_grep -E -iv $default_files_cfg
 echo "$title_md"
 echo "$title_md [ OK CFG FILES NAMES ] [ Use: $cmd_realpath load-custom file-cfg ]"
 exit; fi
@@ -4047,13 +4046,13 @@ archivo="$second_option"
 case $archivo in shield-*);;client-*);; game-*);; games-*);; server-*);;
 *) echo "$title [ fail ] choose a valid systemfw to clone" ; exit ;; esac
 $cmd_realpath code $second_option | $command_grep -E "client_|server_|config_|allow_|net_" \
-&> $directory_config/$archivo
-if [ -s "$directory_config/$archivo" ] ; then 
-cat $directory_config/$archivo ;
+&> $default_directory_config/$archivo
+if [ -s "$default_directory_config/$archivo" ] ; then 
+cat $default_directory_config/$archivo ;
 echo "$title_md [ _ok_ ] [ Created :                           $archivo   ]"
 echo "$title_md [ info ] [ Modify  :  fwiptables modify-custom $archivo   ]"
 echo "$title_md [ info ] [ Launch  :  fwiptables load-custom        $archivo   ]"
-else rm $directory_config/$archivo
+else rm $default_directory_config/$archivo
 echo "$title_md [ info ] choose one valid systemfw to clone"
 echo "$title_md [ fail ] config no done $archivo" ; fi
 exit; fi
@@ -4072,8 +4071,8 @@ exit; fi
 ####
 if [ "$first_option" == "new-full-custom" ] && [ "$second_option" != "$NULL" ] ; then 
 archivo="$second_option"
-cp "$defaultfullcfg_eng" "$directory_config/$archivo"
-$favorite_text_editor $directory_config/$archivo
+cp "$default_fullcfg_eng" "$default_directory_config/$archivo"
+$favorite_text_editor $default_directory_config/$archivo
 echo " [ _ok_ ] created file $archivo"
 ####
 ####
@@ -4093,8 +4092,8 @@ exit; fi
 ####
 if [ "$first_option" == "nueva-completa-custom" ] && [ "$second_option" != "$NULL" ] ; then 
 archivo="$second_option"
-cp "$defaultfullcfg_spa" "$directory_config/$archivo"
-$favorite_text_editor $directory_config/$archivo
+cp "$default_fullcfg_spa" "$default_directory_config/$archivo"
+$favorite_text_editor $default_directory_config/$archivo
 echo " [ _ok_ ] created file $archivo"
 ####
 ####
@@ -4114,8 +4113,8 @@ exit; fi
 ####
 if [ "$first_option" == "new-mini-custom" ] && [ "$second_option" != "$NULL" ] ; then 
 archivo="$second_option"
-cp "$defaultminicfg_eng" "$directory_config/$archivo"
-$favorite_text_editor $directory_config/$archivo
+cp "$default_minicfg_eng" "$default_directory_config/$archivo"
+$favorite_text_editor $default_directory_config/$archivo
 echo " [ _ok_ ] created file $archivo"
 ####
 ####
@@ -4135,8 +4134,8 @@ exit; fi
 ####
 if [ "$first_option" == "nueva-mini-custom" ] && [ "$second_option" != "$NULL" ] ; then 
 archivo="$second_option"
-cp "$defaultminicfg_spa" "$directory_config/$archivo"
-$favorite_text_editor $directory_config/$archivo
+cp "$default_minicfg_spa" "$default_directory_config/$archivo"
+$favorite_text_editor $default_directory_config/$archivo
 echo " [ _ok_ ] created file $archivo"
 ####
 ####
@@ -4152,15 +4151,15 @@ exit; fi
 if [ "$first_option" == "modify-custom" ]; then 
 ####
 ###
-if [ ! -f "$directory_config/$second_option" ] ; then $nada
+if [ ! -f "$default_directory_config/$second_option" ] ; then $nada
 $cmd_realpath names-custom
 echo "$text_md [ info ] [ usage: ] [ $cmd_realpath modify-custom config-existent ]"
 exit; fi
 ####
 ####
-if [ -f "$directory_config/$second_option" ] ; then $nada
-cp "$directory_config/$second_option" "$directory_temporal/$second_option" &> /dev/null
-$favorite_text_editor "$directory_config/$second_option"
+if [ -f "$default_directory_config/$second_option" ] ; then $nada
+cp "$default_directory_config/$second_option" "$directory_temporal/$second_option" &> /dev/null
+$favorite_text_editor "$default_directory_config/$second_option"
 echo "$title_md [ _ok_ ] [ load-custom file $second_option ]"
 clear; fi
 ####
@@ -4177,12 +4176,12 @@ clear ; exit ; fi
 if [ "$first_option" == "show-custom" ] ; then 
 ####
 ####
-if [ ! -f "$directory_config"/"$second_option" ] ; then 
+if [ ! -f "$default_directory_config"/"$second_option" ] ; then 
 echo "$title_md [ info ] [ Usage: $cmd_realpath show-custom config-cfg ]" ; exit; fi
 ####
 ####
-if [ -f "$directory_config"/"$second_option" ] ; then 
-cat $directory_config/$second_option ;
+if [ -f "$default_directory_config"/"$second_option" ] ; then 
+cat $default_directory_config/$second_option ;
 echo  ; exit ; fi
 ####
 ####
@@ -4198,14 +4197,14 @@ exit; fi
 if [ "$first_option" == "del-custom" ]; then 
 ####
 ####
-if [ ! -f $directory_config/$second_option ] ; then
+if [ ! -f $default_directory_config/$second_option ] ; then
 echo "$title_md [ info ] [ usage: ] [ $cmd_realpath del-custom config-old ]"
 exit ; fi
 ####
 ####
-if [ -f $directory_config/$second_option ] ; then
-rm $directory_config/$second_option
-echo "$directory_config/$second_option Deleted"
+if [ -f $default_directory_config/$second_option ] ; then
+rm $default_directory_config/$second_option
+echo "$default_directory_config/$second_option Deleted"
 echo  ; exit ; fi
 ####
 ####
@@ -4221,10 +4220,10 @@ exit ; fi
 if [ "$first_option" == "names-control" ]; then 
 echo "$title_md [ $first_option ] [ List names from firewall saved ] "
 echo "$title_md [ info ] [ list configs files in standard format ]"
-echo "$title_md [ info ] [ folder ] [ $directory_fwrecover ]"
+echo "$title_md [ info ] [ folder ] [ $default_directory_fwrecover ]"
 echo 
 echo "$title_md [ info ] [ Listing firewall names ]"
-$command_ls -1 $directory_fwrecover | $command_sed s/\-legacy\-ipv6//g | \
+$command_ls -1 $default_directory_fwrecover | $command_sed s/\-legacy\-ipv6//g | \
 $command_sed s/\-nft\-ipv6//g | \
 $command_sed s/\-legacy\-ipv4//g | $command_sed s/\-nft\-ipv4//g | \
 $command_sed s/\-arptables//g | $command_sed s/\-ebtables//g | sort -u 
@@ -4546,7 +4545,7 @@ $cmd_realpath version | $command_grep -E -i "version"
 #### latest stable
 ####
 echo "$title_md Show the version for fwiptables stable latest:"
-descarga="$directory_log/fwiptables-cmd"
+descarga="$default_directory_log/fwiptables-cmd"
 $command_curl $web_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
 $command_grep -E -i "version"
@@ -4555,7 +4554,7 @@ rm $descarga
 #### latest unstable
 ####
 echo "$title_md Show the version for fwiptables unstable latest:"
-descarga="$directory_log/fwiptables-cmd"
+descarga="$default_directory_log/fwiptables-cmd"
 $command_curl $git_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
 $command_grep -E -i "version"
@@ -4579,7 +4578,7 @@ echo "$title_md Install curl to download and to install stable latest version"; 
 ####
 ####
 echo "$title_md Downloading fwiptables stable latest"
-descarga="$directory_log/fwiptables-cmd"
+descarga="$default_directory_log/fwiptables-cmd"
 $command_curl $web_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga install
 exit; fi
@@ -4599,7 +4598,7 @@ echo "$title_md Install curl to download and to install unstable latest version"
 ####
 ####
 echo "$title_md Downloading fwiptables development latest"
-descarga="$directory_log/fwiptables-cmd"
+descarga="$default_directory_log/fwiptables-cmd"
 $command_curl $git_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga install
 exit; fi
@@ -4794,13 +4793,13 @@ exit; fi
 if [ "$first_option" == "wizard-mini" ]; then echo 
 archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
 $cmd_realpath config-regen
-cp "$defaultminicfg_eng" "$directory_temporal/$file_installed-$archivo"
+cp "$default_minicfg_eng" "$directory_temporal/$file_installed-$archivo"
 $favorite_text_editor "$directory_temporal/$file_installed-$archivo"
 clear
 $favorite_realpath_textdialog --clear --title "Run this wizard" \
 --yesno "Run this wizard" 0 0 && clear \
 && cp "$directory_temporal/$file_installed-$archivo" \
-"$directory_config/$archivo" && $cmd_realpath load-custom $archivo || clear
+"$default_directory_config/$archivo" && $cmd_realpath load-custom $archivo || clear
 ####
 ####
 exit; fi
@@ -4815,12 +4814,12 @@ exit; fi
 if [ "$first_option" == "wizard-full" ]; then $nada
 archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
 $cmd_realpath config-regen
-cp "$defaultfullcfg_eng" "$directory_temporal/$file_installed-$archivo"
+cp "$default_fullcfg_eng" "$directory_temporal/$file_installed-$archivo"
 $favorite_text_editor "$directory_temporal/$file_installed-$archivo"
 clear
 $favorite_realpath_textdialog --clear --title "Run this wizard" --yesno \
 "Run this wizard" 0 0 && clear && \
-cp "$directory_temporal/$file_installed-$archivo" "$directory_config/$archivo" \
+cp "$directory_temporal/$file_installed-$archivo" "$default_directory_config/$archivo" \
 && $cmd_realpath load-custom $archivo || clear 
 ####
 ####
@@ -4848,8 +4847,8 @@ $cmd_realpath names ; echo "$text_md [ info ] \
 #### English if do exist second option in load
 ####
 ####
-if [ -f $directory_fwrecover/$second_option-nft-ipv4 ] || \
-[ -f $directory_fwrecover/$second_option-legacy-ipv4 ] ; then 
+if [ -f $default_directory_fwrecover/$second_option-nft-ipv4 ] || \
+[ -f $default_directory_fwrecover/$second_option-legacy-ipv4 ] ; then 
 echo $give_load
 ####
 ####
@@ -4868,21 +4867,21 @@ $cmd_realpath eraserules &> /dev/null
 #### English: Load all rules 
 ####
 ####
-if [ -f "$directory_fwrecover/$second_option-ebtables" ]; then
-cat $directory_fwrecover/$second_option-ebtables | \
+if [ -f "$default_directory_fwrecover/$second_option-ebtables" ]; then
+cat $default_directory_fwrecover/$second_option-ebtables | \
 $command_ebtables-restore &> /dev/null; fi
 ####
 ####
-if [ -f "$directory_fwrecover/$second_option-arptables" ]; then
-cat $directory_fwrecover/$second_option-arptables | \
+if [ -f "$default_directory_fwrecover/$second_option-arptables" ]; then
+cat $default_directory_fwrecover/$second_option-arptables | \
 $command_arptables-restore &> /dev/null; fi
 ####
 #### 
-cat $directory_fwrecover/$second_option-nft-ipv4 |  $command_iptables_nft-restore       
-cat $directory_fwrecover/$second_option-legacy-ipv4 | $command_iptables_legacy-restore  
-cat $directory_fwrecover/$second_option-nft-ipv6 | $command_ip6tables_nft-restore       
-cat $directory_fwrecover/$second_option-legacy-ipv6 | $command_ip6tables_legacy-restore 
-echo "$title_md [ _ok_ ] [ firewall loaded ] [ $directory_fwrecover/$second_option ]"
+cat $default_directory_fwrecover/$second_option-nft-ipv4 |  $command_iptables_nft-restore       
+cat $default_directory_fwrecover/$second_option-legacy-ipv4 | $command_iptables_legacy-restore  
+cat $default_directory_fwrecover/$second_option-nft-ipv6 | $command_ip6tables_nft-restore       
+cat $default_directory_fwrecover/$second_option-legacy-ipv6 | $command_ip6tables_legacy-restore 
+echo "$title_md [ _ok_ ] [ firewall loaded ] [ $default_directory_fwrecover/$second_option ]"
 ####
 ####
 #### english: if no found #### spanish: si no encuentra
@@ -4915,32 +4914,32 @@ esac
 ####
 echo "$title_md [ info ] [ saving firewall ] [ $archivofin ]"
 if [ "$command_arptables" == "$NULL"  ]; then $nada ; else
-$command_arptables-save &> $directory_fwrecover/$archivofin-arptables; fi
+$command_arptables-save &> $default_directory_fwrecover/$archivofin-arptables; fi
 if [ "$command_ebtables"  == "$NULL"  ]; then $nada ; else
-$command_ebtables-save &> $directory_fwrecover/$archivofin-ebtables; fi
+$command_ebtables-save &> $default_directory_fwrecover/$archivofin-ebtables; fi
 ####
 ####
 if [ "$command_iptables_nft"  == "$NULL"  ]; then $nada ; else
-$command_iptables_nft-save      &> $directory_fwrecover/$archivofin-nft-ipv4 ; fi
+$command_iptables_nft-save      &> $default_directory_fwrecover/$archivofin-nft-ipv4 ; fi
 if [ "$command_ip6tables_nft"  == "$NULL"  ]; then $nada ; else
-$command_ip6tables_nft-save      &> $directory_fwrecover/$archivofin-nft-ipv6 ; fi
+$command_ip6tables_nft-save      &> $default_directory_fwrecover/$archivofin-nft-ipv6 ; fi
 if [ "$command_iptables_legacy"  == "$NULL"  ]; then $nada ; else
-$command_iptables_legacy-save    &> $directory_fwrecover/$archivofin-legacy-ipv4 ; fi
+$command_iptables_legacy-save    &> $default_directory_fwrecover/$archivofin-legacy-ipv4 ; fi
 if [ "$command_ip6tables_legacy"  == "$NULL"  ]; then $nada ; else
-$command_ip6tables_legacy-save   &> $directory_fwrecover/$archivofin-legacy-ipv6 ; fi
+$command_ip6tables_legacy-save   &> $default_directory_fwrecover/$archivofin-legacy-ipv6 ; fi
 ####
 ####
 echo "$title_md [ _ok_ ] [ firewall saved ] [ $archivofin ]"
 if [ "$command_arptables" == "$NULL"  ]; then $nada ; else
-$command_ls -l $directory_fwrecover/$archivofin-arptables; fi
+$command_ls -l $default_directory_fwrecover/$archivofin-arptables; fi
 if [ "$command_ebtables"  == "$NULL"  ]; then $nada ; else
-$command_ls -l $directory_fwrecover/$archivofin-ebtables; fi
+$command_ls -l $default_directory_fwrecover/$archivofin-ebtables; fi
 ####
 ####
-$command_ls -l $directory_fwrecover/$archivofin-nft-ipv4
-$command_ls -l $directory_fwrecover/$archivofin-nft-ipv6
-$command_ls -l $directory_fwrecover/$archivofin-legacy-ipv4
-$command_ls -l $directory_fwrecover/$archivofin-legacy-ipv6
+$command_ls -l $default_directory_fwrecover/$archivofin-nft-ipv4
+$command_ls -l $default_directory_fwrecover/$archivofin-nft-ipv6
+$command_ls -l $default_directory_fwrecover/$archivofin-legacy-ipv4
+$command_ls -l $default_directory_fwrecover/$archivofin-legacy-ipv6
 echo "$title_md [ _ok_ ] [ firewall listed ] [ $archivofin ]"
 exit; fi
 ####
@@ -4959,25 +4958,25 @@ case "$second_option" in
 echo "$text_md [ info ] [ Use: $cmd_realpath show file-to-show ]" ; exit ;;
 *) archivofin=$($command_sed 's/\///g' <<< "$second_option") ;;
 esac
-$command_ls -l $directory_fwrecover/$archivofin-arptables
-$command_ls -l $directory_fwrecover/$archivofin-ebtables
-$command_ls -l $directory_fwrecover/$archivofin-nft-ipv4
-$command_ls -l $directory_fwrecover/$archivofin-nft-ipv6
-$command_ls -l $directory_fwrecover/$archivofin-legacy-ipv4
-$command_ls -l $directory_fwrecover/$archivofin-legacy-ipv6
+$command_ls -l $default_directory_fwrecover/$archivofin-arptables
+$command_ls -l $default_directory_fwrecover/$archivofin-ebtables
+$command_ls -l $default_directory_fwrecover/$archivofin-nft-ipv4
+$command_ls -l $default_directory_fwrecover/$archivofin-nft-ipv6
+$command_ls -l $default_directory_fwrecover/$archivofin-legacy-ipv4
+$command_ls -l $default_directory_fwrecover/$archivofin-legacy-ipv6
 echo "$title_md [ _ok_ ] [ FIREWALL LISTED ] [ $archivofin ]"
 echo "$fifty_md $archivofin-arptables"
-cat $directory_fwrecover/$archivofin-arptables
+cat $default_directory_fwrecover/$archivofin-arptables
 echo "$fifty_md $archivofin-ebtables"
-cat $directory_fwrecover/$archivofin-ebtables
+cat $default_directory_fwrecover/$archivofin-ebtables
 echo "$fifty_md $archivofin-nft-ipv4"
-cat $directory_fwrecover/$archivofin-nft-ipv4
+cat $default_directory_fwrecover/$archivofin-nft-ipv4
 echo "$fifty_md $archivofin-legacy-ipv4"
-cat $directory_fwrecover/$archivofin-legacy-ipv4
+cat $default_directory_fwrecover/$archivofin-legacy-ipv4
 echo "$fifty_md $archivofin-nft-ipv6"
-cat $directory_fwrecover/$archivofin-nft-ipv6
+cat $default_directory_fwrecover/$archivofin-nft-ipv6
 echo "$fifty_md archivofin-legacy-ipv6"
-cat $directory_fwrecover/$archivofin-legacy-ipv6
+cat $default_directory_fwrecover/$archivofin-legacy-ipv6
 echo "$title_md [ _ok_ ] [ firewall readed ] [ $archivofin ]"
 echo 
 exit; fi
@@ -4992,24 +4991,24 @@ exit; fi
 if [ "$first_option" == "actual" ]; then 
 echo "$title_md [ $first_option ]  [ show the last firewall saved ] "
 echo 
-$command_arptables-save          &> $directory_fwrecover/$file_installed-actual-arptables
-$command_ebtables-save           &> $directory_fwrecover/$file_installed-actual-ebtables   
-$command_iptables_nft-save       &> $directory_fwrecover/$file_installed-actual-nft-ipv4   
-$command_iptables_legacy-save    &> $directory_fwrecover/$file_installed-actual-legacy-ipv4
-$command_ip6tables_nft-save      &> $directory_fwrecover/$file_installed-actual-nft-ipv6   
-$command_ip6tables_legacy-save   &> $directory_fwrecover/$file_installed-actual-legacy-ipv6
+$command_arptables-save          &> $default_directory_fwrecover/$file_installed-actual-arptables
+$command_ebtables-save           &> $default_directory_fwrecover/$file_installed-actual-ebtables   
+$command_iptables_nft-save       &> $default_directory_fwrecover/$file_installed-actual-nft-ipv4   
+$command_iptables_legacy-save    &> $default_directory_fwrecover/$file_installed-actual-legacy-ipv4
+$command_ip6tables_nft-save      &> $default_directory_fwrecover/$file_installed-actual-nft-ipv6   
+$command_ip6tables_legacy-save   &> $default_directory_fwrecover/$file_installed-actual-legacy-ipv6
 echo "$fifty_md arptables $title_md"
-cat $directory_fwrecover/$file_installed-actual-arptables
+cat $default_directory_fwrecover/$file_installed-actual-arptables
 echo "$fifty_md ebtables $title_md"
-cat $directory_fwrecover/$file_installed-actual-ebtables
+cat $default_directory_fwrecover/$file_installed-actual-ebtables
 echo "$fifty_md nft with ipv4 $title_md"
-cat $directory_fwrecover/$file_installed-actual-nft-ipv4
+cat $default_directory_fwrecover/$file_installed-actual-nft-ipv4
 echo "$fifty_md legacy with ipv4 $title_md"
-cat $directory_fwrecover/$file_installed-actual-legacy-ipv4
+cat $default_directory_fwrecover/$file_installed-actual-legacy-ipv4
 echo "$fifty_md nft with ipv6 $title_md"
-cat $directory_fwrecover/$file_installed-actual-nft-ipv6
+cat $default_directory_fwrecover/$file_installed-actual-nft-ipv6
 echo "$fifty_md legacy with ipv6 $title_md"
-cat $directory_fwrecover/$file_installed-actual-legacy-ipv6
+cat $default_directory_fwrecover/$file_installed-actual-legacy-ipv6
 echo
 echo "  [ _ok_ ] [ readed firewall actual ]"
 exit; fi
@@ -5028,12 +5027,12 @@ echo "$title_md [ $first_option ]  [ Stop the firewall ] "
 #### english: save actual fw #### spanish: guarda actual fw
 ####
 ####
-$command_arptables-save &> $directory_fwrecover/$file_installed-stoped-arptables
-$command_ebtables-save &> $directory_fwrecover/$file_installed-stoped-ebtables             
-$command_iptables_nft-save &> $directory_fwrecover/$file_installed-stoped-nft-ipv4         
-$command_iptables_legacy-save &> $directory_fwrecover/$file_installed-stoped-legacy-ipv4   
-$command_ip6tables_nft-save &> $directory_fwrecover/$file_installed-stoped-nft-ipv6        
-$command_ip6tables_legacy-save &> $directory_fwrecover/$file_installed-stoped-legacy-ipv6  
+$command_arptables-save &> $default_directory_fwrecover/$file_installed-stoped-arptables
+$command_ebtables-save &> $default_directory_fwrecover/$file_installed-stoped-ebtables             
+$command_iptables_nft-save &> $default_directory_fwrecover/$file_installed-stoped-nft-ipv4         
+$command_iptables_legacy-save &> $default_directory_fwrecover/$file_installed-stoped-legacy-ipv4   
+$command_ip6tables_nft-save &> $default_directory_fwrecover/$file_installed-stoped-nft-ipv6        
+$command_ip6tables_legacy-save &> $default_directory_fwrecover/$file_installed-stoped-legacy-ipv6  
 ####
 ####
 #### english: erase the rules #### spanish: borra las reglas
@@ -5058,12 +5057,12 @@ echo "$title_md [ $first_option ]  [ Continue the stopped firewall ] "
 #### english: restore last fw #### spanish: restaura el ultimo fw
 ####
 ####
-cat $directory_fwrecover/$file_installed-stoped-arptables | $command_arptables-restore
-cat $directory_fwrecover/$file_installed-stoped-ebtables | $command_ebtables-restore
-cat $directory_fwrecover/$file_installed-stoped-nft-ipv4 | $command_iptables_nft-restore  
-cat $directory_fwrecover/$file_installed-stoped-legacy-ipv4 | $command_iptables_legacy-restore  
-cat $directory_fwrecover/$file_installed-stoped-nft-ipv6 | $command_ip6tables_nft-restore  
-cat $directory_fwrecover/$file_installed-stoped-legacy-ipv6 | $command_ip6tables_legacy-restore  
+cat $default_directory_fwrecover/$file_installed-stoped-arptables | $command_arptables-restore
+cat $default_directory_fwrecover/$file_installed-stoped-ebtables | $command_ebtables-restore
+cat $default_directory_fwrecover/$file_installed-stoped-nft-ipv4 | $command_iptables_nft-restore  
+cat $default_directory_fwrecover/$file_installed-stoped-legacy-ipv4 | $command_iptables_legacy-restore  
+cat $default_directory_fwrecover/$file_installed-stoped-nft-ipv6 | $command_ip6tables_nft-restore  
+cat $default_directory_fwrecover/$file_installed-stoped-legacy-ipv6 | $command_ip6tables_legacy-restore  
 echo "$title_md [ info ] [ continue firewall  ]"
 echo "$title_md [ _ok_ ] [ firewall continued ]"
 exit; fi
@@ -5077,7 +5076,7 @@ exit; fi
 ####
 if [ "$first_option" == "config-eng" ]; then 
 echo "$title_md [ $first_option ] [ show variables cfg from english configuration ] "
-cat  $defaultfullcfg_eng
+cat  $default_fullcfg_eng
 exit; fi
 ####
 ####
@@ -5089,7 +5088,7 @@ exit; fi
 ####
 if [ "$first_option" == "config-spa" ]; then 
 echo "$title_md [ $first_option ] [ show variables cfg from spanish configuration ] "
-cat $defaultfullcfg_spa
+cat $default_fullcfg_spa
 exit; fi
 ####
 ####
@@ -5197,17 +5196,17 @@ case $second_option in
 #### 
 #### 
 "new-mini-custom")
-cp "$defaultminicfg_eng" "$directory_temporal/$file_installed-$third_option"
+cp "$default_minicfg_eng" "$directory_temporal/$file_installed-$third_option"
 $favorite_realpath_graphicalldialog --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$third_option" \
---editable --title="NEW MINI CONFIG" 1> "$directory_config/$third_option" ;
-if [ -s "$directory_config/$third_option" ]; then $nada ;
+--editable --title="NEW MINI CONFIG" 1> "$default_directory_config/$third_option" ;
+if [ -s "$default_directory_config/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="OK new config file: $third_option \
 AND launch: $cmd_realpath load-custom $third_option" ; exit
-else rm "$directory_config/$third_option" ; 
+else rm "$default_directory_config/$third_option" ; 
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="Canceled new file: $third_option" ; exit; fi
@@ -5215,17 +5214,17 @@ $favorite_realpath_graphicalldialog --forms \
 #### 
 #### 
 "new-full-custom")
-cp "$defaultfullcfg_eng" "$directory_temporal/$file_installed-$third_option"
+cp "$default_fullcfg_eng" "$directory_temporal/$file_installed-$third_option"
 $favorite_realpath_graphicalldialog --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$third_option" \
---editable --title="NEW FULL CONFIG" 1> "$directory_config/$third_option" ;
-if [ -s "$directory_config/$third_option" ]; then $nada ;
+--editable --title="NEW FULL CONFIG" 1> "$default_directory_config/$third_option" ;
+if [ -s "$default_directory_config/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="OK new config file: $third_option \
 AND launch: $cmd_realpath load-custom $third_option" ; exit
-else rm "$directory_config/$third_option" ; 
+else rm "$default_directory_config/$third_option" ; 
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="Canceled new file: $third_option" ; exit; fi
@@ -5233,17 +5232,17 @@ $favorite_realpath_graphicalldialog --forms \
 #### 
 #### 
 "nueva-mini-custom")
-cp "$defaultminicfg_spa" "$directory_temporal/$file_installed-$third_option"
+cp "$default_minicfg_spa" "$directory_temporal/$file_installed-$third_option"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$third_option" \
---editable --title="NUEVA MINI CONFIG" 1> "$directory_config/$third_option" ;
-if [ -s "$directory_config/$third_option" ]; then $nada ;
+--editable --title="NUEVA MINI CONFIG" 1> "$default_directory_config/$third_option" ;
+if [ -s "$default_directory_config/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="OK new config file: $third_option \
 AND launch: $cmd_realpath load-custom $third_option" ; exit
-else rm "$directory_config/$third_option" ; 
+else rm "$default_directory_config/$third_option" ; 
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="Canceled new file: $third_option" ; exit; fi
@@ -5251,17 +5250,17 @@ $favorite_realpath_graphicalldialog  --forms \
 #### 
 #### 
 "nueva-completa-custom")
-cp "$defaultfullcfg_spa" "$directory_temporal/$file_installed-$third_option"
+cp "$default_fullcfg_spa" "$directory_temporal/$file_installed-$third_option"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$third_option" \
---editable --title="NUEVA COMPLETA CONFIG" 1> "$directory_config/$third_option" ;
-if [ -s "$directory_config/$third_option" ]; then $nada ;
+--editable --title="NUEVA COMPLETA CONFIG" 1> "$default_directory_config/$third_option" ;
+if [ -s "$default_directory_config/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="OK new config file: $third_option \
 AND launch: $cmd_realpath load-custom $third_option" ; exit
-else rm "$directory_config/$third_option" ; 
+else rm "$default_directory_config/$third_option" ; 
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="Canceled new file: $third_option" ; exit; fi
@@ -5269,20 +5268,20 @@ $favorite_realpath_graphicalldialog  --forms \
 #### 
 #### 
 "modify-custom")
-if [ ! -f "$directory_config/$third_option" ]
+if [ ! -f "$default_directory_config/$third_option" ]
 then $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="file not found: $third_option" ; exit ; fi 
-cp "$directory_config/$third_option" "$directory_temporal/$file_installed-$third_option"
+cp "$default_directory_config/$third_option" "$directory_temporal/$file_installed-$third_option"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$third_option" \
---editable --title="MODIFY CONFIG" 1> "$directory_config/$third_option"
-if [ -s "$directory_config/$third_option" ]; then $nada ; 
+--editable --title="MODIFY CONFIG" 1> "$default_directory_config/$third_option"
+if [ -s "$default_directory_config/$third_option" ]; then $nada ; 
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="OK. file: $third_option"
-else cp "$directory_temporal/$file_installed-$third_option" "$directory_config/$third_option"
+else cp "$directory_temporal/$file_installed-$third_option" "$default_directory_config/$third_option"
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="Canceled. file: $third_option"; fi
@@ -5291,26 +5290,26 @@ $favorite_realpath_graphicalldialog --forms \
 ####
 "expert-wpa-new")
 $cmd_realpath expert-wpa-regen
-cp $directory_wpa/defaultwpa $directory_wpa/wpaconfig_$third_option
+cp $default_directory_wpa/defaultwpa $default_directory_wpa/wpaconfig_$third_option
 $cmd_realpath gui expert-wpa-modify $third_option
 ;;
 ####
 ####
 "expert-wpa-modify")
-if [ ! -f "$directory_wpa/wpaconfig_$third_option" ]
+if [ ! -f "$default_directory_wpa/wpaconfig_$third_option" ]
 then $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="file not found: wpaconfig_$third_option" ; exit ; fi 
-cp "$directory_wpa/wpaconfig_$third_option" "$directory_temporal/$file_installed-$third_option"
+cp "$default_directory_wpa/wpaconfig_$third_option" "$directory_temporal/$file_installed-$third_option"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$third_option" \
---editable --title="MODIFY CONFIG" 1> "$directory_wpa/wpaconfig_$third_option"
-if [ -s "$directory_wpa/wpaconfig_$third_option" ]; then  
+--editable --title="MODIFY CONFIG" 1> "$default_directory_wpa/wpaconfig_$third_option"
+if [ -s "$default_directory_wpa/wpaconfig_$third_option" ]; then  
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="OK. file: $third_option"
-else cp "$directory_temporal/$file_installed-$third_option" "$directory_wpa/wpaconfig_$third_option"
+else cp "$directory_temporal/$file_installed-$third_option" "$default_directory_wpa/wpaconfig_$third_option"
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="Canceled. file: wpaconfig_$third_option"; fi
@@ -5343,14 +5342,14 @@ case $second_option in
 #### 
 "wizard-mini")
 archivo="wizard-mini"
-cp "$defaultminicfg_eng" "$directory_temporal/$file_installed-$archivo"
+cp "$default_minicfg_eng" "$directory_temporal/$file_installed-$archivo"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$archivo" \
---editable --title="WIZARD MINI" 1> "$directory_config/$archivo"
-if [  -s "$directory_config/$archivo" ]; then $nada ; 
+--editable --title="WIZARD MINI" 1> "$default_directory_config/$archivo"
+if [  -s "$default_directory_config/$archivo" ]; then $nada ; 
 $cmd_realpath -gui load-custom $archivo ; $cmd_realpath -gui list4;
-else rm "$directory_config/$archivo" ;
+else rm "$default_directory_config/$archivo" ;
 $favorite_realpath_graphicalldialog --info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text "Ok. $archivo canceled"; fi
@@ -5359,14 +5358,14 @@ $favorite_realpath_graphicalldialog --info \
 #### 
 "wizard-full")
 archivo="wizard-full"
-cp "$defaultfullcfg_eng" "$directory_temporal/$file_installed-$archivo"
+cp "$default_fullcfg_eng" "$directory_temporal/$file_installed-$archivo"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$archivo" \
---editable --title="WIZARD FULL" 1> "$directory_config/$archivo"
-if [  -s "$directory_config/$archivo" ]; then $nada ; 
+--editable --title="WIZARD FULL" 1> "$default_directory_config/$archivo"
+if [  -s "$default_directory_config/$archivo" ]; then $nada ; 
 $cmd_realpath -gui load-custom $archivo ; $cmd_realpath -gui list4;
-else rm "$directory_config/$archivo" ;
+else rm "$default_directory_config/$archivo" ;
 $favorite_realpath_graphicalldialog  --info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text "OK. $archivo canceled"; fi
@@ -5374,20 +5373,20 @@ $favorite_realpath_graphicalldialog  --info \
 #### 
 #### 
 "modify-custom")
-if [ -f "$directory_config/$third_option" ] ; then $nada
+if [ -f "$default_directory_config/$third_option" ] ; then $nada
 else $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="file not found: $third_option" ; exit ; fi 
-cp "$directory_config/$third_option" "$directory_temporal/$file_installed-$third_option"
+cp "$default_directory_config/$third_option" "$directory_temporal/$file_installed-$third_option"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$third_option" \
---editable --title="MODIFY CONFIG $third_option" 1> "$directory_config/$third_option"
-if [ -s "$directory_config/$third_option" ]; then $nada ; 
+--editable --title="MODIFY CONFIG $third_option" 1> "$default_directory_config/$third_option"
+if [ -s "$default_directory_config/$third_option" ]; then $nada ; 
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="OK. file: $third_option"
-else cp "$directory_temporal/$cmd_realpath-$third_option" "$directory_config/$third_option"
+else cp "$directory_temporal/$cmd_realpath-$third_option" "$default_directory_config/$third_option"
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="Canceled. file: $third_option"; fi
@@ -5396,12 +5395,12 @@ $favorite_realpath_graphicalldialog --forms \
 ####
 "preferences-modify")
 archivo="default"
-cp "$default_preferences" "$default_preferences.old"
+cp "$file_default_preferences" "$file_default_preferences.old"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$default_preferences.old" \
---editable --title="MODIFY PREFERENCES" 1> "$default_preferences"
-if [ ! -s "$default_preferences" ]; then cp "$default_preferences.old" "$default_preferences" ;
+--filename="$file_default_preferences.old" \
+--editable --title="MODIFY PREFERENCES" 1> "$file_default_preferences"
+if [ ! -s "$file_default_preferences" ]; then cp "$file_default_preferences.old" "$file_default_preferences" ;
 $favorite_realpath_graphicalldialog  --info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text "OK. $archivo canceled"; fi
@@ -5453,7 +5452,7 @@ untexto="$cmd_realpath gui-shell-zenity"
 favorite_realpath_graphicalldialog="$command_zenity"
 ####
 ####
-#### cd $directory_config
+#### cd $default_directory_config
 ####
 ####
 menugtk="$($command_zenity --entry \
@@ -5613,7 +5612,7 @@ untexto="$cmd_realpath gui-shell-yad"
 favorite_realpath_graphicalldialog="$command_yad"
 ####
 ####
-#### cd $directory_config
+#### cd $default_directory_config
 ####
 ####
 menugtk="$($command_yad --entry \
@@ -6985,7 +6984,7 @@ exit; fi
 ####
 if [ "$first_option" == "load-custom" ]; then 
 echo "$title_md [ info ] [ loading firewall load-custom ] \
-[ $directory_config/$second_option ]" ;
+[ $default_directory_config/$second_option ]" ;
 launch_rules_firewall="yes" ;
 type_firewall="customfw" ;
 name_firewall="$second_option" ;
@@ -6995,11 +6994,11 @@ name_firewall="$second_option" ;
 #### spanish: configura variables modificadas si estan ahi
 ####
 ####
-if [ -f "$directory_config/$second_option" ]
-then source $directory_config/$second_option ; fi
+if [ -f "$default_directory_config/$second_option" ]
+then source $default_directory_config/$second_option ; fi
 ####
 ####
-if [ ! -f "$directory_config/$second_option" ]
+if [ ! -f "$default_directory_config/$second_option" ]
 then  $cmd_realpath names-custom ; exit; fi
 ####
 ####
@@ -11296,8 +11295,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "load-custom" ]
-then if [ -f $directory_config/$second_option ]
-then source $directory_config/$second_option &> /dev/null
+then if [ -f $default_directory_config/$second_option ]
+then source $default_directory_config/$second_option &> /dev/null
 else echo "$text_md [ fail ] [ Config file not found ]"
 exit ; fi ; fi
 ####
