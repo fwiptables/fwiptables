@@ -101,7 +101,7 @@ echo ; fi
 ####
 cmd_realpath="$(realpath $0)"    # its full routename
 cmd_basename="$(basename $0)"    # its only filename
-cmd_version="cmd-11-11"          # its version
+cmd_version="cmd-11-12"          # its version
 file_installed="fwiptables-cmd"  # its filename installed
 directory_installed="/usr/bin"   # its directory installed
 cmd_contact="fwiptables@gmx.com" # its contact
@@ -1820,15 +1820,17 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "version" ]; then 
-echo "$title_md [ $first_option ] [ Show version ] [ version.md ]       "    
-echo "$text_md [ info ] [ Program ] $cmd_realpath      "
-echo "$text_md [ info ] [ Version ] $cmd_version       "
-echo "$text_md [ info ] [ Details ] $cmd_shortdescription | $cmd_longdescription  "
-echo "$text_md [ info ] [ License ] $cmd_license  "
+echo "$title_md [ $first_option ] [ Show version ] [ version.md ]   "    
+echo "$text_md [ info ] [ Program ] $cmd_realpath "
+echo "$text_md [ info ] [ Version ] $cmd_version  "
+echo "$text_md [ info ] [ Short description ] $cmd_shortdescription "
+echo "$text_md [ info ] [ Long description  ] $cmd_longdescription  "
+echo "$text_md [ info ] [ License program   ] $cmd_license  "
 echo "$text_md [ info ] [ Developer Contact ] $cmd_contact  "
-echo "$text_md [ info ] [ Data  Directory   ] $directory_data                       "     
-echo "$text_md [ info ] [ Cache Directory   ] $directory_cache                      "   
-echo "$text_md [ info ] [ File  Format      ] $($command_file $cmd_realpath  )      "   
+echo "$text_md [ info ] [ Data  Directory   ] $directory_data  "
+echo "$text_md [ info ] [ Cache Directory   ] $directory_cache "
+echo "$text_md [ info ] [ File  Format      ] "
+echo "$text_md $($command_file $cmd_realpath) "   
 exit ; fi
 ####
 ####
