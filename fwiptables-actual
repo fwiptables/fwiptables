@@ -6106,14 +6106,14 @@ Firewall-List-With-Numeral|Firewall-customfw|\
 Firewall-systemfw|Options-easy"
 selection_menu="$($command_zenity --forms \
 --text="gui-roll" \
---title="Gui-roll With $cmd_realpath $cmd_version" \
+--title="Gui-roll With $cmd_basename $cmd_version" \
 --add-combo="$first_option" \
 --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
-"Info")
+"Info")	
 $cmd_realpath gui-zenity info ; exit ;;
 "Firewall-Control")
 $cmd_realpath gui-roll-zenity-firewall-control ; exit ;;
@@ -6145,7 +6145,7 @@ gui_menu="gui-principal-menu|gui-info-menu|\
 stop|continue|reset|names|show|save|load|actual"
 selection_menu="$($command_zenity --forms \
 --text="gui-roll-firewall-control" \
---title="Gui-roll With $cmd_realpath $cmd_version" \
+--title="Gui-roll With $cmd_basename $cmd_version" \
 --add-combo="$first_option" \
 --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
@@ -6199,16 +6199,14 @@ list-raw4|list-raw6|list-security4|list-security6|\
 list-ebtables|list-arptables"
 selection_menu="$($command_zenity --forms \
 --text="gui-roll-firewall-listconceptual" \
---title="Gui-roll With $cmd_realpath $cmd_version" \
+--title="Gui-roll With $cmd_basename $cmd_version" \
 --add-combo="$first_option" \
 --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
-1)$command_zenity  --info \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text="$cmd_realpath good bye"; exit ;;
+1) exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
 "gui-info-menu")$cmd_realpath -gui-zenity firewall-listconceptual ;;
 "ls4")$cmd_realpath -gui-zenity ls4 ;;
@@ -6247,7 +6245,7 @@ listn-raw4|listn-raw6|listn-security4|listn-security6|\
 list-ebtables|list-arptables"
 selection_menu="$($command_zenity --forms \
 --text="gui-roll-firewall-listnumeral" \
---title="Gui-roll With $cmd_realpath $cmd_version" \
+--title="Gui-roll With $cmd_basename $cmd_version" \
 --add-combo="$first_option" \
 --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
@@ -6294,16 +6292,14 @@ new-full-custom|nueva-completa-custom|new-mini-custom|nueva-mini-custom|\
 names-custom|show-custom|modify-custom|del-custom|config-regen"
 selection_menu="$($command_zenity --forms \
 --text="gui-roll-firewall-customfw" \
---title="Gui-roll With $cmd_realpath $cmd_version" \
+--title="Gui-roll With $cmd_basename $cmd_version" \
 --add-combo="$first_option" \
 --combo-values="$gui_menu")"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 #### 
 #### 
 case "$selection_final" in
-1)$command_zenity  --info \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text="$cmd_realpath good bye"; exit ;;
+1) exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
 "gui-info-menu")$cmd_realpath -gui-zenity firewall-customfw ;;
 "load-custom")archivo="$($command_zenity  --entry \
@@ -6369,29 +6365,32 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-customfw:
-##########    english: gui-roll-firewall-systemfw: gui roll firewall-systemfw: gui with roll  ##########
-##########    spanish: gui-roll-firewall-systemfw: gui roll firewall-systemfw: gui con roll   ##########
+##########    english: gui-roll-zenity-firewall-systemfw: gui roll firewall-systemfw  ##########
+##########    spanish: gui-roll-zenity-firewall-systemfw: gui roll firewall-systemfw  ##########
 #### :rutina-inicial-gui-roll-zenity-firewall-systemfw:
 ####
 ####
 if [ "$first_option" == "gui-roll-zenity-firewall-systemfw" ]
-then echo $head_waiting_gui ; echo $give_cover
-gui_menu="gui-principal-menu|gui-info-menu|\
-client-basic|client-web|client-mail|client-news|client-ftp|client-git|client-vnc|\
-client-torrent|client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
-games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|server-proxy|\
-server-web|server-vnc|server-samba|server-ssh|server-print|server-lamp|server-domain|\
-server-news|server-mail|server-ftp|server-teamspeak|server-mumble|server-sql|server-asterisk"
-selection_menu="$($command_zenity --forms \
+then echo $head_waiting_gui ; echo $give_cover ;
+menu="gui-principal-menu|gui-info-menu|\
+client-basic|client-web|client-mail|client-news|\
+client-ftp|client-git|client-vnc|client-torrent|\
+client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
+games-shooter|game-wesnoth|game-minetest|game-freeciv|\
+game-widelands|server-proxy|server-web|server-vnc|\
+server-samba|server-ssh|server-print|server-lamp|\
+server-domain|server-news|server-mail|server-ftp|\
+server-teamspeak|server-mumble|server-sql|server-asterisk"
+selection="$($command_zenity --forms \
 --text="gui-roll-firewall-customfw" \
---title="Gui-roll With $cmd_realpath $cmd_version" \
+--title="Gui-roll With $cmd_basename $cmd_version" \
 --add-combo="$first_option" \
---combo-values="$gui_menu")"
-selection_final="$(echo $selection_menu | sed 's/\|//g')"
+--combo-values="$menu")"
 #### 
 #### 
+selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1) $command_zenity  --info --width=$config_graphicall_width --height=$config_graphicall_height --text="$cmd_realpath good bye"; exit ;;
+1) exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
 "gui-info-menu")$cmd_realpath -gui-zenity firewall-systemfw ;;
 "client-web")$cmd_realpath -gui-zenity client-web ; $cmd_realpath gui list4;;
@@ -6431,7 +6430,7 @@ case "$selection_final" in
 esac
 ####
 ####
-exit; fi
+exit ; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-systemfw:
@@ -6454,7 +6453,7 @@ depends|commands|variables|license|examples|intro"
 ####
 selection="$($command_zenity --forms \
 --text="$first_option" \
---title="Gui-roll With $cmd_realpath $cmd_version" \
+--title="Gui-roll With $cmd_basename $cmd_version" \
 --forms \
 --add-combo="$first_option" \
 --combo-values="$gui_menu")"
@@ -6462,9 +6461,7 @@ selection="$($command_zenity --forms \
 ####
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
-1)$command_zenity  --info \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text="$cmd_realpath good bye"; exit ;;
+1) exit ;;
 gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
 gui-info-menu)$cmd_realpath -gui-zenity options-easy ;;
 preferences-read)$cmd_realpath -gui-zenity preferences-read ;;
@@ -6515,7 +6512,7 @@ selection_final="$($favorite_realpath_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" \
 --text="$first_option" \
---title="Gui-menu With $cmd_realpath $cmd_version" \
+--title="Gui-menu With $cmd_basename $cmd_version" \
 --list $selection_menu)"
 #### 
 ####
@@ -6558,13 +6555,13 @@ selection_final="$($favorite_basename_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" \
 --text="$first_option" \
---title="Gui-menu With $cmd_realpath $cmd_version" \
+--title="Gui-menu With $cmd_basename $cmd_version" \
 --list $selection_menu )"
 #### 
 #### 
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu*)$cmd_realpath gui-menu ;;
+gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
 gui-help-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewallcontrol ;;
 gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-control ;;
 stop*)$cmd_realpath -gui-$favorite_basename_graphicalldialog stop ;
@@ -6617,13 +6614,13 @@ selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_basename_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" --text="$first_option" \
---title="Gui-menu With $cmd_realpath $cmd_version" \
+--title="Gui-menu With $cmd_basename $cmd_version" \
 --list $selection_menu )"
 #### 
 #### 
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu*)$cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
+gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
 gui-help-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-listconceptual ;;
 gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-listconceptual ;;
 ls4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog ls4 ;;
@@ -6675,7 +6672,7 @@ selection_final="$($favorite_basename_graphicalldialog \
 #### 
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu*)$cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
+gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
 gui-help-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-listnumeral ;;
 gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-listnumeral ;;
 lsn4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog lsn4 ;;
@@ -6706,7 +6703,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "gui-menu-firewall-customfw" ]
-then echo $head_waiting_gui ; echo $give_cover
+then echo $head_waiting_gui ; echo $give_cover ;
 if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 case "$favorite_basename_graphicalldialog" in "$NULL")
@@ -6723,13 +6720,13 @@ selection_final="$($favorite_basename_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" \
 --text="$first_option" \
---title="Gui-menu With $cmd_realpath $cmd_version" \
+--title="Gui-menu With $cmd_basename $cmd_version" \
 --list $selection_menu )"
 #### 
 #### 
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
+gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
 gui-help-menu*) $cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-customfw ;;
 gui-info-menu*) $cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-customfw ;;
 eraserules*)$cmd_realpath -gui-$favorite_basename_graphicalldialog eraserules
@@ -6824,13 +6821,13 @@ selection_final="$($favorite_basename_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" \
 --text="$first_option" \
---title="Gui-menu With $cmd_realpath $cmd_version" \
+--title="Gui-menu With $cmd_basename $cmd_version" \
 --list $selection_menu )"
 #### 
 #### 
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu*)$cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
+gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
 gui-help-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-systemfw ;;
 gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-systemfw ;;
 client-basic*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-basic ;
@@ -6919,9 +6916,9 @@ if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 case "$favorite_basename_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|preferences-read|\
+gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
-list-options|clasic-options|info-options|expert|compile|download|intro|\
+list-options|clasic-options|info-options|expert|download|intro|\
 ip4|ip6|speed-ip4|speed-ip6|sockets|license|notes|about|\
 examples|depends|variables|commands"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
@@ -6935,8 +6932,7 @@ selection_final="$($favorite_basename_graphicalldialog \
 ####
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu*)$cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
-gui-help-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog options-easy ;;
+gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
 gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog options-easy ;;
 preferences-read*)$cmd_realpath -gui-$favorite_basename_graphicalldialog preferences-read ;;
 preferences-modify*)$cmd_realpath -gui-$favorite_basename_graphicalldialog preferences-modify ;;
@@ -6947,7 +6943,6 @@ clasic-options*)$cmd_realpath -gui-$favorite_basename_graphicalldialog clasic-op
 info-options*)$cmd_realpath -gui-$favorite_basename_graphicalldialog info-options ;;
 expert*)$cmd_realpath -gui-$favorite_basename_graphicalldialog expert ;;
 intro*)$cmd_realpath -gui-$favorite_basename_graphicalldialog intro ;;
-compile*)$cmd_realpath -gui-$favorite_basename_graphicalldialog compile ;;
 download*)$cmd_realpath -gui-$favorite_basename_graphicalldialog download ;;
 ip4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog ip4 ;;
 ip6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog ip6 ;;
