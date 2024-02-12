@@ -565,7 +565,7 @@ head_waiting_log="$title_md [ info ] [ log ] $head_waiting_all "
 head_waiting_pdf="$title_md [ info ] [ pdf ] $head_waiting_all "
 #### #### english: [characters to show]
 #### spanish: [caracteres a mostrar]
-give_cover="$title_md [ $file_installed $cmd_version ] [ $X11_OR_WAYLAND ] \
+head_give_cover="$title_md [ $file_installed $cmd_version ] [ $X11_OR_WAYLAND ] \
 [ Options: $cmd_realpath options ]"
 #### #### english: [characters to show] 
 #### spanish: [caracteres a mostrar]
@@ -5442,7 +5442,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-shell-zenity" ]
-then echo $head_waiting_gui ; echo $give_cover
+then echo $head_waiting_gui ; echo $head_give_cover
 ####
 ####
 ####  english: principal gui  #### spanish: principal gui
@@ -5602,7 +5602,7 @@ exit ; fi
 ####
 ####
 if   [ "$first_option" == "gui-shell-yad" ]
-then echo $head_waiting_gui ; echo $give_cover
+then echo $head_waiting_gui ; echo $head_give_cover
 ####
 ####
 ####  english: principal gui  #### spanish: principal gui
@@ -6100,7 +6100,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "gui-roll-zenity" ]
-then echo $head_waiting_gui ; echo $give_cover
+then echo $head_waiting_gui ; echo $head_give_cover
 gui_menu="Info|Firewall-Control|Firewall-List-With-Conceptual|\
 Firewall-List-With-Numeral|Firewall-customfw|\
 Firewall-systemfw|Options-easy"
@@ -6123,7 +6123,7 @@ $cmd_realpath gui-roll-zenity-firewall-listconceptual ; exit ;;
 $cmd_realpath gui-roll-zenity-firewall-listnumeral ; exit ;;
 "Firewall-customfw")
 $cmd_realpath gui-roll-zenity-firewall-customfw ; exit ;;
-"Frewall-systemfw")
+"Firewall-systemfw")
 $cmd_realpath gui-roll-zenity-firewall-systemfw ; exit ;;
 "Options-easy")
 $cmd_realpath gui-roll-zenity-options-easy ; exit ;;
@@ -6140,7 +6140,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "gui-roll-zenity-firewall-control" ]
-then echo $head_waiting_gui ; echo $give_cover
+then echo $head_waiting_gui ; echo $head_give_cover
 gui_menu="gui-principal-menu|gui-info-menu|\
 stop|continue|reset|names|show|save|load|actual"
 selection_menu="$($command_zenity --forms \
@@ -6191,7 +6191,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "gui-roll-zenity-firewall-listconceptual" ]
-then echo $head_waiting_gui ; echo $give_cover
+then echo $head_waiting_gui ; echo $head_give_cover
 gui_menu="gui-principal-menu|gui-info-menu|\
 ls4|ls6|list-filter4|list-filter6|list-alltables|\
 list-nat4|list-nat6|list-mangle4|list-mangle6|\
@@ -6237,7 +6237,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "gui-roll-zenity-firewall-listnumeral" ]
-then echo $head_waiting_gui ; echo $give_cover
+then echo $head_waiting_gui ; echo $head_give_cover
 gui_menu="gui-principal-menu|gui-info-menu|lsn4|lsn6|\
 listn-filter4|listn-filter6|listn-alltables|\
 listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|\
@@ -6285,7 +6285,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "gui-roll-zenity-firewall-customfw" ]
-then echo $head_waiting_gui ; echo $give_cover
+then echo $head_waiting_gui ; echo $head_give_cover
 gui_menu="gui-principal-menu|gui-info-menu|\
 load-custom|clone-systemfw|eraserules|wizard-mini|wizard-full|off-line|all-permisive|\
 new-full-custom|nueva-completa-custom|new-mini-custom|nueva-mini-custom|\
@@ -6361,7 +6361,7 @@ $cmd_realpath -gui-zenity del-custom $archivo ;;
 esac
 ####
 ####
-exit; fi
+exit ; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-customfw:
@@ -6371,9 +6371,10 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "gui-roll-zenity-firewall-systemfw" ]
-then echo $head_waiting_gui ; echo $give_cover ;
+then echo $head_waiting_gui ; echo $head_give_cover ;
 menu="gui-principal-menu|gui-info-menu|\
-client-basic|client-web|client-mail|client-news|\
+client-basic|client-web|client-ipp|client-irc|\
+client-vpn|client-torrent|client-mail|client-news|\
 client-ftp|client-git|client-vnc|client-torrent|\
 client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
 games-shooter|game-wesnoth|game-minetest|game-freeciv|\
@@ -6392,41 +6393,41 @@ selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1) exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
-"gui-info-menu")$cmd_realpath -gui-zenity firewall-systemfw ;;
-"client-web")$cmd_realpath -gui-zenity client-web ; $cmd_realpath gui list4;;
-"client-ipp")$cmd_realpath -gui-zenity client-ipp   ; $cmd_realpath gui list4;;
-"client-irc")$cmd_realpath -gui-zenity client-irc   ; $cmd_realpath gui list4;;
-"client-mail")$cmd_realpath -gui-zenity client-mail ; $cmd_realpath gui list4;;
-"client-news")$cmd_realpath -gui-zenity client-news ; $cmd_realpath gui list4;;
-"client-ftp")$cmd_realpath -gui-zenity client-ftp   ; $cmd_realpath gui list4;;
-"client-git")$cmd_realpath -gui-zenity client-git ; $cmd_realpath gui list4;;
-"client-vnc")$cmd_realpath -gui-zenity client-vnc ; $cmd_realpath gui list4;;
-"client-torrent")$cmd_realpath -gui-zenity client-torrent ; $cmd_realpath gui list4;;
-"client-vpn")$cmd_realpath -gui-zenity client-vpn ; $cmd_realpath gui list4;;
-"client-tor")$cmd_realpath -gui-zenity client-tor ; $cmd_realpath gui list4;;
-"games-shooter")$cmd_realpath -gui-zenity games-shooter ; $cmd_realpath gui list4;;
-"game-wesnoth")$cmd_realpath -gui-zenity game-wesnoth ; $cmd_realpath gui list4;;
-"game-minetest")$cmd_realpath -gui-zenity game-minetest ; $cmd_realpath gui list4;;
-"game-freeciv")$cmd_realpath -gui-zenity game-freeciv ; $cmd_realpath gui list4;;
-"game-widelands")$cmd_realpath -gui-zenity game-widelands ; $cmd_realpath gui list4;;
-"lan-tor")$cmd_realpath -gui-zenity lan-tor ; $cmd_realpath gui list4;;
-"lan-vpn")$cmd_realpath -gui-zenity lan-vpn ; $cmd_realpath gui list4;;
-"shield-ssh")$cmd_realpath -gui-zenity shield-ssh ; $cmd_realpath gui list4;;
-"server-ssh")$cmd_realpath -gui-zenity server-ssh ; $cmd_realpath gui list4;;
-"server-web")$cmd_realpath -gui-zenity server-web ; $cmd_realpath gui list4;;
-"server-proxy")$cmd_realpath -gui-zenity server-proxy ; $cmd_realpath gui list4;;
-"server-vnc")$cmd_realpath -gui-zenity server-vnc ; $cmd_realpath gui list4;;
-"server-samba")$cmd_realpath -gui-zenity server-samba ; $cmd_realpath gui list4;;
-"server-news")$cmd_realpath -gui-zenity server-news ; $cmd_realpath gui list4;;
-"server-mail")$cmd_realpath -gui-zenity server-mail ; $cmd_realpath gui list4;;
-"server-ftp")$cmd_realpath -gui-zenity server-ftp ; $cmd_realpath gui list4;;
-"server-print")$cmd_realpath -gui-zenity server-print ; $cmd_realpath gui list4;;
-"server-lamp")$cmd_realpath -gui-zenity server-lamp ; $cmd_realpath gui list4;;
-"server-teamspeak")$cmd_realpath -gui-zenity server-teamspeak ; $cmd_realpath gui list4;;
-"server-mumble")$cmd_realpath -gui-zenity server-mumble ; $cmd_realpath gui list4;;
-"server-sql")$cmd_realpath -gui-zenity server-sql ; $cmd_realpath gui list4;;
-"server-asterisk")$cmd_realpath -gui-zenity server-asterisk ; $cmd_realpath gui list4;;
-"server-domain")$cmd_realpath -gui-zenity server-domain ; $cmd_realpath gui list4;;
+"gui-info-menu")$cmd_realpath gui-zenity firewall-systemfw ;;
+"client-basic")$cmd_realpath gui-zenity client-basic ; $cmd_realpath gui-zenity list4;;
+"client-web")$cmd_realpath gui-zenity client-web ; $cmd_realpath gui-zenity list4;;
+"client-ipp")$cmd_realpath gui-zenity client-ipp   ; $cmd_realpath gui-zenity list4;;
+"client-irc")$cmd_realpath gui-zenity client-irc   ; $cmd_realpath gui-zenity list4;;
+"client-mail")$cmd_realpath gui-zenity client-mail ; $cmd_realpath gui-zenity list4;;
+"client-news")$cmd_realpath gui-zenity client-news ; $cmd_realpath gui-zenity list4;;
+"client-ftp")$cmd_realpath gui-zenity client-ftp   ; $cmd_realpath gui-zenity list4;;
+"client-git")$cmd_realpath gui-zenity client-git ; $cmd_realpath gui-zenity list4;;
+"client-vnc")$cmd_realpath gui-zenity client-vnc ; $cmd_realpath gui-zenity list4;;
+"client-torrent")$cmd_realpath gui-zenity client-torrent ; $cmd_realpath gui-zenity list4;;
+"client-vpn")$cmd_realpath gui-zenity client-vpn ; $cmd_realpath gui-zenity list4;;
+"client-tor")$cmd_realpath gui-zenity client-tor ; $cmd_realpath gui-zenity list4;;
+"games-shooter")$cmd_realpath gui-zenity games-shooter ; $cmd_realpath gui-zenity list4;;
+"game-wesnoth")$cmd_realpath gui-zenity game-wesnoth ; $cmd_realpath gui-zenity list4;;
+"game-minetest")$cmd_realpath gui-zenity game-minetest ; $cmd_realpath gui-zenity list4;;
+"game-freeciv")$cmd_realpath gui-zenity game-freeciv ; $cmd_realpath gui-zenity list4;;
+"game-widelands")$cmd_realpath gui-zenity game-widelands ; $cmd_realpath gui-zenity list4;;
+"lan-tor")$cmd_realpath gui-zenity lan-tor ; $cmd_realpath gui-zenity list4;;
+"lan-vpn")$cmd_realpath gui-zenity lan-vpn ; $cmd_realpath gui-zenity list4;;
+"server-ssh")$cmd_realpath gui-zenity server-ssh ; $cmd_realpath gui-zenity list4;;
+"server-web")$cmd_realpath gui-zenity server-web ; $cmd_realpath gui-zenity list4;;
+"server-proxy")$cmd_realpath gui-zenity server-proxy ; $cmd_realpath gui-zenity list4;;
+"server-vnc")$cmd_realpath gui-zenity server-vnc ; $cmd_realpath gui-zenity list4;;
+"server-samba")$cmd_realpath gui-zenity server-samba ; $cmd_realpath gui-zenity list4;;
+"server-news")$cmd_realpath gui-zenity server-news ; $cmd_realpath gui-zenity list4;;
+"server-mail")$cmd_realpath gui-zenity server-mail ; $cmd_realpath gui-zenity list4;;
+"server-ftp")$cmd_realpath gui-zenity server-ftp ; $cmd_realpath gui-zenity list4;;
+"server-print")$cmd_realpath gui-zenity server-print ; $cmd_realpath gui-zenity list4;;
+"server-lamp")$cmd_realpath gui-zenity server-lamp ; $cmd_realpath gui-zenity list4;;
+"server-teamspeak")$cmd_realpath gui-zenity server-teamspeak ; $cmd_realpath gui-zenity list4;;
+"server-mumble")$cmd_realpath gui-zenity server-mumble ; $cmd_realpath gui-zenity list4;;
+"server-sql")$cmd_realpath gui-zenity server-sql ; $cmd_realpath gui-zenity list4;;
+"server-asterisk")$cmd_realpath gui-zenity server-asterisk ; $cmd_realpath gui-zenity list4;;
+"server-domain")$cmd_realpath gui-zenity server-domain ; $cmd_realpath gui-zenity list4;;
 esac
 ####
 ####
@@ -6440,7 +6441,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "gui-roll-zenity-options-easy" ]
-then echo $head_waiting_gui ; echo $give_cover
+then echo $head_waiting_gui ; echo $head_give_cover
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
@@ -6503,7 +6504,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "gui-menu" ] ;
-then echo $head_waiting_gui ; echo $give_cover
+then echo $head_waiting_gui ; echo $head_give_cover
 gui_menu="|01-Firewall-Control|02-Firewall-List-With-Conceptual|\
 02-Firewall-List-With-Numeral|03-firewall-customfw|04-firewall-systemfw|\
 05-options-easy"
@@ -6543,7 +6544,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-firewall-control" ]
-then echo $head_waiting_gui ; echo $give_cover
+then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 case "$favorite_basename_graphicalldialog" in "$NULL")
@@ -6601,7 +6602,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-firewall-listconceptual" ]
-then echo $head_waiting_gui ; echo $give_cover
+then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 case "$favorite_basename_graphicalldialog" in "$NULL")
@@ -6651,7 +6652,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-firewall-listnumeral" ]
-then echo $head_waiting_gui ; echo $give_cover
+then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 case "$favorite_basename_graphicalldialog" in "$NULL")
@@ -6703,7 +6704,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "gui-menu-firewall-customfw" ]
-then echo $head_waiting_gui ; echo $give_cover ;
+then echo $head_waiting_gui ; echo $head_give_cover ;
 if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 case "$favorite_basename_graphicalldialog" in "$NULL")
@@ -6801,7 +6802,7 @@ exit; fi
 ####
 ####  
 if [ "$first_option" == "gui-menu-firewall-systemfw" ]
-then echo $head_waiting_gui ; echo $give_cover
+then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 case "$favorite_basename_graphicalldialog" in "$NULL")
@@ -6911,7 +6912,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "gui-menu-options-easy" ]
-then echo $head_waiting_gui ; echo $give_cover
+then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 case "$favorite_basename_graphicalldialog" in "$NULL")
@@ -10907,7 +10908,7 @@ fi
 ####
 ####
 if [ "$launch_rules_firewall" != "yes" ]
-then echo $give_cover
+then echo $head_give_cover
 echo "### #[ fail ] [ first option: $first_option \
 | without first option: $without_first_option ]"
 $cmd_realpath options ; exit ; fi
