@@ -48,7 +48,7 @@
 ####
 ####
 source /etc/profile
-PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"
+#### PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"
 ####
 ####
 ##########    english: are you root: uid 0 ?                ##########
