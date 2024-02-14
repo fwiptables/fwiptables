@@ -2465,6 +2465,7 @@ echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail -gui-roll-zenity ]         
 echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]          "
 echo "$title_md  [ firewall-control ]                                                       "
 echo "$text_md stop continue reset actual show save load names-control eraserules           "
+echo "$text_md eraserules4 eraserules6 off-line all-permisive wizard-mini wizard-full       "
 echo "$title_md  [ firewall-listconceptual ]                                                "
 echo "$text_md ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
 echo "$text_md list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6            "
@@ -2474,7 +2475,6 @@ echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 lis
 echo "$text_md listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6      "
 echo "$text_md listn-security4 listn-security6                                              "
 echo "$title_md  [ firewall-wallcustom ]                                                      "
-echo "$text_md eraserules4 eraserules6 off-line all-permisive wizard-mini wizard-full       "
 echo "$text_md new-full-custom nueva-completa-custom new-mini-custom nueva-mini-custom      "
 echo "$text_md clone-wallsystem load-custom show-custom modify-custom del-custom all-custom   "
 echo "$title_md  [ firewall-wallsystem ]                                                      "
@@ -2597,7 +2597,14 @@ echo "$text_md show . show the rules iptables from selected file"
 echo "$text_md load . reset and load new rules iptables from selected file"
 echo "$text_md save . save in the file selected the rules iptables actually"
 echo "$text_md names-control . list filenames saved in the iptables rules"
-echo "$text_md eraserules . remove all firewall rules"
+echo "$text_md eraserules4 . remove all firewall rules: ipv4,ipv6,ebtables,arptables"
+echo "$text_md eraserules4 . remove ipv4 firewall rules"
+echo "$text_md eraserules6 . remove ipv6 firewall rules"
+echo "$text_md wizard-mini . launch a one mini wizard to run iptables rules"
+echo "$text_md wizard-full . launch a one full wizard to run iptables rules"
+echo "$text_md off-line . launch a one firewall only for localhost"
+echo "$text_md all-permisive . launch a one firewall with all permisive"
+
 echo "$text_md "
 exit; fi
 ####
@@ -2676,20 +2683,14 @@ if   [ "$first_option" == "firewall-wallcustom" ]; then
 echo "$text_md "
 echo "$title_md | firewall-wallcustom | $cmd_realpath firewall-wallcustom |"
 echo "$text_md"
-echo "$text_md eraserules . remove all firewall rules"
-echo "$text_md load-custom . launch a one one-file saved custom"
-echo "$text_md clone-wallsystem . clone a static firewall predesignated"
-echo "$text_md wizard-mini . launch a one mini wizard to run iptables rules"
-echo "$text_md wizard-full . launch a one full wizard to run iptables rules"
-echo "$text_md off-line . launch a one firewall only for localhost"
-echo "$text_md all-permisive . launch a one firewall with all permisive"
 echo "$text_md new-full-custom . create new full config in english"
 echo "$text_md new-mini-custom . create new mini config in english"
 echo "$text_md nueva-completa-custom . create new full config in spanish"
 echo "$text_md nueva-mini-custom . create new full config in spanish"
-echo "$text_md config-regen . regen the templates"
+echo "$text_md clone-wallsystem . clone a static firewall predesignated"
 echo "$text_md show-custom . show config-file choosed"
 echo "$text_md modify-custom . modify config-file choosed"
+echo "$text_md load-custom . launch a one one-file saved custom"
 echo "$text_md del-custom . delete config-file choosed"
 echo "$text_md all-custom . show the names for all config-files"
 echo "$text_md "
@@ -4118,14 +4119,14 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "clone-wallsystem" ] && [ "$second_option" == "$NULL" ]  ; then 
-echo "$text_md [ info ] [ usage: ] [ $cmd_realpath clone-wallsystem firewall-wallsystem ]"
+echo "$text_md [ info ] [ usage: ] [ $cmd_realpath clone-wallsystem firewall ]"
 exit; fi
 ####
 ####
 if [ "$first_option" == "clone-wallsystem" ] && [ "$second_option" != "$NULL" ] ; then 
 archivo="$second_option"
 case $archivo in shield-*);;client-*);; game-*);; games-*);; server-*);;
-*) echo "$title [ fail ] choose a valid systemfw to clone" ; exit ;; esac
+*) echo "$title [ fail ] choose a valid system firewall to clone" ; exit ;; esac
 $cmd_realpath code $second_option | $command_grep -E "client_|server_|config_|allow_|net_" \
 &> $default_directory_config/$archivo
 if [ -s "$default_directory_config/$archivo" ] ; then 
