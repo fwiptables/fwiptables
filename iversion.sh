@@ -6659,7 +6659,7 @@ if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 case "$favorite_basename_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
+gui_menu="gui-principal-menu|gui-info-menu|\
 stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|\
 off-line|all-permisive|wizard-mini|wizard-full"
@@ -6675,7 +6675,6 @@ selection_final="$($favorite_basename_graphicalldialog \
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
-gui-help-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewallcontrol ;;
 gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-control ;;
 stop*)$cmd_realpath -gui-$favorite_basename_graphicalldialog stop ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
@@ -6730,7 +6729,7 @@ if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 case "$favorite_basename_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
+gui_menu="gui-principal-menu|gui-info-menu|\
 ls4|ls6|list-filter4|list-filter6|list-alltables|\
 list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|\
 list-security4|list-security6|list-ebtables|list-arptables"
@@ -6745,7 +6744,6 @@ selection_final="$($favorite_basename_graphicalldialog \
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
-gui-help-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-listconceptual ;;
 gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-listconceptual ;;
 ls4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog ls4 ;;
 ls6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog ls6 ;;
@@ -6780,7 +6778,7 @@ if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 case "$favorite_basename_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|lsn4|lsn6|\
+gui_menu="gui-principal-menu|gui-info-menu|lsn4|lsn6|\
 listn-filter4|listn-filter6|listn-alltables|\
 listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|\
 listn-raw4|listn-raw6|listn-security4|listn-security6|\
@@ -6797,7 +6795,6 @@ selection_final="$($favorite_basename_graphicalldialog \
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
-gui-help-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-listnumeral ;;
 gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-listnumeral ;;
 lsn4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog lsn4 ;;
 lsn6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog lsn6 ;;
@@ -6832,7 +6829,7 @@ if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 case "$favorite_basename_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
+gui_menu="gui-principal-menu|gui-info-menu|\
 load-custom|clone-wallsystem|\
 new-full-custom|nueva-completa-custom|\
 new-mini-custom|nueva-mini-custom|\
@@ -6850,7 +6847,6 @@ selection_final="$($favorite_basename_graphicalldialog \
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
-gui-help-menu*) $cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-wallcustom ;;
 gui-info-menu*) $cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-wallcustom ;;
 load-custom*)archivo="$($favorite_basename_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -6919,7 +6915,7 @@ if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 case "$favorite_basename_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
+gui_menu="gui-principal-menu|gui-info-menu|\
 client-basic|client-web|client-ipp|client-irc|\
 client-mail|client-news|client-ftp|\
 client-git|client-vnc|client-torrent|client-vpn|\
@@ -6941,7 +6937,6 @@ selection_final="$($favorite_basename_graphicalldialog \
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
-gui-help-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-wallsystem ;;
 gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-wallsystem ;;
 client-basic*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-basic ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
