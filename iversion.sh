@@ -1163,24 +1163,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-autolog:
-##########     with first option
-##########     sin primera opcion
-#### :rutina-inicial-without-first-option:
-####
-#### to launch graphicall if X
-# if [ "$first_option" == "$NULL" ] && [ "$without_first_option" == "$NULL" ] ; then 
-# if [ "$X11_OR_WAYLAND" == "x11" ] && [ "$favorite_realpath_graphicalldialog" != "$NULL" ] ; then
-# echo "$title_md forward to graphicall gui-shell"
-# $cmd_realpath gui-shell-$(basename $favorite_realpath_graphicalldialog) ; exit ; fi
-# if [ "$X11_OR_WAYLAND" == "wayland" ] && [ "$favorite_realpath_graphicalldialog" != "$NULL" ] ; then
-# echo "$title_md forward to graphicall gui-shell"
-# $cmd_realpath gui-shell-$(basename $favorite_realpath_graphicalldialog) ; exit ; fi
-# without_first_option="options" ; $cmd_realpath $without_first_option ; 
-# exit ; fi
-####
-####
-####
-#### :rutina-final-without-first-option:
 ##########    english: expert-wpa-new: example from a file wpa_supplicant   ##########
 ##########    spanish: expert-wpa-new: ejemplo de un archivo wpa_supplicant ##########
 #### :rutina-inicial-expert-wpa-new:
@@ -1428,48 +1410,48 @@ exit; fi
 if [ "$first_option" == "preferences-example" ] ; then
 echo "$title_md"
 echo "$title_md # default option"
-echo "without_first_option=options                        ## read below"
+echo "without_first_option=options                    ## read below"
 echo "$title_md type: void or one valid option required to works"
 echo "$title_md Example1: list-options | Example2: list4  | example3: ip4"
 echo "$title_md Example4: speed-ip4 | Example5: sockets | Example6: gui-roll"
 echo "$title_md Example7: gui-menu-yad | Example8: gui-shell-yad"
 echo "$title_md"
 echo "$title_md # default firewall"
-echo "allow_use_legacy=                                   ## or void or no"
-echo "allow_use_nft=no                                    ## or void or no"
-echo "allow_use_ipv4=                                     ## or void or no"
-echo "allow_use_ipv6=no                                   ## or void or no"
-echo "allow_separate_rules=                               ## or void or no"
-echo "config_close_deny=DROP                              ## or DROP or REJECT"
+echo "allow_use_legacy=                               ## or void or no"
+echo "allow_use_nft=no                                ## or void or no"
+echo "allow_use_ipv4=                                 ## or void or no"
+echo "allow_use_ipv6=no                               ## or void or no"
+echo "allow_separate_rules=                           ## or void or no"
+echo "config_close_deny=DROP                          ## or DROP or REJECT"
 echo "$title_md"
 echo "$title_md # default string"
-echo "config_string_algoritmo=kmp                         ## or kmp or bm"
+echo "config_string_algoritmo=kmp                     ## or kmp or bm"
 echo "$title_md"
 echo "$title_md # default log"
-echo "allow_save_autolog=                                 ## or void or no"
-echo "allow_show_time=no                                  ## or void or no"
+echo "allow_save_autolog=                             ## or void or no"
+echo "allow_show_time=no                              ## or void or no"
 echo "$title_md"  
 echo "$title_md # default programs"
-echo "favorite_text_editor=                               ## or void for automatic or specify command"
-echo "favorite_text_music=                                ## or void for automatic or specify command"
-echo "favorite_text_browser=                              ## or void for automatic or specify command"
-echo "favorite_date_command=                              ## or void for automatic or specify command"
+echo "favorite_text_editor=                           ## or void for automatic or specify command"
+echo "favorite_text_music=                            ## or void for automatic or specify command"
+echo "favorite_text_browser=                          ## or void for automatic or specify command"
+echo "favorite_date_command=                          ## or void for automatic or specify command"
 echo "$title_md"
 echo "$title_md # default text-cli and graphicall-gui"
-echo "favorite_realpath_textdialog=                               ## or void for automatic or specify command"
-echo "favorite_realpath_graphicalldialog=                         ## or void for automatic or specify command"
+echo "favorite_realpath_textdialog=                   ## or void for automatic or specify command"
+echo "favorite_realpath_graphicalldialog=             ## or void for automatic or specify command"
 echo "$title_md"
 echo "$title_md # default discover ip and speed ip"
-echo "serverip_discover_ipv4=https://ifconfig.co/ip       ## default http://ifconfig.co/ip"
-echo "serverip_discover_ipv6=https://ifconfig.co/ip       ## default http://ifconfig.co/ip"
-echo "serverip_iperf_ipv4=ping.online.net                 ## default ping.online.net"
-echo "serverport_iperf_ipv4=5001                          ## default 5201"
-echo "serverip_iperf_ipv6=ping6.online.net                ## default ping.online.net"
-echo "serverport_iperf_ipv6=5001                          ## default 5201"
+echo "serverip_discover_ipv4=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
+echo "serverip_discover_ipv6=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
+echo "serverip_iperf_ipv4=ping.online.net             ## default ping.online.net"
+echo "serverport_iperf_ipv4=5001                      ## default 5201"
+echo "serverip_iperf_ipv6=ping6.online.net            ## default ping.online.net"
+echo "serverport_iperf_ipv6=5001                      ## default 5201"
 echo "$title_md"
 echo "$title_md # default graphicall dimension"
-echo "config_graphicall_width=800                         ## default width 800"
-echo "config_graphicall_height=600                        ## default height 600"
+echo "config_graphicall_width=800                     ## default width 800"
+echo "config_graphicall_height=600                    ## default height 600"
 echo "$title_md"
 echo "$title_md This file has been generated from preferences-example"
 exit; fi
@@ -1862,13 +1844,13 @@ echo "$text_md [ Notes ]"
 echo "$text_md"
 echo "$text_md [ legacy or nft ] whith one of them is sufficent "
 echo "$text_md"
-echo "$text_md [ allow shield maxtries ] limit a attack per bruteforce to us ssh server o other servers "
+echo "$text_md [ allow shield maxtries ] limit against attack per bruteforce "
 echo "$text_md"
 echo "$text_md [ net blacklist ] excepcionals hosts has conection dropped in firewall"
 echo "$text_md"
 echo "$text_md [ net whitelist ] excepcionals hosts has conection allowed in firewall"
 echo "$text_md"
-echo "$text_md [ allow output uid/gid ] User and/or group excepcional have output conection allowed in firewall"
+echo "$text_md [ allow output uid/gid ] User and/or group excepcional with conection allowed"
 echo "$text_md"
 echo "$text_md [ Notes ] [ Two iptables netfilter ]"
 echo "$text_md"
@@ -6225,8 +6207,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-listconceptual:
-##########    english: gui-roll-zenity-firewall-listnumeral: gui roll firewall-listnumeral: gui with roll  ##########
-##########    spanish: gui-roll-zenity-firewall-listnumeral: gui roll firewall-listnumeral: gui con roll   ##########
+##########    english: gui-roll-zenity-firewall-listnumeral: gui roll ##########
+##########    spanish: gui-roll-zenity-firewall-listnumeral: gui roll ##########
 #### :rutina-inicial-gui-roll-zenity-firewall-listnumeral:
 ####
 ####
@@ -6273,8 +6255,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-listnumeral:
-##########    english: gui-roll-zenity-firewall-customfw: gui roll firewall-customfw: gui with roll  ##########
-##########    spanish: gui-roll-zenity-firewall-customfw: gui roll firewall-customfw: gui con roll   ##########
+##########    english: gui-roll-zenity-firewall-customfw: gui with roll  ##########
+##########    spanish: gui-roll-zenity-firewall-customfw: gui con roll   ##########
 #### :rutina-inicial-gui-roll-zenity-firewall-customfw:
 ####
 ####
@@ -10889,12 +10871,12 @@ fi
 ####
 ####
 #### :rutina-final-server-domain:
-###############################################################################################################
-###############################################################################################################
+####################################################################
+####################################################################
 ####
 ####
-###############################################################################################################
-###############################################################################################################
+####################################################################
+####################################################################
 ####
 ####
 ############################       english: default: without other valid options
@@ -10963,27 +10945,30 @@ case "$NULL" in "$allow_output_uid")       ;;  *)  allow_output_uid="no";; esac
 ####
 ####
 #### :rutina-final-sane-variables-firewall:
-###############################################################################################################
-###############################################################################################################
+#################################################################
+#################################################################
 ####                                                                                            ###############
-####           Knowed now sure that:         launch_rules_firewall="yes"                              ###############
+#### Knowed now sure that:         launch_rules_firewall="yes"                              ###############
 ####                                                                                            ###############
-###############################################################################################################
-###############################################################################################################
+#################################################################
+#################################################################
 ####                                                                                            ###############
 ####          ready to launch rules ..    -  rules -
 ###############
 ####                                                                                            ###############
-###############################################################################################################
-###############################################################################################################
+#################################################################
+#################################################################
 ####                                                                                            ###############
 ####                                                                                            ###############
-####  english: Options for launch rules:     system firewall with designed previous             ###############
-####  spanish: Opciones para lanzar reglas:  firewall del sistema con diseño previo             ###############
+####
+####  english: Options for launch rules:     
+####           system firewall with designed previous
+####  spanish: Opciones para lanzar reglas:  
+####           firewall del sistema con diseño previo
 ####                                                                                            ###############
 ####                                                                                            ###############
-###############################################################################################################
-###############################################################################################################
+#################################################################
+#################################################################
 ####
 ####
 ########################################     english: ipv4 iptables all-permisive:
@@ -11262,26 +11247,30 @@ exit; fi
 ####
 ####
 #### :rutina-final-code-off-line:
-###############################################################################################################
-###############################################################################################################
+#############################################################
+#############################################################
 ####                                                                                            ###############
-####          ready to launch rules load-custom OR systemfw : - systemfw/customfw rules -
+####  ready to launch rules load-custom OR systemfw :
+####  systemfw/customfw rules -
 ###############
 ####                                                                                            ###############
-###############################################################################################################
-###############################################################################################################
+#############################################################
+#############################################################
 ####
 ####
-###############################################################################################################
-###############################################################################################################
+#############################################################
+#############################################################
 ####                                                                                            ###############
 ####                                                                                            ###############
-####  english: Options for launch rules:     system firewall load-custom                             ###############
-####  spanish: Opciones para lanzar reglas:  firewall del sistema load-custom                        ###############
+####
+####  english: Options for launch rules:     
+####           system firewall load-custom
+####  spanish: Opciones para lanzar reglas:  
+####           firewall del sistema load-custom
 ####                                                                                            ###############
 ####                                                                                            ###############
-###############################################################################################################
-###############################################################################################################
+#############################################################
+#############################################################
 #### :rutina-inicial-code-wizard:
 ####
 ####
@@ -11296,8 +11285,8 @@ else echo "$text_md [ fail ] [ Config file not found ]"
 exit ; fi ; fi
 ####
 ####
-##############################      english: selective state of intput/oputut          #####################
-##############################      spanish: estado selectivo de entrada/salida        #####################
+##############################      english: selective state of intput/oputut          
+##############################      spanish: estado selectivo de entrada/salida        
 ####
 ####
 if [ "$allow_input_state" == "$NULL" ]
@@ -11308,8 +11297,10 @@ then config_output_state="-m state --state $config_output_state"
 else config_output_state="$NULL" ; fi
 ####
 ####
-##############################      english: output_uid or output_gid for input established status        #####################
-##############################      spanish: usuario o grupo para establecidos de entrada de estado        #####################
+##############################      english: 
+#### output_uid or output_gid for input established status        #####################
+##############################      spanish:
+#### usuario o grupo para establecidos de entrada de estado       #####################
 ####
 ####
 config_uid_gid=no
@@ -11319,17 +11310,17 @@ if [ "$allow_output_gid" == "$NULL" ]
 then config_uid_gid="" ; else $nada ; fi
 ####
 ####
-###############################################################################################################
-###############################################################################################################
+###################################################################
+###################################################################
 ####                                                                                            ###############
-####          launching rules ..                                                                ###############
+#### Launching rules ..                             ###############
 ####                                                                                            ###############
-###############################################################################################################
-###############################################################################################################
+###################################################################
+###################################################################
 ####
 ####
-############################       english: iptables rules ipv4  iptables-legacy
-############################       spanish: reglas de iptables ipv4   iptables-legacy
+######################### english: iptables rules ipv4  iptables-legacy
+######################### spanish: reglas de iptables ipv4   iptables-legacy
 ####
 ####
 #### english: erase all rules
@@ -11339,8 +11330,8 @@ then config_uid_gid="" ; else $nada ; fi
 $cmd_realpath eraserules &> /dev/null
 ####
 ####
-#######################################        english: ebtables mac rules
-#######################################        spanish: ebtables mac rules
+######################### english: ebtables mac rules
+######################### spanish: ebtables mac rules
 ####
 ####
 if [ "$allow_mac_whitelist" == "$NULL" ] ; then
@@ -12838,8 +12829,8 @@ $command_ip6tables_legacy -t nat \
 fi
 ####
 ####
-######################################## english: iptables ipv4 and ipv6 with forward rules ALLOW FORWARD
-######################################## spanish: iptables ipv4 y ipv6 con reglas de reenvio PERMITIR FORWARD
+################# english: iptables ipv4 and ipv6 with forward rules ALLOW FORWARD
+################# spanish: iptables ipv4 y ipv6 con reglas de reenvio PERMITIR FORWARD
 ####
 ####
 #### english: deactive for default with forward or without forward
@@ -12875,8 +12866,10 @@ $allow_use_nft $allow_forward_ip6 $command_ip6tables_nft \
 -m comment --comment "allow forward" -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
-#######################################       iptables ipv4 and ipv6 closed with drop input, and drop forward, and drop output rules
-#######################################       iptables ipv4 y ipv6 cierran la entrada, reemvio y salida con reglas de dropeo
+##################### iptables ipv4 and ipv6 closed with drop input,
+####                  and drop forward, and drop output rules
+##################### iptables ipv4 y ipv6 cierran la entrada,
+####                  reemvio y salida con reglas de dropeo
 ####
 ####
 if [ "$config_close_deny" != "$NULL" ]; then 
@@ -12919,8 +12912,8 @@ $allow_use_nft $command_ip6tables_nft -A FORWARD -j $config_close_deny \
 fi
 ####
 ####
-########################################       english: iptables ipv4 and ipv6 with variable input_all
-########################################       english: iptables ipv4 y ipv6 con variable input_all
+#################### english: iptables ipv4 and ipv6 with variable input_all
+#################### english: iptables ipv4 y ipv6 con variable input_all
 ####
 ####
 if [ "$allow_input_all" == "$NULL" ]; then 
