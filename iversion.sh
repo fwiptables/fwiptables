@@ -959,7 +959,7 @@ case "$first_option" in
 "mini-options") first_option="list-options" ;;
 "options-mini") first_option="list-options" ;;
 "sentlog") first_option="filelog" ;;
-"cfg") first_option="names-custom" ;;
+"cfg") first_option="all-custom" ;;
 "cfg-custom") first_option="load-custom" ;;
 "custom-cfg") first_option="load-custom" ;;
 "list-fw") first_option="names" ;;
@@ -1713,7 +1713,7 @@ echo "$title_md [ several examples *without optional otuput* ]   "
 echo "$text_md"
 echo "$text_md    $cmd_realpath names                    | \
 List firewall saved  "
-echo "$text_md    $cmd_realpath names-custom             | \
+echo "$text_md    $cmd_realpath all-custom             | \
 List configs saved                         "
 echo "$text_md    $cmd_realpath speed-ip4                | \
 get info about speed with internet ipv4    "
@@ -2474,9 +2474,9 @@ echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 lis
 echo "$text_md listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6      "
 echo "$text_md listn-security4 listn-security6                                              "
 echo "$title_md  [ firewall-customfw ]                                                      "
-echo "$text_md eraserules off-line all-permisive wizard-mini wizard-full clone-systemfw     "
+echo "$text_md eraserules4 eraserules6 off-line all-permisive wizard-mini wizard-full       "
 echo "$text_md new-full-custom nueva-completa-custom new-mini-custom nueva-mini-custom      "
-echo "$text_md load-custom show-custom modify-custom del-custom names-custom                "
+echo "$text_md clone-systemfw load-custom show-custom modify-custom del-custom all-custom   "
 echo "$title_md  [ firewall-systemfw ]                                                      "
 echo "$text_md client-basic client-web client-git client-ipp client-irc client-vnc          "
 echo "$text_md client-news client-vpn client-torrent client-vpn client-ftp client-proxy     "
@@ -2526,12 +2526,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-code:
-##########    english: names-custom: list some config       ##########
-##########    spanish: names-custom: lista alguna config    ##########
-#### :rutina-inicial-names-custom:
+##########    english: all-custom: list some config       ##########
+##########    spanish: all-custom: lista alguna config    ##########
+#### :rutina-inicial-all-custom:
 ####
 ####
-if [ "$first_option" == "names-custom" ]; then 
+if [ "$first_option" == "all-custom" ]; then 
 echo "$title_md [ $first_option ] [ List configs cfg ] "
 echo "$title_md [ info ] [ list configs files in cfg format ]"
 echo "$title_md [ info ] [ folder ] [ $default_directory_config ]"
@@ -2549,7 +2549,7 @@ echo "$title_md [ OK CFG FILES NAMES ] [ Use: $cmd_realpath load-custom file-cfg
 exit; fi
 ####
 ####
-#### :rutina-final-names-custom:
+#### :rutina-final-all-custom:
 ##########    english: text-pause: do pause     ##########
 ##########    spanish: text-pause: hace pausa   ##########
 #### :rutina-inicial-text-pause:
@@ -2691,7 +2691,7 @@ echo "$text_md config-regen . regen the templates"
 echo "$text_md show-custom . show config-file choosed"
 echo "$text_md modify-custom . modify config-file choosed"
 echo "$text_md del-custom . delete config-file choosed"
-echo "$text_md names-custom . show the names for all config-files"
+echo "$text_md all-custom . show the names for all config-files"
 echo "$text_md "
 exit; fi
 ####
@@ -3146,47 +3146,90 @@ echo "$title_md [ $first_option ] [ erase all iptables rules ] "
 ####
 ####
 rule_table_policy="ACCEPT"
+$command_iptables_legacy   -t filter  -P INPUT    $rule_table_policy &> /dev/null
+$command_iptables_nft      -t filter  -P INPUT    $rule_table_policy &> /dev/null
+$command_ip6tables_legacy  -t filter  -P INPUT    $rule_table_policy &> /dev/null
+$command_ip6tables_nft     -t filter  -P INPUT    $rule_table_policy &> /dev/null
+$command_iptables_legacy   -t filter  -P FORWARD  $rule_table_policy &> /dev/null
+$command_iptables_nft      -t filter  -P FORWARD  $rule_table_policy &> /dev/null
+$command_ip6tables_legacy  -t filter  -P FORWARD  $rule_table_policy &> /dev/null
+$command_ip6tables_nft     -t filter  -P FORWARD  $rule_table_policy &> /dev/null
+$command_iptables_legacy   -t filter  -P OUTPUT   $rule_table_policy &> /dev/null
+$command_iptables_nft      -t filter  -P OUTPUT   $rule_table_policy &> /dev/null
+$command_ip6tables_legacy  -t filter  -P OUTPUT   $rule_table_policy &> /dev/null
+$command_ip6tables_nft     -t filter  -P OUTPUT   $rule_table_policy &> /dev/null
+####
+####
+#### english: erase the rules
+#### spanish: borra las reglas
+####
+#### remove ebtables
+rule_table_policy="ACCEPT"
+$command_ebtables -t filter -P INPUT     $rule_table_policy  &> /dev/null
+$command_ebtables -t filter -P FORWARD   $rule_table_policy &> /dev/null 
+$command_ebtables -t filter -P OUTPUT    $rule_table_policy &> /dev/null
+$command_ebtables -t nat -P PREROUTING   $rule_table_policy &> /dev/null
+$command_ebtables -t nat -P OUTPUT       $rule_table_policy  &> /dev/null
+$command_ebtables -t nat -P POSTROUTING  $rule_table_policy &> /dev/null
+####
+####
+$command_ebtables -t filter -F &> /dev/null
+$command_ebtables -t nat -F    &> /dev/null
+####
+#### remove arptables
+$command_arptables -F  &> /dev/null
+####
+#### remove ip4
+$cmd_realpath eraserules4
+####
+#### remove ip6
+$cmd_realpath eraserules6
+####
+####
+echo "$title_md [ info ] [ Deleting the iptables rules firewall  ]" 
+echo "$title_md [ _ok_ ] [ Firewall was erased ] [ Deleted rules ]"
+exit; fi
+####
+####
+#### :rutina-final-eraserules:
+##########    english: eraserules4: Erase rules option   ##########
+##########    spanish: eraserules4: Opcion borra reglas  ##########
+#### :rutina-inicial-eraserules4:
+####
+####
+if [ "$first_option" == "eraserules4" ]; then  
+echo "$title_md [ $first_option ] [ erase ip4 iptables rules ] "
+####
+####
+#### english: table policy 
+#### spanish: table policy
+####
+####
+rule_table_policy="ACCEPT"
 $command_iptables_legacy   -t filter  -P INPUT    $rule_table_policy
 $command_iptables_nft      -t filter  -P INPUT    $rule_table_policy
-$command_ip6tables_legacy  -t filter  -P INPUT    $rule_table_policy
-$command_ip6tables_nft     -t filter  -P INPUT    $rule_table_policy
 $command_iptables_legacy   -t filter  -P FORWARD  $rule_table_policy
 $command_iptables_nft      -t filter  -P FORWARD  $rule_table_policy
-$command_ip6tables_legacy  -t filter  -P FORWARD  $rule_table_policy
-$command_ip6tables_nft     -t filter  -P FORWARD  $rule_table_policy
 $command_iptables_legacy   -t filter  -P OUTPUT   $rule_table_policy
 $command_iptables_nft      -t filter  -P OUTPUT   $rule_table_policy
-$command_ip6tables_legacy  -t filter  -P OUTPUT   $rule_table_policy
-$command_ip6tables_nft     -t filter  -P OUTPUT   $rule_table_policy
 ####
 ####
 #### english: erase the rules
 #### spanish: borra las reglas
 ####
 ####
-$command_arptables -F  &> /dev/null
 $command_ebtables -t filter -F &> /dev/null
 $command_ebtables -t nat -F &> /dev/null
 $command_iptables_nft -t filter -F &> /dev/null
-$command_ip6tables_nft -t filter  -F &> /dev/null
 $command_iptables_legacy -t filter -F &> /dev/null
-$command_ip6tables_legacy -t filter -F &> /dev/null
 $command_iptables_nft -t nat -F &> /dev/null
-$command_ip6tables_nft -t nat  -F &> /dev/null
 $command_iptables_legacy -t nat -F &> /dev/null
-$command_ip6tables_legacy -t nat -F &> /dev/null
 $command_iptables_nft -t mangle -F &> /dev/null
-$command_ip6tables_nft -t mangle  -F &> /dev/null
 $command_iptables_legacy -t mangle -F &> /dev/null
-$command_ip6tables_legacy -t mangle -F &> /dev/null
 $command_iptables_nft -t raw -F &> /dev/null
-$command_ip6tables_nft -t raw  -F &> /dev/null
 $command_iptables_legacy -t raw -F &> /dev/null
-$command_ip6tables_legacy -t raw -F &> /dev/null
 $command_iptables_nft -t security -F &> /dev/null
-$command_ip6tables_nft -t security -F &> /dev/null
 $command_iptables_legacy -t security -F &> /dev/null
-$command_ip6tables_legacy -t security -F &> /dev/null
 ####
 ####
 $command_ebtables -t filter -P INPUT ACCEPT  &> /dev/null
@@ -3198,79 +3241,131 @@ $command_ebtables -t nat -P POSTROUTING ACCEPT &> /dev/null
 $command_iptables_nft -t filter -P INPUT ACCEPT &> /dev/null
 $command_iptables_nft -t filter -P FORWARD ACCEPT &> /dev/null
 $command_iptables_nft -t filter -P OUTPUT ACCEPT &> /dev/null
-$command_ip6tables_nft -t filter -P INPUT ACCEPT &> /dev/null
-$command_ip6tables_nft -t filter -P FORWARD ACCEPT &> /dev/null
-$command_ip6tables_nft -t filter -P OUTPUT ACCEPT &> /dev/null
 $command_iptables_legacy -t filter -P INPUT ACCEPT &> /dev/null
 $command_iptables_legacy -t filter -P FORWARD ACCEPT &> /dev/null
 $command_iptables_legacy -t filter -P OUTPUT ACCEPT &> /dev/null
-$command_ip6tables_legacy -t filter -P INPUT ACCEPT &> /dev/null
-$command_ip6tables_legacy -t filter -P FORWARD ACCEPT &> /dev/null
-$command_ip6tables_legacy -t filter -P OUTPUT ACCEPT &> /dev/null
 $command_iptables_nft -t nat -P INPUT ACCEPT &> /dev/null
 $command_iptables_nft -t nat -P OUTPUT ACCEPT &> /dev/null
 $command_iptables_nft -t nat -P PREROUTING ACCEPT &> /dev/null
 $command_iptables_nft -t nat -P POSTROUTING ACCEPT &> /dev/null
-$command_ip6tables_nft -t nat -P INPUT ACCEPT &> /dev/null
-$command_ip6tables_nft -t nat -P OUTPUT ACCEPT &> /dev/null
-$command_ip6tables_nft -t nat -P PREROUTING ACCEPT &> /dev/null
-$command_ip6tables_nft -t nat -P POSTROUTING ACCEPT &> /dev/null
 $command_iptables_legacy -t nat -P INPUT ACCEPT &> /dev/null
 $command_iptables_legacy -t nat -P OUTPUT ACCEPT &> /dev/null
 $command_iptables_legacy -t nat -P PREROUTING ACCEPT &> /dev/null
 $command_iptables_legacy -t nat -P POSTROUTING ACCEPT &> /dev/null
-$command_ip6tables_legacy -t nat -P INPUT ACCEPT &> /dev/null
-$command_ip6tables_legacy -t nat -P OUTPUT ACCEPT &> /dev/null
-$command_ip6tables_legacy -t nat -P PREROUTING ACCEPT &> /dev/null
-$command_ip6tables_legacy -t nat -P POSTROUTING ACCEPT &> /dev/null
 $command_iptables_nft -t mangle -P INPUT ACCEPT &> /dev/null
 $command_iptables_nft -t mangle -P FORWARD ACCEPT &> /dev/null
 $command_iptables_nft -t mangle -P OUTPUT ACCEPT &> /dev/null
 $command_iptables_nft -t mangle -P PREROUTING ACCEPT &> /dev/null
 $command_iptables_nft -t mangle -P POSTROUTING ACCEPT &> /dev/null
-$command_ip6tables_nft -t mangle -P INPUT ACCEPT &> /dev/null
-$command_ip6tables_nft -t mangle -P FORWARD ACCEPT &> /dev/null
-$command_ip6tables_nft -t mangle -P OUTPUT ACCEPT &> /dev/null
-$command_ip6tables_nft -t mangle -P PREROUTING ACCEPT &> /dev/null
-$command_ip6tables_nft -t mangle -P POSTROUTING ACCEPT &> /dev/null
 $command_iptables_legacy -t mangle -P INPUT ACCEPT &> /dev/null
 $command_iptables_legacy -t mangle -P FORWARD ACCEPT &> /dev/null
 $command_iptables_legacy -t mangle -P OUTPUT ACCEPT &> /dev/null
 $command_iptables_legacy -t mangle -P PREROUTING ACCEPT &> /dev/null
 $command_iptables_legacy -t mangle -P POSTROUTING ACCEPT &> /dev/null
+$command_iptables_nft -t raw -P OUTPUT ACCEPT &> /dev/null
+$command_iptables_nft -t raw -P PREROUTING ACCEPT &> /dev/null
+$command_iptables_legacy -t raw -P OUTPUT ACCEPT &> /dev/null
+$command_iptables_legacy -t raw -P PREROUTING ACCEPT &> /dev/null
+$command_iptables_nft -t security -P INPUT ACCEPT &> /dev/null
+$command_iptables_nft -t security -P FORWARD ACCEPT &> /dev/null
+$command_iptables_nft -t security -P OUTPUT ACCEPT &> /dev/null
+$command_iptables_legacy -t security -P INPUT ACCEPT &> /dev/null
+$command_iptables_legacy -t security -P FORWARD ACCEPT &> /dev/null
+$command_iptables_legacy -t security -P OUTPUT ACCEPT &> /dev/null
+####
+####
+echo "$title_md [ info ] [ Deleting the iptables rules ipv4 firewall ]" 
+echo "$title_md [ _ok_ ] [ Firewall ipv4 is erased ] [ Deleted rules ]"
+exit; fi
+####
+####
+#### :rutina-final-eraserules4:
+##########    english: eraserules6: Erase rules option   ##########
+##########    spanish: eraserules6: Opcion borra reglas  ##########
+#### :rutina-inicial-eraserules6:
+####
+####
+if [ "$first_option" == "eraserules6" ]; then  
+echo "$title_md [ $first_option ] [ erase ip4 iptables rules ] "
+####
+####
+#### english: table policy 
+#### spanish: table policy
+####
+####
+rule_table_policy="ACCEPT"
+$command_ip6tables_legacy   -t filter  -P INPUT    $rule_table_policy
+$command_ip6tables_nft      -t filter  -P INPUT    $rule_table_policy
+$command_ip6tables_legacy   -t filter  -P FORWARD  $rule_table_policy
+$command_ip6tables_nft      -t filter  -P FORWARD  $rule_table_policy
+$command_ip6tables_legacy   -t filter  -P OUTPUT   $rule_table_policy
+$command_ip6tables_nft      -t filter  -P OUTPUT   $rule_table_policy
+####
+####
+#### english: erase the rules
+#### spanish: borra las reglas
+####
+####
+$command_ip6tables_nft -t filter -F &> /dev/null
+$command_ip6tables_legacy -t filter -F &> /dev/null
+$command_ip6tables_nft -t nat -F &> /dev/null
+$command_ip6tables_legacy -t nat -F &> /dev/null
+$command_ip6tables_nft -t mangle -F &> /dev/null
+$command_ip6tables_legacy -t mangle -F &> /dev/null
+$command_ip6tables_nft -t raw -F &> /dev/null
+$command_ip6tables_legacy -t raw -F &> /dev/null
+$command_ip6tables_nft -t security -F &> /dev/null
+$command_ip6tables_legacy -t security -F &> /dev/null
+####
+####
+$command_ebtables -t filter -P INPUT ACCEPT  &> /dev/null
+$command_ebtables -t filter -P FORWARD ACCEPT &> /dev/null 
+$command_ebtables -t filter -P OUTPUT ACCEPT &> /dev/null
+$command_ebtables -t nat -P PREROUTING ACCEPT &> /dev/null
+$command_ebtables -t nat -P OUTPUT ACCEPT  &> /dev/null
+$command_ebtables -t nat -P POSTROUTING ACCEPT &> /dev/null
+$command_ip6tables_nft -t filter -P INPUT ACCEPT &> /dev/null
+$command_ip6tables_nft -t filter -P FORWARD ACCEPT &> /dev/null
+$command_ip6tables_nft -t filter -P OUTPUT ACCEPT &> /dev/null
+$command_ip6tables_legacy -t filter -P INPUT ACCEPT &> /dev/null
+$command_ip6tables_legacy -t filter -P FORWARD ACCEPT &> /dev/null
+$command_ip6tables_legacy -t filter -P OUTPUT ACCEPT &> /dev/null
+$command_ip6tables_nft -t nat -P INPUT ACCEPT &> /dev/null
+$command_ip6tables_nft -t nat -P OUTPUT ACCEPT &> /dev/null
+$command_ip6tables_nft -t nat -P PREROUTING ACCEPT &> /dev/null
+$command_ip6tables_nft -t nat -P POSTROUTING ACCEPT &> /dev/null
+$command_ip6tables_legacy -t nat -P INPUT ACCEPT &> /dev/null
+$command_ip6tables_legacy -t nat -P OUTPUT ACCEPT &> /dev/null
+$command_ip6tables_legacy -t nat -P PREROUTING ACCEPT &> /dev/null
+$command_ip6tables_legacy -t nat -P POSTROUTING ACCEPT &> /dev/null
+$command_ip6tables_nft -t mangle -P INPUT ACCEPT &> /dev/null
+$command_ip6tables_nft -t mangle -P FORWARD ACCEPT &> /dev/null
+$command_ip6tables_nft -t mangle -P OUTPUT ACCEPT &> /dev/null
+$command_ip6tables_nft -t mangle -P PREROUTING ACCEPT &> /dev/null
+$command_ip6tables_nft -t mangle -P POSTROUTING ACCEPT &> /dev/null
 $command_ip6tables_legacy -t mangle -P INPUT ACCEPT &> /dev/null
 $command_ip6tables_legacy -t mangle -P FORWARD ACCEPT &> /dev/null
 $command_ip6tables_legacy -t mangle -P OUTPUT ACCEPT &> /dev/null
 $command_ip6tables_legacy -t mangle -P PREROUTING ACCEPT &> /dev/null
 $command_ip6tables_legacy -t mangle -P POSTROUTING ACCEPT &> /dev/null
-$command_iptables_nft -t raw -P OUTPUT ACCEPT &> /dev/null
-$command_iptables_nft -t raw -P PREROUTING ACCEPT &> /dev/null
 $command_ip6tables_nft -t raw -P OUTPUT ACCEPT &> /dev/null
 $command_ip6tables_nft -t raw -P PREROUTING ACCEPT &> /dev/null
-$command_iptables_legacy -t raw -P OUTPUT ACCEPT &> /dev/null
-$command_iptables_legacy -t raw -P PREROUTING ACCEPT &> /dev/null
 $command_ip6tables_legacy -t raw -P OUTPUT ACCEPT &> /dev/null
 $command_ip6tables_legacy -t raw -P PREROUTING ACCEPT &> /dev/null
-$command_iptables_nft -t security -P INPUT ACCEPT &> /dev/null
-$command_iptables_nft -t security -P FORWARD ACCEPT &> /dev/null
-$command_iptables_nft -t security -P OUTPUT ACCEPT &> /dev/null
 $command_ip6tables_nft -t security -P INPUT ACCEPT &> /dev/null
 $command_ip6tables_nft -t security -P FORWARD ACCEPT &> /dev/null
 $command_ip6tables_nft -t security -P OUTPUT ACCEPT &> /dev/null
-$command_iptables_legacy -t security -P INPUT ACCEPT &> /dev/null
-$command_iptables_legacy -t security -P FORWARD ACCEPT &> /dev/null
-$command_iptables_legacy -t security -P OUTPUT ACCEPT &> /dev/null
 $command_ip6tables_legacy -t security -P INPUT ACCEPT &> /dev/null
 $command_ip6tables_legacy -t security -P FORWARD ACCEPT &> /dev/null
 $command_ip6tables_legacy -t security -P OUTPUT ACCEPT &> /dev/null
 ####
 ####
-echo "$title_md [ info ] [ Deleting the iptables rules firewall ]" 
-echo "$title_md [ _ok_ ] [ Firewall is erased ] [ Deleted rules ]"
+echo "$title_md [ info ] [ Deleting the iptables rules ipv6 firewall ]" 
+echo "$title_md [ _ok_ ] [ Firewall ipv6 is erased ] [ Deleted rules ]"
 exit; fi
 ####
 ####
-#### :rutina-final-eraserules:
+#### :rutina-final-eraserules6:
 ##########     english: list-alltables: list all rules         ##########
 ##########     spanish: list-alltables: list todas las reglas  ##########
 #### :rutina-inicial-list-alltables:
@@ -4138,7 +4233,7 @@ if [ "$first_option" == "modify-custom" ]; then
 ####
 ###
 if [ ! -f "$default_directory_config/$second_option" ] ; then $nada
-$cmd_realpath names-custom
+$cmd_realpath all-custom
 echo "$text_md [ info ] [ usage: ] [ $cmd_realpath modify-custom config-existent ]"
 exit; fi
 ####
@@ -5864,7 +5959,7 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0615  "$text_md show-custom" \
 0616  "$text_md modify-custom" \
 0617  "$text_md del-custom" \
-0618  "$text_md names-custom" \
+0618  "$text_md all-custom" \
 0619  "$text_md config-regen" \
 0700 "$title_md [ Options Easy ] $title_md" \
 0701  "$text_md preferences-read" \
@@ -6002,7 +6097,7 @@ $cmd_realpath load $nombrecillo ;;
 0603) clear ; $cmd_realpath cli wizard-full ; $cmd_realpath cli list4  ;;
 0604) clear ; $cmd_realpath cli off-line ; $cmd_realpath cli list4  ;;
 0605) clear ; $cmd_realpath cli all-permisive ; $cmd_realpath cli list4   ;;
-0606) clear ; $cmd_realpath names-custom
+0606) clear ; $cmd_realpath all-custom
 read -p "Input the custom name to load # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
 $cmd_realpath load-custom $archivo ;;
@@ -6024,15 +6119,15 @@ $cmd_realpath nueva-mini-custom $archivo ;;
 0615) clear ; read -p "Input the custom to show config # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
 $cmd_realpath show-custom $archivo ;;
-0616) clear ; $cmd_realpath names-custom
+0616) clear ; $cmd_realpath all-custom
 read -p "Input the custom name to modify # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
 $cmd_realpath modify-custom $archivo ;;
-0617) clear ; $cmd_realpath names-custom
+0617) clear ; $cmd_realpath all-custom
 read -p "Input the custom name to delete # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
 $cmd_realpath del-custom $archivo ;;
-0618) clear ; $cmd_realpath cli names-custom ;;
+0618) clear ; $cmd_realpath cli all-custom ;;
 0619) clear ; $cmd_realpath cli config-regen ;;
 ################################################################################
 0701) clear ; $cmd_realpath cli preferences-read ;;
@@ -6295,7 +6390,7 @@ then echo $head_waiting_gui ; echo $head_give_cover
 gui_menu="gui-principal-menu|gui-info-menu|\
 load-custom|clone-systemfw|eraserules|wizard-mini|wizard-full|off-line|all-permisive|\
 new-full-custom|nueva-completa-custom|new-mini-custom|nueva-mini-custom|\
-names-custom|show-custom|modify-custom|del-custom|config-regen"
+all-custom|show-custom|modify-custom|del-custom|config-regen"
 selection_menu="$($command_zenity --forms \
 --text="gui-roll-firewall-customfw" \
 --title="Gui-roll With $cmd_basename $cmd_version" \
@@ -6345,8 +6440,8 @@ archivo="$($command_zenity --entry \
 --title="[nueva-mini-custom]" \
 --entry-text=="Introduce el nombre del nuevo archivo cfg")" ;
 $cmd_realpath -gui-zenity nueva-mini-custom $archivo ;;
-"names-custom")
-$cmd_realpath -gui-zenity names-custom ;;
+"all-custom")
+$cmd_realpath -gui-zenity all-custom ;;
 "show-custom")
 archivo="$($command_zenity --entry \ 
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -6720,7 +6815,7 @@ load-custom|clone-systemfw|eraserules|wizard-mini|wizard-full|\
 custom-cfg|off-line|all-permisive|\
 new-full-custom|nueva-completa-custom|\
 new-mini-custom|nueva-mini-custom|\
-names-custom|show-custom|modify-custom|\
+all-custom|show-custom|modify-custom|\
 del-custom|config-regen"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_basename_graphicalldialog \
@@ -6778,7 +6873,7 @@ nueva-mini-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
 --title="[nueva-mini-custom]" \
 --entry-text="Introduce el nombre del nuevo archivo cfg")" ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog nueva-mini-custom $archivo ;;
-names-custom*) $cmd_realpath -gui-$favorite_basename_graphicalldialog names-custom ;;
+all-custom*) $cmd_realpath -gui-$favorite_basename_graphicalldialog all-custom ;;
 show-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[show-custom]" \
@@ -7006,7 +7101,7 @@ then source $default_directory_config/$second_option ; fi
 ####
 ####
 if [ ! -f "$default_directory_config/$second_option" ]
-then  $cmd_realpath names-custom ; exit; fi
+then  $cmd_realpath all-custom ; exit; fi
 ####
 ####
 fi
