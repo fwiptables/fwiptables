@@ -2473,11 +2473,11 @@ echo "$title_md  [ firewall-listnumeral ]                                       
 echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6  "
 echo "$text_md listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6      "
 echo "$text_md listn-security4 listn-security6                                              "
-echo "$title_md  [ firewall-customfw ]                                                      "
+echo "$title_md  [ firewall-wallcustom ]                                                      "
 echo "$text_md eraserules4 eraserules6 off-line all-permisive wizard-mini wizard-full       "
 echo "$text_md new-full-custom nueva-completa-custom new-mini-custom nueva-mini-custom      "
-echo "$text_md clone-systemfw load-custom show-custom modify-custom del-custom all-custom   "
-echo "$title_md  [ firewall-systemfw ]                                                      "
+echo "$text_md clone-wallsystem load-custom show-custom modify-custom del-custom all-custom   "
+echo "$title_md  [ firewall-wallsystem ]                                                      "
 echo "$text_md client-basic client-web client-git client-ipp client-irc client-vnc          "
 echo "$text_md client-news client-vpn client-torrent client-vpn client-ftp client-proxy     "
 echo "$text_md client-mail client-tor game-widelands games-udp games-shooter game-wesnoth   "
@@ -2667,18 +2667,18 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-listnumeral:
-##########    english: firewall-customfw: options for fwiptables firewall      ##########
-##########    spanish: firewall-customfw: opciones para fwiptables firewall    ##########
-#### :rutina-inicial-firewall-customfw:
+##########    english: firewall-wallcustom: options for fwiptables firewall      ##########
+##########    spanish: firewall-wallcustom: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-firewall-wallcustom:
 ####
 ####
-if   [ "$first_option" == "firewall-customfw" ]; then
+if   [ "$first_option" == "firewall-wallcustom" ]; then
 echo "$text_md "
-echo "$title_md | firewall-customfw | $cmd_realpath firewall-customfw |"
+echo "$title_md | firewall-wallcustom | $cmd_realpath firewall-wallcustom |"
 echo "$text_md"
 echo "$text_md eraserules . remove all firewall rules"
 echo "$text_md load-custom . launch a one one-file saved custom"
-echo "$text_md clone-systemfw . clone a static firewall predesignated"
+echo "$text_md clone-wallsystem . clone a static firewall predesignated"
 echo "$text_md wizard-mini . launch a one mini wizard to run iptables rules"
 echo "$text_md wizard-full . launch a one full wizard to run iptables rules"
 echo "$text_md off-line . launch a one firewall only for localhost"
@@ -2696,15 +2696,15 @@ echo "$text_md "
 exit; fi
 ####
 ####
-#### :rutina-final-firewall-customfw:
-##########    english: firewall-systemfw: options for fwiptables firewall      ##########
-##########    spanish: firewall-systemfw: opciones para fwiptables firewall    ##########
-#### :rutina-inicial-firewall-systemfw:
+#### :rutina-final-firewall-wallcustom:
+##########    english: firewall-wallsystem: options for fwiptables firewall      ##########
+##########    spanish: firewall-wallsystem: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-firewall-wallsystem:
 ####
 ####
-if   [ "$first_option" == "firewall-systemfw" ]; then
+if   [ "$first_option" == "firewall-wallsystem" ]; then
 echo "$text_md "
-echo "$title_md | firewall-systemfw | $cmd_realpath firewall-systemfw |"
+echo "$title_md | firewall-wallsystem | $cmd_realpath firewall-wallsystem |"
 echo "$text_md"
 echo "$text_md client-basic . launch a one firewall basic client"
 echo "$text_md client-web . launch a one firewall web client"
@@ -2741,7 +2741,7 @@ echo "$text_md server-proxy . launch a one firewall basic server"
 exit; fi
 ####
 ####
-#### :rutina-final-firewall-systemfw:
+#### :rutina-final-firewall-wallsystem:
 ##########    english: options-easy: options for fwiptables firewall      ##########
 ##########    spanish: options-easy: opciones para fwiptables firewall    ##########
 #### :rutina-inicial-options-easy:
@@ -2835,8 +2835,8 @@ $cmd_realpath optional-output
 $cmd_realpath firewall-control
 $cmd_realpath firewall-listconceptual
 $cmd_realpath firewall-listnumeral
-$cmd_realpath firewall-customfw
-$cmd_realpath firewall-systemfw
+$cmd_realpath firewall-wallcustom
+$cmd_realpath firewall-wallsystem
 $cmd_realpath options-easy
 echo "$title_md"
 echo "$title_md for expert options: $cmd_realpath options-expert"
@@ -4112,17 +4112,17 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-arptables:
-##########    english: clone-systemfw: clone config file static static               ##########
-##########    spanish: clone-systemfw: clona archivo de configuracion prediseniado   ##########
-#### :rutina-inicial-clone-systemfw:
+##########    english: clone-wallsystem: clone config file static static               ##########
+##########    spanish: clone-wallsystem: clona archivo de configuracion prediseniado   ##########
+#### :rutina-inicial-clone-wallsystem:
 ####
 ####
-if [ "$first_option" == "clone-systemfw" ] && [ "$second_option" == "$NULL" ]  ; then 
-echo "$text_md [ info ] [ usage: ] [ $cmd_realpath clone-systemfw firewall-systemfw ]"
+if [ "$first_option" == "clone-wallsystem" ] && [ "$second_option" == "$NULL" ]  ; then 
+echo "$text_md [ info ] [ usage: ] [ $cmd_realpath clone-wallsystem firewall-wallsystem ]"
 exit; fi
 ####
 ####
-if [ "$first_option" == "clone-systemfw" ] && [ "$second_option" != "$NULL" ] ; then 
+if [ "$first_option" == "clone-wallsystem" ] && [ "$second_option" != "$NULL" ] ; then 
 archivo="$second_option"
 case $archivo in shield-*);;client-*);; game-*);; games-*);; server-*);;
 *) echo "$title [ fail ] choose a valid systemfw to clone" ; exit ;; esac
@@ -4134,12 +4134,12 @@ echo "$title_md [ _ok_ ] [ Created :                           $archivo   ]"
 echo "$title_md [ info ] [ Modify  :  fwiptables modify-custom $archivo   ]"
 echo "$title_md [ info ] [ Launch  :  fwiptables load-custom        $archivo   ]"
 else rm $default_directory_config/$archivo
-echo "$title_md [ info ] choose one valid systemfw to clone"
+echo "$title_md [ info ] choose one valid wallsystem to clone to custom"
 echo "$title_md [ fail ] config no done $archivo" ; fi
 exit; fi
 ####
 ####
-#### :rutina-final-clone-systemfw:
+#### :rutina-final-clone-wallsystem:
 ##########    english: new-full-custom: new-full-custom option to create new configs   ##########
 ##########    spanish: new-full-custom: new-full-custom para cear nuevas config        ##########
 #### :rutina-inicial-new-full-custom:
@@ -5951,7 +5951,7 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0604  "$text_md off-line" \
 0605  "$text_md all-permisive" \
 0606  "$text_md load-custom" \
-0607  "$text_md clone-systemfw" \
+0607  "$text_md clone-wallsystem" \
 0611  "$text_md new-full-custom" \
 0612  "$text_md nueva-completa-custom" \
 0613  "$text_md new-mini-custom" \
@@ -6004,8 +6004,8 @@ case "$menuprincipal" in
 0200) clear ; $cmd_realpath cli firewall-control ;;
 0300) clear ; $cmd_realpath cli firewall-listconceptual ;;
 0400) clear ; $cmd_realpath cli firewall-listnumeral ;;
-0500) clear ; $cmd_realpath cli firewall-systemfw ;;
-0600) clear ; $cmd_realpath cli firewall-customfw ;;
+0500) clear ; $cmd_realpath cli firewall-wallsystem ;;
+0600) clear ; $cmd_realpath cli firewall-wallcustom ;;
 0700) clear ; $cmd_realpath cli options-easy ;;
 ################################################################################
 0201) clear ; $cmd_realpath cli stop ;;
@@ -6103,7 +6103,7 @@ archivo=$(echo $archivo | $command_sed s/\\///g)
 $cmd_realpath load-custom $archivo ;;
 0607) clear ; read -p "Input the systemfw name to clone # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath clone-systemfw $archivo ;;
+$cmd_realpath clone-wallsystem $archivo ;;
 0611) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
 $cmd_realpath new-full-custom $archivo ;;
@@ -6203,8 +6203,8 @@ exit; fi
 if [ "$first_option" == "gui-roll-zenity" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 gui_menu="Info|Firewall-Control|Firewall-List-With-Conceptual|\
-Firewall-List-With-Numeral|Firewall-customfw|\
-Firewall-systemfw|Options-easy"
+Firewall-List-With-Numeral|firewall-wallcustom|\
+firewall-wallsystem|Options-easy"
 selection_menu="$($command_zenity --forms \
 --text="gui-roll" \
 --title="Gui-roll With $cmd_basename $cmd_version" \
@@ -6222,10 +6222,10 @@ $cmd_realpath gui-roll-zenity-firewall-control ; exit ;;
 $cmd_realpath gui-roll-zenity-firewall-listconceptual ; exit ;;
 "Firewall-List-With-Numeral")
 $cmd_realpath gui-roll-zenity-firewall-listnumeral ; exit ;;
-"Firewall-customfw")
-$cmd_realpath gui-roll-zenity-firewall-customfw ; exit ;;
-"Firewall-systemfw")
-$cmd_realpath gui-roll-zenity-firewall-systemfw ; exit ;;
+"firewall-wallcustom")
+$cmd_realpath gui-roll-zenity-firewall-wallcustom ; exit ;;
+"firewall-wallsystem")
+$cmd_realpath gui-roll-zenity-firewall-wallsystem ; exit ;;
 "Options-easy")
 $cmd_realpath gui-roll-zenity-options-easy ; exit ;;
 esac
@@ -6380,19 +6380,19 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-listnumeral:
-##########    english: gui-roll-zenity-firewall-customfw: gui with roll  ##########
-##########    spanish: gui-roll-zenity-firewall-customfw: gui con roll   ##########
-#### :rutina-inicial-gui-roll-zenity-firewall-customfw:
+##########    english: gui-roll-zenity-firewall-wallcustom: gui with roll  ##########
+##########    spanish: gui-roll-zenity-firewall-wallcustom: gui con roll   ##########
+#### :rutina-inicial-gui-roll-zenity-firewall-wallcustom:
 ####
 ####
-if [ "$first_option" == "gui-roll-zenity-firewall-customfw" ]
+if [ "$first_option" == "gui-roll-zenity-firewall-wallcustom" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 gui_menu="gui-principal-menu|gui-info-menu|\
-load-custom|clone-systemfw|eraserules|wizard-mini|wizard-full|off-line|all-permisive|\
+load-custom|clone-wallsystem|eraserules|wizard-mini|wizard-full|off-line|all-permisive|\
 new-full-custom|nueva-completa-custom|new-mini-custom|nueva-mini-custom|\
 all-custom|show-custom|modify-custom|del-custom|config-regen"
 selection_menu="$($command_zenity --forms \
---text="gui-roll-firewall-customfw" \
+--text="gui-roll-firewall-wallcustom" \
 --title="Gui-roll With $cmd_basename $cmd_version" \
 --add-combo="$first_option" \
 --combo-values="$gui_menu")"
@@ -6402,15 +6402,15 @@ selection_final="$(echo $selection_menu | sed 's/\|//g')"
 case "$selection_final" in
 1) exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
-"gui-info-menu")$cmd_realpath -gui-zenity firewall-customfw ;;
+"gui-info-menu")$cmd_realpath -gui-zenity firewall-wallcustom ;;
 "load-custom")archivo="$($command_zenity  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Launch Custom]" --entry-text="cfg to launch")" ; 
 $cmd_realpath -gui-zenity load-custom $archivo ; $cmd_realpath gui list4;;
-"clone-systemfw")archivo="$($command_zenity  --entry \
+"clone-wallsystem")archivo="$($command_zenity  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Clone firewall static]" --entry-text="firewall static to clone")" ; 
-$cmd_realpath -gui-zenity clone-systemfw $archivo ; $cmd_realpath gui list4;;
+$cmd_realpath -gui-zenity clone-wallsystem $archivo ; $cmd_realpath gui list4;;
 "eraserules")$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list4;;
 "wizard-full")$cmd_realpath -gui-zenity wizard-full ; $cmd_realpath gui list4;;
 "wizard-mini")$cmd_realpath -gui-zenity wizard-mini ; $cmd_realpath gui list4;;
@@ -6465,13 +6465,13 @@ esac
 exit ; fi
 ####
 ####
-#### :rutina-final-gui-roll-zenity-firewall-customfw:
-##########    english: gui-roll-zenity-firewall-systemfw: gui roll firewall-systemfw  ##########
-##########    spanish: gui-roll-zenity-firewall-systemfw: gui roll firewall-systemfw  ##########
-#### :rutina-inicial-gui-roll-zenity-firewall-systemfw:
+#### :rutina-final-gui-roll-zenity-firewall-wallcustom:
+##########    english: gui-roll-zenity-firewall-wallsystem: gui roll firewall-wallsystem  ##########
+##########    spanish: gui-roll-zenity-firewall-wallsystem: gui roll firewall-wallsystem  ##########
+#### :rutina-inicial-gui-roll-zenity-firewall-wallsystem:
 ####
 ####
-if [ "$first_option" == "gui-roll-zenity-firewall-systemfw" ]
+if [ "$first_option" == "gui-roll-zenity-firewall-wallsystem" ]
 then echo $head_waiting_gui ; echo $head_give_cover ;
 menu="gui-principal-menu|gui-info-menu|\
 client-basic|client-web|client-ipp|client-irc|\
@@ -6484,7 +6484,7 @@ server-samba|server-ssh|server-print|server-lamp|\
 server-domain|server-news|server-mail|server-ftp|\
 server-teamspeak|server-mumble|server-sql|server-asterisk"
 selection="$($command_zenity --forms \
---text="gui-roll-firewall-customfw" \
+--text="gui-roll-firewall-wallcustom" \
 --title="Gui-roll With $cmd_basename $cmd_version" \
 --add-combo="$first_option" \
 --combo-values="$menu")"
@@ -6494,7 +6494,7 @@ selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1) exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
-"gui-info-menu")$cmd_realpath gui-zenity firewall-systemfw ;;
+"gui-info-menu")$cmd_realpath gui-zenity firewall-wallsystem ;;
 "client-basic")$cmd_realpath gui-zenity client-basic ; $cmd_realpath gui-zenity list4;;
 "client-web")$cmd_realpath gui-zenity client-web ; $cmd_realpath gui-zenity list4;;
 "client-ipp")$cmd_realpath gui-zenity client-ipp   ; $cmd_realpath gui-zenity list4;;
@@ -6535,7 +6535,7 @@ esac
 exit ; fi
 ####
 ####
-#### :rutina-final-gui-roll-zenity-firewall-systemfw:
+#### :rutina-final-gui-roll-zenity-firewall-wallsystem:
 ##########    english: gui-roll-zenity-options-easy: gui roll options-easy: gui with roll  ##########
 ##########    spanish: gui-roll-zenity-options-easy: gui roll options-easy: gui con roll   ##########
 #### :rutina-inicial-gui-roll-zenity-options-easy:
@@ -6607,7 +6607,7 @@ exit; fi
 if [ "$first_option" == "gui-menu" ] ;
 then echo $head_waiting_gui ; echo $head_give_cover
 gui_menu="|01-Firewall-Control|02-Firewall-List-With-Conceptual|\
-02-Firewall-List-With-Numeral|03-firewall-customfw|04-firewall-systemfw|\
+02-Firewall-List-With-Numeral|03-firewall-wallcustom|04-firewall-wallsystem|\
 05-options-easy"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_realpath_graphicalldialog \
@@ -6626,10 +6626,10 @@ $cmd_realpath gui-menu-firewall-control $favorite_basename_graphicalldialog ; ex
 $cmd_realpath gui-menu-firewall-listconceptual $favorite_basename_graphicalldialog ; exit ;;
 02-Firewall-List-With-Numeral*)
 $cmd_realpath gui-menu-firewall-listnumeral $favorite_basename_graphicalldialog ; exit ;;
-03-firewall-customfw*)
-$cmd_realpath gui-menu-firewall-customfw $favorite_basename_graphicalldialog ; exit ;;
-04-firewall-systemfw*)
-$cmd_realpath gui-menu-firewall-systemfw $favorite_basename_graphicalldialog ; exit ;;
+03-firewall-wallcustom*)
+$cmd_realpath gui-menu-firewall-wallcustom $favorite_basename_graphicalldialog ; exit ;;
+04-firewall-wallsystem*)
+$cmd_realpath gui-menu-firewall-wallsystem $favorite_basename_graphicalldialog ; exit ;;
 05-options-easy*)
 $cmd_realpath gui-menu-options-easy $favorite_basename_graphicalldialog ; exit ;;
 esac
@@ -6799,19 +6799,19 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-listnumeral:
-##########    english: gui-menu-firewall-customfw: gui with menu   ##########
-##########    spanish: gui-menu-firewall-customfw: gui con menu    ##########
-#### :rutina-inicial-gui-menu-firewall-customfw:
+##########    english: gui-menu-firewall-wallcustom: gui with menu   ##########
+##########    spanish: gui-menu-firewall-wallcustom: gui con menu    ##########
+#### :rutina-inicial-gui-menu-firewall-wallcustom:
 ####
 ####
-if [ "$first_option" == "gui-menu-firewall-customfw" ]
+if [ "$first_option" == "gui-menu-firewall-wallcustom" ]
 then echo $head_waiting_gui ; echo $head_give_cover ;
 if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 case "$favorite_basename_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
-load-custom|clone-systemfw|eraserules|wizard-mini|wizard-full|\
+load-custom|clone-wallsystem|eraserules|wizard-mini|wizard-full|\
 custom-cfg|off-line|all-permisive|\
 new-full-custom|nueva-completa-custom|\
 new-mini-custom|nueva-mini-custom|\
@@ -6829,8 +6829,8 @@ selection_final="$($favorite_basename_graphicalldialog \
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
-gui-help-menu*) $cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-customfw ;;
-gui-info-menu*) $cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-customfw ;;
+gui-help-menu*) $cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-wallcustom ;;
+gui-info-menu*) $cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-wallcustom ;;
 eraserules*)$cmd_realpath -gui-$favorite_basename_graphicalldialog eraserules
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
 wizard-full*)$cmd_realpath -gui-$favorite_basename_graphicalldialog wizard-full
@@ -6847,11 +6847,11 @@ load-custom*)archivo="$($favorite_basename_graphicalldialog  --entry \
 --entry-text="cfg to launch")" ; 
 $cmd_realpath -gui-$favorite_basename_graphicalldialog load-custom $archivo ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-clone-systemfw*)archivo="$($favorite_basename_graphicalldialog  --entry \
+clone-wallsystem*)archivo="$($favorite_basename_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Clone static]" \
 --entry-text="static firewall to clone config")" ; 
-$cmd_realpath -gui-$favorite_basename_graphicalldialog clone-systemfw $archivo ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog clone-wallsystem $archivo ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
 new-full-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -6896,13 +6896,13 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-firewall-customfw:
-##########   english: gui-menu-firewall-systemfw: gui with menu    ##########
-##########   spanish: gui-menu-firewall-systemfw: gui con menu     ##########
-#### :rutina-inicial-gui-menu-firewall-systemfw:
+#### :rutina-final-gui-menu-firewall-wallcustom:
+##########   english: gui-menu-firewall-wallsystem: gui with menu    ##########
+##########   spanish: gui-menu-firewall-wallsystem: gui con menu     ##########
+#### :rutina-inicial-gui-menu-firewall-wallsystem:
 ####
 ####  
-if [ "$first_option" == "gui-menu-firewall-systemfw" ]
+if [ "$first_option" == "gui-menu-firewall-wallsystem" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
@@ -6930,8 +6930,8 @@ selection_final="$($favorite_basename_graphicalldialog \
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
-gui-help-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-systemfw ;;
-gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-systemfw ;;
+gui-help-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-wallsystem ;;
+gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-wallsystem ;;
 client-basic*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-basic ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
 client-web*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-web ;
@@ -7006,7 +7006,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-firewall-systemfw:
+#### :rutina-final-gui-menu-firewall-wallsystem:
 ##########    english: gui-menu-options-easy: gui with menu   ##########
 ##########    spanish: gui-menu-options-easy: gui con menu    ##########
 #### :rutina-inicial-gui-menu-options-easy:
