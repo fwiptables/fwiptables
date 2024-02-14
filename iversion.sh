@@ -993,7 +993,7 @@ case "$second_option" in
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
 $cmd_realpath config-regen &> /dev/null 
-$cmd_realpath $second_option $third_option ;; esac ; fi
+$cmd_realpath $second_option $third_option ; exit ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "gui" ]; then 
@@ -3181,10 +3181,10 @@ $command_ebtables -t nat -F    &> /dev/null
 $command_arptables -F  &> /dev/null
 ####
 #### remove ip4
-$cmd_realpath eraserules4
+$cmd_realpath eraserules4 &> /dev/null
 ####
 #### remove ip6
-$cmd_realpath eraserules6
+$cmd_realpath eraserules6 &> /dev/null
 ####
 ####
 echo "$title_md [ info ] [ Deleting the iptables rules firewall  ]" 
@@ -6248,7 +6248,9 @@ exit; fi
 if [ "$first_option" == "gui-roll-zenity-firewall-control" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 gui_menu="gui-principal-menu|gui-info-menu|\
-stop|continue|reset|names|show|save|load|actual"
+|stop|continue|reset|names|show|save|load|actual|\
+eraserules|eraserules4|eraserules6|wizard-mini|wizard-full|\
+off-line|all-permisive"
 selection_menu="$($command_zenity --forms \
 --text="gui-roll-firewall-control" \
 --title="Gui-roll With $cmd_basename $cmd_version" \
@@ -6284,6 +6286,13 @@ $cmd_realpath -gui-zenity save $archivo ;;
 $cmd_realpath -gui-zenity load $archivo
 $cmd_realpath -gui-zenity list4;;
 "actual")$cmd_realpath -gui-zenity actual ;;
+"eraserules4")$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list4;;
+"eraserules6")$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list6;;
+"eraserules")$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list4;;
+"wizard-full")$cmd_realpath -gui-zenity wizard-full ; $cmd_realpath gui list4;;
+"wizard-mini")$cmd_realpath -gui-zenity wizard-mini ; $cmd_realpath gui list4;;
+"off-line")$cmd_realpath -gui-zenity off-line ; $cmd_realpath gui list4;;
+"all-permisive")$cmd_realpath -gui-zenity all-permisive ; $cmd_realpath gui list4;;
 esac
 ####
 ####
@@ -6393,7 +6402,7 @@ exit; fi
 if [ "$first_option" == "gui-roll-zenity-firewall-wallcustom" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 gui_menu="gui-principal-menu|gui-info-menu|\
-load-custom|clone-wallsystem|eraserules|wizard-mini|wizard-full|off-line|all-permisive|\
+load-custom|clone-wallsystem|\
 new-full-custom|nueva-completa-custom|new-mini-custom|nueva-mini-custom|\
 all-custom|show-custom|modify-custom|del-custom|config-regen"
 selection_menu="$($command_zenity --forms \
@@ -6416,11 +6425,6 @@ $cmd_realpath -gui-zenity load-custom $archivo ; $cmd_realpath gui list4;;
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Clone firewall static]" --entry-text="firewall static to clone")" ; 
 $cmd_realpath -gui-zenity clone-wallsystem $archivo ; $cmd_realpath gui list4;;
-"eraserules")$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list4;;
-"wizard-full")$cmd_realpath -gui-zenity wizard-full ; $cmd_realpath gui list4;;
-"wizard-mini")$cmd_realpath -gui-zenity wizard-mini ; $cmd_realpath gui list4;;
-"off-line")$cmd_realpath -gui-zenity off-line ; $cmd_realpath gui list4;;
-"all-permisive")$cmd_realpath -gui-zenity all-permisive ; $cmd_realpath gui list4;;
 "new-full-custom")
 archivo="$($command_zenity  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -6829,7 +6833,7 @@ favorite_basename_graphicalldialog="$second_option" ; fi
 case "$favorite_basename_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
-load-custom|clone-wallsystem|off-line|all-permisive|\
+load-custom|clone-wallsystem|\
 new-full-custom|nueva-completa-custom|\
 new-mini-custom|nueva-mini-custom|\
 all-custom|show-custom|modify-custom|\
@@ -6848,8 +6852,6 @@ case "$selection_final" in
 gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
 gui-help-menu*) $cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-wallcustom ;;
 gui-info-menu*) $cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-wallcustom ;;
-eraserules*)$cmd_realpath -gui-$favorite_basename_graphicalldialog eraserules
-$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
 load-custom*)archivo="$($favorite_basename_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Launch Custom]" \
