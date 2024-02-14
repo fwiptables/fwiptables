@@ -5092,14 +5092,24 @@ echo "$title_md [ fail ] [ Install Iperf command ]"; exit ;; esac
 ####
 ####
 echo "$title_md"
-echo "$title_md [ info ] Stop firewall & Run speed ip4 & Continue firewall"
+echo "$title_md [ Working ] ADDing ipv4 rules: ACCEPT to $serverip_iperf_ipv4"
 echo "$title_md"
-$cmd_realpath stop
+$command_iptables_nft    -t filter -I INPUT -s $serverip_iperf_ipv4  -j ACCEPT
+$command_iptables_nft    -t filter -I OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT
+$command_iptables_legacy -t filter -I INPUT -s $serverip_iperf_ipv4  -j ACCEPT
+$command_iptables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT
 echo "$title_md"
-echo "$title_md [ Doing bandwidth in ipv4 to $serverip_iperf_ipv4 ]"
+echo "$title_md [ Working ] Conecting in ipv4 to $serverip_iperf_ipv4 ]"
 $command_iperf -c $serverip_iperf_ipv4 -t 4 -P 1 -p $serverport_iperf_ipv4 |tail -3
 echo "$title_md"
-$cmd_realpath continue
+echo "$title_md [ Working ] DELeting ipv4 rules: ACCEPT to $serverip_iperf_ipv4"
+echo "$title_md"
+$command_iptables_nft    -t filter -D INPUT -s $serverip_iperf_ipv4  -j ACCEPT
+$command_iptables_nft    -t filter -D OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT
+$command_iptables_legacy -t filter -D INPUT -s $serverip_iperf_ipv4  -j ACCEPT
+$command_iptables_legacy -t filter -D OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT
+####
+####
 exit; fi
 ####
 ####
@@ -5116,14 +5126,24 @@ echo "$title_md [ fail ] [ install iperf command ]"; exit ;; esac
 ####
 ####
 echo "$title_md"
-echo "$title_md [ info ] Stop firewall & Run speed ip4 & Continue firewall"
+echo "$title_md [ Working ] ADDing ipv6 rules: ACCEPT to $serverip_iperf_ipv6"
 echo "$title_md"
-$cmd_realpath stop
+$command_ip6tables_nft    -t filter -I INPUT -s $serverip_iperf_ipv6  -j ACCEPT
+$command_ip6tables_nft    -t filter -I OUTPUT -d $serverip_iperf_ipv6 -j ACCEPT
+$command_ip6tables_legacy -t filter -I INPUT -s $serverip_iperf_ipv6  -j ACCEPT
+$command_ip6tables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv6 -j ACCEPT
 echo "$title_md"
-echo "$title_md [ Doing bandwidth in ipv6 to $serverip_iperf_ipv6 ]"
-$command_iperf -c $serverip_iperf_ipv6 -V -t 4 -P 1 -p $serverport_iperf_ipv6 | tail -3
+echo "$title_md [ Working ] Conecting in ipv6 to $serverip_iperf_ipv6 ]"
+$command_iperf -c $serverip_iperf_ipv6 -t 6 -P 1 -p $serverport_iperf_ipv6 |tail -3
 echo "$title_md"
-$cmd_realpath continue
+echo "$title_md [ Working ] DELeting ipv6 rules: ACCEPT to $serverip_iperf_ipv6"
+echo "$title_md"
+$command_ip6tables_nft    -t filter -D INPUT -s $serverip_iperf_ipv6  -j ACCEPT
+$command_ip6tables_nft    -t filter -D OUTPUT -d $serverip_iperf_ipv6 -j ACCEPT
+$command_ip6tables_legacy -t filter -D INPUT -s $serverip_iperf_ipv6  -j ACCEPT
+$command_ip6tables_legacy -t filter -D OUTPUT -d $serverip_iperf_ipv6 -j ACCEPT
+####
+####
 exit; fi
 ####
 ####
