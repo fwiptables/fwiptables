@@ -3286,7 +3286,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "eraserules6" ]; then  
-echo "$title_md [ $first_option ] [ erase ip4 iptables rules ] "
+echo "$title_md [ $first_option ] [ erase ip6 iptables rules ] "
 ####
 ####
 #### english: table policy 
