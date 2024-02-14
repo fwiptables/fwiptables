@@ -6029,8 +6029,8 @@ nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
 $cmd_realpath load $nombrecillo ;;
 0208) clear ; $cmd_realpath cli actual ;;
 0209) clear ; $cmd_realpath cli eraserules ; $cmd_realpath cli list4   ;;
-0210) clear ; $cmd_realpath cli wizard-mini ; $cmd_realpath cli list4  ;;
-0211) clear ; $cmd_realpath cli wizard-full ; $cmd_realpath cli list4  ;;
+0210) clear ; $cmd_realpath txt wizard-mini ; $cmd_realpath cli list4  ;;
+0211) clear ; $cmd_realpath txt wizard-full ; $cmd_realpath cli list4  ;;
 0212) clear ; $cmd_realpath cli off-line ; $cmd_realpath cli list4  ;;
 0213) clear ; $cmd_realpath cli all-permisive ; $cmd_realpath cli list4   ;;
 0214) clear ; $cmd_realpath cli eraserules4 ; $cmd_realpath cli list4   ;;
@@ -6656,7 +6656,9 @@ favorite_basename_graphicalldialog="$second_option" ; fi
 case "$favorite_basename_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
-stop|continue|reset|names|show|save|load|actual"
+stop|continue|reset|names|show|save|load|actual|\
+eraserules|eraserules4|eraserules6|\
+off-line|all-permisive|wizard-mini|wizard-full"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_basename_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -6695,6 +6697,17 @@ load*)archivo="$($favorite_realpath_graphicalldialog  --entry \
 $cmd_realpath -gui-$favorite_basename_graphicalldialog load $archivo ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog  list4;;
 actual*)$cmd_realpath -gui-$favorite_basename_graphicalldialog actual ;;
+eraserules4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog eraserules4 ;;
+eraserules6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog eraserules6 ;;
+eraserules*)$cmd_realpath -gui-$favorite_basename_graphicalldialog eraserules ;;
+wizard-full*)$cmd_realpath -gui-$favorite_basename_graphicalldialog wizard-full
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+wizard-mini*)$cmd_realpath -gui-$favorite_basename_graphicalldialog wizard-mini
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
+off-line*)$cmd_realpath -gui-$favorite_basename_graphicalldialog off-line
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+all-permisive*)$cmd_realpath -gui-$favorite_basename_graphicalldialog all-permisive
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
 esac
 ####
 ####
@@ -6816,8 +6829,7 @@ favorite_basename_graphicalldialog="$second_option" ; fi
 case "$favorite_basename_graphicalldialog" in "$NULL")
 echo "$title_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 gui_menu="gui-principal-menu|gui-help-menu|gui-info-menu|\
-load-custom|clone-wallsystem|eraserules|wizard-mini|wizard-full|\
-custom-cfg|off-line|all-permisive|\
+load-custom|clone-wallsystem|off-line|all-permisive|\
 new-full-custom|nueva-completa-custom|\
 new-mini-custom|nueva-mini-custom|\
 all-custom|show-custom|modify-custom|\
@@ -6838,14 +6850,6 @@ gui-help-menu*) $cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-
 gui-info-menu*) $cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-wallcustom ;;
 eraserules*)$cmd_realpath -gui-$favorite_basename_graphicalldialog eraserules
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
-wizard-full*)$cmd_realpath -gui-$favorite_basename_graphicalldialog wizard-full
-$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-wizard-mini*)$cmd_realpath -gui-$favorite_basename_graphicalldialog wizard-mini
-$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
-off-line*)$cmd_realpath -gui-$favorite_basename_graphicalldialog off-line
-$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-all-permisive*)$cmd_realpath -gui-$favorite_basename_graphicalldialog all-permisive
-$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
 load-custom*)archivo="$($favorite_basename_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[Launch Custom]" \
