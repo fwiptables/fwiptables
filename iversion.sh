@@ -4599,9 +4599,9 @@ echo "$text_md [ step ] \
 echo "$text_md [ step ] \
 [ 2 ] Compile with obash command using command make.                              "
 echo "$text_md [ step ] \
-[ 3a] Or run: obash -r -c -o ./destination.bin ./source-bash.sh                   "
+[ 3a] Or run: obash -s -c -o ./destination.bin ./source-bash.sh                   "
 echo "$text_md [ step ] \
-[ 3b] Or run: obash -r -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd  "
+[ 3b] Or run: obash -s -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd  "
 echo "$title_md Actually, the file type is:  "
 file -L $cmd_realpath
 exit; fi
@@ -4621,7 +4621,8 @@ if [ "$command_obash" == "$NULL" ]
 then echo "$title_md install obash to compile"; exit ; fi
 if [ "$command_uuid" == "$NULL" ]
 then echo "$title_md install uuid to compile"; exit ; fi
-$command_obash -r -c -o $directory_installed/$file_installed.bin $directory_installed/$file_installed
+$command_obash -s -c -o \
+$directory_installed/$file_installed.bin $directory_installed/$file_installed
 echo "$title then:"
 file -L $directory_installed/$file_installed
 file -L $directory_installed/$file_installed.bin
