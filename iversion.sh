@@ -119,7 +119,7 @@ web_download_sourceforge="https://sourceforge.net/projects/f-iptables/files/late
 web_download_github="https://github.com/fwiptables/fwiptables/releases" ;
 web_download_devuan="https://git.devuan.org/fwiptables/fwiptables/releases" ;
 git_listado_sourceforge="https://sourceforge.net/p/f-iptables/code/ci/main/tree/"
-git_download_sourceforge="https://sourceforge.net/p/f-iptables/code/ci/main/tree/fwiptables-actual?format=raw" ;
+git_download_sourceforge="https://sourceforge.net/p/f-iptables/code/ci/main/tree/iversion?format=raw" ;
 ####
 #### prepare directory data
 ####
