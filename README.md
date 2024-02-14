@@ -31,33 +31,35 @@
 ###  fwiptables install.                     
   
     su root TYPE: su root                   
-    Put bit TYPE: chmod 755 ./fwiptables-version-11-11-bash.sh 
-    Install TYPE: ./fwiptables-version-11-11-bash.sh install   
+    Put bit TYPE: chmod 755 ./fwiptables-version-11-12-bash.sh 
+    Install TYPE: ./fwiptables-version-11-12-bash.sh install   
   
 ###  fwiptables uninstall.                   
   
     Uninstall TYPE: fwiptables-cmd uninstall  
   
-###  [ version ] [ Show version ] [ version.md ]       
-   [ info ] [ Program ] /root/f-iptables-version/fwiptables-version-11-11-bash.sh      
-   [ info ] [ Version ] cmd-11-11       
-   [ info ] [ Details ] fwiptables, FireWall With iptables | fwiptables, One Mini Script in one-file wizard  
-   [ info ] [ License ] GPL v2, License General Public version 2  
+###  [ version ] [ Show version ] [ version.md ]   
+   [ info ] [ Program ] /root/f-iptables-version/fwiptables-version-11-12-bash.sh 
+   [ info ] [ Version ] cmd-11-12  
+   [ info ] [ Short description ] fwiptables, FireWall With iptables 
+   [ info ] [ Long description  ] fwiptables, One Mini Script in one-file wizard  
+   [ info ] [ License program   ] GPL v2, License General Public version 2  
    [ info ] [ Developer Contact ] fwiptables@gmx.com  
-   [ info ] [ Data  Directory   ] /root/.config/fwiptables-cmd                       
-   [ info ] [ Cache Directory   ] /root/.cache/fwiptables-cmd                      
-   [ info ] [ File  Format      ] /root/f-iptables-version/fwiptables-version-11-11-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable      
+   [ info ] [ Data  Directory   ] /root/.config/fwiptables-cmd  
+   [ info ] [ Cache Directory   ] /root/.cache/fwiptables-cmd 
+   [ info ] [ File  Format      ] 
+   /root/f-iptables-version/fwiptables-version-11-12-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable 
 ###  [ compile ] [  Optionally compile from bash script ] [ compile.md]    
    [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling...                       
    [ step ] [ 0 ] Necesary: fwiptables in source script bash                                  
    [ step ] [ 1 ] Download obash from oficial web internet                                    
    [ step ] [ 2 ] Compile with obash command using command make.                              
-   [ step ] [ 3a] Or run: obash -r -c -o ./destination.bin ./source-bash.sh                   
-   [ step ] [ 3b] Or run: obash -r -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd  
+   [ step ] [ 3a] Or run: obash -s -c -o ./destination.bin ./source-bash.sh                   
+   [ step ] [ 3b] Or run: obash -s -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd  
 ###  Actually, the file type is:  
-/root/f-iptables-version/fwiptables-version-11-11-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
+/root/f-iptables-version/fwiptables-version-11-12-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
 ###  [ options ] [ List general options for fwiptables ] [ list-options.md ]
-###  fwiptables-version-11-11-bash.sh [optional-output] first_option [second_option]   
+###  fwiptables-version-11-12-bash.sh [optional-output] first_option [second_option]   
 ###   [ optional-output ]                                                        
    [ -t|-txt -c|-cli -g|-gui -l|-log -p|-pdf -s|-silent ]                       
    [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                           
@@ -65,6 +67,7 @@
    [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]          
 ###   [ firewall-control ]                                                       
    stop continue reset actual show save load names-control eraserules           
+   eraserules4 eraserules6 off-line all-permisive wizard-mini wizard-full       
 ###   [ firewall-listconceptual ]                                                
    ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          
    list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6            
@@ -73,11 +76,10 @@
    lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6  
    listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6      
    listn-security4 listn-security6                                              
-###   [ firewall-customfw ]                                                      
-   eraserules off-line all-permisive wizard-mini wizard-full clone-systemfw     
+###   [ firewall-wallcustom ]                                                      
    new-full-custom nueva-completa-custom new-mini-custom nueva-mini-custom      
-   load-custom show-custom modify-custom del-custom names-custom                
-###   [ firewall-systemfw ]                                                      
+   clone-wallsystem load-custom show-custom modify-custom del-custom all-custom   
+###   [ firewall-wallsystem ]                                                      
    client-basic client-web client-git client-ipp client-irc client-vnc          
    client-news client-vpn client-torrent client-vpn client-ftp client-proxy     
    client-mail client-tor game-widelands games-udp games-shooter game-wesnoth   

@@ -101,7 +101,7 @@ echo ; fi
 ####
 cmd_realpath="$(realpath $0)"    # its full routename
 cmd_basename="$(basename $0)"    # its only filename
-cmd_version="cmd-11-12"          # its version
+cmd_version="cmd-11-13"          # its version
 file_installed="fwiptables-cmd"  # its filename installed
 directory_installed="/usr/bin"   # its directory installed
 cmd_contact="fwiptables@gmx.com" # its contact
@@ -992,7 +992,6 @@ case "$second_option" in
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
-$cmd_realpath config-regen &> /dev/null 
 $cmd_realpath $second_option $third_option ; exit ;; esac ; fi
 ####
 ####
