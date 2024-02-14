@@ -5879,6 +5879,13 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0206  "$text_md save" \
 0207  "$text_md load" \
 0208  "$text_md actual" \
+0209  "$text_md eraserules" \
+0210  "$text_md wizard-mini" \
+0211  "$text_md wizard-full" \
+0212  "$text_md off-line" \
+0213  "$text_md all-permisive" \
+0214  "$text_md eraserules4" \
+0215  "$text_md eraserules6" \
 0300 "$title_md [ Firewall List With Conceptual ] $title_md" \
 0301  "$text_md list4" \
 0302  "$text_md list6"  \
@@ -5946,11 +5953,6 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0534  "$text_md server-sql" \
 0535  "$text_md server-asterisk" \
 0600 "$title_md [ Firewall load-custom ] $title_md" \
-0601  "$text_md eraserules" \
-0602  "$text_md wizard-mini" \
-0603  "$text_md wizard-full" \
-0604  "$text_md off-line" \
-0605  "$text_md all-permisive" \
 0606  "$text_md load-custom" \
 0607  "$text_md clone-wallsystem" \
 0611  "$text_md new-full-custom" \
@@ -6026,6 +6028,13 @@ read -p "| Type the firewall name to restore |   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
 $cmd_realpath load $nombrecillo ;;
 0208) clear ; $cmd_realpath cli actual ;;
+0209) clear ; $cmd_realpath cli eraserules ; $cmd_realpath cli list4   ;;
+0210) clear ; $cmd_realpath cli wizard-mini ; $cmd_realpath cli list4  ;;
+0211) clear ; $cmd_realpath cli wizard-full ; $cmd_realpath cli list4  ;;
+0212) clear ; $cmd_realpath cli off-line ; $cmd_realpath cli list4  ;;
+0213) clear ; $cmd_realpath cli all-permisive ; $cmd_realpath cli list4   ;;
+0214) clear ; $cmd_realpath cli eraserules4 ; $cmd_realpath cli list4   ;;
+0215) clear ; $cmd_realpath cli eraserules6 ; $cmd_realpath cli list6   ;;
 ################################################################################
 0301) clear ; $cmd_realpath cli list4 ;;
 0302) clear ; $cmd_realpath cli list6 ;;
@@ -6093,11 +6102,6 @@ $cmd_realpath load $nombrecillo ;;
 0534) clear ; $cmd_realpath cli server-sql ; $cmd_realpath cli list4      ;;
 0535) clear ; $cmd_realpath cli server-asterisk ; $cmd_realpath cli list4 ;;
 ################################################################################
-0601) clear ; $cmd_realpath cli eraserules ; $cmd_realpath cli list4   ;;
-0602) clear ; $cmd_realpath cli wizard-mini ; $cmd_realpath cli list4  ;;
-0603) clear ; $cmd_realpath cli wizard-full ; $cmd_realpath cli list4  ;;
-0604) clear ; $cmd_realpath cli off-line ; $cmd_realpath cli list4  ;;
-0605) clear ; $cmd_realpath cli all-permisive ; $cmd_realpath cli list4   ;;
 0606) clear ; $cmd_realpath all-custom
 read -p "Input the custom name to load # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
