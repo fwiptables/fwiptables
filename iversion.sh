@@ -954,7 +954,7 @@ case "$first_option" in
 "ver") first_option="version" ;;
 "client-squid") first_option="client-proxy" ;;
 "server-squid") first_option="server-proxy" ;;
-"names") first_option="names-control" ;;
+"names") first_option="all-names" ;;
 "options") first_option="list-options" ;;
 "mini-options") first_option="list-options" ;;
 "options-mini") first_option="list-options" ;;
@@ -2409,8 +2409,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-plantilla-full-en:
-##########    english: autosave: autosave of firewall to restore standard rules                 ##########
-##########    english: autosave: autoguardado de firewall para recuperador de reglas estandar   ##########
+##########    english: autosave: autosave of firewall, standard rules   ##########
+##########    english: autosave: autoguardado de firewall,   estandar   ##########
 #### :rutina-inicial-autosave:
 ####
 ####
@@ -2463,7 +2463,7 @@ echo "$text_md [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]               
 echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail -gui-roll-zenity ]                     "
 echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]          "
 echo "$title_md  [ firewall-control ]                                                       "
-echo "$text_md stop continue reset actual show save load names-control eraserules           "
+echo "$text_md stop continue reset actual show save load all-names eraserules               "
 echo "$text_md eraserules4 eraserules6 off-line all-permisive wizard-mini wizard-full       "
 echo "$title_md  [ firewall-listconceptual ]                                                "
 echo "$text_md ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
@@ -2473,10 +2473,10 @@ echo "$title_md  [ firewall-listnumeral ]                                       
 echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6  "
 echo "$text_md listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6      "
 echo "$text_md listn-security4 listn-security6                                              "
-echo "$title_md  [ firewall-wallcustom ]                                                      "
+echo "$title_md  [ firewall-wallcustom ]                                                    "
 echo "$text_md new-full-custom nueva-completa-custom new-mini-custom nueva-mini-custom      "
-echo "$text_md clone-wallsystem load-custom show-custom modify-custom del-custom all-custom   "
-echo "$title_md  [ firewall-wallsystem ]                                                      "
+echo "$text_md clone-wallsystem load-custom show-custom modify-custom del-custom all-custom "
+echo "$title_md  [ firewall-wallsystem ]                                                    "
 echo "$text_md client-basic client-web client-git client-ipp client-irc client-vnc          "
 echo "$text_md client-news client-vpn client-torrent client-vpn client-ftp client-proxy     "
 echo "$text_md client-mail client-tor game-widelands games-udp games-shooter game-wesnoth   "
@@ -2595,7 +2595,7 @@ echo "$text_md actual . show the rules iptables from actually"
 echo "$text_md show . show the rules iptables from selected file"
 echo "$text_md load . reset and load new rules iptables from selected file"
 echo "$text_md save . save in the file selected the rules iptables actually"
-echo "$text_md names-control . list filenames saved in the iptables rules"
+echo "$text_md all-names . list filenames saved in the iptables rules"
 echo "$text_md eraserules4 . remove all firewall rules: ipv4,ipv6,ebtables,arptables"
 echo "$text_md eraserules4 . remove ipv4 firewall rules"
 echo "$text_md eraserules6 . remove ipv6 firewall rules"
@@ -4293,12 +4293,12 @@ exit ; fi
 ####
 ####
 #### :rutina-final-del-custom:
-##########    english: names-control: file list whith rules in iptables format          ##########
-##########    spanish: names-control: lista de archivos con reglas en formato iptables  ##########
-#### :rutina-inicial-names-control:
+##########    english: all-names: file list whith rules in iptables format          ##########
+##########    spanish: all-names: lista de archivos con reglas en formato iptables  ##########
+#### :rutina-inicial-all-names:
 ####
 ####
-if [ "$first_option" == "names-control" ]; then 
+if [ "$first_option" == "all-names" ]; then 
 echo "$title_md [ $first_option ] [ List names from firewall saved ] "
 echo "$title_md [ info ] [ list configs files in standard format ]"
 echo "$title_md [ info ] [ folder ] [ $default_directory_fwrecover ]"
@@ -4313,7 +4313,7 @@ echo "$title_md [ _ok_ ] [ Listed firewall names ]"
 exit; fi
 ####
 ####
-#### :rutina-final-names-control:
+#### :rutina-final-all-names:
 ##########    english: reset: reset counter rules            ##########
 ##########    spanish: reset: resetea contadores de reglas   ##########
 #### :rutina-inicial-reset:
@@ -5187,22 +5187,20 @@ echo "$title_md [ fail ] [ Install Iperf command ]"; exit ;; esac
 ####
 ####
 echo "$title_md"
+echo "$title_md [ Working ] Save firewall before speed-ip4"
+$cmd_realpath save speed-ip4 &> /dev/null
 echo "$title_md [ Working ] ADDing ipv4 rules: ACCEPT to $serverip_iperf_ipv4"
-echo "$title_md"
-$command_iptables_nft    -t filter -I 1 INPUT -s $serverip_iperf_ipv4  -j ACCEPT
-$command_iptables_nft    -t filter -I 1 OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT
-$command_iptables_legacy -t filter -I 1 INPUT -s $serverip_iperf_ipv4  -j ACCEPT
-$command_iptables_legacy -t filter -I 1 OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT
+$command_iptables_nft    -t filter -I INPUT -s $serverip_iperf_ipv4  -j ACCEPT
+$command_iptables_nft    -t filter -I OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT
+$command_iptables_legacy -t filter -I INPUT -s $serverip_iperf_ipv4  -j ACCEPT
+$command_iptables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT
 echo "$title_md"
 echo "$title_md [ Working ] Conecting in ipv4 to $serverip_iperf_ipv4 ]"
 $command_iperf -c $serverip_iperf_ipv4 -t 4 -P 1 -p $serverport_iperf_ipv4 |tail -3
 echo "$title_md"
-echo "$title_md [ Working ] DELeting ipv4 rules: ACCEPT to $serverip_iperf_ipv4"
+echo "$title_md [ Working ] restoring firewall before speed-ip4"
+$cmd_realpath load speed-ip4 &> /dev/null
 echo "$title_md"
-$command_iptables_nft    -t filter -D 1 INPUT -s $serverip_iperf_ipv4  -j ACCEPT
-$command_iptables_nft    -t filter -D 1 OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT
-$command_iptables_legacy -t filter -D 1 INPUT -s $serverip_iperf_ipv4  -j ACCEPT
-$command_iptables_legacy -t filter -D 1 OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT
 ####
 ####
 exit; fi
@@ -5221,22 +5219,20 @@ echo "$title_md [ fail ] [ install iperf command ]"; exit ;; esac
 ####
 ####
 echo "$title_md"
-echo "$title_md [ Working ] ADDing ipv6 rules: ACCEPT to $serverip_iperf_ipv6"
+echo "$title_md [ Working ] Save firewall before speed-ip6"
+$cmd_realpath save speed-ip6 &> /dev/null
+echo "$title_md [ Working ] ADDing ipv4 rules: ACCEPT to $serverip_iperf_ipv6"
+$command_iptables_nft    -t filter -I INPUT -s $serverip_iperf_ipv4  -j ACCEPT
+$command_iptables_nft    -t filter -I OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT
+$command_iptables_legacy -t filter -I INPUT -s $serverip_iperf_ipv4  -j ACCEPT
+$command_iptables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT
 echo "$title_md"
-$command_ip6tables_nft    -t filter -I 1 INPUT -s $serverip_iperf_ipv6  -j ACCEPT
-$command_ip6tables_nft    -t filter -I 1 OUTPUT -d $serverip_iperf_ipv6 -j ACCEPT
-$command_ip6tables_legacy -t filter -I 1 INPUT -s $serverip_iperf_ipv6  -j ACCEPT
-$command_ip6tables_legacy -t filter -I 1 OUTPUT -d $serverip_iperf_ipv6 -j ACCEPT
+echo "$title_md [ Working ] Conecting in ipv4 to $serverip_iperf_ipv4 ]"
+$command_iperf -c $serverip_iperf_ipv4 -t 6 -P 1 -p $serverport_iperf_ipv6 |tail -3
 echo "$title_md"
-echo "$title_md [ Working ] Conecting in ipv6 to $serverip_iperf_ipv6 ]"
-$command_iperf -c $serverip_iperf_ipv6 -t 6 -P 1 -p $serverport_iperf_ipv6 |tail -3
+echo "$title_md [ Working ] restoring firewall before speed-ip4"
+$cmd_realpath load speed-ip6 &> /dev/null
 echo "$title_md"
-echo "$title_md [ Working ] DELeting ipv6 rules: ACCEPT to $serverip_iperf_ipv6"
-echo "$title_md"
-$command_ip6tables_nft    -t filter -D 1 INPUT -s $serverip_iperf_ipv6  -j ACCEPT
-$command_ip6tables_nft    -t filter -D 1 OUTPUT -d $serverip_iperf_ipv6 -j ACCEPT
-$command_ip6tables_legacy -t filter -D 1 INPUT -s $serverip_iperf_ipv6  -j ACCEPT
-$command_ip6tables_legacy -t filter -D 1 OUTPUT -d $serverip_iperf_ipv6 -j ACCEPT
 ####
 ####
 exit; fi
