@@ -1107,13 +1107,6 @@ exit ; fi
 ####
 ####
 #### :rutina-final-alias-campus:
-##########     english: favorites         ##########
-##########     spanish: favoritos         ##########
-####
-####
-
-####
-####
 ##########     english: autolog:         ##########
 ##########     spanish: autoguardado     ##########
 #### :rutina-inicial-allow-autolog:
@@ -1156,7 +1149,7 @@ exit; fi
 #### :rutina-final-fw-filelog:
 ##########    english: autolog: Read log fwiptables-autolog   ##########
 ##########    spanish: autolog: Lee log  fwiptables-autolog   ##########
-#### :rutina-inicial-autolog:
+#### :rutina-inicial-config-autolog:
 ####
 ####
 if [ "$first_option" == "autolog" ] ; then
@@ -1170,7 +1163,7 @@ echo "$title_md [ info ] [ last 50 lines from file showed ] [ $file_default_auto
 exit; fi
 ####
 ####
-#### :rutina-final-autolog:
+#### :rutina-final-config-autolog:
 ##########    english: expert-wpa-new: example from a file wpa_supplicant   ##########
 ##########    spanish: expert-wpa-new: ejemplo de un archivo wpa_supplicant ##########
 #### :rutina-inicial-expert-wpa-new:
