@@ -5374,7 +5374,8 @@ if [ ! -f "$default_directory_config/$third_option" ]
 then $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="file not found: $third_option" ; exit ; fi 
-cp "$default_directory_config/$third_option" "$directory_temporal/$file_installed-$third_option"
+cp "$default_directory_config/$third_option" \
+"$directory_temporal/$file_installed-$third_option"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$third_option" \
@@ -5383,7 +5384,8 @@ if [ -s "$default_directory_config/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="OK. file: $third_option"
-else cp "$directory_temporal/$file_installed-$third_option" "$default_directory_config/$third_option"
+else cp "$directory_temporal/$file_installed-$third_option" \
+"$default_directory_config/$third_option"
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="Canceled. file: $third_option"; fi
@@ -5402,7 +5404,8 @@ if [ ! -f "$default_directory_wpa/wpaconfig_$third_option" ]
 then $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="file not found: wpaconfig_$third_option" ; exit ; fi 
-cp "$default_directory_wpa/wpaconfig_$third_option" "$directory_temporal/$file_installed-$third_option"
+cp "$default_directory_wpa/wpaconfig_$third_option" 
+"$directory_temporal/$file_installed-$third_option"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$third_option" \
@@ -5479,7 +5482,8 @@ if [ -f "$default_directory_config/$third_option" ] ; then $nada
 else $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="file not found: $third_option" ; exit ; fi 
-cp "$default_directory_config/$third_option" "$directory_temporal/$file_installed-$third_option"
+cp "$default_directory_config/$third_option" \
+"$directory_temporal/$file_installed-$third_option"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_temporal/$file_installed-$third_option" \
@@ -5488,7 +5492,8 @@ if [ -s "$default_directory_config/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="OK. file: $third_option"
-else cp "$directory_temporal/$cmd_realpath-$third_option" "$default_directory_config/$third_option"
+else cp "$directory_temporal/$cmd_realpath-$third_option" \
+"$default_directory_config/$third_option"
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="Canceled. file: $third_option"; fi
@@ -5611,8 +5616,8 @@ $favorite_realpath_graphicalldialog  --forms \
 ;;
 ####
 ####
-#### english: new-full-custom and nueva-completa-custom whithout parameters and with one space  ####
-#### spanish: new-full-custom and nueva-completa-custom sin parametros y con un espacio         ####
+#### english: new-full-custom and nueva-completa-custom whithout parameters ####
+#### spanish: new-full-custom and nueva-completa-custom sin parametros      ####
 ####
 ####
 "new-full-custom ")
@@ -5770,8 +5775,8 @@ $command_yad  --forms \
 ;;
 ####
 ####
-#### english: new-full-custom and nueva-completa-custom whithout parameters and with one space  ####
-#### spanish: new-full-custom and nueva-completa-custom sin parametros y con un espacio         ####
+#### english: new-full-custom and nueva-completa-custom whithout parameters ####
+#### spanish: new-full-custom and nueva-completa-custom sin parametros      ####
 ####
 ####
 "new-full-custom ")
@@ -6239,8 +6244,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity:
-##########    english: gui-roll-zenity-firewall-control: gui roll firewall-control: gui with roll  ##########
-##########    spanish: gui-roll-zenity-firewall-control: gui roll firewall-control: gui con roll   ##########
+##########    english: gui-roll-zenity-firewall-control: gui with roll  ##########
+##########    spanish: gui-roll-zenity-firewall-control: gui con roll   ##########
 #### :rutina-inicial-gui-zenity-roll-firewall-control:
 ####
 ####
@@ -6299,8 +6304,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-control:
-##########    english: gui-roll-zenity-firewall-listconceptual: gui roll firewall-listconceptual: gui with roll  ##########
-##########    spanish: gui-roll-zenity-firewall-listconceptual: gui roll firewall-listconceptual: gui con roll   ##########
+##########    english: gui-roll-zenity-firewall-listconceptual: gui with roll  ##########
+##########    spanish: gui-roll-zenity-firewall-listconceptual: gui con roll   ##########
 #### :rutina-inicial-gui-roll-zenity-firewall-listconceptual:
 ####
 ####
@@ -6474,8 +6479,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-wallcustom:
-##########    english: gui-roll-zenity-firewall-wallsystem: gui roll firewall-wallsystem  ##########
-##########    spanish: gui-roll-zenity-firewall-wallsystem: gui roll firewall-wallsystem  ##########
+##########    english: gui-roll-zenity-firewall-wallsystem: gui-roll ##########
+##########    spanish: gui-roll-zenity-firewall-wallsystem: gui-roll ##########
 #### :rutina-inicial-gui-roll-zenity-firewall-wallsystem:
 ####
 ####
@@ -6503,40 +6508,74 @@ case "$selection_final" in
 1) exit ;;
 "gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
 "gui-info-menu")$cmd_realpath gui-zenity firewall-wallsystem ;;
-"client-basic")$cmd_realpath gui-zenity client-basic ; $cmd_realpath gui-zenity list4;;
-"client-web")$cmd_realpath gui-zenity client-web ; $cmd_realpath gui-zenity list4;;
-"client-ipp")$cmd_realpath gui-zenity client-ipp   ; $cmd_realpath gui-zenity list4;;
-"client-irc")$cmd_realpath gui-zenity client-irc   ; $cmd_realpath gui-zenity list4;;
-"client-mail")$cmd_realpath gui-zenity client-mail ; $cmd_realpath gui-zenity list4;;
-"client-news")$cmd_realpath gui-zenity client-news ; $cmd_realpath gui-zenity list4;;
-"client-ftp")$cmd_realpath gui-zenity client-ftp   ; $cmd_realpath gui-zenity list4;;
-"client-git")$cmd_realpath gui-zenity client-git ; $cmd_realpath gui-zenity list4;;
-"client-vnc")$cmd_realpath gui-zenity client-vnc ; $cmd_realpath gui-zenity list4;;
-"client-torrent")$cmd_realpath gui-zenity client-torrent ; $cmd_realpath gui-zenity list4;;
-"client-vpn")$cmd_realpath gui-zenity client-vpn ; $cmd_realpath gui-zenity list4;;
-"client-tor")$cmd_realpath gui-zenity client-tor ; $cmd_realpath gui-zenity list4;;
-"games-shooter")$cmd_realpath gui-zenity games-shooter ; $cmd_realpath gui-zenity list4;;
-"game-wesnoth")$cmd_realpath gui-zenity game-wesnoth ; $cmd_realpath gui-zenity list4;;
-"game-minetest")$cmd_realpath gui-zenity game-minetest ; $cmd_realpath gui-zenity list4;;
-"game-freeciv")$cmd_realpath gui-zenity game-freeciv ; $cmd_realpath gui-zenity list4;;
-"game-widelands")$cmd_realpath gui-zenity game-widelands ; $cmd_realpath gui-zenity list4;;
-"lan-tor")$cmd_realpath gui-zenity lan-tor ; $cmd_realpath gui-zenity list4;;
-"lan-vpn")$cmd_realpath gui-zenity lan-vpn ; $cmd_realpath gui-zenity list4;;
-"server-ssh")$cmd_realpath gui-zenity server-ssh ; $cmd_realpath gui-zenity list4;;
-"server-web")$cmd_realpath gui-zenity server-web ; $cmd_realpath gui-zenity list4;;
-"server-proxy")$cmd_realpath gui-zenity server-proxy ; $cmd_realpath gui-zenity list4;;
-"server-vnc")$cmd_realpath gui-zenity server-vnc ; $cmd_realpath gui-zenity list4;;
-"server-samba")$cmd_realpath gui-zenity server-samba ; $cmd_realpath gui-zenity list4;;
-"server-news")$cmd_realpath gui-zenity server-news ; $cmd_realpath gui-zenity list4;;
-"server-mail")$cmd_realpath gui-zenity server-mail ; $cmd_realpath gui-zenity list4;;
-"server-ftp")$cmd_realpath gui-zenity server-ftp ; $cmd_realpath gui-zenity list4;;
-"server-print")$cmd_realpath gui-zenity server-print ; $cmd_realpath gui-zenity list4;;
-"server-lamp")$cmd_realpath gui-zenity server-lamp ; $cmd_realpath gui-zenity list4;;
-"server-teamspeak")$cmd_realpath gui-zenity server-teamspeak ; $cmd_realpath gui-zenity list4;;
-"server-mumble")$cmd_realpath gui-zenity server-mumble ; $cmd_realpath gui-zenity list4;;
-"server-sql")$cmd_realpath gui-zenity server-sql ; $cmd_realpath gui-zenity list4;;
-"server-asterisk")$cmd_realpath gui-zenity server-asterisk ; $cmd_realpath gui-zenity list4;;
-"server-domain")$cmd_realpath gui-zenity server-domain ; $cmd_realpath gui-zenity list4;;
+"client-basic")$cmd_realpath gui-zenity client-basic     ;
+$cmd_realpath gui-zenity list4 ;;
+"client-web")$cmd_realpath gui-zenity client-web         ;
+$cmd_realpath gui-zenity list4 ;;
+"client-ipp")$cmd_realpath gui-zenity client-ipp         ;
+$cmd_realpath gui-zenity list4 ;;
+"client-irc")$cmd_realpath gui-zenity client-irc         ;
+$cmd_realpath gui-zenity list4 ;;
+"client-mail")$cmd_realpath gui-zenity client-mail       ;
+$cmd_realpath gui-zenity list4 ;;
+"client-news")$cmd_realpath gui-zenity client-news       ;
+$cmd_realpath gui-zenity list4 ;;
+"client-ftp")$cmd_realpath gui-zenity client-ftp         ;
+$cmd_realpath gui-zenity list4 ;;
+"client-git")$cmd_realpath gui-zenity client-git         ;
+$cmd_realpath gui-zenity list4 ;;
+"client-vnc")$cmd_realpath gui-zenity client-vnc         ;
+$cmd_realpath gui-zenity list4 ;;
+"client-torrent")$cmd_realpath gui-zenity client-torrent ;
+$cmd_realpath gui-zenity list4 ;;
+"client-vpn")$cmd_realpath gui-zenity client-vpn         ;
+$cmd_realpath gui-zenity list4 ;;
+"client-tor")$cmd_realpath gui-zenity client-tor         ;
+$cmd_realpath gui-zenity list4 ;;
+"games-shooter")$cmd_realpath gui-zenity games-shooter   ;
+$cmd_realpath gui-zenity list4 ;;
+"game-wesnoth")$cmd_realpath gui-zenity game-wesnoth     ;
+$cmd_realpath gui-zenity list4 ;;
+"game-minetest")$cmd_realpath gui-zenity game-minetest   ;
+$cmd_realpath gui-zenity list4 ;;
+"game-freeciv")$cmd_realpath gui-zenity game-freeciv     ;
+$cmd_realpath gui-zenity list4 ;;
+"game-widelands")$cmd_realpath gui-zenity game-widelands ;
+$cmd_realpath gui-zenity list4 ;;
+"lan-tor")$cmd_realpath gui-zenity lan-tor               ;
+$cmd_realpath gui-zenity list4 ;;
+"lan-vpn")$cmd_realpath gui-zenity lan-vpn               ;
+$cmd_realpath gui-zenity list4 ;;
+"server-ssh")$cmd_realpath gui-zenity server-ssh         ;
+$cmd_realpath gui-zenity list4 ;;
+"server-web")$cmd_realpath gui-zenity server-web         ;
+$cmd_realpath gui-zenity list4 ;;
+"server-proxy")$cmd_realpath gui-zenity server-proxy     ;
+$cmd_realpath gui-zenity list4 ;;
+"server-vnc")$cmd_realpath gui-zenity server-vnc         ;
+$cmd_realpath gui-zenity list4 ;;
+"server-samba")$cmd_realpath gui-zenity server-samba     ;
+$cmd_realpath gui-zenity list4 ;;
+"server-news")$cmd_realpath gui-zenity server-news       ;
+$cmd_realpath gui-zenity list4 ;;
+"server-mail")$cmd_realpath gui-zenity server-mail       ;
+$cmd_realpath gui-zenity list4 ;;
+"server-ftp")$cmd_realpath gui-zenity server-ftp         ;
+$cmd_realpath gui-zenity list4 ;;
+"server-print")$cmd_realpath gui-zenity server-print     ;
+$cmd_realpath gui-zenity list4 ;;
+"server-lamp")$cmd_realpath gui-zenity server-lamp       ;
+$cmd_realpath gui-zenity list4 ;;
+"server-teamspeak")$cmd_realpath gui-zenity server-teamspeak ;
+$cmd_realpath gui-zenity list4 ;;
+"server-mumble")$cmd_realpath gui-zenity server-mumble       ;
+$cmd_realpath gui-zenity list4 ;;
+"server-sql")$cmd_realpath gui-zenity server-sql             ;
+$cmd_realpath gui-zenity list4 ;;
+"server-asterisk")$cmd_realpath gui-zenity server-asterisk   ;
+$cmd_realpath gui-zenity list4 ;;
+"server-domain")$cmd_realpath gui-zenity server-domain       ;
+$cmd_realpath gui-zenity list4 ;;
 esac
 ####
 ####
@@ -6544,8 +6583,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-wallsystem:
-##########    english: gui-roll-zenity-options-easy: gui roll options-easy: gui with roll  ##########
-##########    spanish: gui-roll-zenity-options-easy: gui roll options-easy: gui con roll   ##########
+##########    english: gui-roll-zenity-options-easy: gui with roll  ##########
+##########    spanish: gui-roll-zenity-options-easy: gui con roll   ##########
 #### :rutina-inicial-gui-roll-zenity-options-easy:
 ####
 ####
@@ -6702,13 +6741,13 @@ actual*)$cmd_realpath -gui-$favorite_basename_graphicalldialog actual ;;
 eraserules4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog eraserules4 ;;
 eraserules6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog eraserules6 ;;
 eraserules*)$cmd_realpath -gui-$favorite_basename_graphicalldialog eraserules ;;
-wizard-full*)$cmd_realpath -gui-$favorite_basename_graphicalldialog wizard-full
+wizard-full*)$cmd_realpath -gui-$favorite_basename_graphicalldialog wizard-full ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-wizard-mini*)$cmd_realpath -gui-$favorite_basename_graphicalldialog wizard-mini
-$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
-off-line*)$cmd_realpath -gui-$favorite_basename_graphicalldialog off-line
+wizard-mini*)$cmd_realpath -gui-$favorite_basename_graphicalldialog wizard-mini ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-all-permisive*)$cmd_realpath -gui-$favorite_basename_graphicalldialog all-permisive
+off-line*)$cmd_realpath -gui-$favorite_basename_graphicalldialog off-line ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+all-permisive*)$cmd_realpath -gui-$favorite_basename_graphicalldialog all-permisive ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
 esac
 ####
@@ -6996,15 +7035,15 @@ $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
 server-lamp*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-lamp ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
 server-teamspeak*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-teamspeak ;
-$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
 server-mumble*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-mumble ;
-$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
 server-sql*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-sql ;
-$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
 server-asterisk*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-asterisk ;
-$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
 server-domain*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-domain ;
-$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
 esac
 ####
 ####
@@ -12336,7 +12375,7 @@ $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A OUTPUT  \
 ####################################### spanish: reglas para permitir puertos servidor tcp
 ####
 ####
-#### 000000000000000000000000000 without separate rules 00000000000000000000000000
+#### without separate rules
 ####
 ####
 if [ "$allow_separate_rules" != "$NULL" ]; then 
@@ -12395,8 +12434,8 @@ $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
 fi
 ####
 ####
-####################################### english: rules allow server ports with udp
-####################################### spanish: reglas para permitir puertos servidor udp
+################ english: rules allow server ports with udp         #######################
+################ spanish: reglas para permitir puertos servidor udp #######################
 ####
 ####
 if [ "$allow_separate_rules" != "$NULL" ]; then 
@@ -12448,14 +12487,14 @@ $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
 fi
 ####
 ####
-#### 000000000000000000000000000 without separate rules 00000000000000000000000000
+#### without separate rules 
 ####
 ####
 ####################################### english: rules allow server ports with tcp
 ####################################### spanish: reglas para permitir puertos servidor tcp
 ####
 ####
-#### 000000000000000000000000000 with separate rules 00000000000000000000000000
+#### with separate rules
 ####
 ####
 if [ "$allow_separate_rules" == "$NULL" ]; then 
@@ -12562,11 +12601,11 @@ $allow_use_nft  $allow_use_ipv6 $command_ip6tables_nft -A OUTPUT \
 done; fi
 ####
 ####
-#### 000000000000000000000000000 with separate rules 00000000000000000000000000
+#### with separate rules
 ####
 ####
-####################################### english: rules from input of legacy ipv4 for ping, uid, gid and protocols
-####################################### spanish: reglas de entrada de legacy ipv4 para ping, uid, gid y protocolos
+################## english: rules from input of legacy ipv4 for ping, uid, gid and protocols
+################## spanish: reglas de entrada de legacy ipv4 para ping, uid, gid y protocolos
 ####
 ####
 $allow_use_legacy  $allow_use_ipv4 $allow_output_ping \
@@ -12595,8 +12634,8 @@ $command_iptables_legacy -A INPUT \
 done
 ####
 ####
-####################################### english: rules from output of legacy ipv4 for ping, uid, gid and protocols
-####################################### spanish: reglas de salida de legacy ipv4 para ping, uid, gid y protocolos
+################# english: rules from output of legacy ipv4 for ping, uid, gid and protocols
+################# spanish: reglas de salida de legacy ipv4 para ping, uid, gid y protocolos
 ####
 ####
 $allow_use_legacy  $allow_use_ipv4 $allow_output_ping \
@@ -12631,8 +12670,8 @@ $command_iptables_legacy -A OUTPUT \
 done
 ####
 ####
-####################################### english: ipv6 filter legacy rules input and output for ping, uid, gid and protocols
-####################################### spanish: ipv6 filtros legacy reglas de entrada y salida para ping, uid, gid y protocolos
+################# english: ipv6 filter legacy rules for ping, uid, gid and protocols
+################# spanish: ipv6 filtros legacy reglas para ping, uid, gid y protocolos
 ####
 #### 
 #### english: ipv6 filter legacy rules input 
@@ -12711,8 +12750,8 @@ $command_ip6tables_legacy -A OUTPUT \
 done
 ####
 ####
-############################       english: iptables rules ipv4  iptables-nft for ping, uid, gid and protocols
-############################       spanish: reglas de iptables ipv4 iptables-nft para ping, uid, gid y protocolos
+############### english: iptables rules ipv4  iptables-nft for ping, uid, gid and protocols
+############### spanish: reglas de iptables ipv4 iptables-nft para ping, uid, gid y protocolos
 ####
 ####
 #### english: ipv4 filter nft rules input
@@ -13216,8 +13255,8 @@ $command_ip6tables_legacy -t filter -A INPUT \
 fi
 ####
 ####
-########################################       english: iptables ipv4 and ipv6 with variable output_all
-########################################       english: iptables ipv4 y ipv6 con variable output_all
+############### english: iptables ipv4 and ipv6 with variable output_all
+############### english: iptables ipv4 y ipv6 con variable output_all
 ####
 ####
 if [ "$allow_output_all" == "$NULL" ]; then 
@@ -13274,8 +13313,8 @@ $command_ip6tables_legacy -t filter -A OUTPUT \
 fi
 ####
 ####
-################################################    english: allow output bandwidth
-################################################    spanish: acepta velocidad de conexiones de salida
+########### english: allow output bandwidth
+########### spanish: acepta velocidad de conexiones de salida
 ####
 ####
 if [ "$allow_output_bandwidth" == "$NULL" ]; then 
@@ -13315,8 +13354,8 @@ $allow_output_bandwidth ip6tables-nft -A OUTPUT \
 fi
 ####
 ####
-################################################    english: allow output maxconnect
-################################################    spanish: acepta maximo de conexiones de salida
+################### english: allow output maxconnect
+################### spanish: acepta maximo de conexiones de salida
 ####
 ####
 if [ "$allow_output_maxconnect" == "$NULL" ]; then 
@@ -13352,8 +13391,8 @@ $allow_use_nft $allow_output_maxconnect $command_ip6tables_nft   -A OUTPUT \
 fi
 ####
 ####
-################################################    english: allow output all
-################################################    spanish: acepta toda salida
+################### english: allow output all
+################### spanish: acepta toda salida
 ####
 ####
 if [ "$allow_output_all" == "$NULL" ]; then 
@@ -13412,8 +13451,8 @@ $command_ip6tables_legacy -t filter -A OUTPUT  -j $config_close_deny \
 fi
 ####
 ####
-########################################       english: show text when active load-custom rules
-########################################       spanish: muestra texto cuando activas las load-custom reglas
+################ english: show text when active load-custom rules
+################ spanish: muestra texto cuando activas las load-custom reglas
 ####
 ####  
 echo "$title_md [ _ok_ ] [ Launched: firewall ] \
