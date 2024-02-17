@@ -2501,6 +2501,7 @@ echo "$text_md free sockets nodes geoip ip-forward version code about notes     
 echo "$text_md depends commands variables install install                           "
 echo "$title_md  [ options-expert ] expert                                          "
 echo "$title_md   ||| Example: fwiptables-cmd -gui-zenity info |||                  "
+echo "$title_md $cmd_basename Licensed by GNU General Public License "
 exit ; fi
 ####
 ####
@@ -6296,7 +6297,7 @@ exit; fi
 if [ "$first_option" == "gui-roll-zenity-firewall-control" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 gui_menu="gui-principal-menu|gui-info-menu|\
-|stop|continue|reset|names|show|save|load|actual|\
+stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|wizard-mini|wizard-full|\
 off-line|all-permisive"
 selection_menu="$($command_zenity --forms \
