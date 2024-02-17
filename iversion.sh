@@ -399,6 +399,8 @@ default_directory_shell="$directory_data/fwiptables-shell"
 default_directory_log="$directory_data/fwiptables-log"
 default_directory_pdf="$directory_data/fwiptables-pdf"
 default_directory_wpa="$directory_data/fwiptables-wpa"
+default_directory_benchmarkram="$directory_data/fwiptables-benchmarkram"
+default_directory_benchmarkdisk="$directory_data/fwiptables-benchmarkdisk"
 ####
 ####
 #### english: templates cfg
@@ -437,7 +439,7 @@ file_default_autolog="$default_directory_log/file_default_autolog"
 directory_cache_run="/run/$file_installed"
 directory_cache_home="$default_root_home/.cache/$file_installed"
 if [ -d "/run" ]; then mkdir $directory_cache_run &> /dev/null ; fi
-if [ -d "$default_root_home" ]; then mkdir -p $directory_cache_home &> /dev/null ; fi
+if [ -d "$default_root_home" ]; then mkdir -P $directory_cache_home &> /dev/null ; fi
 ####
 ####
 #### stablished which is the cache temporal.
@@ -470,10 +472,12 @@ output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-
 command_mkdir="$(command -v mkdir)"
 ####
 ####
+if [ ! -d "$default_directory_data" ]; then
+$command_mkdir -p $default_directory_data &> /dev/null ; fi
 if [ ! -d "$default_directory_fwrecover" ]; then 
 $command_mkdir -p "$default_directory_fwrecover" &> /dev/null ; fi
-if [ ! -d "$directory_temporal" ]; then
-$command_mkdir -p $directory_temporal &> /dev/null ; fi
+if [ ! -d "$default_directory_temporal" ]; then
+$command_mkdir -p $default_directory_temporal &> /dev/null ; fi
 if [ ! -d "$default_directory_default" ]; then
 $command_mkdir -p "$default_directory_default" &> /dev/null ; fi
 if [ ! -d "$default_directory_config" ]; then
@@ -482,12 +486,14 @@ if [ ! -d "$default_directory_shell" ]; then
 $command_mkdir -p "$default_directory_shell" &> /dev/null ; fi
 if [ ! -d "$default_directory_log" ]; then
 $command_mkdir -p "$default_directory_log" &> /dev/null ; fi
-if [ ! -d "$directory_data" ]; then
-$command_mkdir -p $directory_data &> /dev/null ; fi
 if [ ! -d "$default_directory_wpa" ]; then
 $command_mkdir -p "$default_directory_wpa" &> /dev/null ; fi
 if [ ! -d "$default_directory_pdf" ]; then
 $command_mkdir -p "$default_directory_pdf" &> /dev/null ; fi
+if [ ! -d "$default_directory_benchmarkram" ]; then
+$command_mkdir -p "$default_directory_benchmarkram" &> /dev/null ; fi
+if [ ! -d "$default_directory_benchmarkdisk" ]; then
+$command_mkdir -p "$default_directory_benchmarkdisk" &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-dir-sane:
@@ -989,22 +995,25 @@ $cmd_realpath config-regen &> /dev/null ;; esac
 ####
 if [ "$first_option" == "cli" ]; then 
 case "$second_option" in
+expert-*)echo "the commands expert works only wihtout optinal-output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
+"modify-custom")
 $cmd_realpath $second_option $third_option ; exit ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "gui" ]; then 
 case "$second_option" in
+expert-*)echo "the commands expert works only wihtout optinal-output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
+"modify-custom")
 $cmd_realpath config-regen  &> /dev/null ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "log" ]; then 
 case "$second_option" in
+expert-*)echo "the commands expert works only wihtout optinal output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
@@ -1013,6 +1022,7 @@ $cmd_realpath config-regen  &> /dev/null ; exit ;; esac ; fi
 ####
 if [ "$first_option" == "pdf" ]; then 
 case "$second_option" in
+expert-*) echo "the commands expert works only wihtout optinal output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
@@ -1021,6 +1031,7 @@ $cmd_realpath config-regen  &> /dev/null ; exit ;; esac ; fi
 ####
 if [ "$first_option" == "null" ]; then 
 case "$second_option" in
+expert-*) echo "the commands expert works only wihtout optinal output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
@@ -1803,17 +1814,17 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "version" ]; then 
-echo "$title_md [ $first_option ] [ Show version ] [ version.md ]   "    
-echo "$text_md [ info ] [ Program ] $cmd_realpath "
-echo "$text_md [ info ] [ Version ] $cmd_version  "
-echo "$text_md [ info ] [ Short description ] $cmd_shortdescription "
-echo "$text_md [ info ] [ Long description  ] $cmd_longdescription  "
-echo "$text_md [ info ] [ License program   ] $cmd_license  "
-echo "$text_md [ info ] [ Developer Contact ] $cmd_contact  "
-echo "$text_md [ info ] [ Data  Directory   ] $directory_data  "
-echo "$text_md [ info ] [ Cache Directory   ] $directory_cache "
-echo "$text_md [ info ] [ File  Format      ] "
-echo "$text_md $($command_file $cmd_realpath) "   
+echo "$title_md [ $first_option ] [ Show version ] [ version.md ]   "     
+echo "$text_md [ info ] [ Program ] $cmd_realpath "   
+echo "$text_md [ info ] [ Version ] $cmd_version  "   
+echo "$text_md [ info ] [ Short description ] $cmd_shortdescription "   
+echo "$text_md [ info ] [ Long description  ] $cmd_longdescription  "   
+echo "$text_md [ info ] [ License program   ] $cmd_license  "   
+echo "$text_md [ info ] [ Developer Contact ] $cmd_contact  "   
+echo "$text_md [ info ] [ Data  Directory   ] $directory_data  "   
+echo "$text_md [ info ] [ Cache Directory   ] $directory_cache "   
+echo "$text_md [ info ] [ File  Format      ] "   
+echo "$text_md $($command_file $cmd_realpath) "
 exit ; fi
 ####
 ####
@@ -2801,6 +2812,8 @@ echo "$text_md expert-compile-obash . Compile fwiptables-cmd to fwiptables-bin w
 echo "$text_md expert-upgrade-stable . Upgrade from web sourceforge fwiptables-cmd with curl"
 echo "$text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables-cmd with curl"
 echo "$text_md expert-download-adblock . Download blacklist to /etc/hosts.blacklist with curl"
+echo "$text_md expert-speed-disk . benchmark disk speed with 100Mb"
+echo "$text_md expert-speed-ram . benchmark ram speed with 100Mb"
 echo "$text_md expert-wpa-list . list nameconfig to list wifi config"
 echo "$text_md expert-wpa-new . new nameconfig to create wifi config"
 echo "$text_md expert-wpa-modify . one nameconfig to modify wifi config"
@@ -4344,8 +4357,8 @@ echo "$text_md and with shield ssh                "
 echo "$text_md and with comments rules.           "
 echo "$text_md"
 echo "$text_md rules ipv4, rules ipv6, netfilter,        "
-echo "$text_md neftables, xtables,                       "
-echo "$text_md tools ip, wizards for rules,              "
+echo "$text_md netfilter neftables, netfilter xtables,   "
+echo "$text_md tools ip, wizards to gen rules,           "
 echo "$text_md save/load rules with files,               "
 echo "$text_md shield to ssh or other servers choosed,   "
 echo "$text_md string algoritmo, limit bandwidth,        "
@@ -4838,6 +4851,42 @@ exit; fi
 ####
 ####
 #### :rutina-final-speed-glx:
+##########    english: expert-speed-disk: benchmark ram with 100Mb    ##########
+##########    spanish: expert-speed-disk: benchmark ram con  100Mb    ##########
+#### :rutina-inicial-expert-speed-disk:
+####
+####
+if   [ "$first_option" == "expert-speed-disk" ]; then 
+echo "$title_md [ $first_option ]  [ test disk speed benchamrk ] \
+[ for default max $time_server_waiting seconds ] [ 100Mb will be used to benchmark, while]"
+case $command_dd in "$NULL")
+echo "$text_md [ fail ] [ Install dd ]"; exit ;; esac
+dd if=/dev/zero of=$default_directory_benchmarkdisk/speed.img \
+status=progress bs=10M count=100
+rm $default_directory_benchmarkdisk/speed.img &> /dev/null
+exit; fi
+####
+####
+#### :rutina-final-expert-speed-disk:
+##########    english: expert-speed-ram: benchmark ram with 100Mb    ##########
+##########    spanish: expert-speed-ram: benchmark ram con  100Mb    ##########
+#### :rutina-inicial-expert-speed-ram:
+####
+####
+if   [ "$first_option" == "expert-speed-ram" ]; then 
+echo "$title_md [ $first_option ]  [ test ram speed benchamrk ] \
+[ for default max $time_server_waiting seconds ] [ 100Mb will be used to benchmark, while]"
+case $command_dd in "$NULL")
+echo "$text_md [ fail ] [ Install dd ]"; exit ;; esac
+mount -t tmpfs tmpfs $default_directory_benchmarkram
+dd if=/dev/zero of=$default_directory_benchmarkram/speed.img \
+status=progress bs=10M count=100
+rm $default_directory_benchmarkram/speed.img &> /dev/null
+umount $default_directory_benchmarkram
+exit; fi
+####
+####
+#### :rutina-final-expert-speed-ram:
 ##########    english: ntpdate-client: update the date and time    ##########
 ##########    spanish: ntpdate-client: actualiza la fecha y hora   ##########
 #### :rutina-inicial-ntpdate-client:
