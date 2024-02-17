@@ -2461,44 +2461,45 @@ exit; fi
 ####
 if [ "$first_option" == "list-options" ] ; then 
 echo "$title_md $cmd_basename [optional-output] first_option [second_option]   "
-echo "$title_md  [ optional-output ]                                                        "
-echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -p|-pdf -s|-silent ]                       "
-echo "$text_md [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                           "
-echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail -gui-roll-zenity ]                     "
-echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]          "
-echo "$title_md  [ firewall-control ]                                                       "
-echo "$text_md stop continue reset actual show save load all-names                          "
-echo "$text_md eraserules eraserules4 eraserules6 off-line all-permisive                    "
-echo "$text_md wizard-mini wizard-full                                                      "
-echo "$title_md  [ firewall-listconceptual ]                                                "
-echo "$text_md ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
-echo "$text_md list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6            "
-echo "$text_md list-security4 list-security6 list-ebtables list-arptables                   "
-echo "$title_md  [ firewall-listnumeral ]                                                   "
-echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-filter4 listn-filter6                  "
-echo "$text_md listn-alltables  listn-nat4 listn-nat6 listn-raw4 listn-raw6                 "
-echo "$text_md listn-mangle4 listn-mangle6                                                  "
-echo "$text_md listn-security4 listn-security6                                              "
-echo "$title_md  [ firewall-wallcustom ]                                                    "
-echo "$text_md new-full-custom nueva-completa-custom new-mini-custom                        "
-echo "$text_md nueva-mini-custom clone-wallsystem load-custom show-custom                   "
-echo "$text_md modify-custom del-custom all-custom                                          "
-echo "$title_md  [ firewall-wallsystem ]                                                    "
-echo "$text_md client-basic client-web client-git client-ipp client-irc                     "
-echo "$text_md client-vnc client-news client-vpn client-torrent client-vpn                  "
-echo "$text_md client-ftp client-proxy client-mail client-tor game-widelands                "
-echo "$text_md games-udp games-shooter game-wesnoth game-minetest game-freeciv              "
-echo "$text_md lan-tor lan-vpn shield-ssh server-ssh server-irc server-vnc                  "
-echo "$text_md server-print server-lamp server-news server-ftp server-mail                  "
-echo "$text_md server-webserver server-teamspeak server-mumble                              "
-echo "$text_md server-sql server-asterisk server-proxy server-samba                         "
-echo "$title_md  [ options-easy ]                                                           "
-echo "$text_md preferences-read preferences-modify preferences-regen preferences-example    "  
-echo "$text_md list-options examples-options info-options info date intro filelog autolog   "
-echo "$text_md ip4 ip6 speed-ip4 speed-ip6 speed-glx free sockets nodes geoip ip-forward    "
-echo "$text_md version code about notes depends commands variables install install          "
-echo "$title_md  [ options-expert ] expert                                                  "
-echo "$title_md            ||| Example: fwiptables-cmd -gui-zenity info |||                 "
+echo "$title_md  [ optional-output ]                                                "
+echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -p|-pdf -s|-silent ]               "
+echo "$text_md [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                   "
+echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail -gui-roll-zenity ]             "
+echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]  "
+echo "$title_md  [ firewall-control ]                                               "
+echo "$text_md stop continue reset actual show save load all-names                  "
+echo "$text_md eraserules eraserules4 eraserules6 off-line all-permisive            "
+echo "$text_md wizard-mini wizard-full                                              "
+echo "$title_md  [ firewall-listconceptual ]                                        "
+echo "$text_md ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6  "
+echo "$text_md list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6    "
+echo "$text_md list-security4 list-security6 list-ebtables list-arptables           "
+echo "$title_md  [ firewall-listnumeral ]                                           "
+echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-filter4 listn-filter6          "
+echo "$text_md listn-alltables  listn-nat4 listn-nat6 listn-raw4 listn-raw6         "
+echo "$text_md listn-mangle4 listn-mangle6                                          "
+echo "$text_md listn-security4 listn-security6                                      "
+echo "$title_md  [ firewall-wallcustom ]                                            "
+echo "$text_md new-full-custom nueva-completa-custom new-mini-custom                "
+echo "$text_md nueva-mini-custom clone-wallsystem load-custom show-custom           "
+echo "$text_md modify-custom del-custom all-custom                                  "
+echo "$title_md  [ firewall-wallsystem ]                                            "
+echo "$text_md client-basic client-web client-git client-ipp client-irc             "
+echo "$text_md client-vnc client-news client-vpn client-torrent client-vpn          "
+echo "$text_md client-ftp client-proxy client-mail client-tor game-widelands        "
+echo "$text_md games-udp games-shooter game-wesnoth game-minetest game-freeciv      "
+echo "$text_md lan-tor lan-vpn shield-ssh server-ssh server-irc server-vnc          "
+echo "$text_md server-print server-lamp server-news server-ftp server-mail          "
+echo "$text_md server-webserver server-teamspeak server-mumble                      "
+echo "$text_md server-sql server-asterisk server-proxy server-samba                 "
+echo "$title_md  [ options-easy ]                                                   "
+echo "$text_md preferences-read preferences-modify preferences-regen                "
+echo "$text_md preferences-example list-options examples-options info-options       "
+echo "$text_md info date intro filelog autolog ip4 ip6 speed-ip4 speed-ip6          "
+echo "$text_md free sockets nodes geoip ip-forward version code about notes         "
+echo "$text_md depends commands variables install install                           "
+echo "$title_md  [ options-expert ] expert                                          "
+echo "$title_md   ||| Example: fwiptables-cmd -gui-zenity info |||                  "
 exit ; fi
 ####
 ####
@@ -2773,7 +2774,6 @@ echo "$text_md ip4 . show details from connection ipv4"
 echo "$text_md ip6 . show details from connection ipv6"
 echo "$text_md speed-ip4 . calculate bandwith ipv4"
 echo "$text_md speed-ip6 . calculate bandwith ipv6"
-echo "$text_md speed-glx . calculate speed for graphics"
 echo "$text_md sockets . show the sockets listening"
 echo "$text_md nodes . show computers connected to lan"
 echo "$text_md date . update the time and date from internet"
@@ -2818,6 +2818,7 @@ echo "$text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables
 echo "$text_md expert-download-adblock . Download blacklist to /etc/hosts.blacklist with curl"
 echo "$text_md expert-speed-disk . benchmark disk speed with 100Mb"
 echo "$text_md expert-speed-ram . benchmark ram speed with 100Mb"
+echo "$text_md expert-speed-glx . benchmark glx speed with mesa3D"
 echo "$text_md expert-wpa-list . list nameconfig to list wifi config"
 echo "$text_md expert-wpa-new . new nameconfig to create wifi config"
 echo "$text_md expert-wpa-modify . one nameconfig to modify wifi config"
@@ -4839,12 +4840,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-info:
-##########    english: speed-glx: show frammes por seconds with mesa graphicall            ##########
-##########    spanish: speed-glx: muestra los fotogramas por segundo con graphicos mesa    ##########
-#### :rutina-inicial-speed-glx:
+##########    english: expert-speed-glx: show frammes with mesa graphicall            ##########
+##########    spanish: expert-speed-glx: muestra los fotogramas con graphicos mesa    ##########
+#### :rutina-inicial-expert-speed-glx:
 ####
 ####
-if   [ "$first_option" == "speed-glx" ]; then 
+if   [ "$first_option" == "expert-speed-glx" ]; then 
 echo "$title_md [ $first_option ]  [ test gl mesa3D speed ] \
 [ for default max $time_server_waiting seconds ] "
 case $command_glxgears in "$NULL")
@@ -4854,7 +4855,7 @@ echo
 exit; fi
 ####
 ####
-#### :rutina-final-speed-glx:
+#### :rutina-final-expert-speed-glx:
 ##########    english: expert-speed-disk: benchmark ram with 100Mb    ##########
 ##########    spanish: expert-speed-disk: benchmark ram con  100Mb    ##########
 #### :rutina-inicial-expert-speed-disk:
