@@ -161,7 +161,7 @@ third_option="$(echo $3 | $command_sed s/\\///g -)"  ;
 quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;
 ####
 ####
-#### :rutina-inicial-order-options:
+#### :rutina-final-order-options:
 ##########   english: profile y support X11       ##########
 ##########   spanish: profile y soporte de X11    ##########
 #### :rutina-inicial-x11-or-wayland:
@@ -763,6 +763,7 @@ favorite_text_music="$command_cvlc"          ; fi
 fi
 ####
 ####
+#### :rutina-final-favorite-text-music:
 ##########    english: ALIAS  simple y firewall y campus       ##########
 ##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
 #### :rutina-inicial-alias-simple:
@@ -1157,7 +1158,7 @@ echo "### ### [ this file is: ] [ $file_default_filelog ]"
 exit; fi
 ####
 ####
-#### :rutina-final-fw-filelog:
+#### :rutina-final-filelog:
 ##########    english: autolog: Read log fwiptables-autolog   ##########
 ##########    spanish: autolog: Lee log  fwiptables-autolog   ##########
 #### :rutina-inicial-config-autolog:
@@ -1214,7 +1215,7 @@ editor $default_directory_wpa/wpaconfig_$second_option
 exit; fi
 ####
 ####
-#### :rutina-inicial-expert-wpa-new:
+#### :rutina-final-expert-wpa-new:
 ##########    english: expert-wpa-modify: example from a file wpa_supplicant   ##########
 ##########    spanish: expert-wpa-modify: ejemplo de un archivo wpa_supplicant ##########
 #### :rutina-inicial-expert-wpa-modify:
@@ -1250,7 +1251,7 @@ editor $default_directory_wpa/wpaconfig_$second_option
 exit; fi
 ####
 ####
-#### :rutina-inicial-expert-wpa-modify:
+#### :rutina-final-expert-wpa-modify:
 ##########    english: expert-wpa-list: example from a file wpa_supplicant   ##########
 ##########    spanish: expert-wpa-list: ejemplo de un archivo wpa_supplicant ##########
 #### :rutina-inicial-expert-wpa-list:
@@ -1261,7 +1262,7 @@ then ls -1 "$default_directory_wpa" | cut -d "_" -f 2-
 exit ; fi
 ####
 ####
-#### :rutina-inicial-expert-wpa-list:
+#### :rutina-final-expert-wpa-list:
 ##########    english: expert-wpa-show: example from a file wpa_supplicant   ##########
 ##########    spanish: expert-wpa-show: ejemplo de un archivo wpa_supplicant ##########
 #### :rutina-inicial-expert-wpa-show:
@@ -1282,7 +1283,7 @@ else echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
 exit; fi
 ####
 ####
-#### :rutina-inicial-expert-wpa-show:
+#### :rutina-final-expert-wpa-show:
 ##########    english: expert-wpa-connect: example from a file wpa_supplicant   ##########
 ##########    spanish: expert-wpa-connect: ejemplo de un archivo wpa_supplicant ##########
 #### :rutina-inicial-expert-wpa-connect:
@@ -1317,7 +1318,7 @@ else echo "$title_md [ fail ] use: $first_option nameconfig"; exit ; fi
 exit; fi
 ####
 ####
-#### :rutina-inicial-expert-wpa-connect:
+#### :rutina-final-expert-wpa-connect:
 ##########    english: expert-wpa-regen: example from a file wpa_supplicant   ##########
 ##########    spanish: expert-wpa-regen: ejemplo de un archivo wpa_supplicant ##########
 #### :rutina-inicial-expert-wpa-regen:
@@ -1332,7 +1333,7 @@ $cmd_realpath expert-wpa-example &> $default_directory_wpa/defaultwpa
 exit; fi
 ####
 ####
-#### :rutina-inicial-expert-wpa-regen:
+#### :rutina-final-expert-wpa-regen:
 ##########    english: expert-wpa-example: example from a file wpa_supplicant   ##########
 ##########    spanish: expert-wpa-example: ejemplo de un archivo wpa_supplicant ##########
 #### :rutina-inicial-expert-wpa-example:
@@ -1355,7 +1356,7 @@ echo "$title_md wifi ip static:  if choose one static ip for this net"
 exit; fi
 ####
 ####
-#### :rutina-inicial-expert-wpa-example:
+#### :rutina-final-expert-wpa-example:
 ##########    english: preferences-modify: modify preferences   ##########
 ##########    spanish: preferences-modify: modify preferences   ##########
 #### :rutina-inicial-preferences-modify:
@@ -3646,7 +3647,7 @@ $cmd_realpath listn6
 exit; fi
 ####
 ####
-#### :rutina-final-satusn:
+#### :rutina-final-statusn:
 ##########    english: listnum: The list option   ##########
 ##########    spanish: listnum: La opcion lista   ##########
 #### :rutina-inicial-listnum:
@@ -3689,7 +3690,7 @@ exit; fi
 #### :rutina-final-listnum:
 ##########    english: listnum6: The list option   ##########
 ##########    spanish: listnum6: La opcion lista   ##########
-#### :rutina-inicial-listnum-filter6:
+#### :rutina-inicial-listnum6:
 ####
 ####
 if [ "$first_option" == "listnum6" ]; then 
@@ -4747,7 +4748,7 @@ exit; fi
 #### :rutina-final-expert-compile-obash:
 ##########    english: expert-download-adblock: compile with obash      ##########
 ##########    spanish: expert-download-adblock: compila with obash      ##########
-#### :rutina-inicial-expert-get-adblock:
+#### :rutina-inicial-expert-download-adblock:
 ####
 ####
 if   [ "$first_option" == "expert-download-adblock" ]; then 
@@ -6289,7 +6290,7 @@ exit; fi
 #### :rutina-final-gui-roll-zenity:
 ##########    english: gui-roll-zenity-firewall-control: gui with roll  ##########
 ##########    spanish: gui-roll-zenity-firewall-control: gui con roll   ##########
-#### :rutina-inicial-gui-zenity-roll-firewall-control:
+#### :rutina-inicial-gui-roll-zenity-firewall-control:
 ####
 ####
 if [ "$first_option" == "gui-roll-zenity-firewall-control" ]
@@ -7984,7 +7985,7 @@ server_port_tcp="" ;
 # config_ipv6_netclient=::/0 
 # config_ipv6_netserver=::/0 
 fi
-#### :rutina-final-shield-vnc:
+#### :rutina-final-client-vnc:
 #### ##################################################
 #### ##################################################
 #### :rutina-inicial-client-torrent:
@@ -8593,7 +8594,7 @@ server_port_tcp="" ;
 # config_ipv6_netclient=::/0 
 # config_ipv6_netserver=::/0 
 fi
-#### :rutina-final-shield-ftp:
+#### :rutina-final-client-ftp:
 #### ##################################################
 #### ##################################################
 #### :rutina-inicial-client-proxy:
@@ -10582,7 +10583,7 @@ server_port_tcp="ssh,5060" ;
 # config_ipv6_netclient=::/0 
 # config_ipv6_netserver=::/0 
 fi
-#### :rutina-final-server-astrerisk:
+#### :rutina-final-server-asterisk:
 #### ##################################################
 #### ##################################################
 #### :rutina-inicial-server-mumble:
