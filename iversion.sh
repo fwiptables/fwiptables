@@ -4470,9 +4470,9 @@ exit; fi
 if [ "$first_option" == "uninstall" ] ; then
 echo "$title_md [ $first_option ] [ $cmd_realpath uninstaller ] [ uninstall md ] "
 echo "$title_md [ info ] [ $cmd_realpath uninstalling ]"
-rm $directory_installed/$file_installed &> /dev/null
-echo "$title_md [ info ] [ deleted binaries ]"
-echo "$title_md [ _ok_ ] $directory_installed/$file_installed uninstalled" ;
+rm $cmd_realpath &> /dev/null
+echo "$title_md [ info ] [ deleted binary ]"
+echo "$title_md [ _ok_ ] $cmd_realpath uninstalled" ;
 exit; fi
 ####
 ####
