@@ -5238,11 +5238,16 @@ echo "$title_md"
 echo "$title_md [ Working ] Saving firewall before speed-ip4"
 $cmd_realpath save $file_installed-speed-ip4 &> /dev/null
 echo "$title_md [ Working ] ADDing ipv4 rules: ACCEPT to $serverip_iperf_ipv4"
-$command_iptables_nft    -t filter -I INPUT -s $serverip_iperf_ipv4  -j ACCEPT 
-$command_iptables_nft    -t filter -I OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT 
-$command_iptables_legacy -t filter -I INPUT -s $serverip_iperf_ipv4  -j ACCEPT 
-$command_iptables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT 
+$command_iptables_nft    -t filter -I INPUT -s $serverip_iperf_ipv4  \
+-j ACCEPT && echo Add rule, step 1/4
+$command_iptables_nft    -t filter -I OUTPUT -d $serverip_iperf_ipv4 \
+-j ACCEPT && echo Add rule, step 2/4
+$command_iptables_legacy -t filter -I INPUT -s $serverip_iperf_ipv4  \
+-j ACCEPT && echo Add rule, step 3/4
+$command_iptables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv4 \
+-j ACCEPT && echo Add rule, step 4/4
 echo "$title_md"
+echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv4 to $serverip_iperf_ipv4 ]"
 $command_iperf -c $serverip_iperf_ipv4 -t 4 -P 1 -p $serverport_iperf_ipv4 |tail -3
 echo "$title_md"
@@ -5270,11 +5275,16 @@ echo "$title_md"
 echo "$title_md [ Working ] Saving firewall before speed-ip6"
 $cmd_realpath save $file_installed-speed-ip6 &> /dev/null
 echo "$title_md [ Working ] ADDing ipv4 rules: ACCEPT to $serverip_iperf_ipv6"
-$command_iptables_nft    -t filter -I INPUT -s $serverip_iperf_ipv4  -j ACCEPT
-$command_iptables_nft    -t filter -I OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT
-$command_iptables_legacy -t filter -I INPUT -s $serverip_iperf_ipv4  -j ACCEPT
-$command_iptables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT
+$command_iptables_nft    -t filter -I INPUT -s $serverip_iperf_ipv4  \
+-j ACCEPT && echo Add rule, step 1/4
+$command_iptables_nft    -t filter -I OUTPUT -d $serverip_iperf_ipv4 \
+-j ACCEPT && echo Add rule, step 2/4
+$command_iptables_legacy -t filter -I INPUT -s $serverip_iperf_ipv4  \
+-j ACCEPT && echo Add rule, step 3/4
+$command_iptables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv4 \
+-j ACCEPT && echo Add rule, step 4/4
 echo "$title_md"
+echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv4 to $serverip_iperf_ipv4 ]"
 $command_iperf -c $serverip_iperf_ipv4 -t 6 -P 1 -p $serverport_iperf_ipv6 |tail -3
 echo "$title_md"
