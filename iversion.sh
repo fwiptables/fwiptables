@@ -1003,29 +1003,27 @@ $cmd_realpath config-regen &> /dev/null ;; esac
 ####
 if [ "$first_option" == "cli" ]; then 
 case "$second_option" in
-expert-*)echo "the commands expert works only wihtout optinal-output." ; exit ;;
+expert-*) echo "the commands expert works only wihtout optinal-output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom")
-$cmd_realpath $second_option $third_option ; exit ;; esac ; fi
+"modify-custom") $cmd_realpath $second_option $third_option ; exit ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "gui" ]; then 
 case "$second_option" in
-expert-*)echo "the commands expert works only wihtout optinal-output." ; exit ;;
+#### "$NULL"|"options") 
+expert-*) echo "the commands expert works only wihtout optinal-output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom")
-$cmd_realpath config-regen  &> /dev/null ;; esac ; fi
+"modify-custom") $cmd_realpath config-regen  &> /dev/null ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "log" ]; then 
 case "$second_option" in
-expert-*)echo "the commands expert works only wihtout optinal output." ; exit ;;
+expert-*) echo "the commands expert works only wihtout optinal output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
-$cmd_realpath config-regen  &> /dev/null ; exit ;; esac ; fi
+"modify-custom") $cmd_realpath config-regen  &> /dev/null ; exit ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "pdf" ]; then 
@@ -1033,8 +1031,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optinal output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
-$cmd_realpath config-regen  &> /dev/null ; exit ;; esac ; fi
+"modify-custom") $cmd_realpath config-regen  &> /dev/null ; exit ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "null" ]; then 
@@ -1042,8 +1039,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optinal output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
-$cmd_realpath config-regen  &> /dev/null ; exit ;; esac; fi
+"modify-custom") $cmd_realpath config-regen  &> /dev/null ; exit ;; esac; fi
 ####
 ####
 #### :rutina-final-alias-config:
@@ -4371,10 +4367,10 @@ echo "$text_md with templates or wizard-full,     "
 echo "$text_md and with shield ssh                "
 echo "$text_md and with comments rules.           "
 echo "$text_md"
-echo "$text_md rules ipv4, rules ipv6, netfilter,        "
+echo "$text_md rules: ipv4, ipv6, ebtables, arptables,   "
 echo "$text_md netfilter neftables, netfilter xtables,   "
-echo "$text_md tools ip, wizards to gen rules,           "
-echo "$text_md save/load rules with files,               "
+echo "$text_md tools ip, wizards ready to gen rules,     "
+echo "$text_md save and load rules with custom files,    "
 echo "$text_md shield to ssh or other servers choosed,   "
 echo "$text_md string algoritmo, limit bandwidth,        "
 echo "$text_md host whitelist, host blacklist,           "
@@ -5598,10 +5594,15 @@ if [ "$first_option" == "gui" ] && [ "$second_option" == "$NULL" ]
 then echo $head_waiting_gui
 ####
 ####
-$favorite_realpath_graphicalldialog  --forms \
+$cmd_realpath $second_option $third_option &> $temporal_guifinal
+$favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="Gui Output || $cmd_realpath || " \
---text="$($cmd_realpath empty_first_option)" 
+--title="Gui Output || $cmd_realpath ||" \
+--filename="$temporal_guifinal" --auto-scroll 
+# $favorite_realpath_graphicalldialog   \
+# --width=$config_graphicall_width --height=$config_graphicall_height \
+# --title="Gui Output || $cmd_realpath || " \
+# --text="$($cmd_realpath empty_first_option)" 
 exit; fi
 ####
 ####
