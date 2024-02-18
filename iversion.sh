@@ -953,28 +953,35 @@ esac
 ####
 ####
 case "$first_option" in
-"custom") first_option="load-custom" ;;
-"option-examples") first_option="examples-option" ;;
-"geoip") first_option="expert-show-geoip" ;;
-"regen") first_option="config-regen" ;;
-"expert") first_option="options-expert" ;;
-"ver") first_option="version" ;;
-"client-squid") first_option="client-proxy" ;;
-"server-squid") first_option="server-proxy" ;;
-"names") first_option="all-names" ;;
-"options") first_option="list-options" ;;
-"mini-options") first_option="list-options" ;;
-"options-mini") first_option="list-options" ;;
-"sentlog") first_option="filelog" ;;
-"cfg") first_option="all-custom" ;;
-"cfg-custom") first_option="load-custom" ;;
-"custom-cfg") first_option="load-custom" ;;
-"list-fw") first_option="names" ;;
-"date") first_option="ntpdate-client" ;;
-"ram-free") first_option="free" ;;
-"free-ram") first_option="free" ;;
-"ram") first_option="free" ;;
-"list-allrules") first_option="list-alltables" ;;
+"output")         first_option="optional-output"  ;;
+"control")        first_option="firewall-control" ;;
+"listconceptual") first_option="firewall-listconceptual" ;;
+"listnumeral")    first_option="firewall-listnumeral" ;;
+"wallcustom")     first_option="firewall-wallcustom" ;;
+"wallsystem")     first_option="firewall-wallsystem" ;;
+"easy")           first_option="options-easy" ;;
+"custom")         first_option="load-custom" ;;
+"option-examples")first_option="examples-option" ;;
+"geoip")          first_option="expert-show-geoip" ;;
+"regen")          first_option="config-regen" ;;
+"expert")         first_option="options-expert" ;;
+"ver")            first_option="version" ;;
+"client-squid")   first_option="client-proxy" ;;
+"server-squid")   first_option="server-proxy" ;;
+"names")          first_option="all-names" ;;
+"options")        first_option="list-options" ;;
+"mini-options")   first_option="list-options" ;;
+"options-mini")   first_option="list-options" ;;
+"sentlog")        first_option="filelog" ;;
+"cfg")            first_option="all-custom" ;;
+"cfg-custom")     first_option="load-custom" ;;
+"custom-cfg")     first_option="load-custom" ;;
+"list-fw")        first_option="names" ;;
+"date")           first_option="ntpdate-client" ;;
+"ram-free")       first_option="free" ;;
+"free-ram")       first_option="free" ;;
+"ram")            first_option="free" ;;
+"list-allrules")  first_option="list-alltables" ;;
 esac
 ####
 ####
@@ -2462,29 +2469,29 @@ exit; fi
 ####
 if [ "$first_option" == "list-options" ] ; then 
 echo "$title_md $cmd_basename [optional-output] first_option [second_option]   "
-echo "$title_md  [ optional-output ]                                                "
+echo "$title_md  [ optional-output ] output                                         "
 echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -p|-pdf -s|-silent ]               "
 echo "$text_md [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                   "
 echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail -gui-roll-zenity ]             "
 echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]  "
-echo "$title_md  [ firewall-control ]                                               "
+echo "$title_md  [ firewall-control ] control                                       "
 echo "$text_md stop continue reset actual show save load all-names                  "
 echo "$text_md eraserules eraserules4 eraserules6 off-line all-permisive            "
 echo "$text_md wizard-mini wizard-full                                              "
-echo "$title_md  [ firewall-listconceptual ]                                        "
+echo "$title_md  [ firewall-listconceptual ] listconceptual                         "
 echo "$text_md ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6  "
 echo "$text_md list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6    "
 echo "$text_md list-security4 list-security6 list-ebtables list-arptables           "
-echo "$title_md  [ firewall-listnumeral ]                                           "
+echo "$title_md  [ firewall-listnumeral ] listnumeral                               "
 echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-filter4 listn-filter6          "
 echo "$text_md listn-alltables  listn-nat4 listn-nat6 listn-raw4 listn-raw6         "
 echo "$text_md listn-mangle4 listn-mangle6                                          "
 echo "$text_md listn-security4 listn-security6                                      "
-echo "$title_md  [ firewall-wallcustom ]                                            "
+echo "$title_md  [ firewall-wallcustom ] wallcustom                                 "
 echo "$text_md new-full-custom nueva-completa-custom new-mini-custom                "
 echo "$text_md nueva-mini-custom clone-wallsystem load-custom show-custom           "
 echo "$text_md modify-custom del-custom all-custom                                  "
-echo "$title_md  [ firewall-wallsystem ]                                            "
+echo "$title_md  [ firewall-wallsystem ] wallsystem                                 "
 echo "$text_md client-basic client-web client-git client-ipp client-irc             "
 echo "$text_md client-vnc client-news client-vpn client-torrent client-vpn          "
 echo "$text_md client-ftp client-proxy client-mail client-tor game-widelands        "
@@ -2493,14 +2500,15 @@ echo "$text_md lan-tor lan-vpn shield-ssh server-ssh server-irc server-vnc      
 echo "$text_md server-print server-lamp server-news server-ftp server-mail          "
 echo "$text_md server-webserver server-teamspeak server-mumble server-gateway       "
 echo "$text_md server-sql server-asterisk server-proxy server-samba                 "
-echo "$title_md  [ options-easy ]                                                   "
+echo "$title_md  [ options-easy ] easy                                              "
 echo "$text_md preferences-read preferences-modify preferences-regen                "
 echo "$text_md preferences-example list-options examples-options info-options       "
 echo "$text_md info date intro filelog autolog ip4 ip6 speed-ip4 speed-ip6          "
 echo "$text_md free sockets nodes geoip ip-forward version code about notes         "
 echo "$text_md depends commands variables license uninstall install                 "
 echo "$title_md  [ options-expert ] expert                                          "
-echo "$title_md   ||| Example: fwiptables-cmd -gui-zenity info |||                  "
+echo "$title_md  ||| Example: fwiptables-cmd -gui-zenity info |||                   "
+echo "$title_md  ||| GPL v2, License General Public version 2 |||                   "
 exit ; fi
 ####
 ####
