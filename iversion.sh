@@ -5238,10 +5238,10 @@ echo "$title_md"
 echo "$title_md [ Working ] Saving firewall before speed-ip4"
 $cmd_realpath save $file_installed-speed-ip4 &> /dev/null
 echo "$title_md [ Working ] ADDing ipv4 rules: ACCEPT to $serverip_iperf_ipv4"
-$command_iptables_nft    -t filter -I INPUT -s $serverip_iperf_ipv4  -j ACCEPT
-$command_iptables_nft    -t filter -I OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT
-$command_iptables_legacy -t filter -I INPUT -s $serverip_iperf_ipv4  -j ACCEPT
-$command_iptables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT
+$command_iptables_nft    -t filter -I INPUT -s $serverip_iperf_ipv4  -j ACCEPT 
+$command_iptables_nft    -t filter -I OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT 
+$command_iptables_legacy -t filter -I INPUT -s $serverip_iperf_ipv4  -j ACCEPT 
+$command_iptables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv4 -j ACCEPT 
 echo "$title_md"
 echo "$title_md [ Working ] Conecting in ipv4 to $serverip_iperf_ipv4 ]"
 $command_iperf -c $serverip_iperf_ipv4 -t 4 -P 1 -p $serverport_iperf_ipv4 |tail -3
