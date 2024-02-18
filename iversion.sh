@@ -85,7 +85,7 @@ command_iptables_nft="$(command -v iptables-nft)"
 ####
 if [ "$command_iptables_legacy" == "$NULL" ] || \
 [ "$command_iptables_nft" == "$NULL" ];
-then echo ; echo ; 
+then echo ; echo ;
 echo "### [ fail ] [ fwiptables needs to work iptables legacy/nft ]"
 echo ; fi
 ####
@@ -101,7 +101,7 @@ echo ; fi
 ####
 cmd_realpath="$(realpath $0)"    # its full routename
 cmd_basename="$(basename $0)"    # its only filename
-cmd_version="cmd-11-15"          # its version
+cmd_version="cmd-11-16"          # its version
 file_installed="fwiptables-cmd"  # its filename installed
 directory_installed="/usr/bin"   # its directory installed
 cmd_contact="fwiptables@gmx.com" # its contact
