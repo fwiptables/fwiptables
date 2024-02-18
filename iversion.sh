@@ -1003,7 +1003,7 @@ $cmd_realpath config-regen &> /dev/null ;; esac
 ####
 if [ "$first_option" == "cli" ]; then 
 case "$second_option" in
-expert-*) echo "the commands expert works only wihtout optinal-output." ; exit ;;
+expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath $second_option $third_option ; exit ;; esac ; fi
@@ -1012,7 +1012,7 @@ expert-*) echo "the commands expert works only wihtout optinal-output." ; exit ;
 if [ "$first_option" == "gui" ]; then 
 case "$second_option" in
 #### "$NULL"|"options") 
-expert-*) echo "the commands expert works only wihtout optinal-output." ; exit ;;
+expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath config-regen  &> /dev/null ;; esac ; fi
@@ -1020,7 +1020,7 @@ expert-*) echo "the commands expert works only wihtout optinal-output." ; exit ;
 ####
 if [ "$first_option" == "log" ]; then 
 case "$second_option" in
-expert-*) echo "the commands expert works only wihtout optinal output." ; exit ;;
+expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath config-regen  &> /dev/null ; exit ;; esac ; fi
@@ -1028,7 +1028,7 @@ expert-*) echo "the commands expert works only wihtout optinal output." ; exit ;
 ####
 if [ "$first_option" == "pdf" ]; then 
 case "$second_option" in
-expert-*) echo "the commands expert works only wihtout optinal output." ; exit ;;
+expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath config-regen  &> /dev/null ; exit ;; esac ; fi
@@ -1036,7 +1036,7 @@ expert-*) echo "the commands expert works only wihtout optinal output." ; exit ;
 ####
 if [ "$first_option" == "null" ]; then 
 case "$second_option" in
-expert-*) echo "the commands expert works only wihtout optinal output." ; exit ;;
+expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath config-regen  &> /dev/null ; exit ;; esac; fi
