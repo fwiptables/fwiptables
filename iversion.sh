@@ -6717,9 +6717,9 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu" ] ;
 then echo $head_waiting_gui ; echo $head_give_cover
-gui_menu="|01-Firewall-Control|02-Firewall-List-With-Conceptual|\
-02-Firewall-List-With-Numeral|03-firewall-wallcustom|04-firewall-wallsystem|\
-05-options-easy"
+gui_menu="|Firewall-control|Firewall-listconceptual|\
+Firewall-listnumeral|Firewall-wallcustom|Firewall-wallsystem|\
+Options-easy"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_realpath_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -6731,17 +6731,17 @@ selection_final="$($favorite_realpath_graphicalldialog \
 ####
 case "$selection_final" in
 1) exit ;;
-01-Firewall-Control*)
+Firewall-Control*)
 $cmd_realpath gui-menu-firewall-control $favorite_basename_graphicalldialog ; exit ;;
-02-Firewall-List-With-Conceptual*)
+Firewall-listconceptual*)
 $cmd_realpath gui-menu-firewall-listconceptual $favorite_basename_graphicalldialog ; exit ;;
-02-Firewall-List-With-Numeral*)
+Firewall-listnumeral*)
 $cmd_realpath gui-menu-firewall-listnumeral $favorite_basename_graphicalldialog ; exit ;;
-03-firewall-wallcustom*)
+Firewall-wallcustom*)
 $cmd_realpath gui-menu-firewall-wallcustom $favorite_basename_graphicalldialog ; exit ;;
-04-firewall-wallsystem*)
+Firewall-wallsystem*)
 $cmd_realpath gui-menu-firewall-wallsystem $favorite_basename_graphicalldialog ; exit ;;
-05-options-easy*)
+Options-easy*)
 $cmd_realpath gui-menu-options-easy $favorite_basename_graphicalldialog ; exit ;;
 esac
 ####
