@@ -2491,7 +2491,7 @@ echo "$text_md client-ftp client-proxy client-mail client-tor game-widelands    
 echo "$text_md games-udp games-shooter game-wesnoth game-minetest game-freeciv      "
 echo "$text_md lan-tor lan-vpn shield-ssh server-ssh server-irc server-vnc          "
 echo "$text_md server-print server-lamp server-news server-ftp server-mail          "
-echo "$text_md server-webserver server-teamspeak server-mumble                      "
+echo "$text_md server-webserver server-teamspeak server-mumble server-gateway       "
 echo "$text_md server-sql server-asterisk server-proxy server-samba                 "
 echo "$title_md  [ options-easy ]                                                   "
 echo "$text_md preferences-read preferences-modify preferences-regen                "
@@ -2748,6 +2748,7 @@ echo "$text_md server-sql . launch a one firewall basic server"
 echo "$text_md server-asterisk . launch a one firewall basic server"
 echo "$text_md server-domain . launch a one firewall basic server"
 echo "$text_md server-proxy . launch a one firewall basic server"
+echo "$text_md server-gateway . launch a one firewall nat gateway and web/ssh server"
 exit; fi
 ####
 ####
@@ -9783,6 +9784,104 @@ server_port_tcp="ssh,http,https,ftp,ftp-data,ftps,ftps-data" ;
 # config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-server-ftp:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-gateway:
+####
+####
+####   #### english: firewall of system server-gateway:
+####   #### spanish: cortafuego del sistema server-gateway:
+####
+####
+if [ "$first_option" == "server-gateway" ]; then
+echo "$title_md [ info ] [ loading firewall server-gateway ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="systemfw" ; 
+name_firewall="$first_option" ;
+#### english: firewall capacities
+#### english: firewall capacities
+# allow_use_legacy=""        
+# allow_use_nft=""             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
+#### english: max tries for each hour 
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
+#### english: log port servers
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
+#### server http and https and ssh /tcp and https udp
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_udp="" ;
+client_port_tcp="ssh,http,https,http-alt" ;
+server_port_tcp="ssh,http,https,http-alt" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+allow_forward_ip4=
+# allow_forward_ip6= 
+allow_gateway_ip4= 
+# allow_gateway_ip6= 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping= 
+# allow_output_ping= 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+config_gateway_ip4=192.168.0.1/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
+fi
+#### :rutina-final-server-gateway:
 #### ##################################################
 #### ##################################################
 #### :rutina-inicial-server-proxy:
