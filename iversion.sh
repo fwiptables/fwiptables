@@ -85,7 +85,7 @@ command_iptables_nft="$(command -v iptables-nft)"
 ####
 if [ "$command_iptables_legacy" == "$NULL" ] || \
 [ "$command_iptables_nft" == "$NULL" ];
-then echo ; echo ;
+then echo ; echo ; 
 echo "### [ fail ] [ fwiptables needs to work iptables legacy/nft ]"
 echo ; fi
 ####
@@ -2498,10 +2498,9 @@ echo "$text_md preferences-read preferences-modify preferences-regen            
 echo "$text_md preferences-example list-options examples-options info-options       "
 echo "$text_md info date intro filelog autolog ip4 ip6 speed-ip4 speed-ip6          "
 echo "$text_md free sockets nodes geoip ip-forward version code about notes         "
-echo "$text_md depends commands variables install install                           "
+echo "$text_md depends commands variables license uninstall install                 "
 echo "$title_md  [ options-expert ] expert                                          "
 echo "$title_md   ||| Example: fwiptables-cmd -gui-zenity info |||                  "
-echo "$title_md $cmd_basename Licensed by GNU General Public License "
 exit ; fi
 ####
 ####
@@ -6297,7 +6296,7 @@ exit; fi
 if [ "$first_option" == "gui-roll-zenity-firewall-control" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 gui_menu="gui-principal-menu|gui-info-menu|\
-stop|continue|reset|names|show|save|load|actual|\
+|stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|wizard-mini|wizard-full|\
 off-line|all-permisive"
 selection_menu="$($command_zenity --forms \
