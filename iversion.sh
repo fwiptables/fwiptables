@@ -837,9 +837,6 @@ case "$first_option" in
 "gui-rock") first_option="gui-roll-zenity" ;;
 "-gui-rock") first_option="gui-roll-zenity" ;;
 "--gui-rock") first_option="gui-roll-zenity" ;;
-"gui-shell") first_option="gui-shell-zenity" ;;
-"-gui-shell") first_option="gui-shell-zenity" ;;
-"--gui-shell") first_option="gui-shell-zenity" ;;
 esac
 ####
 ####
@@ -911,9 +908,6 @@ first_option="gui" ;;
 "cli-menu")
 favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ;
 first_option="cli-menu" ;;
-"gui-menu")
-favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
-first_option="gui-menu" ;;
 "cli-dialog")
 favorite_realpath_textdialog="$command_dialog" ; 
 favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ;
@@ -922,6 +916,12 @@ first_option="cli" ;;
 favorite_realpath_textdialog="$command_whiptail" ;
 favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ; 
 first_option="cli" ;;
+"gui-menu")
+favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
+first_option="gui-menu" ;;
+"gui-shell")
+favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
+first_option="gui-shell-$favorite_basename_graphicalldialog" ;;
 "gui-zenity")
 favorite_realpath_graphicalldialog="$command_zenity" ; 
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ; 
@@ -6747,7 +6747,7 @@ selection_final="$($favorite_realpath_graphicalldialog \
 ####
 case "$selection_final" in
 1) exit ;;
-Firewall-Control*)
+Firewall-control*)
 $cmd_realpath gui-menu-firewall-control $favorite_basename_graphicalldialog ; exit ;;
 Firewall-listconceptual*)
 $cmd_realpath gui-menu-firewall-listconceptual $favorite_basename_graphicalldialog ; exit ;;
