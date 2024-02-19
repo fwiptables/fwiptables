@@ -5258,7 +5258,7 @@ $command_iperf -c $serverip_iperf_ipv4 -t 4 -P 1 -p $serverport_iperf_ipv4 |tail
 echo "$title_md"
 echo "$title_md [ Working ] restoring firewall before speed-ip4"
 $cmd_realpath load $file_installed-speed-ip4 &> /dev/null
-echo "$title_md"
+echo "$title_md [ Done    ] $cmd_basename speed-ip4"
 ####
 ####
 exit; fi
@@ -5295,7 +5295,7 @@ $command_iperf -c $serverip_iperf_ipv4 -t 6 -P 1 -p $serverport_iperf_ipv6 |tail
 echo "$title_md"
 echo "$title_md [ Working ] restoring firewall before speed-ip4"
 $cmd_realpath load $file_installed-speed-ip6 &> /dev/null
-echo "$title_md"
+echo "$title_md [ Done    ] $cmd_basename speed-ip6"
 ####
 ####
 exit; fi
