@@ -417,15 +417,15 @@ default_minicfg_spa="$default_directory_config/default-mini-spanish.cfg"
 #### spanish: default config to shell
 ####
 ####
-file_default_preferences="$default_directory_shell/file_default_preferences"
+file_default_preferences="$default_directory_shell/default-preferences-$cmd_version"
 ####
 ####
 #### english: file log:     log files and path files config files
 #### spanish: archivos log: archivos log y ruta de los archivos de configuracion
 ####
 ####
-file_default_filelog="$default_directory_log/file_default_filelog"
-file_default_autolog="$default_directory_log/file_default_autolog"
+file_default_filelog="$default_directory_log/default_filelog-$cmd_version"
+file_default_autolog="$default_directory_log/default_autolog-$cmd_version"
 ####
 ####
 ##########    english: temporal files
