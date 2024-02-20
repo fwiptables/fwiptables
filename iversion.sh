@@ -1461,9 +1461,9 @@ echo "$title_md # default discover ip and speed ip"
 echo "serverip_discover_ipv4=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
 echo "serverip_discover_ipv6=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
 echo "serverip_iperf_ipv4=ping.online.net             ## default ping.online.net"
-echo "serverport_iperf_ipv4=5001                      ## default 5201"
+echo "serverport_iperf_ipv4=5201                      ## default 5201"
 echo "serverip_iperf_ipv6=ping6.online.net            ## default ping.online.net"
-echo "serverport_iperf_ipv6=5001                      ## default 5201"
+echo "serverport_iperf_ipv6=5201                      ## default 5201"
 echo "$title_md"
 echo "$title_md # default graphicall dimension"
 echo "config_graphicall_width=800                     ## default width 800"
@@ -5244,13 +5244,13 @@ echo "$title_md [ Working ] Saving firewall before speed-ip4"
 $cmd_realpath save $file_installed-speed-ip4 &> /dev/null
 echo "$title_md [ Working ] ADDing ipv4 rules: ACCEPT to $serverip_iperf_ipv4"
 $command_iptables_nft    -t filter -I INPUT -s $serverip_iperf_ipv4  \
--j ACCEPT && echo Add rule, step 1/4
+-j ACCEPT && echo ok 1/4 || echo fail 1/4
 $command_iptables_nft    -t filter -I OUTPUT -d $serverip_iperf_ipv4 \
--j ACCEPT && echo Add rule, step 2/4
+-j ACCEPT && echo ok 2/4 || echo fail 2/4
 $command_iptables_legacy -t filter -I INPUT -s $serverip_iperf_ipv4  \
--j ACCEPT && echo Add rule, step 3/4
+-j ACCEPT && echo ok 3/4 || echo fail 3/4
 $command_iptables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv4 \
--j ACCEPT && echo Add rule, step 4/4
+-j ACCEPT && echo ok 4/4 || echo fail 4/4
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv4 to $serverip_iperf_ipv4 ]"
@@ -5280,18 +5280,18 @@ echo "$title_md"
 echo "$title_md [ Working ] Saving firewall before speed-ip6"
 $cmd_realpath save $file_installed-speed-ip6 &> /dev/null
 echo "$title_md [ Working ] ADDing ipv4 rules: ACCEPT to $serverip_iperf_ipv6"
-$command_iptables_nft    -t filter -I INPUT -s $serverip_iperf_ipv4  \
--j ACCEPT && echo Add rule, step 1/4
-$command_iptables_nft    -t filter -I OUTPUT -d $serverip_iperf_ipv4 \
--j ACCEPT && echo Add rule, step 2/4
-$command_iptables_legacy -t filter -I INPUT -s $serverip_iperf_ipv4  \
--j ACCEPT && echo Add rule, step 3/4
-$command_iptables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv4 \
--j ACCEPT && echo Add rule, step 4/4
+$command_ip6tables_nft    -t filter -I INPUT -s $serverip_iperf_ipv6  \
+-j ACCEPT && echo ok 1/4 || echo fail 1/4
+$command_ip6tables_nft    -t filter -I OUTPUT -d $serverip_iperf_ipv6 \
+-j ACCEPT && echo ok 2/4 || echo fail 2/4
+$command_ip6tables_legacy -t filter -I INPUT -s $serverip_iperf_ipv6 \
+-j ACCEPT && echo ok 3/4 || echo fail 3/4
+$command_ip6tables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv6 \
+-j ACCEPT && echo ok 4/4 || echo fail 4/4
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
-echo "$title_md [ Working ] Conecting in ipv4 to $serverip_iperf_ipv4 ]"
-$command_iperf -c $serverip_iperf_ipv4 -t 6 -P 1 -p $serverport_iperf_ipv6 |tail -3
+echo "$title_md [ Working ] Conecting in ipv6 to $serverip_iperf_ipv4 ]"
+$command_iperf -c $serverip_iperf_ipv6 -t 6 -P 1 -p $serverport_iperf_ipv6 |tail -3
 echo "$title_md"
 echo "$title_md [ Working ] restoring firewall before speed-ip4"
 $cmd_realpath load $file_installed-speed-ip6 &> /dev/null
