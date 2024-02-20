@@ -1819,6 +1819,7 @@ exit ; fi
 ####
 if [ "$first_option" == "version" ]; then 
 echo "$title_md [ $first_option ] [ Show version ] [ version.md ]   "     
+echo "$text_md [ info ] Somes details in $cmd_basename:"   
 echo "$text_md [ info ] [ Program ] $cmd_realpath "   
 echo "$text_md [ info ] [ Version ] $cmd_version  "   
 echo "$text_md [ info ] [ Short description ] $cmd_shortdescription "   
@@ -1826,7 +1827,10 @@ echo "$text_md [ info ] [ Long description  ] $cmd_longdescription  "
 echo "$text_md [ info ] [ License program   ] $cmd_license  "   
 echo "$text_md [ info ] [ Developer Contact ] $cmd_contact  "   
 echo "$text_md [ info ] [ Data  Directory   ] $directory_data  "   
-echo "$text_md [ info ] [ Cache Directory   ] $directory_cache "   
+echo "$text_md [ info ] [ Cache Directory   ] $directory_cache "  
+echo "$text_md [ info ] Others details in $cmd_basename:"   
+echo "$text_md [ info ] [ File  Preferences ] "   
+echo "$text_md $file_default_preferences"  
 echo "$text_md [ info ] [ File  Format      ] "   
 echo "$text_md $($command_file $cmd_realpath) "
 exit ; fi
