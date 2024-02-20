@@ -4873,7 +4873,7 @@ echo "$title_md [ $first_option ]  [ test disk speed benchamrk ] \
 case $command_dd in "$NULL")
 echo "$text_md [ fail ] [ Install dd ]"; exit ;; esac
 dd if=/dev/zero of=$default_directory_benchmarkdisk/speed.img \
-status=progress bs=10M count=100
+status=progress bs=10M count=10
 rm $default_directory_benchmarkdisk/speed.img &> /dev/null
 exit; fi
 ####
@@ -4891,7 +4891,7 @@ case $command_dd in "$NULL")
 echo "$text_md [ fail ] [ Install dd ]"; exit ;; esac
 mount -t tmpfs tmpfs $default_directory_benchmarkram
 dd if=/dev/zero of=$default_directory_benchmarkram/speed.img \
-status=progress bs=10M count=100
+status=progress bs=10M count=10
 rm $default_directory_benchmarkram/speed.img &> /dev/null
 umount $default_directory_benchmarkram
 exit; fi
