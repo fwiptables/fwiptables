@@ -314,6 +314,7 @@ command_convert="$(command -v convert)"
 command_ip="$(command -v ip)"
 command_ip6tables_legacy="$(command -v ip6tables-legacy)"
 command_ip6tables_nft="$(command -v ip6tables-nft)"
+command_iperf="$(command -v iperf)"
 command_iperf3="$(command -v iperf3)"
 command_iptables_legacy="$(command -v iptables-legacy)"
 command_iptables_nft="$(command -v iptables-nft)"
@@ -551,9 +552,9 @@ serverip_discover_ipv6=""http://httpbin.org/ip""        ## fwiptables-file-defau
 ####       #### english: iperf server for default for test net SPEED
 ####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet
 serverip_iperf_ipv4="ping.online.net"       ## fwiptables-file-default ## default ping.online.net
-serverport_iperf_ipv4="5201"                ## fwiptables-file-default ## default 5201
+serverport_iperf_ipv4="5200"                ## fwiptables-file-default ## default 5200
 serverip_iperf_ipv6="ping6.online.net"      ## fwiptables-file-default ## default ping.online.net
-serverport_iperf_ipv6="5201"                ## fwiptables-file-default ## default 5201
+serverport_iperf_ipv6="5200"                ## fwiptables-file-default ## default 5200
 #### #### english: grahpicall look  #### spanish: apariencia grafica
 config_graphicall_width=750
 config_graphicall_height=550
@@ -630,6 +631,22 @@ case "$NULL" in "$type_firewall")          ;;
 ####
 ####
 #### :rutina-final-sane-variables-basics:
+##########      english: search favorite iperf: favorite iperf command        ##########
+##########      spanish: busca preferida fecha: favorita comando de iperf     ##########
+#### :rutina-inicial-favorite-iperf-command:
+####
+####
+if [ "$favorite_iperf_command" == "$NULL" ]; then
+if [ "$command_iperf"   != "$NULL" ]; then
+favorite_iperf_command="$command_iperf" ; fi
+if [ "$command_iperf3"    != "$NULL" ]; then
+favorite_iperf_command="$command_iperf3" ; fi
+####
+####
+fi
+####
+####
+#### :rutina-final-favorite-iperf-command:
 ##########      english: search favorite date: favorite date command        ##########
 ##########      spanish: busca preferida fecha: favorita comando de fecha   ##########
 #### :rutina-inicial-favorite-date-command:
@@ -1448,6 +1465,7 @@ echo "allow_save_autolog=                             ## or void or no"
 echo "allow_show_time=no                              ## or void or no"
 echo "$title_md"  
 echo "$title_md # default programs"
+echo "favorite_iperf_command=                         ## or void for automatic or specify command"
 echo "favorite_text_editor=                           ## or void for automatic or specify command"
 echo "favorite_text_music=                            ## or void for automatic or specify command"
 echo "favorite_text_browser=                          ## or void for automatic or specify command"
@@ -1460,10 +1478,10 @@ echo "$title_md"
 echo "$title_md # default discover ip and speed ip"
 echo "serverip_discover_ipv4=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
 echo "serverip_discover_ipv6=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
-echo "serverip_iperf_ipv4=ping.online.net             ## default ping.online.net"
-echo "serverport_iperf_ipv4=5201                      ## default 5201"
-echo "serverip_iperf_ipv6=ping6.online.net            ## default ping.online.net"
-echo "serverport_iperf_ipv6=5201                      ## default 5201"
+echo "serverip_iperf_ipv4=iperf.online.net          ## default ping.online.net"
+echo "serverport_iperf_ipv4=5200                      ## default 5201"
+echo "serverip_iperf_ipv6=iperf.online6.net          ## default ping.online.net"
+echo "serverport_iperf_ipv6=5200                      ## default 5201"
 echo "$title_md"
 echo "$title_md # default graphicall dimension"
 echo "config_graphicall_width=800                     ## default width 800"
@@ -5238,17 +5256,14 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "speed-ip4" ]; then 
-echo "$title_md [ $first_option ]  [ test speed ipv4 with internet ] "
-case "$command_iperf3"  in  $NULL)
-echo "$title_md [ fail ] [ Install Iperf command ]"; exit ;; esac
+echo "$title_md [ $first_option ]  [ test speed ipv4 with iperf ] "
 ####
 ####
-echo "$title_md [ info ] Works only with iperf3 only compatibility"
-$command_iperf3 -v
+$favorite_iperf_command -v | head -1
 echo "$title_md"
 echo "$title_md [ Working ] Saving firewall before speed-ip4"
 $cmd_realpath save $file_installed-speed-ip4 &> /dev/null
-echo "$title_md [ Working ] ADDing ipv4 rules: ACCEPT to $serverip_iperf_ipv4"
+echo "$title_md [ Working ] ADD ipv4 rules whitelist: ACCEPT to $serverip_iperf_ipv4"
 $command_iptables_nft    -t filter -I INPUT -s $serverip_iperf_ipv4  \
 -j ACCEPT && echo ok 1/4 || echo fail 1/4
 $command_iptables_nft    -t filter -I OUTPUT -d $serverip_iperf_ipv4 \
@@ -5260,7 +5275,7 @@ $command_iptables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv4 \
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv4 to $serverip_iperf_ipv4 ]"
-$command_iperf3 -t 4 -p $serverport_iperf_ipv4 -c $serverip_iperf_ipv4  |tail -3
+$favorite_iperf_command -4 -u -t 4 -c $serverip_iperf_ipv4 -p $serverport_iperf_ipv4
 echo "$title_md"
 echo "$title_md [ Working ] restoring firewall before speed-ip4"
 $cmd_realpath load $file_installed-speed-ip4 &> /dev/null
@@ -5277,17 +5292,15 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "speed-ip6" ]; then 
-echo "$title_md [ $first_option ]  [ test speed ipv6 with internet ] "
-case "$command_iperf3"  in  $NULL)
-echo "$title_md [ fail ] [ install iperf command ]"; exit ;; esac
+echo "$title_md [ $first_option ]  [ test speed ipv6 with iperf ] "
 ####
 ####
 echo "$title_md [ info ] Works only with iperf3 only compatibility"
-$command_iperf3 -v
+$command_iperf3 -v | head -1
 echo "$title_md"
 echo "$title_md [ Working ] Saving firewall before speed-ip6"
 $cmd_realpath save $file_installed-speed-ip6 &> /dev/null
-echo "$title_md [ Working ] ADDing ipv4 rules: ACCEPT to $serverip_iperf_ipv6"
+echo "$title_md [ Working ] ADD ipv6 rules whitelist: ACCEPT to $serverip_iperf_ipv6"
 $command_ip6tables_nft    -t filter -I INPUT -s $serverip_iperf_ipv6  \
 -j ACCEPT && echo ok 1/4 || echo fail 1/4
 $command_ip6tables_nft    -t filter -I OUTPUT -d $serverip_iperf_ipv6 \
@@ -5299,7 +5312,7 @@ $command_ip6tables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv6 \
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv6 to $serverip_iperf_ipv4 ]"
-$command_iperf3 -c $serverip_iperf_ipv6 -t 6 -P 1 -p $serverport_iperf_ipv6 |tail -3
+$command_iperf3 -6 -u -t 6 -P 1 -c $serverip_iperf_ipv6 -p $serverport_iperf_ipv6 
 echo "$title_md"
 echo "$title_md [ Working ] restoring firewall before speed-ip4"
 $cmd_realpath load $file_installed-speed-ip6 &> /dev/null
