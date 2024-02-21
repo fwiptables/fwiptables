@@ -5233,7 +5233,7 @@ $command_iptables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv4 \
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv4 to $serverip_iperf_ipv4 ]"
-$favorite_iperf_command -4 -u -t 4 -c $serverip_iperf_ipv4 -p $serverport_iperf_ipv4
+$favorite_iperf_command -4 -t 4 -c $serverip_iperf_ipv4 -p $serverport_iperf_ipv4
 echo "$title_md"
 echo "$title_md [ Working ] restoring firewall before speed-ip4"
 $cmd_realpath load $file_installed-speed-ip4 &> /dev/null
@@ -5270,7 +5270,7 @@ $command_ip6tables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv6 \
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv6 to $serverip_iperf_ipv4 ]"
-$command_iperf3 -6 -u -t 6 -P 1 -c $serverip_iperf_ipv6 -p $serverport_iperf_ipv6 
+$favorite_iperf_command -6 -t 4 -P 1 -c $serverip_iperf_ipv6 -p $serverport_iperf_ipv6 
 echo "$title_md"
 echo "$title_md [ Working ] restoring firewall before speed-ip4"
 $cmd_realpath load $file_installed-speed-ip6 &> /dev/null
