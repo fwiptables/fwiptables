@@ -203,6 +203,31 @@ else $command_sudo -u 0 $command_xhost +SI:localuser:root &> /dev/null ; fi
 #### :rutina-inicial-config-variables:
 ####
 ####
+without_first_option=""
+launch_rules_firewall="no" 
+allow_use_legacy=""                       
+allow_use_nft="no"                        
+allow_use_ipv4=""                         
+allow_use_ipv6=""                         
+allow_separate_rules=""        
+config_shield_port="22"        
+config_shield_maxtries="10"    
+config_close_deny="DROP"         
+allow_save_autolog=""          
+allow_show_time="no"           
+favorite_text_editor=""        
+favorite_realpath_textdialog=""
+favorite_realpath_graphicalldialog=""
+favorite_text_browser=""
+favorite_date_command=""
+serverip_discover_ipv4="http://httpbin.org/ip"
+serverip_discover_ipv6="http://httpbin.org/ip"
+serverip_iperf_ipv4="ping.online.net"       
+serverport_iperf_ipv4="5200"                
+serverip_iperf_ipv6="ping6.online.net"      
+serverport_iperf_ipv6="5200"                
+config_graphicall_width="750"
+config_graphicall_height="550"
 list_rules_conceptual=""   ;
 config_ip4_localhost="127.0.0.1"    ;
 config_ip6_localhost="::1"    ;
@@ -500,103 +525,36 @@ $command_mkdir -p "$default_directory_benchmarkdisk" &> /dev/null ; fi
 #### :rutina-final-dir-sane:
 ##########   english: the basic system variables         ##########
 ##########   spanish: las variables basicas del sistema  ##########
-#### :rutina-inicial-system-variables:
+#### :rutina-inicial-messages-variables:
 ####
 ####
 #### english: when there is not first_option #### choose "list_options" or "clasic_options"
 #### spanish: cuando no hay first_option #### choose "list_options" or "clasic_options"
 ####
 ####
-without_first_option=       ## fwiptables-file-default ## when there is not one first_option
-####
-####
-####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
-####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
-allow_use_legacy=""                       ## fwiptables-file-default ## void or no
-allow_use_nft="no"                        ## fwiptables-file-default ## void or no
-allow_use_ipv4=""                         ## fwiptables-file-default ## void or no
-allow_use_ipv6=""                         ## fwiptables-file-default ## void or no
-####       #### english: separate all rules: separate all rules, void or no
-####       #### spanish: separar todas las reglas: separar todas las reglas, vacio o no
-allow_separate_rules=""                   ## fwiptables-file-default ## void or no
-####       #### english: ssh shield configured to works with ports choose ports tcp
-####       #### spanish: ssh escudo configurado para funcionar con elegidos puertos tcp
-config_shield_port="22"                   ## fwiptables-file-default ##  void o ports
-####       #### english: ssh tries per ip before shield per hour
-####       #### spanish: intentos ssh por ip antes del escudo por hora
-config_shield_maxtries="10"               ## fwiptables-file-default ## void or no
-####       #### english: close with deny is or DROP or REJECT
-####       #### spanish: cierra con denegacion es o DROP or REJECT
-config_close_deny=DROP                        ## fwiptables-file-default ## DROP or REJECT
-####       #### english: auto log from command input
-####       #### spanish: automatico log de linea introducida
-allow_save_autolog=""                     ## fwiptables-file-default ## void or no
-####       #### english: show date and show time
-####       #### spanish: muestra la fecha y el tiempo
-allow_show_time="no"                      ## fwiptables-file-default ## void or no
-####       #### english: void for automatic command #### spanish: vacio para comando automatico
-#### favorite_text_editor        ... for example nano
-favorite_text_editor=""                    ## fwiptables-file-default ## or void for automatic or specify command
-#### favorite_realpath_textdialog        .... or dialog or whiptail
-favorite_realpath_textdialog=""                    ## fwiptables-file-default ## or void for automatic or specify command
-#### favorite_realpath_graphicalldialog  zenity
-favorite_realpath_graphicalldialog=""               ## fwiptables-file-default ## or void for automatic or specify command
-#### favorite_text_brwoser       ... for example elinks
-favorite_text_browser=""                    ## fwiptables-file-default ## or void for automatic or specify command
-#### favorite_date_command       ... for example ntpdate
-favorite_date_command=""                    ## fwiptables-file-default ## or void for automatic or specify command
-####       #### english: curl server for default for test the public ip
-####       #### spanish: servidor de curl por defecto para testear la ip publica
-serverip_discover_ipv4=""http://httpbin.org/ip""        ## fwiptables-file-default ## default http://ifconfig.co/ip
-serverip_discover_ipv6=""http://httpbin.org/ip""        ## fwiptables-file-default ## default http://ifconfig.co/ip
-####       #### english: iperf server for default for test net SPEED
-####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet
-serverip_iperf_ipv4="ping.online.net"       ## fwiptables-file-default ## default ping.online.net
-serverport_iperf_ipv4="5200"                ## fwiptables-file-default ## default 5200
-serverip_iperf_ipv6="ping6.online.net"      ## fwiptables-file-default ## default ping.online.net
-serverport_iperf_ipv6="5200"                ## fwiptables-file-default ## default 5200
-#### #### english: grahpicall look  #### spanish: apariencia grafica
-config_graphicall_width=750
-config_graphicall_height=550
-## fwiptables-file-default ## default: "--width=950 --height=650"
-#### #### english: look  #### spanish: apariencia
 title_md="### " ;
 text_md="  " ;
 fifty_md="##################################################" ;
-#### #### english: [characters to show] 
-#### spanish: [caracteres a mostrar]
 head_waiting_all=" [ Wait several seconds.. ]  [ press control-c to cancel ] "
 head_waiting_txt="$title_md [ info ] [ txt ] $head_waiting_all "
 head_waiting_cli="$title_md [ info ] [ cli ] $head_waiting_all "
 head_waiting_gui="$title_md [ info ] [ gui ] $head_waiting_all "
 head_waiting_log="$title_md [ info ] [ log ] $head_waiting_all "
 head_waiting_pdf="$title_md [ info ] [ pdf ] $head_waiting_all "
-#### #### english: [characters to show]
-#### spanish: [caracteres a mostrar]
 head_give_cover="$title_md [ $file_installed $cmd_version ] [ $X11_OR_WAYLAND ] \
 [ Options: $cmd_realpath options ]"
-#### #### english: [characters to show] 
-#### spanish: [caracteres a mostrar]
 give_load="$title_md [ _ok_ ] [ Load firewall ] [ Firewall With iptables ]"
-#### #### english: [characters to show] 
-#### spanish: [caracteres a mostrar]
 give_preferences="$title_md [ Configure ] [ $cmd_realpath preferences-modify ]"
-#### #### english: echo void            
-#### spanish: impresion vacia
 nada="$(echo -n)" ; 
-#### #### english: without cli or gui   
-#### spanish: sin cli o gui
 message_without_support="[ Without support for output cli for this option ]"
 message_without_cli="$title_md [ fail ] [ cli ] $message_without_support "
 message_without_gui="$title_md [ fail ] [ gui ] $message_without_support "
 message_without_info="$title_md [ fail ] [ log ] $message_without_support "
 message_without_null="$title_md [ fail ] [ null ] $message_without_support "
 message_without_pdf="$title_md [ fail ] [ pdf ] $message_without_support "
-####       #### english: autovariables        #### spanish: autovariables
-launch_rules_firewall="no" ;   #  autoconfigure with launch iptables rules
 ####
 ####
-#### :rutina-final-system-variables:
+#### :rutina-final-messages-variables:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
 #### :rutina-inicial-update-variables:
@@ -637,10 +595,10 @@ case "$NULL" in "$type_firewall")          ;;
 ####
 ####
 if [ "$favorite_iperf_command" == "$NULL" ]; then
-if [ "$command_iperf"   != "$NULL" ]; then
-favorite_iperf_command="$command_iperf" ; fi
 if [ "$command_iperf3"    != "$NULL" ]; then
 favorite_iperf_command="$command_iperf3" ; fi
+if [ "$command_iperf"   != "$NULL" ]; then
+favorite_iperf_command="$command_iperf" ; fi
 ####
 ####
 fi
@@ -5259,7 +5217,7 @@ if   [ "$first_option" == "speed-ip4" ]; then
 echo "$title_md [ $first_option ]  [ test speed ipv4 with iperf ] "
 ####
 ####
-$favorite_iperf_command -v | head -1
+$favorite_iperf_command -v | head -1 || echo "$title_md [ fail ] install iperf"
 echo "$title_md"
 echo "$title_md [ Working ] Saving firewall before speed-ip4"
 $cmd_realpath save $file_installed-speed-ip4 &> /dev/null
@@ -5296,7 +5254,7 @@ echo "$title_md [ $first_option ]  [ test speed ipv6 with iperf ] "
 ####
 ####
 echo "$title_md [ info ] Works only with iperf3 only compatibility"
-$command_iperf3 -v | head -1
+$favorite_iperf_command -v | head -1 || echo "$title_md [ fail ] install iperf"
 echo "$title_md"
 echo "$title_md [ Working ] Saving firewall before speed-ip6"
 $cmd_realpath save $file_installed-speed-ip6 &> /dev/null
