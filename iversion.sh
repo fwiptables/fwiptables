@@ -198,9 +198,9 @@ else $command_sudo -u 0 $command_xhost +SI:localuser:root &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-x11-or-wayland:
-##########  english: config-variables: variables to declare     ##########
-##########  spanish: config-variables: variables para declarar  ##########
-#### :rutina-inicial-config-variables:
+##########  english: system-variables: variables to declare     ##########
+##########  spanish: system-variables: variables para declarar  ##########
+#### :rutina-inicial-system-variables:
 ####
 ####
 without_first_option=""
@@ -268,6 +268,8 @@ allow_output_maxconnect="no"     ;
 allow_output_ping="no"     ;
 allow_output_state="no"     ;
 allow_output_uid="no"     ;
+####
+####
 config_string_algoritmo="kpm"
 config_string_denied=".fb.com,.facebook.com,xxx.html" ;
 config_string_allowed="one-string-that-like-how-a-passord,sourceforge.net"  ;
@@ -294,7 +296,29 @@ config_ipv6_netclient="::/0"     ;
 config_ipv6_netserver="::/0"     ;
 ####
 ####
-#### :rutina-final-config-variables:
+title_md="### " ;
+text_md="  " ;
+fifty_md="##################################################" ;
+head_waiting_all=" [ Wait several seconds.. ]  [ press control-c to cancel ] "
+head_waiting_txt="$title_md [ info ] [ txt ] $head_waiting_all "
+head_waiting_cli="$title_md [ info ] [ cli ] $head_waiting_all "
+head_waiting_gui="$title_md [ info ] [ gui ] $head_waiting_all "
+head_waiting_log="$title_md [ info ] [ log ] $head_waiting_all "
+head_waiting_pdf="$title_md [ info ] [ pdf ] $head_waiting_all "
+head_give_cover="$title_md [ $file_installed $cmd_version ] [ $X11_OR_WAYLAND ] \
+[ Options: $cmd_realpath options ]"
+give_load="$title_md [ _ok_ ] [ Load firewall ] [ Firewall With iptables ]"
+give_preferences="$title_md [ Configure ] [ $cmd_realpath preferences-modify ]"
+nada="$(echo -n)" ; 
+message_without_support="[ Without support for output cli for this option ]"
+message_without_cli="$title_md [ fail ] [ cli ] $message_without_support "
+message_without_gui="$title_md [ fail ] [ gui ] $message_without_support "
+message_without_info="$title_md [ fail ] [ log ] $message_without_support "
+message_without_null="$title_md [ fail ] [ null ] $message_without_support "
+message_without_pdf="$title_md [ fail ] [ pdf ] $message_without_support "
+####
+####
+#### :rutina-final-system-variables:
 ##########   english: search programs: programs path           ##########
 ##########   spanish: busca los programas: ruta de programas   ##########
 #### :rutina-inicial-command:
@@ -523,38 +547,6 @@ $command_mkdir -p "$default_directory_benchmarkdisk" &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-dir-sane:
-##########   english: the basic system variables         ##########
-##########   spanish: las variables basicas del sistema  ##########
-#### :rutina-inicial-messages-variables:
-####
-####
-#### english: when there is not first_option #### choose "list_options" or "clasic_options"
-#### spanish: cuando no hay first_option #### choose "list_options" or "clasic_options"
-####
-####
-title_md="### " ;
-text_md="  " ;
-fifty_md="##################################################" ;
-head_waiting_all=" [ Wait several seconds.. ]  [ press control-c to cancel ] "
-head_waiting_txt="$title_md [ info ] [ txt ] $head_waiting_all "
-head_waiting_cli="$title_md [ info ] [ cli ] $head_waiting_all "
-head_waiting_gui="$title_md [ info ] [ gui ] $head_waiting_all "
-head_waiting_log="$title_md [ info ] [ log ] $head_waiting_all "
-head_waiting_pdf="$title_md [ info ] [ pdf ] $head_waiting_all "
-head_give_cover="$title_md [ $file_installed $cmd_version ] [ $X11_OR_WAYLAND ] \
-[ Options: $cmd_realpath options ]"
-give_load="$title_md [ _ok_ ] [ Load firewall ] [ Firewall With iptables ]"
-give_preferences="$title_md [ Configure ] [ $cmd_realpath preferences-modify ]"
-nada="$(echo -n)" ; 
-message_without_support="[ Without support for output cli for this option ]"
-message_without_cli="$title_md [ fail ] [ cli ] $message_without_support "
-message_without_gui="$title_md [ fail ] [ gui ] $message_without_support "
-message_without_info="$title_md [ fail ] [ log ] $message_without_support "
-message_without_null="$title_md [ fail ] [ null ] $message_without_support "
-message_without_pdf="$title_md [ fail ] [ pdf ] $message_without_support "
-####
-####
-#### :rutina-final-messages-variables:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
 #### :rutina-inicial-update-variables:
