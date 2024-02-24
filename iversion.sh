@@ -949,6 +949,8 @@ case "$first_option" in
 "free-ram")       first_option="free" ;;
 "ram")            first_option="free" ;;
 "list-allrules")  first_option="list-alltables" ;;
+"expert-speed-ip4") first_option="speed-ip4" ;;
+"expert-speed-ip6") first_option="speed-ip6" ;;
 esac
 ####
 ####
@@ -1786,21 +1788,21 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "version" ]; then 
-echo "$title_md [ $first_option ] [ Show version ] [ version.md ]   "     
-echo "$text_md [ info ] Somes details in $cmd_basename:"   
-echo "$text_md [ info ] [ Program ] $cmd_realpath "   
-echo "$text_md [ info ] [ Version ] $cmd_version  "   
-echo "$text_md [ info ] [ Short description ] $cmd_shortdescription "   
-echo "$text_md [ info ] [ Long description  ] $cmd_longdescription  "   
-echo "$text_md [ info ] [ License program   ] $cmd_license  "   
-echo "$text_md [ info ] [ Developer Contact ] $cmd_contact  "   
-echo "$text_md [ info ] [ Data  Directory   ] $directory_data  "   
-echo "$text_md [ info ] [ Cache Directory   ] $directory_cache "  
-echo "$text_md [ info ] Others details in $cmd_basename:"   
-echo "$text_md [ info ] [ File  Preferences ] "   
-echo "$text_md $file_default_preferences"  
-echo "$text_md [ info ] [ File  Format      ] "   
-echo "$text_md $($command_file $cmd_realpath) "
+echo "$title_md [ $first_option ] [ Show version ] [ version.md ]     "     
+echo "$text_md [ info ] Somes details in $cmd_basename:               "   
+echo "$text_md [ info ] [ Program ] $cmd_realpath                     "   
+echo "$text_md [ info ] [ Version ] $cmd_version                      "   
+echo "$text_md [ info ] [ Short description ] $cmd_shortdescription   "   
+echo "$text_md [ info ] [ Long description  ] $cmd_longdescription    "   
+echo "$text_md [ info ] [ License program   ] $cmd_license            "   
+echo "$text_md [ info ] [ Developer Contact ] $cmd_contact            "   
+echo "$text_md [ info ] [ Data  Directory   ] $directory_data         "   
+echo "$text_md [ info ] [ Cache Directory   ] $directory_cache        "  
+echo "$text_md [ info ] Others details in $cmd_basename:              "   
+echo "$text_md [ info ] [ File  Preferences ]                         "   
+echo "$text_md $file_default_preferences        "  
+echo "$text_md [ info ] [ File  Format      ]                         "   
+echo "$text_md $($command_file $cmd_realpath)   "
 exit ; fi
 ####
 ####
@@ -2793,6 +2795,8 @@ echo "$text_md expert-compile-obash . Compile fwiptables-cmd to fwiptables-bin w
 echo "$text_md expert-upgrade-stable . Upgrade from web sourceforge fwiptables-cmd with curl"
 echo "$text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables-cmd with curl"
 echo "$text_md expert-download-adblock . Download blacklist to /etc/hosts.blacklist with curl"
+echo "$text_md expert-speed-ip4 . benchmark internet speed ipv4 with 4seconds"
+echo "$text_md expert-speed-ip6 . benchmark internet speed ipv6 with 4seconds"
 echo "$text_md expert-speed-disk . benchmark disk speed with 100Mb"
 echo "$text_md expert-speed-ram . benchmark ram speed with 100Mb"
 echo "$text_md expert-speed-glx . benchmark glx speed with mesa3D"
