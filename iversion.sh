@@ -452,6 +452,7 @@ default_directory_template="$directory_data/fwiptables-template"
 default_directory_control="$directory_data/fwiptables-control"
 default_directory_custom="$directory_data/fwiptables-custom"
 default_directory_preferences="$directory_data/fwiptables-preferences"
+default_directory_autolog="$directory_data/fwiptables-autolog"
 default_directory_log="$directory_data/fwiptables-log"
 default_directory_pdf="$directory_data/fwiptables-pdf"
 default_directory_wpa="$directory_data/fwiptables-wpa"
@@ -481,7 +482,7 @@ file_default_preferences="$default_directory_preferences/default-preferences-$cm
 ####
 ####
 file_default_filelog="$default_directory_log/default_filelog-$cmd_version"
-file_default_autolog="$default_directory_log/default_autolog-$cmd_version"
+file_default_autolog="$default_directory_autolog/default_autolog-$cmd_version"
 ####
 ####
 #### stablished which is the cache temporal.
@@ -526,6 +527,8 @@ if [ ! -d "$default_directory_custom" ]; then
 $command_mkdir -p "$default_directory_custom" &> /dev/null ; fi
 if [ ! -d "$default_directory_preferences" ]; then
 $command_mkdir -p "$default_directory_preferences" &> /dev/null ; fi
+if [ ! -d "$default_directory_autolog" ]; then
+$command_mkdir -p "$default_directory_autolog" &> /dev/null ; fi
 if [ ! -d "$default_directory_log" ]; then
 $command_mkdir -p "$default_directory_log" &> /dev/null ; fi
 if [ ! -d "$default_directory_wpa" ]; then
