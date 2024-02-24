@@ -392,6 +392,7 @@ command_tee="$(command -v tee)"
 command_timeout="$(command -v timeout)"
 command_torify="$(command -v torify)"
 command_traceroute="$(command -v traceroute)"
+command_tree="$(command -v tree)"
 command_txt2html="$(command -v txt2html)"
 command_uname="$(command -v uname)"
 command_wget="$(command -v wget)"
@@ -434,30 +435,30 @@ show_actual_date="$($command_date| $command_sed -e s/\ /\-/g -)"
 ####
 ####
 ####
-#### prepare directory data
+#### prepare directory data $HOME OR /root
 ####
 if [ "$HOME" == "$NULL" ] ; then default_root_home="/root";
 else default_root_home="$HOME"; fi
 ####
-#### set directory data
+#### set directory data cache
 ####
-directory_data="$default_root_home/.config/$file_installed"
+directory_data_necesary="$default_root_home/.config/$file_installed"
 directory_cache_run="/run/$file_installed"
 directory_cache_home="$default_root_home/.cache/$file_installed"
 if [ -d "/run" ]; then mkdir -p $directory_cache_run &> /dev/null ; fi
 if [ -d "$default_root_home" ]; then mkdir -p $directory_cache_home &> /dev/null ; fi
 ####
 ####
-default_directory_template="$directory_data/fwiptables-template"
-default_directory_control="$directory_data/fwiptables-control"
-default_directory_custom="$directory_data/fwiptables-custom"
-default_directory_preferences="$directory_data/fwiptables-preferences"
-default_directory_autolog="$directory_data/fwiptables-autolog"
-default_directory_log="$directory_data/fwiptables-log"
-default_directory_pdf="$directory_data/fwiptables-pdf"
-default_directory_wpa="$directory_data/fwiptables-wpa"
-default_directory_benchmarkram="$directory_data/fwiptables-benchmarkram"
-default_directory_benchmarkdisk="$directory_data/fwiptables-benchmarkdisk"
+default_directory_template="$directory_data_necesary/fwiptables-template"
+default_directory_control="$directory_data_necesary/fwiptables-control"
+default_directory_custom="$directory_data_necesary/fwiptables-custom"
+default_directory_preferences="$directory_data_necesary/fwiptables-preferences"
+default_directory_autolog="$directory_data_necesary/fwiptables-autolog"
+default_directory_log="$directory_data_necesary/fwiptables-log"
+default_directory_pdf="$directory_data_necesary/fwiptables-pdf"
+default_directory_wpa="$directory_data_necesary/fwiptables-wpa"
+default_directory_benchmarkram="$directory_data_necesary/fwiptables-benchmarkram"
+default_directory_benchmarkdisk="$directory_data_necesary/fwiptables-benchmarkdisk"
 ####
 ####
 #### english: templates cfg
@@ -515,8 +516,8 @@ output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-
 command_mkdir="$(command -v mkdir)"
 ####
 ####
-if [ ! -d "$default_directory_data" ]; then
-$command_mkdir -p $default_directory_data &> /dev/null ; fi
+if [ ! -d "$default_directory_data_necesary" ]; then
+$command_mkdir -p $default_directory_data_necesary &> /dev/null ; fi
 if [ ! -d "$default_directory_control" ]; then 
 $command_mkdir -p "$default_directory_control" &> /dev/null ; fi
 if [ ! -d "$default_directory_temporal" ]; then
@@ -1643,7 +1644,7 @@ if [ "$first_option" == "depends" ]; then
 echo "$title_md [ $first_option ] [ List for depends programs ] [ depends md ] "
 echo
 echo "$title_md [ Configuration files ]"
-echo "$text_md Directory data:          $directory_data"
+echo "$text_md Directory data:          $directory_data_necesary"
 echo "$text_md Directory temp:          $directory_cache"
 echo "$text_md File Preferences:        $file_default_preferences"
 echo
@@ -1765,7 +1766,7 @@ echo "$title_md [ Cache Directory  ]"
 echo "$text_md $directory_cache"
 echo
 echo "$title_md [ Data Directory   ]"
-echo "$text_md $directory_data"
+echo "$text_md $directory_data_necesary"
 echo
 echo "$title_md [ Default Preferences ]"
 echo "$text_md $file_default_preferences"
@@ -1791,7 +1792,7 @@ echo "$text_md [ info ] [ Short description ] $cmd_shortdescription   "
 echo "$text_md [ info ] [ Long description  ] $cmd_longdescription    "   
 echo "$text_md [ info ] [ License program   ] $cmd_license            "   
 echo "$text_md [ info ] [ Developer Contact ] $cmd_contact            "   
-echo "$text_md [ info ] [ Data  Directory   ] $directory_data         "   
+echo "$text_md [ info ] [ Data  Directory   ] $directory_data_necesary         "   
 echo "$text_md [ info ] [ Cache Directory   ] $directory_cache        "  
 echo "$text_md [ info ] Others details in $cmd_basename:              "   
 echo "$text_md [ info ] [ File  Preferences ]                         "   
@@ -1814,6 +1815,17 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-show-weather:
+##########    english: expert-show-treeconf: tree configs in fwiptables     ##########
+##########    spanish: expert-show-treeconf: arbol de conf en fwiptables    ##########
+#### :rutina-inicial-expert-show-treeconf:
+####
+####
+if   [ "$first_option" == "expert-show-treeconf" ]; then 
+$command_tree $directory_data_necesary
+exit; fi
+####
+####
+#### :rutina-final-expert-show-treeconf:
 ##########    english: notes: notes to configure iptables      ##########
 ##########    spanish: notes: notas para configurar iptables   ##########
 #### :rutina-inicial-notes:
@@ -2777,6 +2789,7 @@ echo "$text_md expert-show-geoip . show location for ip o for host with geoip"
 echo "$text_md expert-show-webcert . show web certificate ssl from one web with ssl-cert"
 echo "$text_md expert-show-version . Show version fwiptables-cmd stable with curl"
 echo "$text_md expert-show-newversion . Show version fwiptables-cmd stable/unstable with curl"
+echo "$text_md expert-show-treeconf. show tree with the configurations folder"
 echo "$text_md expert-show-clientproxy . show proxy variables in the system stablished"
 echo "$text_md expert-conf-clientproxy . File /etc/proxy.fwiptables for proxy launched with source"
 echo "$text_md expert-compile-obash . Compile fwiptables-cmd to fwiptables-bin with obash"
@@ -4343,7 +4356,7 @@ echo "$text_md"
 echo "$title_md  fwiptables location.                    "
 echo "$text_md"
 echo "$text_md     File location:   $directory_installed/$file_installed    "
-echo "$text_md  Config directory:   $directory_data     "
+echo "$text_md  Config directory:   $directory_data_necesary     "
 echo "$text_md  Cache  directory:   $directory_cache    "
 echo "$text_md"
 echo "$title_md fwiptables install.                     "
@@ -4468,7 +4481,7 @@ $directory_installed/$file_installed config-regen &> /dev/null
 ####   spanish: Muestra el estatus final desde el instalador
 ####
 ####
-echo "$title_md [ info ] [ The  config   dir: ] [ $directory_data ]"
+echo "$title_md [ info ] [ The  config   dir: ] [ $directory_data_necesary ]"
 echo "$title_md [ info ] [ The  cache    dir: ] [ $directory_cache  ]"
 echo "$title_md [ info ] [ The Command shell: ] [ $directory_installed/$file_installed ]"
 echo "$title_md [ _ok_ ] [ Update preferences to config file ]"
