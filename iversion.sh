@@ -448,6 +448,7 @@ if [ -d "/run" ]; then mkdir -p $directory_cache_run &> /dev/null ; fi
 if [ -d "$default_root_home" ]; then mkdir -p $directory_cache_home &> /dev/null ; fi
 ####
 ####
+default_directory_template="$directory_data/fwiptables-template"
 default_directory_control="$directory_data/fwiptables-control"
 default_directory_custom="$directory_data/fwiptables-custom"
 default_directory_preferences="$directory_data/fwiptables-preferences"
@@ -462,10 +463,10 @@ default_directory_benchmarkdisk="$directory_data/fwiptables-benchmarkdisk"
 #### spanish: plantillas cfg
 ####
 ####
-default_fullcfg_eng="$default_directory_custom/default-full-english.cfg"
-default_fullcfg_spa="$default_directory_custom/default-full-spanish.cfg"
-default_minicfg_eng="$default_directory_custom/default-mini-english.cfg"
-default_minicfg_spa="$default_directory_custom/default-mini-spanish.cfg"
+default_fullcfg_eng="$default_directory_template/default-full-english.cfg"
+default_fullcfg_spa="$default_directory_template/default-full-spanish.cfg"
+default_minicfg_eng="$default_directory_template/default-mini-english.cfg"
+default_minicfg_spa="$default_directory_template/default-mini-spanish.cfg"
 ####
 ####
 #### english: default config to shell
@@ -519,6 +520,8 @@ if [ ! -d "$default_directory_control" ]; then
 $command_mkdir -p "$default_directory_control" &> /dev/null ; fi
 if [ ! -d "$default_directory_temporal" ]; then
 $command_mkdir -p $default_directory_temporal &> /dev/null ; fi
+if [ ! -d "$default_directory_template" ]; then
+$command_mkdir -p "$default_directory_template" &> /dev/null ; fi
 if [ ! -d "$default_directory_custom" ]; then
 $command_mkdir -p "$default_directory_custom" &> /dev/null ; fi
 if [ ! -d "$default_directory_preferences" ]; then
@@ -1866,20 +1869,20 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "config-regen" ]; then 
-$cmd_realpath plantilla-mini-es &> $default_minicfg_spa
-$cmd_realpath plantilla-mini-en &> $default_minicfg_eng
-$cmd_realpath plantilla-full-es &> $default_fullcfg_spa
-$cmd_realpath plantilla-full-en &> $default_fullcfg_eng
+$cmd_realpath template-mini-es &> $default_minicfg_spa
+$cmd_realpath template-mini-en &> $default_minicfg_eng
+$cmd_realpath template-full-es &> $default_fullcfg_spa
+$cmd_realpath template-full-en &> $default_fullcfg_eng
 exit; fi
 ####
 ####
 #### :rutina-final-config-regen:
-##########  english:  plantilla-mini-es: for working sane         ########## 
-##########  spanish:  plantilla-mini-es: para funcionamiento sano ##########
-#### :rutina-inicial-plantilla-mini-es:
+##########  english:  template-mini-es: for working sane         ########## 
+##########  spanish:  template-mini-es: para funcionamiento sano ##########
+#### :rutina-inicial-template-mini-es:
 ####
 ####
-if [ "$first_option" == "plantilla-mini-es" ]; then
+if [ "$first_option" == "template-mini-es" ]; then
 echo "$title_md $cmd_shortdescription from $cmd_realpath version $cmd_version $title_md "
 echo "$title_md BEGIN NECESARY $title_md "
 echo "$title_md INICIO .......... Opciones Necesarias .......... .......... $title_md "
@@ -1938,13 +1941,13 @@ echo "$title_md FINAL .......... Opciones Necesarias .......... .......... $titl
 exit ; fi
 ####
 ####
-#### :rutina-final-plantilla-mini-es:
-##########  english:  plantilla-full-es: for working sane         ########## 
-##########  spanish:  plantilla-full-es: para funcionamiento sano ##########
-#### :rutina-inicial-plantilla-full-es:
+#### :rutina-final-template-mini-es:
+##########  english:  template-full-es: for working sane         ########## 
+##########  spanish:  template-full-es: para funcionamiento sano ##########
+#### :rutina-inicial-template-full-es:
 ####
 ####
-if [ "$first_option" == "plantilla-full-es" ]; then
+if [ "$first_option" == "template-full-es" ]; then
 ####
 ####
 #### english: basic options in configurations file cfg
@@ -2129,13 +2132,13 @@ echo "$title_md FINAL .......... Opciones opcionales .......... .......... $titl
 exit ; fi
 ####
 ####
-#### :rutina-final-plantilla-full-es:
-##########  english:  plantilla-mini-en: for working sane         ########## 
-##########  spanish:  plantilla-mini-en: para funcionamiento sano ##########
-#### :rutina-inicial-plantilla-mini-en:
+#### :rutina-final-template-full-es:
+##########  english:  template-mini-en: for working sane         ########## 
+##########  spanish:  template-mini-en: para funcionamiento sano ##########
+#### :rutina-inicial-template-mini-en:
 ####
 ####
-if [ "$first_option" == "plantilla-mini-en" ]; then
+if [ "$first_option" == "template-mini-en" ]; then
 echo "$title_md $cmd_shortdescription from $cmd_realpath version $cmd_version $title_md "
 echo "$title_md BEGIN NECESARY $title_md "
 echo "$title_md  .......... BEGIN Necesary options .......... .......... $title_md "
@@ -2194,13 +2197,13 @@ echo "$title_md .......... END Necesary options .......... .......... $title_md 
 exit ; fi
 ####
 ####
-#### :rutina-final-plantilla-mini-en:
-##########  english:  plantilla-full-en: for working sane         ########## 
-##########  spanish:  plantilla-full-en: para funcionamiento sano ##########
-#### :rutina-inicial-plantilla-full-en:
+#### :rutina-final-template-mini-en:
+##########  english:  template-full-en: for working sane         ########## 
+##########  spanish:  template-full-en: para funcionamiento sano ##########
+#### :rutina-inicial-template-full-en:
 ####
 ####
-if [ "$first_option" == "plantilla-full-en" ]; then
+if [ "$first_option" == "template-full-en" ]; then
 echo "$title_md $cmd_shortdescription from $cmd_realpath version $cmd_version $title_md "
 echo "$title_md BEGIN NECESARY $title_md "
 echo "$title_md  .......... BEGIN Necesary options .......... .......... $title_md "
@@ -2379,7 +2382,7 @@ echo "$title_md .......... END Optional options .......... .......... $title_md"
 exit ; fi
 ####
 ####
-#### :rutina-final-plantilla-full-en:
+#### :rutina-final-template-full-en:
 ##########    english: autosave: autosave of firewall, standard rules   ##########
 ##########    english: autosave: autoguardado de firewall,   estandar   ##########
 #### :rutina-inicial-autosave:
@@ -2511,14 +2514,7 @@ echo "$title_md [ $first_option ] [ List configs cfg ] "
 echo "$title_md [ info ] [ list configs files in cfg format ]"
 echo "$title_md [ info ] [ folder ] [ $default_directory_custom ]"
 echo "$title_md"
-default_files_cfg="default-full-english.cfg|default-full-spanish.cfg\
-|default-mini-english|default-mini-spanish|wizard-full|wizard-mini|nodefault-tmp"
-echo "$title_md"
-echo "$title_md [ System files ]"
-$command_ls -1 $default_directory_custom/ | $command_grep -E -i $default_files_cfg
-echo "$title_md"
-echo "$title_md [ User files ]"
-$command_ls -1 $default_directory_custom/ | $command_grep -E -iv $default_files_cfg
+$command_ls -1 $default_directory_custom
 echo "$title_md"
 echo "$title_md [ OK CFG FILES NAMES ] [ Use: $cmd_realpath load-custom file-cfg ]"
 exit; fi
