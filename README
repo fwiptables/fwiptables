@@ -13,46 +13,46 @@
    and with shield ssh                
    and with comments rules.           
   
-   rules: ipv4, ipv6, ebtables, arptables,   
-   netfilter neftables, netfilter xtables,   
-   tools ip, wizards ready to gen rules,     
-   save and load rules with custom files,    
-   shield to ssh or other servers choosed,   
-   string algoritmo, limit bandwidth,        
-   host whitelist, host blacklist,           
-   and other more capabilities of firewall.  
+   Gen rules: ipv4, ipv6, ebtables, arptables,   
+   netfilter neftables, netfilter xtables,       
+   tools ip, wizards ready to gen rules,         
+   save and load rules with custom files,        
+   shield to ssh or other servers choosed,       
+   string algoritmo, limit bandwidth,            
+   host whitelist, host blacklist,               
+   and other more capabilities of firewall.      
   
 ###   fwiptables location.                    
   
-       File location:   /usr/bin/fwiptables-cmd    
-    Config directory:   /root/.config/fwiptables-cmd     
-    Cache  directory:   /root/.cache/fwiptables-cmd    
+       File location:   /usr/bin/fwiptables    
+    Config directory:   /root/.config/fwiptables     
+    Cache  directory:   /root/.cache/fwiptables    
   
 ###  fwiptables install.                     
   
-    su root TYPE: su root                   
-    Put bit TYPE: chmod 755 ./fwiptables-version-11-17-bash.sh 
-    Install TYPE: ./fwiptables-version-11-17-bash.sh install   
+    su root TYPE: su root                       
+    Put bit TYPE: chmod 755 ./fwiptables-version-12-00-bash.sh     
+    Install TYPE: ./fwiptables-version-12-00-bash.sh install       
   
 ###  fwiptables uninstall.                   
   
-    Uninstall TYPE: fwiptables-cmd uninstall  
+    Uninstall TYPE: fwiptables uninstall  
   
-###  [ version ] [ Show version ] [ version.md ]   
-   [ info ] Somes details in fwiptables-version-11-17-bash.sh:
-   [ info ] [ Program ] /root/f-iptables-version/fwiptables-version-11-17-bash.sh 
-   [ info ] [ Version ] cmd-11-17  
-   [ info ] [ Short description ] fwiptables, FireWall With iptables 
-   [ info ] [ Long description  ] fwiptables, One Mini Script in one-file wizard  
-   [ info ] [ License program   ] GPL v2, License General Public version 2  
-   [ info ] [ Developer Contact ] fwiptables@gmx.com  
-   [ info ] [ Data  Directory   ] /root/.config/fwiptables-cmd  
-   [ info ] [ Cache Directory   ] /root/.cache/fwiptables-cmd 
-   [ info ] Others details in fwiptables-version-11-17-bash.sh:
-   [ info ] [ File  Preferences ] 
-   /root/.config/fwiptables-cmd/fwiptables-shell/default-preferences-cmd-11-17
-   [ info ] [ File  Format      ] 
-   /root/f-iptables-version/fwiptables-version-11-17-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable 
+###  [ version ] [ Show version ] [ version.md ]     
+   [ info ] Somes details in fwiptables-version-12-00-bash.sh:               
+   [ info ] [ Program ] /root/f-iptables-version/fwiptables-version-12-00-bash.sh                     
+   [ info ] [ Version ] 12-00                      
+   [ info ] [ Short description ] fwiptables, FireWall With iptables   
+   [ info ] [ Long description  ] fwiptables, One Mini Script in one-file wizard    
+   [ info ] [ License program   ] GPL v2, License General Public version 2            
+   [ info ] [ Developer Contact ] fwiptables@gmx.com            
+   [ info ] [ Data  Directory   ] /root/.config/fwiptables         
+   [ info ] [ Cache Directory   ] /root/.cache/fwiptables        
+   [ info ] Others details in fwiptables-version-12-00-bash.sh:              
+   [ info ] [ File  Preferences ]                         
+   /root/.config/fwiptables/fwiptables-shell/default-preferences-12-00        
+   [ info ] [ File  Format      ]                         
+   /root/f-iptables-version/fwiptables-version-12-00-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable   
 ###  [ compile ] [  Optionally compile from bash script ] [ compile.md]    
    [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling...                       
    [ step ] [ 0 ] Necesary: fwiptables in source script bash                                  
@@ -61,9 +61,9 @@
    [ step ] [ 3a] Or run: obash -s -c -o ./destination.bin ./source-bash.sh                   
    [ step ] [ 3b] Or run: obash -s -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd  
 ###  Actually, the file type is:  
-/root/f-iptables-version/fwiptables-version-11-17-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
+/root/f-iptables-version/fwiptables-version-12-00-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
 ###  [ options ] [ List general options for fwiptables ] [ list-options.md ]
-###  fwiptables-version-11-17-bash.sh [optional-output] first_option [second_option]   
+###  fwiptables-version-12-00-bash.sh [optional-output] first_option [second_option]   
 ###   [ optional-output ] output                                         
    [ -t|-txt -c|-cli -g|-gui -l|-log -p|-pdf -s|-silent ]               
    [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                   
@@ -80,8 +80,7 @@
 ###   [ firewall-listnumeral ] listnumeral                               
    lsn4 lsn6 listn4 listn6 statusn listn-filter4 listn-filter6          
    listn-alltables  listn-nat4 listn-nat6 listn-raw4 listn-raw6         
-   listn-mangle4 listn-mangle6                                          
-   listn-security4 listn-security6                                      
+   listn-mangle4 listn-mangle6 listn-security4 listn-security6          
 ###   [ firewall-wallcustom ] wallcustom                                 
    new-full-custom nueva-completa-custom new-mini-custom                
    nueva-mini-custom clone-wallsystem load-custom show-custom           
