@@ -2799,6 +2799,7 @@ echo "$text_md expert-speed-ip4 . benchmark internet speed ipv4 with 4seconds"
 echo "$text_md expert-speed-ip6 . benchmark internet speed ipv6 with 4seconds"
 echo "$text_md expert-speed-disk . benchmark disk speed with 100Mb"
 echo "$text_md expert-speed-ram . benchmark ram speed with 100Mb"
+echo "$text_md expert-speed-cpu . benchmark cpu speed with bc command aprox 5seconds"
 echo "$text_md expert-speed-glx . benchmark glx speed with mesa3D"
 echo "$text_md expert-wpa-list . list nameconfig to list wifi config"
 echo "$text_md expert-wpa-new . new nameconfig to create wifi config"
@@ -4873,6 +4874,21 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-speed-ram:
+##########    english: expert-speed-cpu: benchmark cpu        ##########
+##########    spanish: expert-speed-cpu: comparativa cpu      ##########
+#### :rutina-inicial-expert-speed-cpu:
+####
+####
+if   [ "$first_option" == "expert-speed-cpu" ]; then
+echo "$header_ok [ $first_option ]  [ test cpu processor ] [ calcule pi with 2000 digits ] || ||"
+case $command_bc in "$NULL") echo "$tab [ fail ] [ Install bc command ]"; exit ;; esac
+echo "$duo_md [ info ] [ Calculate pi with 2000 digits in only one cpu ]"
+echo "$duo_md [ info ] [ For example with 2ghz/cpu is 5 seconds aprox. ] "
+time echo 'scale=2000; a(1)*4' | $command_bc -l | tail -0 
+exit; fi
+####
+####
+#### :rutina-final-expert-speed-cpu:
 ##########    english: ntpdate-client: update the date and time    ##########
 ##########    spanish: ntpdate-client: actualiza la fecha y hora   ##########
 #### :rutina-inicial-ntpdate-client:
