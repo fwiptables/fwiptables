@@ -101,7 +101,7 @@ echo ; fi
 ####
 cmd_realpath="$(realpath $0)"    # its full routename
 cmd_basename="$(basename $0)"    # its only filename
-cmd_version="12-02"              # its version
+cmd_version="12-03"              # its version
 file_installed="fwiptables"      # its filename installed
 directory_installed="/usr/bin"   # its directory installed
 cmd_developer="Francisco Garcia" # developer actual Autor
