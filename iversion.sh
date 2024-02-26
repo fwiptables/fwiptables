@@ -5268,7 +5268,7 @@ if   [ "$first_option" == "speed-ip6" ]; then
 echo "$title_md [ $first_option ]  [ test speed ipv6 with iperf ] "
 ####
 ####
-echo "$title_md [ info ] Works only with iperf3 only compatibility"
+echo "$title_md $cmd_basename use or iperf or iperf3"
 $favorite_iperf_command -v | head -1 || echo "$title_md [ fail ] install iperf"
 echo "$title_md"
 echo "$title_md [ Working ] Saving firewall before speed-ip6"
