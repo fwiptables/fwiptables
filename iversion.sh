@@ -932,7 +932,7 @@ case "$first_option" in
 "ver")            first_option="version" ;;
 "client-squid")   first_option="client-proxy" ;;
 "server-squid")   first_option="server-proxy" ;;
-"names")          first_option="all-names" ;;
+"all-names")      first_option="names" ;;
 "options")        first_option="list-options" ;;
 "mini-options")   first_option="list-options" ;;
 "options-mini")   first_option="list-options" ;;
@@ -2457,9 +2457,8 @@ echo "$text_md [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]               
 echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail -gui-roll-zenity ]             "
 echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]  "
 echo "$title_md  [ firewall-control ] control                                       "
-echo "$text_md stop continue reset actual show save load all-names                  "
-echo "$text_md eraserules eraserules4 eraserules6 off-line all-permisive            "
-echo "$text_md wizard-mini wizard-full                                              "
+echo "$text_md stop continue reset show save load names wizard-mini wizard-full     "
+echo "$text_md actual eraserules eraserules4 eraserules6 off-line all-permisive     "
 echo "$title_md  [ firewall-listconceptual ] listconceptual                         "
 echo "$text_md ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6  "
 echo "$text_md list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6    "
@@ -4292,12 +4291,12 @@ exit ; fi
 ####
 ####
 #### :rutina-final-del-custom:
-##########    english: all-names: file list whith rules in iptables format          ##########
-##########    spanish: all-names: lista de archivos con reglas en formato iptables  ##########
-#### :rutina-inicial-all-names:
+##########    english: names: file list whith rules in iptables format          ##########
+##########    spanish: names: lista de archivos con reglas en formato iptables  ##########
+#### :rutina-inicial-names:
 ####
 ####
-if [ "$first_option" == "all-names" ]; then 
+if [ "$first_option" == "names" ]; then 
 echo "$title_md [ $first_option ] [ List names from firewall saved ] "
 echo "$title_md [ info ] [ list configs files in standard format ]"
 echo "$title_md [ info ] [ folder ] [ $default_directory_control ]"
@@ -4312,7 +4311,7 @@ echo "$title_md [ _ok_ ] [ Listed firewall names ]"
 exit; fi
 ####
 ####
-#### :rutina-final-all-names:
+#### :rutina-final-names:
 ##########    english: reset: reset counter rules            ##########
 ##########    spanish: reset: resetea contadores de reglas   ##########
 #### :rutina-inicial-reset:
@@ -5232,6 +5231,7 @@ if   [ "$first_option" == "speed-ip4" ]; then
 echo "$title_md [ $first_option ]  [ test speed ipv4 with iperf ] "
 ####
 ####
+echo "$title_md $cmd_basename use or iperf or iperf3"
 $favorite_iperf_command -v | head -1 || echo "$title_md [ fail ] install iperf"
 echo "$title_md"
 echo "$title_md [ Working ] Saving firewall before speed-ip4"
