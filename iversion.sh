@@ -5238,13 +5238,13 @@ echo "$title_md [ Working ] Saving firewall before speed-ip4"
 $cmd_realpath save $file_installed-speed-ip4 &> /dev/null
 echo "$title_md [ Working ] ADD ipv4 rules whitelist: ACCEPT to $serverip_iperf_ipv4"
 $command_iptables_nft    -t filter -I INPUT -s $serverip_iperf_ipv4  \
--j ACCEPT && echo ok 1/4 || echo fail 1/4
+-j ACCEPT && echo ok rule 1/4 || echo fail rule 1/4
 $command_iptables_nft    -t filter -I OUTPUT -d $serverip_iperf_ipv4 \
--j ACCEPT && echo ok 2/4 || echo fail 2/4
+-j ACCEPT && echo ok rule 2/4 || echo fail rule 2/4
 $command_iptables_legacy -t filter -I INPUT -s $serverip_iperf_ipv4  \
--j ACCEPT && echo ok 3/4 || echo fail 3/4
+-j ACCEPT && echo ok rule 3/4 || echo fail rule 3/4
 $command_iptables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv4 \
--j ACCEPT && echo ok 4/4 || echo fail 4/4
+-j ACCEPT && echo ok rule 4/4 || echo fail rule 4/4
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv4 to $serverip_iperf_ipv4 ]"
@@ -5275,19 +5275,19 @@ echo "$title_md [ Working ] Saving firewall before speed-ip6"
 $cmd_realpath save $file_installed-speed-ip6 &> /dev/null
 echo "$title_md [ Working ] ADD ipv6 rules whitelist: ACCEPT to $serverip_iperf_ipv6"
 $command_ip6tables_nft    -t filter -I INPUT -s $serverip_iperf_ipv6  \
--j ACCEPT && echo ok 1/4 || echo fail 1/4
+-j ACCEPT && echo ok rule 1/4 || echo fail rule 1/4
 $command_ip6tables_nft    -t filter -I OUTPUT -d $serverip_iperf_ipv6 \
--j ACCEPT && echo ok 2/4 || echo fail 2/4
+-j ACCEPT && echo ok rule 1/4 || echo fail rule 1/4
 $command_ip6tables_legacy -t filter -I INPUT -s $serverip_iperf_ipv6 \
--j ACCEPT && echo ok 3/4 || echo fail 3/4
+-j ACCEPT && echo ok rule 1/4 || echo fail rule 1/4
 $command_ip6tables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv6 \
--j ACCEPT && echo ok 4/4 || echo fail 4/4
+-j ACCEPT && echo ok rule 1/4 || echo fail rule 1/4
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv6 to $serverip_iperf_ipv4 ]"
 $favorite_iperf_command -6 -t 4 -P 1 -c $serverip_iperf_ipv6 -p $serverport_iperf_ipv6 
 echo "$title_md"
-echo "$title_md [ Working ] Restoring firewall before speed-ip4"
+echo "$title_md [ Working ] Restoring firewall before speed-ip6"
 $cmd_realpath load $file_installed-speed-ip6 &> /dev/null
 echo "$title_md [ Done    ] $cmd_basename speed-ip6"
 ####
