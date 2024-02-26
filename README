@@ -10,17 +10,17 @@
    or custom, or one system           
    firewall to choose one. Gen rules  
    with templates or wizard-full,     
-   and with shield ssh                
-   and with comments rules.           
+   and with posibility shield ssh     
+   and with added comments rules.     
   
-   Gen rules: ipv4, ipv6, ebtables, arptables,   
-   netfilter neftables, netfilter xtables,       
-   tools ip, wizards ready to gen rules,         
-   save and load rules with custom files,        
-   shield to ssh or other servers choosed,       
-   string algoritmo, limit bandwidth,            
-   host whitelist, host blacklist,               
-   and other more capabilities of firewall.      
+   With rules: ipv4, ipv6, ebtables, arptables.    
+   With netfilter neftables, netfilter xtables.    
+   With tools ip, wizards ready to gen rules.      
+   Permit save and load rules with custom files.   
+   Permit shield to ssh or other servers choosed,  
+   Permit string algoritmo, limit bandwidth,       
+   Permit host whitelist, host blacklist,          
+   And other more capabilities of firewall.        
   
 ###   fwiptables location.                    
   
@@ -31,28 +31,29 @@
 ###  fwiptables install.                     
   
     su root TYPE: su root                       
-    Put bit TYPE: chmod 755 ./fwiptables-version-12-01-bash.sh     
-    Install TYPE: ./fwiptables-version-12-01-bash.sh install       
+    Put bit TYPE: chmod 755 ./fwiptables-version-12-02-bash.sh     
+    Install TYPE: ./fwiptables-version-12-02-bash.sh install       
   
 ###  fwiptables uninstall.                   
   
     Uninstall TYPE: fwiptables uninstall  
   
-###  [ version ] [ Show version ] [ version.md ]     
-   [ info ] Somes details in fwiptables-version-12-01-bash.sh:               
-   [ info ] [ Program ] /root/f-iptables-version/fwiptables-version-12-01-bash.sh                     
-   [ info ] [ Version ] 12-01                      
-   [ info ] [ Short description ] fwiptables, FireWall With iptables   
-   [ info ] [ Long description  ] fwiptables, One Mini Script in one-file wizard    
-   [ info ] [ License program   ] GPL v2, License General Public version 2            
-   [ info ] [ Developer Contact ] fwiptables@gmx.com            
-   [ info ] [ Data  Directory   ] /root/.config/fwiptables         
-   [ info ] [ Cache Directory   ] /root/.cache/fwiptables        
-   [ info ] Others details in fwiptables-version-12-01-bash.sh:              
-   [ info ] [ File  Preferences ]                         
-   /root/.config/fwiptables/fwiptables-preferences/default-preferences-12-01        
-   [ info ] [ File  Format      ]                         
-   /root/f-iptables-version/fwiptables-version-12-01-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable   
+###  [ version ] [ Show version ] [ version.md ]          
+   [ info ] [ Somes details in fwiptables-version-12-02-bash.sh ]                 
+   [ info ] [ Name program       ] /root/f-iptables-version/fwiptables-version-12-02-bash.sh               
+   [ info ] [ Name Version       ] 12-02                
+   [ info ] [ Short description  ] fwiptables, FireWall With iptables       
+   [ info ] [ Long description   ] fwiptables, One Mini Script in one-file wizard        
+   [ info ] [ Developer Actual   ] Francisco Garcia              
+   [ info ] [ Developer Contact  ] fwiptables@gmx.com                
+   [ info ] [ License program    ] GPL v2, License General Public version 2                
+   [ info ] [ Others details in fwiptables-version-12-02-bash.sh ]                
+   [ info ] [ Data  Directory    ] /root/.config/fwiptables    
+   [ info ] [ Cache Directory    ] /root/.cache/fwiptables            
+   [ info ] [ File  Preferences  ]                             
+   /root/.config/fwiptables/fwiptables-preferences/default-preferences-12-02        
+   [ info ] [ File  Format       ]                             
+   /root/f-iptables-version/fwiptables-version-12-02-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable   
 ###  [ compile ] [  Optionally compile from bash script ] [ compile.md]    
    [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling...                       
    [ step ] [ 0 ] Necesary: fwiptables in source script bash                                  
@@ -61,9 +62,9 @@
    [ step ] [ 3a] Or run: obash -s -c -o ./destination.bin ./source-bash.sh                   
    [ step ] [ 3b] Or run: obash -s -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd  
 ###  Actually, the file type is:  
-/root/f-iptables-version/fwiptables-version-12-01-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
+/root/f-iptables-version/fwiptables-version-12-02-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
 ###  [ options ] [ List general options for fwiptables ] [ list-options.md ]
-###  fwiptables-version-12-01-bash.sh [optional-output] first_option [second_option]   
+###  fwiptables-version-12-02-bash.sh [optional-output] first_option [second_option]   
 ###   [ optional-output ] output                                         
    [ -t|-txt -c|-cli -g|-gui -l|-log -p|-pdf -s|-silent ]               
    [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                   
