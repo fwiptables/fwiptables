@@ -104,7 +104,8 @@ cmd_basename="$(basename $0)"    # its only filename
 cmd_version="12-02"              # its version
 file_installed="fwiptables"      # its filename installed
 directory_installed="/usr/bin"   # its directory installed
-cmd_contact="fwiptables@gmx.com" # its contact
+cmd_developer="Francisco Garcia" # developer actual Autor
+cmd_contact="fwiptables@gmx.com" # developer contact Autor
 cmd_shortdescription="fwiptables, FireWall With iptables"              # its name description short
 cmd_longdescription="fwiptables, One Mini Script in one-file wizard"   # its name description long
 cmd_license="GPL v2, License General Public version 2"                 # its program license
@@ -1744,17 +1745,20 @@ echo
 echo "$title_md [ Version Program ]"
 echo "$text_md $cmd_version"
 echo
-echo "$title_md [ License Program ]"
-echo "$text_md $cmd_license"
-echo
-echo "$title_md [ Developer Contact ]"
-echo "$text_md $cmd_contact"
-echo
 echo "$title_md [ Short Description ]"
 echo "$text_md $cmd_shortdescription"
 echo
 echo "$title_md [ Long Description ]"
 echo "$text_md $cmd_longdescription"
+echo
+echo "$title_md [ Developer Actual ]"
+echo "$text_md $cmd_developer"
+echo
+echo "$title_md [ Developer Contact ]"
+echo "$text_md $cmd_contact"
+echo
+echo "$title_md [ License Program ]"
+echo "$text_md $cmd_license"
 echo
 echo "$title_md [ File Format ]"
 echo "$text_md" "$($command_file $cmd_realpath  )"
@@ -1784,20 +1788,21 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "version" ]; then 
-echo "$title_md [ $first_option ] [ Show version ] [ version.md ]     "     
-echo "$text_md [ info ] Somes details in $cmd_basename:               "   
-echo "$text_md [ info ] [ Program ] $cmd_realpath                     "   
-echo "$text_md [ info ] [ Version ] $cmd_version                      "   
-echo "$text_md [ info ] [ Short description ] $cmd_shortdescription   "   
-echo "$text_md [ info ] [ Long description  ] $cmd_longdescription    "   
-echo "$text_md [ info ] [ License program   ] $cmd_license            "   
-echo "$text_md [ info ] [ Developer Contact ] $cmd_contact            "   
-echo "$text_md [ info ] [ Data  Directory   ] $directory_data_necesary         "   
-echo "$text_md [ info ] [ Cache Directory   ] $directory_cache        "  
-echo "$text_md [ info ] Others details in $cmd_basename:              "   
-echo "$text_md [ info ] [ File  Preferences ]                         "   
+echo "$title_md [ $first_option ] [ Show version ] [ version.md ]          "
+echo "$text_md [ info ] [ Somes details in $cmd_basename ]                 "
+echo "$text_md [ info ] [ Name program       ] $cmd_realpath               "
+echo "$text_md [ info ] [ Name Version       ] $cmd_version                "
+echo "$text_md [ info ] [ Short description  ] $cmd_shortdescription       "
+echo "$text_md [ info ] [ Long description   ] $cmd_longdescription        "
+echo "$text_md [ info ] [ Developer Actual   ] $cmd_developer              "
+echo "$text_md [ info ] [ Developer Contact  ] $cmd_contact                "
+echo "$text_md [ info ] [ License program    ] $cmd_license                "
+echo "$text_md [ info ] [ Others details in $cmd_basename ]                "
+echo "$text_md [ info ] [ Data  Directory    ] $directory_data_necesary    "
+echo "$text_md [ info ] [ Cache Directory    ] $directory_cache            "
+echo "$text_md [ info ] [ File  Preferences  ]                             "
 echo "$text_md $file_default_preferences        "  
-echo "$text_md [ info ] [ File  Format      ]                         "   
+echo "$text_md [ info ] [ File  Format       ]                             "
 echo "$text_md $($command_file $cmd_realpath)   "
 exit ; fi
 ####
