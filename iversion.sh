@@ -2803,6 +2803,7 @@ exit; fi
 if   [ "$first_option" == "options-expert" ]; then
 echo "$text_md "
 echo "$title_md | options-expert | $cmd_realpath options-expert |"
+echo "$text_md    Only works in Console AND Without: cli, gui, pdf, log, silent"
 echo "$text_md"
 echo "$text_md expert-show-resolve . resolve domain like resolv.conf"
 echo "$text_md expert-show-weather . show weather with wttr.in"
@@ -4483,7 +4484,7 @@ exit; fi
 ####
 if [ "$first_option" == "install" ]; then 
 echo "$title_md [ $first_option ] \
-[ $file_installed $cmd_version installer ] [ install md ] "
+[ $file_installed $cmd_version installer ]"
 ####
 ####
 ####  english: copy the file to temporal folder and install
