@@ -1146,6 +1146,22 @@ exit; fi
 ####
 ####
 #### :rutina-final-config-autolog:
+##########    english: expert-wpa-scan: search essid wireless   ##########
+##########    spanish: expert-wpa-scan: buscar essid wireless   ##########
+#### :rutina-inicial-expert-wpa-scan:
+####
+####
+if   [ "$first_option" == "expert-wpa-scan" ]; then
+echo "$header_ok [ $first_option ]  [ Show SSID from net wifi ] || ||"
+if   [ "$command_iw" == "$NULL" ]; then 
+echo "$title_md [ info ] [ Please, Install iw to work ]" ; exit ; fi
+for a in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1)
+do $command_ifconfig $a up
+$command_iw $a scan | $command_grep -E -i "on $a|ssid" ; done 
+exit; fi
+####
+####
+#### :rutina-final-expert-wpa-scan:
 ##########    english: expert-wpa-new: example from a file wpa_supplicant   ##########
 ##########    spanish: expert-wpa-new: ejemplo de un archivo wpa_supplicant ##########
 #### :rutina-inicial-expert-wpa-new:
@@ -2807,7 +2823,8 @@ echo "$text_md expert-upgrade-stable . Upgrade from web sourceforge fwiptables-c
 echo "$text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables-cmd with curl"
 echo "$text_md expert-upgrade-adblock . Download blacklist to /etc/hosts.blacklist with curl"
 echo "$text_md expert-compile-obash . Compile fwiptables-cmd to fwiptables-bin with obash"
-echo "$text_md expert-wpa-list . list nameconfig to list wifi config"
+echo "$text_md expert-wpa-scan . the list wifi on air"
+echo "$text_md expert-wpa-list . the list nameconfig over saved wifi"
 echo "$text_md expert-wpa-new . new nameconfig to create wifi config"
 echo "$text_md expert-wpa-modify . one nameconfig to modify wifi config"
 echo "$text_md expert-wpa-connect . one nameconfig to connect wifi config"
