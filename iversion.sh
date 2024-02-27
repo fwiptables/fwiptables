@@ -4510,7 +4510,7 @@ $directory_installed/$file_installed config-regen &> /dev/null
 echo "$title_md [ ok ] [ The Command shell: ] [ $directory_installed/$file_installed ]"
 echo "$title_md [ ok ] [ The  config   dir: ] [ $directory_data_necesary ]"
 echo "$title_md [ ok ] [ The  cache    dir: ] [ $directory_cache  ]"
-echo "$title_md [ ok ] [ Preferences: ] [ $file_default_preferences ]"
+echo "$title_md [ ok ] [ Preferences: $file_default_preferences ]"
 echo "$title_md [ ok ] Now. Ready to run $file_installed"
 exit; fi
 ####
@@ -5244,6 +5244,46 @@ exit; fi
 ####
 ####
 #### :rutina-final-config-spa:
+##########    english: temporal-whitelist4: whitelist temporally ipv4    ##########
+##########    spanish: temporal-whitelist4: lista blanca temporal ipv4   ##########
+#### :rutina-inicial-temporal-wihtelist4
+####
+####
+if [ "$first_option" == "temporal-whitelist4" ]; then
+if [ "$2" == "$NULL" ]; then echo "$title_md [ fail ] not host or net ]"; exit ; fi
+echo "$title_md [ Working ] ADD temporally ipv4 rules whitelist: ACCEPT to $2"
+$command_iptables_nft    -t filter -I INPUT -s $2  \
+-j ACCEPT && echo ok rule 1/4 || echo fail rule 1/4
+$command_iptables_nft    -t filter -I OUTPUT -d $2 \
+-j ACCEPT && echo ok rule 2/4 || echo fail rule 2/4
+$command_iptables_legacy -t filter -I INPUT -s $2  \
+-j ACCEPT && echo ok rule 3/4 || echo fail rule 3/4
+$command_iptables_legacy -t filter -I OUTPUT -d $2 \
+-j ACCEPT && echo ok rule 4/4 || echo fail rule 4/4
+exit; fi
+####
+####
+#### :rutina-final-temporal-wihtelist4
+##########    english: temporal-whitelist6: whitelist temporally ipv6    ##########
+##########    spanish: temporal-whitelist6: lista blanca temporal ipv6   ##########
+#### :rutina-inicial-temporal-wihtelist6
+####
+####
+if [ "$first_option" == "temporal-whitelist6" ]; then
+if [ "$2" == "$NULL" ]; then echo "$title_md [ fail ] not host or net ]"; exit ; fi
+echo "$title_md [ Working ] ADD temporally ipv6 rules whitelist: ACCEPT to $2"
+$command_ip6tables_nft    -t filter -I INPUT -s $2  \
+-j ACCEPT && echo ok rule 1/4 || echo fail rule 1/4
+$command_ip6tables_nft    -t filter -I OUTPUT -d $2 \
+-j ACCEPT && echo ok rule 2/4 || echo fail rule 2/4
+$command_ip6tables_legacy -t filter -I INPUT -s $2  \
+-j ACCEPT && echo ok rule 3/4 || echo fail rule 3/4
+$command_ip6tables_legacy -t filter -I OUTPUT -d $2 \
+-j ACCEPT && echo ok rule 4/4 || echo fail rule 4/4
+exit; fi
+####
+####
+#### :rutina-final-temporal-wihtelist4
 ##########    english: speed-ip4: speed from internet        ##########
 ##########    spanish: speed-ip4: velocidad desde internet   ##########
 #### :rutina-inicial-speed-ip4:
@@ -5251,22 +5291,12 @@ exit; fi
 ####
 if   [ "$first_option" == "speed-ip4" ]; then 
 echo "$title_md [ $first_option ]  [ test speed ipv4 with iperf ] "
-####
-####
 echo "$title_md $cmd_basename use or iperf or iperf3"
 $favorite_iperf_command -v | head -1 || echo "$title_md [ fail ] install iperf"
 echo "$title_md"
 echo "$title_md [ Working ] Saving firewall before speed-ip4"
 $cmd_realpath save $file_installed-speed-ip4 &> /dev/null
-echo "$title_md [ Working ] ADD ipv4 rules whitelist: ACCEPT to $serverip_iperf_ipv4"
-$command_iptables_nft    -t filter -I INPUT -s $serverip_iperf_ipv4  \
--j ACCEPT && echo ok rule 1/4 || echo fail rule 1/4
-$command_iptables_nft    -t filter -I OUTPUT -d $serverip_iperf_ipv4 \
--j ACCEPT && echo ok rule 2/4 || echo fail rule 2/4
-$command_iptables_legacy -t filter -I INPUT -s $serverip_iperf_ipv4  \
--j ACCEPT && echo ok rule 3/4 || echo fail rule 3/4
-$command_iptables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv4 \
--j ACCEPT && echo ok rule 4/4 || echo fail rule 4/4
+$cmd_realpath temporal-whitelist4 $serverip_iperf_ipv4
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv4 to $serverip_iperf_ipv4 ]"
@@ -5288,22 +5318,12 @@ exit; fi
 ####
 if   [ "$first_option" == "speed-ip6" ]; then 
 echo "$title_md [ $first_option ]  [ test speed ipv6 with iperf ] "
-####
-####
 echo "$title_md $cmd_basename use or iperf or iperf3"
 $favorite_iperf_command -v | head -1 || echo "$title_md [ fail ] install iperf"
 echo "$title_md"
 echo "$title_md [ Working ] Saving firewall before speed-ip6"
 $cmd_realpath save $file_installed-speed-ip6 &> /dev/null
-echo "$title_md [ Working ] ADD ipv6 rules whitelist: ACCEPT to $serverip_iperf_ipv6"
-$command_ip6tables_nft    -t filter -I INPUT -s $serverip_iperf_ipv6  \
--j ACCEPT && echo ok rule 1/4 || echo fail rule 1/4
-$command_ip6tables_nft    -t filter -I OUTPUT -d $serverip_iperf_ipv6 \
--j ACCEPT && echo ok rule 1/4 || echo fail rule 1/4
-$command_ip6tables_legacy -t filter -I INPUT -s $serverip_iperf_ipv6 \
--j ACCEPT && echo ok rule 1/4 || echo fail rule 1/4
-$command_ip6tables_legacy -t filter -I OUTPUT -d $serverip_iperf_ipv6 \
--j ACCEPT && echo ok rule 1/4 || echo fail rule 1/4
+$cmd_realpath temporal-whitelist6 $serverip_iperf_ipv6
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv6 to $serverip_iperf_ipv4 ]"
