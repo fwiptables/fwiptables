@@ -1152,7 +1152,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-wpa-scan" ]; then
-echo "$header_ok [ $first_option ]  [ Show SSID from net wifi ] || ||"
+echo "$title_md [ $first_option ]  [ Show SSID from net wifi ] || ||"
 if   [ "$command_iw" == "$NULL" ]; then 
 echo "$title_md [ info ] [ Please, Install iw to work ]" ; exit ; fi
 for a in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1)
@@ -2823,12 +2823,16 @@ echo "$text_md expert-upgrade-stable . Upgrade from web sourceforge fwiptables-c
 echo "$text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables-cmd with curl"
 echo "$text_md expert-upgrade-adblock . Download blacklist to /etc/hosts.blacklist with curl"
 echo "$text_md expert-compile-obash . Compile fwiptables-cmd to fwiptables-bin with obash"
+echo "$text_md expert-nmap-tcp . doing scan tcp at host or range"
+echo "$text_md expert-nmap-udp . doing scan udp at host or range"
+echo "$text_md expert-nmap-fin . doing scan fin at host or range"
+echo "$text_md expert-nmap-syn . doing scan syn at host or range"
+echo "$text_md expert-nmap-ping . doing scan ping at host or range"
 echo "$text_md expert-wpa-scan . the list wifi on air"
 echo "$text_md expert-wpa-list . the list nameconfig over saved wifi"
 echo "$text_md expert-wpa-new . new nameconfig to create wifi config"
 echo "$text_md expert-wpa-modify . one nameconfig to modify wifi config"
 echo "$text_md expert-wpa-connect . one nameconfig to connect wifi config"
-### echo "$text_md expert-radio-online . listen radio from internet"
 echo "$text_md expert-pc-halt . halt computer with halt"
 echo "$text_md expert-pc-shutdown . shutdown computer with shutdown"
 echo "$text_md expert-pc-reboot . reboot computer with reboot"
@@ -5353,6 +5357,130 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-show-webcert:
+##########    english: expert-nmap-tcp: scan one net per tcp       ##########
+##########    spanish: expert-nmap-tcp: rastrea una red por tcp    ##########
+#### :rutina-inicial-expert-nmap-tcp:
+####
+####
+if   [ "$first_option" == "expert-nmap-tcp" ]; then
+echo "$title_md [ $first_option ]  [ scan with nmap tcp ]"
+if [ "$command_nmap" == "$NULL" ];  then
+echo "$title_md Please install nmap to work"; exit; fi
+echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
+if [ "$2" == "$NULL" ]; then 
+echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
+####
+$cmd_realpath stop
+####
+echo "$title_md [ Working ] [ Doing nmap to $2]"
+$command_nmap -sT $2
+####
+$cmd_realpath continue
+####
+echo "$title_md [ ok ] [ Reloaded firewall rules after run nmap ]"
+exit; fi
+####
+####
+#### :rutina-final-expert-nmap-tcp:
+##########    english: expert-nmap-syn: scan one net per syn         ##########
+##########    spanish: expert-nmap-syn: rastrea una por peticiones   ##########
+#### :rutina-inicial-expert-nmap-syn:
+####
+####
+if   [ "$first_option" == "expert-nmap-syn" ]; then echo $give_cover
+echo "$title_md [ $first_option ]  [ scan with nmap syn ]"
+if [ "$command_nmap" == "$NULL" ];  then
+echo "$title_md Please install nmap to work"; exit; fi
+echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
+if [ "$2" == "$NULL" ]; then 
+echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
+####
+$cmd_realpath stop
+####
+$command_nmap -sF $2
+####
+$cmd_realpath continue
+####
+echo "$title_md [ ok ] [ Reloaded firewall rules after run nmap ]"
+echo 
+exit; fi
+####
+####
+#### :rutina-final-expert-nmap-syn:
+##########    english: expert-nmap-fin: scan one net per conexiones      ##########
+##########    spanish: expert-nmap-fin: rastrea una red por conexiones   ##########
+#### :rutina-inicial-expert-nmap-fin:
+####
+####
+if   [ "$first_option" == "expert-nmap-fin" ] ; then
+echo "$title_md [ $first_option ]  [ scan with nmap fin ]"
+if [ "$command_nmap" == "$NULL" ];  then
+echo "$title_md Please install nmap to work"; exit; fi
+echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
+if [ "$2" == "$NULL" ]; then 
+echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
+####
+$cmd_realpath stop
+####
+$command_nmap -sF $2
+####
+$cmd_realpath continue
+####
+echo "$title_md [ ok ] [ Reloaded firewall rules after run nmap ]"
+echo 
+exit; fi
+####
+####
+#### :rutina-final-expert-nmap-fin:
+##########    english: expert-nmap-udp: scan one net per udp       ##########
+##########    spanish: expert-nmap-udp: rastrea una red por udp    ##########
+#### :rutina-inicial-expert-nmap-udp:
+####
+####
+if   [ "$first_option" == "expert-nmap-udp" ]; then
+echo "$title_md [ $first_option ]  [ scan with nmap udp ]"
+if [ "$command_nmap" == "$NULL" ];  then
+echo "$title_md Please install nmap to work"; exit; fi
+echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
+if [ "$2" == "$NULL" ]; then 
+echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
+####
+$cmd_realpath stop
+####
+$command_nmap -sU $2
+####
+$cmd_realpath continue
+####
+echo "$title_md [ ok ] [ Reloaded firewall rules after run nmap ]"
+echo 
+exit; fi
+####
+####
+#### :rutina-final-expert-nmap-udp:
+##########    english: expert-nmap-ping: scan one net per ping     ##########
+##########    spanish: expert-nmap-ping: rastrea una red por ping  ##########
+#### :rutina-inicial-expert-nmap-ping:
+####
+####
+if   [ "$first_option" == "expert-nmap-ping" ] ; then 
+echo "$title_md [ $first_option ]  [ scan with nmap ping ]"
+if [ "$command_nmap" == "$NULL" ];  then
+echo "$title_md Please install nmap to work"; exit; fi
+echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
+if [ "$2" == "$NULL" ]; then 
+echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
+####
+$cmd_realpath stop
+####
+$command_nmap -sn $2
+####
+$cmd_realpath continue
+####
+echo "$title_md [ ok ] [ Reloaded firewall rules after run nmap ]"
+exit; fi
+####
+####
+#### :rutina-final-nmap-ping:
 ##########    english: -gui: Manage gui con three options  ##########
 ##########    spanish: -gui: Maneja gui con tres opciones  ##########
 ####
