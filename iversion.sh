@@ -99,16 +99,16 @@ echo ; fi
 #### configs for fwiptables
 ####
 ####
-cmd_realpath="$(realpath $0)"           # its full routename
-cmd_basename="$(basename $0)"           # its only filename
-cmd_version="12-04"                     # its version
-file_installed="fwiptables"             # its filename installed
-directory_installed="/usr/bin"          # its directory installed
-cmd_developer="Francisco Garcia"        # developer actual Autor
-cmd_contact="fwiptables@gmx.com"        # developer contact Autor
-cmd_shortdescription="fwiptables, FireWall With iptables"              # its name description short
-cmd_longdescription="fwiptables, One Mini Script in one-file wizard"   # its name description long
-cmd_license="GPL v2, License General Public version 2"                 # its program license
+cmd_realpath="$(realpath $0)"                # full routename
+cmd_basename="$(basename $0)"                # only filename
+cmd_version="12-04"                          # number version
+file_installed="fwiptables"                  # filename installed
+directory_installed="/usr/bin"               # directory installed
+cmd_developer="Francisco Garcia"             # developer actual
+cmd_contact="fwiptables@gmx.com"             # developer contact
+cmd_shortdescription="fwiptables, FireWall With iptables"              # description short
+cmd_longdescription="fwiptables, One Mini Script in one-file wizard"   # description long
+cmd_license="GPL v2, License General Public version 2"                 # program license
 ####
 #### web homepage oficial
 ####
@@ -1745,60 +1745,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-examples-option:
-##########    english: about: system script, the about option                  ##########
-##########    spanish: about: script de sistema, la opcion mostrar acerca de   ##########
-#### :rutina-inicial-about:
-####
-####
-if [ "$first_option" == "about" ]; then 
-echo "$title_md [ $first_option ] [ Show about ] [ about.md ] "
-echo
-echo "$title_md [ Basename Program ]"
-echo "$text_md $cmd_basename"
-echo
-echo "$title_md [ Realpath Program ]"
-echo "$text_md $cmd_realpath"
-echo
-echo "$title_md [ Version Program ]"
-echo "$text_md $cmd_version"
-echo
-echo "$title_md [ Short Description ]"
-echo "$text_md $cmd_shortdescription"
-echo
-echo "$title_md [ Long Description ]"
-echo "$text_md $cmd_longdescription"
-echo
-echo "$title_md [ Developer Actual ]"
-echo "$text_md $cmd_developer"
-echo
-echo "$title_md [ Developer Contact ]"
-echo "$text_md $cmd_contact"
-echo
-echo "$title_md [ License Program ]"
-echo "$text_md $cmd_license"
-echo
-echo "$title_md [ File Format ]"
-echo "$text_md" "$($command_file $cmd_realpath  )"
-echo
-echo "$title_md [ MD5 Sum ]"
-echo "$text_md" "$($command_md5sum $cmd_realpath)"
-echo
-echo "$title_md [ Cache Directory  ]"
-echo "$text_md $directory_cache"
-echo
-echo "$title_md [ Data Directory   ]"
-echo "$text_md $directory_data_necesary"
-echo
-echo "$title_md [ Default Preferences ]"
-echo "$text_md $file_default_preferences"
-echo
-echo "$title_md [ Default Autolog ]"
-echo "$text_md $file_default_autolog"
-echo
-exit ; fi
-####
-####
-#### :rutina-final-about:
 ##########    english: version: system script, the version option              ##########
 ##########    spanish: version: script de sistema, la opcion mostrar version   ##########
 #### :rutina-inicial-version:
@@ -2501,7 +2447,7 @@ echo "$title_md  [ options-easy ] easy                                          
 echo "$text_md preferences-read preferences-modify preferences-regen                "
 echo "$text_md preferences-example list-options examples-options info-options       "
 echo "$text_md info date intro filelog autolog ip4 ip6 speed-ip4 speed-ip6          "
-echo "$text_md free sockets nodes geoip ip-forward version code about notes         "
+echo "$text_md free sockets nodes geoip ip-forward version code notes               "
 echo "$text_md depends commands variables license uninstall install                 "
 echo "$title_md  [ options-expert ] expert                                          "
 echo "$title_md  ||| Example: fwiptables-cmd -gui-zenity info |||                   "

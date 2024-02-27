@@ -98,7 +98,7 @@
    preferences-read preferences-modify preferences-regen                
    preferences-example list-options examples-options info-options       
    info date intro filelog autolog ip4 ip6 speed-ip4 speed-ip6          
-   free sockets nodes geoip ip-forward version code about notes         
+   free sockets nodes geoip ip-forward version code notes               
    depends commands variables license uninstall install                 
 ###   [ options-expert ] expert                                          
 ###   ||| Example: fwiptables-cmd -gui-zenity info |||                   
