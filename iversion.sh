@@ -4900,7 +4900,7 @@ cat $default_directory_control/$second_option-nft-ipv4 |  $command_iptables_nft-
 cat $default_directory_control/$second_option-legacy-ipv4 | $command_iptables_legacy-restore  
 cat $default_directory_control/$second_option-nft-ipv6 | $command_ip6tables_nft-restore       
 cat $default_directory_control/$second_option-legacy-ipv6 | $command_ip6tables_legacy-restore 
-echo "$title_md [ _ok_ ] [ firewall loaded ] [ $second_option ]"
+echo "$title_md [ _ok_ ] [ firewall loaded ] [ name: $second_option ]"
 ####
 ####
 else
@@ -4943,7 +4943,7 @@ if [ "$command_ip6tables_legacy"  == "$NULL"  ]; then $nada ; else
 $command_ip6tables_legacy-save   &> $default_directory_control/$archivofin-legacy-ipv6 ; fi
 ####
 ####
-echo "$title_md [ _ok_ ] [ firewall saved ] [ $archivofin ]"
+echo "$title_md [ _ok_ ] [ firewall saved ] [ name: $archivofin ]"
 exit; fi
 ####
 ####
@@ -5154,7 +5154,7 @@ echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv4 to $serverip_iperf_ipv4 ]"
 $favorite_iperf_command -4 -t 4 -c $serverip_iperf_ipv4 -p $serverport_iperf_ipv4
 echo "$title_md"
-# echo "$title_md [ Working ] Restoring firewall before speed-ip4"
+echo "$title_md [ Working ] [ Restoring firewall ]"
 $cmd_realpath load speed-ip4 
 echo "$title_md [ Done    ] $cmd_basename speed-ip4"
 ####
@@ -5181,7 +5181,7 @@ echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv6 to $serverip_iperf_ipv4 ]"
 $favorite_iperf_command -6 -t 4 -P 1 -c $serverip_iperf_ipv6 -p $serverport_iperf_ipv6 
 echo "$title_md"
-# echo "$title_md [ Working ] Restoring firewall before speed-ip6"
+echo "$title_md [ Working ] [ Restoring firewall ]"
 $cmd_realpath load speed-ip6 
 echo "$title_md [ Done    ] $cmd_basename speed-ip6"
 ####
