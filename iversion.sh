@@ -4932,43 +4932,18 @@ exit; fi
 if [ "$first_option" == "load" ]; then 
 ####
 ####
-#### English: Void in second option
-####
-####
 if [ "second_option" == "$NULL" ]; then
 $cmd_realpath names ; echo "$text_md [ info ] \
 [ usage: $cmd_realpath load fw-to-load ] \
 [ See: $cmd_realpath names ]" ; exit ; fi
 ####
 ####
-#### English if do exist second option in load
-####
-####
 if [ -f $default_directory_control/$second_option-nft-ipv4 ] || \
 [ -f $default_directory_control/$second_option-legacy-ipv4 ] ; then 
-echo $give_load
-####
-####
-#### English: show message
-####
-####
-echo "$title_md [ info ] [ Loading rules ]"
-####
-####
-#### English: Remove all rules
-####
-####
 $cmd_realpath eraserules &> /dev/null
-####
-####
-#### English: Load all rules 
-####
-####
 if [ -f "$default_directory_control/$second_option-ebtables" ]; then
 cat $default_directory_control/$second_option-ebtables | \
 $command_ebtables-restore &> /dev/null; fi
-####
-####
 if [ -f "$default_directory_control/$second_option-arptables" ]; then
 cat $default_directory_control/$second_option-arptables | \
 $command_arptables-restore &> /dev/null; fi
@@ -4978,10 +4953,7 @@ cat $default_directory_control/$second_option-nft-ipv4 |  $command_iptables_nft-
 cat $default_directory_control/$second_option-legacy-ipv4 | $command_iptables_legacy-restore  
 cat $default_directory_control/$second_option-nft-ipv6 | $command_ip6tables_nft-restore       
 cat $default_directory_control/$second_option-legacy-ipv6 | $command_ip6tables_legacy-restore 
-echo "$title_md [ _ok_ ] [ firewall loaded ] [ $default_directory_control/$second_option ]"
-####
-####
-#### english: if no found #### spanish: si no encuentra
+echo "$title_md [ _ok_ ] [ firewall loaded ] [ $second_option ]"
 ####
 ####
 else
@@ -5001,7 +4973,6 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "save" ]; then 
-echo "$title_md [ $first_option ]  [ save one firewall with one name ] "
 case "$second_option" in
 "$NULL") echo "$text_md [ info ] [ Usage: $cmd_realpath save fw-to-save ]"
 exit ;;
@@ -5009,7 +4980,6 @@ exit ;;
 esac
 ####
 ####
-echo "$title_md [ info ] [ saving firewall ] [ $archivofin ]"
 if [ "$command_arptables" == "$NULL"  ]; then $nada ; else
 $command_arptables-save &> $default_directory_control/$archivofin-arptables; fi
 if [ "$command_ebtables"  == "$NULL"  ]; then $nada ; else
@@ -5027,17 +4997,6 @@ $command_ip6tables_legacy-save   &> $default_directory_control/$archivofin-legac
 ####
 ####
 echo "$title_md [ _ok_ ] [ firewall saved ] [ $archivofin ]"
-if [ "$command_arptables" == "$NULL"  ]; then $nada ; else
-$command_ls -l $default_directory_control/$archivofin-arptables; fi
-if [ "$command_ebtables"  == "$NULL"  ]; then $nada ; else
-$command_ls -l $default_directory_control/$archivofin-ebtables; fi
-####
-####
-$command_ls -l $default_directory_control/$archivofin-nft-ipv4
-$command_ls -l $default_directory_control/$archivofin-nft-ipv6
-$command_ls -l $default_directory_control/$archivofin-legacy-ipv4
-$command_ls -l $default_directory_control/$archivofin-legacy-ipv6
-echo "$title_md [ _ok_ ] [ firewall listed ] [ $archivofin ]"
 exit; fi
 ####
 ####
@@ -5240,16 +5199,16 @@ echo "$title_md [ $first_option ]  [ test speed ipv4 with iperf ] "
 echo "$title_md $cmd_basename use or iperf or iperf3"
 $favorite_iperf_command -v | head -1 || echo "$title_md [ fail ] install iperf"
 echo "$title_md"
-echo "$title_md [ Working ] Saving firewall before speed-ip4"
-$cmd_realpath save $file_installed-speed-ip4 &> /dev/null
+# echo "$title_md [ Working ] Saving firewall before speed-ip4"
+$cmd_realpath save speed-ip4
 $cmd_realpath temporal-addwitelist4 $serverip_iperf_ipv4
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv4 to $serverip_iperf_ipv4 ]"
 $favorite_iperf_command -4 -t 4 -c $serverip_iperf_ipv4 -p $serverport_iperf_ipv4
 echo "$title_md"
-echo "$title_md [ Working ] Restoring firewall before speed-ip4"
-$cmd_realpath load $file_installed-speed-ip4 &> /dev/null
+# echo "$title_md [ Working ] Restoring firewall before speed-ip4"
+$cmd_realpath load speed-ip4 
 echo "$title_md [ Done    ] $cmd_basename speed-ip4"
 ####
 ####
@@ -5267,16 +5226,16 @@ echo "$title_md [ $first_option ]  [ test speed ipv6 with iperf ] "
 echo "$title_md $cmd_basename use or iperf or iperf3"
 $favorite_iperf_command -v | head -1 || echo "$title_md [ fail ] install iperf"
 echo "$title_md"
-echo "$title_md [ Working ] Saving firewall before speed-ip6"
-$cmd_realpath save $file_installed-speed-ip6 &> /dev/null
+# echo "$title_md [ Working ] Saving firewall before speed-ip6"
+$cmd_realpath save speed-ip6 
 $cmd_realpath temporal-addwitelist6 $serverip_iperf_ipv6
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv6 to $serverip_iperf_ipv4 ]"
 $favorite_iperf_command -6 -t 4 -P 1 -c $serverip_iperf_ipv6 -p $serverport_iperf_ipv6 
 echo "$title_md"
-echo "$title_md [ Working ] Restoring firewall before speed-ip6"
-$cmd_realpath load $file_installed-speed-ip6 &> /dev/null
+# echo "$title_md [ Working ] Restoring firewall before speed-ip6"
+$cmd_realpath load speed-ip6 
 echo "$title_md [ Done    ] $cmd_basename speed-ip6"
 ####
 ####
@@ -5335,12 +5294,11 @@ echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
-$cmd_realpath temporal-addwitelist4 $2
 $cmd_realpath save nmap-tcp 
+$cmd_realpath temporal-addwitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sT $2
 $cmd_realpath load nmap-tcp 
-echo "$title_md [ ok ] [ Reloaded firewall rules after run nmap ]"
 exit; fi
 ####
 ####
@@ -5357,12 +5315,11 @@ echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
+$cmd_realpath save nmap-syn
 $cmd_realpath temporal-addwitelist4 $2
-$cmd_realpath save nmap-tcp 
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sF $2
-$cmd_realpath load nmap-tcp
-echo "$title_md [ ok ] [ Reloaded firewall rules after run nmap ]"
+$cmd_realpath load nmap-syn
 echo 
 exit; fi
 ####
@@ -5380,12 +5337,11 @@ echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
+$cmd_realpath save nmap-fin 
 $cmd_realpath temporal-addwitelist4 $2
-$cmd_realpath save nmap-tcp 
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sT $2
-$cmd_realpath load nmap-tcp
-echo "$title_md [ ok ] [ Reloaded firewall rules after run nmap ]"
+$cmd_realpath load nmap-fin
 echo 
 exit; fi
 ####
@@ -5403,12 +5359,11 @@ echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
+$cmd_realpath save nmap-udp
 $cmd_realpath temporal-addwitelist4 $2
-$cmd_realpath save nmap-tcp 
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sU $2
-$cmd_realpath load nmap-tcp
-echo "$title_md [ ok ] [ Reloaded firewall rules after run nmap ]"
+$cmd_realpath load nmap-udp
 echo 
 exit; fi
 ####
@@ -5426,12 +5381,11 @@ echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
+$cmd_realpath save nmap-ping
 $cmd_realpath temporal-addwitelist4 $2
-$cmd_realpath save nmap-tcp 
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sn $2
-$cmd_realpath load nmap-tcp 
-echo "$title_md [ ok ] [ Reloaded firewall rules after run nmap ]"
+$cmd_realpath load nmap-ping
 exit; fi
 ####
 ####
