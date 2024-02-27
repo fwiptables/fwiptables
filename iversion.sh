@@ -438,7 +438,7 @@ show_actual_date="$($command_date| $command_sed -e s/\ /\-/g -)"
 ####
 #### prepare directory data $HOME OR /root
 ####
-if [ "$HOME" == "$NULL" ] ; then default_root_home="/root";
+if [ "$HOME" == "$NULL" ] ; then default_root_home="/root" 
 else default_root_home="$HOME"; fi
 ####
 #### set directory data cache
@@ -446,8 +446,9 @@ else default_root_home="$HOME"; fi
 directory_data_necesary="$default_root_home/.config/$file_installed"
 directory_cache_run="/run/$file_installed"
 directory_cache_home="$default_root_home/.cache/$file_installed"
-if [ -d "/run" ]; then mkdir -p $directory_cache_run &> /dev/null ; fi
-if [ -d "$default_root_home" ]; then mkdir -p $directory_cache_home &> /dev/null ; fi
+#### if [ -d "/run" ]; then mkdir -p $directory_cache_run &> /dev/null ; fi
+if [ ! -d "$directory_cache_home" ]; 
+then mkdir -p $directory_cache_home &> /dev/null ; fi
 ####
 ####
 default_directory_template="$directory_data_necesary/fwiptables-template"
@@ -2796,16 +2797,16 @@ echo "$text_md expert-show-newversion . Show version fwiptables-cmd stable/unsta
 echo "$text_md expert-show-treeconf. show tree with the configurations folder"
 echo "$text_md expert-show-clientproxy . show proxy variables in the system stablished"
 echo "$text_md expert-conf-clientproxy . File /etc/proxy.fwiptables for proxy launched with source"
-echo "$text_md expert-compile-obash . Compile fwiptables-cmd to fwiptables-bin with obash"
-echo "$text_md expert-upgrade-stable . Upgrade from web sourceforge fwiptables-cmd with curl"
-echo "$text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables-cmd with curl"
-echo "$text_md expert-download-adblock . Download blacklist to /etc/hosts.blacklist with curl"
 echo "$text_md expert-speed-ip4 . benchmark internet speed ipv4 with 4seconds"
 echo "$text_md expert-speed-ip6 . benchmark internet speed ipv6 with 4seconds"
 echo "$text_md expert-speed-disk . benchmark disk speed with 100Mb"
 echo "$text_md expert-speed-ram . benchmark ram speed with 100Mb"
 echo "$text_md expert-speed-cpu . benchmark cpu speed with bc command aprox 5seconds"
 echo "$text_md expert-speed-glx . benchmark glx speed with mesa3D"
+echo "$text_md expert-upgrade-stable . Upgrade from web sourceforge fwiptables-cmd with curl"
+echo "$text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables-cmd with curl"
+echo "$text_md expert-upgrade-adblock . Download blacklist to /etc/hosts.blacklist with curl"
+echo "$text_md expert-compile-obash . Compile fwiptables-cmd to fwiptables-bin with obash"
 echo "$text_md expert-wpa-list . list nameconfig to list wifi config"
 echo "$text_md expert-wpa-new . new nameconfig to create wifi config"
 echo "$text_md expert-wpa-modify . one nameconfig to modify wifi config"
@@ -4485,11 +4486,11 @@ $directory_installed/$file_installed config-regen &> /dev/null
 ####   spanish: Muestra el estatus final desde el instalador
 ####
 ####
-echo "$title_md [ info ] [ The  config   dir: ] [ $directory_data_necesary ]"
-echo "$title_md [ info ] [ The  cache    dir: ] [ $directory_cache  ]"
-echo "$title_md [ info ] [ The Command shell: ] [ $directory_installed/$file_installed ]"
-echo "$title_md [ _ok_ ] [ Update preferences to config file ]"
-echo "$title_md [ _ok_ ] Now. Ready to run $directory_installed/$file_installed"
+echo "$title_md [ ok ] [ The Command shell: ] [ $directory_installed/$file_installed ]"
+echo "$title_md [ ok ] [ The  config   dir: ] [ $directory_data_necesary ]"
+echo "$title_md [ ok ] [ The  cache    dir: ] [ $directory_cache  ]"
+echo "$title_md [ ok ] [ Preferences: ] [ $file_default_preferences ]"
+echo "$title_md [ ok ] Now. Ready to run $file_installed"
 exit; fi
 ####
 ####
@@ -4730,12 +4731,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-compile-obash:
-##########    english: expert-download-adblock: compile with obash      ##########
-##########    spanish: expert-download-adblock: compila with obash      ##########
-#### :rutina-inicial-expert-download-adblock:
+##########    english: expert-upgrade-adblock: compile with obash      ##########
+##########    spanish: expert-upgrade-adblock: compila with obash      ##########
+#### :rutina-inicial-expert-upgrade-adblock:
 ####
 ####
-if   [ "$first_option" == "expert-download-adblock" ]; then 
+if   [ "$first_option" == "expert-upgrade-adblock" ]; then 
 echo "$title_md [ $first_option ]  [ get: blacklist files / adblock files / hosts deny files ] || ||"
 blacklist_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
 blacklist_mvps="http://winhelp2002.mvps.org/hosts.txt"
@@ -4744,20 +4745,20 @@ blacklist_stevenblack="https://raw.githubusercontent.com/StevenBlack/hosts/maste
 ####
 ####
 echo "$title_md [ Waiting a moment ] [ downloading blacklist to /etc/hosts.blacklist ] "
-echo "$title_md [ downloading hosts fademind to /etc/hosts.blacklist_fademind ]"
+echo "$title_md [ Step 1/4 ] [ downloading hosts fademind to /etc/hosts.blacklist_fademind ]"
 $command_curl $blacklist_fademind -s -L -o /etc/hosts.blacklist_fademind
-echo "$title_md [ downloading hosts mvps to /etc/hosts.blacklist_mvps ]"
+echo "$title_md [ Step 2/4 ] [ downloading hosts mvps to /etc/hosts.blacklist_mvps ]"
 $command_curl $blacklist_mvps -s -L -o /etc/hosts.blacklist_mvps
-echo "$title_md [ downloading hosts adaway to /etc/hosts.blacklist_adaway ]"
+echo "$title_md [ Step 3/4 ] [ downloading hosts adaway to /etc/hosts.blacklist_adaway ]"
 $command_curl $blacklist_adaway -s -L -o /etc/hosts.blacklist_adaway
-echo "$title_md [ downloading hosts stevenblack to /etc/hosts.blacklist_stevenblack ]"
+echo "$title_md [ Step 4/4 ] [ downloading hosts stevenblack to /etc/hosts.blacklist_stevenblack ]"
 $command_curl $blacklist_stevenblack -s -L -o /etc/hosts.blacklist_stevenblack
 ####
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-expert-download-adblock:
+#### :rutina-final-expert-upgrade-adblock:
 ##########    english: expert-radio-online: url from one radio mp3      ##########
 ##########    spanish: expert-radio-online: url de una radio en mp3     ##########
 #### :rutina-inicial-expert-radio-online:
