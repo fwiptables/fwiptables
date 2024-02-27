@@ -4780,60 +4780,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-upgrade-adblock:
-##########    english: expert-radio-online: url from one radio mp3      ##########
-##########    spanish: expert-radio-online: url de una radio en mp3     ##########
-#### :rutina-inicial-expert-radio-online:
-####
-####
-if   [ "$first_option" == "expert-radio-online" ] ; then 
-echo "$header_ok [ $first_option ]  [ Listen radio online with a one link ]"
-echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
-####
-####
-link_radio_rockfm="http://flucast-b02-06.flumotion.com/cope/rockfm.mp3" 
-link_radio_kissfm="http://kissfm.kissfmradio.cires21.com/kissfm.mp3" 
-link_radio_cope="https://flucast24-h-cloud.flumotion.com/cope/net1.mp3" 
-link_radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3"
-link_radio_dial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3"
-link_radio_ondacero="https://livefastly-webs.ondacero.es/ondacero/audio/master.m3u8"
-link_radio_rne="https://rtvelivestreamv3.akamaized.net/rtvesec/rne_r1_main.m3u8"
-link_radio_clasica="https://rtvelivestreamv3.akamaized.net/rtvesec/rne_r2_main.m3u8"
-link_radio_exterior="http://radioexterior.rtveradio.cires21.com/radioexterior/mp3/icecast.audio"
-link_radio_marca="https://22333.live.streamtheworld.com/RADIOMARCA_NACIONAL.mp3"
-####
-####
-case "$second_option" in
-"$NULL")
-echo " [ info ] [ launch: $cmd_realpath expert-radio-online link-mp3 ]"
-echo " [ info ] [ launch: $cmd_realpath expert-radio-online show ]"
-exit ;;
-"show")
-echo " [ info ] rockfm,cope,kissfm,cadena100,dial,ondacero,rne,clasica,exterior,marca"
-exit ;;
-"rockfm") emisora="$link_radio_rockfm" ;;
-"cope") emisora="$link_radio_cope" ;;
-"kissfm") emisora="$link_radio_kissfm" ;;
-"cadena100") emisora="$link_radio_cadena100" ;;
-"dial") emisora="$link_radio_dial" ;;
-"ondacero") emisora="$link_radio_ondacero" ;;
-"rne") emisora="$link_radio_rne" ;;
-"clasica") emisora="$link_radio_clasica" ;;
-"exterior") emisora="$link_radio_exterior" ;;
-"marca") emisora="$link_radio_marca" ;;
-*) emisora="$2" ;;
-esac
-####
-####
-echo "$duo_md [ info ] [ $favorite_text_music ] [ $emisora ]"
-echo 
-echo
-if [ "$($command_logname)" != "$NULL" ] ; then
-$($command_sudo -u $($command_logname) $favorite_text_music "$emisora") ; exit
-else $favorite_text_music $emisora ; exit ; fi
-exit; fi
-####
-####
-#### :rutina-final-expert-radio-online:
 ##########    english: info: info of first option            ##########
 ##########    spanish: info: info of primera opcion          ##########
 #### :rutina-inicial-info:
@@ -5244,12 +5190,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-config-spa:
-##########    english: temporal-whitelist4: whitelist temporally ipv4    ##########
-##########    spanish: temporal-whitelist4: lista blanca temporal ipv4   ##########
+##########    english: temporal-addwitelist4: whitelist temporally ipv4    ##########
+##########    spanish: temporal-addwitelist4: lista blanca temporal ipv4   ##########
 #### :rutina-inicial-temporal-wihtelist4
 ####
 ####
-if [ "$first_option" == "temporal-whitelist4" ]; then
+if [ "$first_option" == "temporal-addwitelist4" ]; then
 if [ "$2" == "$NULL" ]; then echo "$title_md [ fail ] not host or net ]"; exit ; fi
 echo "$title_md [ Working ] ADD temporally ipv4 rules whitelist: ACCEPT to $2"
 $command_iptables_nft    -t filter -I INPUT -s $2  \
@@ -5264,12 +5210,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-temporal-wihtelist4
-##########    english: temporal-whitelist6: whitelist temporally ipv6    ##########
-##########    spanish: temporal-whitelist6: lista blanca temporal ipv6   ##########
+##########    english: temporal-addwitelist6: whitelist temporally ipv6    ##########
+##########    spanish: temporal-addwitelist6: lista blanca temporal ipv6   ##########
 #### :rutina-inicial-temporal-wihtelist6
 ####
 ####
-if [ "$first_option" == "temporal-whitelist6" ]; then
+if [ "$first_option" == "temporal-addwitelist6" ]; then
 if [ "$2" == "$NULL" ]; then echo "$title_md [ fail ] not host or net ]"; exit ; fi
 echo "$title_md [ Working ] ADD temporally ipv6 rules whitelist: ACCEPT to $2"
 $command_ip6tables_nft    -t filter -I INPUT -s $2  \
@@ -5296,7 +5242,7 @@ $favorite_iperf_command -v | head -1 || echo "$title_md [ fail ] install iperf"
 echo "$title_md"
 echo "$title_md [ Working ] Saving firewall before speed-ip4"
 $cmd_realpath save $file_installed-speed-ip4 &> /dev/null
-$cmd_realpath temporal-whitelist4 $serverip_iperf_ipv4
+$cmd_realpath temporal-addwitelist4 $serverip_iperf_ipv4
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv4 to $serverip_iperf_ipv4 ]"
@@ -5323,7 +5269,7 @@ $favorite_iperf_command -v | head -1 || echo "$title_md [ fail ] install iperf"
 echo "$title_md"
 echo "$title_md [ Working ] Saving firewall before speed-ip6"
 $cmd_realpath save $file_installed-speed-ip6 &> /dev/null
-$cmd_realpath temporal-whitelist6 $serverip_iperf_ipv6
+$cmd_realpath temporal-addwitelist6 $serverip_iperf_ipv6
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv6 to $serverip_iperf_ipv4 ]"
@@ -5389,14 +5335,11 @@ echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
-####
-$cmd_realpath stop
-####
-echo "$title_md [ Working ] [ Doing nmap to $2]"
+$cmd_realpath temporal-addwitelist4 $2
+$cmd_realpath save nmap-tcp 
+echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sT $2
-####
-$cmd_realpath continue
-####
+$cmd_realpath load nmap-tcp 
 echo "$title_md [ ok ] [ Reloaded firewall rules after run nmap ]"
 exit; fi
 ####
@@ -5414,13 +5357,11 @@ echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
-####
-$cmd_realpath stop
-####
+$cmd_realpath temporal-addwitelist4 $2
+$cmd_realpath save nmap-tcp 
+echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sF $2
-####
-$cmd_realpath continue
-####
+$cmd_realpath load nmap-tcp
 echo "$title_md [ ok ] [ Reloaded firewall rules after run nmap ]"
 echo 
 exit; fi
@@ -5439,13 +5380,11 @@ echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
-####
-$cmd_realpath stop
-####
-$command_nmap -sF $2
-####
-$cmd_realpath continue
-####
+$cmd_realpath temporal-addwitelist4 $2
+$cmd_realpath save nmap-tcp 
+echo "$title_md [ Working ] [ Doing nmap to $2 ]"
+$command_nmap -sT $2
+$cmd_realpath load nmap-tcp
 echo "$title_md [ ok ] [ Reloaded firewall rules after run nmap ]"
 echo 
 exit; fi
@@ -5464,13 +5403,11 @@ echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
-####
-$cmd_realpath stop
-####
+$cmd_realpath temporal-addwitelist4 $2
+$cmd_realpath save nmap-tcp 
+echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sU $2
-####
-$cmd_realpath continue
-####
+$cmd_realpath load nmap-tcp
 echo "$title_md [ ok ] [ Reloaded firewall rules after run nmap ]"
 echo 
 exit; fi
@@ -5489,13 +5426,11 @@ echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
-####
-$cmd_realpath stop
-####
+$cmd_realpath temporal-addwitelist4 $2
+$cmd_realpath save nmap-tcp 
+echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sn $2
-####
-$cmd_realpath continue
-####
+$cmd_realpath load nmap-tcp 
 echo "$title_md [ ok ] [ Reloaded firewall rules after run nmap ]"
 exit; fi
 ####
