@@ -99,13 +99,13 @@ echo ; fi
 #### configs for fwiptables
 ####
 ####
-cmd_realpath="$(realpath $0)"    # its full routename
-cmd_basename="$(basename $0)"    # its only filename
-cmd_version="12-03"              # its version
-file_installed="fwiptables"      # its filename installed
-directory_installed="/usr/bin"   # its directory installed
-cmd_developer="Francisco Garcia" # developer actual Autor
-cmd_contact="fwiptables@gmx.com" # developer contact Autor
+cmd_realpath="$(realpath $0)"           # its full routename
+cmd_basename="$(basename $0)"           # its only filename
+cmd_version="12-04"                     # its version
+file_installed="fwiptables"             # its filename installed
+directory_installed="/usr/bin"          # its directory installed
+cmd_developer="Francisco Garcia"        # developer actual Autor
+cmd_contact="fwiptables@gmx.com"        # developer contact Autor
 cmd_shortdescription="fwiptables, FireWall With iptables"              # its name description short
 cmd_longdescription="fwiptables, One Mini Script in one-file wizard"   # its name description long
 cmd_license="GPL v2, License General Public version 2"                 # its program license
