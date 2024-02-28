@@ -4436,7 +4436,7 @@ echo "$title_md [ $first_option ] \
 ####
 ####
 ####  english: copy the file to temporal folder and install
-####  spanish: copia el archivo a carpeta temporal y instala
+####  spanish: copia el archivo a carpeta final
 #### 
 #### 
 echo "$title_md [ info ] [ $file_installed installing.. ]"
@@ -4459,7 +4459,6 @@ $directory_installed/$file_installed config-regen &> /dev/null
 echo "$title_md [ ok ] [ The Command shell: ] [ $directory_installed/$file_installed ]"
 echo "$title_md [ ok ] [ The  config   dir: ] [ $directory_data_necesary ]"
 echo "$title_md [ ok ] [ The  cache    dir: ] [ $directory_cache  ]"
-echo "$title_md [ ok ] [ Preferences: $file_default_preferences ]"
 echo "$title_md [ ok ] Now. Ready to run $file_installed"
 exit; fi
 ####
