@@ -1705,7 +1705,7 @@ echo "$title_md [ several examples *without optional otuput* ]   "
 echo "$text_md"
 echo "$text_md    $cmd_realpath names                    | \
 List firewall saved  "
-echo "$text_md    $cmd_realpath all-custom             | \
+echo "$text_md    $cmd_realpath all-custom               | \
 List configs saved                         "
 echo "$text_md    $cmd_realpath speed-ip4                | \
 get info about speed with internet ipv4    "
@@ -1717,8 +1717,6 @@ echo "$text_md    $cmd_realpath autolog                  | \
 List last optiosn with $cmd_realpath           "
 echo "$text_md    $cmd_realpath depends                  | \
 depends to $cmd_realpath                       "
-echo "$text_md    $cmd_realpath about                    | \
-about from $cmd_realpath                     "
 echo "$text_md"
 echo "$title_md [ several examples *with optional output* ]      "
 echo "$text_md"
@@ -2450,7 +2448,7 @@ echo "$title_md  [ options-easy ] easy                                          
 echo "$text_md preferences-read preferences-modify preferences-regen                "
 echo "$text_md preferences-example list-options examples-options info-options       "
 echo "$text_md info date intro filelog autolog ip4 ip6 speed-ip4 speed-ip6          "
-echo "$text_md free sockets nodes geoip ip-forward version code notes               "
+echo "$text_md free sockets nodes geoip ip-forward version notes code               "
 echo "$text_md treeconf depends commands variables license uninstall install        "
 echo "$title_md  [ options-expert ] expert                                          "
 echo "$title_md  ||| Example: fwiptables-cmd -gui-zenity info |||                   "
@@ -2728,7 +2726,6 @@ echo "$text_md nodes . show computers connected to lan"
 echo "$text_md date . update the time and date from internet"
 echo "$text_md free . freedom innecesary ram"
 echo "$text_md version . show version and path"
-echo "$text_md about . show about and several details"
 echo "$text_md notes . several notes for internet"
 echo "$text_md ip-forward . list or active or desactive forward variables"
 echo "$text_md depends . principal dependences"
@@ -6042,7 +6039,6 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0710  "$text_md sockets" \
 0711  "$text_md notes" \
 0712  "$text_md license" \
-0713  "$text_md about" \
 0715  "$text_md depends" \
 0716  "$text_md info" \
 0717  "$text_md version" \
@@ -6213,7 +6209,7 @@ $cmd_realpath del-custom $archivo ;;
 0710) clear ; $cmd_realpath cli sockets ;;
 0711) clear ; $cmd_realpath cli notes ;;
 0712) clear ; $cmd_realpath cli license ;;
-0713) clear ; $cmd_realpath cli about ;;
+### 0713) clear ; $cmd_realpath cli about ;;
 ### 0714) clear ; $cmd_realpath cli examples ;;
 0715) clear ; $cmd_realpath cli depends ;;
 0716) clear ; $cmd_realpath cli info ;;
@@ -6673,7 +6669,7 @@ gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
 list-options|info-options|expert|\
 filelog|autolog|ip4|ip6|notes|speed-ip4|speed-ip6|\
-sockets|nodes|date|free|version|about|treeconf|\
+sockets|nodes|date|free|version|treeconf|\
 depends|commands|variables|license|examples|intro"
 ####
 ####
@@ -6710,7 +6706,6 @@ date) $cmd_realpath -gui-zenity date ;;
 free) $cmd_realpath -gui-zenity free ;;
 version) $cmd_realpath -gui-zenity version ;;
 treeconf)$cmd_realpath -gui-zenity treeconf ;;
-about)$cmd_realpath -gui-zenity about ;;
 depends)$cmd_realpath -gui-zenity depends ;;
 license) $cmd_realpath -gui-zenity depends ;;
 examples)$cmd_realpath -gui-zenity examples ;;
@@ -7145,7 +7140,7 @@ echo "$title_md [ fail ] [ install zenity or yad to works with gui ]" ; fi
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
 list-options|clasic-options|info-options|expert|download|intro|\
-ip4|ip6|speed-ip4|speed-ip6|sockets|license|notes|about|treeconf|\
+ip4|ip6|speed-ip4|speed-ip6|sockets|license|notes|treeconf|\
 examples|depends|variables|commands"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_basename_graphicalldialog \
@@ -7176,7 +7171,6 @@ speed-ip4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog speed-ip4 ;;
 speed-ip6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog speed-ip6 ;;
 sockets*)$cmd_realpath -gui-$favorite_basename_graphicalldialog sockets ;;
 treeconf*)$cmd_realpath -gui-$favorite_basename_graphicalldialog treeconf ;;
-about*)$cmd_realpath -gui-$favorite_basename_graphicalldialog about ;;
 examples*)$cmd_realpath -gui-$favorite_basename_graphicalldialog examples ;;
 depends*)$cmd_realpath -gui-$favorite_basename_graphicalldialog depends ;;
 notes*)$cmd_realpath -gui-$favorite_basename_graphicalldialog notes ;;
