@@ -390,6 +390,7 @@ command_ss="$(command -v ss)"
 command_sysctl="$(command -v sysctl)"
 command_tcpdump="$(command -v tcpdump)"
 command_tee="$(command -v tee)"
+command_tree="$(command -v tree)"
 command_timeout="$(command -v timeout)"
 command_torify="$(command -v torify)"
 command_traceroute="$(command -v traceroute)"
@@ -1783,17 +1784,19 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-show-weather:
-##########    english: expert-show-treeconf: tree configs in fwiptables     ##########
-##########    spanish: expert-show-treeconf: arbol de conf en fwiptables    ##########
-#### :rutina-inicial-expert-show-treeconf:
+##########    english: treeconf: tree configs in fwiptables     ##########
+##########    spanish: treeconf: arbol de conf en fwiptables    ##########
+#### :rutina-inicial-treeconf:
 ####
 ####
-if   [ "$first_option" == "expert-show-treeconf" ]; then 
+if   [ "$first_option" == "treeconf" ]; then 
+if   [ "$command_tree" == "$NULL" ] ; then 
+echo "$title_md [ fail ] please install tree command" ; fi
 $command_tree $directory_data_necesary
 exit; fi
 ####
 ####
-#### :rutina-final-expert-show-treeconf:
+#### :rutina-final-treeconf:
 ##########    english: notes: notes to configure iptables      ##########
 ##########    spanish: notes: notas para configurar iptables   ##########
 #### :rutina-inicial-notes:
@@ -2448,7 +2451,7 @@ echo "$text_md preferences-read preferences-modify preferences-regen            
 echo "$text_md preferences-example list-options examples-options info-options       "
 echo "$text_md info date intro filelog autolog ip4 ip6 speed-ip4 speed-ip6          "
 echo "$text_md free sockets nodes geoip ip-forward version code notes               "
-echo "$text_md depends commands variables license uninstall install                 "
+echo "$text_md treeconf depends commands variables license uninstall install        "
 echo "$title_md  [ options-expert ] expert                                          "
 echo "$title_md  ||| Example: fwiptables-cmd -gui-zenity info |||                   "
 echo "$title_md  ||| GPL v2, License General Public version 2 |||                   "
@@ -2757,7 +2760,6 @@ echo "$text_md expert-show-geoip . show location for ip o for host with geoip"
 echo "$text_md expert-show-webcert . show web certificate ssl from one web with ssl-cert"
 echo "$text_md expert-show-version . Show version fwiptables-cmd stable with curl"
 echo "$text_md expert-show-newversion . Show version fwiptables-cmd stable/unstable with curl"
-echo "$text_md expert-show-treeconf. show tree with the configurations folder"
 echo "$text_md expert-show-clientproxy . show proxy variables in the system stablished"
 echo "$text_md expert-conf-clientproxy . File /etc/proxy.fwiptables for proxy launched with source"
 echo "$text_md expert-speed-ip4 . benchmark internet speed ipv4 with 4seconds"
@@ -6051,11 +6053,12 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0722  "$text_md date" \
 0723  "$text_md free" \
 0724  "$text_md expert" \
-0725  "$text_md commands" \
-0726  "$text_md variables" \
-0727  "$text_md intro" \
-0728  "$text_md download" \
-0729  "$text_md install" \
+0725  "$text_md treeconf" \
+0726  "$text_md commands" \
+0727  "$text_md variables" \
+0728  "$text_md intro" \
+0729  "$text_md download" \
+0730  "$text_md install" \
 3>&1 1>&2 2>&3 )"
 ################################################################################
 #### 
@@ -6223,11 +6226,12 @@ $cmd_realpath del-custom $archivo ;;
 0722) clear ; $cmd_realpath cli date ;;
 0723) clear ; $cmd_realpath cli free ;;
 0724) clear ; $cmd_realpath cli expert ;;
-0725) clear ; $cmd_realpath cli commands ;;
-0726) clear ; $cmd_realpath cli variables ;;
-0727) clear ; $cmd_realpath cli intro ;;
-0728) clear ; $cmd_realpath cli download;;
-0729) clear ; $cmd_realpath cli install;;
+0725) clear ; $cmd_realpath cli treeconf ;;
+0726) clear ; $cmd_realpath cli commands ;;
+0727) clear ; $cmd_realpath cli variables ;;
+0728) clear ; $cmd_realpath cli intro ;;
+0729) clear ; $cmd_realpath cli download;;
+0730) clear ; $cmd_realpath cli install;;
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
 clear ; exit ;;
@@ -6670,7 +6674,7 @@ gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
 list-options|info-options|expert|\
 filelog|autolog|ip4|ip6|notes|speed-ip4|speed-ip6|\
-sockets|nodes|date|free|version|about|\
+sockets|nodes|date|free|version|about|treeconf|\
 depends|commands|variables|license|examples|intro"
 ####
 ####
@@ -6706,6 +6710,7 @@ nodes) $cmd_realpath -gui-zenity nodes ;;
 date) $cmd_realpath -gui-zenity date ;;
 free) $cmd_realpath -gui-zenity free ;;
 version) $cmd_realpath -gui-zenity version ;;
+treeconf)$cmd_realpath -gui-zenity treeconf ;;
 about)$cmd_realpath -gui-zenity about ;;
 depends)$cmd_realpath -gui-zenity depends ;;
 license) $cmd_realpath -gui-zenity depends ;;
@@ -7141,7 +7146,7 @@ echo "$title_md [ fail ] [ install zenity or yad to works with gui ]" ; fi
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
 list-options|clasic-options|info-options|expert|download|intro|\
-ip4|ip6|speed-ip4|speed-ip6|sockets|license|notes|about|\
+ip4|ip6|speed-ip4|speed-ip6|sockets|license|notes|about|treeconf|\
 examples|depends|variables|commands"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_basename_graphicalldialog \
@@ -7171,6 +7176,7 @@ ip6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog ip6 ;;
 speed-ip4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog speed-ip4 ;;
 speed-ip6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog speed-ip6 ;;
 sockets*)$cmd_realpath -gui-$favorite_basename_graphicalldialog sockets ;;
+treeconf*)$cmd_realpath -gui-$favorite_basename_graphicalldialog treeconf ;;
 about*)$cmd_realpath -gui-$favorite_basename_graphicalldialog about ;;
 examples*)$cmd_realpath -gui-$favorite_basename_graphicalldialog examples ;;
 depends*)$cmd_realpath -gui-$favorite_basename_graphicalldialog depends ;;
