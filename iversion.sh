@@ -2538,6 +2538,7 @@ echo "$text_md treeconf depends commands variables license uninstall install    
 echo "$title_md  [ options-expert ] expert                                          "
 echo "$title_md  ||| Example: fwiptables-cmd gui-zenity info  |||                   "
 echo "$title_md  ||| GPL v2, License General Public version 2 |||                   "
+echo "$title_md  ||| Report bugs at $cmd_contact |||"
 exit ; fi
 ####
 ####
@@ -4392,10 +4393,10 @@ echo "$text_md for iptables with COMMAND-LINE     "
 echo "$text_md with CLI-MENU with GUI-MENU        "
 echo "$text_md with GUI-ROLL with GUI-SHELL.      "
 echo "$text_md And choose one firewall:           "
-echo "$text_md eraserules, or wizard-mini,        "
+echo "$text_md eraserules, or wizard,             "
 echo "$text_md or custom, or one system           "
 echo "$text_md firewall to choose one. Gen rules  "
-echo "$text_md with templates or wizard-full,     "
+echo "$text_md with templates or with wizard,     "
 echo "$text_md and with posibility shield ssh     "
 echo "$text_md and with added comments rules.     "
 echo "$text_md"
