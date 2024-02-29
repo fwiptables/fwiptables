@@ -394,6 +394,7 @@ command_tree="$(command -v tree)"
 command_timeout="$(command -v timeout)"
 command_torify="$(command -v torify)"
 command_traceroute="$(command -v traceroute)"
+command_tracepath="$(command -v tracepath)"
 command_tree="$(command -v tree)"
 command_txt2html="$(command -v txt2html)"
 command_uname="$(command -v uname)"
@@ -1594,6 +1595,86 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-show-resolve
+##########    english: expert-trace-ip4: traceroute with tcp and ipv4   ##########
+##########    spanish: expert-trace-ip4: traceroute con tcp y ipv4      ##########
+#### :rutina-inicial-expert-trace-ip4:
+####
+####
+if   [ "$first_option" == "expert-trace-ip4" ]; then
+echo "$title_md [ $first_option ]  [ trace ip or host with tcp ipv4 ]"
+case $command_tracepath in "$NULL")
+echo "$title_md [ fail ] [ Install tracepath command ]" ; exit ;;  esac
+if [ "$2" == "$NULL" ]; then
+echo "$title_md use: $cmd_basename $first_option host"; fi
+$cmd_basename save before-trace-ip4 
+$cmd_basename eraserules4
+echo "$duo_md [ ok ] [ tracepath -4 $2 ] "
+$command_tracepath -4 $2
+$cmd_basename load before-trace-ip4
+exit; fi
+####
+####
+#### :rutina-final-expert-trace-ip4:
+##########    english: expert-trace-ip6: traceroute with tcp and ipv4   ##########
+##########    spanish: expert-trace-ip6: traceroute con tcp y ipv4      ##########
+#### :rutina-inicial-expert-trace-ip4:
+####
+####
+if   [ "$first_option" == "expert-trace-ip6" ]; then
+echo "$title_md [ $first_option ]  [ trace ip or host with tcp ipv6 ]"
+case $command_tracepath in "$NULL")
+echo "$title_md [ fail ] [ Install tracepath command ]" ; exit ;;  esac
+if [ "$2" == "$NULL" ]; then
+echo "$title_md use: $cmd_basename $first_option host"; fi
+$cmd_basename save before-trace-ip6 
+$cmd_basename eraserules6
+echo "$duo_md [ ok ] [ tracepath -4 $2 ] "
+$command_tracepath -6 $2
+$cmd_basename load before-trace-ip6
+exit; fi
+####
+####
+#### :rutina-final-expert-trace-ip6:
+##########    english: expert-trace-icmp4: traceroute with tcp and ipv4   ##########
+##########    spanish: expert-trace-icmp4: traceroute con tcp y ipv4      ##########
+#### :rutina-inicial-expert-trace-icmp4:
+####
+####
+if   [ "$first_option" == "expert-trace-icmp4" ]; then
+echo "$title_md [ $first_option ]  [ trace ip or host with icmp ipv4 ]"
+case $command_traceroute in "$NULL")
+echo "$title_md [ fail ] [ Install traceroute command ]" ; exit ;;  esac
+if [ "$2" == "$NULL" ]; then
+echo "$title_md use: $cmd_basename $first_option host"; fi
+$cmd_basename save before-trace-icmp4 
+$cmd_basename eraserules4
+echo "$duo_md [ ok ] [ traceroute -4 $2 ] "
+$command_traceroute -4 $2
+$cmd_basename load before-trace-icmp4
+exit; fi
+####
+####
+#### :rutina-final-expert-trace-icmp4:
+##########    english: expert-trace-icmp6: traceroute with tcp and ipv4   ##########
+##########    spanish: expert-trace-icmp6: traceroute con tcp y ipv4      ##########
+#### :rutina-inicial-expert-trace-icmp6:
+####
+####
+if   [ "$first_option" == "expert-trace-icmp6" ]; then
+echo "$title_md [ $first_option ]  [ trace ip or host with icmp ipv6 ]"
+case $command_traceroute in "$NULL")
+echo "$title_md [ fail ] [ Install traceroute command ]" ; exit ;;  esac
+if [ "$2" == "$NULL" ]; then
+echo "$title_md use: $cmd_basename $first_option host"; fi
+$cmd_basename save before-trace-icmp6 
+$cmd_basename eraserules6
+echo "$duo_md [ ok ] [ traceroute -6 $2 ] "
+$command_traceroute -6 $2
+$cmd_basename load before-trace-icmp6
+exit; fi
+####
+####
+#### :rutina-final-expert-trace-icmp6:
 ##########    english: ip6 : get net info               ##########
 ##########    spanish: ip6 : da informacion de la red   ##########
 #### :rutina-inicial-ip6:
@@ -2416,10 +2497,14 @@ exit; fi
 if [ "$first_option" == "list-options" ] ; then 
 echo "$title_md $cmd_basename [optional-output] first_option [second_option]   "
 echo "$title_md  [ optional-output ] output                                         "
-echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -p|-pdf -s|-silent ]               "
-echo "$text_md [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                   "
-echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail -gui-roll-zenity ]             "
-echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]  "
+#### echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -p|-pdf -s|-silent ]               "
+#### echo "$text_md [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                   "
+#### echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail -gui-roll-zenity ]             "
+#### echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]  "
+echo "$text_md [ t|txt c|cli g|gui l|log p|pdf s|silent ]                           "
+echo "$text_md [ cli-dialog cli-whiptail gui-zenity gui-yad ]                       "
+echo "$text_md [ cli-menu-dialog cli-menu-whiptail gui-roll-zenity ]                "
+echo "$text_md [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ]      "
 echo "$title_md  [ firewall-control ] control                                       "
 echo "$text_md stop continue reset show save load names wizard-mini wizard-full     "
 echo "$text_md actual eraserules eraserules4 eraserules6 off-line all-permisive     "
@@ -2774,6 +2859,10 @@ echo "$text_md expert-nmap-udp . doing scan udp at host or range"
 echo "$text_md expert-nmap-fin . doing scan fin at host or range"
 echo "$text_md expert-nmap-syn . doing scan syn at host or range"
 echo "$text_md expert-nmap-ping . doing scan ping at host or range"
+echo "$text_md expert-trace-tcp4 . trace route tcp to host ip4"
+echo "$text_md expert-trace-tcp6 . trace route tcp to host ip6"
+echo "$text_md expert-trace-icmp4 . trace route icmp to host ip4"
+echo "$text_md expert-trace-icmp6 . trace route icmp to host ip6"
 echo "$text_md expert-wpa-scan . the list wifi on air"
 echo "$text_md expert-wpa-list . the list nameconfig over saved wifi"
 echo "$text_md expert-wpa-new . new nameconfig to create wifi config"
@@ -3104,7 +3193,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "eraserules" ]; then  
-echo "$title_md [ $first_option ] [ erase all iptables rules ] "
+echo "$title_md [ $first_option ] [ Deleted all iptables ipv4/ipv6 rules ]"
 ####
 ####
 #### english: table policy 
@@ -3152,8 +3241,6 @@ $cmd_realpath eraserules4 &> /dev/null
 $cmd_realpath eraserules6 &> /dev/null
 ####
 ####
-echo "$title_md [ info ] [ Deleting the iptables rules firewall  ]" 
-echo "$title_md [ _ok_ ] [ Firewall was erased ] [ Deleted rules ]"
 exit; fi
 ####
 ####
@@ -3164,7 +3251,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "eraserules4" ]; then  
-echo "$title_md [ $first_option ] [ erase ip4 iptables rules ] "
+echo "$title_md [ $first_option ] [ Deleted ip4 iptables rules ] "
 ####
 ####
 #### english: table policy 
@@ -3240,8 +3327,6 @@ $command_iptables_legacy -t security -P FORWARD ACCEPT &> /dev/null
 $command_iptables_legacy -t security -P OUTPUT ACCEPT &> /dev/null
 ####
 ####
-echo "$title_md [ info ] [ Deleting the iptables rules ipv4 firewall ]" 
-echo "$title_md [ _ok_ ] [ Firewall ipv4 is erased ] [ Deleted rules ]"
 exit; fi
 ####
 ####
@@ -3252,7 +3337,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "eraserules6" ]; then  
-echo "$title_md [ $first_option ] [ erase ip6 iptables rules ] "
+echo "$title_md [ $first_option ] [ Deleted ip6 iptables rules ] "
 ####
 ####
 #### english: table policy 
@@ -3326,8 +3411,6 @@ $command_ip6tables_legacy -t security -P FORWARD ACCEPT &> /dev/null
 $command_ip6tables_legacy -t security -P OUTPUT ACCEPT &> /dev/null
 ####
 ####
-echo "$title_md [ info ] [ Deleting the iptables rules ipv6 firewall ]" 
-echo "$title_md [ _ok_ ] [ Firewall ipv6 is erased ] [ Deleted rules ]"
 exit; fi
 ####
 ####
@@ -5145,7 +5228,7 @@ echo "$title_md $cmd_basename use or iperf or iperf3"
 $favorite_iperf_command -v | head -1 || echo "$title_md [ fail ] install iperf"
 echo "$title_md"
 # echo "$title_md [ Working ] Saving firewall before speed-ip4"
-$cmd_realpath save speed-ip4
+$cmd_realpath save before-speed-ip4
 $cmd_realpath temporal-addwitelist4 $serverip_iperf_ipv4
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
@@ -5153,8 +5236,8 @@ echo "$title_md [ Working ] Conecting in ipv4 to $serverip_iperf_ipv4 ]"
 $favorite_iperf_command -4 -t 4 -c $serverip_iperf_ipv4 -p $serverport_iperf_ipv4
 echo "$title_md"
 echo "$title_md [ Working ] [ Restoring firewall ]"
-$cmd_realpath load speed-ip4 
-echo "$title_md [ Done    ] $cmd_basename speed-ip4"
+$cmd_realpath load before-speed-ip4 
+echo "$title_md [ Done ] $cmd_basename speed-ip4"
 ####
 ####
 exit; fi
@@ -5172,7 +5255,7 @@ echo "$title_md $cmd_basename use or iperf or iperf3"
 $favorite_iperf_command -v | head -1 || echo "$title_md [ fail ] install iperf"
 echo "$title_md"
 # echo "$title_md [ Working ] Saving firewall before speed-ip6"
-$cmd_realpath save speed-ip6 
+$cmd_realpath save before-speed-ip6 
 $cmd_realpath temporal-addwitelist6 $serverip_iperf_ipv6
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
@@ -5180,8 +5263,8 @@ echo "$title_md [ Working ] Conecting in ipv6 to $serverip_iperf_ipv4 ]"
 $favorite_iperf_command -6 -t 4 -P 1 -c $serverip_iperf_ipv6 -p $serverport_iperf_ipv6 
 echo "$title_md"
 echo "$title_md [ Working ] [ Restoring firewall ]"
-$cmd_realpath load speed-ip6 
-echo "$title_md [ Done    ] $cmd_basename speed-ip6"
+$cmd_realpath load before-speed-ip6 
+echo "$title_md [ Done ] $cmd_basename speed-ip6"
 ####
 ####
 exit; fi
@@ -5239,11 +5322,11 @@ echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
-$cmd_realpath save nmap-tcp 
+$cmd_realpath save before-nmap-tcp 
 $cmd_realpath temporal-addwitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sT $2
-$cmd_realpath load nmap-tcp 
+$cmd_realpath load before-nmap-tcp 
 exit; fi
 ####
 ####
@@ -5260,11 +5343,11 @@ echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
-$cmd_realpath save nmap-syn
+$cmd_realpath save before-nmap-syn
 $cmd_realpath temporal-addwitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sF $2
-$cmd_realpath load nmap-syn
+$cmd_realpath load before-nmap-syn
 echo 
 exit; fi
 ####
@@ -5282,11 +5365,11 @@ echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
-$cmd_realpath save nmap-fin 
+$cmd_realpath save before-nmap-fin 
 $cmd_realpath temporal-addwitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sT $2
-$cmd_realpath load nmap-fin
+$cmd_realpath load before-nmap-fin
 echo 
 exit; fi
 ####
@@ -5304,11 +5387,11 @@ echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
-$cmd_realpath save nmap-udp
+$cmd_realpath save before-nmap-udp
 $cmd_realpath temporal-addwitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sU $2
-$cmd_realpath load nmap-udp
+$cmd_realpath load before-nmap-udp
 echo 
 exit; fi
 ####
@@ -5326,11 +5409,11 @@ echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md [ info ] [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
-$cmd_realpath save nmap-ping
+$cmd_realpath save before-nmap-ping
 $cmd_realpath temporal-addwitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sn $2
-$cmd_realpath load nmap-ping
+$cmd_realpath load before-nmap-ping
 exit; fi
 ####
 ####
