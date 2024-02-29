@@ -1595,37 +1595,37 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-show-resolve
-##########    english: expert-trace-ip4: traceroute with tcp and ipv4   ##########
-##########    spanish: expert-trace-ip4: traceroute con tcp y ipv4      ##########
-#### :rutina-inicial-expert-trace-ip4:
+##########    english: expert-trace-tcp4: traceroute with tcp and ipv4   ##########
+##########    spanish: expert-trace-tcp4: traceroute con tcp y ipv4      ##########
+#### :rutina-inicial-expert-trace-tcp4:
 ####
 ####
-if   [ "$first_option" == "expert-trace-ip4" ]; then
+if   [ "$first_option" == "expert-trace-tcp4" ]; then
 echo "$title_md [ $first_option ]  [ trace ip or host with tcp ipv4 ]"
 case $command_tracepath in "$NULL")
 echo "$title_md [ fail ] [ Install tracepath command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$title_md use: $cmd_basename $first_option host"; fi
-$cmd_basename save before-trace-ip4 
+echo "$title_md use: $cmd_basename $first_option host"; exit; fi
+$cmd_basename save before-trace-tcp4 
 $cmd_basename eraserules4
 echo "$duo_md [ ok ] [ tracepath -4 $2 ] "
 $command_tracepath -4 $2
-$cmd_basename load before-trace-ip4
+$cmd_basename load before-trace-tcp4
 exit; fi
 ####
 ####
-#### :rutina-final-expert-trace-ip4:
-##########    english: expert-trace-ip6: traceroute with tcp and ipv4   ##########
-##########    spanish: expert-trace-ip6: traceroute con tcp y ipv4      ##########
-#### :rutina-inicial-expert-trace-ip4:
+#### :rutina-final-expert-trace-tcp4:
+##########    english: expert-trace-tcp6: traceroute with tcp and ipv4   ##########
+##########    spanish: expert-trace-tcp6: traceroute con tcp y ipv4      ##########
+#### :rutina-inicial-expert-trace-tcp6:
 ####
 ####
-if   [ "$first_option" == "expert-trace-ip6" ]; then
+if   [ "$first_option" == "expert-trace-tcp6" ]; then
 echo "$title_md [ $first_option ]  [ trace ip or host with tcp ipv6 ]"
 case $command_tracepath in "$NULL")
 echo "$title_md [ fail ] [ Install tracepath command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$title_md use: $cmd_basename $first_option host"; fi
+echo "$title_md use: $cmd_basename $first_option host"; exit; fi
 $cmd_basename save before-trace-ip6 
 $cmd_basename eraserules6
 echo "$duo_md [ ok ] [ tracepath -4 $2 ] "
@@ -1634,7 +1634,7 @@ $cmd_basename load before-trace-ip6
 exit; fi
 ####
 ####
-#### :rutina-final-expert-trace-ip6:
+#### :rutina-final-expert-trace-tcp6:
 ##########    english: expert-trace-icmp4: traceroute with tcp and ipv4   ##########
 ##########    spanish: expert-trace-icmp4: traceroute con tcp y ipv4      ##########
 #### :rutina-inicial-expert-trace-icmp4:
@@ -1645,7 +1645,7 @@ echo "$title_md [ $first_option ]  [ trace ip or host with icmp ipv4 ]"
 case $command_traceroute in "$NULL")
 echo "$title_md [ fail ] [ Install traceroute command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$title_md use: $cmd_basename $first_option host"; fi
+echo "$title_md use: $cmd_basename $first_option host"; exit ; fi
 $cmd_basename save before-trace-icmp4 
 $cmd_basename eraserules4
 echo "$duo_md [ ok ] [ traceroute -4 $2 ] "
@@ -1665,7 +1665,7 @@ echo "$title_md [ $first_option ]  [ trace ip or host with icmp ipv6 ]"
 case $command_traceroute in "$NULL")
 echo "$title_md [ fail ] [ Install traceroute command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$title_md use: $cmd_basename $first_option host"; fi
+echo "$title_md use: $cmd_basename $first_option host"; exit ; fi
 $cmd_basename save before-trace-icmp6 
 $cmd_basename eraserules6
 echo "$duo_md [ ok ] [ traceroute -6 $2 ] "
