@@ -2536,7 +2536,7 @@ echo "$text_md info date intro filelog autolog ip4 ip6 speed-ip4 speed-ip6      
 echo "$text_md free sockets nodes geoip ip-forward version notes code               "
 echo "$text_md treeconf depends commands variables license uninstall install        "
 echo "$title_md  [ options-expert ] expert                                          "
-echo "$title_md  ||| Example: fwiptables-cmd -gui-zenity info |||                   "
+echo "$title_md  ||| Example: fwiptables-cmd gui-zenity info  |||                   "
 echo "$title_md  ||| GPL v2, License General Public version 2 |||                   "
 exit ; fi
 ####
