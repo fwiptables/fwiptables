@@ -4964,6 +4964,7 @@ if [ "second_option" == "$NULL" ]; then
 $cmd_realpath names ; echo "$text_md [ info ] \
 [ usage: $cmd_realpath load fw-to-load ] \
 [ See: $cmd_realpath names ]" ; exit ; fi
+echo "$title_md [ info ] [ loading firewall control ]"
 ####
 ####
 if [ -f $default_directory_control/$second_option-nft-ipv4 ] || \
@@ -4981,7 +4982,8 @@ cat $default_directory_control/$second_option-nft-ipv4 |  $command_iptables_nft-
 cat $default_directory_control/$second_option-legacy-ipv4 | $command_iptables_legacy-restore  
 cat $default_directory_control/$second_option-nft-ipv6 | $command_ip6tables_nft-restore       
 cat $default_directory_control/$second_option-legacy-ipv6 | $command_ip6tables_legacy-restore 
-echo "$title_md [ _ok_ ] [ firewall loaded ] [ name: $second_option ]"
+#### echo "$title_md [ _ok_ ] [ firewall loaded ] [ name: $second_option ]"
+echo "$title_md [ _ok_ ] [ Launched: firewall ] [ Type: control ] [ Name: $second_option ]"
 ####
 ####
 else
@@ -7287,10 +7289,10 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "load-custom" ]; then 
-echo "$title_md [ info ] [ loading firewall load-custom ] \
-[ $default_directory_custom/$second_option ]" ;
+echo "$title_md [ info ] [ loading firewall custom ]"
+#### [ $default_directory_custom/$second_option ] 
 launch_rules_firewall="yes" ;
-type_firewall="customfw" ;
+type_firewall="wallcustom" ;
 name_firewall="$second_option" ;
 ####
 ####
@@ -7369,7 +7371,7 @@ fi
 if [ "$first_option" == "shield-ssh" ]; then
 echo "$title_md [ info ] [ loading firewall shield-ssh ]" ;
 launch_rules_firewall="yes" ;
-type_firewall="systemfw"    ; 
+type_firewall="wallsystem"    ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -7467,7 +7469,7 @@ fi
 if [ "$first_option" == "client-basic" ]; then
 echo "$title_md [ info ] [ loading firewall client-basic ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -7566,7 +7568,7 @@ fi
 if [ "$first_option" == "client-web" ]; then
 echo "$title_md [ info ] [ loading firewall client-web ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -7663,7 +7665,7 @@ fi
 if [ "$first_option" == "client-git" ]; then
 echo "$title_md [ info ] [ loading firewall client-git ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -7760,7 +7762,7 @@ fi
 if [ "$first_option" == "client-ipp" ]; then
 echo "$title_md [ info ] [ loading firewall client-ipp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -7857,7 +7859,7 @@ fi
 if [ "$first_option" == "client-irc" ]; then
 echo "$title_md [ info ] [ loading firewall client-irc ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -8014,7 +8016,7 @@ fi
 if [ "$first_option" == "client-vnc" ]; then
 echo "$title_md [ info ] [ loading firewall client-vnc ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -8112,7 +8114,7 @@ fi
 if [ "$first_option" == "client-torrent" ]; then
 echo "$title_md [ info ] [ loading firewall client-torrent ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -8210,7 +8212,7 @@ fi
 if [ "$first_option" == "client-vpn" ]; then
 echo "$title_md [ info ] [ loading firewall client-vpn ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ; 
+type_firewall="wallsystem" ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -8308,7 +8310,7 @@ fi
 if [ "$first_option" == "client-tor" ]; then
 echo "$title_md [ info ] [ loading firewall client-tor ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -8406,7 +8408,7 @@ fi
 if [ "$first_option" == "client-news" ]; then
 echo "$title_md [ info ] [ loading firewall client-news ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -8509,7 +8511,7 @@ fi
 if [ "$first_option" == "client-mail" ]; then
 echo "$title_md [ info ] [ loading firewall client-mail ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -8623,7 +8625,7 @@ fi
 if [ "$first_option" == "client-ftp" ]; then
 echo "$title_md [ info ] [ loading firewall client-ftp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -8721,7 +8723,7 @@ fi
 if [ "$first_option" == "client-proxy" ]; then
 echo "$title_md [ info ] [ loading firewall client-proxy ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -8819,7 +8821,7 @@ fi
 if [ "$first_option" == "lan-vpn" ]; then
 echo "$title_md [ info ] [ loading firewall lan-vpn ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -8918,7 +8920,7 @@ fi
 if [ "$first_option" == "lan-tor" ]; then
 echo "$title_md [ info ] [ loading firewall lan-tor ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -9017,7 +9019,7 @@ fi
 if [ "$first_option" == "games-shooter" ]; then
 echo "$title_md [ info ] [ loading firewall games-shooter ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ; 
+type_firewall="wallsystem" ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -9115,7 +9117,7 @@ fi
 if [ "$first_option" == "games-udp" ]; then
 echo "$title_md [ info ] [ loading firewall games-udp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -9213,7 +9215,7 @@ fi
 if [ "$first_option" == "game-wesnoth" ]; then
 echo "$title_md [ info ] [ loading firewall game-wesnoth ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -9311,7 +9313,7 @@ fi
 if [ "$first_option" == "game-minetest" ]; then
 echo "$title_md [ info ] [ loading firewall game-minetest ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -9409,7 +9411,7 @@ fi
 if [ "$first_option" == "game-freeciv" ]; then
 echo "$title_md [ info ] [ loading firewall game-freeciv ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -9507,7 +9509,7 @@ fi
 if [ "$first_option" == "game-widelands" ]; then
 echo "$title_md [ info ] [ loading firewall game-widelands ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -9605,7 +9607,7 @@ fi
 if [ "$first_option" == "server-web" ]; then
 echo "$title_md [ info ] [ loading firewall server-web ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ; 
+type_firewall="wallsystem" ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -9703,7 +9705,7 @@ fi
 if [ "$first_option" == "server-vnc" ]; then
 echo "$title_md [ info ] [ loading firewall server-vnc ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -9801,7 +9803,7 @@ fi
 if [ "$first_option" == "server-ftp" ]; then
 echo "$title_md [ info ] [ loading firewall server-ftp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ; 
+type_firewall="wallsystem" ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -9899,7 +9901,7 @@ fi
 if [ "$first_option" == "server-gateway" ]; then
 echo "$title_md [ info ] [ loading firewall server-gateway ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ; 
+type_firewall="wallsystem" ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -9997,7 +9999,7 @@ fi
 if [ "$first_option" == "server-proxy" ]; then
 echo "$title_md [ info ] [ loading firewall server-proxy ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ; 
+type_firewall="wallsystem" ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -10095,7 +10097,7 @@ fi
 if [ "$first_option" == "server-news" ]; then
 echo "$title_md [ info ] [ loading firewall server-news ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ; 
+type_firewall="wallsystem" ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -10201,7 +10203,7 @@ echo "$title_md [ info ] [ loading firewall server-mail ]" ;
 ####
 ####
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ; 
+type_firewall="wallsystem" ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -10315,7 +10317,7 @@ fi
 if [ "$first_option" == "server-samba" ]; then
 echo "$title_md [ info ] [ loading firewall server-samba ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ; 
+type_firewall="wallsystem" ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -10413,7 +10415,7 @@ fi
 if [ "$first_option" == "server-print" ]; then
 echo "$title_md [ info ] [ loading firewall server-print ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ; 
+type_firewall="wallsystem" ; 
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -10511,7 +10513,7 @@ fi
 if [ "$first_option" == "server-ssh" ]; then
 echo "$title_md [ info ] [ loading firewall server-ssh ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -10609,7 +10611,7 @@ fi
 if [ "$first_option" == "server-lamp" ]; then
 echo "$title_md [ info ] [ loading firewall server-lamp ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -10708,7 +10710,7 @@ fi
 if [ "$first_option" == "server-asterisk" ]; then
 echo "$title_md [ info ] [ loading firewall server-asterisk ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -10808,7 +10810,7 @@ fi
 if [ "$first_option" == "server-mumble" ]; then
 echo "$title_md [ info ] [ loading firewall server-mumble ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -10906,7 +10908,7 @@ fi
 if [ "$first_option" == "server-teamspeak" ]; then
 echo "$title_md [ info ] [ loading firewall server-teamspeak ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -11008,7 +11010,7 @@ fi
 if [ "$first_option" == "server-sql" ]; then
 echo "$title_md [ info ] [ loading firewall server-sql ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -11110,7 +11112,7 @@ fi
 if [ "$first_option" == "server-irc" ]; then
 echo "$title_md [ info ] [ loading firewall server-irc ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
@@ -11208,7 +11210,7 @@ fi
 if [ "$first_option" == "server-domain" ]; then
 echo "$title_md [ info ] [ loading firewall server-domain ]" ;
 launch_rules_firewall="yes" ; 
-type_firewall="systemfw" ;
+type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
