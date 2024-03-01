@@ -2530,16 +2530,15 @@ echo "$text_md server-print server-lamp server-news server-ftp server-mail      
 echo "$text_md server-webserver server-teamspeak server-mumble server-gateway       "
 echo "$text_md server-sql server-asterisk server-proxy server-samba                 "
 echo "$title_md  [ options-easy ] easy                                              "
-echo "$text_md preferences-read preferences-modify preferences-regen                "
-echo "$text_md preferences-example list-options examples-options info-options       "
-echo "$text_md info date intro filelog autolog ip4 ip6 speed-ip4 speed-ip6          "
+echo "$text_md preferences-read preferences-modify preferences-regen info           "
+echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 date intro filelog autolog       "
 echo "$text_md free sockets nodes geoip ip-forward version notes code               "
 echo "$text_md treeconf depends commands variables license uninstall install        "
 echo "$title_md  [ options-expert ] expert                                          "
-echo "$title_md $text_md $title_md Example, reports y license    "
-echo "$title_md  Example: $cmd_basename gui-zenity info    "
-echo "$title_md  Reports: Report bugs at $cmd_contact      "
-echo "$title_md  License: $cmd_license                     "
+echo "$text_md $text_md $title_md Example, reports y license    "
+echo "$text_md  Example: $cmd_basename gui-zenity info          "
+echo "$text_md  Reports: Report bugs at $cmd_contact            "
+echo "$text_md  License: $cmd_license                           "
 exit ; fi
 ####
 ####
