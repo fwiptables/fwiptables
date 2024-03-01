@@ -2537,9 +2537,9 @@ echo "$text_md free sockets nodes geoip ip-forward version notes code           
 echo "$text_md treeconf depends commands variables license uninstall install        "
 echo "$title_md  [ options-expert ] expert                                          "
 echo "$title_md $text_md $title_md Example, reports y license    "
-echo "$title_md  | Example: $cmd_basename gui-zenity info    "
-echo "$title_md  | Reports: Report bugs at $cmd_contact      "
-echo "$title_md  | License: $cmd_license                     "
+echo "$title_md  Example: $cmd_basename gui-zenity info    "
+echo "$title_md  Reports: Report bugs at $cmd_contact      "
+echo "$title_md  License: $cmd_license                     "
 exit ; fi
 ####
 ####
