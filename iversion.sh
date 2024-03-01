@@ -2536,9 +2536,9 @@ echo "$text_md info date intro filelog autolog ip4 ip6 speed-ip4 speed-ip6      
 echo "$text_md free sockets nodes geoip ip-forward version notes code               "
 echo "$text_md treeconf depends commands variables license uninstall install        "
 echo "$title_md  [ options-expert ] expert                                          "
-echo "$title_md  ||| Example: fwiptables-cmd gui-zenity info  |||                   "
+echo "$title_md  ||| Example: fwiptables gui-zenity info      |||                   "
 echo "$title_md  ||| GPL v2, License General Public version 2 |||                   "
-echo "$title_md  ||| Report bugs at $cmd_contact |||"
+echo "$title_md  ||| Report bugs at $cmd_contact              |||"
 exit ; fi
 ####
 ####
@@ -4425,7 +4425,7 @@ echo "$title_md fwiptables uninstall.                   "
 echo "$text_md"
 echo "$text_md  Uninstall TYPE: $file_installed uninstall  "
 echo "$text_md"
-$cmd_realpath ver
+$cmd_realpath version
 $cmd_realpath compile
 echo "$title_md [ options ] [ List general options for fwiptables ] [ list-options.md ]"
 $cmd_realpath options
@@ -4752,7 +4752,7 @@ echo "$text_md [ step ] \
 echo "$text_md [ step ] \
 [ 3a] Or run: obash -s -c -o ./destination.bin ./source-bash.sh                   "
 echo "$text_md [ step ] \
-[ 3b] Or run: obash -s -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd  "
+[ 3b] Or run: obash -s -c -o $cmd_realpath.bin $cmd_realpath  "
 echo "$title_md Actually, the file type is:  "
 file -L $cmd_realpath
 exit; fi
