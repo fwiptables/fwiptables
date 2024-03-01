@@ -2895,7 +2895,7 @@ $cmd_realpath firewall-wallcustom
 $cmd_realpath firewall-wallsystem
 $cmd_realpath options-easy
 echo "$title_md"
-echo "$title_md for expert options: $cmd_realpath options-expert"
+echo "$title_md for expert options: $cmd_realpath expert"
 echo "$title_md"
 exit; fi
 ####
