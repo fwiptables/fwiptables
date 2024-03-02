@@ -6,7 +6,7 @@
 #### #### #### #### #!/bin/zsh
 #### #### #### #### emulate -L bash
 ####
-#### File:        fwiptables-cmd
+#### File:        fwiptables
 #### Description: Command Fran FireWall fwiptables Generator
 #### Author:      Francisco Garcia <fwiptables@gmx.com>
 #### Copyright:   (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>
@@ -2841,8 +2841,8 @@ echo "$text_md expert-show-resolve . show file resolve domain with resolv.conf"
 echo "$text_md expert-show-weather . show weather with wttr.in"
 echo "$text_md expert-show-geoip . show location for ip o for host with geoip"
 echo "$text_md expert-show-webcert . show web certificate ssl from one web with ssl-cert"
-echo "$text_md expert-show-version . Show version fwiptables-cmd stable with curl"
-echo "$text_md expert-show-newversion . Show version fwiptables-cmd stable/unstable with curl"
+echo "$text_md expert-show-version . Show version fwiptables stable with curl"
+echo "$text_md expert-show-newversion . Show version fwiptables stable/unstable with curl"
 echo "$text_md expert-show-clientproxy . show proxy variables in the system stablished"
 echo "$text_md expert-conf-clientproxy . File /etc/proxy.fwiptables for proxy launched with source"
 echo "$text_md expert-speed-ip4 . benchmark internet speed ipv4 with 4seconds"
@@ -2851,8 +2851,8 @@ echo "$text_md expert-speed-disk . benchmark disk speed with 100Mb"
 echo "$text_md expert-speed-ram . benchmark ram speed with 100Mb"
 echo "$text_md expert-speed-cpu . benchmark cpu speed with bc command aprox 5seconds"
 echo "$text_md expert-speed-glx . benchmark glx speed with mesa3D"
-echo "$text_md expert-upgrade-stable . Upgrade from web sourceforge fwiptables-cmd with curl"
-echo "$text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables-cmd with curl"
+echo "$text_md expert-upgrade-stable . Upgrade from web sourceforge fwiptables with curl"
+echo "$text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables with curl"
 echo "$text_md expert-upgrade-adblock . Download blacklist to /etc/hosts.blacklist with curl"
 echo "$text_md expert-compile-obash . Compile fwiptables to fwiptables-bin with obash"
 echo "$text_md expert-nmap-tcp . doing scan tcp at host or range"
@@ -2885,7 +2885,7 @@ exit; fi
 if   [ "$first_option" == "info-options" ]; then 
 echo "$title_md [ $first_option ]  [ info options for firewall iptables ] [ info-options.md]"
 echo "$text_md"
-echo "$title_md           Firewall fwiptables-cmd info-options ... $cmd_version"
+echo "$title_md           Firewall fwiptables info-options ... $cmd_version"
 echo "$text_md"
 $cmd_realpath optional-output
 $cmd_realpath firewall-control
@@ -2946,7 +2946,7 @@ exit; fi
 if   [ "$first_option" == "variables" ]; then 
 echo "$title_md [ $first_option ]  [ list variables firewall fwiptables] [ variables.md ]"
 echo "$text_md"
-echo "$title_md           Firewall fwiptables-cmd variables ... $cmd_version"
+echo "$title_md           Firewall fwiptables variables ... $cmd_version"
 echo "$text_md "
 echo "$text_md list_rules_conceptual       # void or no . rules with names or numbers"
 echo "$text_md"
@@ -4673,7 +4673,7 @@ $cmd_realpath version | $command_grep -E -i "version"
 #### latest stable
 ####
 echo "$title_md Show the version for fwiptables stable latest:"
-descarga="$default_directory_log/fwiptables-cmd"
+descarga="$default_directory_log/fwiptables"
 $command_curl $web_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
 $command_grep -E -i "version"
@@ -4682,7 +4682,7 @@ rm $descarga
 #### latest unstable
 ####
 echo "$title_md Show the version for fwiptables unstable latest:"
-descarga="$default_directory_log/fwiptables-cmd"
+descarga="$default_directory_log/fwiptables"
 $command_curl $git_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
 $command_grep -E -i "version"
@@ -4706,7 +4706,7 @@ echo "$title_md Install curl to download and to install stable latest version"; 
 ####
 ####
 echo "$title_md Downloading fwiptables stable latest"
-descarga="$default_directory_log/fwiptables-cmd"
+descarga="$default_directory_log/fwiptables"
 $command_curl $web_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga install
 exit; fi
@@ -4726,7 +4726,7 @@ echo "$title_md Install curl to download and to install unstable latest version"
 ####
 ####
 echo "$title_md Downloading fwiptables development latest"
-descarga="$default_directory_log/fwiptables-cmd"
+descarga="$default_directory_log/fwiptables"
 $command_curl $git_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga install
 exit; fi
