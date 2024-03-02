@@ -1,4 +1,4 @@
-#!/bin/bash -l
+#!/bin/bash --login
 #### #### #### #### for shell bash:
 #### #### #### #### #!/bin/bash
 ####
@@ -1628,7 +1628,7 @@ if [ "$2" == "$NULL" ]; then
 echo "$title_md use: $cmd_basename $first_option host"; exit; fi
 $cmd_basename save before-trace-ip6 
 $cmd_basename eraserules6
-echo "$duo_md [ ok ] [ tracepath -4 $2 ] "
+echo "$duo_md [ ok ] [ tracepath -6 $2 ] "
 $command_tracepath -6 $2
 $cmd_basename load before-trace-ip6
 exit; fi
@@ -4767,14 +4767,15 @@ exit; fi
 if   [ "$first_option" == "expert-compile-obash" ]; then 
 echo "$title_md [ $first_option ] \
 [  optionally ] [ howto compile bash script with obash ] "
-echo "$title_md Compile /usr/bin/fwiptables-cmd in /usr/bin/fwiptables-bin"
+echo "$title_md Compile /usr/bin/fwiptables in /usr/bin/fwiptables.bin" ; echo
 if [ "$command_obash" == "$NULL" ]
 then echo "$title_md install obash to compile"; exit ; fi
 if [ "$command_uuid" == "$NULL" ]
 then echo "$title_md install uuid to compile"; exit ; fi
-$command_obash -s -c -o \
-$directory_installed/$file_installed.bin $directory_installed/$file_installed
-echo "$title then:"
+$command_obash -r -c -o \
+$directory_installed/$file_installed.bin \
+$directory_installed/$file_installed
+echo ; echo "$title_md And now list:"
 file -L $directory_installed/$file_installed
 file -L $directory_installed/$file_installed.bin
 exit; fi
