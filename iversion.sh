@@ -2930,12 +2930,14 @@ echo "$text_md "
 echo "$title_md | optional-output | $cmd_realpath optional-ouptut |"
 echo "$text_md"
 echo "$text_md -t . output in terminal text "
+echo "$text_md -n . output in terminal text narrow (compresed spaces)"
 echo "$text_md -c . output in terminal cli "
 echo "$text_md -g . output in graphicall gui "
 echo "$text_md -l . output in file text log"
 echo "$text_md -p . output in file image pdf"
 echo "$text_md -s . output in silent or null"
 echo "$text_md -txt . output in terminal text"
+echo "$text_md -narrow . output in terminal text narrow (compresed spaces)"
 echo "$text_md -cli . output in terminal cli"
 echo "$text_md -gui . output in graphicall gui"
 echo "$text_md -log . output in file text log"
@@ -4516,7 +4518,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "uninstall" ] ; then
-echo "$title_md [ $first_option ] [ $cmd_realpath uninstaller ] [ uninstall md ] "
+echo "$title_md [ info ] [ $cmd_realpath uninstaller ] [ uninstall md ] "
 echo "$title_md [ info ] [ $cmd_realpath uninstalling ]"
 rm $cmd_realpath &> /dev/null
 echo "$title_md [ info ] [ deleted binary ]"
@@ -4531,7 +4533,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "install" ]; then 
-echo "$title_md [ $first_option ] \
+echo "$title_md [ info ] \
 [ $file_installed $cmd_version installer ]"
 ####
 ####
