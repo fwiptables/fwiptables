@@ -310,9 +310,6 @@ message_without_null="$title_md [ fail ] [ null ] $message_without_support "
 message_without_pdf="$title_md [ fail ] [ pdf ] $message_without_support "
 ####
 ####
-list_narrow_tables="no"
-####
-####
 #### :rutina-final-system-variables:
 ##########   english: search programs: programs path           ##########
 ##########   spanish: busca los programas: ruta de programas   ##########
@@ -593,8 +590,6 @@ case "$NULL" in "$name_firewall")            ;;
 *)  name_firewall="no"                       ;; esac
 case "$NULL" in "$type_firewall")            ;;
 *)  type_firewall="no"                       ;; esac
-case "no"    in "$list_narrow_tables")       ;;
-*) list_narraw_tables=""                     ;; esac
 #### 
 ####
 ####
@@ -770,26 +765,20 @@ fi
 ####
 ####
 case "$first_option" in
-"ls4")    list_rules_conceptual="" 
-first_option="-txt" ; second_option="list4"           ;;
-"ls6")    list_rules_conceptual="" 
-first_option="-txt" ; second_option="list6"           ;;
-"list4")  list_rules_conceptual="" 
-first_option="-txt" ; second_option="list4"           ;;
-"list6")  list_rules_conceptual="" 
-first_option="-txt" ; second_option="list6"           ;;
-"lsn4")    list_rules_conceptual="no" 
-first_option="-txt" ; second_option="listn4"          ;;
-"lsn6")    list_rules_conceptual="no" 
-first_option="-txt" ; second_option="listn6"          ;;
-"listn4")    list_rules_conceptual="no" 
-first_option="-txt" ; second_option="listn4"          ;;
-"listn6")    list_rules_conceptual="no" 
-first_option="-txt" ; second_option="listn6"          ;;
-list-*) list_rules_conceptual="" 
-second_option="$first_option" ; first_option="-txt"    ;;
-listn-*)  list_rules_conceptual="no" 
-second_option="$first_option" ; first_option="-txt"    ;;
+"ls4") list_rules_conceptual=""; first_option="list4" ;;
+"ls6") list_rules_conceptual=""; first_option="list6" ;;
+"lsn4") list_rules_conceptual="no"; first_option="listn4" ;;
+"lsn6") list_rules_conceptual="no"; first_option="listn6" ;;
+list-*) list_rules_conceptual="" ;;
+listn-*)  list_rules_conceptual="no" ;;
+esac
+case "$second_option" in
+"ls4") list_rules_conceptual=""; second_option="list4" ;;
+"ls6") list_rules_conceptual=""; second_option="list6" ;;
+"lsn4") list_rules_conceptual="no"; second_option="listn4" ;;
+"lsn6") list_rules_conceptual="no"; second_option="listn6" ;;
+list-*) list_rules_conceptual="" ;;
+listn-*)  list_rules_conceptual="no" ;;
 esac
 ####
 ####
@@ -1027,31 +1016,22 @@ expert-*) echo "the commands expert works only wihtout optional output." ; exit 
 #### :rutina-inicial-alias-campus:
 ####
 ####
-#### output txt:   |||    General text without warnings version list narrow
+#### output narrow:   |||    General text without warnings version list narrow
 ####
 ####
-if [ "$first_option" == "txt" ] && [ "$list_narrow_tables" == "$NULL" ]
-then case "$second_option" in
-list*)
-echo echo1
-$cmd_realpath $second_option &> $temporal_text 
-echo echo2 
-cat $temporal_text | $command_grep -iv Warning: \
+if [ "$first_option" == "narrow" ]
+then $cmd_realpath $second_option $third_option $quad_option \
+| $command_grep -iv Warning: \
 | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
-$5 " " $6 " " $7 " " $8 " " $9 " " $11 " " $12 " " }'
-#### 13 " " $14 " " $15 " " $16 " " $17 }'
-####  &> $temporal_textfinal
-echo echo3
-cat $temporal_textfinal ;
-echo echo4 
-exit ;;
-esac ; fi
+$5 " " $6 " " $7 " " $8 " " $9 " " $11 " " $12 " " \
+$13 " " $14 " " $15 " " $16 " " $17 }' 
+exit ; fi
 ####
 ####
 #### output txt:   |||    General text without warnings version list normal
 ####
 ####
-if [ "$first_option" == "txt" ] && [ "$list_narrow_tables" != "$NULL" ]
+if [ "$first_option" == "txt" ] 
 then first_option=$second_option 
 second_option=$third_option ; quad_option=$third_option ; fi
 ####
@@ -1435,9 +1415,6 @@ echo "$title_md type: void or one valid option required to works"
 echo "$title_md Example1: list-options | Example2: list4  | example3: ip4"
 echo "$title_md Example4: speed-ip4 | Example5: sockets | Example6: gui-roll"
 echo "$title_md Example7: gui-menu-yad | Example8: gui-shell-yad"
-echo "$title_md"
-echo "$title_md void to list normal tables or no to list narrow tables"
-echo "list_narrow_tables=                           ## or void or no"
 echo "$title_md" 
 echo "$title_md # default firewall"
 echo "allow_use_legacy=                               ## or void or no"
@@ -2536,7 +2513,7 @@ echo "$title_md  [ optional-output ] output                                     
 #### echo "$text_md [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                   "
 #### echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail -gui-roll-zenity ]             "
 #### echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]  "
-echo "$text_md [ t|txt c|cli g|gui l|log p|pdf s|silent ]                           "
+echo "$text_md [ t|txt -n|narrow c|cli g|gui l|log p|pdf s|silent ]                 "
 echo "$text_md [ cli-dialog cli-whiptail gui-zenity gui-yad ]                       "
 echo "$text_md [ cli-menu-dialog cli-menu-whiptail gui-roll-zenity ]                "
 echo "$text_md [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ]      "
