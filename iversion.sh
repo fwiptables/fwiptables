@@ -808,6 +808,8 @@ esac
 ####
 ####
 case "$first_option" in
+"--narrow") first_option="narrow" ;;
+"-narrow") first_option="narrow" ;;
 "--text") first_option="txt" ;;
 "-text") first_option="txt" ;;
 "--tui") first_option="cli" ;;
@@ -822,12 +824,14 @@ case "$first_option" in
 "--silent") first_option="null" ;;
 "-pdf") first_option="pdf" ;;
 "--pdf") first_option="pdf" ;;
+"n") first_option="narrow" ;;
 "t") first_option="txt" ;;
 "c") first_option="cli" ;;
 "g") first_option="gui" ;;
 "l") first_option="log" ;;
 "s") first_option="null" ;;
 "p") first_option="pdf" ;;
+"-n") first_option="narrow" ;;
 "-t") first_option="txt" ;;
 "-c") first_option="cli" ;;
 "-g") first_option="gui" ;;
