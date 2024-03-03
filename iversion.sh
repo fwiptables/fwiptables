@@ -770,38 +770,50 @@ fi
 ####
 ####
 case "$first_option" in
-"ls4")    list_rules_conceptual="" ; first_option="-txt" ; second_option="list4"  ;;
-"ls6")    list_rules_conceptual="" ; first_option="-txt" ; second_option="list6"  ;;
-"list4")  list_rules_conceptual="" ; first_option="-txt" ; second_option="list4"  ;;
-"list6")  list_rules_conceptual="" ; first_option="-txt" ; second_option="list6"  ;;
-"status") list_rules_conceptual="" ; first_option="status" ;;
-"list-alltables") list_rules_conceptual="" ;;
-"list-filter4")   list_rules_conceptual="" ;;
-"list-filter5")   list_rules_conceptual="" ;;
-"list-nat4")   list_rules_conceptual="" ;;
-"list-nat6")   list_rules_conceptual="" ;;
-"list-raw4")   list_rules_conceptual="" ;;
-"list-raw6")   list_rules_conceptual="" ;;
-"list-mangle4")   list_rules_conceptual="" ;;
-"list-mangle6")   list_rules_conceptual="" ;;
-"list-security4")   list_rules_conceptual="" ;;
-"list-security6")   list_rules_conceptual="" ;;
-"lsn4")    list_rules_conceptual="no" ; first_option="-txt" ; second_option="listn4"  ;;
-"lsn6")    list_rules_conceptual="no" ; first_option="-txt" ; second_option="listn6"  ;;
-"listn4")  list_rules_conceptual="no" ; first_option="-txt" ; second_option="listn4"  ;;
-"listn6")  list_rules_conceptual="no" ; first_option="-txt" ; second_option="listn6"  ;;
-"statusn") list_rules_conceptual="no" ; first_option="statusn"  ;;
-"listn-alltables") list_rules_conceptual="no" ; first_option="list-alltables" ;;
-"listn-filter4")   list_rules_conceptual="no" ; first_option="list-filter4"   ;;
-"listn-filter6")   list_rules_conceptual="no" ; first_option="list-filter6"   ;;
-"listn-nat4")   list_rules_conceptual="no" ; first_option="list-nat4" ;;
-"listn-nat6")   list_rules_conceptual="no" ; first_option="list-nat6" ;;
-"listn-raw4")   list_rules_conceptual="no" ; first_option="list-raw4" ;;
-"listn-raw6")   list_rules_conceptual="no" ; first_option="list-raw6" ;;
-"listn-mangle4")   list_rules_conceptual="no" ; first_option="list-mangle4"     ;;
-"listn-mangle6")   list_rules_conceptual="no" ; first_option="list-mangle6"     ;;
-"listn-security4")   list_rules_conceptual="no" ; first_option="list-security4" ;;
-"listn-security6")   list_rules_conceptual="no" ; first_option="list-security6" ;;
+"ls4")    list_rules_conceptual="" 
+ first_option="-txt" ; second_option="list4"           ;;
+"ls6")    list_rules_conceptual="" 
+ first_option="-txt" ; second_option="list6"           ;;
+"list4")  list_rules_conceptual="" 
+ first_option="-txt" ; second_option="list4"           ;;
+"list6")  list_rules_conceptual="" 
+ first_option="-txt" ; second_option="list6"           ;;
+"status") list_rules_conceptual="" 
+ first_option="-txt" ; first_option="status"           ;;
+"list-*") list_rules_conceptual="" 
+ first_option="-txt" ;  first_option="-txt"            ;;
+"lsn4")    list_rules_conceptual="no" 
+ first_option="-txt" ; second_option="listn4"          ;;
+"lsn6")    list_rules_conceptual="no" 
+ first_option="-txt" ; second_option="listn6"          ;;
+"listn4")  list_rules_conceptual="no" 
+ first_option="-txt" ; second_option="listn4"          ;;
+"listn6")  list_rules_conceptual="no" 
+ first_option="-txt" ; second_option="listn6"          ;;
+"statusn") list_rules_conceptual="no" 
+ first_option="-txt"  ; first_option="statusn"         ;;
+"listn-alltables") list_rules_conceptual="no"
+first_option="-txt" ; first_option="list-alltables"    ;;
+"listn-filter4")   list_rules_conceptual="no"
+first_option="-txt" ; first_option="list-filter4"      ;;
+"listn-filter6")   list_rules_conceptual="no"
+first_option="-txt" ; first_option="list-filter6"      ;;
+"listn-nat4")   list_rules_conceptual="no"
+first_option="-txt" ; first_option="list-nat4"         ;;
+"listn-nat6")   list_rules_conceptual="no"
+first_option="-txt" ; first_option="list-nat6"         ;;
+"listn-raw4")   list_rules_conceptual="no"
+first_option="-txt" ; first_option="list-raw4"         ;;
+"listn-raw6")   list_rules_conceptual="no"
+first_option="-txt" ; first_option="list-raw6"         ;;
+"listn-mangle4")   list_rules_conceptual="no"
+first_option="-txt" ; first_option="list-mangle4"      ;;
+"listn-mangle6")   list_rules_conceptual="no"
+first_option="-txt" ; first_option="list-mangle6"      ;;
+"listn-security4")   list_rules_conceptual="no"
+first_option="-txt" ; second_option="list-security4"    ;;
+"listn-security6")   list_rules_conceptual="no"
+first_option="-txt" ; second_option="list-security6"    ;;
 esac
 ####
 ####
@@ -1065,10 +1077,12 @@ cat $temporal_textfinal | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " $5 "
 "listn6") $cmd_realpath listn6-ip &> $temporal_text 
 cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " $5 " " $6 " " $7 \
-" " $8 " " $9 " " $11 " " $12 " " $13 " " $14 " " $15 " " $16 " " $17 }'; exit ;;list*) $cmd_realpath $first_option &> $temporal_text 
+" " $8 " " $9 " " $11 " " $12 " " $13 " " $14 " " $15 " " $16 " " $17 }'; exit ;;
+list*) $cmd_realpath $second_option &> $temporal_text 
 cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " $5 " " $6 " " $7 \
-" " $8 " " $9 " " $11 " " $12 " " $13 " " $14 " " $15 " " $16 " " $17 }'; exit ;;esac ; fi
+" " $8 " " $9 " " $11 " " $12 " " $13 " " $14 " " $15 " " $16 " " $17 }'; exit ;;
+esac ; exit ; fi
 ####
 ####
 #### output txt:   |||    General text without warnings version list normal
