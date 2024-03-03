@@ -310,6 +310,9 @@ message_without_null="$title_md [ fail ] [ null ] $message_without_support "
 message_without_pdf="$title_md [ fail ] [ pdf ] $message_without_support "
 ####
 ####
+list_narrow_tables="no"
+####
+####
 #### :rutina-final-system-variables:
 ##########   english: search programs: programs path           ##########
 ##########   spanish: busca los programas: ruta de programas   ##########
@@ -582,15 +585,17 @@ then first_option="options"; fi ; fi
 #### :rutina-inicial-sane-variables-basics:
 ####
 ####
-case "$NULL" in "$choosed_iptables")       ;;
-*)  choosed_iptables="no";; esac
-case "$NULL" in "$launch_rules_firewall")  ;;
-*)  launch_rules_firewall="no" ;; esac
-case "$NULL" in "$name_firewall")          ;;
-*)  name_firewall="no" ;; esac
-case "$NULL" in "$type_firewall")          ;;
-*)  type_firewall="no" ;; esac
-####
+case "$NULL" in "$choosed_iptables")         ;;
+*)  choosed_iptables="no"                    ;; esac
+case "$NULL" in "$launch_rules_firewall")    ;;
+*)  launch_rules_firewall="no"               ;; esac
+case "$NULL" in "$name_firewall")            ;; 
+*)  name_firewall="no"                       ;; esac
+case "$NULL" in "$type_firewall")            ;;
+*)  type_firewall="no"                       ;; esac
+case "no"    in "$list_narrow_tables")       ;;
+*) list_narraw_tables=""                     ;; esac
+#### 
 ####
 ####
 ####
@@ -798,7 +803,17 @@ case "$first_option" in
 "listn-security4")   list_rules_conceptual="no" ; first_option="list-security4" ;;
 "listn-security6")   list_rules_conceptual="no" ; first_option="list-security6" ;;
 esac
-case "$list_rules_conceptual" in "$NULL") list_rules_conceptual="" ;; *) list_rules_conceptual=" -n"  ;; esac
+####
+####
+case "$list_rules_conceptual" in
+"$NULL") list_rules_conceptual="" ;;
+*) list_rules_conceptual=" -n"  ;; esac
+####
+####
+#### if [ "$list_broad_tables" != "$NULL" ]; then
+#### case "$first_option" in
+#### list*) $0 $1 $2 | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " $5 " " $6 " " $7 \
+#### " " $8 " " $9 " " $11 " " $12 " " $13 " " $14 " " $15 " " $16 " " $17 }' ; exit ;; esac
 ####
 ####
 #### english:  alias alias simple for output gui, -txt or -cli or -gui and more
@@ -1030,7 +1045,33 @@ expert-*) echo "the commands expert works only wihtout optional output." ; exit 
 #### :rutina-inicial-alias-campus:
 ####
 ####
-#### output txt:   |||    General text without warnings
+#### output txt:   |||    General text without warnings version list narrow
+####
+####
+if [ "$first_option" == "txt" ] && [ "$list_narrow_tables" == "$NULL" ]
+then case "$second_option" in
+"list4") $cmd_realpath list4-ip &> $temporal_text 
+cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
+cat $temporal_textfinal | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " $5 " " $6 " " $7 \
+" " $8 " " $9 " " $11 " " $12 " " $13 " " $14 " " $15 " " $16 " " $17 }'; exit ;;
+"list6") $cmd_realpath list6-ip &> $temporal_text 
+cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
+cat $temporal_textfinal | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " $5 " " $6 " " $7 \
+" " $8 " " $9 " " $11 " " $12 " " $13 " " $14 " " $15 " " $16 " " $17 }'; exit ;;
+"listn4") $cmd_realpath listn4-ip &> $temporal_text 
+cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
+cat $temporal_textfinal | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " $5 " " $6 " " $7 \
+" " $8 " " $9 " " $11 " " $12 " " $13 " " $14 " " $15 " " $16 " " $17 }'; exit ;;
+"listn6") $cmd_realpath listn6-ip &> $temporal_text 
+cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
+cat $temporal_textfinal | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " $5 " " $6 " " $7 \
+" " $8 " " $9 " " $11 " " $12 " " $13 " " $14 " " $15 " " $16 " " $17 }'; exit ;;list*) $cmd_realpath $first_option &> $temporal_text 
+cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
+cat $temporal_textfinal | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " $5 " " $6 " " $7 \
+" " $8 " " $9 " " $11 " " $12 " " $13 " " $14 " " $15 " " $16 " " $17 }'; exit ;;esac ; fi
+####
+####
+#### output txt:   |||    General text without warnings version list normal
 ####
 ####
 if [ "$first_option" == "txt" ]; then case "$second_option" in
@@ -1046,10 +1087,14 @@ cat $temporal_textfinal ; exit ;;
 "listn6") $cmd_realpath listn6-ip &> $temporal_text 
 cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
+list*) $cmd_realpath $first_option &> $temporal_text 
+cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
+cat $temporal_textfinal ; exit ;;
 esac ; $cmd_realpath "$second_option" "$third_option" "$quad_option"
 exit; fi
 ####
 ####
+
 #### output cli:
 ####
 ####
@@ -1430,6 +1475,9 @@ echo "$title_md Example1: list-options | Example2: list4  | example3: ip4"
 echo "$title_md Example4: speed-ip4 | Example5: sockets | Example6: gui-roll"
 echo "$title_md Example7: gui-menu-yad | Example8: gui-shell-yad"
 echo "$title_md"
+echo "$title_md void to list normal tables or no to list narrow tables"
+echo "list_narrow_tables=no                           ## or void or no"
+echo "$title_md" 
 echo "$title_md # default firewall"
 echo "allow_use_legacy=                               ## or void or no"
 echo "allow_use_nft=no                                ## or void or no"
