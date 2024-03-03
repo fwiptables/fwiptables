@@ -31,40 +31,40 @@
 ###  fwiptables install.                     
   
     su root TYPE: su root                       
-    Put bit TYPE: chmod 755 ./fwiptables-version-12-04-bash.sh     
-    Install TYPE: ./fwiptables-version-12-04-bash.sh install       
+    Put bit TYPE: chmod 755 ./fwiptables-version-12-05-bash.sh     
+    Install TYPE: ./fwiptables-version-12-05-bash.sh install       
   
 ###  fwiptables uninstall.                   
   
     Uninstall TYPE: fwiptables uninstall  
   
 ###  [ version ] [ Show version ] [ version.md ]          
-   [ info ] [ Somes details in fwiptables-version-12-04-bash.sh ]                 
-   [ info ] [ Name program       ] /root/f-iptables-version/fwiptables-version-12-04-bash.sh               
-   [ info ] [ Name Version       ] 12-04                
+   [ info ] [ Somes details in fwiptables-version-12-05-bash.sh ]                 
+   [ info ] [ Name program       ] /root/f-iptables-version/fwiptables-version-12-05-bash.sh               
+   [ info ] [ Name Version       ] 12-05                
    [ info ] [ Short description  ] fwiptables, FireWall With iptables       
    [ info ] [ Long description   ] fwiptables, One Mini Script in one-file wizard        
    [ info ] [ Developer Actual   ] Francisco Garcia              
    [ info ] [ Developer Contact  ] fwiptables@gmx.com                
    [ info ] [ License program    ] GPL v2, License General Public version 2                
-   [ info ] [ Others details in fwiptables-version-12-04-bash.sh ]                
+   [ info ] [ Others details in fwiptables-version-12-05-bash.sh ]                
    [ info ] [ Data  Directory    ] /root/.config/fwiptables    
-   [ info ] [ Cache Directory    ] /root/.cache/fwiptables            
+   [ info ] [ Cache Directory    ] /root/.cache/fwiptables   
    [ info ] [ File  Preferences  ]                             
-   /root/.config/fwiptables/fwiptables-preferences/default-preferences-12-04        
+   /root/.config/fwiptables/fwiptables-preferences/default-preferences-12-05        
    [ info ] [ File  Format       ]                             
-   /root/f-iptables-version/fwiptables-version-12-04-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable   
+   /root/f-iptables-version/fwiptables-version-12-05-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable   
 ###  [ compile ] [  Optionally compile from bash script ] [ compile.md]    
    [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling...                       
    [ step ] [ 0 ] Necesary: fwiptables in source script bash                                  
    [ step ] [ 1 ] Download obash from oficial web internet                                    
    [ step ] [ 2 ] Compile with obash command using command make.                              
    [ step ] [ 3a] Or run: obash -s -c -o ./destination.bin ./source-bash.sh                   
-   [ step ] [ 3b] Or run: obash -s -c -o /usr/bin/fwiptables-cmd.bin /usr/bin/fwiptables-cmd  
+   [ step ] [ 3b] Or run: obash -s -c -o /root/f-iptables-version/fwiptables-version-12-05-bash.sh.bin /root/f-iptables-version/fwiptables-version-12-05-bash.sh  
 ###  Actually, the file type is:  
-/root/f-iptables-version/fwiptables-version-12-04-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
+/root/f-iptables-version/fwiptables-version-12-05-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable
 ###  [ options ] [ List general options for fwiptables ] [ list-options.md ]
-###  fwiptables-version-12-04-bash.sh [optional-output] first_option [second_option]   
+###  fwiptables-version-12-05-bash.sh [optional-output] first_option [second_option]   
 ###   [ optional-output ] output                                         
    [ t|txt c|cli g|gui l|log p|pdf s|silent ]                           
    [ cli-dialog cli-whiptail gui-zenity gui-yad ]                       
@@ -95,12 +95,12 @@
    server-webserver server-teamspeak server-mumble server-gateway       
    server-sql server-asterisk server-proxy server-samba                 
 ###   [ options-easy ] easy                                              
-   preferences-read preferences-modify preferences-regen                
-   preferences-example list-options examples-options info-options       
-   info date intro filelog autolog ip4 ip6 speed-ip4 speed-ip6          
-   free sockets nodes geoip ip-forward version notes code               
-   treeconf depends commands variables license uninstall install        
+   preferences-read preferences-modify preferences-regen info           
+   options ip4 ip6 speed-ip4 speed-ip6 date intro filelog autolog       
+   free sockets nodes ip-forward version code treeconf treecache        
+   notes depends commands variables license uninstall install           
 ###   [ options-expert ] expert                                          
-###   ||| Example: fwiptables-cmd gui-zenity info  |||                   
-###   ||| GPL v2, License General Public version 2 |||                   
-###   ||| Report bugs at fwiptables@gmx.com |||
+      ###  Example, reports y license    
+    Example: fwiptables-version-12-05-bash.sh gui-zenity info          
+    Reports: Report bugs at fwiptables@gmx.com            
+    License: GPL v2, License General Public version 2                           
