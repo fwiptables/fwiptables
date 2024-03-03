@@ -929,7 +929,6 @@ case "$first_option" in
 "easy")           first_option="options-easy" ;;
 "custom")         first_option="load-custom" ;;
 "option-examples")first_option="examples-option" ;;
-"geoip")          first_option="expert-show-geoip" ;;
 "regen")          first_option="config-regen" ;;
 "expert")         first_option="options-expert" ;;
 "ver")            first_option="version" ;;
@@ -2532,8 +2531,8 @@ echo "$text_md server-sql server-asterisk server-proxy server-samba             
 echo "$title_md  [ options-easy ] easy                                              "
 echo "$text_md preferences-read preferences-modify preferences-regen info           "
 echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 date intro filelog autolog       "
-echo "$text_md free sockets nodes geoip ip-forward version notes code               "
-echo "$text_md treeconf depends commands variables license uninstall install        "
+echo "$text_md free sockets nodes ip-forward version notes code  treeconf           "
+echo "$text_md depends commands variables license uninstall install                 "
 echo "$title_md  [ options-expert ] expert                                          "
 echo "$text_md $text_md $title_md Example, reports y license    "
 echo "$text_md  Example: $cmd_basename gui-zenity info          "
@@ -2837,6 +2836,9 @@ echo "$text_md "
 echo "$title_md | options-expert | $cmd_realpath options-expert |"
 echo "$text_md    Only works in Console AND Without: cli, gui, pdf, log, silent"
 echo "$text_md"
+echo "$text_md expert-show-ss . show SOCKETS listen with ss"
+echo "$text_md expert-show-netstat . show SOCKETS listen with netstat"
+echo "$text_md expert-show-lsof . show SOCKETS listen with lsof"
 echo "$text_md expert-show-resolve . show file resolve domain with resolv.conf"
 echo "$text_md expert-show-weather . show weather with wttr.in"
 echo "$text_md expert-show-geoip . show location for ip o for host with geoip"
@@ -5282,7 +5284,7 @@ exit; fi
 ####
 if   [ "$first_option" == "sockets" ]; then 
 echo "$title_md [ $first_option ] [ Show whith ss: LISTEN sockets ] "
-if [ "$command_awk" == "$NULL" ]; then 
+if [ "$command_ss" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Install ss command ]"; exit; fi
 if [ "$command_awk" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Install awk command ]"; exit; fi
@@ -5292,6 +5294,54 @@ exit; fi
 ####
 ####
 #### :rutina-final-sockets:
+##########    english: expert-show-ss: The sockets option  ##########
+##########    spanish: expert-show-ss: La opcion sockets   ##########
+#### :rutina-inicial-expert-show-ss:
+####
+####
+if   [ "$first_option" == "expert-show-ss" ]; then 
+echo "$title_md [ $first_option ] [ Show whith ss: LISTEN sockets ] "
+if [ "$command_ss" == "$NULL" ]; then 
+echo "$title_md [ fail ] [ Install ss command ]"; exit; fi
+#### if [ "$command_awk" == "$NULL" ]; then 
+#### echo "$title_md [ fail ] [ Install awk command ]"; exit; fi
+$command_ss -l  | $command_grep "\:\*" | $command_grep LISTEN
+exit; fi
+####
+####
+#### :rutina-final-expert-show-ss:
+##########    english: expert-show-lsof: The sockets option lsof  ##########
+##########    spanish: expert-show-lsof: La opcion sockets lsof   ##########
+#### :rutina-inicial-expert-show-lsof:
+####
+####
+if   [ "$first_option" == "expert-show-lsof" ]; then 
+echo "$title_md [ $first_option ] [ Show whith lsof: LISTEN sockets ] "
+if [ "$command_lsof" == "$NULL" ]; then 
+echo "$title_md [ fail ] [ Install lsof command ]"; exit; fi
+#### if [ "$command_awk" == "$NULL" ]; then 
+#### echo "$title_md [ fail ] [ Install awk command ]"; exit; fi
+$command_lsof -li
+exit; fi
+####
+####
+#### :rutina-final-expert-show-lsof:
+##########    english: expert-show-netstat: The sockets option lsof  ##########
+##########    spanish: expert-show-netstat: La opcion sockets lsof   ##########
+#### :rutina-inicial-expert-show-netstat:
+####
+####
+if   [ "$first_option" == "expert-show-netstat" ]; then 
+echo "$title_md [ $first_option ] [ Show whith lsof: LISTEN sockets ] "
+if [ "$command_lsof" == "$NULL" ]; then 
+echo "$title_md [ fail ] [ Install lsof command ]"; exit; fi
+#### if [ "$command_awk" == "$NULL" ]; then 
+#### echo "$title_md [ fail ] [ Install awk command ]"; exit; fi
+$command_netstat -ln
+exit; fi
+####
+####
+#### :rutina-final-expert-show-netstat:
 ##########    english: expert-show-webcert: get the certificate from one web       ##########
 ##########    spanish: expert-show-webcert: obtiene el certificado de una web      ##########
 #### :rutina-inicial-expert-show-webcert:
