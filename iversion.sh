@@ -516,12 +516,12 @@ file_default_autolog="$default_directory_autolog/default_autolog-$cmd_version"
 #### spanish: archivos temporales
 ####
 ####
-temporal_text="$default_directory_cache/$first_option-$second_option-$third_option"
-temporal_textfinal="$default_directory_cache/$first_option-$second_option-$third_option-textfinal"
-temporal_gui="$default_directory_cache/$first_option-$second_option-$third_option"
-temporal_guifinal="$default_directory_cache/$first_option-$second_option-$third_option-guifinal"
-output_log="$default_directory_cache/$first_option-$second_option-$third_option"
-output_logfinal="$default_directory_cache/$first_option-$second_option-$third_option-logfinal"
+temporal_text="$default_directory_cache/$show_actual_date-text.txt"
+temporal_textfinal="$default_directory_cache/$show_actual_date-textfinal.txt"
+temporal_gui="$default_directory_cache/$first_option-$second_option-$third_option.txt"
+temporal_guifinal="$default_directory_cache/$first_option-$second_option-$third_option-guifinal.txt"
+output_log="$default_directory_cache/$first_option-$second_option-$third_option.txt"
+output_logfinal="$default_directory_cache/$first_option-$second_option-$third_option-logfinal.txt"
 ####
 ####
 #### :rutina-final-files:
@@ -532,11 +532,11 @@ output_logfinal="$default_directory_cache/$first_option-$second_option-$third_op
 ####
 command_mkdir="$(command -v mkdir)"
 ####
-####
+#### cache
 if [ ! -d "$default_directory_cache" ]; then
 $command_mkdir -p $default_directory_cache &> /dev/null ; fi
 ####
-####
+#### data
 if [ ! -d "$default_directory_data_necesary" ]; then
 $command_mkdir -p $default_directory_data_necesary &> /dev/null ; fi
 ####
@@ -771,61 +771,31 @@ fi
 ####
 case "$first_option" in
 "ls4")    list_rules_conceptual="" 
- first_option="-txt" ; second_option="list4"           ;;
+first_option="-txt" ; second_option="list4"           ;;
 "ls6")    list_rules_conceptual="" 
- first_option="-txt" ; second_option="list6"           ;;
+first_option="-txt" ; second_option="list6"           ;;
 "list4")  list_rules_conceptual="" 
- first_option="-txt" ; second_option="list4"           ;;
+first_option="-txt" ; second_option="list4"           ;;
 "list6")  list_rules_conceptual="" 
- first_option="-txt" ; second_option="list6"           ;;
-"status") list_rules_conceptual="" 
- first_option="-txt" ; first_option="status"           ;;
-"list-*") list_rules_conceptual="" 
- first_option="-txt" ;  first_option="-txt"            ;;
+first_option="-txt" ; second_option="list6"           ;;
 "lsn4")    list_rules_conceptual="no" 
- first_option="-txt" ; second_option="listn4"          ;;
+first_option="-txt" ; second_option="listn4"          ;;
 "lsn6")    list_rules_conceptual="no" 
- first_option="-txt" ; second_option="listn6"          ;;
-"listn4")  list_rules_conceptual="no" 
- first_option="-txt" ; second_option="listn4"          ;;
-"listn6")  list_rules_conceptual="no" 
- first_option="-txt" ; second_option="listn6"          ;;
-"statusn") list_rules_conceptual="no" 
- first_option="-txt"  ; first_option="statusn"         ;;
-"listn-alltables") list_rules_conceptual="no"
-first_option="-txt" ; first_option="list-alltables"    ;;
-"listn-filter4")   list_rules_conceptual="no"
-first_option="-txt" ; first_option="list-filter4"      ;;
-"listn-filter6")   list_rules_conceptual="no"
-first_option="-txt" ; first_option="list-filter6"      ;;
-"listn-nat4")   list_rules_conceptual="no"
-first_option="-txt" ; first_option="list-nat4"         ;;
-"listn-nat6")   list_rules_conceptual="no"
-first_option="-txt" ; first_option="list-nat6"         ;;
-"listn-raw4")   list_rules_conceptual="no"
-first_option="-txt" ; first_option="list-raw4"         ;;
-"listn-raw6")   list_rules_conceptual="no"
-first_option="-txt" ; first_option="list-raw6"         ;;
-"listn-mangle4")   list_rules_conceptual="no"
-first_option="-txt" ; first_option="list-mangle4"      ;;
-"listn-mangle6")   list_rules_conceptual="no"
-first_option="-txt" ; first_option="list-mangle6"      ;;
-"listn-security4")   list_rules_conceptual="no"
-first_option="-txt" ; second_option="list-security4"    ;;
-"listn-security6")   list_rules_conceptual="no"
-first_option="-txt" ; second_option="list-security6"    ;;
+first_option="-txt" ; second_option="listn6"          ;;
+"listn4")    list_rules_conceptual="no" 
+first_option="-txt" ; second_option="listn4"          ;;
+"listn6")    list_rules_conceptual="no" 
+first_option="-txt" ; second_option="listn6"          ;;
+list-*) list_rules_conceptual="" 
+second_option="$first_option" ; first_option="-txt"    ;;
+listn-*)  list_rules_conceptual="no" 
+second_option="$first_option" ; first_option="-txt"    ;;
 esac
 ####
 ####
 case "$list_rules_conceptual" in
 "$NULL") list_rules_conceptual="" ;;
 *) list_rules_conceptual=" -n"  ;; esac
-####
-####
-#### if [ "$list_broad_tables" != "$NULL" ]; then
-#### case "$first_option" in
-#### list*) $0 $1 $2 | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " $5 " " $6 " " $7 \
-#### " " $8 " " $9 " " $11 " " $12 " " $13 " " $14 " " $15 " " $16 " " $17 }' ; exit ;; esac
 ####
 ####
 #### english:  alias alias simple for output gui, -txt or -cli or -gui and more
@@ -1062,53 +1032,30 @@ expert-*) echo "the commands expert works only wihtout optional output." ; exit 
 ####
 if [ "$first_option" == "txt" ] && [ "$list_narrow_tables" == "$NULL" ]
 then case "$second_option" in
-"list4") $cmd_realpath list4-ip &> $temporal_text 
-cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
-cat $temporal_textfinal | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " $5 " " $6 " " $7 \
-" " $8 " " $9 " " $11 " " $12 " " $13 " " $14 " " $15 " " $16 " " $17 }'; exit ;;
-"list6") $cmd_realpath list6-ip &> $temporal_text 
-cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
-cat $temporal_textfinal | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " $5 " " $6 " " $7 \
-" " $8 " " $9 " " $11 " " $12 " " $13 " " $14 " " $15 " " $16 " " $17 }'; exit ;;
-"listn4") $cmd_realpath listn4-ip &> $temporal_text 
-cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
-cat $temporal_textfinal | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " $5 " " $6 " " $7 \
-" " $8 " " $9 " " $11 " " $12 " " $13 " " $14 " " $15 " " $16 " " $17 }'; exit ;;
-"listn6") $cmd_realpath listn6-ip &> $temporal_text 
-cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
-cat $temporal_textfinal | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " $5 " " $6 " " $7 \
-" " $8 " " $9 " " $11 " " $12 " " $13 " " $14 " " $15 " " $16 " " $17 }'; exit ;;
-list*) $cmd_realpath $second_option &> $temporal_text 
-cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
-cat $temporal_textfinal | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " $5 " " $6 " " $7 \
-" " $8 " " $9 " " $11 " " $12 " " $13 " " $14 " " $15 " " $16 " " $17 }'; exit ;;
-esac ; exit ; fi
+list*)
+echo echo1
+$cmd_realpath $second_option &> $temporal_text 
+echo echo2 
+cat $temporal_text | $command_grep -iv Warning: \
+| $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
+$5 " " $6 " " $7 " " $8 " " $9 " " $11 " " $12 " " }'
+#### 13 " " $14 " " $15 " " $16 " " $17 }'
+####  &> $temporal_textfinal
+echo echo3
+cat $temporal_textfinal ;
+echo echo4 
+exit ;;
+esac ; fi
 ####
 ####
 #### output txt:   |||    General text without warnings version list normal
 ####
 ####
-if [ "$first_option" == "txt" ]; then case "$second_option" in
-"list4") $cmd_realpath list4-ip &> $temporal_text 
-cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
-cat $temporal_textfinal ; exit ;;
-"list6") $cmd_realpath list6-ip &> $temporal_text 
-cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
-cat $temporal_textfinal ; exit ;;
-"listn4") $cmd_realpath listn4-ip &> $temporal_text 
-cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
-cat $temporal_textfinal ; exit ;;
-"listn6") $cmd_realpath listn6-ip &> $temporal_text 
-cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
-cat $temporal_textfinal ; exit ;;
-list*) $cmd_realpath $first_option &> $temporal_text 
-cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
-cat $temporal_textfinal ; exit ;;
-esac ; $cmd_realpath "$second_option" "$third_option" "$quad_option"
-exit; fi
+if [ "$first_option" == "txt" ] && [ "$list_narrow_tables" != "$NULL" ]
+then first_option=$second_option 
+second_option=$third_option ; quad_option=$third_option ; fi
 ####
 ####
-
 #### output cli:
 ####
 ####
@@ -1490,7 +1437,7 @@ echo "$title_md Example4: speed-ip4 | Example5: sockets | Example6: gui-roll"
 echo "$title_md Example7: gui-menu-yad | Example8: gui-shell-yad"
 echo "$title_md"
 echo "$title_md void to list normal tables or no to list narrow tables"
-echo "list_narrow_tables=no                           ## or void or no"
+echo "list_narrow_tables=                           ## or void or no"
 echo "$title_md" 
 echo "$title_md # default firewall"
 echo "allow_use_legacy=                               ## or void or no"
@@ -3581,12 +3528,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-listn-alltables:
-##########    english: list4-ip: The list option   ##########
-##########    spanish: list4-ip: La opcion lista   ##########
+##########    english: list4: The list option   ##########
+##########    spanish: list4: La opcion lista   ##########
 #### :rutina-inicial-list4:
 ####
 ####
-if [ "$first_option" == "list4-ip" ]; then 
+if [ "$first_option" == "list4" ]; then 
 echo "$title_md [ list4 ] [ List filter ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
@@ -3620,12 +3567,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-list4:
-##########    english: list6-ip: list ipv6 rules filter           ##########
-##########    spanish: list6-ip: lista reglas de filtros de ipv6  ##########
+##########    english: list6: list ipv6 rules filter           ##########
+##########    spanish: list6: lista reglas de filtros de ipv6  ##########
 #### :rutina-inicial-list6:
 ####
 ####
-if [ "$first_option" == "list6-ip" ]; then  
+if [ "$first_option" == "list6" ]; then  
 echo "$title_md [ list6 ] [ List filter ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
 legacyseis=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
@@ -3661,12 +3608,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-list6:
-##########    english: listn4-ip: The list option   ##########
-##########    spanish: listn4-ip: La opcion lista   ##########
-#### :rutina-inicial-listn4-ip:
+##########    english: listn4: The list option   ##########
+##########    spanish: listn4: La opcion lista   ##########
+#### :rutina-inicial-listn4:
 ####
 ####
-if [ "$first_option" == "listn4-ip" ]; then  
+if [ "$first_option" == "listn4" ]; then  
 echo "$title_md [ list4 ] [ List filter ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
@@ -3699,13 +3646,13 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-listn4-ip:
-##########    english: listn6-ip: list ipv6 rules filter           ##########
-##########    spanish: listn6-ip: lista reglas de filtros de ipv6  ##########
-#### :rutina-inicial-listn6-ip:
+#### :rutina-final-listn4:
+##########    english: listn6: list ipv6 rules filter           ##########
+##########    spanish: listn6: lista reglas de filtros de ipv6  ##########
+#### :rutina-inicial-listn6:
 ####
 ####
-if [ "$first_option" == "listn6-ip" ]; then  
+if [ "$first_option" == "listn6" ]; then  
 echo "$title_md [ list6 ] [ List filter ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
 legacyseis=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
@@ -3740,7 +3687,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-listn6-ip:
+#### :rutina-final-listn6:
 ##########    english: status: The list option ipv4 and ipv6    ##########
 ##########    spanish: status: La opcion lista ipv4 y ipv6      ##########
 #### :rutina-inicial-status:
