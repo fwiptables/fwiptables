@@ -1024,12 +1024,13 @@ expert-*) echo "the commands expert works only wihtout optional output." ; exit 
 ####
 ####
 if [ "$first_option" == "narrow" ]
-then $cmd_realpath $second_option $third_option $quad_option \
-| $command_grep -iv Warning: \
+then case $second_option in ls*|list*)
+$cmd_realpath $second_option $third_option $quad_option \
+| $command_grep -iv "warning:" \
 | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $11 " " $12 " " \
-$13 " " $14 " " $15 " " $16 " " $17 }' 
-exit ; fi
+$13 " " $14 " " $15 " " $16 " " $17 }' ;;
+*) echo "$title_md Narrow option works only to list rules" ;; esac ; exit ; fi
 ####
 ####
 #### output txt:   |||    General text without warnings version list normal
@@ -2513,11 +2514,7 @@ exit; fi
 if [ "$first_option" == "list-options" ] ; then 
 echo "$title_md $cmd_basename [optional-output] first_option [second_option]   "
 echo "$title_md  [ optional-output ] output                                         "
-#### echo "$text_md [ -t|-txt -c|-cli -g|-gui -l|-log -p|-pdf -s|-silent ]               "
-#### echo "$text_md [ -cli-dialog -cli-whiptail -gui-zenity -gui-yad ]                   "
-#### echo "$text_md [ -cli-menu-dialog -cli-menu-whiptail -gui-roll-zenity ]             "
-#### echo "$text_md [ -gui-menu-zenity -gui-menu-yad -gui-shell-zenity -gui-shell-yad ]  "
-echo "$text_md [ t|txt -n|narrow c|cli g|gui l|log p|pdf s|silent ]                 "
+echo "$text_md [ t|txt n|narrow c|cli g|gui l|log p|pdf s|silent ]                  "
 echo "$text_md [ cli-dialog cli-whiptail gui-zenity gui-yad ]                       "
 echo "$text_md [ cli-menu-dialog cli-menu-whiptail gui-roll-zenity ]                "
 echo "$text_md [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ]      "
