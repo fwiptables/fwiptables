@@ -445,14 +445,24 @@ else default_root_home="$HOME"; fi
 ####
 #### set directory data cache
 ####
-directory_data_necesary="$default_root_home/.config/$file_installed"
 directory_cache_run="/run/$file_installed"
 directory_cache_home="$default_root_home/.cache/$file_installed"
-#### if [ -d "/run" ]; then mkdir -p $directory_cache_run &> /dev/null ; fi
 if [ ! -d "$directory_cache_home" ]; 
 then mkdir -p $directory_cache_home &> /dev/null ; fi
 ####
 ####
+#### #### variables tree and .cache ####
+####
+#### raiz .cache 
+directory_cache_necesary="$directory_cache_home"
+#### tree .cache
+default_directory_cache="$directory_cache_necesary"
+####
+#### #### variables tree .config ####
+####
+#### raiz .config
+directory_data_necesary="$default_root_home/.config/$file_installed"
+#### tree .config
 default_directory_template="$directory_data_necesary/fwiptables-template"
 default_directory_control="$directory_data_necesary/fwiptables-control"
 default_directory_custom="$directory_data_necesary/fwiptables-custom"
@@ -492,23 +502,23 @@ file_default_autolog="$default_directory_autolog/default_autolog-$cmd_version"
 ####
 #### stablished which is the cache temporal.
 ####
-directory_cache="$directory_cache_home"
+#### directory_cache="$directory_cache_home"
 ####
 #### stablished a new variable
 ####
-directory_temporal="$directory_cache"
+#### default_directory_temporal="$directory_cache"
 ####
 ####
 #### english: temporal files
 #### spanish: archivos temporales
 ####
 ####
-temporal_text="$directory_temporal/$first_option-$second_option-$third_option"
-temporal_textfinal="$directory_temporal/$first_option-$second_option-$third_option-textfinal"
-temporal_gui="$directory_temporal/$first_option-$second_option-$third_option"
-temporal_guifinal="$directory_temporal/$first_option-$second_option-$third_option-guifinal"
-output_log="$directory_temporal/$first_option-$second_option-$third_option"
-output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-logfinal"
+temporal_text="$default_directory_cache/$first_option-$second_option-$third_option"
+temporal_textfinal="$default_directory_cache/$first_option-$second_option-$third_option-textfinal"
+temporal_gui="$default_directory_cache/$first_option-$second_option-$third_option"
+temporal_guifinal="$default_directory_cache/$first_option-$second_option-$third_option-guifinal"
+output_log="$default_directory_cache/$first_option-$second_option-$third_option"
+output_logfinal="$default_directory_cache/$first_option-$second_option-$third_option-logfinal"
 ####
 ####
 #### :rutina-final-files:
@@ -520,12 +530,16 @@ output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-
 command_mkdir="$(command -v mkdir)"
 ####
 ####
+if [ ! -d "$default_directory_cache" ]; then
+$command_mkdir -p $default_directory_cache &> /dev/null ; fi
+####
+####
 if [ ! -d "$default_directory_data_necesary" ]; then
 $command_mkdir -p $default_directory_data_necesary &> /dev/null ; fi
+####
+####
 if [ ! -d "$default_directory_control" ]; then 
 $command_mkdir -p "$default_directory_control" &> /dev/null ; fi
-if [ ! -d "$default_directory_temporal" ]; then
-$command_mkdir -p $default_directory_temporal &> /dev/null ; fi
 if [ ! -d "$default_directory_template" ]; then
 $command_mkdir -p "$default_directory_template" &> /dev/null ; fi
 if [ ! -d "$default_directory_custom" ]; then
@@ -1744,7 +1758,7 @@ echo "$title_md [ $first_option ] [ List for depends programs ] [ depends md ] "
 echo
 echo "$title_md [ Configuration files ]"
 echo "$text_md Directory data:          $directory_data_necesary"
-echo "$text_md Directory temp:          $directory_cache"
+echo "$text_md Directory temp:          $default_directory_cache"
 echo "$text_md File Preferences:        $file_default_preferences"
 echo
 echo "$title_md [ Log files ]"
@@ -1841,7 +1855,7 @@ echo "$text_md [ info ] [ Developer Contact  ] $cmd_contact                "
 echo "$text_md [ info ] [ License program    ] $cmd_license                "
 echo "$text_md [ info ] [ Others details in $cmd_basename ]                "
 echo "$text_md [ info ] [ Data  Directory    ] $directory_data_necesary    "
-echo "$text_md [ info ] [ Cache Directory    ] $directory_cache            "
+echo "$text_md [ info ] [ Cache Directory    ] $directory_cache_necesary   "
 echo "$text_md [ info ] [ File  Preferences  ]                             "
 echo "$text_md $file_default_preferences        "  
 echo "$text_md [ info ] [ File  Format       ]                             "
@@ -1875,6 +1889,19 @@ exit; fi
 ####
 ####
 #### :rutina-final-treeconf:
+##########    english: treecache: tree configs in fwiptables     ##########
+##########    spanish: treecache: arbol de conf en fwiptables    ##########
+#### :rutina-inicial-treecache:
+####
+####
+if   [ "$first_option" == "treecache" ]; then 
+if   [ "$command_tree" == "$NULL" ] ; then 
+echo "$title_md [ fail ] please install tree command" ; fi
+$command_tree $directory_cache_necesary
+exit; fi
+####
+####
+#### :rutina-final-treecache:
 ##########    english: notes: notes to configure iptables      ##########
 ##########    spanish: notes: notas para configurar iptables   ##########
 #### :rutina-inicial-notes:
@@ -4291,7 +4318,7 @@ exit; fi
 ####
 ####
 if [ -f "$default_directory_custom/$second_option" ] ; then $nada
-cp "$default_directory_custom/$second_option" "$directory_temporal/$second_option" &> /dev/null
+cp "$default_directory_custom/$second_option" "$default_directory_cache/$second_option" &> /dev/null
 $favorite_text_editor "$default_directory_custom/$second_option"
 echo "$title_md [ _ok_ ] [ load-custom file $second_option ]"
 clear; fi
@@ -4415,7 +4442,7 @@ echo "$title_md  fwiptables location.                    "
 echo "$text_md"
 echo "$text_md     File location:   $directory_installed/$file_installed    "
 echo "$text_md  Config directory:   $directory_data_necesary     "
-echo "$text_md  Cache  directory:   $directory_cache    "
+echo "$text_md  Cache  directory:   $default_directory_cache    "
 echo "$text_md"
 echo "$title_md fwiptables install.                     "
 echo "$text_md"
@@ -4541,7 +4568,7 @@ $directory_installed/$file_installed config-regen &> /dev/null
 ####
 echo "$title_md [ ok ] [ The Command shell: ] [ $directory_installed/$file_installed ]"
 echo "$title_md [ ok ] [ The  config   dir: ] [ $directory_data_necesary ]"
-echo "$title_md [ ok ] [ The  cache    dir: ] [ $directory_cache  ]"
+echo "$title_md [ ok ] [ The  cache    dir: ] [ $default_directory_cache  ]"
 echo "$title_md [ ok ] Now. Ready to run $file_installed"
 exit; fi
 ####
@@ -4708,7 +4735,7 @@ echo "$title_md Install curl to download and to install stable latest version"; 
 ####
 ####
 echo "$title_md Downloading fwiptables stable latest"
-descarga="$default_directory_log/fwiptables"
+descarga="$default_directory_cache/fwiptables-stable"
 $command_curl $web_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga install
 exit; fi
@@ -4728,7 +4755,7 @@ echo "$title_md Install curl to download and to install unstable latest version"
 ####
 ####
 echo "$title_md Downloading fwiptables development latest"
-descarga="$default_directory_log/fwiptables"
+descarga="$default_directory_cache/fwiptables-unstable"
 $command_curl $git_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga install
 exit; fi
@@ -4922,12 +4949,12 @@ exit; fi
 if [ "$first_option" == "wizard-mini" ]; then echo 
 archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
 $cmd_realpath config-regen
-cp "$default_minicfg_eng" "$directory_temporal/$file_installed-$archivo"
-$favorite_text_editor "$directory_temporal/$file_installed-$archivo"
+cp "$default_minicfg_eng" "$default_directory_cache/$file_installed-$archivo"
+$favorite_text_editor "$default_directory_cache/$file_installed-$archivo"
 clear
 $favorite_realpath_textdialog --clear --title "Run this wizard" \
 --yesno "Run this wizard" 0 0 && clear \
-&& cp "$directory_temporal/$file_installed-$archivo" \
+&& cp "$default_directory_cache/$file_installed-$archivo" \
 "$default_directory_custom/$archivo" && $cmd_realpath load-custom $archivo || clear
 ####
 ####
@@ -4943,12 +4970,12 @@ exit; fi
 if [ "$first_option" == "wizard-full" ]; then $nada
 archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
 $cmd_realpath config-regen
-cp "$default_fullcfg_eng" "$directory_temporal/$file_installed-$archivo"
-$favorite_text_editor "$directory_temporal/$file_installed-$archivo"
+cp "$default_fullcfg_eng" "$default_directory_cache/$file_installed-$archivo"
+$favorite_text_editor "$default_directory_cache/$file_installed-$archivo"
 clear
 $favorite_realpath_textdialog --clear --title "Run this wizard" --yesno \
 "Run this wizard" 0 0 && clear && \
-cp "$directory_temporal/$file_installed-$archivo" "$default_directory_custom/$archivo" \
+cp "$default_directory_cache/$file_installed-$archivo" "$default_directory_custom/$archivo" \
 && $cmd_realpath load-custom $archivo || clear 
 ####
 ####
@@ -5488,10 +5515,10 @@ case $second_option in
 #### 
 #### 
 "new-mini-custom")
-cp "$default_minicfg_eng" "$directory_temporal/$file_installed-$third_option"
+cp "$default_minicfg_eng" "$default_directory_cache/$file_installed-$third_option"
 $favorite_realpath_graphicalldialog --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_temporal/$file_installed-$third_option" \
+--filename="$default_directory_cache/$file_installed-$third_option" \
 --editable --title="NEW MINI CONFIG" 1> "$default_directory_custom/$third_option" ;
 if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog --forms \
@@ -5506,10 +5533,10 @@ $favorite_realpath_graphicalldialog --forms \
 #### 
 #### 
 "new-full-custom")
-cp "$default_fullcfg_eng" "$directory_temporal/$file_installed-$third_option"
+cp "$default_fullcfg_eng" "$default_directory_cache/$file_installed-$third_option"
 $favorite_realpath_graphicalldialog --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_temporal/$file_installed-$third_option" \
+--filename="$default_directory_cache/$file_installed-$third_option" \
 --editable --title="NEW FULL CONFIG" 1> "$default_directory_custom/$third_option" ;
 if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog --forms \
@@ -5524,10 +5551,10 @@ $favorite_realpath_graphicalldialog --forms \
 #### 
 #### 
 "nueva-mini-custom")
-cp "$default_minicfg_spa" "$directory_temporal/$file_installed-$third_option"
+cp "$default_minicfg_spa" "$default_directory_cache/$file_installed-$third_option"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_temporal/$file_installed-$third_option" \
+--filename="$default_directory_cache/$file_installed-$third_option" \
 --editable --title="NUEVA MINI CONFIG" 1> "$default_directory_custom/$third_option" ;
 if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog  --forms \
@@ -5542,10 +5569,10 @@ $favorite_realpath_graphicalldialog  --forms \
 #### 
 #### 
 "nueva-completa-custom")
-cp "$default_fullcfg_spa" "$directory_temporal/$file_installed-$third_option"
+cp "$default_fullcfg_spa" "$default_directory_cache/$file_installed-$third_option"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_temporal/$file_installed-$third_option" \
+--filename="$default_directory_cache/$file_installed-$third_option" \
 --editable --title="NUEVA COMPLETA CONFIG" 1> "$default_directory_custom/$third_option" ;
 if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog  --forms \
@@ -5565,16 +5592,16 @@ then $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="file not found: $third_option" ; exit ; fi 
 cp "$default_directory_custom/$third_option" \
-"$directory_temporal/$file_installed-$third_option"
+"$default_directory_cache/$file_installed-$third_option"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_temporal/$file_installed-$third_option" \
+--filename="$default_directory_cache/$file_installed-$third_option" \
 --editable --title="MODIFY CONFIG" 1> "$default_directory_custom/$third_option"
 if [ -s "$default_directory_custom/$third_option" ]; then $nada ; 
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="OK. file: $third_option"
-else cp "$directory_temporal/$file_installed-$third_option" \
+else cp "$default_directory_cache/$file_installed-$third_option" \
 "$default_directory_custom/$third_option"
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -5595,16 +5622,16 @@ then $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="file not found: wpaconfig_$third_option" ; exit ; fi 
 cp "$default_directory_wpa/wpaconfig_$third_option" 
-"$directory_temporal/$file_installed-$third_option"
+"$default_directory_cache/$file_installed-$third_option"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_temporal/$file_installed-$third_option" \
+--filename="$default_directory_cache/$file_installed-$third_option" \
 --editable --title="MODIFY CONFIG" 1> "$default_directory_wpa/wpaconfig_$third_option"
 if [ -s "$default_directory_wpa/wpaconfig_$third_option" ]; then  
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="OK. file: $third_option"
-else cp "$directory_temporal/$file_installed-$third_option" "$default_directory_wpa/wpaconfig_$third_option"
+else cp "$default_directory_cache/$file_installed-$third_option" "$default_directory_wpa/wpaconfig_$third_option"
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="Canceled. file: wpaconfig_$third_option"; fi
@@ -5637,10 +5664,10 @@ case $second_option in
 #### 
 "wizard-mini")
 archivo="wizard-mini"
-cp "$default_minicfg_eng" "$directory_temporal/$file_installed-$archivo"
+cp "$default_minicfg_eng" "$default_directory_cache/$file_installed-$archivo"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_temporal/$file_installed-$archivo" \
+--filename="$default_directory_cache/$file_installed-$archivo" \
 --editable --title="WIZARD MINI" 1> "$default_directory_custom/$archivo"
 if [  -s "$default_directory_custom/$archivo" ]; then $nada ; 
 $cmd_realpath -gui load-custom $archivo ; $cmd_realpath -gui list4;
@@ -5653,10 +5680,10 @@ $favorite_realpath_graphicalldialog --info \
 #### 
 "wizard-full")
 archivo="wizard-full"
-cp "$default_fullcfg_eng" "$directory_temporal/$file_installed-$archivo"
+cp "$default_fullcfg_eng" "$default_directory_cache/$file_installed-$archivo"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_temporal/$file_installed-$archivo" \
+--filename="$default_directory_cache/$file_installed-$archivo" \
 --editable --title="WIZARD FULL" 1> "$default_directory_custom/$archivo"
 if [  -s "$default_directory_custom/$archivo" ]; then $nada ; 
 $cmd_realpath -gui load-custom $archivo ; $cmd_realpath -gui list4;
@@ -5673,16 +5700,16 @@ else $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="file not found: $third_option" ; exit ; fi 
 cp "$default_directory_custom/$third_option" \
-"$directory_temporal/$file_installed-$third_option"
+"$default_directory_cache/$file_installed-$third_option"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_temporal/$file_installed-$third_option" \
+--filename="$default_directory_cache/$file_installed-$third_option" \
 --editable --title="MODIFY CONFIG $third_option" 1> "$default_directory_custom/$third_option"
 if [ -s "$default_directory_custom/$third_option" ]; then $nada ; 
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="OK. file: $third_option"
-else cp "$directory_temporal/$cmd_realpath-$third_option" \
+else cp "$default_directory_cache/$cmd_realpath-$third_option" \
 "$default_directory_custom/$third_option"
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
