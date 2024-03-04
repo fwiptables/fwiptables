@@ -6315,10 +6315,9 @@ $cmd_realpath del-custom $archivo ;;
 0730) clear ; $cmd_realpath cli install;;
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-clear ; exit ;;
-esac 
-$cmd_realpath text-pause
-clear ; $cmd_realpath cli-menu-$favorite_basename_textdialog
+clear ; exit ;; esac 
+$cmd_realpath text-pause ; clear
+$cmd_realpath cli-menu-$favorite_basename_textdialog
 exit; fi
 ####
 ####

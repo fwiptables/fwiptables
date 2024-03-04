@@ -842,10 +842,14 @@ esac
 ####
 ####
 case "$first_option" in
-"--cli-menu-dialog") first_option="cli-menu-dialog" ;;
-"-cli-menu-dialog") first_option="cli-menu-dialog" ;;
-"--cli-menu-whiptail") first_option="cli-menu-whiptail" ;;
-"-cli-menu-whiptail") first_option="cli-menu-whiptail" ;;
+"--cli-menu-dialog") first_option="cli-menu"
+favorite_realpath_textdialog="$command_dialog" ;;
+"-cli-menu-dialog") first_option="cli-menu"
+favorite_realpath_textdialog="$command_dialog" ;;
+"--cli-menu-whiptail") first_option="cli-menu"
+favorite_realpath_textdialog="$command_whiptail" ;;
+"-cli-menu-whiptail") first_option="cli-menu"
+favorite_realpath_textdialog="$command_whiptail" ;;
 "-gui-menu-zenity") first_option="gui-menu-zenity" ;;
 "--gui-menu-zenity") first_option="gui-menu-zenity" ;;
 "-gui-menu-yad") first_option="gui-menu-yad" ;;
@@ -1042,10 +1046,9 @@ $13 " " $14 " " $15 " " $16 " " $17 }' &> $temporal_text ;;
 ####
 if [ "$first_option" == "txt" ] 
 then case $second_option in 
-ls*|list*) $cmd_realpath $second_option $third_option $quad_option &> $temporal_text
-cat $temporal_text | $command_grep -E -v Warning: ;;
-*) first_option=$second_option 
-second_option=$third_option ; quad_option=$third_option ;; esac ; exit ; fi
+ls*|list*) $cmd_realpath $second_option $third_option &> $temporal_text
+cat $temporal_text | $command_grep -E -v Warning: ; exit ;;
+*) first_option=$second_option ; second_option=$third_option ;; esac ; fi
 ####
 ####
 #### output cli:
@@ -1053,13 +1056,25 @@ second_option=$third_option ; quad_option=$third_option ;; esac ; exit ; fi
 ####
 if [ "$first_option" == "cli" ]
 then echo "$head_waiting_cli"
+####
+####
 if [ "$favorite_realpath_textdialog" == "$NULL" ]; then 
-echo "$text_md [ info ] Please install or dialog or whiptail to work with cli";  exit; fi
-cmd_inicial="$($cmd_realpath txt $second_option $third_option)"
-$favorite_realpath_textdialog --clear --notags --title \
-"Cli Menu With $cmd_version" --msgbox "$cmd_inicial" 0 0
-clear
-exit ; fi
+echo "$text_md [ info ] Please install or dialog or whiptail to work with cli"
+exit; fi
+####
+#### --clear --notags
+#### thebox="$($cmd_realpath txt $second_option $third_option)"
+####
+#### --clear --notags
+case $second_option in list*)
+$favorite_basename_textdialog --clear --notags \
+--title "Cli Menu With $cmd_version" \
+--msgbox "$($cmd_realpath txt $second_option)" 0 0 ;;
+*) echo "$title_md cli works only with list options" ;;
+esac 
+####
+####
+$cmd_realpath text-pause ; clear ; exit ; fi
 ####
 ####
 #### output log
@@ -2932,6 +2947,7 @@ exit; fi
 if   [ "$first_option" == "optional-output" ]; then
 echo "$text_md "
 echo "$title_md | optional-output | $cmd_realpath optional-ouptut |"
+echo "$title_md note: text *narrow* and *cli* only works with list options"
 echo "$text_md"
 echo "$text_md -t . output in terminal text "
 echo "$text_md -n . output in terminal text narrow (compresed spaces)"
@@ -4395,7 +4411,6 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "reset" ]; then 
-echo "$title_md [ $first_option ] [ Reset the firewall ] "
 echo "$title_md [ info ] [ Reseting the firewall ]"
 $cmd_realpath stop &> /dev/null
 $cmd_realpath continue &> /dev/null
@@ -6093,13 +6108,13 @@ exit ; fi
 #### :rutina-inicial-cli-menu:
 ####
 ####
-if   [ "$first_option" == "cli-menu" ]; then $nada
+if   [ "$first_option" == "cli-menu" ]; then
 case "$favorite_realpath_textdialog" in "$NULL")
 echo "$title_md [ fail ] [ Install or dialog or whiptail to work ]"
 exit ;; esac
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 --title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
-0000 "$title_md $text_md [$cmd_realpath cli-menu] $text_md $title_md" \
+0010 "$title_md $text_md [$cmd_realpath cli-menu] $text_md $title_md" \
 0100 "$title_md [  --- Info Options --- ] $title_md" \
 0200 "$title_md [ Firewall Control ] $title_md" \
 0201  "$text_md stop" \
@@ -6229,24 +6244,25 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 #### 
 #### english: dialog choosed #### spanish: dialogo elegido
 #### 
-#### 
-case "$menuprincipal" in
+####
+echo 3
+case $menuprincipal in
 ##########
 ##########
-0000) clear ; $cmd_realpath cli readme  ;;
-0100) clear ; $cmd_realpath cli info-options ;;
-0200) clear ; $cmd_realpath cli firewall-control ;;
-0300) clear ; $cmd_realpath cli firewall-listconceptual ;;
-0400) clear ; $cmd_realpath cli firewall-listnumeral ;;
-0500) clear ; $cmd_realpath cli firewall-wallsystem ;;
-0600) clear ; $cmd_realpath cli firewall-wallcustom ;;
-0700) clear ; $cmd_realpath cli options-easy ;;
+0010) clear ; $cmd_realpath txt readme  ;;
+0100) clear ; $cmd_realpath txt info-options ;;
+0200) clear ; $cmd_realpath txt firewall-control ;;
+0300) clear ; $cmd_realpath txt firewall-listconceptual ;;
+0400) clear ; $cmd_realpath txt firewall-listnumeral ;;
+0500) clear ; $cmd_realpath txt firewall-wallsystem ;;
+0600) clear ; $cmd_realpath txt firewall-wallcustom ;;
+0700) clear ; $cmd_realpath txt options-easy ;;
 ################################################################################
-0201) clear ; $cmd_realpath cli stop ;;
-0202) clear ; $cmd_realpath cli continue ;;
-0203) clear ; $cmd_realpath cli reset ;;
-0204) clear ; $cmd_realpath cli names ;;
-0205) clear ; $cmd_realpath names ; echo "$fifty_md"
+0201) clear ; $cmd_realpath txt stop ;;
+0202) clear ; $cmd_realpath txt continue ;;
+0203) clear ; $cmd_realpath txt reset ;;
+0204) clear ; $cmd_realpath txt names ;;
+0205) clear ; $cmd_realpath txt names ; echo "$fifty_md"
 read -p "Type the firewall name to read   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
 $cmd_realpath show $nombrecillo ;; 
@@ -6258,82 +6274,82 @@ clear ;  echo "$fifty_md saved $archivo" ; $cmd_realpath save $archivo ;;
 read -p "| Type the firewall name to restore |   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
 $cmd_realpath load $nombrecillo ;;
-0208) clear ; $cmd_realpath cli actual ;;
-0209) clear ; $cmd_realpath cli eraserules ; $cmd_realpath cli list4   ;;
+0208) clear ; $cmd_realpath txt actual ;;
+0209) clear ; $cmd_realpath txt eraserules ; $cmd_realpath cli list4   ;;
 0210) clear ; $cmd_realpath txt wizard-mini ; $cmd_realpath cli list4  ;;
 0211) clear ; $cmd_realpath txt wizard-full ; $cmd_realpath cli list4  ;;
-0212) clear ; $cmd_realpath cli off-line ; $cmd_realpath cli list4  ;;
-0213) clear ; $cmd_realpath cli all-permisive ; $cmd_realpath cli list4   ;;
-0214) clear ; $cmd_realpath cli eraserules4 ; $cmd_realpath cli list4   ;;
-0215) clear ; $cmd_realpath cli eraserules6 ; $cmd_realpath cli list6   ;;
+0212) clear ; $cmd_realpath txt off-line ; $cmd_realpath cli list4  ;;
+0213) clear ; $cmd_realpath txt all-permisive ; $cmd_realpath cli list4   ;;
+0214) clear ; $cmd_realpath txt eraserules4 ; $cmd_realpath cli list4   ;;
+0215) clear ; $cmd_realpath txt eraserules6 ; $cmd_realpath cli list6   ;;
 ################################################################################
-0301) clear ; $cmd_realpath cli list4 ;;
-0302) clear ; $cmd_realpath cli list6 ;;
-0303) clear ; $cmd_realpath cli list-filter4 ;;
-0304) clear ; $cmd_realpath cli list-filter6 ;;
-0305) clear ; $cmd_realpath cli list-forward ;;
-0306) clear ; $cmd_realpath cli list-forward6 ;;
-0307) clear ; $cmd_realpath cli list-nat4 ;;
-0308) clear ; $cmd_realpath cli list-nat6 ;;
-0309) clear ; $cmd_realpath cli list-alltables ;;
-0314) clear ; $cmd_realpath cli list-raw4 ;;
-0315) clear ; $cmd_realpath cli list-raw6 ;;
-0316) clear ; $cmd_realpath cli list-mangle4 ;; 
-0317) clear ; $cmd_realpath cli list-mangle6 ;;
-0318) clear ; $cmd_realpath cli list-security4 ;;
-0319) clear ; $cmd_realpath cli list-security6 ;;
-0320) clear ; $cmd_realpath cli list-ebtables ;;
-0321) clear ; $cmd_realpath cli list-arptables ;;
+0301) clear ; $cmd_realpath txt list4 ;;
+0302) clear ; $cmd_realpath txt list6 ;;
+0303) clear ; $cmd_realpath txt list-filter4 ;;
+0304) clear ; $cmd_realpath txt list-filter6 ;;
+0305) clear ; $cmd_realpath txt list-forward ;;
+0306) clear ; $cmd_realpath txt list-forward6 ;;
+0307) clear ; $cmd_realpath txt list-nat4 ;;
+0308) clear ; $cmd_realpath txt list-nat6 ;;
+0309) clear ; $cmd_realpath txt list-alltables ;;
+0314) clear ; $cmd_realpath txt list-raw4 ;;
+0315) clear ; $cmd_realpath txt list-raw6 ;;
+0316) clear ; $cmd_realpath txt list-mangle4 ;; 
+0317) clear ; $cmd_realpath txt list-mangle6 ;;
+0318) clear ; $cmd_realpath txt list-security4 ;;
+0319) clear ; $cmd_realpath txt list-security6 ;;
+0320) clear ; $cmd_realpath txt list-ebtables ;;
+0321) clear ; $cmd_realpath txt list-arptables ;;
 ################################################################################
-0401) clear ; $cmd_realpath cli listn4 ;;
-0402) clear ; $cmd_realpath cli listn6 ;;
-0403) clear ; $cmd_realpath cli listn-filter4 ;;
-0404) clear ; $cmd_realpath cli listn-filter6 ;;
-0405) clear ; $cmd_realpath cli listn-forward ;;
-0406) clear ; $cmd_realpath cli listn-forward6 ;;
-0407) clear ; $cmd_realpath cli listn-nat4 ;;
-0408) clear ; $cmd_realpath cli listn-nat6 ;;
-0409) clear ; $cmd_realpath cli listn-alltables ;;
-0414) clear ; $cmd_realpath cli listn-raw4 ;;
-0415) clear ; $cmd_realpath cli listn-raw6 ;;
-0416) clear ; $cmd_realpath cli listn-mangle4 ;; 
-0417) clear ; $cmd_realpath cli listn-mangle6 ;;
-0418) clear ; $cmd_realpath cli listn-security4 ;;
-0419) clear ; $cmd_realpath cli listn-security6 ;;
-0420) clear ; $cmd_realpath cli list-ebtables ;;
-0421) clear ; $cmd_realpath cli list-arptables ;;
+0401) clear ; $cmd_realpath txt listn4 ;;
+0402) clear ; $cmd_realpath txt listn6 ;;
+0403) clear ; $cmd_realpath txt listn-filter4 ;;
+0404) clear ; $cmd_realpath txt listn-filter6 ;;
+0405) clear ; $cmd_realpath txt listn-forward ;;
+0406) clear ; $cmd_realpath txt listn-forward6 ;;
+0407) clear ; $cmd_realpath txt listn-nat4 ;;
+0408) clear ; $cmd_realpath txt listn-nat6 ;;
+0409) clear ; $cmd_realpath txt listn-alltables ;;
+0414) clear ; $cmd_realpath txt listn-raw4 ;;
+0415) clear ; $cmd_realpath txt listn-raw6 ;;
+0416) clear ; $cmd_realpath txt listn-mangle4 ;; 
+0417) clear ; $cmd_realpath txt listn-mangle6 ;;
+0418) clear ; $cmd_realpath txt listn-security4 ;;
+0419) clear ; $cmd_realpath txt listn-security6 ;;
+0420) clear ; $cmd_realpath txt list-ebtables ;;
+0421) clear ; $cmd_realpath txt list-arptables ;;
 ################################################################################
-0507) clear ; $cmd_realpath cli client-basic ; $cmd_realpath cli list4    ;;
-0508) clear ; $cmd_realpath cli client-web ; $cmd_realpath cli list4    ;;
-0509) clear ; $cmd_realpath cli client-git ; $cmd_realpath cli list4    ;;
-0510) clear ; $cmd_realpath cli games-shooter ; $cmd_realpath cli list4   ;; 
-0511) clear ; $cmd_realpath cli game-wesnoth ; $cmd_realpath cli list4    ;;
-0512) clear ; $cmd_realpath cli game-minetest ; $cmd_realpath cli list4   ;;
-0513) clear ; $cmd_realpath cli game-freeciv ; $cmd_realpath cli list4    ;;
-0514) clear ; $cmd_realpath cli game-widelands ; $cmd_realpath cli list4  ;;
-0515) clear ; $cmd_realpath cli client-web ; $cmd_realpath cli list4      ;;
-0516) clear ; $cmd_realpath cli client-vnc ; $cmd_realpath cli list4      ;;
-0517) clear ; $cmd_realpath cli client-tor ; $cmd_realpath cli list4      ;;
-0518) clear ; $cmd_realpath cli client-vpn ; $cmd_realpath cli list4      ;;
-0519) clear ; $cmd_realpath cli client-torrent ; $cmd_realpath cli list4  ;;
-0520) clear ; $cmd_realpath cli lan-tor ; $cmd_realpath cli list4         ;;
-0521) clear ; $cmd_realpath cli lan-vpn ; $cmd_realpath cli list4         ;; 
-0522) clear ; $cmd_realpath cli shield-ssh ; $cmd_realpath cli list4      ;; 
-0523) clear ; $cmd_realpath cli server-ssh ; $cmd_realpath cli list4      ;;
-0524) clear ; $cmd_realpath cli server-web ; $cmd_realpath cli list4      ;;
-0525) clear ; $cmd_realpath cli server-vnc ; $cmd_realpath cli list4      ;;
-0526) clear ; $cmd_realpath cli server-print ; $cmd_realpath cli list4    ;;
-0527) clear ; $cmd_realpath cli server-samba ; $cmd_realpath cli list4    ;;
-0528) clear ; $cmd_realpath cli server-lamp ; $cmd_realpath cli list4     ;;
-0529) clear ; $cmd_realpath cli server-mail ; $cmd_realpath cli list4     ;;
-0530) clear ; $cmd_realpath cli server-ftp ; $cmd_realpath cli list4      ;;
-0531) clear ; $cmd_realpath cli server-news ; $cmd_realpath cli list4     ;;
-0532) clear ; $cmd_realpath cli server-teamspeak ; $cmd_realpath cli list4  ;;
-0533) clear ; $cmd_realpath cli server-mumble ; $cmd_realpath cli list4   ;;
-0534) clear ; $cmd_realpath cli server-sql ; $cmd_realpath cli list4      ;;
-0535) clear ; $cmd_realpath cli server-asterisk ; $cmd_realpath cli list4 ;;
+0507) clear ; $cmd_realpath txt client-basic ; $cmd_realpath cli list4    ;;
+0508) clear ; $cmd_realpath txt client-web ; $cmd_realpath cli list4    ;;
+0509) clear ; $cmd_realpath txt client-git ; $cmd_realpath cli list4    ;;
+0510) clear ; $cmd_realpath txt games-shooter ; $cmd_realpath cli list4   ;; 
+0511) clear ; $cmd_realpath txt game-wesnoth ; $cmd_realpath cli list4    ;;
+0512) clear ; $cmd_realpath txt game-minetest ; $cmd_realpath cli list4   ;;
+0513) clear ; $cmd_realpath txt game-freeciv ; $cmd_realpath cli list4    ;;
+0514) clear ; $cmd_realpath txt game-widelands ; $cmd_realpath cli list4  ;;
+0515) clear ; $cmd_realpath txt client-web ; $cmd_realpath cli list4      ;;
+0516) clear ; $cmd_realpath txt client-vnc ; $cmd_realpath cli list4      ;;
+0517) clear ; $cmd_realpath txt client-tor ; $cmd_realpath cli list4      ;;
+0518) clear ; $cmd_realpath txt client-vpn ; $cmd_realpath cli list4      ;;
+0519) clear ; $cmd_realpath txt client-torrent ; $cmd_realpath cli list4  ;;
+0520) clear ; $cmd_realpath txt lan-tor ; $cmd_realpath cli list4         ;;
+0521) clear ; $cmd_realpath txt lan-vpn ; $cmd_realpath cli list4         ;; 
+0522) clear ; $cmd_realpath txt shield-ssh ; $cmd_realpath cli list4      ;; 
+0523) clear ; $cmd_realpath txt server-ssh ; $cmd_realpath cli list4      ;;
+0524) clear ; $cmd_realpath txt server-web ; $cmd_realpath cli list4      ;;
+0525) clear ; $cmd_realpath txt server-vnc ; $cmd_realpath cli list4      ;;
+0526) clear ; $cmd_realpath txt server-print ; $cmd_realpath cli list4    ;;
+0527) clear ; $cmd_realpath txt server-samba ; $cmd_realpath cli list4    ;;
+0528) clear ; $cmd_realpath txt server-lamp ; $cmd_realpath cli list4     ;;
+0529) clear ; $cmd_realpath txt server-mail ; $cmd_realpath cli list4     ;;
+0530) clear ; $cmd_realpath txt server-ftp ; $cmd_realpath cli list4      ;;
+0531) clear ; $cmd_realpath txt server-news ; $cmd_realpath cli list4     ;;
+0532) clear ; $cmd_realpath txt server-teamspeak ; $cmd_realpath cli list4  ;;
+0533) clear ; $cmd_realpath txt server-mumble ; $cmd_realpath cli list4   ;;
+0534) clear ; $cmd_realpath txt server-sql ; $cmd_realpath cli list4      ;;
+0535) clear ; $cmd_realpath txt server-asterisk ; $cmd_realpath cli list4 ;;
 ################################################################################
-0606) clear ; $cmd_realpath all-custom
+0606) clear ; $cmd_realpath txt all-custom
 read -p "Input the custom name to load # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
 $cmd_realpath load-custom $archivo ;;
@@ -6363,45 +6379,46 @@ $cmd_realpath modify-custom $archivo ;;
 read -p "Input the custom name to delete # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
 $cmd_realpath del-custom $archivo ;;
-0618) clear ; $cmd_realpath cli all-custom ;;
-0619) clear ; $cmd_realpath cli config-regen ;;
+0618) clear ; $cmd_realpath txt all-custom ;;
+0619) clear ; $cmd_realpath txt config-regen ;;
 ################################################################################
-0701) clear ; $cmd_realpath cli preferences-read ;;
-0702) clear ; $cmd_realpath cli preferences-modify ;;
-0703) clear ; $cmd_realpath cli preferences-regen ;;
-0704) clear ; $cmd_realpath cli filelog ;;
-0705) clear ; $cmd_realpath cli autolog ;;
-0706) clear ; $cmd_realpath cli ip4 ;;
-0707) clear ; $cmd_realpath cli ip6 ;;
-0708) clear ; $cmd_realpath cli speed-ip4 ;;
-0709) clear ; $cmd_realpath cli speed-ip6 ;;
-0710) clear ; $cmd_realpath cli sockets ;;
-0711) clear ; $cmd_realpath cli notes ;;
-0712) clear ; $cmd_realpath cli license ;;
+0701) clear ; $cmd_realpath txt preferences-read ;;
+0702) clear ; $cmd_realpath txt preferences-modify ;;
+0703) clear ; $cmd_realpath txt preferences-regen ;;
+0704) clear ; $cmd_realpath txt filelog ;;
+0705) clear ; $cmd_realpath txt autolog ;;
+0706) clear ; $cmd_realpath txt ip4 ;;
+0707) clear ; $cmd_realpath txt ip6 ;;
+0708) clear ; $cmd_realpath txt speed-ip4 ;;
+0709) clear ; $cmd_realpath txt speed-ip6 ;;
+0710) clear ; $cmd_realpath txt sockets ;;
+0711) clear ; $cmd_realpath txt notes ;;
+0712) clear ; $cmd_realpath txt license ;;
 ### 0713) clear ; $cmd_realpath cli about ;;
 ### 0714) clear ; $cmd_realpath cli examples ;;
-0715) clear ; $cmd_realpath cli depends ;;
-0716) clear ; $cmd_realpath cli info ;;
-0717) clear ; $cmd_realpath cli version ;;
-0718) clear ; $cmd_realpath cli list-options ;;
+0715) clear ; $cmd_realpath txt depends ;;
+0716) clear ; $cmd_realpath txt info ;;
+0717) clear ; $cmd_realpath txt version ;;
+0718) clear ; $cmd_realpath txt list-options ;;
 ### 0719) clear ; $cmd_realpath cli clasic-options ;;
-0720) clear ; $cmd_realpath cli info-options ;;
-0721) clear ; $cmd_realpath cli nodes ;;
-0722) clear ; $cmd_realpath cli date ;;
-0723) clear ; $cmd_realpath cli free ;;
-0724) clear ; $cmd_realpath cli expert ;;
-0725) clear ; $cmd_realpath cli treeconf ;;
-0726) clear ; $cmd_realpath cli commands ;;
-0727) clear ; $cmd_realpath cli variables ;;
-0728) clear ; $cmd_realpath cli intro ;;
-0729) clear ; $cmd_realpath cli download;;
-0730) clear ; $cmd_realpath cli install;;
+0720) clear ; $cmd_realpath txt info-options ;;
+0721) clear ; $cmd_realpath txt nodes ;;
+0722) clear ; $cmd_realpath txt date ;;
+0723) clear ; $cmd_realpath txt free ;;
+0724) clear ; $cmd_realpath txt expert ;;
+0725) clear ; $cmd_realpath txt treeconf ;;
+0726) clear ; $cmd_realpath txt commands ;;
+0727) clear ; $cmd_realpath txt variables ;;
+0728) clear ; $cmd_realpath txt intro ;;
+0729) clear ; $cmd_realpath txt download;;
+0730) clear ; $cmd_realpath txt install;;
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-clear ; exit ;;
-esac 
 $cmd_realpath text-pause
-clear ; $cmd_realpath cli-menu-$favorite_basename_textdialog
+clear ; exit ;; esac 
+################################################################################
+$cmd_realpath text-pause
+$cmd_realpath cli-menu-$favorite_basename_textdialog
 exit; fi
 ####
 ####
@@ -6411,8 +6428,8 @@ exit; fi
 #### :rutina-inicial-text-pause:
 ####
 ####
-if [ "$first_option" == "text-pause" ]; then $nada
-read -p '$title_md [ _ok_ ] $title_md Press [enter] \
+if [ "$first_option" == "text-pause" ]
+then read -p '$title_md [ _ok_ ] $title_md Press [enter] \
 to continue now with the cli-menu $title_md'
 exit; fi
 ####
