@@ -1026,10 +1026,10 @@ expert-*) echo "the commands expert works only wihtout optional output." ; exit 
 if [ "$first_option" == "narrow" ]
 then case $second_option in ls*|list*)
 $cmd_realpath $second_option $third_option $quad_option \
-| $command_grep -iv "warning:" \
 | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $11 " " $12 " " \
-$13 " " $14 " " $15 " " $16 " " $17 }' ;;
+$13 " " $14 " " $15 " " $16 " " $17 }' &> $temporal_text
+cat $temporal_text | $command_grep -iv "warning:" ;;
 *) echo "$title_md Narrow option works only to list rules" ;; esac ; exit ; fi
 ####
 ####
@@ -1037,8 +1037,11 @@ $13 " " $14 " " $15 " " $16 " " $17 }' ;;
 ####
 ####
 if [ "$first_option" == "txt" ] 
-then first_option=$second_option 
-second_option=$third_option ; quad_option=$third_option ; fi
+then case $second_option in 
+ls*|list*) $cmd_realpath $second_option $third_option $quad_option &> $temporal_text
+cat $temporal_text | $command_grep -iv "warning:" ;;
+*) first_option=$second_option 
+second_option=$third_option ; quad_option=$third_option ;; esac ; exit ; fi
 ####
 ####
 #### output cli:
