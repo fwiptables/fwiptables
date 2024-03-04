@@ -1029,7 +1029,11 @@ $cmd_realpath $second_option $third_option $quad_option \
 | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $11 " " $12 " " \
 $13 " " $14 " " $15 " " $16 " " $17 }' &> $temporal_text
-cat $temporal_text | $command_grep -iv "warning:" ;;
+cat $temporal_text | $command_grep -E -v Warning: ;;
+"$NULL") $cmd_realpath $second_option $third_option $quad_option \
+| $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
+$5 " " $6 " " $7 " " $8 " " $9 " " $11 " " $12 " " \
+$13 " " $14 " " $15 " " $16 " " $17 }' &> $temporal_text ;;
 *) echo "$title_md Narrow option works only to list rules" ;; esac ; exit ; fi
 ####
 ####
@@ -1039,7 +1043,7 @@ cat $temporal_text | $command_grep -iv "warning:" ;;
 if [ "$first_option" == "txt" ] 
 then case $second_option in 
 ls*|list*) $cmd_realpath $second_option $third_option $quad_option &> $temporal_text
-cat $temporal_text | $command_grep -iv "warning:" ;;
+cat $temporal_text | $command_grep -E -v Warning: ;;
 *) first_option=$second_option 
 second_option=$third_option ; quad_option=$third_option ;; esac ; exit ; fi
 ####
@@ -1051,7 +1055,7 @@ if [ "$first_option" == "cli" ]
 then echo "$head_waiting_cli"
 if [ "$favorite_realpath_textdialog" == "$NULL" ]; then 
 echo "$text_md [ info ] Please install or dialog or whiptail to work with cli";  exit; fi
-cmd_inicial="$($cmd_realpath $second_option $third_option)"
+cmd_inicial="$($cmd_realpath txt $second_option $third_option)"
 $favorite_realpath_textdialog --clear --notags --title \
 "Cli Menu With $cmd_version" --msgbox "$cmd_inicial" 0 0
 clear
@@ -1066,7 +1070,7 @@ then echo "$head_waiting_log"
 echo "### ### [ info ] [ $second_option $third_option $quad_option ] \
 [ $show_actual_date ]" &> $output_log
 $cmd_realpath $second_option $third_option $quad_option &> $output_log
-cat $output_log | $command_grep -iv Warning: \
+cat $output_log | $command_grep -E -v Warning: \
 &> $default_directory_log/log-$second_option-$show_actual_date.txt
 echo "$title_md [ file ] $default_directory_log/log-$second_option-$show_actual_date.txt"
 exit ; fi
@@ -5653,7 +5657,15 @@ then echo $head_waiting_gui
 ####
 case $second_option in
 #### 
-#### 
+####
+list*)$cmd_realpath txt $second_option $third_option \
+$quad_option &> $temporal_guifinal
+$favorite_realpath_graphicalldialog  --text-info \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title="Gui Output || $cmd_realpath ||" \
+--filename="$temporal_guifinal" --auto-scroll ;;
+####
+####
 "wizard-mini")
 archivo="wizard-mini"
 cp "$default_minicfg_eng" "$default_directory_cache/$file_installed-$archivo"
@@ -5723,7 +5735,8 @@ $favorite_realpath_graphicalldialog  --info \
 ;;
 ####
 ####
-*)$cmd_realpath $second_option $third_option &> $temporal_guifinal
+*)$cmd_realpath $second_option $third_option \
+$quad_option &> $temporal_guifinal
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="Gui Output || $cmd_realpath ||" \
