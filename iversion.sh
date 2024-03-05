@@ -1928,7 +1928,9 @@ exit; fi
 ####
 if   [ "$first_option" == "treeconf" ]; then 
 if   [ "$command_tree" == "$NULL" ] ; then 
-echo "$title_md [ fail ] please install tree command" ; fi
+echo "$title_md [ fail ] please install tree command" ; exit ; fi
+####
+####
 $command_tree $directory_data_necesary
 exit; fi
 ####
@@ -1941,7 +1943,9 @@ exit; fi
 ####
 if   [ "$first_option" == "treecache" ]; then 
 if   [ "$command_tree" == "$NULL" ] ; then 
-echo "$title_md [ fail ] please install tree command" ; fi
+echo "$title_md [ fail ] please install tree command" ; exit ; fi
+####
+####
 $command_tree $directory_cache_necesary
 exit; fi
 ####
