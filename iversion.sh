@@ -5782,7 +5782,7 @@ $favorite_realpath_graphicalldialog  --info \
 ;;
 ####
 ####
-*)$cmd_realpath $second_option $third_option \
+*)$cmd_realpath txt $second_option $third_option \
 $quad_option &> $temporal_guifinal
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -5804,7 +5804,7 @@ if [ "$first_option" == "gui" ] && [ "$second_option" == "$NULL" ]
 then echo $head_waiting_gui
 ####
 ####
-$cmd_realpath $second_option $third_option &> $temporal_guifinal
+$cmd_realpath txt $second_option $third_option &> $temporal_guifinal
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="Gui Output || $cmd_realpath ||" \
