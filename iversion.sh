@@ -517,11 +517,11 @@ file_default_autolog="$default_directory_autolog/default_autolog-$cmd_version"
 ####
 ####
 temporal_text="$default_directory_cache/$show_actual_date-text.txt"
-temporal_textfinal="$default_directory_cache/$show_actual_date-textfinal.txt"
+temporal_textfinal="$default_directory_cache/$show_actual_date-text-final.txt"
 temporal_gui="$default_directory_cache/$show_actual_date-textfinal.txt"
-temporal_guifinal="$default_directory_cache/$show_actual_date-textfinal.txt"
+temporal_guifinal="$default_directory_cache/$show_actual_date-text-final.txt"
 output_log="$default_directory_cache/$show_actual_date-textfinal.txt"
-output_logfinal="$default_directory_cache/$show_actual_date-textfinal.txt"
+output_logfinal="$default_directory_cache/$show_actual_date-text-final.txt"
 ####
 ####
 #### :rutina-final-files:
@@ -1050,20 +1050,23 @@ if [ "$first_option" == "narrow" ] ;then echo "$head_waiting_narrow"
 ####
 ####
 case $second_option in 
-ls*|list*) $cmd_realpath $second_option $third_option &> $temporal_text
-cat $temporal_text | $command_grep -E -v Warning: | \
- $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
+ls*|list*) $cmd_realpath $second_option &> $temporal_text 
+cat $temporal_text | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $10 " " $11 " " $12 " " \
-$13 " " $14 " " $15 " " $16 " " $17 " " $18 " " $19 " " $20}' ; exit ;;
+$13 " " $14 " " $15 " " $16 " " $17 " " $18 \
+" " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' &> $temporal_textfinal
+cat $temporal_textfinal | $command_grep -E -v Warning: ; exit ;;
 "$NULL") $cmd_realpath \
 | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $11 " " $12 " " \
-$13 " " $14 " " $15 " " $16 " " $17 " " $18 " " $19 " " $20}' &> $temporal_text
+$13 " " $14 " " $15 " " $16 " " $17 " " $18 \
+" " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' &> $temporal_text
 cat $temporal_text | $command_grep -E -v Warning: ; exit ;;
 *) $cmd_realpath $second_option $third_option $quad_option \
 | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $10 " " $11 " " $12 " " \
-$13 " " $14 " " $15 " " $16 " " $17 " " $18 " " $19 " " $20}' &> $temporal_text
+$13 " " $14 " " $15 " " $16 " " $17 " " $18 \
+" " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' &> $temporal_text
 cat $temporal_text | $command_grep -E -v Warning: ; exit ;;
 #### *) echo "$title_md Narrow option works only to list rules" ;; 
 esac ; exit ; fi
