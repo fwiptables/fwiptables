@@ -1053,7 +1053,7 @@ case $second_option in
 ls*|list*) $cmd_realpath $second_option $third_option &> $temporal_text
 cat $temporal_text | $command_grep -E -v Warning: | \
  $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
-$5 " " $6 " " $7 " " $8 " " $9 " " $11 " " $12 " " \
+$5 " " $6 " " $7 " " $8 " " $9 " " $10 " " $11 " " $12 " " \
 $13 " " $14 " " $15 " " $16 " " $17 }' ; exit ;;
 "$NULL") $cmd_realpath \
 | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
@@ -1062,7 +1062,7 @@ $13 " " $14 " " $15 " " $16 " " $17 }' &> $temporal_text
 cat $temporal_text | $command_grep -E -v Warning: ; exit ;;
 *) $cmd_realpath $second_option $third_option $quad_option \
 | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
-$5 " " $6 " " $7 " " $8 " " $9 " " $11 " " $12 " " \
+$5 " " $6 " " $7 " " $8 " " $9 " " $10 " " $11 " " $12 " " \
 $13 " " $14 " " $15 " " $16 " " $17 }' &> $temporal_text
 cat $temporal_text | $command_grep -E -v Warning: ; exit ;;
 #### *) echo "$title_md Narrow option works only to list rules" ;; 
