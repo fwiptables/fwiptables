@@ -1034,12 +1034,17 @@ cat $temporal_text | $command_grep -E -v Warning: | \
  $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $11 " " $12 " " \
 $13 " " $14 " " $15 " " $16 " " $17 }' ; exit ;;
-"$NULL") $cmd_realpath $second_option $third_option $quad_option \
+"$NULL") $cmd_realpath \
 | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $11 " " $12 " " \
 $13 " " $14 " " $15 " " $16 " " $17 }' &> $temporal_text
 cat $temporal_text | $command_grep -E -v Warning: ; exit ;;
-*) echo "$title_md Narrow option works only to list rules" ;; 
+*) $cmd_realpath $second_option $third_option $quad_option \
+| $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
+$5 " " $6 " " $7 " " $8 " " $9 " " $11 " " $12 " " \
+$13 " " $14 " " $15 " " $16 " " $17 }' &> $temporal_text
+cat $temporal_text | $command_grep -E -v Warning: ; exit ;;
+#### *) echo "$title_md Narrow option works only to list rules" ;; 
 esac ; exit ; fi
 ####
 ####
@@ -1072,7 +1077,10 @@ case $second_option in
 ls*|list*) $favorite_basename_textdialog --clear --notags \
 --title "Cli Menu With $cmd_version" \
 --msgbox "$($cmd_realpath txt $second_option)" 0 0 ; exit ;;
-*) echo "$title_md cli works only with list options" ; exit ;;
+*) $favorite_basename_textdialog --clear --notags \
+--title "Cli Menu With $cmd_version" \
+--msgbox "$($cmd_realpath $second_option $third_option)" 0 0 ; exit ;;
+#### *) echo "$title_md cli works only with list options" ; exit ;;
 esac ; fi
 ####
 ####
