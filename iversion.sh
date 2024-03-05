@@ -1028,17 +1028,19 @@ expert-*) echo "the commands expert works only wihtout optional output." ; exit 
 ####
 ####
 if [ "$first_option" == "narrow" ]
-then case $second_option in ls*|list*)
-$cmd_realpath $second_option $third_option $quad_option \
-| $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
+then case $second_option in 
+ls*|list*) $cmd_realpath $second_option $third_option &> $temporal_text
+cat $temporal_text | $command_grep -E -v Warning: | \
+ $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $11 " " $12 " " \
-$13 " " $14 " " $15 " " $16 " " $17 }' &> $temporal_text
-cat $temporal_text | $command_grep -E -v Warning: ;;
+$13 " " $14 " " $15 " " $16 " " $17 }' ; exit ;;
 "$NULL") $cmd_realpath $second_option $third_option $quad_option \
 | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $11 " " $12 " " \
-$13 " " $14 " " $15 " " $16 " " $17 }' &> $temporal_text ;;
-*) echo "$title_md Narrow option works only to list rules" ;; esac ; exit ; fi
+$13 " " $14 " " $15 " " $16 " " $17 }' &> $temporal_text
+cat $temporal_text | $command_grep -E -v Warning: ; exit ;;
+*) echo "$title_md Narrow option works only to list rules" ;; 
+esac ; exit ; fi
 ####
 ####
 #### output txt:   |||    General text without warnings version list normal
@@ -1066,15 +1068,15 @@ exit; fi
 #### thebox="$($cmd_realpath txt $second_option $third_option)"
 ####
 #### --clear --notags
-case $second_option in list*)
-$favorite_basename_textdialog --clear --notags \
+case $second_option in 
+ls*|list*) $favorite_basename_textdialog --clear --notags \
 --title "Cli Menu With $cmd_version" \
---msgbox "$($cmd_realpath txt $second_option)" 0 0 ;;
-*) echo "$title_md cli works only with list options" ;;
-esac 
+--msgbox "$($cmd_realpath txt $second_option)" 0 0 ; exit ;;
+*) echo "$title_md cli works only with list options" ; exit ;;
+esac ; fi
 ####
 ####
-$cmd_realpath text-pause ; clear ; exit ; fi
+#### $cmd_realpath text-pause ; clear ; exit ; fi
 ####
 ####
 #### output log
