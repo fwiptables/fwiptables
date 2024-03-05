@@ -293,6 +293,7 @@ text_md="  " ;
 fifty_md="##################################################" ;
 head_waiting_all=" [ Wait several seconds.. ]  [ press control-c to cancel ] "
 head_waiting_txt="$title_md [ info ] [ txt ] $head_waiting_all "
+head_waiting_narrow="$title_md [ info ] [ narrow ] $head_waiting_all "
 head_waiting_cli="$title_md [ info ] [ cli ] $head_waiting_all "
 head_waiting_gui="$title_md [ info ] [ gui ] $head_waiting_all "
 head_waiting_log="$title_md [ info ] [ log ] $head_waiting_all "
@@ -303,6 +304,8 @@ give_load="$title_md [ _ok_ ] [ Load firewall ] [ Firewall With iptables ]"
 give_preferences="$title_md [ Configure ] [ $cmd_realpath preferences-modify ]"
 nada="$(echo -n)" ; 
 message_without_support="[ Without support for output cli for this option ]"
+message_without_narrow="$title_md [ fail ] [ narrow ] $message_without_support "
+message_without_txt="$title_md [ fail ] [ txt ] $message_without_support "
 message_without_cli="$title_md [ fail ] [ cli ] $message_without_support "
 message_without_gui="$title_md [ fail ] [ gui ] $message_without_support "
 message_without_info="$title_md [ fail ] [ log ] $message_without_support "
@@ -515,10 +518,10 @@ file_default_autolog="$default_directory_autolog/default_autolog-$cmd_version"
 ####
 temporal_text="$default_directory_cache/$show_actual_date-text.txt"
 temporal_textfinal="$default_directory_cache/$show_actual_date-textfinal.txt"
-temporal_gui="$default_directory_cache/$first_option-$second_option-$third_option.txt"
-temporal_guifinal="$default_directory_cache/$first_option-$second_option-$third_option-guifinal.txt"
-output_log="$default_directory_cache/$first_option-$second_option-$third_option.txt"
-output_logfinal="$default_directory_cache/$first_option-$second_option-$third_option-logfinal.txt"
+temporal_gui="$default_directory_cache/$show_actual_date-textfinal.txt"
+temporal_guifinal="$default_directory_cache/$show_actual_date-textfinal.txt"
+output_log="$default_directory_cache/$show_actual_date-textfinal.txt"
+output_logfinal="$default_directory_cache/$show_actual_date-textfinal.txt"
 ####
 ####
 #### :rutina-final-files:
@@ -977,6 +980,22 @@ case "$first_option" in
 $cmd_realpath config-regen &> /dev/null ;; esac
 ####
 ####
+if [ "$first_option" == "txt" ]; then 
+case "$second_option" in
+expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
+"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
+"modify-custom") $cmd_realpath $second_option $third_option ; exit ;; esac ; fi
+####
+####
+if [ "$first_option" == "narrow" ]; then 
+case "$second_option" in
+expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
+"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
+"modify-custom") $cmd_realpath $second_option $third_option ; exit ;; esac ; fi
+####
+####
 if [ "$first_option" == "cli" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
@@ -1027,8 +1046,10 @@ expert-*) echo "the commands expert works only wihtout optional output." ; exit 
 #### output narrow:   |||    General text without warnings version list narrow
 ####
 ####
-if [ "$first_option" == "narrow" ]
-then case $second_option in 
+if [ "$first_option" == "narrow" ] ;then echo "$head_waiting_narrow"
+####
+####
+case $second_option in 
 ls*|list*) $cmd_realpath $second_option $third_option &> $temporal_text
 cat $temporal_text | $command_grep -E -v Warning: | \
  $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
@@ -1051,18 +1072,19 @@ esac ; exit ; fi
 #### output txt:   |||    General text without warnings version list normal
 ####
 ####
-if [ "$first_option" == "txt" ] 
-then case $second_option in 
+if [ "$first_option" == "txt" ]; then echo "$head_waiting_txt"
+####
+####
+case $second_option in 
 ls*|list*) $cmd_realpath $second_option $third_option &> $temporal_text
 cat $temporal_text | $command_grep -E -v Warning: ; exit ;;
-*) first_option=$second_option ; second_option=$third_option ;; esac ; fi
+*) $cmd_realpath $second_option $third_option $quad_option ; exit ;; esac ; fi
 ####
 ####
 #### output cli:
 ####
 ####
-if [ "$first_option" == "cli" ]
-then echo "$head_waiting_cli"
+if [ "$first_option" == "cli" ] ; then echo "$head_waiting_cli"
 ####
 ####
 if [ "$favorite_realpath_textdialog" == "$NULL" ]; then 
