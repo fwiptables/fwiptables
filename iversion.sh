@@ -1954,6 +1954,18 @@ exit; fi
 ####
 ####
 #### :rutina-final-treecache:
+##########    english: cleancache: clean cache        ##########
+##########    spanish: cleancache: limpia la cache    ##########
+#### :rutina-inicial-cleancache:
+####
+####
+if   [ "$first_option" == "cleancache" ]; then 
+echo "$title_md [ cleaning ] clean cache: deleting cache $cmd_basename"
+rm -R $directory_cache_necesary/* 
+exit; fi
+####
+####
+#### :rutina-final-cleancache:
 ##########    english: notes: notes to configure iptables      ##########
 ##########    spanish: notes: notas para configurar iptables   ##########
 #### :rutina-inicial-notes:
@@ -2607,7 +2619,7 @@ echo "$title_md  [ options-easy ] easy                                          
 echo "$text_md preferences-read preferences-modify preferences-regen info           "
 echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 date intro filelog autolog       "
 echo "$text_md free sockets nodes ip-forward version code treeconf treecache        "
-echo "$text_md notes depends commands variables license uninstall install           "
+echo "$text_md cleancache notes depends variables license uninstall install         "
 echo "$title_md  [ options-expert ] expert                                          "
 echo "$text_md $text_md $title_md Example, reports y license    "
 echo "$text_md  Example: $cmd_basename gui-zenity info          "
@@ -2872,7 +2884,6 @@ echo "$text_md preferences-modify . modify the preferences for fwiptables"
 echo "$text_md preferences-regen . recover the initials preferences for fwiptables"
 echo "$text_md preferences-example . show the examples for fwiptables preference"
 echo "$text_md list-options . list options "
-echo "$text_md clasic-options . list options "
 echo "$text_md info-options . list details for the options"
 echo "$text_md info . details from one first option from one pattern"
 echo "$text_md filelog . show the result for the commands save with -l|-log"
@@ -2890,8 +2901,10 @@ echo "$text_md notes . several notes for internet"
 echo "$text_md ip-forward . list or active or desactive forward variables"
 echo "$text_md depends . principal dependences"
 echo "$text_md license . license"
+echo "$text_md treeconf . tree from configuration"
+echo "$text_md treecache . tree from cache"
+echo "$text_md cleancache . clean cache program"
 echo "$text_md code . show source code from one option"
-echo "$text_md commands . possible commands"
 echo "$text_md variables . possible variables"
 echo "$text_md intro . intro"
 echo "$text_md install . install fwiptables"
