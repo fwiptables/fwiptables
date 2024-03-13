@@ -768,16 +768,10 @@ fi
 ####
 ####
 case "$first_option" in
-"lsn4") list_rules_conceptual="no"; first_option="listn4" ;;
-"lsn6") list_rules_conceptual="no"; first_option="listn6" ;;
 list-*) list_rules_conceptual="" ;;
 listn-*)  list_rules_conceptual="no" ;;
 esac
 case "$second_option" in
-"ls4") list_rules_conceptual=""; second_option="ls4" ;;
-"ls6") list_rules_conceptual=""; second_option="ls6" ;;
-"lsn4") list_rules_conceptual="no"; second_option="listn4" ;;
-"lsn6") list_rules_conceptual="no"; second_option="listn6" ;;
 list-*) list_rules_conceptual="" ;;
 listn-*)  list_rules_conceptual="no" ;;
 esac
@@ -973,6 +967,10 @@ case $first_option in
 cat $temporal_text-list4 | $command_grep -E -v Warning: ; exit ;;
 "ls6") $cmd_realpath list6 &> $temporal_text-list6
 cat $temporal_text-list6 | $command_grep -E -v Warning: ; exit ;;
+"lsn4") $cmd_realpath listn4 &> $temporal_text-listn4
+cat $temporal_text-listn4 | $command_grep -E -v Warning: ; exit ;;
+"lsn6") $cmd_realpath listn6 &> $temporal_text-listn6
+cat $temporal_text-listn6 | $command_grep -E -v Warning: ; exit ;;
 esac ; 
 ####
 ####
