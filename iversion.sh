@@ -5058,7 +5058,7 @@ if [ "second_option" == "$NULL" ]; then
 $cmd_realpath names ; echo "$text_md [ info ] \
 [ usage: $cmd_realpath load fw-to-load ] \
 [ See: $cmd_realpath names ]" ; exit ; fi
-echo "$title_md [ info ] [ loading firewall control ]"
+echo "$title_md [ info ] [ loading firewall control $second_option ]"
 ####
 ####
 if [ -f $default_directory_control/$second_option-nft-ipv4 ] || \
@@ -7436,13 +7436,13 @@ exit; fi
 ####   #### spanish: cortafuego del sistema custom:
 ####
 ####
-##########   english: load-custom firewall      ##########
-##########   spanish: load-custom cortafuegos   ##########
-#### :rutina-inicial-custom-rules:
+##########   english: load-custom: firewall      ##########
+##########   spanish: load-custom: cortafuegos   ##########
+#### :rutina-inicial-load-custom:
 ####
 ####
 if [ "$first_option" == "load-custom" ]; then 
-echo "$title_md [ info ] [ loading firewall custom ]"
+echo "$title_md [ info ] [ loading firewall wallcustom $second_option ]"
 #### [ $default_directory_custom/$second_option ] 
 launch_rules_firewall="yes" ;
 type_firewall="wallcustom" ;
@@ -7464,7 +7464,7 @@ then  $cmd_realpath all-custom ; exit; fi
 fi
 ####
 ####
-#### :rutina-final-custom-rules:
+#### :rutina-final-load-custom:
 ##########    english: ready system rules con its option               ##########
 ##########    spanish: preprara reglas del sistema con sus opciones    ##########
 ####
@@ -7489,7 +7489,7 @@ fi
 ####
 ####
 if [ "$first_option" == "off-line" ]; then
-echo "$title_md [ info ] [ loading firewall off-line ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem off-line ]" ;
 launch_rules_firewall="yes" ;
 type_firewall="off-line";
 name_firewall="$first_option";
@@ -7505,7 +7505,7 @@ fi
 ####
 ####
 if [ "$first_option" == "all-permisive" ]; then
-echo "$title_md [ info ] [ loading firewall all-permisive ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem all-permisive ]" ;
 launch_rules_firewall="yes" ;
 type_firewall="all-permisive" ;
 name_firewall="$first_option";
@@ -7522,7 +7522,7 @@ fi
 ####
 ####
 if [ "$first_option" == "shield-ssh" ]; then
-echo "$title_md [ info ] [ loading firewall shield-ssh ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem shield-ssh ]" ;
 launch_rules_firewall="yes" ;
 type_firewall="wallsystem"    ; 
 name_firewall="$first_option" ;
@@ -7620,7 +7620,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-basic" ]; then
-echo "$title_md [ info ] [ loading firewall client-basic ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem client-basic ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -7719,7 +7719,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-web" ]; then
-echo "$title_md [ info ] [ loading firewall client-web ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem client-web ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -7816,7 +7816,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-git" ]; then
-echo "$title_md [ info ] [ loading firewall client-git ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem client-git ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -7913,7 +7913,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-ipp" ]; then
-echo "$title_md [ info ] [ loading firewall client-ipp ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem client-ipp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -8010,7 +8010,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-irc" ]; then
-echo "$title_md [ info ] [ loading firewall client-irc ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem client-irc ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -8265,7 +8265,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-torrent" ]; then
-echo "$title_md [ info ] [ loading firewall client-torrent ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem client-torrent ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -8363,7 +8363,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-vpn" ]; then
-echo "$title_md [ info ] [ loading firewall client-vpn ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem client-vpn ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$first_option" ;
@@ -8461,7 +8461,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-tor" ]; then
-echo "$title_md [ info ] [ loading firewall client-tor ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem client-tor ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -8559,7 +8559,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-news" ]; then
-echo "$title_md [ info ] [ loading firewall client-news ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem client-news ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -8662,7 +8662,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-mail" ]; then
-echo "$title_md [ info ] [ loading firewall client-mail ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem client-mail ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -8776,7 +8776,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-ftp" ]; then
-echo "$title_md [ info ] [ loading firewall client-ftp ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem client-ftp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -8874,7 +8874,7 @@ fi
 ####
 ####
 if [ "$first_option" == "client-proxy" ]; then
-echo "$title_md [ info ] [ loading firewall client-proxy ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem client-proxy ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -8972,7 +8972,7 @@ fi
 ####
 ####
 if [ "$first_option" == "lan-vpn" ]; then
-echo "$title_md [ info ] [ loading firewall lan-vpn ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem lan-vpn ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -9071,7 +9071,7 @@ fi
 ####
 ####
 if [ "$first_option" == "lan-tor" ]; then
-echo "$title_md [ info ] [ loading firewall lan-tor ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem lan-tor ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -9170,7 +9170,7 @@ fi
 ####
 ####
 if [ "$first_option" == "games-shooter" ]; then
-echo "$title_md [ info ] [ loading firewall games-shooter ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem games-shooter ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$first_option" ;
@@ -9268,7 +9268,7 @@ fi
 ####
 ####
 if [ "$first_option" == "games-udp" ]; then
-echo "$title_md [ info ] [ loading firewall games-udp ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem games-udp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -9366,7 +9366,7 @@ fi
 ####
 ####
 if [ "$first_option" == "game-wesnoth" ]; then
-echo "$title_md [ info ] [ loading firewall game-wesnoth ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem game-wesnoth ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -9464,7 +9464,7 @@ fi
 ####
 ####
 if [ "$first_option" == "game-minetest" ]; then
-echo "$title_md [ info ] [ loading firewall game-minetest ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem game-minetest ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -9562,7 +9562,7 @@ fi
 ####
 ####
 if [ "$first_option" == "game-freeciv" ]; then
-echo "$title_md [ info ] [ loading firewall game-freeciv ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem game-freeciv ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -9660,7 +9660,7 @@ fi
 ####
 ####
 if [ "$first_option" == "game-widelands" ]; then
-echo "$title_md [ info ] [ loading firewall game-widelands ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem game-widelands ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -9758,7 +9758,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-web" ]; then
-echo "$title_md [ info ] [ loading firewall server-web ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem server-web ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$first_option" ;
@@ -9856,7 +9856,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-vnc" ]; then
-echo "$title_md [ info ] [ loading firewall server-vnc ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem server-vnc ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -9954,7 +9954,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-ftp" ]; then
-echo "$title_md [ info ] [ loading firewall server-ftp ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem server-ftp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$first_option" ;
@@ -10052,7 +10052,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-gateway" ]; then
-echo "$title_md [ info ] [ loading firewall server-gateway ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem server-gateway ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$first_option" ;
@@ -10150,7 +10150,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-proxy" ]; then
-echo "$title_md [ info ] [ loading firewall server-proxy ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem server-proxy ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$first_option" ;
@@ -10248,7 +10248,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-news" ]; then
-echo "$title_md [ info ] [ loading firewall server-news ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem server-news ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$first_option" ;
@@ -10352,7 +10352,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-mail" ]; then
-echo "$title_md [ info ] [ loading firewall server-mail ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem server-mail ]" ;
 ####
 ####
 launch_rules_firewall="yes" ; 
@@ -10468,7 +10468,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-samba" ]; then
-echo "$title_md [ info ] [ loading firewall server-samba ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem server-samba ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$first_option" ;
@@ -10566,7 +10566,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-print" ]; then
-echo "$title_md [ info ] [ loading firewall server-print ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem server-print ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$first_option" ;
@@ -10664,7 +10664,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-ssh" ]; then
-echo "$title_md [ info ] [ loading firewall server-ssh ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem server-ssh ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -10762,7 +10762,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-lamp" ]; then
-echo "$title_md [ info ] [ loading firewall server-lamp ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem server-lamp ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -10861,7 +10861,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-asterisk" ]; then
-echo "$title_md [ info ] [ loading firewall server-asterisk ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem server-asterisk ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -10961,7 +10961,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-mumble" ]; then
-echo "$title_md [ info ] [ loading firewall server-mumble ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem server-mumble ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -11059,7 +11059,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-teamspeak" ]; then
-echo "$title_md [ info ] [ loading firewall server-teamspeak ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem server-teamspeak ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -11161,7 +11161,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-sql" ]; then
-echo "$title_md [ info ] [ loading firewall server-sql ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem server-sql ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -11263,7 +11263,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-irc" ]; then
-echo "$title_md [ info ] [ loading firewall server-irc ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem server-irc ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
@@ -11361,7 +11361,7 @@ fi
 ####
 ####
 if [ "$first_option" == "server-domain" ]; then
-echo "$title_md [ info ] [ loading firewall server-domain ]" ;
+echo "$title_md [ info ] [ loading firewall wallsystem server-domain ]" ;
 launch_rules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$first_option" ;
