@@ -104,8 +104,8 @@ cmd_basename="$(basename $0)"                # only filename
 cmd_version="12-08"                          # number version
 file_installed="fwiptables"                  # filename installed
 directory_installed="/usr/bin"               # directory installed
-cmd_developer="Francisco Garcia"             # developer actual
-cmd_contact="fwiptables@gmx.com"             # developer contact
+cmd_developer="Francisco Garcia"             # actual developer
+cmd_contact="fwiptables@gmx.com"             # actual contact
 cmd_shortdescription="fwiptables, FireWall With iptables"              # description short
 cmd_longdescription="fwiptables, One Mini Script in one-file wizard"   # description long
 cmd_license="GPL v2, License General Public version 2"                 # program license
@@ -2627,7 +2627,7 @@ echo "$text_md cleancache notes depends variables license uninstall install     
 echo "$title_md  [ options-expert ] expert                                          "
 echo "$text_md $text_md $title_md Example, reports y license    "
 echo "$text_md  Example: $cmd_basename gui-zenity info          "
-echo "$text_md  Reports: Report bugs at $cmd_contact            "
+#### echo "$text_md  Reports: Report bugs at $cmd_contact            "
 echo "$text_md  License: $cmd_license                           "
 exit ; fi
 ####
