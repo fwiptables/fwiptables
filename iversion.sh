@@ -2625,10 +2625,8 @@ echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 date intro filelog autolog   
 echo "$text_md free sockets nodes ip-forward version code treeconf treecache        "
 echo "$text_md cleancache notes depends variables license uninstall install         "
 echo "$title_md  [ options-expert ] expert                                          "
-echo "$text_md $text_md $title_md Example, reports y license    "
-echo "$text_md  Example: $cmd_basename gui-zenity info          "
-#### echo "$text_md  Reports: Report bugs at $cmd_contact            "
-echo "$text_md  License: $cmd_license                           "
+echo "$title_md  ### Example: $cmd_basename gui-zenity info          "
+echo "$title_md  ### License: $cmd_license                           "
 exit ; fi
 ####
 ####
