@@ -1475,6 +1475,9 @@ exit; fi
 ####
 if [ "$first_option" == "preferences-example" ] ; then
 echo "$title_md"
+echo "$title_md # fwiptables PATH"
+echo "PATH=$PATH"
+echo "$title_md"
 echo "$title_md # default option"
 echo "without_first_option=options                    ## read below"
 echo "$title_md type: void or one valid option required to works"
