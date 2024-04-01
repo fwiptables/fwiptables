@@ -4638,7 +4638,7 @@ $directory_installed/$file_installed config-regen &> /dev/null
 echo "$title_md [ ok ] [ The Command shell: ] [ $directory_installed/$file_installed ]"
 echo "$title_md [ ok ] [ The  config   dir: ] [ $directory_data_necesary ]"
 echo "$title_md [ ok ] [ The  cache    dir: ] [ $default_directory_cache  ]"
-echo "$title_md [ ok ] Now. Ready to run $file_installed"
+echo "$title_md [ ok ] Now. Ready to run $file_installed from $directory_installed"
 exit; fi
 ####
 ####
