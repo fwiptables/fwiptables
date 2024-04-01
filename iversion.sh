@@ -423,7 +423,7 @@ command_mpg321="$(command -v mpg321)"
 command_uuid="$(command -v uuid)"
 ####
 ####
-show_actual_date="$($command_date | $command_sed 's/ /-/g' | $command_sed -e 's/:/-/g')"
+show_actual_date="$($command_date +Day-%Y-%m-%d_Hour-%H-%M-%S)"
 ####
 ####
 #### :rutina-final-command:
