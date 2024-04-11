@@ -1905,7 +1905,7 @@ echo "$title_md [ $first_option ] [ Show version ] [ version.md ]          "
 echo "$text_md [ info ] [ Somes details in $cmd_basename ]                 "
 echo "$text_md [ info ] [ Name program       ] $cmd_realpath               "
 echo "$text_md [ info ] [ Name Version       ] $cmd_version                "
-echo "$text_md [ info ] [ Relased Version    ] $cmd_year-$cmd_month        "
+echo "$text_md [ info ] [ Relased Version    ] Year $cmd_year Month $cmd_month        "
 echo "$text_md [ info ] [ Short description  ] $cmd_shortdescription       "
 echo "$text_md [ info ] [ Long description   ] $cmd_longdescription        "
 echo "$text_md [ info ] [ Developer Actual   ] $cmd_developer              "
@@ -4640,7 +4640,6 @@ $directory_installed/$file_installed config-regen &> /dev/null
 echo "$title_md [ ok ] [ The Command shell: ] [ $directory_installed/$file_installed ]"
 echo "$title_md [ ok ] [ The  config   dir: ] [ $directory_data_necesary ]"
 echo "$title_md [ ok ] [ The  cache    dir: ] [ $default_directory_cache  ]"
-echo "$title_md [ ok ] Now. Ready to run $file_installed from $directory_installed"
 exit; fi
 ####
 ####
@@ -4840,21 +4839,15 @@ exit; fi
 ####
 if   [ "$first_option" == "compile" ]; then 
 echo "$title_md [ $first_option ] \
-[  Optionally compile from bash script ] [ compile.md]    "
+[  Optionally compile from bash script ] [ compile.md]         "
 echo "$text_md [ info ] \
-BASH SCRIPT WORKS fully. But if your desire is compiling...                       "
+BASH SCRIPT WORKS fully. But if your desire is compiling...    "
 echo "$text_md [ step ] \
-[ 0 ] Necesary: fwiptables in source script bash                                  "
+[ 0 ] Necesary fwiptables in source script bash                "
 echo "$text_md [ step ] \
-[ 1 ] Download obash from oficial web internet                                    "
+[ 1 ] Download and install obash from oficial web internet     "
 echo "$text_md [ step ] \
-[ 2 ] Compile with obash command using command make.                              "
-echo "$text_md [ step ] \
-[ 3a] Or run: obash -s -c -o ./destination.bin ./source-bash.sh                   "
-echo "$text_md [ step ] \
-[ 3b] Or run: obash -s -c -o $cmd_realpath.bin $cmd_realpath  "
-echo "$title_md Actually, the file type is:  "
-file -L $cmd_realpath
+[ 3 ] Run: obash -s -c -o ./destination.bin ./source-bash.sh   "
 exit; fi
 ####
 ####
