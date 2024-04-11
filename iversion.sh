@@ -1913,9 +1913,9 @@ echo "$text_md [ info ] [ Developer Contact  ] $cmd_contact                "
 echo "$text_md [ info ] [ License program    ] $cmd_license                "
 echo "$text_md [ info ] [ Data  Directory    ] $directory_data_necesary    "
 echo "$text_md [ info ] [ Cache Directory    ] $directory_cache_necesary   "
-echo "$text_md [ info ] [ File  Preferences  ]                             "
+echo "$text_md [ info ] [ File  Preferences  ] _______ _______ _______     "
 echo "$text_md $file_default_preferences        "  
-echo "$text_md [ info ] [ File  Format       ]                             "
+echo "$text_md [ info ] [ File  Format       ] _______ _______ _______     "
 echo "$text_md $($command_file $cmd_realpath)   "
 exit ; fi
 ####
