@@ -4613,14 +4613,14 @@ exit; fi
 ####
 if [ "$first_option" == "install" ]; then 
 echo "$title_md [ info ] \
-[ $file_installed $cmd_version installer ]"
+[ Installing:$file_installed Version:$cmd_version Released:$cmd_year-$cmd_month ]"
 ####
 ####
 ####  english: copy the file to temporal folder and install
 ####  spanish: copia el archivo a carpeta final
 #### 
 #### 
-echo "$title_md [ info ] [ $file_installed installing.. ]"
+#### echo "$title_md [ info ] [ $file_installed installing.. ]"
 cp $cmd_realpath $directory_installed/$file_installed
 chmod 555 "$directory_installed/$file_installed" &> /dev/null 
 ####
