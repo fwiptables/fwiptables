@@ -101,6 +101,8 @@ echo ; fi
 ####
 cmd_realpath="$(realpath $0)"                # full routename
 cmd_basename="$(basename $0)"                # only filename
+cmd_year="2024"                              # year version
+cmd_month="04"                               # mouth version    
 cmd_version="12-09"                          # number version
 file_installed="fwiptables"                  # filename installed
 directory_installed="/usr/bin"               # directory installed
@@ -1903,6 +1905,7 @@ echo "$title_md [ $first_option ] [ Show version ] [ version.md ]          "
 echo "$text_md [ info ] [ Somes details in $cmd_basename ]                 "
 echo "$text_md [ info ] [ Name program       ] $cmd_realpath               "
 echo "$text_md [ info ] [ Name Version       ] $cmd_version                "
+echo "$text_md [ info ] [ Relased Version    ] $cmd_year-$cmd_month        "
 echo "$text_md [ info ] [ Short description  ] $cmd_shortdescription       "
 echo "$text_md [ info ] [ Long description   ] $cmd_longdescription        "
 echo "$text_md [ info ] [ Developer Actual   ] $cmd_developer              "
@@ -2628,9 +2631,9 @@ echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 date intro filelog autolog   
 echo "$text_md free sockets nodes ip-forward version code treeconf treecache        "
 echo "$text_md cleancache notes depends variables license uninstall install         "
 echo "$title_md  [ options-expert ] expert                                          "
-echo "$title_md  ### Example  local: $cmd_basename gui-zenity info            "
-echo "$title_md  ### Example in ssh: ssh user@host sudo $cmd_basename ls4     "
-echo "$title_md  ### License: $cmd_license                                    "
+echo "$title_md  ### Example in  local  : $cmd_basename gui-zenity info          "
+echo "$title_md  ### Example in   ssh   : ssh user@host sudo $cmd_basename ls4   "
+echo "$title_md  ### License in program : $cmd_license     "
 exit ; fi
 ####
 ####
