@@ -84,8 +84,7 @@ command_iptables_nft="$(command -v iptables-nft)"
 ####
 ####
 if [ "$command_iptables_legacy" == "$NULL" ] || \
-[ "$command_iptables_nft" == "$NULL" ];
-then echo ; echo ;
+[ "$command_iptables_nft" == "$NULL" ]; then echo ; echo ;
 echo "### [ fail ] [ fwiptables needs to work iptables legacy/nft ]"
 echo ; fi
 ####
