@@ -1905,10 +1905,10 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "version" ]; then 
-echo "$title_md [ $first_option ] [ Show version ] [ version.md ]          "
-echo "$text_md [ info ] [ Somes details in $cmd_basename ]                 "
-echo "$text_md [ info ] [ Name program       ] $cmd_realpath               "
-echo "$text_md [ info ] [ Name Version       ] $cmd_version                "
+echo "$title_md [ $first_option ] [ Show version ] [ version.md ]            "
+echo "$text_md [ info ] [ Somes details in $cmd_basename ver $cmd_version ]  "
+echo "$text_md [ info ] [ Name program       ] $cmd_realpath                 "
+echo "$text_md [ info ] [ Name Version       ] Mayor $cmd_mayor Minor $cmd_minor"
 echo "$text_md [ info ] [ Relased Version    ] Year $cmd_year Month $cmd_month        "
 echo "$text_md [ info ] [ Short description  ] $cmd_shortdescription       "
 echo "$text_md [ info ] [ Long description   ] $cmd_longdescription        "
