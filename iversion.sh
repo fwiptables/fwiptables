@@ -4609,7 +4609,7 @@ exit; fi
 ####
 if [ "$first_option" == "install" ]; then 
 echo "$title_md [ ok ] \
-[ Installing:$cmd_file Version:$cmd_version Released:$cmd_year-$cmd_month ]"
+| Installing:$cmd_file | Version:$cmd_version | Released:$cmd_year-$cmd_month |"
 ####
 ####
 ####  english: copy the file to temporal folder and install
@@ -5320,7 +5320,7 @@ echo "$title_md [ $first_option ]  [ test speed ipv4 with iperf ] "
 echo "$title_md $cmd_basename use or iperf or iperf3"
 if [ "$favorite_iperf_command" == "$NULL" ];
 then echo "$title_md [ fail ] install iperf";
-else echo "$title_md [ choosed iperf ]"; fi
+else echo "$title_md [ ok ] [ choosed iperf ]"; fi
 echo "$title_md"
 # echo "$title_md [ Working ] Saving firewall before speed-ip4"
 $cmd_realpath save before-speed-ip4
@@ -5349,7 +5349,7 @@ echo "$title_md [ $first_option ]  [ test speed ipv6 with iperf ] "
 echo "$title_md $cmd_basename use or iperf or iperf3"
 if [ "$favorite_iperf_command" == "$NULL" ];
 then echo "$title_md [ fail ] install iperf";
-else echo "$title_md [ choosed iperf ]"; fi
+else echo "$title_md [ ok ] [ choosed iperf ]"; fi
 $cmd_realpath save before-speed-ip6 
 $cmd_realpath temporal-addwitelist6 $serverip_iperf_ipv6
 echo "$title_md"
