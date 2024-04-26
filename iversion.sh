@@ -1573,10 +1573,6 @@ else echo "$text_md   $public_ip4"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
 echo "$title_md [ note ] [ $cmd_basename with: OR expert-show-clientproxy OR expert-conf-clientproxy ]"
-listado_proxy="$($command_sudo -u root bash -c export | $command_grep -i \_PROXY | wc -l)"
-if [ "$listado_proxy" -eq "0" ];
-then echo "$title_md [ note ] Without proxy in export variables"
-else $command_sudo -u root bash -c export | $command_grep -i "_PROXY" ; fi
 echo
 echo "$title_md [ info ] ### [ Domain resolve ] [ nameserver and search ] ###"
 if [ -f /etc/resolv.conf ]
@@ -1788,10 +1784,6 @@ else echo "$text_md   $public_ip6"; fi; fi
 echo
 echo "$title_md [ info ] ### [ Proxy tunnel ] [ Address proxy ] ###"
 echo "$title_md [ note ] [ $cmd_basename with: OR expert-show-clientproxy OR expert-conf-clientproxy ]"
-listado_proxy="$($command_sudo -u root bash -c export | $command_grep -i \_PROXY | wc -l)"
-if [ "$listado_proxy" -eq "0" ];
-then echo "$title_md [ note ] Without proxy in export variables"
-else $command_sudo -u root bash -c export | $command_grep -i "_PROXY" ; fi
 echo
 echo "$title_md [ info ] ### [ Domain resolve ] [ Resolv.conf ] ###"
 if [ -f /etc/resolv.conf ]
@@ -5326,7 +5318,7 @@ exit; fi
 if   [ "$first_option" == "speed-ip4" ]; then 
 echo "$title_md [ $first_option ]  [ test speed ipv4 with iperf ] "
 echo "$title_md $cmd_basename use or iperf or iperf3"
-$favorite_iperf_command -v | head -1 || echo "$title_md [ fail ] install iperf"
+$favorite_iperf_command || echo "$title_md [ fail ] install iperf"
 echo "$title_md"
 # echo "$title_md [ Working ] Saving firewall before speed-ip4"
 $cmd_realpath save before-speed-ip4
@@ -5353,7 +5345,7 @@ exit; fi
 if   [ "$first_option" == "speed-ip6" ]; then 
 echo "$title_md [ $first_option ]  [ test speed ipv6 with iperf ] "
 echo "$title_md $cmd_basename use or iperf or iperf3"
-$favorite_iperf_command -v | head -1 || echo "$title_md [ fail ] install iperf"
+$favorite_iperf_command || echo "$title_md [ fail ] install iperf"
 echo "$title_md"
 # echo "$title_md [ Working ] Saving firewall before speed-ip6"
 $cmd_realpath save before-speed-ip6 
