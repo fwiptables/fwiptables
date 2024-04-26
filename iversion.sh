@@ -5318,7 +5318,7 @@ exit; fi
 if   [ "$first_option" == "speed-ip4" ]; then 
 echo "$title_md [ $first_option ]  [ test speed ipv4 with iperf ] "
 echo "$title_md $cmd_basename use or iperf or iperf3"
-if [ "$favorite_iperf_command" == "$NULL" ]; then echo "$title_md [ fail ] install iperf"
+if [ "$favorite_iperf_command" == "$NULL" ]; then echo "$title_md [ fail ] install iperf"; fi
 echo "$title_md"
 # echo "$title_md [ Working ] Saving firewall before speed-ip4"
 $cmd_realpath save before-speed-ip4
@@ -5345,7 +5345,7 @@ exit; fi
 if   [ "$first_option" == "speed-ip6" ]; then 
 echo "$title_md [ $first_option ]  [ test speed ipv6 with iperf ] "
 echo "$title_md $cmd_basename use or iperf or iperf3"
-if [ "$favorite_iperf_command" == "$NULL" ]; then echo "$title_md [ fail ] install iperf"
+if [ "$favorite_iperf_command" == "$NULL" ]; then echo "$title_md [ fail ] install iperf"; fi
 echo "$title_md"
 # echo "$title_md [ Working ] Saving firewall before speed-ip6"
 $cmd_realpath save before-speed-ip6 
