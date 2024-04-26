@@ -4633,9 +4633,9 @@ $cmd_directory/$cmd_file config-regen &> /dev/null
 ####   spanish: Muestra el estatus final desde el instalador
 ####
 ####
-echo "$title_md [ ok ] [ The Command shell: ] [ $cmd_directory/$cmd_file ]"
-echo "$title_md [ ok ] [ The  config   dir: ] [ $directory_data_necesary ]"
-echo "$title_md [ ok ] [ The  cache    dir: ] [ $default_directory_cache  ]"
+echo "$title_md [ ok ] The Command shell:  $cmd_directory/$cmd_file"
+echo "$title_md [ ok ] The  config   dir:  $directory_data_necesary"
+echo "$title_md [ ok ] The  cache    dir:  $default_directory_cache"
 exit; fi
 ####
 ####
