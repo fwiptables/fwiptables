@@ -1629,10 +1629,10 @@ echo "$title_md [ note ] [ Necesary:  ] WHITHOUT script shell and WHITHOUT exit 
 echo "$title_md [ note ] [ Editable:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
 echo "$title_md [ note ] [ Automatic: ] $cmd_basename expert-conf-clientproxy user:pass@ip:port"
 echo "$title_md [ note ] [ Then:      ] source /directory/file-of-declare-proxy"
-listado_proxy="$($command_sudo -u root bash -c export | grep -i \_PROXY | wc -l)"
+listado_proxy="$($command_sudo -u root export | grep -i \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ]; then
 echo "$title_md [ note ] [ Actually:  ] Without proxy in export variables"
-else $command_sudo -u root bash -c export | grep -i "_PROXY" ; fi
+else $command_sudo -u root export | grep -i "_PROXY" ; fi
 theproxy="/etc/proxy.fwiptables" 
 if [ -f $theproxy ]; then echo ; echo ;
 echo "$title_md [ info ] [ if it is valid proxy and then launch: source $theproxy ]"
