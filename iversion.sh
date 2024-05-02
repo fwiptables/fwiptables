@@ -4522,8 +4522,11 @@ echo "$text_md"
 echo "$text_md  Uninstall TYPE: $cmd_file uninstall  "
 echo "$text_md"
 $cmd_realpath version
+echo "$text_md"
 $cmd_realpath compile
+echo "$text_md"
 echo "$title_md [ options ] [ List general options for fwiptables ] [ list-options.md ]"
+echo "$text_md"
 $cmd_realpath options
 exit; fi
 ####
