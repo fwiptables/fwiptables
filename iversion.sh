@@ -5392,7 +5392,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-sockets-ss" ]; then 
-echo "$title_md [ $first_option ] [ Show whith ss: LISTEN sockets ] "
+echo "$title_md [ $first_option ] [ Show whith ss: sockets ] "
 if [ "$command_ss" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Install ss command ]"; exit; fi
 #### if [ "$command_awk" == "$NULL" ]; then 
@@ -5413,7 +5413,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-sockets-lsof" ]; then 
-echo "$title_md [ $first_option ] [ Show whith lsof: LISTEN sockets ] "
+echo "$title_md [ $first_option ] [ Show whith lsof: sockets ] "
 if [ "$command_lsof" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Install lsof command ]"; exit; fi
 $command_lsof -i
@@ -5427,7 +5427,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-sockets-netstat" ]; then 
-echo "$title_md [ $first_option ] [ Show whith lsof: LISTEN sockets ] "
+echo "$title_md [ $first_option ] [ Show whith lsof: sockets ] "
 if [ "$command_lsof" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Install lsof command ]"; exit; fi
 #### if [ "$command_awk" == "$NULL" ]; then 
