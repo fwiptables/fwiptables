@@ -2928,9 +2928,6 @@ echo "$text_md "
 echo "$title_md | options-expert | $cmd_realpath options-expert |"
 echo "$text_md    Only works in Console AND Without: cli, gui, pdf, log, silent"
 echo "$text_md"
-echo "$text_md expert-show-ss . show SOCKETS listen with ss"
-echo "$text_md expert-show-netstat . show SOCKETS listen with netstat"
-echo "$text_md expert-show-lsof . show SOCKETS listen with lsof"
 echo "$text_md expert-show-resolve . show file resolve domain with resolv.conf"
 echo "$text_md expert-show-weather . show weather with wttr.in"
 echo "$text_md expert-show-geoip . show location for ip o for host with geoip"
@@ -2939,6 +2936,9 @@ echo "$text_md expert-show-version . Show version fwiptables stable with curl"
 echo "$text_md expert-show-newversion . Show version fwiptables stable/unstable with curl"
 echo "$text_md expert-show-clientproxy . show proxy variables in the system stablished"
 echo "$text_md expert-conf-clientproxy . File /etc/proxy.fwiptables for proxy launched with source"
+echo "$text_md expert-sockets-ss . show SOCKETS listen with ss"
+echo "$text_md expert-sockets-netstat . show SOCKETS listen with netstat"
+echo "$text_md expert-sockets-lsof . show SOCKETS listen with lsof"
 echo "$text_md expert-speed-ip4 . benchmark internet speed ipv4 with 4seconds"
 echo "$text_md expert-speed-ip6 . benchmark internet speed ipv6 with 4seconds"
 echo "$text_md expert-speed-disk . benchmark disk speed with 100Mb"
@@ -5386,54 +5386,57 @@ exit; fi
 ####
 ####
 #### :rutina-final-sockets:
-##########    english: expert-show-ss: The sockets option  ##########
-##########    spanish: expert-show-ss: La opcion sockets   ##########
-#### :rutina-inicial-expert-show-ss:
+##########    english: expert-sockets-ss: The sockets option  ##########
+##########    spanish: expert-sockets-ss: La opcion sockets   ##########
+#### :rutina-inicial-expert-sockets-ss:
 ####
 ####
-if   [ "$first_option" == "expert-show-ss" ]; then 
+if   [ "$first_option" == "expert-sockets-ss" ]; then 
 echo "$title_md [ $first_option ] [ Show whith ss: LISTEN sockets ] "
 if [ "$command_ss" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Install ss command ]"; exit; fi
 #### if [ "$command_awk" == "$NULL" ]; then 
 #### echo "$title_md [ fail ] [ Install awk command ]"; exit; fi
-$command_ss -l  | $command_grep "\:\*" | $command_grep LISTEN
+echo "$title_md sockets ipv4"
+$command_ss -4
+$command_ss -l4
+echo "$title_md sockets ipv6"
+$command_ss -6
+$command_ss -l6
 exit; fi
 ####
 ####
-#### :rutina-final-expert-show-ss:
-##########    english: expert-show-lsof: The sockets option lsof  ##########
-##########    spanish: expert-show-lsof: La opcion sockets lsof   ##########
-#### :rutina-inicial-expert-show-lsof:
+#### :rutina-final-expert-sockets-ss:
+##########    english: expert-sockets-lsof: The sockets option lsof  ##########
+##########    spanish: expert-sockets-lsof: La opcion sockets lsof   ##########
+#### :rutina-inicial-expert-sockets-lsof:
 ####
 ####
-if   [ "$first_option" == "expert-show-lsof" ]; then 
+if   [ "$first_option" == "expert-sockets-lsof" ]; then 
+echo "$title_md [ $first_option ] [ Show whith lsof: LISTEN sockets ] "
+if [ "$command_lsof" == "$NULL" ]; then 
+echo "$title_md [ fail ] [ Install lsof command ]"; exit; fi
+$command_lsof -i
+exit; fi
+####
+####
+#### :rutina-final-expert-sockets-lsof:
+##########    english: expert-sockets-netstat: The sockets option lsof  ##########
+##########    spanish: expert-sockets-netstat: La opcion sockets lsof   ##########
+#### :rutina-inicial-expert-sockets-netstat:
+####
+####
+if   [ "$first_option" == "expert-sockets-netstat" ]; then 
 echo "$title_md [ $first_option ] [ Show whith lsof: LISTEN sockets ] "
 if [ "$command_lsof" == "$NULL" ]; then 
 echo "$title_md [ fail ] [ Install lsof command ]"; exit; fi
 #### if [ "$command_awk" == "$NULL" ]; then 
 #### echo "$title_md [ fail ] [ Install awk command ]"; exit; fi
-$command_lsof -li
+$command_netstat -l46
 exit; fi
 ####
 ####
-#### :rutina-final-expert-show-lsof:
-##########    english: expert-show-netstat: The sockets option lsof  ##########
-##########    spanish: expert-show-netstat: La opcion sockets lsof   ##########
-#### :rutina-inicial-expert-show-netstat:
-####
-####
-if   [ "$first_option" == "expert-show-netstat" ]; then 
-echo "$title_md [ $first_option ] [ Show whith lsof: LISTEN sockets ] "
-if [ "$command_lsof" == "$NULL" ]; then 
-echo "$title_md [ fail ] [ Install lsof command ]"; exit; fi
-#### if [ "$command_awk" == "$NULL" ]; then 
-#### echo "$title_md [ fail ] [ Install awk command ]"; exit; fi
-$command_netstat -ln
-exit; fi
-####
-####
-#### :rutina-final-expert-show-netstat:
+#### :rutina-final-expert-sockets-netstat:
 ##########    english: expert-show-webcert: get the certificate from one web       ##########
 ##########    spanish: expert-show-webcert: obtiene el certificado de una web      ##########
 #### :rutina-inicial-expert-show-webcert:
