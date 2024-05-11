@@ -4805,8 +4805,8 @@ echo "$title_md Install curl to download and to install stable latest version"; 
 ####
 echo "$title_md Downloading fwiptables stable latest"
 descarga="$default_directory_cache/fwiptables-stable"
-$command_curl $web_download_sourceforge -s -L -o $descarga \
-&& chmod ugo+x $descarga && $descarga install
+$command_curl $web_download_sourceforge -s -L -o $descarga || echo "Without internet" \
+&& chmod ugo+x $descarga &> /dev/null && $descarga install && rm $descarga
 exit; fi
 ####
 ####
@@ -4825,8 +4825,8 @@ echo "$title_md Install curl to download and to install unstable latest version"
 ####
 echo "$title_md Downloading fwiptables development latest"
 descarga="$default_directory_cache/fwiptables-unstable"
-$command_curl $git_download_sourceforge -s -L -o $descarga \
-&& chmod ugo+x $descarga && $descarga install
+$command_curl $git_download_sourceforge -s -L -o $descarga || echo "Without internet" \
+&& chmod ugo+x $descarga &> /dev/null && $descarga install && rm $descarga
 exit; fi
 ####
 ####
