@@ -3590,6 +3590,7 @@ exit; fi
 ##########    english: list4: The list option   ##########
 ##########    spanish: list4: La opcion lista   ##########
 #### :rutina-inicial-list4:
+#### :rutina-inicial-ls4:
 ####
 ####
 if [ "$first_option" == "list4" ]; then 
@@ -3625,10 +3626,12 @@ esac
 exit; fi
 ####
 ####
+#### :rutina-final-ls4:
 #### :rutina-final-list4:
 ##########    english: list6: list ipv6 rules filter           ##########
 ##########    spanish: list6: lista reglas de filtros de ipv6  ##########
 #### :rutina-inicial-list6:
+#### :rutina-inicial-ls6:
 ####
 ####
 if [ "$first_option" == "list6" ]; then  
@@ -3666,6 +3669,7 @@ esac
 exit; fi
 ####
 ####
+#### :rutina-final-ls6:
 #### :rutina-final-list6:
 ##########    english: listn4: The list option   ##########
 ##########    spanish: listn4: La opcion lista   ##########
