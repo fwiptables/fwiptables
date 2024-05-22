@@ -427,6 +427,7 @@ command_cvlc="$(command -v cvlc)"
 command_mpg123="$(command -v mpg123)"
 command_mpg321="$(command -v mpg321)"
 command_uuid="$(command -v uuid)"
+command_w3m="$(command -v w3m)"
 ####
 ####
 show_actual_date="$($command_date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"
@@ -698,14 +699,16 @@ fi
 ####
 ####
 if [ "$favorite_text_browser" == "$NULL" ]; then
+if [ "$command_lynx"   != "$NULL" ] ; then  
+favorite_text_browser="$command_lynx"    ; fi
 if [ "$command_links"  != "$NULL" ] ; then  
 favorite_text_browser="$command_links"   ; fi
 if [ "$command_links2" != "$NULL" ] ; then  
 favorite_text_browser="$command_links2"  ; fi
-if [ "$command_lynx"   != "$NULL" ] ; then  
-favorite_text_browser="$command_lynx"    ; fi
 if [ "$command_elinks" != "$NULL" ] ; then  
 favorite_text_browser="$command_elinks"  ; fi
+if [ "$command_w3m" != "$NULL" ] ; then  
+favorite_text_browser="$command_w3m"  ; fi
 fi
 ####
 ####
@@ -5396,21 +5399,21 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-browse-web" ]; then 
-echo "$title_md [ $first_option ] [ Show one web whith command curl ]"
-if [ "$command_curl" == "$NULL" ]; then 
-echo "$title_md [ fail ] [ Install curl command ]"; exit; fi
+echo "$title_md [ $first_option ] [ Show one web whith command text browser ]"
+####
+####
+if [ "$favorite_text_browser" == "$NULL" ]; then 
+echo "#### install: or lynx, or links, or links2, or w3m"; fi
 ####
 ####
 url_browse_web="$2"
-url_agent_web="Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.0.3705; .NET CLR 1.1.4322)"
-page_browse_web="$command_curl '$url_browse_web' | tr '[:upper:]' '[:lower:]'"
-page_text_web="output.txt"
+echo "#### browser: $favorite_text_browser"
+echo "####    link: $2"
 ####
 ####
-while eso="$(read -r $page_browse_web)";
-do esto="$($page_browse_web =~ "$page_text_web")" echo $esto ; 
-if [[ $eso ]]; then "$url_browse_web:" ; fi ; done < $page_text_web
-# $command_curl --write-out "%{http_code}\n" $url_browse_web --output output.txt
+$favorite_text_browser -dump $url_browse_web
+####
+####
 exit; fi
 ####
 ####
