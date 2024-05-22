@@ -105,7 +105,7 @@ cmd_basename="$(basename $0)"                # only filename
 cmd_mayor="12"                               # number mayor version
 cmd_minor="11"                               # number minor version
 cmd_year="2024"                              # number year version
-cmd_month="06"                               # number mouth version
+cmd_month="05"                               # number mouth version
 cmd_version="$cmd_mayor-$cmd_minor"          # final number version
 cmd_released="$cmd_year-$cmd_month"          # final date version
 #### name location
@@ -5390,6 +5390,31 @@ exit; fi
 ####
 ####
 #### :rutina-final-sockets:
+##########    english: expert-browse-web: browse web with curl  ##########
+##########    spanish: expert-browse-web: La opcion sockets   ##########
+#### :rutina-inicial-expert-browse-web:
+####
+####
+if   [ "$first_option" == "expert-browse-web" ]; then 
+echo "$title_md [ $first_option ] [ Show one web whith command curl ]"
+if [ "$command_curl" == "$NULL" ]; then 
+echo "$title_md [ fail ] [ Install curl command ]"; exit; fi
+####
+####
+url_browse_web="$2"
+url_agent_web="Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.0.3705; .NET CLR 1.1.4322)"
+page_browse_web="$command_curl '$url_browse_web' | tr '[:upper:]' '[:lower:]'"
+page_text_web="output.txt"
+####
+####
+while eso="$(read -r $page_browse_web)";
+do esto="$($page_browse_web =~ "$page_text_web")" echo $esto ; 
+if [[ $eso ]]; then "$url_browse_web:" ; fi ; done < $page_text_web
+# $command_curl --write-out "%{http_code}\n" $url_browse_web --output output.txt
+exit; fi
+####
+####
+#### :rutina-final-expert-browse-web:
 ##########    english: expert-sockets-ss: The sockets option  ##########
 ##########    spanish: expert-sockets-ss: La opcion sockets   ##########
 #### :rutina-inicial-expert-sockets-ss:
