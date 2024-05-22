@@ -2624,8 +2624,8 @@ echo "$text_md server-print server-lamp server-news server-ftp server-mail      
 echo "$text_md server-webserver server-teamspeak server-mumble server-gateway       "
 echo "$text_md server-sql server-asterisk server-proxy server-samba                 "
 echo "$title_md  [ options-easy ] easy                                              "
-echo "$text_md preferences-read preferences-modify preferences-regen info           "
-echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 date intro filelog autolog       "
+echo "$text_md preferences-read preferences-modify preferences-regen info web       "
+echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date       "
 echo "$text_md free sockets nodes ip-forward version code treeconf treecache        "
 echo "$text_md cleancache notes depends variables license uninstall install         "
 echo "$title_md  [ options-expert ] expert                                          "
@@ -2931,6 +2931,7 @@ echo "$text_md "
 echo "$title_md | options-expert | $cmd_realpath options-expert |"
 echo "$text_md    Only works in Console AND Without: cli, gui, pdf, log, silent"
 echo "$text_md"
+echo "$text_md expert-browse-web . browse web"
 echo "$text_md expert-sockets-ss . show sockets with ss"
 echo "$text_md expert-sockets-netstat . show sockets with netstat"
 echo "$text_md expert-sockets-lsof . show sockets with lsof"
@@ -5393,13 +5394,38 @@ exit; fi
 ####
 ####
 #### :rutina-final-sockets:
-##########    english: expert-browse-web: browse web with curl  ##########
-##########    spanish: expert-browse-web: La opcion sockets   ##########
+##########    english: web: browse the   web ##########
+##########    spanish: web: navega en la web ##########
+#### :rutina-inicial-web:
+####
+####
+if   [ "$first_option" == "web" ]; then 
+echo "$title_md [ $first_option ] [ Show one web with command text browser ]"
+####
+####
+if [ "$favorite_text_browser" == "$NULL" ]; then 
+echo "#### install: or lynx, or links, or links2, or w3m"; fi
+####
+####
+url_browse_web="$2"
+echo "#### browser: $favorite_text_browser"
+echo "####    link: $2"
+####
+####
+$favorite_text_browser -dump $url_browse_web
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-web:
+##########    english: browse: browse the   web ##########
+##########    spanish: browse: navega en la web ##########
 #### :rutina-inicial-expert-browse-web:
 ####
 ####
 if   [ "$first_option" == "expert-browse-web" ]; then 
-echo "$title_md [ $first_option ] [ Show one web whith command text browser ]"
+echo "$title_md [ $first_option ] [ Show one web with command text browser ]"
 ####
 ####
 if [ "$favorite_text_browser" == "$NULL" ]; then 
