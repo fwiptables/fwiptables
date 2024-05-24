@@ -5412,8 +5412,8 @@ echo "### install: or lynx, or links, or links2, or w3m"; fi
 ####
 url_browse_web="$2"
 echo "###"
-echo "### With the browser: $favorite_text_browser"
-echo "### With   the  link: $2"
+echo "### With the  browser: $favorite_text_browser"
+echo "### With the link web: $2"
 echo "###"
 ####
 ####
