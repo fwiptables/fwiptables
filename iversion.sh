@@ -2629,6 +2629,7 @@ echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date   
 echo "$text_md free sockets nodes ip-forward version code treeconf treecache        "
 echo "$text_md cleancache notes depends variables license uninstall install         "
 echo "$title_md  [ options-expert ] expert                                          "
+echo "$title_md   Examples:                                                     "
 echo "$title_md | Example with info        | $cmd_basename txt info             "
 echo "$title_md | Example with expert      | $cmd_basename txt expert           "
 echo "$title_md | Example with code ip4    | $cmd_basename cli code ip4         "
