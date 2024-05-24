@@ -103,7 +103,7 @@ cmd_realpath="$(realpath $0)"                # full routename
 cmd_basename="$(basename $0)"                # only filename
 #### number version
 cmd_mayor="12"                               # number mayor version
-cmd_minor="11-dev"                           # number minor version
+cmd_minor="12-dev"                           # number minor version
 cmd_year="2024"                              # number year version
 cmd_month="05"                               # number mouth version
 cmd_version="$cmd_mayor-$cmd_minor"          # final number version
@@ -1550,7 +1550,7 @@ if [ "$command_ip" == "$NULL" ]
 then echo "$text_md [ info ] [ install ip command ]"
 else $command_ip -4 route ; fi
 echo
-echo "$title_md [ info ] ### [ Configured ip ] [ inet ip ] ###"
+echo "$title_md [ info ] ### [ Configured ip ] [ inet ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$text_md [ info ] [ install ip command ]"
 else $command_ip address ls | $command_egrep ": |inet " ; fi
@@ -1606,7 +1606,7 @@ if [ "$command_ip" == "$NULL" ]
 then echo "$text_md [ info ] [ install ip command ]"
 else $command_ip -6 route ; fi
 echo
-echo "$title_md [ info ] ### [ Configured ip ] [ inet ip ] ###"
+echo "$title_md [ info ] ### [ Configured ip ] [ inet ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$text_md [ info ] [ install ip command ]"
 else $command_ip address ls | $command_egrep ": |inet6 " ; fi
