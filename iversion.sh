@@ -4719,7 +4719,7 @@ exit;  fi
 ####
 ####
 if   [ "$first_option" == "expert-pc-halt" ]; then 
-echo "$title_md [ $first_option ] [ power off computer ] "
+echo "$title_md [ $first_option ] [ power off computer ] [ control-c to cancel ]"
 echo "Halt to power off computer ... in 15 seconds"
 $command_sleep 5
 echo "Halt to power off computer ... in 10 seconds"
@@ -4737,7 +4737,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-pc-shutdown" ]; then 
-echo "$title_md [ $first_option ] [ power off computer ] "
+echo "$title_md [ $first_option ] [ power off computer ] [ control-c to cancel ]"
 echo "Halt to shutdown computer ... in 15 seconds"
 $command_sleep 5
 echo "Halt to shutdown computer ... in 10 seconds"
@@ -4755,7 +4755,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-pc-reboot" ]; then 
-echo "$title_md [ $first_option ] [ reboot computer ] "
+echo "$title_md [ $first_option ] [ reboot computer ] [ control-c to cancel ]"
 echo "Halt to reboot computer ... in 15 seconds"
 $command_sleep 5
 echo "Halt to reboot computer ... in 10 seconds"
