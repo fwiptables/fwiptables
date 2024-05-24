@@ -2633,6 +2633,7 @@ echo "$title_md | Example with info        | $cmd_basename txt info             
 echo "$title_md | Example with expert      | $cmd_basename txt expert           "
 echo "$title_md | Example with code ip4    | $cmd_basename cli code ip4         "
 echo "$title_md | Example with list rules  | $cmd_basename cli lsn4             "
+echo "$title_md | Example with nodes       | $cmd_basename gui nodes            "
 echo "$title_md | Example with web browser | $cmd_basename gui web kernel.org   "
 exit ; fi
 ####
