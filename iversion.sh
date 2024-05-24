@@ -2629,9 +2629,11 @@ echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date   
 echo "$text_md free sockets nodes ip-forward version code treeconf treecache        "
 echo "$text_md cleancache notes depends variables license uninstall install         "
 echo "$title_md  [ options-expert ] expert                                          "
-echo "$title_md | Example with info       | $cmd_basename cli info         "
-echo "$title_md | Example with code ip4   | $cmd_basename txt code ip4     "
-echo "$title_md | Example with list rules | $cmd_basename gui lsn4         "
+echo "$title_md | Example with info        | $cmd_basename txt info             "
+echo "$title_md | Example with expert      | $cmd_basename txt expert           "
+echo "$title_md | Example with code ip4    | $cmd_basename cli code ip4         "
+echo "$title_md | Example with list rules  | $cmd_basename cli lsn4             "
+echo "$title_md | Example with web browser | $cmd_basename gui web kernel.org   "
 exit ; fi
 ####
 ####
@@ -5405,12 +5407,14 @@ echo "$title_md [ $first_option ] [ Show one web with command text browser ]"
 ####
 ####
 if [ "$favorite_text_browser" == "$NULL" ]; then 
-echo "#### install: or lynx, or links, or links2, or w3m"; fi
+echo "### install: or lynx, or links, or links2, or w3m"; fi
 ####
 ####
 url_browse_web="$2"
-echo "#### browser: $favorite_text_browser"
-echo "####    link: $2"
+echo "###"
+echo "### With the browser: $favorite_text_browser"
+echo "### With   the  link: $2"
+echo "###"
 ####
 ####
 $favorite_text_browser -dump $url_browse_web
