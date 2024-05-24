@@ -5426,6 +5426,23 @@ exit; fi
 ####
 ####
 #### :rutina-final-web:
+##########    english: web-project: browse the   web project      ##########
+##########    spanish: web-project: navega en la web del proyecto ##########
+#### :rutina-inicial-web-project:
+####
+####
+if   [ "$first_option" == "web-project" ]; then 
+echo "$title_md [ $first_option ] [ Show web proyect with command text browser ]"
+####
+####
+$cmd_basename web "http://sourceforge.net/projects/f-iptables/files/" \
+ | grep bash.sh | grep -i kb
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-web-project:
 ##########    english: browse: browse the   web ##########
 ##########    spanish: browse: navega en la web ##########
 #### :rutina-inicial-expert-browse-web:
