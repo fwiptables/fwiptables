@@ -2975,6 +2975,7 @@ echo "$text_md expert-wpa-connect . one nameconfig to connect wifi config"
 echo "$text_md expert-pc-halt . halt computer with halt"
 echo "$text_md expert-pc-shutdown . shutdown computer with shutdown"
 echo "$text_md expert-pc-reboot . reboot computer with reboot"
+echo "$text_md expert-project-web . site  downloaded web fwiptables"
 echo "$text_md "
 exit; fi
 ####
@@ -4497,25 +4498,24 @@ if  [ "$first_option" == "intro" ]; then
 echo "$text_md"
 echo "$title_md fwiptables. Firewall With iptables.   [ intro.md ] "
 echo "$text_md"
-echo "$text_md The fwiptables is a one-file WIZARD,      "
+echo "$text_md  The fwiptables is a one-file WIZARD,     "
 echo "$text_md for iptables, with COMMAND-LINE,          "
 echo "$text_md and CLI-MENU, and GUI-MENU,               "
 echo "$text_md and GUI-ROLL, and GUI-SHELL.              "
 echo "$text_md"
-echo "$text_md From one system firewall to choose one,    "
-echo "$text_md gen new rules with templates,              "
-echo "$text_md with eraserules, or custom,                "
-echo "$text_md with wizard-mini or wizard-full,           "  
-echo "$text_md with added comments rules.                 "
+echo "$text_md  From one system firewall to choose one,   "
+echo "$text_md with eraserules, or template custom,       "
+echo "$text_md with new wizard-mini or wizard-full,       "  
+echo "$text_md with added comments rules in firewall.     "
 echo "$text_md"
-echo "$text_md With rules ipv4, rules ipv6,         "
-echo "$text_md with netfilter neftables, netfilter xtables,  "
-echo "$text_md with tools ip, wizards for rules,             "
-echo "$text_md with save/load rules with files,              "
-echo "$text_md with shield to ssh or other servers choosed,  "         
-echo "$text_md with limit bandwidth, string word,            "
-echo "$text_md with host whitelist, host blacklist,          "
-echo "$text_md with other more capabilities of firewall.     "
+echo "$text_md  With rules ipv4, rules ipv6, ebtables, arptables   "
+echo "$text_md with netfilter neftables, netfilter xtables,        "
+echo "$text_md with tools ip, wizards for generate new rules,      "
+echo "$text_md with save/load rules with files standard iptables,  "
+echo "$text_md with shield to ssh or other servers choosed,        "         
+echo "$text_md with limit bandwidth, string word,                  "
+echo "$text_md with host whitelist, host blacklist,                "
+echo "$text_md with other more capabilities of firewall.           "
 echo "$text_md"
 echo "$text_md"
 echo "$title_md  fwiptables location.                    "
@@ -5426,12 +5426,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-web:
-##########    english: web-project: browse the   web project      ##########
-##########    spanish: web-project: navega en la web del proyecto ##########
-#### :rutina-inicial-web-project:
+##########    english: expert-project-web: browse the   web project      ##########
+##########    spanish: expert-project-web: navega en la web del proyecto ##########
+#### :rutina-inicial-expert-project-web:
 ####
 ####
-if   [ "$first_option" == "web-project" ]; then 
+if   [ "$first_option" == "expert-project-web" ]; then 
 echo "$title_md [ $first_option ] [ Show web proyect with command text browser ]"
 ####
 ####
@@ -5442,7 +5442,7 @@ $cmd_basename web "http://sourceforge.net/projects/f-iptables/files/" \
 exit; fi
 ####
 ####
-#### :rutina-final-web-project:
+#### :rutina-final-expert-project-web:
 ##########    english: browse: browse the   web ##########
 ##########    spanish: browse: navega en la web ##########
 #### :rutina-inicial-expert-browse-web:
