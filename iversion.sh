@@ -5412,6 +5412,10 @@ if [ "$favorite_text_browser" == "$NULL" ]; then
 echo "### install: or lynx, or links, or links2, or w3m"; fi
 ####
 ####
+if [ "$2" == "$NULL" ]; then 
+echo "### put a one link web"; fi
+####
+####
 url_browse_web="$2"
 echo "###"
 echo "### With the  browser: $favorite_text_browser"
