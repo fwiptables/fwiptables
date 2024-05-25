@@ -102,8 +102,8 @@ echo ; fi
 cmd_realpath="$(realpath $0)"                # full routename
 cmd_basename="$(basename $0)"                # only filename
 #### number version
-cmd_mayor="13"                               # number mayor version
-cmd_minor="01_dev"                           # number minor version
+cmd_mayor="12"                               # number mayor version
+cmd_minor="12-dev"                           # number minor version
 cmd_year="2024"                              # number year version
 cmd_month="05"                               # number mouth version
 cmd_version="$cmd_mayor-$cmd_minor"          # final number version
