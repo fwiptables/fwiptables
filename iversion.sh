@@ -940,7 +940,7 @@ case "$first_option" in
 "wallsystem")     first_option="firewall-wallsystem" ;;
 "easy")           first_option="options-easy" ;;
 "custom")         first_option="load-custom" ;;
-"examples")       first_option="option-examples" ;;
+"examples")       first_option="options-examples" ;;
 "regen")          first_option="config-regen" ;;
 "expert")         first_option="options-expert" ;;
 "ver")            first_option="version" ;;
@@ -1843,12 +1843,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-depends:
-##########    english: examples-option: some example    ##########
-##########    spanish: examples-option: algun ejemplo   ##########
-#### :rutina-inicial-examples-option:
+##########    english: options-examples: some example    ##########
+##########    spanish: options-examples: algun ejemplo   ##########
+#### :rutina-inicial-options-examples:
 ####
 ####
-if [ "$first_option" == "examples-option" ]; then
+if [ "$first_option" == "options-examples" ]; then
 echo "$title_md [ $first_option ] [ List examples ] [ examples md ] "
 echo "$text_md"
 echo "$title_md [ several examples *without optional otuput* ]   "
@@ -1872,28 +1872,28 @@ echo "$title_md [ several examples *with optional output* ]      "
 echo "$text_md"
 echo "$text_md        [ with optional output ] [ Example Description ]  "
 echo "$text_md"
-echo "$text_md    $cmd_realpath -silent client-web       |  \
+echo "$text_md    $cmd_realpath silent client-web       |  \
 Launch client web firewall a null output "
-echo "$text_md    $cmd_realpath -txt list                |  \
+echo "$text_md    $cmd_realpath txt ls4                 |  \
 List iptables rules with output txt      "
-echo "$text_md    $cmd_realpath -cli-wiptail names       |  \
+echo "$text_md    $cmd_realpath cli-wiptail names       |  \
 List firewall with output cli whiptail   "
-echo "$text_md    $cmd_realpath -gui-yad sockets         |  \
+echo "$text_md    $cmd_realpath gui-yad sockets         |  \
 List sockets ip with output gui yad      "
 echo "$text_md"
-echo "$text_md    $cmd_realpath -cli-menu-dialog         |  \
+echo "$text_md    $cmd_realpath cli-menu-dialog         |  \
 All options in text menu                 "
-echo "$text_md    $cmd_realpath -gui-menu-yad            |  \
+echo "$text_md    $cmd_realpath gui-menu-yad            |  \
 All options in window menu               "
-echo "$text_md    $cmd_realpath -gui-roll-zenity         |  \
+echo "$text_md    $cmd_realpath gui-roll-zenity         |  \
 All options in window roll               "
-echo "$text_md    $cmd_realpath -gui-shell-yad           |  \
+echo "$text_md    $cmd_realpath gui-shell-yad           |  \
 All options in window shell              "
 echo "$text_md"
 exit; fi
 ####
 ####
-#### :rutina-final-examples-option:
+#### :rutina-final-options-examples:
 ##########    english: version: system script, the version option              ##########
 ##########    spanish: version: script de sistema, la opcion mostrar version   ##########
 #### :rutina-inicial-version:
