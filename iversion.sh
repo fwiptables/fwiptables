@@ -4656,6 +4656,22 @@ exit; fi
 ####
 ####
 #### :rutina-final-install:
+##########    english: gen-version: generate installed respository   ##########
+##########    spanish: gen-version: genera instalado respositorio    ##########
+#### :rutina-inicial-gen-version:
+####
+####
+if   [ "$first_option" == "gen-version" ]; then 
+echo "$title_md [ $first_option ]  [ generate installed repository ] "
+#### create the file base in repository
+cp $cmd_basename ./fwiptables-version-$cmd_version-bash.sh
+#### create the README base in repository
+./fwiptables-version-$cmd_version-bash.sh intro > README
+./fwiptables-version-$cmd_version-bash.sh intro > README.md
+exit; fi
+####
+####
+#### :rutina-final-gen-version:
 ##########    english: expert-show-geoip: host to resolve and locate       ##########
 ##########    spanish: expert-show-geoip: host para resolver y localizar   ##########
 #### :rutina-inicial-expert-show-geoip:
