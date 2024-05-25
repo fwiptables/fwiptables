@@ -102,8 +102,8 @@ echo ; fi
 cmd_realpath="$(realpath $0)"                # full routename
 cmd_basename="$(basename $0)"                # only filename
 #### number version
-cmd_mayor="12"                               # number mayor version
-cmd_minor="12-dev"                           # number minor version
+cmd_mayor="13"                               # number mayor version
+cmd_minor="01_dev"                           # number minor version
 cmd_year="2024"                              # number year version
 cmd_month="05"                               # number mouth version
 cmd_version="$cmd_mayor-$cmd_minor"          # final number version
@@ -2629,7 +2629,7 @@ echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date   
 echo "$text_md free sockets nodes ip-forward version code treeconf treecache        "
 echo "$text_md cleancache notes depends variables license uninstall install         "
 echo "$title_md  [ options-expert ] expert                                          "
-echo "$title_md   Examples:                                                     "
+echo "$title_md                                                                 "
 echo "$title_md | Example with info        | $cmd_basename txt info             "
 echo "$title_md | Example with expert      | $cmd_basename txt expert           "
 echo "$title_md | Example with code ip4    | $cmd_basename cli code ip4         "
@@ -5409,11 +5409,11 @@ echo "$title_md [ $first_option ] [ Show one web with command text browser ]"
 ####
 ####
 if [ "$favorite_text_browser" == "$NULL" ]; then 
-echo "### install: or lynx, or links, or links2, or w3m"; fi
+echo "### install: or lynx, or links, or links2, or w3m"; exit ; fi
 ####
 ####
 if [ "$2" == "$NULL" ]; then 
-echo "### put a one link web"; fi
+echo "### type a one link web"; exit ; fi
 ####
 ####
 url_browse_web="$2"
