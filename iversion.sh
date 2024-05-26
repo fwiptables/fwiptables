@@ -103,7 +103,7 @@ cmd_realpath="$(realpath $0)"                # full routename
 cmd_basename="$(basename $0)"                # only filename
 #### number version
 cmd_mayor="12"                               # number mayor version
-cmd_minor="12-dev"                           # number minor version
+cmd_minor="12"                               # number minor version
 cmd_year="2024"                              # number year version
 cmd_month="05"                               # number mouth version
 cmd_version="$cmd_mayor-$cmd_minor"          # final number version
@@ -2977,7 +2977,7 @@ echo "$text_md expert-pc-halt . halt computer with halt"
 echo "$text_md expert-pc-shutdown . shutdown computer with shutdown"
 echo "$text_md expert-pc-reboot . reboot computer with reboot"
 echo "$text_md expert-project-web . site  downloaded web fwiptables"
-echo "$text_md expert-gen-version . generate actual version files in actual folder"
+echo "$text_md expert-gen-version . generate actual version file in actual folder"
 echo "$text_md "
 exit; fi
 ####
@@ -4664,7 +4664,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-gen-version" ]; then 
-echo "$title_md [ $first_option ]  [ generate installed actual file version ] "
+echo "$title_md [ $first_option ]  [ generate actual file version ] "
 #### create the file base in repository
 cp $cmd_basename ./fwiptables-version-$cmd_version-bash.sh
 #### create the README base in repository
