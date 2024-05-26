@@ -4667,9 +4667,12 @@ if   [ "$first_option" == "expert-gen-version" ]; then
 echo "$title_md [ $first_option ]  [ generate actual file version ] "
 #### create the file base in repository
 cp $cmd_basename ./fwiptables-version-$cmd_version-bash.sh
+echo "$title_md [ ok ] Created ./fwiptables-version-$cmd_version-bash.sh"
 #### create the README base in repository
 ./fwiptables-version-$cmd_version-bash.sh intro > README
+echo "$title_md [ ok ] Created README"
 ./fwiptables-version-$cmd_version-bash.sh intro > README.md
+echo "$title_md [ ok ] Created README.md"
 exit; fi
 ####
 ####
