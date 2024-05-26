@@ -824,6 +824,7 @@ case "$first_option" in
 "-cli") first_option="cli" ;;
 "--gui") first_option="gui" ;;
 "-gui") first_option="gui" ;;
+"silent") first_option="null" ;;
 "-silent") first_option="null" ;;
 "--silent") first_option="null" ;;
 "-pdf") first_option="pdf" ;;
