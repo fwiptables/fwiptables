@@ -2977,6 +2977,7 @@ echo "$text_md expert-pc-halt . halt computer with halt"
 echo "$text_md expert-pc-shutdown . shutdown computer with shutdown"
 echo "$text_md expert-pc-reboot . reboot computer with reboot"
 echo "$text_md expert-project-web . site  downloaded web fwiptables"
+echo "$text_md expert-gen-version . generate actual version files in actual folder"
 echo "$text_md "
 exit; fi
 ####
@@ -4657,13 +4658,13 @@ exit; fi
 ####
 ####
 #### :rutina-final-install:
-##########    english: gen-version: generate installed respository   ##########
-##########    spanish: gen-version: genera instalado respositorio    ##########
-#### :rutina-inicial-gen-version:
+##########    english: expert-gen-version: generate installed respository   ##########
+##########    spanish: expert-gen-version: genera instalado respositorio    ##########
+#### :rutina-inicial-expert-gen-version:
 ####
 ####
-if   [ "$first_option" == "gen-version" ]; then 
-echo "$title_md [ $first_option ]  [ generate installed repository ] "
+if   [ "$first_option" == "expert-gen-version" ]; then 
+echo "$title_md [ $first_option ]  [ generate installed actual file version ] "
 #### create the file base in repository
 cp $cmd_basename ./fwiptables-version-$cmd_version-bash.sh
 #### create the README base in repository
@@ -4672,7 +4673,7 @@ cp $cmd_basename ./fwiptables-version-$cmd_version-bash.sh
 exit; fi
 ####
 ####
-#### :rutina-final-gen-version:
+#### :rutina-final-expert-gen-version:
 ##########    english: expert-show-geoip: host to resolve and locate       ##########
 ##########    spanish: expert-show-geoip: host para resolver y localizar   ##########
 #### :rutina-inicial-expert-show-geoip:

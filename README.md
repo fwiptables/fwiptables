@@ -30,17 +30,17 @@
 ###  fwiptables install.                     
   
     su root TYPE: su root                       
-    put bit TYPE: chmod 755 ./fwiptables-version-13-01_dev-bash.sh     
-    install TYPE: ./fwiptables-version-13-01_dev-bash.sh install       
+    put bit TYPE: chmod 755 ./fwiptables-version-12-12-dev-bash.sh     
+    install TYPE: ./fwiptables-version-12-12-dev-bash.sh install       
   
 ###  fwiptables uninstall.                   
   
     uninstall TYPE: fwiptables uninstall  
   
 ###  [ version ] [ Show version ] [ version.md ]            
-   [ info ] [ Somes details in fwiptables-version-13-01_dev-bash.sh ver 13-01_dev ]  
-   [ info ] [ Name program       ] /root/f-iptables-version/fwiptables-version-13-01_dev-bash.sh                 
-   [ info ] [ Number Version     ] Mayor 13 Minor 01_dev    
+   [ info ] [ Somes details in fwiptables-version-12-12-dev-bash.sh ver 12-12-dev ]  
+   [ info ] [ Name program       ] /root/f-iptables-version/fwiptables-version-12-12-dev-bash.sh                 
+   [ info ] [ Number Version     ] Mayor 12 Minor 12-dev    
    [ info ] [ Relased Version    ] Year 2024 Month 05      
    [ info ] [ Short description  ] fwiptables, FireWall With iptables       
    [ info ] [ Long description   ] fwiptables, One Mini Script in one-file wizard        
@@ -50,9 +50,9 @@
    [ info ] [ Data  Directory    ] /root/.config/fwiptables    
    [ info ] [ Cache Directory    ] /root/.cache/fwiptables   
    [ info ] [ File  Preferences  ]      
-   /root/.config/fwiptables/fwiptables-preferences/default-preferences-13-01_dev        
+   /root/.config/fwiptables/fwiptables-preferences/default-preferences-12-12-dev        
    [ info ] [ File  Format       ]      
-   /root/f-iptables-version/fwiptables-version-13-01_dev-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable   
+   /root/f-iptables-version/fwiptables-version-12-12-dev-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable   
   
 ###  [ compile ] [  Optionally compile from bash script ] [ compile.md]         
    [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling...    
@@ -62,7 +62,7 @@
   
 ###  [ options ] [ List general options for fwiptables ] [ list-options.md ]
   
-###  fwiptables-version-13-01_dev-bash.sh [optional-output] first_option [second_option]   
+###  fwiptables-version-12-12-dev-bash.sh [optional-output] first_option [second_option]   
 ###   [ optional-output ] output                                         
    [ t|txt n|narrow c|cli g|gui l|log p|pdf s|silent ]                  
    [ cli-dialog cli-whiptail gui-zenity gui-yad ]                       
@@ -98,10 +98,4 @@
    free sockets nodes ip-forward version code treeconf treecache        
    cleancache notes depends variables license uninstall install         
 ###   [ options-expert ] expert                                          
-###                                                                  
-###  | Example with info        | fwiptables-version-13-01_dev-bash.sh txt info             
-###  | Example with expert      | fwiptables-version-13-01_dev-bash.sh txt expert           
-###  | Example with code ip4    | fwiptables-version-13-01_dev-bash.sh cli code ip4         
-###  | Example with list rules  | fwiptables-version-13-01_dev-bash.sh cli lsn4             
-###  | Example with nodes       | fwiptables-version-13-01_dev-bash.sh gui nodes            
-###  | Example with web browser | fwiptables-version-13-01_dev-bash.sh gui web kernel.org   
+###   [ options-examples ] examples                                      
