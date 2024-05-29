@@ -102,11 +102,12 @@ echo ; fi
 cmd_realpath="$(realpath $0)"                # full routename
 cmd_basename="$(basename $0)"                # only filename
 #### number version
+cmd_dev="dev"
 cmd_mayor="12"                               # number mayor version
-cmd_minor="12"                               # number minor version
+cmd_minor="13"                               # number minor version
 cmd_year="2024"                              # number year version
 cmd_month="05"                               # number mouth version
-cmd_version="$cmd_mayor-$cmd_minor"          # final number version
+cmd_version="$cmd_mayor-$cmd_minor-$cmd_dev" # final number version
 cmd_released="$cmd_year-$cmd_month"          # final date version
 #### name location
 cmd_file="fwiptables"                        # filename installed
@@ -2934,8 +2935,8 @@ exit; fi
 ####
 if   [ "$first_option" == "options-expert" ]; then
 echo "$text_md "
-echo "$title_md | options-expert | $cmd_realpath options-expert |"
-echo "$text_md    Only works in Console AND Without: cli, gui, pdf, log, silent"
+echo "$title_md | options-expert | $cmd_realpath expert |"
+echo "$text_md    Only works Without optional output"
 echo "$text_md"
 echo "$text_md expert-browse-web . browse one link web"
 echo "$text_md expert-sockets-ss . show sockets with ss"
