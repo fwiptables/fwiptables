@@ -102,12 +102,12 @@ echo ; fi
 cmd_realpath="$(realpath $0)"                # full routename
 cmd_basename="$(basename $0)"                # only filename
 #### number version
-cmd_dev="dev"
+cmd_dev="-dev"                               # -dev version or null final version
 cmd_mayor="12"                               # number mayor version
 cmd_minor="13"                               # number minor version
 cmd_year="2024"                              # number year version
 cmd_month="05"                               # number mouth version
-cmd_version="$cmd_mayor-$cmd_minor-$cmd_dev" # final number version
+cmd_version="$cmd_mayor-$cmd_minor$cmd_dev"  # final number version
 cmd_released="$cmd_year-$cmd_month"          # final date version
 #### name location
 cmd_file="fwiptables"                        # filename installed
@@ -1851,53 +1851,39 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "options-examples" ]; then
-echo "$title_md [ $first_option ] [ List examples ] [ examples md ] "
-echo "$text_md"
-echo "$title_md [ several examples *without optional otuput* ]   "
-echo "$text_md"
-echo "$text_md    $cmd_realpath names                    | \
-List firewall saved  "
-echo "$text_md    $cmd_realpath all-custom               | \
-List configs saved                         "
-echo "$text_md    $cmd_realpath speed-ip4                | \
-get info about speed with internet ipv4    "
-echo "$text_md    $cmd_realpath sockets                  | \
-show info about listen sockets             "
-echo "$text_md    $cmd_realpath preferences-modify       | \
-modify default variables                   "
-echo "$text_md    $cmd_realpath autolog                  | \
-List last optiosn with $cmd_realpath           "
-echo "$text_md    $cmd_realpath depends                  | \
-depends to $cmd_realpath                       "
-echo "$text_md"
-echo "$title_md [ several examples *with optional output* ]      "
-echo "$text_md"
-echo "$text_md        [ with optional output ] [ Example Description ]  "
-echo "$text_md"
-echo "$text_md    $cmd_realpath silent client-web       |  \
-Launch client web firewall a null output "
-echo "$text_md    $cmd_realpath txt ls4                 |  \
-List iptables rules with output txt      "
-echo "$text_md    $cmd_realpath cli-wiptail names       |  \
-List firewall with output cli whiptail   "
-echo "$text_md    $cmd_realpath gui-yad sockets         |  \
-List sockets ip with output gui yad      "
-echo "$text_md"
-echo "$text_md    $cmd_realpath cli-menu-dialog         |  \
-All options in text menu                 "
-echo "$text_md    $cmd_realpath gui-menu-yad            |  \
-All options in window menu               "
-echo "$text_md    $cmd_realpath gui-roll-zenity         |  \
-All options in window roll               "
-echo "$text_md    $cmd_realpath gui-shell-yad           |  \
-All options in window shell              "
-echo "$text_md"
+echo "$title_md [ $first_option ] [ List examples ] [ examples md ]"
+echo "$title_md"
+echo "$title_md [ Several examples without optional otuput ]"
+echo "$title_md"
+echo "$title_md       [ with optional output ] [ Example Description ]"
+echo "$title_md"
+echo "$title_md | depends                  | $cmd_realpath depends"
+echo "$title_md | List firewall saved      | $cmd_realpath names"
+echo "$title_md | List configs saved       | $cmd_realpath all-custom"
+echo "$title_md | Get info speed ipv4      | $cmd_realpath speed-ip4"
+echo "$title_md | Show listen sockets      | $cmd_realpath sockets"
+echo "$title_md | List last options        | $cmd_realpath autolog"
+echo "$title_md | modify default variables | $cmd_realpath preferences-modify"
+echo "$title_md"
+echo "$title_md [ Several examples with optional output ]"
+echo "$title_md"
+echo "$title_md       [ with optional output ] [ Example Description ]"
+echo "$title_md"
 echo "$title_md | Example with info        | $cmd_basename txt info             "
 echo "$title_md | Example with expert      | $cmd_basename txt expert           "
 echo "$title_md | Example with code ip4    | $cmd_basename cli code ip4         "
 echo "$title_md | Example with list rules  | $cmd_basename cli lsn4             "
 echo "$title_md | Example with nodes       | $cmd_basename gui nodes            "
 echo "$title_md | Example with web browser | $cmd_basename gui web kernel.org   "
+echo "$title_md"
+echo "$title_md | Launch client web firewall in silent   | $cmd_realpath silent client-web"
+echo "$title_md | List iptables rules with output txt    | $cmd_realpath txt ls4"
+echo "$title_md | List firewall with output cli whiptail | $cmd_realpath cli-wiptail names"
+echo "$title_md | List sockets ip with output gui yad    | $cmd_realpath gui-yad sockets"
+echo "$title_md | All options in text menu               | $cmd_realpath cli-menu-dialog"
+echo "$title_md | All options in window menu             | $cmd_realpath gui-menu-yad"
+echo "$title_md | All options in window roll             | $cmd_realpath gui-roll-zenity"
+echo "$title_md | All options in window shell            | $cmd_realpath gui-shell-yad"
 exit; fi
 ####
 ####
