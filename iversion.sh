@@ -1468,7 +1468,7 @@ exit; fi
 ####
 if [ "$first_option" == "preferences-regen" ] ; then
 echo "$title_md [ $first_option ] [ $cmd_realpath preferences-regen ] \
-[ preferences-regen.md ] "
+[ preferences-regen md ] "
 rm $file_default_preferences
 echo "$title_md [ _ok_ ] [ $cmd_realpath deleted old configs ]"
 file $cmd_realpath
@@ -1545,7 +1545,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "ip4" ]; then
-echo "$title_md [ $first_option ]  [ show info about net ip4 ] [ ip4.md ]"
+echo "$title_md [ $first_option ]  [ show info about net ip4 ] [ ip4 md ]"
 echo
 echo "$title_md [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ]
@@ -1601,7 +1601,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "ip6" ]; then
-echo "$title_md [ $first_option ]  [ show info about net ip6 ] [ ip6.md ] "
+echo "$title_md [ $first_option ]  [ show info about net ip6 ] [ ip6 md ] "
 echo
 echo "$title_md [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ]
@@ -1894,7 +1894,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "version" ]; then 
-echo "$title_md [ $first_option ] [ Show version ] [ version.md ]            "
+echo "$title_md [ $first_option ] [ Show version ] [ version md ]            "
 echo "$text_md [ info ] [ Somes details in $cmd_basename ver $cmd_version ]  "
 echo "$text_md [ info ] [ Name program       ] $cmd_realpath                 "
 echo "$text_md [ info ] [ Number Version     ] Mayor $cmd_mayor Minor $cmd_minor    "
@@ -2976,7 +2976,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "info-options" ]; then 
-echo "$title_md [ $first_option ]  [ info options for firewall iptables ] [ info-options.md]"
+echo "$title_md [ $first_option ]  [ info options for firewall iptables ] [ info-options md]"
 echo "$text_md"
 echo "$title_md           Firewall fwiptables info-options ... $cmd_version"
 echo "$text_md"
@@ -3040,7 +3040,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "variables" ]; then 
-echo "$title_md [ $first_option ]  [ list variables firewall fwiptables] [ variables.md ]"
+echo "$title_md [ $first_option ]  [ list variables firewall fwiptables] [ variables md ]"
 echo "$text_md"
 echo "$title_md           Firewall fwiptables variables ... $cmd_version"
 echo "$text_md "
@@ -3182,7 +3182,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "commands" ]; then 
-echo "$title_md [ $first_option ]  [ list commands possible depends ] [ depends.md ]"
+echo "$title_md [ $first_option ]  [ list commands possible depends ] [ depends md ]"
 echo "##########     commands possible depends  ##########"
 echo "$text_md"
 echo "$text_md awk              # for sockets"
@@ -4485,26 +4485,26 @@ exit; fi
 ####
 if  [ "$first_option" == "intro" ]; then 
 echo "$text_md"
-echo "$title_md fwiptables. Firewall With iptables.   [ intro.md ] "
+echo "$title_md fwiptables. Firewall With iptables.   [ intro md ] "
 echo "$text_md"
-echo "$text_md  The fwiptables is a one-file WIZARD,     "
-echo "$text_md for iptables, with COMMAND-LINE,          "
-echo "$text_md and CLI-MENU, and GUI-MENU,               "
-echo "$text_md and GUI-ROLL, and GUI-SHELL.              "
+echo "$text_md The fwiptables is a one-file WIZARD,     "
+echo "$text_md  for iptables, with COMMAND-LINE,          "
+echo "$text_md  and CLI-MENU, and GUI-MENU,               "
+echo "$text_md  and GUI-ROLL, and GUI-SHELL.              "
 echo "$text_md"
-echo "$text_md  From one system firewall to choose one,   "
-echo "$text_md with eraserules, or template custom,       "
-echo "$text_md with new wizard-mini or wizard-full,       "  
-echo "$text_md with added comments rules in firewall.     "
+echo "$text_md From one system firewall to choose one,   "
+echo "$text_md  with eraserules, or template custom,       "
+echo "$text_md  with new wizard-mini or wizard-full,       "  
+echo "$text_md  with added comments rules in firewall.     "
 echo "$text_md"
-echo "$text_md  With rules ipv4, rules ipv6, ebtables, arptables,  "
-echo "$text_md with netfilter neftables, netfilter xtables,        "
-echo "$text_md with tools ip, wizards for generate new rules,      "
-echo "$text_md with save/load rules with files standard iptables,  "
-echo "$text_md with shield to ssh or other servers choosed,        "         
-echo "$text_md with limit bandwidth, string word,                  "
-echo "$text_md with host whitelist, host blacklist,                "
-echo "$text_md with other more capabilities of firewall.           "
+echo "$text_md With rules ipv4, rules ipv6, ebtables, arptables,  "
+echo "$text_md  with netfilter neftables, netfilter xtables,        "
+echo "$text_md  with tools ip, wizards for generate new rules,      "
+echo "$text_md  with save/load rules with files standard iptables,  "
+echo "$text_md  with shield to ssh or other servers choosed,        "         
+echo "$text_md  with limit bandwidth, string word,                  "
+echo "$text_md  with host whitelist, host blacklist,                "
+echo "$text_md  with other more capabilities of firewall.           "
 echo "$text_md"
 echo "$text_md"
 echo "$title_md  fwiptables location.                    "
@@ -4527,7 +4527,7 @@ $cmd_realpath version
 echo "$text_md"
 $cmd_realpath compile
 echo "$text_md"
-echo "$title_md [ options ] [ List general options for fwiptables ] [ list-options.md ]"
+echo "$title_md [ options ] [ List general options for fwiptables ] [ list-options md ]"
 echo "$text_md"
 $cmd_realpath options
 exit; fi
@@ -4859,7 +4859,7 @@ exit; fi
 ####
 if   [ "$first_option" == "compile" ]; then 
 echo "$title_md [ $first_option ] \
-[  Optionally compile from bash script ] [ compile.md]         "
+[  Optionally compile from bash script ] [ compile md]         "
 echo "$text_md [ info ] \
 BASH SCRIPT WORKS fully. But if your desire is compiling...    "
 echo "$text_md [ step ] \
