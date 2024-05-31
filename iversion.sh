@@ -27,8 +27,7 @@
 ####
 ####
 ####                 ## fwiptables license in source program
-####   English: This program has gpl license GPL v2
-####   Spanish: Este programa tiene licencia GPL v2
+####   English: This program has gpl license GPL v2, LGPL v2, BSD .
 ####
 ####
 ####                 ## fwiptables comments in source program
@@ -120,11 +119,11 @@ cmd_longdescription="fwiptables, One Mini Script in one-file wizard"   # descrip
 cmd_license="GPL v2, LGPL v2, BSD"           # program license
 #### web oficial
 content_license_gpl=\
-"https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE-GPL.txt?format=raw"
+"https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-GPL.txt?format=raw"
 content_license_lgpl=\
-"https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE-LGPL.txt?format=raw"
+"https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-LGPL.txt?format=raw"
 content_license_bsd=\
-"https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE-BSD.txt?format=raw"
+"https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-BSD.txt?format=raw"
 web_homepage_sourceforge=\
 "https://sourceforge.net/projects/f-iptables/" ;
 web_homepage_github=\
