@@ -1,24 +1,24 @@
   
-###  fwiptables. Firewall With iptables.   [ intro.md ] 
+###  fwiptables. Firewall With iptables.   [ intro md ] 
   
-    The fwiptables is a one-file WIZARD,     
-   for iptables, with COMMAND-LINE,          
-   and CLI-MENU, and GUI-MENU,               
-   and GUI-ROLL, and GUI-SHELL.              
+   The fwiptables is a one-file WIZARD,     
+    for iptables, with COMMAND-LINE,          
+    and CLI-MENU, and GUI-MENU,               
+    and GUI-ROLL, and GUI-SHELL.              
   
-    From one system firewall to choose one,   
-   with eraserules, or template custom,       
-   with new wizard-mini or wizard-full,       
-   with added comments rules in firewall.     
+   From one system firewall to choose one,   
+    with eraserules, or template custom,       
+    with new wizard-mini or wizard-full,       
+    with added comments rules in firewall.     
   
-    With rules ipv4, rules ipv6, ebtables, arptables,  
-   with netfilter neftables, netfilter xtables,        
-   with tools ip, wizards for generate new rules,      
-   with save/load rules with files standard iptables,  
-   with shield to ssh or other servers choosed,        
-   with limit bandwidth, string word,                  
-   with host whitelist, host blacklist,                
-   with other more capabilities of firewall.           
+   With rules ipv4, rules ipv6, ebtables, arptables,  
+    with netfilter neftables, netfilter xtables,        
+    with tools ip, wizards for generate new rules,      
+    with save/load rules with files standard iptables,  
+    with shield to ssh or other servers choosed,        
+    with limit bandwidth, string word,                  
+    with host whitelist, host blacklist,                
+    with other more capabilities of firewall.           
   
   
 ###   fwiptables location.                    
@@ -30,17 +30,17 @@
 ###  fwiptables install.                     
   
     su root TYPE: su root                       
-    put bit TYPE: chmod 755 ./fwiptables-version-12-12-bash.sh     
-    install TYPE: ./fwiptables-version-12-12-bash.sh install       
+    put bit TYPE: chmod 755 ./fwiptables-version-12-13-dev-bash.sh     
+    install TYPE: ./fwiptables-version-12-13-dev-bash.sh install       
   
 ###  fwiptables uninstall.                   
   
     uninstall TYPE: fwiptables uninstall  
   
-###  [ version ] [ Show version ] [ version.md ]            
-   [ info ] [ Somes details in fwiptables-version-12-12-bash.sh ver 12-12 ]  
-   [ info ] [ Name program       ] /root/f-iptables-version/fwiptables-version-12-12-bash.sh                 
-   [ info ] [ Number Version     ] Mayor 12 Minor 12    
+###  [ version ] [ Show version ] [ version md ]            
+   [ info ] [ Somes details in fwiptables-version-12-13-dev-bash.sh ver 12-13-dev ]  
+   [ info ] [ Name program       ] /root/f-iptables-version/fwiptables-version-12-13-dev-bash.sh                 
+   [ info ] [ Number Version     ] Mayor 12 Minor 13    
    [ info ] [ Relased Version    ] Year 2024 Month 05      
    [ info ] [ Short description  ] fwiptables, FireWall With iptables       
    [ info ] [ Long description   ] fwiptables, One Mini Script in one-file wizard        
@@ -50,19 +50,19 @@
    [ info ] [ Data  Directory    ] /root/.config/fwiptables    
    [ info ] [ Cache Directory    ] /root/.cache/fwiptables   
    [ info ] [ File  Preferences  ]      
-   /root/.config/fwiptables/fwiptables-preferences/default-preferences-12-12        
+   /root/.config/fwiptables/fwiptables-preferences/default-preferences-12-13-dev        
    [ info ] [ File  Format       ]      
-   /root/f-iptables-version/fwiptables-version-12-12-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable   
+   /root/f-iptables-version/fwiptables-version-12-13-dev-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable   
   
-###  [ compile ] [  Optionally compile from bash script ] [ compile.md]         
+###  [ compile ] [  Optionally compile from bash script ] [ compile md]         
    [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling...    
    [ step ] [ 0 ] Necesary fwiptables in source script bash                
    [ step ] [ 1 ] Download and install obash from oficial web internet     
    [ step ] [ 3 ] Run: obash -s -c -o ./destination.bin ./source-bash.sh   
   
-###  [ options ] [ List general options for fwiptables ] [ list-options.md ]
+###  [ options ] [ List general options for fwiptables ] [ list-options md ]
   
-###  fwiptables-version-12-12-bash.sh [optional-output] first_option [second_option]   
+###  fwiptables-version-12-13-dev-bash.sh [optional-output] first_option [second_option]   
 ###   [ optional-output ] output                                         
    [ t|txt n|narrow c|cli g|gui l|log p|pdf s|silent ]                  
    [ cli-dialog cli-whiptail gui-zenity gui-yad ]                       
