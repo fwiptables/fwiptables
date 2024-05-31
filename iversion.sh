@@ -103,10 +103,10 @@ cmd_realpath="$(realpath $0)"                # full routename
 cmd_basename="$(basename $0)"                # only filename
 #### number version
 cmd_dev="-dev"                               # -dev version or null final version
-cmd_mayor="12"                               # number mayor version
-cmd_minor="13"                               # number minor version
+cmd_mayor="13"                               # number mayor version
+cmd_minor="01"                               # number minor version
 cmd_year="2024"                              # number year version
-cmd_month="05"                               # number mouth version
+cmd_month="06"                               # number mouth version
 cmd_version="$cmd_mayor-$cmd_minor$cmd_dev"  # final number version
 cmd_released="$cmd_year-$cmd_month"          # final date version
 #### name location
@@ -117,10 +117,14 @@ cmd_developer="Francisco Garcia"             # actual developer
 cmd_contact="fwiptables@gmx.com"             # actual contact
 cmd_shortdescription="fwiptables, FireWall With iptables"              # description short
 cmd_longdescription="fwiptables, One Mini Script in one-file wizard"   # description long
-cmd_license="GPL v2, License General Public version 2"                 # program license
+cmd_license="GPL v2, LGPL v2, BSD"           # program license
 #### web oficial
 content_license_gpl=\
-"https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
+"https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE-GPL.txt?format=raw"
+content_license_lgpl=\
+"https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE-LGPL.txt?format=raw"
+content_license_bsd=\
+"https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE-BSD.txt?format=raw"
 web_homepage_sourceforge=\
 "https://sourceforge.net/projects/f-iptables/" ;
 web_homepage_github=\
@@ -2587,43 +2591,43 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-options" ] ; then 
-echo "$title_md $cmd_basename [optional-output] first_option [second_option]   "
-echo "$title_md  [ optional-output ] output                                         "
-echo "$text_md [ t|txt n|narrow c|cli g|gui l|log p|pdf s|silent ]                  "
-echo "$text_md [ cli-dialog cli-whiptail gui-zenity gui-yad ]                       "
-echo "$text_md [ cli-menu-dialog cli-menu-whiptail gui-roll-zenity ]                "
-echo "$text_md [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ]      "
-echo "$title_md  [ firewall-control ] control                                       "
-echo "$text_md stop continue reset show save load names wizard-mini wizard-full     "
-echo "$text_md actual eraserules eraserules4 eraserules6 off-line all-permisive     "
-echo "$title_md  [ firewall-listconceptual ] listconceptual                         "
-echo "$text_md ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6  "
-echo "$text_md list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6    "
-echo "$text_md list-security4 list-security6 list-ebtables list-arptables           "
-echo "$title_md  [ firewall-listnumeral ] listnumeral                               "
-echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-filter4 listn-filter6          "
-echo "$text_md listn-alltables  listn-nat4 listn-nat6 listn-raw4 listn-raw6         "
-echo "$text_md listn-mangle4 listn-mangle6 listn-security4 listn-security6          "
-echo "$title_md  [ firewall-wallcustom ] wallcustom                                 "
-echo "$text_md new-full-custom nueva-completa-custom new-mini-custom                "
-echo "$text_md nueva-mini-custom clone-wallsystem load-custom show-custom           "
-echo "$text_md modify-custom del-custom all-custom                                  "
-echo "$title_md  [ firewall-wallsystem ] wallsystem                                 "
-echo "$text_md client-basic client-web client-git client-ipp client-irc             "
-echo "$text_md client-vnc client-news client-vpn client-torrent client-vpn          "
-echo "$text_md client-ftp client-proxy client-mail client-tor game-widelands        "
-echo "$text_md games-udp games-shooter game-wesnoth game-minetest game-freeciv      "
-echo "$text_md lan-tor lan-vpn shield-ssh server-ssh server-irc server-vnc          "
-echo "$text_md server-print server-lamp server-news server-ftp server-mail          "
-echo "$text_md server-webserver server-teamspeak server-mumble server-gateway       "
-echo "$text_md server-sql server-asterisk server-proxy server-samba                 "
-echo "$title_md  [ options-easy ] easy                                              "
-echo "$text_md preferences-read preferences-modify preferences-regen info web       "
-echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date       "
-echo "$text_md free sockets nodes ip-forward version code treeconf treecache        "
-echo "$text_md cleancache notes depends variables license uninstall install         "
-echo "$title_md  [ options-expert ] expert                                          "
-echo "$title_md  [ options-examples ] examples                                      "
+echo "$title_md $cmd_basename [optional-output] first_option [second_option]    "
+echo "$title_md  [ optional-output ] output                                          "
+echo "$text_md [ t|txt n|narrow c|cli g|gui l|log p|pdf s|silent ]                   "
+echo "$text_md [ cli-dialog cli-whiptail gui-zenity gui-yad ]                        "
+echo "$text_md [ cli-menu-dialog cli-menu-whiptail gui-roll-zenity ]                 "
+echo "$text_md [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ]       "
+echo "$title_md  [ firewall-control ] control                                        "
+echo "$text_md stop continue reset show save load names wizard-mini wizard-full      "
+echo "$text_md actual eraserules eraserules4 eraserules6 off-line all-permisive      "
+echo "$title_md  [ firewall-listconceptual ] listconceptual                          "
+echo "$text_md ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6   "
+echo "$text_md list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6     "
+echo "$text_md list-security4 list-security6 list-ebtables list-arptables            "
+echo "$title_md  [ firewall-listnumeral ] listnumeral                                "
+echo "$text_md lsn4 lsn6 listn4 listn6 statusn listn-filter4 listn-filter6           "
+echo "$text_md listn-alltables  listn-nat4 listn-nat6 listn-raw4 listn-raw6          "
+echo "$text_md listn-mangle4 listn-mangle6 listn-security4 listn-security6           "
+echo "$title_md  [ firewall-wallcustom ] wallcustom                                  "
+echo "$text_md new-full-custom nueva-completa-custom new-mini-custom                 "
+echo "$text_md nueva-mini-custom clone-wallsystem load-custom show-custom            "
+echo "$text_md modify-custom del-custom all-custom                                   "
+echo "$title_md  [ firewall-wallsystem ] wallsystem                                  "
+echo "$text_md client-basic client-web client-git client-ipp client-irc              "
+echo "$text_md client-vnc client-news client-vpn client-torrent client-vpn           "
+echo "$text_md client-ftp client-proxy client-mail client-tor game-widelands         "
+echo "$text_md games-udp games-shooter game-wesnoth game-minetest game-freeciv       "
+echo "$text_md lan-tor lan-vpn shield-ssh server-ssh server-irc server-vnc           "
+echo "$text_md server-print server-lamp server-news server-ftp server-mail           "
+echo "$text_md server-webserver server-teamspeak server-mumble server-gateway        "
+echo "$text_md server-sql server-asterisk server-proxy server-samba                  "
+echo "$title_md  [ options-easy ] easy                                               "
+echo "$text_md preferences-read preferences-modify preferences-regen info web        "
+echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date        "
+echo "$text_md free sockets nodes ip-forward version code treeconf treecache         "
+echo "$text_md cleancache notes depends variables uninstall install license          "
+echo "$title_md  [ options-expert ] expert (works only without optional output)      "
+echo "$title_md  [ options-examples ] examples license-gpl license-lgpl license-bsd  "
 exit ; fi
 ####
 ####
@@ -4700,19 +4704,19 @@ exit; fi
 ####
 ####
 #### :rutina-final-nodes:
-##########    english: license: license gpl v2   ##########
-##########    spanish: license: license gpl v2   ##########
-#### :rutina-inicial-license:
+##########    english: license-gpl: license gpl v2   ##########
+##########    spanish: license-gpl: license gpl v2   ##########
+#### :rutina-inicial-license-gpl:
 ####
 ####
-if [ "$first_option" == "license" ]; then 
+if [ "$first_option" == "license-gpl" ]; then 
 echo "$title_md [ $first_option ] \
 [ Show license from git sourceforge for $cmd_realpath ] "
 ####
 if [ "$command_curl" == "$NULL" ]; then
 echo "$title_md Install curl to download/install latest version"; fi
 ####
-echo "license text for gpl v2 downloading from .. $content_license_gpl"
+echo "license text for $first_option downloading"
 echo
 echo ..................................................................
 echo
@@ -4720,7 +4724,49 @@ curl -L $content_license_gpl --stderr /dev/null
 exit;  fi
 ####
 ####
-#### :rutina-final-license:
+#### :rutina-final-license-gpl:
+##########    english: license-lgpl: license gpl v2   ##########
+##########    spanish: license-lgpl: license gpl v2   ##########
+#### :rutina-inicial-license-lgpl:
+####
+####
+if [ "$first_option" == "license-lgpl" ]; then 
+echo "$title_md [ $first_option ] \
+[ Show license from git sourceforge for $cmd_realpath ] "
+####
+if [ "$command_curl" == "$NULL" ]; then
+echo "$title_md Install curl to download/install latest version"; fi
+####
+echo "license text for $first_option downloading"
+echo
+echo ..................................................................
+echo
+curl -L $content_license_lgpl --stderr /dev/null
+exit;  fi
+####
+####
+#### :rutina-final-license-lgpl:
+##########    english: license-bsd: license gpl v2   ##########
+##########    spanish: license-bsd: license gpl v2   ##########
+#### :rutina-inicial-license-bsd:
+####
+####
+if [ "$first_option" == "license-bsd" ]; then 
+echo "$title_md [ $first_option ] \
+[ Show license from git sourceforge for $cmd_realpath ] "
+####
+if [ "$command_curl" == "$NULL" ]; then
+echo "$title_md Install curl to download/install latest version"; fi
+####
+echo "license text for $first_option downloading"
+echo
+echo ..................................................................
+echo
+curl -L $content_license_bsd --stderr /dev/null
+exit;  fi
+####
+####
+#### :rutina-final-license-bsd:
 ##########    english: expert-pc-halt: power off computer   ##########
 ##########    spanish: expert-pc-halt: apaga el ordenador   ##########
 #### :rutina-inicial-expert-pc-halt:
