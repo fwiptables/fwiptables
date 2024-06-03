@@ -2699,12 +2699,17 @@ if   [ "$first_option" == "free" ]; then
 echo "$title_md [ $first_option ]  [ freedom from innecesary ram ] "
 case $command_tee in "$NULL")
 echo "$text_md [ fail ] [ Install tee command ]"; exit ;; esac
+####
+####
 echo "$title_md [ info ] Actual Memory"
 free -hw 
-echo 3 | $command_tee /proc/sys/vm/drop_caches &> /dev/null
-sync
+####
+####
 echo "$title_md [ info ] Now with New Memory ram freedom .. Actual memory now .."
+echo 3 | $command_tee /proc/sys/vm/drop_caches &> /dev/null
 free -hw
+####
+####
 exit; fi
 ####
 ####
