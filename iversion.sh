@@ -2625,7 +2625,7 @@ echo "$text_md preferences-read preferences-modify preferences-regen info web   
 echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date        "
 echo "$text_md free sockets nodes ip-forward depends code treeconf treecache         "
 echo "$text_md cleancache notes variables uninstall install version examples         "
-echo "$title_md  expert (works only without optional output)                         "
+echo "$title_md  expert (expert commands work only without optional output)          "
 echo "$title_md  license-gpl license-lgpl license-bsd                                "
 echo "$title_md $title_md $cmd_longdescription $title_md $title_md"
 exit ; fi
