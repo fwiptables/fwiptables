@@ -2612,14 +2612,15 @@ echo "$text_md new-full-custom nueva-completa-custom new-mini-custom            
 echo "$text_md nueva-mini-custom clone-wallsystem load-custom show-custom            "
 echo "$text_md modify-custom del-custom all-custom                                   "
 echo "$title_md  firewall-wallsystem                                                 "
-echo "$text_md client-basic client-web client-git client-ipp client-irc              "
-echo "$text_md client-vnc client-news client-vpn client-torrent client-vpn           "
-echo "$text_md client-ftp client-proxy client-mail client-tor game-widelands         "
-echo "$text_md games-udp games-shooter game-wesnoth game-minetest game-freeciv       "
-echo "$text_md lan-tor lan-vpn shield-ssh server-ssh server-irc server-vnc           "
-echo "$text_md server-print server-lamp server-news server-ftp server-mail           "
-echo "$text_md server-webserver server-teamspeak server-mumble server-gateway        "
-echo "$text_md server-sql server-asterisk server-proxy server-samba                  "
+echo "$text_md client-basic client-web client-ssh client-telnet client-ipp           "
+echo "$text_md client-irc client-git client-vnc client-news client-vpn               "
+echo "$text_md client-torrent client-vpn client-ftp client-proxy                     "
+echo "$text_md client-mail client-tor game-widelands games-udp games-shooter         "
+echo "$text_md game-wesnoth game-minetest game-freeciv lan-tor lan-vpn               "
+echo "$text_md shield-ssh server-ssh server-irc server-vnc server-print              "
+echo "$text_md server-lamp server-news server-ftp server-mail server-webserver       "
+echo "$text_md server-teamspeak server-mumble server-gateway server-sql              "
+echo "$text_md server-asterisk server-proxy server-samba                             "
 echo "$title_md  options-easy                                                        "
 echo "$text_md preferences-read preferences-modify preferences-regen info web        "
 echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date        "
@@ -7684,8 +7685,8 @@ name_firewall="$first_option" ;
 # allow_use_ipv6=""           
 # allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="20" ;
+allow_shield_maxtries="" ;
+config_shield_maxtries="40" ;
 config_shield_port="22" ;
 #### english: log port servers
 # logserver_prefix_input="fwlog-input::"   
@@ -7760,6 +7761,200 @@ server_port_tcp="ssh" ;
 # config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-shield-ssh:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-ssh:
+####
+####   #### english: firewall of system shield-ssh:
+####   #### spanish: cortafuego del sistema shield-ssh:
+####
+####
+if [ "$first_option" == "client-ssh" ]; then
+echo "$title_md [ info ] [ loading firewall wallsystem client-ssh ]" ;
+launch_rules_firewall="yes" ;
+type_firewall="wallsystem"    ; 
+name_firewall="$first_option" ;
+#### english: firewall capacities
+#### english: firewall capacities
+# allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_maxtries="20" ;
+config_shield_port="22" ;
+#### english: log port servers
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
+#### you can connect normal web
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,ssh" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_tcp="" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
+fi
+#### :rutina-final-client-ssh:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-telnet:
+####
+####   #### english: firewall of system shield-ssh:
+####   #### spanish: cortafuego del sistema shield-ssh:
+####
+####
+if [ "$first_option" == "client-telnet" ]; then
+echo "$title_md [ info ] [ loading firewall wallsystem client-telnet ]" ;
+launch_rules_firewall="yes" ;
+type_firewall="wallsystem"    ; 
+name_firewall="$first_option" ;
+#### english: firewall capacities
+#### english: firewall capacities
+# allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_maxtries="20" ;
+config_shield_port="22" ;
+#### english: log port servers
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
+#### you can connect normal web
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,ssh,telnet" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_tcp="" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
+fi
+#### :rutina-final-client-telnet:
 #### ##################################################
 #### ##################################################
 #### :rutina-inicial-client-basic:
