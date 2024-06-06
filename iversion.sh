@@ -487,6 +487,7 @@ default_directory_pdf="$directory_data_necesary/fwiptables-pdf"
 default_directory_wpa="$directory_data_necesary/fwiptables-wpa"
 default_directory_benchmarkram="$directory_data_necesary/fwiptables-benchmarkram"
 default_directory_benchmarkdisk="$directory_data_necesary/fwiptables-benchmarkdisk"
+default_directory_radio="$directory_data_necesary/fwiptables-radio"
 ####
 ####
 #### english: templates cfg
@@ -572,6 +573,8 @@ if [ ! -d "$default_directory_benchmarkram" ]; then
 $command_mkdir -p "$default_directory_benchmarkram" &> /dev/null ; fi
 if [ ! -d "$default_directory_benchmarkdisk" ]; then
 $command_mkdir -p "$default_directory_benchmarkdisk" &> /dev/null ; fi
+if [ ! -d "$default_directory_radio" ]; then
+$command_mkdir -p "$default_directory_radio" &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-dir-sane:
@@ -1811,6 +1814,41 @@ exit; fi
 #### :rutina-final-expert-trace-icmp6:
 ##########    english: depends: depends            ##########
 ##########    spanish: dependencias: dependencias  ##########
+#### :rutina-inicial-expert-radio-spanish:
+####
+####
+if   [ "$first_option" == "expert-radio-spanish" ]; then
+####
+####
+radio_player="$(command -v cvlc)"
+radio_group="radio_spanish.m3u8"
+radio_config="$default_directory_radio/$radio_group"
+radio_choosed="$default_directory_cache/$radio_group"
+####
+####
+if [ "$second_option" == "$NULL" ];
+then echo "$title_md Please input one string to listen one radio"; exit; fi
+####
+####
+if [ "$radio_player" == "$NULL" ];
+then "$title_md please install vlc"; exit; fi
+####
+####
+if [ !  -f "$radio_config" ];
+then echo "$title_md downloading radio config.."
+$command_curl -L https://www.tdtchannels.com/lists/radio.m3u8 --stderr /dev/null > $radio_config
+fi
+####
+####
+grep -i $second_option $radio_config > $radio_choosed
+killall -9 $radio_player &> /dev/null
+sudo -u $(logname) $command_cvlc -d $radio_choosed &
+exit; fi
+####
+####
+#### :rutina-final-expert-radio-spanish:
+##########    english: depends: depends            ##########
+##########    spanish: dependencias: dependencias  ##########
 #### :rutina-inicial-depends:
 ####
 ####
@@ -1926,7 +1964,7 @@ exit ; fi
 ####
 if   [ "$first_option" == "expert-show-weather" ]; then 
 case $command_curl in "$NULL") echo "$title_md [ fail ] [ Install a curl ]"; exit ;; esac
-curl -s wttr.in/?3n?T
+$command_curl -s wttr.in/?3n?T
 exit; fi
 ####
 ####
@@ -2978,6 +3016,7 @@ echo "$text_md expert-wpa-connect . one nameconfig to connect wifi config"
 echo "$text_md expert-pc-halt . halt computer with halt"
 echo "$text_md expert-pc-shutdown . shutdown computer with shutdown"
 echo "$text_md expert-pc-reboot . reboot computer with reboot"
+echo "$text_md expert-radio-spanish . spanish radio from one string"
 echo "$text_md expert-project-web . site  downloaded web fwiptables"
 echo "$text_md expert-gen-version . generate actual version file in actual folder"
 echo "$text_md "
@@ -4736,7 +4775,7 @@ echo "license text for $first_option downloading"
 echo
 echo ..................................................................
 echo
-curl -L $content_license_gpl --stderr /dev/null
+$command_curl -L $content_license_gpl --stderr /dev/null
 exit;  fi
 ####
 ####
@@ -4757,7 +4796,7 @@ echo "license text for $first_option downloading"
 echo
 echo ..................................................................
 echo
-curl -L $content_license_lgpl --stderr /dev/null
+$command_curl -L $content_license_lgpl --stderr /dev/null
 exit;  fi
 ####
 ####
@@ -4778,7 +4817,7 @@ echo "license text for $first_option downloading"
 echo
 echo ..................................................................
 echo
-curl -L $content_license_bsd --stderr /dev/null
+$command_curl -L $content_license_bsd --stderr /dev/null
 exit;  fi
 ####
 ####
