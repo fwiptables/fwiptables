@@ -1850,6 +1850,7 @@ exit; fi
 #### :rutina-final-depends:
 ##########    english: examples: some example    ##########
 ##########    spanish: examples: algun ejemplo   ##########
+#### :rutina-inicial-options-examples:
 #### :rutina-inicial-examples:
 ####
 ####
@@ -1891,6 +1892,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-examples:
+#### :rutina-inicial-options-examples:
 ##########    english: version: system script, the version option              ##########
 ##########    spanish: version: script de sistema, la opcion mostrar version   ##########
 #### :rutina-inicial-version:
@@ -2882,6 +2884,7 @@ exit; fi
 ##########    english: options-easy: options for fwiptables firewall      ##########
 ##########    spanish: options-easy: opciones para fwiptables firewall    ##########
 #### :rutina-inicial-options-easy:
+#### :rutina-inicial-easy:
 ####
 ####
 if   [ "$first_option" == "options-easy" ]; then
@@ -2923,16 +2926,18 @@ echo "$text_md "
 exit; fi
 ####
 ####
+#### :rutina-final-easy:
 #### :rutina-final-options-easy:
 ##########    english: options-expert: options for fwiptables firewall      ##########
 ##########    spanish: options-expert: opciones para fwiptables firewall    ##########
 #### :rutina-inicial-options-expert:
+#### :rutina-inicial-expert:
 ####
 ####
 if   [ "$first_option" == "options-expert" ]; then
 echo "$text_md "
 echo "$title_md | options-expert | $cmd_realpath expert |"
-echo "$text_md    Only works Without optional output"
+echo "$text_md    Each expert only works Without optional output"
 echo "$text_md"
 echo "$text_md expert-browse-web . browse one link web"
 echo "$text_md expert-sockets-ss . show sockets with ss"
@@ -2979,10 +2984,12 @@ echo "$text_md "
 exit; fi
 ####
 ####
+#### :rutina-final-expert:
 #### :rutina-final-options-expert:
 ##########    english: info-options: options for fwiptables firewall      ##########
 ##########    spanish: info-options: opciones para fwiptables firewall    ##########
 #### :rutina-inicial-info-options:
+#### :rutina-inicial-info:
 ####
 ####
 if   [ "$first_option" == "info-options" ]; then 
@@ -3003,9 +3010,11 @@ echo "$title_md"
 exit; fi
 ####
 ####
+#### :rutina-final-info:
 #### :rutina-final-info-options:
 ##########    english: optional-output: options for fwiptables firewall      ##########
 ##########    spanish: optional-output: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-optional-output:
 #### :rutina-inicial-parametters:
 ####
 ####
@@ -3044,6 +3053,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-parametters:
+#### :rutina-final-optional-output:
 ##########    english: variables: list variables     ##########
 ##########    spanish: variables: lista variables    ##########
 #### :rutina-inicial-variables:
