@@ -1530,7 +1530,7 @@ echo "serverip_discover_ipv4=https://ifconfig.co/ip   ## default http://ifconfig
 echo "serverip_discover_ipv6=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
 echo "serverip_iperf_ipv4=ping.online.net             ## default ping.online.net"
 echo "serverport_iperf_ipv4=5200                      ## default 5200"
-echo "serverip_iperf_ipv6=ping6.online.net            ## default ping.online.net"
+echo "serverip_iperf_ipv6=ping6.online.net            ## default ping6.online.net"
 echo "serverport_iperf_ipv6=5200                      ## default 5200"
 echo "$title_md"
 echo "$title_md # default graphicall dimension"
