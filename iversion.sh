@@ -1818,6 +1818,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-radio-spanish" ]; then
+echo "$title_md [ $first_option ]  [ spanish radio from one text-string ]\
+ [ expert-radio-spanish md]"
 ####
 ####
 radio_player="$(command -v cvlc)"
@@ -3016,7 +3018,7 @@ echo "$text_md expert-wpa-connect . one nameconfig to connect wifi config"
 echo "$text_md expert-pc-halt . halt computer with halt"
 echo "$text_md expert-pc-shutdown . shutdown computer with shutdown"
 echo "$text_md expert-pc-reboot . reboot computer with reboot"
-echo "$text_md expert-radio-spanish . spanish radio from one string"
+echo "$text_md expert-radio-spanish . spanish radio from one text-string"
 echo "$text_md expert-project-web . site  downloaded web fwiptables"
 echo "$text_md expert-gen-version . generate actual version file in actual folder"
 echo "$text_md "
