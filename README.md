@@ -38,7 +38,7 @@
     uninstall TYPE: fwiptables uninstall  
   
 ###  [ version ] [ Show version ] [ version md ]            
-   [ info ] [ Somes details in fwiptables-version-13-02-dev-bash.sh ver 13-02-dev ]  
+   [ info ] [ Somes details in fwiptables-version-13-02-dev-bash.sh version 13-02-dev ]  
    [ info ] [ Name program       ] /root/f-iptables-version/fwiptables-version-13-02-dev-bash.sh                 
    [ info ] [ Number Version     ] Mayor 13 Minor 02    
    [ info ] [ Relased Version    ] Year 2024 Month 06      
