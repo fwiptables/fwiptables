@@ -434,6 +434,9 @@ command_uuid="$(command -v uuid)"
 command_w3m="$(command -v w3m)"
 ####
 ####
+radio_player="$(command -v vlc)"
+####
+####
 show_actual_date="$($command_date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"
 ####
 ####
@@ -1812,8 +1815,18 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-trace-icmp6:
-##########    english: depends: depends            ##########
-##########    spanish: dependencias: dependencias  ##########
+##########    english: radio spanish      ##########
+##########    spanish: radio española     ##########
+#### :rutina-inicial-expert-radio-spanish:
+####
+####
+if   [ "$first_option" == "expert-radio-stop" ]; then
+echo "$title_md [ $first_option ]  [ radio stopped ] [ expert-radio-stop md]"
+radio_player="$(command -v vlc)"
+killall -9 $radio_player &> /dev/null
+exit; fi
+##########    english: radio spanish      ##########
+##########    spanish: radio española     ##########
 #### :rutina-inicial-expert-radio-spanish:
 ####
 ####
@@ -1822,7 +1835,7 @@ echo "$title_md [ $first_option ]  [ spanish radio from one text-string ]\
  [ expert-radio-spanish md]"
 ####
 ####
-radio_player="$(command -v cvlc)"
+radio_player="$(command -v vlc)"
 radio_group="radio_spanish.m3u8"
 radio_config="$default_directory_radio/$radio_group"
 radio_choosed="$default_directory_cache/$radio_group"
@@ -1843,8 +1856,9 @@ fi
 ####
 ####
 grep -i $second_option $radio_config > $radio_choosed
-killall -9 $radio_player &> /dev/null
-sudo -u $(logname) $command_cvlc -d $radio_choosed &
+$cmd_realpath expert-radio-stop &> /dev/null
+sudo -u $(logname) $radio_player -I dummy -d $radio_choosed &> /dev/null &
+echo "$title_md [ ok ] one radio with string $second_option" 
 exit; fi
 ####
 ####
