@@ -5506,7 +5506,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-project-web" ]; then 
-echo "$title_md [ $first_option ] [ Show web proyect with command text browser ]"
+echo "$title_md [ $first_option ] [ version - date - size - downloaded last week ]"
 ####
 ####
 $cmd_basename web "http://sourceforge.net/projects/f-iptables/files/" \
