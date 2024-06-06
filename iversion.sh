@@ -1848,9 +1848,9 @@ exit; fi
 ####
 ####
 #### :rutina-final-depends:
-##########    english: options-examples: some example    ##########
-##########    spanish: options-examples: algun ejemplo   ##########
-#### :rutina-inicial-options-examples:
+##########    english: examples: some example    ##########
+##########    spanish: examples: algun ejemplo   ##########
+#### :rutina-inicial-examples:
 ####
 ####
 if [ "$first_option" == "options-examples" ]; then
@@ -1890,7 +1890,7 @@ echo "$title_md | All options in window shell            | $cmd_realpath gui-she
 exit; fi
 ####
 ####
-#### :rutina-final-options-examples:
+#### :rutina-final-examples:
 ##########    english: version: system script, the version option              ##########
 ##########    spanish: version: script de sistema, la opcion mostrar version   ##########
 #### :rutina-inicial-version:
@@ -1898,7 +1898,7 @@ exit; fi
 ####
 if [ "$first_option" == "version" ]; then 
 echo "$title_md [ $first_option ] [ Show version ] [ version md ]            "
-echo "$text_md [ info ] [ Somes details in $cmd_basename ver $cmd_version ]  "
+echo "$text_md [ info ] [ Somes details in $cmd_basename version $cmd_version ]  "
 echo "$text_md [ info ] [ Name program       ] $cmd_realpath                 "
 echo "$text_md [ info ] [ Number Version     ] Mayor $cmd_mayor Minor $cmd_minor    "
 echo "$text_md [ info ] [ Relased Version    ] Year $cmd_year Month $cmd_month      "
