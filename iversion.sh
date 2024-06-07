@@ -1831,18 +1831,26 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-radio-link" ]; then
-echo "$title_md [ $first_option ]  [ radio link ] [ expert-radio-link md]"
+echo "$title_md [ $first_option ]  [ radio link user:root ] [ expert-radio-link md]"
 ####
 ####
-if [ "$second_option" == "$NULL" ];
-then echo "$title_md Please input one string to listen one radio"; exit; fi
+if [ "$second_option" == "$NULL" ]; then
+echo "$title_md Please input one string to listen one radio"; exit; fi
 ####
 ####
-if [ "$favorite_text_music" == "$NULL" ];
-then "$title_md please install vlc"; exit; fi
+if [ "$favorite_text_music" == "$NULL" ]; then
+echo "$title_md please install vlc"; exit; fi
+####
+####
+if [ "$favorite_text_music" == "vlc" ]; then
+#### LISTEN vlc radio FROM ROOT
+$command_sed -i 's/geteuid/getppid/' /usr/bin/vlc
+exit; fi
 ####
 ####
 $favorite_text_music "$2"
+####
+####
 exit; fi
 ####
 ####
@@ -1853,15 +1861,16 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-radio-spanish" ]; then
-echo "$title_md [ $first_option ]  [ spanish radio from one text-string ]\
+echo "$title_md [ $first_option ]  [ spanish radio user:root from one text-string ]\
  [ expert-radio-spanish md]"
 ####
 ####
-if [ "$(logname)" == "root" ]; then echo "title_md Imposible without logname"; exit; fi
+if [ "$favorite_text_music" == "vlc" ]; then
+#### LISTEN vlc radio FROM ROOT
+$command_sed -i 's/geteuid/getppid/' /usr/bin/vlc
+exit; fi
 ####
 ####
-su -p $(logname)
-radio_player="$favorite_text_music"
 radio_group="radio_spanish.m3u8"
 radio_config="$HOME/.config-$radio_group"
 radio_cache="$HOME/.cache-$radio_group"
@@ -1883,7 +1892,7 @@ fi
 ####
 grep -i $second_option $radio_config > $radio_cache
 $cmd_realpath expert-radio-stop &> /dev/null
-sudo -u $(logname) $radio_player $radio_cache &> /dev/null &
+$favorite_text_music $radio_cache &> /dev/null &
 echo "$title_md [ ok ] one radio with string $second_option"
 exit; fi
 ####
