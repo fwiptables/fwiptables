@@ -227,7 +227,8 @@ serverip_discover_ipv6="http://httpbin.org/ip"
 serverip_iperf_ipv4="ping.online.net"       
 serverport_iperf_ipv4="5200"                
 serverip_iperf_ipv6="ping6.online.net"      
-serverport_iperf_ipv6="5200"                
+serverport_iperf_ipv6="5200"
+server_radio_online="https://www.tdtchannels.com/lists/radio.m3u8"
 config_graphicall_width="750"
 config_graphicall_height="550"
 list_rules_conceptual=""   ;
@@ -1536,6 +1537,7 @@ echo "serverip_iperf_ipv4=ping.online.net             ## default ping.online.net
 echo "serverport_iperf_ipv4=5200                      ## default 5200"
 echo "serverip_iperf_ipv6=ping6.online.net            ## default ping6.online.net"
 echo "serverport_iperf_ipv6=5200                      ## default 5200"
+echo "server_radio_online=https://www.tdtchannels.com/lists/radio.m3u8" 
 echo "$title_md"
 echo "$title_md # default graphicall dimension"
 echo "config_graphicall_width=800                     ## default width 800"
@@ -1842,38 +1844,27 @@ if [ "$favorite_text_music" == "$NULL" ]; then
 echo "$title_md please install vlc"; exit; fi
 ####
 ####
-if [ "$favorite_text_music" == "vlc" ]; then
-#### LISTEN vlc radio FROM ROOT
-$command_sed -i 's/geteuid/getppid/' /usr/bin/vlc
-exit; fi
-####
-####
-$favorite_text_music "$2"
+sudo -u $(logname) $favorite_text_music "$2"
 ####
 ####
 exit; fi
 ####
 ####
 #### :rutina-final-expert-radio-link:
-##########    english: radio spanish      ##########
-##########    spanish: radio española     ##########
-#### :rutina-inicial-expert-radio-spanish:
+##########    english: radio online       ##########
+##########    spanish: radio en linea     ##########
+#### :rutina-inicial-expert-radio-online:
 ####
 ####
-if   [ "$first_option" == "expert-radio-spanish" ]; then
+if   [ "$first_option" == "expert-radio-online" ]; then
 echo "$title_md [ $first_option ]  [ spanish radio user:root from one text-string ]\
- [ expert-radio-spanish md]"
+ [ expert-radio-online md]"
 ####
 ####
-if [ "$favorite_text_music" == "vlc" ]; then
-#### LISTEN vlc radio FROM ROOT
-$command_sed -i 's/geteuid/getppid/' /usr/bin/vlc
-exit; fi
-####
-####
-radio_group="radio_spanish.m3u8"
-radio_config="$HOME/.config-$radio_group"
-radio_cache="$HOME/.cache-$radio_group"
+radio_group="radio.m3u8"
+radio_config="/etc/fwiptables-config-$radio_group"
+radio_cache="/etc/fwiptables-cache-$radio_group"
+chmod ugo+rx /etc/fwiptables-*
 ####
 ####
 if [ "$second_option" == "$NULL" ];
@@ -1886,18 +1877,19 @@ then "$title_md please install vlc"; exit; fi
 ####
 if [ !  -f "$radio_config" ];
 then echo "$title_md downloading radio config.."
-$command_curl -L "https://www.tdtchannels.com/lists/radio.m3u8" --stderr /dev/null > $radio_config
+$command_curl -L "https://www.tdtchannels.com/lists/radio.m3u8" /
+--stderr /dev/null > $radio_config
 fi
 ####
 ####
 grep -i $second_option $radio_config > $radio_cache
 $cmd_realpath expert-radio-stop &> /dev/null
-$favorite_text_music $radio_cache &> /dev/null &
+sudo -u $(logname) $favorite_text_music $radio_cache &> /dev/null &
 echo "$title_md [ ok ] one radio with string $second_option"
 exit; fi
 ####
 ####
-#### :rutina-final-expert-radio-spanish:
+#### :rutina-final-expert-radio-online:
 ##########    english: depends: depends            ##########
 ##########    spanish: dependencias: dependencias  ##########
 #### :rutina-inicial-depends:
