@@ -1857,8 +1857,10 @@ echo "$title_md [ $first_option ]  [ spanish radio from one text-string ]\
  [ expert-radio-spanish md]"
 ####
 ####
-if [ "$(logname)" == "root" ]; then echo "title_md imposible without logname"; exit; fi
-su $(logname)
+if [ "$(logname)" == "root" ]; then echo "title_md Imposible without logname"; exit; fi
+####
+####
+su -p $(logname)
 radio_player="$favorite_text_music"
 radio_group="radio_spanish.m3u8"
 radio_config="$HOME/.config-$radio_group"
@@ -1882,7 +1884,7 @@ fi
 grep -i $second_option $radio_config > $radio_cache
 $cmd_realpath expert-radio-stop &> /dev/null
 sudo -u $(logname) $radio_player $radio_cache &> /dev/null &
-echo "$title_md [ ok ] one radio with string $second_option" 
+echo "$title_md [ ok ] one radio with string $second_option"
 exit; fi
 ####
 ####
