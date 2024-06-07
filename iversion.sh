@@ -1874,17 +1874,18 @@ radio_config="/etc/fwiptables-config-$radio_group"
 radio_cache="/etc/fwiptables-cache-$radio_group"
 ####
 ####
-echo "$title_md downloading radio config.."
+rm $radio_config $radio_cache &> /dev/null
+echo "$title_md Downloading radio config .."
 $command_curl -L $server_radio_online &> $radio_config
-grep -i $second_option $radio_config > $radio_cache
-chmod ugo +rx $radio_config $radio_cache &> /dev/null
+grep -i $second_option $radio_config &> $radio_cache
+chmod ugo+rx $radio_config $radio_cache &> /dev/null
 ####
 ####
 $cmd_realpath expert-radio-stop &> /dev/null
 ####
 ####
-sudo -u $(logname) $favorite_text_music $radio_cache &> /dev/null &
-echo "$title_md [ ok ] one radio with string $second_option"
+sudo -u "$(logname)" $favorite_text_music $radio_cache &> /dev/null && 
+echo "$title_md [ ok ] one radio with string: $second_option"
 exit; fi
 ####
 ####
