@@ -431,10 +431,8 @@ command_cvlc="$(command -v cvlc)"
 command_mpg123="$(command -v mpg123)"
 command_mpg321="$(command -v mpg321)"
 command_uuid="$(command -v uuid)"
+command_vlc="$(command -v vlc) -I dummy -d"
 command_w3m="$(command -v w3m)"
-####
-####
-radio_player="$(command -v vlc)"
 ####
 ####
 show_actual_date="$($command_date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"
@@ -761,8 +759,8 @@ fi
 ####
 ####
 if [ "$favorite_text_music" == "$NULL" ]; then
-if [ "$command_cvlc" != "$NULL" ]; then  
-favorite_text_music="$command_cvlc"          ; fi
+if [ "$command_vlc" != "$NULL" ]; then  
+favorite_text_music="$command_vlc"     ; fi
 fi
 ####
 ####
@@ -1815,16 +1813,40 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-trace-icmp6:
-##########    english: radio spanish      ##########
-##########    spanish: radio española     ##########
-#### :rutina-inicial-expert-radio-spanish:
+##########    english: radio stopped      ##########
+##########    spanish: radio parada       ##########
+#### :rutina-inicial-expert-radio-stop:
 ####
 ####
 if   [ "$first_option" == "expert-radio-stop" ]; then
 echo "$title_md [ $first_option ]  [ radio stopped ] [ expert-radio-stop md]"
-radio_player="$(command -v vlc)"
-killall -9 $radio_player &> /dev/null
+killall -9 $favorite_text_music &> /dev/null
 exit; fi
+####
+####
+#### :rutina-final-expert-radio-stop:
+##########    english: radio link       ##########
+##########    spanish: radio enlace     ##########
+#### :rutina-inicial-expert-radio-link:
+####
+####
+if   [ "$first_option" == "expert-radio-link" ]; then
+echo "$title_md [ $first_option ]  [ radio link ] [ expert-radio-link md]"
+####
+####
+if [ "$second_option" == "$NULL" ];
+then echo "$title_md Please input one string to listen one radio"; exit; fi
+####
+####
+if [ "$favorite_text_music" == "$NULL" ];
+then "$title_md please install vlc"; exit; fi
+####
+####
+$favorite_text_music "$2"
+exit; fi
+####
+####
+#### :rutina-final-expert-radio-link:
 ##########    english: radio spanish      ##########
 ##########    spanish: radio española     ##########
 #### :rutina-inicial-expert-radio-spanish:
@@ -1835,17 +1857,16 @@ echo "$title_md [ $first_option ]  [ spanish radio from one text-string ]\
  [ expert-radio-spanish md]"
 ####
 ####
-radio_player="$(command -v vlc)"
 radio_group="radio_spanish.m3u8"
 radio_config="$default_directory_radio/$radio_group"
-radio_choosed="$default_directory_cache/$radio_group"
+radio_cache="$default_directory_cache/$radio_group"
 ####
 ####
 if [ "$second_option" == "$NULL" ];
 then echo "$title_md Please input one string to listen one radio"; exit; fi
 ####
 ####
-if [ "$radio_player" == "$NULL" ];
+if [ "$favorite_text_music" == "$NULL" ];
 then "$title_md please install vlc"; exit; fi
 ####
 ####
@@ -1855,9 +1876,9 @@ $command_curl -L https://www.tdtchannels.com/lists/radio.m3u8 --stderr /dev/null
 fi
 ####
 ####
-grep -i $second_option $radio_config > $radio_choosed
+grep -i $second_option $radio_config > $radio_cache
 $cmd_realpath expert-radio-stop &> /dev/null
-sudo -u $(logname) $radio_player -I dummy -d $radio_choosed &> /dev/null &
+sudo -u $(logname) $favorite_text_music $radio_cache &> /dev/null &
 echo "$title_md [ ok ] one radio with string $second_option" 
 exit; fi
 ####
@@ -3032,6 +3053,7 @@ echo "$text_md expert-wpa-connect . one nameconfig to connect wifi config"
 echo "$text_md expert-pc-halt . halt computer with halt"
 echo "$text_md expert-pc-shutdown . shutdown computer with shutdown"
 echo "$text_md expert-pc-reboot . reboot computer with reboot"
+echo "$text_md expert-radio-link . spanish radio from one link"
 echo "$text_md expert-radio-spanish . spanish radio from one text-string"
 echo "$text_md expert-project-web . site  downloaded web fwiptables"
 echo "$text_md expert-gen-version . generate actual version file in actual folder"
