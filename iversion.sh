@@ -1857,9 +1857,12 @@ echo "$title_md [ $first_option ]  [ spanish radio from one text-string ]\
  [ expert-radio-spanish md]"
 ####
 ####
+if [ "$(logname)" == "root" ]; then echo "title_md imposible without logname"; exit; fi
+su $(logname)
+radio_player="$favorite_text_music"
 radio_group="radio_spanish.m3u8"
-radio_config="$default_directory_radio/$radio_group"
-radio_cache="$default_directory_cache/$radio_group"
+radio_config="$HOME/.config-$radio_group"
+radio_cache="$HOME/.cache-$radio_group"
 ####
 ####
 if [ "$second_option" == "$NULL" ];
@@ -1872,13 +1875,13 @@ then "$title_md please install vlc"; exit; fi
 ####
 if [ !  -f "$radio_config" ];
 then echo "$title_md downloading radio config.."
-$command_curl -L https://www.tdtchannels.com/lists/radio.m3u8 --stderr /dev/null > $radio_config
+$command_curl -L "https://www.tdtchannels.com/lists/radio.m3u8" --stderr /dev/null > $radio_config
 fi
 ####
 ####
 grep -i $second_option $radio_config > $radio_cache
 $cmd_realpath expert-radio-stop &> /dev/null
-sudo -u $(logname) $favorite_text_music $radio_cache &> /dev/null &
+sudo -u $(logname) $radio_player $radio_cache &> /dev/null &
 echo "$title_md [ ok ] one radio with string $second_option" 
 exit; fi
 ####
