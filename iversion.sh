@@ -1846,7 +1846,7 @@ echo "$title_md please install vlc"; exit; fi
 ####
 radio_user="$(id 1000 | cut -d ")" -f 1 - | cut -c 10-)"
 sudo -u $radio_user $favorite_text_music $2 &> /dev/null &&
-echo "$title_md [ ok ] With user: $radio_user | With string: $second_option"
+echo "$title_md [ ok ] Radio | With user: $radio_user | With link: $2"
 ####
 ####
 exit; fi
@@ -1887,8 +1887,8 @@ $cmd_realpath expert-radio-stop &> /dev/null
 ####
 ####
 radio_user="$(id 1000 | cut -d ")" -f 1 - | cut -c 10-)"
-sudo -u $radio_user $favorite_text_music $radio_cache &> /dev/null && 
-echo "$title_md [ ok ] With user: $radio_user | With string: $second_option"
+echo sudo -u $radio_user $favorite_text_music $radio_cache && 
+echo "$title_md [ ok ] Radio | With user: $radio_user | With string: $2"
 exit; fi
 ####
 ####
@@ -2930,6 +2930,8 @@ echo "$title_md | firewall-wallsystem | $cmd_realpath firewall-wallsystem |"
 echo "$text_md"
 echo "$text_md client-basic . launch a one firewall basic client"
 echo "$text_md client-web . launch a one firewall web client"
+echo "$text_md client-ssh . launch a one firewall ssh client"
+echo "$text_md client-telnet . launch a one firewall telnet client"
 echo "$text_md client-git . launch a one firewall git client"
 echo "$text_md client-ipp . launch a one firewall ipp client"
 echo "$text_md client-vnc . launch a one firewall vnc client"
@@ -7283,18 +7285,19 @@ $cmd_realpath -gui-$favorite_basename_graphicalldialog  list4 ;;
 names*)$cmd_realpath -gui-$favorite_basename_graphicalldialog names ;;
 show*)archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[Save Firewall]" \
---entry-text="cfg to show")" ; 
+--title=Save-Firewall \
+--entry-text=cfg-to-show)" 
 $cmd_realpath -gui-$favorite_basename_graphicalldialog  $archivo ;;
+
 save*)archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[Save Firewall]" \
---entry-text="cfg to save")" ; 
+--title=Save-Firewall \
+--entry-text=cfg-to-save)" 
 $cmd_realpath -gui-$favorite_basename_graphicalldialog save $archivo ;;
 load*)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[Load Firewall]" \
---entry-text="cfg to load")" ;
+--title=Save-Firewall \
+--entry-text=cfg-to-load)" 
 $cmd_realpath -gui-$favorite_basename_graphicalldialog load $archivo ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog  list4;;
 actual*)$cmd_realpath -gui-$favorite_basename_graphicalldialog actual ;;
@@ -7448,51 +7451,51 @@ gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog 
 gui-info-menu*) $cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-wallcustom ;;
 load-custom*)archivo="$($favorite_basename_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[Launch Custom]" \
---entry-text="cfg to launch")" ; 
+--title=Launch-Custom \
+--entry-text=cfg-to-launch)" ; 
 $cmd_realpath -gui-$favorite_basename_graphicalldialog load-custom $archivo ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
 clone-wallsystem*)archivo="$($favorite_basename_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[Clone static]" \
---entry-text="static firewall to clone config")" ; 
+--title=Clone-static \
+--entry-text=static-firewall-to-clone-config)" ; 
 $cmd_realpath -gui-$favorite_basename_graphicalldialog clone-wallsystem $archivo ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
 new-full-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[new-full-custom]" \
---entry-text="Input file name to new full configuration")" ;
+--title=new-full-custom \
+--entry-text=Input_file_name_to_new_full_configuration)" ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog new-full-custom $archivo ;;
 nueva-completa-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[nueva-completa-custom]" \
---entry-text="Introduce el nombre del nuevo archivo cfg")" 
+--title=nueva-completa-custom \
+--entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" 
 $cmd_realpath -gui-$favorite_basename_graphicalldialog nueva-completa-custom $archivo ;;
 new-mini-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height --entry \
---title="[new-mini-custom]" \
---entry-text="Input file name to new mini configuration")" ;
+--title=new-mini-custom \
+--entry-text=Input_file_ name_ to_ new_ mini_configuration)" ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog new-mini-custom $archivo ;;
 nueva-mini-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[nueva-mini-custom]" \
---entry-text="Introduce el nombre del nuevo archivo cfg")" ;
+--title=nueva-mini-custom \
+--entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog nueva-mini-custom $archivo ;;
 all-custom*) $cmd_realpath -gui-$favorite_basename_graphicalldialog all-custom ;;
 show-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[show-custom]" \
---entry-text="cfg to show")" ;
+--title=show-custom \
+--entry-text=cfg-to-show)" ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog show-custom $archivo ;;
 modify-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[modify-custom]" \
---entry-text="cfg to modify")" ;
+--title=modify-custom \
+--entry-text=cfg-to-modify)" ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog modify-custom $archivo ;;
 del-custom*) archivo="$($favorite_realpath_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[del-custom]" \
---entry-text="cfg to delete" )";
+--entry-text=cfg-to-delete)";
 $cmd_realpath -gui-$favorite_basename_graphicalldialog del-custom $archivo ;;
 config-regen*)$cmd_realpath -gui-$favorite_basename_graphicalldialog config-regen ;;
 esac
@@ -7782,7 +7785,7 @@ name_firewall="$first_option" ;
 # allow_separate_rules=""
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
-config_shield_maxtries="40" ;
+config_shield_maxtries="30" ;
 config_shield_port="22" ;
 #### english: log port servers
 # logserver_prefix_input="fwlog-input::"   
