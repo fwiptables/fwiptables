@@ -1844,7 +1844,10 @@ if [ "$favorite_text_music" == "$NULL" ]; then
 echo "$title_md please install vlc"; exit; fi
 ####
 ####
-sudo -u $(logname) $favorite_text_music "$2"
+radio_user="$(id 1000 | cut -d ")" -f 1 - | cut -c 10-)"
+sudo -u $radio_user $favorite_text_music $2 &> /dev/null &&
+echo "$title_md [ ok ] | with user: $radio_user | " /
+" and one radio with string: $second_option"
 ####
 ####
 exit; fi
@@ -1884,8 +1887,10 @@ chmod ugo+rx $radio_config $radio_cache &> /dev/null
 $cmd_realpath expert-radio-stop &> /dev/null
 ####
 ####
-$cmd_realpath expert-radio-link $radio_cache &> /dev/null && 
-echo "$title_md [ ok ] one radio with string: $second_option"
+radio_user="$(id 1000 | cut -d ")" -f 1 - | cut -c 10-)"
+sudo -u $radio_user $favorite_text_music $radio_cache &> /dev/null && 
+echo "$title_md [ ok ] | with user: $radio_user | " /
+" and one radio with string: $second_option"
 exit; fi
 ####
 ####
