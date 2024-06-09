@@ -1846,8 +1846,7 @@ echo "$title_md please install vlc"; exit; fi
 ####
 radio_user="$(id 1000 | cut -d ")" -f 1 - | cut -c 10-)"
 sudo -u $radio_user $favorite_text_music $2 &> /dev/null &&
-echo "$title_md [ ok ] | with user: $radio_user | " /
-" and one radio with string: $second_option"
+echo "$title_md [ ok ] With user: $radio_user | With string: $second_option"
 ####
 ####
 exit; fi
@@ -1889,8 +1888,7 @@ $cmd_realpath expert-radio-stop &> /dev/null
 ####
 radio_user="$(id 1000 | cut -d ")" -f 1 - | cut -c 10-)"
 sudo -u $radio_user $favorite_text_music $radio_cache &> /dev/null && 
-echo "$title_md [ ok ] | with user: $radio_user | " /
-" and one radio with string: $second_option"
+echo "$title_md [ ok ] With user: $radio_user | With string: $second_option"
 exit; fi
 ####
 ####
