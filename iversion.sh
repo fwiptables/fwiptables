@@ -1884,7 +1884,7 @@ chmod ugo+rx $radio_config $radio_cache &> /dev/null
 $cmd_realpath expert-radio-stop &> /dev/null
 ####
 ####
-sudo -u "$(logname)" $favorite_text_music $radio_cache &> /dev/null && 
+$cmd_realpath expert-radio-link $radio_cache &> /dev/null && 
 echo "$title_md [ ok ] one radio with string: $second_option"
 exit; fi
 ####
@@ -3059,8 +3059,8 @@ echo "$text_md expert-wpa-connect . one nameconfig to connect wifi config"
 echo "$text_md expert-pc-halt . halt computer with halt"
 echo "$text_md expert-pc-shutdown . shutdown computer with shutdown"
 echo "$text_md expert-pc-reboot . reboot computer with reboot"
-echo "$text_md expert-radio-link . spanish radio from one link"
-echo "$text_md expert-radio-spanish . spanish radio from one text-string"
+echo "$text_md expert-radio-link . listen radio from one link"
+echo "$text_md expert-radio-online . listen online radio from one text-string"
 echo "$text_md expert-project-web . site  downloaded web fwiptables"
 echo "$text_md expert-gen-version . generate actual version file in actual folder"
 echo "$text_md "
@@ -4879,7 +4879,7 @@ echo "Halt to power off computer ... in 10 seconds"
 $command_sleep 5
 echo "Halt to power off computer ... in 05 seconds"
 $command_sleep 5
-$command_halt
+$command_halt & systemctl halt
 exit; fi
 ####
 ####
@@ -4897,7 +4897,7 @@ echo "Halt to shutdown computer ... in 10 seconds"
 $command_sleep 5
 echo "Halt to shutodwn computer ... in 05 seconds"
 $command_sleep 5
-$command_shutdown -h now
+$command_shutdown -h now & systemctl shutdown
 exit; fi
 ####
 ####
@@ -4915,7 +4915,7 @@ echo "Halt to reboot computer ... in 10 seconds"
 $command_sleep 5
 echo "Halt to reboot computer ... in 05 seconds"
 $command_sleep 5
-$command_reboot
+$command_reboot & systemctl reboot
 exit; fi
 ####
 ####
