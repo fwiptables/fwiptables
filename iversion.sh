@@ -428,9 +428,9 @@ command_lscpu="$(command -v lscpu)"
 command_lspci="$(command -v lspci)"
 command_lsgpu="$(command -v lsgpu)"
 command_lshw="$(command -v lshw)"
-command_cvlc="$(command -v cvlc)"
 command_mpg123="$(command -v mpg123)"
 command_mpg321="$(command -v mpg321)"
+command_poweroff="$(command -v poweroff)"
 command_uuid="$(command -v uuid)"
 command_vlc="$(command -v vlc) -I dummy -d"
 command_w3m="$(command -v w3m)"
@@ -4889,6 +4889,24 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-pc-halt:
+##########    english: expert-pc-poweroff: power off computer   ##########
+##########    spanish: expert-pc-poweroff: apaga el ordenador   ##########
+#### :rutina-inicial-expert-pc-poweroff:
+####
+####
+if   [ "$first_option" == "expert-pc-poweroff" ]; then 
+echo "$title_md [ $first_option ] [ power off computer ] [ control-c to cancel ]"
+echo "Halt to power off computer ... in 15 seconds"
+$command_sleep 5
+echo "Halt to power off computer ... in 10 seconds"
+$command_sleep 5
+echo "Halt to power off computer ... in 05 seconds"
+$command_sleep 5
+$command_poweroff & systemctl poweroff
+exit; fi
+####
+####
+#### :rutina-final-expert-pc-poweroff:
 ##########    english: expert-pc-shutdown: power off computer   ##########
 ##########    spanish: expert-pc-shutdown: apaga el ordenador   ##########
 #### :rutina-inicial-expert-pc-shutdown:
