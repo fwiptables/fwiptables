@@ -6490,33 +6490,35 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0500 "$title_md [ Firewall Static ] $title_md" \
 0507  "$text_md client-basic" \
 0508  "$text_md client-web" \
-0509  "$text_md client-git" \
-0510  "$text_md games-shooter" \
-0511  "$text_md game-wesnoth" \
-0512  "$text_md game-minetest" \
-0513  "$text_md game-freeciv" \
-0514  "$text_md game-widelands" \
-0515  "$text_md client-web" \
-0516  "$text_md client-vnc" \
-0517  "$text_md client-tor" \
-0518  "$text_md client-vpn" \
-0519  "$text_md client-torrent" \
-0520  "$text_md lan-tor" \
-0521  "$text_md lan-vpn" \
-0522  "$text_md shield-ssh" \
-0523  "$text_md server-ssh" \
-0524  "$text_md server-web" \
-0525  "$text_md server-vnc" \
-0526  "$text_md server-print" \
-0527  "$text_md server-samba" \
-0528  "$text_md server-lamp" \
-0529  "$text_md server-mail" \
-0530  "$text_md server-ftp" \
-0531  "$text_md server-news" \
-0532  "$text_md server-teamspeak" \
-0533  "$text_md server-mumble" \
-0534  "$text_md server-sql" \
-0535  "$text_md server-asterisk" \
+0509  "$text_md client-ssh" \
+0510  "$text_md client-telnet" \
+0511  "$text_md client-git" \
+0512  "$text_md games-shooter" \
+0513  "$text_md game-wesnoth" \
+0514  "$text_md game-minetest" \
+0515  "$text_md game-freeciv" \
+0516  "$text_md game-widelands" \
+0517  "$text_md client-web" \
+0518  "$text_md client-vnc" \
+0519  "$text_md client-tor" \
+0520  "$text_md client-vpn" \
+0521  "$text_md client-torrent" \
+0522  "$text_md lan-tor" \
+0523  "$text_md lan-vpn" \
+0524  "$text_md shield-ssh" \
+0525  "$text_md server-ssh" \
+0526  "$text_md server-web" \
+0527  "$text_md server-vnc" \
+0528  "$text_md server-print" \
+0529  "$text_md server-samba" \
+0530  "$text_md server-lamp" \
+0531  "$text_md server-mail" \
+0532  "$text_md server-ftp" \
+0533  "$text_md server-news" \
+0534  "$text_md server-teamspeak" \
+0535  "$text_md server-mumble" \
+0536  "$text_md server-sql" \
+0537  "$text_md server-asterisk" \
 0600 "$title_md [ Firewall load-custom ] $title_md" \
 0606  "$text_md load-custom" \
 0607  "$text_md clone-wallsystem" \
@@ -6640,33 +6642,35 @@ $cmd_realpath load $nombrecillo ;;
 ################################################################################
 0507) clear ; $cmd_realpath txt client-basic ; $cmd_realpath cli list4    ;;
 0508) clear ; $cmd_realpath txt client-web ; $cmd_realpath cli list4    ;;
-0509) clear ; $cmd_realpath txt client-git ; $cmd_realpath cli list4    ;;
-0510) clear ; $cmd_realpath txt games-shooter ; $cmd_realpath cli list4   ;; 
-0511) clear ; $cmd_realpath txt game-wesnoth ; $cmd_realpath cli list4    ;;
-0512) clear ; $cmd_realpath txt game-minetest ; $cmd_realpath cli list4   ;;
-0513) clear ; $cmd_realpath txt game-freeciv ; $cmd_realpath cli list4    ;;
-0514) clear ; $cmd_realpath txt game-widelands ; $cmd_realpath cli list4  ;;
-0515) clear ; $cmd_realpath txt client-web ; $cmd_realpath cli list4      ;;
-0516) clear ; $cmd_realpath txt client-vnc ; $cmd_realpath cli list4      ;;
-0517) clear ; $cmd_realpath txt client-tor ; $cmd_realpath cli list4      ;;
-0518) clear ; $cmd_realpath txt client-vpn ; $cmd_realpath cli list4      ;;
-0519) clear ; $cmd_realpath txt client-torrent ; $cmd_realpath cli list4  ;;
-0520) clear ; $cmd_realpath txt lan-tor ; $cmd_realpath cli list4         ;;
-0521) clear ; $cmd_realpath txt lan-vpn ; $cmd_realpath cli list4         ;; 
-0522) clear ; $cmd_realpath txt shield-ssh ; $cmd_realpath cli list4      ;; 
-0523) clear ; $cmd_realpath txt server-ssh ; $cmd_realpath cli list4      ;;
-0524) clear ; $cmd_realpath txt server-web ; $cmd_realpath cli list4      ;;
-0525) clear ; $cmd_realpath txt server-vnc ; $cmd_realpath cli list4      ;;
-0526) clear ; $cmd_realpath txt server-print ; $cmd_realpath cli list4    ;;
-0527) clear ; $cmd_realpath txt server-samba ; $cmd_realpath cli list4    ;;
-0528) clear ; $cmd_realpath txt server-lamp ; $cmd_realpath cli list4     ;;
-0529) clear ; $cmd_realpath txt server-mail ; $cmd_realpath cli list4     ;;
-0530) clear ; $cmd_realpath txt server-ftp ; $cmd_realpath cli list4      ;;
-0531) clear ; $cmd_realpath txt server-news ; $cmd_realpath cli list4     ;;
-0532) clear ; $cmd_realpath txt server-teamspeak ; $cmd_realpath cli list4  ;;
-0533) clear ; $cmd_realpath txt server-mumble ; $cmd_realpath cli list4   ;;
-0534) clear ; $cmd_realpath txt server-sql ; $cmd_realpath cli list4      ;;
-0535) clear ; $cmd_realpath txt server-asterisk ; $cmd_realpath cli list4 ;;
+0509) clear ; $cmd_realpath txt client-ssh ; $cmd_realpath cli list4    ;;
+0510) clear ; $cmd_realpath txt client-telnet ; $cmd_realpath cli list4    ;;
+0511) clear ; $cmd_realpath txt client-git ; $cmd_realpath cli list4    ;;
+0512) clear ; $cmd_realpath txt games-shooter ; $cmd_realpath cli list4   ;; 
+0513) clear ; $cmd_realpath txt game-wesnoth ; $cmd_realpath cli list4    ;;
+0514) clear ; $cmd_realpath txt game-minetest ; $cmd_realpath cli list4   ;;
+0515) clear ; $cmd_realpath txt game-freeciv ; $cmd_realpath cli list4    ;;
+0516) clear ; $cmd_realpath txt game-widelands ; $cmd_realpath cli list4  ;;
+0517) clear ; $cmd_realpath txt client-web ; $cmd_realpath cli list4      ;;
+0518) clear ; $cmd_realpath txt client-vnc ; $cmd_realpath cli list4      ;;
+0519) clear ; $cmd_realpath txt client-tor ; $cmd_realpath cli list4      ;;
+0520) clear ; $cmd_realpath txt client-vpn ; $cmd_realpath cli list4      ;;
+0521) clear ; $cmd_realpath txt client-torrent ; $cmd_realpath cli list4  ;;
+0522) clear ; $cmd_realpath txt lan-tor ; $cmd_realpath cli list4         ;;
+0523) clear ; $cmd_realpath txt lan-vpn ; $cmd_realpath cli list4         ;; 
+0524) clear ; $cmd_realpath txt shield-ssh ; $cmd_realpath cli list4      ;; 
+0525) clear ; $cmd_realpath txt server-ssh ; $cmd_realpath cli list4      ;;
+0526) clear ; $cmd_realpath txt server-web ; $cmd_realpath cli list4      ;;
+0527) clear ; $cmd_realpath txt server-vnc ; $cmd_realpath cli list4      ;;
+0528) clear ; $cmd_realpath txt server-print ; $cmd_realpath cli list4    ;;
+0529) clear ; $cmd_realpath txt server-samba ; $cmd_realpath cli list4    ;;
+0530) clear ; $cmd_realpath txt server-lamp ; $cmd_realpath cli list4     ;;
+0531) clear ; $cmd_realpath txt server-mail ; $cmd_realpath cli list4     ;;
+0532) clear ; $cmd_realpath txt server-ftp ; $cmd_realpath cli list4      ;;
+0533) clear ; $cmd_realpath txt server-news ; $cmd_realpath cli list4     ;;
+0534) clear ; $cmd_realpath txt server-teamspeak ; $cmd_realpath cli list4  ;;
+0535) clear ; $cmd_realpath txt server-mumble ; $cmd_realpath cli list4   ;;
+0536) clear ; $cmd_realpath txt server-sql ; $cmd_realpath cli list4      ;;
+0537) clear ; $cmd_realpath txt server-asterisk ; $cmd_realpath cli list4 ;;
 ################################################################################
 0606) clear ; $cmd_realpath txt all-custom
 read -p "Input the custom name to load # " archivo
