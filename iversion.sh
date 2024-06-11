@@ -6779,33 +6779,33 @@ exit; fi
 ####
 if [ "$first_option" == "gui-roll-zenity" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
-echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; fi
+if [ "$command_zenity" == "$NULL" ]
+then echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; exit ; fi
 gui_menu="Info|Firewall-Control|Firewall-List-With-Conceptual|\
 Firewall-List-With-Numeral|firewall-wallcustom|\
 firewall-wallsystem|Options-easy"
 selection_menu="$($command_zenity --forms \
---text="gui-roll" \
---title="Gui-roll With $cmd_basename $cmd_version" \
---add-combo="$first_option" \
---combo-values="$gui_menu")"
+--text=gui-roll \
+--title=Gui-roll-With-$cmd_basename-$cmd_version \
+--add-combo=$first_option \
+--combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
-"Info")	
+Info)	
 $cmd_realpath gui-zenity info ; exit ;;
-"Firewall-Control")
+Firewall-Control)
 $cmd_realpath gui-roll-zenity-firewall-control ; exit ;;
-"Firewall-List-With-Conceptual")
+Firewall-List-With-Conceptual)
 $cmd_realpath gui-roll-zenity-firewall-listconceptual ; exit ;;
-"Firewall-List-With-Numeral")
+Firewall-List-With-Numeral)
 $cmd_realpath gui-roll-zenity-firewall-listnumeral ; exit ;;
-"firewall-wallcustom")
+firewall-wallcustom)
 $cmd_realpath gui-roll-zenity-firewall-wallcustom ; exit ;;
-"firewall-wallsystem")
+firewall-wallsystem)
 $cmd_realpath gui-roll-zenity-firewall-wallsystem ; exit ;;
-"Options-easy")
+Options-easy)
 $cmd_realpath gui-roll-zenity-options-easy ; exit ;;
 esac
 ####
@@ -6821,17 +6821,17 @@ exit; fi
 ####
 if [ "$first_option" == "gui-roll-zenity-firewall-control" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
-echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; fi
+if [ "$command_zenity" == "$NULL" ]
+then echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; exit ; fi
 gui_menu="gui-principal-menu|gui-info-menu|\
 |stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|wizard-mini|wizard-full|\
 off-line|all-permisive"
 selection_menu="$($command_zenity --forms \
---text="gui-roll-firewall-control" \
---title="Gui-roll With $cmd_basename $cmd_version" \
---add-combo="$first_option" \
---combo-values="$gui_menu")"
+--text=gui-roll-firewall-control \
+--title=Gui-roll-With-$cmd_basename-$cmd_version \
+--add-combo=$first_option \
+--combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 #### 
 ####
@@ -6839,36 +6839,36 @@ case "$selection_final" in
 1)$command_zenity  --info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="$cmd_realpath good bye"; exit ;;
-"gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
-"gui-info-menu")$cmd_realpath -gui-zenity firewall-control ;;
-"stop")$cmd_realpath -gui-zenity stop
+gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
+gui-info-menu)$cmd_realpath -gui-zenity firewall-control ;;
+stop)$cmd_realpath -gui-zenity stop
 $cmd_realpath -gui-zenity list4;;
-"continue")$cmd_realpath -gui-zenity continue
+continue)$cmd_realpath -gui-zenity continue
 $cmd_realpath -gui-zenity list4;;
-"reset")$cmd_realpath -gui-zenity reset
+reset)$cmd_realpath -gui-zenity reset
 $cmd_realpath -gui-zenity list4;;
-"names")$cmd_realpath -gui-zenity names ;;
-"show")archivo="$($favorite_realpath_graphicalldialog  --entry \
+names)$cmd_realpath -gui-zenity names ;;
+show)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[Save Firewall]" --entry-text="cfg to show" )" ; 
+--title="[Save Firewall]" --entry-text=cfg-to-show)" ; 
 $cmd_realpath -gui-zenity show $archivo ;;
-"save")archivo="$($favorite_realpath_graphicalldialog  --entry \
+save)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[Save Firewall]" --entry-text="cfg to save")" ; 
+--title="[Save Firewall]" --entry-text=cfg-to-save)" ; 
 $cmd_realpath -gui-zenity save $archivo ;;
-"load")archivo="$($favorite_realpath_graphicalldialog  --entry \
+load)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[Load Firewall]" --entry-text="cfg to load")" ;
+--title="[Load Firewall]" --entry-text=cfg-to-load)" ;
 $cmd_realpath -gui-zenity load $archivo
 $cmd_realpath -gui-zenity list4;;
-"actual")$cmd_realpath -gui-zenity actual ;;
-"eraserules4")$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list4;;
-"eraserules6")$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list6;;
-"eraserules")$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list4;;
-"wizard-full")$cmd_realpath -gui-zenity wizard-full ; $cmd_realpath gui list4;;
-"wizard-mini")$cmd_realpath -gui-zenity wizard-mini ; $cmd_realpath gui list4;;
-"off-line")$cmd_realpath -gui-zenity off-line ; $cmd_realpath gui list4;;
-"all-permisive")$cmd_realpath -gui-zenity all-permisive ; $cmd_realpath gui list4;;
+actual)$cmd_realpath -gui-zenity actual ;;
+eraserules4)$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list4;;
+eraserules6)$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list6;;
+eraserules)$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list4;;
+wizard-full)$cmd_realpath -gui-zenity wizard-full ; $cmd_realpath gui list4;;
+wizard-mini)$cmd_realpath -gui-zenity wizard-mini ; $cmd_realpath gui list4;;
+off-line)$cmd_realpath -gui-zenity off-line ; $cmd_realpath gui list4;;
+all-permisive)$cmd_realpath -gui-zenity all-permisive ; $cmd_realpath gui list4;;
 esac
 ####
 ####
@@ -6883,40 +6883,40 @@ exit; fi
 ####
 if [ "$first_option" == "gui-roll-zenity-firewall-listconceptual" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
-echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; fi
+if [ "$command_zenity" == "$NULL" ]
+then echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; exit ; fi
 gui_menu="gui-principal-menu|gui-info-menu|\
 ls4|ls6|list-filter4|list-filter6|list-alltables|\
 list-nat4|list-nat6|list-mangle4|list-mangle6|\
 list-raw4|list-raw6|list-security4|list-security6|\
 list-ebtables|list-arptables"
 selection_menu="$($command_zenity --forms \
---text="gui-roll-firewall-listconceptual" \
---title="Gui-roll With $cmd_basename $cmd_version" \
---add-combo="$first_option" \
---combo-values="$gui_menu")"
+--text=gui-roll-firewall-listconceptual \
+--title=Gui-roll-With-$cmd_basename-$cmd_version \
+--add-combo=$first_option \
+--combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
 1) exit ;;
-"gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
-"gui-info-menu")$cmd_realpath -gui-zenity firewall-listconceptual ;;
-"ls4")$cmd_realpath -gui-zenity ls4 ;;
-"ls6")$cmd_realpath -gui-zenity ls6 ;;
-"list-alltables")$cmd_realpath -gui-zenity list-alltables ;;
-"list-filter4")$cmd_realpath -gui-zenity list-filter4 ;;
-"list-filter6")$cmd_realpath -gui-zenity list-filter6 ;;
-"list-nat4")$cmd_realpath -gui-zenity list-nat4 ;;
-"list-nat6")$cmd_realpath -gui-zenity list-nat6 ;;
-"list-mangle4")$cmd_realpath -gui-zenity list-mangle4 ;;
-"list-mangle6")$cmd_realpath -gui-zenity list-mangle6 ;;
-"list-raw4")$cmd_realpath -gui-zenity list-raw4 ;;
-"list-raw6")$cmd_realpath -gui-zenity list-raw6 ;;
-"list-security4")$cmd_realpath -gui-zenity list-security4 ;;
-"list-security6")$cmd_realpath -gui-zenity list-security6 ;;
-"list-ebtables")$cmd_realpath -gui-zenity list-ebtables ;;
-"list-arptables")$cmd_realpath -gui-zenity list-arptables ;;
+gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
+gui-info-menu)$cmd_realpath -gui-zenity firewall-listconceptual ;;
+ls4)$cmd_realpath -gui-zenity ls4 ;;
+ls6)$cmd_realpath -gui-zenity ls6 ;;
+list-alltables)$cmd_realpath -gui-zenity list-alltables ;;
+list-filter4)$cmd_realpath -gui-zenity list-filter4 ;;
+list-filter6)$cmd_realpath -gui-zenity list-filter6 ;;
+list-nat4)$cmd_realpath -gui-zenity list-nat4 ;;
+list-nat6)$cmd_realpath -gui-zenity list-nat6 ;;
+list-mangle4)$cmd_realpath -gui-zenity list-mangle4 ;;
+list-mangle6)$cmd_realpath -gui-zenity list-mangle6 ;;
+list-raw4)$cmd_realpath -gui-zenity list-raw4 ;;
+list-raw6)$cmd_realpath -gui-zenity list-raw6 ;;
+list-security4)$cmd_realpath -gui-zenity list-security4 ;;
+list-security6)$cmd_realpath -gui-zenity list-security6 ;;
+list-ebtables)$cmd_realpath -gui-zenity list-ebtables ;;
+list-arptables)$cmd_realpath -gui-zenity list-arptables ;;
 esac
 ####
 ####
@@ -6931,8 +6931,8 @@ exit; fi
 ####
 if [ "$first_option" == "gui-roll-zenity-firewall-listnumeral" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
-echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; fi
+if [ "$command_zenity" == "$NULL" ]
+then echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; exit ; fi
 gui_menu="gui-principal-menu|gui-info-menu|lsn4|lsn6|\
 listn-filter4|listn-filter6|listn-alltables|\
 listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|\
@@ -6940,9 +6940,9 @@ listn-raw4|listn-raw6|listn-security4|listn-security6|\
 list-ebtables|list-arptables"
 selection_menu="$($command_zenity --forms \
 --text="gui-roll-firewall-listnumeral" \
---title="Gui-roll With $cmd_basename $cmd_version" \
---add-combo="$first_option" \
---combo-values="$gui_menu")"
+--title=Gui-roll-With-$cmd_basename-$cmd_version \
+--add-combo=$first_option \
+--combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
@@ -6950,23 +6950,23 @@ case "$selection_final" in
 1)$command_zenity  --info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text="$cmd_realpath good bye"; exit ;;
-"gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
-"gui-info-menu")$cmd_realpath -gui-zenity firewall-listnumeral ;;
-"lsn4")$cmd_realpath -gui-zenity lsn4 ;;
-"lsn6")$cmd_realpath -gui-zenity lsn6 ;;
-"listn-alltables")$cmd_realpath -gui-zenity listn-alltables ;;
-"listn-filter4")$cmd_realpath -gui-zenity listn-filter4 ;;
-"listn-filter6")$cmd_realpath -gui-zenity listn-filter6 ;;
-"listn-nat4")$cmd_realpath -gui-zenity listn-nat4 ;;
-"listn-nat6")$cmd_realpath -gui-zenity listn-nat6 ;;
-"listn-mangle4")$cmd_realpath -gui-zenity listn-mangle4 ;;
-"listn-mangle6")$cmd_realpath -gui-zenity listn-mangle6 ;;
-"listn-raw4")$cmd_realpath -gui-zenity listn-raw4 ;;
-"listn-raw6")$cmd_realpath -gui-zenity listn-raw6 ;;
-"listn-security4")$cmd_realpath -gui-zenity listn-security4 ;;
-"listn-security6")$cmd_realpath -gui-zenity listn-security6 ;;
-"list-ebtables")$cmd_realpath -gui-zenity list-ebtables ;;
-"list-arptables")$cmd_realpath -gui-zenity list-arptables ;;
+gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
+gui-info-menu)$cmd_realpath -gui-zenity firewall-listnumeral ;;
+lsn4)$cmd_realpath -gui-zenity lsn4 ;;
+lsn6)$cmd_realpath -gui-zenity lsn6 ;;
+listn-alltables)$cmd_realpath -gui-zenity listn-alltables ;;
+listn-filter4)$cmd_realpath -gui-zenity listn-filter4 ;;
+listn-filter6)$cmd_realpath -gui-zenity listn-filter6 ;;
+listn-nat4)$cmd_realpath -gui-zenity listn-nat4 ;;
+listn-nat6)$cmd_realpath -gui-zenity listn-nat6 ;;
+listn-mangle4)$cmd_realpath -gui-zenity listn-mangle4 ;;
+listn-mangle6)$cmd_realpath -gui-zenity listn-mangle6 ;;
+listn-raw4)$cmd_realpath -gui-zenity listn-raw4 ;;
+listn-raw6)$cmd_realpath -gui-zenity listn-raw6 ;;
+listn-security4)$cmd_realpath -gui-zenity listn-security4 ;;
+listn-security6)$cmd_realpath -gui-zenity listn-security6 ;;
+list-ebtables)$cmd_realpath -gui-zenity list-ebtables ;;
+list-arptables)$cmd_realpath -gui-zenity list-arptables ;;
 esac
 ####
 ####
@@ -6981,75 +6981,74 @@ exit; fi
 ####
 if [ "$first_option" == "gui-roll-zenity-firewall-wallcustom" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
-echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; fi
-gui_menu="gui-principal-menu|gui-info-menu|\
-load-custom|clone-wallsystem|\
+if [ "$command_zenity" == "$NULL" ]
+then echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; exit ; fi
+gui_menu="gui-principal-menu|gui-info-menu|load-custom|clone-wallsystem|\
 new-full-custom|nueva-completa-custom|new-mini-custom|nueva-mini-custom|\
 all-custom|show-custom|modify-custom|del-custom|config-regen"
 selection_menu="$($command_zenity --forms \
---text="gui-roll-firewall-wallcustom" \
---title="Gui-roll With $cmd_basename $cmd_version" \
---add-combo="$first_option" \
---combo-values="$gui_menu")"
+--text=gui-roll-firewall-wallcustom \
+--title=Gui-roll-With-$cmd_basename-$cmd_version \
+--add-combo=$first_option \
+--combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 #### 
 #### 
 case "$selection_final" in
 1) exit ;;
-"gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
-"gui-info-menu")$cmd_realpath -gui-zenity firewall-wallcustom ;;
-"load-custom")archivo="$($command_zenity  --entry \
+gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
+gui-info-menu)$cmd_realpath -gui-zenity firewall-wallcustom ;;
+load-custom)archivo="$($command_zenity  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[Launch Custom]" --entry-text="cfg to launch")" ; 
+--title=Launch-Custom --entry-text=cfg_to_launch)" ; 
 $cmd_realpath -gui-zenity load-custom $archivo ; $cmd_realpath gui list4;;
-"clone-wallsystem")archivo="$($command_zenity  --entry \
+clone-wallsystem)archivo="$($command_zenity  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[Clone firewall static]" --entry-text="firewall static to clone")" ; 
+--title=Clone firewall static --entry-text=firewall_static_to_clone)" ; 
 $cmd_realpath -gui-zenity clone-wallsystem $archivo ; $cmd_realpath gui list4;;
-"new-full-custom")
+new-full-custom)
 archivo="$($command_zenity  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[new-full-custom]" \
---entry-text="Input file name to new full configuration")" ;
+--entry-text=Input_file_name_to_new_full_configuration)" ;
 $cmd_realpath -gui-zenity new-full-custom $archivo ;;
-"nueva-completa-custom")
+nueva-completa-custom)
 archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[nueva-completa-custom]" \
---entry-text="Introduce el nombre del nuevo archivo cfg")" ;
+--title=nueva-completa-custom \
+--entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
 $cmd_realpath -gui-zenity nueva-completa-custom $archivo ;;
-"new-mini-custom")
+new-mini-custom)
 archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[new-mini-custom]" \
---entry-text="Input file name to new mini configuration")" ;
+--title=new-mini-custom \
+--entry-text=Input_file_name_to_new_mini_configuration)" ;
 $cmd_realpath -gui-zenity new-mini-custom $archivo ;;
-"nueva-mini-custom")
+nueva-mini-custom)
 archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[nueva-mini-custom]" \
---entry-text=="Introduce el nombre del nuevo archivo cfg")" ;
+--title=nueva-mini-custom \
+--entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
 $cmd_realpath -gui-zenity nueva-mini-custom $archivo ;;
-"all-custom")
+all-custom)
 $cmd_realpath -gui-zenity all-custom ;;
-"show-custom")
+show-custom)
 archivo="$($command_zenity --entry \ 
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[show-custom]" \
---entry-text="cfg to show")" ;
+--entry-text=cfg-to-show)" ;
 $cmd_realpath -gui-zenity show-custom $archivo ;;
-"modify-custom")
+modify-custom)
 archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[modify-custom]" --entry-text="cfg to modify")" ;
+--title="modify-custom" --entry-text=cfg-to-modify)" ;
 $cmd_realpath -gui-zenity modify-custom $archivo ;;
-"del-custom")
+del-custom)
 archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[del-custom]" --entry-text="cfg to delete")" ;
+--title="del-custom" --entry-text=cfg-to-delete)" ;
 $cmd_realpath -gui-zenity del-custom $archivo ;;
-"config-regen")$cmd_realpath -gui-zenity config-regen ;;
+config-regen)$cmd_realpath -gui-zenity config-regen ;;
 esac
 ####
 ####
@@ -7064,10 +7063,10 @@ exit ; fi
 ####
 if [ "$first_option" == "gui-roll-zenity-firewall-wallsystem" ]
 then echo $head_waiting_gui ; echo $head_give_cover ;
-if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
-echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; fi
+if [ "$command_zenity" == "$NULL" ]
+then echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; exit ; fi
 menu="gui-principal-menu|gui-info-menu|\
-client-basic|client-web|client-ipp|client-irc|\
+client-basic|client-web|client-ssh|client-telnet|client-ipp|client-irc|\
 client-vpn|client-torrent|client-mail|client-news|\
 client-ftp|client-git|client-vnc|client-torrent|\
 client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
@@ -7077,84 +7076,88 @@ server-samba|server-ssh|server-print|server-lamp|\
 server-domain|server-news|server-mail|server-ftp|\
 server-teamspeak|server-mumble|server-sql|server-asterisk"
 selection="$($command_zenity --forms \
---text="gui-roll-firewall-wallcustom" \
---title="Gui-roll With $cmd_basename $cmd_version" \
---add-combo="$first_option" \
---combo-values="$menu")"
+--text=gui-roll-firewall-wallcustom \
+--title=Gui-roll-With-$cmd_basename-$cmd_version \
+--add-combo=$first_option \
+--combo-values=$menu)"
 #### 
 #### 
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1) exit ;;
-"gui-principal-menu")$cmd_realpath gui-roll-zenity ;;
-"gui-info-menu")$cmd_realpath gui-zenity firewall-wallsystem ;;
-"client-basic")$cmd_realpath gui-zenity client-basic     ;
+gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
+gui-info-menu)$cmd_realpath gui-zenity firewall-wallsystem ;;
+client-basic)$cmd_realpath gui-zenity client-basic     ;
 $cmd_realpath gui-zenity list4 ;;
-"client-web")$cmd_realpath gui-zenity client-web         ;
+client-web)$cmd_realpath gui-zenity client-web         ;
 $cmd_realpath gui-zenity list4 ;;
-"client-ipp")$cmd_realpath gui-zenity client-ipp         ;
+client-ssh)$cmd_realpath gui-zenity client-ssh         ;
 $cmd_realpath gui-zenity list4 ;;
-"client-irc")$cmd_realpath gui-zenity client-irc         ;
+client-telnet)$cmd_realpath gui-zenity client-telnet   ;
 $cmd_realpath gui-zenity list4 ;;
-"client-mail")$cmd_realpath gui-zenity client-mail       ;
+client-ipp)$cmd_realpath gui-zenity client-ipp         ;
 $cmd_realpath gui-zenity list4 ;;
-"client-news")$cmd_realpath gui-zenity client-news       ;
+client-irc)$cmd_realpath gui-zenity client-irc         ;
 $cmd_realpath gui-zenity list4 ;;
-"client-ftp")$cmd_realpath gui-zenity client-ftp         ;
+client-mail)$cmd_realpath gui-zenity client-mail       ;
 $cmd_realpath gui-zenity list4 ;;
-"client-git")$cmd_realpath gui-zenity client-git         ;
+client-news)$cmd_realpath gui-zenity client-news       ;
 $cmd_realpath gui-zenity list4 ;;
-"client-vnc")$cmd_realpath gui-zenity client-vnc         ;
+client-ftp")$cmd_realpath gui-zenity client-ftp         ;
 $cmd_realpath gui-zenity list4 ;;
-"client-torrent")$cmd_realpath gui-zenity client-torrent ;
+client-git)$cmd_realpath gui-zenity client-git         ;
 $cmd_realpath gui-zenity list4 ;;
-"client-vpn")$cmd_realpath gui-zenity client-vpn         ;
+client-vnc)$cmd_realpath gui-zenity client-vnc         ;
 $cmd_realpath gui-zenity list4 ;;
-"client-tor")$cmd_realpath gui-zenity client-tor         ;
+client-torrent)$cmd_realpath gui-zenity client-torrent ;
 $cmd_realpath gui-zenity list4 ;;
-"games-shooter")$cmd_realpath gui-zenity games-shooter   ;
+client-vpn)$cmd_realpath gui-zenity client-vpn         ;
 $cmd_realpath gui-zenity list4 ;;
-"game-wesnoth")$cmd_realpath gui-zenity game-wesnoth     ;
+client-tor)$cmd_realpath gui-zenity client-tor         ;
 $cmd_realpath gui-zenity list4 ;;
-"game-minetest")$cmd_realpath gui-zenity game-minetest   ;
+games-shooter)$cmd_realpath gui-zenity games-shooter   ;
 $cmd_realpath gui-zenity list4 ;;
-"game-freeciv")$cmd_realpath gui-zenity game-freeciv     ;
+game-wesnoth)$cmd_realpath gui-zenity game-wesnoth     ;
 $cmd_realpath gui-zenity list4 ;;
-"game-widelands")$cmd_realpath gui-zenity game-widelands ;
+game-minetest)$cmd_realpath gui-zenity game-minetest   ;
 $cmd_realpath gui-zenity list4 ;;
-"lan-tor")$cmd_realpath gui-zenity lan-tor               ;
+game-freeciv)$cmd_realpath gui-zenity game-freeciv     ;
 $cmd_realpath gui-zenity list4 ;;
-"lan-vpn")$cmd_realpath gui-zenity lan-vpn               ;
+game-widelands)$cmd_realpath gui-zenity game-widelands ;
 $cmd_realpath gui-zenity list4 ;;
-"server-ssh")$cmd_realpath gui-zenity server-ssh         ;
+lan-tor)$cmd_realpath gui-zenity lan-tor               ;
 $cmd_realpath gui-zenity list4 ;;
-"server-web")$cmd_realpath gui-zenity server-web         ;
+lan-vpn)$cmd_realpath gui-zenity lan-vpn               ;
 $cmd_realpath gui-zenity list4 ;;
-"server-proxy")$cmd_realpath gui-zenity server-proxy     ;
+server-ssh)$cmd_realpath gui-zenity server-ssh         ;
 $cmd_realpath gui-zenity list4 ;;
-"server-vnc")$cmd_realpath gui-zenity server-vnc         ;
+server-web)$cmd_realpath gui-zenity server-web         ;
 $cmd_realpath gui-zenity list4 ;;
-"server-samba")$cmd_realpath gui-zenity server-samba     ;
+server-proxy)$cmd_realpath gui-zenity server-proxy     ;
 $cmd_realpath gui-zenity list4 ;;
-"server-news")$cmd_realpath gui-zenity server-news       ;
+server-vnc)$cmd_realpath gui-zenity server-vnc         ;
 $cmd_realpath gui-zenity list4 ;;
-"server-mail")$cmd_realpath gui-zenity server-mail       ;
+server-samba)$cmd_realpath gui-zenity server-samba     ;
 $cmd_realpath gui-zenity list4 ;;
-"server-ftp")$cmd_realpath gui-zenity server-ftp         ;
+server-news)$cmd_realpath gui-zenity server-news       ;
 $cmd_realpath gui-zenity list4 ;;
-"server-print")$cmd_realpath gui-zenity server-print     ;
+server-mail)$cmd_realpath gui-zenity server-mail       ;
 $cmd_realpath gui-zenity list4 ;;
-"server-lamp")$cmd_realpath gui-zenity server-lamp       ;
+server-ftp)$cmd_realpath gui-zenity server-ftp         ;
 $cmd_realpath gui-zenity list4 ;;
-"server-teamspeak")$cmd_realpath gui-zenity server-teamspeak ;
+server-print)$cmd_realpath gui-zenity server-print     ;
 $cmd_realpath gui-zenity list4 ;;
-"server-mumble")$cmd_realpath gui-zenity server-mumble       ;
+server-lamp)$cmd_realpath gui-zenity server-lamp       ;
 $cmd_realpath gui-zenity list4 ;;
-"server-sql")$cmd_realpath gui-zenity server-sql             ;
+server-teamspeak)$cmd_realpath gui-zenity server-teamspeak ;
 $cmd_realpath gui-zenity list4 ;;
-"server-asterisk")$cmd_realpath gui-zenity server-asterisk   ;
+server-mumble)$cmd_realpath gui-zenity server-mumble       ;
 $cmd_realpath gui-zenity list4 ;;
-"server-domain")$cmd_realpath gui-zenity server-domain       ;
+server-sql)$cmd_realpath gui-zenity server-sql             ;
+$cmd_realpath gui-zenity list4 ;;
+server-asterisk)$cmd_realpath gui-zenity server-asterisk   ;
+$cmd_realpath gui-zenity list4 ;;
+server-domain)$cmd_realpath gui-zenity server-domain       ;
 $cmd_realpath gui-zenity list4 ;;
 esac
 ####
@@ -7170,8 +7173,8 @@ exit ; fi
 ####
 if [ "$first_option" == "gui-roll-zenity-options-easy" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
-echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; fi
+if [ "$command_zenity" == "$NULL" ]
+then echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; exit ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
@@ -7183,11 +7186,10 @@ depends|commands|variables|license|examples|intro"
 ####
 ####
 selection="$($command_zenity --forms \
---text="$first_option" \
---title="Gui-roll With $cmd_basename $cmd_version" \
---forms \
---add-combo="$first_option" \
---combo-values="$gui_menu")"
+--text=$first_option \
+--title=Gui-roll-With-$cmd_basename-$cmd_version \
+--add-combo=$first_option \
+--combo-values=$gui_menu)"
 ####
 ####
 selection_final="$(echo $selection | sed 's/\|//g')"
@@ -7539,7 +7541,7 @@ favorite_basename_graphicalldialog="$second_option" ; fi
 if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
 echo "$title_md [ fail ] [ install zenity or yad to works with gui ]" ; fi
 gui_menu="gui-principal-menu|gui-info-menu|\
-client-basic|client-web|client-ipp|client-irc|\
+client-basic|client-web|client-ssh|client-telnet|client-ipp|client-irc|\
 client-mail|client-news|client-ftp|\
 client-git|client-vnc|client-torrent|client-vpn|\
 client-tor|lan-tor|lan-vpn|shield-ssh|\
@@ -7564,6 +7566,10 @@ gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-w
 client-basic*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-basic ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
 client-web*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-web ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+client-ssh*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-ssh ;
+$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+client-telnet*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-telnet ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
 client-ipp*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-ipp ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
