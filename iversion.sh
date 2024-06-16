@@ -322,6 +322,9 @@ message_without_gui="$title_md [ fail ] [ gui ] $message_without_support "
 message_without_info="$title_md [ fail ] [ log ] $message_without_support "
 message_without_null="$title_md [ fail ] [ null ] $message_without_support "
 message_without_pdf="$title_md [ fail ] [ pdf ] $message_without_support "
+message_without_climenu="$title_md [ fail ] [ install or dialog or wiptail ] "
+message_without_guimenu="$title_md [ fail ] [ install or zenity or yad ] "
+message_without_guiroll="$title_md [ fail ] [ install zenity ] "
 ####
 ####
 #### :rutina-final-system-variables:
@@ -6784,7 +6787,7 @@ exit; fi
 if [ "$first_option" == "gui-roll-zenity" ] ;
 then echo $head_waiting_gui ; echo $head_give_cover ;
 if [ "$command_zenity" == "$NULL" ] ;
-then echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; exit ; fi
+then echo $message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="Info|Firewall-Control|Firewall-List-With-Conceptual|\
@@ -6812,7 +6815,7 @@ $cmd_realpath gui-roll-zenity-firewall-wallcustom ; exit ;;
 firewall-wallsystem)
 $cmd_realpath gui-roll-zenity-firewall-wallsystem ; exit ;;
 Options-easy)
-$cmd_realpath gui-roll-zenity-options-easy ; exit ;;
+$cmd_realpath gui-roll-zenity-option-easy ; exit ;;
 esac
 ####
 ####
@@ -6828,7 +6831,9 @@ exit; fi
 if [ "$first_option" == "gui-roll-zenity-firewall-control" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$command_zenity" == "$NULL" ]
-then echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; exit ; fi
+then echo $message_without_guiroll ; exit ; fi
+####
+####
 gui_menu="gui-principal-menu|gui-info-menu|\
 |stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|wizard-mini|wizard-full|\
@@ -6890,7 +6895,9 @@ exit; fi
 if [ "$first_option" == "gui-roll-zenity-firewall-listconceptual" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$command_zenity" == "$NULL" ]
-then echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; exit ; fi
+then echo $message_without_guiroll ; exit ; fi
+####
+####
 gui_menu="gui-principal-menu|gui-info-menu|\
 ls4|ls6|list-filter4|list-filter6|list-alltables|\
 list-nat4|list-nat6|list-mangle4|list-mangle6|\
@@ -6938,7 +6945,7 @@ exit; fi
 if [ "$first_option" == "gui-roll-zenity-firewall-listnumeral" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$command_zenity" == "$NULL" ]
-then echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; exit ; fi
+then echo $message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|lsn4|lsn6|\
@@ -6990,7 +6997,7 @@ exit; fi
 if [ "$first_option" == "gui-roll-zenity-firewall-wallcustom" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$command_zenity" == "$NULL" ]
-then echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; exit ; fi
+then echo $message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|load-custom|clone-wallsystem|\
@@ -7074,7 +7081,7 @@ exit ; fi
 if [ "$first_option" == "gui-roll-zenity-firewall-wallsystem" ]
 then echo $head_waiting_gui ; echo $head_give_cover ;
 if [ "$command_zenity" == "$NULL" ]
-then echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; exit ; fi
+then echo $message_without_guiroll ; exit ; fi
 ####
 ####
 menu="gui-principal-menu|gui-info-menu|\
@@ -7178,15 +7185,15 @@ exit ; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-wallsystem:
-##########    english: gui-roll-zenity-options-easy: gui with roll  ##########
-##########    spanish: gui-roll-zenity-options-easy: gui con roll   ##########
-#### :rutina-inicial-gui-roll-zenity-options-easy:
+##########    english: gui-roll-zenity-option-easy: gui with roll  ##########
+##########    spanish: gui-roll-zenity-option-easy: gui con roll   ##########
+#### :rutina-inicial-gui-roll-zenity-option-easy:
 ####
 ####
-if [ "$first_option" == "gui-roll-zenity-options-easy" ] ;
+if [ "$first_option" == "gui-roll-zenity-option-easy" ] ;
 then echo $head_waiting_gui ; echo $head_give_cover ;
 if [ "$command_zenity" == "$NULL" ] ;
-then echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; exit ; fi
+then echo $message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
@@ -7241,7 +7248,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-zenity-options-easy:
+#### :rutina-final-gui-roll-zenity-option-easy:
 ##########    english: gui-menu: gui menu general: gui con menu  ##########
 ##########    spanish: gui-menu: gui menu general: gui con menu  ##########
 #### :rutina-inicial-gui-menu:
@@ -7250,7 +7257,9 @@ exit; fi
 if [ "$first_option" == "gui-menu" ] ;
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
-echo "$title_md [ fail ] [ install zenity or yad to works with gui ]" ; fi
+then echo "$message_without_guimenu" ; exit ; fi
+####
+####
 gui_menu="|Firewall-control|Firewall-listconceptual|\
 Firewall-listnumeral|Firewall-wallcustom|Firewall-wallsystem|\
 Options-easy"
@@ -7294,7 +7303,9 @@ then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
-echo "$title_md [ fail ] [ install zenity or yad to works with gui ]" ; fi
+then echo "$message_without_guimenu" ; exit ; fi
+####
+####
 gui_menu="gui-principal-menu|gui-info-menu|\
 stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|\
@@ -7365,7 +7376,9 @@ then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
-echo "$title_md [ fail ] [ install zenity or yad to works with gui ]" ; fi
+then echo "$message_without_guimenu" ; exit ; fi
+####
+####
 gui_menu="gui-principal-menu|gui-info-menu|\
 ls4|ls6|list-filter4|list-filter6|list-alltables|\
 list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|\
@@ -7414,7 +7427,9 @@ then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
-echo "$title_md [ fail ] [ install zenity or yad to works with gui ]" ; fi
+then echo "$message_without_guimenu" ; exit ; fi
+####
+####
 gui_menu="gui-principal-menu|gui-info-menu|lsn4|lsn6|\
 listn-filter4|listn-filter6|listn-alltables|\
 listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|\
@@ -7465,7 +7480,9 @@ then echo $head_waiting_gui ; echo $head_give_cover ;
 if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
-echo "$title_md [ fail ] [ install zenity or yad to works with gui ]" ; fi
+then echo "$message_without_guimenu" ; exit ; fi
+####
+####
 gui_menu="gui-principal-menu|gui-info-menu|\
 load-custom|clone-wallsystem|\
 new-full-custom|nueva-completa-custom|\
@@ -7551,7 +7568,9 @@ then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
-echo "$title_md [ fail ] [ install zenity or yad to works with gui ]" ; fi
+then echo "$message_without_guimenu" ; exit ; fi
+####
+####
 gui_menu="gui-principal-menu|gui-info-menu|\
 client-basic|client-web|client-ssh|client-telnet|client-ipp|client-irc|\
 client-mail|client-news|client-ftp|\
@@ -7664,7 +7683,9 @@ then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "$NULL" ]; then echo ; else
 favorite_basename_graphicalldialog="$second_option" ; fi
 if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
-echo "$title_md [ fail ] [ install zenity or yad to works with gui ]" ; fi
+then echo "$message_without_guimenu" ; exit ; fi
+####
+####
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
 list-options|clasic-options|info-options|expert|download|intro|\
@@ -7731,9 +7752,8 @@ exit; fi
 #### :rutina-inicial-load-custom:
 ####
 ####
-if [ "$first_option" == "load-custom" ]; then 
-echo "$title_md [ info ] [ loading firewall wallcustom $second_option ]"
-#### [ $default_directory_custom/$second_option ] 
+if [ "$first_option" == "load-custom" ] ;
+then echo "$title_md info: loading firewall wallcustom $second_option"
 launch_rules_firewall="yes" ;
 type_firewall="wallcustom" ;
 name_firewall="$second_option" ;
@@ -7751,7 +7771,7 @@ if [ ! -f "$default_directory_custom/$second_option" ]
 then  $cmd_realpath all-custom ; exit; fi
 ####
 ####
-fi
+exit; fi
 ####
 ####
 #### :rutina-final-load-custom:
