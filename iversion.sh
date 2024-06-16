@@ -6777,10 +6777,12 @@ exit; fi
 #### :rutina-inicial-gui-roll-zenity:
 ####
 ####
-if [ "$first_option" == "gui-roll-zenity" ]
-then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$command_zenity" == "$NULL" ]
+if [ "$first_option" == "gui-roll-zenity" ] ;
+then echo $head_waiting_gui ; echo $head_give_cover ;
+if [ "$command_zenity" == "$NULL" ] ;
 then echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; exit ; fi
+####
+####
 gui_menu="Info|Firewall-Control|Firewall-List-With-Conceptual|\
 Firewall-List-With-Numeral|firewall-wallcustom|\
 firewall-wallsystem|Options-easy"
@@ -6850,15 +6852,15 @@ $cmd_realpath -gui-zenity list4;;
 names)$cmd_realpath -gui-zenity names ;;
 show)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[Save Firewall]" --entry-text=cfg-to-show)" ; 
+--title="Show-Firewall" --entry-text=cfg-to-show)" ; 
 $cmd_realpath -gui-zenity show $archivo ;;
 save)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[Save Firewall]" --entry-text=cfg-to-save)" ; 
+--title="Save-Firewall" --entry-text=cfg-to-save)" ; 
 $cmd_realpath -gui-zenity save $archivo ;;
 load)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[Load Firewall]" --entry-text=cfg-to-load)" ;
+--title="Load-Firewall" --entry-text=cfg-to-load)" ;
 $cmd_realpath -gui-zenity load $archivo
 $cmd_realpath -gui-zenity list4;;
 actual)$cmd_realpath -gui-zenity actual ;;
@@ -6933,6 +6935,8 @@ if [ "$first_option" == "gui-roll-zenity-firewall-listnumeral" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$command_zenity" == "$NULL" ]
 then echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; exit ; fi
+####
+####
 gui_menu="gui-principal-menu|gui-info-menu|lsn4|lsn6|\
 listn-filter4|listn-filter6|listn-alltables|\
 listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|\
@@ -6983,6 +6987,8 @@ if [ "$first_option" == "gui-roll-zenity-firewall-wallcustom" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$command_zenity" == "$NULL" ]
 then echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; exit ; fi
+####
+####
 gui_menu="gui-principal-menu|gui-info-menu|load-custom|clone-wallsystem|\
 new-full-custom|nueva-completa-custom|new-mini-custom|nueva-mini-custom|\
 all-custom|show-custom|modify-custom|del-custom|config-regen"
@@ -7009,7 +7015,7 @@ $cmd_realpath -gui-zenity clone-wallsystem $archivo ; $cmd_realpath gui list4;;
 new-full-custom)
 archivo="$($command_zenity  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[new-full-custom]" \
+--title="new-full-custom-" \
 --entry-text=Input_file_name_to_new_full_configuration)" ;
 $cmd_realpath -gui-zenity new-full-custom $archivo ;;
 nueva-completa-custom)
@@ -7035,7 +7041,7 @@ $cmd_realpath -gui-zenity all-custom ;;
 show-custom)
 archivo="$($command_zenity --entry \ 
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[show-custom]" \
+--title="Show-custom" \
 --entry-text=cfg-to-show)" ;
 $cmd_realpath -gui-zenity show-custom $archivo ;;
 modify-custom)
@@ -7065,6 +7071,8 @@ if [ "$first_option" == "gui-roll-zenity-firewall-wallsystem" ]
 then echo $head_waiting_gui ; echo $head_give_cover ;
 if [ "$command_zenity" == "$NULL" ]
 then echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; exit ; fi
+####
+####
 menu="gui-principal-menu|gui-info-menu|\
 client-basic|client-web|client-ssh|client-telnet|client-ipp|client-irc|\
 client-vpn|client-torrent|client-mail|client-news|\
@@ -7171,9 +7179,9 @@ exit ; fi
 #### :rutina-inicial-gui-roll-zenity-options-easy:
 ####
 ####
-if [ "$first_option" == "gui-roll-zenity-options-easy" ]
-then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$command_zenity" == "$NULL" ]
+if [ "$first_option" == "gui-roll-zenity-options-easy" ] ;
+then echo $head_waiting_gui ; echo $head_give_cover ;
+if [ "$command_zenity" == "$NULL" ] ;
 then echo "$title_md [ fail ] [ install zenity to works with gui-roll ]" ; exit ; fi
 ####
 ####
@@ -7518,7 +7526,7 @@ modify-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
 $cmd_realpath -gui-$favorite_basename_graphicalldialog modify-custom $archivo ;;
 del-custom*) archivo="$($favorite_realpath_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="[del-custom]" \
+--title="del-custom" \
 --entry-text=cfg-to-delete)";
 $cmd_realpath -gui-$favorite_basename_graphicalldialog del-custom $archivo ;;
 config-regen*)$cmd_realpath -gui-$favorite_basename_graphicalldialog config-regen ;;
