@@ -315,16 +315,16 @@ give_load="$title_md [ _ok_ ] [ Load firewall ] [ Firewall With iptables ]"
 give_preferences="$title_md [ Configure ] [ $cmd_realpath preferences-modify ]"
 nada="$(echo -n)" ; 
 message_without_support="[ Without support for output cli for this option ]"
-message_without_narrow="$title_md [ fail ] [ narrow ] $message_without_support "
-message_without_txt="$title_md [ fail ] [ txt ] $message_without_support "
-message_without_cli="$title_md [ fail ] [ cli ] $message_without_support "
-message_without_gui="$title_md [ fail ] [ gui ] $message_without_support "
-message_without_info="$title_md [ fail ] [ log ] $message_without_support "
-message_without_null="$title_md [ fail ] [ null ] $message_without_support "
-message_without_pdf="$title_md [ fail ] [ pdf ] $message_without_support "
-message_without_climenu="$title_md [ fail ] [ install or dialog or wiptail ] "
-message_without_guimenu="$title_md [ fail ] [ install or zenity or yad ] "
-message_without_guiroll="$title_md [ fail ] [ install zenity ] "
+message_without_narrow="$title_md [ fail ] [ narrow ] $message_without_support"
+message_without_txt="$title_md [ fail ] [ txt ] $message_without_support"
+message_without_cli="$title_md [ fail ] [ cli ] $message_without_support"
+message_without_gui="$title_md [ fail ] [ gui ] $message_without_support"
+message_without_info="$title_md [ fail ] [ log ] $message_without_support"
+message_without_null="$title_md [ fail ] [ null ] $message_without_support"
+message_without_pdf="$title_md [ fail ] [ pdf ] $message_without_support"
+message_without_climenu="$title_md [ fail ] [ install or dialog or wiptail]"
+message_without_guimenu="$title_md [ fail ] [ install or zenity or yad ]"
+message_without_guiroll="$title_md [ fail ] [ install zenity ]"
 ####
 ####
 #### :rutina-final-system-variables:
@@ -7256,11 +7256,13 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu" ] ;
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
+if [ "$second_option" != "$NULL" ]; 
+then favorite_basename_graphicalldialog="$second_option" ; fi
+if [ "$favorite_basename_graphicalldialog" == "$NULL" ]; then
 then echo "$message_without_guimenu" ; exit ; fi
 ####
 ####
-gui_menu="|Firewall-control|Firewall-listconceptual|\
+gui_menu="Firewall-control|Firewall-listconceptual|\
 Firewall-listnumeral|Firewall-wallcustom|Firewall-wallsystem|\
 Options-easy"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
@@ -7300,9 +7302,9 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-control" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" == "$NULL" ]; then echo ; else
-favorite_basename_graphicalldialog="$second_option" ; fi
-if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
+if [ "$second_option" != "$NULL" ]; 
+then favorite_basename_graphicalldialog="$second_option" ; fi
+if [ "$favorite_basename_graphicalldialog" == "$NULL" ]; then
 then echo "$message_without_guimenu" ; exit ; fi
 ####
 ####
@@ -7373,9 +7375,9 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-listconceptual" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" == "$NULL" ]; then echo ; else
-favorite_basename_graphicalldialog="$second_option" ; fi
-if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
+if [ "$second_option" != "$NULL" ]; 
+then favorite_basename_graphicalldialog="$second_option" ; fi
+if [ "$favorite_basename_graphicalldialog" == "$NULL" ]; then
 then echo "$message_without_guimenu" ; exit ; fi
 ####
 ####
@@ -7424,9 +7426,9 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-listnumeral" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" == "$NULL" ]; then echo ; else
-favorite_basename_graphicalldialog="$second_option" ; fi
-if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
+if [ "$second_option" != "$NULL" ]; 
+then favorite_basename_graphicalldialog="$second_option" ; fi
+if [ "$favorite_basename_graphicalldialog" == "$NULL" ]; then
 then echo "$message_without_guimenu" ; exit ; fi
 ####
 ####
@@ -7476,10 +7478,10 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "gui-menu-firewall-wallcustom" ]
-then echo $head_waiting_gui ; echo $head_give_cover ;
-if [ "$second_option" == "$NULL" ]; then echo ; else
-favorite_basename_graphicalldialog="$second_option" ; fi
-if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
+then echo $head_waiting_gui ; echo $head_give_cover
+if [ "$second_option" != "$NULL" ]; 
+then favorite_basename_graphicalldialog="$second_option" ; fi
+if [ "$favorite_basename_graphicalldialog" == "$NULL" ]; then
 then echo "$message_without_guimenu" ; exit ; fi
 ####
 ####
@@ -7565,9 +7567,9 @@ exit; fi
 ####  
 if [ "$first_option" == "gui-menu-firewall-wallsystem" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" == "$NULL" ]; then echo ; else
-favorite_basename_graphicalldialog="$second_option" ; fi
-if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
+if [ "$second_option" != "$NULL" ]; 
+then favorite_basename_graphicalldialog="$second_option" ; fi
+if [ "$favorite_basename_graphicalldialog" == "$NULL" ]; then
 then echo "$message_without_guimenu" ; exit ; fi
 ####
 ####
@@ -7680,9 +7682,9 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu-options-easy" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" == "$NULL" ]; then echo ; else
-favorite_basename_graphicalldialog="$second_option" ; fi
-if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
+if [ "$second_option" != "$NULL" ]; 
+then favorite_basename_graphicalldialog="$second_option" ; fi
+if [ "$favorite_basename_graphicalldialog" == "$NULL" ]; then
 then echo "$message_without_guimenu" ; exit ; fi
 ####
 ####
@@ -7753,7 +7755,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "load-custom" ] ;
-then echo "$title_md info: loading firewall wallcustom $second_option"
+then echo "$title_md [ info ] [ loading firewall wallcustom $second_option ]"
 launch_rules_firewall="yes" ;
 type_firewall="wallcustom" ;
 name_firewall="$second_option" ;
