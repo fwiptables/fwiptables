@@ -7276,17 +7276,17 @@ selection_final="$($favorite_realpath_graphicalldialog \
 ####
 case "$selection_final" in
 1) exit ;;
-Firewall-control*)
+Firewall-control)
 $cmd_realpath gui-menu-firewall-control $favorite_basename_graphicalldialog ; exit ;;
-Firewall-listconceptual*)
+Firewall-listconceptual)
 $cmd_realpath gui-menu-firewall-listconceptual $favorite_basename_graphicalldialog ; exit ;;
-Firewall-listnumeral*)
+Firewall-listnumeral)
 $cmd_realpath gui-menu-firewall-listnumeral $favorite_basename_graphicalldialog ; exit ;;
-Firewall-wallcustom*)
+Firewall-wallcustom)
 $cmd_realpath gui-menu-firewall-wallcustom $favorite_basename_graphicalldialog ; exit ;;
-Firewall-wallsystem*)
+Firewall-wallsystem)
 $cmd_realpath gui-menu-firewall-wallsystem $favorite_basename_graphicalldialog ; exit ;;
-Options-easy*)
+Options-easy)
 $cmd_realpath gui-menu-options-easy $favorite_basename_graphicalldialog ; exit ;;
 esac
 ####
