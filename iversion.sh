@@ -2717,7 +2717,8 @@ echo "$text_md free sockets nodes ip-forward depends code treeconf treecache    
 echo "$text_md cleancache notes variables uninstall install version examples         "
 echo "$title_md  expert (expert commands work only without optional output)          "
 echo "$title_md  license-gpl license-lgpl license-bsd                                "
-echo "$title_md $title_md $cmd_longdescription $title_md $title_md"
+echo "$title_md Description:$cmd_longdescription                                     "
+echo "$title_md Program:$cmd_basename Version:$cmd_version Released:$cmd_released    "
 exit ; fi
 ####
 ####
@@ -7263,8 +7264,7 @@ then echo "$message_without_guimenu" ; exit ; fi
 ####
 ####
 gui_menu="Firewall-control|Firewall-listconceptual|\
-Firewall-listnumeral|Firewall-wallcustom|Firewall-wallsystem|\
-Options-easy"
+Firewall-listnumeral|Firewall-wallcustom|Firewall-wallsystem|Options-easy"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_realpath_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7276,18 +7276,18 @@ selection_final="$($favorite_realpath_graphicalldialog \
 ####
 case "$selection_final" in
 1) exit ;;
-Firewall-control)
-$cmd_realpath gui-menu-firewall-control $favorite_basename_graphicalldialog ; exit ;;
-Firewall-listconceptual)
-$cmd_realpath gui-menu-firewall-listconceptual $favorite_basename_graphicalldialog ; exit ;;
-Firewall-listnumeral)
-$cmd_realpath gui-menu-firewall-listnumeral $favorite_basename_graphicalldialog ; exit ;;
-Firewall-wallcustom)
-$cmd_realpath gui-menu-firewall-wallcustom $favorite_basename_graphicalldialog ; exit ;;
-Firewall-wallsystem)
-$cmd_realpath gui-menu-firewall-wallsystem $favorite_basename_graphicalldialog ; exit ;;
-Options-easy)
-$cmd_realpath gui-menu-options-easy $favorite_basename_graphicalldialog ; exit ;;
+Firewall-control*)
+$favorite_basename_graphicalldialog gui-menu-firewall-control ; exit ;;
+Firewall-listconceptual*)
+$favorite_basename_graphicalldialog gui-menu-firewall-listconceptual ; exit ;;
+Firewall-listnumeral*)
+$favorite_basename_graphicalldialog gui-menu-firewall-listnumeral ; exit ;;
+Firewall-wallcustom*)
+$favorite_basename_graphicalldialog gui-menu-firewall-wallcustom ; exit ;;
+Firewall-wallsystem*)
+$favorite_basename_graphicalldialog gui-menu-firewall-wallsystem ; exit ;;
+Options-easy*)
+$favorite_basename_graphicalldialog gui-menu-options-easy ; exit ;;
 esac
 ####
 ####
