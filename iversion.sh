@@ -114,8 +114,8 @@ cmd_directory="/usr/bin"                     # directory installed
 #### data program
 cmd_developer="Francisco Garcia"             # actual developer
 cmd_contact="fwiptables@gmx.com"             # actual contact
-cmd_shortdescription="fwiptables, FireWall With iptables"              # description short
-cmd_longdescription="fwiptables, One Mini Script in one-file wizard"   # description long
+cmd_shortdescription="FireWall With iptables"              # description short
+cmd_longdescription="One Mini Script in one-file wizard"   # description long
 cmd_license="GPL v2, LGPL v2, BSD"           # program license
 #### web oficial
 content_license_gpl=\
@@ -588,14 +588,12 @@ $command_mkdir -p "$default_directory_radio" &> /dev/null ; fi
 #### :rutina-inicial-update-variables:
 ####
 ####
-if [ -f "$file_default_preferences"   ] ;
-then source $file_default_preferences ; fi
+if [ -f "$file_default_preferences" ]; then source $file_default_preferences ; fi
 ####
 ####
-if [ "$first_option" = "$NULL" ] ;
-then first_option="$without_first_option" ;
-if [ "$without_first_option" = "$NULL" ] ;
-then first_option="options"; fi ; fi
+if [ "$first_option" = "$NULL" ] && [ "$without_first_option" = "$NULL" ];
+then first_option="options"; fi 
+if [ "$first_option" = "$NULL" ]; then first_option="$without_first_option" ; fi
 ####
 ####
 #### :rutina-final-update-variables:
@@ -1503,17 +1501,17 @@ exit; fi
 ####
 if [ "$first_option" == "preferences-example" ] ; then
 echo "$title_md"
-echo "$title_md # default PATH"
-echo "PATH=$PATH"
+#echo "$title_md $title_md default PATH"
+#echo "PATH=$PATH"
 echo "$title_md"
-echo "$title_md # default option"
+echo "$title_md $title_md default option"
 echo "without_first_option=options                    ## read below"
 echo "$title_md type: void or one valid option required to works"
-echo "$title_md Example1: list-options | Example2: list4  | example3: ip4"
-echo "$title_md Example4: speed-ip4 | Example5: sockets | Example6: gui-roll"
-echo "$title_md Example7: gui-menu-yad | Example8: gui-shell-yad"
+echo "$title_md example1:list-options example2:list4 example3:ip4"
+echo "$title_md example4:speed-ip4 example5:sockets example6:gui-roll"
+echo "$title_md example7:gui-menu-yad example8:gui-shell-yad"
 echo "$title_md" 
-echo "$title_md # default firewall"
+echo "$title_md $title_md default firewall"
 echo "allow_use_legacy=                               ## or void or no"
 echo "allow_use_nft=no                                ## or void or no"
 echo "allow_use_ipv4=                                 ## or void or no"
@@ -1521,25 +1519,25 @@ echo "allow_use_ipv6=no                               ## or void or no"
 echo "allow_separate_rules=                           ## or void or no"
 echo "config_close_deny=DROP                          ## or DROP or REJECT"
 echo "$title_md"
-echo "$title_md # default string"
+echo "$title_md $title_md default string"
 echo "config_string_algoritmo=kmp                     ## or kmp or bm"
 echo "$title_md"
-echo "$title_md # default log"
+echo "$title_md $title_md default log"
 echo "allow_save_autolog=                             ## or void or no"
 echo "allow_show_time=no                              ## or void or no"
 echo "$title_md"  
-echo "$title_md # default programs"
+echo "$title_md $title_md default programs"
 echo "favorite_iperf_command=                         ## or void for automatic or specify command"
 echo "favorite_text_editor=                           ## or void for automatic or specify command"
 echo "favorite_text_music=                            ## or void for automatic or specify command"
 echo "favorite_text_browser=                          ## or void for automatic or specify command"
 echo "favorite_date_command=                          ## or void for automatic or specify command"
 echo "$title_md"
-echo "$title_md # default text-cli and graphicall-gui"
+echo "$title_md $title_md default text-cli and graphicall-gui"
 echo "favorite_realpath_textdialog=                   ## or void for automatic or specify command"
 echo "favorite_realpath_graphicalldialog=             ## or void for automatic or specify command"
 echo "$title_md"
-echo "$title_md # default discover ip and speed ip"
+echo "$title_md $title_md default discover ip and speed ip"
 echo "serverip_discover_ipv4=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
 echo "serverip_discover_ipv6=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
 echo "serverip_iperf_ipv4=ping.online.net             ## default ping.online.net"
@@ -1548,12 +1546,12 @@ echo "serverip_iperf_ipv6=ping6.online.net            ## default ping6.online.ne
 echo "serverport_iperf_ipv6=5200                      ## default 5200"
 echo "server_radio_online=https://www.tdtchannels.com/lists/radio.m3u8" 
 echo "$title_md"
-echo "$title_md # default graphicall dimension"
+echo "$title_md $title_md default graphicall dimension"
 echo "config_graphicall_width=800                     ## default width 800"
 echo "config_graphicall_height=600                    ## default height 600"
 echo "$title_md"
-echo "$title_md This file has been generated from preferences-example"
-exit; fi
+echo "$title_md $title_md This file has been generated from preferences-example"
+fi
 ####
 ####
 #### :rutina-final-preferences-example:
@@ -7271,7 +7269,7 @@ if [ "$second_option" == "$NULL" ] then
 second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 ####
-gui_menu="|Firewall-control|Firewall-listconceptual|\
+gui_menu="Firewall-control|Firewall-listconceptual|\
 Firewall-listnumeral|Firewall-wallcustom|Firewall-wallsystem|Options-easy|"
 selection_menu="$(echo $gui_menu | sed `s/\|/ /g`)"
 selection_final="$($second_option \
@@ -7282,7 +7280,7 @@ selection_final="$($second_option \
 --list $selection_menu )"
 #### 
 ####
-case "$selection_menu" in
+case "$selection_final" in
 "1") exit ;;
 "Firewall-control")
 $cmd_realpath gui-menu-firewall-control $second_option ; exit ;;
@@ -7310,10 +7308,8 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-control" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" == "$NULL" ]; 
-then second_option=$favorite_basename_graphicalldialog ; fi
-if [ "$favorite_basename_graphicalldialog" == "$NULL" ]
-then echo "$message_without_guimenu" ; exit ; fi
+if [ "$second_option" == "$NULL" ] then 
+second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -7330,43 +7326,43 @@ selection_final="$($favorite_basename_graphicalldialog \
 #### 
 #### 
 case "$selection_final" in
-1) exit ;;
-gui-principal-menu*) $cmd_realpath gui-menu-$second_option  ;;
-gui-info-menu*)$cmd_realpath -gui-$second_option firewall-control ;;
-stop*)$cmd_realpath -gui-$second_option stop ;
+"1") exit ;;
+"gui-principal-menu") $cmd_realpath gui-menu-$second_option  ;;
+"gui-info-menu")$cmd_realpath -gui-$second_option firewall-control ;;
+"stop")$cmd_realpath -gui-$second_option stop ;
 $cmd_realpath -gui-$second_option list4;;
-continue*)$cmd_realpath -gui-$second_option continue ;
+"continue")$cmd_realpath -gui-$second_option continue ;
 $cmd_realpath -gui-$second_option list4;;
-reset*)$cmd_realpath -gui--gui-$second_option reset ;
+"reset")$cmd_realpath -gui--gui-$second_option reset ;
 $cmd_realpath -gui--gui-$second_option list4 ;;
-names*)$cmd_realpath -gui-$second_option names ;;
-show*)archivo="$($favorite_basename_graphicalldialog --entry \
+"names")$cmd_realpath -gui-$second_option names ;;
+"show")archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-show)" 
 $cmd_realpath -gui-$second_option $archivo ;;
-save*)archivo="$($second_option--entry \
+"save")archivo="$($second_option--entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-save)" 
 $cmd_realpath -gui-$second_option save $archivo ;;
-load*)archivo="$($favorite_realpath_graphicalldialog  --entry \
+"load")archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-load)" 
 $cmd_realpath -gui-gui-$second_option load $archivo ;
 $cmd_realpath -gui-$second_option list4 ;;
-actual*)$cmd_realpath -gui--gui-$second_option actual ;;
-eraserules4*)$cmd_realpath -gui--gui-$second_option eraserules4 ;;
-eraserules6*)$cmd_realpath -gui-$second_option eraserules6 ;;
-eraserules*)$cmd_realpath -gui-$second_option eraserules ;;
-wizard-full*)$cmd_realpath -gui-$second_option wizard-full ;
+"actual")$cmd_realpath -gui--gui-$second_option actual ;;
+"eraserules4")$cmd_realpath -gui--gui-$second_option eraserules4 ;;
+"eraserules6")$cmd_realpath -gui-$second_option eraserules6 ;;
+"eraserules")$cmd_realpath -gui-$second_option eraserules ;;
+"wizard-full")$cmd_realpath -gui-$second_option wizard-full ;
 $cmd_realpath -gui-$second_option list4 ;;
-wizard-mini*)$cmd_realpath -gui-$second_option wizard-mini ;
+"wizard-mini")$cmd_realpath -gui-$second_option wizard-mini ;
 $cmd_realpath -gui-$second_option list4 ;;
-off-line*)$cmd_realpath -gui-$second_option off-line ;
+"off-line")$cmd_realpath -gui-$second_option off-line ;
 $cmd_realpath -gui-$second_option list4 ;;
-all-permisive*)$cmd_realpath -gui-$second_option all-permisive ;
+"all-permisive")$cmd_realpath -gui-$second_option all-permisive ;
 $cmd_realpath -gui-$second_option list4 ;;
 esac
 ####
@@ -7382,10 +7378,8 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-listconceptual" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" != "$NULL" ]; 
-then favorite_basename_graphicalldialog="$second_option" ; fi
-if [ "$favorite_basename_graphicalldialog" == "$NULL" ]; then
-then echo "$message_without_guimenu" ; exit ; fi
+if [ "$second_option" == "$NULL" ] then 
+second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -7395,30 +7389,30 @@ list-security4|list-security6|list-ebtables|list-arptables"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_basename_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---column="$first_option" --text="$first_option" \
---title="Gui-menu With $cmd_basename $cmd_version" \
+--column=$first_option --text="$first_option" \
+--title=Gui-menu-With-$cmd_basename-$cmd_version \
 --list $selection_menu )"
 #### 
 #### 
 case "$selection_final" in
-1) exit ;;
-gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
-gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-listconceptual ;;
-ls4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog ls4 ;;
-ls6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog ls6 ;;
-list-alltables*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-alltables ;;
-list-filter4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-filter4 ;;
-list-filter6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-filter6 ;;
-list-nat4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-nat4 ;;
-list-nat6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-nat6 ;;
-list-mangle4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-mangle4 ;;
-list-mangle6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-mangle6 ;;
-list-raw4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-raw4 ;;
-list-raw6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-raw6 ;;
-list-security4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-security4 ;;
-list-security6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-security6 ;;
-list-ebtables*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-ebtables ;;
-list-arptables*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-arptables ;;
+"1") exit ;;
+"gui-principal-menu") $cmd_realpath gui-menu-$second_option ;;
+"gui-info-menu")$cmd_realpath -gui-$second_option firewall-listconceptual ;;
+"ls4")$cmd_realpath -gui-$second_option ls4 ;;
+"ls6")$cmd_realpath -gui-$second_option ls6 ;;
+"list-alltables")$cmd_realpath -gui-$second_option list-alltables ;;
+"list-filter4")$cmd_realpath -gui-$second_option list-filter4 ;;
+"list-filter6")$cmd_realpath -gui-$second_option list-filter6 ;;
+"list-nat4")$cmd_realpath -gui-$second_option list-nat4 ;;
+"list-nat6")$cmd_realpath -gui-$second_option list-nat6 ;;
+"list-mangle4")$cmd_realpath -gui-$second_option list-mangle4 ;;
+"list-mangle6")$cmd_realpath -gui-$second_option list-mangle6 ;;
+"list-raw4")$cmd_realpath -gui-$second_option list-raw4 ;;
+"list-raw6")$cmd_realpath -gui-$second_option list-raw6 ;;
+"list-security4")$cmd_realpath -gui-$second_option list-security4 ;;
+"list-security6")$cmd_realpath -gui-$second_option list-security6 ;;
+"list-ebtables")$cmd_realpath -gui-$second_option list-ebtables ;;
+"list-arptables")$cmd_realpath -gui-$second_option list-arptables ;;
 esac
 ####
 ####
@@ -7433,10 +7427,8 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-listnumeral" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" != "$NULL" ]; 
-then favorite_basename_graphicalldialog="$second_option" ; fi
-if [ "$favorite_basename_graphicalldialog" == "$NULL" ]; then
-then echo "$message_without_guimenu" ; exit ; fi
+if [ "$second_option" == "$NULL" ] then 
+second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|lsn4|lsn6|\
@@ -7455,23 +7447,23 @@ selection_final="$($favorite_basename_graphicalldialog \
 #### 
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
-gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-listnumeral ;;
-lsn4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog lsn4 ;;
-lsn6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog lsn6 ;;
-listn-alltables*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-alltables ;;
-listn-filter4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-filter4 ;;
-listn-filter6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-filter6 ;;
-listn-nat4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-nat4 ;;
-listn-nat6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-nat6 ;;
-listn-mangle4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-mangle4 ;;
-listn-mangle6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-mangle6 ;;
-listn-raw4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-raw4 ;;
-listn-raw6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-raw6 ;;
-listn-security4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-security4 ;;
-listn-security6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog listn-security6 ;;
-list-ebtables*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-ebtables ;;
-list-arptables*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-arptables ;;
+gui-principal-menu) $cmd_realpath gui-menu-$second_option ;;
+gui-info-menu)$cmd_realpath gui-menu-$second_option firewall-listnumeral ;;
+lsn4)$cmd_realpath gui-menu-$second_option lsn4 ;;
+lsn6)$cmd_realpath gui-menu-$second_option lsn6 ;;
+listn-alltables)$cmd_realpath gui-menu-$second_option listn-alltables ;;
+listn-filter4)$cmd_realpath gui-menu-$second_option listn-filter4 ;;
+listn-filter6)$cmd_realpath gui-menu-$second_option listn-filter6 ;;
+listn-nat4)$cmd_realpath gui-menu-$second_option listn-nat4 ;;
+listn-nat6)$cmd_realpath gui-menu-$second_option listn-nat6 ;;
+listn-mangle4)$cmd_realpath gui-menu-$second_option listn-mangle4 ;;
+listn-mangle6)$cmd_realpath gui-menu-$second_option listn-mangle6 ;;
+listn-raw4)$cmd_realpath gui-menu-$second_option listn-raw4 ;;
+listn-raw6)$cmd_realpath gui-menu-$second_option listn-raw6 ;;
+listn-security4)$cmd_realpath gui-menu-$second_option listn-security4 ;;
+listn-security6)$cmd_realpath gui-menu-$second_option listn-security6 ;;
+list-ebtables)$cmd_realpath gui-menu-$second_option list-ebtables ;;
+list-arptables)$cmd_realpath gui-menu-$second_option list-arptables ;;
 esac
 ####
 ####
@@ -7486,11 +7478,8 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu-firewall-wallcustom" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" != "$NULL" ]; 
-then favorite_basename_graphicalldialog="$second_option" ; fi
-if [ "$favorite_basename_graphicalldialog" == "$NULL" ]; then
-then echo "$message_without_guimenu" ; exit ; fi
-####
+if [ "$second_option" == "$NULL" ] then 
+second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
 load-custom|clone-wallsystem|\
@@ -7509,57 +7498,57 @@ selection_final="$($favorite_basename_graphicalldialog \
 #### 
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
-gui-info-menu*) $cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-wallcustom ;;
-load-custom*)archivo="$($favorite_basename_graphicalldialog  --entry \
+gui-principal-menu) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
+gui-info-menu) $cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-wallcustom ;;
+load-custom)archivo="$($favorite_basename_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Launch-Custom \
 --entry-text=cfg-to-launch)" ; 
 $cmd_realpath -gui-$favorite_basename_graphicalldialog load-custom $archivo ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-clone-wallsystem*)archivo="$($favorite_basename_graphicalldialog  --entry \
+clone-wallsystem)archivo="$($favorite_basename_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Clone-static \
 --entry-text=static-firewall-to-clone-config)" ; 
 $cmd_realpath -gui-$favorite_basename_graphicalldialog clone-wallsystem $archivo ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
-new-full-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
+new-full-custom) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=new-full-custom \
 --entry-text=Input_file_name_to_new_full_configuration)" ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog new-full-custom $archivo ;;
-nueva-completa-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
+nueva-completa-custom) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=nueva-completa-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" 
 $cmd_realpath -gui-$favorite_basename_graphicalldialog nueva-completa-custom $archivo ;;
-new-mini-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
+new-mini-custom) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height --entry \
 --title=new-mini-custom \
 --entry-text=Input_file_ name_ to_ new_ mini_configuration)" ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog new-mini-custom $archivo ;;
-nueva-mini-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
+nueva-mini-custom) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=nueva-mini-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog nueva-mini-custom $archivo ;;
-all-custom*) $cmd_realpath -gui-$favorite_basename_graphicalldialog all-custom ;;
-show-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
+all-custom) $cmd_realpath -gui-$favorite_basename_graphicalldialog all-custom ;;
+show-custom) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=show-custom \
 --entry-text=cfg-to-show)" ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog show-custom $archivo ;;
-modify-custom*) archivo="$($favorite_basename_graphicalldialog --entry \
+modify-custom) archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=modify-custom \
 --entry-text=cfg-to-modify)" ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog modify-custom $archivo ;;
-del-custom*) archivo="$($favorite_realpath_graphicalldialog --entry \
+del-custom) archivo="$($favorite_realpath_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="del-custom" \
+--title=del-custom \
 --entry-text=cfg-to-delete)";
 $cmd_realpath -gui-$favorite_basename_graphicalldialog del-custom $archivo ;;
-config-regen*)$cmd_realpath -gui-$favorite_basename_graphicalldialog config-regen ;;
+config-regen)$cmd_realpath -gui-$favorite_basename_graphicalldialog config-regen ;;
 esac
 ####
 ####
@@ -7574,10 +7563,8 @@ exit; fi
 ####  
 if [ "$first_option" == "gui-menu-firewall-wallsystem" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" != "$NULL" ]; 
-then favorite_basename_graphicalldialog="$second_option" ; fi
-if [ "$favorite_basename_graphicalldialog" == "$NULL" ]; then
-then echo "$message_without_guimenu" ; exit ; fi
+if [ "$second_option" == "$NULL" ] then 
+second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -7601,79 +7588,79 @@ selection_final="$($favorite_basename_graphicalldialog \
 #### 
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
-gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-wallsystem ;;
-client-basic*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-basic ;
+gui-principal-menu) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
+gui-info-menu)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-wallsystem ;;
+client-basic)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-basic ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-client-web*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-web ;
+client-web)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-web ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-client-ssh*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-ssh ;
+client-ssh)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-ssh ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-client-telnet*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-telnet ;
+client-telnet)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-telnet ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-client-ipp*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-ipp ;
+client-ipp)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-ipp ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-client-irc*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-irc ;
+client-irc)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-irc ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-client-mail*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-mail ;
+client-mail)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-mail ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-client-news*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-news ;
+client-news)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-news ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-client-ftp*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-ftp ;
+client-ftp)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-ftp ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-client-git*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-git ;
+client-git)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-git ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-client-vnc*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-vnc ;
+client-vnc)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-vnc ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-client-torrent*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-torrent ;
+client-torrent)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-torrent ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-client-vpn*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-vpn ;
+client-vpn)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-vpn ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-client-tor*)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-tor ;
+client-tor)$cmd_realpath -gui-$favorite_basename_graphicalldialog client-tor ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-games-shooter*)$cmd_realpath -gui-$favorite_basename_graphicalldialog games-shooter ;
+games-shooter)$cmd_realpath -gui-$favorite_basename_graphicalldialog games-shooter ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-game-wesnoth*)$cmd_realpath -gui-$favorite_basename_graphicalldialog game-wesnoth ; 
+game-wesnoth)$cmd_realpath -gui-$favorite_basename_graphicalldialog game-wesnoth ; 
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-game-minetest*)$cmd_realpath -gui-$favorite_basename_graphicalldialog game-minetest ;
+game-minetest)$cmd_realpath -gui-$favorite_basename_graphicalldialog game-minetest ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-game-freeciv*)$cmd_realpath -gui-$favorite_basename_graphicalldialog game-freeciv ;
+game-freeciv)$cmd_realpath -gui-$favorite_basename_graphicalldialog game-freeciv ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
-game-widelands*)$cmd_realpath -gui-$favorite_basename_graphicalldialog game-widelands ;
+game-widelands)$cmd_realpath -gui-$favorite_basename_graphicalldialog game-widelands ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-lan-tor*)$cmd_realpath -gui-$favorite_basename_graphicalldialog lan-tor ;
+lan-tor)$cmd_realpath -gui-$favorite_basename_graphicalldialog lan-tor ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-lan-vpn*)$cmd_realpath -gui-$favorite_basename_graphicalldialog lan-vpn ;
+lan-vpn)$cmd_realpath -gui-$favorite_basename_graphicalldialog lan-vpn ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-shield-ssh*)$cmd_realpath -gui-$favorite_basename_graphicalldialog shield-ssh ;
+shield-ssh)$cmd_realpath -gui-$favorite_basename_graphicalldialog shield-ssh ;
  $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-server-ssh*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-ssh ;
+server-ssh)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-ssh ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-server-web*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-web ;
+server-web)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-web ;
  $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-server-vnc*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-vnc ;
+server-vnc)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-vnc ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-server-samba*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-samba ;
+server-samba)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-samba ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-server-news*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-news ;
+server-news)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-news ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-server-mail*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-mail ;
+server-mail)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-mail ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-server-ftp*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-ftp ;
+server-ftp)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-ftp ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-server-print*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-print ;
+server-print)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-print ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-server-lamp*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-lamp ;
+server-lamp)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-lamp ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-server-teamspeak*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-teamspeak ;
+server-teamspeak)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-teamspeak ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-server-mumble*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-mumble ;
+server-mumble)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-mumble ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-server-sql*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-sql ;
+server-sql)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-sql ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-server-asterisk*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-asterisk ;
+server-asterisk)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-asterisk ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-server-domain*)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-domain ;
+server-domain)$cmd_realpath -gui-$favorite_basename_graphicalldialog server-domain ;
 $cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
 esac
 ####
@@ -7689,10 +7676,8 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu-options-easy" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" != "$NULL" ]; 
-then favorite_basename_graphicalldialog="$second_option" ; fi
-if [ "$favorite_basename_graphicalldialog" == "$NULL" ]; then
-then echo "$message_without_guimenu" ; exit ; fi
+if [ "$second_option" == "$NULL" ] then 
+second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
@@ -7711,30 +7696,30 @@ selection_final="$($favorite_basename_graphicalldialog \
 ####
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
-gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog options-easy ;;
-preferences-read*)$cmd_realpath -gui-$favorite_basename_graphicalldialog preferences-read ;;
-preferences-modify*)$cmd_realpath -gui-$favorite_basename_graphicalldialog preferences-modify ;;
-preferences-regen*)$cmd_realpath -gui-$favorite_basename_graphicalldialog preferences-regen ;;
-preferences-example*)$cmd_realpath -gui-$favorite_basename_graphicalldialog preferences-example ;;
-list-options*)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-options ;;
-clasic-options*)$cmd_realpath -gui-$favorite_basename_graphicalldialog clasic-options ;;
-info-options*)$cmd_realpath -gui-$favorite_basename_graphicalldialog info-options ;;
-expert*)$cmd_realpath -gui-$favorite_basename_graphicalldialog expert ;;
-intro*)$cmd_realpath -gui-$favorite_basename_graphicalldialog intro ;;
-download*)$cmd_realpath -gui-$favorite_basename_graphicalldialog download ;;
-ip4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog ip4 ;;
-ip6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog ip6 ;;
-speed-ip4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog speed-ip4 ;;
-speed-ip6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog speed-ip6 ;;
-sockets*)$cmd_realpath -gui-$favorite_basename_graphicalldialog sockets ;;
-treeconf*)$cmd_realpath -gui-$favorite_basename_graphicalldialog treeconf ;;
-examples*)$cmd_realpath -gui-$favorite_basename_graphicalldialog examples ;;
-depends*)$cmd_realpath -gui-$favorite_basename_graphicalldialog depends ;;
-notes*)$cmd_realpath -gui-$favorite_basename_graphicalldialog notes ;;
-license*)$cmd_realpath -gui-$favorite_basename_graphicalldialog license ;;
-variables*) $cmd_realpath -gui-$favorite_basename_graphicalldialog variables ;;
-commands*) $cmd_realpath -gui-$favorite_basename_graphicalldialog commands ;;
+gui-principal-menu) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
+gui-info-menu)$cmd_realpath -gui-$favorite_basename_graphicalldialog options-easy ;;
+preferences-read)$cmd_realpath -gui-$favorite_basename_graphicalldialog preferences-read ;;
+preferences-modify)$cmd_realpath -gui-$favorite_basename_graphicalldialog preferences-modify ;;
+preferences-regen)$cmd_realpath -gui-$favorite_basename_graphicalldialog preferences-regen ;;
+preferences-example)$cmd_realpath -gui-$favorite_basename_graphicalldialog preferences-example ;;
+list-options)$cmd_realpath -gui-$favorite_basename_graphicalldialog list-options ;;
+clasic-options)$cmd_realpath -gui-$favorite_basename_graphicalldialog clasic-options ;;
+info-options)$cmd_realpath -gui-$favorite_basename_graphicalldialog info-options ;;
+expert)$cmd_realpath -gui-$favorite_basename_graphicalldialog expert ;;
+intro)$cmd_realpath -gui-$favorite_basename_graphicalldialog intro ;;
+download)$cmd_realpath -gui-$favorite_basename_graphicalldialog download ;;
+ip4)$cmd_realpath -gui-$favorite_basename_graphicalldialog ip4 ;;
+ip6)$cmd_realpath -gui-$favorite_basename_graphicalldialog ip6 ;;
+speed-ip4)$cmd_realpath -gui-$favorite_basename_graphicalldialog speed-ip4 ;;
+speed-ip6)$cmd_realpath -gui-$favorite_basename_graphicalldialog speed-ip6 ;;
+sockets)$cmd_realpath -gui-$favorite_basename_graphicalldialog sockets ;;
+treeconf)$cmd_realpath -gui-$favorite_basename_graphicalldialog treeconf ;;
+examples)$cmd_realpath -gui-$favorite_basename_graphicalldialog examples ;;
+depends)$cmd_realpath -gui-$favorite_basename_graphicalldialog depends ;;
+notes)$cmd_realpath -gui-$favorite_basename_graphicalldialog notes ;;
+license)$cmd_realpath -gui-$favorite_basename_graphicalldialog license ;;
+variables) $cmd_realpath -gui-$favorite_basename_graphicalldialog variables ;;
+commands) $cmd_realpath -gui-$favorite_basename_graphicalldialog commands ;;
 esac
 ####
 ####
@@ -7761,7 +7746,7 @@ exit; fi
 #### :rutina-inicial-load-custom:
 ####
 ####
-if [ "$first_option" == "load-custom" ] ;
+if [ "$first_option" == "load-custom" ]
 then echo "$title_md [ info ] [ loading firewall wallcustom $second_option ]"
 launch_rules_firewall="yes" ;
 type_firewall="wallcustom" ;
