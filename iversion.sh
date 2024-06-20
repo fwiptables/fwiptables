@@ -2717,8 +2717,8 @@ echo "$text_md free sockets nodes ip-forward depends code treeconf treecache    
 echo "$text_md cleancache notes variables uninstall install version examples         "
 echo "$title_md  expert (expert commands work only without optional output)          "
 echo "$title_md  license-gpl license-lgpl license-bsd                                "
-echo "$title_md Description:$cmd_longdescription                                     "
-echo "$title_md Program:$cmd_basename Version:$cmd_version Released:$cmd_released    "
+echo "$title_md | Program:$cmd_basename Version:$cmd_version Released:$cmd_released  "
+echo "$title_md | Description:$cmd_longdescription                                   "
 exit ; fi
 ####
 ####
