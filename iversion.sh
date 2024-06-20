@@ -7267,8 +7267,8 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu" ] ;
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" != "$NULL" ]; 
-then favorite_basename_graphicalldialog="$second_option" ; fi
+if [ "$second_option" == "$NULL" ]; 
+then second_option=$favorite_basename_graphicalldialog ; fi
 if [ "$favorite_basename_graphicalldialog" == "$NULL" ]; then
 then echo "$message_without_guimenu" ; exit ; fi
 ####
@@ -7286,17 +7286,17 @@ selection_final="$($favorite_realpath_graphicalldialog \
 ####
 case "$selection_final" in
 1) exit ;;
-Firewall-control*)
+Firewall-control)
 $cmd_realpath gui-menu-firewall-control $second_option ; exit ;;
-Firewall-listconceptual*)
+Firewall-listconceptual)
 $cmd_realpath gui-menu-firewall-listconceptual $second_option ; exit ;;
-Firewall-listnumeral*)
+Firewall-listnumeral)
 $cmd_realpath gui-menu-firewall-listnumeral $second_option ; exit ;;
-Firewall-wallcustom*)
+Firewall-wallcustom)
 $cmd_realpath gui-menu-firewall-wallcustom $second_option ; exit ;;
-Firewall-wallsystem*)
+Firewall-wallsystem)
 $cmd_realpath gui-menu-firewall-wallsystem $second_option ; exit ;;
-Options-easy*)
+Options-easy)
 $cmd_realpath gui-menu-options-easy $second_option ; exit ;;
 esac
 ####
@@ -7312,8 +7312,8 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-control" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" != "$NULL" ]; 
-then favorite_basename_graphicalldialog="$second_option" ; fi
+if [ "$second_option" == "$NULL" ]; 
+then second_option=$favorite_basename_graphicalldialog ; fi
 if [ "$favorite_basename_graphicalldialog" == "$NULL" ]; then
 then echo "$message_without_guimenu" ; exit ; fi
 ####
