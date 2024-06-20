@@ -7058,7 +7058,7 @@ $cmd_realpath -gui-zenity all-custom ;;
 show-custom)
 archivo="$($command_zenity --entry \ 
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="Show-custom" \
+--title=Show-custom \
 --entry-text=cfg-to-show)" ;
 $cmd_realpath -gui-zenity show-custom $archivo ;;
 modify-custom)
