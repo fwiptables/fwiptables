@@ -7276,7 +7276,7 @@ then echo "$message_without_guimenu" ; exit ; fi
 gui_menu="Firewall-control|Firewall-listconceptual|\
 Firewall-listnumeral|Firewall-wallcustom|Firewall-wallsystem|Options-easy"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($favorite_realpath_graphicalldialog \
+selection_final="$($second_option \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column="$first_option" \
 --text="$first_option" \
