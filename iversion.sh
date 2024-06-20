@@ -910,10 +910,12 @@ favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ;
 first_option="cli" ;;
 "gui-menu")
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
-first_option="gui-menu" ;;
+first_option="gui-menu" 
+second_option="$favorite_basename_graphicalldialog" ;;
 "gui-shell")
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
-first_option="gui-shell-$favorite_basename_graphicalldialog" ;;
+first_option="gui-shell-$favorite_basename_graphicalldialog" 
+second_option="$favorite_basename_graphicalldialog" ;;
 "gui-zenity")
 favorite_realpath_graphicalldialog="$command_zenity" ; 
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ; 
@@ -925,19 +927,23 @@ first_option="gui" ;;
 "cli-menu-dialog")
 favorite_realpath_textdialog="$command_dialog" ; 
 favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ; 
-first_option="cli-menu" ;;
+first_option="cli-menu" 
+second_option="$favorite_basename_textdialog" ;;
 "cli-menu-whiptail")
 favorite_realpath_textdialog="$command_whiptail" ;
 favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ; 
-first_option="cli-menu" ;;
+first_option="cli-menu" 
+second_option="$favorite_basename_textdialog" ;;
 "gui-menu-zenity")
 favorite_realpath_graphicalldialog="$command_zenity" ;
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
-first_option="gui-menu" ;;
+first_option="gui-menu" 
+second_option="$favorite_basename_graphicalldialog" ;;
 "gui-menu-yad")
 favorite_realpath_graphicalldialog="$command_yad" ; 
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
-first_option="gui-menu" ;;
+first_option="gui-menu" 
+second_option="$favorite_basename_graphicalldialog" ;;
 esac
 ####
 ####
@@ -7281,17 +7287,17 @@ selection_final="$($favorite_realpath_graphicalldialog \
 case "$selection_final" in
 1) exit ;;
 Firewall-control*)
-$favorite_basename_graphicalldialog gui-menu-firewall-control ; exit ;;
+$cmd_realpath gui-menu-firewall-control $second_option ; exit ;;
 Firewall-listconceptual*)
-$favorite_basename_graphicalldialog gui-menu-firewall-listconceptual ; exit ;;
+$cmd_realpath gui-menu-firewall-listconceptual $second_option ; exit ;;
 Firewall-listnumeral*)
-$favorite_basename_graphicalldialog gui-menu-firewall-listnumeral ; exit ;;
+$cmd_realpath gui-menu-firewall-listnumeral $second_option ; exit ;;
 Firewall-wallcustom*)
-$favorite_basename_graphicalldialog gui-menu-firewall-wallcustom ; exit ;;
+$cmd_realpath gui-menu-firewall-wallcustom $second_option ; exit ;;
 Firewall-wallsystem*)
-$favorite_basename_graphicalldialog gui-menu-firewall-wallsystem ; exit ;;
+$cmd_realpath gui-menu-firewall-wallsystem $second_option ; exit ;;
 Options-easy*)
-$favorite_basename_graphicalldialog gui-menu-options-easy ; exit ;;
+$cmd_realpath gui-menu-options-easy $second_option ; exit ;;
 esac
 ####
 ####
@@ -7327,44 +7333,43 @@ selection_final="$($favorite_basename_graphicalldialog \
 #### 
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu*) $cmd_realpath gui-menu-$favorite_basename_graphicalldialog ;;
-gui-info-menu*)$cmd_realpath -gui-$favorite_basename_graphicalldialog firewall-control ;;
-stop*)$cmd_realpath -gui-$favorite_basename_graphicalldialog stop ;
-$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
-continue*)$cmd_realpath -gui-$favorite_basename_graphicalldialog continue ;
-$cmd_realpath -gui-$favorite_basename_graphicalldialog list4;;
-reset*)$cmd_realpath -gui-$favorite_basename_graphicalldialog reset ;
-$cmd_realpath -gui-$favorite_basename_graphicalldialog  list4 ;;
-names*)$cmd_realpath -gui-$favorite_basename_graphicalldialog names ;;
+gui-principal-menu*) $cmd_realpath gui-menu-$second_option  ;;
+gui-info-menu*)$cmd_realpath -gui-$second_option firewall-control ;;
+stop*)$cmd_realpath -gui-$second_option stop ;
+$cmd_realpath -gui-$second_option list4;;
+continue*)$cmd_realpath -gui-$second_option continue ;
+$cmd_realpath -gui-$second_option list4;;
+reset*)$cmd_realpath -gui--gui-$second_option reset ;
+$cmd_realpath -gui--gui-$second_option list4 ;;
+names*)$cmd_realpath -gui-$second_option names ;;
 show*)archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-show)" 
-$cmd_realpath -gui-$favorite_basename_graphicalldialog  $archivo ;;
-
-save*)archivo="$($favorite_basename_graphicalldialog --entry \
+$cmd_realpath -gui-$second_option $archivo ;;
+save*)archivo="$($second_option--entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-save)" 
-$cmd_realpath -gui-$favorite_basename_graphicalldialog save $archivo ;;
+$cmd_realpath -gui-$second_option save $archivo ;;
 load*)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-load)" 
-$cmd_realpath -gui-$favorite_basename_graphicalldialog load $archivo ;
-$cmd_realpath -gui-$favorite_basename_graphicalldialog  list4;;
-actual*)$cmd_realpath -gui-$favorite_basename_graphicalldialog actual ;;
-eraserules4*)$cmd_realpath -gui-$favorite_basename_graphicalldialog eraserules4 ;;
-eraserules6*)$cmd_realpath -gui-$favorite_basename_graphicalldialog eraserules6 ;;
-eraserules*)$cmd_realpath -gui-$favorite_basename_graphicalldialog eraserules ;;
-wizard-full*)$cmd_realpath -gui-$favorite_basename_graphicalldialog wizard-full ;
-$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-wizard-mini*)$cmd_realpath -gui-$favorite_basename_graphicalldialog wizard-mini ;
-$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-off-line*)$cmd_realpath -gui-$favorite_basename_graphicalldialog off-line ;
-$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
-all-permisive*)$cmd_realpath -gui-$favorite_basename_graphicalldialog all-permisive ;
-$cmd_realpath -gui-$favorite_basename_graphicalldialog list4 ;;
+$cmd_realpath -gui-gui-$second_option load $archivo ;
+$cmd_realpath -gui-$second_option list4 ;;
+actual*)$cmd_realpath -gui--gui-$second_option actual ;;
+eraserules4*)$cmd_realpath -gui--gui-$second_option eraserules4 ;;
+eraserules6*)$cmd_realpath -gui-$second_option eraserules6 ;;
+eraserules*)$cmd_realpath -gui-$second_option eraserules ;;
+wizard-full*)$cmd_realpath -gui-$second_option wizard-full ;
+$cmd_realpath -gui-$second_option list4 ;;
+wizard-mini*)$cmd_realpath -gui-$second_option wizard-mini ;
+$cmd_realpath -gui-$second_option list4 ;;
+off-line*)$cmd_realpath -gui-$second_option off-line ;
+$cmd_realpath -gui-$second_option list4 ;;
+all-permisive*)$cmd_realpath -gui-$second_option all-permisive ;
+$cmd_realpath -gui-$second_option list4 ;;
 esac
 ####
 ####
