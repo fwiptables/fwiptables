@@ -6808,6 +6808,10 @@ selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
+1) $command_zenity \
+--width=$config_graphicall_width \
+--height=$config_graphicall_height \
+--info --text=good-bye ; exit ;;
 Info)	
 $cmd_realpath gui-zenity info ; exit ;;
 Firewall-Control)
@@ -6853,9 +6857,10 @@ selection_final="$(echo $selection_menu | sed 's/\|//g')"
 #### 
 ####
 case "$selection_final" in
-1)$command_zenity  --info \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text="$cmd_realpath good bye"; exit ;;
+1) $command_zenity \
+--width=$config_graphicall_width \
+--height=$config_graphicall_height \
+--info --text=good-bye ; exit ;;
 gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
 gui-info-menu)$cmd_realpath -gui-zenity firewall-control ;;
 stop)$cmd_realpath -gui-zenity stop
@@ -6918,7 +6923,10 @@ selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
-1) exit ;;
+1) $command_zenity \
+--width=$config_graphicall_width \
+--height=$config_graphicall_height \
+--info --text=good-bye ; exit ;;
 gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
 gui-info-menu)$cmd_realpath -gui-zenity firewall-listconceptual ;;
 ls4)$cmd_realpath -gui-zenity ls4 ;;
@@ -6968,9 +6976,10 @@ selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
-1)$command_zenity  --info \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text="$cmd_realpath good bye"; exit ;;
+1) $command_zenity \
+--width=$config_graphicall_width \
+--height=$config_graphicall_height \
+--info --text=good-bye ; exit ;;
 gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
 gui-info-menu)$cmd_realpath -gui-zenity firewall-listnumeral ;;
 lsn4)$cmd_realpath -gui-zenity lsn4 ;;
@@ -7128,7 +7137,7 @@ client-mail)$cmd_realpath gui-zenity client-mail       ;
 $cmd_realpath gui-zenity list4 ;;
 client-news)$cmd_realpath gui-zenity client-news       ;
 $cmd_realpath gui-zenity list4 ;;
-client-ftp")$cmd_realpath gui-zenity client-ftp         ;
+client-ftp)$cmd_realpath gui-zenity client-ftp         ;
 $cmd_realpath gui-zenity list4 ;;
 client-git)$cmd_realpath gui-zenity client-git         ;
 $cmd_realpath gui-zenity list4 ;;
@@ -7316,9 +7325,9 @@ off-line|all-permisive|wizard-mini|wizard-full"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_basename_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---column="$first_option" \
---text="$first_option" \
---title="Gui-menu With $cmd_basename $cmd_version" \
+--column=$first_option \
+--text=$first_option \
+--title=Gui-menu-With-$cmd_basename-$cmd_version \
 --list $selection_menu )"
 #### 
 #### 
@@ -7386,7 +7395,8 @@ list-security4|list-security6|list-ebtables|list-arptables"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_basename_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---column=$first_option --text="$first_option" \
+--column=$first_option \
+--text=$first_option \
 --title=Gui-menu-With-$cmd_basename-$cmd_version \
 --list $selection_menu )"
 #### 
@@ -7436,9 +7446,9 @@ list-ebtables|list-arptables"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_basename_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---column="$first_option" \
---text="$first_option" \
---title="Gui-menu With $cmd_realpath $cmd_version" \
+--column=$first_option \
+--text=$first_option \
+--title=Gui-menu-With-$cmd_realpath-$cmd_version \
 --list $selection_menu )"
 #### 
 #### 
@@ -7487,9 +7497,9 @@ del-custom|config-regen"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_basename_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---column="$first_option" \
---text="$first_option" \
---title="Gui-menu With $cmd_basename $cmd_version" \
+--column=$first_option \
+--text=$first_option \
+--title=Gui-menu-With-$cmd_basename-$cmd_version \
 --list $selection_menu )"
 #### 
 #### 
@@ -7577,9 +7587,9 @@ server-mumble|server-sql|server-asterisk"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_basename_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---column="$first_option" \
---text="$first_option" \
---title="Gui-menu With $cmd_basename $cmd_version" \
+--column=$first_option \
+--text=$first_option \
+--title=Gui-menu-With-$cmd_basename-$cmd_version \
 --list $selection_menu )"
 #### 
 #### 
@@ -7685,9 +7695,9 @@ examples|depends|variables|commands"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($favorite_basename_graphicalldialog \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---column="$first_option" \
---text="$first_option" \
---title="Gui-menu With $cmd_realpath $cmd_version" \
+--column=$first_option \
+--text=$first_option \
+--title=Gui-menu-With-$cmd_realpath-$cmd_version \
 --list $selection_menu )"
 #### 
 ####
