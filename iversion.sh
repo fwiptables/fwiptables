@@ -7269,7 +7269,7 @@ if [ "$first_option" == "gui-menu" ] ;
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "$NULL" ]; 
 then second_option=$favorite_basename_graphicalldialog ; fi
-if [ "$favorite_basename_graphicalldialog" == "$NULL" ]; then
+if [ "$favorite_basename_graphicalldialog" == "$NULL" ]
 then echo "$message_without_guimenu" ; exit ; fi
 ####
 ####
@@ -7314,7 +7314,7 @@ if   [ "$first_option" == "gui-menu-firewall-control" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "$NULL" ]; 
 then second_option=$favorite_basename_graphicalldialog ; fi
-if [ "$favorite_basename_graphicalldialog" == "$NULL" ]; then
+if [ "$favorite_basename_graphicalldialog" == "$NULL" ]
 then echo "$message_without_guimenu" ; exit ; fi
 ####
 ####
