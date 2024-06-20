@@ -6867,15 +6867,15 @@ $cmd_realpath -gui-zenity list4;;
 names)$cmd_realpath -gui-zenity names ;;
 show)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="Show-Firewall" --entry-text=cfg-to-show)" ; 
+--title=Show-Firewall --entry-text=cfg-to-show)" ; 
 $cmd_realpath -gui-zenity show $archivo ;;
 save)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="Save-Firewall" --entry-text=cfg-to-save)" ; 
+--title=Save-Firewall --entry-text=cfg-to-save)" ; 
 $cmd_realpath -gui-zenity save $archivo ;;
 load)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="Load-Firewall" --entry-text=cfg-to-load)" ;
+--title=Load-Firewall --entry-text=cfg-to-load)" ;
 $cmd_realpath -gui-zenity load $archivo
 $cmd_realpath -gui-zenity list4;;
 actual)$cmd_realpath -gui-zenity actual ;;
@@ -7027,12 +7027,12 @@ load-custom)archivo="$($command_zenity  --entry \
 $cmd_realpath -gui-zenity load-custom $archivo ; $cmd_realpath gui list4;;
 clone-wallsystem)archivo="$($command_zenity  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title=Clone firewall static --entry-text=firewall_static_to_clone)" ; 
+--title=Clone-firewall-static --entry-text=firewall_static_to_clone)" ; 
 $cmd_realpath -gui-zenity clone-wallsystem $archivo ; $cmd_realpath gui list4;;
 new-full-custom)
 archivo="$($command_zenity  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="new-full-custom-" \
+--title=new-full-custom \
 --entry-text=Input_file_name_to_new_full_configuration)" ;
 $cmd_realpath -gui-zenity new-full-custom $archivo ;;
 nueva-completa-custom)
@@ -7064,12 +7064,12 @@ $cmd_realpath -gui-zenity show-custom $archivo ;;
 modify-custom)
 archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="modify-custom" --entry-text=cfg-to-modify)" ;
+--title=modify-custom --entry-text=cfg-to-modify)" ;
 $cmd_realpath -gui-zenity modify-custom $archivo ;;
 del-custom)
 archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title="del-custom" --entry-text=cfg-to-delete)" ;
+--title=del-custom --entry-text=cfg-to-delete)" ;
 $cmd_realpath -gui-zenity del-custom $archivo ;;
 config-regen)$cmd_realpath -gui-zenity config-regen ;;
 esac
