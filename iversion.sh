@@ -7267,36 +7267,34 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu" ] ;
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" == "$NULL" ]; 
-then second_option=$favorite_basename_graphicalldialog ; fi
-if [ "$favorite_basename_graphicalldialog" == "$NULL" ]
-then echo "$message_without_guimenu" ; exit ; fi
+if [ "$second_option" == "$NULL" ] then 
+second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 ####
-gui_menu="Firewall-control|Firewall-listconceptual|\
-Firewall-listnumeral|Firewall-wallcustom|Firewall-wallsystem|Options-easy"
-selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+gui_menu="|Firewall-control|Firewall-listconceptual|\
+Firewall-listnumeral|Firewall-wallcustom|Firewall-wallsystem|Options-easy|"
+selection_menu="$(echo $gui_menu | sed `s/\|/ /g`)"
 selection_final="$($second_option \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---column="$first_option" \
---text="$first_option" \
---title="Gui-menu With $cmd_basename $cmd_version" \
---list $selection_menu)"
+--column=$first_option \
+--text=$first_option \
+--title=Gui-menu-With-$cmd_basename-$cmd_version \
+--list $selection_menu )"
 #### 
 ####
-case "$selection_final" in
-1) exit ;;
-Firewall-control)
+case "$selection_menu" in
+"1") exit ;;
+"Firewall-control")
 $cmd_realpath gui-menu-firewall-control $second_option ; exit ;;
-Firewall-listconceptual)
+"Firewall-listconceptual")
 $cmd_realpath gui-menu-firewall-listconceptual $second_option ; exit ;;
-Firewall-listnumeral)
+"Firewall-listnumeral")
 $cmd_realpath gui-menu-firewall-listnumeral $second_option ; exit ;;
-Firewall-wallcustom)
+"Firewall-wallcustom")
 $cmd_realpath gui-menu-firewall-wallcustom $second_option ; exit ;;
-Firewall-wallsystem)
+"Firewall-wallsystem")
 $cmd_realpath gui-menu-firewall-wallsystem $second_option ; exit ;;
-Options-easy)
+"Options-easy")
 $cmd_realpath gui-menu-options-easy $second_option ; exit ;;
 esac
 ####
