@@ -7325,12 +7325,12 @@ stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|\
 off-line|all-permisive|wizard-mini|wizard-full"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$second_option \
+selection_final="$($second_option \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column=$first_option \
 --text=$first_option \
 --title=Gui-menu-With-$cmd_basename-$cmd_version \
---list $selection_menu"
+--list $selection_menu)"
 #### 
 #### 
 case "$selection_final" in
