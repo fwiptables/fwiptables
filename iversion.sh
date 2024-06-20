@@ -2721,7 +2721,7 @@ echo "$text_md free sockets nodes ip-forward depends code treeconf treecache    
 echo "$text_md cleancache notes variables uninstall install version examples         "
 echo "$text_md license-gpl license-lgpl license-bsd                                  "
 echo "$title_md  expert (expert commands work only without optional output)          "
-echo "$title_md :| - P R O G R A M - F I R E W A L L - D E T A I L S -               "
+echo "$title_md :| - Description -                                                       "
 echo "$title_md :| Program:$cmd_basename Version:$cmd_version Released:$cmd_released "
 echo "$title_md :| Description: $cmd_longdescription                                 "
 exit ; fi
@@ -6142,7 +6142,7 @@ favorite_realpath_graphicalldialog="$command_zenity"
 menugtk="$($command_zenity --entry \
 --title="Gui Shell || $cmd_realpath || $cmd_version ||" \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="type one option for $cmd_basename, options list: options")"
+--text=type-one-option-for-$cmd_basename,options-list:options)"
 #
 # menugtk="$($command_zenity \
 # --forms --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -6302,7 +6302,7 @@ favorite_realpath_graphicalldialog="$command_yad"
 menugtk="$($command_yad --entry \
 --title="Gui Shell || $cmd_realpath || $cmd_version ||" \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text="type one option for $cmd_basename, options list: options")"
+--text=type-one-option-for-$cmd_basename,options-list:options)"
 #
 #menugtk="$($command_yad --entry \
 #--title="Gui Shell || $cmd_realpath || $cmd_version ||" \
@@ -6423,15 +6423,13 @@ $cmd_realpath -gui-yad preferences-modify
 #### spanish: las demas opciones   ####
 ####
 ####
-*)
-fecha_temporal="$show_actual_date"
+*) fecha_temporal="$show_actual_date"
 $cmd_realpath $menugtk &> /tmp/fwiptables-$fecha_temporal
 $command_yad --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title="[ $cmd_realpath gui-shell ] [ $menugtk ]" \
 --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
-rm /tmp/fwiptables-$fecha_temporal
-;;
+rm /tmp/fwiptables-$fecha_temporal ;;
 esac
 $cmd_realpath gui-shell-yad
 exit ; fi
@@ -6443,10 +6441,10 @@ exit ; fi
 #### :rutina-inicial-cli-menu:
 ####
 ####
-if   [ "$first_option" == "cli-menu" ]; then
-case "$favorite_realpath_textdialog" in "$NULL")
+if [ "$first_option" == "cli-menu" ]; then
+if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md [ fail ] [ Install or dialog or whiptail to work ]"
-exit ;; esac
+exit ; fi
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 --title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
 0010 "$title_md $text_md [$cmd_realpath cli-menu] $text_md $title_md" \
@@ -6582,7 +6580,6 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 #### english: dialog choosed #### spanish: dialogo elegido
 #### 
 ####
-echo 3
 case $menuprincipal in
 ##########
 ##########
@@ -6753,9 +6750,9 @@ $cmd_realpath del-custom $archivo ;;
 0730) clear ; $cmd_realpath txt install;;
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-$cmd_realpath text-pause
-clear ; exit ;; esac 
+$cmd_realpath text-pause clear ; exit ;;
 ################################################################################
+esac
 $cmd_realpath text-pause
 $cmd_realpath cli-menu-$favorite_basename_textdialog
 exit; fi
