@@ -2722,7 +2722,7 @@ echo "$text_md free sockets nodes ip-forward depends code treeconf treecache    
 echo "$text_md cleancache notes variables uninstall install version examples         "
 echo "$text_md license-gpl license-lgpl license-bsd                                  "
 echo "$title_md  expert (expert commands work only without optional output)          "
-echo "$title_md :| About Program $cmd_basename:                                      "
+echo "$title_md :| About Program $cmd_basename                                       "
 echo "$title_md :| Version:$cmd_version Released:$cmd_released                       "
 echo "$title_md :| Description: $cmd_longdescription                                 "
 exit ; fi
@@ -7333,7 +7333,7 @@ selection_final="$($second_option \
 --list $selection_menu)"
 #### 
 #### 
-case "$selection_final" in
+case $selection_final in
 "1") exit ;;
 "gui-principal-menu") $cmd_realpath gui-menu-$second_option  ;;
 "gui-info-menu")$cmd_realpath -gui-$second_option firewall-control ;;
@@ -7403,7 +7403,7 @@ selection_final="$($second_option \
 --list $selection_menu )"
 #### 
 #### 
-case "$selection_final" in
+case $selection_final in
 "1") exit ;;
 "gui-principal-menu") $cmd_realpath gui-menu-$second_option ;;
 "gui-info-menu")$cmd_realpath -gui-$second_option firewall-listconceptual ;;
@@ -7454,7 +7454,7 @@ selection_final="$($second_option \
 --list $selection_menu )"
 #### 
 #### 
-case "$selection_final" in
+case $selection_final in
 1) exit ;;
 gui-principal-menu) $cmd_realpath gui-menu-$second_option ;;
 gui-info-menu)$cmd_realpath gui-menu-$second_option firewall-listnumeral ;;
