@@ -890,58 +890,69 @@ esac
 case "$first_option" in
 "cli")
 favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ;
-first_option="cli" ;;
+first_option="cli"
+;;
 "gui")
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
-first_option="gui" ;;
+first_option="gui"
+;;
 "cli-menu")
 favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ;
-first_option="cli-menu" ;;
+first_option="cli-menu"
+;;
 "cli-dialog")
 favorite_realpath_textdialog="$command_dialog" ; 
 favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ;
-first_option="cli" ;;
+first_option="cli"
+;;
 "cli-whiptail")
 favorite_realpath_textdialog="$command_whiptail" ;
 favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ; 
-first_option="cli" ;;
+first_option="cli"
+;;
 "gui-menu")
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
 first_option="gui-menu" 
-# second_option="$favorite_basename_graphicalldialog" 
 ;;
 "gui-shell")
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
-first_option="gui-shell-$favorite_basename_graphicalldialog" 
-second_option="$favorite_basename_graphicalldialog" ;;
+first_option="gui-shell-$favorite_basename_graphicalldialog"
+;;
 "gui-zenity")
 favorite_realpath_graphicalldialog="$command_zenity" ; 
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ; 
-first_option="gui" ;;
+first_option="gui"
+;;
 "gui-yad")
 favorite_realpath_graphicalldialog="$command_yad" ; 
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ; 
-first_option="gui" ;;
+first_option="gui"
+;;
 "cli-menu-dialog")
 favorite_realpath_textdialog="$command_dialog" ; 
 favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ; 
 first_option="cli-menu" 
-second_option="$favorite_basename_textdialog" ;;
+second_option="$favorite_basename_textdialog"
+;;
 "cli-menu-whiptail")
 favorite_realpath_textdialog="$command_whiptail" ;
 favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ; 
 first_option="cli-menu" 
-second_option="$favorite_basename_textdialog" ;;
+second_option="$favorite_basename_textdialog"
+;;
 "gui-menu-zenity")
 favorite_realpath_graphicalldialog="$command_zenity" ;
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
 first_option="gui-menu" 
-second_option="$favorite_basename_graphicalldialog" ;;
+second_option="$favorite_basename_graphicalldialog"
+;;
 "gui-menu-yad")
 favorite_realpath_graphicalldialog="$command_yad" ; 
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
 first_option="gui-menu" 
-second_option="$favorite_basename_graphicalldialog" ;;
+second_option="$favorite_basename_graphicalldialog"
+;;
+####
 esac
 ####
 ####
