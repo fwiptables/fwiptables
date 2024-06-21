@@ -6138,8 +6138,8 @@ favorite_realpath_graphicalldialog="$command_zenity"
 #### cd $default_directory_custom
 ####
 ####
-menugtk="$($command_zenity --entry --forms \
---title=list:options \
+menugtk="$($command_zenity --entry \
+--title=Example:options \
 --width=$config_graphicall_width --height=$config_graphicall_height )"
 ####
 ####
@@ -6291,8 +6291,8 @@ favorite_realpath_graphicalldialog="$command_yad"
 #### cd $default_directory_custom
 ####
 ####
-menugtk="$($command_yad --entry --forms \
---title=list:options \
+menugtk="$($command_yad --entry \
+--title=Example:options \
 --width=$config_graphicall_width --height=$config_graphicall_height )"
 ####
 ####
