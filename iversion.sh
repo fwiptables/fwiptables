@@ -7265,8 +7265,9 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu" ] ;
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" != "zenity" ] AND [ "$second_option" != "yad" ]; then 
-second_option="$favorite_basename_graphicalldialog" ; fi
+if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ];
+then echo $second_option ;
+else second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 ####
 gui_menu="Firewall-control|Firewall-listconceptual|\
@@ -7278,23 +7279,22 @@ selection_final="$($second_option \
 --column=$first_option \
 --text=$first_option \
 --title=Gui-menu-With-$cmd_basename-$cmd_version \
---list $selection_menu )"
+--list $selection_menu)"
 #### 
 ####
-echo $second_option
 case "$selection_final" in
-"1") exit ;;
-"Firewall-control")
+1) exit ;;
+Firewall-control)
 $cmd_realpath gui-menu-firewall-control $second_option ; exit ;;
-"Firewall-listconceptual")
+Firewall-listconceptual)
 $cmd_realpath gui-menu-firewall-listconceptual $second_option ; exit ;;
-"Firewall-listnumeral")
+Firewall-listnumeral)
 $cmd_realpath gui-menu-firewall-listnumeral $second_option ; exit ;;
-"Firewall-wallcustom")
+Firewall-wallcustom)
 $cmd_realpath gui-menu-firewall-wallcustom $second_option ; exit ;;
-"Firewall-wallsystem")
+Firewall-wallsystem)
 $cmd_realpath gui-menu-firewall-wallsystem $second_option ; exit ;;
-"Options-easy")
+Options-easy)
 $cmd_realpath gui-menu-options-easy $second_option ; exit ;;
 esac
 ####
@@ -7310,8 +7310,9 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-control" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" != "zenity" ] && [ "$second_option" != "yad" ]; then 
-second_option="$favorite_basename_graphicalldialog" ; fi
+if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ];
+then echo $second_option ;
+else second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -7327,7 +7328,7 @@ selection_final="$($second_option \
 --list $selection_menu)"
 #### 
 #### 
-case $selection_final in
+case "$selection_final" in
 "1") exit ;;
 "gui-principal-menu") $cmd_realpath gui-menu-$second_option  ;;
 "gui-info-menu")$cmd_realpath gui-$second_option firewall-control ;;
