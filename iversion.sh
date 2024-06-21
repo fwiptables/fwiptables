@@ -7327,9 +7327,9 @@ case $selection_final in
 $cmd_realpath gui-$second_option list4;;
 "continue")$cmd_realpath gui-$second_option continue ;
 $cmd_realpath gui-$second_option list4;;
-"reset")$cmd_realpath gui--gui-$second_option reset ;
+"reset")$cmd_realpath gui-$second_option reset ;
 $cmd_realpath gui-$second_option list4 ;;
-"names")$cmd_realpath -gui-$second_option names ;;
+"names")$cmd_realpath gui-$second_option names ;;
 "show")archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
