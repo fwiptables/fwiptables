@@ -6138,10 +6138,9 @@ favorite_realpath_graphicalldialog="$command_zenity"
 #### cd $default_directory_custom
 ####
 ####
-menugtk="$($command_zenity --entry \
---title=Gui-Shell-$cmd_realpath-$cmd_version \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=type-one-option-for-$cmd_basename-options-list:options)"
+menugtk="$($command_zenity --entry --forms \
+--title=list:options \
+--width=$config_graphicall_width --height=$config_graphicall_height )"
 ####
 ####
 #### english: manage some configs    ####
@@ -6292,10 +6291,9 @@ favorite_realpath_graphicalldialog="$command_yad"
 #### cd $default_directory_custom
 ####
 ####
-menugtk="$($command_yad --entry \
---title=Gui Shell-$cmd_realpath-$cmd_version \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=type-one-option-for-$cmd_basename,options-list:options)"
+menugtk="$($command_yad --entry --forms \
+--title=list:options \
+--width=$config_graphicall_width --height=$config_graphicall_height )"
 ####
 ####
 #### english: manage some configs    ####
