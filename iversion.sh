@@ -912,8 +912,9 @@ first_option="cli"
 ;;
 "gui-menu")
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
-first_option="gui-menu" 
-;;
+first_option="gui-menu-$favorite_basename_graphicalldialog"
+second_option="$favorite_basename_graphicalldialog"
+;;;;
 "gui-shell")
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
 first_option="gui-shell-$favorite_basename_graphicalldialog"
