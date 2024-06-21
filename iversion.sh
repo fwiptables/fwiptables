@@ -5267,7 +5267,7 @@ $cmd_realpath names ; echo "$text_md [ info ] \
 echo "$title_md [ info ] [ loading firewall control $second_option ]"
 ####
 ####
-if [ -f $default_directory_control/$second_option-nft-ipv4 ] AND \
+if [ -f $default_directory_control/$second_option-nft-ipv4 ] && \
 [ -f $default_directory_control/$second_option-legacy-ipv4 ] ; then 
 $cmd_realpath eraserules &> /dev/null
 if [ -f "$default_directory_control/$second_option-ebtables" ]; then
@@ -5854,7 +5854,7 @@ exit; fi
 #### spanish: con tercera opcion
 ####
 ####
-if [ "$first_option" == "gui" ] AND [ "$third_option" != "$NULL" ]
+if [ "$first_option" == "gui" ] && [ "$third_option" != "$NULL" ]
 then echo $head_waiting_gui
 ####
 ####
@@ -6003,7 +6003,7 @@ exit; fi
 ##########    spanish: -gui: con segunda opcion    ##########
 ####
 ####
-if [ "$first_option" == "gui" ] AND [ "$second_option" != "$NULL" ]
+if [ "$first_option" == "gui" ] && [ "$second_option" != "$NULL" ]
 then echo $head_waiting_gui
 ####
 ####
