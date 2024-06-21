@@ -1496,10 +1496,7 @@ exit; fi
 if [ "$first_option" == "preferences-regen" ] ; then
 echo "$title_md [ $first_option ] [ $cmd_realpath preferences-regen ] \
 [ preferences-regen md ] "
-rm $file_default_preferences
-echo "$title_md [ _ok_ ] [ $cmd_realpath deleted old configs ]"
-file $cmd_realpath
-$cmd_realpath preferences-example | $command_grep echo &> $file_default_preferences
+$cmd_realpath preferences-example | $command_grep '=' &> $file_default_preferences
 echo "$title_md [ _ok_ ] [ Regenerated ] [ $cmd_realpath values for default ]"
 echo "$title_md [ _ok_ ] [ Regenerated ] [ $file_default_preferences ]"
 exit; fi
@@ -1597,10 +1594,9 @@ $command_grep -iv 127.0.0.1 | $command_sed 's/inet//g' | \
 $command_cut -d "/" -f 1 ; fi
 echo
 echo "$title_md [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
-if [ "$command_curl" == "$NULL" ]
-then echo "$title_md [ info ] [ install curl command ]" ; else
-public_ip4="$($command_timeout -s SIGINT -v 9 $command_curl \
---noproxy '*' -k -s -4 $serverip_discover_ipv4 -w '\n'| head -1)"
+if [ "$command_curl" == "$NULL" ]; then
+echo "$title_md [ info ] [ install curl command ]" ;
+else public_ip4="$($command_curl -k -s -4 $serverip_discover_ipv4 -w '\n'| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ]
 then echo "fail: public ip hidden for dns server" ;
 else echo "$text_md $public_ip4"; fi; fi
