@@ -100,7 +100,7 @@ echo ; fi
 cmd_realpath="$(realpath $0)"                # full routename
 cmd_basename="$(basename $0)"                # only filename
 #### number version
-cmd_dev="-rc3"                               # -dev version or null final version
+cmd_dev="-rc4"                               # -dev version or null final version
 cmd_mayor="13"                               # number mayor version
 cmd_minor="04"                               # number minor version
 cmd_year="2024"                              # number year version
@@ -7266,7 +7266,7 @@ exit; fi
 if [ "$first_option" == "gui-menu" ] ;
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ];
-then echo $second_option ;
+then echo "This gui used actually in $first_option is $second_option" ;
 else second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 ####
@@ -7285,17 +7285,17 @@ selection_final="$($second_option \
 case "$selection_final" in
 1) exit ;;
 Firewall-control)
-$cmd_realpath gui-menu-firewall-control $second_option ; exit ;;
+$cmd_realpath gui-menu-firewall-control $second_option ;;
 Firewall-listconceptual)
-$cmd_realpath gui-menu-firewall-listconceptual $second_option ; exit ;;
+$cmd_realpath gui-menu-firewall-listconceptual $second_option ;;
 Firewall-listnumeral)
-$cmd_realpath gui-menu-firewall-listnumeral $second_option ; exit ;;
+$cmd_realpath gui-menu-firewall-listnumeral $second_option ;;
 Firewall-wallcustom)
-$cmd_realpath gui-menu-firewall-wallcustom $second_option ; exit ;;
+$cmd_realpath gui-menu-firewall-wallcustom $second_option ;;
 Firewall-wallsystem)
-$cmd_realpath gui-menu-firewall-wallsystem $second_option ; exit ;;
+$cmd_realpath gui-menu-firewall-wallsystem $second_option ;;
 Options-easy)
-$cmd_realpath gui-menu-options-easy $second_option ; exit ;;
+$cmd_realpath gui-menu-options-easy $second_option ;;
 esac
 ####
 ####
@@ -7311,8 +7311,8 @@ exit; fi
 if   [ "$first_option" == "gui-menu-firewall-control" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ];
-then echo $second_option ;
-else second_option="$favorite_basename_graphicalldialog" ; fi
+then echo "" ; else second_option="$favorite_basename_graphicalldialog" ; fi
+echo "the gui used actually in $first_option is $second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -7329,43 +7329,43 @@ selection_final="$($second_option \
 #### 
 #### 
 case "$selection_final" in
-"1") exit ;;
-"gui-principal-menu") $cmd_realpath gui-menu-$second_option  ;;
-"gui-info-menu")$cmd_realpath gui-$second_option firewall-control ;;
-"stop")$cmd_realpath gui-$second_option stop ;
-$cmd_realpath gui-$second_option list4;;
-"continue")$cmd_realpath gui-$second_option continue ;
-$cmd_realpath gui-$second_option list4;;
-"reset")$cmd_realpath gui-$second_option reset ;
+1) exit ;;
+gui-principal-menu) $cmd_realpath gui-menu-$second_option  ;;
+gui-info-menu)$cmd_realpath gui-$second_option firewall-control ;;
+stop)$cmd_realpath gui-$second_option stop ;
 $cmd_realpath gui-$second_option list4 ;;
-"names")$cmd_realpath gui-$second_option names ;;
-"show")archivo="$($favorite_basename_graphicalldialog --entry \
+continue)$cmd_realpath gui-$second_option continue ;
+$cmd_realpath gui-$second_option list4 ;;
+reset)$cmd_realpath gui-$second_option reset ;
+$cmd_realpath gui-$second_option list4 ;;
+names)$cmd_realpath gui-$second_option names ;;
+show)archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-show)" 
 $cmd_realpath gui-$second_option $archivo ;;
-"save")archivo="$($second_option--entry \
+save)archivo="$($second_option--entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-save)" 
 $cmd_realpath gui-$second_option save $archivo ;;
-"load")archivo="$($favorite_realpath_graphicalldialog  --entry \
+load)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-load)" 
 $cmd_realpath gui-$second_option load $archivo ;
 $cmd_realpath gui-$second_option list4 ;;
-"actual")$cmd_realpath gui-$second_option actual ;;
-"eraserules4")$cmd_realpath gui-$second_option eraserules4 ;;
-"eraserules6")$cmd_realpath gui-$second_option eraserules6 ;;
-"eraserules")$cmd_realpath gui-$second_option eraserules ;;
-"wizard-full")$cmd_realpath gui-$second_option wizard-full ;
+actual)$cmd_realpath gui-$second_option actual ;;
+eraserules4)$cmd_realpath gui-$second_option eraserules4 ;;
+eraserules6)$cmd_realpath gui-$second_option eraserules6 ;;
+eraserules)$cmd_realpath gui-$second_option eraserules ;;
+wizard-full)$cmd_realpath gui-$second_option wizard-full ;
 $cmd_realpath gui-$second_option list4 ;;
-"wizard-mini")$cmd_realpath gui-$second_option wizard-mini ;
+wizard-mini)$cmd_realpath gui-$second_option wizard-mini ;
 $cmd_realpath gui-$second_option list4 ;;
-"off-line")$cmd_realpath gui-$second_option off-line ;
+off-line)$cmd_realpath gui-$second_option off-line ;
 $cmd_realpath gui-$second_option list4 ;;
-"all-permisive")$cmd_realpath gui-$second_option all-permisive ;
+all-permisive)$cmd_realpath gui-$second_option all-permisive ;
 $cmd_realpath gui-$second_option list4 ;;
 esac
 ####
