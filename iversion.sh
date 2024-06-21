@@ -7318,7 +7318,7 @@ else second_option="$favorite_basename_graphicalldialog" ; fi
 gui_menu="gui-principal-menu|gui-info-menu|\
 stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|\
-off-line|all-permisive|wizard-mini|wizard-full"
+off-line|all-permisive|wizard-mini|wizard-full|"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($second_option \
 --width=$config_graphicall_width --height=$config_graphicall_height \
