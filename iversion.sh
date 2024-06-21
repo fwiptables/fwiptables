@@ -909,7 +909,8 @@ first_option="cli" ;;
 "gui-menu")
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
 first_option="gui-menu" 
-second_option="$favorite_basename_graphicalldialog" ;;
+# second_option="$favorite_basename_graphicalldialog" 
+;;
 "gui-shell")
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
 first_option="gui-shell-$favorite_basename_graphicalldialog" 
@@ -7272,7 +7273,7 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu" ] ;
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" != "zenity" ] || [ "$second_option" != "yad" ]; then 
+if [ "$second_option" != "zenity" ] AND [ "$second_option" != "yad" ]; then 
 second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 ####
@@ -7316,7 +7317,7 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-control" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" != "zenity" ] || [ "$second_option" != "yad" ]; then 
+if [ "$second_option" != "zenity" ] AND [ "$second_option" != "yad" ]; then 
 second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 ####
