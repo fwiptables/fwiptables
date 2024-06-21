@@ -7322,42 +7322,42 @@ selection_final="$($second_option \
 case $selection_final in
 "1") exit ;;
 "gui-principal-menu") $cmd_realpath gui-menu-$second_option  ;;
-"gui-info-menu")$cmd_realpath -gui-$second_option firewall-control ;;
-"stop")$cmd_realpath -gui-$second_option stop ;
-$cmd_realpath -gui-$second_option list4;;
-"continue")$cmd_realpath -gui-$second_option continue ;
-$cmd_realpath -gui-$second_option list4;;
-"reset")$cmd_realpath -gui--gui-$second_option reset ;
-$cmd_realpath -gui--gui-$second_option list4 ;;
+"gui-info-menu")$cmd_realpath gui-$second_option firewall-control ;;
+"stop")$cmd_realpath gui-$second_option stop ;
+$cmd_realpath gui-$second_option list4;;
+"continue")$cmd_realpath gui-$second_option continue ;
+$cmd_realpath gui-$second_option list4;;
+"reset")$cmd_realpath gui--gui-$second_option reset ;
+$cmd_realpath gui-$second_option list4 ;;
 "names")$cmd_realpath -gui-$second_option names ;;
 "show")archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-show)" 
-$cmd_realpath -gui-$second_option $archivo ;;
+$cmd_realpath gui-$second_option $archivo ;;
 "save")archivo="$($second_option--entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-save)" 
-$cmd_realpath -gui-$second_option save $archivo ;;
+$cmd_realpath gui-$second_option save $archivo ;;
 "load")archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-load)" 
-$cmd_realpath -gui-gui-$second_option load $archivo ;
-$cmd_realpath -gui-$second_option list4 ;;
+$cmd_realpath gui-$second_option load $archivo ;
+$cmd_realpath gui-$second_option list4 ;;
 "actual")$cmd_realpath -gui--gui-$second_option actual ;;
 "eraserules4")$cmd_realpath -gui--gui-$second_option eraserules4 ;;
 "eraserules6")$cmd_realpath -gui-$second_option eraserules6 ;;
 "eraserules")$cmd_realpath -gui-$second_option eraserules ;;
 "wizard-full")$cmd_realpath -gui-$second_option wizard-full ;
-$cmd_realpath -gui-$second_option list4 ;;
+$cmd_realpath gui-$second_option list4 ;;
 "wizard-mini")$cmd_realpath -gui-$second_option wizard-mini ;
-$cmd_realpath -gui-$second_option list4 ;;
+$cmd_realpath gui-$second_option list4 ;;
 "off-line")$cmd_realpath -gui-$second_option off-line ;
-$cmd_realpath -gui-$second_option list4 ;;
+$cmd_realpath gui-$second_option list4 ;;
 "all-permisive")$cmd_realpath -gui-$second_option all-permisive ;
-$cmd_realpath -gui-$second_option list4 ;;
+$cmd_realpath gui-$second_option list4 ;;
 esac
 ####
 ####
