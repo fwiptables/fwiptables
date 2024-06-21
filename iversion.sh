@@ -100,7 +100,7 @@ echo ; fi
 cmd_realpath="$(realpath $0)"                # full routename
 cmd_basename="$(basename $0)"                # only filename
 #### number version
-cmd_dev="-rc2"                               # -dev version or null final version
+cmd_dev="-rc3"                               # -dev version or null final version
 cmd_mayor="13"                               # number mayor version
 cmd_minor="04"                               # number minor version
 cmd_year="2024"                              # number year version
@@ -912,12 +912,11 @@ first_option="cli"
 ;;
 "gui-menu")
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
-first_option="gui-menu-$favorite_basename_graphicalldialog"
-second_option="$favorite_basename_graphicalldialog"
-;;;;
+$cmd_realpath gui-menu-$favorite_basename_graphicalldialog; exit
+;;
 "gui-shell")
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
-first_option="gui-shell-$favorite_basename_graphicalldialog"
+$cmd_realpath gui-shell-$favorite_basename_graphicalldialog; exit
 ;;
 "gui-zenity")
 favorite_realpath_graphicalldialog="$command_zenity" ; 
