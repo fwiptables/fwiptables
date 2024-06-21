@@ -6106,7 +6106,7 @@ exit; fi
 ##########    spanish: -gui: sin mas opcion          ##########
 ####
 ####
-if [ "$first_option" == "gui" ] AND [ "$second_option" == "$NULL" ]
+if [ "$first_option" == "gui" ] && [ "$second_option" == "$NULL" ]
 then echo $head_waiting_gui
 ####
 ####
@@ -7259,7 +7259,7 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu" ] ;
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" != "zenity" ] AND [ "$second_option" != "yad" ]; then 
+if [ "$second_option" != "zenity" ] && [ "$second_option" != "yad" ]; then 
 second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 ####
@@ -7304,7 +7304,7 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-control" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" != "zenity" ] AND [ "$second_option" != "yad" ]; then 
+if [ "$second_option" != "zenity" ] && [ "$second_option" != "yad" ]; then 
 second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 ####
@@ -7374,7 +7374,7 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-listconceptual" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" != "zenity" ] AND [ "$second_option" != "yad" ]; then 
+if [ "$second_option" != "zenity" ] && [ "$second_option" != "yad" ]; then 
 second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 ####
@@ -7424,7 +7424,7 @@ exit; fi
 ####
 if   [ "$first_option" == "gui-menu-firewall-listnumeral" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" != "zenity" ] AND [ "$second_option" != "yad" ]; then 
+if [ "$second_option" != "zenity" ] && [ "$second_option" != "yad" ]; then 
 second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 ####
@@ -7475,7 +7475,7 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu-firewall-wallcustom" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" != "zenity" ] AND [ "$second_option" != "yad" ]; then 
+if [ "$second_option" != "zenity" ] && [ "$second_option" != "yad" ]; then 
 second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -7560,7 +7560,7 @@ exit; fi
 ####  
 if [ "$first_option" == "gui-menu-firewall-wallsystem" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" != "zenity" ] AND [ "$second_option" != "yad" ]; then 
+if [ "$second_option" != "zenity" ] && [ "$second_option" != "yad" ]; then 
 second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 ####
@@ -7673,7 +7673,7 @@ exit; fi
 ####
 if [ "$first_option" == "gui-menu-options-easy" ]
 then echo $head_waiting_gui ; echo $head_give_cover
-if [ "$second_option" != "zenity" ] AND [ "$second_option" != "yad" ]; then 
+if [ "$second_option" != "zenity" ] && [ "$second_option" != "yad" ]; then 
 second_option="$favorite_basename_graphicalldialog" ; fi
 ####
 ####
