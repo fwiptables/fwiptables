@@ -7290,7 +7290,7 @@ echo "$title_md option selected $final" ;
 ####
 case $final in
 1) exit ;;
-Firewall-control)
+Firewall-control*)
 $cmd_realpath gui-menu-firewall-control $second_option ;;
 Firewall-listconceptual)
 $cmd_realpath gui-menu-firewall-listconceptual $second_option ;;
