@@ -1496,7 +1496,7 @@ exit; fi
 if [ "$first_option" == "preferences-regen" ] ; then
 echo "$title_md [ $first_option ] [ $cmd_realpath preferences-regen ] \
 [ preferences-regen md ] "
-$cmd_realpath preferences-example | $command_grep '=' &> $file_default_preferences
+$cmd_realpath preferences-example | $command_grep '=|###' &> $file_default_preferences
 echo "$title_md [ _ok_ ] [ Regenerated ] [ $cmd_realpath values for default ]"
 echo "$title_md [ _ok_ ] [ Regenerated ] [ $file_default_preferences ]"
 exit; fi
