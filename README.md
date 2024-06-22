@@ -30,29 +30,29 @@
 ###  fwiptables install.                     
   
     su root TYPE: su root                       
-    put bit TYPE: chmod 755 ./fwiptables-version-13-03-bash.sh     
-    install TYPE: ./fwiptables-version-13-03-bash.sh install       
+    put bit TYPE: chmod 755 ./fwiptables-version-13-04-bash.sh     
+    install TYPE: ./fwiptables-version-13-04-bash.sh install       
   
 ###  fwiptables uninstall.                   
   
     uninstall TYPE: fwiptables uninstall  
   
-###  [ version ] [ Show version ] [ version md ]            
-   [ info ] [ Somes details in fwiptables-version-13-03-bash.sh version 13-03 ]  
-   [ info ] [ Name program       ] /root/f-iptables-version/fwiptables-version-13-03-bash.sh                 
-   [ info ] [ Number Version     ] Mayor 13 Minor 03    
-   [ info ] [ Relased Version    ] Year 2024 Month 06      
-   [ info ] [ Short description  ] fwiptables, FireWall With iptables       
-   [ info ] [ Long description   ] fwiptables, One Mini Script in one-file wizard        
+###  [ version ] [ Show version ] [ version md ]          
+   [ info ] [ Somes details in fwiptables-version-13-04-bash.sh ]                 
+   [ info ] [ Name program       ] /root/f-iptables-version/fwiptables-version-13-04-bash.sh               
+   [ info ] [ Number Version     ] 13-04                
+   [ info ] [ Released Version   ] 2024-06-22               
+   [ info ] [ Short description  ] FireWall With iptables       
+   [ info ] [ Long description   ] One Mini Script in one-file wizard        
    [ info ] [ Developer Actual   ] Francisco Garcia              
    [ info ] [ Developer Contact  ] fwiptables@gmx.com                
    [ info ] [ License program    ] GPL v2, LGPL v2, BSD                
    [ info ] [ Data  Directory    ] /root/.config/fwiptables    
    [ info ] [ Cache Directory    ] /root/.cache/fwiptables   
    [ info ] [ File  Preferences  ]      
-   /root/.config/fwiptables/fwiptables-preferences/default-preferences-13-03        
+   /root/.config/fwiptables/fwiptables-preferences/default-preferences-13-04            
    [ info ] [ File  Format       ]      
-   /root/f-iptables-version/fwiptables-version-13-03-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable   
+   /root/f-iptables-version/fwiptables-version-13-04-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable       
   
 ###  [ compile ] [  Optionally compile from bash script ] [ compile md]         
    [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling...    
@@ -60,9 +60,45 @@
    [ step ] [ 1 ] Download and install obash from oficial web internet     
    [ step ] [ 3 ] Run: obash -s -c -o ./destination.bin ./source-bash.sh   
   
+###  [ options-examples ] [ List examples ] [ examples md ]
+### 
+###  [ Several examples without optional otuput ]
+### 
+###        [ with optional output ] [ Example Description ]
+### 
+###  | depends                  | /root/f-iptables-version/fwiptables-version-13-04-bash.sh depends
+###  | List firewall saved      | /root/f-iptables-version/fwiptables-version-13-04-bash.sh names
+###  | List configs saved       | /root/f-iptables-version/fwiptables-version-13-04-bash.sh all-custom
+###  | Get info speed ipv4      | /root/f-iptables-version/fwiptables-version-13-04-bash.sh speed-ip4
+###  | Show listen sockets      | /root/f-iptables-version/fwiptables-version-13-04-bash.sh sockets
+###  | List last options        | /root/f-iptables-version/fwiptables-version-13-04-bash.sh autolog
+###  | modify default variables | /root/f-iptables-version/fwiptables-version-13-04-bash.sh preferences-modify
+### 
+###  [ Several examples with optional output ]
+### 
+###        [ with optional output ] [ Example Description ]
+### 
+###  | Example with info        | fwiptables-version-13-04-bash.sh txt info             
+###  | Example with expert      | fwiptables-version-13-04-bash.sh txt expert           
+###  | Example with code ip4    | fwiptables-version-13-04-bash.sh cli code ip4         
+###  | Example with list rules  | fwiptables-version-13-04-bash.sh cli lsn4             
+###  | Example with nodes       | fwiptables-version-13-04-bash.sh gui nodes            
+###  | Example with web browser | fwiptables-version-13-04-bash.sh gui web kernel.org   
+### 
+###  | Launch client web firewall in silent   | /root/f-iptables-version/fwiptables-version-13-04-bash.sh silent client-web
+###  | List iptables rules with output txt    | /root/f-iptables-version/fwiptables-version-13-04-bash.sh txt ls4
+###  | List firewall with output cli whiptail | /root/f-iptables-version/fwiptables-version-13-04-bash.sh cli-wiptail names
+###  | List sockets ip with output gui yad    | /root/f-iptables-version/fwiptables-version-13-04-bash.sh gui-yad sockets
+###  | All options in text menu               | /root/f-iptables-version/fwiptables-version-13-04-bash.sh cli-menu-dialog
+###  | All options in window menu             | /root/f-iptables-version/fwiptables-version-13-04-bash.sh gui-menu-yad
+###  | All options in window roll             | /root/f-iptables-version/fwiptables-version-13-04-bash.sh gui-roll-zenity
+###  | All options in window shell            | /root/f-iptables-version/fwiptables-version-13-04-bash.sh gui-shell-yad
+  
+### 
+### 
 ###  [ options ] [ List general options for fwiptables ] [ list-options md ]
   
-###  fwiptables-version-13-03-bash.sh [optional-output] first_option [second_option]  
+###  fwiptables-version-13-04-bash.sh [optional-output] first_option [second_option]  
 ###   optional-output                                                     
    [ t|txt n|narrow c|cli g|gui l|log p|pdf s|silent ]                   
    [ cli-dialog cli-whiptail gui-zenity gui-yad ]                        
@@ -98,6 +134,8 @@
    options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date        
    free sockets nodes ip-forward depends code treeconf treecache         
    cleancache notes variables uninstall install version examples         
+   license-gpl license-lgpl license-bsd                                  
 ###   expert (expert commands work only without optional output)          
-###   license-gpl license-lgpl license-bsd                                
-###  ###  fwiptables, One Mini Script in one-file wizard ###  ### 
+###        | About Program: fwiptables-version-13-04-bash.sh                     
+###        | Version: 13-04 Released: 2024-06-22    
+###        | Description: One Mini Script in one-file wizard                
