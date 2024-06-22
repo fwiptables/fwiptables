@@ -7285,7 +7285,7 @@ selection_final="$($second_option \
 if [ "$second_option" == "yad" ]; then
 final="$(echo $selection_final | sed 's/|/ /g')"
 else final="$selection_final" ; fi
-echo "$title_md option selected: $final" ;
+echo ; echo "$title_md option selected: $final" ; echo ;
 #### 
 ####
 case $final in
@@ -7338,7 +7338,7 @@ echo "$title_md The option selected:  $final" ;
 if [ "$second_option" == "yad" ]; then
 final="$(echo $selection_final | sed 's/|/ /g')"
 else final="$selection_final" ; fi
-echo "$title_md option selected $final" ;
+echo ; echo "$title_md option selected: $final" ; echo ;
 #### 
 ####
 case "$final" in
@@ -7410,7 +7410,12 @@ selection_final="$($second_option \
 --text=$first_option \
 --title=Gui-menu-With-$cmd_basename-$cmd_version \
 --list $selection_menu )"
-echo "$title_md The option selected:  $final" ;
+####
+####
+if [ "$second_option" == "yad" ]; then
+final="$(echo $selection_final | sed 's/|/ /g')"
+else final="$selection_final" ; fi
+echo ; echo "$title_md option selected: $final" ; echo ;
 #### 
 #### 
 case "$selection_final" in
@@ -7463,7 +7468,12 @@ selection_final="$($second_option \
 --text=$first_option \
 --title=Gui-menu-With-$cmd_realpath-$cmd_version \
 --list $selection_menu )"
-echo "$title_md The option selected:  $final" ;
+####
+####
+if [ "$second_option" == "yad" ]; then
+final="$(echo $selection_final | sed 's/|/ /g')"
+else final="$selection_final" ; fi
+echo ; echo "$title_md option selected: $final" ; echo ;
 #### 
 #### 
 case "$selection_final" in
@@ -7517,7 +7527,12 @@ selection_final="$($second_option \
 --text=$first_option \
 --title=Gui-menu-With-$cmd_basename-$cmd_version \
 --list $selection_menu )"
-echo "$title_md The option selected:  $final" ;
+####
+####
+if [ "$second_option" == "yad" ]; then
+final="$(echo $selection_final | sed 's/|/ /g')"
+else final="$selection_final" ; fi
+echo ; echo "$title_md option selected: $final" ; echo ;
 #### 
 #### 
 case "$selection_final" in
@@ -7609,7 +7624,12 @@ selection_final="$($second_option \
 --text=$first_option \
 --title=Gui-menu-With-$cmd_basename-$cmd_version \
 --list $selection_menu )"
-echo "$title_md The option selected:  $final" ;
+####
+####
+if [ "$second_option" == "yad" ]; then
+final="$(echo $selection_final | sed 's/|/ /g')"
+else final="$selection_final" ; fi
+echo ; echo "$title_md option selected: $final" ; echo ;
 #### 
 #### 
 case "$selection_final" in
@@ -7719,7 +7739,12 @@ selection_final="$($second_option \
 --text=$first_option \
 --title=Gui-menu-With-$cmd_realpath-$cmd_version \
 --list $selection_menu )"
-echo "$title_md The option selected:  $final" ;
+####
+####
+if [ "$second_option" == "yad" ]; then
+final="$(echo $selection_final | sed 's/|/ /g')"
+else final="$selection_final" ; fi
+echo ; echo "$title_md option selected: $final" ; echo ;
 #### 
 ####
 case "$selection_final" in
