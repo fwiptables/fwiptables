@@ -100,7 +100,7 @@ echo ; fi
 cmd_realpath="$(realpath $0)"                # full routename
 cmd_basename="$(basename $0)"                # only filename
 #### number version
-cmd_dev="-rc2"                               # -rc1 version or null value
+cmd_dev="-rc2"                               # -rcX version or null value
 cmd_mayor="13"                               # number mayor version
 cmd_minor="05"                               # number minor version
 cmd_year="2024"                              # number year version
@@ -1269,6 +1269,38 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-cpufreq-info:
+##########    english: expert-configs-save: configurations backups in actual folder    ##########
+##########    spanish: expert-configs-save: copia de configuraciones en carpeta actual ##########
+#### :rutina-inicial-expert-configs-save:
+####
+####
+if [ "$first_option" == "expert-configs-save" ] ; then
+echo "$title_md [ $first_option ] [ save backups confiurations from choosed filename ]"
+if [ "$command_tar" == "$NULL" ]; then
+echo "$title_md please install tar command"; exit ; fi
+if [ "$second_option" == "$NULL" ]; then
+echo "$title_md please choose the backup file"; exit; fi
+####
+exit; fi
+####
+####
+#### :rutina-final-expert-configs-save:
+##########    english: expert-configs-load: configurations backups in actual folder    ##########
+##########    spanish: expert-configs-load: copia de configuraciones en carpeta actual ##########
+#### :rutina-inicial-expert-configs-load:
+####
+####
+if [ "$first_option" == "expert-configs-load" ] ; then
+echo "$title_md [ $first_option ] [ load backups confiurations from choosed filename ]"
+if [ "$command_tar" == "$NULL" ]; then
+echo "$title_md please install tar command"; exit ; fi
+if [ "$second_option" == "$NULL" ]; then
+echo "$title_md please choose the backup file"; exit; fi
+####
+exit; fi
+####
+####
+#### :rutina-final-expert-configs-load:
 ##########    english: expert-wpa-scan: search essid wireless   ##########
 ##########    spanish: expert-wpa-scan: buscar essid wireless   ##########
 #### :rutina-inicial-expert-wpa-scan:
