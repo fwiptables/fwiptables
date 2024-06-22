@@ -5354,7 +5354,8 @@ echo "$text_md [ info ] [ Use: $cmd_realpath show file-to-show ]" ; exit ;;
 esac
 ####
 ####
-if [ ! -f "$archivofin-nft-ipv4" ]; then  $cmd_realpath names ; exit ; fi
+if [ ! -f "$default_directory_control/$archivofin-nft-ipv4" ];
+then  $cmd_realpath names ; exit ; fi
 ####
 ####
 $command_ls -l $default_directory_control/$archivofin-arptables
