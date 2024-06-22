@@ -344,6 +344,7 @@ command_arp_scan="$(command -v arp-scan)"
 command_arptables="$(command -v arptables)"
 command_bash="$(command -v bash)"
 command_bc="$(command -v bc)"
+command_cpufreq_info="$(command -v cpufreq-info)"
 command_obash="$(command -v obash)"
 command_curl="$(command -v curl)"
 command_cut="$(command -v cut)"
@@ -1241,7 +1242,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "autolog" ] ; then
-echo "$title_md [ $first_option ] [ show "$file_default_autolog" ] "
+echo "$title_md [ $first_option ] [ show $file_default_autolog ] "
 echo "$title_md [ info ] [ last 50 lines from file showed ] [ $file_default_autolog ]"
 if [ ! -f $file_default_autolog ]; then touch $file_default_autolog ; fi
 echo
@@ -1252,6 +1253,20 @@ exit; fi
 ####
 ####
 #### :rutina-final-config-autolog:
+##########    english: expert-cpufreq-info: info cpu frequence                 ##########
+##########    spanish: expert-cpufreq-info: informacion de frecuencia de cpu   ##########
+#### :rutina-inicial-expert-cpufreq-info:
+####
+####
+if [ "$first_option" == "expert-cpufreq-info" ] ; then
+echo "$title_md [ $first_option ] [ show cpu frequence info ]"
+if [ "$command_cpufreq_info" == "$NULL" ]; then
+echo "$title_md please install cpufreq-info"; fi
+$command_cpufreq_info
+exit; fi
+####
+####
+#### :rutina-final-expert-cpufreq-info:
 ##########    english: expert-wpa-scan: search essid wireless   ##########
 ##########    spanish: expert-wpa-scan: buscar essid wireless   ##########
 #### :rutina-inicial-expert-wpa-scan:
@@ -3086,6 +3101,7 @@ echo "$text_md expert-wpa-connect . one nameconfig to connect wifi config"
 echo "$text_md expert-pc-halt . halt computer with halt"
 echo "$text_md expert-pc-shutdown . shutdown computer with shutdown"
 echo "$text_md expert-pc-reboot . reboot computer with reboot"
+echo "$text_md expert-cpufreq-info . show cpu frecuence info"
 echo "$text_md expert-radio-link . listen radio from one link"
 echo "$text_md expert-radio-online . listen online radio from one text-string"
 echo "$text_md expert-project-web . site  downloaded web fwiptables"
