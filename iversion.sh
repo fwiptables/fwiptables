@@ -5352,6 +5352,11 @@ case "$second_option" in
 echo "$text_md [ info ] [ Use: $cmd_realpath show file-to-show ]" ; exit ;;
 *) archivofin=$($command_sed 's/\///g' <<< "$second_option") ;;
 esac
+####
+####
+if [ ! -f "$archivofin-nft-ipv4" ]; then  $cmd_realpath names ; exit ; fi
+####
+####
 $command_ls -l $default_directory_control/$archivofin-arptables
 $command_ls -l $default_directory_control/$archivofin-ebtables
 $command_ls -l $default_directory_control/$archivofin-nft-ipv4
