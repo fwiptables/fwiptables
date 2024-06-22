@@ -3086,9 +3086,9 @@ echo "$text_md | variables . possible variables  "
 echo "$text_md | intro . intro  "  
 echo "$text_md | install . install fwiptables  "  
 echo "$text_md | uninstall . uninstall fwiptables  "  
-echo "$text_md | license-gpl . license  "  
-echo "$text_md | license-lgpl . license  "  
-echo "$text_md | license-bsd . license  "  
+echo "$text_md | license-gpl . license gpl  "  
+echo "$text_md | license-lgpl . license lgpl  "  
+echo "$text_md | license-bsd . license bsd  "  
 echo "$text_md "
 exit; fi
 ####
@@ -3165,9 +3165,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "info-options" ]; then 
-echo "$title_md [ $first_option ]  [ info options for firewall iptables ] [ info-options md]"
-echo "$text_md"
-echo "$title_md           Firewall fwiptables info-options ... $cmd_version"
+echo "$title_md [ $first_option ]  [ info options ] [ info-options md]"
 echo "$text_md"
 $cmd_realpath optional-output
 $cmd_realpath firewall-control
@@ -3176,9 +3174,7 @@ $cmd_realpath firewall-listnumeral
 $cmd_realpath firewall-wallcustom
 $cmd_realpath firewall-wallsystem
 $cmd_realpath options-easy
-echo "$title_md"
-echo "$title_md for expert options: $cmd_realpath expert"
-echo "$title_md"
+$cmd_realpath expert
 exit; fi
 ####
 ####
