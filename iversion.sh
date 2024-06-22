@@ -100,7 +100,7 @@ echo ; fi
 cmd_realpath="$(realpath $0)"                # full routename
 cmd_basename="$(basename $0)"                # only filename
 #### number version
-cmd_dev="-rc3"                               # -rcX version or null value
+cmd_dev=""                                   # -rcX version or null value
 cmd_mayor="13"                               # number mayor version
 cmd_minor="05"                               # number minor version
 cmd_year="2024"                              # number year version
@@ -1276,11 +1276,11 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "expert-configs-save" ] ; then
-echo "$title_md [ $first_option ] [ save backups confiurations from choosed filename ]"
+echo "$title_md [ $first_option ] [ save backups confiurations to choosed filename ]"
 if [ "$command_tar" == "$NULL" ]; then
-echo "$title_md please install tar command"; exit ; fi
+echo "$title_md Please install tar command"; exit ; fi
 if [ "$2" == "$NULL" ]; then
-echo "$title_md please choose the backup file"; exit; fi
+echo "$title_md Please choose the backup file to save"; exit; fi
 ####
 ####
 tar vcf $2.tar -C $directory_data_necesary . || echo "$text_fail bad"
@@ -1299,9 +1299,9 @@ exit; fi
 if [ "$first_option" == "expert-configs-load" ] ; then
 echo "$title_md [ $first_option ] [ load backups confiurations from choosed filename ]"
 if [ "$command_tar" == "$NULL" ]; then
-echo "$title_md please install tar command"; exit ; fi
+echo "$title_md Please install tar command"; exit ; fi
 if [ "$2" == "$NULL" ]; then
-echo "$title_md please choose the backup file"; exit; fi
+echo "$title_md Please choose the backup file to load"; exit; fi
 ####
 ####
 tar vxf $2 -C $directory_data_necesary . || echo "$text_fail bad"
