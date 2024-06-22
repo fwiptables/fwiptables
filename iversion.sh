@@ -3998,7 +3998,7 @@ case $legacycuatro in
 echo "$title_md $text_info [ Without rules xtables ] [ iptables-legacy ] \
 [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] \
+echo "$title_md $text_ok [ With rules xtables ] [ iptables-legacy ] \
 [ $fromrules ] [ listing rules .. ]"
 echo
 $command_iptables_legacy -t filter -v -L -n
@@ -4009,7 +4009,7 @@ case $nftcuatro in
 "$NULL") echo "$title_md $text_info [ Without rules nftables ] \
 [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] \
+echo "$title_md $text_ok [ With rules nftables ] [ iptables-nft ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_iptables_nft -t filter -v -L -n
@@ -4037,7 +4037,7 @@ case $legacycuatro in
 "$NULL") echo "$title_md $text_info [ Without rules xtables ] \
 [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_info [ With rules xtables ] \
+echo "$title_md $text_ok [ With rules xtables ] \
 [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t filter -v -L -n
@@ -4048,7 +4048,7 @@ case $nftcuatro in
 "$NULL") echo "$title_md $text_info [ Without rules nftables ] \
 [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" ;;
 *)
-echo "$title_md $text_info [ With rules nftables ] \
+echo "$title_md $text_ok [ With rules nftables ] \
 [ iptables-nft ] [ $fromrules ]" 
 echo
 $command_iptables_nft -t filter -v -L -n
@@ -4068,12 +4068,12 @@ echo "$title_md [ $first_option ] [ List filter ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip4"
 echo
-echo "$title_md $text_info [ With rules xtables ] \
+echo "$title_md $text_ok [ With rules xtables ] \
 [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t filter -v -L $list_rules_conceptual
 echo
-echo "$title_md $text_info [ With rules nftables ] \
+echo "$title_md $text_ok [ With rules nftables ] \
 [ iptables-nft ] [ $fromrules ]" 
 echo
 $command_iptables_nft -t filter -v -L $list_rules_conceptual
