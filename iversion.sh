@@ -100,13 +100,14 @@ echo ; fi
 cmd_realpath="$(realpath $0)"                # full routename
 cmd_basename="$(basename $0)"                # only filename
 #### number version
-cmd_dev="-rc5"                               # -dev version or null value to final version
+cmd_dev=""                                   # -dev version or null value to final version
 cmd_mayor="13"                               # number mayor version
 cmd_minor="04"                               # number minor version
 cmd_year="2024"                              # number year version
 cmd_month="06"                               # number mouth version
+cmd_day="22"                                 # number day version
 cmd_version="$cmd_mayor-$cmd_minor$cmd_dev"  # final number version
-cmd_released="$cmd_year-$cmd_month"          # final date version
+cmd_released="$cmd_year-$cmd_month-$cmd_day" # final date version
 #### name location
 cmd_file="fwiptables"                        # filename installed
 cmd_directory="/usr/bin"                     # directory installed
@@ -1999,11 +2000,11 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "version" ]; then 
-echo "$title_md [ $first_option ] [ Show version ] [ version md ]                   "
-echo "$text_md [ info ] [ Somes details in $cmd_basename version $cmd_version ]     "
-echo "$text_md [ info ] [ Name program       ] $cmd_realpath                        "
-echo "$text_md [ info ] [ Number Version     ] Mayor $cmd_mayor Minor $cmd_minor $cmd_dev  "
-echo "$text_md [ info ] [ Relased Version    ] Year $cmd_year Month $cmd_month      "
+echo "$title_md [ $first_option ] [ Show version ] [ version md ]          "
+echo "$text_md [ info ] [ Somes details in $cmd_basename ]                 "
+echo "$text_md [ info ] [ Name program       ] $cmd_realpath               "
+echo "$text_md [ info ] [ Number Version     ] $cmd_version                "
+echo "$text_md [ info ] [ Released Version   ] $cmd_released               "
 echo "$text_md [ info ] [ Short description  ] $cmd_shortdescription       "
 echo "$text_md [ info ] [ Long description   ] $cmd_longdescription        "
 echo "$text_md [ info ] [ Developer Actual   ] $cmd_developer              "
@@ -2012,9 +2013,9 @@ echo "$text_md [ info ] [ License program    ] $cmd_license                "
 echo "$text_md [ info ] [ Data  Directory    ] $directory_data_necesary    "
 echo "$text_md [ info ] [ Cache Directory    ] $directory_cache_necesary   "
 echo "$text_md [ info ] [ File  Preferences  ]      "
-echo "$text_md $file_default_preferences        "  
+echo "$text_md $file_default_preferences            "  
 echo "$text_md [ info ] [ File  Format       ]      "
-echo "$text_md $($command_file $cmd_realpath)   "
+echo "$text_md $($command_file $cmd_realpath)       "
 exit ; fi
 ####
 ####
@@ -4747,7 +4748,7 @@ exit; fi
 ####
 if [ "$first_option" == "install" ]; then 
 echo "$title_md [ ok ] \
-| Installing.. $cmd_file | Version: $cmd_version | Released: $cmd_year-$cmd_month |"
+| Installing.. $cmd_file | Version: $cmd_version | Released: $cmd_released |"
 ####
 ####
 ####  english: copy the file to temporal folder and install
