@@ -3798,7 +3798,7 @@ case $legacycuatro in
 "$NULL") echo "$title_md $text_info [ Without rules xtables ] \
 [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] \
+echo "$title_md $text_ok [ With rules xtables ] [ iptables-legacy ] \
 [ $fromrules ] [ listing rules .. ]"
 echo
 $command_iptables_legacy -t filter -v -L $list_rules_conceptual
@@ -3809,7 +3809,7 @@ case $nftcuatro in
 "$NULL") echo "$title_md $text_info [ Without rules nftables ] \
 [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] \
+echo "$title_md $text_ok [ With rules nftables ] [ iptables-nft ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_iptables_nft -t filter -v -L $list_rules_conceptual
@@ -3839,7 +3839,7 @@ case $legacyseis in
 "$NULL") echo "$title_md $text_info [ Without rules xtables ] \
 [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] \
+echo "$title_md $text_ok [ With rules xtables ] [ iptables-legacy ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_ip6tables_legacy -v -L $list_rules_conceptual
@@ -3850,7 +3850,7 @@ case $nftseis in
 "$NULL") echo "$title_md $text_info [ Without rules nftables ] \
 [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] \
+echo "$title_md $text_ok [ With rules nftables ] [ iptables-nft ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_ip6tables_nft -v -L $list_rules_conceptual
@@ -3881,7 +3881,7 @@ case $legacycuatro in
 "$NULL") echo "$title_md $text_info [ Without rules xtables ] \
 [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] \
+echo "$title_md $text_ok [ With rules xtables ] [ iptables-legacy ] \
 [ $fromrules ] [ listing rules .. ]"
 echo
 $command_iptables_legacy -t filter -v -L -n
@@ -3892,7 +3892,7 @@ case $nftcuatro in
 "$NULL") echo "$title_md $text_info [ Without rules nftables ] \
 [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] \
+echo "$title_md $text_ok [ With rules nftables ] [ iptables-nft ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_iptables_nft -t filter -v -L -n
@@ -3920,7 +3920,7 @@ case $legacyseis in
 "$NULL") echo "$title_md $text_info [ Without rules xtables ] \
 [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] \
+echo "$title_md $text_ok [ With rules xtables ] [ iptables-legacy ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_ip6tables_legacy -v -L -n
@@ -3931,7 +3931,7 @@ case $nftseis in
 "$NULL") echo "$title_md $text_info [ Without rules nftables ] \
 [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] \
+echo "$title_md $text_ok [ With rules nftables ] [ iptables-nft ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_ip6tables_nft -v -L -n
