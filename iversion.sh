@@ -7289,18 +7289,18 @@ echo "$title_md option selected $final" ;
 #### 
 ####
 case $final in
-1) exit ;;
+1*) exit ;;
 Firewall-control*)
 $cmd_realpath gui-menu-firewall-control $second_option ;;
-Firewall-listconceptual)
+Firewall-listconceptual*)
 $cmd_realpath gui-menu-firewall-listconceptual $second_option ;;
-Firewall-listnumeral)
+Firewall-listnumeral*)
 $cmd_realpath gui-menu-firewall-listnumeral $second_option ;;
-Firewall-wallcustom)
+Firewall-wallcustom*)
 $cmd_realpath gui-menu-firewall-wallcustom $second_option ;;
-Firewall-wallsystem)
+Firewall-wallsystem*)
 $cmd_realpath gui-menu-firewall-wallsystem $second_option ;;
-Options-easy)
+Options-easy*)
 $cmd_realpath gui-menu-options-easy $second_option ;;
 esac
 ####
@@ -7342,43 +7342,43 @@ echo "$title_md option selected $final" ;
 #### 
 ####
 case "$final" in
-1) exit ;;
-gui-principal-menu) $cmd_realpath gui-menu-$second_option  ;;
-gui-info-menu)$cmd_realpath gui-$second_option firewall-control ;;
-stop)$cmd_realpath gui-$second_option stop ;
+1*) exit ;;
+gui-principal-menu*) $cmd_realpath gui-menu-$second_option  ;;
+gui-info-menu*)$cmd_realpath gui-$second_option firewall-control ;;
+stop*)$cmd_realpath gui-$second_option stop ;
 $cmd_realpath gui-$second_option list4 ;;
-continue)$cmd_realpath gui-$second_option continue ;
+continue*)$cmd_realpath gui-$second_option continue ;
 $cmd_realpath gui-$second_option list4 ;;
-reset)$cmd_realpath gui-$second_option reset ;
+reset*)$cmd_realpath gui-$second_option reset ;
 $cmd_realpath gui-$second_option list4 ;;
-names)$cmd_realpath gui-$second_option names ;;
-show)archivo="$($favorite_basename_graphicalldialog --entry \
+names*)$cmd_realpath gui-$second_option names ;;
+show*)archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-show)" 
 $cmd_realpath gui-$second_option $archivo ;;
-save)archivo="$($second_option--entry \
+save*)archivo="$($second_option--entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-save)" 
 $cmd_realpath gui-$second_option save $archivo ;;
-load)archivo="$($favorite_realpath_graphicalldialog  --entry \
+load*)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-load)" 
 $cmd_realpath gui-$second_option load $archivo ;
 $cmd_realpath gui-$second_option list4 ;;
-actual)$cmd_realpath gui-$second_option actual ;;
-eraserules4)$cmd_realpath gui-$second_option eraserules4 ;;
-eraserules6)$cmd_realpath gui-$second_option eraserules6 ;;
-eraserules)$cmd_realpath gui-$second_option eraserules ;;
-wizard-full)$cmd_realpath gui-$second_option wizard-full ;
+actual*)$cmd_realpath gui-$second_option actual ;;
+eraserules4*)$cmd_realpath gui-$second_option eraserules4 ;;
+eraserules6*)$cmd_realpath gui-$second_option eraserules6 ;;
+eraserules*)$cmd_realpath gui-$second_option eraserules ;;
+wizard-full*)$cmd_realpath gui-$second_option wizard-full ;
 $cmd_realpath gui-$second_option list4 ;;
-wizard-mini)$cmd_realpath gui-$second_option wizard-mini ;
+wizard-mini*)$cmd_realpath gui-$second_option wizard-mini ;
 $cmd_realpath gui-$second_option list4 ;;
-off-line)$cmd_realpath gui-$second_option off-line ;
+off-line*)$cmd_realpath gui-$second_option off-line ;
 $cmd_realpath gui-$second_option list4 ;;
-all-permisive)$cmd_realpath gui-$second_option all-permisive ;
+all-permisive*)$cmd_realpath gui-$second_option all-permisive ;
 $cmd_realpath gui-$second_option list4 ;;
 esac
 ####
@@ -7414,24 +7414,24 @@ echo "$title_md option selected $seleccion_final" ;
 #### 
 #### 
 case "$selection_final" in
-1) exit ;;
-gui-principal-menu) $cmd_realpath gui-menu-$second_option ;;
-gui-info-menu)$cmd_realpath gui-$second_option firewall-listconceptual ;;
-ls4")$cmd_realpath gui-$second_option ls4 ;;
-ls6")$cmd_realpath gui-$second_option ls6 ;;
-list-alltables)$cmd_realpath gui-$second_option list-alltables ;;
-list-filter4)$cmd_realpath gui-$second_option list-filter4 ;;
-list-filter6)$cmd_realpath gui-$second_option list-filter6 ;;
-list-nat4)$cmd_realpath gui-$second_option list-nat4 ;;
-list-nat6)$cmd_realpath gui-$second_option list-nat6 ;;
-list-mangle4)$cmd_realpath gui-$second_option list-mangle4 ;;
-list-mangle6)$cmd_realpath gui-$second_option list-mangle6 ;;
-list-raw4)$cmd_realpath gui-$second_option list-raw4 ;;
-list-raw6)$cmd_realpath gui-$second_option list-raw6 ;;
-list-security4)$cmd_realpath gui-$second_option list-security4 ;;
-list-security6)$cmd_realpath gui-$second_option list-security6 ;;
-list-ebtables)$cmd_realpath gui-$second_option list-ebtables ;;
-list-arptables)$cmd_realpath gui-$second_option list-arptables ;;
+1*) exit ;;
+gui-principal-menu*) $cmd_realpath gui-menu-$second_option ;;
+gui-info-menu*)$cmd_realpath gui-$second_option firewall-listconceptual ;;
+ls4*)$cmd_realpath gui-$second_option ls4 ;;
+ls6*)$cmd_realpath gui-$second_option ls6 ;;
+list-alltables*)$cmd_realpath gui-$second_option list-alltables ;;
+list-filter4*)$cmd_realpath gui-$second_option list-filter4 ;;
+list-filter6*)$cmd_realpath gui-$second_option list-filter6 ;;
+list-nat4*)$cmd_realpath gui-$second_option list-nat4 ;;
+list-nat6*)$cmd_realpath gui-$second_option list-nat6 ;;
+list-mangle4*)$cmd_realpath gui-$second_option list-mangle4 ;;
+list-mangle6*)$cmd_realpath gui-$second_option list-mangle6 ;;
+list-raw4*)$cmd_realpath gui-$second_option list-raw4 ;;
+list-raw6*)$cmd_realpath gui-$second_option list-raw6 ;;
+list-security4*)$cmd_realpath gui-$second_option list-security4 ;;
+list-security6*)$cmd_realpath gui-$second_option list-security6 ;;
+list-ebtables*)$cmd_realpath gui-$second_option list-ebtables ;;
+list-arptables*)$cmd_realpath gui-$second_option list-arptables ;;
 esac
 ####
 ####
@@ -7467,24 +7467,24 @@ echo "$title_md option selected $seleccion_final" ;
 #### 
 #### 
 case "$selection_final" in
-1) exit ;;
-gui-principal-menu) $cmd_realpath gui-menu-$second_option ;;
-gui-info-menu)$cmd_realpath gui-$second_option firewall-listnumeral ;;
-lsn4)$cmd_realpath gui-$second_option lsn4 ;;
-lsn6)$cmd_realpath gui-$second_option lsn6 ;;
-listn-alltables)$cmd_realpath gui-$second_option listn-alltables ;;
-listn-filter4)$cmd_realpath gui-$second_option listn-filter4 ;;
-listn-filter6)$cmd_realpath gui-$second_option listn-filter6 ;;
-listn-nat4)$cmd_realpath gui-$second_option listn-nat4 ;;
-listn-nat6)$cmd_realpath gui-$second_option listn-nat6 ;;
-listn-mangle4)$cmd_realpath gui-$second_option listn-mangle4 ;;
-listn-mangle6)$cmd_realpath gui-$second_option listn-mangle6 ;;
-listn-raw4)$cmd_realpath gui-$second_option listn-raw4 ;;
-listn-raw6)$cmd_realpath gui-$second_option listn-raw6 ;;
-listn-security4)$cmd_realpath gui-$second_option listn-security4 ;;
-listn-security6)$cmd_realpath gui-$second_option listn-security6 ;;
-list-ebtables)$cmd_realpath gui-$second_option list-ebtables ;;
-list-arptables)$cmd_realpath gui-$second_option list-arptables ;;
+1*) exit ;;
+gui-principal-menu*) $cmd_realpath gui-menu-$second_option ;;
+gui-info-menu*)$cmd_realpath gui-$second_option firewall-listnumeral ;;
+lsn4*)$cmd_realpath gui-$second_option lsn4 ;;
+lsn6*)$cmd_realpath gui-$second_option lsn6 ;;
+listn-alltables*)$cmd_realpath gui-$second_option listn-alltables ;;
+listn-filter4*)$cmd_realpath gui-$second_option listn-filter4 ;;
+listn-filter6*)$cmd_realpath gui-$second_option listn-filter6 ;;
+listn-nat4*)$cmd_realpath gui-$second_option listn-nat4 ;;
+listn-nat6*)$cmd_realpath gui-$second_option listn-nat6 ;;
+listn-mangle4*)$cmd_realpath gui-$second_option listn-mangle4 ;;
+listn-mangle6*)$cmd_realpath gui-$second_option listn-mangle6 ;;
+listn-raw4*)$cmd_realpath gui-$second_option listn-raw4 ;;
+listn-raw6*)$cmd_realpath gui-$second_option listn-raw6 ;;
+listn-security4*)$cmd_realpath gui-$second_option listn-security4 ;;
+listn-security6*)$cmd_realpath gui-$second_option listn-security6 ;;
+list-ebtables*)$cmd_realpath gui-$second_option list-ebtables ;;
+list-arptables*)$cmd_realpath gui-$second_option list-arptables ;;
 esac
 ####
 ####
@@ -7521,58 +7521,58 @@ echo "$title_md option selected $seleccion_final" ;
 #### 
 #### 
 case "$selection_final" in
-1) exit ;;
-gui-principal-menu) $cmd_realpath gui-menu-$second_option ;;
-gui-info-menu) $cmd_realpath gui-$second_option firewall-wallcustom ;;
-load-custom)archivo="$($second_option  --entry \
+1*) exit ;;
+gui-principal-menu*) $cmd_realpath gui-menu-$second_option ;;
+gui-info-menu*) $cmd_realpath gui-$second_option firewall-wallcustom ;;
+load-custom*)archivo="$($second_option  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Launch-Custom \
 --entry-text=cfg-to-launch)" ; 
 $cmd_realpath gui-$second_option load-custom $archivo ;
 $cmd_realpath gui-$second_option list4 ;;
-clone-wallsystem)archivo="$($second_option --entry \
+clone-wallsystem*)archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Clone-static \
 --entry-text=static-firewall-to-clone-config)" ; 
 $cmd_realpath gui-$second_option clone-wallsystem $archivo ;
 $cmd_realpath gui-$second_option list4;;
-new-full-custom) archivo="$($second_option --entry \
+new-full-custom*) archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=new-full-custom \
 --entry-text=Input_file_name_to_new_full_configuration)" ;
 $cmd_realpath -gui-$second_option new-full-custom $archivo ;;
-nueva-completa-custom) archivo="$($second_option --entry \
+nueva-completa-custom*) archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=nueva-completa-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" 
 $cmd_realpath gui-$second_option nueva-completa-custom $archivo ;;
-new-mini-custom) archivo="$($second_option --entry \
+new-mini-custom*) archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height --entry \
 --title=new-mini-custom \
 --entry-text=Input_file_ name_ to_ new_ mini_configuration)" ;
 $cmd_realpath gui-$second_option new-mini-custom $archivo ;;
-nueva-mini-custom) archivo="$($second_option --entry \
+nueva-mini-custom*) archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=nueva-mini-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
 $cmd_realpath gui-$second_option nueva-mini-custom $archivo ;;
-all-custom) $cmd_realpath gui-menu-$second_option all-custom ;;
-show-custom) archivo="$($second_option --entry \
+all-custom*) $cmd_realpath gui-menu-$second_option all-custom ;;
+show-custom*) archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=show-custom \
 --entry-text=cfg-to-show)" ;
 $cmd_realpath gui-$second_option show-custom $archivo ;;
-modify-custom) archivo="$($second_option --entry \
+modify-custom*) archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=modify-custom \
 --entry-text=cfg-to-modify)" ;
 $cmd_realpath gui-$second_option modify-custom $archivo ;;
-del-custom) archivo="$($second_option --entry \
+del-custom*) archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=del-custom \
 --entry-text=cfg-to-delete)";
 $cmd_realpath gui-$second_option del-custom $archivo ;;
-config-regen)$cmd_realpath gui-$second_option  config-regen ;;
+config-regen*)$cmd_realpath gui-$second_option  config-regen ;;
 esac
 ####
 ####
@@ -7613,80 +7613,80 @@ echo "$title_md option selected $seleccion_final" ;
 #### 
 #### 
 case "$selection_final" in
-1) exit ;;
-gui-principal-menu) $cmd_realpath gui-menu-$second_option ;;
-gui-info-menu)$cmd_realpath gui-$second_option firewall-wallsystem ;;
-client-basic)$cmd_realpath gui-$second_option client-basic ;
+1*) exit ;;
+gui-principal-menu*) $cmd_realpath gui-menu-$second_option ;;
+gui-info-menu*)$cmd_realpath gui-$second_option firewall-wallsystem ;;
+client-basic*)$cmd_realpath gui-$second_option client-basic ;
 $cmd_realpath gui-$second_option list4 ;;
-client-web)$cmd_realpath gui-$second_option client-web ;
+client-web*)$cmd_realpath gui-$second_option client-web ;
 $cmd_realpath gui-$second_option list4 ;;
-client-ssh)$cmd_realpath gui-$second_option client-ssh ;
+client-ssh*)$cmd_realpath gui-$second_option client-ssh ;
 $cmd_realpath gui-$second_option list4 ;;
-client-telnet)$cmd_realpath gui-$second_option client-telnet ;
+client-telnet*)$cmd_realpath gui-$second_option client-telnet ;
 $cmd_realpath gui-$second_option list4 ;;
-client-ipp)$cmd_realpath gui-$second_option client-ipp ;
+client-ipp*)$cmd_realpath gui-$second_option client-ipp ;
 $cmd_realpath gui-$second_option list4 ;;
-client-irc)$cmd_realpath gui-$second_option client-irc ;
+client-irc*)$cmd_realpath gui-$second_option client-irc ;
 $cmd_realpath gui-$second_option list4 ;;
-client-mail)$cmd_realpath gui-$second_option client-mail ;
+client-mail*)$cmd_realpath gui-$second_option client-mail ;
 $cmd_realpath gui-$second_option list4 ;;
-client-news)$cmd_realpath gui-$second_option client-news ;
+client-news*)$cmd_realpath gui-$second_option client-news ;
 $cmd_realpath gui-$second_option list4 ;;
-client-ftp)$cmd_realpath gui-$second_option client-ftp ;
+client-ftp*)$cmd_realpath gui-$second_option client-ftp ;
 $cmd_realpath gui-$second_option list4 ;;
-client-git)$cmd_realpath gui-$second_option client-git ;
+client-git*)$cmd_realpath gui-$second_option client-git ;
 $cmd_realpath gui-$second_option list4 ;;
-client-vnc)$cmd_realpath gui-$second_option client-vnc ;
+client-vnc*)$cmd_realpath gui-$second_option client-vnc ;
 $cmd_realpath gui-$second_option list4 ;;
-client-torrent)$cmd_realpath gui-$second_option client-torrent ;
+client-torrent*)$cmd_realpath gui-$second_option client-torrent ;
 $cmd_realpath gui-$second_option list4 ;;
-client-vpn)$cmd_realpath gui-$second_option client-vpn ;
+client-vpn*)$cmd_realpath gui-$second_option client-vpn ;
 $cmd_realpath gui-$second_option list4 ;;
-client-tor)$cmd_realpath gui-$second_option client-tor ;
+client-tor*)$cmd_realpath gui-$second_option client-tor ;
 $cmd_realpath gui-$second_option list4 ;;
-games-shooter)$cmd_realpath gui-$second_option games-shooter ;
+games-shooter*)$cmd_realpath gui-$second_option games-shooter ;
 $cmd_realpath gui-$second_option list4 ;;
-game-wesnoth)$cmd_realpath gui-$second_option game-wesnoth ; 
+game-wesnoth*)$cmd_realpath gui-$second_option game-wesnoth ; 
 $cmd_realpath gui-$second_option list4 ;;
-game-minetest)$cmd_realpath gui-$second_option game-minetest ;
+game-minetest*)$cmd_realpath gui-$second_option game-minetest ;
 $cmd_realpath gui-$second_option list4 ;;
-game-freeciv)$cmd_realpath gui-$second_option game-freeciv ;
+game-freeciv*)$cmd_realpath gui-$second_option game-freeciv ;
 $cmd_realpath gui-$second_option list4;;
-game-widelands)$cmd_realpath gui-$second_option game-widelands ;
+game-widelands*)$cmd_realpath gui-$second_option game-widelands ;
 $cmd_realpath gui-$second_option list4 ;;
-lan-tor)$cmd_realpath gui-$second_option lan-tor ;
+lan-tor*)$cmd_realpath gui-$second_option lan-tor ;
 $cmd_realpath gui-$second_option list4 ;;
-lan-vpn)$cmd_realpath gui-$second_option lan-vpn ;
+lan-vpn*)$cmd_realpath gui-$second_option lan-vpn ;
 $cmd_realpath gui-$second_option list4 ;;
-shield-ssh)$cmd_realpath gui-$second_option shield-ssh ;
+shield-ssh*)$cmd_realpath gui-$second_option shield-ssh ;
  $cmd_realpath gui-$second_option list4 ;;
-server-ssh)$cmd_realpath gui-$second_option server-ssh ;
+server-ssh*)$cmd_realpath gui-$second_option server-ssh ;
 $cmd_realpath gui-$second_option list4 ;;
-server-web)$cmd_realpath gui-$second_option server-web ;
+server-web*)$cmd_realpath gui-$second_option server-web ;
  $cmd_realpath gui-$second_option list4 ;;
-server-vnc)$cmd_realpath gui-$second_option server-vnc ;
+server-vnc*)$cmd_realpath gui-$second_option server-vnc ;
 $cmd_realpath gui-$second_option list4 ;;
-server-samba)$cmd_realpath gui-$second_option server-samba ;
+server-samba*)$cmd_realpath gui-$second_option server-samba ;
 $cmd_realpath gui-$second_option list4 ;;
-server-news)$cmd_realpath gui-$second_option server-news ;
+server-news*)$cmd_realpath gui-$second_option server-news ;
 $cmd_realpath gui-$second_option list4 ;;
-server-mail)$cmd_realpath gui-$second_option server-mail ;
+server-mail*)$cmd_realpath gui-$second_option server-mail ;
 $cmd_realpath gui-$second_option list4 ;;
-server-ftp)$cmd_realpath gui-$second_option server-ftp ;
+server-ftp*)$cmd_realpath gui-$second_option server-ftp ;
 $cmd_realpath gui-$second_option list4 ;;
-server-print)$cmd_realpath gui-$second_option server-print ;
+server-print*)$cmd_realpath gui-$second_option server-print ;
 $cmd_realpath gui-$second_option list4 ;;
-server-lamp)$cmd_realpath gui-$second_option server-lamp ;
+server-lamp*)$cmd_realpath gui-$second_option server-lamp ;
 $cmd_realpath gui-$second_option list4 ;;
-server-teamspeak)$cmd_realpath gui-$second_option server-teamspeak ;
+server-teamspeak*)$cmd_realpath gui-$second_option server-teamspeak ;
 $cmd_realpath gui-$second_option list4 ;;
-server-mumble)$cmd_realpath gui-$second_option server-mumble ;
+server-mumble*)$cmd_realpath gui-$second_option server-mumble ;
 $cmd_realpath gui-$second_option list4 ;;
-server-sql)$cmd_realpath gui-$second_option server-sql ;
+server-sql*)$cmd_realpath gui-$second_option server-sql ;
 $cmd_realpath gui-$second_option list4 ;;
-server-asterisk)$cmd_realpath gui-$second_option server-asterisk ;
+server-asterisk*)$cmd_realpath gui-$second_option server-asterisk ;
 $cmd_realpath gui-$second_option list4 ;;
-server-domain)$cmd_realpath gui-$second_option server-domain ;
+server-domain*)$cmd_realpath gui-$second_option server-domain ;
 $cmd_realpath gui-$second_option list4 ;;
 esac
 ####
@@ -7723,31 +7723,31 @@ echo "$title_md option selected $seleccion_final" ;
 #### 
 ####
 case "$selection_final" in
-1) exit ;;
-gui-principal-menu) $cmd_realpath gui-menu-$second_option ;;
-gui-info-menu)$cmd_realpath gui-$second_option options-easy ;;
-preferences-read)$cmd_realpath gui-$second_option preferences-read ;;
-preferences-modify)$cmd_realpath gui-$second_option preferences-modify ;;
-preferences-regen)$cmd_realpath gui-$second_option preferences-regen ;;
-preferences-example)$cmd_realpath gui-$second_option preferences-example ;;
-list-options)$cmd_realpath gui-$second_option list-options ;;
-clasic-options)$cmd_realpath gui-$second_option clasic-options ;;
-info-options)$cmd_realpath gui-$second_option info-options ;;
-expert)$cmd_realpath gui-$second_option expert ;;
-intro)$cmd_realpath gui-$second_option intro ;;
-download)$cmd_realpath gui-$second_option download ;;
-ip4)$cmd_realpath gui-$second_option ip4 ;;
-ip6)$cmd_realpath gui-$second_option ip6 ;;
-speed-ip4)$cmd_realpath gui-$second_option speed-ip4 ;;
-speed-ip6)$cmd_realpath gui-$second_option speed-ip6 ;;
-sockets)$cmd_realpath gui-$second_option sockets ;;
-treeconf)$cmd_realpath gui-$second_option treeconf ;;
-examples)$cmd_realpath gui-$second_option examples ;;
-depends)$cmd_realpath gui-$second_option depends ;;
-notes)$cmd_realpath gui-$second_option notes ;;
-license)$cmd_realpath gui-$second_option license ;;
-variables) $cmd_realpath gui-$second_option variables ;;
-commands) $cmd_realpath gui-$second_option commands ;;
+1*) exit ;;
+gui-principal-menu*) $cmd_realpath gui-menu-$second_option ;;
+gui-info-menu*)$cmd_realpath gui-$second_option options-easy ;;
+preferences-read*)$cmd_realpath gui-$second_option preferences-read ;;
+preferences-modify*)$cmd_realpath gui-$second_option preferences-modify ;;
+preferences-regen*)$cmd_realpath gui-$second_option preferences-regen ;;
+preferences-example*)$cmd_realpath gui-$second_option preferences-example ;;
+list-options*)$cmd_realpath gui-$second_option list-options ;;
+clasic-options*)$cmd_realpath gui-$second_option clasic-options ;;
+info-options*)$cmd_realpath gui-$second_option info-options ;;
+expert*)$cmd_realpath gui-$second_option expert ;;
+intro*)$cmd_realpath gui-$second_option intro ;;
+download*)$cmd_realpath gui-$second_option download ;;
+ip4*)$cmd_realpath gui-$second_option ip4 ;;
+ip6*)$cmd_realpath gui-$second_option ip6 ;;
+speed-ip4*)$cmd_realpath gui-$second_option speed-ip4 ;;
+speed-ip6*)$cmd_realpath gui-$second_option speed-ip6 ;;
+sockets*)$cmd_realpath gui-$second_option sockets ;;
+treeconf*)$cmd_realpath gui-$second_option treeconf ;;
+examples*)$cmd_realpath gui-$second_option examples ;;
+depends*)$cmd_realpath gui-$second_option depends ;;
+notes*)$cmd_realpath gui-$second_option notes ;;
+license*)$cmd_realpath gui-$second_option license ;;
+variables*) $cmd_realpath gui-$second_option variables ;;
+commands*) $cmd_realpath gui-$second_option commands ;;
 esac
 ####
 ####
