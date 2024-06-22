@@ -7267,7 +7267,7 @@ if [ "$first_option" == "gui-menu" ] ;
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
 echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md the gui used actually in $first_option is $second_option" ;
+echo "$title_md The used gui in $first_option is $second_option" ;
 ####
 ####
 gui_menu="Firewall-control|Firewall-listconceptual|\
@@ -7285,7 +7285,7 @@ selection_final="$($second_option \
 if [ "$second_option" == "yad" ]; then
 final="$(echo $selection_final | sed 's/|/ /g')"
 else final="$selection_final" ; fi
-echo "$title_md option selected $final" ;
+echo "$title_md option selected: $final" ;
 #### 
 ####
 case $final in
@@ -7318,7 +7318,7 @@ if   [ "$first_option" == "gui-menu-firewall-control" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
 echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md the gui used actually in $first_option is $second_option" ;
+echo "$title_md The used gui in $first_option is $second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -7332,7 +7332,7 @@ selection_final="$($second_option \
 --text=$first_option \
 --title=Gui-menu-With-$cmd_basename-$cmd_version \
 --list $selection_menu)"
-echo "$title_md option selected $seleccion_final" ;
+echo "$title_md The option selected:  $final" ;
 ####
 ####
 if [ "$second_option" == "yad" ]; then
@@ -7396,7 +7396,7 @@ if   [ "$first_option" == "gui-menu-firewall-listconceptual" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
 echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md the gui used actually in $first_option is $second_option" ;
+echo "$title_md The used gui in $first_option is $second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -7410,7 +7410,7 @@ selection_final="$($second_option \
 --text=$first_option \
 --title=Gui-menu-With-$cmd_basename-$cmd_version \
 --list $selection_menu )"
-echo "$title_md option selected $seleccion_final" ;
+echo "$title_md The option selected:  $final" ;
 #### 
 #### 
 case "$selection_final" in
@@ -7448,7 +7448,7 @@ if   [ "$first_option" == "gui-menu-firewall-listnumeral" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
 echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md the gui used actually in $first_option is $second_option" ;
+echo "$title_md The used gui in $first_option is $second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|lsn4|lsn6|\
@@ -7463,7 +7463,7 @@ selection_final="$($second_option \
 --text=$first_option \
 --title=Gui-menu-With-$cmd_realpath-$cmd_version \
 --list $selection_menu )"
-echo "$title_md option selected $seleccion_final" ;
+echo "$title_md The option selected:  $final" ;
 #### 
 #### 
 case "$selection_final" in
@@ -7501,7 +7501,7 @@ if [ "$first_option" == "gui-menu-firewall-wallcustom" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
 echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md the gui used actually in $first_option is $second_option" ;
+echo "$title_md The used gui in $first_option is $second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -7517,7 +7517,7 @@ selection_final="$($second_option \
 --text=$first_option \
 --title=Gui-menu-With-$cmd_basename-$cmd_version \
 --list $selection_menu )"
-echo "$title_md option selected $seleccion_final" ;
+echo "$title_md The option selected:  $final" ;
 #### 
 #### 
 case "$selection_final" in
@@ -7589,7 +7589,7 @@ if [ "$first_option" == "gui-menu-firewall-wallsystem" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
 echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md the gui used actually in $first_option is $second_option" ;
+echo "$title_md The used gui in $first_option is $second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -7609,7 +7609,7 @@ selection_final="$($second_option \
 --text=$first_option \
 --title=Gui-menu-With-$cmd_basename-$cmd_version \
 --list $selection_menu )"
-echo "$title_md option selected $seleccion_final" ;
+echo "$title_md The option selected:  $final" ;
 #### 
 #### 
 case "$selection_final" in
@@ -7704,7 +7704,7 @@ if [ "$first_option" == "gui-menu-options-easy" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
 echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md the gui used actually in $first_option is $second_option" ;
+echo "$title_md The used gui in $first_option is $second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
@@ -7719,7 +7719,7 @@ selection_final="$($second_option \
 --text=$first_option \
 --title=Gui-menu-With-$cmd_realpath-$cmd_version \
 --list $selection_menu )"
-echo "$title_md option selected $seleccion_final" ;
+echo "$title_md The option selected:  $final" ;
 #### 
 ####
 case "$selection_final" in
