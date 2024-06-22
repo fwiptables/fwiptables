@@ -468,7 +468,7 @@ else default_root_home="$HOME"; fi
 ####
 #### set directory data cache
 ####
-directory_cache_run="/run/$cmd_file"
+directory_cache_run="/run/$cmd_file"  ### ununsed
 directory_cache_home="$default_root_home/.cache/$cmd_file"
 if [ ! -d "$directory_cache_home" ]; 
 then mkdir -p $directory_cache_home &> /dev/null ; fi
@@ -1279,8 +1279,13 @@ if [ "$first_option" == "expert-configs-save" ] ; then
 echo "$title_md [ $first_option ] [ save backups confiurations from choosed filename ]"
 if [ "$command_tar" == "$NULL" ]; then
 echo "$title_md please install tar command"; exit ; fi
-if [ "$second_option" == "$NULL" ]; then
+if [ "$2" == "$NULL" ]; then
 echo "$title_md please choose the backup file"; exit; fi
+####
+####
+tar vcf $2.tar -C $directory_data_necesary .
+echo ; echo ; echo "$text_ok file saved: $2.tar"
+####
 ####
 exit; fi
 ####
@@ -1295,8 +1300,13 @@ if [ "$first_option" == "expert-configs-load" ] ; then
 echo "$title_md [ $first_option ] [ load backups confiurations from choosed filename ]"
 if [ "$command_tar" == "$NULL" ]; then
 echo "$title_md please install tar command"; exit ; fi
-if [ "$second_option" == "$NULL" ]; then
+if [ "$2" == "$NULL" ]; then
 echo "$title_md please choose the backup file"; exit; fi
+####
+####
+tar vxf $2 -C $directory_data_necesary .
+echo ; echo ; echo "$text_ok file loaded: $2.tar"
+####
 ####
 exit; fi
 ####
