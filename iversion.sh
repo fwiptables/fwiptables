@@ -4727,6 +4727,9 @@ echo "$title_md"
 echo "$title_md [ options ] [ List general options for fwiptables ] [ list-options md ]"
 echo "$text_md"
 $cmd_realpath options
+echo "$text_md"
+$cmd_realpath info
+$cmd_realpath expert
 exit; fi
 ####
 ####
