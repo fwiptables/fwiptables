@@ -3141,6 +3141,8 @@ echo "$text_md expert-radio-link . listen radio from one link"
 echo "$text_md expert-radio-online . listen online radio from one text-string"
 echo "$text_md expert-project-web . site  downloaded web fwiptables"
 echo "$text_md expert-gen-version . generate actual version file in actual folder"
+echo "$text_md expert-configs-save . save configs like backup from fwiptables in tar file"
+echo "$text_md expert-configs-load . load configs like backup from fwiptables in tar file"
 echo "$text_md "
 exit; fi
 ####
