@@ -1283,8 +1283,8 @@ if [ "$2" == "$NULL" ]; then
 echo "$title_md please choose the backup file"; exit; fi
 ####
 ####
-tar vcf $2.tar -C $directory_data_necesary .
-echo ; echo ; echo "$text_ok file saved: $2.tar"
+tar vcf $2.tar -C $directory_data_necesary . || echo "$text_fail bad"
+echo ; echo ; echo "$text_ok in-file-saved: $2.tar from-folder-saved: $directory_data_necesary"
 ####
 ####
 exit; fi
@@ -1304,8 +1304,8 @@ if [ "$2" == "$NULL" ]; then
 echo "$title_md please choose the backup file"; exit; fi
 ####
 ####
-tar vxf $2 -C $directory_data_necesary .
-echo ; echo ; echo "$text_ok file loaded: $2.tar"
+tar vxf $2 -C $directory_data_necesary . || echo "$text_fail bad"
+echo ; echo ; echo "$text_ok from-file-loaded: $2 in-folder-loaded: $directory_data_necesary"
 ####
 ####
 exit; fi
