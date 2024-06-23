@@ -100,14 +100,10 @@ echo ; fi
 cmd_realpath="$(realpath $0)"                # full routename
 cmd_basename="$(basename $0)"                # only filename
 #### number version
-cmd_dev="-rc1"                               # -rcX version or null value
-cmd_mayor="13"                               # number mayor version
-cmd_minor="06"                               # number minor version
-cmd_year="2024"                              # number year version
+cmd_year="24"                                # number year version
 cmd_month="06"                               # number mouth version
-cmd_day="22"                                 # number day version
-cmd_version="$cmd_mayor-$cmd_minor$cmd_dev"  # final number version
-cmd_released="$cmd_year-$cmd_month-$cmd_day" # final date version
+cmd_day="23"                                 # number day version
+cmd_version="$cmd_year-$cmd_month-$cmd_day"  # final date version
 #### name location
 cmd_file="fwiptables"                        # filename installed
 cmd_directory="/usr/bin"                     # directory installed
@@ -2082,7 +2078,6 @@ echo "$title_md [ $first_option ] [ Show version ] [ version md ]          "
 echo "$text_md $text_info [ Somes details in $cmd_basename ]                 "
 echo "$text_md $text_info [ Name program       ] $cmd_realpath               "
 echo "$text_md $text_info [ Number Version     ] $cmd_version                "
-echo "$text_md $text_info [ Released Version   ] $cmd_released               "
 echo "$text_md $text_info [ Short description  ] $cmd_shortdescription       "
 echo "$text_md $text_info [ Long description   ] $cmd_longdescription        "
 echo "$text_md $text_info [ Developer Actual   ] $cmd_developer              "
@@ -2809,8 +2804,7 @@ echo "$text_md free sockets nodes ip-forward depends code treeconf treecache    
 echo "$text_md cleancache notes variables uninstall install version utils            "
 echo "$text_md examples expert license-gpl license-lgpl license-bsd                  "
 echo "$title_md  expert (expert commands work only without optional output)          "
-echo "$title_md $text_md $text_md | About Program: $cmd_basename                     "
-echo "$title_md $text_md $text_md | Version: $cmd_version Released: $cmd_released    "
+echo "$title_md $text_md $text_md | Program: $cmd_basename Version: $cmd_version     "
 echo "$title_md $text_md $text_md | Description: $cmd_longdescription                "
 exit ; fi
 ####
@@ -4825,7 +4819,7 @@ exit; fi
 ####
 if [ "$first_option" == "install" ]; then 
 echo "$title_md $text_ok \
-| Installing.. $cmd_file | Version: $cmd_version | Released: $cmd_released |"
+| Installing.. $cmd_file | Version: $cmd_version |"
 ####
 ####
 ####  english: copy the file to temporal folder and install
