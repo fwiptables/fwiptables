@@ -2074,9 +2074,10 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "version" ]; then 
-echo "$title_md [ $first_option ] [ Show version ] [ version md ]          "
-echo "$text_md $text_info [ Somes details in $cmd_basename ]                 "
-echo "$text_md $text_info [ Name program       ] $cmd_realpath               "
+echo "$title_md [ $first_option ] [ Show version ] [ version md ]            "
+echo "$text_md $text_info [ Somes details ]                 "
+echo "$text_md $text_info [ Basename program   ] $cmd_basename               "
+echo "$text_md $text_info [ Realpath program   ] $cmd_realpath               "
 echo "$text_md $text_info [ Number Version     ] $cmd_version                "
 echo "$text_md $text_info [ Short description  ] $cmd_shortdescription       "
 echo "$text_md $text_info [ Long description   ] $cmd_longdescription        "
@@ -2085,9 +2086,9 @@ echo "$text_md $text_info [ Developer Contact  ] $cmd_contact                "
 echo "$text_md $text_info [ License program    ] $cmd_license                "
 echo "$text_md $text_info [ Data  Directory    ] $directory_data_necesary    "
 echo "$text_md $text_info [ Cache Directory    ] $directory_cache_necesary   "
-echo "$text_md $text_info [ File  Preferences  ]      "
+echo "$text_md $text_info [ File  Preferences  ]    "
 echo "$text_md $file_default_preferences            "  
-echo "$text_md $text_info [ File  Format       ]      "
+echo "$text_md $text_info [ File  Format       ]    "
 echo "$text_md $($command_file $cmd_realpath)       "
 exit ; fi
 ####
@@ -2899,7 +2900,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-control" ]; then
 echo "$text_md "
-echo "$title_md | firewall-control | $cmd_realpath firewall-control |"
+echo "$title_md | firewall-control | $cmd_basename firewall-control |"
 echo "$text_md"
 echo "$text_md | stop . remove the rules iptables, and save it to then if continue  "  
 echo "$text_md | continue. reset and load latest rules iptables loaded  "  
@@ -2928,7 +2929,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-listconceptual" ]; then
 echo "$text_md "
-echo "$title_md | firewall-listconceptual | $cmd_realpath firewall-listconceptual |"
+echo "$title_md | firewall-listconceptual | $cmd_basename firewall-listconceptual |"
 echo "$text_md"
 echo "$text_md | ls4 . list filter rules ipv4  "  
 echo "$text_md | ls6 . list filter rules ipv6  "  
@@ -2960,7 +2961,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-listnumeral" ]; then
 echo "$text_md "
-echo "$title_md | firewall-listnumeral | $cmd_realpath firewall-listnumeral |"
+echo "$title_md | firewall-listnumeral | $cmd_basename firewall-listnumeral |"
 echo "$text_md"
 echo "$text_md | lsn4 . list filter rules ipv4 with numbers  "  
 echo "$text_md | lsn6 . list filter rules ipv6 with numbers  "  
@@ -2992,7 +2993,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-wallcustom" ]; then
 echo "$text_md "
-echo "$title_md | firewall-wallcustom | $cmd_realpath firewall-wallcustom |"
+echo "$title_md | firewall-wallcustom | $cmd_basename firewall-wallcustom |"
 echo "$text_md"
 echo "$text_md | new-full-custom . create new full config in english  "  
 echo "$text_md | new-mini-custom . create new mini config in english  "  
@@ -3016,7 +3017,7 @@ exit; fi
 ####
 if   [ "$first_option" == "firewall-wallsystem" ]; then
 echo "$text_md "
-echo "$title_md | firewall-wallsystem | $cmd_realpath firewall-wallsystem |"
+echo "$title_md | firewall-wallsystem | $cmd_basename firewall-wallsystem |"
 echo "$text_md"
 echo "$text_md | client-basic . launch a one firewall basic client  "  
 echo "$text_md | client-web . launch a one firewall web client  "  
@@ -3065,7 +3066,7 @@ exit; fi
 ####
 if   [ "$first_option" == "options-easy" ]; then
 echo "$text_md "
-echo "$title_md | options-easy | $cmd_realpath options-easy |"
+echo "$title_md | options-easy | $cmd_basename options-easy |"
 echo "$text_md"
 echo "$text_md | preferences-read . show the preferences for fwiptables  "  
 echo "$text_md | preferences-modify . modify the preferences for fwiptables  "  
@@ -3115,7 +3116,7 @@ exit; fi
 ####
 if   [ "$first_option" == "options-expert" ]; then
 echo "$text_md "
-echo "$title_md | options-expert | $cmd_realpath expert |"
+echo "$title_md | options-expert | $cmd_basename expert |"
 echo "$text_md    Each expert only works Without optional output"
 echo "$text_md"
 echo "$text_md | expert-browse-web . browse one link web  "  
@@ -3200,7 +3201,7 @@ exit; fi
 ####
 if   [ "$first_option" == "optional-output" ]; then
 echo "$text_md "
-echo "$title_md | optional-output | $cmd_realpath optional-ouptut |"
+echo "$title_md | optional-output | $cmd_basename optional-ouptut |"
 echo "$text_md"
 echo "$text_md | t . output in terminal text  "  
 echo "$text_md | n . output in terminal text narrow (compresed spaces)  "  
