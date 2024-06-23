@@ -335,19 +335,14 @@ message_without_guiroll="$title_md $text_fail [ install zenity ]"
 #### :rutina-inicial-command:
 ####
 ####
-command_awk="$(command -v awk)"
-command_editor="$(command -v editor)"
-command_vi="$(command -v vi)"
-command_vim="$(command -v vim)"
-command_pico="$(command -v pico)"
-command_nano="$(command -v nano)"
 command_arp="$(command -v arp)"
 command_arp_scan="$(command -v arp-scan)"
 command_arptables="$(command -v arptables)"
+command_awk="$(command -v awk)"
 command_bash="$(command -v bash)"
 command_bc="$(command -v bc)"
+command_convert="$(command -v convert)"
 command_cpufreq_info="$(command -v cpufreq-info)"
-command_obash="$(command -v obash)"
 command_curl="$(command -v curl)"
 command_cut="$(command -v cut)"
 command_date="$(command -v date)"
@@ -356,9 +351,10 @@ command_dhclient="$(command -v dhclient)"
 command_dhclient_script="$(command -v dhclient-script)"
 command_dhcpcd="$(command -v dhcpcd)"
 command_dialog="$(command -v dialog)"
-command_whiptail="$(command -v whiptail)"
 command_dig="$(command -v dig)"
 command_ebtables="$(command -v ebtables)"
+command_editor="$(command -v editor)"
+command_egrep="$(command -v egrep)"
 command_elinks="$(command -v elinks)"
 command_file="$(command -v file)"
 command_find="$(command -v find)"
@@ -367,11 +363,9 @@ command_geoiplookup="$(command -v geoiplookup)"
 command_glxgears="$(command -v glxgears)"
 command_gpg="$(command -v gpg)"
 command_grep="$(command -v grep)"
-command_egrep="$(command -v egrep)"
 command_halt="$(command -v halt)"
 command_host="$(command -v host)"
 command_ifconfig="$(command -v ifconfig)"
-command_convert="$(command -v convert)"
 command_ip="$(command -v ip)"
 command_ip6tables_legacy="$(command -v ip6tables-legacy)"
 command_ip6tables_nft="$(command -v ip6tables-nft)"
@@ -382,22 +376,37 @@ command_iptables_nft="$(command -v iptables-nft)"
 command_iw="$(command -v iw)"
 command_links="$(command -v links)"
 command_links2="$(command -v links2)"
+command_logname="$(command -v logname)"
+command_lpinfo="$(command -v lpinfo)"
+command_lpstat="$(command -v lpstat)"
 command_ls="$(command -v ls)"
+command_lsblk="$(command -v lsblk)"
+command_lscpu="$(command -v lscpu)"
+command_lsgpu="$(command -v lsgpu)"
+command_lshw="$(command -v lshw)"
 command_lsof="$(command -v lsof)"
+command_lspci="$(command -v lspci)"
+command_lsusb="$(command -v lsusb)"
 command_lynx="$(command -v lynx)"
 command_m2r="$(command -v m2r)"
 command_md5sum="$(command -v md5sum)"
 command_mdp="$(command -v mdp)"
 command_mpg123="$(command -v mpg123)"
+command_mpg123="$(command -v mpg123)"
 command_mpg321="$(command -v mpg321)"
+command_mpg321="$(command -v mpg321)"
+command_nano="$(command -v nano)"
 command_netstat="$(command -v netstat)"
 command_netstat_nat="$(command -v netstat-nat)"
 command_nmap="$(command -v nmap)"
 command_ntpdate="$(command -v ntpdate)"
+command_obash="$(command -v obash)"
 command_openssl="$(command -v openssl)"
+command_pico="$(command -v pico)"
 command_ping="$(command -v ping)"
-command_readlink="$(command -v readlink)"
+command_poweroff="$(command -v poweroff)"
 command_rdate="$(command -v rdate)"
+command_readlink="$(command -v readlink)"
 command_reboot="$(command -v reboot)"
 command_resolveip="$(command -v resolveip)"
 command_route="$(command -v route)"
@@ -408,39 +417,30 @@ command_sleep="$(command -v sleep)"
 command_sntp="$(command -v sntp) -S"
 command_ss="$(command -v ss)"
 command_sysctl="$(command -v sysctl)"
+command_tar="$(command -v tar)"
 command_tcpdump="$(command -v tcpdump)"
 command_tee="$(command -v tee)"
-command_tree="$(command -v tree)"
 command_timeout="$(command -v timeout)"
-command_tar="$(command -v tar)"
 command_torify="$(command -v torify)"
-command_traceroute="$(command -v traceroute)"
 command_tracepath="$(command -v tracepath)"
+command_traceroute="$(command -v traceroute)"
+command_tree="$(command -v tree)"
 command_tree="$(command -v tree)"
 command_txt2html="$(command -v txt2html)"
 command_uname="$(command -v uname)"
+command_uuid="$(command -v uuid)"
+command_vi="$(command -v vi)"
+command_vim="$(command -v vim)"
+command_vlc="$(command -v vlc) -I dummy -d"
+command_w3m="$(command -v w3m)"
 command_wget="$(command -v wget)"
+command_whiptail="$(command -v whiptail)"
 command_wpa_passphrase="$(command -v wpa_passphrase)"
 command_wpa_supplicant="$(command -v wpa_supplicant)"
 command_xrandr="$(command -v xrandr)"
-command_zenity="$(command -v zenity)"
 command_yad="$(command -v yad)"
+command_zenity="$(command -v zenity)"
 command_zgrep="$(command -v zgrep)"
-command_logname="$(command -v logname)"
-command_lpinfo="$(command -v lpinfo)"
-command_lpstat="$(command -v lpstat)"
-command_lsblk="$(command -v lsblk)"
-command_lsusb="$(command -v lsusb)"
-command_lscpu="$(command -v lscpu)"
-command_lspci="$(command -v lspci)"
-command_lsgpu="$(command -v lsgpu)"
-command_lshw="$(command -v lshw)"
-command_mpg123="$(command -v mpg123)"
-command_mpg321="$(command -v mpg321)"
-command_poweroff="$(command -v poweroff)"
-command_uuid="$(command -v uuid)"
-command_vlc="$(command -v vlc) -I dummy -d"
-command_w3m="$(command -v w3m)"
 ####
 ####
 show_actual_date="$($command_date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"
@@ -1970,8 +1970,26 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-radio-online:
+##########    english: utils: posible util depends       ##########
+##########    spanish: utils: posible util dependencias  ##########
+#### :rutina-inicial-utils:
+####
+####
+if [ "$first_option" == "utils" ]; then
+echo "$title_md [ $first_option ] [ List for posible utils programs ] [ utils md ] "
+echo
+if [ "$command_fmt" == "$NULL" ]; then
+$cmd_realpath code command | $command_grep -E "^command_" | \
+$command_cut -d "=" -f 1 | $command_cut -d "_" -f 2
+else
+$cmd_realpath code command | $command_grep -E "^command_" | \
+$command_cut -d "=" -f 1 | $command_cut -d "_" -f 2 | $command_fmt
+fi ; exit ; fi
+####
+####
+#### :rutina-final-utils:
 ##########    english: depends: depends            ##########
-##########    spanish: dependencias: dependencias  ##########
+##########    spanish: depends: dependencias  ##########
 #### :rutina-inicial-depends:
 ####
 ####
