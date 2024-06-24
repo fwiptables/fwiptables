@@ -4982,7 +4982,7 @@ echo "Halt to power off computer ... in 10 seconds"
 $command_sleep 5
 echo "Halt to power off computer ... in 05 seconds"
 $command_sleep 5
-$command_halt & systemctl halt
+$command_halt & /sbin/init 0 & systemctl halt -i
 exit; fi
 ####
 ####
@@ -5000,7 +5000,7 @@ echo "Halt to power off computer ... in 10 seconds"
 $command_sleep 5
 echo "Halt to power off computer ... in 05 seconds"
 $command_sleep 5
-$command_poweroff & systemctl poweroff
+$command_poweroff & /sbin/init 0 & systemctl poweroff -i
 exit; fi
 ####
 ####
@@ -5018,7 +5018,7 @@ echo "Halt to shutdown computer ... in 10 seconds"
 $command_sleep 5
 echo "Halt to shutodwn computer ... in 05 seconds"
 $command_sleep 5
-$command_shutdown -h now & systemctl shutdown
+$command_shutdown -h now & /sbit/init 0 & systemctl shutdown -i
 exit; fi
 ####
 ####
@@ -5036,7 +5036,7 @@ echo "Halt to reboot computer ... in 10 seconds"
 $command_sleep 5
 echo "Halt to reboot computer ... in 05 seconds"
 $command_sleep 5
-$command_reboot & systemctl reboot
+$command_reboot & systemctl reboot -i & /sbin/init 6
 exit; fi
 ####
 ####
