@@ -102,7 +102,7 @@ cmd_basename="$(basename $0)"                # only filename
 #### number version
 cmd_year="24"                                # number year version
 cmd_month="06"                               # number mouth version
-cmd_day="23"                                 # number day version
+cmd_day="24-dev"                             # number day version
 cmd_version="$cmd_year-$cmd_month-$cmd_day"  # final date version
 #### name location
 cmd_file="fwiptables"                        # filename installed
