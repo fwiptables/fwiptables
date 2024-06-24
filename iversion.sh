@@ -339,6 +339,7 @@ command_bash="$(command -v bash)"
 command_bc="$(command -v bc)"
 command_convert="$(command -v convert)"
 command_cpufreq_info="$(command -v cpufreq-info)"
+command_cpupower="$(command -v cpupower)"
 command_curl="$(command -v curl)"
 command_cut="$(command -v cut)"
 command_date="$(command -v date)"
@@ -1266,6 +1267,20 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-cpufreq-info:
+##########    english: expert-cpupower-info: info cpu frequence                 ##########
+##########    spanish: expert-cpupower-info: informacion de frecuencia de cpu   ##########
+#### :rutina-inicial-expert-cpupower-info:
+####
+####
+if [ "$first_option" == "expert-cpupower-info" ] ; then
+echo "$title_md [ $first_option ] [ show cpu frequence info ]"
+if [ "$command_cpufreq_info" == "$NULL" ]; then
+echo "$title_md please install cpupower"; fi
+$command_cpupower -c all frequency-info
+exit; fi
+####
+####
+#### :rutina-final-expert-cpupower-info:
 ##########    english: expert-configs-save: configurations backups in actual folder    ##########
 ##########    spanish: expert-configs-save: copia de configuraciones en carpeta actual ##########
 #### :rutina-inicial-expert-configs-save:
@@ -3159,6 +3174,7 @@ echo "$text_md | expert-pc-halt . halt computer with halt  "
 echo "$text_md | expert-pc-shutdown . shutdown computer with shutdown  "  
 echo "$text_md | expert-pc-reboot . reboot computer with reboot  "  
 echo "$text_md | expert-cpufreq-info . show cpu frecuence info  "  
+echo "$text_md | expert-cpupower-info . show cpu frecuence info  "  
 echo "$text_md | expert-radio-link . listen radio from one link  "  
 echo "$text_md | expert-radio-online . listen online radio from one text-string  "  
 echo "$text_md | expert-project-web . site  downloaded web fwiptables  "  
