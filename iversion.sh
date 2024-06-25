@@ -102,7 +102,7 @@ cmd_basename="$(basename $0)"                # only filename
 #### number version
 cmd_year="24"                                # number year version
 cmd_month="06"                               # number mouth version
-cmd_day="24-dev"                             # number day version
+cmd_day="dev"                                # number day version
 cmd_version="$cmd_year-$cmd_month-$cmd_day"  # final date version
 #### name location
 cmd_file="fwiptables"                        # filename installed
@@ -363,6 +363,7 @@ command_grep="$(command -v grep)"
 command_halt="$(command -v halt)"
 command_host="$(command -v host)"
 command_ifconfig="$(command -v ifconfig)"
+command_init="$(command -v init)"
 command_ip="$(command -v ip)"
 command_ip6tables_legacy="$(command -v ip6tables-legacy)"
 command_ip6tables_nft="$(command -v ip6tables-nft)"
@@ -414,6 +415,7 @@ command_sleep="$(command -v sleep)"
 command_sntp="$(command -v sntp) -S"
 command_ss="$(command -v ss)"
 command_sysctl="$(command -v sysctl)"
+command_systemctl="$(command -v systemctl)"
 command_tar="$(command -v tar)"
 command_tcpdump="$(command -v tcpdump)"
 command_tee="$(command -v tee)"
@@ -4998,7 +5000,12 @@ echo "Halt to power off computer ... in 10 seconds"
 $command_sleep 5
 echo "Halt to power off computer ... in 05 seconds"
 $command_sleep 5
-$command_halt & /sbin/init 0 & systemctl halt -i
+####
+####
+if [ $command_poweroff != "$NULL" ]; then $command_poweroff & exit ; fi
+if [ $command_init != "$NULL" ]; then $command_init 6 & exit ; fi
+if [ $command_systemctl != "$NULL" ]; then $command_systemctl poweroff -i & exit ; fi
+$command_halt & $command_init 0 & $command_systemctl halt -i
 exit; fi
 ####
 ####
@@ -5016,7 +5023,11 @@ echo "Halt to power off computer ... in 10 seconds"
 $command_sleep 5
 echo "Halt to power off computer ... in 05 seconds"
 $command_sleep 5
-$command_poweroff & /sbin/init 0 & systemctl poweroff -i
+####
+####
+if [ $command_poweroff != "$NULL" ]; then $command_poweroff & exit ; fi
+if [ $command_init != "$NULL" ]; then $command_init 6 & exit ; fi
+if [ $command_systemctl != "$NULL" ]; then $command_systemctl poweroff -i & exit ; fi
 exit; fi
 ####
 ####
@@ -5034,7 +5045,11 @@ echo "Halt to shutdown computer ... in 10 seconds"
 $command_sleep 5
 echo "Halt to shutodwn computer ... in 05 seconds"
 $command_sleep 5
-$command_shutdown -h now & /sbit/init 0 & systemctl shutdown -i
+####
+####
+if [ $command_shutdown != "$NULL" ]; then $command_shutdown -h now & exit ; fi
+if [ $command_init != "$NULL" ]; then $command_init 0 & exit ; fi
+if [ $command_systemctl != "$NULL" ]; then $command_systemctl poweroff -i & exit ; fi
 exit; fi
 ####
 ####
@@ -5052,7 +5067,11 @@ echo "Halt to reboot computer ... in 10 seconds"
 $command_sleep 5
 echo "Halt to reboot computer ... in 05 seconds"
 $command_sleep 5
-$command_reboot & systemctl reboot -i & /sbin/init 6
+####
+####
+if [ $command_reboot != "$NULL" ]; then $command_reboot &  exit ; fi
+if [ $command_init != "$NULL" ]; then $command_init 6 &  exit ; fi
+if [ $command_systemctl != "$NULL" ]; then $command_systemctl reboot -i &  exit ; fi
 exit; fi
 ####
 ####
