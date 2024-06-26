@@ -1276,7 +1276,7 @@ exit; fi
 ####
 if [ "$first_option" == "expert-cpupower-info" ] ; then
 echo "$title_md [ $first_option ] [ show cpu frequence info ]"
-if [ "$command_cpufreq_info" == "$NULL" ]; then
+if [ "$command_cpupower" == "$NULL" ]; then
 echo "$title_md please install cpupower"; fi
 $command_cpupower -c all frequency-info
 exit; fi
