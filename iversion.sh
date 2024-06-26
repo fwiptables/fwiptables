@@ -7930,7 +7930,7 @@ if [ ! -f "$default_directory_custom/$second_option" ]
 then  $cmd_realpath all-custom ; exit; fi
 ####
 ####
-exit; fi
+fi
 ####
 ####
 #### :rutina-final-load-custom:
