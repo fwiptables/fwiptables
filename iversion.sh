@@ -464,6 +464,7 @@ $command_mkdir -p "$default_directory_adblock" &> /dev/null ; fi
 #### :rutina-inicial-system-variables:
 ####
 ####
+allow_expert_commands=""
 without_first_option=""
 launch_rules_firewall="no" 
 allow_use_legacy=""                       
@@ -639,6 +640,21 @@ case "$NULL" in "$name_firewall")            ;;
 *)  name_firewall="no"                       ;; esac
 case "$NULL" in "$type_firewall")            ;;
 *)  type_firewall="no"                       ;; esac
+####
+####
+if [ "$allow_expert_commands" == "no" ]; then 
+####
+case "$first_option"
+in exper*)
+echo "$title_md See in preferences allow_expert_commands= to active it option"
+exit ;; esac
+####
+case "$second_option"
+in exper*)
+echo "$title_md See in preferences allow_expert_commands= to active it option"
+exit ;; esac
+####
+fi
 #### 
 ####
 ####
@@ -1619,6 +1635,8 @@ echo "$title_md type: void or one valid option required to works"
 echo "$title_md example1:list-options example2:list4 example3:ip4"
 echo "$title_md example4:speed-ip4 example5:sockets example6:gui-roll"
 echo "$title_md example7:gui-menu-yad example8:gui-shell-yad"
+echo "$title_md" 
+echo "allow_expert_commands=no                        ## or void or no"
 echo "$title_md" 
 echo "$title_md $title_md default firewall"
 echo "allow_use_legacy=                               ## or void or no"
