@@ -196,136 +196,6 @@ else $command_sudo -u 0 $command_xhost +SI:localuser:root &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-x11-or-wayland:
-##########  english: system-variables: variables to declare     ##########
-##########  spanish: system-variables: variables para declarar  ##########
-#### :rutina-inicial-system-variables:
-####
-####
-without_first_option=""
-launch_rules_firewall="no" 
-allow_use_legacy=""                       
-allow_use_nft="no"                        
-allow_use_ipv4=""                         
-allow_use_ipv6=""                         
-allow_separate_rules=""        
-config_shield_port="22"        
-config_shield_maxtries="10"    
-config_close_deny="DROP"         
-allow_save_autolog=""          
-allow_show_time="no"           
-favorite_text_editor=""        
-favorite_realpath_textdialog=""
-favorite_realpath_graphicalldialog=""
-favorite_text_browser=""
-favorite_date_command=""
-serverip_discover_ipv4="http://httpbin.org/ip"
-serverip_discover_ipv6="http://httpbin.org/ip"
-serverip_iperf_ipv4="ping.online.net"       
-serverport_iperf_ipv4="5200"                
-serverip_iperf_ipv6="ping6.online.net"      
-serverport_iperf_ipv6="5200"
-server_radio_online="https://www.tdtchannels.com/lists/radio.m3u8"
-config_graphicall_width="750"
-config_graphicall_height="550"
-list_rules_conceptual=""   ;
-config_ip4_localhost="127.0.0.1"    ;
-config_ip6_localhost="::1"    ;
-client_port_tcp="ssh,http,https"     ;
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https"     ;
-server_port_tcp=""     ;
-server_port_udp=""     ;
-allow_shield_maxtries="no"    ;
-config_shield_port="22" ;
-config_shield_maxtries="12"     ;
-logserver_prefix_input="fwlog-input::"     ;
-logserver_prefix_output="fwlog-output::"     ;
-logserver_port_tcp="no"     ;
-logserver_port_udp="no"     ;
-time_server_waiting="9s"    ;
-allow_string_denied="no"     ;
-allow_string_allowed="no"   ;
-allow_dmz_ip4="no"    ;
-allow_dmz_ip6="no"    ;
-allow_forward_ip4="no"    ;
-allow_forward_ip6="no"    ;
-allow_gateway_ip4="no"    ;
-allow_gateway_ip6="no"    ;
-allow_input_all="no"    ;
-allow_input_bandwidth="no"    ;
-allow_input_maxconnect="no"    ;
-allow_input_ping="no"     ;
-allow_input_state="no"    ;
-allow_mac_blacklist="no"    ;
-allow_mac_whitelist="no"    ;
-allow_net_blacklist="no"    ;
-allow_net_whitelist="no"     ;
-allow_others_protocols="no"     ;
-allow_output_all="no"     ;
-allow_output_bandwidth="no"     ;
-allow_output_gid="no"     ;
-allow_output_maxconnect="no"     ;
-allow_output_ping="no"     ;
-allow_output_state="no"     ;
-allow_output_uid="no"     ;
-####
-####
-config_string_algoritmo="kpm"
-config_string_denied=".fb.com,.facebook.com,xxx.html" ;
-config_string_allowed="one-string-that-like-how-a-passord,sourceforge.net"  ;
-config_gateway_ip4="0/0"    ;
-config_gateway_ip6="::/0"    ;
-config_dmz_ip4=""     ;
-config_dmz_ip6=""     ;
-config_input_bandwidth="12512"     ;
-config_input_maxconnect="72"     ;
-config_input_state="new,related,established"     ;
-config_mac_blacklist=""     ;
-config_mac_whitelist=""     ;
-config_net_blacklist="yandex.com,baidu.com,google.com"     ;
-config_net_whitelist="deb.debian.org"     ;
-config_others_protocols="icmp,igmp"     ;
-config_output_bandwidth="512"     ;
-config_output_gid="root"     ;
-config_output_maxconnect="72"     ;
-config_output_state="new,related,established"     ;
-config_output_uid="root"     ;
-config_ipv4_netclient="0/0"     ;
-config_ipv4_netserver="0/0"     ;
-config_ipv6_netclient="::/0"     ;
-config_ipv6_netserver="::/0"     ;
-####
-####
-title_md="### " ;
-text_md="  " ;
-text_ok="[ _ok_ ]"
-text_info="[ info ]"
-text_fail="[ fail ]"
-head_waiting_all=" [ Wait several seconds.. ]  [ press control-c to cancel ] "
-head_waiting_txt="$title_md $text_info [ txt ] $head_waiting_all "
-head_waiting_narrow="$title_md $text_info [ narrow ] $head_waiting_all "
-head_waiting_cli="$title_md $text_info [ cli ] $head_waiting_all "
-head_waiting_gui="$title_md $text_info [ gui ] $head_waiting_all "
-head_waiting_log="$title_md $text_info [ log ] $head_waiting_all "
-head_waiting_pdf="$title_md $text_info [ pdf ] $head_waiting_all "
-head_give_cover="$title_md [ $cmd_file $cmd_version ] [ $X11_OR_WAYLAND ] \
-[ Options: $cmd_realpath options ]"
-give_load="$title_md $text_ok [ Load firewall ] [ Firewall With iptables ]"
-give_preferences="$title_md [ Configure ] [ $cmd_realpath preferences-modify ]"
-nada="$(echo -n)" ; 
-message_without_support="[ Without support for output cli for this option ]"
-message_without_narrow="$title_md $text_fail [ narrow ] $message_without_support"
-message_without_txt="$title_md $text_fail [ txt ] $message_without_support"
-message_without_cli="$title_md $text_fail [ cli ] $message_without_support"
-message_without_gui="$title_md $text_fail [ gui ] $message_without_support"
-message_without_info="$title_md $text_fail [ log ] $message_without_support"
-message_without_null="$title_md $text_fail [ null ] $message_without_support"
-message_without_pdf="$title_md $text_fail [ pdf ] $message_without_support"
-message_without_climenu="$title_md $text_fail [ install or dialog or wiptail]"
-message_without_guimenu="$title_md $text_fail [ install or zenity or yad ]"
-message_without_guiroll="$title_md $text_fail [ install zenity ]"
-####
-####
-#### :rutina-final-system-variables:
 ##########   english: search programs: programs path           ##########
 ##########   spanish: busca los programas: ruta de programas   ##########
 #### :rutina-inicial-command:
@@ -442,10 +312,160 @@ command_zenity="$(command -v zenity)"
 command_zgrep="$(command -v zgrep)"
 ####
 ####
+#### :rutina-final-command:
+##########  english: system-variables: variables to declare     ##########
+##########  spanish: system-variables: variables para declarar  ##########
+#### :rutina-inicial-system-variables:
+####
+####
+without_first_option=""
+launch_rules_firewall="no" 
+allow_use_legacy=""                       
+allow_use_nft="no"                        
+allow_use_ipv4=""                         
+allow_use_ipv6=""                         
+allow_separate_rules=""        
+config_shield_port="22"        
+config_shield_maxtries="10"    
+config_close_deny="DROP"         
+allow_save_autolog=""          
+allow_show_time="no"           
+favorite_text_editor=""        
+favorite_realpath_textdialog=""
+favorite_realpath_graphicalldialog=""
+favorite_text_browser=""
+favorite_date_command=""
+serverip_discover_ipv4="http://httpbin.org/ip"
+serverip_discover_ipv6="http://httpbin.org/ip"
+serverip_iperf_ipv4="ping.online.net"       
+serverport_iperf_ipv4="5200"                
+serverip_iperf_ipv6="ping6.online.net"      
+serverport_iperf_ipv6="5200"
+server_radio_online="https://www.tdtchannels.com/lists/radio.m3u8"
+config_graphicall_width="750"
+config_graphicall_height="550"
+list_rules_conceptual=""   ;
+config_ip4_localhost="127.0.0.1"    ;
+config_ip6_localhost="::1"    ;
+client_port_tcp="ssh,http,https"     ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https"     ;
+server_port_tcp=""     ;
+server_port_udp=""     ;
+allow_shield_maxtries="no"    ;
+config_shield_port="22" ;
+config_shield_maxtries="12"     ;
+logserver_prefix_input="fwlog-input::"     ;
+logserver_prefix_output="fwlog-output::"     ;
+logserver_port_tcp="no"     ;
+logserver_port_udp="no"     ;
+time_server_waiting="9s"    ;
+allow_string_denied="no"     ;
+allow_string_allowed="no"   ;
+allow_dmz_ip4="no"    ;
+allow_dmz_ip6="no"    ;
+allow_forward_ip4="no"    ;
+allow_forward_ip6="no"    ;
+allow_gateway_ip4="no"    ;
+allow_gateway_ip6="no"    ;
+allow_input_all="no"    ;
+allow_input_bandwidth="no"    ;
+allow_input_maxconnect="no"    ;
+allow_input_ping="no"     ;
+allow_input_state="no"    ;
+allow_mac_blacklist="no"    ;
+allow_mac_whitelist="no"    ;
+allow_net_blacklist="no"    ;
+allow_net_whitelist="no"     ;
+allow_others_protocols="no"     ;
+allow_output_all="no"     ;
+allow_output_bandwidth="no"     ;
+allow_output_gid="no"     ;
+allow_output_maxconnect="no"     ;
+allow_output_ping="no"     ;
+allow_output_state="no"     ;
+allow_output_uid="no"     ;
+####
+####
+config_string_algoritmo="kpm"
+config_string_denied=".fb.com,.facebook.com,xxx.html" ;
+config_string_allowed="one-string-that-like-how-a-passord,sourceforge.net"  ;
+config_gateway_ip4="0/0"    ;
+config_gateway_ip6="::/0"    ;
+config_dmz_ip4=""     ;
+config_dmz_ip6=""     ;
+config_input_bandwidth="12512"     ;
+config_input_maxconnect="72"     ;
+config_input_state="new,related,established"     ;
+config_mac_blacklist=""     ;
+config_mac_whitelist=""     ;
+config_net_blacklist="yandex.com,baidu.com,google.com"     ;
+config_net_whitelist="deb.debian.org"     ;
+config_others_protocols="icmp,igmp"     ;
+config_output_bandwidth="512"     ;
+config_output_gid="root"     ;
+config_output_maxconnect="72"     ;
+config_output_state="new,related,established"     ;
+config_output_uid="root"     ;
+config_ipv4_netclient="0/0"     ;
+config_ipv4_netserver="0/0"     ;
+config_ipv6_netclient="::/0"     ;
+config_ipv6_netserver="::/0"     ;
+####
+#### headers
+####
+title_md="### " ;
+text_md="  " ;
+text_ok="[ _ok_ ]"
+text_info="[ info ]"
+text_fail="[ fail ]"
+head_waiting_all=" [ Wait several seconds.. ]  [ press control-c to cancel ] "
+head_waiting_txt="$title_md $text_info [ txt ] $head_waiting_all "
+head_waiting_narrow="$title_md $text_info [ narrow ] $head_waiting_all "
+head_waiting_cli="$title_md $text_info [ cli ] $head_waiting_all "
+head_waiting_gui="$title_md $text_info [ gui ] $head_waiting_all "
+head_waiting_log="$title_md $text_info [ log ] $head_waiting_all "
+head_waiting_pdf="$title_md $text_info [ pdf ] $head_waiting_all "
+head_give_cover="$title_md [ $cmd_file $cmd_version ] [ $X11_OR_WAYLAND ] \
+[ Options: $cmd_realpath options ]"
+give_load="$title_md $text_ok [ Load firewall ] [ Firewall With iptables ]"
+give_preferences="$title_md [ Configure ] [ $cmd_realpath preferences-modify ]"
+nada="$(echo -n)" ; 
+message_without_support="[ Without support for output cli for this option ]"
+message_without_narrow="$title_md $text_fail [ narrow ] $message_without_support"
+message_without_txt="$title_md $text_fail [ txt ] $message_without_support"
+message_without_cli="$title_md $text_fail [ cli ] $message_without_support"
+message_without_gui="$title_md $text_fail [ gui ] $message_without_support"
+message_without_info="$title_md $text_fail [ log ] $message_without_support"
+message_without_null="$title_md $text_fail [ null ] $message_without_support"
+message_without_pdf="$title_md $text_fail [ pdf ] $message_without_support"
+message_without_climenu="$title_md $text_fail [ install or dialog or wiptail]"
+message_without_guimenu="$title_md $text_fail [ install or zenity or yad ]"
+message_without_guiroll="$title_md $text_fail [ install zenity ]"
+####
+#### run date
+####
 show_actual_date="$($command_date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"
 ####
+#### proxy file
 ####
-#### :rutina-final-command:
+file_conf_clientproxy="/etc/fwiptables-proxy"
+####
+#### web adblock
+####
+web_blacklist_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
+web_blacklist_mvps="http://winhelp2002.mvps.org/hosts.txt"
+web_blacklist_adaway="https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
+web_blacklist_stevenblack="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+####
+#### file adblock
+####
+file_blacklist_fademind="/etc/hosts.blacklist_fademind"
+file_blacklist_mvps="/etc/hosts.blacklist_mvps"
+file_blacklist_fademind="/etc/hosts.blacklist_adaway"
+file_blacklist_stevenblack="/etc/hosts.blacklist_stevenblack"
+####
+####
+#### :rutina-final-system-variables:
 ##########  english: files:    files and folders from fwiptables          ##########
 ##########  spanish: archivos: archivos y carpetas desde fwiptables       ##########
 #### :rutina-inicial-files:
@@ -1757,20 +1777,23 @@ exit; fi
 ####
 if [ "$first_option" == "expert-conf-clientproxy" ]; then 
 echo "$title_md $text_info [ Launch: $cmd_realpath $first_option user:pass@ip:port ]"
-theproxy="/etc/fwiptables-proxy" ; set_on_proxy="$second_option" 
-echo "$title_md File generated by fwiptables expert-conf-clientproxy user:pass@ip:port" &> $theproxy
-echo "$title_md Launch proxy user:pass@ip:port with: source $theproxy" &>> $theproxy
-echo "declare -x all_proxy=socks5://$set_on_proxy" &>> $theproxy
-echo "declare -x ftp_proxy=ftp://$set_on_proxy" &>> $theproxy
-echo "declare -x http_proxy=http://$set_on_proxy" &>> $theproxy
-echo "declare -x https_proxy=https://$set_on_proxy" &>> $theproxy
-echo "declare -x ALL_PROXY=socks5://$set_on_proxy" &>> $theproxy
-echo "declare -x FTP_PROXY=ftp://$set_on_proxy" &>> $theproxy
-echo "declare -x HTTP_PROXY=http://$set_on_proxy" &>> $theproxy
-echo "declare -x HTTPS_PROXY=https://$set_on_proxy" &>> $theproxy
+set_on_proxy="$second_option" 
+echo "$title_md File generated by fwiptables \
+expert-conf-clientproxy user:pass@ip:port" &> $file_conf_clientproxy 
+echo "$title_md Launch proxy user:pass@ip:port \
+with: source $file_conf_clientproxy" &>> $file_conf_clientproxy 
+echo "declare -x all_proxy=socks5://$2" &>> $file_conf_clientproxy 
+echo "declare -x ftp_proxy=ftp://$2" &>> $file_conf_clientproxy 
+echo "declare -x http_proxy=http://$2" &>> $file_conf_clientproxy 
+echo "declare -x https_proxy=https://$2" &>> $file_conf_clientproxy 
+echo "declare -x ALL_PROXY=socks5://$2" &>> $file_conf_clientproxy 
+echo "declare -x FTP_PROXY=ftp://$2" &>> $file_conf_clientproxy 
+echo "declare -x HTTP_PROXY=http://$2" &>> $file_conf_clientproxy 
+echo "declare -x HTTPS_PROXY=https://$2" &>> $file_conf_clientproxy 
 ###
 ###
-if [ -f "$theproxy" ]; then echo "$title_md" ; cat $theproxy ; fi
+if [ -f "$file_conf_clientproxy" ]; then echo "$title_md file: $file_conf_clientproxy" 
+cat $file_conf_clientproxy  ; fi
 ###
 ###
 exit ; fi
@@ -1793,11 +1816,12 @@ listado_proxy="$($command_sudo -u root export | grep -i \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ]; then
 echo "$title_md [ note ] [ Actually:  ] Without proxy in export variables"
 else $command_sudo -u root export | grep -i "_PROXY" ; fi
-theproxy="/etc/fwiptables-proxy" 
-if [ -f $theproxy ]; then echo ; echo ;
-echo "$title_md $text_info [ if it is valid proxy and then launch: source $theproxy ]"
-cat $theproxy
-else "$title_md $text_info [ if it wants conf proxy and then launch: $cmd_basename expert-conf-clientproxy ]"
+if [ -f $file_conf_clientproxy ]; then echo ; echo ;
+echo "$title_md $text_info [ if it is valid proxy and then \
+launch: source $file_conf_clientproxy ]"
+cat $file_conf_clientproxy
+else "$title_md $text_info [ if it wants conf proxy and then \
+launch: $cmd_basename expert-conf-clientproxy ]"
 fi
 exit ; fi
 ####
@@ -5200,21 +5224,17 @@ exit; fi
 ####
 if   [ "$first_option" == "expert-upgrade-adblock" ]; then 
 echo "$title_md [ $first_option ]  [ get: blacklist files / adblock files / hosts deny files ]"
-blacklist_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
-blacklist_mvps="http://winhelp2002.mvps.org/hosts.txt"
-blacklist_adaway="https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
-blacklist_stevenblack="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
 ####
 ####
 echo "$title_md [ Waiting a moment ] [ downloading blacklist to /etc/hosts.blacklist ] "
 echo "$title_md [ Step 1/4 ] [ downloading hosts fademind to /etc/hosts.blacklist_fademind ]"
-$command_curl $blacklist_fademind -s -L -o /etc/hosts.blacklist_fademind
+$command_curl $web_blacklist_fademind -s -L -o $file_blacklist_fademind
 echo "$title_md [ Step 2/4 ] [ downloading hosts mvps to /etc/hosts.blacklist_mvps ]"
-$command_curl $blacklist_mvps -s -L -o /etc/hosts.blacklist_mvps
+$command_curl $web_blacklist_mvps -s -L -o $file_blacklist_mvps
 echo "$title_md [ Step 3/4 ] [ downloading hosts adaway to /etc/hosts.blacklist_adaway ]"
-$command_curl $blacklist_adaway -s -L -o /etc/hosts.blacklist_adaway
+$command_curl $web_blacklist_adaway -s -L -o $file_blacklist_fademind
 echo "$title_md [ Step 4/4 ] [ downloading hosts stevenblack to /etc/hosts.blacklist_stevenblack ]"
-$command_curl $blacklist_stevenblack -s -L -o /etc/hosts.blacklist_stevenblack
+$command_curl $web_blacklist_stevenblack -s -L -o $file_blacklist_stevenblack
 ####
 ####
 exit; fi
