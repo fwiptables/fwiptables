@@ -313,6 +313,152 @@ command_zgrep="$(command -v zgrep)"
 ####
 ####
 #### :rutina-final-command:
+##########  english: files:    files and folders from fwiptables          ##########
+##########  spanish: archivos: archivos y carpetas desde fwiptables       ##########
+#### :rutina-inicial-files:
+####
+####
+#### english: permanent directory:   permanent directory and path directory config files
+#### spanish: directorio permanente: directorios permanentes y ruta de directorios 
+####
+####
+#### english: directory tree 
+#### spanish: arbol de directorio
+####
+####
+####
+#### prepare directory data $HOME OR /root
+####
+if [ "$HOME" == "$NULL" ] ; then default_root_home="/root" 
+else default_root_home="$HOME"; fi
+####
+#### set directory data cache
+####
+directory_cache_run="/run/$cmd_file"  ### ununsed
+directory_cache_home="$default_root_home/.cache/$cmd_file"
+if [ ! -d "$directory_cache_home" ]; 
+then mkdir -p $directory_cache_home &> /dev/null ; fi
+####
+####
+#### #### variables tree and .cache ####
+####
+#### raiz .cache 
+directory_cache_necesary="$directory_cache_home"
+#### tree .cache
+default_directory_cache="$directory_cache_necesary"
+####
+#### #### variables tree .config ####
+####
+#### raiz .config
+directory_data_necesary="$default_root_home/.config/$cmd_file"
+#### tree .config
+default_directory_template="$directory_data_necesary/fwiptables-template"
+default_directory_control="$directory_data_necesary/fwiptables-control"
+default_directory_custom="$directory_data_necesary/fwiptables-custom"
+default_directory_preferences="$directory_data_necesary/fwiptables-preferences"
+default_directory_autolog="$directory_data_necesary/fwiptables-autolog"
+default_directory_log="$directory_data_necesary/fwiptables-log"
+default_directory_pdf="$directory_data_necesary/fwiptables-pdf"
+default_directory_wpa="$directory_data_necesary/fwiptables-wpa"
+default_directory_benchmarkram="$directory_data_necesary/fwiptables-benchmarkram"
+default_directory_benchmarkdisk="$directory_data_necesary/fwiptables-benchmarkdisk"
+default_directory_radio="$directory_data_necesary/fwiptables-radio"
+default_directory_proxy="$directory_data_necesary/fwiptables-proxy"
+default_directory_adblock="$directory_data_necesary/fwiptables-adblock"
+####
+####
+#### english: templates cfg
+#### spanish: plantillas cfg
+####
+####
+default_fullcfg_eng="$default_directory_template/default-full-english.cfg"
+default_fullcfg_spa="$default_directory_template/default-full-spanish.cfg"
+default_minicfg_eng="$default_directory_template/default-mini-english.cfg"
+default_minicfg_spa="$default_directory_template/default-mini-spanish.cfg"
+####
+####
+#### english: default config to shell
+#### spanish: default config to shell
+####
+####
+file_default_preferences="$default_directory_preferences/default-preferences-$cmd_version"
+####
+####
+#### english: file log:     log files and path files config files
+#### spanish: archivos log: archivos log y ruta de los archivos de configuracion
+####
+####
+file_default_filelog="$default_directory_log/default_filelog-$cmd_version"
+file_default_autolog="$default_directory_autolog/default_autolog-$cmd_version"
+####
+####
+#### stablished which is the cache temporal.
+####
+#### directory_cache="$directory_cache_home"
+####
+#### stablished a new variable
+####
+#### default_directory_temporal="$directory_cache"
+####
+####
+#### english: temporal files
+#### spanish: archivos temporales
+####
+####
+temporal_text="$default_directory_cache/$show_actual_date-text.txt"
+temporal_textfinal="$default_directory_cache/$show_actual_date-text-final.txt"
+temporal_gui="$default_directory_cache/$show_actual_date-textfinal.txt"
+temporal_guifinal="$default_directory_cache/$show_actual_date-text-final.txt"
+output_log="$default_directory_cache/$show_actual_date-textfinal.txt"
+output_logfinal="$default_directory_cache/$show_actual_date-text-final.txt"
+####
+####
+#### :rutina-final-files:
+##########   english: if sane config directory                       ##########
+##########   spanish: comprobar sanos directorios de configuracion   ##########
+#### :rutina-inicial-dir-sane:
+####
+####
+command_mkdir="$(command -v mkdir)"
+####
+#### cache
+if [ ! -d "$default_directory_cache" ]; then
+$command_mkdir -p $default_directory_cache &> /dev/null ; fi
+####
+#### data
+if [ ! -d "$default_directory_data_necesary" ]; then
+$command_mkdir -p $default_directory_data_necesary &> /dev/null ; fi
+####
+####
+if [ ! -d "$default_directory_control" ]; then 
+$command_mkdir -p "$default_directory_control" &> /dev/null ; fi
+if [ ! -d "$default_directory_template" ]; then
+$command_mkdir -p "$default_directory_template" &> /dev/null ; fi
+if [ ! -d "$default_directory_custom" ]; then
+$command_mkdir -p "$default_directory_custom" &> /dev/null ; fi
+if [ ! -d "$default_directory_preferences" ]; then
+$command_mkdir -p "$default_directory_preferences" &> /dev/null ; fi
+if [ ! -d "$default_directory_autolog" ]; then
+$command_mkdir -p "$default_directory_autolog" &> /dev/null ; fi
+if [ ! -d "$default_directory_log" ]; then
+$command_mkdir -p "$default_directory_log" &> /dev/null ; fi
+if [ ! -d "$default_directory_wpa" ]; then
+$command_mkdir -p "$default_directory_wpa" &> /dev/null ; fi
+if [ ! -d "$default_directory_pdf" ]; then
+$command_mkdir -p "$default_directory_pdf" &> /dev/null ; fi
+if [ ! -d "$default_directory_benchmarkram" ]; then
+$command_mkdir -p "$default_directory_benchmarkram" &> /dev/null ; fi
+if [ ! -d "$default_directory_benchmarkdisk" ]; then
+$command_mkdir -p "$default_directory_benchmarkdisk" &> /dev/null ; fi
+if [ ! -d "$default_directory_radio" ]; then
+$command_mkdir -p "$default_directory_radio" &> /dev/null ; fi
+if [ ! -d "$default_directory_proxy" ]; then
+$command_mkdir -p "$default_directory_proxy" &> /dev/null ; fi
+if [ ! -d "$default_directory_adblock" ]; then
+$command_mkdir -p "$default_directory_adblock" &> /dev/null ; fi
+####
+####
+#### :rutina-final-dir-sane:
 ##########  english: system-variables: variables to declare     ##########
 ##########  spanish: system-variables: variables para declarar  ##########
 #### :rutina-inicial-system-variables:
@@ -448,7 +594,7 @@ show_actual_date="$($command_date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"
 ####
 #### proxy file
 ####
-file_conf_clientproxy="/etc/fwiptables-proxy"
+file_conf_clientproxy="$default_directory_proxy/fwiptables-proxy"
 ####
 #### web adblock
 ####
@@ -459,153 +605,13 @@ web_blacklist_stevenblack="https://raw.githubusercontent.com/StevenBlack/hosts/m
 ####
 #### file adblock
 ####
-file_blacklist_fademind="/etc/hosts.blacklist_fademind"
-file_blacklist_mvps="/etc/hosts.blacklist_mvps"
-file_blacklist_fademind="/etc/hosts.blacklist_adaway"
-file_blacklist_stevenblack="/etc/hosts.blacklist_stevenblack"
+file_blacklist_fademind="$default_directory_adblock/hosts.blacklist_fademind"
+file_blacklist_mvps="$default_directory_adblock/hosts.blacklist_mvps"
+file_blacklist_fademind="$default_directory_adblock/hosts.blacklist_adaway"
+file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenblack"
 ####
 ####
 #### :rutina-final-system-variables:
-##########  english: files:    files and folders from fwiptables          ##########
-##########  spanish: archivos: archivos y carpetas desde fwiptables       ##########
-#### :rutina-inicial-files:
-####
-####
-#### english: permanent directory:   permanent directory and path directory config files
-#### spanish: directorio permanente: directorios permanentes y ruta de directorios 
-####
-####
-#### english: directory tree 
-#### spanish: arbol de directorio
-####
-####
-####
-#### prepare directory data $HOME OR /root
-####
-if [ "$HOME" == "$NULL" ] ; then default_root_home="/root" 
-else default_root_home="$HOME"; fi
-####
-#### set directory data cache
-####
-directory_cache_run="/run/$cmd_file"  ### ununsed
-directory_cache_home="$default_root_home/.cache/$cmd_file"
-if [ ! -d "$directory_cache_home" ]; 
-then mkdir -p $directory_cache_home &> /dev/null ; fi
-####
-####
-#### #### variables tree and .cache ####
-####
-#### raiz .cache 
-directory_cache_necesary="$directory_cache_home"
-#### tree .cache
-default_directory_cache="$directory_cache_necesary"
-####
-#### #### variables tree .config ####
-####
-#### raiz .config
-directory_data_necesary="$default_root_home/.config/$cmd_file"
-#### tree .config
-default_directory_template="$directory_data_necesary/fwiptables-template"
-default_directory_control="$directory_data_necesary/fwiptables-control"
-default_directory_custom="$directory_data_necesary/fwiptables-custom"
-default_directory_preferences="$directory_data_necesary/fwiptables-preferences"
-default_directory_autolog="$directory_data_necesary/fwiptables-autolog"
-default_directory_log="$directory_data_necesary/fwiptables-log"
-default_directory_pdf="$directory_data_necesary/fwiptables-pdf"
-default_directory_wpa="$directory_data_necesary/fwiptables-wpa"
-default_directory_benchmarkram="$directory_data_necesary/fwiptables-benchmarkram"
-default_directory_benchmarkdisk="$directory_data_necesary/fwiptables-benchmarkdisk"
-default_directory_radio="$directory_data_necesary/fwiptables-radio"
-####
-####
-#### english: templates cfg
-#### spanish: plantillas cfg
-####
-####
-default_fullcfg_eng="$default_directory_template/default-full-english.cfg"
-default_fullcfg_spa="$default_directory_template/default-full-spanish.cfg"
-default_minicfg_eng="$default_directory_template/default-mini-english.cfg"
-default_minicfg_spa="$default_directory_template/default-mini-spanish.cfg"
-####
-####
-#### english: default config to shell
-#### spanish: default config to shell
-####
-####
-file_default_preferences="$default_directory_preferences/default-preferences-$cmd_version"
-####
-####
-#### english: file log:     log files and path files config files
-#### spanish: archivos log: archivos log y ruta de los archivos de configuracion
-####
-####
-file_default_filelog="$default_directory_log/default_filelog-$cmd_version"
-file_default_autolog="$default_directory_autolog/default_autolog-$cmd_version"
-####
-####
-#### stablished which is the cache temporal.
-####
-#### directory_cache="$directory_cache_home"
-####
-#### stablished a new variable
-####
-#### default_directory_temporal="$directory_cache"
-####
-####
-#### english: temporal files
-#### spanish: archivos temporales
-####
-####
-temporal_text="$default_directory_cache/$show_actual_date-text.txt"
-temporal_textfinal="$default_directory_cache/$show_actual_date-text-final.txt"
-temporal_gui="$default_directory_cache/$show_actual_date-textfinal.txt"
-temporal_guifinal="$default_directory_cache/$show_actual_date-text-final.txt"
-output_log="$default_directory_cache/$show_actual_date-textfinal.txt"
-output_logfinal="$default_directory_cache/$show_actual_date-text-final.txt"
-####
-####
-#### :rutina-final-files:
-##########   english: if sane config directory                       ##########
-##########   spanish: comprobar sanos directorios de configuracion   ##########
-#### :rutina-inicial-dir-sane:
-####
-####
-command_mkdir="$(command -v mkdir)"
-####
-#### cache
-if [ ! -d "$default_directory_cache" ]; then
-$command_mkdir -p $default_directory_cache &> /dev/null ; fi
-####
-#### data
-if [ ! -d "$default_directory_data_necesary" ]; then
-$command_mkdir -p $default_directory_data_necesary &> /dev/null ; fi
-####
-####
-if [ ! -d "$default_directory_control" ]; then 
-$command_mkdir -p "$default_directory_control" &> /dev/null ; fi
-if [ ! -d "$default_directory_template" ]; then
-$command_mkdir -p "$default_directory_template" &> /dev/null ; fi
-if [ ! -d "$default_directory_custom" ]; then
-$command_mkdir -p "$default_directory_custom" &> /dev/null ; fi
-if [ ! -d "$default_directory_preferences" ]; then
-$command_mkdir -p "$default_directory_preferences" &> /dev/null ; fi
-if [ ! -d "$default_directory_autolog" ]; then
-$command_mkdir -p "$default_directory_autolog" &> /dev/null ; fi
-if [ ! -d "$default_directory_log" ]; then
-$command_mkdir -p "$default_directory_log" &> /dev/null ; fi
-if [ ! -d "$default_directory_wpa" ]; then
-$command_mkdir -p "$default_directory_wpa" &> /dev/null ; fi
-if [ ! -d "$default_directory_pdf" ]; then
-$command_mkdir -p "$default_directory_pdf" &> /dev/null ; fi
-if [ ! -d "$default_directory_benchmarkram" ]; then
-$command_mkdir -p "$default_directory_benchmarkram" &> /dev/null ; fi
-if [ ! -d "$default_directory_benchmarkdisk" ]; then
-$command_mkdir -p "$default_directory_benchmarkdisk" &> /dev/null ; fi
-if [ ! -d "$default_directory_radio" ]; then
-$command_mkdir -p "$default_directory_radio" &> /dev/null ; fi
-####
-####
-#### :rutina-final-dir-sane:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
 #### :rutina-inicial-update-variables:
@@ -1777,23 +1783,24 @@ exit; fi
 ####
 if [ "$first_option" == "expert-conf-clientproxy" ]; then 
 echo "$title_md $text_info [ Launch: $cmd_realpath $first_option user:pass@ip:port ]"
-set_on_proxy="$second_option" 
+if [ "$second_option" == "$NULL" ] ; then second_option="without-proxy" ; exit ; fi 
 echo "$title_md File generated by fwiptables \
-expert-conf-clientproxy user:pass@ip:port" &> $file_conf_clientproxy 
+expert-conf-clientproxy user:pass@ip:port" &> $file_conf_clientproxy-$second_option 
 echo "$title_md Launch proxy user:pass@ip:port \
-with: source $file_conf_clientproxy" &>> $file_conf_clientproxy 
-echo "declare -x all_proxy=socks5://$2" &>> $file_conf_clientproxy 
-echo "declare -x ftp_proxy=ftp://$2" &>> $file_conf_clientproxy 
-echo "declare -x http_proxy=http://$2" &>> $file_conf_clientproxy 
-echo "declare -x https_proxy=https://$2" &>> $file_conf_clientproxy 
-echo "declare -x ALL_PROXY=socks5://$2" &>> $file_conf_clientproxy 
-echo "declare -x FTP_PROXY=ftp://$2" &>> $file_conf_clientproxy 
-echo "declare -x HTTP_PROXY=http://$2" &>> $file_conf_clientproxy 
-echo "declare -x HTTPS_PROXY=https://$2" &>> $file_conf_clientproxy 
+with: source $file_conf_clientproxy" &>> $file_conf_clientproxy-$second_option 
+echo "declare -x all_proxy=socks5://$2" &>> $file_conf_clientproxy-$second_option 
+echo "declare -x ftp_proxy=ftp://$2" &>> $file_conf_clientproxy-$second_option 
+echo "declare -x http_proxy=http://$2" &>> $file_conf_clientproxy-$second_option 
+echo "declare -x https_proxy=https://$2" &>> $file_conf_clientproxy-$second_option 
+echo "declare -x ALL_PROXY=socks5://$2" &>> $file_conf_clientproxy-$second_option 
+echo "declare -x FTP_PROXY=ftp://$2" &>> $file_conf_clientproxy-$second_option 
+echo "declare -x HTTP_PROXY=http://$2" &>> $file_conf_clientproxy-$second_option 
+echo "declare -x HTTPS_PROXY=https://$2" &>> $file_conf_clientproxy-$second_option 
 ###
 ###
-if [ -f "$file_conf_clientproxy" ]; then echo "$title_md file: $file_conf_clientproxy" 
-cat $file_conf_clientproxy  ; fi
+if [ -f "$file_conf_clientproxy-$second_option" ];
+then echo "$title_md file: $file_conf_clientproxy-$second_option" 
+cat $file_conf_clientproxy-$second_option   ; fi
 ###
 ###
 exit ; fi
@@ -1816,13 +1823,15 @@ listado_proxy="$($command_sudo -u root export | grep -i \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ]; then
 echo "$title_md [ note ] [ Actually:  ] Without proxy in export variables"
 else $command_sudo -u root export | grep -i "_PROXY" ; fi
-if [ -f $file_conf_clientproxy ]; then echo ; echo ;
+if [ ! -f "$file_conf_clientproxy-$2"  ] ; 
+echo echo ; echo "$title_md list files from $directory_default_proxy"
+then ls $default_directory_proxy ; echo ; exit ; fi 
+if [ -f $file_conf_clientproxy-$second_option ]; then echo ; echo ;
 echo "$title_md $text_info [ if it is valid proxy and then \
-launch: source $file_conf_clientproxy ]"
-cat $file_conf_clientproxy
+launch: source $file_conf_clientproxy-$second_option ]"
+cat $file_conf_clientproxy-$second_option
 else "$title_md $text_info [ if it wants conf proxy and then \
-launch: $cmd_basename expert-conf-clientproxy ]"
-fi
+launch: $cmd_basename expert-conf-clientproxy ]" ; fi
 exit ; fi
 ####
 ####
