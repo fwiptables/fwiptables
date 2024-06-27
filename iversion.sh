@@ -1636,7 +1636,7 @@ echo "$title_md example1:list-options example2:list4 example3:ip4"
 echo "$title_md example4:speed-ip4 example5:sockets example6:gui-roll"
 echo "$title_md example7:gui-menu-yad example8:gui-shell-yad"
 echo "$title_md" 
-echo "allow_expert_commands=no                        ## or void or no"
+echo "allow_expert_commands=                          ## or void or no"
 echo "$title_md" 
 echo "$title_md $title_md default firewall"
 echo "allow_use_legacy=                               ## or void or no"
@@ -1808,21 +1808,21 @@ expert-conf-clientproxy user:pass@ip:port" \
 &> $default_directory_proxy/fwiptables-proxy-$second_option
 echo "$title_md This filename is $default_directory_proxy/fwiptables-proxy-$second_option" \
 &>> $default_directory_proxy/fwiptables-proxy-$second_option
-echo "declare -x all_proxy=socks5://$2" \
+echo "declare -x all_proxy=$2" \
 &>> $default_directory_proxy/fwiptables-proxy-$second_option
-echo "declare -x ftp_proxy=ftp://$2" \
+echo "declare -x ftp_proxy=$2" \
 &>> $default_directory_proxy/fwiptables-proxy-$second_option
-echo "declare -x http_proxy=http://$2" \
+echo "declare -x http_proxy=$2" \
 &>> $default_directory_proxy/fwiptables-proxy-$second_option
-echo "declare -x https_proxy=https://$2" \
+echo "declare -x https_proxy=$2" \
 &>> $default_directory_proxy/fwiptables-proxy-$second_option
-echo "declare -x ALL_PROXY=socks5://$2" \
+echo "declare -x ALL_PROXY=$2" \
 &>> $default_directory_proxy/fwiptables-proxy-$second_option
-echo "declare -x FTP_PROXY=ftp://$2" \
+echo "declare -x FTP_PROXY=$2" \
 &>> $default_directory_proxy/fwiptables-proxy-$second_option
-echo "declare -x HTTP_PROXY=http://$2" \
+echo "declare -x HTTP_PROXY=$2" \
 &>> $default_directory_proxy/fwiptables-proxy-$second_option
-echo "declare -x HTTPS_PROXY=https://$2" \
+echo "declare -x HTTPS_PROXY=$2" \
 &>> $default_directory_proxy/fwiptables-proxy-$second_option
 echo
 ###
