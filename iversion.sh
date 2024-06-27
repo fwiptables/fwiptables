@@ -1829,10 +1829,10 @@ echo "$title_md [ Editable:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
 echo "$title_md [ configure: ] $cmd_basename expert-conf-clientproxy user:pass@ip:port"
 ####
 ####
-listado_proxy="$($command_sudo -u root export | grep -i \_PROXY | wc -l)"
+listado_proxy="$(export | grep -i \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ]; then
-echo "$title_md [ Actually:  ] Without proxy in export variables"
-else $command_sudo -u root export | grep -i "_PROXY" ; fi
+echo "$title_md [ Actually: ] Without proxy in export variables"
+else export | grep -i "_PROXY" ; fi
 echo
 ####
 ####
@@ -1850,6 +1850,63 @@ exit ; fi
 ####
 ####
 #### :rutina-final-expert-show-clientproxy
+##########    english: expert-active-clientproxy: get net info               ##########
+##########    spanish: expert-active-clientproxy: da informacion de la red   ##########
+#### :rutina-inicial-expert-deactive-clientproxy
+####
+####
+if [ "$first_option" == "expert-active-clientproxy" ]; then echo
+####
+####
+echo "$title_md there is before "
+declare -x | grep -i \_PROXY
+####
+####
+if [ -f "$default_directory_proxy/$second_option" ]     ; 
+then source $default_directory_proxy/$second_option     ;
+else echo "$title_md Choose above one to second-option" ;
+ls $default_directory_proxy/                            ;
+fi
+####
+####
+echo "$title_md there is after "
+declare -x | grep -i \_PROXY
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-expert-active-clientproxy
+##########    english: expert-deactive-clientproxy: get net info               ##########
+##########    spanish: expert-deactive-clientproxy: da informacion de la red   ##########
+#### :rutina-inicial-expert-deactive-clientproxy
+####
+####
+if [ "$first_option" == "expert-deactive-clientproxy" ]; then echo
+####
+####
+echo "$title_md there is before "
+declare -x | grep -i \_PROXY
+####
+####
+export -n all_proxy
+export -n ftp_proxy
+export -n http_proxy
+export -n https_proxy
+export -n ALL_PROXY
+export -n FTP_PROXY
+export -n HTTP_PROXY
+export -n HTTPS_PROXY
+####
+####
+echo "$title_md there is after "
+declare -x | grep -i \_PROXY
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-expert-deactive-clientproxy
 ##########    english: expert-show-resolve : get net info               ##########
 ##########    spanish: expert-show-resolve : da informacion de la red   ##########
 #### :rutina-inicial-expert-show-resolve
