@@ -1718,14 +1718,15 @@ else public_ip4="$($command_curl -k -s -4 $serverip_discover_ipv4 -w '\n'| head 
 if [ "$public_ip4" == "<!DOCTYPE html>" ]
 then echo "fail: public ip hidden for dns server" ;
 else echo "$text_md   $public_ip4"; fi; fi
-echo
-echo "$title_md $text_info ### [ Proxy tunnel ] [ Address proxy ] ###"
-echo "$title_md [ note ] [ $cmd_basename with: OR expert-show-clientproxy OR expert-conf-clientproxy ]"
+#echo
+#echo "$title_md $text_info ### [ Proxy tunnel ] [ Address proxy ] ###"
+#echo "$title_md Launch $cmd_basename with: OR expert-show-clientproxy OR expert-conf-clientproxy"
 echo
 echo "$title_md $text_info ### [ Domain resolve ] [ nameserver and search ] ###"
 if [ -f /etc/resolv.conf ]
 then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"
-cat /etc/resolv.conf | $command_grep -E "nameserver|search"      ; fi
+cat /etc/resolv.conf | $command_grep -E "nameserver|search" | \
+$command_awk '{print "     " $1 " " $2}' ; fi
 if [ -f /etc/resolv.conf.head ]
 then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
 if [ -f /etc/resolv.conf.body ]
@@ -5824,7 +5825,7 @@ echo "$title_md $text_fail [ Install ss command ]"; exit; fi
 if [ "$command_awk" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Install awk command ]"; exit; fi
 $command_ss -l  | $command_grep "\:\*" | $command_grep LISTEN |\
-$command_awk '{print $1 " " $2 " " $5}' ;
+$command_awk '{print "     " $1 " " $2 " " $5}' ;
 exit; fi
 ####
 ####
