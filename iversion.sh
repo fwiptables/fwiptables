@@ -102,7 +102,7 @@ cmd_basename="$(basename $0)"                # only filename
 #### number version
 cmd_year="24"                                # number year version
 cmd_month="06"                               # number mouth version
-cmd_day="dev"                                # number day version
+cmd_day="29"                                 # number day version
 cmd_version="$cmd_year-$cmd_month-$cmd_day"  # final date number version
 #### name location
 cmd_file="fwiptables"                        # filename installed
@@ -2929,13 +2929,13 @@ echo "$text_md modify-custom del-custom all-custom                              
 echo "$title_md  firewall-wallsystem                                                 "
 echo "$text_md client-basic client-web client-ssh client-telnet client-ipp           "
 echo "$text_md client-irc client-git client-vnc client-news client-vpn               "
-echo "$text_md client-torrent client-vpn client-ftp client-proxy                     "
-echo "$text_md client-mail client-tor game-widelands games-udp games-shooter         "
-echo "$text_md game-wesnoth game-minetest game-freeciv lan-tor lan-vpn               "
-echo "$text_md shield-ssh server-ssh server-irc server-vnc server-print              "
-echo "$text_md server-lamp server-news server-ftp server-mail server-webserver       "
-echo "$text_md server-teamspeak server-mumble server-gateway server-sql              "
-echo "$text_md server-asterisk server-proxy server-samba                             "
+echo "$text_md client-torrent client-vpn client-ftp client-proxy client-mail         "
+echo "$text_md client-tor game-widelands games-udp games-shooter game-wesnoth        "
+echo "$text_md game-minetest game-freeciv lan-tor lan-vpn shield-ssh server-ssh      "
+echo "$text_md server-telnet server-irc server-vnc server-print server-webserver     "
+echo "$text_md server-lamp server-news server-ftp server-mail server-teamspeak       "
+echo "$text_md server-mumble server-gateway server-sql server-asterisk server-proxy  "
+echo "$text_md server-samba                                                          "
 echo "$title_md  options-easy                                                        "
 echo "$text_md preferences-read preferences-modify preferences-regen info web        "
 echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date        "
@@ -3175,7 +3175,9 @@ echo "$text_md | games-minetest . launch a one firewall minetest client  "
 echo "$text_md | games-freeciv . launch a one firewall freeciv client  "  
 echo "$text_md | lan-tor . launch a one firewall only tor client  "  
 echo "$text_md | lan-vpn . launch a one firewall only vpn client  "  
+echo "$text_md | shield-ssh . launch a one firewall basic server with shield ssh "  
 echo "$text_md | server-ssh . launch a one firewall basic server  "  
+echo "$text_md | server-telnet . launch a one firewall basic server  "  
 echo "$text_md | server-samba . launch a one firewall basic server  "  
 echo "$text_md | server-vnc . launch a one firewall basic server  "  
 echo "$text_md | server-webserver . launch a one firewall basic server  "  
@@ -3186,7 +3188,6 @@ echo "$text_md | server-ftp . launch a one firewall basic server  "
 echo "$text_md | server-mail . launch a one firewall basic server  "  
 echo "$text_md | server-teamspeak . launch a one firewall basic server  "  
 echo "$text_md | server-mumble . launch a one firewall basic server  "  
-echo "$text_md | server-ssh . launch a one firewall basic server  "  
 echo "$text_md | server-sql . launch a one firewall basic server  "  
 echo "$text_md | server-asterisk . launch a one firewall basic server  "  
 echo "$text_md | server-domain . launch a one firewall basic server  "  
@@ -11532,6 +11533,104 @@ server_port_tcp="ssh" ;
 # config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-server-ssh:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-server-telnet:
+####
+####
+####   #### english: firewall of system server-telnet:
+####   #### spanish: cortafuego del sistema server-telnet:
+####
+####
+if [ "$first_option" == "server-telnet" ]; then
+echo "$title_md $text_info [ loading firewall wallsystem server-telnet ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="wallsystem" ;
+name_firewall="$first_option" ;
+#### english: firewall capacities
+#### english: firewall capacities
+# allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
+#### english: max tries for each hour 
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
+#### english: log port servers
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
+#### server ssh 22/tcp
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,ssh,telnet" ;
+server_port_tcp="ssh,telnet" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_output_uid=root 
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
+fi
+#### :rutina-final-server-telnet:
 #### ##################################################
 #### ##################################################
 #### :rutina-inicial-server-lamp:
