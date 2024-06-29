@@ -2948,8 +2948,8 @@ echo "$title_md $text_md $text_md | Description: $cmd_longdescription           
 ####  expert commands
 ####
 if [ "$allow_expert_commands" == "no" ]
-then echo "$title_md $text_md $text_md | expert: expert deactived in preferences      "
-else echo "$title_md $text_md $text_md | expert: expert actived in preferences        "
+then echo "$title_md $text_md $text_md | expert: expert commands deactived in preferences    "
+else echo "$title_md $text_md $text_md | expert: expert commands actived in preferences      "
 fi
 ####
 ####
