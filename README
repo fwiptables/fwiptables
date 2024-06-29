@@ -134,9 +134,9 @@
    free sockets nodes ip-forward depends code treeconf treecache         
    cleancache notes variables uninstall install version examples         
    utils license-gpl license-lgpl license-bsd                            
-###   expert (deactived for default in preferences)                       
 ###        | Program: fwiptables-version-24-06-29-bash.sh Version: 24-06-29     
 ###        | Description: One Mini Script in one-file wizard                
+###        | expert: expert commands actived in preferences      
   
    
 ###  | optional-output | fwiptables-version-24-06-29-bash.sh optional-ouptut |
