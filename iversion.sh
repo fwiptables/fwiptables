@@ -2216,7 +2216,7 @@ echo "$title_md [ $first_option ] [ Show version ] [ version md ]            "
 echo "$text_md $text_info [ Somes details ]                 "
 echo "$text_md $text_info [ Basename program   ] $cmd_basename               "
 echo "$text_md $text_info [ Realpath program   ] $cmd_realpath               "
-echo "$text_md $text_info [ Number Version     ] $cmd_version                "
+echo "$text_md $text_info [ Date And Version   ] $cmd_version                "
 echo "$text_md $text_info [ Short description  ] $cmd_shortdescription       "
 echo "$text_md $text_info [ Long description   ] $cmd_longdescription        "
 echo "$text_md $text_info [ Developer Actual   ] $cmd_developer              "
@@ -4969,7 +4969,7 @@ exit; fi
 ####
 if [ "$first_option" == "install" ]; then 
 echo "$title_md $text_ok \
-| Installing.. $cmd_file | Version: $cmd_version |"
+| Installing.. $cmd_file | Date And Version: $cmd_version |"
 ####
 ####
 ####  english: copy the file to temporal folder and install
