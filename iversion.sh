@@ -101,7 +101,7 @@ cmd_realpath="$(realpath $0)"                # full routename
 cmd_basename="$(basename $0)"                # only filename
 #### number version
 cmd_year="24"                                # number year version
-cmd_month="06"                               # number mouth version
+cmd_month="07"                               # number mouth version
 cmd_day="dev"                                # number day version
 cmd_version="$cmd_year-$cmd_month-$cmd_day"  # final date number version
 #### name location
@@ -2172,8 +2172,8 @@ if [ "$first_option" == "options-examples" ]; then
 echo "$title_md [ $first_option ] [ List examples ] [ examples md ]"
 echo "$title_md [ Several examples without optional otuput ]"
 echo "$text_md"
-echo "$title_md       [ with optional output ] [ Example Description ]"
-echo "$text_md"
+echo "$title_md       | with optional output | Example Description   "  
+echo "$text_md  "  
 echo "$text_md | depends                  | $cmd_basename depends             "  
 echo "$text_md | List firewall saved      | $cmd_basename names               "  
 echo "$text_md | List configs saved       | $cmd_basename all-custom          "  
@@ -2181,18 +2181,18 @@ echo "$text_md | Get info speed ipv4      | $cmd_basename speed-ip4           "
 echo "$text_md | Show listen sockets      | $cmd_basename sockets             "  
 echo "$text_md | List last options        | $cmd_basename autolog             "   
 echo "$text_md | modify default variables | $cmd_basename preferences-modify  "  
-echo "$text_md"
+echo "$text_md  "  
 echo "$title_md [ Several examples with optional output ]  "  
-echo "$text_md"
-echo "$text_md       [ with optional output ] [ Example Description ]  "   
-echo "$text_md"
+echo "$text_md  "  
+echo "$text_md       | with optional output | Example Description  "   
+echo "$text_md  "  
 echo "$text_md | Example with info        | $cmd_basename txt info             "  
 echo "$text_md | Example with expert      | $cmd_basename txt expert           "  
 echo "$text_md | Example with code ip4    | $cmd_basename cli code ip4         "  
 echo "$text_md | Example with list rules  | $cmd_basename cli lsn4             "  
 echo "$text_md | Example with nodes       | $cmd_basename gui nodes            "  
 echo "$text_md | Example with web browser | $cmd_basename gui web kernel.org   "  
-echo "$text_md"
+echo "$text_md  "
 echo "$text_md | Launch client web firewall in silent   | $cmd_basename silent client-web   "  
 echo "$text_md | List iptables rules with output txt    | $cmd_basename txt ls4             "  
 echo "$text_md | List firewall with output cli whiptail | $cmd_basename cli-wiptail names   "  
@@ -2216,7 +2216,7 @@ echo "$title_md [ $first_option ] [ Show version ] [ version md ]            "
 echo "$text_md $text_info [ Somes details ]                 "
 echo "$text_md $text_info [ Basename program   ] $cmd_basename               "
 echo "$text_md $text_info [ Realpath program   ] $cmd_realpath               "
-echo "$text_md $text_info [ Date And Version   ] $cmd_version                "
+echo "$text_md $text_info [ Date is version    ] $cmd_version                "
 echo "$text_md $text_info [ Short description  ] $cmd_shortdescription       "
 echo "$text_md $text_info [ Long description   ] $cmd_longdescription        "
 echo "$text_md $text_info [ Developer Actual   ] $cmd_developer              "
@@ -4969,7 +4969,7 @@ exit; fi
 ####
 if [ "$first_option" == "install" ]; then 
 echo "$title_md $text_ok \
-| Installing.. $cmd_file | Date And Version: $cmd_version |"
+| Installing.. $cmd_file | The version is the date: $cmd_version |"
 ####
 ####
 ####  english: copy the file to temporal folder and install
