@@ -97,22 +97,22 @@ echo ; fi
 ####
 ####
 #### name files
-cmd_realpath="$(realpath $0)"                # full routename
-cmd_basename="$(basename $0)"                # only filename
+cmd_realpath="$(realpath $0)"                   # fully routename
+cmd_basename="$(basename $0)"                   # only  filename
 #### number version
-cmd_year="24"                                # number year version
-cmd_month="07"                               # number mouth version
-cmd_day="dev"                                # number day version
-cmd_version="$cmd_year-$cmd_month-$cmd_day"  # final date number version
+cmd_year="24"                                   # number year version
+cmd_month="07"                                  # number mouth version
+cmd_letra="b"                                   # number letter version
+cmd_version="$cmd_year-$cmd_month$cmd_letra"    # final date like number version
 #### name location
-cmd_file="fwiptables"                        # filename installed
-cmd_directory="/usr/bin"                     # directory installed
+cmd_file="fwiptables"                           # filename installed
+cmd_directory="/usr/bin"                        # directory installed
 #### data program
-cmd_developer="Francisco Garcia"             # actual developer
-cmd_contact="fwiptables@gmx.com"             # actual contact
+cmd_developer="Francisco Garcia"                # actual developer
+cmd_contact="fwiptables@gmx.com"                # actual contact
 cmd_shortdescription="FireWall With iptables"              # description short
 cmd_longdescription="One Mini Script in one-file wizard"   # description long
-cmd_license="GPL v2, LGPL v2, BSD"           # program license
+cmd_license="GPL v2, LGPL v2, BSD"              # program license
 #### web oficial
 content_license_gpl=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-GPL.txt?format=raw"
@@ -1774,9 +1774,9 @@ else public_ip6="$($command_timeout -s SIGINT -v 8  $command_curl \
 if [ "$public_ip6" == "<!DOCTYPE html>" ]
 then echo "fail: public ip hidden for dns server" ;
 else echo "$text_md   $public_ip6"; fi; fi
-echo
-echo "$title_md $text_info ### [ Proxy tunnel ] [ Address proxy ] ###"
-echo "$title_md [ note ] [ $cmd_basename with: OR expert-show-clientproxy OR expert-conf-clientproxy ]"
+#### echo
+#### echo "$title_md $text_info ### [ Proxy tunnel ] [ Address proxy ] ###"
+#### echo "$title_md [ note ] [ $cmd_basename with: OR expert-show-clientproxy OR expert-conf-clientproxy ]"
 echo
 echo "$title_md $text_info ### [ Domain resolve ] [ Resolv.conf ] ###"
 if [ -f /etc/resolv.conf ]
@@ -2216,7 +2216,7 @@ echo "$title_md [ $first_option ] [ Show version ] [ version md ]            "
 echo "$text_md $text_info [ Somes details ]                 "
 echo "$text_md $text_info [ Basename program   ] $cmd_basename               "
 echo "$text_md $text_info [ Realpath program   ] $cmd_realpath               "
-echo "$text_md $text_info [ Version is date    ] $cmd_version                "
+echo "$text_md $text_info [ Version program    ] $cmd_version                "
 echo "$text_md $text_info [ Short description  ] $cmd_shortdescription       "
 echo "$text_md $text_info [ Long description   ] $cmd_longdescription        "
 echo "$text_md $text_info [ Developer Actual   ] $cmd_developer              "
@@ -4969,7 +4969,7 @@ exit; fi
 ####
 if [ "$first_option" == "install" ]; then 
 echo "$title_md $text_ok \
-| Installing.. $cmd_file | The version is the date: $cmd_version |"
+| Installing.. $cmd_file | The version is $cmd_version |"
 ####
 ####
 ####  english: copy the file to temporal folder and install
