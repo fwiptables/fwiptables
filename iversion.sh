@@ -646,12 +646,12 @@ if [ "$allow_expert_commands" == "no" ]; then
 ####
 case "$first_option"
 in exper*)
-echo "$title_md See in preferences allow_expert_commands= to active it option"
+echo "$title_md See in preferences allow_expert_commands to active it option"
 exit ;; esac
 ####
 case "$second_option"
 in exper*)
-echo "$title_md See in preferences allow_expert_commands= to active it option"
+echo "$title_md See in preferences allow_expert_commands to active it option"
 exit ;; esac
 ####
 fi

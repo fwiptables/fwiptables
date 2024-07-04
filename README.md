@@ -39,20 +39,20 @@
   
 ###  [ version ] [ Show version ] [ version md ]            
    [ info ] [ Somes details ]                 
-   [ info ] [ Basename program   ] fwiptables-version-24-07b-bash.sh               
-   [ info ] [ Realpath program   ] /root/f-iptables-version/fwiptables-version-24-07b-bash.sh               
-   [ info ] [ Version program    ] 24-07b                
-   [ info ] [ Short description  ] FireWall With iptables       
-   [ info ] [ Long description   ] One Mini Script in one-file wizard        
-   [ info ] [ Developer Actual   ] Francisco Garcia              
-   [ info ] [ Developer Contact  ] fwiptables@gmx.com                
-   [ info ] [ License program    ] GPL v2, LGPL v2, BSD                
-   [ info ] [ Data  Directory    ] /root/.config/fwiptables    
-   [ info ] [ Cache Directory    ] /root/.cache/fwiptables   
-   [ info ] [ File  Preferences  ]    
-   /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-07b            
-   [ info ] [ File  Format       ]    
-   /root/f-iptables-version/fwiptables-version-24-07b-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable       
+   [ info ] [ Basename program    ] fwiptables-version-24-07b-bash.sh               
+   [ info ] [ Realpath program    ] /root/f-iptables-version/fwiptables-version-24-07b-bash.sh               
+   [ info ] [ Version program     ] 24-07b                
+   [ info ] [ Short description   ] FireWall With iptables       
+   [ info ] [ Long description    ] One Mini Script in one-file wizard        
+   [ info ] [ Developer Actual    ] Francisco Garcia              
+   [ info ] [ Developer Contact   ] fwiptables@gmx.com                
+   [ info ] [ License program     ] GPL v2, LGPL v2, BSD                
+   [ info ] [ Data  Directory     ] /root/.config/fwiptables    
+   [ info ] [ Cache Directory     ] /root/.cache/fwiptables   
+   [ info ] [ File  Preferences   ]    
+   /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-07b             
+   [ info ] [ Fileformat program  ]    
+   /root/f-iptables-version/fwiptables-version-24-07b-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable        
   
 ###  [ compile ] [  Optionally compile from bash script ] [ compile md]         
    [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling...    
@@ -136,7 +136,7 @@
    utils expert license-gpl license-lgpl license-bsd                      
 ###        | Program: fwiptables-version-24-07b-bash.sh And Version: 24-07b  
 ###        | Description: One Mini Script in one-file wizard                 
-###        | expert: expert commands actived in preferences      
+###        | expert: expert is on  in preferences  
   
    
 ###  | optional-output | fwiptables-version-24-07b-bash.sh optional-ouptut |
