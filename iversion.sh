@@ -102,7 +102,7 @@ cmd_basename="$(basename $0)"                   # only  filename
 #### number version
 cmd_year="24"                                   # number year version
 cmd_month="07"                                  # number mouth version
-cmd_letra="c-dev"                                   # number letter version
+cmd_letra="c"                                   # number letter version
 cmd_version="$cmd_year-$cmd_month$cmd_letra"    # final date like number version
 #### name location
 cmd_file="fwiptables"                           # filename installed
@@ -2951,8 +2951,8 @@ echo "$title_md $text_md $text_md | Description: $cmd_longdescription           
 ####  if expert commands
 ####
 if [ "$allow_expert_commands" == "no" ]
-then echo "$title_md $text_md $text_md | expert: expert is off in preferences  "
-else echo "$title_md $text_md $text_md | expert: expert is on  in preferences  "
+then echo "$title_md $text_md $text_md | expert: expert is dropped in preferences file    "  
+else echo "$title_md $text_md $text_md | expert: expert is allowed in preferences file   "    
 fi
 ####
 ####
