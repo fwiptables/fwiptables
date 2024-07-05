@@ -2945,8 +2945,8 @@ echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date   
 echo "$text_md free sockets nodes ip-forward depends code treeconf treecache          "
 echo "$text_md cleancache notes variables uninstall install upgrade version           "
 echo "$text_md examples utils expert license-gpl license-lgpl license-bsd             "
-echo "$title_md $text_md $text_md | Program: $cmd_basename And Version: $cmd_version  "
-echo "$title_md $text_md $text_md | Description: $cmd_longdescription                 "
+echo "$title_md $text_md $text_md | With Program: $cmd_basename And Version: $cmd_version  "
+echo "$title_md $text_md $text_md | Description: $cmd_longdescription                      "
 ####
 ####  if expert commands
 ####
@@ -3277,7 +3277,6 @@ echo "$text_md | expert-show-resolve . show file resolve domain with resolv.conf
 echo "$text_md | expert-show-weather . show weather with wttr.in  "  
 echo "$text_md | expert-show-geoip . show location for ip o for host with geoip  "  
 echo "$text_md | expert-show-webcert . show web certificate ssl from one web with ssl-cert  "  
-echo "$text_md | expert-show-version . Show version fwiptables stable with curl  "  
 echo "$text_md | expert-show-newversion . Show version fwiptables stable/unstable with curl  "  
 echo "$text_md | expert-show-clientproxy . show proxy variables in the system stablished  "  
 echo "$text_md | expert-conf-clientproxy . File /etc/proxy.fwiptables for proxy launched with source  "  
@@ -4969,7 +4968,7 @@ exit; fi
 ####
 if [ "$first_option" == "install" ]; then 
 echo "$title_md $text_ok \
-| Installing.. $cmd_file | The version is $cmd_version |"
+| Installing.. $cmd_file | Version is $cmd_version |"
 ####
 ####
 ####  english: copy the file to temporal folder and install
