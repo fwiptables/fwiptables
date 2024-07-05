@@ -102,7 +102,7 @@ cmd_basename="$(basename $0)"                   # only  filename
 #### number version
 cmd_year="24"                                   # number year version
 cmd_month="07"                                  # number mouth version
-cmd_letra="b"                                   # number letter version
+cmd_letra="c-dev"                                   # number letter version
 cmd_version="$cmd_year-$cmd_month$cmd_letra"    # final date like number version
 #### name location
 cmd_file="fwiptables"                           # filename installed
@@ -2943,8 +2943,8 @@ echo "$title_md  options-easy                                                   
 echo "$text_md preferences-read preferences-modify preferences-regen info web         "
 echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date         "
 echo "$text_md free sockets nodes ip-forward depends code treeconf treecache          "
-echo "$text_md cleancache notes variables uninstall install version examples          "
-echo "$text_md utils expert license-gpl license-lgpl license-bsd                      "
+echo "$text_md cleancache notes variables uninstall install upgrade version           "
+echo "$text_md examples utils expert license-gpl license-lgpl license-bsd             "
 echo "$title_md $text_md $text_md | Program: $cmd_basename And Version: $cmd_version  "
 echo "$title_md $text_md $text_md | Description: $cmd_longdescription                 "
 ####
@@ -5249,7 +5249,7 @@ exit; fi
 #### :rutina-inicial-expert-upgrade-stable:
 ####
 ####
-if   [ "$first_option" == "expert-upgrade-stable" ]; then 
+if   [ "$first_option" == "expert-upgrade-stable" ] || [ "$first_option" == "upgrade" ]; then 
 ####
 ####
 if [ "$command_curl" == "$NULL" ]; then
