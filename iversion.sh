@@ -2078,12 +2078,12 @@ exit; fi
 #### :rutina-final-expert-radio-link:
 ##########    english: radio online       ##########
 ##########    spanish: radio en linea     ##########
-#### :rutina-inicial-expert-radio-online:
+#### :rutina-inicial-expert-radio-spanish:
 ####
 ####
-if   [ "$first_option" == "expert-radio-online" ]; then
+if   [ "$first_option" == "expert-radio-spanish" ]; then
 echo "$title_md [ $first_option ]  [ spanish radio user:logname from one text-string ]\
- [ expert-radio-online md]"
+ [ expert-radio-spanish md]"
 ####
 ####
 if [ "$second_option" == "$NULL" ];
@@ -2110,7 +2110,7 @@ echo "$title_md $text_ok Radio | With user: $radio_user | With string: $2"
 exit; fi
 ####
 ####
-#### :rutina-final-expert-radio-online:
+#### :rutina-final-expert-radio-spanish:
 ##########    english: utils: posible util depends       ##########
 ##########    spanish: utils: posible util dependencias  ##########
 #### :rutina-inicial-utils:
@@ -3316,7 +3316,7 @@ echo "$text_md | expert-pc-reboot . reboot computer with reboot  "
 echo "$text_md | expert-cpufreq-info . show cpu frecuence info  "  
 echo "$text_md | expert-cpupower-info . show cpu frecuence info  "  
 echo "$text_md | expert-radio-link . listen radio from one link  "  
-echo "$text_md | expert-radio-online . listen online radio from one text-string  "  
+echo "$text_md | expert-radio-spanish . listen online radio from one text-string from spain  "  
 echo "$text_md | expert-project-web . site  downloaded web fwiptables  "  
 echo "$text_md | expert-gen-version . generate actual version file in actual folder  "  
 echo "$text_md | expert-configs-save . save configs like backup from fwiptables in tar file  "  
