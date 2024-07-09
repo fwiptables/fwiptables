@@ -616,7 +616,7 @@ web_blacklist_stevenblack="https://raw.githubusercontent.com/StevenBlack/hosts/m
 ####
 file_blacklist_fademind="$default_directory_adblock/hosts.blacklist_fademind"
 file_blacklist_mvps="$default_directory_adblock/hosts.blacklist_mvps"
-file_blacklist_fademind="$default_directory_adblock/hosts.blacklist_adaway"
+file_blacklist_adaway="$default_directory_adblock/hosts.blacklist_adaway"
 file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenblack"
 ####
 ####
@@ -5338,14 +5338,14 @@ if   [ "$first_option" == "expert-upgrade-adblock" ]; then
 echo "$title_md [ $first_option ]  [ get: blacklist files / adblock files / hosts deny files ]"
 ####
 ####
-echo "$title_md [ Waiting a moment ] [ downloading blacklist to /etc/hosts.blacklist ] "
-echo "$title_md [ Step 1/4 ] [ downloading hosts fademind to /etc/hosts.blacklist_fademind ]"
+echo "$title_md [ Waiting a moment ] [ downloading blacklist to  directory: $default_directory_adblock ] "
+echo "$title_md [ Step 1/4 ] [ downloading hosts fademind to $file_blacklist_fademind ]"
 $command_curl $web_blacklist_fademind -s -L -o $file_blacklist_fademind
-echo "$title_md [ Step 2/4 ] [ downloading hosts mvps to /etc/hosts.blacklist_mvps ]"
+echo "$title_md [ Step 2/4 ] [ downloading hosts mvps to $file_blacklist_mvps ]"
 $command_curl $web_blacklist_mvps -s -L -o $file_blacklist_mvps
-echo "$title_md [ Step 3/4 ] [ downloading hosts adaway to /etc/hosts.blacklist_adaway ]"
+echo "$title_md [ Step 3/4 ] [ downloading hosts adaway to $file_blacklist_adaway ]"
 $command_curl $web_blacklist_adaway -s -L -o $file_blacklist_fademind
-echo "$title_md [ Step 4/4 ] [ downloading hosts stevenblack to /etc/hosts.blacklist_stevenblack ]"
+echo "$title_md [ Step 4/4 ] [ downloading hosts stevenblack to $file_blacklist_stevenblack ]"
 $command_curl $web_blacklist_stevenblack -s -L -o $file_blacklist_stevenblack
 ####
 ####
