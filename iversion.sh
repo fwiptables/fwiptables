@@ -5837,7 +5837,7 @@ if [ "$command_ss" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install ss command ]"; exit; fi
 if [ "$command_awk" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Install awk command ]"; exit; fi
-$command_ss -l  | $command_grep "\:\*" | $command_grep LISTEN |\
+$command_ss -l  | $command_grep "\:\*" | \
 $command_awk '{print "     " $1 " " $2 " " $5}' ;
 exit; fi
 ####
