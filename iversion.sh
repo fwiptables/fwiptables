@@ -365,6 +365,7 @@ default_directory_benchmarkdisk="$directory_data_necesary/fwiptables-benchmarkdi
 default_directory_radio="$directory_data_necesary/fwiptables-radio"
 default_directory_proxy="$directory_data_necesary/fwiptables-proxy"
 default_directory_adblock="$directory_data_necesary/fwiptables-adblock"
+default_directory_obash="$directory_data_necesary/fwiptables-obash"
 ####
 ####
 #### english: templates cfg
@@ -456,6 +457,8 @@ if [ ! -d "$default_directory_proxy" ]; then
 $command_mkdir -p "$default_directory_proxy" &> /dev/null ; fi
 if [ ! -d "$default_directory_adblock" ]; then
 $command_mkdir -p "$default_directory_adblock" &> /dev/null ; fi
+if [ ! -d "$default_directory_obash" ]; then
+$command_mkdir -p "$default_directory_obash" &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-dir-sane:
@@ -3291,8 +3294,8 @@ echo "$text_md | expert-speed-cpu . benchmark cpu speed with bc command aprox 5s
 echo "$text_md | expert-speed-glx . benchmark glx speed with mesa3D  "  
 echo "$text_md | expert-upgrade-stable . Upgrade from web sourceforge fwiptables with curl  "  
 echo "$text_md | expert-upgrade-unstable . Upgrade from git sourceforge fwiptables with curl  "  
-echo "$text_md | expert-upgrade-adblock . Download blacklist to /etc/hosts.blacklist with curl  "  
-echo "$text_md | expert-compile-obash . Compile fwiptables to fwiptables-bin with obash  "  
+echo "$text_md | expert-upgrade-adblock . Download blacklist to folder configuration program with curl  "  
+echo "$text_md | expert-compile-obash . Compile fwiptables folder configuration program  "  
 echo "$text_md | expert-nmap-tcp . doing scan tcp at host or range  "  
 echo "$text_md | expert-nmap-udp . doing scan udp at host or range  "  
 echo "$text_md | expert-nmap-fin . doing scan fin at host or range  "   
@@ -5314,17 +5317,17 @@ exit; fi
 if   [ "$first_option" == "expert-compile-obash" ]; then 
 echo "$title_md [ $first_option ] \
 [  optionally ] [ howto compile bash script with obash ] "
-echo "$title_md Compile /usr/bin/fwiptables in /usr/bin/fwiptables.bin" ; echo
+echo "$title_md Compile $cmd_basename" ; echo
 if [ "$command_obash" == "$NULL" ]
 then echo "$title_md install obash to compile"; exit ; fi
 if [ "$command_uuid" == "$NULL" ]
 then echo "$title_md install uuid to compile"; exit ; fi
-$command_obash -r -c -o \
-$cmd_directory/$cmd_file.bin \
-$cmd_directory/$cmd_file
+obash_file_date="$default_directory_obash/$cmd_basename"
+cp $cmd_realpath $obash_file_date.bash
+$command_obash -r -c -o $obash_file_date.bin $obash_file_date.bash
 echo ; echo "$title_md And now list:"
-file -L $cmd_directory/$cmd_file
-file -L $cmd_directory/$cmd_file.bin
+file -L $obash_file_date.bash
+file -L $obash_file_date.bin
 exit; fi
 ####
 ####
@@ -6344,7 +6347,8 @@ $quad_option &> $temporal_guifinal
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Gui-Output-$cmd_realpath \
---filename=$temporal_guifinal --auto-scroll ;;
+--filename=$temporal_guifinal --auto-scroll
+;;
 #### 
 #### 
 esac
