@@ -466,7 +466,9 @@ $command_mkdir -p "$default_directory_adblock" &> /dev/null ; fi
 ####
 allow_expert_commands=""
 without_first_option=""
-launch_rules_firewall="no" 
+launch_rules_firewall="no"
+####
+#### 
 allow_use_legacy=""                       
 allow_use_nft="no"                        
 allow_use_ipv4=""                         
@@ -596,6 +598,12 @@ show_actual_date="$($command_date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"
 #### proxy file
 ####
 file_conf_clientproxy="$default_directory_proxy/fwiptables-proxy"
+####
+#### radio music
+####
+radio_group="radio.m3u8"
+radio_config="$default_directory_radio/fwiptables-config-$radio_group"
+radio_cache="$default_directory_radio/fwiptables-cache-$radio_group"
 ####
 #### web adblock
 ####
@@ -1638,19 +1646,19 @@ echo "$title_md $title_md Allow expert commands for default"
 echo "allow_expert_commands=                          ## or void or no"
 echo "$title_md" 
 echo "$title_md $title_md default firewall"
-echo "allow_use_legacy=                               ## or void or no"
-echo "allow_use_nft=no                                ## or void or no"
-echo "allow_use_ipv4=                                 ## or void or no"
-echo "allow_use_ipv6=no                               ## or void or no"
-echo "allow_separate_rules=                           ## or void or no"
+echo "allow_use_legacy=                               ## or void for yes or no"
+echo "allow_use_nft=no                                ## or void for yes or no"
+echo "allow_use_ipv4=                                 ## or void for yes or no"
+echo "allow_use_ipv6=no                               ## or void for yes or no"
+echo "allow_separate_rules=                           ## or void for yes or no"
 echo "config_close_deny=DROP                          ## or DROP or REJECT"
 echo "$title_md"
 echo "$title_md $title_md default string"
 echo "config_string_algoritmo=kmp                     ## or kmp or bm"
 echo "$title_md"
 echo "$title_md $title_md default log"
-echo "allow_save_autolog=                             ## or void or no"
-echo "allow_show_time=no                              ## or void or no"
+echo "allow_save_autolog=                             ## or void for yes or no"
+echo "allow_show_time=no                              ## or void for yes or no"
 echo "$title_md"  
 echo "$title_md $title_md default programs"
 echo "favorite_iperf_command=                         ## or void for automatic or specify command"
@@ -2081,11 +2089,6 @@ then echo "$title_md Please input one string to listen one radio"; exit; fi
 ####
 if [ "$favorite_text_music" == "$NULL" ];
 then "$title_md please install $favorite_text_music"; exit; fi
-####
-####
-radio_group="radio.m3u8"
-radio_config="/etc/fwiptables-config-$radio_group"
-radio_cache="/etc/fwiptables-cache-$radio_group"
 ####
 ####
 rm $radio_config $radio_cache &> /dev/null
