@@ -1711,8 +1711,19 @@ if [ "$command_ip" == "$NULL" ]
 then echo "$text_md $text_info [ install ip command ]"
 else $command_ip address ls | $command_egrep ": |inet " ; fi
 echo
-echo "$title_md $text_info ### [ Input Ports] [ Network Listen ] ###"
-$cmd_realpath sockets | $command_grep -iv ^#
+echo "$title_md $text_info ### [ Domain resolve ] [ nameserver and search ] ###"
+if [ -f /etc/resolv.conf ]
+then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"
+cat /etc/resolv.conf | $command_grep -E "nameserver|search" | \
+$command_awk '{print "     " $1 " " $2}' ; fi
+if [ -f /etc/resolv.conf.head ]
+then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
+if [ -f /etc/resolv.conf.body ]
+then echo "$title_md [ yes file ]      [ /etc/resolv.conf.body ]"; fi
+if [ -f /etc/resolv.conf.tail ]
+then echo "$title_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
+if [ -d /etc/resolvconf ]
+then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
 echo
 echo "$title_md $text_info ### [ Private ip ] [ Address ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ]
@@ -1728,23 +1739,11 @@ else public_ip4="$($command_curl -k -s -4 $serverip_discover_ipv4 -w '\n'| head 
 if [ "$public_ip4" == "<!DOCTYPE html>" ]
 then echo "fail: public ip hidden for dns server" ;
 else echo "$text_md   $public_ip4"; fi; fi
-#echo
-#echo "$title_md $text_info ### [ Proxy tunnel ] [ Address proxy ] ###"
-#echo "$title_md Launch $cmd_basename with: OR expert-show-clientproxy OR expert-conf-clientproxy"
 echo
-echo "$title_md $text_info ### [ Domain resolve ] [ nameserver and search ] ###"
-if [ -f /etc/resolv.conf ]
-then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"
-cat /etc/resolv.conf | $command_grep -E "nameserver|search" | \
-$command_awk '{print "     " $1 " " $2}' ; fi
-if [ -f /etc/resolv.conf.head ]
-then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
-if [ -f /etc/resolv.conf.body ]
-then echo "$title_md [ yes file ]      [ /etc/resolv.conf.body ]"; fi
-if [ -f /etc/resolv.conf.tail ]
-then echo "$title_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
-if [ -d /etc/resolvconf ]
-then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
+echo "$title_md $text_info ### [ Input Ports] [ Network Listen ] ###"
+$cmd_realpath sockets | $command_grep -iv ^#
+####
+####
 exit; fi
 ####
 ####
@@ -2957,8 +2956,8 @@ echo "$title_md $text_md $text_md | Description: $cmd_longdescription           
 ####  if expert commands
 ####
 if [ "$allow_expert_commands" == "no" ]
-then echo "$title_md $text_md $text_md | expert: expert is dropped in preferences file    "  
-else echo "$title_md $text_md $text_md | expert: expert is allowed in preferences file   "    
+then echo "$title_md $text_md $text_md | Expert: expert is dropped in preferences file    "  
+else echo "$title_md $text_md $text_md | Expert: expert is allowed in preferences file   "    
 fi
 ####
 ####
@@ -5840,7 +5839,7 @@ if [ "$command_ss" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install ss command ]"; exit; fi
 if [ "$command_awk" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Install awk command ]"; exit; fi
-$command_ss -l  | $command_grep "\:\*" | \
+$command_ss -l -460  | $command_grep "\:\*" | \
 $command_awk '{print "     " $1 " " $2 " " $5}' ;
 exit; fi
 ####
