@@ -102,7 +102,7 @@ cmd_basename="$(basename $0)"                   # only  filename
 #### number version
 cmd_year="24"                                   # number year version
 cmd_month="07"                                  # number mouth version
-cmd_letra="d"                                   # number letter version
+cmd_letra="e"                                   # number letter version
 cmd_version="$cmd_year-$cmd_month$cmd_letra"    # final date like number version
 #### name location
 cmd_file="fwiptables"                           # filename installed
@@ -605,8 +605,8 @@ file_conf_clientproxy="$default_directory_proxy/fwiptables-proxy"
 #### radio music
 ####
 name_radio_group="radio.m3u8"
-file_radio_config="$default_directory_radio/fwiptables-config-$radio_group"
-file_radio_cache="$default_directory_radio/fwiptables-cache-$radio_group"
+file_radio_config="$default_directory_radio/fwiptables-config-$name_radio_group"
+file_radio_cache="$default_directory_radio/fwiptables-cache-$name_radio_group"
 ####
 #### web adblock
 ####
