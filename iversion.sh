@@ -1754,44 +1754,23 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "ip6" ]; then
-echo "$title_md [ $first_option ]  [ show info about net ip6 ] [ ip6 md ] "
+echo "$title_md [ $first_option ]  [ show info about net ip6 ] [ ip6 md ]"
 echo
 echo "$title_md $text_info ### [ Network Route ] [ Route ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$text_md $text_info [ install ip command ]"
-else $command_ip -6 route ; fi
+else $command_ip -4 route ; fi
 echo
 echo "$title_md $text_info ### [ Configured ip ] [ inet ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$text_md $text_info [ install ip command ]"
 else $command_ip address ls | $command_egrep ": |inet6 " ; fi
 echo
-echo "$title_md $text_info ### [ Input Ports] [ Network Listen ] ###"
-$cmd_realpath sockets | $command_grep -iv ^# 
-echo
-echo "$title_md $text_info ### [ Private ip ] [ Address ipv6 ] ###"
-if [ "$command_ip" == "$NULL" ]
-then echo "$title_md $text_info [ install ip command ]"
-else  $command_ip -6 address | $command_grep -i  inet | \
-$command_grep -iv 127.0.0.1 | $command_sed 's/inet//g' | \
-$command_cut -d "/" -f 1 ; fi
-echo
-echo "$title_md $text_info ### [ Public ip ] [ Address ipv6 ] ###"
-if [ "$command_curl" == "$NULL" ]
-then echo "$text_md $text_info [ install curl command ]"
-else public_ip6="$($command_timeout -s SIGINT -v 8  $command_curl \
---noproxy '*' -k -s -6 $serverip_discover_ipv6 -w "\n"| head -1)"
-if [ "$public_ip6" == "<!DOCTYPE html>" ]
-then echo "fail: public ip hidden for dns server" ;
-else echo "$text_md   $public_ip6"; fi; fi
-#### echo
-#### echo "$title_md $text_info ### [ Proxy tunnel ] [ Address proxy ] ###"
-#### echo "$title_md [ note ] [ $cmd_basename with: OR expert-show-clientproxy OR expert-conf-clientproxy ]"
-echo
-echo "$title_md $text_info ### [ Domain resolve ] [ Resolv.conf ] ###"
+echo "$title_md $text_info ### [ Domain resolve ] [ nameserver and search ] ###"
 if [ -f /etc/resolv.conf ]
-then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"     ;
-cat /etc/resolv.conf | $command_grep -E "nameserver|search"      ; fi
+then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"
+cat /etc/resolv.conf | $command_grep -E "nameserver|search" | \
+$command_awk '{print "     " $1 " " $2}' ; fi
 if [ -f /etc/resolv.conf.head ]
 then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
 if [ -f /etc/resolv.conf.body ]
@@ -1800,7 +1779,29 @@ if [ -f /etc/resolv.conf.tail ]
 then echo "$title_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
 if [ -d /etc/resolvconf ]
 then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
+echo
+echo "$title_md $text_info ### [ Private ip ] [ Address ipv6 ] ###"
+if [ "$command_ip" == "$NULL" ]
+then echo "$title_md $text_info [ install ip command ]"
+else  $command_ip -6 address | $command_grep -i  inet | \
+$command_grep -iv ::0 | $command_sed 's/inet//g' | \
+$command_cut -d "/" -f 1 ; fi
+echo
+echo "$title_md $text_info ### [ Public ip ] [ Address ipv6 ] ###"
+if [ "$command_curl" == "$NULL" ]; then
+echo "$title_md $text_info [ install curl command ]" ;
+else public_ip6="$($command_curl -k -s -6 $serverip_discover_ipv6 -w '\n'| head -1)"
+if [ "$public_ip6" == "<!DOCTYPE html>" ]
+then echo "fail: public ip hidden for dns server" ;
+else echo "$text_md   $public_ip6"; fi; fi
+echo
+echo "$title_md $text_info ### [ Input Ports] [ Network Listen ] ###"
+$cmd_realpath sockets | $command_grep -iv ^#
+####
+####
 exit; fi
+####
+####
 ####
 ####
 #### :rutina-final-ip6:
