@@ -604,9 +604,9 @@ file_conf_clientproxy="$default_directory_proxy/fwiptables-proxy"
 ####
 #### radio music
 ####
-radio_group="radio.m3u8"
-radio_config="$default_directory_radio/fwiptables-config-$radio_group"
-radio_cache="$default_directory_radio/fwiptables-cache-$radio_group"
+name_radio_group="radio.m3u8"
+file_radio_config="$default_directory_radio/fwiptables-config-$radio_group"
+file_radio_cache="$default_directory_radio/fwiptables-cache-$radio_group"
 ####
 #### web adblock
 ####
@@ -2094,18 +2094,18 @@ if [ "$favorite_text_music" == "$NULL" ];
 then "$title_md please install $favorite_text_music"; exit; fi
 ####
 ####
-rm $radio_config $radio_cache &> /dev/null
+rm $radio_config $file_radio_cache &> /dev/null
 echo "$title_md Downloading radio config .."
-$command_curl -L $server_radio_online &> $radio_config
-grep -i $second_option $radio_config &> $radio_cache
-chmod ugo+rx $radio_config $radio_cache &> /dev/null
+$command_curl -L $server_radio_online &> $file_radio_config
+grep -i $second_option $file_radio_config &> $file_radio_cache
+chmod ugo+rx $radio_config $file_radio_cache &> /dev/null
 ####
 ####
 $cmd_realpath expert-radio-stop &> /dev/null
 ####
 ####
 radio_user="$(id 1000 | cut -d ")" -f 1 - | cut -c 10-)"
-echo sudo -u $radio_user $favorite_text_music $radio_cache && 
+echo sudo -u $radio_user $favorite_text_music $file_radio_cache && 
 echo "$title_md $text_ok Radio | With user: $radio_user | With string: $2"
 exit; fi
 ####
