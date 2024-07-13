@@ -479,7 +479,8 @@ allow_use_ipv6=""
 allow_separate_rules=""        
 config_shield_port="22"        
 config_shield_maxtries="10"    
-config_close_deny="DROP"         
+config_close_deny="DROP"
+config_system_ulog="no"       
 allow_save_autolog=""          
 allow_show_time="no"           
 favorite_text_editor=""        
@@ -1654,12 +1655,13 @@ echo "allow_use_nft=no                                ## or void for yes or no"
 echo "allow_use_ipv4=                                 ## or void for yes or no"
 echo "allow_use_ipv6=no                               ## or void for yes or no"
 echo "allow_separate_rules=                           ## or void for yes or no"
+echo "config_system_ulog=no                           ## or void for yes or no"
 echo "config_close_deny=DROP                          ## or DROP or REJECT"
 echo "$title_md"
 echo "$title_md $title_md default string"
 echo "config_string_algoritmo=kmp                     ## or kmp or bm"
 echo "$title_md"
-echo "$title_md $title_md default log"
+echo "$title_md $title_md default autolog"
 echo "allow_save_autolog=                             ## or void for yes or no"
 echo "allow_show_time=no                              ## or void for yes or no"
 echo "$title_md"  
@@ -13595,43 +13597,51 @@ done ; fi
 #### ipv4
 ####
 ####
+#### config log variable 
+####
+if [ "$allow_system_ulog" == "" ];
+then config_system_logs="-j ULOG --ulog-prefix"
+else config_system_logs="-j LOG --log-prefix"
+fi
+####
+####
 $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A INPUT  \
 -p tcp  -m multiport --dports $logserver_port_tcp \
--j LOG --log-prefix "$logserver_prefix_input" \
+$config_system_logs "$logserver_prefix_input" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A INPUT  \
 -p udp  -m multiport --dports $logserver_port_udp \
--j LOG --log-prefix "$logserver_prefix_input" \
+$config_system_logs "$logserver_prefix_input" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
 $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A OUTPUT \
 -p tcp -m multiport --sports $logserver_port_tcp \
--j LOG --log-prefix "$logserver_prefix_output" \
+$config_system_logs "$logserver_prefix_output" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A OUTPUT \
 -p udp -m multiport --sports $logserver_port_udp \
--j LOG --log-prefix "$logserver_prefix_output" \
+$config_system_logs "$logserver_prefix_output" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
 $allow_use_nft     $allow_use_ipv4  $command_iptables_nft    -A INPUT  \
 -p tcp  -m multiport --dports $logserver_port_tcp \
--j LOG --log-prefix "$logserver_prefix_input" \
+$config_system_logs "$logserver_prefix_input" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_nft     $allow_use_ipv4  $command_iptables_nft    -A INPUT  \
 -p udp  -m multiport --dports $logserver_port_udp \
--j LOG --log-prefix "$logserver_prefix_input" \
+$config_system_logs "$logserver_prefix_input" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
 $allow_use_nft     $allow_use_ipv4  $command_iptables_nft    -A OUTPUT \
 -p tcp -m multiport --sports $logserver_port_tcp \
--j LOG --log-prefix "$logserver_prefix_output" \
+$config_system_logs "$logserver_prefix_output" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_nft     $allow_use_ipv4  $command_iptables_nft    -A OUTPUT \
 -p udp -m multiport --sports $logserver_port_udp \
--j LOG --log-prefix "$logserver_prefix_output" \
+$config_system_logs "$logserver_prefix_output" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
@@ -13640,41 +13650,41 @@ $allow_use_nft     $allow_use_ipv4  $command_iptables_nft    -A OUTPUT \
 ####
 $allow_use_legacy  $allow_use_ipv6   $command_ip6tables_legacy -A INPUT   \
 -p tcp  -m multiport --dports $logserver_port_tcp \
--j LOG --log-prefix "$logserver_prefix_input" \
+$config_system_logs "$logserver_prefix_input" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv6   $command_ip6tables_legacy -A INPUT   \
 -p udp  -m multiport --dports $logserver_port_udp \
--j LOG --log-prefix "$logserver_prefix_input" \
+$config_system_logs "$logserver_prefix_input" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
 $allow_use_legacy  $allow_use_ipv6   $command_ip6tables_legacy -A OUTPUT  \
 -p tcp -m multiport --sports $logserver_port_tcp \
--j LOG --log-prefix "$logserver_prefix_output" \
+$config_system_logs "$logserver_prefix_output" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_legacy  $allow_use_ipv6   $command_ip6tables_legacy -A OUTPUT  \
 -p udp -m multiport --sports $logserver_port_udp \
--j LOG --log-prefix "$logserver_prefix_output" \
+$config_system_logs "$logserver_prefix_output" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
 $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A INPUT   \
 -p tcp  -m multiport --dports $logserver_port_tcp \
--j LOG --log-prefix "$logserver_prefix_input" \
+$config_system_logs "$logserver_prefix_input" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A INPUT   \
 -p udp  -m multiport --dports $logserver_port_udp \
--j LOG --log-prefix "$logserver_prefix_input" \
+$config_system_logs "$logserver_prefix_input" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
 $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A OUTPUT  \
 -p tcp -m multiport --sports $logserver_port_tcp \
--j LOG --log-prefix "$logserver_prefix_output" \
+$config_system_logs "$logserver_prefix_output" \
 -m comment --comment "logserver tcp"  &> /dev/null
 $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A OUTPUT  \
 -p udp -m multiport --sports $logserver_port_udp \
--j LOG --log-prefix "$logserver_prefix_output" \
+$config_system_logs "$logserver_prefix_output" \
 -m comment --comment "logserver udp"  &> /dev/null
 ####
 ####
