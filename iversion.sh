@@ -2948,9 +2948,9 @@ echo "$text_md server-asterisk                                                  
 echo "$title_md  options-easy                                                         "
 echo "$text_md preferences-read preferences-modify preferences-regen info web         "
 echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date         "
-echo "$text_md free sockets nodes ip-forward depends code treeconf treecache          "
+echo "$text_md free sockets nodes ip-forward depends utils treeconf treecache          "
 echo "$text_md cleancache notes variables uninstall install upgrade version           "
-echo "$text_md examples utils expert license-gpl license-lgpl license-bsd             "
+echo "$text_md examples code expert license-gpl license-lgpl license-bsd             "
 echo "$title_md $text_md $text_md | With Program: $cmd_basename And Version: $cmd_version  "
 echo "$title_md $text_md $text_md | Description: $cmd_longdescription                      "
 ####
