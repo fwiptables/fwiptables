@@ -878,8 +878,8 @@ esac
 ####
 ####
 case "$first_option" in
-"--narrow") first_option="narrow" ;;
-"-narrow") first_option="narrow" ;;
+"--narrowtxt") first_option="narrowtxt" ;;
+"-narrowtxt") first_option="narrowtxt" ;;
 "--text") first_option="txt" ;;
 "-text") first_option="txt" ;;
 "--tui") first_option="cli" ;;
@@ -895,18 +895,18 @@ case "$first_option" in
 "--silent") first_option="null" ;;
 "-pdf") first_option="pdf" ;;
 "--pdf") first_option="pdf" ;;
-"n") first_option="narrow" ;;
+"n") first_option="narrowtxt" ;;
 "t") first_option="txt" ;;
 "c") first_option="cli" ;;
 "g") first_option="gui" ;;
-"l") first_option="log" ;;
+"l") first_option="logtxt" ;;
 "s") first_option="null" ;;
 "p") first_option="pdf" ;;
-"-n") first_option="narrow" ;;
+"-n") first_option="narrowtxt" ;;
 "-t") first_option="txt" ;;
 "-c") first_option="cli" ;;
 "-g") first_option="gui" ;;
-"-l") first_option="log" ;;
+"-l") first_option="logtxt" ;;
 "-s") first_option="null" ;;
 "-p") first_option="pdf" ;;
 esac
@@ -1087,7 +1087,7 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 "modify-custom") $cmd_realpath $second_option $third_option ; exit ;; esac ; fi
 ####
 ####
-if [ "$first_option" == "narrow" ]; then 
+if [ "$first_option" == "narrowtxt" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
@@ -1112,7 +1112,7 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 "modify-custom") $cmd_realpath config-regen  &> /dev/null ;; esac ; fi
 ####
 ####
-if [ "$first_option" == "log" ]; then 
+if [ "$first_option" == "logtxt" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
@@ -1145,7 +1145,7 @@ expert-*) echo "the commands expert works only wihtout optional output." ; exit 
 #### output narrow:      General text without warnings version list narrow
 ####
 ####
-if [ "$first_option" == "narrow" ] ;then echo "$head_waiting_narrow"
+if [ "$first_option" == "narrowtxt" ] ;then echo "$head_waiting_narrow"
 ####
 ####
 case $second_option in 
@@ -1214,7 +1214,7 @@ esac ; fi
 #### output log
 ####
 ####
-if [ "$first_option" == "log" ]
+if [ "$first_option" == "logtxt" ]
 then echo "$head_waiting_log"
 echo "### ### $text_info [ $second_option $third_option $quad_option ] \
 [ $show_actual_date ]" &> $output_log
@@ -2916,7 +2916,7 @@ echo "$title_md $cmd_basename [optional-output] first_option [second_option]  "
 #### all option list
 ####
 echo "$title_md  optional-output                                                      "
-echo "$text_md [ t|txt n|narrow c|cli g|gui l|log p|pdf s|silent ]                    "
+echo "$text_md [ t|txt n|narrowtxt l|logtxt c|cli g|gui p|pdf s|silent ]                    "
 echo "$text_md [ cli-dialog cli-whiptail gui-zenity gui-yad ]                         "
 echo "$text_md [ cli-menu-dialog cli-menu-whiptail gui-roll-zenity ]                  "
 echo "$text_md [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ]        "
@@ -3360,17 +3360,17 @@ echo "$text_md "
 echo "$title_md | optional-output | $cmd_basename optional-ouptut |"
 echo "$text_md"
 echo "$text_md | t . output in terminal text  "  
-echo "$text_md | n . output in terminal text narrow (compresed spaces)  "  
+echo "$text_md | n . output in terminal text narrowtxt (compresed spaces)  "  
 echo "$text_md | c . output in terminal cli  "  
 echo "$text_md | g . output in graphicall gui  "  
 echo "$text_md | l . output in file text log  "  
 echo "$text_md | p . output in file image pdf  "  
 echo "$text_md | s . output in silent or null  "  
 echo "$text_md | txt . output in terminal text  "  
-echo "$text_md | narrow . output in terminal text narrow (compresed spaces)  "  
+echo "$text_md | narrowtxt . output in terminal text narrowtxt (compresed spaces)  "  
 echo "$text_md | cli . output in terminal cli  "  
 echo "$text_md | gui . output in graphicall gui  "  
-echo "$text_md | log . output in file text log  "  
+echo "$text_md | logtxt . output in file text logtxt  "  
 echo "$text_md | pdf . output in file image pdf  "  
 echo "$text_md | silent . output in silent text  "  
 echo "$text_md | cli-dialog . output in terminal cli with dialog  "  
