@@ -10573,8 +10573,8 @@ fi
 #### :rutina-inicial-client-uid-root:
 ####
 ####
-####   #### english: firewall of system client-web:
-####   #### spanish: cortafuego del sistema client-web:
+####   #### english: firewall of system 
+####   #### spanish: cortafuego del sistema 
 ####
 ####
 if [ "$first_option" == "client-uid-root" ]; then
@@ -10670,8 +10670,8 @@ fi
 #### :rutina-inicial-client-gid-users:
 ####
 ####
-####   #### english: firewall of system client-web:
-####   #### spanish: cortafuego del sistema client-web:
+####   #### english: firewall of system 
+####   #### spanish: cortafuego del sistema
 ####
 ####
 if [ "$first_option" == "client-gid-users" ]; then
@@ -10729,7 +10729,7 @@ server_port_tcp="" ;
 # allow_net_whitelist=no 
 # allow_net_blacklist=no 
 # allow_output_uid=no  
-allow_output_gid=users  
+allow_output_gid=  
 # allow_others_protocols=no 
 ####
 ####
@@ -10754,7 +10754,7 @@ allow_output_gid=users
 # config_input_maxconnect=72 
 # config_output_maxconnect=72 
 # config_output_uid=root 
-config_output_gid=root,users 
+config_output_gid=users 
 # config_others_protocols=icmp,igmp 
 # config_ipv4_netclient=0/0 
 # config_ipv4_netserver=0/0 
@@ -10762,6 +10762,103 @@ config_output_gid=root,users
 # config_ipv6_netserver=::/0 
 fi
 #### :rutina-final-client-gid-users:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-gid-net:
+####
+####
+####   #### english: firewall of system 
+####   #### spanish: cortafuego del sistema 
+####
+####
+if [ "$first_option" == "client-gid-net" ]; then
+echo "$title_md $text_info [ loading firewall wallsystem client-gid-net ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="wallsystem" ;
+name_firewall="$first_option" ;
+#### english: firewall capacities
+# allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
+#### english: max tries for each hour 
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
+#### english: log port servers
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
+#### you can connect normal web
+server_port_udp="" ;
+client_port_tcp="" ;
+client_port_udp="" ;
+server_port_tcp="" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+allow_output_gid=  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_output_uid=root 
+config_output_gid=net 
+# config_others_protocols=icmp,igmp 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
+fi
+#### :rutina-final-client-gid-net:
 #### ##################################################
 #### ##################################################
 #### :rutina-inicial-server-web:
