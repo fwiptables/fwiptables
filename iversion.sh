@@ -478,7 +478,8 @@ allow_use_ipv4=""
 allow_use_ipv6=""                         
 allow_separate_rules=""        
 config_shield_port="22"        
-config_shield_maxtries="10"    
+config_shield_maxtries="10"  
+config_close_log="no"      
 config_close_deny="DROP"
 allow_system_ulog="no"   
 allow_save_autolog=""          
@@ -1650,12 +1651,13 @@ echo "$title_md $title_md Allow expert commands for default"
 echo "allow_expert_commands=                          ## or void for yes or no"
 echo "$title_md" 
 echo "$title_md $title_md default firewall"
-echo "allow_use_legacy=no                             ## or void for yes or no"
+echo "allow_use_legacy=                             ## or void for yes or no"
 echo "allow_use_nft=                                  ## or void for yes or no"
 echo "allow_use_ipv4=                                 ## or void for yes or no"
 echo "allow_use_ipv6=                                 ## or void for yes or no"
 echo "allow_separate_rules=                           ## or void for yes or no"
 echo "$title_md"
+echo "config_close_log=                               ## or void for yes or no"
 echo "config_close_deny=DROP                          ## or DROP or REJECT"
 echo "$title_md"
 echo "allow_system_ulog=no                            ## or void for yes or no"
@@ -2373,15 +2375,15 @@ echo "$title_md BEGIN NECESARY $title_md "
 echo "$title_md INICIO .......... Opciones Necesarias .......... .......... $title_md "
 echo "$title_md NETFILTER $title_md "
 echo "$title_md el iptables firewall netfilter, elige uno o dos "
-echo "allow_use_legacy= "
+echo "allow_use_legacy=no "
 echo "$title_md lanza xtables, vacio para si, o escribe no "
-echo "allow_use_nft=no "
+echo "allow_use_nft= "
 echo "$title_md lanza nftables, vacio para si, o escribe no "
 echo "$title_md PROTOCOL IP $title_md "
 echo "$title_md procolo ip, modificar con vacio o no "
 echo "allow_use_ipv4= "
 echo "$title_md varcio para ejecutar el firewall con ipv4 o no para no "
-echo "allow_use_ipv6=no "
+echo "allow_use_ipv6= "
 echo "$title_md varcio para ejecutar el firewall con ipv6 o no para no "
 echo "$title_md CLIENT PORTS $title_md "
 echo "$title_md puertos Cliente, añadir con ',' y poner rangos con : "
@@ -2421,6 +2423,8 @@ echo "$title_md GENERAL RULES $title_md "
 echo "$title_md Regla general en tabla "
 echo "allow_separate_rules= "
 echo "$title_md Vacio para separar reglas por cada puerto o no "
+echo "config_close_log=no"
+echo "$title_md Vacio para guardar logs antes de cerrar o no"
 echo "config_close_deny=DROP "
 echo "$title_md Elige cerrar denegacion con o DROP or REJECT "
 echo "$title_md END NECESARY $title_md "
@@ -2446,15 +2450,15 @@ echo "$title_md BEGIN NECESARY $title_md "
 echo "$title_md INICIO .......... Opciones Necesarias .......... .......... $title_md "
 echo "$title_md NETFILTER $title_md "
 echo "$title_md el iptables firewall netfilter, elige uno o dos "
-echo "allow_use_legacy= "
+echo "allow_use_legacy=no "
 echo "$title_md lanza xtables, vacio para si, o escribe no "
-echo "allow_use_nft=no "
+echo "allow_use_nft= "
 echo "$title_md lanza nftables, vacio para si, o escribe no "
 echo "$title_md PROTOCOL IP $title_md "
 echo "$title_md procolo ip, modificar con vacio o no "
 echo "allow_use_ipv4= "
 echo "$title_md varcio para ejecutar el firewall con ipv4 o no para no "
-echo "allow_use_ipv6=no "
+echo "allow_use_ipv6= "
 echo "$title_md varcio para ejecutar el firewall con ipv6 o no para no "
 echo "$title_md CLIENT PORTS $title_md "
 echo "$title_md puertos Cliente, añadir con ',' y poner rangos con : "
@@ -2494,6 +2498,8 @@ echo "$title_md GENERAL RULES $title_md "
 echo "$title_md Regla general en tabla "
 echo "allow_separate_rules= "
 echo "$title_md Vacio para separar reglas por cada puerto o no "
+echo "config_close_log=no"
+echo "$title_md Vacio para guardar logs antes de cerrar o no"
 echo "config_close_deny=DROP "
 echo "$title_md Elige cerrar denegacion con o DROP or REJECT "
 echo "$title_md END NECESARY $title_md "
@@ -2633,15 +2639,15 @@ echo "$title_md BEGIN NECESARY $title_md "
 echo "$title_md  .......... BEGIN Necesary options .......... .......... $title_md "
 echo "$title_md NETFILTER $title_md "
 echo "$title_md the iptables firewall netfilter, choose one or two "
-echo "allow_use_legacy= "
+echo "allow_use_legacy=no "
 echo "$title_md launch xtables, void to yes or type no "
-echo "allow_use_nft=no "
+echo "allow_use_nft= "
 echo "$title_md launch nftables, void to yes or type no "
 echo "$title_md PROTOCOL IP $title_md "
 echo "$title_md ip protocol, modify with void or no "
 echo "allow_use_ipv4= "
 echo "$title_md void to config firewall with ipv4 or no to dont configure ipv4 "
-echo "allow_use_ipv6=no "
+echo "allow_use_ipv6= "
 echo "$title_md void to config firewall with ipv6 or no to dont configure ipv6 "
 echo "$title_md CLIENT PORTS $title_md "
 echo "$title_md Client ports, add with ',' and join ranges with  : "
@@ -2681,6 +2687,8 @@ echo "$title_md GENERAL RULES $title_md "
 echo "$title_md General rules in table "
 echo "allow_separate_rules= "
 echo "$title_md Void to separate the rules for each port or no "
+echo "config_close_log=no"
+echo "$title_md Void to log save before close rule or no"
 echo "config_close_deny=DROP "
 echo "$title_md choose close deny with or DROP or REJECT "
 echo "$title_md END NECESARY $title_md "
@@ -2700,15 +2708,15 @@ echo "$title_md BEGIN NECESARY $title_md "
 echo "$title_md  .......... BEGIN Necesary options .......... .......... $title_md "
 echo "$title_md NETFILTER $title_md "
 echo "$title_md the iptables firewall netfilter, choose one or two "
-echo "allow_use_legacy= "
+echo "allow_use_legacy=no "
 echo "$title_md launch xtables, void to yes or type no "
-echo "allow_use_nft=no "
+echo "allow_use_nft= "
 echo "$title_md launch nftables, void to yes or type no "
 echo "$title_md PROTOCOL IP $title_md "
 echo "$title_md ip protocol, modify with void or no "
 echo "allow_use_ipv4= "
 echo "$title_md void to config firewall with ipv4 or no to dont configure ipv4 "
-echo "allow_use_ipv6=no "
+echo "allow_use_ipv6= "
 echo "$title_md void to config firewall with ipv6 or no to dont configure ipv6 "
 echo "$title_md CLIENT PORTS $title_md "
 echo "$title_md Client ports, add with ',' and join ranges with  : "
@@ -2748,6 +2756,8 @@ echo "$title_md GENERAL RULES $title_md "
 echo "$title_md General rules in table "
 echo "allow_separate_rules= "
 echo "$title_md Void to separate the rules for each port or no "
+echo "config_close_log=no"
+echo "$title_md Void to log save before close rule or no"
 echo "config_close_deny=DROP "
 echo "$title_md choose close deny with or DROP or REJECT "
 echo "$title_md END NECESARY $title_md "
@@ -10560,6 +10570,200 @@ fi
 #### :rutina-final-game-widelands:
 #### ##################################################
 #### ##################################################
+#### :rutina-inicial-client-uid-root:
+####
+####
+####   #### english: firewall of system client-web:
+####   #### spanish: cortafuego del sistema client-web:
+####
+####
+if [ "$first_option" == "client-uid-root" ]; then
+echo "$title_md $text_info [ loading firewall wallsystem client-uid-root ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="wallsystem" ;
+name_firewall="$first_option" ;
+#### english: firewall capacities
+# allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
+#### english: max tries for each hour 
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
+#### english: log port servers
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
+#### you can connect normal web
+server_port_udp="" ;
+client_port_tcp="" ;
+client_port_udp="" ;
+server_port_tcp="" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+allow_output_uid= 
+# allow_output_gid=no  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+config_output_uid=root
+# config_output_gid=root 
+# config_others_protocols=icmp,igmp 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
+fi
+#### :rutina-final-client-uid-root:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-client-gid-users:
+####
+####
+####   #### english: firewall of system client-web:
+####   #### spanish: cortafuego del sistema client-web:
+####
+####
+if [ "$first_option" == "client-gid-users" ]; then
+echo "$title_md $text_info [ loading firewall wallsystem client-gid-users ]" ;
+launch_rules_firewall="yes" ; 
+type_firewall="wallsystem" ;
+name_firewall="$first_option" ;
+#### english: firewall capacities
+# allow_use_legacy=""        
+# allow_use_nft="no"             
+# allow_use_ipv4=""            
+# allow_use_ipv6=""           
+# allow_separate_rules=""
+#### english: max tries for each hour 
+# allow_shield_maxtries="no" ;
+# config_shield_maxtries="12" ;
+# config_shield_port="22" ;
+#### english: log port servers
+# logserver_prefix_input="fwlog-input::"   
+# logserver_prefix_output="fwlog-output::"  
+# logserver_port_tcp="no"    
+# logserver_port_udp="no"    
+#### you can connect normal web
+server_port_udp="" ;
+client_port_tcp="" ;
+client_port_udp="" ;
+server_port_tcp="" ;
+# config_close_deny=DROP  ## or DROP or REJECT"
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# allow_string_denied=no 
+# allow_string_allowed=no 
+# allow_forward_ip4=no 
+# allow_forward_ip6=no 
+# allow_gateway_ip4=no 
+# allow_gateway_ip6=no 
+# allow_dmz_ip4=no 
+# allow_dmz_ip6=no 
+# allow_input_all=no 
+# allow_output_all=no 
+# allow_input_state=no 
+# allow_output_state=no 
+# allow_input_bandwidth=no 
+# allow_output_bandwidth=no 
+# allow_input_maxconnect=no 
+# allow_output_maxconnect=no 
+# allow_input_ping=no 
+# allow_output_ping=no 
+# allow_mac_whitelist=no 
+# allow_mac_blacklist=no 
+# allow_net_whitelist=no 
+# allow_net_blacklist=no 
+# allow_output_uid=no  
+allow_output_gid=users  
+# allow_others_protocols=no 
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+# config_string_denied=.fb.com,.facebook.com,xxx.html 
+# config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net 
+# config_mac_whitelist=d4:12:43:01:36:2e 
+# config_mac_blacklist=d4:12:43:01:36:2e 
+# config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
+# config_net_blacklist=facebook.com,www.facebook.com 
+# config_gateway_ip4=192.168.0.0/24
+# config_gateway_ip6=::1
+# config_dmz_ip4=192.168.1.7
+# config_dmz_ip6=d4:12:43:01:36:2e 
+# config_input_state=new,related,established 
+# config_output_state=new,related,established 
+# config_input_bandwidth=12512 
+# config_output_bandwidth=512 
+# config_input_maxconnect=72 
+# config_output_maxconnect=72 
+# config_output_uid=root 
+config_output_gid=root,users 
+# config_others_protocols=icmp,igmp 
+# config_ipv4_netclient=0/0 
+# config_ipv4_netserver=0/0 
+# config_ipv6_netclient=::/0 
+# config_ipv6_netserver=::/0 
+fi
+#### :rutina-final-client-gid-users:
+#### ##################################################
+#### ##################################################
 #### :rutina-inicial-server-web:
 ####
 ####
@@ -13977,16 +14181,20 @@ $command_iptables_legacy -A OUTPUT \
 -m comment --comment "icmp reply" &> /dev/null
 ####
 ####
-$allow_use_legacy  $allow_use_ipv4 $allow_output_uid \
+for uid in $(echo $config_output_uid | $command_sed 's/,/ /g') ;
+do $allow_use_legacy  $allow_use_ipv4 $allow_output_uid \
 $command_iptables_legacy   -A OUTPUT \
--m owner --uid-owner $config_output_uid -j ACCEPT \
+-m owner --gid-owner $uid -j ACCEPT \
 -m comment --comment "state uid" &> /dev/null
+done
 ####
 ####
-$allow_use_legacy  $allow_use_ipv4 $allow_output_gid \
+for gid in $(echo $config_output_gid | $command_sed 's/,/ /g') ;
+do $allow_use_legacy  $allow_use_ipv4 $allow_output_gid \
 $command_iptables_legacy   -A OUTPUT \
--m owner --gid-owner $config_output_gid -j ACCEPT \
+-m owner --gid-owner $gid -j ACCEPT \
 -m comment --comment "state gid" &> /dev/null
+done
 ####
 ####
 for one_protocol in $(echo $config_others_protocols | $command_sed 's/,/ /g')
@@ -14052,16 +14260,20 @@ $command_ip6tables_legacy -A OUTPUT \
 -m comment --comment "icmp reply" &> /dev/null
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $allow_output_uid \
+for uid in $(echo $config_output_uid | $command_sed 's/,/ /g') ;
+do $allow_use_legacy  $allow_use_ipv6 $allow_output_uid \
 $command_ip6tables_legacy   -A OUTPUT \
--m owner --uid-owner $config_output_uid -j ACCEPT \
+-m owner --gid-owner $uid -j ACCEPT \
 -m comment --comment "state uid" &> /dev/null
+done
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $allow_output_gid \
+for gid in $(echo $config_output_gid | $command_sed 's/,/ /g') ;
+do $allow_use_legacy  $allow_use_ipv6 $allow_output_gid \
 $command_ip6tables_legacy   -A OUTPUT \
--m owner --gid-owner $config_output_gid -j ACCEPT \
+-m owner --gid-owner $gid -j ACCEPT \
 -m comment --comment "state gid" &> /dev/null
+done
 ####
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy \
@@ -14127,16 +14339,20 @@ $command_iptables_nft -A OUTPUT \
 -m comment --comment "icmp reply" &> /dev/null
 ####
 ####
-$allow_use_nft $allow_use_ipv4 $allow_output_uid \
+for uid in $(echo $config_output_uid | $command_sed 's/,/ /g') ;
+do $allow_use_nft $allow_use_ipv4 $allow_output_uid \
 $command_iptables_nft   -A OUTPUT \
--m owner --uid-owner $config_output_uid -j ACCEPT \
+-m owner --uid-owner $uid -j ACCEPT \
 -m comment --comment "status uid" &> /dev/null
+done
 ####
 ####
-$allow_use_nft $allow_use_ipv4 $allow_output_gid \
+for gid in $(echo $config_output_gid | $command_sed 's/,/ /g') ;
+do $allow_use_nft $allow_use_ipv4 $allow_output_gid \
 $command_iptables_nft   -A OUTPUT \
--m owner --gid-owner $config_output_gid -j ACCEPT \
+-m owner --gid-owner $gid -j ACCEPT \
 -m comment --comment "status gid" &> /dev/null
+done
 ####
 ####
 for one_protocol in $(echo $config_others_protocols | $command_sed 's/,/ /g')
@@ -14202,16 +14418,20 @@ $command_ip6tables_nft -A OUTPUT \
 -m comment --comment "icmp reply" &> /dev/null
 ####
 ####
-$allow_use_nft $allow_use_ipv6 $allow_output_uid \
+for uid in $(echo $config_output_uid | $command_sed 's/,/ /g') ;
+do $allow_use_nft $allow_use_ipv6 $allow_output_uid \
 $command_ip6tables_nft -A OUTPUT \
--m owner --uid-owner $config_output_uid -j ACCEPT \
+-m owner --uid-owner $uid -j ACCEPT \
 -m comment --comment "status uid" &> /dev/null
+done
 ####
 ####
-$allow_use_nft $allow_use_ipv6 $allow_output_gid \
+for gid in $(echo $config_output_gid | $command_sed 's/,/ /g') ;
+do $allow_use_nft $allow_use_ipv6 $allow_output_gid \
 $command_ip6tables_nft -A OUTPUT \
--m owner --gid-owner $config_output_gid -j ACCEPT \
+-m owner --gid-owner $gid -j ACCEPT \
 -m comment --comment "status gid" &> /dev/null
+done
 ####
 ####
 $allow_use_nft $allow_use_ipv6 $command_ip6tables_nft \
