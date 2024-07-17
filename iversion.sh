@@ -479,7 +479,7 @@ allow_use_ipv6=""
 allow_separate_rules=""        
 config_shield_port="22"        
 config_shield_maxtries="10"  
-config_close_log="no"      
+allow_close_log="no"      
 config_close_deny="DROP"
 allow_system_ulog="no"   
 allow_save_autolog=""          
@@ -1657,7 +1657,7 @@ echo "allow_use_ipv4=                                 ## or void for yes or no"
 echo "allow_use_ipv6=                                 ## or void for yes or no"
 echo "allow_separate_rules=                           ## or void for yes or no"
 echo "$title_md"
-echo "config_close_log=                               ## or void for yes or no"
+echo "allow_close_log=                               ## or void for yes or no"
 echo "config_close_deny=DROP                          ## or DROP or REJECT"
 echo "$title_md"
 echo "allow_system_ulog=no                            ## or void for yes or no"
@@ -2423,7 +2423,7 @@ echo "$title_md GENERAL RULES $title_md "
 echo "$title_md Regla general en tabla "
 echo "allow_separate_rules= "
 echo "$title_md Vacio para separar reglas por cada puerto o no "
-echo "config_close_log=no"
+echo "allow_close_log=no"
 echo "$title_md Vacio para guardar logs antes de cerrar o no"
 echo "config_close_deny=DROP "
 echo "$title_md Elige cerrar denegacion con o DROP or REJECT "
@@ -2498,7 +2498,7 @@ echo "$title_md GENERAL RULES $title_md "
 echo "$title_md Regla general en tabla "
 echo "allow_separate_rules= "
 echo "$title_md Vacio para separar reglas por cada puerto o no "
-echo "config_close_log=no"
+echo "allow_close_log=no"
 echo "$title_md Vacio para guardar logs antes de cerrar o no"
 echo "config_close_deny=DROP "
 echo "$title_md Elige cerrar denegacion con o DROP or REJECT "
@@ -2687,7 +2687,7 @@ echo "$title_md GENERAL RULES $title_md "
 echo "$title_md General rules in table "
 echo "allow_separate_rules= "
 echo "$title_md Void to separate the rules for each port or no "
-echo "config_close_log=no"
+echo "allow_close_log=no"
 echo "$title_md Void to log save before close rule or no"
 echo "config_close_deny=DROP "
 echo "$title_md choose close deny with or DROP or REJECT "
@@ -2756,7 +2756,7 @@ echo "$title_md GENERAL RULES $title_md "
 echo "$title_md General rules in table "
 echo "allow_separate_rules= "
 echo "$title_md Void to separate the rules for each port or no "
-echo "config_close_log=no"
+echo "allow_close_log=no"
 echo "$title_md Void to log save before close rule or no"
 echo "config_close_deny=DROP "
 echo "$title_md choose close deny with or DROP or REJECT "
@@ -14871,6 +14871,39 @@ $config_input_state -j ACCEPT \
 -m comment --comment "input state"  &> /dev/null
 ####
 ####
+######################### output log close
+####
+####
+if [ "$allow_close_log" == "$NULL" ]; then
+####
+####
+#### english: nft OUPUT LOG CLOSE
+#### spanish: nft OUPUT LOG CLOSE
+####
+####
+$launch_custom $allow_use_ipv4 $allow_use_nft \
+$command_iptables_nft -t filter -A OUTPUT  -j LOG \
+-m comment --comment close-log &> /dev/null
+$launch_custom $allow_use_ipv6 $allow_use_nft \
+$command_ip6tables_nft -t filter -A OUTPUT  -j LOG \
+-m comment --comment close-log &> /dev/null
+####
+####
+#### english: legacy OUPUT LOG CLOSE
+#### spanish: legacy OUPUT LOG CLOSE 
+####
+####
+$launch_custom $allow_use_ipv4 $allow_use_legacy \
+$command_iptables_legacy  -t filter -A OUTPUT  -j LOG \
+-m comment --comment close-log &> /dev/null
+$launch_custom $allow_use_ipv6 $allow_use_legacy \
+$command_ip6tables_legacy -t filter -A OUTPUT  -j LOG \
+-m comment --comment close-log &> /dev/null
+####
+####
+fi
+####
+####
 #### english: nft INPUT DROP all
 #### spanish: nft INPUT deniega todo
 ####
@@ -15073,39 +15106,7 @@ $input_state -j ACCEPT \
 -m comment --comment "input state" &> /dev/null
 ####
 ####
-######################### output log close
-####
-####
-if [ "config_close_log" == "$NULL" ]; then
-####
-####
-#### english: nft OUPUT LOG CLOSE
-#### spanish: nft OUPUT LOG CLOSE
-####
-####
-$launch_custom $allow_output_all $allow_use_ipv4 $allow_use_nft \
-$command_iptables_nft -t filter -A OUTPUT  -j LOG \
--m comment --comment close-log &> /dev/null
-$launch_custom $allow_output_all $allow_use_ipv6 $allow_use_nft \
-$command_ip6tables_nft -t filter -A OUTPUT  -j LOG \
--m comment --comment close-log &> /dev/null
-####
-####
-#### english: legacy OUPUT LOG CLOSE
-#### spanish: legacy OUPUT LOG CLOSE 
-####
-####
-$launch_custom $allow_output_all $allow_use_ipv4 $allow_use_legacy \
-$command_iptables_legacy  -t filter -A OUTPUT  -j LOG \
--m comment --comment close-log &> /dev/null
-$launch_custom $allow_output_all $allow_use_ipv6 $allow_use_legacy \
-$command_ip6tables_legacy -t filter -A OUTPUT  -j LOG \
--m comment --comment close-log &> /dev/null
-####
-####
 fi
-####
-####
 ######################### output close rule
 ####
 ####
@@ -15131,9 +15132,6 @@ $command_iptables_legacy  -t filter -A OUTPUT  -j $config_close_deny \
 $launch_custom $allow_output_all $allow_use_ipv6 $allow_use_legacy \
 $command_ip6tables_legacy -t filter -A OUTPUT  -j $config_close_deny \
 -m comment --comment close-rule &> /dev/null
-####
-####
-fi
 ####
 ####
 ################ english: show text when active load-custom rules
