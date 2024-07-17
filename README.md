@@ -30,8 +30,8 @@
 ###  fwiptables install.                     
   
     su root TYPE: su root                       
-    put bit TYPE: chmod 755 ./fwiptables-version-24-07e-bash.sh     
-    install TYPE: ./fwiptables-version-24-07e-bash.sh install       
+    put bit TYPE: chmod 755 ./fwiptables-version-24-07f-bash.sh     
+    install TYPE: ./fwiptables-version-24-07f-bash.sh install       
   
 ###  fwiptables uninstall.                   
   
@@ -39,9 +39,9 @@
   
 ###  [ version ] [ Show version ] [ version md ]            
    [ info ] [ Somes details ]                 
-   [ info ] [ Basename program    ] fwiptables-version-24-07e-bash.sh               
-   [ info ] [ Realpath program    ] /root/f-iptables-version/fwiptables-version-24-07e-bash.sh               
-   [ info ] [ Version program     ] 24-07e                
+   [ info ] [ Basename program    ] fwiptables-version-24-07f-bash.sh               
+   [ info ] [ Realpath program    ] /root/f-iptables-version/fwiptables-version-24-07f-bash.sh               
+   [ info ] [ Version program     ] 24-07f                
    [ info ] [ Short description   ] FireWall With iptables       
    [ info ] [ Long description    ] One Mini Script in one-file wizard        
    [ info ] [ Developer Actual    ] Francisco Garcia              
@@ -50,9 +50,9 @@
    [ info ] [ Data  Directory     ] /root/.config/fwiptables    
    [ info ] [ Cache Directory     ] /root/.cache/fwiptables   
    [ info ] [ File  Preferences   ]    
-   /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-07e             
+   /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-07f             
    [ info ] [ Fileformat program  ]    
-   /root/f-iptables-version/fwiptables-version-24-07e-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable        
+   /root/f-iptables-version/fwiptables-version-24-07f-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable        
   
 ###  [ compile ] [  Optionally compile from bash script ] [ compile md]         
    [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling...    
@@ -65,39 +65,39 @@
   
 ###        | with optional output | Example Description   
     
-   | depends                  | fwiptables-version-24-07e-bash.sh depends             
-   | List firewall saved      | fwiptables-version-24-07e-bash.sh names               
-   | List configs saved       | fwiptables-version-24-07e-bash.sh all-custom          
-   | Get info speed ipv4      | fwiptables-version-24-07e-bash.sh speed-ip4           
-   | Show listen sockets      | fwiptables-version-24-07e-bash.sh sockets             
-   | List last options        | fwiptables-version-24-07e-bash.sh autolog             
-   | modify default variables | fwiptables-version-24-07e-bash.sh preferences-modify  
+   | depends                  | fwiptables-version-24-07f-bash.sh depends             
+   | List firewall saved      | fwiptables-version-24-07f-bash.sh names               
+   | List configs saved       | fwiptables-version-24-07f-bash.sh all-custom          
+   | Get info speed ipv4      | fwiptables-version-24-07f-bash.sh speed-ip4           
+   | Show listen sockets      | fwiptables-version-24-07f-bash.sh sockets             
+   | List last options        | fwiptables-version-24-07f-bash.sh autolog             
+   | modify default variables | fwiptables-version-24-07f-bash.sh preferences-modify  
     
 ###  [ Several examples with optional output ]  
     
          | with optional output | Example Description  
     
-   | Example with info        | fwiptables-version-24-07e-bash.sh txt info             
-   | Example with expert      | fwiptables-version-24-07e-bash.sh txt expert           
-   | Example with code ip4    | fwiptables-version-24-07e-bash.sh cli code ip4         
-   | Example with list rules  | fwiptables-version-24-07e-bash.sh cli lsn4             
-   | Example with nodes       | fwiptables-version-24-07e-bash.sh gui nodes            
-   | Example with web browser | fwiptables-version-24-07e-bash.sh gui web kernel.org   
+   | Example with info        | fwiptables-version-24-07f-bash.sh txt info             
+   | Example with expert      | fwiptables-version-24-07f-bash.sh txt expert           
+   | Example with code ip4    | fwiptables-version-24-07f-bash.sh cli code ip4         
+   | Example with list rules  | fwiptables-version-24-07f-bash.sh cli lsn4             
+   | Example with nodes       | fwiptables-version-24-07f-bash.sh gui nodes            
+   | Example with web browser | fwiptables-version-24-07f-bash.sh gui web kernel.org   
     
-   | Launch client web firewall in silent   | fwiptables-version-24-07e-bash.sh silent client-web   
-   | List iptables rules with output txt    | fwiptables-version-24-07e-bash.sh txt ls4             
-   | List firewall with output cli whiptail | fwiptables-version-24-07e-bash.sh cli-wiptail names   
-   | List sockets ip with output gui yad    | fwiptables-version-24-07e-bash.sh gui-yad sockets     
-   | All options in text menu               | fwiptables-version-24-07e-bash.sh cli-menu-dialog     
-   | All options in window menu             | fwiptables-version-24-07e-bash.sh gui-menu-yad        
-   | All options in window roll             | fwiptables-version-24-07e-bash.sh gui-roll-zenity     
-   | All options in window shell            | fwiptables-version-24-07e-bash.sh gui-shell-yad       
+   | Launch client web firewall in silent   | fwiptables-version-24-07f-bash.sh silent client-web   
+   | List iptables rules with output txt    | fwiptables-version-24-07f-bash.sh txt ls4             
+   | List firewall with output cli whiptail | fwiptables-version-24-07f-bash.sh cli-wiptail names   
+   | List sockets ip with output gui yad    | fwiptables-version-24-07f-bash.sh gui-yad sockets     
+   | All options in text menu               | fwiptables-version-24-07f-bash.sh cli-menu-dialog     
+   | All options in window menu             | fwiptables-version-24-07f-bash.sh gui-menu-yad        
+   | All options in window roll             | fwiptables-version-24-07f-bash.sh gui-roll-zenity     
+   | All options in window shell            | fwiptables-version-24-07f-bash.sh gui-shell-yad       
   
 ### 
 ### 
 ###  [ options ] [ List general options for fwiptables ] [ list-options md ]
   
-###  fwiptables-version-24-07e-bash.sh [optional-output] first_option [second_option]  
+###  fwiptables-version-24-07f-bash.sh [optional-output] first_option [second_option]  
 ###   optional-output                                                      
    [ t|txt n|narrowtxt l|logtxt c|cli g|gui p|pdf s|silent ]                    
    [ cli-dialog cli-whiptail gui-zenity gui-yad ]                         
@@ -127,19 +127,19 @@
    server-telnet server-irc server-vnc server-print server-webserver      
    server-lamp server-news server-ftp server-mail server-teamspeak        
    server-mumble server-gateway server-sql server-samba server-proxy      
-   server-asterisk                                                        
+   server-asterisk client-uid-root client-gid-users client-gid-net        
 ###   options-easy                                                         
    preferences-read preferences-modify preferences-regen info web         
    options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date         
    free sockets nodes ip-forward depends utils treeconf treecache          
    cleancache notes variables uninstall install upgrade version           
    examples code expert license-gpl license-lgpl license-bsd             
-###        | With Program: fwiptables-version-24-07e-bash.sh And Version: 24-07e  
+###        | With Program: fwiptables-version-24-07f-bash.sh And Version: 24-07f  
 ###        | Description: One Mini Script in one-file wizard                      
 ###        | Expert: expert is allowed in preferences file   
   
    
-###  | optional-output | fwiptables-version-24-07e-bash.sh optional-ouptut |
+###  | optional-output | fwiptables-version-24-07f-bash.sh optional-ouptut |
   
    | t . output in terminal text  
    | n . output in terminal text narrowtxt (compresed spaces)  
