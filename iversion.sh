@@ -2966,7 +2966,7 @@ echo "$text_md game-minetest game-freeciv lan-tor lan-vpn shield-ssh server-ssh 
 echo "$text_md server-telnet server-irc server-vnc server-print server-webserver      "
 echo "$text_md server-lamp server-news server-ftp server-mail server-teamspeak        "
 echo "$text_md server-mumble server-gateway server-sql server-samba server-proxy      "
-echo "$text_md server-asterisk                                                        "
+echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net        "
 echo "$title_md  options-easy                                                         "
 echo "$text_md preferences-read preferences-modify preferences-regen info web         "
 echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date         "
@@ -3232,6 +3232,9 @@ echo "$text_md | server-asterisk . launch a one firewall basic server  "
 echo "$text_md | server-domain . launch a one firewall basic server  "  
 echo "$text_md | server-proxy . launch a one firewall basic server  "  
 echo "$text_md | server-gateway . launch a one firewall nat gateway and web/ssh server  "  
+echo "$text_md | client-uid-root . launch a one firewall for only allow at user root  "    
+echo "$text_md | client-gid-users . launch a one firewall for only allow at group users  "
+echo "$text_md | client-gid-net . launch a one firewall for only allow at group net  "      
 exit; fi
 ####
 ####
@@ -15069,6 +15072,43 @@ $command_ip6tables_legacy -t filter -A OUTPUT \
 $input_state -j ACCEPT \
 -m comment --comment "input state" &> /dev/null
 ####
+####
+######################### output log close
+####
+####
+if [ "config_close_log" == "$NULL" ]; then
+####
+####
+#### english: nft OUPUT LOG CLOSE
+#### spanish: nft OUPUT LOG CLOSE
+####
+####
+$launch_custom $allow_output_all $allow_use_ipv4 $allow_use_nft \
+$command_iptables_nft -t filter -A OUTPUT  -j LOG \
+-m comment --comment close-log &> /dev/null
+$launch_custom $allow_output_all $allow_use_ipv6 $allow_use_nft \
+$command_ip6tables_nft -t filter -A OUTPUT  -j LOG \
+-m comment --comment close-log &> /dev/null
+####
+####
+#### english: legacy OUPUT LOG CLOSE
+#### spanish: legacy OUPUT LOG CLOSE 
+####
+####
+$launch_custom $allow_output_all $allow_use_ipv4 $allow_use_legacy \
+$command_iptables_legacy  -t filter -A OUTPUT  -j LOG \
+-m comment --comment close-log &> /dev/null
+$launch_custom $allow_output_all $allow_use_ipv6 $allow_use_legacy \
+$command_ip6tables_legacy -t filter -A OUTPUT  -j LOG \
+-m comment --comment close-log &> /dev/null
+####
+####
+fi
+####
+####
+######################### output close rule
+####
+####
 #### english: nft INPUT DROP all
 #### spanish: nft INPUT deniega todo
 ####
@@ -15091,6 +15131,7 @@ $command_iptables_legacy  -t filter -A OUTPUT  -j $config_close_deny \
 $launch_custom $allow_output_all $allow_use_ipv6 $allow_use_legacy \
 $command_ip6tables_legacy -t filter -A OUTPUT  -j $config_close_deny \
 -m comment --comment close-rule &> /dev/null
+####
 ####
 fi
 ####
