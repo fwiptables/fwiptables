@@ -1649,7 +1649,7 @@ echo "$title_md $title_md Allow expert commands for default"
 echo "allow_expert_commands=                          ## or void for yes or no"
 echo "$title_md" 
 echo "$title_md $title_md default firewall"
-echo "allow_use_legacy=no                             ## or void for yes or no"
+echo "allow_use_legacy=                             ## or void for yes or no"
 echo "allow_use_nft=                                  ## or void for yes or no"
 echo "allow_use_ipv4=                                 ## or void for yes or no"
 echo "allow_use_ipv6=                                 ## or void for yes or no"
@@ -14130,7 +14130,7 @@ $command_iptables_legacy -A INPUT \
 $allow_use_legacy  $allow_use_ipv4 $config_uid_gid \
 $command_iptables_legacy -A INPUT \
 -m state --state related,established -j ACCEPT \
--m comment --comment "state uid-gid" &> /dev/null
+-m comment --comment "uid-gid" &> /dev/null
 ####
 ####
 for one_protocol in $(echo $config_others_protocols | $command_sed 's/,/ /g')
@@ -14161,7 +14161,7 @@ for uid in $(echo $config_output_uid | $command_sed 's/,/ /g') ;
 do $allow_use_legacy  $allow_use_ipv4 $allow_output_uid \
 $command_iptables_legacy   -A OUTPUT \
 -m owner --gid-owner $uid -j ACCEPT \
--m comment --comment "state uid" &> /dev/null
+-m comment --comment "user-uid" &> /dev/null
 done
 ####
 ####
@@ -14169,7 +14169,7 @@ for gid in $(echo $config_output_gid | $command_sed 's/,/ /g') ;
 do $allow_use_legacy  $allow_use_ipv4 $allow_output_gid \
 $command_iptables_legacy   -A OUTPUT \
 -m owner --gid-owner $gid -j ACCEPT \
--m comment --comment "state gid" &> /dev/null
+-m comment --comment "group-gid" &> /dev/null
 done
 ####
 ####
@@ -14204,7 +14204,7 @@ $command_ip6tables_legacy -A INPUT \
 $allow_use_legacy  $allow_use_ipv6 $config_uid_gid \
 $command_ip6tables_legacy -A INPUT \
 -m state --state related,established -j ACCEPT \
--m comment --comment "state uid-gid" &> /dev/null
+-m comment --comment "uid-gid" &> /dev/null
 ####
 ####
 $allow_use_legacy  $allow_use_ipv6 $command_ip6tables_legacy -A INPUT \
@@ -14240,7 +14240,7 @@ for uid in $(echo $config_output_uid | $command_sed 's/,/ /g') ;
 do $allow_use_legacy  $allow_use_ipv6 $allow_output_uid \
 $command_ip6tables_legacy   -A OUTPUT \
 -m owner --gid-owner $uid -j ACCEPT \
--m comment --comment "state uid" &> /dev/null
+-m comment --comment "user-uid" &> /dev/null
 done
 ####
 ####
@@ -14248,7 +14248,7 @@ for gid in $(echo $config_output_gid | $command_sed 's/,/ /g') ;
 do $allow_use_legacy  $allow_use_ipv6 $allow_output_gid \
 $command_ip6tables_legacy   -A OUTPUT \
 -m owner --gid-owner $gid -j ACCEPT \
--m comment --comment "state gid" &> /dev/null
+-m comment --comment "group-gid" &> /dev/null
 done
 ####
 ####
@@ -14288,7 +14288,7 @@ $command_iptables_nft -A INPUT \
 $allow_use_nft $allow_use_ipv4 $config_uid_gid \
 $command_iptables_nft -A INPUT \
 -m state --state related,established -j ACCEPT \
--m comment --comment "state uid-gid" &> /dev/null
+-m comment --comment "uid-gid" &> /dev/null
 ####
 ####
 for one_protocol in $(echo $config_others_protocols | $command_sed 's/,/ /g')
@@ -14319,7 +14319,7 @@ for uid in $(echo $config_output_uid | $command_sed 's/,/ /g') ;
 do $allow_use_nft $allow_use_ipv4 $allow_output_uid \
 $command_iptables_nft   -A OUTPUT \
 -m owner --uid-owner $uid -j ACCEPT \
--m comment --comment "status uid" &> /dev/null
+-m comment --comment "user-uid" &> /dev/null
 done
 ####
 ####
@@ -14327,7 +14327,7 @@ for gid in $(echo $config_output_gid | $command_sed 's/,/ /g') ;
 do $allow_use_nft $allow_use_ipv4 $allow_output_gid \
 $command_iptables_nft   -A OUTPUT \
 -m owner --gid-owner $gid -j ACCEPT \
--m comment --comment "status gid" &> /dev/null
+-m comment --comment "group-gid" &> /dev/null
 done
 ####
 ####
@@ -14362,7 +14362,7 @@ $command_ip6tables_nft -A INPUT \
 $allow_use_nft $allow_use_ipv6 $config_uid_gid \
 $command_ip6tables_nft -A INPUT \
 -m state --state related,established -j ACCEPT \
--m comment --comment "status uid-gid" &> /dev/null
+-m comment --comment "uid-gid" &> /dev/null
 ####
 ####
 $allow_use_nft $allow_use_ipv6 $command_ip6tables_nft -A INPUT \
@@ -14398,7 +14398,7 @@ for uid in $(echo $config_output_uid | $command_sed 's/,/ /g') ;
 do $allow_use_nft $allow_use_ipv6 $allow_output_uid \
 $command_ip6tables_nft -A OUTPUT \
 -m owner --uid-owner $uid -j ACCEPT \
--m comment --comment "status uid" &> /dev/null
+-m comment --comment "user-uid" &> /dev/null
 done
 ####
 ####
@@ -14406,7 +14406,7 @@ for gid in $(echo $config_output_gid | $command_sed 's/,/ /g') ;
 do $allow_use_nft $allow_use_ipv6 $allow_output_gid \
 $command_ip6tables_nft -A OUTPUT \
 -m owner --gid-owner $gid -j ACCEPT \
--m comment --comment "status gid" &> /dev/null
+-m comment --comment "group-gid" &> /dev/null
 done
 ####
 ####
