@@ -508,8 +508,6 @@ server_port_udp=""     ;
 allow_shield_maxtries="no"    ;
 config_shield_port="22" ;
 config_shield_maxtries="12"     ;
-logserver_prefix_input="log-input"     ;
-logserver_prefix_output="log-output"     ;
 logserver_port_tcp="no"     ;
 logserver_port_udp="no"     ;
 time_server_waiting="9s"    ;
@@ -2405,12 +2403,6 @@ echo "logserver_port_tcp= "
 echo "$title_md puertos tcp para logear servidor "
 echo "logserver_port_udp= "
 echo "$title_md puertos udp para logear servidor "
-echo "$title_md LOG PREFIX TO SERVER $title_md "
-echo "$title_md logear para puertos de servidor con prefijo "
-echo "logserver_prefix_input=log-input"
-echo "$title_md especifica prefijo de entrada para logserver "
-echo "logserver_prefix_output=log-output"
-echo "$title_md especifica prefijo de salida para logserver "
 echo "$title_md ALLOW MAXTRIES SHIELD $title_md )"
 echo "$title_md Pone un escudo para los peuertos de nueva conexion, con maximo ip cada hora "
 echo "allow_shield_maxtries=no "
@@ -2480,12 +2472,6 @@ echo "logserver_port_tcp= "
 echo "$title_md puertos tcp para logear servidor "
 echo "logserver_port_udp= "
 echo "$title_md puertos udp para logear servidor "
-echo "$title_md LOG PREFIX TO SERVER $title_md "
-echo "$title_md logear para puertos de servidor con prefijo "
-echo "logserver_prefix_input=log-input"
-echo "$title_md especifica prefijo de entrada para logserver "
-echo "logserver_prefix_output=log-output"
-echo "$title_md especifica prefijo de salida para logserver "
 echo "$title_md ALLOW MAXTRIES SHIELD $title_md )"
 echo "$title_md Pone un escudo para los peuertos de nueva conexion, con maximo ip cada hora "
 echo "allow_shield_maxtries=no "
@@ -2669,12 +2655,6 @@ echo "logserver_port_tcp= "
 echo "$title_md the tcp ports to log server "
 echo "logserver_port_udp= "
 echo "$title_md the udp ports to log server "
-echo "$title_md LOG PREFIX TO SERVER $title_md "
-echo "$title_md Log to server ports with prefix "
-echo "logserver_prefix_input=log-input"
-echo "$title_md type input prefix for logserver "
-echo "logserver_prefix_output=log-output"
-echo "$title_md type output prefix for logserver "
 echo "$title_md ALLOW MAXTRIES SHIELD $title_md "
 echo "$title_md Put one shield for ports to new connecting, with max ip to each hour "
 echo "allow_shield_maxtries=no "
@@ -2738,12 +2718,6 @@ echo "logserver_port_tcp= "
 echo "$title_md the tcp ports to log server "
 echo "logserver_port_udp= "
 echo "$title_md the udp ports to log server "
-echo "$title_md LOG PREFIX TO SERVER $title_md "
-echo "$title_md Log to server ports with prefix "
-echo "logserver_prefix_input=log-input"
-echo "$title_md type input prefix for logserver "
-echo "logserver_prefix_output=log-output"
-echo "$title_md type output prefix for logserver "
 echo "$title_md ALLOW MAXTRIES SHIELD $title_md "
 echo "$title_md Put one shield for ports to new connecting, with max ip to each hour "
 echo "allow_shield_maxtries=no "
@@ -8167,8 +8141,6 @@ allow_shield_maxtries="" ;
 config_shield_maxtries="30" ;
 config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### you can connect normal web
@@ -8264,8 +8236,6 @@ allow_shield_maxtries="no" ;
 config_shield_maxtries="20" ;
 config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### you can connect normal web
@@ -8361,8 +8331,6 @@ allow_shield_maxtries="no" ;
 config_shield_maxtries="20" ;
 config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### you can connect normal web
@@ -8458,8 +8426,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### you can connect normal web
@@ -8557,8 +8523,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### you can connect normal web
@@ -8654,8 +8618,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### you can connect normal web
@@ -8751,8 +8713,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### you can connect normal web
@@ -8848,8 +8808,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### you can connect normal web
@@ -9006,8 +8964,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### you can connect normal web and vnc
@@ -9104,8 +9060,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### you can connect web normal and bittorrent too
@@ -9202,8 +9156,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### you can connect web normal and web vpn
@@ -9300,8 +9252,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### you can connect web normal and web tor
@@ -9398,8 +9348,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### client news:
@@ -9501,8 +9449,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### client news:
@@ -9615,8 +9561,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### client ftp:
@@ -9713,8 +9657,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### server http and https and ssh /tcp and https udp
@@ -9811,8 +9753,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### vpn ports to connects ports vpn
@@ -9910,8 +9850,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### lan tor, 9000:9170 for connect to tor
@@ -10009,8 +9947,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
@@ -10107,8 +10043,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
@@ -10204,9 +10138,7 @@ name_firewall="$first_option" ;
 # allow_shield_maxtries="no" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
-#### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
+#### english: log port servers 
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### game wesnoth port 14999 and 15001 usually
@@ -10303,8 +10235,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### game minetest and minecraft porst 25k and 35k /udp
@@ -10401,8 +10331,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### for default 5556 port tcp perhaps 5555 too
@@ -10499,8 +10427,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### for default 7396 port tcp and 7396 udp
@@ -10596,8 +10522,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### you can connect normal web
@@ -10692,9 +10616,7 @@ name_firewall="$first_option" ;
 # allow_shield_maxtries="no" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
-#### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
+#### english: log port servers 
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### you can connect normal web
@@ -10790,8 +10712,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### you can connect normal web
@@ -10888,8 +10808,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### server http and https and ssh /tcp and https udp
@@ -10986,8 +10904,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"      
 #### you can connect normal web and vnc
@@ -11084,8 +11000,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### server http and https and ssh /tcp and https udp
@@ -11182,8 +11096,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### server http and https and ssh /tcp and https udp
@@ -11280,8 +11192,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### server http and https and ssh /tcp and https udp
@@ -11378,8 +11288,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"       
 #### client news:
@@ -11484,8 +11392,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### client news:
@@ -11598,8 +11504,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### server samba and active directory
@@ -11696,8 +11600,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### server ipp and printer
@@ -11794,8 +11696,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### server ssh 22/tcp
@@ -11892,8 +11792,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### server ssh 22/tcp
@@ -11990,8 +11888,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 ####  english: udp: 20 is ftp-data, 21 is ftp, 989 is ftps-data y 990 is ftps
@@ -12089,8 +11985,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 ####    UDP:5060 SIP (sip.conf), newer Versions support TCP:5060
@@ -12188,9 +12082,7 @@ name_firewall="$first_option" ;
 # allow_shield_maxtries="no" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
-#### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
+#### english: log port servers 
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### mumble port 64738 tcp and 64738 udp
@@ -12287,8 +12179,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### Service	        Protocol	Local Port (Server)
@@ -12389,8 +12279,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 ####  POSTGRESQL 5432/tcp and 5432/udp
@@ -12491,8 +12379,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### you can connect normal web
@@ -12589,8 +12475,6 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_prefix_input="fwlog-input::"   
-# logserver_prefix_output="fwlog-output::"  
 # logserver_port_tcp="no"    
 # logserver_port_udp="no"    
 #### server domain and domain-s
@@ -12734,6 +12618,9 @@ case "$NULL" in "$allow_output_maxconnect");;  *)  allow_output_maxconnect="no";
 case "$NULL" in "$allow_output_ping")      ;;  *)  allow_output_ping="no";; esac
 case "$NULL" in "$allow_output_state")     ;;  *)  allow_output_state="no";; esac
 case "$NULL" in "$allow_output_uid")       ;;  *)  allow_output_uid="no";; esac
+case "$NULL" in "$config_system_log")      ;;  *)  config_system_log="log" ;; esac
+####
+####
 ####
 ####
 #### :rutina-final-sane-variables-firewall:
@@ -12761,8 +12648,6 @@ case "$NULL" in "$allow_output_uid")       ;;  *)  allow_output_uid="no";; esac
 ####                                                                                            ###############
 #################################################################
 #################################################################
-####
-####
 ########################################     english: ipv4 iptables all-permisive:
 ########################################     spanish: ipv4 iptables todo permisivo
 #### :rutina-inicial-code-allpermisive:
@@ -13911,51 +13796,43 @@ done ; fi
 #### ipv4
 ####
 ####
-#### config log variable 
-####
-if [ "$allow_system_ulog" == "$NULL" ];
-then config_system_logs="-j ULOG --ulog-prefix"
-else config_system_logs="-j LOG --log-prefix"
-fi
-####
-####
 $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A INPUT  \
 -p tcp  -m multiport --dports $logserver_port_tcp \
-$config_system_logs $logserver_prefix_input \
+-j $config_system_log \
 -m comment --comment logserver-tcp  &> /dev/null
 $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A INPUT  \
 -p udp  -m multiport --dports $logserver_port_udp \
-$config_system_logs $logserver_prefix_input \
+-j $config_system_log \
 -m comment --comment logserver-udp  &> /dev/null
 ####
 ####
 $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A OUTPUT \
 -p tcp -m multiport --sports $logserver_port_tcp \
-$config_system_logs $logserver_prefix_output \
+-j $config_system_log \
 -m comment --comment logserver-tcp  &> /dev/null
 $allow_use_legacy  $allow_use_ipv4  $command_iptables_legacy -A OUTPUT \
 -p udp -m multiport --sports $logserver_port_udp \
-$config_system_logs $logserver_prefix_output \
+-j $config_system_log \
 -m comment --comment logserver-udp  &> /dev/null
 ####
 ####
 $allow_use_nft     $allow_use_ipv4  $command_iptables_nft    -A INPUT  \
 -p tcp  -m multiport --dports $logserver_port_tcp \
-$config_system_logs $logserver_prefix_input \
+-j $config_system_log \
 -m comment --comment logserver-tcp  &> /dev/null
 $allow_use_nft     $allow_use_ipv4  $command_iptables_nft    -A INPUT  \
 -p udp  -m multiport --dports $logserver_port_udp \
-$config_system_logs $logserver_prefix_input \
+-j $config_system_log \
 -m comment --comment logserver-udp  &> /dev/null
 ####
 ####
 $allow_use_nft     $allow_use_ipv4  $command_iptables_nft    -A OUTPUT \
 -p tcp -m multiport --sports $logserver_port_tcp \
-$config_system_logs $logserver_prefix_output \
+-j $config_system_log \
 -m comment --comment logserver-tcp  &> /dev/null
 $allow_use_nft     $allow_use_ipv4  $command_iptables_nft    -A OUTPUT \
 -p udp -m multiport --sports $logserver_port_udp \
-$config_system_logs $logserver_prefix_output \
+-j $config_system_log \
 -m comment --comment logserver-udp  &> /dev/null
 ####
 ####
@@ -13964,41 +13841,41 @@ $config_system_logs $logserver_prefix_output \
 ####
 $allow_use_legacy  $allow_use_ipv6   $command_ip6tables_legacy -A INPUT   \
 -p tcp  -m multiport --dports $logserver_port_tcp \
-$config_system_logs $logserver_prefix_input \
+-j $config_system_log \
 -m comment --comment logserver-tcp  &> /dev/null
 $allow_use_legacy  $allow_use_ipv6   $command_ip6tables_legacy -A INPUT   \
 -p udp  -m multiport --dports $logserver_port_udp \
-$config_system_logs $logserver_prefix_input \
+-j $config_system_log \
 -m comment --comment logserver-udp  &> /dev/null
 ####
 ####
 $allow_use_legacy  $allow_use_ipv6   $command_ip6tables_legacy -A OUTPUT  \
 -p tcp -m multiport --sports $logserver_port_tcp \
-$config_system_logs $logserver_prefix_output \
+-j $config_system_log \
 -m comment --comment logserver-tcp  &> /dev/null
 $allow_use_legacy  $allow_use_ipv6   $command_ip6tables_legacy -A OUTPUT  \
 -p udp -m multiport --sports $logserver_port_udp \
-$config_system_logs $logserver_prefix_output \
+-j $config_system_log \
 -m comment --comment logserver-udp  &> /dev/null
 ####
 ####
 $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A INPUT   \
 -p tcp  -m multiport --dports $logserver_port_tcp \
-$config_system_logs $logserver_prefix_input \
+-j $config_system_log \
 -m comment --comment logserver-tcp  &> /dev/null
 $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A INPUT   \
 -p udp  -m multiport --dports $logserver_port_udp \
-$config_system_logs $logserver_prefix_input \
+-j $config_system_log \
 -m comment --comment logserver-udp  &> /dev/null
 ####
 ####
 $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A OUTPUT  \
 -p tcp -m multiport --sports $logserver_port_tcp \
-$config_system_logs $logserver_prefix_output \
+-j $config_system_log \
 -m comment --comment logserver-tcp  &> /dev/null
 $allow_use_nft     $allow_use_ipv6   $command_ip6tables_nft    -A OUTPUT  \
 -p udp -m multiport --sports $logserver_port_udp \
-$config_system_logs $logserver_prefix_output \
+-j $config_system_log \
 -m comment --comment logserver-udp  &> /dev/null
 ####
 ####
@@ -14693,10 +14570,10 @@ if [ "$allow_close_log" == "$NULL" ]; then
 ####
 ####
 $launch_custom $allow_use_ipv4 $allow_use_nft \
-$command_iptables_nft -t filter -A INPUT  -j LOG \
+$command_iptables_nft -t filter -A INPUT   -j $config_system_log \
 -m comment --comment close-log &> /dev/null
 $launch_custom $allow_use_ipv6 $allow_use_nft \
-$command_ip6tables_nft -t filter -A INPUT  -j LOG \
+$command_ip6tables_nft -t filter -A INPUT  -j $config_system_log \
 -m comment --comment close-log &> /dev/null
 ####
 ####
@@ -14705,10 +14582,10 @@ $command_ip6tables_nft -t filter -A INPUT  -j LOG \
 ####
 ####
 $launch_custom $allow_use_ipv4 $allow_use_legacy \
-$command_iptables_legacy  -t filter -A INPUT  -j LOG \
+$command_iptables_legacy  -t filter -A INPUT  -j $config_system_log \
 -m comment --comment close-log &> /dev/null
 $launch_custom $allow_use_ipv6 $allow_use_legacy \
-$command_ip6tables_legacy -t filter -A INPUT  -j LOG \
+$command_ip6tables_legacy -t filter -A INPUT  -j $config_system_log \
 -m comment --comment close-log &> /dev/null
 ####
 ####
@@ -14726,10 +14603,10 @@ if [ "$allow_close_log" == "$NULL" ]; then
 ####
 ####
 $launch_custom $allow_use_ipv4 $allow_use_nft \
-$command_iptables_nft -t filter -A OUTPUT  -j LOG \
+$command_iptables_nft -t filter -A OUTPUT  -j $config_system_log \
 -m comment --comment close-log &> /dev/null
 $launch_custom $allow_use_ipv6 $allow_use_nft \
-$command_ip6tables_nft -t filter -A OUTPUT  -j LOG \
+$command_ip6tables_nft -t filter -A OUTPUT  -j $config_system_log \
 -m comment --comment close-log &> /dev/null
 ####
 ####
@@ -14738,10 +14615,10 @@ $command_ip6tables_nft -t filter -A OUTPUT  -j LOG \
 ####
 ####
 $launch_custom $allow_use_ipv4 $allow_use_legacy \
-$command_iptables_legacy  -t filter -A OUTPUT  -j LOG \
+$command_iptables_legacy  -t filter -A OUTPUT  -j $config_system_log \
 -m comment --comment close-log &> /dev/null
 $launch_custom $allow_use_ipv6 $allow_use_legacy \
-$command_ip6tables_legacy -t filter -A OUTPUT  -j LOG \
+$command_ip6tables_legacy -t filter -A OUTPUT  -j $config_system_log \
 -m comment --comment close-log &> /dev/null
 ####
 ####
