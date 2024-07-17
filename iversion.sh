@@ -14682,6 +14682,72 @@ $allow_use_nft $allow_forward_ip6 $command_ip6tables_nft \
 -m comment --comment "allow forward" -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
+######################### input log close
+####
+####
+if [ "$allow_close_log" == "$NULL" ]; then
+####
+####
+#### english: nft INPUT LOG CLOSE
+#### spanish: nft INPUT LOG CLOSE
+####
+####
+$launch_custom $allow_use_ipv4 $allow_use_nft \
+$command_iptables_nft -t filter -A INPUT  -j LOG \
+-m comment --comment close-log &> /dev/null
+$launch_custom $allow_use_ipv6 $allow_use_nft \
+$command_ip6tables_nft -t filter -A INPUT  -j LOG \
+-m comment --comment close-log &> /dev/null
+####
+####
+#### english: legacy INPUT LOG CLOSE
+#### spanish: legacy INPUT LOG CLOSE 
+####
+####
+$launch_custom $allow_use_ipv4 $allow_use_legacy \
+$command_iptables_legacy  -t filter -A INPUT  -j LOG \
+-m comment --comment close-log &> /dev/null
+$launch_custom $allow_use_ipv6 $allow_use_legacy \
+$command_ip6tables_legacy -t filter -A INPUT  -j LOG \
+-m comment --comment close-log &> /dev/null
+####
+####
+fi
+####
+####
+######################### output log close
+####
+####
+if [ "$allow_close_log" == "$NULL" ]; then
+####
+####
+#### english: nft OUPUT LOG CLOSE
+#### spanish: nft OUPUT LOG CLOSE
+####
+####
+$launch_custom $allow_use_ipv4 $allow_use_nft \
+$command_iptables_nft -t filter -A OUTPUT  -j LOG \
+-m comment --comment close-log &> /dev/null
+$launch_custom $allow_use_ipv6 $allow_use_nft \
+$command_ip6tables_nft -t filter -A OUTPUT  -j LOG \
+-m comment --comment close-log &> /dev/null
+####
+####
+#### english: legacy OUPUT LOG CLOSE
+#### spanish: legacy OUPUT LOG CLOSE 
+####
+####
+$launch_custom $allow_use_ipv4 $allow_use_legacy \
+$command_iptables_legacy  -t filter -A OUTPUT  -j LOG \
+-m comment --comment close-log &> /dev/null
+$launch_custom $allow_use_ipv6 $allow_use_legacy \
+$command_ip6tables_legacy -t filter -A OUTPUT  -j LOG \
+-m comment --comment close-log &> /dev/null
+####
+####
+fi
+####
+####
 ##################### iptables ipv4 and ipv6 closed with drop input,
 ####                  and drop forward, and drop output rules
 ##################### iptables ipv4 y ipv6 cierran la entrada,
@@ -14871,37 +14937,6 @@ $config_input_state -j ACCEPT \
 -m comment --comment "input state"  &> /dev/null
 ####
 ####
-######################### output log close
-####
-####
-if [ "$allow_close_log" == "$NULL" ]; then
-####
-####
-#### english: nft OUPUT LOG CLOSE
-#### spanish: nft OUPUT LOG CLOSE
-####
-####
-$launch_custom $allow_use_ipv4 $allow_use_nft \
-$command_iptables_nft -t filter -A OUTPUT  -j LOG \
--m comment --comment close-log &> /dev/null
-$launch_custom $allow_use_ipv6 $allow_use_nft \
-$command_ip6tables_nft -t filter -A OUTPUT  -j LOG \
--m comment --comment close-log &> /dev/null
-####
-####
-#### english: legacy OUPUT LOG CLOSE
-#### spanish: legacy OUPUT LOG CLOSE 
-####
-####
-$launch_custom $allow_use_ipv4 $allow_use_legacy \
-$command_iptables_legacy  -t filter -A OUTPUT  -j LOG \
--m comment --comment close-log &> /dev/null
-$launch_custom $allow_use_ipv6 $allow_use_legacy \
-$command_ip6tables_legacy -t filter -A OUTPUT  -j LOG \
--m comment --comment close-log &> /dev/null
-####
-####
-fi
 ####
 ####
 #### english: nft INPUT DROP all
