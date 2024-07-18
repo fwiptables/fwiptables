@@ -1037,7 +1037,8 @@ case "$first_option" in
 "mini-options")   first_option="list-options" ;;
 "options-mini")   first_option="list-options" ;;
 "sentlog")        first_option="filelog" ;;
-"cfg")            first_option="all-custom" ;;
+"cfg")            first_option="names-custom" ;;
+"all-custom")     first_option="names-custom" ;;
 "cfg-custom")     first_option="load-custom" ;;
 "custom-cfg")     first_option="load-custom" ;;
 "list-fw")        first_option="names" ;;
@@ -2185,7 +2186,7 @@ echo "$title_md       | with optional output | Example Description   "
 echo "$text_md  "  
 echo "$text_md | depends                  | $cmd_basename depends             "  
 echo "$text_md | List firewall saved      | $cmd_basename names               "  
-echo "$text_md | List configs saved       | $cmd_basename all-custom          "  
+echo "$text_md | List configs saved       | $cmd_basename names-custom        "  
 echo "$text_md | Get info speed ipv4      | $cmd_basename speed-ip4           "  
 echo "$text_md | Show listen sockets      | $cmd_basename sockets             "  
 echo "$text_md | List last options        | $cmd_basename autolog             "   
@@ -2929,7 +2930,7 @@ echo "$text_md listn-mangle4 listn-mangle6 listn-security4 listn-security6      
 echo "$title_md  firewall-wallcustom                                                  "
 echo "$text_md new-full-custom nueva-completa-custom new-mini-custom                  "
 echo "$text_md nueva-mini-custom clone-wallsystem load-custom show-custom             "
-echo "$text_md modify-custom del-custom all-custom                                    "
+echo "$text_md modify-custom del-custom names-custom                                    "
 echo "$title_md  firewall-wallsystem                                                  "
 echo "$text_md client-basic client-web client-ssh client-telnet client-ipp            "
 echo "$text_md client-irc client-git client-vnc client-news client-vpn                "
@@ -2991,12 +2992,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-code:
-##########    english: all-custom: list some config       ##########
-##########    spanish: all-custom: lista alguna config    ##########
-#### :rutina-inicial-all-custom:
+##########    english: names-custom: list some config       ##########
+##########    spanish: names-custom: lista alguna config    ##########
+#### :rutina-inicial-names-custom:
 ####
 ####
-if [ "$first_option" == "all-custom" ]; then 
+if [ "$first_option" == "names-custom" ]; then 
 echo "$title_md [ $first_option ] [ List configs cfg ] "
 echo "$title_md $text_info [ list configs files in cfg format ]"
 echo "$title_md $text_info [ folder ] [ $default_directory_custom ]"
@@ -3007,7 +3008,7 @@ echo "$title_md [ OK CFG FILES NAMES ] [ Use: $cmd_realpath load-custom file ]"
 exit; fi
 ####
 ####
-#### :rutina-final-all-custom:
+#### :rutina-final-names-custom:
 ##########    english: text-pause: do pause     ##########
 ##########    spanish: text-pause: hace pausa   ##########
 #### :rutina-inicial-text-pause:
@@ -3154,7 +3155,7 @@ echo "$text_md | show-custom . show config-file choosed  "
 echo "$text_md | modify-custom . modify config-file choosed  "  
 echo "$text_md | load-custom . launch a one one-file saved custom  "  
 echo "$text_md | del-custom . delete config-file choosed  "  
-echo "$text_md | all-custom . show the names for all config-files  "  
+echo "$text_md | names-custom . show the names for all config-files  "  
 echo "$text_md "
 exit; fi
 ####
@@ -4737,7 +4738,7 @@ if [ "$first_option" == "modify-custom" ]; then
 ####
 ###
 if [ ! -f "$default_directory_custom/$second_option" ] ; then $nada
-$cmd_realpath all-custom
+$cmd_realpath names-custom
 echo "$text_md $text_info [ usage: ] [ $cmd_realpath modify-custom config-existent ]"
 exit; fi
 ####
@@ -6782,7 +6783,7 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0615  "$text_md show-custom" \
 0616  "$text_md modify-custom" \
 0617  "$text_md del-custom" \
-0618  "$text_md all-custom" \
+0618  "$text_md names-custom" \
 0619  "$text_md config-regen" \
 0700 "$title_md [ Options Easy ] $title_md" \
 0701  "$text_md preferences-read" \
@@ -6924,7 +6925,7 @@ $cmd_realpath load $nombrecillo ;;
 0536) clear ; $cmd_realpath txt server-sql ; $cmd_realpath cli list4      ;;
 0537) clear ; $cmd_realpath txt server-asterisk ; $cmd_realpath cli list4 ;;
 ################################################################################
-0606) clear ; $cmd_realpath txt all-custom
+0606) clear ; $cmd_realpath txt names-custom
 read -p "Input the custom name to load # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
 $cmd_realpath load-custom $archivo ;;
@@ -6946,15 +6947,15 @@ $cmd_realpath nueva-mini-custom $archivo ;;
 0615) clear ; read -p "Input the custom to show config # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
 $cmd_realpath show-custom $archivo ;;
-0616) clear ; $cmd_realpath all-custom
+0616) clear ; $cmd_realpath names-custom
 read -p "Input the custom name to modify # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
 $cmd_realpath modify-custom $archivo ;;
-0617) clear ; $cmd_realpath all-custom
+0617) clear ; $cmd_realpath names-custom
 read -p "Input the custom name to delete # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
 $cmd_realpath del-custom $archivo ;;
-0618) clear ; $cmd_realpath txt all-custom ;;
+0618) clear ; $cmd_realpath txt names-custom ;;
 0619) clear ; $cmd_realpath txt config-regen ;;
 ################################################################################
 0701) clear ; $cmd_realpath txt preferences-read ;;
@@ -7256,7 +7257,7 @@ then echo $message_without_guiroll ; exit ; fi
 ####
 gui_menu="gui-principal-menu|gui-info-menu|load-custom|clone-wallsystem|\
 new-full-custom|nueva-completa-custom|new-mini-custom|nueva-mini-custom|\
-all-custom|show-custom|modify-custom|del-custom|config-regen"
+names-custom|show-custom|modify-custom|del-custom|config-regen"
 selection_menu="$($command_zenity --forms \
 --text=gui-roll-firewall-wallcustom \
 --title=Gui-roll-With-$cmd_basename-$cmd_version \
@@ -7301,8 +7302,8 @@ archivo="$($command_zenity --entry \
 --title=nueva-mini-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
 $cmd_realpath -gui-zenity nueva-mini-custom $archivo ;;
-all-custom)
-$cmd_realpath -gui-zenity all-custom ;;
+names-custom)
+$cmd_realpath -gui-zenity names-custom ;;
 show-custom)
 archivo="$($command_zenity --entry \ 
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7763,7 +7764,7 @@ gui_menu="gui-principal-menu|gui-info-menu|\
 load-custom|clone-wallsystem|\
 new-full-custom|nueva-completa-custom|\
 new-mini-custom|nueva-mini-custom|\
-all-custom|show-custom|modify-custom|\
+names-custom|show-custom|modify-custom|\
 del-custom|config-regen"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($second_option \
@@ -7816,7 +7817,7 @@ nueva-mini-custom*) archivo="$($second_option --entry \
 --title=nueva-mini-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
 $cmd_realpath gui-$second_option nueva-mini-custom $archivo ;;
-all-custom*) $cmd_realpath gui-menu-$second_option all-custom ;;
+names-custom*) $cmd_realpath gui-menu-$second_option names-custom ;;
 show-custom*) archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=show-custom \
@@ -8060,7 +8061,7 @@ then source $default_directory_custom/$second_option ; fi
 ####
 ####
 if [ ! -f "$default_directory_custom/$second_option" ]
-then  $cmd_realpath all-custom ; exit; fi
+then  $cmd_realpath names-custom ; exit; fi
 ####
 ####
 fi
