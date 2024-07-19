@@ -2900,7 +2900,8 @@ echo "$text_md [ cli-menu-dialog cli-menu-whiptail gui-roll-zenity ]            
 echo "$text_md [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ]        "
 echo "$title_md  firewall-control                                                     "
 echo "$text_md stop continue reset show save load names wizard-mini wizard-full       "
-echo "$text_md actual eraserules eraserules4 eraserules6 off-line all-permisive       "
+echo "$text_md actual eraserules eraserules4 eraserules6 off-line                     "
+echo "$text_md input-permisive input-stablished                                       "
 echo "$title_md  firewall-listconceptual                                              "
 echo "$text_md ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6           "
 echo "$text_md list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4           "
@@ -3049,7 +3050,7 @@ echo "$text_md | eraserules6 . remove ipv6 firewall rules  "
 echo "$text_md | wizard-mini . launch a one mini wizard to run iptables rules  "  
 echo "$text_md | wizard-full . launch a one full wizard to run iptables rules  "  
 echo "$text_md | off-line . launch a one firewall only for localhost  "  
-echo "$text_md | all-permisive . launch a one firewall with all permisive  "  
+echo "$text_md | input-permisive . launch a one firewall with all permisive  "  
 echo "$text_md "
 exit; fi
 ####
@@ -6705,7 +6706,7 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0210  "$text_md wizard-mini" \
 0211  "$text_md wizard-full" \
 0212  "$text_md off-line" \
-0213  "$text_md all-permisive" \
+0213  "$text_md input-permisive" \
 0214  "$text_md eraserules4" \
 0215  "$text_md eraserules6" \
 0300 "$title_md [ Firewall List With Conceptual ] $title_md" \
@@ -6856,7 +6857,7 @@ $cmd_realpath load $nombrecillo ;;
 0210) clear ; $cmd_realpath txt wizard-mini ; $cmd_realpath cli list4  ;;
 0211) clear ; $cmd_realpath txt wizard-full ; $cmd_realpath cli list4  ;;
 0212) clear ; $cmd_realpath txt off-line ; $cmd_realpath cli list4  ;;
-0213) clear ; $cmd_realpath txt all-permisive ; $cmd_realpath cli list4   ;;
+0213) clear ; $cmd_realpath txt input-permisive ; $cmd_realpath cli list4   ;;
 0214) clear ; $cmd_realpath txt eraserules4 ; $cmd_realpath cli list4   ;;
 0215) clear ; $cmd_realpath txt eraserules6 ; $cmd_realpath cli list6   ;;
 ################################################################################
@@ -7090,7 +7091,7 @@ then echo $message_without_guiroll ; exit ; fi
 gui_menu="gui-principal-menu|gui-info-menu|\
 |stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|wizard-mini|wizard-full|\
-off-line|all-permisive"
+off-line|input-permisive"
 selection_menu="$($command_zenity --forms \
 --text=gui-roll-firewall-control \
 --title=Gui-roll-With-$cmd_basename-$cmd_version \
@@ -7133,7 +7134,7 @@ eraserules)$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list4;;
 wizard-full)$cmd_realpath -gui-zenity wizard-full ; $cmd_realpath gui list4;;
 wizard-mini)$cmd_realpath -gui-zenity wizard-mini ; $cmd_realpath gui list4;;
 off-line)$cmd_realpath -gui-zenity off-line ; $cmd_realpath gui list4;;
-all-permisive)$cmd_realpath -gui-zenity all-permisive ; $cmd_realpath gui list4;;
+input-permisive)$cmd_realpath -gui-zenity input-permisive ; $cmd_realpath gui list4;;
 esac
 ####
 ####
@@ -7573,7 +7574,7 @@ echo "$title_md The used gui in $first_option is $second_option" ;
 gui_menu="gui-principal-menu|gui-info-menu|\
 stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|\
-off-line|all-permisive|wizard-mini|wizard-full"
+off-line|input-permisive|wizard-mini|wizard-full"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($second_option \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7627,7 +7628,7 @@ wizard-mini*)$cmd_realpath gui-$second_option wizard-mini ;
 $cmd_realpath gui-$second_option list4 ;;
 off-line*)$cmd_realpath gui-$second_option off-line ;
 $cmd_realpath gui-$second_option list4 ;;
-all-permisive*)$cmd_realpath gui-$second_option all-permisive ;
+input-permisive*)$cmd_realpath gui-$second_option input-permisive ;
 $cmd_realpath gui-$second_option list4 ;;
 esac
 ####
@@ -8103,22 +8104,40 @@ fi
 #### :rutina-final-off-line:
 #### ##################################################
 #### ##################################################
-#### :rutina-inicial-all-permisive:
+#### :rutina-inicial-input-permisive:
 ####
 ####
-####   #### english: firewall of system all-permisive:
-####   #### spanish: cortafuego del sistema all-permisive:
+####   #### english: firewall of system input-permisive:
+####   #### spanish: cortafuego del sistema input-permisive:
 ####
 ####
-if [ "$first_option" == "all-permisive" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem all-permisive ]" ;
+if [ "$first_option" == "input-permisive" ]; then
+echo "$title_md $text_info [ loading firewall wallsystem input-permisive ]" ;
 launch_rules_firewall="yes" ;
-type_firewall="all-permisive" ;
+type_firewall="input-permisive" ;
 name_firewall="$first_option";
 fi
 ####
 ####
-#### :rutina-final-all-permisive:
+#### :rutina-final-input-permisive:
+#### ##################################################
+#### ##################################################
+#### :rutina-inicial-input-stablished:
+####
+####
+####   #### english: firewall of system input-stablished:
+####   #### spanish: cortafuego del sistema input-stablished:
+####
+####
+if [ "$first_option" == "input-stablished" ]; then
+echo "$title_md $text_info [ loading firewall wallsystem input-stablished ]" ;
+launch_rules_firewall="yes" ;
+type_firewall="input-stablished" ;
+name_firewall="$first_option";
+fi
+####
+####
+#### :rutina-final-input-stablished:
 #### ##################################################
 #### ##################################################
 #### :rutina-inicial-shield-ssh:
@@ -12651,15 +12670,15 @@ case "$NULL" in "$config_system_log")      ;;  *)  config_system_log="log" ;; es
 ####                                                                                            ###############
 #################################################################
 #################################################################
-########################################     english: ipv4 iptables all-permisive:
+########################################     english: ipv4 iptables input-permisive:
 ########################################     spanish: ipv4 iptables todo permisivo
-#### :rutina-inicial-code-allpermisive:
+#### :rutina-inicial-code-input-permisive:
 ####
 ####
 #### legacy ip4
 ####
 ####
-if [ "$type_firewall" == "all-permisive" ]; then $cmd_realpath eraserules &> /dev/null ;
+if [ "$type_firewall" == "input-permisive" ]; then $cmd_realpath eraserules &> /dev/null ;
 ####
 ####
 #### english: legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
@@ -12670,7 +12689,7 @@ $allow_use_legacy  $command_iptableslegacy -A INPUT \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 $allow_use_legacy  $command_iptableslegacy -A INPUT \
-$input_state  -j ACCEPT \
+-m state --state NEW,RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment "state input" &> /dev/null
 $allow_use_legacy  $command_iptableslegacy -A OUTPUT \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
@@ -12704,7 +12723,7 @@ $allow_use_nft $allow_use_ipv4   $command_iptablesnft -A FORWARD \
 -m comment --comment "all forward" &> /dev/null
 ####
 ####
-########################################     english: ipv6 iptables all-permisive:
+########################################     english: ipv6 iptables input-permisive:
 ########################################     spanish: ipv6 iptables todo permisivo
 ####
 ####
@@ -12811,7 +12830,168 @@ echo "$title_md $text_ok [ Launched: firewall ] \
 exit; fi
 ####
 ####
-#### :rutina-final-code-allpermisive:
+#### :rutina-final-code-input-permisive:
+########################################     english: ipv4 iptables input-stablished:
+########################################     spanish: ipv4 iptables input-stablished
+#### :rutina-inicial-code-input-stablished:
+####
+####
+#### legacy ip4
+####
+####
+if [ "$type_firewall" == "input-stablished" ]; then $cmd_realpath eraserules &> /dev/null ;
+####
+####
+#### english: legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
+#### spanish: legacy ipv4 127.0.0.1 acepta y los otros legacy ipv4 acepta tambien
+####
+####
+$allow_use_legacy  $command_iptableslegacy -A INPUT \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_legacy  $command_iptableslegacy -A INPUT \
+-m state --state RELATED,ESTABLISHED -j ACCEPT \
+-m comment --comment "state input" &> /dev/null
+$allow_use_legacy  $command_iptableslegacy -A OUTPUT \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_legacy  $command_iptableslegacy -A OUTPUT \
+-j ACCEPT \
+-m comment --comment "all output" &> /dev/null
+$allow_use_legacy  $command_iptableslegacy -A FORWARD \
+-j ACCEPT \
+-m comment --comment "all forward" &> /dev/null
+####
+####
+#### english: nft ipv4 127.0.0.1 acept and the others nft ipv4 accept too
+#### spanish: nft ipv4 127.0.0.1 acepta y los otros nft ipv4 acepta tambien
+####
+####
+$allow_use_nft $command_iptablesnft -A INPUT \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_nft $allow_use_ipv4   $command_iptablesnft -A INPUT \
+-m state --state RELATED,ESTABLISHED -j ACCEPT \
+-m comment --comment "state input" &> /dev/null
+$allow_use_nft $allow_use_ipv4   $command_iptablesnft -A OUTPUT \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_nft $allow_use_ipv4   $command_iptablesnft -A OUTPUT \
+-j ACCEPT \
+-m comment --comment "all output" &> /dev/null
+$allow_use_nft $allow_use_ipv4   $command_iptablesnft -A FORWARD \
+-j ACCEPT \
+-m comment --comment "all forward" &> /dev/null
+####
+####
+########################################     english: ipv6 iptables input-stablished:
+########################################     spanish: ipv6 iptables input-stablished
+####
+####
+#### english: legacy ipv6 127.0.0.1 acept and the others legacy ipv6 accept too
+#### spanish: legacy ipv6 127.0.0.1 acepta y los otros legacy ipv6 acepta tambien
+####
+####
+$allow_use_legacy $command_ip6tableslegacy -A INPUT  \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_legacy $command_ip6tableslegacy -A INPUT \
+-m state --state RELATED,ESTABLISHED -j ACCEPT \
+-m comment --comment "state input" &> /dev/null
+$allow_use_legacy $command_ip6tableslegacy -A OUTPUT \
+-j ACCEPT \
+-m comment --comment "all otuput" &> /dev/null
+$allow_use_legacy $command_ip6tableslegacy -A FORWARD \
+-j ACCEPT \
+-m comment --comment "all forward" &> /dev/null
+####
+####
+#### english: nft ipv6 127.0.0.1 acept and the others nft ipv6 accept too
+#### spanish: nft ipv6 127.0.0.1 acepta y los otros nft ipv6 acepta tambien
+####
+####
+$allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A INPUT   \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A INPUT   \
+-m state --state RELATED,ESTABLISHED -j ACCEPT \
+-m comment --comment "state input" &> /dev/null
+$allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A OUTPUT  \
+-j ACCEPT \
+-m comment --comment "all output" &> /dev/null
+$allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A FORWARD \
+-j ACCEPT \
+-m comment --comment "all forward" &> /dev/null
+####
+####
+#### english: ipv6-icmp accept in legacy and accept in nft
+#### spanish: ipv6-icmp acepta en legacy y acepta en nft
+####
+####
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy \
+-A INPUT -p ipv6-icmp -j ACCEPT \
+-m comment --comment "nexthop ip6" &> /dev/null
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy \
+-A OUTPUT -p ipv6-icmp -j ACCEPT \
+-m comment --comment "nexthop ip6" &> /dev/null
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
+-A INPUT -p ipv6-icmp -j ACCEPT \
+-m comment --comment "nexthop ip6" &> /dev/null
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
+-A OUTPUT -p ipv6-icmp -j ACCEPT \
+-m comment --comment "nexthop ip6" &> /dev/null
+####
+####
+#### english: close with drop legacy and close with drop nft
+#### spanish: cierra con drop legacy y cierra con drop nft
+####
+####
+$allow_use_legacy $command_iptableslegacy \
+-A INPUT -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_legacy $command_iptableslegacy \
+-A OUTPUT -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_nft $command_iptablesnft -A \
+INPUT -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_nft $command_iptablesnft \
+-A OUTPUT -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_legacy $command_ip6tableslegacy \
+-A INPUT -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_legacy $command_ip6tableslegacy \
+-A OUTPUT -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_nft $command_ip6tablesnft \
+-A INPUT -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_nft $command_ip6tablesnft \
+-A OUTPUT -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+####
+####
+$allow_use_legacy $command_iptablesnft \
+-A FORWARD -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_nft $command_iptablesnft \
+-A FORWARD -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_legacy $command_ip6tablesnft \
+-A FORWARD -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_nft $command_ip6tablesnft \
+-A FORWARD -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+####
+####
+echo "$title_md $text_ok [ Launched: firewall ] \
+[ Type: $type_firewall ] [ Name: $name_firewall ]"
+exit; fi
+####
+####
+#### :rutina-final-code-input-stablished:
 ########################################     english: ipv4 iptables off-line:
 ########################################     spanish: ipv4 iptables desconectado
 #### :rutina-inicial-code-off-line:
