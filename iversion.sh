@@ -2889,7 +2889,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "list-options" ] ; then 
-echo "$title_md  $cmd_basename [optional-output] first_option [second_option]  "
+echo "$text_md $cmd_basename [optional-output] first_option [second_option]  "
 ####
 #### all option list
 ####
