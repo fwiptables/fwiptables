@@ -4925,7 +4925,7 @@ for a in $($command_sysctl -a | $command_grep -i  forwarding | $command_cut -d "
 do $command_sysctl -w $a=0 ; done ; exit; fi
 ####
 ####
-exit; fi
+echo "$title_md launch: fwiptables ip-forward [ list | on | off ]" ; exit ; fi
 ####
 ####
 #### :rutina-final-ip-forward:
