@@ -3051,6 +3051,7 @@ echo "$text_md | wizard-mini . launch a one mini wizard to run iptables rules  "
 echo "$text_md | wizard-full . launch a one full wizard to run iptables rules  "  
 echo "$text_md | without-connection . launch a one firewall only for localhost  "  
 echo "$text_md | input-permisive . launch a one firewall with all permisive  "  
+echo "$text_md | input-stablished . launch a one firewall with status in input related,stablished  "  
 echo "$text_md "
 exit; fi
 ####
