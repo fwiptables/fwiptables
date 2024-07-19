@@ -4971,8 +4971,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "install" ]; then 
-echo "$title_md $text_ok \
-| Installing.. $cmd_file | Version is $cmd_version |"
+echo "$title_md $text_ok       Installing:  $cmd_file"
+echo "$title_md $text_ok          Version:  $cmd_version"
 ####
 ####
 ####  english: copy the file to temporal folder and install
