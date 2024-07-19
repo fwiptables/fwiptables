@@ -5345,7 +5345,7 @@ $command_curl $web_blacklist_fademind -s -L -o $file_blacklist_fademind
 echo "$title_md [ Step 2/4 ] [ downloading hosts mvps to $file_blacklist_mvps ]"
 $command_curl $web_blacklist_mvps -s -L -o $file_blacklist_mvps
 echo "$title_md [ Step 3/4 ] [ downloading hosts adaway to $file_blacklist_adaway ]"
-$command_curl $web_blacklist_adaway -s -L -o $file_blacklist_fademind
+$command_curl $web_blacklist_adaway -s -L -o $file_blacklist_adaway
 echo "$title_md [ Step 4/4 ] [ downloading hosts stevenblack to $file_blacklist_stevenblack ]"
 $command_curl $web_blacklist_stevenblack -s -L -o $file_blacklist_stevenblack
 ####
