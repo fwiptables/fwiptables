@@ -2900,7 +2900,7 @@ echo "$text_md [ cli-menu-dialog cli-menu-whiptail gui-roll-zenity ]            
 echo "$text_md [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ]        "
 echo "$title_md  firewall-control                                                     "
 echo "$text_md stop continue reset show save load names wizard-mini wizard-full       "
-echo "$text_md actual eraserules eraserules4 eraserules6 off-line                     "
+echo "$text_md actual eraserules eraserules4 eraserules6 without-connection                     "
 echo "$text_md input-permisive input-stablished                                       "
 echo "$title_md  firewall-listconceptual                                              "
 echo "$text_md ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6           "
@@ -3049,7 +3049,7 @@ echo "$text_md | eraserules4 . remove ipv4 firewall rules  "
 echo "$text_md | eraserules6 . remove ipv6 firewall rules  "  
 echo "$text_md | wizard-mini . launch a one mini wizard to run iptables rules  "  
 echo "$text_md | wizard-full . launch a one full wizard to run iptables rules  "  
-echo "$text_md | off-line . launch a one firewall only for localhost  "  
+echo "$text_md | without-connection . launch a one firewall only for localhost  "  
 echo "$text_md | input-permisive . launch a one firewall with all permisive  "  
 echo "$text_md "
 exit; fi
@@ -6705,7 +6705,7 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0209  "$text_md eraserules" \
 0210  "$text_md wizard-mini" \
 0211  "$text_md wizard-full" \
-0212  "$text_md off-line" \
+0212  "$text_md without-connection" \
 0213  "$text_md input-permisive" \
 0214  "$text_md eraserules4" \
 0215  "$text_md eraserules6" \
@@ -6856,7 +6856,7 @@ $cmd_realpath load $nombrecillo ;;
 0209) clear ; $cmd_realpath txt eraserules ; $cmd_realpath cli list4   ;;
 0210) clear ; $cmd_realpath txt wizard-mini ; $cmd_realpath cli list4  ;;
 0211) clear ; $cmd_realpath txt wizard-full ; $cmd_realpath cli list4  ;;
-0212) clear ; $cmd_realpath txt off-line ; $cmd_realpath cli list4  ;;
+0212) clear ; $cmd_realpath txt without-connection ; $cmd_realpath cli list4  ;;
 0213) clear ; $cmd_realpath txt input-permisive ; $cmd_realpath cli list4   ;;
 0214) clear ; $cmd_realpath txt eraserules4 ; $cmd_realpath cli list4   ;;
 0215) clear ; $cmd_realpath txt eraserules6 ; $cmd_realpath cli list6   ;;
@@ -7091,7 +7091,7 @@ then echo $message_without_guiroll ; exit ; fi
 gui_menu="gui-principal-menu|gui-info-menu|\
 |stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|wizard-mini|wizard-full|\
-off-line|input-permisive"
+without-connection|input-permisive"
 selection_menu="$($command_zenity --forms \
 --text=gui-roll-firewall-control \
 --title=Gui-roll-With-$cmd_basename-$cmd_version \
@@ -7133,7 +7133,7 @@ eraserules6)$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list6;;
 eraserules)$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list4;;
 wizard-full)$cmd_realpath -gui-zenity wizard-full ; $cmd_realpath gui list4;;
 wizard-mini)$cmd_realpath -gui-zenity wizard-mini ; $cmd_realpath gui list4;;
-off-line)$cmd_realpath -gui-zenity off-line ; $cmd_realpath gui list4;;
+without-connection)$cmd_realpath -gui-zenity without-connection ; $cmd_realpath gui list4;;
 input-permisive)$cmd_realpath -gui-zenity input-permisive ; $cmd_realpath gui list4;;
 esac
 ####
@@ -7574,7 +7574,7 @@ echo "$title_md The used gui in $first_option is $second_option" ;
 gui_menu="gui-principal-menu|gui-info-menu|\
 stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|\
-off-line|input-permisive|wizard-mini|wizard-full"
+without-connection|input-permisive|wizard-mini|wizard-full"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($second_option \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7626,7 +7626,7 @@ wizard-full*)$cmd_realpath gui-$second_option wizard-full ;
 $cmd_realpath gui-$second_option list4 ;;
 wizard-mini*)$cmd_realpath gui-$second_option wizard-mini ;
 $cmd_realpath gui-$second_option list4 ;;
-off-line*)$cmd_realpath gui-$second_option off-line ;
+without-connection*)$cmd_realpath gui-$second_option without-connection ;
 $cmd_realpath gui-$second_option list4 ;;
 input-permisive*)$cmd_realpath gui-$second_option input-permisive ;
 $cmd_realpath gui-$second_option list4 ;;
@@ -8088,20 +8088,20 @@ fi
 ####
 ##########   english: system firewall           ##########
 ##########   spanish: cortafuegos del sistema   ##########
-#### :rutina-inicial-off-line:
+#### :rutina-inicial-without-connection:
 ####
 ####
-####   #### english: firewall of system off-line:
-####   #### spanish: cortafuego del sistema off-line:
+####   #### english: firewall of system without-connection:
+####   #### spanish: cortafuego del sistema without-connection:
 ####
 ####
-if [ "$first_option" == "off-line" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem off-line ]" ;
+if [ "$first_option" == "without-connection" ]; then
+echo "$title_md $text_info [ loading firewall wallsystem without-connection ]" ;
 launch_rules_firewall="yes" ;
-type_firewall="off-line";
+type_firewall="without-connection";
 name_firewall="$first_option";
 fi
-#### :rutina-final-off-line:
+#### :rutina-final-without-connection:
 #### ##################################################
 #### ##################################################
 #### :rutina-inicial-input-permisive:
@@ -12992,15 +12992,15 @@ exit; fi
 ####
 ####
 #### :rutina-final-code-input-stablished:
-########################################     english: ipv4 iptables off-line:
+########################################     english: ipv4 iptables without-connection:
 ########################################     spanish: ipv4 iptables desconectado
-#### :rutina-inicial-code-off-line:
+#### :rutina-inicial-code-without-connection:
 ####
 ####
 #### legacy ip4
 ####
 ####
-if [ "$type_firewall" == "off-line" ]
+if [ "$type_firewall" == "without-connection" ]
 then $cmd_realpath eraserules &> /dev/null ;
 ####
 ####
@@ -13028,7 +13028,7 @@ $allow_use_nft $command_iptablesnft -A OUTPUT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
-########################################     english: ipv6 iptables off-line
+########################################     english: ipv6 iptables without-connection
 ########################################     spanish: ipv6 iptables desconectado
 ####
 ####
@@ -13056,8 +13056,8 @@ $allow_use_nft $command_ip6tablesnft -A OUTPUT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
-########################################     english: close in off-line
-########################################     spanish: cierra en off-line
+########################################     english: close in without-connection
+########################################     spanish: cierra en without-connection
 ####
 ####
 $allow_use_legacy $command_iptableslegacy \
@@ -13106,7 +13106,7 @@ echo "$title_md $text_ok [ Launched: firewall ] \
 exit; fi
 ####
 ####
-#### :rutina-final-code-off-line:
+#### :rutina-final-code-without-connection:
 #############################################################
 #############################################################
 ####                                                                                            ###############
