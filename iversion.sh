@@ -5906,6 +5906,10 @@ if [ "$favorite_text_browser" == "$NULL" ]; then
 echo "#### install: or lynx, or links, or links2, or w3m"; fi
 ####
 ####
+if [ "$second_option" == "$NULL" ]; then 
+echo "#### specify web choosed to browse the web, example kernel.org"; exit ; fi
+####
+####
 url_browse_web="$2"
 echo "#### browser: $favorite_text_browser"
 echo "####    link: $2"
