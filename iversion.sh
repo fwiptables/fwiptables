@@ -5439,6 +5439,23 @@ exit; fi
 ####
 ####
 #### :rutina-final-ntpdate-client:
+##########    english: wizard: wizard-mini      ##########
+##########    spanish: wizard: mini-asistente   ##########
+#### :rutina-inicial-wizard:
+####
+####
+if [ "$first_option" == "wizard" ]; then echo 
+echo
+echo
+echo Please use wizard-full or use wizard-mini
+echo
+echo
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-wizard:
 ##########    english: wizard-mini: wizard-mini      ##########
 ##########    spanish: wizard-mini: mini-asistente   ##########
 #### :rutina-inicial-wizard-mini:
