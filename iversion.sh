@@ -4097,10 +4097,10 @@ exit; fi
 if [ "$first_option" == "status" ]; then
 ####
 ####
-$cmd_realpath list4
+$cmd_realpath ls4
 ####
 ####
-$cmd_realpath list6
+$cmd_realpath ls6
 ####
 ####
 exit; fi
