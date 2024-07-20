@@ -12698,16 +12698,19 @@ $allow_use_legacy  $command_iptableslegacy -A INPUT \
 -m comment --comment host-localhost &> /dev/null
 $allow_use_legacy  $command_iptableslegacy -A INPUT \
 -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT \
--m comment --comment "state input" &> /dev/null
+-m comment --comment state-input &> /dev/null
 $allow_use_legacy  $command_iptableslegacy -A OUTPUT \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 $allow_use_legacy  $command_iptableslegacy -A OUTPUT \
 -j ACCEPT \
--m comment --comment "all output" &> /dev/null
+-m comment --comment all-output &> /dev/null
+$allow_use_legacy  $command_iptableslegacy -A FORWARD \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
 $allow_use_legacy  $command_iptableslegacy -A FORWARD \
 -j ACCEPT \
--m comment --comment "all forward" &> /dev/null
+-m comment --comment all-forward &> /dev/null
 ####
 ####
 #### english: nft ipv4 127.0.0.1 acept and the others nft ipv4 accept too
@@ -12719,16 +12722,19 @@ $allow_use_nft $command_iptablesnft -A INPUT \
 -m comment --comment host-localhost &> /dev/null
 $allow_use_nft $allow_use_ipv4   $command_iptablesnft -A INPUT \
 -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT \
--m comment --comment "state input" &> /dev/null
+-m comment --comment state-input &> /dev/null
 $allow_use_nft $allow_use_ipv4   $command_iptablesnft -A OUTPUT \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 $allow_use_nft $allow_use_ipv4   $command_iptablesnft -A OUTPUT \
 -j ACCEPT \
--m comment --comment "all output" &> /dev/null
+-m comment --comment all-output &> /dev/null
+$allow_use_nft  $command_iptablesnft -A FORWARD \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
 $allow_use_nft $allow_use_ipv4   $command_iptablesnft -A FORWARD \
 -j ACCEPT \
--m comment --comment "all forward" &> /dev/null
+-m comment --comment all-forward &> /dev/null
 ####
 ####
 ########################################     english: ipv6 iptables input-permisive:
@@ -12744,13 +12750,16 @@ $allow_use_legacy $command_ip6tableslegacy -A INPUT  \
 -m comment --comment host-localhost &> /dev/null
 $allow_use_legacy $command_ip6tableslegacy -A INPUT \
 -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT \
--m comment --comment "state input" &> /dev/null
+-m comment --comment state-input &> /dev/null
 $allow_use_legacy $command_ip6tableslegacy -A OUTPUT \
 -j ACCEPT \
 -m comment --comment "all otuput" &> /dev/null
 $allow_use_legacy $command_ip6tableslegacy -A FORWARD \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_legacy $command_ip6tableslegacy -A FORWARD \
 -j ACCEPT \
--m comment --comment "all forward" &> /dev/null
+-m comment --comment all-forward &> /dev/null
 ####
 ####
 #### english: nft ipv6 127.0.0.1 acept and the others nft ipv6 accept too
@@ -12762,13 +12771,16 @@ $allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A INPUT   \
 -m comment --comment host-localhost &> /dev/null
 $allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A INPUT   \
 -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT \
--m comment --comment "state input" &> /dev/null
+-m comment --comment state-input &> /dev/null
 $allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A OUTPUT  \
 -j ACCEPT \
--m comment --comment "all output" &> /dev/null
+-m comment --comment all-output &> /dev/null
+$allow_use_nft $command_ip6tablesnft -A FORWARD \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
 $allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A FORWARD \
 -j ACCEPT \
--m comment --comment "all forward" &> /dev/null
+-m comment --comment all-forward &> /dev/null
 ####
 ####
 #### english: ipv6-icmp accept in legacy and accept in nft
@@ -12777,16 +12789,16 @@ $allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A FORWARD \
 ####
 $allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy \
 -A INPUT -p ipv6-icmp -j ACCEPT \
--m comment --comment "nexthop ip6" &> /dev/null
+-m comment --comment nexthop-ip6 &> /dev/null
 $allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy \
 -A OUTPUT -p ipv6-icmp -j ACCEPT \
--m comment --comment "nexthop ip6" &> /dev/null
+-m comment --comment nexthop-ip6 &> /dev/null
 $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
 -A INPUT -p ipv6-icmp -j ACCEPT \
--m comment --comment "nexthop ip6" &> /dev/null
+-m comment --comment nexthop-ip6 &> /dev/null
 $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
 -A OUTPUT -p ipv6-icmp -j ACCEPT \
--m comment --comment "nexthop ip6" &> /dev/null
+-m comment --comment nexthop-ip6 &> /dev/null
 ####
 ####
 #### english: close with drop legacy and close with drop nft
@@ -12859,16 +12871,16 @@ $allow_use_legacy  $command_iptableslegacy -A INPUT \
 -m comment --comment host-localhost &> /dev/null
 $allow_use_legacy  $command_iptableslegacy -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
--m comment --comment "state input" &> /dev/null
+-m comment --comment state-input &> /dev/null
 $allow_use_legacy  $command_iptableslegacy -A OUTPUT \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 $allow_use_legacy  $command_iptableslegacy -A OUTPUT \
 -j ACCEPT \
--m comment --comment "all output" &> /dev/null
+-m comment --comment all-output &> /dev/null
 $allow_use_legacy  $command_iptableslegacy -A FORWARD \
 -j ACCEPT \
--m comment --comment "all forward" &> /dev/null
+-m comment --comment all-forward &> /dev/null
 ####
 ####
 #### english: nft ipv4 127.0.0.1 acept and the others nft ipv4 accept too
@@ -12880,16 +12892,16 @@ $allow_use_nft $command_iptablesnft -A INPUT \
 -m comment --comment host-localhost &> /dev/null
 $allow_use_nft $allow_use_ipv4   $command_iptablesnft -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
--m comment --comment "state input" &> /dev/null
+-m comment --comment state-input &> /dev/null
 $allow_use_nft $allow_use_ipv4   $command_iptablesnft -A OUTPUT \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 $allow_use_nft $allow_use_ipv4   $command_iptablesnft -A OUTPUT \
 -j ACCEPT \
--m comment --comment "all output" &> /dev/null
+-m comment --comment all-output &> /dev/null
 $allow_use_nft $allow_use_ipv4   $command_iptablesnft -A FORWARD \
 -j ACCEPT \
--m comment --comment "all forward" &> /dev/null
+-m comment --comment all-forward &> /dev/null
 ####
 ####
 ########################################     english: ipv6 iptables input-stablished:
@@ -12905,13 +12917,13 @@ $allow_use_legacy $command_ip6tableslegacy -A INPUT  \
 -m comment --comment host-localhost &> /dev/null
 $allow_use_legacy $command_ip6tableslegacy -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
--m comment --comment "state input" &> /dev/null
+-m comment --comment state-input &> /dev/null
 $allow_use_legacy $command_ip6tableslegacy -A OUTPUT \
 -j ACCEPT \
 -m comment --comment "all otuput" &> /dev/null
 $allow_use_legacy $command_ip6tableslegacy -A FORWARD \
 -j ACCEPT \
--m comment --comment "all forward" &> /dev/null
+-m comment --comment all-forward &> /dev/null
 ####
 ####
 #### english: nft ipv6 127.0.0.1 acept and the others nft ipv6 accept too
@@ -12923,13 +12935,13 @@ $allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A INPUT   \
 -m comment --comment host-localhost &> /dev/null
 $allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A INPUT   \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
--m comment --comment "state input" &> /dev/null
+-m comment --comment state-input &> /dev/null
 $allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A OUTPUT  \
 -j ACCEPT \
--m comment --comment "all output" &> /dev/null
+-m comment --comment all-output &> /dev/null
 $allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A FORWARD \
 -j ACCEPT \
--m comment --comment "all forward" &> /dev/null
+-m comment --comment all-forward &> /dev/null
 ####
 ####
 #### english: ipv6-icmp accept in legacy and accept in nft
@@ -12938,16 +12950,16 @@ $allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A FORWARD \
 ####
 $allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy \
 -A INPUT -p ipv6-icmp -j ACCEPT \
--m comment --comment "nexthop ip6" &> /dev/null
+-m comment --comment nexthop-ip6 &> /dev/null
 $allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy \
 -A OUTPUT -p ipv6-icmp -j ACCEPT \
--m comment --comment "nexthop ip6" &> /dev/null
+-m comment --comment nexthop-ip6 &> /dev/null
 $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
 -A INPUT -p ipv6-icmp -j ACCEPT \
--m comment --comment "nexthop ip6" &> /dev/null
+-m comment --comment nexthop-ip6 &> /dev/null
 $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
 -A OUTPUT -p ipv6-icmp -j ACCEPT \
--m comment --comment "nexthop ip6" &> /dev/null
+-m comment --comment nexthop-ip6 &> /dev/null
 ####
 ####
 #### english: close with drop legacy and close with drop nft
