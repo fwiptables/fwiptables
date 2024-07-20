@@ -97,22 +97,22 @@ echo ; fi
 ####
 ####
 #### name files
-cmd_realpath="$(realpath $0)"                   # fully routename
-cmd_basename="$(basename $0)"                   # only  filename
+cmd_realpath="$(realpath $0)"                              # fully routename
+cmd_basename="$(basename $0)"                              # only  filename
 #### number version
-cmd_year="24"                                   # number year version
-cmd_month="07"                                  # number mouth version
-cmd_letter="h"                                   # number letter version
-cmd_version="$cmd_year-$cmd_month$cmd_letter"    # final date like number version
+cmd_year="24"                                              # number year version
+cmd_month="07"                                             # number mouth version
+cmd_letter="i"                                             # number letter version
+cmd_version="$cmd_year-$cmd_month$cmd_letter"              # final date like number version
 #### name location
-cmd_file="fwiptables"                           # filename installed
-cmd_directory="/usr/bin"                        # directory installed
+cmd_file="fwiptables"                                      # filename installed
+cmd_directory="/usr/bin"                                   # directory installed
 #### data program
-cmd_developer="Francisco Garcia"                # actual developer
-cmd_contact="fwiptables@gmx.com"                # actual contact
+cmd_developer="Francisco Garcia"                           # actual developer
+cmd_contact="fwiptables@gmx.com"                           # actual contact
 cmd_shortdescription="FireWall With iptables"              # description short
 cmd_longdescription="One Mini Script in one-file wizard"   # description long
-cmd_license="GPL v2, LGPL v2, BSD"              # program license
+cmd_license="GPL v2, LGPL v2, BSD"                         # program license
 #### web oficial
 content_license_gpl=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-GPL.txt?format=raw"
@@ -6708,8 +6708,10 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0211  "$text_md wizard-full" \
 0212  "$text_md without-connection" \
 0213  "$text_md input-permisive" \
-0214  "$text_md eraserules4" \
-0215  "$text_md eraserules6" \
+0214  "$text_md input-stablished" \
+0215  "$text_md eraserules4" \
+0216  "$text_md eraserules6" \
+0217  "$text_md eraserules" \
 0300 "$title_md [ Firewall List With Conceptual ] $title_md" \
 0301  "$text_md list4" \
 0302  "$text_md list6"  \
@@ -6859,8 +6861,10 @@ $cmd_realpath load $nombrecillo ;;
 0211) clear ; $cmd_realpath txt wizard-full ; $cmd_realpath cli list4  ;;
 0212) clear ; $cmd_realpath txt without-connection ; $cmd_realpath cli list4  ;;
 0213) clear ; $cmd_realpath txt input-permisive ; $cmd_realpath cli list4   ;;
-0214) clear ; $cmd_realpath txt eraserules4 ; $cmd_realpath cli list4   ;;
-0215) clear ; $cmd_realpath txt eraserules6 ; $cmd_realpath cli list6   ;;
+0213) clear ; $cmd_realpath txt input-stablished ; $cmd_realpath cli list4   ;;
+0215) clear ; $cmd_realpath txt eraserules4 ; $cmd_realpath cli list4   ;;
+0216) clear ; $cmd_realpath txt eraserules6 ; $cmd_realpath cli list6   ;;
+0217) clear ; $cmd_realpath txt eraserules ; $cmd_realpath cli status   ;;
 ################################################################################
 0301) clear ; $cmd_realpath txt list4 ;;
 0302) clear ; $cmd_realpath txt list6 ;;
@@ -7092,7 +7096,7 @@ then echo $message_without_guiroll ; exit ; fi
 gui_menu="gui-principal-menu|gui-info-menu|\
 |stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|wizard-mini|wizard-full|\
-without-connection|input-permisive"
+without-connection|input-permisive|input-stablished"
 selection_menu="$($command_zenity --forms \
 --text=gui-roll-firewall-control \
 --title=Gui-roll-With-$cmd_basename-$cmd_version \
@@ -7136,6 +7140,7 @@ wizard-full)$cmd_realpath -gui-zenity wizard-full ; $cmd_realpath gui list4;;
 wizard-mini)$cmd_realpath -gui-zenity wizard-mini ; $cmd_realpath gui list4;;
 without-connection)$cmd_realpath -gui-zenity without-connection ; $cmd_realpath gui list4;;
 input-permisive)$cmd_realpath -gui-zenity input-permisive ; $cmd_realpath gui list4;;
+input-stablished)$cmd_realpath -gui-zenity input-stablished ; $cmd_realpath gui list4;;
 esac
 ####
 ####
@@ -7575,7 +7580,7 @@ echo "$title_md The used gui in $first_option is $second_option" ;
 gui_menu="gui-principal-menu|gui-info-menu|\
 stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|\
-without-connection|input-permisive|wizard-mini|wizard-full"
+without-connection|input-permisive|input-stablished|wizard-mini|wizard-full"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($second_option \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7630,6 +7635,8 @@ $cmd_realpath gui-$second_option list4 ;;
 without-connection*)$cmd_realpath gui-$second_option without-connection ;
 $cmd_realpath gui-$second_option list4 ;;
 input-permisive*)$cmd_realpath gui-$second_option input-permisive ;
+$cmd_realpath gui-$second_option list4 ;;
+input-stablished*)$cmd_realpath gui-$second_option input-stablished ;
 $cmd_realpath gui-$second_option list4 ;;
 esac
 ####
