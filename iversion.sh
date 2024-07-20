@@ -1649,7 +1649,7 @@ echo "$title_md $title_md Allow expert commands for default"
 echo "allow_expert_commands=                          ## or void for yes or no"
 echo "$title_md" 
 echo "$title_md $title_md default firewall"
-echo "allow_use_legacy=no                             ## or void for yes or no"
+echo "allow_use_legacy=                               ## or void for yes or no"
 echo "allow_use_nft=                                  ## or void for yes or no"
 echo "allow_use_ipv4=                                 ## or void for yes or no"
 echo "allow_use_ipv6=                                 ## or void for yes or no"
@@ -12753,7 +12753,7 @@ $allow_use_legacy $command_ip6tableslegacy -A INPUT \
 -m comment --comment state-input &> /dev/null
 $allow_use_legacy $command_ip6tableslegacy -A OUTPUT \
 -j ACCEPT \
--m comment --comment "all otuput" &> /dev/null
+-m comment --comment all-output &> /dev/null
 $allow_use_legacy $command_ip6tableslegacy -A FORWARD \
 -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
@@ -12811,8 +12811,8 @@ $allow_use_legacy $command_iptableslegacy \
 $allow_use_legacy $command_iptableslegacy \
 -A OUTPUT -j $config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_iptablesnft -A \
-INPUT -j $config_close_deny \
+$allow_use_nft $command_iptablesnft \
+-A INPUT -j $config_close_deny \
 -m comment --comment close-rule &> /dev/null
 $allow_use_nft $command_iptablesnft \
 -A OUTPUT -j $config_close_deny \
@@ -12831,13 +12831,13 @@ $allow_use_nft $command_ip6tablesnft \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
-$allow_use_legacy $command_iptablesnft \
+$allow_use_legacy $command_iptableslegacy \
 -A FORWARD -j $config_close_deny \
 -m comment --comment close-rule &> /dev/null
 $allow_use_nft $command_iptablesnft \
 -A FORWARD -j $config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip6tablesnft \
+$allow_use_legacy $command_ip6tableslegacy \
 -A FORWARD -j $config_close_deny \
 -m comment --comment close-rule &> /dev/null
 $allow_use_nft $command_ip6tablesnft \
@@ -12879,6 +12879,9 @@ $allow_use_legacy  $command_iptableslegacy -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
 $allow_use_legacy  $command_iptableslegacy -A FORWARD \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_legacy  $command_iptableslegacy -A FORWARD \
 -j ACCEPT \
 -m comment --comment all-forward &> /dev/null
 ####
@@ -12899,6 +12902,9 @@ $allow_use_nft $allow_use_ipv4   $command_iptablesnft -A OUTPUT \
 $allow_use_nft $allow_use_ipv4   $command_iptablesnft -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
+$allow_use_nft  $command_iptablesnft -A FORWARD \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
 $allow_use_nft $allow_use_ipv4   $command_iptablesnft -A FORWARD \
 -j ACCEPT \
 -m comment --comment all-forward &> /dev/null
@@ -12919,8 +12925,13 @@ $allow_use_legacy $command_ip6tableslegacy -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
 $allow_use_legacy $command_ip6tableslegacy -A OUTPUT \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_legacy $command_ip6tableslegacy -A OUTPUT \
 -j ACCEPT \
--m comment --comment "all otuput" &> /dev/null
+-m comment --comment all-output &> /dev/null
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
 $allow_use_legacy $command_ip6tableslegacy -A FORWARD \
 -j ACCEPT \
 -m comment --comment all-forward &> /dev/null
@@ -12939,6 +12950,9 @@ $allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A INPUT   \
 $allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A OUTPUT  \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
+$allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A FORWARD \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
 $allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A FORWARD \
 -j ACCEPT \
 -m comment --comment all-forward &> /dev/null
@@ -14744,22 +14758,22 @@ $ipv6 $allow_forward $command_sysctl -w net.ipv6.conf.all.forwarding=1 &> /dev/n
 ####
 ####   ipv4 filter legacy rules forward
 $allow_use_legacy $allow_forward_ip4 $command_iptableslegacy \
--m comment --comment "allow forward" -A FORWARD -j ACCEPT &> /dev/null
+-m comment --comment allow-forward -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
 ####   ipv6 filter legacy rules forward
 $allow_use_legacy $allow_forward_ip6 $command_ip6tableslegacy \
--m comment --comment "allow forward" -A FORWARD -j ACCEPT &> /dev/null
+-m comment --comment allow-forward -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
 ####   ipv4 filter nft rules forward
 $allow_use_nft $allow_forward_ip4 $command_iptablesnft \
--m comment --comment "allow forward" -A FORWARD -j ACCEPT &> /dev/null
+-m comment --comment allow-forward -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
 ####   ipv6 filter nft rules forward
 $allow_use_nft $allow_forward_ip6 $command_ip6tablesnft \
--m comment --comment "allow forward" -A FORWARD -j ACCEPT &> /dev/null
+-m comment --comment allow-forward -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
 ######################### input log close
