@@ -8096,7 +8096,7 @@ fi
 ####
 ##########   english: system firewall           ##########
 ##########   spanish: cortafuegos del sistema   ##########
-#### :rutina-inicial-without-connection:
+#### :rutina-inicial-before-without-connection:
 ####
 ####
 ####   #### english: firewall of system without-connection:
@@ -8109,10 +8109,10 @@ launch_rules_firewall="yes" ;
 type_firewall="without-connection";
 name_firewall="$first_option";
 fi
-#### :rutina-final-without-connection:
+#### :rutina-final-before-without-connection:
 #### ##################################################
 #### ##################################################
-#### :rutina-inicial-input-permisive:
+#### :rutina-inicial-before-input-permisive:
 ####
 ####
 ####   #### english: firewall of system input-permisive:
@@ -8127,10 +8127,10 @@ name_firewall="$first_option";
 fi
 ####
 ####
-#### :rutina-final-input-permisive:
+#### :rutina-final-before-input-permisive:
 #### ##################################################
 #### ##################################################
-#### :rutina-inicial-input-established:
+#### :rutina-inicial-before-input-established:
 ####
 ####
 ####   #### english: firewall of system input-established:
@@ -8145,7 +8145,7 @@ name_firewall="$first_option";
 fi
 ####
 ####
-#### :rutina-final-input-established:
+#### :rutina-final-before-input-established:
 #### ##################################################
 #### ##################################################
 #### :rutina-inicial-shield-ssh:
