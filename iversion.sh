@@ -13046,6 +13046,9 @@ $allow_use_legacy $command_iptableslegacy -A INPUT  \
 $allow_use_legacy $command_iptableslegacy -A OUTPUT \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
+$allow_use_legacy $command_iptableslegacy -A FORWARD \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
 ####
 ####
 #### english: legacy ipv4 127.0.0.1 acept
@@ -13056,6 +13059,9 @@ $allow_use_nft $command_iptablesnft -A INPUT \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 $allow_use_nft $command_iptablesnft -A OUTPUT \
+-s $config_ip4_localhost -d $config_ip4_localhost -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_nft $command_iptablesnft -A FORWARD \
 -s $config_ip4_localhost -d $config_ip4_localhost -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
@@ -13074,6 +13080,9 @@ $allow_use_legacy $command_ip6tableslegacy -A INPUT  \
 $allow_use_legacy $command_ip6tableslegacy -A OUTPUT \
 -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
+$allow_use_legacy $command_ip6tableslegacy -A FORWARD \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
 ####
 ####
 #### english: nft ipv6 127.0.0.1 acept
@@ -13084,6 +13093,9 @@ $allow_use_nft $command_ip6tablesnft -A INPUT  \
 -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 $allow_use_nft $command_ip6tablesnft -A OUTPUT \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_nft $command_ip6tablesnft -A FORWARD \
 -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
@@ -13117,7 +13129,7 @@ $allow_use_legacy $command_ip6tableslegacy \
 -m comment --comment close-rule &> /dev/null
 $allow_use_legacy $command_ip6tableslegacy \
 -A OUTPUT -j $config_close_deny \
-ç-m comment --comment close-rule &> /dev/null
+-m comment --comment close-rule &> /dev/null
 $allow_use_legacy $command_ip6tableslegacy \
 -A FORWARD -j $config_close_deny \
 -m comment --comment close-rule &> /dev/null
