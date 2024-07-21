@@ -843,11 +843,16 @@ fi
 ####
 case "$first_option" in
 list-*) list_rules_conceptual="" ;;
-listn-*)  list_rules_conceptual="no" ;;
-esac
-case "$second_option" in
-list-*) list_rules_conceptual="" ;;
-listn-*)  list_rules_conceptual="no" ;;
+listn-filter4) list_rules_conceptual="no" ; first_option="list-filter4" ;;
+listn-filter6) list_rules_conceptual="no" ; first_option="list-filter6" ;;
+listn-nat4)  list_rules_conceptual="no" ; first_option="list-nat4" ;;
+listn-nat6)  list_rules_conceptual="no" ; first_option="list-nat6" ;;
+listn-raw4)  list_rules_conceptual="no" ; first_option="list-raw4" ;;
+listn-raw6)  list_rules_conceptual="no" ; first_option="list-raw6" ;;
+listn-security4)  list_rules_conceptual="no" ; first_option="list-security4" ;;
+listn-security6)  list_rules_conceptual="no" ; first_option="list-security6" ;;
+listn-mangle4)  list_rules_conceptual="no" ; first_option="list-mangle4" ;;
+listn-mangle6)  list_rules_conceptual="no" ; first_option="list-mangle6" ;;
 esac
 ####
 ####
