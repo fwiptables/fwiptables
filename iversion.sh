@@ -3863,30 +3863,29 @@ exit; fi
 ####
 if [ "$first_option" == "list-alltables" ]; then
 echo "$title_md [ $first_option ] [ List all rules ] "
-echo 
-echo; echo; echo "### LIST ARPTABLES ###"
-$cmd_realpath list-arptables
-echo; echo; echo "### LIST EBTABLES ###"
+echo; echo; echo "$title_md LIST ARPTABLES ###" ; echo
+$cmd_realpath list-arptables 
+echo; echo; echo "$title_md LIST EBTABLES ###" ; echo
 $cmd_realpath list-ebtables
-echo; echo; echo "### LIST FILTER IP4 TABLE ###"
+echo; echo; echo "$title_md LIST FILTER IP4 TABLE ###" ; echo
 $cmd_realpath list-filter4
-echo; echo; echo "### LIST FILTER IP6 TABLE ###"
+echo; echo; echo "$title_md LIST FILTER IP6 TABLE ###" ; echo
 $cmd_realpath list-filter6
-echo; echo; echo "### LIST NAT IP4 TABLE ###"
+echo; echo; echo "$title_md LIST NAT IP4 TABLE ###" ; echo
 $cmd_realpath list-nat4
-echo; echo; echo "### LIST NAT IP6 TABLE ###"
+echo; echo; echo "$title_md LIST NAT IP6 TABLE ###" ; echo
 $cmd_realpath list-nat6
-echo; echo; echo "### LIST SECURITY IP4 TABLE ###"
+echo; echo; echo "$title_md LIST SECURITY IP4 TABLE ###" ; echo
 $cmd_realpath list-security4
-echo; echo; echo "### LIST SECURITY IP6 TABLE ###"
+echo; echo; echo "$title_md LIST SECURITY IP6 TABLE ###" ; echo
 $cmd_realpath list-security6
-echo; echo; echo "### LIST RAW IP4 TABLE ###"
+echo; echo; echo "$title_md LIST RAW IP4 TABLE ###" ; echo
 $cmd_realpath list-raw4
-echo; echo; echo "### LIST RAW IP6 TABLE ###"
+echo; echo; echo "$title_md LIST RAW IP6 TABLE ###" ; echo
 $cmd_realpath list-raw6
-echo; echo; echo "### LIST MANGLE IP4 TABLE ###"
+echo; echo; echo "$title_md LIST MANGLE IP4 TABLE ###" ; echo
 $cmd_realpath list-mangle4
-echo; echo; echo "### LIST MANGLE IP6 TABLE ###"
+echo; echo; echo "$title_md LIST MANGLE IP6 TABLE ###" ; echo
 $cmd_realpath list-mangle6
 echo 
 exit; fi
@@ -3900,30 +3899,29 @@ exit; fi
 ####
 if [ "$first_option" == "listn-alltables" ]; then 
 echo "$title_md [ $first_option ] [ List all rules ] "
-echo 
-echo; echo; echo "### LIST EBTABLES ###"
+echo; echo; echo "$title_md LIST EBTABLES ###" ; echo
 $cmd_realpath list-ebtables
-echo; echo; echo "### LIST ARPTABLES ###"
-$cmd_realpath listn-arptables
-echo; echo; echo "### LIST FILTER IP4 TABLE ###"
+echo; echo; echo "$title_md LIST ARPTABLES ###" ; echo
+$cmd_realpath list-arptables
+echo; echo; echo "$title_md LIST FILTER IP4 TABLE ###" ; echo
 $cmd_realpath listn-filter4
-echo; echo; echo "### LIST FILTER IP6 TABLE ###"
+echo; echo; echo "$title_md LIST FILTER IP6 TABLE ###" ; echo
 $cmd_realpath listn-filter6
-echo; echo; echo "### LIST NAT IP4 TABLE ###"
+echo; echo; echo "$title_md LIST NAT IP4 TABLE ###" ; echo
 $cmd_realpath listn-nat4
-echo; echo; echo "### LIST NAT IP6 TABLE ###"
+echo; echo; echo "$title_md LIST NAT IP6 TABLE ###" ; echo
 $cmd_realpath listn-nat6
-echo; echo; echo "### LIST SECURITY IP4 TABLE ###"
+echo; echo; echo "$title_md LIST SECURITY IP4 TABLE ###" ; echo
 $cmd_realpath listn-security4
-echo; echo; echo "### LIST SECURITY IP6 TABLE ###"
+echo; echo; echo "$title_md LIST SECURITY IP6 TABLE ###" ; echo
 $cmd_realpath listn-security6
-echo; echo; echo "### LIST RAW IP4 TABLE ###"
+echo; echo; echo "$title_md LIST RAW IP4 TABLE ###" ; echo
 $cmd_realpath listn-raw4
-echo; echo; echo "### LIST RAW IP6 TABLE ###"
+echo; echo; echo "$title_md LIST RAW IP6 TABLE ###" ; echo
 $cmd_realpath listn-raw6
-echo; echo; echo "### LIST MANGLE IP4 TABLE ###"
+echo; echo; echo "$title_md LIST MANGLE IP4 TABLE ###" ; echo
 $cmd_realpath listn-mangle4
-echo; echo; echo "### LIST MANGLE IP6 TABLE ###"
+echo; echo; echo "$title_md LIST MANGLE IP6 TABLE ###" ; echo
 $cmd_realpath listn-mangle6
 echo 
 exit; fi
@@ -4586,22 +4584,6 @@ echo
 echo "$title_md $text_info [ arptables: filter arptables ] [ $fromrules ]"
 echo
 $command_arptables -L
-exit; fi
-####
-####
-#### :rutina-final-list-arptables:
-##########    english: list-arptables: list rules arptables with arp        ##########
-##########    spanish: list-arptables: lista reglas de arptables with arp   ##########
-#### :rutina-inicial-list-arptables:
-####
-####
-if [ "$first_option" == "listn-arptables" ]; then 
-echo "$title_md [ $first_option ] [ List arptables ipv4 ] "
-fromrules="arptables"
-echo
-echo "$title_md $text_info [ arptables: filter arptables ] [ $fromrules ]"
-echo
-$command_arptables -L -n
 exit; fi
 ####
 ####
