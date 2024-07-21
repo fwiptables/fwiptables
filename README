@@ -30,28 +30,28 @@
 ###  fwiptables install.                     
   
     su root TYPE: su root                       
-    put bit TYPE: chmod 755 ./fwiptables-version-24-07i-bash.sh     
-    install TYPE: ./fwiptables-version-24-07i-bash.sh install       
+    put bit TYPE: chmod 755 ./fwiptables-version-24-07j-bash.sh     
+    install TYPE: ./fwiptables-version-24-07j-bash.sh install       
   
 ###  fwiptables uninstall.                   
   
     uninstall TYPE: fwiptables uninstall  
   
 ###  [ version ] [ Show version ] [ version md ]            
-     Basename program: fwiptables-version-24-07i-bash.sh               
-     Realpath program: /root/f-iptables-version/fwiptables-version-24-07i-bash.sh               
-      Version program: 24-07i                
-    Short description: FireWall With iptables       
-     Long description: One Mini Script in one-file wizard        
-     Developer Actual: Francisco Garcia              
-    Developer Contact: fwiptables@gmx.com                
-      License program: GPL v2, LGPL v2, BSD                
-       Data Directory: /root/.config/fwiptables    
-      Cache Directory: /root/.cache/fwiptables   
-     File Preferences:    
-   /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-07i             
-   Fileformat program:    
-   /root/f-iptables-version/fwiptables-version-24-07i-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable        
+       Basename program: fwiptables-version-24-07j-bash.sh               
+       Realpath program: /root/f-iptables-version/fwiptables-version-24-07j-bash.sh               
+        Version program: 24-07j                
+      Short description: FireWall With iptables       
+       Long description: One Mini Script in one-file wizard        
+       Developer Actual: Francisco Garcia              
+      Developer Contact: fwiptables@gmx.com                
+        License program: GPL v2, LGPL v2, BSD                
+         Data Directory: /root/.config/fwiptables    
+        Cache Directory: /root/.cache/fwiptables   
+       File Preferences:    
+     /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-07j             
+     Fileformat program:    
+     /root/f-iptables-version/fwiptables-version-24-07j-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable        
   
 ###  [ compile ] [  Optionally compile from bash script ] [ compile md]         
    [ info ] BASH SCRIPT WORKS fully. But if your desire is compiling...    
@@ -64,37 +64,37 @@
   
 ###        | without optional output | Example Description   
     
-   | depends                  | fwiptables-version-24-07i-bash.sh depends             
-   | List firewall saved      | fwiptables-version-24-07i-bash.sh names               
-   | List configs saved       | fwiptables-version-24-07i-bash.sh names-custom        
-   | Get info speed ipv4      | fwiptables-version-24-07i-bash.sh speed-ip4           
-   | Show listen sockets      | fwiptables-version-24-07i-bash.sh sockets             
-   | List last options        | fwiptables-version-24-07i-bash.sh autolog             
-   | modify default variables | fwiptables-version-24-07i-bash.sh preferences-modify  
+   | depends                  | fwiptables-version-24-07j-bash.sh depends             
+   | List firewall saved      | fwiptables-version-24-07j-bash.sh names               
+   | List configs saved       | fwiptables-version-24-07j-bash.sh names-custom        
+   | Get info speed ipv4      | fwiptables-version-24-07j-bash.sh speed-ip4           
+   | Show listen sockets      | fwiptables-version-24-07j-bash.sh sockets             
+   | List last options        | fwiptables-version-24-07j-bash.sh autolog             
+   | modify default variables | fwiptables-version-24-07j-bash.sh preferences-modify  
   
 ###        | with optional output | Example Description   
   
-   | Example with info        | fwiptables-version-24-07i-bash.sh txt info             
-   | Example with expert      | fwiptables-version-24-07i-bash.sh txt expert           
-   | Example with code ip4    | fwiptables-version-24-07i-bash.sh cli code ip4         
-   | Example with list rules  | fwiptables-version-24-07i-bash.sh cli lsn4             
-   | Example with nodes       | fwiptables-version-24-07i-bash.sh gui nodes            
-   | Example with web browser | fwiptables-version-24-07i-bash.sh gui web kernel.org   
+   | Example with info        | fwiptables-version-24-07j-bash.sh txt info             
+   | Example with expert      | fwiptables-version-24-07j-bash.sh txt expert           
+   | Example with code ip4    | fwiptables-version-24-07j-bash.sh cli code ip4         
+   | Example with list rules  | fwiptables-version-24-07j-bash.sh cli lsn4             
+   | Example with nodes       | fwiptables-version-24-07j-bash.sh gui nodes            
+   | Example with web browser | fwiptables-version-24-07j-bash.sh gui web kernel.org   
     
-   | Launch client web firewall in silent   | fwiptables-version-24-07i-bash.sh silent client-web   
-   | List iptables rules with output txt    | fwiptables-version-24-07i-bash.sh txt ls4             
-   | List firewall with output cli whiptail | fwiptables-version-24-07i-bash.sh cli-wiptail names   
-   | List sockets ip with output gui yad    | fwiptables-version-24-07i-bash.sh gui-yad sockets     
-   | All options in text menu               | fwiptables-version-24-07i-bash.sh cli-menu-dialog     
-   | All options in window menu             | fwiptables-version-24-07i-bash.sh gui-menu-yad        
-   | All options in window roll             | fwiptables-version-24-07i-bash.sh gui-roll-zenity     
-   | All options in window shell            | fwiptables-version-24-07i-bash.sh gui-shell-yad       
+   | Launch client web firewall in silent   | fwiptables-version-24-07j-bash.sh silent client-web   
+   | List iptables rules with output txt    | fwiptables-version-24-07j-bash.sh txt ls4             
+   | List firewall with output cli whiptail | fwiptables-version-24-07j-bash.sh cli-wiptail names   
+   | List sockets ip with output gui yad    | fwiptables-version-24-07j-bash.sh gui-yad sockets     
+   | All options in text menu               | fwiptables-version-24-07j-bash.sh cli-menu-dialog     
+   | All options in window menu             | fwiptables-version-24-07j-bash.sh gui-menu-yad        
+   | All options in window roll             | fwiptables-version-24-07j-bash.sh gui-roll-zenity     
+   | All options in window shell            | fwiptables-version-24-07j-bash.sh gui-shell-yad       
   
 ### 
 ### 
 ###  [ options ] [ List general options for fwiptables ] [ list-options md ]
   
-   fwiptables-version-24-07i-bash.sh [optional-output] first_option [second_option]  
+   fwiptables-version-24-07j-bash.sh [optional-output] first_option [second_option]  
 ###     optional-output                                                      
    [ t|txt n|narrowtxt l|logtxt c|cli g|gui p|pdf s|silent ]                    
    [ cli-dialog cli-whiptail gui-zenity gui-yad ]                         
@@ -132,12 +132,12 @@
    free sockets nodes ip-forward depends utils treeconf treecache         
    cleancache notes variables uninstall install upgrade version           
    examples code expert license-gpl license-lgpl license-bsd              
-       | Program: fwiptables-version-24-07i-bash.sh , Version: 24-07i    
+       | Program: fwiptables-version-24-07j-bash.sh , Version: 24-07j    
        | Description: One Mini Script in one-file wizard                 
        | Expert: expert is allowed in preferences file   
   
    
-###  | optional-output | fwiptables-version-24-07i-bash.sh optional-ouptut |
+###  | optional-output | fwiptables-version-24-07j-bash.sh optional-ouptut |
   
    | t . output in terminal text  
    | n . output in terminal text narrowtxt (compresed spaces)  
