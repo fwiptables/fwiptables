@@ -3310,7 +3310,7 @@ echo "$text_md | expert-cpupower-info . show cpu frecuence info  "
 echo "$text_md | expert-radio-link . listen radio from one link  "  
 echo "$text_md | expert-radio-spanish . listen online radio from one text-string from spain  "  
 echo "$text_md | expert-project-web . site  downloaded web fwiptables  "  
-echo "$text_md | expert-gen-file . generate actual version file in bash  "  
+echo "$text_md | expert-gen-file . generate actual version file in original with readme  "  
 echo "$text_md | expert-gen-deb . generate actual version file in deb  "  
 echo "$text_md | expert-configs-save . save configs like backup from fwiptables in tar file  "  
 echo "$text_md | expert-configs-load . load configs like backup from fwiptables in tar file  "  
@@ -4856,6 +4856,8 @@ echo "$text_md  uninstall TYPE: $cmd_file uninstall  "
 echo "$text_md"
 $cmd_realpath version
 echo "$text_md"
+$cmd_realpath notes
+echo "$text_md"
 $cmd_realpath compile
 echo "$text_md"
 $cmd_realpath examples
@@ -4986,7 +4988,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-gen-file" ]; then 
-echo "$title_md [ $first_option ]  [ generate actual file version ] "
+echo "$title_md [ $first_option ]  [ generate actual file and readme ] "
 #### create the file base in repository
 cp $0 $default_directory_gen/fwiptables-version-$cmd_version-bash.sh
 echo "$title_md $text_ok Created $default_directory_gen/fwiptables-version-$cmd_version-bash.sh"
@@ -5004,9 +5006,8 @@ exit; fi
 #### :rutina-inicial-expert-gen-deb:
 ####
 ####
-if   [ "$first_option" == "expert-gen-deb" ]; then 
-if [ "$1" != "$NULL" ] && [ -f  $1 ] ; then echo "obteniendo deb de un fwiptables.."
-else echo "launch $0 file-location-of-fwiptables" ; exit ; fi
+if   [ "$first_option" == "expert-gen-deb" ]; then
+echo "$title_md [ $first_option ]  [ generate actual file debian ] "
 #### crea la estructura de directorios
 mkdir -p $default_directory_gen/deb/usr/bin
 mkdir -p $default_directory_gen/deb/DEBIAN
@@ -5022,9 +5023,9 @@ echo "Description: $cmd_shortdescription ." &>> $default_directory_gen/deb/DEBIA
 echo " $cmd_longdescription ."  &>> $default_directory_gen/deb/DEBIAN/control
 #### empaqueta el archivo
 chown root:root $default_directory_gen/* -R 
-chmod 700 $default_directory_gen/* -R
-$(which dpkg) -b $default_directory_gen/$fwiptables-version-$cmd_version.deb && \
-echo "$text_md $text_ok file write in $default_directory_gen/$fwiptables-version-$cmd_version.deb "
+chmod 755 $default_directory_gen/* -R
+dpkg -b $default_directory_gen/deb fwiptables-version-$cmd_version.deb && \
+echo "$text_md $text_ok file write in $default_directory_gen/fwiptables-version-$cmd_version.deb "
 ####
 ####
 exit; fi
