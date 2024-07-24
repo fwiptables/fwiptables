@@ -5024,8 +5024,8 @@ echo " $cmd_longdescription ."  &>> $default_directory_gen/deb/DEBIAN/control
 #### empaqueta el archivo
 chown root:root $default_directory_gen/* -R 
 chmod 755 $default_directory_gen/* -R
-dpkg -b $default_directory_gen/deb fwiptables-version-$cmd_version.deb && \
-echo "$text_md $text_ok file write in $default_directory_gen/fwiptables-version-$cmd_version.deb "
+dpkg -b $default_directory_gen/deb/ fwiptables-version-$cmd_version.deb && \
+echo "$text_md $text_ok file write in $default_directory_gen/deb/fwiptables-version-$cmd_version.deb "
 ####
 ####
 exit; fi
