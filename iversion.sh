@@ -219,6 +219,7 @@ command_dhclientscript="$(command -v dhclient-script)"
 command_dhcpcd="$(command -v dhcpcd)"
 command_dialog="$(command -v dialog)"
 command_dig="$(command -v dig)"
+command_dpkg="$(command -v dpkg)"
 command_ebtables="$(command -v ebtables)"
 command_editor="$(command -v editor)"
 command_egrep="$(command -v egrep)"
@@ -5024,8 +5025,8 @@ echo " $cmd_longdescription ."  &>> $default_directory_gen/deb/DEBIAN/control
 #### empaqueta el archivo
 chown root:root $default_directory_gen/* -R 
 chmod 755 $default_directory_gen/* -R
-dpkg -b $default_directory_gen/deb/ fwiptables-version-$cmd_version.deb && \
-echo "$text_md $text_ok file write in $default_directory_gen/deb/fwiptables-version-$cmd_version.deb "
+$command_dpkg -b $default_directory_gen/deb/ $default_directory_gen/fwiptables-version-$cmd_version.deb && \
+echo "$text_md $text_ok file write in $default_directory_gen/fwiptables-version-$cmd_version.deb "
 ####
 ####
 exit; fi
