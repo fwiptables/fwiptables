@@ -3287,8 +3287,10 @@ echo "$text_md | expert-speed-cpu . benchmark cpu speed with bc command aprox 5s
 echo "$text_md | expert-speed-glx . benchmark glx speed with mesa3D  "  
 echo "$text_md | expert-upgrade-stable . Upgrade from web sourceforge fwiptables with curl  "  
 echo "$text_md | expert-upgrade-unstable . Upgrade from git sourceforge fwiptables with curl  "  
-echo "$text_md | expert-upgrade-adblock . Download blacklist to folder configuration program with curl  "  
-echo "$text_md | expert-compile-obash . Compile fwiptables folder configuration program  "  
+echo "$text_md | expert-upgrade-adblock . Download blacklist to folder configuration program with curl  " 
+echo "$text_md | expert-gen-files . generate actual version file in original with readme  "  
+echo "$text_md | expert-gen-deb . generate actual version file in deb  "   
+echo "$text_md | expert-gen-compile . Compile fwiptables from bash with program obash  "   
 echo "$text_md | expert-nmap-tcp . doing scan tcp at host or range  "  
 echo "$text_md | expert-nmap-udp . doing scan udp at host or range  "  
 echo "$text_md | expert-nmap-fin . doing scan fin at host or range  "   
@@ -3311,8 +3313,6 @@ echo "$text_md | expert-cpupower-info . show cpu frecuence info  "
 echo "$text_md | expert-radio-link . listen radio from one link  "  
 echo "$text_md | expert-radio-spanish . listen online radio from one text-string from spain  "  
 echo "$text_md | expert-project-web . site  downloaded web fwiptables  "  
-echo "$text_md | expert-gen-file . generate actual version file in original with readme  "  
-echo "$text_md | expert-gen-deb . generate actual version file in deb  "  
 echo "$text_md | expert-configs-save . save configs like backup from fwiptables in tar file  "  
 echo "$text_md | expert-configs-load . load configs like backup from fwiptables in tar file  "  
 echo "$text_md "
@@ -4983,12 +4983,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-install:
-##########    english: expert-gen-file: generate installed respository   ##########
-##########    spanish: expert-gen-file: genera instalado respositorio    ##########
-#### :rutina-inicial-expert-gen-file:
+##########    english: expert-gen-files: generate installed respository   ##########
+##########    spanish: expert-gen-files: genera instalado respositorio    ##########
+#### :rutina-inicial-expert-gen-files:
 ####
 ####
-if   [ "$first_option" == "expert-gen-file" ]; then 
+if   [ "$first_option" == "expert-gen-files" ]; then 
 echo "$title_md [ $first_option ]  [ generate actual file and readme ] "
 #### create the file base in repository
 cp $0 $default_directory_gen/fwiptables-version-$cmd_version-bash.sh
@@ -5001,7 +5001,7 @@ echo "$title_md $text_ok Created $default_directory_gen/README.md"
 exit; fi
 ####
 ####
-#### :rutina-final-expert-gen-file:
+#### :rutina-final-expert-gen-files:
 ##########    english: expert-gen-deb: generate installed respository   ##########
 ##########    spanish: expert-gen-deb: genera instalado respositorio    ##########
 #### :rutina-inicial-expert-gen-deb:
@@ -5315,12 +5315,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-compile:
-##########    english: expert-compile-obash: compile with obash      ##########
-##########    spanish: expert-compile-obash: compila with obash      ##########
-#### :rutina-inicial-expert-compile-obash:
+##########    english: expert-gen-compile: compile with obash      ##########
+##########    spanish: expert-gen-compile: compila with obash      ##########
+#### :rutina-inicial-expert-gen-compile:
 ####
 ####
-if   [ "$first_option" == "expert-compile-obash" ]; then 
+if   [ "$first_option" == "expert-gen-compile" ]; then 
 echo "$title_md [ $first_option ] \
 [  optionally ] [ howto compile bash script with obash ] "
 echo "$title_md Compile $cmd_basename" ; echo
@@ -5337,7 +5337,7 @@ file -L $obash_file_date.bin
 exit; fi
 ####
 ####
-#### :rutina-final-expert-compile-obash:
+#### :rutina-final-expert-gen-compile:
 ##########    english: expert-upgrade-adblock: compile with obash      ##########
 ##########    spanish: expert-upgrade-adblock: compila with obash      ##########
 #### :rutina-inicial-expert-upgrade-adblock:
