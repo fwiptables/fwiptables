@@ -365,6 +365,7 @@ default_directory_radio="$directory_data_necesary/fwiptables-radio"
 default_directory_proxy="$directory_data_necesary/fwiptables-proxy"
 default_directory_adblock="$directory_data_necesary/fwiptables-adblock"
 default_directory_obash="$directory_data_necesary/fwiptables-obash"
+default_directory_gen="$directory_data_necesary/fwiptables-gen"
 ####
 ####
 #### english: templates cfg
@@ -458,6 +459,8 @@ if [ ! -d "$default_directory_adblock" ]; then
 $command_mkdir -p "$default_directory_adblock" &> /dev/null ; fi
 if [ ! -d "$default_directory_obash" ]; then
 $command_mkdir -p "$default_directory_obash" &> /dev/null ; fi
+if [ ! -d "$default_directory_gen" ]; then
+$command_mkdir -p "$default_directory_gen" &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-dir-sane:
@@ -3307,7 +3310,8 @@ echo "$text_md | expert-cpupower-info . show cpu frecuence info  "
 echo "$text_md | expert-radio-link . listen radio from one link  "  
 echo "$text_md | expert-radio-spanish . listen online radio from one text-string from spain  "  
 echo "$text_md | expert-project-web . site  downloaded web fwiptables  "  
-echo "$text_md | expert-gen-version . generate actual version file in actual folder  "  
+echo "$text_md | expert-gen-file . generate actual version file in bash  "  
+echo "$text_md | expert-gen-deb . generate actual version file in deb  "  
 echo "$text_md | expert-configs-save . save configs like backup from fwiptables in tar file  "  
 echo "$text_md | expert-configs-load . load configs like backup from fwiptables in tar file  "  
 echo "$text_md "
@@ -4976,25 +4980,57 @@ exit; fi
 ####
 ####
 #### :rutina-final-install:
-##########    english: expert-gen-version: generate installed respository   ##########
-##########    spanish: expert-gen-version: genera instalado respositorio    ##########
-#### :rutina-inicial-expert-gen-version:
+##########    english: expert-gen-file: generate installed respository   ##########
+##########    spanish: expert-gen-file: genera instalado respositorio    ##########
+#### :rutina-inicial-expert-gen-file:
 ####
 ####
-if   [ "$first_option" == "expert-gen-version" ]; then 
+if   [ "$first_option" == "expert-gen-file" ]; then 
 echo "$title_md [ $first_option ]  [ generate actual file version ] "
 #### create the file base in repository
-cp $0 ./fwiptables-version-$cmd_version-bash.sh
-echo "$title_md $text_ok Created ./fwiptables-version-$cmd_version-bash.sh"
+cp $0 $default_directory_gen/fwiptables-version-$cmd_version-bash.sh
+echo "$title_md $text_ok Created $default_directory_gen/fwiptables-version-$cmd_version-bash.sh"
 #### create the README base in repository
-./fwiptables-version-$cmd_version-bash.sh intro > README
-echo "$title_md $text_ok Created README"
-./fwiptables-version-$cmd_version-bash.sh intro > README.md
-echo "$title_md $text_ok Created README.md"
+$default_directory_gen/fwiptables-version-$cmd_version-bash.sh intro > $default_directory_gen/README
+echo "$title_md $text_ok Created $default_directory_gen/README "
+$default_directory_gen/fwiptables-version-$cmd_version-bash.sh intro > $default_directory_gen/README.md
+echo "$title_md $text_ok Created $default_directory_gen/README.md"
 exit; fi
 ####
 ####
-#### :rutina-final-expert-gen-version:
+#### :rutina-final-expert-gen-file:
+##########    english: expert-gen-deb: generate installed respository   ##########
+##########    spanish: expert-gen-deb: genera instalado respositorio    ##########
+#### :rutina-inicial-expert-gen-deb:
+####
+####
+if   [ "$first_option" == "expert-gen-deb" ]; then 
+if [ "$1" != "$NULL" ] && [ -f  $1 ] ; then echo "obteniendo deb de un fwiptables.."
+else echo "launch $0 file-location-of-fwiptables" ; exit ; fi
+#### crea la estructura de directorios
+mkdir -p $default_directory_gen/deb/usr/bin
+mkdir -p $default_directory_gen/deb/DEBIAN
+#### crea el archivo control
+echo "Package: fwiptables"      &>  $default_directory_gen/deb/DEBIAN/control
+echo "Priority: optional"       &>> $default_directory_gen/deb/DEBIAN/control
+echo "Section: misc"            &>> $default_directory_gen/deb/DEBIAN/control
+echo "Maintainer: f-iptables"   &>> $default_directory_gen/deb/DEBIAN/control
+echo "Architecture: all"        &>> $default_directory_gen/deb/DEBIAN/control
+echo "Version: $cmd_version"    &>> $default_directory_gen/deb/DEBIAN/control
+echo "Depends: "                &>> $default_directory_gen/deb/DEBIAN/control
+echo "Description: $cmd_shortdescription ." &>> $default_directory_gen/deb/DEBIAN/control
+echo " $cmd_longdescription ."  &>> $default_directory_gen/deb/DEBIAN/control
+#### empaqueta el archivo
+chown root:root $default_directory_gen/* -R 
+chmod 700 $default_directory_gen/* -R
+$(which dpkg) -b $default_directory_gen/$fwiptables-version-$cmd_version.deb && \
+echo "$text_md $text_ok file write in $default_directory_gen/$fwiptables-version-$cmd_version.deb "
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-expert-gen-deb:
 ##########    english: expert-show-geoip: host to resolve and locate       ##########
 ##########    spanish: expert-show-geoip: host para resolver y localizar   ##########
 #### :rutina-inicial-expert-show-geoip:
