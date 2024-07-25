@@ -3284,7 +3284,9 @@ echo "$text_md | expert-speed-ip6 . benchmark internet speed ipv6 with 4seconds 
 echo "$text_md | expert-speed-disk . benchmark disk speed with 100Mb  "   
 echo "$text_md | expert-speed-ram . benchmark ram speed with 100Mb  "  
 echo "$text_md | expert-speed-cpu . benchmark cpu speed with bc command aprox 5seconds  "   
-echo "$text_md | expert-speed-glx . benchmark glx speed with mesa3D  "  
+echo "$text_md | expert-speed-glx . benchmark glx speed with mesa3D  " 
+echo "$text_md | expert-add-whitelist4 . add white list for ip4"
+echo "$text_md | expert-add-whitelist6 . add white list for ip6"
 echo "$text_md | expert-upgrade-stable . Upgrade from web sourceforge fwiptables with curl  "  
 echo "$text_md | expert-upgrade-unstable . Upgrade from git sourceforge fwiptables with curl  "  
 echo "$text_md | expert-upgrade-adblock . Download blacklist to folder configuration program with curl  " 
@@ -5756,12 +5758,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-config-spa:
-##########    english: temporal-addwitelist4: whitelist temporally ipv4    ##########
-##########    spanish: temporal-addwitelist4: lista blanca temporal ipv4   ##########
-#### :rutina-inicial-temporal-wihtelist4
+##########    english: add-whitelist4: whitelist temporally ipv4    ##########
+##########    spanish: add-whitelist4: lista blanca temporal ipv4   ##########
+#### :rutina-inicial-add-wihtelist4
 ####
 ####
-if [ "$first_option" == "temporal-addwitelist4" ]; then
+if [ "$first_option" == "add-whitelist4" ] || [ "$first_option" == "expert-add-whitelist4" ]  ; then
 if [ "$2" == "$NULL" ]; then echo "$title_md $text_fail not host or net ]"; exit ; fi
 echo "$title_md [ Working ] ADD temporally ipv4 rules whitelist: ACCEPT to $2"
 $command_iptablesnft    -t filter -I INPUT -s $2  \
@@ -5775,13 +5777,13 @@ $command_iptableslegacy -t filter -I OUTPUT -d $2 \
 exit; fi
 ####
 ####
-#### :rutina-final-temporal-wihtelist4
-##########    english: temporal-addwitelist6: whitelist temporally ipv6    ##########
-##########    spanish: temporal-addwitelist6: lista blanca temporal ipv6   ##########
-#### :rutina-inicial-temporal-wihtelist6
+#### :rutina-final-add-wihtelist4
+##########    english: add-whitelist6: whitelist temporally ipv6    ##########
+##########    spanish: add-whitelist6: lista blanca temporal ipv6   ##########
+#### :rutina-inicial-add-wihtelist6
 ####
 ####
-if [ "$first_option" == "temporal-addwitelist6" ]; then
+if [ "$first_option" == "add-whitelist6" ] || [ "$first_option" == "expert-add-whitelist6" ]  ; then
 if [ "$2" == "$NULL" ]; then echo "$title_md $text_fail not host or net ]"; exit ; fi
 echo "$title_md [ Working ] ADD temporally ipv6 rules whitelist: ACCEPT to $2"
 $command_ip6tablesnft    -t filter -I INPUT -s $2  \
@@ -5795,7 +5797,7 @@ $command_ip6tableslegacy -t filter -I OUTPUT -d $2 \
 exit; fi
 ####
 ####
-#### :rutina-final-temporal-wihtelist4
+#### :rutina-final-add-wihtelist6
 ##########    english: speed-ip4: speed from internet        ##########
 ##########    spanish: speed-ip4: velocidad desde internet   ##########
 #### :rutina-inicial-speed-ip4:
@@ -5810,7 +5812,7 @@ else echo "$title_md $text_ok [ choosed iperf ]"; fi
 echo "$title_md"
 # echo "$title_md [ Working ] Saving firewall before speed-ip4"
 $cmd_realpath save before-speed-ip4
-$cmd_realpath temporal-addwitelist4 $serverip_iperf_ipv4
+$cmd_realpath add-whitelist4 $serverip_iperf_ipv4
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv4 to $serverip_iperf_ipv4 ]"
@@ -5837,7 +5839,7 @@ if [ "$favorite_iperf_command" == "$NULL" ];
 then echo "$title_md $text_fail install iperf";
 else echo "$title_md $text_ok [ choosed iperf ]"; fi
 $cmd_realpath save before-speed-ip6 
-$cmd_realpath temporal-addwitelist6 $serverip_iperf_ipv6
+$cmd_realpath add-whitelist6 $serverip_iperf_ipv6
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv6 to $serverip_iperf_ipv4 ]"
@@ -6032,7 +6034,7 @@ echo "$title_md $text_info [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
 $cmd_realpath save before-nmap-tcp 
-$cmd_realpath temporal-addwitelist4 $2
+$cmd_realpath add-whitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sT $2
 $cmd_realpath load before-nmap-tcp 
@@ -6053,7 +6055,7 @@ echo "$title_md $text_info [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
 $cmd_realpath save before-nmap-syn
-$cmd_realpath temporal-addwitelist4 $2
+$cmd_realpath add-whitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sF $2
 $cmd_realpath load before-nmap-syn
@@ -6075,7 +6077,7 @@ echo "$title_md $text_info [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
 $cmd_realpath save before-nmap-fin 
-$cmd_realpath temporal-addwitelist4 $2
+$cmd_realpath add-whitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sT $2
 $cmd_realpath load before-nmap-fin
@@ -6097,7 +6099,7 @@ echo "$title_md $text_info [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
 $cmd_realpath save before-nmap-udp
-$cmd_realpath temporal-addwitelist4 $2
+$cmd_realpath add-whitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sU $2
 $cmd_realpath load before-nmap-udp
@@ -6119,7 +6121,7 @@ echo "$title_md $text_info [ Use: $cmd_basename $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
 $cmd_realpath save before-nmap-ping
-$cmd_realpath temporal-addwitelist4 $2
+$cmd_realpath add-whitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sn $2
 $cmd_realpath load before-nmap-ping
