@@ -2309,33 +2309,28 @@ exit; fi
 if [ "$first_option" == "notes" ]; then 
 echo "$title_md [ $first_option ] [ List notes about ] [ notes md ]"
 echo "$text_md"
-echo "$title_md Several notes .."
+echo "$title_md General Notes"
+echo "$text_md [ legacy or nft ] whith one of them is sufficent "   
+echo "$text_md [ allow shield maxtries ] limit against attack per bruteforce "   
+echo "$text_md [ net blacklist ] excepcionals hosts has conection dropped in firewall"   
+echo "$text_md [ net whitelist ] excepcionals hosts has conection allowed in firewall"   
+echo "$text_md [ input-established ] the computer is only client "   
+echo "$text_md [ allow output uid/gid ] User and/or group excepcional with conection allowed"   
 echo "$text_md"
-echo "$text_md [ Notes ]"
+echo "$title_md Two iptables netfilter"   
+echo "$text_md iptables-legacy   is    support for xtables"    
+echo "$text_md iptables-nft      is    support for nftables"    
 echo "$text_md"
-echo "$text_md [ legacy or nft ] whith one of them is sufficent "
-echo "$text_md [ allow shield maxtries ] limit against attack per bruteforce "
-echo "$text_md [ net blacklist ] excepcionals hosts has conection dropped in firewall"
-echo "$text_md [ net whitelist ] excepcionals hosts has conection allowed in firewall"
-echo "$text_md [ input-established ] the computer is only client "
-echo "$text_md [ allow output uid/gid ] User and/or group excepcional with conection allowed"
+echo "$title_md Necesary ports to connect with ipv4 and ipv6 in UDP protocol"   
+echo "$text_md ntp    : Port necesary to update the time and date"   
+echo "$text_md bootpc : Port necesary to dhcp and get ip"   
+echo "$text_md domain : This port is necesary to domain resolver"   
+echo "$text_md https  : This port is necesary for udp named web html5"   
 echo "$text_md"
-echo "$text_md [ Notes ] [ Two iptables netfilter ]"
-echo "$text_md"
-echo "$text_md iptables-legacy   is    support for xtables" 
-echo "$text_md iptables-nft      is    support for nftables" 
-echo "$text_md"
-echo "$text_md [ Notes ] necesary ports to connect with ipv4 and ipv6 in UDP protocol"
-echo "$text_md"
-echo "$text_md ntp    : Port necesary to update the time and date"
-echo "$text_md bootpc : Port necesary to dhcp and get ip"
-echo "$text_md domain : This port is necesary to domain resolver"
-echo "$text_md https  : This port is necesary for udp named web html5"
-echo "$text_md"
-echo "$text_md [ Notes ] necesary protocols for ip v6"
-echo "$text_md"
-echo "$text_md ipv6-icmp  : Necesary protocol in ipv6"
+echo "$title_md Necesary protocols for ipv6"   
+echo "$text_md ipv6-icmp  : Necesary protocol in ipv6"   
 echo "$text_md ipv4 ports : ipv6 works too with old ipv4 ports"
+echo "$text_md"   
 exit; fi
 ####
 ####
@@ -5307,12 +5302,10 @@ exit; fi
 ####
 if   [ "$first_option" == "compile" ]; then 
 echo "$title_md [ $first_option ] [ Optionally compile from bash script ] [ compile md]  "
-echo "$text_md"
-echo "$text_md BASH SCRIPT WORKS fully. But if your desire is compiling...    "
-echo "$text_md Necesary fwiptables in source script bash                "
-echo "$text_md Download and install obash from oficial web internet     "
-echo "$text_md Run: obash -s -c -o ./destination.bin ./source-bash.sh   "
-echo "$text_md"
+echo "$text_md BASH SCRIPT WORKS fully. But if your desire is compiling...    "   
+echo "$text_md Necesary fwiptables in source script bash                "   
+echo "$text_md Download and install obash from oficial web internet     "   
+echo "$text_md Run: obash -s -c -o ./destination.bin ./source-bash.sh   "   
 exit; fi
 ####
 ####
@@ -5764,7 +5757,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "add-whitelist4" ] || [ "$first_option" == "expert-add-whitelist4" ]  ; then
-if [ "$2" == "$NULL" ]; then echo "$title_md $text_fail not host or net ]"; exit ; fi
+if [ "$2" == "$NULL" ]; then echo "$title_md $text_fail type host ip4 or net ip4 to be in whitelist"; exit ; fi
 echo "$title_md [ Working ] ADD temporally ipv4 rules whitelist: ACCEPT to $2"
 $command_iptablesnft    -t filter -I INPUT -s $2  \
 -j ACCEPT && echo ok rule 1/4 || echo fail rule 1/4
@@ -5784,7 +5777,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "add-whitelist6" ] || [ "$first_option" == "expert-add-whitelist6" ]  ; then
-if [ "$2" == "$NULL" ]; then echo "$title_md $text_fail not host or net ]"; exit ; fi
+if [ "$2" == "$NULL" ]; then echo "$title_md $text_fail type host ip6 or net ip6 to be in whitelist"; exit ; fi
 echo "$title_md [ Working ] ADD temporally ipv6 rules whitelist: ACCEPT to $2"
 $command_ip6tablesnft    -t filter -I INPUT -s $2  \
 -j ACCEPT && echo ok rule 1/4 || echo fail rule 1/4
