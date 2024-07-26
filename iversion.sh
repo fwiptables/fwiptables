@@ -672,11 +672,15 @@ echo "$title_md See in preferences allow_expert_commands to active it option"
 exit ;; esac
 ####
 fi
-#### 
 ####
+####
+if [ "$command_file" == "$NULL" ] || [ "$command_awk" == "$NULL" ]; then exit ;
+else cmd_format="$($command_file $0 | $command_awk '{print $2}')" ; fi
 ####
 ####
 #### :rutina-final-sane-variables-basics:
+####
+####
 ##########      english: search favorite iperf: favorite iperf command        ##########
 ##########      spanish: busca preferida fecha: favorita comando de iperf     ##########
 #### :rutina-inicial-favorite-iperf-command:
@@ -2242,10 +2246,11 @@ echo "$text_md    Developer Contact: $cmd_contact                "
 echo "$text_md      License program: $cmd_license                "
 echo "$text_md       Data Directory: $directory_data_necesary    "
 echo "$text_md      Cache Directory: $directory_cache_necesary   "
-echo "$text_md     File Preferences:    "
-echo "$text_md   $file_default_preferences             "  
-echo "$text_md   Fileformat program:    "
-echo "$text_md   $($command_file $cmd_realpath)        "
+echo "$text_md          File Format: $cmd_format   "
+#### echo "$text_md     File Preferences:    "
+#### echo "$text_md   $file_default_preferences             "  
+#### echo "$text_md   Fileformat program:    "
+#### echo "$text_md   $($command_file $cmd_realpath)        "
 exit ; fi
 ####
 ####
@@ -4953,6 +4958,7 @@ exit; fi
 if [ "$first_option" == "install" ]; then 
 echo "$text_md $text_md       Installing:  $cmd_file"
 echo "$text_md $text_md          Version:  $cmd_version"
+echo "$text_md $text_md           format:  $cmd_format"
 ####
 ####
 ####  english: copy the file to temporal folder and install
