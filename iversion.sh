@@ -366,7 +366,8 @@ default_directory_radio="$directory_data_necesary/fwiptables-radio"
 default_directory_proxy="$directory_data_necesary/fwiptables-proxy"
 default_directory_adblock="$directory_data_necesary/fwiptables-adblock"
 default_directory_obash="$directory_data_necesary/fwiptables-obash"
-default_directory_gen="$directory_data_necesary/fwiptables-gen"
+default_directory_debian="$directory_data_necesary/fwiptables-debian"
+default_directory_readme="$directory_data_necesary/fwiptables-readme"
 ####
 ####
 #### english: templates cfg
@@ -460,8 +461,10 @@ if [ ! -d "$default_directory_adblock" ]; then
 $command_mkdir -p "$default_directory_adblock" &> /dev/null ; fi
 if [ ! -d "$default_directory_obash" ]; then
 $command_mkdir -p "$default_directory_obash" &> /dev/null ; fi
-if [ ! -d "$default_directory_gen" ]; then
-$command_mkdir -p "$default_directory_gen" &> /dev/null ; fi
+if [ ! -d "$default_directory_debian" ]; then
+$command_mkdir -p "$default_directory_debian" &> /dev/null ; fi
+if [ ! -d "$default_directory_readme" ]; then
+$command_mkdir -p "$default_directory_readme" &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-dir-sane:
@@ -3285,8 +3288,8 @@ echo "$text_md | expert-add-whitelist6 . add white list for ip6"
 echo "$text_md | expert-upgrade-stable . Upgrade from web sourceforge fwiptables with curl  "  
 echo "$text_md | expert-upgrade-unstable . Upgrade from git sourceforge fwiptables with curl  "  
 echo "$text_md | expert-upgrade-adblock . Download blacklist to folder configuration program with curl  " 
-echo "$text_md | expert-gen-files . generate actual version file in original with readme  "  
 echo "$text_md | expert-gen-deb . generate actual version file in deb  "   
+echo "$text_md | expert-gen-readme . generate actual version file in original with readme  "  
 echo "$text_md | expert-gen-compile . Compile fwiptables from bash with program obash  "   
 echo "$text_md | expert-nmap-tcp . doing scan tcp at host or range  "  
 echo "$text_md | expert-nmap-udp . doing scan udp at host or range  "  
@@ -4948,8 +4951,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "install" ]; then 
-echo "$title_md $text_ok       Installing:  $cmd_file"
-echo "$title_md $text_ok          Version:  $cmd_version"
+echo "$text_md $text_md       Installing:  $cmd_file"
+echo "$text_md $text_md          Version:  $cmd_version"
 ####
 ####
 ####  english: copy the file to temporal folder and install
@@ -4973,32 +4976,32 @@ $cmd_directory/$cmd_file config-regen &> /dev/null
 ####   spanish: Muestra el estatus final desde el instalador
 ####
 ####
-echo "$title_md $text_ok The Command file:  $cmd_directory/$cmd_file"
-echo "$title_md $text_ok The  config  dir:  $directory_data_necesary"
-echo "$title_md $text_ok The   cache  dir:  $default_directory_cache"
+echo "$text_md $text_md The Command file:  $cmd_directory/$cmd_file"
+echo "$text_md $text_md The  config  dir:  $directory_data_necesary"
+echo "$text_md $text_md The   cache  dir:  $default_directory_cache"
 exit; fi
 ####
 ####
 #### :rutina-final-install:
-##########    english: expert-gen-files: generate installed respository   ##########
-##########    spanish: expert-gen-files: genera instalado respositorio    ##########
-#### :rutina-inicial-expert-gen-files:
+##########    english: expert-gen-readme: generate installed respository   ##########
+##########    spanish: expert-gen-readme: genera instalado respositorio    ##########
+#### :rutina-inicial-expert-gen-readme:
 ####
 ####
-if   [ "$first_option" == "expert-gen-files" ]; then 
+if   [ "$first_option" == "expert-gen-readme" ]; then 
 echo "$title_md [ $first_option ]  [ generate actual file and readme ] "
 #### create the file base in repository
-cp $0 $default_directory_gen/fwiptables-version-$cmd_version-bash.sh
-echo "$title_md $text_ok Created $default_directory_gen/fwiptables-version-$cmd_version-bash.sh"
+cp $0 $default_directory_readme/fwiptables_version_$cmd_version
+echo "$title_md $text_ok Created $default_directory_readme/fwiptables_version_$cmd_version"
 #### create the README base in repository
-$default_directory_gen/fwiptables-version-$cmd_version-bash.sh intro > $default_directory_gen/README
-echo "$title_md $text_ok Created $default_directory_gen/README "
-$default_directory_gen/fwiptables-version-$cmd_version-bash.sh intro > $default_directory_gen/README.md
-echo "$title_md $text_ok Created $default_directory_gen/README.md"
+$default_directory_readme/fwiptables_version_$cmd_version intro > $default_directory_readme/README
+echo "$title_md $text_ok Created $default_directory_readme/README "
+$default_directory_readme/fwiptables_version_$cmd_version  intro > $default_directory_readme/README.md
+echo "$title_md $text_ok Created $default_directory_readme/README.md"
 exit; fi
 ####
 ####
-#### :rutina-final-expert-gen-files:
+#### :rutina-final-expert-gen-readme:
 ##########    english: expert-gen-deb: generate installed respository   ##########
 ##########    spanish: expert-gen-deb: genera instalado respositorio    ##########
 #### :rutina-inicial-expert-gen-deb:
@@ -5006,24 +5009,30 @@ exit; fi
 ####
 if   [ "$first_option" == "expert-gen-deb" ]; then
 echo "$title_md [ $first_option ]  [ generate actual file debian ] "
-#### crea la estructura de directorios
-mkdir -p $default_directory_gen/deb/usr/bin
-mkdir -p $default_directory_gen/deb/DEBIAN
-#### crea el archivo control
-echo "Package: fwiptables"      &>  $default_directory_gen/deb/DEBIAN/control
-echo "Priority: optional"       &>> $default_directory_gen/deb/DEBIAN/control
-echo "Section: misc"            &>> $default_directory_gen/deb/DEBIAN/control
-echo "Maintainer: f-iptables"   &>> $default_directory_gen/deb/DEBIAN/control
-echo "Architecture: all"        &>> $default_directory_gen/deb/DEBIAN/control
-echo "Version: $cmd_version"    &>> $default_directory_gen/deb/DEBIAN/control
-echo "Depends: "                &>> $default_directory_gen/deb/DEBIAN/control
-echo "Description: $cmd_shortdescription ." &>> $default_directory_gen/deb/DEBIAN/control
-echo " $cmd_longdescription ."  &>> $default_directory_gen/deb/DEBIAN/control
-#### empaqueta el archivo
-chown root:root $default_directory_gen/* -R 
-chmod 755 $default_directory_gen/* -R
-$command_dpkg -b $default_directory_gen/deb/ $default_directory_gen/fwiptables-version-$cmd_version.deb && \
-echo "$text_md $text_ok file write in $default_directory_gen/fwiptables-version-$cmd_version.deb "
+#### recreate the directories
+rm -R $default_directory_debian/deb/usr/bin &> /dev/null
+rm -R $default_directory_debian/deb/DEBIAN &> /dev/null
+mkdir -p $default_directory_debian/deb/usr/bin &> /dev/null
+mkdir -p $default_directory_debian/deb/DEBIAN &> /dev/null
+#### create the control file
+echo "Package: fwiptables"      &>  $default_directory_debian/deb/DEBIAN/control
+echo "Priority: optional"       &>> $default_directory_debian/deb/DEBIAN/control
+echo "Section: misc"            &>> $default_directory_debian/deb/DEBIAN/control
+echo "Maintainer: f-iptables"   &>> $default_directory_debian/deb/DEBIAN/control
+echo "Architecture: all"        &>> $default_directory_debian/deb/DEBIAN/control
+echo "Version: $cmd_version"    &>> $default_directory_debian/deb/DEBIAN/control
+echo "Depends: "                &>> $default_directory_debian/deb/DEBIAN/control
+echo "Description: $cmd_shortdescription ." &>> $default_directory_debian/deb/DEBIAN/control
+echo " $cmd_longdescription ."  &>> $default_directory_debian/deb/DEBIAN/control
+#### it are file modes
+chown root:root $default_directory_debian/* -R  &> /dev/null
+chmod 755 $default_directory_debian/* -R &> /dev/null
+#### it does the debian package
+$command_dpkg -b $default_directory_debian/deb/ $default_directory_debian/fwiptables_noarch_$cmd_version.deb && \
+echo "$text_md $text_ok file write in $default_directory_debian/fwiptables_noarch_$cmd_version.deb "
+#### delette the directories
+rm -R $default_directory_debian/deb/usr/bin &> /dev/null
+rm -R $default_directory_debian/deb/DEBIAN  &> /dev/null
 ####
 ####
 exit; fi
@@ -5323,7 +5332,7 @@ if [ "$command_obash" == "$NULL" ]
 then echo "$title_md install obash to compile"; exit ; fi
 if [ "$command_uuid" == "$NULL" ]
 then echo "$title_md install uuid to compile"; exit ; fi
-obash_file_date="$default_directory_obash/$cmd_basename"
+obash_file_date="$default_directory_obash/$cmd_basename-$cmd_version"
 cp $cmd_realpath $obash_file_date.bash
 $command_obash -r -c -o $obash_file_date.bin $obash_file_date.bash
 echo ; echo "$title_md And now list:"
