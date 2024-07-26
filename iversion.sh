@@ -675,7 +675,7 @@ fi
 ####
 ####
 if [ "$command_file" == "$NULL" ] || [ "$command_awk" == "$NULL" ]; then exit ;
-else cmd_format="$($command_file $0 | $command_awk '{print $3}')" ; fi
+else cmd_format="$($command_file $0 | $command_awk '{print $2 "_" $3}')" ; fi
 ####
 ####
 #### :rutina-final-sane-variables-basics:
