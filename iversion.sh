@@ -62,32 +62,6 @@ echo ; exit ; fi
 ####
 ####
 #### :rutina-final-admin:
-##########    english: #### use sudo to logname xhosts    ##########
-#### :rutina-inicial-sudo:
-####
-####
-command_sudo="$(command -v sudo)"
-if [ "$command_sudo" == "$NULL" ] ; then echo ; echo
-echo "### $text_fail [ fwiptables needs sudo to works in graphics xorg/wayland ]"
-echo ; exit ; else command_sudo="$(command -v sudo) --login"; fi
-####
-####
-#### :rutina-final-sudo:
-##########    english: iptables support         ##########
-##########    spanish: iptables soporte         ##########
-#### :rutina-inicial-support-iptables:
-####
-####
-command_iptableslegacy="$(command -v iptables-legacy)"
-command_iptablesnft="$(command -v iptables-nft)"
-####
-####
-if [ "$command_iptableslegacy" == "$NULL" ] && [ "$command_iptablesnft" == "$NULL" ];
-then echo ; echo ; echo "### $text_fail [ fwiptables needs to work iptables legacy/nft ]"
-echo ; fi
-####
-####
-#### :rutina-final-support-iptables:
 ##########     english name, description and version    ##########
 ##########     spanish: nombre, descripcion y version   ##########
 #### :rutina-inicial-enviroment:
@@ -139,6 +113,147 @@ git_download_sourceforge=\
 ####
 ####
 #### :rutina-final-enviroment:
+##########   english: search programs: programs path           ##########
+##########   spanish: busca los programas: ruta de programas   ##########
+#### :rutina-inicial-possible-commands:
+####
+####
+command_arp="$(command -v arp)"
+command_arpscan="$(command -v arp-scan)"
+command_arptables="$(command -v arptables)"
+command_awk="$(command -v awk)"
+command_bash="$(command -v bash)"
+command_bc="$(command -v bc)"
+command_convert="$(command -v convert)"
+command_cpufreqinfo="$(command -v cpufreq-info)"
+command_cpupower="$(command -v cpupower)"
+command_curl="$(command -v curl)"
+command_cut="$(command -v cut)"
+command_date="$(command -v date)"
+command_dd="$(command -v dd)"
+command_dhclient="$(command -v dhclient)"
+command_dhclientscript="$(command -v dhclient-script)"
+command_dhcpcd="$(command -v dhcpcd)"
+command_dialog="$(command -v dialog)"
+command_dig="$(command -v dig)"
+command_dpkg="$(command -v dpkg)"
+command_ebtables="$(command -v ebtables)"
+command_editor="$(command -v editor)"
+command_egrep="$(command -v egrep)"
+command_elinks="$(command -v elinks)"
+command_file="$(command -v file)"
+command_find="$(command -v find)"
+command_fmt="$(command -v fmt)"
+command_geoiplookup="$(command -v geoiplookup)"
+command_glxgears="$(command -v glxgears)"
+command_gpg="$(command -v gpg)"
+command_grep="$(command -v grep)"
+command_halt="$(command -v halt)"
+command_host="$(command -v host)"
+command_ifconfig="$(command -v ifconfig)"
+command_init="$(command -v init)"
+command_ip="$(command -v ip)"
+command_iptableslegacy="$(command -v iptables-legacy)"
+command_iptablesnft="$(command -v iptables-nft)"
+command_ip6tableslegacy="$(command -v ip6tables-legacy)"
+command_ip6tablesnft="$(command -v ip6tables-nft)"
+command_iperf="$(command -v iperf)"
+command_iperf3="$(command -v iperf3)"
+command_iptableslegacy="$(command -v iptables-legacy)"
+command_iptablesnft="$(command -v iptables-nft)"
+command_iw="$(command -v iw)"
+command_links="$(command -v links)"
+command_links2="$(command -v links2)"
+command_logname="$(command -v logname)"
+command_lpinfo="$(command -v lpinfo)"
+command_lpstat="$(command -v lpstat)"
+command_ls="$(command -v ls)"
+command_lsblk="$(command -v lsblk)"
+command_lscpu="$(command -v lscpu)"
+command_lsgpu="$(command -v lsgpu)"
+command_lshw="$(command -v lshw)"
+command_lsof="$(command -v lsof)"
+command_lspci="$(command -v lspci)"
+command_lsusb="$(command -v lsusb)"
+command_lynx="$(command -v lynx)"
+command_m2r="$(command -v m2r)"
+command_md5sum="$(command -v md5sum)"
+command_mdp="$(command -v mdp)"
+command_mpg123="$(command -v mpg123)"
+command_mpg123="$(command -v mpg123)"
+command_mpg321="$(command -v mpg321)"
+command_mpg321="$(command -v mpg321)"
+command_nano="$(command -v nano)"
+command_netstat="$(command -v netstat)"
+command_netstatnat="$(command -v netstat-nat)"
+command_nmap="$(command -v nmap)"
+command_ntpdate="$(command -v ntpdate)"
+command_obash="$(command -v obash)"
+command_openssl="$(command -v openssl)"
+command_pico="$(command -v pico)"
+command_ping="$(command -v ping)"
+command_poweroff="$(command -v poweroff)"
+command_rdate="$(command -v rdate)"
+command_readlink="$(command -v readlink)"
+command_reboot="$(command -v reboot)"
+command_resolveip="$(command -v resolveip)"
+command_route="$(command -v route)"
+command_sed="$(command -v sed)"
+command_shutdown="$(command -v shutdown)"
+command_sleep="$(command -v sleep)"
+command_sntp="$(command -v sntp) -S"
+command_ss="$(command -v ss)"
+command_sudo="$(command -v sudo)"
+command_sysctl="$(command -v sysctl)"
+command_systemctl="$(command -v systemctl)"
+command_tar="$(command -v tar)"
+command_tcpdump="$(command -v tcpdump)"
+command_tee="$(command -v tee)"
+command_timeout="$(command -v timeout)"
+command_torify="$(command -v torify)"
+command_tracepath="$(command -v tracepath)"
+command_traceroute="$(command -v traceroute)"
+command_tree="$(command -v tree)"
+command_tree="$(command -v tree)"
+command_txt2html="$(command -v txt2html)"
+command_uname="$(command -v uname)"
+command_uuid="$(command -v uuid)"
+command_vi="$(command -v vi)"
+command_vim="$(command -v vim)"
+command_vlc="$(command -v vlc) -I dummy -d"
+command_w3m="$(command -v w3m)"
+command_wget="$(command -v wget)"
+command_whiptail="$(command -v whiptail)"
+command_wpapassphrase="$(command -v wpa_passphrase)"
+command_wpasupplicant="$(command -v wpa_supplicant)"
+command_xhost="$(command -v xhost)"
+command_xrandr="$(command -v xrandr)"
+command_yad="$(command -v yad)"
+command_zenity="$(command -v zenity)"
+command_zgrep="$(command -v zgrep)"
+####
+####
+#### :rutina-final-possible-commands:
+##########   english: necesary programs: programs path           ##########
+##########   spanish: necesarios programas: ruta de programas    ##########
+#### :rutina-inicial-necesary-commands:
+####
+####
+case "$NULL" in
+$command_sudo) echo " program sudo is necesary to work $cmd_basename, \
+please install sudo" ; exit ;;
+$command_iptablesnft) echo " program iptables-nft is necesary to work $cmd_basename, \
+please install iptables-nft" ; exit ;;
+$command_iptableslegacy) echo " program iptables-legacy is necesary to work $cmd_basename, \
+please install iptables-legacy" ; exit ;;
+$command_awk) echo " program awk is necesary to work $cmd_basename, \
+please install awk" ; exit ;;
+$command_sed) echo " program sed is necesary to work $cmd_basename, \
+please install sed" ; exit ;;
+esac
+####
+####
+#### :rutina-final-necesary-commands:
 ##########    english: options priority        ##########
 ##########    spanish: prioridad de opciones   ##########
 #### :rutina-inicial-order-options:
@@ -196,123 +311,6 @@ else $command_sudo -u 0 $command_xhost +SI:localuser:root &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-x11-or-wayland:
-##########   english: search programs: programs path           ##########
-##########   spanish: busca los programas: ruta de programas   ##########
-#### :rutina-inicial-command:
-####
-####
-command_arp="$(command -v arp)"
-command_arpscan="$(command -v arp-scan)"
-command_arptables="$(command -v arptables)"
-command_awk="$(command -v awk)"
-command_bash="$(command -v bash)"
-command_bc="$(command -v bc)"
-command_convert="$(command -v convert)"
-command_cpufreqinfo="$(command -v cpufreq-info)"
-command_cpupower="$(command -v cpupower)"
-command_curl="$(command -v curl)"
-command_cut="$(command -v cut)"
-command_date="$(command -v date)"
-command_dd="$(command -v dd)"
-command_dhclient="$(command -v dhclient)"
-command_dhclientscript="$(command -v dhclient-script)"
-command_dhcpcd="$(command -v dhcpcd)"
-command_dialog="$(command -v dialog)"
-command_dig="$(command -v dig)"
-command_dpkg="$(command -v dpkg)"
-command_ebtables="$(command -v ebtables)"
-command_editor="$(command -v editor)"
-command_egrep="$(command -v egrep)"
-command_elinks="$(command -v elinks)"
-command_file="$(command -v file)"
-command_find="$(command -v find)"
-command_fmt="$(command -v fmt)"
-command_geoiplookup="$(command -v geoiplookup)"
-command_glxgears="$(command -v glxgears)"
-command_gpg="$(command -v gpg)"
-command_grep="$(command -v grep)"
-command_halt="$(command -v halt)"
-command_host="$(command -v host)"
-command_ifconfig="$(command -v ifconfig)"
-command_init="$(command -v init)"
-command_ip="$(command -v ip)"
-command_ip6tableslegacy="$(command -v ip6tables-legacy)"
-command_ip6tablesnft="$(command -v ip6tables-nft)"
-command_iperf="$(command -v iperf)"
-command_iperf3="$(command -v iperf3)"
-command_iptableslegacy="$(command -v iptables-legacy)"
-command_iptablesnft="$(command -v iptables-nft)"
-command_iw="$(command -v iw)"
-command_links="$(command -v links)"
-command_links2="$(command -v links2)"
-command_logname="$(command -v logname)"
-command_lpinfo="$(command -v lpinfo)"
-command_lpstat="$(command -v lpstat)"
-command_ls="$(command -v ls)"
-command_lsblk="$(command -v lsblk)"
-command_lscpu="$(command -v lscpu)"
-command_lsgpu="$(command -v lsgpu)"
-command_lshw="$(command -v lshw)"
-command_lsof="$(command -v lsof)"
-command_lspci="$(command -v lspci)"
-command_lsusb="$(command -v lsusb)"
-command_lynx="$(command -v lynx)"
-command_m2r="$(command -v m2r)"
-command_md5sum="$(command -v md5sum)"
-command_mdp="$(command -v mdp)"
-command_mpg123="$(command -v mpg123)"
-command_mpg123="$(command -v mpg123)"
-command_mpg321="$(command -v mpg321)"
-command_mpg321="$(command -v mpg321)"
-command_nano="$(command -v nano)"
-command_netstat="$(command -v netstat)"
-command_netstatnat="$(command -v netstat-nat)"
-command_nmap="$(command -v nmap)"
-command_ntpdate="$(command -v ntpdate)"
-command_obash="$(command -v obash)"
-command_openssl="$(command -v openssl)"
-command_pico="$(command -v pico)"
-command_ping="$(command -v ping)"
-command_poweroff="$(command -v poweroff)"
-command_rdate="$(command -v rdate)"
-command_readlink="$(command -v readlink)"
-command_reboot="$(command -v reboot)"
-command_resolveip="$(command -v resolveip)"
-command_route="$(command -v route)"
-command_sed="$(command -v sed)"
-command_shutdown="$(command -v shutdown)"
-command_sleep="$(command -v sleep)"
-command_sntp="$(command -v sntp) -S"
-command_ss="$(command -v ss)"
-command_sysctl="$(command -v sysctl)"
-command_systemctl="$(command -v systemctl)"
-command_tar="$(command -v tar)"
-command_tcpdump="$(command -v tcpdump)"
-command_tee="$(command -v tee)"
-command_timeout="$(command -v timeout)"
-command_torify="$(command -v torify)"
-command_tracepath="$(command -v tracepath)"
-command_traceroute="$(command -v traceroute)"
-command_tree="$(command -v tree)"
-command_tree="$(command -v tree)"
-command_txt2html="$(command -v txt2html)"
-command_uname="$(command -v uname)"
-command_uuid="$(command -v uuid)"
-command_vi="$(command -v vi)"
-command_vim="$(command -v vim)"
-command_vlc="$(command -v vlc) -I dummy -d"
-command_w3m="$(command -v w3m)"
-command_wget="$(command -v wget)"
-command_whiptail="$(command -v whiptail)"
-command_wpapassphrase="$(command -v wpa_passphrase)"
-command_wpasupplicant="$(command -v wpa_supplicant)"
-command_xrandr="$(command -v xrandr)"
-command_yad="$(command -v yad)"
-command_zenity="$(command -v zenity)"
-command_zgrep="$(command -v zgrep)"
-####
-####
-#### :rutina-final-command:
 ##########  english: files:    files and folders from fwiptables          ##########
 ##########  spanish: archivos: archivos y carpetas desde fwiptables       ##########
 #### :rutina-inicial-files:
