@@ -4995,8 +4995,8 @@ exit; fi
 if   [ "$first_option" == "expert-gen-readme" ]; then 
 echo "$title_md [ $first_option ]  [ generate actual file and readme ] "
 #### create the file base in repository
-cp $0 $default_directory_readme/fwiptables_version_$cmd_version
-echo "$title_md $text_ok Created $default_directory_readme/fwiptables_version_$cmd_version"
+cp $0 $default_directory_readme/fwiptables-version-$cmd_version
+echo "$title_md $text_ok Created $default_directory_readme/fwiptables-version-$cmd_version"
 #### create the README base in repository
 $default_directory_readme/fwiptables_version_$cmd_version intro > $default_directory_readme/README
 echo "$title_md $text_ok Created $default_directory_readme/README "
@@ -5032,8 +5032,8 @@ echo " $cmd_longdescription ."  &>> $default_directory_debian/deb/DEBIAN/control
 chown root:root $default_directory_debian/* -R  &> /dev/null
 chmod 755 $default_directory_debian/* -R &> /dev/null
 #### it does the debian package
-$command_dpkg -b $default_directory_debian/deb/ $default_directory_debian/fwiptables_noarch_$cmd_version.deb && \
-echo "$text_md $text_ok file write in $default_directory_debian/fwiptables_noarch_$cmd_version.deb "
+$command_dpkg -b $default_directory_debian/deb/ $default_directory_debian/fwiptables-$cmd_format-$cmd_version.deb && \
+echo "$text_md $text_ok file write in $default_directory_debian/fwiptables-$cmd_format-$cmd_version.deb "   
 #### delette the directories
 rm -R $default_directory_debian/deb/usr/bin &> /dev/null
 rm -R $default_directory_debian/deb/DEBIAN  &> /dev/null
@@ -5336,6 +5336,8 @@ if [ "$command_obash" == "$NULL" ]
 then echo "$title_md install obash to compile"; exit ; fi
 if [ "$command_uuid" == "$NULL" ]
 then echo "$title_md install uuid to compile"; exit ; fi
+if [ "$cmd_format" != "Bourne-Again_shell" ]
+then echo "$title_md the $cmd_name is not Bourne-Again_shell"; exit ; fi
 obash_file_date="$default_directory_obash/$cmd_basename-$cmd_version"
 cp $cmd_realpath $obash_file_date.bash
 $command_obash -r -c -o $obash_file_date.bin $obash_file_date.bash
