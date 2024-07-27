@@ -748,16 +748,16 @@ if [ "$command_vim"  != "$NULL" ]  ; then
 favorite_text_editor="$command_vim"     ; fi
 ####
 ####
-if [ "$command_nano"  != "$NULL" ] ; then   
-favorite_text_editor="$command_nano"    ; fi
-####
-####
 if [ "$command_pico" != "$NULL" ] ; then  
 favorite_text_editor="$command_pico"    ; fi
 ####
 ####
 if [ "$command_editor" != "$NULL" ] ; then  
 favorite_text_editor="$command_editor"  ; fi
+####
+####
+if [ "$command_nano"  != "$NULL" ] ; then   
+favorite_text_editor="$command_nano"    ; fi
 ####
 ####
 fi
@@ -1164,7 +1164,7 @@ esac ;
 ####
 ####
 case "$first_option" in
-"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
 $cmd_realpath templates-regen &> /dev/null ;; esac
@@ -1173,7 +1173,7 @@ $cmd_realpath templates-regen &> /dev/null ;; esac
 if [ "$first_option" == "txt" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
-"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath $second_option $third_option ; exit ;; esac ; fi
 ####
@@ -1181,7 +1181,7 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 if [ "$first_option" == "narrowtxt" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
-"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath $second_option $third_option ; exit ;; esac ; fi
 ####
@@ -1189,7 +1189,7 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 if [ "$first_option" == "cli" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
-"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath $second_option $third_option ; exit ;; esac ; fi
 ####
@@ -1198,7 +1198,7 @@ if [ "$first_option" == "gui" ]; then
 case "$second_option" in
 #### "$NULL"|"options") 
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
-"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath templates-regen  &> /dev/null ;; esac ; fi
 ####
@@ -1206,7 +1206,7 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 if [ "$first_option" == "logtxt" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
-"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath templates-regen  &> /dev/null ; exit ;; esac ; fi
 ####
@@ -1214,7 +1214,7 @@ expert-*) echo "the commands expert works only wihtout optional output." ; exit 
 if [ "$first_option" == "pdf" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
-"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath templates-regen  &> /dev/null ; exit ;; esac ; fi
 ####
@@ -1222,7 +1222,7 @@ expert-*) echo "the commands expert works only wihtout optional output." ; exit 
 if [ "$first_option" == "null" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
-"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath templates-regen  &> /dev/null ; exit ;; esac; fi
 ####
@@ -1740,7 +1740,7 @@ echo "$title_md $title_md Allow expert commands for default"
 echo "allow_expert_commands=                          ## or void for yes or no"
 echo "$title_md" 
 echo "$title_md $title_md default firewall"
-echo "allow_use_legacy=                               ## or void for yes or no"
+echo "allow_use_legacy=no                             ## or void for yes or no"
 echo "allow_use_nft=                                  ## or void for yes or no"
 echo "allow_use_ipv4=                                 ## or void for yes or no"
 echo "allow_use_ipv6=                                 ## or void for yes or no"
@@ -3202,6 +3202,7 @@ echo "$text_md | all-names . list filenames saved in the iptables rules  "
 echo "$text_md | eraserules . remove all firewall rules: ipv4,ipv6,ebtables,arptables  "  
 echo "$text_md | eraserules4 . remove ipv4 firewall rules  "  
 echo "$text_md | eraserules6 . remove ipv6 firewall rules  "  
+echo "$text_md | wizard-tiny . launch a one tiny wizard to run iptables rules  "  
 echo "$text_md | wizard-mini . launch a one mini wizard to run iptables rules  "  
 echo "$text_md | wizard-full . launch a one full wizard to run iptables rules  "  
 echo "$text_md | without-connection . launch a one firewall only for localhost  "  
@@ -3287,8 +3288,10 @@ echo "$title_md | firewall-wallcustom | $cmd_basename firewall-wallcustom |"
 echo "$text_md"
 echo "$text_md | new-full-custom . create new full config in english  "  
 echo "$text_md | new-mini-custom . create new mini config in english  "  
+echo "$text_md | new-tiny-custom . create new tiny config in english  " 
 echo "$text_md | nueva-completa-custom . create new full config in spanish  "  
 echo "$text_md | nueva-mini-custom . create new full config in spanish  "   
+echo "$text_md | nueva-tiny-custom . create new tiny config in spanish  "   
 echo "$text_md | clone-wallsystem . clone a static firewall predesignated  "  
 echo "$text_md | show-custom . show config-file choosed  "   
 echo "$text_md | modify-custom . modify config-file choosed  "  
@@ -4973,7 +4976,7 @@ echo "$text_md  and GUI-ROLL, and GUI-SHELL.              "
 echo "$text_md"
 echo "$text_md From one system firewall to choose one,   "
 echo "$text_md  with eraserules, or template custom,       "
-echo "$text_md  with new wizard-mini or wizard-full,       "  
+echo "$text_md  with new wizards: -tiny -mini -full ,      "  
 echo "$text_md  with added comments rules in firewall.     "
 echo "$text_md"
 echo "$text_md With rules ipv4, rules ipv6, ebtables, arptables,  "
@@ -5629,7 +5632,7 @@ exit; fi
 if [ "$first_option" == "wizard" ]; then echo 
 echo
 echo
-echo Please use wizard-full or use wizard-mini
+echo Please use wizard-full or use wizard-mini or use wizard-tiny
 echo
 echo
 ####
@@ -5638,6 +5641,27 @@ exit; fi
 ####
 ####
 #### :rutina-final-wizard:
+##########    english: wizard-tiny: wizard-tiny      ##########
+##########    spanish: wizard-tiny: mini-asistente   ##########
+#### :rutina-inicial-wizard-tiny:
+####
+####
+if [ "$first_option" == "wizard-tiny" ]; then echo 
+archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-tiny" ; name_firewall="wizard-tiny"
+$cmd_realpath templates-regen
+cp "$default_tinycfg_eng" "$directory_cache_necesary/$cmd_name-$archivo"
+$favorite_text_editor "$directory_cache_necesary/$cmd_name-$archivo"
+clear
+$favorite_realpath_textdialog --clear --title "Run this wizard" \
+--yesno "Run this wizard" 0 0 && clear \
+&& cp "$directory_cache_necesary/$cmd_name-$archivo" \
+"$default_directory_custom/$archivo" && $cmd_realpath loadtiny-custom $archivo || clear
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-wizard-tiny:
 ##########    english: wizard-mini: wizard-mini      ##########
 ##########    spanish: wizard-mini: mini-asistente   ##########
 #### :rutina-inicial-wizard-mini:
@@ -6456,6 +6480,22 @@ $favorite_realpath_graphicalldialog  --text-info \
 --filename=$temporal_guifinal --auto-scroll ;;
 ####
 ####
+"wizard-tiny")
+archivo=wizard-tiny
+cp $default_tinycfg_eng $directory_cache_necesary/$cmd_name-$archivo
+$favorite_realpath_graphicalldialog  --text-info \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--filename=$directory_cache_necesary/$cmd_name-$archivo \
+--editable --title=WIZARD TINY 1> $default_directory_custom/$archivo
+if [  -s $default_directory_custom/$archivo ]; then $nada ; 
+$cmd_realpath -gui load-custom $archivo ; $cmd_realpath -gui list4;
+else rm $default_directory_custom/$archivo ;
+$favorite_realpath_graphicalldialog --info \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--text Ok-$archivo-canceled; fi
+;;
+#### 
+#### 
 "wizard-mini")
 archivo=wizard-mini
 cp $default_minicfg_eng $directory_cache_necesary/$cmd_name-$archivo
