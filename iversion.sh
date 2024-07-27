@@ -1117,7 +1117,7 @@ case "$first_option" in
 "easy")           first_option="options-easy" ;;
 "custom")         first_option="load-custom" ;;
 "examples")       first_option="options-examples" ;;
-"regen")          first_option="config-regen" ;;
+"regen")          first_option="templates-regen" ;;
 "expert")         first_option="options-expert" ;;
 "ver")            first_option="version" ;;
 "client-squid")   first_option="client-proxy" ;;
@@ -1167,7 +1167,7 @@ case "$first_option" in
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
-$cmd_realpath config-regen &> /dev/null ;; esac
+$cmd_realpath templates-regen &> /dev/null ;; esac
 ####
 ####
 if [ "$first_option" == "txt" ]; then 
@@ -1200,7 +1200,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom") $cmd_realpath config-regen  &> /dev/null ;; esac ; fi
+"modify-custom") $cmd_realpath templates-regen  &> /dev/null ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "logtxt" ]; then 
@@ -1208,7 +1208,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom") $cmd_realpath config-regen  &> /dev/null ; exit ;; esac ; fi
+"modify-custom") $cmd_realpath templates-regen  &> /dev/null ; exit ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "pdf" ]; then 
@@ -1216,7 +1216,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom") $cmd_realpath config-regen  &> /dev/null ; exit ;; esac ; fi
+"modify-custom") $cmd_realpath templates-regen  &> /dev/null ; exit ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "null" ]; then 
@@ -1224,7 +1224,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
 "wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom") $cmd_realpath config-regen  &> /dev/null ; exit ;; esac; fi
+"modify-custom") $cmd_realpath templates-regen  &> /dev/null ; exit ;; esac; fi
 ####
 ####
 #### :rutina-final-alias-config:
@@ -1740,7 +1740,7 @@ echo "$title_md $title_md Allow expert commands for default"
 echo "allow_expert_commands=                          ## or void for yes or no"
 echo "$title_md" 
 echo "$title_md $title_md default firewall"
-echo "allow_use_legacy=no                             ## or void for yes or no"
+echo "allow_use_legacy=                               ## or void for yes or no"
 echo "allow_use_nft=                                  ## or void for yes or no"
 echo "allow_use_ipv4=                                 ## or void for yes or no"
 echo "allow_use_ipv6=                                 ## or void for yes or no"
@@ -2414,12 +2414,14 @@ exit; fi
 ####
 ####
 #### :rutina-final-notes:
-##########   english: config-regen: config-regen template wizard files       ##########
-##########   spanish: config-regen: config-regenera template wizard archivos ##########
-#### :rutina-inicial-config-regen:
+##########   english: templates-regen: templates-regen template wizard files       ##########
+##########   spanish: templates-regen: templates-regenera template wizard archivos ##########
+#### :rutina-inicial-templates-regen:
 ####
 ####
-if [ "$first_option" == "config-regen" ]; then 
+if [ "$first_option" == "templates-regen" ]; then
+$cmd_realpath template-tiny-es &> $default_minicfg_spa
+$cmd_realpath template-tiny-en &> $default_minicfg_eng
 $cmd_realpath template-mini-es &> $default_minicfg_spa
 $cmd_realpath template-mini-en &> $default_minicfg_eng
 $cmd_realpath template-full-es &> $default_fullcfg_spa
@@ -2427,7 +2429,67 @@ $cmd_realpath template-full-en &> $default_fullcfg_eng
 exit; fi
 ####
 ####
-#### :rutina-final-config-regen:
+#### :rutina-final-templates-regen:
+##########  english:  template-tiny-es: for working sane         ########## 
+##########  spanish:  template-tiny-es: para funcionamiento sano ##########
+#### :rutina-inicial-template-tiny-es:
+####
+####
+if [ "$first_option" == "template-tiny-es" ]; then
+echo "$title_md NETFILTER $title_md "
+echo "$title_md el iptables firewall netfilter, elige uno o dos "
+echo "allow_use_legacy=no "
+echo "$title_md lanza xtables, vacio para si, o escribe no "
+echo "allow_use_nft= "
+echo "$title_md lanza nftables, vacio para si, o escribe no "
+echo "$title_md PROTOCOL IP $title_md "
+echo "$title_md procolo ip, modificar con vacio o no "
+echo "allow_use_ipv4= "
+echo "$title_md varcio para ejecutar el firewall con ipv4 o no para no "
+echo "allow_use_ipv6= "
+echo "$title_md varcio para ejecutar el firewall con ipv6 o no para no "
+echo "$title_md SERVER PORTS $title_md "
+echo "$title_md Puertos Servidor, añadir con ',' y poner rangos con  :"
+echo "server_port_tcp=ssh "
+echo "$title_md puertos tcp para servidor "
+echo "server_port_udp= "
+echo "$title_md puertos udp para servidor "
+echo "$title_md"
+echo "$title_md firewall cliente para todos los puertos"
+exit; fi
+####
+####
+#### :rutina-final-template-tiny-es:
+##########  english:  template-tiny-en: for working sane         ########## 
+##########  spanish:  template-tiny-en: para funcionamiento sano ##########
+#### :rutina-inicial-template-tiny-en:
+####
+####
+if [ "$first_option" == "template-tiny-en" ]; then
+echo "$title_md NETFILTER $title_md "
+echo "$title_md The iptables firewall netfilter, choose one or both  "
+echo "allow_use_legacy=no "
+echo "$title_md lanza xtables, vacio para si, o escribe no "
+echo "allow_use_nft= "
+echo "$title_md lanza nftables, vacio para si, o escribe no "
+echo "$title_md PROTOCOL IP $title_md "
+echo "$title_md procolo ip, modificar con vacio o no "
+echo "allow_use_ipv4= "
+echo "$title_md varcio para ejecutar el firewall con ipv4 o no para no "
+echo "allow_use_ipv6= "
+echo "$title_md varcio para ejecutar el firewall con ipv6 o no para no "
+echo "$title_md SERVER PORTS $title_md "
+echo "$title_md Puertos Servidor, añadir con ',' y poner rangos con  :"
+echo "server_port_tcp=ssh "
+echo "$title_md puertos tcp para servidor "
+echo "server_port_udp= "
+echo "$title_md puertos udp para servidor "
+echo "$title_md"
+echo "$title_md firewall cliente para todos los puertos"
+exit; fi
+####
+####
+#### :rutina-final-template-tiny-en:
 ##########  english:  template-mini-es: for working sane         ########## 
 ##########  spanish:  template-mini-es: para funcionamiento sano ##########
 #### :rutina-inicial-template-mini-es:
@@ -5045,7 +5107,7 @@ chmod 555 "$cmd_directory/$cmd_name" &> /dev/null
 ####
 ####
 $cmd_directory/$cmd_name preferences-regen &> /dev/null
-$cmd_directory/$cmd_name config-regen &> /dev/null
+$cmd_directory/$cmd_name templates-regen &> /dev/null
 ####
 ####
 ####   english: Show final status from installer
@@ -5575,7 +5637,7 @@ exit; fi
 ####
 if [ "$first_option" == "wizard-mini" ]; then echo 
 archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
-$cmd_realpath config-regen
+$cmd_realpath templates-regen
 cp "$default_minicfg_eng" "$directory_cache_necesary/$cmd_name-$archivo"
 $favorite_text_editor "$directory_cache_necesary/$cmd_name-$archivo"
 clear
@@ -5596,7 +5658,7 @@ exit; fi
 ####
 if [ "$first_option" == "wizard-full" ]; then $nada
 archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
-$cmd_realpath config-regen
+$cmd_realpath templates-regen
 cp "$default_fullcfg_eng" "$directory_cache_necesary/$cmd_name-$archivo"
 $favorite_text_editor "$directory_cache_necesary/$cmd_name-$archivo"
 clear
@@ -6901,7 +6963,7 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0616  "$text_md modify-custom" \
 0617  "$text_md del-custom" \
 0618  "$text_md names-custom" \
-0619  "$text_md config-regen" \
+0619  "$text_md templates-regen" \
 0700 "$title_md [ Options Easy ] $title_md" \
 0701  "$text_md preferences-read" \
 0702  "$text_md preferences-modify" \
@@ -7075,7 +7137,7 @@ read -p "Input the custom name to delete # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
 $cmd_realpath del-custom $archivo ;;
 0618) clear ; $cmd_realpath txt names-custom ;;
-0619) clear ; $cmd_realpath txt config-regen ;;
+0619) clear ; $cmd_realpath txt templates-regen ;;
 ################################################################################
 0701) clear ; $cmd_realpath txt preferences-read ;;
 0702) clear ; $cmd_realpath txt preferences-modify ;;
@@ -7377,7 +7439,7 @@ then echo $message_without_guiroll ; exit ; fi
 ####
 gui_menu="gui-principal-menu|gui-info-menu|load-custom|clone-wallsystem|\
 new-full-custom|nueva-completa-custom|new-mini-custom|nueva-mini-custom|\
-names-custom|show-custom|modify-custom|del-custom|config-regen"
+names-custom|show-custom|modify-custom|del-custom|templates-regen"
 selection_menu="$($command_zenity --forms \
 --text=gui-roll-firewall-wallcustom \
 --title=Gui-roll-With-$cmd_basename-$cmd_version \
@@ -7440,7 +7502,7 @@ archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=del-custom --entry-text=cfg-to-delete)" ;
 $cmd_realpath -gui-zenity del-custom $archivo ;;
-config-regen)$cmd_realpath -gui-zenity config-regen ;;
+templates-regen)$cmd_realpath -gui-zenity templates-regen ;;
 esac
 ####
 ####
@@ -7887,7 +7949,7 @@ load-custom|clone-wallsystem|\
 new-full-custom|nueva-completa-custom|\
 new-mini-custom|nueva-mini-custom|\
 names-custom|show-custom|modify-custom|\
-del-custom|config-regen"
+del-custom|templates-regen"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($second_option \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7955,7 +8017,7 @@ del-custom*) archivo="$($second_option --entry \
 --title=del-custom \
 --entry-text=cfg-to-delete)";
 $cmd_realpath gui-$second_option del-custom $archivo ;;
-config-regen*)$cmd_realpath gui-$second_option  config-regen ;;
+templates-regen*)$cmd_realpath gui-$second_option  templates-regen ;;
 esac
 ####
 ####
@@ -12976,48 +13038,42 @@ if [ "$type_firewall" == "input-established" ]; then $cmd_realpath eraserules &>
 #### spanish: legacy ipv4 127.0.0.1 acepta y los otros legacy ipv4 acepta tambien
 ####
 ####
-$allow_use_legacy  $command_iptableslegacy -A INPUT \
+$allow_use_legacy  $allow_use_ipv4 $command_iptableslegacy -A INPUT \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy  $command_iptableslegacy -A INPUT \
+$allow_use_legacy  $allow_use_ipv4 $command_iptableslegacy -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_legacy  $command_iptableslegacy -A OUTPUT \
+$allow_use_legacy $allow_use_ipv4 $command_iptableslegacy -A OUTPUT \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy  $command_iptableslegacy -A OUTPUT \
+$allow_use_legacy $allow_use_ipv4 $command_iptableslegacy -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
-$allow_use_legacy  $command_iptableslegacy -A FORWARD \
+$allow_use_legacy  $allow_use_ipv4 $command_iptableslegacy -A FORWARD \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-### $allow_use_legacy  $command_iptableslegacy -A FORWARD \
-### -j ACCEPT \
-### -m comment --comment all-forward &> /dev/null
 ####
 ####
 #### english: nft ipv4 127.0.0.1 acept and the others nft ipv4 accept too
 #### spanish: nft ipv4 127.0.0.1 acepta y los otros nft ipv4 acepta tambien
 ####
 ####
-$allow_use_nft $command_iptablesnft -A INPUT \
+$allow_use_nft $allow_use_ipv4 $command_iptablesnft -A INPUT \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv4   $command_iptablesnft -A INPUT \
+$allow_use_nft $allow_use_ipv4 $command_iptablesnft -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_nft $allow_use_ipv4   $command_iptablesnft -A OUTPUT \
+$allow_use_nft $allow_use_ipv4 $command_iptablesnft -A OUTPUT \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv4   $command_iptablesnft -A OUTPUT \
+$allow_use_nft $allow_use_ipv4 $command_iptablesnft -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
-$allow_use_nft  $command_iptablesnft -A FORWARD \
+$allow_use_nft   $allow_use_ipv4 $command_iptablesnft -A FORWARD \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-### $allow_use_nft $allow_use_ipv4   $command_iptablesnft -A FORWARD \
-### -j ACCEPT \
-### -m comment --comment all-forward &> /dev/null
 ####
 ####
 ########################################     english: ipv6 iptables input-permisive:
@@ -13028,42 +13084,42 @@ $allow_use_nft  $command_iptablesnft -A FORWARD \
 #### spanish: legacy ipv6 127.0.0.1 acepta y los otros legacy ipv6 acepta tambien
 ####
 ####
-$allow_use_legacy $command_ip6tableslegacy -A INPUT  \
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A INPUT  \
 -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy -A INPUT \
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy -A OUTPUT \
--j ACCEPT \
--m comment --comment all-output &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy -A FORWARD \
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
 -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-### allow_use_legacy $command_ip6tableslegacy -A FORWARD \
-### -j ACCEPT \
-### -m comment --comment all-forward &> /dev/null
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
+-j ACCEPT \
+-m comment --comment all-output &> /dev/null
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A FORWARD \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
 ####
 ####
 #### english: nft ipv6 127.0.0.1 acept and the others nft ipv6 accept too
 #### spanish: nft ipv6 127.0.0.1 acepta y los otros nft ipv6 acepta tambien
 ####
 ####
-$allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A INPUT   \
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A INPUT   \
 -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A INPUT   \
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A INPUT   \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A OUTPUT  \
--j ACCEPT \
--m comment --comment all-output &> /dev/null
-$allow_use_nft $command_ip6tablesnft -A FORWARD \
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
 -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-### $allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A FORWARD \
-### -j ACCEPT \
-### -m comment --comment all-forward &> /dev/null
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT  \
+-j ACCEPT \
+-m comment --comment all-output &> /dev/null
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A FORWARD \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
 ####
 ####
 #### english: ipv6-icmp accept in legacy and accept in nft
