@@ -27,7 +27,7 @@
 ####
 ####
 ####                 ## fwiptables license in source program
-####   English: This program has gpl license GPL v2, LGPL v2, BSD .
+####   English: This program has the license GPL v2, LGPL v2, BSD .
 ####
 ####
 ####                 ## fwiptables comments in source program
@@ -247,16 +247,24 @@ show_actual_date="$($command_date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"
 ####
 ####
 case "$NULL" in
-$command_sudo) echo " program sudo is necesary to work $cmd_basename, \
+$command_sudo)
+echo " program sudo is necesary to work $cmd_basename, \
 please install sudo" ; exit ;;
-$command_iptablesnft) echo " program iptables-nft is necesary to work $cmd_basename, \
+$command_iptablesnft)
+echo " program iptables-nft is necesary to work $cmd_basename, \
 please install iptables-nft" ; exit ;;
-$command_iptableslegacy) echo " program iptables-legacy is necesary to work $cmd_basename, \
+$command_iptableslegacy)
+echo " program iptables-legacy is necesary to work $cmd_basename, \
 please install iptables-legacy" ; exit ;;
-$command_awk) echo " program awk is necesary to work $cmd_basename, \
+$command_awk)
+echo " program awk is necesary to work $cmd_basename, \
 please install awk" ; exit ;;
-$command_sed) echo " program sed is necesary to work $cmd_basename, \
+$command_sed)
+echo " program sed is necesary to work $cmd_basename, \
 please install sed" ; exit ;;
+$command_file)
+echo " program file is necesary to work $cmd_basename, \
+please install file" ; exit ;;
 esac
 ####
 ####
@@ -331,14 +339,14 @@ else $command_sudo -u 0 $command_xhost +SI:localuser:root &> /dev/null ; fi
 ####
 ####
 ####
-#### prepare directory data/cache: config for root 
+#### Prepare directory data/cache: config for root 
 ####
 ####
 if [ "$HOME" == "$NULL" ] ; then default_root_home="/root" 
 else default_root_home="$HOME"; fi
 ####
 ####
-#### prepare directory cache: OR run OR /root/.cache/$cmd_name
+#### Prepare directory cache: OR run OR /root/.cache/$cmd_name
 ####
 ####
 directory_cache_run="/run/$cmd_name"  ### ununsed
@@ -348,13 +356,13 @@ directory_cache_home="$default_root_home/.cache/$cmd_name"
 #### #### variables tree and .cache ####
 ####
 ####
-#### raiz .cache 
+#### Root .cache 
 directory_cache_necesary="$directory_cache_home"
 ####
 ####
-#### raiz .config
+#### Root .config
 directory_data_necesary="$default_root_home/.config/$cmd_name"
-#### tree .config
+#### Tree .config
 default_directory_template="$directory_data_necesary/fwiptables-template"
 default_directory_control="$directory_data_necesary/fwiptables-control"
 default_directory_custom="$directory_data_necesary/fwiptables-custom"
@@ -425,15 +433,15 @@ output_logfinal="$directory_cache_necesary/$show_actual_date-text-final.txt"
 #### :rutina-inicial-dir-sane:
 ####
 ####
-#### cache
+#### cache root
 if [ ! -d "$directory_cache_necesary" ]; then
 $command_mkdir -p $directory_cache_necesary &> /dev/null ; fi
 ####
-#### data
+#### data root
 if [ ! -d "$default_directory_data_necesary" ]; then
 $command_mkdir -p $default_directory_data_necesary &> /dev/null ; fi
 ####
-####
+#### data tree
 if [ ! -d "$default_directory_control" ]; then 
 $command_mkdir -p "$default_directory_control" &> /dev/null ; fi
 if [ ! -d "$default_directory_template" ]; then
@@ -477,8 +485,6 @@ $command_mkdir -p "$default_directory_readme" &> /dev/null ; fi
 allow_expert_commands=""
 without_first_option=""
 launch_rules_firewall="no"
-####
-#### 
 allow_use_legacy=""                       
 allow_use_nft="no"                        
 allow_use_ipv4=""                         
@@ -543,8 +549,6 @@ allow_output_maxconnect="no"     ;
 allow_output_ping="no"     ;
 allow_output_state="no"     ;
 allow_output_uid="no"     ;
-####
-####
 config_string_algoritmo="kpm"
 config_string_denied=".fb.com,.facebook.com,xxx.html" ;
 config_string_allowed="one-string-that-like-how-a-passord,sourceforge.net"  ;
@@ -632,16 +636,23 @@ file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenbla
 ##########    spanish: Actualiza variables          ##########
 #### :rutina-inicial-update-variables:
 ####
-####
+#### Update variables
 if [ -f "$file_default_preferences" ]; then source $file_default_preferences ; fi
 ####
 ####
+#### :rutina-final-update-variables:
+##########    english: Update first option               ##########
+##########    spanish: Actualiza primera opción          ##########
+#### :rutina-inicial-first-option:
+####
+####
+#### First option
 if [ "$first_option" = "$NULL" ] && [ "$without_first_option" = "$NULL" ];
 then first_option="options"; fi 
 if [ "$first_option" = "$NULL" ]; then first_option="$without_first_option" ; fi
 ####
 ####
-#### :rutina-final-update-variables:
+#### :rutina-final-first-option:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
 #### :rutina-inicial-sane-variables-basics:
@@ -677,16 +688,18 @@ else cmd_format="$($command_file $0 | $command_awk '{print $2 "_" $3}')" ; fi
 ####
 ####
 #### :rutina-final-sane-variables-basics:
-####
-####
 ##########      english: search favorite iperf: favorite iperf command        ##########
 ##########      spanish: busca preferida fecha: favorita comando de iperf     ##########
 #### :rutina-inicial-favorite-iperf-command:
 ####
 ####
 if [ "$favorite_iperf_command" == "$NULL" ]; then
+####
+####
 if [ "$command_iperf3"    != "$NULL" ]; then
 favorite_iperf_command="$command_iperf3" ; fi
+####
+####
 if [ "$command_iperf"   != "$NULL" ]; then
 favorite_iperf_command="$command_iperf" ; fi
 ####
@@ -701,12 +714,20 @@ fi
 ####
 ####
 if [ "$favorite_date_command" == "$NULL" ]; then
+####
+####
 if [ "$command_rdate"   != "$NULL" ]; then
 favorite_date_command="$command_rdate -4 -a -n"  ; fi
+####
+####
 if [ "$command_sntp"    != "$NULL" ]; then
 favorite_date_command="$command_sntp"            ; fi
+####
+####
 if [ "$command_ntpdate" != "$NULL" ]; then
 favorite_date_command="$command_ntpdate"         ; fi
+####
+####
 fi
 ####
 ####
@@ -717,16 +738,28 @@ fi
 ####
 ####
 if [ "$favorite_text_editor" == "$NULL" ]; then
+####
+####
 if [ "$command_vi"  != "$NULL" ]  ; then    
 favorite_text_editor="$command_vi"      ; fi
+####
+####
 if [ "$command_vim"  != "$NULL" ]  ; then   
 favorite_text_editor="$command_vim"     ; fi
+####
+####
 if [ "$command_nano"  != "$NULL" ] ; then   
 favorite_text_editor="$command_nano"    ; fi
+####
+####
 if [ "$command_pico" != "$NULL" ] ; then  
 favorite_text_editor="$command_pico"    ; fi
+####
+####
 if [ "$command_editor" != "$NULL" ] ; then  
 favorite_text_editor="$command_editor"  ; fi
+####
+####
 fi
 ####
 ####
@@ -737,14 +770,20 @@ fi
 ####
 ####
 if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
+####
+####
 if [ "$command_dialog"  != "$NULL" ]  ; then  
 favorite_realpath_textdialog="$command_dialog"
 favorite_basename_textdialog="$(basename $command_dialog)"
 fi
+####
+####
 if [ "$command_whiptail" != "$NULL" ] ; then  
 favorite_realpath_textdialog="$command_whiptail"
 favorite_basename_textdialog="$(basename $command_whiptail)"
 fi
+####
+####
 fi
 ####
 ####
@@ -755,14 +794,20 @@ fi
 ####
 ####
 if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
+####
+####
 if [ "$command_zenity"  != "$NULL" ] ; then  
 favorite_realpath_graphicalldialog="$command_zenity"
 favorite_basename_graphicalldialog="$(basename $command_zenity)"
 fi
+####
+####
 if [ "$command_yad"     != "$NULL" ] ; then  
 favorite_realpath_graphicalldialog="$command_yad"
 favorite_basename_graphicalldialog="$(basename $command_yad)"
 fi
+####
+####
 fi
 ####
 ####
@@ -773,16 +818,28 @@ fi
 ####
 ####
 if [ "$favorite_text_browser" == "$NULL" ]; then
+####
+####
 if [ "$command_lynx"   != "$NULL" ] ; then  
 favorite_text_browser="$command_lynx"    ; fi
+####
+####
 if [ "$command_links"  != "$NULL" ] ; then  
 favorite_text_browser="$command_links"   ; fi
+####
+####
 if [ "$command_links2" != "$NULL" ] ; then  
 favorite_text_browser="$command_links2"  ; fi
+####
+####
 if [ "$command_elinks" != "$NULL" ] ; then  
 favorite_text_browser="$command_elinks"  ; fi
+####
+####
 if [ "$command_w3m" != "$NULL" ] ; then  
 favorite_text_browser="$command_w3m"  ; fi
+####
+####
 fi
 ####
 ####
@@ -793,12 +850,20 @@ fi
 ####
 ####
 if [ "$favorite_dhcp_command" == "$NULL" ]; then
+####
+####
 if [ "$command_dhcpcd"  != "$NULL" ]         ; then
 favorite_dhcp_command="$command_dhcpcd"           ; fi
+####
+####
 if [ "$command_dhclientscript" != "$NULL" ] ; then  
 favorite_dhcp_command="$command_dhclientscript"  ; fi
+####
+####
 if [ "$command_dhclient"   != "$NULL" ] ;      then  
 favorite_dhcp_command="$command_dhclient"         ; fi
+####
+####
 fi
 ####
 ####
@@ -809,12 +874,20 @@ fi
 ####
 ####
 if [ "$favorite_date_command" == "$NULL" ]; then
+####
+####
 if [ "$command_rdate"   != "$NULL" ]; then  
 favorite_date_command="$command_rdate -4 -a -n"  ; fi
+####
+####
 if [ "$command_sntp"    != "$NULL" ]; then  
 favorite_date_command="$command_sntp"            ; fi
+####
+####
 if [ "$command_ntpdate" != "$NULL" ]; then  
 favorite_date_command="$command_ntpdate"         ; fi
+####
+####
 fi
 ####
 ####
@@ -825,8 +898,12 @@ fi
 ####
 ####
 if [ "$favorite_text_music" == "$NULL" ]; then
+####
+####
 if [ "$command_vlc" != "$NULL" ]; then  
 favorite_text_music="$command_vlc"     ; fi
+####
+####
 fi
 ####
 ####
