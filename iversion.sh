@@ -684,7 +684,7 @@ fi
 ####
 ####
 if [ "$command_file" == "$NULL" ] || [ "$command_awk" == "$NULL" ]; then exit ;
-else cmd_format="$($command_file $0 | $command_awk '{print $2 "_" $3}')" ; fi
+else cmd_format="$($command_file $0 | $command_awk '{print $2 "_" $3 "_" $4}')" ; fi
 ####
 ####
 #### :rutina-final-sane-variables-basics:
@@ -2317,15 +2317,11 @@ echo "$text_md      Version program: $cmd_version                "
 echo "$text_md    Short description: $cmd_shortdescription       "
 echo "$text_md     Long description: $cmd_longdescription        "
 echo "$text_md     Developer Actual: $cmd_developer              "
-echo "$text_md    Developer Contact: $cmd_contact                "
-echo "$text_md      License program: $cmd_license                "
+echo "$text_md    Developer Contact: $cmd_contact                "         
 echo "$text_md       Data Directory: $directory_data_necesary    "
-echo "$text_md      Cache Directory: $directory_cache_necesary   "
-echo "$text_md          File Format: $cmd_format   "
-#### echo "$text_md     File Preferences:    "
-#### echo "$text_md   $file_default_preferences             "  
-#### echo "$text_md   Fileformat program:    "
-#### echo "$text_md   $($command_file $cmd_realpath)        "
+echo "$text_md      Cache Directory: $directory_cache_necesary   "     
+echo "$text_md          File Format: $cmd_format   "    
+echo "$text_md      License program: $cmd_license     "     
 exit ; fi
 ####
 ####
