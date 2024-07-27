@@ -383,10 +383,12 @@ default_directory_readme="$directory_data_necesary/fwiptables-readme"
 #### spanish: plantillas cfg
 ####
 ####
-default_fullcfg_eng="$default_directory_template/default-full-english.cfg"
-default_fullcfg_spa="$default_directory_template/default-full-spanish.cfg"
+default_tinycfg_eng="$default_directory_template/default-tiny-english.cfg"
+default_tinycfg_spa="$default_directory_template/default-tiny-spanish.cfg"
 default_minicfg_eng="$default_directory_template/default-mini-english.cfg"
 default_minicfg_spa="$default_directory_template/default-mini-spanish.cfg"
+default_fullcfg_eng="$default_directory_template/default-full-english.cfg"
+default_fullcfg_spa="$default_directory_template/default-full-spanish.cfg"
 ####
 ####
 #### english: default config to shell
@@ -2418,8 +2420,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "templates-regen" ]; then
-$cmd_realpath template-tiny-es &> $default_minicfg_spa
-$cmd_realpath template-tiny-en &> $default_minicfg_eng
+$cmd_realpath template-tiny-es &> $default_tinycfg_spa
+$cmd_realpath template-tiny-en &> $default_tinycfg_eng
 $cmd_realpath template-mini-es &> $default_minicfg_spa
 $cmd_realpath template-mini-en &> $default_minicfg_eng
 $cmd_realpath template-full-es &> $default_fullcfg_spa
@@ -2434,6 +2436,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "template-tiny-es" ]; then
+echo "$title_md"
+echo "$title_md firewall como ciente para todos los protocolos y puertos"
+echo "$title_md"
 echo "$title_md NETFILTER $title_md "
 echo "$title_md el iptables firewall netfilter, elige uno o dos "
 echo "allow_use_legacy=no "
@@ -2453,7 +2458,8 @@ echo "$title_md puertos tcp para servidor "
 echo "server_port_udp= "
 echo "$title_md puertos udp para servidor "
 echo "$title_md"
-echo "$title_md firewall cliente para todos los puertos"
+echo "$title_md firewall como ciente para todos los protocolos y puertos"
+echo "$title_md"
 exit; fi
 ####
 ####
@@ -2464,26 +2470,30 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "template-tiny-en" ]; then
+echo "$title_md"
+echo "$title_md firewall like client for all protocols and ports"
+echo "$title_md"
 echo "$title_md NETFILTER $title_md "
 echo "$title_md The iptables firewall netfilter, choose one or both  "
 echo "allow_use_legacy=no "
-echo "$title_md lanza xtables, vacio para si, o escribe no "
+echo "$title_md xtables, void for yes, or no "
 echo "allow_use_nft= "
-echo "$title_md lanza nftables, vacio para si, o escribe no "
+echo "$title_md neftables, void for yes, or no "
 echo "$title_md PROTOCOL IP $title_md "
-echo "$title_md procolo ip, modificar con vacio o no "
+echo "$title_md procol ip, void for yes, or no "
 echo "allow_use_ipv4= "
-echo "$title_md varcio para ejecutar el firewall con ipv4 o no para no "
+echo "$title_md void for yes, or no "
 echo "allow_use_ipv6= "
-echo "$title_md varcio para ejecutar el firewall con ipv6 o no para no "
+echo "$title_md void for yes, or no "
 echo "$title_md SERVER PORTS $title_md "
-echo "$title_md Puertos Servidor, añadir con ',' y poner rangos con  :"
+echo "$title_md server ports, add with , or ranges with :"
 echo "server_port_tcp=ssh "
-echo "$title_md puertos tcp para servidor "
+echo "$title_md tcp port to server"
 echo "server_port_udp= "
-echo "$title_md puertos udp para servidor "
+echo "$title_md udp port to server"
 echo "$title_md"
-echo "$title_md firewall cliente para todos los puertos"
+echo "$title_md firewall like client for all protocols and ports"
+echo "$title_md"
 exit; fi
 ####
 ####
