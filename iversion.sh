@@ -12865,22 +12865,22 @@ if [ "$type_firewall" == "input-permisive" ]; then $cmd_realpath eraserules &> /
 #### spanish: legacy ipv4 127.0.0.1 acepta y los otros legacy ipv4 acepta tambien
 ####
 ####
-$allow_use_legacy  $command_iptableslegacy -A INPUT \
+$allow_use_legacy  $allow_use_ipv4 $command_iptableslegacy -A INPUT \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy  $command_iptableslegacy -A INPUT \
+$allow_use_legacy  $allow_use_ipv4 $command_iptableslegacy -A INPUT \
 -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_legacy  $command_iptableslegacy -A OUTPUT \
+$allow_use_legacy  $allow_use_ipv4 $command_iptableslegacy -A OUTPUT \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy  $command_iptableslegacy -A OUTPUT \
+$allow_use_legacy  $allow_use_ipv4 $command_iptableslegacy -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
-$allow_use_legacy  $command_iptableslegacy -A FORWARD \
+$allow_use_legacy  $allow_use_ipv4 $command_iptableslegacy -A FORWARD \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy  $command_iptableslegacy -A FORWARD \
+$allow_use_legacy  $allow_use_ipv4 $command_iptableslegacy -A FORWARD \
 -j ACCEPT \
 -m comment --comment all-forward &> /dev/null
 ####
@@ -12889,10 +12889,10 @@ $allow_use_legacy  $command_iptableslegacy -A FORWARD \
 #### spanish: nft ipv4 127.0.0.1 acepta y los otros nft ipv4 acepta tambien
 ####
 ####
-$allow_use_nft $command_iptablesnft -A INPUT \
+$allow_use_nft  $allow_use_ipv4 $command_iptablesnft -A INPUT \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv4   $command_iptablesnft -A INPUT \
+$allow_use_nft $allow_use_ipv4 $command_iptablesnft -A INPUT \
 -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
 $allow_use_nft $allow_use_ipv4   $command_iptablesnft -A OUTPUT \
@@ -12901,10 +12901,10 @@ $allow_use_nft $allow_use_ipv4   $command_iptablesnft -A OUTPUT \
 $allow_use_nft $allow_use_ipv4   $command_iptablesnft -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
-$allow_use_nft  $command_iptablesnft -A FORWARD \
+$allow_use_nft  $allow_use_ipv4 $command_iptablesnft -A FORWARD \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv4   $command_iptablesnft -A FORWARD \
+$allow_use_nft $allow_use_ipv4 $command_iptablesnft -A FORWARD \
 -j ACCEPT \
 -m comment --comment all-forward &> /dev/null
 ####
@@ -12917,19 +12917,22 @@ $allow_use_nft $allow_use_ipv4   $command_iptablesnft -A FORWARD \
 #### spanish: legacy ipv6 127.0.0.1 acepta y los otros legacy ipv6 acepta tambien
 ####
 ####
-$allow_use_legacy $command_ip6tableslegacy -A INPUT  \
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A INPUT  \
 -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy -A INPUT \
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A INPUT \
 -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy -A OUTPUT \
--j ACCEPT \
--m comment --comment all-output &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy -A FORWARD \
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT  \
 -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy -A FORWARD \
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
+-j ACCEPT \
+-m comment --comment all-output &> /dev/null
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A FORWARD \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A FORWARD \
 -j ACCEPT \
 -m comment --comment all-forward &> /dev/null
 ####
@@ -12938,19 +12941,22 @@ $allow_use_legacy $command_ip6tableslegacy -A FORWARD \
 #### spanish: nft ipv6 127.0.0.1 acepta y los otros nft ipv6 acepta tambien
 ####
 ####
-$allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A INPUT   \
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A INPUT   \
 -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A INPUT   \
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A INPUT   \
 -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A OUTPUT  \
--j ACCEPT \
--m comment --comment all-output &> /dev/null
-$allow_use_nft $command_ip6tablesnft -A FORWARD \
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT   \
 -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv6   $command_ip6tablesnft -A FORWARD \
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT  \
+-j ACCEPT \
+-m comment --comment all-output &> /dev/null
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A FORWARD \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A FORWARD \
 -j ACCEPT \
 -m comment --comment all-forward &> /dev/null
 ####
@@ -13038,7 +13044,7 @@ if [ "$type_firewall" == "input-established" ]; then $cmd_realpath eraserules &>
 #### spanish: legacy ipv4 127.0.0.1 acepta y los otros legacy ipv4 acepta tambien
 ####
 ####
-$allow_use_legacy  $allow_use_ipv4 $command_iptableslegacy -A INPUT \
+$allow_use_legacy $allow_use_ipv4 $command_iptableslegacy -A INPUT \
 -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 $allow_use_legacy  $allow_use_ipv4 $command_iptableslegacy -A INPUT \
