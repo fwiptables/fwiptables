@@ -3067,8 +3067,8 @@ echo "$text_md listn-security4 listn-security6 listn-alltables                  
 echo "$title_md    firewall-wallcustom                                                  "
 echo "$text_md new-full-custom nueva-completa-custom new-mini-custom                    "
 echo "$text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom                  "
-echo "$text_md clone-wallsystem load-custom show-custom modify-custom                   "
-echo "$text_md del-custom names-custom                                                  "
+echo "$text_md clone-wallsystem load-custom loadtiny-custom show-custom                 "
+echo "$text_md modify-custom del-custom names-custom                                    "
 echo "$title_md    firewall-wallsystem                                                  "
 echo "$text_md client-basic client-web client-ssh client-telnet client-ipp              "
 echo "$text_md client-irc client-git client-vnc client-news client-vpn                  "
@@ -8260,6 +8260,34 @@ fi
 ####
 ####
 #### :rutina-final-load-custom:
+##########   english: loadtiny-custom: firewall      ##########
+##########   spanish: loadtiny-custom: cortafuegos   ##########
+#### :rutina-inicial-loadtiny-custom:
+####
+####
+if [ "$first_option" == "loadtiny-custom" ]
+then echo "$title_md $text_info [ loading firewall wallcustom $second_option ]"
+launch_rules_firewall="yes" ;
+type_firewall="tinycustom" ;
+name_firewall="$second_option" ;
+####
+####
+#### english: configure load-custom variables if there are
+#### spanish: configura variables modificadas si estan ahi
+####
+####
+if [ -f "$default_directory_custom/$second_option" ]
+then source $default_directory_custom/$second_option ; fi
+####
+####
+if [ ! -f "$default_directory_custom/$second_option" ]
+then  $cmd_realpath names-custom ; exit; fi
+####
+####
+fi
+####
+####
+#### :rutina-final-loadtiny-custom:
 ##########    english: ready system rules con its option               ##########
 ##########    spanish: preprara reglas del sistema con sus opciones    ##########
 ####
@@ -13331,33 +13359,431 @@ exit; fi
 ####
 ####
 #### :rutina-final-code-without-connection:
-#############################################################
-#############################################################
+###################################################################
+###################################################################
 ####                                                                                            ###############
-####  ready to launch rules load-custom OR systemfw :
-####  systemfw/customfw rules -
-###############
+#### Launching rules . tinycustom                                                               ###############
 ####                                                                                            ###############
-#############################################################
-#############################################################
+###################################################################
+###################################################################
+####
+####                                                                  ###############
+########################################     english: ipv4 iptables tinycustom:
+########################################     spanish: ipv4 iptables tinycustom
+#### :rutina-inicial-code-tinycustom:
 ####
 ####
-#############################################################
-#############################################################
-####                                                                                            ###############
-####                                                                                            ###############
-####
-####  english: Options for launch rules:     
-####           system firewall load-custom
-####  spanish: Opciones para lanzar reglas:  
-####           firewall del sistema load-custom
-####                                                                                            ###############
-####                                                                                            ###############
-#############################################################
-#############################################################
-#### :rutina-inicial-code-wizard:
+#### legacy ip4
 ####
 ####
+if [ "$type_firewall" == "tinycustom" ]; then $cmd_realpath eraserules &> /dev/null ;
+####
+####
+#### ONLY LOCALHOST
+####
+####
+$allow_use_legacy $allow_use_ipv4 $command_ip4tableslegacy -A INPUT \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A INPUT  \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A INPUT   \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+####
+####
+####################################### english: rules allow server ports with tcp
+####################################### spanish: reglas para permitir puertos servidor tcp
+####
+####
+#### without separate rules
+####
+####
+if [ "$allow_separate_rules" != "$NULL" ]; then 
+####
+####
+#### ipv4 legacy
+####
+$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT  \
+-p tcp -m multiport --dports $server_port_tcp -s $config_ipv4_netserver -j ACCEPT \
+-m comment --comment server-tcp &> /dev/null
+####
+####
+$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
+-p tcp -m multiport --sports $server_port_tcp -d $config_ipv4_netserver -j ACCEPT \
+-m comment --comment server-tcp &> /dev/null
+####
+#### 
+#### ipv4 nft
+####
+$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
+-p tcp -m multiport --dports $server_port_tcp -s $config_ipv4_netserver -j ACCEPT \
+-m comment --comment server-tcp &> /dev/null
+####
+####
+$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
+-p tcp -m multiport --sports $server_port_tcp -d $config_ipv4_netserver -j ACCEPT \
+-m comment --comment server-tcp &> /dev/null
+####
+####
+#### ipv6 legacy
+####
+####
+$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A INPUT  \
+-p tcp -m multiport --dports $server_port_tcp -s $config_ipv6_netserver -j ACCEPT \
+-m comment --comment server-tcp &> /dev/null
+####
+####
+$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
+-p tcp -m multiport --sports $server_port_tcp -d $config_ipv6_netserver -j ACCEPT \
+-m comment --comment server-tcp &> /dev/null
+####
+####
+#### ipv6 nft
+####
+####
+$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A INPUT  \
+-p tcp -m multiport --dports $server_port_tcp -s $config_ipv6_netserver -j ACCEPT \
+-m comment --comment server-tcp &> /dev/null
+####
+####
+$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
+-p tcp -m multiport --sports $server_port_tcp -d $config_ipv6_netserver -j ACCEPT \
+-m comment --comment server-tcp &> /dev/null
+####
+####
+fi
+####
+####
+################ english: rules allow server ports with udp         #######################
+################ spanish: reglas para permitir puertos servidor udp #######################
+####
+####
+if [ "$allow_separate_rules" != "$NULL" ]; then 
+####
+####
+#### ipv4 legacy
+####
+$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT  \
+-p udp -m multiport --dports $server_port_udp -s $config_ipv4_netserver -j ACCEPT \
+-m comment --comment server-udp &> /dev/null
+$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
+-p udp -m multiport --sports $server_port_udp -d $config_ipv4_netserver -j ACCEPT \
+-m comment --comment server-udp &> /dev/null
+####
+#### 
+#### ipv4 nft
+####
+####
+$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
+-p udp -m multiport --dports $server_port_udp -s $config_ipv4_netserver -j ACCEPT \
+-m comment --comment server-udp &> /dev/null
+$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
+-p udp -m multiport --sports $server_port_udp -d $config_ipv4_netserver -j ACCEPT \
+-m comment --comment server-udp &> /dev/null
+####
+####
+#### ipv6 legacy
+####
+####
+$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A INPUT  \
+-p udp -m multiport --dports $server_port_udp -s $config_ipv6_netserver -j ACCEPT \
+-m comment --comment server-udp &> /dev/null
+$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
+-p udp -m multiport --sports $server_port_udp -d $config_ipv6_netserver -j ACCEPT \
+-m comment --comment server-udp &> /dev/null
+####
+####
+#### ipv6 nft
+####
+####
+$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A INPUT  \
+-p udp -m multiport --dports $server_port_udp -s $config_ipv6_netserver -j ACCEPT \
+-m comment --comment server-udp &> /dev/null
+$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
+-p udp -m multiport --sports $server_port_udp -d $config_ipv6_netserver -j ACCEPT \
+-m comment --comment server-udp &> /dev/null
+####
+####
+fi
+####
+####
+#### without separate rules 
+####
+####
+####################################### english: rules allow server ports with tcp
+####################################### spanish: reglas para permitir puertos servidor tcp
+####
+####
+#### with separate rules
+####
+####
+if [ "$allow_separate_rules" == "$NULL" ]; then 
+for one_tcp in $(echo $server_port_tcp | $command_sed 's/,/ /g') ;
+do
+####
+####
+#### ipv4 legacy
+####
+$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT  \
+-p tcp -m multiport --dports $one_tcp -s $config_ipv4_netserver -j ACCEPT \
+-m comment --comment server-tcp &> /dev/null
+$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
+-p tcp -m multiport --sports $one_tcp -d $config_ipv4_netserver -j ACCEPT \
+-m comment --comment server-tcp &> /dev/null
+####
+#### 
+#### ipv4 nft
+####
+$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
+-p tcp -m multiport --dports $one_tcp -s $config_ipv4_netserver -j ACCEPT \
+-m comment --comment server-tcp &> /dev/null
+$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
+-p tcp -m multiport --sports $one_tcp -d $config_ipv4_netserver -j ACCEPT \
+-m comment --comment server-tcp &> /dev/null
+####
+####
+#### ipv6 legacy
+####
+####
+$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A INPUT  \
+-p tcp -m multiport --dports $one_tcp -s $config_ipv6_netserver -j ACCEPT \
+-m comment --comment server-tcp &> /dev/null
+$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
+-p tcp -m multiport --sports $one_tcp -d $config_ipv6_netserver -j ACCEPT \
+-m comment --comment server-tcp &> /dev/null
+####
+####
+#### ipv6 nft
+####
+####
+$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A INPUT  \
+-p tcp -m multiport --dports $one_tcp -s $config_ipv6_netserver -j ACCEPT \
+-m comment --comment server-tcp &> /dev/null
+$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
+-p tcp -m multiport --sports $one_tcp -d $config_ipv6_netserver -j ACCEPT \
+-m comment --comment server-tcp &> /dev/null
+####
+####
+done; fi
+####
+####
+####################################### english: rules allow server ports with udp
+####################################### spanish: reglas para permitir puertos servidor udp
+####
+####
+if [ "$allow_separate_rules" == "$NULL" ]; then 
+for one_udp in $(echo $server_port_udp | $command_sed 's/,/ /g') ;
+do
+####
+####
+#### ipv4 legacy
+####
+$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT  \
+-p udp -m multiport --dports $one_udp -s $config_ipv4_netserver -j ACCEPT \
+-m comment --comment server-udp &> /dev/null
+$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
+-p udp -m multiport --sports $one_udp -d $config_ipv4_netserver -j ACCEPT \
+-m comment --comment server-udp &> /dev/null
+####
+#### 
+#### ipv4 nft
+####
+$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
+-p udp -m multiport --dports $one_udp -s $config_ipv4_netserver -j ACCEPT \
+-m comment --comment server-udp &> /dev/null
+$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
+-p udp -m multiport --sports $one_udp -d $config_ipv4_netserver -j ACCEPT \
+-m comment --comment server-udp &> /dev/null
+####
+####
+#### ipv6 legacy
+####
+####
+$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A INPUT  \
+-p udp -m multiport --dports $one_udp -s $config_ipv6_netserver -j ACCEPT \
+-m comment --comment server-udp &> /dev/null
+$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
+-p udp -m multiport --sports $one_udp -d $config_ipv6_netserver -j ACCEPT \
+-m comment --comment server-udp &> /dev/null
+####
+####
+#### ipv6 nft
+####
+####
+$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A INPUT  \
+-p udp -m multiport --dports $one_udp -s $config_ipv6_netserver -j ACCEPT \
+-m comment --comment server-udp &> /dev/null
+$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
+-p udp -m multiport --sports $one_udp -d $config_ipv6_netserver -j ACCEPT \
+-m comment --comment server-udp &> /dev/null
+####
+####
+done; fi
+####
+####
+#### with separate rules
+####
+####
+####################################### english: THE REST
+####################################### spanish: EL RESTO
+####
+####
+#### english: legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
+#### spanish: legacy ipv4 127.0.0.1 acepta y los otros legacy ipv4 acepta tambien
+####
+####
+$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT \
+-m state --state RELATED,ESTABLISHED -j ACCEPT \
+-m comment --comment state-input &> /dev/null
+$allow_use_legacy $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_legacy $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
+-j ACCEPT \
+-m comment --comment all-output &> /dev/null
+$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A FORWARD \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+####
+####
+#### english: nft ipv4 127.0.0.1 acept and the others nft ipv4 accept too
+#### spanish: nft ipv4 127.0.0.1 acepta y los otros nft ipv4 acepta tambien
+####
+####
+$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
+-m state --state RELATED,ESTABLISHED -j ACCEPT \
+-m comment --comment state-input &> /dev/null
+$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
+-j ACCEPT \
+-m comment --comment all-output &> /dev/null
+$allow_use_nft   $allow_use_ipv4 $command_ip4tablesnft -A FORWARD \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+####
+####
+########################################     english: ipv6 iptables input-permisive:
+########################################     spanish: ipv6 iptables todo permisivo
+####
+####
+#### english: legacy ipv6 127.0.0.1 acept and the others legacy ipv6 accept too
+#### spanish: legacy ipv6 127.0.0.1 acepta y los otros legacy ipv6 acepta tambien
+####
+####
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A INPUT \
+-m state --state RELATED,ESTABLISHED -j ACCEPT \
+-m comment --comment state-input &> /dev/null
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
+-j ACCEPT \
+-m comment --comment all-output &> /dev/null
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A FORWARD \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+####
+####
+#### english: nft ipv6 127.0.0.1 acept and the others nft ipv6 accept too
+#### spanish: nft ipv6 127.0.0.1 acepta y los otros nft ipv6 acepta tambien
+####
+####
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A INPUT   \
+-m state --state RELATED,ESTABLISHED -j ACCEPT \
+-m comment --comment state-input &> /dev/null
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT  \
+-j ACCEPT \
+-m comment --comment all-output &> /dev/null
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A FORWARD \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+####
+####
+#### english: ipv6-icmp accept in legacy and accept in nft
+#### spanish: ipv6-icmp acepta en legacy y acepta en nft
+####
+####
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy \
+-A INPUT -p ipv6-icmp -j ACCEPT \
+-m comment --comment nexthop-ip6 &> /dev/null
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy \
+-A OUTPUT -p ipv6-icmp -j ACCEPT \
+-m comment --comment nexthop-ip6 &> /dev/null
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
+-A INPUT -p ipv6-icmp -j ACCEPT \
+-m comment --comment nexthop-ip6 &> /dev/null
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
+-A OUTPUT -p ipv6-icmp -j ACCEPT \
+-m comment --comment nexthop-ip6 &> /dev/null
+####
+####
+#### english: close with drop legacy and close with drop nft
+#### spanish: cierra con drop legacy y cierra con drop nft
+####
+####
+$allow_use_legacy $command_ip4tableslegacy \
+-A INPUT -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_legacy $command_ip4tableslegacy \
+-A OUTPUT -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_nft $command_ip4tablesnft \
+-A INPUT -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_nft $command_ip4tablesnft \
+-A OUTPUT -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_legacy $command_ip6tableslegacy \
+-A INPUT -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_legacy $command_ip6tableslegacy \
+-A OUTPUT -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_nft $command_ip6tablesnft \
+-A INPUT -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_nft $command_ip6tablesnft \
+-A OUTPUT -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+####
+####
+$allow_use_legacy $command_ip4tableslegacy \
+-A FORWARD -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_nft $command_ip4tablesnft \
+-A FORWARD -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_legacy $command_ip6tableslegacy \
+-A FORWARD -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$allow_use_nft $command_ip6tablesnft \
+-A FORWARD -j $config_close_deny \
+-m comment --comment close-rule &> /dev/null
+####
+####
+echo "$title_md $text_ok [ Launched: firewall ] \
+[ Type: $type_firewall ] [ Name: $name_firewall ]"
+exit; fi
+####
+####
+#### :rutina-final-code-tinycustom:
+###################################################################
+###################################################################
+####                                                                                            ###############
+#### sane rules . load-custom                                                              ###############
+####                                                                                            ###############
+###################################################################
+###################################################################
 ##############################       english: overwrite system varibles with the config cfg
 ##############################       spanish: sobreescribe las variables con la config cfg
 ####
@@ -13397,7 +13823,7 @@ then config_uid_gid="" ; else $nada ; fi
 ###################################################################
 ###################################################################
 ####                                                                                            ###############
-#### Launching rules ..                             ###############
+#### Launching rules . load-custom                                                              ###############
 ####                                                                                            ###############
 ###################################################################
 ###################################################################
