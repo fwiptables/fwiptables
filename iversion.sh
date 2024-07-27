@@ -5031,9 +5031,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "install" ]; then 
-echo "$text_md $text_md       Installing:  $cmd_name"
-echo "$text_md $text_md          Version:  $cmd_version"
-echo "$text_md $text_md           format:  $cmd_format"
+echo "$text_md $text_md        Installing:  $cmd_name"
 ####
 ####
 ####  english: copy the file to temporal folder and install
@@ -5057,9 +5055,14 @@ $cmd_directory/$cmd_name config-regen &> /dev/null
 ####   spanish: Muestra el estatus final desde el instalador
 ####
 ####
-echo "$text_md $text_md The Command file:  $cmd_directory/$cmd_name"
-echo "$text_md $text_md The  config  dir:  $directory_data_necesary"
-echo "$text_md $text_md The   cache  dir:  $directory_cache_necesary"
+echo "$text_md $text_md           Version:  $cmd_version"
+echo "$text_md $text_md            format:  $cmd_format"
+echo "$text_md $text_md              file:  $cmd_directory/$cmd_name"
+echo "$text_md $text_md            config:  $directory_data_necesary"
+echo "$text_md $text_md             cache:  $directory_cache_necesary"
+echo "$text_md $text_md short-description:  $cmd_shortdescription"
+echo "$text_md $text_md  long-description:  $cmd_longdescription"
+echo "$text_md $text_md           license:  $cmd_license"
 exit; fi
 ####
 ####
