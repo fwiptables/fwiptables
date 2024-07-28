@@ -1109,7 +1109,7 @@ esac
 ####
 case "$first_option" in
 "output")         first_option="optional-output"  ;;
-"control")        first_option="firewall-control" ;;
+"control")        first_option="firewall-wallcontrol" ;;
 "listconceptual") first_option="firewall-listconceptual" ;;
 "listnumeral")    first_option="firewall-listnumeral" ;;
 "wallcustom")     first_option="firewall-wallcustom" ;;
@@ -3052,10 +3052,6 @@ echo "$text_md [ t|txt n|narrowtxt l|logtxt c|cli g|gui p|pdf s|silent ]        
 echo "$text_md [ cli-dialog cli-whiptail gui-zenity gui-yad ]                           "
 echo "$text_md [ cli-menu-dialog cli-menu-whiptail gui-roll-zenity ]                    "
 echo "$text_md [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ]          "
-echo "$title_md    firewall-control                                                     "
-echo "$text_md stop continue reset show save load names actual wizard-tiny              "
-echo "$text_md wizard-mini wizard-full eraserules eraserules4 eraserules6               "
-echo "$text_md without-connection input-permisive input-established                     "
 echo "$title_md    firewall-listconceptual                                              "
 echo "$text_md ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6             "
 echo "$text_md list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4             " 
@@ -3064,6 +3060,10 @@ echo "$title_md    firewall-listnumeral                                         
 echo "$text_md lsn4 lsn6 statusn listn-filter4 listn-filter6 listn-nat4                 "
 echo "$text_md listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6             "
 echo "$text_md listn-security4 listn-security6 listn-alltables                          "
+echo "$title_md    firewall-wallcontrol                                                 "
+echo "$text_md stop continue reset show save load names actual wizard-tiny              "
+echo "$text_md wizard-mini wizard-full eraserules eraserules4 eraserules6               "
+echo "$text_md without-connection input-permisive input-established                     "
 echo "$title_md    firewall-wallcustom                                                  "
 echo "$text_md new-full-custom nueva-completa-custom new-mini-custom                    "
 echo "$text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom                  "
@@ -3182,14 +3182,14 @@ exit; fi
 ####
 ####
 #### :rutina-final-free:
-##########    english: firewall-control: options for fwiptables firewall      ##########
-##########    spanish: firewall-control: opciones para fwiptables firewall    ##########
-#### :rutina-inicial-firewall-control:
+##########    english: firewall-wallcontrol: options for fwiptables firewall      ##########
+##########    spanish: firewall-wallcontrol: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-firewall-wallcontrol:
 ####
 ####
-if   [ "$first_option" == "firewall-control" ]; then
+if   [ "$first_option" == "firewall-wallcontrol" ]; then
 echo "$text_md "
-echo "$title_md | firewall-control | $cmd_basename firewall-control |"
+echo "$title_md | firewall-wallcontrol | $cmd_basename firewall-wallcontrol |"
 echo "$text_md"
 echo "$text_md | stop . remove the rules iptables, and save it to then if continue  "  
 echo "$text_md | continue. reset and load latest rules iptables loaded  "  
@@ -3212,7 +3212,7 @@ echo "$text_md "
 exit; fi
 ####
 ####
-#### :rutina-final-firewall-control:
+#### :rutina-final-firewall-wallcontrol:
 ##########    english: firewall-listconceptual: options for fwiptables firewall      ##########
 ##########    spanish: firewall-listconceptual: opciones para fwiptables firewall    ##########
 #### :rutina-inicial-firewall-listconceptual:
@@ -3481,9 +3481,9 @@ if   [ "$first_option" == "info-options" ]; then
 echo "$title_md [ $first_option ]  [ info options ] [ info-options md]"
 echo "$text_md"
 $cmd_realpath optional-output
-$cmd_realpath firewall-control
 $cmd_realpath firewall-listconceptual
 $cmd_realpath firewall-listnumeral
+$cmd_realpath firewall-wallcontrol
 $cmd_realpath firewall-wallcustom
 $cmd_realpath firewall-wallsystem
 $cmd_realpath options-easy
@@ -7052,7 +7052,7 @@ case $menuprincipal in
 ##########
 0010) clear ; $cmd_realpath txt readme  ;;
 0100) clear ; $cmd_realpath txt info-options ;;
-0200) clear ; $cmd_realpath txt firewall-control ;;
+0200) clear ; $cmd_realpath txt firewall-wallcontrol ;;
 0300) clear ; $cmd_realpath txt firewall-listconceptual ;;
 0400) clear ; $cmd_realpath txt firewall-listnumeral ;;
 0500) clear ; $cmd_realpath txt firewall-wallsystem ;;
@@ -7265,7 +7265,7 @@ if [ "$command_zenity" == "$NULL" ] ;
 then echo $message_without_guiroll ; exit ; fi
 ####
 ####
-gui_menu="Info|Firewall-Control|Firewall-List-With-Conceptual|\
+gui_menu="Info|firewall-wallcontrol|Firewall-List-With-Conceptual|\
 Firewall-List-With-Numeral|firewall-wallcustom|\
 firewall-wallsystem|Options-easy"
 selection_menu="$($command_zenity --forms \
@@ -7283,8 +7283,8 @@ case "$selection_final" in
 --info --text=good-bye ; exit ;;
 Info)	
 $cmd_realpath gui-zenity info ; exit ;;
-Firewall-Control)
-$cmd_realpath gui-roll-zenity-firewall-control ; exit ;;
+firewall-wallcontrol)
+$cmd_realpath gui-roll-zenity-firewall-wallcontrol ; exit ;;
 Firewall-List-With-Conceptual)
 $cmd_realpath gui-roll-zenity-firewall-listconceptual ; exit ;;
 Firewall-List-With-Numeral)
@@ -7302,12 +7302,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity:
-##########    english: gui-roll-zenity-firewall-control: gui with roll  ##########
-##########    spanish: gui-roll-zenity-firewall-control: gui con roll   ##########
-#### :rutina-inicial-gui-roll-zenity-firewall-control:
+##########    english: gui-roll-zenity-firewall-wallcontrol: gui with roll  ##########
+##########    spanish: gui-roll-zenity-firewall-wallcontrol: gui con roll   ##########
+#### :rutina-inicial-gui-roll-zenity-firewall-wallcontrol:
 ####
 ####
-if [ "$first_option" == "gui-roll-zenity-firewall-control" ]
+if [ "$first_option" == "gui-roll-zenity-firewall-wallcontrol" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$command_zenity" == "$NULL" ]
 then echo $message_without_guiroll ; exit ; fi
@@ -7318,7 +7318,7 @@ gui_menu="gui-principal-menu|gui-info-menu|\
 eraserules|eraserules4|eraserules6|wizard-mini|wizard-full|\
 without-connection|input-permisive|input-established"
 selection_menu="$($command_zenity --forms \
---text=gui-roll-firewall-control \
+--text=gui-roll-firewall-wallcontrol \
 --title=Gui-roll-With-$cmd_basename-$cmd_version \
 --add-combo=$first_option \
 --combo-values=$gui_menu)"
@@ -7331,7 +7331,7 @@ case "$selection_final" in
 --height=$config_graphicall_height \
 --info --text=good-bye ; exit ;;
 gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
-gui-info-menu)$cmd_realpath -gui-zenity firewall-control ;;
+gui-info-menu)$cmd_realpath -gui-zenity firewall-wallcontrol ;;
 stop)$cmd_realpath -gui-zenity stop
 $cmd_realpath -gui-zenity list4;;
 continue)$cmd_realpath -gui-zenity continue
@@ -7367,7 +7367,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-zenity-firewall-control:
+#### :rutina-final-gui-roll-zenity-firewall-wallcontrol:
 ##########    english: gui-roll-zenity-firewall-listconceptual: gui with roll  ##########
 ##########    spanish: gui-roll-zenity-firewall-listconceptual: gui con roll   ##########
 #### :rutina-inicial-gui-roll-zenity-firewall-listconceptual:
@@ -7746,7 +7746,7 @@ echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
 echo "$title_md The used gui in $first_option is $second_option" ;
 ####
 ####
-gui_menu="Firewall-control|Firewall-listconceptual|\
+gui_menu="firewall-wallcontrol|Firewall-listconceptual|\
 Firewall-listnumeral|Firewall-wallcustom|Firewall-wallsystem|Options-easy|"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($second_option \
@@ -7766,8 +7766,8 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 ####
 case $final in
 1*) exit ;;
-Firewall-control*)
-$cmd_realpath gui-menu-firewall-control $second_option ;;
+firewall-wallcontrol*)
+$cmd_realpath gui-menu-firewall-wallcontrol $second_option ;;
 Firewall-listconceptual*)
 $cmd_realpath gui-menu-firewall-listconceptual $second_option ;;
 Firewall-listnumeral*)
@@ -7785,12 +7785,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu:
-##########    english: gui-menu-firewall-control: gui with menu   ##########
-##########    spanish: gui-menu-firewall-control: gui con menu    ##########
-#### :rutina-inicial-gui-menu-firewall-control:
+##########    english: gui-menu-firewall-wallcontrol: gui with menu   ##########
+##########    spanish: gui-menu-firewall-wallcontrol: gui con menu    ##########
+#### :rutina-inicial-gui-menu-firewall-wallcontrol:
 ####
 ####
-if   [ "$first_option" == "gui-menu-firewall-control" ]
+if   [ "$first_option" == "gui-menu-firewall-wallcontrol" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
 echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
@@ -7820,7 +7820,7 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 case "$final" in
 1*) exit ;;
 gui-principal-menu*) $cmd_realpath gui-menu-$second_option  ;;
-gui-info-menu*)$cmd_realpath gui-$second_option firewall-control ;;
+gui-info-menu*)$cmd_realpath gui-$second_option firewall-wallcontrol ;;
 stop*)$cmd_realpath gui-$second_option stop ;
 $cmd_realpath gui-$second_option list4 ;;
 continue*)$cmd_realpath gui-$second_option continue ;
@@ -7864,7 +7864,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-firewall-control:
+#### :rutina-final-gui-menu-firewall-wallcontrol:
 ##########    english: gui-menu-firewall-listconceptual: gui with menu   ##########
 ##########    spanish: gui-menu-firewall-listconceptual: gui con menu    ##########
 #### :rutina-inicial-gui-menu-firewall-listconceptual:
