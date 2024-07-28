@@ -3435,7 +3435,7 @@ echo "$text_md | expert-speed-cpu . benchmark cpu speed with bc command aprox 5s
 echo "$text_md | expert-speed-glx . benchmark glx speed with mesa3D  " 
 echo "$text_md | expert-add-whitelist4 . add white list for ip4"
 echo "$text_md | expert-add-whitelist6 . add white list for ip6"
-echo "$text_md | expert-upgrade-stable . Upgrade from web sourceforge fwiptables with curl  "  
+echo "$text_md | expert-upgrade-estable . Upgrade from web sourceforge fwiptables with curl  "  
 echo "$text_md | expert-upgrade-unstable . Upgrade from git sourceforge fwiptables with curl  "  
 echo "$text_md | expert-upgrade-adblock . Download blacklist to folder configuration program with curl  " 
 echo "$text_md | expert-gen-deb . generate actual version file in deb  "   
@@ -5418,12 +5418,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-show-newversion:
-##########    english: expert-upgrade-stable: upgrade fwiptables    ##########
-##########    spanish: expert-upgrade-stable: upgrade fwiptables    ##########
-#### :rutina-inicial-expert-upgrade-stable:
+##########    english: expert-upgrade-estable: upgrade fwiptables    ##########
+##########    spanish: expert-upgrade-estable: upgrade fwiptables    ##########
+#### :rutina-inicial-expert-upgrade-estable:
 ####
 ####
-if   [ "$first_option" == "expert-upgrade-stable" ] || [ "$first_option" == "upgrade" ]; then 
+if   [ "$first_option" == "expert-upgrade-estable" ] || [ "$first_option" == "upgrade" ]; then 
 ####
 ####
 if [ "$command_curl" == "$NULL" ]; then
@@ -5437,7 +5437,7 @@ $command_curl $web_download_sourceforge -s -L -o $descarga || echo "Without inte
 exit; fi
 ####
 ####
-#### :rutina-final-expert-upgrade-stable:
+#### :rutina-final-expert-upgrade-estable:
 ##########    english: expert-upgrade-unstable: upgrade fwiptables    ##########
 ##########    spanish: expert-upgrade-unstable: upgrade fwiptables    ##########
 #### :rutina-inicial-expert-upgrade-unstable:
