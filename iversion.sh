@@ -1164,7 +1164,8 @@ esac ;
 ####
 ####
 case "$first_option" in
-"wizard-tiny"|"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
 $cmd_realpath templates-regen &> /dev/null ;; esac
@@ -1173,7 +1174,8 @@ $cmd_realpath templates-regen &> /dev/null ;; esac
 if [ "$first_option" == "txt" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
-"wizard-tiny"|"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath $second_option $third_option ; exit ;; esac ; fi
 ####
@@ -1181,7 +1183,8 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 if [ "$first_option" == "narrowtxt" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
-"wizard-tiny"|"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath $second_option $third_option ; exit ;; esac ; fi
 ####
@@ -1189,7 +1192,8 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 if [ "$first_option" == "cli" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
-"wizard-tiny"|"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath $second_option $third_option ; exit ;; esac ; fi
 ####
@@ -1198,7 +1202,8 @@ if [ "$first_option" == "gui" ]; then
 case "$second_option" in
 #### "$NULL"|"options") 
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
-"wizard-tiny"|"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath templates-regen  &> /dev/null ;; esac ; fi
 ####
@@ -1214,7 +1219,8 @@ expert-*) echo "the commands expert works only wihtout optional output." ; exit 
 if [ "$first_option" == "pdf" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
-"wizard-tiny"|"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath templates-regen  &> /dev/null ; exit ;; esac ; fi
 ####
@@ -1222,7 +1228,8 @@ expert-*) echo "the commands expert works only wihtout optional output." ; exit 
 if [ "$first_option" == "null" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
-"wizard-tiny"|"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath templates-regen  &> /dev/null ; exit ;; esac; fi
 ####
@@ -2437,7 +2444,7 @@ exit; fi
 ####
 if [ "$first_option" == "template-tiny-es" ]; then
 echo "$title_md"
-echo "$title_md firewall como ciente para todos los protocolos y puertos"
+echo "$title_md firewall esta permitido como ciente para todos los protocolos y puertos"
 echo "$title_md"
 echo "$title_md NETFILTER $title_md "
 echo "$title_md el iptables firewall netfilter, elige uno o dos "
@@ -2457,8 +2464,11 @@ echo "server_port_tcp=ssh "
 echo "$title_md puertos tcp para servidor "
 echo "server_port_udp= "
 echo "$title_md puertos udp para servidor "
+echo "$title_md REGLAS GENERALES $title_md "
+echo "$title_md Regla general en tabla "
+echo "allow_separate_rules= "
 echo "$title_md"
-echo "$title_md firewall como ciente para todos los protocolos y puertos"
+echo "$title_md firewall esta permitido como ciente para todos los protocolos y puertos"
 echo "$title_md"
 exit; fi
 ####
@@ -2471,7 +2481,7 @@ exit; fi
 ####
 if [ "$first_option" == "template-tiny-en" ]; then
 echo "$title_md"
-echo "$title_md firewall like client for all protocols and ports"
+echo "$title_md firewall is allowed like client for all protocols and ports"
 echo "$title_md"
 echo "$title_md NETFILTER $title_md "
 echo "$title_md The iptables firewall netfilter, choose one or both  "
@@ -2491,8 +2501,11 @@ echo "server_port_tcp=ssh "
 echo "$title_md tcp port to server"
 echo "server_port_udp= "
 echo "$title_md udp port to server"
+echo "$title_md GENERAL RULES $title_md "
+echo "$title_md General rules in table "
+echo "allow_separate_rules= "
 echo "$title_md"
-echo "$title_md firewall like client for all protocols and ports"
+echo "$title_md firewall is allowed like client for all protocols and ports"
 echo "$title_md"
 exit; fi
 ####
@@ -3291,7 +3304,7 @@ echo "$text_md | new-mini-custom . create new mini config in english  "
 echo "$text_md | new-tiny-custom . create new tiny config in english  " 
 echo "$text_md | nueva-completa-custom . create new full config in spanish  "  
 echo "$text_md | nueva-mini-custom . create new full config in spanish  "   
-echo "$text_md | nueva-tiny-custom . create new tiny config in spanish  "   
+echo "$text_md | nueva-diminuta-custom . create new tiny config in spanish  "   
 echo "$text_md | clone-wallsystem . clone a static firewall predesignated  "  
 echo "$text_md | show-custom . show config-file choosed  "   
 echo "$text_md | modify-custom . modify config-file choosed  "  
@@ -4815,7 +4828,7 @@ exit; fi
 ####
 #### :rutina-final-nueva-completa-custom:
 ##########    english: new-mini-custom: create new configs   ##########
-##########    spanish: new--mini config: cea nuevas config   ##########
+##########    spanish: new-mini config: cea nuevas config   ##########
 #### :rutina-inicial-new-mini-custom:
 ####
 ####
@@ -4856,6 +4869,48 @@ exit; fi
 ####
 ####
 #### :rutina-final-nueva-mini-custom:
+##########    english: new-tiny-custom: create new configs   ##########
+##########    spanish: new-tiny-custom:  cea nuevas config   ##########
+#### :rutina-inicial-new-tiny-custom:
+####
+####
+if [ "$first_option" == "new-tiny-custom" ] && [ "$second_option" == "$NULL" ]  ; then 
+echo "$text_md $text_info [ usage: ] [ $cmd_realpath new-tiny-custom config-new ]"
+exit; fi
+####
+####
+if [ "$first_option" == "new-tiny-custom" ] && [ "$second_option" != "$NULL" ] ; then 
+archivo="$second_option"
+cp "$default_tinycfg_eng" "$default_directory_custom/$archivo"
+$favorite_text_editor $default_directory_custom/$archivo
+echo " $text_ok created file $archivo"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-new-tiny-custom:
+##########    english: nueva-diminuta-custom: create new configs   ##########
+##########    spanish: nueva-diminuta-custom: crea nuevas config   ##########
+#### :rutina-inicial-nueva-diminuta-custom:
+####
+####
+if [ "$first_option" == "nueva-diminuta-custom" ] && [ "$second_option" == "$NULL" ]  ; then 
+echo "$text_md $text_info [ usage: ] [ $cmd_realpath nueva-diminuta-custom config-nueva ]"
+exit; fi
+####
+####
+if [ "$first_option" == "nueva-diminuta-custom" ] && [ "$second_option" != "$NULL" ] ; then 
+archivo="$second_option"
+cp "$default_tinycfg_spa" "$default_directory_custom/$archivo"
+$favorite_text_editor $default_directory_custom/$archivo
+echo " $text_ok Archivo creado $archivo"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-nueva-diminuta-custom:
 ##########    english: modify-custom: modify a one config.cfg        ##########
 ##########    spanish: modify-custom: modify una configuracion.cfg   ##########
 #### :rutina-inicial-modify-custom:
@@ -6323,12 +6378,12 @@ then echo $head_waiting_gui
 case $second_option in
 #### 
 #### 
-"new-mini-custom")
-cp "$default_minicfg_eng" "$directory_cache_necesary/$cmd_name-$third_option"
+"new-tiny-custom")
+cp "$default_tinycfg_eng" "$directory_cache_necesary/$cmd_name-$third_option"
 $favorite_realpath_graphicalldialog --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_cache_necesary/$cmd_name-$third_option" \
---editable --title=NEW-MINI-CONFIG 1> "$default_directory_custom/$third_option" ;
+--editable --title=NEW-TINY-CONFIG 1> "$default_directory_custom/$third_option" ;
 if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -6341,18 +6396,36 @@ $favorite_realpath_graphicalldialog --forms \
 ;;
 #### 
 #### 
-"new-full-custom")
-cp "$default_fullcfg_eng" "$directory_cache_necesary/$cmd_name-$third_option"
+"nueva-diminuta-custom")
+cp "$default_tinycfg_spa" "$directory_cache_necesary/$cmd_name-$third_option"
+$favorite_realpath_graphicalldialog  --text-info \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--filename="$directory_cache_necesary/$cmd_name-$third_option" \
+--editable --title=NUEVA-DIMINUTA-CONFIG 1> "$default_directory_custom/$third_option" ;
+if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
+$favorite_realpath_graphicalldialog  --forms \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--text=OK-new-config-file-$third_option-\
+AND-launch:$cmd_realpath-loadtiny-custom-$third_option ; exit
+else rm $default_directory_custom/$third_option ; 
+$favorite_realpath_graphicalldialog  --forms \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--text=Canceled-new-file-$third_option ; exit; fi
+;;
+#### 
+####
+"new-mini-custom")
+cp "$default_minicfg_eng" "$directory_cache_necesary/$cmd_name-$third_option"
 $favorite_realpath_graphicalldialog --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_cache_necesary/$cmd_name-$third_option" \
---editable --title=NEW-FULL-CONFIG 1> "$default_directory_custom/$third_option" ;
+--editable --title=NEW-MINI-CONFIG 1> "$default_directory_custom/$third_option" ;
 if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---text=OK-new-config-file-$third_option-\
-AND-launch:-$cmd_realpath-load-custom-$third_option ; exit
-else rm $default_directory_custom/$third_option ; 
+--text=OK-new-config-file-$third_option\
+ANDlaunch:$cmd_realpath-load-custom-$third_option ; exit
+else rm "$default_directory_custom/$third_option" ; 
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=Canceled-new-file-$third_option ; exit; fi
@@ -6372,6 +6445,24 @@ $favorite_realpath_graphicalldialog  --forms \
 AND-launch:$cmd_realpath-load-custom-$third_option ; exit
 else rm $default_directory_custom/$third_option ; 
 $favorite_realpath_graphicalldialog  --forms \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--text=Canceled-new-file-$third_option ; exit; fi
+;;
+#### 
+#### 
+"new-full-custom")
+cp "$default_fullcfg_eng" "$directory_cache_necesary/$cmd_name-$third_option"
+$favorite_realpath_graphicalldialog --text-info \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--filename="$directory_cache_necesary/$cmd_name-$third_option" \
+--editable --title=NEW-FULL-CONFIG 1> "$default_directory_custom/$third_option" ;
+if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
+$favorite_realpath_graphicalldialog --forms \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--text=OK-new-config-file-$third_option-\
+AND-launch:-$cmd_realpath-load-custom-$third_option ; exit
+else rm $default_directory_custom/$third_option ; 
+$favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=Canceled-new-file-$third_option ; exit; fi
 ;;
