@@ -8,7 +8,7 @@
   
    From one system firewall to choose one,   
     with eraserules, or template custom,       
-    with new wizard-mini or wizard-full,       
+    with new wizards: -tiny -mini -full ,      
     with added comments rules in firewall.     
   
    With rules ipv4, rules ipv6, ebtables, arptables,  
@@ -30,35 +30,29 @@
 ###  fwiptables install.                     
   
     su root TYPE: su root                       
-    put bit TYPE: chmod 755 ./fwiptables-version-24-07k-bash.sh     
-    install TYPE: ./fwiptables-version-24-07k-bash.sh install       
+    put bit TYPE: chmod 755 ./fwiptables     
+    install TYPE: ./fwiptables install       
   
 ###  fwiptables uninstall.                   
   
     uninstall TYPE: fwiptables uninstall  
   
 ###  [ version ] [ Show version ] [ version md ]            
-       Basename program: fwiptables-version-24-07k-bash.sh               
-       Realpath program: /root/.config/fwiptables/fwiptables-gen/fwiptables-version-24-07k-bash.sh               
-        Version program: 24-07k                
+       Basename program: fwiptables               
+       Realpath program: /usr/bin/fwiptables               
+        Version program: 24-07m                
       Short description: FireWall With iptables       
        Long description: One Mini Script in one-file wizard        
        Developer Actual: Francisco Garcia              
       Developer Contact: fwiptables@gmx.com                
-        License program: GPL v2, LGPL v2, BSD                
          Data Directory: /root/.config/fwiptables    
         Cache Directory: /root/.cache/fwiptables   
-       File Preferences:    
-     /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-07k             
-     Fileformat program:    
-     /root/.config/fwiptables/fwiptables-gen/fwiptables-version-24-07k-bash.sh: Bourne-Again shell script, Unicode text, UTF-8 text executable        
+            File Format: Bourne-Again_shell_script,   
+        License program: GPL v2, LGPL v2, BSD     
   
 ###  [ notes ] [ List notes about ] [ notes md ]
   
-###  Several notes ..
-  
-   [ Notes ]
-  
+###  General Notes
    [ legacy or nft ] whith one of them is sufficent 
    [ allow shield maxtries ] limit against attack per bruteforce 
    [ net blacklist ] excepcionals hosts has conection dropped in firewall
@@ -66,30 +60,26 @@
    [ input-established ] the computer is only client 
    [ allow output uid/gid ] User and/or group excepcional with conection allowed
   
-   [ Notes ] [ Two iptables netfilter ]
-  
+###  Two iptables netfilter
    iptables-legacy   is    support for xtables
    iptables-nft      is    support for nftables
   
-   [ Notes ] necesary ports to connect with ipv4 and ipv6 in UDP protocol
-  
+###  Necesary ports to connect with ipv4 and ipv6 in UDP protocol
    ntp    : Port necesary to update the time and date
    bootpc : Port necesary to dhcp and get ip
    domain : This port is necesary to domain resolver
    https  : This port is necesary for udp named web html5
   
-   [ Notes ] necesary protocols for ip v6
-  
+###  Necesary protocols for ipv6
    ipv6-icmp  : Necesary protocol in ipv6
    ipv4 ports : ipv6 works too with old ipv4 ports
   
-###  [ compile ] [ Optionally compile from bash script ] [ compile md]  
   
+###  [ compile ] [ Optionally compile from bash script ] [ compile md]  
    BASH SCRIPT WORKS fully. But if your desire is compiling...    
    Necesary fwiptables in source script bash                
    Download and install obash from oficial web internet     
    Run: obash -s -c -o ./destination.bin ./source-bash.sh   
-  
   
 ###  [ options-examples ] [ List examples ] [ examples md ]
 ###  [ Several examples without optional otuput ]
@@ -126,50 +116,51 @@
 ### 
 ###  [ options ] [ List general options for fwiptables ] [ list-options md ]
   
-   fwiptables-version-24-07k-bash.sh [optional-output] first_option [second_option]  
+   fwiptables [optional-output] first_option [second_option]  
 ###     optional-output                                                      
-   [ t|txt n|narrowtxt l|logtxt c|cli g|gui p|pdf s|silent ]                    
-   [ cli-dialog cli-whiptail gui-zenity gui-yad ]                         
-   [ cli-menu-dialog cli-menu-whiptail gui-roll-zenity ]                  
-   [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ]        
-###     firewall-control                                                     
-   stop continue reset show save load names wizard-mini wizard-full       
-   actual eraserules eraserules4 eraserules6 without-connection                     
-   input-permisive input-established                                       
+   [ t|txt n|narrowtxt l|logtxt c|cli g|gui p|pdf s|silent ]                
+   [ cli-dialog cli-whiptail gui-zenity gui-yad ]                           
+   [ cli-menu-dialog cli-menu-whiptail gui-roll-zenity ]                    
+   [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ]          
 ###     firewall-listconceptual                                              
-   ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6           
-   list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4           
-   list-security6 list-ebtables list-arptables list-alltables             
+   ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6             
+   list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4             
+   list-security6 list-ebtables list-arptables list-alltables               
 ###     firewall-listnumeral                                                 
-   lsn4 lsn6 statusn listn-filter4 listn-filter6 listn-nat4               
-   listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6           
-   listn-security4 listn-security6 listn-alltables                        
+   lsn4 lsn6 statusn listn-filter4 listn-filter6 listn-nat4                 
+   listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6             
+   listn-security4 listn-security6 listn-alltables                          
+###     firewall-wallcontrol                                                 
+   stop continue reset show save load names actual wizard-tiny              
+   wizard-mini wizard-full eraserules eraserules4 eraserules6               
+   without-connection input-permisive input-established                     
 ###     firewall-wallcustom                                                  
-   new-full-custom nueva-completa-custom new-mini-custom                  
-   nueva-mini-custom clone-wallsystem load-custom show-custom             
-   modify-custom del-custom names-custom                                  
+   new-full-custom nueva-completa-custom new-mini-custom                    
+   nueva-mini-custom new-tiny-custom nueva-diminuta-custom                  
+   clone-wallsystem load-custom loadtiny-custom show-custom                 
+   modify-custom del-custom names-custom                                    
 ###     firewall-wallsystem                                                  
-   client-basic client-web client-ssh client-telnet client-ipp            
-   client-irc client-git client-vnc client-news client-vpn                
-   client-torrent client-vpn client-ftp client-proxy client-mail          
-   client-tor game-widelands games-udp games-shooter game-wesnoth         
-   game-minetest game-freeciv lan-tor lan-vpn shield-ssh server-ssh       
-   server-telnet server-irc server-vnc server-print server-webserver      
-   server-lamp server-news server-ftp server-mail server-teamspeak        
-   server-mumble server-gateway server-sql server-samba server-proxy      
-   server-asterisk client-uid-root client-gid-users client-gid-net        
+   client-basic client-web client-ssh client-telnet client-ipp              
+   client-irc client-git client-vnc client-news client-vpn                  
+   client-torrent client-vpn client-ftp client-proxy client-mail            
+   client-tor game-widelands games-udp games-shooter game-wesnoth           
+   game-minetest game-freeciv lan-tor lan-vpn shield-ssh server-ssh         
+   server-telnet server-irc server-vnc server-print server-webserver        
+   server-lamp server-news server-ftp server-mail server-teamspeak          
+   server-mumble server-gateway server-sql server-samba server-proxy        
+   server-asterisk client-uid-root client-gid-users client-gid-net          
 ###     options-easy                                                         
-   preferences-read preferences-modify preferences-regen info web         
-   options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date         
-   free sockets nodes ip-forward depends utils treeconf treecache         
-   cleancache notes variables uninstall install upgrade version           
-   examples code expert license-gpl license-lgpl license-bsd              
-       | Program: fwiptables-version-24-07k-bash.sh , Version: 24-07k    
-       | Description: One Mini Script in one-file wizard                 
+   preferences-read preferences-modify preferences-regen info web           
+   options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date           
+   free sockets nodes ip-forward depends utils treeconf treecache           
+   cleancache notes variables uninstall install upgrade version             
+   examples code expert license-gpl license-lgpl license-bsd                
+       | Program: fwiptables , Version: 24-07m        
+       | Description: One Mini Script in one-file wizard                     
        | Expert: expert is allowed in preferences file   
   
    
-###  | optional-output | fwiptables-version-24-07k-bash.sh optional-ouptut |
+###  | optional-output | fwiptables optional-ouptut |
   
    | t . output in terminal text  
    | n . output in terminal text narrowtxt (compresed spaces)  
