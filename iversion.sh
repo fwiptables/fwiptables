@@ -6733,17 +6733,27 @@ $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
-"new-mini-custom")
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
-;;
 "nueva-completa-custom")
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "new-mini-custom")
+$favorite_realpath_graphicalldialog  --forms \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--text=$text_md-info-use-one-custom-config.cfg
+;;
+"nueva-mini-custom")
+$favorite_realpath_graphicalldialog  --forms \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--text=$text_md-info-use-one-custom-config.cfg
+;;
+"nueva-tiny-custom")
+$favorite_realpath_graphicalldialog  --forms \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--text=$text_md-info-use-one-custom-config.cfg
+;;
+"nueva-diminuta-custom")
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
@@ -6759,27 +6769,37 @@ $favorite_realpath_graphicalldialog  --forms \
 #### spanish: new-full-custom and nueva-completa-custom sin parametros      ####
 ####
 ####
-"new-full-custom ")
+"new-full-custom" )
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
-"new-mini-custom ")
+"nueva-completa-custom" )
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
-"nueva-completa-custom ")
+"new-mini-custom" )
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
-"new-mini-custom ")
+"nueva-mini-custom" )
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
-"modify-custom ")
+"nueva-tiny-custom" )
+$favorite_realpath_graphicalldialog  --forms \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--text=$text_md-info-use-one-custom-config.cfg
+;;
+"nueva-diminuta-custom" )
+$favorite_realpath_graphicalldialog  --forms \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--text=$text_md-info-use-one-custom-config.cfg
+;;
+"modify-custom" )
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
@@ -6806,6 +6826,14 @@ nueva-mini-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_realpath -gui-zenity nueva-mini-custom $unarchivo
 ;;
+new-tiny-custom*)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+$cmd_realpath -gui-zenity new-tiny-custom $unarchivo
+;;
+nueva-diminuta-custom*)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+$cmd_realpath -gui-zenity nueva-diminuta-custom $unarchivo
+;;
 modify-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_realpath -gui-zenity modify-custom $unarchivo
@@ -6816,6 +6844,7 @@ $cmd_realpath -gui-zenity show-custom $unarchivo
 ;;
 wizard-full*) $cmd_realpath -gui-zenity wizard-full ;;
 wizard-mini*) $cmd_realpath -gui-zenity wizard-mini ;;
+wizard-tiny*) $cmd_realpath -gui-zenity wizard-tiny ;;
 preferences-modify*) 
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_realpath -gui-zenity preferences-modify 
@@ -6881,28 +6910,44 @@ $NULL) $cmd_realpath gui-yad options; exit ;;
 #### spanish: new-full-custom and nueva-completa-custom sin parametros      ####
 ####
 ####
+####
+####
+#### english: new-full-custom and nueva-completa-custom whithout parameters ####
+#### spanish: new-full-custom and nueva-completa-custom sin parametros      ####
+####
+####
 "new-full-custom")
-$command_yad  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
-;;
-"new-mini-custom")
-$command_yad  --forms \
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-completa-custom")
-$command_yad  --forms \
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "new-mini-custom")
-$command_yad  --forms \
+$favorite_realpath_graphicalldialog  --forms \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--text=$text_md-info-use-one-custom-config.cfg
+;;
+"nueva-mini-custom")
+$favorite_realpath_graphicalldialog  --forms \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--text=$text_md-info-use-one-custom-config.cfg
+;;
+"nueva-tiny-custom")
+$favorite_realpath_graphicalldialog  --forms \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--text=$text_md-info-use-one-custom-config.cfg
+;;
+"nueva-diminuta-custom")
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "modify-custom")
-$command_yad  --forms \
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
@@ -6912,23 +6957,42 @@ $command_yad  --forms \
 #### spanish: new-full-custom and nueva-completa-custom sin parametros      ####
 ####
 ####
-"new-full-custom ")
-$command_yad  --forms \
+"new-full-custom" )
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
-"new-mini-custom ")
-$command_yad  --forms \
+"nueva-completa-custom" )
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
-"nueva-completa-custom ")
-$command_yad  --forms \
+"new-mini-custom" )
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
-"new-mini-custom ")
-$command_yad  --forms \
+"nueva-mini-custom" )
+$favorite_realpath_graphicalldialog  --forms \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--text=$text_md-info-use-one-custom-config.cfg
+;;
+"nueva-tiny-custom" )
+$favorite_realpath_graphicalldialog  --forms \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--text=$text_md-info-use-one-custom-config.cfg
+;;
+"nueva-diminuta-custom" )
+$favorite_realpath_graphicalldialog  --forms \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--text=$text_md-info-use-one-custom-config.cfg
+;;
+"modify-custom" )
+$favorite_realpath_graphicalldialog  --forms \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--text=$text_md-info-use-one-custom-config.cfg
+;;
+
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
@@ -6959,6 +7023,14 @@ nueva-mini-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_realpath -gui-yad nueva-mini-custom $unarchivo
 ;;
+new-tiny-custom*)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+$cmd_realpath -gui-yad new-tiny-custom $unarchivo
+;;
+nueva-diminuta-custom*)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+$cmd_realpath -gui-yad nueva-diminuta-custom $unarchivo
+;;
 modify-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_realpath -gui-yad modify-custom $unarchivo
@@ -6969,6 +7041,7 @@ $cmd_realpath -gui-yad show-custom $unarchivo
 ;;
 wizard-full*) $cmd_realpath -gui-yad wizard-full ;;
 wizard-mini*) $cmd_realpath -gui-yad wizard-mini ;;
+wizard-tiny*) $cmd_realpath -gui-yad wizard-tiny ;;
 preferences-modify*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_realpath -gui-yad preferences-modify 
@@ -7015,14 +7088,15 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0207  "$text_md load" \
 0208  "$text_md actual" \
 0209  "$text_md eraserules" \
-0210  "$text_md wizard-mini" \
-0211  "$text_md wizard-full" \
-0212  "$text_md without-connection" \
-0213  "$text_md input-permisive" \
-0214  "$text_md input-established" \
-0215  "$text_md eraserules4" \
-0216  "$text_md eraserules6" \
-0217  "$text_md eraserules" \
+0210  "$text_md wizard-tiny" \
+0211  "$text_md wizard-mini" \
+0212  "$text_md wizard-full" \
+0213  "$text_md without-connection" \
+0214  "$text_md input-permisive" \
+0215  "$text_md input-established" \
+0216  "$text_md eraserules4" \
+0217  "$text_md eraserules6" \
+0218  "$text_md eraserules" \
 0300 "$title_md [ Firewall List With Conceptual ] $title_md" \
 0301  "$text_md list4" \
 0302  "$text_md list6"  \
@@ -7059,7 +7133,7 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0419  "$text_md listn-security6" \
 0420  "$text_md listn-ebtables" \
 0421  "$text_md listn-arptables" \
-0500 "$title_md [ Firewall Static ] $title_md" \
+0500 "$title_md [ Firewall wallsystem ] $title_md" \
 0507  "$text_md client-basic" \
 0508  "$text_md client-web" \
 0509  "$text_md client-ssh" \
@@ -7091,18 +7165,20 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0535  "$text_md server-mumble" \
 0536  "$text_md server-sql" \
 0537  "$text_md server-asterisk" \
-0600 "$title_md [ Firewall load-custom ] $title_md" \
+0600 "$title_md [ Firewall wallcustom ] $title_md" \
 0606  "$text_md load-custom" \
 0607  "$text_md clone-wallsystem" \
 0611  "$text_md new-full-custom" \
 0612  "$text_md nueva-completa-custom" \
 0613  "$text_md new-mini-custom" \
 0614  "$text_md nueva-mini-custom" \
-0615  "$text_md show-custom" \
-0616  "$text_md modify-custom" \
-0617  "$text_md del-custom" \
-0618  "$text_md names-custom" \
-0619  "$text_md templates-regen" \
+0615  "$text_md new-tiny-custom" \
+0616  "$text_md nueva-diminuta-custom" \
+0617  "$text_md show-custom" \
+0618  "$text_md modify-custom" \
+0619  "$text_md del-custom" \
+0620  "$text_md names-custom" \
+0621  "$text_md templates-regen" \
 0700 "$title_md [ Options Easy ] $title_md" \
 0701  "$text_md preferences-read" \
 0702  "$text_md preferences-modify" \
@@ -7168,14 +7244,15 @@ nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
 $cmd_realpath load $nombrecillo ;;
 0208) clear ; $cmd_realpath txt actual ;;
 0209) clear ; $cmd_realpath txt eraserules ; $cmd_realpath cli list4   ;;
-0210) clear ; $cmd_realpath txt wizard-mini ; $cmd_realpath cli list4  ;;
-0211) clear ; $cmd_realpath txt wizard-full ; $cmd_realpath cli list4  ;;
-0212) clear ; $cmd_realpath txt without-connection ; $cmd_realpath cli list4  ;;
-0213) clear ; $cmd_realpath txt input-permisive ; $cmd_realpath cli list4   ;;
-0213) clear ; $cmd_realpath txt input-established ; $cmd_realpath cli list4   ;;
-0215) clear ; $cmd_realpath txt eraserules4 ; $cmd_realpath cli list4   ;;
-0216) clear ; $cmd_realpath txt eraserules6 ; $cmd_realpath cli list6   ;;
-0217) clear ; $cmd_realpath txt eraserules ; $cmd_realpath cli status   ;;
+0210) clear ; $cmd_realpath txt wizard-tiny ; $cmd_realpath cli list4  ;;
+0211) clear ; $cmd_realpath txt wizard-mini ; $cmd_realpath cli list4  ;;
+0212) clear ; $cmd_realpath txt wizard-full ; $cmd_realpath cli list4  ;;
+0213) clear ; $cmd_realpath txt without-connection ; $cmd_realpath cli list4  ;;
+0214) clear ; $cmd_realpath txt input-permisive ; $cmd_realpath cli list4   ;;
+0215) clear ; $cmd_realpath txt input-established ; $cmd_realpath cli list4   ;;
+0216) clear ; $cmd_realpath txt eraserules4 ; $cmd_realpath cli list4   ;;
+0217) clear ; $cmd_realpath txt eraserules6 ; $cmd_realpath cli list6   ;;
+0218) clear ; $cmd_realpath txt eraserules ; $cmd_realpath cli status   ;;
 ################################################################################
 0301) clear ; $cmd_realpath txt list4 ;;
 0302) clear ; $cmd_realpath txt list6 ;;
@@ -7264,19 +7341,25 @@ $cmd_realpath new-mini-custom $archivo ;;
 0614) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
 $cmd_realpath nueva-mini-custom $archivo ;;
-0615) clear ; read -p "Input the custom to show config # " archivo
+0615) clear ; read -p "Input the new custom name to create # " archivo
+archivo=$(echo $archivo | $command_sed s/\\///g)
+$cmd_realpath new-tiny-custom $archivo ;;
+0616) clear ; read -p "Input the new custom name to create # " archivo
+archivo=$(echo $archivo | $command_sed s/\\///g)
+$cmd_realpath nueva-diminuta-custom $archivo ;;
+0617) clear ; read -p "Input the custom to show config # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
 $cmd_realpath show-custom $archivo ;;
-0616) clear ; $cmd_realpath names-custom
+0618) clear ; $cmd_realpath names-custom
 read -p "Input the custom name to modify # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
 $cmd_realpath modify-custom $archivo ;;
-0617) clear ; $cmd_realpath names-custom
+0619) clear ; $cmd_realpath names-custom
 read -p "Input the custom name to delete # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
 $cmd_realpath del-custom $archivo ;;
-0618) clear ; $cmd_realpath txt names-custom ;;
-0619) clear ; $cmd_realpath txt templates-regen ;;
+0620) clear ; $cmd_realpath txt names-custom ;;
+0621) clear ; $cmd_realpath txt templates-regen ;;
 ################################################################################
 0701) clear ; $cmd_realpath txt preferences-read ;;
 0702) clear ; $cmd_realpath txt preferences-modify ;;
@@ -7406,7 +7489,7 @@ then echo $message_without_guiroll ; exit ; fi
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
 |stop|continue|reset|names|show|save|load|actual|\
-eraserules|eraserules4|eraserules6|wizard-mini|wizard-full|\
+eraserules|eraserules4|eraserules6|wizard-tiny|wizard-mini|wizard-full|\
 without-connection|input-permisive|input-established"
 selection_menu="$($command_zenity --forms \
 --text=gui-roll-firewall-wallcontrol \
@@ -7449,6 +7532,7 @@ eraserules6)$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list6;;
 eraserules)$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list4;;
 wizard-full)$cmd_realpath -gui-zenity wizard-full ; $cmd_realpath gui list4;;
 wizard-mini)$cmd_realpath -gui-zenity wizard-mini ; $cmd_realpath gui list4;;
+wizard-tiny)$cmd_realpath -gui-zenity wizard-tiny ; $cmd_realpath gui list4;;
 without-connection)$cmd_realpath -gui-zenity without-connection ; $cmd_realpath gui list4;;
 input-permisive)$cmd_realpath -gui-zenity input-permisive ; $cmd_realpath gui list4;;
 input-established)$cmd_realpath -gui-zenity input-established ; $cmd_realpath gui list4;;
@@ -7576,8 +7660,9 @@ if [ "$command_zenity" == "$NULL" ]
 then echo $message_without_guiroll ; exit ; fi
 ####
 ####
-gui_menu="gui-principal-menu|gui-info-menu|load-custom|clone-wallsystem|\
-new-full-custom|nueva-completa-custom|new-mini-custom|nueva-mini-custom|\
+gui_menu="gui-principal-menu|gui-info-menu|load-custom|\
+clone-wallsystem|new-full-custom|nueva-completa-custom|\
+new-mini-custom|nueva-mini-custom|new-tiny-custom|nueva-diminuta-custom|\
 names-custom|show-custom|modify-custom|del-custom|templates-regen"
 selection_menu="$($command_zenity --forms \
 --text=gui-roll-firewall-wallcustom \
@@ -7623,6 +7708,18 @@ archivo="$($command_zenity --entry \
 --title=nueva-mini-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
 $cmd_realpath -gui-zenity nueva-mini-custom $archivo ;;
+new-tiny-custom)
+archivo="$($command_zenity --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title=new-tiny-custom \
+--entry-text=Input_file_name_to_new_mini_configuration)" ;
+$cmd_realpath -gui-zenity new-tiny-custom $archivo ;;
+nueva-diminuta-custom)
+archivo="$($command_zenity --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title=nueva-mini-custom \
+--entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
+$cmd_realpath -gui-zenity nueva-diminuta-custom $archivo ;;
 names-custom)
 $cmd_realpath -gui-zenity names-custom ;;
 show-custom)
@@ -7891,7 +7988,8 @@ echo "$title_md The used gui in $first_option is $second_option" ;
 gui_menu="gui-principal-menu|gui-info-menu|\
 stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|\
-without-connection|input-permisive|input-established|wizard-mini|wizard-full"
+without-connection|input-permisive|input-established|\
+wizard-tiny|wizard-mini|wizard-full"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($second_option \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7942,6 +8040,8 @@ eraserules*)$cmd_realpath gui-$second_option eraserules ;;
 wizard-full*)$cmd_realpath gui-$second_option wizard-full ;
 $cmd_realpath gui-$second_option list4 ;;
 wizard-mini*)$cmd_realpath gui-$second_option wizard-mini ;
+$cmd_realpath gui-$second_option list4 ;;
+wizard-tiny*)$cmd_realpath gui-$second_option wizard-tiny ;
 $cmd_realpath gui-$second_option list4 ;;
 without-connection*)$cmd_realpath gui-$second_option without-connection ;
 $cmd_realpath gui-$second_option list4 ;;
@@ -8087,6 +8187,7 @@ gui_menu="gui-principal-menu|gui-info-menu|\
 load-custom|clone-wallsystem|\
 new-full-custom|nueva-completa-custom|\
 new-mini-custom|nueva-mini-custom|\
+new-tiny-custom|nueva-diminuta-custom|\
 names-custom|show-custom|modify-custom|\
 del-custom|templates-regen"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
@@ -8140,6 +8241,16 @@ nueva-mini-custom*) archivo="$($second_option --entry \
 --title=nueva-mini-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
 $cmd_realpath gui-$second_option nueva-mini-custom $archivo ;;
+new-tiny-custom*) archivo="$($second_option --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height --entry \
+--title=new-tiny-custom \
+--entry-text=Input_file_ name_ to_ new_ mini_configuration)" ;
+$cmd_realpath gui-$second_option new-tiny-custom $archivo ;;
+nueva-diminuta-custom*) archivo="$($second_option --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title=nueva-diminuta-custom \
+--entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
+$cmd_realpath gui-$second_option nueva-diminuta-custom $archivo ;;
 names-custom*) $cmd_realpath gui-menu-$second_option names-custom ;;
 show-custom*) archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
