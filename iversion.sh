@@ -6992,15 +6992,6 @@ $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
-
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
-;;
-"modify-custom ")
-$command_yad  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
-;;
 ####
 ####
 #### english: several options con parametros
@@ -7439,8 +7430,8 @@ if [ "$command_zenity" == "$NULL" ] ;
 then echo $message_without_guiroll ; exit ; fi
 ####
 ####
-gui_menu="Info|firewall-wallcontrol|Firewall-List-With-Conceptual|\
-Firewall-List-With-Numeral|firewall-wallcustom|\
+gui_menu="Info|Firewall-List-With-Conceptual|\
+Firewall-List-With-Numeral|firewall-wallcontrol|firewall-wallcustom|\
 firewall-wallsystem|Options-easy"
 selection_menu="$($command_zenity --forms \
 --text=gui-roll \
@@ -7934,8 +7925,8 @@ echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
 echo "$title_md The used gui in $first_option is $second_option" ;
 ####
 ####
-gui_menu="firewall-wallcontrol|Firewall-listconceptual|\
-Firewall-listnumeral|Firewall-wallcustom|Firewall-wallsystem|Options-easy|"
+gui_menu="Firewall-listconceptual|Firewall-listnumeral|firewall-wallcontrol|\
+Firewall-wallcustom|Firewall-wallsystem|Options-easy|"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($second_option \
 --width=$config_graphicall_width \
@@ -7954,12 +7945,12 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 ####
 case $final in
 1*) exit ;;
-firewall-wallcontrol*)
-$cmd_realpath gui-menu-firewall-wallcontrol $second_option ;;
 Firewall-listconceptual*)
 $cmd_realpath gui-menu-firewall-listconceptual $second_option ;;
 Firewall-listnumeral*)
 $cmd_realpath gui-menu-firewall-listnumeral $second_option ;;
+firewall-wallcontrol*)
+$cmd_realpath gui-menu-firewall-wallcontrol $second_option ;;
 Firewall-wallcustom*)
 $cmd_realpath gui-menu-firewall-wallcustom $second_option ;;
 Firewall-wallsystem*)
