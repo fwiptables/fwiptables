@@ -2444,7 +2444,7 @@ exit; fi
 ####
 if [ "$first_option" == "template-tiny-es" ]; then
 echo "$title_md"
-echo "$title_md firewall esta permitido como ciente para todos los protocolos y puertos"
+echo "$title_md Tiny firewall esta permitido como *cliente* para todos los protocolos y puertos"
 echo "$title_md"
 echo "$title_md NETFILTER $title_md "
 echo "$title_md el iptables firewall netfilter, elige uno o dos "
@@ -2468,7 +2468,7 @@ echo "$title_md REGLAS GENERALES $title_md "
 echo "$title_md Regla general en tabla "
 echo "allow_separate_rules= "
 echo "$title_md"
-echo "$title_md firewall esta permitido como ciente para todos los protocolos y puertos"
+echo "$title_md Tiny firewall esta permitido como *cliente* para todos los protocolos y puertos"
 echo "$title_md"
 exit; fi
 ####
@@ -2481,7 +2481,7 @@ exit; fi
 ####
 if [ "$first_option" == "template-tiny-en" ]; then
 echo "$title_md"
-echo "$title_md firewall is allowed like client for all protocols and ports"
+echo "$title_md Tiny firewall is allowed like *client* for all protocols and ports"
 echo "$title_md"
 echo "$title_md NETFILTER $title_md "
 echo "$title_md The iptables firewall netfilter, choose one or both  "
@@ -2505,7 +2505,7 @@ echo "$title_md GENERAL RULES $title_md "
 echo "$title_md General rules in table "
 echo "allow_separate_rules= "
 echo "$title_md"
-echo "$title_md firewall is allowed like client for all protocols and ports"
+echo "$title_md Tiny firewall is allowed like *client* for all protocols and ports"
 echo "$title_md"
 exit; fi
 ####
