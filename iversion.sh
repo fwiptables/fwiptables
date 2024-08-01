@@ -13616,10 +13616,10 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$type_firewall" == "tinycustom" ]; then $cmd_realpath eraserules &> /dev/null ;
+if [ "$first_option" == "loadtiny-custom" ]; then $cmd_realpath eraserules &> /dev/null ;
 ####
 ####
-#### ONLY LOCALHOST
+#### LOCALHOST IS ALLOWED
 ####
 ####
 $allow_use_legacy $allow_use_ipv4 $command_ip4tableslegacy -A INPUT \
@@ -13632,6 +13632,32 @@ $allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A INPUT  \
 -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A INPUT   \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+####
+####
+$allow_use_legacy $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A FORWARD \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_nft   $allow_use_ipv4 $command_ip4tablesnft -A FORWARD \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A FORWARD \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A FORWARD \
 -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
@@ -13881,14 +13907,8 @@ $allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
 $allow_use_legacy $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
--m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A FORWARD \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
--m comment --comment host-localhost &> /dev/null
 ####
 ####
 #### english: nft ipv4 127.0.0.1 acept and the others nft ipv4 accept too
@@ -13899,14 +13919,8 @@ $allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
 $allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
--m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
-$allow_use_nft   $allow_use_ipv4 $command_ip4tablesnft -A FORWARD \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
--m comment --comment host-localhost &> /dev/null
 ####
 ####
 ########################################     english: ipv6 iptables input-permisive:
@@ -13921,14 +13935,8 @@ $allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
 $allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
--m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A FORWARD \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
--m comment --comment host-localhost &> /dev/null
 ####
 ####
 #### english: nft ipv6 127.0.0.1 acept and the others nft ipv6 accept too
@@ -13938,15 +13946,9 @@ $allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A FORWARD \
 $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A INPUT   \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
--m comment --comment host-localhost &> /dev/null
 $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT  \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A FORWARD \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
--m comment --comment host-localhost &> /dev/null
 ####
 ####
 #### english: ipv6-icmp accept in legacy and accept in nft
@@ -14019,9 +14021,9 @@ exit; fi
 #### :rutina-final-code-tinycustom:
 ###################################################################
 ###################################################################
-####                                                                                            ###############
-#### sane rules . load-custom                                                              ###############
-####                                                                                            ###############
+####                                                                                            
+#### sane rules . load-custom                                                                   
+####                                                                                            
 ###################################################################
 ###################################################################
 ##############################       english: overwrite system varibles with the config cfg
