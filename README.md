@@ -40,7 +40,7 @@
 ###  [ version ] [ Show version ] [ version md ]            
        Basename program: fwiptables               
        Realpath program: /usr/bin/fwiptables               
-        Version program: 24-07m                
+        Version program: 24-08a                
       Short description: FireWall With iptables       
        Long description: One Mini Script in one-file wizard        
        Developer Actual: Francisco Garcia              
@@ -51,37 +51,35 @@
         License program: GPL v2, LGPL v2, BSD     
   
 ###  [ notes ] [ List notes about ] [ notes md ]
-  
-###  General Notes
-   [ legacy or nft ] whith one of them is sufficent 
-   [ allow shield maxtries ] limit against attack per bruteforce 
-   [ net blacklist ] excepcionals hosts has conection dropped in firewall
-   [ net whitelist ] excepcionals hosts has conection allowed in firewall
-   [ input-established ] the computer is only client 
-   [ allow output uid/gid ] User and/or group excepcional with conection allowed
-  
-###  Two iptables netfilter
-   iptables-legacy   is    support for xtables
-   iptables-nft      is    support for nftables
-  
-###  Necesary ports to connect with ipv4 and ipv6 in UDP protocol
-   ntp    : Port necesary to update the time and date
-   bootpc : Port necesary to dhcp and get ip
-   domain : This port is necesary to domain resolver
-   https  : This port is necesary for udp named web html5
-  
-###  Necesary protocols for ipv6
-   ipv6-icmp  : Necesary protocol in ipv6
-   ipv4 ports : ipv6 works too with old ipv4 ports
-  
+             Legacy or nft: whith one of them is sufficent   
+     Allow shield maxtries: limit against attack per bruteforce   
+                 Blacklist: excepcionals hosts has conection dropped in firewall   
+                 whitelist: excepcionals hosts has conection allowed in firewall   
+                      tiny: client in all allowed, and servers selecteds manually   
+         input-established: the computer is only client   
+      allow output uid/gid: User and/or group excepcional with conection allowed   
+           iptables-legacy: support for xtables   
+              iptables-nft: support for nftables   
+                       ntp: Port necesary to update the time and date   
+                    bootpc: Port necesary to dhcp and get ip   
+                    domain: This port is necesary to domain resolver   
+                     https: This port is necesary for udp named web html5  
+                 ipv6-icmp: Necesary protocol in ipv6   
+                ipv4 ports: ipv6 works too with old ipv4 ports   
   
 ###  [ compile ] [ Optionally compile from bash script ] [ compile md]  
-   BASH SCRIPT WORKS fully. But if your desire is compiling...    
-   Necesary fwiptables in source script bash                
-   Download and install obash from oficial web internet     
-   Run: obash -s -c -o ./destination.bin ./source-bash.sh   
+      BASH SCRIPT WORKS fully. But if your desire is compiling...     
+      Necesary fwiptables in source script bash   
+      Download and install obash from oficial web internet   
+      Run: obash -s -c -o ./destination.bin ./source-bash.sh   
   
 ###  [ options-examples ] [ List examples ] [ examples md ]
+###  [ Several examples with server tiny ]
+    
+   | tiny-tcp                 | fwiptables tiny-tcp 21:25,80   
+   | tiny-udp                 | fwiptables tiny-udp 67:68,443   
+   | wizard tiny              | fwiptables wizard-tiny   
+  
 ###  [ Several examples without optional otuput ]
   
 ###        | without optional output | Example Description   
@@ -137,8 +135,8 @@
 ###     firewall-wallcustom                                                  
    new-full-custom nueva-completa-custom new-mini-custom                    
    nueva-mini-custom new-tiny-custom nueva-diminuta-custom                  
-   clone-wallsystem load-custom loadtiny-custom show-custom                 
-   modify-custom del-custom names-custom                                    
+   clone-wallsystem load-custom loadtiny-custom tiny-tcp tiny-udp           
+   show-custom modify-custom del-custom names-custom                        
 ###     firewall-wallsystem                                                  
    client-basic client-web client-ssh client-telnet client-ipp              
    client-irc client-git client-vnc client-news client-vpn                  
@@ -155,7 +153,7 @@
    free sockets nodes ip-forward depends utils treeconf treecache           
    cleancache notes variables uninstall install upgrade version             
    examples code expert license-gpl license-lgpl license-bsd                
-       | Program: fwiptables , Version: 24-07m        
+       | Program: fwiptables , Version: 24-08a        
        | Description: One Mini Script in one-file wizard                     
        | Expert: expert is allowed in preferences file   
   
