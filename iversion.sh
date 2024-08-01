@@ -3083,8 +3083,8 @@ echo "$text_md without-connection input-permisive input-established             
 echo "$title_md    firewall-wallcustom                                                  "
 echo "$text_md new-full-custom nueva-completa-custom new-mini-custom                    "
 echo "$text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom                  "
-echo "$text_md clone-wallsystem load-custom loadtiny-custom show-custom                 "
-echo "$text_md modify-custom del-custom names-custom                                    "
+echo "$text_md clone-wallsystem load-custom loadtiny-custom tiny-tcp                    "
+echo "$text_md show-custom modify-custom del-custom names-custom                        "
 echo "$title_md    firewall-wallsystem                                                  "
 echo "$text_md client-basic client-web client-ssh client-telnet client-ipp              "
 echo "$text_md client-irc client-git client-vnc client-news client-vpn                  "
@@ -8524,6 +8524,36 @@ fi
 ####
 ####
 #### :rutina-final-loadtiny-custom:
+##########   english: tiny-tcp: firewall      ##########
+##########   spanish: tiny-tcp: cortafuegos   ##########
+#### :rutina-inicial-tiny-tcp:
+####
+####
+if [ "$first_option" == "tiny-tcp" ]
+then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
+launch_rules_firewall="yes" ;
+type_firewall="tinycustom" ;
+name_firewall="tiny-tcp" ;
+first_option="loadtiny-custom" ;
+####
+####
+#### english: configure load-custom variables if there are
+#### spanish: configura variables modificadas si estan ahi
+####
+####
+if [ "$second_option" != "$NULL" ]; then
+server_port_tcp="$second_option"
+else
+echo "$info_md Put the ports tcp servers"
+echo "$info_md Example: $cmd_basename $first_option 20:22,80"
+echo "$info_md tiny-tcp configured like only client."
+fi
+####
+####
+fi
+####
+####
+#### :rutina-final-tiny-tcp:
 ##########    english: ready system rules con its option               ##########
 ##########    spanish: preprara reglas del sistema con sus opciones    ##########
 ####
