@@ -2405,25 +2405,20 @@ exit; fi
 ####
 if [ "$first_option" == "notes" ]; then 
 echo "$title_md [ $first_option ] [ List notes about ] [ notes md ]"
-echo "$title_md          General Notes $text_md"
 echo "$text_md           Legacy or nft: whith one of them is sufficent $text_md"   
 echo "$text_md   Allow shield maxtries: limit against attack per bruteforce $text_md"   
 echo "$text_md               Blacklist: excepcionals hosts has conection dropped in firewall $text_md"   
 echo "$text_md               whitelist: excepcionals hosts has conection allowed in firewall $text_md"   
 echo "$text_md       input-established: the computer is only client $text_md"   
 echo "$text_md    allow output uid/gid: User and/or group excepcional with conection allowed $text_md"   
-echo "$title_md   Two iptables netfilter $text_md"   
 echo "$text_md         iptables-legacy: support for xtables $text_md"    
 echo "$text_md            iptables-nft: support for nftables $text_md"    
-echo "$title_md   Necesary ports to connect with ipv4 and ipv6 in UDP protocol $text_md"   
 echo "$text_md                     ntp: Port necesary to update the time and date $text_md"   
 echo "$text_md                  bootpc: Port necesary to dhcp and get ip $text_md"   
 echo "$text_md                  domain: This port is necesary to domain resolver $text_md"   
 echo "$text_md                   https: This port is necesary for udp named web html5$text_md"   
-echo "$title_md    Necesary protocols for ipv6 $text_md"   
 echo "$text_md               ipv6-icmp: Necesary protocol in ipv6 $text_md"   
 echo "$text_md              ipv4 ports: ipv6 works too with old ipv4 ports $text_md"
-echo "$text_md"   
 exit; fi
 ####
 ####
