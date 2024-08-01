@@ -8552,7 +8552,7 @@ fi
 ####
 ####
 if [ "$first_option" == "without-connection" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem without-connection ]" ;
+echo "$title_md $text_info [ loading firewall wallcontrol without-connection ]" ;
 launch_rules_firewall="yes" ;
 type_firewall="without-connection";
 name_firewall="$first_option";
@@ -8568,7 +8568,7 @@ fi
 ####
 ####
 if [ "$first_option" == "input-permisive" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem input-permisive ]" ;
+echo "$title_md $text_info [ loading firewall wallcontrol input-permisive ]" ;
 launch_rules_firewall="yes" ;
 type_firewall="input-permisive" ;
 name_firewall="$first_option";
@@ -8586,7 +8586,7 @@ fi
 ####
 ####
 if [ "$first_option" == "input-established" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem input-established ]" ;
+echo "$title_md $text_info [ loading firewall wallcontrol input-established ]" ;
 launch_rules_firewall="yes" ;
 type_firewall="input-established" ;
 name_firewall="$first_option";
