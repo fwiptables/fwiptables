@@ -8545,8 +8545,8 @@ if [ "$second_option" != "$NULL" ]; then
 server_port_tcp="$second_option"
 else
 echo "$info_md Put the ports tcp servers"
-echo "$info_md Example: $cmd_basename $first_option 20:22,80"
-echo "$info_md tiny-tcp configured like only client."
+echo "$info_md Example: $cmd_basename tiny-tcp 20:22,80"
+echo "$info_md The tiny-tcp configured like only client."
 fi
 ####
 ####
