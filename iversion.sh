@@ -70,24 +70,31 @@ echo ; exit ; fi
 #### configs for fwiptables
 ####
 ####
-#### name files
+#### The name files
 cmd_realpath="$(realpath $0)"                              # fully routename
 cmd_basename="$(basename $0)"                              # only  filename
-#### number version
+#### The number version
 cmd_year="24"                                              # number year version
-cmd_month="07"                                             # number mouth version
-cmd_letter="m"                                             # number letter version
+cmd_month="08"                                             # number mouth version
+cmd_letter="a"                                             # number letter version
 cmd_version="$cmd_year-$cmd_month$cmd_letter"              # final date like number version
-#### name location
+#### the install location
 cmd_name="fwiptables"                                      # filename installed
 cmd_directory="/usr/bin"                                   # directory installed
-#### data program
+#### The data version
 cmd_developer="Francisco Garcia"                           # actual developer
 cmd_contact="fwiptables@gmx.com"                           # actual contact
 cmd_shortdescription="FireWall With iptables"              # description short
 cmd_longdescription="One Mini Script in one-file wizard"   # description long
 cmd_license="GPL v2, LGPL v2, BSD"                         # program license
-#### web oficial
+####
+####
+#### :rutina-final-enviroment:
+##########     english name, description and version    ##########
+##########     spanish: nombre, descripcion y version   ##########
+#### :rutina-inicial-web-official:
+####
+####
 content_license_gpl=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-GPL.txt?format=raw"
 content_license_lgpl=\
@@ -112,7 +119,7 @@ git_download_sourceforge=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/iversion.sh?format=raw" ;
 ####
 ####
-#### :rutina-final-enviroment:
+#### :rutina-final-web-official:
 ##########   english: search programs: programs path           ##########
 ##########   spanish: busca los programas: ruta de programas   ##########
 #### :rutina-inicial-possible-commands:
@@ -272,7 +279,6 @@ esac
 #### :rutina-inicial-order-options:
 ####
 ####
-command_sed="$(command -v sed)"
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_dir="$(pwd)" ;
 #### #### english: option for default    #### spanish: opcion por defecto
@@ -574,7 +580,9 @@ config_ipv4_netserver="0/0"     ;
 config_ipv6_netclient="::/0"     ;
 config_ipv6_netserver="::/0"     ;
 ####
+####
 #### headers
+####
 ####
 title_md="### " ;
 text_md="  " ;
@@ -608,22 +616,29 @@ message_without_guiroll="$title_md $text_fail [ install zenity ]"
 ####
 #### proxy file
 ####
+####
 file_conf_clientproxy="$default_directory_proxy/fwiptables-proxy"
 ####
+####
 #### radio music
+####
 ####
 name_radio_group="radio.m3u8"
 file_radio_config="$default_directory_radio/fwiptables-config-$name_radio_group"
 file_radio_cache="$default_directory_radio/fwiptables-cache-$name_radio_group"
 ####
+####
 #### web adblock
+####
 ####
 web_blacklist_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
 web_blacklist_mvps="http://winhelp2002.mvps.org/hosts.txt"
 web_blacklist_adaway="https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
 web_blacklist_stevenblack="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
 ####
+####
 #### file adblock
+####
 ####
 file_blacklist_fademind="$default_directory_adblock/hosts.blacklist_fademind"
 file_blacklist_mvps="$default_directory_adblock/hosts.blacklist_mvps"
@@ -635,6 +650,7 @@ file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenbla
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
 #### :rutina-inicial-update-variables:
+####
 ####
 #### Update variables
 if [ -f "$file_default_preferences" ]; then source $file_default_preferences ; fi
@@ -913,17 +929,11 @@ fi
 #### :rutina-inicial-alias-simple:
 ####
 ####
-####
-####
 ##########     ALIAS SIMPLE
 ##########     ALIAS SIMPLE
-####
-####
 ####
 ####
 #### english:  alias firewall-list with conceputal firewall-listconceptual:
-####
-####
 #### english:  alias firewall-list with numeral firewall-listnumeral:
 ####
 ####
@@ -1100,6 +1110,7 @@ favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldial
 first_option="gui-menu" 
 second_option="$favorite_basename_graphicalldialog"
 ;;
+####
 ####
 esac
 ####
@@ -2394,28 +2405,24 @@ exit; fi
 ####
 if [ "$first_option" == "notes" ]; then 
 echo "$title_md [ $first_option ] [ List notes about ] [ notes md ]"
-echo "$text_md"
-echo "$title_md General Notes"
-echo "$text_md [ legacy or nft ] whith one of them is sufficent "   
-echo "$text_md [ allow shield maxtries ] limit against attack per bruteforce "   
-echo "$text_md [ net blacklist ] excepcionals hosts has conection dropped in firewall"   
-echo "$text_md [ net whitelist ] excepcionals hosts has conection allowed in firewall"   
-echo "$text_md [ input-established ] the computer is only client "   
-echo "$text_md [ allow output uid/gid ] User and/or group excepcional with conection allowed"   
-echo "$text_md"
-echo "$title_md Two iptables netfilter"   
-echo "$text_md iptables-legacy   is    support for xtables"    
-echo "$text_md iptables-nft      is    support for nftables"    
-echo "$text_md"
-echo "$title_md Necesary ports to connect with ipv4 and ipv6 in UDP protocol"   
-echo "$text_md ntp    : Port necesary to update the time and date"   
-echo "$text_md bootpc : Port necesary to dhcp and get ip"   
-echo "$text_md domain : This port is necesary to domain resolver"   
-echo "$text_md https  : This port is necesary for udp named web html5"   
-echo "$text_md"
-echo "$title_md Necesary protocols for ipv6"   
-echo "$text_md ipv6-icmp  : Necesary protocol in ipv6"   
-echo "$text_md ipv4 ports : ipv6 works too with old ipv4 ports"
+echo "$title_md          General Notes $text_md"
+echo "$text_md           Legacy or nft: whith one of them is sufficent $text_md"   
+echo "$text_md   Allow shield maxtries: limit against attack per bruteforce $text_md"   
+echo "$text_md               Blacklist: excepcionals hosts has conection dropped in firewall $text_md"   
+echo "$text_md               whitelist: excepcionals hosts has conection allowed in firewall $text_md"   
+echo "$text_md       input-established: the computer is only client $text_md"   
+echo "$text_md    allow output uid/gid: User and/or group excepcional with conection allowed $text_md"   
+echo "$title_md   Two iptables netfilter $text_md"   
+echo "$text_md         iptables-legacy: support for xtables $text_md"    
+echo "$text_md            iptables-nft: support for nftables $text_md"    
+echo "$title_md   Necesary ports to connect with ipv4 and ipv6 in UDP protocol $text_md"   
+echo "$text_md                     ntp: Port necesary to update the time and date $text_md"   
+echo "$text_md                  bootpc: Port necesary to dhcp and get ip $text_md"   
+echo "$text_md                  domain: This port is necesary to domain resolver $text_md"   
+echo "$text_md                   https: This port is necesary for udp named web html5$text_md"   
+echo "$title_md    Necesary protocols for ipv6 $text_md"   
+echo "$text_md               ipv6-icmp: Necesary protocol in ipv6 $text_md"   
+echo "$text_md              ipv4 ports: ipv6 works too with old ipv4 ports $text_md"
 echo "$text_md"   
 exit; fi
 ####
@@ -5520,10 +5527,10 @@ exit; fi
 ####
 if   [ "$first_option" == "compile" ]; then 
 echo "$title_md [ $first_option ] [ Optionally compile from bash script ] [ compile md]  "   
-echo "$text_md BASH SCRIPT WORKS fully. But if your desire is compiling...    "       
-echo "$text_md Necesary fwiptables in source script bash                "     
-echo "$text_md Download and install obash from oficial web internet     "      
-echo "$text_md Run: obash -s -c -o ./destination.bin ./source-bash.sh   "      
+echo "$text_md $text_md BASH SCRIPT WORKS fully. But if your desire is compiling...   $text_md"       
+echo "$text_md $text_md Necesary fwiptables in source script bash $text_md"     
+echo "$text_md $text_md Download and install obash from oficial web internet $text_md"      
+echo "$text_md $text_md Run: obash -s -c -o ./destination.bin ./source-bash.sh $text_md"      
 exit; fi
 ####
 ####
