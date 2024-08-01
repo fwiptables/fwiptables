@@ -8571,7 +8571,7 @@ if [ "$first_option" == "tiny-udp" ]
 then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
 launch_rules_firewall="yes" ;
 type_firewall="tinycustom" ;
-name_firewall="tiny-tcp" ;
+name_firewall="tiny-udp" ;
 first_option="loadtiny-custom" ;
 ####
 ####
