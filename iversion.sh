@@ -8554,7 +8554,7 @@ server_port_tcp="$second_option"
 else
 echo "$info_md Put the ports tcp servers"
 echo "$info_md Example: $cmd_basename tiny-tcp 20:22,80"
-echo "$info_md The tiny-tcp configured like only client."
+echo "$info_md The tiny-tcp configured like only client for all protocols."
 fi
 ####
 ####
@@ -8584,7 +8584,7 @@ server_port_udp="$second_option"
 else
 echo "$info_md Put the ports udp servers"
 echo "$info_md Example: $cmd_basename tiny-udp 20:22,80"
-echo "$info_md The tiny-udp configured like only client."
+echo "$info_md The tiny-udp configured like only client for all protocols."
 fi
 ####
 ####
