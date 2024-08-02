@@ -978,6 +978,8 @@ esac
 ####
 ####
 case "$first_option" in
+"-info") first_option="info" ;;
+"--info") first_option="info" ;;
 "--narrowtxt") first_option="narrowtxt" ;;
 "-narrowtxt") first_option="narrowtxt" ;;
 "--text") first_option="txt" ;;
@@ -995,6 +997,7 @@ case "$first_option" in
 "--silent") first_option="null" ;;
 "-pdf") first_option="pdf" ;;
 "--pdf") first_option="pdf" ;;
+"i") first_option="info" ;;
 "n") first_option="narrowtxt" ;;
 "t") first_option="txt" ;;
 "c") first_option="cli" ;;
@@ -1002,6 +1005,7 @@ case "$first_option" in
 "l") first_option="logtxt" ;;
 "s") first_option="null" ;;
 "p") first_option="pdf" ;;
+"-i") first_option="info" ;;
 "-n") first_option="narrowtxt" ;;
 "-t") first_option="txt" ;;
 "-c") first_option="cli" ;;
@@ -3070,7 +3074,7 @@ echo "$text_md $cmd_basename [optional-output] first_option [second_option]  "
 #### all option list
 ####
 echo "$title_md    optional-output                                                      "
-echo "$text_md [ t|txt n|narrowtxt l|logtxt c|cli g|gui p|pdf s|silent ]                "
+echo "$text_md [ t|txt n|narrowtxt l|logtxt c|cli g|gui p|pdf s|silent i|info ]         "
 echo "$text_md [ cli-dialog cli-whiptail gui-zenity gui-yad ]                           "
 echo "$text_md [ cli-menu-dialog cli-menu-whiptail gui-roll-zenity ]                    "
 echo "$text_md [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ]          "
@@ -3498,7 +3502,6 @@ exit; fi
 ##########    english: info-options: options for fwiptables firewall      ##########
 ##########    spanish: info-options: opciones para fwiptables firewall    ##########
 #### :rutina-inicial-info-options:
-#### :rutina-inicial-info:
 ####
 ####
 if   [ "$first_option" == "info-options" ]; then 
@@ -3515,7 +3518,6 @@ $cmd_realpath expert
 exit; fi
 ####
 ####
-#### :rutina-final-info:
 #### :rutina-final-info-options:
 ##########    english: optional-output: options for fwiptables firewall      ##########
 ##########    spanish: optional-output: opciones para fwiptables firewall    ##########
@@ -3527,13 +3529,15 @@ if   [ "$first_option" == "optional-output" ]; then
 echo "$text_md "
 echo "$title_md | optional-output | $cmd_basename optional-ouptut |"
 echo "$text_md"
+echo "$text_md | i . output in info text  "  
 echo "$text_md | t . output in terminal text  "  
 echo "$text_md | n . output in terminal text narrowtxt (compresed spaces)  "  
 echo "$text_md | c . output in terminal cli  "  
 echo "$text_md | g . output in graphicall gui  "  
 echo "$text_md | l . output in file text log  "  
 echo "$text_md | p . output in file image pdf  "  
-echo "$text_md | s . output in silent or null  "  
+echo "$text_md | s . output in silent or null  " 
+echo "$text_md | info . output in info text  "   
 echo "$text_md | txt . output in terminal text  "  
 echo "$text_md | narrowtxt . output in terminal text narrowtxt (compresed spaces)  "  
 echo "$text_md | cli . output in terminal cli  "  
@@ -5595,9 +5599,15 @@ exit; fi
 ####
 if   [ "$first_option" == "info" ]; then 
 echo "$title_md [ $first_option ]  [ info $second_option ]"
-echo "$title_md Launch:  $cmd_realpath [optional-output] info [pattern-to-search]"
-$cmd_realpath info-options | $command_grep -i "$second_option" | $command_grep -Ev "###" 
+echo "$title_md                 Launch:  $cmd_realpath [optional-output] info [pattern-to-search]"
+echo "$title_md                Example:  $cmd_realpath [optional-output] info ls"
+echo "$title_md    To show all options: $cmd_realpath [optional-output] info-options"
+if   [ "$second_option" == "$NULL" ]; then exit
+else $cmd_realpath info-options | $command_grep -i "$second_option" | $command_grep -Ev "###" 
 exit; fi
+####
+####
+fi
 ####
 ####
 #### :rutina-final-info:
