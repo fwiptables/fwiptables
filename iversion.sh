@@ -5596,7 +5596,7 @@ exit; fi
 if   [ "$first_option" == "info" ]; then 
 echo "$title_md [ $first_option ]  [ info $second_option ]"
 echo "$title_md Launch:  $cmd_realpath [optional-output] info [pattern-to-search]"
-$cmd_realpath info-options | $command_grep -i "$second_option"
+$cmd_realpath info-options | $command_grep -i "$second_option" | $command_grep -Ev "\|\ fwiptables" 
 exit; fi
 ####
 ####
