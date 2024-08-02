@@ -2234,12 +2234,11 @@ exit; fi
 ####
 if [ "$first_option" == "utils" ]; then
 echo "$title_md [ $first_option ] [ List for posible utils programs ] [ utils md ] "
-echo
 if [ "$command_fmt" == "$NULL" ]; then
-$cmd_realpath code command | $command_grep -E "^command_" | \
+$cmd_realpath code possible-commands | $command_grep -E "^command_" | \
 $command_cut -d "=" -f 1 | $command_cut -d "_" -f 2
 else
-$cmd_realpath code command | $command_grep -E "^command_" | \
+$cmd_realpath code possible-commands | $command_grep -E "^command_" | \
 $command_cut -d "=" -f 1 | $command_cut -d "_" -f 2 | $command_fmt
 fi ; exit ; fi
 ####
