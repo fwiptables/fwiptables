@@ -4791,66 +4791,81 @@ exit; fi
 ####
 ####
 #### :rutina-final-reset:
+##########   english: readme: show intro      ##########
+##########   spanish: readme: muestra intro   ##########
+#### :rutina-inicial-readme:
+####
+####
+if  [ "$first_option" == "readme" ]; then 
+echo "$title_md $text_md fwiptables. Firewall With iptables.   [ readme md ] $text_md"
+echo "$text_md $text_md. $text_md"
+echo "$text_md $text_md The fwiptables is a one-file WIZARD, $text_md"
+echo "$text_md $text_md for iptables, with COMMAND-LINE,     $text_md"
+echo "$text_md $text_md and CLI-MENU, and GUI-MENU,          $text_md"
+echo "$text_md $text_md and GUI-ROLL, and GUI-SHELL.         $text_md"
+echo "$text_md $text_md. $text_md"
+echo "$text_md $text_md From one system firewall to choose one,  $text_md"
+echo "$text_md $text_md with eraserules, or template custom,     $text_md"
+echo "$text_md $text_md with new wizards: -tiny -mini -full ,    $text_md"  
+echo "$text_md $text_md with added comments rules in firewall.   $text_md"
+echo "$text_md $text_md. $text_md"
+echo "$text_md $text_md With rules ipv4, rules ipv6, ebtables, arptables,  $text_md"
+echo "$text_md $text_md with netfilter neftables, netfilter xtables,       $text_md"
+echo "$text_md $text_md with tools ip, wizards for generate new rules,     $text_md"
+echo "$text_md $text_md with save/load rules with files standard iptables, $text_md"
+echo "$text_md $text_md with shield to ssh or other servers choosed,       $text_md"         
+echo "$text_md $text_md with limit bandwidth, string word,                 $text_md"
+echo "$text_md $text_md with host whitelist, host blacklist,               $text_md"
+echo "$text_md $text_md with other more capabilities of firewall.          $text_md"
+echo "$text_md $text_md . $text_md"
+echo "$title_md  fwiptables location.                            $text_md"
+echo "$text_md . $text_md"
+echo "$text_md  File    Location:   $cmd_directory/$cmd_name     $text_md"
+echo "$text_md  Config Directory:   $directory_data_necesary     $text_md"
+echo "$text_md  Cache  Directory:   $directory_cache_necesary    $text_md "
+echo "$text_md . $text_md"
+echo "$title_md fwiptables install.                         $text_md"
+echo "$text_md . $text_md"
+echo "$text_md  su root TYPE: su root                       $text_md"    
+echo "$text_md  put bit TYPE: chmod 755 ./$cmd_basename     $text_md"
+echo "$text_md  install TYPE: ./$cmd_basename install       $text_md" 
+echo "$text_md . $text_md"
+echo "$title_md $text_md fwiptables uninstall.                   $text_md"
+echo "$text_md . $text_md"
+echo "$text_md $text_md uninstall TYPE: $cmd_name uninstall      $text_md"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-readme:
 ##########   english: intro: show intro      ##########
 ##########   spanish: intro: muestra intro   ##########
 #### :rutina-inicial-intro:
 ####
 ####
 if  [ "$first_option" == "intro" ]; then 
-echo "$text_md"
-echo "$title_md fwiptables. Firewall With iptables.   [ intro md ] "
-echo "$text_md"
-echo "$text_md The fwiptables is a one-file WIZARD,     "
-echo "$text_md  for iptables, with COMMAND-LINE,          "
-echo "$text_md  and CLI-MENU, and GUI-MENU,               "
-echo "$text_md  and GUI-ROLL, and GUI-SHELL.              "
-echo "$text_md"
-echo "$text_md From one system firewall to choose one,   "
-echo "$text_md  with eraserules, or template custom,       "
-echo "$text_md  with new wizards: -tiny -mini -full ,      "  
-echo "$text_md  with added comments rules in firewall.     "
-echo "$text_md"
-echo "$text_md With rules ipv4, rules ipv6, ebtables, arptables,  "
-echo "$text_md  with netfilter neftables, netfilter xtables,        "
-echo "$text_md  with tools ip, wizards for generate new rules,      "
-echo "$text_md  with save/load rules with files standard iptables,  "
-echo "$text_md  with shield to ssh or other servers choosed,        "         
-echo "$text_md  with limit bandwidth, string word,                  "
-echo "$text_md  with host whitelist, host blacklist,                "
-echo "$text_md  with other more capabilities of firewall.           "
-echo "$text_md"
-echo "$text_md"
-echo "$title_md  fwiptables location.                    "
-echo "$text_md"
-echo "$text_md  File    Location:   $cmd_directory/$cmd_name     "
-echo "$text_md  Config Directory:   $directory_data_necesary     "
-echo "$text_md  Cache  Directory:   $directory_cache_necesary     "
-echo "$text_md"
-echo "$title_md fwiptables install.                     "
-echo "$text_md"
-echo "$text_md  su root TYPE: su root                       "    
-echo "$text_md  put bit TYPE: chmod 755 ./$cmd_basename     "
-echo "$text_md  install TYPE: ./$cmd_basename install       " 
-echo "$text_md"
-echo "$title_md fwiptables uninstall.                   "
-echo "$text_md"
-echo "$text_md  uninstall TYPE: $cmd_name uninstall  "
-echo "$text_md"
+echo "$title_md $text_md fwiptables. Firewall With iptables.   [ intro md ] $text_md"
+echo "$text_md . $text_md"
+$cmd_realpath readme
+echo "$text_md . $text_md"
 $cmd_realpath version
-echo "$text_md"
+echo "$text_md . $text_md"
 $cmd_realpath notes
-echo "$text_md"
+echo "$text_md . $text_md"
 $cmd_realpath compile
-echo "$text_md"
+echo "$text_md . $text_md"
 $cmd_realpath examples
-echo "$text_md"
-echo "$title_md"
-echo "$title_md"
+echo "$text_md .$text_md"
+echo "$title_md . $text_md"
+echo "$title_md . $text_md"
 echo "$title_md [ options ] [ List general options for fwiptables ] [ list-options md ]"
-echo "$text_md"
+echo "$text_md . $text_md"
 $cmd_realpath options
-echo "$text_md"
+echo "$text_md". $text_md
 $cmd_realpath optional-output
+####
+####
 exit; fi
 ####
 ####
