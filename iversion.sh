@@ -8338,7 +8338,11 @@ server_port_tcp="$second_option"
 echo "$text_info Introducction: Put the ports tcp servers"
 echo "$text_info Example: $cmd_basename tinyserver-tcp 20:22,80"
 echo "$text_info The tinyserver-tcp configured like only client for all protocols."
+####
+####
+if [ "$second_option" != "$NULL" ]; then
 echo "$text_ok Server with ports tcp $second_option"  
+fi
 ####
 ####
 fi
@@ -8362,7 +8366,11 @@ server_port_udp="$second_option"
 echo "$text_info Introducction: Put the ports udp servers"
 echo "$text_info Example: $cmd_basename tinyserver-udp 20:22,80"
 echo "$text_info The tinyserver-udp configured like only client for all protocols."
+####
+####
+if [ "$second_option" != "$NULL" ]; then
 echo "$text_ok Server with ports udp $second_option"  
+fi
 ####
 ####
 fi
@@ -8387,7 +8395,11 @@ client_port_tcp="http,https,http-alt,ssh" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 echo "$text_info Introducction: Put the ports tcp servers"
 echo "$text_info Example: $cmd_basename miniserver-tcp 20:22,80"
+####
+####
+if [ "$second_option" != "$NULL" ]; then
 echo "$text_ok Server with ports tcp $second_option"  
+fi
 ####
 ####
 fi
@@ -8412,7 +8424,11 @@ client_port_tcp="http,https,http-alt,ssh" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 echo "$text_info Introducction: Put the ports udp servers"
 echo "$text_info Example: $cmd_basename mioniserver-udp 20:22,80"
+####
+####
+if [ "$second_option" != "$NULL" ]; then
 echo "$text_ok Server with ports udp $second_option"  
+fi
 ####
 ####
 fi
