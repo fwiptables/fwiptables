@@ -8385,7 +8385,7 @@ server_port_tcp="$second_option" ;
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-echo "$text_info Introducction: Put the ports tcp client"
+echo "$text_info Introducction: Put the ports tcp servers"
 echo "$text_info Example: $cmd_basename miniserver-tcp 20:22,80"
 echo "$text_ok Server with ports tcp $second_option"  
 ####
@@ -8410,7 +8410,7 @@ server_port_tcp="" ;
 server_port_udp="$second_option" ;
 client_port_tcp="http,https,http-alt,ssh" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-echo "$text_info Introducction: Put the ports udp client"
+echo "$text_info Introducction: Put the ports udp servers"
 echo "$text_info Example: $cmd_basename mioniserver-udp 20:22,80"
 echo "$text_ok Server with ports udp $second_option"  
 ####
