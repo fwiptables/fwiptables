@@ -2293,8 +2293,8 @@ if [ "$first_option" == "options-examples" ]; then
 echo "$title_md $text_md [ $first_option ] [ List examples ] [ examples md ] $text_md"
 echo "$title_md $text_md [ Several examples with server tiny ] $text_md"
 echo "$text_md .$text_md"  
-echo "$text_md $text_md | tiny-tcp                 | $cmd_name tiny-tcp 21:25,80   $text_md"  
-echo "$text_md $text_md | tiny-udp                 | $cmd_name tiny-udp 67:68,443  $text_md"  
+echo "$text_md $text_md | tinyserver-tcp                 | $cmd_name tinyserver-tcp 21:25,80   $text_md"  
+echo "$text_md $text_md | tinyserver-udp                 | $cmd_name tinyserver-udp 67:68,443  $text_md"  
 echo "$text_md $text_md | wizard tiny              | $cmd_name wizard-tiny         $text_md"  
 echo "$text_md . $text_md"
 echo "$title_md $text_md [ Several examples without optional otuput ]      $text_md"
@@ -3092,7 +3092,8 @@ echo "$text_md without-connection input-permisive input-established             
 echo "$title_md    firewall-wallcustom                                                  "
 echo "$text_md new-full-custom nueva-completa-custom new-mini-custom                    "
 echo "$text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom                  "
-echo "$text_md clone-wallsystem load-custom loadtiny-custom tiny-tcp tiny-udp           "
+echo "$text_md clone-wallsystem load-custom loadtiny-custom tinyserver-tcp              "
+echo "$text_md tinyserver-udp miniclient-tcp miniclient-udp                             "
 echo "$text_md show-custom modify-custom del-custom names-custom                        "
 echo "$title_md    firewall-wallsystem                                                  "
 echo "$text_md client-basic client-web client-ssh client-telnet client-ipp              "
@@ -3317,8 +3318,8 @@ echo "$text_md | new-tiny-custom . create new tiny config in english  "
 echo "$text_md | nueva-completa-custom . create new full config in spanish  "  
 echo "$text_md | nueva-mini-custom . create new full config in spanish  "   
 echo "$text_md | nueva-diminuta-custom . create new tiny config in spanish  " 
-echo "$text_md | tiny-tcp . all client and selected servers tcp in command"   
-echo "$text_md | tiny-udp . all client and selected servers udp in command"
+echo "$text_md | tinyserver-tcp . all client and selected servers tcp in command"   
+echo "$text_md | tinyserver-udp . all client and selected servers udp in command"
 echo "$text_md | clone-wallsystem . clone a static firewall predesignated  "  
 echo "$text_md | show-custom . show config-file choosed  "   
 echo "$text_md | modify-custom . modify config-file choosed  "  
@@ -8318,16 +8319,16 @@ fi
 ####
 ####
 #### :rutina-final-loadtiny-custom:
-##########   english: tiny-tcp: firewall      ##########
-##########   spanish: tiny-tcp: cortafuegos   ##########
-#### :rutina-inicial-tiny-tcp:
+##########   english: tinyserver-tcp: firewall      ##########
+##########   spanish: tinyserver-tcp: cortafuegos   ##########
+#### :rutina-inicial-tinyserver-tcp:
 ####
 ####
-if [ "$first_option" == "tiny-tcp" ]
+if [ "$first_option" == "tinyserver-tcp" ]
 then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
 launch_rules_firewall="yes" ;
 type_firewall="tinycustom" ;
-name_firewall="tiny-tcp" ;
+name_firewall="tinyserver-tcp" ;
 first_option="loadtiny-custom" ;
 ####
 ####
@@ -8338,26 +8339,26 @@ first_option="loadtiny-custom" ;
 if [ "$second_option" != "$NULL" ]; then
 server_port_tcp="$second_option"
 else
-echo "$info_md Put the ports tcp servers"
-echo "$info_md Example: $cmd_basename tiny-tcp 20:22,80"
-echo "$info_md The tiny-tcp configured like only client for all protocols."
+echo "$text_info Introducction: Put the ports tcp servers"
+echo "$text_info Example: $cmd_basename tinyserver-tcp 20:22,80"
+echo "$text_info The tinyserver-tcp configured like only client for all protocols."
 fi
 ####
 ####
 fi
 ####
 ####
-#### :rutina-final-tiny-tcp:
-##########   english: tiny-udp: firewall      ##########
-##########   spanish: tiny-udp: cortafuegos   ##########
-#### :rutina-inicial-tiny-udp:
+#### :rutina-final-tinyserver-tcp:
+##########   english: tinyserver-udp: firewall      ##########
+##########   spanish: tinyserver-udp: cortafuegos   ##########
+#### :rutina-inicial-tinyserver-udp:
 ####
 ####
-if [ "$first_option" == "tiny-udp" ]
+if [ "$first_option" == "tinyserver-udp" ]
 then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
 launch_rules_firewall="yes" ;
 type_firewall="tinycustom" ;
-name_firewall="tiny-udp" ;
+name_firewall="tinyserver-udp" ;
 first_option="loadtiny-custom" ;
 ####
 ####
@@ -8368,16 +8369,80 @@ first_option="loadtiny-custom" ;
 if [ "$second_option" != "$NULL" ]; then
 server_port_udp="$second_option"
 else
-echo "$info_md Put the ports udp servers"
-echo "$info_md Example: $cmd_basename tiny-udp 20:22,80"
-echo "$info_md The tiny-udp configured like only client for all protocols."
+echo "$text_info Introducction: Put the ports udp servers"
+echo "$text_info Example: $cmd_basename tinyserver-udp 20:22,80"
+echo "$text_info The tinyserver-udp configured like only client for all protocols."
 fi
 ####
 ####
 fi
 ####
 ####
-#### :rutina-final-tiny-udp:
+#### :rutina-final-tinyserver-udp:
+##########   english: miniclient-tcp: firewall      ##########
+##########   spanish: miniclient-tcp: cortafuegos   ##########
+#### :rutina-inicial-miniclient-tcp:
+####
+####
+if [ "$first_option" == "miniclient-tcp" ]
+then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
+launch_rules_firewall="yes" ;
+type_firewall="wallsystem"    ; 
+name_firewall="$first_option" ;
+####
+####
+#### english: configure variables if there are
+#### spanish: configura variables modificadas si estan ahi
+####
+####
+if [ "$second_option" != "$NULL" ]; then
+server_port_tcp="" ;
+server_port_udp="" ;
+client_port_tcp="$second_option" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+else
+echo "$text_info Introducction: Put the ports tcp client"
+echo "$text_info Example: $cmd_basename mniniclient-tcp 20:22,80"
+echo "$text_fail No loaded"
+exit ; fi
+####
+####
+fi
+####
+####
+#### :rutina-final-miniclient-tcp:
+##########   english: miniclient-udp: firewall      ##########
+##########   spanish: miniclient-udp: cortafuegos   ##########
+#### :rutina-inicial-miniclient-udp:
+####
+####
+if [ "$first_option" == "miniclient-udp" ]
+then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
+launch_rules_firewall="yes" ;
+type_firewall="wallsystem"    ; 
+name_firewall="$first_option" ;
+####
+####
+#### english: configure variables if there are
+#### spanish: configura variables modificadas si estan ahi
+####
+####
+if [ "$second_option" != "$NULL" ]; then
+server_port_tcp="" ;
+server_port_udp="" ;
+client_port_tcp="http,https,http-alt,ssh" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,$second_option" ;
+else
+echo "$text_info Introducction: Put the ports udp client"
+echo "$text_info Example: $cmd_basename mniniclient-udp 20:22,80"
+echo "$text_fail No loaded"
+exit ; fi
+####
+####
+fi
+####
+####
+#### :rutina-final-miniclient-udp:
 ##########    english: ready system rules con its option               ##########
 ##########    spanish: preprara reglas del sistema con sus opciones    ##########
 ####
