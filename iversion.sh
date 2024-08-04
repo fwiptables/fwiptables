@@ -3320,6 +3320,8 @@ echo "$text_md | nueva-mini-custom . create new full config in spanish  "
 echo "$text_md | nueva-diminuta-custom . create new tiny config in spanish  " 
 echo "$text_md | tinyserver-tcp . all client and selected servers tcp in command"   
 echo "$text_md | tinyserver-udp . all client and selected servers udp in command"
+echo "$text_md | miniserver-tcp . usual clients and selected servers tcp in command"   
+echo "$text_md | miniserver-udp . usual clients and selected servers udp in command"
 echo "$text_md | clone-wallsystem . clone a static firewall predesignated  "  
 echo "$text_md | show-custom . show config-file choosed  "   
 echo "$text_md | modify-custom . modify config-file choosed  "  
@@ -8332,17 +8334,11 @@ name_firewall="tinyserver-tcp" ;
 first_option="loadtiny-custom" ;
 ####
 ####
-#### english: configure load-custom variables if there are
-#### spanish: configura variables modificadas si estan ahi
-####
-####
-if [ "$second_option" != "$NULL" ]; then
 server_port_tcp="$second_option"
-else
 echo "$text_info Introducction: Put the ports tcp servers"
 echo "$text_info Example: $cmd_basename tinyserver-tcp 20:22,80"
 echo "$text_info The tinyserver-tcp configured like only client for all protocols."
-fi
+echo "$text_ok Server with ports tcp $second_option"  
 ####
 ####
 fi
@@ -8362,17 +8358,11 @@ name_firewall="tinyserver-udp" ;
 first_option="loadtiny-custom" ;
 ####
 ####
-#### english: configure load-custom variables if there are
-#### spanish: configura variables modificadas si estan ahi
-####
-####
-if [ "$second_option" != "$NULL" ]; then
 server_port_udp="$second_option"
-else
 echo "$text_info Introducction: Put the ports udp servers"
 echo "$text_info Example: $cmd_basename tinyserver-udp 20:22,80"
 echo "$text_info The tinyserver-udp configured like only client for all protocols."
-fi
+echo "$text_ok Server with ports udp $second_option"  
 ####
 ####
 fi
