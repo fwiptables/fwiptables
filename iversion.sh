@@ -3093,7 +3093,7 @@ echo "$title_md    firewall-wallcustom                                          
 echo "$text_md new-full-custom nueva-completa-custom new-mini-custom                    "
 echo "$text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom                  "
 echo "$text_md clone-wallsystem load-custom loadtiny-custom tinyserver-tcp              "
-echo "$text_md tinyserver-udp miniclient-tcp miniclient-udp                             "
+echo "$text_md tinyserver-udp miniserver-tcp miniserver-udp                             "
 echo "$text_md show-custom modify-custom del-custom names-custom                        "
 echo "$title_md    firewall-wallsystem                                                  "
 echo "$text_md client-basic client-web client-ssh client-telnet client-ipp              "
@@ -8379,70 +8379,56 @@ fi
 ####
 ####
 #### :rutina-final-tinyserver-udp:
-##########   english: miniclient-tcp: firewall      ##########
-##########   spanish: miniclient-tcp: cortafuegos   ##########
-#### :rutina-inicial-miniclient-tcp:
+##########   english: miniserver-tcp: firewall      ##########
+##########   spanish: miniserver-tcp: cortafuegos   ##########
+#### :rutina-inicial-miniserver-tcp:
 ####
 ####
-if [ "$first_option" == "miniclient-tcp" ]
+if [ "$first_option" == "miniserver-tcp" ]
 then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
 launch_rules_firewall="yes" ;
 type_firewall="wallsystem"    ; 
 name_firewall="$first_option" ;
 ####
 ####
-#### english: configure variables if there are
-#### spanish: configura variables modificadas si estan ahi
-####
-####
-if [ "$second_option" != "$NULL" ]; then
-server_port_tcp="" ;
-server_port_udp="" ;
-client_port_tcp="$second_option" ;
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
-else
-echo "$text_info Introducction: Put the ports tcp client"
-echo "$text_info Example: $cmd_basename mniniclient-tcp 20:22,80"
-echo "$text_fail No loaded"
-exit ; fi
-####
-####
-fi
-####
-####
-#### :rutina-final-miniclient-tcp:
-##########   english: miniclient-udp: firewall      ##########
-##########   spanish: miniclient-udp: cortafuegos   ##########
-#### :rutina-inicial-miniclient-udp:
-####
-####
-if [ "$first_option" == "miniclient-udp" ]
-then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
-launch_rules_firewall="yes" ;
-type_firewall="wallsystem"    ; 
-name_firewall="$first_option" ;
-####
-####
-#### english: configure variables if there are
-#### spanish: configura variables modificadas si estan ahi
-####
-####
-if [ "$second_option" != "$NULL" ]; then
-server_port_tcp="" ;
+server_port_tcp="$second_option" ;
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh" ;
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,$second_option" ;
-else
-echo "$text_info Introducction: Put the ports udp client"
-echo "$text_info Example: $cmd_basename mniniclient-udp 20:22,80"
-echo "$text_fail No loaded"
-exit ; fi
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+echo "$text_info Introducction: Put the ports tcp client"
+echo "$text_info Example: $cmd_basename miniserver-tcp 20:22,80"
+echo "$text_ok Server with ports tcp $second_option"  
 ####
 ####
 fi
 ####
 ####
-#### :rutina-final-miniclient-udp:
+#### :rutina-final-miniserver-tcp:
+##########   english: miniserver-udp: firewall      ##########
+##########   spanish: miniserver-udp: cortafuegos   ##########
+#### :rutina-inicial-miniserver-udp:
+####
+####
+if [ "$first_option" == "miniserver-udp" ]
+then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
+launch_rules_firewall="yes" ;
+type_firewall="wallsystem"    ; 
+name_firewall="$first_option" ;
+####
+####
+server_port_tcp="" ;
+server_port_udp="$second_option" ;
+client_port_tcp="http,https,http-alt,ssh" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+echo "$text_info Introducction: Put the ports udp client"
+echo "$text_info Example: $cmd_basename mioniserver-udp 20:22,80"
+echo "$text_ok Server with ports udp $second_option"  
+####
+####
+fi
+####
+####
+#### :rutina-final-miniserver-udp:
 ##########    english: ready system rules con its option               ##########
 ##########    spanish: preprara reglas del sistema con sus opciones    ##########
 ####
