@@ -64,7 +64,7 @@ echo ; exit ; fi
 #### :rutina-final-admin:
 ##########     english name, description and version    ##########
 ##########     spanish: nombre, descripcion y version   ##########
-#### :rutina-inicial-enviroment:
+#### :rutina-inicial-enviroment-vars:
 ####
 ####
 #### configs for fwiptables
@@ -89,7 +89,7 @@ cmd_longdescription="One Mini Script in one-file wizard"   # description long
 cmd_license="GPL v2, LGPL v2, BSD"                         # program license
 ####
 ####
-#### :rutina-final-enviroment:
+#### :rutina-final-enviroment-vars:
 ##########     english name, description and version    ##########
 ##########     spanish: nombre, descripcion y version   ##########
 #### :rutina-inicial-web-official:
@@ -2291,11 +2291,17 @@ exit; fi
 ####
 if [ "$first_option" == "options-examples" ]; then
 echo "$title_md $text_md [ $first_option ] [ List examples ] [ examples md ] $text_md"
-echo "$title_md $text_md [ Several examples with server tiny ] $text_md"
+echo "$title_md $text_md [ Several examples with tiny server ] $text_md"
 echo "$text_md .$text_md"  
-echo "$text_md $text_md | tinyserver-tcp                 | $cmd_name tinyserver-tcp 21:25,80   $text_md"  
-echo "$text_md $text_md | tinyserver-udp                 | $cmd_name tinyserver-udp 67:68,443  $text_md"  
-echo "$text_md $text_md | wizard tiny              | $cmd_name wizard-tiny         $text_md"  
+echo "$text_md $text_md | launch tinyserver-tcp ports    | $cmd_name tinyserver-tcp 21:25,80   $text_md"  
+echo "$text_md $text_md | launch tinyserver-udp ports    | $cmd_name tinyserver-udp 67:68,443  $text_md"  
+echo "$text_md $text_md | launch wizard tiny             | $cmd_name wizard-tiny               $text_md"  
+echo "$text_md . $text_md"
+echo "$title_md $text_md [ Several examples with mini server ] $text_md"
+echo "$text_md .$text_md"  
+echo "$text_md $text_md | launch miniserver-tcp ports    | $cmd_name miniserver-tcp 21:25,80   $text_md"  
+echo "$text_md $text_md | launch miniserver-udp ports    | $cmd_name miniserver-udp 67:68,443  $text_md"  
+echo "$text_md $text_md | launch wizard mini             | $cmd_name wizard-mini               $text_md"  
 echo "$text_md . $text_md"
 echo "$title_md $text_md [ Several examples without optional otuput ]      $text_md"
 echo "$text_md . $text_md"
