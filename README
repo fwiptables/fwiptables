@@ -6,7 +6,7 @@
       for iptables, with COMMAND-LINE,       
       and CLI-MENU, and GUI-MENU,            
       and GUI-ROLL, and GUI-SHELL.           
-     .   
+      .   
       From one system firewall to choose one,    
       with eraserules, or template custom,       
       with new wizards: -tiny -mini -full ,      
@@ -21,26 +21,26 @@
       with host whitelist, host blacklist,                 
       with other more capabilities of firewall.            
       .   
-###   fwiptables location.                              
-   .   
-    File    Location:   /usr/bin/fwiptables       
-    Config Directory:   /root/.config/fwiptables       
-    Cache  Directory:   /root/.cache/fwiptables       
-   .   
-###  fwiptables install.                           
-   .   
-    su root TYPE: su root                         
-    put bit TYPE: chmod 755 ./fwiptables       
-    install TYPE: ./fwiptables install         
-   .   
-###     fwiptables uninstall.                     
-   .   
+###      fwiptables location.                              
+      .   
+       File    Location:   /usr/bin/fwiptables       
+       Config Directory:   /root/.config/fwiptables       
+       Cache  Directory:   /root/.cache/fwiptables       
+      .   
+###     fwiptables install.                           
+      .   
+       su root TYPE: su root                         
+       put bit TYPE: chmod 755 ./fwiptables       
+       install TYPE: ./fwiptables install         
+      .   
+###        fwiptables uninstall.                     
+      .   
       uninstall TYPE: fwiptables uninstall        
    .   
 ###  [ version ] [ Show version ] [ version md ]            
        Basename program: fwiptables               
        Realpath program: /usr/bin/fwiptables               
-        Version program: 24-08b                
+        Version program: 24-08c                
       Short description: FireWall With iptables       
        Long description: One Mini Script in one-file wizard        
        Developer Actual: Francisco Garcia              
@@ -55,7 +55,8 @@
      Allow shield maxtries: limit against attack per bruteforce   
                  Blacklist: excepcionals hosts has conection dropped in firewall   
                  whitelist: excepcionals hosts has conection allowed in firewall   
-                      tiny: client in all allowed, and servers selecteds manually   
+                tinyserver: client in all allowed, and servers selecteds manually   
+                miniserver: normal ports in client, and servers selecteds manually   
          input-established: the computer is only client   
       allow output uid/gid: User and/or group excepcional with conection allowed   
            iptables-legacy: support for xtables   
@@ -76,45 +77,45 @@
 ###     [ options-examples ] [ List examples ] [ examples md ]   
 ###     [ Several examples with tiny server ]   
    .  
-      | launch tinyserver-tcp ports    | fwiptables tinyserver-tcp 21:25,80     
-      | launch tinyserver-udp ports    | fwiptables tinyserver-udp 67:68,443    
-      | launch wizard tiny             | fwiptables wizard-tiny                 
+       launch tinyserver-tcp ports    | fwiptables tinyserver-tcp 21:25,80     
+       launch tinyserver-udp ports    | fwiptables tinyserver-udp 67:68,443    
+       launch wizard tiny             | fwiptables wizard-tiny                 
    .   
 ###     [ Several examples with mini server ]   
    .  
-      | launch miniserver-tcp ports    | fwiptables miniserver-tcp 21:25,80     
-      | launch miniserver-udp ports    | fwiptables miniserver-udp 67:68,443    
-      | launch wizard mini             | fwiptables wizard-mini                 
+       launch miniserver-tcp ports    | fwiptables miniserver-tcp 21:25,80     
+       launch miniserver-udp ports    | fwiptables miniserver-udp 67:68,443    
+       launch wizard mini             | fwiptables wizard-mini                 
    .   
 ###     [ Several examples without optional otuput ]        
    .   
-###     | without optional output | Example Description     
+###      without optional output | Example Description     
    .   
-      | depends                  | fwiptables depends               
-      | List firewall saved      | fwiptables names                 
-      | List configs saved       | fwiptables names-custom          
-      | Get info speed ipv4      | fwiptables speed-ip4             
-      | Show listen sockets      | fwiptables sockets               
-      | List last options        | fwiptables autolog               
-      | modify default variables | fwiptables preferences-modify    
+       depends                  | fwiptables depends               
+       List firewall saved      | fwiptables names                 
+       List configs saved       | fwiptables names-custom          
+       Get info speed ipv4      | fwiptables speed-ip4             
+       Show listen sockets      | fwiptables sockets               
+       List last options        | fwiptables autolog               
+       modify default variables | fwiptables preferences-modify    
      
-###     | with optional output | Example Description     
+###      with optional output | Example Description     
    .   
-      | Example with info        | fwiptables txt info              
-      | Example with expert      | fwiptables txt expert            
-      | Example with code ip4    | fwiptables cli code ip4          
-      | Example with list rules  | fwiptables cli lsn4              
-      | Example with nodes       | fwiptables gui nodes             
-      | Example with web browser | fwiptables gui web kernel.org    
+       Example with info        | fwiptables txt info              
+       Example with expert      | fwiptables txt expert            
+       Example with code ip4    | fwiptables cli code ip4          
+       Example with list rules  | fwiptables cli lsn4              
+       Example with nodes       | fwiptables gui nodes             
+       Example with web browser | fwiptables gui web kernel.org    
    .    
-      | Launch client web firewall in silent   | fwiptables silent client-web     
-      | List iptables rules with output txt    | fwiptables txt ls4               
-      | List firewall with output cli whiptail | fwiptables cli-wiptail names     
-      | List sockets ip with output gui yad    | fwiptables gui-yad sockets       
-      | All options in text menu               | fwiptables cli-menu-dialog       
-      | All options in window menu             | fwiptables gui-menu-yad          
-      | All options in window roll             | fwiptables gui-roll-zenity       
-      | All options in window shell            | fwiptables gui-shell-yad         
+       Launch client web firewall in silent   | fwiptables silent client-web     
+       List iptables rules with output txt    | fwiptables txt ls4               
+       List firewall with output cli whiptail | fwiptables cli-wiptail names     
+       List sockets ip with output gui yad    | fwiptables gui-yad sockets       
+       All options in text menu               | fwiptables cli-menu-dialog       
+       All options in window menu             | fwiptables gui-menu-yad          
+       All options in window roll             | fwiptables gui-roll-zenity       
+       All options in window shell            | fwiptables gui-shell-yad         
    .  
 ###  .   
 ###  .   
@@ -138,10 +139,10 @@
    stop continue reset show save load names actual wizard-tiny              
    wizard-mini wizard-full eraserules eraserules4 eraserules6               
    without-connection input-permisive input-established                     
+   tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp              
 ###     firewall-wallcustom                                                  
    new-full-custom nueva-completa-custom new-mini-custom                    
    nueva-mini-custom new-tiny-custom nueva-diminuta-custom                  
-   tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp              
    clone-wallsystem load-custom loadtiny-custom                             
    show-custom modify-custom del-custom names-custom                        
 ###     firewall-wallsystem                                                  
@@ -154,13 +155,13 @@
    server-lamp server-news server-ftp server-mail server-teamspeak          
    server-mumble server-gateway server-sql server-samba server-proxy        
    server-asterisk client-uid-root client-gid-users client-gid-net          
-###     options-easy                                                         
+###     option-easy                                                         
    preferences-read preferences-modify preferences-regen info web           
    options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date           
    free sockets nodes ip-forward depends utils treeconf treecache           
    cleancache notes variables uninstall install upgrade version             
    examples code expert license-gpl license-lgpl license-bsd                
-       | Program: fwiptables , Version: 24-08b        
+       | Program: fwiptables , Version: 24-08c        
        | Description: One Mini Script in one-file wizard                     
        | Expert: expert is allowed in preferences file   
   .
