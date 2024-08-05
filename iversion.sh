@@ -8348,14 +8348,16 @@ first_option="loadtiny-custom" ;
 ####
 ####
 server_port_tcp="$second_option"
-echo "$text_info Introducction: Put the ports tcp servers"
-echo "$text_info Example: $cmd_basename tinyserver-tcp 20:22,80"
-echo "$text_info The tinyserver-tcp configured like only client for all protocols."
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
 echo "$text_ok Server with ports tcp $second_option"  
-fi
+else
+echo "$text_info Introducction: Put the ports tcp servers"
+echo "$text_info Example: $cmd_basename tinyserver-tcp 20:22,80"
+echo "$text_info The tinyserver-tcp configured like only client for all protocols."
+echo "$text_fail iptables no loaded"
+exit ; fi
 ####
 ####
 fi
@@ -8376,14 +8378,16 @@ first_option="loadtiny-custom" ;
 ####
 ####
 server_port_udp="$second_option"
-echo "$text_info Introducction: Put the ports udp servers"
-echo "$text_info Example: $cmd_basename tinyserver-udp 20:22,80"
-echo "$text_info The tinyserver-udp configured like only client for all protocols."
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
 echo "$text_ok Server with ports udp $second_option"  
-fi
+else
+echo "$text_info Introducction: Put the ports udp servers"
+echo "$text_info Example: $cmd_basename tinyserver-udp 20:22,80"
+echo "$text_info The tinyserver-udp configured like only client for all protocols."
+echo "$text_fail iptables no loaded"
+exit; fi
 ####
 ####
 fi
@@ -8411,8 +8415,12 @@ echo "$text_info Example: $cmd_basename miniserver-tcp 20:22,80"
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$text_ok Server with ports tcp $second_option"  
-fi
+echo "$text_ok Server with ports tcp $second_option" 
+else
+echo "$text_info Introducction: Put the ports tcp servers"
+echo "$text_info Example: $cmd_basename miniserver-tcp 20:22,80"
+echo "$text_fail iptables no loaded"
+exit ; fi
 ####
 ####
 fi
@@ -8435,13 +8443,15 @@ server_port_tcp="" ;
 server_port_udp="$second_option" ;
 client_port_tcp="$miniclient_port_tcp"
 client_port_udp="$miniclient_port_udp"
-echo "$text_info Introducction: Put the ports udp servers"
-echo "$text_info Example: $cmd_basename mioniserver-udp 20:22,80"
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$text_ok Server with ports udp $second_option"  
-fi
+echo "$text_ok Server with ports udp $second_option"
+else
+echo "$text_info Introducction: Put the ports udp servers"
+echo "$text_info Example: $cmd_basename mioniserver-udp 20:22,80"
+echo "$text_fail iptables no loaded"
+exit ; fi
 ####
 ####
 fi
