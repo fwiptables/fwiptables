@@ -8342,7 +8342,7 @@ fi
 if [ "$first_option" == "tinyserver-tcp" ]
 then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
 launch_rules_firewall="yes" ;
-type_firewall="tinycustom" ;
+type_firewall="wallcontrol" ;
 name_firewall="tinyserver-tcp" ;
 first_option="loadtiny-custom" ;
 ####
@@ -8351,7 +8351,7 @@ server_port_tcp="$second_option"
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$text_md $text_info Server with ports tcp $second_option"  
+echo "$title_md $text_info Server with ports tcp $second_option"  
 else
 echo "$text_info Introducction: Put the ports tcp servers"
 echo "$text_info Example: $cmd_basename tinyserver-tcp 20:22,80"
@@ -8372,7 +8372,7 @@ fi
 if [ "$first_option" == "tinyserver-udp" ]
 then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
 launch_rules_firewall="yes" ;
-type_firewall="tinycustom" ;
+type_firewall="wallcontrol" ;
 name_firewall="tinyserver-udp" ;
 first_option="loadtiny-custom" ;
 ####
@@ -8381,7 +8381,7 @@ server_port_udp="$second_option"
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$text_md $text_info Server with ports udp $second_option"  
+echo "$title_md $text_info Server with ports udp $second_option"  
 else
 echo "$text_info Introducction: Put the ports udp servers"
 echo "$text_info Example: $cmd_basename tinyserver-udp 20:22,80"
@@ -8402,7 +8402,7 @@ fi
 if [ "$first_option" == "miniserver-tcp" ]
 then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
 launch_rules_firewall="yes" ;
-type_firewall="wallsystem"    ; 
+type_firewall="wallcontrol"    ; 
 name_firewall="$first_option" ;
 ####
 ####
@@ -8413,7 +8413,7 @@ client_port_udp="$miniclient_port_udp"
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$text_md $text_info Server with ports tcp $second_option" 
+echo "$title_md $text_info Server with ports tcp $second_option" 
 else
 echo "$text_info Introducction: Put the ports tcp servers"
 echo "$text_info Introducction: to client ports: see preferences-modify (miniclient ports)"
@@ -8434,7 +8434,7 @@ fi
 if [ "$first_option" == "miniserver-udp" ]
 then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
 launch_rules_firewall="yes" ;
-type_firewall="wallsystem"    ; 
+type_firewall="wallcontrol"    ; 
 name_firewall="$first_option" ;
 ####
 ####
@@ -8445,7 +8445,7 @@ client_port_udp="$miniclient_port_udp"
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$text_md $text_info Server with ports udp $second_option"
+echo "$title_md $text_info Server with ports udp $second_option"
 else
 echo "$text_info Introducction: Put the ports udp servers"
 echo "$text_info Introducction: to client ports: see preferences-modify (miniclient ports)"
