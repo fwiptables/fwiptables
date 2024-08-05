@@ -488,6 +488,8 @@ $command_mkdir -p "$default_directory_readme" &> /dev/null ; fi
 #### :rutina-inicial-system-variables:
 ####
 ####
+miniclient_port_tcp="ssh,http,https"     ;
+miniclient_port_udp="domain,domain-s,bootpc,bootps,ntp,https"     ;
 allow_expert_commands=""
 without_first_option=""
 launch_rules_firewall="no"
@@ -1779,6 +1781,10 @@ echo "$title_md $title_md default autolog"
 echo "allow_save_autolog=                             ## or void for yes or no"
 echo "allow_show_time=no                              ## or void for yes or no"
 echo "$title_md"  
+echo "$title_md $title_md client ports for miniserver"  
+echo "miniclient_tcp_port=ssh,http,https"
+echo "miniclient_port_udp=domain,domain-s,bootpc,bootps,ntp,https"
+echo "$title_md"  
 echo "$title_md $title_md default programs"
 echo "favorite_iperf_command=                         ## or void for automatic or specify command"
 echo "favorite_text_editor=                           ## or void for automatic or specify command"
@@ -2424,7 +2430,8 @@ echo "$text_md           Legacy or nft: whith one of them is sufficent $text_md"
 echo "$text_md   Allow shield maxtries: limit against attack per bruteforce $text_md"   
 echo "$text_md               Blacklist: excepcionals hosts has conection dropped in firewall $text_md"   
 echo "$text_md               whitelist: excepcionals hosts has conection allowed in firewall $text_md" 
-echo "$text_md                    tiny: client in all allowed, and servers selecteds manually $text_md"
+echo "$text_md              tinyserver: client in all allowed, and servers selecteds manually $text_md"
+echo "$text_md              miniserver: normal ports in client, and servers selecteds manually $text_md"
 echo "$text_md       input-established: the computer is only client $text_md"   
 echo "$text_md    allow output uid/gid: User and/or group excepcional with conection allowed $text_md"   
 echo "$text_md         iptables-legacy: support for xtables $text_md"    
@@ -8397,8 +8404,8 @@ name_firewall="$first_option" ;
 ####
 server_port_tcp="$second_option" ;
 server_port_udp="" ;
-client_port_tcp="http,https,http-alt,ssh" ;
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+client_port_tcp="$miniclient_port_tcp"
+client_port_udp="$miniclient_port_udp"
 echo "$text_info Introducction: Put the ports tcp servers"
 echo "$text_info Example: $cmd_basename miniserver-tcp 20:22,80"
 ####
@@ -8426,8 +8433,8 @@ name_firewall="$first_option" ;
 ####
 server_port_tcp="" ;
 server_port_udp="$second_option" ;
-client_port_tcp="http,https,http-alt,ssh" ;
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+client_port_tcp="$miniclient_port_tcp"
+client_port_udp="$miniclient_port_udp"
 echo "$text_info Introducction: Put the ports udp servers"
 echo "$text_info Example: $cmd_basename mioniserver-udp 20:22,80"
 ####
