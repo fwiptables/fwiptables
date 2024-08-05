@@ -7793,7 +7793,8 @@ gui_menu="gui-principal-menu|gui-info-menu|\
 stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|\
 without-connection|input-permisive|input-established|\
-wizard-tiny|wizard-mini|wizard-full"
+wizard-tiny|wizard-mini|wizard-full|\
+tinyserver-tcp|tinyserver-udp|miniserver-tcp|miniserver-udp|"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($second_option \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7853,6 +7854,30 @@ input-permisive*)$cmd_realpath gui-$second_option input-permisive ;
 $cmd_realpath gui-$second_option list4 ;;
 input-established*)$cmd_realpath gui-$second_option input-established ;
 $cmd_realpath gui-$second_option list4 ;;
+tinyserver-tcp*)serverports="$($favorite_basename_graphicalldialog --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title=Save-Firewall \
+--entry-text=server-ports-tcp)"                                 ;
+$cmd_realpath gui-$second_option tinyserver-tcp $serverports    ; 
+$cmd_realpath gui-$second_option list4                         ;;
+tinyserver-udp*)serverports="$($favorite_basename_graphicalldialog --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title=Save-Firewall \
+--entry-text=server-ports-udp)"                                 ;
+$cmd_realpath gui-$second_option tinyserver-udp $serverports    ; 
+$cmd_realpath gui-$second_option list4                         ;;
+miniserver-tcp*)serverports="$($favorite_basename_graphicalldialog --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title=Save-Firewall \
+--entry-text=server-ports-tcp)"                                 ;
+$cmd_realpath gui-$second_option miniserver-tcp $serverports    ; 
+$cmd_realpath gui-$second_option list4                         ;;
+miniserver-udp*)serverports="$($favorite_basename_graphicalldialog --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title=Save-Firewall \
+--entry-text=server-ports-udp)"                                 ;
+$cmd_realpath gui-$second_option miniserver-udp $serverports    ; 
+$cmd_realpath gui-$second_option list4                         ;;
 esac
 ####
 ####
