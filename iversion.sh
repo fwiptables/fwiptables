@@ -8416,8 +8416,8 @@ if [ "$second_option" != "$NULL" ]; then
 echo "$title_md $text_info Server with ports tcp $second_option"  
 else
 echo "$text_info Introducction: Put the ports tcp servers"
+echo "$text_info Introducction: The tinyserver-udp configured like client for all protocols."
 echo "$text_info Example: $cmd_basename tinyserver-tcp 20:22,80"
-echo "$text_info The tinyserver-tcp configured like only client for all protocols."
 echo "$text_fail iptables no loaded"
 exit ; fi
 ####
@@ -8446,8 +8446,8 @@ if [ "$second_option" != "$NULL" ]; then
 echo "$title_md $text_info Server with ports udp $second_option"  
 else
 echo "$text_info Introducction: Put the ports udp servers"
+echo "$text_info Introducction: The tinyserver-udp configured like client for all protocols."
 echo "$text_info Example: $cmd_basename tinyserver-udp 20:22,80"
-echo "$text_info The tinyserver-udp configured like only client for all protocols."
 echo "$text_fail iptables no loaded"
 exit; fi
 ####
