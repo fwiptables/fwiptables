@@ -1781,8 +1781,8 @@ echo "$title_md $title_md default autolog"
 echo "allow_save_autolog=                             ## or void for yes or no"
 echo "allow_show_time=no                              ## or void for yes or no"
 echo "$title_md"  
-echo "$title_md $title_md client ports for miniserver"  
-echo "miniclient_tcp_port=ssh,http,https"
+echo "$title_md $title_md mini client ports: for miniserver"  
+echo "miniclient_port_tcp=ssh,http,https"
 echo "miniclient_port_udp=domain,domain-s,bootpc,bootps,ntp,https"
 echo "$title_md"  
 echo "$title_md $title_md default programs"
@@ -8351,7 +8351,7 @@ server_port_tcp="$second_option"
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$text_ok Server with ports tcp $second_option"  
+echo "$text_md $text_info Server with ports tcp $second_option"  
 else
 echo "$text_info Introducction: Put the ports tcp servers"
 echo "$text_info Example: $cmd_basename tinyserver-tcp 20:22,80"
@@ -8381,7 +8381,7 @@ server_port_udp="$second_option"
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$text_ok Server with ports udp $second_option"  
+echo "$text_md $text_info Server with ports udp $second_option"  
 else
 echo "$text_info Introducction: Put the ports udp servers"
 echo "$text_info Example: $cmd_basename tinyserver-udp 20:22,80"
@@ -8410,14 +8410,13 @@ server_port_tcp="$second_option" ;
 server_port_udp="" ;
 client_port_tcp="$miniclient_port_tcp"
 client_port_udp="$miniclient_port_udp"
-echo "$text_info Introducction: Put the ports tcp servers"
-echo "$text_info Example: $cmd_basename miniserver-tcp 20:22,80"
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$text_ok Server with ports tcp $second_option" 
+echo "$text_md $text_info Server with ports tcp $second_option" 
 else
 echo "$text_info Introducction: Put the ports tcp servers"
+echo "$text_info Introducction: to client ports: see preferences-modify (miniclient ports)"
 echo "$text_info Example: $cmd_basename miniserver-tcp 20:22,80"
 echo "$text_fail iptables no loaded"
 exit ; fi
@@ -8446,9 +8445,10 @@ client_port_udp="$miniclient_port_udp"
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$text_ok Server with ports udp $second_option"
+echo "$text_md $text_info Server with ports udp $second_option"
 else
 echo "$text_info Introducction: Put the ports udp servers"
+echo "$text_info Introducction: to client ports: see preferences-modify (miniclient ports)"
 echo "$text_info Example: $cmd_basename mioniserver-udp 20:22,80"
 echo "$text_fail iptables no loaded"
 exit ; fi
