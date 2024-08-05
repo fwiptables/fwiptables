@@ -1116,6 +1116,18 @@ favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldial
 first_option="gui-menu" 
 second_option="$favorite_basename_graphicalldialog"
 ;;
+"gui-roll")
+favorite_realpath_graphicalldialog="$command_zenity" ;
+favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
+first_option="gui-roll" 
+second_option="$favorite_basename_graphicalldialog"
+;;
+"gui-roll-zenity")
+favorite_realpath_graphicalldialog="$command_zenity" ;
+favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
+first_option="gui-roll-zenity" 
+second_option="$favorite_basename_graphicalldialog"
+;;
 ####
 ####
 esac
@@ -7294,7 +7306,8 @@ then echo $message_without_guiroll ; exit ; fi
 gui_menu="gui-principal-menu|gui-info-menu|\
 |stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|wizard-tiny|wizard-mini|wizard-full|\
-without-connection|input-permisive|input-established"
+without-connection|input-permisive|input-established|\
+tinyserver-tcp|tinyserver-udp|miniserver-tcp|miniserver-udp"
 selection_menu="$($command_zenity --forms \
 --text=gui-roll-firewall-wallcontrol \
 --title=Gui-roll-With-$cmd_basename-$cmd_version \
@@ -7340,6 +7353,30 @@ wizard-tiny)$cmd_realpath -gui-zenity wizard-tiny ; $cmd_realpath gui list4;;
 without-connection)$cmd_realpath -gui-zenity without-connection ; $cmd_realpath gui list4;;
 input-permisive)$cmd_realpath -gui-zenity input-permisive ; $cmd_realpath gui list4;;
 input-established)$cmd_realpath -gui-zenity input-established ; $cmd_realpath gui list4;;
+tinyserver-tcp)serverports="$($favorite_basename_graphicalldialog --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title=Save-Firewall \
+--entry-text=server-ports-tcp)"                                 ;
+$cmd_realpath gui-$favorite_basename_graphicalldialog tinyserver-tcp $serverports    ; 
+$cmd_realpath gui-$favorite_basename_graphicalldialog list4                         ;;
+tinyserver-udp)serverports="$($favorite_basename_graphicalldialog --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title=Save-Firewall \
+--entry-text=server-ports-udp)"                                 ;
+$cmd_realpath gui-$favorite_basename_graphicalldialog tinyserver-udp $serverports    ; 
+$cmd_realpath gui-$favorite_basename_graphicalldialog list4                         ;;
+miniserver-tcp)serverports="$($favorite_basename_graphicalldialog --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title=Save-Firewall \
+--entry-text=server-ports-tcp)"                                 ;
+$cmd_realpath gui-$favorite_basename_graphicalldialog miniserver-tcp $serverports    ; 
+$cmd_realpath gui-$favorite_basename_graphicalldialog list4                         ;;
+miniserver-udp)serverports="$($favorite_basename_graphicalldialog --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title=Save-Firewall \
+--entry-text=server-ports-udp)"                                 ;
+$cmd_realpath gui-$favorite_basename_graphicalldialog miniserver-udp $serverports    ; 
+$cmd_realpath gui-$favorite_basename_graphicalldialog list4                         ;;
 esac
 ####
 ####
