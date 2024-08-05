@@ -6392,7 +6392,7 @@ $favorite_realpath_graphicalldialog  --text-info \
 --filename=$directory_cache_necesary/$cmd_name-$archivo \
 --editable --title=WIZARD TINY 1> $default_directory_custom/$archivo
 if [  -s $default_directory_custom/$archivo ]; then $nada ; 
-$cmd_realpath -gui load-custom $archivo ; $cmd_realpath -gui list4;
+$cmd_realpath -gui loadtiny-custom $archivo ; $cmd_realpath -gui list4;
 else rm $default_directory_custom/$archivo ;
 $favorite_realpath_graphicalldialog --info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
