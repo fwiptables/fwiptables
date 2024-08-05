@@ -7353,30 +7353,30 @@ wizard-tiny)$cmd_realpath -gui-zenity wizard-tiny ; $cmd_realpath gui list4;;
 without-connection)$cmd_realpath -gui-zenity without-connection ; $cmd_realpath gui list4;;
 input-permisive)$cmd_realpath -gui-zenity input-permisive ; $cmd_realpath gui list4;;
 input-established)$cmd_realpath -gui-zenity input-established ; $cmd_realpath gui list4;;
-tinyserver-tcp)serverports="$($favorite_basename_graphicalldialog --entry \
+tinyserver-tcp)serverports="$(zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
---entry-text=server-ports-tcp)"                                 ;
-$cmd_realpath gui-$favorite_basename_graphicalldialog tinyserver-tcp $serverports    ; 
-$cmd_realpath gui-$favorite_basename_graphicalldialog list4                         ;;
-tinyserver-udp)serverports="$($favorite_basename_graphicalldialog --entry \
+--entry-text=server-ports-tcp)"                         ;
+$cmd_realpath gui-zenity tinyserver-tcp $serverports    ; 
+$cmd_realpath gui-zenity list4                         ;;
+tinyserver-udp)serverports="$(zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
---entry-text=server-ports-udp)"                                 ;
-$cmd_realpath gui-$favorite_basename_graphicalldialog tinyserver-udp $serverports    ; 
-$cmd_realpath gui-$favorite_basename_graphicalldialog list4                         ;;
-miniserver-tcp)serverports="$($favorite_basename_graphicalldialog --entry \
+--entry-text=server-ports-udp)"                         ;
+$cmd_realpath gui-zenity tinyserver-udp $serverports    ; 
+$cmd_realpath gui-zenity list4                         ;;
+miniserver-tcp)serverports="$(zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
---entry-text=server-ports-tcp)"                                 ;
-$cmd_realpath gui-$favorite_basename_graphicalldialog miniserver-tcp $serverports    ; 
-$cmd_realpath gui-$favorite_basename_graphicalldialog list4                         ;;
-miniserver-udp)serverports="$($favorite_basename_graphicalldialog --entry \
+--entry-text=server-ports-tcp)"                         ;
+$cmd_realpath gui-zenity miniserver-tcp $serverports    ; 
+$cmd_realpath gui-zenity list4                         ;;
+miniserver-udp)serverports="$(zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
---entry-text=server-ports-udp)"                                 ;
-$cmd_realpath gui-$favorite_basename_graphicalldialog miniserver-udp $serverports    ; 
-$cmd_realpath gui-$favorite_basename_graphicalldialog list4                         ;;
+--entry-text=server-ports-udp)"                         ;
+$cmd_realpath gui-zenity miniserver-udp $serverports    ; 
+$cmd_realpath gui-zenity list4                         ;;
 esac
 ####
 ####
