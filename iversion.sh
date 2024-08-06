@@ -2269,40 +2269,40 @@ fi ; exit ; fi
 ####
 if [ "$first_option" == "depends" ]; then
 echo "$title_md [ $first_option ] [ List for depends programs ] [ depends md ] "
-echo
-echo "$title_md [ Configuration files ]"
-echo "$text_md Directory data:          $directory_data_necesary"
-echo "$text_md Directory temp:          $directory_cache_necesary"
-echo "$text_md File Preferences:        $file_default_preferences"
-echo
-echo "$title_md [ Log files ]"
-echo "$text_md File autolog:            $file_default_autolog"
-echo "$text_md File filelog:            $file_default_filelog"
-echo
-echo "$title_md [ Automatic interfaces  ]"
-echo "$text_md Interface txt:           $command_bash"
-echo "$text_md Interface cli:           $favorite_realpath_textdialog"
-echo "$text_md Interface gui:           $favorite_realpath_graphicalldialog"
-echo 
-echo "$title_md [ Automatic iptables ]"
-echo "$text_md iptables legacy:         $command_ip4tableslegacy"
-echo "$text_md iptables nft:            $command_ip4tablesnft"
-echo "$text_md ip6tables legacy:        $command_ip6tableslegacy"
-echo "$text_md ip6tables nft:           $command_ip6tablesnft"
-echo "$text_md arptables:               $command_arptables"
-echo "$text_md ebtables:                $command_ebtables"
-echo
-echo "$title_md [ Automatic favorites ]"
-echo "$text_md Automatic text editor:   $favorite_text_editor"
-echo "$text_md Automatic text browser:  $favorite_text_browser"
-echo "$text_md Automatic text date:     $favorite_date_command"
-echo 
-echo "$title_md [ Necesary utils ]"
-echo "$text_md iptables nft:            $command_ip4tablesnft"
-echo "$text_md iptables legacy:         $command_ip4tableslegacy"
-echo "$text_md awk command:             $command_awk"
-echo "$text_md sed command:             $command_sed"
-echo "$text_md file command:            $command_file"
+echo "$text_md $text_md"
+echo "$title_md $text_md [ Configuration files ] $text_md"
+echo "$text_md $text_md Directory data:          $directory_data_necesary $text_md"
+echo "$text_md $text_md Directory temp:          $directory_cache_necesary $text_md"
+echo "$text_md $text_md File Preferences:        $file_default_preferences $text_md"
+echo "$text_md $text_md"
+echo "$title_md $text_md [ Log files ] $text_md"
+echo "$text_md $text_md File autolog:            $file_default_autolog $text_md"
+echo "$text_md $text_md File filelog:            $file_default_filelog $text_md"
+echo "$text_md $text_md"
+echo "$title_md $text_md [ Automatic interfaces  ] $text_md"
+echo "$text_md $text_md Interface txt:           $command_bash $text_md"
+echo "$text_md $text_md Interface cli:           $favorite_realpath_textdialog $text_md"
+echo "$text_md $text_md Interface gui:           $favorite_realpath_graphicalldialog $text_md"
+echo "$text_md $text_md"
+echo "$title_md $text_md [ Automatic iptables ] $text_md"
+echo "$text_md $text_md iptables legacy:         $command_ip4tableslegacy $text_md"
+echo "$text_md $text_md iptables nft:            $command_ip4tablesnft $text_md"
+echo "$text_md $text_md ip6tables legacy:        $command_ip6tableslegacy $text_md"
+echo "$text_md $text_md ip6tables nft:           $command_ip6tablesnft $text_md"
+echo "$text_md $text_md arptables:               $command_arptables $text_md"
+echo "$text_md $text_md ebtables:                $command_ebtables $text_md"
+echo "$text_md $text_md"
+echo "$title_md $text_md [ Automatic favorites ] $text_md"
+echo "$text_md $text_md Automatic text editor:   $favorite_text_editor $text_md"
+echo "$text_md $text_md Automatic text browser:  $favorite_text_browser $text_md"
+echo "$text_md $text_md Automatic text date:     $favorite_date_command $text_md"
+echo "$text_md $text_md" 
+echo "$title_md $text_md [ Necesary utils ] $text_md"
+echo "$text_md $text_md iptables nft:            $command_ip4tablesnft $text_md"
+echo "$text_md $text_md iptables legacy:         $command_ip4tableslegacy $text_md"
+echo "$text_md $text_md awk command:             $command_awk $text_md"
+echo "$text_md $text_md sed command:             $command_sed $text_md"
+echo "$text_md $text_md file command:            $command_file $text_md"
 exit; fi
 ####
 ####
@@ -4889,15 +4889,13 @@ $cmd_realpath notes
 echo "$text_md . $text_md"
 $cmd_realpath compile
 echo "$text_md . $text_md"
+$cmd_realpath depends
+echo "$text_md . $text_md"
 $cmd_realpath examples
-echo "$text_md .$text_md"
-echo "$title_md . $text_md"
 echo "$title_md . $text_md"
 echo "$title_md [ options ] [ List general options for fwiptables ] [ list-options md ]"
 echo "$text_md . $text_md"
 $cmd_realpath options
-echo "$text_md". $text_md
-$cmd_realpath optional-output
 ####
 ####
 exit; fi
