@@ -2297,6 +2297,12 @@ echo "$text_md Automatic text editor:   $favorite_text_editor"
 echo "$text_md Automatic text browser:  $favorite_text_browser"
 echo "$text_md Automatic text date:     $favorite_date_command"
 echo 
+echo "$title_md [ Necesary utils ]"
+echo "$text_md iptables nft:            $command_ip4tablesnft"
+echo "$text_md iptables legacy:         $command_ip4tableslegacy"
+echo "$text_md awk command:             $command_awk"
+echo "$text_md sed command:             $command_sed"
+echo "$text_md file command:            $command_file"
 exit; fi
 ####
 ####
