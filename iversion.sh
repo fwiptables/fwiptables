@@ -13923,28 +13923,16 @@ $allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
 ########################################     spanish: ipv6 iptables todo permisivo
 ####
 ####
-#### english: legacy ipv6 127.0.0.1 acept and the others legacy ipv6 accept too
-#### spanish: legacy ipv6 127.0.0.1 acepta y los otros legacy ipv6 acepta tambien
+#### english: legacy ipv6 accept related,established
+#### spanish: legacy ipv6 acepta relatado,establecido
 ####
 ####
 $allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
--j ACCEPT \
--m comment --comment all-output &> /dev/null
-####
-####
-#### english: nft ipv6 127.0.0.1 acept and the others nft ipv6 accept too
-#### spanish: nft ipv6 127.0.0.1 acepta y los otros nft ipv6 acepta tambien
-####
-####
 $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A INPUT   \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT  \
--j ACCEPT \
--m comment --comment all-output &> /dev/null
 ####
 ####
 #### english: ipv6-icmp accept in legacy and accept in nft
@@ -13963,6 +13951,18 @@ $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
 $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
 -A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment nexthop-ip6 &> /dev/null
+####
+####
+#### english: nft ipv6 127.0.0.1 acept and the others nft ipv6 accept too
+#### spanish: nft ipv6 127.0.0.1 acepta y los otros nft ipv6 acepta tambien
+####
+####
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
+-j ACCEPT \
+-m comment --comment all-output &> /dev/null
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT  \
+-j ACCEPT \
+-m comment --comment all-output &> /dev/null
 ####
 ####
 #### english: close with drop legacy and close with drop nft
