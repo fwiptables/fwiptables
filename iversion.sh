@@ -13371,9 +13371,6 @@ $allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A INPUT \
 $allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
 -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
--j ACCEPT \
--m comment --comment all-output &> /dev/null
 $allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A FORWARD \
 -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
@@ -13392,9 +13389,6 @@ $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A INPUT   \
 $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
 -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT  \
--j ACCEPT \
--m comment --comment all-output &> /dev/null
 $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A FORWARD \
 -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
@@ -13416,6 +13410,18 @@ $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
 $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
 -A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment nexthop-ip6 &> /dev/null
+####
+####
+#### english: allow all output ipv6
+#### spanish: permite toda salida ipv6
+####
+####
+$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
+-j ACCEPT \
+-m comment --comment all-output &> /dev/null
+$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT  \
+-j ACCEPT \
+-m comment --comment all-output &> /dev/null
 ####
 ####
 #### english: close with drop legacy and close with drop nft
