@@ -5830,13 +5830,13 @@ if [ "$first_option" == "add-whitelist4" ] || [ "$first_option" == "expert-add-w
 if [ "$2" == "$NULL" ]; then echo "$title_md $text_fail type host ip4 or net ip4 to be in whitelist"; exit ; fi
 echo "$title_md [ Working ] ADD temporally ipv4 rules whitelist: ACCEPT to $2"
 $command_ip4tablesnft    -t filter -I INPUT -s $2  \
--j ACCEPT && echo ok rule 1/4 || echo fail rule 1/4
+-j ACCEPT && echo ok rule 1/4 with $2 || echo fail rule 1/4
 $command_ip4tablesnft    -t filter -I OUTPUT -d $2 \
--j ACCEPT && echo ok rule 2/4 || echo fail rule 2/4
+-j ACCEPT && echo ok rule 2/4 with $2 || echo fail rule 2/4
 $command_ip4tableslegacy -t filter -I INPUT -s $2  \
--j ACCEPT && echo ok rule 3/4 || echo fail rule 3/4
+-j ACCEPT && echo ok rule 3/4 with $2 || echo fail rule 3/4
 $command_ip4tableslegacy -t filter -I OUTPUT -d $2 \
--j ACCEPT && echo ok rule 4/4 || echo fail rule 4/4
+-j ACCEPT && echo ok rule 4/4 with $2 || echo fail rule 4/4
 exit; fi
 ####
 ####
@@ -5850,13 +5850,13 @@ if [ "$first_option" == "add-whitelist6" ] || [ "$first_option" == "expert-add-w
 if [ "$2" == "$NULL" ]; then echo "$title_md $text_fail type host ip6 or net ip6 to be in whitelist"; exit ; fi
 echo "$title_md [ Working ] ADD temporally ipv6 rules whitelist: ACCEPT to $2"
 $command_ip6tablesnft    -t filter -I INPUT -s $2  \
--j ACCEPT && echo ok rule 1/4 || echo fail rule 1/4
+-j ACCEPT && echo ok rule 1/4 with $2 || echo fail rule 1/4
 $command_ip6tablesnft    -t filter -I OUTPUT -d $2 \
--j ACCEPT && echo ok rule 2/4 || echo fail rule 2/4
+-j ACCEPT && echo ok rule 2/4 with $2 || echo fail rule 2/4
 $command_ip6tableslegacy -t filter -I INPUT -s $2  \
--j ACCEPT && echo ok rule 3/4 || echo fail rule 3/4
+-j ACCEPT && echo ok rule 3/4 with $2 || echo fail rule 3/4
 $command_ip6tableslegacy -t filter -I OUTPUT -d $2 \
--j ACCEPT && echo ok rule 4/4 || echo fail rule 4/4
+-j ACCEPT && echo ok rule 4/4 with $2 || echo fail rule 4/4
 exit; fi
 ####
 ####
