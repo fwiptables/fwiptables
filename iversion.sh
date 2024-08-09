@@ -76,7 +76,7 @@ cmd_basename="$(basename $0)"                              # only  filename
 #### The number version
 cmd_year="24"                                              # number year version
 cmd_month="08"                                             # number mouth version
-cmd_letter="d"                                             # number letter version
+cmd_letter="e"                                             # number letter version
 cmd_version="$cmd_year-$cmd_month$cmd_letter"              # final date like number version
 #### the install location
 cmd_name="fwiptables"                                      # filename installed
@@ -95,10 +95,12 @@ cmd_license="GPL v2, LGPL v2, BSD"                         # program license
 #### :rutina-inicial-web-official:
 ####
 ####
-content_license_gpl=\
+content_license_gplv3=\
+"https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-GPL-v3.txt?format=raw"
+content_license_gplv2=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-GPL.txt?format=raw"
-content_license_lgpl=\
-"https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-LGPL.txt?format=raw"
+content_license_lgplv2=\
+"https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-lgpl.txt?format=raw"
 content_license_bsd=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-BSD.txt?format=raw"
 web_homepage_sourceforge=\
@@ -3141,7 +3143,8 @@ echo "$text_md preferences-read preferences-modify preferences-regen info web   
 echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date           "
 echo "$text_md free sockets nodes ip-forward depends utils treeconf treecache           "
 echo "$text_md cleancache notes variables uninstall install upgrade version             "
-echo "$text_md examples code expert license-gpl license-lgpl license-bsd                "
+echo "$text_md license-bsd license-gpl-v2 license-lgpl-v2 license-gpl-v3                "
+echo "$text_md examples code expert donate                                              "
 echo " $text_md $text_md | Program: $cmd_basename , Version: $cmd_version        "
 echo " $text_md $text_md | Description: $cmd_longdescription                     "
 ####
@@ -3457,8 +3460,8 @@ echo "$text_md | variables . possible variables  "
 echo "$text_md | intro . intro  "  
 echo "$text_md | install . install fwiptables  "  
 echo "$text_md | uninstall . uninstall fwiptables  "  
-echo "$text_md | license-gpl . license gpl  "  
-echo "$text_md | license-lgpl . license lgpl  "  
+echo "$text_md | license-gpl-v2 . license gpl  "  
+echo "$text_md | license-lgpl-v2 . license lgpl  "  
 echo "$text_md | license-bsd . license bsd  "  
 echo "$text_md "
 exit; fi
@@ -4880,21 +4883,21 @@ exit; fi
 ####
 if  [ "$first_option" == "intro" ]; then 
 echo "$title_md $text_md fwiptables. Firewall With iptables.   [ intro md ] $text_md"
-echo "$text_md . $text_md"
+echo "$text_md"
 $cmd_realpath readme
-echo "$text_md . $text_md"
+echo "$text_md"
 $cmd_realpath version
-echo "$text_md . $text_md"
+echo "$text_md"
 $cmd_realpath notes
-echo "$text_md . $text_md"
+echo "$text_md"
 $cmd_realpath compile
-echo "$text_md . $text_md"
+echo "$text_md"
 $cmd_realpath depends
-echo "$text_md . $text_md"
+echo "$text_md"
 $cmd_realpath examples
-echo "$title_md . $text_md"
+echo "$title_md"
 echo "$title_md [ options ] [ List general options for fwiptables ] [ list-options md ]"
-echo "$text_md . $text_md"
+echo "$title_md"
 $cmd_realpath options
 ####
 ####
@@ -5107,12 +5110,24 @@ exit; fi
 ####
 ####
 #### :rutina-final-nodes:
-##########    english: license-gpl: license gpl v2   ##########
-##########    spanish: license-gpl: license gpl v2   ##########
-#### :rutina-inicial-license-gpl:
+##########    english: donate: link donate    ##########
+##########    spanish: donate: link donate  ##########
+#### :rutina-inicial-donate:
 ####
 ####
-if [ "$first_option" == "license-gpl" ]; then 
+if   [ "$first_option" == "donate" ]; then 
+echo "$title_md [ $first_option ] [ donate to fwiptables project ] "
+echo "$text_md Not at all"
+exit; fi
+####
+####
+#### :rutina-final-donate:
+##########    english: license-gpl-v3: license gpl v3   ##########
+##########    spanish: license-gpl-v3: license gpl v3   ##########
+#### :rutina-inicial-license-gpl-v3:
+####
+####
+if [ "$first_option" == "license-gpl-v2" ]; then 
 echo "$title_md [ $first_option ] \
 [ Show license from git sourceforge for $cmd_realpath ] "
 ####
@@ -5123,17 +5138,17 @@ echo "license text for $first_option downloading"
 echo
 echo ..................................................................
 echo
-$command_curl -L $content_license_gpl --stderr /dev/null
+$command_curl -L $content_license_gplv3 --stderr /dev/null
 exit;  fi
 ####
 ####
-#### :rutina-final-license-gpl:
-##########    english: license-lgpl: license gpl v2   ##########
-##########    spanish: license-lgpl: license gpl v2   ##########
-#### :rutina-inicial-license-lgpl:
+#### :rutina-final-license-gpl-v3:
+##########    english: license-gpl-v2: license gpl v2   ##########
+##########    spanish: license-gpl-v2: license gpl v2   ##########
+#### :rutina-inicial-license-gpl-v2:
 ####
 ####
-if [ "$first_option" == "license-lgpl" ]; then 
+if [ "$first_option" == "license-gpl-v2" ]; then 
 echo "$title_md [ $first_option ] \
 [ Show license from git sourceforge for $cmd_realpath ] "
 ####
@@ -5144,11 +5159,32 @@ echo "license text for $first_option downloading"
 echo
 echo ..................................................................
 echo
-$command_curl -L $content_license_lgpl --stderr /dev/null
+$command_curl -L $content_license_gplv2 --stderr /dev/null
 exit;  fi
 ####
 ####
-#### :rutina-final-license-lgpl:
+#### :rutina-final-license-gpl-v2:
+##########    english: license-lgpl-v2: license gpl v2   ##########
+##########    spanish: license-lgpl-v2: license gpl v2   ##########
+#### :rutina-inicial-license-lgpl-v2:
+####
+####
+if [ "$first_option" == "license-lgpl-v2" ]; then 
+echo "$title_md [ $first_option ] \
+[ Show license from git sourceforge for $cmd_realpath ] "
+####
+if [ "$command_curl" == "$NULL" ]; then
+echo "$title_md Install curl to download/install latest version"; fi
+####
+echo "license text for $first_option downloading"
+echo
+echo ..................................................................
+echo
+$command_curl -L $content_license_lgplv2 --stderr /dev/null
+exit;  fi
+####
+####
+#### :rutina-final-license-lgpl-v2:
 ##########    english: license-bsd: license gpl v2   ##########
 ##########    spanish: license-bsd: license gpl v2   ##########
 #### :rutina-inicial-license-bsd:
