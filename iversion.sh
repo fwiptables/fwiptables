@@ -86,7 +86,7 @@ cmd_developer="Francisco Garcia"                           # actual developer
 cmd_contact="fwiptables@gmx.com"                           # actual contact
 cmd_shortdescription="FireWall With iptables"              # description short
 cmd_longdescription="One Mini Script in one-file wizard"   # description long
-cmd_license="BSD, GPL v2, LGPL v2, GPL v3"                 # program license
+cmd_license="BSD, GPL v2, LGPL v2"                         # program license
 ####
 ####
 #### :rutina-final-enviroment-vars:
@@ -3143,7 +3143,7 @@ echo "$text_md preferences-read preferences-modify preferences-regen info web   
 echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date           "
 echo "$text_md free sockets nodes ip-forward depends utils treeconf treecache           "
 echo "$text_md cleancache notes variables uninstall install upgrade version             "
-echo "$text_md license-bsd license-gpl-v2 license-lgpl-v2 license-gpl-v3                "
+echo "$text_md license-bsd license-gpl-v2 license-lgpl-v2                               "
 echo "$text_md examples code expert donate about                                        "
 echo " $text_md $text_md | Program: $cmd_basename , Version: $cmd_version        "
 echo " $text_md $text_md | Description: $cmd_longdescription                     "
@@ -5134,7 +5134,7 @@ echo "$text_md $text_md Description: Command Fran FireWall fwiptables Generator"
 echo "$text_md $text_md Author:      Francisco Garcia <fwiptables@gmx.com>"
 echo "$text_md $text_md Copyright:   (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>"
 echo "$text_md $text_md"
-echo "$text_md $text_md launch fwiptables license-bsd or license-lgpl-v2 or license-gpl-v2 or license-gpl-v3"
+echo "$text_md $text_md launch fwiptables license-bsd or license-lgpl-v2 or license-gpl-v2"
 exit; fi
 ####
 ####
