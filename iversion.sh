@@ -86,7 +86,7 @@ cmd_developer="Francisco Garcia"                           # actual developer
 cmd_contact="fwiptables@gmx.com"                           # actual contact
 cmd_shortdescription="FireWall With iptables"              # description short
 cmd_longdescription="One Mini Script in one-file wizard"   # description long
-cmd_license="GPL v2, LGPL v2, BSD"                         # program license
+cmd_license="BSD, GPL v2, LGPL v2, GPL v3"                 # program license
 ####
 ####
 #### :rutina-final-enviroment-vars:
@@ -100,7 +100,7 @@ content_license_gplv3=\
 content_license_gplv2=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-GPL.txt?format=raw"
 content_license_lgplv2=\
-"https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-lgpl.txt?format=raw"
+"https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-LGPL.txt?format=raw"
 content_license_bsd=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-BSD.txt?format=raw"
 web_homepage_sourceforge=\
