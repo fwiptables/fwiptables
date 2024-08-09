@@ -96,7 +96,7 @@ cmd_license="BSD, GPL v2, LGPL v2, GPL v3"                 # program license
 ####
 ####
 content_license_gplv3=\
-"https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-GPL-v3.txt?format=raw"
+"https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-GPLv3.txt?format=raw"
 content_license_gplv2=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-GPL.txt?format=raw"
 content_license_lgplv2=\
@@ -3144,7 +3144,7 @@ echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date   
 echo "$text_md free sockets nodes ip-forward depends utils treeconf treecache           "
 echo "$text_md cleancache notes variables uninstall install upgrade version             "
 echo "$text_md license-bsd license-gpl-v2 license-lgpl-v2 license-gpl-v3                "
-echo "$text_md examples code expert donate                                              "
+echo "$text_md examples code expert donate about                                        "
 echo " $text_md $text_md | Program: $cmd_basename , Version: $cmd_version        "
 echo " $text_md $text_md | Description: $cmd_longdescription                     "
 ####
