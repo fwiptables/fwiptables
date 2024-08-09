@@ -86,7 +86,7 @@ cmd_developer="Francisco Garcia"                           # actual developer
 cmd_contact="fwiptables@gmx.com"                           # actual contact
 cmd_shortdescription="FireWall With iptables"              # description short
 cmd_longdescription="One Mini Script in one-file wizard"   # description long
-cmd_license="BSD, GPL v2, LGPL v2"                         # program license
+cmd_license="BSD, LGPL v2, GPL v2"                         # program license
 ####
 ####
 #### :rutina-final-enviroment-vars:
