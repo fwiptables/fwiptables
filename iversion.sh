@@ -5127,7 +5127,7 @@ exit; fi
 #### :rutina-inicial-license-gpl-v3:
 ####
 ####
-if [ "$first_option" == "license-gpl-v2" ]; then 
+if [ "$first_option" == "license-gpl-v3" ]; then 
 echo "$title_md [ $first_option ] \
 [ Show license from git sourceforge for $cmd_realpath ] "
 ####
@@ -5138,7 +5138,7 @@ echo "license text for $first_option downloading"
 echo
 echo ..................................................................
 echo
-$command_curl -L $content_license_gplv3 --stderr /dev/null
+$command_curl -s -L $content_license_gplv3 --stderr /dev/null
 exit;  fi
 ####
 ####
@@ -5159,7 +5159,7 @@ echo "license text for $first_option downloading"
 echo
 echo ..................................................................
 echo
-$command_curl -L $content_license_gplv2 --stderr /dev/null
+$command_curl -s -L $content_license_gplv2 --stderr /dev/null
 exit;  fi
 ####
 ####
@@ -5180,7 +5180,7 @@ echo "license text for $first_option downloading"
 echo
 echo ..................................................................
 echo
-$command_curl -L $content_license_lgplv2 --stderr /dev/null
+$command_curl -s -L $content_license_lgplv2 --stderr /dev/null
 exit;  fi
 ####
 ####
