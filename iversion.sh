@@ -5122,6 +5122,23 @@ exit; fi
 ####
 ####
 #### :rutina-final-donate:
+##########    english:  about: acerca de   ##########
+##########    spanish:  about: acerca de  ##########
+#### :rutina-inicial-about:
+####
+####
+if   [ "$first_option" == "about" ]; then 
+echo "$title_md [ $first_option ] [ licenses to fwiptables project ] "
+echo "$text_md $text_md File:        fwiptables"
+echo "$text_md $text_md Description: Command Fran FireWall fwiptables Generator"
+echo "$text_md $text_md Author:      Francisco Garcia <fwiptables@gmx.com>"
+echo "$text_md $text_md Copyright:   (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>"
+echo "$text_md $text_md"
+echo "$text_md $text_md launch fwiptables license-bsd or license-lgpl-v2 or license-gpl-v2 or license-gpl-v3"
+exit; fi
+####
+####
+#### :rutina-final-about:
 ##########    english: license-gpl-v3: license gpl v3   ##########
 ##########    spanish: license-gpl-v3: license gpl v3   ##########
 #### :rutina-inicial-license-gpl-v3:
