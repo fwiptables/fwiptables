@@ -5205,7 +5205,7 @@ exit;  fi
 #### :rutina-inicial-license-bsd-v1:
 ####
 ####
-if [ "$first_option" == "license-bsd" ]; then 
+if [ "$first_option" == "license-bsd-v1" ]; then 
 echo "$title_md [ $first_option ] \
 [ Show license from git sourceforge for $cmd_realpath ] "
 ####
