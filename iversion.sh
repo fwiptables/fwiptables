@@ -3143,7 +3143,7 @@ echo "$text_md preferences-read preferences-modify preferences-regen info web   
 echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date           "
 echo "$text_md free sockets nodes ip-forward depends utils treeconf treecache           "
 echo "$text_md cleancache notes variables uninstall install upgrade version             "
-echo "$text_md license-bsd license-gpl-v2 license-lgpl-v2                               "
+echo "$text_md license-bsd license-lgpl-v2 license-gpl-v2                               "
 echo "$text_md examples code expert donate about                                        "
 echo " $text_md $text_md | Program: $cmd_basename , Version: $cmd_version        "
 echo " $text_md $text_md | Description: $cmd_longdescription                     "
@@ -4888,6 +4888,10 @@ $cmd_realpath readme
 echo "$text_md"
 $cmd_realpath version
 echo "$text_md"
+$cmd_realpath about
+echo "$text_md"
+$cmd_realpath donate
+echo "$text_md"
 $cmd_realpath notes
 echo "$text_md"
 $cmd_realpath compile
@@ -5116,7 +5120,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "donate" ]; then 
-echo "$title_md [ $first_option ] [ donate to fwiptables project ] "
+echo "$title_md [ $first_option ] [ donate to fwiptables project ] [ donate md ]"
 echo "$text_md Not at all"
 exit; fi
 ####
@@ -5128,7 +5132,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "about" ]; then 
-echo "$title_md [ $first_option ] [ licenses to fwiptables project ] "
+echo "$title_md [ $first_option ] [ licenses to fwiptables project ] [ about md ]"
 echo "$text_md $text_md File:        fwiptables"
 echo "$text_md $text_md Description: Command Fran FireWall fwiptables Generator"
 echo "$text_md $text_md Author:      Francisco Garcia <fwiptables@gmx.com>"
