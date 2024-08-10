@@ -86,7 +86,7 @@ cmd_developer="Francisco Garcia"                           # actual developer
 cmd_contact="fwiptables@gmx.com"                           # actual contact
 cmd_shortdescription="FireWall With iptables"              # description short
 cmd_longdescription="One Mini Script in one-file wizard"   # description long
-cmd_license="LGPL v2, GPL v2, GPL v3"                      # program license
+cmd_license="BSD v1, LGPL v2, GPL v2"                      # program license
 ####
 ####
 #### :rutina-final-enviroment-vars:
@@ -1145,7 +1145,7 @@ case "$first_option" in
 "listnumeral")    first_option="firewall-listnumeral" ;;
 "wallcustom")     first_option="firewall-wallcustom" ;;
 "wallsystem")     first_option="firewall-wallsystem" ;;
-"easy")           first_option="option-easy" ;;
+"easy")           first_option="firewall-easynet" ;;
 "custom")         first_option="load-custom" ;;
 "examples")       first_option="options-examples" ;;
 "regen")          first_option="templates-regen" ;;
@@ -3138,12 +3138,12 @@ echo "$text_md server-telnet server-irc server-vnc server-print server-webserver
 echo "$text_md server-lamp server-news server-ftp server-mail server-teamspeak          "
 echo "$text_md server-mumble server-gateway server-sql server-samba server-proxy        "
 echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net          "
-echo "$title_md    option-easy                                                         "
+echo "$title_md    firewall-easynet                                                         "
 echo "$text_md preferences-read preferences-modify preferences-regen info web           "
 echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date           "
 echo "$text_md free sockets nodes ip-forward depends utils treeconf treecache           "
 echo "$text_md cleancache notes variables uninstall install upgrade version             "
-echo "$text_md license-lgpl-v2 license-gpl-v2 license-gpl-v3                            "
+echo "$text_md license-bsd-v1 license-lgpl-v2 license-gpl-v2                            "
 echo "$text_md examples code expert donate about                                        "
 echo " $text_md $text_md | Program: $cmd_basename , Version: $cmd_version        "
 echo " $text_md $text_md | Description: $cmd_longdescription                     "
@@ -3419,15 +3419,15 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-wallsystem:
-##########    english: option-easy: options for fwiptables firewall      ##########
-##########    spanish: option-easy: opciones para fwiptables firewall    ##########
-#### :rutina-inicial-option-easy:
+##########    english: firewall-easynet: options for fwiptables firewall      ##########
+##########    spanish: firewall-easynet: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-firewall-easynet:
 #### :rutina-inicial-easy:
 ####
 ####
-if   [ "$first_option" == "option-easy" ]; then
+if   [ "$first_option" == "firewall-easynet" ]; then
 echo "$text_md "
-echo "$title_md | option-easy | $cmd_basename option-easy |"
+echo "$title_md | firewall-easynet | $cmd_basename firewall-easynet |"
 echo "$text_md"
 echo "$text_md | preferences-read . show the preferences for fwiptables  "  
 echo "$text_md | preferences-modify . modify the preferences for fwiptables  "  
@@ -3468,7 +3468,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-easy:
-#### :rutina-final-option-easy:
+#### :rutina-final-firewall-easynet:
 ##########    english: options-expert: options for fwiptables firewall      ##########
 ##########    spanish: options-expert: opciones para fwiptables firewall    ##########
 #### :rutina-inicial-options-expert:
@@ -3476,60 +3476,56 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "options-expert" ]; then
-echo "$text_md "
-echo "$title_md | options-expert | $cmd_basename expert |"
-echo "$text_md    Each expert only works Without optional output"
-echo "$text_md"
-echo "$text_md | expert-browser-web . browse one link web  "  
-echo "$text_md | expert-sockets-ss . show sockets with ss  "  
-echo "$text_md | expert-sockets-netstat . show sockets with netstat  "  
-echo "$text_md | expert-sockets-lsof . show sockets with lsof  "  
-echo "$text_md | expert-show-resolve . show file resolve domain with resolv.conf  "  
-echo "$text_md | expert-show-weather . show weather with wttr.in  "  
-echo "$text_md | expert-show-geoip . show location for ip o for host with geoip  "  
-echo "$text_md | expert-show-webcert . show web certificate ssl from one web with ssl-cert  "  
-echo "$text_md | expert-show-newversion . Show version fwiptables stable/unstable with curl  "  
-echo "$text_md | expert-show-clientproxy . show proxy variables in the system stablished  "  
-echo "$text_md | expert-conf-clientproxy . File /etc/proxy.fwiptables for proxy launched with source  "  
-echo "$text_md | expert-speed-ip4 . benchmark internet speed ipv4 with 4seconds  "  
-echo "$text_md | expert-speed-ip6 . benchmark internet speed ipv6 with 4seconds  "  
-echo "$text_md | expert-speed-disk . benchmark disk speed with 100Mb  "   
-echo "$text_md | expert-speed-ram . benchmark ram speed with 100Mb  "  
-echo "$text_md | expert-speed-cpu . benchmark cpu speed with bc command aprox 5seconds  "   
-echo "$text_md | expert-speed-glx . benchmark glx speed with mesa3D  " 
-echo "$text_md | expert-add-whitelist4 . add white list for ip4"
-echo "$text_md | expert-add-whitelist6 . add white list for ip6"
-echo "$text_md | expert-upgrade-estable . Upgrade from web sourceforge fwiptables with curl  "  
-echo "$text_md | expert-upgrade-unstable . Upgrade from git sourceforge fwiptables with curl  "  
-echo "$text_md | expert-upgrade-adblock . Download blacklist to folder configuration program with curl  " 
-echo "$text_md | expert-gen-deb . generate actual version file in deb  "   
-echo "$text_md | expert-gen-readme . generate actual version file in original with readme  "  
-echo "$text_md | expert-gen-compile . Compile fwiptables from bash with program obash  "   
-echo "$text_md | expert-nmap-tcp . doing scan tcp at host or range  "  
-echo "$text_md | expert-nmap-udp . doing scan udp at host or range  "  
-echo "$text_md | expert-nmap-fin . doing scan fin at host or range  "   
-echo "$text_md | expert-nmap-syn . doing scan syn at host or range  "   
-echo "$text_md | expert-nmap-ping . doing scan ping at host or range  "  
-echo "$text_md | expert-trace-tcp4 . trace route tcp to host ip4  "  
-echo "$text_md | expert-trace-tcp6 . trace route tcp to host ip6  "  
-echo "$text_md | expert-trace-icmp4 . trace route icmp to host ip4  "  
-echo "$text_md | expert-trace-icmp6 . trace route icmp to host ip6  "  
-echo "$text_md | expert-wpa-scan . the list wifi on air  "  
-echo "$text_md | expert-wpa-list . the list nameconfig over saved wifi  "  
-echo "$text_md | expert-wpa-new . new nameconfig to create wifi config  "  
-echo "$text_md | expert-wpa-modify . one nameconfig to modify wifi config  "  
-echo "$text_md | expert-wpa-connect . one nameconfig to connect wifi config  "  
-echo "$text_md | expert-pc-halt . halt computer with halt  "  
-echo "$text_md | expert-pc-shutdown . shutdown computer with shutdown  "  
-echo "$text_md | expert-pc-reboot . reboot computer with reboot  "  
-echo "$text_md | expert-cpufreq-info . show cpu frecuence info  "  
-echo "$text_md | expert-cpupower-info . show cpu frecuence info  "  
-echo "$text_md | expert-radio-link . listen radio from one link  "  
-echo "$text_md | expert-radio-spanish . listen online radio from one text-string from spain  "  
-echo "$text_md | expert-project-web . site  downloaded web fwiptables  "  
-echo "$text_md | expert-configs-save . save configs like backup from fwiptables in tar file  "  
-echo "$text_md | expert-configs-load . load configs like backup from fwiptables in tar file  "  
-echo "$text_md "
+echo "$title_md | $cmd_basename expert | Each expert only works Without optional output $text_md "
+echo "$text_md $text_md expert-browser-web . browse one link web $text_md "
+echo "$text_md $text_md expert-sockets-ss . show sockets with ss $text_md "
+echo "$text_md $text_md expert-sockets-netstat . show sockets with netstat $text_md "
+echo "$text_md $text_md expert-sockets-lsof . show sockets with lsof $text_md "
+echo "$text_md $text_md expert-show-resolve . show file resolve domain with resolv.conf $text_md "
+echo "$text_md $text_md expert-show-weather . show weather with wttr.in $text_md "
+echo "$text_md $text_md expert-show-geoip . show location for ip o for host with geoip $text_md "
+echo "$text_md $text_md expert-show-webcert . show web certificate ssl from one web with ssl-cert $text_md "
+echo "$text_md $text_md expert-show-newversion . Show version fwiptables stable/unstable with curl $text_md "
+echo "$text_md $text_md expert-show-clientproxy . show proxy variables in the system stablished $text_md "
+echo "$text_md $text_md expert-conf-clientproxy . File /etc/proxy.fwiptables for proxy launched with source $text_md "
+echo "$text_md $text_md expert-speed-ip4 . benchmark internet speed ipv4 with 4seconds $text_md "
+echo "$text_md $text_md expert-speed-ip6 . benchmark internet speed ipv6 with 4seconds $text_md "
+echo "$text_md $text_md expert-speed-disk . benchmark disk speed with 100Mb $text_md "
+echo "$text_md $text_md expert-speed-ram . benchmark ram speed with 100Mb $text_md "
+echo "$text_md $text_md expert-speed-cpu . benchmark cpu speed with bc command aprox 5 seconds $text_md "
+echo "$text_md $text_md expert-speed-glx . benchmark glx speed with mesa3D $text_md " 
+echo "$text_md $text_md expert-add-whitelist4 . add white list for ip4 $text_md "
+echo "$text_md $text_md expert-add-whitelist6 . add white list for ip6 $text_md "
+echo "$text_md $text_md expert-upgrade-estable . Upgrade from web sourceforge fwiptables with curl $text_md "
+echo "$text_md $text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables with curl $text_md "
+echo "$text_md $text_md expert-upgrade-adblock . Download blacklist to folder configuration program with curl $text_md "
+echo "$text_md $text_md expert-gen-deb . generate actual version file in deb $text_md "
+echo "$text_md $text_md expert-gen-readme . generate actual version file in original with readme $text_md "
+echo "$text_md $text_md expert-gen-compile . Compile fwiptables from bash with program obash $text_md "
+echo "$text_md $text_md expert-nmap-tcp . doing scan tcp at host or range $text_md "
+echo "$text_md $text_md expert-nmap-udp . doing scan udp at host or range $text_md "
+echo "$text_md $text_md expert-nmap-fin . doing scan fin at host or range $text_md "
+echo "$text_md $text_md expert-nmap-syn . doing scan syn at host or range $text_md "
+echo "$text_md $text_md expert-nmap-ping . doing scan ping at host or range $text_md "
+echo "$text_md $text_md expert-trace-tcp4 . trace route tcp to host ip4 $text_md "
+echo "$text_md $text_md expert-trace-tcp6 . trace route tcp to host ip6 $text_md "
+echo "$text_md $text_md expert-trace-icmp4 . trace route icmp to host ip4 $text_md " 
+echo "$text_md $text_md expert-trace-icmp6 . trace route icmp to host ip6 $text_md "
+echo "$text_md $text_md expert-wpa-scan . the list wifi on air $text_md "
+echo "$text_md $text_md expert-wpa-list . the list nameconfig over saved wifi $text_md "
+echo "$text_md $text_md expert-wpa-new . new nameconfig to create wifi config $text_md "
+echo "$text_md $text_md expert-wpa-modify . one nameconfig to modify wifi config $text_md "
+echo "$text_md $text_md expert-wpa-connect . one nameconfig to connect wifi config $text_md "
+echo "$text_md $text_md expert-pc-halt . halt computer with halt $text_md "
+echo "$text_md $text_md expert-pc-shutdown . shutdown computer with shutdown $text_md "
+echo "$text_md $text_md expert-pc-reboot . reboot computer with reboot $text_md "
+echo "$text_md $text_md expert-cpufreq-info . show cpu frecuence info $text_md "
+echo "$text_md $text_md expert-cpupower-info . show cpu frecuence info $text_md "
+echo "$text_md $text_md expert-radio-link . listen radio from one link $text_md "
+echo "$text_md $text_md expert-radio-spanish . listen online radio from one text-string from spain $text_md "
+echo "$text_md $text_md expert-project-web . site  downloaded web fwiptables $text_md"
+echo "$text_md $text_md expert-configs-save . save configs like backup from fwiptables in tar file $text_md"
+echo "$text_md $text_md expert-configs-load . load configs like backup from fwiptables in tar file $text_md"
 exit; fi
 ####
 ####
@@ -3549,7 +3545,7 @@ $cmd_realpath firewall-listnumeral
 $cmd_realpath firewall-wallcontrol
 $cmd_realpath firewall-wallcustom
 $cmd_realpath firewall-wallsystem
-$cmd_realpath option-easy
+$cmd_realpath firewall-easynet
 $cmd_realpath expert
 exit; fi
 ####
@@ -4882,7 +4878,7 @@ exit; fi
 ####
 ####
 if  [ "$first_option" == "intro" ]; then 
-echo "$title_md $text_md fwiptables. Firewall With iptables.   [ intro md ] $text_md"
+echo "$title_md $text_md fwiptables. Firewall With iptables. intro content information  $text_md"
 echo "$text_md"
 $cmd_realpath readme
 echo "$text_md"
@@ -5136,7 +5132,7 @@ echo "$text_md $text_md Description: Command Fran FireWall fwiptables Generator"
 echo "$text_md $text_md Author:      Francisco Garcia <fwiptables@gmx.com>"
 echo "$text_md $text_md Copyright:   (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>"
 echo "$text_md $text_md"
-echo "$text_md $text_md launch fwiptables or license-lgpl-v2 or license-gpl-v2 or license-gpl-v3"
+echo "$text_md $text_md launch fwiptables or license-bsd-v1 or license-lgpl-v2 or license-gpl-v2"
 exit; fi
 ####
 ####
@@ -5204,9 +5200,9 @@ exit;  fi
 ####
 ####
 #### :rutina-final-license-lgpl-v2:
-##########    english: license-bsd: license gpl v2   ##########
-##########    spanish: license-bsd: license gpl v2   ##########
-#### :rutina-inicial-license-bsd:
+##########    english: license-bsd-v1: license gpl v2   ##########
+##########    spanish: license-bsd-v1: license gpl v2   ##########
+#### :rutina-inicial-license-bsd-v1:
 ####
 ####
 if [ "$first_option" == "license-bsd" ]; then 
@@ -5224,7 +5220,7 @@ $command_curl -L $content_license_bsd --stderr /dev/null
 exit;  fi
 ####
 ####
-#### :rutina-final-license-bsd:
+#### :rutina-final-license-bsd-v1:
 ##########    english: expert-pc-halt: power off computer   ##########
 ##########    spanish: expert-pc-halt: apaga el ordenador   ##########
 #### :rutina-inicial-expert-pc-halt:
@@ -7099,7 +7095,7 @@ case $menuprincipal in
 0400) clear ; $cmd_realpath txt firewall-listnumeral ;;
 0500) clear ; $cmd_realpath txt firewall-wallsystem ;;
 0600) clear ; $cmd_realpath txt firewall-wallcustom ;;
-0700) clear ; $cmd_realpath txt option-easy ;;
+0700) clear ; $cmd_realpath txt firewall-easynet ;;
 ################################################################################
 0201) clear ; $cmd_realpath txt stop ;;
 0202) clear ; $cmd_realpath txt continue ;;
@@ -7316,7 +7312,7 @@ then echo $message_without_guiroll ; exit ; fi
 ####
 gui_menu="Info|Firewall-List-With-Conceptual|\
 Firewall-List-With-Numeral|firewall-wallcontrol|firewall-wallcustom|\
-firewall-wallsystem|option-easy"
+firewall-wallsystem|firewall-easynet"
 selection_menu="$($command_zenity --forms \
 --text=gui-roll \
 --title=Gui-roll-With-$cmd_basename-$cmd_version \
@@ -7342,8 +7338,8 @@ firewall-wallcustom)
 $cmd_realpath gui-roll-zenity-firewall-wallcustom ; exit ;;
 firewall-wallsystem)
 $cmd_realpath gui-roll-zenity-firewall-wallsystem ; exit ;;
-option-easy)
-$cmd_realpath gui-roll-zenity-option-easy ; exit ;;
+firewall-easynet)
+$cmd_realpath gui-roll-zenity-firewall-easynet ; exit ;;
 esac
 ####
 ####
@@ -7758,12 +7754,12 @@ exit ; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-wallsystem:
-##########    english: gui-roll-zenity-option-easy: gui with roll  ##########
-##########    spanish: gui-roll-zenity-option-easy: gui con roll   ##########
-#### :rutina-inicial-gui-roll-zenity-option-easy:
+##########    english: gui-roll-zenity-firewall-easynet: gui with roll  ##########
+##########    spanish: gui-roll-zenity-firewall-easynet: gui con roll   ##########
+#### :rutina-inicial-gui-roll-zenity-firewall-easynet:
 ####
 ####
-if [ "$first_option" == "gui-roll-zenity-option-easy" ] ;
+if [ "$first_option" == "gui-roll-zenity-firewall-easynet" ] ;
 then echo $head_waiting_gui ; echo $head_give_cover ;
 if [ "$command_zenity" == "$NULL" ] ;
 then echo $message_without_guiroll ; exit ; fi
@@ -7788,7 +7784,7 @@ selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
-gui-info-menu)$cmd_realpath -gui-zenity option-easy ;;
+gui-info-menu)$cmd_realpath -gui-zenity firewall-easynet ;;
 preferences-read)$cmd_realpath -gui-zenity preferences-read ;;
 preferences-modify)$cmd_realpath -gui-zenity preferences-modify ;;
 preferences-regen)$cmd_realpath -gui-zenity preferences-regen ;;
@@ -7821,7 +7817,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-zenity-option-easy:
+#### :rutina-final-gui-roll-zenity-firewall-easynet:
 ##########    english: gui-menu: gui menu general: gui con menu  ##########
 ##########    spanish: gui-menu: gui menu general: gui con menu  ##########
 #### :rutina-inicial-gui-menu:
@@ -7835,7 +7831,7 @@ echo "$title_md The used gui in $first_option is $second_option" ;
 ####
 ####
 gui_menu="Firewall-listconceptual|Firewall-listnumeral|firewall-wallcontrol|\
-Firewall-wallcustom|Firewall-wallsystem|option-easy|"
+Firewall-wallcustom|Firewall-wallsystem|firewall-easynet|"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($second_option \
 --width=$config_graphicall_width \
@@ -7864,8 +7860,8 @@ Firewall-wallcustom*)
 $cmd_realpath gui-menu-firewall-wallcustom $second_option ;;
 Firewall-wallsystem*)
 $cmd_realpath gui-menu-firewall-wallsystem $second_option ;;
-option-easy*)
-$cmd_realpath gui-menu-option-easy $second_option ;;
+firewall-easynet*)
+$cmd_realpath gui-menu-firewall-easynet $second_option ;;
 esac
 ####
 ####
@@ -8320,12 +8316,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-wallsystem:
-##########    english: gui-menu-option-easy: gui with menu   ##########
-##########    spanish: gui-menu-option-easy: gui con menu    ##########
-#### :rutina-inicial-gui-menu-option-easy:
+##########    english: gui-menu-firewall-easynet: gui with menu   ##########
+##########    spanish: gui-menu-firewall-easynet: gui con menu    ##########
+#### :rutina-inicial-gui-menu-firewall-easynet:
 ####
 ####
-if [ "$first_option" == "gui-menu-option-easy" ]
+if [ "$first_option" == "gui-menu-firewall-easynet" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
 echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
@@ -8355,7 +8351,7 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 case "$selection_final" in
 1*) exit ;;
 gui-principal-menu*) $cmd_realpath gui-menu-$second_option ;;
-gui-info-menu*)$cmd_realpath gui-$second_option option-easy ;;
+gui-info-menu*)$cmd_realpath gui-$second_option firewall-easynet ;;
 preferences-read*)$cmd_realpath gui-$second_option preferences-read ;;
 preferences-modify*)$cmd_realpath gui-$second_option preferences-modify ;;
 preferences-regen*)$cmd_realpath gui-$second_option preferences-regen ;;
@@ -8384,7 +8380,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-option-easy:
+#### :rutina-final-gui-menu-firewall-easynet:
 ##########    english: ready system rules con its option               ##########
 ##########    spanish: preprara reglas del sistema con sus opciones    ##########
 ####

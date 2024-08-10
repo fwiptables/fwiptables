@@ -1,4 +1,4 @@
-###     fwiptables. Firewall With iptables.   [ intro md ]   
+###     fwiptables. Firewall With iptables. intro content information    
   
 ###     fwiptables. Firewall With iptables.   [ readme md ]   
         
@@ -48,7 +48,7 @@
          Data Directory: /root/.config/fwiptables    
         Cache Directory: /root/.cache/fwiptables   
             File Format: Bourne-Again_shell_script,   
-        License program: LGPL v2, GPL v2, GPL v3     
+        License program: BSD v1, LGPL v2, GPL v2     
   
 ###  [ about ] [ licenses to fwiptables project ] [ about md ]
       File:        fwiptables
@@ -56,7 +56,7 @@
       Author:      Francisco Garcia <fwiptables@gmx.com>
       Copyright:   (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>
      
-      launch fwiptables or license-lgpl-v2 or license-gpl-v2 or license-gpl-v3
+      launch fwiptables or license-bsd-v1 or license-lgpl-v2 or license-gpl-v2
   
 ###  [ notes ] [ List notes about ] [ notes md ]
              Legacy or nft: whith one of them is sufficent   
@@ -197,12 +197,12 @@
    server-lamp server-news server-ftp server-mail server-teamspeak          
    server-mumble server-gateway server-sql server-samba server-proxy        
    server-asterisk client-uid-root client-gid-users client-gid-net          
-###     option-easy                                                         
+###     firewall-easynet                                                         
    preferences-read preferences-modify preferences-regen info web           
    options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date           
    free sockets nodes ip-forward depends utils treeconf treecache           
    cleancache notes variables uninstall install upgrade version             
-   license-lgpl-v2 license-gpl-v2 license-gpl-v3                            
+   license-bsd-v1 license-lgpl-v2 license-gpl-v2                            
    examples code expert donate about                                        
        | Program: fwiptables , Version: 24-08f        
        | Description: One Mini Script in one-file wizard                     

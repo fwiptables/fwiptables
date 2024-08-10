@@ -76,7 +76,7 @@ cmd_basename="$(basename $0)"                              # only  filename
 #### The number version
 cmd_year="24"                                              # number year version
 cmd_month="08"                                             # number mouth version
-cmd_letter="g"                                             # number letter version
+cmd_letter="f"                                             # number letter version
 cmd_version="$cmd_year-$cmd_month$cmd_letter"              # final date like number version
 #### the install location
 cmd_name="fwiptables"                                      # filename installed
@@ -86,7 +86,7 @@ cmd_developer="Francisco Garcia"                           # actual developer
 cmd_contact="fwiptables@gmx.com"                           # actual contact
 cmd_shortdescription="FireWall With iptables"              # description short
 cmd_longdescription="One Mini Script in one-file wizard"   # description long
-cmd_license="BSD, LGPL v2, GPL v2"                         # program license
+cmd_license="BSD v1, LGPL v2, GPL v2"                      # program license
 ####
 ####
 #### :rutina-final-enviroment-vars:
@@ -3143,7 +3143,7 @@ echo "$text_md preferences-read preferences-modify preferences-regen info web   
 echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date           "
 echo "$text_md free sockets nodes ip-forward depends utils treeconf treecache           "
 echo "$text_md cleancache notes variables uninstall install upgrade version             "
-echo "$text_md license-lgpl-v2 license-gpl-v2 license-gpl-v3                            "
+echo "$text_md license-bsd-v1 license-lgpl-v2 license-gpl-v2                            "
 echo "$text_md examples code expert donate about                                        "
 echo " $text_md $text_md | Program: $cmd_basename , Version: $cmd_version        "
 echo " $text_md $text_md | Description: $cmd_longdescription                     "
@@ -5132,7 +5132,7 @@ echo "$text_md $text_md Description: Command Fran FireWall fwiptables Generator"
 echo "$text_md $text_md Author:      Francisco Garcia <fwiptables@gmx.com>"
 echo "$text_md $text_md Copyright:   (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>"
 echo "$text_md $text_md"
-echo "$text_md $text_md launch fwiptables or license-lgpl-v2 or license-gpl-v2 or license-bsd"
+echo "$text_md $text_md launch fwiptables or license-bsd-v1 or license-lgpl-v2 or license-gpl-v2"
 exit; fi
 ####
 ####
@@ -5200,9 +5200,9 @@ exit;  fi
 ####
 ####
 #### :rutina-final-license-lgpl-v2:
-##########    english: license-bsd: license gpl v2   ##########
-##########    spanish: license-bsd: license gpl v2   ##########
-#### :rutina-inicial-license-bsd:
+##########    english: license-bsd-v1: license gpl v2   ##########
+##########    spanish: license-bsd-v1: license gpl v2   ##########
+#### :rutina-inicial-license-bsd-v1:
 ####
 ####
 if [ "$first_option" == "license-bsd" ]; then 
@@ -5220,7 +5220,7 @@ $command_curl -L $content_license_bsd --stderr /dev/null
 exit;  fi
 ####
 ####
-#### :rutina-final-license-bsd:
+#### :rutina-final-license-bsd-v1:
 ##########    english: expert-pc-halt: power off computer   ##########
 ##########    spanish: expert-pc-halt: apaga el ordenador   ##########
 #### :rutina-inicial-expert-pc-halt:
