@@ -1,5 +1,5 @@
 ###     fwiptables. Firewall With iptables.   [ intro md ]   
-   .   
+  
 ###     fwiptables. Firewall With iptables.   [ readme md ]   
         
       The fwiptables is a one-file WIZARD,   
@@ -36,11 +36,11 @@
 ###        fwiptables uninstall.                     
         
       uninstall TYPE: fwiptables uninstall        
-   .   
+  
 ###  [ version ] [ Show version ] [ version md ]            
        Basename program: fwiptables               
        Realpath program: /usr/bin/fwiptables               
-        Version program: 24-08d                
+        Version program: 24-08e                
       Short description: FireWall With iptables       
        Long description: One Mini Script in one-file wizard        
        Developer Actual: Francisco Garcia              
@@ -48,8 +48,16 @@
          Data Directory: /root/.config/fwiptables    
         Cache Directory: /root/.cache/fwiptables   
             File Format: Bourne-Again_shell_script,   
-        License program: GPL v2, LGPL v2, BSD     
-   .   
+        License program: BSD, LGPL v2, GPL v2     
+  
+###  [ about ] [ licenses to fwiptables project ] [ about md ]
+      File:        fwiptables
+      Description: Command Fran FireWall fwiptables Generator
+      Author:      Francisco Garcia <fwiptables@gmx.com>
+      Copyright:   (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>
+     
+      launch fwiptables license-bsd or license-lgpl-v2 or license-gpl-v2
+  
 ###  [ notes ] [ List notes about ] [ notes md ]
              Legacy or nft: whith one of them is sufficent   
      Allow shield maxtries: limit against attack per bruteforce   
@@ -67,23 +75,23 @@
                      https: This port is necesary for udp named web html5  
                  ipv6-icmp: Necesary protocol in ipv6   
                 ipv4 ports: ipv6 works too with old ipv4 ports   
-   .   
+  
 ###  [ compile ] [ Optionally compile from bash script ] [ compile md]  
       BASH SCRIPT WORKS fully. But if your desire is compiling...     
       Necesary fwiptables in source script bash   
       Download and install obash from oficial web internet   
       Run: obash -s -c -o ./destination.bin ./source-bash.sh   
-   .   
+  
 ###  [ depends ] [ List for depends programs ] [ depends md ] 
      
 ###     [ Configuration files ]   
       Directory data:          /root/.config/fwiptables   
       Directory temp:          /root/.cache/fwiptables   
-      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-08d   
+      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-08e   
      
 ###     [ Log files ]   
-      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default_autolog-24-08d   
-      File filelog:            /root/.config/fwiptables/fwiptables-log/default_filelog-24-08d   
+      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default_autolog-24-08e   
+      File filelog:            /root/.config/fwiptables/fwiptables-log/default_filelog-24-08e   
      
 ###     [ Automatic interfaces  ]   
       Interface txt:           /bin/bash   
@@ -109,7 +117,7 @@
       awk command:             /bin/awk   
       sed command:             /bin/sed   
       file command:            /bin/file   
-   .   
+  
 ###     [ options-examples ] [ List examples ] [ examples md ]   
 ###     [ Several examples with tiny server ]   
          
@@ -152,9 +160,9 @@
        All options in window menu             | fwiptables gui-menu-yad          
        All options in window roll             | fwiptables gui-roll-zenity       
        All options in window shell            | fwiptables gui-shell-yad         
-###  .   
+  
 ###  [ options ] [ List general options for fwiptables ] [ list-options md ]
-   .   
+  
    fwiptables [optional-output] first_option [second_option]  
 ###     optional-output                                                      
    [ t|txt n|narrowtxt l|logtxt c|cli g|gui p|pdf s|silent i|info ]         
@@ -194,7 +202,8 @@
    options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date           
    free sockets nodes ip-forward depends utils treeconf treecache           
    cleancache notes variables uninstall install upgrade version             
-   examples code expert license-gpl license-lgpl license-bsd                
-       | Program: fwiptables , Version: 24-08d        
+   license-bsd license-lgpl-v2 license-gpl-v2                               
+   examples code expert donate about                                        
+       | Program: fwiptables , Version: 24-08e        
        | Description: One Mini Script in one-file wizard                     
        | Expert: expert is allowed in preferences file   
