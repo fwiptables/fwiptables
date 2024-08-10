@@ -86,7 +86,7 @@ cmd_developer="Francisco Garcia"                           # actual developer
 cmd_contact="fwiptables@gmx.com"                           # actual contact
 cmd_shortdescription="FireWall With iptables"              # description short
 cmd_longdescription="One Mini Script in one-file wizard"   # description long
-cmd_license="LGPL v2, GPL v2, GPL v3"                      # program license
+cmd_license="BSD, LGPL v2, GPL v2"                         # program license
 ####
 ####
 #### :rutina-final-enviroment-vars:
@@ -5132,7 +5132,7 @@ echo "$text_md $text_md Description: Command Fran FireWall fwiptables Generator"
 echo "$text_md $text_md Author:      Francisco Garcia <fwiptables@gmx.com>"
 echo "$text_md $text_md Copyright:   (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>"
 echo "$text_md $text_md"
-echo "$text_md $text_md launch fwiptables or license-lgpl-v2 or license-gpl-v2 or license-gpl-v3"
+echo "$text_md $text_md launch fwiptables or license-lgpl-v2 or license-gpl-v2 or license-bsd"
 exit; fi
 ####
 ####
