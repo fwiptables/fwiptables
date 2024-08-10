@@ -4890,8 +4890,6 @@ $cmd_realpath version
 echo "$text_md"
 $cmd_realpath about
 echo "$text_md"
-$cmd_realpath donate
-echo "$text_md"
 $cmd_realpath notes
 echo "$text_md"
 $cmd_realpath compile
@@ -4986,7 +4984,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "install" ]; then 
-echo "$text_md $text_md $text_md       Installing:  $cmd_name"
+echo "$text_md $text_md $text_md        Installing:  $cmd_name"
 ####
 ####
 ####  english: copy the file to temporal folder and install
