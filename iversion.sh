@@ -76,7 +76,7 @@ cmd_basename="$(basename $0)"                              # only  filename
 #### The number version
 cmd_year="24"                                              # number year version
 cmd_month="08"                                             # number mouth version
-cmd_letter="f"                                             # number letter version
+cmd_letter="g"                                             # number letter version
 cmd_version="$cmd_year-$cmd_month$cmd_letter"              # final date like number version
 #### the install location
 cmd_name="fwiptables"                                      # filename installed
@@ -4882,7 +4882,7 @@ exit; fi
 ####
 ####
 if  [ "$first_option" == "intro" ]; then 
-echo "$title_md $text_md fwiptables. Firewall With iptables.   [ intro md ] $text_md"
+echo "$title_md $text_md fwiptables. Firewall With iptables. intro content information  $text_md"
 echo "$text_md"
 $cmd_realpath readme
 echo "$text_md"

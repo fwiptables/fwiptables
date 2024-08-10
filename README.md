@@ -40,7 +40,7 @@
 ###  [ version ] [ Show version ] [ version md ]            
        Basename program: fwiptables               
        Realpath program: /usr/bin/fwiptables               
-        Version program: 24-08e                
+        Version program: 24-08f                
       Short description: FireWall With iptables       
        Long description: One Mini Script in one-file wizard        
        Developer Actual: Francisco Garcia              
@@ -48,7 +48,7 @@
          Data Directory: /root/.config/fwiptables    
         Cache Directory: /root/.cache/fwiptables   
             File Format: Bourne-Again_shell_script,   
-        License program: BSD, LGPL v2, GPL v2     
+        License program: LGPL v2, GPL v2, GPL v3     
   
 ###  [ about ] [ licenses to fwiptables project ] [ about md ]
       File:        fwiptables
@@ -56,7 +56,7 @@
       Author:      Francisco Garcia <fwiptables@gmx.com>
       Copyright:   (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>
      
-      launch fwiptables license-bsd or license-lgpl-v2 or license-gpl-v2
+      launch fwiptables or license-lgpl-v2 or license-gpl-v2 or license-gpl-v3
   
 ###  [ notes ] [ List notes about ] [ notes md ]
              Legacy or nft: whith one of them is sufficent   
@@ -87,11 +87,11 @@
 ###     [ Configuration files ]   
       Directory data:          /root/.config/fwiptables   
       Directory temp:          /root/.cache/fwiptables   
-      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-08e   
+      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-08f   
      
 ###     [ Log files ]   
-      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default_autolog-24-08e   
-      File filelog:            /root/.config/fwiptables/fwiptables-log/default_filelog-24-08e   
+      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default_autolog-24-08f   
+      File filelog:            /root/.config/fwiptables/fwiptables-log/default_filelog-24-08f   
      
 ###     [ Automatic interfaces  ]   
       Interface txt:           /bin/bash   
@@ -202,8 +202,8 @@
    options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date           
    free sockets nodes ip-forward depends utils treeconf treecache           
    cleancache notes variables uninstall install upgrade version             
-   license-bsd license-lgpl-v2 license-gpl-v2                               
+   license-lgpl-v2 license-gpl-v2 license-gpl-v3                            
    examples code expert donate about                                        
-       | Program: fwiptables , Version: 24-08e        
+       | Program: fwiptables , Version: 24-08f        
        | Description: One Mini Script in one-file wizard                     
        | Expert: expert is allowed in preferences file   
