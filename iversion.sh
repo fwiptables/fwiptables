@@ -1145,7 +1145,7 @@ case "$first_option" in
 "listnumeral")    first_option="firewall-listnumeral" ;;
 "wallcustom")     first_option="firewall-wallcustom" ;;
 "wallsystem")     first_option="firewall-wallsystem" ;;
-"easy")           first_option="option-easy" ;;
+"easy")           first_option="option-easynet" ;;
 "custom")         first_option="load-custom" ;;
 "examples")       first_option="options-examples" ;;
 "regen")          first_option="templates-regen" ;;
@@ -3138,7 +3138,7 @@ echo "$text_md server-telnet server-irc server-vnc server-print server-webserver
 echo "$text_md server-lamp server-news server-ftp server-mail server-teamspeak          "
 echo "$text_md server-mumble server-gateway server-sql server-samba server-proxy        "
 echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net          "
-echo "$title_md    option-easy                                                         "
+echo "$title_md    option-easynet                                                         "
 echo "$text_md preferences-read preferences-modify preferences-regen info web           "
 echo "$text_md options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date           "
 echo "$text_md free sockets nodes ip-forward depends utils treeconf treecache           "
@@ -3419,15 +3419,15 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-wallsystem:
-##########    english: option-easy: options for fwiptables firewall      ##########
-##########    spanish: option-easy: opciones para fwiptables firewall    ##########
-#### :rutina-inicial-option-easy:
+##########    english: option-easynet: options for fwiptables firewall      ##########
+##########    spanish: option-easynet: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-option-easynet:
 #### :rutina-inicial-easy:
 ####
 ####
-if   [ "$first_option" == "option-easy" ]; then
+if   [ "$first_option" == "option-easynet" ]; then
 echo "$text_md "
-echo "$title_md | option-easy | $cmd_basename option-easy |"
+echo "$title_md | option-easynet | $cmd_basename option-easynet |"
 echo "$text_md"
 echo "$text_md | preferences-read . show the preferences for fwiptables  "  
 echo "$text_md | preferences-modify . modify the preferences for fwiptables  "  
@@ -3468,7 +3468,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-easy:
-#### :rutina-final-option-easy:
+#### :rutina-final-option-easynet:
 ##########    english: options-expert: options for fwiptables firewall      ##########
 ##########    spanish: options-expert: opciones para fwiptables firewall    ##########
 #### :rutina-inicial-options-expert:
@@ -3549,7 +3549,7 @@ $cmd_realpath firewall-listnumeral
 $cmd_realpath firewall-wallcontrol
 $cmd_realpath firewall-wallcustom
 $cmd_realpath firewall-wallsystem
-$cmd_realpath option-easy
+$cmd_realpath option-easynet
 $cmd_realpath expert
 exit; fi
 ####
@@ -7099,7 +7099,7 @@ case $menuprincipal in
 0400) clear ; $cmd_realpath txt firewall-listnumeral ;;
 0500) clear ; $cmd_realpath txt firewall-wallsystem ;;
 0600) clear ; $cmd_realpath txt firewall-wallcustom ;;
-0700) clear ; $cmd_realpath txt option-easy ;;
+0700) clear ; $cmd_realpath txt option-easynet ;;
 ################################################################################
 0201) clear ; $cmd_realpath txt stop ;;
 0202) clear ; $cmd_realpath txt continue ;;
@@ -7316,7 +7316,7 @@ then echo $message_without_guiroll ; exit ; fi
 ####
 gui_menu="Info|Firewall-List-With-Conceptual|\
 Firewall-List-With-Numeral|firewall-wallcontrol|firewall-wallcustom|\
-firewall-wallsystem|option-easy"
+firewall-wallsystem|option-easynet"
 selection_menu="$($command_zenity --forms \
 --text=gui-roll \
 --title=Gui-roll-With-$cmd_basename-$cmd_version \
@@ -7342,8 +7342,8 @@ firewall-wallcustom)
 $cmd_realpath gui-roll-zenity-firewall-wallcustom ; exit ;;
 firewall-wallsystem)
 $cmd_realpath gui-roll-zenity-firewall-wallsystem ; exit ;;
-option-easy)
-$cmd_realpath gui-roll-zenity-option-easy ; exit ;;
+option-easynet)
+$cmd_realpath gui-roll-zenity-option-easynet ; exit ;;
 esac
 ####
 ####
@@ -7758,12 +7758,12 @@ exit ; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-wallsystem:
-##########    english: gui-roll-zenity-option-easy: gui with roll  ##########
-##########    spanish: gui-roll-zenity-option-easy: gui con roll   ##########
-#### :rutina-inicial-gui-roll-zenity-option-easy:
+##########    english: gui-roll-zenity-option-easynet: gui with roll  ##########
+##########    spanish: gui-roll-zenity-option-easynet: gui con roll   ##########
+#### :rutina-inicial-gui-roll-zenity-option-easynet:
 ####
 ####
-if [ "$first_option" == "gui-roll-zenity-option-easy" ] ;
+if [ "$first_option" == "gui-roll-zenity-option-easynet" ] ;
 then echo $head_waiting_gui ; echo $head_give_cover ;
 if [ "$command_zenity" == "$NULL" ] ;
 then echo $message_without_guiroll ; exit ; fi
@@ -7788,7 +7788,7 @@ selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
-gui-info-menu)$cmd_realpath -gui-zenity option-easy ;;
+gui-info-menu)$cmd_realpath -gui-zenity option-easynet ;;
 preferences-read)$cmd_realpath -gui-zenity preferences-read ;;
 preferences-modify)$cmd_realpath -gui-zenity preferences-modify ;;
 preferences-regen)$cmd_realpath -gui-zenity preferences-regen ;;
@@ -7821,7 +7821,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-zenity-option-easy:
+#### :rutina-final-gui-roll-zenity-option-easynet:
 ##########    english: gui-menu: gui menu general: gui con menu  ##########
 ##########    spanish: gui-menu: gui menu general: gui con menu  ##########
 #### :rutina-inicial-gui-menu:
@@ -7835,7 +7835,7 @@ echo "$title_md The used gui in $first_option is $second_option" ;
 ####
 ####
 gui_menu="Firewall-listconceptual|Firewall-listnumeral|firewall-wallcontrol|\
-Firewall-wallcustom|Firewall-wallsystem|option-easy|"
+Firewall-wallcustom|Firewall-wallsystem|option-easynet|"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($second_option \
 --width=$config_graphicall_width \
@@ -7864,8 +7864,8 @@ Firewall-wallcustom*)
 $cmd_realpath gui-menu-firewall-wallcustom $second_option ;;
 Firewall-wallsystem*)
 $cmd_realpath gui-menu-firewall-wallsystem $second_option ;;
-option-easy*)
-$cmd_realpath gui-menu-option-easy $second_option ;;
+option-easynet*)
+$cmd_realpath gui-menu-option-easynet $second_option ;;
 esac
 ####
 ####
@@ -8320,12 +8320,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-wallsystem:
-##########    english: gui-menu-option-easy: gui with menu   ##########
-##########    spanish: gui-menu-option-easy: gui con menu    ##########
-#### :rutina-inicial-gui-menu-option-easy:
+##########    english: gui-menu-option-easynet: gui with menu   ##########
+##########    spanish: gui-menu-option-easynet: gui con menu    ##########
+#### :rutina-inicial-gui-menu-option-easynet:
 ####
 ####
-if [ "$first_option" == "gui-menu-option-easy" ]
+if [ "$first_option" == "gui-menu-option-easynet" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
 echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
@@ -8355,7 +8355,7 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 case "$selection_final" in
 1*) exit ;;
 gui-principal-menu*) $cmd_realpath gui-menu-$second_option ;;
-gui-info-menu*)$cmd_realpath gui-$second_option option-easy ;;
+gui-info-menu*)$cmd_realpath gui-$second_option option-easynet ;;
 preferences-read*)$cmd_realpath gui-$second_option preferences-read ;;
 preferences-modify*)$cmd_realpath gui-$second_option preferences-modify ;;
 preferences-regen*)$cmd_realpath gui-$second_option preferences-regen ;;
@@ -8384,7 +8384,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-option-easy:
+#### :rutina-final-gui-menu-option-easynet:
 ##########    english: ready system rules con its option               ##########
 ##########    spanish: preprara reglas del sistema con sus opciones    ##########
 ####
