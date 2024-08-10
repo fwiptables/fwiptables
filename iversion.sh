@@ -101,8 +101,8 @@ content_license_gplv2=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-GPL.txt?format=raw"
 content_license_lgplv2=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-LGPL.txt?format=raw"
-content_license_bsd=\
-"https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-BSD.txt?format=raw"
+### content_license_bsd=\
+### "https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-BSD.txt?format=raw"
 web_homepage_sourceforge=\
 "https://sourceforge.net/projects/f-iptables/" ;
 web_homepage_github=\
