@@ -3224,7 +3224,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "free" ]; then 
-echo "$title_md [ $first_option ]  [ freedom from innecesary ram ] "
+echo "$title_md [ $first_option ] [ freedom from innecesary ram ] [ free md ]"
+echo "$title_md $text_info With: echo 3 over /proc/sys/vm/drop_caches"
 case $command_tee in "$NULL")
 echo "$text_md $text_fail [ Install tee command ]"; exit ;; esac
 ####
