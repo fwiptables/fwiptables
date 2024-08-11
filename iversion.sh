@@ -5458,10 +5458,10 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "info" ]; then 
-echo "$title_md [ $first_option ]  [ info $second_option ]"
-echo "$title_md                 Launch:  $cmd_realpath [optional-output] info [pattern-to-search]"
-echo "$title_md                Example:  $cmd_realpath [optional-output] info ls"
-echo "$title_md    To show all options: $cmd_realpath [optional-output] info-options"
+echo "$title_md $text_info $text_md [ $first_option ]  [ info $second_option ] [ info md ]"
+echo "$title_md $text_info  Launch info search: $cmd_realpath [optional-output] info [pattern-to-search]"
+echo "$title_md $text_info Example info search: $cmd_realpath [optional-output] info ls"
+echo "$title_md $text_info    Show all options: $cmd_realpath [optional-output] info-options"
 if   [ "$second_option" == "$NULL" ]; then exit
 else $cmd_realpath info-options | $command_grep -i "$second_option" | $command_grep -Ev "###" 
 exit; fi
