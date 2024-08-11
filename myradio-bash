@@ -24,7 +24,6 @@ opt_bin="$(realpath $0)"
 opt_base="$(basename $0)"
 opt_first="$1"
 opt_second="$2"
-kill_command="kill"
 kill_player="vlc"
 conf_agent="curl"
 conf_player="cvlc"
@@ -46,6 +45,10 @@ echo "conf_player=cvlc"                                        &>> $conf_config
 echo "conf_radio=https://www.tdtchannels.com/lists/radio.m3u8" &>> $conf_config
 echo "# config created $conf_config"
 fi
+if [ ! -f "$conf_complete" ]; then
+$opt_bin download
+fi
+### load config
 source $conf_config
 ### config reset
 if [ "$opt_first" == "reset" ]; then
@@ -66,7 +69,7 @@ echo "# $conf_radio donloaded"
 exit; fi
 ### stop music
 if [ "$opt_first" == "stop" ] ; then
-$kill_command -9 $kill_player &> /dev/null
+killall -9 $kill_player &> /dev/null
 exit; fi
 ### search radio
 if [ "$opt_first" == "search" ]; then
