@@ -1,0 +1,107 @@
+#!/bin/bash
+####
+#### File:        myradio-bash
+#### Description: Command Fran Radio Selector From Internet Link
+#### Author:      Francisco Garcia <fwiptables@gmx.com>
+#### Copyright:   (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>
+####
+#### This program is free software; you can redistribute it and/or modify
+#### it under the terms of the GNU General Public License as published by
+#### the Free Software Foundation; either version 2 of the License, or
+#### (at your option) any later version.
+####
+#### This program is distributed in the hope that it will be useful,
+#### but WITHOUT ANY WARRANTY; without even the implied warranty of
+#### MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#### GNU General Public License for more details.
+####
+#### You should have received a copy of the GNU General Public License along
+#### with this program; if not, write to the Free Software Foundation, Inc.,
+#### 51 Franklin St, Fifth Floor, Boston MA 02110-1301 USA
+####
+### variables list
+opt_bin="$(realpath $0)"
+opt_base="$(basename $0)"
+opt_first="$1"
+opt_second="$2"
+kill_command="kill"
+kill_player="vlc"
+conf_agent="curl"
+conf_player="cvlc"
+conf_radio="https://www.tdtchannels.com/lists/radio.m3u8"
+conf_folder="$HOME/.config/myradio-bash"
+conf_complete="$conf_folder/myradio-list.m3u8"
+conf_choosed="$conf_folder/myradio-choosed.m3u8"
+conf_config="$conf_folder/myradio-config.txt"
+### without option
+if [ "$opt_first" == "$NULL" ]; then
+echo "# Launch: $opt_base config|reset|stop|download|search|play|random|link choosed-radio"
+exit; fi
+### update config
+if [ ! -d "$conf_folder" ]; then mkdir -p $conf_folder ; fi
+if [ ! -f "$conf_config" ]; then 
+echo "kill_player=vlc"                                         &> $conf_config
+echo "conf_agent=curl"                                         &>> $conf_config
+echo "conf_player=cvlc"                                        &>> $conf_config
+echo "conf_radio=https://www.tdtchannels.com/lists/radio.m3u8" &>> $conf_config
+echo "# config created $conf_config"
+fi
+source $conf_config
+### config reset
+if [ "$opt_first" == "reset" ]; then
+echo "kill_player=vlc"                                         &> $conf_config
+echo "conf_agent=curl"                                         &>> $conf_config
+echo "conf_player=cvlc"                                        &>> $conf_config
+echo "conf_radio=https://www.tdtchannels.com/lists/radio.m3u8" &>> $conf_config
+echo "# config created $conf_config"
+exit ; fi
+### config file
+if [ "$opt_first" == "config" ]; then
+cat $conf_config
+exit ; fi
+### download list
+if [ "$opt_first" == "download" ]; then
+$conf_agent -L $conf_radio -o $conf_complete
+echo "# $conf_radio donloaded"
+exit; fi
+### stop music
+if [ "$opt_first" == "stop" ] ; then
+$kill_command -9 $kill_player &> /dev/null
+exit; fi
+### search radio
+if [ "$opt_first" == "search" ]; then
+echo "# searching radio: $second"
+grep -i $2 $conf_complete
+exit; fi
+### launch radio
+if [ "$opt_first" == "play" ]; then
+if [ "$opt_second" == "$NULL" ]; then echo "# choose a name for one radio"; exit; fi
+$opt_bin stop
+grep -i $opt_second $conf_complete > $conf_choosed
+$conf_player -d $conf_choosed &> /dev/null
+echo "# now playing radio: $opt_second"
+exit; fi
+### link radio
+if [ "$opt_first" == "link" ]; then
+$opt_bin stop
+echo "# playing: $second" ;
+$conf_player -d $second
+exit; fi
+### code
+if [ "$opt_first" == "code" ]; then
+echo "# source code script"
+cat $opt_bin
+exit; fi
+### random
+if [ "$opt_first" == "random" ]; then
+$opt_bin stop
+shuf="$(command -v shuf)"
+number_complete="$(cat $configuration | wc -l)"
+number_partial="$($shuf -i 1-"$number_complete" -n 1)"
+tail -"$number_partial" "$configuration" > $conf_choosed
+$conf_player -d $conf_choosed &
+echo "# now play random radio"
+exit; fi
+### exit
+exit
+
