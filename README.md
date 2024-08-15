@@ -37,10 +37,9 @@
         
       uninstall TYPE: fwiptables uninstall        
   
-###  [ version ] [ Show version ] [ version md ]            
        Basename program: fwiptables               
        Realpath program: /usr/bin/fwiptables               
-        Version program: 24-08f                
+        Version program: 24-08g                
       Short description: FireWall With iptables       
        Long description: One Mini Script in one-file wizard        
        Developer Actual: Francisco Garcia              
@@ -87,11 +86,11 @@
 ###     [ Configuration files ]   
       Directory data:          /root/.config/fwiptables   
       Directory temp:          /root/.cache/fwiptables   
-      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-08f   
+      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-08g   
      
 ###     [ Log files ]   
-      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default_autolog-24-08f   
-      File filelog:            /root/.config/fwiptables/fwiptables-log/default_filelog-24-08f   
+      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default_autolog-24-08g   
+      File filelog:            /root/.config/fwiptables/fwiptables-log/default_filelog-24-08g   
      
 ###     [ Automatic interfaces  ]   
       Interface txt:           /bin/bash   
@@ -145,7 +144,7 @@
      
 ###      with optional output | Example Description     
          
-       Example with info        | fwiptables txt info              
+       Example with info        | fwiptables info list             
        Example with expert      | fwiptables txt expert            
        Example with code ip4    | fwiptables cli code ip4          
        Example with list rules  | fwiptables cli lsn4              
@@ -163,47 +162,48 @@
   
 ###  [ options ] [ List general options for fwiptables ] [ list-options md ]
   
-   fwiptables [optional-output] first_option [second_option]  
-###     optional-output                                                      
-   [ t|txt n|narrowtxt l|logtxt c|cli g|gui p|pdf s|silent i|info ]         
-   [ cli-dialog cli-whiptail gui-zenity gui-yad ]                           
-   [ cli-menu-dialog cli-menu-whiptail gui-roll-zenity ]                    
-   [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ]          
-###     firewall-listconceptual                                              
-   ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6             
-   list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4             
-   list-security6 list-ebtables list-arptables list-alltables               
-###     firewall-listnumeral                                                 
-   lsn4 lsn6 statusn listn-filter4 listn-filter6 listn-nat4                 
-   listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6             
-   listn-security4 listn-security6 listn-alltables                          
-###     firewall-wallcontrol                                                 
-   stop continue reset show save load names actual wizard-tiny              
-   wizard-mini wizard-full eraserules eraserules4 eraserules6               
-   without-connection input-permisive input-established                     
-   tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp              
-###     firewall-wallcustom                                                  
-   new-full-custom nueva-completa-custom new-mini-custom                    
-   nueva-mini-custom new-tiny-custom nueva-diminuta-custom                  
-   clone-wallsystem load-custom loadtiny-custom                             
-   show-custom modify-custom del-custom names-custom                        
-###     firewall-wallsystem                                                  
-   client-basic client-web client-ssh client-telnet client-ipp              
-   client-irc client-git client-vnc client-news client-vpn                  
-   client-torrent client-vpn client-ftp client-proxy client-mail            
-   client-tor game-widelands games-udp games-shooter game-wesnoth           
-   game-minetest game-freeciv lan-tor lan-vpn shield-ssh server-ssh         
-   server-telnet server-irc server-vnc server-print server-webserver        
-   server-lamp server-news server-ftp server-mail server-teamspeak          
-   server-mumble server-gateway server-sql server-samba server-proxy        
-   server-asterisk client-uid-root client-gid-users client-gid-net          
-###     firewall-easynet                                                         
-   preferences-read preferences-modify preferences-regen info web           
-   options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date           
-   free sockets nodes ip-forward depends utils treeconf treecache           
-   cleancache notes variables uninstall install upgrade version             
-   license-bsd-v1 license-lgpl-v2 license-gpl-v2                            
-   examples code expert donate about                                        
-       | Program: fwiptables , Version: 24-08f        
-       | Description: One Mini Script in one-file wizard                     
+### 
+   fwiptables [optional-output] first_option [second_option]   
+###     optional-output   
+   [ t|txt n|narrowtxt l|logtxt c|cli g|gui p|pdf s|silent i|info ]   
+   [ cli-dialog cli-whiptail gui-zenity gui-yad ]   
+   [ cli-menu-dialog cli-menu-whiptail gui-roll-zenity ]   
+   [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ]   
+###     firewall-listconceptual   
+   ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6   
+   list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4   
+   list-security6 list-ebtables list-arptables list-alltables   
+###     firewall-listnumeral   
+   lsn4 lsn6 statusn listn-filter4 listn-filter6 listn-nat4   
+   listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6   
+   listn-security4 listn-security6 listn-alltables   
+###     firewall-wallcontrol   
+   stop continue reset show save load names actual wizard-tiny   
+   wizard-mini wizard-full eraserules eraserules4 eraserules6   
+   without-connection input-permisive input-established   
+   tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp   
+###     firewall-wallcustom   
+   new-full-custom nueva-completa-custom new-mini-custom   
+   nueva-mini-custom new-tiny-custom nueva-diminuta-custom   
+   clone-wallsystem load-custom loadtiny-custom   
+   show-custom modify-custom del-custom names-custom   
+###     firewall-wallsystem   
+   client-basic client-web client-ssh client-telnet client-ipp   
+   client-irc client-git client-vnc client-news client-vpn   
+   client-torrent client-vpn client-ftp client-proxy client-mail   
+   client-tor game-widelands games-udp games-shooter game-wesnoth   
+   game-minetest game-freeciv lan-tor lan-vpn shield-ssh server-ssh   
+   server-telnet server-irc server-vnc server-print server-webserver   
+   server-lamp server-news server-ftp server-mail server-teamspeak   
+   server-mumble server-gateway server-sql server-samba server-proxy   
+   server-asterisk client-uid-root client-gid-users client-gid-net    
+###     firewall-easynet   
+   preferences-read preferences-modify preferences-regen info web   
+   options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date   
+   free sockets nodes ip-forward depends utils treeconf treecache   
+   cleancache notes variables uninstall install upgrade version   
+   license-bsd-v1 license-lgpl-v2 license-gpl-v2   
+   examples code expert donate about   
+       | Program: fwiptables , Version: 24-08g   
+       | Description: One Mini Script in one-file wizard   
        | Expert: expert is allowed in preferences file   
