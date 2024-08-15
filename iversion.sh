@@ -2343,7 +2343,7 @@ echo "$text_md $text_md  modify default variables | $cmd_name preferences-modify
 echo "$text_md $text_md"
 echo "$title_md $text_md  with optional output | Example Description   $text_md"  
 echo "$text_md $text_md  $text_md"
-echo "$text_md $text_md  Example with info        | $cmd_name txt info            $text_md"  
+echo "$text_md $text_md  Example with info        | $cmd_name info list           $text_md"  
 echo "$text_md $text_md  Example with expert      | $cmd_name txt expert          $text_md"  
 echo "$text_md $text_md  Example with code ip4    | $cmd_name cli code ip4        $text_md"  
 echo "$text_md $text_md  Example with list rules  | $cmd_name cli lsn4            $text_md"  
