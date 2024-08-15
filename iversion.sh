@@ -2369,7 +2369,6 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "version" ]; then 
-echo "$title_md [ $first_option ] [ Show version ] [ version md ]            "
 echo "$text_md     Basename program: $cmd_basename               "
 echo "$text_md     Realpath program: $cmd_realpath               "
 echo "$text_md      Version program: $cmd_version                "
@@ -4964,7 +4963,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "install" ]; then 
-echo "$text_md $text_md $text_md        Installing:  $cmd_name"
+echo "$text_md $text_md        Installing: $cmd_name"
 ####
 ####
 ####  english: copy the file to temporal folder and install
@@ -4984,18 +4983,20 @@ $cmd_directory/$cmd_name preferences-regen &> /dev/null
 $cmd_directory/$cmd_name templates-regen &> /dev/null
 ####
 ####
-####   english: Show final status from installer
-####   spanish: Muestra el estatus final desde el instalador
+####   english: Show final status from installer: program version
+####   spanish: Muestra el estatus final desde el instalador: program version
 ####
 ####
-echo "$text_md $text_md $text_md           Version:  $cmd_version"
-echo "$text_md $text_md $text_md            format:  $cmd_format"
-echo "$text_md $text_md $text_md           program:  $cmd_directory/$cmd_name"
-echo "$text_md $text_md $text_md            config:  $directory_data_necesary"
-echo "$text_md $text_md $text_md             cache:  $directory_cache_necesary"
-echo "$text_md $text_md $text_md short-description:  $cmd_shortdescription"
-echo "$text_md $text_md $text_md  long-description:  $cmd_longdescription"
-echo "$text_md $text_md $text_md           license:  $cmd_license"
+$cmd_directory/$cmd_name version
+#### 
+#### echo "$text_md $text_md $text_md           Version:  $cmd_version"
+#### echo "$text_md $text_md $text_md            format:  $cmd_format"
+#### echo "$text_md $text_md $text_md           program:  $cmd_directory/$cmd_name"
+#### echo "$text_md $text_md $text_md            config:  $directory_data_necesary"
+#### echo "$text_md $text_md $text_md             cache:  $directory_cache_necesary"
+#### echo "$text_md $text_md $text_md short-description:  $cmd_shortdescription"
+#### echo "$text_md $text_md $text_md  long-description:  $cmd_longdescription"
+#### echo "$text_md $text_md $text_md           license:  $cmd_license"
 exit; fi
 ####
 ####
