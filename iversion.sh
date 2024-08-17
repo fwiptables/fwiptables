@@ -52,7 +52,7 @@ PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"
 ####
 ##########    english: are you root: uid 0 ?                ##########
 ##########    spanish: eres admnistrador: identificador 0 ? ##########
-#### :rutina-inicial-admin:
+#### :rutina-inicial-necesary-admin:
 ####
 ####
 if [ "$(id -u)" != "0" ] ; then echo ; echo
@@ -61,7 +61,7 @@ echo "### $text_info [ Try with root user ]"
 echo ; exit ; fi
 ####
 ####
-#### :rutina-final-admin:
+#### :rutina-final-necesary-admin:
 ##########     english name, description and version    ##########
 ##########     spanish: nombre, descripcion y version   ##########
 #### :rutina-inicial-enviroment-vars:
@@ -438,7 +438,7 @@ output_logfinal="$directory_cache_necesary/$show_actual_date-text-final.txt"
 #### :rutina-final-config-files:
 ##########   english: if sane config directory                       ##########
 ##########   spanish: comprobar sanos directorios de configuracion   ##########
-#### :rutina-inicial-dir-sane:
+#### :rutina-inicial-directory-sane:
 ####
 ####
 #### cache root
@@ -484,7 +484,7 @@ if [ ! -d "$default_directory_readme" ]; then
 $command_mkdir -p "$default_directory_readme" &> /dev/null ; fi
 ####
 ####
-#### :rutina-final-dir-sane:
+#### :rutina-final-directory-sane:
 ##########  english: system-variables: variables to declare     ##########
 ##########  spanish: system-variables: variables para declarar  ##########
 #### :rutina-inicial-system-variables:
@@ -1174,7 +1174,7 @@ esac
 #### :rutina-final-alias-simple:
 ##########    ALIAS CONFIG
 ##########    ALIAS CONFIG
-#### :rutina-inicial-alias-config:
+#### :rutina-inicial-drop-warning:
 ####
 ####
 case $first_option in 
@@ -1189,6 +1189,10 @@ cat $temporal_text-listn6 | $command_grep -E -v Warning: ; exit ;;
 esac ; 
 ####
 ####
+#### :rutina-final-drop-warning:
+##########    ALIAS CONFIG
+##########    ALIAS CONFIG
+#### :rutina-inicial-alias-config:
 #### english:  alias esquive templates
 ####
 ####
