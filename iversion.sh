@@ -5122,7 +5122,7 @@ echo "$text_md $text_md Description: Command Fran FireWall fwiptables Generator"
 echo "$text_md $text_md Author:      Francisco Garcia <fwiptables@gmx.com>"
 echo "$text_md $text_md Copyright:   (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>"
 echo "$text_md $text_md"
-echo "$text_md $text_md launch fwiptables or license-bsd-v1 or license-lgpl-v2 or license-gpl-v2"
+echo "$text_md $text_md launch fwiptables license-bsd-v1|license-lgpl-v2|license-gpl-v2"
 exit; fi
 ####
 ####
