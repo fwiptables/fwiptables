@@ -1838,14 +1838,12 @@ fi
 ####
 ####
 #### :rutina-final-preferences-example:
-##########    english: ip4 : get net info               ##########
-##########    spanish: ip4 : da informacion de la red   ##########
-#### :rutina-inicial-ip4:
+##########    english: network4 : get net info               ##########
+##########    spanish: network4 : da informacion de la red   ##########
+#### :rutina-inicial-network4:
 ####
 ####
-if [ "$first_option" == "ip4" ]; then
-echo "$title_md [ $first_option ]  [ show info about net ip4 ] [ ip4 md ]"
-echo
+if [ "$first_option" == "network4" ]; then
 echo "$title_md $text_info ### [ Network Route ] [ Route ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$text_md $text_info [ install ip command ]"
@@ -1869,42 +1867,20 @@ if [ -f /etc/resolv.conf.tail ]
 then echo "$title_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
 if [ -d /etc/resolvconf ]
 then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
-echo
-echo "$title_md $text_info ### [ Private ip ] [ Address ipv4 ] ###"
-if [ "$command_ip" == "$NULL" ]
-then echo "$title_md $text_info [ install ip command ]"
-else  $command_ip -4 address | $command_grep -i  inet | \
-$command_grep -iv 127.0.0.1 | $command_sed 's/inet//g' | \
-$command_cut -d "/" -f 1 ; fi
-echo
-echo "$title_md $text_info ### [ Public ip ] [ Address ipv4 ] ###"
-if [ "$command_curl" == "$NULL" ]; then
-echo "$title_md $text_info [ install curl command ]" ;
-else public_ip4="$($command_curl -k -s -4 $serverip_discover_ipv4 -w '\n'| head -1)"
-if [ "$public_ip4" == "<!DOCTYPE html>" ]
-then echo "fail: public ip hidden for dns server" ;
-else echo "$text_md   $public_ip4"; fi; fi
-echo
-echo "$title_md $text_info ### [ Input Ports] [ Network Listen ] ###"
-$cmd_realpath sockets | $command_grep -iv ^#
+exit; fi 
 ####
 ####
-exit; fi
+#### :rutina-final-network4:
+##########    english: network6 : get net info               ##########
+##########    spanish: network6 : da informacion de la red   ##########
+#### :rutina-inicial-network6:
 ####
 ####
-#### :rutina-final-ip4:
-##########    english: ip6 : get net info               ##########
-##########    spanish: ip6 : da informacion de la red   ##########
-#### :rutina-inicial-ip6:
-####
-####
-if [ "$first_option" == "ip6" ]; then
-echo "$title_md [ $first_option ]  [ show info about net ip6 ] [ ip6 md ]"
-echo
+if [ "$first_option" == "network6" ]; then
 echo "$title_md $text_info ### [ Network Route ] [ Route ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$text_md $text_info [ install ip command ]"
-else $command_ip -4 route ; fi
+else $command_ip -6 route ; fi
 echo
 echo "$title_md $text_info ### [ Configured ip ] [ inet ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ]
@@ -1924,24 +1900,107 @@ if [ -f /etc/resolv.conf.tail ]
 then echo "$title_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
 if [ -d /etc/resolvconf ]
 then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
+exit; fi
+####
+####
+#### :rutina-final-network6:
+##########    english: address4 : get net info               ##########
+##########    spanish: address4 : da informacion de la red   ##########
+#### :rutina-inicial-adress4:
+####
+####
+if [ "$first_option" == "address4" ]; then
+echo "$title_md $text_info ### [ Private ip ] [ Address ipv4 ] ###"
+if [ "$command_ip" == "$NULL" ]
+then echo "$title_md $text_info [ install ip command ]"
+else  $command_ip -4 address | $command_grep -i  inet | \
+$command_grep -iv 127.0.0.1 | $command_sed 's/inet//g' | \
+$command_cut -d "/" -f 1 ; fi
 echo
+echo "$title_md $text_info ### [ Public ip ] [ Address ipv4 ] ###"
+if [ "$command_curl" == "$NULL" ]; then
+echo "$title_md $text_info [ install curl command ]" ;
+else public_ip4="$($command_curl -k -s -4 $serverip_discover_ipv4 -w '\n'| head -1)"
+if [ "$public_ip4" == "<!DOCTYPE html>" ]
+then echo "fail: public ip hidden for dns server" ;
+else echo "$text_md   $public_ip4"; fi; fi
+exit; fi
+####
+####
+#### :rutina-final-address4:
+##########    english: address6 : get net info               ##########
+##########    spanish: address6 : da informacion de la red   ##########
+#### :rutina-inicial-adress4:
+####
+####
+if [ "$first_option" == "address6" ]; then
 echo "$title_md $text_info ### [ Private ip ] [ Address ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$title_md $text_info [ install ip command ]"
-else  $command_ip -6 address | $command_grep -i  inet | \
-$command_grep -iv ::0 | $command_sed 's/inet//g' | \
+else  $command_ip -6 address | $command_grep -i  inet6 | \
+$command_grep -iv 127.0.0.1 | $command_sed 's/inet6//g' | \
 $command_cut -d "/" -f 1 ; fi
 echo
 echo "$title_md $text_info ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" == "$NULL" ]; then
 echo "$title_md $text_info [ install curl command ]" ;
-else public_ip6="$($command_curl -k -s -6 $serverip_discover_ipv6 -w '\n'| head -1)"
-if [ "$public_ip6" == "<!DOCTYPE html>" ]
+else public_ip6="$($command_curl -k -s -6 $serverip_discover_ipv4 -w '\n'| head -1)"
+if [ "$public_ip4" == "<!DOCTYPE html>" ]
 then echo "fail: public ip hidden for dns server" ;
 else echo "$text_md   $public_ip6"; fi; fi
+exit; fi
+####
+####
+#### :rutina-final-address4:
+##########    english: sockets: The sockets option  ##########
+##########    spanish: sockets: La opcion sockets   ##########
+#### :rutina-inicial-sockets:
+####
+####
+if   [ "$first_option" == "sockets" ]; then 
+echo "$title_md [ $first_option ] [ Show whith ss: LISTEN sockets ] "
+if [ "$command_ss" == "$NULL" ]; then 
+echo "$title_md $text_fail [ Install ss command ]"; exit; fi
+if [ "$command_awk" == "$NULL" ]; then 
+echo "$title_md $text_fail [ Install awk command ]"; exit; fi
+$command_ss -l -460  | $command_grep "\:\*" | \
+$command_awk '{print "     " $1 " " $2 " " $5}' ;
+exit; fi
+####
+####
+#### :rutina-final-sockets:
+##########    english: ip4 : get net info               ##########
+##########    spanish: ip4 : da informacion de la red   ##########
+#### :rutina-inicial-ip4:
+####
+####
+if [ "$first_option" == "ip4" ]; then
+echo "$title_md [ $first_option ]  [ show info about net ip4 ] [ ip4 md ]"
 echo
-echo "$title_md $text_info ### [ Input Ports] [ Network Listen ] ###"
-$cmd_realpath sockets | $command_grep -iv ^#
+$cmd_realpath network4
+echo
+$cmd_realpath address4
+echo
+$cmd_realpath sockets
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-ip4:
+##########    english: ip6 : get net info               ##########
+##########    spanish: ip6 : da informacion de la red   ##########
+#### :rutina-inicial-ip6:
+####
+####
+if [ "$first_option" == "ip6" ]; then
+echo "$title_md [ $first_option ]  [ show info about net ip6 ] [ ip6 md ]"
+echo
+$cmd_realpath network6
+echo
+$cmd_realpath address6
+echo
+$cmd_realpath sockets
 ####
 ####
 exit; fi
