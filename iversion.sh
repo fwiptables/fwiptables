@@ -1367,16 +1367,15 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "pdf" ]
-then case $command_convert in "silent") 
+then case $command_convert in "$NULL") 
 echo "$title_md install imagemagick to print pdf to $default_directory_pdf" ; exit ;; esac
+#### allow print to PDF policy
 echo "$head_waiting_pdf"
-#### allow print to PDF
 sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &> /dev/null
-#### send print to home output-fwiptables.pdf
-$cmd_realpath "$second_option" "$third_option" \
-| command_convert -page A3 text:- \
-$default_directory_pdf/pdf-$second_option-$show_actual_date.pdf &> /dev/null
-echo "$title_md [ file ] $default_directory_pdf/pdf-$second_option-$show_actual_date.pdf"
+#### send print to home output fwiptables.pdf
+$cmd_realpath $second_option $third_option | $command_convert -page A3 text:- \
+$default_directory_pdf/$show_actual_date-$second_option.pdf 
+echo "$title_md [ file ] $default_directory_pdf/$show_actual_date-$second_option.pdf"
 exit ; fi
 ####
 ####
