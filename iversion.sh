@@ -2395,17 +2395,17 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "version" ]; then 
-echo "$text_md     Basename program: $cmd_basename               "
-echo "$text_md     Realpath program: $cmd_realpath               "
-echo "$text_md      Version program: $cmd_version                "
-echo "$text_md    Short description: $cmd_shortdescription       "
-echo "$text_md     Long description: $cmd_longdescription        "
-echo "$text_md     Developer Actual: $cmd_developer              "
-echo "$text_md          Report bugs: $cmd_contact                "         
-echo "$text_md       Data Directory: $directory_data_necesary    "
-echo "$text_md      Cache Directory: $directory_cache_necesary   "     
-echo "$text_md          File Format: $cmd_format   "    
-echo "$text_md      License program: $cmd_license     "     
+echo "$text_md $text_md    Basename program: $cmd_basename            $text_md"
+echo "$text_md $text_md    Realpath program: $cmd_realpath             $text_md"
+echo "$text_md $text_md     Version program: $cmd_version              $text_md"
+echo "$text_md $text_md   Short description: $cmd_shortdescription     $text_md"
+echo "$text_md $text_md    Long description: $cmd_longdescription      $text_md"
+echo "$text_md $text_md    Developer Actual: $cmd_developer            $text_md"
+echo "$text_md $text_md         Report bugs: $cmd_contact              $text_md"
+echo "$text_md $text_md      Data Directory: $directory_data_necesary  $text_md"
+echo "$text_md $text_md     Cache Directory: $directory_cache_necesary $text_md"
+echo "$text_md $text_md         File Format: $cmd_format               $text_md"
+echo "$text_md $text_md     License program: $cmd_license              $text_md"
 exit ; fi
 ####
 ####
@@ -4989,7 +4989,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "install" ]; then 
-echo "$text_md $text_md        Installing: $cmd_name"
+echo "$text_md $text_md $text_md $text_md $text_md Installing: $cmd_name"
 ####
 ####
 ####  english: copy the file to temporal folder and install
@@ -5015,14 +5015,7 @@ $cmd_directory/$cmd_name templates-regen &> /dev/null
 ####
 $cmd_directory/$cmd_name version
 #### 
-#### echo "$text_md $text_md $text_md           Version:  $cmd_version"
-#### echo "$text_md $text_md $text_md            format:  $cmd_format"
-#### echo "$text_md $text_md $text_md           program:  $cmd_directory/$cmd_name"
-#### echo "$text_md $text_md $text_md            config:  $directory_data_necesary"
-#### echo "$text_md $text_md $text_md             cache:  $directory_cache_necesary"
-#### echo "$text_md $text_md $text_md short-description:  $cmd_shortdescription"
-#### echo "$text_md $text_md $text_md  long-description:  $cmd_longdescription"
-#### echo "$text_md $text_md $text_md           license:  $cmd_license"
+####
 exit; fi
 ####
 ####
