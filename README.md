@@ -37,17 +37,17 @@
         
       uninstall TYPE: fwiptables uninstall        
   
-       Basename program: fwiptables               
-       Realpath program: /usr/bin/fwiptables               
-        Version program: 24-08g                
-      Short description: FireWall With iptables       
-       Long description: One Mini Script in one-file wizard        
-       Developer Actual: Francisco Garcia              
-      Developer Contact: fwiptables@gmx.com                
-         Data Directory: /root/.config/fwiptables    
-        Cache Directory: /root/.cache/fwiptables   
-            File Format: Bourne-Again_shell_script,   
-        License program: BSD v1, LGPL v2, GPL v2     
+         Basename program: fwiptables               
+         Realpath program: /usr/bin/fwiptables               
+          Version program: 24-08h                
+        Short description: FireWall With iptables       
+         Long description: One Mini Script in one-file wizard        
+         Developer Actual: Francisco Garcia              
+             Email Report: fwiptables@gmx.com                
+           Data Directory: /root/.config/fwiptables    
+          Cache Directory: /root/.cache/fwiptables   
+              File Format: Bourne-Again_shell_script,                 
+          License program: BSD v1, LGPL v2, GPL v2                
   
 ###  [ about ] [ licenses to fwiptables project ] [ about md ]
       File:        fwiptables
@@ -55,7 +55,7 @@
       Author:      Francisco Garcia <fwiptables@gmx.com>
       Copyright:   (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>
      
-      launch fwiptables or license-bsd-v1 or license-lgpl-v2 or license-gpl-v2
+      launch: fwiptables license-bsd-v1|license-lgpl-v2|license-gpl-v2
   
 ###  [ notes ] [ List notes about ] [ notes md ]
              Legacy or nft: whith one of them is sufficent   
@@ -82,53 +82,70 @@
       Run: obash -s -c -o ./destination.bin ./source-bash.sh   
   
 ###  [ depends ] [ List for depends programs ] [ depends md ] 
-     
+        
 ###     [ Configuration files ]   
       Directory data:          /root/.config/fwiptables   
       Directory temp:          /root/.cache/fwiptables   
-      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-08g   
-     
-###     [ Log files ]   
-      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default_autolog-24-08g   
-      File filelog:            /root/.config/fwiptables/fwiptables-log/default_filelog-24-08g   
-     
-###     [ Automatic interfaces  ]   
-      Interface txt:           /bin/bash   
-      Interface cli:           /bin/whiptail   
-      Interface gui:           /bin/yad   
-     
-###     [ Automatic iptables ]   
+      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-08h   
+        
+###     [ Log files ]             
+      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default_autolog-24-08h   
+      File filelog:            /root/.config/fwiptables/fwiptables-log/default_filelog-24-08h   
+        
+###     [ optional output ]       
+      dialog cli:              /bin/dialog   
+      whiptail cli             /bin/whiptail   
+      zenity gui:              /bin/zenity   
+      yad gui:                 /bin/yad   
+      convert pdf:             /bin/convert   
+        
+###     [ Automatic iptables ]    
       iptables legacy:         /sbin/iptables-legacy   
       iptables nft:            /sbin/iptables-nft   
       ip6tables legacy:        /sbin/ip6tables-legacy   
       ip6tables nft:           /sbin/ip6tables-nft   
       arptables:               /sbin/arptables   
       ebtables:                /sbin/ebtables   
-     
+        
 ###     [ Automatic favorites ]   
-      Automatic text editor:   /bin/nano   
-      Automatic text browser:  /bin/w3m   
-      Automatic text date:     /sbin/ntpdate   
-     
-###     [ Necesary utils ]   
+      Automatic txt:           /bin/bash   
+      Automatic cli:           /bin/whiptail   
+      Automatic gui:           /bin/yad   
+      Automatic pdf:           /bin/convert   
+      Automatic editor:        /bin/nano   
+      Automatic browser:       /bin/w3m   
+      Automatic ntpdate:       /sbin/ntpdate   
+        
+###     [ Necesary utils ]        
       iptables nft:            /sbin/iptables-nft   
       iptables legacy:         /sbin/iptables-legacy   
       awk command:             /bin/awk   
       sed command:             /bin/sed   
       file command:            /bin/file   
+        
+      all utils in command: fwiptables utils   
   
 ###     [ options-examples ] [ List examples ] [ examples md ]   
+###     [ One example with input-established ]   
+         
+       launch input-stablished        | fwiptables input-stablished                 
+       client for all ports in related,established, without servers ports
+         
 ###     [ Several examples with tiny server ]   
          
+       launch wizard tiny             | fwiptables wizard-tiny                 
        launch tinyserver-tcp ports    | fwiptables tinyserver-tcp 21:25,80     
        launch tinyserver-udp ports    | fwiptables tinyserver-udp 67:68,443    
-       launch wizard tiny             | fwiptables wizard-tiny                 
+       client for all ports in related,established
          
 ###     [ Several examples with mini server ]   
          
+       launch wizard mini             | fwiptables wizard-mini                 
+       wizard firewall for clients and servers
+         
        launch miniserver-tcp ports    | fwiptables miniserver-tcp 21:25,80     
        launch miniserver-udp ports    | fwiptables miniserver-udp 67:68,443    
-       launch wizard mini             | fwiptables wizard-mini                 
+       see miniserver clients ports in preferences file
          
 ###     [ Several examples without optional otuput ]        
          
@@ -165,7 +182,7 @@
 ### 
    fwiptables [optional-output] first_option [second_option]   
 ###     optional-output   
-   [ t|txt n|narrowtxt l|logtxt c|cli g|gui p|pdf s|silent i|info ]   
+   [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]   
    [ cli-dialog cli-whiptail gui-zenity gui-yad ]   
    [ cli-menu-dialog cli-menu-whiptail gui-roll-zenity ]   
    [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ]   
@@ -178,9 +195,9 @@
    listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6   
    listn-security4 listn-security6 listn-alltables   
 ###     firewall-wallcontrol   
-   stop continue reset show save load names actual wizard-tiny   
-   wizard-mini wizard-full eraserules eraserules4 eraserules6   
-   without-connection input-permisive input-established   
+   stop continue reset show save load names actual eraserules   
+   eraserules4 eraserules6 without-connection input-permisive   
+   input-established wizard-tiny wizard-mini wizard-full   
    tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp   
 ###     firewall-wallcustom   
    new-full-custom nueva-completa-custom new-mini-custom   
@@ -198,12 +215,13 @@
    server-mumble server-gateway server-sql server-samba server-proxy   
    server-asterisk client-uid-root client-gid-users client-gid-net    
 ###     firewall-easynet   
-   preferences-read preferences-modify preferences-regen info web   
-   options ip4 ip6 speed-ip4 speed-ip6 intro filelog autolog date   
-   free sockets nodes ip-forward depends utils treeconf treecache   
-   cleancache notes variables uninstall install upgrade version   
+   preferences-read preferences-modify preferences-regen   
+   options speed-ip4 speed-ip6 intro filelog autolog date   
+   ip4 ip6 network4 network6 address4 address6 sockets web   
+   free nodes ip-forward depends utils treeconf treecache   
+   cleancache notes variables uninstall install upgrade   
    license-bsd-v1 license-lgpl-v2 license-gpl-v2   
-   examples code expert donate about   
-       | Program: fwiptables , Version: 24-08g   
+   examples info code expert donate about version   
+       | Program: fwiptables 24-08h   
        | Description: One Mini Script in one-file wizard   
        | Expert: expert is allowed in preferences file   
