@@ -994,9 +994,9 @@ case "$first_option" in
 "-cli") first_option="cli" ;;
 "--gui") first_option="gui" ;;
 "-gui") first_option="gui" ;;
-"silent") first_option="null" ;;
-"-silent") first_option="null" ;;
-"--silent") first_option="null" ;;
+"silent") first_option="silent" ;;
+"-silent") first_option="silent" ;;
+"--silent") first_option="silent" ;;
 "-pdf") first_option="pdf" ;;
 "--pdf") first_option="pdf" ;;
 "i") first_option="info" ;;
@@ -1005,7 +1005,7 @@ case "$first_option" in
 "c") first_option="cli" ;;
 "g") first_option="gui" ;;
 "l") first_option="log" ;;
-"s") first_option="null" ;;
+"s") first_option="silent" ;;
 "p") first_option="pdf" ;;
 "-i") first_option="info" ;;
 "-n") first_option="narrowtxt" ;;
@@ -1013,7 +1013,7 @@ case "$first_option" in
 "-c") first_option="cli" ;;
 "-g") first_option="gui" ;;
 "-l") first_option="log" ;;
-"-s") first_option="null" ;;
+"-s") first_option="silent" ;;
 "-p") first_option="pdf" ;;
 esac
 ####
@@ -1189,21 +1189,21 @@ cat $temporal_text-listn6 | $command_grep -E -v Warning: ; exit ;;
 esac ; 
 ####
 ####
-#### english:  alias simple for regenerate configurations templates o esquive
+#### english:  alias esquive templates
 ####
 ####
 case "$first_option" in
-"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom"|"expert-wpa-modify"|"expert-wpa-new")
+"modify-custom")
 $cmd_realpath templates-regen &> /dev/null ;; esac
 ####
 ####
 if [ "$first_option" == "txt" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
-"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath $second_option $third_option ; exit ;; esac ; fi
@@ -1212,7 +1212,7 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 if [ "$first_option" == "narrowtxt" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
-"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath $second_option $third_option ; exit ;; esac ; fi
@@ -1221,7 +1221,7 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 if [ "$first_option" == "cli" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
-"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath $second_option $third_option ; exit ;; esac ; fi
@@ -1231,7 +1231,7 @@ if [ "$first_option" == "gui" ]; then
 case "$second_option" in
 #### "$NULL"|"options") 
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
-"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom") $cmd_realpath templates-regen  &> /dev/null ;; esac ; fi
@@ -1240,32 +1240,33 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 if [ "$first_option" == "log" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
-"wizard-tiny"|"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"$NULL"|"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom") $cmd_realpath templates-regen  &> /dev/null ; 
-echo "the commands modify-custom-and-wizard works does not work in log." ;
+"modify-custom")
+echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in log optional-output." ;
 exit ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "pdf" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
-"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"$NULL"|"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom") $cmd_realpath templates-regen  &> /dev/null ;
-echo "the commands modify-custom-and-wizard works does not work in pdf." ;
+"modify-custom") 
+echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in pdf optional-output." ;
 exit ;; esac ; fi
 ####
 ####
-if [ "$first_option" == "null" ]; then 
+if [ "$first_option" == "silent" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
-"wizard-full"|"new-mini-custom"|"new-full-custom"|\
+"$NULL"|"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom") $cmd_realpath templates-regen  &> /dev/null 
-echo "the commands modify-custom-and-wizard works does not work in null." ;
+"modify-custom")
+#### echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in silent optional-output." ;
 exit ;; esac ; fi
 ####
 ####
@@ -1362,7 +1363,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "pdf" ]
-then case $command_convert in "NULL") 
+then case $command_convert in "silent") 
 echo "$title_md install imagemagick to print pdf to $default_directory_pdf" ; exit ;; esac
 echo "$head_waiting_pdf"
 #### allow print to PDF
@@ -1378,7 +1379,7 @@ exit ; fi
 #### output null
 ####
 ####
-if [ "$first_option" == "null" ]
+if [ "$first_option" == "silent" ]
 then $cmd_realpath "$second_option" "$third_option" &> /dev/null
 exit ; fi
 ####
@@ -3555,7 +3556,7 @@ echo "$text_md $text_md c . output in terminal cli $text_md"
 echo "$text_md $text_md g . output in graphicall gui $text_md"
 echo "$text_md $text_md l . output in file text log $text_md"
 echo "$text_md $text_md p . output in file image pdf $text_md"
-echo "$text_md $text_md s . output in silent or null $text_md"
+echo "$text_md $text_md s . output in silent or without output $text_md"
 echo "$text_md $text_md info . output in info text $text_md"
 echo "$text_md $text_md txt . output in terminal text $text_md"
 echo "$text_md $text_md narrowtxt . output in terminal text with compresed spaces $text_md"
