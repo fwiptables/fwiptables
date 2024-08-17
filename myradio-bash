@@ -19,6 +19,10 @@
 #### with this program; if not, write to the Free Software Foundation, Inc.,
 #### 51 Franklin St, Fifth Floor, Boston MA 02110-1301 USA
 ####
+##################################################### non root
+if [ "$(whoami)" == "root" ] || [ "$(id -u)" == "0" ]; then
+echo "# root is not allowed user for myradio-bash command"; exit; fi
+##################################################### configuration list
 ### variables list
 opt_bin="$(realpath $0)"
 opt_base="$(basename $0)"
@@ -50,7 +54,8 @@ $opt_bin download
 fi
 ### load config
 source $conf_config
-### config reset
+##################################################### options list
+### reset config
 if [ "$opt_first" == "reset" ]; then
 echo "kill_player=vlc"                                         &> $conf_config
 echo "conf_agent=curl"                                         &>> $conf_config
@@ -76,11 +81,12 @@ if [ "$opt_first" == "search" ]; then
 echo "# searching radio: $second"
 grep -i $2 $conf_complete
 exit; fi
-### launch radio
+### play radio
 if [ "$opt_first" == "play" ]; then
 if [ "$opt_second" == "$NULL" ]; then echo "# choose a name for one radio"; exit; fi
 $opt_bin stop
 grep -i $opt_second $conf_complete > $conf_choosed
+if [ ! -s "$conf_choosed" ]; then echo "# radio not found" ; exit; fi
 $conf_player -d $conf_choosed &> /dev/null
 echo "# now playing radio: $opt_second"
 exit; fi
@@ -90,12 +96,12 @@ $opt_bin stop
 echo "# playing: $second" ;
 $conf_player -d $second
 exit; fi
-### code
+### code program
 if [ "$opt_first" == "code" ]; then
 echo "# source code script"
 cat $opt_bin
 exit; fi
-### random
+### random radio
 if [ "$opt_first" == "random" ]; then
 $opt_bin stop
 shuf="$(command -v shuf)"
@@ -105,6 +111,6 @@ tail -"$number_partial" "$configuration" > $conf_choosed
 $conf_player -d $conf_choosed &
 echo "# now play random radio"
 exit; fi
-### exit
+##################################################### exit options
 exit
 
