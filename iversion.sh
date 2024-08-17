@@ -690,13 +690,11 @@ case "$NULL" in "$type_firewall")            ;;
 ####
 if [ "$allow_expert_commands" == "no" ]; then 
 ####
-case "$first_option"
-in exper*)
+case "$first_option" in exper*)
 echo "$title_md See in preferences allow_expert_commands to active it option"
 exit ;; esac
 ####
-case "$second_option"
-in exper*)
+case "$second_option" in exper*)
 echo "$title_md See in preferences allow_expert_commands to active it option"
 exit ;; esac
 ####
@@ -1006,7 +1004,7 @@ case "$first_option" in
 "t") first_option="txt" ;;
 "c") first_option="cli" ;;
 "g") first_option="gui" ;;
-"l") first_option="logtxt" ;;
+"l") first_option="log" ;;
 "s") first_option="null" ;;
 "p") first_option="pdf" ;;
 "-i") first_option="info" ;;
@@ -1014,7 +1012,7 @@ case "$first_option" in
 "-t") first_option="txt" ;;
 "-c") first_option="cli" ;;
 "-g") first_option="gui" ;;
-"-l") first_option="logtxt" ;;
+"-l") first_option="log" ;;
 "-s") first_option="null" ;;
 "-p") first_option="pdf" ;;
 esac
@@ -1239,12 +1237,14 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 "modify-custom") $cmd_realpath templates-regen  &> /dev/null ;; esac ; fi
 ####
 ####
-if [ "$first_option" == "logtxt" ]; then 
+if [ "$first_option" == "log" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
 "wizard-tiny"|"wizard-mini"|"wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom") $cmd_realpath templates-regen  &> /dev/null ; exit ;; esac ; fi
+"modify-custom") $cmd_realpath templates-regen  &> /dev/null ; 
+echo "the commands modify-custom-and-wizard works does not work in log." ;
+exit ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "pdf" ]; then 
@@ -1253,7 +1253,9 @@ expert-*) echo "the commands expert works only wihtout optional output." ; exit 
 "wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom") $cmd_realpath templates-regen  &> /dev/null ; exit ;; esac ; fi
+"modify-custom") $cmd_realpath templates-regen  &> /dev/null ;
+echo "the commands modify-custom-and-wizard works does not work in pdf." ;
+exit ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "null" ]; then 
@@ -1262,7 +1264,9 @@ expert-*) echo "the commands expert works only wihtout optional output." ; exit 
 "wizard-full"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom") $cmd_realpath templates-regen  &> /dev/null ; exit ;; esac; fi
+"modify-custom") $cmd_realpath templates-regen  &> /dev/null 
+echo "the commands modify-custom-and-wizard works does not work in null." ;
+exit ;; esac ; fi
 ####
 ####
 #### :rutina-final-alias-config:
@@ -1343,7 +1347,7 @@ esac ; fi
 #### output log
 ####
 ####
-if [ "$first_option" == "logtxt" ]
+if [ "$first_option" == "log" ]
 then echo "$head_waiting_log"
 echo "### ### $text_info [ $second_option $third_option $quad_option ] \
 [ $show_actual_date ]" &> $output_log
@@ -3102,7 +3106,7 @@ exit; fi
 if [ "$first_option" == "list-options" ] || [ "$first_option" == "options" ]; then 
 echo "$text_md $cmd_basename [optional-output] first_option [second_option] $text_md"
 echo "$title_md    optional-output $text_md"
-echo "$text_md [ t|txt n|narrowtxt l|logtxt c|cli g|gui p|pdf s|silent i|info ] $text_md"
+echo "$text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ] $text_md"
 echo "$text_md [ cli-dialog cli-whiptail gui-zenity gui-yad ] $text_md"
 echo "$text_md [ cli-menu-dialog cli-menu-whiptail gui-roll-zenity ] $text_md"
 echo "$text_md [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ] $text_md"
@@ -3557,7 +3561,7 @@ echo "$text_md $text_md txt . output in terminal text $text_md"
 echo "$text_md $text_md narrowtxt . output in terminal text with compresed spaces $text_md"
 echo "$text_md $text_md cli . output in terminal cli $text_md"
 echo "$text_md $text_md gui . output in graphicall gui $text_md"
-echo "$text_md $text_md logtxt . output in file text logtxt $text_md"
+echo "$text_md $text_md log . output in file text log $text_md"
 echo "$text_md $text_md pdf . output in file image pdf $text_md"
 echo "$text_md $text_md silent . output in silent text $text_md"
 echo "$text_md $text_md cli-dialog . output in terminal cli with dialog $text_md"
