@@ -3167,7 +3167,7 @@ echo "$text_md free sockets nodes ip-forward depends utils treeconf treecache $t
 echo "$text_md cleancache notes variables uninstall install upgrade version $text_md"
 echo "$text_md license-bsd-v1 license-lgpl-v2 license-gpl-v2 $text_md"
 echo "$text_md examples code expert donate about $text_md"
-echo " $text_md $text_md | Program: $cmd_basename , Version: $cmd_version $text_md"
+echo " $text_md $text_md | Program: $cmd_basename $cmd_version $text_md"
 echo " $text_md $text_md | Description: $cmd_longdescription $text_md"
 ####
 ####  if expert commands
