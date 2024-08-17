@@ -2395,13 +2395,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "version" ]; then 
-echo "$text_md $text_md    Basename program: $cmd_basename            $text_md"
+echo "$text_md $text_md    Basename program: $cmd_basename             $text_md"
 echo "$text_md $text_md    Realpath program: $cmd_realpath             $text_md"
 echo "$text_md $text_md     Version program: $cmd_version              $text_md"
 echo "$text_md $text_md   Short description: $cmd_shortdescription     $text_md"
 echo "$text_md $text_md    Long description: $cmd_longdescription      $text_md"
 echo "$text_md $text_md    Developer Actual: $cmd_developer            $text_md"
-echo "$text_md $text_md         Report bugs: $cmd_contact              $text_md"
+echo "$text_md $text_md        Email Report: $cmd_contact              $text_md"
 echo "$text_md $text_md      Data Directory: $directory_data_necesary  $text_md"
 echo "$text_md $text_md     Cache Directory: $directory_cache_necesary $text_md"
 echo "$text_md $text_md         File Format: $cmd_format               $text_md"
