@@ -7927,7 +7927,8 @@ preferences-modify|preferences-regen|preferences-example|\
 list-options|info-options|expert|\
 filelog|autolog|ip4|ip6|notes|speed-ip4|speed-ip6|\
 sockets|nodes|date|free|version|treeconf|\
-depends|commands|variables|license|examples|intro"
+depends|utils|about|variables|examples|intro|\
+license-bsd-v1|license-lgpl-v2|license-gpl-v2"
 ####
 ####
 selection="$($command_zenity --forms \
@@ -7963,11 +7964,14 @@ free) $cmd_realpath -gui-zenity free ;;
 version) $cmd_realpath -gui-zenity version ;;
 treeconf)$cmd_realpath -gui-zenity treeconf ;;
 depends)$cmd_realpath -gui-zenity depends ;;
-license) $cmd_realpath -gui-zenity depends ;;
+license-bsd-v1) $cmd_realpath -gui-zenity license-bsd-v1 ;;
+license-lgpl-v2) $cmd_realpath -gui-zenity license-lgpl-v2 ;;
+license-gpl-v2) $cmd_realpath -gui-zenity license-gpl-v2 ;;
 examples)$cmd_realpath -gui-zenity examples ;;
 intro) $cmd_realpath -gui-zenity intro ;;
 variables) $cmd_realpath -gui-zenity variables ;;
-commands) $cmd_realpath -gui-zenity variables ;;
+utils) $cmd_realpath -gui-zenity utils ;;
+about) $cmd_realpath -gui-zenity about ;;
 esac
 ####
 ####
