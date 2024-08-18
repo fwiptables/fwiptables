@@ -278,7 +278,7 @@ esac
 #### :rutina-final-necesary-commands:
 ##########    english: options priority        ##########
 ##########    spanish: prioridad de opciones   ##########
-#### :rutina-inicial-order-options:
+#### :rutina-inicial-options-order:
 ####
 ####
 #### #### english: option for default    #### spanish: opcion por defecto
@@ -295,10 +295,10 @@ third_option="$(echo $3 | $command_sed s/\\///g -)"  ;
 quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;
 ####
 ####
-#### :rutina-final-order-options:
+#### :rutina-final-options-order:
 ##########   english: profile y support X11       ##########
 ##########   spanish: profile y soporte de X11    ##########
-#### :rutina-inicial-x11-or-wayland:
+#### :rutina-inicial-x11-wayland:
 ####
 ####
 X11_OR_WAYLAND="$XDG_SESSION_TYPE"
@@ -330,10 +330,10 @@ else $command_sudo -u 0 $command_xhost +SI:localuser:root &> /dev/null ; fi
 ## $command_sudo -u "$(logname)" command_xhost +NIS:root@127.0.0.1 &> /dev/null
 ####
 ####
-#### :rutina-final-x11-or-wayland:
+#### :rutina-final-x11-wayland:
 ##########  english: files:    files and folders from fwiptables          ##########
 ##########  spanish: archivos: archivos y carpetas desde fwiptables       ##########
-#### :rutina-inicial-config-files:
+#### :rutina-inicial-config-folders:
 ####
 ####
 #### english: permanent directory:   permanent directory and path directory config files
@@ -387,6 +387,12 @@ default_directory_debian="$directory_data_necesary/fwiptables-debian"
 default_directory_readme="$directory_data_necesary/fwiptables-readme"
 ####
 ####
+#### :rutina-final-config-folders:
+##########   english: if sane config directory                       ##########
+##########   spanish: comprobar sanos directorios de configuracion   ##########
+#### :rutina-inicial-configs-files:
+####
+####
 #### english: templates cfg
 #### spanish: plantillas cfg
 ####
@@ -438,7 +444,7 @@ output_logfinal="$directory_cache_necesary/$show_actual_date-text-final.txt"
 #### :rutina-final-config-files:
 ##########   english: if sane config directory                       ##########
 ##########   spanish: comprobar sanos directorios de configuracion   ##########
-#### :rutina-inicial-directory-sane:
+#### :rutina-inicial-sane-folders:
 ####
 ####
 #### cache root
@@ -484,7 +490,7 @@ if [ ! -d "$default_directory_readme" ]; then
 $command_mkdir -p "$default_directory_readme" &> /dev/null ; fi
 ####
 ####
-#### :rutina-final-directory-sane:
+#### :rutina-final-sane-folders:
 ##########  english: variables: variables to declare     ##########
 ##########  spanish: variables: variables para declarar  ##########
 #### :rutina-inicial-variables-system:
@@ -662,7 +668,7 @@ file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenbla
 #### :rutina-final-variables-misc:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
-#### :rutina-inicial-update-variables:
+#### :rutina-inicial-variables-update:
 ####
 ####
 #### Update variables
@@ -671,10 +677,10 @@ file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenbla
 if [ -f "$file_default_preferences" ]; then source $file_default_preferences ; fi
 ####
 ####
-#### :rutina-final-update-variables:
+#### :rutina-final-variables-update:
 ##########    english: Update first option               ##########
 ##########    spanish: Actualiza primera opción          ##########
-#### :rutina-inicial-first-option:
+#### :rutina-inicial-option-whithout:
 ####
 ####
 #### First option
@@ -683,7 +689,7 @@ then first_option="options"; fi
 if [ "$first_option" = "$NULL" ]; then first_option="$without_first_option" ; fi
 ####
 ####
-#### :rutina-final-first-option:
+#### :rutina-final-option-without:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
 #### :rutina-inicial-variables-sane:
@@ -970,6 +976,49 @@ case "$list_rules_conceptual" in
 *) list_rules_conceptual=" -n"  ;; esac
 ####
 ####
+####
+####
+case "$first_option" in
+"output")         first_option="optional-output"  ;;
+"control")        first_option="firewall-wallcontrol" ;;
+"listconceptual") first_option="firewall-listconceptual" ;;
+"listnumeral")    first_option="firewall-listnumeral" ;;
+"wallcustom")     first_option="firewall-wallcustom" ;;
+"wallsystem")     first_option="firewall-wallsystem" ;;
+"easy")           first_option="firewall-easynet" ;;
+"custom")         first_option="load-custom" ;;
+"examples")       first_option="options-examples" ;;
+"regen")          first_option="templates-regen" ;;
+"expert")         first_option="options-expert" ;;
+"ver")            first_option="version" ;;
+"client-squid")   first_option="client-proxy" ;;
+"server-squid")   first_option="server-proxy" ;;
+"all-names")      first_option="names" ;;
+"options")        first_option="list-options" ;;
+"mini-options")   first_option="list-options" ;;
+"options-mini")   first_option="list-options" ;;
+"sentlog")        first_option="filelog" ;;
+"cfg")            first_option="names-custom" ;;
+"all-custom")     first_option="names-custom" ;;
+"cfg-custom")     first_option="load-custom" ;;
+"custom-cfg")     first_option="load-custom" ;;
+"list-fw")        first_option="names" ;;
+"date")           first_option="ntpdate-client" ;;
+"ram-free")       first_option="free" ;;
+"free-ram")       first_option="free" ;;
+"ram")            first_option="free" ;;
+"list-allrules")  first_option="list-alltables" ;;
+"expert-speed-ip4") first_option="speed-ip4" ;;
+"expert-speed-ip6") first_option="speed-ip6" ;;
+esac
+####
+####
+#### :rutina-final-alias-simple:
+##########    english: ALIAS  simple y firewall y campus       ##########
+##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
+#### :rutina-inicial-alias-output:
+####
+####
 #### english:  alias alias simple for output gui, -txt or -cli or -gui and more
 ####
 ####
@@ -1061,6 +1110,12 @@ favorite_realpath_textdialog="$command_whiptail" ;;
 esac
 ####
 ####
+#### :rutina-final-alias-output:
+##########    english: ALIAS  simple y firewall y campus       ##########
+##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
+#### :rutina-inicial-alias-interface:
+####
+####
 case "$first_option" in
 "cli")
 favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ;
@@ -1142,6 +1197,12 @@ second_option="$favorite_basename_graphicalldialog"
 ####
 ####
 esac
+####
+####
+#### :rutina-final-alias-interface:
+##########    ALIAS CONFIG
+##########    ALIAS CONFIG
+#### :rutina-inicial-drop-warning:
 ####
 ####
 #### english: alias simple for options commons
@@ -1340,7 +1401,7 @@ cat $temporal_text | $command_grep -E -v Warning: ; exit ;;
 *) $cmd_realpath $second_option $third_option $quad_option ; exit ;; esac ; fi
 ####
 ####
-#### :rutina-final-alias-narrowtxt:
+#### :rutina-final-alias-text:
 ##########    ALIAS CONFIG
 ##########    ALIAS CONFIG
 #### :rutina-inicial-alias-cli:
@@ -1445,7 +1506,7 @@ echo $config_show_timespam ; fi
 #### :rutina-final-allow-timespam:
 ##########   english: filelog: Read log fwiptables-filelog  ##########
 ##########   spanish: filelog: Lee log  fwiptables-filelog  ##########
-#### :rutina-inicial-filelog-save:
+#### :rutina-inicial-config-filelog:
 ####
 ####
 if [ "$first_option" == "filelog" ] ; then
@@ -1458,7 +1519,7 @@ echo "### ### [ this file is: ] [ $file_default_filelog ]"
 exit; fi
 ####
 ####
-#### :rutina-final-filelog-save:
+#### :rutina-final-config-filelog:
 ##########    english: autolog: Read log fwiptables-autolog   ##########
 ##########    spanish: autolog: Lee log  fwiptables-autolog   ##########
 #### :rutina-inicial-config-autolog:
@@ -1478,7 +1539,7 @@ exit; fi
 #### :rutina-final-config-autolog:
 ##########    english: expert-cpufreq-info: info cpu frequence                 ##########
 ##########    spanish: expert-cpufreq-info: informacion de frecuencia de cpu   ##########
-#### :rutina-inicial-expert-cpufreq-info:
+#### :rutina-inicial-expert-cpufreq:
 ####
 ####
 if [ "$first_option" == "expert-cpufreq-info" ] ; then
@@ -1489,10 +1550,10 @@ $command_cpufreqinfo
 exit; fi
 ####
 ####
-#### :rutina-final-expert-cpufreq-info:
+#### :rutina-final-expert-cpufreq:
 ##########    english: expert-cpupower-info: info cpu frequence                 ##########
 ##########    spanish: expert-cpupower-info: informacion de frecuencia de cpu   ##########
-#### :rutina-inicial-expert-cpupower-info:
+#### :rutina-inicial-expert-cpupower:
 ####
 ####
 if [ "$first_option" == "expert-cpupower-info" ] ; then
@@ -1503,7 +1564,7 @@ $command_cpupower -c all frequency-info
 exit; fi
 ####
 ####
-#### :rutina-final-expert-cpupower-info:
+#### :rutina-final-expert-cpupower:
 ##########    english: expert-configs-save: configurations backups in actual folder    ##########
 ##########    spanish: expert-configs-save: copia de configuraciones en carpeta actual ##########
 #### :rutina-inicial-expert-configs-save:
@@ -1548,7 +1609,7 @@ exit; fi
 #### :rutina-final-expert-configs-load:
 ##########    english: expert-wpa-scan: search essid wireless   ##########
 ##########    spanish: expert-wpa-scan: buscar essid wireless   ##########
-#### :rutina-inicial-expert-wpa-scan:
+#### :rutina-inicial-expert-wpascan:
 ####
 ####
 if   [ "$first_option" == "expert-wpa-scan" ]; then
@@ -1561,10 +1622,10 @@ $command_iw $a scan | $command_grep -E -i "on $a|ssid" ; done
 exit; fi
 ####
 ####
-#### :rutina-final-expert-wpa-scan:
+#### :rutina-final-expert-wpascan:
 ##########    english: expert-wpa-new: example from a file wpa_supplicant   ##########
 ##########    spanish: expert-wpa-new: ejemplo de un archivo wpa_supplicant ##########
-#### :rutina-inicial-expert-wpa-new:
+#### :rutina-inicial-expert-wpanew:
 ####
 ####
 if [ "$first_option" == "expert-wpa-new" ]
@@ -1601,7 +1662,7 @@ editor $default_directory_wpa/wpaconfig_$second_option
 exit; fi
 ####
 ####
-#### :rutina-final-expert-wpa-new:
+#### :rutina-final-expert-wpanew:
 ##########    english: expert-wpa-modify: example from a file wpa_supplicant   ##########
 ##########    spanish: expert-wpa-modify: ejemplo de un archivo wpa_supplicant ##########
 #### :rutina-inicial-expert-wpa-modify:
@@ -1637,10 +1698,10 @@ editor $default_directory_wpa/wpaconfig_$second_option
 exit; fi
 ####
 ####
-#### :rutina-final-expert-wpa-modify:
+#### :rutina-final-expert-wpamodify:
 ##########    english: expert-wpa-list: example from a file wpa_supplicant   ##########
 ##########    spanish: expert-wpa-list: ejemplo de un archivo wpa_supplicant ##########
-#### :rutina-inicial-expert-wpa-list:
+#### :rutina-inicial-expert-wpalist:
 ####
 ####
 if [ "$first_option" == "expert-wpa-list" ]
@@ -1648,10 +1709,10 @@ then ls -1 "$default_directory_wpa" | cut -d "_" -f 2-
 exit ; fi
 ####
 ####
-#### :rutina-final-expert-wpa-list:
+#### :rutina-final-expert-wpalist:
 ##########    english: expert-wpa-show: example from a file wpa_supplicant   ##########
 ##########    spanish: expert-wpa-show: ejemplo de un archivo wpa_supplicant ##########
-#### :rutina-inicial-expert-wpa-show:
+#### :rutina-inicial-expert-wpashow:
 ####
 ####
 if [ "$first_option" == "expert-wpa-show" ]; then
@@ -1669,10 +1730,10 @@ else echo "$title_md $text_fail use: $first_option nameconfig"; exit ; fi
 exit; fi
 ####
 ####
-#### :rutina-final-expert-wpa-show:
+#### :rutina-final-expert-wpashow:
 ##########    english: expert-wpa-connect: example from a file wpa_supplicant   ##########
 ##########    spanish: expert-wpa-connect: ejemplo de un archivo wpa_supplicant ##########
-#### :rutina-inicial-expert-wpa-connect:
+#### :rutina-inicial-expert-wpaconnect:
 ####
 ####
 if [ "$first_option" == "expert-wpa-connect" ]; then
@@ -1704,10 +1765,10 @@ else echo "$title_md $text_fail use: $first_option nameconfig"; exit ; fi
 exit; fi
 ####
 ####
-#### :rutina-final-expert-wpa-connect:
+#### :rutina-final-expert-wpaconnect:
 ##########    english: expert-wpa-regen: example from a file wpa_supplicant   ##########
 ##########    spanish: expert-wpa-regen: ejemplo de un archivo wpa_supplicant ##########
-#### :rutina-inicial-expert-wpa-regen:
+#### :rutina-inicial-expert-wparegen:
 if [ "$first_option" == "expert-wpa-regen" ]; then
 if [ "$command_wpapassphrase" == "$NULL" ]
 then echo "$title_md $text_fail Install wpa_passphrase"; fi
@@ -1719,10 +1780,10 @@ $cmd_realpath expert-wpa-example &> $default_directory_wpa/defaultwpa
 exit; fi
 ####
 ####
-#### :rutina-final-expert-wpa-regen:
+#### :rutina-final-expert-wparegen:
 ##########    english: expert-wpa-example: example from a file wpa_supplicant   ##########
 ##########    spanish: expert-wpa-example: ejemplo de un archivo wpa_supplicant ##########
-#### :rutina-inicial-expert-wpa-example:
+#### :rutina-inicial-expert-wpaexample:
 ####
 ####
 if [ "$first_option" == "expert-wpa-example" ]; then
@@ -1742,7 +1803,7 @@ echo "$title_md wifi ip static:  if choose one static ip for this net"
 exit; fi
 ####
 ####
-#### :rutina-final-expert-wpa-example:
+#### :rutina-final-expert-wpaexample:
 ##########    english: preferences-modify: modify preferences   ##########
 ##########    spanish: preferences-modify: modify preferences   ##########
 #### :rutina-inicial-preferences-modify:
@@ -2041,7 +2102,7 @@ exit; fi
 #### :rutina-final-ip6:
 ##########    english: expert-conf-clientproxy: get net info               ##########
 ##########    spanish: expert-conf-clientproxy: da informacion de la red   ##########
-#### :rutina-inicial-expert-conf-clientproxy
+#### :rutina-inicial-expert-confclientproxy
 ####
 ####
 if [ "$first_option" == "expert-conf-clientproxy" ]; then 
@@ -2079,10 +2140,10 @@ then cat "$default_directory_proxy/fwiptables-proxy-$second_option" ; fi
 exit ; fi
 ####
 ####
-#### :rutina-final-expert-conf-clientproxy
+#### :rutina-final-expert-confclientproxy
 ##########    english: expert-show-clientproxy: get net info               ##########
 ##########    spanish: expert-show-clientproxy: da informacion de la red   ##########
-#### :rutina-inicial-expert-show-clientproxy
+#### :rutina-inicial-expert-showclientproxy
 ####
 ####
 if [ "$first_option" == "expert-show-clientproxy" ]; then echo
@@ -2112,10 +2173,10 @@ echo ; cat "$default_directory_proxy/$second_option" ; exit ; fi
 exit ; fi
 ####
 ####
-#### :rutina-final-expert-show-clientproxy
+#### :rutina-final-expert-showclientproxy
 ##########    english: expert-active-clientproxy: get net info               ##########
 ##########    spanish: expert-active-clientproxy: da informacion de la red   ##########
-#### :rutina-inicial-expert-deactive-clientproxy
+#### :rutina-inicial-expert-deactiveclientproxy
 ####
 ####
 if [ "$first_option" == "expert-active-clientproxy" ]; then echo
@@ -2139,10 +2200,10 @@ declare -x | grep -i \_PROXY
 exit ; fi
 ####
 ####
-#### :rutina-final-expert-active-clientproxy
+#### :rutina-final-expert-activeclientproxy
 ##########    english: expert-deactive-clientproxy: get net info               ##########
 ##########    spanish: expert-deactive-clientproxy: da informacion de la red   ##########
-#### :rutina-inicial-expert-deactive-clientproxy
+#### :rutina-inicial-expert-deactiveclientproxy
 ####
 ####
 if [ "$first_option" == "expert-deactive-clientproxy" ]; then echo
@@ -2169,10 +2230,10 @@ declare -x | grep -i \_PROXY
 exit ; fi
 ####
 ####
-#### :rutina-final-expert-deactive-clientproxy
+#### :rutina-final-expert-deactiveclientproxy
 ##########    english: expert-show-resolve : get net info               ##########
 ##########    spanish: expert-show-resolve : da informacion de la red   ##########
-#### :rutina-inicial-expert-show-resolve
+#### :rutina-inicial-expert-showresolve
 ####
 ####
 if [ "$first_option" == "expert-show-resolve" ]; then echo
@@ -2191,10 +2252,10 @@ then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
 exit; fi
 ####
 ####
-#### :rutina-final-expert-show-resolve
+#### :rutina-final-expert-showresolve
 ##########    english: expert-trace-tcp4: traceroute with tcp and ipv4   ##########
 ##########    spanish: expert-trace-tcp4: traceroute con tcp y ipv4      ##########
-#### :rutina-inicial-expert-trace-tcp4:
+#### :rutina-inicial-expert-tracetcp4:
 ####
 ####
 if   [ "$first_option" == "expert-trace-tcp4" ]; then
@@ -2211,10 +2272,10 @@ $cmd_basename load before-trace-tcp4
 exit; fi
 ####
 ####
-#### :rutina-final-expert-trace-tcp4:
+#### :rutina-final-expert-tracetcp4:
 ##########    english: expert-trace-tcp6: traceroute with tcp and ipv4   ##########
 ##########    spanish: expert-trace-tcp6: traceroute con tcp y ipv4      ##########
-#### :rutina-inicial-expert-trace-tcp6:
+#### :rutina-inicial-expert-tracetcp6:
 ####
 ####
 if   [ "$first_option" == "expert-trace-tcp6" ]; then
@@ -2231,7 +2292,7 @@ $cmd_basename load before-trace-ip6
 exit; fi
 ####
 ####
-#### :rutina-final-expert-trace-tcp6:
+#### :rutina-final-expert-tracetcp6:
 ##########    english: expert-trace-icmp4: traceroute with tcp and ipv4   ##########
 ##########    spanish: expert-trace-icmp4: traceroute con tcp y ipv4      ##########
 #### :rutina-inicial-expert-trace-icmp4:
@@ -2251,7 +2312,7 @@ $cmd_basename load before-trace-icmp4
 exit; fi
 ####
 ####
-#### :rutina-final-expert-trace-icmp4:
+#### :rutina-final-expert-traceicmp4:
 ##########    english: expert-trace-icmp6: traceroute with tcp and ipv4   ##########
 ##########    spanish: expert-trace-icmp6: traceroute con tcp y ipv4      ##########
 #### :rutina-inicial-expert-trace-icmp6:
@@ -2271,10 +2332,10 @@ $cmd_basename load before-trace-icmp6
 exit; fi
 ####
 ####
-#### :rutina-final-expert-trace-icmp6:
+#### :rutina-final-expert-traceicmp6:
 ##########    english: radio stopped      ##########
 ##########    spanish: radio parada       ##########
-#### :rutina-inicial-expert-radio-stop:
+#### :rutina-inicial-expert-radiostop:
 ####
 ####
 if   [ "$first_option" == "expert-radio-stop" ]; then
@@ -2283,10 +2344,10 @@ killall -9 "$(echo $favorite_text_music| cut -d " " -f 1)" &> /dev/null
 exit; fi
 ####
 ####
-#### :rutina-final-expert-radio-stop:
+#### :rutina-final-expert-radiostop:
 ##########    english: radio link       ##########
 ##########    spanish: radio enlace     ##########
-#### :rutina-inicial-expert-radio-link:
+#### :rutina-inicial-expert-radiolink:
 ####
 ####
 if   [ "$first_option" == "expert-radio-link" ]; then
@@ -2309,10 +2370,10 @@ echo "$title_md $text_ok Radio | With user: $radio_user | With link: $2"
 exit; fi
 ####
 ####
-#### :rutina-final-expert-radio-link:
+#### :rutina-final-expert-radiolink:
 ##########    english: radio online       ##########
 ##########    spanish: radio en linea     ##########
-#### :rutina-inicial-expert-radio-spanish:
+#### :rutina-inicial-expert-radiospanish:
 ####
 ####
 if   [ "$first_option" == "expert-radio-spanish" ]; then
@@ -2344,7 +2405,7 @@ echo "$title_md $text_ok Radio | With user: $radio_user | With string: $2"
 exit; fi
 ####
 ####
-#### :rutina-final-expert-radio-spanish:
+#### :rutina-final-expert-radiospanish:
 ##########    english: utils: posible util depends       ##########
 ##########    spanish: utils: posible util dependencias  ##########
 #### :rutina-inicial-utils:
@@ -2501,7 +2562,7 @@ exit ; fi
 #### :rutina-final-version:
 ##########    english: weather: show the weather with wttr.in     ##########
 ##########    spanish: el tiempo: muestra el tiempo con wttr.in   ##########
-#### :rutina-inicial-expert-show-weather:
+#### :rutina-inicial-expert-showweather:
 ####
 ####
 if   [ "$first_option" == "expert-show-weather" ]; then 
@@ -2510,7 +2571,7 @@ $command_curl -s wttr.in/?3n?T
 exit; fi
 ####
 ####
-#### :rutina-final-expert-show-weather:
+#### :rutina-final-expert-showweather:
 ##########    english: treeconf: tree configs in fwiptables     ##########
 ##########    spanish: treeconf: arbol de conf en fwiptables    ##########
 #### :rutina-inicial-treeconf:
@@ -2598,7 +2659,7 @@ exit; fi
 #### :rutina-final-templates-regen:
 ##########  english:  template-tiny-es: for working sane         ########## 
 ##########  spanish:  template-tiny-es: para funcionamiento sano ##########
-#### :rutina-inicial-template-tiny-es:
+#### :rutina-inicial-template-tinyes:
 ####
 ####
 if [ "$first_option" == "template-tiny-es" ]; then
@@ -2632,10 +2693,10 @@ echo "$title_md"
 exit; fi
 ####
 ####
-#### :rutina-final-template-tiny-es:
+#### :rutina-final-template-tinyes:
 ##########  english:  template-tiny-en: for working sane         ########## 
 ##########  spanish:  template-tiny-en: para funcionamiento sano ##########
-#### :rutina-inicial-template-tiny-en:
+#### :rutina-inicial-template-tinyen:
 ####
 ####
 if [ "$first_option" == "template-tiny-en" ]; then
@@ -2669,10 +2730,10 @@ echo "$title_md"
 exit; fi
 ####
 ####
-#### :rutina-final-template-tiny-en:
+#### :rutina-final-template-tinyen:
 ##########  english:  template-mini-es: for working sane         ########## 
 ##########  spanish:  template-mini-es: para funcionamiento sano ##########
-#### :rutina-inicial-template-mini-es:
+#### :rutina-inicial-template-minies:
 ####
 ####
 if [ "$first_option" == "template-mini-es" ]; then
@@ -2732,10 +2793,10 @@ echo "$title_md FINAL .......... Opciones Necesarias .......... .......... $titl
 exit ; fi
 ####
 ####
-#### :rutina-final-template-mini-es:
+#### :rutina-final-template-minies:
 ##########  english:  template-full-es: for working sane         ########## 
 ##########  spanish:  template-full-es: para funcionamiento sano ##########
-#### :rutina-inicial-template-full-es:
+#### :rutina-inicial-template-fulles:
 ####
 ####
 if [ "$first_option" == "template-full-es" ]; then
@@ -2921,10 +2982,10 @@ echo "$title_md FINAL .......... Opciones opcionales .......... .......... $titl
 exit ; fi
 ####
 ####
-#### :rutina-final-template-full-es:
+#### :rutina-final-template-fulles:
 ##########  english:  template-mini-en: for working sane         ########## 
 ##########  spanish:  template-mini-en: para funcionamiento sano ##########
-#### :rutina-inicial-template-mini-en:
+#### :rutina-inicial-template-minien:
 ####
 ####
 if [ "$first_option" == "template-mini-en" ]; then
@@ -2984,10 +3045,10 @@ echo "$title_md .......... END Necesary options .......... .......... $title_md 
 exit ; fi
 ####
 ####
-#### :rutina-final-template-mini-en:
+#### :rutina-final-template-minien:
 ##########  english:  template-full-en: for working sane         ########## 
 ##########  spanish:  template-full-en: para funcionamiento sano ##########
-#### :rutina-inicial-template-full-en:
+#### :rutina-inicial-template-fullen:
 ####
 ####
 if [ "$first_option" == "template-full-en" ]; then
@@ -3167,7 +3228,7 @@ echo "$title_md .......... END Optional options .......... .......... $title_md"
 exit ; fi
 ####
 ####
-#### :rutina-final-template-full-en:
+#### :rutina-final-template-fullen:
 ##########    english: autosave: autosave of firewall, standard rules   ##########
 ##########    english: autosave: autoguardado de firewall,   estandar   ##########
 #### :rutina-inicial-autosave:
