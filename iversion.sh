@@ -8492,8 +8492,9 @@ echo "$title_md The used gui in $first_option is $second_option" ;
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
 list-options|clasic-options|info-options|expert|download|intro|\
-ip4|ip6|speed-ip4|speed-ip6|sockets|license|notes|treeconf|\
-examples|depends|variables|commands"
+ip4|ip6|speed-ip4|speed-ip6|sockets|notes|treeconf|\
+license-bsd-v1|license-lgpl-v2|license-gpl-v2|\
+examples|depends|variables|utils|about"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($second_option \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -8532,9 +8533,12 @@ treeconf*)$cmd_realpath gui-$second_option treeconf ;;
 examples*)$cmd_realpath gui-$second_option examples ;;
 depends*)$cmd_realpath gui-$second_option depends ;;
 notes*)$cmd_realpath gui-$second_option notes ;;
-license*)$cmd_realpath gui-$second_option license ;;
+license-bsd-v1*)$cmd_realpath gui-$second_option license-bsd-v1 ;;
+license-lgpl-v2*)$cmd_realpath gui-$second_option license-lgpl-v2 ;;
+license-gpl-v2*)$cmd_realpath gui-$second_option license-gpl-v2 ;;
 variables*) $cmd_realpath gui-$second_option variables ;;
-commands*) $cmd_realpath gui-$second_option commands ;;
+utils*) $cmd_realpath gui-$second_option commands ;;
+about*) $cmd_realpath gui-$second_option about ;;
 esac
 ####
 ####
