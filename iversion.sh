@@ -7483,12 +7483,14 @@ case "$selection_final" in
 --info --text=good-bye ; exit ;;
 Info)	
 $cmd_realpath gui-zenity info ; exit ;;
-firewall-wallcontrol)
-$cmd_realpath gui-roll-zenity-firewall-wallcontrol ; exit ;;
+####
+####
 Firewall-List-With-Conceptual)
 $cmd_realpath gui-roll-zenity-firewall-listconceptual ; exit ;;
 Firewall-List-With-Numeral)
 $cmd_realpath gui-roll-zenity-firewall-listnumeral ; exit ;;
+firewall-wallcontrol)
+$cmd_realpath gui-roll-zenity-firewall-wallcontrol ; exit ;;
 firewall-wallcustom)
 $cmd_realpath gui-roll-zenity-firewall-wallcustom ; exit ;;
 firewall-wallsystem)
