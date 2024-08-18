@@ -7926,7 +7926,7 @@ gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
 list-options|info-options|expert|\
 filelog|autolog|ip4|ip6|notes|speed-ip4|speed-ip6|\
-sockets|nodes|date|free|version|treeconf|\
+sockets|nodes|date|free|version|treeconf|treecache|cleancache|\
 depends|utils|about|variables|examples|intro|\
 license-bsd-v1|license-lgpl-v2|license-gpl-v2"
 ####
@@ -7963,6 +7963,8 @@ date) $cmd_realpath -gui-zenity date ;;
 free) $cmd_realpath -gui-zenity free ;;
 version) $cmd_realpath -gui-zenity version ;;
 treeconf)$cmd_realpath -gui-zenity treeconf ;;
+treecache)$cmd_realpath -gui-zenity treecache ;;
+cleancache) $cmd_realpath -gui-zenity cleancache ;;
 depends)$cmd_realpath -gui-zenity depends ;;
 license-bsd-v1) $cmd_realpath -gui-zenity license-bsd-v1 ;;
 license-lgpl-v2) $cmd_realpath -gui-zenity license-lgpl-v2 ;;
@@ -8492,7 +8494,7 @@ echo "$title_md The used gui in $first_option is $second_option" ;
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
 list-options|clasic-options|info-options|expert|download|intro|\
-ip4|ip6|speed-ip4|speed-ip6|sockets|notes|treeconf|\
+ip4|ip6|speed-ip4|speed-ip6|sockets|notes|treeconf|treecache|cleancache|\
 license-bsd-v1|license-lgpl-v2|license-gpl-v2|\
 examples|depends|variables|utils|about"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
@@ -8530,6 +8532,8 @@ speed-ip4*)$cmd_realpath gui-$second_option speed-ip4 ;;
 speed-ip6*)$cmd_realpath gui-$second_option speed-ip6 ;;
 sockets*)$cmd_realpath gui-$second_option sockets ;;
 treeconf*)$cmd_realpath gui-$second_option treeconf ;;
+treecache*)$cmd_realpath gui-$second_option treecache ;;
+cleancache*)$cmd_realpath gui-$second_option cleancache ;;
 examples*)$cmd_realpath gui-$second_option examples ;;
 depends*)$cmd_realpath gui-$second_option depends ;;
 notes*)$cmd_realpath gui-$second_option notes ;;
