@@ -1936,7 +1936,7 @@ exit; fi
 #### :rutina-final-network6:
 ##########    english: address4 : get net info               ##########
 ##########    spanish: address4 : da informacion de la red   ##########
-#### :rutina-inicial-adress4:
+#### :rutina-inicial-address4:
 ####
 ####
 if [ "$first_option" == "address4" ]; then
@@ -1960,7 +1960,7 @@ exit; fi
 #### :rutina-final-address4:
 ##########    english: address6 : get net info               ##########
 ##########    spanish: address6 : da informacion de la red   ##########
-#### :rutina-inicial-adress4:
+#### :rutina-inicial-address6:
 ####
 ####
 if [ "$first_option" == "address6" ]; then
@@ -1981,7 +1981,7 @@ else echo "$text_md   $public_ip6"; fi; fi
 exit; fi
 ####
 ####
-#### :rutina-final-address4:
+#### :rutina-final-address6:
 ##########    english: sockets: The sockets option  ##########
 ##########    spanish: sockets: La opcion sockets   ##########
 #### :rutina-inicial-sockets:
