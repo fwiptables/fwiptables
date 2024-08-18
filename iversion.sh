@@ -485,9 +485,9 @@ $command_mkdir -p "$default_directory_readme" &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-directory-sane:
-##########  english: system-variables: variables to declare     ##########
-##########  spanish: system-variables: variables para declarar  ##########
-#### :rutina-inicial-system-variables:
+##########  english: variables: variables to declare     ##########
+##########  spanish: variables: variables para declarar  ##########
+#### :rutina-inicial-variables-system:
 ####
 ####
 miniclient_port_tcp="ssh,http,https"     ;
@@ -585,7 +585,10 @@ config_ipv6_netclient="::/0"     ;
 config_ipv6_netserver="::/0"     ;
 ####
 ####
-#### headers
+#### :rutina-final-variables-system:
+##########  english: variables: variables to declare     ##########
+##########  spanish: variables: variables para declarar  ##########
+#### :rutina-inicial-variables-header:
 ####
 ####
 title_md="### " ;
@@ -616,6 +619,12 @@ message_without_pdf="$title_md $text_fail [ pdf ] $message_without_support"
 message_without_climenu="$title_md $text_fail [ install or dialog or wiptail]"
 message_without_guimenu="$title_md $text_fail [ install or zenity or yad ]"
 message_without_guiroll="$title_md $text_fail [ install zenity ]"
+####
+####
+#### :rutina-final-variables-header:
+##########  english: system-variables: variables to declare     ##########
+##########  spanish: system-variables: variables para declarar  ##########
+#### :rutina-inicial-variables-misc:
 ####
 ####
 #### proxy file
@@ -650,13 +659,15 @@ file_blacklist_adaway="$default_directory_adblock/hosts.blacklist_adaway"
 file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenblack"
 ####
 ####
-#### :rutina-final-system-variables:
+#### :rutina-final-variables-misc:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
 #### :rutina-inicial-update-variables:
 ####
 ####
 #### Update variables
+####
+####
 if [ -f "$file_default_preferences" ]; then source $file_default_preferences ; fi
 ####
 ####
@@ -675,7 +686,7 @@ if [ "$first_option" = "$NULL" ]; then first_option="$without_first_option" ; fi
 #### :rutina-final-first-option:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
-#### :rutina-inicial-sane-variables-basics:
+#### :rutina-inicial-variables-sane:
 ####
 ####
 case "$NULL" in "$choosed_iptables")         ;;
@@ -705,10 +716,10 @@ if [ "$command_file" == "$NULL" ] || [ "$command_awk" == "$NULL" ]; then exit ;
 else cmd_format="$($command_file $0 | $command_awk '{print $2 "_" $3 "_" $4}')" ; fi
 ####
 ####
-#### :rutina-final-sane-variables-basics:
+#### :rutina-final-variables-sane:
 ##########      english: search favorite iperf: favorite iperf command        ##########
 ##########      spanish: busca preferida fecha: favorita comando de iperf     ##########
-#### :rutina-inicial-favorite-iperf-command:
+#### :rutina-inicial-favorite-iperf:
 ####
 ####
 if [ "$favorite_iperf_command" == "$NULL" ]; then
@@ -725,10 +736,10 @@ favorite_iperf_command="$command_iperf" ; fi
 fi
 ####
 ####
-#### :rutina-final-favorite-iperf-command:
+#### :rutina-final-favorite-iperf:
 ##########      english: search favorite date: favorite date command        ##########
 ##########      spanish: busca preferida fecha: favorita comando de fecha   ##########
-#### :rutina-inicial-favorite-date-command:
+#### :rutina-inicial-favorite-date:
 ####
 ####
 if [ "$favorite_date_command" == "$NULL" ]; then
@@ -749,10 +760,10 @@ favorite_date_command="$command_ntpdate"         ; fi
 fi
 ####
 ####
-#### :rutina-final-favorite-date-command:
+#### :rutina-final-favorite-date:
 ##########      english: search favorite text editor: favorite editor text     ##########
 ##########      spanish: busca preferido editor: favorite editor de texto     ##########
-#### :rutina-inicial-favorite-text-editor:
+#### :rutina-inicial-favorite-editor:
 ####
 ####
 if [ "$favorite_text_editor" == "$NULL" ]; then
@@ -781,10 +792,10 @@ favorite_text_editor="$command_nano"    ; fi
 fi
 ####
 ####
-#### :rutina-final-favorite-text-editor:
+#### :rutina-final-favorite-editor:
 ##########      english: search favorite text dialog: favorite text dialog     ##########
 ##########      spanish: busca preferido text dialogo: favorite text dialog    ##########
-#### :rutina-inicial-favorite-text-dialog:
+#### :rutina-inicial-favorite-dialog:
 ####
 ####
 if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
@@ -805,10 +816,10 @@ fi
 fi
 ####
 ####
-#### :rutina-final-favorite-text-dialog:
+#### :rutina-final-favorite-dialog:
 ##########      english: search favorite dialog: favorite dialog     ##########
 ##########      spanish: busca preferido dialogo: favorite dialog   ##########
-#### :rutina-inicial-favorite-graphicall-dialog:
+#### :rutina-inicial-favorite-graphicall:
 ####
 ####
 if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
@@ -829,10 +840,10 @@ fi
 fi
 ####
 ####
-#### :rutina-final-favorite-graphicall-dialog:
+#### :rutina-final-favorite-graphicall:
 ##########      english: search favorite browser: favorite browser     ##########
 ##########      spanish: busca preferido navegador: favorite browser   ##########
-#### :rutina-inicial-favorite-text-browser:
+#### :rutina-inicial-favorite-browser:
 ####
 ####
 if [ "$favorite_text_browser" == "$NULL" ]; then
@@ -861,10 +872,10 @@ favorite_text_browser="$command_w3m"  ; fi
 fi
 ####
 ####
-#### :rutina-final-favorite-text-browser:
+#### :rutina-final-favorite-browser:
 ##########      english: search favorite dhcp Discover ip net     ##########
 ##########      spanish: busca preferido dhcp Descubre la ip      ##########
-#### :rutina-inicial-favorite-dhcp-command:
+#### :rutina-inicial-favorite-dhcp:
 ####
 ####
 if [ "$favorite_dhcp_command" == "$NULL" ]; then
@@ -885,7 +896,7 @@ favorite_dhcp_command="$command_dhclient"         ; fi
 fi
 ####
 ####
-#### :rutina-final-favorite-dhcp-command:
+#### :rutina-final-favorite-dhcp:
 ##########      english: search favorite date: favorite date command        ##########
 ##########      spanish: busca preferida fecha: favorita comando de fecha   ##########
 #### :rutina-inicial-favorite-date-command:
@@ -909,10 +920,10 @@ favorite_date_command="$command_ntpdate"         ; fi
 fi
 ####
 ####
-#### :rutina-final-favorite-date-command:
+#### :rutina-final-favorite-date:
 ##########      english: search favorite text music player             ##########
 ##########      spanish: busca preferida texto reproductor de musica   ##########
-#### :rutina-inicial-favorite-text-music:
+#### :rutina-inicial-favorite-music:
 ####
 ####
 if [ "$favorite_text_music" == "$NULL" ]; then
@@ -925,7 +936,7 @@ favorite_text_music="$command_vlc"     ; fi
 fi
 ####
 ####
-#### :rutina-final-favorite-text-music:
+#### :rutina-final-favorite-music:
 ##########    english: ALIAS  simple y firewall y campus       ##########
 ##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
 #### :rutina-inicial-alias-simple:
@@ -1192,7 +1203,9 @@ esac ;
 #### :rutina-final-drop-warning:
 ##########    ALIAS CONFIG
 ##########    ALIAS CONFIG
-#### :rutina-inicial-alias-config:
+#### :rutina-inicial-config-esquive:
+####
+####
 #### english:  alias esquive templates
 ####
 ####
@@ -1274,10 +1287,10 @@ expert-*) echo "the commands expert works only wihtout optional output." ; exit 
 exit ;; esac ; fi
 ####
 ####
-#### :rutina-final-alias-config:
+#### :rutina-final-config-esquive:
 ##########    ALIAS CONFIG
 ##########    ALIAS CONFIG
-#### :rutina-inicial-alias-campus:
+#### :rutina-inicial-alias-narrowtxt:
 ####
 ####
 #### output narrow:      General text without warnings version list narrow
@@ -1309,6 +1322,12 @@ cat $temporal_text | $command_grep -E -v Warning: ; exit ;;
 esac ; exit ; fi
 ####
 ####
+#### :rutina-final-alias-narrowtxt:
+##########    ALIAS CONFIG
+##########    ALIAS CONFIG
+#### :rutina-inicial-alias-txt:
+####
+####
 #### output txt:      General text without warnings version list normal
 ####
 ####
@@ -1319,6 +1338,12 @@ case $second_option in
 ls*|list*) $cmd_realpath $second_option $third_option &> $temporal_text
 cat $temporal_text | $command_grep -E -v Warning: ; exit ;;
 *) $cmd_realpath $second_option $third_option $quad_option ; exit ;; esac ; fi
+####
+####
+#### :rutina-final-alias-narrowtxt:
+##########    ALIAS CONFIG
+##########    ALIAS CONFIG
+#### :rutina-inicial-alias-cli:
 ####
 ####
 #### output cli:
@@ -1349,6 +1374,12 @@ esac ; fi
 #### $cmd_realpath text-pause ; clear ; exit ; fi
 ####
 ####
+#### :rutina-final-alias-cli:
+##########    ALIAS CONFIG
+##########    ALIAS CONFIG
+#### :rutina-inicial-alias-log:
+####
+####
 #### output log
 ####
 ####
@@ -1358,8 +1389,8 @@ echo "### ### $text_info [ $second_option $third_option $quad_option ] \
 [ $show_actual_date ]" &> $output_log
 $cmd_realpath $second_option $third_option $quad_option &> $output_log
 cat $output_log | $command_grep -E -v Warning: \
-&> $default_directory_log/log-$second_option-$show_actual_date.txt
-echo "$title_md [ file ] $default_directory_log/log-$second_option-$show_actual_date.txt"
+&> $default_directory_log/$show_actual_date-$second_option.txt
+echo "$title_md [ file ]  $default_directory_log/$show_actual_date-$second_option.txt"
 exit ; fi
 ####
 ####
@@ -1387,7 +1418,7 @@ then $cmd_realpath "$second_option" "$third_option" &> /dev/null
 exit ; fi
 ####
 ####
-#### :rutina-final-alias-campus:
+#### :rutina-final-alias-log:
 ##########     english: autolog:         ##########
 ##########     spanish: autoguardado     ##########
 #### :rutina-inicial-allow-autolog:
@@ -1414,7 +1445,7 @@ echo $config_show_timespam ; fi
 #### :rutina-final-allow-timespam:
 ##########   english: filelog: Read log fwiptables-filelog  ##########
 ##########   spanish: filelog: Lee log  fwiptables-filelog  ##########
-#### :rutina-inicial-filelog:
+#### :rutina-inicial-filelog-save:
 ####
 ####
 if [ "$first_option" == "filelog" ] ; then
@@ -1427,7 +1458,7 @@ echo "### ### [ this file is: ] [ $file_default_filelog ]"
 exit; fi
 ####
 ####
-#### :rutina-final-filelog:
+#### :rutina-final-filelog-save:
 ##########    english: autolog: Read log fwiptables-autolog   ##########
 ##########    spanish: autolog: Lee log  fwiptables-autolog   ##########
 #### :rutina-inicial-config-autolog:
