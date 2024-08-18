@@ -7925,8 +7925,9 @@ then echo $message_without_guiroll ; exit ; fi
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
 list-options|info-options|expert|\
+address4|address6|network4|network6||sockets|\
 filelog|autolog|ip4|ip6|notes|speed-ip4|speed-ip6|\
-sockets|nodes|date|free|version|treeconf|treecache|cleancache|\
+nodes|date|free|version|treeconf|treecache|cleancache|\
 depends|utils|about|variables|examples|intro|install|upgrade|\
 license-bsd-v1|license-lgpl-v2|license-gpl-v2"
 ####
@@ -7966,6 +7967,10 @@ treeconf)$cmd_realpath -gui-zenity treeconf ;;
 treecache)$cmd_realpath -gui-zenity treecache ;;
 cleancache) $cmd_realpath -gui-zenity cleancache ;;
 depends)$cmd_realpath -gui-zenity depends ;;
+address4)$cmd_realpath gui-$second_option address4 ;;
+address6)$cmd_realpath gui-$second_option address6 ;;
+network4)$cmd_realpath gui-$second_option network4 ;;
+network6)$cmd_realpath gui-$second_option network6 ;;
 install)$cmd_realpath -gui-zenity install ;;
 upgrade)$cmd_realpath -gui-zenity upgrade ;;
 license-bsd-v1) $cmd_realpath -gui-zenity license-bsd-v1 ;;
@@ -8496,8 +8501,9 @@ echo "$title_md The used gui in $first_option is $second_option" ;
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
 list-options|clasic-options|info-options|expert|download|intro|\
-ip4|ip6|speed-ip4|speed-ip6|sockets|notes|treeconf|treecache|cleancache|\
+ip4|ip6|speed-ip4|speed-ip6|notes|treeconf|treecache|cleancache|\
 license-bsd-v1|license-lgpl-v2|license-gpl-v2|\
+address4|address6|network4|network6||sockets|\
 install|upgrade|examples|depends|variables|utils|about"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($second_option \
@@ -8541,6 +8547,10 @@ depends*)$cmd_realpath gui-$second_option depends ;;
 install*)$cmd_realpath -gui-zenity install ;;
 upgrade*)$cmd_realpath -gui-zenity upgrade ;;
 notes*)$cmd_realpath gui-$second_option notes ;;
+address4*)$cmd_realpath gui-$second_option address4 ;;
+address6*)$cmd_realpath gui-$second_option address6 ;;
+network4*)$cmd_realpath gui-$second_option network4 ;;
+network6*)$cmd_realpath gui-$second_option network6 ;;
 license-bsd-v1*)$cmd_realpath gui-$second_option license-bsd-v1 ;;
 license-lgpl-v2*)$cmd_realpath gui-$second_option license-lgpl-v2 ;;
 license-gpl-v2*)$cmd_realpath gui-$second_option license-gpl-v2 ;;
