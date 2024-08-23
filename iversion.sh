@@ -416,8 +416,8 @@ file_default_preferences="$default_directory_preferences/default-preferences-$cm
 #### spanish: archivos log: archivos log y ruta de los archivos de configuracion
 ####
 ####
-file_default_filelog="$default_directory_log/default_filelog-$cmd_version"
-file_default_autolog="$default_directory_autolog/default_autolog-$cmd_version"
+file_default_filelog="$default_directory_log/default-filelog-$cmd_version"
+file_default_autolog="$default_directory_autolog/default-autolog-$cmd_version"
 ####
 ####
 #### stablished which is the cache temporal.
