@@ -66,6 +66,7 @@ exit ; fi
 ### config file
 if [ "$opt_first" == "config" ]; then
 cat $conf_config
+echo "# you can edit config file: $conf_config"
 exit ; fi
 ### download list
 if [ "$opt_first" == "download" ]; then
@@ -111,6 +112,8 @@ tail -"$number_partial" "$configuration" > $conf_choosed
 $conf_player -d $conf_choosed &
 echo "# now play random radio"
 exit; fi
+### invalid options
+echo "# Launch: $opt_base config|reset|stop|download|search|play|random|link choosed-radio"
 ##################################################### exit options
 exit
 
