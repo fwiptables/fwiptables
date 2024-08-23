@@ -9,7 +9,7 @@
         
       From one system firewall to choose one,    
       with eraserules, or template custom,       
-      with new wizards: -tiny -mini -full ,      
+      with wizards: tiny, mini, and full,        
       with added comments rules in firewall.     
         
       With rules ipv4, rules ipv6, ebtables, arptables,    
@@ -39,7 +39,7 @@
   
          Basename program: fwiptables               
          Realpath program: /usr/bin/fwiptables               
-          Version program: 24-08h                
+          Version program: 24-08i                
         Short description: FireWall With iptables       
          Long description: One Mini Script in one-file wizard        
          Developer Actual: Francisco Garcia              
@@ -86,11 +86,11 @@
 ###     [ Configuration files ]   
       Directory data:          /root/.config/fwiptables   
       Directory temp:          /root/.cache/fwiptables   
-      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-08h   
+      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-08i   
         
 ###     [ Log files ]             
-      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default_autolog-24-08h   
-      File filelog:            /root/.config/fwiptables/fwiptables-log/default_filelog-24-08h   
+      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default_autolog-24-08i   
+      File filelog:            /root/.config/fwiptables/fwiptables-log/default_filelog-24-08i   
         
 ###     [ optional output ]       
       dialog cli:              /bin/dialog   
@@ -220,8 +220,8 @@
    ip4 ip6 network4 network6 address4 address6 sockets web   
    free nodes ip-forward depends utils treeconf treecache   
    cleancache notes variables uninstall install upgrade   
-   license-bsd-v1 license-lgpl-v2 license-gpl-v2   
    examples info code expert donate about version   
-       | Program: fwiptables 24-08h   
+   license-bsd-v1 license-lgpl-v2 license-gpl-v2   
+       | Program: fwiptables 24-08i   
        | Description: One Mini Script in one-file wizard   
        | Expert: expert is allowed in preferences file   
