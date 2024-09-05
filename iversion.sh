@@ -1929,6 +1929,29 @@ fi
 ####
 ####
 #### :rutina-final-preferences-example:
+##########    english: resolve : get net info               ##########
+##########    spanish: resolve : da informacion de la red   ##########
+#### :rutina-inicial-resolve:
+####
+####
+if [ "$first_option" == "resolve" ]; then
+echo "$title_md $text_info ### [ Domain resolve ] [ nameserver and search ] ###"
+if [ -f /etc/resolv.conf ]
+then echo "$text_md $text_md [ yes file ]      [ /etc/resolv.conf ]"
+cat /etc/resolv.conf | $command_grep -E "nameserver|search" | \
+$command_awk '{print "     " $1 " " $2}' ; fi
+if [ -f /etc/resolv.conf.head ]
+then echo "$text_md $text_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
+if [ -f /etc/resolv.conf.body ]
+then echo "$text_md $text_md [ yes file ]      [ /etc/resolv.conf.body ]"; fi
+if [ -f /etc/resolv.conf.tail ]
+then echo "$text_md $text_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
+if [ -d /etc/resolvconf ]
+then echo "$text_md $text_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
+exit; fi 
+####
+####
+#### :rutina-final-resolve:
 ##########    english: network4 : get net info               ##########
 ##########    spanish: network4 : da informacion de la red   ##########
 #### :rutina-inicial-network4:
@@ -1944,20 +1967,6 @@ echo "$title_md $text_info ### [ Configured ip ] [ inet ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$text_md $text_info [ install ip command ]"
 else $command_ip address ls | $command_egrep ": |inet " ; fi
-echo
-echo "$title_md $text_info ### [ Domain resolve ] [ nameserver and search ] ###"
-if [ -f /etc/resolv.conf ]
-then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"
-cat /etc/resolv.conf | $command_grep -E "nameserver|search" | \
-$command_awk '{print "     " $1 " " $2}' ; fi
-if [ -f /etc/resolv.conf.head ]
-then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
-if [ -f /etc/resolv.conf.body ]
-then echo "$title_md [ yes file ]      [ /etc/resolv.conf.body ]"; fi
-if [ -f /etc/resolv.conf.tail ]
-then echo "$title_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
-if [ -d /etc/resolvconf ]
-then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
 exit; fi 
 ####
 ####
@@ -1977,20 +1986,6 @@ echo "$title_md $text_info ### [ Configured ip ] [ inet ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$text_md $text_info [ install ip command ]"
 else $command_ip address ls | $command_egrep ": |inet6 " ; fi
-echo
-echo "$title_md $text_info ### [ Domain resolve ] [ nameserver and search ] ###"
-if [ -f /etc/resolv.conf ]
-then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"
-cat /etc/resolv.conf | $command_grep -E "nameserver|search" | \
-$command_awk '{print "     " $1 " " $2}' ; fi
-if [ -f /etc/resolv.conf.head ]
-then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
-if [ -f /etc/resolv.conf.body ]
-then echo "$title_md [ yes file ]      [ /etc/resolv.conf.body ]"; fi
-if [ -f /etc/resolv.conf.tail ]
-then echo "$title_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
-if [ -d /etc/resolvconf ]
-then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
 exit; fi
 ####
 ####
@@ -2072,6 +2067,8 @@ $cmd_realpath network4
 echo
 $cmd_realpath address4
 echo
+$cmd_realpath resolve
+echo
 $cmd_realpath sockets
 ####
 ####
@@ -2090,6 +2087,8 @@ echo
 $cmd_realpath network6
 echo
 $cmd_realpath address6
+echo
+$cmd_realpath resolve
 echo
 $cmd_realpath sockets
 ####
