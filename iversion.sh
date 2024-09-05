@@ -1935,19 +1935,19 @@ fi
 ####
 ####
 if [ "$first_option" == "resolve" ]; then
-echo "$title_md $text_info ### [ Domain resolve ] [ nameserver and search ] ###"
+echo "$title_md $text_info $title_md [ Domain resolve ] [ nameserver and search ] $title_md"
 if [ -f /etc/resolv.conf ]
-then echo "$text_md $text_md [ yes file ]      [ /etc/resolv.conf ]"
+then echo "$text_md $text_md File: /etc/resolv.conf"
 cat /etc/resolv.conf | $command_grep -E "nameserver|search" | \
 $command_awk '{print "     " $1 " " $2}' ; fi
 if [ -f /etc/resolv.conf.head ]
-then echo "$text_md $text_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
+then echo "$text_md $text_md File: /etc/resolv.conf.head"; fi
 if [ -f /etc/resolv.conf.body ]
-then echo "$text_md $text_md [ yes file ]      [ /etc/resolv.conf.body ]"; fi
+then echo "$text_md $text_md File: /etc/resolv.conf.body"; fi
 if [ -f /etc/resolv.conf.tail ]
-then echo "$text_md $text_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
+then echo "$text_md $text_md File: /etc/resolv.conf.tail"; fi
 if [ -d /etc/resolvconf ]
-then echo "$text_md $text_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
+then echo "$text_md $text_md Directory: /etc/resolvconf" ; fi
 exit; fi 
 ####
 ####
