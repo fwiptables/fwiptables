@@ -75,8 +75,8 @@ cmd_realpath="$(realpath $0)"                              # fully routename
 cmd_basename="$(basename $0)"                              # only  filename
 #### The number version
 cmd_year="24"                                              # number year version
-cmd_month="08"                                             # number mouth version
-cmd_letter="j"                                             # number letter version
+cmd_month="09"                                             # number mouth version
+cmd_letter="a"                                             # number letter version
 cmd_version="$cmd_year-$cmd_month$cmd_letter"              # final date like number version
 #### the install location
 cmd_name="fwiptables"                                      # filename installed
@@ -3311,8 +3311,8 @@ echo "$text_md server-mumble server-gateway server-sql server-samba server-proxy
 echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net  $text_md"
 echo "$title_md    firewall-easynet $text_md"
 echo "$text_md preferences-read preferences-modify preferences-regen $text_md"
-echo "$text_md options speed-ip4 speed-ip6 intro filelog autolog date $text_md"
-echo "$text_md ip4 ip6 network4 network6 address4 address6 sockets web $text_md"
+echo "$text_md options speed-ip4 speed-ip6 intro filelog autolog date web $text_md"
+echo "$text_md ip4 ip6 network4 network6 address4 address6 resolve sockets $text_md"
 echo "$text_md free nodes ip-forward depends utils treeconf treecache $text_md"
 echo "$text_md cleancache notes variables uninstall install upgrade $text_md"
 echo "$text_md examples info code expert donate about version $text_md"
