@@ -2336,19 +2336,20 @@ exit; fi
 #### :rutina-final-expert-traceicmp6:
 ##########    english: myradio program       ##########
 ##########    spanish: myradio programa      ##########
-#### :rutina-inicial-expert-myradio-download:
+#### :rutina-inicial-expert-myradio-install:
 ####
 ####
-if   [ "$first_option" == "expert-myradio-download" ]; then
-echo "$title_md [ $first_option ]  [ myradio download ] [ expert-myradio-download md]"
+if   [ "$first_option" == "expert-myradio-install" ]; then
+echo "$title_md [ $first_option ]  [ myradio download ] [ expert-myradio-install md]"
 echo "$title_md Downloading myradio stable latest in $default_directory_radio"
 $command_curl $web_download_myradio -s -L \
 -o $default_directory_radio/myradio-bash || echo "Without internet" \
-&& chmod ugo+x $descarga &> /dev/null 
+&& chmod ugo+x $default_directory_radio/myradio-bash &> /dev/null
+cp $default_directory_radio/myradio-bash /usr/bin && echo installed myradio-bash in /usr/bin
 exit; fi
 ####
 ####
-#### :rutina-final-expert-myradio-download:
+#### :rutina-final-expert-myradio-install:
 ##########    english: utils: posible util depends       ##########
 ##########    spanish: utils: posible util dependencias  ##########
 #### :rutina-inicial-utils:
@@ -3629,6 +3630,7 @@ echo "$text_md $text_md expert-cpupower-info . show cpu frecuence info $text_md 
 echo "$text_md $text_md expert-project-web . site  downloaded web fwiptables $text_md"
 echo "$text_md $text_md expert-configs-save . save configs like backup from fwiptables in tar file $text_md"
 echo "$text_md $text_md expert-configs-load . load configs like backup from fwiptables in tar file $text_md"
+echo "$text_md $text_md expert-myradio-install . install radio text program $text_md"
 exit; fi
 ####
 ####
