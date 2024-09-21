@@ -70,7 +70,7 @@ echo "# you can edit config file: $conf_config"
 exit ; fi
 ### update list
 if [ "$opt_first" == "update" ]; then
-$conf_agent -L $conf_radio -o $conf_complete
+$conf_agent $conf_radio -L -s -o $conf_complete
 echo "# $conf_radio donloaded"
 exit; fi
 ### stop music
