@@ -39,13 +39,13 @@
   
          Basename program: fwiptables               
          Realpath program: /usr/bin/fwiptables               
-          Version program: 24-08i                
+          Version program: 24-09a                
         Short description: FireWall With iptables       
          Long description: One Mini Script in one-file wizard        
-         Developer Actual: Francisco Garcia              
-             Email Report: fwiptables@gmx.com                
            Data Directory: /root/.config/fwiptables    
           Cache Directory: /root/.cache/fwiptables   
+         Developer Actual: Francisco Garcia              
+             Email Report: fwiptables@gmx.com                
               File Format: Bourne-Again_shell_script,                 
           License program: BSD v1, LGPL v2, GPL v2                
   
@@ -86,11 +86,11 @@
 ###     [ Configuration files ]   
       Directory data:          /root/.config/fwiptables   
       Directory temp:          /root/.cache/fwiptables   
-      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-08i   
+      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-09a   
         
 ###     [ Log files ]             
-      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default_autolog-24-08i   
-      File filelog:            /root/.config/fwiptables/fwiptables-log/default_filelog-24-08i   
+      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default-autolog-24-09a   
+      File filelog:            /root/.config/fwiptables/fwiptables-log/default-filelog-24-09a   
         
 ###     [ optional output ]       
       dialog cli:              /bin/dialog   
@@ -216,12 +216,12 @@
    server-asterisk client-uid-root client-gid-users client-gid-net    
 ###     firewall-easynet   
    preferences-read preferences-modify preferences-regen   
-   options speed-ip4 speed-ip6 intro filelog autolog date   
-   ip4 ip6 network4 network6 address4 address6 sockets web   
+   options speed-ip4 speed-ip6 intro filelog autolog date web   
+   ip4 ip6 network4 network6 address4 address6 resolve sockets   
    free nodes ip-forward depends utils treeconf treecache   
    cleancache notes variables uninstall install upgrade   
    examples info code expert donate about version   
    license-bsd-v1 license-lgpl-v2 license-gpl-v2   
-       | Program: fwiptables 24-08i   
+       | Program: fwiptables 24-09a   
        | Description: One Mini Script in one-file wizard   
        | Expert: expert is allowed in preferences file   
