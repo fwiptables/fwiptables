@@ -38,7 +38,7 @@ conf_choosed="$conf_folder/myradio-choosed.m3u8"
 conf_config="$conf_folder/myradio-config.txt"
 ### without option
 if [ "$opt_first" == "$NULL" ]; then
-echo "# Launch: $opt_base config|reset|stop|download|search|play|random|link choosed-radio"
+echo "# Launch: $opt_base config|reset|stop|update|search|play|random|link choosed-radio"
 exit; fi
 ### update config
 if [ ! -d "$conf_folder" ]; then mkdir -p $conf_folder ; fi
