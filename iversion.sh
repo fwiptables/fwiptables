@@ -120,7 +120,7 @@ git_listado_sourceforge=\
 git_download_sourceforge=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/iversion.sh?format=raw" ;
 web_download_myradio=\
-"https://sourceforge.net/projects/f-iptables/files/myradio-bash" ;
+"https://sourceforge.net/p/f-iptables/code/ci/main/tree/myradio-bash?format=raw" ;
 ####
 ####
 #### :rutina-final-web-official:
