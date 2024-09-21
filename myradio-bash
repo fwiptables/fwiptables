@@ -50,7 +50,7 @@ echo "conf_radio=https://www.tdtchannels.com/lists/radio.m3u8" &>> $conf_config
 echo "# config created $conf_config"
 fi
 if [ ! -f "$conf_complete" ]; then
-$opt_bin download
+$opt_bin update
 fi
 ### load config
 source $conf_config
@@ -68,7 +68,7 @@ if [ "$opt_first" == "config" ]; then
 cat $conf_config
 echo "# you can edit config file: $conf_config"
 exit ; fi
-### download list
+### update list
 if [ "$opt_first" == "update" ]; then
 $conf_agent -L $conf_radio -o $conf_complete
 echo "# $conf_radio donloaded"
