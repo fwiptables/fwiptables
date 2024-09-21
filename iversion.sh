@@ -76,7 +76,7 @@ cmd_basename="$(basename $0)"                              # only  filename
 #### The number version
 cmd_year="24"                                              # number year version
 cmd_month="09"                                             # number mouth version
-cmd_letter="a"                                             # number letter version
+cmd_letter="b"                                             # number letter version
 cmd_version="$cmd_year-$cmd_month$cmd_letter"              # final date like number version
 #### the install location
 cmd_name="fwiptables"                                      # filename installed
@@ -119,6 +119,8 @@ git_listado_sourceforge=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/"
 git_download_sourceforge=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/iversion.sh?format=raw" ;
+web_download_myradio=\
+"https://sourceforge.net/projects/f-iptables/files/myradio-bash" ;
 ####
 ####
 #### :rutina-final-web-official:
@@ -2332,79 +2334,21 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-traceicmp6:
-##########    english: radio stopped      ##########
-##########    spanish: radio parada       ##########
-#### :rutina-inicial-expert-radiostop:
+##########    english: myradio program       ##########
+##########    spanish: myradio programa      ##########
+#### :rutina-inicial-expert-myradio-download:
 ####
 ####
-if   [ "$first_option" == "expert-radio-stop" ]; then
-echo "$title_md [ $first_option ]  [ radio stopped ] [ expert-radio-stop md]"
-killall -9 "$(echo $favorite_text_music| cut -d " " -f 1)" &> /dev/null
+if   [ "$first_option" == "expert-myradio-download" ]; then
+echo "$title_md [ $first_option ]  [ myradio download ] [ expert-myradio-download md]"
+echo "$title_md Downloading myradio stable latest in $default_directory_radio"
+$command_curl $web_download_myradio -s -L \
+-o $default_directory_radio/myradio-bash || echo "Without internet" \
+&& chmod ugo+x $descarga &> /dev/null 
 exit; fi
 ####
 ####
-#### :rutina-final-expert-radiostop:
-##########    english: radio link       ##########
-##########    spanish: radio enlace     ##########
-#### :rutina-inicial-expert-radiolink:
-####
-####
-if   [ "$first_option" == "expert-radio-link" ]; then
-echo "$title_md [ $first_option ]  [ radio link user:logname ] [ expert-radio-link md]"
-####
-####
-if [ "$second_option" == "$NULL" ]; then
-echo "$title_md Please input one string to listen one radio"; exit; fi
-####
-####
-if [ "$favorite_text_music" == "$NULL" ]; then
-echo "$title_md please install vlc"; exit; fi
-####
-####
-radio_user="$(id 1000 | cut -d ")" -f 1 - | cut -c 10-)"
-sudo -u $radio_user $favorite_text_music $2 &> /dev/null &&
-echo "$title_md $text_ok Radio | With user: $radio_user | With link: $2"
-####
-####
-exit; fi
-####
-####
-#### :rutina-final-expert-radiolink:
-##########    english: radio online       ##########
-##########    spanish: radio en linea     ##########
-#### :rutina-inicial-expert-radiospanish:
-####
-####
-if   [ "$first_option" == "expert-radio-spanish" ]; then
-echo "$title_md [ $first_option ]  [ spanish radio user:logname from one text-string ]\
- [ expert-radio-spanish md]"
-####
-####
-if [ "$second_option" == "$NULL" ];
-then echo "$title_md Please input one string to listen one radio"; exit; fi
-####
-####
-if [ "$favorite_text_music" == "$NULL" ];
-then "$title_md please install $favorite_text_music"; exit; fi
-####
-####
-rm $radio_config $file_radio_cache &> /dev/null
-echo "$title_md Downloading radio config .."
-$command_curl -L $server_radio_online &> $file_radio_config
-grep -i $second_option $file_radio_config &> $file_radio_cache
-chmod ugo+rx $radio_config $file_radio_cache &> /dev/null
-####
-####
-$cmd_realpath expert-radio-stop &> /dev/null
-####
-####
-radio_user="$(id 1000 | cut -d ")" -f 1 - | cut -c 10-)"
-echo sudo -u $radio_user $favorite_text_music $file_radio_cache && 
-echo "$title_md $text_ok Radio | With user: $radio_user | With string: $2"
-exit; fi
-####
-####
-#### :rutina-final-expert-radiospanish:
+#### :rutina-final-expert-myradio-download:
 ##########    english: utils: posible util depends       ##########
 ##########    spanish: utils: posible util dependencias  ##########
 #### :rutina-inicial-utils:
@@ -3682,8 +3626,6 @@ echo "$text_md $text_md expert-pc-shutdown . shutdown computer with shutdown $te
 echo "$text_md $text_md expert-pc-reboot . reboot computer with reboot $text_md "
 echo "$text_md $text_md expert-cpufreq-info . show cpu frecuence info $text_md "
 echo "$text_md $text_md expert-cpupower-info . show cpu frecuence info $text_md "
-echo "$text_md $text_md expert-radio-link . listen radio from one link $text_md "
-echo "$text_md $text_md expert-radio-spanish . listen online radio from one text-string from spain $text_md "
 echo "$text_md $text_md expert-project-web . site  downloaded web fwiptables $text_md"
 echo "$text_md $text_md expert-configs-save . save configs like backup from fwiptables in tar file $text_md"
 echo "$text_md $text_md expert-configs-load . load configs like backup from fwiptables in tar file $text_md"

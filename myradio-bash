@@ -69,7 +69,7 @@ cat $conf_config
 echo "# you can edit config file: $conf_config"
 exit ; fi
 ### download list
-if [ "$opt_first" == "download" ]; then
+if [ "$opt_first" == "update" ]; then
 $conf_agent -L $conf_radio -o $conf_complete
 echo "# $conf_radio donloaded"
 exit; fi
@@ -113,7 +113,7 @@ $conf_player -d $conf_choosed &
 echo "# now play random radio"
 exit; fi
 ### invalid options
-echo "# Launch: $opt_base config|reset|stop|download|search|play|random|link choosed-radio"
+echo "# Launch: $opt_base config|reset|stop|update|search|play|random|link choosed-radio"
 ##################################################### exit options
 exit
 
