@@ -76,7 +76,7 @@ cmd_basename="$(basename $0)"                              # only  filename
 #### The number version
 cmd_year="24"                                              # number year version
 cmd_month="09"                                             # number mouth version
-cmd_letter="b"                                             # number letter version
+cmd_letter="b-dev"                                         # number letter version
 cmd_version="$cmd_year-$cmd_month$cmd_letter"              # final date like number version
 #### the install location
 cmd_name="fwiptables"                                      # filename installed
@@ -3342,7 +3342,6 @@ exit; fi
 ####
 if   [ "$first_option" == "free" ]; then 
 echo "$title_md [ $first_option ] [ freedom from innecesary ram ] [ free md ]"
-echo "$title_md $text_info With: echo 3 over /proc/sys/vm/drop_caches"
 case $command_tee in "$NULL")
 echo "$text_md $text_fail [ Install tee command ]"; exit ;; esac
 ####
@@ -3351,6 +3350,7 @@ echo "$title_md $text_info Actual Memory"
 free -hw 
 ####
 ####
+echo "$title_md $text_info With: echo 3 over /proc/sys/vm/drop_caches"
 echo "$title_md $text_info Now with New Memory ram freedom .. Actual memory now .."
 echo 3 | $command_tee /proc/sys/vm/drop_caches &> /dev/null
 free -hw
