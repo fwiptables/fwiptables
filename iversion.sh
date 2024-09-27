@@ -7525,6 +7525,103 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-wallcustom:
+##########    english: cli-menu-easynet: Manage list rules with one text menu          ##########
+##########    spanish: cli-menu-easynet: Maneja lista de reglas con un menu de texto   ##########
+#### :rutina-inicial-cli-menu-easynet:
+####
+####
+if [ "$first_option" == "cli-menu-easynet" ]; then
+if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
+echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
+exit ; fi
+##########
+##########
+if [ "$2" != "$NULL" ]; then
+favorite_basename_textdialog="$(basename) $2"
+favorite_realpath_textdialog="$(realpath) $2" ; fi
+##########
+##########
+menuprincipal="$($favorite_realpath_textdialog --clear --notags \
+--title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
+001 "$title_md $text_md [principal menu] $text_md $title_md" \
+002 "$title_md [  --- Info Options --- ] $title_md" \
+003 "$title_md [ Firewall List With Conceptual ] $title_md" \
+011  "$text_md preferences-read" \
+012  "$text_md preferences-modify" \
+013  "$text_md preferences-regen" \
+014  "$text_md filelog" \
+015  "$text_md autolog" \
+016  "$text_md ip4" \
+017  "$text_md ip6" \
+018  "$text_md speed-ip4" \
+019  "$text_md speed-ip6" \
+020  "$text_md sockets" \
+021  "$text_md notes" \
+022  "$text_md license" \
+025  "$text_md depends" \
+026  "$text_md info" \
+027  "$text_md version" \
+028  "$text_md list-options" \
+030  "$text_md info-options" \
+031  "$text_md nodes" \
+032  "$text_md date" \
+033  "$text_md free" \
+034  "$text_md expert" \
+035  "$text_md treeconf" \
+036  "$text_md commands" \
+037  "$text_md variables" \
+038  "$text_md intro" \
+039  "$text_md download" \
+040  "$text_md install" \
+3>&1 1>&2 2>&3 )"
+##########
+##########
+onecli="$(basename "$favorite_realpath_textdialog")"
+##########
+##########
+case $menuprincipal in
+001) clear ; $cmd_realpath cli-menu $onecli ;;
+002) clear ; $cmd_realpath cli options ;;
+003) clear ; $cmd_realpath cli firewall-listnumeral ;;
+011) clear ; $cmd_realpath txt preferences-read ;;
+012) clear ; $cmd_realpath txt preferences-modify ;;
+013) clear ; $cmd_realpath txt preferences-regen ;;
+014) clear ; $cmd_realpath txt filelog ;;
+015) clear ; $cmd_realpath txt autolog ;;
+016) clear ; $cmd_realpath txt ip4 ;;
+017) clear ; $cmd_realpath txt ip6 ;;
+018) clear ; $cmd_realpath txt speed-ip4 ;;
+019) clear ; $cmd_realpath txt speed-ip6 ;;
+020) clear ; $cmd_realpath txt sockets ;;
+021) clear ; $cmd_realpath txt notes ;;
+022) clear ; $cmd_realpath txt license ;;
+### 0713) clear ; $cmd_realpath cli about ;;
+### 0714) clear ; $cmd_realpath cli examples ;;
+025) clear ; $cmd_realpath txt depends ;;
+026) clear ; $cmd_realpath txt info ;;
+027) clear ; $cmd_realpath txt version ;;
+028) clear ; $cmd_realpath txt list-options ;;
+### 0719) clear ; $cmd_realpath cli clasic-options ;;
+030) clear ; $cmd_realpath txt info-options ;;
+031) clear ; $cmd_realpath txt nodes ;;
+032) clear ; $cmd_realpath txt date ;;
+033) clear ; $cmd_realpath txt free ;;
+034) clear ; $cmd_realpath txt expert ;;
+035) clear ; $cmd_realpath txt treeconf ;;
+036) clear ; $cmd_realpath txt commands ;;
+037) clear ; $cmd_realpath txt variables ;;
+038) clear ; $cmd_realpath txt intro ;;
+039) clear ; $cmd_realpath txt download;;
+040) clear ; $cmd_realpath txt install;;
+################################################################################
+*) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+$cmd_realpath text-pause clear ; exit ;;
+################################################################################
+esac
+exit; fi
+####
+####
+#### :rutina-final-cli-menu-easynet:
 ##########    english: cli-menu-old: Manage list rules with one text menu          ##########
 ##########    spanish: cli-menu-old: Maneja lista de reglas con un menu de texto   ##########
 #### :rutina-inicial-cli-menu-old:
