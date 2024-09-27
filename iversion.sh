@@ -7049,6 +7049,13 @@ if [ "$first_option" == "cli-menu" ]; then
 if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
+##########
+##########
+if [ "$2" != "$NULL" ]; then
+favorite_basename_textdialog="$(basename) $2"
+favorite_realpath_textdialog="$(realpath) $2" ; fi
+##########
+##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 --title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
 001  "$text_md intro" \
@@ -7062,25 +7069,18 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
-cli="cli-$(basename "$favorite_realpath_textdialog")"
-cli-menu="cli-menu-$(basename "$favorite_realpath_textdialog")"
-cli-menu-listconceptual="cli-$(basename "$favorite_realpath_textdialog") firewall-listconceptual"
-cli-menu-listnumeral="cli-$(basename "$favorite_realpath_textdialog") firewall-listnumeral"
-cli-menu-wallcontrol="cli-$(basename "$favorite_realpath_textdialog") firewall-wallcontrol"
-cli-menu-wallsystem="cli-$(basename "$favorite_realpath_textdialog") firewall-wallsystem"
-cli-menu-wallcustom="cli-$(basename "$favorite_realpath_textdialog") firewall-wallcustom"
-cli-menu-easynet="cli-$(basename "$favorite_realpath_textdialog") firewall-easynet"
+onecli="$(basename "$favorite_realpath_textdialog")"
 ##########
 ##########
 case $menuprincipal in
 001) clear ; $cmd_realpath cli intro  ;;
 002) clear ; $cmd_realpath cli info-options ;;
-003) clear ; $cmd_realpath cli-menu-listconceptual ;;
-004) clear ; $cmd_realpath cli-menu-listnumeral ;;
-005) clear ; $cmd_realpath cli-menu-wallcontrol ;;
-006) clear ; $cmd_realpath cli-menu-wallsystem ;;
-007) clear ; $cmd_realpath cli-menu-wallcustom ;;
-008) clear ; $cmd_realpath cli-menu-easynet ;;
+003) clear ; $cmd_realpath cli-menu-listconceptual $onecli ;;
+004) clear ; $cmd_realpath cli-menu-listnumeral $onecli  ;;
+005) clear ; $cmd_realpath cli-menu-wallcontrol $onecli  ;;
+006) clear ; $cmd_realpath cli-menu-wallsystem  $onecli  ;;
+007) clear ; $cmd_realpath cli-menu-wallcustom  $onecli  ;;
+008) clear ; $cmd_realpath cli-menu-easynet     $onecli  ;;
 ################################################################################
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
@@ -7100,6 +7100,13 @@ if [ "$first_option" == "cli-menu-listconceptual" ]; then
 if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
+##########
+##########
+if [ "$2" != "$NULL" ]; then
+favorite_basename_textdialog="$(basename) $2"
+favorite_realpath_textdialog="$(realpath) $2" ; fi
+##########
+##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 --title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
 001 "$title_md $text_md [principal menu] $text_md $title_md" \
@@ -7125,18 +7132,11 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
-cli="cli-$(basename "$favorite_realpath_textdialog")"
-cli-menu="cli-menu-$(basename "$favorite_realpath_textdialog")"
-cli-menu-listconceptual="cli-$(basename "$favorite_realpath_textdialog") firewall-listconceptual"
-cli-menu-listnumeral="cli-$(basename "$favorite_realpath_textdialog") firewall-listnumeral"
-cli-menu-wallcontrol="cli-$(basename "$favorite_realpath_textdialog") firewall-wallcontrol"
-cli-menu-wallsystem="cli-$(basename "$favorite_realpath_textdialog") firewall-wallsystem"
-cli-menu-wallcustom="cli-$(basename "$favorite_realpath_textdialog") firewall-wallcustom"
-cli-menu-easynet="cli-$(basename "$favorite_realpath_textdialog") firewall-easynet"
+onecli="$(basename "$favorite_realpath_textdialog")"
 ##########
 ##########
 case $menuprincipal in
-001) clear ; $cmd_realpath cli-menu-option ;;
+001) clear ; $cmd_realpath cli-menu $onecli ;;
 002) clear ; $cmd_realpath cli options ;;
 003) clear ; $cmd_realpath cli firewall-listconceptual ;;
 004) clear ; $cmd_realpath cli ls4 ;;
@@ -7174,6 +7174,13 @@ if [ "$first_option" == "cli-menu-listnumeral" ]; then
 if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
+##########
+##########
+if [ "$2" != "$NULL" ]; then
+favorite_basename_textdialog="$(basename) $2"
+favorite_realpath_textdialog="$(realpath) $2" ; fi
+##########
+##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 --title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
 001 "$title_md $text_md [principal menu] $text_md $title_md" \
@@ -7199,18 +7206,15 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
-cli="cli-$(basename "$favorite_realpath_textdialog")"
-cli-menu="cli-menu-$(basename "$favorite_realpath_textdialog")"
-cli-menu-listconceptual="cli-$(basename "$favorite_realpath_textdialog") firewall-listconceptual"
-cli-menu-listnumeral="cli-$(basename "$favorite_realpath_textdialog") firewall-listnumeral"
-cli-menu-wallcontrol="cli-$(basename "$favorite_realpath_textdialog") firewall-wallcontrol"
-cli-menu-wallsystem="cli-$(basename "$favorite_realpath_textdialog") firewall-wallsystem"
-cli-menu-wallcustom="cli-$(basename "$favorite_realpath_textdialog") firewall-wallcustom"
-cli-menu-easynet="cli-$(basename "$favorite_realpath_textdialog") firewall-easynet"
+##########
+##########
+onecli="$(basename "$favorite_realpath_textdialog")"
+##########
+##########
 ##########
 ##########
 case $menuprincipal in
-001) clear ; $cmd_realpath cli-menu-option ;;
+001) clear ; $cmd_realpath cli-menu $onecli ;;
 002) clear ; $cmd_realpath cli options ;;
 003) clear ; $cmd_realpath cli firewall-listnumeral ;;
 004) clear ; $cmd_realpath cli lsn4 ;;
@@ -7248,6 +7252,13 @@ if [ "$first_option" == "cli-menu-wallcontrol" ]; then
 if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
+##########
+##########
+if [ "$2" != "$NULL" ]; then
+favorite_basename_textdialog="$(basename) $2"
+favorite_realpath_textdialog="$(realpath) $2" ; fi
+##########
+##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 --title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
 001 "$title_md $text_md [principal menu] $text_md $title_md" \
@@ -7274,13 +7285,14 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
-cli="cli-$(basename "$favorite_realpath_textdialog")"
-cli-menu="cli-menu-$(basename "$favorite_realpath_textdialog")"
+##########
+##########
+onecli="$(basename "$favorite_realpath_textdialog")"
 ##########
 ##########
 ################################################################################
 case $menuprincipal in
-001) clear ; $cmd_realpath cli-menu-option ;;
+001) clear ; $cmd_realpath cli-menu $onecli ;;
 002) clear ; $cmd_realpath cli options ;;
 003) clear ; $cmd_realpath cli firewall-wallcontrol ;;
 004) clear ; $cmd_realpath txt stop ;;
@@ -7328,6 +7340,13 @@ if [ "$first_option" == "cli-menu-wallsystem" ]; then
 if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
+##########
+##########
+if [ "$2" != "$NULL" ]; then
+favorite_basename_textdialog="$(basename) $2"
+favorite_realpath_textdialog="$(realpath) $2" ; fi
+##########
+##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 --title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
 001 "$title_md $text_md [principal menu] $text_md $title_md" \
@@ -7367,13 +7386,14 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
-cli="cli-$(basename "$favorite_realpath_textdialog")"
-cli-menu="cli-menu-$(basename "$favorite_realpath_textdialog")"
+##########
+##########
+onecli="$(basename "$favorite_realpath_textdialog")"
 ##########
 ##########
 ################################################################################
 case $menuprincipal in
-001) clear ; $cmd_realpath cli-menu-option ;;
+001) clear ; $cmd_realpath cli-menu $onecli ;;
 002) clear ; $cmd_realpath cli options ;;
 003) clear ; $cmd_realpath cli firewall-wallsystem ;;
 007) clear ; $cmd_realpath txt client-basic ; $cmd_realpath cli list4    ;;
@@ -7422,9 +7442,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "cli-menu-wallcustom" ]; then
-if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
-echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
-exit ; fi
+##########
+##########
+if [ "$2" != "$NULL" ]; then
+favorite_basename_textdialog="$(basename) $2"
+favorite_realpath_textdialog="$(realpath) $2" ; fi
+##########
+##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 --title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
 001 "$title_md $text_md [principal menu] $text_md $title_md" \
@@ -7445,13 +7469,14 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
-cli="cli-$(basename "$favorite_realpath_textdialog")"
-cli-menu="cli-menu-$(basename "$favorite_realpath_textdialog")"
+##########
+##########
+onecli="$(basename "$favorite_realpath_textdialog")"
 ##########
 ##########
 ################################################################################
 case $menuprincipal in
-001) clear ; $cmd_realpath cli-menu-option ;;
+001) clear ; $cmd_realpath cli-menu $onecli ;;
 002) clear ; $cmd_realpath cli options ;;
 003) clear ; $cmd_realpath cli firewall-wallsystem ;;
 004) clear ; $cmd_realpath txt names-custom
@@ -7509,6 +7534,13 @@ if [ "$first_option" == "cli-menu-old" ]; then
 if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
+##########
+##########
+if [ "$2" != "$NULL" ]; then
+favorite_basename_textdialog="$(basename) $2"
+favorite_realpath_textdialog="$(realpath) $2" ; fi
+##########
+##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 --title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
 0010 "$title_md $text_md [$cmd_realpath cli-menu] $text_md $title_md" \
