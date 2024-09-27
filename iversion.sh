@@ -3383,7 +3383,7 @@ echo "$text_md $text_md wizard-mini . launch a one mini wizard to run iptables r
 echo "$text_md $text_md wizard-full . launch a one full wizard to run iptables rules $text_md"
 echo "$text_md $text_md without-connection . launch a one firewall only for localhost $text_md"
 echo "$text_md $text_md input-permisive . launch a one firewall with all permisive $text_md"
-echo "$text_md $text_md input-established . launch a one firewall with status in input related,stablished $text_md"
+echo "$text_md $text_md input-established . launch a one firewall with input related,stablished $text_md"
 echo "$text_md $text_md tinyserver-tcp . launch a one firewall with server ports tcp $text_md"
 echo "$text_md $text_md tinyserver-udp . launch a one firewall with server ports tcp $text_md"
 echo "$text_md $text_md miniserver-tcp . launch a one firewall with server ports tcp $text_md"
@@ -7034,6 +7034,62 @@ exit ; fi
 ####
 ####
 #### :rutina-final-gui-shell-yad:
+##########    english: cli-menu-option: Manage list rules with one text menu          ##########
+##########    spanish: cli-menu-option: Maneja lista de reglas con un menu de texto   ##########
+#### :rutina-inicial-cli-menu-option:
+####
+####
+################################################################################
+#### 
+#### 
+#### english: dialog choosed #### spanish: dialogo elegido
+#### 
+####
+if [ "$first_option" == "cli-menu-option" ]; then
+if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
+echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
+exit ; fi
+menuprincipal="$($favorite_realpath_textdialog --clear --notags \
+--title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
+001  "$text_md readme" \
+002  "$text_md info-options" \
+003  "$text_md firewall-listconceptual" \
+004  "$text_md firewall-listnumeral" \
+005  "$text_md firewall-wallcontrol" \
+006  "$text_md firewall-wallsystem" \
+007  "$text_md firewall-wallcustom" \
+008  "$text_md firewall-easynet"  \
+3>&1 1>&2 2>&3 )"
+##########
+##########
+cli="cli-$(basename "$favorite_realpath_textdialog")"
+cli-menu-listconceptual="cli-$(basename "$favorite_realpath_textdialog") firewall-listconceptual"
+cli-menu-listnumeral="cli-$(basename "$favorite_realpath_textdialog") firewall-listnumeral"
+cli-menu-wallcontrol="cli-$(basename "$favorite_realpath_textdialog") firewall-wallcontrol"
+cli-menu-wallsystem="cli-$(basename "$favorite_realpath_textdialog") firewall-wallsystem"
+cli-menu-wallcustom="cli-$(basename "$favorite_realpath_textdialog") firewall-wallcustom"
+cli-menu-easynet="cli-$(basename "$favorite_realpath_textdialog") firewall-easynet"
+##########
+##########
+case $menuprincipal in
+001) clear ; $cmd_realpath cli readme  ;;
+002) clear ; $cmd_realpath cli info-options ;;
+003) clear ; $cmd_realpath cli-menu-listconceptual ;;
+004) clear ; $cmd_realpath cli-menu-listconceptual ;;
+005) clear ; $cmd_realpath cli-menu-listwallcontrol ;;
+006) clear ; $cmd_realpath cli-menu-wallsystem ;;
+007) clear ; $cmd_realpath cli-menu-wallcustom ;;
+008) clear ; $cmd_realpath cli-menu-easynet ;;
+################################################################################
+################################################################################
+*) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+$cmd_realpath text-pause clear ; exit ;;
+################################################################################
+esac
+exit; fi
+####
+####
+#### :rutina-final-cli-menu-option:
 ##########    english: cli-menu: Manage list rules with one text menu          ##########
 ##########    spanish: cli-menu: Maneja lista de reglas con un menu de texto   ##########
 #### :rutina-inicial-cli-menu:
@@ -8593,6 +8649,11 @@ first_option="loadtiny-custom" ;
 server_port_tcp="$second_option"
 ####
 ####
+#### if [ "$third_option" != "$NULL" ] ;
+#### then config_ipv4_netserver="$3" 
+#### config_ipv6_netserver="$3" ; fi
+####
+####
 if [ "$second_option" != "$NULL" ]; then
 echo "$title_md $text_info Server with ports tcp $second_option"  
 else
@@ -8621,6 +8682,11 @@ first_option="loadtiny-custom" ;
 ####
 ####
 server_port_udp="$second_option"
+####
+####
+#### if [ "$third_option" != "$NULL" ] ;
+#### then config_ipv4_netserver="$3" 
+#### config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
@@ -8655,6 +8721,11 @@ client_port_tcp="$miniclient_port_tcp"
 client_port_udp="$miniclient_port_udp"
 ####
 ####
+#### if [ "$third_option" != "$NULL" ] ;
+#### then config_ipv4_netserver="$3" 
+#### config_ipv6_netserver="$3" ; fi
+####
+####
 if [ "$second_option" != "$NULL" ]; then
 echo "$title_md $text_info Server with ports tcp $second_option" 
 else
@@ -8685,6 +8756,11 @@ server_port_tcp="" ;
 server_port_udp="$second_option" ;
 client_port_tcp="$miniclient_port_tcp"
 client_port_udp="$miniclient_port_udp"
+####
+####
+#### if [ "$third_option" != "$NULL" ] ;
+#### then config_ipv4_netserver="$3" 
+#### config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
