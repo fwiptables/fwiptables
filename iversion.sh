@@ -7319,11 +7319,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-wallcontrol:
-
-
-
-
-
 ##########    english: cli-menu-wallsystem: Manage list rules with one text menu          ##########
 ##########    spanish: cli-menu-wallsystem: Maneja lista de reglas con un menu de texto   ##########
 #### :rutina-inicial-cli-menu-wallsystem:
@@ -7421,6 +7416,90 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-wallsystem:
+##########    english: cli-menu-wallcustom: Manage list rules with one text menu          ##########
+##########    spanish: cli-menu-wallcustom: Maneja lista de reglas con un menu de texto   ##########
+#### :rutina-inicial-cli-menu-wallcustom:
+####
+####
+if [ "$first_option" == "cli-menu-wallcustom" ]; then
+if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
+echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
+exit ; fi
+menuprincipal="$($favorite_realpath_textdialog --clear --notags \
+--title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
+001 "$title_md $text_md [principal menu] $text_md $title_md" \
+002 "$title_md [  --- Info Options --- ] $title_md" \
+003 "$title_md [ Firewall Wallcustom ] $title_md" \
+004  "$text_md load-custom" \
+005  "$text_md clone-wallsystem" \
+006  "$text_md new-full-custom" \
+007  "$text_md nueva-completa-custom" \
+008  "$text_md new-mini-custom" \
+009  "$text_md nueva-mini-custom" \
+010  "$text_md new-tiny-custom" \
+011  "$text_md nueva-diminuta-custom" \
+012  "$text_md show-custom" \
+013  "$text_md modify-custom" \
+014  "$text_md del-custom" \
+015  "$text_md names-custom" \
+3>&1 1>&2 2>&3 )"
+##########
+##########
+cli="cli-$(basename "$favorite_realpath_textdialog")"
+cli-menu="cli-menu-$(basename "$favorite_realpath_textdialog")"
+##########
+##########
+################################################################################
+case $menuprincipal in
+001) clear ; $cmd_realpath cli-menu-option ;;
+002) clear ; $cmd_realpath cli options ;;
+003) clear ; $cmd_realpath cli firewall-wallsystem ;;
+004) clear ; $cmd_realpath txt names-custom
+read -p "Input the custom name to load # " archivo
+archivo=$(echo $archivo | $command_sed s/\\///g)
+$cmd_realpath load-custom $archivo ;;
+005) clear ; read -p "Input the systemfw name to clone # " archivo
+archivo=$(echo $archivo | $command_sed s/\\///g)
+$cmd_realpath clone-wallsystem $archivo ;;
+006) clear ; read -p "Input the new custom name to create # " archivo
+archivo=$(echo $archivo | $command_sed s/\\///g)
+$cmd_realpath new-full-custom $archivo ;;
+007) clear ; read -p "Input the new custom name to create # " archivo
+archivo=$(echo $archivo | $command_sed s/\\///g)
+$cmd_realpath nueva-completa-custom $archivo ;;
+008) clear ; read -p "Input the new custom name to create # " archivo
+archivo=$(echo $archivo | $command_sed s/\\///g)
+$cmd_realpath new-mini-custom $archivo ;;
+009) clear ; read -p "Input the new custom name to create # " archivo
+archivo=$(echo $archivo | $command_sed s/\\///g)
+$cmd_realpath nueva-mini-custom $archivo ;;
+010) clear ; read -p "Input the new custom name to create # " archivo
+archivo=$(echo $archivo | $command_sed s/\\///g)
+$cmd_realpath new-tiny-custom $archivo ;;
+011) clear ; read -p "Input the new custom name to create # " archivo
+archivo=$(echo $archivo | $command_sed s/\\///g)
+$cmd_realpath nueva-diminuta-custom $archivo ;;
+012) clear ; read -p "Input the custom to show config # " archivo
+archivo=$(echo $archivo | $command_sed s/\\///g)
+$cmd_realpath show-custom $archivo ;;
+013) clear ; $cmd_realpath names-custom
+read -p "Input the custom name to modify # " archivo
+archivo=$(echo $archivo | $command_sed s/\\///g)
+$cmd_realpath modify-custom $archivo ;;
+014) clear ; $cmd_realpath names-custom
+read -p "Input the custom name to delete # " archivo
+archivo=$(echo $archivo | $command_sed s/\\///g)
+$cmd_realpath del-custom $archivo ;;
+015) clear ; $cmd_realpath txt names-custom ;;
+################################################################################
+*) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+$cmd_realpath text-pause clear ; exit ;;
+################################################################################
+esac
+exit; fi
+####
+####
+#### :rutina-final-cli-menu-wallcustom:
 ##########    english: cli-menu: Manage list rules with one text menu          ##########
 ##########    spanish: cli-menu: Maneja lista de reglas con un menu de texto   ##########
 #### :rutina-inicial-cli-menu:
