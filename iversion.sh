@@ -7050,7 +7050,7 @@ if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
+--title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
 001  "$text_md intro" \
 002  "$text_md info-options" \
 003  "$text_md firewall-listconceptual" \
@@ -7101,8 +7101,8 @@ if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
-001 "$title_md $text_md [$cmd_realpath cli-menu] $text_md $title_md" \
+--title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
+001 "$title_md $text_md [principal menu] $text_md $title_md" \
 002 "$title_md [  --- Info Options --- ] $title_md" \
 003 "$title_md [ Firewall Control ] $title_md" \
 004  "$text_md stop" \
@@ -7181,8 +7181,8 @@ if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
-001 "$title_md $text_md [$cmd_realpath cli-menu] $text_md $title_md" \
+--title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
+001 "$title_md $text_md [principal menu] $text_md $title_md" \
 002 "$title_md [  --- Info Options --- ] $title_md" \
 003 "$title_md [ Firewall List With Conceptual ] $title_md" \
 004  "$text_md ls4" \
@@ -7255,8 +7255,8 @@ if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
-001 "$title_md $text_md [$cmd_realpath cli-menu] $text_md $title_md" \
+--title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
+001 "$title_md $text_md [principal menu] $text_md $title_md" \
 002 "$title_md [  --- Info Options --- ] $title_md" \
 003 "$title_md [ Firewall List With Conceptual ] $title_md" \
 004  "$text_md lsn4" \
@@ -7329,7 +7329,7 @@ if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
+--title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
 0010 "$title_md $text_md [$cmd_realpath cli-menu] $text_md $title_md" \
 0100 "$title_md [  --- Info Options --- ] $title_md" \
 0200 "$title_md [ Firewall Control ] $title_md" \
