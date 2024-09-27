@@ -3223,8 +3223,8 @@ if [ "$first_option" == "list-options" ] || [ "$first_option" == "options" ]; th
 echo "$text_md $cmd_basename [optional-output] first_option [second_option] $text_md"
 echo "$title_md    optional-output $text_md"
 echo "$text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ] $text_md"
-echo "$text_md [ cli-dialog cli-whiptail gui-zenity gui-yad ] $text_md"
-echo "$text_md [ cli-menu-dialog cli-menu-whiptail gui-roll-zenity ] $text_md"
+echo "$text_md [ cli-dialog cli-whiptail cli-menu-dialog cli-menu-whiptail ] $text_md"
+echo "$text_md [ cli-menu cli-menu-old gui-zenity gui-yad gui-roll-zenity ] $text_md"
 echo "$text_md [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ] $text_md"
 echo "$title_md    firewall-listconceptual $text_md"
 echo "$text_md ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6 $text_md"
@@ -7034,9 +7034,9 @@ exit ; fi
 ####
 ####
 #### :rutina-final-gui-shell-yad:
-##########    english: cli-menu-option: Manage list rules with one text menu          ##########
-##########    spanish: cli-menu-option: Maneja lista de reglas con un menu de texto   ##########
-#### :rutina-inicial-cli-menu-option:
+##########    english: cli-menu: Manage list rules with one text menu          ##########
+##########    spanish: cli-menu: Maneja lista de reglas con un menu de texto   ##########
+#### :rutina-inicial-cli-menu:
 ####
 ####
 ################################################################################
@@ -7045,7 +7045,7 @@ exit ; fi
 #### english: dialog choosed #### spanish: dialogo elegido
 #### 
 ####
-if [ "$first_option" == "cli-menu-option" ]; then
+if [ "$first_option" == "cli-menu" ]; then
 if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
@@ -7090,7 +7090,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-cli-menu-option:
+#### :rutina-final-cli-menu:
 ##########    english: cli-menu-listconceptual: Manage list rules with one text menu          ##########
 ##########    spanish: cli-menu-listconceptual: Maneja lista de reglas con un menu de texto   ##########
 #### :rutina-inicial-cli-menu-listconceptual:
@@ -7500,12 +7500,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-wallcustom:
-##########    english: cli-menu: Manage list rules with one text menu          ##########
-##########    spanish: cli-menu: Maneja lista de reglas con un menu de texto   ##########
-#### :rutina-inicial-cli-menu:
+##########    english: cli-menu-old: Manage list rules with one text menu          ##########
+##########    spanish: cli-menu-old: Maneja lista de reglas con un menu de texto   ##########
+#### :rutina-inicial-cli-menu-old:
 ####
 ####
-if [ "$first_option" == "cli-menu" ]; then
+if [ "$first_option" == "cli-menu-old" ]; then
 if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
@@ -7836,7 +7836,7 @@ $cmd_realpath cli-menu-$favorite_basename_textdialog
 exit; fi
 ####
 ####
-#### :rutina-final-cli-menu:
+#### :rutina-final-cli-menu-old:
 ##########    english: text-pause: do pause     ##########
 ##########    spanish: text-pause: hace pausa   ##########
 #### :rutina-inicial-text-pause:
