@@ -7091,86 +7091,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-option:
-##########    english: cli-menu-wallcontrol: Manage list rules with one text menu          ##########
-##########    spanish: cli-menu-wallcontrol: Maneja lista de reglas con un menu de texto   ##########
-#### :rutina-inicial-cli-menu:
-####
-####
-if [ "$first_option" == "cli-menu-wallcontrol" ]; then
-if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
-echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
-exit ; fi
-menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
-001 "$title_md $text_md [principal menu] $text_md $title_md" \
-002 "$title_md [  --- Info Options --- ] $title_md" \
-003 "$title_md [ Firewall Control ] $title_md" \
-004  "$text_md stop" \
-005  "$text_md continue" \
-006  "$text_md reset" \
-007  "$text_md names"  \
-008  "$text_md show" \
-009  "$text_md save" \
-010  "$text_md load" \
-011  "$text_md actual" \
-012  "$text_md eraserules" \
-013  "$text_md wizard-tiny" \
-014  "$text_md wizard-mini" \
-015  "$text_md wizard-full" \
-016  "$text_md without-connection" \
-017  "$text_md input-permisive" \
-018  "$text_md input-established" \
-019  "$text_md eraserules4" \
-020  "$text_md eraserules6" \
-021  "$text_md eraserules" \
-3>&1 1>&2 2>&3 )"
-##########
-##########
-cli="cli-$(basename "$favorite_realpath_textdialog")"
-cli-menu="cli-menu-$(basename "$favorite_realpath_textdialog")"
-##########
-##########
-################################################################################
-case $menuprincipal in
-001) clear ; $cmd_realpath cli-menu-option ;;
-002) clear ; $cmd_realpath cli options ;;
-003) clear ; $cmd_realpath cli firewall-wallcontrol ;;
-004) clear ; $cmd_realpath txt stop ;;
-005) clear ; $cmd_realpath txt continue ;;
-006) clear ; $cmd_realpath txt reset ;;
-007) clear ; $cmd_realpath txt names ;;
-008) clear ; $cmd_realpath txt names ; echo "$title_md"
-read -p "Type the firewall name to read   " nombrecillo
-nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
-$cmd_realpath show $nombrecillo ;; 
-009)archivo="$($favorite_realpath_textdialog --stdout \
---title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
-archivo=$(echo $archivo | $command_sed s/\\///g)
-clear ;  echo "$title_md saved $archivo" ; $cmd_realpath save $archivo ;;
-010) clear ; $cmd_realpath names ; echo "$title_md"
-read -p "| Type the firewall name to restore |   " nombrecillo
-nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
-$cmd_realpath load $nombrecillo ;;
-011) clear ; $cmd_realpath txt actual ;;
-012) clear ; $cmd_realpath txt eraserules ; $cmd_realpath cli list4   ;;
-013) clear ; $cmd_realpath txt wizard-tiny ; $cmd_realpath cli list4  ;;
-014) clear ; $cmd_realpath txt wizard-mini ; $cmd_realpath cli list4  ;;
-015) clear ; $cmd_realpath txt wizard-full ; $cmd_realpath cli list4  ;;
-016) clear ; $cmd_realpath txt without-connection ; $cmd_realpath cli list4  ;;
-017) clear ; $cmd_realpath txt input-permisive ; $cmd_realpath cli list4   ;;
-018) clear ; $cmd_realpath txt input-established ; $cmd_realpath cli list4   ;;
-019) clear ; $cmd_realpath txt eraserules4 ; $cmd_realpath cli list4   ;;
-020) clear ; $cmd_realpath txt eraserules6 ; $cmd_realpath cli list6   ;;
-021) clear ; $cmd_realpath txt eraserules ; $cmd_realpath cli status   ;;
-################################################################################
-*) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-$cmd_realpath text-pause clear ; exit ;;
-################################################################################
-esac
-exit; fi
-####
-####
-#### :rutina-final-cli-menu-wallcontrol:
 ##########    english: cli-menu-listconceptual: Manage list rules with one text menu          ##########
 ##########    spanish: cli-menu-listconceptual: Maneja lista de reglas con un menu de texto   ##########
 #### :rutina-inicial-cli-menu-listconceptual:
@@ -7319,6 +7239,188 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-listnumeral:
+##########    english: cli-menu-wallcontrol: Manage list rules with one text menu          ##########
+##########    spanish: cli-menu-wallcontrol: Maneja lista de reglas con un menu de texto   ##########
+#### :rutina-inicial-cli-menu-wallcontrol:
+####
+####
+if [ "$first_option" == "cli-menu-wallcontrol" ]; then
+if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
+echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
+exit ; fi
+menuprincipal="$($favorite_realpath_textdialog --clear --notags \
+--title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
+001 "$title_md $text_md [principal menu] $text_md $title_md" \
+002 "$title_md [  --- Info Options --- ] $title_md" \
+003 "$title_md [ Firewall Control ] $title_md" \
+004  "$text_md stop" \
+005  "$text_md continue" \
+006  "$text_md reset" \
+007  "$text_md names"  \
+008  "$text_md show" \
+009  "$text_md save" \
+010  "$text_md load" \
+011  "$text_md actual" \
+012  "$text_md eraserules" \
+013  "$text_md wizard-tiny" \
+014  "$text_md wizard-mini" \
+015  "$text_md wizard-full" \
+016  "$text_md without-connection" \
+017  "$text_md input-permisive" \
+018  "$text_md input-established" \
+019  "$text_md eraserules4" \
+020  "$text_md eraserules6" \
+021  "$text_md eraserules" \
+3>&1 1>&2 2>&3 )"
+##########
+##########
+cli="cli-$(basename "$favorite_realpath_textdialog")"
+cli-menu="cli-menu-$(basename "$favorite_realpath_textdialog")"
+##########
+##########
+################################################################################
+case $menuprincipal in
+001) clear ; $cmd_realpath cli-menu-option ;;
+002) clear ; $cmd_realpath cli options ;;
+003) clear ; $cmd_realpath cli firewall-wallcontrol ;;
+004) clear ; $cmd_realpath txt stop ;;
+005) clear ; $cmd_realpath txt continue ;;
+006) clear ; $cmd_realpath txt reset ;;
+007) clear ; $cmd_realpath txt names ;;
+008) clear ; $cmd_realpath txt names ; echo "$title_md"
+read -p "Type the firewall name to read   " nombrecillo
+nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
+$cmd_realpath show $nombrecillo ;; 
+009)archivo="$($favorite_realpath_textdialog --stdout \
+--title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
+archivo=$(echo $archivo | $command_sed s/\\///g)
+clear ;  echo "$title_md saved $archivo" ; $cmd_realpath save $archivo ;;
+010) clear ; $cmd_realpath names ; echo "$title_md"
+read -p "| Type the firewall name to restore |   " nombrecillo
+nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
+$cmd_realpath load $nombrecillo ;;
+011) clear ; $cmd_realpath cli actual ;;
+012) clear ; $cmd_realpath cli eraserules ; $cmd_realpath cli list4   ;;
+013) clear ; $cmd_realpath txt wizard-tiny ; $cmd_realpath cli list4  ;;
+014) clear ; $cmd_realpath txt wizard-mini ; $cmd_realpath cli list4  ;;
+015) clear ; $cmd_realpath txt wizard-full ; $cmd_realpath cli list4  ;;
+016) clear ; $cmd_realpath txt without-connection ; $cmd_realpath cli list4  ;;
+017) clear ; $cmd_realpath txt input-permisive ; $cmd_realpath cli list4   ;;
+018) clear ; $cmd_realpath txt input-established ; $cmd_realpath cli list4   ;;
+019) clear ; $cmd_realpath txt eraserules4 ; $cmd_realpath cli list4   ;;
+020) clear ; $cmd_realpath txt eraserules6 ; $cmd_realpath cli list6   ;;
+021) clear ; $cmd_realpath txt eraserules ; $cmd_realpath cli status   ;;
+################################################################################
+*) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+$cmd_realpath text-pause clear ; exit ;;
+################################################################################
+esac
+exit; fi
+####
+####
+#### :rutina-final-cli-menu-wallcontrol:
+
+
+
+
+
+##########    english: cli-menu-wallsystem: Manage list rules with one text menu          ##########
+##########    spanish: cli-menu-wallsystem: Maneja lista de reglas con un menu de texto   ##########
+#### :rutina-inicial-cli-menu-wallsystem:
+####
+####
+if [ "$first_option" == "cli-menu-wallsystem" ]; then
+if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
+echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
+exit ; fi
+menuprincipal="$($favorite_realpath_textdialog --clear --notags \
+--title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
+001 "$title_md $text_md [principal menu] $text_md $title_md" \
+002 "$title_md [  --- Info Options --- ] $title_md" \
+003 "$title_md [ Firewall Wallsystem ] $title_md" \
+007  "$text_md client-basic" \
+008  "$text_md client-web" \
+009  "$text_md client-ssh" \
+010  "$text_md client-telnet" \
+011  "$text_md client-git" \
+012  "$text_md games-shooter" \
+013  "$text_md game-wesnoth" \
+014  "$text_md game-minetest" \
+015  "$text_md game-freeciv" \
+016  "$text_md game-widelands" \
+017  "$text_md client-web" \
+018  "$text_md client-vnc" \
+019  "$text_md client-tor" \
+020  "$text_md client-vpn" \
+021  "$text_md client-torrent" \
+022  "$text_md lan-tor" \
+023  "$text_md lan-vpn" \
+024  "$text_md shield-ssh" \
+025  "$text_md server-ssh" \
+026  "$text_md server-web" \
+027  "$text_md server-vnc" \
+028  "$text_md server-print" \
+029  "$text_md server-samba" \
+030  "$text_md server-lamp" \
+031  "$text_md server-mail" \
+032  "$text_md server-ftp" \
+033  "$text_md server-news" \
+034  "$text_md server-teamspeak" \
+035  "$text_md server-mumble" \
+036  "$text_md server-sql" \
+037  "$text_md server-asterisk" \
+3>&1 1>&2 2>&3 )"
+##########
+##########
+cli="cli-$(basename "$favorite_realpath_textdialog")"
+cli-menu="cli-menu-$(basename "$favorite_realpath_textdialog")"
+##########
+##########
+################################################################################
+case $menuprincipal in
+001) clear ; $cmd_realpath cli-menu-option ;;
+002) clear ; $cmd_realpath cli options ;;
+003) clear ; $cmd_realpath cli firewall-wallsystem ;;
+007) clear ; $cmd_realpath txt client-basic ; $cmd_realpath cli list4    ;;
+008) clear ; $cmd_realpath txt client-web ; $cmd_realpath cli list4    ;;
+009) clear ; $cmd_realpath txt client-ssh ; $cmd_realpath cli list4    ;;
+010) clear ; $cmd_realpath txt client-telnet ; $cmd_realpath cli list4    ;;
+011) clear ; $cmd_realpath txt client-git ; $cmd_realpath cli list4    ;;
+012) clear ; $cmd_realpath txt games-shooter ; $cmd_realpath cli list4   ;; 
+013) clear ; $cmd_realpath txt game-wesnoth ; $cmd_realpath cli list4    ;;
+014) clear ; $cmd_realpath txt game-minetest ; $cmd_realpath cli list4   ;;
+015) clear ; $cmd_realpath txt game-freeciv ; $cmd_realpath cli list4    ;;
+016) clear ; $cmd_realpath txt game-widelands ; $cmd_realpath cli list4  ;;
+017) clear ; $cmd_realpath txt client-web ; $cmd_realpath cli list4      ;;
+018) clear ; $cmd_realpath txt client-vnc ; $cmd_realpath cli list4      ;;
+019) clear ; $cmd_realpath txt client-tor ; $cmd_realpath cli list4      ;;
+020) clear ; $cmd_realpath txt client-vpn ; $cmd_realpath cli list4      ;;
+021) clear ; $cmd_realpath txt client-torrent ; $cmd_realpath cli list4  ;;
+022) clear ; $cmd_realpath txt lan-tor ; $cmd_realpath cli list4         ;;
+023) clear ; $cmd_realpath txt lan-vpn ; $cmd_realpath cli list4         ;; 
+024) clear ; $cmd_realpath txt shield-ssh ; $cmd_realpath cli list4      ;; 
+025) clear ; $cmd_realpath txt server-ssh ; $cmd_realpath cli list4      ;;
+026) clear ; $cmd_realpath txt server-web ; $cmd_realpath cli list4      ;;
+027) clear ; $cmd_realpath txt server-vnc ; $cmd_realpath cli list4      ;;
+028) clear ; $cmd_realpath txt server-print ; $cmd_realpath cli list4    ;;
+029) clear ; $cmd_realpath txt server-samba ; $cmd_realpath cli list4    ;;
+030) clear ; $cmd_realpath txt server-lamp ; $cmd_realpath cli list4     ;;
+031) clear ; $cmd_realpath txt server-mail ; $cmd_realpath cli list4     ;;
+032) clear ; $cmd_realpath txt server-ftp ; $cmd_realpath cli list4      ;;
+033) clear ; $cmd_realpath txt server-news ; $cmd_realpath cli list4     ;;
+034) clear ; $cmd_realpath txt server-teamspeak ; $cmd_realpath cli list4  ;;
+035) clear ; $cmd_realpath txt server-mumble ; $cmd_realpath cli list4   ;;
+036) clear ; $cmd_realpath txt server-sql ; $cmd_realpath cli list4      ;;
+037) clear ; $cmd_realpath txt server-asterisk ; $cmd_realpath cli list4 ;;
+################################################################################
+*) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+$cmd_realpath text-pause clear ; exit ;;
+################################################################################
+esac
+exit; fi
+####
+####
+#### :rutina-final-cli-menu-wallsystem:
 ##########    english: cli-menu: Manage list rules with one text menu          ##########
 ##########    spanish: cli-menu: Maneja lista de reglas con un menu de texto   ##########
 #### :rutina-inicial-cli-menu:
