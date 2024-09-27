@@ -3684,6 +3684,8 @@ echo "$text_md $text_md cli-dialog . output in terminal cli with dialog $text_md
 echo "$text_md $text_md cli-whiptail . output in terminal cli with whiptail $text_md"
 echo "$text_md $text_md gui-zenity . output in graphicall gui with zenity $text_md"
 echo "$text_md $text_md gui-yad . output in graphicall gui with yad $text_md"
+echo "$text_md $text_md cli-menu . output in terminal menu $text_md"
+echo "$text_md $text_md cli-menu-old . output in terminal menu $text_md"
 echo "$text_md $text_md cli-menu-dialog . output in terminal menu with dialog $text_md"
 echo "$text_md $text_md cli-menu-whiptail . output in terminal menu with whiptail $text_md"
 echo "$text_md $text_md gui-menu-zenity . output in grapicall menu with zenity $text_md"
