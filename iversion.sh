@@ -7076,7 +7076,7 @@ case $menuprincipal in
 001) clear ; $cmd_realpath cli intro  ;;
 002) clear ; $cmd_realpath cli info-options ;;
 003) clear ; $cmd_realpath cli-menu-listconceptual ;;
-004) clear ; $cmd_realpath cli-menu-listconceptual ;;
+004) clear ; $cmd_realpath cli-menu-listnumeral ;;
 005) clear ; $cmd_realpath cli-menu-wallcontrol ;;
 006) clear ; $cmd_realpath cli-menu-wallsystem ;;
 007) clear ; $cmd_realpath cli-menu-wallcustom ;;
@@ -7132,7 +7132,6 @@ cli-menu="cli-menu-$(basename "$favorite_realpath_textdialog")"
 ##########
 ################################################################################
 case $menuprincipal in
-
 001) clear ; $cmd_realpath cli-menu-option ;;
 002) clear ; $cmd_realpath cli options ;;
 003) clear ; $cmd_realpath cli firewall-wallcontrol ;;
@@ -7172,6 +7171,154 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-wallcontrol:
+##########    english: cli-menu-listconceptual: Manage list rules with one text menu          ##########
+##########    spanish: cli-menu-listconceptual: Maneja lista de reglas con un menu de texto   ##########
+#### :rutina-inicial-cli-menu-listconceptual:
+####
+####
+if [ "$first_option" == "cli-menu-listconceptual" ]; then
+if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
+echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
+exit ; fi
+menuprincipal="$($favorite_realpath_textdialog --clear --notags \
+--title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
+001 "$title_md $text_md [$cmd_realpath cli-menu] $text_md $title_md" \
+002 "$title_md [  --- Info Options --- ] $title_md" \
+003 "$title_md [ Firewall List With Conceptual ] $title_md" \
+004  "$text_md ls4" \
+005  "$text_md ls6"  \
+006  "$text_md list-filter4" \
+007  "$text_md list-filter6" \
+008  "$text_md list-forward" \
+009  "$text_md list-forward6" \
+010  "$text_md list-nat4" \
+011  "$text_md list-nat6" \
+012  "$text_md list-alltables" \
+013  "$text_md list-raw4" \
+014  "$text_md list-raw6" \
+015  "$text_md list-mangle4" \
+016  "$text_md list-mangle6" \
+017  "$text_md list-security4" \
+018  "$text_md list-security6" \
+019  "$text_md list-ebtables" \
+020  "$text_md list-arptables" \
+3>&1 1>&2 2>&3 )"
+##########
+##########
+cli="cli-$(basename "$favorite_realpath_textdialog")"
+cli-menu="cli-menu-$(basename "$favorite_realpath_textdialog")"
+cli-menu-listconceptual="cli-$(basename "$favorite_realpath_textdialog") firewall-listconceptual"
+cli-menu-listnumeral="cli-$(basename "$favorite_realpath_textdialog") firewall-listnumeral"
+cli-menu-wallcontrol="cli-$(basename "$favorite_realpath_textdialog") firewall-wallcontrol"
+cli-menu-wallsystem="cli-$(basename "$favorite_realpath_textdialog") firewall-wallsystem"
+cli-menu-wallcustom="cli-$(basename "$favorite_realpath_textdialog") firewall-wallcustom"
+cli-menu-easynet="cli-$(basename "$favorite_realpath_textdialog") firewall-easynet"
+##########
+##########
+case $menuprincipal in
+001) clear ; $cmd_realpath cli-menu-option ;;
+002) clear ; $cmd_realpath cli options ;;
+003) clear ; $cmd_realpath cli firewall-listconceptual ;;
+004) clear ; $cmd_realpath cli ls4 ;;
+005) clear ; $cmd_realpath cli ls6 ;;
+006) clear ; $cmd_realpath cli list-filter4 ;;
+007) clear ; $cmd_realpath cli list-filter6 ;;
+008) clear ; $cmd_realpath cli list-forward ;;
+009) clear ; $cmd_realpath cli list-forward6 ;;
+010) clear ; $cmd_realpath cli list-nat4 ;;
+011) clear ; $cmd_realpath cli list-nat6 ;;
+012) clear ; $cmd_realpath cli list-alltables ;;
+013) clear ; $cmd_realpath cli list-raw4 ;;
+014) clear ; $cmd_realpath cli list-raw6 ;;
+015) clear ; $cmd_realpath cli list-mangle4 ;; 
+016) clear ; $cmd_realpath cli list-mangle6 ;;
+017) clear ; $cmd_realpath cli list-security4 ;;
+018) clear ; $cmd_realpath cli list-security6 ;;
+019) clear ; $cmd_realpath cli list-ebtables ;;
+020) clear ; $cmd_realpath cli list-arptables ;;
+################################################################################
+*) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+$cmd_realpath text-pause clear ; exit ;;
+################################################################################
+esac
+exit; fi
+####
+####
+#### :rutina-final-cli-menu-listconceptual:
+##########    english: cli-menu-listnumeral: Manage list rules with one text menu          ##########
+##########    spanish: cli-menu-listnumeral: Maneja lista de reglas con un menu de texto   ##########
+#### :rutina-inicial-cli-menu-listnumeral:
+####
+####
+if [ "$first_option" == "cli-menu-listnumeral" ]; then
+if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
+echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
+exit ; fi
+menuprincipal="$($favorite_realpath_textdialog --clear --notags \
+--title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
+001 "$title_md $text_md [$cmd_realpath cli-menu] $text_md $title_md" \
+002 "$title_md [  --- Info Options --- ] $title_md" \
+003 "$title_md [ Firewall List With Conceptual ] $title_md" \
+004  "$text_md lsn4" \
+005  "$text_md lsn6"  \
+006  "$text_md listn-filter4" \
+007  "$text_md listn-filter6" \
+008  "$text_md listn-forward" \
+009  "$text_md listn-forward6" \
+010  "$text_md listn-nat4" \
+011  "$text_md listn-nat6" \
+012  "$text_md listn-alltables" \
+013  "$text_md listn-raw4" \
+014  "$text_md listn-raw6" \
+015  "$text_md listn-mangle4" \
+016  "$text_md listn-mangle6" \
+017  "$text_md listn-security4" \
+018  "$text_md listn-security6" \
+019  "$text_md list-ebtables" \
+020  "$text_md list-arptables" \
+3>&1 1>&2 2>&3 )"
+##########
+##########
+cli="cli-$(basename "$favorite_realpath_textdialog")"
+cli-menu="cli-menu-$(basename "$favorite_realpath_textdialog")"
+cli-menu-listconceptual="cli-$(basename "$favorite_realpath_textdialog") firewall-listconceptual"
+cli-menu-listnumeral="cli-$(basename "$favorite_realpath_textdialog") firewall-listnumeral"
+cli-menu-wallcontrol="cli-$(basename "$favorite_realpath_textdialog") firewall-wallcontrol"
+cli-menu-wallsystem="cli-$(basename "$favorite_realpath_textdialog") firewall-wallsystem"
+cli-menu-wallcustom="cli-$(basename "$favorite_realpath_textdialog") firewall-wallcustom"
+cli-menu-easynet="cli-$(basename "$favorite_realpath_textdialog") firewall-easynet"
+##########
+##########
+case $menuprincipal in
+001) clear ; $cmd_realpath cli-menu-option ;;
+002) clear ; $cmd_realpath cli options ;;
+003) clear ; $cmd_realpath cli firewall-listnumeral ;;
+004) clear ; $cmd_realpath cli lsn4 ;;
+005) clear ; $cmd_realpath cli lsn6 ;;
+006) clear ; $cmd_realpath cli listn-filter4 ;;
+007) clear ; $cmd_realpath cli listn-filter6 ;;
+008) clear ; $cmd_realpath cli listn-forward ;;
+009) clear ; $cmd_realpath cli listn-forward6 ;;
+010) clear ; $cmd_realpath cli listn-nat4 ;;
+011) clear ; $cmd_realpath cli listn-nat6 ;;
+012) clear ; $cmd_realpath cli listn-alltables ;;
+013) clear ; $cmd_realpath cli listn-raw4 ;;
+014) clear ; $cmd_realpath cli listn-raw6 ;;
+015) clear ; $cmd_realpath cli listn-mangle4 ;; 
+016) clear ; $cmd_realpath cli listn-mangle6 ;;
+017) clear ; $cmd_realpath cli listn-security4 ;;
+018) clear ; $cmd_realpath cli listn-security6 ;;
+019) clear ; $cmd_realpath cli list-ebtables ;;
+020) clear ; $cmd_realpath cli list-arptables ;;
+################################################################################
+*) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+$cmd_realpath text-pause clear ; exit ;;
+################################################################################
+esac
+exit; fi
+####
+####
+#### :rutina-final-cli-menu-listnumeral:
 ##########    english: cli-menu: Manage list rules with one text menu          ##########
 ##########    spanish: cli-menu: Maneja lista de reglas con un menu de texto   ##########
 #### :rutina-inicial-cli-menu:
