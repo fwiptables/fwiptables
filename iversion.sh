@@ -9197,7 +9197,8 @@ config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$title_md $text_info [ Server with ports tcp $2 for all $3 ] [ quick list numeral ]"
+echo "$title_md $text_info [ Server with ports tcp $2 for all host $3 ]"
+echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
 else
 echo "$text_info Introducction: Put the ports tcp servers"
 echo "$text_info Introducction: The tinyserver-udp configured like client for all protocols."
@@ -9233,7 +9234,8 @@ config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$title_md $text_info [ Server with ports udp $2 for all $3 ] [ quick list numeral ]"
+echo "$title_md $text_info [ Server with ports udp $2 for all host $3 ]"
+echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
 else
 echo "$text_info Introducction: Put the ports udp servers"
 echo "$text_info Introducction: The tinyserver-udp configured like client for all protocols."
@@ -9270,7 +9272,8 @@ config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$title_md $text_info [ Server with ports tcp $2 for all $3 ] [ quick list numeral ]"
+echo "$title_md $text_info [ Server with ports tcp $2 for all host $3 ]"
+echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
 else
 echo "$text_info Introducction: Put the ports tcp servers"
 echo "$text_info Introducction: to client ports: see preferences-modify (miniclient ports)"
@@ -9307,7 +9310,8 @@ config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$title_md $text_info [ Server with ports udp $2 for all $3 ] [ quick list numeral ]"
+echo "$title_md $text_info [ Server with ports udp $2 for all host $3 ]"
+echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
 else
 echo "$text_info Introducction: Put the ports udp servers"
 echo "$text_info Introducction: to client ports: see preferences-modify (miniclient ports)"
