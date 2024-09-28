@@ -14837,12 +14837,22 @@ exit ; fi ; fi
 ##############################      spanish: estado selectivo de entrada/salida        
 ####
 ####
+#### if [ "$allow_input_state" == "$NULL" ]  ; then  config_input_state=""  ; fi
+#### if [ "$allow_output_state" == "$NULL" ] ; then  config_output_state="" ; fi 
+####
+####
 if [ "$allow_input_state" == "$NULL" ]
-then config_input_state="-m state --state $config_input_state"
-else config_input_state="$NULL"  ; fi
+then 
+connect_input_state="$config_input_state"
+config_input_state="-m state --state $connect_input_state"
+fi
+####
+####
 if [ "$allow_output_state" == "$NULL" ]
-then config_output_state="-m state --state $config_output_state"
-else config_output_state="$NULL" ; fi
+then 
+connect_output_state="$config_output_state"
+config_output_state="-m state --state $connect_output_state"
+fi
 ####
 ####
 ##############################      english: 
