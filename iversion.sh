@@ -3384,10 +3384,10 @@ echo "$text_md $text_md wizard-full . launch a one full wizard to run iptables r
 echo "$text_md $text_md without-connection . launch a one firewall only for localhost $text_md"
 echo "$text_md $text_md input-permisive . launch a one firewall with all permisive $text_md"
 echo "$text_md $text_md input-established . launch a one firewall with input related,stablished $text_md"
-echo "$text_md $text_md tinyserver-tcp . launch a one firewall with server ports tcp $text_md"
-echo "$text_md $text_md tinyserver-udp . launch a one firewall with server ports tcp $text_md"
-echo "$text_md $text_md miniserver-tcp . launch a one firewall with server ports tcp $text_md"
-echo "$text_md $text_md miniserver-udp . launch a one firewall with server ports tcp $text_md"
+echo "$text_md $text_md tinyserver-tcp . launch a one firewall with server ports tcp [ with optional host clients ] $text_md"
+echo "$text_md $text_md tinyserver-udp . launch a one firewall with server ports udp [ with optional host clients ] $text_md"
+echo "$text_md $text_md miniserver-tcp . launch a one firewall with server ports tcp [ with optional host clients ] $text_md"
+echo "$text_md $text_md miniserver-udp . launch a one firewall with server ports udp [ with optional host clients ] $text_md"
 exit; fi
 ####
 ####
