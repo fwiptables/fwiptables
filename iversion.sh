@@ -88,7 +88,8 @@ cmd_shortdescription="FireWall With iptables"              # description short
 cmd_longdescription="One Mini Script in one-file wizard"   # description long
 cmd_license="BSD v1, LGPL v2, GPL v2"                      # program license
 cmd_requisite_program="sudo,awk,sed,file,cut"              # program requisite
-cmd_requisite_firewall="iptables-legacy,iptables-nft"      # firewall requisite
+cmd_requisite_firewall4="iptables-legacy,iptables-nft"     # firewall requisite
+cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # firewall requisite
 ####
 ####
 #### :rutina-final-enviroment-vars:
@@ -264,10 +265,17 @@ echo "### the requiste are $cmd_requisite_program"
 exit; fi ; done
 ####
 ####
-for requisite in $(echo $cmd_requisite_firewall | sed 's/,/ /g') ; do 
+for requisite in $(echo $cmd_requisite_firewall4 | sed 's/,/ /g') ; do 
 if [ "$(command -v $requisite)" == "$NULL" ]; then
 echo "### program $requisite is necesary to work $cmd_basename"
-echo "### the requiste are $cmd_requisite_firewall"
+echo "### the requiste are $cmd_requisite_firewall4"
+exit; fi ; done
+####
+####
+for requisite in $(echo $cmd_requisite_firewall6 | sed 's/,/ /g') ; do 
+if [ "$(command -v $requisite)" == "$NULL" ]; then
+echo "### program $requisite is necesary to work $cmd_basename"
+echo "### the requiste are $cmd_requisite_firewall6"
 exit; fi ; done
 ####
 ####
@@ -2494,7 +2502,8 @@ echo "$text_md $text_md    Developer Actual: $cmd_developer            $text_md"
 echo "$text_md $text_md        Email Report: $cmd_contact              $text_md"
 echo "$text_md $text_md         File Format: $cmd_format               $text_md"
 echo "$text_md $text_md   Requisite program: $cmd_requisite_program    $text_md"
-echo "$text_md $text_md  Requisite firewall: $cmd_requisite_firewall   $text_md"
+echo "$text_md $text_md Requisite firewall4: $cmd_requisite_firewall4  $text_md"
+echo "$text_md $text_md Requisite firewall6: $cmd_requisite_firewall6  $text_md"
 echo "$text_md $text_md     License program: $cmd_license              $text_md"
 exit ; fi
 ####
@@ -9193,12 +9202,13 @@ config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$title_md $text_info [ Server with ports tcp $2 for all host $3 ]"
+echo "$title_md $text_info [ Server with ports tcp $2 for host $3 ]"
 echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
 else
 echo "$text_info Introducction: Put the ports tcp servers"
 echo "$text_info Introducction: The tinyserver-udp configured like client for all protocols."
-echo "$text_info Example: $cmd_basename tinyserver-tcp 20:22,80"
+echo "$text_info Example_1: $cmd_basename tinyserver-tcp 20:22,80"
+echo "$text_info Example_2: $cmd_basename tinyserver-tcp 20:22,80 12.168.0.0/24"
 echo "$text_fail fwiptables $first_option no loaded"
 exit ; fi
 ####
@@ -9230,12 +9240,13 @@ config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$title_md $text_info [ Server with ports udp $2 for all host $3 ]"
+echo "$title_md $text_info [ Server with ports udp $2 for host $3 ]"
 echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
 else
 echo "$text_info Introducction: Put the ports udp servers"
 echo "$text_info Introducction: The tinyserver-udp configured like client for all protocols."
-echo "$text_info Example: $cmd_basename tinyserver-udp 20:22,80"
+echo "$text_info Example_1: $cmd_basename tinyserver-udp 20:22,80"
+echo "$text_info Example_2: $cmd_basename tinyserver-udp 20:22,80 192.168.0.0/24"
 echo "$text_fail fwiptables $first_option no loaded"
 exit; fi
 ####
@@ -9268,12 +9279,13 @@ config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$title_md $text_info [ Server with ports tcp $2 for all host $3 ]"
+echo "$title_md $text_info [ Server with ports tcp $2 for host $3 ]"
 echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
 else
 echo "$text_info Introducction: Put the ports tcp servers"
 echo "$text_info Introducction: to client ports: see preferences-modify (miniclient ports)"
-echo "$text_info Example: $cmd_basename miniserver-tcp 20:22,80"
+echo "$text_info Example_1: $cmd_basename miniserver-tcp 20:22,80"
+echo "$text_info Example_2: $cmd_basename miniserver-tcp 20:22,80 192.168.0.0/24"
 echo "$text_fail fwiptables $first_option no loaded"
 exit ; fi
 ####
@@ -9306,12 +9318,13 @@ config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$title_md $text_info [ Server with ports udp $2 for all host $3 ]"
+echo "$title_md $text_info [ Server with ports udp $2 for host $3 ]"
 echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
 else
 echo "$text_info Introducction: Put the ports udp servers"
 echo "$text_info Introducction: to client ports: see preferences-modify (miniclient ports)"
-echo "$text_info Example: $cmd_basename mioniserver-udp 20:22,80"
+echo "$text_info Example_1: $cmd_basename mioniserver-udp 20:22,80"
+echo "$text_info Example_2: $cmd_basename mioniserver-udp 20:22,80 192.168.0.0/24"
 echo "$text_fail fwiptables $first_option no loaded"
 exit ; fi
 ####
