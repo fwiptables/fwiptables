@@ -77,7 +77,7 @@ cmd_basename="$(basename $0)"                              # only  filename
 cmd_year="24"                                              # number year version
 cmd_month="10"                                             # number mouth version
 cmd_letter="a-dev"                                         # number letter version
-cmd_version="$cmd_year-$cmd_month$cmd_letter"              # final date like number version
+cmd_version="$cmd_year-$cmd_month-$cmd_letter"             # final date like number version
 #### the install location
 cmd_name="fwiptables"                                      # filename installed
 cmd_directory="/usr/bin"                                   # directory installed
