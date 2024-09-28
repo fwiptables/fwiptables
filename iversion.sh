@@ -87,6 +87,8 @@ cmd_contact="fwiptables@gmx.com"                           # actual contact
 cmd_shortdescription="FireWall With iptables"              # description short
 cmd_longdescription="One Mini Script in one-file wizard"   # description long
 cmd_license="BSD v1, LGPL v2, GPL v2"                      # program license
+cmd_requisite_program="sudo,awk,sed,file,cut"              # program requisite
+cmd_requisite_firewall="iptables-legacy,iptables-nft"      # firewall requisite
 ####
 ####
 #### :rutina-final-enviroment-vars:
@@ -255,26 +257,18 @@ show_actual_date="$($command_date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"
 #### :rutina-inicial-necesary-commands:
 ####
 ####
-case "$NULL" in
-$command_sudo)
-echo " program sudo is necesary to work $cmd_basename, \
-please install sudo" ; exit ;;
-$command_ip4tablesnft)
-echo " program iptables-nft is necesary to work $cmd_basename, \
-please install iptables-nft" ; exit ;;
-$command_ip4tableslegacy)
-echo " program iptables-legacy is necesary to work $cmd_basename, \
-please install iptables-legacy" ; exit ;;
-$command_awk)
-echo " program awk is necesary to work $cmd_basename, \
-please install awk" ; exit ;;
-$command_sed)
-echo " program sed is necesary to work $cmd_basename, \
-please install sed" ; exit ;;
-$command_file)
-echo " program file is necesary to work $cmd_basename, \
-please install file" ; exit ;;
-esac
+for requisite in $(echo $cmd_requisite_program | sed 's/,/ /g') ; do 
+if [ "$(command -v $requisite)" == "$NULL" ]; then
+echo "### program $requisite is necesary to work $cmd_basename"
+echo "### the requiste are $cmd_requisite_program"
+exit; fi ; done
+####
+####
+for requisite in $(echo $cmd_requisite_firewall | sed 's/,/ /g') ; do 
+if [ "$(command -v $requisite)" == "$NULL" ]; then
+echo "### program $requisite is necesary to work $cmd_basename"
+echo "### the requiste are $cmd_requisite_firewall"
+exit; fi ; done
 ####
 ####
 #### :rutina-final-necesary-commands:
@@ -2499,6 +2493,8 @@ echo "$text_md $text_md     Cache Directory: $directory_cache_necesary $text_md"
 echo "$text_md $text_md    Developer Actual: $cmd_developer            $text_md"
 echo "$text_md $text_md        Email Report: $cmd_contact              $text_md"
 echo "$text_md $text_md         File Format: $cmd_format               $text_md"
+echo "$text_md $text_md   Requisite program: $cmd_requisite_program    $text_md"
+echo "$text_md $text_md  Requisite firewall: $cmd_requisite_firewall   $text_md"
 echo "$text_md $text_md     License program: $cmd_license              $text_md"
 exit ; fi
 ####
