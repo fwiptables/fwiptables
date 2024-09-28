@@ -9190,9 +9190,9 @@ first_option="loadtiny-custom" ;
 server_port_tcp="$second_option"
 ####
 ####
-#### if [ "$third_option" != "$NULL" ] ;
-#### then config_ipv4_netserver="$3" 
-#### config_ipv6_netserver="$3" ; fi
+if [ "$third_option" != "$NULL" ] ;
+then config_ipv4_netserver="$3" 
+config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
@@ -9225,9 +9225,9 @@ first_option="loadtiny-custom" ;
 server_port_udp="$second_option"
 ####
 ####
-#### if [ "$third_option" != "$NULL" ] ;
-#### then config_ipv4_netserver="$3" 
-#### config_ipv6_netserver="$3" ; fi
+if [ "$third_option" != "$NULL" ] ;
+then config_ipv4_netserver="$3" 
+config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
@@ -9262,9 +9262,9 @@ client_port_tcp="$miniclient_port_tcp"
 client_port_udp="$miniclient_port_udp"
 ####
 ####
-#### if [ "$third_option" != "$NULL" ] ;
-#### then config_ipv4_netserver="$3" 
-#### config_ipv6_netserver="$3" ; fi
+if [ "$third_option" != "$NULL" ] ;
+then config_ipv4_netserver="$3" 
+config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
@@ -9299,9 +9299,9 @@ client_port_tcp="$miniclient_port_tcp"
 client_port_udp="$miniclient_port_udp"
 ####
 ####
-#### if [ "$third_option" != "$NULL" ] ;
-#### then config_ipv4_netserver="$3" 
-#### config_ipv6_netserver="$3" ; fi
+if [ "$third_option" != "$NULL" ] ;
+then config_ipv4_netserver="$3" 
+config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
