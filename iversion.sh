@@ -75,8 +75,8 @@ cmd_realpath="$(realpath $0)"                              # fully routename
 cmd_basename="$(basename $0)"                              # only  filename
 #### The number version
 cmd_year="24"                                              # number year version
-cmd_month="09"                                             # number mouth version
-cmd_letter="b-dev"                                         # number letter version
+cmd_month="10"                                             # number mouth version
+cmd_letter="a-dev"                                         # number letter version
 cmd_version="$cmd_year-$cmd_month$cmd_letter"              # final date like number version
 #### the install location
 cmd_name="fwiptables"                                      # filename installed
@@ -16665,10 +16665,10 @@ $allow_input_maxconnect $command_ip6tablesnft   -A INPUT \
 ####
 $launch_custom $allow_input_all $allow_use_ipv4 $allow_use_nft $command_ip4tablesnft -t filter -A INPUT \
 $config_input_state -j ACCEPT \
--m comment --comment "input state"  &> /dev/null
+-m comment --comment "input-state"  &> /dev/null
 $launch_custom $allow_input_all $allow_use_ipv6 $allow_use_nft $command_ip6tablesnft -t filter -A INPUT \
 $config_input_state -j ACCEPT \
--m comment --comment "input state"  &> /dev/null
+-m comment --comment "input-state"  &> /dev/null
 ####
 ####
 #### english: legacy INPUT ACCEPT all or input_state
@@ -16678,11 +16678,11 @@ $config_input_state -j ACCEPT \
 $launch_custom $allow_input_all $allow_use_ipv4 $allow_use_legacy \
 $command_ip4tableslegacy -t filter -A INPUT \
 $config_input_state -j ACCEPT \
--m comment --comment "input state"  &> /dev/null
+-m comment --comment "input-state"  &> /dev/null
 $launch_custom $allow_input_all $allow_use_ipv6 $allow_use_legacy \
 $command_ip6tableslegacy -t filter -A INPUT \
 $config_input_state -j ACCEPT \
--m comment --comment "input state"  &> /dev/null
+-m comment --comment "input-state"  &> /dev/null
 ####
 ####
 ####
@@ -16868,11 +16868,11 @@ if [ "$allow_output_all" == "$NULL" ]; then
 $launch_custom $allow_output_all $allow_use_ipv4 $allow_use_nft \
 $command_ip4tablesnft -t filter -A OUTPUT \
 $input_state -j ACCEPT \
--m comment --comment "input state" &> /dev/null
+-m comment --comment "output-state" &> /dev/null
 $launch_custom $allow_output_all $allow_use_ipv6 $allow_use_nft \
 $command_ip6tablesnft -t filter -A OUTPUT \
 $input_state -j ACCEPT \
--m comment --comment "input state" &> /dev/null
+-m comment --comment "output-state" &> /dev/null
 ####
 ####
 #### english: legacy INPUT ACCEPT all or input_state
@@ -16882,11 +16882,11 @@ $input_state -j ACCEPT \
 $launch_custom $allow_output_all $allow_use_ipv4 $allow_use_legacy \
 $command_ip4tableslegacy -t filter  -A OUTPUT \
 $input_state -j ACCEPT \
--m comment --comment "input state" &> /dev/null
+-m comment --comment "output-state" &> /dev/null
 $launch_custom $allow_output_all $allow_use_ipv6 $allow_use_legacy \
 $command_ip6tableslegacy -t filter -A OUTPUT \
 $input_state -j ACCEPT \
--m comment --comment "input state" &> /dev/null
+-m comment --comment "output-state" &> /dev/null
 ####
 ####
 fi

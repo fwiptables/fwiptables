@@ -1,7 +1,11 @@
+# New Working in progress actually:
 
-task in work:
+Fixing bugs, Feacture adding .
+
+## The fixed commit:     
 
 Modify input-state, output-state in battery
-Update specfic server in tinyserver, miniserver
 
+## The feature commit: 
 
+Add specfic server in tinyserver, miniserver
