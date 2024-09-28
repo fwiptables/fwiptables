@@ -1,0 +1,7 @@
+
+task in work:
+
+Modify input-state, output-state in battery
+Update specfic server in tinyserver, miniserver
+
+
