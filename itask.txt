@@ -1,11 +1,11 @@
-# New Working in progress actually:
+# Notes to Working in progress actually:
 
-Fixing bugs, Feacture adding .
+Planed fixing bugs, Planed feacture adding .
 
-## The fixed commit:     
+## The planed fixed commit:     
 
-Modify input-state, output-state in battery
+..
 
-## The feature commit: 
+## The planed feature commit: 
 
-Add specfic server in tinyserver, miniserver
+..
