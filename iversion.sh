@@ -9187,7 +9187,8 @@ name_firewall="tinyserver-tcp" ;
 first_option="loadtiny-custom" ;
 ####
 ####
-server_port_tcp="$second_option"
+server_port_tcp="$2"
+server_port_udp=""
 ####
 ####
 if [ "$third_option" != "$NULL" ] ;
@@ -9196,7 +9197,7 @@ config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$title_md $text_info Server with ports tcp $second_option"  
+echo "$title_md $text_info [ Server with ports tcp $2 for all $3 ] [ quick list numeral ]"
 else
 echo "$text_info Introducction: Put the ports tcp servers"
 echo "$text_info Introducction: The tinyserver-udp configured like client for all protocols."
@@ -9222,7 +9223,8 @@ name_firewall="tinyserver-udp" ;
 first_option="loadtiny-custom" ;
 ####
 ####
-server_port_udp="$second_option"
+server_port_udp="$2"
+server_port_tcp=""
 ####
 ####
 if [ "$third_option" != "$NULL" ] ;
@@ -9231,7 +9233,7 @@ config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$title_md $text_info Server with ports udp $second_option"  
+echo "$title_md $text_info [ Server with ports udp $2 for all $3 ] [ quick list numeral ]"
 else
 echo "$text_info Introducction: Put the ports udp servers"
 echo "$text_info Introducction: The tinyserver-udp configured like client for all protocols."
@@ -9253,10 +9255,10 @@ if [ "$first_option" == "miniserver-tcp" ]
 then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
 launch_rules_firewall="yes" ;
 type_firewall="wallcontrol"    ; 
-name_firewall="$first_option" ;
+name_firewall="miniserver-tcp" ;
 ####
 ####
-server_port_tcp="$second_option" ;
+server_port_tcp="$2" ;
 server_port_udp="" ;
 client_port_tcp="$miniclient_port_tcp"
 client_port_udp="$miniclient_port_udp"
@@ -9268,7 +9270,7 @@ config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$title_md $text_info Server with ports tcp $second_option" 
+echo "$title_md $text_info [ Server with ports tcp $2 for all $3 ] [ quick list numeral ]"
 else
 echo "$text_info Introducction: Put the ports tcp servers"
 echo "$text_info Introducction: to client ports: see preferences-modify (miniclient ports)"
@@ -9290,11 +9292,11 @@ if [ "$first_option" == "miniserver-udp" ]
 then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
 launch_rules_firewall="yes" ;
 type_firewall="wallcontrol"    ; 
-name_firewall="$first_option" ;
+name_firewall="miniserver-udp" ;
 ####
 ####
 server_port_tcp="" ;
-server_port_udp="$second_option" ;
+server_port_udp="$2" ;
 client_port_tcp="$miniclient_port_tcp"
 client_port_udp="$miniclient_port_udp"
 ####
@@ -9305,7 +9307,7 @@ config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
-echo "$title_md $text_info Server with ports udp $second_option"
+echo "$title_md $text_info [ Server with ports udp $2 for all $3 ] [ quick list numeral ]"
 else
 echo "$text_info Introducction: Put the ports udp servers"
 echo "$text_info Introducction: to client ports: see preferences-modify (miniclient ports)"
