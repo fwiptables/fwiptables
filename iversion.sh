@@ -679,10 +679,12 @@ file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenbla
 #### :rutina-inicial-variables-update:
 ####
 ####
-#### Update variables
+#### Update variables when is there
 ####
 ####
-if [ -f "$file_default_preferences" ]; then source $file_default_preferences ; fi
+if [ -f "$file_default_preferences" ]
+then source $file_default_preferences
+else $cmd_realpath preferences-regen &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-variables-update:
