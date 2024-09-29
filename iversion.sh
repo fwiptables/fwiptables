@@ -70,7 +70,7 @@ echo ; exit ; fi
 #### configs for fwiptables
 ####
 ####
-#### The name files
+#### The name file
 cmd_realpath="$(realpath $0)"                              # fully routename
 cmd_basename="$(basename $0)"                              # only  filename
 #### The number version
@@ -250,6 +250,7 @@ command_zgrep="$(command -v zgrep)"
 ####
 ####
 show_actual_date="$($command_date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"
+opt_actual_date="$show_actual_date-_OPT_"
 ####
 ####
 #### :rutina-final-possible-commands:
@@ -1454,8 +1455,8 @@ echo "### ### $text_info [ $second_option $third_option $quad_option ] \
 [ $show_actual_date ]" &> $output_log
 $cmd_realpath $second_option $third_option $quad_option &> $output_log
 cat $output_log | $command_grep -E -v Warning: \
-&> $default_directory_log/$show_actual_date-$second_option.txt
-echo "$title_md [ file ]  $default_directory_log/$show_actual_date-$second_option.txt"
+&> $default_directory_log/$opt_actual_date-$second_option.txt
+echo "$title_md [ file ]  $default_directory_log/$opt_actual_date-$second_option.txt"
 exit ; fi
 ####
 ####
@@ -1470,8 +1471,8 @@ echo "$head_waiting_pdf"
 sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &> /dev/null
 #### send print to home output fwiptables.pdf
 $cmd_realpath $second_option $third_option | $command_convert -page A3 text:- \
-$default_directory_pdf/$show_actual_date-$second_option.pdf 
-echo "$title_md [ file ] $default_directory_pdf/$show_actual_date-$second_option.pdf"
+$default_directory_pdf/$opt_actual_date-$second_option.pdf 
+echo "$title_md [ file ] $default_directory_pdf/$opt_actual_date-$second_option.pdf"
 exit ; fi
 ####
 ####
