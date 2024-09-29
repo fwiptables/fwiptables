@@ -5169,12 +5169,13 @@ echo "Maintainer: f-iptables"   &>> $default_directory_debian/deb/DEBIAN/control
 echo "Architecture: all"        &>> $default_directory_debian/deb/DEBIAN/control
 echo "Version: $cmd_version"    &>> $default_directory_debian/deb/DEBIAN/control
 echo "Depends: "                &>> $default_directory_debian/deb/DEBIAN/control
-echo "Description: $cmd_longdescription ." &>> $default_directory_debian/deb/DEBIAN/control
+echo "Description: $cmd_longdescription" &>> $default_directory_debian/deb/DEBIAN/control
 #### echo " $cmd_longdescription ."  &>> $default_directory_debian/deb/DEBIAN/control
 #### architecture detect, only for shell script
 if [ "$cmd_format" != "Bourne-Again_shell_script," ]
 then echo "$title_md the $cmd_name is not Bourne-Again_shell_script," ; exit ; fi
 #### it does the debian package noarch
+rm $default_directory_debian/$cmd_basename-$cmd_version-noarch.deb
 $command_dpkg -b $default_directory_debian/deb/ $default_directory_debian/$cmd_basename-$cmd_version-noarch.deb && \
 echo "$text_md $text_ok file write in \
 $default_directory_debian/$cmd_basename-$cmd_version-noarch.deb"   
