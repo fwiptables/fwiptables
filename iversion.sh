@@ -27,7 +27,7 @@
 ####
 ####
 ####                 ## fwiptables license in source program
-####   English: This program has the license GPL v2, LGPL v2, BSD .
+####   English: This program has the license GPL v2, LGPL v2.
 ####
 ####
 ####                 ## fwiptables comments in source program
@@ -86,7 +86,7 @@ cmd_developer="Francisco Garcia"                           # actual developer
 cmd_contact="fwiptables@gmx.com"                           # actual contact
 cmd_shortdescription="FireWall With iptables"              # description short
 cmd_longdescription="iptables mini-script in file-wizard"  # description long
-cmd_license="BSD v1, LGPL v2, GPL v2"                      # program license
+cmd_license="LGPL v2, GPL v2"                              # program license
 cmd_requisite_program="sudo,awk,sed,file,cut"              # program requisite
 cmd_requisite_firewall4="iptables-legacy,iptables-nft"     # firewall requisite
 cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # firewall requisite
@@ -3273,7 +3273,7 @@ echo "$text_md ip4 ip6 network4 network6 address4 address6 resolve sockets $text
 echo "$text_md free nodes ip-forward depends utils treeconf treecache $text_md"
 echo "$text_md cleancache notes variables uninstall install upgrade $text_md"
 echo "$text_md examples info code expert donate about version $text_md"
-echo "$text_md license-bsd-v1 license-lgpl-v2 license-gpl-v2 $text_md"
+echo "$text_md license-lgpl-v2 license-gpl-v2 $text_md"
 echo " $text_md $text_md | Program: $cmd_basename $cmd_version $text_md"
 echo " $text_md $text_md | Description: $cmd_longdescription $text_md"
 ####
@@ -3580,7 +3580,6 @@ echo "$text_md $text_md install . install fwiptables $text_md"
 echo "$text_md $text_md uninstall . uninstall fwiptables $text_md"
 echo "$text_md $text_md license-gpl-v2 . license gpl v2 $text_md"
 echo "$text_md $text_md license-lgpl-v2 . license lgpl v2 $text_md"
-echo "$text_md $text_md license-bsd-v1 . license bsd v1 $text_md"
 echo "$text_md "
 exit; fi
 ####
@@ -5249,7 +5248,7 @@ echo "$text_md $text_md Description: Command Fran FireWall fwiptables Generator"
 echo "$text_md $text_md Author:      Francisco Garcia <fwiptables@gmx.com>"
 echo "$text_md $text_md Copyright:   (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>"
 echo "$text_md $text_md"
-echo "$text_md $text_md launch: fwiptables license-bsd-v1|license-lgpl-v2|license-gpl-v2"
+echo "$text_md $text_md launch: fwiptables license-lgpl-v2|license-gpl-v2"
 exit; fi
 ####
 ####
@@ -5322,19 +5321,19 @@ exit;  fi
 #### :rutina-inicial-license-bsd-v1:
 ####
 ####
-if [ "$first_option" == "license-bsd-v1" ]; then 
-echo "$title_md [ $first_option ] \
-[ Show license from git sourceforge for $cmd_realpath ] "
+#### if [ "$first_option" == "license-bsd-v1" ]; then 
+#### echo "$title_md [ $first_option ] \
+#### [ Show license from git sourceforge for $cmd_realpath ] "
 ####
-if [ "$command_curl" == "$NULL" ]; then
-echo "$title_md Install curl to download/install latest version"; fi
+#### if [ "$command_curl" == "$NULL" ]; then
+#### echo "$title_md Install curl to download/install latest version"; fi
 ####
-echo "license text for $first_option downloading"
-echo
-echo ..................................................................
-echo
-$command_curl -L $content_license_bsd --stderr /dev/null
-exit;  fi
+#### echo "license text for $first_option downloading"
+#### echo
+#### echo ..................................................................
+#### echo
+#### $command_curl -L $content_license_bsd --stderr /dev/null
+#### exit;  fi
 ####
 ####
 #### :rutina-final-license-bsd-v1:
@@ -8487,7 +8486,7 @@ address4|address6|network4|network6||sockets|\
 filelog|autolog|ip4|ip6|notes|speed-ip4|speed-ip6|\
 nodes|date|free|version|treeconf|treecache|cleancache|\
 depends|utils|about|variables|examples|intro|install|upgrade|\
-license-bsd-v1|license-lgpl-v2|license-gpl-v2"
+license-lgpl-v2|license-gpl-v2"
 ####
 ####
 selection="$($command_zenity --forms \
@@ -8531,7 +8530,6 @@ network4)$cmd_realpath gui-$second_option network4 ;;
 network6)$cmd_realpath gui-$second_option network6 ;;
 install)$cmd_realpath -gui-zenity install ;;
 upgrade)$cmd_realpath -gui-zenity upgrade ;;
-license-bsd-v1) $cmd_realpath -gui-zenity license-bsd-v1 ;;
 license-lgpl-v2) $cmd_realpath -gui-zenity license-lgpl-v2 ;;
 license-gpl-v2) $cmd_realpath -gui-zenity license-gpl-v2 ;;
 examples)$cmd_realpath -gui-zenity examples ;;
@@ -9060,7 +9058,7 @@ gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
 list-options|clasic-options|info-options|expert|download|intro|\
 ip4|ip6|speed-ip4|speed-ip6|notes|treeconf|treecache|cleancache|\
-license-bsd-v1|license-lgpl-v2|license-gpl-v2|\
+license-lgpl-v2|license-gpl-v2|\
 address4|address6|network4|network6||sockets|\
 install|upgrade|examples|depends|variables|utils|about"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
@@ -9109,7 +9107,6 @@ address4*)$cmd_realpath gui-$second_option address4 ;;
 address6*)$cmd_realpath gui-$second_option address6 ;;
 network4*)$cmd_realpath gui-$second_option network4 ;;
 network6*)$cmd_realpath gui-$second_option network6 ;;
-license-bsd-v1*)$cmd_realpath gui-$second_option license-bsd-v1 ;;
 license-lgpl-v2*)$cmd_realpath gui-$second_option license-lgpl-v2 ;;
 license-gpl-v2*)$cmd_realpath gui-$second_option license-gpl-v2 ;;
 variables*) $cmd_realpath gui-$second_option variables ;;
