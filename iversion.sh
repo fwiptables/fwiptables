@@ -249,7 +249,7 @@ command_zgrep="$(command -v zgrep)"
 #### time date
 ####
 ####
-show_actual_date="$($command_date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"
+show_actual_date="$($command_date +_DAY_%Y-%m-%d_HOUR_%H-%M-%S)"
 opt_actual_date="$show_actual_date-_OPT_"
 ####
 ####
@@ -1518,12 +1518,13 @@ echo $config_show_timespam ; fi
 ####
 ####
 if [ "$first_option" == "filelog" ] ; then
-echo "$title_md [ $first_option ]  [ show $file_default_filelog ] "
-if [ ! -f $file_default_filelog ]; then touch $file_default_filelog ; fi
+echo "$title_md [ $first_option ] [ list log files ]"
 echo
-cat  "$file_default_filelog"
 echo 
-echo "### ### [ this file is: ] [ $file_default_filelog ]"
+ls -1 $default_directory_log
+echo
+echo 
+echo "### ### [ folder: ] [ $default_directory_log ]"
 exit; fi
 ####
 ####
