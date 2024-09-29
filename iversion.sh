@@ -259,6 +259,7 @@ opt_actual_date="$show_actual_date-_OPT_"
 #### :rutina-inicial-necesary-commands:
 ####
 ####
+#### requisite utils
 for requisite in $(echo $cmd_requisite_program | sed 's/,/ /g') ; do 
 if [ "$(command -v $requisite)" == "$NULL" ]; then
 echo "### program $requisite is necesary to work $cmd_basename"
@@ -266,6 +267,7 @@ echo "### the requiste are $cmd_requisite_program"
 exit; fi ; done
 ####
 ####
+#### requisite firewall4
 for requisite in $(echo $cmd_requisite_firewall4 | sed 's/,/ /g') ; do 
 if [ "$(command -v $requisite)" == "$NULL" ]; then
 echo "### program $requisite is necesary to work $cmd_basename"
@@ -273,6 +275,7 @@ echo "### the requiste are $cmd_requisite_firewall4"
 exit; fi ; done
 ####
 ####
+#### requisite firewall6
 for requisite in $(echo $cmd_requisite_firewall6 | sed 's/,/ /g') ; do 
 if [ "$(command -v $requisite)" == "$NULL" ]; then
 echo "### program $requisite is necesary to work $cmd_basename"
