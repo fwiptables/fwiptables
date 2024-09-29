@@ -39,15 +39,18 @@
   
          Basename program: fwiptables               
          Realpath program: /usr/bin/fwiptables               
-          Version program: 24-09a                
+          Version program: 24-10-A                
         Short description: FireWall With iptables       
-         Long description: One Mini Script in one-file wizard        
+         Long description: iptables mini-script in file-wizard        
            Data Directory: /root/.config/fwiptables    
           Cache Directory: /root/.cache/fwiptables   
          Developer Actual: Francisco Garcia              
              Email Report: fwiptables@gmx.com                
               File Format: Bourne-Again_shell_script,                 
-          License program: BSD v1, LGPL v2, GPL v2                
+        Requisite program: sudo,awk,sed,file,cut      
+      Requisite firewall4: iptables-legacy,iptables-nft    
+      Requisite firewall6: ip6tables-legacy,ip6tables-nft    
+          License program: LGPL v2, GPL v2                
   
 ###  [ about ] [ licenses to fwiptables project ] [ about md ]
       File:        fwiptables
@@ -55,7 +58,7 @@
       Author:      Francisco Garcia <fwiptables@gmx.com>
       Copyright:   (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>
      
-      launch: fwiptables license-bsd-v1|license-lgpl-v2|license-gpl-v2
+      launch: fwiptables license-lgpl-v2|license-gpl-v2
   
 ###  [ notes ] [ List notes about ] [ notes md ]
              Legacy or nft: whith one of them is sufficent   
@@ -86,11 +89,11 @@
 ###     [ Configuration files ]   
       Directory data:          /root/.config/fwiptables   
       Directory temp:          /root/.cache/fwiptables   
-      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-09a   
+      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-10-A   
         
 ###     [ Log files ]             
-      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default-autolog-24-09a   
-      File filelog:            /root/.config/fwiptables/fwiptables-log/default-filelog-24-09a   
+      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default-autolog-24-10-A   
+      File filelog:            /root/.config/fwiptables/fwiptables-log/default-filelog-24-10-A   
         
 ###     [ optional output ]       
       dialog cli:              /bin/dialog   
@@ -183,8 +186,8 @@
    fwiptables [optional-output] first_option [second_option]   
 ###     optional-output   
    [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]   
-   [ cli-dialog cli-whiptail gui-zenity gui-yad ]   
-   [ cli-menu-dialog cli-menu-whiptail gui-roll-zenity ]   
+   [ cli-dialog cli-whiptail cli-menu-dialog cli-menu-whiptail ]   
+   [ cli-menu cli-menu-old gui-zenity gui-yad gui-roll-zenity ]   
    [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ]   
 ###     firewall-listconceptual   
    ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6   
@@ -221,7 +224,7 @@
    free nodes ip-forward depends utils treeconf treecache   
    cleancache notes variables uninstall install upgrade   
    examples info code expert donate about version   
-   license-bsd-v1 license-lgpl-v2 license-gpl-v2   
-       | Program: fwiptables 24-09a   
-       | Description: One Mini Script in one-file wizard   
+   license-lgpl-v2 license-gpl-v2   
+       | Program: fwiptables 24-10-A   
+       | Description: iptables mini-script in file-wizard   
        | Expert: expert is allowed in preferences file   
