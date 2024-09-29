@@ -85,7 +85,7 @@ cmd_directory="/usr/bin"                                   # directory installed
 cmd_developer="Francisco Garcia"                           # actual developer
 cmd_contact="fwiptables@gmx.com"                           # actual contact
 cmd_shortdescription="FireWall With iptables"              # description short
-cmd_longdescription="One Mini Script in one-file wizard"   # description long
+cmd_longdescription="iptables mini-script in file-wizard"  # description long
 cmd_license="BSD v1, LGPL v2, GPL v2"                      # program license
 cmd_requisite_program="sudo,awk,sed,file,cut"              # program requisite
 cmd_requisite_firewall4="iptables-legacy,iptables-nft"     # firewall requisite
@@ -5157,7 +5157,10 @@ rm -R $default_directory_debian/deb/usr/bin &> /dev/null
 rm -R $default_directory_debian/deb/DEBIAN &> /dev/null
 mkdir -p $default_directory_debian/deb/usr/bin &> /dev/null
 mkdir -p $default_directory_debian/deb/DEBIAN &> /dev/null
-cp $0 $default_directory_debian/deb/usr/bin/$cmd_basename-$cmd_version-noarch.deb
+cp $0 $default_directory_debian/deb/usr/bin/$cmd_basename
+#### it are file modes
+chown root $default_directory_debian/* -R  &> /dev/null
+chmod 755 $default_directory_debian/* -R &> /dev/null
 #### create the control file
 echo "Package: fwiptables"      &>  $default_directory_debian/deb/DEBIAN/control
 echo "Priority: optional"       &>> $default_directory_debian/deb/DEBIAN/control
@@ -5166,11 +5169,8 @@ echo "Maintainer: f-iptables"   &>> $default_directory_debian/deb/DEBIAN/control
 echo "Architecture: all"        &>> $default_directory_debian/deb/DEBIAN/control
 echo "Version: $cmd_version"    &>> $default_directory_debian/deb/DEBIAN/control
 echo "Depends: "                &>> $default_directory_debian/deb/DEBIAN/control
-echo "Description: $cmd_shortdescription ." &>> $default_directory_debian/deb/DEBIAN/control
-echo " $cmd_longdescription ."  &>> $default_directory_debian/deb/DEBIAN/control
-#### it are file modes
-chown root:root $default_directory_debian/* -R  &> /dev/null
-chmod 755 $default_directory_debian/* -R &> /dev/null
+echo "Description: $cmd_longdescription ." &>> $default_directory_debian/deb/DEBIAN/control
+#### echo " $cmd_longdescription ."  &>> $default_directory_debian/deb/DEBIAN/control
 #### architecture detect, only for shell script
 if [ "$cmd_format" != "Bourne-Again_shell_script," ]
 then echo "$title_md the $cmd_name is not Bourne-Again_shell_script," ; exit ; fi
