@@ -2352,9 +2352,10 @@ if   [ "$first_option" == "expert-myradio-install" ]; then
 echo "$title_md [ $first_option ]  [ myradio download ] [ expert-myradio-install md]"
 echo "$title_md Downloading myradio stable latest in $default_directory_radio"
 $command_curl $web_download_myradio -s -L \
--o $default_directory_radio/myradio-bash || echo "Without internet" \
+-o $default_directory_radio/myradio-bash || echo "Without internet" && exit \
 && chmod ugo+x $default_directory_radio/myradio-bash &> /dev/null
-cp $default_directory_radio/myradio-bash /usr/bin && echo installed myradio-bash in /usr/bin
+cp $default_directory_radio/myradio-bash /usr/bin && \
+echo installed myradio-bash in /usr/bin/myradio-bash
 exit; fi
 ####
 ####
