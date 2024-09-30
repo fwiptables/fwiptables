@@ -20,8 +20,10 @@
 #### 51 Franklin St, Fifth Floor, Boston MA 02110-1301 USA
 ####
 ##################################################### non root
-if [ "$(whoami)" == "root" ] || [ "$(id -u)" == "0" ]; then
-echo "# root is not allowed user for myradio-bash command"; exit; fi
+if [ "$(id -u)" == "0" ] && [ "$1" != "install" ]
+then echo "# Install myradio-bash with root only to install: install" 
+echo "# With root is not allowed with other myradio-bash options"
+exit ; fi
 ##################################################### configuration list
 ### variables list
 opt_bin="$(realpath $0)"
@@ -38,8 +40,9 @@ conf_choosed="$conf_folder/myradio-choosed.m3u8"
 conf_config="$conf_folder/myradio-config.txt"
 ### without option
 if [ "$opt_first" == "$NULL" ]; then
-echo "# Launch: $opt_base config|reset|stop|update|search|play|random|link choosed-radio"
-exit; fi
+echo "# without option # choose one option to launch"
+echo "# Launch: $opt_base install|config|reset|stop|update|\
+search|play|random|link choosed-radio"
 ### update config
 if [ ! -d "$conf_folder" ]; then mkdir -p $conf_folder ; fi
 if [ ! -f "$conf_config" ]; then 
@@ -55,6 +58,11 @@ fi
 ### load config
 source $conf_config
 ##################################################### options list
+### install program
+if [ "$1" == "install" ]; then
+cp $0 /usr/bin/myradio-bash &> /dev/null
+echo "# myradio-bash installed in /usr/bin/myradio-bash"
+exit; fi
 ### reset config
 if [ "$opt_first" == "reset" ]; then
 echo "kill_player=vlc"                                         &> $conf_config
@@ -113,7 +121,9 @@ $conf_player -d $conf_choosed &
 echo "# now play random radio"
 exit; fi
 ### invalid options
-echo "# Launch: $opt_base config|reset|stop|update|search|play|random|link choosed-radio"
+echo "# option no valid # choose one option to launch"
+echo "# Launch: $opt_base install|config|reset|stop|update|\
+search|play|random|link choosed-radio"
 ##################################################### exit options
 exit
 
