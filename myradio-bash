@@ -24,6 +24,10 @@ if [ "$(id -u)" == "0" ] && [ "$1" != "install" ]
 then echo "# Install myradio-bash with root only to install: install" 
 echo "# With root is not allowed with other myradio-bash options"
 exit ; fi
+if [ "$(id -u)" == "0" ] && [ "$1" == "install" ]
+then cp $0 /usr/bin/myradio-bash &> /dev/null
+echo "# myradio-bash installed in /usr/bin/myradio-bash"
+exit; fi
 ##################################################### configuration list
 ### variables list
 opt_bin="$(realpath $0)"
@@ -42,7 +46,7 @@ conf_config="$conf_folder/myradio-config.txt"
 if [ "$opt_first" == "$NULL" ]; then
 echo "# without option # choose one option to launch"
 echo "# Launch: $opt_base install|config|reset|stop|update|\
-search|play|random|link choosed-radio"
+search|play|random|link choosed-radio" ; exit ; fi
 ### update config
 if [ ! -d "$conf_folder" ]; then mkdir -p $conf_folder ; fi
 if [ ! -f "$conf_config" ]; then 
@@ -58,11 +62,6 @@ fi
 ### load config
 source $conf_config
 ##################################################### options list
-### install program
-if [ "$1" == "install" ]; then
-cp $0 /usr/bin/myradio-bash &> /dev/null
-echo "# myradio-bash installed in /usr/bin/myradio-bash"
-exit; fi
 ### reset config
 if [ "$opt_first" == "reset" ]; then
 echo "kill_player=vlc"                                         &> $conf_config
