@@ -39,9 +39,9 @@
   
          Basename program: fwiptables               
          Realpath program: /usr/bin/fwiptables               
-          Version program: 24-10-A                
+          Version program: 24-10-B-dev                
         Short description: FireWall With iptables       
-         Long description: iptables mini-script in file-wizard        
+         Long description: iptables wizard in one script        
            Data Directory: /root/.config/fwiptables    
           Cache Directory: /root/.cache/fwiptables   
          Developer Actual: Francisco Garcia              
@@ -89,11 +89,11 @@
 ###     [ Configuration files ]   
       Directory data:          /root/.config/fwiptables   
       Directory temp:          /root/.cache/fwiptables   
-      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-10-A   
+      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-10-B-dev   
         
 ###     [ Log files ]             
-      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default-autolog-24-10-A   
-      File filelog:            /root/.config/fwiptables/fwiptables-log/default-filelog-24-10-A   
+      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default-autolog-24-10-B-dev   
+      File filelog:            /root/.config/fwiptables/fwiptables-log/default-filelog-24-10-B-dev   
         
 ###     [ optional output ]       
       dialog cli:              /bin/dialog   
@@ -178,7 +178,7 @@
        All options in text menu               | fwiptables cli-menu-dialog       
        All options in window menu             | fwiptables gui-menu-yad          
        All options in window roll             | fwiptables gui-roll-zenity       
-       All options in window shell            | fwiptables gui-shell-yad         
+       All options in window shell            | fwiptables gui-shell-yad           
   
 ###  [ options ] [ List general options for fwiptables ] [ list-options md ]
   
@@ -225,6 +225,6 @@
    cleancache notes variables uninstall install upgrade   
    examples info code expert donate about version   
    license-lgpl-v2 license-gpl-v2   
-       | Program: fwiptables 24-10-A   
-       | Description: iptables mini-script in file-wizard   
+       | Program: fwiptables 24-10-B-dev   
+       | Description: iptables wizard in one script   
        | Expert: expert is allowed in preferences file   
