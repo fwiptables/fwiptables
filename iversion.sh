@@ -3407,7 +3407,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "firewall-wallcontrol" ]; then
-echo "$text_md $text_md firewall-wallcontrol . $cmd_basename firewall-wallcontrol options $text_md"
+echo "$title_md | firewall-wallcontrol | $cmd_basename firewall-wallcontrol | $text_md"
 echo "$text_md $text_md stop . remove the rules iptables, and save it to then if continue $text_md"
 echo "$text_md $text_md continue. reset and load latest rules iptables loaded $text_md"
 echo "$text_md $text_md load . reset rules iptables actually $text_md"
