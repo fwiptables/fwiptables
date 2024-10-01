@@ -682,9 +682,10 @@ file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenbla
 #### Update variables when is there
 ####
 ####
-if [ -f "$file_default_preferences" ]
-then source $file_default_preferences
-else $cmd_realpath preferences-regen &> /dev/null ; fi
+if [ -f "$file_default_preferences" ] ;
+then source $file_default_preferences ; fi
+if [ ! -f "$file_default_preferences" ] ;
+then $cmd_realpath preferences-regen &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-variables-update:
@@ -694,8 +695,8 @@ else $cmd_realpath preferences-regen &> /dev/null ; fi
 ####
 ####
 #### First option
-if [ "$first_option" = "$NULL" ] && [ "$without_first_option" = "$NULL" ];
-then first_option="options"; fi 
+if [ "$first_option" = "$NULL" ] && [ "$without_first_option" = "$NULL" ] 
+then first_option="options" ; fi 
 if [ "$first_option" = "$NULL" ]; then first_option="$without_first_option" ; fi
 ####
 ####
@@ -1390,7 +1391,10 @@ $13 " " $14 " " $15 " " $16 " " $17 " " $18 \
 " " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' &> $temporal_text
 cat $temporal_text | $command_grep -E -v Warning: ; exit ;;
 #### *) echo "$title_md Narrow option works only to list rules" ;; 
-esac ; exit ; fi
+esac
+####
+####
+exit ; fi
 ####
 ####
 #### :rutina-final-alias-narrowtxt:
@@ -1527,6 +1531,8 @@ ls -1 $default_directory_log
 echo
 echo 
 echo "### ### [ folder: ] [ $default_directory_log ]"
+####
+####
 exit; fi
 ####
 ####
@@ -1544,6 +1550,8 @@ echo
 cat  "$file_default_autolog" | tail -50
 echo
 echo "$title_md $text_info [ last 50 lines from file showed ] [ $file_default_autolog ]"
+####
+####
 exit; fi
 ####
 ####
@@ -1557,6 +1565,8 @@ if [ "$first_option" == "expert-cpufreq-info" ] ; then
 echo "$title_md [ $first_option ] [ show cpu frequence info ]"
 if [ "$command_cpufreqinfo" == "$NULL" ]; then
 echo "$title_md please install cpufreq-info"; fi
+####
+####
 $command_cpufreqinfo
 exit; fi
 ####
@@ -1572,6 +1582,8 @@ echo "$title_md [ $first_option ] [ show cpu frequence info ]"
 if [ "$command_cpupower" == "$NULL" ]; then
 echo "$title_md please install cpupower"; fi
 $command_cpupower -c all frequency-info
+####
+####
 exit; fi
 ####
 ####
@@ -1629,7 +1641,9 @@ if   [ "$command_iw" == "$NULL" ]; then
 echo "$title_md $text_info [ Please, Install iw to work ]" ; exit ; fi
 for a in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1)
 do $command_ifconfig $a up
-$command_iw $a scan | $command_grep -E -i "on $a|ssid" ; done 
+$command_iw $a scan | $command_grep -E -i "on $a|ssid" ; done
+####
+####
 exit; fi
 ####
 ####
@@ -1670,6 +1684,8 @@ echo "$title_md $text_fail use: $first_option nameconfig"; exit ; fi
 $cmd_realpath expert-wpa-regen
 cp $default_directory_wpa/defaultwpa $default_directory_wpa/wpaconfig_$second_option
 editor $default_directory_wpa/wpaconfig_$second_option
+####
+####
 exit; fi
 ####
 ####
@@ -1706,6 +1722,8 @@ echo "$title_md $text_fail use: $first_option nameconfig"; exit ; fi
 ####
 ####
 editor $default_directory_wpa/wpaconfig_$second_option
+####
+####
 exit; fi
 ####
 ####
@@ -1717,6 +1735,8 @@ exit; fi
 ####
 if [ "$first_option" == "expert-wpa-list" ]
 then ls -1 "$default_directory_wpa" | cut -d "_" -f 2-
+####
+####
 exit ; fi
 ####
 ####
@@ -1738,6 +1758,8 @@ cat "$default_directory_wpa/wpaconfig_$second_option"
 echo "$title_md $title_md $title_md $title_md wpa connect_:"
 cat "$default_directory_wpa/wpaconnect_$second_option"
 else echo "$title_md $text_fail use: $first_option nameconfig"; exit ; fi
+####
+####
 exit; fi
 ####
 ####
@@ -1773,6 +1795,8 @@ $command_ifconfig $wifi_wpa_device:1 $wifi_wpa_ip
 if [ "$(command -v $wifi_wpa_dhcp)" == "$NULL" ]
 then echo "$title_md $text_fail $wifi_wpa_dhcp not found"; exit; fi
 else echo "$title_md $text_fail use: $first_option nameconfig"; exit ; fi
+####
+####
 exit; fi
 ####
 ####
@@ -1788,6 +1812,8 @@ then echo "$title_md $text_fail Install wpa_passphrase"; fi
 ####
 ####
 $cmd_realpath expert-wpa-example &> $default_directory_wpa/defaultwpa
+####
+####
 exit; fi
 ####
 ####
@@ -1811,6 +1837,8 @@ echo "wifi_wpa_dhcp="
 echo "$title_md wifi ip dinamic: if program for dhcp"
 echo "wifi_wpa_ip="
 echo "$title_md wifi ip static:  if choose one static ip for this net"
+####
+####
 exit; fi
 ####
 ####
@@ -1824,6 +1852,8 @@ if [ "$first_option" == "preferences-modify" ]; then
 echo "$title_md [ $first_option ] [ modify the default fwiptables ] "
 $favorite_text_editor $file_default_preferences
 echo "$title_md $text_info [ file $file_default_preferences ]"
+####
+####
 exit; fi
 ####
 ####
@@ -1838,6 +1868,8 @@ echo "$title_md [ $first_option ] [ modify the default dialog ] "
 echo 
 $favorite_text_editor $default_dialogrc
 echo "$title_md $text_info [ edit file $default_dialogrc to change variables ]"
+####
+####
 exit; fi
 ####
 ####
@@ -1851,6 +1883,8 @@ if [ "$first_option" == "preferences-read" ]; then
 echo "$title_md [ $first_option ] [ read the default fwiptables ] "
 cat $file_default_preferences
 echo "$title_md $text_info [ file $file_default_preferences ]"
+####
+####
 exit; fi
 ####
 ####
@@ -1863,9 +1897,12 @@ exit; fi
 if [ "$first_option" == "preferences-regen" ] ; then
 echo "$title_md [ $first_option ] [ $cmd_realpath preferences-regen ] \
 [ preferences-regen md ] "
-$cmd_realpath preferences-example | $command_grep -E '=|###' &> $file_default_preferences
+#### old:  | $command_grep -E '=|###'
+$cmd_realpath preferences-example &> $file_default_preferences
 echo "$title_md $text_ok [ Regenerated ] [ $cmd_realpath values for default ]"
 echo "$title_md $text_ok [ Regenerated ] [ $file_default_preferences ]"
+####
+####
 exit; fi
 ####
 ####
@@ -1935,8 +1972,9 @@ echo "config_graphicall_width=800                     ## default width 800"
 echo "config_graphicall_height=600                    ## default height 600"
 echo "$title_md"
 echo "$title_md $title_md This file has been generated from preferences-example"
-exit
-fi
+####
+####
+exit ; fi
 ####
 ####
 #### :rutina-final-preferences-example:
@@ -1959,7 +1997,9 @@ if [ -f /etc/resolv.conf.tail ]
 then echo "$text_md $text_md File: /etc/resolv.conf.tail"; fi
 if [ -d /etc/resolvconf ]
 then echo "$text_md $text_md Directory: /etc/resolvconf" ; fi
-exit; fi 
+####
+####
+exit; fi
 ####
 ####
 #### :rutina-final-resolve:
@@ -1973,6 +2013,8 @@ echo ; echo "Network ip4"
 $cmd_realpath network4
 echo ; echo "Network ip6"
 $cmd_realpath network6
+####
+####
 exit; fi
 ####
 ####
@@ -1992,6 +2034,8 @@ echo "$title_md $text_info ### [ Configured ip ] [ inet ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$text_md $text_info [ install ip command ]"
 else $command_ip address ls | $command_egrep ": |inet " ; fi
+####
+####
 exit; fi 
 ####
 ####
@@ -2011,6 +2055,8 @@ echo "$title_md $text_info ### [ Configured ip ] [ inet ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$text_md $text_info [ install ip command ]"
 else $command_ip address ls | $command_egrep ": |inet6 " ; fi
+####
+####
 exit; fi
 ####
 ####
@@ -2025,7 +2071,9 @@ echo ; echo "Address ip4"
 $cmd_realpath address4
 echo ; echo "Address ip6"
 $cmd_realpath address6
-exit; fi
+####
+####
+exit ; fi
 ####
 ####
 #### :rutina-final-address:
@@ -2048,7 +2096,9 @@ echo "$title_md $text_info [ install curl command ]" ;
 else public_ip4="$($command_curl -k -s -4 $serverip_discover_ipv4 -w '\n'| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ]
 then echo "fail: public ip hidden for dns server" ;
-else echo "$text_md   $public_ip4"; fi; fi
+else echo "$text_md   $public_ip4"; fi ; fi
+####
+####
 exit; fi
 ####
 ####
@@ -2073,6 +2123,8 @@ else public_ip6="$($command_curl -k -s -6 $serverip_discover_ipv4 -w '\n'| head 
 if [ "$public_ip4" == "<!DOCTYPE html>" ]
 then echo "fail: public ip hidden for dns server" ;
 else echo "$text_md   $public_ip6"; fi; fi
+####
+####
 exit; fi
 ####
 ####
@@ -2089,7 +2141,9 @@ echo "$title_md $text_fail [ Install ss command ]"; exit; fi
 if [ "$command_awk" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Install awk command ]"; exit; fi
 $command_ss -l -460  | $command_grep "\:\*" | \
-$command_awk '{print "     " $1 " " $2 " " $5}' ;
+$command_awk '{print "     " $1 " " $2 " " $5}'
+####
+####
 exit; fi
 ####
 ####
@@ -2287,6 +2341,8 @@ if [ -f /etc/resolv.conf.tail ]
 then echo "$title_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
 if [ -d /etc/resolvconf ]
 then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
+####
+####
 exit; fi
 ####
 ####
@@ -2307,6 +2363,8 @@ $cmd_basename eraserules4
 echo "$duo_md $text_ok [ tracepath -4 $2 ] "
 $command_tracepath -4 $2
 $cmd_basename load before-trace-tcp4
+####
+####
 exit; fi
 ####
 ####
@@ -2327,6 +2385,8 @@ $cmd_basename eraserules6
 echo "$duo_md $text_ok [ tracepath -6 $2 ] "
 $command_tracepath -6 $2
 $cmd_basename load before-trace-ip6
+####
+####
 exit; fi
 ####
 ####
@@ -2347,6 +2407,8 @@ $cmd_basename eraserules4
 echo "$duo_md $text_ok [ traceroute -4 $2 ] "
 $command_traceroute -4 $2
 $cmd_basename load before-trace-icmp4
+####
+####
 exit; fi
 ####
 ####
@@ -2367,6 +2429,8 @@ $cmd_basename eraserules6
 echo "$duo_md $text_ok [ traceroute -6 $2 ] "
 $command_traceroute -6 $2
 $cmd_basename load before-trace-icmp6
+####
+####
 exit; fi
 ####
 ####
@@ -2384,6 +2448,8 @@ $command_curl $web_download_myradio -s -L \
 && chmod ugo+x $default_directory_radio/myradio-bash &> /dev/null
 cp $default_directory_radio/myradio-bash /usr/bin && \
 echo installed myradio-bash in /usr/bin/myradio-bash
+####
+####
 exit; fi
 ####
 ####
@@ -2400,8 +2466,10 @@ $cmd_realpath code possible-commands | $command_grep -E "^command_" | \
 $command_cut -d "=" -f 1 | $command_cut -d "_" -f 2
 else
 $cmd_realpath code possible-commands | $command_grep -E "^command_" | \
-$command_cut -d "=" -f 1 | $command_cut -d "_" -f 2 | $command_fmt
-fi ; exit ; fi
+$command_cut -d "=" -f 1 | $command_cut -d "_" -f 2 | $command_fmt ; fi ; 
+####
+####
+exit ; fi
 ####
 ####
 #### :rutina-final-utils:
@@ -2454,6 +2522,8 @@ echo "$text_md $text_md sed command:             $command_sed $text_md"
 echo "$text_md $text_md file command:            $command_file $text_md"
 echo "$text_md $text_md $text_md"
 echo "$text_md $text_md all utils in command: fwiptables utils $text_md"
+####
+####
 exit; fi
 ####
 ####
@@ -2515,7 +2585,9 @@ echo "$text_md $text_md  List sockets ip with output gui yad    | $cmd_name gui-
 echo "$text_md $text_md  All options in text menu               | $cmd_name cli-menu-dialog     $text_md"  
 echo "$text_md $text_md  All options in window menu             | $cmd_name gui-menu-yad        $text_md"  
 echo "$text_md $text_md  All options in window roll             | $cmd_name gui-roll-zenity     $text_md"  
-echo "$text_md $text_md  All options in window shell            | $cmd_name gui-shell-yad       $text_md"  
+echo "$text_md $text_md  All options in window shell            | $cmd_name gui-shell-yad         $text_md"
+####
+####
 exit; fi
 ####
 ####
@@ -2541,6 +2613,8 @@ echo "$text_md $text_md   Requisite program: $cmd_requisite_program    $text_md"
 echo "$text_md $text_md Requisite firewall4: $cmd_requisite_firewall4  $text_md"
 echo "$text_md $text_md Requisite firewall6: $cmd_requisite_firewall6  $text_md"
 echo "$text_md $text_md     License program: $cmd_license              $text_md"
+####
+####
 exit ; fi
 ####
 ####
@@ -2553,6 +2627,8 @@ exit ; fi
 if   [ "$first_option" == "expert-show-weather" ]; then 
 case $command_curl in "$NULL") echo "$title_md $text_fail [ Install a curl ]"; exit ;; esac
 $command_curl -s wttr.in/?3n?T
+####
+####
 exit; fi
 ####
 ####
@@ -2568,6 +2644,8 @@ echo "$title_md $text_fail please install tree command" ; exit ; fi
 ####
 ####
 $command_tree $directory_data_necesary
+####
+####
 exit; fi
 ####
 ####
@@ -2583,6 +2661,8 @@ echo "$title_md $text_fail please install tree command" ; exit ; fi
 ####
 ####
 $command_tree $directory_cache_necesary
+####
+####
 exit; fi
 ####
 ####
@@ -2594,7 +2674,9 @@ exit; fi
 ####
 if   [ "$first_option" == "cleancache" ]; then 
 echo "$title_md [ cleaning ] clean cache: deleting cache $cmd_basename"
-rm -R $directory_cache_necesary/* 
+rm -R $directory_cache_necesary/*
+####
+####
 exit; fi
 ####
 ####
@@ -2622,6 +2704,8 @@ echo "$text_md                  domain: This port is necesary to domain resolver
 echo "$text_md                   https: This port is necesary for udp named web html5$text_md"   
 echo "$text_md               ipv6-icmp: Necesary protocol in ipv6 $text_md"   
 echo "$text_md              ipv4 ports: ipv6 works too with old ipv4 ports $text_md"
+####
+####
 exit; fi
 ####
 ####
@@ -2632,12 +2716,16 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "templates-regen" ]; then
+####
+####
 $cmd_realpath template-tiny-es &> $default_tinycfg_spa
 $cmd_realpath template-tiny-en &> $default_tinycfg_eng
 $cmd_realpath template-mini-es &> $default_minicfg_spa
 $cmd_realpath template-mini-en &> $default_minicfg_eng
 $cmd_realpath template-full-es &> $default_fullcfg_spa
 $cmd_realpath template-full-en &> $default_fullcfg_eng
+####
+####
 exit; fi
 ####
 ####
@@ -2675,6 +2763,8 @@ echo "allow_separate_rules= "
 echo "$title_md"
 echo "$title_md Tiny firewall esta permitido como *cliente* para todos los protocolos y puertos"
 echo "$title_md"
+####
+####
 exit; fi
 ####
 ####
@@ -2712,6 +2802,8 @@ echo "allow_separate_rules= "
 echo "$title_md"
 echo "$title_md Tiny firewall is allowed like *client* for all protocols and ports"
 echo "$title_md"
+####
+####
 exit; fi
 ####
 ####
@@ -2775,6 +2867,8 @@ echo "config_close_deny=DROP "
 echo "$title_md Elige cerrar denegacion con o DROP or REJECT "
 echo "$title_md END NECESARY $title_md "
 echo "$title_md FINAL .......... Opciones Necesarias .......... .......... $title_md "
+####
+####
 exit ; fi
 ####
 ####
@@ -2964,6 +3058,8 @@ echo "config_ipv6_netserver=::/0 "
 echo "$title_md la red cual servidor ipv6, todos es ::/0 "
 echo "$title_md $title_md "
 echo "$title_md FINAL .......... Opciones opcionales .......... .......... $title_md "
+####
+####
 exit ; fi
 ####
 ####
@@ -3027,6 +3123,8 @@ echo "config_close_deny=DROP "
 echo "$title_md choose close deny with or DROP or REJECT "
 echo "$title_md END NECESARY $title_md "
 echo "$title_md .......... END Necesary options .......... .......... $title_md "
+####
+####
 exit ; fi
 ####
 ####
@@ -3210,6 +3308,8 @@ echo "config_ipv6_netserver=::/0 "
 echo "$title_md the net to server ipv6, all is ::/0 "
 echo "$title_md $title_md "
 echo "$title_md .......... END Optional options .......... .......... $title_md"
+####
+####
 exit ; fi
 ####
 ####
@@ -3251,6 +3351,8 @@ pool1="1.debian.pool.ntp.org"
 pool2="2.debian.pool.ntp.org"
 pool3="3.debian.pool.ntp.org"
 $favorite_date_command $pool0 && echo -e "\n With New date: $show_actual_date"
+####
+####
 exit; fi
 ####
 ####
@@ -3344,6 +3446,8 @@ if [ ! -n "$value_count" ];   then echo; echo "$code_error" ; exit ; fi
 echo "$title_md [ code ] [ option: "$second_option" ] [ show $value_count lines ] \
 [ from the "$value_first" line number to "$value_second" line number ]"
 cat $cmd_realpath | head -n $value_second | tail -n $value_count
+####
+####
 exit; fi
 ####
 ####
@@ -3361,6 +3465,8 @@ echo "$title_md"
 $command_ls -1 $default_directory_custom
 echo "$title_md"
 echo "$title_md [ OK CFG FILES NAMES ] [ Use: $cmd_realpath load-custom file ]"
+####
+####
 exit; fi
 ####
 ####
@@ -3372,6 +3478,8 @@ exit; fi
 ####
 if [ "$first_option" == "text-pause" ]; then $nada
 read -p '##### $text_ok ##### Press [enter] to continue now with the cli-menu ##### '
+####
+####
 exit; fi
 ####
 ####
@@ -3429,6 +3537,8 @@ echo "$text_md $text_md tinyserver-tcp . launch a one firewall with server ports
 echo "$text_md $text_md tinyserver-udp . launch a one firewall with server ports udp [ with optional host clients ] $text_md"
 echo "$text_md $text_md miniserver-tcp . launch a one firewall with server ports tcp [ with optional host clients ] $text_md"
 echo "$text_md $text_md miniserver-udp . launch a one firewall with server ports udp [ with optional host clients ] $text_md"
+####
+####
 exit; fi
 ####
 ####
@@ -3458,6 +3568,8 @@ echo "$text_md $text_md list-security4 . list security rules ipv4 $text_md"
 echo "$text_md $text_md list-security6 . list security rules ipv6 $text_md"
 echo "$text_md $text_md list-ebtables . list ebtables rules ipv4 $text_md"
 echo "$text_md $text_md list-arptables . list arptables rules ipv6 $text_md"
+####
+####
 exit; fi
 ####
 ####
@@ -3487,6 +3599,8 @@ echo "$text_md $text_md listn-security4 . list security rules ipv4 with numbers 
 echo "$text_md $text_md listn-security6 . list security rules ipv6 with numbers $text_md"
 echo "$text_md $text_md listn-ebtables . list ebtables rules ipv4 with numbers $text_md"
 echo "$text_md $text_md listn-arptables . list arptables rules ipv6 with numbers $text_md"
+####
+####
 exit; fi
 ####
 ####
@@ -3514,6 +3628,8 @@ echo "$text_md $text_md modify-custom . modify config-file choosed $text_md"
 echo "$text_md $text_md load-custom . launch a one one-file saved custom $text_md" 
 echo "$text_md $text_md del-custom . delete config-file choosed $text_md"
 echo "$text_md $text_md names-custom . show the names for all config-files $text_md"
+####
+####
 exit; fi
 ####
 ####
@@ -3564,6 +3680,8 @@ echo "$text_md $text_md server-gateway . launch a one firewall nat gateway and w
 echo "$text_md $text_md client-uid-root . launch a one firewall for only allow at user root $text_md"
 echo "$text_md $text_md client-gid-users . launch a one firewall for only allow at group users $text_md"
 echo "$text_md $text_md client-gid-net . launch a one firewall for only allow at group net $text_md"
+####
+####
 exit; fi
 ####
 ####
@@ -3610,6 +3728,8 @@ echo "$text_md $text_md uninstall . uninstall fwiptables $text_md"
 echo "$text_md $text_md license-gpl-v2 . license gpl v2 $text_md"
 echo "$text_md $text_md license-lgpl-v2 . license lgpl v2 $text_md"
 echo "$text_md "
+####
+####
 exit; fi
 ####
 ####
@@ -3671,6 +3791,8 @@ echo "$text_md $text_md expert-project-web . site  downloaded web fwiptables $te
 echo "$text_md $text_md expert-configs-save . save configs like backup from fwiptables in tar file $text_md"
 echo "$text_md $text_md expert-configs-load . load configs like backup from fwiptables in tar file $text_md"
 echo "$text_md $text_md expert-myradio-install . install radio text program $text_md"
+####
+####
 exit; fi
 ####
 ####
@@ -3692,6 +3814,8 @@ $cmd_realpath firewall-wallcustom
 $cmd_realpath firewall-wallsystem
 $cmd_realpath firewall-easynet
 $cmd_realpath expert
+####
+####
 exit; fi
 ####
 ####
@@ -3746,6 +3870,8 @@ exit; fi
 if   [ "$first_option" == "variables" ]; then 
 echo "$title_md [ $first_option ]  [ list variables firewall fwiptables] [ variables md ]"
 $cmd_realpath code system-variables
+####
+####
 exit; fi
 ####
 ####
@@ -4010,6 +4136,8 @@ $cmd_realpath list-mangle4
 echo; echo; echo "$title_md LIST MANGLE IP6 TABLE ###" ; echo
 $cmd_realpath list-mangle6
 echo 
+####
+####
 exit; fi
 ####
 ####
@@ -4045,7 +4173,9 @@ echo; echo; echo "$title_md LIST MANGLE IP4 TABLE ###" ; echo
 $cmd_realpath listn-mangle4
 echo; echo; echo "$title_md LIST MANGLE IP6 TABLE ###" ; echo
 $cmd_realpath listn-mangle6
-echo 
+echo
+####
+####
 exit; fi
 ####
 ####
@@ -4086,6 +4216,8 @@ echo
 $command_ip4tablesnft -t filter -v -L $list_rules_conceptual
 ;;
 esac
+####
+####
 exit; fi
 ####
 ####
@@ -4169,6 +4301,8 @@ echo
 $command_ip4tablesnft -t filter -v -L -n
 ;;
 esac
+####
+####
 exit; fi
 ####
 ####
@@ -4286,6 +4420,8 @@ echo
 $command_ip4tablesnft -t filter -v -L -n
 ;;
 esac
+####
+####
 exit; fi
 ####
 ####
@@ -4325,6 +4461,8 @@ echo
 $command_ip4tablesnft -t filter -v -L -n
 ;;
 esac
+####
+####
 exit; fi
 ####
 ####
@@ -4371,6 +4509,8 @@ echo
 echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip4tablesnft -t filter -v -L FORWARD $list_rules_conceptual
+####
+####
 exit; fi
 ####
 ####
@@ -4415,6 +4555,8 @@ echo
 echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tablesnft -t filter -v -L FORWARD $list_rules_conceptual
+####
+####
 exit; fi
 ####
 ####
@@ -4424,7 +4566,7 @@ exit; fi
 #### :rutina-inicial-list-nat-4:
 ####
 ####
- if [ "$first_option" == "list-nat4" ]; then 
+if [ "$first_option" == "list-nat4" ]; then 
 echo "$title_md [ $first_option ] [ List nat ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="nat-ip4"
@@ -4436,6 +4578,8 @@ echo
 echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip4tablesnft -t nat -v -L $list_rules_conceptual
+####
+####
 exit; fi
 ####
 ####
@@ -4457,7 +4601,8 @@ echo
 echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tablesnft -t nat -v -L $list_rules_conceptual 
-#### echo 
+####
+####
 exit; fi
 ####
 ####
@@ -4479,6 +4624,8 @@ echo
 echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip4tablesnft -v -L -n
+####
+####
 exit; fi
 ####
 ####
@@ -4500,6 +4647,8 @@ echo
 echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip4tablesnft -t filter -v -L FORWARD -n
+####
+####
 exit; fi
 ####
 ####
@@ -4521,6 +4670,8 @@ echo
 echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
 $command_ip6tablesnft -v -L -n
+####
+####
 exit; fi
 ####
 ####
@@ -4542,6 +4693,8 @@ echo
 echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tablesnft -t filter -v -L FORWARD -n
+####
+####
 exit; fi
 ####
 ####
@@ -4563,7 +4716,9 @@ echo
 echo "$title_md $text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip4tablesnft -t mangle -v -L $list_rules_conceptual
-echo 
+echo
+####
+####
 exit; fi
 ####
 ####
@@ -4585,7 +4740,8 @@ echo
 echo "$title_md $text_info [ The nftables ] [iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tablesnft -t mangle -v -L $list_rules_conceptual
-#### echo 
+####
+####
 exit; fi
 ####
 ####
@@ -4607,6 +4763,8 @@ echo
 echo "$title_md $text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip4tablesnft -t raw -v -L $list_rules_conceptual
+####
+####
 exit; fi
 ####
 ####
@@ -4628,6 +4786,8 @@ echo
 echo "$title_md $text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tablesnft -t raw -v -L $list_rules_conceptual
+####
+####
 exit; fi
 ####
 ####
@@ -4649,6 +4809,8 @@ echo
 echo "$title_md $text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip4tablesnft -t security -v -L $list_rules_conceptual
+####
+####
 exit; fi
 ####
 ####
@@ -4670,6 +4832,8 @@ echo
 echo "$title_md $text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tablesnft -t security -v -L $list_rules_conceptual
+####
+####
 exit; fi
 ####
 ####
@@ -4690,6 +4854,8 @@ echo
 echo "$title_md $text_info [ ebtables: nat ethernet ] [ $fromrules ]"
 echo
 $command_ebtables -L -t nat
+####
+####
 exit; fi
 ####
 ####
@@ -4706,6 +4872,8 @@ echo
 echo "$title_md $text_info [ arptables: filter arptables ] [ $fromrules ]"
 echo
 $command_arptables -L
+####
+####
 exit; fi
 ####
 ####
@@ -4726,6 +4894,8 @@ case $archivo in shield-*);;client-*);; game-*);; games-*);; server-*);;
 *) echo "$title $text_fail choose a valid system firewall to clone" ; exit ;; esac
 $cmd_realpath code $second_option | $command_grep -E "client_|server_|config_|allow_|net_" \
 &> $default_directory_custom/$archivo
+####
+####
 if [ -s "$default_directory_custom/$archivo" ] ; then 
 cat $default_directory_custom/$archivo ;
 echo "$title_md $text_ok Created custom : $archivo  "
@@ -4734,6 +4904,8 @@ echo "$title_md $text_info Launch  : fwiptables load-custom $archivo  "
 else rm $default_directory_custom/$archivo
 echo "$title_md $text_info choose one valid wallsystem to clone to custom"
 echo "$title_md $text_fail config no done $archivo" ; fi
+####
+####
 exit; fi
 ####
 ####
@@ -4950,6 +5122,8 @@ $command_sed s/\-legacy\-ipv4//g | $command_sed s/\-nft\-ipv4//g | \
 $command_sed s/\-arptables//g | $command_sed s/\-ebtables//g | sort -u 
 echo
 echo "$title_md $text_ok [ Listed firewall names ]"
+####
+####
 exit; fi
 ####
 ####
@@ -5079,7 +5253,10 @@ for a in $($command_sysctl -a | $command_grep -i  forwarding | $command_cut -d "
 do $command_sysctl -w $a=0 ; done ; exit; fi
 ####
 ####
-echo "$title_md launch: fwiptables ip-forward [ list | on | off ]" ; exit ; fi
+echo "$title_md launch: fwiptables ip-forward [ list | on | off ]"
+####
+####
+exit ; fi
 ####
 ####
 #### :rutina-final-ip-forward:
