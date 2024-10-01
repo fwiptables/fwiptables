@@ -1963,6 +1963,20 @@ exit; fi
 ####
 ####
 #### :rutina-final-resolve:
+##########    english: network : get net info               ##########
+##########    spanish: network : da informacion de la red   ##########
+#### :rutina-inicial-network:
+####
+####
+if [ "$first_option" == "network" ]; then
+echo ; echo "Network ip4"
+$cmd_realpath network4
+echo ; echo "Network ip6"
+$cmd_realpath network6
+exit; fi
+####
+####
+#### :rutina-final-network:
 ##########    english: network4 : get net info               ##########
 ##########    spanish: network4 : da informacion de la red   ##########
 #### :rutina-inicial-network4:
@@ -2001,6 +2015,20 @@ exit; fi
 ####
 ####
 #### :rutina-final-network6:
+##########    english: address : get net info               ##########
+##########    spanish: address : da informacion de la red   ##########
+#### :rutina-inicial-address:
+####
+####
+if [ "$first_option" == "address" ]; then
+echo ; echo "Address ip4"
+$cmd_realpath address4
+echo ; echo "Address ip6"
+$cmd_realpath address6
+exit; fi
+####
+####
+#### :rutina-final-address:
 ##########    english: address4 : get net info               ##########
 ##########    spanish: address4 : da informacion de la red   ##########
 #### :rutina-inicial-address4:
