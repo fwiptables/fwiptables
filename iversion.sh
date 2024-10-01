@@ -76,7 +76,7 @@ cmd_basename="$(basename $0)"                              # only  filename
 #### The number version
 cmd_year="24"                                              # number year version
 cmd_month="10"                                             # number mouth version
-cmd_letter="B-dev"                                         # number letter version
+cmd_letter="C-dev"                                         # number letter version
 cmd_version="$cmd_year-$cmd_month-$cmd_letter"             # final date like number version
 #### the install location
 cmd_name="fwiptables"                                      # filename installed
@@ -85,7 +85,7 @@ cmd_directory="/usr/bin"                                   # directory installed
 cmd_developer="Francisco Garcia"                           # actual developer
 cmd_contact="fwiptables@gmx.com"                           # actual contact
 cmd_shortdescription="FireWall With iptables"              # description short
-cmd_longdescription="iptables wizard in one script"        # description long
+cmd_longdescription="iptables template in one script"      # description long
 cmd_license="LGPL v2, GPL v2"                              # program license
 cmd_requisite_program="sudo,awk,sed,file,cut"              # program requisite
 cmd_requisite_firewall4="iptables-legacy,iptables-nft"     # firewall requisite
