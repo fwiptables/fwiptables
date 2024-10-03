@@ -47,7 +47,7 @@
 ####
 ####
 #### source /etc/profile
-PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"
+PATH="/sbin:/bin:/usr/sbin:/usr/bin"
 ####
 ####
 ##########    english: are you root: uid 0 ?                ##########
@@ -86,10 +86,12 @@ cmd_developer="Francisco Garcia"                           # actual developer
 cmd_contact="fwiptables@gmx.com"                           # actual contact
 cmd_shortdescription="FireWall With iptables"              # description short
 cmd_longdescription="iptables template in one script"      # description long
-cmd_license="LGPL v2, GPL v2"                              # program license
 cmd_requisite_program="sudo,awk,sed,file,cut"              # program requisite
 cmd_requisite_firewall4="iptables-legacy,iptables-nft"     # firewall requisite
 cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # firewall requisite
+cmd_license="LGPL v2, GPL v2"                              # program license
+cmd_graphicall="$XDG_SESSION_TYPE"
+cmd_xdg="/run/user/0"
 ####
 ####
 #### :rutina-final-enviroment-vars:
@@ -304,23 +306,9 @@ quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;
 ####
 ####
 #### :rutina-final-options-order:
-##########   english: profile y support X11       ##########
-##########   spanish: profile y soporte de X11    ##########
-#### :rutina-inicial-x11-wayland:
-####
-####
-X11_OR_WAYLAND="$XDG_SESSION_TYPE"
-####
-####
-####  Support wayland for root  WAYLAND_DISPLAY=":0"
-#### english: add auth memory directory for root for graphicall use 
-#### spanish: añade autorización memory directory para root para uso grafico
-XDG_RUNTIME_DIR="/run/user/0"
-####
-####
-####  Support x11 for root     xhost +root
-#### english: add auth xhost for root for graphicall use 
-#### spanish: añade autorización xhost para root para uso grafico
+##########   english: profile y support X11 for root       ##########
+##########   spanish: profile y soporte de X11 for root    ##########
+#### :rutina-inicial-xhost:
 ####
 ####
 if [ "$(logname)" != "$NULL" ] && [ "$(id -u)" == 0 ]; then 
@@ -328,17 +316,7 @@ $command_sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
 else $command_sudo -u 0 $command_xhost +SI:localuser:root &> /dev/null ; fi
 ####
 ####
-#### use deprecated
-## $command_sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
-## $command_sudo -u "$(logname)" command_xhost +root@127.0.0.1 &> /dev/null
-## $command_sudo -u "$(logname)" command_xhost +INET:root@127.0.0.1 &> /dev/null
-## $command_sudo -u "$(logname)" command_xhost +INET6:root@127.0.0.1 &> /dev/null
-## $command_sudo -u "$(logname)" command_xhost +DNET:root@127.0.0.1 &> /dev/null
-## $command_sudo -u "$(logname)" command_xhost +KRB:root@127.0.0.1 &> /dev/null
-## $command_sudo -u "$(logname)" command_xhost +NIS:root@127.0.0.1 &> /dev/null
-####
-####
-#### :rutina-final-x11-wayland:
+#### :rutina-final-xhost:
 ##########  english: files:    files and folders from fwiptables          ##########
 ##########  spanish: archivos: archivos y carpetas desde fwiptables       ##########
 #### :rutina-inicial-config-folders:
@@ -617,7 +595,7 @@ head_waiting_cli="$title_md $text_info [ cli ] $head_waiting_all "
 head_waiting_gui="$title_md $text_info [ gui ] $head_waiting_all "
 head_waiting_log="$title_md $text_info [ log ] $head_waiting_all "
 head_waiting_pdf="$title_md $text_info [ pdf ] $head_waiting_all "
-head_give_cover="$title_md [ $cmd_name $cmd_version ] [ $X11_OR_WAYLAND ] \
+head_give_cover="$title_md [ $cmd_name $cmd_version ] [ $cmd_graphicall ] \
 [ Options: $cmd_realpath options ]"
 give_load="$title_md $text_ok [ Load firewall ] [ Firewall With iptables ]"
 give_preferences="$title_md [ Configure ] [ $cmd_realpath preferences-modify ]"
@@ -2611,6 +2589,8 @@ echo "$text_md $text_md         File Format: $cmd_format               $text_md"
 echo "$text_md $text_md   Requisite program: $cmd_requisite_program    $text_md"
 echo "$text_md $text_md Requisite firewall4: $cmd_requisite_firewall4  $text_md"
 echo "$text_md $text_md Requisite firewall6: $cmd_requisite_firewall6  $text_md"
+echo "$text_md $text_md         Proram PATH: $PATH                     $text_md"
+echo "$text_md $text_md   Graphicall actual: $cmd_graphicall           $text_md"
 echo "$text_md $text_md     License program: $cmd_license              $text_md"
 ####
 ####
