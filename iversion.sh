@@ -46,8 +46,8 @@
 ####     #### english: stablished the path  #### spanish: establece el path
 ####
 ####
-#### source /etc/profile
-PATH="/sbin:/bin:/usr/sbin:/usr/bin"
+source /etc/profile
+#### PATH="/sbin:/bin:/usr/sbin:/usr/bin"
 ####
 ####
 ##########    english: are you root: uid 0 ?                ##########
@@ -70,28 +70,28 @@ echo ; exit ; fi
 #### configs for fwiptables
 ####
 ####
-#### The name file
-cmd_realpath="$(realpath $0)"                              # fully routename
-cmd_basename="$(basename $0)"                              # only  filename
+#### The name file command
+cmd_realpath="$(realpath $0)"                              # Full path name
+cmd_basename="$(basename $0)"                              # Only file name
 #### The number version
-cmd_year="24"                                              # number year version
-cmd_month="10"                                             # number mouth version
-cmd_letter="C"                                             # number letter version
-cmd_version="$cmd_year-$cmd_month-$cmd_letter"             # final date like number version
+cmd_year="24"                                              # Number year version
+cmd_month="10"                                             # Number mouth version
+cmd_letter="C"                                             # Number letter version
+cmd_version="$cmd_year-$cmd_month-$cmd_letter"             # Final date like number version
 #### the install location
-cmd_name="fwiptables"                                      # filename installed
-cmd_directory="/usr/bin"                                   # directory installed
+cmd_name="fwiptables"                                      # Filename installed
+cmd_directory="/usr/bin"                                   # Directory installed
 #### The data version
-cmd_developer="Francisco Garcia"                           # actual developer
-cmd_contact="fwiptables@gmx.com"                           # actual contact
-cmd_shortdescription="FireWall With iptables"              # description short
-cmd_longdescription="iptables template in one script"      # description long
-cmd_requisite_program="sudo,awk,sed,file,cut"              # program requisite
-cmd_requisite_firewall4="iptables-legacy,iptables-nft"     # firewall requisite
-cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # firewall requisite
-cmd_license="LGPL v2, GPL v2"                              # program license
-cmd_graphicall="$XDG_SESSION_TYPE"
-cmd_xdg="/run/user/0"
+cmd_developer="Francisco Garcia"                           # Actual developer
+cmd_contact="fwiptables@gmx.com"                           # Actual contact
+cmd_shortdescription="FireWall With iptables"              # Description short
+cmd_longdescription="iptables template in one script"      # Description long
+cmd_requisite_program="sudo,awk,sed,file,cut"              # Program requisite
+cmd_requisite_firewall4="iptables-legacy,iptables-nft"     # Firewall requisite
+cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # Firewall requisite
+cmd_license="LGPL v2, GPL v2"                              # Program license
+cmd_session="$XDG_SESSION_TYPE"                            # Sesssion XDG
+cmd_xdg="/run/user/0"                                      # Folder XDG
 ####
 ####
 #### :rutina-final-enviroment-vars:
@@ -595,7 +595,7 @@ head_waiting_cli="$title_md $text_info [ cli ] $head_waiting_all "
 head_waiting_gui="$title_md $text_info [ gui ] $head_waiting_all "
 head_waiting_log="$title_md $text_info [ log ] $head_waiting_all "
 head_waiting_pdf="$title_md $text_info [ pdf ] $head_waiting_all "
-head_give_cover="$title_md [ $cmd_name $cmd_version ] [ $cmd_graphicall ] \
+head_give_cover="$title_md [ $cmd_name $cmd_version ] \
 [ Options: $cmd_realpath options ]"
 give_load="$title_md $text_ok [ Load firewall ] [ Firewall With iptables ]"
 give_preferences="$title_md [ Configure ] [ $cmd_realpath preferences-modify ]"
@@ -2575,7 +2575,7 @@ exit; fi
 #### :rutina-inicial-version:
 ####
 ####
-if [ "$first_option" == "version" ]; then 
+if [ "$first_option" == "version" ]; then
 echo "$text_md $text_md    Basename program: $cmd_basename             $text_md"
 echo "$text_md $text_md    Realpath program: $cmd_realpath             $text_md"
 echo "$text_md $text_md     Version program: $cmd_version              $text_md"
@@ -2590,7 +2590,7 @@ echo "$text_md $text_md   Requisite program: $cmd_requisite_program    $text_md"
 echo "$text_md $text_md Requisite firewall4: $cmd_requisite_firewall4  $text_md"
 echo "$text_md $text_md Requisite firewall6: $cmd_requisite_firewall6  $text_md"
 echo "$text_md $text_md         Proram PATH: $PATH                     $text_md"
-echo "$text_md $text_md   Graphicall actual: $cmd_graphicall           $text_md"
+echo "$text_md $text_md         Session XDG: $cmd_session              $text_md"
 echo "$text_md $text_md     License program: $cmd_license              $text_md"
 ####
 ####
@@ -5305,7 +5305,7 @@ $cmd_directory/$cmd_name templates-regen &> /dev/null
 ####   spanish: Muestra el estatus final desde el instalador: program version
 ####
 ####
-$cmd_directory/$cmd_name version
+$cmd_realpath version
 #### 
 ####
 exit; fi
@@ -15384,7 +15384,7 @@ for string_allow in $(echo $config_string_allowed | $command_sed 's/,/ /g'); do
 ####
 #### ipv4
 ####
-####holahola
+####
 $allow_use_ipv4 $allow_use_legacy \
 $command_ip4tableslegacy  -A  INPUT  \
 -m string --string $string_allow \
