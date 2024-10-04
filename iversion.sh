@@ -58,9 +58,13 @@ source /etc/profile
 ####
 ####
 if [ "$(id -u)" != "0" ] ; then echo ; echo
+####
+####
 echo "### $text_fail [ fwiptables needs root to work ]"
-echo "### $text_info [ Try with root user ]"
-echo ; exit ; fi
+echo "### $text_info [ Try with root user ]" ; echo
+####
+####
+exit ; fi
 ####
 ####
 #### :rutina-final-necesary-admin:
@@ -73,8 +77,8 @@ echo ; exit ; fi
 ####
 ####
 #### The name file command
-cmd_realpath="$(realpath $0)"                              # Full path name
-cmd_basename="$(basename $0)"                              # Only file name
+cmd_basename="$(basename $0)"                              # Only name filename
+cmd_realpath="$(realpath $0)"                              # Full path filename
 #### The number version
 cmd_year="24"                                              # Number year version
 cmd_month="10"                                             # Number mouth version
@@ -94,12 +98,6 @@ cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # Firewall requisite
 cmd_license="LGPL v2, GPL v2"                              # Program license
 cmd_xdg="/run/user/0"                                      # Folder XDG
 cmd_session="XDG_SESSION_TYPE"                             # Sesssion XDG
-####
-####
-#### if [ "$cmd_session" == "$NULL" ] ; then
-#### $cmd_realpath session-xdg
-#### cmd_session="$($cmd_realpath session-xdg)"
-#### fi
 ####
 ####
 #### :rutina-final-enviroment-vars:
@@ -162,7 +160,6 @@ command_dialog="$(command -v dialog)"
 command_dig="$(command -v dig)"
 command_dpkg="$(command -v dpkg)"
 command_ebtables="$(command -v ebtables)"
-command_echo="$(command -v echo)"
 command_editor="$(command -v editor)"
 command_egrep="$(command -v egrep)"
 command_elinks="$(command -v elinks)"
@@ -323,9 +320,14 @@ quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;
 #### :rutina-inicial-xhost:
 ####
 ####
-if [ "$(logname)" != "$NULL" ] && [ "$(id -u)" == 0 ]; then 
+if [ "$(logname)" != "$NULL" ] && [ "$(id -u)" == 0 ]; then
+####
+####
 $command_sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
-else $command_sudo -u 0 $command_xhost +SI:localuser:root &> /dev/null ; fi
+else $command_sudo -u 0 $command_xhost +SI:localuser:root &> /dev/null
+####
+####
+fi
 ####
 ####
 #### :rutina-final-xhost:
@@ -580,7 +582,7 @@ server_port_tcp=""
 server_port_udp=""     
 server_radio_online="https://www.tdtchannels.com/lists/radio.m3u8"
 time_server_waiting="9s"    
-without_first_option=""
+without_first_option="ls4"
 ####
 ####
 #### :rutina-final-variables-system:
@@ -677,8 +679,9 @@ then $cmd_realpath preferences-example &> $file_default_preferences ; fi
 ####
 #### First option
 if [ "$first_option" = "$NULL" ] && [ "$without_first_option" = "$NULL" ] 
-then first_option="options" ; fi 
-if [ "$first_option" = "$NULL" ]; then first_option="$without_first_option" ; fi
+then first_option="list-options" ; fi 
+if [ "$first_option" = "$NULL" ]; 
+then first_option="$without_first_option" ; fi
 ####
 ####
 #### :rutina-final-option-without:
@@ -716,8 +719,7 @@ fi
 #### get info to cmd_format
 ####
 ####
-if [ "$command_file" == "$NULL" ] || [ "$command_awk" == "$NULL" ]; then exit ;
-else cmd_format="$($command_file $0 | $command_awk '{print $2 "_" $3 "_" $4}')" ; fi
+cmd_format="$($command_file $0 | $command_awk '{print $2 "_" $3 "_" $4}')" ; fi
 ####
 ####
 #### :rutina-final-variables-sane:
@@ -730,6 +732,8 @@ else cmd_format="$($command_file $0 | $command_awk '{print $2 "_" $3 "_" $4}')" 
 ####
 ####
 if [ "$favorite_iperf_command" == "$NULL" ]; then
+####
+####
 if [ "$command_iperf3"    != "$NULL" ]; then
 favorite_iperf_command="$command_iperf3" ; fi
 if [ "$command_iperf"   != "$NULL" ]; then
@@ -749,6 +753,8 @@ fi
 ####
 ####
 if [ "$favorite_date_command" == "$NULL" ]; then
+####
+####
 if [ "$command_rdate"   != "$NULL" ]; then
 favorite_date_command="$command_rdate -4 -a -n"  ; fi
 if [ "$command_sntp"    != "$NULL" ]; then
@@ -770,6 +776,8 @@ fi
 ####
 ####
 if [ "$favorite_text_editor" == "$NULL" ]; then
+####
+####
 if [ "$command_vi"  != "$NULL" ]  ; then    
 favorite_text_editor="$command_vi"      ; fi
 if [ "$command_vim"  != "$NULL" ]  ; then   
@@ -822,6 +830,8 @@ fi
 ####
 ####
 if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
+####
+####
 if [ "$command_zenity"  != "$NULL" ] ; then  
 favorite_realpath_graphicalldialog="$command_zenity"
 favorite_basename_graphicalldialog="$(basename $command_zenity)"
@@ -847,6 +857,8 @@ fi
 ####
 ####
 if [ "$favorite_text_browser" == "$NULL" ]; then
+####
+####
 if [ "$command_lynx"   != "$NULL" ] ; then  
 favorite_text_browser="$command_lynx"    ; fi
 if [ "$command_links"  != "$NULL" ] ; then  
@@ -872,6 +884,8 @@ fi
 ####
 ####
 if [ "$favorite_dhcp_command" == "$NULL" ]; then
+####
+####
 if [ "$command_dhcpcd"  != "$NULL" ]         ; then
 favorite_dhcp_command="$command_dhcpcd"           ; fi
 if [ "$command_dhclientscript" != "$NULL" ] ; then  
@@ -913,8 +927,10 @@ fi
 ####
 ####
 if [ "$favorite_text_music" == "$NULL" ]; then
+####
+####
 if [ "$command_vlc" != "$NULL" ]; then  
-favorite_text_music="$command_vlc"     ; fi
+favorite_text_music="$command_vlc"      ; fi
 ####
 ####
 fi
@@ -1532,9 +1548,9 @@ if [ "$first_option" == "expert-cpufreq-info" ] ; then
 echo "$title_md [ $first_option ] [ show cpu frequence info ]"
 if [ "$command_cpufreqinfo" == "$NULL" ]; then
 echo "$title_md please install cpufreq-info"; fi
-####
-####
 $command_cpufreqinfo
+####
+####
 exit; fi
 ####
 ####
@@ -1582,6 +1598,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "expert-configs-load" ] ; then
+####
+####
 echo "$title_md [ $first_option ] [ load backups confiurations from choosed filename ]"
 if [ "$command_tar" == "$NULL" ]; then
 echo "$title_md Please install tar command"; exit ; fi
@@ -1603,6 +1621,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-wpa-scan" ]; then
+####
+####
 echo "$title_md [ $first_option ]  [ Show SSID from net wifi ] "
 if   [ "$command_iw" == "$NULL" ]; then 
 echo "$title_md $text_info [ Please, Install iw to work ]" ; exit ; fi
@@ -2564,10 +2584,11 @@ exit; fi
 #### :rutina-inicial-session-xdg:
 ####
 ####
-if [ "$first_option" == "xdgsession" ]; then echo "XDG_SESSION_TYPE"
+#### if [ "$first_option" == "xdgsession" ]; then
+#### echo "XDG_SESSION_TYPE" ; exit
 ####
 ####
-exit ; fi
+#### fi
 ####
 ####
 #### :rutina-final-session-xdg:
@@ -14042,7 +14063,7 @@ if [ "$launch_rules_firewall" != "yes" ]
 then echo $head_give_cover
 echo "### #$text_fail [ first option: $first_option \
 | without first option: $without_first_option ]"
-$cmd_realpath options ; exit ; fi
+$cmd_realpath list-options ; exit ; fi
 ####
 ####
 ##########    english: Update variables             ##########
