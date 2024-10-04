@@ -92,8 +92,14 @@ cmd_requisite_program="sudo,awk,sed,file,cut"              # Program requisite
 cmd_requisite_firewall4="iptables-legacy,iptables-nft"     # Firewall requisite
 cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # Firewall requisite
 cmd_license="LGPL v2, GPL v2"                              # Program license
-cmd_session="$XDG_SESSION_TYPE"                            # Sesssion XDG
 cmd_xdg="/run/user/0"                                      # Folder XDG
+cmd_session="XDG_SESSION_TYPE"                             # Sesssion XDG
+####
+####
+#### if [ "$cmd_session" == "$NULL" ] ; then
+#### $cmd_realpath session-xdg
+#### cmd_session="$($cmd_realpath session-xdg)"
+#### fi
 ####
 ####
 #### :rutina-final-enviroment-vars:
@@ -156,6 +162,7 @@ command_dialog="$(command -v dialog)"
 command_dig="$(command -v dig)"
 command_dpkg="$(command -v dpkg)"
 command_ebtables="$(command -v ebtables)"
+command_echo="$(command -v echo)"
 command_editor="$(command -v editor)"
 command_egrep="$(command -v egrep)"
 command_elinks="$(command -v elinks)"
@@ -2552,6 +2559,18 @@ exit; fi
 ####
 #### :rutina-final-examples:
 #### :rutina-inicial-options-examples:
+##########    english: session-xdg: system script, the version option              ##########
+##########    spanish: session-xdg: script de sistema, la opcion mostrar version   ##########
+#### :rutina-inicial-session-xdg:
+####
+####
+if [ "$first_option" == "xdgsession" ]; then echo "XDG_SESSION_TYPE"
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-session-xdg:
 ##########    english: version: system script, the version option              ##########
 ##########    spanish: version: script de sistema, la opcion mostrar version   ##########
 #### :rutina-inicial-version:
