@@ -1,4 +1,6 @@
 #!/bin/bash
+####
+####
 #### #### #### #### for shell bash:
 #### #### #### #### #!/bin/bash
 ####
@@ -248,14 +250,17 @@ command_zenity="$(command -v zenity)"
 command_zgrep="$(command -v zgrep)"
 ####
 ####
-#### time date
+#### :rutina-final-possible-commands:
+##########   english: actual date: program variable          ##########
+##########   spanish: fecha actual: variable del programa    ##########
+#### :rutina-inicial-actual-date:
 ####
 ####
 show_actual_date="$($command_date +_DAY_%Y-%m-%d_HOUR_%H-%M-%S)"
 opt_actual_date="$show_actual_date-_OPT_"
 ####
 ####
-#### :rutina-final-possible-commands:
+#### :rutina-final-final-date:
 ##########   english: necesary programs: programs path           ##########
 ##########   spanish: necesarios programas: ruta de programas    ##########
 #### :rutina-inicial-necesary-commands:
@@ -322,16 +327,11 @@ else $command_sudo -u 0 $command_xhost +SI:localuser:root &> /dev/null ; fi
 #### :rutina-inicial-config-folders:
 ####
 ####
-#### english: permanent directory:   permanent directory and path directory config files
-#### spanish: directorio permanente: directorios permanentes y ruta de directorios 
+#### english: permanent directory tree:   permanent directory and path directory config files
+#### spanish: directorio permanente en arbol:   directorios permanentes y ruta de directorios 
 ####
 ####
-#### english: directory tree 
-#### spanish: arbol de directorio
-####
-####
-####
-#### Prepare directory data/cache: config for root 
+#### #### Prepare directory data/cache: config for root 
 ####
 ####
 if [ "$HOME" == "$NULL" ] ; then default_root_home="/root" 
@@ -406,15 +406,6 @@ file_default_filelog="$default_directory_log/default-filelog-$cmd_version"
 file_default_autolog="$default_directory_autolog/default-autolog-$cmd_version"
 ####
 ####
-#### stablished which is the cache temporal.
-####
-#### directory_cache="$directory_cache_home"
-####
-#### stablished a new variable
-####
-#### default_directory_temporal="$directory_cache"
-####
-####
 #### english: temporal files
 #### spanish: archivos temporales
 ####
@@ -433,15 +424,23 @@ output_logfinal="$directory_cache_necesary/$show_actual_date-text-final.txt"
 #### :rutina-inicial-sane-folders:
 ####
 ####
-#### cache root
+#### sane cache root
+####
+####
 if [ ! -d "$directory_cache_necesary" ]; then
 $command_mkdir -p $directory_cache_necesary &> /dev/null ; fi
 ####
-#### data root
+####
+#### sane data root
+####
+####
 if [ ! -d "$default_directory_data_necesary" ]; then
 $command_mkdir -p $default_directory_data_necesary &> /dev/null ; fi
 ####
-#### data tree
+####
+#### sane data tree
+####
+####
 if [ ! -d "$default_directory_control" ]; then 
 $command_mkdir -p "$default_directory_control" &> /dev/null ; fi
 if [ ! -d "$default_directory_template" ]; then
@@ -619,13 +618,13 @@ message_without_guiroll="$title_md $text_fail [ install zenity ]"
 #### :rutina-inicial-variables-misc:
 ####
 ####
-#### proxy file
+#### config proxy file
 ####
 ####
 file_conf_clientproxy="$default_directory_proxy/fwiptables-proxy"
 ####
 ####
-#### radio music
+#### config radio music
 ####
 ####
 name_radio_group="radio.m3u8"
@@ -633,7 +632,7 @@ file_radio_config="$default_directory_radio/fwiptables-config-$name_radio_group"
 file_radio_cache="$default_directory_radio/fwiptables-cache-$name_radio_group"
 ####
 ####
-#### web adblock
+#### config web adblock
 ####
 ####
 web_blacklist_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
@@ -642,7 +641,7 @@ web_blacklist_adaway="https://raw.githubusercontent.com/AdAway/adaway.github.io/
 web_blacklist_stevenblack="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
 ####
 ####
-#### file adblock
+#### config file adblock
 ####
 ####
 file_blacklist_fademind="$default_directory_adblock/hosts.blacklist_fademind"
@@ -655,9 +654,6 @@ file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenbla
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
 #### :rutina-inicial-variables-update:
-####
-####
-#### Update variables when is there
 ####
 ####
 if [ -f "$file_default_preferences" ] ;
@@ -684,6 +680,9 @@ if [ "$first_option" = "$NULL" ]; then first_option="$without_first_option" ; fi
 #### :rutina-inicial-variables-sane:
 ####
 ####
+#### sane basic variables
+####
+####
 case "$NULL" in "$choosed_iptables")         ;;
 *)  choosed_iptables="no"                    ;; esac
 case "$NULL" in "$launch_rules_firewall")    ;;
@@ -694,17 +693,20 @@ case "$NULL" in "$type_firewall")            ;;
 *)  type_firewall="no"                       ;; esac
 ####
 ####
-if [ "$allow_expert_commands" == "no" ]; then 
+#### configure expert commands
 ####
+####
+if [ "$allow_expert_commands" == "no" ]; then 
 case "$first_option" in exper*)
 echo "$title_md See in preferences allow_expert_commands to active it option"
 exit ;; esac
-####
 case "$second_option" in exper*)
 echo "$title_md See in preferences allow_expert_commands to active it option"
 exit ;; esac
-####
 fi
+####
+####
+#### get info to cmd_format
 ####
 ####
 if [ "$command_file" == "$NULL" ] || [ "$command_awk" == "$NULL" ]; then exit ;
@@ -717,13 +719,12 @@ else cmd_format="$($command_file $0 | $command_awk '{print $2 "_" $3 "_" $4}')" 
 #### :rutina-inicial-favorite-iperf:
 ####
 ####
+#### choose iperf3 and the iperf to speed ip
+####
+####
 if [ "$favorite_iperf_command" == "$NULL" ]; then
-####
-####
 if [ "$command_iperf3"    != "$NULL" ]; then
 favorite_iperf_command="$command_iperf3" ; fi
-####
-####
 if [ "$command_iperf"   != "$NULL" ]; then
 favorite_iperf_command="$command_iperf" ; fi
 ####
@@ -737,17 +738,14 @@ fi
 #### :rutina-inicial-favorite-date:
 ####
 ####
+#### configure favorite date
+####
+####
 if [ "$favorite_date_command" == "$NULL" ]; then
-####
-####
 if [ "$command_rdate"   != "$NULL" ]; then
 favorite_date_command="$command_rdate -4 -a -n"  ; fi
-####
-####
 if [ "$command_sntp"    != "$NULL" ]; then
 favorite_date_command="$command_sntp"            ; fi
-####
-####
 if [ "$command_ntpdate" != "$NULL" ]; then
 favorite_date_command="$command_ntpdate"         ; fi
 ####
@@ -761,25 +759,18 @@ fi
 #### :rutina-inicial-favorite-editor:
 ####
 ####
+#### configure text editor
+####
+####
 if [ "$favorite_text_editor" == "$NULL" ]; then
-####
-####
 if [ "$command_vi"  != "$NULL" ]  ; then    
 favorite_text_editor="$command_vi"      ; fi
-####
-####
 if [ "$command_vim"  != "$NULL" ]  ; then   
 favorite_text_editor="$command_vim"     ; fi
-####
-####
 if [ "$command_pico" != "$NULL" ] ; then  
 favorite_text_editor="$command_pico"    ; fi
-####
-####
 if [ "$command_editor" != "$NULL" ] ; then  
 favorite_text_editor="$command_editor"  ; fi
-####
-####
 if [ "$command_nano"  != "$NULL" ] ; then   
 favorite_text_editor="$command_nano"    ; fi
 ####
@@ -791,6 +782,9 @@ fi
 ##########      english: search favorite text dialog: favorite text dialog     ##########
 ##########      spanish: busca preferido text dialogo: favorite text dialog    ##########
 #### :rutina-inicial-favorite-dialog:
+####
+####
+#### configure favorite dialog cli text
 ####
 ####
 if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
@@ -817,9 +811,10 @@ fi
 #### :rutina-inicial-favorite-graphicall:
 ####
 ####
+#### configure favorite graphicall gui
+####
+####
 if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
-####
-####
 if [ "$command_zenity"  != "$NULL" ] ; then  
 favorite_realpath_graphicalldialog="$command_zenity"
 favorite_basename_graphicalldialog="$(basename $command_zenity)"
@@ -841,25 +836,18 @@ fi
 #### :rutina-inicial-favorite-browser:
 ####
 ####
+#### configure favorite browser text
+####
+####
 if [ "$favorite_text_browser" == "$NULL" ]; then
-####
-####
 if [ "$command_lynx"   != "$NULL" ] ; then  
 favorite_text_browser="$command_lynx"    ; fi
-####
-####
 if [ "$command_links"  != "$NULL" ] ; then  
 favorite_text_browser="$command_links"   ; fi
-####
-####
 if [ "$command_links2" != "$NULL" ] ; then  
 favorite_text_browser="$command_links2"  ; fi
-####
-####
 if [ "$command_elinks" != "$NULL" ] ; then  
 favorite_text_browser="$command_elinks"  ; fi
-####
-####
 if [ "$command_w3m" != "$NULL" ] ; then  
 favorite_text_browser="$command_w3m"  ; fi
 ####
@@ -873,17 +861,14 @@ fi
 #### :rutina-inicial-favorite-dhcp:
 ####
 ####
+#### configure favorite dhcp command
+####
+####
 if [ "$favorite_dhcp_command" == "$NULL" ]; then
-####
-####
 if [ "$command_dhcpcd"  != "$NULL" ]         ; then
 favorite_dhcp_command="$command_dhcpcd"           ; fi
-####
-####
 if [ "$command_dhclientscript" != "$NULL" ] ; then  
 favorite_dhcp_command="$command_dhclientscript"  ; fi
-####
-####
 if [ "$command_dhclient"   != "$NULL" ] ;      then  
 favorite_dhcp_command="$command_dhclient"         ; fi
 ####
@@ -897,17 +882,16 @@ fi
 #### :rutina-inicial-favorite-date-command:
 ####
 ####
+#### configure favorite dialog update time
+####
+####
 if [ "$favorite_date_command" == "$NULL" ]; then
 ####
 ####
 if [ "$command_rdate"   != "$NULL" ]; then  
 favorite_date_command="$command_rdate -4 -a -n"  ; fi
-####
-####
 if [ "$command_sntp"    != "$NULL" ]; then  
 favorite_date_command="$command_sntp"            ; fi
-####
-####
 if [ "$command_ntpdate" != "$NULL" ]; then  
 favorite_date_command="$command_ntpdate"         ; fi
 ####
@@ -922,8 +906,6 @@ fi
 ####
 ####
 if [ "$favorite_text_music" == "$NULL" ]; then
-####
-####
 if [ "$command_vlc" != "$NULL" ]; then  
 favorite_text_music="$command_vlc"     ; fi
 ####
