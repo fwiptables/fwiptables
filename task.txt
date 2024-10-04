@@ -1,0 +1,11 @@
+# Notes to Working in progress actually:
+
+Planed fixing bugs, Planed feacture adding .
+
+## The planed fixed commit:     
+
+..
+
+## The planed feature commit: 
+
+..
