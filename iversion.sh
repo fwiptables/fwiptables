@@ -45,13 +45,6 @@
 #####################################################################################
 ####
 ####
-####     #### english: stablished the path  #### spanish: establece el path
-####
-####
-#### source /etc/profile
-PATH="/sbin:/bin:/usr/sbin:/usr/bin"
-####
-####
 ##########    english: are you root: uid 0 ?                ##########
 ##########    spanish: eres admnistrador: identificador 0 ? ##########
 #### :rutina-inicial-necesary-admin:
@@ -76,9 +69,14 @@ exit ; fi
 #### configs for fwiptables
 ####
 ####
+#### the path to possible commands
+source /etc/profile                                        # source profile
+cmd_path="/sbin:/bin:/usr/sbin:/usr/bin"                   # Config PATH
+cmd_where="which"                                          # Find commands
+PATH="$cmd_path"                                           # PATH fwiptables
 #### The name file command
 cmd_basename="$(basename $0)"                              # Only name filename
-cmd_realpath="$(realpath -P $0)"                              # Full path filename
+cmd_realpath="$(realpath $0)"                              # Full path filename
 #### The number version
 cmd_year="24"                                              # Number year version
 cmd_month="10"                                             # Number mouth version
@@ -98,9 +96,7 @@ cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # Firewall requisite
 cmd_license="LGPL v2, GPL v2"                              # Program license
 cmd_session="$XDG_SESSION_TYPE"                            # Sesssion XDG
 cmd_xdg="/run/user/0"                                      # Folder XDG
-cmd_where="which"   # which,command -v,whereis,...         # Find commands
-####
-####
+#### cmd format file
 cmd_format=$(file $0 | \
 awk '{print $2 "_" $3 "_" $4}')                            # File format
 ####
@@ -275,7 +271,7 @@ opt_actual_date="$show_actual_date-_OPT_"
 ####
 #### system requisite utils
 for requisite in $(echo $cmd_requisite_program | sed 's/,/ /g') ; do 
-if [ "$(command -v $requisite)" == "$NULL" ]; then
+if [ "$($cmd_where $requisite)" == "$NULL" ]; then
 echo "### program $requisite is necesary to work $cmd_basename"
 echo "### the requiste are $cmd_requisite_program"
 exit; fi ; done
@@ -283,7 +279,7 @@ exit; fi ; done
 ####
 #### system requisite firewall4
 for requisite in $(echo $cmd_requisite_firewall4 | sed 's/,/ /g') ; do 
-if [ "$(command -v $requisite)" == "$NULL" ]; then
+if [ "$($cmd_where $requisite)" == "$NULL" ]; then
 echo "### program $requisite is necesary to work $cmd_basename"
 echo "### the requiste are $cmd_requisite_firewall4"
 exit; fi ; done
@@ -291,7 +287,7 @@ exit; fi ; done
 ####
 #### system requisite firewall6
 for requisite in $(echo $cmd_requisite_firewall6 | sed 's/,/ /g') ; do 
-if [ "$(command -v $requisite)" == "$NULL" ]; then
+if [ "$($cmd_where $requisite)" == "$NULL" ]; then
 echo "### program $requisite is necesary to work $cmd_basename"
 echo "### the requiste are $cmd_requisite_firewall6"
 exit; fi ; done
@@ -665,7 +661,7 @@ file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenbla
 #### :rutina-final-variables-misc:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
-#### :rutina-inicial-variables-update:
+#### :rutina-inicial-variables-update-secondtime:
 ####
 ####
 if [ -f "$file_default_preferences" ] ;
@@ -674,7 +670,7 @@ if [ ! -f "$file_default_preferences" ]
 then $cmd_realpath preferences-example &> $file_default_preferences ; fi
 ####
 ####
-#### :rutina-final-variables-update:
+#### :rutina-final-variables-update-secondtime:
 ##########    english: Update first option               ##########
 ##########    spanish: Actualiza primera opción          ##########
 #### :rutina-inicial-option-whithout:
