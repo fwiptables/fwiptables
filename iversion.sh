@@ -78,7 +78,7 @@ exit ; fi
 ####
 #### The name file command
 cmd_basename="$(basename $0)"                              # Only name filename
-cmd_realpath="$(realpath $0)"                              # Full path filename
+cmd_realpath="$(realpath -P $0)"                              # Full path filename
 #### The number version
 cmd_year="24"                                              # Number year version
 cmd_month="10"                                             # Number mouth version
@@ -5320,7 +5320,7 @@ $cmd_directory/$cmd_name templates-regen &> /dev/null
 ####   spanish: Muestra el estatus final desde el instalador: program version
 ####
 ####
-$cmd_realpath version
+"$cmd_directory/$cmd_name" version
 #### 
 ####
 exit; fi
