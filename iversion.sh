@@ -98,6 +98,11 @@ cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # Firewall requisite
 cmd_license="LGPL v2, GPL v2"                              # Program license
 cmd_xdg="/run/user/0"                                      # Folder XDG
 cmd_session="$XDG_SESSION_TYPE"                            # Sesssion XDG
+cmd_where="which"   # which,command -v,whereis,...         # Find commands
+####
+####
+cmd_format=$(file $0 | \
+awk '{print $2 "_" $3 "_" $4}')                            # File format
 ####
 ####
 #### :rutina-final-enviroment-vars:
@@ -138,118 +143,118 @@ web_download_myradio=\
 #### :rutina-inicial-possible-commands:
 ####
 ####
-command_arp="$(command -v arp)"
-command_arpscan="$(command -v arp-scan)"
-command_arptables="$(command -v arptables)"
-command_awk="$(command -v awk)"
-command_bash="$(command -v bash)"
-command_bc="$(command -v bc)"
-command_convert="$(command -v convert)"
-command_cpufreqinfo="$(command -v cpufreq-info)"
-command_cpupower="$(command -v cpupower)"
-command_curl="$(command -v curl)"
-command_cut="$(command -v cut)"
-command_date="$(command -v date)"
-command_dd="$(command -v dd)"
-command_dhclient="$(command -v dhclient)"
-command_dhclientscript="$(command -v dhclient-script)"
-command_dhcpcd="$(command -v dhcpcd)"
-command_dialog="$(command -v dialog)"
-command_dig="$(command -v dig)"
-command_dpkg="$(command -v dpkg)"
-command_ebtables="$(command -v ebtables)"
-command_editor="$(command -v editor)"
-command_egrep="$(command -v egrep)"
-command_elinks="$(command -v elinks)"
-command_file="$(command -v file)"
-command_find="$(command -v find)"
-command_fmt="$(command -v fmt)"
-command_geoiplookup="$(command -v geoiplookup)"
-command_glxgears="$(command -v glxgears)"
-command_gpg="$(command -v gpg)"
-command_grep="$(command -v grep)"
-command_halt="$(command -v halt)"
-command_host="$(command -v host)"
-command_ifconfig="$(command -v ifconfig)"
-command_init="$(command -v init)"
-command_ip="$(command -v ip)"
-command_ip4tableslegacy="$(command -v iptables-legacy)"
-command_ip4tablesnft="$(command -v iptables-nft)"
-command_ip6tableslegacy="$(command -v ip6tables-legacy)"
-command_ip6tablesnft="$(command -v ip6tables-nft)"
-command_iperf="$(command -v iperf)"
-command_iperf3="$(command -v iperf3)"
-command_iw="$(command -v iw)"
-command_links="$(command -v links)"
-command_links2="$(command -v links2)"
-command_logname="$(command -v logname)"
-command_lpinfo="$(command -v lpinfo)"
-command_lpstat="$(command -v lpstat)"
-command_ls="$(command -v ls)"
-command_lsblk="$(command -v lsblk)"
-command_lscpu="$(command -v lscpu)"
-command_lsgpu="$(command -v lsgpu)"
-command_lshw="$(command -v lshw)"
-command_lsof="$(command -v lsof)"
-command_lspci="$(command -v lspci)"
-command_lsusb="$(command -v lsusb)"
-command_lynx="$(command -v lynx)"
-command_m2r="$(command -v m2r)"
-command_md5sum="$(command -v md5sum)"
-command_mdp="$(command -v mdp)"
-command_mkdir="$(command -v mkdir)"
-command_mpg123="$(command -v mpg123)"
-command_mpg123="$(command -v mpg123)"
-command_mpg321="$(command -v mpg321)"
-command_mpg321="$(command -v mpg321)"
-command_nano="$(command -v nano)"
-command_netstat="$(command -v netstat)"
-command_netstatnat="$(command -v netstat-nat)"
-command_nmap="$(command -v nmap)"
-command_ntpdate="$(command -v ntpdate)"
-command_obash="$(command -v obash)"
-command_openssl="$(command -v openssl)"
-command_pico="$(command -v pico)"
-command_ping="$(command -v ping)"
-command_poweroff="$(command -v poweroff)"
-command_rdate="$(command -v rdate)"
-command_readlink="$(command -v readlink)"
-command_reboot="$(command -v reboot)"
-command_resolveip="$(command -v resolveip)"
-command_route="$(command -v route)"
-command_sed="$(command -v sed)"
-command_shutdown="$(command -v shutdown)"
-command_sleep="$(command -v sleep)"
-command_sntp="$(command -v sntp) -S"
-command_ss="$(command -v ss)"
-command_sudo="$(command -v sudo)"
-command_sysctl="$(command -v sysctl)"
-command_systemctl="$(command -v systemctl)"
-command_tar="$(command -v tar)"
-command_tcpdump="$(command -v tcpdump)"
-command_tee="$(command -v tee)"
-command_timeout="$(command -v timeout)"
-command_torify="$(command -v torify)"
-command_tracepath="$(command -v tracepath)"
-command_traceroute="$(command -v traceroute)"
-command_tree="$(command -v tree)"
-command_tree="$(command -v tree)"
-command_txt2html="$(command -v txt2html)"
-command_uname="$(command -v uname)"
-command_uuid="$(command -v uuid)"
-command_vi="$(command -v vi)"
-command_vim="$(command -v vim)"
-command_vlc="$(command -v vlc) -I dummy -d"
-command_w3m="$(command -v w3m)"
-command_wget="$(command -v wget)"
-command_whiptail="$(command -v whiptail)"
-command_wpapassphrase="$(command -v wpa_passphrase)"
-command_wpasupplicant="$(command -v wpa_supplicant)"
-command_xhost="$(command -v xhost)"
-command_xrandr="$(command -v xrandr)"
-command_yad="$(command -v yad)"
-command_zenity="$(command -v zenity)"
-command_zgrep="$(command -v zgrep)"
+command_arp="$($cmd_where arp)"
+command_arpscan="$($cmd_where arp-scan)"
+command_arptables="$($cmd_where arptables)"
+command_awk="$($cmd_where awk)"
+command_bash="$($cmd_where bash)"
+command_bc="$($cmd_where bc)"
+command_convert="$($cmd_where convert)"
+command_cpufreqinfo="$($cmd_where cpufreq-info)"
+command_cpupower="$($cmd_where cpupower)"
+command_curl="$($cmd_where curl)"
+command_cut="$($cmd_where cut)"
+command_date="$($cmd_where date)"
+command_dd="$($cmd_where dd)"
+command_dhclient="$($cmd_where dhclient)"
+command_dhclientscript="$($cmd_where dhclient-script)"
+command_dhcpcd="$($cmd_where dhcpcd)"
+command_dialog="$($cmd_where dialog)"
+command_dig="$($cmd_where dig)"
+command_dpkg="$($cmd_where dpkg)"
+command_ebtables="$($cmd_where ebtables)"
+command_editor="$($cmd_where editor)"
+command_egrep="$($cmd_where egrep)"
+command_elinks="$($cmd_where elinks)"
+command_file="$($cmd_where file)"
+command_find="$($cmd_where find)"
+command_fmt="$($cmd_where fmt)"
+command_geoiplookup="$($cmd_where geoiplookup)"
+command_glxgears="$($cmd_where glxgears)"
+command_gpg="$($cmd_where gpg)"
+command_grep="$($cmd_where grep)"
+command_halt="$($cmd_where halt)"
+command_host="$($cmd_where host)"
+command_ifconfig="$($cmd_where ifconfig)"
+command_init="$($cmd_where init)"
+command_ip="$($cmd_where ip)"
+command_ip4tableslegacy="$($cmd_where iptables-legacy)"
+command_ip4tablesnft="$($cmd_where iptables-nft)"
+command_ip6tableslegacy="$($cmd_where ip6tables-legacy)"
+command_ip6tablesnft="$($cmd_where ip6tables-nft)"
+command_iperf="$($cmd_where iperf)"
+command_iperf3="$($cmd_where iperf3)"
+command_iw="$($cmd_where iw)"
+command_links="$($cmd_where links)"
+command_links2="$($cmd_where links2)"
+command_logname="$($cmd_where logname)"
+command_lpinfo="$($cmd_where lpinfo)"
+command_lpstat="$($cmd_where lpstat)"
+command_ls="$($cmd_where ls)"
+command_lsblk="$($cmd_where lsblk)"
+command_lscpu="$($cmd_where lscpu)"
+command_lsgpu="$($cmd_where lsgpu)"
+command_lshw="$($cmd_where lshw)"
+command_lsof="$($cmd_where lsof)"
+command_lspci="$($cmd_where lspci)"
+command_lsusb="$($cmd_where lsusb)"
+command_lynx="$($cmd_where lynx)"
+command_m2r="$($cmd_where m2r)"
+command_md5sum="$($cmd_where md5sum)"
+command_mdp="$($cmd_where mdp)"
+command_mkdir="$($cmd_where mkdir)"
+command_mpg123="$($cmd_where mpg123)"
+command_mpg123="$($cmd_where mpg123)"
+command_mpg321="$($cmd_where mpg321)"
+command_mpg321="$($cmd_where mpg321)"
+command_nano="$($cmd_where nano)"
+command_netstat="$($cmd_where netstat)"
+command_netstatnat="$($cmd_where netstat-nat)"
+command_nmap="$($cmd_where nmap)"
+command_ntpdate="$($cmd_where ntpdate)"
+command_obash="$($cmd_where obash)"
+command_openssl="$($cmd_where openssl)"
+command_pico="$($cmd_where pico)"
+command_ping="$($cmd_where ping)"
+command_poweroff="$($cmd_where poweroff)"
+command_rdate="$($cmd_where rdate)"
+command_readlink="$($cmd_where readlink)"
+command_reboot="$($cmd_where reboot)"
+command_resolveip="$($cmd_where resolveip)"
+command_route="$($cmd_where route)"
+command_sed="$($cmd_where sed)"
+command_shutdown="$($cmd_where shutdown)"
+command_sleep="$($cmd_where sleep)"
+command_sntp="$($cmd_where sntp) -S"
+command_ss="$($cmd_where ss)"
+command_sudo="$($cmd_where sudo)"
+command_sysctl="$($cmd_where sysctl)"
+command_systemctl="$($cmd_where systemctl)"
+command_tar="$($cmd_where tar)"
+command_tcpdump="$($cmd_where tcpdump)"
+command_tee="$($cmd_where tee)"
+command_timeout="$($cmd_where timeout)"
+command_torify="$($cmd_where torify)"
+command_tracepath="$($cmd_where tracepath)"
+command_traceroute="$($cmd_where traceroute)"
+command_tree="$($cmd_where tree)"
+command_tree="$($cmd_where tree)"
+command_txt2html="$($cmd_where txt2html)"
+command_uname="$($cmd_where uname)"
+command_uuid="$($cmd_where uuid)"
+command_vi="$($cmd_where vi)"
+command_vim="$($cmd_where vim)"
+command_vlc="$($cmd_where vlc) -I dummy -d"
+command_w3m="$($cmd_where w3m)"
+command_wget="$($cmd_where wget)"
+command_whiptail="$($cmd_where whiptail)"
+command_wpapassphrase="$($cmd_where wpa_passphrase)"
+command_wpasupplicant="$($cmd_where wpa_supplicant)"
+command_xhost="$($cmd_where xhost)"
+command_xrandr="$($cmd_where xrandr)"
+command_yad="$($cmd_where yad)"
+command_zenity="$($cmd_where zenity)"
+command_zgrep="$($cmd_where zgrep)"
 ####
 ####
 #### :rutina-final-possible-commands:
@@ -268,7 +273,7 @@ opt_actual_date="$show_actual_date-_OPT_"
 #### :rutina-inicial-necesary-commands:
 ####
 ####
-#### requisite utils
+#### system requisite utils
 for requisite in $(echo $cmd_requisite_program | sed 's/,/ /g') ; do 
 if [ "$(command -v $requisite)" == "$NULL" ]; then
 echo "### program $requisite is necesary to work $cmd_basename"
@@ -276,7 +281,7 @@ echo "### the requiste are $cmd_requisite_program"
 exit; fi ; done
 ####
 ####
-#### requisite firewall4
+#### system requisite firewall4
 for requisite in $(echo $cmd_requisite_firewall4 | sed 's/,/ /g') ; do 
 if [ "$(command -v $requisite)" == "$NULL" ]; then
 echo "### program $requisite is necesary to work $cmd_basename"
@@ -284,7 +289,7 @@ echo "### the requiste are $cmd_requisite_firewall4"
 exit; fi ; done
 ####
 ####
-#### requisite firewall6
+#### system requisite firewall6
 for requisite in $(echo $cmd_requisite_firewall6 | sed 's/,/ /g') ; do 
 if [ "$(command -v $requisite)" == "$NULL" ]; then
 echo "### program $requisite is necesary to work $cmd_basename"
@@ -691,33 +696,37 @@ then first_option="$without_first_option" ; fi
 #### sane basic variables
 ####
 ####
-case "$NULL" in "$choosed_iptables")         ;;
-*)  choosed_iptables="no"                    ;; esac
-case "$NULL" in "$launch_rules_firewall")    ;;
-*)  launch_rules_firewall="no"               ;; esac
-case "$NULL" in "$name_firewall")            ;; 
-*)  name_firewall="no"                       ;; esac
-case "$NULL" in "$type_firewall")            ;;
-*)  type_firewall="no"                       ;; esac
+case "$NULL" in 
+"$choosed_iptables")      ;; *) choosed_iptables="no"      ;;
+"$launch_rules_firewall") ;; *) launch_rules_firewall="no" ;;
+"$name_firewall")         ;; *) name_firewall="no"         ;;
+"$type_firewall")         ;; *)  type_firewall="no"        ;;
+esac
 ####
 ####
 #### configure expert commands
 ####
 ####
-if [ "$allow_expert_commands" == "no" ]; then 
-case "$first_option" in exper*)
-echo "$title_md See in preferences allow_expert_commands to active it option"
+if [ "$allow_expert_commands" == "no" ]; then
+####
+####
+case "$first_option" in 
+exper*) echo "$title_md See in preferences allow_expert_commands to active it option"
 exit ;; esac
-case "$second_option" in exper*)
-echo "$title_md See in preferences allow_expert_commands to active it option"
+####
+####
+case "$second_option" in
+exper*) echo "$title_md See in preferences allow_expert_commands to active it option"
 exit ;; esac
+####
+####
 fi
 ####
 ####
 #### get info to cmd_format
 ####
 ####
-cmd_format=$($command_file $0 | $command_awk '{print $2 "_" $3 "_" $4}')
+#### cmd_format=$($command_file $0 | $command_awk '{print $2 "_" $3 "_" $4}')
 ####
 ####
 #### :rutina-final-variables-sane:
