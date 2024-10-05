@@ -96,8 +96,8 @@ cmd_requisite_program="sudo,awk,sed,file,cut"              # Program requisite
 cmd_requisite_firewall4="iptables-legacy,iptables-nft"     # Firewall requisite
 cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # Firewall requisite
 cmd_license="LGPL v2, GPL v2"                              # Program license
-cmd_xdg="/run/user/0"                                      # Folder XDG
 cmd_session="$XDG_SESSION_TYPE"                            # Sesssion XDG
+cmd_xdg="/run/user/0"                                      # Folder XDG
 cmd_where="which"   # which,command -v,whereis,...         # Find commands
 ####
 ####
