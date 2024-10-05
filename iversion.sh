@@ -66,7 +66,7 @@ exit ; fi
 #### :rutina-inicial-enviroment-vars:
 ####
 ####
-#### configs for fwiptables
+#### variables configs for fwiptables program
 ####
 ####
 #### the path to possible commands
