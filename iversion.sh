@@ -1,4 +1,6 @@
 #!/bin/bash
+####
+####
 #### #### #### #### for shell bash:
 #### #### #### #### #!/bin/bash
 ####
@@ -47,7 +49,7 @@
 ####
 ####
 #### source /etc/profile
-PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"
+PATH="/sbin:/bin:/usr/sbin:/usr/bin"
 ####
 ####
 ##########    english: are you root: uid 0 ?                ##########
@@ -56,9 +58,13 @@ PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"
 ####
 ####
 if [ "$(id -u)" != "0" ] ; then echo ; echo
+####
+####
 echo "### $text_fail [ fwiptables needs root to work ]"
-echo "### $text_info [ Try with root user ]"
-echo ; exit ; fi
+echo "### $text_info [ Try with root user ]" ; echo
+####
+####
+exit ; fi
 ####
 ####
 #### :rutina-final-necesary-admin:
@@ -70,26 +76,28 @@ echo ; exit ; fi
 #### configs for fwiptables
 ####
 ####
-#### The name file
-cmd_realpath="$(realpath $0)"                              # fully routename
-cmd_basename="$(basename $0)"                              # only  filename
+#### The name file command
+cmd_basename="$(basename $0)"                              # Only name filename
+cmd_realpath="$(realpath $0)"                              # Full path filename
 #### The number version
-cmd_year="24"                                              # number year version
-cmd_month="10"                                             # number mouth version
-cmd_letter="C-dev"                                         # number letter version
-cmd_version="$cmd_year-$cmd_month-$cmd_letter"             # final date like number version
+cmd_year="24"                                              # Number year version
+cmd_month="10"                                             # Number mouth version
+cmd_letter="C"                                             # Number letter version
+cmd_version="$cmd_year-$cmd_month-$cmd_letter"             # Final date like number version
 #### the install location
-cmd_name="fwiptables"                                      # filename installed
-cmd_directory="/usr/bin"                                   # directory installed
+cmd_name="fwiptables"                                      # Filename installed
+cmd_directory="/usr/bin"                                   # Directory installed
 #### The data version
-cmd_developer="Francisco Garcia"                           # actual developer
-cmd_contact="fwiptables@gmx.com"                           # actual contact
-cmd_shortdescription="FireWall With iptables"              # description short
-cmd_longdescription="iptables wizard in one script"        # description long
-cmd_license="LGPL v2, GPL v2"                              # program license
-cmd_requisite_program="sudo,awk,sed,file,cut"              # program requisite
-cmd_requisite_firewall4="iptables-legacy,iptables-nft"     # firewall requisite
-cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # firewall requisite
+cmd_developer="Francisco Garcia"                           # Actual developer
+cmd_contact="fwiptables@gmx.com"                           # Actual contact
+cmd_shortdescription="FireWall With iptables"              # Description short
+cmd_longdescription="iptables template in one script"      # Description long
+cmd_requisite_program="sudo,awk,sed,file,cut"              # Program requisite
+cmd_requisite_firewall4="iptables-legacy,iptables-nft"     # Firewall requisite
+cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # Firewall requisite
+cmd_license="LGPL v2, GPL v2"                              # Program license
+cmd_xdg="/run/user/0"                                      # Folder XDG
+cmd_session="$XDG_SESSION_TYPE"                            # Sesssion XDG
 ####
 ####
 #### :rutina-final-enviroment-vars:
@@ -104,8 +112,6 @@ content_license_gplv2=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-GPL.txt?format=raw"
 content_license_lgplv2=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-LGPL.txt?format=raw"
-### content_license_bsd=\
-### "https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-BSD.txt?format=raw"
 web_homepage_sourceforge=\
 "https://sourceforge.net/projects/f-iptables/" ;
 web_homepage_github=\
@@ -246,14 +252,17 @@ command_zenity="$(command -v zenity)"
 command_zgrep="$(command -v zgrep)"
 ####
 ####
-#### time date
+#### :rutina-final-possible-commands:
+##########   english: actual date: program variable          ##########
+##########   spanish: fecha actual: variable del programa    ##########
+#### :rutina-inicial-actual-date:
 ####
 ####
 show_actual_date="$($command_date +_DAY_%Y-%m-%d_HOUR_%H-%M-%S)"
 opt_actual_date="$show_actual_date-_OPT_"
 ####
 ####
-#### :rutina-final-possible-commands:
+#### :rutina-final-final-date:
 ##########   english: necesary programs: programs path           ##########
 ##########   spanish: necesarios programas: ruta de programas    ##########
 #### :rutina-inicial-necesary-commands:
@@ -304,56 +313,32 @@ quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;
 ####
 ####
 #### :rutina-final-options-order:
-##########   english: profile y support X11       ##########
-##########   spanish: profile y soporte de X11    ##########
-#### :rutina-inicial-x11-wayland:
+##########   english: profile y support X11 for root       ##########
+##########   spanish: profile y soporte de X11 for root    ##########
+#### :rutina-inicial-xhost:
 ####
 ####
-X11_OR_WAYLAND="$XDG_SESSION_TYPE"
+if [ "$(logname)" != "$NULL" ] && [ "$(id -u)" == 0 ]; then
 ####
 ####
-####  Support wayland for root  WAYLAND_DISPLAY=":0"
-#### english: add auth memory directory for root for graphicall use 
-#### spanish: añade autorización memory directory para root para uso grafico
-XDG_RUNTIME_DIR="/run/user/0"
-####
-####
-####  Support x11 for root     xhost +root
-#### english: add auth xhost for root for graphicall use 
-#### spanish: añade autorización xhost para root para uso grafico
-####
-####
-if [ "$(logname)" != "$NULL" ] && [ "$(id -u)" == 0 ]; then 
 $command_sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
-else $command_sudo -u 0 $command_xhost +SI:localuser:root &> /dev/null ; fi
+else $command_sudo -u 0 $command_xhost +SI:localuser:root &> /dev/null
 ####
 ####
-#### use deprecated
-## $command_sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
-## $command_sudo -u "$(logname)" command_xhost +root@127.0.0.1 &> /dev/null
-## $command_sudo -u "$(logname)" command_xhost +INET:root@127.0.0.1 &> /dev/null
-## $command_sudo -u "$(logname)" command_xhost +INET6:root@127.0.0.1 &> /dev/null
-## $command_sudo -u "$(logname)" command_xhost +DNET:root@127.0.0.1 &> /dev/null
-## $command_sudo -u "$(logname)" command_xhost +KRB:root@127.0.0.1 &> /dev/null
-## $command_sudo -u "$(logname)" command_xhost +NIS:root@127.0.0.1 &> /dev/null
+fi
 ####
 ####
-#### :rutina-final-x11-wayland:
+#### :rutina-final-xhost:
 ##########  english: files:    files and folders from fwiptables          ##########
 ##########  spanish: archivos: archivos y carpetas desde fwiptables       ##########
 #### :rutina-inicial-config-folders:
 ####
 ####
-#### english: permanent directory:   permanent directory and path directory config files
-#### spanish: directorio permanente: directorios permanentes y ruta de directorios 
+#### english: permanent directory tree:   permanent directory and path directory config files
+#### spanish: directorio permanente en arbol:   directorios permanentes y ruta de directorios 
 ####
 ####
-#### english: directory tree 
-#### spanish: arbol de directorio
-####
-####
-####
-#### Prepare directory data/cache: config for root 
+#### #### Prepare directory data/cache: config for root 
 ####
 ####
 if [ "$HOME" == "$NULL" ] ; then default_root_home="/root" 
@@ -428,15 +413,6 @@ file_default_filelog="$default_directory_log/default-filelog-$cmd_version"
 file_default_autolog="$default_directory_autolog/default-autolog-$cmd_version"
 ####
 ####
-#### stablished which is the cache temporal.
-####
-#### directory_cache="$directory_cache_home"
-####
-#### stablished a new variable
-####
-#### default_directory_temporal="$directory_cache"
-####
-####
 #### english: temporal files
 #### spanish: archivos temporales
 ####
@@ -455,15 +431,23 @@ output_logfinal="$directory_cache_necesary/$show_actual_date-text-final.txt"
 #### :rutina-inicial-sane-folders:
 ####
 ####
-#### cache root
+#### sane cache root
+####
+####
 if [ ! -d "$directory_cache_necesary" ]; then
 $command_mkdir -p $directory_cache_necesary &> /dev/null ; fi
 ####
-#### data root
+####
+#### sane data root
+####
+####
 if [ ! -d "$default_directory_data_necesary" ]; then
 $command_mkdir -p $default_directory_data_necesary &> /dev/null ; fi
 ####
-#### data tree
+####
+#### sane data tree
+####
+####
 if [ ! -d "$default_directory_control" ]; then 
 $command_mkdir -p "$default_directory_control" &> /dev/null ; fi
 if [ ! -d "$default_directory_template" ]; then
@@ -596,7 +580,7 @@ server_port_tcp=""
 server_port_udp=""     
 server_radio_online="https://www.tdtchannels.com/lists/radio.m3u8"
 time_server_waiting="9s"    
-without_first_option=""
+without_first_option="ls4"
 ####
 ####
 #### :rutina-final-variables-system:
@@ -617,7 +601,7 @@ head_waiting_cli="$title_md $text_info [ cli ] $head_waiting_all "
 head_waiting_gui="$title_md $text_info [ gui ] $head_waiting_all "
 head_waiting_log="$title_md $text_info [ log ] $head_waiting_all "
 head_waiting_pdf="$title_md $text_info [ pdf ] $head_waiting_all "
-head_give_cover="$title_md [ $cmd_name $cmd_version ] [ $X11_OR_WAYLAND ] \
+head_give_cover="$title_md [ $cmd_name $cmd_version ] \
 [ Options: $cmd_realpath options ]"
 give_load="$title_md $text_ok [ Load firewall ] [ Firewall With iptables ]"
 give_preferences="$title_md [ Configure ] [ $cmd_realpath preferences-modify ]"
@@ -641,13 +625,13 @@ message_without_guiroll="$title_md $text_fail [ install zenity ]"
 #### :rutina-inicial-variables-misc:
 ####
 ####
-#### proxy file
+#### config proxy file
 ####
 ####
 file_conf_clientproxy="$default_directory_proxy/fwiptables-proxy"
 ####
 ####
-#### radio music
+#### config radio music
 ####
 ####
 name_radio_group="radio.m3u8"
@@ -655,7 +639,7 @@ file_radio_config="$default_directory_radio/fwiptables-config-$name_radio_group"
 file_radio_cache="$default_directory_radio/fwiptables-cache-$name_radio_group"
 ####
 ####
-#### web adblock
+#### config web adblock
 ####
 ####
 web_blacklist_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
@@ -664,7 +648,7 @@ web_blacklist_adaway="https://raw.githubusercontent.com/AdAway/adaway.github.io/
 web_blacklist_stevenblack="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
 ####
 ####
-#### file adblock
+#### config file adblock
 ####
 ####
 file_blacklist_fademind="$default_directory_adblock/hosts.blacklist_fademind"
@@ -679,12 +663,9 @@ file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenbla
 #### :rutina-inicial-variables-update:
 ####
 ####
-#### Update variables when is there
-####
-####
 if [ -f "$file_default_preferences" ] ;
 then source $file_default_preferences ; fi
-if [ ! -f "$file_default_preferences" ] ;
+if [ ! -f "$file_default_preferences" ]
 then $cmd_realpath preferences-example &> $file_default_preferences ; fi
 ####
 ####
@@ -696,14 +677,18 @@ then $cmd_realpath preferences-example &> $file_default_preferences ; fi
 ####
 #### First option
 if [ "$first_option" = "$NULL" ] && [ "$without_first_option" = "$NULL" ] 
-then first_option="options" ; fi 
-if [ "$first_option" = "$NULL" ]; then first_option="$without_first_option" ; fi
+then first_option="list-options" ; fi 
+if [ "$first_option" = "$NULL" ]; 
+then first_option="$without_first_option" ; fi
 ####
 ####
 #### :rutina-final-option-without:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
 #### :rutina-inicial-variables-sane:
+####
+####
+#### sane basic variables
 ####
 ####
 case "$NULL" in "$choosed_iptables")         ;;
@@ -716,21 +701,23 @@ case "$NULL" in "$type_firewall")            ;;
 *)  type_firewall="no"                       ;; esac
 ####
 ####
-if [ "$allow_expert_commands" == "no" ]; then 
+#### configure expert commands
 ####
+####
+if [ "$allow_expert_commands" == "no" ]; then 
 case "$first_option" in exper*)
 echo "$title_md See in preferences allow_expert_commands to active it option"
 exit ;; esac
-####
 case "$second_option" in exper*)
 echo "$title_md See in preferences allow_expert_commands to active it option"
 exit ;; esac
-####
 fi
 ####
 ####
-if [ "$command_file" == "$NULL" ] || [ "$command_awk" == "$NULL" ]; then exit ;
-else cmd_format="$($command_file $0 | $command_awk '{print $2 "_" $3 "_" $4}')" ; fi
+#### get info to cmd_format
+####
+####
+cmd_format=$($command_file $0 | $command_awk '{print $2 "_" $3 "_" $4}')
 ####
 ####
 #### :rutina-final-variables-sane:
@@ -739,13 +726,14 @@ else cmd_format="$($command_file $0 | $command_awk '{print $2 "_" $3 "_" $4}')" 
 #### :rutina-inicial-favorite-iperf:
 ####
 ####
+#### choose iperf3 and the iperf to speed ip
+####
+####
 if [ "$favorite_iperf_command" == "$NULL" ]; then
 ####
 ####
 if [ "$command_iperf3"    != "$NULL" ]; then
 favorite_iperf_command="$command_iperf3" ; fi
-####
-####
 if [ "$command_iperf"   != "$NULL" ]; then
 favorite_iperf_command="$command_iperf" ; fi
 ####
@@ -759,17 +747,16 @@ fi
 #### :rutina-inicial-favorite-date:
 ####
 ####
+#### configure favorite date
+####
+####
 if [ "$favorite_date_command" == "$NULL" ]; then
 ####
 ####
 if [ "$command_rdate"   != "$NULL" ]; then
 favorite_date_command="$command_rdate -4 -a -n"  ; fi
-####
-####
 if [ "$command_sntp"    != "$NULL" ]; then
 favorite_date_command="$command_sntp"            ; fi
-####
-####
 if [ "$command_ntpdate" != "$NULL" ]; then
 favorite_date_command="$command_ntpdate"         ; fi
 ####
@@ -783,25 +770,20 @@ fi
 #### :rutina-inicial-favorite-editor:
 ####
 ####
+#### configure text editor
+####
+####
 if [ "$favorite_text_editor" == "$NULL" ]; then
 ####
 ####
 if [ "$command_vi"  != "$NULL" ]  ; then    
 favorite_text_editor="$command_vi"      ; fi
-####
-####
 if [ "$command_vim"  != "$NULL" ]  ; then   
 favorite_text_editor="$command_vim"     ; fi
-####
-####
 if [ "$command_pico" != "$NULL" ] ; then  
 favorite_text_editor="$command_pico"    ; fi
-####
-####
 if [ "$command_editor" != "$NULL" ] ; then  
 favorite_text_editor="$command_editor"  ; fi
-####
-####
 if [ "$command_nano"  != "$NULL" ] ; then   
 favorite_text_editor="$command_nano"    ; fi
 ####
@@ -813,6 +795,9 @@ fi
 ##########      english: search favorite text dialog: favorite text dialog     ##########
 ##########      spanish: busca preferido text dialogo: favorite text dialog    ##########
 #### :rutina-inicial-favorite-dialog:
+####
+####
+#### configure favorite dialog cli text
 ####
 ####
 if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
@@ -839,6 +824,9 @@ fi
 #### :rutina-inicial-favorite-graphicall:
 ####
 ####
+#### configure favorite graphicall gui
+####
+####
 if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
 ####
 ####
@@ -863,25 +851,20 @@ fi
 #### :rutina-inicial-favorite-browser:
 ####
 ####
+#### configure favorite browser text
+####
+####
 if [ "$favorite_text_browser" == "$NULL" ]; then
 ####
 ####
 if [ "$command_lynx"   != "$NULL" ] ; then  
 favorite_text_browser="$command_lynx"    ; fi
-####
-####
 if [ "$command_links"  != "$NULL" ] ; then  
 favorite_text_browser="$command_links"   ; fi
-####
-####
 if [ "$command_links2" != "$NULL" ] ; then  
 favorite_text_browser="$command_links2"  ; fi
-####
-####
 if [ "$command_elinks" != "$NULL" ] ; then  
 favorite_text_browser="$command_elinks"  ; fi
-####
-####
 if [ "$command_w3m" != "$NULL" ] ; then  
 favorite_text_browser="$command_w3m"  ; fi
 ####
@@ -895,17 +878,16 @@ fi
 #### :rutina-inicial-favorite-dhcp:
 ####
 ####
+#### configure favorite dhcp command
+####
+####
 if [ "$favorite_dhcp_command" == "$NULL" ]; then
 ####
 ####
 if [ "$command_dhcpcd"  != "$NULL" ]         ; then
 favorite_dhcp_command="$command_dhcpcd"           ; fi
-####
-####
 if [ "$command_dhclientscript" != "$NULL" ] ; then  
 favorite_dhcp_command="$command_dhclientscript"  ; fi
-####
-####
 if [ "$command_dhclient"   != "$NULL" ] ;      then  
 favorite_dhcp_command="$command_dhclient"         ; fi
 ####
@@ -919,17 +901,16 @@ fi
 #### :rutina-inicial-favorite-date-command:
 ####
 ####
+#### configure favorite dialog update time
+####
+####
 if [ "$favorite_date_command" == "$NULL" ]; then
 ####
 ####
 if [ "$command_rdate"   != "$NULL" ]; then  
 favorite_date_command="$command_rdate -4 -a -n"  ; fi
-####
-####
 if [ "$command_sntp"    != "$NULL" ]; then  
 favorite_date_command="$command_sntp"            ; fi
-####
-####
 if [ "$command_ntpdate" != "$NULL" ]; then  
 favorite_date_command="$command_ntpdate"         ; fi
 ####
@@ -947,7 +928,7 @@ if [ "$favorite_text_music" == "$NULL" ]; then
 ####
 ####
 if [ "$command_vlc" != "$NULL" ]; then  
-favorite_text_music="$command_vlc"     ; fi
+favorite_text_music="$command_vlc"      ; fi
 ####
 ####
 fi
@@ -1565,9 +1546,9 @@ if [ "$first_option" == "expert-cpufreq-info" ] ; then
 echo "$title_md [ $first_option ] [ show cpu frequence info ]"
 if [ "$command_cpufreqinfo" == "$NULL" ]; then
 echo "$title_md please install cpufreq-info"; fi
-####
-####
 $command_cpufreqinfo
+####
+####
 exit; fi
 ####
 ####
@@ -1615,6 +1596,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "expert-configs-load" ] ; then
+####
+####
 echo "$title_md [ $first_option ] [ load backups confiurations from choosed filename ]"
 if [ "$command_tar" == "$NULL" ]; then
 echo "$title_md Please install tar command"; exit ; fi
@@ -1636,6 +1619,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-wpa-scan" ]; then
+####
+####
 echo "$title_md [ $first_option ]  [ Show SSID from net wifi ] "
 if   [ "$command_iw" == "$NULL" ]; then 
 echo "$title_md $text_info [ Please, Install iw to work ]" ; exit ; fi
@@ -2597,7 +2582,7 @@ exit; fi
 #### :rutina-inicial-version:
 ####
 ####
-if [ "$first_option" == "version" ]; then 
+if [ "$first_option" == "version" ]; then
 echo "$text_md $text_md    Basename program: $cmd_basename             $text_md"
 echo "$text_md $text_md    Realpath program: $cmd_realpath             $text_md"
 echo "$text_md $text_md     Version program: $cmd_version              $text_md"
@@ -2611,6 +2596,7 @@ echo "$text_md $text_md         File Format: $cmd_format               $text_md"
 echo "$text_md $text_md   Requisite program: $cmd_requisite_program    $text_md"
 echo "$text_md $text_md Requisite firewall4: $cmd_requisite_firewall4  $text_md"
 echo "$text_md $text_md Requisite firewall6: $cmd_requisite_firewall6  $text_md"
+echo "$text_md $text_md         Proram PATH: $PATH                     $text_md"
 echo "$text_md $text_md     License program: $cmd_license              $text_md"
 ####
 ####
@@ -5325,7 +5311,7 @@ $cmd_directory/$cmd_name templates-regen &> /dev/null
 ####   spanish: Muestra el estatus final desde el instalador: program version
 ####
 ####
-$cmd_directory/$cmd_name version
+$cmd_realpath version
 #### 
 ####
 exit; fi
@@ -14061,7 +14047,7 @@ if [ "$launch_rules_firewall" != "yes" ]
 then echo $head_give_cover
 echo "### #$text_fail [ first option: $first_option \
 | without first option: $without_first_option ]"
-$cmd_realpath options ; exit ; fi
+$cmd_realpath list-options ; exit ; fi
 ####
 ####
 ##########    english: Update variables             ##########
@@ -15404,7 +15390,7 @@ for string_allow in $(echo $config_string_allowed | $command_sed 's/,/ /g'); do
 ####
 #### ipv4
 ####
-####holahola
+####
 $allow_use_ipv4 $allow_use_legacy \
 $command_ip4tableslegacy  -A  INPUT  \
 -m string --string $string_allow \
