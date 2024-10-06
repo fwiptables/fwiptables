@@ -4,8 +4,10 @@ Planed fixing bugs, Planed feacture adding .
 
 ## The planed fixed commit:     
 
+fully mac in rules
 ..
 
 ## The planed feature commit: 
 
+tui-menu
 ..
