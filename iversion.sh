@@ -72,8 +72,8 @@ exit ; fi
 #### the path to possible commands
 #### source /etc/profile                                   # source etc profile
 cmd_path="/sbin:/bin:/usr/sbin:/usr/bin"                   # Config for PATH
-cmd_where="which"                                          # Find each command
 PATH="$cmd_path"                                           # PATH for fwiptables
+cmd_where="which"                                          # Find each command
 #### The name file command
 cmd_basename="$(basename $0)"                              # Only name filename
 cmd_realpath="$(realpath $0)"                              # Full path filename
@@ -15531,9 +15531,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "load-custom" ]
+####
+####
 then if [ -f $default_directory_custom/$second_option ]
 then source $default_directory_custom/$second_option &> /dev/null
 else echo "$text_md $text_fail [ Config file not found ]"
+####
+####
 exit ; fi ; fi
 ####
 ####
@@ -15598,21 +15602,21 @@ $cmd_realpath eraserules &> /dev/null
 ####
 if [ "$allow_mac_whitelist" == "$NULL" ] ; then
 ####
-$command_ebtables -A INPUT  -s $config_mac_whitelist  -j ACCEPT \
--m comment --comment "mac whitelist" &> /dev/null
-$command_ebtables -A OUTPUT -d $config_mac_whitelist  -j ACCEPT \
--m comment --comment "mac whitelist" &> /dev/null
+$command_ebtables -A INPUT  -s $config_mac_whitelist -j ACCEPT  &> /dev/null
+$command_ebtables -A OUTPUT -d $config_mac_whitelist -j ACCEPT  &> /dev/null
+####
+####
+
+#### hola
+
 ####
 fi
 ####
 ####
 if [ "$allow_mac_blacklist" == "$NULL" ] ; then
 ####
-$command_ebtables -A INPUT  -s $config_mac_blacklist  -j $config_close_deny \
--m comment --comment "mac blacklist"  &> /dev/null
-$allow_mac_blacklist $command_ebtables -A OUTPUT \
--d $config_mac_blacklist  -j $config_close_deny \
--m comment --comment "mac blacklist" &> /dev/null
+$command_ebtables -A INPUT  -s ! $config_mac_whitelist -j ACCEPT  &> /dev/null
+$command_ebtables -A OUTPUT -d ! $config_mac_whitelist -j ACCEPT  &> /dev/null
 ####
 fi
 ####
