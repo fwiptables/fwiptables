@@ -2681,6 +2681,11 @@ exit; fi
 if [ "$first_option" == "version" ]; then
 ####
 ####
+if [ "$(echo $XDG_SEAT $XDG_SESSION_TYPE)" != "$NULL" ]; then
+echo "$text_md $text_md  Session Graphicall: $XDG_SESSION_TYPE         $text_md"
+fi
+####
+####
 echo "$text_md $text_md    Basename program: $cmd_basename             $text_md"
 echo "$text_md $text_md    Realpath program: $cmd_realpath             $text_md"
 echo "$text_md $text_md     Version program: $cmd_version              $text_md"
