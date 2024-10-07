@@ -15605,11 +15605,6 @@ if [ "$allow_mac_whitelist" == "$NULL" ] ; then
 $command_ebtables -A INPUT  -s $config_mac_whitelist -j ACCEPT  &> /dev/null
 $command_ebtables -A OUTPUT -d $config_mac_whitelist -j ACCEPT  &> /dev/null
 ####
-####
-
-#### hola
-
-####
 fi
 ####
 ####
