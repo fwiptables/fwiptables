@@ -67,11 +67,13 @@ exit ; fi
 ####
 #### ########## ########## ##########
 #### variables configs for fwiptables program
+#### ########## ########## ##########
 ####
 ####
 #### source /etc/profile                                   # source etc profile
 cmd_path="/sbin:/bin:/usr/sbin:/usr/bin"                   # Config for PATH
 PATH="$cmd_path"                                           # PATH for fwiptables
+#### find any command
 cmd_where="which"                                          # Find each command
 #### The name file command
 cmd_basename="$(basename $0)"                              # Only name filename
@@ -82,7 +84,7 @@ cmd_month="10"                                             # Number mouth versio
 cmd_letter="C"                                             # Number letter version
 cmd_version="$cmd_year-$cmd_month-$cmd_letter"             # Final date like number version
 cmd_date="Year 20$cmd_year / Month $cmd_month"
-#### the install location
+#### the installed location
 cmd_name="fwiptables"                                      # Filename installed
 cmd_directory="/usr/bin"                                   # Directory installed
 #### The data version
@@ -90,7 +92,7 @@ cmd_developer="Francisco Garcia"                           # Actual developer
 cmd_contact="fwiptables@gmx.com"                           # Actual contact
 cmd_shortdescription="FireWall With iptables"              # Description short
 cmd_longdescription="iptables template in one script"      # Description long
-cmd_requisite_program="sudo,awk,sed,file,cut"              # Program requisite
+cmd_requisite_program="sudo,awk,sed,file,cut,date"         # Program requisite
 cmd_requisite_firewall4="iptables-legacy,iptables-nft"     # Firewall requisite
 cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # Firewall requisite
 cmd_license="LGPL v2, GPL v2"                              # Program license
