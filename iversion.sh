@@ -77,7 +77,7 @@ PATH="$cmd_path"                                           # PATH for fwiptables
 cmd_where="which"                                          # Find each command
 #### The name file command
 cmd_basename="$(basename $0)"                              # Only name filename
-cmd_realpath="$(realpath $0)"                              # Full path filename
+cmd_realpath="$(which $0)"                                 # Full path filename
 #### The number version
 cmd_year="24"                                              # Number year version
 cmd_month="10"                                             # Number mouth version
@@ -263,16 +263,6 @@ command_zgrep="$($cmd_where zgrep)"
 ####
 ####
 #### :rutina-final-possible-commands:
-##########   english: actual date: program variable          ##########
-##########   spanish: fecha actual: variable del programa    ##########
-#### :rutina-inicial-actual-date:
-####
-####
-cmd_actual_date="$($command_date +_DAY_%Y-%m-%d_HOUR_%H-%M-%S)"
-cmd_opt_date="$cmd_actual_date-_OPT_"
-####
-####
-#### :rutina-final-final-date:
 ##########   english: necesary programs: programs path           ##########
 ##########   spanish: necesarios programas: ruta de programas    ##########
 #### :rutina-inicial-necesary-commands:
@@ -1571,6 +1561,41 @@ exit; fi
 ####
 ####
 #### :rutina-final-config-autolog:
+##########    english: version: system script, the version option              ##########
+##########    spanish: version: script de sistema, la opcion mostrar version   ##########
+#### :rutina-inicial-version:
+####
+####
+if [ "$first_option" == "version" ]; then
+####
+####
+if [ "$(echo $XDG_SEAT $XDG_SESSION_TYPE)" != "$NULL" ]; then
+echo "$text_md $text_md  Session Graphicall: $XDG_SESSION_TYPE         $text_md"
+fi
+####
+####
+echo "$text_md $text_md    Basename program: $cmd_basename             $text_md"
+echo "$text_md $text_md    Realpath program: $cmd_realpath             $text_md"
+echo "$text_md $text_md     Version program: $cmd_version              $text_md"
+echo "$text_md $text_md        Date program: $cmd_date                 $text_md"
+echo "$text_md $text_md   Short description: $cmd_shortdescription     $text_md"
+echo "$text_md $text_md    Long description: $cmd_longdescription      $text_md"
+echo "$text_md $text_md      Data Directory: $directory_data_necesary  $text_md"
+echo "$text_md $text_md     Cache Directory: $directory_cache_necesary $text_md"
+echo "$text_md $text_md    Developer Actual: $cmd_developer            $text_md"
+echo "$text_md $text_md        Email Report: $cmd_contact              $text_md"
+echo "$text_md $text_md         File Format: $cmd_format               $text_md"
+echo "$text_md $text_md         Config PATH: $PATH                     $text_md"
+echo "$text_md $text_md   Requisite program: $cmd_requisite_program    $text_md"
+echo "$text_md $text_md Requisite firewall4: $cmd_requisite_firewall4  $text_md"
+echo "$text_md $text_md Requisite firewall6: $cmd_requisite_firewall6  $text_md"
+echo "$text_md $text_md     License program: $cmd_license              $text_md"
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-version:
 ##########    english: expert-cpufreq-info: info cpu frequence                 ##########
 ##########    spanish: expert-cpufreq-info: informacion de frecuencia de cpu   ##########
 #### :rutina-inicial-expert-cpufreq:
@@ -2673,41 +2698,6 @@ exit; fi
 ####
 #### :rutina-final-examples:
 #### :rutina-inicial-options-examples:
-##########    english: version: system script, the version option              ##########
-##########    spanish: version: script de sistema, la opcion mostrar version   ##########
-#### :rutina-inicial-version:
-####
-####
-if [ "$first_option" == "version" ]; then
-####
-####
-if [ "$(echo $XDG_SEAT $XDG_SESSION_TYPE)" != "$NULL" ]; then
-echo "$text_md $text_md  Session Graphicall: $XDG_SESSION_TYPE         $text_md"
-fi
-####
-####
-echo "$text_md $text_md    Basename program: $cmd_basename             $text_md"
-echo "$text_md $text_md    Realpath program: $cmd_realpath             $text_md"
-echo "$text_md $text_md     Version program: $cmd_version              $text_md"
-echo "$text_md $text_md        Date program: $cmd_date                 $text_md"
-echo "$text_md $text_md   Short description: $cmd_shortdescription     $text_md"
-echo "$text_md $text_md    Long description: $cmd_longdescription      $text_md"
-echo "$text_md $text_md      Data Directory: $directory_data_necesary  $text_md"
-echo "$text_md $text_md     Cache Directory: $directory_cache_necesary $text_md"
-echo "$text_md $text_md    Developer Actual: $cmd_developer            $text_md"
-echo "$text_md $text_md        Email Report: $cmd_contact              $text_md"
-echo "$text_md $text_md         File Format: $cmd_format               $text_md"
-echo "$text_md $text_md         Config PATH: $PATH                     $text_md"
-echo "$text_md $text_md   Requisite program: $cmd_requisite_program    $text_md"
-echo "$text_md $text_md Requisite firewall4: $cmd_requisite_firewall4  $text_md"
-echo "$text_md $text_md Requisite firewall6: $cmd_requisite_firewall6  $text_md"
-echo "$text_md $text_md     License program: $cmd_license              $text_md"
-####
-####
-exit ; fi
-####
-####
-#### :rutina-final-version:
 ##########    english: weather: show the weather with wttr.in     ##########
 ##########    spanish: el tiempo: muestra el tiempo con wttr.in   ##########
 #### :rutina-inicial-expert-showweather:
@@ -5551,7 +5541,7 @@ echo "$text_md $text_md $text_md $text_md $text_md Installing: $cmd_name (waitin
 #### 
 #### 
 #### echo "$title_md $text_info [ $cmd_name installing.. ]"
-cp $cmd_realpath $cmd_directory/$cmd_name
+cp $(realpath $0) $cmd_directory/$cmd_name
 chmod 555 "$cmd_directory/$cmd_name" &> /dev/null 
 ####
 ####
