@@ -65,11 +65,10 @@ exit ; fi
 ##########     spanish: nombre, descripcion y version   ##########
 #### :rutina-inicial-enviroment-vars:
 ####
-####
+#### ########## ########## ##########
 #### variables configs for fwiptables program
 ####
 ####
-#### the path to possible commands
 #### source /etc/profile                                   # source etc profile
 cmd_path="/sbin:/bin:/usr/sbin:/usr/bin"                   # Config for PATH
 PATH="$cmd_path"                                           # PATH for fwiptables
@@ -82,6 +81,7 @@ cmd_year="24"                                              # Number year version
 cmd_month="10"                                             # Number mouth version
 cmd_letter="C"                                             # Number letter version
 cmd_version="$cmd_year-$cmd_month-$cmd_letter"             # Final date like number version
+cmd_date="Year 20$cmd_year / Month $cmd_month"
 #### the install location
 cmd_name="fwiptables"                                      # Filename installed
 cmd_directory="/usr/bin"                                   # Directory installed
@@ -94,13 +94,18 @@ cmd_requisite_program="sudo,awk,sed,file,cut"              # Program requisite
 cmd_requisite_firewall4="iptables-legacy,iptables-nft"     # Firewall requisite
 cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # Firewall requisite
 cmd_license="LGPL v2, GPL v2"                              # Program license
+#### info xdg session
 cmd_session="$XDG_SESSION_TYPE"                            # Sesssion XDG
 cmd_xdg="/run/user/0"                                      # Folder XDG
-####
-####
-#### cmd format file
+#### info file format
 cmd_format=$(file $0 | \
 awk '{print $2 "_" $3 "_" $4}')                            # File format
+#### info date logs 
+cmd_actual_date="$(date +_DAY_%Y-%m-%d_HOUR_%H-%M-%S)"     # log date
+cmd_opt_date="$cmd_actual_date-_OPT_"                      # log date
+####
+####
+#### ########## ########## ##########
 ####
 ####
 #### :rutina-final-enviroment-vars:
@@ -261,8 +266,8 @@ command_zgrep="$($cmd_where zgrep)"
 #### :rutina-inicial-actual-date:
 ####
 ####
-show_actual_date="$($command_date +_DAY_%Y-%m-%d_HOUR_%H-%M-%S)"
-opt_actual_date="$show_actual_date-_OPT_"
+cmd_actual_date="$($command_date +_DAY_%Y-%m-%d_HOUR_%H-%M-%S)"
+cmd_opt_date="$cmd_actual_date-_OPT_"
 ####
 ####
 #### :rutina-final-final-date:
@@ -420,12 +425,12 @@ file_default_autolog="$default_directory_autolog/default-autolog-$cmd_version"
 #### spanish: archivos temporales
 ####
 ####
-temporal_text="$directory_cache_necesary/$show_actual_date-text.txt"
-temporal_textfinal="$directory_cache_necesary/$show_actual_date-text-final.txt"
-temporal_gui="$directory_cache_necesary/$show_actual_date-textfinal.txt"
-temporal_guifinal="$directory_cache_necesary/$show_actual_date-text-final.txt"
-output_log="$directory_cache_necesary/$show_actual_date-textfinal.txt"
-output_logfinal="$directory_cache_necesary/$show_actual_date-text-final.txt"
+temporal_text="$directory_cache_necesary/$cmd_actual_date-text.txt"
+temporal_textfinal="$directory_cache_necesary/$cmd_actual_date-text-final.txt"
+temporal_gui="$directory_cache_necesary/$cmd_actual_date-textfinal.txt"
+temporal_guifinal="$directory_cache_necesary/$cmd_actual_date-text-final.txt"
+output_log="$directory_cache_necesary/$cmd_actual_date-textfinal.txt"
+output_logfinal="$directory_cache_necesary/$cmd_actual_date-text-final.txt"
 ####
 ####
 #### :rutina-final-config-files:
@@ -1445,11 +1450,11 @@ if [ "$first_option" == "log" ]
 ####
 then echo "$head_waiting_log"
 echo "### ### $text_info [ $second_option $third_option $quad_option ] \
-[ $show_actual_date ]" &> $output_log
+[ $cmd_actual_date ]" &> $output_log
 $cmd_realpath $second_option $third_option $quad_option &> $output_log
 cat $output_log | $command_grep -E -v Warning: \
-&> $default_directory_log/$opt_actual_date-$second_option.txt
-echo "$title_md [ file ]  $default_directory_log/$opt_actual_date-$second_option.txt"
+&> $default_directory_log/$cmd_opt_date-$second_option.txt
+echo "$title_md [ file ]  $default_directory_log/$cmd_opt_date-$second_option.txt"
 ####
 ####
 exit ; fi
@@ -1468,8 +1473,8 @@ echo "$head_waiting_pdf"
 sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &> /dev/null
 #### send print to home output fwiptables.pdf
 $cmd_realpath $second_option $third_option | $command_convert -page A3 text:- \
-$default_directory_pdf/$opt_actual_date-$second_option.pdf 
-echo "$title_md [ file ] $default_directory_pdf/$opt_actual_date-$second_option.pdf"
+$default_directory_pdf/$cmd_opt_date-$second_option.pdf 
+echo "$title_md [ file ] $default_directory_pdf/$cmd_opt_date-$second_option.pdf"
 ####
 ####
 exit ; fi
@@ -1496,7 +1501,7 @@ exit ; fi
 if [ "$allow_save_autolog" != "no" ]
 ####
 ####
-then head_autolog="date: $show_actual_date \
+then head_autolog="date: $cmd_actual_date \
 path: $cmd_realpath ver: $cmd_version \
 opt: $first_option $second_option $third_option"
 echo $head_autolog >> $file_default_autolog
@@ -1514,7 +1519,7 @@ fi
 if [ "$allow_show_time" != "no" ]
 ####
 ####
-then config_show_timespam="$title_md Date: $show_actual_date"
+then config_show_timespam="$title_md Date: $cmd_actual_date"
 echo $config_show_timespam
 ####
 ####
@@ -2677,6 +2682,7 @@ if [ "$first_option" == "version" ]; then
 echo "$text_md $text_md    Basename program: $cmd_basename             $text_md"
 echo "$text_md $text_md    Realpath program: $cmd_realpath             $text_md"
 echo "$text_md $text_md     Version program: $cmd_version              $text_md"
+echo "$text_md $text_md        Date program: $cmd_date                 $text_md"
 echo "$text_md $text_md   Short description: $cmd_shortdescription     $text_md"
 echo "$text_md $text_md    Long description: $cmd_longdescription      $text_md"
 echo "$text_md $text_md      Data Directory: $directory_data_necesary  $text_md"
@@ -2684,10 +2690,10 @@ echo "$text_md $text_md     Cache Directory: $directory_cache_necesary $text_md"
 echo "$text_md $text_md    Developer Actual: $cmd_developer            $text_md"
 echo "$text_md $text_md        Email Report: $cmd_contact              $text_md"
 echo "$text_md $text_md         File Format: $cmd_format               $text_md"
+echo "$text_md $text_md         Config PATH: $PATH                     $text_md"
 echo "$text_md $text_md   Requisite program: $cmd_requisite_program    $text_md"
 echo "$text_md $text_md Requisite firewall4: $cmd_requisite_firewall4  $text_md"
 echo "$text_md $text_md Requisite firewall6: $cmd_requisite_firewall6  $text_md"
-echo "$text_md $text_md         Proram PATH: $PATH                     $text_md"
 echo "$text_md $text_md     License program: $cmd_license              $text_md"
 ####
 ####
@@ -3447,13 +3453,13 @@ echo "$title_md [ $first_option ] \
 echo
 if [ "$favorite_date_command" == "$NULL" ]
 then echo "$text_md $text_fail [ Install one ntp client ]" ; fi
-echo "$text_md Old date: $show_actual_date"
+echo "$text_md Old date: $cmd_actual_date"
 echo "$text_md [ Updating the time and the date .. ]"
 pool0="0.debian.pool.ntp.org"
 pool1="1.debian.pool.ntp.org"
 pool2="2.debian.pool.ntp.org"
 pool3="3.debian.pool.ntp.org"
-$favorite_date_command $pool0 && echo -e "\n With New date: $show_actual_date"
+$favorite_date_command $pool0 && echo -e "\n With New date: $cmd_actual_date"
 ####
 ####
 exit; fi
@@ -6176,13 +6182,13 @@ echo "$title_md [ $first_option ] \
 echo
 if [ "$favorite_date_command" == "$NULL" ]; then
 echo "$text_md $text_fail [ Install one ntp client ]" ; fi
-echo "$text_md Old date: $show_actual_date"
+echo "$text_md Old date: $cmd_actual_date"
 echo "$text_md [ Updating the time and the date .. ]"
 pool0="0.debian.pool.ntp.org"
 pool1="1.debian.pool.ntp.org"
 pool2="2.debian.pool.ntp.org"
 pool3="3.debian.pool.ntp.org"
-$favorite_date_command $pool0 && echo -e "\n With New date: $show_actual_date"
+$favorite_date_command $pool0 && echo -e "\n With New date: $cmd_actual_date"
 ####
 ####
 exit; fi
@@ -7468,7 +7474,7 @@ $cmd_realpath -gui-zenity preferences-modify
 ####
 ####
 "$NULL")  exit ;;
-*) fecha_temporal="$show_actual_date"
+*) fecha_temporal="$cmd_actual_date"
 $cmd_realpath $menugtk &> /tmp/fwiptables-$fecha_temporal
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7659,7 +7665,7 @@ $cmd_realpath -gui-yad preferences-modify
 #### spanish: las demas opciones   ####
 ####
 ####
-*) fecha_temporal="$show_actual_date"
+*) fecha_temporal="$cmd_actual_date"
 $cmd_realpath $menugtk &> /tmp/fwiptables-$fecha_temporal
 $command_yad --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
