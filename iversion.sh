@@ -81,9 +81,10 @@ cmd_where="which"                                          # Find each command
 #### The name file command
 cmd_basename="$(basename $0)"                              # Only name filename
 cmd_realpath="$cmd_directory/$cmd_name"                    # Full path filename
+cmd_command="$cmd_basename"                                # your choosed command
 #### See it if it is installed
-if [ ! -f "$cmd_realpath" ] ; then cp $0 $cmd_realpath ;
-echo "Firewall fwiptables installed in $cmd_realpath" ; exit ; fi
+if [ ! -f "$cmd_command" ] ; then cp $0 $cmd_command ;
+echo "Firewall fwiptables installed in $cmd_command" ; exit ; fi
 #### The number version
 cmd_year="24"                                              # Number year version
 cmd_month="10"                                             # Number mouth version
@@ -95,7 +96,7 @@ cmd_developer="Francisco Garcia"                           # Actual developer
 cmd_contact="fwiptables@gmx.com"                           # Actual contact
 cmd_shortdescription="FireWall With iptables"              # Description short
 cmd_longdescription="iptables template in one script"      # Description long
-cmd_requisite_program="sudo,awk,sed,file,cut,date"         # Program requisite
+cmd_requisite_program="sudo,awk,sed,file,cut,date,cat"     # Program requisite
 cmd_requisite_firewall4="iptables-legacy,iptables-nft"     # Firewall requisite
 cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # Firewall requisite
 cmd_license="LGPL v2, GPL v2"                              # Program license
@@ -157,6 +158,7 @@ command_arptables="$($cmd_where arptables)"
 command_awk="$($cmd_where awk)"
 command_bash="$($cmd_where bash)"
 command_bc="$($cmd_where bc)"
+command_cat="$($cmd_where cat)"
 command_convert="$($cmd_where convert)"
 command_cpufreqinfo="$($cmd_where cpufreq-info)"
 command_cpupower="$($cmd_where cpupower)"
@@ -274,7 +276,7 @@ command_zgrep="$($cmd_where zgrep)"
 #### system requisite utils
 for requisite in $(echo $cmd_requisite_program | sed 's/,/ /g') ; do 
 if [ "$($cmd_where $requisite)" == "$NULL" ]; then
-echo "### program $requisite is necesary to work $cmd_basename"
+echo "### program $requisite is necesary to work $cmd_command"
 echo "### the requiste are $cmd_requisite_program"
 exit; fi ; done
 ####
@@ -282,7 +284,7 @@ exit; fi ; done
 #### system requisite firewall4
 for requisite in $(echo $cmd_requisite_firewall4 | sed 's/,/ /g') ; do 
 if [ "$($cmd_where $requisite)" == "$NULL" ]; then
-echo "### program $requisite is necesary to work $cmd_basename"
+echo "### program $requisite is necesary to work $cmd_command"
 echo "### the requiste are $cmd_requisite_firewall4"
 exit; fi ; done
 ####
@@ -290,7 +292,7 @@ exit; fi ; done
 #### system requisite firewall6
 for requisite in $(echo $cmd_requisite_firewall6 | sed 's/,/ /g') ; do 
 if [ "$($cmd_where $requisite)" == "$NULL" ]; then
-echo "### program $requisite is necesary to work $cmd_basename"
+echo "### program $requisite is necesary to work $cmd_command"
 echo "### the requiste are $cmd_requisite_firewall6"
 exit; fi ; done
 ####
@@ -304,7 +306,7 @@ exit; fi ; done
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_dir="$(pwd)" ;
 #### #### english: option for default    #### spanish: opcion por defecto
-zero_option="$cmd_realpath" ;
+zero_option="$cmd_command" ;
 #### #### english: variables to launch   #### spanish: variables a lanzar
 first_option="$(echo $1 | $command_sed s/\\///g -)"  ;
 #### #### english: variable without "/"  #### spanish: variable sin "/"
@@ -420,12 +422,12 @@ file_default_autolog="$default_directory_autolog/default-autolog-$cmd_version"
 #### spanish: archivos temporales
 ####
 ####
-temporal_text="$directory_cache_necesary/$cmd_actual_date-text.txt"
-temporal_textfinal="$directory_cache_necesary/$cmd_actual_date-text-final.txt"
-temporal_gui="$directory_cache_necesary/$cmd_actual_date-textfinal.txt"
-temporal_guifinal="$directory_cache_necesary/$cmd_actual_date-text-final.txt"
-output_log="$directory_cache_necesary/$cmd_actual_date-textfinal.txt"
-output_logfinal="$directory_cache_necesary/$cmd_actual_date-text-final.txt"
+temporal_text="$directory_cache_necesary/$cmd_opt_date-text.txt"
+temporal_textfinal="$directory_cache_necesary/$cmd_opt_date-text-final.txt"
+temporal_gui="$directory_cache_necesary/$cmd_opt_date-textfinal.txt"
+temporal_guifinal="$directory_cache_necesary/$cmd_opt_date-text-final.txt"
+output_log="$directory_cache_necesary/$cmd_opt_date-textfinal.txt"
+output_logfinal="$directory_cache_necesary/$cmd_opt_date-text-final.txt"
 ####
 ####
 #### :rutina-final-config-files:
@@ -583,7 +585,7 @@ server_port_tcp=""
 server_port_udp=""     
 server_radio_online="https://www.tdtchannels.com/lists/radio.m3u8"
 time_server_waiting="9s"    
-without_first_option="ls4"
+without_first_option="options"
 ####
 ####
 #### :rutina-final-variables-system:
@@ -605,9 +607,9 @@ head_waiting_gui="$title_md $text_info [ gui ] $head_waiting_all "
 head_waiting_log="$title_md $text_info [ log ] $head_waiting_all "
 head_waiting_pdf="$title_md $text_info [ pdf ] $head_waiting_all "
 head_give_cover="$title_md [ $cmd_name $cmd_version ] \
-[ Options: $cmd_realpath options ]"
+[ Options: $cmd_command options ]"
 give_load="$title_md $text_ok [ Load firewall ] [ Firewall With iptables ]"
-give_preferences="$title_md [ Configure ] [ $cmd_realpath preferences-modify ]"
+give_preferences="$title_md [ Configure ] [ $cmd_command preferences-modify ]"
 nada="$(echo -n)" ; 
 message_without_support="[ Without support for output cli for this option ]"
 message_without_narrow="$title_md $text_fail [ narrow ] $message_without_support"
@@ -669,7 +671,7 @@ file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenbla
 if [ -f "$file_default_preferences" ] ;
 then source $file_default_preferences ; fi
 if [ ! -f "$file_default_preferences" ]
-then $cmd_realpath preferences-example &> $file_default_preferences ; fi
+then $cmd_command preferences-example &> $file_default_preferences ; fi
 ####
 ####
 #### :rutina-final-variables-update-secondtime:
@@ -1243,14 +1245,14 @@ esac
 ####
 ####
 case $first_option in 
-"ls4") $cmd_realpath list4 &> $temporal_text-list4
-cat $temporal_text-list4 | $command_grep -E -v Warning: ; exit ;;
-"ls6") $cmd_realpath list6 &> $temporal_text-list6
-cat $temporal_text-list6 | $command_grep -E -v Warning: ; exit ;;
-"lsn4") $cmd_realpath listn4 &> $temporal_text-listn4
-cat $temporal_text-listn4 | $command_grep -E -v Warning: ; exit ;;
-"lsn6") $cmd_realpath listn6 &> $temporal_text-listn6
-cat $temporal_text-listn6 | $command_grep -E -v Warning: ; exit ;;
+"ls4") $cmd_command list4 &> $temporal_text-list4
+$command_cat $temporal_text-list4 | $command_grep -E -v Warning: ; exit ;;
+"ls6") $cmd_command list6 &> $temporal_text-list6
+$command_cat $temporal_text-list6 | $command_grep -E -v Warning: ; exit ;;
+"lsn4") $cmd_command listn4 &> $temporal_text-listn4
+$command_cat $temporal_text-listn4 | $command_grep -E -v Warning: ; exit ;;
+"lsn6") $cmd_command listn6 &> $temporal_text-listn6
+$command_cat $temporal_text-listn6 | $command_grep -E -v Warning: ; exit ;;
 esac ; 
 ####
 ####
@@ -1268,7 +1270,7 @@ case "$first_option" in
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom")
-$cmd_realpath templates-regen &> /dev/null ;; esac
+$cmd_command templates-regen &> /dev/null ;; esac
 ####
 ####
 if [ "$first_option" == "txt" ]; then 
@@ -1277,7 +1279,7 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom") $cmd_realpath $second_option $third_option ; exit ;; esac ; fi
+"modify-custom") $cmd_command $second_option $third_option ; exit ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "narrowtxt" ]; then 
@@ -1286,7 +1288,7 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom") $cmd_realpath $second_option $third_option ; exit ;; esac ; fi
+"modify-custom") $cmd_command $second_option $third_option ; exit ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "cli" ]; then 
@@ -1295,7 +1297,7 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom") $cmd_realpath $second_option $third_option ; exit ;; esac ; fi
+"modify-custom") $cmd_command $second_option $third_option ; exit ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "gui" ]; then 
@@ -1305,7 +1307,7 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
-"modify-custom") $cmd_realpath templates-regen  &> /dev/null ;; esac ; fi
+"modify-custom") $cmd_command templates-regen  &> /dev/null ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "log" ]; then 
@@ -1354,24 +1356,24 @@ if [ "$first_option" == "narrowtxt" ] ;then echo "$head_waiting_narrow"
 ####
 ####
 case $second_option in 
-ls*|list*) $cmd_realpath $second_option &> $temporal_text 
-cat $temporal_text | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
+ls*|list*) $cmd_command $second_option &> $temporal_text 
+$command_cat  $temporal_text | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $10 " " $11 " " $12 " " \
 $13 " " $14 " " $15 " " $16 " " $17 " " $18 \
 " " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' &> $temporal_textfinal
-cat $temporal_textfinal | $command_grep -E -v Warning: ; exit ;;
-"$NULL") $cmd_realpath \
+$command_cat  $temporal_textfinal | $command_grep -E -v Warning: ; exit ;;
+"$NULL") $cmd_command \
 | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $11 " " $12 " " \
 $13 " " $14 " " $15 " " $16 " " $17 " " $18 \
 " " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' &> $temporal_text
-cat $temporal_text | $command_grep -E -v Warning: ; exit ;;
-*) $cmd_realpath $second_option $third_option $quad_option \
+$command_cat  $temporal_text | $command_grep -E -v Warning: ; exit ;;
+*) $cmd_command $second_option $third_option $quad_option \
 | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $10 " " $11 " " $12 " " \
 $13 " " $14 " " $15 " " $16 " " $17 " " $18 \
 " " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' &> $temporal_text
-cat $temporal_text | $command_grep -E -v Warning: ; exit ;;
+$command_cat  $temporal_text | $command_grep -E -v Warning: ; exit ;;
 #### *) echo "$title_md Narrow option works only to list rules" ;; 
 esac
 ####
@@ -1392,9 +1394,9 @@ if [ "$first_option" == "txt" ]; then echo "$head_waiting_txt"
 ####
 ####
 case $second_option in 
-ls*|list*) $cmd_realpath $second_option $third_option &> $temporal_text
-cat $temporal_text | $command_grep -E -v Warning: ; exit ;;
-*) $cmd_realpath $second_option $third_option $quad_option ; exit ;; esac ; fi
+ls*|list*) $cmd_command $second_option $third_option &> $temporal_text
+$command_cat  $temporal_text | $command_grep -E -v Warning: ; exit ;;
+*) $cmd_command $second_option $third_option $quad_option ; exit ;; esac ; fi
 ####
 ####
 #### :rutina-final-alias-text:
@@ -1414,21 +1416,21 @@ echo "$text_md $text_info Please install or dialog or whiptail to work with cli"
 exit; fi
 ####
 #### --clear --notags
-#### thebox="$($cmd_realpath txt $second_option $third_option)"
+#### thebox="$($cmd_command txt $second_option $third_option)"
 ####
 #### --clear --notags
 case $second_option in 
 ls*|list*) $favorite_basename_textdialog --clear --notags \
 --title "Cli Menu With $cmd_version" \
---msgbox "$($cmd_realpath txt $second_option)" 0 0 ; exit ;;
+--msgbox "$($cmd_command txt $second_option)" 0 0 ; exit ;;
 *) $favorite_basename_textdialog --clear --notags \
 --title "Cli Menu With $cmd_version" \
---msgbox "$($cmd_realpath $second_option $third_option)" 0 0 ; exit ;;
+--msgbox "$($cmd_command $second_option $third_option)" 0 0 ; exit ;;
 #### *) echo "$title_md cli works only with list options" ; exit ;;
 esac ; fi
 ####
 ####
-#### $cmd_realpath text-pause ; clear ; exit ; fi
+#### $cmd_command text-pause ; clear ; exit ; fi
 ####
 ####
 #### :rutina-final-alias-cli:
@@ -1446,8 +1448,8 @@ if [ "$first_option" == "log" ]
 then echo "$head_waiting_log"
 echo "### ### $text_info [ $second_option $third_option $quad_option ] \
 [ $cmd_actual_date ]" &> $output_log
-$cmd_realpath $second_option $third_option $quad_option &> $output_log
-cat $output_log | $command_grep -E -v Warning: \
+$cmd_command $second_option $third_option $quad_option &> $output_log
+$command_cat  $output_log | $command_grep -E -v Warning: \
 &> $default_directory_log/$cmd_opt_date-$second_option.txt
 echo "$title_md [ file ]  $default_directory_log/$cmd_opt_date-$second_option.txt"
 ####
@@ -1467,7 +1469,7 @@ echo "$title_md install imagemagick to print pdf to $default_directory_pdf" ; ex
 echo "$head_waiting_pdf"
 sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &> /dev/null
 #### send print to home output fwiptables.pdf
-$cmd_realpath $second_option $third_option | $command_convert -page A3 text:- \
+$cmd_command $second_option $third_option | $command_convert -page A3 text:- \
 $default_directory_pdf/$cmd_opt_date-$second_option.pdf 
 echo "$title_md [ file ] $default_directory_pdf/$cmd_opt_date-$second_option.pdf"
 ####
@@ -1481,7 +1483,7 @@ exit ; fi
 if [ "$first_option" == "silent" ]
 ####
 ####
-then $cmd_realpath "$second_option" "$third_option" &> /dev/null
+then $cmd_command "$second_option" "$third_option" &> /dev/null
 ####
 ####
 exit ; fi
@@ -1497,7 +1499,7 @@ if [ "$allow_save_autolog" != "no" ]
 ####
 ####
 then head_autolog="date: $cmd_actual_date \
-path: $cmd_realpath ver: $cmd_version \
+path: $cmd_command ver: $cmd_version \
 opt: $first_option $second_option $third_option"
 echo $head_autolog >> $file_default_autolog
 ####
@@ -1555,7 +1557,7 @@ echo "$title_md [ $first_option ] [ show $file_default_autolog ] "
 echo "$title_md $text_info [ last 50 lines from file showed ] [ $file_default_autolog ]"
 if [ ! -f $file_default_autolog ]; then touch $file_default_autolog ; fi
 echo
-cat  "$file_default_autolog" | tail -50
+$command_cat   "$file_default_autolog" | tail -50
 echo
 echo "$title_md $text_info [ last 50 lines from file showed ] [ $file_default_autolog ]"
 ####
@@ -1577,8 +1579,8 @@ echo "$text_md $text_md  Session Graphicall: $XDG_SESSION_TYPE         $text_md"
 fi
 ####
 ####
-echo "$text_md $text_md    Basename program: $cmd_basename             $text_md"
-echo "$text_md $text_md    Realpath program: $cmd_realpath             $text_md"
+echo "$text_md $text_md    Basename program: $cmd_command             $text_md"
+echo "$text_md $text_md    Realpath program: $cmd_command             $text_md"
 echo "$text_md $text_md     Version program: $cmd_version              $text_md"
 echo "$text_md $text_md        Date program: $cmd_date                 $text_md"
 echo "$text_md $text_md   Short description: $cmd_shortdescription     $text_md"
@@ -1692,7 +1694,7 @@ if   [ "$first_option" == "expert-wpa-scan" ]; then
 echo "$title_md [ $first_option ]  [ Show SSID from net wifi ] "
 if   [ "$command_iw" == "$NULL" ]; then 
 echo "$title_md $text_info [ Please, Install iw to work ]" ; exit ; fi
-for a in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1)
+for a in $($command_cat  /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1)
 do $command_ifconfig $a up
 $command_iw $a scan | $command_grep -E -i "on $a|ssid" ; done
 ####
@@ -1719,7 +1721,7 @@ if [ "$second_option" == "$NULL" ]; then
 echo "$title_md $text_fail use: $first_option nameconfig"; exit ; fi
 ####
 ####
-$cmd_realpath expert-wpa-regen
+$cmd_command expert-wpa-regen
 cp $default_directory_wpa/defaultwpa $default_directory_wpa/wpaconfig_$second_option
 editor $default_directory_wpa/wpaconfig_$second_option
 exit; fi
@@ -1734,7 +1736,7 @@ if [ "$second_option" == "$NULL" ]; then
 echo "$title_md $text_fail use: $first_option nameconfig"; exit ; fi
 ####
 ####
-$cmd_realpath expert-wpa-regen
+$cmd_command expert-wpa-regen
 cp $default_directory_wpa/defaultwpa $default_directory_wpa/wpaconfig_$second_option
 editor $default_directory_wpa/wpaconfig_$second_option
 ####
@@ -1805,13 +1807,13 @@ if [ "$first_option" == "expert-wpa-show" ]; then
 ####
 ####
 if [ "$second_option" == "$NULL" ]
-then $cmd_realpath expert-wpa-list
+then $cmd_command expert-wpa-list
 echo "$title_md $text_info use: $first_option nameconfig" ; exit ; fi
 if [ -f "$default_directory_wpa/wpaconfig_$second_option" ]; then
 echo "$title_md $title_md $title_md $title_md wpa config_:"
-cat "$default_directory_wpa/wpaconfig_$second_option"
+$command_cat  "$default_directory_wpa/wpaconfig_$second_option"
 echo "$title_md $title_md $title_md $title_md wpa connect_:"
-cat "$default_directory_wpa/wpaconnect_$second_option"
+$command_cat  "$default_directory_wpa/wpaconnect_$second_option"
 else echo "$title_md $text_fail use: $first_option nameconfig"; exit ; fi
 ####
 ####
@@ -1868,7 +1870,7 @@ if [ "$command_wpapassphrase" == "$NULL" ]
 then echo "$title_md $text_fail Install wpa_passphrase"; fi
 if [ "$command_wpasupplicant" == "$NULL" ]
 then echo "$title_md $text_fail Install wpa_passphrase"; fi
-$cmd_realpath expert-wpa-example &> $default_directory_wpa/defaultwpa
+$cmd_command expert-wpa-example &> $default_directory_wpa/defaultwpa
 ####
 ####
 exit; fi
@@ -1946,7 +1948,7 @@ if [ "$first_option" == "preferences-read" ]; then
 ####
 ####
 echo "$title_md [ $first_option ] [ read the default fwiptables ] "
-cat $file_default_preferences
+$command_cat  $file_default_preferences
 echo "$title_md $text_info [ file $file_default_preferences ]"
 ####
 ####
@@ -1962,10 +1964,10 @@ exit; fi
 if [ "$first_option" == "preferences-regen" ] ; then
 ####
 ####
-echo "$title_md [ $first_option ] [ $cmd_realpath preferences-regen ] \
+echo "$title_md [ $first_option ] [ $cmd_command preferences-regen ] \
 [ preferences-regen md ] "
-$cmd_realpath preferences-example &> $file_default_preferences
-echo "$title_md $text_ok [ Regenerated ] [ $cmd_realpath values for default ]"
+$cmd_command preferences-example &> $file_default_preferences
+echo "$title_md $text_ok [ Regenerated ] [ $cmd_command values for default ]"
 echo "$title_md $text_ok [ Regenerated ] [ $file_default_preferences ]"
 ####
 ####
@@ -2057,7 +2059,7 @@ if [ "$first_option" == "resolve" ]; then
 echo "$title_md $text_info $title_md [ Domain resolve ] [ nameserver and search ] $title_md"
 if [ -f /etc/resolv.conf ]
 then echo "$text_md $text_md File: /etc/resolv.conf"
-cat /etc/resolv.conf | $command_grep -E "nameserver|search" | \
+$command_cat  /etc/resolv.conf | $command_grep -E "nameserver|search" | \
 $command_awk '{print "     " $1 " " $2}' ; fi
 if [ -f /etc/resolv.conf.head ]
 then echo "$text_md $text_md File: /etc/resolv.conf.head"; fi
@@ -2082,9 +2084,9 @@ if [ "$first_option" == "network" ]; then
 ####
 ####
 echo ; echo "Network ip4"
-$cmd_realpath network4
+$cmd_command network4
 echo ; echo "Network ip6"
-$cmd_realpath network6
+$cmd_command network6
 ####
 ####
 exit; fi
@@ -2146,9 +2148,9 @@ if [ "$first_option" == "address" ]; then
 ####
 ####
 echo ; echo "Address ip4"
-$cmd_realpath address4
+$cmd_command address4
 echo ; echo "Address ip6"
-$cmd_realpath address6
+$cmd_command address6
 ####
 ####
 exit ; fi
@@ -2242,13 +2244,13 @@ if [ "$first_option" == "ip4" ]; then
 ####
 echo "$title_md [ $first_option ]  [ show info about net ip4 ] [ ip4 md ]"
 echo
-$cmd_realpath network4
+$cmd_command network4
 echo
-$cmd_realpath address4
+$cmd_command address4
 echo
-$cmd_realpath resolve
+$cmd_command resolve
 echo
-$cmd_realpath sockets
+$cmd_command sockets
 ####
 ####
 exit; fi
@@ -2265,13 +2267,13 @@ if [ "$first_option" == "ip6" ]; then
 ####
 echo "$title_md [ $first_option ]  [ show info about net ip6 ] [ ip6 md ]"
 echo
-$cmd_realpath network6
+$cmd_command network6
 echo
-$cmd_realpath address6
+$cmd_command address6
 echo
-$cmd_realpath resolve
+$cmd_command resolve
 echo
-$cmd_realpath sockets
+$cmd_command sockets
 ####
 ####
 exit; fi
@@ -2314,7 +2316,7 @@ echo
 ###
 ###
 if [ -f "$default_directory_proxy/fwiptables-proxy-$second_option" ]
-then cat "$default_directory_proxy/fwiptables-proxy-$second_option" ; fi
+then $command_cat  "$default_directory_proxy/fwiptables-proxy-$second_option" ; fi
 ###
 ###
 exit ; fi
@@ -2332,7 +2334,7 @@ if [ "$first_option" == "expert-show-clientproxy" ]; then echo
 echo "$title_md $text_info ### [ Proxy tunnel ] [ Address proxy ] ###"
 echo "$title_md [ Necesary:  ] WHITHOUT script shell and WHITHOUT exit command ]"
 echo "$title_md [ Editable:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
-echo "$title_md [ configure: ] $cmd_basename expert-conf-clientproxy user:pass@ip:port"
+echo "$title_md [ configure: ] $cmd_command expert-conf-clientproxy user:pass@ip:port"
 ####
 ####
 listado_proxy="$(export | grep -i \_PROXY | wc -l)"
@@ -2349,7 +2351,7 @@ ls $default_directory_proxy/ ; exit ; fi
 ####
 ####
 if [ -f "$default_directory_proxy/$second_option" ] ; then
-echo ; cat "$default_directory_proxy/$second_option" ; exit ; fi
+echo ; $command_cat  "$default_directory_proxy/$second_option" ; exit ; fi
 ####
 ####
 exit ; fi
@@ -2424,7 +2426,7 @@ if [ "$first_option" == "expert-show-resolve" ]; then echo
 echo "$title_md $text_info ### [ Domain resolve ] [ nameserver and search ] ###"
 if [ -f /etc/resolv.conf ]
 then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"
-cat /etc/resolv.conf | $command_grep -E "nameserver|search"      ; fi
+$command_cat  /etc/resolv.conf | $command_grep -E "nameserver|search"      ; fi
 if [ -f /etc/resolv.conf.head ]
 then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
 if [ -f /etc/resolv.conf.body ]
@@ -2451,12 +2453,12 @@ echo "$title_md [ $first_option ]  [ trace ip or host with tcp ipv4 ]"
 case $command_tracepath in "$NULL")
 echo "$title_md $text_fail [ Install tracepath command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$title_md use: $cmd_basename $first_option host"; exit; fi
-$cmd_basename save before-trace-tcp4 
-$cmd_basename eraserules4
+echo "$title_md use: $cmd_command $first_option host"; exit; fi
+$cmd_command save before-trace-tcp4 
+$cmd_command eraserules4
 echo "$duo_md $text_ok [ tracepath -4 $2 ] "
 $command_tracepath -4 $2
-$cmd_basename load before-trace-tcp4
+$cmd_command load before-trace-tcp4
 ####
 ####
 exit; fi
@@ -2475,12 +2477,12 @@ echo "$title_md [ $first_option ]  [ trace ip or host with tcp ipv6 ]"
 case $command_tracepath in "$NULL")
 echo "$title_md $text_fail [ Install tracepath command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$title_md use: $cmd_basename $first_option host"; exit; fi
-$cmd_basename save before-trace-ip6 
-$cmd_basename eraserules6
+echo "$title_md use: $cmd_command $first_option host"; exit; fi
+$cmd_command save before-trace-ip6 
+$cmd_command eraserules6
 echo "$duo_md $text_ok [ tracepath -6 $2 ] "
 $command_tracepath -6 $2
-$cmd_basename load before-trace-ip6
+$cmd_command load before-trace-ip6
 ####
 ####
 exit; fi
@@ -2499,12 +2501,12 @@ echo "$title_md [ $first_option ]  [ trace ip or host with icmp ipv4 ]"
 case $command_traceroute in "$NULL")
 echo "$title_md $text_fail [ Install traceroute command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$title_md use: $cmd_basename $first_option host"; exit ; fi
-$cmd_basename save before-trace-icmp4 
-$cmd_basename eraserules4
+echo "$title_md use: $cmd_command $first_option host"; exit ; fi
+$cmd_command save before-trace-icmp4 
+$cmd_command eraserules4
 echo "$duo_md $text_ok [ traceroute -4 $2 ] "
 $command_traceroute -4 $2
-$cmd_basename load before-trace-icmp4
+$cmd_command load before-trace-icmp4
 ####
 ####
 exit; fi
@@ -2523,12 +2525,12 @@ echo "$title_md [ $first_option ]  [ trace ip or host with icmp ipv6 ]"
 case $command_traceroute in "$NULL")
 echo "$title_md $text_fail [ Install traceroute command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$title_md use: $cmd_basename $first_option host"; exit ; fi
-$cmd_basename save before-trace-icmp6 
-$cmd_basename eraserules6
+echo "$title_md use: $cmd_command $first_option host"; exit ; fi
+$cmd_command save before-trace-icmp6 
+$cmd_command eraserules6
 echo "$duo_md $text_ok [ traceroute -6 $2 ] "
 $command_traceroute -6 $2
-$cmd_basename load before-trace-icmp6
+$cmd_command load before-trace-icmp6
 ####
 ####
 exit; fi
@@ -2566,10 +2568,10 @@ if [ "$first_option" == "utils" ]; then
 ####
 echo "$title_md [ $first_option ] [ List for posible utils programs ] [ utils md ] "
 if [ "$command_fmt" == "$NULL" ]; then
-$cmd_realpath code possible-commands | $command_grep -E "^command_" | \
+$cmd_command code possible-commands | $command_grep -E "^command_" | \
 $command_cut -d "=" -f 1 | $command_cut -d "_" -f 2
 else
-$cmd_realpath code possible-commands | $command_grep -E "^command_" | \
+$cmd_command code possible-commands | $command_grep -E "^command_" | \
 $command_cut -d "=" -f 1 | $command_cut -d "_" -f 2 | $command_fmt ; fi ; 
 ####
 ####
@@ -2763,7 +2765,7 @@ exit; fi
 if   [ "$first_option" == "cleancache" ]; then 
 ####
 ####
-echo "$title_md [ cleaning ] clean cache: deleting cache $cmd_basename"
+echo "$title_md [ cleaning ] clean cache: deleting cache $cmd_command"
 rm -R $directory_cache_necesary/*
 ####
 ####
@@ -2815,12 +2817,12 @@ exit; fi
 if [ "$first_option" == "templates-regen" ]; then
 ####
 ####
-$cmd_realpath template-tiny-es &> $default_tinycfg_spa
-$cmd_realpath template-tiny-en &> $default_tinycfg_eng
-$cmd_realpath template-mini-es &> $default_minicfg_spa
-$cmd_realpath template-mini-en &> $default_minicfg_eng
-$cmd_realpath template-full-es &> $default_fullcfg_spa
-$cmd_realpath template-full-en &> $default_fullcfg_eng
+$cmd_command template-tiny-es &> $default_tinycfg_spa
+$cmd_command template-tiny-en &> $default_tinycfg_eng
+$cmd_command template-mini-es &> $default_minicfg_spa
+$cmd_command template-mini-en &> $default_minicfg_eng
+$cmd_command template-full-es &> $default_fullcfg_spa
+$cmd_command template-full-en &> $default_fullcfg_eng
 ####
 ####
 exit; fi
@@ -2917,7 +2919,7 @@ exit; fi
 if [ "$first_option" == "template-mini-es" ]; then
 ####
 ####
-echo "$title_md $cmd_shortdescription from $cmd_realpath version $cmd_version $title_md "
+echo "$title_md $cmd_shortdescription from $cmd_command version $cmd_version $title_md "
 echo "$title_md BEGIN NECESARY $title_md "
 echo "$title_md INICIO .......... Opciones Necesarias .......... .......... $title_md "
 echo "$title_md NETFILTER $title_md "
@@ -2988,7 +2990,7 @@ if [ "$first_option" == "template-full-es" ]; then
 #### spanish: basicas opciones in configuracion de archivo cfg
 ####
 ####
-echo "$title_md $cmd_shortdescription from $cmd_realpath version $cmd_version $title_md "
+echo "$title_md $cmd_shortdescription from $cmd_command version $cmd_version $title_md "
 echo "$title_md BEGIN NECESARY $title_md "
 echo "$title_md INICIO .......... Opciones Necesarias .......... .......... $title_md "
 echo "$title_md NETFILTER $title_md "
@@ -3175,7 +3177,7 @@ exit ; fi
 if [ "$first_option" == "template-mini-en" ]; then
 ####
 ####
-echo "$title_md $cmd_shortdescription from $cmd_realpath version $cmd_version $title_md "
+echo "$title_md $cmd_shortdescription from $cmd_command version $cmd_version $title_md "
 echo "$title_md BEGIN NECESARY $title_md "
 echo "$title_md  .......... BEGIN Necesary options .......... .......... $title_md "
 echo "$title_md NETFILTER $title_md "
@@ -3242,7 +3244,7 @@ exit ; fi
 if [ "$first_option" == "template-full-en" ]; then
 ####
 ####
-echo "$title_md $cmd_shortdescription from $cmd_realpath version $cmd_version $title_md "
+echo "$title_md $cmd_shortdescription from $cmd_command version $cmd_version $title_md "
 echo "$title_md BEGIN NECESARY $title_md "
 echo "$title_md  .......... BEGIN Necesary options .......... .......... $title_md "
 echo "$title_md NETFILTER $title_md "
@@ -3438,7 +3440,7 @@ if [ "$first_option" == "autosave" ] && [ "$allow_autosave" == "$NULL" ]; then
 ####
 ####
 echo "$title_md [ autosave ] [ firewall saved ] [ autosave-fwiptables ]" ;
-$cmd_realpath save autosave-fwiptables &> /dev/null
+$cmd_command save autosave-fwiptables &> /dev/null
 ####
 ####
 exit; fi
@@ -3479,7 +3481,7 @@ exit; fi
 if [ "$first_option" == "list-options" ] || [ "$first_option" == "options" ]; then 
 ####
 ####
-echo "$text_md $cmd_basename [optional-output] first_option [second_option] $text_md"
+echo "$text_md $cmd_command [optional-output] first_option [second_option] $text_md"
 echo "$title_md    optional-output $text_md"
 echo "$text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ] $text_md"
 echo "$text_md [ cli-dialog cli-whiptail cli-menu-dialog cli-menu-whiptail ] $text_md"
@@ -3521,7 +3523,7 @@ echo "$text_md free nodes ip-forward depends utils treeconf treecache $text_md"
 echo "$text_md cleancache notes variables uninstall install upgrade $text_md"
 echo "$text_md examples info code expert donate about version $text_md"
 echo "$text_md license-lgpl-v2 license-gpl-v2 $text_md"
-echo " $text_md $text_md | Program: $cmd_basename $cmd_version $text_md"
+echo " $text_md $text_md | Program: $cmd_command $cmd_version $text_md"
 echo " $text_md $text_md | Description: $cmd_longdescription $text_md"
 ####
 ####  if expert commands
@@ -3545,17 +3547,17 @@ if   [ "$first_option" == "code" ]; then
 ####
 ####
 echo "$title_md [ $first_option ]  [ Show source code for each option ] "
-echo "$title_md $text_info [ code ] [ show source code for options from $cmd_realpath ]"
-code_error="$title_md $text_info [ Usage ] [ $cmd_realpath code option_choosed ]"
+echo "$title_md $text_info [ code ] [ show source code for options from $cmd_command ]"
+code_error="$title_md $text_info [ Usage ] [ $cmd_command code option_choosed ]"
 if [ "$second_option" == "$NULL" ]; then echo "$code_error"
-salida_code="$(cat $cmd_realpath | $command_grep -i  rutina-inicial \
-| $command_grep -i -v cat | $command_sed -s s/####\ :rutina-inicial-//g | \
+salida_code="$($command_cat  $cmd_command | $command_grep -i  rutina-inicial \
+| $command_grep -i -v $command_cat  | $command_sed -s s/####\ :rutina-inicial-//g | \
 sort | $command_sed -s s/://g )"
 echo $salida_code
 exit ; fi
-value_first="$(cat -n $cmd_realpath | $command_grep  :rutina-inicial-$2: | \
+value_first="$($command_cat  -n $cmd_command | $command_grep  :rutina-inicial-$2: | \
 $command_cut -d "#" -f 1 | head -1)"
-value_second="$(cat -n $cmd_realpath | $command_grep :rutina-final-$2:  | \
+value_second="$($command_cat  -n $cmd_command | $command_grep :rutina-final-$2:  | \
 $command_cut -d "#" -f 1 | head -1)"
 value_count="$(("$value_second"-"$value_first+1"))"
 if [ ! -n "$value_first" ];   then echo; echo "$code_error" ; exit ; fi
@@ -3563,7 +3565,7 @@ if [ ! -n "$value_second" ];  then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_count" ];   then echo; echo "$code_error" ; exit ; fi
 echo "$title_md [ code ] [ option: "$second_option" ] [ show $value_count lines ] \
 [ from the "$value_first" line number to "$value_second" line number ]"
-cat $cmd_realpath | head -n $value_second | tail -n $value_count
+$command_cat  $cmd_command | head -n $value_second | tail -n $value_count
 ####
 ####
 exit; fi
@@ -3584,7 +3586,7 @@ echo "$title_md $text_info [ folder ] [ $default_directory_custom ]"
 echo "$title_md"
 $command_ls -1 $default_directory_custom
 echo "$title_md"
-echo "$title_md [ OK CFG FILES NAMES ] [ Use: $cmd_realpath load-custom file ]"
+echo "$title_md [ OK CFG FILES NAMES ] [ Use: $cmd_command load-custom file ]"
 ####
 ####
 exit; fi
@@ -3641,7 +3643,7 @@ exit; fi
 if   [ "$first_option" == "firewall-wallcontrol" ]; then
 ####
 ####
-echo "$title_md | firewall-wallcontrol | $cmd_basename firewall-wallcontrol | $text_md"
+echo "$title_md | firewall-wallcontrol | $cmd_command firewall-wallcontrol | $text_md"
 echo "$text_md $text_md stop . remove the rules iptables, and save it to then if continue $text_md"
 echo "$text_md $text_md continue. reset and load latest rules iptables loaded $text_md"
 echo "$text_md $text_md load . reset rules iptables actually $text_md"
@@ -3677,7 +3679,7 @@ exit; fi
 if   [ "$first_option" == "firewall-listconceptual" ]; then
 ####
 ####
-echo "$title_md | firewall-listconceptual | $cmd_basename firewall-listconceptual $text_md"
+echo "$title_md | firewall-listconceptual | $cmd_command firewall-listconceptual $text_md"
 echo "$text_md $text_md ls4 . list filter rules ipv4 $text_md"
 echo "$text_md $text_md ls6 . list filter rules ipv6 $text_md"
 echo "$text_md $text_md list4 . list filter rules ipv4 $text_md"
@@ -3710,7 +3712,7 @@ exit; fi
 if   [ "$first_option" == "firewall-listnumeral" ]; then
 ####
 ####
-echo "$title_md | firewall-listnumeral | $cmd_basename firewall-listnumeral | $text_md"
+echo "$title_md | firewall-listnumeral | $cmd_command firewall-listnumeral | $text_md"
 echo "$text_md $text_md lsn4 . list filter rules ipv4 with numbers $text_md"
 echo "$text_md $text_md lsn6 . list filter rules ipv6 with numbers $text_md"
 echo "$text_md $text_md listn4 . list filter rules ipv4 with numbers $text_md"
@@ -3743,7 +3745,7 @@ exit; fi
 if   [ "$first_option" == "firewall-wallcustom" ]; then
 ####
 ####
-echo "$title_md | firewall-wallcustom | $cmd_basename firewall-wallcustom | $text_md"
+echo "$title_md | firewall-wallcustom | $cmd_command firewall-wallcustom | $text_md"
 echo "$text_md $text_md new-full-custom . create new full config in english $text_md"
 echo "$text_md $text_md new-mini-custom . create new mini config in english $text_md"
 echo "$text_md $text_md new-tiny-custom . create new tiny config in english $text_md"
@@ -3774,7 +3776,7 @@ exit; fi
 if   [ "$first_option" == "firewall-wallsystem" ]; then
 ####
 ####
-echo "$title_md | firewall-wallsystem | $cmd_basename firewall-wallsystem | $text_md"
+echo "$title_md | firewall-wallsystem | $cmd_command firewall-wallsystem | $text_md"
 echo "$text_md $text_md client-basic . launch a one firewall basic client $text_md"
 echo "$text_md $text_md client-web . launch a one firewall web client $text_md"
 echo "$text_md $text_md client-ssh . launch a one firewall ssh client $text_md"
@@ -3829,7 +3831,7 @@ exit; fi
 if   [ "$first_option" == "firewall-easynet" ]; then
 ####
 ####
-echo "$title_md | firewall-easynet | $cmd_basename firewall-easynet | $text_md"
+echo "$title_md | firewall-easynet | $cmd_command firewall-easynet | $text_md"
 echo "$text_md $text_md preferences-read . show the preferences for fwiptables $text_md"
 echo "$text_md $text_md preferences-modify . modify the preferences for fwiptables $text_md"
 echo "$text_md $text_md preferences-regen . recover the initials preferences for fwiptables $text_md"
@@ -3880,7 +3882,7 @@ exit; fi
 if   [ "$first_option" == "options-expert" ]; then
 ####
 ####
-echo "$title_md | $cmd_basename expert | Each expert only works Without optional output $text_md "
+echo "$title_md | $cmd_command expert | Each expert only works Without optional output $text_md "
 echo "$text_md $text_md expert-browser-web . browse one link web $text_md "
 echo "$text_md $text_md expert-sockets-ss . show sockets with ss $text_md "
 echo "$text_md $text_md expert-sockets-netstat . show sockets with netstat $text_md "
@@ -3946,14 +3948,14 @@ if   [ "$first_option" == "info-options" ]; then
 ####
 echo "$title_md [ $first_option ]  [ info options ] [ info-options md]"
 echo "$text_md"
-$cmd_realpath optional-output
-$cmd_realpath firewall-listconceptual
-$cmd_realpath firewall-listnumeral
-$cmd_realpath firewall-wallcontrol
-$cmd_realpath firewall-wallcustom
-$cmd_realpath firewall-wallsystem
-$cmd_realpath firewall-easynet
-$cmd_realpath expert
+$cmd_command optional-output
+$cmd_command firewall-listconceptual
+$cmd_command firewall-listnumeral
+$cmd_command firewall-wallcontrol
+$cmd_command firewall-wallcustom
+$cmd_command firewall-wallsystem
+$cmd_command firewall-easynet
+$cmd_command expert
 ####
 ####
 exit; fi
@@ -3969,7 +3971,7 @@ exit; fi
 if   [ "$first_option" == "optional-output" ]; then
 ####
 ####
-echo "$title_md | optional-output | $cmd_basename optional-ouptut | $text_md"
+echo "$title_md | optional-output | $cmd_command optional-ouptut | $text_md"
 echo "$text_md $text_md i . output in info text $text_md"
 echo "$text_md $text_md t . output in terminal text $text_md"
 echo "$text_md $text_md n . output in terminal text narrowtxt (compresed spaces) $text_md"
@@ -4013,7 +4015,7 @@ if   [ "$first_option" == "variables" ]; then
 ####
 ####
 echo "$title_md [ $first_option ]  [ list variables firewall fwiptables] [ variables md ]"
-$cmd_realpath code system-variables
+$cmd_command code system-variables
 ####
 ####
 exit; fi
@@ -4068,10 +4070,10 @@ $command_ebtables -t nat -F    &> /dev/null
 $command_arptables -F  &> /dev/null
 ####
 #### remove ip4
-$cmd_realpath eraserules4 &> /dev/null
+$cmd_command eraserules4 &> /dev/null
 ####
 #### remove ip6
-$cmd_realpath eraserules6 &> /dev/null
+$cmd_command eraserules6 &> /dev/null
 ####
 ####
 exit; fi
@@ -4262,29 +4264,29 @@ if [ "$first_option" == "list-alltables" ]; then
 ####
 echo "$title_md [ $first_option ] [ List all rules ] "
 echo; echo; echo "$title_md LIST ARPTABLES ###" ; echo
-$cmd_realpath list-arptables 
+$cmd_command list-arptables 
 echo; echo; echo "$title_md LIST EBTABLES ###" ; echo
-$cmd_realpath list-ebtables
+$cmd_command list-ebtables
 echo; echo; echo "$title_md LIST FILTER IP4 TABLE ###" ; echo
-$cmd_realpath list-filter4
+$cmd_command list-filter4
 echo; echo; echo "$title_md LIST FILTER IP6 TABLE ###" ; echo
-$cmd_realpath list-filter6
+$cmd_command list-filter6
 echo; echo; echo "$title_md LIST NAT IP4 TABLE ###" ; echo
-$cmd_realpath list-nat4
+$cmd_command list-nat4
 echo; echo; echo "$title_md LIST NAT IP6 TABLE ###" ; echo
-$cmd_realpath list-nat6
+$cmd_command list-nat6
 echo; echo; echo "$title_md LIST SECURITY IP4 TABLE ###" ; echo
-$cmd_realpath list-security4
+$cmd_command list-security4
 echo; echo; echo "$title_md LIST SECURITY IP6 TABLE ###" ; echo
-$cmd_realpath list-security6
+$cmd_command list-security6
 echo; echo; echo "$title_md LIST RAW IP4 TABLE ###" ; echo
-$cmd_realpath list-raw4
+$cmd_command list-raw4
 echo; echo; echo "$title_md LIST RAW IP6 TABLE ###" ; echo
-$cmd_realpath list-raw6
+$cmd_command list-raw6
 echo; echo; echo "$title_md LIST MANGLE IP4 TABLE ###" ; echo
-$cmd_realpath list-mangle4
+$cmd_command list-mangle4
 echo; echo; echo "$title_md LIST MANGLE IP6 TABLE ###" ; echo
-$cmd_realpath list-mangle6
+$cmd_command list-mangle6
 echo 
 ####
 ####
@@ -4302,29 +4304,29 @@ if [ "$first_option" == "listn-alltables" ]; then
 ####
 echo "$title_md [ $first_option ] [ List all rules ] "
 echo; echo; echo "$title_md LIST EBTABLES ###" ; echo
-$cmd_realpath list-ebtables
+$cmd_command list-ebtables
 echo; echo; echo "$title_md LIST ARPTABLES ###" ; echo
-$cmd_realpath list-arptables
+$cmd_command list-arptables
 echo; echo; echo "$title_md LIST FILTER IP4 TABLE ###" ; echo
-$cmd_realpath listn-filter4
+$cmd_command listn-filter4
 echo; echo; echo "$title_md LIST FILTER IP6 TABLE ###" ; echo
-$cmd_realpath listn-filter6
+$cmd_command listn-filter6
 echo; echo; echo "$title_md LIST NAT IP4 TABLE ###" ; echo
-$cmd_realpath listn-nat4
+$cmd_command listn-nat4
 echo; echo; echo "$title_md LIST NAT IP6 TABLE ###" ; echo
-$cmd_realpath listn-nat6
+$cmd_command listn-nat6
 echo; echo; echo "$title_md LIST SECURITY IP4 TABLE ###" ; echo
-$cmd_realpath listn-security4
+$cmd_command listn-security4
 echo; echo; echo "$title_md LIST SECURITY IP6 TABLE ###" ; echo
-$cmd_realpath listn-security6
+$cmd_command listn-security6
 echo; echo; echo "$title_md LIST RAW IP4 TABLE ###" ; echo
-$cmd_realpath listn-raw4
+$cmd_command listn-raw4
 echo; echo; echo "$title_md LIST RAW IP6 TABLE ###" ; echo
-$cmd_realpath listn-raw6
+$cmd_command listn-raw6
 echo; echo; echo "$title_md LIST MANGLE IP4 TABLE ###" ; echo
-$cmd_realpath listn-mangle4
+$cmd_command listn-mangle4
 echo; echo; echo "$title_md LIST MANGLE IP6 TABLE ###" ; echo
-$cmd_realpath listn-mangle6
+$cmd_command listn-mangle6
 echo
 ####
 ####
@@ -4516,10 +4518,10 @@ exit; fi
 if [ "$first_option" == "status" ]; then
 ####
 ####
-$cmd_realpath ls4
+$cmd_command ls4
 ####
 ####
-$cmd_realpath ls6
+$cmd_command ls6
 ####
 ####
 exit; fi
@@ -4534,10 +4536,10 @@ exit; fi
 if [ "$first_option" == "statusn" ]; then
 ####
 ####
-$cmd_realpath listn4
+$cmd_command listn4
 ####
 ####
-$cmd_realpath listn6
+$cmd_command listn6
 ####
 ####
 exit; fi
@@ -5086,7 +5088,7 @@ exit; fi
 if [ "$first_option" == "clone-wallsystem" ] && [ "$second_option" == "$NULL" ]  ; then 
 ####
 ####
-echo "$text_md $text_info [ usage: ] [ $cmd_realpath clone-wallsystem firewall ]"
+echo "$text_md $text_info [ usage: ] [ $cmd_command clone-wallsystem firewall ]"
 exit; fi
 ####
 ####
@@ -5094,12 +5096,12 @@ if [ "$first_option" == "clone-wallsystem" ] && [ "$second_option" != "$NULL" ] 
 archivo="$second_option"
 case $archivo in shield-*);;client-*);; game-*);; games-*);; server-*);;
 *) echo "$title $text_fail choose a valid system firewall to clone" ; exit ;; esac
-$cmd_realpath code $second_option | $command_grep -E "client_|server_|config_|allow_|net_" \
+$cmd_command code $second_option | $command_grep -E "client_|server_|config_|allow_|net_" \
 &> $default_directory_custom/$archivo
 ####
 ####
 if [ -s "$default_directory_custom/$archivo" ] ; then 
-cat $default_directory_custom/$archivo ;
+$command_cat  $default_directory_custom/$archivo ;
 echo "$title_md $text_ok Created custom : $archivo  "
 echo "$title_md $text_info Modify  : fwiptables modify-custom $archivo  "
 echo "$title_md $text_info Launch  : fwiptables load-custom $archivo  "
@@ -5120,7 +5122,7 @@ exit; fi
 if [ "$first_option" == "new-full-custom" ] && [ "$second_option" == "$NULL" ]  ; then 
 ####
 ####
-echo "$text_md $text_info [ usage: ] [ $cmd_realpath new-full-custom config-new ]"
+echo "$text_md $text_info [ usage: ] [ $cmd_command new-full-custom config-new ]"
 exit; fi
 ####
 ####
@@ -5143,7 +5145,7 @@ exit; fi
 if [ "$first_option" == "nueva-completa-custom" ] && [ "$second_option" == "$NULL" ]  ; then 
 ####
 ####
-echo "$text_md $text_info [ usage: ] [ $cmd_realpath nueva-completa-custom config-nueva ]"
+echo "$text_md $text_info [ usage: ] [ $cmd_command nueva-completa-custom config-nueva ]"
 exit; fi
 ####
 ####
@@ -5166,7 +5168,7 @@ exit; fi
 if [ "$first_option" == "new-mini-custom" ] && [ "$second_option" == "$NULL" ]  ; then 
 ####
 ####
-echo "$text_md $text_info [ usage: ] [ $cmd_realpath new-mini-custom config-new ]"
+echo "$text_md $text_info [ usage: ] [ $cmd_command new-mini-custom config-new ]"
 exit; fi
 ####
 ####
@@ -5189,7 +5191,7 @@ exit; fi
 if [ "$first_option" == "nueva-mini-custom" ] && [ "$second_option" == "$NULL" ]  ; then 
 ####
 ####
-echo "$text_md $text_info [ usage: ] [ $cmd_realpath nueva-mini-custom config-nueva ]"
+echo "$text_md $text_info [ usage: ] [ $cmd_command nueva-mini-custom config-nueva ]"
 exit; fi
 ####
 ####
@@ -5212,7 +5214,7 @@ exit; fi
 if [ "$first_option" == "new-tiny-custom" ] && [ "$second_option" == "$NULL" ]  ; then 
 ####
 ####
-echo "$text_md $text_info [ usage: ] [ $cmd_realpath new-tiny-custom config-new ]"
+echo "$text_md $text_info [ usage: ] [ $cmd_command new-tiny-custom config-new ]"
 exit; fi
 ####
 ####
@@ -5235,7 +5237,7 @@ exit; fi
 if [ "$first_option" == "nueva-diminuta-custom" ] && [ "$second_option" == "$NULL" ]  ; then 
 ####
 ####
-echo "$text_md $text_info [ usage: ] [ $cmd_realpath nueva-diminuta-custom config-nueva ]"
+echo "$text_md $text_info [ usage: ] [ $cmd_command nueva-diminuta-custom config-nueva ]"
 exit; fi
 ####
 ####
@@ -5259,8 +5261,8 @@ if [ "$first_option" == "modify-custom" ]; then
 ####
 ###
 if [ ! -f "$default_directory_custom/$second_option" ] ; then $nada
-$cmd_realpath names-custom
-echo "$text_md $text_info [ usage: ] [ $cmd_realpath modify-custom config-existent ]"
+$cmd_command names-custom
+echo "$text_md $text_info [ usage: ] [ $cmd_command modify-custom config-existent ]"
 exit; fi
 ####
 ####
@@ -5284,11 +5286,11 @@ if [ "$first_option" == "show-custom" ] ; then
 ####
 ####
 if [ ! -f "$default_directory_custom"/"$second_option" ] ; then 
-echo "$title_md $text_info [ Usage: $cmd_realpath show-custom config-cfg ]" ; exit; fi
+echo "$title_md $text_info [ Usage: $cmd_command show-custom config-cfg ]" ; exit; fi
 ####
 ####
 if [ -f "$default_directory_custom"/"$second_option" ] ; then 
-cat $default_directory_custom/$second_option ;
+$command_cat  $default_directory_custom/$second_option ;
 echo  ; exit ; fi
 ####
 ####
@@ -5305,7 +5307,7 @@ if [ "$first_option" == "del-custom" ]; then
 ####
 ####
 if [ ! -f $default_directory_custom/$second_option ] ; then
-echo "$title_md $text_info [ usage: ] [ $cmd_realpath del-custom config-old ]"
+echo "$title_md $text_info [ usage: ] [ $cmd_command del-custom config-old ]"
 exit ; fi
 ####
 ####
@@ -5353,8 +5355,8 @@ if [ "$first_option" == "reset" ]; then
 ####
 ####
 echo "$title_md $text_info [ Reseting the firewall ]"
-$cmd_realpath stop &> /dev/null
-$cmd_realpath continue &> /dev/null
+$cmd_command stop &> /dev/null
+$cmd_command continue &> /dev/null
 echo "$title_md $text_ok [ firewall reseted ]"
 ####
 ####
@@ -5400,8 +5402,8 @@ echo "$text_md $text_md $text_md"
 echo "$title_md $text_md fwiptables install.                         $text_md"
 echo "$text_md $text_md $text_md"
 echo "$text_md $text_md  su root TYPE: su root                       $text_md"    
-echo "$text_md $text_md  put bit TYPE: chmod 755 ./$cmd_basename     $text_md"
-echo "$text_md $text_md  install TYPE: ./$cmd_basename install       $text_md" 
+echo "$text_md $text_md  put bit TYPE: chmod 755 ./$cmd_command     $text_md"
+echo "$text_md $text_md  install TYPE: ./$cmd_command install       $text_md" 
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md $text_md fwiptables uninstall.                   $text_md"
 echo "$text_md $text_md $text_md"
@@ -5422,24 +5424,24 @@ if  [ "$first_option" == "intro" ]; then
 ####
 echo "$title_md $text_md fwiptables. Firewall With iptables. intro content information  $text_md"
 echo "$text_md"
-$cmd_realpath readme
+$cmd_command readme
 echo "$text_md"
-$cmd_realpath version
+$cmd_command version
 echo "$text_md"
-$cmd_realpath about
+$cmd_command about
 echo "$text_md"
-$cmd_realpath notes
+$cmd_command notes
 echo "$text_md"
-$cmd_realpath compile
+$cmd_command compile
 echo "$text_md"
-$cmd_realpath depends
+$cmd_command depends
 echo "$text_md"
-$cmd_realpath examples
+$cmd_command examples
 echo "$text_md"
 echo "$title_md [ options ] [ List general options for fwiptables ] [ list-options md ]"
 echo "$text_md"
 echo "$title_md"
-$cmd_realpath options
+$cmd_command options
 ####
 ####
 exit; fi
@@ -5492,7 +5494,7 @@ exit ; fi
 if [ "$first_option" == "download" ] ; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ $cmd_realpath download ] [ download md ] "
+echo "$title_md [ $first_option ] [ $cmd_command download ] [ download md ] "
 echo
 echo "$title_md the last version from fwiptables. Firewall With iptables"
 echo
@@ -5539,7 +5541,7 @@ if [ "$first_option" == "install" ]; then
 echo "$text_md $text_md $text_md $text_md $text_md Installing: $cmd_name (waiting several seconds)"
 ####
 ####
-cmd_realpath="$cmd_directory/$cmd_name"
+cmd_command="$cmd_directory/$cmd_name"
 ####
 ####
 ####  english: copy the file to temporal folder and install
@@ -5547,23 +5549,23 @@ cmd_realpath="$cmd_directory/$cmd_name"
 #### 
 #### 
 #### echo "$title_md $text_info [ $cmd_name installing.. ]"
-cp $0 $cmd_realpath
-chmod 755 $cmd_realpath &> /dev/null 
+cp $0 $cmd_command
+chmod 755 $cmd_command &> /dev/null 
 ####
 ####
 ####  english: generate fwiptables default config and templates
 ####  spanish: genera fwiptables default configuracion y plantillas
 ####
 ####
-$cmd_realpath preferences-regen &> /dev/null
-$cmd_realpath templates-regen &> /dev/null
+$cmd_command preferences-regen &> /dev/null
+$cmd_command templates-regen &> /dev/null
 ####
 ####
 ####   english: Show final status from installer: program version
 ####   spanish: Muestra el estatus final desde el instalador: program version
 ####
 ####
-$cmd_realpath version
+$cmd_command version
 #### 
 ####
 exit; fi
@@ -5580,13 +5582,13 @@ if   [ "$first_option" == "expert-gen-readme" ]; then
 ####
 echo "$title_md [ $first_option ]  [ generate actual file and readme from intro program ] "
 #### create the file base in repository
-cp $0 $default_directory_readme/$cmd_basename-$cmd_version &&
-echo "$title_md $text_ok Created $default_directory_readme/$cmd_basename-$cmd_version"
+cp $0 $default_directory_readme/$cmd_command-$cmd_version &&
+echo "$title_md $text_ok Created $default_directory_readme/$cmd_command-$cmd_version"
 #### create the README base in repository
-$default_directory_readme/$cmd_basename-$cmd_version intro > $default_directory_readme/README &&
-echo "$title_md $text_ok Created $default_directory_readme/$cmd_basename-$cmd_version-README"
-$default_directory_readme/$cmd_basename-$cmd_version  intro > $default_directory_readme/README.md &&
-echo "$title_md $text_ok Created $default_directory_readme/$cmd_basename-$cmd_version-README.md"
+$default_directory_readme/$cmd_command-$cmd_version intro > $default_directory_readme/README &&
+echo "$title_md $text_ok Created $default_directory_readme/$cmd_command-$cmd_version-README"
+$default_directory_readme/$cmd_command-$cmd_version  intro > $default_directory_readme/README.md &&
+echo "$title_md $text_ok Created $default_directory_readme/$cmd_command-$cmd_version-README.md"
 ####
 ####
 exit; fi
@@ -5607,7 +5609,7 @@ rm -R $default_directory_debian/deb/usr/bin &> /dev/null
 rm -R $default_directory_debian/deb/DEBIAN &> /dev/null
 mkdir -p $default_directory_debian/deb/usr/bin &> /dev/null
 mkdir -p $default_directory_debian/deb/DEBIAN &> /dev/null
-cp $0 $default_directory_debian/deb/usr/bin/$cmd_basename
+cp $0 $default_directory_debian/deb/usr/bin/$cmd_command
 #### it are file modes
 chown root $default_directory_debian/* -R  &> /dev/null
 chmod 755 $default_directory_debian/* -R &> /dev/null
@@ -5625,10 +5627,10 @@ echo "Description: $cmd_longdescription" &>> $default_directory_debian/deb/DEBIA
 if [ "$cmd_format" != "Bourne-Again_shell_script," ]
 then echo "$title_md the $cmd_name is not Bourne-Again_shell_script," ; exit ; fi
 #### it does the debian package noarch
-rm $default_directory_debian/$cmd_basename-$cmd_version-noarch.deb &> /dev/null
-$command_dpkg -b $default_directory_debian/deb/ $default_directory_debian/$cmd_basename-$cmd_version-noarch.deb && \
+rm $default_directory_debian/$cmd_command-$cmd_version-noarch.deb &> /dev/null
+$command_dpkg -b $default_directory_debian/deb/ $default_directory_debian/$cmd_command-$cmd_version-noarch.deb && \
 echo "$text_md $text_ok file write in \
-$default_directory_debian/$cmd_basename-$cmd_version-noarch.deb"   
+$default_directory_debian/$cmd_command-$cmd_version-noarch.deb"   
 #### delete the directory temporal
 rm -R $default_directory_debian/deb/  &> /dev/null
 ####
@@ -5727,7 +5729,7 @@ if [ "$first_option" == "license-gpl-v3" ]; then
 ####
 ####
 echo "$title_md [ $first_option ] \
-[ Show license from git sourceforge for $cmd_realpath ] "
+[ Show license from git sourceforge for $cmd_command ] "
 ####
 if [ "$command_curl" == "$NULL" ]; then
 echo "$title_md Install curl to download/install latest version"; fi
@@ -5752,7 +5754,7 @@ if [ "$first_option" == "license-gpl-v2" ]; then
 ####
 ####
 echo "$title_md [ $first_option ] \
-[ Show license from git sourceforge for $cmd_realpath ] "
+[ Show license from git sourceforge for $cmd_command ] "
 ####
 if [ "$command_curl" == "$NULL" ]; then
 echo "$title_md Install curl to download/install latest version"; fi
@@ -5777,7 +5779,7 @@ if [ "$first_option" == "license-lgpl-v2" ]; then
 ####
 ####
 echo "$title_md [ $first_option ] \
-[ Show license from git sourceforge for $cmd_realpath ] "
+[ Show license from git sourceforge for $cmd_command ] "
 ####
 if [ "$command_curl" == "$NULL" ]; then
 echo "$title_md Install curl to download/install latest version"; fi
@@ -5800,7 +5802,7 @@ exit;  fi
 ####
 #### if [ "$first_option" == "license-bsd-v1" ]; then 
 #### echo "$title_md [ $first_option ] \
-#### [ Show license from git sourceforge for $cmd_realpath ] "
+#### [ Show license from git sourceforge for $cmd_command ] "
 ####
 #### if [ "$command_curl" == "$NULL" ]; then
 #### echo "$title_md Install curl to download/install latest version"; fi
@@ -5933,7 +5935,7 @@ echo "$title_md Install curl to show stable latest version"; fi
 #### actually
 ####
 echo "$title_md Show the version for fwiptables actually installed:"
-$cmd_realpath version | $command_grep -E -i "version"
+$cmd_command version | $command_grep -E -i "version"
 ####
 #### latest stable
 ####
@@ -6029,15 +6031,15 @@ if   [ "$first_option" == "expert-gen-compile" ]; then
 ####
 echo "$title_md [ $first_option ] \
 [  optionally ] [ howto compile bash script with obash ] "
-echo "$title_md Compile $cmd_basename" ; echo
+echo "$title_md Compile $cmd_command" ; echo
 if [ "$command_obash" == "$NULL" ]
 then echo "$title_md install obash to compile"; exit ; fi
 if [ "$command_uuid" == "$NULL" ]
 then echo "$title_md install uuid to compile"; exit ; fi
 if [ "$cmd_format" != "Bourne-Again_shell_script," ]
 then echo "$title_md the $cmd_name is not Bourne-Again_shell_script," ; exit ; fi
-obash_file_date="$default_directory_obash/$cmd_basename-$cmd_version"
-cp $cmd_realpath $obash_file_date.bash
+obash_file_date="$default_directory_obash/$cmd_command-$cmd_version"
+cp $cmd_command $obash_file_date.bash
 $command_obash -r -c -o $obash_file_date.bin $obash_file_date.bash \
 && echo "$title_md $text_ok" || echo "$title_md $text_fail"
 echo ; echo "$title_md And now list:"
@@ -6082,12 +6084,12 @@ if   [ "$first_option" == "info" ]; then
 ####
 ####
 echo "$title_md $text_info $text_md [ $first_option ]  [ info $second_option ] [ info md ]"
-echo "$title_md $text_info  Launch info search: $cmd_realpath [optional-output] info [pattern-to-search]"
-echo "$title_md $text_info Example info search: $cmd_realpath [optional-output] info ls"
-echo "$title_md $text_info    Show all options: $cmd_realpath [optional-output] info-options"
+echo "$title_md $text_info  Launch info search: $cmd_command [optional-output] info [pattern-to-search]"
+echo "$title_md $text_info Example info search: $cmd_command [optional-output] info ls"
+echo "$title_md $text_info    Show all options: $cmd_command [optional-output] info-options"
 if   [ "$second_option" == "$NULL" ]; then exit ; fi
-if   [ "$second_option" == "info-options" ]; then $cmd_realpath info-options ; exit ; fi
-$cmd_realpath info-options | $command_grep -i "$second_option" | $command_grep -Ev "###" 
+if   [ "$second_option" == "info-options" ]; then $cmd_command info-options ; exit ; fi
+$cmd_command info-options | $command_grep -i "$second_option" | $command_grep -Ev "###" 
 ####
 ####
 exit ; fi
@@ -6231,14 +6233,14 @@ if [ "$first_option" == "wizard-tiny" ]; then echo
 ####
 ####
 archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-tiny" ; name_firewall="wizard-tiny"
-$cmd_realpath templates-regen
+$cmd_command templates-regen
 cp "$default_tinycfg_eng" "$directory_cache_necesary/$cmd_name-$archivo"
 $favorite_text_editor "$directory_cache_necesary/$cmd_name-$archivo"
 clear
 $favorite_realpath_textdialog --clear --title "Run this wizard" \
 --yesno "Run this wizard" 0 0 && clear \
 && cp "$directory_cache_necesary/$cmd_name-$archivo" \
-"$default_directory_custom/$archivo" && $cmd_realpath loadtiny-custom $archivo || clear
+"$default_directory_custom/$archivo" && $cmd_command loadtiny-custom $archivo || clear
 ####
 ####
 exit; fi
@@ -6254,14 +6256,14 @@ if [ "$first_option" == "wizard-mini" ]; then echo
 ####
 ####
 archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
-$cmd_realpath templates-regen
+$cmd_command templates-regen
 cp "$default_minicfg_eng" "$directory_cache_necesary/$cmd_name-$archivo"
 $favorite_text_editor "$directory_cache_necesary/$cmd_name-$archivo"
 clear
 $favorite_realpath_textdialog --clear --title "Run this wizard" \
 --yesno "Run this wizard" 0 0 && clear \
 && cp "$directory_cache_necesary/$cmd_name-$archivo" \
-"$default_directory_custom/$archivo" && $cmd_realpath load-custom $archivo || clear
+"$default_directory_custom/$archivo" && $cmd_command load-custom $archivo || clear
 ####
 ####
 exit; fi
@@ -6277,14 +6279,14 @@ if [ "$first_option" == "wizard-full" ]; then $nada
 ####
 ####
 archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
-$cmd_realpath templates-regen
+$cmd_command templates-regen
 cp "$default_fullcfg_eng" "$directory_cache_necesary/$cmd_name-$archivo"
 $favorite_text_editor "$directory_cache_necesary/$cmd_name-$archivo"
 clear
 $favorite_realpath_textdialog --clear --title "Run this wizard" --yesno \
 "Run this wizard" 0 0 && clear && \
 cp "$directory_cache_necesary/$cmd_name-$archivo" "$default_directory_custom/$archivo" \
-&& $cmd_realpath load-custom $archivo || clear 
+&& $cmd_command load-custom $archivo || clear 
 ####
 ####
 exit; fi
@@ -6300,34 +6302,34 @@ if [ "$first_option" == "load" ]; then
 ####
 ####
 if [ "second_option" == "$NULL" ]; then
-$cmd_realpath names ; echo "$text_md $text_info \
-[ usage: $cmd_realpath load fw-to-load ] \
-[ See: $cmd_realpath names ]" ; exit ; fi
+$cmd_command names ; echo "$text_md $text_info \
+[ usage: $cmd_command load fw-to-load ] \
+[ See: $cmd_command names ]" ; exit ; fi
 echo "$title_md $text_info [ loading firewall control $second_option ]"
 ####
 ####
 if [ -f $default_directory_control/$second_option-nft-ipv4 ] && \
 [ -f $default_directory_control/$second_option-legacy-ipv4 ] ; then 
-$cmd_realpath eraserules &> /dev/null
+$cmd_command eraserules &> /dev/null
 if [ -f "$default_directory_control/$second_option-ebtables" ]; then
-cat $default_directory_control/$second_option-ebtables | \
+$command_cat  $default_directory_control/$second_option-ebtables | \
 $command_ebtables-restore &> /dev/null; fi
 if [ -f "$default_directory_control/$second_option-arptables" ]; then
 cat $default_directory_control/$second_option-arptables | \
 $command_arptables-restore &> /dev/null; fi
 ####
 #### 
-cat $default_directory_control/$second_option-nft-ipv4 |  $command_ip4tablesnft-restore       
-cat $default_directory_control/$second_option-legacy-ipv4 | $command_ip4tableslegacy-restore  
-cat $default_directory_control/$second_option-nft-ipv6 | $command_ip6tablesnft-restore       
-cat $default_directory_control/$second_option-legacy-ipv6 | $command_ip6tableslegacy-restore 
+$command_cat  $default_directory_control/$second_option-nft-ipv4 |  $command_ip4tablesnft-restore       
+$command_cat  $default_directory_control/$second_option-legacy-ipv4 | $command_ip4tableslegacy-restore  
+$command_cat  $default_directory_control/$second_option-nft-ipv6 | $command_ip6tablesnft-restore       
+$command_cat  $default_directory_control/$second_option-legacy-ipv6 | $command_ip6tableslegacy-restore 
 #### echo "$title_md $text_ok [ firewall loaded ] [ name: $second_option ]"
 echo "$title_md $text_ok [ Launched: firewall ] [ Type: control ] [ Name: $second_option ]"
 ####
 ####
 else
-$cmd_realpath names
-echo "$text_md $text_info [ usage: $cmd_realpath load fw-to-load ] [ See: $cmd_realpath names ]"
+$cmd_command names
+echo "$text_md $text_info [ usage: $cmd_command load fw-to-load ] [ See: $cmd_command names ]"
 fi 
 ####
 ####
@@ -6345,7 +6347,7 @@ if [ "$first_option" == "save" ]; then
 ####
 ####
 case "$second_option" in
-"$NULL") echo "$text_md $text_info [ Usage: $cmd_realpath save fw-to-save ]"
+"$NULL") echo "$text_md $text_info [ Usage: $cmd_command save fw-to-save ]"
 exit ;;
 *) archivofin="$second_option" ;; 
 esac
@@ -6385,14 +6387,14 @@ if [ "$first_option" == "show" ]; then
 echo "$title_md [ $first_option ]  [ show one firewall saved ] "
 echo 
 case "$second_option" in
-"$NULL") $cmd_realpath names
-echo "$text_md $text_info [ Use: $cmd_realpath show file-to-show ]" ; exit ;;
+"$NULL") $cmd_command names
+echo "$text_md $text_info [ Use: $cmd_command show file-to-show ]" ; exit ;;
 *) archivofin=$($command_sed 's/\///g' <<< "$second_option") ;;
 esac
 ####
 ####
 if [ ! -f "$default_directory_control/$archivofin-nft-ipv4" ];
-then  $cmd_realpath names ; exit ; fi
+then  $cmd_command names ; exit ; fi
 ####
 ####
 $command_ls -l $default_directory_control/$archivofin-arptables
@@ -6403,17 +6405,17 @@ $command_ls -l $default_directory_control/$archivofin-legacy-ipv4
 $command_ls -l $default_directory_control/$archivofin-legacy-ipv6
 echo "$title_md $text_ok [ FIREWALL LISTED ] [ $archivofin ]"
 echo "$title_md $archivofin-arptables"
-cat $default_directory_control/$archivofin-arptables
+$command_cat  $default_directory_control/$archivofin-arptables
 echo "$title_md $archivofin-ebtables"
-cat $default_directory_control/$archivofin-ebtables
+$command_cat  $default_directory_control/$archivofin-ebtables
 echo "$title_md $archivofin-nft-ipv4"
-cat $default_directory_control/$archivofin-nft-ipv4
+$command_cat  $default_directory_control/$archivofin-nft-ipv4
 echo "$title_md $archivofin-legacy-ipv4"
-cat $default_directory_control/$archivofin-legacy-ipv4
+$command_cat  $default_directory_control/$archivofin-legacy-ipv4
 echo "$title_md $archivofin-nft-ipv6"
-cat $default_directory_control/$archivofin-nft-ipv6
+$command_cat  $default_directory_control/$archivofin-nft-ipv6
 echo "$title_md archivofin-legacy-ipv6"
-cat $default_directory_control/$archivofin-legacy-ipv6
+$command_cat  $default_directory_control/$archivofin-legacy-ipv6
 echo "$title_md $text_ok [ firewall readed ] [ $archivofin ]"
 echo 
 ####
@@ -6439,17 +6441,17 @@ $command_ip4tableslegacy-save    &> $default_directory_control/$cmd_name-actual-
 $command_ip6tablesnft-save      &> $default_directory_control/$cmd_name-actual-nft-ipv6   
 $command_ip6tableslegacy-save   &> $default_directory_control/$cmd_name-actual-legacy-ipv6
 echo "$title_md arptables $title_md"
-cat $default_directory_control/$cmd_name-actual-arptables
+$command_cat  $default_directory_control/$cmd_name-actual-arptables
 echo "$title_md ebtables $title_md"
-cat $default_directory_control/$cmd_name-actual-ebtables
+$command_cat  $default_directory_control/$cmd_name-actual-ebtables
 echo "$title_md nft with ipv4 $title_md"
-cat $default_directory_control/$cmd_name-actual-nft-ipv4
+$command_cat  $default_directory_control/$cmd_name-actual-nft-ipv4
 echo "$title_md legacy with ipv4 $title_md"
-cat $default_directory_control/$cmd_name-actual-legacy-ipv4
+$command_cat  $default_directory_control/$cmd_name-actual-legacy-ipv4
 echo "$title_md nft with ipv6 $title_md"
-cat $default_directory_control/$cmd_name-actual-nft-ipv6
+$command_cat  $default_directory_control/$cmd_name-actual-nft-ipv6
 echo "$title_md legacy with ipv6 $title_md"
-cat $default_directory_control/$cmd_name-actual-legacy-ipv6
+$command_cat  $default_directory_control/$cmd_name-actual-legacy-ipv6
 echo
 echo "  $text_ok [ readed firewall actual ]"
 ####
@@ -6483,7 +6485,7 @@ $command_ip6tableslegacy-save &> $default_directory_control/$cmd_name-stoped-leg
 #### english: erase the rules #### spanish: borra las reglas
 ####
 ####
-$cmd_realpath eraserules &> /dev/null
+$cmd_command eraserules &> /dev/null
 echo "$title_md $text_info [ stopping firewall ]"
 echo "$title_md $text_ok [ firewall stopped  ]"
 ####
@@ -6506,12 +6508,12 @@ echo "$title_md [ $first_option ]  [ Continue the stopped firewall ] "
 #### english: restore last fw #### spanish: restaura el ultimo fw
 ####
 ####
-cat $default_directory_control/$cmd_name-stoped-arptables | $command_arptables-restore
-cat $default_directory_control/$cmd_name-stoped-ebtables | $command_ebtables-restore
-cat $default_directory_control/$cmd_name-stoped-nft-ipv4 | $command_ip4tablesnft-restore  
-cat $default_directory_control/$cmd_name-stoped-legacy-ipv4 | $command_ip4tableslegacy-restore  
-cat $default_directory_control/$cmd_name-stoped-nft-ipv6 | $command_ip6tablesnft-restore  
-cat $default_directory_control/$cmd_name-stoped-legacy-ipv6 | $command_ip6tableslegacy-restore  
+$command_cat  $default_directory_control/$cmd_name-stoped-arptables | $command_arptables-restore
+$command_cat  $default_directory_control/$cmd_name-stoped-ebtables | $command_ebtables-restore
+$command_cat  $default_directory_control/$cmd_name-stoped-nft-ipv4 | $command_ip4tablesnft-restore  
+$command_cat  $default_directory_control/$cmd_name-stoped-legacy-ipv4 | $command_ip4tableslegacy-restore  
+$command_cat  $default_directory_control/$cmd_name-stoped-nft-ipv6 | $command_ip6tablesnft-restore  
+$command_cat  $default_directory_control/$cmd_name-stoped-legacy-ipv6 | $command_ip6tableslegacy-restore  
 echo "$title_md $text_info [ continue firewall  ]"
 echo "$title_md $text_ok [ firewall continued ]"
 exit; fi
@@ -6527,7 +6529,7 @@ if [ "$first_option" == "config-eng" ]; then
 ####
 ####
 echo "$title_md [ $first_option ] [ show variables cfg from english configuration ] "
-cat  $default_fullcfg_eng
+$command_cat $default_fullcfg_eng
 ####
 ####
 exit; fi
@@ -6543,7 +6545,7 @@ if [ "$first_option" == "config-spa" ]; then
 ####
 ####
 echo "$title_md [ $first_option ] [ show variables cfg from spanish configuration ] "
-cat $default_fullcfg_spa
+$command_cat  $default_fullcfg_spa
 ####
 ####
 exit; fi
@@ -6607,22 +6609,22 @@ if   [ "$first_option" == "speed-ip4" ]; then
 ####
 ####
 echo "$title_md [ $first_option ]  [ test speed ipv4 with iperf ] "
-echo "$title_md $cmd_basename use or iperf or iperf3"
+echo "$title_md $cmd_command use or iperf or iperf3"
 if [ "$favorite_iperf_command" == "$NULL" ];
 then echo "$title_md $text_fail install iperf";
 else echo "$title_md $text_ok [ choosed iperf ]"; fi
 echo "$title_md"
 # echo "$title_md [ Working ] Saving firewall before speed-ip4"
-$cmd_realpath save before-speed-ip4
-$cmd_realpath add-whitelist4 $serverip_iperf_ipv4
+$cmd_command save before-speed-ip4
+$cmd_command add-whitelist4 $serverip_iperf_ipv4
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv4 to $serverip_iperf_ipv4 ]"
 $favorite_iperf_command -4 -t 4 -c $serverip_iperf_ipv4 -p $serverport_iperf_ipv4
 echo "$title_md"
 echo "$title_md [ Working ] [ Restoring firewall ]"
-$cmd_realpath load before-speed-ip4 
-echo "$title_md [ Done ] $cmd_basename speed-ip4"
+$cmd_command load before-speed-ip4 
+echo "$title_md [ Done ] $cmd_command speed-ip4"
 ####
 ####
 exit; fi
@@ -6638,20 +6640,20 @@ if   [ "$first_option" == "speed-ip6" ]; then
 ####
 ####
 echo "$title_md [ $first_option ]  [ test speed ipv6 with iperf ] "
-echo "$title_md $cmd_basename use or iperf or iperf3"
+echo "$title_md $cmd_command use or iperf or iperf3"
 if [ "$favorite_iperf_command" == "$NULL" ];
 then echo "$title_md $text_fail install iperf";
 else echo "$title_md $text_ok [ choosed iperf ]"; fi
-$cmd_realpath save before-speed-ip6 
-$cmd_realpath add-whitelist6 $serverip_iperf_ipv6
+$cmd_command save before-speed-ip6 
+$cmd_command add-whitelist6 $serverip_iperf_ipv6
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
 echo "$title_md [ Working ] Conecting in ipv6 to $serverip_iperf_ipv4 ]"
 $favorite_iperf_command -6 -t 4 -P 1 -c $serverip_iperf_ipv6 -p $serverport_iperf_ipv6 
 echo "$title_md"
 echo "$title_md [ Working ] [ Restoring firewall ]"
-$cmd_realpath load before-speed-ip6 
-echo "$title_md [ Done ] $cmd_basename speed-ip6"
+$cmd_command load before-speed-ip6 
+echo "$title_md [ Done ] $cmd_command speed-ip6"
 ####
 ####
 exit; fi
@@ -6723,7 +6725,7 @@ if   [ "$first_option" == "expert-project-web" ]; then
 echo "$title_md [ $first_option ] [ version - date - size - downloaded last week ]"
 ####
 ####
-$cmd_basename web "http://sourceforge.net/projects/f-iptables/files/" \
+$cmd_command web "http://sourceforge.net/projects/f-iptables/files/" \
  | grep bash.sh | grep -i kb
 ####
 ####
@@ -6841,7 +6843,7 @@ echo "$text_md $text_fail [ install openssl ]"; exit ;; esac
 ####
 if [ "$second_option" == "$NULL" ]; then
 echo "[ get one web certifcate ] \
-[ Example: $cmd_realpath webcert www.fast.com ]"; exit; fi
+[ Example: $cmd_command webcert www.fast.com ]"; exit; fi
 echo
 $command_timeout -s SIGINT -v $time_server_waiting \
 $command_openssl s_client -connect $second_option:443
@@ -6862,14 +6864,14 @@ if   [ "$first_option" == "expert-nmap-tcp" ]; then
 echo "$title_md [ $first_option ]  [ scan with nmap tcp ]"
 if [ "$command_nmap" == "$NULL" ];  then
 echo "$title_md Please install nmap to work"; exit; fi
-echo "$title_md $text_info [ Use: $cmd_basename $first_option ip/net ]"
+echo "$title_md $text_info [ Use: $cmd_command $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
-$cmd_realpath save before-nmap-tcp 
-$cmd_realpath add-whitelist4 $2
+echo "$title_md $text_fail [ Use: $cmd_command $first_option ip/net ]"; exit ; fi
+$cmd_command save before-nmap-tcp 
+$cmd_command add-whitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sT $2
-$cmd_realpath load before-nmap-tcp 
+$cmd_command load before-nmap-tcp 
 ####
 ####
 exit; fi
@@ -6887,14 +6889,14 @@ if   [ "$first_option" == "expert-nmap-syn" ]; then echo $give_cover
 echo "$title_md [ $first_option ]  [ scan with nmap syn ]"
 if [ "$command_nmap" == "$NULL" ];  then
 echo "$title_md Please install nmap to work"; exit; fi
-echo "$title_md $text_info [ Use: $cmd_basename $first_option ip/net ]"
+echo "$title_md $text_info [ Use: $cmd_command $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
-$cmd_realpath save before-nmap-syn
-$cmd_realpath add-whitelist4 $2
+echo "$title_md $text_fail [ Use: $cmd_command $first_option ip/net ]"; exit ; fi
+$cmd_command save before-nmap-syn
+$cmd_command add-whitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sF $2
-$cmd_realpath load before-nmap-syn
+$cmd_command load before-nmap-syn
 echo 
 ####
 ####
@@ -6913,14 +6915,14 @@ if   [ "$first_option" == "expert-nmap-fin" ] ; then
 echo "$title_md [ $first_option ]  [ scan with nmap fin ]"
 if [ "$command_nmap" == "$NULL" ];  then
 echo "$title_md Please install nmap to work"; exit; fi
-echo "$title_md $text_info [ Use: $cmd_basename $first_option ip/net ]"
+echo "$title_md $text_info [ Use: $cmd_command $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
-$cmd_realpath save before-nmap-fin 
-$cmd_realpath add-whitelist4 $2
+echo "$title_md $text_fail [ Use: $cmd_command $first_option ip/net ]"; exit ; fi
+$cmd_command save before-nmap-fin 
+$cmd_command add-whitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sT $2
-$cmd_realpath load before-nmap-fin
+$cmd_command load before-nmap-fin
 echo 
 ####
 ####
@@ -6939,14 +6941,14 @@ if   [ "$first_option" == "expert-nmap-udp" ]; then
 echo "$title_md [ $first_option ]  [ scan with nmap udp ]"
 if [ "$command_nmap" == "$NULL" ];  then
 echo "$title_md Please install nmap to work"; exit; fi
-echo "$title_md $text_info [ Use: $cmd_basename $first_option ip/net ]"
+echo "$title_md $text_info [ Use: $cmd_command $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
-$cmd_realpath save before-nmap-udp
-$cmd_realpath add-whitelist4 $2
+echo "$title_md $text_fail [ Use: $cmd_command $first_option ip/net ]"; exit ; fi
+$cmd_command save before-nmap-udp
+$cmd_command add-whitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sU $2
-$cmd_realpath load before-nmap-udp
+$cmd_command load before-nmap-udp
 echo 
 ####
 ####
@@ -6965,14 +6967,14 @@ if   [ "$first_option" == "expert-nmap-ping" ] ; then
 echo "$title_md [ $first_option ]  [ scan with nmap ping ]"
 if [ "$command_nmap" == "$NULL" ];  then
 echo "$title_md Please install nmap to work"; exit; fi
-echo "$title_md $text_info [ Use: $cmd_basename $first_option ip/net ]"
+echo "$title_md $text_info [ Use: $cmd_command $first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Use: $cmd_basename $first_option ip/net ]"; exit ; fi
-$cmd_realpath save before-nmap-ping
-$cmd_realpath add-whitelist4 $2
+echo "$title_md $text_fail [ Use: $cmd_command $first_option ip/net ]"; exit ; fi
+$cmd_command save before-nmap-ping
+$cmd_command add-whitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
 $command_nmap -sn $2
-$cmd_realpath load before-nmap-ping
+$cmd_command load before-nmap-ping
 ####
 ####
 exit; fi
@@ -7006,7 +7008,7 @@ if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=OK-new-config-file-$third_option\
-ANDlaunch:$cmd_realpath-load-custom-$third_option ; exit
+ANDlaunch:$cmd_command-load-custom-$third_option ; exit
 else rm "$default_directory_custom/$third_option" ; 
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7024,7 +7026,7 @@ if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=OK-new-config-file-$third_option-\
-AND-launch:$cmd_realpath-loadtiny-custom-$third_option ; exit
+AND-launch:$cmd_command-loadtiny-custom-$third_option ; exit
 else rm $default_directory_custom/$third_option ; 
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7042,7 +7044,7 @@ if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=OK-new-config-file-$third_option\
-ANDlaunch:$cmd_realpath-load-custom-$third_option ; exit
+ANDlaunch:$cmd_command-load-custom-$third_option ; exit
 else rm "$default_directory_custom/$third_option" ; 
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7060,7 +7062,7 @@ if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=OK-new-config-file-$third_option-\
-AND-launch:$cmd_realpath-load-custom-$third_option ; exit
+AND-launch:$cmd_command-load-custom-$third_option ; exit
 else rm $default_directory_custom/$third_option ; 
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7078,7 +7080,7 @@ if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=OK-new-config-file-$third_option-\
-AND-launch:-$cmd_realpath-load-custom-$third_option ; exit
+AND-launch:-$cmd_command-load-custom-$third_option ; exit
 else rm $default_directory_custom/$third_option ; 
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7096,7 +7098,7 @@ if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=OK-new-config-file-$third_option-\
-AND-launch:$cmd_realpath-load-custom-$third_option ; exit
+AND-launch:$cmd_command-load-custom-$third_option ; exit
 else rm "$default_directory_custom/$third_option" ; 
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7128,9 +7130,9 @@ $favorite_realpath_graphicalldialog --forms \
 ####
 ####
 "expert-wpa-new")
-$cmd_realpath expert-wpa-regen
+$cmd_command expert-wpa-regen
 cp $default_directory_wpa/defaultwpa $default_directory_wpa/wpaconfig_$third_option
-$cmd_realpath gui expert-wpa-modify $third_option
+$cmd_command gui expert-wpa-modify $third_option
 ;;
 ####
 ####
@@ -7157,10 +7159,10 @@ $favorite_realpath_graphicalldialog --forms \
 ;;
 ####
 ####
-*)$cmd_realpath "$second_option" "$third_option" "$quad_option" &> "$temporal_guifinal"
+*)$cmd_command "$second_option" "$third_option" "$quad_option" &> "$temporal_guifinal"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title=Gui-Output-$cmd_realpath \
+--title=Gui-Output-$cmd_command \
 --filename="$temporal_guifinal" --auto-scroll ;;
 #### 
 #### 
@@ -7183,11 +7185,11 @@ then echo $head_waiting_gui
 case $second_option in
 #### 
 ####
-list*)$cmd_realpath txt $second_option $third_option \
+list*)$cmd_command txt $second_option $third_option \
 $quad_option &> $temporal_guifinal
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title=Gui-Output-$cmd_realpath \
+--title=Gui-Output-$cmd_command \
 --filename=$temporal_guifinal --auto-scroll ;;
 ####
 ####
@@ -7199,7 +7201,7 @@ $favorite_realpath_graphicalldialog  --text-info \
 --filename=$directory_cache_necesary/$cmd_name-$archivo \
 --editable --title=WIZARD TINY 1> $default_directory_custom/$archivo
 if [  -s $default_directory_custom/$archivo ]; then $nada ; 
-$cmd_realpath -gui loadtiny-custom $archivo ; $cmd_realpath -gui list4;
+$cmd_command -gui loadtiny-custom $archivo ; $cmd_command -gui list4;
 else rm $default_directory_custom/$archivo ;
 $favorite_realpath_graphicalldialog --info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7215,7 +7217,7 @@ $favorite_realpath_graphicalldialog  --text-info \
 --filename=$directory_cache_necesary/$cmd_name-$archivo \
 --editable --title=WIZARD MINI 1> $default_directory_custom/$archivo
 if [  -s $default_directory_custom/$archivo ]; then $nada ; 
-$cmd_realpath -gui load-custom $archivo ; $cmd_realpath -gui list4;
+$cmd_command -gui load-custom $archivo ; $cmd_command -gui list4;
 else rm $default_directory_custom/$archivo ;
 $favorite_realpath_graphicalldialog --info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7231,7 +7233,7 @@ $favorite_realpath_graphicalldialog  --text-info \
 --filename=$directory_cache_necesary/$cmd_name-$archivo \
 --editable --title=WIZARD-FULL 1> $default_directory_custom/$archivo
 if [  -s $default_directory_custom/$archivo ]; then $nada ; 
-$cmd_realpath -gui load-custom $archivo ; $cmd_realpath -gui list4;
+$cmd_command -gui load-custom $archivo ; $cmd_command -gui list4;
 else rm $default_directory_custom/$archivo ;
 $favorite_realpath_graphicalldialog  --info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7254,7 +7256,7 @@ if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=OK.file-$third_option
-else cp $directory_cache_necesary/$cmd_realpath-$third_option \
+else cp $directory_cache_necesary/$cmd_command-$third_option \
 $default_directory_custom/$third_option
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7277,11 +7279,11 @@ $favorite_realpath_graphicalldialog  --info \
 ;;
 ####
 ####
-*)$cmd_realpath txt $second_option $third_option \
+*)$cmd_command txt $second_option $third_option \
 $quad_option &> $temporal_guifinal
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title=Gui-Output-$cmd_realpath \
+--title=Gui-Output-$cmd_command \
 --filename=$temporal_guifinal --auto-scroll
 ;;
 #### 
@@ -7302,10 +7304,10 @@ if [ "$first_option" == "gui" ] && [ "$second_option" == "$NULL" ]
 then echo $head_waiting_gui
 ####
 ####
-$cmd_realpath txt $second_option $third_option &> $temporal_guifinal
+$cmd_command txt $second_option $third_option &> $temporal_guifinal
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title=Gui-Output-$cmd_realpath \
+--title=Gui-Output-$cmd_command \
 --filename=$temporal_guifinal --auto-scroll 
 ####
 ####
@@ -7326,8 +7328,8 @@ then echo $head_waiting_gui ; echo $head_give_cover
 ####  english: principal gui  #### spanish: principal gui
 ####
 ####
-titulo="$cmd_realpath gui-shell-zenity"
-untexto="$cmd_realpath gui-shell-zenity"
+titulo="$cmd_command gui-shell-zenity"
+untexto="$cmd_command gui-shell-zenity"
 favorite_realpath_graphicalldialog="$command_zenity"
 ####
 ####
@@ -7346,8 +7348,8 @@ menugtk="$($command_zenity --entry \
 case "$menugtk" in
 ####
 ####
-1) $cmd_realpath gui-zenity options; exit ;;
-$NULL) $cmd_realpath gui-zenity options; exit ;;
+1) $cmd_command gui-zenity options; exit ;;
+$NULL) $cmd_command gui-zenity options; exit ;;
 ####
 ####
 #### english: new-full-custom and nueva-completa-custom whithout parameters ####
@@ -7438,42 +7440,42 @@ $favorite_realpath_graphicalldialog  --forms \
 ####
 new-full-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-zenity new-full-custom $unarchivo
+$cmd_command -gui-zenity new-full-custom $unarchivo
 ;;
 nueva-completa-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-zenity nueva-completa-custom $unarchivo
+$cmd_command -gui-zenity nueva-completa-custom $unarchivo
 ;;
 new-mini-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-zenity new-mini-custom $unarchivo
+$cmd_command -gui-zenity new-mini-custom $unarchivo
 ;;
 nueva-mini-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-zenity nueva-mini-custom $unarchivo
+$cmd_command -gui-zenity nueva-mini-custom $unarchivo
 ;;
 new-tiny-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-zenity new-tiny-custom $unarchivo
+$cmd_command -gui-zenity new-tiny-custom $unarchivo
 ;;
 nueva-diminuta-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-zenity nueva-diminuta-custom $unarchivo
+$cmd_command -gui-zenity nueva-diminuta-custom $unarchivo
 ;;
 modify-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-zenity modify-custom $unarchivo
+$cmd_command -gui-zenity modify-custom $unarchivo
 ;;
 show-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-zenity show-custom $unarchivo
+$cmd_command -gui-zenity show-custom $unarchivo
 ;;
-wizard-full*) $cmd_realpath -gui-zenity wizard-full ;;
-wizard-mini*) $cmd_realpath -gui-zenity wizard-mini ;;
-wizard-tiny*) $cmd_realpath -gui-zenity wizard-tiny ;;
+wizard-full*) $cmd_command -gui-zenity wizard-full ;;
+wizard-mini*) $cmd_command -gui-zenity wizard-mini ;;
+wizard-tiny*) $cmd_command -gui-zenity wizard-tiny ;;
 preferences-modify*) 
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-zenity preferences-modify 
+$cmd_command -gui-zenity preferences-modify 
 ;;
 ####
 ####
@@ -7483,15 +7485,15 @@ $cmd_realpath -gui-zenity preferences-modify
 ####
 "$NULL")  exit ;;
 *) fecha_temporal="$cmd_actual_date"
-$cmd_realpath $menugtk &> /tmp/fwiptables-$fecha_temporal
+$cmd_command $menugtk &> /tmp/fwiptables-$fecha_temporal
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title=$cmd_realpath-gui-shell \
+--title=$cmd_command-gui-shell \
 --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal
 ;;
 esac
-$cmd_realpath gui-shell-zenity
+$cmd_command gui-shell-zenity
 ####
 ####
 exit ; fi
@@ -7512,8 +7514,8 @@ then echo $head_waiting_gui ; echo $head_give_cover
 ####  english: principal gui  #### spanish: principal gui
 ####
 ####
-titulo="$cmd_realpath gui-shell-yad"
-untexto="$cmd_realpath gui-shell-yad"
+titulo="$cmd_command gui-shell-yad"
+untexto="$cmd_command gui-shell-yad"
 favorite_realpath_graphicalldialog="$command_yad"
 ####
 ####
@@ -7532,8 +7534,8 @@ menugtk="$($command_yad --entry \
 case "$menugtk" in
 ####
 ####
-1) $cmd_realpath gui-yad options; exit ;;
-$NULL) $cmd_realpath gui-yad options; exit ;;
+1) $cmd_command gui-yad options; exit ;;
+$NULL) $cmd_command gui-yad options; exit ;;
 ####
 ####
 #### english: new-full-custom and nueva-completa-custom whithout parameters ####
@@ -7630,42 +7632,42 @@ $favorite_realpath_graphicalldialog  --forms \
 ####
 new-full-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-yad new-full-custom $unarchivo
+$cmd_command -gui-yad new-full-custom $unarchivo
 ;;
 nueva-completa-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-yad nueva-completa-custom $unarchivo
+$cmd_command -gui-yad nueva-completa-custom $unarchivo
 ;;
 new-mini-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-yad new-mini-custom $unarchivo
+$cmd_command -gui-yad new-mini-custom $unarchivo
 ;;
 nueva-mini-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-yad nueva-mini-custom $unarchivo
+$cmd_command -gui-yad nueva-mini-custom $unarchivo
 ;;
 new-tiny-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-yad new-tiny-custom $unarchivo
+$cmd_command -gui-yad new-tiny-custom $unarchivo
 ;;
 nueva-diminuta-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-yad nueva-diminuta-custom $unarchivo
+$cmd_command -gui-yad nueva-diminuta-custom $unarchivo
 ;;
 modify-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-yad modify-custom $unarchivo
+$cmd_command -gui-yad modify-custom $unarchivo
 ;;
 show-custom*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-yad show-custom $unarchivo 
+$cmd_command -gui-yad show-custom $unarchivo 
 ;;
-wizard-full*) $cmd_realpath -gui-yad wizard-full ;;
-wizard-mini*) $cmd_realpath -gui-yad wizard-mini ;;
-wizard-tiny*) $cmd_realpath -gui-yad wizard-tiny ;;
+wizard-full*) $cmd_command -gui-yad wizard-full ;;
+wizard-mini*) $cmd_command -gui-yad wizard-mini ;;
+wizard-tiny*) $cmd_command -gui-yad wizard-tiny ;;
 preferences-modify*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_realpath -gui-yad preferences-modify 
+$cmd_command -gui-yad preferences-modify 
 ;;
 ####
 ####
@@ -7674,14 +7676,14 @@ $cmd_realpath -gui-yad preferences-modify
 ####
 ####
 *) fecha_temporal="$cmd_actual_date"
-$cmd_realpath $menugtk &> /tmp/fwiptables-$fecha_temporal
+$cmd_command $menugtk &> /tmp/fwiptables-$fecha_temporal
 $command_yad --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---title=$cmd_realpath-gui-shelL-$menugtk \
+--title=$cmd_command-gui-shelL-$menugtk \
 --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal ;;
 esac
-$cmd_realpath gui-shell-yad
+$cmd_command gui-shell-yad
 ####
 ####
 exit ; fi
@@ -7729,18 +7731,18 @@ onecli="$(basename "$favorite_realpath_textdialog")"
 ##########
 ##########
 case $menuprincipal in
-001) clear ; $cmd_realpath cli intro  ;;
-002) clear ; $cmd_realpath cli info-options ;;
-003) clear ; $cmd_realpath cli-menu-listconceptual $onecli ;;
-004) clear ; $cmd_realpath cli-menu-listnumeral $onecli  ;;
-005) clear ; $cmd_realpath cli-menu-wallcontrol $onecli  ;;
-006) clear ; $cmd_realpath cli-menu-wallsystem  $onecli  ;;
-007) clear ; $cmd_realpath cli-menu-wallcustom  $onecli  ;;
-008) clear ; $cmd_realpath cli-menu-easynet     $onecli  ;;
+001) clear ; $cmd_command cli intro  ;;
+002) clear ; $cmd_command cli info-options ;;
+003) clear ; $cmd_command cli-menu-listconceptual $onecli ;;
+004) clear ; $cmd_command cli-menu-listnumeral $onecli  ;;
+005) clear ; $cmd_command cli-menu-wallcontrol $onecli  ;;
+006) clear ; $cmd_command cli-menu-wallsystem  $onecli  ;;
+007) clear ; $cmd_command cli-menu-wallcustom  $onecli  ;;
+008) clear ; $cmd_command cli-menu-easynet     $onecli  ;;
 ################################################################################
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-$cmd_realpath text-pause clear ; exit ;;
+$cmd_command text-pause clear ; exit ;;
 ################################################################################
 esac
 exit; fi
@@ -7792,29 +7794,29 @@ onecli="$(basename "$favorite_realpath_textdialog")"
 ##########
 ##########
 case $menuprincipal in
-001) clear ; $cmd_realpath cli-menu $onecli ;;
-002) clear ; $cmd_realpath cli options ;;
-003) clear ; $cmd_realpath cli firewall-listconceptual ;;
-004) clear ; $cmd_realpath cli ls4 ;;
-005) clear ; $cmd_realpath cli ls6 ;;
-006) clear ; $cmd_realpath cli list-filter4 ;;
-007) clear ; $cmd_realpath cli list-filter6 ;;
-008) clear ; $cmd_realpath cli list-forward ;;
-009) clear ; $cmd_realpath cli list-forward6 ;;
-010) clear ; $cmd_realpath cli list-nat4 ;;
-011) clear ; $cmd_realpath cli list-nat6 ;;
-012) clear ; $cmd_realpath cli list-alltables ;;
-013) clear ; $cmd_realpath cli list-raw4 ;;
-014) clear ; $cmd_realpath cli list-raw6 ;;
-015) clear ; $cmd_realpath cli list-mangle4 ;; 
-016) clear ; $cmd_realpath cli list-mangle6 ;;
-017) clear ; $cmd_realpath cli list-security4 ;;
-018) clear ; $cmd_realpath cli list-security6 ;;
-019) clear ; $cmd_realpath cli list-ebtables ;;
-020) clear ; $cmd_realpath cli list-arptables ;;
+001) clear ; $cmd_command cli-menu $onecli ;;
+002) clear ; $cmd_command cli options ;;
+003) clear ; $cmd_command cli firewall-listconceptual ;;
+004) clear ; $cmd_command cli ls4 ;;
+005) clear ; $cmd_command cli ls6 ;;
+006) clear ; $cmd_command cli list-filter4 ;;
+007) clear ; $cmd_command cli list-filter6 ;;
+008) clear ; $cmd_command cli list-forward ;;
+009) clear ; $cmd_command cli list-forward6 ;;
+010) clear ; $cmd_command cli list-nat4 ;;
+011) clear ; $cmd_command cli list-nat6 ;;
+012) clear ; $cmd_command cli list-alltables ;;
+013) clear ; $cmd_command cli list-raw4 ;;
+014) clear ; $cmd_command cli list-raw6 ;;
+015) clear ; $cmd_command cli list-mangle4 ;; 
+016) clear ; $cmd_command cli list-mangle6 ;;
+017) clear ; $cmd_command cli list-security4 ;;
+018) clear ; $cmd_command cli list-security6 ;;
+019) clear ; $cmd_command cli list-ebtables ;;
+020) clear ; $cmd_command cli list-arptables ;;
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-$cmd_realpath text-pause clear ; exit ;;
+$cmd_command text-pause clear ; exit ;;
 ################################################################################
 esac
 exit; fi
@@ -7870,29 +7872,29 @@ onecli="$(basename "$favorite_realpath_textdialog")"
 ##########
 ##########
 case $menuprincipal in
-001) clear ; $cmd_realpath cli-menu $onecli ;;
-002) clear ; $cmd_realpath cli options ;;
-003) clear ; $cmd_realpath cli firewall-listnumeral ;;
-004) clear ; $cmd_realpath cli lsn4 ;;
-005) clear ; $cmd_realpath cli lsn6 ;;
-006) clear ; $cmd_realpath cli listn-filter4 ;;
-007) clear ; $cmd_realpath cli listn-filter6 ;;
-008) clear ; $cmd_realpath cli listn-forward ;;
-009) clear ; $cmd_realpath cli listn-forward6 ;;
-010) clear ; $cmd_realpath cli listn-nat4 ;;
-011) clear ; $cmd_realpath cli listn-nat6 ;;
-012) clear ; $cmd_realpath cli listn-alltables ;;
-013) clear ; $cmd_realpath cli listn-raw4 ;;
-014) clear ; $cmd_realpath cli listn-raw6 ;;
-015) clear ; $cmd_realpath cli listn-mangle4 ;; 
-016) clear ; $cmd_realpath cli listn-mangle6 ;;
-017) clear ; $cmd_realpath cli listn-security4 ;;
-018) clear ; $cmd_realpath cli listn-security6 ;;
-019) clear ; $cmd_realpath cli list-ebtables ;;
-020) clear ; $cmd_realpath cli list-arptables ;;
+001) clear ; $cmd_command cli-menu $onecli ;;
+002) clear ; $cmd_command cli options ;;
+003) clear ; $cmd_command cli firewall-listnumeral ;;
+004) clear ; $cmd_command cli lsn4 ;;
+005) clear ; $cmd_command cli lsn6 ;;
+006) clear ; $cmd_command cli listn-filter4 ;;
+007) clear ; $cmd_command cli listn-filter6 ;;
+008) clear ; $cmd_command cli listn-forward ;;
+009) clear ; $cmd_command cli listn-forward6 ;;
+010) clear ; $cmd_command cli listn-nat4 ;;
+011) clear ; $cmd_command cli listn-nat6 ;;
+012) clear ; $cmd_command cli listn-alltables ;;
+013) clear ; $cmd_command cli listn-raw4 ;;
+014) clear ; $cmd_command cli listn-raw6 ;;
+015) clear ; $cmd_command cli listn-mangle4 ;; 
+016) clear ; $cmd_command cli listn-mangle6 ;;
+017) clear ; $cmd_command cli listn-security4 ;;
+018) clear ; $cmd_command cli listn-security6 ;;
+019) clear ; $cmd_command cli list-ebtables ;;
+020) clear ; $cmd_command cli list-arptables ;;
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-$cmd_realpath text-pause clear ; exit ;;
+$cmd_command text-pause clear ; exit ;;
 ################################################################################
 esac
 exit; fi
@@ -7948,39 +7950,39 @@ onecli="$(basename "$favorite_realpath_textdialog")"
 ##########
 ################################################################################
 case $menuprincipal in
-001) clear ; $cmd_realpath cli-menu $onecli ;;
-002) clear ; $cmd_realpath cli options ;;
-003) clear ; $cmd_realpath cli firewall-wallcontrol ;;
-004) clear ; $cmd_realpath txt stop ;;
-005) clear ; $cmd_realpath txt continue ;;
-006) clear ; $cmd_realpath txt reset ;;
-007) clear ; $cmd_realpath txt names ;;
-008) clear ; $cmd_realpath txt names ; echo "$title_md"
+001) clear ; $cmd_command cli-menu $onecli ;;
+002) clear ; $cmd_command cli options ;;
+003) clear ; $cmd_command cli firewall-wallcontrol ;;
+004) clear ; $cmd_command txt stop ;;
+005) clear ; $cmd_command txt continue ;;
+006) clear ; $cmd_command txt reset ;;
+007) clear ; $cmd_command txt names ;;
+008) clear ; $cmd_command txt names ; echo "$title_md"
 read -p "Type the firewall name to read   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
-$cmd_realpath show $nombrecillo ;; 
+$cmd_command show $nombrecillo ;; 
 009)archivo="$($favorite_realpath_textdialog --stdout \
 --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
-clear ;  echo "$title_md saved $archivo" ; $cmd_realpath save $archivo ;;
-010) clear ; $cmd_realpath names ; echo "$title_md"
+clear ;  echo "$title_md saved $archivo" ; $cmd_command save $archivo ;;
+010) clear ; $cmd_command names ; echo "$title_md"
 read -p "| Type the firewall name to restore |   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
-$cmd_realpath load $nombrecillo ;;
-011) clear ; $cmd_realpath cli actual ;;
-012) clear ; $cmd_realpath cli eraserules ; $cmd_realpath cli list4   ;;
-013) clear ; $cmd_realpath txt wizard-tiny ; $cmd_realpath cli list4  ;;
-014) clear ; $cmd_realpath txt wizard-mini ; $cmd_realpath cli list4  ;;
-015) clear ; $cmd_realpath txt wizard-full ; $cmd_realpath cli list4  ;;
-016) clear ; $cmd_realpath txt without-connection ; $cmd_realpath cli list4  ;;
-017) clear ; $cmd_realpath txt input-permisive ; $cmd_realpath cli list4   ;;
-018) clear ; $cmd_realpath txt input-established ; $cmd_realpath cli list4   ;;
-019) clear ; $cmd_realpath txt eraserules4 ; $cmd_realpath cli list4   ;;
-020) clear ; $cmd_realpath txt eraserules6 ; $cmd_realpath cli list6   ;;
-021) clear ; $cmd_realpath txt eraserules ; $cmd_realpath cli status   ;;
+$cmd_command load $nombrecillo ;;
+011) clear ; $cmd_command cli actual ;;
+012) clear ; $cmd_command cli eraserules ; $cmd_command cli list4   ;;
+013) clear ; $cmd_command txt wizard-tiny ; $cmd_command cli list4  ;;
+014) clear ; $cmd_command txt wizard-mini ; $cmd_command cli list4  ;;
+015) clear ; $cmd_command txt wizard-full ; $cmd_command cli list4  ;;
+016) clear ; $cmd_command txt without-connection ; $cmd_command cli list4  ;;
+017) clear ; $cmd_command txt input-permisive ; $cmd_command cli list4   ;;
+018) clear ; $cmd_command txt input-established ; $cmd_command cli list4   ;;
+019) clear ; $cmd_command txt eraserules4 ; $cmd_command cli list4   ;;
+020) clear ; $cmd_command txt eraserules6 ; $cmd_command cli list6   ;;
+021) clear ; $cmd_command txt eraserules ; $cmd_command cli status   ;;
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-$cmd_realpath text-pause clear ; exit ;;
+$cmd_command text-pause clear ; exit ;;
 ################################################################################
 esac
 exit; fi
@@ -8049,43 +8051,43 @@ onecli="$(basename "$favorite_realpath_textdialog")"
 ##########
 ################################################################################
 case $menuprincipal in
-001) clear ; $cmd_realpath cli-menu $onecli ;;
-002) clear ; $cmd_realpath cli options ;;
-003) clear ; $cmd_realpath cli firewall-wallsystem ;;
-007) clear ; $cmd_realpath txt client-basic ; $cmd_realpath cli list4    ;;
-008) clear ; $cmd_realpath txt client-web ; $cmd_realpath cli list4    ;;
-009) clear ; $cmd_realpath txt client-ssh ; $cmd_realpath cli list4    ;;
-010) clear ; $cmd_realpath txt client-telnet ; $cmd_realpath cli list4    ;;
-011) clear ; $cmd_realpath txt client-git ; $cmd_realpath cli list4    ;;
-012) clear ; $cmd_realpath txt games-shooter ; $cmd_realpath cli list4   ;; 
-013) clear ; $cmd_realpath txt game-wesnoth ; $cmd_realpath cli list4    ;;
-014) clear ; $cmd_realpath txt game-minetest ; $cmd_realpath cli list4   ;;
-015) clear ; $cmd_realpath txt game-freeciv ; $cmd_realpath cli list4    ;;
-016) clear ; $cmd_realpath txt game-widelands ; $cmd_realpath cli list4  ;;
-017) clear ; $cmd_realpath txt client-web ; $cmd_realpath cli list4      ;;
-018) clear ; $cmd_realpath txt client-vnc ; $cmd_realpath cli list4      ;;
-019) clear ; $cmd_realpath txt client-tor ; $cmd_realpath cli list4      ;;
-020) clear ; $cmd_realpath txt client-vpn ; $cmd_realpath cli list4      ;;
-021) clear ; $cmd_realpath txt client-torrent ; $cmd_realpath cli list4  ;;
-022) clear ; $cmd_realpath txt lan-tor ; $cmd_realpath cli list4         ;;
-023) clear ; $cmd_realpath txt lan-vpn ; $cmd_realpath cli list4         ;; 
-024) clear ; $cmd_realpath txt shield-ssh ; $cmd_realpath cli list4      ;; 
-025) clear ; $cmd_realpath txt server-ssh ; $cmd_realpath cli list4      ;;
-026) clear ; $cmd_realpath txt server-web ; $cmd_realpath cli list4      ;;
-027) clear ; $cmd_realpath txt server-vnc ; $cmd_realpath cli list4      ;;
-028) clear ; $cmd_realpath txt server-print ; $cmd_realpath cli list4    ;;
-029) clear ; $cmd_realpath txt server-samba ; $cmd_realpath cli list4    ;;
-030) clear ; $cmd_realpath txt server-lamp ; $cmd_realpath cli list4     ;;
-031) clear ; $cmd_realpath txt server-mail ; $cmd_realpath cli list4     ;;
-032) clear ; $cmd_realpath txt server-ftp ; $cmd_realpath cli list4      ;;
-033) clear ; $cmd_realpath txt server-news ; $cmd_realpath cli list4     ;;
-034) clear ; $cmd_realpath txt server-teamspeak ; $cmd_realpath cli list4  ;;
-035) clear ; $cmd_realpath txt server-mumble ; $cmd_realpath cli list4   ;;
-036) clear ; $cmd_realpath txt server-sql ; $cmd_realpath cli list4      ;;
-037) clear ; $cmd_realpath txt server-asterisk ; $cmd_realpath cli list4 ;;
+001) clear ; $cmd_command cli-menu $onecli ;;
+002) clear ; $cmd_command cli options ;;
+003) clear ; $cmd_command cli firewall-wallsystem ;;
+007) clear ; $cmd_command txt client-basic ; $cmd_command cli list4    ;;
+008) clear ; $cmd_command txt client-web ; $cmd_command cli list4    ;;
+009) clear ; $cmd_command txt client-ssh ; $cmd_command cli list4    ;;
+010) clear ; $cmd_command txt client-telnet ; $cmd_command cli list4    ;;
+011) clear ; $cmd_command txt client-git ; $cmd_command cli list4    ;;
+012) clear ; $cmd_command txt games-shooter ; $cmd_command cli list4   ;; 
+013) clear ; $cmd_command txt game-wesnoth ; $cmd_command cli list4    ;;
+014) clear ; $cmd_command txt game-minetest ; $cmd_command cli list4   ;;
+015) clear ; $cmd_command txt game-freeciv ; $cmd_command cli list4    ;;
+016) clear ; $cmd_command txt game-widelands ; $cmd_command cli list4  ;;
+017) clear ; $cmd_command txt client-web ; $cmd_command cli list4      ;;
+018) clear ; $cmd_command txt client-vnc ; $cmd_command cli list4      ;;
+019) clear ; $cmd_command txt client-tor ; $cmd_command cli list4      ;;
+020) clear ; $cmd_command txt client-vpn ; $cmd_command cli list4      ;;
+021) clear ; $cmd_command txt client-torrent ; $cmd_command cli list4  ;;
+022) clear ; $cmd_command txt lan-tor ; $cmd_command cli list4         ;;
+023) clear ; $cmd_command txt lan-vpn ; $cmd_command cli list4         ;; 
+024) clear ; $cmd_command txt shield-ssh ; $cmd_command cli list4      ;; 
+025) clear ; $cmd_command txt server-ssh ; $cmd_command cli list4      ;;
+026) clear ; $cmd_command txt server-web ; $cmd_command cli list4      ;;
+027) clear ; $cmd_command txt server-vnc ; $cmd_command cli list4      ;;
+028) clear ; $cmd_command txt server-print ; $cmd_command cli list4    ;;
+029) clear ; $cmd_command txt server-samba ; $cmd_command cli list4    ;;
+030) clear ; $cmd_command txt server-lamp ; $cmd_command cli list4     ;;
+031) clear ; $cmd_command txt server-mail ; $cmd_command cli list4     ;;
+032) clear ; $cmd_command txt server-ftp ; $cmd_command cli list4      ;;
+033) clear ; $cmd_command txt server-news ; $cmd_command cli list4     ;;
+034) clear ; $cmd_command txt server-teamspeak ; $cmd_command cli list4  ;;
+035) clear ; $cmd_command txt server-mumble ; $cmd_command cli list4   ;;
+036) clear ; $cmd_command txt server-sql ; $cmd_command cli list4      ;;
+037) clear ; $cmd_command txt server-asterisk ; $cmd_command cli list4 ;;
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-$cmd_realpath text-pause clear ; exit ;;
+$cmd_command text-pause clear ; exit ;;
 ################################################################################
 esac
 exit; fi
@@ -8132,49 +8134,49 @@ onecli="$(basename "$favorite_realpath_textdialog")"
 ##########
 ################################################################################
 case $menuprincipal in
-001) clear ; $cmd_realpath cli-menu $onecli ;;
-002) clear ; $cmd_realpath cli options ;;
-003) clear ; $cmd_realpath cli firewall-wallsystem ;;
-004) clear ; $cmd_realpath txt names-custom
+001) clear ; $cmd_command cli-menu $onecli ;;
+002) clear ; $cmd_command cli options ;;
+003) clear ; $cmd_command cli firewall-wallsystem ;;
+004) clear ; $cmd_command txt names-custom
 read -p "Input the custom name to load # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath load-custom $archivo ;;
+$cmd_command load-custom $archivo ;;
 005) clear ; read -p "Input the systemfw name to clone # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath clone-wallsystem $archivo ;;
+$cmd_command clone-wallsystem $archivo ;;
 006) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath new-full-custom $archivo ;;
+$cmd_command new-full-custom $archivo ;;
 007) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath nueva-completa-custom $archivo ;;
+$cmd_command nueva-completa-custom $archivo ;;
 008) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath new-mini-custom $archivo ;;
+$cmd_command new-mini-custom $archivo ;;
 009) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath nueva-mini-custom $archivo ;;
+$cmd_command nueva-mini-custom $archivo ;;
 010) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath new-tiny-custom $archivo ;;
+$cmd_command new-tiny-custom $archivo ;;
 011) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath nueva-diminuta-custom $archivo ;;
+$cmd_command nueva-diminuta-custom $archivo ;;
 012) clear ; read -p "Input the custom to show config # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath show-custom $archivo ;;
-013) clear ; $cmd_realpath names-custom
+$cmd_command show-custom $archivo ;;
+013) clear ; $cmd_command names-custom
 read -p "Input the custom name to modify # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath modify-custom $archivo ;;
-014) clear ; $cmd_realpath names-custom
+$cmd_command modify-custom $archivo ;;
+014) clear ; $cmd_command names-custom
 read -p "Input the custom name to delete # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath del-custom $archivo ;;
-015) clear ; $cmd_realpath txt names-custom ;;
+$cmd_command del-custom $archivo ;;
+015) clear ; $cmd_command txt names-custom ;;
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-$cmd_realpath text-pause clear ; exit ;;
+$cmd_command text-pause clear ; exit ;;
 ################################################################################
 esac
 ####
@@ -8240,42 +8242,42 @@ onecli="$(basename "$favorite_realpath_textdialog")"
 ##########
 ##########
 case $menuprincipal in
-001) clear ; $cmd_realpath cli-menu $onecli ;;
-002) clear ; $cmd_realpath cli options ;;
-003) clear ; $cmd_realpath cli firewall-listnumeral ;;
-011) clear ; $cmd_realpath txt preferences-read ;;
-012) clear ; $cmd_realpath txt preferences-modify ;;
-013) clear ; $cmd_realpath txt preferences-regen ;;
-014) clear ; $cmd_realpath txt filelog ;;
-015) clear ; $cmd_realpath txt autolog ;;
-016) clear ; $cmd_realpath txt ip4 ;;
-017) clear ; $cmd_realpath txt ip6 ;;
-018) clear ; $cmd_realpath txt speed-ip4 ;;
-019) clear ; $cmd_realpath txt speed-ip6 ;;
-020) clear ; $cmd_realpath txt sockets ;;
-021) clear ; $cmd_realpath txt notes ;;
-022) clear ; $cmd_realpath txt license ;;
-### 0713) clear ; $cmd_realpath cli about ;;
-### 0714) clear ; $cmd_realpath cli examples ;;
-025) clear ; $cmd_realpath txt depends ;;
-026) clear ; $cmd_realpath txt info ;;
-027) clear ; $cmd_realpath txt version ;;
-028) clear ; $cmd_realpath txt list-options ;;
-### 0719) clear ; $cmd_realpath cli clasic-options ;;
-030) clear ; $cmd_realpath txt info-options ;;
-031) clear ; $cmd_realpath txt nodes ;;
-032) clear ; $cmd_realpath txt date ;;
-033) clear ; $cmd_realpath txt free ;;
-034) clear ; $cmd_realpath txt expert ;;
-035) clear ; $cmd_realpath txt treeconf ;;
-036) clear ; $cmd_realpath txt commands ;;
-037) clear ; $cmd_realpath txt variables ;;
-038) clear ; $cmd_realpath txt intro ;;
-039) clear ; $cmd_realpath txt download;;
-040) clear ; $cmd_realpath txt install;;
+001) clear ; $cmd_command cli-menu $onecli ;;
+002) clear ; $cmd_command cli options ;;
+003) clear ; $cmd_command cli firewall-listnumeral ;;
+011) clear ; $cmd_command txt preferences-read ;;
+012) clear ; $cmd_command txt preferences-modify ;;
+013) clear ; $cmd_command txt preferences-regen ;;
+014) clear ; $cmd_command txt filelog ;;
+015) clear ; $cmd_command txt autolog ;;
+016) clear ; $cmd_command txt ip4 ;;
+017) clear ; $cmd_command txt ip6 ;;
+018) clear ; $cmd_command txt speed-ip4 ;;
+019) clear ; $cmd_command txt speed-ip6 ;;
+020) clear ; $cmd_command txt sockets ;;
+021) clear ; $cmd_command txt notes ;;
+022) clear ; $cmd_command txt license ;;
+### 0713) clear ; $cmd_command cli about ;;
+### 0714) clear ; $cmd_command cli examples ;;
+025) clear ; $cmd_command txt depends ;;
+026) clear ; $cmd_command txt info ;;
+027) clear ; $cmd_command txt version ;;
+028) clear ; $cmd_command txt list-options ;;
+### 0719) clear ; $cmd_command cli clasic-options ;;
+030) clear ; $cmd_command txt info-options ;;
+031) clear ; $cmd_command txt nodes ;;
+032) clear ; $cmd_command txt date ;;
+033) clear ; $cmd_command txt free ;;
+034) clear ; $cmd_command txt expert ;;
+035) clear ; $cmd_command txt treeconf ;;
+036) clear ; $cmd_command txt commands ;;
+037) clear ; $cmd_command txt variables ;;
+038) clear ; $cmd_command txt intro ;;
+039) clear ; $cmd_command txt download;;
+040) clear ; $cmd_command txt install;;
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-$cmd_realpath text-pause clear ; exit ;;
+$cmd_command text-pause clear ; exit ;;
 ################################################################################
 esac
 ####
@@ -8304,7 +8306,7 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 --title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
-0010 "$title_md $text_md [$cmd_realpath cli-menu] $text_md $title_md" \
+0010 "$title_md $text_md [$cmd_command cli-menu] $text_md $title_md" \
 0100 "$title_md [  --- Info Options --- ] $title_md" \
 0200 "$title_md [ Firewall Control ] $title_md" \
 0201  "$text_md stop" \
@@ -8445,187 +8447,187 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 case $menuprincipal in
 ##########
 ##########
-0010) clear ; $cmd_realpath txt readme  ;;
-0100) clear ; $cmd_realpath txt info-options ;;
-0200) clear ; $cmd_realpath txt firewall-wallcontrol ;;
-0300) clear ; $cmd_realpath txt firewall-listconceptual ;;
-0400) clear ; $cmd_realpath txt firewall-listnumeral ;;
-0500) clear ; $cmd_realpath txt firewall-wallsystem ;;
-0600) clear ; $cmd_realpath txt firewall-wallcustom ;;
-0700) clear ; $cmd_realpath txt firewall-easynet ;;
+0010) clear ; $cmd_command txt readme  ;;
+0100) clear ; $cmd_command txt info-options ;;
+0200) clear ; $cmd_command txt firewall-wallcontrol ;;
+0300) clear ; $cmd_command txt firewall-listconceptual ;;
+0400) clear ; $cmd_command txt firewall-listnumeral ;;
+0500) clear ; $cmd_command txt firewall-wallsystem ;;
+0600) clear ; $cmd_command txt firewall-wallcustom ;;
+0700) clear ; $cmd_command txt firewall-easynet ;;
 ################################################################################
-0201) clear ; $cmd_realpath txt stop ;;
-0202) clear ; $cmd_realpath txt continue ;;
-0203) clear ; $cmd_realpath txt reset ;;
-0204) clear ; $cmd_realpath txt names ;;
-0205) clear ; $cmd_realpath txt names ; echo "$title_md"
+0201) clear ; $cmd_command txt stop ;;
+0202) clear ; $cmd_command txt continue ;;
+0203) clear ; $cmd_command txt reset ;;
+0204) clear ; $cmd_command txt names ;;
+0205) clear ; $cmd_command txt names ; echo "$title_md"
 read -p "Type the firewall name to read   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
-$cmd_realpath show $nombrecillo ;; 
+$cmd_command show $nombrecillo ;; 
 0206)archivo="$($favorite_realpath_textdialog --stdout \
 --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
-clear ;  echo "$title_md saved $archivo" ; $cmd_realpath save $archivo ;;
-0207) clear ; $cmd_realpath names ; echo "$title_md"
+clear ;  echo "$title_md saved $archivo" ; $cmd_command save $archivo ;;
+0207) clear ; $cmd_command names ; echo "$title_md"
 read -p "| Type the firewall name to restore |   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
-$cmd_realpath load $nombrecillo ;;
-0208) clear ; $cmd_realpath txt actual ;;
-0209) clear ; $cmd_realpath txt eraserules ; $cmd_realpath cli list4   ;;
-0210) clear ; $cmd_realpath txt wizard-tiny ; $cmd_realpath cli list4  ;;
-0211) clear ; $cmd_realpath txt wizard-mini ; $cmd_realpath cli list4  ;;
-0212) clear ; $cmd_realpath txt wizard-full ; $cmd_realpath cli list4  ;;
-0213) clear ; $cmd_realpath txt without-connection ; $cmd_realpath cli list4  ;;
-0214) clear ; $cmd_realpath txt input-permisive ; $cmd_realpath cli list4   ;;
-0215) clear ; $cmd_realpath txt input-established ; $cmd_realpath cli list4   ;;
-0216) clear ; $cmd_realpath txt eraserules4 ; $cmd_realpath cli list4   ;;
-0217) clear ; $cmd_realpath txt eraserules6 ; $cmd_realpath cli list6   ;;
-0218) clear ; $cmd_realpath txt eraserules ; $cmd_realpath cli status   ;;
+$cmd_command load $nombrecillo ;;
+0208) clear ; $cmd_command txt actual ;;
+0209) clear ; $cmd_command txt eraserules ; $cmd_command cli list4   ;;
+0210) clear ; $cmd_command txt wizard-tiny ; $cmd_command cli list4  ;;
+0211) clear ; $cmd_command txt wizard-mini ; $cmd_command cli list4  ;;
+0212) clear ; $cmd_command txt wizard-full ; $cmd_command cli list4  ;;
+0213) clear ; $cmd_command txt without-connection ; $cmd_command cli list4  ;;
+0214) clear ; $cmd_command txt input-permisive ; $cmd_command cli list4   ;;
+0215) clear ; $cmd_command txt input-established ; $cmd_command cli list4   ;;
+0216) clear ; $cmd_command txt eraserules4 ; $cmd_command cli list4   ;;
+0217) clear ; $cmd_command txt eraserules6 ; $cmd_command cli list6   ;;
+0218) clear ; $cmd_command txt eraserules ; $cmd_command cli status   ;;
 ################################################################################
-0301) clear ; $cmd_realpath txt list4 ;;
-0302) clear ; $cmd_realpath txt list6 ;;
-0303) clear ; $cmd_realpath txt list-filter4 ;;
-0304) clear ; $cmd_realpath txt list-filter6 ;;
-0305) clear ; $cmd_realpath txt list-forward ;;
-0306) clear ; $cmd_realpath txt list-forward6 ;;
-0307) clear ; $cmd_realpath txt list-nat4 ;;
-0308) clear ; $cmd_realpath txt list-nat6 ;;
-0309) clear ; $cmd_realpath txt list-alltables ;;
-0314) clear ; $cmd_realpath txt list-raw4 ;;
-0315) clear ; $cmd_realpath txt list-raw6 ;;
-0316) clear ; $cmd_realpath txt list-mangle4 ;; 
-0317) clear ; $cmd_realpath txt list-mangle6 ;;
-0318) clear ; $cmd_realpath txt list-security4 ;;
-0319) clear ; $cmd_realpath txt list-security6 ;;
-0320) clear ; $cmd_realpath txt list-ebtables ;;
-0321) clear ; $cmd_realpath txt list-arptables ;;
+0301) clear ; $cmd_command txt list4 ;;
+0302) clear ; $cmd_command txt list6 ;;
+0303) clear ; $cmd_command txt list-filter4 ;;
+0304) clear ; $cmd_command txt list-filter6 ;;
+0305) clear ; $cmd_command txt list-forward ;;
+0306) clear ; $cmd_command txt list-forward6 ;;
+0307) clear ; $cmd_command txt list-nat4 ;;
+0308) clear ; $cmd_command txt list-nat6 ;;
+0309) clear ; $cmd_command txt list-alltables ;;
+0314) clear ; $cmd_command txt list-raw4 ;;
+0315) clear ; $cmd_command txt list-raw6 ;;
+0316) clear ; $cmd_command txt list-mangle4 ;; 
+0317) clear ; $cmd_command txt list-mangle6 ;;
+0318) clear ; $cmd_command txt list-security4 ;;
+0319) clear ; $cmd_command txt list-security6 ;;
+0320) clear ; $cmd_command txt list-ebtables ;;
+0321) clear ; $cmd_command txt list-arptables ;;
 ################################################################################
-0401) clear ; $cmd_realpath txt listn4 ;;
-0402) clear ; $cmd_realpath txt listn6 ;;
-0403) clear ; $cmd_realpath txt listn-filter4 ;;
-0404) clear ; $cmd_realpath txt listn-filter6 ;;
-0405) clear ; $cmd_realpath txt listn-forward ;;
-0406) clear ; $cmd_realpath txt listn-forward6 ;;
-0407) clear ; $cmd_realpath txt listn-nat4 ;;
-0408) clear ; $cmd_realpath txt listn-nat6 ;;
-0409) clear ; $cmd_realpath txt listn-alltables ;;
-0414) clear ; $cmd_realpath txt listn-raw4 ;;
-0415) clear ; $cmd_realpath txt listn-raw6 ;;
-0416) clear ; $cmd_realpath txt listn-mangle4 ;; 
-0417) clear ; $cmd_realpath txt listn-mangle6 ;;
-0418) clear ; $cmd_realpath txt listn-security4 ;;
-0419) clear ; $cmd_realpath txt listn-security6 ;;
-0420) clear ; $cmd_realpath txt list-ebtables ;;
-0421) clear ; $cmd_realpath txt list-arptables ;;
+0401) clear ; $cmd_command txt listn4 ;;
+0402) clear ; $cmd_command txt listn6 ;;
+0403) clear ; $cmd_command txt listn-filter4 ;;
+0404) clear ; $cmd_command txt listn-filter6 ;;
+0405) clear ; $cmd_command txt listn-forward ;;
+0406) clear ; $cmd_command txt listn-forward6 ;;
+0407) clear ; $cmd_command txt listn-nat4 ;;
+0408) clear ; $cmd_command txt listn-nat6 ;;
+0409) clear ; $cmd_command txt listn-alltables ;;
+0414) clear ; $cmd_command txt listn-raw4 ;;
+0415) clear ; $cmd_command txt listn-raw6 ;;
+0416) clear ; $cmd_command txt listn-mangle4 ;; 
+0417) clear ; $cmd_command txt listn-mangle6 ;;
+0418) clear ; $cmd_command txt listn-security4 ;;
+0419) clear ; $cmd_command txt listn-security6 ;;
+0420) clear ; $cmd_command txt list-ebtables ;;
+0421) clear ; $cmd_command txt list-arptables ;;
 ################################################################################
-0507) clear ; $cmd_realpath txt client-basic ; $cmd_realpath cli list4    ;;
-0508) clear ; $cmd_realpath txt client-web ; $cmd_realpath cli list4    ;;
-0509) clear ; $cmd_realpath txt client-ssh ; $cmd_realpath cli list4    ;;
-0510) clear ; $cmd_realpath txt client-telnet ; $cmd_realpath cli list4    ;;
-0511) clear ; $cmd_realpath txt client-git ; $cmd_realpath cli list4    ;;
-0512) clear ; $cmd_realpath txt games-shooter ; $cmd_realpath cli list4   ;; 
-0513) clear ; $cmd_realpath txt game-wesnoth ; $cmd_realpath cli list4    ;;
-0514) clear ; $cmd_realpath txt game-minetest ; $cmd_realpath cli list4   ;;
-0515) clear ; $cmd_realpath txt game-freeciv ; $cmd_realpath cli list4    ;;
-0516) clear ; $cmd_realpath txt game-widelands ; $cmd_realpath cli list4  ;;
-0517) clear ; $cmd_realpath txt client-web ; $cmd_realpath cli list4      ;;
-0518) clear ; $cmd_realpath txt client-vnc ; $cmd_realpath cli list4      ;;
-0519) clear ; $cmd_realpath txt client-tor ; $cmd_realpath cli list4      ;;
-0520) clear ; $cmd_realpath txt client-vpn ; $cmd_realpath cli list4      ;;
-0521) clear ; $cmd_realpath txt client-torrent ; $cmd_realpath cli list4  ;;
-0522) clear ; $cmd_realpath txt lan-tor ; $cmd_realpath cli list4         ;;
-0523) clear ; $cmd_realpath txt lan-vpn ; $cmd_realpath cli list4         ;; 
-0524) clear ; $cmd_realpath txt shield-ssh ; $cmd_realpath cli list4      ;; 
-0525) clear ; $cmd_realpath txt server-ssh ; $cmd_realpath cli list4      ;;
-0526) clear ; $cmd_realpath txt server-web ; $cmd_realpath cli list4      ;;
-0527) clear ; $cmd_realpath txt server-vnc ; $cmd_realpath cli list4      ;;
-0528) clear ; $cmd_realpath txt server-print ; $cmd_realpath cli list4    ;;
-0529) clear ; $cmd_realpath txt server-samba ; $cmd_realpath cli list4    ;;
-0530) clear ; $cmd_realpath txt server-lamp ; $cmd_realpath cli list4     ;;
-0531) clear ; $cmd_realpath txt server-mail ; $cmd_realpath cli list4     ;;
-0532) clear ; $cmd_realpath txt server-ftp ; $cmd_realpath cli list4      ;;
-0533) clear ; $cmd_realpath txt server-news ; $cmd_realpath cli list4     ;;
-0534) clear ; $cmd_realpath txt server-teamspeak ; $cmd_realpath cli list4  ;;
-0535) clear ; $cmd_realpath txt server-mumble ; $cmd_realpath cli list4   ;;
-0536) clear ; $cmd_realpath txt server-sql ; $cmd_realpath cli list4      ;;
-0537) clear ; $cmd_realpath txt server-asterisk ; $cmd_realpath cli list4 ;;
+0507) clear ; $cmd_command txt client-basic ; $cmd_command cli list4    ;;
+0508) clear ; $cmd_command txt client-web ; $cmd_command cli list4    ;;
+0509) clear ; $cmd_command txt client-ssh ; $cmd_command cli list4    ;;
+0510) clear ; $cmd_command txt client-telnet ; $cmd_command cli list4    ;;
+0511) clear ; $cmd_command txt client-git ; $cmd_command cli list4    ;;
+0512) clear ; $cmd_command txt games-shooter ; $cmd_command cli list4   ;; 
+0513) clear ; $cmd_command txt game-wesnoth ; $cmd_command cli list4    ;;
+0514) clear ; $cmd_command txt game-minetest ; $cmd_command cli list4   ;;
+0515) clear ; $cmd_command txt game-freeciv ; $cmd_command cli list4    ;;
+0516) clear ; $cmd_command txt game-widelands ; $cmd_command cli list4  ;;
+0517) clear ; $cmd_command txt client-web ; $cmd_command cli list4      ;;
+0518) clear ; $cmd_command txt client-vnc ; $cmd_command cli list4      ;;
+0519) clear ; $cmd_command txt client-tor ; $cmd_command cli list4      ;;
+0520) clear ; $cmd_command txt client-vpn ; $cmd_command cli list4      ;;
+0521) clear ; $cmd_command txt client-torrent ; $cmd_command cli list4  ;;
+0522) clear ; $cmd_command txt lan-tor ; $cmd_command cli list4         ;;
+0523) clear ; $cmd_command txt lan-vpn ; $cmd_command cli list4         ;; 
+0524) clear ; $cmd_command txt shield-ssh ; $cmd_command cli list4      ;; 
+0525) clear ; $cmd_command txt server-ssh ; $cmd_command cli list4      ;;
+0526) clear ; $cmd_command txt server-web ; $cmd_command cli list4      ;;
+0527) clear ; $cmd_command txt server-vnc ; $cmd_command cli list4      ;;
+0528) clear ; $cmd_command txt server-print ; $cmd_command cli list4    ;;
+0529) clear ; $cmd_command txt server-samba ; $cmd_command cli list4    ;;
+0530) clear ; $cmd_command txt server-lamp ; $cmd_command cli list4     ;;
+0531) clear ; $cmd_command txt server-mail ; $cmd_command cli list4     ;;
+0532) clear ; $cmd_command txt server-ftp ; $cmd_command cli list4      ;;
+0533) clear ; $cmd_command txt server-news ; $cmd_command cli list4     ;;
+0534) clear ; $cmd_command txt server-teamspeak ; $cmd_command cli list4  ;;
+0535) clear ; $cmd_command txt server-mumble ; $cmd_command cli list4   ;;
+0536) clear ; $cmd_command txt server-sql ; $cmd_command cli list4      ;;
+0537) clear ; $cmd_command txt server-asterisk ; $cmd_command cli list4 ;;
 ################################################################################
-0606) clear ; $cmd_realpath txt names-custom
+0606) clear ; $cmd_command txt names-custom
 read -p "Input the custom name to load # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath load-custom $archivo ;;
+$cmd_command load-custom $archivo ;;
 0607) clear ; read -p "Input the systemfw name to clone # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath clone-wallsystem $archivo ;;
+$cmd_command clone-wallsystem $archivo ;;
 0611) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath new-full-custom $archivo ;;
+$cmd_command new-full-custom $archivo ;;
 0612) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath nueva-completa-custom $archivo ;;
+$cmd_command nueva-completa-custom $archivo ;;
 0613) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath new-mini-custom $archivo ;;
+$cmd_command new-mini-custom $archivo ;;
 0614) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath nueva-mini-custom $archivo ;;
+$cmd_command nueva-mini-custom $archivo ;;
 0615) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath new-tiny-custom $archivo ;;
+$cmd_command new-tiny-custom $archivo ;;
 0616) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath nueva-diminuta-custom $archivo ;;
+$cmd_command nueva-diminuta-custom $archivo ;;
 0617) clear ; read -p "Input the custom to show config # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath show-custom $archivo ;;
-0618) clear ; $cmd_realpath names-custom
+$cmd_command show-custom $archivo ;;
+0618) clear ; $cmd_command names-custom
 read -p "Input the custom name to modify # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath modify-custom $archivo ;;
-0619) clear ; $cmd_realpath names-custom
+$cmd_command modify-custom $archivo ;;
+0619) clear ; $cmd_command names-custom
 read -p "Input the custom name to delete # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
-$cmd_realpath del-custom $archivo ;;
-0620) clear ; $cmd_realpath txt names-custom ;;
-0621) clear ; $cmd_realpath txt templates-regen ;;
+$cmd_command del-custom $archivo ;;
+0620) clear ; $cmd_command txt names-custom ;;
+0621) clear ; $cmd_command txt templates-regen ;;
 ################################################################################
-0701) clear ; $cmd_realpath txt preferences-read ;;
-0702) clear ; $cmd_realpath txt preferences-modify ;;
-0703) clear ; $cmd_realpath txt preferences-regen ;;
-0704) clear ; $cmd_realpath txt filelog ;;
-0705) clear ; $cmd_realpath txt autolog ;;
-0706) clear ; $cmd_realpath txt ip4 ;;
-0707) clear ; $cmd_realpath txt ip6 ;;
-0708) clear ; $cmd_realpath txt speed-ip4 ;;
-0709) clear ; $cmd_realpath txt speed-ip6 ;;
-0710) clear ; $cmd_realpath txt sockets ;;
-0711) clear ; $cmd_realpath txt notes ;;
-0712) clear ; $cmd_realpath txt license ;;
-### 0713) clear ; $cmd_realpath cli about ;;
-### 0714) clear ; $cmd_realpath cli examples ;;
-0715) clear ; $cmd_realpath txt depends ;;
-0716) clear ; $cmd_realpath txt info ;;
-0717) clear ; $cmd_realpath txt version ;;
-0718) clear ; $cmd_realpath txt list-options ;;
-### 0719) clear ; $cmd_realpath cli clasic-options ;;
-0720) clear ; $cmd_realpath txt info-options ;;
-0721) clear ; $cmd_realpath txt nodes ;;
-0722) clear ; $cmd_realpath txt date ;;
-0723) clear ; $cmd_realpath txt free ;;
-0724) clear ; $cmd_realpath txt expert ;;
-0725) clear ; $cmd_realpath txt treeconf ;;
-0726) clear ; $cmd_realpath txt commands ;;
-0727) clear ; $cmd_realpath txt variables ;;
-0728) clear ; $cmd_realpath txt intro ;;
-0729) clear ; $cmd_realpath txt download;;
-0730) clear ; $cmd_realpath txt install;;
+0701) clear ; $cmd_command txt preferences-read ;;
+0702) clear ; $cmd_command txt preferences-modify ;;
+0703) clear ; $cmd_command txt preferences-regen ;;
+0704) clear ; $cmd_command txt filelog ;;
+0705) clear ; $cmd_command txt autolog ;;
+0706) clear ; $cmd_command txt ip4 ;;
+0707) clear ; $cmd_command txt ip6 ;;
+0708) clear ; $cmd_command txt speed-ip4 ;;
+0709) clear ; $cmd_command txt speed-ip6 ;;
+0710) clear ; $cmd_command txt sockets ;;
+0711) clear ; $cmd_command txt notes ;;
+0712) clear ; $cmd_command txt license ;;
+### 0713) clear ; $cmd_command cli about ;;
+### 0714) clear ; $cmd_command cli examples ;;
+0715) clear ; $cmd_command txt depends ;;
+0716) clear ; $cmd_command txt info ;;
+0717) clear ; $cmd_command txt version ;;
+0718) clear ; $cmd_command txt list-options ;;
+### 0719) clear ; $cmd_command cli clasic-options ;;
+0720) clear ; $cmd_command txt info-options ;;
+0721) clear ; $cmd_command txt nodes ;;
+0722) clear ; $cmd_command txt date ;;
+0723) clear ; $cmd_command txt free ;;
+0724) clear ; $cmd_command txt expert ;;
+0725) clear ; $cmd_command txt treeconf ;;
+0726) clear ; $cmd_command txt commands ;;
+0727) clear ; $cmd_command txt variables ;;
+0728) clear ; $cmd_command txt intro ;;
+0729) clear ; $cmd_command txt download;;
+0730) clear ; $cmd_command txt install;;
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-$cmd_realpath text-pause clear ; exit ;;
+$cmd_command text-pause clear ; exit ;;
 ################################################################################
 esac
-$cmd_realpath text-pause
-$cmd_realpath cli-menu-$favorite_basename_textdialog
+$cmd_command text-pause
+$cmd_command cli-menu-$favorite_basename_textdialog
 ####
 ####
 exit; fi
@@ -8684,7 +8686,7 @@ Firewall-List-With-Numeral|firewall-wallcontrol|firewall-wallcustom|\
 firewall-wallsystem|firewall-easynet"
 selection_menu="$($command_zenity --forms \
 --text=gui-roll \
---title=Gui-roll-With-$cmd_basename-$cmd_version \
+--title=Gui-roll-With-$cmd_command-$cmd_version \
 --add-combo=$first_option \
 --combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
@@ -8696,21 +8698,21 @@ case "$selection_final" in
 --height=$config_graphicall_height \
 --info --text=good-bye ; exit ;;
 Info)	
-$cmd_realpath gui-zenity info ; exit ;;
+$cmd_command gui-zenity info ; exit ;;
 ####
 ####
 Firewall-List-With-Conceptual)
-$cmd_realpath gui-roll-zenity-firewall-listconceptual ; exit ;;
+$cmd_command gui-roll-zenity-firewall-listconceptual ; exit ;;
 Firewall-List-With-Numeral)
-$cmd_realpath gui-roll-zenity-firewall-listnumeral ; exit ;;
+$cmd_command gui-roll-zenity-firewall-listnumeral ; exit ;;
 firewall-wallcontrol)
-$cmd_realpath gui-roll-zenity-firewall-wallcontrol ; exit ;;
+$cmd_command gui-roll-zenity-firewall-wallcontrol ; exit ;;
 firewall-wallcustom)
-$cmd_realpath gui-roll-zenity-firewall-wallcustom ; exit ;;
+$cmd_command gui-roll-zenity-firewall-wallcustom ; exit ;;
 firewall-wallsystem)
-$cmd_realpath gui-roll-zenity-firewall-wallsystem ; exit ;;
+$cmd_command gui-roll-zenity-firewall-wallsystem ; exit ;;
 firewall-easynet)
-$cmd_realpath gui-roll-zenity-firewall-easynet ; exit ;;
+$cmd_command gui-roll-zenity-firewall-easynet ; exit ;;
 esac
 ####
 ####
@@ -8738,7 +8740,7 @@ without-connection|input-permisive|input-established|\
 tinyserver-tcp|tinyserver-udp|miniserver-tcp|miniserver-udp"
 selection_menu="$($command_zenity --forms \
 --text=gui-roll-firewall-wallcontrol \
---title=Gui-roll-With-$cmd_basename-$cmd_version \
+--title=Gui-roll-With-$cmd_command-$cmd_version \
 --add-combo=$first_option \
 --combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
@@ -8749,62 +8751,62 @@ case "$selection_final" in
 --width=$config_graphicall_width \
 --height=$config_graphicall_height \
 --info --text=good-bye ; exit ;;
-gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
-gui-info-menu)$cmd_realpath -gui-zenity firewall-wallcontrol ;;
-stop)$cmd_realpath -gui-zenity stop
-$cmd_realpath -gui-zenity list4;;
-continue)$cmd_realpath -gui-zenity continue
-$cmd_realpath -gui-zenity list4;;
-reset)$cmd_realpath -gui-zenity reset
-$cmd_realpath -gui-zenity list4;;
-names)$cmd_realpath -gui-zenity names ;;
+gui-principal-menu)$cmd_command gui-roll-zenity ;;
+gui-info-menu)$cmd_command -gui-zenity firewall-wallcontrol ;;
+stop)$cmd_command -gui-zenity stop
+$cmd_command -gui-zenity list4;;
+continue)$cmd_command -gui-zenity continue
+$cmd_command -gui-zenity list4;;
+reset)$cmd_command -gui-zenity reset
+$cmd_command -gui-zenity list4;;
+names)$cmd_command -gui-zenity names ;;
 show)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Show-Firewall --entry-text=cfg-to-show)" ; 
-$cmd_realpath -gui-zenity show $archivo ;;
+$cmd_command -gui-zenity show $archivo ;;
 save)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall --entry-text=cfg-to-save)" ; 
-$cmd_realpath -gui-zenity save $archivo ;;
+$cmd_command -gui-zenity save $archivo ;;
 load)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Load-Firewall --entry-text=cfg-to-load)" ;
-$cmd_realpath -gui-zenity load $archivo
-$cmd_realpath -gui-zenity list4;;
-actual)$cmd_realpath -gui-zenity actual ;;
-eraserules4)$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list4;;
-eraserules6)$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list6;;
-eraserules)$cmd_realpath -gui-zenity eraserules ; $cmd_realpath gui list4;;
-wizard-full)$cmd_realpath -gui-zenity wizard-full ; $cmd_realpath gui list4;;
-wizard-mini)$cmd_realpath -gui-zenity wizard-mini ; $cmd_realpath gui list4;;
-wizard-tiny)$cmd_realpath -gui-zenity wizard-tiny ; $cmd_realpath gui list4;;
-without-connection)$cmd_realpath -gui-zenity without-connection ; $cmd_realpath gui list4;;
-input-permisive)$cmd_realpath -gui-zenity input-permisive ; $cmd_realpath gui list4;;
-input-established)$cmd_realpath -gui-zenity input-established ; $cmd_realpath gui list4;;
+$cmd_command -gui-zenity load $archivo
+$cmd_command -gui-zenity list4;;
+actual)$cmd_command -gui-zenity actual ;;
+eraserules4)$cmd_command -gui-zenity eraserules ; $cmd_command gui list4;;
+eraserules6)$cmd_command -gui-zenity eraserules ; $cmd_command gui list6;;
+eraserules)$cmd_command -gui-zenity eraserules ; $cmd_command gui list4;;
+wizard-full)$cmd_command -gui-zenity wizard-full ; $cmd_command gui list4;;
+wizard-mini)$cmd_command -gui-zenity wizard-mini ; $cmd_command gui list4;;
+wizard-tiny)$cmd_command -gui-zenity wizard-tiny ; $cmd_command gui list4;;
+without-connection)$cmd_command -gui-zenity without-connection ; $cmd_command gui list4;;
+input-permisive)$cmd_command -gui-zenity input-permisive ; $cmd_command gui list4;;
+input-established)$cmd_command -gui-zenity input-established ; $cmd_command gui list4;;
 tinyserver-tcp)serverports="$(zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-tcp)"                         ;
-$cmd_realpath gui-zenity tinyserver-tcp $serverports    ; 
-$cmd_realpath gui-zenity list4                         ;;
+$cmd_command gui-zenity tinyserver-tcp $serverports    ; 
+$cmd_command gui-zenity list4                         ;;
 tinyserver-udp)serverports="$(zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-udp)"                         ;
-$cmd_realpath gui-zenity tinyserver-udp $serverports    ; 
-$cmd_realpath gui-zenity list4                         ;;
+$cmd_command gui-zenity tinyserver-udp $serverports    ; 
+$cmd_command gui-zenity list4                         ;;
 miniserver-tcp)serverports="$(zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-tcp)"                         ;
-$cmd_realpath gui-zenity miniserver-tcp $serverports    ; 
-$cmd_realpath gui-zenity list4                         ;;
+$cmd_command gui-zenity miniserver-tcp $serverports    ; 
+$cmd_command gui-zenity list4                         ;;
 miniserver-udp)serverports="$(zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-udp)"                         ;
-$cmd_realpath gui-zenity miniserver-udp $serverports    ; 
-$cmd_realpath gui-zenity list4                         ;;
+$cmd_command gui-zenity miniserver-udp $serverports    ; 
+$cmd_command gui-zenity list4                         ;;
 esac
 ####
 ####
@@ -8832,7 +8834,7 @@ list-raw4|list-raw6|list-security4|list-security6|\
 list-ebtables|list-arptables"
 selection_menu="$($command_zenity --forms \
 --text=gui-roll-firewall-listconceptual \
---title=Gui-roll-With-$cmd_basename-$cmd_version \
+--title=Gui-roll-With-$cmd_command-$cmd_version \
 --add-combo=$first_option \
 --combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
@@ -8843,23 +8845,23 @@ case "$selection_final" in
 --width=$config_graphicall_width \
 --height=$config_graphicall_height \
 --info --text=good-bye ; exit ;;
-gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
-gui-info-menu)$cmd_realpath -gui-zenity firewall-listconceptual ;;
-ls4)$cmd_realpath -gui-zenity ls4 ;;
-ls6)$cmd_realpath -gui-zenity ls6 ;;
-list-alltables)$cmd_realpath -gui-zenity list-alltables ;;
-list-filter4)$cmd_realpath -gui-zenity list-filter4 ;;
-list-filter6)$cmd_realpath -gui-zenity list-filter6 ;;
-list-nat4)$cmd_realpath -gui-zenity list-nat4 ;;
-list-nat6)$cmd_realpath -gui-zenity list-nat6 ;;
-list-mangle4)$cmd_realpath -gui-zenity list-mangle4 ;;
-list-mangle6)$cmd_realpath -gui-zenity list-mangle6 ;;
-list-raw4)$cmd_realpath -gui-zenity list-raw4 ;;
-list-raw6)$cmd_realpath -gui-zenity list-raw6 ;;
-list-security4)$cmd_realpath -gui-zenity list-security4 ;;
-list-security6)$cmd_realpath -gui-zenity list-security6 ;;
-list-ebtables)$cmd_realpath -gui-zenity list-ebtables ;;
-list-arptables)$cmd_realpath -gui-zenity list-arptables ;;
+gui-principal-menu)$cmd_command gui-roll-zenity ;;
+gui-info-menu)$cmd_command -gui-zenity firewall-listconceptual ;;
+ls4)$cmd_command -gui-zenity ls4 ;;
+ls6)$cmd_command -gui-zenity ls6 ;;
+list-alltables)$cmd_command -gui-zenity list-alltables ;;
+list-filter4)$cmd_command -gui-zenity list-filter4 ;;
+list-filter6)$cmd_command -gui-zenity list-filter6 ;;
+list-nat4)$cmd_command -gui-zenity list-nat4 ;;
+list-nat6)$cmd_command -gui-zenity list-nat6 ;;
+list-mangle4)$cmd_command -gui-zenity list-mangle4 ;;
+list-mangle6)$cmd_command -gui-zenity list-mangle6 ;;
+list-raw4)$cmd_command -gui-zenity list-raw4 ;;
+list-raw6)$cmd_command -gui-zenity list-raw6 ;;
+list-security4)$cmd_command -gui-zenity list-security4 ;;
+list-security6)$cmd_command -gui-zenity list-security6 ;;
+list-ebtables)$cmd_command -gui-zenity list-ebtables ;;
+list-arptables)$cmd_command -gui-zenity list-arptables ;;
 esac
 ####
 ####
@@ -8885,7 +8887,7 @@ listn-raw4|listn-raw6|listn-security4|listn-security6|\
 list-ebtables|list-arptables"
 selection_menu="$($command_zenity --forms \
 --text="gui-roll-firewall-listnumeral" \
---title=Gui-roll-With-$cmd_basename-$cmd_version \
+--title=Gui-roll-With-$cmd_command-$cmd_version \
 --add-combo=$first_option \
 --combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
@@ -8896,23 +8898,23 @@ case "$selection_final" in
 --width=$config_graphicall_width \
 --height=$config_graphicall_height \
 --info --text=good-bye ; exit ;;
-gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
-gui-info-menu)$cmd_realpath -gui-zenity firewall-listnumeral ;;
-lsn4)$cmd_realpath -gui-zenity lsn4 ;;
-lsn6)$cmd_realpath -gui-zenity lsn6 ;;
-listn-alltables)$cmd_realpath -gui-zenity listn-alltables ;;
-listn-filter4)$cmd_realpath -gui-zenity listn-filter4 ;;
-listn-filter6)$cmd_realpath -gui-zenity listn-filter6 ;;
-listn-nat4)$cmd_realpath -gui-zenity listn-nat4 ;;
-listn-nat6)$cmd_realpath -gui-zenity listn-nat6 ;;
-listn-mangle4)$cmd_realpath -gui-zenity listn-mangle4 ;;
-listn-mangle6)$cmd_realpath -gui-zenity listn-mangle6 ;;
-listn-raw4)$cmd_realpath -gui-zenity listn-raw4 ;;
-listn-raw6)$cmd_realpath -gui-zenity listn-raw6 ;;
-listn-security4)$cmd_realpath -gui-zenity listn-security4 ;;
-listn-security6)$cmd_realpath -gui-zenity listn-security6 ;;
-list-ebtables)$cmd_realpath -gui-zenity list-ebtables ;;
-list-arptables)$cmd_realpath -gui-zenity list-arptables ;;
+gui-principal-menu)$cmd_command gui-roll-zenity ;;
+gui-info-menu)$cmd_command -gui-zenity firewall-listnumeral ;;
+lsn4)$cmd_command -gui-zenity lsn4 ;;
+lsn6)$cmd_command -gui-zenity lsn6 ;;
+listn-alltables)$cmd_command -gui-zenity listn-alltables ;;
+listn-filter4)$cmd_command -gui-zenity listn-filter4 ;;
+listn-filter6)$cmd_command -gui-zenity listn-filter6 ;;
+listn-nat4)$cmd_command -gui-zenity listn-nat4 ;;
+listn-nat6)$cmd_command -gui-zenity listn-nat6 ;;
+listn-mangle4)$cmd_command -gui-zenity listn-mangle4 ;;
+listn-mangle6)$cmd_command -gui-zenity listn-mangle6 ;;
+listn-raw4)$cmd_command -gui-zenity listn-raw4 ;;
+listn-raw6)$cmd_command -gui-zenity listn-raw6 ;;
+listn-security4)$cmd_command -gui-zenity listn-security4 ;;
+listn-security6)$cmd_command -gui-zenity listn-security6 ;;
+list-ebtables)$cmd_command -gui-zenity list-ebtables ;;
+list-arptables)$cmd_command -gui-zenity list-arptables ;;
 esac
 ####
 ####
@@ -8937,7 +8939,7 @@ new-mini-custom|nueva-mini-custom|new-tiny-custom|nueva-diminuta-custom|\
 names-custom|show-custom|modify-custom|del-custom|templates-regen"
 selection_menu="$($command_zenity --forms \
 --text=gui-roll-firewall-wallcustom \
---title=Gui-roll-With-$cmd_basename-$cmd_version \
+--title=Gui-roll-With-$cmd_command-$cmd_version \
 --add-combo=$first_option \
 --combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
@@ -8945,71 +8947,71 @@ selection_final="$(echo $selection_menu | sed 's/\|//g')"
 #### 
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
-gui-info-menu)$cmd_realpath -gui-zenity firewall-wallcustom ;;
+gui-principal-menu)$cmd_command gui-roll-zenity ;;
+gui-info-menu)$cmd_command -gui-zenity firewall-wallcustom ;;
 load-custom)archivo="$($command_zenity  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Launch-Custom --entry-text=cfg_to_launch)" ; 
-$cmd_realpath -gui-zenity load-custom $archivo ; $cmd_realpath gui list4;;
+$cmd_command -gui-zenity load-custom $archivo ; $cmd_command gui list4;;
 clone-wallsystem)archivo="$($command_zenity  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Clone-firewall-static --entry-text=firewall_static_to_clone)" ; 
-$cmd_realpath -gui-zenity clone-wallsystem $archivo ; $cmd_realpath gui list4;;
+$cmd_command -gui-zenity clone-wallsystem $archivo ; $cmd_command gui list4;;
 new-full-custom)
 archivo="$($command_zenity  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=new-full-custom \
 --entry-text=Input_file_name_to_new_full_configuration)" ;
-$cmd_realpath -gui-zenity new-full-custom $archivo ;;
+$cmd_command -gui-zenity new-full-custom $archivo ;;
 nueva-completa-custom)
 archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=nueva-completa-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
-$cmd_realpath -gui-zenity nueva-completa-custom $archivo ;;
+$cmd_command -gui-zenity nueva-completa-custom $archivo ;;
 new-mini-custom)
 archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=new-mini-custom \
 --entry-text=Input_file_name_to_new_mini_configuration)" ;
-$cmd_realpath -gui-zenity new-mini-custom $archivo ;;
+$cmd_command -gui-zenity new-mini-custom $archivo ;;
 nueva-mini-custom)
 archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=nueva-mini-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
-$cmd_realpath -gui-zenity nueva-mini-custom $archivo ;;
+$cmd_command -gui-zenity nueva-mini-custom $archivo ;;
 new-tiny-custom)
 archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=new-tiny-custom \
 --entry-text=Input_file_name_to_new_mini_configuration)" ;
-$cmd_realpath -gui-zenity new-tiny-custom $archivo ;;
+$cmd_command -gui-zenity new-tiny-custom $archivo ;;
 nueva-diminuta-custom)
 archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=nueva-mini-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
-$cmd_realpath -gui-zenity nueva-diminuta-custom $archivo ;;
+$cmd_command -gui-zenity nueva-diminuta-custom $archivo ;;
 names-custom)
-$cmd_realpath -gui-zenity names-custom ;;
+$cmd_command -gui-zenity names-custom ;;
 show-custom)
 archivo="$($command_zenity --entry \ 
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Show-custom \
 --entry-text=cfg-to-show)" ;
-$cmd_realpath -gui-zenity show-custom $archivo ;;
+$cmd_command -gui-zenity show-custom $archivo ;;
 modify-custom)
 archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=modify-custom --entry-text=cfg-to-modify)" ;
-$cmd_realpath -gui-zenity modify-custom $archivo ;;
+$cmd_command -gui-zenity modify-custom $archivo ;;
 del-custom)
 archivo="$($command_zenity --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=del-custom --entry-text=cfg-to-delete)" ;
-$cmd_realpath -gui-zenity del-custom $archivo ;;
-templates-regen)$cmd_realpath -gui-zenity templates-regen ;;
+$cmd_command -gui-zenity del-custom $archivo ;;
+templates-regen)$cmd_command -gui-zenity templates-regen ;;
 esac
 ####
 ####
@@ -9042,7 +9044,7 @@ server-domain|server-news|server-mail|server-ftp|\
 server-teamspeak|server-mumble|server-sql|server-asterisk"
 selection="$($command_zenity --forms \
 --text=gui-roll-firewall-wallcustom \
---title=Gui-roll-With-$cmd_basename-$cmd_version \
+--title=Gui-roll-With-$cmd_command-$cmd_version \
 --add-combo=$first_option \
 --combo-values=$menu)"
 #### 
@@ -9050,80 +9052,80 @@ selection="$($command_zenity --forms \
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
-gui-info-menu)$cmd_realpath gui-zenity firewall-wallsystem ;;
-client-basic)$cmd_realpath gui-zenity client-basic     ;
-$cmd_realpath gui-zenity list4 ;;
-client-web)$cmd_realpath gui-zenity client-web         ;
-$cmd_realpath gui-zenity list4 ;;
-client-ssh)$cmd_realpath gui-zenity client-ssh         ;
-$cmd_realpath gui-zenity list4 ;;
-client-telnet)$cmd_realpath gui-zenity client-telnet   ;
-$cmd_realpath gui-zenity list4 ;;
-client-ipp)$cmd_realpath gui-zenity client-ipp         ;
-$cmd_realpath gui-zenity list4 ;;
-client-irc)$cmd_realpath gui-zenity client-irc         ;
-$cmd_realpath gui-zenity list4 ;;
-client-mail)$cmd_realpath gui-zenity client-mail       ;
-$cmd_realpath gui-zenity list4 ;;
-client-news)$cmd_realpath gui-zenity client-news       ;
-$cmd_realpath gui-zenity list4 ;;
-client-ftp)$cmd_realpath gui-zenity client-ftp         ;
-$cmd_realpath gui-zenity list4 ;;
-client-git)$cmd_realpath gui-zenity client-git         ;
-$cmd_realpath gui-zenity list4 ;;
-client-vnc)$cmd_realpath gui-zenity client-vnc         ;
-$cmd_realpath gui-zenity list4 ;;
-client-torrent)$cmd_realpath gui-zenity client-torrent ;
-$cmd_realpath gui-zenity list4 ;;
-client-vpn)$cmd_realpath gui-zenity client-vpn         ;
-$cmd_realpath gui-zenity list4 ;;
-client-tor)$cmd_realpath gui-zenity client-tor         ;
-$cmd_realpath gui-zenity list4 ;;
-games-shooter)$cmd_realpath gui-zenity games-shooter   ;
-$cmd_realpath gui-zenity list4 ;;
-game-wesnoth)$cmd_realpath gui-zenity game-wesnoth     ;
-$cmd_realpath gui-zenity list4 ;;
-game-minetest)$cmd_realpath gui-zenity game-minetest   ;
-$cmd_realpath gui-zenity list4 ;;
-game-freeciv)$cmd_realpath gui-zenity game-freeciv     ;
-$cmd_realpath gui-zenity list4 ;;
-game-widelands)$cmd_realpath gui-zenity game-widelands ;
-$cmd_realpath gui-zenity list4 ;;
-lan-tor)$cmd_realpath gui-zenity lan-tor               ;
-$cmd_realpath gui-zenity list4 ;;
-lan-vpn)$cmd_realpath gui-zenity lan-vpn               ;
-$cmd_realpath gui-zenity list4 ;;
-server-ssh)$cmd_realpath gui-zenity server-ssh         ;
-$cmd_realpath gui-zenity list4 ;;
-server-web)$cmd_realpath gui-zenity server-web         ;
-$cmd_realpath gui-zenity list4 ;;
-server-proxy)$cmd_realpath gui-zenity server-proxy     ;
-$cmd_realpath gui-zenity list4 ;;
-server-vnc)$cmd_realpath gui-zenity server-vnc         ;
-$cmd_realpath gui-zenity list4 ;;
-server-samba)$cmd_realpath gui-zenity server-samba     ;
-$cmd_realpath gui-zenity list4 ;;
-server-news)$cmd_realpath gui-zenity server-news       ;
-$cmd_realpath gui-zenity list4 ;;
-server-mail)$cmd_realpath gui-zenity server-mail       ;
-$cmd_realpath gui-zenity list4 ;;
-server-ftp)$cmd_realpath gui-zenity server-ftp         ;
-$cmd_realpath gui-zenity list4 ;;
-server-print)$cmd_realpath gui-zenity server-print     ;
-$cmd_realpath gui-zenity list4 ;;
-server-lamp)$cmd_realpath gui-zenity server-lamp       ;
-$cmd_realpath gui-zenity list4 ;;
-server-teamspeak)$cmd_realpath gui-zenity server-teamspeak ;
-$cmd_realpath gui-zenity list4 ;;
-server-mumble)$cmd_realpath gui-zenity server-mumble       ;
-$cmd_realpath gui-zenity list4 ;;
-server-sql)$cmd_realpath gui-zenity server-sql             ;
-$cmd_realpath gui-zenity list4 ;;
-server-asterisk)$cmd_realpath gui-zenity server-asterisk   ;
-$cmd_realpath gui-zenity list4 ;;
-server-domain)$cmd_realpath gui-zenity server-domain       ;
-$cmd_realpath gui-zenity list4 ;;
+gui-principal-menu)$cmd_command gui-roll-zenity ;;
+gui-info-menu)$cmd_command gui-zenity firewall-wallsystem ;;
+client-basic)$cmd_command gui-zenity client-basic     ;
+$cmd_command gui-zenity list4 ;;
+client-web)$cmd_command gui-zenity client-web         ;
+$cmd_command gui-zenity list4 ;;
+client-ssh)$cmd_command gui-zenity client-ssh         ;
+$cmd_command gui-zenity list4 ;;
+client-telnet)$cmd_command gui-zenity client-telnet   ;
+$cmd_command gui-zenity list4 ;;
+client-ipp)$cmd_command gui-zenity client-ipp         ;
+$cmd_command gui-zenity list4 ;;
+client-irc)$cmd_command gui-zenity client-irc         ;
+$cmd_command gui-zenity list4 ;;
+client-mail)$cmd_command gui-zenity client-mail       ;
+$cmd_command gui-zenity list4 ;;
+client-news)$cmd_command gui-zenity client-news       ;
+$cmd_command gui-zenity list4 ;;
+client-ftp)$cmd_command gui-zenity client-ftp         ;
+$cmd_command gui-zenity list4 ;;
+client-git)$cmd_command gui-zenity client-git         ;
+$cmd_command gui-zenity list4 ;;
+client-vnc)$cmd_command gui-zenity client-vnc         ;
+$cmd_command gui-zenity list4 ;;
+client-torrent)$cmd_command gui-zenity client-torrent ;
+$cmd_command gui-zenity list4 ;;
+client-vpn)$cmd_command gui-zenity client-vpn         ;
+$cmd_command gui-zenity list4 ;;
+client-tor)$cmd_command gui-zenity client-tor         ;
+$cmd_command gui-zenity list4 ;;
+games-shooter)$cmd_command gui-zenity games-shooter   ;
+$cmd_command gui-zenity list4 ;;
+game-wesnoth)$cmd_command gui-zenity game-wesnoth     ;
+$cmd_command gui-zenity list4 ;;
+game-minetest)$cmd_command gui-zenity game-minetest   ;
+$cmd_command gui-zenity list4 ;;
+game-freeciv)$cmd_command gui-zenity game-freeciv     ;
+$cmd_command gui-zenity list4 ;;
+game-widelands)$cmd_command gui-zenity game-widelands ;
+$cmd_command gui-zenity list4 ;;
+lan-tor)$cmd_command gui-zenity lan-tor               ;
+$cmd_command gui-zenity list4 ;;
+lan-vpn)$cmd_command gui-zenity lan-vpn               ;
+$cmd_command gui-zenity list4 ;;
+server-ssh)$cmd_command gui-zenity server-ssh         ;
+$cmd_command gui-zenity list4 ;;
+server-web)$cmd_command gui-zenity server-web         ;
+$cmd_command gui-zenity list4 ;;
+server-proxy)$cmd_command gui-zenity server-proxy     ;
+$cmd_command gui-zenity list4 ;;
+server-vnc)$cmd_command gui-zenity server-vnc         ;
+$cmd_command gui-zenity list4 ;;
+server-samba)$cmd_command gui-zenity server-samba     ;
+$cmd_command gui-zenity list4 ;;
+server-news)$cmd_command gui-zenity server-news       ;
+$cmd_command gui-zenity list4 ;;
+server-mail)$cmd_command gui-zenity server-mail       ;
+$cmd_command gui-zenity list4 ;;
+server-ftp)$cmd_command gui-zenity server-ftp         ;
+$cmd_command gui-zenity list4 ;;
+server-print)$cmd_command gui-zenity server-print     ;
+$cmd_command gui-zenity list4 ;;
+server-lamp)$cmd_command gui-zenity server-lamp       ;
+$cmd_command gui-zenity list4 ;;
+server-teamspeak)$cmd_command gui-zenity server-teamspeak ;
+$cmd_command gui-zenity list4 ;;
+server-mumble)$cmd_command gui-zenity server-mumble       ;
+$cmd_command gui-zenity list4 ;;
+server-sql)$cmd_command gui-zenity server-sql             ;
+$cmd_command gui-zenity list4 ;;
+server-asterisk)$cmd_command gui-zenity server-asterisk   ;
+$cmd_command gui-zenity list4 ;;
+server-domain)$cmd_command gui-zenity server-domain       ;
+$cmd_command gui-zenity list4 ;;
 esac
 ####
 ####
@@ -9156,7 +9158,7 @@ license-lgpl-v2|license-gpl-v2"
 ####
 selection="$($command_zenity --forms \
 --text=$first_option \
---title=Gui-roll-With-$cmd_basename-$cmd_version \
+--title=Gui-roll-With-$cmd_command-$cmd_version \
 --add-combo=$first_option \
 --combo-values=$gui_menu)"
 ####
@@ -9164,44 +9166,44 @@ selection="$($command_zenity --forms \
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu)$cmd_realpath gui-roll-zenity ;;
-gui-info-menu)$cmd_realpath -gui-zenity firewall-easynet ;;
-preferences-read)$cmd_realpath -gui-zenity preferences-read ;;
-preferences-modify)$cmd_realpath -gui-zenity preferences-modify ;;
-preferences-regen)$cmd_realpath -gui-zenity preferences-regen ;;
-preferences-example)$cmd_realpath -gui-zenity preferences-example ;;
-list-options)$cmd_realpath -gui-zenity list-options ;;
-info-options)$cmd_realpath -gui-zenity info-options ;;
-expert)$cmd_realpath -gui-zenity expert ;;
-filelog) $cmd_realpath -gui-zenity filelog ;; 
-autolog) $cmd_realpath -gui-zenity autolog ;;
-ip4)$cmd_realpath -gui-zenity ip4 ;;
-ip6)$cmd_realpath -gui-zenity ip6 ;;
-notes)$cmd_realpath -gui-zenity notes ;;
-speed-ip4)$cmd_realpath -gui-zenity speed-ip4 ;;
-speed-ip6)$cmd_realpath -gui-zenity speed-ip6 ;;
-sockets)$cmd_realpath -gui-zenity sockets ;;
-nodes) $cmd_realpath -gui-zenity nodes ;;
-date) $cmd_realpath -gui-zenity date ;;
-free) $cmd_realpath -gui-zenity free ;;
-version) $cmd_realpath -gui-zenity version ;;
-treeconf)$cmd_realpath -gui-zenity treeconf ;;
-treecache)$cmd_realpath -gui-zenity treecache ;;
-cleancache) $cmd_realpath -gui-zenity cleancache ;;
-depends)$cmd_realpath -gui-zenity depends ;;
-address4)$cmd_realpath gui-$second_option address4 ;;
-address6)$cmd_realpath gui-$second_option address6 ;;
-network4)$cmd_realpath gui-$second_option network4 ;;
-network6)$cmd_realpath gui-$second_option network6 ;;
-install)$cmd_realpath -gui-zenity install ;;
-upgrade)$cmd_realpath -gui-zenity upgrade ;;
-license-lgpl-v2) $cmd_realpath -gui-zenity license-lgpl-v2 ;;
-license-gpl-v2) $cmd_realpath -gui-zenity license-gpl-v2 ;;
-examples)$cmd_realpath -gui-zenity examples ;;
-intro) $cmd_realpath -gui-zenity intro ;;
-variables) $cmd_realpath -gui-zenity variables ;;
-utils) $cmd_realpath -gui-zenity utils ;;
-about) $cmd_realpath -gui-zenity about ;;
+gui-principal-menu)$cmd_command gui-roll-zenity ;;
+gui-info-menu)$cmd_command -gui-zenity firewall-easynet ;;
+preferences-read)$cmd_command -gui-zenity preferences-read ;;
+preferences-modify)$cmd_command -gui-zenity preferences-modify ;;
+preferences-regen)$cmd_command -gui-zenity preferences-regen ;;
+preferences-example)$cmd_command -gui-zenity preferences-example ;;
+list-options)$cmd_command -gui-zenity list-options ;;
+info-options)$cmd_command -gui-zenity info-options ;;
+expert)$cmd_command -gui-zenity expert ;;
+filelog) $cmd_command -gui-zenity filelog ;; 
+autolog) $cmd_command -gui-zenity autolog ;;
+ip4)$cmd_command -gui-zenity ip4 ;;
+ip6)$cmd_command -gui-zenity ip6 ;;
+notes)$cmd_command -gui-zenity notes ;;
+speed-ip4)$cmd_command -gui-zenity speed-ip4 ;;
+speed-ip6)$cmd_command -gui-zenity speed-ip6 ;;
+sockets)$cmd_command -gui-zenity sockets ;;
+nodes) $cmd_command -gui-zenity nodes ;;
+date) $cmd_command -gui-zenity date ;;
+free) $cmd_command -gui-zenity free ;;
+version) $cmd_command -gui-zenity version ;;
+treeconf)$cmd_command -gui-zenity treeconf ;;
+treecache)$cmd_command -gui-zenity treecache ;;
+cleancache) $cmd_command -gui-zenity cleancache ;;
+depends)$cmd_command -gui-zenity depends ;;
+address4)$cmd_command gui-$second_option address4 ;;
+address6)$cmd_command gui-$second_option address6 ;;
+network4)$cmd_command gui-$second_option network4 ;;
+network6)$cmd_command gui-$second_option network6 ;;
+install)$cmd_command -gui-zenity install ;;
+upgrade)$cmd_command -gui-zenity upgrade ;;
+license-lgpl-v2) $cmd_command -gui-zenity license-lgpl-v2 ;;
+license-gpl-v2) $cmd_command -gui-zenity license-gpl-v2 ;;
+examples)$cmd_command -gui-zenity examples ;;
+intro) $cmd_command -gui-zenity intro ;;
+variables) $cmd_command -gui-zenity variables ;;
+utils) $cmd_command -gui-zenity utils ;;
+about) $cmd_command -gui-zenity about ;;
 esac
 ####
 ####
@@ -9231,7 +9233,7 @@ selection_final="$($second_option \
 --height=$config_graphicall_height \
 --column=$first_option \
 --text=$first_option \
---title=Gui-menu-With-$cmd_basename-$cmd_version \
+--title=Gui-menu-With-$cmd_command-$cmd_version \
 --list $selection_menu)"
 ####
 ####
@@ -9244,17 +9246,17 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 case $final in
 1*) exit ;;
 Firewall-listconceptual*)
-$cmd_realpath gui-menu-firewall-listconceptual $second_option ;;
+$cmd_command gui-menu-firewall-listconceptual $second_option ;;
 Firewall-listnumeral*)
-$cmd_realpath gui-menu-firewall-listnumeral $second_option ;;
+$cmd_command gui-menu-firewall-listnumeral $second_option ;;
 firewall-wallcontrol*)
-$cmd_realpath gui-menu-firewall-wallcontrol $second_option ;;
+$cmd_command gui-menu-firewall-wallcontrol $second_option ;;
 Firewall-wallcustom*)
-$cmd_realpath gui-menu-firewall-wallcustom $second_option ;;
+$cmd_command gui-menu-firewall-wallcustom $second_option ;;
 Firewall-wallsystem*)
-$cmd_realpath gui-menu-firewall-wallsystem $second_option ;;
+$cmd_command gui-menu-firewall-wallsystem $second_option ;;
 firewall-easynet*)
-$cmd_realpath gui-menu-firewall-easynet $second_option ;;
+$cmd_command gui-menu-firewall-easynet $second_option ;;
 esac
 ####
 ####
@@ -9285,7 +9287,7 @@ selection_final="$($second_option \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column=$first_option \
 --text=$first_option \
---title=Gui-menu-With-$cmd_basename-$cmd_version \
+--title=Gui-menu-With-$cmd_command-$cmd_version \
 --list $selection_menu)"
 echo "$title_md The option selected:  $final" ;
 ####
@@ -9298,71 +9300,71 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 ####
 case "$final" in
 1*) exit ;;
-gui-principal-menu*) $cmd_realpath gui-menu-$second_option  ;;
-gui-info-menu*)$cmd_realpath gui-$second_option firewall-wallcontrol ;;
-stop*)$cmd_realpath gui-$second_option stop ;
-$cmd_realpath gui-$second_option list4 ;;
-continue*)$cmd_realpath gui-$second_option continue ;
-$cmd_realpath gui-$second_option list4 ;;
-reset*)$cmd_realpath gui-$second_option reset ;
-$cmd_realpath gui-$second_option list4 ;;
-names*)$cmd_realpath gui-$second_option names ;;
+gui-principal-menu*) $cmd_command gui-menu-$second_option  ;;
+gui-info-menu*)$cmd_command gui-$second_option firewall-wallcontrol ;;
+stop*)$cmd_command gui-$second_option stop ;
+$cmd_command gui-$second_option list4 ;;
+continue*)$cmd_command gui-$second_option continue ;
+$cmd_command gui-$second_option list4 ;;
+reset*)$cmd_command gui-$second_option reset ;
+$cmd_command gui-$second_option list4 ;;
+names*)$cmd_command gui-$second_option names ;;
 show*)archivo="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-show)" 
-$cmd_realpath gui-$second_option $archivo ;;
+$cmd_command gui-$second_option $archivo ;;
 save*)archivo="$($second_option--entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-save)" 
-$cmd_realpath gui-$second_option save $archivo ;;
+$cmd_command gui-$second_option save $archivo ;;
 load*)archivo="$($favorite_realpath_graphicalldialog  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-load)" 
-$cmd_realpath gui-$second_option load $archivo ;
-$cmd_realpath gui-$second_option list4 ;;
-actual*)$cmd_realpath gui-$second_option actual ;;
-eraserules4*)$cmd_realpath gui-$second_option eraserules4 ;;
-eraserules6*)$cmd_realpath gui-$second_option eraserules6 ;;
-eraserules*)$cmd_realpath gui-$second_option eraserules ;;
-wizard-full*)$cmd_realpath gui-$second_option wizard-full ;
-$cmd_realpath gui-$second_option list4 ;;
-wizard-mini*)$cmd_realpath gui-$second_option wizard-mini ;
-$cmd_realpath gui-$second_option list4 ;;
-wizard-tiny*)$cmd_realpath gui-$second_option wizard-tiny ;
-$cmd_realpath gui-$second_option list4 ;;
-without-connection*)$cmd_realpath gui-$second_option without-connection ;
-$cmd_realpath gui-$second_option list4 ;;
-input-permisive*)$cmd_realpath gui-$second_option input-permisive ;
-$cmd_realpath gui-$second_option list4 ;;
-input-established*)$cmd_realpath gui-$second_option input-established ;
-$cmd_realpath gui-$second_option list4 ;;
+$cmd_command gui-$second_option load $archivo ;
+$cmd_command gui-$second_option list4 ;;
+actual*)$cmd_command gui-$second_option actual ;;
+eraserules4*)$cmd_command gui-$second_option eraserules4 ;;
+eraserules6*)$cmd_command gui-$second_option eraserules6 ;;
+eraserules*)$cmd_command gui-$second_option eraserules ;;
+wizard-full*)$cmd_command gui-$second_option wizard-full ;
+$cmd_command gui-$second_option list4 ;;
+wizard-mini*)$cmd_command gui-$second_option wizard-mini ;
+$cmd_command gui-$second_option list4 ;;
+wizard-tiny*)$cmd_command gui-$second_option wizard-tiny ;
+$cmd_command gui-$second_option list4 ;;
+without-connection*)$cmd_command gui-$second_option without-connection ;
+$cmd_command gui-$second_option list4 ;;
+input-permisive*)$cmd_command gui-$second_option input-permisive ;
+$cmd_command gui-$second_option list4 ;;
+input-established*)$cmd_command gui-$second_option input-established ;
+$cmd_command gui-$second_option list4 ;;
 tinyserver-tcp*)serverports="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-tcp)"                                 ;
-$cmd_realpath gui-$second_option tinyserver-tcp $serverports    ; 
-$cmd_realpath gui-$second_option list4                         ;;
+$cmd_command gui-$second_option tinyserver-tcp $serverports    ; 
+$cmd_command gui-$second_option list4                         ;;
 tinyserver-udp*)serverports="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-udp)"                                 ;
-$cmd_realpath gui-$second_option tinyserver-udp $serverports    ; 
-$cmd_realpath gui-$second_option list4                         ;;
+$cmd_command gui-$second_option tinyserver-udp $serverports    ; 
+$cmd_command gui-$second_option list4                         ;;
 miniserver-tcp*)serverports="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-tcp)"                                 ;
-$cmd_realpath gui-$second_option miniserver-tcp $serverports    ; 
-$cmd_realpath gui-$second_option list4                         ;;
+$cmd_command gui-$second_option miniserver-tcp $serverports    ; 
+$cmd_command gui-$second_option list4                         ;;
 miniserver-udp*)serverports="$($favorite_basename_graphicalldialog --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-udp)"                                 ;
-$cmd_realpath gui-$second_option miniserver-udp $serverports    ; 
-$cmd_realpath gui-$second_option list4                         ;;
+$cmd_command gui-$second_option miniserver-udp $serverports    ; 
+$cmd_command gui-$second_option list4                         ;;
 esac
 ####
 ####
@@ -9393,7 +9395,7 @@ selection_final="$($second_option \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column=$first_option \
 --text=$first_option \
---title=Gui-menu-With-$cmd_basename-$cmd_version \
+--title=Gui-menu-With-$cmd_command-$cmd_version \
 --list $selection_menu )"
 ####
 ####
@@ -9405,23 +9407,23 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 #### 
 case "$selection_final" in
 1*) exit ;;
-gui-principal-menu*) $cmd_realpath gui-menu-$second_option ;;
-gui-info-menu*)$cmd_realpath gui-$second_option firewall-listconceptual ;;
-ls4*)$cmd_realpath gui-$second_option ls4 ;;
-ls6*)$cmd_realpath gui-$second_option ls6 ;;
-list-alltables*)$cmd_realpath gui-$second_option list-alltables ;;
-list-filter4*)$cmd_realpath gui-$second_option list-filter4 ;;
-list-filter6*)$cmd_realpath gui-$second_option list-filter6 ;;
-list-nat4*)$cmd_realpath gui-$second_option list-nat4 ;;
-list-nat6*)$cmd_realpath gui-$second_option list-nat6 ;;
-list-mangle4*)$cmd_realpath gui-$second_option list-mangle4 ;;
-list-mangle6*)$cmd_realpath gui-$second_option list-mangle6 ;;
-list-raw4*)$cmd_realpath gui-$second_option list-raw4 ;;
-list-raw6*)$cmd_realpath gui-$second_option list-raw6 ;;
-list-security4*)$cmd_realpath gui-$second_option list-security4 ;;
-list-security6*)$cmd_realpath gui-$second_option list-security6 ;;
-list-ebtables*)$cmd_realpath gui-$second_option list-ebtables ;;
-list-arptables*)$cmd_realpath gui-$second_option list-arptables ;;
+gui-principal-menu*) $cmd_command gui-menu-$second_option ;;
+gui-info-menu*)$cmd_command gui-$second_option firewall-listconceptual ;;
+ls4*)$cmd_command gui-$second_option ls4 ;;
+ls6*)$cmd_command gui-$second_option ls6 ;;
+list-alltables*)$cmd_command gui-$second_option list-alltables ;;
+list-filter4*)$cmd_command gui-$second_option list-filter4 ;;
+list-filter6*)$cmd_command gui-$second_option list-filter6 ;;
+list-nat4*)$cmd_command gui-$second_option list-nat4 ;;
+list-nat6*)$cmd_command gui-$second_option list-nat6 ;;
+list-mangle4*)$cmd_command gui-$second_option list-mangle4 ;;
+list-mangle6*)$cmd_command gui-$second_option list-mangle6 ;;
+list-raw4*)$cmd_command gui-$second_option list-raw4 ;;
+list-raw6*)$cmd_command gui-$second_option list-raw6 ;;
+list-security4*)$cmd_command gui-$second_option list-security4 ;;
+list-security6*)$cmd_command gui-$second_option list-security6 ;;
+list-ebtables*)$cmd_command gui-$second_option list-ebtables ;;
+list-arptables*)$cmd_command gui-$second_option list-arptables ;;
 esac
 ####
 ####
@@ -9453,7 +9455,7 @@ selection_final="$($second_option \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column=$first_option \
 --text=$first_option \
---title=Gui-menu-With-$cmd_realpath-$cmd_version \
+--title=Gui-menu-With-$cmd_command-$cmd_version \
 --list $selection_menu )"
 ####
 ####
@@ -9465,23 +9467,23 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 #### 
 case "$selection_final" in
 1*) exit ;;
-gui-principal-menu*) $cmd_realpath gui-menu-$second_option ;;
-gui-info-menu*)$cmd_realpath gui-$second_option firewall-listnumeral ;;
-lsn4*)$cmd_realpath gui-$second_option lsn4 ;;
-lsn6*)$cmd_realpath gui-$second_option lsn6 ;;
-listn-alltables*)$cmd_realpath gui-$second_option listn-alltables ;;
-listn-filter4*)$cmd_realpath gui-$second_option listn-filter4 ;;
-listn-filter6*)$cmd_realpath gui-$second_option listn-filter6 ;;
-listn-nat4*)$cmd_realpath gui-$second_option listn-nat4 ;;
-listn-nat6*)$cmd_realpath gui-$second_option listn-nat6 ;;
-listn-mangle4*)$cmd_realpath gui-$second_option listn-mangle4 ;;
-listn-mangle6*)$cmd_realpath gui-$second_option listn-mangle6 ;;
-listn-raw4*)$cmd_realpath gui-$second_option listn-raw4 ;;
-listn-raw6*)$cmd_realpath gui-$second_option listn-raw6 ;;
-listn-security4*)$cmd_realpath gui-$second_option listn-security4 ;;
-listn-security6*)$cmd_realpath gui-$second_option listn-security6 ;;
-list-ebtables*)$cmd_realpath gui-$second_option list-ebtables ;;
-list-arptables*)$cmd_realpath gui-$second_option list-arptables ;;
+gui-principal-menu*) $cmd_command gui-menu-$second_option ;;
+gui-info-menu*)$cmd_command gui-$second_option firewall-listnumeral ;;
+lsn4*)$cmd_command gui-$second_option lsn4 ;;
+lsn6*)$cmd_command gui-$second_option lsn6 ;;
+listn-alltables*)$cmd_command gui-$second_option listn-alltables ;;
+listn-filter4*)$cmd_command gui-$second_option listn-filter4 ;;
+listn-filter6*)$cmd_command gui-$second_option listn-filter6 ;;
+listn-nat4*)$cmd_command gui-$second_option listn-nat4 ;;
+listn-nat6*)$cmd_command gui-$second_option listn-nat6 ;;
+listn-mangle4*)$cmd_command gui-$second_option listn-mangle4 ;;
+listn-mangle6*)$cmd_command gui-$second_option listn-mangle6 ;;
+listn-raw4*)$cmd_command gui-$second_option listn-raw4 ;;
+listn-raw6*)$cmd_command gui-$second_option listn-raw6 ;;
+listn-security4*)$cmd_command gui-$second_option listn-security4 ;;
+listn-security6*)$cmd_command gui-$second_option listn-security6 ;;
+list-ebtables*)$cmd_command gui-$second_option list-ebtables ;;
+list-arptables*)$cmd_command gui-$second_option list-arptables ;;
 esac
 ####
 ####
@@ -9515,7 +9517,7 @@ selection_final="$($second_option \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column=$first_option \
 --text=$first_option \
---title=Gui-menu-With-$cmd_basename-$cmd_version \
+--title=Gui-menu-With-$cmd_command-$cmd_version \
 --list $selection_menu )"
 ####
 ####
@@ -9527,67 +9529,67 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 #### 
 case "$selection_final" in
 1*) exit ;;
-gui-principal-menu*) $cmd_realpath gui-menu-$second_option ;;
-gui-info-menu*) $cmd_realpath gui-$second_option firewall-wallcustom ;;
+gui-principal-menu*) $cmd_command gui-menu-$second_option ;;
+gui-info-menu*) $cmd_command gui-$second_option firewall-wallcustom ;;
 load-custom*)archivo="$($second_option  --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Launch-Custom \
 --entry-text=cfg-to-launch)" ; 
-$cmd_realpath gui-$second_option load-custom $archivo ;
-$cmd_realpath gui-$second_option list4 ;;
+$cmd_command gui-$second_option load-custom $archivo ;
+$cmd_command gui-$second_option list4 ;;
 clone-wallsystem*)archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Clone-static \
 --entry-text=static-firewall-to-clone-config)" ; 
-$cmd_realpath gui-$second_option clone-wallsystem $archivo ;
-$cmd_realpath gui-$second_option list4;;
+$cmd_command gui-$second_option clone-wallsystem $archivo ;
+$cmd_command gui-$second_option list4;;
 new-full-custom*) archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=new-full-custom \
 --entry-text=Input_file_name_to_new_full_configuration)" ;
-$cmd_realpath -gui-$second_option new-full-custom $archivo ;;
+$cmd_command -gui-$second_option new-full-custom $archivo ;;
 nueva-completa-custom*) archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=nueva-completa-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" 
-$cmd_realpath gui-$second_option nueva-completa-custom $archivo ;;
+$cmd_command gui-$second_option nueva-completa-custom $archivo ;;
 new-mini-custom*) archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height --entry \
 --title=new-mini-custom \
 --entry-text=Input_file_ name_ to_ new_ mini_configuration)" ;
-$cmd_realpath gui-$second_option new-mini-custom $archivo ;;
+$cmd_command gui-$second_option new-mini-custom $archivo ;;
 nueva-mini-custom*) archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=nueva-mini-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
-$cmd_realpath gui-$second_option nueva-mini-custom $archivo ;;
+$cmd_command gui-$second_option nueva-mini-custom $archivo ;;
 new-tiny-custom*) archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height --entry \
 --title=new-tiny-custom \
 --entry-text=Input_file_ name_ to_ new_ mini_configuration)" ;
-$cmd_realpath gui-$second_option new-tiny-custom $archivo ;;
+$cmd_command gui-$second_option new-tiny-custom $archivo ;;
 nueva-diminuta-custom*) archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=nueva-diminuta-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
-$cmd_realpath gui-$second_option nueva-diminuta-custom $archivo ;;
-names-custom*) $cmd_realpath gui-menu-$second_option names-custom ;;
+$cmd_command gui-$second_option nueva-diminuta-custom $archivo ;;
+names-custom*) $cmd_command gui-menu-$second_option names-custom ;;
 show-custom*) archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=show-custom \
 --entry-text=cfg-to-show)" ;
-$cmd_realpath gui-$second_option show-custom $archivo ;;
+$cmd_command gui-$second_option show-custom $archivo ;;
 modify-custom*) archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=modify-custom \
 --entry-text=cfg-to-modify)" ;
-$cmd_realpath gui-$second_option modify-custom $archivo ;;
+$cmd_command gui-$second_option modify-custom $archivo ;;
 del-custom*) archivo="$($second_option --entry \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=del-custom \
 --entry-text=cfg-to-delete)";
-$cmd_realpath gui-$second_option del-custom $archivo ;;
-templates-regen*)$cmd_realpath gui-$second_option  templates-regen ;;
+$cmd_command gui-$second_option del-custom $archivo ;;
+templates-regen*)$cmd_command gui-$second_option  templates-regen ;;
 esac
 ####
 ####
@@ -9622,7 +9624,7 @@ selection_final="$($second_option \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column=$first_option \
 --text=$first_option \
---title=Gui-menu-With-$cmd_basename-$cmd_version \
+--title=Gui-menu-With-$cmd_command-$cmd_version \
 --list $selection_menu )"
 ####
 ####
@@ -9634,80 +9636,80 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 #### 
 case "$selection_final" in
 1*) exit ;;
-gui-principal-menu*) $cmd_realpath gui-menu-$second_option ;;
-gui-info-menu*)$cmd_realpath gui-$second_option firewall-wallsystem ;;
-client-basic*)$cmd_realpath gui-$second_option client-basic ;
-$cmd_realpath gui-$second_option list4 ;;
-client-web*)$cmd_realpath gui-$second_option client-web ;
-$cmd_realpath gui-$second_option list4 ;;
-client-ssh*)$cmd_realpath gui-$second_option client-ssh ;
-$cmd_realpath gui-$second_option list4 ;;
-client-telnet*)$cmd_realpath gui-$second_option client-telnet ;
-$cmd_realpath gui-$second_option list4 ;;
-client-ipp*)$cmd_realpath gui-$second_option client-ipp ;
-$cmd_realpath gui-$second_option list4 ;;
-client-irc*)$cmd_realpath gui-$second_option client-irc ;
-$cmd_realpath gui-$second_option list4 ;;
-client-mail*)$cmd_realpath gui-$second_option client-mail ;
-$cmd_realpath gui-$second_option list4 ;;
-client-news*)$cmd_realpath gui-$second_option client-news ;
-$cmd_realpath gui-$second_option list4 ;;
-client-ftp*)$cmd_realpath gui-$second_option client-ftp ;
-$cmd_realpath gui-$second_option list4 ;;
-client-git*)$cmd_realpath gui-$second_option client-git ;
-$cmd_realpath gui-$second_option list4 ;;
-client-vnc*)$cmd_realpath gui-$second_option client-vnc ;
-$cmd_realpath gui-$second_option list4 ;;
-client-torrent*)$cmd_realpath gui-$second_option client-torrent ;
-$cmd_realpath gui-$second_option list4 ;;
-client-vpn*)$cmd_realpath gui-$second_option client-vpn ;
-$cmd_realpath gui-$second_option list4 ;;
-client-tor*)$cmd_realpath gui-$second_option client-tor ;
-$cmd_realpath gui-$second_option list4 ;;
-games-shooter*)$cmd_realpath gui-$second_option games-shooter ;
-$cmd_realpath gui-$second_option list4 ;;
-game-wesnoth*)$cmd_realpath gui-$second_option game-wesnoth ; 
-$cmd_realpath gui-$second_option list4 ;;
-game-minetest*)$cmd_realpath gui-$second_option game-minetest ;
-$cmd_realpath gui-$second_option list4 ;;
-game-freeciv*)$cmd_realpath gui-$second_option game-freeciv ;
-$cmd_realpath gui-$second_option list4;;
-game-widelands*)$cmd_realpath gui-$second_option game-widelands ;
-$cmd_realpath gui-$second_option list4 ;;
-lan-tor*)$cmd_realpath gui-$second_option lan-tor ;
-$cmd_realpath gui-$second_option list4 ;;
-lan-vpn*)$cmd_realpath gui-$second_option lan-vpn ;
-$cmd_realpath gui-$second_option list4 ;;
-shield-ssh*)$cmd_realpath gui-$second_option shield-ssh ;
- $cmd_realpath gui-$second_option list4 ;;
-server-ssh*)$cmd_realpath gui-$second_option server-ssh ;
-$cmd_realpath gui-$second_option list4 ;;
-server-web*)$cmd_realpath gui-$second_option server-web ;
- $cmd_realpath gui-$second_option list4 ;;
-server-vnc*)$cmd_realpath gui-$second_option server-vnc ;
-$cmd_realpath gui-$second_option list4 ;;
-server-samba*)$cmd_realpath gui-$second_option server-samba ;
-$cmd_realpath gui-$second_option list4 ;;
-server-news*)$cmd_realpath gui-$second_option server-news ;
-$cmd_realpath gui-$second_option list4 ;;
-server-mail*)$cmd_realpath gui-$second_option server-mail ;
-$cmd_realpath gui-$second_option list4 ;;
-server-ftp*)$cmd_realpath gui-$second_option server-ftp ;
-$cmd_realpath gui-$second_option list4 ;;
-server-print*)$cmd_realpath gui-$second_option server-print ;
-$cmd_realpath gui-$second_option list4 ;;
-server-lamp*)$cmd_realpath gui-$second_option server-lamp ;
-$cmd_realpath gui-$second_option list4 ;;
-server-teamspeak*)$cmd_realpath gui-$second_option server-teamspeak ;
-$cmd_realpath gui-$second_option list4 ;;
-server-mumble*)$cmd_realpath gui-$second_option server-mumble ;
-$cmd_realpath gui-$second_option list4 ;;
-server-sql*)$cmd_realpath gui-$second_option server-sql ;
-$cmd_realpath gui-$second_option list4 ;;
-server-asterisk*)$cmd_realpath gui-$second_option server-asterisk ;
-$cmd_realpath gui-$second_option list4 ;;
-server-domain*)$cmd_realpath gui-$second_option server-domain ;
-$cmd_realpath gui-$second_option list4 ;;
+gui-principal-menu*) $cmd_command gui-menu-$second_option ;;
+gui-info-menu*)$cmd_command gui-$second_option firewall-wallsystem ;;
+client-basic*)$cmd_command gui-$second_option client-basic ;
+$cmd_command gui-$second_option list4 ;;
+client-web*)$cmd_command gui-$second_option client-web ;
+$cmd_command gui-$second_option list4 ;;
+client-ssh*)$cmd_command gui-$second_option client-ssh ;
+$cmd_command gui-$second_option list4 ;;
+client-telnet*)$cmd_command gui-$second_option client-telnet ;
+$cmd_command gui-$second_option list4 ;;
+client-ipp*)$cmd_command gui-$second_option client-ipp ;
+$cmd_command gui-$second_option list4 ;;
+client-irc*)$cmd_command gui-$second_option client-irc ;
+$cmd_command gui-$second_option list4 ;;
+client-mail*)$cmd_command gui-$second_option client-mail ;
+$cmd_command gui-$second_option list4 ;;
+client-news*)$cmd_command gui-$second_option client-news ;
+$cmd_command gui-$second_option list4 ;;
+client-ftp*)$cmd_command gui-$second_option client-ftp ;
+$cmd_command gui-$second_option list4 ;;
+client-git*)$cmd_command gui-$second_option client-git ;
+$cmd_command gui-$second_option list4 ;;
+client-vnc*)$cmd_command gui-$second_option client-vnc ;
+$cmd_command gui-$second_option list4 ;;
+client-torrent*)$cmd_command gui-$second_option client-torrent ;
+$cmd_command gui-$second_option list4 ;;
+client-vpn*)$cmd_command gui-$second_option client-vpn ;
+$cmd_command gui-$second_option list4 ;;
+client-tor*)$cmd_command gui-$second_option client-tor ;
+$cmd_command gui-$second_option list4 ;;
+games-shooter*)$cmd_command gui-$second_option games-shooter ;
+$cmd_command gui-$second_option list4 ;;
+game-wesnoth*)$cmd_command gui-$second_option game-wesnoth ; 
+$cmd_command gui-$second_option list4 ;;
+game-minetest*)$cmd_command gui-$second_option game-minetest ;
+$cmd_command gui-$second_option list4 ;;
+game-freeciv*)$cmd_command gui-$second_option game-freeciv ;
+$cmd_command gui-$second_option list4;;
+game-widelands*)$cmd_command gui-$second_option game-widelands ;
+$cmd_command gui-$second_option list4 ;;
+lan-tor*)$cmd_command gui-$second_option lan-tor ;
+$cmd_command gui-$second_option list4 ;;
+lan-vpn*)$cmd_command gui-$second_option lan-vpn ;
+$cmd_command gui-$second_option list4 ;;
+shield-ssh*)$cmd_command gui-$second_option shield-ssh ;
+ $cmd_command gui-$second_option list4 ;;
+server-ssh*)$cmd_command gui-$second_option server-ssh ;
+$cmd_command gui-$second_option list4 ;;
+server-web*)$cmd_command gui-$second_option server-web ;
+ $cmd_command gui-$second_option list4 ;;
+server-vnc*)$cmd_command gui-$second_option server-vnc ;
+$cmd_command gui-$second_option list4 ;;
+server-samba*)$cmd_command gui-$second_option server-samba ;
+$cmd_command gui-$second_option list4 ;;
+server-news*)$cmd_command gui-$second_option server-news ;
+$cmd_command gui-$second_option list4 ;;
+server-mail*)$cmd_command gui-$second_option server-mail ;
+$cmd_command gui-$second_option list4 ;;
+server-ftp*)$cmd_command gui-$second_option server-ftp ;
+$cmd_command gui-$second_option list4 ;;
+server-print*)$cmd_command gui-$second_option server-print ;
+$cmd_command gui-$second_option list4 ;;
+server-lamp*)$cmd_command gui-$second_option server-lamp ;
+$cmd_command gui-$second_option list4 ;;
+server-teamspeak*)$cmd_command gui-$second_option server-teamspeak ;
+$cmd_command gui-$second_option list4 ;;
+server-mumble*)$cmd_command gui-$second_option server-mumble ;
+$cmd_command gui-$second_option list4 ;;
+server-sql*)$cmd_command gui-$second_option server-sql ;
+$cmd_command gui-$second_option list4 ;;
+server-asterisk*)$cmd_command gui-$second_option server-asterisk ;
+$cmd_command gui-$second_option list4 ;;
+server-domain*)$cmd_command gui-$second_option server-domain ;
+$cmd_command gui-$second_option list4 ;;
 esac
 ####
 ####
@@ -9739,7 +9741,7 @@ selection_final="$($second_option \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --column=$first_option \
 --text=$first_option \
---title=Gui-menu-With-$cmd_realpath-$cmd_version \
+--title=Gui-menu-With-$cmd_command-$cmd_version \
 --list $selection_menu )"
 ####
 ####
@@ -9751,40 +9753,40 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 ####
 case "$selection_final" in
 1*) exit ;;
-gui-principal-menu*) $cmd_realpath gui-menu-$second_option ;;
-gui-info-menu*)$cmd_realpath gui-$second_option firewall-easynet ;;
-preferences-read*)$cmd_realpath gui-$second_option preferences-read ;;
-preferences-modify*)$cmd_realpath gui-$second_option preferences-modify ;;
-preferences-regen*)$cmd_realpath gui-$second_option preferences-regen ;;
-preferences-example*)$cmd_realpath gui-$second_option preferences-example ;;
-list-options*)$cmd_realpath gui-$second_option list-options ;;
-clasic-options*)$cmd_realpath gui-$second_option clasic-options ;;
-info-options*)$cmd_realpath gui-$second_option info-options ;;
-expert*)$cmd_realpath gui-$second_option expert ;;
-intro*)$cmd_realpath gui-$second_option intro ;;
-download*)$cmd_realpath gui-$second_option download ;;
-ip4*)$cmd_realpath gui-$second_option ip4 ;;
-ip6*)$cmd_realpath gui-$second_option ip6 ;;
-speed-ip4*)$cmd_realpath gui-$second_option speed-ip4 ;;
-speed-ip6*)$cmd_realpath gui-$second_option speed-ip6 ;;
-sockets*)$cmd_realpath gui-$second_option sockets ;;
-treeconf*)$cmd_realpath gui-$second_option treeconf ;;
-treecache*)$cmd_realpath gui-$second_option treecache ;;
-cleancache*)$cmd_realpath gui-$second_option cleancache ;;
-examples*)$cmd_realpath gui-$second_option examples ;;
-depends*)$cmd_realpath gui-$second_option depends ;;
-install*)$cmd_realpath -gui-zenity install ;;
-upgrade*)$cmd_realpath -gui-zenity upgrade ;;
-notes*)$cmd_realpath gui-$second_option notes ;;
-address4*)$cmd_realpath gui-$second_option address4 ;;
-address6*)$cmd_realpath gui-$second_option address6 ;;
-network4*)$cmd_realpath gui-$second_option network4 ;;
-network6*)$cmd_realpath gui-$second_option network6 ;;
-license-lgpl-v2*)$cmd_realpath gui-$second_option license-lgpl-v2 ;;
-license-gpl-v2*)$cmd_realpath gui-$second_option license-gpl-v2 ;;
-variables*) $cmd_realpath gui-$second_option variables ;;
-utils*) $cmd_realpath gui-$second_option commands ;;
-about*) $cmd_realpath gui-$second_option about ;;
+gui-principal-menu*) $cmd_command gui-menu-$second_option ;;
+gui-info-menu*)$cmd_command gui-$second_option firewall-easynet ;;
+preferences-read*)$cmd_command gui-$second_option preferences-read ;;
+preferences-modify*)$cmd_command gui-$second_option preferences-modify ;;
+preferences-regen*)$cmd_command gui-$second_option preferences-regen ;;
+preferences-example*)$cmd_command gui-$second_option preferences-example ;;
+list-options*)$cmd_command gui-$second_option list-options ;;
+clasic-options*)$cmd_command gui-$second_option clasic-options ;;
+info-options*)$cmd_command gui-$second_option info-options ;;
+expert*)$cmd_command gui-$second_option expert ;;
+intro*)$cmd_command gui-$second_option intro ;;
+download*)$cmd_command gui-$second_option download ;;
+ip4*)$cmd_command gui-$second_option ip4 ;;
+ip6*)$cmd_command gui-$second_option ip6 ;;
+speed-ip4*)$cmd_command gui-$second_option speed-ip4 ;;
+speed-ip6*)$cmd_command gui-$second_option speed-ip6 ;;
+sockets*)$cmd_command gui-$second_option sockets ;;
+treeconf*)$cmd_command gui-$second_option treeconf ;;
+treecache*)$cmd_command gui-$second_option treecache ;;
+cleancache*)$cmd_command gui-$second_option cleancache ;;
+examples*)$cmd_command gui-$second_option examples ;;
+depends*)$cmd_command gui-$second_option depends ;;
+install*)$cmd_command -gui-zenity install ;;
+upgrade*)$cmd_command -gui-zenity upgrade ;;
+notes*)$cmd_command gui-$second_option notes ;;
+address4*)$cmd_command gui-$second_option address4 ;;
+address6*)$cmd_command gui-$second_option address6 ;;
+network4*)$cmd_command gui-$second_option network4 ;;
+network6*)$cmd_command gui-$second_option network6 ;;
+license-lgpl-v2*)$cmd_command gui-$second_option license-lgpl-v2 ;;
+license-gpl-v2*)$cmd_command gui-$second_option license-gpl-v2 ;;
+variables*) $cmd_command gui-$second_option variables ;;
+utils*) $cmd_command gui-$second_option commands ;;
+about*) $cmd_command gui-$second_option about ;;
 esac
 ####
 ####
@@ -9829,7 +9831,7 @@ then source $default_directory_custom/$second_option ; fi
 ####
 ####
 if [ ! -f "$default_directory_custom/$second_option" ]
-then  $cmd_realpath names-custom ; exit; fi
+then  $cmd_command names-custom ; exit; fi
 ####
 ####
 fi
@@ -9859,7 +9861,7 @@ then source $default_directory_custom/$second_option ; fi
 ####
 ####
 if [ ! -f "$default_directory_custom/$second_option" ]
-then  $cmd_realpath names-custom ; exit; fi
+then  $cmd_command names-custom ; exit; fi
 ####
 ####
 fi
@@ -9896,8 +9898,8 @@ echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
 else
 echo "$text_info Introducction: Put the ports tcp servers"
 echo "$text_info Introducction: The tinyserver-udp configured like client for all protocols."
-echo "$text_info Example_1: $cmd_basename tinyserver-tcp 20:22,80"
-echo "$text_info Example_2: $cmd_basename tinyserver-tcp 20:22,80 12.168.0.0/24"
+echo "$text_info Example_1: $cmd_command tinyserver-tcp 20:22,80"
+echo "$text_info Example_2: $cmd_command tinyserver-tcp 20:22,80 12.168.0.0/24"
 echo "$text_fail fwiptables $first_option no loaded"
 exit ; fi
 ####
@@ -9936,8 +9938,8 @@ echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
 else
 echo "$text_info Introducction: Put the ports udp servers"
 echo "$text_info Introducction: The tinyserver-udp configured like client for all protocols."
-echo "$text_info Example_1: $cmd_basename tinyserver-udp 20:22,80"
-echo "$text_info Example_2: $cmd_basename tinyserver-udp 20:22,80 192.168.0.0/24"
+echo "$text_info Example_1: $cmd_command tinyserver-udp 20:22,80"
+echo "$text_info Example_2: $cmd_command tinyserver-udp 20:22,80 192.168.0.0/24"
 echo "$text_fail fwiptables $first_option no loaded"
 exit; fi
 ####
@@ -9977,8 +9979,8 @@ echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
 else
 echo "$text_info Introducction: Put the ports tcp servers"
 echo "$text_info Introducction: to client ports: see preferences-modify (miniclient ports)"
-echo "$text_info Example_1: $cmd_basename miniserver-tcp 20:22,80"
-echo "$text_info Example_2: $cmd_basename miniserver-tcp 20:22,80 192.168.0.0/24"
+echo "$text_info Example_1: $cmd_command miniserver-tcp 20:22,80"
+echo "$text_info Example_2: $cmd_command miniserver-tcp 20:22,80 192.168.0.0/24"
 echo "$text_fail fwiptables $first_option no loaded"
 exit ; fi
 ####
@@ -10018,8 +10020,8 @@ echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
 else
 echo "$text_info Introducction: Put the ports udp servers"
 echo "$text_info Introducction: to client ports: see preferences-modify (miniclient ports)"
-echo "$text_info Example_1: $cmd_basename mioniserver-udp 20:22,80"
-echo "$text_info Example_2: $cmd_basename mioniserver-udp 20:22,80 192.168.0.0/24"
+echo "$text_info Example_1: $cmd_command mioniserver-udp 20:22,80"
+echo "$text_info Example_2: $cmd_command mioniserver-udp 20:22,80 192.168.0.0/24"
 echo "$text_fail fwiptables $first_option no loaded"
 exit ; fi
 ####
@@ -14546,10 +14548,14 @@ fi
 ####
 ####
 if [ "$launch_rules_firewall" != "yes" ]
+####
+####
 then echo $head_give_cover
-echo "### #$text_fail [ first option: $first_option \
-| without first option: $without_first_option ]"
-$cmd_realpath list-options ; exit ; fi
+echo "### #$text_fail [ first option: $first_option ]"
+$cmd_command list-options ; 
+####
+####
+exit ; fi
 ####
 ####
 ##########    english: Update variables             ##########
@@ -14642,7 +14648,7 @@ case "$NULL" in "$config_system_log")      ;;  *)  config_system_log="log" ;; es
 #### legacy ip4
 ####
 ####
-if [ "$type_firewall" == "input-permisive" ]; then $cmd_realpath eraserules &> /dev/null ;
+if [ "$type_firewall" == "input-permisive" ]; then $cmd_command eraserules &> /dev/null ;
 ####
 ####
 #### english: legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
@@ -14821,7 +14827,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$type_firewall" == "input-established" ]; then $cmd_realpath eraserules &> /dev/null ;
+if [ "$type_firewall" == "input-established" ]; then $cmd_command eraserules &> /dev/null ;
 ####
 ####
 #### english: legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
@@ -14995,7 +15001,7 @@ exit; fi
 ####
 ####
 if [ "$type_firewall" == "without-connection" ]
-then $cmd_realpath eraserules &> /dev/null ;
+then $cmd_command eraserules &> /dev/null ;
 ####
 ####
 #### english: legacy ipv4 127.0.0.1 acept
@@ -15130,7 +15136,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" == "loadtiny-custom" ]; then $cmd_realpath eraserules &> /dev/null ;
+if [ "$first_option" == "loadtiny-custom" ]; then $cmd_command eraserules &> /dev/null ;
 ####
 ####
 #### LOCALHOST IS ALLOWED
@@ -15607,7 +15613,7 @@ then config_uid_gid="" ; else $nada ; fi
 #### spanish: borra todas las reglas
 ####
 ####
-$cmd_realpath eraserules &> /dev/null
+$cmd_command eraserules &> /dev/null
 ####
 ####
 ######################### english: ebtables mac rules
