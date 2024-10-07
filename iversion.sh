@@ -980,7 +980,7 @@ case "$first_option" in
 "listnumeral")    first_option="firewall-listnumeral" ;;
 "wallcustom")     first_option="firewall-wallcustom" ;;
 "wallsystem")     first_option="firewall-wallsystem" ;;
-"easy")           first_option="firewall-easynet" ;;
+"easy")           first_option="firewall-utilnet" ;;
 "custom")         first_option="load-custom" ;;
 "examples")       first_option="options-examples" ;;
 "regen")          first_option="templates-regen" ;;
@@ -1210,7 +1210,7 @@ case "$first_option" in
 "listnumeral")    first_option="firewall-listnumeral" ;;
 "wallcustom")     first_option="firewall-wallcustom" ;;
 "wallsystem")     first_option="firewall-wallsystem" ;;
-"easy")           first_option="firewall-easynet" ;;
+"easy")           first_option="firewall-utilnet" ;;
 "custom")         first_option="load-custom" ;;
 "examples")       first_option="options-examples" ;;
 "regen")          first_option="templates-regen" ;;
@@ -3515,7 +3515,7 @@ echo "$text_md server-telnet server-irc server-vnc server-print server-webserver
 echo "$text_md server-lamp server-news server-ftp server-mail server-teamspeak $text_md"
 echo "$text_md server-mumble server-gateway server-sql server-samba server-proxy $text_md"
 echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net  $text_md"
-echo "$title_md    firewall-easynet $text_md"
+echo "$title_md    firewall-utilnet $text_md"
 echo "$text_md preferences-read preferences-modify preferences-regen $text_md"
 echo "$text_md options speed-ip4 speed-ip6 intro filelog autolog date web $text_md"
 echo "$text_md ip4 ip6 network4 network6 address4 address6 resolve sockets $text_md"
@@ -3822,16 +3822,16 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-wallsystem:
-##########    english: firewall-easynet: options for fwiptables firewall      ##########
-##########    spanish: firewall-easynet: opciones para fwiptables firewall    ##########
-#### :rutina-inicial-firewall-easynet:
+##########    english: firewall-utilnet: options for fwiptables firewall      ##########
+##########    spanish: firewall-utilnet: opciones para fwiptables firewall    ##########
+#### :rutina-inicial-firewall-utilnet:
 #### :rutina-inicial-easy:
 ####
 ####
-if   [ "$first_option" == "firewall-easynet" ]; then
+if   [ "$first_option" == "firewall-utilnet" ]; then
 ####
 ####
-echo "$title_md | firewall-easynet | $cmd_command firewall-easynet | $text_md"
+echo "$title_md | firewall-utilnet | $cmd_command firewall-utilnet | $text_md"
 echo "$text_md $text_md preferences-read . show the preferences for fwiptables $text_md"
 echo "$text_md $text_md preferences-modify . modify the preferences for fwiptables $text_md"
 echo "$text_md $text_md preferences-regen . recover the initials preferences for fwiptables $text_md"
@@ -3872,7 +3872,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-easy:
-#### :rutina-final-firewall-easynet:
+#### :rutina-final-firewall-utilnet:
 ##########    english: options-expert: options for fwiptables firewall      ##########
 ##########    spanish: options-expert: opciones para fwiptables firewall    ##########
 #### :rutina-inicial-options-expert:
@@ -3954,7 +3954,7 @@ $cmd_command firewall-listnumeral
 $cmd_command firewall-wallcontrol
 $cmd_command firewall-wallcustom
 $cmd_command firewall-wallsystem
-$cmd_command firewall-easynet
+$cmd_command firewall-utilnet
 $cmd_command expert
 ####
 ####
@@ -7723,7 +7723,7 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 005  "$text_md firewall-wallcontrol" \
 006  "$text_md firewall-wallsystem" \
 007  "$text_md firewall-wallcustom" \
-008  "$text_md firewall-easynet"  \
+008  "$text_md firewall-utilnet"  \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
@@ -7738,7 +7738,7 @@ case $menuprincipal in
 005) clear ; $cmd_command cli-menu-wallcontrol $onecli  ;;
 006) clear ; $cmd_command cli-menu-wallsystem  $onecli  ;;
 007) clear ; $cmd_command cli-menu-wallcustom  $onecli  ;;
-008) clear ; $cmd_command cli-menu-easynet     $onecli  ;;
+008) clear ; $cmd_command cli-menu-utilnet     $onecli  ;;
 ################################################################################
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
@@ -7767,8 +7767,8 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 --title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
-001 "$title_md $text_md [principal menu] $text_md $title_md" \
-002 "$title_md [  --- Info Options --- ] $title_md" \
+001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
+002 "$title_md [ Info Options ] $title_md" \
 003 "$title_md [ Firewall List With Conceptual ] $title_md" \
 004  "$text_md ls4" \
 005  "$text_md ls6"  \
@@ -7841,9 +7841,9 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 --title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
-001 "$title_md $text_md [principal menu] $text_md $title_md" \
-002 "$title_md [  --- Info Options --- ] $title_md" \
-003 "$title_md [ Firewall List With Conceptual ] $title_md" \
+001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
+002 "$title_md [ Info Options     ] $title_md" \
+003 "$title_md [ Firewall Numeral ] $title_md" \
 004  "$text_md lsn4" \
 005  "$text_md lsn6"  \
 006  "$text_md listn-filter4" \
@@ -7919,8 +7919,8 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 --title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
-001 "$title_md $text_md [principal menu] $text_md $title_md" \
-002 "$title_md [  --- Info Options --- ] $title_md" \
+001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
+002 "$title_md [ Info Options     ] $title_md" \
 003 "$title_md [ Firewall Control ] $title_md" \
 004  "$text_md stop" \
 005  "$text_md continue" \
@@ -8007,8 +8007,8 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 --title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
-001 "$title_md $text_md [principal menu] $text_md $title_md" \
-002 "$title_md [  --- Info Options --- ] $title_md" \
+001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
+002 "$title_md [ Info Options        ] $title_md" \
 003 "$title_md [ Firewall Wallsystem ] $title_md" \
 007  "$text_md client-basic" \
 008  "$text_md client-web" \
@@ -8109,8 +8109,8 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 --title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
-001 "$title_md $text_md [principal menu] $text_md $title_md" \
-002 "$title_md [  --- Info Options --- ] $title_md" \
+001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
+002 "$title_md [ Info Options        ] $title_md" \
 003 "$title_md [ Firewall Wallcustom ] $title_md" \
 004  "$text_md load-custom" \
 005  "$text_md clone-wallsystem" \
@@ -8185,12 +8185,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-wallcustom:
-##########    english: cli-menu-easynet: Manage list rules with one text menu          ##########
-##########    spanish: cli-menu-easynet: Maneja lista de reglas con un menu de texto   ##########
-#### :rutina-inicial-cli-menu-easynet:
+##########    english: cli-menu-utilnet: Manage list rules with one text menu          ##########
+##########    spanish: cli-menu-utilnet: Maneja lista de reglas con un menu de texto   ##########
+#### :rutina-inicial-cli-menu-utilnet:
 ####
 ####
-if [ "$first_option" == "cli-menu-easynet" ]; then
+if [ "$first_option" == "cli-menu-utilnet" ]; then
 ####
 ####
 if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
@@ -8205,9 +8205,9 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 --title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
-001 "$title_md $text_md [principal menu] $text_md $title_md" \
-002 "$title_md [  --- Info Options --- ] $title_md" \
-003 "$title_md [ Firewall List With Conceptual ] $title_md" \
+001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
+002 "$title_md [ Info Options     ] $title_md" \
+003 "$title_md [ firewall utilnet ] $title_md" \
 011  "$text_md preferences-read" \
 012  "$text_md preferences-modify" \
 013  "$text_md preferences-regen" \
@@ -8285,7 +8285,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-cli-menu-easynet:
+#### :rutina-final-cli-menu-utilnet:
 ##########    english: cli-menu-old: Manage list rules with one text menu          ##########
 ##########    spanish: cli-menu-old: Maneja lista de reglas con un menu de texto   ##########
 #### :rutina-inicial-cli-menu-old:
@@ -8454,7 +8454,7 @@ case $menuprincipal in
 0400) clear ; $cmd_command txt firewall-listnumeral ;;
 0500) clear ; $cmd_command txt firewall-wallsystem ;;
 0600) clear ; $cmd_command txt firewall-wallcustom ;;
-0700) clear ; $cmd_command txt firewall-easynet ;;
+0700) clear ; $cmd_command txt firewall-utilnet ;;
 ################################################################################
 0201) clear ; $cmd_command txt stop ;;
 0202) clear ; $cmd_command txt continue ;;
@@ -8683,7 +8683,7 @@ then echo $message_without_guiroll ; exit ; fi
 ####
 gui_menu="Info|Firewall-List-With-Conceptual|\
 Firewall-List-With-Numeral|firewall-wallcontrol|firewall-wallcustom|\
-firewall-wallsystem|firewall-easynet"
+firewall-wallsystem|firewall-utilnet"
 selection_menu="$($command_zenity --forms \
 --text=gui-roll \
 --title=Gui-roll-With-$cmd_command-$cmd_version \
@@ -8711,8 +8711,8 @@ firewall-wallcustom)
 $cmd_command gui-roll-zenity-firewall-wallcustom ; exit ;;
 firewall-wallsystem)
 $cmd_command gui-roll-zenity-firewall-wallsystem ; exit ;;
-firewall-easynet)
-$cmd_command gui-roll-zenity-firewall-easynet ; exit ;;
+firewall-utilnet)
+$cmd_command gui-roll-zenity-firewall-utilnet ; exit ;;
 esac
 ####
 ####
@@ -9133,12 +9133,12 @@ exit ; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-wallsystem:
-##########    english: gui-roll-zenity-firewall-easynet: gui with roll  ##########
-##########    spanish: gui-roll-zenity-firewall-easynet: gui con roll   ##########
-#### :rutina-inicial-gui-roll-zenity-firewall-easynet:
+##########    english: gui-roll-zenity-firewall-utilnet: gui with roll  ##########
+##########    spanish: gui-roll-zenity-firewall-utilnet: gui con roll   ##########
+#### :rutina-inicial-gui-roll-zenity-firewall-utilnet:
 ####
 ####
-if [ "$first_option" == "gui-roll-zenity-firewall-easynet" ] ;
+if [ "$first_option" == "gui-roll-zenity-firewall-utilnet" ] ;
 ####
 ####
 then echo $head_waiting_gui ; echo $head_give_cover ;
@@ -9167,7 +9167,7 @@ selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu)$cmd_command gui-roll-zenity ;;
-gui-info-menu)$cmd_command -gui-zenity firewall-easynet ;;
+gui-info-menu)$cmd_command -gui-zenity firewall-utilnet ;;
 preferences-read)$cmd_command -gui-zenity preferences-read ;;
 preferences-modify)$cmd_command -gui-zenity preferences-modify ;;
 preferences-regen)$cmd_command -gui-zenity preferences-regen ;;
@@ -9210,7 +9210,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-zenity-firewall-easynet:
+#### :rutina-final-gui-roll-zenity-firewall-utilnet:
 ##########    english: gui-menu: gui menu general: gui con menu  ##########
 ##########    spanish: gui-menu: gui menu general: gui con menu  ##########
 #### :rutina-inicial-gui-menu:
@@ -9226,7 +9226,7 @@ echo "$title_md The used gui in $first_option is $second_option" ;
 ####
 ####
 gui_menu="Firewall-listconceptual|Firewall-listnumeral|firewall-wallcontrol|\
-Firewall-wallcustom|Firewall-wallsystem|firewall-easynet|"
+Firewall-wallcustom|Firewall-wallsystem|firewall-utilnet|"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($second_option \
 --width=$config_graphicall_width \
@@ -9255,8 +9255,8 @@ Firewall-wallcustom*)
 $cmd_command gui-menu-firewall-wallcustom $second_option ;;
 Firewall-wallsystem*)
 $cmd_command gui-menu-firewall-wallsystem $second_option ;;
-firewall-easynet*)
-$cmd_command gui-menu-firewall-easynet $second_option ;;
+firewall-utilnet*)
+$cmd_command gui-menu-firewall-utilnet $second_option ;;
 esac
 ####
 ####
@@ -9717,12 +9717,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-wallsystem:
-##########    english: gui-menu-firewall-easynet: gui with menu   ##########
-##########    spanish: gui-menu-firewall-easynet: gui con menu    ##########
-#### :rutina-inicial-gui-menu-firewall-easynet:
+##########    english: gui-menu-firewall-utilnet: gui with menu   ##########
+##########    spanish: gui-menu-firewall-utilnet: gui con menu    ##########
+#### :rutina-inicial-gui-menu-firewall-utilnet:
 ####
 ####
-if [ "$first_option" == "gui-menu-firewall-easynet" ]
+if [ "$first_option" == "gui-menu-firewall-utilnet" ]
 then echo $head_waiting_gui ; echo $head_give_cover
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
 echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
@@ -9754,7 +9754,7 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 case "$selection_final" in
 1*) exit ;;
 gui-principal-menu*) $cmd_command gui-menu-$second_option ;;
-gui-info-menu*)$cmd_command gui-$second_option firewall-easynet ;;
+gui-info-menu*)$cmd_command gui-$second_option firewall-utilnet ;;
 preferences-read*)$cmd_command gui-$second_option preferences-read ;;
 preferences-modify*)$cmd_command gui-$second_option preferences-modify ;;
 preferences-regen*)$cmd_command gui-$second_option preferences-regen ;;
@@ -9793,7 +9793,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-firewall-easynet:
+#### :rutina-final-gui-menu-firewall-utilnet:
 ##########    english: ready system rules con its option               ##########
 ##########    spanish: preprara reglas del sistema con sus opciones    ##########
 ####
