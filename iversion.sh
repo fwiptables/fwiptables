@@ -81,7 +81,7 @@ cmd_where="which"                                          # Find each command
 #### The name file command
 cmd_basename="$(basename $0)"                              # Only name filename
 cmd_realpath="$cmd_directory/$cmd_name"                    # Full path filename
-cmd_command="$cmd_basename"                                # your choosed command
+cmd_command="$cmd_realpath"                                # your choosed command
 #### See it if it is installed
 if [ ! -f "$cmd_command" ] ; then cp $0 $cmd_command ;
 echo "Firewall fwiptables installed in $cmd_command" ; exit ; fi
@@ -1579,8 +1579,8 @@ echo "$text_md $text_md  Session Graphicall: $XDG_SESSION_TYPE         $text_md"
 fi
 ####
 ####
-echo "$text_md $text_md    Basename program: $cmd_command             $text_md"
-echo "$text_md $text_md    Realpath program: $cmd_command             $text_md"
+echo "$text_md $text_md    Basename program: $cmd_basename             $text_md"
+echo "$text_md $text_md    Realpath program: $cmd_realpath             $text_md"
 echo "$text_md $text_md     Version program: $cmd_version              $text_md"
 echo "$text_md $text_md        Date program: $cmd_date                 $text_md"
 echo "$text_md $text_md   Short description: $cmd_shortdescription     $text_md"
