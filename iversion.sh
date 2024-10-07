@@ -82,9 +82,9 @@ cmd_where="which"                                          # Find each command
 cmd_basename="$(basename $0)"                              # Only name filename
 cmd_realpath="$cmd_directory/$cmd_name"                    # Full path filename
 cmd_command="$cmd_realpath"                                # your choosed command
-#### See it if it is installed
-if [ ! -f "$cmd_command" ] ; then cp $0 $cmd_command ;
-echo "Firewall fwiptables installed in $cmd_command" ; exit ; fi
+#### See it if it is installed in cmd_realpath
+if [ ! -f "$cmd_command" ]; then cp $0 $cmd_realpath 
+echo "Installation done in $cmd_realpath" ; fi
 #### The number version
 cmd_year="24"                                              # Number year version
 cmd_month="10"                                             # Number mouth version
