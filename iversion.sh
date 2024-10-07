@@ -5543,7 +5543,7 @@ exit; fi
 if [ "$first_option" == "install" ]; then 
 ####
 ####
-echo "$text_md $text_md $text_md $text_md $text_md Installing: $cmd_name"
+echo "$text_md $text_md $text_md $text_md $text_md Installing: $cmd_name (waiting several seconds)"
 ####
 ####
 ####  english: copy the file to temporal folder and install
