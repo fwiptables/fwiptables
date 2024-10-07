@@ -78,6 +78,8 @@ cmd_where="which"                                          # Find each command
 #### The name file command
 cmd_basename="$(basename $0)"                              # Only name filename
 cmd_realpath="$($cmd_where $0)"                            # Full path filename
+#### See it if it is installed
+if [ "$cmd_realpath" == "$NULL" ]; then cmd_realpath="$cmd_basename"; fi
 #### The number version
 cmd_year="24"                                              # Number year version
 cmd_month="10"                                             # Number mouth version
