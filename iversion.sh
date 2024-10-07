@@ -73,22 +73,23 @@ exit ; fi
 #### source /etc/profile                                   # source etc profile
 cmd_path="/sbin:/bin:/usr/sbin:/usr/bin"                   # Config for PATH
 PATH="$cmd_path"                                           # PATH for fwiptables
+#### the installed location
+cmd_name="fwiptables"                                      # Filename installed
+cmd_directory="/usr/bin"                                   # Directory installed
 #### find any command
 cmd_where="which"                                          # Find each command
 #### The name file command
 cmd_basename="$(basename $0)"                              # Only name filename
-cmd_realpath="$($cmd_where $0)"                            # Full path filename
+cmd_realpath="$cmd_directory/$cmd_name"                    # Full path filename
 #### See it if it is installed
-if [ "$cmd_realpath" == "$NULL" ]; then cmd_realpath="$cmd_basename"; fi
+if [ ! -f "$cmd_realpath" ] ; then cp $0 $cmd_realpath ;
+echo "Firewall fwiptables installed in $cmd_realpath" ; exit ; fi
 #### The number version
 cmd_year="24"                                              # Number year version
 cmd_month="10"                                             # Number mouth version
 cmd_letter="C"                                             # Number letter version
 cmd_version="$cmd_year-$cmd_month-$cmd_letter"             # Final date like number version
 cmd_date="Year 20$cmd_year / Month $cmd_month"
-#### the installed location
-cmd_name="fwiptables"                                      # Filename installed
-cmd_directory="/usr/bin"                                   # Directory installed
 #### The data version
 cmd_developer="Francisco Garcia"                           # Actual developer
 cmd_contact="fwiptables@gmx.com"                           # Actual contact
@@ -5538,28 +5539,31 @@ if [ "$first_option" == "install" ]; then
 echo "$text_md $text_md $text_md $text_md $text_md Installing: $cmd_name (waiting several seconds)"
 ####
 ####
+cmd_realpath="$cmd_directory/$cmd_name"
+####
+####
 ####  english: copy the file to temporal folder and install
 ####  spanish: copia el archivo a carpeta final
 #### 
 #### 
 #### echo "$title_md $text_info [ $cmd_name installing.. ]"
-cp $(realpath $0) $cmd_directory/$cmd_name
-chmod 555 "$cmd_directory/$cmd_name" &> /dev/null 
+cp $0 $cmd_realpath
+chmod 755 $cmd_realpath &> /dev/null 
 ####
 ####
 ####  english: generate fwiptables default config and templates
 ####  spanish: genera fwiptables default configuracion y plantillas
 ####
 ####
-$cmd_directory/$cmd_name preferences-regen &> /dev/null
-$cmd_directory/$cmd_name templates-regen &> /dev/null
+$cmd_realpath preferences-regen &> /dev/null
+$cmd_realpath templates-regen &> /dev/null
 ####
 ####
 ####   english: Show final status from installer: program version
 ####   spanish: Muestra el estatus final desde el instalador: program version
 ####
 ####
-"$cmd_directory/$cmd_name" version
+$cmd_realpath version
 #### 
 ####
 exit; fi
