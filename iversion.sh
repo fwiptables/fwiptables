@@ -2787,7 +2787,13 @@ if [ "$first_option" == "notes" ]; then
 ####
 ####
 echo "$title_md [ $first_option ] [ List notes about ] [ notes md ]"
+echo "$text_md                          Iptables Firewall"
 echo "$text_md           Legacy or nft: whith one of them is sufficent $text_md"   
+echo "$text_md         iptables-legacy: support for xtables ipv4 $text_md"    
+echo "$text_md            iptables-nft: support for nftables ipv4 $text_md" 
+echo "$text_md        ip6tables-legacy: support for xtables ipv6 $text_md"    
+echo "$text_md           ip6tables-nft: support for nftables ipv6 $text_md"
+echo "$text_md                          Some Options"
 echo "$text_md   Allow shield maxtries: limit against attack per bruteforce $text_md"   
 echo "$text_md               Blacklist: excepcionals hosts has conection dropped in firewall $text_md"   
 echo "$text_md               whitelist: excepcionals hosts has conection allowed in firewall $text_md" 
@@ -2795,8 +2801,7 @@ echo "$text_md              tinyserver: client in all allowed, and servers selec
 echo "$text_md              miniserver: normal ports in client, and servers selecteds manually $text_md"
 echo "$text_md       input-established: the computer is only client $text_md"   
 echo "$text_md    allow output uid/gid: User and/or group excepcional with conection allowed $text_md"   
-echo "$text_md         iptables-legacy: support for xtables $text_md"    
-echo "$text_md            iptables-nft: support for nftables $text_md"    
+echo "$text_md                          Necesary Ports"
 echo "$text_md                     ntp: Port necesary to update the time and date $text_md"   
 echo "$text_md                  bootpc: Port necesary to dhcp and get ip $text_md"   
 echo "$text_md                  domain: This port is necesary to domain resolver $text_md"   
