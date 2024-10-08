@@ -5587,7 +5587,7 @@ if   [ "$first_option" == "expert-gen-readme" ]; then
 ####
 echo "$title_md [ $first_option ]  [ generate actual file and readme from intro program ] "
 #### create the file base in repository
-cp $0 $default_directory_readme/$cmd_command-$cmd_version &&
+cp $(basename $0) $default_directory_readme/$cmd_command-$cmd_version &&
 echo "$title_md $text_ok Created $default_directory_readme/$cmd_command-$cmd_version"
 #### create the README base in repository
 $default_directory_readme/$cmd_command-$cmd_version intro > $default_directory_readme/README &&
@@ -5614,7 +5614,7 @@ rm -R $default_directory_debian/deb/usr/bin &> /dev/null
 rm -R $default_directory_debian/deb/DEBIAN &> /dev/null
 mkdir -p $default_directory_debian/deb/usr/bin &> /dev/null
 mkdir -p $default_directory_debian/deb/DEBIAN &> /dev/null
-cp $0 $default_directory_debian/deb/usr/bin/$cmd_command
+cp $(basename $0) $default_directory_debian/deb/usr/bin/$cmd_command
 #### it are file modes
 chown root $default_directory_debian/* -R  &> /dev/null
 chmod 755 $default_directory_debian/* -R &> /dev/null
@@ -6044,7 +6044,7 @@ then echo "$title_md install uuid to compile"; exit ; fi
 if [ "$cmd_format" != "Bourne-Again_shell_script," ]
 then echo "$title_md the $cmd_name is not Bourne-Again_shell_script," ; exit ; fi
 obash_file_date="$default_directory_obash/$cmd_command-$cmd_version"
-cp $cmd_command $obash_file_date.bash
+cp $(basename $0) $obash_file_date.bash
 $command_obash -r -c -o $obash_file_date.bin $obash_file_date.bash \
 && echo "$title_md $text_ok" || echo "$title_md $text_fail"
 echo ; echo "$title_md And now list:"
