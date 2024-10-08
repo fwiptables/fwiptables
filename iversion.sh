@@ -2787,13 +2787,16 @@ if [ "$first_option" == "notes" ]; then
 ####
 ####
 echo "$title_md [ $first_option ] [ List notes about ] [ notes md ]"
-echo "$text_md                          Iptables Firewall"
+echo "$text_md                          Iptables Firewall $text_md" 
 echo "$text_md           Legacy or nft: whith one of them is sufficent $text_md"   
 echo "$text_md         iptables-legacy: support for xtables ipv4 $text_md"    
 echo "$text_md            iptables-nft: support for nftables ipv4 $text_md" 
 echo "$text_md        ip6tables-legacy: support for xtables ipv6 $text_md"    
 echo "$text_md           ip6tables-nft: support for nftables ipv6 $text_md"
-echo "$text_md                          Some Options"
+echo "$text_md                          Some Recomendation for client $text_md" 
+echo "$text_md         Client prefered: input-established $text_md" 
+echo "$text_md         Server prefered: tinyserver-tcp tcp-ports-server $text_md" 
+echo "$text_md                          Some Options $text_md" 
 echo "$text_md   Allow shield maxtries: limit against attack per bruteforce $text_md"   
 echo "$text_md               Blacklist: excepcionals hosts has conection dropped in firewall $text_md"   
 echo "$text_md               whitelist: excepcionals hosts has conection allowed in firewall $text_md" 
