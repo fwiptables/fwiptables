@@ -88,7 +88,7 @@ echo "Installation done in $cmd_realpath" ; fi
 #### The number version
 cmd_year="24"                                              # Number year version
 cmd_month="10"                                             # Number mouth version
-cmd_letter="C"                                             # Number letter version
+cmd_letter="D"                                             # Number letter version
 cmd_version="$cmd_year-$cmd_month-$cmd_letter"             # Final date like number version
 cmd_date="Year 20$cmd_year / Month $cmd_month"
 #### The data version
@@ -1583,9 +1583,9 @@ fi
 ####
 ####
 echo "$text_md $text_md   Basename firewall: $cmd_basename             $text_md"
-echo "$text_md $text_md   Realpath firweall: $cmd_realpath             $text_md"
-echo "$text_md $text_md    Version firewall: $cmd_version              $text_md"
+echo "$text_md $text_md   Realpath firewall: $cmd_realpath             $text_md"
 echo "$text_md $text_md      Cycle internal: $cmd_command              $text_md"
+echo "$text_md $text_md    Version firewall: $cmd_version              $text_md"
 echo "$text_md $text_md        Date program: $cmd_date                 $text_md"
 echo "$text_md $text_md   Short description: $cmd_shortdescription     $text_md"
 echo "$text_md $text_md    Long description: $cmd_longdescription      $text_md"
@@ -5431,6 +5431,9 @@ echo "$title_md $text_md fwiptables. Firewall With iptables. intro content infor
 echo "$text_md"
 $cmd_command readme
 echo "$text_md"
+echo "$title_md $text_md $text_md Firewall Version"
+echo "$text_md"
+echo "$title_md"
 $cmd_command version
 echo "$text_md"
 $cmd_command about
@@ -5443,7 +5446,7 @@ $cmd_command depends
 echo "$text_md"
 $cmd_command examples
 echo "$text_md"
-echo "$title_md [ options ] [ List general options for fwiptables ] [ list-options md ]"
+echo "$title_md $text_md $text_md Firewall Options"
 echo "$text_md"
 echo "$title_md"
 $cmd_command options
