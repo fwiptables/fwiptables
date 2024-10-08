@@ -3910,7 +3910,7 @@ echo "$text_md $text_md expert-add-whitelist6 . add white list for ip6 $text_md 
 echo "$text_md $text_md expert-upgrade-estable . Upgrade from web sourceforge fwiptables with curl $text_md "
 echo "$text_md $text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables with curl $text_md "
 echo "$text_md $text_md expert-upgrade-adblock . Download blacklist to folder configuration program with curl $text_md "
-echo "$text_md $text_md expert-gen-deb . generate actual version file in deb $text_md "
+echo "$text_md $text_md expert-deb . generate actual version file in deb $text_md "
 echo "$text_md $text_md expert-gen-readme . generate actual version file in original with readme $text_md "
 echo "$text_md $text_md expert-gen-compile . Compile fwiptables from bash with program obash $text_md "
 echo "$text_md $text_md expert-nmap-tcp . doing scan tcp at host or range $text_md "
@@ -5587,13 +5587,13 @@ if   [ "$first_option" == "expert-gen-readme" ]; then
 ####
 echo "$title_md [ $first_option ]  [ generate actual file and readme from intro program ] "
 #### create the file base in repository
-cp $(basename $0) $default_directory_readme/$cmd_command-$cmd_version &&
-echo "$title_md $text_ok Created $default_directory_readme/$cmd_command-$cmd_version"
+cp $(basename $0) $default_directory_readme/$cmd_basename-$cmd_version &&
+echo "$title_md $text_ok Created $default_directory_readme/$cmd_basename-$cmd_version"
 #### create the README base in repository
-$default_directory_readme/$cmd_command-$cmd_version intro > $default_directory_readme/README &&
-echo "$title_md $text_ok Created $default_directory_readme/$cmd_command-$cmd_version-README"
-$default_directory_readme/$cmd_command-$cmd_version  intro > $default_directory_readme/README.md &&
-echo "$title_md $text_ok Created $default_directory_readme/$cmd_command-$cmd_version-README.md"
+$default_directory_readme/$cmd_basename-$cmd_version intro > $default_directory_readme/README &&
+echo "$title_md $text_ok Created $default_directory_readme/$cmd_basename-$cmd_version-README"
+$default_directory_readme/$cmd_basename-$cmd_version  intro > $default_directory_readme/README.md &&
+echo "$title_md $text_ok Created $default_directory_readme/$cmd_basename-$cmd_version-README.md"
 ####
 ####
 exit; fi
@@ -5614,7 +5614,7 @@ rm -R $default_directory_debian/deb/usr/bin &> /dev/null
 rm -R $default_directory_debian/deb/DEBIAN &> /dev/null
 mkdir -p $default_directory_debian/deb/usr/bin &> /dev/null
 mkdir -p $default_directory_debian/deb/DEBIAN &> /dev/null
-cp $(basename $0) $default_directory_debian/deb/usr/bin/$cmd_command
+cp $(basename $0) $default_directory_debian/deb/usr/bin/$cmd_basename
 #### it are file modes
 chown root $default_directory_debian/* -R  &> /dev/null
 chmod 755 $default_directory_debian/* -R &> /dev/null
@@ -5632,10 +5632,10 @@ echo "Description: $cmd_longdescription" &>> $default_directory_debian/deb/DEBIA
 if [ "$cmd_format" != "Bourne-Again_shell_script," ]
 then echo "$title_md the $cmd_name is not Bourne-Again_shell_script," ; exit ; fi
 #### it does the debian package noarch
-rm $default_directory_debian/$cmd_command-$cmd_version-noarch.deb &> /dev/null
-$command_dpkg -b $default_directory_debian/deb/ $default_directory_debian/$cmd_command-$cmd_version-noarch.deb && \
+rm $default_directory_debian/$cmd_basename-$cmd_version-noarch.deb &> /dev/null
+$command_dpkg -b $default_directory_debian/deb/ $default_directory_debian/$cmd_basename-$cmd_version-noarch.deb && \
 echo "$text_md $text_ok file write in \
-$default_directory_debian/$cmd_command-$cmd_version-noarch.deb"   
+$default_directory_debian/$cmd_basename-$cmd_version-noarch.deb"   
 #### delete the directory temporal
 rm -R $default_directory_debian/deb/  &> /dev/null
 ####
