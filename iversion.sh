@@ -1574,6 +1574,9 @@ exit; fi
 if [ "$first_option" == "version" ]; then
 ####
 ####
+echo "$text_md $text_md   Firewall Internal Details Into               $text_md"
+####
+####
 if [ "$(echo $XDG_SEAT $XDG_SESSION_TYPE)" != "$NULL" ]; then
 echo "$text_md $text_md  Session Graphicall: $XDG_SESSION_TYPE         $text_md"
 fi
