@@ -1574,7 +1574,7 @@ exit; fi
 if [ "$first_option" == "version" ]; then
 ####
 ####
-echo "$text_md $text_md   Firewall Internal Details Into               $text_md"
+echo "$text_md $text_md   Firewall Internal: Details Into              $text_md"
 ####
 ####
 if [ "$(echo $XDG_SEAT $XDG_SESSION_TYPE)" != "$NULL" ]; then
@@ -1586,7 +1586,7 @@ echo "$text_md $text_md   Basename firewall: $cmd_basename             $text_md"
 echo "$text_md $text_md   Realpath firewall: $cmd_realpath             $text_md"
 echo "$text_md $text_md      Cycle internal: $cmd_command              $text_md"
 echo "$text_md $text_md    Version firewall: $cmd_version              $text_md"
-echo "$text_md $text_md        Date program: $cmd_date                 $text_md"
+echo "$text_md $text_md       Date firewall: $cmd_date                 $text_md"
 echo "$text_md $text_md   Short description: $cmd_shortdescription     $text_md"
 echo "$text_md $text_md    Long description: $cmd_longdescription      $text_md"
 echo "$text_md $text_md      Data Directory: $directory_data_necesary  $text_md"
