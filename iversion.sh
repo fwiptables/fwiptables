@@ -100,6 +100,9 @@ cmd_requisite_program="sudo,awk,sed,file,cut,date,cat"     # Program requisite
 cmd_requisite_firewall4="iptables-legacy,iptables-nft"     # Firewall requisite
 cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # Firewall requisite
 cmd_license="LGPL v2, GPL v2"                              # Program license
+#### posible front-end
+cmd_posible_cli="dialog,whiptail"                          # Posible cli
+cmd_posible_gui="yad,zenity"                               # Posible gui
 #### info xdg session
 cmd_session="$XDG_SESSION_TYPE"                            # Sesssion XDG
 cmd_xdg="/run/user/0"                                      # Folder XDG
@@ -1574,32 +1577,36 @@ exit; fi
 if [ "$first_option" == "version" ]; then
 ####
 ####
-echo "$text_md $text_md   Firewall Internal: Details Into              $text_md"
+echo "$text_md $text_md     Firewall Internal: Details Into              $text_md"
 ####
 ####
 if [ "$(echo $XDG_SEAT $XDG_SESSION_TYPE)" != "$NULL" ]; then
-echo "$text_md $text_md  Session Graphicall: $XDG_SESSION_TYPE         $text_md"
+echo "$text_md $text_md    Session Graphicall: $XDG_SESSION_TYPE         $text_md"
 fi
 ####
 ####
-echo "$text_md $text_md   Basename firewall: $cmd_basename             $text_md"
-echo "$text_md $text_md   Realpath firewall: $cmd_realpath             $text_md"
-echo "$text_md $text_md      Cycle internal: $cmd_command              $text_md"
-echo "$text_md $text_md    Version firewall: $cmd_version              $text_md"
-echo "$text_md $text_md       Date firewall: $cmd_date                 $text_md"
-echo "$text_md $text_md   Short description: $cmd_shortdescription     $text_md"
-echo "$text_md $text_md    Long description: $cmd_longdescription      $text_md"
-echo "$text_md $text_md      Data Directory: $directory_data_necesary  $text_md"
-echo "$text_md $text_md     Cache Directory: $directory_cache_necesary $text_md"
-echo "$text_md $text_md    Developer Actual: $cmd_developer            $text_md"
-echo "$text_md $text_md        Email Report: $cmd_contact              $text_md"
-echo "$text_md $text_md         File Format: $cmd_format               $text_md"
-echo "$text_md $text_md         Config PATH: $PATH                     $text_md"
-echo "$text_md $text_md      Finder program: $cmd_where                $text_md"
-echo "$text_md $text_md   Requisite program: $cmd_requisite_program    $text_md"
-echo "$text_md $text_md Requisite firewall4: $cmd_requisite_firewall4  $text_md"
-echo "$text_md $text_md Requisite firewall6: $cmd_requisite_firewall6  $text_md"
-echo "$text_md $text_md     License program: $cmd_license              $text_md"
+echo "$text_md $text_md     Basename firewall: $cmd_basename             $text_md"
+echo "$text_md $text_md     Realpath firewall: $cmd_realpath             $text_md"
+echo "$text_md $text_md        Cycle internal: $cmd_command              $text_md"
+echo "$text_md $text_md      Version firewall: $cmd_version              $text_md"
+echo "$text_md $text_md         Date firewall: $cmd_date                 $text_md"
+echo "$text_md $text_md     Short description: $cmd_shortdescription     $text_md"
+echo "$text_md $text_md      Long description: $cmd_longdescription      $text_md"
+echo "$text_md $text_md        Data Directory: $directory_data_necesary  $text_md"
+echo "$text_md $text_md       Cache Directory: $directory_cache_necesary $text_md"
+echo "$text_md $text_md      Developer Actual: $cmd_developer            $text_md"
+echo "$text_md $text_md          Email Report: $cmd_contact              $text_md"
+echo "$text_md $text_md           File Format: $cmd_format               $text_md"
+echo "$text_md $text_md           Config PATH: $PATH                     $text_md"
+echo "$text_md $text_md        Finder program: $cmd_where                $text_md"
+echo "$text_md $text_md     Requisite program: $cmd_requisite_program    $text_md"
+echo "$text_md $text_md   Requisite firewall4: $cmd_requisite_firewall4  $text_md"
+echo "$text_md $text_md   Requisite firewall6: $cmd_requisite_firewall6  $text_md"
+echo "$text_md $text_md         Automatic cli: $favorite_realpath_textdialog       $text_md"
+echo "$text_md $text_md         Automatic gui: $favorite_realpath_graphicalldialog $text_md"
+echo "$text_md $text_md         Automatic pdf: $command_convert          $text_md"
+echo "$text_md $text_md Automatic text-editor: $favorite_text_editor     $text_md"
+echo "$text_md $text_md       License program: $cmd_license              $text_md"
 ####
 ####
 exit ; fi
@@ -5547,7 +5554,7 @@ exit; fi
 if [ "$first_option" == "install" ]; then 
 ####
 ####
-echo "$text_md $text_md $text_md $text_md $text_md Installing: $cmd_name (waiting several seconds)"
+echo "$text_md $text_md $text_md $text_md $text_md   Installing: $cmd_name (waiting several seconds)"
 ####
 ####
 cmd_command="$cmd_directory/$cmd_name"
