@@ -2156,7 +2156,7 @@ exit; fi
 #### :rutina-inicial-address:
 ####
 ####
-if [ "$first_option" == "address" ]; then
+if [ "$first_option" == "address" ] || [ "$first_option" == "ip" ]; then
 ####
 ####
 echo ; echo "Address ip4"
@@ -3533,7 +3533,7 @@ echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net  
 echo "$title_md    firewall-utilnet $text_md"
 echo "$text_md preferences-read preferences-modify preferences-regen $text_md"
 echo "$text_md options speed-ip4 speed-ip6 intro filelog autolog date web $text_md"
-echo "$text_md ip4 ip6 network4 network6 address4 address6 resolve sockets $text_md"
+echo "$text_md ip ip4 ip6 network4 network6 address4 address6 resolve sockets $text_md"
 echo "$text_md free nodes ip-forward depends utils treeconf treecache $text_md"
 echo "$text_md cleancache notes variables uninstall install upgrade $text_md"
 echo "$text_md examples info code expert donate about version $text_md"
