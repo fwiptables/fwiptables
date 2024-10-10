@@ -5410,8 +5410,8 @@ echo "$text_md $text_md $text_md"
 echo "$title_md $text_md fwiptables install.                         $text_md"
 echo "$text_md $text_md $text_md"
 echo "$text_md $text_md  su root TYPE: su root                       $text_md"    
-echo "$text_md $text_md  put bit TYPE: chmod 755 ./$cmd_command     $text_md"
-echo "$text_md $text_md  install TYPE: ./$cmd_command install       $text_md" 
+echo "$text_md $text_md  put bit TYPE: chmod 755 $cmd_command     $text_md"
+echo "$text_md $text_md  install TYPE: $cmd_command install       $text_md" 
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md $text_md fwiptables uninstall.                   $text_md"
 echo "$text_md $text_md $text_md"
@@ -5436,7 +5436,6 @@ $cmd_command readme
 echo "$text_md"
 echo "$title_md $text_md $text_md Firewall Version"
 echo "$text_md"
-echo "$title_md"
 $cmd_command version
 echo "$text_md"
 $cmd_command about
@@ -5451,7 +5450,6 @@ $cmd_command examples
 echo "$text_md"
 echo "$title_md $text_md $text_md Firewall Options"
 echo "$text_md"
-echo "$title_md"
 $cmd_command options
 ####
 ####
