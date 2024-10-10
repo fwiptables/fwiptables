@@ -1577,7 +1577,7 @@ exit; fi
 if [ "$first_option" == "version" ]; then
 ####
 ####
-echo "$text_md $text_md     Firewall Internal: Details Into              $text_md"
+echo "$text_md $text_md       Detail Firewall: Version Detail            $text_md"
 ####
 ####
 if [ "$(echo $XDG_SEAT $XDG_SESSION_TYPE)" != "$NULL" ]; then
