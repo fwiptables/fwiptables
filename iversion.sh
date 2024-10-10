@@ -96,7 +96,7 @@ cmd_developer="Francisco Garcia"                           # Actual developer
 cmd_contact="fwiptables@gmx.com"                           # Actual contact
 cmd_shortdescription="FireWall With iptables"              # Description short
 cmd_longdescription="iptables template in one script"      # Description long
-cmd_requisite_program="sudo,awk,sed,file,cut,date,cat"     # Program requisite
+cmd_requisite_program="id,awk,sed,file,cut,date,cat"       # Program requisite
 cmd_requisite_firewall4="iptables-legacy,iptables-nft"     # Firewall requisite
 cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # Firewall requisite
 cmd_license="LGPL v2, GPL v2"                              # Program license
@@ -326,11 +326,16 @@ quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;
 #### :rutina-inicial-xhost:
 ####
 ####
+#### allow root launch gui graphical in X11
+####
+####
 if [ "$(logname)" != "$NULL" ] && [ "$(id -u)" == 0 ]; then
 ####
 ####
+if [ "$command_sudo" != "$NULL" ]; then
 $command_sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
 else $command_sudo -u 0 $command_xhost +SI:localuser:root &> /dev/null
+fi
 ####
 ####
 fi
@@ -1580,8 +1585,8 @@ if [ "$first_option" == "version" ]; then
 echo "$text_md $text_md       Detail Firewall: Version Detail            $text_md"
 ####
 ####
-if [ "$(echo $XDG_SEAT $XDG_SESSION_TYPE)" != "$NULL" ]; then
-echo "$text_md $text_md    Session Graphicall: $XDG_SESSION_TYPE         $text_md"
+if [ "$(echo $XDG_SESSION_TYPE)" != "$NULL" ]; then
+echo "$text_md $text_md           Session XDG: $XDG_SESSION_TYPE         $text_md"
 fi
 ####
 ####
@@ -1602,7 +1607,7 @@ echo "$text_md $text_md        Finder Program: $cmd_where                $text_m
 echo "$text_md $text_md     Requisite Program: $cmd_requisite_program    $text_md"
 echo "$text_md $text_md   Requisite Firewall4: $cmd_requisite_firewall4  $text_md"
 echo "$text_md $text_md   Requisite Firewall6: $cmd_requisite_firewall6  $text_md"
-echo "$text_md $text_md Automatic Text-editor: $favorite_text_editor     $text_md"
+echo "$text_md $text_md      Automatic Editor: $favorite_text_editor     $text_md"
 echo "$text_md $text_md         Automatic cli: $favorite_realpath_textdialog       $text_md"
 echo "$text_md $text_md         Automatic gui: $favorite_realpath_graphicalldialog $text_md"
 echo "$text_md $text_md         Automatic pdf: $command_convert          $text_md"
@@ -2637,8 +2642,14 @@ echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ Necesary utils ]      $text_md"
 echo "$text_md $text_md iptables nft:            $command_ip4tablesnft $text_md"
 echo "$text_md $text_md iptables legacy:         $command_ip4tableslegacy $text_md"
+echo "$text_md $text_md iptables nft:            $command_ip6tablesnft $text_md"
+echo "$text_md $text_md iptables legacy:         $command_ip6tableslegacy $text_md"
+echo "$text_md $text_md id command:              $command_id $text_md"
 echo "$text_md $text_md awk command:             $command_awk $text_md"
 echo "$text_md $text_md sed command:             $command_sed $text_md"
+echo "$text_md $text_md cat command:             $command_cat $text_md"
+echo "$text_md $text_md cut command:             $command_cut $text_md"
+echo "$text_md $text_md date command:            $command_date $text_md"
 echo "$text_md $text_md file command:            $command_file $text_md"
 echo "$text_md $text_md $text_md"
 echo "$text_md $text_md all utils in command: fwiptables utils $text_md"
