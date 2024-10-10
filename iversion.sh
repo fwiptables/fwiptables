@@ -5554,7 +5554,8 @@ exit; fi
 if [ "$first_option" == "install" ]; then 
 ####
 ####
-echo "$text_md $text_md $text_md $text_md $text_md   Installing: $cmd_name (waiting several seconds)"
+echo "$text_md Installing $cmd_name (waiting several seconds, \
+while create new configuration) $text_md"
 ####
 ####
 cmd_command="$cmd_directory/$cmd_name"
