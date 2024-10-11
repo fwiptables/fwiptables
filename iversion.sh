@@ -63,7 +63,7 @@ exit ; fi
 #### :rutina-final-necesary-root:
 ##########     english name, description and version    ##########
 ##########     spanish: nombre, descripcion y version   ##########
-#### :rutina-inicial-env-cmd:
+#### :rutina-inicial-cmd-env:
 ####
 #### ########## ########## ##########
 #### variables configs for fwiptables program
@@ -124,7 +124,7 @@ cmd_opt_date="$cmd_actual_date-_OPT_"                      # log date
 #### ########## ########## ##########
 ####
 ####
-#### :rutina-final-env-cmd:
+#### :rutina-final-cmd-env:
 ##########     english name, description and version    ##########
 ##########     spanish: nombre, descripcion y version   ##########
 #### :rutina-inicial-web-official:
