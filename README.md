@@ -30,49 +30,57 @@
 ###     fwiptables install.                           
         
        su root TYPE: su root                         
-       put bit TYPE: chmod 755 .//usr/bin/fwiptables       
-       install TYPE: .//usr/bin/fwiptables install         
+       put bit TYPE: chmod 755 /usr/bin/fwiptables       
+       install TYPE: /usr/bin/fwiptables install         
         
 ###        fwiptables uninstall.                     
         
       uninstall TYPE: fwiptables uninstall        
   
-        Firewall Internal Details Into                 
-        Basename firewall: fwiptables               
-        Realpath firweall: /usr/bin/fwiptables               
-         Version firewall: 24-10-C                
-           Cycle internal: /usr/bin/fwiptables                
-             Date program: Year 2024 / Month 10                   
-        Short description: FireWall With iptables       
-         Long description: iptables template in one script        
-           Data Directory: /root/.config/fwiptables    
-          Cache Directory: /root/.cache/fwiptables   
-         Developer Actual: Francisco Garcia              
-             Email Report: fwiptables@gmx.com                
-              File Format: Bourne-Again_shell_script,                 
-              Config PATH: /sbin:/bin:/usr/sbin:/usr/bin                       
-             Find program: which                  
-        Requisite program: sudo,awk,sed,file,cut,date,cat      
-      Requisite firewall4: iptables-legacy,iptables-nft    
-      Requisite firewall6: ip6tables-legacy,ip6tables-nft    
-          License program: LGPL v2, GPL v2                
+###        Firewall Version
+  
+            Detail Firewall: Version Detail              
+          Basename Firewall: fwiptables               
+          Realpath Firewall: /usr/bin/fwiptables               
+             Cycle Internal: /usr/bin/fwiptables                
+           Version Firewall: 24-10-D                
+              Date Firewall: Year 2024 / Month 10                   
+          Short Description: FireWall With iptables       
+           Long Description: iptables template in one script        
+             Data Directory: /root/.config/fwiptables    
+            Cache Directory: /root/.cache/fwiptables   
+           Developer Actual: Francisco Garcia              
+               Email Report: fwiptables@gmx.com                
+                File Format: Bourne-Again_shell_script,                 
+                Config PATH: /sbin:/bin:/usr/sbin:/usr/bin                       
+             Finder Program: which                  
+          Requisite Program: id,awk,sed,file,cut,date,cat      
+        Requisite Firewall4: iptables-legacy,iptables-nft    
+        Requisite Firewall6: ip6tables-legacy,ip6tables-nft    
+           Automatic Editor: /bin/nano       
+              Automatic cli: /bin/whiptail         
+              Automatic gui: /bin/yad   
+              Automatic pdf: /bin/convert            
+            License Program: LGPL v2, GPL v2                
   
 ###  [ about ] [ licenses to fwiptables project ] [ about md ]
-      File:        fwiptables
-      Description: Command Fran FireWall fwiptables Generator
-      Author:      Francisco Garcia <fwiptables@gmx.com>
-      Copyright:   (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>
-     
-      launch: fwiptables license-lgpl-v2|license-gpl-v2
+      File:          fwiptables
+      Description:   Command Fran FireWall fwiptables Generator
+      Author:        Francisco Garcia <fwiptables@gmx.com>
+      Copyright:     (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>
+      launch:        /usr/bin/fwiptables license-lgpl-v2|license-gpl-v2
   
 ###  [ notes ] [ List notes about ] [ notes md ]
-                            Iptables Firewall
+                            Iptables Firewall   
              Legacy or nft: whith one of them is sufficent   
            iptables-legacy: support for xtables ipv4   
               iptables-nft: support for nftables ipv4   
           ip6tables-legacy: support for xtables ipv6   
              ip6tables-nft: support for nftables ipv6   
-                            Some Options
+                            Firewall Recomendation with full client   
+           Client prefered: input-established   
+           Server prefered: tinyserver-tcp tcp-ports-server   
+                            Some Options   
      Allow shield maxtries: limit against attack per bruteforce   
                  Blacklist: excepcionals hosts has conection dropped in firewall   
                  whitelist: excepcionals hosts has conection allowed in firewall   
@@ -99,11 +107,11 @@
 ###     [ Configuration files ]   
       Directory data:          /root/.config/fwiptables   
       Directory temp:          /root/.cache/fwiptables   
-      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-10-C   
+      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-10-D   
         
 ###     [ Log files ]             
-      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default-autolog-24-10-C   
-      File filelog:            /root/.config/fwiptables/fwiptables-log/default-filelog-24-10-C   
+      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default-autolog-24-10-D   
+      File filelog:            /root/.config/fwiptables/fwiptables-log/default-filelog-24-10-D   
         
 ###     [ optional output ]       
       dialog cli:              /bin/dialog   
@@ -132,8 +140,14 @@
 ###     [ Necesary utils ]        
       iptables nft:            /sbin/iptables-nft   
       iptables legacy:         /sbin/iptables-legacy   
+      iptables nft:            /sbin/ip6tables-nft   
+      iptables legacy:         /sbin/ip6tables-legacy   
+      id command:                 
       awk command:             /bin/awk   
       sed command:             /bin/sed   
+      cat command:             /bin/cat   
+      cut command:             /bin/cut   
+      date command:            /bin/date   
       file command:            /bin/file   
         
       all utils in command: fwiptables utils   
@@ -190,9 +204,8 @@
        All options in window roll             | fwiptables gui-roll-zenity       
        All options in window shell            | fwiptables gui-shell-yad           
   
-###  [ options ] [ List general options for fwiptables ] [ list-options md ]
+###        Firewall Options
   
-### 
    /usr/bin/fwiptables [optional-output] first_option [second_option]   
 ###     optional-output   
    [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]   
@@ -230,11 +243,11 @@
 ###     firewall-utilnet   
    preferences-read preferences-modify preferences-regen   
    options speed-ip4 speed-ip6 intro filelog autolog date web   
-   ip4 ip6 network4 network6 address4 address6 resolve sockets   
+   ip ip4 ip6 network4 network6 address4 address6 resolve sockets   
    free nodes ip-forward depends utils treeconf treecache   
    cleancache notes variables uninstall install upgrade   
    examples info code expert donate about version   
    license-lgpl-v2 license-gpl-v2   
-       | Program: /usr/bin/fwiptables 24-10-C   
+       | Program: /usr/bin/fwiptables 24-10-D   
        | Description: iptables template in one script   
        | Expert: expert is allowed in preferences file   
