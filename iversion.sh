@@ -70,18 +70,19 @@ exit ; fi
 #### ########## ########## ##########
 ####
 ####
-#### source /etc/profile                                   # source etc profile
+#### The name file command
+cmd_name="fwiptables"                                      # Name firewall
+#### source /etc/profile                        
 cmd_path="/sbin:/bin:/usr/sbin:/usr/bin"                   # Config for PATH
 PATH="$cmd_path"                                           # PATH for fwiptables
 #### the installed location
-cmd_name="fwiptables"                                      # Filename installed
+cmd_filename="fwiptables"                                  # Filename installed
 cmd_directory="/usr/bin"                                   # Directory installed
 #### find any command
 cmd_where="which"                                          # Find each command
-#### The name file command
-cmd_name="fwiptables"                                      # Name firewall
+#### The name file command         
 cmd_basename="$(basename $0)"                              # Only name filename
-cmd_realpath="$cmd_directory/$cmd_name"                    # Full path filename
+cmd_realpath="$cmd_directory/$cmd_filename"                # Full path filename
 cmd_internal="$cmd_realpath"                               # your choosed internal
 #### See it if it is installed in cmd_realpath
 if [ ! -f "$cmd_internal" ]; then cp $0 $cmd_realpath 
@@ -360,11 +361,11 @@ if [ "$HOME" == "$NULL" ] ; then default_root_home="/root"
 else default_root_home="$HOME"; fi
 ####
 ####
-#### Prepare directory cache: OR run OR /root/.cache/$cmd_name
+#### Prepare directory cache: OR run OR /root/.cache/$cmd_filename
 ####
 ####
-directory_cache_run="/run/$cmd_name"  ### ununsed
-directory_cache_home="$default_root_home/.cache/$cmd_name"
+directory_cache_run="/run/$cmd_filename"  ### ununsed
+directory_cache_home="$default_root_home/.cache/$cmd_filename"
 ####
 ####
 #### #### variables tree and .cache ####
@@ -375,7 +376,7 @@ directory_cache_necesary="$directory_cache_home"
 ####
 ####
 #### Root .config
-directory_data_necesary="$default_root_home/.config/$cmd_name"
+directory_data_necesary="$default_root_home/.config/$cmd_filename"
 #### Tree .config
 default_directory_template="$directory_data_necesary/fwiptables-template"
 default_directory_control="$directory_data_necesary/fwiptables-control"
@@ -616,7 +617,7 @@ head_waiting_cli="$title_md $text_info [ cli ] $head_waiting_all "
 head_waiting_gui="$title_md $text_info [ gui ] $head_waiting_all "
 head_waiting_log="$title_md $text_info [ log ] $head_waiting_all "
 head_waiting_pdf="$title_md $text_info [ pdf ] $head_waiting_all "
-head_give_cover="$title_md [ $cmd_name $cmd_version ] \
+head_give_cover="$title_md [ $cmd_filename $cmd_version ] \
 [ Options: $cmd_internal options ]"
 give_load="$title_md $text_ok [ Load firewall ] [ Firewall With iptables ]"
 give_preferences="$title_md [ Configure ] [ $cmd_internal preferences-modify ]"
@@ -1595,7 +1596,7 @@ fi
 echo "$text_md $text_md         Name Firewall: $cmd_name                 $text_md"
 echo "$text_md $text_md     Basename Firewall: $cmd_basename             $text_md"
 echo "$text_md $text_md     Realpath Firewall: $cmd_realpath             $text_md"
-echo "$text_md $text_md     Internal Firewall: $cmd_internal              $text_md"
+echo "$text_md $text_md     Internal Firewall: $cmd_internal             $text_md"
 echo "$text_md $text_md      Version Firewall: $cmd_version              $text_md"
 echo "$text_md $text_md         Date Firewall: $cmd_date                 $text_md"
 echo "$text_md $text_md     Short Description: $cmd_shortdescription     $text_md"
@@ -2674,54 +2675,54 @@ if [ "$first_option" == "options-examples" ]; then
 echo "$title_md $text_md [ $first_option ] [ List examples ] [ examples md ] $text_md"
 echo "$title_md $text_md [ One example with input-established ] $text_md"
 echo "$text_md $text_md  $text_md"  
-echo "$text_md $text_md  launch input-stablished        | $cmd_name input-stablished               $text_md"  
+echo "$text_md $text_md  launch input-stablished        | $cmd_filename input-stablished               $text_md"  
 echo "$text_md $text_md  client for all ports in related,established, without servers ports"
 echo "$text_md $text_md  $text_md"  
 echo "$title_md $text_md [ Several examples with tiny server ] $text_md"
 echo "$text_md $text_md  $text_md"  
-echo "$text_md $text_md  launch wizard tiny             | $cmd_name wizard-tiny               $text_md"  
-echo "$text_md $text_md  launch tinyserver-tcp ports    | $cmd_name tinyserver-tcp 21:25,80   $text_md"  
-echo "$text_md $text_md  launch tinyserver-udp ports    | $cmd_name tinyserver-udp 67:68,443  $text_md"  
+echo "$text_md $text_md  launch wizard tiny             | $cmd_filename wizard-tiny               $text_md"  
+echo "$text_md $text_md  launch tinyserver-tcp ports    | $cmd_filename tinyserver-tcp 21:25,80   $text_md"  
+echo "$text_md $text_md  launch tinyserver-udp ports    | $cmd_filename tinyserver-udp 67:68,443  $text_md"  
 echo "$text_md $text_md  client for all ports in related,established"
 echo "$text_md $text_md  $text_md"
 echo "$title_md $text_md [ Several examples with mini server ] $text_md"
 echo "$text_md $text_md  $text_md"
-echo "$text_md $text_md  launch wizard mini             | $cmd_name wizard-mini               $text_md"  
+echo "$text_md $text_md  launch wizard mini             | $cmd_filename wizard-mini               $text_md"  
 echo "$text_md $text_md  wizard firewall for clients and servers"
 echo "$text_md $text_md  $text_md"
-echo "$text_md $text_md  launch miniserver-tcp ports    | $cmd_name miniserver-tcp 21:25,80   $text_md"  
-echo "$text_md $text_md  launch miniserver-udp ports    | $cmd_name miniserver-udp 67:68,443  $text_md"  
+echo "$text_md $text_md  launch miniserver-tcp ports    | $cmd_filename miniserver-tcp 21:25,80   $text_md"  
+echo "$text_md $text_md  launch miniserver-udp ports    | $cmd_filename miniserver-udp 67:68,443  $text_md"  
 echo "$text_md $text_md  see miniserver clients ports in preferences file"
 echo "$text_md $text_md  $text_md"
 echo "$title_md $text_md [ Several examples without optional otuput ]      $text_md"
 echo "$text_md $text_md  $text_md"
 echo "$title_md $text_md  without optional output | Example Description   $text_md"  
 echo "$text_md $text_md  $text_md"  
-echo "$text_md $text_md  depends                  | $cmd_name depends             $text_md"  
-echo "$text_md $text_md  List firewall saved      | $cmd_name names               $text_md"  
-echo "$text_md $text_md  List configs saved       | $cmd_name names-custom        $text_md"  
-echo "$text_md $text_md  Get info speed ipv4      | $cmd_name speed-ip4           $text_md"  
-echo "$text_md $text_md  Show listen sockets      | $cmd_name sockets             $text_md"  
-echo "$text_md $text_md  List last options        | $cmd_name autolog             $text_md"   
-echo "$text_md $text_md  modify default variables | $cmd_name preferences-modify  $text_md"  
+echo "$text_md $text_md  depends                  | $cmd_filename depends             $text_md"  
+echo "$text_md $text_md  List firewall saved      | $cmd_filename names               $text_md"  
+echo "$text_md $text_md  List configs saved       | $cmd_filename names-custom        $text_md"  
+echo "$text_md $text_md  Get info speed ipv4      | $cmd_filename speed-ip4           $text_md"  
+echo "$text_md $text_md  Show listen sockets      | $cmd_filename sockets             $text_md"  
+echo "$text_md $text_md  List last options        | $cmd_filename autolog             $text_md"   
+echo "$text_md $text_md  modify default variables | $cmd_filename preferences-modify  $text_md"  
 echo "$text_md $text_md"
 echo "$title_md $text_md  with optional output | Example Description   $text_md"  
 echo "$text_md $text_md  $text_md"
-echo "$text_md $text_md  Example with info        | $cmd_name info list           $text_md"  
-echo "$text_md $text_md  Example with expert      | $cmd_name txt expert          $text_md"  
-echo "$text_md $text_md  Example with code ip4    | $cmd_name cli code ip4        $text_md"  
-echo "$text_md $text_md  Example with list rules  | $cmd_name cli lsn4            $text_md"  
-echo "$text_md $text_md  Example with nodes       | $cmd_name gui nodes           $text_md"  
-echo "$text_md $text_md  Example with web browser | $cmd_name gui web kernel.org  $text_md"  
+echo "$text_md $text_md  Example with info        | $cmd_filename info list           $text_md"  
+echo "$text_md $text_md  Example with expert      | $cmd_filename txt expert          $text_md"  
+echo "$text_md $text_md  Example with code ip4    | $cmd_filename cli code ip4        $text_md"  
+echo "$text_md $text_md  Example with list rules  | $cmd_filename cli lsn4            $text_md"  
+echo "$text_md $text_md  Example with nodes       | $cmd_filename gui nodes           $text_md"  
+echo "$text_md $text_md  Example with web browser | $cmd_filename gui web kernel.org  $text_md"  
 echo "$text_md $text_md  $text_md "
-echo "$text_md $text_md  Launch client web firewall in silent   | $cmd_name silent client-web   $text_md"  
-echo "$text_md $text_md  List iptables rules with output txt    | $cmd_name txt ls4             $text_md"  
-echo "$text_md $text_md  List firewall with output cli whiptail | $cmd_name cli-wiptail names   $text_md"  
-echo "$text_md $text_md  List sockets ip with output gui yad    | $cmd_name gui-yad sockets     $text_md"  
-echo "$text_md $text_md  All options in text menu               | $cmd_name cli-menu-dialog     $text_md"  
-echo "$text_md $text_md  All options in window menu             | $cmd_name gui-menu-yad        $text_md"  
-echo "$text_md $text_md  All options in window roll             | $cmd_name gui-roll-zenity     $text_md"  
-echo "$text_md $text_md  All options in window shell            | $cmd_name gui-shell-yad         $text_md"
+echo "$text_md $text_md  Launch client web firewall in silent   | $cmd_filename silent client-web   $text_md"  
+echo "$text_md $text_md  List iptables rules with output txt    | $cmd_filename txt ls4             $text_md"  
+echo "$text_md $text_md  List firewall with output cli whiptail | $cmd_filename cli-wiptail names   $text_md"  
+echo "$text_md $text_md  List sockets ip with output gui yad    | $cmd_filename gui-yad sockets     $text_md"  
+echo "$text_md $text_md  All options in text menu               | $cmd_filename cli-menu-dialog     $text_md"  
+echo "$text_md $text_md  All options in window menu             | $cmd_filename gui-menu-yad        $text_md"  
+echo "$text_md $text_md  All options in window roll             | $cmd_filename gui-roll-zenity     $text_md"  
+echo "$text_md $text_md  All options in window shell            | $cmd_filename gui-shell-yad         $text_md"
 ####
 ####
 exit; fi
@@ -5424,7 +5425,7 @@ echo "$text_md $text_md with other more capabilities of firewall.          $text
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md  fwiptables location.                            $text_md"
 echo "$text_md $text_md $text_md"
-echo "$text_md $text_md  File    Location:   $cmd_directory/$cmd_name     $text_md"
+echo "$text_md $text_md  File    Location:   $cmd_directory/$cmd_filename     $text_md"
 echo "$text_md $text_md  Config Directory:   $directory_data_necesary     $text_md"
 echo "$text_md $text_md  Cache  Directory:   $directory_cache_necesary    $text_md "
 echo "$text_md $text_md $text_md"
@@ -5436,7 +5437,7 @@ echo "$text_md $text_md  install TYPE: $cmd_internal install       $text_md"
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md $text_md fwiptables uninstall.                   $text_md"
 echo "$text_md $text_md $text_md"
-echo "$text_md $text_md uninstall TYPE: $cmd_name uninstall      $text_md"
+echo "$text_md $text_md uninstall TYPE: $cmd_filename uninstall      $text_md"
 ####
 ####
 exit; fi
@@ -5552,8 +5553,8 @@ if [ "$first_option" == "uninstall" ] ; then
 ####
 ####
 echo "$title_md $text_info [ uninstaller ] [ uninstall md ] "
-rm $cmd_directory/$cmd_name &> /dev/null
-echo "$title_md $text_ok [ deleted binary $cmd_directory/$cmd_name ]"
+rm $cmd_directory/$cmd_filename &> /dev/null
+echo "$title_md $text_ok [ deleted binary $cmd_directory/$cmd_filename ]"
 ####
 ####
 exit; fi
@@ -5568,18 +5569,18 @@ exit; fi
 if [ "$first_option" == "install" ]; then 
 ####
 ####
-echo "$text_md Installing $cmd_name (waiting several seconds, \
+echo "$text_md Installing $cmd_filename (waiting several seconds, \
 while create new configuration) $text_md"
 ####
 ####
-cmd_command="$cmd_directory/$cmd_name"
+cmd_command="$cmd_directory/$cmd_filename"
 ####
 ####
 ####  english: copy the file to temporal folder and install
 ####  spanish: copia el archivo a carpeta final
 #### 
 #### 
-#### echo "$title_md $text_info [ $cmd_name installing.. ]"
+#### echo "$title_md $text_info [ $cmd_filename installing.. ]"
 cp $0 $cmd_internal
 chmod 755 $cmd_internal &> /dev/null 
 ####
@@ -5613,13 +5614,13 @@ if   [ "$first_option" == "expert-gen-readme" ]; then
 ####
 echo "$title_md [ $first_option ]  [ generate actual file and readme from intro program ] "
 #### create the file base in repository
-cp $(basename $0) $default_directory_readme/$cmd_basename-$cmd_version &&
-echo "$title_md $text_ok Created $default_directory_readme/$cmd_basename-$cmd_version"
+cp $(basename $0) $default_directory_readme/$cmd_name-$cmd_version &&
+echo "$title_md $text_ok Created $default_directory_readme/$cmd_name-$cmd_version"
 #### create the README base in repository
-$default_directory_readme/$cmd_basename-$cmd_version intro > $default_directory_readme/README &&
+$default_directory_readme/$cmd_name-$cmd_version intro > $default_directory_readme/README &&
 echo "$title_md $text_ok Created $default_directory_readme/$cmd_basename-$cmd_version-README"
-$default_directory_readme/$cmd_basename-$cmd_version  intro > $default_directory_readme/README.md &&
-echo "$title_md $text_ok Created $default_directory_readme/$cmd_basename-$cmd_version-README.md"
+$default_directory_readme/$cmd_name-$cmd_version  intro > $default_directory_readme/README.md &&
+echo "$title_md $text_ok Created $default_directory_readme/$cmd_name-$cmd_version-README.md"
 ####
 ####
 exit; fi
@@ -5637,7 +5638,7 @@ echo "$title_md [ $first_option ]  [ generate actual file debian ] "
 rm -R $default_directory_debian/deb/ &> /dev/null
 mkdir -p $default_directory_debian/deb/usr/bin &> /dev/null
 mkdir -p $default_directory_debian/deb/DEBIAN &> /dev/null
-cp $0 $default_directory_debian/deb/usr/bin/fwiptables
+cp $0 $default_directory_debian/deb/usr/bin/$cmd_name
 #### it are file modes
 chown root $default_directory_debian/* -R  &> /dev/null
 chmod 755 $default_directory_debian/* -R &> /dev/null
@@ -5653,7 +5654,7 @@ echo "Description: $cmd_longdescription" &>> $default_directory_debian/deb/DEBIA
 #### echo " $cmd_longdescription ."  &>> $default_directory_debian/deb/DEBIAN/control
 #### architecture detect, only for shell script
 if [ "$cmd_format" != "Bourne-Again_shell_script," ]
-then echo "$title_md the $cmd_name is not Bourne-Again_shell_script," ; exit ; fi
+then echo "$title_md the $cmd_filename is not Bourne-Again_shell_script," ; exit ; fi
 #### it does the debian package noarch
 rm $default_directory_debian/$cmd_basename-$cmd_version-noarch.deb &> /dev/null
 $command_dpkg -b $default_directory_debian/deb/ $default_directory_debian/$cmd_basename-$cmd_version-noarch.deb && \
@@ -6064,8 +6065,8 @@ then echo "$title_md install obash to compile"; exit ; fi
 if [ "$command_uuid" == "$NULL" ]
 then echo "$title_md install uuid to compile"; exit ; fi
 if [ "$cmd_format" != "Bourne-Again_shell_script," ]
-then echo "$title_md the $cmd_name is not Bourne-Again_shell_script," ; exit ; fi
-obash_file_date="$default_directory_obash/$cmd_internal-$cmd_version"
+then echo "$title_md the $cmd_filename is not Bourne-Again_shell_script," ; exit ; fi
+obash_file_date="$default_directory_obash/$cmd_name-$cmd_version"
 cp $(basename $0) $obash_file_date.bash
 $command_obash -r -c -o $obash_file_date.bin $obash_file_date.bash \
 && echo "$title_md $text_ok" || echo "$title_md $text_fail"
@@ -6261,12 +6262,12 @@ if [ "$first_option" == "wizard-tiny" ]; then echo
 ####
 archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-tiny" ; name_firewall="wizard-tiny"
 $cmd_internal templates-regen
-cp "$default_tinycfg_eng" "$directory_cache_necesary/$cmd_name-$archivo"
-$favorite_text_editor "$directory_cache_necesary/$cmd_name-$archivo"
+cp "$default_tinycfg_eng" "$directory_cache_necesary/$cmd_filename-$archivo"
+$favorite_text_editor "$directory_cache_necesary/$cmd_filename-$archivo"
 clear
 $favorite_realpath_textdialog --clear --title "Run this wizard" \
 --yesno "Run this wizard" 0 0 && clear \
-&& cp "$directory_cache_necesary/$cmd_name-$archivo" \
+&& cp "$directory_cache_necesary/$cmd_filename-$archivo" \
 "$default_directory_custom/$archivo" && $cmd_internal loadtiny-custom $archivo || clear
 ####
 ####
@@ -6284,12 +6285,12 @@ if [ "$first_option" == "wizard-mini" ]; then echo
 ####
 archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
 $cmd_internal templates-regen
-cp "$default_minicfg_eng" "$directory_cache_necesary/$cmd_name-$archivo"
-$favorite_text_editor "$directory_cache_necesary/$cmd_name-$archivo"
+cp "$default_minicfg_eng" "$directory_cache_necesary/$cmd_filename-$archivo"
+$favorite_text_editor "$directory_cache_necesary/$cmd_filename-$archivo"
 clear
 $favorite_realpath_textdialog --clear --title "Run this wizard" \
 --yesno "Run this wizard" 0 0 && clear \
-&& cp "$directory_cache_necesary/$cmd_name-$archivo" \
+&& cp "$directory_cache_necesary/$cmd_filename-$archivo" \
 "$default_directory_custom/$archivo" && $cmd_internal load-custom $archivo || clear
 ####
 ####
@@ -6307,12 +6308,12 @@ if [ "$first_option" == "wizard-full" ]; then $nada
 ####
 archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
 $cmd_internal templates-regen
-cp "$default_fullcfg_eng" "$directory_cache_necesary/$cmd_name-$archivo"
-$favorite_text_editor "$directory_cache_necesary/$cmd_name-$archivo"
+cp "$default_fullcfg_eng" "$directory_cache_necesary/$cmd_filename-$archivo"
+$favorite_text_editor "$directory_cache_necesary/$cmd_filename-$archivo"
 clear
 $favorite_realpath_textdialog --clear --title "Run this wizard" --yesno \
 "Run this wizard" 0 0 && clear && \
-cp "$directory_cache_necesary/$cmd_name-$archivo" "$default_directory_custom/$archivo" \
+cp "$directory_cache_necesary/$cmd_filename-$archivo" "$default_directory_custom/$archivo" \
 && $cmd_internal load-custom $archivo || clear 
 ####
 ####
@@ -6461,24 +6462,24 @@ if [ "$first_option" == "actual" ]; then
 ####
 echo "$title_md [ $first_option ]  [ show the last firewall saved ] "
 echo 
-$command_arptables-save          &> $default_directory_control/$cmd_name-actual-arptables
-$command_ebtables-save           &> $default_directory_control/$cmd_name-actual-ebtables   
-$command_ip4tablesnft-save       &> $default_directory_control/$cmd_name-actual-nft-ipv4   
-$command_ip4tableslegacy-save    &> $default_directory_control/$cmd_name-actual-legacy-ipv4
-$command_ip6tablesnft-save      &> $default_directory_control/$cmd_name-actual-nft-ipv6   
-$command_ip6tableslegacy-save   &> $default_directory_control/$cmd_name-actual-legacy-ipv6
+$command_arptables-save          &> $default_directory_control/$cmd_filename-actual-arptables
+$command_ebtables-save           &> $default_directory_control/$cmd_filename-actual-ebtables   
+$command_ip4tablesnft-save       &> $default_directory_control/$cmd_filename-actual-nft-ipv4   
+$command_ip4tableslegacy-save    &> $default_directory_control/$cmd_filename-actual-legacy-ipv4
+$command_ip6tablesnft-save      &> $default_directory_control/$cmd_filename-actual-nft-ipv6   
+$command_ip6tableslegacy-save   &> $default_directory_control/$cmd_filename-actual-legacy-ipv6
 echo "$title_md arptables $title_md"
-$command_cat  $default_directory_control/$cmd_name-actual-arptables
+$command_cat  $default_directory_control/$cmd_filename-actual-arptables
 echo "$title_md ebtables $title_md"
-$command_cat  $default_directory_control/$cmd_name-actual-ebtables
+$command_cat  $default_directory_control/$cmd_filename-actual-ebtables
 echo "$title_md nft with ipv4 $title_md"
-$command_cat  $default_directory_control/$cmd_name-actual-nft-ipv4
+$command_cat  $default_directory_control/$cmd_filename-actual-nft-ipv4
 echo "$title_md legacy with ipv4 $title_md"
-$command_cat  $default_directory_control/$cmd_name-actual-legacy-ipv4
+$command_cat  $default_directory_control/$cmd_filename-actual-legacy-ipv4
 echo "$title_md nft with ipv6 $title_md"
-$command_cat  $default_directory_control/$cmd_name-actual-nft-ipv6
+$command_cat  $default_directory_control/$cmd_filename-actual-nft-ipv6
 echo "$title_md legacy with ipv6 $title_md"
-$command_cat  $default_directory_control/$cmd_name-actual-legacy-ipv6
+$command_cat  $default_directory_control/$cmd_filename-actual-legacy-ipv6
 echo
 echo "  $text_ok [ readed firewall actual ]"
 ####
@@ -6501,12 +6502,12 @@ echo "$title_md [ $first_option ]  [ Stop the firewall ] "
 #### english: save actual fw #### spanish: guarda actual fw
 ####
 ####
-$command_arptables-save &> $default_directory_control/$cmd_name-stoped-arptables
-$command_ebtables-save &> $default_directory_control/$cmd_name-stoped-ebtables             
-$command_ip4tablesnft-save &> $default_directory_control/$cmd_name-stoped-nft-ipv4         
-$command_ip4tableslegacy-save &> $default_directory_control/$cmd_name-stoped-legacy-ipv4   
-$command_ip6tablesnft-save &> $default_directory_control/$cmd_name-stoped-nft-ipv6        
-$command_ip6tableslegacy-save &> $default_directory_control/$cmd_name-stoped-legacy-ipv6  
+$command_arptables-save &> $default_directory_control/$cmd_filename-stoped-arptables
+$command_ebtables-save &> $default_directory_control/$cmd_filename-stoped-ebtables             
+$command_ip4tablesnft-save &> $default_directory_control/$cmd_filename-stoped-nft-ipv4         
+$command_ip4tableslegacy-save &> $default_directory_control/$cmd_filename-stoped-legacy-ipv4   
+$command_ip6tablesnft-save &> $default_directory_control/$cmd_filename-stoped-nft-ipv6        
+$command_ip6tableslegacy-save &> $default_directory_control/$cmd_filename-stoped-legacy-ipv6  
 ####
 ####
 #### english: erase the rules #### spanish: borra las reglas
@@ -6535,12 +6536,12 @@ echo "$title_md [ $first_option ]  [ Continue the stopped firewall ] "
 #### english: restore last fw #### spanish: restaura el ultimo fw
 ####
 ####
-$command_cat  $default_directory_control/$cmd_name-stoped-arptables | $command_arptables-restore
-$command_cat  $default_directory_control/$cmd_name-stoped-ebtables | $command_ebtables-restore
-$command_cat  $default_directory_control/$cmd_name-stoped-nft-ipv4 | $command_ip4tablesnft-restore  
-$command_cat  $default_directory_control/$cmd_name-stoped-legacy-ipv4 | $command_ip4tableslegacy-restore  
-$command_cat  $default_directory_control/$cmd_name-stoped-nft-ipv6 | $command_ip6tablesnft-restore  
-$command_cat  $default_directory_control/$cmd_name-stoped-legacy-ipv6 | $command_ip6tableslegacy-restore  
+$command_cat  $default_directory_control/$cmd_filename-stoped-arptables | $command_arptables-restore
+$command_cat  $default_directory_control/$cmd_filename-stoped-ebtables | $command_ebtables-restore
+$command_cat  $default_directory_control/$cmd_filename-stoped-nft-ipv4 | $command_ip4tablesnft-restore  
+$command_cat  $default_directory_control/$cmd_filename-stoped-legacy-ipv4 | $command_ip4tableslegacy-restore  
+$command_cat  $default_directory_control/$cmd_filename-stoped-nft-ipv6 | $command_ip6tablesnft-restore  
+$command_cat  $default_directory_control/$cmd_filename-stoped-legacy-ipv6 | $command_ip6tableslegacy-restore  
 echo "$title_md $text_info [ continue firewall  ]"
 echo "$title_md $text_ok [ firewall continued ]"
 exit; fi
@@ -7026,10 +7027,10 @@ case $second_option in
 #### 
 #### 
 "new-tiny-custom")
-cp "$default_tinycfg_eng" "$directory_cache_necesary/$cmd_name-$third_option"
+cp "$default_tinycfg_eng" "$directory_cache_necesary/$cmd_filename-$third_option"
 $favorite_realpath_graphicalldialog --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_cache_necesary/$cmd_name-$third_option" \
+--filename="$directory_cache_necesary/$cmd_filename-$third_option" \
 --editable --title=NEW-TINY-CONFIG 1> "$default_directory_custom/$third_option" ;
 if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog --forms \
@@ -7044,10 +7045,10 @@ $favorite_realpath_graphicalldialog --forms \
 #### 
 #### 
 "nueva-diminuta-custom")
-cp "$default_tinycfg_spa" "$directory_cache_necesary/$cmd_name-$third_option"
+cp "$default_tinycfg_spa" "$directory_cache_necesary/$cmd_filename-$third_option"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_cache_necesary/$cmd_name-$third_option" \
+--filename="$directory_cache_necesary/$cmd_filename-$third_option" \
 --editable --title=NUEVA-DIMINUTA-CONFIG 1> "$default_directory_custom/$third_option" ;
 if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog  --forms \
@@ -7062,10 +7063,10 @@ $favorite_realpath_graphicalldialog  --forms \
 #### 
 ####
 "new-mini-custom")
-cp "$default_minicfg_eng" "$directory_cache_necesary/$cmd_name-$third_option"
+cp "$default_minicfg_eng" "$directory_cache_necesary/$cmd_filename-$third_option"
 $favorite_realpath_graphicalldialog --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_cache_necesary/$cmd_name-$third_option" \
+--filename="$directory_cache_necesary/$cmd_filename-$third_option" \
 --editable --title=NEW-MINI-CONFIG 1> "$default_directory_custom/$third_option" ;
 if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog --forms \
@@ -7080,10 +7081,10 @@ $favorite_realpath_graphicalldialog --forms \
 #### 
 #### 
 "nueva-mini-custom")
-cp "$default_minicfg_spa" "$directory_cache_necesary/$cmd_name-$third_option"
+cp "$default_minicfg_spa" "$directory_cache_necesary/$cmd_filename-$third_option"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_cache_necesary/$cmd_name-$third_option" \
+--filename="$directory_cache_necesary/$cmd_filename-$third_option" \
 --editable --title=NUEVA-MINI-CONFIG 1> "$default_directory_custom/$third_option" ;
 if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog  --forms \
@@ -7098,10 +7099,10 @@ $favorite_realpath_graphicalldialog  --forms \
 #### 
 #### 
 "new-full-custom")
-cp "$default_fullcfg_eng" "$directory_cache_necesary/$cmd_name-$third_option"
+cp "$default_fullcfg_eng" "$directory_cache_necesary/$cmd_filename-$third_option"
 $favorite_realpath_graphicalldialog --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_cache_necesary/$cmd_name-$third_option" \
+--filename="$directory_cache_necesary/$cmd_filename-$third_option" \
 --editable --title=NEW-FULL-CONFIG 1> "$default_directory_custom/$third_option" ;
 if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog --forms \
@@ -7116,10 +7117,10 @@ $favorite_realpath_graphicalldialog --forms \
 #### 
 #### 
 "nueva-completa-custom")
-cp "$default_fullcfg_spa" "$directory_cache_necesary/$cmd_name-$third_option"
+cp "$default_fullcfg_spa" "$directory_cache_necesary/$cmd_filename-$third_option"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename=$directory_cache_necesary/$cmd_name-$third_option \
+--filename=$directory_cache_necesary/$cmd_filename-$third_option \
 --editable --title=NUEVA-COMPLETA-CONFIG 1> "$default_directory_custom/$third_option" ;
 if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
 $favorite_realpath_graphicalldialog  --forms \
@@ -7139,16 +7140,16 @@ then $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=file-not-found:$third_option ; exit ; fi 
 cp "$default_directory_custom/$third_option" \
-"$directory_cache_necesary/$cmd_name-$third_option"
+"$directory_cache_necesary/$cmd_filename-$third_option"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_cache_necesary/$cmd_name-$third_option" \
+--filename="$directory_cache_necesary/$cmd_filename-$third_option" \
 --editable --title=MODIFY-CONFIG 1> $default_directory_custom/$third_option
 if [ -s "$default_directory_custom/$third_option" ]; then $nada ; 
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=OK.file-$third_option
-else cp $directory_cache_necesary/$cmd_name-$third_option \
+else cp $directory_cache_necesary/$cmd_filename-$third_option \
 $default_directory_custom/$third_option
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7169,16 +7170,16 @@ then $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=file-not-found:-wpaconfig_$third_option ; exit ; fi 
 cp "$default_directory_wpa/wpaconfig_$third_option 
-"$directory_cache_necesary/$cmd_name-$third_option
+"$directory_cache_necesary/$cmd_filename-$third_option
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename=$directory_cache_necesary/$cmd_name-$third_option \
+--filename=$directory_cache_necesary/$cmd_filename-$third_option \
 --editable --title=MODIFY-CONFIG 1> $default_directory_wpa/wpaconfig_$third_option
 if [ -s "$default_directory_wpa/wpaconfig_$third_option" ]; then  
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=OK.file-$third_option
-else cp $directory_cache_necesary/$cmd_name-$third_option \
+else cp $directory_cache_necesary/$cmd_filename-$third_option \
 $default_directory_wpa/wpaconfig_$third_option
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7222,10 +7223,10 @@ $favorite_realpath_graphicalldialog  --text-info \
 ####
 "wizard-tiny")
 archivo=wizard-tiny
-cp $default_tinycfg_eng $directory_cache_necesary/$cmd_name-$archivo
+cp $default_tinycfg_eng $directory_cache_necesary/$cmd_filename-$archivo
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename=$directory_cache_necesary/$cmd_name-$archivo \
+--filename=$directory_cache_necesary/$cmd_filename-$archivo \
 --editable --title=WIZARD TINY 1> $default_directory_custom/$archivo
 if [  -s $default_directory_custom/$archivo ]; then $nada ; 
 $cmd_internal -gui loadtiny-custom $archivo ; $cmd_internal -gui list4;
@@ -7238,10 +7239,10 @@ $favorite_realpath_graphicalldialog --info \
 #### 
 "wizard-mini")
 archivo=wizard-mini
-cp $default_minicfg_eng $directory_cache_necesary/$cmd_name-$archivo
+cp $default_minicfg_eng $directory_cache_necesary/$cmd_filename-$archivo
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename=$directory_cache_necesary/$cmd_name-$archivo \
+--filename=$directory_cache_necesary/$cmd_filename-$archivo \
 --editable --title=WIZARD MINI 1> $default_directory_custom/$archivo
 if [  -s $default_directory_custom/$archivo ]; then $nada ; 
 $cmd_internal -gui load-custom $archivo ; $cmd_internal -gui list4;
@@ -7254,10 +7255,10 @@ $favorite_realpath_graphicalldialog --info \
 #### 
 "wizard-full")
 archivo=wizard-full
-cp $default_fullcfg_eng $directory_cache_necesary/$cmd_name-$archivo
+cp $default_fullcfg_eng $directory_cache_necesary/$cmd_filename-$archivo
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename=$directory_cache_necesary/$cmd_name-$archivo \
+--filename=$directory_cache_necesary/$cmd_filename-$archivo \
 --editable --title=WIZARD-FULL 1> $default_directory_custom/$archivo
 if [  -s $default_directory_custom/$archivo ]; then $nada ; 
 $cmd_internal -gui load-custom $archivo ; $cmd_internal -gui list4;
@@ -7274,10 +7275,10 @@ else $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=file-not-found:-$third_option ; exit ; fi 
 cp $default_directory_custom/$third_option \
-$directory_cache_necesary/$cmd_name-$third_option
+$directory_cache_necesary/$cmd_filename-$third_option
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
---filename=$directory_cache_necesary/$cmd_name-$third_option \
+--filename=$directory_cache_necesary/$cmd_filename-$third_option \
 --editable --title=MODIFY-CONFIG $third_option 1> $default_directory_custom/$third_option
 if [ -s "$default_directory_custom/$third_option" ]; then $nada ; 
 $favorite_realpath_graphicalldialog  --forms \
