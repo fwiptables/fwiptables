@@ -80,14 +80,15 @@ cmd_filename="fwiptables"                                  # Filename installed
 cmd_directory="/usr/bin"                                   # Directory installed
 #### find any command
 cmd_where="which"                                          # Find each command
-#### The name file command         
+#### auxiliar file command         
 cmd_basename="$(basename $0)"                              # Only name filename
-cmd_realpath="$cmd_directory/$cmd_filename"                # Full path filename
-cmd_internal="$cmd_realpath"                               # your choosed internal
-#### See it if it is installed in cmd_realpath
-if [ ! -f "$cmd_internal" ]; then cp $0 $cmd_realpath 
-echo "copy in $cmd_realpath"
-fi
+cmd_realpath="$(realpath $0)"                              # path name filename
+#### internal (notinstalled,installed) file command         
+cmd_notinstalled="$0"
+cmd_installed="$cmd_directory/$cmd_filename"               # Full path filename
+#### internal is installed or internal is basename
+cmd_internal="$cmd_installed"                              # your choosed internal
+if [ ! -f "$cmd_installed" ]; then cmd_internal=$cmd_notinstalled ; fi
 #### The number version
 cmd_year="24"                                              # Number year version
 cmd_month="10"                                             # Number mouth version
@@ -1594,8 +1595,8 @@ fi
 ####
 ####
 echo "$text_md $text_md         Name Firewall: $cmd_name                 $text_md"
-echo "$text_md $text_md     Basename Firewall: $cmd_basename             $text_md"
-echo "$text_md $text_md     Realpath Firewall: $cmd_realpath             $text_md"
+echo "$text_md $text_md  Notnstalled Firewall: $cmd_notinstalled         $text_md"
+echo "$text_md $text_md    Installed Firewall: $cmd_installed            $text_md"
 echo "$text_md $text_md     Internal Firewall: $cmd_internal             $text_md"
 echo "$text_md $text_md      Version Firewall: $cmd_version              $text_md"
 echo "$text_md $text_md         Date Firewall: $cmd_date                 $text_md"
@@ -5573,16 +5574,13 @@ echo "$text_md Installing $cmd_filename (waiting several seconds, \
 while create new configuration) $text_md"
 ####
 ####
-cmd_command="$cmd_directory/$cmd_filename"
-####
-####
 ####  english: copy the file to temporal folder and install
 ####  spanish: copia el archivo a carpeta final
 #### 
 #### 
 #### echo "$title_md $text_info [ $cmd_filename installing.. ]"
-cp $0 $cmd_internal
-chmod 755 $cmd_internal &> /dev/null 
+cp $cmd_notinstalled $cmd_installed
+chmod 755 $cmd_installed &> /dev/null 
 ####
 ####
 ####  english: generate fwiptables default config and templates
@@ -5597,7 +5595,7 @@ $cmd_internal templates-regen &> /dev/null
 ####   spanish: Muestra el estatus final desde el instalador: program version
 ####
 ####
-$cmd_internal version
+$cmd_installed version
 #### 
 ####
 exit; fi
@@ -5654,10 +5652,10 @@ echo "Description: $cmd_longdescription" &>> $default_directory_debian/deb/DEBIA
 if [ "$cmd_format" != "Bourne-Again_shell_script," ]
 then echo "$title_md the $cmd_filename is not Bourne-Again_shell_script," ; exit ; fi
 #### it does the debian package noarch
-rm $default_directory_debian/$cmd_basename-$cmd_version-noarch.deb &> /dev/null
-$command_dpkg -b $default_directory_debian/deb/ $default_directory_debian/$cmd_basename-$cmd_version-noarch.deb && \
+rm $default_directory_debian/$cmd_notinstalled-$cmd_version-noarch.deb &> /dev/null
+$command_dpkg -b $default_directory_debian/deb/ $default_directory_debian/$cmd_notinstalled-$cmd_version-noarch.deb && \
 echo "$text_md $text_ok file write in \
-$default_directory_debian/$cmd_basename-$cmd_version-noarch.deb"   
+$default_directory_debian/$cmd_notinstalled-$cmd_version-noarch.deb"   
 #### delete the directory temporal
 rm -R $default_directory_debian/deb/  &> /dev/null
 ####
