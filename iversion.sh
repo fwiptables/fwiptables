@@ -3516,7 +3516,7 @@ echo "$text_md $cmd_internal [optional-output] first_option [second_option] $tex
 echo "$title_md    optional-output $text_md"
 echo "$text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ] $text_md"
 echo "$text_md [ cli-dialog cli-whiptail cli-menu-dialog cli-menu-whiptail ] $text_md"
-echo "$text_md [ cli-menu cli-menu-old gui-zenity gui-yad gui-roll-zenity ] $text_md"
+echo "$text_md [ cli-menu cli-menu-compact gui-zenity gui-yad gui-roll-zenity ] $text_md"
 echo "$text_md [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ] $text_md"
 echo "$title_md    firewall-listconceptual $text_md"
 echo "$text_md ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6 $text_md"
@@ -4024,7 +4024,7 @@ echo "$text_md $text_md cli-whiptail . output in terminal cli with whiptail $tex
 echo "$text_md $text_md gui-zenity . output in graphicall gui with zenity $text_md"
 echo "$text_md $text_md gui-yad . output in graphicall gui with yad $text_md"
 echo "$text_md $text_md cli-menu . output in terminal menu $text_md"
-echo "$text_md $text_md cli-menu-old . output in terminal menu $text_md"
+echo "$text_md $text_md cli-menu-compact . output in terminal menu $text_md"
 echo "$text_md $text_md cli-menu-dialog . output in terminal menu with dialog $text_md"
 echo "$text_md $text_md cli-menu-whiptail . output in terminal menu with whiptail $text_md"
 echo "$text_md $text_md gui-menu-zenity . output in grapicall menu with zenity $text_md"
@@ -8310,12 +8310,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-utilnet:
-##########    english: cli-menu-old: Manage list rules with one text menu          ##########
-##########    spanish: cli-menu-old: Maneja lista de reglas con un menu de texto   ##########
-#### :rutina-inicial-cli-menu-old:
+##########    english: cli-menu-compact: Manage list rules with one text menu          ##########
+##########    spanish: cli-menu-compact: Maneja lista de reglas con un menu de texto   ##########
+#### :rutina-inicial-cli-menu-compact:
 ####
 ####
-if [ "$first_option" == "cli-menu-old" ]; then
+if [ "$first_option" == "cli-menu-compact" ]; then
 ####
 ####
 if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
@@ -8657,7 +8657,7 @@ $cmd_internal cli-menu-$favorite_basename_textdialog
 exit; fi
 ####
 ####
-#### :rutina-final-cli-menu-old:
+#### :rutina-final-cli-menu-compact:
 ##########    english: text-pause: do pause     ##########
 ##########    spanish: text-pause: hace pausa   ##########
 #### :rutina-inicial-text-pause:
