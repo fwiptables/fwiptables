@@ -5654,10 +5654,10 @@ echo "Description: $cmd_longdescription" &>> $default_directory_debian/deb/DEBIA
 if [ "$cmd_format" != "Bourne-Again_shell_script," ]
 then echo "$title_md the $cmd_filename is not Bourne-Again_shell_script," ; exit ; fi
 #### it does the debian package noarch
-rm $default_directory_debian/$cmd_notinstalled-$cmd_version-noarch.deb &> /dev/null
-$command_dpkg -b $default_directory_debian/deb/ $default_directory_debian/$cmd_notinstalled-$cmd_version-noarch.deb && \
+rm $default_directory_debian/$cmd_name-$cmd_version-noarch.deb &> /dev/null
+$command_dpkg -b $default_directory_debian/deb/ $default_directory_debian/$cmd_name-$cmd_version-noarch.deb && \
 echo "$text_md $text_ok file write in \
-$default_directory_debian/$cmd_notinstalled-$cmd_version-noarch.deb"   
+$default_directory_debian/$cmd_name-$cmd_version-noarch.deb"   
 #### delete the directory temporal
 rm -R $default_directory_debian/deb/  &> /dev/null
 ####

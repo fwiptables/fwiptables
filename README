@@ -40,10 +40,10 @@
 ###        Firewall Version
   
             Detail Firewall: Version Detail              
-          Basename Firewall: fwiptables               
-          Realpath Firewall: /usr/bin/fwiptables               
-             Cycle Internal: /usr/bin/fwiptables                
-           Version Firewall: 24-10-D                
+              Name Firewall: fwiptables                   
+            Source Firewall: /usr/bin/fwiptables           
+          Internal Firewall: /usr/bin/fwiptables               
+           Version Firewall: 24-10-E                
               Date Firewall: Year 2024 / Month 10                   
           Short Description: FireWall With iptables       
            Long Description: iptables template in one script        
@@ -107,11 +107,11 @@
 ###     [ Configuration files ]   
       Directory data:          /root/.config/fwiptables   
       Directory temp:          /root/.cache/fwiptables   
-      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-10-D   
+      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-10-E   
         
 ###     [ Log files ]             
-      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default-autolog-24-10-D   
-      File filelog:            /root/.config/fwiptables/fwiptables-log/default-filelog-24-10-D   
+      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default-autolog-24-10-E   
+      File filelog:            /root/.config/fwiptables/fwiptables-log/default-filelog-24-10-E   
         
 ###     [ optional output ]       
       dialog cli:              /bin/dialog   
@@ -210,7 +210,7 @@
 ###     optional-output   
    [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]   
    [ cli-dialog cli-whiptail cli-menu-dialog cli-menu-whiptail ]   
-   [ cli-menu cli-menu-old gui-zenity gui-yad gui-roll-zenity ]   
+   [ cli-menu cli-menu-compact gui-zenity gui-yad gui-roll-zenity ]   
    [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ]   
 ###     firewall-listconceptual   
    ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6   
@@ -242,12 +242,12 @@
    server-asterisk client-uid-root client-gid-users client-gid-net    
 ###     firewall-utilnet   
    preferences-read preferences-modify preferences-regen   
-   options speed-ip4 speed-ip6 intro filelog autolog date web   
-   ip ip4 ip6 network4 network6 address4 address6 resolve sockets   
-   free nodes ip-forward depends utils treeconf treecache   
-   cleancache notes variables uninstall install upgrade   
-   examples info code expert donate about version   
+   speed-ip4 speed-ip6 filelog autolog date resolve sockets   
+   ip ip4 ip6 network4 network6 address4 address6 options   
+   free nodes ip-forward utils treeconf cleancache treecache   
+   web intro variables depends uninstall install upgrade   
+   notes examples info code expert donate about version   
    license-lgpl-v2 license-gpl-v2   
-       | Program: /usr/bin/fwiptables 24-10-D   
+       | Program: /usr/bin/fwiptables 24-10-E   
        | Description: iptables template in one script   
        | Expert: expert is allowed in preferences file   
