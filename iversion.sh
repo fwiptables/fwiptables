@@ -5613,13 +5613,11 @@ if   [ "$first_option" == "expert-gen-readme" ]; then
 ####
 ####
 echo "$title_md [ $first_option ]  [ generate actual file and readme from intro program ] "
-#### create the file base in repository
-cp $(basename $0) $default_directory_readme/$cmd_name-$cmd_version &&
-echo "$title_md $text_ok Created $default_directory_readme/$cmd_name-$cmd_version"
+#### create the FILE base in repository
+cp $0 $default_directory_readme/$cmd_name-$cmd_version-bash &&
+echo "$title_md $text_ok Created $default_directory_readme/$cmd_name-$cmd_version-bash"
 #### create the README base in repository
-$default_directory_readme/$cmd_name-$cmd_version intro > $default_directory_readme/README &&
-echo "$title_md $text_ok Created $default_directory_readme/$cmd_basename-$cmd_version-README"
-$default_directory_readme/$cmd_name-$cmd_version  intro > $default_directory_readme/README.md &&
+$0 intro > $default_directory_readme/README.md &&
 echo "$title_md $text_ok Created $default_directory_readme/$cmd_name-$cmd_version-README.md"
 ####
 ####
@@ -6065,9 +6063,9 @@ then echo "$title_md install obash to compile"; exit ; fi
 if [ "$command_uuid" == "$NULL" ]
 then echo "$title_md install uuid to compile"; exit ; fi
 if [ "$cmd_format" != "Bourne-Again_shell_script," ]
-then echo "$title_md the $cmd_filename is not Bourne-Again_shell_script," ; exit ; fi
+then echo "$title_md the $cmd_name is not Bourne-Again_shell_script," ; exit ; fi
 obash_file_date="$default_directory_obash/$cmd_name-$cmd_version"
-cp $(basename $0) $obash_file_date.bash
+cp $0 $obash_file_date.bash
 $command_obash -r -c -o $obash_file_date.bin $obash_file_date.bash \
 && echo "$title_md $text_ok" || echo "$title_md $text_fail"
 echo ; echo "$title_md And now list:"
