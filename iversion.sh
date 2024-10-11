@@ -5634,14 +5634,10 @@ if   [ "$first_option" == "expert-gen-deb" ]; then
 ####
 echo "$title_md [ $first_option ]  [ generate actual file debian ] "
 #### recreate the directories
-rm -R $default_directory_debian/deb/usr/bin &> /dev/null
+rm -R $default_directory_debian/deb/DEBIAN/usr/bin &> /dev/null
 rm -R $default_directory_debian/deb/DEBIAN &> /dev/null
-mkdir -p $default_directory_debian/deb/usr/bin &> /dev/null
+mkdir -p $default_directory_debian/deb/DEBIAN/usr/bin &> /dev/null
 mkdir -p $default_directory_debian/deb/DEBIAN &> /dev/null
-cp $(basename $0) $default_directory_debian/deb/usr/bin/$cmd_basename
-#### it are file modes
-chown root $default_directory_debian/* -R  &> /dev/null
-chmod 755 $default_directory_debian/* -R &> /dev/null
 #### create the control file
 echo "Package: fwiptables"      &>  $default_directory_debian/deb/DEBIAN/control
 echo "Priority: optional"       &>> $default_directory_debian/deb/DEBIAN/control
@@ -5651,13 +5647,17 @@ echo "Architecture: all"        &>> $default_directory_debian/deb/DEBIAN/control
 echo "Version: $cmd_version"    &>> $default_directory_debian/deb/DEBIAN/control
 echo "Depends: "                &>> $default_directory_debian/deb/DEBIAN/control
 echo "Description: $cmd_longdescription" &>> $default_directory_debian/deb/DEBIAN/control
-#### echo " $cmd_longdescription ."  &>> $default_directory_debian/deb/DEBIAN/control
 #### architecture detect, only for shell script
 if [ "$cmd_format" != "Bourne-Again_shell_script," ]
 then echo "$title_md the $cmd_name is not Bourne-Again_shell_script," ; exit ; fi
+#### copy file
+cp $0 $default_directory_debian/deb/DEBIAN/usr/bin/fwiptables &> /dev/null
+#### it are file modes
+chown root $default_directory_debian/* -R  &> /dev/null
+chmod 755 $default_directory_debian/* -R &> /dev/null
 #### it does the debian package noarch
 rm $default_directory_debian/$cmd_basename-$cmd_version-noarch.deb &> /dev/null
-$command_dpkg -b $default_directory_debian/deb/ $default_directory_debian/$cmd_basename-$cmd_version-noarch.deb && \
+$command_dpkg -b $default_directory_debian/deb $default_directory_debian/$cmd_basename-$cmd_version-noarch.deb && \
 echo "$text_md $text_ok file write in \
 $default_directory_debian/$cmd_basename-$cmd_version-noarch.deb"   
 #### delete the directory temporal
