@@ -5587,15 +5587,15 @@ chmod 755 $cmd_installed &> /dev/null
 ####  spanish: genera fwiptables default configuracion y plantillas
 ####
 ####
-$cmd_internal preferences-regen &> /dev/null
-$cmd_internal templates-regen &> /dev/null
+$cmd_notinstalled preferences-regen &> /dev/null
+$cmd_notinstalled templates-regen &> /dev/null
 ####
 ####
 ####   english: Show final status from installer: program version
 ####   spanish: Muestra el estatus final desde el instalador: program version
 ####
 ####
-$cmd_installed version
+$cmd_notinstalled version
 #### 
 ####
 exit; fi
