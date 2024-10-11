@@ -88,7 +88,10 @@ cmd_notinstalled="$0"
 cmd_installed="$cmd_directory/$cmd_filename"               # Full path filename
 #### internal is installed or internal is basename
 cmd_internal="$cmd_installed"                              # your choosed internal
-if [ ! -f "$cmd_installed" ]; then cmd_internal=$cmd_notinstalled ; fi
+if [ -f "$cmd_installed" ]
+then cmd_internal="$cmd_installed"
+else cmd_internal="$cmd_notinstalled"
+fi
 #### The number version
 cmd_year="24"                                              # Number year version
 cmd_month="10"                                             # Number mouth version
