@@ -47,7 +47,7 @@
 ####
 ##########    english: are you root: uid 0 ?                ##########
 ##########    spanish: eres admnistrador: identificador 0 ? ##########
-#### :rutina-inicial-necesary-admin:
+#### :rutina-inicial-necesary-root:
 ####
 ####
 if [ "$(id -u)" != "0" ] ; then echo ; echo
@@ -60,10 +60,10 @@ echo "### $text_info [ Try with root user ]" ; echo
 exit ; fi
 ####
 ####
-#### :rutina-final-necesary-admin:
+#### :rutina-final-necesary-root:
 ##########     english name, description and version    ##########
 ##########     spanish: nombre, descripcion y version   ##########
-#### :rutina-inicial-enviroment-vars:
+#### :rutina-inicial-env-cmd:
 ####
 #### ########## ########## ##########
 #### variables configs for fwiptables program
@@ -124,7 +124,7 @@ cmd_opt_date="$cmd_actual_date-_OPT_"                      # log date
 #### ########## ########## ##########
 ####
 ####
-#### :rutina-final-enviroment-vars:
+#### :rutina-final-env-cmd:
 ##########     english name, description and version    ##########
 ##########     spanish: nombre, descripcion y version   ##########
 #### :rutina-inicial-web-official:
@@ -1599,7 +1599,6 @@ fi
 ####
 echo "$text_md $text_md         Name Firewall: $cmd_name                 $text_md"
 echo "$text_md $text_md       Source Firewall: $cmd_notinstalled         $text_md"
-echo "$text_md $text_md    Installed Firewall: $cmd_installed            $text_md"
 echo "$text_md $text_md     Internal Firewall: $cmd_internal             $text_md"
 echo "$text_md $text_md      Version Firewall: $cmd_version              $text_md"
 echo "$text_md $text_md         Date Firewall: $cmd_date                 $text_md"
