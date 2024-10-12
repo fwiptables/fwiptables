@@ -95,7 +95,7 @@ fi
 #### The number version
 cmd_year="24"                                              # Number year version
 cmd_month="10"                                             # Number mouth version
-cmd_letter="E"                                             # Number letter version
+cmd_letter="F"                                             # Number letter version
 cmd_version="$cmd_year-$cmd_month-$cmd_letter"             # Final date like number version
 cmd_date="Year 20$cmd_year / Month $cmd_month"
 #### The data version
@@ -195,6 +195,7 @@ command_gpg="$($cmd_where gpg)"
 command_grep="$($cmd_where grep)"
 command_halt="$($cmd_where halt)"
 command_host="$($cmd_where host)"
+command_id="$($cmd_where id)"
 command_ifconfig="$($cmd_where ifconfig)"
 command_init="$($cmd_where init)"
 command_ip="$($cmd_where ip)"
@@ -1589,7 +1590,7 @@ exit; fi
 if [ "$first_option" == "version" ]; then
 ####
 ####
-echo "$text_md $text_md       Detail Firewall: Version Detail            $text_md"
+echo "$text_md $text_md       Detail Firewall: Detail Version            $text_md"
 ####
 ####
 if [ "$(echo $XDG_SESSION_TYPE)" != "$NULL" ]; then
@@ -1606,9 +1607,6 @@ echo "$text_md $text_md     Short Description: $cmd_shortdescription     $text_m
 echo "$text_md $text_md      Long Description: $cmd_longdescription      $text_md"
 echo "$text_md $text_md        Data Directory: $directory_data_necesary  $text_md"
 echo "$text_md $text_md       Cache Directory: $directory_cache_necesary $text_md"
-echo "$text_md $text_md      Developer Actual: $cmd_developer            $text_md"
-echo "$text_md $text_md          Email Report: $cmd_contact              $text_md"
-echo "$text_md $text_md           File Format: $cmd_format               $text_md"
 echo "$text_md $text_md           Config PATH: $PATH                     $text_md"
 echo "$text_md $text_md        Finder Program: $cmd_where                $text_md"
 echo "$text_md $text_md     Requisite Program: $cmd_requisite_program    $text_md"
@@ -1618,6 +1616,9 @@ echo "$text_md $text_md      Automatic Editor: $favorite_text_editor     $text_m
 echo "$text_md $text_md         Automatic cli: $favorite_realpath_textdialog       $text_md"
 echo "$text_md $text_md         Automatic gui: $favorite_realpath_graphicalldialog $text_md"
 echo "$text_md $text_md         Automatic pdf: $command_convert          $text_md"
+echo "$text_md $text_md           File Format: $cmd_format               $text_md"
+echo "$text_md $text_md      Developer Actual: $cmd_developer            $text_md"
+echo "$text_md $text_md          Email Report: $cmd_contact              $text_md"
 echo "$text_md $text_md       License Program: $cmd_license              $text_md"
 ####
 ####
@@ -2678,28 +2679,35 @@ if [ "$first_option" == "options-examples" ]; then
 echo "$title_md $text_md [ $first_option ] [ List examples ] [ examples md ] $text_md"
 echo "$title_md $text_md [ One example with input-established ] $text_md"
 echo "$text_md $text_md  $text_md"  
-echo "$text_md $text_md  launch input-stablished        | $cmd_filename input-stablished               $text_md"  
-echo "$text_md $text_md  client for all ports in related,established, without servers ports"
+echo "$text_md $text_md  Launch input-stablished               $text_md"
+echo "$text_md $cmd_filename input-stablished                  $text_md"  
+echo "$text_md $text_md  Client for all ports without servers ports"
 echo "$text_md $text_md  $text_md"  
 echo "$title_md $text_md [ Several examples with tiny server ] $text_md"
 echo "$text_md $text_md  $text_md"  
-echo "$text_md $text_md  launch wizard tiny             | $cmd_filename wizard-tiny               $text_md"  
-echo "$text_md $text_md  launch tinyserver-tcp ports    | $cmd_filename tinyserver-tcp 21:25,80   $text_md"  
-echo "$text_md $text_md  launch tinyserver-udp ports    | $cmd_filename tinyserver-udp 67:68,443  $text_md"  
-echo "$text_md $text_md  client for all ports in related,established"
+echo "$text_md $text_md  Launch wizard tiny                    $text_md"
+echo "$text_Md $cmd_filename wizard-tiny                       $text_md"  
+echo "$text_md $text_md  Launch tinyserver-tcp ports           $text_md"
+echo "$text_md $cmd_filename tinyserver-tcp 21:25,80           $text_md"  
+echo "$text_md $text_md  Launch tinyserver-udp ports           $text_md"
+echo "$text_md $cmd_filename tinyserver-udp 67:68,443          $text_md"  
+echo "$text_md $text_md  Client for all ports                  $text_md"
 echo "$text_md $text_md  $text_md"
 echo "$title_md $text_md [ Several examples with mini server ] $text_md"
 echo "$text_md $text_md  $text_md"
-echo "$text_md $text_md  launch wizard mini             | $cmd_filename wizard-mini               $text_md"  
-echo "$text_md $text_md  wizard firewall for clients and servers"
+echo "$text_md $text_md  Launch wizard mini                    $text_md"
+echo "$text_md $cmd_filename wizard-mini                       $text_md"  
+echo "$text_md $text_md  Wizard firewall for clients and servers"
 echo "$text_md $text_md  $text_md"
-echo "$text_md $text_md  launch miniserver-tcp ports    | $cmd_filename miniserver-tcp 21:25,80   $text_md"  
-echo "$text_md $text_md  launch miniserver-udp ports    | $cmd_filename miniserver-udp 67:68,443  $text_md"  
-echo "$text_md $text_md  see miniserver clients ports in preferences file"
+echo "$text_md $text_md  Launch miniserver-tcp ports           $text_md"
+echo "$text_md $cmd_filename miniserver-tcp 21:25,80     $text_md"  
+echo "$text_md $text_md  Launch miniserver-udp ports    $text_md"
+echo "$text_md $cmd_filename miniserver-udp 67:68,443  $text_md"  
+echo "$text_md $text_md  Read miniserver clients ports in preferences file"
 echo "$text_md $text_md  $text_md"
 echo "$title_md $text_md [ Several examples without optional otuput ]      $text_md"
 echo "$text_md $text_md  $text_md"
-echo "$title_md $text_md  without optional output | Example Description   $text_md"  
+echo "$title_md $text_md without optional output | Example Description   $text_md"  
 echo "$text_md $text_md  $text_md"  
 echo "$text_md $text_md  depends                  | $cmd_filename depends             $text_md"  
 echo "$text_md $text_md  List firewall saved      | $cmd_filename names               $text_md"  
@@ -2811,7 +2819,7 @@ exit; fi
 if [ "$first_option" == "notes" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List notes about ] [ notes md ]"
+echo "$title_md [ $first_option ] [ List notes about ] [ notes md ] $text_md"
 echo "$text_md                          Iptables Firewall $text_md" 
 echo "$text_md           Legacy or nft: whith one of them is sufficent $text_md"   
 echo "$text_md         iptables-legacy: support for xtables ipv4 $text_md"    
@@ -2829,7 +2837,7 @@ echo "$text_md              tinyserver: client in all allowed, and servers selec
 echo "$text_md              miniserver: normal ports in client, and servers selecteds manually $text_md"
 echo "$text_md       input-established: the computer is only client $text_md"   
 echo "$text_md    allow output uid/gid: User and/or group excepcional with conection allowed $text_md"   
-echo "$text_md                          Necesary Ports"
+echo "$text_md                          Necesary Ports $text_md"  
 echo "$text_md                     ntp: Port necesary to update the time and date $text_md"   
 echo "$text_md                  bootpc: Port necesary to dhcp and get ip $text_md"   
 echo "$text_md                  domain: This port is necesary to domain resolver $text_md"   
@@ -5407,10 +5415,10 @@ if  [ "$first_option" == "readme" ]; then
 ####
 echo "$title_md $text_md fwiptables. Firewall With iptables.   [ readme md ] $text_md"
 echo "$text_md $text_md $text_md"
-echo "$text_md $text_md The fwiptables is a one-file WIZARD, $text_md"
-echo "$text_md $text_md for iptables, with COMMAND-LINE,     $text_md"
-echo "$text_md $text_md and CLI-MENU, and GUI-MENU,          $text_md"
-echo "$text_md $text_md and GUI-ROLL, and GUI-SHELL.         $text_md"
+echo "$text_md $text_md The fwiptables is a one-file WIZARD,     $text_md"
+echo "$text_md $text_md for iptables, with COMMAND-LINE,         $text_md"
+echo "$text_md $text_md and CLI-MENU, and GUI-MENU,              $text_md"
+echo "$text_md $text_md and GUI-ROLL, and GUI-SHELL.             $text_md"
 echo "$text_md $text_md $text_md"
 echo "$text_md $text_md From one system firewall to choose one,  $text_md"
 echo "$text_md $text_md with eraserules, or template custom,     $text_md"
@@ -5426,21 +5434,21 @@ echo "$text_md $text_md with limit bandwidth, string word,                 $text
 echo "$text_md $text_md with host whitelist, host blacklist,               $text_md"
 echo "$text_md $text_md with other more capabilities of firewall.          $text_md"
 echo "$text_md $text_md $text_md"
-echo "$title_md $text_md  fwiptables location.                            $text_md"
+echo "$title_md $text_md  fwiptables location.                             $text_md"
 echo "$text_md $text_md $text_md"
-echo "$text_md $text_md  File    Location:   $cmd_directory/$cmd_filename     $text_md"
-echo "$text_md $text_md  Config Directory:   $directory_data_necesary     $text_md"
-echo "$text_md $text_md  Cache  Directory:   $directory_cache_necesary    $text_md "
+echo "$text_md $text_md  File    Location:   $cmd_directory/$cmd_filename  $text_md"
+echo "$text_md $text_md  Config Directory:   $directory_data_necesary      $text_md"
+echo "$text_md $text_md  Cache  Directory:   $directory_cache_necesary     $text_md "
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md fwiptables install.                         $text_md"
 echo "$text_md $text_md $text_md"
 echo "$text_md $text_md  su root TYPE: su root                       $text_md"    
-echo "$text_md $text_md  put bit TYPE: chmod 755 $cmd_internal     $text_md"
-echo "$text_md $text_md  install TYPE: $cmd_internal install       $text_md" 
+echo "$text_md $text_md  put bit TYPE: chmod 755 $cmd_internal       $text_md"
+echo "$text_md $text_md  install TYPE: $cmd_internal install         $text_md" 
 echo "$text_md $text_md $text_md"
-echo "$title_md $text_md $text_md fwiptables uninstall.                   $text_md"
+echo "$title_md $text_md $text_md fwiptables uninstall.              $text_md"
 echo "$text_md $text_md $text_md"
-echo "$text_md $text_md uninstall TYPE: $cmd_filename uninstall      $text_md"
+echo "$text_md $text_md uninstall TYPE: $cmd_internal uninstall      $text_md"
 ####
 ####
 exit; fi
@@ -6036,7 +6044,7 @@ exit; fi
 if   [ "$first_option" == "compile" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ Optionally compile from bash script ] [ compile md]  "   
+echo "$title_md [ $first_option ] [ Optionally compile from bash script ] [ compile md] $text_md"   
 echo "$text_md $text_md BASH SCRIPT WORKS fully. But if your desire is compiling...   $text_md"       
 echo "$text_md $text_md Necesary fwiptables in source script bash $text_md"     
 echo "$text_md $text_md Download and install obash from oficial web internet $text_md"      
