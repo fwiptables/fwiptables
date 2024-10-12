@@ -8340,63 +8340,63 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 --title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
-0010 "$title_md $text_md [$cmd_internal cli-menu] $text_md $title_md" \
-0100 "$title_md [ info-options ] $title_md" \
-0200 "$title_md [ firewall-control ] $title_md" \
-0201  "$text_md stop" \
-0202  "$text_md continue" \
-0203  "$text_md reset" \
-0204  "$text_md names"  \
-0205  "$text_md show" \
-0206  "$text_md save" \
-0207  "$text_md load" \
-0208  "$text_md actual" \
-0209  "$text_md eraserules" \
-0210  "$text_md wizard-tiny" \
-0211  "$text_md wizard-mini" \
-0212  "$text_md wizard-full" \
-0213  "$text_md without-connection" \
-0214  "$text_md input-permisive" \
-0215  "$text_md input-established" \
-0216  "$text_md eraserules4" \
-0217  "$text_md eraserules6" \
-0218  "$text_md eraserules" \
-0300 "$title_md [ firewall-listconceptual ] $title_md" \
-0301  "$text_md list4" \
-0302  "$text_md list6"  \
-0303  "$text_md list-filter4" \
-0304  "$text_md list-filter6" \
-0305  "$text_md list-forward" \
-0306  "$text_md list-forward6" \
-0307  "$text_md list-nat4" \
-0308  "$text_md list-nat6" \
-0309  "$text_md list-alltables" \
-0314  "$text_md list-raw4" \
-0315  "$text_md list-raw6" \
-0316  "$text_md list-mangle4" \
-0317  "$text_md list-mangle6" \
-0318  "$text_md list-security4" \
-0319  "$text_md list-security6" \
-0320  "$text_md list-ebtables" \
-0321  "$text_md list-arptables" \
-0400 "$title_md [ firewall-listnumeral ] $title_md" \
-0401  "$text_md listn4" \
-0402  "$text_md listn6" \
-0403  "$text_md listn-filter4" \
-0404  "$text_md listn-filter6" \
-0405  "$text_md listn-forward" \
-0406  "$text_md listn-forward6" \
-0407  "$text_md listn-nat4" \
-0408  "$text_md listn-nat6" \
-0409  "$text_md listn-alltables" \
-0414  "$text_md listn-raw4" \
-0415  "$text_md listn-raw6" \
-0416  "$text_md listn-mangle4" \
-0417  "$text_md listn-mangle6" \
-0418  "$text_md listn-security4" \
-0419  "$text_md listn-security6" \
-0420  "$text_md listn-ebtables" \
-0421  "$text_md listn-arptables" \
+0110 "$title_md $text_md [$cmd_internal cli-menu] $text_md $title_md" \
+0120 "$title_md [ info-options ] $title_md" \
+0200 "$title_md [ firewall-listconceptual ] $title_md" \
+0201  "$text_md list4" \
+0202  "$text_md list6"  \
+0203  "$text_md list-filter4" \
+0204  "$text_md list-filter6" \
+0205  "$text_md list-forward" \
+0206  "$text_md list-forward6" \
+0207  "$text_md list-nat4" \
+0208  "$text_md list-nat6" \
+0209  "$text_md list-alltables" \
+0214  "$text_md list-raw4" \
+0215  "$text_md list-raw6" \
+0216  "$text_md list-mangle4" \
+0217  "$text_md list-mangle6" \
+0218  "$text_md list-security4" \
+0219  "$text_md list-security6" \
+0220  "$text_md list-ebtables" \
+0221  "$text_md list-arptables" \
+0300 "$title_md [ firewall-listnumeral ] $title_md" \
+0301  "$text_md listn4" \
+0302  "$text_md listn6" \
+0303  "$text_md listn-filter4" \
+0304  "$text_md listn-filter6" \
+0305  "$text_md listn-forward" \
+0306  "$text_md listn-forward6" \
+0307  "$text_md listn-nat4" \
+0308  "$text_md listn-nat6" \
+0309  "$text_md listn-alltables" \
+0314  "$text_md listn-raw4" \
+0315  "$text_md listn-raw6" \
+0316  "$text_md listn-mangle4" \
+0317  "$text_md listn-mangle6" \
+0318  "$text_md listn-security4" \
+0319  "$text_md listn-security6" \
+0320  "$text_md listn-ebtables" \
+0321  "$text_md listn-arptables" \
+0400 "$title_md [ firewall-control ] $title_md" \
+0401  "$text_md stop" \
+0402  "$text_md continue" \
+0403  "$text_md reset" \
+0404  "$text_md names"  \
+0405  "$text_md show" \
+0406  "$text_md save" \
+0407  "$text_md load" \
+0408  "$text_md actual" \
+0409  "$text_md eraserules" \
+0410  "$text_md wizard-tiny" \
+0411  "$text_md wizard-mini" \
+0412  "$text_md wizard-full" \
+0413  "$text_md without-connection" \
+0414  "$text_md input-permisive" \
+0415  "$text_md input-established" \
+0416  "$text_md eraserules4" \
+0417  "$text_md eraserules6" \
+0418  "$text_md eraserules" \
 0500 "$title_md [ firewall-wallsystem ] $title_md" \
 0507  "$text_md client-basic" \
 0508  "$text_md client-web" \
@@ -8481,78 +8481,78 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 case $menuprincipal in
 ##########
 ##########
-0010) clear ; $cmd_internal txt readme  ;;
-0100) clear ; $cmd_internal txt info-options ;;
-0200) clear ; $cmd_internal txt firewall-wallcontrol ;;
-0300) clear ; $cmd_internal txt firewall-listconceptual ;;
-0400) clear ; $cmd_internal txt firewall-listnumeral ;;
+0110) clear ; $cmd_internal txt readme  ;;
+0120) clear ; $cmd_internal txt info-options ;;
+0200) clear ; $cmd_internal txt firewall-listconceptual ;;
+0300) clear ; $cmd_internal txt firewall-listnumeral ;;
+0400) clear ; $cmd_internal txt firewall-wallcontrol ;;
 0500) clear ; $cmd_internal txt firewall-wallsystem ;;
 0600) clear ; $cmd_internal txt firewall-wallcustom ;;
 0700) clear ; $cmd_internal txt firewall-netsystem ;;
 ################################################################################
-0201) clear ; $cmd_internal txt stop ;;
-0202) clear ; $cmd_internal txt continue ;;
-0203) clear ; $cmd_internal txt reset ;;
-0204) clear ; $cmd_internal txt names ;;
-0205) clear ; $cmd_internal txt names ; echo "$title_md"
-read -p "Type the firewall name to read   " nombrecillo
-nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
-$cmd_internal show $nombrecillo ;; 
-0206)archivo="$($favorite_realpath_textdialog --stdout \
---title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
-archivo=$(echo $archivo | $command_sed s/\\///g)
-clear ;  echo "$title_md saved $archivo" ; $cmd_internal save $archivo ;;
-0207) clear ; $cmd_internal names ; echo "$title_md"
-read -p "| Type the firewall name to restore |   " nombrecillo
-nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
-$cmd_internal load $nombrecillo ;;
-0208) clear ; $cmd_internal txt actual ;;
-0209) clear ; $cmd_internal txt eraserules ; $cmd_internal cli list4   ;;
-0210) clear ; $cmd_internal txt wizard-tiny ; $cmd_internal cli list4  ;;
-0211) clear ; $cmd_internal txt wizard-mini ; $cmd_internal cli list4  ;;
-0212) clear ; $cmd_internal txt wizard-full ; $cmd_internal cli list4  ;;
-0213) clear ; $cmd_internal txt without-connection ; $cmd_internal cli list4  ;;
-0214) clear ; $cmd_internal txt input-permisive ; $cmd_internal cli list4   ;;
-0215) clear ; $cmd_internal txt input-established ; $cmd_internal cli list4   ;;
-0216) clear ; $cmd_internal txt eraserules4 ; $cmd_internal cli list4   ;;
-0217) clear ; $cmd_internal txt eraserules6 ; $cmd_internal cli list6   ;;
-0218) clear ; $cmd_internal txt eraserules ; $cmd_internal cli status   ;;
+0201) clear ; $cmd_internal txt list4 ;;
+0202) clear ; $cmd_internal txt list6 ;;
+0203) clear ; $cmd_internal txt list-filter4 ;;
+0204) clear ; $cmd_internal txt list-filter6 ;;
+0205) clear ; $cmd_internal txt list-forward ;;
+0206) clear ; $cmd_internal txt list-forward6 ;;
+0207) clear ; $cmd_internal txt list-nat4 ;;
+0208) clear ; $cmd_internal txt list-nat6 ;;
+0209) clear ; $cmd_internal txt list-alltables ;;
+0214) clear ; $cmd_internal txt list-raw4 ;;
+0215) clear ; $cmd_internal txt list-raw6 ;;
+0216) clear ; $cmd_internal txt list-mangle4 ;; 
+0217) clear ; $cmd_internal txt list-mangle6 ;;
+0218) clear ; $cmd_internal txt list-security4 ;;
+0219) clear ; $cmd_internal txt list-security6 ;;
+0220) clear ; $cmd_internal txt list-ebtables ;;
+0221) clear ; $cmd_internal txt list-arptables ;;
 ################################################################################
-0301) clear ; $cmd_internal txt list4 ;;
-0302) clear ; $cmd_internal txt list6 ;;
-0303) clear ; $cmd_internal txt list-filter4 ;;
-0304) clear ; $cmd_internal txt list-filter6 ;;
-0305) clear ; $cmd_internal txt list-forward ;;
-0306) clear ; $cmd_internal txt list-forward6 ;;
-0307) clear ; $cmd_internal txt list-nat4 ;;
-0308) clear ; $cmd_internal txt list-nat6 ;;
-0309) clear ; $cmd_internal txt list-alltables ;;
-0314) clear ; $cmd_internal txt list-raw4 ;;
-0315) clear ; $cmd_internal txt list-raw6 ;;
-0316) clear ; $cmd_internal txt list-mangle4 ;; 
-0317) clear ; $cmd_internal txt list-mangle6 ;;
-0318) clear ; $cmd_internal txt list-security4 ;;
-0319) clear ; $cmd_internal txt list-security6 ;;
+0301) clear ; $cmd_internal txt listn4 ;;
+0302) clear ; $cmd_internal txt listn6 ;;
+0303) clear ; $cmd_internal txt listn-filter4 ;;
+0304) clear ; $cmd_internal txt listn-filter6 ;;
+0305) clear ; $cmd_internal txt listn-forward ;;
+0306) clear ; $cmd_internal txt listn-forward6 ;;
+0307) clear ; $cmd_internal txt listn-nat4 ;;
+0308) clear ; $cmd_internal txt listn-nat6 ;;
+0309) clear ; $cmd_internal txt listn-alltables ;;
+0314) clear ; $cmd_internal txt listn-raw4 ;;
+0315) clear ; $cmd_internal txt listn-raw6 ;;
+0316) clear ; $cmd_internal txt listn-mangle4 ;; 
+0317) clear ; $cmd_internal txt listn-mangle6 ;;
+0318) clear ; $cmd_internal txt listn-security4 ;;
+0319) clear ; $cmd_internal txt listn-security6 ;;
 0320) clear ; $cmd_internal txt list-ebtables ;;
 0321) clear ; $cmd_internal txt list-arptables ;;
 ################################################################################
-0401) clear ; $cmd_internal txt listn4 ;;
-0402) clear ; $cmd_internal txt listn6 ;;
-0403) clear ; $cmd_internal txt listn-filter4 ;;
-0404) clear ; $cmd_internal txt listn-filter6 ;;
-0405) clear ; $cmd_internal txt listn-forward ;;
-0406) clear ; $cmd_internal txt listn-forward6 ;;
-0407) clear ; $cmd_internal txt listn-nat4 ;;
-0408) clear ; $cmd_internal txt listn-nat6 ;;
-0409) clear ; $cmd_internal txt listn-alltables ;;
-0414) clear ; $cmd_internal txt listn-raw4 ;;
-0415) clear ; $cmd_internal txt listn-raw6 ;;
-0416) clear ; $cmd_internal txt listn-mangle4 ;; 
-0417) clear ; $cmd_internal txt listn-mangle6 ;;
-0418) clear ; $cmd_internal txt listn-security4 ;;
-0419) clear ; $cmd_internal txt listn-security6 ;;
-0420) clear ; $cmd_internal txt list-ebtables ;;
-0421) clear ; $cmd_internal txt list-arptables ;;
+0401) clear ; $cmd_internal txt stop ;;
+0402) clear ; $cmd_internal txt continue ;;
+0403) clear ; $cmd_internal txt reset ;;
+0404) clear ; $cmd_internal txt names ;;
+0405) clear ; $cmd_internal txt names ; echo "$title_md"
+read -p "Type the firewall name to read   " nombrecillo
+nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
+$cmd_internal show $nombrecillo ;; 
+0406)archivo="$($favorite_realpath_textdialog --stdout \
+--title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
+archivo=$(echo $archivo | $command_sed s/\\///g)
+clear ;  echo "$title_md saved $archivo" ; $cmd_internal save $archivo ;;
+0407) clear ; $cmd_internal names ; echo "$title_md"
+read -p "| Type the firewall name to restore |   " nombrecillo
+nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
+$cmd_internal load $nombrecillo ;;
+0408) clear ; $cmd_internal txt actual ;;
+0409) clear ; $cmd_internal txt eraserules ; $cmd_internal cli list4   ;;
+0410) clear ; $cmd_internal txt wizard-tiny ; $cmd_internal cli list4  ;;
+0411) clear ; $cmd_internal txt wizard-mini ; $cmd_internal cli list4  ;;
+0412) clear ; $cmd_internal txt wizard-full ; $cmd_internal cli list4  ;;
+0413) clear ; $cmd_internal txt without-connection ; $cmd_internal cli list4  ;;
+0414) clear ; $cmd_internal txt input-permisive ; $cmd_internal cli list4   ;;
+0415) clear ; $cmd_internal txt input-established ; $cmd_internal cli list4   ;;
+0416) clear ; $cmd_internal txt eraserules4 ; $cmd_internal cli list4   ;;
+0417) clear ; $cmd_internal txt eraserules6 ; $cmd_internal cli list6   ;;
+0418) clear ; $cmd_internal txt eraserules ; $cmd_internal cli status   ;;
 ################################################################################
 0507) clear ; $cmd_internal txt client-basic ; $cmd_internal cli list4    ;;
 0508) clear ; $cmd_internal txt client-web ; $cmd_internal cli list4    ;;
@@ -8661,7 +8661,7 @@ $cmd_internal text-pause clear ; exit ;;
 ################################################################################
 esac
 $cmd_internal text-pause
-$cmd_internal cli-menu-$favorite_basename_textdialog
+$cmd_internal cli-menu-compact
 ####
 ####
 exit; fi
