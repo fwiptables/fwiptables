@@ -7755,8 +7755,8 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 003  "$text_md firewall-listconceptual" \
 004  "$text_md firewall-listnumeral" \
 005  "$text_md firewall-wallcontrol" \
-006  "$text_md firewall-wallsystem" \
-007  "$text_md firewall-wallcustom" \
+006  "$text_md firewall-wallcustom" \
+007  "$text_md firewall-wallsystem" \
 008  "$text_md firewall-netsystem"  \
 3>&1 1>&2 2>&3 )"
 ##########
@@ -7770,8 +7770,8 @@ case $menuprincipal in
 003) clear ; $cmd_internal cli-menu-listconceptual $onecli ;;
 004) clear ; $cmd_internal cli-menu-listnumeral $onecli  ;;
 005) clear ; $cmd_internal cli-menu-wallcontrol $onecli  ;;
-006) clear ; $cmd_internal cli-menu-wallsystem  $onecli  ;;
-007) clear ; $cmd_internal cli-menu-wallcustom  $onecli  ;;
+006) clear ; $cmd_internal cli-menu-wallcustom  $onecli  ;;
+007) clear ; $cmd_internal cli-menu-wallsystem  $onecli  ;;
 008) clear ; $cmd_internal cli-menu-netsystem     $onecli  ;;
 ################################################################################
 ################################################################################
