@@ -7749,7 +7749,7 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
+--title "$first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001  "$text_md intro" \
 002  "$text_md info-options" \
 003  "$text_md firewall-listconceptual" \
@@ -7800,7 +7800,7 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
+--title "$first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
 002 "$title_md [ Info Options ] $title_md" \
 003 "$title_md [ Firewall List With Conceptual ] $title_md" \
@@ -7874,7 +7874,7 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
+--title "$first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
 002 "$title_md [ Info Options     ] $title_md" \
 003 "$title_md [ Firewall Numeral ] $title_md" \
@@ -7952,7 +7952,7 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
+--title "$first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
 002 "$title_md [ Info Options     ] $title_md" \
 003 "$title_md [ Firewall Control ] $title_md" \
@@ -8040,7 +8040,7 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
+--title "$first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
 002 "$title_md [ Info Options        ] $title_md" \
 003 "$title_md [ Firewall Wallsystem ] $title_md" \
@@ -8142,7 +8142,7 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
+--title "$first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
 002 "$title_md [ Info Options        ] $title_md" \
 003 "$title_md [ Firewall Wallcustom ] $title_md" \
@@ -8238,7 +8238,7 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
+--title "$first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
 002 "$title_md [ Info Options     ] $title_md" \
 003 "$title_md [ firewall netsystem ] $title_md" \
