@@ -8339,9 +8339,9 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
 menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "$first_option With $cmd_version" --menu "Select" 0 0 0 \
-0110 "$title_md $text_md [$cmd_internal cli-menu] $text_md $title_md" \
-0120 "$title_md [ info-options ] $title_md" \
+--title "$first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
+0110 "$title_md [ intro ] $title_md $title_md" \
+0120 "$title_md [ info-options ] $title_md $title_md" \
 0200 "$title_md [ firewall-listconceptual ] $title_md" \
 0201  "$text_md list4" \
 0202  "$text_md list6"  \
@@ -8481,14 +8481,14 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 case $menuprincipal in
 ##########
 ##########
-0110) clear ; $cmd_internal txt readme  ;;
-0120) clear ; $cmd_internal txt info-options ;;
-0200) clear ; $cmd_internal txt firewall-listconceptual ;;
-0300) clear ; $cmd_internal txt firewall-listnumeral ;;
-0400) clear ; $cmd_internal txt firewall-wallcontrol ;;
-0500) clear ; $cmd_internal txt firewall-wallsystem ;;
-0600) clear ; $cmd_internal txt firewall-wallcustom ;;
-0700) clear ; $cmd_internal txt firewall-netsystem ;;
+0110) clear ; $cmd_internal cli intro  ;;
+0120) clear ; $cmd_internal cli info-options ;;
+0200) clear ; $cmd_internal cli firewall-listconceptual ;;
+0300) clear ; $cmd_internal cli firewall-listnumeral ;;
+0400) clear ; $cmd_internal cli firewall-wallcontrol ;;
+0500) clear ; $cmd_internal cli firewall-wallsystem ;;
+0600) clear ; $cmd_internal cli firewall-wallcustom ;;
+0700) clear ; $cmd_internal cli firewall-netsystem ;;
 ################################################################################
 0201) clear ; $cmd_internal txt list4 ;;
 0202) clear ; $cmd_internal txt list6 ;;
