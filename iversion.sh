@@ -1569,8 +1569,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "version" ]; then
-echo "$title_md $text_md Firewall Version"
-echo "$text_md"
+echo "$title_md $text_md Firewall Version"; echo
 ####
 ####
 echo "$text_md $text_md     Detail Firewall: Detail Version            $text_md"
@@ -1582,10 +1581,10 @@ fi
 ####
 ####
 echo "$text_md $text_md       Name Firewall: $cmd_name                 $text_md"
-echo "$text_md $text_md     Source Firewall: $cmd_notinstalled         $text_md"
-echo "$text_md $text_md   Internal Firewall: $cmd_internal             $text_md"
 echo "$text_md $text_md    Version Firewall: $cmd_version              $text_md"
 echo "$text_md $text_md       Date Firewall: $cmd_date                 $text_md"
+echo "$text_md $text_md     Source Firewall: $cmd_notinstalled         $text_md"
+echo "$text_md $text_md   Internal Firewall: $cmd_internal             $text_md"
 echo "$text_md $text_md   Short Description: $cmd_shortdescription     $text_md"
 echo "$text_md $text_md    Long Description: $cmd_longdescription      $text_md"
 echo "$text_md $text_md      Data Directory: $directory_data_necesary  $text_md"
@@ -2806,7 +2805,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "notes" ]; then
-echo "$title_md $text_md Firewall Notes"
+echo "$title_md $text_md Firewall Notes"; echo
 ####
 ####
 echo "$text_md                          Iptables Firewall $text_md" 
@@ -5576,16 +5575,19 @@ while create new configuration $text_md"
 #### 
 #### 
 #### echo "$title_md $text_info [ $cmd_filename installing.. ]"
-cp $cmd_notinstalled $cmd_installed
-chmod 755 $cmd_installed &> /dev/null 
+cp $cmd_notinstalled $cmd_installed && 
+chmod 755 $cmd_installed &> /dev/null &&
+echo "# OK. installed"
 ####
 ####
 ####  english: generate fwiptables default config and templates
 ####  spanish: genera fwiptables default configuracion y plantillas
 ####
 ####
-$cmd_notinstalled preferences-regen &> /dev/null
-$cmd_notinstalled templates-regen &> /dev/null
+$cmd_notinstalled preferences-regen &> /dev/null &&
+echo "# OK. Updated preferences"
+$cmd_notinstalled templates-regen &> /dev/null &&
+echo "# OK. Updated templates"
 ####
 ####
 ####   english: Show final status from installer: program version
