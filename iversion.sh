@@ -1091,14 +1091,6 @@ esac
 ####
 ####
 case "$first_option" in
-"--cli-menu-dialog") first_option="cli-menu"
-favorite_realpath_textdialog="$command_dialog" ;;
-"-cli-menu-dialog") first_option="cli-menu"
-favorite_realpath_textdialog="$command_dialog" ;;
-"--cli-menu-whiptail") first_option="cli-menu"
-favorite_realpath_textdialog="$command_whiptail" ;;
-"-cli-menu-whiptail") first_option="cli-menu"
-favorite_realpath_textdialog="$command_whiptail" ;;
 "-gui-menu-zenity") first_option="gui-menu-zenity" ;;
 "--gui-menu-zenity") first_option="gui-menu-zenity" ;;
 "-gui-menu-yad") first_option="gui-menu-yad" ;;
@@ -1169,18 +1161,6 @@ first_option="gui"
 favorite_realpath_graphicalldialog="$command_yad" ; 
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ; 
 first_option="gui"
-;;
-"cli-menu-dialog")
-favorite_realpath_textdialog="$command_dialog" ; 
-favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ; 
-first_option="cli-menu" 
-second_option="$favorite_basename_textdialog"
-;;
-"cli-menu-whiptail")
-favorite_realpath_textdialog="$command_whiptail" ;
-favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ; 
-first_option="cli-menu" 
-second_option="$favorite_basename_textdialog"
 ;;
 "gui-menu-zenity")
 favorite_realpath_graphicalldialog="$command_zenity" ;
@@ -2738,7 +2718,7 @@ echo "$text_md $text_md  Launch client web firewall in silent   | $cmd_internal 
 echo "$text_md $text_md  List iptables rules with output txt    | $cmd_internal txt ls4             $text_md"  
 echo "$text_md $text_md  List firewall with output cli whiptail | $cmd_internal cli-wiptail names   $text_md"  
 echo "$text_md $text_md  List sockets ip with output gui yad    | $cmd_internal gui-yad sockets     $text_md"  
-echo "$text_md $text_md  All options in text menu               | $cmd_internal cli-menu-dialog     $text_md"  
+echo "$text_md $text_md  All options in text menu               | $cmd_internal cli-menu     $text_md"  
 echo "$text_md $text_md  All options in window menu             | $cmd_internal gui-menu-yad        $text_md"  
 echo "$text_md $text_md  All options in window roll             | $cmd_internal gui-roll-zenity     $text_md"  
 echo "$text_md $text_md  All options in window shell            | $cmd_internal gui-shell-yad         $text_md"
@@ -3533,9 +3513,9 @@ if [ "$first_option" == "list-options" ] || [ "$first_option" == "options" ]; th
 echo "$text_md $cmd_internal [optional-output] first_option [second_option] $text_md"
 echo "$title_md    optional-output $text_md"
 echo "$text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ] $text_md"
-echo "$text_md [ cli-dialog cli-whiptail cli-menu-dialog cli-menu-whiptail ] $text_md"
-echo "$text_md [ cli-menu cli-menu-compact gui-zenity gui-yad gui-roll-zenity ] $text_md"
-echo "$text_md [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ] $text_md"
+echo "$text_md [ cli-dialog cli-whiptail cli-menu cli-menu-compact ] $text_md"
+echo "$text_md [ gui-zenity gui-yad gui-menu-zenity gui-menu-yad ] $text_md"
+echo "$text_md [ gui-roll-zenity gui-shell-zenity gui-shell-yad ] $text_md"
 echo "$title_md    firewall-listconceptual $text_md"
 echo "$text_md ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6 $text_md"
 echo "$text_md list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4 $text_md"
@@ -4043,8 +4023,6 @@ echo "$text_md $text_md gui-zenity . output in graphicall gui with zenity $text_
 echo "$text_md $text_md gui-yad . output in graphicall gui with yad $text_md"
 echo "$text_md $text_md cli-menu . output in terminal menu $text_md"
 echo "$text_md $text_md cli-menu-compact . output in terminal menu $text_md"
-echo "$text_md $text_md cli-menu-dialog . output in terminal menu with dialog $text_md"
-echo "$text_md $text_md cli-menu-whiptail . output in terminal menu with whiptail $text_md"
 echo "$text_md $text_md gui-menu-zenity . output in grapicall menu with zenity $text_md"
 echo "$text_md $text_md gui-menu-yad . output in grapicall menu with yad $text_md"
 echo "$text_md $text_md gui-shell-zenity . output in grapicall shell with zenity $text_md"
