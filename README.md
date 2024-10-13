@@ -2,10 +2,10 @@
   
 ###     fwiptables. Firewall With iptables.   [ readme md ]   
         
-      The fwiptables is a one-file WIZARD,   
-      for iptables, with COMMAND-LINE,       
-      and CLI-MENU, and GUI-MENU,            
-      and GUI-ROLL, and GUI-SHELL.           
+      The fwiptables is a one-file WIZARD,       
+      for iptables, with COMMAND-LINE,           
+      and CLI-MENU, and GUI-MENU,                
+      and GUI-ROLL, and GUI-SHELL.               
         
       From one system firewall to choose one,    
       with eraserules, or template custom,       
@@ -21,47 +21,47 @@
       with host whitelist, host blacklist,                 
       with other more capabilities of firewall.            
         
-###      fwiptables location.                              
+###      fwiptables location.                               
         
-       File    Location:   /usr/bin/fwiptables       
-       Config Directory:   /root/.config/fwiptables       
-       Cache  Directory:   /root/.cache/fwiptables       
+       File    Location:   /usr/bin/fwiptables    
+       Config Directory:   /root/.config/fwiptables        
+       Cache  Directory:   /root/.cache/fwiptables        
         
 ###     fwiptables install.                           
         
        su root TYPE: su root                         
-       put bit TYPE: chmod 755 /usr/bin/fwiptables       
-       install TYPE: /usr/bin/fwiptables install         
+       put bit TYPE: chmod 755 /usr/bin/fwiptables         
+       install TYPE: /usr/bin/fwiptables install           
         
-###        fwiptables uninstall.                     
+###        fwiptables uninstall.                
         
-      uninstall TYPE: fwiptables uninstall        
+      uninstall TYPE: /usr/bin/fwiptables uninstall        
   
 ###        Firewall Version
   
-            Detail Firewall: Version Detail              
-              Name Firewall: fwiptables                   
-            Source Firewall: /usr/bin/fwiptables           
-          Internal Firewall: /usr/bin/fwiptables               
-           Version Firewall: 24-10-E                
-              Date Firewall: Year 2024 / Month 10                   
-          Short Description: FireWall With iptables       
-           Long Description: iptables template in one script        
-             Data Directory: /root/.config/fwiptables    
-            Cache Directory: /root/.cache/fwiptables   
-           Developer Actual: Francisco Garcia              
-               Email Report: fwiptables@gmx.com                
-                File Format: Bourne-Again_shell_script,                 
-                Config PATH: /sbin:/bin:/usr/sbin:/usr/bin                       
-             Finder Program: which                  
-          Requisite Program: id,awk,sed,file,cut,date,cat      
-        Requisite Firewall4: iptables-legacy,iptables-nft    
-        Requisite Firewall6: ip6tables-legacy,ip6tables-nft    
-           Automatic Editor: /bin/nano       
-              Automatic cli: /bin/whiptail         
-              Automatic gui: /bin/yad   
-              Automatic pdf: /bin/convert            
-            License Program: LGPL v2, GPL v2                
+          Detail Firewall: Detail Version              
+            Name Firewall: fwiptables                   
+          Source Firewall: /usr/bin/fwiptables           
+        Internal Firewall: /usr/bin/fwiptables               
+         Version Firewall: 24-10-F                
+            Date Firewall: Year 2024 / Month 10                   
+        Short Description: FireWall With iptables       
+         Long Description: iptables template in one script        
+           Data Directory: /root/.config/fwiptables    
+          Cache Directory: /root/.cache/fwiptables   
+              Config PATH: /usr/bin:/usr/sbin:/bin:/sbin                       
+           Finder Program: which                  
+        Requisite Program: id,awk,sed,file,cut,date,cat      
+      Requisite Firewall4: iptables-legacy,iptables-nft    
+      Requisite Firewall6: ip6tables-legacy,ip6tables-nft    
+           Automatic Edit: /usr/bin/nano       
+            Automatic cli: /usr/bin/whiptail         
+            Automatic gui: /usr/bin/yad   
+            Automatic pdf: /usr/bin/convert            
+              File Format: Bourne-Again_shell_script,                 
+         Developer Actual: Francisco Garcia              
+             Email Report: fwiptables@gmx.com                
+          License Program: LGPL v2, GPL v2                
   
 ###  [ about ] [ licenses to fwiptables project ] [ about md ]
       File:          fwiptables
@@ -70,7 +70,7 @@
       Copyright:     (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>
       launch:        /usr/bin/fwiptables license-lgpl-v2|license-gpl-v2
   
-###  [ notes ] [ List notes about ] [ notes md ]
+###  [ notes ] [ List notes about ] [ notes md ]   
                             Iptables Firewall   
              Legacy or nft: whith one of them is sufficent   
            iptables-legacy: support for xtables ipv4   
@@ -88,7 +88,7 @@
                 miniserver: normal ports in client, and servers selecteds manually   
          input-established: the computer is only client   
       allow output uid/gid: User and/or group excepcional with conection allowed   
-                            Necesary Ports
+                            Necesary Ports   
                        ntp: Port necesary to update the time and date   
                     bootpc: Port necesary to dhcp and get ip   
                     domain: This port is necesary to domain resolver   
@@ -96,7 +96,7 @@
                  ipv6-icmp: Necesary protocol in ipv6   
                 ipv4 ports: ipv6 works too with old ipv4 ports   
   
-###  [ compile ] [ Optionally compile from bash script ] [ compile md]  
+###  [ compile ] [ Optionally compile from bash script ] [ compile md]   
       BASH SCRIPT WORKS fully. But if your desire is compiling...     
       Necesary fwiptables in source script bash   
       Download and install obash from oficial web internet   
@@ -107,111 +107,125 @@
 ###     [ Configuration files ]   
       Directory data:          /root/.config/fwiptables   
       Directory temp:          /root/.cache/fwiptables   
-      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-10-E   
+      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-10-F   
         
 ###     [ Log files ]             
-      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default-autolog-24-10-E   
-      File filelog:            /root/.config/fwiptables/fwiptables-log/default-filelog-24-10-E   
+      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default-autolog-24-10-F   
+      File filelog:            /root/.config/fwiptables/fwiptables-log/default-filelog-24-10-F   
         
 ###     [ optional output ]       
-      dialog cli:              /bin/dialog   
-      whiptail cli             /bin/whiptail   
-      zenity gui:              /bin/zenity   
-      yad gui:                 /bin/yad   
-      convert pdf:             /bin/convert   
+      dialog cli:              /usr/bin/dialog   
+      whiptail cli             /usr/bin/whiptail   
+      zenity gui:              /usr/bin/zenity   
+      yad gui:                 /usr/bin/yad   
+      convert pdf:             /usr/bin/convert   
         
 ###     [ Automatic iptables ]    
-      iptables legacy:         /sbin/iptables-legacy   
-      iptables nft:            /sbin/iptables-nft   
-      ip6tables legacy:        /sbin/ip6tables-legacy   
-      ip6tables nft:           /sbin/ip6tables-nft   
-      arptables:               /sbin/arptables   
-      ebtables:                /sbin/ebtables   
+      iptables legacy:         /usr/sbin/iptables-legacy   
+      iptables nft:            /usr/sbin/iptables-nft   
+      ip6tables legacy:        /usr/sbin/ip6tables-legacy   
+      ip6tables nft:           /usr/sbin/ip6tables-nft   
+      arptables:               /usr/sbin/arptables   
+      ebtables:                /usr/sbin/ebtables   
         
 ###     [ Automatic favorites ]   
-      Automatic txt:           /bin/bash   
-      Automatic cli:           /bin/whiptail   
-      Automatic gui:           /bin/yad   
-      Automatic pdf:           /bin/convert   
-      Automatic editor:        /bin/nano   
-      Automatic browser:       /bin/w3m   
-      Automatic ntpdate:       /sbin/ntpdate   
+      Automatic txt:           /usr/bin/bash   
+      Automatic cli:           /usr/bin/whiptail   
+      Automatic gui:           /usr/bin/yad   
+      Automatic pdf:           /usr/bin/convert   
+      Automatic editor:        /usr/bin/nano   
+      Automatic browser:       /usr/bin/w3m   
+      Automatic ntpdate:       /usr/sbin/ntpdate   
         
 ###     [ Necesary utils ]        
-      iptables nft:            /sbin/iptables-nft   
-      iptables legacy:         /sbin/iptables-legacy   
-      iptables nft:            /sbin/ip6tables-nft   
-      iptables legacy:         /sbin/ip6tables-legacy   
-      id command:                 
-      awk command:             /bin/awk   
-      sed command:             /bin/sed   
-      cat command:             /bin/cat   
-      cut command:             /bin/cut   
-      date command:            /bin/date   
-      file command:            /bin/file   
+      iptables nft:            /usr/sbin/iptables-nft   
+      iptables legacy:         /usr/sbin/iptables-legacy   
+      iptables nft:            /usr/sbin/ip6tables-nft   
+      iptables legacy:         /usr/sbin/ip6tables-legacy   
+      id command:              /usr/bin/id   
+      awk command:             /usr/bin/awk   
+      sed command:             /usr/bin/sed   
+      cat command:             /usr/bin/cat   
+      cut command:             /usr/bin/cut   
+      date command:            /usr/bin/date   
+      file command:            /usr/bin/file   
         
       all utils in command: fwiptables utils   
   
 ###     [ options-examples ] [ List examples ] [ examples md ]   
-###     [ One example with input-established ]   
+###     [ One example with input-established ]                
          
-       launch input-stablished        | fwiptables input-stablished                 
-       client for all ports in related,established, without servers ports
+       Launch: input-stablished                              
+       /usr/bin/fwiptables input-stablished                        
+       Explain: Client for all ports without servers ports   
          
-###     [ Several examples with tiny server ]   
+###     [ Several examples with tiny server ]                 
          
-       launch wizard tiny             | fwiptables wizard-tiny                 
-       launch tinyserver-tcp ports    | fwiptables tinyserver-tcp 21:25,80     
-       launch tinyserver-udp ports    | fwiptables tinyserver-udp 67:68,443    
-       client for all ports in related,established
+       Launch: wizard tiny                                   
+       /usr/bin/fwiptables wizard-tiny                             
+       Launch: tinyserver-tcp ports                          
+       /usr/bin/fwiptables tinyserver-tcp 21:25,80                 
+       Launch: tinyserver-udp ports                          
+       /usr/bin/fwiptables tinyserver-udp 67:68,443                
+       Explain: Client for all ports                         
          
-###     [ Several examples with mini server ]   
+###     [ Several examples with mini server ]                 
          
-       launch wizard mini             | fwiptables wizard-mini                 
-       wizard firewall for clients and servers
+       Launch: wizard mini                                   
+       /usr/bin/fwiptables wizard-mini                             
+       Explain: Wizard firewall for clients and servers      
          
-       launch miniserver-tcp ports    | fwiptables miniserver-tcp 21:25,80     
-       launch miniserver-udp ports    | fwiptables miniserver-udp 67:68,443    
-       see miniserver clients ports in preferences file
+       Launch: miniserver-tcp ports                          
+       /usr/bin/fwiptables miniserver-tcp 21:25,80                 
+       Launch: miniserver-udp ports                          
+       /usr/bin/fwiptables miniserver-udp 67:68,443                
+       Explain: Read miniserver clients ports in preferences file   
          
-###     [ Several examples without optional otuput ]        
+###     [ Several examples without optional otuput ]          
          
-###      without optional output | Example Description     
+###     without optional output | Example Description         
          
-       depends                  | fwiptables depends               
-       List firewall saved      | fwiptables names                 
-       List configs saved       | fwiptables names-custom          
-       Get info speed ipv4      | fwiptables speed-ip4             
-       Show listen sockets      | fwiptables sockets               
-       List last options        | fwiptables autolog               
-       modify default variables | fwiptables preferences-modify    
+       Explain: depends                    
+       /usr/bin/fwiptables depends               
+       Explain: List firewall saved        
+       /usr/bin/fwiptables names                 
+       Explain: List configs saved         
+       /usr/bin/fwiptables names-custom          
+       Explain: Get info speed ipv4        
+       /usr/bin/fwiptables speed-ip4             
+       Explain: Show listen sockets        
+       /usr/bin/fwiptables sockets               
+       Explain: List last options          
+       /usr/bin/fwiptables autolog               
+       Explain: modify default variables   
+       /usr/bin/fwiptables preferences-modify    
      
-###      with optional output | Example Description     
+###      with optional output | Example Description           
          
-       Example with info        | fwiptables info list             
-       Example with expert      | fwiptables txt expert            
-       Example with code ip4    | fwiptables cli code ip4          
-       Example with list rules  | fwiptables cli lsn4              
-       Example with nodes       | fwiptables gui nodes             
-       Example with web browser | fwiptables gui web kernel.org    
+       Example with info        | /usr/bin/fwiptables info list             
+       Example with expert      | /usr/bin/fwiptables txt expert            
+       Example with code ip4    | /usr/bin/fwiptables cli code ip4          
+       Example with list rules  | /usr/bin/fwiptables cli lsn4              
+       Example with nodes       | /usr/bin/fwiptables gui nodes             
+       Example with web browser | /usr/bin/fwiptables gui web kernel.org    
           
-       Launch client web firewall in silent   | fwiptables silent client-web     
-       List iptables rules with output txt    | fwiptables txt ls4               
-       List firewall with output cli whiptail | fwiptables cli-wiptail names     
-       List sockets ip with output gui yad    | fwiptables gui-yad sockets       
-       All options in text menu               | fwiptables cli-menu-dialog       
-       All options in window menu             | fwiptables gui-menu-yad          
-       All options in window roll             | fwiptables gui-roll-zenity       
-       All options in window shell            | fwiptables gui-shell-yad           
+       Launch client web firewall in silent   | /usr/bin/fwiptables silent client-web     
+       List iptables rules with output txt    | /usr/bin/fwiptables txt ls4               
+       List firewall with output cli whiptail | /usr/bin/fwiptables cli-wiptail names     
+       List sockets ip with output gui yad    | /usr/bin/fwiptables gui-yad sockets       
+       All options in text menu               | /usr/bin/fwiptables cli-menu       
+       All options in window menu             | /usr/bin/fwiptables gui-menu-yad          
+       All options in window roll             | /usr/bin/fwiptables gui-roll-zenity       
+       All options in window shell            | /usr/bin/fwiptables gui-shell-yad           
   
 ###        Firewall Options
   
    /usr/bin/fwiptables [optional-output] first_option [second_option]   
 ###     optional-output   
    [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]   
-   [ cli-dialog cli-whiptail cli-menu-dialog cli-menu-whiptail ]   
-   [ cli-menu cli-menu-compact gui-zenity gui-yad gui-roll-zenity ]   
-   [ gui-menu-zenity gui-menu-yad gui-shell-zenity gui-shell-yad ]   
+   [ cli-dialog cli-whiptail cli-menu cli-menu-compact ]   
+   [ gui-zenity gui-yad gui-menu-zenity gui-menu-yad ]   
+   [ gui-roll-zenity gui-shell-zenity gui-shell-yad ]   
 ###     firewall-listconceptual   
    ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6   
    list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4   
@@ -240,7 +254,7 @@
    server-lamp server-news server-ftp server-mail server-teamspeak   
    server-mumble server-gateway server-sql server-samba server-proxy   
    server-asterisk client-uid-root client-gid-users client-gid-net    
-###     firewall-utilnet   
+###     firewall-netsystem   
    preferences-read preferences-modify preferences-regen   
    speed-ip4 speed-ip6 filelog autolog date resolve sockets   
    ip ip4 ip6 network4 network6 address4 address6 options   
@@ -248,6 +262,6 @@
    web intro variables depends uninstall install upgrade   
    notes examples info code expert donate about version   
    license-lgpl-v2 license-gpl-v2   
-       | Program: /usr/bin/fwiptables 24-10-E   
+       | Program: /usr/bin/fwiptables 24-10-F   
        | Description: iptables template in one script   
        | Expert: expert is allowed in preferences file   
