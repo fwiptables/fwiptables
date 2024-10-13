@@ -2697,7 +2697,7 @@ echo "$title_md $text_md [ Several examples with mini server ]               $te
 echo "$text_md $text_md  $text_md"
 echo "$text_md $text_md  Launch: wizard mini                                 $text_md"
 echo "$text_md $text_md  $cmd_internal wizard-mini                           $text_md"  
-echo "$text_md $text_md  Wizard firewall for clients and servers"
+echo "$text_md $text_md  Explain: Wizard firewall for clients and servers    $text_md"
 echo "$text_md $text_md  $text_md"
 echo "$text_md $text_md  Launch: miniserver-tcp ports                        $text_md"
 echo "$text_md $text_md  $cmd_internal miniserver-tcp 21:25,80               $text_md"  
