@@ -20,54 +20,41 @@
 #### 51 Franklin St, Fifth Floor, Boston MA 02110-1301 USA
 ####
 ##################################################### non root
-if [ "$(id -u)" == "0" ] && [ "$1" != "install" ]
-then echo "# Install myradio-bash with root only to install: install" 
-echo "# With root is not allowed with other myradio-bash options"
-exit ; fi
-if [ "$(id -u)" == "0" ] && [ "$1" == "install" ]
-then cp $0 /usr/bin/myradio-bash &> /dev/null
-echo "# myradio-bash installed in /usr/bin/myradio-bash"
-exit; fi
+if [ "$(id -u)" == "0" ]; then echo "# launch as user, not root allowed"; exit; fi
 ##################################################### configuration list
-### variables list
+### variables principal list
+opt_name="myradio-bash"
+opt_version="24-10-E"
 opt_bin="$(realpath $0)"
 opt_base="$(basename $0)"
 opt_first="$1"
 opt_second="$2"
-kill_player="vlc"
-conf_agent="curl"
-conf_player="cvlc"
-conf_radio="https://www.tdtchannels.com/lists/radio.m3u8"
-conf_folder="$HOME/.config/myradio-bash"
-conf_complete="$conf_folder/myradio-list.m3u8"
-conf_choosed="$conf_folder/myradio-choosed.m3u8"
-conf_config="$conf_folder/myradio-config.txt"
+### variables secondary list
+conf_agent="curl" # the preferences
+conf_player="vlc -I dummy" # the preferences
+conf_kill="vlc" # the preferences
+conf_radio="https://www.tdtchannels.com/lists/radio.m3u8" # the preferences
+conf_folder="$HOME/.config/myradio-bash" # the preferences
+conf_complete="$conf_folder/myradio-list.m3u8" # the preferences
+conf_choosed="$conf_folder/myradio-choosed.m3u8" # the preferences
+conf_config="$conf_folder/myradio-config.txt" # the preferences
 ### without option
-if [ "$opt_first" == "$NULL" ]; then
-echo "# without option # choose one option to launch"
-echo "# Launch: $opt_base install|config|reset|stop|update|\
-search|play|random|link choosed-radio" ; exit ; fi
+### if [ "$opt_first" == "$NULL" ]; then
+### echo "# without option # choose one option to launch"
+### echo "# Launch: $opt_base install|config|reset|stop|update|\
+### search|play|random|link choosed-radio" ; exit ; fi
 ### update config
 if [ ! -d "$conf_folder" ]; then mkdir -p $conf_folder ; fi
 if [ ! -f "$conf_config" ]; then 
-echo "kill_player=vlc"                                         &> $conf_config
-echo "conf_agent=curl"                                         &>> $conf_config
-echo "conf_player=cvlc"                                        &>> $conf_config
-echo "conf_radio=https://www.tdtchannels.com/lists/radio.m3u8" &>> $conf_config
-echo "# config created $conf_config"
-fi
-if [ ! -f "$conf_complete" ]; then
-$opt_bin update
-fi
+cat $0 | grep "the preferences" | grep -iv conf_config > $conf_config
+echo "# config created $conf_config"  ; fi
+if [ ! -f "$conf_complete" ]; then  $opt_bin update ; fi
 ### load config
 source $conf_config
 ##################################################### options list
 ### reset config
 if [ "$opt_first" == "reset" ]; then
-echo "kill_player=vlc"                                         &> $conf_config
-echo "conf_agent=curl"                                         &>> $conf_config
-echo "conf_player=cvlc"                                        &>> $conf_config
-echo "conf_radio=https://www.tdtchannels.com/lists/radio.m3u8" &>> $conf_config
+cat $0 | grep "the preferences" | grep -iv conf_config > $conf_config
 echo "# config created $conf_config"
 exit ; fi
 ### config file
@@ -82,7 +69,7 @@ echo "# $conf_radio donloaded"
 exit; fi
 ### stop music
 if [ "$opt_first" == "stop" ] ; then
-killall -9 $kill_player &> /dev/null
+killall -9 $conf_kill &> /dev/null
 exit; fi
 ### search radio
 if [ "$opt_first" == "search" ]; then
@@ -109,20 +96,35 @@ if [ "$opt_first" == "code" ]; then
 echo "# source code script"
 cat $opt_bin
 exit; fi
-### random radio
-if [ "$opt_first" == "random" ]; then
-$opt_bin stop
-shuf="$(command -v shuf)"
-number_complete="$(cat $configuration | wc -l)"
-number_partial="$($shuf -i 1-"$number_complete" -n 1)"
-tail -"$number_partial" "$configuration" > $conf_choosed
-$conf_player -d $conf_choosed &
-echo "# now play random radio"
+### about
+if [ "$opt_first" == "about" ]; then
+echo "# about"
+echo "#### File:        myradio-bash"
+echo "#### Description: Command Fran Radio Selector From Internet Link"
+echo "#### Author:      Francisco Garcia <fwiptables@gmx.com>"
+echo "#### Copyright:   (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>"
+echo
+echo "$opt_name $opt_version"
+exit; fi
+### about
+if [ "$opt_first" == "info" ]; then
+echo "# Option:  info"
+echo "# -------  ----"
+echo "# info:    this help"
+echo "# about:   license and version"
+echo "# config:  show the actual user config for myradio-bash"
+echo "# reset:   reset the user config for my radio-bash"
+echo "# stop:    stop the player"
+echo "# update:  update the file m3u8 to play radio"
+echo "# search:  search in the file m3u8 to play radio"
+echo "# play:    play one radio with pattern"
+echo "# link:    choose una link to play"
 exit; fi
 ### invalid options
 echo "# option no valid # choose one option to launch"
-echo "# Launch: $opt_base install|config|reset|stop|update|\
-search|play|random|link choosed-radio"
+echo "# $opt_base info|about|reset|config|stop|\
+update|search|play|link choosed-radio"
 ##################################################### exit options
 exit
+
 
