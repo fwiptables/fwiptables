@@ -117,7 +117,7 @@ cmd_xdg="/run/user/0"                                      # Folder XDG
 cmd_format=$(file $0 | \
 awk '{print $2 "_" $3 "_" $4}')                            # File format
 #### info date logs 
-cmd_actual_date="$(date +_DAY_%Y-%m-%d_HOUR_%H-%M-%S)"     # log date
+cmd_actual_date="$(date +LOG_DAY_%Y-%m-%d_HOUR_%H-%M-%S)"     # log date
 cmd_opt_date="$cmd_actual_date-_OPT_"                      # log date
 ####
 ####
