@@ -5691,7 +5691,8 @@ exit; fi
 #### :rutina-inicial-nodes:
 ####
 ####
-if   [ "$first_option" == "nodes" ]; then 
+if   [ "$first_option" == "nodes" ]; then
+echo "$title_md $text_md Firewall Nodes"; echo
 ####
 ####
 echo "$title_md [ $first_option ] [ Show the list arp-scan in the lan ] "
