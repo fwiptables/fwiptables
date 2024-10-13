@@ -1569,6 +1569,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "version" ]; then
+echo "$title_md $text_md Firewall Version"
+echo "$text_md"
 ####
 ####
 echo "$text_md $text_md     Detail Firewall: Detail Version            $text_md"
@@ -2591,10 +2593,9 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "depends" ]; then
+echo "$title_md $text_md Firewall Depends" ; echo
 ####
 ####
-echo "$title_md [ $first_option ] [ List for depends programs ] [ depends md ] "
-echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ Configuration files ] $text_md"
 echo "$text_md $text_md Directory data:          $directory_data_necesary $text_md"
 echo "$text_md $text_md Directory temp:          $directory_cache_necesary $text_md"
@@ -2655,9 +2656,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "options-examples" ]; then
+echo "$title_md $text_md Firewall Examples"; echo
 ####
 ####
-echo "$title_md $text_md [ $first_option ] [ List examples ] [ examples md ] $text_md"
 echo "$title_md $text_md [ One example with input-established ]              $text_md"
 echo "$text_md $text_md  $text_md"  
 echo "$text_md $text_md  Launch: input-stablished                            $text_md"
@@ -2804,10 +2805,10 @@ exit; fi
 #### :rutina-inicial-notes:
 ####
 ####
-if [ "$first_option" == "notes" ]; then 
+if [ "$first_option" == "notes" ]; then
+echo "$title_md $text_md Firewall Notes"
 ####
 ####
-echo "$title_md [ $first_option ] [ List notes about ] [ notes md ] $text_md"
 echo "$text_md                          Iptables Firewall $text_md" 
 echo "$text_md           Legacy or nft: whith one of them is sufficent $text_md"   
 echo "$text_md         iptables-legacy: support for xtables ipv4 $text_md"    
@@ -5399,7 +5400,7 @@ exit; fi
 if  [ "$first_option" == "readme" ]; then 
 ####
 ####
-echo "$title_md $text_md fwiptables. Firewall With iptables.   [ readme md ] $text_md"
+echo "$title_md $text_md fwiptables readme"
 echo "$text_md $text_md $text_md"
 echo "$text_md $text_md The fwiptables is a one-file WIZARD,     $text_md"
 echo "$text_md $text_md for iptables, with COMMAND-LINE,         $text_md"
@@ -5420,19 +5421,19 @@ echo "$text_md $text_md with limit bandwidth, string word,                 $text
 echo "$text_md $text_md with host whitelist, host blacklist,               $text_md"
 echo "$text_md $text_md with other more capabilities of firewall.          $text_md"
 echo "$text_md $text_md $text_md"
-echo "$title_md $text_md  fwiptables location.                             $text_md"
+echo "$title_md $text_md  fwiptables location                              $text_md"
 echo "$text_md $text_md $text_md"
 echo "$text_md $text_md  File    Location:   $cmd_directory/$cmd_filename  $text_md"
 echo "$text_md $text_md  Config Directory:   $directory_data_necesary      $text_md"
 echo "$text_md $text_md  Cache  Directory:   $directory_cache_necesary     $text_md "
 echo "$text_md $text_md $text_md"
-echo "$title_md $text_md fwiptables install.                         $text_md"
+echo "$title_md $text_md fwiptables install                          $text_md"
 echo "$text_md $text_md $text_md"
 echo "$text_md $text_md  su root TYPE: su root                       $text_md"    
 echo "$text_md $text_md  put bit TYPE: chmod 755 $cmd_internal       $text_md"
 echo "$text_md $text_md  install TYPE: $cmd_internal install         $text_md" 
 echo "$text_md $text_md $text_md"
-echo "$title_md $text_md $text_md fwiptables uninstall.              $text_md"
+echo "$title_md $text_md fwiptables uninstall                        $text_md"
 echo "$text_md $text_md $text_md"
 echo "$text_md $text_md uninstall TYPE: $cmd_internal uninstall      $text_md"
 ####
@@ -5449,11 +5450,10 @@ exit; fi
 if  [ "$first_option" == "intro" ]; then 
 ####
 ####
-echo "$title_md $text_md fwiptables. Firewall With iptables. intro content information  $text_md"
+echo "$title_md fwiptables. Firewall With iptables. intro content information  $text_md"
+echo "$text_md"
 echo "$text_md"
 $cmd_internal readme
-echo "$text_md"
-echo "$title_md $text_md $text_md Firewall Version"
 echo "$text_md"
 $cmd_internal version
 echo "$text_md"
@@ -5466,6 +5466,7 @@ echo "$text_md"
 $cmd_internal depends
 echo "$text_md"
 $cmd_internal examples
+echo "$text_md"
 echo "$text_md"
 echo "$title_md $text_md $text_md Firewall Options"
 echo "$text_md"
@@ -5726,9 +5727,10 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "about" ]; then 
+echo "$title_md $text_md Firewall About"
 ####
 ####
-echo "$title_md [ $first_option ] [ licenses to fwiptables project ] [ about md ]"
+echo "$text_md"
 echo "$text_md $text_md File:          fwiptables"
 echo "$text_md $text_md Description:   Command Fran FireWall fwiptables Generator"
 echo "$text_md $text_md Author:        Francisco Garcia <fwiptables@gmx.com>"
@@ -6027,11 +6029,13 @@ exit; fi
 #### :rutina-inicial-compile:
 ####
 ####
-if   [ "$first_option" == "compile" ]; then 
+if   [ "$first_option" == "compile" ]; then
+echo "$title_md $text_md Firewall Compile" ; echo
 ####
 ####
-echo "$title_md [ $first_option ] [ Optionally compile from bash script ] [ compile md] $text_md"   
-echo "$text_md $text_md BASH SCRIPT WORKS fully. But if your desire is compiling...   $text_md"       
+echo "$text_md $text_md BASH SCRIPT WORKS fully.    $text_md"
+echo "$text_md $text_md But if your desire is compiling...   $text_md"   
+echo    
 echo "$text_md $text_md Necesary fwiptables in source script bash $text_md"     
 echo "$text_md $text_md Download and install obash from oficial web internet $text_md"      
 echo "$text_md $text_md Run: obash -s -c -o ./destination.bin ./source-bash.sh $text_md"      
