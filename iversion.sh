@@ -73,7 +73,7 @@ exit ; fi
 #### The name file command
 cmd_name="fwiptables"                                      # Name firewall
 #### source /etc/profile                        
-cmd_path="/sbin:/bin:/usr/sbin:/usr/bin"                   # Config for PATH
+cmd_path="/usr/bin:/usr/sbin:/bin:/sbin"                   # Config for PATH
 PATH="$cmd_path"                                           # PATH for fwiptables
 #### the installed location
 cmd_filename="fwiptables"                                  # Filename installed
@@ -2703,21 +2703,28 @@ echo "$text_md $text_md  Launch: miniserver-tcp ports                        $te
 echo "$text_md $text_md  $cmd_internal miniserver-tcp 21:25,80               $text_md"  
 echo "$text_md $text_md  Launch: miniserver-udp ports                        $text_md"
 echo "$text_md $text_md  $cmd_internal miniserver-udp 67:68,443              $text_md"  
-echo "$text_md $text_md  Explain: Read miniserver clients ports in preferences file"
+echo "$text_md $text_md  Explain: Read miniserver clients ports in preferences file $text_md"
 echo "$text_md $text_md  $text_md"
 echo "$title_md $text_md [ Several examples without optional otuput ]        $text_md"
 echo "$text_md $text_md  $text_md"
 echo "$title_md $text_md without optional output | Example Description       $text_md"  
 echo "$text_md $text_md  $text_md"  
-echo "$text_md $text_md  depends                  | $cmd_internal depends             $text_md"  
-echo "$text_md $text_md  List firewall saved      | $cmd_internal names               $text_md"  
-echo "$text_md $text_md  List configs saved       | $cmd_internal names-custom        $text_md"  
-echo "$text_md $text_md  Get info speed ipv4      | $cmd_internal speed-ip4           $text_md"  
-echo "$text_md $text_md  Show listen sockets      | $cmd_internal sockets             $text_md"  
-echo "$text_md $text_md  List last options        | $cmd_internal autolog             $text_md"   
-echo "$text_md $text_md  modify default variables | $cmd_internal preferences-modify  $text_md"  
+echo "$text_md $text_md  Explain: depends                  $text_md"
+echo "$text_md $text_md  $cmd_internal depends             $text_md"  
+echo "$text_md $text_md  Explain: List firewall saved      $text_md"
+echo "$text_md $text_md  $cmd_internal names               $text_md"  
+echo "$text_md $text_md  Explain: List configs saved       $text_md"
+echo "$text_md $text_md  $cmd_internal names-custom        $text_md"  
+echo "$text_md $text_md  Explain: Get info speed ipv4      $text_md"
+echo "$text_md $text_md  $cmd_internal speed-ip4           $text_md"  
+echo "$text_md $text_md  Explain: Show listen sockets      $text_md"
+echo "$text_md $text_md  $cmd_internal sockets             $text_md"  
+echo "$text_md $text_md  Explain: List last options        $text_md"
+echo "$text_md $text_md  $cmd_internal autolog             $text_md"   
+echo "$text_md $text_md  Explain: modify default variables $text_md"
+echo "$text_md $text_md  $cmd_internal preferences-modify  $text_md"  
 echo "$text_md $text_md"
-echo "$title_md $text_md  with optional output | Example Description   $text_md"  
+echo "$title_md $text_md  with optional output | Example Description         $text_md"  
 echo "$text_md $text_md  $text_md"
 echo "$text_md $text_md  Example with info        | $cmd_internal info list           $text_md"  
 echo "$text_md $text_md  Example with expert      | $cmd_internal txt expert          $text_md"  
