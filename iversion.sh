@@ -7837,25 +7837,25 @@ onecli="$(basename "$favorite_realpath_textdialog")"
 ##########
 case $menuprincipal in
 001) clear ; $cmd_internal cli-menu $onecli ;;
-002) clear ; $cmd_internal cli options ;;
-003) clear ; $cmd_internal cli firewall-listconceptual ;;
-004) clear ; $cmd_internal cli ls4 ;;
-005) clear ; $cmd_internal cli ls6 ;;
-006) clear ; $cmd_internal cli list-filter4 ;;
-007) clear ; $cmd_internal cli list-filter6 ;;
-008) clear ; $cmd_internal cli list-forward ;;
-009) clear ; $cmd_internal cli list-forward6 ;;
-010) clear ; $cmd_internal cli list-nat4 ;;
-011) clear ; $cmd_internal cli list-nat6 ;;
-012) clear ; $cmd_internal cli list-alltables ;;
-013) clear ; $cmd_internal cli list-raw4 ;;
-014) clear ; $cmd_internal cli list-raw6 ;;
-015) clear ; $cmd_internal cli list-mangle4 ;; 
-016) clear ; $cmd_internal cli list-mangle6 ;;
-017) clear ; $cmd_internal cli list-security4 ;;
-018) clear ; $cmd_internal cli list-security6 ;;
-019) clear ; $cmd_internal cli list-ebtables ;;
-020) clear ; $cmd_internal cli list-arptables ;;
+002) clear ; $cmd_internal $outcli options ;;
+003) clear ; $cmd_internal $outcli firewall-listconceptual ;;
+004) clear ; $cmd_internal $outcli ls4 ;;
+005) clear ; $cmd_internal $outcli ls6 ;;
+006) clear ; $cmd_internal $outcli list-filter4 ;;
+007) clear ; $cmd_internal $outcli list-filter6 ;;
+008) clear ; $cmd_internal $outcli list-forward ;;
+009) clear ; $cmd_internal $outcli list-forward6 ;;
+010) clear ; $cmd_internal $outcli list-nat4 ;;
+011) clear ; $cmd_internal $outcli list-nat6 ;;
+012) clear ; $cmd_internal $outcli list-alltables ;;
+013) clear ; $cmd_internal $outcli list-raw4 ;;
+014) clear ; $cmd_internal $outcli list-raw6 ;;
+015) clear ; $cmd_internal $outcli list-mangle4 ;; 
+016) clear ; $cmd_internal $outcli list-mangle6 ;;
+017) clear ; $cmd_internal $outcli list-security4 ;;
+018) clear ; $cmd_internal $outcli list-security6 ;;
+019) clear ; $cmd_internal $outcli list-ebtables ;;
+020) clear ; $cmd_internal $outcli list-arptables ;;
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
 $cmd_internal text-pause clear ; exit ;;
@@ -7915,25 +7915,25 @@ onecli="$(basename "$favorite_realpath_textdialog")"
 ##########
 case $menuprincipal in
 001) clear ; $cmd_internal cli-menu $onecli ;;
-002) clear ; $cmd_internal cli options ;;
-003) clear ; $cmd_internal cli firewall-listnumeral ;;
-004) clear ; $cmd_internal cli lsn4 ;;
-005) clear ; $cmd_internal cli lsn6 ;;
-006) clear ; $cmd_internal cli listn-filter4 ;;
-007) clear ; $cmd_internal cli listn-filter6 ;;
-008) clear ; $cmd_internal cli listn-forward ;;
-009) clear ; $cmd_internal cli listn-forward6 ;;
-010) clear ; $cmd_internal cli listn-nat4 ;;
-011) clear ; $cmd_internal cli listn-nat6 ;;
-012) clear ; $cmd_internal cli listn-alltables ;;
-013) clear ; $cmd_internal cli listn-raw4 ;;
-014) clear ; $cmd_internal cli listn-raw6 ;;
-015) clear ; $cmd_internal cli listn-mangle4 ;; 
-016) clear ; $cmd_internal cli listn-mangle6 ;;
-017) clear ; $cmd_internal cli listn-security4 ;;
-018) clear ; $cmd_internal cli listn-security6 ;;
-019) clear ; $cmd_internal cli list-ebtables ;;
-020) clear ; $cmd_internal cli list-arptables ;;
+002) clear ; $cmd_internal $outcli options ;;
+003) clear ; $cmd_internal $outcli firewall-listnumeral ;;
+004) clear ; $cmd_internal $outcli lsn4 ;;
+005) clear ; $cmd_internal $outcli lsn6 ;;
+006) clear ; $cmd_internal $outcli listn-filter4 ;;
+007) clear ; $cmd_internal $outcli listn-filter6 ;;
+008) clear ; $cmd_internal $outcli listn-forward ;;
+009) clear ; $cmd_internal $outcli listn-forward6 ;;
+010) clear ; $cmd_internal $outcli listn-nat4 ;;
+011) clear ; $cmd_internal $outcli listn-nat6 ;;
+012) clear ; $cmd_internal $outcli listn-alltables ;;
+013) clear ; $cmd_internal $outcli listn-raw4 ;;
+014) clear ; $cmd_internal $outcli listn-raw6 ;;
+015) clear ; $cmd_internal $outcli listn-mangle4 ;; 
+016) clear ; $cmd_internal $outcli listn-mangle6 ;;
+017) clear ; $cmd_internal $outcli listn-security4 ;;
+018) clear ; $cmd_internal $outcli listn-security6 ;;
+019) clear ; $cmd_internal $outcli list-ebtables ;;
+020) clear ; $cmd_internal $outcli list-arptables ;;
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
 $cmd_internal text-pause clear ; exit ;;
@@ -7993,12 +7993,12 @@ onecli="$(basename "$favorite_realpath_textdialog")"
 ################################################################################
 case $menuprincipal in
 001) clear ; $cmd_internal cli-menu $onecli ;;
-002) clear ; $cmd_internal cli options ;;
-003) clear ; $cmd_internal cli firewall-wallcontrol ;;
-004) clear ; $cmd_internal txt stop ;;
-005) clear ; $cmd_internal txt continue ;;
-006) clear ; $cmd_internal txt reset ;;
-007) clear ; $cmd_internal txt names ;;
+002) clear ; $cmd_internal $outcli options ;;
+003) clear ; $cmd_internal $outcli firewall-wallcontrol ;;
+004) clear ; $cmd_internal $outcli stop ;;
+005) clear ; $cmd_internal $outcli continue ;;
+006) clear ; $cmd_internal $outcli reset ;;
+007) clear ; $cmd_internal $outcli names ;;
 008) clear ; $cmd_internal txt names ; echo "$title_md"
 read -p "Type the firewall name to read   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
@@ -8011,17 +8011,17 @@ clear ;  echo "$title_md saved $archivo" ; $cmd_internal save $archivo ;;
 read -p "| Type the firewall name to restore |   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
 $cmd_internal load $nombrecillo ;;
-011) clear ; $cmd_internal cli actual ;;
-012) clear ; $cmd_internal cli eraserules ; $cmd_internal cli list4   ;;
-013) clear ; $cmd_internal txt wizard-tiny ; $cmd_internal cli list4  ;;
-014) clear ; $cmd_internal txt wizard-mini ; $cmd_internal cli list4  ;;
-015) clear ; $cmd_internal txt wizard-full ; $cmd_internal cli list4  ;;
-016) clear ; $cmd_internal txt without-connection ; $cmd_internal cli list4  ;;
-017) clear ; $cmd_internal txt input-permisive ; $cmd_internal cli list4   ;;
-018) clear ; $cmd_internal txt input-established ; $cmd_internal cli list4   ;;
-019) clear ; $cmd_internal txt eraserules4 ; $cmd_internal cli list4   ;;
-020) clear ; $cmd_internal txt eraserules6 ; $cmd_internal cli list6   ;;
-021) clear ; $cmd_internal txt eraserules ; $cmd_internal cli status   ;;
+011) clear ; $cmd_internal $outcli actual ;;
+012) clear ; $cmd_internal $outcli eraserules ; $cmd_internal cli list4   ;;
+013) clear ; $cmd_internal $outcli wizard-tiny ; $cmd_internal cli list4  ;;
+014) clear ; $cmd_internal $outcli wizard-mini ; $cmd_internal cli list4  ;;
+015) clear ; $cmd_internal $outcli wizard-full ; $cmd_internal cli list4  ;;
+016) clear ; $cmd_internal $outcli without-connection ; $cmd_internal cli list4  ;;
+017) clear ; $cmd_internal $outcli input-permisive ; $cmd_internal cli list4   ;;
+018) clear ; $cmd_internal $outcli input-established ; $cmd_internal cli list4   ;;
+019) clear ; $cmd_internal $outcli eraserules4 ; $cmd_internal cli list4   ;;
+020) clear ; $cmd_internal $outcli eraserules6 ; $cmd_internal cli list6   ;;
+021) clear ; $cmd_internal $outcli eraserules ; $cmd_internal cli status   ;;
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
 $cmd_internal text-pause clear ; exit ;;
@@ -8177,8 +8177,8 @@ onecli="$(basename "$favorite_realpath_textdialog")"
 ################################################################################
 case $menuprincipal in
 001) clear ; $cmd_internal cli-menu $onecli ;;
-002) clear ; $cmd_internal cli options ;;
-003) clear ; $cmd_internal cli firewall-wallsystem ;;
+002) clear ; $cmd_internal $outcli options ;;
+003) clear ; $cmd_internal $outcli firewall-wallsystem ;;
 004) clear ; $cmd_internal txt names-custom
 read -p "Input the custom name to load # " archivo
 archivo=$(echo $archivo | $command_sed s/\\///g)
@@ -8285,38 +8285,38 @@ onecli="$(basename "$favorite_realpath_textdialog")"
 ##########
 case $menuprincipal in
 001) clear ; $cmd_internal cli-menu $onecli ;;
-002) clear ; $cmd_internal cli options ;;
-003) clear ; $cmd_internal cli firewall-listnumeral ;;
-011) clear ; $cmd_internal txt preferences-read ;;
-012) clear ; $cmd_internal txt preferences-modify ;;
-013) clear ; $cmd_internal txt preferences-regen ;;
-014) clear ; $cmd_internal txt filelog ;;
-015) clear ; $cmd_internal txt autolog ;;
-016) clear ; $cmd_internal txt ip4 ;;
-017) clear ; $cmd_internal txt ip6 ;;
-018) clear ; $cmd_internal txt speed-ip4 ;;
-019) clear ; $cmd_internal txt speed-ip6 ;;
-020) clear ; $cmd_internal txt sockets ;;
-021) clear ; $cmd_internal txt notes ;;
-022) clear ; $cmd_internal txt license ;;
+002) clear ; $cmd_internal $outcli options ;;
+003) clear ; $cmd_internal $outcli firewall-listnumeral ;;
+011) clear ; $cmd_internal $outcli preferences-read ;;
+012) clear ; $cmd_internal $outcli preferences-modify ;;
+013) clear ; $cmd_internal $outcli preferences-regen ;;
+014) clear ; $cmd_internal $outcli txt filelog ;;
+015) clear ; $cmd_internal $outcli txt autolog ;;
+016) clear ; $cmd_internal $outcli ip4 ;;
+017) clear ; $cmd_internal $outcli ip6 ;;
+018) clear ; $cmd_internal $outcli speed-ip4 ;;
+019) clear ; $cmd_internal $outcli speed-ip6 ;;
+020) clear ; $cmd_internal $outcli sockets ;;
+021) clear ; $cmd_internal $outcli notes ;;
+022) clear ; $cmd_internal $outcli license ;;
 ### 0713) clear ; $cmd_internal cli about ;;
 ### 0714) clear ; $cmd_internal cli examples ;;
-025) clear ; $cmd_internal txt depends ;;
-026) clear ; $cmd_internal txt info ;;
-027) clear ; $cmd_internal txt version ;;
-028) clear ; $cmd_internal txt list-options ;;
+025) clear ; $cmd_internal $outcli depends ;;
+026) clear ; $cmd_internal $outcli info ;;
+027) clear ; $cmd_internal $outcli version ;;
+028) clear ; $cmd_internal $outcli list-options ;;
 ### 0719) clear ; $cmd_internal cli clasic-options ;;
-030) clear ; $cmd_internal txt info-options ;;
-031) clear ; $cmd_internal txt nodes ;;
-032) clear ; $cmd_internal txt date ;;
-033) clear ; $cmd_internal txt free ;;
-034) clear ; $cmd_internal txt expert ;;
-035) clear ; $cmd_internal txt treeconf ;;
-036) clear ; $cmd_internal txt commands ;;
-037) clear ; $cmd_internal txt variables ;;
-038) clear ; $cmd_internal txt intro ;;
-039) clear ; $cmd_internal txt download;;
-040) clear ; $cmd_internal txt install;;
+030) clear ; $cmd_internal $outcli info-options ;;
+031) clear ; $cmd_internal $outcli nodes ;;
+032) clear ; $cmd_internal $outcli date ;;
+033) clear ; $cmd_internal $outcli free ;;
+034) clear ; $cmd_internal $outcli expert ;;
+035) clear ; $cmd_internal $outcli treeconf ;;
+036) clear ; $cmd_internal $outcli commands ;;
+037) clear ; $cmd_internal $outcli variables ;;
+038) clear ; $cmd_internal $outcli intro ;;
+039) clear ; $cmd_internal $outcli download;;
+040) clear ; $cmd_internal $outcli install;;
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
 $cmd_internal text-pause clear ; exit ;;
