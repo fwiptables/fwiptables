@@ -95,7 +95,7 @@ fi
 #### The number version
 cmd_year="24"                                              # Number year version
 cmd_month="10"                                             # Number mouth version
-cmd_letter="F"                                             # Number letter version
+cmd_letter="G"                                             # Number letter version
 cmd_version="$cmd_year-$cmd_month-$cmd_letter"             # Final date like number version
 cmd_date="Year 20$cmd_year / Month $cmd_month"
 #### The data version
