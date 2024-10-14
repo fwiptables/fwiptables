@@ -1596,8 +1596,7 @@ exit ; fi
 #### :rutina-inicial-expert-cpufreq:
 ####
 ####
-if [ "$first_option" == "expert-cpufreq-info" ] ; then
-echo "$cycle_header firewall $first_option"; echo
+if [ "$first_option" == "expert-cpufreq-info" ] ; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ] [ show cpu frequence info ]"
@@ -1615,8 +1614,7 @@ exit; fi
 #### :rutina-inicial-expert-cpupower:
 ####
 ####
-if [ "$first_option" == "expert-cpupower-info" ] ; then
-echo "$cycle_header firewall $first_option"; echo
+if [ "$first_option" == "expert-cpupower-info" ] ; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ] [ show cpu frequence info ]"
@@ -1634,8 +1632,7 @@ exit; fi
 #### :rutina-inicial-expert-configs-save:
 ####
 ####
-if [ "$first_option" == "expert-configs-save" ] ; then
-echo "$cycle_header firewall $first_option"; echo
+if [ "$first_option" == "expert-configs-save" ] ; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ] [ save backups confiurations to choosed filename ]"
@@ -1658,8 +1655,7 @@ exit; fi
 #### :rutina-inicial-expert-configs-load:
 ####
 ####
-if [ "$first_option" == "expert-configs-load" ] ; then
-echo "$cycle_header firewall $first_option"; echo
+if [ "$first_option" == "expert-configs-load" ] ; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ] [ load backups confiurations from choosed filename ]"
@@ -1682,8 +1678,7 @@ exit; fi
 #### :rutina-inicial-expert-wpascan:
 ####
 ####
-if   [ "$first_option" == "expert-wpa-scan" ]; then
-echo "$cycle_header firewall $first_option"; echo
+if   [ "$first_option" == "expert-wpa-scan" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ]  [ Show SSID from net wifi ] "
@@ -1940,8 +1935,7 @@ exit; fi
 #### :rutina-inicial-preferences-read:
 ####
 ####
-if [ "$first_option" == "preferences-read" ]; then 
-echo "$cycle_header firewall $first_option"; echo
+if [ "$first_option" == "preferences-read" ]; then echo "$overhead"
 ####
 ####
 $command_cat  $file_default_preferences
@@ -1957,8 +1951,7 @@ exit; fi
 #### :rutina-inicial-preferences-regen:
 ####
 ####
-if [ "$first_option" == "preferences-regen" ] ; then
-echo "$cycle_header firewall $first_option"; echo
+if [ "$first_option" == "preferences-regen" ] ; then echo "$overhead"
 ####
 ####
 $cmd_internal preferences-example &> $file_default_preferences
@@ -2048,8 +2041,7 @@ exit ; fi
 #### :rutina-inicial-resolve:
 ####
 ####
-if [ "$first_option" == "resolve" ]; then
-echo "$cycle_header firewall $first_option"; echo
+if [ "$first_option" == "resolve" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md $text_info $title_md [ Domain resolve ] [ nameserver and search ] $title_md"
@@ -2076,12 +2068,10 @@ exit; fi
 #### :rutina-inicial-network:
 ####
 ####
-if [ "$first_option" == "network" ]; then
+if [ "$first_option" == "network" ]; then echo "$overhead"
 ####
 ####
-echo ; echo "Network ip4"
 $cmd_internal network4
-echo ; echo "Network ip6"
 $cmd_internal network6
 ####
 ####
@@ -2094,7 +2084,7 @@ exit; fi
 #### :rutina-inicial-network4:
 ####
 ####
-if [ "$first_option" == "network4" ]; then
+if [ "$first_option" == "network4" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md $text_info ### [ Network Route ] [ Route ipv4 ] ###"
@@ -2117,7 +2107,7 @@ exit; fi
 #### :rutina-inicial-network6:
 ####
 ####
-if [ "$first_option" == "network6" ]; then
+if [ "$first_option" == "network6" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md $text_info ### [ Network Route ] [ Route ipv6 ] ###"
@@ -2140,12 +2130,11 @@ exit; fi
 #### :rutina-inicial-address:
 ####
 ####
-if [ "$first_option" == "address" ] || [ "$first_option" == "ip" ]; then
+if [ "$first_option" == "address" ] || [ "$first_option" == "ip" ]; 
+then echo "$overhead"
 ####
 ####
-echo ; echo "Address ip4"
 $cmd_internal address4
-echo ; echo "Address ip6"
 $cmd_internal address6
 ####
 ####
@@ -2158,7 +2147,7 @@ exit ; fi
 #### :rutina-inicial-address4:
 ####
 ####
-if [ "$first_option" == "address4" ]; then
+if [ "$first_option" == "address4" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md $text_info ### [ Private ip ] [ Address ipv4 ] ###"
@@ -2186,7 +2175,7 @@ exit; fi
 #### :rutina-inicial-address6:
 ####
 ####
-if [ "$first_option" == "address6" ]; then
+if [ "$first_option" == "address6" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md $text_info ### [ Private ip ] [ Address ipv6 ] ###"
@@ -2214,7 +2203,7 @@ exit; fi
 #### :rutina-inicial-sockets:
 ####
 ####
-if   [ "$first_option" == "sockets" ]; then 
+if   [ "$first_option" == "sockets" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ] [ Show whith ss: LISTEN sockets ] "
@@ -2235,17 +2224,13 @@ exit; fi
 #### :rutina-inicial-ip4:
 ####
 ####
-if [ "$first_option" == "ip4" ]; then
+if [ "$first_option" == "ip4" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ]  [ show info about net ip4 ] [ ip4 md ]"
-echo
 $cmd_internal network4
-echo
 $cmd_internal address4
-echo
 $cmd_internal resolve
-echo
 $cmd_internal sockets
 ####
 ####
@@ -2258,17 +2243,13 @@ exit; fi
 #### :rutina-inicial-ip6:
 ####
 ####
-if [ "$first_option" == "ip6" ]; then
+if [ "$first_option" == "ip6" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ]  [ show info about net ip6 ] [ ip6 md ]"
-echo
 $cmd_internal network6
-echo
 $cmd_internal address6
-echo
 $cmd_internal resolve
-echo
 $cmd_internal sockets
 ####
 ####
@@ -2442,7 +2423,7 @@ exit; fi
 #### :rutina-inicial-expert-tracetcp4:
 ####
 ####
-if   [ "$first_option" == "expert-trace-tcp4" ]; then
+if   [ "$first_option" == "expert-trace-tcp4" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ]  [ trace ip or host with tcp ipv4 ]"
@@ -2466,7 +2447,7 @@ exit; fi
 #### :rutina-inicial-expert-tracetcp6:
 ####
 ####
-if   [ "$first_option" == "expert-trace-tcp6" ]; then
+if   [ "$first_option" == "expert-trace-tcp6" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ]  [ trace ip or host with tcp ipv6 ]"
@@ -2490,7 +2471,7 @@ exit; fi
 #### :rutina-inicial-expert-trace-icmp4:
 ####
 ####
-if   [ "$first_option" == "expert-trace-icmp4" ]; then
+if   [ "$first_option" == "expert-trace-icmp4" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ]  [ trace ip or host with icmp ipv4 ]"
@@ -2514,7 +2495,7 @@ exit; fi
 #### :rutina-inicial-expert-trace-icmp6:
 ####
 ####
-if   [ "$first_option" == "expert-trace-icmp6" ]; then
+if   [ "$first_option" == "expert-trace-icmp6" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ]  [ trace ip or host with icmp ipv6 ]"
@@ -2538,7 +2519,7 @@ exit; fi
 #### :rutina-inicial-expert-myradio-install:
 ####
 ####
-if   [ "$first_option" == "expert-myradio-install" ]; then
+if   [ "$first_option" == "expert-myradio-install" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ]  [ myradio download ] [ expert-myradio-install md]"
@@ -2559,7 +2540,7 @@ exit; fi
 #### :rutina-inicial-utils:
 ####
 ####
-if [ "$first_option" == "utils" ]; then
+if [ "$first_option" == "utils" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ] [ List for posible utils programs ] [ utils md ] "
@@ -2580,8 +2561,7 @@ exit ; fi
 #### :rutina-inicial-depends:
 ####
 ####
-if [ "$first_option" == "depends" ]; then
-echo "$title_md $text_md Firewall Depends" ; echo
+if [ "$first_option" == "depends" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md $text_md [ Configuration files ] $text_md"
@@ -2643,8 +2623,7 @@ exit; fi
 #### :rutina-inicial-examples:
 ####
 ####
-if [ "$first_option" == "options-examples" ]; then
-echo "$title_md $text_md Firewall Examples"; echo
+if [ "$first_option" == "options-examples" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md $text_md [ One example with input-established ]              $text_md"
@@ -2723,7 +2702,7 @@ exit; fi
 #### :rutina-inicial-expert-showweather:
 ####
 ####
-if   [ "$first_option" == "expert-show-weather" ]; then 
+if   [ "$first_option" == "expert-show-weather" ]; then echo "$overhead" 
 ####
 ####
 case $command_curl in "$NULL") echo "$title_md $text_fail [ Install a curl ]"; exit ;; esac
@@ -2758,7 +2737,7 @@ exit; fi
 #### :rutina-inicial-treecache:
 ####
 ####
-if   [ "$first_option" == "treecache" ]; then 
+if   [ "$first_option" == "treecache" ]; then echo "$overhead" 
 ####
 ####
 if   [ "$command_tree" == "$NULL" ] ; then 
@@ -2777,7 +2756,7 @@ exit; fi
 #### :rutina-inicial-cleancache:
 ####
 ####
-if   [ "$first_option" == "cleancache" ]; then 
+if   [ "$first_option" == "cleancache" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ cleaning ] clean cache: deleting cache $cmd_internal"
@@ -2793,8 +2772,7 @@ exit; fi
 #### :rutina-inicial-notes:
 ####
 ####
-if [ "$first_option" == "notes" ]; then
-echo "$title_md $text_md Firewall Notes"; echo
+if [ "$first_option" == "notes" ]; then echo "$overhead"
 ####
 ####
 echo "$text_md                          Iptables Firewall $text_md" 
@@ -3470,7 +3448,7 @@ exit; fi
 #### :rutina-inicial-ntp:
 ####
 ####
-if   [ "$first_option" == "ntp" ]; then 
+if   [ "$first_option" == "ntp" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ] \
@@ -3631,7 +3609,7 @@ exit; fi
 #### :rutina-inicial-free:
 ####
 ####
-if   [ "$first_option" == "free" ]; then
+if   [ "$first_option" == "free" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ] [ freedom from innecesary ram ] [ free md ]"
@@ -4027,7 +4005,7 @@ exit; fi
 #### :rutina-inicial-variables:
 ####
 ####
-if   [ "$first_option" == "variables" ]; then 
+if   [ "$first_option" == "variables" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ]  [ list variables firewall fwiptables] [ variables md ]"
@@ -5435,7 +5413,7 @@ exit; fi
 #### :rutina-inicial-intro:
 ####
 ####
-if  [ "$first_option" == "intro" ]; then 
+if  [ "$first_option" == "intro" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md fwiptables. Firewall With iptables. intro content information  $text_md"
@@ -5508,7 +5486,7 @@ exit ; fi
 #### :rutina-inicial-download:
 ####
 ####
-if [ "$first_option" == "download" ] ; then 
+if [ "$first_option" == "download" ] ; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ] [ $cmd_internal download ] [ download md ] "
@@ -5535,7 +5513,7 @@ exit; fi
 #### :rutina-inicial-uninstall:
 ####
 ####
-if [ "$first_option" == "uninstall" ] ; then
+if [ "$first_option" == "uninstall" ] ; then echo "$overhead"
 ####
 ####
 echo "$title_md $text_info [ uninstaller ] [ uninstall md ] "
@@ -5552,7 +5530,7 @@ exit; fi
 #### :rutina-inicial-install:
 ####
 ####
-if [ "$first_option" == "install" ]; then 
+if [ "$first_option" == "install" ]; then echo "$overhead"
 ####
 ####
 echo "$text_md Installing $cmd_filename.. waiting several seconds, \
@@ -5657,7 +5635,7 @@ exit; fi
 #### :rutina-inicial-expert-show-geoip:
 ####
 ####
-if   [ "$first_option" == "expert-show-geoip" ]; then 
+if   [ "$first_option" == "expert-show-geoip" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ]  [ resolve the location to one ip or host ] "
@@ -5680,8 +5658,7 @@ exit; fi
 #### :rutina-inicial-nodes:
 ####
 ####
-if   [ "$first_option" == "nodes" ]; then
-echo "$title_md $text_md Firewall Nodes"; echo
+if   [ "$first_option" == "nodes" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ] [ Show the list arp-scan in the lan ] "
@@ -5702,7 +5679,7 @@ exit; fi
 #### :rutina-inicial-donate:
 ####
 ####
-if   [ "$first_option" == "donate" ]; then 
+if   [ "$first_option" == "donate" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ] [ donate to fwiptables project ] [ donate md ]"
@@ -5718,8 +5695,7 @@ exit; fi
 #### :rutina-inicial-about:
 ####
 ####
-if   [ "$first_option" == "about" ]; then 
-echo "$title_md $text_md Firewall About"
+if   [ "$first_option" == "about" ]; then echo "$overhead" 
 ####
 ####
 echo "$text_md"
@@ -5835,7 +5811,7 @@ exit;  fi
 #### :rutina-inicial-expert-pc-halt:
 ####
 ####
-if   [ "$first_option" == "expert-pc-halt" ]; then 
+if   [ "$first_option" == "expert-pc-halt" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ] [ power off computer ] [ control-c to cancel ]"
@@ -5862,7 +5838,7 @@ exit; fi
 #### :rutina-inicial-expert-pc-poweroff:
 ####
 ####
-if   [ "$first_option" == "expert-pc-poweroff" ]; then 
+if   [ "$first_option" == "expert-pc-poweroff" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ] [ power off computer ] [ control-c to cancel ]"
@@ -5888,7 +5864,7 @@ exit; fi
 #### :rutina-inicial-expert-pc-shutdown:
 ####
 ####
-if   [ "$first_option" == "expert-pc-shutdown" ]; then 
+if   [ "$first_option" == "expert-pc-shutdown" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ] [ power off computer ] [ control-c to cancel ]"
@@ -5914,7 +5890,7 @@ exit; fi
 #### :rutina-inicial-expert-pc-reboot:
 ####
 ####
-if   [ "$first_option" == "expert-pc-reboot" ]; then 
+if   [ "$first_option" == "expert-pc-reboot" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ] [ reboot computer ] [ control-c to cancel ]"
@@ -5940,7 +5916,7 @@ exit; fi
 #### :rutina-inicial-expert-show-newversion:
 ####
 ####
-if   [ "$first_option" == "expert-show-newversion" ]; then 
+if   [ "$first_option" == "expert-show-newversion" ]; then echo "$overhead" 
 ####
 ####
 if [ "$command_curl" == "$NULL" ]; then
@@ -5979,7 +5955,8 @@ exit; fi
 #### :rutina-inicial-expert-upgrade-estable:
 ####
 ####
-if   [ "$first_option" == "expert-upgrade-estable" ] || [ "$first_option" == "upgrade" ]; then 
+if   [ "$first_option" == "expert-upgrade-estable" ] || [ "$first_option" == "upgrade" ];
+then echo "$overhead" 
 ####
 ####
 if [ "$command_curl" == "$NULL" ]; then
@@ -5999,7 +5976,7 @@ exit; fi
 #### :rutina-inicial-expert-upgrade-unstable:
 ####
 ####
-if   [ "$first_option" == "expert-upgrade-unstable" ]; then 
+if   [ "$first_option" == "expert-upgrade-unstable" ]; then echo "$overhead"
 ####
 ####
 if [ "$command_curl" == "$NULL" ]; then
@@ -6021,8 +5998,7 @@ exit; fi
 #### :rutina-inicial-compile:
 ####
 ####
-if   [ "$first_option" == "compile" ]; then
-echo "$title_md $text_md Firewall Compile" ; echo
+if   [ "$first_option" == "compile" ]; then echo "$overhead"
 ####
 ####
 echo "$text_md $text_md BASH SCRIPT WORKS fully.    $text_md"
@@ -6042,7 +6018,7 @@ exit; fi
 #### :rutina-inicial-expert-gen-compile:
 ####
 ####
-if   [ "$first_option" == "expert-gen-compile" ]; then 
+if   [ "$first_option" == "expert-gen-compile" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ] \
@@ -6096,7 +6072,7 @@ exit; fi
 #### :rutina-inicial-info:
 ####
 ####
-if   [ "$first_option" == "info" ]; then 
+if   [ "$first_option" == "info" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md $text_info $text_md [ $first_option ]  [ info $second_option ] [ info md ]"
@@ -6117,7 +6093,7 @@ exit ; fi
 #### :rutina-inicial-expert-speed-glx:
 ####
 ####
-if   [ "$first_option" == "expert-speed-glx" ]; then
+if   [ "$first_option" == "expert-speed-glx" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ]  [ test gl mesa3D speed ] \
@@ -6137,7 +6113,7 @@ exit; fi
 #### :rutina-inicial-expert-speed-disk:
 ####
 ####
-if   [ "$first_option" == "expert-speed-disk" ]; then 
+if   [ "$first_option" == "expert-speed-disk" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ]  [ test disk speed benchamrk ] \
@@ -6158,7 +6134,7 @@ exit; fi
 #### :rutina-inicial-expert-speed-ram:
 ####
 ####
-if   [ "$first_option" == "expert-speed-ram" ]; then 
+if   [ "$first_option" == "expert-speed-ram" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ]  [ test ram speed benchamrk ] \
@@ -6181,7 +6157,7 @@ exit; fi
 #### :rutina-inicial-expert-speed-cpu:
 ####
 ####
-if   [ "$first_option" == "expert-speed-cpu" ]; then
+if   [ "$first_option" == "expert-speed-cpu" ]; then echo "$overhead"
 ####
 ####
 echo "$header_ok [ $first_option ]  [ test cpu processor ] [ calcule pi with 2000 digits ]"
@@ -6200,7 +6176,7 @@ exit; fi
 #### :rutina-inicial-ntpdate-client:
 ####
 ####
-if   [ "$first_option" == "ntpdate-client" ]; then 
+if   [ "$first_option" == "ntpdate-client" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ] \
@@ -6481,7 +6457,7 @@ exit; fi
 #### :rutina-inicial-stop:
 ####
 ####
-if [ "$first_option" == "stop" ]; then 
+if [ "$first_option" == "stop" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ]  [ Stop the firewall ] "
@@ -6515,7 +6491,7 @@ exit; fi
 #### :rutina-inicial-continue:
 ####
 ####
-if [ "$first_option" == "continue" ]; then 
+if [ "$first_option" == "continue" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ]  [ Continue the stopped firewall ] "
@@ -6621,7 +6597,7 @@ exit; fi
 #### :rutina-inicial-speed-ip4:
 ####
 ####
-if   [ "$first_option" == "speed-ip4" ]; then 
+if   [ "$first_option" == "speed-ip4" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ]  [ test speed ipv4 with iperf ] "
@@ -6652,7 +6628,7 @@ exit; fi
 #### :rutina-inicial-speed-ip6:
 ####
 ####
-if   [ "$first_option" == "speed-ip6" ]; then 
+if   [ "$first_option" == "speed-ip6" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ]  [ test speed ipv6 with iperf ] "
@@ -6681,7 +6657,7 @@ exit; fi
 #### :rutina-inicial-sockets:
 ####
 ####
-if   [ "$first_option" == "sockets" ]; then 
+if   [ "$first_option" == "sockets" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ] [ Show whith ss: LISTEN sockets ] "
@@ -6702,7 +6678,7 @@ exit; fi
 #### :rutina-inicial-web:
 ####
 ####
-if   [ "$first_option" == "web" ]; then 
+if   [ "$first_option" == "web" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ] [ Show one web with command text browser ]"
@@ -6735,7 +6711,7 @@ exit; fi
 #### :rutina-inicial-expert-project-web:
 ####
 ####
-if   [ "$first_option" == "expert-project-web" ]; then 
+if   [ "$first_option" == "expert-project-web" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ] [ version - date - size - downloaded last week ]"
@@ -6754,7 +6730,7 @@ exit; fi
 #### :rutina-inicial-expert-browser-web:
 ####
 ####
-if   [ "$first_option" == "expert-browser-web" ]; then 
+if   [ "$first_option" == "expert-browser-web" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ] [ Show one web with command text browser ]"
@@ -6785,7 +6761,7 @@ exit; fi
 #### :rutina-inicial-expert-sockets-ss:
 ####
 ####
-if   [ "$first_option" == "expert-sockets-ss" ]; then 
+if   [ "$first_option" == "expert-sockets-ss" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ] [ Show whith ss: sockets ] "
@@ -6810,7 +6786,7 @@ exit; fi
 #### :rutina-inicial-expert-sockets-lsof:
 ####
 ####
-if   [ "$first_option" == "expert-sockets-lsof" ]; then 
+if   [ "$first_option" == "expert-sockets-lsof" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ] [ Show whith lsof: sockets ] "
@@ -6828,7 +6804,7 @@ exit; fi
 #### :rutina-inicial-expert-sockets-netstat:
 ####
 ####
-if   [ "$first_option" == "expert-sockets-netstat" ]; then 
+if   [ "$first_option" == "expert-sockets-netstat" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ] [ Show whith lsof: sockets ] "
@@ -6848,7 +6824,7 @@ exit; fi
 #### :rutina-inicial-expert-show-webcert:
 ####
 ####
-if   [ "$first_option" == "expert-show-webcert" ] ; then 
+if   [ "$first_option" == "expert-show-webcert" ] ; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ] \
@@ -6874,7 +6850,7 @@ exit; fi
 #### :rutina-inicial-expert-nmap-tcp:
 ####
 ####
-if   [ "$first_option" == "expert-nmap-tcp" ]; then
+if   [ "$first_option" == "expert-nmap-tcp" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ]  [ scan with nmap tcp ]"
@@ -6899,7 +6875,7 @@ exit; fi
 #### :rutina-inicial-expert-nmap-syn:
 ####
 ####
-if   [ "$first_option" == "expert-nmap-syn" ]; then echo $give_cover
+if   [ "$first_option" == "expert-nmap-syn" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ]  [ scan with nmap syn ]"
@@ -6925,7 +6901,7 @@ exit; fi
 #### :rutina-inicial-expert-nmap-fin:
 ####
 ####
-if   [ "$first_option" == "expert-nmap-fin" ] ; then
+if   [ "$first_option" == "expert-nmap-fin" ] ; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ]  [ scan with nmap fin ]"
@@ -6951,7 +6927,7 @@ exit; fi
 #### :rutina-inicial-expert-nmap-udp:
 ####
 ####
-if   [ "$first_option" == "expert-nmap-udp" ]; then
+if   [ "$first_option" == "expert-nmap-udp" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ]  [ scan with nmap udp ]"
@@ -6977,7 +6953,7 @@ exit; fi
 #### :rutina-inicial-expert-nmap-ping:
 ####
 ####
-if   [ "$first_option" == "expert-nmap-ping" ] ; then 
+if   [ "$first_option" == "expert-nmap-ping" ] ; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ]  [ scan with nmap ping ]"
