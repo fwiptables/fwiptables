@@ -592,6 +592,7 @@ logserver_port_udp="no"
 miniclient_port_tcp="ssh,http,https"     ;
 miniclient_port_udp="domain,domain-s,bootpc,bootps,ntp,https"     ;
 outcli="cli"
+overhead="### firewall $first_option"
 serverip_discover_ipv4="http://httpbin.org/ip"
 serverip_discover_ipv6="http://httpbin.org/ip"
 serverip_iperf_ipv4="ping.online.net"       
@@ -1551,8 +1552,7 @@ exit; fi
 #### :rutina-inicial-version:
 ####
 ####
-if [ "$first_option" == "version" ]; then
-echo "$cycle_header firewall $first_option"; echo
+if [ "$first_option" == "version" ]; then echo "$overhead"
 ####
 ####
 echo "$text_md $text_md     Detail Firewall: Detail Version            $text_md"
