@@ -7315,9 +7315,11 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "gui" ] && [ "$second_option" == "$NULL" ]
-####
-####
 then echo $head_waiting_gui
+####
+####
+if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then 
+echo "$title_md there is not graphicall dialog" ; exit ; fi
 ####
 ####
 $cmd_internal txt $second_option $third_option &> $temporal_guifinal
