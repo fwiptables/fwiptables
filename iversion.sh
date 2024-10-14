@@ -685,10 +685,14 @@ file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenbla
 #### :rutina-inicial-variables-update-secondtime:
 ####
 ####
-if [ -f "$file_default_preferences" ] ;
-then source $file_default_preferences ; fi
+#### sane preferences
 if [ ! -f "$file_default_preferences" ]
 then $cmd_internal preferences-example &> $file_default_preferences ; fi
+####
+####
+#### load preferences
+if [ -f "$file_default_preferences" ] ;
+then source $file_default_preferences ; fi
 ####
 ####
 #### :rutina-final-variables-update-secondtime:
@@ -710,20 +714,16 @@ then first_option="$without_first_option" ; fi
 #### :rutina-inicial-variables-sane:
 ####
 ####
-#### sane basic variables
-####
-####
+#### sane variables
 case "$NULL" in 
 "$choosed_iptables")      ;; *) choosed_iptables="no"      ;;
 "$launch_rules_firewall") ;; *) launch_rules_firewall="no" ;;
 "$name_firewall")         ;; *) name_firewall="no"         ;;
-"$type_firewall")         ;; *)  type_firewall="no"        ;;
+"$type_firewall")         ;; *) type_firewall="no"        ;;
 esac
 ####
 ####
 #### configure expert commands
-####
-####
 if [ "$allow_expert_commands" == "no" ]; then
 ####
 ####
@@ -747,8 +747,6 @@ fi
 ####
 ####
 #### choose iperf3 and the iperf to speed ip
-####
-####
 if [ "$favorite_iperf_command" == "$NULL" ]; then
 ####
 ####
@@ -768,8 +766,6 @@ fi
 ####
 ####
 #### configure favorite date
-####
-####
 if [ "$favorite_date_command" == "$NULL" ]; then
 ####
 ####
@@ -791,8 +787,6 @@ fi
 ####
 ####
 #### configure text editor
-####
-####
 if [ "$favorite_text_editor" == "$NULL" ]; then
 ####
 ####
@@ -818,8 +812,6 @@ fi
 ####
 ####
 #### configure favorite dialog cli text
-####
-####
 if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
 ####
 ####
@@ -845,8 +837,6 @@ fi
 ####
 ####
 #### configure favorite graphicall gui
-####
-####
 if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
 ####
 ####
@@ -872,8 +862,6 @@ fi
 ####
 ####
 #### configure favorite browser text
-####
-####
 if [ "$favorite_text_browser" == "$NULL" ]; then
 ####
 ####
@@ -899,8 +887,6 @@ fi
 ####
 ####
 #### configure favorite dhcp command
-####
-####
 if [ "$favorite_dhcp_command" == "$NULL" ]; then
 ####
 ####
@@ -922,8 +908,6 @@ fi
 ####
 ####
 #### configure favorite dialog update time
-####
-####
 if [ "$favorite_date_command" == "$NULL" ]; then
 ####
 ####
@@ -944,6 +928,7 @@ fi
 #### :rutina-inicial-favorite-music:
 ####
 ####
+#### configure favorite player
 if [ "$favorite_text_music" == "$NULL" ]; then
 ####
 ####
@@ -986,8 +971,6 @@ esac
 case "$list_rules_conceptual" in
 "$NULL") list_rules_conceptual="" ;;
 *) list_rules_conceptual=" -n"  ;; esac
-####
-####
 ####
 ####
 case "$first_option" in
@@ -1241,6 +1224,7 @@ esac
 #### :rutina-inicial-drop-warning:
 ####
 ####
+#### supress error messages
 case $first_option in 
 "ls4") $cmd_internal list4 &> $temporal_text-list4
 $command_cat $temporal_text-list4 | $command_grep -E -v Warning: ; exit ;;
@@ -1527,10 +1511,9 @@ fi
 ####
 ####
 if [ "$first_option" == "filelog" ] ; then
+echo "$cycle_header firewall $first_option"; echo
 ####
 ####
-echo "$title_md [ $first_option ] [ list log files ]"
-echo
 echo 
 ls -1 $default_directory_log
 echo
@@ -1548,9 +1531,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "autolog" ] ; then
+echo "$cycle_header firewall $first_option"; echo
 ####
 ####
-echo "$title_md [ $first_option ] [ show $file_default_autolog ] "
 echo "$title_md $text_info [ last 50 lines from file showed ] [ $file_default_autolog ]"
 if [ ! -f $file_default_autolog ]; then touch $file_default_autolog ; fi
 echo
@@ -1569,7 +1552,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "version" ]; then
-echo "$title_md $text_md Firewall Version"; echo
+echo "$cycle_header firewall $first_option"; echo
 ####
 ####
 echo "$text_md $text_md     Detail Firewall: Detail Version            $text_md"
@@ -1614,6 +1597,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "expert-cpufreq-info" ] ; then
+echo "$cycle_header firewall $first_option"; echo
 ####
 ####
 echo "$title_md [ $first_option ] [ show cpu frequence info ]"
@@ -1632,6 +1616,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "expert-cpupower-info" ] ; then
+echo "$cycle_header firewall $first_option"; echo
 ####
 ####
 echo "$title_md [ $first_option ] [ show cpu frequence info ]"
@@ -1650,6 +1635,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "expert-configs-save" ] ; then
+echo "$cycle_header firewall $first_option"; echo
 ####
 ####
 echo "$title_md [ $first_option ] [ save backups confiurations to choosed filename ]"
@@ -1673,6 +1659,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "expert-configs-load" ] ; then
+echo "$cycle_header firewall $first_option"; echo
 ####
 ####
 echo "$title_md [ $first_option ] [ load backups confiurations from choosed filename ]"
@@ -1696,6 +1683,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-wpa-scan" ]; then
+echo "$cycle_header firewall $first_option"; echo
 ####
 ####
 echo "$title_md [ $first_option ]  [ Show SSID from net wifi ] "
@@ -1917,6 +1905,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "preferences-modify" ]; then 
+echo "$cycle_header firewall $first_option"; echo
 ####
 ####
 echo "$title_md [ $first_option ] [ modify the default fwiptables ] "
@@ -1952,9 +1941,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "preferences-read" ]; then 
+echo "$cycle_header firewall $first_option"; echo
 ####
 ####
-echo "$title_md [ $first_option ] [ read the default fwiptables ] "
 $command_cat  $file_default_preferences
 echo "$title_md $text_info [ file $file_default_preferences ]"
 ####
@@ -1969,10 +1958,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "preferences-regen" ] ; then
+echo "$cycle_header firewall $first_option"; echo
 ####
 ####
-echo "$title_md [ $first_option ] [ $cmd_internal preferences-regen ] \
-[ preferences-regen md ] "
 $cmd_internal preferences-example &> $file_default_preferences
 echo "$title_md $text_ok [ Regenerated ] [ $cmd_internal values for default ]"
 echo "$title_md $text_ok [ Regenerated ] [ $file_default_preferences ]"
@@ -2061,6 +2049,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "resolve" ]; then
+echo "$cycle_header firewall $first_option"; echo
 ####
 ####
 echo "$title_md $text_info $title_md [ Domain resolve ] [ nameserver and search ] $title_md"
