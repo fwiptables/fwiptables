@@ -1511,8 +1511,7 @@ fi
 #### :rutina-inicial-config-filelog:
 ####
 ####
-if [ "$first_option" == "filelog" ] ; then
-echo "$cycle_header firewall $first_option"; echo
+if [ "$first_option" == "filelog" ] ; then echo "$overhead"
 ####
 ####
 echo 
@@ -1531,8 +1530,7 @@ exit; fi
 #### :rutina-inicial-config-autolog:
 ####
 ####
-if [ "$first_option" == "autolog" ] ; then
-echo "$cycle_header firewall $first_option"; echo
+if [ "$first_option" == "autolog" ] ; then echo "$overhead"
 ####
 ####
 echo "$title_md $text_info [ last 50 lines from file showed ] [ $file_default_autolog ]"
@@ -2718,7 +2716,7 @@ exit; fi
 #### :rutina-inicial-treeconf:
 ####
 ####
-if   [ "$first_option" == "treeconf" ]; then 
+if   [ "$first_option" == "treeconf" ];  then echo "$overhead"
 ####
 ####
 if   [ "$command_tree" == "$NULL" ] ; then 
@@ -3539,7 +3537,7 @@ exit ; fi
 #### :rutina-inicial-code:
 ####
 ####
-if   [ "$first_option" == "code" ]; then 
+if   [ "$first_option" == "code" ];  then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ]  [ Show source code for each option ] "
@@ -3573,7 +3571,7 @@ exit; fi
 #### :rutina-inicial-names-custom:
 ####
 ####
-if [ "$first_option" == "names-custom" ]; then 
+if [ "$first_option" == "names-custom" ];  then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ] [ List configs cfg ] "
@@ -3939,7 +3937,7 @@ exit; fi
 #### :rutina-inicial-info-options:
 ####
 ####
-if   [ "$first_option" == "info-options" ]; then 
+if   [ "$first_option" == "info-options" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ]  [ info options ] [ info-options md]"
@@ -4021,7 +4019,7 @@ exit; fi
 #### :rutina-inicial-eraserules:
 ####
 ####
-if [ "$first_option" == "eraserules" ]; then  
+if [ "$first_option" == "eraserules" ];  then 
 echo "$title_md [ $first_option ] [ Deleted all iptables ipv4/ipv6 rules ]"
 ####
 ####
@@ -5363,10 +5361,9 @@ exit; fi
 #### :rutina-inicial-readme:
 ####
 ####
-if  [ "$first_option" == "readme" ]; then 
+if  [ "$first_option" == "readme" ];  then echo "$overhead"
 ####
 ####
-echo "$title_md $text_md fwiptables readme"
 echo "$text_md $text_md $text_md"
 echo "$text_md $text_md The fwiptables is a one-file WIZARD,     $text_md"
 echo "$text_md $text_md for iptables, with COMMAND-LINE,         $text_md"
@@ -5418,7 +5415,6 @@ if  [ "$first_option" == "intro" ]; then echo "$overhead"
 ####
 echo "$title_md fwiptables. Firewall With iptables. intro content information  $text_md"
 echo "$text_md"
-echo "$text_md"
 $cmd_internal readme
 echo "$text_md"
 $cmd_internal version
@@ -5433,8 +5429,7 @@ $cmd_internal depends
 echo "$text_md"
 $cmd_internal examples
 echo "$text_md"
-echo "$text_md"
-echo "$title_md $text_md $text_md Firewall Options"
+echo "### Firewall Options"
 echo "$text_md"
 $cmd_internal options
 ####
@@ -5448,7 +5443,7 @@ exit; fi
 #### :rutina-inicial-ip-forward:
 ####
 ####
-if   [ "$first_option" == "ip-forward" ]; then
+if   [ "$first_option" == "ip-forward" ];  then echo "$overhead"
 ####
 ####
 if   [ "$second_option" == "$NULL" ]; then
@@ -5573,7 +5568,7 @@ exit; fi
 #### :rutina-inicial-expert-gen-readme:
 ####
 ####
-if   [ "$first_option" == "expert-gen-readme" ]; then 
+if   [ "$first_option" == "expert-gen-readme" ];  then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ]  [ generate actual file and readme from intro program ] "
@@ -5594,7 +5589,7 @@ exit; fi
 #### :rutina-inicial-expert-gen-deb:
 ####
 ####
-if   [ "$first_option" == "expert-gen-deb" ]; then
+if   [ "$first_option" == "expert-gen-deb" ];  then echo "$overhead"
 echo "$title_md [ $first_option ]  [ generate actual file debian ] "
 #### recreate the directories
 rm -R $default_directory_debian/deb/ &> /dev/null
@@ -5714,24 +5709,24 @@ exit; fi
 ##########    spanish: license-gpl-v3: license gpl v3   ##########
 #### :rutina-inicial-license-gpl-v3:
 ####
-####
-if [ "$first_option" == "license-gpl-v3" ]; then 
-####
-####
-echo "$title_md [ $first_option ] \
-[ Show license from git sourceforge for $cmd_internal ] "
-####
-if [ "$command_curl" == "$NULL" ]; then
-echo "$title_md Install curl to download/install latest version"; fi
-####
-echo "license text for $first_option downloading"
-echo
-echo ..................................................................
-echo
-$command_curl -s -L $content_license_gplv3 --stderr /dev/null
+#### 
+#### if [ "$first_option" == "license-gpl-v3" ];  then echo "$overhead"
 ####
 ####
-exit;  fi
+#### echo "$title_md [ $first_option ] \
+#### [ Show license from git sourceforge for $cmd_internal ] "
+####
+#### if [ "$command_curl" == "$NULL" ]; then
+#### echo "$title_md Install curl to download/install latest version"; fi
+####
+#### echo "license text for $first_option downloading"
+#### echo
+#### echo ..................................................................
+#### echo
+#### $command_curl -s -L $content_license_gplv3 --stderr /dev/null
+####
+####
+#### exit;  fi
 ####
 ####
 #### :rutina-final-license-gpl-v3:
@@ -5740,7 +5735,7 @@ exit;  fi
 #### :rutina-inicial-license-gpl-v2:
 ####
 ####
-if [ "$first_option" == "license-gpl-v2" ]; then 
+if [ "$first_option" == "license-gpl-v2" ];  then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ] \
@@ -5765,7 +5760,7 @@ exit;  fi
 #### :rutina-inicial-license-lgpl-v2:
 ####
 ####
-if [ "$first_option" == "license-lgpl-v2" ]; then 
+if [ "$first_option" == "license-lgpl-v2" ];  then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ] \
@@ -6048,7 +6043,7 @@ exit; fi
 #### :rutina-inicial-expert-upgrade-adblock:
 ####
 ####
-if   [ "$first_option" == "expert-upgrade-adblock" ]; then 
+if   [ "$first_option" == "expert-upgrade-adblock" ]; then echo "$overhead" 
 echo "$title_md [ $first_option ]  [ get: blacklist files / adblock files / hosts deny files ]"
 ####
 ####
@@ -6202,7 +6197,7 @@ exit; fi
 #### :rutina-inicial-wizard:
 ####
 ####
-if [ "$first_option" == "wizard" ]; then echo 
+if [ "$first_option" == "wizard" ];  then echo "$overhead" 
 ####
 ####
 echo
@@ -6290,7 +6285,7 @@ exit; fi
 #### :rutina-inicial-load:
 ####
 ####
-if [ "$first_option" == "load" ]; then 
+if [ "$first_option" == "load" ]; then
 ####
 ####
 if [ "second_option" == "$NULL" ]; then
@@ -6421,7 +6416,7 @@ exit; fi
 #### :rutina-inicial-actual:
 ####
 ####
-if [ "$first_option" == "actual" ]; then 
+if [ "$first_option" == "actual" ]; then echo "$overhead" 
 ####
 ####
 echo "$title_md [ $first_option ]  [ show the last firewall saved ] "
