@@ -1,6 +1,7 @@
-###     fwiptables. Firewall With iptables. intro content information    
+### firewall intro
+###  fwiptables. Firewall With iptables. intro content information    
   
-###     fwiptables. Firewall With iptables.   [ readme md ]   
+### firewall readme
         
       The fwiptables is a one-file WIZARD,       
       for iptables, with COMMAND-LINE,           
@@ -21,30 +22,29 @@
       with host whitelist, host blacklist,                 
       with other more capabilities of firewall.            
         
-###      fwiptables location.                               
+###      fwiptables location                                
         
        File    Location:   /usr/bin/fwiptables    
        Config Directory:   /root/.config/fwiptables        
        Cache  Directory:   /root/.cache/fwiptables        
         
-###     fwiptables install.                           
+###     fwiptables install                            
         
        su root TYPE: su root                         
        put bit TYPE: chmod 755 /usr/bin/fwiptables         
        install TYPE: /usr/bin/fwiptables install           
         
-###        fwiptables uninstall.                
+###     fwiptables uninstall                          
         
       uninstall TYPE: /usr/bin/fwiptables uninstall        
   
-###        Firewall Version
-  
+### firewall version
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
+         Version Firewall: 24-10-G                
+            Date Firewall: Year 2024 / Month 10                   
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
-         Version Firewall: 24-10-F                
-            Date Firewall: Year 2024 / Month 10                   
         Short Description: FireWall With iptables       
          Long Description: iptables template in one script        
            Data Directory: /root/.config/fwiptables    
@@ -63,14 +63,15 @@
              Email Report: fwiptables@gmx.com                
           License Program: LGPL v2, GPL v2                
   
-###  [ about ] [ licenses to fwiptables project ] [ about md ]
+### firewall about
+  
       File:          fwiptables
       Description:   Command Fran FireWall fwiptables Generator
       Author:        Francisco Garcia <fwiptables@gmx.com>
       Copyright:     (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>
       launch:        /usr/bin/fwiptables license-lgpl-v2|license-gpl-v2
   
-###  [ notes ] [ List notes about ] [ notes md ]   
+### firewall notes
                             Iptables Firewall   
              Legacy or nft: whith one of them is sufficent   
            iptables-legacy: support for xtables ipv4   
@@ -96,22 +97,23 @@
                  ipv6-icmp: Necesary protocol in ipv6   
                 ipv4 ports: ipv6 works too with old ipv4 ports   
   
-###  [ compile ] [ Optionally compile from bash script ] [ compile md]   
-      BASH SCRIPT WORKS fully. But if your desire is compiling...     
+### firewall compile
+      BASH SCRIPT WORKS fully.      
+      But if your desire is compiling...     
+
       Necesary fwiptables in source script bash   
       Download and install obash from oficial web internet   
       Run: obash -s -c -o ./destination.bin ./source-bash.sh   
   
-###  [ depends ] [ List for depends programs ] [ depends md ] 
-        
+### firewall depends
 ###     [ Configuration files ]   
       Directory data:          /root/.config/fwiptables   
       Directory temp:          /root/.cache/fwiptables   
-      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-10-F   
+      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-10-G   
         
 ###     [ Log files ]             
-      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default-autolog-24-10-F   
-      File filelog:            /root/.config/fwiptables/fwiptables-log/default-filelog-24-10-F   
+      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default-autolog-24-10-G   
+      File filelog:            /root/.config/fwiptables/fwiptables-log/default-filelog-24-10-G   
         
 ###     [ optional output ]       
       dialog cli:              /usr/bin/dialog   
@@ -152,7 +154,7 @@
         
       all utils in command: fwiptables utils   
   
-###     [ options-examples ] [ List examples ] [ examples md ]   
+### firewall examples
 ###     [ One example with input-established ]                
          
        Launch: input-stablished                              
@@ -218,7 +220,7 @@
        All options in window roll             | /usr/bin/fwiptables gui-roll-zenity       
        All options in window shell            | /usr/bin/fwiptables gui-shell-yad           
   
-###        Firewall Options
+### Firewall Options
   
    /usr/bin/fwiptables [optional-output] first_option [second_option]   
 ###     optional-output   
@@ -262,6 +264,6 @@
    web intro variables depends uninstall install upgrade   
    notes examples info code expert donate about version   
    license-lgpl-v2 license-gpl-v2   
-       | Program: /usr/bin/fwiptables 24-10-F   
+       | Program: /usr/bin/fwiptables 24-10-G   
        | Description: iptables template in one script   
        | Expert: expert is allowed in preferences file   
