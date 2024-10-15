@@ -95,7 +95,7 @@ fi
 #### The number version
 cmd_year="24"                                              # Number year version
 cmd_month="10"                                             # Number mouth version
-cmd_letter="G"                                             # Number letter version
+cmd_letter="H"                                             # Number letter version
 cmd_version="$cmd_year-$cmd_month-$cmd_letter"             # Final date like number version
 cmd_date="Year 20$cmd_year / Month $cmd_month"
 #### The data version
@@ -5959,9 +5959,10 @@ echo "$title_md Install curl to download and to install stable latest version"; 
 ####
 ####
 echo "$title_md Downloading fwiptables stable latest"
-descarga="$directory_cache_necesary/fwiptables-stable"
+descarga="$directory_cache_necesary/fwiptables-stable-bash"
+rm $descarga
 $command_curl $web_download_sourceforge -s -L -o $descarga || echo "Without internet" \
-&& chmod ugo+x $descarga &> /dev/null && $descarga install && rm $descarga
+&& chmod ugo+x $descarga &> /dev/null && $descarga install
 exit; fi
 ####
 ####
@@ -5979,9 +5980,10 @@ echo "$title_md Install curl to download and to install unstable latest version"
 ####
 ####
 echo "$title_md Downloading fwiptables development latest"
-descarga="$directory_cache_necesary/fwiptables-unstable"
+descarga="$directory_cache_necesary/fwiptables-unstable-bash"
+rm $descarga
 $command_curl $git_download_sourceforge -s -L -o $descarga || echo "Without internet" \
-&& chmod ugo+x $descarga &> /dev/null && $descarga install && rm $descarga
+&& chmod ugo+x $descarga &> /dev/null && $descarga install
 ####
 ####
 exit; fi
