@@ -1989,7 +1989,7 @@ if [ "$first_option" == "preferences-example" ] ; then
 echo "$title_md"
 echo "$title_md"
 echo "$title_md $title_md default option for default"
-echo "without_first_option=options                    ## read below"
+echo "without_first_option=ls4                        ## read below"
 echo "$title_md type: void or one valid option required to works"
 echo "$title_md example1:list-options example2:list4 example3:ip4"
 echo "$title_md example4:speed-ip4 example5:sockets example6:gui-roll"
@@ -14576,7 +14576,7 @@ if [ "$launch_rules_firewall" != "yes" ]
 ####
 ####
 then echo $head_give_cover
-echo "### $text_fail [ first option: $first_option ]"
+echo "### $text_fail [ first option: $first_option ] [ Recomended: options ]"
 $cmd_internal list-options ; 
 ####
 ####
