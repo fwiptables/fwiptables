@@ -992,9 +992,9 @@ case "$first_option" in
 "client-squid")   first_option="client-proxy" ;;
 "server-squid")   first_option="server-proxy" ;;
 "all-names")      first_option="names" ;;
-"options")        first_option="list-options" ;;
-"mini-options")   first_option="list-options" ;;
-"options-mini")   first_option="list-options" ;;
+"list-options")   first_option="options" ;;
+"mini-options")   first_option="options" ;;
+"options-mini")   first_option="options" ;;
 "sentlog")        first_option="filelog" ;;
 "cfg")            first_option="names-custom" ;;
 "all-custom")     first_option="names-custom" ;;
@@ -1202,9 +1202,9 @@ case "$first_option" in
 "client-squid")   first_option="client-proxy" ;;
 "server-squid")   first_option="server-proxy" ;;
 "all-names")      first_option="names" ;;
-"options")        first_option="list-options" ;;
-"mini-options")   first_option="list-options" ;;
-"options-mini")   first_option="list-options" ;;
+"options")        first_option="options" ;;
+"mini-options")   first_option="options" ;;
+"options-mini")   first_option="options" ;;
 "sentlog")        first_option="filelog" ;;
 "cfg")            first_option="names-custom" ;;
 "all-custom")     first_option="names-custom" ;;
@@ -1992,7 +1992,7 @@ echo "$title_md"
 echo "$title_md $title_md default option when not option are there"
 echo "without_first_option=ls4                        ## read below"
 echo "$title_md type: void or one valid option required to works"
-echo "$title_md example1:list-options example2:list4 example3:ip4"
+echo "$title_md example1:options example2:list4 example3:ip4"
 echo "$title_md example4:speed-ip4 example5:sockets example6:gui-roll"
 echo "$title_md example7:gui-menu-yad example8:gui-shell-yad"
 echo "$title_md" 
@@ -3502,12 +3502,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-ntp:
-##########    english: list-options: wellcome with semi help    ##########
-##########    spanish: list-options: bienvenida con semi ayuda  ##########
-#### :rutina-inicial-list-options:
+##########    english: options: wellcome with semi help    ##########
+##########    spanish: options: bienvenida con semi ayuda  ##########
+#### :rutina-inicial-options:
 ####
 ####
-if [ "$first_option" == "list-options" ] || [ "$first_option" == "options" ]; then 
+if [ "$first_option" == "options" ]; then 
 ####
 ####
 echo "$text_md $cmd_internal [optional-output] first_option [second_option] $text_md"
@@ -3566,7 +3566,7 @@ fi
 exit ; fi
 ####
 ####
-#### :rutina-final-list-options:
+#### :rutina-final-options:
 ##########     english: code: source from loop     ##########
 ##########     spanish: code: fuente de la rutina  ##########
 #### :rutina-inicial-code:
@@ -3865,7 +3865,7 @@ echo "$text_md $text_md preferences-read . show the preferences for fwiptables $
 echo "$text_md $text_md preferences-modify . modify the preferences for fwiptables $text_md"
 echo "$text_md $text_md preferences-regen . recover the initials preferences for fwiptables $text_md"
 echo "$text_md $text_md preferences-example . show the examples for fwiptables preference $text_md"
-echo "$text_md $text_md list-options . list options $text_md"
+echo "$text_md $text_md options . list options $text_md"
 echo "$text_md $text_md info-options . list details for the options $text_md"
 echo "$text_md $text_md info . details from one first option from one pattern $text_md"
 echo "$text_md $text_md filelog . show the result for the commands save with -l|-log $text_md"
@@ -8249,7 +8249,7 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 025  "$text_md depends" \
 026  "$text_md info" \
 027  "$text_md version" \
-028  "$text_md list-options" \
+028  "$text_md options" \
 030  "$text_md info-options" \
 031  "$text_md nodes" \
 032  "$text_md date" \
@@ -8288,7 +8288,7 @@ case $menuprincipal in
 025) clear ; $cmd_internal $outcli depends ;;
 026) clear ; $cmd_internal $outcli info ;;
 027) clear ; $cmd_internal $outcli version ;;
-028) clear ; $cmd_internal $outcli list-options ;;
+028) clear ; $cmd_internal $outcli options ;;
 ### 0719) clear ; $cmd_internal cli clasic-options ;;
 030) clear ; $cmd_internal $outcli info-options ;;
 031) clear ; $cmd_internal $outcli nodes ;;
@@ -8451,8 +8451,8 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0715  "$text_md depends" \
 0716  "$text_md info" \
 0717  "$text_md version" \
-0718  "$text_md list-options" \
-0720  "$text_md info-options" \
+0718  "$text_md options" \
+0720  "$text_md options" \
 0721  "$text_md nodes" \
 0722  "$text_md date" \
 0723  "$text_md free" \
@@ -8634,7 +8634,7 @@ $cmd_internal del-custom $archivo ;;
 0715) clear ; $cmd_internal $outcli depends ;;
 0716) clear ; $cmd_internal $outcli info ;;
 0717) clear ; $cmd_internal $outcli version ;;
-0718) clear ; $cmd_internal $outcli list-options ;;
+0718) clear ; $cmd_internal $outcli options ;;
 ### 0719) clear ; $cmd_internal cli clasic-options ;;
 0720) clear ; $cmd_internal $outcli info-options ;;
 0721) clear ; $cmd_internal $outcli nodes ;;
@@ -9174,7 +9174,7 @@ then echo $message_without_guiroll ; exit ; fi
 ####
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
-list-options|info-options|expert|\
+options|info-options|expert|\
 address4|address6|network4|network6||sockets|\
 filelog|autolog|ip4|ip6|notes|speed-ip4|speed-ip6|\
 nodes|date|free|version|treeconf|treecache|cleancache|\
@@ -9198,7 +9198,7 @@ preferences-read)$cmd_internal -gui-zenity preferences-read ;;
 preferences-modify)$cmd_internal -gui-zenity preferences-modify ;;
 preferences-regen)$cmd_internal -gui-zenity preferences-regen ;;
 preferences-example)$cmd_internal -gui-zenity preferences-example ;;
-list-options)$cmd_internal -gui-zenity list-options ;;
+options)$cmd_internal -gui-zenity options ;;
 info-options)$cmd_internal -gui-zenity info-options ;;
 expert)$cmd_internal -gui-zenity expert ;;
 filelog) $cmd_internal -gui-zenity filelog ;; 
@@ -9757,7 +9757,7 @@ echo "$title_md The used gui in $first_option is $second_option" ;
 ####
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
-list-options|clasic-options|info-options|expert|download|intro|\
+options|clasic-options|info-options|expert|download|intro|\
 ip4|ip6|speed-ip4|speed-ip6|notes|treeconf|treecache|cleancache|\
 license-lgpl-v2|license-gpl-v2|\
 address4|address6|network4|network6||sockets|\
@@ -9785,7 +9785,7 @@ preferences-read*)$cmd_internal gui-$second_option preferences-read ;;
 preferences-modify*)$cmd_internal gui-$second_option preferences-modify ;;
 preferences-regen*)$cmd_internal gui-$second_option preferences-regen ;;
 preferences-example*)$cmd_internal gui-$second_option preferences-example ;;
-list-options*)$cmd_internal gui-$second_option list-options ;;
+options*)$cmd_internal gui-$second_option options ;;
 clasic-options*)$cmd_internal gui-$second_option clasic-options ;;
 info-options*)$cmd_internal gui-$second_option info-options ;;
 expert*)$cmd_internal gui-$second_option expert ;;
