@@ -14576,7 +14576,7 @@ if [ "$launch_rules_firewall" != "yes" ]
 ####
 ####
 then echo $head_give_cover
-echo "### #$text_fail [ first option: $first_option ]"
+echo "### $text_fail [ first option: $first_option ]"
 $cmd_internal list-options ; 
 ####
 ####
