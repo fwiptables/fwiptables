@@ -2107,7 +2107,8 @@ echo "$title_md $text_info ### [ Network Route ] [ Route ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$text_md $text_info [ install ip command ]"
 else $command_ip -4 route ; fi
-echo
+####
+####
 echo "$title_md $text_info ### [ Configured ip ] [ inet ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$text_md $text_info [ install ip command ]"
@@ -2130,7 +2131,8 @@ echo "$title_md $text_info ### [ Network Route ] [ Route ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$text_md $text_info [ install ip command ]"
 else $command_ip -6 route ; fi
-echo
+####
+####
 echo "$title_md $text_info ### [ Configured ip ] [ inet ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$text_md $text_info [ install ip command ]"
