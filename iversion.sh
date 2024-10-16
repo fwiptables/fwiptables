@@ -5394,10 +5394,10 @@ if  [ "$first_option" == "readme" ];  then
 ####
 ####
 echo "$text_md $text_md fwiptables. Firewall With iptables."
-echo "$text_md $text_md Intro content information  $text_md"
-echo "$text_md $text_md Readme: description, location, install, uninstall."
+echo "$text_md $text_md Intro content information                          $text_md"
+echo "$text_md $text_md Readme: description, location, install, uninstall. $text_md"
 echo "$text_md $text_md $text_md"
-echo "$title_md $text_md  fwiptables description                 $text_md"
+echo "$title_md $text_md  [ fwiptables description ]             $text_md"
 echo "$text_md $text_md $text_md"
 echo "$text_md $text_md The fwiptables is a one-file WIZARD,     $text_md"
 echo "$text_md $text_md for iptables, with COMMAND-LINE,         $text_md"
@@ -5418,19 +5418,19 @@ echo "$text_md $text_md with limit bandwidth, string word,                 $text
 echo "$text_md $text_md with host whitelist, host blacklist,               $text_md"
 echo "$text_md $text_md with other more capabilities of firewall.          $text_md"
 echo "$text_md $text_md $text_md"
-echo "$title_md $text_md  fwiptables location                              $text_md"
+echo "$title_md $text_md  [ fwiptables location ]                          $text_md"
 echo "$text_md $text_md $text_md"
 echo "$text_md $text_md  File    Location:   $cmd_directory/$cmd_filename  $text_md"
 echo "$text_md $text_md  Config Directory:   $directory_data_necesary      $text_md"
 echo "$text_md $text_md  Cache  Directory:   $directory_cache_necesary     $text_md "
 echo "$text_md $text_md $text_md"
-echo "$title_md $text_md fwiptables install                          $text_md"
+echo "$title_md $text_md [ fwiptables install ]                      $text_md"
 echo "$text_md $text_md $text_md"
 echo "$text_md $text_md  su root TYPE: su root                       $text_md"    
 echo "$text_md $text_md  put bit TYPE: chmod 755 $cmd_internal       $text_md"
 echo "$text_md $text_md  install TYPE: $cmd_internal install         $text_md" 
 echo "$text_md $text_md $text_md"
-echo "$title_md $text_md fwiptables uninstall                        $text_md"
+echo "$title_md $text_md [ fwiptables uninstall ]                    $text_md"
 echo "$text_md $text_md $text_md"
 echo "$text_md $text_md uninstall TYPE: $cmd_internal uninstall      $text_md"
 ####
@@ -5461,8 +5461,6 @@ echo "$text_md"
 $cmd_internal depends
 echo "$text_md"
 $cmd_internal examples
-echo "$text_md"
-echo "### Firewall Options"
 echo "$text_md"
 $cmd_internal options
 ####
