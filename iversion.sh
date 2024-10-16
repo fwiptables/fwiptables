@@ -98,7 +98,7 @@ cmd_year="24"                                              # Number year version
 cmd_month="10"                                             # Number mouth version
 cmd_letter="H"                                             # Number letter version
 cmd_version="$cmd_year-$cmd_month-$cmd_letter"             # Final date like number version
-cmd_date="Year 20$cmd_year / Month $cmd_month"
+cmd_released="Year 20$cmd_year / Month $cmd_month"
 #### The data version firewall
 cmd_developer="Francisco Garcia"                           # Actual developer
 cmd_contact="fwiptables@gmx.com"                           # Actual contact
@@ -353,7 +353,9 @@ config_output_uid="root"
 config_shield_maxtries="10"  
 config_shield_maxtries="12"     
 config_shield_port="22" 
-config_shield_port="22"        
+config_shield_port="22"
+config_firewall_option="### $cmd_name $1"
+config_show_time="### date $($command_date)"
 config_string_algoritmo="kpm"
 config_string_allowed="one-string-that-like-how-a-passord,sourceforge.net"  
 config_string_denied=".fb.com,.facebook.com,xxx.html" 
@@ -1500,8 +1502,8 @@ fi
 if [ "$allow_show_option" == "" ] ; then
 ####
 ####
-head_firewall_option="### $cmd_name $first_option" ; 
-echo "$head_firewall_option"
+#### config_firewall_option="### $cmd_name $first_option" ; 
+echo "$config_firewall_option"
 ####
 ####
 fi
@@ -1516,8 +1518,8 @@ fi
 if [ "$allow_show_time" == "" ] ; then
 ####
 ####
-head_show_time="### date $(date)" ;
-echo "$head_show_time"
+#### config_show_time="### date $(date)"
+echo "$config_show_time"
 ####
 ####
 fi
@@ -1581,7 +1583,7 @@ fi
 ####
 echo "$text_md $text_md       Name Firewall: $cmd_name                 $text_md"
 echo "$text_md $text_md    Version Firewall: $cmd_version              $text_md"
-echo "$text_md $text_md       Date Firewall: $cmd_date                 $text_md"
+echo "$text_md $text_md    Release Firewall: $cmd_relase               $text_md"
 echo "$text_md $text_md     Source Firewall: $cmd_notinstalled         $text_md"
 echo "$text_md $text_md   Internal Firewall: $cmd_internal             $text_md"
 echo "$text_md $text_md   Short Description: $cmd_shortdescription     $text_md"
