@@ -1502,7 +1502,6 @@ fi
 if [ "$allow_show_option" == "" ] ; then
 ####
 ####
-#### config_firewall_option="### $cmd_name $first_option" ; 
 echo "$config_firewall_option"
 ####
 ####
@@ -1518,7 +1517,6 @@ fi
 if [ "$allow_show_time" == "" ] ; then
 ####
 ####
-#### config_show_time="### date $(date)"
 echo "$config_show_time"
 ####
 ####
