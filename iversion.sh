@@ -5546,7 +5546,7 @@ exit; fi
 if [ "$first_option" == "install" ]; then echo "$overhead"
 ####
 ####
-echo "$text_md Installing $cmd_filename.. waiting several seconds, \
+echo "# Installing $cmd_filename.. waiting several seconds, \
 while create new configuration $text_md"
 ####
 ####
