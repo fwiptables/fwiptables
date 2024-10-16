@@ -625,8 +625,6 @@ head_waiting_cli="$title_md $text_info [ cli ] $head_waiting_all "
 head_waiting_gui="$title_md $text_info [ gui ] $head_waiting_all "
 head_waiting_log="$title_md $text_info [ log ] $head_waiting_all "
 head_waiting_pdf="$title_md $text_info [ pdf ] $head_waiting_all "
-head_give_cover="$title_md [ $cmd_filename $cmd_version ] \
-[ Options: $cmd_internal options ]"
 give_load="$title_md $text_ok [ Load firewall ] [ Firewall With iptables ]"
 give_preferences="$title_md [ Configure ] [ $cmd_internal preferences-modify ]"
 nada="$(echo -n)" ; 
@@ -7347,7 +7345,7 @@ exit; fi
 if   [ "$first_option" == "gui-shell-zenity" ]
 ####
 ####
-then echo $head_waiting_gui ; echo $head_give_cover
+then echo $head_waiting_gui
 ####
 ####
 ####  english: principal gui  #### spanish: principal gui
@@ -7533,7 +7531,7 @@ exit ; fi
 if   [ "$first_option" == "gui-shell-yad" ]
 ####
 ####
-then echo $head_waiting_gui ; echo $head_give_cover
+then echo $head_waiting_gui
 ####
 ####
 ####  english: principal gui  #### spanish: principal gui
@@ -8701,7 +8699,7 @@ exit; fi
 if [ "$first_option" == "gui-roll-zenity" ] ;
 ####
 ####
-then echo $head_waiting_gui ; echo $head_give_cover ;
+then echo $head_waiting_gui ;
 if [ "$command_zenity" == "$NULL" ] ;
 then echo $message_without_guiroll ; exit ; fi
 ####
@@ -8753,7 +8751,7 @@ exit; fi
 if [ "$first_option" == "gui-roll-zenity-firewall-wallcontrol" ]
 ####
 ####
-then echo $head_waiting_gui ; echo $head_give_cover
+then echo $head_waiting_gui ;
 if [ "$command_zenity" == "$NULL" ]
 then echo $message_without_guiroll ; exit ; fi
 ####
@@ -8847,7 +8845,7 @@ exit; fi
 if [ "$first_option" == "gui-roll-zenity-firewall-listconceptual" ]
 ####
 ####
-then echo $head_waiting_gui ; echo $head_give_cover
+then echo $head_waiting_gui ;
 if [ "$command_zenity" == "$NULL" ]
 then echo $message_without_guiroll ; exit ; fi
 ####
@@ -8900,7 +8898,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "gui-roll-zenity-firewall-listnumeral" ]
-then echo $head_waiting_gui ; echo $head_give_cover
+then echo $head_waiting_gui ;
 if [ "$command_zenity" == "$NULL" ]
 then echo $message_without_guiroll ; exit ; fi
 ####
@@ -8953,7 +8951,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "gui-roll-zenity-firewall-wallcustom" ]
-then echo $head_waiting_gui ; echo $head_give_cover
+then echo $head_waiting_gui ;
 if [ "$command_zenity" == "$NULL" ]
 then echo $message_without_guiroll ; exit ; fi
 ####
@@ -9052,7 +9050,7 @@ exit ; fi
 if [ "$first_option" == "gui-roll-zenity-firewall-wallsystem" ]
 ####
 ####
-then echo $head_waiting_gui ; echo $head_give_cover ;
+then echo $head_waiting_gui ;
 if [ "$command_zenity" == "$NULL" ]
 then echo $message_without_guiroll ; exit ; fi
 ####
@@ -9166,7 +9164,7 @@ exit ; fi
 if [ "$first_option" == "gui-roll-zenity-firewall-netsystem" ] ;
 ####
 ####
-then echo $head_waiting_gui ; echo $head_give_cover ;
+then echo $head_waiting_gui ;
 if [ "$command_zenity" == "$NULL" ] ;
 then echo $message_without_guiroll ; exit ; fi
 ####
@@ -9244,7 +9242,7 @@ exit; fi
 if [ "$first_option" == "gui-menu" ] ;
 ####
 ####
-then echo $head_waiting_gui ; echo $head_give_cover
+then echo $head_waiting_gui ;
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
 echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
 echo "$title_md The used gui in $first_option is $second_option" ;
@@ -9295,7 +9293,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu-firewall-wallcontrol" ]
-then echo $head_waiting_gui ; echo $head_give_cover
+then echo $head_waiting_gui ;
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
 echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
 echo "$title_md The used gui in $first_option is $second_option" ;
@@ -9405,7 +9403,7 @@ exit; fi
 if   [ "$first_option" == "gui-menu-firewall-listconceptual" ]
 ####
 ####
-then echo $head_waiting_gui ; echo $head_give_cover
+then echo $head_waiting_gui ;
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
 echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
 echo "$title_md The used gui in $first_option is $second_option" ;
@@ -9464,7 +9462,7 @@ exit; fi
 if   [ "$first_option" == "gui-menu-firewall-listnumeral" ]
 ####
 ####
-then echo $head_waiting_gui ; echo $head_give_cover
+then echo $head_waiting_gui ;
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
 echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
 echo "$title_md The used gui in $first_option is $second_option" ;
@@ -9524,7 +9522,7 @@ exit; fi
 if [ "$first_option" == "gui-menu-firewall-wallcustom" ]
 ####
 ####
-then echo $head_waiting_gui ; echo $head_give_cover
+then echo $head_waiting_gui ;
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
 echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
 echo "$title_md The used gui in $first_option is $second_option" ;
@@ -9628,7 +9626,7 @@ exit; fi
 ####
 ####  
 if [ "$first_option" == "gui-menu-firewall-wallsystem" ]
-then echo $head_waiting_gui ; echo $head_give_cover
+then echo $head_waiting_gui ;
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
 echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
 echo "$title_md The used gui in $first_option is $second_option" ;
@@ -9748,7 +9746,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "gui-menu-firewall-netsystem" ]
-then echo $head_waiting_gui ; echo $head_give_cover
+then echo $head_waiting_gui ;
 if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
 echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
 echo "$title_md The used gui in $first_option is $second_option" ;
@@ -14572,10 +14570,9 @@ fi
 ############################	   spanish: default: sin otra valida opcion
 ####
 ####
-if [ "$launch_rules_firewall" != "yes" ]
+if [ "$launch_rules_firewall" != "yes" ] ; then
 ####
 ####
-then echo $head_give_cover
 echo "### $text_fail [ first option: $first_option ] [ Recomended: options ]"
 $cmd_internal list-options ; 
 ####
