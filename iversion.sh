@@ -539,7 +539,7 @@ allow_save_autolog=""
 allow_separate_rules=""        
 allow_shield_maxtries="no"    
 allow_show_time="no"
-allow_show_option=""           
+allow_show_option="no"           
 allow_string_allowed="no"   
 allow_string_denied="no"     
 allow_system_ulog="no"   
@@ -1493,36 +1493,36 @@ fi
 #### :rutina-final-allow-autolog:
 ##########     english: show option         ##########
 ##########     spanish: mostrar opcion      ##########
-#### :rutina-inicial-allow-option:
+#### :rutina-inicial-allow-show-option:
 ####
 ####
-if [ "$allow_show_option" != "no" ]
+if [ "$allow_show_option" == "" ] ; then
 ####
 ####
-head_firewall_option="### firewall $first_option"
-then echo "$head_firewall_option"
+head_firewall_option="### firewall $first_option" ; 
+echo "$head_firewall_option"
 ####
 ####
 fi
 ####
 ####
-#### :rutina-final-allow-option:
+#### :rutina-final-allow-show-option:
 ##########     english: time              ##########
 ##########     spanish: mostrar fecha     ##########
-#### :rutina-inicial-allow-time:
+#### :rutina-inicial-allow-show-time:
 ####
 ####
-if [ "$allow_show_time" != "no" ]
+if [ "$allow_show_time" == "" ] ; then
 ####
 ####
-then head_show_time="$title_md Date: $cmd_actual_date"
-echo "$head_show_timespam"
+head_show_time="### date $(date)" ;
+echo "$head_show_time"
 ####
 ####
 fi
 ####
 ####
-#### :rutina-final-allow-time:
+#### :rutina-final-allow-show-time:
 ##########   english: filelog: Read log fwiptables-filelog  ##########
 ##########   spanish: filelog: Lee log  fwiptables-filelog  ##########
 #### :rutina-inicial-config-filelog:
@@ -2014,6 +2014,7 @@ echo "config_string_algoritmo=kmp                     ## or kmp or bm"
 echo "$title_md"
 echo "$title_md $title_md default autolog"
 echo "allow_save_autolog=                             ## or void for yes or no"
+echo "allow_show_option=no                            ## or void for yes or no"
 echo "allow_show_time=no                              ## or void for yes or no"
 echo "$title_md"  
 echo "$title_md $title_md mini client ports from side client: for miniserver tcp/udp"  
@@ -2802,7 +2803,7 @@ exit; fi
 if [ "$first_option" == "notes" ]; then
 ####
 ####
-echo "$text_md                          Iptables Firewall $text_md" 
+echo "$text_md                          Iptables Firewall Commands $text_md" 
 echo "$text_md           Legacy or nft: whith one of them is sufficent $text_md"   
 echo "$text_md         iptables-legacy: support for xtables ipv4 $text_md"    
 echo "$text_md            iptables-nft: support for nftables ipv4 $text_md" 
