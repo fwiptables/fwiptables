@@ -2171,12 +2171,13 @@ then echo "$title_md $text_info [ install ip command ]"
 else  $command_ip -4 address | $command_grep -i  inet | \
 $command_grep -iv 127.0.0.1 | $command_sed 's/inet//g' | \
 $command_cut -d "/" -f 1 ; fi
-echo
+####
+####
 echo "$title_md $text_info ### [ Public ip ] [ Address ipv4 ] ###"
 if [ "$command_curl" == "$NULL" ]; then
 echo "$title_md $text_info [ install curl command ]" ;
 else public_ip4="$($command_curl -k -s -4 $serverip_discover_ipv4 -w '\n'| head -1)"
-if [ "$public_ip4" == "<!DOCTYPE html>" ]
+if [ "$public_ip4" == "<!DOCTYPE html>" ] || [ "$public_ip4" == "" ] ;
 then echo "fail: public ip hidden for dns server" ;
 else echo "$text_md   $public_ip4"; fi ; fi
 ####
@@ -2199,12 +2200,13 @@ then echo "$title_md $text_info [ install ip command ]"
 else  $command_ip -6 address | $command_grep -i  inet6 | \
 $command_grep -iv 127.0.0.1 | $command_sed 's/inet6//g' | \
 $command_cut -d "/" -f 1 ; fi
-echo
+####
+####
 echo "$title_md $text_info ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" == "$NULL" ]; then
 echo "$title_md $text_info [ install curl command ]" ;
 else public_ip6="$($command_curl -k -s -6 $serverip_discover_ipv4 -w '\n'| head -1)"
-if [ "$public_ip4" == "<!DOCTYPE html>" ]
+if [ "$public_ip4" == "<!DOCTYPE html>" ] || [ "$public_ip4" == "" ] ;
 then echo "fail: public ip hidden for dns server" ;
 else echo "$text_md   $public_ip6"; fi; fi
 ####
