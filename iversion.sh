@@ -2521,12 +2521,12 @@ if   [ "$first_option" == "expert-myradio-install" ]; then echo "$overhead"
 ####
 ####
 echo "$title_md [ $first_option ]  [ myradio download ] [ expert-myradio-install md]"
-echo "$title_md Downloading myradio stable latest in $default_directory_radio"
+echo "$title_md Downloading myradio stable latest in $default_directory_radio/myradio-bash"
 $command_curl $web_download_myradio -s -L \
--o $default_directory_radio/myradio-bash || echo "Without internet" && exit \
+-o $default_directory_radio/myradio-bash || echo "Without internet" || exit \
 && chmod ugo+x $default_directory_radio/myradio-bash &> /dev/null
-cp $default_directory_radio/myradio-bash /usr/bin && \
-echo installed myradio-bash in /usr/bin/myradio-bash
+cp $default_directory_radio/myradio-bash /usr/bin/myradio-bash && \
+echo "$title_md installed myradio-bash in /usr/bin/myradio-bash"
 ####
 ####
 exit; fi
@@ -3479,8 +3479,8 @@ echo "$text_md $cmd_internal [optional-output] first_option [second_option] $tex
 echo "$title_md    optional-output $text_md"
 echo "$text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ] $text_md"
 echo "$text_md [ cli-dialog cli-whiptail cli-menu cli-menu-compact ] $text_md"
-echo "$text_md [ gui-zenity gui-yad gui-menu-zenity gui-menu-yad ] $text_md"
-echo "$text_md [ gui-roll-zenity gui-shell-zenity gui-shell-yad ] $text_md"
+echo "$text_md [ gui-zenity gui-yad gui-menu gui-menu-zenity gui-menu-yad ] $text_md"
+echo "$text_md [ gui-roll-zenity gui-shell gui-shell-zenity gui-shell-yad ] $text_md"
 echo "$title_md    firewall-listconceptual $text_md"
 echo "$text_md ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6 $text_md"
 echo "$text_md list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4 $text_md"
