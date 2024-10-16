@@ -707,7 +707,7 @@ if [ "$without_first_option" = "$NULL" ] ; then without_first_option="options" ;
 ####
 ####
 if [ "$first_option" = "$NULL" ]; then
-echo "### $text_info [ Default Option: $without_first_option ] [ Recomended Option: options ]"
+echo "### $text_info [ Default Option: $without_first_option ] [ List Option: options ]"
 first_option="$without_first_option" ; fi
 ####
 ####
@@ -14574,7 +14574,9 @@ fi
 ####
 ####
 if [ "$launch_rules_firewall" != "yes" ] ; then
-echo "### $text_fail [ Fail Option: options ] [ List Option: options ]"
+####
+####
+echo "### $text_fail [ Fail Option: $first_option ] [ List Option: options ]"
 first_option="options" ; $cmd_internal $first_option ; 
 ####
 ####
