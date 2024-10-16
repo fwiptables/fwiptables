@@ -2014,7 +2014,7 @@ echo "config_string_algoritmo=kmp                     ## or kmp or bm"
 echo "$title_md"
 echo "$title_md $title_md default autolog"
 echo "allow_save_autolog=                             ## or void for yes or no"
-echo "allow_show_option=no                            ## or void for yes or no"
+echo "allow_show_option=                              ## or void for yes or no"
 echo "allow_show_time=no                              ## or void for yes or no"
 echo "$title_md"  
 echo "$title_md $title_md mini client ports from side client: for miniserver tcp/udp"  
@@ -5560,8 +5560,8 @@ exit; fi
 if [ "$first_option" == "install" ]; then
 ####
 ####
-echo "# Installing $cmd_filename.. waiting several seconds, \
-while create new configuration $text_md"
+echo "# Installing $cmd_notinstalled .. $text_md"
+echo "# waiting several seconds, while create new configuration $text_md"
 ####
 ####
 ####  english: copy the file to temporal folder and install
