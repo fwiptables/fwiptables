@@ -65,6 +65,7 @@ exit ; fi
 ##########     spanish: nombre, descripcion y version   ##########
 #### :rutina-inicial-cmd-env:
 ####
+####
 #### ########## ########## ##########
 #### variables configs for fwiptables program
 #### ########## ########## ##########
@@ -72,33 +73,33 @@ exit ; fi
 ####
 #### The name file command
 cmd_name="fwiptables"                                      # Name firewall
-#### source /etc/profile                        
-cmd_path="/usr/bin:/usr/sbin:/bin:/sbin"                   # Config for PATH
-PATH="$cmd_path"                                           # PATH for fwiptables
 #### the installed location
 cmd_filename="fwiptables"                                  # Filename installed
 cmd_directory="/usr/bin"                                   # Directory installed
-#### find any command
+#### the path firewall and any command                        
+cmd_path="/usr/bin:/usr/sbin:/bin:/sbin"                   # Config for PATH
+PATH="$cmd_path"                                           # PATH for fwiptables
+#### find any command in system
 cmd_where="which"                                          # Find each command
-#### auxiliar file command         
+#### the source file command         
 cmd_basename="$(basename $0)"                              # Only name filename
 cmd_realpath="$(realpath $0)"                              # path name filename
-#### internal (notinstalled,installed) file command         
+#### internal notinstalled,installed         
 cmd_notinstalled="$0"
 cmd_installed="$cmd_directory/$cmd_filename"               # Full path filename
-#### internal is installed or internal is basename
+#### internal cycle command firewall
 cmd_internal="$cmd_installed"                              # your choosed internal
 if [ -f "$cmd_installed" ]
 then cmd_internal="$cmd_installed"
 else cmd_internal="$cmd_notinstalled"
 fi
-#### The number version
+#### The number version firewall
 cmd_year="24"                                              # Number year version
 cmd_month="10"                                             # Number mouth version
 cmd_letter="H"                                             # Number letter version
 cmd_version="$cmd_year-$cmd_month-$cmd_letter"             # Final date like number version
 cmd_date="Year 20$cmd_year / Month $cmd_month"
-#### The data version
+#### The data version firewall
 cmd_developer="Francisco Garcia"                           # Actual developer
 cmd_contact="fwiptables@gmx.com"                           # Actual contact
 cmd_shortdescription="FireWall With iptables"              # Description short
@@ -107,17 +108,17 @@ cmd_requisite_program="id,awk,sed,file,cut,date,cat"       # Program requisite
 cmd_requisite_firewall4="iptables-legacy,iptables-nft"     # Firewall requisite
 cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # Firewall requisite
 cmd_license="LGPL v2, GPL v2"                              # Program license
-#### posible front-end
+#### posible front-end firewall
 cmd_posible_cli="dialog,whiptail"                          # Posible cli
 cmd_posible_gui="yad,zenity"                               # Posible gui
-#### info xdg session
+#### info xdg session firewall
 cmd_session="$XDG_SESSION_TYPE"                            # Sesssion XDG
 cmd_xdg="/run/user/0"                                      # Folder XDG
-#### info file format
+#### info file format firewall
 cmd_format=$(file $0 | \
 awk '{print $2 "_" $3 "_" $4}')                            # File format
-#### info date logs 
-cmd_actual_date="$(date +LOG_DAY_%Y-%m-%d_HOUR_%H-%M-%S)"     # log date
+#### info date logs var in log,autolog
+cmd_actual_date="$(date +LOG_DAY_%Y-%m-%d_HOUR_%H-%M-%S)"  # log date
 cmd_opt_date="$cmd_actual_date-_OPT_"                      # log date
 ####
 ####
@@ -2652,9 +2653,8 @@ echo "$text_md $text_md  Launch: miniserver-udp ports                        $te
 echo "$text_md $text_md  $cmd_internal miniserver-udp 67:68,443              $text_md"  
 echo "$text_md $text_md  Explain: Read miniserver clients ports in preferences file $text_md"
 echo "$text_md $text_md  $text_md"
-echo "$title_md $text_md [ Several examples without optional otuput ]        $text_md"
 echo "$text_md $text_md  $text_md"
-echo "$title_md $text_md without optional output | Example Description       $text_md"  
+echo "$title_md $text_md [ Without optional output ]       $text_md"  
 echo "$text_md $text_md  $text_md"  
 echo "$text_md $text_md  Explain: depends                  $text_md"
 echo "$text_md $text_md  $cmd_internal depends             $text_md"  
@@ -2671,23 +2671,37 @@ echo "$text_md $text_md  $cmd_internal autolog             $text_md"
 echo "$text_md $text_md  Explain: modify default variables $text_md"
 echo "$text_md $text_md  $cmd_internal preferences-modify  $text_md"  
 echo "$text_md $text_md"
-echo "$title_md $text_md  with optional output | Example Description         $text_md"  
+echo "$title_md $text_md [ With optional output ]          $text_md"  
 echo "$text_md $text_md  $text_md"
-echo "$text_md $text_md  Example with info        | $cmd_internal info list           $text_md"  
-echo "$text_md $text_md  Example with expert      | $cmd_internal txt expert          $text_md"  
-echo "$text_md $text_md  Example with code ip4    | $cmd_internal cli code ip4        $text_md"  
-echo "$text_md $text_md  Example with list rules  | $cmd_internal cli lsn4            $text_md"  
-echo "$text_md $text_md  Example with nodes       | $cmd_internal gui nodes           $text_md"  
-echo "$text_md $text_md  Example with web browser | $cmd_internal gui web kernel.org  $text_md"  
+echo "$text_md $text_md  Example with info"        
+echo "$text_md $text_md  $cmd_internal info list           $text_md"  
+echo "$text_md $text_md  Example with expert"      
+echo "$text_md $text_md  $cmd_internal txt expert          $text_md"  
+echo "$text_md $text_md  Example with code ip4"    
+echo "$text_md $text_md  $cmd_internal cli code ip4        $text_md"  
+echo "$text_md $text_md  Example with list rules"  
+echo "$text_md $text_md  $cmd_internal cli lsn4            $text_md"  
+echo "$text_md $text_md  Example with nodes"       
+echo "$text_md $text_md  $cmd_internal gui nodes           $text_md"  
+echo "$text_md $text_md  Example with web browser "
+echo "$text_md $text_md  $cmd_internal gui web kernel.org  $text_md"  
 echo "$text_md $text_md  $text_md "
-echo "$text_md $text_md  Launch client web firewall in silent   | $cmd_internal silent client-web   $text_md"  
-echo "$text_md $text_md  List iptables rules with output txt    | $cmd_internal txt ls4             $text_md"  
-echo "$text_md $text_md  List firewall with output cli whiptail | $cmd_internal cli-wiptail names   $text_md"  
-echo "$text_md $text_md  List sockets ip with output gui yad    | $cmd_internal gui-yad sockets     $text_md"  
-echo "$text_md $text_md  All options in text menu               | $cmd_internal cli-menu     $text_md"  
-echo "$text_md $text_md  All options in window menu             | $cmd_internal gui-menu-yad        $text_md"  
-echo "$text_md $text_md  All options in window roll             | $cmd_internal gui-roll-zenity     $text_md"  
-echo "$text_md $text_md  All options in window shell            | $cmd_internal gui-shell-yad         $text_md"
+echo "$text_md $text_md  Launch client web firewall in silent   "
+echo "$text_md $text_md  $cmd_internal silent client-web   $text_md"  
+echo "$text_md $text_md  List iptables rules with output txt    "
+echo "$text_md $text_md  $cmd_internal txt ls4             $text_md"  
+echo "$text_md $text_md  List firewall with output cli whiptail "
+echo "$text_md $text_md  $cmd_internal cli-wiptail names   $text_md"  
+echo "$text_md $text_md  List sockets ip with output gui yad    "
+echo "$text_md $text_md  $cmd_internal gui-yad sockets     $text_md"  
+echo "$text_md $text_md  All options in text menu               "
+echo "$text_md $text_md  $cmd_internal cli-menu            $text_md"  
+echo "$text_md $text_md  All options in window menu             "
+echo "$text_md $text_md  $cmd_internal gui-menu-yad        $text_md"  
+echo "$text_md $text_md  All options in window roll             "
+echo "$text_md $text_md  $cmd_internal gui-roll-zenity     $text_md"  
+echo "$text_md $text_md  All options in window shell             "
+echo "$text_md $text_md  $cmd_internal gui-shell-yad       $text_md"
 ####
 ####
 exit; fi
@@ -5364,6 +5378,11 @@ exit; fi
 if  [ "$first_option" == "readme" ];  then echo "$overhead"
 ####
 ####
+echo "$text_md $text_md fwiptables. Firewall With iptables."
+echo "$text_md $text_md Intro content information  $text_md"
+echo "$text_md $text_md Readme: description, location, install, uninstall."
+echo "$text_md $text_md $text_md"
+echo "$title_md $text_md  fwiptables description                 $text_md"
 echo "$text_md $text_md $text_md"
 echo "$text_md $text_md The fwiptables is a one-file WIZARD,     $text_md"
 echo "$text_md $text_md for iptables, with COMMAND-LINE,         $text_md"
@@ -5413,7 +5432,6 @@ exit; fi
 if  [ "$first_option" == "intro" ]; then echo "$overhead"
 ####
 ####
-echo "$title_md fwiptables. Firewall With iptables. intro content information  $text_md"
 echo "$text_md"
 $cmd_internal readme
 echo "$text_md"
@@ -5693,7 +5711,6 @@ exit; fi
 if   [ "$first_option" == "about" ]; then echo "$overhead" 
 ####
 ####
-echo "$text_md"
 echo "$text_md $text_md File:          fwiptables"
 echo "$text_md $text_md Description:   Command Fran FireWall fwiptables Generator"
 echo "$text_md $text_md Author:        Francisco Garcia <fwiptables@gmx.com>"
