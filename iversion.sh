@@ -5563,7 +5563,7 @@ if [ "$first_option" == "install" ]; then
 ####
 ####
 echo "# Installing $cmd_notinstalled .. $text_md"
-echo "# waiting several seconds, while create new configuration $text_md"
+echo "# Waiting several seconds, while create new configuration $text_md"
 ####
 ####
 ####  english: copy the file to temporal folder and install
@@ -14573,7 +14573,7 @@ fi
 if [ "$launch_rules_firewall" != "yes" ] ; then
 ####
 ####
-echo "### $text_fail [ first option: $first_option ] [ Recomended: options ]"
+echo "### $text_fail [ First Option: $first_option ] [ Recomended Option: options ]"
 $cmd_internal list-options ; 
 ####
 ####
