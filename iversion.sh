@@ -14574,7 +14574,7 @@ fi
 ####
 ####
 if [ "$launch_rules_firewall" != "yes" ] ; then
-echo "### $text_fail [ Fail Option: options ] [ Recomended Option: options ]"
+echo "### $text_fail [ Fail Option: options ] [ List Option: options ]"
 first_option="options" ; $cmd_internal $first_option ; 
 ####
 ####
