@@ -627,7 +627,6 @@ head_waiting_log="$title_md $text_info [ log ] $head_waiting_all "
 head_waiting_pdf="$title_md $text_info [ pdf ] $head_waiting_all "
 give_load="$title_md $text_ok [ Load firewall ] [ Firewall With iptables ]"
 give_preferences="$title_md [ Configure ] [ $cmd_internal preferences-modify ]"
-nada="$(echo -n)" ; 
 message_without_support="[ Without support for output cli for this option ]"
 message_without_narrow="$title_md $text_fail [ narrow ] $message_without_support"
 message_without_txt="$title_md $text_fail [ txt ] $message_without_support"
@@ -695,17 +694,21 @@ if [ -f "$file_default_preferences" ] ;
 then source $file_default_preferences ; fi
 ####
 ####
+if [ "$without_first_option" = "$NULL" ] ; then without_first_option="options" ; fi
+####
+####
 #### :rutina-final-variables-update-secondtime:
 ##########    english: Update first option               ##########
 ##########    spanish: Actualiza primera opción          ##########
 #### :rutina-inicial-option-whithout:
 ####
 ####
-#### First option
-if [ "$first_option" = "$NULL" ] && [ "$without_first_option" = "$NULL" ] 
-then first_option="list-options" ; fi 
-if [ "$first_option" = "$NULL" ]; 
-then first_option="$without_first_option" ; fi
+#### Without first option
+####
+####
+if [ "$first_option" = "$NULL" ]; then
+echo "### $text_info [ Default Option: $without_first_option ] [ Recomended Option: options ]"
+first_option="$without_first_option" ; fi
 ####
 ####
 #### :rutina-final-option-without:
@@ -1986,7 +1989,7 @@ if [ "$first_option" == "preferences-example" ] ; then
 ####
 echo "$title_md"
 echo "$title_md"
-echo "$title_md $title_md default option for default"
+echo "$title_md $title_md default option when not option are there"
 echo "without_first_option=ls4                        ## read below"
 echo "$title_md type: void or one valid option required to works"
 echo "$title_md example1:list-options example2:list4 example3:ip4"
@@ -5284,13 +5287,13 @@ exit; fi
 if [ "$first_option" == "modify-custom" ]; then 
 ####
 ###
-if [ ! -f "$default_directory_custom/$second_option" ] ; then $nada
+if [ ! -f "$default_directory_custom/$second_option" ] ; then
 $cmd_internal names-custom
 echo "$text_md $text_info [ usage: ] [ $cmd_internal modify-custom config-existent ]"
 exit; fi
 ####
 ####
-if [ -f "$default_directory_custom/$second_option" ] ; then $nada
+if [ -f "$default_directory_custom/$second_option" ] ; then
 cp "$default_directory_custom/$second_option" "$directory_cache_necesary/$second_option" &> /dev/null
 $favorite_text_editor "$default_directory_custom/$second_option"
 echo "$title_md $text_ok [ load-custom file $second_option ]"
@@ -6374,19 +6377,19 @@ exit ;;
 esac
 ####
 ####
-if [ "$command_arptables" == "$NULL"  ]; then $nada ; else
+if [ "$command_arptables" != "$NULL"  ]; then 
 $command_arptables-save &> $default_directory_control/$archivofin-arptables; fi
-if [ "$command_ebtables"  == "$NULL"  ]; then $nada ; else
+if [ "$command_ebtables"  != "$NULL"  ]; then 
 $command_ebtables-save &> $default_directory_control/$archivofin-ebtables; fi
 ####
 ####
-if [ "$command_ip4tablesnft"  == "$NULL"  ]; then $nada ; else
+if [ "$command_ip4tablesnft"    != "$NULL"  ]; then
 $command_ip4tablesnft-save      &> $default_directory_control/$archivofin-nft-ipv4 ; fi
-if [ "$command_ip6tablesnft"  == "$NULL"  ]; then $nada ; else
+if [ "$command_ip6tablesnft"    != "$NULL"  ]; then
 $command_ip6tablesnft-save      &> $default_directory_control/$archivofin-nft-ipv6 ; fi
-if [ "$command_ip4tableslegacy"  == "$NULL"  ]; then $nada ; else
-$command_ip4tableslegacy-save    &> $default_directory_control/$archivofin-legacy-ipv4 ; fi
-if [ "$command_ip6tableslegacy"  == "$NULL"  ]; then $nada ; else
+if [ "$command_ip4tableslegacy" != "$NULL"  ]; then
+$command_ip4tableslegacy-save   &> $default_directory_control/$archivofin-legacy-ipv4 ; fi
+if [ "$command_ip6tableslegacy" != "$NULL"  ]; then
 $command_ip6tableslegacy-save   &> $default_directory_control/$archivofin-legacy-ipv6 ; fi
 ####
 ####
@@ -7025,7 +7028,7 @@ $favorite_realpath_graphicalldialog --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_cache_necesary/$cmd_filename-$third_option" \
 --editable --title=NEW-TINY-CONFIG 1> "$default_directory_custom/$third_option" ;
-if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
+if [ -s "$default_directory_custom/$third_option" ]; then
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=OK-new-config-file-$third_option\
@@ -7043,7 +7046,7 @@ $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_cache_necesary/$cmd_filename-$third_option" \
 --editable --title=NUEVA-DIMINUTA-CONFIG 1> "$default_directory_custom/$third_option" ;
-if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
+if [ -s "$default_directory_custom/$third_option" ]; then
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=OK-new-config-file-$third_option-\
@@ -7061,7 +7064,7 @@ $favorite_realpath_graphicalldialog --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_cache_necesary/$cmd_filename-$third_option" \
 --editable --title=NEW-MINI-CONFIG 1> "$default_directory_custom/$third_option" ;
-if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
+if [ -s "$default_directory_custom/$third_option" ]; then
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=OK-new-config-file-$third_option\
@@ -7079,7 +7082,7 @@ $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_cache_necesary/$cmd_filename-$third_option" \
 --editable --title=NUEVA-MINI-CONFIG 1> "$default_directory_custom/$third_option" ;
-if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
+if [ -s "$default_directory_custom/$third_option" ]; then
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=OK-new-config-file-$third_option-\
@@ -7097,7 +7100,7 @@ $favorite_realpath_graphicalldialog --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_cache_necesary/$cmd_filename-$third_option" \
 --editable --title=NEW-FULL-CONFIG 1> "$default_directory_custom/$third_option" ;
-if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
+if [ -s "$default_directory_custom/$third_option" ]; then
 $favorite_realpath_graphicalldialog --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=OK-new-config-file-$third_option-\
@@ -7115,7 +7118,7 @@ $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename=$directory_cache_necesary/$cmd_filename-$third_option \
 --editable --title=NUEVA-COMPLETA-CONFIG 1> "$default_directory_custom/$third_option" ;
-if [ -s "$default_directory_custom/$third_option" ]; then $nada ;
+if [ -s "$default_directory_custom/$third_option" ]; then
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=OK-new-config-file-$third_option-\
@@ -7138,7 +7141,7 @@ $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename="$directory_cache_necesary/$cmd_filename-$third_option" \
 --editable --title=MODIFY-CONFIG 1> $default_directory_custom/$third_option
-if [ -s "$default_directory_custom/$third_option" ]; then $nada ; 
+if [ -s "$default_directory_custom/$third_option" ]; then
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=OK.file-$third_option
@@ -7221,7 +7224,7 @@ $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename=$directory_cache_necesary/$cmd_filename-$archivo \
 --editable --title=WIZARD TINY 1> $default_directory_custom/$archivo
-if [  -s $default_directory_custom/$archivo ]; then $nada ; 
+if [  -s $default_directory_custom/$archivo ]; then
 $cmd_internal -gui loadtiny-custom $archivo ; $cmd_internal -gui list4;
 else rm $default_directory_custom/$archivo ;
 $favorite_realpath_graphicalldialog --info \
@@ -7237,7 +7240,7 @@ $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename=$directory_cache_necesary/$cmd_filename-$archivo \
 --editable --title=WIZARD MINI 1> $default_directory_custom/$archivo
-if [  -s $default_directory_custom/$archivo ]; then $nada ; 
+if [  -s $default_directory_custom/$archivo ]; then
 $cmd_internal -gui load-custom $archivo ; $cmd_internal -gui list4;
 else rm $default_directory_custom/$archivo ;
 $favorite_realpath_graphicalldialog --info \
@@ -7253,7 +7256,7 @@ $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename=$directory_cache_necesary/$cmd_filename-$archivo \
 --editable --title=WIZARD-FULL 1> $default_directory_custom/$archivo
-if [  -s $default_directory_custom/$archivo ]; then $nada ; 
+if [  -s $default_directory_custom/$archivo ]; then
 $cmd_internal -gui load-custom $archivo ; $cmd_internal -gui list4;
 else rm $default_directory_custom/$archivo ;
 $favorite_realpath_graphicalldialog  --info \
@@ -7263,8 +7266,8 @@ $favorite_realpath_graphicalldialog  --info \
 #### 
 #### 
 "modify-custom")
-if [ -f "$default_directory_custom/$third_option" ] ; then $nada
-else $favorite_realpath_graphicalldialog  --forms \
+if [ ! -f "$default_directory_custom/$third_option" ] ; then
+$favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=file-not-found:-$third_option ; exit ; fi 
 cp $default_directory_custom/$third_option \
@@ -7273,7 +7276,7 @@ $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --filename=$directory_cache_necesary/$cmd_filename-$third_option \
 --editable --title=MODIFY-CONFIG $third_option 1> $default_directory_custom/$third_option
-if [ -s "$default_directory_custom/$third_option" ]; then $nada ; 
+if [ -s "$default_directory_custom/$third_option" ]; then
 $favorite_realpath_graphicalldialog  --forms \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text=OK.file-$third_option
@@ -14571,10 +14574,8 @@ fi
 ####
 ####
 if [ "$launch_rules_firewall" != "yes" ] ; then
-####
-####
-echo "### $text_fail [ First Option: $first_option ] [ Recomended Option: options ]"
-$cmd_internal list-options ; 
+echo "### $text_fail [ Fail Option: options ] [ Recomended Option: options ]"
+first_option="options" ; $cmd_internal $first_option ; 
 ####
 ####
 exit ; fi
@@ -15613,9 +15614,9 @@ fi
 ####
 config_uid_gid=no
 if [ "$allow_output_uid" == "$NULL" ]
-then config_uid_gid="" ; else $nada ; fi
+then config_uid_gid="" ; fi
 if [ "$allow_output_gid" == "$NULL" ]
-then config_uid_gid="" ; else $nada ; fi
+then config_uid_gid="" ; fi
 ####
 ####
 ###################################################################
