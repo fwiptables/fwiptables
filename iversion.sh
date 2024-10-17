@@ -1581,7 +1581,7 @@ fi
 ####
 echo "$text_md $text_md       Name Firewall: $cmd_name                 $text_md"
 echo "$text_md $text_md    Version Firewall: $cmd_version              $text_md"
-echo "$text_md $text_md    Release Firewall: $cmd_relase               $text_md"
+echo "$text_md $text_md    Release Firewall: $cmd_released             $text_md"
 echo "$text_md $text_md     Source Firewall: $cmd_notinstalled         $text_md"
 echo "$text_md $text_md   Internal Firewall: $cmd_internal             $text_md"
 echo "$text_md $text_md   Short Description: $cmd_shortdescription     $text_md"
@@ -1990,7 +1990,7 @@ if [ "$first_option" == "preferences-example" ] ; then
 echo "$title_md"
 echo "$title_md"
 echo "$title_md $title_md default option when not option are there"
-echo "without_first_option=ls4                        ## read below"
+echo "without_first_option=options                        ## read below"
 echo "$title_md type: void or one valid option required to works"
 echo "$title_md example1:options example2:list4 example3:ip4"
 echo "$title_md example4:speed-ip4 example5:sockets example6:gui-roll"
@@ -5576,7 +5576,7 @@ echo "# Waiting several seconds, while create new configuration $text_md"
 #### echo "$title_md $text_info [ $cmd_filename installing.. ]"
 cp $cmd_notinstalled $cmd_installed && 
 chmod 755 $cmd_installed &> /dev/null &&
-echo "# OK. installed"
+echo "# OK. Installed"
 ####
 ####
 ####  english: generate fwiptables default config and templates
