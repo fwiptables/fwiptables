@@ -75,30 +75,30 @@
       launch:        /usr/bin/fwiptables license-lgpl-v2|license-gpl-v2
   
 ### fwiptables notes
-                      Iptables firewall manage commands   
-       Legacy or nft: whith one of them is sufficent   
-     iptables-legacy: support for xtables ipv4   
-        iptables-nft: support for nftables ipv4   
-    ip6tables-legacy: support for xtables ipv6   
-       ip6tables-nft: support for nftables ipv6   
-                      Firewall recomendation with full client   
-     Client prefered: input-established   
-     Server prefered: tinyserver-tcp tcp-ports-server   
-                      Some options and sub-otions   
-     shield maxtries: limit against attack per bruteforce   
-           Blacklist: excepcionals hosts dropped in firewall   
-           whitelist: excepcionals hosts allowed in firewall   
-          tinyserver: client in all allowed, and servers manually   
-          miniserver: normal ports in client, and servers manually   
-   input-established: the computer is only client   
-      output uid/gid: User and/or group with conection allowed   
-                      Necesary Ports perhaps if use it   
-                       ntp: Port necesary to update the time and date   
-              bootpc: Port necesary to dhcp and get ip   
-              domain: This port is necesary to domain resolver   
-               https: This port is necesary for udp named web html5  
-           ipv6-icmp: Necesary protocol in ipv6   
-          ipv4 ports: ipv6 works too with old ipv4 ports   
+                       Iptables firewall manage commands   
+        Legacy or nft: whith one of them is sufficent   
+      iptables-legacy: support for xtables ipv4   
+         iptables-nft: support for nftables ipv4   
+     ip6tables-legacy: support for xtables ipv6   
+        ip6tables-nft: support for nftables ipv6   
+                       Firewall recomendation with full client   
+      Client prefered: input-established   
+      Server prefered: tinyserver-tcp tcp-ports-server   
+                       Some options and sub-otions   
+      shield maxtries: limit against attack per bruteforce   
+            Blacklist: excepcionals hosts dropped in firewall   
+            whitelist: excepcionals hosts allowed in firewall   
+           tinyserver: client in all allowed, and servers manually   
+           miniserver: normal ports in client, and servers manually   
+    input-established: the computer is only client   
+       output uid/gid: User and/or group with conection allowed   
+                       Necesary Ports perhaps if use it   
+                  ntp: Port necesary to update the time and date   
+               bootpc: Port necesary to dhcp and get ip   
+               domain: This port is necesary to domain resolver   
+                https: This port is necesary for udp named web html5  
+            ipv6-icmp: Necesary protocol in ipv6   
+           ipv4 ports: ipv6 works too with old ipv4 ports   
   
 ### fwiptables compile
       BASH SCRIPT WORKS fully.      

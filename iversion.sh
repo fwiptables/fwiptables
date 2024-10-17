@@ -96,7 +96,7 @@ fi
 #### The number version firewall
 cmd_year="24"                                              # Number year version
 cmd_month="10"                                             # Number mouth version
-cmd_letter="H"                                             # Number letter version
+cmd_letter="I"                                             # Number letter version
 cmd_version="$cmd_year-$cmd_month-$cmd_letter"             # Final date like number version
 cmd_released="Year 20$cmd_year / Month $cmd_month"
 #### The data version firewall
@@ -2808,30 +2808,30 @@ exit; fi
 if [ "$first_option" == "notes" ]; then
 ####
 ####
-echo "$text_md                    Iptables firewall manage commands $text_md" 
-echo "$text_md     Legacy or nft: whith one of them is sufficent $text_md"   
-echo "$text_md   iptables-legacy: support for xtables ipv4 $text_md"    
-echo "$text_md      iptables-nft: support for nftables ipv4 $text_md" 
-echo "$text_md  ip6tables-legacy: support for xtables ipv6 $text_md"    
-echo "$text_md     ip6tables-nft: support for nftables ipv6 $text_md"
-echo "$text_md                    Firewall recomendation with full client $text_md" 
-echo "$text_md   Client prefered: input-established $text_md" 
-echo "$text_md   Server prefered: tinyserver-tcp tcp-ports-server $text_md" 
-echo "$text_md                    Some options and sub-otions $text_md" 
-echo "$text_md   shield maxtries: limit against attack per bruteforce $text_md"   
-echo "$text_md         Blacklist: excepcionals hosts dropped in firewall $text_md"   
-echo "$text_md         whitelist: excepcionals hosts allowed in firewall $text_md" 
-echo "$text_md        tinyserver: client in all allowed, and servers manually $text_md"
-echo "$text_md        miniserver: normal ports in client, and servers manually $text_md"
-echo "$text_md input-established: the computer is only client $text_md"   
-echo "$text_md    output uid/gid: User and/or group with conection allowed $text_md"   
-echo "$text_md                    Necesary Ports perhaps if use it $text_md"  
-echo "$text_md                     ntp: Port necesary to update the time and date $text_md"   
-echo "$text_md            bootpc: Port necesary to dhcp and get ip $text_md"   
-echo "$text_md            domain: This port is necesary to domain resolver $text_md"   
-echo "$text_md             https: This port is necesary for udp named web html5$text_md"   
-echo "$text_md         ipv6-icmp: Necesary protocol in ipv6 $text_md"   
-echo "$text_md        ipv4 ports: ipv6 works too with old ipv4 ports $text_md"
+echo "$text_md                     Iptables firewall manage commands $text_md" 
+echo "$text_md      Legacy or nft: whith one of them is sufficent $text_md"   
+echo "$text_md    iptables-legacy: support for xtables ipv4 $text_md"    
+echo "$text_md       iptables-nft: support for nftables ipv4 $text_md" 
+echo "$text_md   ip6tables-legacy: support for xtables ipv6 $text_md"    
+echo "$text_md      ip6tables-nft: support for nftables ipv6 $text_md"
+echo "$text_md                     Firewall recomendation with full client $text_md" 
+echo "$text_md    Client prefered: input-established $text_md" 
+echo "$text_md    Server prefered: tinyserver-tcp tcp-ports-server $text_md" 
+echo "$text_md                     Some options and sub-otions $text_md" 
+echo "$text_md    shield maxtries: limit against attack per bruteforce $text_md"   
+echo "$text_md          Blacklist: excepcionals hosts dropped in firewall $text_md"   
+echo "$text_md          whitelist: excepcionals hosts allowed in firewall $text_md" 
+echo "$text_md         tinyserver: client in all allowed, and servers manually $text_md"
+echo "$text_md         miniserver: normal ports in client, and servers manually $text_md"
+echo "$text_md  input-established: the computer is only client $text_md"   
+echo "$text_md     output uid/gid: User and/or group with conection allowed $text_md"   
+echo "$text_md                     Necesary Ports perhaps if use it $text_md"  
+echo "$text_md                ntp: Port necesary to update the time and date $text_md"   
+echo "$text_md             bootpc: Port necesary to dhcp and get ip $text_md"   
+echo "$text_md             domain: This port is necesary to domain resolver $text_md"   
+echo "$text_md              https: This port is necesary for udp named web html5$text_md"   
+echo "$text_md          ipv6-icmp: Necesary protocol in ipv6 $text_md"   
+echo "$text_md         ipv4 ports: ipv6 works too with old ipv4 ports $text_md"
 ####
 ####
 exit; fi
@@ -3546,8 +3546,8 @@ echo "$text_md server-mumble server-gateway server-sql server-samba server-proxy
 echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net  $text_md"
 echo "$title_md    firewall-netsystem $text_md"
 echo "$text_md preferences-read preferences-modify preferences-regen $text_md"
-echo "$text_md speed-ip4 speed-ip6 filelog autolog date resolve sockets $text_md"
-echo "$text_md ip ip4 ip6 network4 network6 address4 address6 options $text_md"
+echo "$text_md options filelog autolog date resolve speed-ip4 speed-ip6 $text_md"
+echo "$text_md sockets ip ip4 ip6 network4 network6 address4 address6 $text_md"
 echo "$text_md free nodes ip-forward utils treeconf cleancache treecache $text_md"
 echo "$text_md web intro variables depends uninstall install upgrade $text_md"
 echo "$text_md notes examples info code expert donate about version $text_md"
