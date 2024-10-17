@@ -1581,7 +1581,7 @@ fi
 ####
 echo "$text_md $text_md       Name Firewall: $cmd_name                 $text_md"
 echo "$text_md $text_md    Version Firewall: $cmd_version              $text_md"
-echo "$text_md $text_md    Release Firewall: $cmd_released             $text_md"
+echo "$text_md $text_md   Released Firewall: $cmd_released             $text_md"
 echo "$text_md $text_md     Source Firewall: $cmd_notinstalled         $text_md"
 echo "$text_md $text_md   Internal Firewall: $cmd_internal             $text_md"
 echo "$text_md $text_md   Short Description: $cmd_shortdescription     $text_md"
