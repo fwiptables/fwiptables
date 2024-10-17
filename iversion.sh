@@ -354,7 +354,7 @@ config_shield_maxtries="10"
 config_shield_maxtries="12"     
 config_shield_port="22" 
 config_shield_port="22"
-config_firewall_option="### $cmd_name $1"
+config_firewall_option="### $cmd_name $1 $2 $3 $4"
 config_show_time="### date $($command_date)"
 config_string_algoritmo="kpm"
 config_string_allowed="one-string-that-like-how-a-passord,sourceforge.net"  
@@ -5453,6 +5453,14 @@ exit; fi
 if  [ "$first_option" == "intro" ]; then
 ####
 ####
+echo "$text_md" "$text_md" "Readme"
+echo "$text_md" "$text_md" "Version"
+echo "$text_md" "$text_md" "About"
+echo "$text_md" "$text_md" "Notes"
+echo "$text_md" "$text_md" "Compile"
+echo "$text_md" "$text_md" "Depends"
+echo "$text_md" "$text_md" "Examples"
+echo "$text_md" "$text_md" "Options"
 echo "$text_md"
 $cmd_internal readme
 echo "$text_md"
