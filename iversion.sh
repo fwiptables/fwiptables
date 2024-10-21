@@ -9922,8 +9922,10 @@ server_port_udp=""
 ####
 ####
 if [ "$third_option" != "$NULL" ] ;
-then config_ipv4_netserver="$3" 
-config_ipv6_netserver="$3" ; fi
+then 
+config_ipv4_netserver="$3" 
+config_ipv6_netserver="$3"
+fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
@@ -9962,8 +9964,10 @@ server_port_tcp=""
 ####
 ####
 if [ "$third_option" != "$NULL" ] ;
-then config_ipv4_netserver="$3" 
-config_ipv6_netserver="$3" ; fi
+then
+config_ipv4_netserver="$3"
+config_ipv6_netserver="$3"
+fi
 ####
 ####
 if [ "$second_option" != "$NULL" ]; then
