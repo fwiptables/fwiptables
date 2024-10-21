@@ -1325,7 +1325,7 @@ expert-*) echo "the commands expert works only wihtout optional output." ; exit 
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
 "modify-custom")
-#### echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in silent optional-output." ;
+echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in silent optional-output." ;
 exit ;; esac ; fi
 ####
 ####
@@ -1411,7 +1411,7 @@ ls*|list*) $favorite_basename_textdialog --clear --notags \
 --msgbox "$($cmd_internal txt $second_option)" 0 0 ; exit ;;
 *) $favorite_basename_textdialog --clear --notags \
 --title "Cli Menu With $cmd_version" \
---msgbox "$($cmd_internal $second_option $third_option)" 0 0 ; exit ;;
+--msgbox "$($cmd_internal $second_option $third_option $quad_option)" 0 0 ; exit ;;
 #### *) echo "$title_md cli works only with list options" ; exit ;;
 esac ; fi
 ####
@@ -1455,7 +1455,7 @@ echo "$title_md install imagemagick to print pdf to $default_directory_pdf" ; ex
 echo "$head_waiting_pdf"
 sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &> /dev/null
 #### send print to home output fwiptables.pdf
-$cmd_internal $second_option $third_option | $command_convert -page A3 text:- \
+$cmd_internal $second_option $third_option $quad_option | $command_convert -page A3 text:- \
 $default_directory_pdf/$cmd_opt_date-$second_option.pdf 
 echo "$title_md [ file ] $default_directory_pdf/$cmd_opt_date-$second_option.pdf"
 ####
@@ -1463,13 +1463,13 @@ echo "$title_md [ file ] $default_directory_pdf/$cmd_opt_date-$second_option.pdf
 exit ; fi
 ####
 ####
-#### output null
+#### silent: output null
 ####
 ####
 if [ "$first_option" == "silent" ]
 ####
 ####
-then $cmd_internal "$second_option" "$third_option" &> /dev/null
+then $cmd_internal "$second_option" "$third_option" "$quad_option" &> /dev/null
 ####
 ####
 exit ; fi
