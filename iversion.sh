@@ -277,6 +277,7 @@ command_xrandr="$($cmd_where xrandr)"
 command_yad="$($cmd_where yad)"
 command_zenity="$($cmd_where zenity)"
 command_zgrep="$($cmd_where zgrep)"
+command_wc="$($cmd_where wc)"
 ####
 ####
 #### :rutina-final-possible-commands:
@@ -1563,6 +1564,34 @@ exit; fi
 ####
 ####
 #### :rutina-final-config-autolog:
+##########    english: log-stat: Read stats log fwiptables-autolog    ##########
+##########    spanish: log-stat: show stats log  fwiptables-autolog   ##########
+#### :rutina-inicial-log-stat:
+####
+####
+if [ "$first_option" == "log-stat" ] ; then
+####
+####
+if [ "$command_wc" == "$NULL" ] ; then
+echo "$text_info please install wc command"; exit; fi
+####
+####
+echo "$title_md The filelog log-stat"
+conteo="$($command_cat $file_default_filelog | $command_wc -l)"
+echo "$text_md $conteo output commands filelog lines, registered with filelog"
+echo "$text_md file: $file_default_filelog"
+####
+####
+echo "$title_md The autolog log-stat"
+conteo="$($command_cat $file_default_autolog | $command_wc -l)"
+echo "$text_md $conteo commands launched, registered with autolog"
+echo "$text_md file: $file_default_autolog"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-log-stat:
 ##########    english: version: system script, the version option              ##########
 ##########    spanish: version: script de sistema, la opcion mostrar version   ##########
 #### :rutina-inicial-version:
@@ -3549,8 +3578,8 @@ echo "$text_md preferences-read preferences-modify preferences-regen $text_md"
 echo "$text_md options filelog autolog date resolve speed-ip4 speed-ip6 $text_md"
 echo "$text_md sockets ip ip4 ip6 network4 network6 address4 address6 $text_md"
 echo "$text_md free nodes ip-forward utils treeconf cleancache treecache $text_md"
-echo "$text_md web intro variables depends uninstall install upgrade $text_md"
-echo "$text_md notes examples info code expert donate about version $text_md"
+echo "$text_md log-stat web intro depends uninstall install upgrade notes $text_md"
+echo "$text_md variables examples info code expert donate about version $text_md"
 echo "$text_md license-lgpl-v2 license-gpl-v2 $text_md"
 echo " $text_md $text_md | Program: $cmd_internal $cmd_version $text_md"
 echo " $text_md $text_md | Description: $cmd_longdescription $text_md"
