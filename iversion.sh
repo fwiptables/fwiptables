@@ -573,6 +573,13 @@ if [ ! -d "$default_directory_data_necesary" ]; then
 $command_mkdir -p $default_directory_data_necesary &> /dev/null ; fi
 ####
 ####
+#### sane default log
+####
+####
+if [ ! -f "$file_default_autolog" ]
+then touch $file_default_autolog &> /dev/null  ; fi
+####
+####
 #### sane data tree
 ####
 ####
@@ -1576,15 +1583,15 @@ if [ "$command_wc" == "$NULL" ] ; then
 echo "$text_info please install wc command"; exit; fi
 ####
 ####
-echo "$title_md The filelog log-stat"
-conteo="$($command_cat $file_default_filelog | $command_wc -l)"
-echo "$text_md $conteo output commands filelog lines, registered with filelog"
-echo "$text_md file: $file_default_filelog"
+echo "$title_md The filelog with log-stat"
+conteo="$($command_ls -1 $default_directory_log | $command_wc -l)"
+echo "$text_md $conteo Commands output. Logged with filelog"
+echo "$text_md folder: $default_directory_log"
 ####
 ####
-echo "$title_md The autolog log-stat"
+echo "$title_md The autolog with log-stat"
 conteo="$($command_cat $file_default_autolog | $command_wc -l)"
-echo "$text_md $conteo commands launched, registered with autolog"
+echo "$text_md $conteo Commands launched. Logged with autolog"
 echo "$text_md file: $file_default_autolog"
 ####
 ####
@@ -2620,7 +2627,7 @@ echo "$text_md $text_md File Preferences:        $file_default_preferences $text
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ Log files ]           $text_md"
 echo "$text_md $text_md File autolog:            $file_default_autolog $text_md"
-echo "$text_md $text_md File filelog:            $file_default_filelog $text_md"
+echo "$text_md $text_md Folder filelog:          $default_directory_log $text_md"
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ optional output ]     $text_md"
 echo "$text_md $text_md dialog cli:              $command_dialog $text_md"
