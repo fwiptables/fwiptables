@@ -104,7 +104,7 @@ cmd_developer="Francisco Garcia"                           # Actual developer
 cmd_contact="fwiptables@gmx.com"                           # Actual contact
 cmd_shortdescription="FireWall With iptables"              # Description short
 cmd_longdescription="iptables template in one script"      # Description long
-cmd_requisite_program="id,awk,sed,file,cut,date,cat"       # Program requisite
+cmd_requisite_program="awk,cat,cut,date,file,id,sed"       # Program requisite
 cmd_requisite_firewall4="iptables-legacy,iptables-nft"     # Firewall requisite
 cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # Firewall requisite
 cmd_license="LGPL v2, GPL v2"                              # Program license
@@ -117,7 +117,7 @@ cmd_xdg="/run/user/0"                                      # Folder XDG
 #### info file format firewall
 cmd_format=$(file $0 | \
 awk '{print $2 "_" $3 "_" $4}')                            # File format
-#### info date logs var in log,autolog
+#### info date logs var in log,logcmd
 cmd_actual_date="$(date +LOG_DAY_%Y-%m-%d_HOUR_%H-%M-%S)"  # log date
 cmd_opt_date="$cmd_actual_date-_OPT_"                      # log date
 ####
@@ -311,7 +311,7 @@ allow_output_maxconnect="no"
 allow_output_ping="no"     
 allow_output_state="no"     
 allow_output_uid="no"     
-allow_save_autolog=""          
+allow_save_logcmd=""          
 allow_separate_rules=""        
 allow_shield_maxtries="no"    
 allow_show_option="no"  
@@ -494,8 +494,8 @@ default_directory_template="$directory_data_necesary/fwiptables-template"
 default_directory_control="$directory_data_necesary/fwiptables-control"
 default_directory_custom="$directory_data_necesary/fwiptables-custom"
 default_directory_preferences="$directory_data_necesary/fwiptables-preferences"
-default_directory_autolog="$directory_data_necesary/fwiptables-autolog"
-default_directory_log="$directory_data_necesary/fwiptables-log"
+default_directory_logcmd="$directory_data_necesary/fwiptables-logcmd"
+default_directory_logs="$directory_data_necesary/fwiptables-log"
 default_directory_pdf="$directory_data_necesary/fwiptables-pdf"
 default_directory_wpa="$directory_data_necesary/fwiptables-wpa"
 default_directory_benchmarkram="$directory_data_necesary/fwiptables-benchmarkram"
@@ -537,8 +537,7 @@ file_default_preferences="$default_directory_preferences/default-preferences-$cm
 #### spanish: archivos log: archivos log y ruta de los archivos de configuracion
 ####
 ####
-file_default_filelog="$default_directory_log/default-filelog-$cmd_version"
-file_default_autolog="$default_directory_autolog/default-autolog-$cmd_version"
+file_default_logcmd="$default_directory_logcmd/default-logcmd-$cmd_version"
 ####
 ####
 #### english: temporal files
@@ -576,8 +575,8 @@ $command_mkdir -p $default_directory_data_necesary &> /dev/null ; fi
 #### sane default log
 ####
 ####
-if [ ! -f "$file_default_autolog" ]
-then touch $file_default_autolog &> /dev/null  ; fi
+if [ ! -f "$file_default_logcmd" ]
+then touch $file_default_logcmd &> /dev/null  ; fi
 ####
 ####
 #### sane data tree
@@ -591,10 +590,10 @@ if [ ! -d "$default_directory_custom" ]; then
 $command_mkdir -p "$default_directory_custom" &> /dev/null ; fi
 if [ ! -d "$default_directory_preferences" ]; then
 $command_mkdir -p "$default_directory_preferences" &> /dev/null ; fi
-if [ ! -d "$default_directory_autolog" ]; then
-$command_mkdir -p "$default_directory_autolog" &> /dev/null ; fi
-if [ ! -d "$default_directory_log" ]; then
-$command_mkdir -p "$default_directory_log" &> /dev/null ; fi
+if [ ! -d "$default_directory_logcmd" ]; then
+$command_mkdir -p "$default_directory_logcmd" &> /dev/null ; fi
+if [ ! -d "$default_directory_logs" ]; then
+$command_mkdir -p "$default_directory_logs" &> /dev/null ; fi
 if [ ! -d "$default_directory_wpa" ]; then
 $command_mkdir -p "$default_directory_wpa" &> /dev/null ; fi
 if [ ! -d "$default_directory_pdf" ]; then
@@ -1005,7 +1004,7 @@ case "$first_option" in
 "list-options")   first_option="options" ;;
 "mini-options")   first_option="options" ;;
 "options-mini")   first_option="options" ;;
-"sentlog")        first_option="filelog" ;;
+"sentlog")        first_option="logfiles" ;;
 "cfg")            first_option="names-custom" ;;
 "all-custom")     first_option="names-custom" ;;
 "cfg-custom")     first_option="load-custom" ;;
@@ -1215,7 +1214,7 @@ case "$first_option" in
 "options")        first_option="options" ;;
 "mini-options")   first_option="options" ;;
 "options-mini")   first_option="options" ;;
-"sentlog")        first_option="filelog" ;;
+"sentlog")        first_option="logfiles" ;;
 "cfg")            first_option="names-custom" ;;
 "all-custom")     first_option="names-custom" ;;
 "cfg-custom")     first_option="load-custom" ;;
@@ -1444,8 +1443,8 @@ echo "### ### $text_info [ $second_option $third_option $quad_option ] \
 [ $cmd_actual_date ]" &> $output_log
 $cmd_internal $second_option $third_option $quad_option &> $output_log
 $command_cat  $output_log | $command_grep -E -v Warning: \
-&> $default_directory_log/$cmd_opt_date-$second_option.txt
-echo "$title_md [ file ]  $default_directory_log/$cmd_opt_date-$second_option.txt"
+&> $default_directory_logs/$cmd_opt_date-$second_option.txt
+echo "$title_md [ file ]  $default_directory_logs/$cmd_opt_date-$second_option.txt"
 ####
 ####
 exit ; fi
@@ -1484,24 +1483,24 @@ exit ; fi
 ####
 ####
 #### :rutina-final-alias-log:
-##########     english: autolog:         ##########
-##########     spanish: autoguardado     ##########
-#### :rutina-inicial-allow-autolog:
+##########     english: cmdlog:       ##########
+##########     spanish: autoguardado  ##########
+#### :rutina-inicial-allow-logcmd:
 ####
 ####
-if [ "$allow_save_autolog" != "no" ]
+if [ "$allow_save_logcmd" != "no" ]
 ####
 ####
-then head_autolog="date: $cmd_actual_date \
+then head_logcmd="date: $cmd_actual_date \
 path: $cmd_internal ver: $cmd_version \
 opt: $first_option $second_option $third_option"
-echo $head_autolog >> $file_default_autolog
+echo $head_logcmd >> $file_default_logcmd
 ####
 ####
 fi
 ####
 ####
-#### :rutina-final-allow-autolog:
+#### :rutina-final-allow-logcmd:
 ##########     english: show option         ##########
 ##########     spanish: mostrar opcion      ##########
 #### :rutina-inicial-allow-show-option:
@@ -1532,47 +1531,47 @@ fi
 ####
 ####
 #### :rutina-final-allow-show-time:
-##########   english: filelog: Read log fwiptables-filelog  ##########
-##########   spanish: filelog: Lee log  fwiptables-filelog  ##########
-#### :rutina-inicial-config-filelog:
+##########   english: logfiles: Read log fwiptables-logfiles  ##########
+##########   spanish: logfiles: Lee log  fwiptables-logfiles  ##########
+#### :rutina-inicial-config-logfiles:
 ####
 ####
-if [ "$first_option" == "filelog" ] ; then
+if [ "$first_option" == "logfiles" ] ; then
 ####
 ####
 echo 
-ls -1 $default_directory_log
+ls -1 $default_directory_logs
 echo
 echo 
-echo "### ### [ folder: ] [ $default_directory_log ]"
+echo "### ### [ folder: ] [ $default_directory_logs ]"
 ####
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-config-filelog:
-##########    english: autolog: Read log fwiptables-autolog   ##########
-##########    spanish: autolog: Lee log  fwiptables-autolog   ##########
-#### :rutina-inicial-config-autolog:
+#### :rutina-final-config-logfiles:
+##########    english: logcmd: Read log fwiptables-logcmd   ##########
+##########    spanish: logcmd: Lee log  fwiptables-logcmd   ##########
+#### :rutina-inicial-config-logcmd:
 ####
 ####
-if [ "$first_option" == "autolog" ] ; then
+if [ "$first_option" == "logcmd" ] ; then
 ####
 ####
-echo "$title_md $text_info [ last 50 lines from file showed ] [ $file_default_autolog ]"
-if [ ! -f $file_default_autolog ]; then touch $file_default_autolog ; fi
+echo "$title_md $text_info [ last 50 lines from file showed ] [ $file_default_logcmd ]"
+if [ ! -f $file_default_logcmd ]; then touch $file_default_logcmd ; fi
 echo
-$command_cat   "$file_default_autolog" | tail -50
+$command_cat   "$file_default_logcmd" | tail -50
 echo
-echo "$title_md $text_info [ last 50 lines from file showed ] [ $file_default_autolog ]"
+echo "$title_md $text_info [ last 50 lines from file showed ] [ $file_default_logcmd ]"
 ####
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-config-autolog:
-##########    english: log-stat: Read stats log fwiptables-autolog    ##########
-##########    spanish: log-stat: show stats log  fwiptables-autolog   ##########
+#### :rutina-final-config-logcmd:
+##########    english: log-stat: Read stats log fwiptables-logcmd    ##########
+##########    spanish: log-stat: show stats log  fwiptables-logcmd   ##########
 #### :rutina-inicial-log-stat:
 ####
 ####
@@ -1583,16 +1582,22 @@ if [ "$command_wc" == "$NULL" ] ; then
 echo "$text_info please install wc command"; exit; fi
 ####
 ####
-echo "$title_md The filelog with log-stat"
-conteo="$($command_ls -1 $default_directory_log | $command_wc -l)"
-echo "$text_md $conteo Commands output. Logged with filelog"
-echo "$text_md folder: $default_directory_log"
+echo "$title_md The logcmd with log-stat"
+conteo="$($command_cat $file_default_logcmd | $command_wc -l)"
+echo "$text_md $conteo Commands launched. Logged with logcmd"
+echo "$text_md file: $file_default_logcmd"
 ####
 ####
-echo "$title_md The autolog with log-stat"
-conteo="$($command_cat $file_default_autolog | $command_wc -l)"
-echo "$text_md $conteo Commands launched. Logged with autolog"
-echo "$text_md file: $file_default_autolog"
+echo "$title_md The logs with log-stat"
+conteo="$($command_ls -1 $default_directory_logs | $command_wc -l)"
+echo "$text_md $conteo Commands output. Logged with logs"
+echo "$text_md folder: $default_directory_logs"
+####
+####
+echo "$title_md The pdf with log-stat"
+conteo="$($command_ls -1 $default_directory_pdf | $command_wc -l)"
+echo "$text_md $conteo Commands output. Logged with pdf"
+echo "$text_md folder: $default_directory_pdf"
 ####
 ####
 exit; fi
@@ -2049,8 +2054,9 @@ echo "$title_md"
 echo "$title_md $title_md default string"
 echo "config_string_algoritmo=kmp                     ## or kmp or bm"
 echo "$title_md"
-echo "$title_md $title_md default autolog"
-echo "allow_save_autolog=                             ## or void for yes or no"
+echo "$title_md $title_md default logcmd"
+echo "allow_save_logcmd=                              ## or void for yes or no"
+echo "$title_md $title_md default header"
 echo "allow_show_option=                              ## or void for yes or no"
 echo "allow_show_time=no                              ## or void for yes or no"
 echo "$title_md"  
@@ -2626,8 +2632,9 @@ echo "$text_md $text_md Directory temp:          $directory_cache_necesary $text
 echo "$text_md $text_md File Preferences:        $file_default_preferences $text_md"
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ Log files ]           $text_md"
-echo "$text_md $text_md File autolog:            $file_default_autolog $text_md"
-echo "$text_md $text_md Folder filelog:          $default_directory_log $text_md"
+echo "$text_md $text_md File logcmd:             $file_default_logcmd $text_md"
+echo "$text_md $text_md Folder log:              $default_directory_logs $text_md"
+echo "$text_md $text_md Folder pdf:              $default_directory_pdf $text_md"
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ optional output ]     $text_md"
 echo "$text_md $text_md dialog cli:              $command_dialog $text_md"
@@ -2724,7 +2731,7 @@ echo "$text_md $text_md  $cmd_internal speed-ip4           $text_md"
 echo "$text_md $text_md  Explain: Show listen sockets      $text_md"
 echo "$text_md $text_md  $cmd_internal sockets             $text_md"  
 echo "$text_md $text_md  Explain: List last options        $text_md"
-echo "$text_md $text_md  $cmd_internal autolog             $text_md"   
+echo "$text_md $text_md  $cmd_internal logcmd              $text_md"   
 echo "$text_md $text_md  Explain: modify default variables $text_md"
 echo "$text_md $text_md  $cmd_internal preferences-modify  $text_md"  
 echo "$text_md $text_md"
@@ -3582,7 +3589,7 @@ echo "$text_md server-mumble server-gateway server-sql server-samba server-proxy
 echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net  $text_md"
 echo "$title_md    firewall-netsystem $text_md"
 echo "$text_md preferences-read preferences-modify preferences-regen $text_md"
-echo "$text_md options filelog autolog date resolve speed-ip4 speed-ip6 $text_md"
+echo "$text_md options logfiles logcmd date resolve speed-ip4 speed-ip6 $text_md"
 echo "$text_md sockets ip ip4 ip6 network4 network6 address4 address6 $text_md"
 echo "$text_md free nodes ip-forward utils treeconf cleancache treecache $text_md"
 echo "$text_md log-stat web intro depends uninstall install upgrade notes $text_md"
@@ -3904,8 +3911,8 @@ echo "$text_md $text_md preferences-example . show the examples for fwiptables p
 echo "$text_md $text_md options . list options $text_md"
 echo "$text_md $text_md info-options . list details for the options $text_md"
 echo "$text_md $text_md info . details from one first option from one pattern $text_md"
-echo "$text_md $text_md filelog . show the result for the commands save with -l|-log $text_md"
-echo "$text_md $text_md autolog . list the commands launched $text_md"
+echo "$text_md $text_md logfiles . show the result for the commands save with -l|-log $text_md"
+echo "$text_md $text_md logcmd . list the commands launched $text_md"
 echo "$text_md $text_md ip4 . show details from connection ipv4 $text_md"
 echo "$text_md $text_md ip6 . show details from connection ipv6 $text_md"
 echo "$text_md $text_md speed-ip4 . calculate bandwith ipv4 $text_md"
@@ -6006,7 +6013,7 @@ $cmd_internal version | $command_grep -E -i "version"
 #### latest stable
 ####
 echo "$title_md Show the version for fwiptables stable latest:"
-descarga="$default_directory_log/fwiptables"
+descarga="$default_directory_logs/fwiptables"
 $command_curl $web_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
 $command_grep -E -i "version"
@@ -6015,7 +6022,7 @@ rm $descarga
 #### latest unstable
 ####
 echo "$title_md Show the version for fwiptables unstable latest:"
-descarga="$default_directory_log/fwiptables"
+descarga="$default_directory_logs/fwiptables"
 $command_curl $git_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
 $command_grep -E -i "version"
@@ -8282,8 +8289,8 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 011  "$text_md preferences-read" \
 012  "$text_md preferences-modify" \
 013  "$text_md preferences-regen" \
-014  "$text_md filelog" \
-015  "$text_md autolog" \
+014  "$text_md logfiles" \
+015  "$text_md logcmd" \
 016  "$text_md ip4" \
 017  "$text_md ip6" \
 018  "$text_md speed-ip4" \
@@ -8319,8 +8326,8 @@ case $menuprincipal in
 011) clear ; $cmd_internal $outcli preferences-read ;;
 012) clear ; $cmd_internal $outcli preferences-modify ;;
 013) clear ; $cmd_internal $outcli preferences-regen ;;
-014) clear ; $cmd_internal $outcli txt filelog ;;
-015) clear ; $cmd_internal $outcli txt autolog ;;
+014) clear ; $cmd_internal $outcli txt logfiles ;;
+015) clear ; $cmd_internal $outcli txt logcmd ;;
 016) clear ; $cmd_internal $outcli ip4 ;;
 017) clear ; $cmd_internal $outcli ip6 ;;
 018) clear ; $cmd_internal $outcli speed-ip4 ;;
@@ -8484,8 +8491,8 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0701  "$text_md preferences-read" \
 0702  "$text_md preferences-modify" \
 0703  "$text_md preferences-regen" \
-0704  "$text_md filelog" \
-0705  "$text_md autolog" \
+0704  "$text_md logfiles" \
+0705  "$text_md logcmd" \
 0706  "$text_md ip4" \
 0707  "$text_md ip6" \
 0708  "$text_md speed-ip4" \
@@ -8665,8 +8672,8 @@ $cmd_internal del-custom $archivo ;;
 0701) clear ; $cmd_internal $outcli preferences-read ;;
 0702) clear ; $cmd_internal txt preferences-modify ;;
 0703) clear ; $cmd_internal $outcli preferences-regen ;;
-0704) clear ; $cmd_internal txt filelog ;;
-0705) clear ; $cmd_internal txt autolog ;;
+0704) clear ; $cmd_internal txt logfiles ;;
+0705) clear ; $cmd_internal txt logcmd ;;
 0706) clear ; $cmd_internal $outcli ip4 ;;
 0707) clear ; $cmd_internal $outcli ip6 ;;
 0708) clear ; $cmd_internal $outcli speed-ip4 ;;
@@ -9221,7 +9228,7 @@ gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-modify|preferences-regen|preferences-example|\
 options|info-options|expert|\
 address4|address6|network4|network6||sockets|\
-filelog|autolog|ip4|ip6|notes|speed-ip4|speed-ip6|\
+logfiles|logcmd|ip4|ip6|notes|speed-ip4|speed-ip6|\
 nodes|date|free|version|treeconf|treecache|cleancache|\
 depends|utils|about|variables|examples|intro|install|upgrade|\
 license-lgpl-v2|license-gpl-v2"
@@ -9246,8 +9253,8 @@ preferences-example)$cmd_internal -gui-zenity preferences-example ;;
 options)$cmd_internal -gui-zenity options ;;
 info-options)$cmd_internal -gui-zenity info-options ;;
 expert)$cmd_internal -gui-zenity expert ;;
-filelog) $cmd_internal -gui-zenity filelog ;; 
-autolog) $cmd_internal -gui-zenity autolog ;;
+logfiles) $cmd_internal -gui-zenity logfiles ;; 
+logcmd) $cmd_internal -gui-zenity logcmd ;;
 ip4)$cmd_internal -gui-zenity ip4 ;;
 ip6)$cmd_internal -gui-zenity ip6 ;;
 notes)$cmd_internal -gui-zenity notes ;;
