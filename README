@@ -53,7 +53,7 @@
 ### fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-10-I                
+         Version Firewall: 24-10-J                
         Released Firewall: Year 2024 / Month 10               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
@@ -120,11 +120,11 @@
 ###     [ Configuration files ]   
       Directory data:          /root/.config/fwiptables   
       Directory temp:          /root/.cache/fwiptables   
-      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-10-I   
+      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-10-J   
         
 ###     [ Log files ]             
-      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default-autolog-24-10-I   
-      File filelog:            /root/.config/fwiptables/fwiptables-log/default-filelog-24-10-I   
+      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default-autolog-24-10-J   
+      Folder filelog:          /root/.config/fwiptables/fwiptables-log   
         
 ###     [ optional output ]       
       dialog cli:              /usr/bin/dialog   
@@ -284,9 +284,9 @@
    options filelog autolog date resolve speed-ip4 speed-ip6   
    sockets ip ip4 ip6 network4 network6 address4 address6   
    free nodes ip-forward utils treeconf cleancache treecache   
-   web intro variables depends uninstall install upgrade   
-   notes examples info code expert donate about version   
+   log-stat web intro depends uninstall install upgrade notes   
+   variables examples info code expert donate about version   
    license-lgpl-v2 license-gpl-v2   
-       | Program: /usr/bin/fwiptables 24-10-I   
+       | Program: /usr/bin/fwiptables 24-10-J   
        | Description: iptables template in one script   
        | Expert: expert is allowed in preferences file   
