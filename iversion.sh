@@ -1555,7 +1555,7 @@ exit; fi
 #### :rutina-inicial-config-logcmd:
 ####
 ####
-if [ "$first_option" == "logcmd" ] ; then
+if [ "$first_option" == "logcmd" ] || [ "$first_option" == "autolog" ] ; then
 ####
 ####
 echo "$title_md $text_info [ last 50 lines from file showed ] [ $file_default_logcmd ]"
@@ -1579,24 +1579,24 @@ if [ "$first_option" == "log-stat" ] ; then
 ####
 ####
 if [ "$command_wc" == "$NULL" ] ; then
-echo "$text_info please install wc command"; exit; fi
+echo "$text_info Please install wc command"; exit; fi
 ####
 ####
 echo "$title_md The logcmd with log-stat"
 conteo="$($command_cat $file_default_logcmd | $command_wc -l)"
-echo "$text_md $conteo Commands launched. Logged with logcmd"
+echo "$text_md $conteo Commands launched. Logged with automatic logcmd"
 echo "$text_md file: $file_default_logcmd"
 ####
 ####
 echo "$title_md The logs with log-stat"
 conteo="$($command_ls -1 $default_directory_logs | $command_wc -l)"
-echo "$text_md $conteo Commands output. Logged with logs"
+echo "$text_md $conteo Commands output. Logged with output log"
 echo "$text_md folder: $default_directory_logs"
 ####
 ####
 echo "$title_md The pdf with log-stat"
 conteo="$($command_ls -1 $default_directory_pdf | $command_wc -l)"
-echo "$text_md $conteo Commands output. Logged with pdf"
+echo "$text_md $conteo Commands output. Logged with output pdf"
 echo "$text_md folder: $default_directory_pdf"
 ####
 ####
