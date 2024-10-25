@@ -2305,7 +2305,7 @@ exit; fi
 if [ "$first_option" == "address4" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ show info about net ip4 ] [ ip4 md ]"
+echo "$title_md [ $first_option ]  [ show info about net address ip4 ]"
 $cmd_internal network4
 $cmd_internal ip4
 $cmd_internal resolve
@@ -2324,7 +2324,7 @@ exit; fi
 if [ "$first_option" == "address6" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ show info about net ip6 ] [ ip6 md ]"
+echo "$title_md [ $first_option ]  [ show info about net address ip6 ]"
 $cmd_internal network6
 $cmd_internal ip6
 $cmd_internal resolve
