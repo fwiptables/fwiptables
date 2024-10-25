@@ -716,7 +716,7 @@ if [ "$without_first_option" = "$NULL" ] ; then without_first_option="options" ;
 ####
 ####
 if [ "$first_option" = "$NULL" ]; then
-echo "### $text_info [ Default Option: $without_first_option ] [ List Option: options ]"
+echo "### $text_info [ Default Option: $without_first_option ] [ List Options: options ]"
 echo "### $text_info [ Configure Default Option: $cmd_name preferences-modify ]"
 first_option="$without_first_option" ; fi
 ####
