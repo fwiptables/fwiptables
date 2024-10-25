@@ -2186,12 +2186,28 @@ exit; fi
 ####
 ####
 #### :rutina-final-network6:
+##########    english: ip : get net info               ##########
+##########    spanish: ip : da informacion de la red   ##########
+#### :rutina-inicial-ip:
+####
+####
+if [ "$first_option" == "ip" ]; then
+####
+####
+$cmd_internal ip4
+$cmd_internal ip6
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-ip:
 ##########    english: address : get net info               ##########
 ##########    spanish: address : da informacion de la red   ##########
 #### :rutina-inicial-address:
 ####
 ####
-if [ "$first_option" == "address" ] || [ "$first_option" == "ip" ]; then
+if [ "$first_option" == "address" ]; then
 ####
 ####
 $cmd_internal address4
@@ -2202,12 +2218,12 @@ exit ; fi
 ####
 ####
 #### :rutina-final-address:
-##########    english: address4 : get net info               ##########
-##########    spanish: address4 : da informacion de la red   ##########
-#### :rutina-inicial-address4:
+##########    english: ip4 : get net info               ##########
+##########    spanish: ip4 : da informacion de la red   ##########
+#### :rutina-inicial-ip4:
 ####
 ####
-if [ "$first_option" == "address4" ]; then
+if [ "$first_option" == "ip4" ]; then
 ####
 ####
 echo "$title_md $text_info ### [ Private ip ] [ Address ipv4 ] ###"
@@ -2230,13 +2246,13 @@ else echo "$text_md   $public_ip4"; fi ; fi
 exit; fi
 ####
 ####
-#### :rutina-final-address4:
-##########    english: address6 : get net info               ##########
-##########    spanish: address6 : da informacion de la red   ##########
-#### :rutina-inicial-address6:
+#### :rutina-final-ip4:
+##########    english: ip6 : get net info               ##########
+##########    spanish: ip6 : da informacion de la red   ##########
+#### :rutina-inicial-ip6:
 ####
 ####
-if [ "$first_option" == "address6" ]; then
+if [ "$first_option" == "ip6" ]; then
 ####
 ####
 echo "$title_md $text_info ### [ Private ip ] [ Address ipv6 ] ###"
@@ -2259,7 +2275,7 @@ else echo "$text_md   $public_ip6"; fi; fi
 exit; fi
 ####
 ####
-#### :rutina-final-address6:
+#### :rutina-final-ip6:
 ##########    english: sockets: The sockets option  ##########
 ##########    spanish: sockets: La opcion sockets   ##########
 #### :rutina-inicial-sockets:
@@ -2281,17 +2297,17 @@ exit; fi
 ####
 ####
 #### :rutina-final-sockets:
-##########    english: ip4 : get net info               ##########
-##########    spanish: ip4 : da informacion de la red   ##########
-#### :rutina-inicial-ip4:
+##########    english: address4 : get net info               ##########
+##########    spanish: address4 : da informacion de la red   ##########
+#### :rutina-inicial-address4:
 ####
 ####
-if [ "$first_option" == "ip4" ]; then
+if [ "$first_option" == "address4" ]; then
 ####
 ####
 echo "$title_md [ $first_option ]  [ show info about net ip4 ] [ ip4 md ]"
 $cmd_internal network4
-$cmd_internal address4
+$cmd_internal ip4
 $cmd_internal resolve
 $cmd_internal sockets
 ####
@@ -2299,18 +2315,18 @@ $cmd_internal sockets
 exit; fi
 ####
 ####
-#### :rutina-final-ip4:
-##########    english: ip6 : get net info               ##########
-##########    spanish: ip6 : da informacion de la red   ##########
-#### :rutina-inicial-ip6:
+#### :rutina-final-address4:
+##########    english: address6 : get net info               ##########
+##########    spanish: address6 : da informacion de la red   ##########
+#### :rutina-inicial-address6:
 ####
 ####
-if [ "$first_option" == "ip6" ]; then
+if [ "$first_option" == "address6" ]; then
 ####
 ####
 echo "$title_md [ $first_option ]  [ show info about net ip6 ] [ ip6 md ]"
 $cmd_internal network6
-$cmd_internal address6
+$cmd_internal ip6
 $cmd_internal resolve
 $cmd_internal sockets
 ####
@@ -2320,7 +2336,7 @@ exit; fi
 ####
 ####
 ####
-#### :rutina-final-ip6:
+#### :rutina-final-address6:
 ##########    english: expert-conf-clientproxy: get net info               ##########
 ##########    spanish: expert-conf-clientproxy: da informacion de la red   ##########
 #### :rutina-inicial-expert-confclientproxy
