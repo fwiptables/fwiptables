@@ -2629,7 +2629,6 @@ if [ "$first_option" == "depends" ]; then
 echo "$title_md $text_md [ Configuration files ] $text_md"
 echo "$text_md $text_md Directory data:          $directory_data_necesary $text_md"
 echo "$text_md $text_md Directory temp:          $directory_cache_necesary $text_md"
-echo "$text_md $text_md File Preferences:        $file_default_preferences $text_md"
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ Log files ]           $text_md"
 echo "$text_md $text_md File logcmd:             $file_default_logcmd $text_md"
@@ -2673,7 +2672,7 @@ echo "$text_md $text_md cut command:             $command_cut $text_md"
 echo "$text_md $text_md date command:            $command_date $text_md"
 echo "$text_md $text_md file command:            $command_file $text_md"
 echo "$text_md $text_md $text_md"
-echo "$text_md $text_md all utils in command: fwiptables utils $text_md"
+echo "$text_md $text_md Posible utils found in command: fwiptables utils $text_md"
 ####
 ####
 exit; fi
