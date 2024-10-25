@@ -717,6 +717,7 @@ if [ "$without_first_option" = "$NULL" ] ; then without_first_option="options" ;
 ####
 if [ "$first_option" = "$NULL" ]; then
 echo "### $text_info [ Default Option: $without_first_option ] [ List Option: options ]"
+echo "### $text_info [ Configure Default Option: $cmd_name preferences-modify ]"
 first_option="$without_first_option" ; fi
 ####
 ####
@@ -2031,7 +2032,7 @@ if [ "$first_option" == "preferences-example" ] ; then
 echo "$title_md"
 echo "$title_md"
 echo "$title_md $title_md default option when not option are there"
-echo "without_first_option=options                        ## read below"
+echo "without_first_option=ls4                        ## read below"
 echo "$title_md type: void or one valid option required to works"
 echo "$title_md example1:options example2:list4 example3:ip4"
 echo "$title_md example4:speed-ip4 example5:sockets example6:gui-roll"
@@ -5647,7 +5648,7 @@ echo "# Waiting several seconds, while create new configuration $text_md"
 #### echo "$title_md $text_info [ $cmd_filename installing.. ]"
 cp $cmd_notinstalled $cmd_installed && 
 chmod 755 $cmd_installed &> /dev/null &&
-echo "# OK. Installed"
+echo "# OK. Installed in $cmd_installed"
 ####
 ####
 ####  english: generate fwiptables default config and templates
@@ -6106,7 +6107,6 @@ if   [ "$first_option" == "compile" ]; then
 ####
 echo "$text_md $text_md BASH SCRIPT WORKS fully.    $text_md"
 echo "$text_md $text_md But if your desire is compiling...   $text_md"   
-echo    
 echo "$text_md $text_md Necesary fwiptables in source script bash $text_md"     
 echo "$text_md $text_md Download and install obash from oficial web internet $text_md"      
 echo "$text_md $text_md Run: obash -s -c -o ./destination.bin ./source-bash.sh $text_md"      
