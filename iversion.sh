@@ -1254,6 +1254,7 @@ exit ; fi
 if [ "$first_option" == "alias-example" ] ; then 
 ####
 ####
+echo "####  $cmd_internal $cmd_version"
 echo "####  modify file: $file_default_alias #####"
 echo "#output=optional-output"
 echo "#control=firewall-wallcontrol"
@@ -3664,7 +3665,7 @@ echo "$text_md server-lamp server-news server-ftp server-mail server-teamspeak $
 echo "$text_md server-mumble server-gateway server-sql server-samba server-proxy $text_md"
 echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net  $text_md"
 echo "$title_md    firewall-netsystem $text_md"
-echo "$text_md preferences-read preferences-modify preferences-regen $text_md"
+echo "$text_md preferences-read preferences-modify preferences-regen alias $text_md"
 echo "$text_md options logfiles logcmd date resolve speed-ip4 speed-ip6 $text_md"
 echo "$text_md sockets ip ip4 ip6 network4 network6 address4 address6 $text_md"
 echo "$text_md free nodes ip-forward utils treeconf cleancache treecache $text_md"
@@ -3983,7 +3984,7 @@ echo "$title_md | firewall-netsystem | $cmd_internal firewall-netsystem | $text_
 echo "$text_md $text_md preferences-read . show the preferences for fwiptables $text_md"
 echo "$text_md $text_md preferences-modify . modify the preferences for fwiptables $text_md"
 echo "$text_md $text_md preferences-regen . recover the initials preferences for fwiptables $text_md"
-echo "$text_md $text_md preferences-example . show the examples for fwiptables preference $text_md"
+echo "$text_md $text_md alias . configure alias to first option $text_md"
 echo "$text_md $text_md options . list options $text_md"
 echo "$text_md $text_md info-options . list details for the options $text_md"
 echo "$text_md $text_md info . details from one first option from one pattern $text_md"
