@@ -5672,6 +5672,43 @@ exit; fi
 ####
 ####
 #### :rutina-final-install:
+##########    english: expert-gen-usernotes: generate installed respository   ##########
+##########    spanish: expert-gen-usernotes: genera instalado respositorio    ##########
+#### :rutina-inicial-expert-gen-usernotes:
+####
+####
+if   [ "$first_option" == "expert-gen-usernotes" ];  then
+####
+####
+config_user_notes=$default_directory_preferences/user-notes.txt
+first_user_notes="$(echo $second_option | cut -d "," -f 1)"
+second_user_notes="$(echo $third_option | cut -d "," -f 1)"
+# add, del, search
+if [ "$$second_user_notes" != "$NULL" ]; then
+if [ "$first_user_notes" == "add" ] || [ "$first_user_notes" == "a" ];
+then echo "list added: $second_user_notes" ; 
+echo $(fecha),$second_user_notes >> $config_user_notes; exit; fi
+if [ "$first_user_notes" == "del" ] || [ "$first_user_notes" == "d" ];
+then echo "lines deleted: $second_user_notes" ; 
+$command_cat $config_user_notes | $command_grep -iv $second_user_notes > $config_user_notes; exit; fi
+if [ "$first_user_notes" == "search" ] || [ "$first_user_notes" == "s" ];
+then echo "List searched" ; 
+$command_cat $config_user_notes | $command_grep -i $second_user_notes ; exit; fi
+fi
+# list, numbers
+if [ "$first_user_notes" == "list" ] || [ "$first_user_notes" == "l" ];
+then echo "List content:"; $command_cat $config_user_notes; exit; fi
+if [ "$first_user_notes" == "lines" ] || [ "$first_user_notes" == "n" ];
+then echo "Line numbers:" ; $command_cat $config_user_notes | $command_wc -l ; exit; fi
+# other options
+echo " # Option: add|a del|d search|s list|l lines|n"
+echo " # info: Use without comma, and quote when spaces: to add, to del, to search"
+#### 
+####
+exit; fi
+####
+####
+#### :rutina-final-expert-gen-usernotes:
 ##########    english: expert-gen-readme: generate installed respository   ##########
 ##########    spanish: expert-gen-readme: genera instalado respositorio    ##########
 #### :rutina-inicial-expert-gen-readme:
