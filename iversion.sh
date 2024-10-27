@@ -715,7 +715,8 @@ then source $file_default_preferences ; fi
 ####
 ####
 #### prepare alias
-option_with_alias="$($command_cat $file_default_alias | $command_grep ^#$first_option= | cut -c 2- -)"
+option_with_alias="$($command_cat $file_default_alias \
+| $command_grep ^#$first_option= | cut -c 2- -)"
 option_alias_origen="$(echo  $option_with_alias | $command_cut -d "=" -f 1 -)"
 option_alias_destino="$(echo $option_with_alias | $command_cut -d "=" -f 2 -)"
 ####
@@ -1230,12 +1231,12 @@ exit ; fi
 ####
 ####
 #### :rutina-final-alias-regen:
-##########    ALIAS CONFIG READ
-##########    ALIAS CONFIG READ
-#### :rutina-inicial-alias-read:
+##########    ALIAS CONFIG
+##########    ALIAS CONFIG
+#### :rutina-inicial-alias:
 ####
 ####
-if [ "$first_option" == "alias-read" ] ; then 
+if [ "$first_option" == "alias" ] ; then 
 ####
 ####
 $command_cat $file_default_alias
@@ -1244,22 +1245,7 @@ $command_cat $file_default_alias
 exit ; fi
 ####
 ####
-#### :rutina-final-alias-read:
-##########    ALIAS CONFIG MODIFY
-##########    ALIAS CONFIG MODIFY
-#### :rutina-inicial-expert-alias-modify:
-####
-####
-if [ "$first_option" == "expert-alias-modify" ] ; then 
-####
-####
-$favorite_text_editor $file_default_alias
-####
-####
-exit ; fi
-####
-####
-#### :rutina-final-expert-alias-modify:
+#### :rutina-final-alias:
 ##########    ALIAS CONFIG EXAMPLE
 ##########    ALIAS CONFIG EXAMPLE
 #### :rutina-inicial-alias-example:
@@ -1268,6 +1254,7 @@ exit ; fi
 if [ "$first_option" == "alias-example" ] ; then 
 ####
 ####
+echo "####  modify file: $file_default_alias #####"
 echo "#output=optional-output"
 echo "#control=firewall-wallcontrol"
 echo "#listconceptual=irewall-listconceptual"
