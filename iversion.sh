@@ -533,6 +533,8 @@ default_fullcfg_spa="$default_directory_template/default-full-spanish.cfg"
 ####
 ####
 file_default_preferences="$default_directory_preferences/default-preferences-$cmd_version"
+file_default_alias="$default_directory_preferences/default-alias-$cmd_version"
+file_default_usernotes="$default_directory_preferences/default-usernotes"
 ####
 ####
 #### english: file log:     log files and path files config files
@@ -689,10 +691,9 @@ file_blacklist_adaway="$default_directory_adblock/hosts.blacklist_adaway"
 file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenblack"
 ####
 ####
-#### config to usernotes,expert-gen-usernotes
+#### config to expert-gen-usernotes
 ####
 ####
-config_user_notes=$default_directory_preferences/user-notes.txt
 first_user_notes="$(echo $second_option | cut -d "," -f 1)"
 second_user_notes="$(echo $third_option | cut -d "," -f 1)"
 ####
@@ -1202,10 +1203,19 @@ esac
 #### :rutina-final-alias-interface:
 ##########    ALIAS CONFIG
 ##########    ALIAS CONFIG
-#### :rutina-inicial-drop-warning:
+#### :rutina-inicial-alias-simple:
 ####
 ####
 #### english: alias simple for options commons
+####
+####
+option_with_alias="$($command_cat $file_default_alias | $command_grep ^#$first_option\=)"
+if [ "$line" != "$NULL" ]; then
+option_without_alias="$($command_cat $file_default_alias | \
+$command_cut -c 2- | $command_cut -d "=" -f 2 | $command_grep $first_option -)"
+echo "coincide"
+$cmd_internal option_without_alias $2 $3 $4
+exit; fi 
 ####
 ####
 case "$first_option" in
@@ -1244,6 +1254,96 @@ esac
 ####
 ####
 #### :rutina-final-alias-simple:
+##########    ALIAS CONFIG REGEN
+##########    ALIAS CONFIG REGEN
+#### :rutina-inicial-alias-regen:
+####
+####
+if [ "$first_option" == "alias-regen" ] ; then 
+####
+####
+$cmd_internal alias-example &> $file_default_alias
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-alias-regen:
+##########    ALIAS CONFIG READ
+##########    ALIAS CONFIG READ
+#### :rutina-inicial-alias-read:
+####
+####
+if [ "$first_option" == "alias-read" ] ; then 
+####
+####
+$command_cat $file_default_alias
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-alias-read:
+##########    ALIAS CONFIG MODIFY
+##########    ALIAS CONFIG MODIFY
+#### :rutina-inicial-expert-alias-modify:
+####
+####
+if [ "$first_option" == "expert-alias-modify" ] ; then 
+####
+####
+$favorite_text_editor $file_default_alias
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-expert-alias-modify:
+##########    ALIAS CONFIG EXAMPLE
+##########    ALIAS CONFIG EXAMPLE
+#### :rutina-inicial-alias-example:
+####
+####
+if [ "$first_option" == "alias-example" ] ; then 
+####
+####
+echo "#output=optional-output"
+echo "#control=firewall-wallcontrol"
+echo "#listconceptual=irewall-listconceptual"
+echo "#listnumeral=firewall-listnumeral"
+echo "#wallcustom=firewall-wallcustom"
+echo "#wallsystem=firewall-wallsystem"
+echo "#easy=firewall-netsystem"
+echo "#custom=load-custom"
+echo "#examples=options-examples"
+echo "#regen=templates-regen"
+echo "#expert=options-expert"
+echo "#ver=version"
+echo "#client-squid=client-proxy"
+echo "#server-squid=server-proxy"
+echo "#all-names=names"
+echo "#options=options"
+echo "#mini-options=options"
+echo "#options-mini=options"
+echo "#sentlog=logfiles"
+echo "#cfg=names-custom"
+echo "#all-custom=names-custom"
+echo "#cfg-custom=load-custom"
+echo "#custom-cfg=load-custom"
+echo "#list-fw=names"
+echo "#date=ntpdate-client"
+echo "#ram-free=free"
+echo "#free-ram=free"
+echo "#ram=free"
+echo "#list-allrules=list-alltables"
+echo "#expert-speed-ip4=speed-ip4"
+echo "#expert-speed-ip6=speed-ip6"
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-alias-example:
 ##########    ALIAS CONFIG
 ##########    ALIAS CONFIG
 #### :rutina-inicial-drop-warning:
@@ -4014,6 +4114,7 @@ echo "$text_md $text_md expert-deb . generate actual version file in deb $text_m
 echo "$text_md $text_md expert-gen-readme . generate actual version file in original with readme $text_md "
 echo "$text_md $text_md expert-gen-compile . Compile fwiptables from bash with program obash $text_md "
 echo "$text_md $text_md expert-gen-usernotes . take notes for yourself to remember $text_md"
+echo "$text_md $text_md expert-alias-modify . modify alias for $cmd_name $text_md"
 echo "$text_md $text_md expert-nmap-tcp . doing scan tcp at host or range $text_md "
 echo "$text_md $text_md expert-nmap-udp . doing scan udp at host or range $text_md "
 echo "$text_md $text_md expert-nmap-fin . doing scan fin at host or range $text_md "
@@ -5672,6 +5773,8 @@ $cmd_notinstalled preferences-regen &> /dev/null &&
 echo "# OK. Updated preferences"
 $cmd_notinstalled templates-regen &> /dev/null &&
 echo "# OK. Updated templates"
+$cmd_notinstalled alias-regen &> /dev/null &&
+echo "# OK. Updated alias"
 ####
 ####
 ####   english: Show final status from installer: program version
@@ -5697,18 +5800,18 @@ if   [ "$first_option" == "expert-gen-usernotes" ];  then
 if [ "$$second_user_notes" != "$NULL" ]; then
 if [ "$first_user_notes" == "add" ] || [ "$first_user_notes" == "a" ];
 then echo "list added: $second_user_notes" ; 
-echo $cmd_usernotes_date,$second_user_notes >> $config_user_notes; exit; fi
+echo $cmd_usernotes_date,$second_user_notes >> $file_default_usernotes; exit; fi
 if [ "$first_user_notes" == "search" ] || [ "$first_user_notes" == "s" ];
 then echo "List searched" ; 
-$command_cat $config_user_notes | $command_grep -i $second_user_notes ; exit; fi
+$command_cat $file_default_usernotes | $command_grep -i $second_user_notes ; exit; fi
 fi
 #### edit, list content, lines numbers
 if [ "$first_user_notes" == "edit" ] || [ "$first_user_notes" == "e" ];
-then $favorite_text_editor $config_user_notes ; exit ; fi
+then $favorite_text_editor $file_default_usernotes ; exit ; fi
 if [ "$first_user_notes" == "list" ] || [ "$first_user_notes" == "l" ];
-then echo "List content:"; $command_cat $config_user_notes; exit; fi
+then echo "List content:"; $command_cat $file_default_usernotes; exit; fi
 if [ "$first_user_notes" == "lines" ] || [ "$first_user_notes" == "n" ];
-then echo "Line numbers:" ; $command_cat $config_user_notes | $command_wc -l ; exit; fi
+then echo "Line numbers:" ; $command_cat $file_default_usernotes | $command_wc -l ; exit; fi
 #### other options
 echo " # Option: add|a search|s edit|e list|l number-lines|n"
 echo " # info: Use without comma, and quote when spaces: to add, to del, to search"
