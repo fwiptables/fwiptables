@@ -118,12 +118,10 @@ cmd_xdg="/run/user/0"                                         # Folder XDG
 cmd_format=$(file $0 | \
 awk '{print $2 "_" $3 "_" $4}')                               # File format
 #### info date logs var in log,logcmd,..
-cmd_get_date="$(date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"            # format date
-cmd_log_date="$cmd_get_date"
-cmd_opt_date="LOG_[$cmd_get_date]_OPT_"
-# cmd_log_date="$(date +LOG_DAY_%Y-%m-%d_HOUR_%H-%M-%S)"        # log date
-# cmd_opt_date="$(date +LOG_DAY_%Y-%m-%d_HOUR_%H-%M-%S_OPT_)"   # log date
-#### cmd_opt_date="$cmd_log_date-_OPT_"                       # opt date
+cmd_get_date="$(date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"            # how format date
+cmd_log_date="$cmd_get_date"                                  # how log date
+cmd_opt_date="LOG_[$cmd_get_date]_OPT_"                       # how opt date
+cmd_usernotes_date="$cmd_get_date"                            # how usernotes date
 ####
 ####
 #### ########## ########## ##########
@@ -5697,7 +5695,7 @@ if   [ "$first_option" == "expert-gen-usernotes" ];  then
 if [ "$$second_user_notes" != "$NULL" ]; then
 if [ "$first_user_notes" == "add" ] || [ "$first_user_notes" == "a" ];
 then echo "list added: $second_user_notes" ; 
-echo $cmd_log_date,$second_user_notes >> $config_user_notes; exit; fi
+echo $cmd_usernotes_date,$second_user_notes >> $config_user_notes; exit; fi
 if [ "$first_user_notes" == "search" ] || [ "$first_user_notes" == "s" ];
 then echo "List searched" ; 
 $command_cat $config_user_notes | $command_grep -i $second_user_notes ; exit; fi
