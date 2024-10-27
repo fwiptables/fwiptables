@@ -1254,8 +1254,8 @@ exit ; fi
 if [ "$first_option" == "alias-example" ] ; then 
 ####
 ####
-echo "####  $cmd_internal $cmd_version"
-echo "####  modify file: $file_default_alias #####"
+echo "####  program: $cmd_internal $cmd_version #####"
+echo "####  file: $file_default_alias #####"
 echo "#output=optional-output"
 echo "#control=firewall-wallcontrol"
 echo "#listconceptual=irewall-listconceptual"
