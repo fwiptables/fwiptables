@@ -687,6 +687,14 @@ file_blacklist_adaway="$default_directory_adblock/hosts.blacklist_adaway"
 file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenblack"
 ####
 ####
+#### config to usernotes,expert-gen-usernotes
+####
+####
+config_user_notes=$default_directory_preferences/user-notes.txt
+first_user_notes="$(echo $second_option | cut -d "," -f 1)"
+second_user_notes="$(echo $third_option | cut -d "," -f 1)"
+####
+####
 #### :rutina-final-variables-misc:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
@@ -4001,6 +4009,7 @@ echo "$text_md $text_md expert-upgrade-adblock . Download blacklist to folder co
 echo "$text_md $text_md expert-deb . generate actual version file in deb $text_md "
 echo "$text_md $text_md expert-gen-readme . generate actual version file in original with readme $text_md "
 echo "$text_md $text_md expert-gen-compile . Compile fwiptables from bash with program obash $text_md "
+echo "$text_md $text_md expert-gen-usernotes . take notes for yourself to remember $text_md"
 echo "$text_md $text_md expert-nmap-tcp . doing scan tcp at host or range $text_md "
 echo "$text_md $text_md expert-nmap-udp . doing scan udp at host or range $text_md "
 echo "$text_md $text_md expert-nmap-fin . doing scan fin at host or range $text_md "
@@ -5680,10 +5689,7 @@ exit; fi
 if   [ "$first_option" == "expert-gen-usernotes" ];  then
 ####
 ####
-config_user_notes=$default_directory_preferences/user-notes.txt
-first_user_notes="$(echo $second_option | cut -d "," -f 1)"
-second_user_notes="$(echo $third_option | cut -d "," -f 1)"
-# add, del, search
+#### add, del, search
 if [ "$$second_user_notes" != "$NULL" ]; then
 if [ "$first_user_notes" == "add" ] || [ "$first_user_notes" == "a" ];
 then echo "list added: $second_user_notes" ; 
@@ -5695,12 +5701,12 @@ if [ "$first_user_notes" == "search" ] || [ "$first_user_notes" == "s" ];
 then echo "List searched" ; 
 $command_cat $config_user_notes | $command_grep -i $second_user_notes ; exit; fi
 fi
-# list, numbers
+#### list content, lines numbers
 if [ "$first_user_notes" == "list" ] || [ "$first_user_notes" == "l" ];
 then echo "List content:"; $command_cat $config_user_notes; exit; fi
 if [ "$first_user_notes" == "lines" ] || [ "$first_user_notes" == "n" ];
 then echo "Line numbers:" ; $command_cat $config_user_notes | $command_wc -l ; exit; fi
-# other options
+#### other options
 echo " # Option: add|a del|d search|s list|l lines|n"
 echo " # info: Use without comma, and quote when spaces: to add, to del, to search"
 #### 
