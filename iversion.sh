@@ -72,54 +72,58 @@ exit ; fi
 ####
 ####
 #### The name file command
-cmd_name="fwiptables"                                      # Name firewall
+cmd_name="fwiptables"                                         # Name firewall
 #### the installed location
-cmd_filename="fwiptables"                                  # Filename installed
-cmd_directory="/usr/bin"                                   # Directory installed
+cmd_filename="fwiptables"                                     # Filename installed
+cmd_directory="/usr/bin"                                      # Directory installed
 #### the path firewall and any command                        
-cmd_path="/usr/bin:/usr/sbin:/bin:/sbin"                   # Config for PATH
-PATH="$cmd_path"                                           # PATH for fwiptables
+cmd_path="/usr/bin:/usr/sbin:/bin:/sbin"                      # Config for PATH
+PATH="$cmd_path"                                              # PATH for fwiptables
 #### find any command in system
-cmd_where="which"                                          # Find each command
+cmd_where="which"                                             # Find each command
 #### the source file command         
-cmd_basename="$(basename $0)"                              # Only name filename
-cmd_realpath="$(realpath $0)"                              # path name filename
+cmd_basename="$(basename $0)"                                 # Only name filename
+cmd_realpath="$(realpath $0)"                                 # path name filename
 #### internal notinstalled,installed         
 cmd_notinstalled="$0"
-cmd_installed="$cmd_directory/$cmd_filename"               # Full path filename
+cmd_installed="$cmd_directory/$cmd_filename"                  # Full path filename
 #### internal cycle command firewall
-cmd_internal="$cmd_installed"                              # your choosed internal
+cmd_internal="$cmd_installed"                                 # your choosed internal
 if [ -f "$cmd_installed" ]
 then cmd_internal="$cmd_installed"
 else cmd_internal="$cmd_notinstalled"
 fi
 #### The number version firewall
-cmd_year="24"                                              # Number year version
-cmd_month="10"                                             # Number mouth version
-cmd_letter="K"                                             # Number letter version
-cmd_version="$cmd_year-$cmd_month-$cmd_letter"             # Final date like number version
+cmd_year="24"                                                 # Number year version
+cmd_month="10"                                                # Number mouth version
+cmd_letter="K"                                                # Number letter version
+cmd_version="$cmd_year-$cmd_month-$cmd_letter"                # Final date like number version
 cmd_released="Year 20$cmd_year / Month $cmd_month"
 #### The data version firewall
-cmd_developer="Francisco Garcia"                           # Actual developer
-cmd_contact="fwiptables@gmx.com"                           # Actual contact
-cmd_shortdescription="FireWall With iptables"              # Description short
-cmd_longdescription="iptables template in one script"      # Description long
-cmd_requisite_program="awk,cat,cut,date,file,id,sed"       # Program requisite
-cmd_requisite_firewall4="iptables-legacy,iptables-nft"     # Firewall requisite
-cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"   # Firewall requisite
-cmd_license="LGPL v2, GPL v2"                              # Program license
+cmd_developer="Francisco Garcia"                              # Actual developer
+cmd_contact="fwiptables@gmx.com"                              # Actual contact
+cmd_shortdescription="FireWall With iptables"                 # Description short
+cmd_longdescription="iptables template in one script"         # Description long
+cmd_requisite_program="awk,cat,cut,date,file,id,sed"          # Program requisite
+cmd_requisite_firewall4="iptables-legacy,iptables-nft"        # Firewall requisite
+cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"      # Firewall requisite
+cmd_license="LGPL v2, GPL v2"                                 # Program license
 #### posible front-end firewall
-cmd_posible_cli="dialog,whiptail"                          # Posible cli
-cmd_posible_gui="yad,zenity"                               # Posible gui
+cmd_posible_cli="dialog,whiptail"                             # Posible cli
+cmd_posible_gui="yad,zenity"                                  # Posible gui
 #### info xdg session firewall
-cmd_session="$XDG_SESSION_TYPE"                            # Sesssion XDG
-cmd_xdg="/run/user/0"                                      # Folder XDG
+cmd_session="$XDG_SESSION_TYPE"                               # Sesssion XDG
+cmd_xdg="/run/user/0"                                         # Folder XDG
 #### info file format firewall
 cmd_format=$(file $0 | \
-awk '{print $2 "_" $3 "_" $4}')                            # File format
-#### info date logs var in log,logcmd
-cmd_actual_date="$(date +LOG_DAY_%Y-%m-%d_HOUR_%H-%M-%S)"  # log date
-cmd_opt_date="$cmd_actual_date-_OPT_"                      # log date
+awk '{print $2 "_" $3 "_" $4}')                               # File format
+#### info date logs var in log,logcmd,..
+cmd_get_date="$(date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"            # format date
+cmd_log_date="$cmd_get_date"
+cmd_opt_date="LOG_[$cmd_get_date]_OPT_"
+# cmd_log_date="$(date +LOG_DAY_%Y-%m-%d_HOUR_%H-%M-%S)"        # log date
+# cmd_opt_date="$(date +LOG_DAY_%Y-%m-%d_HOUR_%H-%M-%S_OPT_)"   # log date
+#### cmd_opt_date="$cmd_log_date-_OPT_"                       # opt date
 ####
 ####
 #### ########## ########## ##########
@@ -1449,7 +1453,7 @@ if [ "$first_option" == "log" ]
 ####
 then echo "$head_waiting_log"
 echo "### ### $text_info [ $second_option $third_option $quad_option ] \
-[ $cmd_actual_date ]" &> $output_log
+[ $cmd_log_date ]" &> $output_log
 $cmd_internal $second_option $third_option $quad_option &> $output_log
 $command_cat  $output_log | $command_grep -E -v Warning: \
 &> $default_directory_logs/$cmd_opt_date-$second_option.txt
@@ -1500,7 +1504,7 @@ exit ; fi
 if [ "$allow_save_logcmd" != "no" ]
 ####
 ####
-then head_logcmd="date: $cmd_actual_date \
+then head_logcmd="date: $cmd_log_date \
 path: $cmd_internal ver: $cmd_version \
 opt: $first_option $second_option $third_option"
 echo $head_logcmd >> $file_default_logcmd
@@ -3556,13 +3560,13 @@ echo "$title_md [ $first_option ] \
 echo
 if [ "$favorite_date_command" == "$NULL" ]
 then echo "$text_md $text_fail [ Install one ntp client ]" ; fi
-echo "$text_md Old date: $cmd_actual_date"
+echo "$text_md Old date: $cmd_log_date"
 echo "$text_md [ Updating the time and the date .. ]"
 pool0="0.debian.pool.ntp.org"
 pool1="1.debian.pool.ntp.org"
 pool2="2.debian.pool.ntp.org"
 pool3="3.debian.pool.ntp.org"
-$favorite_date_command $pool0 && echo -e "\n With New date: $cmd_actual_date"
+$favorite_date_command $pool0 && echo -e "\n With New date: $cmd_log_date"
 ####
 ####
 exit; fi
@@ -5693,7 +5697,7 @@ if   [ "$first_option" == "expert-gen-usernotes" ];  then
 if [ "$$second_user_notes" != "$NULL" ]; then
 if [ "$first_user_notes" == "add" ] || [ "$first_user_notes" == "a" ];
 then echo "list added: $second_user_notes" ; 
-echo $(fecha),$second_user_notes >> $config_user_notes; exit; fi
+echo $cmd_log_date,$second_user_notes >> $config_user_notes; exit; fi
 if [ "$first_user_notes" == "search" ] || [ "$first_user_notes" == "s" ];
 then echo "List searched" ; 
 $command_cat $config_user_notes | $command_grep -i $second_user_notes ; exit; fi
@@ -6329,13 +6333,13 @@ echo "$title_md [ $first_option ] \
 echo
 if [ "$favorite_date_command" == "$NULL" ]; then
 echo "$text_md $text_fail [ Install one ntp client ]" ; fi
-echo "$text_md Old date: $cmd_actual_date"
+echo "$text_md Old date: $cmd_log_date"
 echo "$text_md [ Updating the time and the date .. ]"
 pool0="0.debian.pool.ntp.org"
 pool1="1.debian.pool.ntp.org"
 pool2="2.debian.pool.ntp.org"
 pool3="3.debian.pool.ntp.org"
-$favorite_date_command $pool0 && echo -e "\n With New date: $cmd_actual_date"
+$favorite_date_command $pool0 && echo -e "\n With New date: $cmd_log_date"
 ####
 ####
 exit; fi
@@ -7623,7 +7627,7 @@ $cmd_internal -gui-zenity preferences-modify
 ####
 ####
 "$NULL")  exit ;;
-*) fecha_temporal="$cmd_actual_date"
+*) fecha_temporal="$cmd_log_date"
 $cmd_internal $menugtk &> /tmp/fwiptables-$fecha_temporal
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7814,7 +7818,7 @@ $cmd_internal -gui-yad preferences-modify
 #### spanish: las demas opciones   ####
 ####
 ####
-*) fecha_temporal="$cmd_actual_date"
+*) fecha_temporal="$cmd_log_date"
 $cmd_internal $menugtk &> /tmp/fwiptables-$fecha_temporal
 $command_yad --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
