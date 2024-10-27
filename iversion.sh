@@ -714,12 +714,16 @@ if [ -f "$file_default_preferences" ] ;
 then source $file_default_preferences ; fi
 ####
 ####
+#### prepare alias
+option_with_alias="$($command_cat $file_default_alias | $command_grep ^#$first_option= | cut -c 2- -)"
+option_alias_origen="$(echo  $option_with_alias | $command_cut -d "=" -f 1 -)"
+option_alias_destino="$(echo $option_with_alias | $command_cut -d "=" -f 2 -)"
+####
+####
 #### load alias
-option_with_alias="$($command_cat $file_default_alias | $command_grep ^#$first_option=)"
-if [ "$option_with_alias" != "$NULL" ]; then
-option_without_alias="$(echo $option_with_alias | cut -d "=" -f 2)"
-echo "### alias $option_with_alias"
-$cmd_internal $option_without_alias $2 $3 $4
+if [ "$option_with_alias" != "$NULL" ] && [ "$option_alias_origen" != "$option_alias_destino" ]
+then echo "### alias $option_alias_origen to $option_alias_destino"
+$cmd_internal $option_alias_destino $2 $3 $4
 exit; fi 
 ####
 ####
@@ -1211,50 +1215,6 @@ esac
 ####
 ####
 #### :rutina-final-alias-interface:
-##########    ALIAS CONFIG
-##########    ALIAS CONFIG
-#### :rutina-inicial-alias-simple:
-####
-####
-#### english: alias simple for options commons
-####
-####
-case "$first_option" in
-"output")         first_option="optional-output"  ;;
-"control")        first_option="firewall-wallcontrol" ;;
-"listconceptual") first_option="firewall-listconceptual" ;;
-"listnumeral")    first_option="firewall-listnumeral" ;;
-"wallcustom")     first_option="firewall-wallcustom" ;;
-"wallsystem")     first_option="firewall-wallsystem" ;;
-"easy")           first_option="firewall-netsystem" ;;
-"custom")         first_option="load-custom" ;;
-"examples")       first_option="options-examples" ;;
-"regen")          first_option="templates-regen" ;;
-"expert")         first_option="options-expert" ;;
-"ver")            first_option="version" ;;
-"client-squid")   first_option="client-proxy" ;;
-"server-squid")   first_option="server-proxy" ;;
-"all-names")      first_option="names" ;;
-"options")        first_option="options" ;;
-"mini-options")   first_option="options" ;;
-"options-mini")   first_option="options" ;;
-"sentlog")        first_option="logfiles" ;;
-"cfg")            first_option="names-custom" ;;
-"all-custom")     first_option="names-custom" ;;
-"cfg-custom")     first_option="load-custom" ;;
-"custom-cfg")     first_option="load-custom" ;;
-"list-fw")        first_option="names" ;;
-"date")           first_option="ntpdate-client" ;;
-"ram-free")       first_option="free" ;;
-"free-ram")       first_option="free" ;;
-"ram")            first_option="free" ;;
-"list-allrules")  first_option="list-alltables" ;;
-"expert-speed-ip4") first_option="speed-ip4" ;;
-"expert-speed-ip6") first_option="speed-ip6" ;;
-esac
-####
-####
-#### :rutina-final-alias-simple:
 ##########    ALIAS CONFIG REGEN
 ##########    ALIAS CONFIG REGEN
 #### :rutina-inicial-alias-regen:
