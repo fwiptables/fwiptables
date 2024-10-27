@@ -714,6 +714,16 @@ if [ -f "$file_default_preferences" ] ;
 then source $file_default_preferences ; fi
 ####
 ####
+#### load alias
+option_with_alias="$($command_cat $file_default_alias | $command_grep ^#$first_option=)"
+if [ "$option_with_alias" != "$NULL" ]; then
+option_without_alias="$(echo $option_with_alias | cut -d "=" -f 2)"
+echo "### alias $option_with_alias"
+$cmd_internal $option_without_alias $2 $3 $4
+exit; fi 
+####
+####
+#### configure without option
 if [ "$without_first_option" = "$NULL" ] ; then without_first_option="options" ; fi
 ####
 ####
@@ -1207,15 +1217,6 @@ esac
 ####
 ####
 #### english: alias simple for options commons
-####
-####
-option_with_alias="$($command_cat $file_default_alias | $command_grep ^#$first_option\=)"
-if [ "$line" != "$NULL" ]; then
-option_without_alias="$($command_cat $file_default_alias | \
-$command_cut -c 2- | $command_cut -d "=" -f 2 | $command_grep $first_option -)"
-echo "coincide"
-$cmd_internal option_without_alias $2 $3 $4
-exit; fi 
 ####
 ####
 case "$first_option" in
