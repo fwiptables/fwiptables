@@ -1028,6 +1028,8 @@ case "$first_option" in
 "list-allrules")  first_option="list-alltables" ;;
 "expert-speed-ip4") first_option="speed-ip4" ;;
 "expert-speed-ip6") first_option="speed-ip6" ;;
+"apuntes")
+$cmd_internal expert-gen-usernotes $second_option $third_option ; exit ;;
 esac
 ####
 ####
