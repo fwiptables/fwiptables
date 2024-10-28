@@ -3611,7 +3611,7 @@ echo "$text_md server-lamp server-news server-ftp server-mail server-teamspeak $
 echo "$text_md server-mumble server-gateway server-sql server-samba server-proxy $text_md"
 echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net  $text_md"
 echo "$title_md    firewall-netsystem $text_md"
-echo "$text_md preferences-edit preferences-regen alias alias-regen options $text_md"
+echo "$text_md preferences-read preferences-edit alias-read options $text_md"
 echo "$text_md usernotes logfiles logcmd date resolve speed-ip4 speed-ip6 $text_md"
 echo "$text_md sockets ip ip4 ip6 network4 network6 address4 address6 $text_md"
 echo "$text_md free nodes ip-forward utils treeconf cleancache treecache $text_md"
@@ -5646,7 +5646,6 @@ exit; fi
 if [ "$first_option" == "install" ]; then
 ####
 ####
-echo "# Installing $cmd_notinstalled .. $text_md"
 echo "# Waiting several seconds, while create new configuration $text_md"
 ####
 ####
@@ -5657,19 +5656,24 @@ echo "# Waiting several seconds, while create new configuration $text_md"
 #### echo "$title_md $text_info [ $cmd_filename installing.. ]"
 cp $cmd_notinstalled $cmd_installed && 
 chmod 755 $cmd_installed &> /dev/null &&
-echo "# OK. Installed in $cmd_installed"
+####
+####
+echo "# OK. Installed [file] [$cmd_installed]"
 ####
 ####
 ####  english: generate fwiptables default config and templates
 ####  spanish: genera fwiptables default configuracion y plantillas
 ####
 ####
+#### preferences-regen
 $cmd_notinstalled preferences-regen &> /dev/null &&
-echo "# OK. Updated preferences"
-$cmd_notinstalled templates-regen &> /dev/null &&
-echo "# OK. Updated templates"
+echo "# OK. Updated preferences [file] $file_default_preferences]"
+#### alias-regen
 $cmd_notinstalled alias-regen &> /dev/null &&
-echo "# OK. Updated alias"
+echo "# OK. Updated alias [file] [$file_default_alias]"
+#### templates-regen
+$cmd_notinstalled templates-regen &> /dev/null &&
+echo "# OK. Updated templates [folder] [$default_directory_template]"
 ####
 ####
 ####   english: Show final status from installer: program version
