@@ -191,7 +191,6 @@ command_egrep="$($cmd_where egrep)"
 command_elinks="$($cmd_where elinks)"
 command_file="$($cmd_where file)"
 command_find="$($cmd_where find)"
-command_fmt="$($cmd_where fmt)"
 command_geoiplookup="$($cmd_where geoiplookup)"
 command_glxgears="$($cmd_where glxgears)"
 command_gpg="$($cmd_where gpg)"
@@ -2635,12 +2634,10 @@ if [ "$first_option" == "utils" ]; then
 ####
 ####
 echo "$title_md [ $first_option ] [ List for posible utils programs ] [ utils md ] "
-if [ "$command_fmt" == "$NULL" ]; then
-$cmd_internal code possible-commands | $command_grep -E "^command_" | \
-$command_cut -d "=" -f 1 | $command_cut -d "_" -f 2
-else
-$cmd_internal code possible-commands | $command_grep -E "^command_" | \
-$command_cut -d "=" -f 1 | $command_cut -d "_" -f 2 | $command_fmt ; fi ; 
+list_utils_possible="$($cmd_internal code possible-commands | \
+$command_grep -E '^command_' | $command_cut -d '=' -f 1 | \
+$command_sed 's/command_/ /g' )"
+echo $list_utils_possible
 ####
 ####
 exit ; fi
