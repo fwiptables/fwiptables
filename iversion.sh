@@ -120,7 +120,7 @@ awk '{print $2 "_" $3 "_" $4}')                               # File format
 #### info date logs var in log,logcmd,..
 cmd_get_date="$(date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"            # how format date
 cmd_log_date="$cmd_get_date"                                  # how log date
-cmd_opt_date="LOG_[$cmd_get_date]_OPT_"                       # how opt date
+cmd_opt_date="LOG_$cmd_get_date-_OPT_"                       # how opt date
 cmd_usernotes_date="$cmd_get_date"                            # how usernotes date
 ####
 ####
@@ -535,6 +535,7 @@ default_fullcfg_spa="$default_directory_template/default-full-spanish.cfg"
 file_default_preferences="$default_directory_preferences/default-preferences-$cmd_version"
 file_default_alias="$default_directory_preferences/default-alias-$cmd_version"
 file_default_usernotes="$default_directory_preferences/default-usernotes"
+file_default_logcmd="$default_directory_logcmd/default-logcmd-$cmd_version"
 ####
 ####
 #### english: file log:     log files and path files config files
@@ -981,7 +982,7 @@ fi
 #### :rutina-final-favorite-music:
 ##########    english: ALIAS  simple y firewall y campus       ##########
 ##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
-#### :rutina-inicial-alias-simple:
+#### :rutina-inicial-alias-system-list:
 ####
 ####
 ##########     ALIAS SIMPLE
@@ -1012,47 +1013,10 @@ case "$list_rules_conceptual" in
 *) list_rules_conceptual=" -n"  ;; esac
 ####
 ####
-case "$first_option" in
-"output")         first_option="optional-output"  ;;
-"control")        first_option="firewall-wallcontrol" ;;
-"listconceptual") first_option="firewall-listconceptual" ;;
-"listnumeral")    first_option="firewall-listnumeral" ;;
-"wallcustom")     first_option="firewall-wallcustom" ;;
-"wallsystem")     first_option="firewall-wallsystem" ;;
-"easy")           first_option="firewall-netsystem" ;;
-"custom")         first_option="load-custom" ;;
-"examples")       first_option="options-examples" ;;
-"regen")          first_option="templates-regen" ;;
-"expert")         first_option="options-expert" ;;
-"ver")            first_option="version" ;;
-"client-squid")   first_option="client-proxy" ;;
-"server-squid")   first_option="server-proxy" ;;
-"all-names")      first_option="names" ;;
-"list-options")   first_option="options" ;;
-"mini-options")   first_option="options" ;;
-"options-mini")   first_option="options" ;;
-"sentlog")        first_option="logfiles" ;;
-"cfg")            first_option="names-custom" ;;
-"all-custom")     first_option="names-custom" ;;
-"cfg-custom")     first_option="load-custom" ;;
-"custom-cfg")     first_option="load-custom" ;;
-"list-fw")        first_option="names" ;;
-"date")           first_option="ntpdate-client" ;;
-"ram-free")       first_option="free" ;;
-"free-ram")       first_option="free" ;;
-"ram")            first_option="free" ;;
-"list-allrules")  first_option="list-alltables" ;;
-"expert-speed-ip4") first_option="speed-ip4" ;;
-"expert-speed-ip6") first_option="speed-ip6" ;;
-"apuntes")
-$cmd_internal expert-gen-usernotes $second_option $third_option ; exit ;;
-esac
-####
-####
-#### :rutina-final-alias-simple:
+#### :rutina-final-alias-system-list:
 ##########    english: ALIAS  simple y firewall y campus       ##########
 ##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
-#### :rutina-inicial-alias-output:
+#### :rutina-inicial-alias-system-output:
 ####
 ####
 #### english:  alias alias simple for output gui, -txt or -cli or -gui and more
@@ -1138,10 +1102,10 @@ case "$first_option" in
 esac
 ####
 ####
-#### :rutina-final-alias-output:
+#### :rutina-final-alias-system-output:
 ##########    english: ALIAS  simple y firewall y campus       ##########
 ##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
-#### :rutina-inicial-alias-interface:
+#### :rutina-inicial-alias-system-interface:
 ####
 ####
 case "$first_option" in
@@ -1215,9 +1179,9 @@ second_option="$favorite_basename_graphicalldialog"
 esac
 ####
 ####
-#### :rutina-final-alias-interface:
-##########    ALIAS CONFIG REGEN
-##########    ALIAS CONFIG REGEN
+#### :rutina-final-alias-system-interface:
+##########    ALIAS CONFIG REGEN alias-regen:
+##########    ALIAS CONFIG REGEN alias-regen:
 #### :rutina-inicial-alias-regen:
 ####
 ####
@@ -1231,12 +1195,12 @@ exit ; fi
 ####
 ####
 #### :rutina-final-alias-regen:
-##########    ALIAS CONFIG
-##########    ALIAS CONFIG
-#### :rutina-inicial-alias:
+##########    ALIAS CONFIG alias: alias-read:
+##########    ALIAS CONFIG alias: alias-read:
+#### :rutina-inicial-alias-read:
 ####
 ####
-if [ "$first_option" == "alias" ] ; then 
+if [ "$first_option" == "alias" ] || [ "$first_option" == "alias-read" ] ; then 
 ####
 ####
 $command_cat $file_default_alias
@@ -1245,48 +1209,33 @@ $command_cat $file_default_alias
 exit ; fi
 ####
 ####
-#### :rutina-final-alias:
-##########    ALIAS CONFIG EXAMPLE
-##########    ALIAS CONFIG EXAMPLE
+#### :rutina-final-alias-read:
+##########    ALIAS CONFIG EXAMPLE alias-example:
+##########    ALIAS CONFIG EXAMPLE alias-example:
 #### :rutina-inicial-alias-example:
 ####
 ####
 if [ "$first_option" == "alias-example" ] ; then 
 ####
 ####
-echo "####  program: $cmd_internal $cmd_version #####"
-echo "####  file: $file_default_alias #####"
+echo "####  program: $cmd_internal $cmd_version"
+echo "####  file: $file_default_alias"
 echo "#output=optional-output"
 echo "#control=firewall-wallcontrol"
-echo "#listconceptual=irewall-listconceptual"
+echo "#listconceptual=firewall-listconceptual"
 echo "#listnumeral=firewall-listnumeral"
 echo "#wallcustom=firewall-wallcustom"
 echo "#wallsystem=firewall-wallsystem"
+echo "#netsystem=firewall-netsystem"
 echo "#easy=firewall-netsystem"
-echo "#custom=load-custom"
-echo "#examples=options-examples"
-echo "#regen=templates-regen"
 echo "#expert=options-expert"
+echo "#list-allrules=list-alltables"
+echo "#examples=options-examples"
 echo "#ver=version"
-echo "#client-squid=client-proxy"
-echo "#server-squid=server-proxy"
 echo "#all-names=names"
-echo "#options=options"
-echo "#mini-options=options"
-echo "#options-mini=options"
-echo "#sentlog=logfiles"
-echo "#cfg=names-custom"
-echo "#all-custom=names-custom"
-echo "#cfg-custom=load-custom"
-echo "#custom-cfg=load-custom"
-echo "#list-fw=names"
-echo "#date=ntpdate-client"
 echo "#ram-free=free"
 echo "#free-ram=free"
 echo "#ram=free"
-echo "#list-allrules=list-alltables"
-echo "#expert-speed-ip4=speed-ip4"
-echo "#expert-speed-ip6=speed-ip6"
 ####
 ####
 exit ; fi
@@ -2090,6 +2039,8 @@ exit; fi
 if [ "$first_option" == "preferences-example" ] ; then
 ####
 ####
+echo "####  program: $cmd_internal $cmd_version"
+echo "####  file: $file_default_preferences"
 echo "$title_md"
 echo "$title_md"
 echo "$title_md $title_md default option when not option are there"
@@ -2712,6 +2663,11 @@ echo "$title_md $text_md [ Log files ]           $text_md"
 echo "$text_md $text_md File logcmd:             $file_default_logcmd $text_md"
 echo "$text_md $text_md Folder log:              $default_directory_logs $text_md"
 echo "$text_md $text_md Folder pdf:              $default_directory_pdf $text_md"
+echo "$text_md $text_md $text_md"
+echo "$title_md $text_md [ Preferences files ]   $text_md"
+echo "$text_md $text_md preferences:             $file_default_preferences"
+echo "$text_md $text_md usernotes:               $file_default_usernotes"
+echo "$text_md $text_md alias:                   $file_default_alias"             
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ optional output ]     $text_md"
 echo "$text_md $text_md dialog cli:              $command_dialog $text_md"
@@ -3665,8 +3621,8 @@ echo "$text_md server-lamp server-news server-ftp server-mail server-teamspeak $
 echo "$text_md server-mumble server-gateway server-sql server-samba server-proxy $text_md"
 echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net  $text_md"
 echo "$title_md    firewall-netsystem $text_md"
-echo "$text_md preferences-read preferences-modify preferences-regen alias $text_md"
-echo "$text_md options logfiles logcmd date resolve speed-ip4 speed-ip6 $text_md"
+echo "$text_md preferences-modify preferences-regen alias alias-regen options $text_md"
+echo "$text_md usernotes logfiles logcmd date resolve speed-ip4 speed-ip6 $text_md"
 echo "$text_md sockets ip ip4 ip6 network4 network6 address4 address6 $text_md"
 echo "$text_md free nodes ip-forward utils treeconf cleancache treecache $text_md"
 echo "$text_md log-stat web intro depends uninstall install upgrade notes $text_md"
@@ -5730,7 +5686,8 @@ echo "# OK. Updated alias"
 ####   spanish: Muestra el estatus final desde el instalador: program version
 ####
 ####
-$cmd_notinstalled version
+if [ -f "$cmd_installed" ]; then $cmd_installed version ;
+else echo "# Not installed in $cmd_installed"; fi
 #### 
 ####
 exit; fi
@@ -5742,7 +5699,7 @@ exit; fi
 #### :rutina-inicial-expert-gen-usernotes:
 ####
 ####
-if   [ "$first_option" == "expert-gen-usernotes" ];  then
+if [ "$first_option" == "expert-gen-usernotes" ] || [ "$first_option" == "usernotes" ] ;  then
 ####
 ####
 #### add, search
@@ -6377,7 +6334,7 @@ exit; fi
 #### :rutina-inicial-ntpdate-client:
 ####
 ####
-if   [ "$first_option" == "ntpdate-client" ]; then
+if [ "$first_option" == "date" ] || [ "$first_option" == "ntpdate-client" ]; then
 ####
 ####
 echo "$title_md [ $first_option ] \
@@ -6798,7 +6755,7 @@ exit; fi
 #### :rutina-inicial-speed-ip4:
 ####
 ####
-if   [ "$first_option" == "speed-ip4" ]; then
+if [ "$first_option" == "speed-ip4" ] || [ "$first_option" == "expert-speed-ip4" ]; then
 ####
 ####
 echo "$title_md [ $first_option ]  [ test speed ipv4 with iperf ] "
@@ -6829,7 +6786,7 @@ exit; fi
 #### :rutina-inicial-speed-ip6:
 ####
 ####
-if   [ "$first_option" == "speed-ip6" ]; then
+if [ "$first_option" == "speed-ip6" ] || [ "$first_option" == "expert-speed-ip6" ]; then
 ####
 ####
 echo "$title_md [ $first_option ]  [ test speed ipv6 with iperf ] "
