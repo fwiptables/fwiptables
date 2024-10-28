@@ -103,7 +103,7 @@ cmd_released="Year 20$cmd_year / Month $cmd_month"
 cmd_developer="Francisco Garcia"                              # Actual developer
 cmd_contact="fwiptables@gmx.com"                              # Actual contact
 cmd_shortdescription="FireWall With iptables"                 # Description short
-cmd_longdescription="iptables template in one script"         # Description long
+cmd_longdescription="iptables templates in one script"        # Description long
 cmd_requisite_program="awk,cat,cut,date,file,id,sed"          # Program requisite
 cmd_requisite_firewall4="iptables-legacy,iptables-nft"        # Firewall requisite
 cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"      # Firewall requisite
@@ -442,7 +442,7 @@ quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;
 #### :rutina-inicial-xhost:
 ####
 ####
-#### allow root launch gui graphical in X11
+#### allow root launch gui graphical in X11 with xhost
 ####
 ####
 if [ "$(logname)" != "$NULL" ] && [ "$(id -u)" == 0 ]; then
@@ -490,8 +490,10 @@ directory_cache_necesary="$directory_cache_home"
 ####
 #### Root .config
 directory_data_necesary="$default_root_home/.config/$cmd_filename"
+####
+####
 #### Tree .config
-default_directory_template="$directory_data_necesary/fwiptables-template"
+default_directory_template="$directory_data_necesary/fwiptables-templates"
 default_directory_control="$directory_data_necesary/fwiptables-control"
 default_directory_custom="$directory_data_necesary/fwiptables-custom"
 default_directory_preferences="$directory_data_necesary/fwiptables-preferences"
@@ -699,12 +701,16 @@ file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenbla
 ####
 #### sane preferences
 if [ ! -f "$file_default_preferences" ]
-then $cmd_internal preferences-example &> $file_default_preferences ; fi
+then touch $file_default_preferences ; fi
 ####
 ####
 #### load preferences
 if [ -f "$file_default_preferences" ] ;
 then source $file_default_preferences ; fi
+####
+####
+#### sane alias
+if [ ! -f "$file_default_alias" ]; then touch $file_default_alias ; fi
 ####
 ####
 #### prepare alias
@@ -728,19 +734,17 @@ if [ "$without_first_option" = "$NULL" ] ; then without_first_option="options" ;
 #### :rutina-final-variables-update-secondtime:
 ##########    english: Update first option               ##########
 ##########    spanish: Actualiza primera opción          ##########
-#### :rutina-inicial-option-whithout:
+#### :rutina-inicial-whithout-option:
 ####
 ####
 #### Without first option
-####
-####
 if [ "$first_option" = "$NULL" ]; then
 echo "### $text_info [ Default Option: $without_first_option ] [ List Options: options ]"
 echo "### $text_info [ Configure Default Option: $cmd_name preferences-edit ]"
 first_option="$without_first_option" ; fi
 ####
 ####
-#### :rutina-final-option-without:
+#### :rutina-final-without-option:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
 #### :rutina-inicial-variables-sane:
@@ -1542,9 +1546,7 @@ fi
 if [ "$first_option" == "logfiles" ] ; then
 ####
 ####
-echo 
 ls -1 $default_directory_logs
-echo
 echo 
 echo "### ### [ folder: ] [ $default_directory_logs ]"
 ####
