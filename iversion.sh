@@ -639,7 +639,7 @@ head_waiting_gui="$title_md $text_info [ gui ] $head_waiting_all "
 head_waiting_log="$title_md $text_info [ log ] $head_waiting_all "
 head_waiting_pdf="$title_md $text_info [ pdf ] $head_waiting_all "
 give_load="$title_md $text_ok [ Load firewall ] [ Firewall With iptables ]"
-give_preferences="$title_md [ Configure ] [ $cmd_internal preferences-modify ]"
+give_preferences="$title_md [ Configure ] [ $cmd_internal preferences-edit ]"
 message_without_support="[ Without support for output cli for this option ]"
 message_without_narrow="$title_md $text_fail [ narrow ] $message_without_support"
 message_without_txt="$title_md $text_fail [ txt ] $message_without_support"
@@ -743,7 +743,7 @@ if [ "$without_first_option" = "$NULL" ] ; then without_first_option="options" ;
 ####
 if [ "$first_option" = "$NULL" ]; then
 echo "### $text_info [ Default Option: $without_first_option ] [ List Options: options ]"
-echo "### $text_info [ Configure Default Option: $cmd_name preferences-modify ]"
+echo "### $text_info [ Configure Default Option: $cmd_name preferences-edit ]"
 first_option="$without_first_option" ; fi
 ####
 ####
@@ -1271,7 +1271,7 @@ esac ;
 case "$first_option" in
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|\
 "modify-custom")
 $cmd_internal templates-regen &> /dev/null ;; esac
 ####
@@ -1281,7 +1281,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|\
 "modify-custom") $cmd_internal $second_option $third_option ; exit ;; esac ; fi
 ####
 ####
@@ -1290,7 +1290,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|\
 "modify-custom") $cmd_internal $second_option $third_option ; exit ;; esac ; fi
 ####
 ####
@@ -1299,7 +1299,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|\
 "modify-custom") $cmd_internal $second_option $third_option ; exit ;; esac ; fi
 ####
 ####
@@ -1309,7 +1309,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|\
 "modify-custom") $cmd_internal templates-regen  &> /dev/null ;; esac ; fi
 ####
 ####
@@ -1318,7 +1318,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
 "$NULL"|"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|\
 "modify-custom")
 echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in log optional-output." ;
 exit ;; esac ; fi
@@ -1329,7 +1329,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
 "$NULL"|"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|\
 "modify-custom") 
 echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in pdf optional-output." ;
 exit ;; esac ; fi
@@ -1340,7 +1340,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
 "$NULL"|"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-modify"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|\
 "modify-custom")
 echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in silent optional-output." ;
 exit ;; esac ; fi
@@ -1961,12 +1961,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-wpaexample:
-##########    english: preferences-modify: modify preferences   ##########
-##########    spanish: preferences-modify: modify preferences   ##########
-#### :rutina-inicial-preferences-modify:
+##########    english: preferences-edit: modify preferences   ##########
+##########    spanish: preferences-edit: modify preferences   ##########
+#### :rutina-inicial-preferences-edit:
 ####
 ####
-if [ "$first_option" == "preferences-modify" ]; then 
+if [ "$first_option" == "preferences-edit" ]; then 
 echo "$cycle_header firewall $first_option"; echo
 ####
 ####
@@ -1978,7 +1978,7 @@ echo "$title_md $text_info [ file $file_default_preferences ]"
 exit; fi
 ####
 ####
-#### :rutina-final-preferences-modify:
+#### :rutina-final-preferences-edit:
 ##########    english: dialog-modify: modify dialog   ##########
 ##########    spanish: dialog-modify: modify dialog   ##########
 #### :rutina-inicial-dialog-modify:
@@ -2763,7 +2763,7 @@ echo "$text_md $text_md  $cmd_internal sockets             $text_md"
 echo "$text_md $text_md  Explain: List last options        $text_md"
 echo "$text_md $text_md  $cmd_internal logcmd              $text_md"   
 echo "$text_md $text_md  Explain: modify default variables $text_md"
-echo "$text_md $text_md  $cmd_internal preferences-modify  $text_md"  
+echo "$text_md $text_md  $cmd_internal preferences-edit  $text_md"  
 echo "$text_md $text_md"
 echo "$title_md $text_md [ With optional output ]          $text_md"  
 echo "$text_md $text_md  $text_md"
@@ -3618,7 +3618,7 @@ echo "$text_md server-lamp server-news server-ftp server-mail server-teamspeak $
 echo "$text_md server-mumble server-gateway server-sql server-samba server-proxy $text_md"
 echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net  $text_md"
 echo "$title_md    firewall-netsystem $text_md"
-echo "$text_md preferences-modify preferences-regen alias alias-regen options $text_md"
+echo "$text_md preferences-edit preferences-regen alias alias-regen options $text_md"
 echo "$text_md usernotes logfiles logcmd date resolve speed-ip4 speed-ip6 $text_md"
 echo "$text_md sockets ip ip4 ip6 network4 network6 address4 address6 $text_md"
 echo "$text_md free nodes ip-forward utils treeconf cleancache treecache $text_md"
@@ -3935,7 +3935,7 @@ if   [ "$first_option" == "firewall-netsystem" ]; then
 ####
 echo "$title_md | firewall-netsystem | $cmd_internal firewall-netsystem | $text_md"
 echo "$text_md $text_md preferences-read . show the preferences for fwiptables $text_md"
-echo "$text_md $text_md preferences-modify . modify the preferences for fwiptables $text_md"
+echo "$text_md $text_md preferences-edit . modify the preferences for fwiptables $text_md"
 echo "$text_md $text_md preferences-regen . recover the initials preferences for fwiptables $text_md"
 echo "$text_md $text_md alias . configure alias to first option $text_md"
 echo "$text_md $text_md options . list options $text_md"
@@ -7411,7 +7411,7 @@ $favorite_realpath_graphicalldialog --forms \
 ;;
 #### 
 ####
-"preferences-modify")
+"preferences-edit")
 archivo="default"
 cp $file_default_preferences $file_default_preferences.old
 $favorite_realpath_graphicalldialog  --text-info \
@@ -7622,9 +7622,9 @@ $cmd_internal -gui-zenity show-custom $unarchivo
 wizard-full*) $cmd_internal -gui-zenity wizard-full ;;
 wizard-mini*) $cmd_internal -gui-zenity wizard-mini ;;
 wizard-tiny*) $cmd_internal -gui-zenity wizard-tiny ;;
-preferences-modify*) 
+preferences-edit*) 
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_internal -gui-zenity preferences-modify 
+$cmd_internal -gui-zenity preferences-edit 
 ;;
 ####
 ####
@@ -7814,9 +7814,9 @@ $cmd_internal -gui-yad show-custom $unarchivo
 wizard-full*) $cmd_internal -gui-yad wizard-full ;;
 wizard-mini*) $cmd_internal -gui-yad wizard-mini ;;
 wizard-tiny*) $cmd_internal -gui-yad wizard-tiny ;;
-preferences-modify*)
+preferences-edit*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
-$cmd_internal -gui-yad preferences-modify 
+$cmd_internal -gui-yad preferences-edit 
 ;;
 ####
 ####
@@ -8358,7 +8358,7 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 002 "$title_md [ Info Options     ] $title_md" \
 003 "$title_md [ firewall netsystem ] $title_md" \
 011  "$text_md preferences-read" \
-012  "$text_md preferences-modify" \
+012  "$text_md preferences-edit" \
 013  "$text_md preferences-regen" \
 014  "$text_md logfiles" \
 015  "$text_md logcmd" \
@@ -8395,7 +8395,7 @@ case $menuprincipal in
 002) clear ; $cmd_internal $outcli options ;;
 003) clear ; $cmd_internal $outcli firewall-listnumeral ;;
 011) clear ; $cmd_internal $outcli preferences-read ;;
-012) clear ; $cmd_internal $outcli preferences-modify ;;
+012) clear ; $cmd_internal $outcli preferences-edit ;;
 013) clear ; $cmd_internal $outcli preferences-regen ;;
 014) clear ; $cmd_internal $outcli txt logfiles ;;
 015) clear ; $cmd_internal $outcli txt logcmd ;;
@@ -8560,7 +8560,7 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0621  "$text_md templates-regen" \
 0700 "$title_md [ firewall-netsystem ] $title_md" \
 0701  "$text_md preferences-read" \
-0702  "$text_md preferences-modify" \
+0702  "$text_md preferences-edit" \
 0703  "$text_md preferences-regen" \
 0704  "$text_md logfiles" \
 0705  "$text_md logcmd" \
@@ -8741,7 +8741,7 @@ $cmd_internal del-custom $archivo ;;
 0621) clear ; $cmd_internal txt templates-regen ;;
 ################################################################################
 0701) clear ; $cmd_internal $outcli preferences-read ;;
-0702) clear ; $cmd_internal txt preferences-modify ;;
+0702) clear ; $cmd_internal txt preferences-edit ;;
 0703) clear ; $cmd_internal $outcli preferences-regen ;;
 0704) clear ; $cmd_internal txt logfiles ;;
 0705) clear ; $cmd_internal txt logcmd ;;
@@ -9296,7 +9296,7 @@ then echo $message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
-preferences-modify|preferences-regen|preferences-example|\
+preferences-edit|preferences-regen|preferences-example|\
 options|info-options|expert|\
 address4|address6|network4|network6||sockets|\
 logfiles|logcmd|ip4|ip6|notes|speed-ip4|speed-ip6|\
@@ -9318,7 +9318,7 @@ case "$selection_final" in
 gui-principal-menu)$cmd_internal gui-roll-zenity ;;
 gui-info-menu)$cmd_internal -gui-zenity firewall-netsystem ;;
 preferences-read)$cmd_internal -gui-zenity preferences-read ;;
-preferences-modify)$cmd_internal -gui-zenity preferences-modify ;;
+preferences-edit)$cmd_internal -gui-zenity preferences-edit ;;
 preferences-regen)$cmd_internal -gui-zenity preferences-regen ;;
 preferences-example)$cmd_internal -gui-zenity preferences-example ;;
 options)$cmd_internal -gui-zenity options ;;
@@ -9879,7 +9879,7 @@ echo "$title_md The used gui in $first_option is $second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
-preferences-modify|preferences-regen|preferences-example|\
+preferences-edit|preferences-regen|preferences-example|\
 options|clasic-options|info-options|expert|download|intro|\
 ip4|ip6|speed-ip4|speed-ip6|notes|treeconf|treecache|cleancache|\
 license-lgpl-v2|license-gpl-v2|\
@@ -9905,7 +9905,7 @@ case "$selection_final" in
 gui-principal-menu*) $cmd_internal gui-menu-$second_option ;;
 gui-info-menu*)$cmd_internal gui-$second_option firewall-netsystem ;;
 preferences-read*)$cmd_internal gui-$second_option preferences-read ;;
-preferences-modify*)$cmd_internal gui-$second_option preferences-modify ;;
+preferences-edit*)$cmd_internal gui-$second_option preferences-edit ;;
 preferences-regen*)$cmd_internal gui-$second_option preferences-regen ;;
 preferences-example*)$cmd_internal gui-$second_option preferences-example ;;
 options*)$cmd_internal gui-$second_option options ;;
@@ -10131,7 +10131,7 @@ echo "$title_md $text_info [ Server with ports tcp $2 for host $3 ]"
 echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
 else
 echo "$text_info Introducction: Put the ports tcp servers"
-echo "$text_info Introducction: to client ports: see preferences-modify (miniclient ports)"
+echo "$text_info Introducction: to client ports: see preferences-edit (miniclient ports)"
 echo "$text_info Example_1: $cmd_internal miniserver-tcp 20:22,80"
 echo "$text_info Example_2: $cmd_internal miniserver-tcp 20:22,80 192.168.0.0/24"
 echo "$text_fail fwiptables $first_option no loaded"
@@ -10172,7 +10172,7 @@ echo "$title_md $text_info [ Server with ports udp $2 for host $3 ]"
 echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
 else
 echo "$text_info Introducction: Put the ports udp servers"
-echo "$text_info Introducction: to client ports: see preferences-modify (miniclient ports)"
+echo "$text_info Introducction: to client ports: see preferences-edit (miniclient ports)"
 echo "$text_info Example_1: $cmd_internal mioniserver-udp 20:22,80"
 echo "$text_info Example_2: $cmd_internal mioniserver-udp 20:22,80 192.168.0.0/24"
 echo "$text_fail fwiptables $first_option no loaded"
