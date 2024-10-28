@@ -691,13 +691,6 @@ file_blacklist_adaway="$default_directory_adblock/hosts.blacklist_adaway"
 file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenblack"
 ####
 ####
-#### config to expert-gen-usernotes
-####
-####
-first_user_notes="$(echo $second_option | cut -d "," -f 1)"
-second_user_notes="$(echo $third_option | cut -d "," -f 1)"
-####
-####
 #### :rutina-final-variables-misc:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
@@ -5699,25 +5692,31 @@ exit; fi
 if [ "$first_option" == "expert-gen-usernotes" ] || [ "$first_option" == "usernotes" ] ;  then
 ####
 ####
-#### add, search
-if [ "$$second_user_notes" != "$NULL" ]; then
-if [ "$first_user_notes" == "add" ] || [ "$first_user_notes" == "a" ];
-then echo "Content added: $second_user_notes" ; 
-echo $cmd_usernotes_date,$second_user_notes >> $file_default_usernotes; exit; fi
-if [ "$first_user_notes" == "search" ] || [ "$first_user_notes" == "s" ];
+#### config to expert-gen-usernotes
+####
+####
+first_user_notes="$(echo $second_option | cut -d ',' -f 1)"
+second_user_notes="$(echo $third_option | cut -d ',' -f 1)"
+####
+####
+#### add
+if [ "$first_user_notes" == "add" ] || [ "$first_user_notes" == "a" ]
+then echo $cmd_usernotes_date,$second_user_notes >> $file_default_usernotes
+echo "Content added: $second_user_notes" ; exit; fi
+#### search
+if [ "$first_user_notes" == "search" ] || [ "$first_user_notes" == "s" ]
 then echo "List searched" ; 
 $command_cat $file_default_usernotes | $command_grep -i $second_user_notes ; exit; fi
-fi
-#### edit, list content, lines numbers
-if [ "$first_user_notes" == "edit" ] || [ "$first_user_notes" == "e" ];
-then $favorite_text_editor $file_default_usernotes ; exit ; fi
-if [ "$first_user_notes" == "list" ] || [ "$first_user_notes" == "l" ];
+#### list
+if [ "$first_user_notes" == "list" ] || [ "$first_user_notes" == "l" ]
 then echo "List content:"; $command_cat $file_default_usernotes; exit; fi
-if [ "$first_user_notes" == "lines" ] || [ "$first_user_notes" == "n" ];
+#### lines
+if [ "$first_user_notes" == "lines" ] || [ "$first_user_notes" == "n" ]
 then echo "Lines numbers:" ; $command_cat $file_default_usernotes | $command_wc -l ; exit; fi
-#### other options
-echo " # Option: add|a search|s edit|e list|l number-lines|n"
-echo " # info: Use without comma, and quote when spaces: to add, to del, to search"
+#### info
+echo " # Option: add|a search|s list|l number-lines|n"
+echo " # Info: Use without comma, and quote when spaces: to add, to search"
+echo " # File: $file_default_usernotes"
 #### 
 ####
 exit; fi
