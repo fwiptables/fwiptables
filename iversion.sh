@@ -5702,7 +5702,7 @@ if [ "$first_option" == "expert-gen-usernotes" ] || [ "$first_option" == "userno
 #### add, search
 if [ "$$second_user_notes" != "$NULL" ]; then
 if [ "$first_user_notes" == "add" ] || [ "$first_user_notes" == "a" ];
-then echo "list added: $second_user_notes" ; 
+then echo "Content added: $second_user_notes" ; 
 echo $cmd_usernotes_date,$second_user_notes >> $file_default_usernotes; exit; fi
 if [ "$first_user_notes" == "search" ] || [ "$first_user_notes" == "s" ];
 then echo "List searched" ; 
@@ -5714,7 +5714,7 @@ then $favorite_text_editor $file_default_usernotes ; exit ; fi
 if [ "$first_user_notes" == "list" ] || [ "$first_user_notes" == "l" ];
 then echo "List content:"; $command_cat $file_default_usernotes; exit; fi
 if [ "$first_user_notes" == "lines" ] || [ "$first_user_notes" == "n" ];
-then echo "Line numbers:" ; $command_cat $file_default_usernotes | $command_wc -l ; exit; fi
+then echo "Lines numbers:" ; $command_cat $file_default_usernotes | $command_wc -l ; exit; fi
 #### other options
 echo " # Option: add|a search|s edit|e list|l number-lines|n"
 echo " # info: Use without comma, and quote when spaces: to add, to del, to search"
