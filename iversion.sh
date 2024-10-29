@@ -605,8 +605,8 @@ default_fullcfg_spa="$default_directory_template/default-full-spanish.cfg"
 #### config files default
 file_default_preferences="$default_directory_preferences/default-preferences-$cmd_version"
 file_default_alias="$default_directory_preferences/default-alias-$cmd_version"
-file_default_usernotes="$default_directory_preferences/default-usernotes"
 file_default_logcmd="$default_directory_logcmd/default-logcmd-$cmd_version"
+file_default_usernotes="$default_directory_preferences/default-usernotes"
 ####
 #### config output files
 file_output_pdf="$default_directory_pdf/$cmd_pdf_date-$cmd_guided_full.pdf"
@@ -1383,9 +1383,9 @@ exit ; fi
 if [ "$allow_save_logcmd" != "no" ]
 ####
 ####
-then head_logcmd="date: $cmd_logcmd_date \
-path: $cmd_internal ver: $cmd_version \
-opt: $first_option $second_option $third_option"
+then head_logcmd="date: $cmd_logcmd_date path: $cmd_internal \
+ver: $cmd_version opt: $cmd_guided_full"
+####
 echo $head_logcmd >> $file_default_logcmd
 ####
 ####
