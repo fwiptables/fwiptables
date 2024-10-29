@@ -1431,7 +1431,7 @@ fi
 if [ "$first_option" == "tree-log" ] ; then
 ####
 ####
-ls -1 $default_directory_logs
+tree $default_directory_logs
 echo 
 echo "### ### [ folder: ] [ $default_directory_logs ]"
 ####
@@ -1448,7 +1448,7 @@ exit; fi
 if [ "$first_option" == "tree-pdf" ] ; then
 ####
 ####
-ls -1 $default_directory_pdf
+tree $default_directory_pdf
 echo 
 echo "### ### [ folder: ] [ $default_directory_pdf ]"
 ####
