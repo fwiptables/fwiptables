@@ -119,11 +119,11 @@ cmd_format=$(file $0 | \
 awk '{print $2 "_" $3 "_" $4}')                               # File format
 #### info date logs var in log,logcmd,..
 cmd_get_date="$(date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"            # how format date
-cmd_cache_date="$cmd_get_date"                                # how cache date
-cmd_logcmd_date="$cmd_get_date"                               # how pdf date
-cmd_log_date="LOG_$cmd_get_date-_OPT_"                        # how opt date
-cmd_pdf_date="PDF_$cmd_get_date-_OPT_"                        # how opt date
-cmd_usernotes_date="$cmd_get_date"                            # how usernotes date
+cmd_logcmd_date="$cmd_get_date"                               # format pdf date
+cmd_usernotes_date="$cmd_get_date"                            # format usernotes date
+cmd_cache_date="CACHE_$cmd_get_date-_OPT_"                    # format cache date
+cmd_log_date="LOG_$cmd_get_date-_OPT_"                        # format opt date
+cmd_pdf_date="PDF_$cmd_get_date-_OPT_"                        # format opt date
 ####
 ####
 #### ########## ########## ##########
@@ -444,6 +444,8 @@ second_option="$(echo $2 | $command_sed s/\\///g -)" ;
 third_option="$(echo $3 | $command_sed s/\\///g -)"  ;
 #### #### english: variable without "/"  #### spanish: variable sin "/"
 quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;
+#### #### english: variable without "/"  #### spanish: variable sin "/"
+cmd_guided_full="$(echo $1-$2-$3-$4 | $command_sed s/\\///g -)"  ;
 ####
 ####
 #### :rutina-final-options-order:
@@ -488,7 +490,7 @@ else default_root_home="$HOME"; fi
 ####
 ####
 directory_cache_run="/run/$cmd_filename"  ### ununsed
-directory_cache_home="$default_root_home/.cache/$cmd_filename"
+directory_cache_home="$default_root_home/.cache/$cmd_filename"  ### used
 ####
 ####
 #### #### variables tree and .cache ####
@@ -606,14 +608,10 @@ file_default_alias="$default_directory_preferences/default-alias-$cmd_version"
 file_default_usernotes="$default_directory_preferences/default-usernotes"
 file_default_logcmd="$default_directory_logcmd/default-logcmd-$cmd_version"
 ####
-####
-#### config temporal files
-temporal_text="$directory_cache_necesary/$cmd_opt_date-text.txt"
-temporal_textfinal="$directory_cache_necesary/$cmd_opt_date-text-final.txt"
-temporal_gui="$directory_cache_necesary/$cmd_opt_date-textfinal.txt"
-temporal_guifinal="$directory_cache_necesary/$cmd_opt_date-text-final.txt"
-output_log="$directory_cache_necesary/$cmd_opt_date-textfinal.txt"
-output_logfinal="$directory_cache_necesary/$cmd_opt_date-text-final.txt"
+#### config output files
+file_output_pdf="$default_directory_pdf/$cmd_pdf_date-$cmd_guided_full.pdf"
+file_output_log="$default_directory_logs/$cmd_log_date-$cmd_guided_full.log"
+file_output_cache="$directory_cache_necesary/$cmd_cache_date-$cmd_guided_full.txt"
 ####
 ####
 #### config file adblock
@@ -1118,7 +1116,7 @@ second_option="$favorite_basename_graphicalldialog"
 "gui-menu-yad")
 favorite_realpath_graphicalldialog="$command_yad" ; 
 favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
-first_option="gui-menu" 
+first_option="gui-menu"
 second_option="$favorite_basename_graphicalldialog"
 ;;
 "gui-roll")
@@ -1146,14 +1144,14 @@ esac
 ####
 #### supress error messages
 case $first_option in 
-"ls4") $cmd_internal list4 &> $temporal_text-list4
-$command_cat $temporal_text-list4 | $command_grep -E -v Warning: ; exit ;;
-"ls6") $cmd_internal list6 &> $temporal_text-list6
-$command_cat $temporal_text-list6 | $command_grep -E -v Warning: ; exit ;;
-"lsn4") $cmd_internal listn4 &> $temporal_text-listn4
-$command_cat $temporal_text-listn4 | $command_grep -E -v Warning: ; exit ;;
-"lsn6") $cmd_internal listn6 &> $temporal_text-listn6
-$command_cat $temporal_text-listn6 | $command_grep -E -v Warning: ; exit ;;
+"ls4") $cmd_internal list4   &> $file_output_cache
+$command_cat $file_output_cache | $command_grep -E -v Warning: ; exit ;;
+"ls6") $cmd_internal list6   &> $file_output_cache
+$command_cat $file_output_cache | $command_grep -E -v Warning: ; exit ;;
+"lsn4") $cmd_internal listn4 &> $file_output_cache
+$command_cat $file_output_cache | $command_grep -E -v Warning: ; exit ;;
+"lsn6") $cmd_internal listn6 &> $file_output_cache
+$command_cat $file_output_cache | $command_grep -E -v Warning: ; exit ;;
 esac ; 
 ####
 ####
@@ -1257,24 +1255,24 @@ if [ "$first_option" == "narrowtxt" ] ;then echo "$head_waiting_narrow"
 ####
 ####
 case $second_option in 
-ls*|list*) $cmd_internal $second_option &> $temporal_text 
-$command_cat  $temporal_text | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
+ls*|list*) $cmd_internal $second_option &> $file_output_cache
+$command_cat  $file_output_cache | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $10 " " $11 " " $12 " " \
 $13 " " $14 " " $15 " " $16 " " $17 " " $18 \
-" " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' &> $temporal_textfinal
-$command_cat  $temporal_textfinal | $command_grep -E -v Warning: ; exit ;;
+" " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' &> $file_output_cache
+$command_cat  $file_output_cache | $command_grep -E -v Warning: ; exit ;;
 "$NULL") $cmd_internal \
 | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $11 " " $12 " " \
 $13 " " $14 " " $15 " " $16 " " $17 " " $18 \
-" " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' &> $temporal_text
-$command_cat  $temporal_text | $command_grep -E -v Warning: ; exit ;;
+" " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' &> $file_output_cache
+$command_cat  $file_output_cache | $command_grep -E -v Warning: ; exit ;;
 *) $cmd_internal $second_option $third_option $quad_option \
 | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $10 " " $11 " " $12 " " \
 $13 " " $14 " " $15 " " $16 " " $17 " " $18 \
-" " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' &> $temporal_text
-$command_cat  $temporal_text | $command_grep -E -v Warning: ; exit ;;
+" " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' &> $file_output_cache
+$command_cat  $file_output_cache | $command_grep -E -v Warning: ; exit ;;
 #### *) echo "$title_md Narrow option works only to list rules" ;; 
 esac
 ####
@@ -1295,8 +1293,8 @@ if [ "$first_option" == "txt" ]; then echo "$head_waiting_txt"
 ####
 ####
 case $second_option in 
-ls*|list*) $cmd_internal $second_option $third_option &> $temporal_text
-$command_cat  $temporal_text | $command_grep -E -v Warning: ; exit ;;
+ls*|list*) $cmd_internal $second_option $third_option &> $file_output_cache
+$command_cat  $file_output_cache | $command_grep -E -v Warning: ; exit ;;
 *) $cmd_internal $second_option $third_option $quad_option ; exit ;; esac ; fi
 ####
 ####
@@ -1316,8 +1314,6 @@ if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$text_md $text_info Please install or dialog or whiptail to work with cli"
 exit; fi
 ####
-#### --clear --notags
-#### thebox="$($cmd_internal txt $second_option $third_option)"
 ####
 #### --clear --notags
 case $second_option in 
@@ -1327,11 +1323,7 @@ ls*|list*) $favorite_basename_textdialog --clear --notags \
 *) $favorite_basename_textdialog --clear --notags \
 --title "Cli Menu With $cmd_version" \
 --msgbox "$($cmd_internal $second_option $third_option $quad_option)" 0 0 ; exit ;;
-#### *) echo "$title_md cli works only with list options" ; exit ;;
 esac ; fi
-####
-####
-#### $cmd_internal text-pause ; clear ; exit ; fi
 ####
 ####
 #### :rutina-final-alias-cli:
@@ -1347,12 +1339,9 @@ if [ "$first_option" == "log" ]
 ####
 ####
 then echo "$head_waiting_log"
-echo "### ### $text_info [ $second_option $third_option $quad_option ] \
-[ $cmd_log_date ]" &> $output_log
-$cmd_internal $second_option $third_option $quad_option &> $output_log
-$command_cat  $output_log | $command_grep -E -v Warning: \
-&> $default_directory_logs/$cmd_log_date-$second_option.txt
-echo "$title_md [ file ]  $default_directory_logs/$cmd_log_date-$second_option.txt"
+$cmd_internal $second_option $third_option $quad_option &> $file_output_log
+$command_cat $file_output_log | $command_grep -E -v Warning: &> $file_output_log
+echo "$title_md [ file ] $file_output_log"
 ####
 ####
 exit ; fi
@@ -1370,9 +1359,9 @@ echo "$title_md install imagemagick to print pdf to $default_directory_pdf" ; ex
 echo "$head_waiting_pdf"
 sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &> /dev/null
 #### send print to home output fwiptables.pdf
-$cmd_internal $second_option $third_option $quad_option | $command_convert -page A3 text:- \
-$default_directory_pdf/$cmd_pdf_date-$second_option.pdf 
-echo "$title_md [ file ] $default_directory_pdf/$cmd_pdf_date-$second_option.pdf"
+$cmd_internal $second_option $third_option $quad_option | \
+$command_convert -page A3 text:- $file_output_pdf.pdf
+echo "$title_md [ file ] $file_output_pdf.pdf"
 ####
 ####
 exit ; fi
@@ -5322,7 +5311,7 @@ if [ "$first_option" == "modify-custom" ]; then
 ###
 if [ ! -f "$default_directory_custom/$second_option" ] ; then
 $cmd_internal names-custom
-echo "$text_md $text_info [ usage: ] [ $cmd_internal modify-custom config-existent ]"
+echo "$text_md $text_info [ usage: ] [ $cmd_internal modify-custom config ]"
 exit; fi
 ####
 ####
@@ -6151,13 +6140,13 @@ if [ "$command_uuid" == "$NULL" ]
 then echo "$title_md install uuid to compile"; exit ; fi
 if [ "$cmd_format" != "Bourne-Again_shell_script," ]
 then echo "$title_md the $cmd_name is not Bourne-Again_shell_script," ; exit ; fi
-obash_file_date="$default_directory_obash/$cmd_name-$cmd_version"
-cp $0 $obash_file_date.bash
-$command_obash -r -c -o $obash_file_date.bin $obash_file_date.bash \
+obash_file_update="$default_directory_obash/$cmd_name-$cmd_version"
+cp $0 $obash_file_update.bash
+$command_obash -r -c -o $obash_file_update.bin $obash_file_update.bash \
 && echo "$title_md $text_ok" || echo "$title_md $text_fail"
 echo ; echo "$title_md And now list:"
-file -L $obash_file_date.bash
-file -L $obash_file_date.bin
+file -L $obash_file_update.bash
+file -L $obash_file_update.bin
 ####
 ####
 exit; fi
@@ -7276,11 +7265,11 @@ $favorite_realpath_graphicalldialog --forms \
 ;;
 ####
 ####
-*)$cmd_internal "$second_option" "$third_option" "$quad_option" &> "$temporal_guifinal"
+*)$cmd_internal "$second_option" "$third_option" "$quad_option" &> "$file_temporal_gui"
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Gui-Output-$cmd_internal \
---filename="$temporal_guifinal" --auto-scroll ;;
+--filename="$file_temporal_gui" --auto-scroll ;;
 #### 
 #### 
 esac
@@ -7303,11 +7292,11 @@ case $second_option in
 #### 
 ####
 list*)$cmd_internal txt $second_option $third_option \
-$quad_option &> $temporal_guifinal
+$quad_option &> $file_temporal_gui
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Gui-Output-$cmd_internal \
---filename=$temporal_guifinal --auto-scroll ;;
+--filename=$file_temporal_gui --auto-scroll ;;
 ####
 ####
 "wizard-tiny")
@@ -7412,11 +7401,11 @@ $favorite_realpath_graphicalldialog  --info \
 ####
 ####
 *)$cmd_internal txt $second_option $third_option \
-$quad_option &> $temporal_guifinal
+$quad_option &> $file_temporal_gui
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Gui-Output-$cmd_internal \
---filename=$temporal_guifinal --auto-scroll
+--filename=$file_temporal_gui --auto-scroll
 ;;
 #### 
 #### 
@@ -7438,11 +7427,11 @@ if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
 echo "$title_md there is not graphicall dialog" ; exit ; fi
 ####
 ####
-$cmd_internal txt $second_option $third_option &> $temporal_guifinal
+$cmd_internal txt $second_option $third_option &> $file_temporal_gui
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Gui-Output-$cmd_internal \
---filename=$temporal_guifinal --auto-scroll 
+--filename=$file_temporal_gui --auto-scroll 
 ####
 ####
 exit; fi
@@ -7622,13 +7611,12 @@ $cmd_internal -gui-zenity alias-edit
 ####
 ####
 "$NULL")  exit ;;
-*) fecha_temporal="$cmd_get_date"
-$cmd_internal $menugtk &> /tmp/fwiptables-$fecha_temporal
+*) fecha_temporal="$directory_necesary_cache/$cmd_cache_date"
+$cmd_internal $menugtk &> $fecha_temporal
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=$cmd_internal-gui-shell \
---filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
-rm /tmp/fwiptables-$fecha_temporal
+--filename=$fecha_temporal --auto-scroll
 ;;
 esac
 $cmd_internal gui-shell-zenity
