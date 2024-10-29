@@ -7260,11 +7260,11 @@ $favorite_realpath_graphicalldialog --forms \
 ;;
 ####
 ####
-*)$cmd_internal "$second_option" "$third_option" "$quad_option" &> "$file_temporal_gui"
+*)$cmd_internal "$second_option" "$third_option" "$quad_option" &> $file_output_cache
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Gui-Output-$cmd_internal \
---filename="$file_temporal_gui" --auto-scroll ;;
+--filename="$file_output_cache" --auto-scroll ;;
 #### 
 #### 
 esac
@@ -7287,11 +7287,11 @@ case $second_option in
 #### 
 ####
 list*)$cmd_internal txt $second_option $third_option \
-$quad_option &> $file_temporal_gui
+$quad_option &> $file_output_cache
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Gui-Output-$cmd_internal \
---filename=$file_temporal_gui --auto-scroll ;;
+--filename=$file_output_cache --auto-scroll ;;
 ####
 ####
 "wizard-tiny")
@@ -7396,11 +7396,11 @@ $favorite_realpath_graphicalldialog  --info \
 ####
 ####
 *)$cmd_internal txt $second_option $third_option \
-$quad_option &> $file_temporal_gui
+$quad_option &> $file_output_cache
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Gui-Output-$cmd_internal \
---filename=$file_temporal_gui --auto-scroll
+--filename=$file_output_cache --auto-scroll
 ;;
 #### 
 #### 
@@ -7422,11 +7422,11 @@ if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
 echo "$title_md there is not graphicall dialog" ; exit ; fi
 ####
 ####
-$cmd_internal txt $second_option $third_option &> $file_temporal_gui
+$cmd_internal txt $second_option $third_option &> $file_output_cache
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=Gui-Output-$cmd_internal \
---filename=$file_temporal_gui --auto-scroll 
+--filename=$file_output_cache --auto-scroll 
 ####
 ####
 exit; fi
@@ -7606,12 +7606,11 @@ $cmd_internal -gui-zenity alias-edit
 ####
 ####
 "$NULL")  exit ;;
-*) fecha_temporal="$directory_necesary_cache/$cmd_cache_date"
-$cmd_internal $menugtk &> $fecha_temporal
+*) $cmd_internal $menugtk &> $file_output_cache
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=$cmd_internal-gui-shell \
---filename=$fecha_temporal --auto-scroll
+--filename=$file_output_cache --auto-scroll
 ;;
 esac
 $cmd_internal gui-shell-zenity
@@ -7800,13 +7799,11 @@ $cmd_internal -gui-yad alias-edit
 #### spanish: las demas opciones   ####
 ####
 ####
-*) fecha_temporal="$cmd_get_date"
-$cmd_internal $menugtk &> /tmp/fwiptables-$fecha_temporal
+*) $cmd_internal $menugtk &> $file_output_cache
 $command_yad --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --title=$cmd_internal-gui-shelL-$menugtk \
---filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
-rm /tmp/fwiptables-$fecha_temporal ;;
+--filename=$file_output_cache --auto-scroll
 esac
 $cmd_internal gui-shell-yad
 ####
