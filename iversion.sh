@@ -1943,8 +1943,10 @@ echo "#wallsystem=firewall-wallsystem"
 echo "#netsystem=firewall-netsystem"
 echo "#easy=firewall-netsystem"
 echo "#expert=options-expert"
-echo "#list-allrules=list-alltables"
 echo "#examples=options-examples"
+echo "#list-allrules=list-alltables"
+echo "#preferences-modify=preferences-edit"
+echo "#alias-modify=alias-edit"
 echo "#ver=version"
 echo "#all-names=names"
 echo "#ram-free=free"
@@ -1965,9 +1967,9 @@ if [ "$first_option" == "alias-edit" ]; then
 echo "$cycle_header firewall $first_option"; echo
 ####
 ####
-echo "$title_md [ $first_option ] [ modify the default preferences ]"
-$favorite_text_editor $file_default_preferences
-echo "$title_md $text_info [ file $file_default_preferences ]"
+echo "$title_md [ $first_option ] [ modify the default alias ]"
+$favorite_text_editor $file_default_alias
+echo "$title_md $text_info [ file $file_default_alias ]"
 ####
 ####
 exit; fi
@@ -3926,11 +3928,12 @@ if   [ "$first_option" == "firewall-netsystem" ]; then
 ####
 ####
 echo "$title_md | firewall-netsystem | $cmd_internal firewall-netsystem | $text_md"
-echo "$text_md $text_md preferences-read . show the preferences for fwiptables $text_md"
-echo "$text_md $text_md preferences-edit . modify the preferences for fwiptables $text_md"
-echo "$text_md $text_md preferences-regen . recover the initials preferences for fwiptables $text_md"
-echo "$text_md $text_md alias-read . read alias to first option $text_md"
-echo "$text_md $text_md alias-edit . configure alias to first option $text_md"
+echo "$text_md $text_md preferences-read . show the preferences $text_md"
+echo "$text_md $text_md preferences-edit . modify the preferences $text_md"
+echo "$text_md $text_md preferences-regen . recover the initials preferences $text_md"
+echo "$text_md $text_md alias-read . read alias in first option $text_md"
+echo "$text_md $text_md alias-edit . configure alias in first option $text_md"
+echo "$text_md $text_md alias-regen . recover initials alias in first option $text_md"
 echo "$text_md $text_md options . list options $text_md"
 echo "$text_md $text_md info-options . list details for the options $text_md"
 echo "$text_md $text_md info . details from one first option from one pattern $text_md"
@@ -8386,19 +8389,22 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 011  "$text_md preferences-read" \
 012  "$text_md preferences-edit" \
 013  "$text_md preferences-regen" \
-014  "$text_md logfiles" \
-015  "$text_md logcmd" \
-016  "$text_md ip4" \
-017  "$text_md ip6" \
-018  "$text_md speed-ip4" \
-019  "$text_md speed-ip6" \
-020  "$text_md sockets" \
-021  "$text_md notes" \
-022  "$text_md license" \
-025  "$text_md depends" \
-026  "$text_md info" \
-027  "$text_md version" \
-028  "$text_md options" \
+014  "$text_md alias-read" \
+015  "$text_md alias-edit" \
+016  "$text_md alias-regen" \
+017  "$text_md logfiles" \
+018  "$text_md logcmd" \
+019  "$text_md ip4" \
+020  "$text_md ip6" \
+021  "$text_md speed-ip4" \
+022  "$text_md speed-ip6" \
+023  "$text_md sockets" \
+024  "$text_md notes" \
+025  "$text_md license" \
+026  "$text_md depends" \
+027  "$text_md info" \
+028  "$text_md version" \
+029  "$text_md options" \
 030  "$text_md info-options" \
 031  "$text_md nodes" \
 032  "$text_md date" \
@@ -8421,24 +8427,24 @@ case $menuprincipal in
 002) clear ; $cmd_internal $outcli options ;;
 003) clear ; $cmd_internal $outcli firewall-listnumeral ;;
 011) clear ; $cmd_internal $outcli preferences-read ;;
-012) clear ; $cmd_internal $outcli preferences-edit ;;
+012) clear ; $cmd_internal preferences-edit ;;
 013) clear ; $cmd_internal $outcli preferences-regen ;;
-014) clear ; $cmd_internal $outcli txt logfiles ;;
-015) clear ; $cmd_internal $outcli txt logcmd ;;
-016) clear ; $cmd_internal $outcli ip4 ;;
-017) clear ; $cmd_internal $outcli ip6 ;;
-018) clear ; $cmd_internal $outcli speed-ip4 ;;
-019) clear ; $cmd_internal $outcli speed-ip6 ;;
-020) clear ; $cmd_internal $outcli sockets ;;
-021) clear ; $cmd_internal $outcli notes ;;
-022) clear ; $cmd_internal $outcli license ;;
-### 0713) clear ; $cmd_internal cli about ;;
-### 0714) clear ; $cmd_internal cli examples ;;
-025) clear ; $cmd_internal $outcli depends ;;
-026) clear ; $cmd_internal $outcli info ;;
-027) clear ; $cmd_internal $outcli version ;;
-028) clear ; $cmd_internal $outcli options ;;
-### 0719) clear ; $cmd_internal cli clasic-options ;;
+014) clear ; $cmd_internal $outcli alias-read ;;
+015) clear ; $cmd_internal alias-edit ;;
+016) clear ; $cmd_internal $outcli alias-regen ;;
+017) clear ; $cmd_internal $outcli txt logfiles ;;
+018) clear ; $cmd_internal $outcli txt logcmd ;;
+019) clear ; $cmd_internal $outcli ip4 ;;
+020) clear ; $cmd_internal $outcli ip6 ;;
+021) clear ; $cmd_internal $outcli speed-ip4 ;;
+022) clear ; $cmd_internal $outcli speed-ip6 ;;
+023) clear ; $cmd_internal $outcli sockets ;;
+024) clear ; $cmd_internal $outcli notes ;;
+025) clear ; $cmd_internal $outcli license ;;
+026) clear ; $cmd_internal $outcli depends ;;
+027) clear ; $cmd_internal $outcli info ;;
+028) clear ; $cmd_internal $outcli version ;;
+029) clear ; $cmd_internal $outcli options ;;
 030) clear ; $cmd_internal $outcli info-options ;;
 031) clear ; $cmd_internal $outcli nodes ;;
 032) clear ; $cmd_internal $outcli date ;;
@@ -8588,20 +8594,23 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0701  "$text_md preferences-read" \
 0702  "$text_md preferences-edit" \
 0703  "$text_md preferences-regen" \
-0704  "$text_md logfiles" \
-0705  "$text_md logcmd" \
-0706  "$text_md ip4" \
-0707  "$text_md ip6" \
-0708  "$text_md speed-ip4" \
-0709  "$text_md speed-ip6" \
-0710  "$text_md sockets" \
-0711  "$text_md notes" \
-0712  "$text_md license" \
+0704  "$text_md alias-read" \
+0705  "$text_md alias-edit" \
+0706  "$text_md alias-regen" \
+0707  "$text_md logfiles" \
+0708  "$text_md logcmd" \
+0709  "$text_md ip4" \
+0710  "$text_md ip6" \
+0711  "$text_md speed-ip4" \
+0712  "$text_md speed-ip6" \
+0713  "$text_md sockets" \
+0714  "$text_md notes" \
+0715  "$text_md license" \
 0715  "$text_md depends" \
 0716  "$text_md info" \
 0717  "$text_md version" \
 0718  "$text_md options" \
-0720  "$text_md options" \
+0719  "$text_md info-options" \
 0721  "$text_md nodes" \
 0722  "$text_md date" \
 0723  "$text_md free" \
@@ -8767,24 +8776,24 @@ $cmd_internal del-custom $archivo ;;
 0621) clear ; $cmd_internal txt templates-regen ;;
 ################################################################################
 0701) clear ; $cmd_internal $outcli preferences-read ;;
-0702) clear ; $cmd_internal txt preferences-edit ;;
+0702) clear ; $cmd_internal preferences-edit ;;
 0703) clear ; $cmd_internal $outcli preferences-regen ;;
-0704) clear ; $cmd_internal txt logfiles ;;
-0705) clear ; $cmd_internal txt logcmd ;;
-0706) clear ; $cmd_internal $outcli ip4 ;;
-0707) clear ; $cmd_internal $outcli ip6 ;;
-0708) clear ; $cmd_internal $outcli speed-ip4 ;;
-0709) clear ; $cmd_internal $outcli speed-ip6 ;;
-0710) clear ; $cmd_internal $outcli sockets ;;
-0711) clear ; $cmd_internal $outcli notes ;;
-0712) clear ; $cmd_internal $outcli license ;;
-### 0713) clear ; $cmd_internal cli about ;;
-### 0714) clear ; $cmd_internal cli examples ;;
-0715) clear ; $cmd_internal $outcli depends ;;
-0716) clear ; $cmd_internal $outcli info ;;
-0717) clear ; $cmd_internal $outcli version ;;
-0718) clear ; $cmd_internal $outcli options ;;
-### 0719) clear ; $cmd_internal cli clasic-options ;;
+0704) clear ; $cmd_internal $outcli alias-read ;;
+0705) clear ; $cmd_internal alias-edit ;;
+0706) clear ; $cmd_internal $outcli alias-regen ;;
+0707) clear ; $cmd_internal txt logfiles ;;
+0708) clear ; $cmd_internal txt logcmd ;;
+0709) clear ; $cmd_internal $outcli ip4 ;;
+0710) clear ; $cmd_internal $outcli ip6 ;;
+0711) clear ; $cmd_internal $outcli speed-ip4 ;;
+0712) clear ; $cmd_internal $outcli speed-ip6 ;;
+0713) clear ; $cmd_internal $outcli sockets ;;
+0714) clear ; $cmd_internal $outcli notes ;;
+0715) clear ; $cmd_internal $outcli license ;;
+0716) clear ; $cmd_internal $outcli depends ;;
+0717) clear ; $cmd_internal $outcli info ;;
+0718) clear ; $cmd_internal $outcli version ;;
+0719) clear ; $cmd_internal $outcli options ;;
 0720) clear ; $cmd_internal $outcli info-options ;;
 0721) clear ; $cmd_internal $outcli nodes ;;
 0722) clear ; $cmd_internal $outcli date ;;
