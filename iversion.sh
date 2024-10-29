@@ -3573,7 +3573,7 @@ echo "$text_md server-lamp server-news server-ftp server-mail server-teamspeak $
 echo "$text_md server-mumble server-gateway server-sql server-samba server-proxy $text_md"
 echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net  $text_md"
 echo "$title_md    firewall-netsystem $text_md"
-echo "$text_md preferences-read preferences-edit alias-edit options $text_md"
+echo "$text_md preferences-edit alias-edit options info-options $text_md"
 echo "$text_md usernotes logfiles logcmd date resolve speed-ip4 speed-ip6 $text_md"
 echo "$text_md sockets ip ip4 ip6 network4 network6 address4 address6 $text_md"
 echo "$text_md free nodes ip-forward utils treeconf cleancache treecache $text_md"
