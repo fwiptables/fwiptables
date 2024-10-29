@@ -152,11 +152,19 @@ web_download_github=\
 web_download_devuan=\
 "https://git.devuan.org/fwiptables/fwiptables/releases" ;
 git_listado_sourceforge=\
-"https://sourceforge.net/p/f-iptables/code/ci/main/tree/"
+"https://sourceforge.net/p/f-iptables/code/ci/main/tree/" ;
 git_download_sourceforge=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/iversion.sh?format=raw" ;
 web_download_myradio=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/myradio-bash?format=raw" ;
+web_blacklist_fademind=\
+"https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts" ;
+web_blacklist_mvps=\
+"http://winhelp2002.mvps.org/hosts.txt" ;
+web_blacklist_adaway=\
+"https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt" ;
+web_blacklist_stevenblack=\
+"https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts" ;
 ####
 ####
 #### :rutina-final-web-official:
@@ -484,15 +492,15 @@ directory_cache_home="$default_root_home/.cache/$cmd_filename"
 #### #### variables tree and .cache ####
 ####
 ####
-#### Root .cache 
+#### cache 
 directory_cache_necesary="$directory_cache_home"
 ####
 ####
-#### Root .config
+#### config
 directory_data_necesary="$default_root_home/.config/$cmd_filename"
 ####
 ####
-#### Tree .config
+#### config
 default_directory_template="$directory_data_necesary/fwiptables-templates"
 default_directory_control="$directory_data_necesary/fwiptables-control"
 default_directory_custom="$directory_data_necesary/fwiptables-custom"
@@ -512,53 +520,6 @@ default_directory_readme="$directory_data_necesary/fwiptables-readme"
 ####
 ####
 #### :rutina-final-config-folders:
-##########   english: if sane config directory                       ##########
-##########   spanish: comprobar sanos directorios de configuracion   ##########
-#### :rutina-inicial-configs-files:
-####
-####
-#### english: templates cfg
-#### spanish: plantillas cfg
-####
-####
-default_tinycfg_eng="$default_directory_template/default-tiny-english.cfg"
-default_tinycfg_spa="$default_directory_template/default-tiny-spanish.cfg"
-default_minicfg_eng="$default_directory_template/default-mini-english.cfg"
-default_minicfg_spa="$default_directory_template/default-mini-spanish.cfg"
-default_fullcfg_eng="$default_directory_template/default-full-english.cfg"
-default_fullcfg_spa="$default_directory_template/default-full-spanish.cfg"
-####
-####
-#### english: default config to shell
-#### spanish: default config to shell
-####
-####
-file_default_preferences="$default_directory_preferences/default-preferences-$cmd_version"
-file_default_alias="$default_directory_preferences/default-alias-$cmd_version"
-file_default_usernotes="$default_directory_preferences/default-usernotes"
-file_default_logcmd="$default_directory_logcmd/default-logcmd-$cmd_version"
-####
-####
-#### english: file log:     log files and path files config files
-#### spanish: archivos log: archivos log y ruta de los archivos de configuracion
-####
-####
-file_default_logcmd="$default_directory_logcmd/default-logcmd-$cmd_version"
-####
-####
-#### english: temporal files
-#### spanish: archivos temporales
-####
-####
-temporal_text="$directory_cache_necesary/$cmd_opt_date-text.txt"
-temporal_textfinal="$directory_cache_necesary/$cmd_opt_date-text-final.txt"
-temporal_gui="$directory_cache_necesary/$cmd_opt_date-textfinal.txt"
-temporal_guifinal="$directory_cache_necesary/$cmd_opt_date-text-final.txt"
-output_log="$directory_cache_necesary/$cmd_opt_date-textfinal.txt"
-output_logfinal="$directory_cache_necesary/$cmd_opt_date-text-final.txt"
-####
-####
-#### :rutina-final-config-files:
 ##########   english: if sane config directory                       ##########
 ##########   spanish: comprobar sanos directorios de configuracion   ##########
 #### :rutina-inicial-sane-folders:
@@ -623,8 +584,63 @@ $command_mkdir -p "$default_directory_readme" &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-sane-folders:
-##########  english: variables: variables to declare     ##########
-##########  spanish: variables: variables para declarar  ##########
+##########   english: if sane config directory                       ##########
+##########   spanish: comprobar sanos directorios de configuracion   ##########
+#### :rutina-inicial-configs-files:
+####
+####
+#### english: templates cfg
+#### spanish: plantillas cfg
+####
+####
+default_tinycfg_eng="$default_directory_template/default-tiny-english.cfg"
+default_tinycfg_spa="$default_directory_template/default-tiny-spanish.cfg"
+default_minicfg_eng="$default_directory_template/default-mini-english.cfg"
+default_minicfg_spa="$default_directory_template/default-mini-spanish.cfg"
+default_fullcfg_eng="$default_directory_template/default-full-english.cfg"
+default_fullcfg_spa="$default_directory_template/default-full-spanish.cfg"
+####
+####
+#### english: default config to shell
+#### spanish: default config to shell
+####
+####
+file_default_preferences="$default_directory_preferences/default-preferences-$cmd_version"
+file_default_alias="$default_directory_preferences/default-alias-$cmd_version"
+file_default_usernotes="$default_directory_preferences/default-usernotes"
+file_default_logcmd="$default_directory_logcmd/default-logcmd-$cmd_version"
+####
+####
+#### english: temporal files
+#### spanish: archivos temporales
+####
+####
+temporal_text="$directory_cache_necesary/$cmd_opt_date-text.txt"
+temporal_textfinal="$directory_cache_necesary/$cmd_opt_date-text-final.txt"
+temporal_gui="$directory_cache_necesary/$cmd_opt_date-textfinal.txt"
+temporal_guifinal="$directory_cache_necesary/$cmd_opt_date-text-final.txt"
+output_log="$directory_cache_necesary/$cmd_opt_date-textfinal.txt"
+output_logfinal="$directory_cache_necesary/$cmd_opt_date-text-final.txt"
+####
+####
+#### config proxy file
+####
+####
+file_conf_clientproxy="$default_directory_proxy/fwiptables-proxy"
+####
+####
+#### config file adblock
+####
+####
+file_blacklist_fademind="$default_directory_adblock/hosts.blacklist_fademind"
+file_blacklist_mvps="$default_directory_adblock/hosts.blacklist_mvps"
+file_blacklist_adaway="$default_directory_adblock/hosts.blacklist_adaway"
+file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenblack"
+####
+####
+#### :rutina-final-config-files:
+##########  english: variables-header: variables to declare in header      ##########
+##########  spanish: variables-header: variables para declarar en cabecera ##########
 #### :rutina-inicial-variables-header:
 ####
 ####
@@ -665,23 +681,6 @@ message_without_guiroll="$title_md $text_fail [ install zenity ]"
 ####
 ####
 file_conf_clientproxy="$default_directory_proxy/fwiptables-proxy"
-####
-####
-#### config radio music
-####
-####
-name_radio_group="radio.m3u8"
-file_radio_config="$default_directory_radio/fwiptables-config-$name_radio_group"
-file_radio_cache="$default_directory_radio/fwiptables-cache-$name_radio_group"
-####
-####
-#### config web adblock
-####
-####
-web_blacklist_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
-web_blacklist_mvps="http://winhelp2002.mvps.org/hosts.txt"
-web_blacklist_adaway="https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
-web_blacklist_stevenblack="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
 ####
 ####
 #### config file adblock
@@ -1195,9 +1194,9 @@ esac ;
 ####
 ####
 #### :rutina-final-drop-warning:
-##########    ALIAS CONFIG
-##########    ALIAS CONFIG
-#### :rutina-inicial-config-esquive:
+##########    ALIAS ESQUIVE CONFIG
+##########    ALIAS ESQUIVE CONFIG
+#### :rutina-inicial-alias-esquive:
 ####
 ####
 #### english:  alias esquive templates
@@ -1281,7 +1280,7 @@ echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in silen
 exit ;; esac ; fi
 ####
 ####
-#### :rutina-final-config-esquive:
+#### :rutina-final-alias-esquive:
 ##########    ALIAS CONFIG
 ##########    ALIAS CONFIG
 #### :rutina-inicial-alias-narrowtxt:
@@ -4117,8 +4116,8 @@ exit; fi
 if   [ "$first_option" == "variables" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ list variables firewall fwiptables] [ variables md ]"
-$cmd_internal code system-variables
+echo "$title_md [ $first_option ]  [ list code variables-system ] [ variables md ]"
+$cmd_internal code variables-system
 ####
 ####
 exit; fi
