@@ -1431,7 +1431,7 @@ fi
 if [ "$first_option" == "tree-log" ] ; then
 ####
 ####
-tree $default_directory_logs
+$command_tree $default_directory_logs
 echo 
 echo "### ### [ folder: ] [ $default_directory_logs ]"
 ####
@@ -1448,7 +1448,7 @@ exit; fi
 if [ "$first_option" == "tree-pdf" ] ; then
 ####
 ####
-tree $default_directory_pdf
+$command_tree $default_directory_pdf
 echo 
 echo "### ### [ folder: ] [ $default_directory_pdf ]"
 ####
@@ -3916,8 +3916,10 @@ echo "$text_md $text_md notes . several notes for internet $text_md"
 echo "$text_md $text_md ip-forward . list or active or desactive forward variables $text_md"
 echo "$text_md $text_md depends . principal dependences $text_md"
 echo "$text_md $text_md license . license $text_md"
-echo "$text_md $text_md tree-conf . tree from configuration $text_md"
-echo "$text_md $text_md tree-cache . tree from cache $text_md"
+echo "$text_md $text_md tree-pdf . tree from pdf folder $text_md"
+echo "$text_md $text_md tree-log . tree from logs folder $text_md"
+echo "$text_md $text_md tree-conf . tree from all configuration $text_md"
+echo "$text_md $text_md tree-cache . tree from all cache $text_md"
 echo "$text_md $text_md clean-cache . clean cache program $text_md"
 echo "$text_md $text_md code . show source code from one option $text_md"
 echo "$text_md $text_md variables . possible variables $text_md"
@@ -5617,7 +5619,7 @@ echo "# Waiting several seconds, while create new configuration"
 #### echo "$title_md $text_info [ $cmd_filename installing.. ]"
 cp $cmd_notinstalled $cmd_installed && 
 chmod 755 $cmd_installed &> /dev/null &&
-echo "# OK. Installed [file] [$cmd_installed]" ||
+echo "# OK. Installed           [file]   [$cmd_installed]" ||
 echo "# FAIL. Installed"
 ####
 ####
@@ -5627,11 +5629,11 @@ echo "# FAIL. Installed"
 ####
 #### preferences-regen
 $cmd_notinstalled preferences-regen &> /dev/null &&
-echo "# OK. Updated preferences [file] [$file_default_preferences]" ||
+echo "# OK. Updated preferences [file]   [$file_default_preferences]" ||
 echo "# FAIL. Updated preferences"
 #### alias-regen
 $cmd_notinstalled alias-regen &> /dev/null &&
-echo "# OK. Updated alias       [file] [$file_default_alias]" ||
+echo "# OK. Updated alias       [file]   [$file_default_alias]" ||
 echo "# FAIL. Updated alias"
 #### templates-regen
 $cmd_notinstalled templates-regen &> /dev/null &&
