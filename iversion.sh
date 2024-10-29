@@ -2754,12 +2754,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-showweather:
-##########    english: treeconf: tree configs in fwiptables     ##########
-##########    spanish: treeconf: arbol de conf en fwiptables    ##########
-#### :rutina-inicial-treeconf:
+##########    english: tree-conf: tree configs in fwiptables     ##########
+##########    spanish: tree-conf: arbol de conf en fwiptables    ##########
+#### :rutina-inicial-tree-conf:
 ####
 ####
-if   [ "$first_option" == "treeconf" ];  then
+if   [ "$first_option" == "tree-conf" ];  then
 ####
 ####
 if   [ "$command_tree" == "$NULL" ] ; then 
@@ -2772,13 +2772,13 @@ $command_tree $directory_data_necesary
 exit; fi
 ####
 ####
-#### :rutina-final-treeconf:
-##########    english: treecache: tree configs in fwiptables     ##########
-##########    spanish: treecache: arbol de conf en fwiptables    ##########
-#### :rutina-inicial-treecache:
+#### :rutina-final-tree-conf:
+##########    english: tree-cache: tree configs in fwiptables     ##########
+##########    spanish: tree-cache: arbol de conf en fwiptables    ##########
+#### :rutina-inicial-tree-cache:
 ####
 ####
-if   [ "$first_option" == "treecache" ]; then
+if   [ "$first_option" == "tree-cache" ]; then
 ####
 ####
 if   [ "$command_tree" == "$NULL" ] ; then 
@@ -2791,13 +2791,13 @@ $command_tree $directory_cache_necesary
 exit; fi
 ####
 ####
-#### :rutina-final-treecache:
-##########    english: cleancache: clean cache        ##########
-##########    spanish: cleancache: limpia la cache    ##########
-#### :rutina-inicial-cleancache:
+#### :rutina-final-tree-cache:
+##########    english: clean-cache: clean cache        ##########
+##########    spanish: clean-cache: limpia la cache    ##########
+#### :rutina-inicial-clean-cache:
 ####
 ####
-if   [ "$first_option" == "cleancache" ]; then
+if   [ "$first_option" == "clean-cache" ]; then
 ####
 ####
 echo "$title_md [ cleaning ] clean cache: deleting cache $cmd_internal"
@@ -2807,7 +2807,7 @@ rm -R $directory_cache_necesary/*
 exit; fi
 ####
 ####
-#### :rutina-final-cleancache:
+#### :rutina-final-clean-cache:
 ##########    english: notes: notes to configure iptables      ##########
 ##########    spanish: notes: notas para configurar iptables   ##########
 #### :rutina-inicial-notes:
@@ -3556,7 +3556,7 @@ echo "$title_md    firewall-netsystem $text_md"
 echo "$text_md preferences-edit alias-edit options info-options $text_md"
 echo "$text_md usernotes logfiles logcmd date resolve speed-ip4 speed-ip6 $text_md"
 echo "$text_md sockets ip ip4 ip6 network4 network6 address4 address6 $text_md"
-echo "$text_md free nodes ip-forward utils treeconf cleancache treecache $text_md"
+echo "$text_md free nodes ip-forward utils tree-conf tree-cache clean-cache $text_md"
 echo "$text_md log-stat web intro depends uninstall install upgrade notes $text_md"
 echo "$text_md variables examples info code expert donate about version $text_md"
 echo "$text_md license-lgpl-v2 license-gpl-v2 $text_md"
@@ -3899,9 +3899,9 @@ echo "$text_md $text_md notes . several notes for internet $text_md"
 echo "$text_md $text_md ip-forward . list or active or desactive forward variables $text_md"
 echo "$text_md $text_md depends . principal dependences $text_md"
 echo "$text_md $text_md license . license $text_md"
-echo "$text_md $text_md treeconf . tree from configuration $text_md"
-echo "$text_md $text_md treecache . tree from cache $text_md"
-echo "$text_md $text_md cleancache . clean cache program $text_md"
+echo "$text_md $text_md tree-conf . tree from configuration $text_md"
+echo "$text_md $text_md tree-cache . tree from cache $text_md"
+echo "$text_md $text_md clean-cache . clean cache program $text_md"
 echo "$text_md $text_md code . show source code from one option $text_md"
 echo "$text_md $text_md variables . possible variables $text_md"
 echo "$text_md $text_md intro . intro $text_md"
@@ -5610,15 +5610,15 @@ echo "# FAIL. Installed"
 ####
 #### preferences-regen
 $cmd_notinstalled preferences-regen &> /dev/null &&
-echo "# OK. Updated preferences [file] $file_default_preferences]" ||
+echo "# OK. Updated preferences [file] [$file_default_preferences]" ||
 echo "# FAIL. Updated preferences"
 #### alias-regen
 $cmd_notinstalled alias-regen &> /dev/null &&
-echo "# OK. Updated alias [file] [$file_default_alias]" ||
+echo "# OK. Updated alias       [file] [$file_default_alias]" ||
 echo "# FAIL. Updated alias"
 #### templates-regen
 $cmd_notinstalled templates-regen &> /dev/null &&
-echo "# OK. Updated templates [folder] [$default_directory_template]" || 
+echo "# OK. Updated templates   [folder] [$default_directory_template]" || 
 echo "# FAIL. Updated templates"
 ####
 ####
@@ -8354,7 +8354,7 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 032  "$text_md date" \
 033  "$text_md free" \
 034  "$text_md expert" \
-035  "$text_md treeconf" \
+035  "$text_md tree-conf" \
 036  "$text_md commands" \
 037  "$text_md variables" \
 038  "$text_md intro" \
@@ -8394,7 +8394,7 @@ case $menuprincipal in
 032) clear ; $cmd_internal $outcli date ;;
 033) clear ; $cmd_internal $outcli free ;;
 034) clear ; $cmd_internal $outcli expert ;;
-035) clear ; $cmd_internal $outcli treeconf ;;
+035) clear ; $cmd_internal $outcli tree-conf ;;
 036) clear ; $cmd_internal $outcli commands ;;
 037) clear ; $cmd_internal $outcli variables ;;
 038) clear ; $cmd_internal $outcli intro ;;
@@ -8559,7 +8559,7 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0722  "$text_md date" \
 0723  "$text_md free" \
 0724  "$text_md expert" \
-0725  "$text_md treeconf" \
+0725  "$text_md tree-conf" \
 0726  "$text_md commands" \
 0727  "$text_md variables" \
 0728  "$text_md intro" \
@@ -8743,7 +8743,7 @@ $cmd_internal del-custom $archivo ;;
 0722) clear ; $cmd_internal $outcli date ;;
 0723) clear ; $cmd_internal $outcli free ;;
 0724) clear ; $cmd_internal $outcli expert ;;
-0725) clear ; $cmd_internal $outcli treeconf ;;
+0725) clear ; $cmd_internal $outcli tree-conf ;;
 0726) clear ; $cmd_internal $outcli commands ;;
 0727) clear ; $cmd_internal $outcli variables ;;
 0728) clear ; $cmd_internal $outcli intro ;;
@@ -9279,7 +9279,7 @@ preferences-edit|preferences-regen|alias-edit|alias-regen|\
 alias-read|options|info-options|expert|\
 address4|address6|network4|network6||sockets|\
 logfiles|logcmd|ip4|ip6|notes|speed-ip4|speed-ip6|\
-nodes|date|free|version|treeconf|treecache|cleancache|\
+nodes|date|free|version|tree-conf|tree-cache|clean-cache|\
 depends|utils|about|variables|examples|intro|install|upgrade|\
 license-lgpl-v2|license-gpl-v2"
 ####
@@ -9317,9 +9317,9 @@ nodes) $cmd_internal -gui-zenity nodes ;;
 date) $cmd_internal -gui-zenity date ;;
 free) $cmd_internal -gui-zenity free ;;
 version) $cmd_internal -gui-zenity version ;;
-treeconf)$cmd_internal -gui-zenity treeconf ;;
-treecache)$cmd_internal -gui-zenity treecache ;;
-cleancache) $cmd_internal -gui-zenity cleancache ;;
+tree-conf)$cmd_internal -gui-zenity tree-conf ;;
+tree-cache)$cmd_internal -gui-zenity tree-cache ;;
+clean-cache) $cmd_internal -gui-zenity clean-cache ;;
 depends)$cmd_internal -gui-zenity depends ;;
 address4)$cmd_internal gui-$second_option address4 ;;
 address6)$cmd_internal gui-$second_option address6 ;;
@@ -9862,7 +9862,7 @@ echo "$title_md The used gui in $first_option is $second_option" ;
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-edit|preferences-regen|alias-read|alias-edit|alias-regen|\
 options|clasic-options|info-options|expert|download|intro|\
-ip4|ip6|speed-ip4|speed-ip6|notes|treeconf|treecache|cleancache|\
+ip4|ip6|speed-ip4|speed-ip6|notes|tree-conf|tree-cache|clean-cache|\
 license-lgpl-v2|license-gpl-v2|\
 address4|address6|network4|network6||sockets|\
 install|upgrade|examples|depends|variables|utils|about"
@@ -9902,9 +9902,9 @@ ip6*)$cmd_internal gui-$second_option ip6 ;;
 speed-ip4*)$cmd_internal gui-$second_option speed-ip4 ;;
 speed-ip6*)$cmd_internal gui-$second_option speed-ip6 ;;
 sockets*)$cmd_internal gui-$second_option sockets ;;
-treeconf*)$cmd_internal gui-$second_option treeconf ;;
-treecache*)$cmd_internal gui-$second_option treecache ;;
-cleancache*)$cmd_internal gui-$second_option cleancache ;;
+tree-conf*)$cmd_internal gui-$second_option tree-conf ;;
+tree-cache*)$cmd_internal gui-$second_option tree-cache ;;
+clean-cache*)$cmd_internal gui-$second_option clean-cache ;;
 examples*)$cmd_internal gui-$second_option examples ;;
 depends*)$cmd_internal gui-$second_option depends ;;
 install*)$cmd_internal -gui-zenity install ;;
