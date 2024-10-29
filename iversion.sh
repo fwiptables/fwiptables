@@ -1423,12 +1423,12 @@ fi
 ####
 ####
 #### :rutina-final-allow-show-time:
-##########   english: logfiles: Read log fwiptables-logfiles  ##########
-##########   spanish: logfiles: Lee log  fwiptables-logfiles  ##########
-#### :rutina-inicial-config-logfiles:
+##########   english: log-files: list log   ##########
+##########   spanish: log-files: lista log  ##########
+#### :rutina-inicial-list-log-files:
 ####
 ####
-if [ "$first_option" == "logfiles" ] ; then
+if [ "$first_option" == "log-files" ] ; then
 ####
 ####
 ls -1 $default_directory_logs
@@ -1439,10 +1439,27 @@ echo "### ### [ folder: ] [ $default_directory_logs ]"
 exit; fi
 ####
 ####
-#### :rutina-final-config-logfiles:
-##########    english: logcmd: Read log fwiptables-logcmd   ##########
-##########    spanish: logcmd: Lee log  fwiptables-logcmd   ##########
-#### :rutina-inicial-config-logcmd:
+#### :rutina-final-list-log-files:
+##########   english: pdf-files: list pdf   ##########
+##########   spanish: pdf-files: lista pdf  ##########
+#### :rutina-inicial-list-pdf-files:
+####
+####
+if [ "$first_option" == "pdf-files" ] ; then
+####
+####
+ls -1 $default_directory_pdf
+echo 
+echo "### ### [ folder: ] [ $default_directory_pdf ]"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-list-pdf-files:
+##########    english: logcmd: Read log  fwiptables-logcmd   ##########
+##########    spanish: logcmd: Lee  log  fwiptables-logcmd   ##########
+#### :rutina-inicial-list-logcmd:
 ####
 ####
 if [ "$first_option" == "logcmd" ] || [ "$first_option" == "autolog" ] ; then
@@ -1459,7 +1476,7 @@ echo "$title_md $text_info [ last 50 lines from file showed ] [ $file_default_lo
 exit; fi
 ####
 ####
-#### :rutina-final-config-logcmd:
+#### :rutina-final-list-logcmd:
 ##########    english: log-stat: Read stats log fwiptables-logcmd    ##########
 ##########    spanish: log-stat: show stats log  fwiptables-logcmd   ##########
 #### :rutina-inicial-log-stat:
@@ -3553,8 +3570,8 @@ echo "$text_md server-lamp server-news server-ftp server-mail server-teamspeak $
 echo "$text_md server-mumble server-gateway server-sql server-samba server-proxy $text_md"
 echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net  $text_md"
 echo "$title_md    firewall-netsystem $text_md"
-echo "$text_md preferences-edit alias-edit options info-options $text_md"
-echo "$text_md usernotes logfiles logcmd date resolve speed-ip4 speed-ip6 $text_md"
+echo "$text_md preferences-edit alias-edit options info-options usernotes$text_md"
+echo "$text_md pdf-files log-files logcmd date resolve speed-ip4 speed-ip6 $text_md"
 echo "$text_md sockets ip ip4 ip6 network4 network6 address4 address6 $text_md"
 echo "$text_md free nodes ip-forward utils tree-conf tree-cache clean-cache $text_md"
 echo "$text_md log-stat web intro depends uninstall install upgrade notes $text_md"
@@ -3878,7 +3895,7 @@ echo "$text_md $text_md alias-regen . recover initials alias in first option $te
 echo "$text_md $text_md options . list options $text_md"
 echo "$text_md $text_md info-options . list details for the options $text_md"
 echo "$text_md $text_md info . details from one first option from one pattern $text_md"
-echo "$text_md $text_md logfiles . show the result for the commands save with -l|-log $text_md"
+echo "$text_md $text_md log-files . show the result for the commands save with -l|-log $text_md"
 echo "$text_md $text_md logcmd . list the commands launched $text_md"
 echo "$text_md $text_md ip . show details from connection ipv4, ipv6 $text_md"
 echo "$text_md $text_md ip4 . show ip from connection ipv4 $text_md"
@@ -8336,7 +8353,7 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 014  "$text_md alias-read" \
 015  "$text_md alias-edit" \
 016  "$text_md alias-regen" \
-017  "$text_md logfiles" \
+017  "$text_md log-files" \
 018  "$text_md logcmd" \
 019  "$text_md ip4" \
 020  "$text_md ip6" \
@@ -8376,7 +8393,7 @@ case $menuprincipal in
 014) clear ; $cmd_internal $outcli alias-read ;;
 015) clear ; $cmd_internal alias-edit ;;
 016) clear ; $cmd_internal $outcli alias-regen ;;
-017) clear ; $cmd_internal $outcli txt logfiles ;;
+017) clear ; $cmd_internal $outcli txt log-files ;;
 018) clear ; $cmd_internal $outcli txt logcmd ;;
 019) clear ; $cmd_internal $outcli ip4 ;;
 020) clear ; $cmd_internal $outcli ip6 ;;
@@ -8541,7 +8558,7 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0704  "$text_md alias-read" \
 0705  "$text_md alias-edit" \
 0706  "$text_md alias-regen" \
-0707  "$text_md logfiles" \
+0707  "$text_md log-files" \
 0708  "$text_md logcmd" \
 0709  "$text_md ip4" \
 0710  "$text_md ip6" \
@@ -8725,7 +8742,7 @@ $cmd_internal del-custom $archivo ;;
 0704) clear ; $cmd_internal $outcli alias-read ;;
 0705) clear ; $cmd_internal alias-edit ;;
 0706) clear ; $cmd_internal $outcli alias-regen ;;
-0707) clear ; $cmd_internal txt logfiles ;;
+0707) clear ; $cmd_internal txt log-files ;;
 0708) clear ; $cmd_internal txt logcmd ;;
 0709) clear ; $cmd_internal $outcli ip4 ;;
 0710) clear ; $cmd_internal $outcli ip6 ;;
@@ -9278,7 +9295,7 @@ gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-edit|preferences-regen|alias-edit|alias-regen|\
 alias-read|options|info-options|expert|\
 address4|address6|network4|network6||sockets|\
-logfiles|logcmd|ip4|ip6|notes|speed-ip4|speed-ip6|\
+log-files|logcmd|ip4|ip6|notes|speed-ip4|speed-ip6|\
 nodes|date|free|version|tree-conf|tree-cache|clean-cache|\
 depends|utils|about|variables|examples|intro|install|upgrade|\
 license-lgpl-v2|license-gpl-v2"
@@ -9305,7 +9322,7 @@ alias-regen)$cmd_internal -gui-zenity alias-regen ;;
 options)$cmd_internal -gui-zenity options ;;
 info-options)$cmd_internal -gui-zenity info-options ;;
 expert)$cmd_internal -gui-zenity expert ;;
-logfiles) $cmd_internal -gui-zenity logfiles ;; 
+log-files) $cmd_internal -gui-zenity log-files ;; 
 logcmd) $cmd_internal -gui-zenity logcmd ;;
 ip4)$cmd_internal -gui-zenity ip4 ;;
 ip6)$cmd_internal -gui-zenity ip6 ;;
