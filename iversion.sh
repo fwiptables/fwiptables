@@ -3571,7 +3571,7 @@ echo "$text_md server-mumble server-gateway server-sql server-samba server-proxy
 echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net  $text_md"
 echo "$title_md    firewall-netsystem $text_md"
 echo "$text_md preferences-edit alias-edit options info-options usernotes$text_md"
-echo "$text_md tree-pdf tree-log tree-conf tree-cache logcmd clean-cache $text_md"
+echo "$text_md logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $text_md"
 echo "$text_md sockets ip ip4 ip6 network4 network6 address4 address6 $text_md"
 echo "$text_md free nodes ip-forward utils date resolve speed-ip4 speed-ip6 $text_md"
 echo "$text_md log-stat web intro depends uninstall install upgrade notes $text_md"
