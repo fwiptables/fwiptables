@@ -5606,7 +5606,7 @@ exit; fi
 if [ "$first_option" == "install" ]; then
 ####
 ####
-echo "# Waiting several seconds, while create new configuration $text_md"
+echo "# Waiting several seconds, while create new configuration"
 ####
 ####
 ####  english: copy the file to temporal folder and install
@@ -5616,9 +5616,8 @@ echo "# Waiting several seconds, while create new configuration $text_md"
 #### echo "$title_md $text_info [ $cmd_filename installing.. ]"
 cp $cmd_notinstalled $cmd_installed && 
 chmod 755 $cmd_installed &> /dev/null &&
-####
-####
-echo "# OK. Installed [file] [$cmd_installed]"
+echo "# OK. Installed [file] [$cmd_installed]" ||
+echo "# FAIL. Installed"
 ####
 ####
 ####  english: generate fwiptables default config and templates
@@ -5627,21 +5626,25 @@ echo "# OK. Installed [file] [$cmd_installed]"
 ####
 #### preferences-regen
 $cmd_notinstalled preferences-regen &> /dev/null &&
-echo "# OK. Updated preferences [file] $file_default_preferences]"
+echo "# OK. Updated preferences [file] $file_default_preferences]" ||
+echo "# FAIL. Updated preferences"
 #### alias-regen
 $cmd_notinstalled alias-regen &> /dev/null &&
-echo "# OK. Updated alias [file] [$file_default_alias]"
+echo "# OK. Updated alias [file] [$file_default_alias]" ||
+echo "# FAIL. Updated alias"
 #### templates-regen
 $cmd_notinstalled templates-regen &> /dev/null &&
-echo "# OK. Updated templates [folder] [$default_directory_template]"
+echo "# OK. Updated templates [folder] [$default_directory_template]" || 
+echo "# FAIL. Updated templates"
 ####
 ####
 ####   english: Show final status from installer: program version
 ####   spanish: Muestra el estatus final desde el instalador: program version
 ####
 ####
-if [ -f "$cmd_installed" ]; then $cmd_installed version ;
-else echo "# Not installed in $cmd_installed"; fi
+#### if [ -f "$cmd_installed" ]; then $cmd_installed version ;
+#### else echo "# Not installed in $cmd_installed"; fi
+echo "# READY. $cmd_installed"
 #### 
 ####
 exit; fi
