@@ -1176,68 +1176,6 @@ esac
 ####
 ####
 #### :rutina-final-alias-system-interface:
-##########    ALIAS CONFIG REGEN alias-regen:
-##########    ALIAS CONFIG REGEN alias-regen:
-#### :rutina-inicial-alias-regen:
-####
-####
-if [ "$first_option" == "alias-regen" ] ; then 
-####
-####
-$cmd_internal alias-example &> $file_default_alias
-####
-####
-exit ; fi
-####
-####
-#### :rutina-final-alias-regen:
-##########    ALIAS CONFIG alias: alias-read:
-##########    ALIAS CONFIG alias: alias-read:
-#### :rutina-inicial-alias-read:
-####
-####
-if [ "$first_option" == "alias" ] || [ "$first_option" == "alias-read" ] ; then 
-####
-####
-$command_cat $file_default_alias
-####
-####
-exit ; fi
-####
-####
-#### :rutina-final-alias-read:
-##########    ALIAS CONFIG EXAMPLE alias-example:
-##########    ALIAS CONFIG EXAMPLE alias-example:
-#### :rutina-inicial-alias-example:
-####
-####
-if [ "$first_option" == "alias-example" ] ; then 
-####
-####
-echo "####  program: $cmd_internal $cmd_version"
-echo "####  file: $file_default_alias"
-echo "#output=optional-output"
-echo "#control=firewall-wallcontrol"
-echo "#listconceptual=firewall-listconceptual"
-echo "#listnumeral=firewall-listnumeral"
-echo "#wallcustom=firewall-wallcustom"
-echo "#wallsystem=firewall-wallsystem"
-echo "#netsystem=firewall-netsystem"
-echo "#easy=firewall-netsystem"
-echo "#expert=options-expert"
-echo "#list-allrules=list-alltables"
-echo "#examples=options-examples"
-echo "#ver=version"
-echo "#all-names=names"
-echo "#ram-free=free"
-echo "#free-ram=free"
-echo "#ram=free"
-####
-####
-exit ; fi
-####
-####
-#### :rutina-final-alias-example:
 ##########    ALIAS CONFIG
 ##########    ALIAS CONFIG
 #### :rutina-inicial-drop-warning:
@@ -1268,7 +1206,7 @@ esac ;
 case "$first_option" in
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
 "modify-custom")
 $cmd_internal templates-regen &> /dev/null ;; esac
 ####
@@ -1278,7 +1216,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
 "modify-custom") $cmd_internal $second_option $third_option ; exit ;; esac ; fi
 ####
 ####
@@ -1287,7 +1225,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
 "modify-custom") $cmd_internal $second_option $third_option ; exit ;; esac ; fi
 ####
 ####
@@ -1296,7 +1234,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
 "modify-custom") $cmd_internal $second_option $third_option ; exit ;; esac ; fi
 ####
 ####
@@ -1306,7 +1244,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
 "modify-custom") $cmd_internal templates-regen  &> /dev/null ;; esac ; fi
 ####
 ####
@@ -1315,7 +1253,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
 "$NULL"|"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
 "modify-custom")
 echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in log optional-output." ;
 exit ;; esac ; fi
@@ -1326,7 +1264,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
 "$NULL"|"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
 "modify-custom") 
 echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in pdf optional-output." ;
 exit ;; esac ; fi
@@ -1337,7 +1275,7 @@ case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
 "$NULL"|"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
 "modify-custom")
 echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in silent optional-output." ;
 exit ;; esac ; fi
@@ -1956,6 +1894,86 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-wpaexample:
+##########    ALIAS CONFIG REGEN alias-regen:
+##########    ALIAS CONFIG REGEN alias-regen:
+#### :rutina-inicial-alias-regen:
+####
+####
+if [ "$first_option" == "alias-regen" ] ; then 
+####
+####
+$cmd_internal alias-example &> $file_default_alias
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-alias-regen:
+##########    ALIAS CONFIG alias: alias-read:
+##########    ALIAS CONFIG alias: alias-read:
+#### :rutina-inicial-alias-read:
+####
+####
+if [ "$first_option" == "alias" ] || [ "$first_option" == "alias-read" ] ; then 
+####
+####
+$command_cat $file_default_alias
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-alias-read:
+##########    ALIAS CONFIG EXAMPLE alias-example:
+##########    ALIAS CONFIG EXAMPLE alias-example:
+#### :rutina-inicial-alias-example:
+####
+####
+if [ "$first_option" == "alias-example" ] ; then 
+####
+####
+echo "####  program: $cmd_internal $cmd_version"
+echo "####  file: $file_default_alias"
+echo "#output=optional-output"
+echo "#control=firewall-wallcontrol"
+echo "#listconceptual=firewall-listconceptual"
+echo "#listnumeral=firewall-listnumeral"
+echo "#wallcustom=firewall-wallcustom"
+echo "#wallsystem=firewall-wallsystem"
+echo "#netsystem=firewall-netsystem"
+echo "#easy=firewall-netsystem"
+echo "#expert=options-expert"
+echo "#list-allrules=list-alltables"
+echo "#examples=options-examples"
+echo "#ver=version"
+echo "#all-names=names"
+echo "#ram-free=free"
+echo "#free-ram=free"
+echo "#ram=free"
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-alias-example:
+##########    english: alias-edit: modify preferences   ##########
+##########    spanish: alias-edit: modify preferences   ##########
+#### :rutina-inicial-alias-edit:
+####
+####
+if [ "$first_option" == "alias-edit" ]; then 
+echo "$cycle_header firewall $first_option"; echo
+####
+####
+echo "$title_md [ $first_option ] [ modify the default preferences ]"
+$favorite_text_editor $file_default_preferences
+echo "$title_md $text_info [ file $file_default_preferences ]"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-alias-edit:
 ##########    english: preferences-edit: modify preferences   ##########
 ##########    spanish: preferences-edit: modify preferences   ##########
 #### :rutina-inicial-preferences-edit:
@@ -1965,7 +1983,7 @@ if [ "$first_option" == "preferences-edit" ]; then
 echo "$cycle_header firewall $first_option"; echo
 ####
 ####
-echo "$title_md [ $first_option ] [ modify the default fwiptables ] "
+echo "$title_md [ $first_option ] [ modify the default preferences ]"
 $favorite_text_editor $file_default_preferences
 echo "$title_md $text_info [ file $file_default_preferences ]"
 ####
@@ -1974,24 +1992,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-preferences-edit:
-##########    english: dialog-modify: modify dialog   ##########
-##########    spanish: dialog-modify: modify dialog   ##########
-#### :rutina-inicial-dialog-modify:
-####
-####
-if [ "$first_option" == "dialog-modify" ]; then 
-####
-####
-echo "$title_md [ $first_option ] [ modify the default dialog ] "
-echo 
-$favorite_text_editor $default_dialogrc
-echo "$title_md $text_info [ edit file $default_dialogrc to change variables ]"
-####
-####
-exit; fi
-####
-####
-#### :rutina-final-dialog-modify:
 ##########    english: preferences-read: modify  preferences         ##########
 ##########    spanish: preferences-read: modifica preferencias       ##########
 #### :rutina-inicial-preferences-read:
@@ -2001,7 +2001,6 @@ if [ "$first_option" == "preferences-read" ]; then
 ####
 ####
 $command_cat  $file_default_preferences
-echo "$title_md $text_info [ file $file_default_preferences ]"
 ####
 ####
 exit; fi
@@ -2094,8 +2093,6 @@ echo "$title_md"
 echo "$title_md $title_md default graphicall dimension"
 echo "config_graphicall_width=800                     ## default width 800"
 echo "config_graphicall_height=600                    ## default height 600"
-echo "$title_md"
-echo "$title_md $title_md This file has been generated from preferences-example"
 ####
 ####
 exit ; fi
@@ -3613,7 +3610,7 @@ echo "$text_md server-lamp server-news server-ftp server-mail server-teamspeak $
 echo "$text_md server-mumble server-gateway server-sql server-samba server-proxy $text_md"
 echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net  $text_md"
 echo "$title_md    firewall-netsystem $text_md"
-echo "$text_md preferences-read preferences-edit alias-read options $text_md"
+echo "$text_md preferences-read preferences-edit alias-edit options $text_md"
 echo "$text_md usernotes logfiles logcmd date resolve speed-ip4 speed-ip6 $text_md"
 echo "$text_md sockets ip ip4 ip6 network4 network6 address4 address6 $text_md"
 echo "$text_md free nodes ip-forward utils treeconf cleancache treecache $text_md"
@@ -3932,7 +3929,8 @@ echo "$title_md | firewall-netsystem | $cmd_internal firewall-netsystem | $text_
 echo "$text_md $text_md preferences-read . show the preferences for fwiptables $text_md"
 echo "$text_md $text_md preferences-edit . modify the preferences for fwiptables $text_md"
 echo "$text_md $text_md preferences-regen . recover the initials preferences for fwiptables $text_md"
-echo "$text_md $text_md alias . configure alias to first option $text_md"
+echo "$text_md $text_md alias-read . read alias to first option $text_md"
+echo "$text_md $text_md alias-edit . configure alias to first option $text_md"
 echo "$text_md $text_md options . list options $text_md"
 echo "$text_md $text_md info-options . list details for the options $text_md"
 echo "$text_md $text_md info . details from one first option from one pattern $text_md"
@@ -7429,6 +7427,21 @@ $favorite_realpath_graphicalldialog  --info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
 --text OK.$archivo-canceled; fi
 ;;
+#### 
+####
+"alias-edit")
+archivo="default"
+cp $file_default_alias $file_default_alias.old
+$favorite_realpath_graphicalldialog  --text-info \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--filename=$file_default_alias.old \
+--editable --title=MODIFY-ALIAS 1> $file_default_alias
+if [ ! -s "$file_default_alias" ];
+then cp $file_default_alias.old $file_default_alias 
+$favorite_realpath_graphicalldialog  --info \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--text OK.$archivo-canceled; fi
+;;
 ####
 ####
 *)$cmd_internal txt $second_option $third_option \
@@ -7631,6 +7644,10 @@ preferences-edit*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_internal -gui-zenity preferences-edit 
 ;;
+alias-edit*) 
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+$cmd_internal -gui-zenity alias-edit 
+;;
 ####
 ####
 #### english: all other otpions    ####
@@ -7822,6 +7839,10 @@ wizard-tiny*) $cmd_internal -gui-yad wizard-tiny ;;
 preferences-edit*)
 unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
 $cmd_internal -gui-yad preferences-edit 
+;;
+alias-edit*)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+$cmd_internal -gui-yad alias-edit 
 ;;
 ####
 ####
@@ -9301,8 +9322,8 @@ then echo $message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
-preferences-edit|preferences-regen|preferences-example|\
-options|info-options|expert|\
+preferences-edit|preferences-regen|alias-edit|alias-regen|\
+alias-read|options|info-options|expert|\
 address4|address6|network4|network6||sockets|\
 logfiles|logcmd|ip4|ip6|notes|speed-ip4|speed-ip6|\
 nodes|date|free|version|treeconf|treecache|cleancache|\
@@ -9325,7 +9346,9 @@ gui-info-menu)$cmd_internal -gui-zenity firewall-netsystem ;;
 preferences-read)$cmd_internal -gui-zenity preferences-read ;;
 preferences-edit)$cmd_internal -gui-zenity preferences-edit ;;
 preferences-regen)$cmd_internal -gui-zenity preferences-regen ;;
-preferences-example)$cmd_internal -gui-zenity preferences-example ;;
+alias-read)$cmd_internal -gui-zenity alias-read ;;
+alias-edit)$cmd_internal -gui-zenity alias-edit ;;
+alias-regen)$cmd_internal -gui-zenity alias-regen ;;
 options)$cmd_internal -gui-zenity options ;;
 info-options)$cmd_internal -gui-zenity info-options ;;
 expert)$cmd_internal -gui-zenity expert ;;
@@ -9884,7 +9907,7 @@ echo "$title_md The used gui in $first_option is $second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
-preferences-edit|preferences-regen|preferences-example|\
+preferences-edit|preferences-regen|alias-read|alias-edit|alias-regen|\
 options|clasic-options|info-options|expert|download|intro|\
 ip4|ip6|speed-ip4|speed-ip6|notes|treeconf|treecache|cleancache|\
 license-lgpl-v2|license-gpl-v2|\
@@ -9912,7 +9935,9 @@ gui-info-menu*)$cmd_internal gui-$second_option firewall-netsystem ;;
 preferences-read*)$cmd_internal gui-$second_option preferences-read ;;
 preferences-edit*)$cmd_internal gui-$second_option preferences-edit ;;
 preferences-regen*)$cmd_internal gui-$second_option preferences-regen ;;
-preferences-example*)$cmd_internal gui-$second_option preferences-example ;;
+alias-read*)$cmd_internal gui-$second_option alias-read ;;
+alias-edit*)$cmd_internal gui-$second_option alias-edit ;;
+alias-regen*)$cmd_internal gui-$second_option alias-regen ;;
 options*)$cmd_internal gui-$second_option options ;;
 clasic-options*)$cmd_internal gui-$second_option clasic-options ;;
 info-options*)$cmd_internal gui-$second_option info-options ;;
