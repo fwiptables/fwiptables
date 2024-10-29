@@ -6198,11 +6198,15 @@ if   [ "$first_option" == "info" ]; then
 ####
 ####
 echo "$title_md $text_info $text_md [ $first_option ]  [ info $second_option ] [ info md ]"
-echo "$title_md $text_info  Launch info search: $cmd_internal [optional-output] info [pattern-to-search]"
-echo "$title_md $text_info Example info search: $cmd_internal [optional-output] info ls"
-echo "$title_md $text_info    Show all options: $cmd_internal [optional-output] info-options"
+echo "$title_md $text_info  Launch info search: $cmd_internal \
+[optional-output] info [pattern-to-search]"
+echo "$title_md $text_info Example info search: $cmd_internal \
+[optional-output] info ls"
+echo "$title_md $text_info    Show all options: $cmd_internal \
+[optional-output] info-options"
 if   [ "$second_option" == "$NULL" ]; then exit ; fi
 if   [ "$second_option" == "info-options" ]; then $cmd_internal info-options ; exit ; fi
+echo "$title_md $text_info  Waiting to info with: $second_option"
 $cmd_internal info-options | $command_grep -i "$second_option" | $command_grep -Ev "###" 
 ####
 ####
