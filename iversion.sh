@@ -1255,25 +1255,20 @@ if [ "$first_option" == "narrowtxt" ] ;then echo "$head_waiting_narrow"
 ####
 ####
 case $second_option in 
-ls*|list*) $cmd_internal $second_option &> $file_output_cache
-$command_cat  $file_output_cache | $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
+ls*|list*) $cmd_internal $second_option | \
+$command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $10 " " $11 " " $12 " " \
 $13 " " $14 " " $15 " " $16 " " $17 " " $18 \
-" " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' &> $file_output_cache
-$command_cat  $file_output_cache | $command_grep -E -v Warning: ; exit ;;
-"$NULL") $cmd_internal \
-| $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
-$5 " " $6 " " $7 " " $8 " " $9 " " $11 " " $12 " " \
-$13 " " $14 " " $15 " " $16 " " $17 " " $18 \
-" " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' &> $file_output_cache
-$command_cat  $file_output_cache | $command_grep -E -v Warning: ; exit ;;
-*) $cmd_internal $second_option $third_option $quad_option \
-| $command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
+" " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' | \
+$command_grep -E -v Warning: 
+exit ;;
+*) $cmd_internal $second_option $third_option $quad_option | \
+$command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $10 " " $11 " " $12 " " \
 $13 " " $14 " " $15 " " $16 " " $17 " " $18 \
-" " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' &> $file_output_cache
-$command_cat  $file_output_cache | $command_grep -E -v Warning: ; exit ;;
-#### *) echo "$title_md Narrow option works only to list rules" ;; 
+" " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' | \
+$command_grep -E -v Warning: 
+exit ;;
 esac
 ####
 ####
@@ -1360,8 +1355,8 @@ echo "$head_waiting_pdf"
 sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &> /dev/null
 #### send print to home output fwiptables.pdf
 $cmd_internal $second_option $third_option $quad_option | \
-$command_convert -page A3 text:- $file_output_pdf.pdf
-echo "$title_md [ file ] $file_output_pdf.pdf"
+$command_convert -page A3 text:- $file_output_pdf
+echo "$title_md [ file ] $file_output_pdf"
 ####
 ####
 exit ; fi
