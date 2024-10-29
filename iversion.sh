@@ -589,10 +589,7 @@ $command_mkdir -p "$default_directory_readme" &> /dev/null ; fi
 #### :rutina-inicial-configs-files:
 ####
 ####
-#### english: templates cfg
-#### spanish: plantillas cfg
-####
-####
+#### config templates cfg
 default_tinycfg_eng="$default_directory_template/default-tiny-english.cfg"
 default_tinycfg_spa="$default_directory_template/default-tiny-spanish.cfg"
 default_minicfg_eng="$default_directory_template/default-mini-english.cfg"
@@ -601,20 +598,14 @@ default_fullcfg_eng="$default_directory_template/default-full-english.cfg"
 default_fullcfg_spa="$default_directory_template/default-full-spanish.cfg"
 ####
 ####
-#### english: default config to shell
-#### spanish: default config to shell
-####
-####
+#### config files default
 file_default_preferences="$default_directory_preferences/default-preferences-$cmd_version"
 file_default_alias="$default_directory_preferences/default-alias-$cmd_version"
 file_default_usernotes="$default_directory_preferences/default-usernotes"
 file_default_logcmd="$default_directory_logcmd/default-logcmd-$cmd_version"
 ####
 ####
-#### english: temporal files
-#### spanish: archivos temporales
-####
-####
+#### config temporal files
 temporal_text="$directory_cache_necesary/$cmd_opt_date-text.txt"
 temporal_textfinal="$directory_cache_necesary/$cmd_opt_date-text-final.txt"
 temporal_gui="$directory_cache_necesary/$cmd_opt_date-textfinal.txt"
@@ -623,15 +614,7 @@ output_log="$directory_cache_necesary/$cmd_opt_date-textfinal.txt"
 output_logfinal="$directory_cache_necesary/$cmd_opt_date-text-final.txt"
 ####
 ####
-#### config proxy file
-####
-####
-file_conf_clientproxy="$default_directory_proxy/fwiptables-proxy"
-####
-####
 #### config file adblock
-####
-####
 file_blacklist_fademind="$default_directory_adblock/hosts.blacklist_fademind"
 file_blacklist_mvps="$default_directory_adblock/hosts.blacklist_mvps"
 file_blacklist_adaway="$default_directory_adblock/hosts.blacklist_adaway"
@@ -672,27 +655,6 @@ message_without_guiroll="$title_md $text_fail [ install zenity ]"
 ####
 ####
 #### :rutina-final-variables-header:
-##########  english: system-variables: variables to declare     ##########
-##########  spanish: system-variables: variables para declarar  ##########
-#### :rutina-inicial-variables-misc:
-####
-####
-#### config proxy file
-####
-####
-file_conf_clientproxy="$default_directory_proxy/fwiptables-proxy"
-####
-####
-#### config file adblock
-####
-####
-file_blacklist_fademind="$default_directory_adblock/hosts.blacklist_fademind"
-file_blacklist_mvps="$default_directory_adblock/hosts.blacklist_mvps"
-file_blacklist_adaway="$default_directory_adblock/hosts.blacklist_adaway"
-file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenblack"
-####
-####
-#### :rutina-final-variables-misc:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
 #### :rutina-inicial-variables-update-secondtime:
