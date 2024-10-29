@@ -119,8 +119,10 @@ cmd_format=$(file $0 | \
 awk '{print $2 "_" $3 "_" $4}')                               # File format
 #### info date logs var in log,logcmd,..
 cmd_get_date="$(date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"            # how format date
-cmd_log_date="$cmd_get_date"                                  # how log date
-cmd_opt_date="LOG_$cmd_get_date-_OPT_"                       # how opt date
+cmd_cache_date="$cmd_get_date"                                # how cache date
+cmd_logcmd_date="$cmd_get_date"                               # how pdf date
+cmd_log_date="LOG_$cmd_get_date-_OPT_"                        # how opt date
+cmd_pdf_date="PDF_$cmd_get_date-_OPT_"                        # how opt date
 cmd_usernotes_date="$cmd_get_date"                            # how usernotes date
 ####
 ####
@@ -1349,8 +1351,8 @@ echo "### ### $text_info [ $second_option $third_option $quad_option ] \
 [ $cmd_log_date ]" &> $output_log
 $cmd_internal $second_option $third_option $quad_option &> $output_log
 $command_cat  $output_log | $command_grep -E -v Warning: \
-&> $default_directory_logs/$cmd_opt_date-$second_option.txt
-echo "$title_md [ file ]  $default_directory_logs/$cmd_opt_date-$second_option.txt"
+&> $default_directory_logs/$cmd_log_date-$second_option.txt
+echo "$title_md [ file ]  $default_directory_logs/$cmd_log_date-$second_option.txt"
 ####
 ####
 exit ; fi
@@ -1369,8 +1371,8 @@ echo "$head_waiting_pdf"
 sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &> /dev/null
 #### send print to home output fwiptables.pdf
 $cmd_internal $second_option $third_option $quad_option | $command_convert -page A3 text:- \
-$default_directory_pdf/$cmd_opt_date-$second_option.pdf 
-echo "$title_md [ file ] $default_directory_pdf/$cmd_opt_date-$second_option.pdf"
+$default_directory_pdf/$cmd_pdf_date-$second_option.pdf 
+echo "$title_md [ file ] $default_directory_pdf/$cmd_pdf_date-$second_option.pdf"
 ####
 ####
 exit ; fi
@@ -1397,7 +1399,7 @@ exit ; fi
 if [ "$allow_save_logcmd" != "no" ]
 ####
 ####
-then head_logcmd="date: $cmd_log_date \
+then head_logcmd="date: $cmd_logcmd_date \
 path: $cmd_internal ver: $cmd_version \
 opt: $first_option $second_option $third_option"
 echo $head_logcmd >> $file_default_logcmd
@@ -3517,13 +3519,13 @@ echo "$title_md [ $first_option ] \
 echo
 if [ "$favorite_date_command" == "$NULL" ]
 then echo "$text_md $text_fail [ Install one ntp client ]" ; fi
-echo "$text_md Old date: $cmd_log_date"
+echo "$text_md Old date: $cmd_get_date"
 echo "$text_md [ Updating the time and the date .. ]"
 pool0="0.debian.pool.ntp.org"
 pool1="1.debian.pool.ntp.org"
 pool2="2.debian.pool.ntp.org"
 pool3="3.debian.pool.ntp.org"
-$favorite_date_command $pool0 && echo -e "\n With New date: $cmd_log_date"
+$favorite_date_command $pool0 && echo -e "\n With New date: $cmd_get_date"
 ####
 ####
 exit; fi
@@ -6310,13 +6312,13 @@ echo "$title_md [ $first_option ] \
 echo
 if [ "$favorite_date_command" == "$NULL" ]; then
 echo "$text_md $text_fail [ Install one ntp client ]" ; fi
-echo "$text_md Old date: $cmd_log_date"
+echo "$text_md Old date: $cmd_get_date"
 echo "$text_md [ Updating the time and the date .. ]"
 pool0="0.debian.pool.ntp.org"
 pool1="1.debian.pool.ntp.org"
 pool2="2.debian.pool.ntp.org"
 pool3="3.debian.pool.ntp.org"
-$favorite_date_command $pool0 && echo -e "\n With New date: $cmd_log_date"
+$favorite_date_command $pool0 && echo -e "\n With New date: $cmd_get_date"
 ####
 ####
 exit; fi
@@ -7623,7 +7625,7 @@ $cmd_internal -gui-zenity alias-edit
 ####
 ####
 "$NULL")  exit ;;
-*) fecha_temporal="$cmd_log_date"
+*) fecha_temporal="$cmd_get_date"
 $cmd_internal $menugtk &> /tmp/fwiptables-$fecha_temporal
 $favorite_realpath_graphicalldialog  --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
@@ -7818,7 +7820,7 @@ $cmd_internal -gui-yad alias-edit
 #### spanish: las demas opciones   ####
 ####
 ####
-*) fecha_temporal="$cmd_log_date"
+*) fecha_temporal="$cmd_get_date"
 $cmd_internal $menugtk &> /tmp/fwiptables-$fecha_temporal
 $command_yad --text-info \
 --width=$config_graphicall_width --height=$config_graphicall_height \
