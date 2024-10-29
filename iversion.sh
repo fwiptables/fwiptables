@@ -1865,7 +1865,8 @@ exit; fi
 if [ "$first_option" == "alias-regen" ] ; then 
 ####
 ####
-$cmd_internal alias-example &> $file_default_alias
+$cmd_internal alias-example | \
+grep -iv " alias-example" &> $file_default_alias
 ####
 ####
 exit ; fi
@@ -1927,12 +1928,9 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "alias-edit" ]; then 
-echo "$cycle_header firewall $first_option"; echo
 ####
 ####
-echo "$title_md [ $first_option ] [ modify the default alias ]"
 $favorite_text_editor $file_default_alias
-echo "$title_md $text_info [ file $file_default_alias ]"
 ####
 ####
 exit; fi
@@ -1945,12 +1943,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "preferences-edit" ]; then 
-echo "$cycle_header firewall $first_option"; echo
 ####
 ####
-echo "$title_md [ $first_option ] [ modify the default preferences ]"
 $favorite_text_editor $file_default_preferences
-echo "$title_md $text_info [ file $file_default_preferences ]"
 ####
 ####
 exit; fi
@@ -1980,9 +1975,8 @@ exit; fi
 if [ "$first_option" == "preferences-regen" ] ; then
 ####
 ####
-$cmd_internal preferences-example &> $file_default_preferences
-echo "$title_md $text_ok [ Regenerated ] [ $cmd_internal values for default ]"
-echo "$title_md $text_ok [ Regenerated ] [ $file_default_preferences ]"
+$cmd_internal preferences-example | \
+grep -iv " preferences-example " &> $file_default_preferences
 ####
 ####
 exit; fi
