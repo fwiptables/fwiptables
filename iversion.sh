@@ -698,10 +698,14 @@ if [ "$without_first_option" = "$NULL" ] ; then without_first_option="options" ;
 #### :rutina-inicial-whithout-option:
 ####
 ####
-#### Without first option
-if [ "$first_option" = "$NULL" ]; then
+#### Without first option and it is options
+if [ "$first_option" = "$NULL" ] && [ "$without_first_option" == "options" ]; then
+first_option="$without_first_option" ; fi
+####
+####
+#### Without first option and it is not options show one message
+if [ "$first_option" = "$NULL" ] && [ "$without_first_option" != "options" ]; then
 echo "### $text_info [ Default Option: $without_first_option ] [ List Options: options ]"
-#### echo "### $text_info [ Configure Default Option: $cmd_name preferences-edit ]"
 first_option="$without_first_option" ; fi
 ####
 ####
