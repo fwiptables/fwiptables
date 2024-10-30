@@ -1382,18 +1382,18 @@ exit ; fi
 ####
 ####
 #### :rutina-final-alias-log:
-##########     english: cmdlog:       ##########
-##########     spanish: autoguardado  ##########
+##########     english: allow-logcmd:       ##########
+##########     spanish: autoguardado        ##########
 #### :rutina-inicial-allow-logcmd:
 ####
 ####
 if [ "$allow_save_logcmd" != "no" ]
 ####
 ####
-then head_logcmd="date: $cmd_logcmd_date path: $cmd_internal \
+then head_format_logcmd="date: $cmd_logcmd_date path: $cmd_internal \
 ver: $cmd_version opt: $cmd_guided_full"
 ####
-echo $head_logcmd >> $file_default_logcmd
+echo $head_format_logcmd >> $file_default_logcmd
 ####
 ####
 fi
@@ -1464,12 +1464,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-tree-pdf:
-##########    english: logcmd: Read log  fwiptables-logcmd   ##########
-##########    spanish: logcmd: Lee  log  fwiptables-logcmd   ##########
-#### :rutina-inicial-list-logcmd:
+##########    english: cat-logcmd: Read log  fwiptables-logcmd   ##########
+##########    spanish: cat-logcmd: Lee  log  fwiptables-logcmd   ##########
+#### :rutina-inicial-cat-logcmd:
 ####
 ####
-if [ "$first_option" == "logcmd" ] || [ "$first_option" == "autolog" ] ; then
+if [ "$first_option" == "cat-logcmd" ] || [ "$first_option" == "autolog" ] ; then
 ####
 ####
 echo "$title_md $text_info [ last 50 lines from file showed ] [ $file_default_logcmd ]"
@@ -1483,7 +1483,7 @@ echo "$title_md $text_info [ last 50 lines from file showed ] [ $file_default_lo
 exit; fi
 ####
 ####
-#### :rutina-final-list-logcmd:
+#### :rutina-final-cat-logcmd:
 ##########    english: log-stat: Read stats log fwiptables-logcmd    ##########
 ##########    spanish: log-stat: show stats log  fwiptables-logcmd   ##########
 #### :rutina-inicial-log-stat:
@@ -1496,21 +1496,18 @@ if [ "$command_wc" == "$NULL" ] ; then
 echo "$text_info Please install wc command"; exit; fi
 ####
 ####
-#### echo "$title_md The logcmd with log-stat"
 conteo="$($command_cat $file_default_logcmd | $command_wc -l)"
-echo "$text_md $conteo Commands launched. Logged with automatic logcmd"
+echo "$text_md $conteo Commands launched. Commands log with allowed logcmd"
 echo "$text_md file: $file_default_logcmd"
 ####
 ####
-#### echo "$title_md The logs with log-stat"
 conteo="$($command_ls -1 $default_directory_logs | $command_wc -l)"
-echo "$text_md $conteo Commands output. Logged with output log"
+echo "$text_md $conteo Commands output. Commands log with output log"
 echo "$text_md folder: $default_directory_logs"
 ####
 ####
-#### echo "$title_md The pdf with log-stat"
 conteo="$($command_ls -1 $default_directory_pdf | $command_wc -l)"
-echo "$text_md $conteo Commands output. Logged with output pdf"
+echo "$text_md $conteo Commands output. Command log with output pdf"
 echo "$text_md folder: $default_directory_pdf"
 ####
 ####
@@ -3578,7 +3575,7 @@ echo "$text_md server-mumble server-gateway server-sql server-samba server-proxy
 echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net  $text_md"
 echo "$title_md    firewall-netsystem $text_md"
 echo "$text_md preferences-edit alias-edit options info-options usernotes$text_md"
-echo "$text_md logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $text_md"
+echo "$text_md cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $text_md"
 echo "$text_md sockets ip ip4 ip6 network4 network6 address4 address6 $text_md"
 echo "$text_md free nodes ip-forward utils date resolve speed-ip4 speed-ip6 $text_md"
 echo "$text_md log-stat web intro depends uninstall install upgrade notes $text_md"
@@ -3903,7 +3900,7 @@ echo "$text_md $text_md options . list options $text_md"
 echo "$text_md $text_md info-options . list details for the options $text_md"
 echo "$text_md $text_md info . details from one first option from one pattern $text_md"
 echo "$text_md $text_md tree-log . show the result for the commands save with -l|-log $text_md"
-echo "$text_md $text_md logcmd . list the commands launched $text_md"
+echo "$text_md $text_md cat-logcmd . list the commands launched $text_md"
 echo "$text_md $text_md ip . show details from connection ipv4, ipv6 $text_md"
 echo "$text_md $text_md ip4 . show ip from connection ipv4 $text_md"
 echo "$text_md $text_md ip6 . show ip from connection ipv6 $text_md"
@@ -5626,7 +5623,8 @@ echo "# Waiting several seconds, while create new configuration"
 #### echo "$title_md $text_info [ $cmd_filename installing.. ]"
 cp $cmd_notinstalled $cmd_installed && 
 chmod 755 $cmd_installed &> /dev/null &&
-echo "# OK. Installed           [file]   [$cmd_installed]" ||
+echo "# OK. Installed $cmd_name" &&
+echo "# [file]   [$cmd_installed]" ||
 echo "# FAIL. Installed"
 ####
 ####
@@ -5636,15 +5634,18 @@ echo "# FAIL. Installed"
 ####
 #### preferences-regen
 $cmd_notinstalled preferences-regen &> /dev/null &&
-echo "# OK. Updated preferences [file]   [$file_default_preferences]" ||
+echo "# OK. Updated preferences"
+echo "# [file]   [$file_default_preferences]" ||
 echo "# FAIL. Updated preferences"
 #### alias-regen
 $cmd_notinstalled alias-regen &> /dev/null &&
-echo "# OK. Updated alias       [file]   [$file_default_alias]" ||
+echo "# OK. Updated alias" &&
+echo "# [file]   [$file_default_alias]" ||
 echo "# FAIL. Updated alias"
 #### templates-regen
 $cmd_notinstalled templates-regen &> /dev/null &&
-echo "# OK. Updated templates   [folder] [$default_directory_template]" || 
+echo "# OK. Updated templates" &&
+echo "# [folder] [$default_directory_template]" || 
 echo "# FAIL. Updated templates"
 ####
 ####
@@ -8362,7 +8363,7 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 014  "$text_md alias-read" \
 015  "$text_md alias-edit" \
 016  "$text_md alias-regen" \
-017  "$text_md logcmd" \
+017  "$text_md cat-logcmd" \
 018  "$text_md tree-log" \
 019  "$text_md tree-pdf" \
 020  "$text_md tree-conf" \
@@ -8406,7 +8407,7 @@ case $menuprincipal in
 014) clear ; $cmd_internal $outcli alias-read ;;
 015) clear ; $cmd_internal alias-edit ;;
 016) clear ; $cmd_internal $outcli alias-regen ;;
-017) clear ; $cmd_internal logcmd ;;
+017) clear ; $cmd_internal cat-logcmd ;;
 018) clear ; $cmd_internal tree-log ;;
 019) clear ; $cmd_internal tree-pdf ;;
 020) clear ; $cmd_internal tree-conf ;;
@@ -8575,7 +8576,7 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0704  "$text_md alias-read" \
 0705  "$text_md alias-edit" \
 0706  "$text_md alias-regen" \
-0707  "$text_md logcmd" \
+0707  "$text_md cat-logcmd" \
 0708  "$text_md tree-log" \
 0709  "$text_md tree-pdf" \
 0710  "$text_md tree-conf" \
@@ -8762,12 +8763,12 @@ $cmd_internal del-custom $archivo ;;
 0704) clear ; $cmd_internal $outcli alias-read ;;
 0705) clear ; $cmd_internal alias-edit ;;
 0706) clear ; $cmd_internal $outcli alias-regen ;;
-0707) clear ; $cmd_internal txt logcmd ;;
-0708) clear ; $cmd_internal txt tree-log ;;
-0709) clear ; $cmd_internal txt tree-pdf ;;
-0710) clear ; $cmd_internal txt tree-conf ;;
-0711) clear ; $cmd_internal txt tree-cache ;;
-0712) clear ; $cmd_internal txt clean-cache ;;
+0707) clear ; $cmd_internal cat-logcmd ;;
+0708) clear ; $cmd_internal tree-log ;;
+0709) clear ; $cmd_internal tree-pdf ;;
+0710) clear ; $cmd_internal tree-conf ;;
+0711) clear ; $cmd_internal tree-cache ;;
+0712) clear ; $cmd_internal $outcli clean-cache ;;
 0713) clear ; $cmd_internal $outcli ip4 ;;
 0714) clear ; $cmd_internal $outcli ip6 ;;
 0715) clear ; $cmd_internal $outcli speed-ip4 ;;
@@ -9317,8 +9318,8 @@ then echo $message_without_guiroll ; exit ; fi
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-edit|preferences-regen|alias-edit|alias-regen|\
 alias-read|options|info-options|expert|\
-address4|address6|network4|network6||sockets|\
-tree-log|logcmd|ip4|ip6|notes|speed-ip4|speed-ip6|\
+address4|address6|network4|network6||sockets|tree-pdf|tree-conf\
+tree-log|cat-logcmd|ip4|ip6|notes|speed-ip4|speed-ip6|\
 nodes|date|free|version|tree-conf|tree-cache|clean-cache|\
 depends|utils|about|variables|examples|intro|install|upgrade|\
 license-lgpl-v2|license-gpl-v2"
@@ -9346,7 +9347,9 @@ options)$cmd_internal -gui-zenity options ;;
 info-options)$cmd_internal -gui-zenity info-options ;;
 expert)$cmd_internal -gui-zenity expert ;;
 tree-log) $cmd_internal -gui-zenity tree-log ;; 
-logcmd) $cmd_internal -gui-zenity logcmd ;;
+tree-pdf) $cmd_internal -gui-zenity tree-pdf ;; 
+tree-conf) $cmd_internal -gui-zenity tree-conf ;;
+cat-logcmd) $cmd_internal -gui-zenity cat-logcmd ;;
 ip4)$cmd_internal -gui-zenity ip4 ;;
 ip6)$cmd_internal -gui-zenity ip6 ;;
 notes)$cmd_internal -gui-zenity notes ;;
@@ -9902,7 +9905,8 @@ echo "$title_md The used gui in $first_option is $second_option" ;
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-edit|preferences-regen|alias-read|alias-edit|alias-regen|\
 options|clasic-options|info-options|expert|download|intro|\
-ip4|ip6|speed-ip4|speed-ip6|notes|tree-conf|tree-cache|clean-cache|\
+cat-logcmd|tree-log|tree-pdf|tree-conf|tree-cache|clean-cache|
+ip4|ip6|speed-ip4|speed-ip6|notes|\
 license-lgpl-v2|license-gpl-v2|\
 address4|address6|network4|network6||sockets|\
 install|upgrade|examples|depends|variables|utils|about"
@@ -9942,6 +9946,9 @@ ip6*)$cmd_internal gui-$second_option ip6 ;;
 speed-ip4*)$cmd_internal gui-$second_option speed-ip4 ;;
 speed-ip6*)$cmd_internal gui-$second_option speed-ip6 ;;
 sockets*)$cmd_internal gui-$second_option sockets ;;
+cat-logcmd*)$cmd_internal gui-$second_option cat-logcmd ;;
+tree-log*)$cmd_internal gui-$second_option tree-log ;;
+tree-pdf*)$cmd_internal gui-$second_option tree-pdf ;;
 tree-conf*)$cmd_internal gui-$second_option tree-conf ;;
 tree-cache*)$cmd_internal gui-$second_option tree-cache ;;
 clean-cache*)$cmd_internal gui-$second_option clean-cache ;;
