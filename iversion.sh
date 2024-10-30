@@ -104,7 +104,7 @@ cmd_developer="Francisco Garcia"                              # Actual developer
 cmd_contact="fwiptables@gmx.com"                              # Actual contact
 cmd_shortdescription="FireWall With iptables"                 # Description short
 cmd_longdescription="iptables templates in one script"        # Description long
-cmd_requisite_program="awk,cat,cut,date,file,id,sed,tree"     # Program requisite
+cmd_requisite_program="awk,cat,cut,date,file,id,sed"          # Program requisite
 cmd_requisite_firewall4="iptables-legacy,iptables-nft"        # Firewall requisite
 cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"      # Firewall requisite
 cmd_license="LGPL v2, GPL v2"                                 # Program license
@@ -271,7 +271,6 @@ command_torify="$($cmd_where torify)"
 command_tracepath="$($cmd_where tracepath)"
 command_traceroute="$($cmd_where traceroute)"
 command_tree="$($cmd_where tree)"
-command_tree="$($cmd_where tree)"
 command_txt2html="$($cmd_where txt2html)"
 command_uname="$($cmd_where uname)"
 command_uuid="$($cmd_where uuid)"
@@ -400,6 +399,10 @@ without_first_option="options"
 ##########   english: necesary programs: programs path           ##########
 ##########   spanish: necesarios programas: ruta de programas    ##########
 #### :rutina-inicial-necesary-commands:
+####
+####
+#### system emulate command tree with command ls
+if [ "$command_tree" == "$NULL" ]; then command_tree="$command_ls -1"; fi
 ####
 ####
 #### system requisite utils
@@ -606,7 +609,7 @@ default_fullcfg_spa="$default_directory_template/default-full-spanish.cfg"
 file_default_preferences="$default_directory_preferences/default-preferences-$cmd_version"
 file_default_alias="$default_directory_preferences/default-alias-$cmd_version"
 file_default_logcmd="$default_directory_logcmd/default-logcmd-$cmd_version"
-file_default_usernotes="$default_directory_preferences/default-usernotes"
+file_default_usernotes="$default_directory_preferences/default-usernotes-all-versions"
 ####
 #### config output files
 file_output_pdf="$default_directory_pdf/$cmd_pdf_date-$cmd_guided_full.pdf"
@@ -2619,8 +2622,8 @@ echo "$text_md $text_md Folder pdf:              $default_directory_pdf $text_md
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ Preferences files ]   $text_md"
 echo "$text_md $text_md preferences:             $file_default_preferences"
-echo "$text_md $text_md usernotes:               $file_default_usernotes"
 echo "$text_md $text_md alias:                   $file_default_alias"             
+echo "$text_md $text_md usernotes:               $file_default_usernotes"
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ optional output ]     $text_md"
 echo "$text_md $text_md dialog cli:              $command_dialog $text_md"
@@ -2651,15 +2654,15 @@ echo "$text_md $text_md iptables nft:            $command_ip4tablesnft $text_md"
 echo "$text_md $text_md iptables legacy:         $command_ip4tableslegacy $text_md"
 echo "$text_md $text_md iptables nft:            $command_ip6tablesnft $text_md"
 echo "$text_md $text_md iptables legacy:         $command_ip6tableslegacy $text_md"
-echo "$text_md $text_md id command:              $command_id $text_md"
-echo "$text_md $text_md awk command:             $command_awk $text_md"
-echo "$text_md $text_md sed command:             $command_sed $text_md"
-echo "$text_md $text_md cat command:             $command_cat $text_md"
-echo "$text_md $text_md cut command:             $command_cut $text_md"
+echo "$text_md $text_md   id command:            $command_id $text_md"
+echo "$text_md $text_md  awk command:            $command_awk $text_md"
+echo "$text_md $text_md  cat command:            $command_cat $text_md"
+echo "$text_md $text_md  cut command:            $command_cut $text_md"
 echo "$text_md $text_md date command:            $command_date $text_md"
 echo "$text_md $text_md file command:            $command_file $text_md"
+echo "$text_md $text_md  sed command:            $command_sed $text_md"
 echo "$text_md $text_md $text_md"
-echo "$text_md $text_md Posible utils found in command: fwiptables utils $text_md"
+echo "$text_md $text_md Found all posible utils: fwiptables utils $text_md"
 ####
 ####
 exit; fi
