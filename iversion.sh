@@ -2817,8 +2817,8 @@ exit; fi
 if   [ "$first_option" == "clean-cache" ]; then
 ####
 ####
-echo "$title_md [ cleaning ] clean cache: deleting cache $cmd_internal"
-rm -R $directory_cache_necesary/*
+echo "$title_md $text_ok clean cache: $directory_cache_necesary"
+rm -R $directory_cache_necesary/* &> /dev/null
 ####
 ####
 exit; fi
