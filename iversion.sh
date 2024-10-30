@@ -5669,14 +5669,14 @@ if [ "$first_option" == "expert-gen-usernotes" ] || [ "$first_option" == "userno
 #### config to expert-gen-usernotes
 ####
 ####
-first_user_notes="$(echo $second_option | cut -d ',' -f 1)"
-second_user_notes="$(echo $third_option | cut -d ',' -f 1)"
+first_user_notes="$(echo $second_option)"
+second_user_notes="$(echo $third_option | sed 's/,/./g' )"
 ####
 ####
 #### add
 if [ "$first_user_notes" == "add" ] || [ "$first_user_notes" == "a" ]
-then echo $cmd_usernotes_date,$second_user_notes >> $file_default_usernotes
-echo "Content added: $second_user_notes" ; exit; fi
+then echo "$cmd_usernotes_date,$second_user_notes," >> $file_default_usernotes
+echo "Content added: $second_user_notes," ; exit; fi
 #### search
 if [ "$first_user_notes" == "search" ] || [ "$first_user_notes" == "s" ]
 then echo "List searched" ; 
@@ -5688,7 +5688,7 @@ then echo "List content:"; $command_cat $file_default_usernotes; exit; fi
 if [ "$first_user_notes" == "lines" ] || [ "$first_user_notes" == "n" ]
 then echo "Lines numbers:" ; $command_cat $file_default_usernotes | $command_wc -l ; exit; fi
 #### info
-echo " # Option: add|a search|s list|l number-lines|n"
+echo " # Option: a|add s|search l|list n|number-lines"
 echo " # Info: Use without comma, and quote when spaces: to add, to search"
 echo " # File: $file_default_usernotes"
 #### 
