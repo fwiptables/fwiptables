@@ -8359,30 +8359,34 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 014  "$text_md alias-read" \
 015  "$text_md alias-edit" \
 016  "$text_md alias-regen" \
-017  "$text_md tree-log" \
-018  "$text_md logcmd" \
-019  "$text_md ip4" \
-020  "$text_md ip6" \
-021  "$text_md speed-ip4" \
-022  "$text_md speed-ip6" \
-023  "$text_md sockets" \
-024  "$text_md notes" \
-025  "$text_md license" \
-026  "$text_md depends" \
-027  "$text_md info" \
-028  "$text_md version" \
-029  "$text_md options" \
-030  "$text_md info-options" \
-031  "$text_md nodes" \
-032  "$text_md date" \
-033  "$text_md free" \
-034  "$text_md expert" \
-035  "$text_md tree-conf" \
-036  "$text_md commands" \
-037  "$text_md variables" \
-038  "$text_md intro" \
-039  "$text_md download" \
-040  "$text_md install" \
+017  "$text_md logcmd" \
+018  "$text_md tree-log" \
+019  "$text_md tree-pdf" \
+020  "$text_md tree-conf" \
+021  "$text_md tree-cache" \
+022  "$text_md clean-cache" \
+023  "$text_md ip4" \
+024  "$text_md ip6" \
+025  "$text_md speed-ip4" \
+026  "$text_md speed-ip6" \
+027  "$text_md sockets" \
+028  "$text_md notes" \
+029  "$text_md license" \
+030  "$text_md depends" \
+031  "$text_md info" \
+032  "$text_md version" \
+033  "$text_md options" \
+034  "$text_md info-options" \
+035  "$text_md nodes" \
+036  "$text_md date" \
+037  "$text_md free" \
+038  "$text_md expert" \
+039  "$text_md tree-conf" \
+040  "$text_md commands" \
+041  "$text_md variables" \
+042  "$text_md intro" \
+043  "$text_md download" \
+044  "$text_md install" \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
@@ -8399,30 +8403,34 @@ case $menuprincipal in
 014) clear ; $cmd_internal $outcli alias-read ;;
 015) clear ; $cmd_internal alias-edit ;;
 016) clear ; $cmd_internal $outcli alias-regen ;;
-017) clear ; $cmd_internal $outcli txt tree-log ;;
-018) clear ; $cmd_internal $outcli txt logcmd ;;
-019) clear ; $cmd_internal $outcli ip4 ;;
-020) clear ; $cmd_internal $outcli ip6 ;;
-021) clear ; $cmd_internal $outcli speed-ip4 ;;
-022) clear ; $cmd_internal $outcli speed-ip6 ;;
-023) clear ; $cmd_internal $outcli sockets ;;
-024) clear ; $cmd_internal $outcli notes ;;
-025) clear ; $cmd_internal $outcli license ;;
-026) clear ; $cmd_internal $outcli depends ;;
-027) clear ; $cmd_internal $outcli info ;;
-028) clear ; $cmd_internal $outcli version ;;
-029) clear ; $cmd_internal $outcli options ;;
-030) clear ; $cmd_internal $outcli info-options ;;
-031) clear ; $cmd_internal $outcli nodes ;;
-032) clear ; $cmd_internal $outcli date ;;
-033) clear ; $cmd_internal $outcli free ;;
-034) clear ; $cmd_internal $outcli expert ;;
-035) clear ; $cmd_internal $outcli tree-conf ;;
-036) clear ; $cmd_internal $outcli commands ;;
-037) clear ; $cmd_internal $outcli variables ;;
-038) clear ; $cmd_internal $outcli intro ;;
-039) clear ; $cmd_internal $outcli download;;
-040) clear ; $cmd_internal $outcli install;;
+017) clear ; $cmd_internal logcmd ;;
+018) clear ; $cmd_internal tree-log ;;
+019) clear ; $cmd_internal tree-pdf ;;
+020) clear ; $cmd_internal tree-conf ;;
+021) clear ; $cmd_internal tree-cache ;;
+022) clear ; $cmd_internal $outcli clean-cache ;;
+023) clear ; $cmd_internal $outcli ip4 ;;
+024) clear ; $cmd_internal $outcli ip6 ;;
+025) clear ; $cmd_internal $outcli speed-ip4 ;;
+026) clear ; $cmd_internal $outcli speed-ip6 ;;
+027) clear ; $cmd_internal $outcli sockets ;;
+028) clear ; $cmd_internal $outcli notes ;;
+029) clear ; $cmd_internal $outcli license ;;
+030) clear ; $cmd_internal $outcli depends ;;
+031) clear ; $cmd_internal $outcli info ;;
+032) clear ; $cmd_internal $outcli version ;;
+033) clear ; $cmd_internal $outcli options ;;
+034) clear ; $cmd_internal $outcli info-options ;;
+035) clear ; $cmd_internal $outcli nodes ;;
+036) clear ; $cmd_internal $outcli date ;;
+037) clear ; $cmd_internal $outcli free ;;
+038) clear ; $cmd_internal $outcli expert ;;
+039) clear ; $cmd_internal $outcli tree-conf ;;
+040) clear ; $cmd_internal $outcli commands ;;
+041) clear ; $cmd_internal $outcli variables ;;
+042) clear ; $cmd_internal $outcli intro ;;
+043) clear ; $cmd_internal $outcli download;;
+044) clear ; $cmd_internal $outcli install;;
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
 $cmd_internal text-pause clear ; exit ;;
@@ -8564,30 +8572,33 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0704  "$text_md alias-read" \
 0705  "$text_md alias-edit" \
 0706  "$text_md alias-regen" \
-0707  "$text_md tree-log" \
-0708  "$text_md logcmd" \
-0709  "$text_md ip4" \
-0710  "$text_md ip6" \
-0711  "$text_md speed-ip4" \
-0712  "$text_md speed-ip6" \
-0713  "$text_md sockets" \
-0714  "$text_md notes" \
-0715  "$text_md license" \
-0715  "$text_md depends" \
-0716  "$text_md info" \
-0717  "$text_md version" \
-0718  "$text_md options" \
-0719  "$text_md info-options" \
-0721  "$text_md nodes" \
-0722  "$text_md date" \
-0723  "$text_md free" \
-0724  "$text_md expert" \
-0725  "$text_md tree-conf" \
-0726  "$text_md commands" \
-0727  "$text_md variables" \
-0728  "$text_md intro" \
-0729  "$text_md download" \
-0730  "$text_md install" \
+0707  "$text_md logcmd" \
+0708  "$text_md tree-log" \
+0709  "$text_md tree-pdf" \
+0710  "$text_md tree-conf" \
+0711  "$text_md tree-cache" \
+0712  "$text_md clean-cache" \
+0713  "$text_md ip4" \
+0714  "$text_md ip6" \
+0715  "$text_md speed-ip4" \
+0716  "$text_md speed-ip6" \
+0717  "$text_md sockets" \
+0718  "$text_md notes" \
+0719  "$text_md license" \
+0720  "$text_md depends" \
+0721  "$text_md info" \
+0722  "$text_md version" \
+0723  "$text_md options" \
+0724  "$text_md info-options" \
+0725  "$text_md nodes" \
+0726  "$text_md date" \
+0727  "$text_md free" \
+0728  "$text_md expert" \
+0729  "$text_md commands" \
+0730  "$text_md variables" \
+0731  "$text_md intro" \
+0732  "$text_md download" \
+0733  "$text_md install" \
 3>&1 1>&2 2>&3 )"
 ################################################################################
 #### 
@@ -8748,30 +8759,33 @@ $cmd_internal del-custom $archivo ;;
 0704) clear ; $cmd_internal $outcli alias-read ;;
 0705) clear ; $cmd_internal alias-edit ;;
 0706) clear ; $cmd_internal $outcli alias-regen ;;
-0707) clear ; $cmd_internal txt tree-log ;;
-0708) clear ; $cmd_internal txt logcmd ;;
-0709) clear ; $cmd_internal $outcli ip4 ;;
-0710) clear ; $cmd_internal $outcli ip6 ;;
-0711) clear ; $cmd_internal $outcli speed-ip4 ;;
-0712) clear ; $cmd_internal $outcli speed-ip6 ;;
-0713) clear ; $cmd_internal $outcli sockets ;;
-0714) clear ; $cmd_internal $outcli notes ;;
-0715) clear ; $cmd_internal $outcli license ;;
-0716) clear ; $cmd_internal $outcli depends ;;
-0717) clear ; $cmd_internal $outcli info ;;
-0718) clear ; $cmd_internal $outcli version ;;
-0719) clear ; $cmd_internal $outcli options ;;
-0720) clear ; $cmd_internal $outcli info-options ;;
-0721) clear ; $cmd_internal $outcli nodes ;;
-0722) clear ; $cmd_internal $outcli date ;;
-0723) clear ; $cmd_internal $outcli free ;;
-0724) clear ; $cmd_internal $outcli expert ;;
-0725) clear ; $cmd_internal $outcli tree-conf ;;
-0726) clear ; $cmd_internal $outcli commands ;;
-0727) clear ; $cmd_internal $outcli variables ;;
-0728) clear ; $cmd_internal $outcli intro ;;
-0729) clear ; $cmd_internal $outcli download;;
-0730) clear ; $cmd_internal $outcli install;;
+0707) clear ; $cmd_internal txt logcmd ;;
+0708) clear ; $cmd_internal txt tree-log ;;
+0709) clear ; $cmd_internal txt tree-pdf ;;
+0710) clear ; $cmd_internal txt tree-conf ;;
+0711) clear ; $cmd_internal txt tree-cache ;;
+0712) clear ; $cmd_internal txt clean-cache ;;
+0713) clear ; $cmd_internal $outcli ip4 ;;
+0714) clear ; $cmd_internal $outcli ip6 ;;
+0715) clear ; $cmd_internal $outcli speed-ip4 ;;
+0716) clear ; $cmd_internal $outcli speed-ip6 ;;
+0717) clear ; $cmd_internal $outcli sockets ;;
+0718) clear ; $cmd_internal $outcli notes ;;
+0719) clear ; $cmd_internal $outcli license ;;
+0720) clear ; $cmd_internal $outcli depends ;;
+0721) clear ; $cmd_internal $outcli info ;;
+0722) clear ; $cmd_internal $outcli version ;;
+0723) clear ; $cmd_internal $outcli options ;;
+0724) clear ; $cmd_internal $outcli info-options ;;
+0725) clear ; $cmd_internal $outcli nodes ;;
+0726) clear ; $cmd_internal $outcli date ;;
+0727) clear ; $cmd_internal $outcli free ;;
+0728) clear ; $cmd_internal $outcli expert ;;
+0729) clear ; $cmd_internal $outcli commands ;;
+0730) clear ; $cmd_internal $outcli variables ;;
+0731) clear ; $cmd_internal $outcli intro ;;
+0732) clear ; $cmd_internal $outcli download;;
+0733) clear ; $cmd_internal $outcli install;;
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
 $cmd_internal text-pause clear ; exit ;;
