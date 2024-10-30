@@ -1250,8 +1250,8 @@ exit ;; esac ; fi
 ####
 ####
 #### :rutina-final-alias-esquive:
-##########    ALIAS CONFIG
-##########    ALIAS CONFIG
+##########    ALIAS CONFIG NARROW
+##########    ALIAS CONFIG NARROW
 #### :rutina-inicial-alias-narrowtxt:
 ####
 ####
@@ -1283,8 +1283,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-alias-narrowtxt:
-##########    ALIAS CONFIG
-##########    ALIAS CONFIG
+##########    ALIAS CONFIG TXT
+##########    ALIAS CONFIG TXT
 #### :rutina-inicial-alias-txt:
 ####
 ####
@@ -1301,8 +1301,8 @@ $command_cat  $file_output_cache | $command_grep -E -v Warning: ; exit ;;
 ####
 ####
 #### :rutina-final-alias-text:
-##########    ALIAS CONFIG
-##########    ALIAS CONFIG
+##########    ALIAS CONFIG CLI
+##########    ALIAS CONFIG CLI
 #### :rutina-inicial-alias-cli:
 ####
 ####
@@ -1329,8 +1329,8 @@ esac ; fi
 ####
 ####
 #### :rutina-final-alias-cli:
-##########    ALIAS CONFIG
-##########    ALIAS CONFIG
+##########    ALIAS CONFIG LOG
+##########    ALIAS CONFIG LOG
 #### :rutina-inicial-alias-log:
 ####
 ####
@@ -1342,7 +1342,6 @@ if [ "$first_option" == "log" ]
 ####
 then echo "$head_waiting_log"
 $cmd_internal $second_option $third_option $quad_option &> $file_output_log
-$command_cat $file_output_log | $command_grep -E -v Warning: &> $file_output_log
 echo "$title_md [ file ] $file_output_log"
 ####
 ####
