@@ -612,7 +612,7 @@ default_fullcfg_spa="$default_directory_template/default-full-spanish.cfg"
 #### config files default
 file_default_preferences="$default_directory_preferences/default-preferences-$cmd_version"
 file_default_alias="$default_directory_preferences/default-alias-$cmd_version"
-file_default_logcmd="$default_directory_logcmd/default-logcmd-$cmd_version"
+file_default_logcmd="$default_directory_logcmd/default-logcmd-$cmd_version-$cmd_archive_date"
 file_default_usernotes="$default_directory_preferences/default-usernotes-all-versions"
 ####
 #### config output files
@@ -1479,10 +1479,12 @@ if [ "$first_option" == "cat-logcmd" ] || [ "$first_option" == "autolog" ] ; the
 ####
 echo "$title_md $text_info [ last 50 lines from file showed ] [ $file_default_logcmd ]"
 if [ ! -f $file_default_logcmd ]; then touch $file_default_logcmd ; fi
-echo
+echo "$title_md $text_md list all month"
+$command_tree $default_directory_logcmd
+echo "$title_md $file_default_logcmd"
 $command_cat   "$file_default_logcmd" | tail -50
 echo
-echo "$title_md $text_info [ last 50 lines from file showed ] [ $file_default_logcmd ]"
+echo "$title_md $text_info [ latest 50 lines from this file ] [ $file_default_logcmd ]"
 ####
 ####
 exit; fi
@@ -1544,7 +1546,7 @@ echo "$text_md $text_md   Internal Firewall: $cmd_internal             $text_md"
 echo "$text_md $text_md   Short Description: $cmd_shortdescription     $text_md"
 echo "$text_md $text_md    Long Description: $cmd_longdescription      $text_md"
 echo "$text_md $text_md      Data Directory: $directory_data_necesary  $text_md"
-echo "$text_md $text_md     Cache Directory: $directory_cache_necesary $text_md"
+echo "$text_md $text_md     Cache Directory: $directory_cache_basenecesary $text_md"
 echo "$text_md $text_md      Finder Program: $cmd_where                $text_md"
 echo "$text_md $text_md   Requisite Program: $cmd_requisite_program    $text_md"
 echo "$text_md $text_md Requisite Firewall4: $cmd_requisite_firewall4  $text_md"
@@ -1922,6 +1924,7 @@ echo "#ntpdate-client=date"
 echo "#list-allrules=list-alltables"
 echo "#preferences-modify=preferences-edit"
 echo "#alias-modify=alias-edit"
+echo "#logcmd=cat-logcmd"
 echo "#ver=version"
 echo "#all-names=names"
 echo "#ram-free=free"
@@ -2616,12 +2619,12 @@ if [ "$first_option" == "depends" ]; then
 ####
 echo "$title_md $text_md [ Configuration files ] $text_md"
 echo "$text_md $text_md Directory  data:         $directory_data_necesary $text_md"
-echo "$text_md $text_md Directory cache:         $directory_cache_necesary $text_md"
+echo "$text_md $text_md Directory cache:         $directory_basecache_basenecesary $text_md"
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ Log files ]           $text_md"
 echo "$text_md $text_md File logcmd:             $file_default_logcmd $text_md"
-echo "$text_md $text_md Folder log:              $default_directory_logs $text_md"
-echo "$text_md $text_md Folder pdf:              $default_directory_pdf $text_md"
+echo "$text_md $text_md Folder log:              $default_directory_baselogs $text_md"
+echo "$text_md $text_md Folder pdf:              $default_directory_basepdf $text_md"
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ Preferences files ]   $text_md"
 echo "$text_md $text_md preferences:             $file_default_preferences"
@@ -2650,7 +2653,7 @@ echo "$text_md $text_md Automatic gui:           $favorite_realpath_graphicalldi
 echo "$text_md $text_md Automatic pdf:           $command_convert $text_md"
 echo "$text_md $text_md Automatic editor:        $favorite_text_editor $text_md"
 echo "$text_md $text_md Automatic browser:       $favorite_text_browser $text_md"
-echo "$text_md $text_md Automatic ntpdate:       $favorite_date_command $text_md"
+echo "$text_md $text_md Automatic date:          $favorite_date_command $text_md"
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ Necesary utils ]      $text_md"
 echo "$text_md $text_md iptables nft:            $command_ip4tablesnft $text_md"
@@ -3511,32 +3514,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-autosave:
-##########    english: ntp: update the date and time    ##########
-##########    spanish: ntp: actualiza la fecha y hora   ##########
-#### :rutina-inicial-ntp:
-####
-####
-if   [ "$first_option" == "ntp" ]; then
-####
-####
-echo "$title_md [ $first_option ] \
-[ update the computer time and date from internet ] "
-echo
-if [ "$favorite_date_command" == "$NULL" ]
-then echo "$text_md $text_fail [ Install one ntp client ]" ; fi
-echo "$text_md Old date: $cmd_get_date"
-echo "$text_md [ Updating the time and the date .. ]"
-pool0="0.debian.pool.ntp.org"
-pool1="1.debian.pool.ntp.org"
-pool2="2.debian.pool.ntp.org"
-pool3="3.debian.pool.ntp.org"
-$favorite_date_command $pool0 && echo -e "\n With New date: $cmd_get_date"
-####
-####
-exit; fi
-####
-####
-#### :rutina-final-ntp:
 ##########    english: options: wellcome with semi help    ##########
 ##########    spanish: options: bienvenida con semi ayuda  ##########
 #### :rutina-inicial-options:
@@ -5483,7 +5460,7 @@ echo "$title_md $text_md  [ fwiptables location ]                          $text
 echo "$text_md $text_md $text_md"
 echo "$text_md $text_md  File    Location:   $cmd_directory/$cmd_filename  $text_md"
 echo "$text_md $text_md  Config Directory:   $directory_data_necesary      $text_md"
-echo "$text_md $text_md  Cache  Directory:   $directory_cache_necesary     $text_md "
+echo "$text_md $text_md  Cache  Directory:   $directory_cache_basenecesary $text_md "
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ fwiptables install ]                      $text_md"
 echo "$text_md $text_md $text_md"
@@ -5628,14 +5605,11 @@ exit; fi
 if [ "$first_option" == "install" ]; then
 ####
 ####
+#### message
 echo "$text_md Waiting several seconds, while create new configuration"
-####
-####
-####  english: copy the file to temporal folder and install
-####  spanish: copia el archivo a carpeta final
 #### 
 #### 
-#### echo "$title_md $text_info [ $cmd_filename installing.. ]"
+####  copy
 cp $cmd_notinstalled $cmd_installed && 
 chmod 755 $cmd_installed &> /dev/null &&
 echo "$text_md $text_ok Installed $cmd_name" &&
@@ -5643,20 +5617,20 @@ echo "$text_md $text_file   [$cmd_installed]" ||
 echo "$text_md $text_fail Not nstall"
 ####
 ####
-####  english: generate fwiptables default config and templates
-####  spanish: genera fwiptables default configuracion y plantillas
-####
-####
 #### preferences-regen
 $cmd_notinstalled preferences-regen &> /dev/null &&
 echo "$text_md $text_ok Updated preferences"
 echo "$text_md $text_file   [$file_default_preferences]" ||
 echo "$text_md $text_fail Not update preferences"
+####
+####
 #### alias-regen
 $cmd_notinstalled alias-regen &> /dev/null &&
 echo "$text_md $text_ok Updated alias" &&
 echo "$text_md $text_file   [$file_default_alias]" ||
 echo "$text_md $text_fail Not update alias"
+####
+####
 #### templates-regen
 $cmd_notinstalled templates-regen &> /dev/null &&
 echo "$text_md $text_ok Updated templates" &&
@@ -5664,13 +5638,16 @@ echo "$text_md $text_folder [$default_directory_template]" ||
 echo "$text_md $text_fail Not update templates"
 ####
 ####
-####   english: Show final status from installer: program version
-####   spanish: Muestra el estatus final desde el instalador: program version
+#### fonts
+echo "$text_md Source install: $cmd_notinstalled"
+echo "$text_md Final  install: $cmd_installed"
 ####
 ####
-#### if [ -f "$cmd_installed" ]; then $cmd_installed version ;
-#### else echo "# Not installed in $cmd_installed"; fi
-echo "$text_md $text_ok $cmd_installed"
+#### comprobe
+if [ -f "$cmd_installed" ]
+then echo "$text_md $text_ok Installed $cmd_name"
+else echo "$text_md $text_fail Not installed $cmd_name"
+fi
 #### 
 ####
 exit; fi
@@ -6077,7 +6054,7 @@ $cmd_internal version | $command_grep -E -i "version"
 #### latest stable
 ####
 echo "$title_md Show the version for fwiptables stable latest:"
-descarga="$default_directory_logs/fwiptables"
+descarga="$directory_cache_basenecesary/$cmd_get_date-fwiptables-latest"
 $command_curl $web_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
 $command_grep -E -i "version"
@@ -6086,7 +6063,7 @@ rm $descarga
 #### latest unstable
 ####
 echo "$title_md Show the version for fwiptables unstable latest:"
-descarga="$default_directory_logs/fwiptables"
+descarga="$directory_cache_basenecesary/$cmd_get_date-fwiptables-stable"
 $command_curl $git_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
 $command_grep -E -i "version"
@@ -6110,7 +6087,7 @@ echo "$title_md Install curl to download and to install stable latest version"; 
 ####
 ####
 echo "$title_md Downloading fwiptables stable latest"
-descarga="$directory_cache_necesary/fwiptables-stable-bash"
+descarga="$directory_cache_basenecesary/$cmd_get_date-fwiptables-latest"
 rm $descarga &> /dev/null
 $command_curl $web_download_sourceforge -s -L -o $descarga || echo "Without internet" \
 && chmod ugo+x $descarga &> /dev/null && $descarga install
@@ -6131,7 +6108,7 @@ echo "$title_md Install curl to download and to install unstable latest version"
 ####
 ####
 echo "$title_md Downloading fwiptables development latest"
-descarga="$directory_cache_necesary/fwiptables-unstable-bash"
+descarga="$directory_cache_basenecesary/$cmd_get_date-fwiptables-unstable"
 rm $descarga  &> /dev/null
 $command_curl $git_download_sourceforge -s -L -o $descarga || echo "Without internet" \
 && chmod ugo+x $descarga &> /dev/null && $descarga install
