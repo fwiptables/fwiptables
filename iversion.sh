@@ -118,6 +118,7 @@ cmd_xdg="/run/user/0"                                         # Folder XDG
 cmd_format=$(file $0 | \
 awk '{print $2 "_" $3 "_" $4}')                               # File format
 #### info date logs var in log,logcmd,..
+cmd_archive_date="$(date +YEAR-%Y-MONTH-%m)"                  # archive date year_month_
 cmd_get_date="$(date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"            # how format date
 cmd_logcmd_date="$cmd_get_date"                               # format pdf date
 cmd_usernotes_date="$cmd_get_date"                            # format usernotes date
@@ -223,7 +224,7 @@ command_links2="$($cmd_where links2)"
 command_logname="$($cmd_where logname)"
 command_lpinfo="$($cmd_where lpinfo)"
 command_lpstat="$($cmd_where lpstat)"
-command_ls="$($cmd_where ls)"
+command_ls="$($cmd_where ls) -1 -R"
 command_lsblk="$($cmd_where lsblk)"
 command_lscpu="$($cmd_where lscpu)"
 command_lsgpu="$($cmd_where lsgpu)"
@@ -402,7 +403,7 @@ without_first_option="options"
 ####
 ####
 #### system emulate command tree with command ls
-if [ "$command_tree" == "$NULL" ]; then command_tree="$command_ls -1"; fi
+if [ "$command_tree" == "$NULL" ]; then command_tree="$command_ls"; fi
 ####
 ####
 #### system requisite utils
@@ -500,7 +501,8 @@ directory_cache_home="$default_root_home/.cache/$cmd_filename"  ### used
 ####
 ####
 #### cache 
-directory_cache_necesary="$directory_cache_home"
+directory_cache_basenecesary="$directory_cache_home"
+directory_cache_necesary="$directory_cache_home/$cmd_archive_date"
 ####
 ####
 #### config
@@ -513,8 +515,10 @@ default_directory_control="$directory_data_necesary/fwiptables-control"
 default_directory_custom="$directory_data_necesary/fwiptables-custom"
 default_directory_preferences="$directory_data_necesary/fwiptables-preferences"
 default_directory_logcmd="$directory_data_necesary/fwiptables-logcmd"
-default_directory_logs="$directory_data_necesary/fwiptables-log"
-default_directory_pdf="$directory_data_necesary/fwiptables-pdf"
+default_directory_baselogs="$directory_data_necesary/fwiptables-log"
+default_directory_basepdf="$directory_data_necesary/fwiptables-pdf"
+default_directory_logs="$directory_data_necesary/fwiptables-log/$cmd_archive_date"
+default_directory_pdf="$directory_data_necesary/fwiptables-pdf/$cmd_archive_date"
 default_directory_wpa="$directory_data_necesary/fwiptables-wpa"
 default_directory_benchmarkram="$directory_data_necesary/fwiptables-benchmarkram"
 default_directory_benchmarkdisk="$directory_data_necesary/fwiptables-benchmarkdisk"
@@ -1439,9 +1443,9 @@ fi
 if [ "$first_option" == "tree-log" ] ; then
 ####
 ####
-$command_tree $default_directory_logs
+$command_tree $default_directory_baselogs
 echo 
-echo "### ### [ folder: ] [ $default_directory_logs ]"
+echo "### ### [ folder: ] [ $default_directory_baselogs ]"
 ####
 ####
 exit; fi
@@ -1456,9 +1460,9 @@ exit; fi
 if [ "$first_option" == "tree-pdf" ] ; then
 ####
 ####
-$command_tree $default_directory_pdf
+$command_tree $default_directory_basepdf
 echo 
-echo "### ### [ folder: ] [ $default_directory_pdf ]"
+echo "### ### [ folder: ] [ $default_directory_basepdf ]"
 ####
 ####
 exit; fi
@@ -2808,7 +2812,7 @@ if   [ "$command_tree" == "$NULL" ] ; then
 echo "$title_md $text_fail please install tree command" ; exit ; fi
 ####
 ####
-$command_tree $directory_cache_necesary
+$command_tree $directory_cache_basenecesary
 ####
 ####
 exit; fi
@@ -2823,8 +2827,8 @@ exit; fi
 if   [ "$first_option" == "clean-cache" ]; then
 ####
 ####
-echo "$title_md $text_ok clean cache: $directory_cache_necesary"
-rm -R $directory_cache_necesary/* &> /dev/null
+echo "$title_md $text_ok clean cache: $directory_cache_basenecesary"
+rm -R $directory_cache_basenecesary/* &> /dev/null
 ####
 ####
 exit; fi
@@ -5666,7 +5670,7 @@ echo "$text_md $text_fail Not update templates"
 ####
 #### if [ -f "$cmd_installed" ]; then $cmd_installed version ;
 #### else echo "# Not installed in $cmd_installed"; fi
-echo "$title_md $text_ok $cmd_installed"
+echo "$text_md $text_ok $cmd_installed"
 #### 
 ####
 exit; fi
