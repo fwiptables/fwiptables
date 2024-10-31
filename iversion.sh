@@ -327,7 +327,7 @@ allow_shield_maxtries="no"
 allow_show_option="no"  
 allow_show_time="no"
 allow_string_allowed="no"   
-allow_string_denied="no"     
+allow_string_dropped="no"     
 allow_system_ulog="no"   
 allow_use_ipv4=""                         
 allow_use_ipv6=""                         
@@ -632,9 +632,9 @@ file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenbla
 ####
 title_md="### " ;
 text_md="  " ;
-text_ok="[ _ok_ ]"
-text_info="[ info ]"
-text_fail="[ fail ]"
+text_ok="<  ok  >"
+text_info="< info >"
+text_fail="< fail >"
 head_waiting_all=" [ Wait several seconds.. ]  [ press control-c to cancel ] "
 head_waiting_txt="$title_md $text_info [ txt ] $head_waiting_all "
 head_waiting_narrow="$title_md $text_info [ narrow ] $head_waiting_all "
@@ -1912,6 +1912,7 @@ echo "#netsystem=firewall-netsystem"
 echo "#easy=firewall-netsystem"
 echo "#expert=options-expert"
 echo "#examples=options-examples"
+echo "#ntpdate-client=date"
 echo "#list-allrules=list-alltables"
 echo "#preferences-modify=preferences-edit"
 echo "#alias-modify=alias-edit"
@@ -3110,7 +3111,7 @@ echo "$title_md BEGIN OPTIONAL $title_md "
 echo "$title_md INICIO .......... Opciones opcionales .......... .......... $title_md "
 echo "$title_md choose void or no $title_md "
 echo "$title_md Permitir Otras Opciones, modificar con vacio o no "
-echo "allow_string_denied=no "
+echo "allow_string_dropped=no "
 echo "$title_md vacio para denegar cadena de cabecera, o no para no "
 echo "allow_string_allowed=no "
 echo "$title_md vacio para permitir cadena, o no para no "
@@ -3364,7 +3365,7 @@ echo "$title_md BEGIN OPTIONAL $title_md "
 echo "$title_md .......... BEGIN Optional options .......... .......... $title_md "
 echo "$title_md choose void or no $title_md "
 echo "$title_md Allow Other Options,  modify with void, or no "
-echo "allow_string_denied=no "
+echo "allow_string_dropped=no "
 echo "$title_md void to if drop string, or no to no "
 echo "allow_string_allowed=no "
 echo "$title_md void to if allow string, or no to no "
@@ -6306,32 +6307,33 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-speed-cpu:
-##########    english: ntpdate-client: update the date and time    ##########
-##########    spanish: ntpdate-client: actualiza la fecha y hora   ##########
-#### :rutina-inicial-ntpdate-client:
+##########    english: date: update the date and time    ##########
+##########    spanish: date: actualiza la fecha y hora   ##########
+#### :rutina-inicial-date:
 ####
 ####
-if [ "$first_option" == "date" ] || [ "$first_option" == "ntpdate-client" ]; then
+if [ "$first_option" == "date" ]; then
 ####
 ####
 echo "$title_md [ $first_option ] \
 [ update the computer time and date from internet ] "
-echo
 if [ "$favorite_date_command" == "$NULL" ]; then
 echo "$text_md $text_fail [ Install one ntp client ]" ; fi
-echo "$text_md Old date: $cmd_get_date"
+echo "$text_md Old date: $($command_date)"
 echo "$text_md [ Updating the time and the date .. ]"
 pool0="0.debian.pool.ntp.org"
 pool1="1.debian.pool.ntp.org"
 pool2="2.debian.pool.ntp.org"
 pool3="3.debian.pool.ntp.org"
-$favorite_date_command $pool0 && echo -e "\n With New date: $cmd_get_date"
+$favorite_date_command $pool0 && 
+echo "$text_md New date: $($command_date)" ||
+echo "$text_md $text_fail No connection to get date"
 ####
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-ntpdate-client:
+#### :rutina-final-date:
 ##########    english: wizard: wizard-mini      ##########
 ##########    spanish: wizard: mini-asistente   ##########
 #### :rutina-inicial-wizard:
@@ -10325,7 +10327,7 @@ server_port_tcp="ssh" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -10420,7 +10422,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -10515,7 +10517,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -10610,7 +10612,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -10707,7 +10709,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -10802,7 +10804,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -10897,7 +10899,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -10992,7 +10994,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -11052,7 +11054,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -11148,7 +11150,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -11244,7 +11246,7 @@ server_port_tcp="9091,51413" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -11340,7 +11342,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -11436,7 +11438,7 @@ server_port_tcp="9000:9170" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -11537,7 +11539,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -11649,7 +11651,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -11745,7 +11747,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -11841,7 +11843,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -11938,7 +11940,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -12035,7 +12037,7 @@ server_port_tcp="9000:9170" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -12131,7 +12133,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -12227,7 +12229,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -12323,7 +12325,7 @@ server_port_tcp="14950:15050" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -12419,7 +12421,7 @@ server_port_tcp="25000:35000" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -12515,7 +12517,7 @@ server_port_tcp="5555:5556" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -12611,7 +12613,7 @@ server_port_tcp="7396" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -12706,7 +12708,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -12801,7 +12803,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -12896,7 +12898,7 @@ server_port_tcp="" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -12992,7 +12994,7 @@ server_port_tcp="ssh,http,https,http-alt" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -13088,7 +13090,7 @@ server_port_tcp="ssh,5900:5910" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -13184,7 +13186,7 @@ server_port_tcp="ssh,http,https,ftp,ftp-data,ftps,ftps-data" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -13280,7 +13282,7 @@ server_port_tcp="ssh,http,https,http-alt" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 allow_forward_ip4=
 # allow_forward_ip6= 
@@ -13376,7 +13378,7 @@ server_port_tcp="ssh,http,https,http-alt,3128" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -13478,7 +13480,7 @@ server_port_tcp="ssh,http,https,119,433,563" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -13592,7 +13594,7 @@ server_port_tcp="ssh,http,https,25,119,433,563,25:26,995,110,465,587,143,993" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -13688,7 +13690,7 @@ server_port_udp="ssh,ntp,domain,domain-s,ldap,636,137:139" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -13784,7 +13786,7 @@ server_port_tcp="ssh,printer,ipp" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -13880,7 +13882,7 @@ server_port_tcp="ssh" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -13976,7 +13978,7 @@ server_port_tcp="ssh,telnet" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -14073,7 +14075,7 @@ server_port_tcp="ssh,http,https,10000,3306,5432" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -14171,7 +14173,7 @@ server_port_tcp="ssh,5060" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -14267,7 +14269,7 @@ server_port_tcp="ssh,64738" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -14367,7 +14369,7 @@ server_port_tcp="ssh,30033,10011,10022" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -14467,7 +14469,7 @@ server_port_tcp="ssh,5432,3306,3360" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -14563,7 +14565,7 @@ server_port_tcp="ssh,ircs-u,ircd" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -14659,7 +14661,7 @@ server_port_tcp="ssh" ;
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-# allow_string_denied=no 
+# allow_string_dropped=no 
 # allow_string_allowed=no 
 # allow_forward_ip4=no 
 # allow_forward_ip6=no 
@@ -14760,7 +14762,7 @@ case "$config_close_deny" in "DROP"|"REJECT") ;;
 ####
 ####
 case "$NULL" in "$allow_autosave")         ;;  *)  allow_autosave="no" ;;  esac
-case "$NULL" in "$allow_string_denied")    ;;  *)  allow_string_denied="no" ;;  esac
+case "$NULL" in "$allow_string_dropped")    ;;  *)  allow_string_dropped="no" ;;  esac
 case "$NULL" in "$allow_dmz_ip4")          ;;  *)  allow_dmz_ip4="no" ;; esac
 case "$NULL" in "$allow_dmz_ip6")          ;;  *)  allow_dmz_ip6="no" ;; esac
 case "$NULL" in "$allow_forward_ip4")      ;;  *)  allow_forward_ip4="no" ;; esac
@@ -16003,7 +16005,7 @@ fi
 ####################################### spanish: deniega para cadena in cabecera
 ####
 ####
-if [ "$allow_string_denied" == "$NULL" ]; then
+if [ "$allow_string_dropped" == "$NULL" ]; then
 ####
 for string_close in $(echo $config_string_denied | $command_sed 's/,/ /g'); do
 ####
