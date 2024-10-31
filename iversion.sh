@@ -4095,7 +4095,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "eraserules" ];  then 
-echo "$title_md [ $first_option ] [ Deleted all iptables ipv4/ipv6 rules ]"
+echo "$title_md [ $first_option ] [ Deleting all iptables ipv4/ipv6 rules ]"
 ####
 ####
 #### english: table policy 
@@ -4143,6 +4143,9 @@ $cmd_internal eraserules4 &> /dev/null
 $cmd_internal eraserules6 &> /dev/null
 ####
 ####
+echo "$title_md $text_ok eraserules done"
+####
+####
 exit; fi
 ####
 ####
@@ -4155,7 +4158,7 @@ exit; fi
 if [ "$first_option" == "eraserules4" ]; then  
 ####
 ####
-echo "$title_md [ $first_option ] [ Deleted ip4 iptables rules ] "
+echo "$title_md [ $first_option ] [ Deleting ip4 iptables rules ] "
 ####
 ####
 #### english: table policy 
@@ -4231,6 +4234,9 @@ $command_ip4tableslegacy -t security -P FORWARD ACCEPT &> /dev/null
 $command_ip4tableslegacy -t security -P OUTPUT ACCEPT &> /dev/null
 ####
 ####
+echo "$title_md $text_ok eraserules4 done"
+####
+####
 exit; fi
 ####
 ####
@@ -4243,7 +4249,7 @@ exit; fi
 if [ "$first_option" == "eraserules6" ]; then  
 ####
 ####
-echo "$title_md [ $first_option ] [ Deleted ip6 iptables rules ] "
+echo "$title_md [ $first_option ] [ Deleting ip6 iptables rules ] "
 ####
 ####
 #### english: table policy 
@@ -4315,6 +4321,9 @@ $command_ip6tablesnft -t security -P OUTPUT ACCEPT &> /dev/null
 $command_ip6tableslegacy -t security -P INPUT ACCEPT &> /dev/null
 $command_ip6tableslegacy -t security -P FORWARD ACCEPT &> /dev/null
 $command_ip6tableslegacy -t security -P OUTPUT ACCEPT &> /dev/null
+####
+####
+echo "$title_md $text_ok eraserules6 done"
 ####
 ####
 exit; fi
@@ -5655,7 +5664,7 @@ echo "# FAIL. Updated templates"
 ####
 #### if [ -f "$cmd_installed" ]; then $cmd_installed version ;
 #### else echo "# Not installed in $cmd_installed"; fi
-echo "# READY. $cmd_installed"
+echo "$title_md $text_ok READY. $cmd_installed"
 #### 
 ####
 exit; fi
