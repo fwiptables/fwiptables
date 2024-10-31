@@ -5656,7 +5656,7 @@ echo "$text_md $text_fail Not update alias"
 #### templates-regen
 $cmd_notinstalled templates-regen &> /dev/null &&
 echo "$text_md $text_ok Updated templates" &&
-echo "$text_md $text_foder [$default_directory_template]" || 
+echo "$text_md $text_folder [$default_directory_template]" || 
 echo "$text_md $text_fail Not update templates"
 ####
 ####
