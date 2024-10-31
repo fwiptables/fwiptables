@@ -630,11 +630,13 @@ file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenbla
 #### :rutina-inicial-variables-header:
 ####
 ####
-title_md="### " ;
-text_md="  " ;
+text_md="  "
+title_md="### "
 text_ok="<  ok  >"
 text_info="< info >"
 text_fail="< fail >"
+text_file="< file >"
+text_folder="<folder>"
 head_waiting_all=" [ Wait several seconds.. ]  [ press control-c to cancel ] "
 head_waiting_txt="$title_md $text_info [ txt ] $head_waiting_all "
 head_waiting_narrow="$title_md $text_info [ narrow ] $head_waiting_all "
@@ -1342,7 +1344,7 @@ if [ "$first_option" == "log" ]
 ####
 then echo "$head_waiting_log"
 $cmd_internal $second_option $third_option $quad_option &> $file_output_log
-echo "$title_md [ file ] $file_output_log"
+echo "$title_md $text_file $file_output_log"
 ####
 ####
 exit ; fi
@@ -1362,7 +1364,7 @@ sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &>
 #### send print to home output fwiptables.pdf
 $cmd_internal $second_option $third_option $quad_option | \
 $command_convert -page A3 text:- $file_output_pdf
-echo "$title_md [ file ] $file_output_pdf"
+echo "$title_md $text_file $file_output_pdf"
 ####
 ####
 exit ; fi
@@ -5430,7 +5432,7 @@ exit; fi
 if [ "$first_option" == "reset" ]; then 
 ####
 ####
-echo "$title_md $text_info [ Reseting the firewall ]"
+echo "$title_md $text_info [ Reseting the firewall, stop-and-continue ]"
 $cmd_internal stop &> /dev/null
 $cmd_internal continue &> /dev/null
 echo "$title_md $text_ok [ firewall reseted ]"
@@ -5622,7 +5624,7 @@ exit; fi
 if [ "$first_option" == "install" ]; then
 ####
 ####
-echo "# Waiting several seconds, while create new configuration"
+echo "$text_md Waiting several seconds, while create new configuration"
 ####
 ####
 ####  english: copy the file to temporal folder and install
@@ -5632,9 +5634,9 @@ echo "# Waiting several seconds, while create new configuration"
 #### echo "$title_md $text_info [ $cmd_filename installing.. ]"
 cp $cmd_notinstalled $cmd_installed && 
 chmod 755 $cmd_installed &> /dev/null &&
-echo "# OK. Installed $cmd_name" &&
-echo "# [file]   [$cmd_installed]" ||
-echo "# FAIL. Installed"
+echo "$text_md $text_ok Installed $cmd_name" &&
+echo "$text_md $text_file   [$cmd_installed]" ||
+echo "$text_md $text_fail Not nstall"
 ####
 ####
 ####  english: generate fwiptables default config and templates
@@ -5643,19 +5645,19 @@ echo "# FAIL. Installed"
 ####
 #### preferences-regen
 $cmd_notinstalled preferences-regen &> /dev/null &&
-echo "# OK. Updated preferences"
-echo "# [file]   [$file_default_preferences]" ||
-echo "# FAIL. Updated preferences"
+echo "$text_md $text_ok Updated preferences"
+echo "$text_md $text_file   [$file_default_preferences]" ||
+echo "$text_md $text_fail Not update preferences"
 #### alias-regen
 $cmd_notinstalled alias-regen &> /dev/null &&
-echo "# OK. Updated alias" &&
-echo "# [file]   [$file_default_alias]" ||
-echo "# FAIL. Updated alias"
+echo "$text_md $text_ok Updated alias" &&
+echo "$text_md $text_file   [$file_default_alias]" ||
+echo "$text_md $text_fail Not update alias"
 #### templates-regen
 $cmd_notinstalled templates-regen &> /dev/null &&
-echo "# OK. Updated templates" &&
-echo "# [folder] [$default_directory_template]" || 
-echo "# FAIL. Updated templates"
+echo "$text_md $text_ok Updated templates" &&
+echo "$text_md $text_foder [$default_directory_template]" || 
+echo "$text_md $text_fail Not update templates"
 ####
 ####
 ####   english: Show final status from installer: program version
@@ -5664,7 +5666,7 @@ echo "# FAIL. Updated templates"
 ####
 #### if [ -f "$cmd_installed" ]; then $cmd_installed version ;
 #### else echo "# Not installed in $cmd_installed"; fi
-echo "$title_md $text_ok READY. $cmd_installed"
+echo "$title_md $text_ok $cmd_installed"
 #### 
 ####
 exit; fi
