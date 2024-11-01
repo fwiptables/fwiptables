@@ -1475,17 +1475,17 @@ exit; fi
 #### :rutina-inicial-cat-logcmd:
 ####
 ####
-if [ "$first_option" == "cat-logcmd" ] || [ "$first_option" == "autolog" ] ; then
+if [ "$first_option" == "cat-logcmd" ] ; then
 ####
 ####
-echo "$title_md $text_info [ last 50 lines from file showed ] [ $file_default_logcmd ]"
 if [ ! -f $file_default_logcmd ]; then touch $file_default_logcmd ; fi
 echo "$title_md $text_md list all month"
 $command_tree $default_directory_baselogcmd
 echo "$title_md $file_default_logcmd"
 $command_cat   "$file_default_logcmd" | tail -50
 echo
-echo "$title_md $text_info [ latest 50 lines from this file ] [ $file_default_logcmd ]"
+echo "$title_md $text_info latest 50 lines from this file"
+echo "$title_md $text_info [$file_default_logcmd]"
 ####
 ####
 exit; fi
@@ -1926,6 +1926,7 @@ echo "#list-allrules=list-alltables"
 echo "#preferences-modify=preferences-edit"
 echo "#alias-modify=alias-edit"
 echo "#logcmd=cat-logcmd"
+echo "#autolog=cat-logcmd"
 echo "#ver=version"
 echo "#all-names=names"
 echo "#ram-free=free"
