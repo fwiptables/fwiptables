@@ -611,10 +611,10 @@ default_fullcfg_spa="$default_directory_template/default-full-spanish.cfg"
 ####
 ####
 #### config files default
-file_default_preferences="$default_directory_preferences/default-preferences-$cmd_version"
-file_default_alias="$default_directory_preferences/default-alias-$cmd_version"
-file_default_logcmd="$default_directory_logcmd/default-logcmd-$cmd_version-$cmd_archive_date"
-file_default_usernotes="$default_directory_preferences/default-usernotes-all-versions"
+file_default_preferences="$default_directory_preferences/default-preferences-$cmd_version.conf"
+file_default_alias="$default_directory_preferences/default-alias-$cmd_version.conf"
+file_default_logcmd="$default_directory_logcmd/default-logcmd-$cmd_version-$cmd_archive_date.log"
+file_default_usernotes="$default_directory_preferences/default-usernotes-all-versions.txt"
 ####
 #### config output files
 file_output_pdf="$default_directory_pdf/$cmd_pdf_date-$cmd_guided_full.pdf"
@@ -623,10 +623,10 @@ file_output_cache="$directory_cache_necesary/$cmd_cache_date-$cmd_guided_full.tx
 ####
 ####
 #### config file adblock
-file_blacklist_fademind="$default_directory_adblock/hosts.blacklist_fademind"
-file_blacklist_mvps="$default_directory_adblock/hosts.blacklist_mvps"
-file_blacklist_adaway="$default_directory_adblock/hosts.blacklist_adaway"
-file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenblack"
+file_blacklist_fademind="$default_directory_adblock/hosts.blacklist_fademind.txt"
+file_blacklist_mvps="$default_directory_adblock/hosts.blacklist_mvps.txt"
+file_blacklist_adaway="$default_directory_adblock/hosts.blacklist_adaway.txt"
+file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenblack.txt"
 ####
 ####
 #### :rutina-final-config-files:
@@ -1302,9 +1302,15 @@ if [ "$first_option" == "txt" ]; then echo "$head_waiting_txt"
 ####
 ####
 case $second_option in 
-ls*|list*) $cmd_internal $second_option $third_option &> $file_output_cache
-$command_cat  $file_output_cache | $command_grep -E -v Warning: ; exit ;;
-*) $cmd_internal $second_option $third_option $quad_option ; exit ;; esac ; fi
+####
+####
+ls*|list*) $cmd_internal $second_option $third_option | \
+$command_grep -E -v Warning: ; exit ;;
+*) $cmd_internal $second_option $third_option $quad_option ;
+exit ;; 
+####
+####
+esac ; fi
 ####
 ####
 #### :rutina-final-alias-text:
@@ -1349,7 +1355,7 @@ if [ "$first_option" == "log" ]
 ####
 then echo "$head_waiting_log"
 $cmd_internal $second_option $third_option $quad_option &> $file_output_log
-echo "$title_md $text_file $file_output_log"
+echo "$title_md $text_file [$file_output_log]"
 ####
 ####
 exit ; fi
@@ -1369,7 +1375,7 @@ sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &>
 #### send print to home output fwiptables.pdf
 $cmd_internal $second_option $third_option $quad_option | \
 $command_convert -page A3 text:- $file_output_pdf
-echo "$title_md $text_file $file_output_pdf"
+echo "$title_md $text_file [$file_output_pdf]"
 ####
 ####
 exit ; fi
