@@ -38,7 +38,7 @@
         
        File    Location:   /usr/bin/fwiptables    
        Config Directory:   /root/.config/fwiptables        
-       Cache  Directory:   /root/.cache/fwiptables        
+       Cache  Directory:   /root/.cache/fwiptables    
         
 ###     [ fwiptables install ]                        
         
@@ -53,16 +53,16 @@
 ### fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-10-J                
-        Released Firewall: Year 2024 / Month 10               
+         Version Firewall: 24-11-A                
+        Released Firewall: Year 2024 / Month 11               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
         Short Description: FireWall With iptables       
-         Long Description: iptables template in one script        
+         Long Description: iptables templates in one script        
            Data Directory: /root/.config/fwiptables    
           Cache Directory: /root/.cache/fwiptables   
            Finder Program: which                  
-        Requisite Program: id,awk,sed,file,cut,date,cat      
+        Requisite Program: awk,cat,cut,date,file,id,sed      
       Requisite Firewall4: iptables-legacy,iptables-nft    
       Requisite Firewall6: ip6tables-legacy,ip6tables-nft    
            Automatic Edit: /usr/bin/nano       
@@ -111,20 +111,24 @@
 ### fwiptables compile   
       BASH SCRIPT WORKS fully.      
       But if your desire is compiling...     
-
       Necesary fwiptables in source script bash   
       Download and install obash from oficial web internet   
       Run: obash -s -c -o ./destination.bin ./source-bash.sh   
   
 ### fwiptables depends   
 ###     [ Configuration files ]   
-      Directory data:          /root/.config/fwiptables   
-      Directory temp:          /root/.cache/fwiptables   
-      File Preferences:        /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-10-J   
+      Directory  data:         /root/.config/fwiptables   
+      Directory cache:            
         
 ###     [ Log files ]             
-      File autolog:            /root/.config/fwiptables/fwiptables-autolog/default-autolog-24-10-J   
-      Folder filelog:          /root/.config/fwiptables/fwiptables-log   
+      File logcmd:             /root/.config/fwiptables/fwiptables-logcmd/default-logcmd-24-11-A-YEAR-2024-MONTH-11   
+      Folder log:              /root/.config/fwiptables/fwiptables-log   
+      Folder pdf:              /root/.config/fwiptables/fwiptables-pdf   
+        
+###     [ Preferences files ]     
+      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-A
+      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-A
+      usernotes:               /root/.config/fwiptables/fwiptables-preferences/default-usernotes-all-versions
         
 ###     [ optional output ]       
       dialog cli:              /usr/bin/dialog   
@@ -148,24 +152,25 @@
       Automatic pdf:           /usr/bin/convert   
       Automatic editor:        /usr/bin/nano   
       Automatic browser:       /usr/bin/w3m   
-      Automatic ntpdate:       /usr/sbin/ntpdate   
+      Automatic date:          /usr/sbin/ntpdate   
         
 ###     [ Necesary utils ]        
       iptables nft:            /usr/sbin/iptables-nft   
       iptables legacy:         /usr/sbin/iptables-legacy   
       iptables nft:            /usr/sbin/ip6tables-nft   
       iptables legacy:         /usr/sbin/ip6tables-legacy   
-      id command:              /usr/bin/id   
-      awk command:             /usr/bin/awk   
-      sed command:             /usr/bin/sed   
-      cat command:             /usr/bin/cat   
-      cut command:             /usr/bin/cut   
+        id command:            /usr/bin/id   
+       awk command:            /usr/bin/awk   
+       cat command:            /usr/bin/cat   
+       cut command:            /usr/bin/cut   
       date command:            /usr/bin/date   
       file command:            /usr/bin/file   
+       sed command:            /usr/bin/sed   
         
-      all utils in command: fwiptables utils   
+      Found all posible utils: fwiptables utils   
   
-### fwiptables examples   
+### alias examples to options-examples
+### fwiptables options-examples   
 ###     [ One example with input-established ]                
          
        Launch: input-stablished                              
@@ -208,9 +213,9 @@
        Explain: Show listen sockets        
        /usr/bin/fwiptables sockets               
        Explain: List last options          
-       /usr/bin/fwiptables autolog               
+       /usr/bin/fwiptables logcmd                
        Explain: modify default variables   
-       /usr/bin/fwiptables preferences-modify    
+       /usr/bin/fwiptables preferences-edit    
      
 ###     [ With optional output ]            
          
@@ -280,13 +285,13 @@
    server-mumble server-gateway server-sql server-samba server-proxy   
    server-asterisk client-uid-root client-gid-users client-gid-net    
 ###     firewall-netsystem   
-   preferences-read preferences-modify preferences-regen   
-   options filelog autolog date resolve speed-ip4 speed-ip6   
+   preferences-edit alias-edit options info-options usernotes  
+   cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache   
    sockets ip ip4 ip6 network4 network6 address4 address6   
-   free nodes ip-forward utils treeconf cleancache treecache   
+   free nodes ip-forward utils date resolve speed-ip4 speed-ip6   
    log-stat web intro depends uninstall install upgrade notes   
    variables examples info code expert donate about version   
    license-lgpl-v2 license-gpl-v2   
-       | Program: /usr/bin/fwiptables 24-10-J   
-       | Description: iptables template in one script   
+       | Program: /usr/bin/fwiptables 24-11-A   
+       | Description: iptables templates in one script   
        | Expert: expert is allowed in preferences file   
