@@ -2619,7 +2619,7 @@ if [ "$first_option" == "depends" ]; then
 ####
 echo "$title_md $text_md [ Configuration files ] $text_md"
 echo "$text_md $text_md Directory  data:         $directory_data_necesary $text_md"
-echo "$text_md $text_md Directory cache:         $directory_basecache_basenecesary $text_md"
+echo "$text_md $text_md Directory cache:         $directory_cache_basenecesary $text_md"
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ Log files ]           $text_md"
 echo "$text_md $text_md File logcmd:             $file_default_logcmd $text_md"
