@@ -1481,7 +1481,7 @@ if [ "$first_option" == "cat-logcmd" ] || [ "$first_option" == "autolog" ] ; the
 echo "$title_md $text_info [ last 50 lines from file showed ] [ $file_default_logcmd ]"
 if [ ! -f $file_default_logcmd ]; then touch $file_default_logcmd ; fi
 echo "$title_md $text_md list all month"
-$command_tree $default_directory_logcmd
+$command_tree $default_directory_baselogcmd
 echo "$title_md $file_default_logcmd"
 $command_cat   "$file_default_logcmd" | tail -50
 echo
