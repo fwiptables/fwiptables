@@ -118,7 +118,7 @@
 ### fwiptables depends   
 ###     [ Configuration files ]   
       Directory  data:         /root/.config/fwiptables   
-      Directory cache:            
+      Directory cache:         /root/.cache/fwiptables   
         
 ###     [ Log files ]             
       File logcmd:             /root/.config/fwiptables/fwiptables-logcmd/default-logcmd-24-11-A-YEAR-2024-MONTH-11   
