@@ -85,20 +85,20 @@ cmd_where="which"                                             # Find each comman
 cmd_basename="$(basename $0)"                                 # Only name filename
 cmd_realpath="$(realpath $0)"                                 # path name filename
 #### internal notinstalled,installed         
-cmd_notinstalled="$0"
-cmd_installed="$cmd_directory/$cmd_filename"                  # Full path filename
+cmd_notinstalled="$0"                                         # when is not installed
+cmd_installed="$cmd_directory/$cmd_filename"                  # when is installed
 #### internal cycle command firewall
-cmd_internal="$cmd_installed"                                 # your choosed internal
+cmd_internal="$cmd_installed"                                 # choose which internal
 if [ -f "$cmd_installed" ]
 then cmd_internal="$cmd_installed"
 else cmd_internal="$cmd_notinstalled"
 fi
 #### The number version firewall
 cmd_year="24"                                                 # Number year version
-cmd_month="10"                                                # Number mouth version
-cmd_letter="K"                                                # Number letter version
-cmd_version="$cmd_year-$cmd_month-$cmd_letter"                # Final date like number version
-cmd_released="Year 20$cmd_year / Month $cmd_month"
+cmd_month="11"                                                # Number mouth version
+cmd_letter="A"                                                # Number letter version
+cmd_version="$cmd_year-$cmd_month-$cmd_letter"                # Final date version
+cmd_released="Year 20$cmd_year / Month $cmd_month"            # Source date version
 #### The data version firewall
 cmd_developer="Francisco Garcia"                              # Actual developer
 cmd_contact="fwiptables@gmx.com"                              # Actual contact
