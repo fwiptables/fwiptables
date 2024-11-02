@@ -366,7 +366,7 @@ config_shield_maxtries="10"
 config_shield_maxtries="12"     
 config_shield_port="22" 
 config_shield_port="22"
-config_firewall_option="### < $cmd_name > $1 $2 $3 $4"
+config_firewall_option="### $cmd_name $1 $2 $3 $4"
 config_show_time="### date $($command_date)"
 config_string_algoritmo="kpm"
 config_string_allowed="one-string-that-like-how-a-passord,sourceforge.net"  
@@ -2134,13 +2134,13 @@ if [ "$first_option" == "network4" ]; then
 echo "$title_md $text_info ### [ Network Route ] [ Route ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$text_md $text_info [ install ip command ]"
-else $command_ip -4 route ; fi
+else $command_ip -4 route   ; fi
 ####
 ####
 echo "$title_md $text_info ### [ Configured ip ] [ inet ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$text_md $text_info [ install ip command ]"
-else $command_ip address ls | $command_egrep ": |inet " ; fi
+else $command_ip -4 address ; fi
 ####
 ####
 exit; fi 
@@ -2158,13 +2158,13 @@ if [ "$first_option" == "network6" ]; then
 echo "$title_md $text_info ### [ Network Route ] [ Route ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$text_md $text_info [ install ip command ]"
-else $command_ip -6 route ; fi
+else $command_ip -6 route   ; fi
 ####
 ####
 echo "$title_md $text_info ### [ Configured ip ] [ inet ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$text_md $text_info [ install ip command ]"
-else $command_ip address ls | $command_egrep ": |inet6 " ; fi
+else $command_ip -6 address ; fi
 ####
 ####
 exit; fi
