@@ -3958,8 +3958,10 @@ echo "$text_md $text_md expert-speed-disk . benchmark disk speed with 100Mb $tex
 echo "$text_md $text_md expert-speed-ram . benchmark ram speed with 100Mb $text_md "
 echo "$text_md $text_md expert-speed-cpu . benchmark cpu speed with bc command aprox 5 seconds $text_md "
 echo "$text_md $text_md expert-speed-glx . benchmark glx speed with mesa3D $text_md " 
-echo "$text_md $text_md expert-add-whitelist4 . add white list for ip4 $text_md "
-echo "$text_md $text_md expert-add-whitelist6 . add white list for ip6 $text_md "
+echo "$text_md $text_md expert-add-whitelist4 . add white host for ip4 $text_md "
+echo "$text_md $text_md expert-add-whitelist6 . add white host for ip6 $text_md "
+echo "$text_md $text_md expert-add-blacklist4 . add drop host for ip4 $text_md "
+echo "$text_md $text_md expert-add-blacklist6 . add drop host for ip6 $text_md "
 echo "$text_md $text_md expert-upgrade-estable . Upgrade from web sourceforge fwiptables with curl $text_md "
 echo "$text_md $text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables with curl $text_md "
 echo "$text_md $text_md expert-upgrade-adblock . Download blacklist to folder configuration program with curl $text_md "
@@ -6681,8 +6683,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-config-spa:
-##########    english: add-whitelist4: whitelist temporally ipv4    ##########
-##########    spanish: add-whitelist4: lista blanca temporal ipv4   ##########
+##########    english: add-whitelist4: whitelist ipv4      ##########
+##########    spanish: add-whitelist4: lista blanca ipv4   ##########
 #### :rutina-inicial-add-wihtelist4
 ####
 ####
@@ -6690,7 +6692,7 @@ if [ "$first_option" == "add-whitelist4" ] || [ "$first_option" == "expert-add-w
 ####
 ####
 if [ "$2" == "$NULL" ]; then echo "$title_md $text_fail type host ip4 or net ip4 to be in whitelist"; exit ; fi
-echo "$title_md [ Working ] ADD temporally ipv4 rules whitelist: ACCEPT to $2"
+echo "$title_md [ Working ] ADD ipv4 rules whitelist: ACCEPT to $2"
 $command_ip4tablesnft    -t filter -I INPUT -s $2  \
 -j ACCEPT && echo ok rule 1/4 with $2 || echo fail rule 1/4
 $command_ip4tablesnft    -t filter -I OUTPUT -d $2 \
@@ -6705,8 +6707,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-add-wihtelist4
-##########    english: add-whitelist6: whitelist temporally ipv6    ##########
-##########    spanish: add-whitelist6: lista blanca temporal ipv6   ##########
+##########    english: add-whitelist6: whitelist ipv6    ##########
+##########    spanish: add-whitelist6: lista blanca ipv6   ##########
 #### :rutina-inicial-add-wihtelist6
 ####
 ####
@@ -6714,7 +6716,7 @@ if [ "$first_option" == "add-whitelist6" ] || [ "$first_option" == "expert-add-w
 ####
 ####
 if [ "$2" == "$NULL" ]; then echo "$title_md $text_fail type host ip6 or net ip6 to be in whitelist"; exit ; fi
-echo "$title_md [ Working ] ADD temporally ipv6 rules whitelist: ACCEPT to $2"
+echo "$title_md [ Working ] ADD ipv6 rules whitelist: ACCEPT to $2"
 $command_ip6tablesnft    -t filter -I INPUT -s $2  \
 -j ACCEPT && echo ok rule 1/4 with $2 || echo fail rule 1/4
 $command_ip6tablesnft    -t filter -I OUTPUT -d $2 \
@@ -6729,6 +6731,66 @@ exit; fi
 ####
 ####
 #### :rutina-final-add-wihtelist6
+
+
+
+
+
+
+##########    english: add-blacklist4: blacklist ipv4      ##########
+##########    spanish: add-blacklist4: lista negra ipv4    ##########
+#### :rutina-inicial-add-blacklist4
+####
+####
+if [ "$first_option" == "add-blacklist4" ] || [ "$first_option" == "expert-add-blacklist4" ]; then
+####
+####
+if [ "$2" == "$NULL" ]; then
+echo "$title_md $text_fail type host ip4 or net ip4 to be in blacklist" ; exit ; fi
+####
+####
+echo "$title_md [ Working ] ADD ipv4 rules blacklist: DROP to $2"
+$command_ip4tablesnft    -t filter -I INPUT -s $2  \
+-j DROP && echo ok rule 1/4 with $2 || echo fail rule 1/4
+$command_ip4tablesnft    -t filter -I OUTPUT -d $2 \
+-j DROP && echo ok rule 2/4 with $2 || echo fail rule 2/4
+$command_ip4tableslegacy -t filter -I INPUT -s $2  \
+-j DROP && echo ok rule 3/4 with $2 || echo fail rule 3/4
+$command_ip4tableslegacy -t filter -I OUTPUT -d $2 \
+-j DROP && echo ok rule 4/4 with $2 || echo fail rule 4/4
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-add-blacklist4
+##########    english: add-blacklist6: blacklist ipv6    ##########
+##########    spanish: add-blacklist6: lista negra ipv6   ##########
+#### :rutina-inicial-add-blacklist6
+####
+####
+if [ "$first_option" == "add-blacklist6" ] || [ "$first_option" == "expert-add-blacklist6" ]; then
+####
+####
+if [ "$2" == "$NULL" ]; then 
+echo "$title_md $text_fail type host ip6 or net ip6 to be in blacklist"; exit ; fi
+####
+####
+echo "$title_md [ Working ] ADD ipv6 rules blacklist: DROP to $2"
+$command_ip6tablesnft    -t filter -I INPUT -s $2  \
+-j DROP && echo ok rule 1/4 with $2 || echo fail rule 1/4
+$command_ip6tablesnft    -t filter -I OUTPUT -d $2 \
+-j DROP && echo ok rule 2/4 with $2 || echo fail rule 2/4
+$command_ip6tableslegacy -t filter -I INPUT -s $2  \
+-j DROP && echo ok rule 3/4 with $2 || echo fail rule 3/4
+$command_ip6tableslegacy -t filter -I OUTPUT -d $2 \
+-j DROP && echo ok rule 4/4 with $2 || echo fail rule 4/4
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-add-blacklist6
 ##########    english: speed-ip4: speed from internet        ##########
 ##########    spanish: speed-ip4: velocidad desde internet   ##########
 #### :rutina-inicial-speed-ip4:
