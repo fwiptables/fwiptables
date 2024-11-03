@@ -3938,7 +3938,6 @@ echo "$text_md $text_md expert-upgrade-adblock . Download blacklist to folder co
 echo "$text_md $text_md expert-deb . generate actual version file in deb $text_md "
 echo "$text_md $text_md expert-gen-readme . generate actual version file in original with readme $text_md "
 echo "$text_md $text_md expert-gen-compile . Compile fwiptables from bash with program obash $text_md "
-echo "$text_md $text_md expert-gen-usernotes . take notes for yourself to remember $text_md"
 echo "$text_md $text_md expert-alias-modify . modify alias for $cmd_name $text_md"
 echo "$text_md $text_md expert-nmap-tcp . doing scan tcp at host or range $text_md "
 echo "$text_md $text_md expert-nmap-udp . doing scan udp at host or range $text_md "
@@ -5633,20 +5632,17 @@ exit; fi
 ####
 ####
 #### :rutina-final-install:
-##########    english: expert-gen-usernotes: generate installed respository   ##########
-##########    spanish: expert-gen-usernotes: genera instalado respositorio    ##########
-#### :rutina-inicial-expert-gen-usernotes:
+##########    english: usernotes: take notes   ##########
+##########    spanish: usernotes: toma notas   ##########
+#### :rutina-inicial-usernotes:
 ####
 ####
-if [ "$first_option" == "expert-gen-usernotes" ] || [ "$first_option" == "usernotes" ] ;  then
-####
-####
-#### config to expert-gen-usernotes
+if [ "$first_option" == "usernotes" ] ;  then
 ####
 ####
 #### add
 if [ "$second_option" == "add" ]
-then echo "$cmd_usernotes_date , $third_option," >> $file_default_usernotes
+then echo "$cmd_usernotes_date,$third_option," >> $file_default_usernotes
 echo "Content added: $third_option," ; exit; fi
 #### search
 if [ "$second_option" == "search" ] ; then echo "List searched" ; 
@@ -5659,14 +5655,14 @@ if [ "$second_option" == "lines" ] ; then echo "Lines numbers:"
 $command_cat $file_default_usernotes | $command_wc -l ; exit; fi
 #### info
 echo " # Option: add|search|list|lines"
-echo " # Info: Use without comma, and quote when spaces: to add, to search"
-echo " # File: $file_default_usernotes"
+echo " # $text_info Use without comma, and quote when spaces: to add, to search"
+echo " # $text_file [$file_default_usernotes]"
 #### 
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-expert-gen-usernotes:
+#### :rutina-final-usernotes:
 ##########    english: expert-gen-readme: generate installed respository   ##########
 ##########    spanish: expert-gen-readme: genera instalado respositorio    ##########
 #### :rutina-inicial-expert-gen-readme:
@@ -5675,11 +5671,12 @@ exit; fi
 if   [ "$first_option" == "expert-gen-readme" ];  then
 ####
 ####
+#### text introduction
 echo "$title_md $text_info  [ generate actual file and readme from intro program ] "
-#### create the FILE base in repository
+#### create file
 cp $0 $default_directory_readme/$cmd_name-$cmd_version-bash &&
 echo "$title_md $text_ok Created $default_directory_readme/$cmd_name-$cmd_version-bash"
-#### create the README base in repository
+#### create readme
 $0 intro > $default_directory_readme/README.md &&
 echo "$title_md $text_ok Created $default_directory_readme/$cmd_name-$cmd_version-README.md"
 ####
