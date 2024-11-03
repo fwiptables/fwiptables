@@ -2087,20 +2087,20 @@ exit; fi
 if [ "$first_option" == "network" ]; then
 ####
 ####
-$cmd_internal network4
-$cmd_internal network6
+$cmd_internal route4
+$cmd_internal route6
 ####
 ####
 exit; fi
 ####
 ####
 #### :rutina-final-network:
-##########    english: network4 : get net info               ##########
-##########    spanish: network4 : da informacion de la red   ##########
-#### :rutina-inicial-network4:
+##########    english: route4 : get net info               ##########
+##########    spanish: route4 : da informacion de la red   ##########
+#### :rutina-inicial-route4:
 ####
 ####
-if [ "$first_option" == "network4" ]; then
+if [ "$first_option" == "route4" ]; then
 ####
 ####
 #### route table
@@ -2112,13 +2112,13 @@ else $command_ip -4 route   ; fi
 exit; fi 
 ####
 ####
-#### :rutina-final-network4:
-##########    english: network6 : get net info               ##########
-##########    spanish: network6 : da informacion de la red   ##########
-#### :rutina-inicial-network6:
+#### :rutina-final-route4:
+##########    english: route6 : get net info               ##########
+##########    spanish: route6 : da informacion de la red   ##########
+#### :rutina-inicial-route6:
 ####
 ####
-if [ "$first_option" == "network6" ]; then
+if [ "$first_option" == "route6" ]; then
 ####
 ####
 #### route table
@@ -2130,7 +2130,7 @@ else $command_ip -6 route   ; fi
 exit; fi
 ####
 ####
-#### :rutina-final-network6:
+#### :rutina-final-route6:
 ##########    english: ip : get net info               ##########
 ##########    spanish: ip : da informacion de la red   ##########
 #### :rutina-inicial-ip:
@@ -2247,7 +2247,7 @@ if [ "$first_option" == "net4-info" ]; then
 ####
 ####
 echo "$title_md $text_info  [ show info about net address ip4 ]"
-$cmd_internal network4
+$cmd_internal route4
 $cmd_internal ip4
 $cmd_internal resolve
 $cmd_internal sockets
@@ -2266,7 +2266,7 @@ if [ "$first_option" == "net6-info" ]; then
 ####
 ####
 echo "$title_md $text_info  [ show info about net address ip6 ]"
-$cmd_internal network6
+$cmd_internal route6
 $cmd_internal ip6
 $cmd_internal resolve
 $cmd_internal sockets
@@ -3523,8 +3523,8 @@ echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net  
 echo "$title_md    firewall-netsystem $text_md"
 echo "$text_md preferences-edit alias-edit options info-options usernotes$text_md"
 echo "$text_md cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $text_md"
-echo "$text_md sockets ip ip4 ip6 network4 network6 net4-info net6-info $text_md"
-echo "$text_md free nodes ip-forward utils date resolve speed-ip4 speed-ip6 $text_md"
+echo "$text_md ip ip4 ip6 route4 route6 net4-info net6-info sockets nodes $text_md"
+echo "$text_md free ip-forward utils date resolve speed-ip4 speed-ip6 $text_md"
 echo "$text_md log-stat web intro depends uninstall install upgrade notes $text_md"
 echo "$text_md variables examples info code expert donate about version $text_md"
 echo "$text_md license-lgpl-v2 license-gpl-v2 $text_md"
@@ -9328,7 +9328,7 @@ then echo $message_without_guiroll ; exit ; fi
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-edit|preferences-regen|alias-edit|alias-regen|\
 alias-read|options|info-options|expert|\
-net4-info|net6-info|network4|network6||sockets|tree-pdf|tree-conf\
+net4-info|net6-info|route4|route6||sockets|tree-pdf|tree-conf\
 tree-log|cat-logcmd|ip4|ip6|notes|speed-ip4|speed-ip6|\
 nodes|date|free|version|tree-conf|tree-cache|clean-cache|\
 depends|utils|about|variables|examples|intro|install|upgrade|\
@@ -9376,8 +9376,8 @@ clean-cache) $cmd_internal -gui-zenity clean-cache ;;
 depends)$cmd_internal -gui-zenity depends ;;
 net4-info)$cmd_internal gui-$second_option net4-info ;;
 net6-info)$cmd_internal gui-$second_option net6-info ;;
-network4)$cmd_internal gui-$second_option network4 ;;
-network6)$cmd_internal gui-$second_option network6 ;;
+route4)$cmd_internal gui-$second_option route4 ;;
+route6)$cmd_internal gui-$second_option route6 ;;
 install)$cmd_internal -gui-zenity install ;;
 upgrade)$cmd_internal -gui-zenity upgrade ;;
 license-lgpl-v2) $cmd_internal -gui-zenity license-lgpl-v2 ;;
@@ -9918,7 +9918,7 @@ options|clasic-options|info-options|expert|download|intro|\
 cat-logcmd|tree-log|tree-pdf|tree-conf|tree-cache|clean-cache|
 ip4|ip6|speed-ip4|speed-ip6|notes|\
 license-lgpl-v2|license-gpl-v2|\
-net4-info|net6-info|network4|network6||sockets|\
+net4-info|net6-info|route4|route6||sockets|\
 install|upgrade|examples|depends|variables|utils|about"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($second_option \
@@ -9969,8 +9969,8 @@ upgrade*)$cmd_internal -gui-zenity upgrade ;;
 notes*)$cmd_internal gui-$second_option notes ;;
 net4-info*)$cmd_internal gui-$second_option net4-info ;;
 net6-info*)$cmd_internal gui-$second_option net6-info ;;
-network4*)$cmd_internal gui-$second_option network4 ;;
-network6*)$cmd_internal gui-$second_option network6 ;;
+route4*)$cmd_internal gui-$second_option route4 ;;
+route6*)$cmd_internal gui-$second_option route6 ;;
 license-lgpl-v2*)$cmd_internal gui-$second_option license-lgpl-v2 ;;
 license-gpl-v2*)$cmd_internal gui-$second_option license-gpl-v2 ;;
 variables*) $cmd_internal gui-$second_option variables ;;
