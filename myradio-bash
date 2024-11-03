@@ -24,7 +24,7 @@ if [ "$(id -u)" == "0" ]; then echo "# launch as user, not root allowed"; exit; 
 ##################################################### configuration list
 ### variables principal list
 opt_name="myradio-bash"
-opt_version="24-10-E"
+opt_version="24-11-A"
 opt_bin="$(realpath $0)"
 opt_base="$(basename $0)"
 opt_first="$1"
