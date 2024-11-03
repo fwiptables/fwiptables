@@ -723,7 +723,8 @@ first_option="$without_first_option" ; fi
 ####
 ####
 #### label option
-if [ "$allow_show_option" == "" ] ; then echo "$cmd_list_option" ; fi
+#### if [ "$allow_show_option" == "" ] ; then echo "$cmd_list_option" ; fi
+echo "$cmd_list_option"
 ####
 ####
 #### label time
@@ -2015,8 +2016,7 @@ echo "config_string_algoritmo=kmp                     ## or kmp or bm"
 echo "$title_md"
 echo "$title_md $title_md default logcmd"
 echo "allow_save_logcmd=                              ## or void for yes or no"
-echo "$title_md $title_md default header"
-echo "allow_show_option=                              ## or void for yes or no"
+echo "$title_md $title_md header time"
 echo "allow_show_time=no                              ## or void for yes or no"
 echo "$title_md"  
 echo "$title_md $title_md mini client ports from side client: for miniserver tcp/udp"  

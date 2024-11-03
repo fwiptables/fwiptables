@@ -53,7 +53,7 @@
 ### fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-11-A                
+         Version Firewall: 24-11-B                
         Released Firewall: Year 2024 / Month 11               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
@@ -121,14 +121,14 @@
       Directory cache:         /root/.cache/fwiptables   
         
 ###     [ Log files ]             
-      File logcmd:             /root/.config/fwiptables/fwiptables-logcmd/default-logcmd-24-11-A-YEAR-2024-MONTH-11   
       Folder log:              /root/.config/fwiptables/fwiptables-log   
       Folder pdf:              /root/.config/fwiptables/fwiptables-pdf   
+      Folder logcmd:           /root/.config/fwiptables/fwiptables-logcmd   
         
 ###     [ Preferences files ]     
-      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-A
-      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-A
-      usernotes:               /root/.config/fwiptables/fwiptables-preferences/default-usernotes-all-versions
+      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-B.conf
+      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-B.conf
+      usernotes:               /root/.config/fwiptables/fwiptables-preferences/default-usernotes-all-versions.txt
         
 ###     [ optional output ]       
       dialog cli:              /usr/bin/dialog   
@@ -169,7 +169,7 @@
         
       Found all posible utils: fwiptables utils   
   
-### alias examples to options-examples
+### < alias > from examples to options-examples
 ### fwiptables options-examples   
 ###     [ One example with input-established ]                
          
@@ -287,11 +287,11 @@
 ###     firewall-netsystem   
    preferences-edit alias-edit options info-options usernotes  
    cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache   
-   sockets ip ip4 ip6 network4 network6 address4 address6   
-   free nodes ip-forward utils date resolve speed-ip4 speed-ip6   
+   ip4 ip6 route4 route6 net4-info net6-info sockets nodes   
+   free ip-forward utils date resolve speed-ip4 speed-ip6   
    log-stat web intro depends uninstall install upgrade notes   
    variables examples info code expert donate about version   
    license-lgpl-v2 license-gpl-v2   
-       | Program: /usr/bin/fwiptables 24-11-A   
+       | Program: /usr/bin/fwiptables 24-11-B   
        | Description: iptables templates in one script   
        | Expert: expert is allowed in preferences file   
