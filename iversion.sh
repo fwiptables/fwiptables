@@ -449,7 +449,7 @@ third_option="$(echo $3 | $command_sed s/\\///g -)"  ;
 #### #### english: variable without "/"  #### spanish: variable sin "/"
 quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;
 #### #### english: variable without "/"  #### spanish: variable sin "/"
-cmd_guided_full="$(echo $1-$2-$3-$4 | $command_sed s/\\///g -)"  ;
+cmd_guided_full="$(echo $1-$2-$3-$4 | $command_sed s/\ /\-/g - | $command_sed s/\\///g -)" 
 ####
 ####
 #### :rutina-final-options-order:
@@ -1190,12 +1190,11 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 ####
 if [ "$first_option" == "gui" ]; then 
 case "$second_option" in
-#### "$NULL"|"options") 
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
-"modify-custom") $cmd_internal templates-regen  &> /dev/null ;; esac ; fi
+"modify-custom"|"usernotes") $cmd_internal templates-regen  &> /dev/null ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "log" ]; then 
