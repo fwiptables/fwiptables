@@ -366,7 +366,6 @@ config_shield_maxtries="10"
 config_shield_maxtries="12"     
 config_shield_port="22" 
 config_shield_port="22"
-config_firewall_option="### $cmd_name $1 $2 $3 $4"
 config_show_time="### date $($command_date)"
 config_string_algoritmo="kpm"
 config_string_allowed="one-string-that-like-how-a-passord,sourceforge.net"  
@@ -436,44 +435,25 @@ exit; fi ; done
 #### :rutina-inicial-options-order:
 ####
 ####
-#### #### english: option for default    #### spanish: opcion por defecto
+#### #### option for default
 zero_dir="$(pwd)" ;
-#### #### english: option for default    #### spanish: opcion por defecto
+#### #### option for default
 zero_option="$cmd_internal" ;
-#### #### english: variables to launch   #### spanish: variables a lanzar
+#### #### variable without "/"  
 first_option="$(echo $1 | $command_sed s/\\///g -)"  ;
-#### #### english: variable without "/"  #### spanish: variable sin "/"
+#### #### variable without "/"  
 second_option="$(echo $2 | $command_sed s/\\///g -)" ;
-#### #### english: variable without "/"  #### spanish: variable sin "/"
+#### #### variable without "/"  
 third_option="$(echo $3 | $command_sed s/\\///g -)"  ;
-#### #### english: variable without "/"  #### spanish: variable sin "/"
-quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;
-#### #### english: variable without "/"  #### spanish: variable sin "/"
-cmd_guided_full="$(echo $1-$2-$3-$4 | $command_sed s/\ /\-/g - | $command_sed s/\\///g -)" 
+#### #### variable without "/"  
+quad_option="$(echo $4 | $command_sed s/\\///g -)"  ;
+#### #### variable without "/", without spaces,
+cmd_guided_full="$(echo $1-$2-$3-$4 | $command_sed s/\ /\-/g - | $command_sed s/\\///g -)"
+#### #### label with name option
+cmd_list_option="### $cmd_name $1 $2 $3 $4"
 ####
 ####
 #### :rutina-final-options-order:
-##########   english: profile y support X11 for root       ##########
-##########   spanish: profile y soporte de X11 for root    ##########
-#### :rutina-inicial-xhost:
-####
-####
-#### allow root launch gui graphical in X11 with xhost
-####
-####
-if [ "$(logname)" != "$NULL" ] && [ "$(id -u)" == 0 ]; then
-####
-####
-if [ "$command_sudo" != "$NULL" ]; then
-$command_sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
-else $command_sudo -u 0 $command_xhost +SI:localuser:root &> /dev/null
-fi
-####
-####
-fi
-####
-####
-#### :rutina-final-xhost:
 ##########  english: files:    files and folders from fwiptables          ##########
 ##########  spanish: archivos: archivos y carpetas desde fwiptables       ##########
 #### :rutina-inicial-config-folders:
@@ -602,31 +582,48 @@ $command_mkdir -p "$default_directory_readme" &> /dev/null ; fi
 ####
 ####
 #### config templates cfg
-default_tinycfg_eng="$default_directory_template/default-tiny-english.cfg"
-default_tinycfg_spa="$default_directory_template/default-tiny-spanish.cfg"
-default_minicfg_eng="$default_directory_template/default-mini-english.cfg"
-default_minicfg_spa="$default_directory_template/default-mini-spanish.cfg"
-default_fullcfg_eng="$default_directory_template/default-full-english.cfg"
-default_fullcfg_spa="$default_directory_template/default-full-spanish.cfg"
+default_tinycfg_eng=\
+"$default_directory_template/default-tiny-english.cfg"
+default_tinycfg_spa=\
+"$default_directory_template/default-tiny-spanish.cfg"
+default_minicfg_eng=\
+"$default_directory_template/default-mini-english.cfg"
+default_minicfg_spa=\
+"$default_directory_template/default-mini-spanish.cfg"
+default_fullcfg_eng=\
+"$default_directory_template/default-full-english.cfg"
+default_fullcfg_spa=\
+"$default_directory_template/default-full-spanish.cfg"
 ####
 ####
 #### config files default
-file_default_preferences="$default_directory_preferences/default-preferences-$cmd_version.conf"
-file_default_alias="$default_directory_preferences/default-alias-$cmd_version.conf"
-file_default_logcmd="$default_directory_logcmd/default-logcmd-$cmd_version-$cmd_archive_date.log"
-file_default_usernotes="$default_directory_preferences/default-usernotes-all-versions.txt"
+file_default_preferences=\
+"$default_directory_preferences/default-preferences-$cmd_version.conf"
+file_default_alias=\
+"$default_directory_preferences/default-alias-$cmd_version.conf"
+file_default_logcmd=\
+"$default_directory_logcmd/default-logcmd-$cmd_version-$cmd_archive_date.log"
+file_default_usernotes=\
+"$default_directory_preferences/default-usernotes-all-versions.txt"
 ####
 #### config output files
-file_output_pdf="$default_directory_pdf/$cmd_pdf_date-$cmd_guided_full.pdf"
-file_output_log="$default_directory_logs/$cmd_log_date-$cmd_guided_full.log"
-file_output_cache="$directory_cache_necesary/$cmd_cache_date-$cmd_guided_full.txt"
+file_output_pdf=\
+"$default_directory_pdf/$cmd_pdf_date-$cmd_guided_full.pdf"
+file_output_log=\
+"$default_directory_logs/$cmd_log_date-$cmd_guided_full.log"
+file_output_cache=\
+"$directory_cache_necesary/$cmd_cache_date-$cmd_guided_full.txt"
 ####
 ####
 #### config file adblock
-file_blacklist_fademind="$default_directory_adblock/hosts.blacklist_fademind.txt"
-file_blacklist_mvps="$default_directory_adblock/hosts.blacklist_mvps.txt"
-file_blacklist_adaway="$default_directory_adblock/hosts.blacklist_adaway.txt"
-file_blacklist_stevenblack="$default_directory_adblock/hosts.blacklist_stevenblack.txt"
+file_blacklist_fademind=\
+"$default_directory_adblock/hosts.blacklist_fademind.txt"
+file_blacklist_mvps=\
+"$default_directory_adblock/hosts.blacklist_mvps.txt"
+file_blacklist_adaway=\
+"$default_directory_adblock/hosts.blacklist_adaway.txt"
+file_blacklist_stevenblack=\
+"$default_directory_adblock/hosts.blacklist_stevenblack.txt"
 ####
 ####
 #### :rutina-final-config-files:
@@ -664,6 +661,27 @@ message_without_guiroll="$title_md $text_fail [ install zenity ]"
 ####
 ####
 #### :rutina-final-variables-header:
+##########   english: profile y support X11 for root       ##########
+##########   spanish: profile y soporte de X11 for root    ##########
+#### :rutina-inicial-xhost:
+####
+####
+#### allow root launch gui graphical in X11 with xhost
+####
+####
+if [ "$(logname)" != "$NULL" ] && [ "$(id -u)" == 0 ]; then
+####
+####
+if [ "$command_sudo" != "$NULL" ]; then
+$command_sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
+else $command_sudo -u 0 $command_xhost +SI:localuser:root &> /dev/null
+fi
+####
+####
+fi
+####
+####
+#### :rutina-final-xhost:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
 #### :rutina-inicial-variables-updated:
@@ -704,26 +722,22 @@ echo "### $text_info [ Default Option: $without_first_option ] [ List Options: o
 first_option="$without_first_option" ; fi
 ####
 ####
-#### sane variables
-# case "$NULL" in 
-# "$choosed_iptables")      ;; *) choosed_iptables="no"      ;;
-# "$launch_rules_firewall") ;; *) launch_rules_firewall="no" ;;
-# "$name_firewall")         ;; *) name_firewall="no"         ;;
-# "$type_firewall")         ;; *) type_firewall="no"         ;;
-# esac
+#### label option
+if [ "$allow_show_option" == "" ] ; then echo "$cmd_list_option" ; fi
 ####
 ####
-#### configure expert commands
+#### label time
+if [ "$allow_show_time" == "" ] ; then echo "$config_show_time" ; fi
+####
+####
+#### configure expert
 if [ "$allow_expert_commands" == "no" ]; then
 case "$first_option" in 
 exper*) echo "$title_md See in preferences allow_expert_commands to active it option"
 exit ;; esac
 case "$second_option" in
 exper*) echo "$title_md See in preferences allow_expert_commands to active it option"
-exit ;; esac
-####
-####
-fi
+exit ;; esac ; fi
 ####
 ####
 #### :rutina-final-variables-updated:
@@ -1154,10 +1168,16 @@ esac ;
 ####
 ####
 case "$first_option" in
-"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
-"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
-"modify-custom")
+"wizard-full"|"wizard-mini"|"new-mini-custom"|"wizard-tiny"|\
+"new-full-custom"|"new-tiny-custom"|"new-mini-custom"|"nueva-diminuta-custom"|\
+"nueva-mini-custom"|"nueva-completa-custom") 
+$cmd_internal templates-regen &> /dev/null ;; esac
+####
+####
+case "$second_option" in
+"wizard-full"|"wizard-mini"|"new-mini-custom"|"wizard-tiny"|\
+"new-full-custom"|"new-tiny-custom"|"new-mini-custom"|"nueva-diminuta-custom"|\
+"nueva-mini-custom"|"nueva-completa-custom") 
 $cmd_internal templates-regen &> /dev/null ;; esac
 ####
 ####
@@ -1167,7 +1187,8 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
-"modify-custom") $cmd_internal $second_option $third_option ; exit ;; esac ; fi
+"modify-custom") $cmd_internal $second_option $third_option $quad_option ;
+exit ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "narrowtxt" ]; then 
@@ -1176,7 +1197,8 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
-"modify-custom") $cmd_internal $second_option $third_option ; exit ;; esac ; fi
+"modify-custom") $cmd_internal $second_option $third_option $quad_option ;
+exit ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "cli" ]; then 
@@ -1185,16 +1207,14 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
-"modify-custom") $cmd_internal $second_option $third_option ; exit ;; esac ; fi
+"modify-custom") $cmd_internal $second_option $third_option $quad_option ;
+exit ;; esac ; fi
 ####
 ####
 if [ "$first_option" == "gui" ]; then 
 case "$second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
-"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
-"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
-"modify-custom"|"usernotes") $cmd_internal templates-regen  &> /dev/null ;; esac ; fi
+esac ; fi
 ####
 ####
 if [ "$first_option" == "log" ]; then 
@@ -1392,36 +1412,6 @@ fi
 ####
 ####
 #### :rutina-final-allow-logcmd:
-##########     english: show option         ##########
-##########     spanish: mostrar opcion      ##########
-#### :rutina-inicial-allow-show-option:
-####
-####
-if [ "$allow_show_option" == "" ] ; then
-####
-####
-echo "$config_firewall_option"
-####
-####
-fi
-####
-####
-#### :rutina-final-allow-show-option:
-##########     english: time              ##########
-##########     spanish: mostrar fecha     ##########
-#### :rutina-inicial-allow-show-time:
-####
-####
-if [ "$allow_show_time" == "" ] ; then
-####
-####
-echo "$config_show_time"
-####
-####
-fi
-####
-####
-#### :rutina-final-allow-show-time:
 ##########   english: tree-log: list log   ##########
 ##########   spanish: tree-log: lista log  ##########
 #### :rutina-inicial-list-tree-log:
@@ -5654,26 +5644,21 @@ if [ "$first_option" == "expert-gen-usernotes" ] || [ "$first_option" == "userno
 #### config to expert-gen-usernotes
 ####
 ####
-first_user_notes="$(echo $second_option)"
-second_user_notes="$(echo $third_option | sed 's/,/./g' )"
-####
-####
 #### add
-if [ "$first_user_notes" == "add" ] || [ "$first_user_notes" == "a" ]
-then echo "$cmd_usernotes_date,$second_user_notes," >> $file_default_usernotes
-echo "Content added: $second_user_notes," ; exit; fi
+if [ "$second_option" == "add" ]
+then echo "$cmd_usernotes_date , $third_option," >> $file_default_usernotes
+echo "Content added: $third_option," ; exit; fi
 #### search
-if [ "$first_user_notes" == "search" ] || [ "$first_user_notes" == "s" ]
-then echo "List searched" ; 
-$command_cat $file_default_usernotes | $command_grep -i $second_user_notes ; exit; fi
+if [ "$second_option" == "search" ] ; then echo "List searched" ; 
+$command_cat $file_default_usernotes | $command_grep -i $third_option ; exit; fi
 #### list
-if [ "$first_user_notes" == "list" ] || [ "$first_user_notes" == "l" ]
-then echo "List content:"; $command_cat $file_default_usernotes; exit; fi
+if [ "$second_option" == "list" ] ; then echo "List content:"; 
+$command_cat $file_default_usernotes; exit; fi
 #### lines
-if [ "$first_user_notes" == "lines" ] || [ "$first_user_notes" == "n" ]
-then echo "Lines numbers:" ; $command_cat $file_default_usernotes | $command_wc -l ; exit; fi
+if [ "$second_option" == "lines" ] ; then echo "Lines numbers:"
+$command_cat $file_default_usernotes | $command_wc -l ; exit; fi
 #### info
-echo " # Option: a|add s|search l|list n|number-lines"
+echo " # Option: add|search|list|lines"
 echo " # Info: Use without comma, and quote when spaces: to add, to search"
 echo " # File: $file_default_usernotes"
 #### 
