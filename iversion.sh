@@ -666,7 +666,7 @@ message_without_guiroll="$title_md $text_fail [ install zenity ]"
 #### :rutina-final-variables-header:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
-#### :rutina-inicial-variables-update-secondtime:
+#### :rutina-inicial-variables-updated:
 ####
 ####
 #### sane preferences
@@ -679,11 +679,8 @@ if [ -f "$file_default_preferences" ] ;
 then source $file_default_preferences ; fi
 ####
 ####
-#### sane alias
-if [ ! -f "$file_default_alias" ]; then touch $file_default_alias ; fi
-####
-####
 #### prepare alias
+if [ ! -f "$file_default_alias" ]; then touch $file_default_alias ; fi
 option_with_alias="$($command_cat $file_default_alias \
 | $command_grep ^#$first_option= | cut -c 2- -)"
 option_alias_origen="$(echo  $option_with_alias | $command_cut -d "=" -f 1 -)"
@@ -692,19 +689,13 @@ option_alias_destino="$(echo $option_with_alias | $command_cut -d "=" -f 2 -)"
 ####
 #### load alias
 if [ "$option_with_alias" != "$NULL" ] && [ "$option_alias_origen" != "$option_alias_destino" ]
-then echo "### alias $option_alias_origen to $option_alias_destino"
+then echo "### < alias > from $option_alias_origen to $option_alias_destino"
 $cmd_internal $option_alias_destino $2 $3 $4
 exit; fi 
 ####
 ####
 #### configure without option
 if [ "$without_first_option" = "$NULL" ] ; then without_first_option="options" ; fi
-####
-####
-#### :rutina-final-variables-update-secondtime:
-##########    english: Update first option               ##########
-##########    spanish: Actualiza primera opción          ##########
-#### :rutina-inicial-whithout-option:
 ####
 ####
 #### Without first option and it is options
@@ -718,18 +709,12 @@ echo "### $text_info [ Default Option: $without_first_option ] [ List Options: o
 first_option="$without_first_option" ; fi
 ####
 ####
-#### :rutina-final-without-option:
-##########    english: Update variables             ##########
-##########    spanish: Actualiza variables          ##########
-#### :rutina-inicial-variables-sane:
-####
-####
 #### sane variables
 case "$NULL" in 
 "$choosed_iptables")      ;; *) choosed_iptables="no"      ;;
 "$launch_rules_firewall") ;; *) launch_rules_firewall="no" ;;
 "$name_firewall")         ;; *) name_firewall="no"         ;;
-"$type_firewall")         ;; *) type_firewall="no"        ;;
+"$type_firewall")         ;; *) type_firewall="no"         ;;
 esac
 ####
 ####
@@ -750,7 +735,7 @@ exit ;; esac
 fi
 ####
 ####
-#### :rutina-final-variables-sane:
+#### :rutina-final-variables-updated:
 ##########      english: search favorite iperf: favorite iperf command        ##########
 ##########      spanish: busca preferida fecha: favorita comando de iperf     ##########
 #### :rutina-inicial-favorite-iperf:
@@ -1360,7 +1345,10 @@ echo "$title_md $text_file [$file_output_log]"
 exit ; fi
 ####
 ####
-#### output pdf
+#### :rutina-final-alias-log:
+##########    ALIAS CONFIG PDF
+##########    ALIAS CONFIG PDF
+#### :rutina-inicial-alias-pdf:
 ####
 ####
 if [ "$first_option" == "pdf" ]
@@ -1380,7 +1368,10 @@ echo "$title_md $text_file [$file_output_pdf]"
 exit ; fi
 ####
 ####
-#### silent: output null
+#### :rutina-final-alias-pdf:
+##########    ALIAS CONFIG SILENT
+##########    ALIAS CONFIG SILENT
+#### :rutina-inicial-alias-silent:
 ####
 ####
 if [ "$first_option" == "silent" ]
@@ -1392,7 +1383,7 @@ then $cmd_internal "$second_option" "$third_option" "$quad_option" &> /dev/null
 exit ; fi
 ####
 ####
-#### :rutina-final-alias-log:
+#### :rutina-final-alias-silent:
 ##########     english: allow-logcmd:       ##########
 ##########     spanish: autoguardado        ##########
 #### :rutina-inicial-allow-logcmd:
@@ -5599,7 +5590,7 @@ if [ "$first_option" == "uninstall" ] ; then
 ####
 echo "$title_md $text_info [ uninstaller ] [ uninstall md ] "
 rm $cmd_directory/$cmd_filename &> /dev/null
-echo "$title_md $text_ok [ deleted binary $cmd_directory/$cmd_filename ]"
+echo "$title_md $text_ok [ deleted binary $cmd_installed ]"
 ####
 ####
 exit; fi
@@ -5615,41 +5606,41 @@ if [ "$first_option" == "install" ]; then
 ####
 ####
 #### message
-echo "$text_md Waiting several seconds, while create new configuration"
+echo "$title_md Waiting several seconds, while create new configuration"
 #### 
 #### 
 ####  copy
 cp $cmd_notinstalled $cmd_installed && 
 chmod 755 $cmd_installed &> /dev/null &&
 echo "$text_md $text_ok Installed $cmd_name" &&
-echo "$text_md $text_file   [$cmd_installed]" ||
+echo "$text_md $text_file [$cmd_installed]" ||
 echo "$text_md $text_fail Not nstall"
 ####
 ####
 #### preferences-regen
 $cmd_notinstalled preferences-regen &> /dev/null &&
-echo "$text_md $text_ok Updated preferences"
-echo "$text_md $text_file   [$file_default_preferences]" ||
+echo "$text_md $text_ok Updated preferences $text_file" &&
+echo "$text_md [$file_default_preferences]" ||
 echo "$text_md $text_fail Not update preferences"
 ####
 ####
 #### alias-regen
 $cmd_notinstalled alias-regen &> /dev/null &&
-echo "$text_md $text_ok Updated alias" &&
-echo "$text_md $text_file   [$file_default_alias]" ||
+echo "$text_md $text_ok Updated alias $text_file" &&
+echo "$text_md [$file_default_alias]" ||
 echo "$text_md $text_fail Not update alias"
 ####
 ####
 #### templates-regen
 $cmd_notinstalled templates-regen &> /dev/null &&
-echo "$text_md $text_ok Updated templates" &&
-echo "$text_md $text_folder [$default_directory_template]" || 
+echo "$text_md $text_ok Updated templates $text_folder" &&
+echo "$text_md [$default_directory_template]" || 
 echo "$text_md $text_fail Not update templates"
 ####
 ####
 #### fonts
-echo "$text_md Source install: $cmd_notinstalled"
-echo "$text_md Final  install: $cmd_installed"
+echo "$text_md $text_info Source install: $cmd_notinstalled"
+echo "$text_md $text_info Final  install: $cmd_installed"
 ####
 ####
 #### comprobe
