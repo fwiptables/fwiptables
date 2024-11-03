@@ -73,7 +73,7 @@ killall -9 $conf_kill &> /dev/null
 exit; fi
 ### search radio
 if [ "$opt_first" == "search" ]; then
-echo "# searching radio: $second"
+echo "# searching radio: $opt_second"
 grep -i $2 $conf_complete
 exit; fi
 ### play radio
@@ -88,8 +88,8 @@ exit; fi
 ### link radio
 if [ "$opt_first" == "link" ]; then
 $opt_bin stop
-echo "# playing: $second" ;
-$conf_player -d $second
+echo "# playing: $opt_second" ;
+$conf_player -d $opt_second
 exit; fi
 ### code program
 if [ "$opt_first" == "code" ]; then
