@@ -1581,7 +1581,7 @@ exit ; fi
 if [ "$first_option" == "expert-cpufreq-info" ] ; then
 ####
 ####
-echo "$title_md [ $first_option ] [ show cpu frequence info ]"
+echo "$title_md $text_info [ show cpu frequence info ]"
 if [ "$command_cpufreqinfo" == "$NULL" ]; then
 echo "$title_md please install cpufreq-info"; fi
 $command_cpufreqinfo
@@ -1599,7 +1599,7 @@ exit; fi
 if [ "$first_option" == "expert-cpupower-info" ] ; then
 ####
 ####
-echo "$title_md [ $first_option ] [ show cpu frequence info ]"
+echo "$title_md $text_info [ show cpu frequence info ]"
 if [ "$command_cpupower" == "$NULL" ]; then
 echo "$title_md please install cpupower"; fi
 $command_cpupower -c all frequency-info
@@ -1617,7 +1617,7 @@ exit; fi
 if [ "$first_option" == "expert-configs-save" ] ; then
 ####
 ####
-echo "$title_md [ $first_option ] [ save backups confiurations to choosed filename ]"
+echo "$title_md $text_info [ save backups confiurations to choosed filename ]"
 if [ "$command_tar" == "$NULL" ]; then
 echo "$title_md Please install tar command"; exit ; fi
 if [ "$2" == "$NULL" ]; then
@@ -1640,7 +1640,7 @@ exit; fi
 if [ "$first_option" == "expert-configs-load" ] ; then
 ####
 ####
-echo "$title_md [ $first_option ] [ load backups confiurations from choosed filename ]"
+echo "$title_md $text_info [ load backups confiurations from choosed filename ]"
 if [ "$command_tar" == "$NULL" ]; then
 echo "$title_md Please install tar command"; exit ; fi
 if [ "$2" == "$NULL" ]; then
@@ -1663,7 +1663,7 @@ exit; fi
 if   [ "$first_option" == "expert-wpa-scan" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ Show SSID from net wifi ] "
+echo "$title_md $text_info  [ Show SSID from net wifi ] "
 if   [ "$command_iw" == "$NULL" ]; then 
 echo "$title_md $text_info [ Please, Install iw to work ]" ; exit ; fi
 for a in $($command_cat  /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1)
@@ -2269,7 +2269,7 @@ exit; fi
 if   [ "$first_option" == "sockets" ]; then
 ####
 ####
-echo "$title_md [ $first_option ] [ Show whith ss: LISTEN sockets ] "
+echo "$title_md $text_info [ Show whith ss: LISTEN sockets ] "
 if [ "$command_ss" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Install ss command ]"; exit; fi
 if [ "$command_awk" == "$NULL" ]; then 
@@ -2290,7 +2290,7 @@ exit; fi
 if [ "$first_option" == "address4" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ show info about net address ip4 ]"
+echo "$title_md $text_info  [ show info about net address ip4 ]"
 $cmd_internal network4
 $cmd_internal ip4
 $cmd_internal resolve
@@ -2309,7 +2309,7 @@ exit; fi
 if [ "$first_option" == "address6" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ show info about net address ip6 ]"
+echo "$title_md $text_info  [ show info about net address ip6 ]"
 $cmd_internal network6
 $cmd_internal ip6
 $cmd_internal resolve
@@ -2489,7 +2489,7 @@ exit; fi
 if   [ "$first_option" == "expert-trace-tcp4" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ trace ip or host with tcp ipv4 ]"
+echo "$title_md $text_info  [ trace ip or host with tcp ipv4 ]"
 case $command_tracepath in "$NULL")
 echo "$title_md $text_fail [ Install tracepath command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
@@ -2513,7 +2513,7 @@ exit; fi
 if   [ "$first_option" == "expert-trace-tcp6" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ trace ip or host with tcp ipv6 ]"
+echo "$title_md $text_info  [ trace ip or host with tcp ipv6 ]"
 case $command_tracepath in "$NULL")
 echo "$title_md $text_fail [ Install tracepath command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
@@ -2537,7 +2537,7 @@ exit; fi
 if   [ "$first_option" == "expert-trace-icmp4" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ trace ip or host with icmp ipv4 ]"
+echo "$title_md $text_info  [ trace ip or host with icmp ipv4 ]"
 case $command_traceroute in "$NULL")
 echo "$title_md $text_fail [ Install traceroute command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
@@ -2561,7 +2561,7 @@ exit; fi
 if   [ "$first_option" == "expert-trace-icmp6" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ trace ip or host with icmp ipv6 ]"
+echo "$title_md $text_info  [ trace ip or host with icmp ipv6 ]"
 case $command_traceroute in "$NULL")
 echo "$title_md $text_fail [ Install traceroute command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
@@ -2585,7 +2585,7 @@ exit; fi
 if   [ "$first_option" == "expert-myradio-install" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ myradio download ] [ expert-myradio-install md]"
+echo "$title_md $text_info  [ myradio download ] [ expert-myradio-install md]"
 echo "$title_md Downloading myradio stable latest in $default_directory_radio/myradio-bash"
 $command_curl $web_download_myradio -s -L \
 -o $default_directory_radio/myradio-bash || echo "Without internet" || exit \
@@ -2606,7 +2606,7 @@ exit; fi
 if [ "$first_option" == "utils" ]; then
 ####
 ####
-echo "$title_md [ $first_option ] [ List for posible utils programs ] [ utils md ] "
+echo "$title_md $text_info [ List for posible utils programs ] [ utils md ] "
 list_utils_possible="$($cmd_internal code possible-commands | \
 $command_grep -E '^command_' | $command_cut -d '=' -f 1 | \
 $command_sed 's/command_/ /g' )"
@@ -3595,7 +3595,7 @@ exit ; fi
 if   [ "$first_option" == "code" ];  then
 ####
 ####
-echo "$title_md [ $first_option ]  [ Show source code for each option ] "
+echo "$title_md $text_info  [ Show source code for each option ] "
 echo "$title_md $text_info [ code ] [ show source code for options from $cmd_internal ]"
 code_error="$title_md $text_info [ Usage ] [ $cmd_internal code option_choosed ]"
 if [ "$second_option" == "$NULL" ]; then echo "$code_error"
@@ -3629,7 +3629,7 @@ exit; fi
 if [ "$first_option" == "names-custom" ];  then
 ####
 ####
-echo "$title_md [ $first_option ] [ List configs cfg ] "
+echo "$title_md $text_info [ List configs cfg ] "
 echo "$title_md $text_info [ list configs files in cfg format ]"
 echo "$title_md $text_info [ folder ] [ $default_directory_custom ]"
 echo "$title_md"
@@ -3665,7 +3665,7 @@ exit; fi
 if   [ "$first_option" == "free" ]; then
 ####
 ####
-echo "$title_md [ $first_option ] [ freedom from innecesary ram ] [ free md ]"
+echo "$title_md $text_info [ freedom from innecesary ram ] [ free md ]"
 case $command_tee in "$NULL")
 echo "$text_md $text_fail [ Install tee command ]"; exit ;; esac
 ####
@@ -4008,7 +4008,7 @@ exit; fi
 if   [ "$first_option" == "info-options" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ info options ] [ info-options md]"
+echo "$title_md $text_info  [ info options ] [ info-options md]"
 echo "$text_md"
 $cmd_internal optional-output
 $cmd_internal firewall-listconceptual
@@ -4074,7 +4074,7 @@ exit; fi
 if   [ "$first_option" == "variables" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ list code variables-system ] [ variables md ]"
+echo "$title_md $text_info  [ list code variables-system ] [ variables md ]"
 $cmd_internal code variables-system
 ####
 ####
@@ -4088,7 +4088,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "eraserules" ];  then 
-echo "$title_md [ $first_option ] [ Deleting all iptables ipv4/ipv6 rules ]"
+echo "$title_md $text_info [ Deleting all iptables ipv4/ipv6 rules ]"
 ####
 ####
 #### english: table policy 
@@ -4151,7 +4151,7 @@ exit; fi
 if [ "$first_option" == "eraserules4" ]; then  
 ####
 ####
-echo "$title_md [ $first_option ] [ Deleting ip4 iptables rules ] "
+echo "$title_md $text_info [ Deleting ip4 iptables rules ] "
 ####
 ####
 #### english: table policy 
@@ -4242,7 +4242,7 @@ exit; fi
 if [ "$first_option" == "eraserules6" ]; then  
 ####
 ####
-echo "$title_md [ $first_option ] [ Deleting ip6 iptables rules ] "
+echo "$title_md $text_info [ Deleting ip6 iptables rules ] "
 ####
 ####
 #### english: table policy 
@@ -4331,7 +4331,7 @@ exit; fi
 if [ "$first_option" == "list-alltables" ]; then
 ####
 ####
-echo "$title_md [ $first_option ] [ List all rules ] "
+echo "$title_md $text_info [ List all rules ] "
 echo; echo; echo "$title_md LIST ARPTABLES ###" ; echo
 $cmd_internal list-arptables 
 echo; echo; echo "$title_md LIST EBTABLES ###" ; echo
@@ -4371,7 +4371,7 @@ exit; fi
 if [ "$first_option" == "listn-alltables" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List all rules ] "
+echo "$title_md $text_info [ List all rules ] "
 echo; echo; echo "$title_md LIST EBTABLES ###" ; echo
 $cmd_internal list-ebtables
 echo; echo; echo "$title_md LIST ARPTABLES ###" ; echo
@@ -4412,7 +4412,7 @@ exit; fi
 if [ "$first_option" == "list4" ]; then 
 ####
 ####
-echo "$title_md [ list4 ] [ List filter ipv4 ] \
+echo "$title_md $text_info [ List filter ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$command_ip4tableslegacy" -t filter -L INPUT 1 && \
 "$command_ip4tableslegacy" -t filter -L OUTPUT 1 ) &> /dev/null
@@ -4457,7 +4457,7 @@ exit; fi
 if [ "$first_option" == "list6" ]; then  
 ####
 ####
-echo "$title_md [ list6 ] [ List filter ipv6 ] \
+echo "$title_md $text_info [ List filter ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
 legacyseis=$("$command_ip6tableslegacy" -t filter -L INPUT 1 && \
 "$command_ip6tableslegacy" -t filter -L OUTPUT 1 )
@@ -4501,7 +4501,7 @@ exit; fi
 if [ "$first_option" == "listn4" ]; then  
 ####
 ####
-echo "$title_md [ list4 ] [ List filter ipv4 ] \
+echo "$title_md $text_info [ List filter ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$command_ip4tableslegacy" -t filter -L INPUT 1 && \
 "$command_ip4tableslegacy" -t filter -L OUTPUT 1 ) &> /dev/null
@@ -4544,7 +4544,7 @@ exit; fi
 if [ "$first_option" == "listn6" ]; then  
 ####
 ####
-echo "$title_md [ list6 ] [ List filter ipv6 ] \
+echo "$title_md $text_info [ List filter ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
 legacyseis=$("$command_ip6tableslegacy" -t filter -L INPUT 1 && \
 "$command_ip6tableslegacy" -t filter -L OUTPUT 1 )
@@ -4623,7 +4623,7 @@ exit; fi
 if [ "$first_option" == "listnum" ]; then 
 ####
 ####
-echo "$title_md [ list ] [ List numerical filter ipv4 ] \
+echo "$title_md $text_info [ List numerical filter ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$command_ip4tableslegacy" -t filter -L INPUT 1 && \
 "$command_ip4tableslegacy" -t filter -L OUTPUT 1 ) &> /dev/null
@@ -4667,7 +4667,7 @@ exit; fi
 if [ "$first_option" == "listnum6" ]; then 
 ####
 ####
-echo "$title_md [ list ] [ List numerical filter ipv6 ] \
+echo "$title_md $text_info [ List numerical filter ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$command_ip6tableslegacy" -t filter -L INPUT 1 && \
 "$command_ip6tableslegacy" -t filter -L OUTPUT 1 ) &> /dev/null
@@ -4710,7 +4710,7 @@ exit; fi
 if [ "$first_option" == "list-filter4" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List filter ipv4 ] \
+echo "$title_md $text_info [ List filter ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip4"
 echo
@@ -4737,7 +4737,7 @@ exit; fi
 if [ "$first_option" == "list-forward" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List filter forward ipv4 ] \
+echo "$title_md $text_info [ List filter forward ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip4"
 echo
@@ -4762,7 +4762,7 @@ exit; fi
 if [ "$first_option" == "list-filter6" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List filter ipv6 ] \
+echo "$title_md $text_info [ List filter ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip6"
 echo
@@ -4787,7 +4787,7 @@ exit; fi
 if [ "$first_option" == "list-forward6" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List filter forward ipv6 ] \
+echo "$title_md $text_info [ List filter forward ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip6"
 echo
@@ -4812,7 +4812,7 @@ exit; fi
 if [ "$first_option" == "list-nat4" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List nat ipv4 ] \
+echo "$title_md $text_info [ List nat ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="nat-ip4"
 echo
@@ -4837,7 +4837,7 @@ exit; fi
 if [ "$first_option" == "list-nat6" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List nat ipv6] \
+echo "$title_md $text_info [ List nat ipv6] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="nat-ip6"
 echo
@@ -4862,7 +4862,7 @@ exit; fi
 if [ "$first_option" == "listnum-filter4" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List filter ipv4 in numerical ] \
+echo "$title_md $text_info [ List filter ipv4 in numerical ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip4"
 echo
@@ -4887,7 +4887,7 @@ exit; fi
 if [ "$first_option" == "list-forwardnum" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List filter forward ipv4 in numerical ] \
+echo "$title_md $text_info [ List filter forward ipv4 in numerical ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip4"
 echo
@@ -4912,7 +4912,7 @@ exit; fi
 if [ "$first_option" == "listnum-filter6" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List filter ipv6 in numerical ] \
+echo "$title_md $text_info [ List filter ipv6 in numerical ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip6"
 echo
@@ -4937,7 +4937,7 @@ exit; fi
 if [ "$first_option" == "list-forwardnum6" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List filter forward ipv6 in numerical ] \
+echo "$title_md $text_info [ List filter forward ipv6 in numerical ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip6"
 echo
@@ -4962,7 +4962,7 @@ exit; fi
 if [ "$first_option" == "list-mangle4" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List mangle ipv4 ] \
+echo "$title_md $text_info [ List mangle ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="mangle-ip4"
 echo
@@ -4988,7 +4988,7 @@ exit; fi
 if [ "$first_option" == "list-mangle6" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List mangle ipv6 ] \
+echo "$title_md $text_info [ List mangle ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="mangle-ip6"
 echo
@@ -5013,7 +5013,7 @@ exit; fi
 if [ "$first_option" == "list-raw4" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List raw ipv4 ] \
+echo "$title_md $text_info [ List raw ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="raw-ip4"
 echo
@@ -5038,7 +5038,7 @@ exit; fi
 if [ "$first_option" == "list-raw6" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List raw ipv6 ] \
+echo "$title_md $text_info [ List raw ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="raw-ip6"
 echo
@@ -5063,7 +5063,7 @@ exit; fi
 if [ "$first_option" == "list-security4" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List security ipv4 ] \
+echo "$title_md $text_info [ List security ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="security-ip4"
 echo
@@ -5088,7 +5088,7 @@ exit; fi
 if [ "$first_option" == "list-security6" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List security ipv6 ] \
+echo "$title_md $text_info [ List security ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="security-ip6"
 echo
@@ -5113,7 +5113,7 @@ exit; fi
 if [ "$first_option" == "list-ebtables" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List ebtables ] "
+echo "$title_md $text_info [ List ebtables ] "
 fromrules="ebtables"
 echo
 echo "$title_md $text_info [ ebtables: filter ethernet ] [ $fromrules ]"
@@ -5137,7 +5137,7 @@ exit; fi
 if [ "$first_option" == "list-arptables" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List arptables ipv4 ] "
+echo "$title_md $text_info [ List arptables ipv4 ] "
 fromrules="arptables"
 echo
 echo "$title_md $text_info [ arptables: filter arptables ] [ $fromrules ]"
@@ -5398,7 +5398,7 @@ exit ; fi
 if [ "$first_option" == "names" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ List names from firewall saved ] "
+echo "$title_md $text_info [ List names from firewall saved ] "
 echo "$title_md $text_info [ list configs files in standard format ]"
 echo "$title_md $text_info [ folder ] [ $default_directory_control ]"
 echo 
@@ -5539,19 +5539,19 @@ echo "$title_md launch: fwiptables ip-forward [ list | on | off ]" ; exit ; fi
 ####
 ####
 if   [ "$second_option" == "list" ]; then
-echo "$title_md [ $first_option ]  [ Show ip forwading in kernel ] "
+echo "$title_md $text_info  [ Show ip forwading in kernel ] "
 echo "$title_md [ Actived 1 or deactived 0 ] [ ipforwading with sysctl ]"
 $command_sysctl -a | $command_grep -i  forwarding ; exit ; fi
 ####
 ####
 if   [ "$second_option" == "on" ]; then
-echo "$title_md [ $first_option ]  [ Activating.. ip forwading in kernel ]"
+echo "$title_md $text_info  [ Activating.. ip forwading in kernel ]"
 for a in $($command_sysctl -a | $command_grep -i  forwarding | $command_cut -d " " -f 1)
 do $command_sysctl -w $a=1 ; done ; exit ; fi
 ####
 ####
 if   [ "$second_option" == "off" ]; then
-echo "$header_ok [ $first_option ]  [ Deactivating.. ip forwading in kernel ]"
+echo "$header_ok $text_info  [ Deactivating.. ip forwading in kernel ]"
 for a in $($command_sysctl -a | $command_grep -i  forwarding | $command_cut -d " " -f 1)
 do $command_sysctl -w $a=0 ; done ; exit; fi
 ####
@@ -5571,7 +5571,7 @@ exit ; fi
 if [ "$first_option" == "download" ] ; then
 ####
 ####
-echo "$title_md [ $first_option ] [ $cmd_internal download ] [ download md ] "
+echo "$title_md $text_info [ $cmd_internal download ] [ download md ] "
 echo
 echo "$title_md the last version from fwiptables. Firewall With iptables"
 echo
@@ -5711,7 +5711,7 @@ exit; fi
 if   [ "$first_option" == "expert-gen-readme" ];  then
 ####
 ####
-echo "$title_md [ $first_option ]  [ generate actual file and readme from intro program ] "
+echo "$title_md $text_info  [ generate actual file and readme from intro program ] "
 #### create the FILE base in repository
 cp $0 $default_directory_readme/$cmd_name-$cmd_version-bash &&
 echo "$title_md $text_ok Created $default_directory_readme/$cmd_name-$cmd_version-bash"
@@ -5730,7 +5730,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-gen-deb" ];  then
-echo "$title_md [ $first_option ]  [ generate actual file debian ] "
+echo "$title_md $text_info  [ generate actual file debian ] "
 #### recreate the directories
 rm -R $default_directory_debian/deb/ &> /dev/null
 mkdir -p $default_directory_debian/deb/usr/bin &> /dev/null
@@ -5773,7 +5773,7 @@ exit; fi
 if   [ "$first_option" == "expert-show-geoip" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ resolve the location to one ip or host ] "
+echo "$title_md $text_info  [ resolve the location to one ip or host ] "
 echo ; case $command_geoiplookup in "$NULL")
 echo "$text_md $text_fail [ Install geoiplookup command ]" ; exit  ;; esac
 case "$second_option" in "$NULL")
@@ -5796,7 +5796,7 @@ exit; fi
 if   [ "$first_option" == "nodes" ]; then
 ####
 ####
-echo "$title_md [ $first_option ] [ Show the list arp-scan in the lan ] "
+echo "$title_md $text_info [ Show the list arp-scan in the lan ] "
 if [ "$command_arpscan" == "$NULL" ]; then
 echo "$title_md $text_fail [ install arp-scan command ]" ; exit ; fi
 echo "$title_md $text_info [ local net: ip lan .. ]"
@@ -5817,7 +5817,7 @@ exit; fi
 if   [ "$first_option" == "donate" ]; then
 ####
 ####
-echo "$title_md [ $first_option ] [ donate to fwiptables project ] [ donate md ]"
+echo "$title_md $text_info [ donate to fwiptables project ] [ donate md ]"
 echo "$text_md Not at all"
 ####
 ####
@@ -5852,7 +5852,7 @@ exit; fi
 #### if [ "$first_option" == "license-gpl-v3" ];  then
 ####
 ####
-#### echo "$title_md [ $first_option ] \
+#### echo "$title_md $text_info \
 #### [ Show license from git sourceforge for $cmd_internal ] "
 ####
 #### if [ "$command_curl" == "$NULL" ]; then
@@ -5877,7 +5877,7 @@ exit; fi
 if [ "$first_option" == "license-gpl-v2" ];  then
 ####
 ####
-echo "$title_md [ $first_option ] \
+echo "$title_md $text_info \
 [ Show license from git sourceforge for $cmd_internal ] "
 ####
 if [ "$command_curl" == "$NULL" ]; then
@@ -5902,7 +5902,7 @@ exit;  fi
 if [ "$first_option" == "license-lgpl-v2" ];  then
 ####
 ####
-echo "$title_md [ $first_option ] \
+echo "$title_md $text_info \
 [ Show license from git sourceforge for $cmd_internal ] "
 ####
 if [ "$command_curl" == "$NULL" ]; then
@@ -5925,7 +5925,7 @@ exit;  fi
 ####
 ####
 #### if [ "$first_option" == "license-bsd-v1" ]; then 
-#### echo "$title_md [ $first_option ] \
+#### echo "$title_md $text_info \
 #### [ Show license from git sourceforge for $cmd_internal ] "
 ####
 #### if [ "$command_curl" == "$NULL" ]; then
@@ -5948,7 +5948,7 @@ exit;  fi
 if   [ "$first_option" == "expert-pc-halt" ]; then
 ####
 ####
-echo "$title_md [ $first_option ] [ power off computer ] [ control-c to cancel ]"
+echo "$title_md $text_info [ power off computer ] [ control-c to cancel ]"
 echo "Halt to power off computer ... in 15 seconds"
 $command_sleep 5
 echo "Halt to power off computer ... in 10 seconds"
@@ -5975,7 +5975,7 @@ exit; fi
 if   [ "$first_option" == "expert-pc-poweroff" ]; then
 ####
 ####
-echo "$title_md [ $first_option ] [ power off computer ] [ control-c to cancel ]"
+echo "$title_md $text_info [ power off computer ] [ control-c to cancel ]"
 echo "Halt to power off computer ... in 15 seconds"
 $command_sleep 5
 echo "Halt to power off computer ... in 10 seconds"
@@ -6001,7 +6001,7 @@ exit; fi
 if   [ "$first_option" == "expert-pc-shutdown" ]; then
 ####
 ####
-echo "$title_md [ $first_option ] [ power off computer ] [ control-c to cancel ]"
+echo "$title_md $text_info [ power off computer ] [ control-c to cancel ]"
 echo "Halt to shutdown computer ... in 15 seconds"
 $command_sleep 5
 echo "Halt to shutdown computer ... in 10 seconds"
@@ -6027,7 +6027,7 @@ exit; fi
 if   [ "$first_option" == "expert-pc-reboot" ]; then
 ####
 ####
-echo "$title_md [ $first_option ] [ reboot computer ] [ control-c to cancel ]"
+echo "$title_md $text_info [ reboot computer ] [ control-c to cancel ]"
 echo "Halt to reboot computer ... in 15 seconds"
 $command_sleep 5
 echo "Halt to reboot computer ... in 10 seconds"
@@ -6155,7 +6155,7 @@ exit; fi
 if   [ "$first_option" == "expert-gen-compile" ]; then
 ####
 ####
-echo "$title_md [ $first_option ] \
+echo "$title_md $text_info \
 [  optionally ] [ howto compile bash script with obash ] "
 echo "$title_md Compile $cmd_internal" ; echo
 if [ "$command_obash" == "$NULL" ]
@@ -6183,7 +6183,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-upgrade-adblock" ]; then
-echo "$title_md [ $first_option ]  [ get: blacklist files / adblock files / hosts deny files ]"
+echo "$title_md $text_info  [ get: blacklist files / adblock files / hosts deny files ]"
 ####
 ####
 echo "$title_md [ Waiting a moment ] [ downloading blacklist to directory: $default_directory_adblock ] "
@@ -6209,7 +6209,7 @@ exit; fi
 if   [ "$first_option" == "info" ]; then
 ####
 ####
-echo "$title_md $text_info $text_md [ $first_option ]  [ info $second_option ] [ info md ]"
+echo "$title_md $text_info $text_md $text_info  [ info $second_option ] [ info md ]"
 echo "$title_md $text_info  Launch info search: $cmd_internal \
 [optional-output] info [pattern-to-search]"
 echo "$title_md $text_info Example info search: $cmd_internal \
@@ -6234,7 +6234,7 @@ exit ; fi
 if   [ "$first_option" == "expert-speed-glx" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ test gl mesa3D speed ] \
+echo "$title_md $text_info  [ test gl mesa3D speed ] \
 [ for default max $time_server_waiting seconds ] "
 case $command_glxgears in "$NULL")
 echo "$text_md $text_fail [ Install mesa utils ]"; exit ;; esac
@@ -6254,7 +6254,7 @@ exit; fi
 if   [ "$first_option" == "expert-speed-disk" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ test disk speed benchamrk ] \
+echo "$title_md $text_info  [ test disk speed benchamrk ] \
 [ for default max $time_server_waiting seconds ] [ 100Mb will be used to benchmark, while]"
 case $command_dd in "$NULL")
 echo "$text_md $text_fail [ Install dd ]"; exit ;; esac
@@ -6275,7 +6275,7 @@ exit; fi
 if   [ "$first_option" == "expert-speed-ram" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ test ram speed benchamrk ] \
+echo "$title_md $text_info  [ test ram speed benchamrk ] \
 [ for default max $time_server_waiting seconds ] [ 100Mb will be used to benchmark, while]"
 case $command_dd in "$NULL")
 echo "$text_md $text_fail [ Install dd ]"; exit ;; esac
@@ -6298,7 +6298,7 @@ exit; fi
 if   [ "$first_option" == "expert-speed-cpu" ]; then
 ####
 ####
-echo "$header_ok [ $first_option ]  [ test cpu processor ] [ calcule pi with 2000 digits ]"
+echo "$header_ok $text_info  [ test cpu processor ] [ calcule pi with 2000 digits ]"
 case $command_bc in "$NULL") echo "$tab $text_fail [ Install bc command ]"; exit ;; esac
 echo "$duo_md $text_info [ Calculate pi with 2000 digits in only one cpu ]"
 echo "$duo_md $text_info [ For example with 2ghz/cpu is 5 seconds aprox. ] "
@@ -6317,7 +6317,7 @@ exit; fi
 if [ "$first_option" == "date" ]; then
 ####
 ####
-echo "$title_md [ $first_option ] \
+echo "$title_md $text_info \
 [ update the computer time and date from internet ] "
 if [ "$favorite_date_command" == "$NULL" ]; then
 echo "$text_md $text_fail [ Install one ntp client ]" ; fi
@@ -6515,7 +6515,7 @@ exit; fi
 if [ "$first_option" == "show" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ]  [ show one firewall saved ] "
+echo "$title_md $text_info  [ show one firewall saved ] "
 echo 
 case "$second_option" in
 "$NULL") $cmd_internal names
@@ -6563,7 +6563,7 @@ exit; fi
 if [ "$first_option" == "actual" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ show the last firewall saved ] "
+echo "$title_md $text_info  [ show the last firewall saved ] "
 echo 
 $command_arptables-save          &> $default_directory_control/$cmd_filename-actual-arptables
 $command_ebtables-save           &> $default_directory_control/$cmd_filename-actual-ebtables   
@@ -6599,7 +6599,7 @@ exit; fi
 if [ "$first_option" == "stop" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ Stop the firewall ] "
+echo "$title_md $text_info  [ Stop the firewall ] "
 ####
 ####
 #### english: save actual fw #### spanish: guarda actual fw
@@ -6633,7 +6633,7 @@ exit; fi
 if [ "$first_option" == "continue" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ Continue the stopped firewall ] "
+echo "$title_md $text_info  [ Continue the stopped firewall ] "
 ####
 ####
 #### english: restore last fw #### spanish: restaura el ultimo fw
@@ -6659,7 +6659,7 @@ exit; fi
 if [ "$first_option" == "config-eng" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ show variables cfg from english configuration ] "
+echo "$title_md $text_info [ show variables cfg from english configuration ] "
 $command_cat $default_fullcfg_eng
 ####
 ####
@@ -6675,7 +6675,7 @@ exit; fi
 if [ "$first_option" == "config-spa" ]; then 
 ####
 ####
-echo "$title_md [ $first_option ] [ show variables cfg from spanish configuration ] "
+echo "$title_md $text_info [ show variables cfg from spanish configuration ] "
 $command_cat  $default_fullcfg_spa
 ####
 ####
@@ -6799,7 +6799,7 @@ exit; fi
 if [ "$first_option" == "speed-ip4" ] || [ "$first_option" == "expert-speed-ip4" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ test speed ipv4 with iperf ] "
+echo "$title_md $text_info  [ test speed ipv4 with iperf ] "
 echo "$title_md $cmd_internal use or iperf or iperf3"
 if [ "$favorite_iperf_command" == "$NULL" ];
 then echo "$title_md $text_fail install iperf";
@@ -6830,7 +6830,7 @@ exit; fi
 if [ "$first_option" == "speed-ip6" ] || [ "$first_option" == "expert-speed-ip6" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ test speed ipv6 with iperf ] "
+echo "$title_md $text_info  [ test speed ipv6 with iperf ] "
 echo "$title_md $cmd_internal use or iperf or iperf3"
 if [ "$favorite_iperf_command" == "$NULL" ];
 then echo "$title_md $text_fail install iperf";
@@ -6859,7 +6859,7 @@ exit; fi
 if   [ "$first_option" == "sockets" ]; then
 ####
 ####
-echo "$title_md [ $first_option ] [ Show whith ss: LISTEN sockets ] "
+echo "$title_md $text_info [ Show whith ss: LISTEN sockets ] "
 if [ "$command_ss" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Install ss command ]"; exit; fi
 if [ "$command_awk" == "$NULL" ]; then 
@@ -6880,7 +6880,7 @@ exit; fi
 if   [ "$first_option" == "web" ]; then
 ####
 ####
-echo "$title_md [ $first_option ] [ Show one web with command text browser ]"
+echo "$title_md $text_info [ Show one web with command text browser ]"
 ####
 ####
 if [ "$favorite_text_browser" == "$NULL" ]; then 
@@ -6913,7 +6913,7 @@ exit; fi
 if   [ "$first_option" == "expert-project-web" ]; then
 ####
 ####
-echo "$title_md [ $first_option ] [ version - date - size - downloaded last week ]"
+echo "$title_md $text_info [ version - date - size - downloaded last week ]"
 ####
 ####
 $cmd_internal web "http://sourceforge.net/projects/f-iptables/files/" \
@@ -6932,7 +6932,7 @@ exit; fi
 if   [ "$first_option" == "expert-browser-web" ]; then
 ####
 ####
-echo "$title_md [ $first_option ] [ Show one web with command text browser ]"
+echo "$title_md $text_info [ Show one web with command text browser ]"
 ####
 ####
 if [ "$favorite_text_browser" == "$NULL" ]; then 
@@ -6963,7 +6963,7 @@ exit; fi
 if   [ "$first_option" == "expert-sockets-ss" ]; then
 ####
 ####
-echo "$title_md [ $first_option ] [ Show whith ss: sockets ] "
+echo "$title_md $text_info [ Show whith ss: sockets ] "
 if [ "$command_ss" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Install ss command ]"; exit; fi
 #### if [ "$command_awk" == "$NULL" ]; then 
@@ -6988,7 +6988,7 @@ exit; fi
 if   [ "$first_option" == "expert-sockets-lsof" ]; then
 ####
 ####
-echo "$title_md [ $first_option ] [ Show whith lsof: sockets ] "
+echo "$title_md $text_info [ Show whith lsof: sockets ] "
 if [ "$command_lsof" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Install lsof command ]"; exit; fi
 $command_lsof -i
@@ -7006,7 +7006,7 @@ exit; fi
 if   [ "$first_option" == "expert-sockets-netstat" ]; then
 ####
 ####
-echo "$title_md [ $first_option ] [ Show whith lsof: sockets ] "
+echo "$title_md $text_info [ Show whith lsof: sockets ] "
 if [ "$command_lsof" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Install lsof command ]"; exit; fi
 #### if [ "$command_awk" == "$NULL" ]; then 
@@ -7026,7 +7026,7 @@ exit; fi
 if   [ "$first_option" == "expert-show-webcert" ] ; then
 ####
 ####
-echo "$title_md [ $first_option ] \
+echo "$title_md $text_info \
 [ get one web certifcate from one server with port 443]"
 case "$command_openssl"  in  $NULL)
 echo "$text_md $text_fail [ install openssl ]"; exit ;; esac
@@ -7052,7 +7052,7 @@ exit; fi
 if   [ "$first_option" == "expert-nmap-tcp" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ scan with nmap tcp ]"
+echo "$title_md $text_info  [ scan with nmap tcp ]"
 if [ "$command_nmap" == "$NULL" ];  then
 echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md $text_info [ Use: $cmd_internal $first_option ip/net ]"
@@ -7077,7 +7077,7 @@ exit; fi
 if   [ "$first_option" == "expert-nmap-syn" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ scan with nmap syn ]"
+echo "$title_md $text_info  [ scan with nmap syn ]"
 if [ "$command_nmap" == "$NULL" ];  then
 echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md $text_info [ Use: $cmd_internal $first_option ip/net ]"
@@ -7103,7 +7103,7 @@ exit; fi
 if   [ "$first_option" == "expert-nmap-fin" ] ; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ scan with nmap fin ]"
+echo "$title_md $text_info  [ scan with nmap fin ]"
 if [ "$command_nmap" == "$NULL" ];  then
 echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md $text_info [ Use: $cmd_internal $first_option ip/net ]"
@@ -7129,7 +7129,7 @@ exit; fi
 if   [ "$first_option" == "expert-nmap-udp" ]; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ scan with nmap udp ]"
+echo "$title_md $text_info  [ scan with nmap udp ]"
 if [ "$command_nmap" == "$NULL" ];  then
 echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md $text_info [ Use: $cmd_internal $first_option ip/net ]"
@@ -7155,7 +7155,7 @@ exit; fi
 if   [ "$first_option" == "expert-nmap-ping" ] ; then
 ####
 ####
-echo "$title_md [ $first_option ]  [ scan with nmap ping ]"
+echo "$title_md $text_info  [ scan with nmap ping ]"
 if [ "$command_nmap" == "$NULL" ];  then
 echo "$title_md Please install nmap to work"; exit; fi
 echo "$title_md $text_info [ Use: $cmd_internal $first_option ip/net ]"
