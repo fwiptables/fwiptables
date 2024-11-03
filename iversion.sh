@@ -6132,10 +6132,10 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "expert-upgrade-adblock" ]; then
-echo "$title_md $text_info  [ get: blacklist files / adblock files / hosts deny files ]"
 ####
 ####
-echo "$title_md [ Waiting a moment ] [ downloading blacklist to directory: $default_directory_adblock ] "
+echo "$title_md $text_info [ blacklist files / adblock files / hosts deny files ]"
+echo "$title_md $text_info [ Waiting a moment ]"
 echo "$title_md [ Step 1/4 ] [ downloading hosts fademind to $file_blacklist_fademind ]"
 $command_curl $web_blacklist_fademind -s -L -o $file_blacklist_fademind
 echo "$title_md [ Step 2/4 ] [ downloading hosts mvps to $file_blacklist_mvps ]"
@@ -6144,6 +6144,7 @@ echo "$title_md [ Step 3/4 ] [ downloading hosts adaway to $file_blacklist_adawa
 $command_curl $web_blacklist_adaway -s -L -o $file_blacklist_adaway
 echo "$title_md [ Step 4/4 ] [ downloading hosts stevenblack to $file_blacklist_stevenblack ]"
 $command_curl $web_blacklist_stevenblack -s -L -o $file_blacklist_stevenblack
+echo "$title_md $text_folder [ $default_directory_adblock ] "
 ####
 ####
 exit; fi
