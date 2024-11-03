@@ -641,6 +641,7 @@ text_ok="<  ok  >"
 text_info="< info >"
 text_fail="< fail >"
 text_file="< file >"
+text_done="< done >"
 text_folder="<folder>"
 head_waiting_all=" [ Wait several seconds.. ]  [ press control-c to cancel ] "
 head_waiting_txt="$title_md $text_info [ txt ] $head_waiting_all "
@@ -649,8 +650,6 @@ head_waiting_cli="$title_md $text_info [ cli ] $head_waiting_all "
 head_waiting_gui="$title_md $text_info [ gui ] $head_waiting_all "
 head_waiting_log="$title_md $text_info [ log ] $head_waiting_all "
 head_waiting_pdf="$title_md $text_info [ pdf ] $head_waiting_all "
-give_load="$title_md $text_ok [ Load firewall ] [ Firewall With iptables ]"
-give_preferences="$title_md [ Configure ] [ $cmd_internal preferences-edit ]"
 message_without_support="[ Without support for output cli for this option ]"
 message_without_narrow="$title_md $text_fail [ narrow ] $message_without_support"
 message_without_txt="$title_md $text_fail [ txt ] $message_without_support"
@@ -6815,7 +6814,7 @@ $favorite_iperf_command -4 -t 4 -c $serverip_iperf_ipv4 -p $serverport_iperf_ipv
 echo "$title_md"
 echo "$title_md [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip4 
-echo "$title_md [ Done ] $cmd_internal speed-ip4"
+echo "$title_md $text_done $cmd_internal speed-ip4"
 ####
 ####
 exit; fi
@@ -6844,7 +6843,7 @@ $favorite_iperf_command -6 -t 4 -P 1 -c $serverip_iperf_ipv6 -p $serverport_iper
 echo "$title_md"
 echo "$title_md [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip6 
-echo "$title_md [ Done ] $cmd_internal speed-ip6"
+echo "$title_md $text_done $cmd_internal speed-ip6"
 ####
 ####
 exit; fi
