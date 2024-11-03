@@ -3591,7 +3591,7 @@ echo "$title_md $text_info [ List configs cfg ] "
 echo "$title_md $text_info [ list configs files in cfg format ]"
 echo "$title_md $text_info [ folder ] [ $default_directory_custom ]"
 echo "$title_md"
-$command_ls -1 $default_directory_custom
+$command_tree $default_directory_custom
 echo "$title_md"
 echo "$title_md [ OK CFG FILES NAMES ] [ Use: $cmd_internal load-custom file ]"
 ####
@@ -5355,15 +5355,14 @@ exit ; fi
 if [ "$first_option" == "names" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List names from firewall saved ] "
-echo "$title_md $text_info [ list configs files in standard format ]"
-echo "$title_md $text_info [ folder ] [ $default_directory_control ]"
+echo "$title_md $text_info [ list configs files saved in standard format ]"
+echo "$title_md $folder [ $default_directory_control ]"
 echo 
 echo "$title_md $text_info [ Listing firewall names ]"
-$command_ls -1 $default_directory_control | $command_sed s/\-legacy\-ipv6//g | \
+$command_tree $default_directory_control | $command_sed s/\-legacy\-ipv6//g | \
 $command_sed s/\-nft\-ipv6//g | \
 $command_sed s/\-legacy\-ipv4//g | $command_sed s/\-nft\-ipv4//g | \
-$command_sed s/\-arptables//g | $command_sed s/\-ebtables//g | sort -u 
+$command_sed s/\-arptables//g | $command_sed s/\-ebtables//g 
 echo
 echo "$title_md $text_ok [ Listed firewall names ]"
 ####
