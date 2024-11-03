@@ -1905,6 +1905,8 @@ echo "#logcmd=cat-logcmd"
 echo "#autolog=cat-logcmd"
 echo "#ver=version"
 echo "#all-names=names"
+echo "#address4=net4-info"
+echo "#address6=net6-info"
 echo "#ram-free=free"
 echo "#free-ram=free"
 echo "#ram=free"
@@ -2101,16 +2103,10 @@ exit; fi
 if [ "$first_option" == "network4" ]; then
 ####
 ####
+#### route table
 echo "$title_md $text_info ### [ Network Route ] [ Route ipv4 ] ###"
-if [ "$command_ip" == "$NULL" ]
-then echo "$text_md $text_info [ install ip command ]"
+if [ "$command_ip" == "$NULL" ] ; then echo "$text_md $text_info [ install ip command ]"
 else $command_ip -4 route   ; fi
-####
-####
-echo "$title_md $text_info ### [ Configured ip ] [ inet ipv4 ] ###"
-if [ "$command_ip" == "$NULL" ]
-then echo "$text_md $text_info [ install ip command ]"
-else $command_ip -4 address ; fi
 ####
 ####
 exit; fi 
@@ -2125,16 +2121,10 @@ exit; fi
 if [ "$first_option" == "network6" ]; then
 ####
 ####
+#### route table
 echo "$title_md $text_info ### [ Network Route ] [ Route ipv6 ] ###"
-if [ "$command_ip" == "$NULL" ]
-then echo "$text_md $text_info [ install ip command ]"
+if [ "$command_ip" == "$NULL" ]; then echo "$text_md $text_info [ install ip command ]"
 else $command_ip -6 route   ; fi
-####
-####
-echo "$title_md $text_info ### [ Configured ip ] [ inet ipv6 ] ###"
-if [ "$command_ip" == "$NULL" ]
-then echo "$text_md $text_info [ install ip command ]"
-else $command_ip -6 address ; fi
 ####
 ####
 exit; fi
@@ -2165,8 +2155,8 @@ exit ; fi
 if [ "$first_option" == "address" ]; then
 ####
 ####
-$cmd_internal address4
-$cmd_internal address6
+$cmd_internal net4-info
+$cmd_internal net6-info
 ####
 ####
 exit ; fi
@@ -2184,9 +2174,7 @@ if [ "$first_option" == "ip4" ]; then
 echo "$title_md $text_info ### [ Private ip ] [ Address ipv4 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$title_md $text_info [ install ip command ]"
-else  $command_ip -4 address | $command_grep -i  inet | \
-$command_grep -iv 127.0.0.1 | $command_sed 's/inet//g' | \
-$command_cut -d "/" -f 1 ; fi
+else  $command_ip -4 address | grep -i "inet "; fi
 ####
 ####
 echo "$title_md $text_info ### [ Public ip ] [ Address ipv4 ] ###"
@@ -2213,9 +2201,7 @@ if [ "$first_option" == "ip6" ]; then
 echo "$title_md $text_info ### [ Private ip ] [ Address ipv6 ] ###"
 if [ "$command_ip" == "$NULL" ]
 then echo "$title_md $text_info [ install ip command ]"
-else  $command_ip -6 address | $command_grep -i  inet6 | \
-$command_grep -iv 127.0.0.1 | $command_sed 's/inet6//g' | \
-$command_cut -d "/" -f 1 ; fi
+else  $command_ip -6 address | grep -i "inet6 " ; fi
 ####
 ####
 echo "$title_md $text_info ### [ Public ip ] [ Address ipv6 ] ###"
@@ -2252,12 +2238,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-sockets:
-##########    english: address4 : get net info               ##########
-##########    spanish: address4 : da informacion de la red   ##########
-#### :rutina-inicial-address4:
+##########    english: net4-info : get net info               ##########
+##########    spanish: net4-info : da informacion de la red   ##########
+#### :rutina-inicial-net4-info:
 ####
 ####
-if [ "$first_option" == "address4" ]; then
+if [ "$first_option" == "net4-info" ]; then
 ####
 ####
 echo "$title_md $text_info  [ show info about net address ip4 ]"
@@ -2270,13 +2256,13 @@ $cmd_internal sockets
 exit; fi
 ####
 ####
-#### :rutina-final-address4:
-##########    english: address6 : get net info               ##########
-##########    spanish: address6 : da informacion de la red   ##########
-#### :rutina-inicial-address6:
+#### :rutina-final-net4-info:
+##########    english: net6-info : get net info               ##########
+##########    spanish: net6-info : da informacion de la red   ##########
+#### :rutina-inicial-net6-info:
 ####
 ####
-if [ "$first_option" == "address6" ]; then
+if [ "$first_option" == "net6-info" ]; then
 ####
 ####
 echo "$title_md $text_info  [ show info about net address ip6 ]"
@@ -2291,7 +2277,7 @@ exit; fi
 ####
 ####
 ####
-#### :rutina-final-address6:
+#### :rutina-final-net6-info:
 ##########    english: expert-conf-clientproxy: get net info               ##########
 ##########    spanish: expert-conf-clientproxy: da informacion de la red   ##########
 #### :rutina-inicial-expert-confclientproxy
@@ -3537,7 +3523,7 @@ echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net  
 echo "$title_md    firewall-netsystem $text_md"
 echo "$text_md preferences-edit alias-edit options info-options usernotes$text_md"
 echo "$text_md cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $text_md"
-echo "$text_md sockets ip ip4 ip6 network4 network6 address4 address6 $text_md"
+echo "$text_md sockets ip ip4 ip6 network4 network6 net4-info net6-info $text_md"
 echo "$text_md free nodes ip-forward utils date resolve speed-ip4 speed-ip6 $text_md"
 echo "$text_md log-stat web intro depends uninstall install upgrade notes $text_md"
 echo "$text_md variables examples info code expert donate about version $text_md"
@@ -3866,8 +3852,8 @@ echo "$text_md $text_md ip . show details from connection ipv4, ipv6 $text_md"
 echo "$text_md $text_md ip4 . show ip from connection ipv4 $text_md"
 echo "$text_md $text_md ip6 . show ip from connection ipv6 $text_md"
 echo "$text_md $text_md address . show details from connection ipv4, ipv6 $text_md"
-echo "$text_md $text_md address4 . show details from connection ipv4 $text_md"
-echo "$text_md $text_md address6 . show details from connection ipv6 $text_md"
+echo "$text_md $text_md net4-info . show details from connection ipv4 $text_md"
+echo "$text_md $text_md net6-info . show details from connection ipv6 $text_md"
 echo "$text_md $text_md speed-ip4 . calculate bandwith ipv4 $text_md"
 echo "$text_md $text_md speed-ip6 . calculate bandwith ipv6 $text_md"
 echo "$text_md $text_md sockets . show the sockets listening $text_md"
@@ -9342,7 +9328,7 @@ then echo $message_without_guiroll ; exit ; fi
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-edit|preferences-regen|alias-edit|alias-regen|\
 alias-read|options|info-options|expert|\
-address4|address6|network4|network6||sockets|tree-pdf|tree-conf\
+net4-info|net6-info|network4|network6||sockets|tree-pdf|tree-conf\
 tree-log|cat-logcmd|ip4|ip6|notes|speed-ip4|speed-ip6|\
 nodes|date|free|version|tree-conf|tree-cache|clean-cache|\
 depends|utils|about|variables|examples|intro|install|upgrade|\
@@ -9388,8 +9374,8 @@ tree-conf)$cmd_internal -gui-zenity tree-conf ;;
 tree-cache)$cmd_internal -gui-zenity tree-cache ;;
 clean-cache) $cmd_internal -gui-zenity clean-cache ;;
 depends)$cmd_internal -gui-zenity depends ;;
-address4)$cmd_internal gui-$second_option address4 ;;
-address6)$cmd_internal gui-$second_option address6 ;;
+net4-info)$cmd_internal gui-$second_option net4-info ;;
+net6-info)$cmd_internal gui-$second_option net6-info ;;
 network4)$cmd_internal gui-$second_option network4 ;;
 network6)$cmd_internal gui-$second_option network6 ;;
 install)$cmd_internal -gui-zenity install ;;
@@ -9932,7 +9918,7 @@ options|clasic-options|info-options|expert|download|intro|\
 cat-logcmd|tree-log|tree-pdf|tree-conf|tree-cache|clean-cache|
 ip4|ip6|speed-ip4|speed-ip6|notes|\
 license-lgpl-v2|license-gpl-v2|\
-address4|address6|network4|network6||sockets|\
+net4-info|net6-info|network4|network6||sockets|\
 install|upgrade|examples|depends|variables|utils|about"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($second_option \
@@ -9981,8 +9967,8 @@ depends*)$cmd_internal gui-$second_option depends ;;
 install*)$cmd_internal -gui-zenity install ;;
 upgrade*)$cmd_internal -gui-zenity upgrade ;;
 notes*)$cmd_internal gui-$second_option notes ;;
-address4*)$cmd_internal gui-$second_option address4 ;;
-address6*)$cmd_internal gui-$second_option address6 ;;
+net4-info*)$cmd_internal gui-$second_option net4-info ;;
+net6-info*)$cmd_internal gui-$second_option net6-info ;;
 network4*)$cmd_internal gui-$second_option network4 ;;
 network6*)$cmd_internal gui-$second_option network6 ;;
 license-lgpl-v2*)$cmd_internal gui-$second_option license-lgpl-v2 ;;
