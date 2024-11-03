@@ -669,14 +669,9 @@ message_without_guiroll="$title_md $text_fail [ install zenity ]"
 #### :rutina-inicial-variables-updated:
 ####
 ####
-#### sane preferences
-if [ ! -f "$file_default_preferences" ]
-then touch $file_default_preferences ; fi
-####
-####
 #### load preferences
-if [ -f "$file_default_preferences" ] ;
-then source $file_default_preferences ; fi
+if [ ! -f "$file_default_preferences" ]; then touch $file_default_preferences ; fi
+if [ -f "$file_default_preferences" ]; then source $file_default_preferences ; fi
 ####
 ####
 #### prepare alias
@@ -710,23 +705,19 @@ first_option="$without_first_option" ; fi
 ####
 ####
 #### sane variables
-case "$NULL" in 
-"$choosed_iptables")      ;; *) choosed_iptables="no"      ;;
-"$launch_rules_firewall") ;; *) launch_rules_firewall="no" ;;
-"$name_firewall")         ;; *) name_firewall="no"         ;;
-"$type_firewall")         ;; *) type_firewall="no"         ;;
-esac
+# case "$NULL" in 
+# "$choosed_iptables")      ;; *) choosed_iptables="no"      ;;
+# "$launch_rules_firewall") ;; *) launch_rules_firewall="no" ;;
+# "$name_firewall")         ;; *) name_firewall="no"         ;;
+# "$type_firewall")         ;; *) type_firewall="no"         ;;
+# esac
 ####
 ####
 #### configure expert commands
 if [ "$allow_expert_commands" == "no" ]; then
-####
-####
 case "$first_option" in 
 exper*) echo "$title_md See in preferences allow_expert_commands to active it option"
 exit ;; esac
-####
-####
 case "$second_option" in
 exper*) echo "$title_md See in preferences allow_expert_commands to active it option"
 exit ;; esac
@@ -5612,9 +5603,8 @@ echo "$title_md Waiting several seconds, while create new configuration"
 ####  copy
 cp $cmd_notinstalled $cmd_installed && 
 chmod 755 $cmd_installed &> /dev/null &&
-echo "$text_md $text_ok Installed $cmd_name" &&
-echo "$text_md $text_file [$cmd_installed]" ||
-echo "$text_md $text_fail Not nstall"
+echo "$text_md $text_ok Installed $cmd_name $text_md $text_file [$cmd_installed]" ||
+echo "$text_md $text_fail Not installed"
 ####
 ####
 #### preferences-regen
