@@ -3523,7 +3523,7 @@ echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net  
 echo "$title_md    firewall-netsystem $text_md"
 echo "$text_md preferences-edit alias-edit options info-options usernotes$text_md"
 echo "$text_md cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $text_md"
-echo "$text_md ip ip4 ip6 route4 route6 net4-info net6-info sockets nodes $text_md"
+echo "$text_md ip4 ip6 route4 route6 net4-info net6-info sockets nodes $text_md"
 echo "$text_md free ip-forward utils date resolve speed-ip4 speed-ip6 $text_md"
 echo "$text_md log-stat web intro depends uninstall install upgrade notes $text_md"
 echo "$text_md variables examples info code expert donate about version $text_md"
