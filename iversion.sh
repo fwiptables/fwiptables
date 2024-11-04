@@ -6647,13 +6647,13 @@ if [ "$first_option" == "add-whitelist4" ] || [ "$first_option" == "expert-add-w
 if [ "$2" == "$NULL" ]; then echo "$title_md $text_fail type host ip4 or net ip4 to be in whitelist"; exit ; fi
 echo "$title_md [ Working ] ADD ipv4 rules whitelist: ACCEPT to $2"
 $command_ip4tablesnft    -t filter -I INPUT 2 -s $2   -m comment --comment "add whitelist4"  \
--j ACCEPT &> /dev/null && echo ok rule nft 1/4 with $2 || echo fail nft rule 1/4
+-j ACCEPT &> /dev/null && echo ok rule nft 1/4 with $2 || echo fail rule nft 1/4
 $command_ip4tablesnft    -t filter -I OUTPUT 2 -d $2  -m comment --comment "add whitelist4"  \
--j ACCEPT &> /dev/null && echo ok rule nft 2/4 with $2 || echo fail nft rule 2/4
+-j ACCEPT &> /dev/null && echo ok rule nft 2/4 with $2 || echo fail rule nft 2/4
 $command_ip4tableslegacy -t filter -I INPUT 2 -s $2   -m comment --comment "add whitelist4"  \
--j ACCEPT &> /dev/null && echo ok rule legacy 3/4 with $2 || echo fail legacy rule 3/4
+-j ACCEPT &> /dev/null && echo ok rule legacy 3/4 with $2 || echo fail rule legacy 3/4
 $command_ip4tableslegacy -t filter -I OUTPUT 2 -d $2  -m comment --comment "add whitelist4"  \
--j ACCEPT &> /dev/null && echo ok rule legacy 4/4 with $2 || echo fail legacy rule 4/4
+-j ACCEPT &> /dev/null && echo ok rule legacy 4/4 with $2 || echo fail rule legacy 4/4
 ####
 ####
 exit; fi
@@ -6671,13 +6671,13 @@ if [ "$first_option" == "add-whitelist6" ] || [ "$first_option" == "expert-add-w
 if [ "$2" == "$NULL" ]; then echo "$title_md $text_fail type host ip6 or net ip6 to be in whitelist"; exit ; fi
 echo "$title_md [ Working ] ADD ipv6 rules whitelist: ACCEPT to $2"
 $command_ip6tablesnft    -t filter -I INPUT 2 -s $2   -m comment --comment "add whitelist6"  \
--j ACCEPT && echo ok rule 1/4 with $2 || echo fail rule 1/4
+-j ACCEPT  &> /dev/null && echo ok rule nft 1/4 with $2 || echo fail rule nft 1/4
 $command_ip6tablesnft    -t filter -I OUTPUT 2 -d $2  -m comment --comment "add whitelist6"  \
--j ACCEPT && echo ok rule 2/4 with $2 || echo fail rule 2/4
+-j ACCEPT  &> /dev/null && echo ok rule nft 2/4 with $2 || echo fail rule nft 2/4
 $command_ip6tableslegacy -t filter -I INPUT 2 -s $2   -m comment --comment "add whitelist6"  \
--j ACCEPT && echo ok rule 3/4 with $2 || echo fail rule 3/4
+-j ACCEPT  &> /dev/null && echo ok rule legacy 3/4 with $2 || echo fail rule nft 3/4
 $command_ip6tableslegacy -t filter -I OUTPUT 2 -d $2  -m comment --comment "add whitelist6"  \
--j ACCEPT && echo ok rule 4/4 with $2 || echo fail rule 4/4
+-j ACCEPT &> /dev/null && echo ok rule legacy 4/4 with $2 || echo fail rule nft 4/4
 ####
 ####
 exit; fi
@@ -6704,13 +6704,13 @@ echo "$title_md $text_fail type host ip4 or net ip4 to be in blacklist" ; exit ;
 ####
 echo "$title_md [ Working ] ADD ipv4 rules blacklist: DROP to $2"
 $command_ip4tablesnft    -t filter -I INPUT 2 -s $2  -m comment --comment "add blacklist4" \
--j DROP && echo ok rule 1/4 with $2 || echo fail rule 1/4
+-j DROP  &> /dev/null && echo ok rule nft 1/4 with $2 || echo fail rule nft 1/4
 $command_ip4tablesnft    -t filter -I OUTPUT 2 -d $2 -m comment --comment "add blacklist4" \
--j DROP && echo ok rule 2/4 with $2 || echo fail rule 2/4
+-j DROP  &> /dev/null && echo ok rule nft 2/4 with $2 || echo fail rule nft 2/4
 $command_ip4tableslegacy -t filter -I INPUT 2 -s $2  -m comment --comment "add blacklist4"  \
--j DROP && echo ok rule 3/4 with $2 || echo fail rule 3/4
+-j DROP  &> /dev/null && echo ok rule legacy 3/4 with $2 || echo fail rule legacy 3/4
 $command_ip4tableslegacy -t filter -I OUTPUT 2 -d $2 -m comment --comment "add blacklist4" \
--j DROP && echo ok rule 4/4 with $2 || echo fail rule 4/4
+-j DROP &> /dev/null  && echo ok rule legacy 4/4 with $2 || echo fail rule legacy 4/4
 ####
 ####
 exit; fi
@@ -6731,13 +6731,13 @@ echo "$title_md $text_fail type host ip6 or net ip6 to be in blacklist"; exit ; 
 ####
 echo "$title_md [ Working ] ADD ipv6 rules blacklist: DROP to $2"
 $command_ip6tablesnft    -t filter -I INPUT 2 -s $2  -m comment --comment "add blacklist6" \
--j DROP && echo ok rule 1/4 with $2 || echo fail rule 1/4
+-j DROP  &> /dev/null && echo ok rule nft 1/4 with $2 || echo fail rule nft 1/4
 $command_ip6tablesnft    -t filter -I OUTPUT 2 -d $2 -m comment --comment "add blacklist6" \
--j DROP && echo ok rule 2/4 with $2 || echo fail rule 2/4
+-j DROP  &> /dev/null && echo ok rule nft 2/4 with $2 || echo fail rule nft 2/4
 $command_ip6tableslegacy -t filter -I INPUT 2 -s $2  -m comment --comment "add blacklist6" \
--j DROP && echo ok rule 3/4 with $2 || echo fail rule 3/4
+-j DROP &> /dev/null && echo ok rule legacy 3/4 with $2 || echo fail rule legacy 3/4
 $command_ip6tableslegacy -t filter -I OUTPUT 2 -d $2 -m comment --comment "add blacklist6" \
--j DROP && echo ok rule 4/4 with $2 || echo fail rule 4/4
+-j DROP &> /dev/null && echo ok rule legacy 4/4 with $2 || echo fail rule legacy 4/4
 ####
 ####
 exit; fi
