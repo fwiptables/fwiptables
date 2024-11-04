@@ -3529,6 +3529,7 @@ echo "$text_md ip4 ip6 route4 route6 net4-info net6-info sockets nodes $text_md"
 echo "$text_md free ip-forward utils date resolve speed-ip4 speed-ip6 $text_md"
 echo "$text_md log-stat web intro depends uninstall install upgrade notes $text_md"
 echo "$text_md variables examples info code expert donate about version $text_md"
+echo "$text_md add-whitelist4 add-whitelist6 add-blacklist4 add-blacklist6 $text_md" 
 echo "$text_md license-lgpl-v2 license-gpl-v2 $text_md"
 echo " $text_md $text_md | Program: $cmd_internal $cmd_version $text_md"
 echo " $text_md $text_md | Description: $cmd_longdescription $text_md"
@@ -3846,16 +3847,18 @@ echo "$text_md $text_md alias-read . read alias in first option $text_md"
 echo "$text_md $text_md alias-edit . configure alias in first option $text_md"
 echo "$text_md $text_md alias-regen . recover initials alias in first option $text_md"
 echo "$text_md $text_md options . list options $text_md"
-echo "$text_md $text_md info-options . list details for the options $text_md"
+echo "$text_md $text_md info-options . list details for all options $text_md"
 echo "$text_md $text_md info . details from one first option from one pattern $text_md"
 echo "$text_md $text_md tree-log . show the result for the commands save with -l|-log $text_md"
 echo "$text_md $text_md cat-logcmd . list the commands launched $text_md"
 echo "$text_md $text_md ip . show details from connection ipv4, ipv6 $text_md"
-echo "$text_md $text_md ip4 . show ip from connection ipv4 $text_md"
-echo "$text_md $text_md ip6 . show ip from connection ipv6 $text_md"
-echo "$text_md $text_md address . show details from connection ipv4, ipv6 $text_md"
+echo "$text_md $text_md ip4 . show ip address from connection ipv4 $text_md"
+echo "$text_md $text_md ip6 . show ip address from connection ipv6 $text_md"
+echo "$text_md $text_md ip4 . show ip route from connection ipv4 $text_md"
+echo "$text_md $text_md ip6 . show ip route from connection ipv6 $text_md"
 echo "$text_md $text_md net4-info . show details from connection ipv4 $text_md"
 echo "$text_md $text_md net6-info . show details from connection ipv6 $text_md"
+echo "$text_md $text_md address . show details from connection ipv4, ipv6 $text_md"
 echo "$text_md $text_md speed-ip4 . calculate bandwith ipv4 $text_md"
 echo "$text_md $text_md speed-ip6 . calculate bandwith ipv6 $text_md"
 echo "$text_md $text_md sockets . show the sockets listening $text_md"
@@ -3869,6 +3872,7 @@ echo "$text_md $text_md notes . several notes for internet $text_md"
 echo "$text_md $text_md ip-forward . list or active or desactive forward variables $text_md"
 echo "$text_md $text_md depends . principal dependences $text_md"
 echo "$text_md $text_md license . license $text_md"
+echo "$text_md $text_md cat-cmdlog . tree from cmdlog folder $text_md"
 echo "$text_md $text_md tree-pdf . tree from pdf folder $text_md"
 echo "$text_md $text_md tree-log . tree from logs folder $text_md"
 echo "$text_md $text_md tree-conf . tree from all configuration $text_md"
@@ -6642,14 +6646,14 @@ if [ "$first_option" == "add-whitelist4" ] || [ "$first_option" == "expert-add-w
 ####
 if [ "$2" == "$NULL" ]; then echo "$title_md $text_fail type host ip4 or net ip4 to be in whitelist"; exit ; fi
 echo "$title_md [ Working ] ADD ipv4 rules whitelist: ACCEPT to $2"
-$command_ip4tablesnft    -t filter -I INPUT -s $2  \
--j ACCEPT && echo ok rule 1/4 with $2 || echo fail rule 1/4
-$command_ip4tablesnft    -t filter -I OUTPUT -d $2 \
--j ACCEPT && echo ok rule 2/4 with $2 || echo fail rule 2/4
-$command_ip4tableslegacy -t filter -I INPUT -s $2  \
--j ACCEPT && echo ok rule 3/4 with $2 || echo fail rule 3/4
-$command_ip4tableslegacy -t filter -I OUTPUT -d $2 \
--j ACCEPT && echo ok rule 4/4 with $2 || echo fail rule 4/4
+$command_ip4tablesnft    -t filter -I INPUT 2 -s $2   -m comment --comment "add whitelist4"  \
+-j ACCEPT &> /dev/null && echo ok rule nft 1/4 with $2 || echo fail nft rule 1/4
+$command_ip4tablesnft    -t filter -I OUTPUT 2 -d $2  -m comment --comment "add whitelist4"  \
+-j ACCEPT &> /dev/null && echo ok rule nft 2/4 with $2 || echo fail nft rule 2/4
+$command_ip4tableslegacy -t filter -I INPUT 2 -s $2   -m comment --comment "add whitelist4"  \
+-j ACCEPT &> /dev/null && echo ok rule legacy 3/4 with $2 || echo fail legacy rule 3/4
+$command_ip4tableslegacy -t filter -I OUTPUT 2 -d $2  -m comment --comment "add whitelist4"  \
+-j ACCEPT &> /dev/null && echo ok rule legacy 4/4 with $2 || echo fail legacy rule 4/4
 ####
 ####
 exit; fi
@@ -6666,13 +6670,13 @@ if [ "$first_option" == "add-whitelist6" ] || [ "$first_option" == "expert-add-w
 ####
 if [ "$2" == "$NULL" ]; then echo "$title_md $text_fail type host ip6 or net ip6 to be in whitelist"; exit ; fi
 echo "$title_md [ Working ] ADD ipv6 rules whitelist: ACCEPT to $2"
-$command_ip6tablesnft    -t filter -I INPUT -s $2  \
+$command_ip6tablesnft    -t filter -I INPUT 2 -s $2   -m comment --comment "add whitelist6"  \
 -j ACCEPT && echo ok rule 1/4 with $2 || echo fail rule 1/4
-$command_ip6tablesnft    -t filter -I OUTPUT -d $2 \
+$command_ip6tablesnft    -t filter -I OUTPUT 2 -d $2  -m comment --comment "add whitelist6"  \
 -j ACCEPT && echo ok rule 2/4 with $2 || echo fail rule 2/4
-$command_ip6tableslegacy -t filter -I INPUT -s $2  \
+$command_ip6tableslegacy -t filter -I INPUT 2 -s $2   -m comment --comment "add whitelist6"  \
 -j ACCEPT && echo ok rule 3/4 with $2 || echo fail rule 3/4
-$command_ip6tableslegacy -t filter -I OUTPUT -d $2 \
+$command_ip6tableslegacy -t filter -I OUTPUT 2 -d $2  -m comment --comment "add whitelist6"  \
 -j ACCEPT && echo ok rule 4/4 with $2 || echo fail rule 4/4
 ####
 ####
@@ -6699,13 +6703,13 @@ echo "$title_md $text_fail type host ip4 or net ip4 to be in blacklist" ; exit ;
 ####
 ####
 echo "$title_md [ Working ] ADD ipv4 rules blacklist: DROP to $2"
-$command_ip4tablesnft    -t filter -I INPUT -s $2  \
+$command_ip4tablesnft    -t filter -I INPUT 2 -s $2  -m comment --comment "add blacklist4" \
 -j DROP && echo ok rule 1/4 with $2 || echo fail rule 1/4
-$command_ip4tablesnft    -t filter -I OUTPUT -d $2 \
+$command_ip4tablesnft    -t filter -I OUTPUT 2 -d $2 -m comment --comment "add blacklist4" \
 -j DROP && echo ok rule 2/4 with $2 || echo fail rule 2/4
-$command_ip4tableslegacy -t filter -I INPUT -s $2  \
+$command_ip4tableslegacy -t filter -I INPUT 2 -s $2  -m comment --comment "add blacklist4"  \
 -j DROP && echo ok rule 3/4 with $2 || echo fail rule 3/4
-$command_ip4tableslegacy -t filter -I OUTPUT -d $2 \
+$command_ip4tableslegacy -t filter -I OUTPUT 2 -d $2 -m comment --comment "add blacklist4" \
 -j DROP && echo ok rule 4/4 with $2 || echo fail rule 4/4
 ####
 ####
@@ -6726,13 +6730,13 @@ echo "$title_md $text_fail type host ip6 or net ip6 to be in blacklist"; exit ; 
 ####
 ####
 echo "$title_md [ Working ] ADD ipv6 rules blacklist: DROP to $2"
-$command_ip6tablesnft    -t filter -I INPUT -s $2  \
+$command_ip6tablesnft    -t filter -I INPUT 2 -s $2  -m comment --comment "add blacklist6" \
 -j DROP && echo ok rule 1/4 with $2 || echo fail rule 1/4
-$command_ip6tablesnft    -t filter -I OUTPUT -d $2 \
+$command_ip6tablesnft    -t filter -I OUTPUT 2 -d $2 -m comment --comment "add blacklist6" \
 -j DROP && echo ok rule 2/4 with $2 || echo fail rule 2/4
-$command_ip6tableslegacy -t filter -I INPUT -s $2  \
+$command_ip6tableslegacy -t filter -I INPUT 2 -s $2  -m comment --comment "add blacklist6" \
 -j DROP && echo ok rule 3/4 with $2 || echo fail rule 3/4
-$command_ip6tableslegacy -t filter -I OUTPUT -d $2 \
+$command_ip6tableslegacy -t filter -I OUTPUT 2 -d $2 -m comment --comment "add blacklist6" \
 -j DROP && echo ok rule 4/4 with $2 || echo fail rule 4/4
 ####
 ####
