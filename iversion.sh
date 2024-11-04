@@ -8408,9 +8408,13 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 039  "$text_md tree-conf" \
 040  "$text_md commands" \
 041  "$text_md variables" \
-042  "$text_md intro" \
-043  "$text_md download" \
-044  "$text_md install" \
+042  "$text_md add-whitelist4" \
+043  "$text_md add-whitelist6" \
+044  "$text_md add-blacklist4" \
+045  "$text_md add-blacklist6" \
+046  "$text_md intro" \
+047  "$text_md download" \
+048  "$text_md install" \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
@@ -8452,9 +8456,17 @@ case $menuprincipal in
 039) clear ; $cmd_internal $outcli tree-conf ;;
 040) clear ; $cmd_internal $outcli commands ;;
 041) clear ; $cmd_internal $outcli variables ;;
-042) clear ; $cmd_internal $outcli intro ;;
-043) clear ; $cmd_internal $outcli download;;
-044) clear ; $cmd_internal $outcli install;;
+042) clear ; read -p "Input host whitelist ip4 to add # " archivo
+$cmd_internal $outcli add-whitelist4 $archivo ;;
+043) clear ; read -p "Input host whitelist ip6 to add # " archivo
+$cmd_internal $outcli add-whitelist6 $archivo ;;
+044) clear ; read -p "Input host blacklist ip4 to add # " archivo
+$cmd_internal $outcli add-blacklist4 $archivo ;;
+045) clear ; read -p "Input host blacklist ip6 to add # " archivo
+$cmd_internal $outcli add-blacklist6 $archivo ;;
+046) clear ; $cmd_internal $outcli intro ;;
+047) clear ; $cmd_internal $outcli download;;
+048) clear ; $cmd_internal $outcli install;;
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
 $cmd_internal text-pause clear ; exit ;;
@@ -8620,9 +8632,13 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 0728  "$text_md expert" \
 0729  "$text_md commands" \
 0730  "$text_md variables" \
-0731  "$text_md intro" \
-0732  "$text_md download" \
-0733  "$text_md install" \
+0731  "$text_md add-whitelist4" \
+0732  "$text_md add-whitelist6" \
+0733  "$text_md add-blacklist4" \
+0734  "$text_md add-blacklist6" \
+0735  "$text_md intro" \
+0736  "$text_md download" \
+0737  "$text_md install" \
 3>&1 1>&2 2>&3 )"
 ################################################################################
 #### 
@@ -8807,9 +8823,17 @@ $cmd_internal del-custom $archivo ;;
 0728) clear ; $cmd_internal $outcli expert ;;
 0729) clear ; $cmd_internal $outcli commands ;;
 0730) clear ; $cmd_internal $outcli variables ;;
-0731) clear ; $cmd_internal $outcli intro ;;
-0732) clear ; $cmd_internal $outcli download;;
-0733) clear ; $cmd_internal $outcli install;;
+0731) clear ; read -p "Input host whitelist ip4 to add # " archivo
+$cmd_internal $outcli add-whitelist4 $archivo ;;
+0732) clear ; read -p "Input host whitelist ip6 to add # " archivo
+$cmd_internal $outcli add-whitelist6 $archivo ;;
+0733) clear ; read -p "Input host blacklist ip4 to add # " archivo
+$cmd_internal $outcli add-blacklist4 $archivo ;;
+0734) clear ; read -p "Input host blacklist ip6 to add # " archivo
+$cmd_internal $outcli add-blacklist6 $archivo ;;
+0735) clear ; $cmd_internal $outcli intro ;;
+0736) clear ; $cmd_internal $outcli download;;
+0737) clear ; $cmd_internal $outcli install;;
 ################################################################################
 *) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
 $cmd_internal text-pause clear ; exit ;;
