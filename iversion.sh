@@ -9366,6 +9366,7 @@ net4-info|net6-info|route4|route6||sockets|tree-pdf|tree-conf\
 tree-log|cat-logcmd|ip4|ip6|notes|speed-ip4|speed-ip6|\
 nodes|date|free|version|tree-conf|tree-cache|clean-cache|\
 depends|utils|about|variables|examples|intro|install|upgrade|\
+add-whitelist4|add-whitelist6|add-blacklist4|add-blacklist6|\
 license-lgpl-v2|license-gpl-v2"
 ####
 ####
@@ -9408,10 +9409,10 @@ tree-conf)$cmd_internal -gui-zenity tree-conf ;;
 tree-cache)$cmd_internal -gui-zenity tree-cache ;;
 clean-cache) $cmd_internal -gui-zenity clean-cache ;;
 depends)$cmd_internal -gui-zenity depends ;;
-net4-info)$cmd_internal gui-$second_option net4-info ;;
-net6-info)$cmd_internal gui-$second_option net6-info ;;
-route4)$cmd_internal gui-$second_option route4 ;;
-route6)$cmd_internal gui-$second_option route6 ;;
+net4-info)$cmd_internal gui-zenity net4-info ;;
+net6-info)$cmd_internal gui-zenity net6-info ;;
+route4)$cmd_internal gui-zenity route4 ;;
+route6)$cmd_internal gui-zenity route6 ;;
 install)$cmd_internal -gui-zenity install ;;
 upgrade)$cmd_internal -gui-zenity upgrade ;;
 license-lgpl-v2) $cmd_internal -gui-zenity license-lgpl-v2 ;;
@@ -9419,6 +9420,26 @@ license-gpl-v2) $cmd_internal -gui-zenity license-gpl-v2 ;;
 examples)$cmd_internal -gui-zenity examples ;;
 intro) $cmd_internal -gui-zenity intro ;;
 variables) $cmd_internal -gui-zenity variables ;;
+add-whitelist4) archivo="$($command_zenity --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title=add-whitelist4 \
+--entry-text=host-to-add-to-whitelist-with-ip-v4)" 
+$cmd_internal gui-zenity add-whitelist4 $archivo ;;
+add-whitelist6) archivo="$($command_zenity --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title=add-whitelist6 \
+--entry-text=host-to-add-to-whitelist-with-ip-v6)" 
+$cmd_internal gui-zenity add-whitelist6 $archivo ;;
+add-blacklist4) archivo="$($command_zenity --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title=add-blacklist4 \
+--entry-text=host-to-add-to-blacklist-with-ip-v4)" 
+$cmd_internal gui-zenity add-blacklist4 $archivo ;;
+add-blacklist6) archivo="$($command_zenity --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title=add-blacklist6 \
+--entry-text=host-to-add-to-blacklist-with-ip-v6)" 
+$cmd_internal gui-zenity add-blacklist6 $archivo ;;
 utils) $cmd_internal -gui-zenity utils ;;
 about) $cmd_internal -gui-zenity about ;;
 esac
@@ -9953,6 +9974,7 @@ cat-logcmd|tree-log|tree-pdf|tree-conf|tree-cache|clean-cache|
 ip4|ip6|speed-ip4|speed-ip6|notes|\
 license-lgpl-v2|license-gpl-v2|\
 net4-info|net6-info|route4|route6||sockets|\
+add-whitelist4|add-whitelist6|add-blacklist4|add-blacklist6|\
 install|upgrade|examples|depends|variables|utils|about"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($second_option \
@@ -10008,6 +10030,26 @@ route6*)$cmd_internal gui-$second_option route6 ;;
 license-lgpl-v2*)$cmd_internal gui-$second_option license-lgpl-v2 ;;
 license-gpl-v2*)$cmd_internal gui-$second_option license-gpl-v2 ;;
 variables*) $cmd_internal gui-$second_option variables ;;
+add-whitelist4*) archivo="$($command_zenity --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title=add-whitelist4 \
+--entry-text=host-to-add-to-whitelist-with-ip-v4)" 
+$cmd_internal gui-zenity add-whitelist4 $archivo ;;
+add-whitelist6*) archivo="$($command_zenity --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title=add-whitelist6 \
+--entry-text=host-to-add-to-whitelist-with-ip-v6)" 
+$cmd_internal gui-zenity add-whitelist6 $archivo ;;
+add-blacklist4*) archivo="$($command_zenity --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title=add-blacklist4 \
+--entry-text=host-to-add-to-blacklist-with-ip-v4)" 
+$cmd_internal gui-zenity add-blacklist4 $archivo ;;
+add-blacklist6*) archivo="$($command_zenity --entry \
+--width=$config_graphicall_width --height=$config_graphicall_height \
+--title=add-blacklist6 \
+--entry-text=host-to-add-to-blacklist-with-ip-v6)" 
+$cmd_internal gui-zenity add-blacklist6 $archivo ;;
 utils*) $cmd_internal gui-$second_option commands ;;
 about*) $cmd_internal gui-$second_option about ;;
 esac
