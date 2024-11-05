@@ -514,8 +514,8 @@ $cmd_command_mkdir -p $default_cmd_default_directory_necesary &> /dev/null ; fi
 #### sane default log
 ####
 ####
-if [ ! -f "$file_default_logcmd" ]
-then touch $file_default_logcmd &> /dev/null  ; fi
+if [ ! -f "$cmd_file_default_logcmd" ]
+then touch $cmd_file_default_logcmd &> /dev/null  ; fi
 ####
 ####
 #### sane data tree
@@ -562,47 +562,47 @@ $cmd_command_mkdir -p "$cmd_default_directory_readme" &> /dev/null ; fi
 ####
 ####
 #### config templates cfg
-default_tinycfg_eng=\
+cmd_default_tinycfg_eng=\
 "$cmd_default_directory_template/default-tiny-english.cfg"
-default_tinycfg_spa=\
+cmd_default_tinycfg_spa=\
 "$cmd_default_directory_template/default-tiny-spanish.cfg"
-default_minicfg_eng=\
+cmd_default_minicfg_eng=\
 "$cmd_default_directory_template/default-mini-english.cfg"
-default_minicfg_spa=\
+cmd_default_minicfg_spa=\
 "$cmd_default_directory_template/default-mini-spanish.cfg"
-default_fullcfg_eng=\
+cmd_default_fullcfg_eng=\
 "$cmd_default_directory_template/default-full-english.cfg"
-default_fullcfg_spa=\
+cmd_default_fullcfg_spa=\
 "$cmd_default_directory_template/default-full-spanish.cfg"
 ####
 ####
 #### config files default
-file_default_preferences=\
+cmd_file_default_preferences=\
 "$cmd_default_directory_preferences/default-preferences-$cmd_version.conf"
-file_default_alias=\
+cmd_file_default_alias=\
 "$cmd_default_directory_preferences/default-alias-$cmd_version.conf"
-file_default_logcmd=\
+cmd_file_default_logcmd=\
 "$cmd_default_directory_logcmd/default-logcmd-$cmd_version-$cmd_archive_date.log"
-file_default_usernotes=\
+cmd_file_default_usernotes=\
 "$cmd_default_directory_preferences/default-usernotes-all-versions.txt"
 ####
 #### config output files
-file_output_pdf=\
+cmd_file_output_pdf=\
 "$cmd_default_directory_pdf/$cmd_pdf_date-$cmd_guided_full.pdf"
-file_output_log=\
+cmd_file_output_log=\
 "$cmd_default_directory_logs/$cmd_log_date-$cmd_guided_full.log"
-file_output_cache=\
+cmd_file_output_cache=\
 "$cmd_default_cache_necesary/$cmd_cache_date-$cmd_guided_full.txt"
 ####
 ####
 #### config file adblock
-file_blacklist_fademind=\
+cmd_file_blacklist_fademind=\
 "$cmd_default_directory_adblock/hosts.blacklist_fademind.txt"
-file_blacklist_mvps=\
+cmd_file_blacklist_mvps=\
 "$cmd_default_directory_adblock/hosts.blacklist_mvps.txt"
-file_blacklist_adaway=\
+cmd_file_blacklist_adaway=\
 "$cmd_default_directory_adblock/hosts.blacklist_adaway.txt"
-file_blacklist_stevenblack=\
+cmd_file_blacklist_stevenblack=\
 "$cmd_default_directory_adblock/hosts.blacklist_stevenblack.txt"
 ####
 ####
@@ -668,13 +668,13 @@ fi
 ####
 ####
 #### load preferences
-if [ ! -f "$file_default_preferences" ]; then touch $file_default_preferences ; fi
-if [ -f "$file_default_preferences" ]; then source $file_default_preferences ; fi
+if [ ! -f "$cmd_file_default_preferences" ]; then touch $cmd_file_default_preferences ; fi
+if [ -f "$cmd_file_default_preferences" ]; then source $cmd_file_default_preferences ; fi
 ####
 ####
 #### prepare alias
-if [ ! -f "$file_default_alias" ]; then touch $file_default_alias ; fi
-option_with_alias="$($cmd_command_cat $file_default_alias \
+if [ ! -f "$cmd_file_default_alias" ]; then touch $cmd_file_default_alias ; fi
+option_with_alias="$($cmd_command_cat $cmd_file_default_alias \
 | $cmd_command_grep ^#$cmd_first_option= | cut -c 2- -)"
 option_alias_origen="$(echo  $option_with_alias | $cmd_command_cut -d "=" -f 1 -)"
 option_alias_destino="$(echo $option_with_alias | $cmd_command_cut -d "=" -f 2 -)"
@@ -935,23 +935,23 @@ fi
 ####
 ####
 case "$cmd_first_option" in
-list-*) config_listrules_conceptual="" ;;
-listn-filter4) config_listrules_conceptual="no" ; first_option="list-filter4" ;;
-listn-filter6) config_listrules_conceptual="no" ; first_option="list-filter6" ;;
-listn-nat4)  config_listrules_conceptual="no" ; first_option="list-nat4" ;;
-listn-nat6)  config_listrules_conceptual="no" ; first_option="list-nat6" ;;
-listn-raw4)  config_listrules_conceptual="no" ; first_option="list-raw4" ;;
-listn-raw6)  config_listrules_conceptual="no" ; first_option="list-raw6" ;;
-listn-security4)  config_listrules_conceptual="no" ; first_option="list-security4" ;;
-listn-security6)  config_listrules_conceptual="no" ; first_option="list-security6" ;;
-listn-mangle4)  config_listrules_conceptual="no" ; first_option="list-mangle4" ;;
-listn-mangle6)  config_listrules_conceptual="no" ; first_option="list-mangle6" ;;
+list-*) cfg_config_listrules_conceptual="" ;;
+listn-filter4) cfg_config_listrules_conceptual="no" ; cmd_first_option="list-filter4" ;;
+listn-filter6) cfg_config_listrules_conceptual="no" ; cmd_first_option="list-filter6" ;;
+listn-nat4)  cfg_config_listrules_conceptual="no" ; cmd_first_option="list-nat4" ;;
+listn-nat6)  cfg_config_listrules_conceptual="no" ; cmd_first_option="list-nat6" ;;
+listn-raw4)  cfg_config_listrules_conceptual="no" ; cmd_first_option="list-raw4" ;;
+listn-raw6)  cfg_config_listrules_conceptual="no" ; cmd_first_option="list-raw6" ;;
+listn-security4) cfg_config_listrules_conceptual="no" ; cmd_first_option="list-security4" ;;
+listn-security6) cfg_config_listrules_conceptual="no" ; cmd_first_option="list-security6" ;;
+listn-mangle4) cfg_config_listrules_conceptual="no" ; cmd_first_option="list-mangle4" ;;
+listn-mangle6) cfg_config_listrules_conceptual="no" ; cmd_first_option="list-mangle6" ;;
 esac
 ####
 ####
 case "$cfg_config_listrules_conceptual" in
-"$NULL") config_listrules_conceptual="" ;;
-*) config_listrules_conceptual=" -n"  ;; esac
+"$NULL") cfg_config_listrules_conceptual="" ;;
+*) cfg_config_listrules_conceptual=" -n"  ;; esac
 ####
 ####
 #### :rutina-final-alias-system-list:
@@ -964,82 +964,82 @@ case "$cfg_config_listrules_conceptual" in
 ####
 ####
 case "$cmd_first_option" in
-"tui-menu") first_option="cli-menu" ;;
-"-tui-menu") first_option="cli-menu" ;;
-"--tui-menu") first_option="cli-menu" ;;
-"-cli-menu") first_option="cli-menu" ;;
-"--cli-menu") first_option="cli-menu" ;;
-"-gui-menu") first_option="gui-menu" ;;
-"--gui-menu") first_option="gui-menu" ;;
-"gui-roll") first_option="gui-roll-zenity" ;;
-"-gui-roll") first_option="gui-roll-zenity" ;;
-"--gui-roll") first_option="gui-roll-zenity" ;;
-"gui-rock") first_option="gui-roll-zenity" ;;
-"-gui-rock") first_option="gui-roll-zenity" ;;
-"--gui-rock") first_option="gui-roll-zenity" ;;
+"tui-menu") $cmd_first_option="cli-menu" ;;
+"-tui-menu") $cmd_first_option="cli-menu" ;;
+"--tui-menu") $cmd_first_option="cli-menu" ;;
+"-cli-menu") $cmd_first_option="cli-menu" ;;
+"--cli-menu") $cmd_first_option="cli-menu" ;;
+"-gui-menu") $cmd_first_option="gui-menu" ;;
+"--gui-menu") $cmd_first_option="gui-menu" ;;
+"gui-roll") $cmd_first_option="gui-roll-zenity" ;;
+"-gui-roll") $cmd_first_option="gui-roll-zenity" ;;
+"--gui-roll") $cmd_first_option="gui-roll-zenity" ;;
+"gui-rock") $cmd_first_option="gui-roll-zenity" ;;
+"-gui-rock") $cmd_first_option="gui-roll-zenity" ;;
+"--gui-rock") $cmd_first_option="gui-roll-zenity" ;;
 esac
 ####
 ####
 case "$cmd_first_option" in
-"-info") first_option="info" ;;
-"--info") first_option="info" ;;
-"--narrowtxt") first_option="narrowtxt" ;;
-"-narrowtxt") first_option="narrowtxt" ;;
-"--text") first_option="txt" ;;
-"-text") first_option="txt" ;;
-"--tui") first_option="cli" ;;
-"-tui") first_option="cli" ;;
-"--txt") first_option="txt" ;;
-"-txt") first_option="txt" ;;
-"--cli") first_option="cli" ;;
-"-cli") first_option="cli" ;;
-"--gui") first_option="gui" ;;
-"-gui") first_option="gui" ;;
-"silent") first_option="silent" ;;
-"-silent") first_option="silent" ;;
-"--silent") first_option="silent" ;;
-"-pdf") first_option="pdf" ;;
-"--pdf") first_option="pdf" ;;
-"i") first_option="info" ;;
-"n") first_option="narrowtxt" ;;
-"t") first_option="txt" ;;
-"c") first_option="cli" ;;
-"g") first_option="gui" ;;
-"l") first_option="log" ;;
-"s") first_option="silent" ;;
-"p") first_option="pdf" ;;
-"-i") first_option="info" ;;
-"-n") first_option="narrowtxt" ;;
-"-t") first_option="txt" ;;
-"-c") first_option="cli" ;;
-"-g") first_option="gui" ;;
-"-l") first_option="log" ;;
-"-s") first_option="silent" ;;
-"-p") first_option="pdf" ;;
+"-info") $cmd_first_option="info" ;;
+"--info") $cmd_first_option="info" ;;
+"--narrowtxt") $cmd_first_option="narrowtxt" ;;
+"-narrowtxt") $cmd_first_option="narrowtxt" ;;
+"--text") $cmd_first_option="txt" ;;
+"-text") $cmd_first_option="txt" ;;
+"--tui") $cmd_first_option="cli" ;;
+"-tui") $cmd_first_option="cli" ;;
+"--txt") $cmd_first_option="txt" ;;
+"-txt") $cmd_first_option="txt" ;;
+"--cli") $cmd_first_option="cli" ;;
+"-cli") $cmd_first_option="cli" ;;
+"--gui") $cmd_first_option="gui" ;;
+"-gui") $cmd_first_option="gui" ;;
+"silent") $cmd_first_option="silent" ;;
+"-silent") $cmd_first_option="silent" ;;
+"--silent") $cmd_first_option="silent" ;;
+"-pdf") $cmd_first_option="pdf" ;;
+"--pdf") $cmd_first_option="pdf" ;;
+"i") $cmd_first_option="info" ;;
+"n") $cmd_first_option="narrowtxt" ;;
+"t") $cmd_first_option="txt" ;;
+"c") $cmd_first_option="cli" ;;
+"g") $cmd_first_option="gui" ;;
+"l") $cmd_first_option="log" ;;
+"s") $cmd_first_option="silent" ;;
+"p") $cmd_first_option="pdf" ;;
+"-i") $cmd_first_option="info" ;;
+"-n") $cmd_first_option="narrowtxt" ;;
+"-t") $cmd_first_option="txt" ;;
+"-c") $cmd_first_option="cli" ;;
+"-g") $cmd_first_option="gui" ;;
+"-l") $cmd_first_option="log" ;;
+"-s") $cmd_first_option="silent" ;;
+"-p") $cmd_first_option="pdf" ;;
 esac
 ####
 ####
 case "$cmd_first_option" in
-"-gui-menu-zenity") first_option="gui-menu-zenity" ;;
-"--gui-menu-zenity") first_option="gui-menu-zenity" ;;
-"-gui-menu-yad") first_option="gui-menu-yad" ;;
-"--gui-menu-yad") first_option="gui-menu-yad" ;;
-"-gui-roll-zenity") first_option="gui-roll-zenity" ;;
-"--gui-roll-zenity") first_option="gui-roll-zenity" ;;
-"-gui-roll-yad") first_option="gui-roll-yad" ;;
-"--gui-roll-yad") first_option="gui-roll-yad" ;;
-"-gui-shell-zenity") first_option="gui-shell-zenity" ;;
-"--gui-shell-zenity") first_option="gui-shell-zenity" ;;
-"-gui-shell-yad") first_option="gui-shell-yad" ;;
-"--gui-shell-yad") first_option="gui-shell-yad" ;;
-"--cli-dialog") first_option="cli-dialog" ;;
-"-cli-dialog") first_option="cli-dialog" ;;
-"--cli-whiptail") first_option="cli-whiptail" ;;
-"-cli-whiptail") first_option="cli-whiptail" ;;
-"--gui-zenity") first_option="gui-zenity" ;;
-"-gui-zenity") first_option="gui-zenity" ;;
-"--gui-yad") first_option="gui-yad" ;;
-"-gui-yad") first_option="gui-yad" ;;
+"-gui-menu-zenity") $cmd_first_option="gui-menu-zenity" ;;
+"--gui-menu-zenity") $cmd_first_option="gui-menu-zenity" ;;
+"-gui-menu-yad") $cmd_first_option="gui-menu-yad" ;;
+"--gui-menu-yad") $cmd_first_option="gui-menu-yad" ;;
+"-gui-roll-zenity") $cmd_first_option="gui-roll-zenity" ;;
+"--gui-roll-zenity") $cmd_first_option="gui-roll-zenity" ;;
+"-gui-roll-yad") $cmd_first_option="gui-roll-yad" ;;
+"--gui-roll-yad") $cmd_first_option="gui-roll-yad" ;;
+"-gui-shell-zenity") $cmd_first_option="gui-shell-zenity" ;;
+"--gui-shell-zenity") $cmd_first_option="gui-shell-zenity" ;;
+"-gui-shell-yad") $cmd_first_option="gui-shell-yad" ;;
+"--gui-shell-yad") $cmd_first_option="gui-shell-yad" ;;
+"--cli-dialog") $cmd_first_option="cli-dialog" ;;
+"-cli-dialog") $cmd_first_option="cli-dialog" ;;
+"--cli-whiptail") $cmd_first_option="cli-whiptail" ;;
+"-cli-whiptail") $cmd_first_option="cli-whiptail" ;;
+"--gui-zenity") $cmd_first_option="gui-zenity" ;;
+"-gui-zenity") $cmd_first_option="gui-zenity" ;;
+"--gui-yad") $cmd_first_option="gui-yad" ;;
+"-gui-yad") $cmd_first_option="gui-yad" ;;
 esac
 ####
 ####
@@ -1128,14 +1128,14 @@ esac
 ####
 #### supress error messages
 case $cmd_first_option in 
-"ls4") $cmd_internal list4   &> $file_output_cache
-$cmd_command_cat $file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
-"ls6") $cmd_internal list6   &> $file_output_cache
-$cmd_command_cat $file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
-"lsn4") $cmd_internal listn4 &> $file_output_cache
-$cmd_command_cat $file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
-"lsn6") $cmd_internal listn6 &> $file_output_cache
-$cmd_command_cat $file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
+"ls4") $cmd_internal list4   &> $cmd_file_output_cache
+$cmd_command_cat $cmd_file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
+"ls6") $cmd_internal list6   &> $cmd_file_output_cache
+$cmd_command_cat $cmd_file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
+"lsn4") $cmd_internal listn4 &> $cmd_file_output_cache
+$cmd_command_cat $cmd_file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
+"lsn6") $cmd_internal listn6 &> $cmd_file_output_cache
+$cmd_command_cat $cmd_file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
 esac ; 
 ####
 ####
@@ -1329,8 +1329,8 @@ if [ "$cmd_first_option" == "log" ]
 ####
 ####
 then echo "$txt_head_waiting_log"
-$cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option &> $file_output_log
-echo "$txt_text_title $txt_text_file [$file_output_log]"
+$cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option &> $cmd_file_output_log
+echo "$txt_text_title $txt_text_file [$cmd_file_output_log]"
 ####
 ####
 exit ; fi
@@ -1352,8 +1352,8 @@ echo "$txt_head_waiting_pdf"
 sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &> /dev/null
 #### send print to home output fwiptables.pdf
 $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option | \
-$cmd_command_convert -page A3 text:- $file_output_pdf
-echo "$txt_text_title $txt_text_file [$file_output_pdf]"
+$cmd_command_convert -page A3 text:- $cmd_file_output_pdf
+echo "$txt_text_title $txt_text_file [$cmd_file_output_pdf]"
 ####
 ####
 exit ; fi
@@ -1386,7 +1386,7 @@ if [ "$cfg_allow_save_logcmd" != "no" ]
 then head_format_logcmd="date: $cmd_logcmd_date path: $cmd_internal \
 ver: $cmd_version opt: $cmd_guided_full"
 ####
-echo $head_format_logcmd >> $file_default_logcmd
+echo $head_format_logcmd >> $cmd_file_default_logcmd
 ####
 ####
 fi
@@ -1435,14 +1435,14 @@ exit; fi
 if [ "$cmd_first_option" == "cat-logcmd" ] ; then
 ####
 ####
-if [ ! -f $file_default_logcmd ]; then touch $file_default_logcmd ; fi
+if [ ! -f $cmd_file_default_logcmd ]; then touch $cmd_file_default_logcmd ; fi
 echo "$txt_text_title $txt_text_md list all month"
 $cmd_command_tree $cmd_default_directory_baselogcmd
-echo "$txt_text_title $file_default_logcmd"
-$cmd_command_cat   "$file_default_logcmd" | tail -50
+echo "$txt_text_title $cmd_file_default_logcmd"
+$cmd_command_cat   "$cmd_file_default_logcmd" | tail -50
 echo
 echo "$txt_text_title $txt_text_info latest 50 lines from this file"
-echo "$txt_text_title $txt_text_info [$file_default_logcmd]"
+echo "$txt_text_title $txt_text_info [$cmd_file_default_logcmd]"
 ####
 ####
 exit; fi
@@ -1461,9 +1461,9 @@ if [ "$cmd_command_wc" == "$NULL" ] ; then
 echo "$txt_text_info Please install wc command"; exit; fi
 ####
 ####
-conteo="$($cmd_command_cat $file_default_logcmd | $cmd_command_wc -l)"
+conteo="$($cmd_command_cat $cmd_file_default_logcmd | $cmd_command_wc -l)"
 echo "$txt_text_md $conteo Commands launched. Commands log with allowed logcmd"
-echo "$txt_text_md file: $file_default_logcmd"
+echo "$txt_text_md file: $cmd_file_default_logcmd"
 ####
 ####
 conteo="$($cmd_command_ls -1 $cmd_default_directory_logs | $cmd_command_wc -l)"
@@ -1634,7 +1634,7 @@ exit; fi
 ####
 ####
 if [ "$cmd_first_option" == "expert-wpa-new" ] 
-then first_option="expert-txtwpa-new"; fi
+then $cmd_first_option="expert-txtwpa-new"; fi
 ####
 ####
 if [ "$cmd_first_option" == "expert-txtwpa-new" ]; then
@@ -1676,7 +1676,7 @@ exit; fi
 ####
 ####
 if [ "$cmd_first_option" == "expert-wpa-modify" ]
-then first_option="expert-txtwpa-modify"; fi
+then $cmd_first_option="expert-txtwpa-modify"; fi
 ####
 ####
 if [ "$cmd_first_option" == "expert-txtwpa-modify" ]; then
@@ -1838,7 +1838,7 @@ if [ "$cmd_first_option" == "alias-regen" ] ; then
 ####
 ####
 $cmd_internal alias-example | \
-grep -iv " alias-example" &> $file_default_alias
+grep -iv " alias-example" &> $cmd_file_default_alias
 ####
 ####
 exit ; fi
@@ -1853,7 +1853,7 @@ exit ; fi
 if [ "$cmd_first_option" == "alias" ] || [ "$cmd_first_option" == "alias-read" ] ; then 
 ####
 ####
-$cmd_command_cat $file_default_alias
+$cmd_command_cat $cmd_file_default_alias
 ####
 ####
 exit ; fi
@@ -1869,7 +1869,7 @@ if [ "$cmd_first_option" == "alias-example" ] ; then
 ####
 ####
 echo "####  program: $cmd_internal $cmd_version"
-echo "####  file: $file_default_alias"
+echo "####  file: $cmd_file_default_alias"
 echo "#output=optional-output"
 echo "#control=firewall-wallcontrol"
 echo "#listconceptual=firewall-listconceptual"
@@ -1907,7 +1907,7 @@ exit ; fi
 if [ "$cmd_first_option" == "alias-edit" ]; then 
 ####
 ####
-$cfg_favorite_text_editor $file_default_alias
+$cfg_favorite_text_editor $cmd_file_default_alias
 ####
 ####
 exit; fi
@@ -1922,7 +1922,7 @@ exit; fi
 if [ "$cmd_first_option" == "preferences-edit" ]; then 
 ####
 ####
-$cfg_favorite_text_editor $file_default_preferences
+$cfg_favorite_text_editor $cmd_file_default_preferences
 ####
 ####
 exit; fi
@@ -1937,7 +1937,7 @@ exit; fi
 if [ "$cmd_first_option" == "preferences-read" ]; then
 ####
 ####
-$cmd_command_cat  $file_default_preferences
+$cmd_command_cat  $cmd_file_default_preferences
 ####
 ####
 exit; fi
@@ -1953,7 +1953,7 @@ if [ "$cmd_first_option" == "preferences-regen" ] ; then
 ####
 ####
 $cmd_internal preferences-example | \
-grep -iv " preferences-example " &> $file_default_preferences
+grep -iv " preferences-example " &> $cmd_file_default_preferences
 ####
 ####
 exit; fi
@@ -1969,7 +1969,7 @@ if [ "$cmd_first_option" == "preferences-example" ] ; then
 ####
 ####
 echo "####  program: $cmd_internal $cmd_version"
-echo "####  file: $file_default_preferences"
+echo "####  file: $cmd_file_default_preferences"
 echo "$txt_text_title"
 echo "$txt_text_title"
 echo "$txt_text_title $txt_text_title default option when not option are there"
@@ -2266,7 +2266,7 @@ exit; fi
 ####
 ####
 if [ "$cmd_first_option" == "expert-conf-clientproxy" ]; then 
-if [ "$cmd_second_option" == "$NULL" ] ; then second_option="without-proxy" ; fi
+if [ "$cmd_second_option" == "$NULL" ] ; then cfg_second_option="without-proxy" ; fi
 ####
 ####
 echo "$txt_text_title File generated by fwiptables \
@@ -2573,9 +2573,9 @@ echo "$txt_text_md $txt_text_md Folder pdf:              $cmd_default_directory_
 echo "$txt_text_md $txt_text_md Folder logcmd:           $cmd_default_directory_baselogcmd $txt_text_md"
 echo "$txt_text_md $txt_text_md $txt_text_md"
 echo "$txt_text_title $txt_text_md [ Preferences files ]   $txt_text_md"
-echo "$txt_text_md $txt_text_md preferences:             $file_default_preferences"
-echo "$txt_text_md $txt_text_md alias:                   $file_default_alias"             
-echo "$txt_text_md $txt_text_md usernotes:               $file_default_usernotes"
+echo "$txt_text_md $txt_text_md preferences:             $cmd_file_default_preferences"
+echo "$txt_text_md $txt_text_md alias:                   $cmd_file_default_alias"             
+echo "$txt_text_md $txt_text_md usernotes:               $cmd_file_default_usernotes"
 echo "$txt_text_md $txt_text_md $txt_text_md"
 echo "$txt_text_title $txt_text_md [ optional output ]     $txt_text_md"
 echo "$txt_text_md $txt_text_md dialog cli:              $cmd_command_dialog $txt_text_md"
@@ -2830,12 +2830,12 @@ exit; fi
 if [ "$cmd_first_option" == "templates-regen" ]; then
 ####
 ####
-$cmd_internal template-tiny-es &> $default_tinycfg_spa
-$cmd_internal template-tiny-en &> $default_tinycfg_eng
-$cmd_internal template-mini-es &> $default_minicfg_spa
-$cmd_internal template-mini-en &> $default_minicfg_eng
-$cmd_internal template-full-es &> $default_fullcfg_spa
-$cmd_internal template-full-en &> $default_fullcfg_eng
+$cmd_internal template-tiny-es &> $cmd_default_tinycfg_spa
+$cmd_internal template-tiny-en &> $cmd_default_tinycfg_eng
+$cmd_internal template-mini-es &> $cmd_default_minicfg_spa
+$cmd_internal template-mini-en &> $cmd_default_minicfg_eng
+$cmd_internal template-full-es &> $cmd_default_fullcfg_spa
+$cmd_internal template-full-en &> $cmd_default_fullcfg_eng
 ####
 ####
 exit; fi
@@ -4009,22 +4009,6 @@ exit; fi
 ####
 #### :rutina-final-parametters:
 #### :rutina-final-optional-output:
-##########    english: variables: list variables     ##########
-##########    spanish: variables: lista variables    ##########
-#### :rutina-inicial-variables:
-####
-####
-if   [ "$cmd_first_option" == "variables" ]; then
-####
-####
-echo "$txt_text_title $txt_text_info  [ list code variables-system ] [ variables md ]"
-$cmd_internal code variables-system
-####
-####
-exit; fi
-####
-####
-#### :rutina-final-variables:
 ##########    english: eraserules: Erase rules option   ##########
 ##########    spanish: eraserules: Opcion borra reglas  ##########
 #### :rutina-inicial-eraserules:
@@ -5140,7 +5124,7 @@ exit; fi
 ####
 if [ "$cmd_first_option" == "new-full-custom" ] && [ "$cmd_second_option" != "$NULL" ] ; then 
 archivo="$cmd_second_option"
-cp "$default_fullcfg_eng" "$cmd_default_directory_custom/$archivo"
+cp "$cmd_default_fullcfg_eng" "$cmd_default_directory_custom/$archivo"
 $cfg_favorite_text_editor $cmd_default_directory_custom/$archivo
 echo " $txt_text_ok created file $archivo"
 ####
@@ -5163,7 +5147,7 @@ exit; fi
 ####
 if [ "$cmd_first_option" == "nueva-completa-custom" ] && [ "$cmd_second_option" != "$NULL" ] ; then 
 archivo="$cmd_second_option"
-cp "$default_fullcfg_spa" "$cmd_default_directory_custom/$archivo"
+cp "$cmd_default_fullcfg_spa" "$cmd_default_directory_custom/$archivo"
 $cfg_favorite_text_editor $cmd_default_directory_custom/$archivo
 echo " $txt_text_ok created file $archivo"
 ####
@@ -5186,7 +5170,7 @@ exit; fi
 ####
 if [ "$cmd_first_option" == "new-mini-custom" ] && [ "$cmd_second_option" != "$NULL" ] ; then 
 archivo="$cmd_second_option"
-cp "$default_minicfg_eng" "$cmd_default_directory_custom/$archivo"
+cp "$cmd_default_minicfg_eng" "$cmd_default_directory_custom/$archivo"
 $cfg_favorite_text_editor $cmd_default_directory_custom/$archivo
 echo " $txt_text_ok created file $archivo"
 ####
@@ -5209,7 +5193,7 @@ exit; fi
 ####
 if [ "$cmd_first_option" == "nueva-mini-custom" ] && [ "$cmd_second_option" != "$NULL" ] ; then 
 archivo="$cmd_second_option"
-cp "$default_minicfg_spa" "$cmd_default_directory_custom/$archivo"
+cp "$cmd_default_minicfg_spa" "$cmd_default_directory_custom/$archivo"
 $cfg_favorite_text_editor $cmd_default_directory_custom/$archivo
 echo " $txt_text_ok created file $archivo"
 ####
@@ -5232,7 +5216,7 @@ exit; fi
 ####
 if [ "$cmd_first_option" == "new-tiny-custom" ] && [ "$cmd_second_option" != "$NULL" ] ; then 
 archivo="$cmd_second_option"
-cp "$default_tinycfg_eng" "$cmd_default_directory_custom/$archivo"
+cp "$cmd_default_tinycfg_eng" "$cmd_default_directory_custom/$archivo"
 $cfg_favorite_text_editor $cmd_default_directory_custom/$archivo
 echo " $txt_text_ok created file $archivo"
 ####
@@ -5255,7 +5239,7 @@ exit; fi
 ####
 if [ "$cmd_first_option" == "nueva-diminuta-custom" ] && [ "$cmd_second_option" != "$NULL" ] ; then 
 archivo="$cmd_second_option"
-cp "$default_tinycfg_spa" "$cmd_default_directory_custom/$archivo"
+cp "$cmd_default_tinycfg_spa" "$cmd_default_directory_custom/$archivo"
 $cfg_favorite_text_editor $cmd_default_directory_custom/$archivo
 echo " $txt_text_ok Archivo creado $archivo"
 ####
@@ -5571,14 +5555,14 @@ echo "$txt_text_md $txt_text_fail Not installed"
 #### preferences-regen
 $cmd_notinstalled preferences-regen &> /dev/null &&
 echo "$txt_text_md $txt_text_ok Updated preferences $txt_text_file" &&
-echo "$txt_text_md [$file_default_preferences]" ||
+echo "$txt_text_md [$cmd_file_default_preferences]" ||
 echo "$txt_text_md $txt_text_fail Not update preferences"
 ####
 ####
 #### alias-regen
 $cmd_notinstalled alias-regen &> /dev/null &&
 echo "$txt_text_md $txt_text_ok Updated alias $txt_text_file" &&
-echo "$txt_text_md [$file_default_alias]" ||
+echo "$txt_text_md [$cmd_file_default_alias]" ||
 echo "$txt_text_md $txt_text_fail Not update alias"
 ####
 ####
@@ -5615,21 +5599,21 @@ if [ "$cmd_first_option" == "usernotes" ] ;  then
 ####
 #### add
 if [ "$cmd_second_option" == "add" ]
-then echo "$cmd_usernotes_date,$cmd_third_option," >> $file_default_usernotes
+then echo "$cmd_usernotes_date,$cmd_third_option," >> $cmd_file_default_usernotes
 echo "Content added: $cmd_third_option," ; exit; fi
 #### search
 if [ "$cmd_second_option" == "search" ] ; then echo "List searched" ; 
-$cmd_command_cat $file_default_usernotes | $cmd_command_grep -i $cmd_third_option ; exit; fi
+$cmd_command_cat $cmd_file_default_usernotes | $cmd_command_grep -i $cmd_third_option ; exit; fi
 #### list
 if [ "$cmd_second_option" == "list" ] ; then echo "List content:"; 
-$cmd_command_cat $file_default_usernotes; exit; fi
+$cmd_command_cat $cmd_file_default_usernotes; exit; fi
 #### lines
 if [ "$cmd_second_option" == "lines" ] ; then echo "Lines numbers:"
-$cmd_command_cat $file_default_usernotes | $cmd_command_wc -l ; exit; fi
+$cmd_command_cat $cmd_file_default_usernotes | $cmd_command_wc -l ; exit; fi
 #### info
 echo " # Option: add|search|list|lines"
 echo " # $txt_text_info Use without comma, and quote when spaces: to add, to search"
-echo " # $txt_text_file [$file_default_usernotes]"
+echo " # $txt_text_file [$cmd_file_default_usernotes]"
 #### 
 ####
 exit; fi
@@ -6121,14 +6105,14 @@ if   [ "$cmd_first_option" == "expert-upgrade-adblock" ]; then
 ####
 echo "$txt_text_title $txt_text_info [ blacklist files / adblock files / hosts deny files ]"
 echo "$txt_text_title $txt_text_info [ Waiting a moment ]"
-echo "$txt_text_title [ Step 1/4 ] [ downloading hosts fademind to $file_blacklist_fademind ]"
-$cmd_command_curl $cmd_web_blacklist_fademind -s -L -o $file_blacklist_fademind
-echo "$txt_text_title [ Step 2/4 ] [ downloading hosts mvps to $file_blacklist_mvps ]"
-$cmd_command_curl $cmd_web_blacklist_mvps -s -L -o $file_blacklist_mvps
-echo "$txt_text_title [ Step 3/4 ] [ downloading hosts adaway to $file_blacklist_adaway ]"
-$cmd_command_curl $cmd_web_blacklist_adaway -s -L -o $file_blacklist_adaway
-echo "$txt_text_title [ Step 4/4 ] [ downloading hosts stevenblack to $file_blacklist_stevenblack ]"
-$cmd_command_curl $cmd_web_blacklist_stevenblack -s -L -o $file_blacklist_stevenblack
+echo "$txt_text_title [ Step 1/4 ] [ downloading hosts fademind to $cmd_file_blacklist_fademind ]"
+$cmd_command_curl $cmd_web_blacklist_fademind -s -L -o $cmd_file_blacklist_fademind
+echo "$txt_text_title [ Step 2/4 ] [ downloading hosts mvps to $cmd_file_blacklist_mvps ]"
+$cmd_command_curl $cmd_web_blacklist_mvps -s -L -o $cmd_file_blacklist_mvps
+echo "$txt_text_title [ Step 3/4 ] [ downloading hosts adaway to $cmd_file_blacklist_adaway ]"
+$cmd_command_curl $cmd_web_blacklist_adaway -s -L -o $cmd_file_blacklist_adaway
+echo "$txt_text_title [ Step 4/4 ] [ downloading hosts stevenblack to $cmd_file_blacklist_stevenblack ]"
+$cmd_command_curl $cmd_web_blacklist_stevenblack -s -L -o $cmd_file_blacklist_stevenblack
 echo "$txt_text_title $txt_text_folder [ $cmd_default_directory_adblock ] "
 ####
 ####
@@ -6300,7 +6284,7 @@ if [ "$cmd_first_option" == "wizard-tiny" ]; then
 ####
 archivo="$cmd_first_option" ; allow_launchrules_firewall=yes ; type_firewall="wizard-tiny" ; name_firewall="wizard-tiny"
 $cmd_internal templates-regen
-cp "$default_tinycfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$archivo"
+cp "$cmd_default_tinycfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$archivo"
 $cfg_favorite_text_editor "$cmd_default_cache_necesary/$cmd_filename-$archivo"
 clear
 $cfg_favorite_realpath_textdialog --clear --title "Run this wizard" \
@@ -6323,7 +6307,7 @@ if [ "$cmd_first_option" == "wizard-mini" ]; then
 ####
 archivo="$cmd_first_option" ; allow_launchrules_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
 $cmd_internal templates-regen
-cp "$default_minicfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$archivo"
+cp "$cmd_default_minicfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$archivo"
 $cfg_favorite_text_editor "$cmd_default_cache_necesary/$cmd_filename-$archivo"
 clear
 $cfg_favorite_realpath_textdialog --clear --title "Run this wizard" \
@@ -6346,7 +6330,7 @@ if [ "$cmd_first_option" == "wizard-full" ]; then
 ####
 archivo="$cmd_first_option" ; allow_launchrules_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
 $cmd_internal templates-regen
-cp "$default_fullcfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$archivo"
+cp "$cmd_default_fullcfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$archivo"
 $cfg_favorite_text_editor "$cmd_default_cache_necesary/$cmd_filename-$archivo"
 clear
 $cfg_favorite_realpath_textdialog --clear --title "Run this wizard" --yesno \
@@ -6595,7 +6579,7 @@ if [ "$cmd_first_option" == "config-eng" ]; then
 ####
 ####
 echo "$txt_text_title $txt_text_info [ show variables cfg from english configuration ] "
-$cmd_command_cat $default_fullcfg_eng
+$cmd_command_cat $cmd_default_fullcfg_eng
 ####
 ####
 exit; fi
@@ -6611,7 +6595,7 @@ if [ "$cmd_first_option" == "config-spa" ]; then
 ####
 ####
 echo "$txt_text_title $txt_text_info [ show variables cfg from spanish configuration ] "
-$cmd_command_cat  $default_fullcfg_spa
+$cmd_command_cat  $cmd_default_fullcfg_spa
 ####
 ####
 exit; fi
@@ -7151,7 +7135,7 @@ case $cmd_second_option in
 #### 
 #### 
 "new-tiny-custom")
-cp "$default_tinycfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+cp "$cmd_default_tinycfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
 $cfg_favorite_realpath_graphicalldialog --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --filename="$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option" \
@@ -7169,7 +7153,7 @@ $cfg_favorite_realpath_graphicalldialog --forms \
 #### 
 #### 
 "nueva-diminuta-custom")
-cp "$default_tinycfg_spa" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+cp "$cmd_default_tinycfg_spa" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --filename="$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option" \
@@ -7187,7 +7171,7 @@ $cfg_favorite_realpath_graphicalldialog  --forms \
 #### 
 ####
 "new-mini-custom")
-cp "$default_minicfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+cp "$cmd_default_minicfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
 $cfg_favorite_realpath_graphicalldialog --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --filename="$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option" \
@@ -7205,7 +7189,7 @@ $cfg_favorite_realpath_graphicalldialog --forms \
 #### 
 #### 
 "nueva-mini-custom")
-cp "$default_minicfg_spa" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+cp "$cmd_default_minicfg_spa" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --filename="$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option" \
@@ -7223,7 +7207,7 @@ $cfg_favorite_realpath_graphicalldialog  --forms \
 #### 
 #### 
 "new-full-custom")
-cp "$default_fullcfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+cp "$cmd_default_fullcfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
 $cfg_favorite_realpath_graphicalldialog --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --filename="$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option" \
@@ -7241,7 +7225,7 @@ $cfg_favorite_realpath_graphicalldialog --forms \
 #### 
 #### 
 "nueva-completa-custom")
-cp "$default_fullcfg_spa" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+cp "$cmd_default_fullcfg_spa" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --filename=$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option \
@@ -7311,11 +7295,11 @@ $cfg_favorite_realpath_graphicalldialog --forms \
 ;;
 ####
 ####
-*)$cmd_internal "$cmd_second_option" "$cmd_third_option" "$cmd_quad_option" &> $file_output_cache
+*)$cmd_internal "$cmd_second_option" "$cmd_third_option" "$cmd_quad_option" &> $cmd_file_output_cache
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Gui-Output-$cmd_internal \
---filename="$file_output_cache" --auto-scroll ;;
+--filename="$cmd_file_output_cache" --auto-scroll ;;
 #### 
 #### 
 esac
@@ -7338,16 +7322,16 @@ case $cmd_second_option in
 #### 
 ####
 list*)$cmd_internal txt $cmd_second_option $cmd_third_option \
-$cmd_quad_option &> $file_output_cache
+$cmd_quad_option &> $cmd_file_output_cache
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Gui-Output-$cmd_internal \
---filename=$file_output_cache --auto-scroll ;;
+--filename=$cmd_file_output_cache --auto-scroll ;;
 ####
 ####
 "wizard-tiny")
 archivo=wizard-tiny
-cp $default_tinycfg_eng $cmd_default_cache_necesary/$cmd_filename-$archivo
+cp $cmd_default_tinycfg_eng $cmd_default_cache_necesary/$cmd_filename-$archivo
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --filename=$cmd_default_cache_necesary/$cmd_filename-$archivo \
@@ -7363,7 +7347,7 @@ $cfg_favorite_realpath_graphicalldialog --info \
 #### 
 "wizard-mini")
 archivo=wizard-mini
-cp $default_minicfg_eng $cmd_default_cache_necesary/$cmd_filename-$archivo
+cp $cmd_default_minicfg_eng $cmd_default_cache_necesary/$cmd_filename-$archivo
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --filename=$cmd_default_cache_necesary/$cmd_filename-$archivo \
@@ -7379,7 +7363,7 @@ $cfg_favorite_realpath_graphicalldialog --info \
 #### 
 "wizard-full")
 archivo=wizard-full
-cp $default_fullcfg_eng $cmd_default_cache_necesary/$cmd_filename-$archivo
+cp $cmd_default_fullcfg_eng $cmd_default_cache_necesary/$cmd_filename-$archivo
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --filename=$cmd_default_cache_necesary/$cmd_filename-$archivo \
@@ -7418,13 +7402,13 @@ $cfg_favorite_realpath_graphicalldialog --forms \
 ####
 "preferences-edit")
 archivo="default"
-cp $file_default_preferences $file_default_preferences.old
+cp $cmd_file_default_preferences $cmd_file_default_preferences.old
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---filename=$file_default_preferences.old \
---editable --title=MODIFY-PREFERENCES 1> $file_default_preferences
-if [ ! -s "$file_default_preferences" ];
-then cp $file_default_preferences.old $file_default_preferences 
+--filename=$cmd_file_default_preferences.old \
+--editable --title=MODIFY-PREFERENCES 1> $cmd_file_default_preferences
+if [ ! -s "$cmd_file_default_preferences" ];
+then cp $cmd_file_default_preferences.old $cmd_file_default_preferences 
 $cfg_favorite_realpath_graphicalldialog  --info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text OK.$archivo-canceled; fi
@@ -7433,13 +7417,13 @@ $cfg_favorite_realpath_graphicalldialog  --info \
 ####
 "alias-edit")
 archivo="default"
-cp $file_default_alias $file_default_alias.old
+cp $cmd_file_default_alias $cmd_file_default_alias.old
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---filename=$file_default_alias.old \
---editable --title=MODIFY-ALIAS 1> $file_default_alias
-if [ ! -s "$file_default_alias" ];
-then cp $file_default_alias.old $file_default_alias 
+--filename=$cmd_file_default_alias.old \
+--editable --title=MODIFY-ALIAS 1> $cmd_file_default_alias
+if [ ! -s "$cmd_file_default_alias" ];
+then cp $cmd_file_default_alias.old $cmd_file_default_alias 
 $cfg_favorite_realpath_graphicalldialog  --info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text OK.$archivo-canceled; fi
@@ -7447,11 +7431,11 @@ $cfg_favorite_realpath_graphicalldialog  --info \
 ####
 ####
 *)$cmd_internal txt $cmd_second_option $cmd_third_option \
-$cmd_quad_option &> $file_output_cache
+$cmd_quad_option &> $cmd_file_output_cache
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Gui-Output-$cmd_internal \
---filename=$file_output_cache --auto-scroll
+--filename=$cmd_file_output_cache --auto-scroll
 ;;
 #### 
 #### 
@@ -7473,11 +7457,11 @@ if [ "$cfg_favorite_realpath_graphicalldialog" == "$NULL" ]; then
 echo "$txt_text_title there is not graphicall dialog" ; exit ; fi
 ####
 ####
-$cmd_internal txt $cmd_second_option $cmd_third_option &> $file_output_cache
+$cmd_internal txt $cmd_second_option $cmd_third_option &> $cmd_file_output_cache
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Gui-Output-$cmd_internal \
---filename=$file_output_cache --auto-scroll 
+--filename=$cmd_file_output_cache --auto-scroll 
 ####
 ####
 exit; fi
@@ -7657,11 +7641,11 @@ $cmd_internal -gui-zenity alias-edit
 ####
 ####
 "$NULL")  exit ;;
-*) $cmd_internal $menugtk &> $file_output_cache
+*) $cmd_internal $menugtk &> $cmd_file_output_cache
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=$cmd_internal-gui-shell \
---filename=$file_output_cache --auto-scroll
+--filename=$cmd_file_output_cache --auto-scroll
 ;;
 esac
 $cmd_internal gui-shell-zenity
@@ -7850,11 +7834,11 @@ $cmd_internal -gui-yad alias-edit
 #### spanish: las demas opciones   ####
 ####
 ####
-*) $cmd_internal $menugtk &> $file_output_cache
+*) $cmd_internal $menugtk &> $cmd_file_output_cache
 $cmd_command_yad --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=$cmd_internal-gui-shelL-$menugtk \
---filename=$file_output_cache --auto-scroll
+--filename=$cmd_file_output_cache --auto-scroll
 esac
 $cmd_internal gui-shell-yad
 ####
@@ -9463,7 +9447,7 @@ if [ "$cmd_first_option" == "gui-menu" ] ;
 ####
 then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
-echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
+echo ; else cfg_second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
 echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
@@ -9514,7 +9498,7 @@ exit; fi
 if   [ "$cmd_first_option" == "gui-menu-firewall-wallcontrol" ]
 then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
-echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
+echo ; else cfg_second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
 echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
@@ -9624,7 +9608,7 @@ if   [ "$cmd_first_option" == "gui-menu-firewall-listconceptual" ]
 ####
 then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
-echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
+echo ; else cfg_second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
 echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
@@ -9683,7 +9667,7 @@ if   [ "$cmd_first_option" == "gui-menu-firewall-listnumeral" ]
 ####
 then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
-echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
+echo ; else cfg_second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
 echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
@@ -9743,7 +9727,7 @@ if [ "$cmd_first_option" == "gui-menu-firewall-wallcustom" ]
 ####
 then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
-echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
+echo ; else cfg_second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
 echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
@@ -9847,7 +9831,7 @@ exit; fi
 if [ "$cmd_first_option" == "gui-menu-firewall-wallsystem" ]
 then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
-echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
+echo ; else cfg_second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
 echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
@@ -9967,7 +9951,7 @@ exit; fi
 if [ "$cmd_first_option" == "gui-menu-firewall-netsystem" ]
 then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
-echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
+echo ; else cfg_second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
 echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
@@ -10149,7 +10133,7 @@ then echo "$txt_text_title $txt_text_info [ loading firewall wallcustom $fist_op
 allow_launchrules_firewall="yes" ;
 type_firewall="wallcontrol" ;
 name_firewall="tinyserver-tcp" ;
-first_option="loadtiny-custom" ;
+cfg_first_option="loadtiny-custom" ;
 ####
 ####
 server_port_tcp="$2"
@@ -10315,8 +10299,8 @@ case "$cmd_second_option" in
 "cmd") declare | $cmd_command_grep  ^cmd_ | $cmd_command_sort ;;
 "cfg") declare | $cmd_command_grep  ^cfg_ | $cmd_command_sort ;;
 "txt") declare | $cmd_command_grep  ^txt_ | $cmd_command_sort ;;
-"all") declare | sort ;;
-*) echo "$txt_text_title $txt_text_info the second option is cmd|txt|cfg|all" ;;
+*) declare | sort ;;
+"all") echo "$txt_text_title $txt_text_info the second option is cmd|txt|cfg|all" ;;
 esac
 ####
 ####
