@@ -3489,30 +3489,30 @@ if [ "$first_option" == "options" ]; then
 ####
 ####
 echo "$text_md $cmd_internal [optional-output] first_option [second_option] $text_md"
-echo "$title_md    optional-output $text_md"
+echo "$title_md    <optional-output> $text_md"
 echo "$text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ] $text_md"
 echo "$text_md [ cli-dialog cli-whiptail cli-menu cli-menu-compact ] $text_md"
 echo "$text_md [ gui-zenity gui-yad gui-menu gui-menu-zenity gui-menu-yad ] $text_md"
 echo "$text_md [ gui-roll-zenity gui-shell gui-shell-zenity gui-shell-yad ] $text_md"
-echo "$title_md    firewall-listconceptual $text_md"
+echo "$title_md    <firewall-listconceptual> $text_md"
 echo "$text_md ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6 $text_md"
 echo "$text_md list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4 $text_md"
 echo "$text_md list-security6 list-ebtables list-arptables list-alltables $text_md"
-echo "$title_md    firewall-listnumeral $text_md"
+echo "$title_md    <firewall-listnumeral> $text_md"
 echo "$text_md lsn4 lsn6 statusn listn-filter4 listn-filter6 listn-nat4 $text_md"
 echo "$text_md listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6 $text_md"
 echo "$text_md listn-security4 listn-security6 listn-alltables $text_md"
-echo "$title_md    firewall-wallcontrol $text_md"
+echo "$title_md    <firewall-wallcontrol> $text_md"
 echo "$text_md stop continue reset show save load names actual eraserules $text_md"
 echo "$text_md eraserules4 eraserules6 without-connection input-permisive $text_md"
 echo "$text_md input-established wizard-tiny wizard-mini wizard-full $text_md"
 echo "$text_md tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp $text_md"
-echo "$title_md    firewall-wallcustom $text_md"
+echo "$title_md    <firewall-wallcustom> $text_md"
 echo "$text_md new-full-custom nueva-completa-custom new-mini-custom $text_md"
 echo "$text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom $text_md"
 echo "$text_md clone-wallsystem load-custom loadtiny-custom $text_md"
 echo "$text_md show-custom modify-custom del-custom names-custom $text_md"
-echo "$title_md    firewall-wallsystem $text_md"
+echo "$title_md    <firewall-wallsystem> $text_md"
 echo "$text_md client-basic client-web client-ssh client-telnet client-ipp $text_md"
 echo "$text_md client-irc client-git client-vnc client-news client-vpn $text_md"
 echo "$text_md client-torrent client-vpn client-ftp client-proxy client-mail $text_md"
@@ -3522,7 +3522,7 @@ echo "$text_md server-telnet server-irc server-vnc server-print server-webserver
 echo "$text_md server-lamp server-news server-ftp server-mail server-teamspeak $text_md"
 echo "$text_md server-mumble server-gateway server-sql server-samba server-proxy $text_md"
 echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net  $text_md"
-echo "$title_md    firewall-netsystem $text_md"
+echo "$title_md    <firewall-netsystem> $text_md"
 echo "$text_md preferences-edit alias-edit options info-options usernotes$text_md"
 echo "$text_md cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $text_md"
 echo "$text_md ip4 ip6 route4 route6 net4-info net6-info sockets nodes $text_md"
@@ -3531,14 +3531,12 @@ echo "$text_md log-stat web intro depends uninstall install upgrade notes $text_
 echo "$text_md variables examples info code expert donate about version $text_md"
 echo "$text_md add-whitelist4 add-whitelist6 add-blacklist4 add-blacklist6 $text_md" 
 echo "$text_md license-lgpl-v2 license-gpl-v2 $text_md"
-echo " $text_md $text_md | Program: $cmd_internal $cmd_version $text_md"
-echo " $text_md $text_md | Description: $cmd_longdescription $text_md"
 ####
 ####  if expert commands
 ####
 if [ "$allow_expert_commands" == "no" ]
-then echo " $text_md $text_md | Expert: expert is dropped in preferences file $text_md"
-else echo " $text_md $text_md | Expert: expert is allowed in preferences file $text_md"
+then echo "$text_md $text_md $text_info $cmd_name $cmd_version with expert deactived $text_md"
+else echo "$text_md $text_md $text_info $cmd_name $cmd_version with expert actived $text_md"
 fi
 ####
 ####
