@@ -688,18 +688,18 @@ exit; fi
 ####
 ####
 #### configure without option
-if [ "$cfg_config_without_firstoption" = "$NULL" ] ; then config_without_firstoption="options" ; fi
+if [ "$cfg_config_without_firstoption" = "$NULL" ] ; then cfg_config_without_firstoption="options" ; fi
 ####
 ####
 #### Without first option and it is options
 if [ "$cmd_first_option" = "$NULL" ] && [ "$cfg_config_without_firstoption" == "options" ]; then
-first_option="$cfg_config_without_firstoption" ; fi
+cmd_first_option="$cfg_config_without_firstoption" ; fi
 ####
 ####
 #### Without first option and it is not options show one message
 if [ "$cmd_first_option" = "$NULL" ] && [ "$cfg_config_without_firstoption" != "options" ]; then
 echo "### $text_info [ Default Option: $cfg_config_without_firstoption ] [ List Options: options ]"
-first_option="$cfg_config_without_firstoption" ; fi
+cmd_first_option="$cfg_config_without_firstoption" ; fi
 ####
 ####
 #### label option
@@ -732,9 +732,9 @@ if [ "$cfg_favorite_iperf_command" == "$NULL" ]; then
 ####
 ####
 if [ "$cmd_command_iperf3"    != "$NULL" ]; then
-favorite_iperf_command="$cmd_command_iperf3" ; fi
+cfg_favorite_iperf_command="$cmd_command_iperf3" ; fi
 if [ "$cmd_command_iperf"   != "$NULL" ]; then
-favorite_iperf_command="$cmd_command_iperf" ; fi
+cfg_favorite_iperf_command="$cmd_command_iperf" ; fi
 ####
 ####
 fi
@@ -1973,61 +1973,61 @@ echo "####  file: $file_default_preferences"
 echo "$title_md"
 echo "$title_md"
 echo "$title_md $title_md default option when not option are there"
-echo "config_without_firstoption=options                    ## read below"
+echo "cfg_config_without_firstoption=options                    ## read below"
 echo "$title_md type: void or one valid option required to works"
 echo "$title_md example1:options example2:list4 example3:ip4"
 echo "$title_md example4:speed-ip4 example5:sockets example6:gui-roll"
 echo "$title_md example7:gui-menu-yad example8:gui-shell-yad"
 echo "$title_md" 
 echo "$title_md $title_md Allow expert commands for default" 
-echo "allow_expert_commands=                          ## or void for yes or no"
+echo "cfg_allow_expert_commands=                          ## or void for yes or no"
 echo "$title_md" 
 echo "$title_md $title_md default firewall"
-echo "allow_use_legacy=no                             ## or void for yes or no"
-echo "allow_use_nft=                                  ## or void for yes or no"
-echo "allow_use_ipv4=                                 ## or void for yes or no"
-echo "allow_use_ipv6=                                 ## or void for yes or no"
+echo "cfg_allow_use_legacy=no                             ## or void for yes or no"
+echo "cfg_allow_use_nft=                                  ## or void for yes or no"
+echo "cfg_allow_use_ipv4=                                 ## or void for yes or no"
+echo "cfg_allow_use_ipv6=                                 ## or void for yes or no"
 echo "$title_md"
-echo "allow_separate_rules=                           ## or void for yes or no"
-echo "allow_close_log=                                ## or void for yes or no"
-echo "config_system_log=LOG                           ## or LOG or ULOG"
-echo "config_close_deny=DROP                          ## or DROP or REJECT"
+echo "cfg_allow_separate_rules=                           ## or void for yes or no"
+echo "cfg_allow_close_log=                                ## or void for yes or no"
+echo "cfg_config_system_log=LOG                           ## or LOG or ULOG"
+echo "cfg_config_close_deny=DROP                          ## or DROP or REJECT"
 echo "$title_md"
 echo "$title_md $title_md default string"
-echo "config_string_algoritmo=kmp                     ## or kmp or bm"
+echo "cfg_config_string_algoritmo=kmp                     ## or kmp or bm"
 echo "$title_md"
 echo "$title_md $title_md default logcmd"
-echo "allow_save_logcmd=                              ## or void for yes or no"
+echo "cfg_allow_save_logcmd=                              ## or void for yes or no"
 echo "$title_md $title_md header time"
-echo "allow_show_time=no                              ## or void for yes or no"
+echo "cfg_allow_show_time=no                              ## or void for yes or no"
 echo "$title_md"  
 echo "$title_md $title_md mini client ports from side client: for miniserver tcp/udp"  
-echo "client_mini_port_tcp=ssh,http,https"
-echo "client_mini_port_udp=domain,domain-s,bootpc,bootps,ntp,https"
+echo "cfg_client_mini_port_tcp=ssh,http,https"
+echo "cfg_client_mini_port_udp=domain,domain-s,bootpc,bootps,ntp,https"
 echo "$title_md"  
 echo "$title_md $title_md default programs"
-echo "favorite_iperf_command=                         ## or void for automatic or specify command"
-echo "favorite_text_editor=                           ## or void for automatic or specify command"
-echo "favorite_text_music=                            ## or void for automatic or specify command"
-echo "favorite_text_browser=                          ## or void for automatic or specify command"
-echo "favorite_date_command=                          ## or void for automatic or specify command"
+echo "cfg_favorite_iperf_command=                         ## or void for automatic or specify command"
+echo "cfg_favorite_text_editor=                           ## or void for automatic or specify command"
+echo "cfg_favorite_text_music=                            ## or void for automatic or specify command"
+echo "cfg_favorite_text_browser=                          ## or void for automatic or specify command"
+echo "cfg_favorite_date_command=                          ## or void for automatic or specify command"
 echo "$title_md"
 echo "$title_md $title_md default text-cli and graphicall-gui"
-echo "favorite_realpath_textdialog=                   ## or void for automatic or specify command"
-echo "favorite_realpath_graphicalldialog=             ## or void for automatic or specify command"
+echo "cfg_favorite_realpath_textdialog=                   ## or void for automatic or specify command"
+echo "cfg_favorite_realpath_graphicalldialog=             ## or void for automatic or specify command"
 echo "$title_md"
 echo "$title_md $title_md default discover ip and speed ip"
-echo "server_ipdiscover_ipv4=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
-echo "server_ipdiscover_ipv6=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
-echo "server_ip_iperf_ipv4=ping.online.net             ## default ping.online.net"
-echo "server_port_iperf_ipv4=5200                      ## default 5200"
-echo "server_ip_iperf_ipv6=ping6.online.net            ## default ping6.online.net"
-echo "server_port_iperf_ipv6=5200                      ## default 5200"
-echo "server_radio_online=https://www.tdtchannels.com/lists/radio.m3u8" 
+echo "cfg_server_ipdiscover_ipv4=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
+echo "cfg_server_ipdiscover_ipv6=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
+echo "cfg_server_ip_iperf_ipv4=ping.online.net             ## default ping.online.net"
+echo "cfg_server_port_iperf_ipv4=5200                      ## default 5200"
+echo "cfg_server_ip_iperf_ipv6=ping6.online.net            ## default ping6.online.net"
+echo "cfg_server_port_iperf_ipv6=5200                      ## default 5200"
+echo "cfg_server_radio_online=https://www.tdtchannels.com/lists/radio.m3u8" 
 echo "$title_md"
 echo "$title_md $title_md default graphicall dimension"
-echo "config_graphicall_width=800                     ## default width 800"
-echo "config_graphicall_height=600                    ## default height 600"
+echo "cfg_config_graphicall_width=800                     ## default width 800"
+echo "cfg_config_graphicall_height=600                    ## default height 600"
 ####
 ####
 exit ; fi
