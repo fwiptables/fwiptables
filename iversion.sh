@@ -414,25 +414,25 @@ if [ "$cmd_command_tree" == "$NULL" ]; then cmd_command_tree="$cmd_command_ls"; 
 ####
 ####
 #### system requisite utils
-for requisite in $(echo $cmd_requisite_program | sed 's/,/ /g') ; do 
-if [ "$($cmd_where $requisite)" == "$NULL" ]; then
-echo "### program $requisite is necesary to work $cmd_internal"
+for txt_requisite in $(echo $cmd_requisite_program | sed 's/,/ /g') ; do 
+if [ "$($cmd_where $txt_requisite)" == "$NULL" ]; then
+echo "### program $txt_requisite is necesary to work $cmd_internal"
 echo "### the requiste are $cmd_requisite_program"
 exit; fi ; done
 ####
 ####
 #### system requisite firewall4
-for requisite in $(echo $cmd_requisite_firewall4 | sed 's/,/ /g') ; do 
-if [ "$($cmd_where $requisite)" == "$NULL" ]; then
-echo "### program $requisite is necesary to work $cmd_internal"
+for txt_requisite in $(echo $cmd_requisite_firewall4 | sed 's/,/ /g') ; do 
+if [ "$($cmd_where $txt_requisite)" == "$NULL" ]; then
+echo "### program $txt_requisite is necesary to work $cmd_internal"
 echo "### the requiste are $cmd_requisite_firewall4"
 exit; fi ; done
 ####
 ####
 #### system requisite firewall6
-for requisite in $(echo $cmd_requisite_firewall6 | sed 's/,/ /g') ; do 
-if [ "$($cmd_where $requisite)" == "$NULL" ]; then
-echo "### program $requisite is necesary to work $cmd_internal"
+for txt_requisite in $(echo $cmd_requisite_firewall6 | sed 's/,/ /g') ; do 
+if [ "$($cmd_where $txt_requisite)" == "$NULL" ]; then
+echo "### program $txt_requisite is necesary to work $cmd_internal"
 echo "### the requiste are $cmd_requisite_firewall6"
 exit; fi ; done
 ####
@@ -674,16 +674,16 @@ if [ -f "$cmd_file_default_preferences" ]; then source $cmd_file_default_prefere
 ####
 #### prepare alias
 if [ ! -f "$cmd_file_default_alias" ]; then touch $cmd_file_default_alias ; fi
-option_with_alias="$($cmd_command_cat $cmd_file_default_alias \
+cfg_option_with_alias="$($cmd_command_cat $cmd_file_default_alias \
 | $cmd_command_grep ^#$cmd_first_option= | cut -c 2- -)"
-option_alias_origen="$(echo  $option_with_alias | $cmd_command_cut -d "=" -f 1 -)"
-option_alias_destino="$(echo $option_with_alias | $cmd_command_cut -d "=" -f 2 -)"
+cfg_option_alias_origen="$(echo  $cfg_option_with_alias | $cmd_command_cut -d "=" -f 1 -)"
+cfg_option_alias_destino="$(echo $cfg_option_with_alias | $cmd_command_cut -d "=" -f 2 -)"
 ####
 ####
 #### load alias
-if [ "$option_with_alias" != "$NULL" ] && [ "$option_alias_origen" != "$option_alias_destino" ]
-then echo "### < alias > from $option_alias_origen to $option_alias_destino"
-$cmd_internal $option_alias_destino $2 $3 $4
+if [ "$option_with_alias" != "$NULL" ] && [ "$cfg_option_alias_origen" != "$cfg_option_alias_destino" ]
+then echo "### < alias > from $cfg_option_alias_origen to $cfg_option_alias_destino"
+$cmd_internal $cfg_option_alias_destino $2 $3 $4
 exit; fi 
 ####
 ####
@@ -1383,10 +1383,10 @@ exit ; fi
 if [ "$cfg_allow_save_logcmd" != "no" ]
 ####
 ####
-then head_format_logcmd="date: $cmd_logcmd_date path: $cmd_internal \
+then txt_head_format_logcmd="date: $cmd_logcmd_date path: $cmd_internal \
 ver: $cmd_version opt: $cmd_guided_full"
 ####
-echo $head_format_logcmd >> $cmd_file_default_logcmd
+echo $txt_head_format_logcmd >> $cmd_file_default_logcmd
 ####
 ####
 fi
@@ -10287,28 +10287,28 @@ fi
 ####
 ####
 #### :rutina-final-miniserver-udp:
+################ variables:
 ################
-################
-#### :rutina-inicial-enviroment:
+#### :rutina-inicial-variables:
 ####
 ####
-if [ "$cmd_first_option" == "enviroment" ] ; then
+if [ "$cmd_first_option" == "variables" ] ; then
 ####
 ####
 case "$cmd_second_option" in
 "cmd") declare | $cmd_command_grep  ^cmd_ | $cmd_command_sort ;;
 "cfg") declare | $cmd_command_grep  ^cfg_ | $cmd_command_sort ;;
 "txt") declare | $cmd_command_grep  ^txt_ | $cmd_command_sort ;;
-*) declare | sort ;;
-"all") echo "$txt_text_title $txt_text_info the second option is cmd|txt|cfg|all" ;;
+*) declare | $cmd_command_grep -E ^"cmd_|cfg_|txt_" | $cmd_command_sort ;;
+"help") echo "$txt_text_title $txt_text_info the second option is cmd|txt|cfg|all" ;;
 esac
 ####
 ####
 exit ; fi
 ####
 ####
-#### :rutina-final-enviroment:
-###############
+#### :rutina-final-variables:
+###############  variables:
 ###############
 ##########    english: ready system rules con its option               ##########
 ##########    spanish: preprara reglas del sistema con sus opciones    ##########
