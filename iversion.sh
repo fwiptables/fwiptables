@@ -53,8 +53,8 @@
 if [ "$(id -u)" != "0" ] ; then echo ; echo
 ####
 ####
-echo "### $text_fail [ fwiptables needs root to work ]"
-echo "### $text_info [ Try with root user ]" ; echo
+echo "### $txt_text_fail [ fwiptables needs root to work ]"
+echo "### $txt_text_info [ Try with root user ]" ; echo
 ####
 ####
 exit ; fi
@@ -137,7 +137,7 @@ cmd_quad_option="$(echo $4 | $cmd_command_sed s/\\///g -)"    # quad option
 cmd_list_option="### $cmd_name $1 $2 $3 $4"                   # option label
 #### variable without "/", without spaces
 cmd_guided_full="$(echo $1-$2-$3-$4 | \
-$cmd_command_sed s/\ /\-/g - | $cmd_command_sed s/\\///g -)"          # all options
+$cmd_command_sed s/\ /\-/g - | $cmd_command_sed s/\\///g -)"  # all options
 ####
 ####
 ##########     english name, description and version    ##########
@@ -267,7 +267,7 @@ cmd_command_sed="$($cmd_where sed)"
 cmd_command_shutdown="$($cmd_where shutdown)"
 cmd_command_sleep="$($cmd_where sleep)"
 cmd_command_sntp="$($cmd_where sntp) -S"
-cmd_command_sort="$($cmd_sort)"
+cmd_command_sort="$($cmd_where sort)"
 cmd_command_ss="$($cmd_where ss)"
 cmd_command_sudo="$($cmd_where sudo)"
 cmd_command_sysctl="$($cmd_where sysctl)"
@@ -612,32 +612,32 @@ file_blacklist_stevenblack=\
 #### :rutina-inicial-variables-header:
 ####
 ####
-text_md="  "
-title_md="### "
-text_ok="<  ok  >"
-text_info="< info >"
-text_fail="< fail >"
-text_file="< file >"
-text_done="< done >"
-text_folder="<folder>"
-head_waiting_all=" [ Wait several seconds.. ]  [ press control-c to cancel ] "
-head_waiting_txt="$title_md $text_info [ txt ] $head_waiting_all "
-head_waiting_narrow="$title_md $text_info [ narrow ] $head_waiting_all "
-head_waiting_cli="$title_md $text_info [ cli ] $head_waiting_all "
-head_waiting_gui="$title_md $text_info [ gui ] $head_waiting_all "
-head_waiting_log="$title_md $text_info [ log ] $head_waiting_all "
-head_waiting_pdf="$title_md $text_info [ pdf ] $head_waiting_all "
-message_without_support="[ Without support for output cli for this option ]"
-message_without_narrow="$title_md $text_fail [ narrow ] $message_without_support"
-message_without_txt="$title_md $text_fail [ txt ] $message_without_support"
-message_without_cli="$title_md $text_fail [ cli ] $message_without_support"
-message_without_gui="$title_md $text_fail [ gui ] $message_without_support"
-message_without_info="$title_md $text_fail [ log ] $message_without_support"
-message_without_null="$title_md $text_fail [ null ] $message_without_support"
-message_without_pdf="$title_md $text_fail [ pdf ] $message_without_support"
-message_without_climenu="$title_md $text_fail [ install or dialog or wiptail]"
-message_without_guimenu="$title_md $text_fail [ install or zenity or yad ]"
-message_without_guiroll="$title_md $text_fail [ install zenity ]"
+txt_text_md="  "
+txt_text_title="### "
+txt_text_ok="<  ok  >"
+txt_text_info="< info >"
+txt_text_fail="< fail >"
+txt_text_file="< file >"
+txt_text_done="< done >"
+txt_text_folder="<folder>"
+txt_head_waiting_all=" [ Wait several seconds.. ]  [ press control-c to cancel ] "
+txt_head_waiting_txt="$txt_text_title $txt_text_info [ txt ] $txt_head_waiting_all "
+txt_head_waiting_narrow="$txt_text_title $txt_text_info [ narrow ] $txt_head_waiting_all "
+txt_head_waiting_cli="$txt_text_title $txt_text_info [ cli ] $txt_head_waiting_all "
+txt_head_waiting_gui="$txt_text_title $txt_text_info [ gui ] $txt_head_waiting_all "
+txt_head_waiting_log="$txt_text_title $txt_text_info [ log ] $txt_head_waiting_all "
+txt_head_waiting_pdf="$txt_text_title $txt_text_info [ pdf ] $txt_head_waiting_all "
+txt_message_without_support="[ Without support for output cli for this option ]"
+txt_message_without_narrow="$txt_text_title $txt_text_fail [ narrow ] $txt_message_without_support"
+txt_message_without_txt="$txt_text_title $txt_text_fail [ txt ] $txt_message_without_support"
+txt_message_without_cli="$txt_text_title $txt_text_fail [ cli ] $txt_message_without_support"
+txt_message_without_gui="$txt_text_title $txt_text_fail [ gui ] $txt_message_without_support"
+txt_message_without_info="$txt_text_title $txt_text_fail [ log ] $txt_message_without_support"
+txt_message_without_null="$txt_text_title $txt_text_fail [ null ] $txt_message_without_support"
+txt_message_without_pdf="$txt_text_title $txt_text_fail [ pdf ] $txt_message_without_support"
+txt_message_without_climenu="$txt_text_title $txt_text_fail [ install or dialog or wiptail]"
+txt_message_without_guimenu="$txt_text_title $txt_text_fail [ install or zenity or yad ]"
+txt_message_without_guiroll="$txt_text_title $txt_text_fail [ install zenity ]"
 ####
 ####
 #### :rutina-final-variables-header:
@@ -698,7 +698,7 @@ cmd_first_option="$cfg_config_without_firstoption" ; fi
 ####
 #### Without first option and it is not options show one message
 if [ "$cmd_first_option" = "$NULL" ] && [ "$cfg_config_without_firstoption" != "options" ]; then
-echo "### $text_info [ Default Option: $cfg_config_without_firstoption ] [ List Options: options ]"
+echo "### $txt_text_info [ Default Option: $cfg_config_without_firstoption ] [ List Options: options ]"
 cmd_first_option="$cfg_config_without_firstoption" ; fi
 ####
 ####
@@ -714,10 +714,10 @@ if [ "$cfg_allow_show_time" == "" ] ; then echo "$cfg_config_show_time" ; fi
 #### configure expert
 if [ "$cfg_allow_expert_commands" == "no" ]; then
 case "$cmd_first_option" in 
-exper*) echo "$title_md See in preferences allow_expert_commands to active it option"
+exper*) echo "$txt_text_title See in preferences allow_expert_commands to active it option"
 exit ;; esac
 case "$cmd_second_option" in
-exper*) echo "$title_md See in preferences allow_expert_commands to active it option"
+exper*) echo "$txt_text_title See in preferences allow_expert_commands to active it option"
 exit ;; esac ; fi
 ####
 ####
@@ -1240,7 +1240,7 @@ exit ;; esac ; fi
 #### output narrow:      General text without warnings version list narrow
 ####
 ####
-if [ "$cmd_first_option" == "narrowtxt" ] ;then echo "$head_waiting_narrow"
+if [ "$cmd_first_option" == "narrowtxt" ] ;then echo "$txt_head_waiting_narrow"
 ####
 ####
 case $cmd_second_option in 
@@ -1273,7 +1273,7 @@ exit ; fi
 #### output txt:      General text without warnings version list normal
 ####
 ####
-if [ "$cmd_first_option" == "txt" ]; then echo "$head_waiting_txt"
+if [ "$cmd_first_option" == "txt" ]; then echo "$txt_head_waiting_txt"
 ####
 ####
 case $cmd_second_option in 
@@ -1297,11 +1297,11 @@ esac ; fi
 #### output cli:
 ####
 ####
-if [ "$cmd_first_option" == "cli" ] ; then echo "$head_waiting_cli"
+if [ "$cmd_first_option" == "cli" ] ; then echo "$txt_head_waiting_cli"
 ####
 ####
 if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then 
-echo "$text_md $text_info Please install or dialog or whiptail to work with cli"
+echo "$txt_text_md $txt_text_info Please install or dialog or whiptail to work with cli"
 exit; fi
 ####
 ####
@@ -1328,9 +1328,9 @@ esac ; fi
 if [ "$cmd_first_option" == "log" ]
 ####
 ####
-then echo "$head_waiting_log"
+then echo "$txt_head_waiting_log"
 $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option &> $file_output_log
-echo "$title_md $text_file [$file_output_log]"
+echo "$txt_text_title $txt_text_file [$file_output_log]"
 ####
 ####
 exit ; fi
@@ -1346,14 +1346,14 @@ if [ "$cmd_first_option" == "pdf" ]
 ####
 ####
 then case $cmd_command_convert in "$NULL") 
-echo "$title_md install imagemagick to print pdf to $cmd_default_directory_pdf" ; exit ;; esac
+echo "$txt_text_title install imagemagick to print pdf to $cmd_default_directory_pdf" ; exit ;; esac
 #### allow print to PDF policy
-echo "$head_waiting_pdf"
+echo "$txt_head_waiting_pdf"
 sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &> /dev/null
 #### send print to home output fwiptables.pdf
 $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option | \
 $cmd_command_convert -page A3 text:- $file_output_pdf
-echo "$title_md $text_file [$file_output_pdf]"
+echo "$txt_text_title $txt_text_file [$file_output_pdf]"
 ####
 ####
 exit ; fi
@@ -1436,13 +1436,13 @@ if [ "$cmd_first_option" == "cat-logcmd" ] ; then
 ####
 ####
 if [ ! -f $file_default_logcmd ]; then touch $file_default_logcmd ; fi
-echo "$title_md $text_md list all month"
+echo "$txt_text_title $txt_text_md list all month"
 $cmd_command_tree $cmd_default_directory_baselogcmd
-echo "$title_md $file_default_logcmd"
+echo "$txt_text_title $file_default_logcmd"
 $cmd_command_cat   "$file_default_logcmd" | tail -50
 echo
-echo "$title_md $text_info latest 50 lines from this file"
-echo "$title_md $text_info [$file_default_logcmd]"
+echo "$txt_text_title $txt_text_info latest 50 lines from this file"
+echo "$txt_text_title $txt_text_info [$file_default_logcmd]"
 ####
 ####
 exit; fi
@@ -1458,22 +1458,22 @@ if [ "$cmd_first_option" == "log-stat" ] ; then
 ####
 ####
 if [ "$cmd_command_wc" == "$NULL" ] ; then
-echo "$text_info Please install wc command"; exit; fi
+echo "$txt_text_info Please install wc command"; exit; fi
 ####
 ####
 conteo="$($cmd_command_cat $file_default_logcmd | $cmd_command_wc -l)"
-echo "$text_md $conteo Commands launched. Commands log with allowed logcmd"
-echo "$text_md file: $file_default_logcmd"
+echo "$txt_text_md $conteo Commands launched. Commands log with allowed logcmd"
+echo "$txt_text_md file: $file_default_logcmd"
 ####
 ####
 conteo="$($cmd_command_ls -1 $cmd_default_directory_logs | $cmd_command_wc -l)"
-echo "$text_md $conteo Commands output. Commands log with output log"
-echo "$text_md folder: $cmd_default_directory_logs"
+echo "$txt_text_md $conteo Commands output. Commands log with output log"
+echo "$txt_text_md folder: $cmd_default_directory_logs"
 ####
 ####
 conteo="$($cmd_command_ls -1 $cmd_default_directory_pdf | $cmd_command_wc -l)"
-echo "$text_md $conteo Commands output. Command log with output pdf"
-echo "$text_md folder: $cmd_default_directory_pdf"
+echo "$txt_text_md $conteo Commands output. Command log with output pdf"
+echo "$txt_text_md folder: $cmd_default_directory_pdf"
 ####
 ####
 exit; fi
@@ -1488,36 +1488,36 @@ exit; fi
 if [ "$cmd_first_option" == "version" ]; then
 ####
 ####
-echo "$text_md $text_md     Detail Firewall: Detail Version            $text_md"
+echo "$txt_text_md $txt_text_md     Detail Firewall: Detail Version            $txt_text_md"
 ####
 ####
 if [ "$(echo $XDG_SESSION_TYPE)" != "$NULL" ]; then
-echo "$text_md $text_md         Session XDG: $XDG_SESSION_TYPE         $text_md"
+echo "$txt_text_md $txt_text_md         Session XDG: $XDG_SESSION_TYPE         $txt_text_md"
 fi
 ####
 ####
-echo "$text_md $text_md       Name Firewall: $cmd_name                 $text_md"
-echo "$text_md $text_md    Version Firewall: $cmd_version              $text_md"
-echo "$text_md $text_md   Released Firewall: $cmd_released             $text_md"
-echo "$text_md $text_md     Source Firewall: $cmd_notinstalled         $text_md"
-echo "$text_md $text_md   Internal Firewall: $cmd_internal             $text_md"
-echo "$text_md $text_md   Short Description: $cmd_shortdescription     $text_md"
-echo "$text_md $text_md    Long Description: $cmd_longdescription      $text_md"
-echo "$text_md $text_md      Data Directory: $cmd_default_directory_necesary  $text_md"
-echo "$text_md $text_md     Cache Directory: $cmd_default_cache_basenecesary $text_md"
-echo "$text_md $text_md      Finder Program: $cmd_where                $text_md"
-echo "$text_md $text_md   Requisite Program: $cmd_requisite_program    $text_md"
-echo "$text_md $text_md Requisite Firewall4: $cmd_requisite_firewall4  $text_md"
-echo "$text_md $text_md Requisite Firewall6: $cmd_requisite_firewall6  $text_md"
-echo "$text_md $text_md      Automatic Edit: $cfg_favorite_text_editor     $text_md"
-echo "$text_md $text_md       Automatic cli: $cfg_favorite_realpath_textdialog       $text_md"
-echo "$text_md $text_md       Automatic gui: $cfg_favorite_realpath_graphicalldialog $text_md"
-echo "$text_md $text_md       Automatic pdf: $cmd_command_convert          $text_md"
-echo "$text_md $text_md     Configured PATH: $PATH                     $text_md"
-echo "$text_md $text_md         File Format: $cmd_format               $text_md"
-echo "$text_md $text_md    Developer Actual: $cmd_developer            $text_md"
-echo "$text_md $text_md        Email Report: $cmd_contact              $text_md"
-echo "$text_md $text_md     License Program: $cmd_license              $text_md"
+echo "$txt_text_md $txt_text_md       Name Firewall: $cmd_name                 $txt_text_md"
+echo "$txt_text_md $txt_text_md    Version Firewall: $cmd_version              $txt_text_md"
+echo "$txt_text_md $txt_text_md   Released Firewall: $cmd_released             $txt_text_md"
+echo "$txt_text_md $txt_text_md     Source Firewall: $cmd_notinstalled         $txt_text_md"
+echo "$txt_text_md $txt_text_md   Internal Firewall: $cmd_internal             $txt_text_md"
+echo "$txt_text_md $txt_text_md   Short Description: $cmd_shortdescription     $txt_text_md"
+echo "$txt_text_md $txt_text_md    Long Description: $cmd_longdescription      $txt_text_md"
+echo "$txt_text_md $txt_text_md      Data Directory: $cmd_default_directory_necesary  $txt_text_md"
+echo "$txt_text_md $txt_text_md     Cache Directory: $cmd_default_cache_basenecesary $txt_text_md"
+echo "$txt_text_md $txt_text_md      Finder Program: $cmd_where                $txt_text_md"
+echo "$txt_text_md $txt_text_md   Requisite Program: $cmd_requisite_program    $txt_text_md"
+echo "$txt_text_md $txt_text_md Requisite Firewall4: $cmd_requisite_firewall4  $txt_text_md"
+echo "$txt_text_md $txt_text_md Requisite Firewall6: $cmd_requisite_firewall6  $txt_text_md"
+echo "$txt_text_md $txt_text_md      Automatic Edit: $cfg_favorite_text_editor     $txt_text_md"
+echo "$txt_text_md $txt_text_md       Automatic cli: $cfg_favorite_realpath_textdialog       $txt_text_md"
+echo "$txt_text_md $txt_text_md       Automatic gui: $cfg_favorite_realpath_graphicalldialog $txt_text_md"
+echo "$txt_text_md $txt_text_md       Automatic pdf: $cmd_command_convert          $txt_text_md"
+echo "$txt_text_md $txt_text_md     Configured PATH: $PATH                     $txt_text_md"
+echo "$txt_text_md $txt_text_md         File Format: $cmd_format               $txt_text_md"
+echo "$txt_text_md $txt_text_md    Developer Actual: $cmd_developer            $txt_text_md"
+echo "$txt_text_md $txt_text_md        Email Report: $cmd_contact              $txt_text_md"
+echo "$txt_text_md $txt_text_md     License Program: $cmd_license              $txt_text_md"
 ####
 ####
 exit ; fi
@@ -1532,9 +1532,9 @@ exit ; fi
 if [ "$cmd_first_option" == "expert-cpufreq-info" ] ; then
 ####
 ####
-echo "$title_md $text_info [ show cpu frequence info ]"
+echo "$txt_text_title $txt_text_info [ show cpu frequence info ]"
 if [ "$cmd_command_cpufreqinfo" == "$NULL" ]; then
-echo "$title_md please install cpufreq-info"; fi
+echo "$txt_text_title please install cpufreq-info"; fi
 $cmd_command_cpufreqinfo
 ####
 ####
@@ -1550,9 +1550,9 @@ exit; fi
 if [ "$cmd_first_option" == "expert-cpupower-info" ] ; then
 ####
 ####
-echo "$title_md $text_info [ show cpu frequence info ]"
+echo "$txt_text_title $txt_text_info [ show cpu frequence info ]"
 if [ "$cmd_command_cpupower" == "$NULL" ]; then
-echo "$title_md please install cpupower"; fi
+echo "$txt_text_title please install cpupower"; fi
 $cmd_command_cpupower -c all frequency-info
 ####
 ####
@@ -1568,16 +1568,16 @@ exit; fi
 if [ "$cmd_first_option" == "expert-configs-save" ] ; then
 ####
 ####
-echo "$title_md $text_info [ save backups confiurations to choosed filename ]"
+echo "$txt_text_title $txt_text_info [ save backups confiurations to choosed filename ]"
 if [ "$cmd_command_tar" == "$NULL" ]; then
-echo "$title_md Please install tar command"; exit ; fi
+echo "$txt_text_title Please install tar command"; exit ; fi
 if [ "$2" == "$NULL" ]; then
-echo "$title_md Please choose the backup file to save"; exit; fi
+echo "$txt_text_title Please choose the backup file to save"; exit; fi
 ####
 ####
 tar vcf $2.tar -C $cmd_default_directory_necesary . && \
-echo "$text_ok in-file-saved: $2.tar from-folder-saved: $cmd_default_directory_necesary" || \
-echo "$text_fail bad"
+echo "$txt_text_ok in-file-saved: $2.tar from-folder-saved: $cmd_default_directory_necesary" || \
+echo "$txt_text_fail bad"
 ####
 ####
 exit; fi
@@ -1592,16 +1592,16 @@ exit; fi
 if [ "$cmd_first_option" == "expert-configs-load" ] ; then
 ####
 ####
-echo "$title_md $text_info [ load backups confiurations from choosed filename ]"
+echo "$txt_text_title $txt_text_info [ load backups confiurations from choosed filename ]"
 if [ "$cmd_command_tar" == "$NULL" ]; then
-echo "$title_md Please install tar command"; exit ; fi
+echo "$txt_text_title Please install tar command"; exit ; fi
 if [ "$2" == "$NULL" ]; then
-echo "$title_md Please choose the backup file to load"; exit; fi
+echo "$txt_text_title Please choose the backup file to load"; exit; fi
 ####
 ####
 tar vxf $2 -C $cmd_default_directory_necesary . && \
-echo "$text_ok from-file-loaded: $2 in-folder-loaded: $cmd_default_directory_necesary" || \
-echo "$text_fail bad"
+echo "$txt_text_ok from-file-loaded: $2 in-folder-loaded: $cmd_default_directory_necesary" || \
+echo "$txt_text_fail bad"
 ####
 ####
 exit; fi
@@ -1616,9 +1616,9 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-wpa-scan" ]; then
 ####
 ####
-echo "$title_md $text_info  [ Show SSID from net wifi ] "
+echo "$txt_text_title $txt_text_info  [ Show SSID from net wifi ] "
 if   [ "$cmd_command_iw" == "$NULL" ]; then 
-echo "$title_md $text_info [ Please, Install iw to work ]" ; exit ; fi
+echo "$txt_text_title $txt_text_info [ Please, Install iw to work ]" ; exit ; fi
 for a in $($cmd_command_cat  /proc/net/dev | $cmd_command_grep -i  : | cut -d ":" -f 1)
 do $cmd_command_ifconfig $a up
 $cmd_command_iw $a scan | $cmd_command_grep -E -i "on $a|ssid" ; done
@@ -1639,11 +1639,11 @@ then first_option="expert-txtwpa-new"; fi
 ####
 if [ "$cmd_first_option" == "expert-txtwpa-new" ]; then
 if [ "$cmd_command_wpapassphrase" == "$NULL" ]
-then echo "$title_md $text_fail Install wpa_passphrase"; exit; fi
+then echo "$txt_text_title $txt_text_fail Install wpa_passphrase"; exit; fi
 if [ "$cmd_command_wpasupplicant" == "$NULL" ]
-then echo "$title_md $text_fail Install wpa_passphrase"; exit; fi
+then echo "$txt_text_title $txt_text_fail Install wpa_passphrase"; exit; fi
 if [ "$cmd_second_option" == "$NULL" ]; then 
-echo "$title_md $text_fail use: $cmd_first_option nameconfig"; exit ; fi
+echo "$txt_text_title $txt_text_fail use: $cmd_first_option nameconfig"; exit ; fi
 ####
 ####
 $cmd_internal expert-wpa-regen
@@ -1654,11 +1654,11 @@ exit; fi
 ####
 if [ "$cmd_first_option" == "expert-guiwpa-new" ]; then
 if [ "$cmd_command_wpapassphrase" == "$NULL" ]
-then echo "$title_md $text_fail Install wpa_passphrase"; exit; fi
+then echo "$txt_text_title $txt_text_fail Install wpa_passphrase"; exit; fi
 if [ "$cmd_command_wpasupplicant" == "$NULL" ]
-then echo "$title_md $text_fail Install wpa_passphrase"; exit; fi
+then echo "$txt_text_title $txt_text_fail Install wpa_passphrase"; exit; fi
 if [ "$cmd_second_option" == "$NULL" ]; then 
-echo "$title_md $text_fail use: $cmd_first_option nameconfig"; exit ; fi
+echo "$txt_text_title $txt_text_fail use: $cmd_first_option nameconfig"; exit ; fi
 ####
 ####
 $cmd_internal expert-wpa-regen
@@ -1681,11 +1681,11 @@ then first_option="expert-txtwpa-modify"; fi
 ####
 if [ "$cmd_first_option" == "expert-txtwpa-modify" ]; then
 if [ "$cmd_command_wpapassphrase" == "$NULL" ]
-then echo "$title_md $text_fail Install wpa_passphrase"; exit; fi
+then echo "$txt_text_title $txt_text_fail Install wpa_passphrase"; exit; fi
 if [ "$cmd_command_wpasupplicant" == "$NULL" ]
-then echo "$title_md $text_fail Install wpa_passphrase"; exit; fi
+then echo "$txt_text_title $txt_text_fail Install wpa_passphrase"; exit; fi
 if [ "$cmd_second_option" == "$NULL" ]; then 
-echo "$title_md $text_fail use: $cmd_first_option nameconfig"; exit ; fi
+echo "$txt_text_title $txt_text_fail use: $cmd_first_option nameconfig"; exit ; fi
 ####
 ####
 editor $cmd_default_directory_wpa/wpaconfig_$cmd_second_option
@@ -1694,11 +1694,11 @@ exit; fi
 ####
 if [ "$cmd_first_option" == "expert-guiwpa-modify" ]; then
 if [ "$cmd_command_wpapassphrase" == "$NULL" ]
-then echo "$title_md $text_fail Install wpa_passphrase"; exit; fi
+then echo "$txt_text_title $txt_text_fail Install wpa_passphrase"; exit; fi
 if [ "$cmd_command_wpasupplicant" == "$NULL" ]
-then echo "$title_md $text_fail Install wpa_passphrase"; exit; fi
+then echo "$txt_text_title $txt_text_fail Install wpa_passphrase"; exit; fi
 if [ "$cmd_second_option" == "$NULL" ]; then 
-echo "$title_md $text_fail use: $cmd_first_option nameconfig"; exit ; fi
+echo "$txt_text_title $txt_text_fail use: $cmd_first_option nameconfig"; exit ; fi
 ####
 ####
 editor $cmd_default_directory_wpa/wpaconfig_$cmd_second_option
@@ -1733,13 +1733,13 @@ if [ "$cmd_first_option" == "expert-wpa-show" ]; then
 ####
 if [ "$cmd_second_option" == "$NULL" ]
 then $cmd_internal expert-wpa-list
-echo "$title_md $text_info use: $cmd_first_option nameconfig" ; exit ; fi
+echo "$txt_text_title $txt_text_info use: $cmd_first_option nameconfig" ; exit ; fi
 if [ -f "$cmd_default_directory_wpa/wpaconfig_$cmd_second_option" ]; then
-echo "$title_md $title_md $title_md $title_md wpa config_:"
+echo "$txt_text_title $txt_text_title $txt_text_title $txt_text_title wpa config_:"
 $cmd_command_cat  "$cmd_default_directory_wpa/wpaconfig_$cmd_second_option"
-echo "$title_md $title_md $title_md $title_md wpa connect_:"
+echo "$txt_text_title $txt_text_title $txt_text_title $txt_text_title wpa connect_:"
 $cmd_command_cat  "$cmd_default_directory_wpa/wpaconnect_$cmd_second_option"
-else echo "$title_md $text_fail use: $cmd_first_option nameconfig"; exit ; fi
+else echo "$txt_text_title $txt_text_fail use: $cmd_first_option nameconfig"; exit ; fi
 ####
 ####
 exit; fi
@@ -1755,13 +1755,13 @@ if [ "$cmd_first_option" == "expert-wpa-connect" ]; then
 ####
 ####
 if [ "$cmd_command_wpapassphrase" == "$NULL" ]
-then echo "$title_md $text_fail Install wpa_passphrase"
+then echo "$txt_text_title $txt_text_fail Install wpa_passphrase"
 exit; fi
 if [ "$cmd_command_wpasupplicant" == "$NULL" ]
-then echo "$title_md $text_fail Install wpa_passphrase"
+then echo "$txt_text_title $txt_text_fail Install wpa_passphrase"
 exit; fi
 if [ "$cmd_second_option" == "$NULL" ]
-then echo "$title_md $text_fail use: $cmd_first_option nameconfig"
+then echo "$txt_text_title $txt_text_fail use: $cmd_first_option nameconfig"
 exit ; fi
 ####
 ####
@@ -1775,8 +1775,8 @@ $cmd_command_wpasupplicant -D $wifi_wpa_driver -i $wifi_wpa_device -c \
 "$cmd_default_directory_wpa/wpaconnect_$cmd_second_option" &
 $cmd_command_ifconfig $wifi_wpa_device:1 $wifi_wpa_ip
 if [ "$(command -v $wifi_wpa_dhcp)" == "$NULL" ]
-then echo "$title_md $text_fail $wifi_wpa_dhcp not found"; exit; fi
-else echo "$title_md $text_fail use: $cmd_first_option nameconfig"; exit ; fi
+then echo "$txt_text_title $txt_text_fail $wifi_wpa_dhcp not found"; exit; fi
+else echo "$txt_text_title $txt_text_fail use: $cmd_first_option nameconfig"; exit ; fi
 ####
 ####
 exit; fi
@@ -1792,9 +1792,9 @@ if [ "$cmd_first_option" == "expert-wpa-regen" ]; then
 ####
 ####
 if [ "$cmd_command_wpapassphrase" == "$NULL" ]
-then echo "$title_md $text_fail Install wpa_passphrase"; fi
+then echo "$txt_text_title $txt_text_fail Install wpa_passphrase"; fi
 if [ "$cmd_command_wpasupplicant" == "$NULL" ]
-then echo "$title_md $text_fail Install wpa_passphrase"; fi
+then echo "$txt_text_title $txt_text_fail Install wpa_passphrase"; fi
 $cmd_internal expert-wpa-example &> $cmd_default_directory_wpa/defaultwpa
 ####
 ####
@@ -1810,19 +1810,19 @@ exit; fi
 if [ "$cmd_first_option" == "expert-wpa-example" ]; then
 ####
 ####
-echo "$title_md data necesary to get wifi access"
+echo "$txt_text_title data necesary to get wifi access"
 echo "wifi_wpa_driver=nl80211"
-echo "$title_md wifi driver:     nl80211 or wext"
+echo "$txt_text_title wifi driver:     nl80211 or wext"
 echo "wifi_wpa_device=wlan0"
-echo "$title_md wifi device:     type wifi device"
+echo "$txt_text_title wifi device:     type wifi device"
 echo "wifi_wpa_ssid=none"
-echo "$title_md wifi net:        type name for wireless net"
+echo "$txt_text_title wifi net:        type name for wireless net"
 echo "wifi_wpa_password=none"
-echo "$title_md wifi password:   type password to wireless"
+echo "$txt_text_title wifi password:   type password to wireless"
 echo "wifi_wpa_dhcp="
-echo "$title_md wifi ip dinamic: if program for dhcp"
+echo "$txt_text_title wifi ip dinamic: if program for dhcp"
 echo "wifi_wpa_ip="
-echo "$title_md wifi ip static:  if choose one static ip for this net"
+echo "$txt_text_title wifi ip static:  if choose one static ip for this net"
 ####
 ####
 exit; fi
@@ -1970,53 +1970,53 @@ if [ "$cmd_first_option" == "preferences-example" ] ; then
 ####
 echo "####  program: $cmd_internal $cmd_version"
 echo "####  file: $file_default_preferences"
-echo "$title_md"
-echo "$title_md"
-echo "$title_md $title_md default option when not option are there"
+echo "$txt_text_title"
+echo "$txt_text_title"
+echo "$txt_text_title $txt_text_title default option when not option are there"
 echo "cfg_config_without_firstoption=options                    ## read below"
-echo "$title_md type: void or one valid option required to works"
-echo "$title_md example1:options example2:list4 example3:ip4"
-echo "$title_md example4:speed-ip4 example5:sockets example6:gui-roll"
-echo "$title_md example7:gui-menu-yad example8:gui-shell-yad"
-echo "$title_md" 
-echo "$title_md $title_md Allow expert commands for default" 
+echo "$txt_text_title type: void or one valid option required to works"
+echo "$txt_text_title example1:options example2:list4 example3:ip4"
+echo "$txt_text_title example4:speed-ip4 example5:sockets example6:gui-roll"
+echo "$txt_text_title example7:gui-menu-yad example8:gui-shell-yad"
+echo "$txt_text_title" 
+echo "$txt_text_title $txt_text_title Allow expert commands for default" 
 echo "cfg_allow_expert_commands=                          ## or void for yes or no"
-echo "$title_md" 
-echo "$title_md $title_md default firewall"
+echo "$txt_text_title" 
+echo "$txt_text_title $txt_text_title default firewall"
 echo "cfg_allow_use_legacy=no                             ## or void for yes or no"
 echo "cfg_allow_use_nft=                                  ## or void for yes or no"
 echo "cfg_allow_use_ipv4=                                 ## or void for yes or no"
 echo "cfg_allow_use_ipv6=                                 ## or void for yes or no"
-echo "$title_md"
+echo "$txt_text_title"
 echo "cfg_allow_separate_rules=                           ## or void for yes or no"
 echo "cfg_allow_close_log=                                ## or void for yes or no"
 echo "cfg_config_system_log=LOG                           ## or LOG or ULOG"
 echo "cfg_config_close_deny=DROP                          ## or DROP or REJECT"
-echo "$title_md"
-echo "$title_md $title_md default string"
+echo "$txt_text_title"
+echo "$txt_text_title $txt_text_title default string"
 echo "cfg_config_string_algoritmo=kmp                     ## or kmp or bm"
-echo "$title_md"
-echo "$title_md $title_md default logcmd"
+echo "$txt_text_title"
+echo "$txt_text_title $txt_text_title default logcmd"
 echo "cfg_allow_save_logcmd=                              ## or void for yes or no"
-echo "$title_md $title_md header time"
+echo "$txt_text_title $txt_text_title header time"
 echo "cfg_allow_show_time=no                              ## or void for yes or no"
-echo "$title_md"  
-echo "$title_md $title_md mini client ports from side client: for miniserver tcp/udp"  
+echo "$txt_text_title"  
+echo "$txt_text_title $txt_text_title mini client ports from side client: for miniserver tcp/udp"  
 echo "cfg_client_mini_port_tcp=ssh,http,https"
 echo "cfg_client_mini_port_udp=domain,domain-s,bootpc,bootps,ntp,https"
-echo "$title_md"  
-echo "$title_md $title_md default programs"
+echo "$txt_text_title"  
+echo "$txt_text_title $txt_text_title default programs"
 echo "cfg_favorite_iperf_command=                         ## or void for automatic or specify command"
 echo "cfg_favorite_text_editor=                           ## or void for automatic or specify command"
 echo "cfg_favorite_text_music=                            ## or void for automatic or specify command"
 echo "cfg_favorite_text_browser=                          ## or void for automatic or specify command"
 echo "cfg_favorite_date_command=                          ## or void for automatic or specify command"
-echo "$title_md"
-echo "$title_md $title_md default text-cli and graphicall-gui"
+echo "$txt_text_title"
+echo "$txt_text_title $txt_text_title default text-cli and graphicall-gui"
 echo "cfg_favorite_realpath_textdialog=                   ## or void for automatic or specify command"
 echo "cfg_favorite_realpath_graphicalldialog=             ## or void for automatic or specify command"
-echo "$title_md"
-echo "$title_md $title_md default discover ip and speed ip"
+echo "$txt_text_title"
+echo "$txt_text_title $txt_text_title default discover ip and speed ip"
 echo "cfg_server_ipdiscover_ipv4=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
 echo "cfg_server_ipdiscover_ipv6=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
 echo "cfg_server_ip_iperf_ipv4=ping.online.net             ## default ping.online.net"
@@ -2024,8 +2024,8 @@ echo "cfg_server_port_iperf_ipv4=5200                      ## default 5200"
 echo "cfg_server_ip_iperf_ipv6=ping6.online.net            ## default ping6.online.net"
 echo "cfg_server_port_iperf_ipv6=5200                      ## default 5200"
 echo "cfg_server_radio_online=https://www.tdtchannels.com/lists/radio.m3u8" 
-echo "$title_md"
-echo "$title_md $title_md default graphicall dimension"
+echo "$txt_text_title"
+echo "$txt_text_title $txt_text_title default graphicall dimension"
 echo "cfg_config_graphicall_width=800                     ## default width 800"
 echo "cfg_config_graphicall_height=600                    ## default height 600"
 ####
@@ -2042,19 +2042,19 @@ exit ; fi
 if [ "$cmd_first_option" == "resolve" ]; then
 ####
 ####
-echo "$title_md $text_info $title_md [ Domain resolve ] [ nameserver and search ] $title_md"
+echo "$txt_text_title $txt_text_info $txt_text_title [ Domain resolve ] [ nameserver and search ] $txt_text_title"
 if [ -f /etc/resolv.conf ]
-then echo "$text_md $text_md File: /etc/resolv.conf"
+then echo "$txt_text_md $txt_text_md File: /etc/resolv.conf"
 $cmd_command_cat  /etc/resolv.conf | $cmd_command_grep -E "nameserver|search" | \
 $cmd_command_awk '{print "     " $1 " " $2}' ; fi
 if [ -f /etc/resolv.conf.head ]
-then echo "$text_md $text_md File: /etc/resolv.conf.head"; fi
+then echo "$txt_text_md $txt_text_md File: /etc/resolv.conf.head"; fi
 if [ -f /etc/resolv.conf.body ]
-then echo "$text_md $text_md File: /etc/resolv.conf.body"; fi
+then echo "$txt_text_md $txt_text_md File: /etc/resolv.conf.body"; fi
 if [ -f /etc/resolv.conf.tail ]
-then echo "$text_md $text_md File: /etc/resolv.conf.tail"; fi
+then echo "$txt_text_md $txt_text_md File: /etc/resolv.conf.tail"; fi
 if [ -d /etc/resolvconf ]
-then echo "$text_md $text_md Directory: /etc/resolvconf" ; fi
+then echo "$txt_text_md $txt_text_md Directory: /etc/resolvconf" ; fi
 ####
 ####
 exit; fi
@@ -2086,8 +2086,8 @@ if [ "$cmd_first_option" == "route4" ]; then
 ####
 ####
 #### route table
-echo "$title_md $text_info ### [ Network Route ] [ Route ipv4 ] ###"
-if [ "$cmd_command_ip" == "$NULL" ] ; then echo "$text_md $text_info [ install ip command ]"
+echo "$txt_text_title $txt_text_info ### [ Network Route ] [ Route ipv4 ] ###"
+if [ "$cmd_command_ip" == "$NULL" ] ; then echo "$txt_text_md $txt_text_info [ install ip command ]"
 else $cmd_command_ip -4 route   ; fi
 ####
 ####
@@ -2104,8 +2104,8 @@ if [ "$cmd_first_option" == "route6" ]; then
 ####
 ####
 #### route table
-echo "$title_md $text_info ### [ Network Route ] [ Route ipv6 ] ###"
-if [ "$cmd_command_ip" == "$NULL" ]; then echo "$text_md $text_info [ install ip command ]"
+echo "$txt_text_title $txt_text_info ### [ Network Route ] [ Route ipv6 ] ###"
+if [ "$cmd_command_ip" == "$NULL" ]; then echo "$txt_text_md $txt_text_info [ install ip command ]"
 else $cmd_command_ip -6 route   ; fi
 ####
 ####
@@ -2153,19 +2153,19 @@ exit ; fi
 if [ "$cmd_first_option" == "ip4" ]; then
 ####
 ####
-echo "$title_md $text_info ### [ Private ip ] [ Address ipv4 ] ###"
+echo "$txt_text_title $txt_text_info ### [ Private ip ] [ Address ipv4 ] ###"
 if [ "$cmd_command_ip" == "$NULL" ]
-then echo "$title_md $text_info [ install ip command ]"
+then echo "$txt_text_title $txt_text_info [ install ip command ]"
 else  $cmd_command_ip -4 address | grep -i "inet "; fi
 ####
 ####
-echo "$title_md $text_info ### [ Public ip ] [ Address ipv4 ] ###"
+echo "$txt_text_title $txt_text_info ### [ Public ip ] [ Address ipv4 ] ###"
 if [ "$cmd_command_curl" == "$NULL" ]; then
-echo "$title_md $text_info [ install curl command ]" ;
+echo "$txt_text_title $txt_text_info [ install curl command ]" ;
 else public_ip4="$($cmd_command_curl -k -s -4 $cfg_server_ipdiscover_ipv4 -w '\n'| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ] || [ "$public_ip4" == "" ] ;
 then echo "fail: public ip hidden for dns server" ;
-else echo "$text_md   $public_ip4"; fi ; fi
+else echo "$txt_text_md   $public_ip4"; fi ; fi
 ####
 ####
 exit; fi
@@ -2180,19 +2180,19 @@ exit; fi
 if [ "$cmd_first_option" == "ip6" ]; then
 ####
 ####
-echo "$title_md $text_info ### [ Private ip ] [ Address ipv6 ] ###"
+echo "$txt_text_title $txt_text_info ### [ Private ip ] [ Address ipv6 ] ###"
 if [ "$cmd_command_ip" == "$NULL" ]
-then echo "$title_md $text_info [ install ip command ]"
+then echo "$txt_text_title $txt_text_info [ install ip command ]"
 else  $cmd_command_ip -6 address | grep -i "inet6 " ; fi
 ####
 ####
-echo "$title_md $text_info ### [ Public ip ] [ Address ipv6 ] ###"
+echo "$txt_text_title $txt_text_info ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$cmd_command_curl" == "$NULL" ]; then
-echo "$title_md $text_info [ install curl command ]" ;
+echo "$txt_text_title $txt_text_info [ install curl command ]" ;
 else public_ip6="$($cmd_command_curl -k -s -6 $cfg_server_ipdiscover_ipv4 -w '\n'| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ] || [ "$public_ip4" == "" ] ;
 then echo "fail: public ip hidden for dns server" ;
-else echo "$text_md   $public_ip6"; fi; fi
+else echo "$txt_text_md   $public_ip6"; fi; fi
 ####
 ####
 exit; fi
@@ -2207,11 +2207,11 @@ exit; fi
 if   [ "$cmd_first_option" == "sockets" ]; then
 ####
 ####
-echo "$title_md $text_info [ Show whith ss: LISTEN sockets ] "
+echo "$txt_text_title $txt_text_info [ Show whith ss: LISTEN sockets ] "
 if [ "$cmd_command_ss" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Install ss command ]"; exit; fi
+echo "$txt_text_title $txt_text_fail [ Install ss command ]"; exit; fi
 if [ "$cmd_command_awk" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Install awk command ]"; exit; fi
+echo "$txt_text_title $txt_text_fail [ Install awk command ]"; exit; fi
 $cmd_command_ss -l -460  | $cmd_command_grep "\:\*" | \
 $cmd_command_awk '{print "     " $1 " " $2 " " $5}'
 ####
@@ -2228,7 +2228,7 @@ exit; fi
 if [ "$cmd_first_option" == "net4-info" ]; then
 ####
 ####
-echo "$title_md $text_info  [ show info about net address ip4 ]"
+echo "$txt_text_title $txt_text_info  [ show info about net address ip4 ]"
 $cmd_internal route4
 $cmd_internal ip4
 $cmd_internal resolve
@@ -2247,7 +2247,7 @@ exit; fi
 if [ "$cmd_first_option" == "net6-info" ]; then
 ####
 ####
-echo "$title_md $text_info  [ show info about net address ip6 ]"
+echo "$txt_text_title $txt_text_info  [ show info about net address ip6 ]"
 $cmd_internal route6
 $cmd_internal ip6
 $cmd_internal resolve
@@ -2269,10 +2269,10 @@ if [ "$cmd_first_option" == "expert-conf-clientproxy" ]; then
 if [ "$cmd_second_option" == "$NULL" ] ; then second_option="without-proxy" ; fi
 ####
 ####
-echo "$title_md File generated by fwiptables \
+echo "$txt_text_title File generated by fwiptables \
 expert-conf-clientproxy user:pass@ip:port" \
 &> $cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option
-echo "$title_md This filename is $cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option" \
+echo "$txt_text_title This filename is $cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option" \
 &>> $cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option
 echo "declare -x all_proxy=$2" \
 &>> $cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option
@@ -2309,22 +2309,22 @@ exit ; fi
 if [ "$cmd_first_option" == "expert-show-clientproxy" ]; then echo
 ####
 ####
-echo "$title_md $text_info ### [ Proxy tunnel ] [ Address proxy ] ###"
-echo "$title_md [ Necesary:  ] WHITHOUT script shell and WHITHOUT exit command ]"
-echo "$title_md [ Editable:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
-echo "$title_md [ configure: ] $cmd_internal expert-conf-clientproxy user:pass@ip:port"
+echo "$txt_text_title $txt_text_info ### [ Proxy tunnel ] [ Address proxy ] ###"
+echo "$txt_text_title [ Necesary:  ] WHITHOUT script shell and WHITHOUT exit command ]"
+echo "$txt_text_title [ Editable:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
+echo "$txt_text_title [ configure: ] $cmd_internal expert-conf-clientproxy user:pass@ip:port"
 ####
 ####
 listado_proxy="$(export | grep -i \_PROXY | wc -l)"
 if [ "$listado_proxy" -eq "0" ]; then
-echo "$title_md [ Actually: ] Without proxy in export variables"
+echo "$txt_text_title [ Actually: ] Without proxy in export variables"
 else export | grep -i "_PROXY" ; fi
 echo
 ####
 ####
 if [ ! -f "$cmd_default_directory_proxy/$cmd_second_option" ] ; then
-echo "$title_md Show file with: expert-show-clientproxy [second_option]" ;
-echo "$title_md Choose above one to second-option"; 
+echo "$txt_text_title Show file with: expert-show-clientproxy [second_option]" ;
+echo "$txt_text_title Choose above one to second-option"; 
 ls $cmd_default_directory_proxy/ ; exit ; fi
 ####
 ####
@@ -2344,18 +2344,18 @@ exit ; fi
 if [ "$cmd_first_option" == "expert-active-clientproxy" ]; then echo
 ####
 ####
-echo "$title_md there is before "
+echo "$txt_text_title there is before "
 declare -x | grep -i \_PROXY
 ####
 ####
 if [ -f "$cmd_default_directory_proxy/$cmd_second_option" ]     ; 
 then source $cmd_default_directory_proxy/$cmd_second_option     ;
-else echo "$title_md Choose above one to second-option" ;
+else echo "$txt_text_title Choose above one to second-option" ;
 ls $cmd_default_directory_proxy/                            ;
 fi
 ####
 ####
-echo "$title_md there is after "
+echo "$txt_text_title there is after "
 declare -x | grep -i \_PROXY
 ####
 ####
@@ -2371,7 +2371,7 @@ exit ; fi
 if [ "$cmd_first_option" == "expert-deactive-clientproxy" ]; then echo
 ####
 ####
-echo "$title_md there is before "
+echo "$txt_text_title there is before "
 declare -x | grep -i \_PROXY
 ####
 ####
@@ -2385,7 +2385,7 @@ export -n HTTP_PROXY
 export -n HTTPS_PROXY
 ####
 ####
-echo "$title_md there is after "
+echo "$txt_text_title there is after "
 declare -x | grep -i \_PROXY
 ####
 ####
@@ -2401,18 +2401,18 @@ exit ; fi
 if [ "$cmd_first_option" == "expert-show-resolve" ]; then echo
 ####
 ####
-echo "$title_md $text_info ### [ Domain resolve ] [ nameserver and search ] ###"
+echo "$txt_text_title $txt_text_info ### [ Domain resolve ] [ nameserver and search ] ###"
 if [ -f /etc/resolv.conf ]
-then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"
+then echo "$txt_text_title [ yes file ]      [ /etc/resolv.conf ]"
 $cmd_command_cat  /etc/resolv.conf | $cmd_command_grep -E "nameserver|search"      ; fi
 if [ -f /etc/resolv.conf.head ]
-then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
+then echo "$txt_text_title [ yes file ]      [ /etc/resolv.conf.head ]"; fi
 if [ -f /etc/resolv.conf.body ]
-then echo "$title_md [ yes file ]      [ /etc/resolv.conf.body ]"; fi
+then echo "$txt_text_title [ yes file ]      [ /etc/resolv.conf.body ]"; fi
 if [ -f /etc/resolv.conf.tail ]
-then echo "$title_md [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
+then echo "$txt_text_title [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
 if [ -d /etc/resolvconf ]
-then echo "$title_md [ yes directory ] [ /etc/resolvconf ]"      ; fi
+then echo "$txt_text_title [ yes directory ] [ /etc/resolvconf ]"      ; fi
 ####
 ####
 exit; fi
@@ -2427,14 +2427,14 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-trace-tcp4" ]; then
 ####
 ####
-echo "$title_md $text_info  [ trace ip or host with tcp ipv4 ]"
+echo "$txt_text_title $txt_text_info  [ trace ip or host with tcp ipv4 ]"
 case $cmd_command_tracepath in "$NULL")
-echo "$title_md $text_fail [ Install tracepath command ]" ; exit ;;  esac
+echo "$txt_text_title $txt_text_fail [ Install tracepath command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$title_md use: $cmd_internal $cmd_first_option host"; exit; fi
+echo "$txt_text_title use: $cmd_internal $cmd_first_option host"; exit; fi
 $cmd_internal save before-trace-tcp4 
 $cmd_internal eraserules4
-echo "$duo_md $text_ok [ tracepath -4 $2 ] "
+echo "$duo_md $txt_text_ok [ tracepath -4 $2 ] "
 $cmd_command_tracepath -4 $2
 $cmd_internal load before-trace-tcp4
 ####
@@ -2451,14 +2451,14 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-trace-tcp6" ]; then
 ####
 ####
-echo "$title_md $text_info  [ trace ip or host with tcp ipv6 ]"
+echo "$txt_text_title $txt_text_info  [ trace ip or host with tcp ipv6 ]"
 case $cmd_command_tracepath in "$NULL")
-echo "$title_md $text_fail [ Install tracepath command ]" ; exit ;;  esac
+echo "$txt_text_title $txt_text_fail [ Install tracepath command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$title_md use: $cmd_internal $cmd_first_option host"; exit; fi
+echo "$txt_text_title use: $cmd_internal $cmd_first_option host"; exit; fi
 $cmd_internal save before-trace-ip6 
 $cmd_internal eraserules6
-echo "$duo_md $text_ok [ tracepath -6 $2 ] "
+echo "$duo_md $txt_text_ok [ tracepath -6 $2 ] "
 $cmd_command_tracepath -6 $2
 $cmd_internal load before-trace-ip6
 ####
@@ -2475,14 +2475,14 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-trace-icmp4" ]; then
 ####
 ####
-echo "$title_md $text_info  [ trace ip or host with icmp ipv4 ]"
+echo "$txt_text_title $txt_text_info  [ trace ip or host with icmp ipv4 ]"
 case $cmd_command_traceroute in "$NULL")
-echo "$title_md $text_fail [ Install traceroute command ]" ; exit ;;  esac
+echo "$txt_text_title $txt_text_fail [ Install traceroute command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$title_md use: $cmd_internal $cmd_first_option host"; exit ; fi
+echo "$txt_text_title use: $cmd_internal $cmd_first_option host"; exit ; fi
 $cmd_internal save before-trace-icmp4 
 $cmd_internal eraserules4
-echo "$duo_md $text_ok [ traceroute -4 $2 ] "
+echo "$duo_md $txt_text_ok [ traceroute -4 $2 ] "
 $cmd_command_traceroute -4 $2
 $cmd_internal load before-trace-icmp4
 ####
@@ -2499,14 +2499,14 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-trace-icmp6" ]; then
 ####
 ####
-echo "$title_md $text_info  [ trace ip or host with icmp ipv6 ]"
+echo "$txt_text_title $txt_text_info  [ trace ip or host with icmp ipv6 ]"
 case $cmd_command_traceroute in "$NULL")
-echo "$title_md $text_fail [ Install traceroute command ]" ; exit ;;  esac
+echo "$txt_text_title $txt_text_fail [ Install traceroute command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$title_md use: $cmd_internal $cmd_first_option host"; exit ; fi
+echo "$txt_text_title use: $cmd_internal $cmd_first_option host"; exit ; fi
 $cmd_internal save before-trace-icmp6 
 $cmd_internal eraserules6
-echo "$duo_md $text_ok [ traceroute -6 $2 ] "
+echo "$duo_md $txt_text_ok [ traceroute -6 $2 ] "
 $cmd_command_traceroute -6 $2
 $cmd_internal load before-trace-icmp6
 ####
@@ -2523,13 +2523,13 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-myradio-install" ]; then
 ####
 ####
-echo "$title_md $text_info  [ myradio download ] [ expert-myradio-install md]"
-echo "$title_md Downloading myradio stable latest in $cmd_default_directory_radio/myradio-bash"
+echo "$txt_text_title $txt_text_info  [ myradio download ] [ expert-myradio-install md]"
+echo "$txt_text_title Downloading myradio stable latest in $cmd_default_directory_radio/myradio-bash"
 $cmd_command_curl $cmd_web_download_myradio -s -L \
 -o $cmd_default_directory_radio/myradio-bash || echo "Without internet" || exit \
 && chmod ugo+x $cmd_default_directory_radio/myradio-bash &> /dev/null
 cp $cmd_default_directory_radio/myradio-bash /usr/bin/myradio-bash && \
-echo "$title_md installed myradio-bash in /usr/bin/myradio-bash"
+echo "$txt_text_title installed myradio-bash in /usr/bin/myradio-bash"
 ####
 ####
 exit; fi
@@ -2544,7 +2544,7 @@ exit; fi
 if [ "$cmd_first_option" == "utils" ]; then
 ####
 ####
-echo "$title_md $text_info [ List for posible utils programs ] [ utils md ] "
+echo "$txt_text_title $txt_text_info [ List for posible utils programs ] [ utils md ] "
 list_utils_possible="$($cmd_internal code possible-commands | \
 $cmd_command_grep -E '^cmd_command_' | $cmd_command_cut -d '=' -f 1 | \
 $cmd_command_sed 's/cmd_command_/ /g' )"
@@ -2563,58 +2563,58 @@ exit ; fi
 if [ "$cmd_first_option" == "depends" ]; then
 ####
 ####
-echo "$title_md $text_md [ Configuration files ] $text_md"
-echo "$text_md $text_md Directory  data:         $cmd_default_directory_necesary $text_md"
-echo "$text_md $text_md Directory cache:         $cmd_default_cache_basenecesary $text_md"
-echo "$text_md $text_md $text_md"
-echo "$title_md $text_md [ Log files ]           $text_md"
-echo "$text_md $text_md Folder log:              $cmd_default_directory_baselogs $text_md"
-echo "$text_md $text_md Folder pdf:              $cmd_default_directory_basepdf $text_md"
-echo "$text_md $text_md Folder logcmd:           $cmd_default_directory_baselogcmd $text_md"
-echo "$text_md $text_md $text_md"
-echo "$title_md $text_md [ Preferences files ]   $text_md"
-echo "$text_md $text_md preferences:             $file_default_preferences"
-echo "$text_md $text_md alias:                   $file_default_alias"             
-echo "$text_md $text_md usernotes:               $file_default_usernotes"
-echo "$text_md $text_md $text_md"
-echo "$title_md $text_md [ optional output ]     $text_md"
-echo "$text_md $text_md dialog cli:              $cmd_command_dialog $text_md"
-echo "$text_md $text_md whiptail cli             $cmd_command_whiptail $text_md"
-echo "$text_md $text_md zenity gui:              $cmd_command_zenity $text_md"
-echo "$text_md $text_md yad gui:                 $cmd_command_yad $text_md"
-echo "$text_md $text_md convert pdf:             $cmd_command_convert $text_md"
-echo "$text_md $text_md $text_md"
-echo "$title_md $text_md [ Automatic iptables ]  $text_md"
-echo "$text_md $text_md iptables legacy:         $cmd_command_ip4tableslegacy $text_md"
-echo "$text_md $text_md iptables nft:            $cmd_command_ip4tablesnft $text_md"
-echo "$text_md $text_md ip6tables legacy:        $cmd_command_ip6tableslegacy $text_md"
-echo "$text_md $text_md ip6tables nft:           $cmd_command_ip6tablesnft $text_md"
-echo "$text_md $text_md arptables:               $cmd_command_arptables $text_md"
-echo "$text_md $text_md ebtables:                $cmd_command_ebtables $text_md"
-echo "$text_md $text_md $text_md"
-echo "$title_md $text_md [ Automatic favorites ] $text_md"
-echo "$text_md $text_md Automatic txt:           $cmd_command_bash $text_md"
-echo "$text_md $text_md Automatic cli:           $cfg_favorite_realpath_textdialog $text_md"
-echo "$text_md $text_md Automatic gui:           $cfg_favorite_realpath_graphicalldialog $text_md"
-echo "$text_md $text_md Automatic pdf:           $cmd_command_convert $text_md"
-echo "$text_md $text_md Automatic editor:        $cfg_favorite_text_editor $text_md"
-echo "$text_md $text_md Automatic browser:       $cfg_favorite_text_browser $text_md"
-echo "$text_md $text_md Automatic date:          $cfg_favorite_date_command $text_md"
-echo "$text_md $text_md $text_md"
-echo "$title_md $text_md [ Necesary utils ]      $text_md"
-echo "$text_md $text_md iptables nft:            $cmd_command_ip4tablesnft $text_md"
-echo "$text_md $text_md iptables legacy:         $cmd_command_ip4tableslegacy $text_md"
-echo "$text_md $text_md iptables nft:            $cmd_command_ip6tablesnft $text_md"
-echo "$text_md $text_md iptables legacy:         $cmd_command_ip6tableslegacy $text_md"
-echo "$text_md $text_md   id command:            $cmd_command_id $text_md"
-echo "$text_md $text_md  awk command:            $cmd_command_awk $text_md"
-echo "$text_md $text_md  cat command:            $cmd_command_cat $text_md"
-echo "$text_md $text_md  cut command:            $cmd_command_cut $text_md"
-echo "$text_md $text_md date command:            $cmd_command_date $text_md"
-echo "$text_md $text_md file command:            $cmd_command_file $text_md"
-echo "$text_md $text_md  sed command:            $cmd_command_sed $text_md"
-echo "$text_md $text_md $text_md"
-echo "$text_md $text_md Found all posible utils: fwiptables utils $text_md"
+echo "$txt_text_title $txt_text_md [ Configuration files ] $txt_text_md"
+echo "$txt_text_md $txt_text_md Directory  data:         $cmd_default_directory_necesary $txt_text_md"
+echo "$txt_text_md $txt_text_md Directory cache:         $cmd_default_cache_basenecesary $txt_text_md"
+echo "$txt_text_md $txt_text_md $txt_text_md"
+echo "$txt_text_title $txt_text_md [ Log files ]           $txt_text_md"
+echo "$txt_text_md $txt_text_md Folder log:              $cmd_default_directory_baselogs $txt_text_md"
+echo "$txt_text_md $txt_text_md Folder pdf:              $cmd_default_directory_basepdf $txt_text_md"
+echo "$txt_text_md $txt_text_md Folder logcmd:           $cmd_default_directory_baselogcmd $txt_text_md"
+echo "$txt_text_md $txt_text_md $txt_text_md"
+echo "$txt_text_title $txt_text_md [ Preferences files ]   $txt_text_md"
+echo "$txt_text_md $txt_text_md preferences:             $file_default_preferences"
+echo "$txt_text_md $txt_text_md alias:                   $file_default_alias"             
+echo "$txt_text_md $txt_text_md usernotes:               $file_default_usernotes"
+echo "$txt_text_md $txt_text_md $txt_text_md"
+echo "$txt_text_title $txt_text_md [ optional output ]     $txt_text_md"
+echo "$txt_text_md $txt_text_md dialog cli:              $cmd_command_dialog $txt_text_md"
+echo "$txt_text_md $txt_text_md whiptail cli             $cmd_command_whiptail $txt_text_md"
+echo "$txt_text_md $txt_text_md zenity gui:              $cmd_command_zenity $txt_text_md"
+echo "$txt_text_md $txt_text_md yad gui:                 $cmd_command_yad $txt_text_md"
+echo "$txt_text_md $txt_text_md convert pdf:             $cmd_command_convert $txt_text_md"
+echo "$txt_text_md $txt_text_md $txt_text_md"
+echo "$txt_text_title $txt_text_md [ Automatic iptables ]  $txt_text_md"
+echo "$txt_text_md $txt_text_md iptables legacy:         $cmd_command_ip4tableslegacy $txt_text_md"
+echo "$txt_text_md $txt_text_md iptables nft:            $cmd_command_ip4tablesnft $txt_text_md"
+echo "$txt_text_md $txt_text_md ip6tables legacy:        $cmd_command_ip6tableslegacy $txt_text_md"
+echo "$txt_text_md $txt_text_md ip6tables nft:           $cmd_command_ip6tablesnft $txt_text_md"
+echo "$txt_text_md $txt_text_md arptables:               $cmd_command_arptables $txt_text_md"
+echo "$txt_text_md $txt_text_md ebtables:                $cmd_command_ebtables $txt_text_md"
+echo "$txt_text_md $txt_text_md $txt_text_md"
+echo "$txt_text_title $txt_text_md [ Automatic favorites ] $txt_text_md"
+echo "$txt_text_md $txt_text_md Automatic txt:           $cmd_command_bash $txt_text_md"
+echo "$txt_text_md $txt_text_md Automatic cli:           $cfg_favorite_realpath_textdialog $txt_text_md"
+echo "$txt_text_md $txt_text_md Automatic gui:           $cfg_favorite_realpath_graphicalldialog $txt_text_md"
+echo "$txt_text_md $txt_text_md Automatic pdf:           $cmd_command_convert $txt_text_md"
+echo "$txt_text_md $txt_text_md Automatic editor:        $cfg_favorite_text_editor $txt_text_md"
+echo "$txt_text_md $txt_text_md Automatic browser:       $cfg_favorite_text_browser $txt_text_md"
+echo "$txt_text_md $txt_text_md Automatic date:          $cfg_favorite_date_command $txt_text_md"
+echo "$txt_text_md $txt_text_md $txt_text_md"
+echo "$txt_text_title $txt_text_md [ Necesary utils ]      $txt_text_md"
+echo "$txt_text_md $txt_text_md iptables nft:            $cmd_command_ip4tablesnft $txt_text_md"
+echo "$txt_text_md $txt_text_md iptables legacy:         $cmd_command_ip4tableslegacy $txt_text_md"
+echo "$txt_text_md $txt_text_md iptables nft:            $cmd_command_ip6tablesnft $txt_text_md"
+echo "$txt_text_md $txt_text_md iptables legacy:         $cmd_command_ip6tableslegacy $txt_text_md"
+echo "$txt_text_md $txt_text_md   id command:            $cmd_command_id $txt_text_md"
+echo "$txt_text_md $txt_text_md  awk command:            $cmd_command_awk $txt_text_md"
+echo "$txt_text_md $txt_text_md  cat command:            $cmd_command_cat $txt_text_md"
+echo "$txt_text_md $txt_text_md  cut command:            $cmd_command_cut $txt_text_md"
+echo "$txt_text_md $txt_text_md date command:            $cmd_command_date $txt_text_md"
+echo "$txt_text_md $txt_text_md file command:            $cmd_command_file $txt_text_md"
+echo "$txt_text_md $txt_text_md  sed command:            $cmd_command_sed $txt_text_md"
+echo "$txt_text_md $txt_text_md $txt_text_md"
+echo "$txt_text_md $txt_text_md Found all posible utils: fwiptables utils $txt_text_md"
 ####
 ####
 exit; fi
@@ -2630,83 +2630,83 @@ exit; fi
 if [ "$cmd_first_option" == "options-examples" ]; then
 ####
 ####
-echo "$title_md $text_md [ One example with input-established ]              $text_md"
-echo "$text_md $text_md  $text_md"  
-echo "$text_md $text_md  Launch: input-stablished                            $text_md"
-echo "$text_md $text_md  $cmd_internal input-stablished                      $text_md"  
-echo "$text_md $text_md  Explain: Client for all ports without servers ports $text_md"
-echo "$text_md $text_md  $text_md"  
-echo "$title_md $text_md [ Several examples with tiny server ]               $text_md"
-echo "$text_md $text_md  $text_md"  
-echo "$text_md $text_md  Launch: wizard tiny                                 $text_md"
-echo "$text_md $text_md  $cmd_internal wizard-tiny                           $text_md"  
-echo "$text_md $text_md  Launch: tinyserver-tcp ports                        $text_md"
-echo "$text_md $text_md  $cmd_internal tinyserver-tcp 21:25,80               $text_md"  
-echo "$text_md $text_md  Launch: tinyserver-udp ports                        $text_md"
-echo "$text_md $text_md  $cmd_internal tinyserver-udp 67:68,443              $text_md"  
-echo "$text_md $text_md  Explain: Client for all ports                       $text_md"
-echo "$text_md $text_md  $text_md" 
-echo "$title_md $text_md [ Several examples with mini server ]               $text_md"
-echo "$text_md $text_md  $text_md"
-echo "$text_md $text_md  Launch: wizard mini                                 $text_md"
-echo "$text_md $text_md  $cmd_internal wizard-mini                           $text_md"  
-echo "$text_md $text_md  Explain: Wizard firewall for clients and servers    $text_md"
-echo "$text_md $text_md  $text_md"
-echo "$text_md $text_md  Launch: miniserver-tcp ports                        $text_md"
-echo "$text_md $text_md  $cmd_internal miniserver-tcp 21:25,80               $text_md"  
-echo "$text_md $text_md  Launch: miniserver-udp ports                        $text_md"
-echo "$text_md $text_md  $cmd_internal miniserver-udp 67:68,443              $text_md"  
-echo "$text_md $text_md  Explain: Read miniserver clients ports in preferences file $text_md"
-echo "$text_md $text_md  $text_md"
-echo "$text_md $text_md  $text_md"
-echo "$title_md $text_md [ Without optional output ]       $text_md"  
-echo "$text_md $text_md  $text_md"  
-echo "$text_md $text_md  Explain: depends                  $text_md"
-echo "$text_md $text_md  $cmd_internal depends             $text_md"  
-echo "$text_md $text_md  Explain: List firewall saved      $text_md"
-echo "$text_md $text_md  $cmd_internal names               $text_md"  
-echo "$text_md $text_md  Explain: List configs saved       $text_md"
-echo "$text_md $text_md  $cmd_internal names-custom        $text_md"  
-echo "$text_md $text_md  Explain: Get info speed ipv4      $text_md"
-echo "$text_md $text_md  $cmd_internal speed-ip4           $text_md"  
-echo "$text_md $text_md  Explain: Show listen sockets      $text_md"
-echo "$text_md $text_md  $cmd_internal sockets             $text_md"  
-echo "$text_md $text_md  Explain: List last options        $text_md"
-echo "$text_md $text_md  $cmd_internal logcmd              $text_md"   
-echo "$text_md $text_md  Explain: modify default variables $text_md"
-echo "$text_md $text_md  $cmd_internal preferences-edit  $text_md"  
-echo "$text_md $text_md"
-echo "$title_md $text_md [ With optional output ]          $text_md"  
-echo "$text_md $text_md  $text_md"
-echo "$text_md $text_md  Example with info"        
-echo "$text_md $text_md  $cmd_internal info list           $text_md"  
-echo "$text_md $text_md  Example with expert"      
-echo "$text_md $text_md  $cmd_internal txt expert          $text_md"  
-echo "$text_md $text_md  Example with code ip4"    
-echo "$text_md $text_md  $cmd_internal cli code ip4        $text_md"  
-echo "$text_md $text_md  Example with list rules"  
-echo "$text_md $text_md  $cmd_internal cli lsn4            $text_md"  
-echo "$text_md $text_md  Example with nodes"       
-echo "$text_md $text_md  $cmd_internal gui nodes           $text_md"  
-echo "$text_md $text_md  Example with web browser "
-echo "$text_md $text_md  $cmd_internal gui web kernel.org  $text_md"  
-echo "$text_md $text_md  $text_md "
-echo "$text_md $text_md  Launch client web firewall in silent   "
-echo "$text_md $text_md  $cmd_internal silent client-web   $text_md"  
-echo "$text_md $text_md  List iptables rules with output txt    "
-echo "$text_md $text_md  $cmd_internal txt ls4             $text_md"  
-echo "$text_md $text_md  List firewall with output cli whiptail "
-echo "$text_md $text_md  $cmd_internal cli-wiptail names   $text_md"  
-echo "$text_md $text_md  List sockets ip with output gui yad    "
-echo "$text_md $text_md  $cmd_internal gui-yad sockets     $text_md"  
-echo "$text_md $text_md  All options in text menu               "
-echo "$text_md $text_md  $cmd_internal cli-menu            $text_md"  
-echo "$text_md $text_md  All options in window menu             "
-echo "$text_md $text_md  $cmd_internal gui-menu-yad        $text_md"  
-echo "$text_md $text_md  All options in window roll             "
-echo "$text_md $text_md  $cmd_internal gui-roll-zenity     $text_md"  
-echo "$text_md $text_md  All options in window shell             "
-echo "$text_md $text_md  $cmd_internal gui-shell-yad       $text_md"
+echo "$txt_text_title $txt_text_md [ One example with input-established ]              $txt_text_md"
+echo "$txt_text_md $txt_text_md  $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Launch: input-stablished                            $txt_text_md"
+echo "$txt_text_md $txt_text_md  $cmd_internal input-stablished                      $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Explain: Client for all ports without servers ports $txt_text_md"
+echo "$txt_text_md $txt_text_md  $txt_text_md"  
+echo "$txt_text_title $txt_text_md [ Several examples with tiny server ]               $txt_text_md"
+echo "$txt_text_md $txt_text_md  $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Launch: wizard tiny                                 $txt_text_md"
+echo "$txt_text_md $txt_text_md  $cmd_internal wizard-tiny                           $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Launch: tinyserver-tcp ports                        $txt_text_md"
+echo "$txt_text_md $txt_text_md  $cmd_internal tinyserver-tcp 21:25,80               $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Launch: tinyserver-udp ports                        $txt_text_md"
+echo "$txt_text_md $txt_text_md  $cmd_internal tinyserver-udp 67:68,443              $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Explain: Client for all ports                       $txt_text_md"
+echo "$txt_text_md $txt_text_md  $txt_text_md" 
+echo "$txt_text_title $txt_text_md [ Several examples with mini server ]               $txt_text_md"
+echo "$txt_text_md $txt_text_md  $txt_text_md"
+echo "$txt_text_md $txt_text_md  Launch: wizard mini                                 $txt_text_md"
+echo "$txt_text_md $txt_text_md  $cmd_internal wizard-mini                           $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Explain: Wizard firewall for clients and servers    $txt_text_md"
+echo "$txt_text_md $txt_text_md  $txt_text_md"
+echo "$txt_text_md $txt_text_md  Launch: miniserver-tcp ports                        $txt_text_md"
+echo "$txt_text_md $txt_text_md  $cmd_internal miniserver-tcp 21:25,80               $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Launch: miniserver-udp ports                        $txt_text_md"
+echo "$txt_text_md $txt_text_md  $cmd_internal miniserver-udp 67:68,443              $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Explain: Read miniserver clients ports in preferences file $txt_text_md"
+echo "$txt_text_md $txt_text_md  $txt_text_md"
+echo "$txt_text_md $txt_text_md  $txt_text_md"
+echo "$txt_text_title $txt_text_md [ Without optional output ]       $txt_text_md"  
+echo "$txt_text_md $txt_text_md  $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Explain: depends                  $txt_text_md"
+echo "$txt_text_md $txt_text_md  $cmd_internal depends             $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Explain: List firewall saved      $txt_text_md"
+echo "$txt_text_md $txt_text_md  $cmd_internal names               $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Explain: List configs saved       $txt_text_md"
+echo "$txt_text_md $txt_text_md  $cmd_internal names-custom        $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Explain: Get info speed ipv4      $txt_text_md"
+echo "$txt_text_md $txt_text_md  $cmd_internal speed-ip4           $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Explain: Show listen sockets      $txt_text_md"
+echo "$txt_text_md $txt_text_md  $cmd_internal sockets             $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Explain: List last options        $txt_text_md"
+echo "$txt_text_md $txt_text_md  $cmd_internal logcmd              $txt_text_md"   
+echo "$txt_text_md $txt_text_md  Explain: modify default variables $txt_text_md"
+echo "$txt_text_md $txt_text_md  $cmd_internal preferences-edit  $txt_text_md"  
+echo "$txt_text_md $txt_text_md"
+echo "$txt_text_title $txt_text_md [ With optional output ]          $txt_text_md"  
+echo "$txt_text_md $txt_text_md  $txt_text_md"
+echo "$txt_text_md $txt_text_md  Example with info"        
+echo "$txt_text_md $txt_text_md  $cmd_internal info list           $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Example with expert"      
+echo "$txt_text_md $txt_text_md  $cmd_internal txt expert          $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Example with code ip4"    
+echo "$txt_text_md $txt_text_md  $cmd_internal cli code ip4        $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Example with list rules"  
+echo "$txt_text_md $txt_text_md  $cmd_internal cli lsn4            $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Example with nodes"       
+echo "$txt_text_md $txt_text_md  $cmd_internal gui nodes           $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Example with web browser "
+echo "$txt_text_md $txt_text_md  $cmd_internal gui web kernel.org  $txt_text_md"  
+echo "$txt_text_md $txt_text_md  $txt_text_md "
+echo "$txt_text_md $txt_text_md  Launch client web firewall in silent   "
+echo "$txt_text_md $txt_text_md  $cmd_internal silent client-web   $txt_text_md"  
+echo "$txt_text_md $txt_text_md  List iptables rules with output txt    "
+echo "$txt_text_md $txt_text_md  $cmd_internal txt ls4             $txt_text_md"  
+echo "$txt_text_md $txt_text_md  List firewall with output cli whiptail "
+echo "$txt_text_md $txt_text_md  $cmd_internal cli-wiptail names   $txt_text_md"  
+echo "$txt_text_md $txt_text_md  List sockets ip with output gui yad    "
+echo "$txt_text_md $txt_text_md  $cmd_internal gui-yad sockets     $txt_text_md"  
+echo "$txt_text_md $txt_text_md  All options in text menu               "
+echo "$txt_text_md $txt_text_md  $cmd_internal cli-menu            $txt_text_md"  
+echo "$txt_text_md $txt_text_md  All options in window menu             "
+echo "$txt_text_md $txt_text_md  $cmd_internal gui-menu-yad        $txt_text_md"  
+echo "$txt_text_md $txt_text_md  All options in window roll             "
+echo "$txt_text_md $txt_text_md  $cmd_internal gui-roll-zenity     $txt_text_md"  
+echo "$txt_text_md $txt_text_md  All options in window shell             "
+echo "$txt_text_md $txt_text_md  $cmd_internal gui-shell-yad       $txt_text_md"
 ####
 ####
 exit; fi
@@ -2722,7 +2722,7 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-show-weather" ]; then
 ####
 ####
-case $cmd_command_curl in "$NULL") echo "$title_md $text_fail [ Install a curl ]"; exit ;; esac
+case $cmd_command_curl in "$NULL") echo "$txt_text_title $txt_text_fail [ Install a curl ]"; exit ;; esac
 $cmd_command_curl -s wttr.in/?3n?T
 ####
 ####
@@ -2739,7 +2739,7 @@ if   [ "$cmd_first_option" == "tree-conf" ];  then
 ####
 ####
 if   [ "$cmd_command_tree" == "$NULL" ] ; then 
-echo "$title_md $text_fail please install tree command" ; exit ; fi
+echo "$txt_text_title $txt_text_fail please install tree command" ; exit ; fi
 ####
 ####
 $cmd_command_tree $cmd_default_directory_necesary
@@ -2758,7 +2758,7 @@ if   [ "$cmd_first_option" == "tree-cache" ]; then
 ####
 ####
 if   [ "$cmd_command_tree" == "$NULL" ] ; then 
-echo "$title_md $text_fail please install tree command" ; exit ; fi
+echo "$txt_text_title $txt_text_fail please install tree command" ; exit ; fi
 ####
 ####
 $cmd_command_tree $cmd_default_cache_basenecesary
@@ -2776,7 +2776,7 @@ exit; fi
 if   [ "$cmd_first_option" == "clean-cache" ]; then
 ####
 ####
-echo "$title_md $text_ok clean cache: $cmd_default_cache_basenecesary"
+echo "$txt_text_title $txt_text_ok clean cache: $cmd_default_cache_basenecesary"
 rm -R $cmd_default_cache_basenecesary/* &> /dev/null
 ####
 ####
@@ -2792,30 +2792,30 @@ exit; fi
 if [ "$cmd_first_option" == "notes" ]; then
 ####
 ####
-echo "$text_md                     Iptables firewall manage commands $text_md" 
-echo "$text_md      Legacy or nft: whith one of them is sufficent $text_md"   
-echo "$text_md    iptables-legacy: support for xtables ipv4 $text_md"    
-echo "$text_md       iptables-nft: support for nftables ipv4 $text_md" 
-echo "$text_md   ip6tables-legacy: support for xtables ipv6 $text_md"    
-echo "$text_md      ip6tables-nft: support for nftables ipv6 $text_md"
-echo "$text_md                     Firewall recomendation with full client $text_md" 
-echo "$text_md    Client prefered: input-established $text_md" 
-echo "$text_md    Server prefered: tinyserver-tcp tcp-ports-server $text_md" 
-echo "$text_md                     Some options and sub-otions $text_md" 
-echo "$text_md    shield maxtries: limit against attack per bruteforce $text_md"   
-echo "$text_md          Blacklist: excepcionals hosts dropped in firewall $text_md"   
-echo "$text_md          whitelist: excepcionals hosts allowed in firewall $text_md" 
-echo "$text_md         tinyserver: client in all allowed, and servers manually $text_md"
-echo "$text_md         miniserver: normal ports in client, and servers manually $text_md"
-echo "$text_md  input-established: the computer is only client $text_md"   
-echo "$text_md     output uid/gid: User and/or group with conection allowed $text_md"   
-echo "$text_md                     Necesary Ports perhaps if use it $text_md"  
-echo "$text_md                ntp: Port necesary to update the time and date $text_md"   
-echo "$text_md             bootpc: Port necesary to dhcp and get ip $text_md"   
-echo "$text_md             domain: This port is necesary to domain resolver $text_md"   
-echo "$text_md              https: This port is necesary for udp named web html5$text_md"   
-echo "$text_md          ipv6-icmp: Necesary protocol in ipv6 $text_md"   
-echo "$text_md         ipv4 ports: ipv6 works too with old ipv4 ports $text_md"
+echo "$txt_text_md                     Iptables firewall manage commands $txt_text_md" 
+echo "$txt_text_md      Legacy or nft: whith one of them is sufficent $txt_text_md"   
+echo "$txt_text_md    iptables-legacy: support for xtables ipv4 $txt_text_md"    
+echo "$txt_text_md       iptables-nft: support for nftables ipv4 $txt_text_md" 
+echo "$txt_text_md   ip6tables-legacy: support for xtables ipv6 $txt_text_md"    
+echo "$txt_text_md      ip6tables-nft: support for nftables ipv6 $txt_text_md"
+echo "$txt_text_md                     Firewall recomendation with full client $txt_text_md" 
+echo "$txt_text_md    Client prefered: input-established $txt_text_md" 
+echo "$txt_text_md    Server prefered: tinyserver-tcp tcp-ports-server $txt_text_md" 
+echo "$txt_text_md                     Some options and sub-otions $txt_text_md" 
+echo "$txt_text_md    shield maxtries: limit against attack per bruteforce $txt_text_md"   
+echo "$txt_text_md          Blacklist: excepcionals hosts dropped in firewall $txt_text_md"   
+echo "$txt_text_md          whitelist: excepcionals hosts allowed in firewall $txt_text_md" 
+echo "$txt_text_md         tinyserver: client in all allowed, and servers manually $txt_text_md"
+echo "$txt_text_md         miniserver: normal ports in client, and servers manually $txt_text_md"
+echo "$txt_text_md  input-established: the computer is only client $txt_text_md"   
+echo "$txt_text_md     output uid/gid: User and/or group with conection allowed $txt_text_md"   
+echo "$txt_text_md                     Necesary Ports perhaps if use it $txt_text_md"  
+echo "$txt_text_md                ntp: Port necesary to update the time and date $txt_text_md"   
+echo "$txt_text_md             bootpc: Port necesary to dhcp and get ip $txt_text_md"   
+echo "$txt_text_md             domain: This port is necesary to domain resolver $txt_text_md"   
+echo "$txt_text_md              https: This port is necesary for udp named web html5$txt_text_md"   
+echo "$txt_text_md          ipv6-icmp: Necesary protocol in ipv6 $txt_text_md"   
+echo "$txt_text_md         ipv4 ports: ipv6 works too with old ipv4 ports $txt_text_md"
 ####
 ####
 exit; fi
@@ -2850,33 +2850,33 @@ exit; fi
 if [ "$cmd_first_option" == "template-tiny-es" ]; then
 ####
 ####
-echo "$title_md"
-echo "$title_md Tiny firewall esta permitido como *cliente* para todos los protocolos y puertos"
-echo "$title_md"
-echo "$title_md NETFILTER $title_md "
-echo "$title_md el iptables firewall netfilter, elige uno o dos "
+echo "$txt_text_title"
+echo "$txt_text_title Tiny firewall esta permitido como *cliente* para todos los protocolos y puertos"
+echo "$txt_text_title"
+echo "$txt_text_title NETFILTER $txt_text_title "
+echo "$txt_text_title el iptables firewall netfilter, elige uno o dos "
 echo "allow_use_legacy=no "
-echo "$title_md lanza xtables, vacio para si, o escribe no "
+echo "$txt_text_title lanza xtables, vacio para si, o escribe no "
 echo "allow_use_nft= "
-echo "$title_md lanza nftables, vacio para si, o escribe no "
-echo "$title_md PROTOCOL IP $title_md "
-echo "$title_md procolo ip, modificar con vacio o no "
+echo "$txt_text_title lanza nftables, vacio para si, o escribe no "
+echo "$txt_text_title PROTOCOL IP $txt_text_title "
+echo "$txt_text_title procolo ip, modificar con vacio o no "
 echo "allow_use_ipv4= "
-echo "$title_md varcio para ejecutar el firewall con ipv4 o no para no "
+echo "$txt_text_title varcio para ejecutar el firewall con ipv4 o no para no "
 echo "allow_use_ipv6= "
-echo "$title_md varcio para ejecutar el firewall con ipv6 o no para no "
-echo "$title_md SERVER PORTS $title_md "
-echo "$title_md Puertos Servidor, añadir con ',' y poner rangos con  :"
+echo "$txt_text_title varcio para ejecutar el firewall con ipv6 o no para no "
+echo "$txt_text_title SERVER PORTS $txt_text_title "
+echo "$txt_text_title Puertos Servidor, añadir con ',' y poner rangos con  :"
 echo "server_port_tcp=ssh "
-echo "$title_md puertos tcp para servidor "
+echo "$txt_text_title puertos tcp para servidor "
 echo "server_port_udp= "
-echo "$title_md puertos udp para servidor "
-echo "$title_md REGLAS GENERALES $title_md "
-echo "$title_md Regla general en tabla "
+echo "$txt_text_title puertos udp para servidor "
+echo "$txt_text_title REGLAS GENERALES $txt_text_title "
+echo "$txt_text_title Regla general en tabla "
 echo "allow_separate_rules= "
-echo "$title_md"
-echo "$title_md Tiny firewall esta permitido como *cliente* para todos los protocolos y puertos"
-echo "$title_md"
+echo "$txt_text_title"
+echo "$txt_text_title Tiny firewall esta permitido como *cliente* para todos los protocolos y puertos"
+echo "$txt_text_title"
 ####
 ####
 exit; fi
@@ -2891,33 +2891,33 @@ exit; fi
 if [ "$cmd_first_option" == "template-tiny-en" ]; then
 ####
 ####
-echo "$title_md"
-echo "$title_md Tiny firewall is allowed like *client* for all protocols and ports"
-echo "$title_md"
-echo "$title_md NETFILTER $title_md "
-echo "$title_md The iptables firewall netfilter, choose one or both  "
+echo "$txt_text_title"
+echo "$txt_text_title Tiny firewall is allowed like *client* for all protocols and ports"
+echo "$txt_text_title"
+echo "$txt_text_title NETFILTER $txt_text_title "
+echo "$txt_text_title The iptables firewall netfilter, choose one or both  "
 echo "allow_use_legacy=no "
-echo "$title_md xtables, void for yes, or no "
+echo "$txt_text_title xtables, void for yes, or no "
 echo "allow_use_nft= "
-echo "$title_md neftables, void for yes, or no "
-echo "$title_md PROTOCOL IP $title_md "
-echo "$title_md procol ip, void for yes, or no "
+echo "$txt_text_title neftables, void for yes, or no "
+echo "$txt_text_title PROTOCOL IP $txt_text_title "
+echo "$txt_text_title procol ip, void for yes, or no "
 echo "allow_use_ipv4= "
-echo "$title_md void for yes, or no "
+echo "$txt_text_title void for yes, or no "
 echo "allow_use_ipv6= "
-echo "$title_md void for yes, or no "
-echo "$title_md SERVER PORTS $title_md "
-echo "$title_md server ports, add with , or ranges with :"
+echo "$txt_text_title void for yes, or no "
+echo "$txt_text_title SERVER PORTS $txt_text_title "
+echo "$txt_text_title server ports, add with , or ranges with :"
 echo "server_port_tcp=ssh "
-echo "$title_md tcp port to server"
+echo "$txt_text_title tcp port to server"
 echo "server_port_udp= "
-echo "$title_md udp port to server"
-echo "$title_md GENERAL RULES $title_md "
-echo "$title_md General rules in table "
+echo "$txt_text_title udp port to server"
+echo "$txt_text_title GENERAL RULES $txt_text_title "
+echo "$txt_text_title General rules in table "
 echo "allow_separate_rules= "
-echo "$title_md"
-echo "$title_md Tiny firewall is allowed like *client* for all protocols and ports"
-echo "$title_md"
+echo "$txt_text_title"
+echo "$txt_text_title Tiny firewall is allowed like *client* for all protocols and ports"
+echo "$txt_text_title"
 ####
 ####
 exit; fi
@@ -2932,59 +2932,59 @@ exit; fi
 if [ "$cmd_first_option" == "template-mini-es" ]; then
 ####
 ####
-echo "$title_md $cmd_shortdescription from $cmd_internal version $cmd_version $title_md "
-echo "$title_md BEGIN NECESARY $title_md "
-echo "$title_md INICIO .......... Opciones Necesarias .......... .......... $title_md "
-echo "$title_md NETFILTER $title_md "
-echo "$title_md el iptables firewall netfilter, elige uno o dos "
+echo "$txt_text_title $cmd_shortdescription from $cmd_internal version $cmd_version $txt_text_title "
+echo "$txt_text_title BEGIN NECESARY $txt_text_title "
+echo "$txt_text_title INICIO .......... Opciones Necesarias .......... .......... $txt_text_title "
+echo "$txt_text_title NETFILTER $txt_text_title "
+echo "$txt_text_title el iptables firewall netfilter, elige uno o dos "
 echo "allow_use_legacy=no "
-echo "$title_md lanza xtables, vacio para si, o escribe no "
+echo "$txt_text_title lanza xtables, vacio para si, o escribe no "
 echo "allow_use_nft= "
-echo "$title_md lanza nftables, vacio para si, o escribe no "
-echo "$title_md PROTOCOL IP $title_md "
-echo "$title_md procolo ip, modificar con vacio o no "
+echo "$txt_text_title lanza nftables, vacio para si, o escribe no "
+echo "$txt_text_title PROTOCOL IP $txt_text_title "
+echo "$txt_text_title procolo ip, modificar con vacio o no "
 echo "allow_use_ipv4= "
-echo "$title_md varcio para ejecutar el firewall con ipv4 o no para no "
+echo "$txt_text_title varcio para ejecutar el firewall con ipv4 o no para no "
 echo "allow_use_ipv6= "
-echo "$title_md varcio para ejecutar el firewall con ipv6 o no para no "
-echo "$title_md CLIENT PORTS $title_md "
-echo "$title_md puertos Cliente, añadir con ',' y poner rangos con : "
+echo "$txt_text_title varcio para ejecutar el firewall con ipv6 o no para no "
+echo "$txt_text_title CLIENT PORTS $txt_text_title "
+echo "$txt_text_title puertos Cliente, añadir con ',' y poner rangos con : "
 echo "client_port_tcp=http,https,http-alt,ssh "
-echo "$title_md puertos tcp para ser cliente "
+echo "$txt_text_title puertos tcp para ser cliente "
 echo "client_port_udp=domain,domain-s,bootpc,bootps,ntp,https "
-echo "$title_md puertos udp para ser cliente "
-echo "$title_md SERVER PORTS $title_md "
-echo "$title_md Puertos Servidor, añadir con ',' y poner rangos con  :"
+echo "$txt_text_title puertos udp para ser cliente "
+echo "$txt_text_title SERVER PORTS $txt_text_title "
+echo "$txt_text_title Puertos Servidor, añadir con ',' y poner rangos con  :"
 echo "server_port_tcp=ssh "
-echo "$title_md puertos tcp para servidor "
+echo "$txt_text_title puertos tcp para servidor "
 echo "server_port_udp= "
-echo "$title_md puertos udp para servidor "
-echo "$title_md LOG TO SERVER PORTS $title_md "
-echo "$title_md usar ULOG or LOG "
+echo "$txt_text_title puertos udp para servidor "
+echo "$txt_text_title LOG TO SERVER PORTS $txt_text_title "
+echo "$txt_text_title usar ULOG or LOG "
 echo "config_system_log=LOG"
-echo "$title_md logear para puertos de Servidor, añadir con ',' y poner rangos con : "
+echo "$txt_text_title logear para puertos de Servidor, añadir con ',' y poner rangos con : "
 echo "server_log_port_tcp= "
-echo "$title_md puertos tcp para logear servidor "
+echo "$txt_text_title puertos tcp para logear servidor "
 echo "server_log_port_udp= "
-echo "$title_md puertos udp para logear servidor "
-echo "$title_md ALLOW MAXTRIES SHIELD $title_md )"
-echo "$title_md Pone un escudo para los peuertos de nueva conexion, con maximo ip cada hora "
+echo "$txt_text_title puertos udp para logear servidor "
+echo "$txt_text_title ALLOW MAXTRIES SHIELD $txt_text_title )"
+echo "$txt_text_title Pone un escudo para los peuertos de nueva conexion, con maximo ip cada hora "
 echo "allow_shield_maxtries=no "
-echo "$title_md vacio para permitir un escudo con los intentos maximos de logins por ip cada hora o no "
+echo "$txt_text_title vacio para permitir un escudo con los intentos maximos de logins por ip cada hora o no "
 echo "config_shield_maxtries=12 "
-echo "$title_md escudo con los maximos intentos de logeo a nuestro servidor por ip a cada hora "
+echo "$txt_text_title escudo con los maximos intentos de logeo a nuestro servidor por ip a cada hora "
 echo "config_shield_port=22 "
-echo "$title_md escudo cambiando puerto de intentos ssh o varios puertos separados por comas"
-echo "$title_md GENERAL RULES $title_md "
-echo "$title_md Regla general en tabla "
+echo "$txt_text_title escudo cambiando puerto de intentos ssh o varios puertos separados por comas"
+echo "$txt_text_title GENERAL RULES $txt_text_title "
+echo "$txt_text_title Regla general en tabla "
 echo "allow_separate_rules= "
-echo "$title_md Vacio para separar reglas por cada puerto o no "
+echo "$txt_text_title Vacio para separar reglas por cada puerto o no "
 echo "allow_close_log=no"
-echo "$title_md Vacio para guardar logs antes de cerrar o no"
+echo "$txt_text_title Vacio para guardar logs antes de cerrar o no"
 echo "config_close_deny=DROP "
-echo "$title_md Elige cerrar denegacion con o DROP or REJECT "
-echo "$title_md END NECESARY $title_md "
-echo "$title_md FINAL .......... Opciones Necesarias .......... .......... $title_md "
+echo "$txt_text_title Elige cerrar denegacion con o DROP or REJECT "
+echo "$txt_text_title END NECESARY $txt_text_title "
+echo "$txt_text_title FINAL .......... Opciones Necesarias .......... .......... $txt_text_title "
 ####
 ####
 exit ; fi
@@ -3003,179 +3003,179 @@ if [ "$cmd_first_option" == "template-full-es" ]; then
 #### spanish: basicas opciones in configuracion de archivo cfg
 ####
 ####
-echo "$title_md $cmd_shortdescription from $cmd_internal version $cmd_version $title_md "
-echo "$title_md BEGIN NECESARY $title_md "
-echo "$title_md INICIO .......... Opciones Necesarias .......... .......... $title_md "
-echo "$title_md NETFILTER $title_md "
-echo "$title_md el iptables firewall netfilter, elige uno o dos "
+echo "$txt_text_title $cmd_shortdescription from $cmd_internal version $cmd_version $txt_text_title "
+echo "$txt_text_title BEGIN NECESARY $txt_text_title "
+echo "$txt_text_title INICIO .......... Opciones Necesarias .......... .......... $txt_text_title "
+echo "$txt_text_title NETFILTER $txt_text_title "
+echo "$txt_text_title el iptables firewall netfilter, elige uno o dos "
 echo "allow_use_legacy=no "
-echo "$title_md lanza xtables, vacio para si, o escribe no "
+echo "$txt_text_title lanza xtables, vacio para si, o escribe no "
 echo "allow_use_nft= "
-echo "$title_md lanza nftables, vacio para si, o escribe no "
-echo "$title_md PROTOCOL IP $title_md "
-echo "$title_md procolo ip, modificar con vacio o no "
+echo "$txt_text_title lanza nftables, vacio para si, o escribe no "
+echo "$txt_text_title PROTOCOL IP $txt_text_title "
+echo "$txt_text_title procolo ip, modificar con vacio o no "
 echo "allow_use_ipv4= "
-echo "$title_md varcio para ejecutar el firewall con ipv4 o no para no "
+echo "$txt_text_title varcio para ejecutar el firewall con ipv4 o no para no "
 echo "allow_use_ipv6= "
-echo "$title_md varcio para ejecutar el firewall con ipv6 o no para no "
-echo "$title_md CLIENT PORTS $title_md "
-echo "$title_md puertos Cliente, añadir con ',' y poner rangos con : "
+echo "$txt_text_title varcio para ejecutar el firewall con ipv6 o no para no "
+echo "$txt_text_title CLIENT PORTS $txt_text_title "
+echo "$txt_text_title puertos Cliente, añadir con ',' y poner rangos con : "
 echo "client_port_tcp=http,https,http-alt,ssh "
-echo "$title_md puertos tcp para ser cliente "
+echo "$txt_text_title puertos tcp para ser cliente "
 echo "client_port_udp=domain,domain-s,bootpc,bootps,ntp,https "
-echo "$title_md puertos udp para ser cliente "
-echo "$title_md SERVER PORTS $title_md "
-echo "$title_md Puertos Servidor, añadir con ',' y poner rangos con  :"
+echo "$txt_text_title puertos udp para ser cliente "
+echo "$txt_text_title SERVER PORTS $txt_text_title "
+echo "$txt_text_title Puertos Servidor, añadir con ',' y poner rangos con  :"
 echo "server_port_tcp=ssh "
-echo "$title_md puertos tcp para servidor "
+echo "$txt_text_title puertos tcp para servidor "
 echo "server_port_udp= "
-echo "$title_md puertos udp para servidor "
-echo "$title_md LOG TO SERVER PORTS $title_md "
-echo "$title_md usar ULOG or LOG "
+echo "$txt_text_title puertos udp para servidor "
+echo "$txt_text_title LOG TO SERVER PORTS $txt_text_title "
+echo "$txt_text_title usar ULOG or LOG "
 echo "config_system_log=LOG"
-echo "$title_md logear para puertos de Servidor, añadir con ',' y poner rangos con : "
+echo "$txt_text_title logear para puertos de Servidor, añadir con ',' y poner rangos con : "
 echo "server_log_port_tcp= "
-echo "$title_md puertos tcp para logear servidor "
+echo "$txt_text_title puertos tcp para logear servidor "
 echo "server_log_port_udp= "
-echo "$title_md puertos udp para logear servidor "
-echo "$title_md ALLOW MAXTRIES SHIELD $title_md )"
-echo "$title_md Pone un escudo para los peuertos de nueva conexion, con maximo ip cada hora "
+echo "$txt_text_title puertos udp para logear servidor "
+echo "$txt_text_title ALLOW MAXTRIES SHIELD $txt_text_title )"
+echo "$txt_text_title Pone un escudo para los peuertos de nueva conexion, con maximo ip cada hora "
 echo "allow_shield_maxtries=no "
-echo "$title_md vacio para permitir un escudo con los intentos maximos de logins por ip cada hora o no "
+echo "$txt_text_title vacio para permitir un escudo con los intentos maximos de logins por ip cada hora o no "
 echo "config_shield_maxtries=12 "
-echo "$title_md escudo con los maximos intentos de logeo a nuestro servidor por ip a cada hora "
+echo "$txt_text_title escudo con los maximos intentos de logeo a nuestro servidor por ip a cada hora "
 echo "config_shield_port=22 "
-echo "$title_md escudo cambiando puerto de intentos ssh o varios puertos separados por comas"
-echo "$title_md GENERAL RULES $title_md "
-echo "$title_md Regla general en tabla "
+echo "$txt_text_title escudo cambiando puerto de intentos ssh o varios puertos separados por comas"
+echo "$txt_text_title GENERAL RULES $txt_text_title "
+echo "$txt_text_title Regla general en tabla "
 echo "allow_separate_rules= "
-echo "$title_md Vacio para separar reglas por cada puerto o no "
+echo "$txt_text_title Vacio para separar reglas por cada puerto o no "
 echo "allow_close_log=no"
-echo "$title_md Vacio para guardar logs antes de cerrar o no"
+echo "$txt_text_title Vacio para guardar logs antes de cerrar o no"
 echo "config_close_deny=DROP "
-echo "$title_md Elige cerrar denegacion con o DROP or REJECT "
-echo "$title_md END NECESARY $title_md "
-echo "$title_md FINAL .......... Opciones Necesarias .......... .......... $title_md "
+echo "$txt_text_title Elige cerrar denegacion con o DROP or REJECT "
+echo "$txt_text_title END NECESARY $txt_text_title "
+echo "$txt_text_title FINAL .......... Opciones Necesarias .......... .......... $txt_text_title "
 ####
 ####
 #### english: advance options in configurations file cfg
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-echo "$title_md BEGIN OPTIONAL $title_md "
-echo "$title_md INICIO .......... Opciones opcionales .......... .......... $title_md "
-echo "$title_md choose void or no $title_md "
-echo "$title_md Permitir Otras Opciones, modificar con vacio o no "
+echo "$txt_text_title BEGIN OPTIONAL $txt_text_title "
+echo "$txt_text_title INICIO .......... Opciones opcionales .......... .......... $txt_text_title "
+echo "$txt_text_title choose void or no $txt_text_title "
+echo "$txt_text_title Permitir Otras Opciones, modificar con vacio o no "
 echo "allow_string_dropped=no "
-echo "$title_md vacio para denegar cadena de cabecera, o no para no "
+echo "$txt_text_title vacio para denegar cadena de cabecera, o no para no "
 echo "allow_string_allowed=no "
-echo "$title_md vacio para permitir cadena, o no para no "
+echo "$txt_text_title vacio para permitir cadena, o no para no "
 echo "allow_mac_whitelist=no "
-echo "$title_md vacio para permitir DIRECCION-MAC excepcionales o no "
+echo "$txt_text_title vacio para permitir DIRECCION-MAC excepcionales o no "
 echo "allow_mac_blacklist=no "
-echo "$title_md vacio para denegar DIRECCION-MAC excepcionales o no "
+echo "$txt_text_title vacio para denegar DIRECCION-MAC excepcionales o no "
 echo "allow_net_whitelist=no "
-echo "$title_md vacio para permitir HOST/IP excepcionales o no"
+echo "$txt_text_title vacio para permitir HOST/IP excepcionales o no"
 echo "allow_net_blacklist=no "
-echo "$title_md vacio para denegar HOST/IP excepcionales o no "
+echo "$txt_text_title vacio para denegar HOST/IP excepcionales o no "
 echo "allow_input_bandwidth=no "
-echo "$title_md vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no "
+echo "$txt_text_title vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no "
 echo "allow_output_bandwidth=no "
-echo "$title_md vacio limitar ancho de banda de salida en kbits/sec por cada destino o no "
+echo "$txt_text_title vacio limitar ancho de banda de salida en kbits/sec por cada destino o no "
 echo "allow_input_maxconnect=no "
-echo "$title_md vacio para limitar numero de conexiones simultaneas de entrada o no "
+echo "$txt_text_title vacio para limitar numero de conexiones simultaneas de entrada o no "
 echo "allow_output_maxconnect=no "
-echo "$title_md vacio para limitar numero de conexiones simultaneas de salida o no "
+echo "$txt_text_title vacio para limitar numero de conexiones simultaneas de salida o no "
 echo "allow_input_ping=no "
-echo "$title_md vacio para permitir RECIVIR PING o no "
+echo "$txt_text_title vacio para permitir RECIVIR PING o no "
 echo "allow_output_ping=no "
-echo "$title_md vacio para permitir ENVIAR PING o no "
+echo "$txt_text_title vacio para permitir ENVIAR PING o no "
 echo "allow_forward_ip4=no "
-echo "$title_md vacio para reenvios ip4, o no para no "
+echo "$txt_text_title vacio para reenvios ip4, o no para no "
 echo "allow_forward_ip6=no "
-echo "$title_md vacio para permitir reenvio ip6, o no "
+echo "$txt_text_title vacio para permitir reenvio ip6, o no "
 echo "allow_gateway_ip4=no "
-echo "$title_md vacio para permitir gateway ip4  a otras redes, o no "
+echo "$txt_text_title vacio para permitir gateway ip4  a otras redes, o no "
 echo "allow_gateway_ip6=no "
-echo "$title_md vacio para hacer gateway ip6 a otras redes o no "
+echo "$txt_text_title vacio para hacer gateway ip6 a otras redes o no "
 echo "allow_dmz_ip4=no "
-echo "$title_md vacio para permitir dmz ip4  a una host local, o no "
+echo "$txt_text_title vacio para permitir dmz ip4  a una host local, o no "
 echo "allow_dmz_ip6=no "
-echo "$title_md vacio para hacer dmz ip6 a una host local o no "
+echo "$txt_text_title vacio para hacer dmz ip6 a una host local o no "
 echo "allow_input_all=no "
-echo "$title_md vacio, reglas para permitir toda entrada o no "
+echo "$txt_text_title vacio, reglas para permitir toda entrada o no "
 echo "allow_output_all=no "
-echo "$title_md vacio, reglas para permitir toda salida o no "
+echo "$txt_text_title vacio, reglas para permitir toda salida o no "
 echo "allow_input_state=no "
-echo "$title_md Estado de entrada selectivo con vacio o no "
+echo "$txt_text_title Estado de entrada selectivo con vacio o no "
 echo "allow_output_state=no "
-echo "$title_md Estado de salida selectivo con vacio o no "
+echo "$txt_text_title Estado de salida selectivo con vacio o no "
 echo "allow_output_uid=no"
-echo "$title_md vacio permite salida de paquetes de un USUARIO excepcional o no "
+echo "$txt_text_title vacio permite salida de paquetes de un USUARIO excepcional o no "
 echo "allow_output_gid=no"
-echo "$title_md vacio permite salida de paquetes de un GRUPO excepcional o no "
+echo "$txt_text_title vacio permite salida de paquetes de un GRUPO excepcional o no "
 echo "allow_others_protocols=no "
-echo "$title_md vacio para permitir otro PROTOCOLO-IP excepcional o no "
+echo "$txt_text_title vacio para permitir otro PROTOCOLO-IP excepcional o no "
 ####
 ####
 #### english: advance options in configurations file cfg
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-echo "$title_md Begin Variables $title_md.......... .......... $title_md.......... "
-echo "$title_md Rellena Variables "
-echo "$title_md Options "
-echo "$title_md Otras Opciones, añadir con , y poner rangos con : "
+echo "$txt_text_title Begin Variables $txt_text_title.......... .......... $txt_text_title.......... "
+echo "$txt_text_title Rellena Variables "
+echo "$txt_text_title Options "
+echo "$txt_text_title Otras Opciones, añadir con , y poner rangos con : "
 echo "config_string_denied=.fb.com,.facebook.com,xxx.html "
-echo "$title_md bloquea conexion con cadena de cabecera, si hay varios, seperados por comas "
+echo "$txt_text_title bloquea conexion con cadena de cabecera, si hay varios, seperados por comas "
 echo "config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net "
-echo "$title_md permite conexion con cadena de cabecera, si hay varios, seperados por comas "
+echo "$txt_text_title permite conexion con cadena de cabecera, si hay varios, seperados por comas "
 echo "config_mac_whitelist=d4:12:43:01:36:2e "
-echo "$title_md permitir estos MAC-ADDRESS excepcionales "
+echo "$txt_text_title permitir estos MAC-ADDRESS excepcionales "
 echo "config_mac_blacklist=d4:12:43:01:36:2e "
-echo "$title_md deniega estos MAC-ADDRESS excepcionales "
+echo "$txt_text_title deniega estos MAC-ADDRESS excepcionales "
 echo "config_net_whitelist=wesnoth.org,sf.net,deb.debian.org "
-echo "$title_md permitir estos HOST/IP excepcionales "
+echo "$txt_text_title permitir estos HOST/IP excepcionales "
 echo "config_net_blacklist=facebook.com,www.facebook.com "
-echo "$title_md deniega estos HOST/IP excepcionales "
+echo "$txt_text_title deniega estos HOST/IP excepcionales "
 echo "config_input_bandwidth=12512 "
-echo "$title_md maximo entrada de ancho de banda en kbit/sec para todos "
+echo "$txt_text_title maximo entrada de ancho de banda en kbit/sec para todos "
 echo "config_output_bandwidth=512 "
-echo "$title_md maximo salida de ancho de banda en kbits/sec para cada ip "
+echo "$txt_text_title maximo salida de ancho de banda en kbits/sec para cada ip "
 echo "config_input_maxconnect=72 "
-echo "$title_md maximo numero de conexiones simultaneas de entrada "
+echo "$txt_text_title maximo numero de conexiones simultaneas de entrada "
 echo "config_output_maxconnect=72 "
-echo "$title_md maximo numero de conexiones simultaneas de salida "
+echo "$txt_text_title maximo numero de conexiones simultaneas de salida "
 echo "config_gateway_ip4=0/0"
-echo "$title_md servidor puerta de enlace para tu red. Ejemplo: 192.168.0.0/24"
+echo "$txt_text_title servidor puerta de enlace para tu red. Ejemplo: 192.168.0.0/24"
 echo "config_gateway_ip6=::/0"
-echo "$title_md server gateway for lan example: ::1"
+echo "$txt_text_title server gateway for lan example: ::1"
 echo "config_dmz_ip4=192.168.1.7 "
-echo "$title_md servidor ip lan para otras redes esternas, nat prerouting "
+echo "$txt_text_title servidor ip lan para otras redes esternas, nat prerouting "
 echo "config_dmz_ip6=d4:12:43:01:36:2e "
-echo "$title_md servidor ip lan para otras redes esternas, nat prerouting "
+echo "$txt_text_title servidor ip lan para otras redes esternas, nat prerouting "
 echo "config_input_state=new,related,established "
-echo "$title_md modificar con vacio o new,related,established,untracked,invalid "
+echo "$txt_text_title modificar con vacio o new,related,established,untracked,invalid "
 echo "config_output_state=new,related,established "
-echo "$title_md modificar con vacio o new,related,established,untracked,invalid "
+echo "$txt_text_title modificar con vacio o new,related,established,untracked,invalid "
 echo "config_output_uid=root "
-echo "$title_md permite salida de paquetes de este USUARIO excepcional "
+echo "$txt_text_title permite salida de paquetes de este USUARIO excepcional "
 echo "config_output_gid=root "
-echo "$title_md permite salida de paquetes de este GRUPO excepcional "
+echo "$txt_text_title permite salida de paquetes de este GRUPO excepcional "
 echo "config_others_protocols=icmp,igmp "
-echo "$title_md permitir otros protocolos desde /etc/protocols "
-echo "$title_md NET CLIENT AND NET SERVER $title_md "
-echo "$title_md Red para conectar como cliente o server "
+echo "$txt_text_title permitir otros protocolos desde /etc/protocols "
+echo "$txt_text_title NET CLIENT AND NET SERVER $txt_text_title "
+echo "$txt_text_title Red para conectar como cliente o server "
 echo "config_ipv4_netclient=0/0 "
-echo "$title_md la red cual cliente ipv4, todos es 0/0 "
+echo "$txt_text_title la red cual cliente ipv4, todos es 0/0 "
 echo "config_ipv4_netserver=0/0 "
-echo "$title_md la red cual servidor ipv4, todos es 0/0 "
+echo "$txt_text_title la red cual servidor ipv4, todos es 0/0 "
 echo "config_ipv6_netclient=::/0 "
-echo "$title_md la red cual cliente ipv6, todos es ::/0 "
+echo "$txt_text_title la red cual cliente ipv6, todos es ::/0 "
 echo "config_ipv6_netserver=::/0 "
-echo "$title_md la red cual servidor ipv6, todos es ::/0 "
-echo "$title_md $title_md "
-echo "$title_md FINAL .......... Opciones opcionales .......... .......... $title_md "
+echo "$txt_text_title la red cual servidor ipv6, todos es ::/0 "
+echo "$txt_text_title $txt_text_title "
+echo "$txt_text_title FINAL .......... Opciones opcionales .......... .......... $txt_text_title "
 ####
 ####
 exit ; fi
@@ -3190,59 +3190,59 @@ exit ; fi
 if [ "$cmd_first_option" == "template-mini-en" ]; then
 ####
 ####
-echo "$title_md $cmd_shortdescription from $cmd_internal version $cmd_version $title_md "
-echo "$title_md BEGIN NECESARY $title_md "
-echo "$title_md  .......... BEGIN Necesary options .......... .......... $title_md "
-echo "$title_md NETFILTER $title_md "
-echo "$title_md the iptables firewall netfilter, choose one or two "
+echo "$txt_text_title $cmd_shortdescription from $cmd_internal version $cmd_version $txt_text_title "
+echo "$txt_text_title BEGIN NECESARY $txt_text_title "
+echo "$txt_text_title  .......... BEGIN Necesary options .......... .......... $txt_text_title "
+echo "$txt_text_title NETFILTER $txt_text_title "
+echo "$txt_text_title the iptables firewall netfilter, choose one or two "
 echo "allow_use_legacy=no "
-echo "$title_md launch xtables, void to yes or type no "
+echo "$txt_text_title launch xtables, void to yes or type no "
 echo "allow_use_nft= "
-echo "$title_md launch nftables, void to yes or type no "
-echo "$title_md PROTOCOL IP $title_md "
-echo "$title_md ip protocol, modify with void or no "
+echo "$txt_text_title launch nftables, void to yes or type no "
+echo "$txt_text_title PROTOCOL IP $txt_text_title "
+echo "$txt_text_title ip protocol, modify with void or no "
 echo "allow_use_ipv4= "
-echo "$title_md void to config firewall with ipv4 or no to dont configure ipv4 "
+echo "$txt_text_title void to config firewall with ipv4 or no to dont configure ipv4 "
 echo "allow_use_ipv6= "
-echo "$title_md void to config firewall with ipv6 or no to dont configure ipv6 "
-echo "$title_md CLIENT PORTS $title_md "
-echo "$title_md Client ports, add with ',' and join ranges with  : "
+echo "$txt_text_title void to config firewall with ipv6 or no to dont configure ipv6 "
+echo "$txt_text_title CLIENT PORTS $txt_text_title "
+echo "$txt_text_title Client ports, add with ',' and join ranges with  : "
 echo "client_port_tcp=http,https,http-alt,ssh "
-echo "$title_md tcp ports for client "
+echo "$txt_text_title tcp ports for client "
 echo "client_port_udp=domain,domain-s,bootpc,bootps,ntp,https "
-echo "$title_md udp ports for client "
-echo "$title_md SERVER PORTS $title_md "
-echo "$title_md Server ports, add with ',' and join ranges with : "
+echo "$txt_text_title udp ports for client "
+echo "$txt_text_title SERVER PORTS $txt_text_title "
+echo "$txt_text_title Server ports, add with ',' and join ranges with : "
 echo "server_port_tcp=ssh "
-echo "$title_md tcp ports for server "
+echo "$txt_text_title tcp ports for server "
 echo "server_port_udp= "
-echo "$title_md udp ports for server "
-echo "$title_md LOG TO SERVER PORTS $title_md "
-echo "$title_md or ULOG or LOG "
+echo "$txt_text_title udp ports for server "
+echo "$txt_text_title LOG TO SERVER PORTS $txt_text_title "
+echo "$txt_text_title or ULOG or LOG "
 echo "config_system_log=LOG"
-echo "$title_md Log to server ports, add with ',' and join ranges with : "
+echo "$txt_text_title Log to server ports, add with ',' and join ranges with : "
 echo "server_log_port_tcp= "
-echo "$title_md the tcp ports to log server "
+echo "$txt_text_title the tcp ports to log server "
 echo "server_log_port_udp= "
-echo "$title_md the udp ports to log server "
-echo "$title_md ALLOW MAXTRIES SHIELD $title_md "
-echo "$title_md Put one shield for ports to new connecting, with max ip to each hour "
+echo "$txt_text_title the udp ports to log server "
+echo "$txt_text_title ALLOW MAXTRIES SHIELD $txt_text_title "
+echo "$txt_text_title Put one shield for ports to new connecting, with max ip to each hour "
 echo "allow_shield_maxtries=no "
-echo "$title_md void to allow one shield with max tries login in ssh for ip to each hour or no "
+echo "$txt_text_title void to allow one shield with max tries login in ssh for ip to each hour or no "
 echo "config_shield_maxtries=12 "
-echo "$title_md modify shield with number max of tries to log in us ssh server for ip at each hour "
+echo "$txt_text_title modify shield with number max of tries to log in us ssh server for ip at each hour "
 echo "config_shield_port=22 "
-echo "$title_md modify shield ssh chaging maxtries port ssh o several ports with comma separate "
-echo "$title_md GENERAL RULES $title_md "
-echo "$title_md General rules in table "
+echo "$txt_text_title modify shield ssh chaging maxtries port ssh o several ports with comma separate "
+echo "$txt_text_title GENERAL RULES $txt_text_title "
+echo "$txt_text_title General rules in table "
 echo "allow_separate_rules= "
-echo "$title_md Void to separate the rules for each port or no "
+echo "$txt_text_title Void to separate the rules for each port or no "
 echo "allow_close_log=no"
-echo "$title_md Void to log save before close rule or no"
+echo "$txt_text_title Void to log save before close rule or no"
 echo "config_close_deny=DROP "
-echo "$title_md choose close deny with or DROP or REJECT "
-echo "$title_md END NECESARY $title_md "
-echo "$title_md .......... END Necesary options .......... .......... $title_md "
+echo "$txt_text_title choose close deny with or DROP or REJECT "
+echo "$txt_text_title END NECESARY $txt_text_title "
+echo "$txt_text_title .......... END Necesary options .......... .......... $txt_text_title "
 ####
 ####
 exit ; fi
@@ -3257,179 +3257,179 @@ exit ; fi
 if [ "$cmd_first_option" == "template-full-en" ]; then
 ####
 ####
-echo "$title_md $cmd_shortdescription from $cmd_internal version $cmd_version $title_md "
-echo "$title_md BEGIN NECESARY $title_md "
-echo "$title_md  .......... BEGIN Necesary options .......... .......... $title_md "
-echo "$title_md NETFILTER $title_md "
-echo "$title_md the iptables firewall netfilter, choose one or two "
+echo "$txt_text_title $cmd_shortdescription from $cmd_internal version $cmd_version $txt_text_title "
+echo "$txt_text_title BEGIN NECESARY $txt_text_title "
+echo "$txt_text_title  .......... BEGIN Necesary options .......... .......... $txt_text_title "
+echo "$txt_text_title NETFILTER $txt_text_title "
+echo "$txt_text_title the iptables firewall netfilter, choose one or two "
 echo "allow_use_legacy=no "
-echo "$title_md launch xtables, void to yes or type no "
+echo "$txt_text_title launch xtables, void to yes or type no "
 echo "allow_use_nft= "
-echo "$title_md launch nftables, void to yes or type no "
-echo "$title_md PROTOCOL IP $title_md "
-echo "$title_md ip protocol, modify with void or no "
+echo "$txt_text_title launch nftables, void to yes or type no "
+echo "$txt_text_title PROTOCOL IP $txt_text_title "
+echo "$txt_text_title ip protocol, modify with void or no "
 echo "allow_use_ipv4= "
-echo "$title_md void to config firewall with ipv4 or no to dont configure ipv4 "
+echo "$txt_text_title void to config firewall with ipv4 or no to dont configure ipv4 "
 echo "allow_use_ipv6= "
-echo "$title_md void to config firewall with ipv6 or no to dont configure ipv6 "
-echo "$title_md CLIENT PORTS $title_md "
-echo "$title_md Client ports, add with ',' and join ranges with  : "
+echo "$txt_text_title void to config firewall with ipv6 or no to dont configure ipv6 "
+echo "$txt_text_title CLIENT PORTS $txt_text_title "
+echo "$txt_text_title Client ports, add with ',' and join ranges with  : "
 echo "client_port_tcp=http,https,http-alt,ssh "
-echo "$title_md tcp ports for client "
+echo "$txt_text_title tcp ports for client "
 echo "client_port_udp=domain,domain-s,bootpc,bootps,ntp,https "
-echo "$title_md udp ports for client "
-echo "$title_md SERVER PORTS $title_md "
-echo "$title_md Server ports, add with ',' and join ranges with : "
+echo "$txt_text_title udp ports for client "
+echo "$txt_text_title SERVER PORTS $txt_text_title "
+echo "$txt_text_title Server ports, add with ',' and join ranges with : "
 echo "server_port_tcp=ssh "
-echo "$title_md tcp ports for server "
+echo "$txt_text_title tcp ports for server "
 echo "server_port_udp= "
-echo "$title_md udp ports for server "
-echo "$title_md LOG TO SERVER PORTS $title_md "
-echo "$title_md or ULOG or LOG "
+echo "$txt_text_title udp ports for server "
+echo "$txt_text_title LOG TO SERVER PORTS $txt_text_title "
+echo "$txt_text_title or ULOG or LOG "
 echo "config_system_log=LOG"
-echo "$title_md Log to server ports, add with ',' and join ranges with : "
+echo "$txt_text_title Log to server ports, add with ',' and join ranges with : "
 echo "server_log_port_tcp= "
-echo "$title_md the tcp ports to log server "
+echo "$txt_text_title the tcp ports to log server "
 echo "server_log_port_udp= "
-echo "$title_md the udp ports to log server "
-echo "$title_md ALLOW MAXTRIES SHIELD $title_md "
-echo "$title_md Put one shield for ports to new connecting, with max ip to each hour "
+echo "$txt_text_title the udp ports to log server "
+echo "$txt_text_title ALLOW MAXTRIES SHIELD $txt_text_title "
+echo "$txt_text_title Put one shield for ports to new connecting, with max ip to each hour "
 echo "allow_shield_maxtries=no "
-echo "$title_md void to allow one shield with max tries login in ssh for ip to each hour or no "
+echo "$txt_text_title void to allow one shield with max tries login in ssh for ip to each hour or no "
 echo "config_shield_maxtries=12 "
-echo "$title_md modify shield with number max of tries to log in us ssh server for ip at each hour "
+echo "$txt_text_title modify shield with number max of tries to log in us ssh server for ip at each hour "
 echo "config_shield_port=22 "
-echo "$title_md modify shield ssh chaging maxtries port ssh o several ports with comma separate "
-echo "$title_md GENERAL RULES $title_md "
-echo "$title_md General rules in table "
+echo "$txt_text_title modify shield ssh chaging maxtries port ssh o several ports with comma separate "
+echo "$txt_text_title GENERAL RULES $txt_text_title "
+echo "$txt_text_title General rules in table "
 echo "allow_separate_rules= "
-echo "$title_md Void to separate the rules for each port or no "
+echo "$txt_text_title Void to separate the rules for each port or no "
 echo "allow_close_log=no"
-echo "$title_md Void to log save before close rule or no"
+echo "$txt_text_title Void to log save before close rule or no"
 echo "config_close_deny=DROP "
-echo "$title_md choose close deny with or DROP or REJECT "
-echo "$title_md END NECESARY $title_md "
-echo "$title_md .......... END Necesary options .......... .......... $title_md "
+echo "$txt_text_title choose close deny with or DROP or REJECT "
+echo "$txt_text_title END NECESARY $txt_text_title "
+echo "$txt_text_title .......... END Necesary options .......... .......... $txt_text_title "
 ####
 ####
 #### english: advance options in configurations file cfg
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-echo "$title_md BEGIN OPTIONAL $title_md "
-echo "$title_md .......... BEGIN Optional options .......... .......... $title_md "
-echo "$title_md choose void or no $title_md "
-echo "$title_md Allow Other Options,  modify with void, or no "
+echo "$txt_text_title BEGIN OPTIONAL $txt_text_title "
+echo "$txt_text_title .......... BEGIN Optional options .......... .......... $txt_text_title "
+echo "$txt_text_title choose void or no $txt_text_title "
+echo "$txt_text_title Allow Other Options,  modify with void, or no "
 echo "allow_string_dropped=no "
-echo "$title_md void to if drop string, or no to no "
+echo "$txt_text_title void to if drop string, or no to no "
 echo "allow_string_allowed=no "
-echo "$title_md void to if allow string, or no to no "
+echo "$txt_text_title void to if allow string, or no to no "
 echo "allow_mac_whitelist=no "
-echo "$title_md void to allow some exceptional MAC-ADDRESS or no "
+echo "$txt_text_title void to allow some exceptional MAC-ADDRESS or no "
 echo "allow_mac_blacklist=no "
-echo "$title_md void to drop some excepcional MAC-ADDRESS or no "
+echo "$txt_text_title void to drop some excepcional MAC-ADDRESS or no "
 echo "allow_net_whitelist=no "
-echo "$title_md void to allow some exceptional HOST/IP or no "
+echo "$txt_text_title void to allow some exceptional HOST/IP or no "
 echo "allow_net_blacklist=no "
-echo "$title_md void to drop some excepcional HOST/IP or no "
+echo "$txt_text_title void to drop some excepcional HOST/IP or no "
 echo "allow_input_bandwidth=no "
-echo "$title_md void to limit bandwidth input in kbits/sec for all sources or no "
+echo "$txt_text_title void to limit bandwidth input in kbits/sec for all sources or no "
 echo "allow_output_bandwidth=no "
-echo "$title_md void to limit bandwidth output in kbits/sec for each destination or no "
+echo "$txt_text_title void to limit bandwidth output in kbits/sec for each destination or no "
 echo "allow_input_maxconnect=no "
-echo "$title_md void to limit max number for input simultaneous connections or no "
+echo "$txt_text_title void to limit max number for input simultaneous connections or no "
 echo "allow_output_maxconnect=no "
-echo "$title_md void to limit max number for output simultaneous connections or no "
+echo "$txt_text_title void to limit max number for output simultaneous connections or no "
 echo "allow_input_ping=no "
-echo "$title_md void to allow RECIVE PING or no "
+echo "$txt_text_title void to allow RECIVE PING or no "
 echo "allow_output_ping=no "
-echo "$title_md void to allow SEND PING or no "
+echo "$txt_text_title void to allow SEND PING or no "
 echo "allow_forward_ip4=no "
-echo "$title_md void to yes to forward ip4, or no to no "
+echo "$txt_text_title void to yes to forward ip4, or no to no "
 echo "allow_forward_ip6=no "
-echo "$title_md void to allow ip forward ip6 or no "
+echo "$txt_text_title void to allow ip forward ip6 or no "
 echo "allow_gateway_ip4=no "
-echo "$title_md void to allow gateway ip4 to others nets or no "
+echo "$txt_text_title void to allow gateway ip4 to others nets or no "
 echo "allow_gateway_ip6=no "
-echo "$title_md void to allow gateway ip6 to other nets or no "
+echo "$txt_text_title void to allow gateway ip6 to other nets or no "
 echo "allow_dmz_ip4=no "
-echo "$title_md void to allow dmz ip4 to one host local or no "
+echo "$txt_text_title void to allow dmz ip4 to one host local or no "
 echo "allow_dmz_ip6=no "
-echo "$title_md void to allow dmz ip6 to one host local or no "
+echo "$txt_text_title void to allow dmz ip6 to one host local or no "
 echo "allow_input_all=no "
-echo "$title_md void when the rules are to allow input to all or no "
+echo "$txt_text_title void when the rules are to allow input to all or no "
 echo "allow_output_all=no "
-echo "$title_md void when the rules are to allow output to all or no "
+echo "$txt_text_title void when the rules are to allow output to all or no "
 echo "allow_input_state=no "
-echo "$title_md Selective Input state with void or no "
+echo "$txt_text_title Selective Input state with void or no "
 echo "allow_output_state=no "
-echo "$title_md Selective Output state with void or no "
+echo "$txt_text_title Selective Output state with void or no "
 echo "allow_output_uid=no "
-echo "$title_md void to allow excepcional USER or no "
+echo "$txt_text_title void to allow excepcional USER or no "
 echo "allow_output_gid=no "
-echo "$title_md void to allow excepcional GROUP or no "
+echo "$txt_text_title void to allow excepcional GROUP or no "
 echo "allow_others_protocols=no "
-echo "$title_md void to allow other POTOCOL-IP excepcional or no"
+echo "$txt_text_title void to allow other POTOCOL-IP excepcional or no"
 ####
 ####
 #### english: advance options in configurations file cfg
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-echo "$title_md Begin Variables $title_md.......... .......... $title_md.......... "
-echo "$title_md Fill Variables "
-echo "$title_md Options "
-echo "$title_md Other Options, add with , and join ranges with : "
+echo "$txt_text_title Begin Variables $txt_text_title.......... .......... $txt_text_title.......... "
+echo "$txt_text_title Fill Variables "
+echo "$txt_text_title Options "
+echo "$txt_text_title Other Options, add with , and join ranges with : "
 echo "config_string_denied=.fb.com,.facebook.com,xxx.html "
-echo "$title_md drop connection with header string, if several, comma separate "
+echo "$txt_text_title drop connection with header string, if several, comma separate "
 echo "config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net "
-echo "$title_md allow connection with header string, if several, comma separate "
+echo "$txt_text_title allow connection with header string, if several, comma separate "
 echo "config_input_bandwidth=12512 "
-echo "$title_md max input bandwidth in kbits/sec for all "
+echo "$txt_text_title max input bandwidth in kbits/sec for all "
 echo "config_output_bandwidth=512 "
-echo "$title_md max output bandwidh in kbits/sec for each ip "
+echo "$txt_text_title max output bandwidh in kbits/sec for each ip "
 echo "config_input_maxconnect=72 "
-echo "$title_md max number for input simultaneous connections "
+echo "$txt_text_title max number for input simultaneous connections "
 echo "config_output_maxconnect=72 "
-echo "$title_md max number for output simultaneous connections "
+echo "$txt_text_title max number for output simultaneous connections "
 echo "config_mac_whitelist=d4:12:43:01:36:2e "
-echo "$title_md allow this excepcitonal MAC-ADRESS "
+echo "$txt_text_title allow this excepcitonal MAC-ADRESS "
 echo "config_mac_blacklist=d4:12:43:01:36:2e "
-echo "$title_md drop this excepcional MAC-ADDRESS "
+echo "$txt_text_title drop this excepcional MAC-ADDRESS "
 echo "config_net_whitelist=wesnoth.org,sf.net,deb.debian.org "
-echo "$title_md allow this excepcitonal HOST/IP "
+echo "$txt_text_title allow this excepcitonal HOST/IP "
 echo "config_net_blacklist=facebook.com,www.facebook.com "
-echo "$title_md drop this excepcional HOST/IP )"
+echo "$txt_text_title drop this excepcional HOST/IP )"
 echo "config_gateway_ip4=0/0"
-echo "$title_md server gateway for lan example: 192.168.0.0/24"
+echo "$txt_text_title server gateway for lan example: 192.168.0.0/24"
 echo "config_gateway_ip6=::/0"
-echo "$title_md server gateway for lan example: ::1"
+echo "$txt_text_title server gateway for lan example: ::1"
 echo "config_dmz_ip4=192.168.1.7 "
-echo "$title_md ip server ip lan to other external nets, nat prerouting "
+echo "$txt_text_title ip server ip lan to other external nets, nat prerouting "
 echo "config_dmz_ip6=d4:12:43:01:36:2e "
-echo "$title_md ip server ip lan to other external nets, nat prerouting "
+echo "$txt_text_title ip server ip lan to other external nets, nat prerouting "
 echo "config_input_state=new,related,established "
-echo "$title_md void for all or new,related,established,untracked,invalid "
+echo "$txt_text_title void for all or new,related,established,untracked,invalid "
 echo "config_output_state=new,related,established "
-echo "$title_md void for all or new,related,established,untracked,invalid "
+echo "$txt_text_title void for all or new,related,established,untracked,invalid "
 echo "config_output_uid=root "
-echo "$title_md allow out packages excepcional from this USER excepcional "
+echo "$txt_text_title allow out packages excepcional from this USER excepcional "
 echo "config_output_gid=root "
-echo "$title_md allow out packages excepcional from this GROUP excepcional "
+echo "$txt_text_title allow out packages excepcional from this GROUP excepcional "
 echo "config_others_protocols=icmp,igmp "
-echo "$title_md allow others protocols from /etc/protocolos "
-echo "$title_md NET CLIENT AND NET SERVER $title_md "
-echo "$title_md Net to connect likes client or server "
+echo "$txt_text_title allow others protocols from /etc/protocolos "
+echo "$txt_text_title NET CLIENT AND NET SERVER $txt_text_title "
+echo "$txt_text_title Net to connect likes client or server "
 echo "config_ipv4_netclient=0/0 "
-echo "$title_md the net to client ipv4, all is 0/0 "
+echo "$txt_text_title the net to client ipv4, all is 0/0 "
 echo "config_ipv4_netserver=0/0 "
-echo "$title_md the net to server ipv4, all is 0/0 "
+echo "$txt_text_title the net to server ipv4, all is 0/0 "
 echo "config_ipv6_netclient=::/0 "
-echo "$title_md the net to client ipv6, all is ::/0 "
+echo "$txt_text_title the net to client ipv6, all is ::/0 "
 echo "config_ipv6_netserver=::/0 "
-echo "$title_md the net to server ipv6, all is ::/0 "
-echo "$title_md $title_md "
-echo "$title_md .......... END Optional options .......... .......... $title_md"
+echo "$txt_text_title the net to server ipv6, all is ::/0 "
+echo "$txt_text_title $txt_text_title "
+echo "$txt_text_title .......... END Optional options .......... .......... $txt_text_title"
 ####
 ####
 exit ; fi
@@ -3452,7 +3452,7 @@ exit ; fi
 if [ "$cmd_first_option" == "autosave" ] && [ "$cfg_allow_autosave" == "$NULL" ]; then 
 ####
 ####
-echo "$title_md [ autosave ] [ firewall saved ] [ autosave-fwiptables ]" ;
+echo "$txt_text_title [ autosave ] [ firewall saved ] [ autosave-fwiptables ]" ;
 $cmd_internal save autosave-fwiptables &> /dev/null
 ####
 ####
@@ -3468,55 +3468,55 @@ exit; fi
 if [ "$cmd_first_option" == "options" ]; then 
 ####
 ####
-echo "$text_md $cmd_internal [optional-output] first_option [second_option] $text_md"
-echo "$title_md    <optional-output> $text_md"
-echo "$text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ] $text_md"
-echo "$text_md [ cli-dialog cli-whiptail cli-menu cli-menu-compact ] $text_md"
-echo "$text_md [ gui-zenity gui-yad gui-menu gui-menu-zenity gui-menu-yad ] $text_md"
-echo "$text_md [ gui-roll-zenity gui-shell gui-shell-zenity gui-shell-yad ] $text_md"
-echo "$title_md    <firewall-listconceptual> $text_md"
-echo "$text_md ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6 $text_md"
-echo "$text_md list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4 $text_md"
-echo "$text_md list-security6 list-ebtables list-arptables list-alltables $text_md"
-echo "$title_md    <firewall-listnumeral> $text_md"
-echo "$text_md lsn4 lsn6 statusn listn-filter4 listn-filter6 listn-nat4 $text_md"
-echo "$text_md listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6 $text_md"
-echo "$text_md listn-security4 listn-security6 listn-alltables $text_md"
-echo "$title_md    <firewall-wallcontrol> $text_md"
-echo "$text_md stop continue reset show save load names actual eraserules $text_md"
-echo "$text_md eraserules4 eraserules6 without-connection input-permisive $text_md"
-echo "$text_md input-established wizard-tiny wizard-mini wizard-full $text_md"
-echo "$text_md tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp $text_md"
-echo "$title_md    <firewall-wallcustom> $text_md"
-echo "$text_md new-full-custom nueva-completa-custom new-mini-custom $text_md"
-echo "$text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom $text_md"
-echo "$text_md clone-wallsystem load-custom loadtiny-custom $text_md"
-echo "$text_md show-custom modify-custom del-custom names-custom $text_md"
-echo "$title_md    <firewall-wallsystem> $text_md"
-echo "$text_md client-basic client-web client-ssh client-telnet client-ipp $text_md"
-echo "$text_md client-irc client-git client-vnc client-news client-vpn $text_md"
-echo "$text_md client-torrent client-vpn client-ftp client-proxy client-mail $text_md"
-echo "$text_md client-tor game-widelands games-udp games-shooter game-wesnoth $text_md"
-echo "$text_md game-minetest game-freeciv lan-tor lan-vpn shield-ssh server-ssh $text_md"
-echo "$text_md server-telnet server-irc server-vnc server-print server-webserver $text_md"
-echo "$text_md server-lamp server-news server-ftp server-mail server-teamspeak $text_md"
-echo "$text_md server-mumble server-gateway server-sql server-samba server-proxy $text_md"
-echo "$text_md server-asterisk client-uid-root client-gid-users client-gid-net  $text_md"
-echo "$title_md    <firewall-netsystem> $text_md"
-echo "$text_md preferences-edit alias-edit options info-options usernotes$text_md"
-echo "$text_md cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $text_md"
-echo "$text_md ip4 ip6 route4 route6 net4-info net6-info sockets nodes $text_md"
-echo "$text_md free ip-forward utils date resolve speed-ip4 speed-ip6 $text_md"
-echo "$text_md log-stat web intro depends uninstall install upgrade notes $text_md"
-echo "$text_md variables examples info code expert donate about version $text_md"
-echo "$text_md add-whitelist4 add-whitelist6 add-blacklist4 add-blacklist6 $text_md" 
-echo "$text_md license-lgpl-v2 license-gpl-v2 $text_md"
+echo "$txt_text_md $cmd_internal [optional-output] first_option [second_option] $txt_text_md"
+echo "$txt_text_title    <optional-output> $txt_text_md"
+echo "$txt_text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ] $txt_text_md"
+echo "$txt_text_md [ cli-dialog cli-whiptail cli-menu cli-menu-compact ] $txt_text_md"
+echo "$txt_text_md [ gui-zenity gui-yad gui-menu gui-menu-zenity gui-menu-yad ] $txt_text_md"
+echo "$txt_text_md [ gui-roll-zenity gui-shell gui-shell-zenity gui-shell-yad ] $txt_text_md"
+echo "$txt_text_title    <firewall-listconceptual> $txt_text_md"
+echo "$txt_text_md ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6 $txt_text_md"
+echo "$txt_text_md list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4 $txt_text_md"
+echo "$txt_text_md list-security6 list-ebtables list-arptables list-alltables $txt_text_md"
+echo "$txt_text_title    <firewall-listnumeral> $txt_text_md"
+echo "$txt_text_md lsn4 lsn6 statusn listn-filter4 listn-filter6 listn-nat4 $txt_text_md"
+echo "$txt_text_md listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6 $txt_text_md"
+echo "$txt_text_md listn-security4 listn-security6 listn-alltables $txt_text_md"
+echo "$txt_text_title    <firewall-wallcontrol> $txt_text_md"
+echo "$txt_text_md stop continue reset show save load names actual eraserules $txt_text_md"
+echo "$txt_text_md eraserules4 eraserules6 without-connection input-permisive $txt_text_md"
+echo "$txt_text_md input-established wizard-tiny wizard-mini wizard-full $txt_text_md"
+echo "$txt_text_md tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp $txt_text_md"
+echo "$txt_text_title    <firewall-wallcustom> $txt_text_md"
+echo "$txt_text_md new-full-custom nueva-completa-custom new-mini-custom $txt_text_md"
+echo "$txt_text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom $txt_text_md"
+echo "$txt_text_md clone-wallsystem load-custom loadtiny-custom $txt_text_md"
+echo "$txt_text_md show-custom modify-custom del-custom names-custom $txt_text_md"
+echo "$txt_text_title    <firewall-wallsystem> $txt_text_md"
+echo "$txt_text_md client-basic client-web client-ssh client-telnet client-ipp $txt_text_md"
+echo "$txt_text_md client-irc client-git client-vnc client-news client-vpn $txt_text_md"
+echo "$txt_text_md client-torrent client-vpn client-ftp client-proxy client-mail $txt_text_md"
+echo "$txt_text_md client-tor game-widelands games-udp games-shooter game-wesnoth $txt_text_md"
+echo "$txt_text_md game-minetest game-freeciv lan-tor lan-vpn shield-ssh server-ssh $txt_text_md"
+echo "$txt_text_md server-telnet server-irc server-vnc server-print server-webserver $txt_text_md"
+echo "$txt_text_md server-lamp server-news server-ftp server-mail server-teamspeak $txt_text_md"
+echo "$txt_text_md server-mumble server-gateway server-sql server-samba server-proxy $txt_text_md"
+echo "$txt_text_md server-asterisk client-uid-root client-gid-users client-gid-net  $txt_text_md"
+echo "$txt_text_title    <firewall-netsystem> $txt_text_md"
+echo "$txt_text_md preferences-edit alias-edit options info-options usernotes$txt_text_md"
+echo "$txt_text_md cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $txt_text_md"
+echo "$txt_text_md ip4 ip6 route4 route6 net4-info net6-info sockets nodes $txt_text_md"
+echo "$txt_text_md free ip-forward utils date resolve speed-ip4 speed-ip6 $txt_text_md"
+echo "$txt_text_md log-stat web intro depends uninstall install upgrade notes $txt_text_md"
+echo "$txt_text_md variables examples info code expert donate about version $txt_text_md"
+echo "$txt_text_md add-whitelist4 add-whitelist6 add-blacklist4 add-blacklist6 $txt_text_md" 
+echo "$txt_text_md license-lgpl-v2 license-gpl-v2 $txt_text_md"
 ####
 ####  if expert commands
 ####
 if [ "$cfg_allow_expert_commands" == "no" ]
-then echo "$text_md $text_md $text_info $cmd_name $cmd_version with expert deactived $text_md"
-else echo "$text_md $text_md $text_info $cmd_name $cmd_version with expert actived $text_md"
+then echo "$txt_text_md $txt_text_md $txt_text_info $cmd_name $cmd_version with expert deactived $txt_text_md"
+else echo "$txt_text_md $txt_text_md $txt_text_info $cmd_name $cmd_version with expert actived $txt_text_md"
 fi
 ####
 ####
@@ -3532,9 +3532,9 @@ exit ; fi
 if   [ "$cmd_first_option" == "code" ];  then
 ####
 ####
-echo "$title_md $text_info  [ Show source code for each option ] "
-echo "$title_md $text_info [ code ] [ show source code for options from $cmd_internal ]"
-code_error="$title_md $text_info [ Usage ] [ $cmd_internal code option_choosed ]"
+echo "$txt_text_title $txt_text_info  [ Show source code for each option ] "
+echo "$txt_text_title $txt_text_info [ code ] [ show source code for options from $cmd_internal ]"
+code_error="$txt_text_title $txt_text_info [ Usage ] [ $cmd_internal code option_choosed ]"
 if [ "$cmd_second_option" == "$NULL" ]; then echo "$code_error"
 salida_code="$($cmd_command_cat  $cmd_internal | $cmd_command_grep -i  rutina-inicial \
 | $cmd_command_grep -i -v $cmd_command_cat  | $cmd_command_sed -s s/####\ :rutina-inicial-//g | \
@@ -3549,7 +3549,7 @@ value_count="$(("$value_second"-"$value_first+1"))"
 if [ ! -n "$value_first" ];   then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_second" ];  then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_count" ];   then echo; echo "$code_error" ; exit ; fi
-echo "$title_md [ code ] [ option: "$cmd_second_option" ] [ show $value_count lines ] \
+echo "$txt_text_title [ code ] [ option: "$cmd_second_option" ] [ show $value_count lines ] \
 [ from the "$value_first" line number to "$value_second" line number ]"
 $cmd_command_cat  $cmd_internal | head -n $value_second | tail -n $value_count
 ####
@@ -3566,13 +3566,13 @@ exit; fi
 if [ "$cmd_first_option" == "names-custom" ];  then
 ####
 ####
-echo "$title_md $text_info [ List configs cfg ] "
-echo "$title_md $text_info [ list configs files in cfg format ]"
-echo "$title_md $text_info [ folder ] [ $cmd_default_directory_custom ]"
-echo "$title_md"
+echo "$txt_text_title $txt_text_info [ List configs cfg ] "
+echo "$txt_text_title $txt_text_info [ list configs files in cfg format ]"
+echo "$txt_text_title $txt_text_info [ folder ] [ $cmd_default_directory_custom ]"
+echo "$txt_text_title"
 $cmd_command_tree $cmd_default_directory_custom
-echo "$title_md"
-echo "$title_md [ OK CFG FILES NAMES ] [ Use: $cmd_internal load-custom file ]"
+echo "$txt_text_title"
+echo "$txt_text_title [ OK CFG FILES NAMES ] [ Use: $cmd_internal load-custom file ]"
 ####
 ####
 exit; fi
@@ -3587,7 +3587,7 @@ exit; fi
 if [ "$cmd_first_option" == "text-pause" ]; then
 ####
 ####
-read -p '##### $text_ok ##### Press [enter] to continue now with the cli-menu ##### '
+read -p '##### $txt_text_ok ##### Press [enter] to continue now with the cli-menu ##### '
 ####
 ####
 exit; fi
@@ -3602,17 +3602,17 @@ exit; fi
 if   [ "$cmd_first_option" == "free" ]; then
 ####
 ####
-echo "$title_md $text_info [ freedom from innecesary ram ] [ free md ]"
+echo "$txt_text_title $txt_text_info [ freedom from innecesary ram ] [ free md ]"
 case $cmd_command_tee in "$NULL")
-echo "$text_md $text_fail [ Install tee command ]"; exit ;; esac
+echo "$txt_text_md $txt_text_fail [ Install tee command ]"; exit ;; esac
 ####
 ####
-echo "$title_md $text_info Actual Memory"
+echo "$txt_text_title $txt_text_info Actual Memory"
 free -hw 
 ####
 ####
-echo "$title_md $text_info With: echo 3 over /proc/sys/vm/drop_caches"
-echo "$title_md $text_info Now with New Memory ram freedom .. Actual memory now .."
+echo "$txt_text_title $txt_text_info With: echo 3 over /proc/sys/vm/drop_caches"
+echo "$txt_text_title $txt_text_info Now with New Memory ram freedom .. Actual memory now .."
 echo 3 | $cmd_command_tee /proc/sys/vm/drop_caches &> /dev/null
 free -hw
 ####
@@ -3629,28 +3629,28 @@ exit; fi
 if   [ "$cmd_first_option" == "firewall-wallcontrol" ]; then
 ####
 ####
-echo "$title_md | firewall-wallcontrol | $cmd_internal firewall-wallcontrol | $text_md"
-echo "$text_md $text_md stop . remove the rules iptables, and save it to then if continue $text_md"
-echo "$text_md $text_md continue. reset and load latest rules iptables loaded $text_md"
-echo "$text_md $text_md load . reset rules iptables actually $text_md"
-echo "$text_md $text_md actual . show the rules iptables from actually $text_md"
-echo "$text_md $text_md show . show the rules iptables from selected file $text_md"
-echo "$text_md $text_md load . reset and load new rules iptables from selected file $text_md"
-echo "$text_md $text_md save . save in the file selected the rules iptables actually $text_md"
-echo "$text_md $text_md all-names . list filenames saved in the iptables rules $text_md"
-echo "$text_md $text_md eraserules . remove all firewall rules: ipv4,ipv6,ebtables,arptables $text_md"
-echo "$text_md $text_md eraserules4 . remove ipv4 firewall rules $text_md"
-echo "$text_md $text_md eraserules6 . remove ipv6 firewall rules $text_md"
-echo "$text_md $text_md wizard-tiny . launch a one tiny wizard to run iptables rules $text_md"
-echo "$text_md $text_md wizard-mini . launch a one mini wizard to run iptables rules $text_md"
-echo "$text_md $text_md wizard-full . launch a one full wizard to run iptables rules $text_md"
-echo "$text_md $text_md without-connection . launch a one firewall only for localhost $text_md"
-echo "$text_md $text_md input-permisive . launch a one firewall with all permisive $text_md"
-echo "$text_md $text_md input-established . launch a one firewall with input related,stablished $text_md"
-echo "$text_md $text_md tinyserver-tcp . launch a one firewall with server ports tcp [ with optional host clients ] $text_md"
-echo "$text_md $text_md tinyserver-udp . launch a one firewall with server ports udp [ with optional host clients ] $text_md"
-echo "$text_md $text_md miniserver-tcp . launch a one firewall with server ports tcp [ with optional host clients ] $text_md"
-echo "$text_md $text_md miniserver-udp . launch a one firewall with server ports udp [ with optional host clients ] $text_md"
+echo "$txt_text_title | firewall-wallcontrol | $cmd_internal firewall-wallcontrol | $txt_text_md"
+echo "$txt_text_md $txt_text_md stop . remove the rules iptables, and save it to then if continue $txt_text_md"
+echo "$txt_text_md $txt_text_md continue. reset and load latest rules iptables loaded $txt_text_md"
+echo "$txt_text_md $txt_text_md load . reset rules iptables actually $txt_text_md"
+echo "$txt_text_md $txt_text_md actual . show the rules iptables from actually $txt_text_md"
+echo "$txt_text_md $txt_text_md show . show the rules iptables from selected file $txt_text_md"
+echo "$txt_text_md $txt_text_md load . reset and load new rules iptables from selected file $txt_text_md"
+echo "$txt_text_md $txt_text_md save . save in the file selected the rules iptables actually $txt_text_md"
+echo "$txt_text_md $txt_text_md all-names . list filenames saved in the iptables rules $txt_text_md"
+echo "$txt_text_md $txt_text_md eraserules . remove all firewall rules: ipv4,ipv6,ebtables,arptables $txt_text_md"
+echo "$txt_text_md $txt_text_md eraserules4 . remove ipv4 firewall rules $txt_text_md"
+echo "$txt_text_md $txt_text_md eraserules6 . remove ipv6 firewall rules $txt_text_md"
+echo "$txt_text_md $txt_text_md wizard-tiny . launch a one tiny wizard to run iptables rules $txt_text_md"
+echo "$txt_text_md $txt_text_md wizard-mini . launch a one mini wizard to run iptables rules $txt_text_md"
+echo "$txt_text_md $txt_text_md wizard-full . launch a one full wizard to run iptables rules $txt_text_md"
+echo "$txt_text_md $txt_text_md without-connection . launch a one firewall only for localhost $txt_text_md"
+echo "$txt_text_md $txt_text_md input-permisive . launch a one firewall with all permisive $txt_text_md"
+echo "$txt_text_md $txt_text_md input-established . launch a one firewall with input related,stablished $txt_text_md"
+echo "$txt_text_md $txt_text_md tinyserver-tcp . launch a one firewall with server ports tcp [ with optional host clients ] $txt_text_md"
+echo "$txt_text_md $txt_text_md tinyserver-udp . launch a one firewall with server ports udp [ with optional host clients ] $txt_text_md"
+echo "$txt_text_md $txt_text_md miniserver-tcp . launch a one firewall with server ports tcp [ with optional host clients ] $txt_text_md"
+echo "$txt_text_md $txt_text_md miniserver-udp . launch a one firewall with server ports udp [ with optional host clients ] $txt_text_md"
 ####
 ####
 exit; fi
@@ -3665,25 +3665,25 @@ exit; fi
 if   [ "$cmd_first_option" == "firewall-listconceptual" ]; then
 ####
 ####
-echo "$title_md | firewall-listconceptual | $cmd_internal firewall-listconceptual $text_md"
-echo "$text_md $text_md ls4 . list filter rules ipv4 $text_md"
-echo "$text_md $text_md ls6 . list filter rules ipv6 $text_md"
-echo "$text_md $text_md list4 . list filter rules ipv4 $text_md"
-echo "$text_md $text_md list6 . list filter rules ipv6 $text_md"
-echo "$text_md $text_md status . list filter rules ipv4 , rules ipv6 $text_md"
-echo "$text_md $text_md list-alltables . list all tables for rules ipv4, rules ipv6 $text_md"
-echo "$text_md $text_md list-filter4 . list filter rules ipv4 $text_md"
-echo "$text_md $text_md list-filter6 . list filter rules ipv6 $text_md"
-echo "$text_md $text_md list-nat4 . list nat rules ipv4 $text_md"
-echo "$text_md $text_md list-nat6 . list nat rules ipv6 $text_md"
-echo "$text_md $text_md list-raw4 . list raw rules ipv4 $text_md"
-echo "$text_md $text_md list-raw6 . list raw rules ipv6 $text_md"
-echo "$text_md $text_md list-mangle4 . list mangle rules ipv4 $text_md"
-echo "$text_md $text_md list-mangle6 . list mangle rules ipv6 $text_md"
-echo "$text_md $text_md list-security4 . list security rules ipv4 $text_md"
-echo "$text_md $text_md list-security6 . list security rules ipv6 $text_md"
-echo "$text_md $text_md list-ebtables . list ebtables rules ipv4 $text_md"
-echo "$text_md $text_md list-arptables . list arptables rules ipv6 $text_md"
+echo "$txt_text_title | firewall-listconceptual | $cmd_internal firewall-listconceptual $txt_text_md"
+echo "$txt_text_md $txt_text_md ls4 . list filter rules ipv4 $txt_text_md"
+echo "$txt_text_md $txt_text_md ls6 . list filter rules ipv6 $txt_text_md"
+echo "$txt_text_md $txt_text_md list4 . list filter rules ipv4 $txt_text_md"
+echo "$txt_text_md $txt_text_md list6 . list filter rules ipv6 $txt_text_md"
+echo "$txt_text_md $txt_text_md status . list filter rules ipv4 , rules ipv6 $txt_text_md"
+echo "$txt_text_md $txt_text_md list-alltables . list all tables for rules ipv4, rules ipv6 $txt_text_md"
+echo "$txt_text_md $txt_text_md list-filter4 . list filter rules ipv4 $txt_text_md"
+echo "$txt_text_md $txt_text_md list-filter6 . list filter rules ipv6 $txt_text_md"
+echo "$txt_text_md $txt_text_md list-nat4 . list nat rules ipv4 $txt_text_md"
+echo "$txt_text_md $txt_text_md list-nat6 . list nat rules ipv6 $txt_text_md"
+echo "$txt_text_md $txt_text_md list-raw4 . list raw rules ipv4 $txt_text_md"
+echo "$txt_text_md $txt_text_md list-raw6 . list raw rules ipv6 $txt_text_md"
+echo "$txt_text_md $txt_text_md list-mangle4 . list mangle rules ipv4 $txt_text_md"
+echo "$txt_text_md $txt_text_md list-mangle6 . list mangle rules ipv6 $txt_text_md"
+echo "$txt_text_md $txt_text_md list-security4 . list security rules ipv4 $txt_text_md"
+echo "$txt_text_md $txt_text_md list-security6 . list security rules ipv6 $txt_text_md"
+echo "$txt_text_md $txt_text_md list-ebtables . list ebtables rules ipv4 $txt_text_md"
+echo "$txt_text_md $txt_text_md list-arptables . list arptables rules ipv6 $txt_text_md"
 ####
 ####
 exit; fi
@@ -3698,25 +3698,25 @@ exit; fi
 if   [ "$cmd_first_option" == "firewall-listnumeral" ]; then
 ####
 ####
-echo "$title_md | firewall-listnumeral | $cmd_internal firewall-listnumeral | $text_md"
-echo "$text_md $text_md lsn4 . list filter rules ipv4 with numbers $text_md"
-echo "$text_md $text_md lsn6 . list filter rules ipv6 with numbers $text_md"
-echo "$text_md $text_md listn4 . list filter rules ipv4 with numbers $text_md"
-echo "$text_md $text_md listn6 . list filter rules ipv6 with numbers $text_md"
-echo "$text_md $text_md statusn . list filter rules ipv4 , rules ipv6 with numbers $text_md"
-echo "$text_md $text_md listn-alltables . list all tables for rules ipv4, rules ipv6 with numbers $text_md"
-echo "$text_md $text_md listn-filter4 . list filter rules ipv4 with numbers $text_md"
-echo "$text_md $text_md listn-filter6 . list filter rules ipv6 with numbers $text_md"
-echo "$text_md $text_md listn-nat4 . list nat rules ipv4 with numbers $text_md"
-echo "$text_md $text_md listn-nat6 . list nat rules ipv6 with numbers $text_md"
-echo "$text_md $text_md listn-raw4 . list raw rules ipv4 with numbers $text_md"
-echo "$text_md $text_md listn-raw6 . list raw rules ipv6 with numbers $text_md"
-echo "$text_md $text_md listn-mangle4 . list mangle rules ipv4 with numbers $text_md" 
-echo "$text_md $text_md listn-mangle6 . list mangle rules ipv6 with numbers $text_md"
-echo "$text_md $text_md listn-security4 . list security rules ipv4 with numbers $text_md"
-echo "$text_md $text_md listn-security6 . list security rules ipv6 with numbers $text_md"
-echo "$text_md $text_md listn-ebtables . list ebtables rules ipv4 with numbers $text_md"
-echo "$text_md $text_md listn-arptables . list arptables rules ipv6 with numbers $text_md"
+echo "$txt_text_title | firewall-listnumeral | $cmd_internal firewall-listnumeral | $txt_text_md"
+echo "$txt_text_md $txt_text_md lsn4 . list filter rules ipv4 with numbers $txt_text_md"
+echo "$txt_text_md $txt_text_md lsn6 . list filter rules ipv6 with numbers $txt_text_md"
+echo "$txt_text_md $txt_text_md listn4 . list filter rules ipv4 with numbers $txt_text_md"
+echo "$txt_text_md $txt_text_md listn6 . list filter rules ipv6 with numbers $txt_text_md"
+echo "$txt_text_md $txt_text_md statusn . list filter rules ipv4 , rules ipv6 with numbers $txt_text_md"
+echo "$txt_text_md $txt_text_md listn-alltables . list all tables for rules ipv4, rules ipv6 with numbers $txt_text_md"
+echo "$txt_text_md $txt_text_md listn-filter4 . list filter rules ipv4 with numbers $txt_text_md"
+echo "$txt_text_md $txt_text_md listn-filter6 . list filter rules ipv6 with numbers $txt_text_md"
+echo "$txt_text_md $txt_text_md listn-nat4 . list nat rules ipv4 with numbers $txt_text_md"
+echo "$txt_text_md $txt_text_md listn-nat6 . list nat rules ipv6 with numbers $txt_text_md"
+echo "$txt_text_md $txt_text_md listn-raw4 . list raw rules ipv4 with numbers $txt_text_md"
+echo "$txt_text_md $txt_text_md listn-raw6 . list raw rules ipv6 with numbers $txt_text_md"
+echo "$txt_text_md $txt_text_md listn-mangle4 . list mangle rules ipv4 with numbers $txt_text_md" 
+echo "$txt_text_md $txt_text_md listn-mangle6 . list mangle rules ipv6 with numbers $txt_text_md"
+echo "$txt_text_md $txt_text_md listn-security4 . list security rules ipv4 with numbers $txt_text_md"
+echo "$txt_text_md $txt_text_md listn-security6 . list security rules ipv6 with numbers $txt_text_md"
+echo "$txt_text_md $txt_text_md listn-ebtables . list ebtables rules ipv4 with numbers $txt_text_md"
+echo "$txt_text_md $txt_text_md listn-arptables . list arptables rules ipv6 with numbers $txt_text_md"
 ####
 ####
 exit; fi
@@ -3731,23 +3731,23 @@ exit; fi
 if   [ "$cmd_first_option" == "firewall-wallcustom" ]; then
 ####
 ####
-echo "$title_md | firewall-wallcustom | $cmd_internal firewall-wallcustom | $text_md"
-echo "$text_md $text_md new-full-custom . create new full config in english $text_md"
-echo "$text_md $text_md new-mini-custom . create new mini config in english $text_md"
-echo "$text_md $text_md new-tiny-custom . create new tiny config in english $text_md"
-echo "$text_md $text_md nueva-completa-custom . create new full config in spanish $text_md" 
-echo "$text_md $text_md nueva-mini-custom . create new full config in spanish $text_md"
-echo "$text_md $text_md nueva-diminuta-custom . create new tiny config in spanish $text_md"
-echo "$text_md $text_md tinyserver-tcp . all client and selected servers tcp in command $text_md"
-echo "$text_md $text_md tinyserver-udp . all client and selected servers udp in command $text_md"
-echo "$text_md $text_md miniserver-tcp . usual clients and selected servers tcp in command $text_md"
-echo "$text_md $text_md miniserver-udp . usual clients and selected servers udp in command $text_md"
-echo "$text_md $text_md clone-wallsystem . clone a static firewall predesignated $text_md"
-echo "$text_md $text_md show-custom . show config-file choosed $text_md"
-echo "$text_md $text_md modify-custom . modify config-file choosed $text_md"
-echo "$text_md $text_md load-custom . launch a one one-file saved custom $text_md" 
-echo "$text_md $text_md del-custom . delete config-file choosed $text_md"
-echo "$text_md $text_md names-custom . show the names for all config-files $text_md"
+echo "$txt_text_title | firewall-wallcustom | $cmd_internal firewall-wallcustom | $txt_text_md"
+echo "$txt_text_md $txt_text_md new-full-custom . create new full config in english $txt_text_md"
+echo "$txt_text_md $txt_text_md new-mini-custom . create new mini config in english $txt_text_md"
+echo "$txt_text_md $txt_text_md new-tiny-custom . create new tiny config in english $txt_text_md"
+echo "$txt_text_md $txt_text_md nueva-completa-custom . create new full config in spanish $txt_text_md" 
+echo "$txt_text_md $txt_text_md nueva-mini-custom . create new full config in spanish $txt_text_md"
+echo "$txt_text_md $txt_text_md nueva-diminuta-custom . create new tiny config in spanish $txt_text_md"
+echo "$txt_text_md $txt_text_md tinyserver-tcp . all client and selected servers tcp in command $txt_text_md"
+echo "$txt_text_md $txt_text_md tinyserver-udp . all client and selected servers udp in command $txt_text_md"
+echo "$txt_text_md $txt_text_md miniserver-tcp . usual clients and selected servers tcp in command $txt_text_md"
+echo "$txt_text_md $txt_text_md miniserver-udp . usual clients and selected servers udp in command $txt_text_md"
+echo "$txt_text_md $txt_text_md clone-wallsystem . clone a static firewall predesignated $txt_text_md"
+echo "$txt_text_md $txt_text_md show-custom . show config-file choosed $txt_text_md"
+echo "$txt_text_md $txt_text_md modify-custom . modify config-file choosed $txt_text_md"
+echo "$txt_text_md $txt_text_md load-custom . launch a one one-file saved custom $txt_text_md" 
+echo "$txt_text_md $txt_text_md del-custom . delete config-file choosed $txt_text_md"
+echo "$txt_text_md $txt_text_md names-custom . show the names for all config-files $txt_text_md"
 ####
 ####
 exit; fi
@@ -3762,46 +3762,46 @@ exit; fi
 if   [ "$cmd_first_option" == "firewall-wallsystem" ]; then
 ####
 ####
-echo "$title_md | firewall-wallsystem | $cmd_internal firewall-wallsystem | $text_md"
-echo "$text_md $text_md client-basic . launch a one firewall basic client $text_md"
-echo "$text_md $text_md client-web . launch a one firewall web client $text_md"
-echo "$text_md $text_md client-ssh . launch a one firewall ssh client $text_md"
-echo "$text_md $text_md client-telnet . launch a one firewall telnet client $text_md" 
-echo "$text_md $text_md client-git . launch a one firewall git client $text_md"
-echo "$text_md $text_md client-ipp . launch a one firewall ipp client $text_md"
-echo "$text_md $text_md client-vnc . launch a one firewall vnc client $text_md"
-echo "$text_md $text_md client-mail . launch a one firewall mail client $text_md"
-echo "$text_md $text_md client-news . launch a one firewall news client $text_md"
-echo "$text_md $text_md client-vpn . launch a one firewall vpn client $text_md"
-echo "$text_md $text_md client-proxy . launch a one firewall proxy client $text_md"
-echo "$text_md $text_md games-udp . launch a one firewall udp client $text_md"
-echo "$text_md $text_md games-shooter . launch a one firewall shooter client $text_md"
-echo "$text_md $text_md games-wesnoth . launch a one firewall wesnoth client $text_md"
-echo "$text_md $text_md games-minetest . launch a one firewall minetest client $text_md"
-echo "$text_md $text_md games-freeciv . launch a one firewall freeciv client $text_md"
-echo "$text_md $text_md lan-tor . launch a one firewall only tor client $text_md"
-echo "$text_md $text_md lan-vpn . launch a one firewall only vpn client $text_md"
-echo "$text_md $text_md shield-ssh . launch a one firewall basic server with shield ssh $text_md"
-echo "$text_md $text_md server-ssh . launch a one firewall basic server $text_md"
-echo "$text_md $text_md server-telnet . launch a one firewall basic server $text_md"
-echo "$text_md $text_md server-samba . launch a one firewall basic server $text_md"
-echo "$text_md $text_md server-vnc . launch a one firewall basic server $text_md"
-echo "$text_md $text_md server-webserver . launch a one firewall basic server $text_md" 
-echo "$text_md $text_md server-print . launch a one firewall basic server $text_md"
-echo "$text_md $text_md server-lamp . launch a one firewall basic server $text_md"
-echo "$text_md $text_md server-news . launch a one firewall basic server $text_md"
-echo "$text_md $text_md server-ftp . launch a one firewall basic server $text_md"
-echo "$text_md $text_md server-mail . launch a one firewall basic server $text_md"
-echo "$text_md $text_md server-teamspeak . launch a one firewall basic server $text_md"
-echo "$text_md $text_md server-mumble . launch a one firewall basic server $text_md"
-echo "$text_md $text_md server-sql . launch a one firewall basic server $text_md"
-echo "$text_md $text_md server-asterisk . launch a one firewall basic server $text_md"
-echo "$text_md $text_md server-domain . launch a one firewall basic server $text_md"
-echo "$text_md $text_md server-proxy . launch a one firewall basic server $text_md"
-echo "$text_md $text_md server-gateway . launch a one firewall nat gateway and web/ssh server $text_md"
-echo "$text_md $text_md client-uid-root . launch a one firewall for only allow at user root $text_md"
-echo "$text_md $text_md client-gid-users . launch a one firewall for only allow at group users $text_md"
-echo "$text_md $text_md client-gid-net . launch a one firewall for only allow at group net $text_md"
+echo "$txt_text_title | firewall-wallsystem | $cmd_internal firewall-wallsystem | $txt_text_md"
+echo "$txt_text_md $txt_text_md client-basic . launch a one firewall basic client $txt_text_md"
+echo "$txt_text_md $txt_text_md client-web . launch a one firewall web client $txt_text_md"
+echo "$txt_text_md $txt_text_md client-ssh . launch a one firewall ssh client $txt_text_md"
+echo "$txt_text_md $txt_text_md client-telnet . launch a one firewall telnet client $txt_text_md" 
+echo "$txt_text_md $txt_text_md client-git . launch a one firewall git client $txt_text_md"
+echo "$txt_text_md $txt_text_md client-ipp . launch a one firewall ipp client $txt_text_md"
+echo "$txt_text_md $txt_text_md client-vnc . launch a one firewall vnc client $txt_text_md"
+echo "$txt_text_md $txt_text_md client-mail . launch a one firewall mail client $txt_text_md"
+echo "$txt_text_md $txt_text_md client-news . launch a one firewall news client $txt_text_md"
+echo "$txt_text_md $txt_text_md client-vpn . launch a one firewall vpn client $txt_text_md"
+echo "$txt_text_md $txt_text_md client-proxy . launch a one firewall proxy client $txt_text_md"
+echo "$txt_text_md $txt_text_md games-udp . launch a one firewall udp client $txt_text_md"
+echo "$txt_text_md $txt_text_md games-shooter . launch a one firewall shooter client $txt_text_md"
+echo "$txt_text_md $txt_text_md games-wesnoth . launch a one firewall wesnoth client $txt_text_md"
+echo "$txt_text_md $txt_text_md games-minetest . launch a one firewall minetest client $txt_text_md"
+echo "$txt_text_md $txt_text_md games-freeciv . launch a one firewall freeciv client $txt_text_md"
+echo "$txt_text_md $txt_text_md lan-tor . launch a one firewall only tor client $txt_text_md"
+echo "$txt_text_md $txt_text_md lan-vpn . launch a one firewall only vpn client $txt_text_md"
+echo "$txt_text_md $txt_text_md shield-ssh . launch a one firewall basic server with shield ssh $txt_text_md"
+echo "$txt_text_md $txt_text_md server-ssh . launch a one firewall basic server $txt_text_md"
+echo "$txt_text_md $txt_text_md server-telnet . launch a one firewall basic server $txt_text_md"
+echo "$txt_text_md $txt_text_md server-samba . launch a one firewall basic server $txt_text_md"
+echo "$txt_text_md $txt_text_md server-vnc . launch a one firewall basic server $txt_text_md"
+echo "$txt_text_md $txt_text_md server-webserver . launch a one firewall basic server $txt_text_md" 
+echo "$txt_text_md $txt_text_md server-print . launch a one firewall basic server $txt_text_md"
+echo "$txt_text_md $txt_text_md server-lamp . launch a one firewall basic server $txt_text_md"
+echo "$txt_text_md $txt_text_md server-news . launch a one firewall basic server $txt_text_md"
+echo "$txt_text_md $txt_text_md server-ftp . launch a one firewall basic server $txt_text_md"
+echo "$txt_text_md $txt_text_md server-mail . launch a one firewall basic server $txt_text_md"
+echo "$txt_text_md $txt_text_md server-teamspeak . launch a one firewall basic server $txt_text_md"
+echo "$txt_text_md $txt_text_md server-mumble . launch a one firewall basic server $txt_text_md"
+echo "$txt_text_md $txt_text_md server-sql . launch a one firewall basic server $txt_text_md"
+echo "$txt_text_md $txt_text_md server-asterisk . launch a one firewall basic server $txt_text_md"
+echo "$txt_text_md $txt_text_md server-domain . launch a one firewall basic server $txt_text_md"
+echo "$txt_text_md $txt_text_md server-proxy . launch a one firewall basic server $txt_text_md"
+echo "$txt_text_md $txt_text_md server-gateway . launch a one firewall nat gateway and web/ssh server $txt_text_md"
+echo "$txt_text_md $txt_text_md client-uid-root . launch a one firewall for only allow at user root $txt_text_md"
+echo "$txt_text_md $txt_text_md client-gid-users . launch a one firewall for only allow at group users $txt_text_md"
+echo "$txt_text_md $txt_text_md client-gid-net . launch a one firewall for only allow at group net $txt_text_md"
 ####
 ####
 exit; fi
@@ -3817,57 +3817,57 @@ exit; fi
 if   [ "$cmd_first_option" == "firewall-netsystem" ]; then
 ####
 ####
-echo "$title_md | firewall-netsystem | $cmd_internal firewall-netsystem | $text_md"
-echo "$text_md $text_md preferences-read . show the preferences $text_md"
-echo "$text_md $text_md preferences-edit . modify the preferences $text_md"
-echo "$text_md $text_md preferences-regen . recover the initials preferences $text_md"
-echo "$text_md $text_md alias-read . read alias in first option $text_md"
-echo "$text_md $text_md alias-edit . configure alias in first option $text_md"
-echo "$text_md $text_md alias-regen . recover initials alias in first option $text_md"
-echo "$text_md $text_md options . list options $text_md"
-echo "$text_md $text_md info-options . list details for all options $text_md"
-echo "$text_md $text_md info . details from one first option from one pattern $text_md"
-echo "$text_md $text_md tree-log . show the result for the commands save with -l|-log $text_md"
-echo "$text_md $text_md cat-logcmd . list the commands launched $text_md"
-echo "$text_md $text_md ip . show details from connection ipv4, ipv6 $text_md"
-echo "$text_md $text_md ip4 . show ip address from connection ipv4 $text_md"
-echo "$text_md $text_md ip6 . show ip address from connection ipv6 $text_md"
-echo "$text_md $text_md ip4 . show ip route from connection ipv4 $text_md"
-echo "$text_md $text_md ip6 . show ip route from connection ipv6 $text_md"
-echo "$text_md $text_md net4-info . show details from connection ipv4 $text_md"
-echo "$text_md $text_md net6-info . show details from connection ipv6 $text_md"
-echo "$text_md $text_md address . show details from connection ipv4, ipv6 $text_md"
-echo "$text_md $text_md speed-ip4 . calculate bandwith ipv4 $text_md"
-echo "$text_md $text_md speed-ip6 . calculate bandwith ipv6 $text_md"
-echo "$text_md $text_md sockets . show the sockets listening $text_md"
-echo "$text_md $text_md nodes . show computers connected to lan $text_md"
-echo "$text_md $text_md web . browse web page $text_md"
-echo "$text_md $text_md date . update the time and date from internet $text_md"
-echo "$text_md $text_md free . freedom innecesary ram $text_md"
-echo "$text_md $text_md log-stat . info stat about logs $text_md"
-echo "$text_md $text_md version . show version and path $text_md"
-echo "$text_md $text_md notes . several notes for internet $text_md"
-echo "$text_md $text_md ip-forward . list or active or desactive forward variables $text_md"
-echo "$text_md $text_md depends . principal dependences $text_md"
-echo "$text_md $text_md license . license $text_md"
-echo "$text_md $text_md cat-cmdlog . tree from cmdlog folder $text_md"
-echo "$text_md $text_md tree-pdf . tree from pdf folder $text_md"
-echo "$text_md $text_md tree-log . tree from logs folder $text_md"
-echo "$text_md $text_md tree-conf . tree from all configuration $text_md"
-echo "$text_md $text_md tree-cache . tree from all cache $text_md"
-echo "$text_md $text_md clean-cache . clean cache program $text_md"
-echo "$text_md $text_md code . show source code from one option $text_md"
-echo "$text_md $text_md variables . possible variables $text_md"
-echo "$text_md $text_md intro . intro $text_md"
-echo "$text_md $text_md install . install fwiptables $text_md"
-echo "$text_md $text_md uninstall . uninstall fwiptables $text_md"
-echo "$text_md $text_md add-whitelist4 . add host ip4 to allowed, several comma seperated $text_md"
-echo "$text_md $text_md add-whitelist6 . add host ip6 to allowed, several comma seperated $text_md"
-echo "$text_md $text_md add-blacklist4 . add host ip4 to droped, several comma seperated $text_md"
-echo "$text_md $text_md add-blacklist6 . add host ip6 to droped, several comma seperated $text_md"
-echo "$text_md $text_md license-gpl-v2 . license gpl v2 $text_md"
-echo "$text_md $text_md license-lgpl-v2 . license lgpl v2 $text_md"
-echo "$text_md "
+echo "$txt_text_title | firewall-netsystem | $cmd_internal firewall-netsystem | $txt_text_md"
+echo "$txt_text_md $txt_text_md preferences-read . show the preferences $txt_text_md"
+echo "$txt_text_md $txt_text_md preferences-edit . modify the preferences $txt_text_md"
+echo "$txt_text_md $txt_text_md preferences-regen . recover the initials preferences $txt_text_md"
+echo "$txt_text_md $txt_text_md alias-read . read alias in first option $txt_text_md"
+echo "$txt_text_md $txt_text_md alias-edit . configure alias in first option $txt_text_md"
+echo "$txt_text_md $txt_text_md alias-regen . recover initials alias in first option $txt_text_md"
+echo "$txt_text_md $txt_text_md options . list options $txt_text_md"
+echo "$txt_text_md $txt_text_md info-options . list details for all options $txt_text_md"
+echo "$txt_text_md $txt_text_md info . details from one first option from one pattern $txt_text_md"
+echo "$txt_text_md $txt_text_md tree-log . show the result for the commands save with -l|-log $txt_text_md"
+echo "$txt_text_md $txt_text_md cat-logcmd . list the commands launched $txt_text_md"
+echo "$txt_text_md $txt_text_md ip . show details from connection ipv4, ipv6 $txt_text_md"
+echo "$txt_text_md $txt_text_md ip4 . show ip address from connection ipv4 $txt_text_md"
+echo "$txt_text_md $txt_text_md ip6 . show ip address from connection ipv6 $txt_text_md"
+echo "$txt_text_md $txt_text_md ip4 . show ip route from connection ipv4 $txt_text_md"
+echo "$txt_text_md $txt_text_md ip6 . show ip route from connection ipv6 $txt_text_md"
+echo "$txt_text_md $txt_text_md net4-info . show details from connection ipv4 $txt_text_md"
+echo "$txt_text_md $txt_text_md net6-info . show details from connection ipv6 $txt_text_md"
+echo "$txt_text_md $txt_text_md address . show details from connection ipv4, ipv6 $txt_text_md"
+echo "$txt_text_md $txt_text_md speed-ip4 . calculate bandwith ipv4 $txt_text_md"
+echo "$txt_text_md $txt_text_md speed-ip6 . calculate bandwith ipv6 $txt_text_md"
+echo "$txt_text_md $txt_text_md sockets . show the sockets listening $txt_text_md"
+echo "$txt_text_md $txt_text_md nodes . show computers connected to lan $txt_text_md"
+echo "$txt_text_md $txt_text_md web . browse web page $txt_text_md"
+echo "$txt_text_md $txt_text_md date . update the time and date from internet $txt_text_md"
+echo "$txt_text_md $txt_text_md free . freedom innecesary ram $txt_text_md"
+echo "$txt_text_md $txt_text_md log-stat . info stat about logs $txt_text_md"
+echo "$txt_text_md $txt_text_md version . show version and path $txt_text_md"
+echo "$txt_text_md $txt_text_md notes . several notes for internet $txt_text_md"
+echo "$txt_text_md $txt_text_md ip-forward . list or active or desactive forward variables $txt_text_md"
+echo "$txt_text_md $txt_text_md depends . principal dependences $txt_text_md"
+echo "$txt_text_md $txt_text_md license . license $txt_text_md"
+echo "$txt_text_md $txt_text_md cat-cmdlog . tree from cmdlog folder $txt_text_md"
+echo "$txt_text_md $txt_text_md tree-pdf . tree from pdf folder $txt_text_md"
+echo "$txt_text_md $txt_text_md tree-log . tree from logs folder $txt_text_md"
+echo "$txt_text_md $txt_text_md tree-conf . tree from all configuration $txt_text_md"
+echo "$txt_text_md $txt_text_md tree-cache . tree from all cache $txt_text_md"
+echo "$txt_text_md $txt_text_md clean-cache . clean cache program $txt_text_md"
+echo "$txt_text_md $txt_text_md code . show source code from one option $txt_text_md"
+echo "$txt_text_md $txt_text_md variables . possible variables $txt_text_md"
+echo "$txt_text_md $txt_text_md intro . intro $txt_text_md"
+echo "$txt_text_md $txt_text_md install . install fwiptables $txt_text_md"
+echo "$txt_text_md $txt_text_md uninstall . uninstall fwiptables $txt_text_md"
+echo "$txt_text_md $txt_text_md add-whitelist4 . add host ip4 to allowed, several comma seperated $txt_text_md"
+echo "$txt_text_md $txt_text_md add-whitelist6 . add host ip6 to allowed, several comma seperated $txt_text_md"
+echo "$txt_text_md $txt_text_md add-blacklist4 . add host ip4 to droped, several comma seperated $txt_text_md"
+echo "$txt_text_md $txt_text_md add-blacklist6 . add host ip6 to droped, several comma seperated $txt_text_md"
+echo "$txt_text_md $txt_text_md license-gpl-v2 . license gpl v2 $txt_text_md"
+echo "$txt_text_md $txt_text_md license-lgpl-v2 . license lgpl v2 $txt_text_md"
+echo "$txt_text_md "
 ####
 ####
 exit; fi
@@ -3884,58 +3884,58 @@ exit; fi
 if   [ "$cmd_first_option" == "options-expert" ]; then
 ####
 ####
-echo "$title_md | $cmd_internal expert | Each expert only works Without optional output $text_md "
-echo "$text_md $text_md expert-browser-web . browse one link web $text_md "
-echo "$text_md $text_md expert-sockets-ss . show sockets with ss $text_md "
-echo "$text_md $text_md expert-sockets-netstat . show sockets with netstat $text_md "
-echo "$text_md $text_md expert-sockets-lsof . show sockets with lsof $text_md "
-echo "$text_md $text_md expert-show-resolve . show file resolve domain with resolv.conf $text_md "
-echo "$text_md $text_md expert-show-weather . show weather with wttr.in $text_md "
-echo "$text_md $text_md expert-show-geoip . show location for ip o for host with geoip $text_md "
-echo "$text_md $text_md expert-show-webcert . show web certificate ssl from one web with ssl-cert $text_md "
-echo "$text_md $text_md expert-show-newversion . Show version fwiptables stable/unstable with curl $text_md "
-echo "$text_md $text_md expert-show-clientproxy . show proxy variables in the system stablished $text_md "
-echo "$text_md $text_md expert-conf-clientproxy . File /etc/proxy.fwiptables for proxy launched with source $text_md "
-echo "$text_md $text_md expert-speed-ip4 . benchmark internet speed ipv4 with 4seconds $text_md "
-echo "$text_md $text_md expert-speed-ip6 . benchmark internet speed ipv6 with 4seconds $text_md "
-echo "$text_md $text_md expert-speed-disk . benchmark disk speed with 100Mb $text_md "
-echo "$text_md $text_md expert-speed-ram . benchmark ram speed with 100Mb $text_md "
-echo "$text_md $text_md expert-speed-cpu . benchmark cpu speed with bc command aprox 5 seconds $text_md "
-echo "$text_md $text_md expert-speed-glx . benchmark glx speed with mesa3D $text_md " 
-echo "$text_md $text_md expert-add-whitelist4 . add white host for ip4 $text_md "
-echo "$text_md $text_md expert-add-whitelist6 . add white host for ip6 $text_md "
-echo "$text_md $text_md expert-add-blacklist4 . add drop host for ip4 $text_md "
-echo "$text_md $text_md expert-add-blacklist6 . add drop host for ip6 $text_md "
-echo "$text_md $text_md expert-upgrade-estable . Upgrade from web sourceforge fwiptables with curl $text_md "
-echo "$text_md $text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables with curl $text_md "
-echo "$text_md $text_md expert-upgrade-adblock . Download blacklist to folder configuration program with curl $text_md "
-echo "$text_md $text_md expert-deb . generate actual version file in deb $text_md "
-echo "$text_md $text_md expert-gen-readme . generate actual version file in original with readme $text_md "
-echo "$text_md $text_md expert-gen-compile . Compile fwiptables from bash with program obash $text_md "
-echo "$text_md $text_md expert-alias-modify . modify alias for $cmd_name $text_md"
-echo "$text_md $text_md expert-nmap-tcp . doing scan tcp at host or range $text_md "
-echo "$text_md $text_md expert-nmap-udp . doing scan udp at host or range $text_md "
-echo "$text_md $text_md expert-nmap-fin . doing scan fin at host or range $text_md "
-echo "$text_md $text_md expert-nmap-syn . doing scan syn at host or range $text_md "
-echo "$text_md $text_md expert-nmap-ping . doing scan ping at host or range $text_md "
-echo "$text_md $text_md expert-trace-tcp4 . trace route tcp to host ip4 $text_md "
-echo "$text_md $text_md expert-trace-tcp6 . trace route tcp to host ip6 $text_md "
-echo "$text_md $text_md expert-trace-icmp4 . trace route icmp to host ip4 $text_md " 
-echo "$text_md $text_md expert-trace-icmp6 . trace route icmp to host ip6 $text_md "
-echo "$text_md $text_md expert-wpa-scan . the list wifi on air $text_md "
-echo "$text_md $text_md expert-wpa-list . the list nameconfig over saved wifi $text_md "
-echo "$text_md $text_md expert-wpa-new . new nameconfig to create wifi config $text_md "
-echo "$text_md $text_md expert-wpa-modify . one nameconfig to modify wifi config $text_md "
-echo "$text_md $text_md expert-wpa-connect . one nameconfig to connect wifi config $text_md "
-echo "$text_md $text_md expert-pc-halt . halt computer with halt $text_md "
-echo "$text_md $text_md expert-pc-shutdown . shutdown computer with shutdown $text_md "
-echo "$text_md $text_md expert-pc-reboot . reboot computer with reboot $text_md "
-echo "$text_md $text_md expert-cpufreq-info . show cpu frecuence info $text_md "
-echo "$text_md $text_md expert-cpupower-info . show cpu frecuence info $text_md "
-echo "$text_md $text_md expert-project-web . site  downloaded web fwiptables $text_md"
-echo "$text_md $text_md expert-configs-save . save configs like backup from fwiptables in tar file $text_md"
-echo "$text_md $text_md expert-configs-load . load configs like backup from fwiptables in tar file $text_md"
-echo "$text_md $text_md expert-myradio-install . install radio text program $text_md"
+echo "$txt_text_title | $cmd_internal expert | Each expert only works Without optional output $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-browser-web . browse one link web $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-sockets-ss . show sockets with ss $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-sockets-netstat . show sockets with netstat $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-sockets-lsof . show sockets with lsof $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-show-resolve . show file resolve domain with resolv.conf $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-show-weather . show weather with wttr.in $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-show-geoip . show location for ip o for host with geoip $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-show-webcert . show web certificate ssl from one web with ssl-cert $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-show-newversion . Show version fwiptables stable/unstable with curl $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-show-clientproxy . show proxy variables in the system stablished $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-conf-clientproxy . File /etc/proxy.fwiptables for proxy launched with source $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-speed-ip4 . benchmark internet speed ipv4 with 4seconds $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-speed-ip6 . benchmark internet speed ipv6 with 4seconds $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-speed-disk . benchmark disk speed with 100Mb $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-speed-ram . benchmark ram speed with 100Mb $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-speed-cpu . benchmark cpu speed with bc command aprox 5 seconds $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-speed-glx . benchmark glx speed with mesa3D $txt_text_md " 
+echo "$txt_text_md $txt_text_md expert-add-whitelist4 . add white host for ip4 $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-add-whitelist6 . add white host for ip6 $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-add-blacklist4 . add drop host for ip4 $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-add-blacklist6 . add drop host for ip6 $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-upgrade-estable . Upgrade from web sourceforge fwiptables with curl $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables with curl $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-upgrade-adblock . Download blacklist to folder configuration program with curl $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-deb . generate actual version file in deb $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-gen-readme . generate actual version file in original with readme $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-gen-compile . Compile fwiptables from bash with program obash $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-alias-modify . modify alias for $cmd_name $txt_text_md"
+echo "$txt_text_md $txt_text_md expert-nmap-tcp . doing scan tcp at host or range $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-nmap-udp . doing scan udp at host or range $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-nmap-fin . doing scan fin at host or range $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-nmap-syn . doing scan syn at host or range $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-nmap-ping . doing scan ping at host or range $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-trace-tcp4 . trace route tcp to host ip4 $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-trace-tcp6 . trace route tcp to host ip6 $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-trace-icmp4 . trace route icmp to host ip4 $txt_text_md " 
+echo "$txt_text_md $txt_text_md expert-trace-icmp6 . trace route icmp to host ip6 $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-wpa-scan . the list wifi on air $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-wpa-list . the list nameconfig over saved wifi $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-wpa-new . new nameconfig to create wifi config $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-wpa-modify . one nameconfig to modify wifi config $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-wpa-connect . one nameconfig to connect wifi config $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-pc-halt . halt computer with halt $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-pc-shutdown . shutdown computer with shutdown $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-pc-reboot . reboot computer with reboot $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-cpufreq-info . show cpu frecuence info $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-cpupower-info . show cpu frecuence info $txt_text_md "
+echo "$txt_text_md $txt_text_md expert-project-web . site  downloaded web fwiptables $txt_text_md"
+echo "$txt_text_md $txt_text_md expert-configs-save . save configs like backup from fwiptables in tar file $txt_text_md"
+echo "$txt_text_md $txt_text_md expert-configs-load . load configs like backup from fwiptables in tar file $txt_text_md"
+echo "$txt_text_md $txt_text_md expert-myradio-install . install radio text program $txt_text_md"
 ####
 ####
 exit; fi
@@ -3951,8 +3951,8 @@ exit; fi
 if   [ "$cmd_first_option" == "info-options" ]; then
 ####
 ####
-echo "$title_md $text_info  [ info options ] [ info-options md]"
-echo "$text_md"
+echo "$txt_text_title $txt_text_info  [ info options ] [ info-options md]"
+echo "$txt_text_md"
 $cmd_internal optional-output
 $cmd_internal firewall-listconceptual
 $cmd_internal firewall-listnumeral
@@ -3976,34 +3976,34 @@ exit; fi
 if   [ "$cmd_first_option" == "optional-output" ]; then
 ####
 ####
-echo "$title_md | optional-output | $cmd_internal optional-ouptut | $text_md"
-echo "$text_md $text_md i . output in info text $text_md"
-echo "$text_md $text_md t . output in terminal text $text_md"
-echo "$text_md $text_md n . output in terminal text narrowtxt (compresed spaces) $text_md"
-echo "$text_md $text_md c . output in terminal cli $text_md"
-echo "$text_md $text_md g . output in graphicall gui $text_md"
-echo "$text_md $text_md l . output in file text log $text_md"
-echo "$text_md $text_md p . output in file image pdf $text_md"
-echo "$text_md $text_md s . output in silent or without output $text_md"
-echo "$text_md $text_md info . output in info text $text_md"
-echo "$text_md $text_md txt . output in terminal text $text_md"
-echo "$text_md $text_md narrowtxt . output in terminal text with compresed spaces $text_md"
-echo "$text_md $text_md cli . output in terminal cli $text_md"
-echo "$text_md $text_md gui . output in graphicall gui $text_md"
-echo "$text_md $text_md log . output in file text log $text_md"
-echo "$text_md $text_md pdf . output in file image pdf $text_md"
-echo "$text_md $text_md silent . output in silent text $text_md"
-echo "$text_md $text_md cli-dialog . output in terminal cli with dialog $text_md"
-echo "$text_md $text_md cli-whiptail . output in terminal cli with whiptail $text_md"
-echo "$text_md $text_md gui-zenity . output in graphicall gui with zenity $text_md"
-echo "$text_md $text_md gui-yad . output in graphicall gui with yad $text_md"
-echo "$text_md $text_md cli-menu . output in terminal menu $text_md"
-echo "$text_md $text_md cli-menu-compact . output in terminal menu $text_md"
-echo "$text_md $text_md gui-menu-zenity . output in grapicall menu with zenity $text_md"
-echo "$text_md $text_md gui-menu-yad . output in grapicall menu with yad $text_md"
-echo "$text_md $text_md gui-shell-zenity . output in grapicall shell with zenity $text_md"
-echo "$text_md $text_md gui-shell-yad . output in grapicall shell with yad $text_md"
-echo "$text_md $text_md gui-roll-zenity . output in grapicall roll with zenity $text_md"
+echo "$txt_text_title | optional-output | $cmd_internal optional-ouptut | $txt_text_md"
+echo "$txt_text_md $txt_text_md i . output in info text $txt_text_md"
+echo "$txt_text_md $txt_text_md t . output in terminal text $txt_text_md"
+echo "$txt_text_md $txt_text_md n . output in terminal text narrowtxt (compresed spaces) $txt_text_md"
+echo "$txt_text_md $txt_text_md c . output in terminal cli $txt_text_md"
+echo "$txt_text_md $txt_text_md g . output in graphicall gui $txt_text_md"
+echo "$txt_text_md $txt_text_md l . output in file text log $txt_text_md"
+echo "$txt_text_md $txt_text_md p . output in file image pdf $txt_text_md"
+echo "$txt_text_md $txt_text_md s . output in silent or without output $txt_text_md"
+echo "$txt_text_md $txt_text_md info . output in info text $txt_text_md"
+echo "$txt_text_md $txt_text_md txt . output in terminal text $txt_text_md"
+echo "$txt_text_md $txt_text_md narrowtxt . output in terminal text with compresed spaces $txt_text_md"
+echo "$txt_text_md $txt_text_md cli . output in terminal cli $txt_text_md"
+echo "$txt_text_md $txt_text_md gui . output in graphicall gui $txt_text_md"
+echo "$txt_text_md $txt_text_md log . output in file text log $txt_text_md"
+echo "$txt_text_md $txt_text_md pdf . output in file image pdf $txt_text_md"
+echo "$txt_text_md $txt_text_md silent . output in silent text $txt_text_md"
+echo "$txt_text_md $txt_text_md cli-dialog . output in terminal cli with dialog $txt_text_md"
+echo "$txt_text_md $txt_text_md cli-whiptail . output in terminal cli with whiptail $txt_text_md"
+echo "$txt_text_md $txt_text_md gui-zenity . output in graphicall gui with zenity $txt_text_md"
+echo "$txt_text_md $txt_text_md gui-yad . output in graphicall gui with yad $txt_text_md"
+echo "$txt_text_md $txt_text_md cli-menu . output in terminal menu $txt_text_md"
+echo "$txt_text_md $txt_text_md cli-menu-compact . output in terminal menu $txt_text_md"
+echo "$txt_text_md $txt_text_md gui-menu-zenity . output in grapicall menu with zenity $txt_text_md"
+echo "$txt_text_md $txt_text_md gui-menu-yad . output in grapicall menu with yad $txt_text_md"
+echo "$txt_text_md $txt_text_md gui-shell-zenity . output in grapicall shell with zenity $txt_text_md"
+echo "$txt_text_md $txt_text_md gui-shell-yad . output in grapicall shell with yad $txt_text_md"
+echo "$txt_text_md $txt_text_md gui-roll-zenity . output in grapicall roll with zenity $txt_text_md"
 exit; fi
 ####
 ####
@@ -4017,7 +4017,7 @@ exit; fi
 if   [ "$cmd_first_option" == "variables" ]; then
 ####
 ####
-echo "$title_md $text_info  [ list code variables-system ] [ variables md ]"
+echo "$txt_text_title $txt_text_info  [ list code variables-system ] [ variables md ]"
 $cmd_internal code variables-system
 ####
 ####
@@ -4031,7 +4031,7 @@ exit; fi
 ####
 ####
 if [ "$cmd_first_option" == "eraserules" ];  then 
-echo "$title_md $text_info [ Deleting all iptables ipv4/ipv6 rules ]"
+echo "$txt_text_title $txt_text_info [ Deleting all iptables ipv4/ipv6 rules ]"
 ####
 ####
 #### english: table policy 
@@ -4079,7 +4079,7 @@ $cmd_internal eraserules4 &> /dev/null
 $cmd_internal eraserules6 &> /dev/null
 ####
 ####
-echo "$title_md $text_ok eraserules done"
+echo "$txt_text_title $txt_text_ok eraserules done"
 ####
 ####
 exit; fi
@@ -4094,7 +4094,7 @@ exit; fi
 if [ "$cmd_first_option" == "eraserules4" ]; then  
 ####
 ####
-echo "$title_md $text_info [ Deleting ip4 iptables rules ] "
+echo "$txt_text_title $txt_text_info [ Deleting ip4 iptables rules ] "
 ####
 ####
 #### english: table policy 
@@ -4170,7 +4170,7 @@ $cmd_command_ip4tableslegacy -t security -P FORWARD ACCEPT &> /dev/null
 $cmd_command_ip4tableslegacy -t security -P OUTPUT ACCEPT &> /dev/null
 ####
 ####
-echo "$title_md $text_ok eraserules4 done"
+echo "$txt_text_title $txt_text_ok eraserules4 done"
 ####
 ####
 exit; fi
@@ -4185,7 +4185,7 @@ exit; fi
 if [ "$cmd_first_option" == "eraserules6" ]; then  
 ####
 ####
-echo "$title_md $text_info [ Deleting ip6 iptables rules ] "
+echo "$txt_text_title $txt_text_info [ Deleting ip6 iptables rules ] "
 ####
 ####
 #### english: table policy 
@@ -4259,7 +4259,7 @@ $cmd_command_ip6tableslegacy -t security -P FORWARD ACCEPT &> /dev/null
 $cmd_command_ip6tableslegacy -t security -P OUTPUT ACCEPT &> /dev/null
 ####
 ####
-echo "$title_md $text_ok eraserules6 done"
+echo "$txt_text_title $txt_text_ok eraserules6 done"
 ####
 ####
 exit; fi
@@ -4274,30 +4274,30 @@ exit; fi
 if [ "$cmd_first_option" == "list-alltables" ]; then
 ####
 ####
-echo "$title_md $text_info [ List all rules ] "
-echo; echo; echo "$title_md LIST ARPTABLES ###" ; echo
+echo "$txt_text_title $txt_text_info [ List all rules ] "
+echo; echo; echo "$txt_text_title LIST ARPTABLES ###" ; echo
 $cmd_internal list-arptables 
-echo; echo; echo "$title_md LIST EBTABLES ###" ; echo
+echo; echo; echo "$txt_text_title LIST EBTABLES ###" ; echo
 $cmd_internal list-ebtables
-echo; echo; echo "$title_md LIST FILTER IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST FILTER IP4 TABLE ###" ; echo
 $cmd_internal list-filter4
-echo; echo; echo "$title_md LIST FILTER IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST FILTER IP6 TABLE ###" ; echo
 $cmd_internal list-filter6
-echo; echo; echo "$title_md LIST NAT IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST NAT IP4 TABLE ###" ; echo
 $cmd_internal list-nat4
-echo; echo; echo "$title_md LIST NAT IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST NAT IP6 TABLE ###" ; echo
 $cmd_internal list-nat6
-echo; echo; echo "$title_md LIST SECURITY IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST SECURITY IP4 TABLE ###" ; echo
 $cmd_internal list-security4
-echo; echo; echo "$title_md LIST SECURITY IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST SECURITY IP6 TABLE ###" ; echo
 $cmd_internal list-security6
-echo; echo; echo "$title_md LIST RAW IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST RAW IP4 TABLE ###" ; echo
 $cmd_internal list-raw4
-echo; echo; echo "$title_md LIST RAW IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST RAW IP6 TABLE ###" ; echo
 $cmd_internal list-raw6
-echo; echo; echo "$title_md LIST MANGLE IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST MANGLE IP4 TABLE ###" ; echo
 $cmd_internal list-mangle4
-echo; echo; echo "$title_md LIST MANGLE IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST MANGLE IP6 TABLE ###" ; echo
 $cmd_internal list-mangle6
 echo 
 ####
@@ -4314,30 +4314,30 @@ exit; fi
 if [ "$cmd_first_option" == "listn-alltables" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List all rules ] "
-echo; echo; echo "$title_md LIST EBTABLES ###" ; echo
+echo "$txt_text_title $txt_text_info [ List all rules ] "
+echo; echo; echo "$txt_text_title LIST EBTABLES ###" ; echo
 $cmd_internal list-ebtables
-echo; echo; echo "$title_md LIST ARPTABLES ###" ; echo
+echo; echo; echo "$txt_text_title LIST ARPTABLES ###" ; echo
 $cmd_internal list-arptables
-echo; echo; echo "$title_md LIST FILTER IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST FILTER IP4 TABLE ###" ; echo
 $cmd_internal listn-filter4
-echo; echo; echo "$title_md LIST FILTER IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST FILTER IP6 TABLE ###" ; echo
 $cmd_internal listn-filter6
-echo; echo; echo "$title_md LIST NAT IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST NAT IP4 TABLE ###" ; echo
 $cmd_internal listn-nat4
-echo; echo; echo "$title_md LIST NAT IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST NAT IP6 TABLE ###" ; echo
 $cmd_internal listn-nat6
-echo; echo; echo "$title_md LIST SECURITY IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST SECURITY IP4 TABLE ###" ; echo
 $cmd_internal listn-security4
-echo; echo; echo "$title_md LIST SECURITY IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST SECURITY IP6 TABLE ###" ; echo
 $cmd_internal listn-security6
-echo; echo; echo "$title_md LIST RAW IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST RAW IP4 TABLE ###" ; echo
 $cmd_internal listn-raw4
-echo; echo; echo "$title_md LIST RAW IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST RAW IP6 TABLE ###" ; echo
 $cmd_internal listn-raw6
-echo; echo; echo "$title_md LIST MANGLE IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST MANGLE IP4 TABLE ###" ; echo
 $cmd_internal listn-mangle4
-echo; echo; echo "$title_md LIST MANGLE IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_title LIST MANGLE IP6 TABLE ###" ; echo
 $cmd_internal listn-mangle6
 echo
 ####
@@ -4355,7 +4355,7 @@ exit; fi
 if [ "$cmd_first_option" == "list4" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List filter ipv4 ] \
+echo "$txt_text_title $txt_text_info [ List filter ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$cmd_command_ip4tableslegacy" -t filter -L INPUT 1 && \
 "$cmd_command_ip4tableslegacy" -t filter -L OUTPUT 1 ) &> /dev/null
@@ -4364,21 +4364,21 @@ nftcuatro=$("$cmd_command_ip4tablesnft" -t filter -L INPUT 1 && \
 fromrules="filter-ip4"
 echo
 case $legacycuatro in
-"$NULL") echo "$title_md $text_info [ Without rules xtables ] \
+"$NULL") echo "$txt_text_title $txt_text_info [ Without rules xtables ] \
 [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_ok [ With rules xtables ] [ iptables-legacy ] \
+echo "$txt_text_title $txt_text_ok [ With rules xtables ] [ iptables-legacy ] \
 [ $fromrules ] [ listing rules .. ]"
 echo
 $cmd_command_ip4tableslegacy -t filter -v -L $cfg_config_listrules_conceptual
 ;;
 esac
-echo "$text_md"
+echo "$txt_text_md"
 case $nftcuatro in
-"$NULL") echo "$title_md $text_info [ Without rules nftables ] \
+"$NULL") echo "$txt_text_title $txt_text_info [ Without rules nftables ] \
 [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_ok [ With rules nftables ] [ iptables-nft ] \
+echo "$txt_text_title $txt_text_ok [ With rules nftables ] [ iptables-nft ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
 $cmd_command_ip4tablesnft -t filter -v -L $cfg_config_listrules_conceptual
@@ -4400,7 +4400,7 @@ exit; fi
 if [ "$cmd_first_option" == "list6" ]; then  
 ####
 ####
-echo "$title_md $text_info [ List filter ipv6 ] \
+echo "$txt_text_title $txt_text_info [ List filter ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
 legacyseis=$("$cmd_command_ip6tableslegacy" -t filter -L INPUT 1 && \
 "$cmd_command_ip6tableslegacy" -t filter -L OUTPUT 1 )
@@ -4409,21 +4409,21 @@ nftseis=$("$cmd_command_ip6tablesnft" -t filter -L INPUT 1 && \
 fromrules="filter-ip6"
 echo
 case $legacyseis in
-"$NULL") echo "$title_md $text_info [ Without rules xtables ] \
+"$NULL") echo "$txt_text_title $txt_text_info [ Without rules xtables ] \
 [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_ok [ With rules xtables ] [ iptables-legacy ] \
+echo "$txt_text_title $txt_text_ok [ With rules xtables ] [ iptables-legacy ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
 $cmd_command_ip6tableslegacy -v -L $cfg_config_listrules_conceptual
 ;;
 esac
-echo $text_md
+echo $txt_text_md
 case $nftseis in
-"$NULL") echo "$title_md $text_info [ Without rules nftables ] \
+"$NULL") echo "$txt_text_title $txt_text_info [ Without rules nftables ] \
 [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_ok [ With rules nftables ] [ iptables-nft ] \
+echo "$txt_text_title $txt_text_ok [ With rules nftables ] [ iptables-nft ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
 $cmd_command_ip6tablesnft -v -L $cfg_config_listrules_conceptual
@@ -4444,7 +4444,7 @@ exit; fi
 if [ "$cmd_first_option" == "listn4" ]; then  
 ####
 ####
-echo "$title_md $text_info [ List filter ipv4 ] \
+echo "$txt_text_title $txt_text_info [ List filter ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$cmd_command_ip4tableslegacy" -t filter -L INPUT 1 && \
 "$cmd_command_ip4tableslegacy" -t filter -L OUTPUT 1 ) &> /dev/null
@@ -4453,21 +4453,21 @@ nftcuatro=$("$cmd_command_ip4tablesnft" -t filter -L INPUT 1 && \
 fromrules="filter-ip4"
 echo
 case $legacycuatro in
-"$NULL") echo "$title_md $text_info [ Without rules xtables ] \
+"$NULL") echo "$txt_text_title $txt_text_info [ Without rules xtables ] \
 [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_ok [ With rules xtables ] [ iptables-legacy ] \
+echo "$txt_text_title $txt_text_ok [ With rules xtables ] [ iptables-legacy ] \
 [ $fromrules ] [ listing rules .. ]"
 echo
 $cmd_command_ip4tableslegacy -t filter -v -L -n
 ;;
 esac
-echo "$text_md"
+echo "$txt_text_md"
 case $nftcuatro in
-"$NULL") echo "$title_md $text_info [ Without rules nftables ] \
+"$NULL") echo "$txt_text_title $txt_text_info [ Without rules nftables ] \
 [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_ok [ With rules nftables ] [ iptables-nft ] \
+echo "$txt_text_title $txt_text_ok [ With rules nftables ] [ iptables-nft ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
 $cmd_command_ip4tablesnft -t filter -v -L -n
@@ -4487,7 +4487,7 @@ exit; fi
 if [ "$cmd_first_option" == "listn6" ]; then  
 ####
 ####
-echo "$title_md $text_info [ List filter ipv6 ] \
+echo "$txt_text_title $txt_text_info [ List filter ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
 legacyseis=$("$cmd_command_ip6tableslegacy" -t filter -L INPUT 1 && \
 "$cmd_command_ip6tableslegacy" -t filter -L OUTPUT 1 )
@@ -4496,21 +4496,21 @@ nftseis=$("$cmd_command_ip6tablesnft" -t filter -L INPUT 1 && \
 fromrules="filter-ip6"
 echo
 case $legacyseis in
-"$NULL") echo "$title_md $text_info [ Without rules xtables ] \
+"$NULL") echo "$txt_text_title $txt_text_info [ Without rules xtables ] \
 [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_ok [ With rules xtables ] [ iptables-legacy ] \
+echo "$txt_text_title $txt_text_ok [ With rules xtables ] [ iptables-legacy ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
 $cmd_command_ip6tableslegacy -v -L -n
 ;;
 esac
-echo $text_md
+echo $txt_text_md
 case $nftseis in
-"$NULL") echo "$title_md $text_info [ Without rules nftables ] \
+"$NULL") echo "$txt_text_title $txt_text_info [ Without rules nftables ] \
 [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_ok [ With rules nftables ] [ iptables-nft ] \
+echo "$txt_text_title $txt_text_ok [ With rules nftables ] [ iptables-nft ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
 $cmd_command_ip6tablesnft -v -L -n
@@ -4566,7 +4566,7 @@ exit; fi
 if [ "$cmd_first_option" == "listnum" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List numerical filter ipv4 ] \
+echo "$txt_text_title $txt_text_info [ List numerical filter ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$cmd_command_ip4tableslegacy" -t filter -L INPUT 1 && \
 "$cmd_command_ip4tableslegacy" -t filter -L OUTPUT 1 ) &> /dev/null
@@ -4576,21 +4576,21 @@ fromrules="filter-numerical-ip4"
 echo
 case $legacycuatro in
 "$NULL")
-echo "$title_md $text_info [ Without rules xtables ] [ iptables-legacy ] \
+echo "$txt_text_title $txt_text_info [ Without rules xtables ] [ iptables-legacy ] \
 [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_ok [ With rules xtables ] [ iptables-legacy ] \
+echo "$txt_text_title $txt_text_ok [ With rules xtables ] [ iptables-legacy ] \
 [ $fromrules ] [ listing rules .. ]"
 echo
 $cmd_command_ip4tableslegacy -t filter -v -L -n
 ;;
 esac
-echo "$text_md"
+echo "$txt_text_md"
 case $nftcuatro in
-"$NULL") echo "$title_md $text_info [ Without rules nftables ] \
+"$NULL") echo "$txt_text_title $txt_text_info [ Without rules nftables ] \
 [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_ok [ With rules nftables ] [ iptables-nft ] \
+echo "$txt_text_title $txt_text_ok [ With rules nftables ] [ iptables-nft ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
 $cmd_command_ip4tablesnft -t filter -v -L -n
@@ -4610,7 +4610,7 @@ exit; fi
 if [ "$cmd_first_option" == "listnum6" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List numerical filter ipv6 ] \
+echo "$txt_text_title $txt_text_info [ List numerical filter ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
 legacycuatro=$("$cmd_command_ip6tableslegacy" -t filter -L INPUT 1 && \
 "$cmd_command_ip6tableslegacy" -t filter -L OUTPUT 1 ) &> /dev/null
@@ -4619,21 +4619,21 @@ nftcuatro=$("$cmd_command_ip6tablesnft" -t filter -L INPUT 1 && \
 fromrules="filter-numerical-ip6"
 echo
 case $legacycuatro in
-"$NULL") echo "$title_md $text_info [ Without rules xtables ] \
+"$NULL") echo "$txt_text_title $txt_text_info [ Without rules xtables ] \
 [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "$title_md $text_ok [ With rules xtables ] \
+echo "$txt_text_title $txt_text_ok [ With rules xtables ] \
 [ iptables-legacy ] [ $fromrules ]"
 echo
 $cmd_command_ip4tableslegacy -t filter -v -L -n
 ;;
 esac
-echo "$text_md"
+echo "$txt_text_md"
 case $nftcuatro in
-"$NULL") echo "$title_md $text_info [ Without rules nftables ] \
+"$NULL") echo "$txt_text_title $txt_text_info [ Without rules nftables ] \
 [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" ;;
 *)
-echo "$title_md $text_ok [ With rules nftables ] \
+echo "$txt_text_title $txt_text_ok [ With rules nftables ] \
 [ iptables-nft ] [ $fromrules ]" 
 echo
 $cmd_command_ip4tablesnft -t filter -v -L -n
@@ -4653,16 +4653,16 @@ exit; fi
 if [ "$cmd_first_option" == "list-filter4" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List filter ipv4 ] \
+echo "$txt_text_title $txt_text_info [ List filter ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip4"
 echo
-echo "$title_md $text_ok [ With rules xtables ] \
+echo "$txt_text_title $txt_text_ok [ With rules xtables ] \
 [ iptables-legacy ] [ $fromrules ]"
 echo
 $cmd_command_ip4tableslegacy -t filter -v -L $cfg_config_listrules_conceptual
 echo
-echo "$title_md $text_ok [ With rules nftables ] \
+echo "$txt_text_title $txt_text_ok [ With rules nftables ] \
 [ iptables-nft ] [ $fromrules ]" 
 echo
 $cmd_command_ip4tablesnft -t filter -v -L $cfg_config_listrules_conceptual
@@ -4680,15 +4680,15 @@ exit; fi
 if [ "$cmd_first_option" == "list-forward" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List filter forward ipv4 ] \
+echo "$txt_text_title $txt_text_info [ List filter forward ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip4"
 echo
-echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $cmd_command_ip4tableslegacy -t filter -v -L FORWARD $cfg_config_listrules_conceptual
 echo
-echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $cmd_command_ip4tablesnft -t filter -v -L FORWARD $cfg_config_listrules_conceptual
 ####
@@ -4705,15 +4705,15 @@ exit; fi
 if [ "$cmd_first_option" == "list-filter6" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List filter ipv6 ] \
+echo "$txt_text_title $txt_text_info [ List filter ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip6"
 echo
-echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
+echo "$txt_text_title $txt_text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
 $cmd_command_ip6tableslegacy -v -L $cfg_config_listrules_conceptual
 echo
-echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo "$txt_text_title $txt_text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
 $cmd_command_ip6tablesnft -v -L $cfg_config_listrules_conceptual
 ####
@@ -4730,15 +4730,15 @@ exit; fi
 if [ "$cmd_first_option" == "list-forward6" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List filter forward ipv6 ] \
+echo "$txt_text_title $txt_text_info [ List filter forward ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip6"
 echo
-echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $cmd_command_ip6tableslegacy -t filter -v -L FORWARD $cfg_config_listrules_conceptual
 echo
-echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $cmd_command_ip6tablesnft -t filter -v -L FORWARD $cfg_config_listrules_conceptual
 ####
@@ -4755,15 +4755,15 @@ exit; fi
 if [ "$cmd_first_option" == "list-nat4" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List nat ipv4 ] \
+echo "$txt_text_title $txt_text_info [ List nat ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="nat-ip4"
 echo
-echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $cmd_command_ip4tableslegacy -t nat -v -L $cfg_config_listrules_conceptual
 echo
-echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $cmd_command_ip4tablesnft -t nat -v -L $cfg_config_listrules_conceptual
 ####
@@ -4780,15 +4780,15 @@ exit; fi
 if [ "$cmd_first_option" == "list-nat6" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List nat ipv6] \
+echo "$txt_text_title $txt_text_info [ List nat ipv6] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="nat-ip6"
 echo
-echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $cmd_command_ip6tableslegacy -t nat -v -L $cfg_config_listrules_conceptual
 echo
-echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $cmd_command_ip6tablesnft -t nat -v -L $cfg_config_listrules_conceptual 
 ####
@@ -4805,15 +4805,15 @@ exit; fi
 if [ "$cmd_first_option" == "listnum-filter4" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List filter ipv4 in numerical ] \
+echo "$txt_text_title $txt_text_info [ List filter ipv4 in numerical ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip4"
 echo
-echo "$title_md $text_info [ With rules netfilter ] [ iptables-nft ] [ $fromrules ]"  
+echo "$txt_text_title $txt_text_info [ With rules netfilter ] [ iptables-nft ] [ $fromrules ]"  
 echo
 $cmd_command_ip4tableslegacy -v -L -n 
 echo
-echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $cmd_command_ip4tablesnft -v -L -n
 ####
@@ -4830,15 +4830,15 @@ exit; fi
 if [ "$cmd_first_option" == "list-forwardnum" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List filter forward ipv4 in numerical ] \
+echo "$txt_text_title $txt_text_info [ List filter forward ipv4 in numerical ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip4"
 echo
-echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $cmd_command_ip4tableslegacy -t filter -v -L FORWARD -n
 echo
-echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $cmd_command_ip4tablesnft -t filter -v -L FORWARD -n
 ####
@@ -4855,15 +4855,15 @@ exit; fi
 if [ "$cmd_first_option" == "listnum-filter6" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List filter ipv6 in numerical ] \
+echo "$txt_text_title $txt_text_info [ List filter ipv6 in numerical ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-ip6"
 echo
-echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
+echo "$txt_text_title $txt_text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
 $cmd_command_ip6tableslegacy -v -L -n
 echo
-echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
+echo "$txt_text_title $txt_text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
 $cmd_command_ip6tablesnft -v -L -n
 ####
@@ -4880,15 +4880,15 @@ exit; fi
 if [ "$cmd_first_option" == "list-forwardnum6" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List filter forward ipv6 in numerical ] \
+echo "$txt_text_title $txt_text_info [ List filter forward ipv6 in numerical ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="filter-forward-ip6"
 echo
-echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $cmd_command_ip6tableslegacy -t filter -v -L FORWARD -n
 echo
-echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $cmd_command_ip6tablesnft -t filter -v -L FORWARD -n
 ####
@@ -4905,15 +4905,15 @@ exit; fi
 if [ "$cmd_first_option" == "list-mangle4" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List mangle ipv4 ] \
+echo "$txt_text_title $txt_text_info [ List mangle ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="mangle-ip4"
 echo
-echo "$title_md $text_info [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $cmd_command_ip4tableslegacy -t mangle -v -L $cfg_config_listrules_conceptual
 echo
-echo "$title_md $text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $cmd_command_ip4tablesnft -t mangle -v -L $cfg_config_listrules_conceptual
 echo
@@ -4931,15 +4931,15 @@ exit; fi
 if [ "$cmd_first_option" == "list-mangle6" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List mangle ipv6 ] \
+echo "$txt_text_title $txt_text_info [ List mangle ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="mangle-ip6"
 echo
-echo "$title_md $text_info [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $cmd_command_ip6tableslegacy -t mangle -v -L $cfg_config_listrules_conceptual
 echo
-echo "$title_md $text_info [ The nftables ] [iptables-nft ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ The nftables ] [iptables-nft ] [ $fromrules ]"
 echo
 $cmd_command_ip6tablesnft -t mangle -v -L $cfg_config_listrules_conceptual
 ####
@@ -4956,15 +4956,15 @@ exit; fi
 if [ "$cmd_first_option" == "list-raw4" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List raw ipv4 ] \
+echo "$txt_text_title $txt_text_info [ List raw ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="raw-ip4"
 echo
-echo "$title_md $text_info [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $cmd_command_ip4tableslegacy -t raw -v -L $cfg_config_listrules_conceptual
 echo
-echo "$title_md $text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $cmd_command_ip4tablesnft -t raw -v -L $cfg_config_listrules_conceptual
 ####
@@ -4981,15 +4981,15 @@ exit; fi
 if [ "$cmd_first_option" == "list-raw6" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List raw ipv6 ] \
+echo "$txt_text_title $txt_text_info [ List raw ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="raw-ip6"
 echo
-echo "$title_md $text_info [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $cmd_command_ip6tableslegacy -t raw -v -L $cfg_config_listrules_conceptual
 echo
-echo "$title_md $text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $cmd_command_ip6tablesnft -t raw -v -L $cfg_config_listrules_conceptual
 ####
@@ -5006,15 +5006,15 @@ exit; fi
 if [ "$cmd_first_option" == "list-security4" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List security ipv4 ] \
+echo "$txt_text_title $txt_text_info [ List security ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="security-ip4"
 echo
-echo "$title_md $text_info [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $cmd_command_ip4tableslegacy -t security -v -L $cfg_config_listrules_conceptual
 echo
-echo "$title_md $text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $cmd_command_ip4tablesnft -t security -v -L $cfg_config_listrules_conceptual
 ####
@@ -5031,15 +5031,15 @@ exit; fi
 if [ "$cmd_first_option" == "list-security6" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List security ipv6 ] \
+echo "$txt_text_title $txt_text_info [ List security ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
 fromrules="security-ip6"
 echo
-echo "$title_md $text_info [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $cmd_command_ip6tableslegacy -t security -v -L $cfg_config_listrules_conceptual
 echo
-echo "$title_md $text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $cmd_command_ip6tablesnft -t security -v -L $cfg_config_listrules_conceptual
 ####
@@ -5056,14 +5056,14 @@ exit; fi
 if [ "$cmd_first_option" == "list-ebtables" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List ebtables ] "
+echo "$txt_text_title $txt_text_info [ List ebtables ] "
 fromrules="ebtables"
 echo
-echo "$title_md $text_info [ ebtables: filter ethernet ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ ebtables: filter ethernet ] [ $fromrules ]"
 echo
 $cmd_command_ebtables -L -t filter
 echo
-echo "$title_md $text_info [ ebtables: nat ethernet ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ ebtables: nat ethernet ] [ $fromrules ]"
 echo
 $cmd_command_ebtables -L -t nat
 ####
@@ -5080,10 +5080,10 @@ exit; fi
 if [ "$cmd_first_option" == "list-arptables" ]; then 
 ####
 ####
-echo "$title_md $text_info [ List arptables ipv4 ] "
+echo "$txt_text_title $txt_text_info [ List arptables ipv4 ] "
 fromrules="arptables"
 echo
-echo "$title_md $text_info [ arptables: filter arptables ] [ $fromrules ]"
+echo "$txt_text_title $txt_text_info [ arptables: filter arptables ] [ $fromrules ]"
 echo
 $cmd_command_arptables -L
 ####
@@ -5100,26 +5100,26 @@ exit; fi
 if [ "$cmd_first_option" == "clone-wallsystem" ] && [ "$cmd_second_option" == "$NULL" ]  ; then 
 ####
 ####
-echo "$text_md $text_info [ usage: ] [ $cmd_internal clone-wallsystem firewall ]"
+echo "$txt_text_md $txt_text_info [ usage: ] [ $cmd_internal clone-wallsystem firewall ]"
 exit; fi
 ####
 ####
 if [ "$cmd_first_option" == "clone-wallsystem" ] && [ "$cmd_second_option" != "$NULL" ] ; then 
 archivo="$cmd_second_option"
 case $archivo in shield-*);;client-*);; game-*);; games-*);; server-*);;
-*) echo "$title $text_fail choose a valid system firewall to clone" ; exit ;; esac
+*) echo "$title $txt_text_fail choose a valid system firewall to clone" ; exit ;; esac
 $cmd_internal code $cmd_second_option | $cmd_command_grep -E "client_|server_|config_|allow_|net_" \
 &> $cmd_default_directory_custom/$archivo
 ####
 ####
 if [ -s "$cmd_default_directory_custom/$archivo" ] ; then 
 $cmd_command_cat  $cmd_default_directory_custom/$archivo ;
-echo "$title_md $text_ok Created custom : $archivo  "
-echo "$title_md $text_info Modify  : fwiptables modify-custom $archivo  "
-echo "$title_md $text_info Launch  : fwiptables load-custom $archivo  "
+echo "$txt_text_title $txt_text_ok Created custom : $archivo  "
+echo "$txt_text_title $txt_text_info Modify  : fwiptables modify-custom $archivo  "
+echo "$txt_text_title $txt_text_info Launch  : fwiptables load-custom $archivo  "
 else rm $cmd_default_directory_custom/$archivo
-echo "$title_md $text_info choose one valid wallsystem to clone to custom"
-echo "$title_md $text_fail config no done $archivo" ; fi
+echo "$txt_text_title $txt_text_info choose one valid wallsystem to clone to custom"
+echo "$txt_text_title $txt_text_fail config no done $archivo" ; fi
 ####
 ####
 exit; fi
@@ -5134,7 +5134,7 @@ exit; fi
 if [ "$cmd_first_option" == "new-full-custom" ] && [ "$cmd_second_option" == "$NULL" ]  ; then 
 ####
 ####
-echo "$text_md $text_info [ usage: ] [ $cmd_internal new-full-custom config-new ]"
+echo "$txt_text_md $txt_text_info [ usage: ] [ $cmd_internal new-full-custom config-new ]"
 exit; fi
 ####
 ####
@@ -5142,7 +5142,7 @@ if [ "$cmd_first_option" == "new-full-custom" ] && [ "$cmd_second_option" != "$N
 archivo="$cmd_second_option"
 cp "$default_fullcfg_eng" "$cmd_default_directory_custom/$archivo"
 $cfg_favorite_text_editor $cmd_default_directory_custom/$archivo
-echo " $text_ok created file $archivo"
+echo " $txt_text_ok created file $archivo"
 ####
 ####
 exit; fi
@@ -5157,7 +5157,7 @@ exit; fi
 if [ "$cmd_first_option" == "nueva-completa-custom" ] && [ "$cmd_second_option" == "$NULL" ]  ; then 
 ####
 ####
-echo "$text_md $text_info [ usage: ] [ $cmd_internal nueva-completa-custom config-nueva ]"
+echo "$txt_text_md $txt_text_info [ usage: ] [ $cmd_internal nueva-completa-custom config-nueva ]"
 exit; fi
 ####
 ####
@@ -5165,7 +5165,7 @@ if [ "$cmd_first_option" == "nueva-completa-custom" ] && [ "$cmd_second_option" 
 archivo="$cmd_second_option"
 cp "$default_fullcfg_spa" "$cmd_default_directory_custom/$archivo"
 $cfg_favorite_text_editor $cmd_default_directory_custom/$archivo
-echo " $text_ok created file $archivo"
+echo " $txt_text_ok created file $archivo"
 ####
 ####
 exit; fi
@@ -5180,7 +5180,7 @@ exit; fi
 if [ "$cmd_first_option" == "new-mini-custom" ] && [ "$cmd_second_option" == "$NULL" ]  ; then 
 ####
 ####
-echo "$text_md $text_info [ usage: ] [ $cmd_internal new-mini-custom config-new ]"
+echo "$txt_text_md $txt_text_info [ usage: ] [ $cmd_internal new-mini-custom config-new ]"
 exit; fi
 ####
 ####
@@ -5188,7 +5188,7 @@ if [ "$cmd_first_option" == "new-mini-custom" ] && [ "$cmd_second_option" != "$N
 archivo="$cmd_second_option"
 cp "$default_minicfg_eng" "$cmd_default_directory_custom/$archivo"
 $cfg_favorite_text_editor $cmd_default_directory_custom/$archivo
-echo " $text_ok created file $archivo"
+echo " $txt_text_ok created file $archivo"
 ####
 ####
 exit; fi
@@ -5203,7 +5203,7 @@ exit; fi
 if [ "$cmd_first_option" == "nueva-mini-custom" ] && [ "$cmd_second_option" == "$NULL" ]  ; then 
 ####
 ####
-echo "$text_md $text_info [ usage: ] [ $cmd_internal nueva-mini-custom config-nueva ]"
+echo "$txt_text_md $txt_text_info [ usage: ] [ $cmd_internal nueva-mini-custom config-nueva ]"
 exit; fi
 ####
 ####
@@ -5211,7 +5211,7 @@ if [ "$cmd_first_option" == "nueva-mini-custom" ] && [ "$cmd_second_option" != "
 archivo="$cmd_second_option"
 cp "$default_minicfg_spa" "$cmd_default_directory_custom/$archivo"
 $cfg_favorite_text_editor $cmd_default_directory_custom/$archivo
-echo " $text_ok created file $archivo"
+echo " $txt_text_ok created file $archivo"
 ####
 ####
 exit; fi
@@ -5226,7 +5226,7 @@ exit; fi
 if [ "$cmd_first_option" == "new-tiny-custom" ] && [ "$cmd_second_option" == "$NULL" ]  ; then 
 ####
 ####
-echo "$text_md $text_info [ usage: ] [ $cmd_internal new-tiny-custom config-new ]"
+echo "$txt_text_md $txt_text_info [ usage: ] [ $cmd_internal new-tiny-custom config-new ]"
 exit; fi
 ####
 ####
@@ -5234,7 +5234,7 @@ if [ "$cmd_first_option" == "new-tiny-custom" ] && [ "$cmd_second_option" != "$N
 archivo="$cmd_second_option"
 cp "$default_tinycfg_eng" "$cmd_default_directory_custom/$archivo"
 $cfg_favorite_text_editor $cmd_default_directory_custom/$archivo
-echo " $text_ok created file $archivo"
+echo " $txt_text_ok created file $archivo"
 ####
 ####
 exit; fi
@@ -5249,7 +5249,7 @@ exit; fi
 if [ "$cmd_first_option" == "nueva-diminuta-custom" ] && [ "$cmd_second_option" == "$NULL" ]  ; then 
 ####
 ####
-echo "$text_md $text_info [ usage: ] [ $cmd_internal nueva-diminuta-custom config-nueva ]"
+echo "$txt_text_md $txt_text_info [ usage: ] [ $cmd_internal nueva-diminuta-custom config-nueva ]"
 exit; fi
 ####
 ####
@@ -5257,7 +5257,7 @@ if [ "$cmd_first_option" == "nueva-diminuta-custom" ] && [ "$cmd_second_option" 
 archivo="$cmd_second_option"
 cp "$default_tinycfg_spa" "$cmd_default_directory_custom/$archivo"
 $cfg_favorite_text_editor $cmd_default_directory_custom/$archivo
-echo " $text_ok Archivo creado $archivo"
+echo " $txt_text_ok Archivo creado $archivo"
 ####
 ####
 exit; fi
@@ -5274,14 +5274,14 @@ if [ "$cmd_first_option" == "modify-custom" ]; then
 ###
 if [ ! -f "$cmd_default_directory_custom/$cmd_second_option" ] ; then
 $cmd_internal names-custom
-echo "$text_md $text_info [ usage: ] [ $cmd_internal modify-custom config ]"
+echo "$txt_text_md $txt_text_info [ usage: ] [ $cmd_internal modify-custom config ]"
 exit; fi
 ####
 ####
 if [ -f "$cmd_default_directory_custom/$cmd_second_option" ] ; then
 cp "$cmd_default_directory_custom/$cmd_second_option" "$cmd_default_cache_necesary/$cmd_second_option" &> /dev/null
 $cfg_favorite_text_editor "$cmd_default_directory_custom/$cmd_second_option"
-echo "$title_md $text_ok [ load-custom file $cmd_second_option ]"
+echo "$txt_text_title $txt_text_ok [ load-custom file $cmd_second_option ]"
 clear; fi
 ####
 ####
@@ -5298,7 +5298,7 @@ if [ "$cmd_first_option" == "show-custom" ] ; then
 ####
 ####
 if [ ! -f "$cmd_default_directory_custom"/"$cmd_second_option" ] ; then 
-echo "$title_md $text_info [ Usage: $cmd_internal show-custom config-cfg ]" ; exit; fi
+echo "$txt_text_title $txt_text_info [ Usage: $cmd_internal show-custom config-cfg ]" ; exit; fi
 ####
 ####
 if [ -f "$cmd_default_directory_custom"/"$cmd_second_option" ] ; then 
@@ -5319,7 +5319,7 @@ if [ "$cmd_first_option" == "del-custom" ]; then
 ####
 ####
 if [ ! -f $cmd_default_directory_custom/$cmd_second_option ] ; then
-echo "$title_md $text_info [ usage: ] [ $cmd_internal del-custom config-old ]"
+echo "$txt_text_title $txt_text_info [ usage: ] [ $cmd_internal del-custom config-old ]"
 exit ; fi
 ####
 ####
@@ -5341,16 +5341,16 @@ exit ; fi
 if [ "$cmd_first_option" == "names" ]; then 
 ####
 ####
-echo "$title_md $text_info [ list configs files saved in standard format ]"
-echo "$title_md $folder [ $cmd_default_directory_control ]"
+echo "$txt_text_title $txt_text_info [ list configs files saved in standard format ]"
+echo "$txt_text_title $folder [ $cmd_default_directory_control ]"
 echo 
-echo "$title_md $text_info [ Listing firewall names ]"
+echo "$txt_text_title $txt_text_info [ Listing firewall names ]"
 $cmd_command_tree $cmd_default_directory_control | $cmd_command_sed s/\-legacy\-ipv6//g | \
 $cmd_command_sed s/\-nft\-ipv6//g | \
 $cmd_command_sed s/\-legacy\-ipv4//g | $cmd_command_sed s/\-nft\-ipv4//g | \
 $cmd_command_sed s/\-arptables//g | $cmd_command_sed s/\-ebtables//g 
 echo
-echo "$title_md $text_ok [ Listed firewall names ]"
+echo "$txt_text_title $txt_text_ok [ Listed firewall names ]"
 ####
 ####
 exit; fi
@@ -5365,10 +5365,10 @@ exit; fi
 if [ "$cmd_first_option" == "reset" ]; then 
 ####
 ####
-echo "$title_md $text_info [ Reseting the firewall, stop-and-continue ]"
+echo "$txt_text_title $txt_text_info [ Reseting the firewall, stop-and-continue ]"
 $cmd_internal stop &> /dev/null
 $cmd_internal continue &> /dev/null
-echo "$title_md $text_ok [ firewall reseted ]"
+echo "$txt_text_title $txt_text_ok [ firewall reseted ]"
 ####
 ####
 exit; fi
@@ -5383,46 +5383,46 @@ exit; fi
 if  [ "$cmd_first_option" == "readme" ];  then
 ####
 ####
-echo "$text_md $text_md fwiptables. Firewall With iptables."
-echo "$text_md $text_md Intro content information                          $text_md"
-echo "$text_md $text_md Readme: description, location, install, uninstall. $text_md"
-echo "$text_md $text_md $text_md"
-echo "$title_md $text_md  [ fwiptables description ]             $text_md"
-echo "$text_md $text_md $text_md"
-echo "$text_md $text_md The fwiptables is a one-file WIZARD,     $text_md"
-echo "$text_md $text_md for iptables, with COMMAND-LINE,         $text_md"
-echo "$text_md $text_md and CLI-MENU, and GUI-MENU,              $text_md"
-echo "$text_md $text_md and GUI-ROLL, and GUI-SHELL.             $text_md"
-echo "$text_md $text_md $text_md"
-echo "$text_md $text_md From one system firewall to choose one,  $text_md"
-echo "$text_md $text_md with eraserules, or template custom,     $text_md"
-echo "$text_md $text_md with wizards: tiny, mini, and full,      $text_md"  
-echo "$text_md $text_md with added comments rules in firewall.   $text_md"
-echo "$text_md $text_md $text_md"
-echo "$text_md $text_md With rules ipv4, rules ipv6, ebtables, arptables,  $text_md"
-echo "$text_md $text_md with netfilter neftables, netfilter xtables,       $text_md"
-echo "$text_md $text_md with tools ip, wizards for generate new rules,     $text_md"
-echo "$text_md $text_md with save/load rules with files standard iptables, $text_md"
-echo "$text_md $text_md with shield to ssh or other servers choosed,       $text_md"         
-echo "$text_md $text_md with limit bandwidth, string word,                 $text_md"
-echo "$text_md $text_md with host whitelist, host blacklist,               $text_md"
-echo "$text_md $text_md with other more capabilities of firewall.          $text_md"
-echo "$text_md $text_md $text_md"
-echo "$title_md $text_md  [ fwiptables location ]                          $text_md"
-echo "$text_md $text_md $text_md"
-echo "$text_md $text_md  File    Location:   $cmd_directory/$cmd_filename  $text_md"
-echo "$text_md $text_md  Config Directory:   $cmd_default_directory_necesary      $text_md"
-echo "$text_md $text_md  Cache  Directory:   $cmd_default_cache_basenecesary $text_md "
-echo "$text_md $text_md $text_md"
-echo "$title_md $text_md [ fwiptables install ]                      $text_md"
-echo "$text_md $text_md $text_md"
-echo "$text_md $text_md  su root TYPE: su root                       $text_md"    
-echo "$text_md $text_md  put bit TYPE: chmod 755 $cmd_internal       $text_md"
-echo "$text_md $text_md  install TYPE: $cmd_internal install         $text_md" 
-echo "$text_md $text_md $text_md"
-echo "$title_md $text_md [ fwiptables uninstall ]                    $text_md"
-echo "$text_md $text_md $text_md"
-echo "$text_md $text_md uninstall TYPE: $cmd_internal uninstall      $text_md"
+echo "$txt_text_md $txt_text_md fwiptables. Firewall With iptables."
+echo "$txt_text_md $txt_text_md Intro content information                          $txt_text_md"
+echo "$txt_text_md $txt_text_md Readme: description, location, install, uninstall. $txt_text_md"
+echo "$txt_text_md $txt_text_md $txt_text_md"
+echo "$txt_text_title $txt_text_md  [ fwiptables description ]             $txt_text_md"
+echo "$txt_text_md $txt_text_md $txt_text_md"
+echo "$txt_text_md $txt_text_md The fwiptables is a one-file WIZARD,     $txt_text_md"
+echo "$txt_text_md $txt_text_md for iptables, with COMMAND-LINE,         $txt_text_md"
+echo "$txt_text_md $txt_text_md and CLI-MENU, and GUI-MENU,              $txt_text_md"
+echo "$txt_text_md $txt_text_md and GUI-ROLL, and GUI-SHELL.             $txt_text_md"
+echo "$txt_text_md $txt_text_md $txt_text_md"
+echo "$txt_text_md $txt_text_md From one system firewall to choose one,  $txt_text_md"
+echo "$txt_text_md $txt_text_md with eraserules, or template custom,     $txt_text_md"
+echo "$txt_text_md $txt_text_md with wizards: tiny, mini, and full,      $txt_text_md"  
+echo "$txt_text_md $txt_text_md with added comments rules in firewall.   $txt_text_md"
+echo "$txt_text_md $txt_text_md $txt_text_md"
+echo "$txt_text_md $txt_text_md With rules ipv4, rules ipv6, ebtables, arptables,  $txt_text_md"
+echo "$txt_text_md $txt_text_md with netfilter neftables, netfilter xtables,       $txt_text_md"
+echo "$txt_text_md $txt_text_md with tools ip, wizards for generate new rules,     $txt_text_md"
+echo "$txt_text_md $txt_text_md with save/load rules with files standard iptables, $txt_text_md"
+echo "$txt_text_md $txt_text_md with shield to ssh or other servers choosed,       $txt_text_md"         
+echo "$txt_text_md $txt_text_md with limit bandwidth, string word,                 $txt_text_md"
+echo "$txt_text_md $txt_text_md with host whitelist, host blacklist,               $txt_text_md"
+echo "$txt_text_md $txt_text_md with other more capabilities of firewall.          $txt_text_md"
+echo "$txt_text_md $txt_text_md $txt_text_md"
+echo "$txt_text_title $txt_text_md  [ fwiptables location ]                          $txt_text_md"
+echo "$txt_text_md $txt_text_md $txt_text_md"
+echo "$txt_text_md $txt_text_md  File    Location:   $cmd_directory/$cmd_filename  $txt_text_md"
+echo "$txt_text_md $txt_text_md  Config Directory:   $cmd_default_directory_necesary      $txt_text_md"
+echo "$txt_text_md $txt_text_md  Cache  Directory:   $cmd_default_cache_basenecesary $txt_text_md "
+echo "$txt_text_md $txt_text_md $txt_text_md"
+echo "$txt_text_title $txt_text_md [ fwiptables install ]                      $txt_text_md"
+echo "$txt_text_md $txt_text_md $txt_text_md"
+echo "$txt_text_md $txt_text_md  su root TYPE: su root                       $txt_text_md"    
+echo "$txt_text_md $txt_text_md  put bit TYPE: chmod 755 $cmd_internal       $txt_text_md"
+echo "$txt_text_md $txt_text_md  install TYPE: $cmd_internal install         $txt_text_md" 
+echo "$txt_text_md $txt_text_md $txt_text_md"
+echo "$txt_text_title $txt_text_md [ fwiptables uninstall ]                    $txt_text_md"
+echo "$txt_text_md $txt_text_md $txt_text_md"
+echo "$txt_text_md $txt_text_md uninstall TYPE: $cmd_internal uninstall      $txt_text_md"
 ####
 ####
 exit; fi
@@ -5437,29 +5437,29 @@ exit; fi
 if  [ "$cmd_first_option" == "intro" ]; then
 ####
 ####
-echo "$text_md" "$text_md" "Readme"
-echo "$text_md" "$text_md" "Version"
-echo "$text_md" "$text_md" "About"
-echo "$text_md" "$text_md" "Notes"
-echo "$text_md" "$text_md" "Compile"
-echo "$text_md" "$text_md" "Depends"
-echo "$text_md" "$text_md" "Examples"
-echo "$text_md" "$text_md" "Options"
-echo "$text_md"
+echo "$txt_text_md" "$txt_text_md" "Readme"
+echo "$txt_text_md" "$txt_text_md" "Version"
+echo "$txt_text_md" "$txt_text_md" "About"
+echo "$txt_text_md" "$txt_text_md" "Notes"
+echo "$txt_text_md" "$txt_text_md" "Compile"
+echo "$txt_text_md" "$txt_text_md" "Depends"
+echo "$txt_text_md" "$txt_text_md" "Examples"
+echo "$txt_text_md" "$txt_text_md" "Options"
+echo "$txt_text_md"
 $cmd_internal readme
-echo "$text_md"
+echo "$txt_text_md"
 $cmd_internal version
-echo "$text_md"
+echo "$txt_text_md"
 $cmd_internal about
-echo "$text_md"
+echo "$txt_text_md"
 $cmd_internal notes
-echo "$text_md"
+echo "$txt_text_md"
 $cmd_internal compile
-echo "$text_md"
+echo "$txt_text_md"
 $cmd_internal depends
-echo "$text_md"
+echo "$txt_text_md"
 $cmd_internal examples
-echo "$text_md"
+echo "$txt_text_md"
 $cmd_internal options
 ####
 ####
@@ -5476,29 +5476,29 @@ if   [ "$cmd_first_option" == "ip-forward" ];  then
 ####
 ####
 if   [ "$cmd_second_option" == "$NULL" ]; then
-echo "$title_md [ $cmd_first_option ]"
-echo "$title_md launch: fwiptables ip-forward [ list | on | off ]" ; exit ; fi
+echo "$txt_text_title [ $cmd_first_option ]"
+echo "$txt_text_title launch: fwiptables ip-forward [ list | on | off ]" ; exit ; fi
 ####
 ####
 if   [ "$cmd_second_option" == "list" ]; then
-echo "$title_md $text_info  [ Show ip forwading in kernel ] "
-echo "$title_md [ Actived 1 or deactived 0 ] [ ipforwading with sysctl ]"
+echo "$txt_text_title $txt_text_info  [ Show ip forwading in kernel ] "
+echo "$txt_text_title [ Actived 1 or deactived 0 ] [ ipforwading with sysctl ]"
 $cmd_command_sysctl -a | $cmd_command_grep -i  forwarding ; exit ; fi
 ####
 ####
 if   [ "$cmd_second_option" == "on" ]; then
-echo "$title_md $text_info  [ Activating.. ip forwading in kernel ]"
+echo "$txt_text_title $txt_text_info  [ Activating.. ip forwading in kernel ]"
 for a in $($cmd_command_sysctl -a | $cmd_command_grep -i  forwarding | $cmd_command_cut -d " " -f 1)
 do $cmd_command_sysctl -w $a=1 ; done ; exit ; fi
 ####
 ####
 if   [ "$cmd_second_option" == "off" ]; then
-echo "$header_ok $text_info  [ Deactivating.. ip forwading in kernel ]"
+echo "$header_ok $txt_text_info  [ Deactivating.. ip forwading in kernel ]"
 for a in $($cmd_command_sysctl -a | $cmd_command_grep -i  forwarding | $cmd_command_cut -d " " -f 1)
 do $cmd_command_sysctl -w $a=0 ; done ; exit; fi
 ####
 ####
-echo "$title_md launch: fwiptables ip-forward [ list | on | off ]"
+echo "$txt_text_title launch: fwiptables ip-forward [ list | on | off ]"
 ####
 ####
 exit ; fi
@@ -5513,17 +5513,17 @@ exit ; fi
 if [ "$cmd_first_option" == "download" ] ; then
 ####
 ####
-echo "$title_md $text_info [ $cmd_internal download ] [ download md ] "
+echo "$txt_text_title $txt_text_info [ $cmd_internal download ] [ download md ] "
 echo
-echo "$title_md the last version from fwiptables. Firewall With iptables"
+echo "$txt_text_title the last version from fwiptables. Firewall With iptables"
 echo
-echo "$title_md [ Link ] [ Download web link from sourceforge.com ] "
+echo "$txt_text_title [ Link ] [ Download web link from sourceforge.com ] "
 echo "$cmd_web_download_sourceforge"
 echo
-echo "$title_md [ Link ] [ Download web link from github.com ] "
+echo "$txt_text_title [ Link ] [ Download web link from github.com ] "
 echo "$cmd_web_download_github"
 echo 
-echo "$title_md [ Link ] [ Download web link from git.devuan.org ] "
+echo "$txt_text_title [ Link ] [ Download web link from git.devuan.org ] "
 echo "$cmd_web_download_devuan"
 echo 
 ####
@@ -5540,9 +5540,9 @@ exit; fi
 if [ "$cmd_first_option" == "uninstall" ] ; then
 ####
 ####
-echo "$title_md $text_info [ uninstaller ] [ uninstall md ] "
+echo "$txt_text_title $txt_text_info [ uninstaller ] [ uninstall md ] "
 rm $cmd_directory/$cmd_filename &> /dev/null
-echo "$title_md $text_ok [ deleted binary $cmd_installed ]"
+echo "$txt_text_title $txt_text_ok [ deleted binary $cmd_installed ]"
 ####
 ####
 exit; fi
@@ -5558,46 +5558,46 @@ if [ "$cmd_first_option" == "install" ]; then
 ####
 ####
 #### message
-echo "$title_md Waiting several seconds, while create new configuration"
+echo "$txt_text_title Waiting several seconds, while create new configuration"
 #### 
 #### 
 ####  copy
 cp $cmd_notinstalled $cmd_installed && 
 chmod 755 $cmd_installed &> /dev/null &&
-echo "$text_md $text_ok Installed $cmd_name $text_md $text_file [$cmd_installed]" ||
-echo "$text_md $text_fail Not installed"
+echo "$txt_text_md $txt_text_ok Installed $cmd_name $txt_text_md $txt_text_file [$cmd_installed]" ||
+echo "$txt_text_md $txt_text_fail Not installed"
 ####
 ####
 #### preferences-regen
 $cmd_notinstalled preferences-regen &> /dev/null &&
-echo "$text_md $text_ok Updated preferences $text_file" &&
-echo "$text_md [$file_default_preferences]" ||
-echo "$text_md $text_fail Not update preferences"
+echo "$txt_text_md $txt_text_ok Updated preferences $txt_text_file" &&
+echo "$txt_text_md [$file_default_preferences]" ||
+echo "$txt_text_md $txt_text_fail Not update preferences"
 ####
 ####
 #### alias-regen
 $cmd_notinstalled alias-regen &> /dev/null &&
-echo "$text_md $text_ok Updated alias $text_file" &&
-echo "$text_md [$file_default_alias]" ||
-echo "$text_md $text_fail Not update alias"
+echo "$txt_text_md $txt_text_ok Updated alias $txt_text_file" &&
+echo "$txt_text_md [$file_default_alias]" ||
+echo "$txt_text_md $txt_text_fail Not update alias"
 ####
 ####
 #### templates-regen
 $cmd_notinstalled templates-regen &> /dev/null &&
-echo "$text_md $text_ok Updated templates $text_folder" &&
-echo "$text_md [$cmd_default_directory_template]" || 
-echo "$text_md $text_fail Not update templates"
+echo "$txt_text_md $txt_text_ok Updated templates $txt_text_folder" &&
+echo "$txt_text_md [$cmd_default_directory_template]" || 
+echo "$txt_text_md $txt_text_fail Not update templates"
 ####
 ####
 #### fonts
-echo "$text_md $text_info Source install: $cmd_notinstalled"
-echo "$text_md $text_info Final  install: $cmd_installed"
+echo "$txt_text_md $txt_text_info Source install: $cmd_notinstalled"
+echo "$txt_text_md $txt_text_info Final  install: $cmd_installed"
 ####
 ####
 #### comprobe
 if [ -f "$cmd_installed" ]
-then echo "$text_md $text_ok Installed $cmd_name"
-else echo "$text_md $text_fail Not installed $cmd_name"
+then echo "$txt_text_md $txt_text_ok Installed $cmd_name"
+else echo "$txt_text_md $txt_text_fail Not installed $cmd_name"
 fi
 #### 
 ####
@@ -5628,8 +5628,8 @@ if [ "$cmd_second_option" == "lines" ] ; then echo "Lines numbers:"
 $cmd_command_cat $file_default_usernotes | $cmd_command_wc -l ; exit; fi
 #### info
 echo " # Option: add|search|list|lines"
-echo " # $text_info Use without comma, and quote when spaces: to add, to search"
-echo " # $text_file [$file_default_usernotes]"
+echo " # $txt_text_info Use without comma, and quote when spaces: to add, to search"
+echo " # $txt_text_file [$file_default_usernotes]"
 #### 
 ####
 exit; fi
@@ -5645,13 +5645,13 @@ if   [ "$cmd_first_option" == "expert-gen-readme" ];  then
 ####
 ####
 #### text introduction
-echo "$title_md $text_info  [ generate actual file and readme from intro program ] "
+echo "$txt_text_title $txt_text_info  [ generate actual file and readme from intro program ] "
 #### create file
 cp $0 $cmd_default_directory_readme/$cmd_name-$cmd_version-bash &&
-echo "$title_md $text_ok Created $cmd_default_directory_readme/$cmd_name-$cmd_version-bash"
+echo "$txt_text_title $txt_text_ok Created $cmd_default_directory_readme/$cmd_name-$cmd_version-bash"
 #### create readme
 $0 intro > $cmd_default_directory_readme/README.md &&
-echo "$title_md $text_ok Created $cmd_default_directory_readme/$cmd_name-$cmd_version-README.md"
+echo "$txt_text_title $txt_text_ok Created $cmd_default_directory_readme/$cmd_name-$cmd_version-README.md"
 ####
 ####
 exit; fi
@@ -5664,7 +5664,7 @@ exit; fi
 ####
 ####
 if   [ "$cmd_first_option" == "expert-gen-deb" ];  then
-echo "$title_md $text_info  [ generate actual file debian ] "
+echo "$txt_text_title $txt_text_info  [ generate actual file debian ] "
 #### recreate the directories
 rm -R $cmd_default_directory_debian/deb/ &> /dev/null
 mkdir -p $cmd_default_directory_debian/deb/usr/bin &> /dev/null
@@ -5685,11 +5685,11 @@ echo "Description: $cmd_longdescription" &>> $cmd_default_directory_debian/deb/D
 #### echo " $cmd_longdescription ."  &>> $cmd_default_directory_debian/deb/DEBIAN/control
 #### architecture detect, only for shell script
 if [ "$cmd_format" != "Bourne-Again_shell_script," ]
-then echo "$title_md the $cmd_filename is not Bourne-Again_shell_script," ; exit ; fi
+then echo "$txt_text_title the $cmd_filename is not Bourne-Again_shell_script," ; exit ; fi
 #### it does the debian package noarch
 rm $cmd_default_directory_debian/$cmd_name-$cmd_version-noarch.deb &> /dev/null
 $cmd_command_dpkg -b $cmd_default_directory_debian/deb/ $cmd_default_directory_debian/$cmd_name-$cmd_version-noarch.deb && \
-echo "$text_md $text_ok file write in \
+echo "$txt_text_md $txt_text_ok file write in \
 $cmd_default_directory_debian/$cmd_name-$cmd_version-noarch.deb"   
 #### delete the directory temporal
 rm -R $cmd_default_directory_debian/deb/  &> /dev/null
@@ -5707,13 +5707,13 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-show-geoip" ]; then
 ####
 ####
-echo "$title_md $text_info  [ resolve the location to one ip or host ] "
+echo "$txt_text_title $txt_text_info  [ resolve the location to one ip or host ] "
 echo ; case $cmd_command_geoiplookup in "$NULL")
-echo "$text_md $text_fail [ Install geoiplookup command ]" ; exit  ;; esac
+echo "$txt_text_md $txt_text_fail [ Install geoiplookup command ]" ; exit  ;; esac
 case "$cmd_second_option" in "$NULL")
-echo "$title_md Selecting host geoip to fast.com for default"
+echo "$txt_text_title Selecting host geoip to fast.com for default"
 trazador="fast.com" ;; *) trazador="$cmd_second_option" ;; esac
-echo "$title_md $text_ok [ geoiplookup -i $trazador ]"
+echo "$txt_text_title $txt_text_ok [ geoiplookup -i $trazador ]"
 $cmd_command_geoiplookup -i $trazador
 echo 
 ####
@@ -5730,12 +5730,12 @@ exit; fi
 if   [ "$cmd_first_option" == "nodes" ]; then
 ####
 ####
-echo "$title_md $text_info [ Show the list arp-scan in the lan ] "
+echo "$txt_text_title $txt_text_info [ Show the list arp-scan in the lan ] "
 if [ "$cmd_command_arpscan" == "$NULL" ]; then
-echo "$title_md $text_fail [ install arp-scan command ]" ; exit ; fi
-echo "$title_md $text_info [ local net: ip lan .. ]"
+echo "$txt_text_title $txt_text_fail [ install arp-scan command ]" ; exit ; fi
+echo "$txt_text_title $txt_text_info [ local net: ip lan .. ]"
 $cmd_command_ip -4 route | $cmd_command_grep -i -v default
-echo "$title_md $text_info [ local scan: arp lan scan .. ]"
+echo "$txt_text_title $txt_text_info [ local scan: arp lan scan .. ]"
 $cmd_command_timeout -s SIGINT -v $cfg_server_time_waiting $cmd_command_arpscan -l -x
 ####
 ####
@@ -5751,8 +5751,8 @@ exit; fi
 if   [ "$cmd_first_option" == "donate" ]; then
 ####
 ####
-echo "$title_md $text_info [ donate to fwiptables project ] [ donate md ]"
-echo "$text_md Not at all"
+echo "$txt_text_title $txt_text_info [ donate to fwiptables project ] [ donate md ]"
+echo "$txt_text_md Not at all"
 ####
 ####
 exit; fi
@@ -5767,11 +5767,11 @@ exit; fi
 if   [ "$cmd_first_option" == "about" ]; then
 ####
 ####
-echo "$text_md $text_md File:          fwiptables"
-echo "$text_md $text_md Description:   Command Fran FireWall fwiptables Generator"
-echo "$text_md $text_md Author:        Francisco Garcia <fwiptables@gmx.com>"
-echo "$text_md $text_md Copyright:     (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>"
-echo "$text_md $text_md launch:        $cmd_internal license-lgpl-v2|license-gpl-v2"
+echo "$txt_text_md $txt_text_md File:          fwiptables"
+echo "$txt_text_md $txt_text_md Description:   Command Fran FireWall fwiptables Generator"
+echo "$txt_text_md $txt_text_md Author:        Francisco Garcia <fwiptables@gmx.com>"
+echo "$txt_text_md $txt_text_md Copyright:     (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>"
+echo "$txt_text_md $txt_text_md launch:        $cmd_internal license-lgpl-v2|license-gpl-v2"
 ####
 ####
 exit; fi
@@ -5786,11 +5786,11 @@ exit; fi
 #### if [ "$cmd_first_option" == "license-gpl-v3" ];  then
 ####
 ####
-#### echo "$title_md $text_info \
+#### echo "$txt_text_title $txt_text_info \
 #### [ Show license from git sourceforge for $cmd_internal ] "
 ####
 #### if [ "$cmd_command_curl" == "$NULL" ]; then
-#### echo "$title_md Install curl to download/install latest version"; fi
+#### echo "$txt_text_title Install curl to download/install latest version"; fi
 ####
 #### echo "license text for $cmd_first_option downloading"
 #### echo
@@ -5811,11 +5811,11 @@ exit; fi
 if [ "$cmd_first_option" == "license-gpl-v2" ];  then
 ####
 ####
-echo "$title_md $text_info \
+echo "$txt_text_title $txt_text_info \
 [ Show license from git sourceforge for $cmd_internal ] "
 ####
 if [ "$cmd_command_curl" == "$NULL" ]; then
-echo "$title_md Install curl to download/install latest version"; fi
+echo "$txt_text_title Install curl to download/install latest version"; fi
 ####
 echo "license text for $cmd_first_option downloading"
 echo
@@ -5836,11 +5836,11 @@ exit;  fi
 if [ "$cmd_first_option" == "license-lgpl-v2" ];  then
 ####
 ####
-echo "$title_md $text_info \
+echo "$txt_text_title $txt_text_info \
 [ Show license from git sourceforge for $cmd_internal ] "
 ####
 if [ "$cmd_command_curl" == "$NULL" ]; then
-echo "$title_md Install curl to download/install latest version"; fi
+echo "$txt_text_title Install curl to download/install latest version"; fi
 ####
 echo "license text for $cmd_first_option downloading"
 echo
@@ -5859,11 +5859,11 @@ exit;  fi
 ####
 ####
 #### if [ "$cmd_first_option" == "license-bsd-v1" ]; then 
-#### echo "$title_md $text_info \
+#### echo "$txt_text_title $txt_text_info \
 #### [ Show license from git sourceforge for $cmd_internal ] "
 ####
 #### if [ "$cmd_command_curl" == "$NULL" ]; then
-#### echo "$title_md Install curl to download/install latest version"; fi
+#### echo "$txt_text_title Install curl to download/install latest version"; fi
 ####
 #### echo "license text for $cmd_first_option downloading"
 #### echo
@@ -5882,7 +5882,7 @@ exit;  fi
 if   [ "$cmd_first_option" == "expert-pc-halt" ]; then
 ####
 ####
-echo "$title_md $text_info [ power off computer ] [ control-c to cancel ]"
+echo "$txt_text_title $txt_text_info [ power off computer ] [ control-c to cancel ]"
 echo "Halt to power off computer ... in 15 seconds"
 $cmd_command_sleep 5
 echo "Halt to power off computer ... in 10 seconds"
@@ -5909,7 +5909,7 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-pc-poweroff" ]; then
 ####
 ####
-echo "$title_md $text_info [ power off computer ] [ control-c to cancel ]"
+echo "$txt_text_title $txt_text_info [ power off computer ] [ control-c to cancel ]"
 echo "Halt to power off computer ... in 15 seconds"
 $cmd_command_sleep 5
 echo "Halt to power off computer ... in 10 seconds"
@@ -5935,7 +5935,7 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-pc-shutdown" ]; then
 ####
 ####
-echo "$title_md $text_info [ power off computer ] [ control-c to cancel ]"
+echo "$txt_text_title $txt_text_info [ power off computer ] [ control-c to cancel ]"
 echo "Halt to shutdown computer ... in 15 seconds"
 $cmd_command_sleep 5
 echo "Halt to shutdown computer ... in 10 seconds"
@@ -5961,7 +5961,7 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-pc-reboot" ]; then
 ####
 ####
-echo "$title_md $text_info [ reboot computer ] [ control-c to cancel ]"
+echo "$txt_text_title $txt_text_info [ reboot computer ] [ control-c to cancel ]"
 echo "Halt to reboot computer ... in 15 seconds"
 $cmd_command_sleep 5
 echo "Halt to reboot computer ... in 10 seconds"
@@ -5988,16 +5988,16 @@ if   [ "$cmd_first_option" == "expert-show-newversion" ]; then
 ####
 ####
 if [ "$cmd_command_curl" == "$NULL" ]; then
-echo "$title_md Install curl to show stable latest version"; fi
+echo "$txt_text_title Install curl to show stable latest version"; fi
 ####
 #### actually
 ####
-echo "$title_md Show the version for fwiptables actually installed:"
+echo "$txt_text_title Show the version for fwiptables actually installed:"
 $cmd_internal version | $cmd_command_grep -E -i "version"
 ####
 #### latest stable
 ####
-echo "$title_md Show the version for fwiptables stable latest:"
+echo "$txt_text_title Show the version for fwiptables stable latest:"
 descarga="$cmd_default_cache_basenecesary/$cmd_get_date-fwiptables-latest"
 $cmd_command_curl $cmd_web_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
@@ -6006,7 +6006,7 @@ rm $descarga
 ####
 #### latest unstable
 ####
-echo "$title_md Show the version for fwiptables unstable latest:"
+echo "$txt_text_title Show the version for fwiptables unstable latest:"
 descarga="$cmd_default_cache_basenecesary/$cmd_get_date-fwiptables-stable"
 $cmd_command_curl $cmd_web_git_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
@@ -6027,10 +6027,10 @@ if   [ "$cmd_first_option" == "expert-upgrade-estable" ] || [ "$cmd_first_option
 ####
 ####
 if [ "$cmd_command_curl" == "$NULL" ]; then
-echo "$title_md Install curl to download and to install stable latest version"; fi
+echo "$txt_text_title Install curl to download and to install stable latest version"; fi
 ####
 ####
-echo "$title_md Downloading fwiptables stable latest"
+echo "$txt_text_title Downloading fwiptables stable latest"
 descarga="$cmd_default_cache_basenecesary/$cmd_get_date-fwiptables-latest"
 rm $descarga &> /dev/null
 $cmd_command_curl $cmd_web_download_sourceforge -s -L -o $descarga || echo "Without internet" \
@@ -6048,10 +6048,10 @@ if   [ "$cmd_first_option" == "expert-upgrade-unstable" ]; then
 ####
 ####
 if [ "$cmd_command_curl" == "$NULL" ]; then
-echo "$title_md Install curl to download and to install unstable latest version"; fi
+echo "$txt_text_title Install curl to download and to install unstable latest version"; fi
 ####
 ####
-echo "$title_md Downloading fwiptables development latest"
+echo "$txt_text_title Downloading fwiptables development latest"
 descarga="$cmd_default_cache_basenecesary/$cmd_get_date-fwiptables-unstable"
 rm $descarga  &> /dev/null
 $cmd_command_curl $cmd_web_git_sourceforge -s -L -o $descarga || echo "Without internet" \
@@ -6070,11 +6070,11 @@ exit; fi
 if   [ "$cmd_first_option" == "compile" ]; then
 ####
 ####
-echo "$text_md $text_md BASH SCRIPT WORKS fully.    $text_md"
-echo "$text_md $text_md But if your desire is compiling...   $text_md"   
-echo "$text_md $text_md Necesary fwiptables in source script bash $text_md"     
-echo "$text_md $text_md Download and install obash from oficial web internet $text_md"      
-echo "$text_md $text_md Run: obash -s -c -o ./destination.bin ./source-bash.sh $text_md"      
+echo "$txt_text_md $txt_text_md BASH SCRIPT WORKS fully.    $txt_text_md"
+echo "$txt_text_md $txt_text_md But if your desire is compiling...   $txt_text_md"   
+echo "$txt_text_md $txt_text_md Necesary fwiptables in source script bash $txt_text_md"     
+echo "$txt_text_md $txt_text_md Download and install obash from oficial web internet $txt_text_md"      
+echo "$txt_text_md $txt_text_md Run: obash -s -c -o ./destination.bin ./source-bash.sh $txt_text_md"      
 ####
 ####
 exit; fi
@@ -6089,20 +6089,20 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-gen-compile" ]; then
 ####
 ####
-echo "$title_md $text_info \
+echo "$txt_text_title $txt_text_info \
 [  optionally ] [ howto compile bash script with obash ] "
-echo "$title_md Compile $cmd_internal" ; echo
+echo "$txt_text_title Compile $cmd_internal" ; echo
 if [ "$cmd_command_obash" == "$NULL" ]
-then echo "$title_md install obash to compile"; exit ; fi
+then echo "$txt_text_title install obash to compile"; exit ; fi
 if [ "$cmd_command_uuid" == "$NULL" ]
-then echo "$title_md install uuid to compile"; exit ; fi
+then echo "$txt_text_title install uuid to compile"; exit ; fi
 if [ "$cmd_format" != "Bourne-Again_shell_script," ]
-then echo "$title_md the $cmd_name is not Bourne-Again_shell_script," ; exit ; fi
+then echo "$txt_text_title the $cmd_name is not Bourne-Again_shell_script," ; exit ; fi
 obash_file_update="$cmd_default_directory_obash/$cmd_name-$cmd_version"
 cp $0 $obash_file_update.bash
 $cmd_command_obash -r -c -o $obash_file_update.bin $obash_file_update.bash \
-&& echo "$title_md $text_ok" || echo "$title_md $text_fail"
-echo ; echo "$title_md And now list:"
+&& echo "$txt_text_title $txt_text_ok" || echo "$txt_text_title $txt_text_fail"
+echo ; echo "$txt_text_title And now list:"
 file -L $obash_file_update.bash
 file -L $obash_file_update.bin
 ####
@@ -6119,17 +6119,17 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-upgrade-adblock" ]; then
 ####
 ####
-echo "$title_md $text_info [ blacklist files / adblock files / hosts deny files ]"
-echo "$title_md $text_info [ Waiting a moment ]"
-echo "$title_md [ Step 1/4 ] [ downloading hosts fademind to $file_blacklist_fademind ]"
+echo "$txt_text_title $txt_text_info [ blacklist files / adblock files / hosts deny files ]"
+echo "$txt_text_title $txt_text_info [ Waiting a moment ]"
+echo "$txt_text_title [ Step 1/4 ] [ downloading hosts fademind to $file_blacklist_fademind ]"
 $cmd_command_curl $cmd_web_blacklist_fademind -s -L -o $file_blacklist_fademind
-echo "$title_md [ Step 2/4 ] [ downloading hosts mvps to $file_blacklist_mvps ]"
+echo "$txt_text_title [ Step 2/4 ] [ downloading hosts mvps to $file_blacklist_mvps ]"
 $cmd_command_curl $cmd_web_blacklist_mvps -s -L -o $file_blacklist_mvps
-echo "$title_md [ Step 3/4 ] [ downloading hosts adaway to $file_blacklist_adaway ]"
+echo "$txt_text_title [ Step 3/4 ] [ downloading hosts adaway to $file_blacklist_adaway ]"
 $cmd_command_curl $cmd_web_blacklist_adaway -s -L -o $file_blacklist_adaway
-echo "$title_md [ Step 4/4 ] [ downloading hosts stevenblack to $file_blacklist_stevenblack ]"
+echo "$txt_text_title [ Step 4/4 ] [ downloading hosts stevenblack to $file_blacklist_stevenblack ]"
 $cmd_command_curl $cmd_web_blacklist_stevenblack -s -L -o $file_blacklist_stevenblack
-echo "$title_md $text_folder [ $cmd_default_directory_adblock ] "
+echo "$txt_text_title $txt_text_folder [ $cmd_default_directory_adblock ] "
 ####
 ####
 exit; fi
@@ -6144,16 +6144,16 @@ exit; fi
 if   [ "$cmd_first_option" == "info" ]; then
 ####
 ####
-echo "$title_md $text_info $text_md $text_info  [ info $cmd_second_option ] [ info md ]"
-echo "$title_md $text_info  Launch info search: $cmd_internal \
+echo "$txt_text_title $txt_text_info $txt_text_md $txt_text_info  [ info $cmd_second_option ] [ info md ]"
+echo "$txt_text_title $txt_text_info  Launch info search: $cmd_internal \
 [optional-output] info [pattern-to-search]"
-echo "$title_md $text_info Example info search: $cmd_internal \
+echo "$txt_text_title $txt_text_info Example info search: $cmd_internal \
 [optional-output] info ls"
-echo "$title_md $text_info    Show all options: $cmd_internal \
+echo "$txt_text_title $txt_text_info    Show all options: $cmd_internal \
 [optional-output] info-options"
 if   [ "$cmd_second_option" == "$NULL" ]; then exit ; fi
 if   [ "$cmd_second_option" == "info-options" ]; then $cmd_internal info-options ; exit ; fi
-echo "$title_md $text_info  Waiting to info with: $cmd_second_option"
+echo "$txt_text_title $txt_text_info  Waiting to info with: $cmd_second_option"
 $cmd_internal info-options | $cmd_command_grep -i "$cmd_second_option" | $cmd_command_grep -Ev "###" 
 ####
 ####
@@ -6169,10 +6169,10 @@ exit ; fi
 if   [ "$cmd_first_option" == "expert-speed-glx" ]; then
 ####
 ####
-echo "$title_md $text_info  [ test gl mesa3D speed ] \
+echo "$txt_text_title $txt_text_info  [ test gl mesa3D speed ] \
 [ for default max $cfg_server_time_waiting seconds ] "
 case $cmd_command_glxgears in "$NULL")
-echo "$text_md $text_fail [ Install mesa utils ]"; exit ;; esac
+echo "$txt_text_md $txt_text_fail [ Install mesa utils ]"; exit ;; esac
 vblank_mode=0 $cmd_command_timeout -s SIGINT -v $cfg_server_time_waiting $cmd_command_glxgears
 echo 
 ####
@@ -6189,10 +6189,10 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-speed-disk" ]; then
 ####
 ####
-echo "$title_md $text_info  [ test disk speed benchamrk ] \
+echo "$txt_text_title $txt_text_info  [ test disk speed benchamrk ] \
 [ for default max $cfg_server_time_waiting seconds ] [ 100Mb will be used to benchmark, while]"
 case $cmd_command_dd in "$NULL")
-echo "$text_md $text_fail [ Install dd ]"; exit ;; esac
+echo "$txt_text_md $txt_text_fail [ Install dd ]"; exit ;; esac
 dd if=/dev/zero of=$cmd_default_directory_benchmarkdisk/speed.img \
 status=progress bs=10M count=10
 rm $cmd_default_directory_benchmarkdisk/speed.img &> /dev/null
@@ -6210,10 +6210,10 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-speed-ram" ]; then
 ####
 ####
-echo "$title_md $text_info  [ test ram speed benchamrk ] \
+echo "$txt_text_title $txt_text_info  [ test ram speed benchamrk ] \
 [ for default max $cfg_server_time_waiting seconds ] [ 100Mb will be used to benchmark, while]"
 case $cmd_command_dd in "$NULL")
-echo "$text_md $text_fail [ Install dd ]"; exit ;; esac
+echo "$txt_text_md $txt_text_fail [ Install dd ]"; exit ;; esac
 mount -t tmpfs tmpfs $cmd_default_directory_benchmarkram
 dd if=/dev/zero of=$cmd_default_directory_benchmarkram/speed.img \
 status=progress bs=10M count=10
@@ -6233,10 +6233,10 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-speed-cpu" ]; then
 ####
 ####
-echo "$header_ok $text_info  [ test cpu processor ] [ calcule pi with 2000 digits ]"
-case $cmd_command_bc in "$NULL") echo "$tab $text_fail [ Install bc command ]"; exit ;; esac
-echo "$duo_md $text_info [ Calculate pi with 2000 digits in only one cpu ]"
-echo "$duo_md $text_info [ For example with 2ghz/cpu is 5 seconds aprox. ] "
+echo "$header_ok $txt_text_info  [ test cpu processor ] [ calcule pi with 2000 digits ]"
+case $cmd_command_bc in "$NULL") echo "$tab $txt_text_fail [ Install bc command ]"; exit ;; esac
+echo "$duo_md $txt_text_info [ Calculate pi with 2000 digits in only one cpu ]"
+echo "$duo_md $txt_text_info [ For example with 2ghz/cpu is 5 seconds aprox. ] "
 time echo 'scale=2000; a(1)*4' | $cmd_command_bc -l | tail -0 
 ####
 ####
@@ -6252,19 +6252,19 @@ exit; fi
 if [ "$cmd_first_option" == "date" ]; then
 ####
 ####
-echo "$title_md $text_info \
+echo "$txt_text_title $txt_text_info \
 [ update the computer time and date from internet ] "
 if [ "$cfg_favorite_date_command" == "$NULL" ]; then
-echo "$text_md $text_fail [ Install one ntp client ]" ; fi
-echo "$text_md Old date: $($cmd_command_date)"
-echo "$text_md [ Updating the time and the date .. ]"
+echo "$txt_text_md $txt_text_fail [ Install one ntp client ]" ; fi
+echo "$txt_text_md Old date: $($cmd_command_date)"
+echo "$txt_text_md [ Updating the time and the date .. ]"
 pool0="0.debian.pool.ntp.org"
 pool1="1.debian.pool.ntp.org"
 pool2="2.debian.pool.ntp.org"
 pool3="3.debian.pool.ntp.org"
 $cfg_favorite_date_command $pool0 && 
-echo "$text_md New date: $($cmd_command_date)" ||
-echo "$text_md $text_fail No connection to get date"
+echo "$txt_text_md New date: $($cmd_command_date)" ||
+echo "$txt_text_md $txt_text_fail No connection to get date"
 ####
 ####
 exit; fi
@@ -6368,10 +6368,10 @@ if [ "$cmd_first_option" == "load" ]; then
 ####
 ####
 if [ "second_option" == "$NULL" ]; then
-$cmd_internal names ; echo "$text_md $text_info \
+$cmd_internal names ; echo "$txt_text_md $txt_text_info \
 [ usage: $cmd_internal load fw-to-load ] \
 [ See: $cmd_internal names ]" ; exit ; fi
-echo "$title_md $text_info [ loading firewall control $cmd_second_option ]"
+echo "$txt_text_title $txt_text_info [ loading firewall control $cmd_second_option ]"
 ####
 ####
 if [ -f $cmd_default_directory_control/$cmd_second_option-nft-ipv4 ] && \
@@ -6389,13 +6389,13 @@ $cmd_command_cat  $cmd_default_directory_control/$cmd_second_option-nft-ipv4 |  
 $cmd_command_cat  $cmd_default_directory_control/$cmd_second_option-legacy-ipv4 | $cmd_command_ip4tableslegacy-restore  
 $cmd_command_cat  $cmd_default_directory_control/$cmd_second_option-nft-ipv6 | $cmd_command_ip6tablesnft-restore       
 $cmd_command_cat  $cmd_default_directory_control/$cmd_second_option-legacy-ipv6 | $cmd_command_ip6tableslegacy-restore 
-#### echo "$title_md $text_ok [ firewall loaded ] [ name: $cmd_second_option ]"
-echo "$title_md $text_ok [ Launched: firewall ] [ Type: control ] [ Name: $cmd_second_option ]"
+#### echo "$txt_text_title $txt_text_ok [ firewall loaded ] [ name: $cmd_second_option ]"
+echo "$txt_text_title $txt_text_ok [ Launched: firewall ] [ Type: control ] [ Name: $cmd_second_option ]"
 ####
 ####
 else
 $cmd_internal names
-echo "$text_md $text_info [ usage: $cmd_internal load fw-to-load ] [ See: $cmd_internal names ]"
+echo "$txt_text_md $txt_text_info [ usage: $cmd_internal load fw-to-load ] [ See: $cmd_internal names ]"
 fi 
 ####
 ####
@@ -6413,7 +6413,7 @@ if [ "$cmd_first_option" == "save" ]; then
 ####
 ####
 case "$cmd_second_option" in
-"$NULL") echo "$text_md $text_info [ Usage: $cmd_internal save fw-to-save ]"
+"$NULL") echo "$txt_text_md $txt_text_info [ Usage: $cmd_internal save fw-to-save ]"
 exit ;;
 *) archivofin="$cmd_second_option" ;; 
 esac
@@ -6435,7 +6435,7 @@ if [ "$cmd_command_ip6tableslegacy" != "$NULL"  ]; then
 $cmd_command_ip6tableslegacy-save   &> $cmd_default_directory_control/$archivofin-legacy-ipv6 ; fi
 ####
 ####
-echo "$title_md $text_ok [ firewall saved ] [ name: $archivofin ]"
+echo "$txt_text_title $txt_text_ok [ firewall saved ] [ name: $archivofin ]"
 ####
 ####
 exit; fi
@@ -6450,11 +6450,11 @@ exit; fi
 if [ "$cmd_first_option" == "show" ]; then 
 ####
 ####
-echo "$title_md $text_info  [ show one firewall saved ] "
+echo "$txt_text_title $txt_text_info  [ show one firewall saved ] "
 echo 
 case "$cmd_second_option" in
 "$NULL") $cmd_internal names
-echo "$text_md $text_info [ Use: $cmd_internal show file-to-show ]" ; exit ;;
+echo "$txt_text_md $txt_text_info [ Use: $cmd_internal show file-to-show ]" ; exit ;;
 *) archivofin=$($cmd_command_sed 's/\///g' <<< "$cmd_second_option") ;;
 esac
 ####
@@ -6469,20 +6469,20 @@ $cmd_command_ls -l $cmd_default_directory_control/$archivofin-nft-ipv4
 $cmd_command_ls -l $cmd_default_directory_control/$archivofin-nft-ipv6
 $cmd_command_ls -l $cmd_default_directory_control/$archivofin-legacy-ipv4
 $cmd_command_ls -l $cmd_default_directory_control/$archivofin-legacy-ipv6
-echo "$title_md $text_ok [ FIREWALL LISTED ] [ $archivofin ]"
-echo "$title_md $archivofin-arptables"
+echo "$txt_text_title $txt_text_ok [ FIREWALL LISTED ] [ $archivofin ]"
+echo "$txt_text_title $archivofin-arptables"
 $cmd_command_cat  $cmd_default_directory_control/$archivofin-arptables
-echo "$title_md $archivofin-ebtables"
+echo "$txt_text_title $archivofin-ebtables"
 $cmd_command_cat  $cmd_default_directory_control/$archivofin-ebtables
-echo "$title_md $archivofin-nft-ipv4"
+echo "$txt_text_title $archivofin-nft-ipv4"
 $cmd_command_cat  $cmd_default_directory_control/$archivofin-nft-ipv4
-echo "$title_md $archivofin-legacy-ipv4"
+echo "$txt_text_title $archivofin-legacy-ipv4"
 $cmd_command_cat  $cmd_default_directory_control/$archivofin-legacy-ipv4
-echo "$title_md $archivofin-nft-ipv6"
+echo "$txt_text_title $archivofin-nft-ipv6"
 $cmd_command_cat  $cmd_default_directory_control/$archivofin-nft-ipv6
-echo "$title_md archivofin-legacy-ipv6"
+echo "$txt_text_title archivofin-legacy-ipv6"
 $cmd_command_cat  $cmd_default_directory_control/$archivofin-legacy-ipv6
-echo "$title_md $text_ok [ firewall readed ] [ $archivofin ]"
+echo "$txt_text_title $txt_text_ok [ firewall readed ] [ $archivofin ]"
 echo 
 ####
 ####
@@ -6498,7 +6498,7 @@ exit; fi
 if [ "$cmd_first_option" == "actual" ]; then
 ####
 ####
-echo "$title_md $text_info  [ show the last firewall saved ] "
+echo "$txt_text_title $txt_text_info  [ show the last firewall saved ] "
 echo 
 $cmd_command_arptables-save          &> $cmd_default_directory_control/$cmd_filename-actual-arptables
 $cmd_command_ebtables-save           &> $cmd_default_directory_control/$cmd_filename-actual-ebtables   
@@ -6506,20 +6506,20 @@ $cmd_command_ip4tablesnft-save       &> $cmd_default_directory_control/$cmd_file
 $cmd_command_ip4tableslegacy-save    &> $cmd_default_directory_control/$cmd_filename-actual-legacy-ipv4
 $cmd_command_ip6tablesnft-save      &> $cmd_default_directory_control/$cmd_filename-actual-nft-ipv6   
 $cmd_command_ip6tableslegacy-save   &> $cmd_default_directory_control/$cmd_filename-actual-legacy-ipv6
-echo "$title_md arptables $title_md"
+echo "$txt_text_title arptables $txt_text_title"
 $cmd_command_cat  $cmd_default_directory_control/$cmd_filename-actual-arptables
-echo "$title_md ebtables $title_md"
+echo "$txt_text_title ebtables $txt_text_title"
 $cmd_command_cat  $cmd_default_directory_control/$cmd_filename-actual-ebtables
-echo "$title_md nft with ipv4 $title_md"
+echo "$txt_text_title nft with ipv4 $txt_text_title"
 $cmd_command_cat  $cmd_default_directory_control/$cmd_filename-actual-nft-ipv4
-echo "$title_md legacy with ipv4 $title_md"
+echo "$txt_text_title legacy with ipv4 $txt_text_title"
 $cmd_command_cat  $cmd_default_directory_control/$cmd_filename-actual-legacy-ipv4
-echo "$title_md nft with ipv6 $title_md"
+echo "$txt_text_title nft with ipv6 $txt_text_title"
 $cmd_command_cat  $cmd_default_directory_control/$cmd_filename-actual-nft-ipv6
-echo "$title_md legacy with ipv6 $title_md"
+echo "$txt_text_title legacy with ipv6 $txt_text_title"
 $cmd_command_cat  $cmd_default_directory_control/$cmd_filename-actual-legacy-ipv6
 echo
-echo "  $text_ok [ readed firewall actual ]"
+echo "  $txt_text_ok [ readed firewall actual ]"
 ####
 ####
 exit; fi
@@ -6534,7 +6534,7 @@ exit; fi
 if [ "$cmd_first_option" == "stop" ]; then
 ####
 ####
-echo "$title_md $text_info  [ Stop the firewall ] "
+echo "$txt_text_title $txt_text_info  [ Stop the firewall ] "
 ####
 ####
 #### english: save actual fw #### spanish: guarda actual fw
@@ -6552,8 +6552,8 @@ $cmd_command_ip6tableslegacy-save &> $cmd_default_directory_control/$cmd_filenam
 ####
 ####
 $cmd_internal eraserules &> /dev/null
-echo "$title_md $text_info [ stopping firewall ]"
-echo "$title_md $text_ok [ firewall stopped  ]"
+echo "$txt_text_title $txt_text_info [ stopping firewall ]"
+echo "$txt_text_title $txt_text_ok [ firewall stopped  ]"
 ####
 ####
 exit; fi
@@ -6568,7 +6568,7 @@ exit; fi
 if [ "$cmd_first_option" == "continue" ]; then
 ####
 ####
-echo "$title_md $text_info  [ Continue the stopped firewall ] "
+echo "$txt_text_title $txt_text_info  [ Continue the stopped firewall ] "
 ####
 ####
 #### english: restore last fw #### spanish: restaura el ultimo fw
@@ -6580,8 +6580,8 @@ $cmd_command_cat  $cmd_default_directory_control/$cmd_filename-stoped-nft-ipv4 |
 $cmd_command_cat  $cmd_default_directory_control/$cmd_filename-stoped-legacy-ipv4 | $cmd_command_ip4tableslegacy-restore  
 $cmd_command_cat  $cmd_default_directory_control/$cmd_filename-stoped-nft-ipv6 | $cmd_command_ip6tablesnft-restore  
 $cmd_command_cat  $cmd_default_directory_control/$cmd_filename-stoped-legacy-ipv6 | $cmd_command_ip6tableslegacy-restore  
-echo "$title_md $text_info [ continue firewall  ]"
-echo "$title_md $text_ok [ firewall continued ]"
+echo "$txt_text_title $txt_text_info [ continue firewall  ]"
+echo "$txt_text_title $txt_text_ok [ firewall continued ]"
 exit; fi
 ####
 ####
@@ -6594,7 +6594,7 @@ exit; fi
 if [ "$cmd_first_option" == "config-eng" ]; then 
 ####
 ####
-echo "$title_md $text_info [ show variables cfg from english configuration ] "
+echo "$txt_text_title $txt_text_info [ show variables cfg from english configuration ] "
 $cmd_command_cat $default_fullcfg_eng
 ####
 ####
@@ -6610,7 +6610,7 @@ exit; fi
 if [ "$cmd_first_option" == "config-spa" ]; then 
 ####
 ####
-echo "$title_md $text_info [ show variables cfg from spanish configuration ] "
+echo "$txt_text_title $txt_text_info [ show variables cfg from spanish configuration ] "
 $cmd_command_cat  $default_fullcfg_spa
 ####
 ####
@@ -6626,14 +6626,14 @@ exit; fi
 if [ "$cmd_first_option" == "add-whitelist4" ] || [ "$cmd_first_option" == "expert-add-whitelist4" ]; then
 ####
 ####
-if [ "$2" == "$NULL" ]; then echo "$title_md $text_fail type host ip4 or net ip4 to be in whitelist"; exit ; fi
+if [ "$2" == "$NULL" ]; then echo "$txt_text_title $txt_text_fail type host ip4 or net ip4 to be in whitelist"; exit ; fi
 ####
 ####
 host_ip="$(echo $2 | sed 's/,/ /g')"
 for add in $host_ip ; do
 ####
 ####
-echo "$title_md [ Working ] ADD ipv4 rules whitelist: ACCEPT to $add"
+echo "$txt_text_title [ Working ] ADD ipv4 rules whitelist: ACCEPT to $add"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 -s $add   -m comment --comment "add-whitelist4"  \
 -j ACCEPT &> /dev/null && echo ok rule nft 1/4 with $add || echo without rule nft 1/4
 $cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -d $add  -m comment --comment "add-whitelist4"  \
@@ -6659,14 +6659,14 @@ exit; fi
 if [ "$cmd_first_option" == "add-whitelist6" ] || [ "$cmd_first_option" == "expert-add-whitelist6" ]; then
 ####
 ####
-if [ "$2" == "$NULL" ]; then echo "$title_md $text_fail type host ip6 or net ip6 to be in whitelist"; exit ; fi
+if [ "$2" == "$NULL" ]; then echo "$txt_text_title $txt_text_fail type host ip6 or net ip6 to be in whitelist"; exit ; fi
 ####
 ####
 host_ip="$(echo $2 | sed 's/,/ /g')"
 for add in $host_ip;  do
 ####
 ####
-echo "$title_md [ Working ] ADD ipv6 rules whitelist: ACCEPT to $add"
+echo "$txt_text_title [ Working ] ADD ipv6 rules whitelist: ACCEPT to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -s $add   -m comment --comment "add-whitelist6"  \
 -j ACCEPT  &> /dev/null && echo ok rule nft 1/4 with $add    || echo without rule nft 1/4
 $cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -d $add  -m comment --comment "add-whitelist6"  \
@@ -6693,14 +6693,14 @@ if [ "$cmd_first_option" == "add-blacklist4" ] || [ "$cmd_first_option" == "expe
 ####
 ####
 if [ "$2" == "$NULL" ]; then
-echo "$title_md $text_fail type host ip4 or net ip4 to be in blacklist" ; exit ; fi
+echo "$txt_text_title $txt_text_fail type host ip4 or net ip4 to be in blacklist" ; exit ; fi
 ####
 ####
 host_ip="$(echo $2 | sed 's/,/ /g')"
 for add in $host_ip ; do
 ####
 ####
-echo "$title_md [ Working ] ADD ipv4 rules blacklist: DROP to $add"
+echo "$txt_text_title [ Working ] ADD ipv4 rules blacklist: DROP to $add"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 -s $add  -m comment --comment "add-blacklist4" \
 -j DROP  &> /dev/null && echo ok rule nft 1/4 with $add    || echo without rule nft 1/4
 $cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -d $add -m comment --comment "add-blacklist4" \
@@ -6727,14 +6727,14 @@ if [ "$cmd_first_option" == "add-blacklist6" ] || [ "$cmd_first_option" == "expe
 ####
 ####
 if [ "$2" == "$NULL" ]; then 
-echo "$title_md $text_fail type host ip6 or net ip6 to be in blacklist"; exit ; fi
+echo "$txt_text_title $txt_text_fail type host ip6 or net ip6 to be in blacklist"; exit ; fi
 ####
 ####
 host_ip="$(echo $2 | sed 's/,/ /g')"
 for add in $host_ip ; do
 ####
 ####
-echo "$title_md [ Working ] ADD ipv6 rules blacklist: DROP to $add"
+echo "$txt_text_title [ Working ] ADD ipv6 rules blacklist: DROP to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -s $add  -m comment --comment "add-blacklist6" \
 -j DROP  &> /dev/null && echo ok rule nft 1/4 with $add   || echo without rule nft 1/4
 $cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -d $add -m comment --comment "add-blacklist6" \
@@ -6760,23 +6760,23 @@ exit; fi
 if [ "$cmd_first_option" == "speed-ip4" ] || [ "$cmd_first_option" == "expert-speed-ip4" ]; then
 ####
 ####
-echo "$title_md $text_info  [ test speed ipv4 with iperf ] "
-echo "$title_md $cmd_internal use or iperf or iperf3"
+echo "$txt_text_title $txt_text_info  [ test speed ipv4 with iperf ] "
+echo "$txt_text_title $cmd_internal use or iperf or iperf3"
 if [ "$cfg_favorite_iperf_command" == "$NULL" ];
-then echo "$title_md $text_fail install iperf";
-else echo "$title_md $text_ok [ choosed iperf ]"; fi
-echo "$title_md"
-# echo "$title_md [ Working ] Saving firewall before speed-ip4"
+then echo "$txt_text_title $txt_text_fail install iperf";
+else echo "$txt_text_title $txt_text_ok [ choosed iperf ]"; fi
+echo "$txt_text_title"
+# echo "$txt_text_title [ Working ] Saving firewall before speed-ip4"
 $cmd_internal save before-speed-ip4
 $cmd_internal add-whitelist4 $cfg_server_ip_iperf_ipv4
-echo "$title_md"
-echo "$title_md [ Calculing speed .. ]"
-echo "$title_md [ Working ] Conecting in ipv4 to $cfg_server_ip_iperf_ipv4 ]"
+echo "$txt_text_title"
+echo "$txt_text_title [ Calculing speed .. ]"
+echo "$txt_text_title [ Working ] Conecting in ipv4 to $cfg_server_ip_iperf_ipv4 ]"
 $cfg_favorite_iperf_command -4 -t 4 -c $cfg_server_ip_iperf_ipv4 -p $cfg_server_port_iperf_ipv4
-echo "$title_md"
-echo "$title_md [ Working ] [ Restoring firewall ]"
+echo "$txt_text_title"
+echo "$txt_text_title [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip4 
-echo "$title_md $text_done $cmd_internal speed-ip4"
+echo "$txt_text_title $txt_text_done $cmd_internal speed-ip4"
 ####
 ####
 exit; fi
@@ -6791,21 +6791,21 @@ exit; fi
 if [ "$cmd_first_option" == "speed-ip6" ] || [ "$cmd_first_option" == "expert-speed-ip6" ]; then
 ####
 ####
-echo "$title_md $text_info  [ test speed ipv6 with iperf ] "
-echo "$title_md $cmd_internal use or iperf or iperf3"
+echo "$txt_text_title $txt_text_info  [ test speed ipv6 with iperf ] "
+echo "$txt_text_title $cmd_internal use or iperf or iperf3"
 if [ "$cfg_favorite_iperf_command" == "$NULL" ];
-then echo "$title_md $text_fail install iperf";
-else echo "$title_md $text_ok [ choosed iperf ]"; fi
+then echo "$txt_text_title $txt_text_fail install iperf";
+else echo "$txt_text_title $txt_text_ok [ choosed iperf ]"; fi
 $cmd_internal save before-speed-ip6 
 $cmd_internal add-whitelist6 $cfg_server_ip_iperf_ipv6
-echo "$title_md"
-echo "$title_md [ Calculing speed .. ]"
-echo "$title_md [ Working ] Conecting in ipv6 to $cfg_server_ip_iperf_ipv4 ]"
+echo "$txt_text_title"
+echo "$txt_text_title [ Calculing speed .. ]"
+echo "$txt_text_title [ Working ] Conecting in ipv6 to $cfg_server_ip_iperf_ipv4 ]"
 $cfg_favorite_iperf_command -6 -t 4 -P 1 -c $cfg_server_ip_iperf_ipv6 -p $cfg_server_port_iperf_ipv6 
-echo "$title_md"
-echo "$title_md [ Working ] [ Restoring firewall ]"
+echo "$txt_text_title"
+echo "$txt_text_title [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip6 
-echo "$title_md $text_done $cmd_internal speed-ip6"
+echo "$txt_text_title $txt_text_done $cmd_internal speed-ip6"
 ####
 ####
 exit; fi
@@ -6820,11 +6820,11 @@ exit; fi
 if   [ "$cmd_first_option" == "sockets" ]; then
 ####
 ####
-echo "$title_md $text_info [ Show whith ss: LISTEN sockets ] "
+echo "$txt_text_title $txt_text_info [ Show whith ss: LISTEN sockets ] "
 if [ "$cmd_command_ss" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Install ss command ]"; exit; fi
+echo "$txt_text_title $txt_text_fail [ Install ss command ]"; exit; fi
 if [ "$cmd_command_awk" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Install awk command ]"; exit; fi
+echo "$txt_text_title $txt_text_fail [ Install awk command ]"; exit; fi
 $cmd_command_ss -l -460  | $cmd_command_grep "\:\*" | \
 $cmd_command_awk '{print "     " $1 " " $2 " " $5}' ;
 ####
@@ -6841,7 +6841,7 @@ exit; fi
 if   [ "$cmd_first_option" == "web" ]; then
 ####
 ####
-echo "$title_md $text_info [ Show one web with command text browser ]"
+echo "$txt_text_title $txt_text_info [ Show one web with command text browser ]"
 ####
 ####
 if [ "$cfg_favorite_text_browser" == "$NULL" ]; then 
@@ -6874,7 +6874,7 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-project-web" ]; then
 ####
 ####
-echo "$title_md $text_info [ version - date - size - downloaded last week ]"
+echo "$txt_text_title $txt_text_info [ version - date - size - downloaded last week ]"
 ####
 ####
 $cmd_internal web "http://sourceforge.net/projects/f-iptables/files/" \
@@ -6893,7 +6893,7 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-browser-web" ]; then
 ####
 ####
-echo "$title_md $text_info [ Show one web with command text browser ]"
+echo "$txt_text_title $txt_text_info [ Show one web with command text browser ]"
 ####
 ####
 if [ "$cfg_favorite_text_browser" == "$NULL" ]; then 
@@ -6924,15 +6924,15 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-sockets-ss" ]; then
 ####
 ####
-echo "$title_md $text_info [ Show whith ss: sockets ] "
+echo "$txt_text_title $txt_text_info [ Show whith ss: sockets ] "
 if [ "$cmd_command_ss" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Install ss command ]"; exit; fi
+echo "$txt_text_title $txt_text_fail [ Install ss command ]"; exit; fi
 #### if [ "$cmd_command_awk" == "$NULL" ]; then 
-#### echo "$title_md $text_fail [ Install awk command ]"; exit; fi
-echo "$title_md sockets ipv4"
+#### echo "$txt_text_title $txt_text_fail [ Install awk command ]"; exit; fi
+echo "$txt_text_title sockets ipv4"
 $cmd_command_ss -4
 $cmd_command_ss -l4
-echo "$title_md sockets ipv6"
+echo "$txt_text_title sockets ipv6"
 $cmd_command_ss -6
 $cmd_command_ss -l6
 ####
@@ -6949,9 +6949,9 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-sockets-lsof" ]; then
 ####
 ####
-echo "$title_md $text_info [ Show whith lsof: sockets ] "
+echo "$txt_text_title $txt_text_info [ Show whith lsof: sockets ] "
 if [ "$cmd_command_lsof" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Install lsof command ]"; exit; fi
+echo "$txt_text_title $txt_text_fail [ Install lsof command ]"; exit; fi
 $cmd_command_lsof -i
 ####
 ####
@@ -6967,11 +6967,11 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-sockets-netstat" ]; then
 ####
 ####
-echo "$title_md $text_info [ Show whith lsof: sockets ] "
+echo "$txt_text_title $txt_text_info [ Show whith lsof: sockets ] "
 if [ "$cmd_command_lsof" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Install lsof command ]"; exit; fi
+echo "$txt_text_title $txt_text_fail [ Install lsof command ]"; exit; fi
 #### if [ "$cmd_command_awk" == "$NULL" ]; then 
-#### echo "$title_md $text_fail [ Install awk command ]"; exit; fi
+#### echo "$txt_text_title $txt_text_fail [ Install awk command ]"; exit; fi
 $cmd_command_netstat -l46
 ####
 ####
@@ -6987,10 +6987,10 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-show-webcert" ] ; then
 ####
 ####
-echo "$title_md $text_info \
+echo "$txt_text_title $txt_text_info \
 [ get one web certifcate from one server with port 443]"
 case "$cmd_command_openssl"  in  $NULL)
-echo "$text_md $text_fail [ install openssl ]"; exit ;; esac
+echo "$txt_text_md $txt_text_fail [ install openssl ]"; exit ;; esac
 ####
 ####
 if [ "$cmd_second_option" == "$NULL" ]; then
@@ -7013,15 +7013,15 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-nmap-tcp" ]; then
 ####
 ####
-echo "$title_md $text_info  [ scan with nmap tcp ]"
+echo "$txt_text_title $txt_text_info  [ scan with nmap tcp ]"
 if [ "$cmd_command_nmap" == "$NULL" ];  then
-echo "$title_md Please install nmap to work"; exit; fi
-echo "$title_md $text_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
+echo "$txt_text_title Please install nmap to work"; exit; fi
+echo "$txt_text_title $txt_text_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
+echo "$txt_text_title $txt_text_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
 $cmd_internal save before-nmap-tcp 
 $cmd_internal add-whitelist4 $2
-echo "$title_md [ Working ] [ Doing nmap to $2 ]"
+echo "$txt_text_title [ Working ] [ Doing nmap to $2 ]"
 $cmd_command_nmap -sT $2
 $cmd_internal load before-nmap-tcp 
 ####
@@ -7038,15 +7038,15 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-nmap-syn" ]; then
 ####
 ####
-echo "$title_md $text_info  [ scan with nmap syn ]"
+echo "$txt_text_title $txt_text_info  [ scan with nmap syn ]"
 if [ "$cmd_command_nmap" == "$NULL" ];  then
-echo "$title_md Please install nmap to work"; exit; fi
-echo "$title_md $text_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
+echo "$txt_text_title Please install nmap to work"; exit; fi
+echo "$txt_text_title $txt_text_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
+echo "$txt_text_title $txt_text_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
 $cmd_internal save before-nmap-syn
 $cmd_internal add-whitelist4 $2
-echo "$title_md [ Working ] [ Doing nmap to $2 ]"
+echo "$txt_text_title [ Working ] [ Doing nmap to $2 ]"
 $cmd_command_nmap -sF $2
 $cmd_internal load before-nmap-syn
 echo 
@@ -7064,15 +7064,15 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-nmap-fin" ] ; then
 ####
 ####
-echo "$title_md $text_info  [ scan with nmap fin ]"
+echo "$txt_text_title $txt_text_info  [ scan with nmap fin ]"
 if [ "$cmd_command_nmap" == "$NULL" ];  then
-echo "$title_md Please install nmap to work"; exit; fi
-echo "$title_md $text_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
+echo "$txt_text_title Please install nmap to work"; exit; fi
+echo "$txt_text_title $txt_text_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
+echo "$txt_text_title $txt_text_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
 $cmd_internal save before-nmap-fin 
 $cmd_internal add-whitelist4 $2
-echo "$title_md [ Working ] [ Doing nmap to $2 ]"
+echo "$txt_text_title [ Working ] [ Doing nmap to $2 ]"
 $cmd_command_nmap -sT $2
 $cmd_internal load before-nmap-fin
 echo 
@@ -7090,15 +7090,15 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-nmap-udp" ]; then
 ####
 ####
-echo "$title_md $text_info  [ scan with nmap udp ]"
+echo "$txt_text_title $txt_text_info  [ scan with nmap udp ]"
 if [ "$cmd_command_nmap" == "$NULL" ];  then
-echo "$title_md Please install nmap to work"; exit; fi
-echo "$title_md $text_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
+echo "$txt_text_title Please install nmap to work"; exit; fi
+echo "$txt_text_title $txt_text_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
+echo "$txt_text_title $txt_text_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
 $cmd_internal save before-nmap-udp
 $cmd_internal add-whitelist4 $2
-echo "$title_md [ Working ] [ Doing nmap to $2 ]"
+echo "$txt_text_title [ Working ] [ Doing nmap to $2 ]"
 $cmd_command_nmap -sU $2
 $cmd_internal load before-nmap-udp
 echo 
@@ -7116,15 +7116,15 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-nmap-ping" ] ; then
 ####
 ####
-echo "$title_md $text_info  [ scan with nmap ping ]"
+echo "$txt_text_title $txt_text_info  [ scan with nmap ping ]"
 if [ "$cmd_command_nmap" == "$NULL" ];  then
-echo "$title_md Please install nmap to work"; exit; fi
-echo "$title_md $text_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
+echo "$txt_text_title Please install nmap to work"; exit; fi
+echo "$txt_text_title $txt_text_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
+echo "$txt_text_title $txt_text_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
 $cmd_internal save before-nmap-ping
 $cmd_internal add-whitelist4 $2
-echo "$title_md [ Working ] [ Doing nmap to $2 ]"
+echo "$txt_text_title [ Working ] [ Doing nmap to $2 ]"
 $cmd_command_nmap -sn $2
 $cmd_internal load before-nmap-ping
 ####
@@ -7144,7 +7144,7 @@ exit; fi
 if [ "$cmd_first_option" == "gui" ] && [ "$cmd_third_option" != "$NULL" ]
 ####
 ####
-then echo $head_waiting_gui
+then echo $txt_head_waiting_gui
 ####
 ####
 case $cmd_second_option in
@@ -7331,7 +7331,7 @@ exit; fi
 if [ "$cmd_first_option" == "gui" ] && [ "$cmd_second_option" != "$NULL" ]
 ####
 ####
-then echo $head_waiting_gui
+then echo $txt_head_waiting_gui
 ####
 ####
 case $cmd_second_option in
@@ -7466,11 +7466,11 @@ exit; fi
 ####
 ####
 if [ "$cmd_first_option" == "gui" ] && [ "$cmd_second_option" == "$NULL" ]
-then echo $head_waiting_gui
+then echo $txt_head_waiting_gui
 ####
 ####
 if [ "$cfg_favorite_realpath_graphicalldialog" == "$NULL" ]; then 
-echo "$title_md there is not graphicall dialog" ; exit ; fi
+echo "$txt_text_title there is not graphicall dialog" ; exit ; fi
 ####
 ####
 $cmd_internal txt $cmd_second_option $cmd_third_option &> $file_output_cache
@@ -7491,7 +7491,7 @@ exit; fi
 if   [ "$cmd_first_option" == "gui-shell-zenity" ]
 ####
 ####
-then echo $head_waiting_gui
+then echo $txt_head_waiting_gui
 ####
 ####
 ####  english: principal gui  #### spanish: principal gui
@@ -7528,37 +7528,37 @@ $NULL) $cmd_internal gui-zenity options; exit ;;
 "new-full-custom")
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-completa-custom")
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "new-mini-custom")
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-mini-custom")
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-tiny-custom")
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-diminuta-custom")
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "modify-custom")
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 ####
 ####
@@ -7569,37 +7569,37 @@ $cfg_favorite_realpath_graphicalldialog  --forms \
 "new-full-custom" )
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-completa-custom" )
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "new-mini-custom" )
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-mini-custom" )
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-tiny-custom" )
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-diminuta-custom" )
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "modify-custom" )
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 ####
 ####
@@ -7679,7 +7679,7 @@ exit ; fi
 if   [ "$cmd_first_option" == "gui-shell-yad" ]
 ####
 ####
-then echo $head_waiting_gui
+then echo $txt_head_waiting_gui
 ####
 ####
 ####  english: principal gui  #### spanish: principal gui
@@ -7722,37 +7722,37 @@ $NULL) $cmd_internal gui-yad options; exit ;;
 "new-full-custom")
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-completa-custom")
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "new-mini-custom")
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-mini-custom")
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-tiny-custom")
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-diminuta-custom")
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "modify-custom")
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 ####
 ####
@@ -7763,37 +7763,37 @@ $cfg_favorite_realpath_graphicalldialog  --forms \
 "new-full-custom" )
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-completa-custom" )
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "new-mini-custom" )
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-mini-custom" )
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-tiny-custom" )
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-diminuta-custom" )
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 "modify-custom" )
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---text=$text_md-info-use-one-custom-config.cfg
+--text=$txt_text_md-info-use-one-custom-config.cfg
 ;;
 ####
 ####
@@ -7878,7 +7878,7 @@ if [ "$cmd_first_option" == "cli-menu" ]; then
 ####
 ####
 if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
-echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
+echo "$txt_text_title $txt_text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
 ##########
@@ -7889,14 +7889,14 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
-001  "$text_md intro" \
-002  "$text_md info-options" \
-003  "$text_md firewall-listconceptual" \
-004  "$text_md firewall-listnumeral" \
-005  "$text_md firewall-wallcontrol" \
-006  "$text_md firewall-wallcustom" \
-007  "$text_md firewall-wallsystem" \
-008  "$text_md firewall-netsystem"  \
+001  "$txt_text_md intro" \
+002  "$txt_text_md info-options" \
+003  "$txt_text_md firewall-listconceptual" \
+004  "$txt_text_md firewall-listnumeral" \
+005  "$txt_text_md firewall-wallcontrol" \
+006  "$txt_text_md firewall-wallcustom" \
+007  "$txt_text_md firewall-wallsystem" \
+008  "$txt_text_md firewall-netsystem"  \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
@@ -7929,7 +7929,7 @@ exit; fi
 ####
 if [ "$cmd_first_option" == "cli-menu-listconceptual" ]; then
 if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
-echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
+echo "$txt_text_title $txt_text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
 ##########
@@ -7940,26 +7940,26 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
-001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
-002 "$title_md [ Info Options ] $title_md" \
-003 "$title_md [ Firewall List With Conceptual ] $title_md" \
-004  "$text_md ls4" \
-005  "$text_md ls6"  \
-006  "$text_md list-filter4" \
-007  "$text_md list-filter6" \
-008  "$text_md list-forward" \
-009  "$text_md list-forward6" \
-010  "$text_md list-nat4" \
-011  "$text_md list-nat6" \
-012  "$text_md list-alltables" \
-013  "$text_md list-raw4" \
-014  "$text_md list-raw6" \
-015  "$text_md list-mangle4" \
-016  "$text_md list-mangle6" \
-017  "$text_md list-security4" \
-018  "$text_md list-security6" \
-019  "$text_md list-ebtables" \
-020  "$text_md list-arptables" \
+001 "$txt_text_title $txt_text_md [ principal menu ] $txt_text_md $txt_text_title" \
+002 "$txt_text_title [ Info Options ] $txt_text_title" \
+003 "$txt_text_title [ Firewall List With Conceptual ] $txt_text_title" \
+004  "$txt_text_md ls4" \
+005  "$txt_text_md ls6"  \
+006  "$txt_text_md list-filter4" \
+007  "$txt_text_md list-filter6" \
+008  "$txt_text_md list-forward" \
+009  "$txt_text_md list-forward6" \
+010  "$txt_text_md list-nat4" \
+011  "$txt_text_md list-nat6" \
+012  "$txt_text_md list-alltables" \
+013  "$txt_text_md list-raw4" \
+014  "$txt_text_md list-raw6" \
+015  "$txt_text_md list-mangle4" \
+016  "$txt_text_md list-mangle6" \
+017  "$txt_text_md list-security4" \
+018  "$txt_text_md list-security6" \
+019  "$txt_text_md list-ebtables" \
+020  "$txt_text_md list-arptables" \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
@@ -8003,7 +8003,7 @@ exit; fi
 ####
 if [ "$cmd_first_option" == "cli-menu-listnumeral" ]; then
 if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
-echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
+echo "$txt_text_title $txt_text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
 ##########
@@ -8014,26 +8014,26 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
-001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
-002 "$title_md [ Info Options     ] $title_md" \
-003 "$title_md [ Firewall Numeral ] $title_md" \
-004  "$text_md lsn4" \
-005  "$text_md lsn6"  \
-006  "$text_md listn-filter4" \
-007  "$text_md listn-filter6" \
-008  "$text_md listn-forward" \
-009  "$text_md listn-forward6" \
-010  "$text_md listn-nat4" \
-011  "$text_md listn-nat6" \
-012  "$text_md listn-alltables" \
-013  "$text_md listn-raw4" \
-014  "$text_md listn-raw6" \
-015  "$text_md listn-mangle4" \
-016  "$text_md listn-mangle6" \
-017  "$text_md listn-security4" \
-018  "$text_md listn-security6" \
-019  "$text_md list-ebtables" \
-020  "$text_md list-arptables" \
+001 "$txt_text_title $txt_text_md [ principal menu ] $txt_text_md $txt_text_title" \
+002 "$txt_text_title [ Info Options     ] $txt_text_title" \
+003 "$txt_text_title [ Firewall Numeral ] $txt_text_title" \
+004  "$txt_text_md lsn4" \
+005  "$txt_text_md lsn6"  \
+006  "$txt_text_md listn-filter4" \
+007  "$txt_text_md listn-filter6" \
+008  "$txt_text_md listn-forward" \
+009  "$txt_text_md listn-forward6" \
+010  "$txt_text_md listn-nat4" \
+011  "$txt_text_md listn-nat6" \
+012  "$txt_text_md listn-alltables" \
+013  "$txt_text_md listn-raw4" \
+014  "$txt_text_md listn-raw6" \
+015  "$txt_text_md listn-mangle4" \
+016  "$txt_text_md listn-mangle6" \
+017  "$txt_text_md listn-security4" \
+018  "$txt_text_md listn-security6" \
+019  "$txt_text_md list-ebtables" \
+020  "$txt_text_md list-arptables" \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
@@ -8081,7 +8081,7 @@ exit; fi
 ####
 if [ "$cmd_first_option" == "cli-menu-wallcontrol" ]; then
 if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
-echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
+echo "$txt_text_title $txt_text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
 ##########
@@ -8092,27 +8092,27 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
-001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
-002 "$title_md [ Info Options     ] $title_md" \
-003 "$title_md [ Firewall Control ] $title_md" \
-004  "$text_md stop" \
-005  "$text_md continue" \
-006  "$text_md reset" \
-007  "$text_md names"  \
-008  "$text_md show" \
-009  "$text_md save" \
-010  "$text_md load" \
-011  "$text_md actual" \
-012  "$text_md eraserules" \
-013  "$text_md wizard-tiny" \
-014  "$text_md wizard-mini" \
-015  "$text_md wizard-full" \
-016  "$text_md without-connection" \
-017  "$text_md input-permisive" \
-018  "$text_md input-established" \
-019  "$text_md eraserules4" \
-020  "$text_md eraserules6" \
-021  "$text_md eraserules" \
+001 "$txt_text_title $txt_text_md [ principal menu ] $txt_text_md $txt_text_title" \
+002 "$txt_text_title [ Info Options     ] $txt_text_title" \
+003 "$txt_text_title [ Firewall Control ] $txt_text_title" \
+004  "$txt_text_md stop" \
+005  "$txt_text_md continue" \
+006  "$txt_text_md reset" \
+007  "$txt_text_md names"  \
+008  "$txt_text_md show" \
+009  "$txt_text_md save" \
+010  "$txt_text_md load" \
+011  "$txt_text_md actual" \
+012  "$txt_text_md eraserules" \
+013  "$txt_text_md wizard-tiny" \
+014  "$txt_text_md wizard-mini" \
+015  "$txt_text_md wizard-full" \
+016  "$txt_text_md without-connection" \
+017  "$txt_text_md input-permisive" \
+018  "$txt_text_md input-established" \
+019  "$txt_text_md eraserules4" \
+020  "$txt_text_md eraserules6" \
+021  "$txt_text_md eraserules" \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
@@ -8130,15 +8130,15 @@ case $menuprincipal in
 005) clear ; $cmd_internal $cfg_favorite_out_cli continue ;;
 006) clear ; $cmd_internal $cfg_favorite_out_cli reset ;;
 007) clear ; $cmd_internal $cfg_favorite_out_cli names ;;
-008) clear ; $cmd_internal txt names ; echo "$title_md"
+008) clear ; $cmd_internal txt names ; echo "$txt_text_title"
 read -p "Type the firewall name to read   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $cmd_command_sed s/\\///g)
 $cmd_internal show $nombrecillo ;; 
 009)archivo="$($cfg_favorite_realpath_textdialog --stdout \
 --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
-clear ;  echo "$title_md saved $archivo" ; $cmd_internal save $archivo ;;
-010) clear ; $cmd_internal names ; echo "$title_md"
+clear ;  echo "$txt_text_title saved $archivo" ; $cmd_internal save $archivo ;;
+010) clear ; $cmd_internal names ; echo "$txt_text_title"
 read -p "| Type the firewall name to restore |   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $cmd_command_sed s/\\///g)
 $cmd_internal load $nombrecillo ;;
@@ -8169,7 +8169,7 @@ exit; fi
 ####
 if [ "$cmd_first_option" == "cli-menu-wallsystem" ]; then
 if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
-echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
+echo "$txt_text_title $txt_text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
 ##########
@@ -8180,40 +8180,40 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
-001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
-002 "$title_md [ Info Options        ] $title_md" \
-003 "$title_md [ Firewall Wallsystem ] $title_md" \
-007  "$text_md client-basic" \
-008  "$text_md client-web" \
-009  "$text_md client-ssh" \
-010  "$text_md client-telnet" \
-011  "$text_md client-git" \
-012  "$text_md games-shooter" \
-013  "$text_md game-wesnoth" \
-014  "$text_md game-minetest" \
-015  "$text_md game-freeciv" \
-016  "$text_md game-widelands" \
-017  "$text_md client-web" \
-018  "$text_md client-vnc" \
-019  "$text_md client-tor" \
-020  "$text_md client-vpn" \
-021  "$text_md client-torrent" \
-022  "$text_md lan-tor" \
-023  "$text_md lan-vpn" \
-024  "$text_md shield-ssh" \
-025  "$text_md server-ssh" \
-026  "$text_md server-web" \
-027  "$text_md server-vnc" \
-028  "$text_md server-print" \
-029  "$text_md server-samba" \
-030  "$text_md server-lamp" \
-031  "$text_md server-mail" \
-032  "$text_md server-ftp" \
-033  "$text_md server-news" \
-034  "$text_md server-teamspeak" \
-035  "$text_md server-mumble" \
-036  "$text_md server-sql" \
-037  "$text_md server-asterisk" \
+001 "$txt_text_title $txt_text_md [ principal menu ] $txt_text_md $txt_text_title" \
+002 "$txt_text_title [ Info Options        ] $txt_text_title" \
+003 "$txt_text_title [ Firewall Wallsystem ] $txt_text_title" \
+007  "$txt_text_md client-basic" \
+008  "$txt_text_md client-web" \
+009  "$txt_text_md client-ssh" \
+010  "$txt_text_md client-telnet" \
+011  "$txt_text_md client-git" \
+012  "$txt_text_md games-shooter" \
+013  "$txt_text_md game-wesnoth" \
+014  "$txt_text_md game-minetest" \
+015  "$txt_text_md game-freeciv" \
+016  "$txt_text_md game-widelands" \
+017  "$txt_text_md client-web" \
+018  "$txt_text_md client-vnc" \
+019  "$txt_text_md client-tor" \
+020  "$txt_text_md client-vpn" \
+021  "$txt_text_md client-torrent" \
+022  "$txt_text_md lan-tor" \
+023  "$txt_text_md lan-vpn" \
+024  "$txt_text_md shield-ssh" \
+025  "$txt_text_md server-ssh" \
+026  "$txt_text_md server-web" \
+027  "$txt_text_md server-vnc" \
+028  "$txt_text_md server-print" \
+029  "$txt_text_md server-samba" \
+030  "$txt_text_md server-lamp" \
+031  "$txt_text_md server-mail" \
+032  "$txt_text_md server-ftp" \
+033  "$txt_text_md server-news" \
+034  "$txt_text_md server-teamspeak" \
+035  "$txt_text_md server-mumble" \
+036  "$txt_text_md server-sql" \
+037  "$txt_text_md server-asterisk" \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
@@ -8282,21 +8282,21 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
-001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
-002 "$title_md [ Info Options        ] $title_md" \
-003 "$title_md [ Firewall Wallcustom ] $title_md" \
-004  "$text_md load-custom" \
-005  "$text_md clone-wallsystem" \
-006  "$text_md new-full-custom" \
-007  "$text_md nueva-completa-custom" \
-008  "$text_md new-mini-custom" \
-009  "$text_md nueva-mini-custom" \
-010  "$text_md new-tiny-custom" \
-011  "$text_md nueva-diminuta-custom" \
-012  "$text_md show-custom" \
-013  "$text_md modify-custom" \
-014  "$text_md del-custom" \
-015  "$text_md names-custom" \
+001 "$txt_text_title $txt_text_md [ principal menu ] $txt_text_md $txt_text_title" \
+002 "$txt_text_title [ Info Options        ] $txt_text_title" \
+003 "$txt_text_title [ Firewall Wallcustom ] $txt_text_title" \
+004  "$txt_text_md load-custom" \
+005  "$txt_text_md clone-wallsystem" \
+006  "$txt_text_md new-full-custom" \
+007  "$txt_text_md nueva-completa-custom" \
+008  "$txt_text_md new-mini-custom" \
+009  "$txt_text_md nueva-mini-custom" \
+010  "$txt_text_md new-tiny-custom" \
+011  "$txt_text_md nueva-diminuta-custom" \
+012  "$txt_text_md show-custom" \
+013  "$txt_text_md modify-custom" \
+014  "$txt_text_md del-custom" \
+015  "$txt_text_md names-custom" \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
@@ -8367,7 +8367,7 @@ if [ "$cmd_first_option" == "cli-menu-netsystem" ]; then
 ####
 ####
 if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
-echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
+echo "$txt_text_title $txt_text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
 ##########
@@ -8378,47 +8378,47 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
-001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
-002 "$title_md [ Info Options     ] $title_md" \
-003 "$title_md [ firewall netsystem ] $title_md" \
-011  "$text_md preferences-read" \
-012  "$text_md preferences-edit" \
-013  "$text_md preferences-regen" \
-014  "$text_md alias-read" \
-015  "$text_md alias-edit" \
-016  "$text_md alias-regen" \
-017  "$text_md cat-logcmd" \
-018  "$text_md tree-log" \
-019  "$text_md tree-pdf" \
-020  "$text_md tree-conf" \
-021  "$text_md tree-cache" \
-022  "$text_md clean-cache" \
-023  "$text_md ip4" \
-024  "$text_md ip6" \
-025  "$text_md speed-ip4" \
-026  "$text_md speed-ip6" \
-027  "$text_md sockets" \
-028  "$text_md notes" \
-029  "$text_md license" \
-030  "$text_md depends" \
-031  "$text_md info" \
-032  "$text_md version" \
-033  "$text_md options" \
-034  "$text_md info-options" \
-035  "$text_md nodes" \
-036  "$text_md date" \
-037  "$text_md free" \
-038  "$text_md expert" \
-039  "$text_md tree-conf" \
-040  "$text_md commands" \
-041  "$text_md variables" \
-042  "$text_md add-whitelist4" \
-043  "$text_md add-whitelist6" \
-044  "$text_md add-blacklist4" \
-045  "$text_md add-blacklist6" \
-046  "$text_md intro" \
-047  "$text_md download" \
-048  "$text_md install" \
+001 "$txt_text_title $txt_text_md [ principal menu ] $txt_text_md $txt_text_title" \
+002 "$txt_text_title [ Info Options     ] $txt_text_title" \
+003 "$txt_text_title [ firewall netsystem ] $txt_text_title" \
+011  "$txt_text_md preferences-read" \
+012  "$txt_text_md preferences-edit" \
+013  "$txt_text_md preferences-regen" \
+014  "$txt_text_md alias-read" \
+015  "$txt_text_md alias-edit" \
+016  "$txt_text_md alias-regen" \
+017  "$txt_text_md cat-logcmd" \
+018  "$txt_text_md tree-log" \
+019  "$txt_text_md tree-pdf" \
+020  "$txt_text_md tree-conf" \
+021  "$txt_text_md tree-cache" \
+022  "$txt_text_md clean-cache" \
+023  "$txt_text_md ip4" \
+024  "$txt_text_md ip6" \
+025  "$txt_text_md speed-ip4" \
+026  "$txt_text_md speed-ip6" \
+027  "$txt_text_md sockets" \
+028  "$txt_text_md notes" \
+029  "$txt_text_md license" \
+030  "$txt_text_md depends" \
+031  "$txt_text_md info" \
+032  "$txt_text_md version" \
+033  "$txt_text_md options" \
+034  "$txt_text_md info-options" \
+035  "$txt_text_md nodes" \
+036  "$txt_text_md date" \
+037  "$txt_text_md free" \
+038  "$txt_text_md expert" \
+039  "$txt_text_md tree-conf" \
+040  "$txt_text_md commands" \
+041  "$txt_text_md variables" \
+042  "$txt_text_md add-whitelist4" \
+043  "$txt_text_md add-whitelist6" \
+044  "$txt_text_md add-blacklist4" \
+045  "$txt_text_md add-blacklist6" \
+046  "$txt_text_md intro" \
+047  "$txt_text_md download" \
+048  "$txt_text_md install" \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
@@ -8491,7 +8491,7 @@ if [ "$cmd_first_option" == "cli-menu-compact" ]; then
 ####
 ####
 if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
-echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
+echo "$txt_text_title $txt_text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
 ##########
@@ -8502,147 +8502,147 @@ favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
-0110 "$title_md [ intro ] $title_md $title_md" \
-0120 "$title_md [ info-options ] $title_md $title_md" \
-0200 "$title_md [ firewall-listconceptual ] $title_md" \
-0201  "$text_md list4" \
-0202  "$text_md list6"  \
-0203  "$text_md list-filter4" \
-0204  "$text_md list-filter6" \
-0205  "$text_md list-forward" \
-0206  "$text_md list-forward6" \
-0207  "$text_md list-nat4" \
-0208  "$text_md list-nat6" \
-0209  "$text_md list-alltables" \
-0214  "$text_md list-raw4" \
-0215  "$text_md list-raw6" \
-0216  "$text_md list-mangle4" \
-0217  "$text_md list-mangle6" \
-0218  "$text_md list-security4" \
-0219  "$text_md list-security6" \
-0220  "$text_md list-ebtables" \
-0221  "$text_md list-arptables" \
-0300 "$title_md [ firewall-listnumeral ] $title_md" \
-0301  "$text_md listn4" \
-0302  "$text_md listn6" \
-0303  "$text_md listn-filter4" \
-0304  "$text_md listn-filter6" \
-0305  "$text_md listn-forward" \
-0306  "$text_md listn-forward6" \
-0307  "$text_md listn-nat4" \
-0308  "$text_md listn-nat6" \
-0309  "$text_md listn-alltables" \
-0314  "$text_md listn-raw4" \
-0315  "$text_md listn-raw6" \
-0316  "$text_md listn-mangle4" \
-0317  "$text_md listn-mangle6" \
-0318  "$text_md listn-security4" \
-0319  "$text_md listn-security6" \
-0320  "$text_md listn-ebtables" \
-0321  "$text_md listn-arptables" \
-0400 "$title_md [ firewall-control ] $title_md" \
-0401  "$text_md stop" \
-0402  "$text_md continue" \
-0403  "$text_md reset" \
-0404  "$text_md names"  \
-0405  "$text_md show" \
-0406  "$text_md save" \
-0407  "$text_md load" \
-0408  "$text_md actual" \
-0409  "$text_md eraserules" \
-0410  "$text_md wizard-tiny" \
-0411  "$text_md wizard-mini" \
-0412  "$text_md wizard-full" \
-0413  "$text_md without-connection" \
-0414  "$text_md input-permisive" \
-0415  "$text_md input-established" \
-0416  "$text_md eraserules4" \
-0417  "$text_md eraserules6" \
-0418  "$text_md eraserules" \
-0500 "$title_md [ firewall-wallsystem ] $title_md" \
-0507  "$text_md client-basic" \
-0508  "$text_md client-web" \
-0509  "$text_md client-ssh" \
-0510  "$text_md client-telnet" \
-0511  "$text_md client-git" \
-0512  "$text_md games-shooter" \
-0513  "$text_md game-wesnoth" \
-0514  "$text_md game-minetest" \
-0515  "$text_md game-freeciv" \
-0516  "$text_md game-widelands" \
-0517  "$text_md client-web" \
-0518  "$text_md client-vnc" \
-0519  "$text_md client-tor" \
-0520  "$text_md client-vpn" \
-0521  "$text_md client-torrent" \
-0522  "$text_md lan-tor" \
-0523  "$text_md lan-vpn" \
-0524  "$text_md shield-ssh" \
-0525  "$text_md server-ssh" \
-0526  "$text_md server-web" \
-0527  "$text_md server-vnc" \
-0528  "$text_md server-print" \
-0529  "$text_md server-samba" \
-0530  "$text_md server-lamp" \
-0531  "$text_md server-mail" \
-0532  "$text_md server-ftp" \
-0533  "$text_md server-news" \
-0534  "$text_md server-teamspeak" \
-0535  "$text_md server-mumble" \
-0536  "$text_md server-sql" \
-0537  "$text_md server-asterisk" \
-0600 "$title_md [ firewall-wallcustom ] $title_md" \
-0606  "$text_md load-custom" \
-0607  "$text_md clone-wallsystem" \
-0611  "$text_md new-full-custom" \
-0612  "$text_md nueva-completa-custom" \
-0613  "$text_md new-mini-custom" \
-0614  "$text_md nueva-mini-custom" \
-0615  "$text_md new-tiny-custom" \
-0616  "$text_md nueva-diminuta-custom" \
-0617  "$text_md show-custom" \
-0618  "$text_md modify-custom" \
-0619  "$text_md del-custom" \
-0620  "$text_md names-custom" \
-0621  "$text_md templates-regen" \
-0700 "$title_md [ firewall-netsystem ] $title_md" \
-0701  "$text_md preferences-read" \
-0702  "$text_md preferences-edit" \
-0703  "$text_md preferences-regen" \
-0704  "$text_md alias-read" \
-0705  "$text_md alias-edit" \
-0706  "$text_md alias-regen" \
-0707  "$text_md cat-logcmd" \
-0708  "$text_md tree-log" \
-0709  "$text_md tree-pdf" \
-0710  "$text_md tree-conf" \
-0711  "$text_md tree-cache" \
-0712  "$text_md clean-cache" \
-0713  "$text_md ip4" \
-0714  "$text_md ip6" \
-0715  "$text_md speed-ip4" \
-0716  "$text_md speed-ip6" \
-0717  "$text_md sockets" \
-0718  "$text_md notes" \
-0719  "$text_md license" \
-0720  "$text_md depends" \
-0721  "$text_md info" \
-0722  "$text_md version" \
-0723  "$text_md options" \
-0724  "$text_md info-options" \
-0725  "$text_md nodes" \
-0726  "$text_md date" \
-0727  "$text_md free" \
-0728  "$text_md expert" \
-0729  "$text_md commands" \
-0730  "$text_md variables" \
-0731  "$text_md add-whitelist4" \
-0732  "$text_md add-whitelist6" \
-0733  "$text_md add-blacklist4" \
-0734  "$text_md add-blacklist6" \
-0735  "$text_md intro" \
-0736  "$text_md download" \
-0737  "$text_md install" \
+0110 "$txt_text_title [ intro ] $txt_text_title $txt_text_title" \
+0120 "$txt_text_title [ info-options ] $txt_text_title $txt_text_title" \
+0200 "$txt_text_title [ firewall-listconceptual ] $txt_text_title" \
+0201  "$txt_text_md list4" \
+0202  "$txt_text_md list6"  \
+0203  "$txt_text_md list-filter4" \
+0204  "$txt_text_md list-filter6" \
+0205  "$txt_text_md list-forward" \
+0206  "$txt_text_md list-forward6" \
+0207  "$txt_text_md list-nat4" \
+0208  "$txt_text_md list-nat6" \
+0209  "$txt_text_md list-alltables" \
+0214  "$txt_text_md list-raw4" \
+0215  "$txt_text_md list-raw6" \
+0216  "$txt_text_md list-mangle4" \
+0217  "$txt_text_md list-mangle6" \
+0218  "$txt_text_md list-security4" \
+0219  "$txt_text_md list-security6" \
+0220  "$txt_text_md list-ebtables" \
+0221  "$txt_text_md list-arptables" \
+0300 "$txt_text_title [ firewall-listnumeral ] $txt_text_title" \
+0301  "$txt_text_md listn4" \
+0302  "$txt_text_md listn6" \
+0303  "$txt_text_md listn-filter4" \
+0304  "$txt_text_md listn-filter6" \
+0305  "$txt_text_md listn-forward" \
+0306  "$txt_text_md listn-forward6" \
+0307  "$txt_text_md listn-nat4" \
+0308  "$txt_text_md listn-nat6" \
+0309  "$txt_text_md listn-alltables" \
+0314  "$txt_text_md listn-raw4" \
+0315  "$txt_text_md listn-raw6" \
+0316  "$txt_text_md listn-mangle4" \
+0317  "$txt_text_md listn-mangle6" \
+0318  "$txt_text_md listn-security4" \
+0319  "$txt_text_md listn-security6" \
+0320  "$txt_text_md listn-ebtables" \
+0321  "$txt_text_md listn-arptables" \
+0400 "$txt_text_title [ firewall-control ] $txt_text_title" \
+0401  "$txt_text_md stop" \
+0402  "$txt_text_md continue" \
+0403  "$txt_text_md reset" \
+0404  "$txt_text_md names"  \
+0405  "$txt_text_md show" \
+0406  "$txt_text_md save" \
+0407  "$txt_text_md load" \
+0408  "$txt_text_md actual" \
+0409  "$txt_text_md eraserules" \
+0410  "$txt_text_md wizard-tiny" \
+0411  "$txt_text_md wizard-mini" \
+0412  "$txt_text_md wizard-full" \
+0413  "$txt_text_md without-connection" \
+0414  "$txt_text_md input-permisive" \
+0415  "$txt_text_md input-established" \
+0416  "$txt_text_md eraserules4" \
+0417  "$txt_text_md eraserules6" \
+0418  "$txt_text_md eraserules" \
+0500 "$txt_text_title [ firewall-wallsystem ] $txt_text_title" \
+0507  "$txt_text_md client-basic" \
+0508  "$txt_text_md client-web" \
+0509  "$txt_text_md client-ssh" \
+0510  "$txt_text_md client-telnet" \
+0511  "$txt_text_md client-git" \
+0512  "$txt_text_md games-shooter" \
+0513  "$txt_text_md game-wesnoth" \
+0514  "$txt_text_md game-minetest" \
+0515  "$txt_text_md game-freeciv" \
+0516  "$txt_text_md game-widelands" \
+0517  "$txt_text_md client-web" \
+0518  "$txt_text_md client-vnc" \
+0519  "$txt_text_md client-tor" \
+0520  "$txt_text_md client-vpn" \
+0521  "$txt_text_md client-torrent" \
+0522  "$txt_text_md lan-tor" \
+0523  "$txt_text_md lan-vpn" \
+0524  "$txt_text_md shield-ssh" \
+0525  "$txt_text_md server-ssh" \
+0526  "$txt_text_md server-web" \
+0527  "$txt_text_md server-vnc" \
+0528  "$txt_text_md server-print" \
+0529  "$txt_text_md server-samba" \
+0530  "$txt_text_md server-lamp" \
+0531  "$txt_text_md server-mail" \
+0532  "$txt_text_md server-ftp" \
+0533  "$txt_text_md server-news" \
+0534  "$txt_text_md server-teamspeak" \
+0535  "$txt_text_md server-mumble" \
+0536  "$txt_text_md server-sql" \
+0537  "$txt_text_md server-asterisk" \
+0600 "$txt_text_title [ firewall-wallcustom ] $txt_text_title" \
+0606  "$txt_text_md load-custom" \
+0607  "$txt_text_md clone-wallsystem" \
+0611  "$txt_text_md new-full-custom" \
+0612  "$txt_text_md nueva-completa-custom" \
+0613  "$txt_text_md new-mini-custom" \
+0614  "$txt_text_md nueva-mini-custom" \
+0615  "$txt_text_md new-tiny-custom" \
+0616  "$txt_text_md nueva-diminuta-custom" \
+0617  "$txt_text_md show-custom" \
+0618  "$txt_text_md modify-custom" \
+0619  "$txt_text_md del-custom" \
+0620  "$txt_text_md names-custom" \
+0621  "$txt_text_md templates-regen" \
+0700 "$txt_text_title [ firewall-netsystem ] $txt_text_title" \
+0701  "$txt_text_md preferences-read" \
+0702  "$txt_text_md preferences-edit" \
+0703  "$txt_text_md preferences-regen" \
+0704  "$txt_text_md alias-read" \
+0705  "$txt_text_md alias-edit" \
+0706  "$txt_text_md alias-regen" \
+0707  "$txt_text_md cat-logcmd" \
+0708  "$txt_text_md tree-log" \
+0709  "$txt_text_md tree-pdf" \
+0710  "$txt_text_md tree-conf" \
+0711  "$txt_text_md tree-cache" \
+0712  "$txt_text_md clean-cache" \
+0713  "$txt_text_md ip4" \
+0714  "$txt_text_md ip6" \
+0715  "$txt_text_md speed-ip4" \
+0716  "$txt_text_md speed-ip6" \
+0717  "$txt_text_md sockets" \
+0718  "$txt_text_md notes" \
+0719  "$txt_text_md license" \
+0720  "$txt_text_md depends" \
+0721  "$txt_text_md info" \
+0722  "$txt_text_md version" \
+0723  "$txt_text_md options" \
+0724  "$txt_text_md info-options" \
+0725  "$txt_text_md nodes" \
+0726  "$txt_text_md date" \
+0727  "$txt_text_md free" \
+0728  "$txt_text_md expert" \
+0729  "$txt_text_md commands" \
+0730  "$txt_text_md variables" \
+0731  "$txt_text_md add-whitelist4" \
+0732  "$txt_text_md add-whitelist6" \
+0733  "$txt_text_md add-blacklist4" \
+0734  "$txt_text_md add-blacklist6" \
+0735  "$txt_text_md intro" \
+0736  "$txt_text_md download" \
+0737  "$txt_text_md install" \
 3>&1 1>&2 2>&3 )"
 ################################################################################
 #### 
@@ -8702,15 +8702,15 @@ case $menuprincipal in
 0402) clear ; $cmd_internal $cfg_favorite_out_cli continue ;;
 0403) clear ; $cmd_internal $cfg_favorite_out_cli reset ;;
 0404) clear ; $cmd_internal $cfg_favorite_out_cli names ;;
-0405) clear ; $cmd_internal txt names ; echo "$title_md"
+0405) clear ; $cmd_internal txt names ; echo "$txt_text_title"
 read -p "Type the firewall name to read   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $cmd_command_sed s/\\///g)
 $cmd_internal show $nombrecillo ;; 
 0406)archivo="$($cfg_favorite_realpath_textdialog --stdout \
 --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
-clear ;  echo "$title_md saved $archivo" ; $cmd_internal save $archivo ;;
-0407) clear ; $cmd_internal names ; echo "$title_md"
+clear ;  echo "$txt_text_title saved $archivo" ; $cmd_internal save $archivo ;;
+0407) clear ; $cmd_internal names ; echo "$txt_text_title"
 read -p "| Type the firewall name to restore |   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $cmd_command_sed s/\\///g)
 $cmd_internal load $nombrecillo ;;
@@ -8859,8 +8859,8 @@ exit; fi
 if [ "$cmd_first_option" == "text-pause" ]
 ####
 ####
-then read -p '$title_md $text_ok $title_md Press [enter] \
-to continue now with the cli-menu $title_md'
+then read -p '$txt_text_title $txt_text_ok $txt_text_title Press [enter] \
+to continue now with the cli-menu $txt_text_title'
 ####
 ####
 exit; fi
@@ -8893,9 +8893,9 @@ exit; fi
 if [ "$cmd_first_option" == "gui-roll-zenity" ] ;
 ####
 ####
-then echo $head_waiting_gui ;
+then echo $txt_head_waiting_gui ;
 if [ "$cmd_command_zenity" == "$NULL" ] ;
-then echo $message_without_guiroll ; exit ; fi
+then echo $txt_message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="Info|Firewall-List-With-Conceptual|\
@@ -8945,9 +8945,9 @@ exit; fi
 if [ "$cmd_first_option" == "gui-roll-zenity-firewall-wallcontrol" ]
 ####
 ####
-then echo $head_waiting_gui ;
+then echo $txt_head_waiting_gui ;
 if [ "$cmd_command_zenity" == "$NULL" ]
-then echo $message_without_guiroll ; exit ; fi
+then echo $txt_message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -9039,9 +9039,9 @@ exit; fi
 if [ "$cmd_first_option" == "gui-roll-zenity-firewall-listconceptual" ]
 ####
 ####
-then echo $head_waiting_gui ;
+then echo $txt_head_waiting_gui ;
 if [ "$cmd_command_zenity" == "$NULL" ]
-then echo $message_without_guiroll ; exit ; fi
+then echo $txt_message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -9092,9 +9092,9 @@ exit; fi
 ####
 ####
 if [ "$cmd_first_option" == "gui-roll-zenity-firewall-listnumeral" ]
-then echo $head_waiting_gui ;
+then echo $txt_head_waiting_gui ;
 if [ "$cmd_command_zenity" == "$NULL" ]
-then echo $message_without_guiroll ; exit ; fi
+then echo $txt_message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|lsn4|lsn6|\
@@ -9145,9 +9145,9 @@ exit; fi
 ####
 ####
 if [ "$cmd_first_option" == "gui-roll-zenity-firewall-wallcustom" ]
-then echo $head_waiting_gui ;
+then echo $txt_head_waiting_gui ;
 if [ "$cmd_command_zenity" == "$NULL" ]
-then echo $message_without_guiroll ; exit ; fi
+then echo $txt_message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|load-custom|\
@@ -9244,9 +9244,9 @@ exit ; fi
 if [ "$cmd_first_option" == "gui-roll-zenity-firewall-wallsystem" ]
 ####
 ####
-then echo $head_waiting_gui ;
+then echo $txt_head_waiting_gui ;
 if [ "$cmd_command_zenity" == "$NULL" ]
-then echo $message_without_guiroll ; exit ; fi
+then echo $txt_message_without_guiroll ; exit ; fi
 ####
 ####
 menu="gui-principal-menu|gui-info-menu|\
@@ -9358,9 +9358,9 @@ exit ; fi
 if [ "$cmd_first_option" == "gui-roll-zenity-firewall-netsystem" ] ;
 ####
 ####
-then echo $head_waiting_gui ;
+then echo $txt_head_waiting_gui ;
 if [ "$cmd_command_zenity" == "$NULL" ] ;
-then echo $message_without_guiroll ; exit ; fi
+then echo $txt_message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
@@ -9461,10 +9461,10 @@ exit; fi
 if [ "$cmd_first_option" == "gui-menu" ] ;
 ####
 ####
-then echo $head_waiting_gui ;
+then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
 echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md The used gui in $cmd_first_option is $cmd_second_option" ;
+echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="Firewall-listconceptual|Firewall-listnumeral|firewall-wallcontrol|\
@@ -9482,7 +9482,7 @@ selection_final="$($cmd_second_option \
 if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | sed 's/|/ /g')"
 else final="$selection_final" ; fi
-echo ; echo "$title_md option selected: $final" ; echo ;
+echo ; echo "$txt_text_title option selected: $final" ; echo ;
 #### 
 ####
 case $final in
@@ -9512,10 +9512,10 @@ exit; fi
 ####
 ####
 if   [ "$cmd_first_option" == "gui-menu-firewall-wallcontrol" ]
-then echo $head_waiting_gui ;
+then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
 echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md The used gui in $cmd_first_option is $cmd_second_option" ;
+echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -9531,13 +9531,13 @@ selection_final="$($cmd_second_option \
 --text=$cmd_first_option \
 --title=Gui-menu-With-$cmd_internal-$cmd_version \
 --list $selection_menu)"
-echo "$title_md The option selected:  $final" ;
+echo "$txt_text_title The option selected:  $final" ;
 ####
 ####
 if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | sed 's/|/ /g')"
 else final="$selection_final" ; fi
-echo ; echo "$title_md option selected: $final" ; echo ;
+echo ; echo "$txt_text_title option selected: $final" ; echo ;
 #### 
 ####
 case "$final" in
@@ -9622,10 +9622,10 @@ exit; fi
 if   [ "$cmd_first_option" == "gui-menu-firewall-listconceptual" ]
 ####
 ####
-then echo $head_waiting_gui ;
+then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
 echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md The used gui in $cmd_first_option is $cmd_second_option" ;
+echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -9644,7 +9644,7 @@ selection_final="$($cmd_second_option \
 if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | sed 's/|/ /g')"
 else final="$selection_final" ; fi
-echo ; echo "$title_md option selected: $final" ; echo ;
+echo ; echo "$txt_text_title option selected: $final" ; echo ;
 #### 
 #### 
 case "$selection_final" in
@@ -9681,10 +9681,10 @@ exit; fi
 if   [ "$cmd_first_option" == "gui-menu-firewall-listnumeral" ]
 ####
 ####
-then echo $head_waiting_gui ;
+then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
 echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md The used gui in $cmd_first_option is $cmd_second_option" ;
+echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|lsn4|lsn6|\
@@ -9704,7 +9704,7 @@ selection_final="$($cmd_second_option \
 if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | sed 's/|/ /g')"
 else final="$selection_final" ; fi
-echo ; echo "$title_md option selected: $final" ; echo ;
+echo ; echo "$txt_text_title option selected: $final" ; echo ;
 #### 
 #### 
 case "$selection_final" in
@@ -9741,10 +9741,10 @@ exit; fi
 if [ "$cmd_first_option" == "gui-menu-firewall-wallcustom" ]
 ####
 ####
-then echo $head_waiting_gui ;
+then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
 echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md The used gui in $cmd_first_option is $cmd_second_option" ;
+echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -9766,7 +9766,7 @@ selection_final="$($cmd_second_option \
 if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | sed 's/|/ /g')"
 else final="$selection_final" ; fi
-echo ; echo "$title_md option selected: $final" ; echo ;
+echo ; echo "$txt_text_title option selected: $final" ; echo ;
 #### 
 #### 
 case "$selection_final" in
@@ -9845,10 +9845,10 @@ exit; fi
 ####
 ####  
 if [ "$cmd_first_option" == "gui-menu-firewall-wallsystem" ]
-then echo $head_waiting_gui ;
+then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
 echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md The used gui in $cmd_first_option is $cmd_second_option" ;
+echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -9873,7 +9873,7 @@ selection_final="$($cmd_second_option \
 if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | sed 's/|/ /g')"
 else final="$selection_final" ; fi
-echo ; echo "$title_md option selected: $final" ; echo ;
+echo ; echo "$txt_text_title option selected: $final" ; echo ;
 #### 
 #### 
 case "$selection_final" in
@@ -9965,10 +9965,10 @@ exit; fi
 ####
 ####
 if [ "$cmd_first_option" == "gui-menu-firewall-netsystem" ]
-then echo $head_waiting_gui ;
+then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
 echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md The used gui in $cmd_first_option is $cmd_second_option" ;
+echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
@@ -9992,7 +9992,7 @@ selection_final="$($cmd_second_option \
 if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | sed 's/|/ /g')"
 else final="$selection_final" ; fi
-echo ; echo "$title_md option selected: $final" ; echo ;
+echo ; echo "$txt_text_title option selected: $final" ; echo ;
 #### 
 ####
 case "$selection_final" in
@@ -10085,7 +10085,7 @@ exit; fi
 if [ "$cmd_first_option" == "load-custom" ]
 ####
 ####
-then echo "$title_md $text_info [ loading firewall wallcustom $cmd_second_option ]"
+then echo "$txt_text_title $txt_text_info [ loading firewall wallcustom $cmd_second_option ]"
 allow_launchrules_firewall="yes" ;
 type_firewall="wallcustom" ;
 name_firewall="$cmd_second_option" ;
@@ -10115,7 +10115,7 @@ fi
 if [ "$cmd_first_option" == "loadtiny-custom" ]
 ####
 ####
-then echo "$title_md $text_info [ loading firewall wallcustom $cmd_second_option ]"
+then echo "$txt_text_title $txt_text_info [ loading firewall wallcustom $cmd_second_option ]"
 allow_launchrules_firewall="yes" ;
 type_firewall="tinycustom" ;
 name_firewall="$cmd_second_option" ;
@@ -10145,7 +10145,7 @@ fi
 if [ "$cmd_first_option" == "tinyserver-tcp" ]
 ####
 ####
-then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
+then echo "$txt_text_title $txt_text_info [ loading firewall wallcustom $fist_option ]"
 allow_launchrules_firewall="yes" ;
 type_firewall="wallcontrol" ;
 name_firewall="tinyserver-tcp" ;
@@ -10164,14 +10164,14 @@ fi
 ####
 ####
 if [ "$cmd_second_option" != "$NULL" ]; then
-echo "$title_md $text_info [ Server with ports tcp $2 for host $3 ]"
-echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
+echo "$txt_text_title $txt_text_info [ Server with ports tcp $2 for host $3 ]"
+echo "$txt_text_title $txt_text_info [ Suggest: list rules with list numeral ]"
 else
-echo "$text_info Introducction: Put the ports tcp servers"
-echo "$text_info Introducction: The tinyserver-udp configured like client for all protocols."
-echo "$text_info Example_1: $cmd_internal tinyserver-tcp 20:22,80"
-echo "$text_info Example_2: $cmd_internal tinyserver-tcp 20:22,80 12.168.0.0/24"
-echo "$text_fail fwiptables $cmd_first_option no loaded"
+echo "$txt_text_info Introducction: Put the ports tcp servers"
+echo "$txt_text_info Introducction: The tinyserver-udp configured like client for all protocols."
+echo "$txt_text_info Example_1: $cmd_internal tinyserver-tcp 20:22,80"
+echo "$txt_text_info Example_2: $cmd_internal tinyserver-tcp 20:22,80 12.168.0.0/24"
+echo "$txt_text_fail fwiptables $cmd_first_option no loaded"
 exit ; fi
 ####
 ####
@@ -10187,7 +10187,7 @@ fi
 if [ "$cmd_first_option" == "tinyserver-udp" ]
 ####
 ####
-then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
+then echo "$txt_text_title $txt_text_info [ loading firewall wallcustom $fist_option ]"
 allow_launchrules_firewall="yes" ;
 type_firewall="wallcontrol" ;
 name_firewall="tinyserver-udp" ;
@@ -10206,14 +10206,14 @@ fi
 ####
 ####
 if [ "$cmd_second_option" != "$NULL" ]; then
-echo "$title_md $text_info [ Server with ports udp $2 for host $3 ]"
-echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
+echo "$txt_text_title $txt_text_info [ Server with ports udp $2 for host $3 ]"
+echo "$txt_text_title $txt_text_info [ Suggest: list rules with list numeral ]"
 else
-echo "$text_info Introducction: Put the ports udp servers"
-echo "$text_info Introducction: The tinyserver-udp configured like client for all protocols."
-echo "$text_info Example_1: $cmd_internal tinyserver-udp 20:22,80"
-echo "$text_info Example_2: $cmd_internal tinyserver-udp 20:22,80 192.168.0.0/24"
-echo "$text_fail fwiptables $cmd_first_option no loaded"
+echo "$txt_text_info Introducction: Put the ports udp servers"
+echo "$txt_text_info Introducction: The tinyserver-udp configured like client for all protocols."
+echo "$txt_text_info Example_1: $cmd_internal tinyserver-udp 20:22,80"
+echo "$txt_text_info Example_2: $cmd_internal tinyserver-udp 20:22,80 192.168.0.0/24"
+echo "$txt_text_fail fwiptables $cmd_first_option no loaded"
 exit; fi
 ####
 ####
@@ -10229,7 +10229,7 @@ fi
 if [ "$cmd_first_option" == "miniserver-tcp" ]
 ####
 ####
-then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
+then echo "$txt_text_title $txt_text_info [ loading firewall wallcustom $fist_option ]"
 allow_launchrules_firewall="yes" ;
 type_firewall="wallcontrol"    ; 
 name_firewall="miniserver-tcp" ;
@@ -10247,14 +10247,14 @@ config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$cmd_second_option" != "$NULL" ]; then
-echo "$title_md $text_info [ Server with ports tcp $2 for host $3 ]"
-echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
+echo "$txt_text_title $txt_text_info [ Server with ports tcp $2 for host $3 ]"
+echo "$txt_text_title $txt_text_info [ Suggest: list rules with list numeral ]"
 else
-echo "$text_info Introducction: Put the ports tcp servers"
-echo "$text_info Introducction: to client ports: see preferences-edit (miniclient ports)"
-echo "$text_info Example_1: $cmd_internal miniserver-tcp 20:22,80"
-echo "$text_info Example_2: $cmd_internal miniserver-tcp 20:22,80 192.168.0.0/24"
-echo "$text_fail fwiptables $cmd_first_option no loaded"
+echo "$txt_text_info Introducction: Put the ports tcp servers"
+echo "$txt_text_info Introducction: to client ports: see preferences-edit (miniclient ports)"
+echo "$txt_text_info Example_1: $cmd_internal miniserver-tcp 20:22,80"
+echo "$txt_text_info Example_2: $cmd_internal miniserver-tcp 20:22,80 192.168.0.0/24"
+echo "$txt_text_fail fwiptables $cmd_first_option no loaded"
 exit ; fi
 ####
 ####
@@ -10270,7 +10270,7 @@ fi
 if [ "$cmd_first_option" == "miniserver-udp" ]
 ####
 ####
-then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
+then echo "$txt_text_title $txt_text_info [ loading firewall wallcustom $fist_option ]"
 allow_launchrules_firewall="yes" ;
 type_firewall="wallcontrol"    ; 
 name_firewall="miniserver-udp" ;
@@ -10288,14 +10288,14 @@ config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$cmd_second_option" != "$NULL" ]; then
-echo "$title_md $text_info [ Server with ports udp $2 for host $3 ]"
-echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
+echo "$txt_text_title $txt_text_info [ Server with ports udp $2 for host $3 ]"
+echo "$txt_text_title $txt_text_info [ Suggest: list rules with list numeral ]"
 else
-echo "$text_info Introducction: Put the ports udp servers"
-echo "$text_info Introducction: to client ports: see preferences-edit (miniclient ports)"
-echo "$text_info Example_1: $cmd_internal mioniserver-udp 20:22,80"
-echo "$text_info Example_2: $cmd_internal mioniserver-udp 20:22,80 192.168.0.0/24"
-echo "$text_fail fwiptables $cmd_first_option no loaded"
+echo "$txt_text_info Introducction: Put the ports udp servers"
+echo "$txt_text_info Introducction: to client ports: see preferences-edit (miniclient ports)"
+echo "$txt_text_info Example_1: $cmd_internal mioniserver-udp 20:22,80"
+echo "$txt_text_info Example_2: $cmd_internal mioniserver-udp 20:22,80 192.168.0.0/24"
+echo "$txt_text_fail fwiptables $cmd_first_option no loaded"
 exit ; fi
 ####
 ####
@@ -10303,6 +10303,28 @@ fi
 ####
 ####
 #### :rutina-final-miniserver-udp:
+################
+################
+#### :rutina-inicial-enviroment:
+####
+####
+if [ "$cmd_first_option" == "enviroment" ] ; then
+####
+####
+case "$cmd_second_option" in
+"cmd") declare | $cmd_command_grep  ^cmd_ | $cmd_command_sort ;;
+"cfg") declare | $cmd_command_grep  ^cfg_ | $cmd_command_sort ;;
+"all") declare | sort ;;
+*) echo "$txt_text_title $txt_text_info the second option is cmd or is cfg" ;;
+esac
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-enviroment:
+###############
+###############
 ##########    english: ready system rules con its option               ##########
 ##########    spanish: preprara reglas del sistema con sus opciones    ##########
 ####
@@ -10327,7 +10349,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "without-connection" ]; then
-echo "$title_md $text_info [ loading firewall wallcontrol without-connection ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallcontrol without-connection ]" ;
 allow_launchrules_firewall="yes" ;
 type_firewall="without-connection";
 name_firewall="$cmd_first_option";
@@ -10345,7 +10367,7 @@ fi
 if [ "$cmd_first_option" == "input-permisive" ]; then
 ####
 ####
-echo "$title_md $text_info [ loading firewall wallcontrol input-permisive ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallcontrol input-permisive ]" ;
 allow_launchrules_firewall="yes" ;
 type_firewall="input-permisive" ;
 name_firewall="$cmd_first_option";
@@ -10367,7 +10389,7 @@ fi
 if [ "$cmd_first_option" == "input-established" ]; then
 ####
 ####
-echo "$title_md $text_info [ loading firewall wallcontrol input-established ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallcontrol input-established ]" ;
 allow_launchrules_firewall="yes" ;
 type_firewall="input-established" ;
 name_firewall="$cmd_first_option";
@@ -10386,7 +10408,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "shield-ssh" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem shield-ssh ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem shield-ssh ]" ;
 allow_launchrules_firewall="yes" ;
 type_firewall="wallsystem"    ; 
 name_firewall="$cmd_first_option" ;
@@ -10481,7 +10503,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "client-ssh" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem client-ssh ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-ssh ]" ;
 allow_launchrules_firewall="yes" ;
 type_firewall="wallsystem"    ; 
 name_firewall="$cmd_first_option" ;
@@ -10576,7 +10598,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "client-telnet" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem client-telnet ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-telnet ]" ;
 allow_launchrules_firewall="yes" ;
 type_firewall="wallsystem"    ; 
 name_firewall="$cmd_first_option" ;
@@ -10672,7 +10694,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "client-basic" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem client-basic ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-basic ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -10769,7 +10791,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "client-web" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem client-web ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-web ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -10864,7 +10886,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "client-git" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem client-git ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-git ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -10959,7 +10981,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "client-ipp" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem client-ipp ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-ipp ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -11054,7 +11076,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "client-irc" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem client-irc ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-irc ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -11209,7 +11231,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "client-vnc" ]; then
-echo "$title_md $text_info [ loading firewall client-vnc ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall client-vnc ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -11305,7 +11327,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "client-torrent" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem client-torrent ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-torrent ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -11401,7 +11423,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "client-vpn" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem client-vpn ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-vpn ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$cmd_first_option" ;
@@ -11497,7 +11519,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "client-tor" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem client-tor ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-tor ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -11593,7 +11615,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "client-news" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem client-news ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-news ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -11694,7 +11716,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "client-mail" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem client-mail ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-mail ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -11806,7 +11828,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "client-ftp" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem client-ftp ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-ftp ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -11902,7 +11924,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "client-proxy" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem client-proxy ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-proxy ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -11998,7 +12020,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "lan-vpn" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem lan-vpn ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem lan-vpn ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -12095,7 +12117,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "lan-tor" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem lan-tor ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem lan-tor ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -12192,7 +12214,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "games-shooter" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem games-shooter ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem games-shooter ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$cmd_first_option" ;
@@ -12288,7 +12310,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "games-udp" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem games-udp ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem games-udp ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -12384,7 +12406,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "game-wesnoth" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem game-wesnoth ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem game-wesnoth ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -12480,7 +12502,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "game-minetest" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem game-minetest ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem game-minetest ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -12576,7 +12598,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "game-freeciv" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem game-freeciv ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem game-freeciv ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -12672,7 +12694,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "game-widelands" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem game-widelands ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem game-widelands ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -12768,7 +12790,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "client-uid-root" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem client-uid-root ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-uid-root ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -12863,7 +12885,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "client-gid-users" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem client-gid-users ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-gid-users ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -12958,7 +12980,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "client-gid-net" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem client-gid-net ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-gid-net ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -13053,7 +13075,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "server-web" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem server-web ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-web ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$cmd_first_option" ;
@@ -13149,7 +13171,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "server-vnc" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem server-vnc ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-vnc ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -13245,7 +13267,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "server-ftp" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem server-ftp ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-ftp ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$cmd_first_option" ;
@@ -13341,7 +13363,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "server-gateway" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem server-gateway ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-gateway ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$cmd_first_option" ;
@@ -13437,7 +13459,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "server-proxy" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem server-proxy ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-proxy ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$cmd_first_option" ;
@@ -13533,7 +13555,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "server-news" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem server-news ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-news ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$cmd_first_option" ;
@@ -13635,7 +13657,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "server-mail" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem server-mail ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-mail ]" ;
 ####
 ####
 allow_launchrules_firewall="yes" ; 
@@ -13749,7 +13771,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "server-samba" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem server-samba ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-samba ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$cmd_first_option" ;
@@ -13845,7 +13867,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "server-print" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem server-print ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-print ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$cmd_first_option" ;
@@ -13941,7 +13963,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "server-ssh" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem server-ssh ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-ssh ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -14037,7 +14059,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "server-telnet" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem server-telnet ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-telnet ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -14133,7 +14155,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "server-lamp" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem server-lamp ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-lamp ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -14230,7 +14252,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "server-asterisk" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem server-asterisk ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-asterisk ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -14328,7 +14350,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "server-mumble" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem server-mumble ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-mumble ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -14424,7 +14446,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "server-teamspeak" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem server-teamspeak ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-teamspeak ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -14524,7 +14546,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "server-sql" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem server-sql ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-sql ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -14624,7 +14646,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "server-irc" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem server-irc ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-irc ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -14720,7 +14742,7 @@ fi
 ####
 ####
 if [ "$cmd_first_option" == "server-domain" ]; then
-echo "$title_md $text_info [ loading firewall wallsystem server-domain ]" ;
+echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-domain ]" ;
 allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
@@ -14808,25 +14830,6 @@ fi
 ####
 ####
 #### :rutina-final-server-domain:
-####################################################################
-####################################################################
-#### :rutina-inicial-env:
-####
-####
-if [ "$cmd_first_option" == "env" ] ; then
-####
-####
-declare | $cmd_command_grep -E "cmd_|cfg_" | $cmd_command_sort
-####
-####
-exit ; fi
-####
-####
-#### :rutina-final-env:
-####################################################################
-####################################################################
-####
-####
 ############################       english: default: without other valid options
 ############################	   spanish: default: sin otra valida opcion
 ####
@@ -14834,7 +14837,7 @@ exit ; fi
 if [ "$cfg_allow_launchrules_firewall" != "yes" ] ; then
 ####
 ####
-echo "### $text_fail [ Fail Option: $cmd_first_option ] [ List Option: options ]"
+echo "### $txt_text_fail [ Fail Option: $cmd_first_option ] [ List Option: options ]"
 first_option="options" ; $cmd_internal $cmd_first_option ; 
 ####
 ####
@@ -15096,7 +15099,7 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
-echo "$title_md $text_ok [ Launched: firewall ] \
+echo "$txt_text_title $txt_text_ok [ Launched: firewall ] \
 [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
@@ -15269,7 +15272,7 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
-echo "$title_md $text_ok [ Launched: firewall ] \
+echo "$txt_text_title $txt_text_ok [ Launched: firewall ] \
 [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
@@ -15396,7 +15399,7 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 -m comment --comment close-rule &> /dev/null
 ####
 ####  
-echo "$title_md $text_ok [ Launched: firewall ] \
+echo "$txt_text_title $txt_text_ok [ Launched: firewall ] \
 [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
@@ -15816,7 +15819,7 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
-echo "$title_md $text_ok [ Launched: firewall ] \
+echo "$txt_text_title $txt_text_ok [ Launched: firewall ] \
 [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
@@ -15838,7 +15841,7 @@ if [ "$cmd_first_option" == "load-custom" ]
 ####
 then if [ -f $cmd_default_directory_custom/$cmd_second_option ]
 then source $cmd_default_directory_custom/$cmd_second_option &> /dev/null
-else echo "$text_md $text_fail [ Config file not found ]"
+else echo "$txt_text_md $txt_text_fail [ Config file not found ]"
 ####
 ####
 exit ; fi ; fi
@@ -17937,7 +17940,7 @@ $cmd_command_ip6tableslegacy -t filter -A OUTPUT  -j $cfg_config_close_deny \
 ################ spanish: muestra texto cuando activas las load-custom reglas
 ####
 ####  
-echo "$title_md $text_ok [ Launched: firewall ] \
+echo "$txt_text_title $txt_text_ok [ Launched: firewall ] \
 [ Type: $type_firewall ] [ Name: $name_firewall ]"
 ####
 ####
