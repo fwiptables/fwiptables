@@ -14816,8 +14816,7 @@ fi
 if [ "$cmd_first_option" == "env" ] ; then
 ####
 ####
-echo "$title_md $text_info variables saved in $cmd_name"
-declare -f | sort
+declare | $cmd_command_grep -E "cmd_|cfg_" | $cmd_command_sort
 ####
 ####
 exit ; fi
