@@ -751,11 +751,11 @@ if [ "$cfg_favorite_date_command" == "$NULL" ]; then
 ####
 ####
 if [ "$cmd_command_rdate"   != "$NULL" ]; then
-favorite_date_command="$cmd_command_rdate -4 -a -n"  ; fi
+cfg_favorite_date_command="$cmd_command_rdate -4 -a -n"  ; fi
 if [ "$cmd_command_sntp"    != "$NULL" ]; then
-favorite_date_command="$cmd_command_sntp"            ; fi
+cfg_favorite_date_command="$cmd_command_sntp"            ; fi
 if [ "$cmd_command_ntpdate" != "$NULL" ]; then
-favorite_date_command="$cmd_command_ntpdate"         ; fi
+cfg_favorite_date_command="$cmd_command_ntpdate"         ; fi
 ####
 ####
 fi
@@ -772,15 +772,15 @@ if [ "$cfg_favorite_text_editor" == "$NULL" ]; then
 ####
 ####
 if [ "$cmd_command_vi"  != "$NULL" ]  ; then    
-favorite_text_editor="$cmd_command_vi"      ; fi
+cfg_favorite_text_editor="$cmd_command_vi"      ; fi
 if [ "$cmd_command_vim"  != "$NULL" ]  ; then   
-favorite_text_editor="$cmd_command_vim"     ; fi
+cfg_favorite_text_editor="$cmd_command_vim"     ; fi
 if [ "$cmd_command_pico" != "$NULL" ] ; then  
-favorite_text_editor="$cmd_command_pico"    ; fi
+cfg_favorite_text_editor="$cmd_command_pico"    ; fi
 if [ "$cmd_command_editor" != "$NULL" ] ; then  
-favorite_text_editor="$cmd_command_editor"  ; fi
+cfg_favorite_text_editor="$cmd_command_editor"  ; fi
 if [ "$cmd_command_nano"  != "$NULL" ] ; then   
-favorite_text_editor="$cmd_command_nano"    ; fi
+cfg_favorite_text_editor="$cmd_command_nano"    ; fi
 ####
 ####
 fi
@@ -797,14 +797,14 @@ if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
 ####
 ####
 if [ "$cmd_command_dialog"  != "$NULL" ]  ; then  
-favorite_realpath_textdialog="$cmd_command_dialog"
-favorite_basename_textdialog="$(basename $cmd_command_dialog)"
+cfg_favorite_realpath_textdialog="$cmd_command_dialog"
+cfg_favorite_basename_textdialog="$(basename $cmd_command_dialog)"
 fi
 ####
 ####
 if [ "$cmd_command_whiptail" != "$NULL" ] ; then  
-favorite_realpath_textdialog="$cmd_command_whiptail"
-favorite_basename_textdialog="$(basename $cmd_command_whiptail)"
+cfg_favorite_realpath_textdialog="$cmd_command_whiptail"
+cfg_favorite_basename_textdialog="$(basename $cmd_command_whiptail)"
 fi
 ####
 ####
@@ -822,14 +822,14 @@ if [ "$cfg_favorite_realpath_graphicalldialog" == "$NULL" ]; then
 ####
 ####
 if [ "$cmd_command_zenity"  != "$NULL" ] ; then  
-favorite_realpath_graphicalldialog="$cmd_command_zenity"
-favorite_basename_graphicalldialog="$(basename $cmd_command_zenity)"
+cfg_favorite_realpath_graphicalldialog="$cmd_command_zenity"
+cfg_favorite_basename_graphicalldialog="$(basename $cmd_command_zenity)"
 fi
 ####
 ####
 if [ "$cmd_command_yad"     != "$NULL" ] ; then  
-favorite_realpath_graphicalldialog="$cmd_command_yad"
-favorite_basename_graphicalldialog="$(basename $cmd_command_yad)"
+cfg_favorite_realpath_graphicalldialog="$cmd_command_yad"
+cfg_favorite_basename_graphicalldialog="$(basename $cmd_command_yad)"
 fi
 ####
 ####
@@ -847,15 +847,15 @@ if [ "$cfg_favorite_text_browser" == "$NULL" ]; then
 ####
 ####
 if [ "$cmd_command_lynx"   != "$NULL" ] ; then  
-favorite_text_browser="$cmd_command_lynx"    ; fi
+cfg_favorite_text_browser="$cmd_command_lynx"    ; fi
 if [ "$cmd_command_links"  != "$NULL" ] ; then  
-favorite_text_browser="$cmd_command_links"   ; fi
+cfg_favorite_text_browser="$cmd_command_links"   ; fi
 if [ "$cmd_command_links2" != "$NULL" ] ; then  
-favorite_text_browser="$cmd_command_links2"  ; fi
+cfg_favorite_text_browser="$cmd_command_links2"  ; fi
 if [ "$cmd_command_elinks" != "$NULL" ] ; then  
-favorite_text_browser="$cmd_command_elinks"  ; fi
+cfg_favorite_text_browser="$cmd_command_elinks"  ; fi
 if [ "$cmd_command_w3m" != "$NULL" ] ; then  
-favorite_text_browser="$cmd_command_w3m"  ; fi
+cfg_favorite_text_browser="$cmd_command_w3m"  ; fi
 ####
 ####
 fi
@@ -872,11 +872,11 @@ if [ "$cfg_favorite_dhcp_command" == "$NULL" ]; then
 ####
 ####
 if [ "$cmd_command_dhcpcd"  != "$NULL" ]         ; then
-favorite_dhcp_command="$cmd_command_dhcpcd"           ; fi
+cfg_favorite_dhcp_command="$cmd_command_dhcpcd"           ; fi
 if [ "$cmd_command_dhclientscript" != "$NULL" ] ; then  
-favorite_dhcp_command="$cmd_command_dhclientscript"  ; fi
+cfg_favorite_dhcp_command="$cmd_command_dhclientscript"  ; fi
 if [ "$cmd_command_dhclient"   != "$NULL" ] ;      then  
-favorite_dhcp_command="$cmd_command_dhclient"         ; fi
+cfg_favorite_dhcp_command="$cmd_command_dhclient"         ; fi
 ####
 ####
 fi
@@ -893,11 +893,11 @@ if [ "$cfg_favorite_date_command" == "$NULL" ]; then
 ####
 ####
 if [ "$cmd_command_rdate"   != "$NULL" ]; then  
-favorite_date_command="$cmd_command_rdate -4 -a -n"  ; fi
+cfg_favorite_date_command="$cmd_command_rdate -4 -a -n"  ; fi
 if [ "$cmd_command_sntp"    != "$NULL" ]; then  
-favorite_date_command="$cmd_command_sntp"            ; fi
+cfg_favorite_date_command="$cmd_command_sntp"            ; fi
 if [ "$cmd_command_ntpdate" != "$NULL" ]; then  
-favorite_date_command="$cmd_command_ntpdate"         ; fi
+cfg_favorite_date_command="$cmd_command_ntpdate"         ; fi
 ####
 ####
 fi
@@ -914,7 +914,7 @@ if [ "$cfg_favorite_text_music" == "$NULL" ]; then
 ####
 ####
 if [ "$cmd_command_vlc" != "$NULL" ]; then  
-favorite_text_music="$cmd_command_vlc"      ; fi
+cfg_favorite_text_music="$cmd_command_vlc"      ; fi
 ####
 ####
 fi
@@ -1051,69 +1051,69 @@ esac
 ####
 case "$cmd_first_option" in
 "cli")
-favorite_basename_textdialog="$(basename $cfg_favorite_realpath_textdialog)" ;
-first_option="cli"
+cfg_favorite_basename_textdialog="$(basename $cfg_favorite_realpath_textdialog)" ;
+cmd_first_option="cli"
 ;;
 "gui")
-favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
-first_option="gui"
+cfg_favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
+cmd_first_option="gui"
 ;;
 "cli-menu")
-favorite_basename_textdialog="$(basename $cfg_favorite_realpath_textdialog)" ;
-first_option="cli-menu"
+cfg_favorite_basename_textdialog="$(basename $cfg_favorite_realpath_textdialog)" ;
+cmd_first_option="cli-menu"
 ;;
 "cli-dialog")
-favorite_realpath_textdialog="$cmd_command_dialog" ; 
-favorite_basename_textdialog="$(basename $cfg_favorite_realpath_textdialog)" ;
-first_option="cli"
+cfg_favorite_realpath_textdialog="$cmd_command_dialog" ; 
+cfg_favorite_basename_textdialog="$(basename $cfg_favorite_realpath_textdialog)" ;
+cmd_first_option="cli"
 ;;
 "cli-whiptail")
-favorite_realpath_textdialog="$cmd_command_whiptail" ;
-favorite_basename_textdialog="$(basename $cfg_favorite_realpath_textdialog)" ; 
-first_option="cli"
+cfg_favorite_realpath_textdialog="$cmd_command_whiptail" ;
+cfg_favorite_basename_textdialog="$(basename $cfg_favorite_realpath_textdialog)" ; 
+cmd_first_option="cli"
 ;;
 "gui-menu")
-favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
-first_option="gui-menu" 
-second_option="$cfg_favorite_basename_graphicalldialog"
+cfg_favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
+cmd_first_option="gui-menu" 
+cmd_second_option="$cfg_favorite_basename_graphicalldialog"
 ;;
 "gui-shell")
-favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
-first_option="gui-shell-$cfg_favorite_basename_graphicalldialog"
+cfg_favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
+cmd_first_option="gui-shell-$cfg_favorite_basename_graphicalldialog"
 ;;
 "gui-zenity")
-favorite_realpath_graphicalldialog="$cmd_command_zenity" ; 
-favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ; 
-first_option="gui"
+cfg_favorite_realpath_graphicalldialog="$cmd_command_zenity" ; 
+cfg_favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ; 
+cmd_first_option="gui"
 ;;
 "gui-yad")
-favorite_realpath_graphicalldialog="$cmd_command_yad" ; 
-favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ; 
-first_option="gui"
+cfg_favorite_realpath_graphicalldialog="$cmd_command_yad" ; 
+cfg_favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ; 
+cmd_first_option="gui"
 ;;
 "gui-menu-zenity")
-favorite_realpath_graphicalldialog="$cmd_command_zenity" ;
-favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
-first_option="gui-menu" 
-second_option="$cfg_favorite_basename_graphicalldialog"
+cfg_favorite_realpath_graphicalldialog="$cmd_command_zenity" ;
+cfg_favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
+cmd_first_option="gui-menu" 
+cmd_second_option="$cfg_favorite_basename_graphicalldialog"
 ;;
 "gui-menu-yad")
-favorite_realpath_graphicalldialog="$cmd_command_yad" ; 
-favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
-first_option="gui-menu"
-second_option="$cfg_favorite_basename_graphicalldialog"
+cfg_favorite_realpath_graphicalldialog="$cmd_command_yad" ; 
+cfg_favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
+cmd_first_option="gui-menu"
+cmd_second_option="$cfg_favorite_basename_graphicalldialog"
 ;;
 "gui-roll")
-favorite_realpath_graphicalldialog="$cmd_command_zenity" ;
-favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
-first_option="gui-roll" 
-second_option="$cfg_favorite_basename_graphicalldialog"
+cfg_favorite_realpath_graphicalldialog="$cmd_command_zenity" ;
+cfg_favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
+cmd_first_option="gui-roll" 
+cmd_second_option="$cfg_favorite_basename_graphicalldialog"
 ;;
 "gui-roll-zenity")
-favorite_realpath_graphicalldialog="$cmd_command_zenity" ;
-favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
-first_option="gui-roll-zenity" 
-second_option="$cfg_favorite_basename_graphicalldialog"
+cfg_favorite_realpath_graphicalldialog="$cmd_command_zenity" ;
+cfg_favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
+cmd_first_option="gui-roll-zenity" 
+cmd_second_option="$cfg_favorite_basename_graphicalldialog"
 ;;
 ####
 ####
@@ -10314,8 +10314,9 @@ if [ "$cmd_first_option" == "enviroment" ] ; then
 case "$cmd_second_option" in
 "cmd") declare | $cmd_command_grep  ^cmd_ | $cmd_command_sort ;;
 "cfg") declare | $cmd_command_grep  ^cfg_ | $cmd_command_sort ;;
+"txt") declare | $cmd_command_grep  ^txt_ | $cmd_command_sort ;;
 "all") declare | sort ;;
-*) echo "$txt_text_title $txt_text_info the second option is cmd or is cfg" ;;
+*) echo "$txt_text_title $txt_text_info the second option is cmd|txt|cfg|all" ;;
 esac
 ####
 ####
