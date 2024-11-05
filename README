@@ -53,7 +53,7 @@
 ### fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-11-B                
+         Version Firewall: 24-11-C                
         Released Firewall: Year 2024 / Month 11               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
@@ -126,8 +126,8 @@
       Folder logcmd:           /root/.config/fwiptables/fwiptables-logcmd   
         
 ###     [ Preferences files ]     
-      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-B.conf
-      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-B.conf
+      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-C.conf
+      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-C.conf
       usernotes:               /root/.config/fwiptables/fwiptables-preferences/default-usernotes-all-versions.txt
         
 ###     [ optional output ]       
@@ -291,7 +291,8 @@
    free ip-forward utils date resolve speed-ip4 speed-ip6   
    log-stat web intro depends uninstall install upgrade notes   
    variables examples info code expert donate about version   
+   add-whitelist4 add-whitelist6 add-blacklist4 add-blacklist6   
    license-lgpl-v2 license-gpl-v2   
-       | Program: /usr/bin/fwiptables 24-11-B   
+       | Program: /usr/bin/fwiptables 24-11-C   
        | Description: iptables templates in one script   
        | Expert: expert is allowed in preferences file   
