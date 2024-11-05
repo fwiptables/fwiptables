@@ -125,48 +125,55 @@ cmd_usernotes_date="$cmd_get_date"                            # format usernotes
 cmd_cache_date="CACHE_$cmd_get_date-_OPT_"                    # format cache date
 cmd_log_date="LOG_$cmd_get_date-_OPT_"                        # format opt date
 cmd_pdf_date="PDF_$cmd_get_date-_OPT_"                        # format opt date
+#### usual options
+cmd_zero_dir="$(pwd)"                                         # directory actual
+cmd_zero_option="$cmd_internal"                               # default option
+#### options variable without "/"  
+cmd_command_sed="$($cmd_where sed)"                           # prepare options
+cmd_first_option="$(echo $1 | $cmd_command_sed s/\\///g -)"   # first option
+cmd_second_option="$(echo $2 | $cmd_command_sed s/\\///g -)"  # second option
+cmd_third_option="$(echo $3 | $cmd_command_sed s/\\///g -)"   # third option
+cmd_quad_option="$(echo $4 | $cmd_command_sed s/\\///g -)"    # quad option
+cmd_list_option="### $cmd_name $1 $2 $3 $4"                   # option label
+#### variable without "/", without spaces
+cmd_guided_full="$(echo $1-$2-$3-$4 | \
+$cmd_command_sed s/\ /\-/g - | $cmd_command_sed s/\\///g -)"          # all options
 ####
 ####
-#### ########## ########## ##########
-####
-####
-#### :rutina-final-cmd-env:
 ##########     english name, description and version    ##########
 ##########     spanish: nombre, descripcion y version   ##########
 #### :rutina-inicial-web-official:
 ####
 ####
-content_license_gplv3=\
-"https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-GPLv3.txt?format=raw"
-content_license_gplv2=\
+cmd_web_license_gplv2=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-GPL.txt?format=raw"
-content_license_lgplv2=\
+cmd_web_license_lgplv2=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/LICENSE-LGPL.txt?format=raw"
-web_homepage_sourceforge=\
+cmd_web_homepage_sourceforge=\
 "https://sourceforge.net/projects/f-iptables/" ;
-web_homepage_github=\
+cmd_web_homepage_github=\
 "https://github.com/fwiptables/fwiptables" ;
-web_hompage_devuan=\
+cmd_web_hompage_devuan=\
 "https://git.devuan.org/fwiptables/fwiptables" ;
-web_download_sourceforge=\
+cmd_web_download_sourceforge=\
 "https://sourceforge.net/projects/f-iptables/files/latest/download" ;
-web_download_github=\
+cmd_web_download_github=\
 "https://github.com/fwiptables/fwiptables/releases" ;
-web_download_devuan=\
+cmd_web_download_devuan=\
 "https://git.devuan.org/fwiptables/fwiptables/releases" ;
-git_listado_sourceforge=\
+cmd_web_gitlist_sourceforge=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/" ;
-git_download_sourceforge=\
+cmd_web_git_sourceforge=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/iversion.sh?format=raw" ;
-web_download_myradio=\
+cmd_web_download_myradio=\
 "https://sourceforge.net/p/f-iptables/code/ci/main/tree/myradio-bash?format=raw" ;
-web_blacklist_fademind=\
+cmd_web_blacklist_fademind=\
 "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts" ;
-web_blacklist_mvps=\
+cmd_web_blacklist_mvps=\
 "http://winhelp2002.mvps.org/hosts.txt" ;
-web_blacklist_adaway=\
+cmd_web_blacklist_adaway=\
 "https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt" ;
-web_blacklist_stevenblack=\
+cmd_web_blacklist_stevenblack=\
 "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts" ;
 ####
 ####
@@ -176,119 +183,120 @@ web_blacklist_stevenblack=\
 #### :rutina-inicial-possible-commands:
 ####
 ####
-command_arp="$($cmd_where arp)"
-command_arpscan="$($cmd_where arp-scan)"
-command_arptables="$($cmd_where arptables)"
-command_awk="$($cmd_where awk)"
-command_bash="$($cmd_where bash)"
-command_bc="$($cmd_where bc)"
-command_cat="$($cmd_where cat)"
-command_convert="$($cmd_where convert)"
-command_cpufreqinfo="$($cmd_where cpufreq-info)"
-command_cpupower="$($cmd_where cpupower)"
-command_curl="$($cmd_where curl)"
-command_cut="$($cmd_where cut)"
-command_date="$($cmd_where date)"
-command_dd="$($cmd_where dd)"
-command_dhclient="$($cmd_where dhclient)"
-command_dhclientscript="$($cmd_where dhclient-script)"
-command_dhcpcd="$($cmd_where dhcpcd)"
-command_dialog="$($cmd_where dialog)"
-command_dig="$($cmd_where dig)"
-command_dpkg="$($cmd_where dpkg)"
-command_ebtables="$($cmd_where ebtables)"
-command_editor="$($cmd_where editor)"
-command_egrep="$($cmd_where egrep)"
-command_elinks="$($cmd_where elinks)"
-command_file="$($cmd_where file)"
-command_find="$($cmd_where find)"
-command_geoiplookup="$($cmd_where geoiplookup)"
-command_glxgears="$($cmd_where glxgears)"
-command_gpg="$($cmd_where gpg)"
-command_grep="$($cmd_where grep)"
-command_halt="$($cmd_where halt)"
-command_host="$($cmd_where host)"
-command_id="$($cmd_where id)"
-command_ifconfig="$($cmd_where ifconfig)"
-command_init="$($cmd_where init)"
-command_ip="$($cmd_where ip)"
-command_ip4tableslegacy="$($cmd_where iptables-legacy)"
-command_ip4tablesnft="$($cmd_where iptables-nft)"
-command_ip6tableslegacy="$($cmd_where ip6tables-legacy)"
-command_ip6tablesnft="$($cmd_where ip6tables-nft)"
-command_iperf="$($cmd_where iperf)"
-command_iperf3="$($cmd_where iperf3)"
-command_iw="$($cmd_where iw)"
-command_links="$($cmd_where links)"
-command_links2="$($cmd_where links2)"
-command_logname="$($cmd_where logname)"
-command_lpinfo="$($cmd_where lpinfo)"
-command_lpstat="$($cmd_where lpstat)"
-command_ls="$($cmd_where ls) -1 -R"
-command_lsblk="$($cmd_where lsblk)"
-command_lscpu="$($cmd_where lscpu)"
-command_lsgpu="$($cmd_where lsgpu)"
-command_lshw="$($cmd_where lshw)"
-command_lsof="$($cmd_where lsof)"
-command_lspci="$($cmd_where lspci)"
-command_lsusb="$($cmd_where lsusb)"
-command_lynx="$($cmd_where lynx)"
-command_m2r="$($cmd_where m2r)"
-command_md5sum="$($cmd_where md5sum)"
-command_mdp="$($cmd_where mdp)"
-command_mkdir="$($cmd_where mkdir)"
-command_mpg123="$($cmd_where mpg123)"
-command_mpg123="$($cmd_where mpg123)"
-command_mpg321="$($cmd_where mpg321)"
-command_mpg321="$($cmd_where mpg321)"
-command_nano="$($cmd_where nano)"
-command_netstat="$($cmd_where netstat)"
-command_netstatnat="$($cmd_where netstat-nat)"
-command_nmap="$($cmd_where nmap)"
-command_ntpdate="$($cmd_where ntpdate)"
-command_obash="$($cmd_where obash)"
-command_openssl="$($cmd_where openssl)"
-command_pico="$($cmd_where pico)"
-command_ping="$($cmd_where ping)"
-command_poweroff="$($cmd_where poweroff)"
-command_rdate="$($cmd_where rdate)"
-command_readlink="$($cmd_where readlink)"
-command_reboot="$($cmd_where reboot)"
-command_resolveip="$($cmd_where resolveip)"
-command_route="$($cmd_where route)"
-command_sed="$($cmd_where sed)"
-command_shutdown="$($cmd_where shutdown)"
-command_sleep="$($cmd_where sleep)"
-command_sntp="$($cmd_where sntp) -S"
-command_ss="$($cmd_where ss)"
-command_sudo="$($cmd_where sudo)"
-command_sysctl="$($cmd_where sysctl)"
-command_systemctl="$($cmd_where systemctl)"
-command_tar="$($cmd_where tar)"
-command_tcpdump="$($cmd_where tcpdump)"
-command_tee="$($cmd_where tee)"
-command_timeout="$($cmd_where timeout)"
-command_torify="$($cmd_where torify)"
-command_tracepath="$($cmd_where tracepath)"
-command_traceroute="$($cmd_where traceroute)"
-command_tree="$($cmd_where tree)"
-command_txt2html="$($cmd_where txt2html)"
-command_uname="$($cmd_where uname)"
-command_uuid="$($cmd_where uuid)"
-command_vi="$($cmd_where vi)"
-command_vim="$($cmd_where vim)"
-command_vlc="$($cmd_where vlc) -I dummy -d"
-command_w3m="$($cmd_where w3m)"
-command_wget="$($cmd_where wget)"
-command_whiptail="$($cmd_where whiptail)"
-command_wpapassphrase="$($cmd_where wpa_passphrase)"
-command_wpasupplicant="$($cmd_where wpa_supplicant)"
-command_xhost="$($cmd_where xhost)"
-command_xrandr="$($cmd_where xrandr)"
-command_yad="$($cmd_where yad)"
-command_zenity="$($cmd_where zenity)"
-command_zgrep="$($cmd_where zgrep)"
-command_wc="$($cmd_where wc)"
+cmd_command_arp="$($cmd_where arp)"
+cmd_command_arpscan="$($cmd_where arp-scan)"
+cmd_command_arptables="$($cmd_where arptables)"
+cmd_command_awk="$($cmd_where awk)"
+cmd_command_bash="$($cmd_where bash)"
+cmd_command_bc="$($cmd_where bc)"
+cmd_command_cat="$($cmd_where cat)"
+cmd_command_convert="$($cmd_where convert)"
+cmd_command_cpufreqinfo="$($cmd_where cpufreq-info)"
+cmd_command_cpupower="$($cmd_where cpupower)"
+cmd_command_curl="$($cmd_where curl)"
+cmd_command_cut="$($cmd_where cut)"
+cmd_command_date="$($cmd_where date)"
+cmd_command_dd="$($cmd_where dd)"
+cmd_command_dhclient="$($cmd_where dhclient)"
+cmd_command_dhclientscript="$($cmd_where dhclient-script)"
+cmd_command_dhcpcd="$($cmd_where dhcpcd)"
+cmd_command_dialog="$($cmd_where dialog)"
+cmd_command_dig="$($cmd_where dig)"
+cmd_command_dpkg="$($cmd_where dpkg)"
+cmd_command_ebtables="$($cmd_where ebtables)"
+cmd_command_editor="$($cmd_where editor)"
+cmd_command_egrep="$($cmd_where egrep)"
+cmd_command_elinks="$($cmd_where elinks)"
+cmd_command_file="$($cmd_where file)"
+cmd_command_find="$($cmd_where find)"
+cmd_command_geoiplookup="$($cmd_where geoiplookup)"
+cmd_command_glxgears="$($cmd_where glxgears)"
+cmd_command_gpg="$($cmd_where gpg)"
+cmd_command_grep="$($cmd_where grep)"
+cmd_command_halt="$($cmd_where halt)"
+cmd_command_host="$($cmd_where host)"
+cmd_command_id="$($cmd_where id)"
+cmd_command_ifconfig="$($cmd_where ifconfig)"
+cmd_command_init="$($cmd_where init)"
+cmd_command_ip="$($cmd_where ip)"
+cmd_command_ip4tableslegacy="$($cmd_where iptables-legacy)"
+cmd_command_ip4tablesnft="$($cmd_where iptables-nft)"
+cmd_command_ip6tableslegacy="$($cmd_where ip6tables-legacy)"
+cmd_command_ip6tablesnft="$($cmd_where ip6tables-nft)"
+cmd_command_iperf="$($cmd_where iperf)"
+cmd_command_iperf3="$($cmd_where iperf3)"
+cmd_command_iw="$($cmd_where iw)"
+cmd_command_links="$($cmd_where links)"
+cmd_command_links2="$($cmd_where links2)"
+cmd_command_logname="$($cmd_where logname)"
+cmd_command_lpinfo="$($cmd_where lpinfo)"
+cmd_command_lpstat="$($cmd_where lpstat)"
+cmd_command_ls="$($cmd_where ls) -1 -R"
+cmd_command_lsblk="$($cmd_where lsblk)"
+cmd_command_lscpu="$($cmd_where lscpu)"
+cmd_command_lsgpu="$($cmd_where lsgpu)"
+cmd_command_lshw="$($cmd_where lshw)"
+cmd_command_lsof="$($cmd_where lsof)"
+cmd_command_lspci="$($cmd_where lspci)"
+cmd_command_lsusb="$($cmd_where lsusb)"
+cmd_command_lynx="$($cmd_where lynx)"
+cmd_command_m2r="$($cmd_where m2r)"
+cmd_command_md5sum="$($cmd_where md5sum)"
+cmd_command_mdp="$($cmd_where mdp)"
+cmd_command_mkdir="$($cmd_where mkdir)"
+cmd_command_mpg123="$($cmd_where mpg123)"
+cmd_command_mpg123="$($cmd_where mpg123)"
+cmd_command_mpg321="$($cmd_where mpg321)"
+cmd_command_mpg321="$($cmd_where mpg321)"
+cmd_command_nano="$($cmd_where nano)"
+cmd_command_netstat="$($cmd_where netstat)"
+cmd_command_netstatnat="$($cmd_where netstat-nat)"
+cmd_command_nmap="$($cmd_where nmap)"
+cmd_command_ntpdate="$($cmd_where ntpdate)"
+cmd_command_obash="$($cmd_where obash)"
+cmd_command_openssl="$($cmd_where openssl)"
+cmd_command_pico="$($cmd_where pico)"
+cmd_command_ping="$($cmd_where ping)"
+cmd_command_poweroff="$($cmd_where poweroff)"
+cmd_command_rdate="$($cmd_where rdate)"
+cmd_command_readlink="$($cmd_where readlink)"
+cmd_command_reboot="$($cmd_where reboot)"
+cmd_command_resolveip="$($cmd_where resolveip)"
+cmd_command_route="$($cmd_where route)"
+cmd_command_sed="$($cmd_where sed)"
+cmd_command_shutdown="$($cmd_where shutdown)"
+cmd_command_sleep="$($cmd_where sleep)"
+cmd_command_sntp="$($cmd_where sntp) -S"
+cmd_command_sort="$($cmd_sort)"
+cmd_command_ss="$($cmd_where ss)"
+cmd_command_sudo="$($cmd_where sudo)"
+cmd_command_sysctl="$($cmd_where sysctl)"
+cmd_command_systemctl="$($cmd_where systemctl)"
+cmd_command_tar="$($cmd_where tar)"
+cmd_command_tcpdump="$($cmd_where tcpdump)"
+cmd_command_tee="$($cmd_where tee)"
+cmd_command_timeout="$($cmd_where timeout)"
+cmd_command_torify="$($cmd_where torify)"
+cmd_command_tracepath="$($cmd_where tracepath)"
+cmd_command_traceroute="$($cmd_where traceroute)"
+cmd_command_tree="$($cmd_where tree)"
+cmd_command_txt2html="$($cmd_where txt2html)"
+cmd_command_uname="$($cmd_where uname)"
+cmd_command_uuid="$($cmd_where uuid)"
+cmd_command_vi="$($cmd_where vi)"
+cmd_command_vim="$($cmd_where vim)"
+cmd_command_vlc="$($cmd_where vlc) -I dummy -d"
+cmd_command_w3m="$($cmd_where w3m)"
+cmd_command_wget="$($cmd_where wget)"
+cmd_command_whiptail="$($cmd_where whiptail)"
+cmd_command_wpapassphrase="$($cmd_where wpa_passphrase)"
+cmd_command_wpasupplicant="$($cmd_where wpa_supplicant)"
+cmd_command_xhost="$($cmd_where xhost)"
+cmd_command_xrandr="$($cmd_where xrandr)"
+cmd_command_yad="$($cmd_where yad)"
+cmd_command_zenity="$($cmd_where zenity)"
+cmd_command_zgrep="$($cmd_where zgrep)"
+cmd_command_wc="$($cmd_where wc)"
 ####
 ####
 #### :rutina-final-possible-commands:
@@ -297,102 +305,102 @@ command_wc="$($cmd_where wc)"
 #### :rutina-inicial-variables-system:
 ####
 ####
-allow_close_log="no"      
-allow_dmz_ip4="no"    
-allow_dmz_ip6="no"    
-allow_expert_commands=""
-allow_forward_ip4="no"    
-allow_forward_ip6="no"    
-allow_gateway_ip4="no"    
-allow_gateway_ip6="no"    
-allow_input_all="no"    
-allow_input_bandwidth="no"    
-allow_input_maxconnect="no"    
-allow_input_ping="no"     
-allow_input_state="no"    
-allow_mac_blacklist="no"    
-allow_mac_whitelist="no"    
-allow_net_blacklist="no"    
-allow_net_whitelist="no"     
-allow_others_protocols="no"     
-allow_output_all="no"     
-allow_output_bandwidth="no"     
-allow_output_gid="no"     
-allow_output_maxconnect="no"     
-allow_output_ping="no"     
-allow_output_state="no"     
-allow_output_uid="no"     
-allow_save_logcmd=""          
-allow_separate_rules=""        
-allow_shield_maxtries="no"    
-allow_show_option="no"  
-allow_show_time="no"
-allow_string_allowed="no"   
-allow_string_dropped="no"     
-allow_system_ulog="no"   
-allow_use_ipv4=""                         
-allow_use_ipv6=""                         
-allow_use_legacy=""                       
-allow_use_nft="no"                        
-client_port_tcp="ssh,http,https"     
-client_port_udp="domain,domain-s,bootpc,bootps,ntp,https"     
-config_close_deny="DROP"
-config_dmz_ip4=""     
-config_dmz_ip6=""     
-config_gateway_ip4="0/0"    
-config_gateway_ip6="::/0"    
-config_graphicall_height="550"
-config_graphicall_width="750"
-config_input_bandwidth="12512"     
-config_input_maxconnect="72"     
-config_input_state="related,established"     
-config_ip4_localhost="127.0.0.1"    
-config_ip6_localhost="::1"    
-config_ipv4_netclient="0/0"     
-config_ipv4_netserver="0/0"     
-config_ipv6_netclient="::/0"     
-config_ipv6_netserver="::/0"   
-config_mac_blacklist=""     
-config_mac_whitelist=""     
-config_net_blacklist="yandex.com,baidu.com,google.com"     
-config_net_whitelist="deb.debian.org"     
-config_others_protocols="icmp,igmp"     
-config_output_bandwidth="512"     
-config_output_gid="root"     
-config_output_maxconnect="72"     
-config_output_state="related,established"     
-config_output_uid="root"     
-config_shield_maxtries="10"  
-config_shield_maxtries="12"     
-config_shield_port="22" 
-config_shield_port="22"
-config_show_time="### date $($command_date)"
-config_string_algoritmo="kpm"
-config_string_allowed="one-string-that-like-how-a-passord,sourceforge.net"  
-config_string_denied=".fb.com,.facebook.com,xxx.html" 
-favorite_date_command=""
-favorite_realpath_graphicalldialog=""
-favorite_realpath_textdialog=""
-favorite_text_browser=""
-favorite_text_editor=""        
-launch_rules_firewall="no"
-list_rules_conceptual=""   
-logserver_port_tcp="no"     
-logserver_port_udp="no"     
-miniclient_port_tcp="ssh,http,https"     
-miniclient_port_udp="domain,domain-s,bootpc,bootps,ntp,https"     
-outcli="cli"
-serverip_discover_ipv4="http://httpbin.org/ip"
-serverip_discover_ipv6="http://httpbin.org/ip"
-serverip_iperf_ipv4="ping.online.net"       
-serverip_iperf_ipv6="ping6.online.net"      
-serverport_iperf_ipv4="5200"                
-serverport_iperf_ipv6="5200"
-server_port_tcp=""     
-server_port_udp=""     
-server_radio_online="https://www.tdtchannels.com/lists/radio.m3u8"
-time_server_waiting="9s"    
-without_first_option="options"
+cfg_allow_close_log="no"      
+cfg_allow_dmz_ip4="no"    
+cfg_allow_dmz_ip6="no"    
+cfg_allow_expert_commands=""
+cfg_allow_forward_ip4="no"    
+cfg_allow_forward_ip6="no"    
+cfg_allow_gateway_ip4="no"    
+cfg_allow_gateway_ip6="no"    
+cfg_allow_input_all="no"    
+cfg_allow_input_bandwidth="no"    
+cfg_allow_input_maxconnect="no"    
+cfg_allow_input_ping="no"     
+cfg_allow_input_state="no"    
+cfg_allow_launchrules_firewall="no"
+cfg_allow_mac_blacklist="no"    
+cfg_allow_mac_whitelist="no"    
+cfg_allow_net_blacklist="no"    
+cfg_allow_net_whitelist="no"     
+cfg_allow_others_protocols="no"     
+cfg_allow_output_all="no"     
+cfg_allow_output_bandwidth="no"     
+cfg_allow_output_gid="no"     
+cfg_allow_output_maxconnect="no"     
+cfg_allow_output_ping="no"     
+cfg_allow_output_state="no"     
+cfg_allow_output_uid="no"     
+cfg_allow_save_logcmd=""          
+cfg_allow_separate_rules=""        
+cfg_allow_shield_maxtries="no"    
+cfg_allow_show_option="no"  
+cfg_allow_show_time="no"
+cfg_allow_string_allowed="no"   
+cfg_allow_string_dropped="no"     
+cfg_allow_system_ulog="no"   
+cfg_allow_use_ipv4=""                         
+cfg_allow_use_ipv6=""                         
+cfg_allow_use_legacy=""                       
+cfg_allow_use_nft="no"                        
+cfg_client_mini_port_tcp="ssh,http,https"     
+cfg_client_mini_port_udp="domain,domain-s,bootpc,bootps,ntp,https"     
+cfg_client_port_tcp="ssh,http,https"     
+cfg_client_port_udp="domain,domain-s,bootpc,bootps,ntp,https"     
+cfg_config_close_deny="DROP"
+cfg_config_dmz_ip4=""     
+cfg_config_dmz_ip6=""     
+cfg_config_gateway_ip4="0/0"    
+cfg_config_gateway_ip6="::/0"    
+cfg_config_graphicall_height="550"
+cfg_config_graphicall_width="750"
+cfg_config_input_bandwidth="12512"     
+cfg_config_input_maxconnect="72"     
+cfg_config_input_state="related,established"     
+cfg_config_ip4_localhost="127.0.0.1"    
+cfg_config_ip6_localhost="::1"    
+cfg_config_ipv4_netclient="0/0"     
+cfg_config_ipv4_netserver="0/0"     
+cfg_config_ipv6_netclient="::/0"     
+cfg_config_ipv6_netserver="::/0"   
+cfg_config_listrules_conceptual=""   
+cfg_config_mac_blacklist=""     
+cfg_config_mac_whitelist=""     
+cfg_config_net_blacklist="yandex.com,baidu.com,google.com"     
+cfg_config_net_whitelist="deb.debian.org"     
+cfg_config_others_protocols="icmp,igmp"     
+cfg_config_output_bandwidth="512"     
+cfg_config_output_gid="root"     
+cfg_config_output_maxconnect="72"     
+cfg_config_output_state="related,established"     
+cfg_config_output_uid="root"     
+cfg_config_shield_maxtries="10"  
+cfg_config_shield_maxtries="12"     
+cfg_config_shield_port="22"
+cfg_config_shield_port="22" 
+cfg_config_show_time="### date $($cmd_command_date)"
+cfg_config_string_algoritmo="kpm"
+cfg_config_string_allowed="one-string-that-like-how-a-passord,sourceforge.net"  
+cfg_config_string_denied=".fb.com,.facebook.com,xxx.html" 
+cfg_config_without_firstoption="options"
+cfg_favorite_date_command=""
+cfg_favorite_out_cli=""
+cfg_favorite_realpath_graphicalldialog=""
+cfg_favorite_realpath_textdialog=""
+cfg_favorite_text_browser=""
+cfg_favorite_text_editor=""        
+cfg_server_ipdiscover_ipv4="http://httpbin.org/ip"
+cfg_server_ipdiscover_ipv6="http://httpbin.org/ip"
+cfg_server_ip_iperf_ipv4="ping.online.net"       
+cfg_server_ip_iperf_ipv6="ping6.online.net"      
+cfg_server_log_port_tcp="no"     
+cfg_server_log_port_udp="no"     
+cfg_server_port_iperf_ipv4="5200"                
+cfg_server_port_iperf_ipv6="5200"
+cfg_server_port_tcp=""     
+cfg_server_port_udp=""     
+cfg_server_radio_online="https://www.tdtchannels.com/lists/radio.m3u8"
+cfg_server_time_waiting="9s"  
 ####
 ####
 #### :rutina-final-variables-system:
@@ -402,7 +410,7 @@ without_first_option="options"
 ####
 ####
 #### system emulate command tree with command ls
-if [ "$command_tree" == "$NULL" ]; then command_tree="$command_ls"; fi
+if [ "$cmd_command_tree" == "$NULL" ]; then cmd_command_tree="$cmd_command_ls"; fi
 ####
 ####
 #### system requisite utils
@@ -430,37 +438,9 @@ exit; fi ; done
 ####
 ####
 #### :rutina-final-necesary-commands:
-##########    english: options priority        ##########
-##########    spanish: prioridad de opciones   ##########
-#### :rutina-inicial-options-order:
-####
-####
-#### #### option for default
-zero_dir="$(pwd)" ;
-#### #### option for default
-zero_option="$cmd_internal" ;
-#### #### variable without "/"  
-first_option="$(echo $1 | $command_sed s/\\///g -)"  ;
-#### #### variable without "/"  
-second_option="$(echo $2 | $command_sed s/\\///g -)" ;
-#### #### variable without "/"  
-third_option="$(echo $3 | $command_sed s/\\///g -)"  ;
-#### #### variable without "/"  
-quad_option="$(echo $4 | $command_sed s/\\///g -)"  ;
-#### #### variable without "/", without spaces,
-cmd_guided_full="$(echo $1-$2-$3-$4 | $command_sed s/\ /\-/g - | $command_sed s/\\///g -)"
-#### #### label with name option
-cmd_list_option="### $cmd_name $1 $2 $3 $4"
-####
-####
-#### :rutina-final-options-order:
 ##########  english: files:    files and folders from fwiptables          ##########
 ##########  spanish: archivos: archivos y carpetas desde fwiptables       ##########
 #### :rutina-inicial-config-folders:
-####
-####
-#### english: permanent directory tree:   permanent directory and path directory config files
-#### spanish: directorio permanente en arbol:   directorios permanentes y ruta de directorios 
 ####
 ####
 #### #### Prepare directory data/cache: config for root 
@@ -473,42 +453,42 @@ else default_root_home="$HOME"; fi
 #### Prepare directory cache: OR run OR /root/.cache/$cmd_filename
 ####
 ####
-directory_cache_run="/run/$cmd_filename"  ### ununsed
-directory_cache_home="$default_root_home/.cache/$cmd_filename"  ### used
+cmd_default_cache_run="/run/$cmd_filename"                               ### ununsed
+cmd_default_cache_home="$default_root_home/.cache/$cmd_name"             ### used
 ####
 ####
 #### #### variables tree and .cache ####
 ####
 ####
 #### cache 
-directory_cache_basenecesary="$directory_cache_home"
-directory_cache_necesary="$directory_cache_home/$cmd_archive_date"
+cmd_default_cache_basenecesary="$cmd_default_cache_home"
+cmd_default_cache_necesary="$cmd_default_cache_home/$cmd_archive_date"
 ####
 ####
 #### config
-directory_data_necesary="$default_root_home/.config/$cmd_filename"
+cmd_default_directory_necesary="$default_root_home/.config/$cmd_name"
 ####
 ####
 #### config
-default_directory_template="$directory_data_necesary/fwiptables-templates"
-default_directory_control="$directory_data_necesary/fwiptables-control"
-default_directory_custom="$directory_data_necesary/fwiptables-custom"
-default_directory_preferences="$directory_data_necesary/fwiptables-preferences"
-default_directory_baselogcmd="$directory_data_necesary/fwiptables-logcmd"
-default_directory_baselogs="$directory_data_necesary/fwiptables-log"
-default_directory_basepdf="$directory_data_necesary/fwiptables-pdf"
-default_directory_logs="$directory_data_necesary/fwiptables-log/$cmd_archive_date"
-default_directory_pdf="$directory_data_necesary/fwiptables-pdf/$cmd_archive_date"
-default_directory_logcmd="$directory_data_necesary/fwiptables-logcmd/$cmd_archive_date"
-default_directory_wpa="$directory_data_necesary/fwiptables-wpa"
-default_directory_benchmarkram="$directory_data_necesary/fwiptables-benchmarkram"
-default_directory_benchmarkdisk="$directory_data_necesary/fwiptables-benchmarkdisk"
-default_directory_radio="$directory_data_necesary/fwiptables-radio"
-default_directory_proxy="$directory_data_necesary/fwiptables-proxy"
-default_directory_adblock="$directory_data_necesary/fwiptables-adblock"
-default_directory_obash="$directory_data_necesary/fwiptables-obash"
-default_directory_debian="$directory_data_necesary/fwiptables-debian"
-default_directory_readme="$directory_data_necesary/fwiptables-readme"
+cmd_default_directory_template="$cmd_default_directory_necesary/fwiptables-templates"
+cmd_default_directory_control="$cmd_default_directory_necesary/fwiptables-control"
+cmd_default_directory_custom="$cmd_default_directory_necesary/fwiptables-custom"
+cmd_default_directory_preferences="$cmd_default_directory_necesary/fwiptables-preferences"
+cmd_default_directory_baselogcmd="$cmd_default_directory_necesary/fwiptables-logcmd"
+cmd_default_directory_baselogs="$cmd_default_directory_necesary/fwiptables-log"
+cmd_default_directory_basepdf="$cmd_default_directory_necesary/fwiptables-pdf"
+cmd_default_directory_logs="$cmd_default_directory_necesary/fwiptables-log/$cmd_archive_date"
+cmd_default_directory_pdf="$cmd_default_directory_necesary/fwiptables-pdf/$cmd_archive_date"
+cmd_default_directory_logcmd="$cmd_default_directory_necesary/fwiptables-logcmd/$cmd_archive_date"
+cmd_default_directory_wpa="$cmd_default_directory_necesary/fwiptables-wpa"
+cmd_default_directory_benchmarkram="$cmd_default_directory_necesary/fwiptables-benchmarkram"
+cmd_default_directory_benchmarkdisk="$cmd_default_directory_necesary/fwiptables-benchmarkdisk"
+cmd_default_directory_radio="$cmd_default_directory_necesary/fwiptables-radio"
+cmd_default_directory_proxy="$cmd_default_directory_necesary/fwiptables-proxy"
+cmd_default_directory_adblock="$cmd_default_directory_necesary/fwiptables-adblock"
+cmd_default_directory_obash="$cmd_default_directory_necesary/fwiptables-obash"
+cmd_default_directory_debian="$cmd_default_directory_necesary/fwiptables-debian"
+cmd_default_directory_readme="$cmd_default_directory_necesary/fwiptables-readme"
 ####
 ####
 #### :rutina-final-config-folders:
@@ -520,15 +500,15 @@ default_directory_readme="$directory_data_necesary/fwiptables-readme"
 #### sane cache root
 ####
 ####
-if [ ! -d "$directory_cache_necesary" ]; then
-$command_mkdir -p $directory_cache_necesary &> /dev/null ; fi
+if [ ! -d "$cmd_default_cache_necesary" ]; then
+$cmd_command_mkdir -p $cmd_default_cache_necesary &> /dev/null ; fi
 ####
 ####
 #### sane data root
 ####
 ####
-if [ ! -d "$default_directory_data_necesary" ]; then
-$command_mkdir -p $default_directory_data_necesary &> /dev/null ; fi
+if [ ! -d "$default_cmd_default_directory_necesary" ]; then
+$cmd_command_mkdir -p $default_cmd_default_directory_necesary &> /dev/null ; fi
 ####
 ####
 #### sane default log
@@ -541,38 +521,38 @@ then touch $file_default_logcmd &> /dev/null  ; fi
 #### sane data tree
 ####
 ####
-if [ ! -d "$default_directory_control" ]; then 
-$command_mkdir -p "$default_directory_control" &> /dev/null ; fi
-if [ ! -d "$default_directory_template" ]; then
-$command_mkdir -p "$default_directory_template" &> /dev/null ; fi
-if [ ! -d "$default_directory_custom" ]; then
-$command_mkdir -p "$default_directory_custom" &> /dev/null ; fi
-if [ ! -d "$default_directory_preferences" ]; then
-$command_mkdir -p "$default_directory_preferences" &> /dev/null ; fi
-if [ ! -d "$default_directory_logcmd" ]; then
-$command_mkdir -p "$default_directory_logcmd" &> /dev/null ; fi
-if [ ! -d "$default_directory_logs" ]; then
-$command_mkdir -p "$default_directory_logs" &> /dev/null ; fi
-if [ ! -d "$default_directory_wpa" ]; then
-$command_mkdir -p "$default_directory_wpa" &> /dev/null ; fi
-if [ ! -d "$default_directory_pdf" ]; then
-$command_mkdir -p "$default_directory_pdf" &> /dev/null ; fi
-if [ ! -d "$default_directory_benchmarkram" ]; then
-$command_mkdir -p "$default_directory_benchmarkram" &> /dev/null ; fi
-if [ ! -d "$default_directory_benchmarkdisk" ]; then
-$command_mkdir -p "$default_directory_benchmarkdisk" &> /dev/null ; fi
-if [ ! -d "$default_directory_radio" ]; then
-$command_mkdir -p "$default_directory_radio" &> /dev/null ; fi
-if [ ! -d "$default_directory_proxy" ]; then
-$command_mkdir -p "$default_directory_proxy" &> /dev/null ; fi
-if [ ! -d "$default_directory_adblock" ]; then
-$command_mkdir -p "$default_directory_adblock" &> /dev/null ; fi
-if [ ! -d "$default_directory_obash" ]; then
-$command_mkdir -p "$default_directory_obash" &> /dev/null ; fi
-if [ ! -d "$default_directory_debian" ]; then
-$command_mkdir -p "$default_directory_debian" &> /dev/null ; fi
-if [ ! -d "$default_directory_readme" ]; then
-$command_mkdir -p "$default_directory_readme" &> /dev/null ; fi
+if [ ! -d "$cmd_default_directory_control" ]; then 
+$cmd_command_mkdir -p "$cmd_default_directory_control" &> /dev/null ; fi
+if [ ! -d "$cmd_default_directory_template" ]; then
+$cmd_command_mkdir -p "$cmd_default_directory_template" &> /dev/null ; fi
+if [ ! -d "$cmd_default_directory_custom" ]; then
+$cmd_command_mkdir -p "$cmd_default_directory_custom" &> /dev/null ; fi
+if [ ! -d "$cmd_default_directory_preferences" ]; then
+$cmd_command_mkdir -p "$cmd_default_directory_preferences" &> /dev/null ; fi
+if [ ! -d "$cmd_default_directory_logcmd" ]; then
+$cmd_command_mkdir -p "$cmd_default_directory_logcmd" &> /dev/null ; fi
+if [ ! -d "$cmd_default_directory_logs" ]; then
+$cmd_command_mkdir -p "$cmd_default_directory_logs" &> /dev/null ; fi
+if [ ! -d "$cmd_default_directory_wpa" ]; then
+$cmd_command_mkdir -p "$cmd_default_directory_wpa" &> /dev/null ; fi
+if [ ! -d "$cmd_default_directory_pdf" ]; then
+$cmd_command_mkdir -p "$cmd_default_directory_pdf" &> /dev/null ; fi
+if [ ! -d "$cmd_default_directory_benchmarkram" ]; then
+$cmd_command_mkdir -p "$cmd_default_directory_benchmarkram" &> /dev/null ; fi
+if [ ! -d "$cmd_default_directory_benchmarkdisk" ]; then
+$cmd_command_mkdir -p "$cmd_default_directory_benchmarkdisk" &> /dev/null ; fi
+if [ ! -d "$cmd_default_directory_radio" ]; then
+$cmd_command_mkdir -p "$cmd_default_directory_radio" &> /dev/null ; fi
+if [ ! -d "$cmd_default_directory_proxy" ]; then
+$cmd_command_mkdir -p "$cmd_default_directory_proxy" &> /dev/null ; fi
+if [ ! -d "$cmd_default_directory_adblock" ]; then
+$cmd_command_mkdir -p "$cmd_default_directory_adblock" &> /dev/null ; fi
+if [ ! -d "$cmd_default_directory_obash" ]; then
+$cmd_command_mkdir -p "$cmd_default_directory_obash" &> /dev/null ; fi
+if [ ! -d "$cmd_default_directory_debian" ]; then
+$cmd_command_mkdir -p "$cmd_default_directory_debian" &> /dev/null ; fi
+if [ ! -d "$cmd_default_directory_readme" ]; then
+$cmd_command_mkdir -p "$cmd_default_directory_readme" &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-sane-folders:
@@ -583,47 +563,47 @@ $command_mkdir -p "$default_directory_readme" &> /dev/null ; fi
 ####
 #### config templates cfg
 default_tinycfg_eng=\
-"$default_directory_template/default-tiny-english.cfg"
+"$cmd_default_directory_template/default-tiny-english.cfg"
 default_tinycfg_spa=\
-"$default_directory_template/default-tiny-spanish.cfg"
+"$cmd_default_directory_template/default-tiny-spanish.cfg"
 default_minicfg_eng=\
-"$default_directory_template/default-mini-english.cfg"
+"$cmd_default_directory_template/default-mini-english.cfg"
 default_minicfg_spa=\
-"$default_directory_template/default-mini-spanish.cfg"
+"$cmd_default_directory_template/default-mini-spanish.cfg"
 default_fullcfg_eng=\
-"$default_directory_template/default-full-english.cfg"
+"$cmd_default_directory_template/default-full-english.cfg"
 default_fullcfg_spa=\
-"$default_directory_template/default-full-spanish.cfg"
+"$cmd_default_directory_template/default-full-spanish.cfg"
 ####
 ####
 #### config files default
 file_default_preferences=\
-"$default_directory_preferences/default-preferences-$cmd_version.conf"
+"$cmd_default_directory_preferences/default-preferences-$cmd_version.conf"
 file_default_alias=\
-"$default_directory_preferences/default-alias-$cmd_version.conf"
+"$cmd_default_directory_preferences/default-alias-$cmd_version.conf"
 file_default_logcmd=\
-"$default_directory_logcmd/default-logcmd-$cmd_version-$cmd_archive_date.log"
+"$cmd_default_directory_logcmd/default-logcmd-$cmd_version-$cmd_archive_date.log"
 file_default_usernotes=\
-"$default_directory_preferences/default-usernotes-all-versions.txt"
+"$cmd_default_directory_preferences/default-usernotes-all-versions.txt"
 ####
 #### config output files
 file_output_pdf=\
-"$default_directory_pdf/$cmd_pdf_date-$cmd_guided_full.pdf"
+"$cmd_default_directory_pdf/$cmd_pdf_date-$cmd_guided_full.pdf"
 file_output_log=\
-"$default_directory_logs/$cmd_log_date-$cmd_guided_full.log"
+"$cmd_default_directory_logs/$cmd_log_date-$cmd_guided_full.log"
 file_output_cache=\
-"$directory_cache_necesary/$cmd_cache_date-$cmd_guided_full.txt"
+"$cmd_default_cache_necesary/$cmd_cache_date-$cmd_guided_full.txt"
 ####
 ####
 #### config file adblock
 file_blacklist_fademind=\
-"$default_directory_adblock/hosts.blacklist_fademind.txt"
+"$cmd_default_directory_adblock/hosts.blacklist_fademind.txt"
 file_blacklist_mvps=\
-"$default_directory_adblock/hosts.blacklist_mvps.txt"
+"$cmd_default_directory_adblock/hosts.blacklist_mvps.txt"
 file_blacklist_adaway=\
-"$default_directory_adblock/hosts.blacklist_adaway.txt"
+"$cmd_default_directory_adblock/hosts.blacklist_adaway.txt"
 file_blacklist_stevenblack=\
-"$default_directory_adblock/hosts.blacklist_stevenblack.txt"
+"$cmd_default_directory_adblock/hosts.blacklist_stevenblack.txt"
 ####
 ####
 #### :rutina-final-config-files:
@@ -672,9 +652,9 @@ message_without_guiroll="$title_md $text_fail [ install zenity ]"
 if [ "$(logname)" != "$NULL" ] && [ "$(id -u)" == 0 ]; then
 ####
 ####
-if [ "$command_sudo" != "$NULL" ]; then
-$command_sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
-else $command_sudo -u 0 $command_xhost +SI:localuser:root &> /dev/null
+if [ "$cmd_command_sudo" != "$NULL" ]; then
+$cmd_command_sudo -u "$(logname)" $cmd_command_xhost +SI:localuser:root &> /dev/null
+else $cmd_command_sudo -u 0 $cmd_command_xhost +SI:localuser:root &> /dev/null
 fi
 ####
 ####
@@ -694,10 +674,10 @@ if [ -f "$file_default_preferences" ]; then source $file_default_preferences ; f
 ####
 #### prepare alias
 if [ ! -f "$file_default_alias" ]; then touch $file_default_alias ; fi
-option_with_alias="$($command_cat $file_default_alias \
-| $command_grep ^#$first_option= | cut -c 2- -)"
-option_alias_origen="$(echo  $option_with_alias | $command_cut -d "=" -f 1 -)"
-option_alias_destino="$(echo $option_with_alias | $command_cut -d "=" -f 2 -)"
+option_with_alias="$($cmd_command_cat $file_default_alias \
+| $cmd_command_grep ^#$cmd_first_option= | cut -c 2- -)"
+option_alias_origen="$(echo  $option_with_alias | $cmd_command_cut -d "=" -f 1 -)"
+option_alias_destino="$(echo $option_with_alias | $cmd_command_cut -d "=" -f 2 -)"
 ####
 ####
 #### load alias
@@ -708,35 +688,35 @@ exit; fi
 ####
 ####
 #### configure without option
-if [ "$without_first_option" = "$NULL" ] ; then without_first_option="options" ; fi
+if [ "$cfg_config_without_firstoption" = "$NULL" ] ; then config_without_firstoption="options" ; fi
 ####
 ####
 #### Without first option and it is options
-if [ "$first_option" = "$NULL" ] && [ "$without_first_option" == "options" ]; then
-first_option="$without_first_option" ; fi
+if [ "$cmd_first_option" = "$NULL" ] && [ "$cfg_config_without_firstoption" == "options" ]; then
+first_option="$cfg_config_without_firstoption" ; fi
 ####
 ####
 #### Without first option and it is not options show one message
-if [ "$first_option" = "$NULL" ] && [ "$without_first_option" != "options" ]; then
-echo "### $text_info [ Default Option: $without_first_option ] [ List Options: options ]"
-first_option="$without_first_option" ; fi
+if [ "$cmd_first_option" = "$NULL" ] && [ "$cfg_config_without_firstoption" != "options" ]; then
+echo "### $text_info [ Default Option: $cfg_config_without_firstoption ] [ List Options: options ]"
+first_option="$cfg_config_without_firstoption" ; fi
 ####
 ####
 #### label option
-#### if [ "$allow_show_option" == "" ] ; then echo "$cmd_list_option" ; fi
+#### if [ "$cfg_allow_show_option" == "" ] ; then echo "$cmd_list_option" ; fi
 echo "$cmd_list_option"
 ####
 ####
 #### label time
-if [ "$allow_show_time" == "" ] ; then echo "$config_show_time" ; fi
+if [ "$cfg_allow_show_time" == "" ] ; then echo "$cfg_config_show_time" ; fi
 ####
 ####
 #### configure expert
-if [ "$allow_expert_commands" == "no" ]; then
-case "$first_option" in 
+if [ "$cfg_allow_expert_commands" == "no" ]; then
+case "$cmd_first_option" in 
 exper*) echo "$title_md See in preferences allow_expert_commands to active it option"
 exit ;; esac
-case "$second_option" in
+case "$cmd_second_option" in
 exper*) echo "$title_md See in preferences allow_expert_commands to active it option"
 exit ;; esac ; fi
 ####
@@ -748,13 +728,13 @@ exit ;; esac ; fi
 ####
 ####
 #### choose iperf3 and the iperf to speed ip
-if [ "$favorite_iperf_command" == "$NULL" ]; then
+if [ "$cfg_favorite_iperf_command" == "$NULL" ]; then
 ####
 ####
-if [ "$command_iperf3"    != "$NULL" ]; then
-favorite_iperf_command="$command_iperf3" ; fi
-if [ "$command_iperf"   != "$NULL" ]; then
-favorite_iperf_command="$command_iperf" ; fi
+if [ "$cmd_command_iperf3"    != "$NULL" ]; then
+favorite_iperf_command="$cmd_command_iperf3" ; fi
+if [ "$cmd_command_iperf"   != "$NULL" ]; then
+favorite_iperf_command="$cmd_command_iperf" ; fi
 ####
 ####
 fi
@@ -767,15 +747,15 @@ fi
 ####
 ####
 #### configure favorite date
-if [ "$favorite_date_command" == "$NULL" ]; then
+if [ "$cfg_favorite_date_command" == "$NULL" ]; then
 ####
 ####
-if [ "$command_rdate"   != "$NULL" ]; then
-favorite_date_command="$command_rdate -4 -a -n"  ; fi
-if [ "$command_sntp"    != "$NULL" ]; then
-favorite_date_command="$command_sntp"            ; fi
-if [ "$command_ntpdate" != "$NULL" ]; then
-favorite_date_command="$command_ntpdate"         ; fi
+if [ "$cmd_command_rdate"   != "$NULL" ]; then
+favorite_date_command="$cmd_command_rdate -4 -a -n"  ; fi
+if [ "$cmd_command_sntp"    != "$NULL" ]; then
+favorite_date_command="$cmd_command_sntp"            ; fi
+if [ "$cmd_command_ntpdate" != "$NULL" ]; then
+favorite_date_command="$cmd_command_ntpdate"         ; fi
 ####
 ####
 fi
@@ -788,19 +768,19 @@ fi
 ####
 ####
 #### configure text editor
-if [ "$favorite_text_editor" == "$NULL" ]; then
+if [ "$cfg_favorite_text_editor" == "$NULL" ]; then
 ####
 ####
-if [ "$command_vi"  != "$NULL" ]  ; then    
-favorite_text_editor="$command_vi"      ; fi
-if [ "$command_vim"  != "$NULL" ]  ; then   
-favorite_text_editor="$command_vim"     ; fi
-if [ "$command_pico" != "$NULL" ] ; then  
-favorite_text_editor="$command_pico"    ; fi
-if [ "$command_editor" != "$NULL" ] ; then  
-favorite_text_editor="$command_editor"  ; fi
-if [ "$command_nano"  != "$NULL" ] ; then   
-favorite_text_editor="$command_nano"    ; fi
+if [ "$cmd_command_vi"  != "$NULL" ]  ; then    
+favorite_text_editor="$cmd_command_vi"      ; fi
+if [ "$cmd_command_vim"  != "$NULL" ]  ; then   
+favorite_text_editor="$cmd_command_vim"     ; fi
+if [ "$cmd_command_pico" != "$NULL" ] ; then  
+favorite_text_editor="$cmd_command_pico"    ; fi
+if [ "$cmd_command_editor" != "$NULL" ] ; then  
+favorite_text_editor="$cmd_command_editor"  ; fi
+if [ "$cmd_command_nano"  != "$NULL" ] ; then   
+favorite_text_editor="$cmd_command_nano"    ; fi
 ####
 ####
 fi
@@ -813,18 +793,18 @@ fi
 ####
 ####
 #### configure favorite dialog cli text
-if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
+if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
 ####
 ####
-if [ "$command_dialog"  != "$NULL" ]  ; then  
-favorite_realpath_textdialog="$command_dialog"
-favorite_basename_textdialog="$(basename $command_dialog)"
+if [ "$cmd_command_dialog"  != "$NULL" ]  ; then  
+favorite_realpath_textdialog="$cmd_command_dialog"
+favorite_basename_textdialog="$(basename $cmd_command_dialog)"
 fi
 ####
 ####
-if [ "$command_whiptail" != "$NULL" ] ; then  
-favorite_realpath_textdialog="$command_whiptail"
-favorite_basename_textdialog="$(basename $command_whiptail)"
+if [ "$cmd_command_whiptail" != "$NULL" ] ; then  
+favorite_realpath_textdialog="$cmd_command_whiptail"
+favorite_basename_textdialog="$(basename $cmd_command_whiptail)"
 fi
 ####
 ####
@@ -838,18 +818,18 @@ fi
 ####
 ####
 #### configure favorite graphicall gui
-if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then
+if [ "$cfg_favorite_realpath_graphicalldialog" == "$NULL" ]; then
 ####
 ####
-if [ "$command_zenity"  != "$NULL" ] ; then  
-favorite_realpath_graphicalldialog="$command_zenity"
-favorite_basename_graphicalldialog="$(basename $command_zenity)"
+if [ "$cmd_command_zenity"  != "$NULL" ] ; then  
+favorite_realpath_graphicalldialog="$cmd_command_zenity"
+favorite_basename_graphicalldialog="$(basename $cmd_command_zenity)"
 fi
 ####
 ####
-if [ "$command_yad"     != "$NULL" ] ; then  
-favorite_realpath_graphicalldialog="$command_yad"
-favorite_basename_graphicalldialog="$(basename $command_yad)"
+if [ "$cmd_command_yad"     != "$NULL" ] ; then  
+favorite_realpath_graphicalldialog="$cmd_command_yad"
+favorite_basename_graphicalldialog="$(basename $cmd_command_yad)"
 fi
 ####
 ####
@@ -863,19 +843,19 @@ fi
 ####
 ####
 #### configure favorite browser text
-if [ "$favorite_text_browser" == "$NULL" ]; then
+if [ "$cfg_favorite_text_browser" == "$NULL" ]; then
 ####
 ####
-if [ "$command_lynx"   != "$NULL" ] ; then  
-favorite_text_browser="$command_lynx"    ; fi
-if [ "$command_links"  != "$NULL" ] ; then  
-favorite_text_browser="$command_links"   ; fi
-if [ "$command_links2" != "$NULL" ] ; then  
-favorite_text_browser="$command_links2"  ; fi
-if [ "$command_elinks" != "$NULL" ] ; then  
-favorite_text_browser="$command_elinks"  ; fi
-if [ "$command_w3m" != "$NULL" ] ; then  
-favorite_text_browser="$command_w3m"  ; fi
+if [ "$cmd_command_lynx"   != "$NULL" ] ; then  
+favorite_text_browser="$cmd_command_lynx"    ; fi
+if [ "$cmd_command_links"  != "$NULL" ] ; then  
+favorite_text_browser="$cmd_command_links"   ; fi
+if [ "$cmd_command_links2" != "$NULL" ] ; then  
+favorite_text_browser="$cmd_command_links2"  ; fi
+if [ "$cmd_command_elinks" != "$NULL" ] ; then  
+favorite_text_browser="$cmd_command_elinks"  ; fi
+if [ "$cmd_command_w3m" != "$NULL" ] ; then  
+favorite_text_browser="$cmd_command_w3m"  ; fi
 ####
 ####
 fi
@@ -888,15 +868,15 @@ fi
 ####
 ####
 #### configure favorite dhcp command
-if [ "$favorite_dhcp_command" == "$NULL" ]; then
+if [ "$cfg_favorite_dhcp_command" == "$NULL" ]; then
 ####
 ####
-if [ "$command_dhcpcd"  != "$NULL" ]         ; then
-favorite_dhcp_command="$command_dhcpcd"           ; fi
-if [ "$command_dhclientscript" != "$NULL" ] ; then  
-favorite_dhcp_command="$command_dhclientscript"  ; fi
-if [ "$command_dhclient"   != "$NULL" ] ;      then  
-favorite_dhcp_command="$command_dhclient"         ; fi
+if [ "$cmd_command_dhcpcd"  != "$NULL" ]         ; then
+favorite_dhcp_command="$cmd_command_dhcpcd"           ; fi
+if [ "$cmd_command_dhclientscript" != "$NULL" ] ; then  
+favorite_dhcp_command="$cmd_command_dhclientscript"  ; fi
+if [ "$cmd_command_dhclient"   != "$NULL" ] ;      then  
+favorite_dhcp_command="$cmd_command_dhclient"         ; fi
 ####
 ####
 fi
@@ -909,15 +889,15 @@ fi
 ####
 ####
 #### configure favorite dialog update time
-if [ "$favorite_date_command" == "$NULL" ]; then
+if [ "$cfg_favorite_date_command" == "$NULL" ]; then
 ####
 ####
-if [ "$command_rdate"   != "$NULL" ]; then  
-favorite_date_command="$command_rdate -4 -a -n"  ; fi
-if [ "$command_sntp"    != "$NULL" ]; then  
-favorite_date_command="$command_sntp"            ; fi
-if [ "$command_ntpdate" != "$NULL" ]; then  
-favorite_date_command="$command_ntpdate"         ; fi
+if [ "$cmd_command_rdate"   != "$NULL" ]; then  
+favorite_date_command="$cmd_command_rdate -4 -a -n"  ; fi
+if [ "$cmd_command_sntp"    != "$NULL" ]; then  
+favorite_date_command="$cmd_command_sntp"            ; fi
+if [ "$cmd_command_ntpdate" != "$NULL" ]; then  
+favorite_date_command="$cmd_command_ntpdate"         ; fi
 ####
 ####
 fi
@@ -930,11 +910,11 @@ fi
 ####
 ####
 #### configure favorite player
-if [ "$favorite_text_music" == "$NULL" ]; then
+if [ "$cfg_favorite_text_music" == "$NULL" ]; then
 ####
 ####
-if [ "$command_vlc" != "$NULL" ]; then  
-favorite_text_music="$command_vlc"      ; fi
+if [ "$cmd_command_vlc" != "$NULL" ]; then  
+favorite_text_music="$cmd_command_vlc"      ; fi
 ####
 ####
 fi
@@ -954,24 +934,24 @@ fi
 #### english:  alias firewall-list with numeral firewall-listnumeral:
 ####
 ####
-case "$first_option" in
-list-*) list_rules_conceptual="" ;;
-listn-filter4) list_rules_conceptual="no" ; first_option="list-filter4" ;;
-listn-filter6) list_rules_conceptual="no" ; first_option="list-filter6" ;;
-listn-nat4)  list_rules_conceptual="no" ; first_option="list-nat4" ;;
-listn-nat6)  list_rules_conceptual="no" ; first_option="list-nat6" ;;
-listn-raw4)  list_rules_conceptual="no" ; first_option="list-raw4" ;;
-listn-raw6)  list_rules_conceptual="no" ; first_option="list-raw6" ;;
-listn-security4)  list_rules_conceptual="no" ; first_option="list-security4" ;;
-listn-security6)  list_rules_conceptual="no" ; first_option="list-security6" ;;
-listn-mangle4)  list_rules_conceptual="no" ; first_option="list-mangle4" ;;
-listn-mangle6)  list_rules_conceptual="no" ; first_option="list-mangle6" ;;
+case "$cmd_first_option" in
+list-*) config_listrules_conceptual="" ;;
+listn-filter4) config_listrules_conceptual="no" ; first_option="list-filter4" ;;
+listn-filter6) config_listrules_conceptual="no" ; first_option="list-filter6" ;;
+listn-nat4)  config_listrules_conceptual="no" ; first_option="list-nat4" ;;
+listn-nat6)  config_listrules_conceptual="no" ; first_option="list-nat6" ;;
+listn-raw4)  config_listrules_conceptual="no" ; first_option="list-raw4" ;;
+listn-raw6)  config_listrules_conceptual="no" ; first_option="list-raw6" ;;
+listn-security4)  config_listrules_conceptual="no" ; first_option="list-security4" ;;
+listn-security6)  config_listrules_conceptual="no" ; first_option="list-security6" ;;
+listn-mangle4)  config_listrules_conceptual="no" ; first_option="list-mangle4" ;;
+listn-mangle6)  config_listrules_conceptual="no" ; first_option="list-mangle6" ;;
 esac
 ####
 ####
-case "$list_rules_conceptual" in
-"$NULL") list_rules_conceptual="" ;;
-*) list_rules_conceptual=" -n"  ;; esac
+case "$cfg_config_listrules_conceptual" in
+"$NULL") config_listrules_conceptual="" ;;
+*) config_listrules_conceptual=" -n"  ;; esac
 ####
 ####
 #### :rutina-final-alias-system-list:
@@ -983,7 +963,7 @@ case "$list_rules_conceptual" in
 #### english:  alias alias simple for output gui, -txt or -cli or -gui and more
 ####
 ####
-case "$first_option" in
+case "$cmd_first_option" in
 "tui-menu") first_option="cli-menu" ;;
 "-tui-menu") first_option="cli-menu" ;;
 "--tui-menu") first_option="cli-menu" ;;
@@ -1000,7 +980,7 @@ case "$first_option" in
 esac
 ####
 ####
-case "$first_option" in
+case "$cmd_first_option" in
 "-info") first_option="info" ;;
 "--info") first_option="info" ;;
 "--narrowtxt") first_option="narrowtxt" ;;
@@ -1039,7 +1019,7 @@ case "$first_option" in
 esac
 ####
 ####
-case "$first_option" in
+case "$cmd_first_option" in
 "-gui-menu-zenity") first_option="gui-menu-zenity" ;;
 "--gui-menu-zenity") first_option="gui-menu-zenity" ;;
 "-gui-menu-yad") first_option="gui-menu-yad" ;;
@@ -1069,71 +1049,71 @@ esac
 #### :rutina-inicial-alias-system-interface:
 ####
 ####
-case "$first_option" in
+case "$cmd_first_option" in
 "cli")
-favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ;
+favorite_basename_textdialog="$(basename $cfg_favorite_realpath_textdialog)" ;
 first_option="cli"
 ;;
 "gui")
-favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
+favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
 first_option="gui"
 ;;
 "cli-menu")
-favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ;
+favorite_basename_textdialog="$(basename $cfg_favorite_realpath_textdialog)" ;
 first_option="cli-menu"
 ;;
 "cli-dialog")
-favorite_realpath_textdialog="$command_dialog" ; 
-favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ;
+favorite_realpath_textdialog="$cmd_command_dialog" ; 
+favorite_basename_textdialog="$(basename $cfg_favorite_realpath_textdialog)" ;
 first_option="cli"
 ;;
 "cli-whiptail")
-favorite_realpath_textdialog="$command_whiptail" ;
-favorite_basename_textdialog="$(basename $favorite_realpath_textdialog)" ; 
+favorite_realpath_textdialog="$cmd_command_whiptail" ;
+favorite_basename_textdialog="$(basename $cfg_favorite_realpath_textdialog)" ; 
 first_option="cli"
 ;;
 "gui-menu")
-favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
+favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
 first_option="gui-menu" 
-second_option="$favorite_basename_graphicalldialog"
+second_option="$cfg_favorite_basename_graphicalldialog"
 ;;
 "gui-shell")
-favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
-first_option="gui-shell-$favorite_basename_graphicalldialog"
+favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
+first_option="gui-shell-$cfg_favorite_basename_graphicalldialog"
 ;;
 "gui-zenity")
-favorite_realpath_graphicalldialog="$command_zenity" ; 
-favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ; 
+favorite_realpath_graphicalldialog="$cmd_command_zenity" ; 
+favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ; 
 first_option="gui"
 ;;
 "gui-yad")
-favorite_realpath_graphicalldialog="$command_yad" ; 
-favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ; 
+favorite_realpath_graphicalldialog="$cmd_command_yad" ; 
+favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ; 
 first_option="gui"
 ;;
 "gui-menu-zenity")
-favorite_realpath_graphicalldialog="$command_zenity" ;
-favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
+favorite_realpath_graphicalldialog="$cmd_command_zenity" ;
+favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
 first_option="gui-menu" 
-second_option="$favorite_basename_graphicalldialog"
+second_option="$cfg_favorite_basename_graphicalldialog"
 ;;
 "gui-menu-yad")
-favorite_realpath_graphicalldialog="$command_yad" ; 
-favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
+favorite_realpath_graphicalldialog="$cmd_command_yad" ; 
+favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
 first_option="gui-menu"
-second_option="$favorite_basename_graphicalldialog"
+second_option="$cfg_favorite_basename_graphicalldialog"
 ;;
 "gui-roll")
-favorite_realpath_graphicalldialog="$command_zenity" ;
-favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
+favorite_realpath_graphicalldialog="$cmd_command_zenity" ;
+favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
 first_option="gui-roll" 
-second_option="$favorite_basename_graphicalldialog"
+second_option="$cfg_favorite_basename_graphicalldialog"
 ;;
 "gui-roll-zenity")
-favorite_realpath_graphicalldialog="$command_zenity" ;
-favorite_basename_graphicalldialog="$(basename $favorite_realpath_graphicalldialog)" ;
+favorite_realpath_graphicalldialog="$cmd_command_zenity" ;
+favorite_basename_graphicalldialog="$(basename $cfg_favorite_realpath_graphicalldialog)" ;
 first_option="gui-roll-zenity" 
-second_option="$favorite_basename_graphicalldialog"
+second_option="$cfg_favorite_basename_graphicalldialog"
 ;;
 ####
 ####
@@ -1147,15 +1127,15 @@ esac
 ####
 ####
 #### supress error messages
-case $first_option in 
+case $cmd_first_option in 
 "ls4") $cmd_internal list4   &> $file_output_cache
-$command_cat $file_output_cache | $command_grep -E -v Warning: ; exit ;;
+$cmd_command_cat $file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
 "ls6") $cmd_internal list6   &> $file_output_cache
-$command_cat $file_output_cache | $command_grep -E -v Warning: ; exit ;;
+$cmd_command_cat $file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
 "lsn4") $cmd_internal listn4 &> $file_output_cache
-$command_cat $file_output_cache | $command_grep -E -v Warning: ; exit ;;
+$cmd_command_cat $file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
 "lsn6") $cmd_internal listn6 &> $file_output_cache
-$command_cat $file_output_cache | $command_grep -E -v Warning: ; exit ;;
+$cmd_command_cat $file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
 esac ; 
 ####
 ####
@@ -1168,58 +1148,58 @@ esac ;
 #### english:  alias esquive templates
 ####
 ####
-case "$first_option" in
+case "$cmd_first_option" in
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"wizard-tiny"|\
 "new-full-custom"|"new-tiny-custom"|"new-mini-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom") 
 $cmd_internal templates-regen &> /dev/null ;; esac
 ####
 ####
-case "$second_option" in
+case "$cmd_second_option" in
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"wizard-tiny"|\
 "new-full-custom"|"new-tiny-custom"|"new-mini-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom") 
 $cmd_internal templates-regen &> /dev/null ;; esac
 ####
 ####
-if [ "$first_option" == "txt" ]; then 
-case "$second_option" in
+if [ "$cmd_first_option" == "txt" ]; then 
+case "$cmd_second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
-"modify-custom") $cmd_internal $second_option $third_option $quad_option ;
+"modify-custom") $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option ;
 exit ;; esac ; fi
 ####
 ####
-if [ "$first_option" == "narrowtxt" ]; then 
-case "$second_option" in
+if [ "$cmd_first_option" == "narrowtxt" ]; then 
+case "$cmd_second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
-"modify-custom") $cmd_internal $second_option $third_option $quad_option ;
+"modify-custom") $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option ;
 exit ;; esac ; fi
 ####
 ####
-if [ "$first_option" == "cli" ]; then 
-case "$second_option" in
+if [ "$cmd_first_option" == "cli" ]; then 
+case "$cmd_second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
-"modify-custom") $cmd_internal $second_option $third_option $quad_option ;
+"modify-custom") $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option ;
 exit ;; esac ; fi
 ####
 ####
-if [ "$first_option" == "gui" ]; then 
-case "$second_option" in
+if [ "$cmd_first_option" == "gui" ]; then 
+case "$cmd_second_option" in
 expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
 esac ; fi
 ####
 ####
-if [ "$first_option" == "log" ]; then 
-case "$second_option" in
+if [ "$cmd_first_option" == "log" ]; then 
+case "$cmd_second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
 "$NULL"|"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
@@ -1229,8 +1209,8 @@ echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in log o
 exit ;; esac ; fi
 ####
 ####
-if [ "$first_option" == "pdf" ]; then 
-case "$second_option" in
+if [ "$cmd_first_option" == "pdf" ]; then 
+case "$cmd_second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
 "$NULL"|"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
@@ -1240,8 +1220,8 @@ echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in pdf o
 exit ;; esac ; fi
 ####
 ####
-if [ "$first_option" == "silent" ]; then 
-case "$second_option" in
+if [ "$cmd_first_option" == "silent" ]; then 
+case "$cmd_second_option" in
 expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
 "$NULL"|"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
@@ -1260,23 +1240,23 @@ exit ;; esac ; fi
 #### output narrow:      General text without warnings version list narrow
 ####
 ####
-if [ "$first_option" == "narrowtxt" ] ;then echo "$head_waiting_narrow"
+if [ "$cmd_first_option" == "narrowtxt" ] ;then echo "$head_waiting_narrow"
 ####
 ####
-case $second_option in 
-ls*|list*) $cmd_internal $second_option | \
-$command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
+case $cmd_second_option in 
+ls*|list*) $cmd_internal $cmd_second_option | \
+$cmd_command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $10 " " $11 " " $12 " " \
 $13 " " $14 " " $15 " " $16 " " $17 " " $18 \
 " " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' | \
-$command_grep -E -v Warning: 
+$cmd_command_grep -E -v Warning: 
 exit ;;
-*) $cmd_internal $second_option $third_option $quad_option | \
-$command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
+*) $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option | \
+$cmd_command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
 $5 " " $6 " " $7 " " $8 " " $9 " " $10 " " $11 " " $12 " " \
 $13 " " $14 " " $15 " " $16 " " $17 " " $18 \
 " " $19 " " $20 " " $21 " " $22 " " $23 " " $24 }' | \
-$command_grep -E -v Warning: 
+$cmd_command_grep -E -v Warning: 
 exit ;;
 esac
 ####
@@ -1293,15 +1273,15 @@ exit ; fi
 #### output txt:      General text without warnings version list normal
 ####
 ####
-if [ "$first_option" == "txt" ]; then echo "$head_waiting_txt"
+if [ "$cmd_first_option" == "txt" ]; then echo "$head_waiting_txt"
 ####
 ####
-case $second_option in 
+case $cmd_second_option in 
 ####
 ####
-ls*|list*) $cmd_internal $second_option $third_option | \
-$command_grep -E -v Warning: ; exit ;;
-*) $cmd_internal $second_option $third_option $quad_option ;
+ls*|list*) $cmd_internal $cmd_second_option $cmd_third_option | \
+$cmd_command_grep -E -v Warning: ; exit ;;
+*) $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option ;
 exit ;; 
 ####
 ####
@@ -1317,22 +1297,22 @@ esac ; fi
 #### output cli:
 ####
 ####
-if [ "$first_option" == "cli" ] ; then echo "$head_waiting_cli"
+if [ "$cmd_first_option" == "cli" ] ; then echo "$head_waiting_cli"
 ####
 ####
-if [ "$favorite_realpath_textdialog" == "$NULL" ]; then 
+if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then 
 echo "$text_md $text_info Please install or dialog or whiptail to work with cli"
 exit; fi
 ####
 ####
 #### --clear --notags
-case $second_option in 
-ls*|list*) $favorite_basename_textdialog --clear --notags \
+case $cmd_second_option in 
+ls*|list*) $cfg_favorite_basename_textdialog --clear --notags \
 --title "Cli Menu With $cmd_version" \
---msgbox "$($cmd_internal txt $second_option)" 0 0 ; exit ;;
-*) $favorite_basename_textdialog --clear --notags \
+--msgbox "$($cmd_internal txt $cmd_second_option)" 0 0 ; exit ;;
+*) $cfg_favorite_basename_textdialog --clear --notags \
 --title "Cli Menu With $cmd_version" \
---msgbox "$($cmd_internal $second_option $third_option $quad_option)" 0 0 ; exit ;;
+--msgbox "$($cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option)" 0 0 ; exit ;;
 esac ; fi
 ####
 ####
@@ -1345,11 +1325,11 @@ esac ; fi
 #### output log
 ####
 ####
-if [ "$first_option" == "log" ]
+if [ "$cmd_first_option" == "log" ]
 ####
 ####
 then echo "$head_waiting_log"
-$cmd_internal $second_option $third_option $quad_option &> $file_output_log
+$cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option &> $file_output_log
 echo "$title_md $text_file [$file_output_log]"
 ####
 ####
@@ -1362,17 +1342,17 @@ exit ; fi
 #### :rutina-inicial-alias-pdf:
 ####
 ####
-if [ "$first_option" == "pdf" ]
+if [ "$cmd_first_option" == "pdf" ]
 ####
 ####
-then case $command_convert in "$NULL") 
-echo "$title_md install imagemagick to print pdf to $default_directory_pdf" ; exit ;; esac
+then case $cmd_command_convert in "$NULL") 
+echo "$title_md install imagemagick to print pdf to $cmd_default_directory_pdf" ; exit ;; esac
 #### allow print to PDF policy
 echo "$head_waiting_pdf"
 sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &> /dev/null
 #### send print to home output fwiptables.pdf
-$cmd_internal $second_option $third_option $quad_option | \
-$command_convert -page A3 text:- $file_output_pdf
+$cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option | \
+$cmd_command_convert -page A3 text:- $file_output_pdf
 echo "$title_md $text_file [$file_output_pdf]"
 ####
 ####
@@ -1385,10 +1365,10 @@ exit ; fi
 #### :rutina-inicial-alias-silent:
 ####
 ####
-if [ "$first_option" == "silent" ]
+if [ "$cmd_first_option" == "silent" ]
 ####
 ####
-then $cmd_internal "$second_option" "$third_option" "$quad_option" &> /dev/null
+then $cmd_internal "$cmd_second_option" "$cmd_third_option" "$cmd_quad_option" &> /dev/null
 ####
 ####
 exit ; fi
@@ -1400,7 +1380,7 @@ exit ; fi
 #### :rutina-inicial-allow-logcmd:
 ####
 ####
-if [ "$allow_save_logcmd" != "no" ]
+if [ "$cfg_allow_save_logcmd" != "no" ]
 ####
 ####
 then head_format_logcmd="date: $cmd_logcmd_date path: $cmd_internal \
@@ -1418,12 +1398,12 @@ fi
 #### :rutina-inicial-list-tree-log:
 ####
 ####
-if [ "$first_option" == "tree-log" ] ; then
+if [ "$cmd_first_option" == "tree-log" ] ; then
 ####
 ####
-$command_tree $default_directory_baselogs
+$cmd_command_tree $cmd_default_directory_baselogs
 echo 
-echo "### ### [ folder: ] [ $default_directory_baselogs ]"
+echo "### ### [ folder: ] [ $cmd_default_directory_baselogs ]"
 ####
 ####
 exit; fi
@@ -1435,12 +1415,12 @@ exit; fi
 #### :rutina-inicial-list-tree-pdf:
 ####
 ####
-if [ "$first_option" == "tree-pdf" ] ; then
+if [ "$cmd_first_option" == "tree-pdf" ] ; then
 ####
 ####
-$command_tree $default_directory_basepdf
+$cmd_command_tree $cmd_default_directory_basepdf
 echo 
-echo "### ### [ folder: ] [ $default_directory_basepdf ]"
+echo "### ### [ folder: ] [ $cmd_default_directory_basepdf ]"
 ####
 ####
 exit; fi
@@ -1452,14 +1432,14 @@ exit; fi
 #### :rutina-inicial-cat-logcmd:
 ####
 ####
-if [ "$first_option" == "cat-logcmd" ] ; then
+if [ "$cmd_first_option" == "cat-logcmd" ] ; then
 ####
 ####
 if [ ! -f $file_default_logcmd ]; then touch $file_default_logcmd ; fi
 echo "$title_md $text_md list all month"
-$command_tree $default_directory_baselogcmd
+$cmd_command_tree $cmd_default_directory_baselogcmd
 echo "$title_md $file_default_logcmd"
-$command_cat   "$file_default_logcmd" | tail -50
+$cmd_command_cat   "$file_default_logcmd" | tail -50
 echo
 echo "$title_md $text_info latest 50 lines from this file"
 echo "$title_md $text_info [$file_default_logcmd]"
@@ -1474,26 +1454,26 @@ exit; fi
 #### :rutina-inicial-log-stat:
 ####
 ####
-if [ "$first_option" == "log-stat" ] ; then
+if [ "$cmd_first_option" == "log-stat" ] ; then
 ####
 ####
-if [ "$command_wc" == "$NULL" ] ; then
+if [ "$cmd_command_wc" == "$NULL" ] ; then
 echo "$text_info Please install wc command"; exit; fi
 ####
 ####
-conteo="$($command_cat $file_default_logcmd | $command_wc -l)"
+conteo="$($cmd_command_cat $file_default_logcmd | $cmd_command_wc -l)"
 echo "$text_md $conteo Commands launched. Commands log with allowed logcmd"
 echo "$text_md file: $file_default_logcmd"
 ####
 ####
-conteo="$($command_ls -1 $default_directory_logs | $command_wc -l)"
+conteo="$($cmd_command_ls -1 $cmd_default_directory_logs | $cmd_command_wc -l)"
 echo "$text_md $conteo Commands output. Commands log with output log"
-echo "$text_md folder: $default_directory_logs"
+echo "$text_md folder: $cmd_default_directory_logs"
 ####
 ####
-conteo="$($command_ls -1 $default_directory_pdf | $command_wc -l)"
+conteo="$($cmd_command_ls -1 $cmd_default_directory_pdf | $cmd_command_wc -l)"
 echo "$text_md $conteo Commands output. Command log with output pdf"
-echo "$text_md folder: $default_directory_pdf"
+echo "$text_md folder: $cmd_default_directory_pdf"
 ####
 ####
 exit; fi
@@ -1505,7 +1485,7 @@ exit; fi
 #### :rutina-inicial-version:
 ####
 ####
-if [ "$first_option" == "version" ]; then
+if [ "$cmd_first_option" == "version" ]; then
 ####
 ####
 echo "$text_md $text_md     Detail Firewall: Detail Version            $text_md"
@@ -1523,16 +1503,16 @@ echo "$text_md $text_md     Source Firewall: $cmd_notinstalled         $text_md"
 echo "$text_md $text_md   Internal Firewall: $cmd_internal             $text_md"
 echo "$text_md $text_md   Short Description: $cmd_shortdescription     $text_md"
 echo "$text_md $text_md    Long Description: $cmd_longdescription      $text_md"
-echo "$text_md $text_md      Data Directory: $directory_data_necesary  $text_md"
-echo "$text_md $text_md     Cache Directory: $directory_cache_basenecesary $text_md"
+echo "$text_md $text_md      Data Directory: $cmd_default_directory_necesary  $text_md"
+echo "$text_md $text_md     Cache Directory: $cmd_default_cache_basenecesary $text_md"
 echo "$text_md $text_md      Finder Program: $cmd_where                $text_md"
 echo "$text_md $text_md   Requisite Program: $cmd_requisite_program    $text_md"
 echo "$text_md $text_md Requisite Firewall4: $cmd_requisite_firewall4  $text_md"
 echo "$text_md $text_md Requisite Firewall6: $cmd_requisite_firewall6  $text_md"
-echo "$text_md $text_md      Automatic Edit: $favorite_text_editor     $text_md"
-echo "$text_md $text_md       Automatic cli: $favorite_realpath_textdialog       $text_md"
-echo "$text_md $text_md       Automatic gui: $favorite_realpath_graphicalldialog $text_md"
-echo "$text_md $text_md       Automatic pdf: $command_convert          $text_md"
+echo "$text_md $text_md      Automatic Edit: $cfg_favorite_text_editor     $text_md"
+echo "$text_md $text_md       Automatic cli: $cfg_favorite_realpath_textdialog       $text_md"
+echo "$text_md $text_md       Automatic gui: $cfg_favorite_realpath_graphicalldialog $text_md"
+echo "$text_md $text_md       Automatic pdf: $cmd_command_convert          $text_md"
 echo "$text_md $text_md     Configured PATH: $PATH                     $text_md"
 echo "$text_md $text_md         File Format: $cmd_format               $text_md"
 echo "$text_md $text_md    Developer Actual: $cmd_developer            $text_md"
@@ -1549,13 +1529,13 @@ exit ; fi
 #### :rutina-inicial-expert-cpufreq:
 ####
 ####
-if [ "$first_option" == "expert-cpufreq-info" ] ; then
+if [ "$cmd_first_option" == "expert-cpufreq-info" ] ; then
 ####
 ####
 echo "$title_md $text_info [ show cpu frequence info ]"
-if [ "$command_cpufreqinfo" == "$NULL" ]; then
+if [ "$cmd_command_cpufreqinfo" == "$NULL" ]; then
 echo "$title_md please install cpufreq-info"; fi
-$command_cpufreqinfo
+$cmd_command_cpufreqinfo
 ####
 ####
 exit; fi
@@ -1567,13 +1547,13 @@ exit; fi
 #### :rutina-inicial-expert-cpupower:
 ####
 ####
-if [ "$first_option" == "expert-cpupower-info" ] ; then
+if [ "$cmd_first_option" == "expert-cpupower-info" ] ; then
 ####
 ####
 echo "$title_md $text_info [ show cpu frequence info ]"
-if [ "$command_cpupower" == "$NULL" ]; then
+if [ "$cmd_command_cpupower" == "$NULL" ]; then
 echo "$title_md please install cpupower"; fi
-$command_cpupower -c all frequency-info
+$cmd_command_cpupower -c all frequency-info
 ####
 ####
 exit; fi
@@ -1585,18 +1565,18 @@ exit; fi
 #### :rutina-inicial-expert-configs-save:
 ####
 ####
-if [ "$first_option" == "expert-configs-save" ] ; then
+if [ "$cmd_first_option" == "expert-configs-save" ] ; then
 ####
 ####
 echo "$title_md $text_info [ save backups confiurations to choosed filename ]"
-if [ "$command_tar" == "$NULL" ]; then
+if [ "$cmd_command_tar" == "$NULL" ]; then
 echo "$title_md Please install tar command"; exit ; fi
 if [ "$2" == "$NULL" ]; then
 echo "$title_md Please choose the backup file to save"; exit; fi
 ####
 ####
-tar vcf $2.tar -C $directory_data_necesary . && \
-echo "$text_ok in-file-saved: $2.tar from-folder-saved: $directory_data_necesary" || \
+tar vcf $2.tar -C $cmd_default_directory_necesary . && \
+echo "$text_ok in-file-saved: $2.tar from-folder-saved: $cmd_default_directory_necesary" || \
 echo "$text_fail bad"
 ####
 ####
@@ -1609,18 +1589,18 @@ exit; fi
 #### :rutina-inicial-expert-configs-load:
 ####
 ####
-if [ "$first_option" == "expert-configs-load" ] ; then
+if [ "$cmd_first_option" == "expert-configs-load" ] ; then
 ####
 ####
 echo "$title_md $text_info [ load backups confiurations from choosed filename ]"
-if [ "$command_tar" == "$NULL" ]; then
+if [ "$cmd_command_tar" == "$NULL" ]; then
 echo "$title_md Please install tar command"; exit ; fi
 if [ "$2" == "$NULL" ]; then
 echo "$title_md Please choose the backup file to load"; exit; fi
 ####
 ####
-tar vxf $2 -C $directory_data_necesary . && \
-echo "$text_ok from-file-loaded: $2 in-folder-loaded: $directory_data_necesary" || \
+tar vxf $2 -C $cmd_default_directory_necesary . && \
+echo "$text_ok from-file-loaded: $2 in-folder-loaded: $cmd_default_directory_necesary" || \
 echo "$text_fail bad"
 ####
 ####
@@ -1633,15 +1613,15 @@ exit; fi
 #### :rutina-inicial-expert-wpascan:
 ####
 ####
-if   [ "$first_option" == "expert-wpa-scan" ]; then
+if   [ "$cmd_first_option" == "expert-wpa-scan" ]; then
 ####
 ####
 echo "$title_md $text_info  [ Show SSID from net wifi ] "
-if   [ "$command_iw" == "$NULL" ]; then 
+if   [ "$cmd_command_iw" == "$NULL" ]; then 
 echo "$title_md $text_info [ Please, Install iw to work ]" ; exit ; fi
-for a in $($command_cat  /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1)
-do $command_ifconfig $a up
-$command_iw $a scan | $command_grep -E -i "on $a|ssid" ; done
+for a in $($cmd_command_cat  /proc/net/dev | $cmd_command_grep -i  : | cut -d ":" -f 1)
+do $cmd_command_ifconfig $a up
+$cmd_command_iw $a scan | $cmd_command_grep -E -i "on $a|ssid" ; done
 ####
 ####
 exit; fi
@@ -1653,37 +1633,37 @@ exit; fi
 #### :rutina-inicial-expert-wpanew:
 ####
 ####
-if [ "$first_option" == "expert-wpa-new" ] 
+if [ "$cmd_first_option" == "expert-wpa-new" ] 
 then first_option="expert-txtwpa-new"; fi
 ####
 ####
-if [ "$first_option" == "expert-txtwpa-new" ]; then
-if [ "$command_wpapassphrase" == "$NULL" ]
+if [ "$cmd_first_option" == "expert-txtwpa-new" ]; then
+if [ "$cmd_command_wpapassphrase" == "$NULL" ]
 then echo "$title_md $text_fail Install wpa_passphrase"; exit; fi
-if [ "$command_wpasupplicant" == "$NULL" ]
+if [ "$cmd_command_wpasupplicant" == "$NULL" ]
 then echo "$title_md $text_fail Install wpa_passphrase"; exit; fi
-if [ "$second_option" == "$NULL" ]; then 
-echo "$title_md $text_fail use: $first_option nameconfig"; exit ; fi
+if [ "$cmd_second_option" == "$NULL" ]; then 
+echo "$title_md $text_fail use: $cmd_first_option nameconfig"; exit ; fi
 ####
 ####
 $cmd_internal expert-wpa-regen
-cp $default_directory_wpa/defaultwpa $default_directory_wpa/wpaconfig_$second_option
-editor $default_directory_wpa/wpaconfig_$second_option
+cp $cmd_default_directory_wpa/defaultwpa $cmd_default_directory_wpa/wpaconfig_$cmd_second_option
+editor $cmd_default_directory_wpa/wpaconfig_$cmd_second_option
 exit; fi
 ####
 ####
-if [ "$first_option" == "expert-guiwpa-new" ]; then
-if [ "$command_wpapassphrase" == "$NULL" ]
+if [ "$cmd_first_option" == "expert-guiwpa-new" ]; then
+if [ "$cmd_command_wpapassphrase" == "$NULL" ]
 then echo "$title_md $text_fail Install wpa_passphrase"; exit; fi
-if [ "$command_wpasupplicant" == "$NULL" ]
+if [ "$cmd_command_wpasupplicant" == "$NULL" ]
 then echo "$title_md $text_fail Install wpa_passphrase"; exit; fi
-if [ "$second_option" == "$NULL" ]; then 
-echo "$title_md $text_fail use: $first_option nameconfig"; exit ; fi
+if [ "$cmd_second_option" == "$NULL" ]; then 
+echo "$title_md $text_fail use: $cmd_first_option nameconfig"; exit ; fi
 ####
 ####
 $cmd_internal expert-wpa-regen
-cp $default_directory_wpa/defaultwpa $default_directory_wpa/wpaconfig_$second_option
-editor $default_directory_wpa/wpaconfig_$second_option
+cp $cmd_default_directory_wpa/defaultwpa $cmd_default_directory_wpa/wpaconfig_$cmd_second_option
+editor $cmd_default_directory_wpa/wpaconfig_$cmd_second_option
 ####
 ####
 exit; fi
@@ -1695,33 +1675,33 @@ exit; fi
 #### :rutina-inicial-expert-wpa-modify:
 ####
 ####
-if [ "$first_option" == "expert-wpa-modify" ]
+if [ "$cmd_first_option" == "expert-wpa-modify" ]
 then first_option="expert-txtwpa-modify"; fi
 ####
 ####
-if [ "$first_option" == "expert-txtwpa-modify" ]; then
-if [ "$command_wpapassphrase" == "$NULL" ]
+if [ "$cmd_first_option" == "expert-txtwpa-modify" ]; then
+if [ "$cmd_command_wpapassphrase" == "$NULL" ]
 then echo "$title_md $text_fail Install wpa_passphrase"; exit; fi
-if [ "$command_wpasupplicant" == "$NULL" ]
+if [ "$cmd_command_wpasupplicant" == "$NULL" ]
 then echo "$title_md $text_fail Install wpa_passphrase"; exit; fi
-if [ "$second_option" == "$NULL" ]; then 
-echo "$title_md $text_fail use: $first_option nameconfig"; exit ; fi
+if [ "$cmd_second_option" == "$NULL" ]; then 
+echo "$title_md $text_fail use: $cmd_first_option nameconfig"; exit ; fi
 ####
 ####
-editor $default_directory_wpa/wpaconfig_$second_option
+editor $cmd_default_directory_wpa/wpaconfig_$cmd_second_option
 exit; fi
 ####
 ####
-if [ "$first_option" == "expert-guiwpa-modify" ]; then
-if [ "$command_wpapassphrase" == "$NULL" ]
+if [ "$cmd_first_option" == "expert-guiwpa-modify" ]; then
+if [ "$cmd_command_wpapassphrase" == "$NULL" ]
 then echo "$title_md $text_fail Install wpa_passphrase"; exit; fi
-if [ "$command_wpasupplicant" == "$NULL" ]
+if [ "$cmd_command_wpasupplicant" == "$NULL" ]
 then echo "$title_md $text_fail Install wpa_passphrase"; exit; fi
-if [ "$second_option" == "$NULL" ]; then 
-echo "$title_md $text_fail use: $first_option nameconfig"; exit ; fi
+if [ "$cmd_second_option" == "$NULL" ]; then 
+echo "$title_md $text_fail use: $cmd_first_option nameconfig"; exit ; fi
 ####
 ####
-editor $default_directory_wpa/wpaconfig_$second_option
+editor $cmd_default_directory_wpa/wpaconfig_$cmd_second_option
 ####
 ####
 exit; fi
@@ -1733,10 +1713,10 @@ exit; fi
 #### :rutina-inicial-expert-wpalist:
 ####
 ####
-if [ "$first_option" == "expert-wpa-list" ]
+if [ "$cmd_first_option" == "expert-wpa-list" ]
 ####
 ####
-then ls -1 "$default_directory_wpa" | cut -d "_" -f 2-
+then ls -1 "$cmd_default_directory_wpa" | cut -d "_" -f 2-
 ####
 ####
 exit ; fi
@@ -1748,18 +1728,18 @@ exit ; fi
 #### :rutina-inicial-expert-wpashow:
 ####
 ####
-if [ "$first_option" == "expert-wpa-show" ]; then
+if [ "$cmd_first_option" == "expert-wpa-show" ]; then
 ####
 ####
-if [ "$second_option" == "$NULL" ]
+if [ "$cmd_second_option" == "$NULL" ]
 then $cmd_internal expert-wpa-list
-echo "$title_md $text_info use: $first_option nameconfig" ; exit ; fi
-if [ -f "$default_directory_wpa/wpaconfig_$second_option" ]; then
+echo "$title_md $text_info use: $cmd_first_option nameconfig" ; exit ; fi
+if [ -f "$cmd_default_directory_wpa/wpaconfig_$cmd_second_option" ]; then
 echo "$title_md $title_md $title_md $title_md wpa config_:"
-$command_cat  "$default_directory_wpa/wpaconfig_$second_option"
+$cmd_command_cat  "$cmd_default_directory_wpa/wpaconfig_$cmd_second_option"
 echo "$title_md $title_md $title_md $title_md wpa connect_:"
-$command_cat  "$default_directory_wpa/wpaconnect_$second_option"
-else echo "$title_md $text_fail use: $first_option nameconfig"; exit ; fi
+$cmd_command_cat  "$cmd_default_directory_wpa/wpaconnect_$cmd_second_option"
+else echo "$title_md $text_fail use: $cmd_first_option nameconfig"; exit ; fi
 ####
 ####
 exit; fi
@@ -1771,32 +1751,32 @@ exit; fi
 #### :rutina-inicial-expert-wpaconnect:
 ####
 ####
-if [ "$first_option" == "expert-wpa-connect" ]; then
+if [ "$cmd_first_option" == "expert-wpa-connect" ]; then
 ####
 ####
-if [ "$command_wpapassphrase" == "$NULL" ]
+if [ "$cmd_command_wpapassphrase" == "$NULL" ]
 then echo "$title_md $text_fail Install wpa_passphrase"
 exit; fi
-if [ "$command_wpasupplicant" == "$NULL" ]
+if [ "$cmd_command_wpasupplicant" == "$NULL" ]
 then echo "$title_md $text_fail Install wpa_passphrase"
 exit; fi
-if [ "$second_option" == "$NULL" ]
-then echo "$title_md $text_fail use: $first_option nameconfig"
+if [ "$cmd_second_option" == "$NULL" ]
+then echo "$title_md $text_fail use: $cmd_first_option nameconfig"
 exit ; fi
 ####
 ####
-if [ -f "$default_directory_wpa/wpaconfig_$second_option" ]
-then source $default_directory_wpa/wpaconfig_$second_option
+if [ -f "$cmd_default_directory_wpa/wpaconfig_$cmd_second_option" ]
+then source $cmd_default_directory_wpa/wpaconfig_$cmd_second_option
 ####
 ####
-$command_wpapassphrase $wifi_wpa_ssid $wifi_wpa_password \
-&> $default_directory_wpa/wpaconnect_$second_option
-$command_wpasupplicant -D $wifi_wpa_driver -i $wifi_wpa_device -c \
-"$default_directory_wpa/wpaconnect_$second_option" &
-$command_ifconfig $wifi_wpa_device:1 $wifi_wpa_ip
+$cmd_command_wpapassphrase $wifi_wpa_ssid $wifi_wpa_password \
+&> $cmd_default_directory_wpa/wpaconnect_$cmd_second_option
+$cmd_command_wpasupplicant -D $wifi_wpa_driver -i $wifi_wpa_device -c \
+"$cmd_default_directory_wpa/wpaconnect_$cmd_second_option" &
+$cmd_command_ifconfig $wifi_wpa_device:1 $wifi_wpa_ip
 if [ "$(command -v $wifi_wpa_dhcp)" == "$NULL" ]
 then echo "$title_md $text_fail $wifi_wpa_dhcp not found"; exit; fi
-else echo "$title_md $text_fail use: $first_option nameconfig"; exit ; fi
+else echo "$title_md $text_fail use: $cmd_first_option nameconfig"; exit ; fi
 ####
 ####
 exit; fi
@@ -1808,14 +1788,14 @@ exit; fi
 #### :rutina-inicial-expert-wparegen:
 ####
 ####
-if [ "$first_option" == "expert-wpa-regen" ]; then
+if [ "$cmd_first_option" == "expert-wpa-regen" ]; then
 ####
 ####
-if [ "$command_wpapassphrase" == "$NULL" ]
+if [ "$cmd_command_wpapassphrase" == "$NULL" ]
 then echo "$title_md $text_fail Install wpa_passphrase"; fi
-if [ "$command_wpasupplicant" == "$NULL" ]
+if [ "$cmd_command_wpasupplicant" == "$NULL" ]
 then echo "$title_md $text_fail Install wpa_passphrase"; fi
-$cmd_internal expert-wpa-example &> $default_directory_wpa/defaultwpa
+$cmd_internal expert-wpa-example &> $cmd_default_directory_wpa/defaultwpa
 ####
 ####
 exit; fi
@@ -1827,7 +1807,7 @@ exit; fi
 #### :rutina-inicial-expert-wpaexample:
 ####
 ####
-if [ "$first_option" == "expert-wpa-example" ]; then
+if [ "$cmd_first_option" == "expert-wpa-example" ]; then
 ####
 ####
 echo "$title_md data necesary to get wifi access"
@@ -1854,7 +1834,7 @@ exit; fi
 #### :rutina-inicial-alias-regen:
 ####
 ####
-if [ "$first_option" == "alias-regen" ] ; then 
+if [ "$cmd_first_option" == "alias-regen" ] ; then 
 ####
 ####
 $cmd_internal alias-example | \
@@ -1870,10 +1850,10 @@ exit ; fi
 #### :rutina-inicial-alias-read:
 ####
 ####
-if [ "$first_option" == "alias" ] || [ "$first_option" == "alias-read" ] ; then 
+if [ "$cmd_first_option" == "alias" ] || [ "$cmd_first_option" == "alias-read" ] ; then 
 ####
 ####
-$command_cat $file_default_alias
+$cmd_command_cat $file_default_alias
 ####
 ####
 exit ; fi
@@ -1885,7 +1865,7 @@ exit ; fi
 #### :rutina-inicial-alias-example:
 ####
 ####
-if [ "$first_option" == "alias-example" ] ; then 
+if [ "$cmd_first_option" == "alias-example" ] ; then 
 ####
 ####
 echo "####  program: $cmd_internal $cmd_version"
@@ -1924,10 +1904,10 @@ exit ; fi
 #### :rutina-inicial-alias-edit:
 ####
 ####
-if [ "$first_option" == "alias-edit" ]; then 
+if [ "$cmd_first_option" == "alias-edit" ]; then 
 ####
 ####
-$favorite_text_editor $file_default_alias
+$cfg_favorite_text_editor $file_default_alias
 ####
 ####
 exit; fi
@@ -1939,10 +1919,10 @@ exit; fi
 #### :rutina-inicial-preferences-edit:
 ####
 ####
-if [ "$first_option" == "preferences-edit" ]; then 
+if [ "$cmd_first_option" == "preferences-edit" ]; then 
 ####
 ####
-$favorite_text_editor $file_default_preferences
+$cfg_favorite_text_editor $file_default_preferences
 ####
 ####
 exit; fi
@@ -1954,10 +1934,10 @@ exit; fi
 #### :rutina-inicial-preferences-read:
 ####
 ####
-if [ "$first_option" == "preferences-read" ]; then
+if [ "$cmd_first_option" == "preferences-read" ]; then
 ####
 ####
-$command_cat  $file_default_preferences
+$cmd_command_cat  $file_default_preferences
 ####
 ####
 exit; fi
@@ -1969,7 +1949,7 @@ exit; fi
 #### :rutina-inicial-preferences-regen:
 ####
 ####
-if [ "$first_option" == "preferences-regen" ] ; then
+if [ "$cmd_first_option" == "preferences-regen" ] ; then
 ####
 ####
 $cmd_internal preferences-example | \
@@ -1985,7 +1965,7 @@ exit; fi
 #### :rutina-inicial-preferences-example:
 ####
 ####
-if [ "$first_option" == "preferences-example" ] ; then
+if [ "$cmd_first_option" == "preferences-example" ] ; then
 ####
 ####
 echo "####  program: $cmd_internal $cmd_version"
@@ -1993,7 +1973,7 @@ echo "####  file: $file_default_preferences"
 echo "$title_md"
 echo "$title_md"
 echo "$title_md $title_md default option when not option are there"
-echo "without_first_option=options                    ## read below"
+echo "config_without_firstoption=options                    ## read below"
 echo "$title_md type: void or one valid option required to works"
 echo "$title_md example1:options example2:list4 example3:ip4"
 echo "$title_md example4:speed-ip4 example5:sockets example6:gui-roll"
@@ -2022,8 +2002,8 @@ echo "$title_md $title_md header time"
 echo "allow_show_time=no                              ## or void for yes or no"
 echo "$title_md"  
 echo "$title_md $title_md mini client ports from side client: for miniserver tcp/udp"  
-echo "miniclient_port_tcp=ssh,http,https"
-echo "miniclient_port_udp=domain,domain-s,bootpc,bootps,ntp,https"
+echo "client_mini_port_tcp=ssh,http,https"
+echo "client_mini_port_udp=domain,domain-s,bootpc,bootps,ntp,https"
 echo "$title_md"  
 echo "$title_md $title_md default programs"
 echo "favorite_iperf_command=                         ## or void for automatic or specify command"
@@ -2037,12 +2017,12 @@ echo "favorite_realpath_textdialog=                   ## or void for automatic o
 echo "favorite_realpath_graphicalldialog=             ## or void for automatic or specify command"
 echo "$title_md"
 echo "$title_md $title_md default discover ip and speed ip"
-echo "serverip_discover_ipv4=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
-echo "serverip_discover_ipv6=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
-echo "serverip_iperf_ipv4=ping.online.net             ## default ping.online.net"
-echo "serverport_iperf_ipv4=5200                      ## default 5200"
-echo "serverip_iperf_ipv6=ping6.online.net            ## default ping6.online.net"
-echo "serverport_iperf_ipv6=5200                      ## default 5200"
+echo "server_ipdiscover_ipv4=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
+echo "server_ipdiscover_ipv6=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
+echo "server_ip_iperf_ipv4=ping.online.net             ## default ping.online.net"
+echo "server_port_iperf_ipv4=5200                      ## default 5200"
+echo "server_ip_iperf_ipv6=ping6.online.net            ## default ping6.online.net"
+echo "server_port_iperf_ipv6=5200                      ## default 5200"
 echo "server_radio_online=https://www.tdtchannels.com/lists/radio.m3u8" 
 echo "$title_md"
 echo "$title_md $title_md default graphicall dimension"
@@ -2059,14 +2039,14 @@ exit ; fi
 #### :rutina-inicial-resolve:
 ####
 ####
-if [ "$first_option" == "resolve" ]; then
+if [ "$cmd_first_option" == "resolve" ]; then
 ####
 ####
 echo "$title_md $text_info $title_md [ Domain resolve ] [ nameserver and search ] $title_md"
 if [ -f /etc/resolv.conf ]
 then echo "$text_md $text_md File: /etc/resolv.conf"
-$command_cat  /etc/resolv.conf | $command_grep -E "nameserver|search" | \
-$command_awk '{print "     " $1 " " $2}' ; fi
+$cmd_command_cat  /etc/resolv.conf | $cmd_command_grep -E "nameserver|search" | \
+$cmd_command_awk '{print "     " $1 " " $2}' ; fi
 if [ -f /etc/resolv.conf.head ]
 then echo "$text_md $text_md File: /etc/resolv.conf.head"; fi
 if [ -f /etc/resolv.conf.body ]
@@ -2081,12 +2061,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-resolve:
-##########    english: network : get net info               ##########
-##########    spanish: network : da informacion de la red   ##########
-#### :rutina-inicial-network:
+##########    english: route : get net info               ##########
+##########    spanish: route : da informacion de la red   ##########
+#### :rutina-inicial-route:
 ####
 ####
-if [ "$first_option" == "network" ]; then
+if [ "$cmd_first_option" == "route" ]; then
 ####
 ####
 $cmd_internal route4
@@ -2102,13 +2082,13 @@ exit; fi
 #### :rutina-inicial-route4:
 ####
 ####
-if [ "$first_option" == "route4" ]; then
+if [ "$cmd_first_option" == "route4" ]; then
 ####
 ####
 #### route table
 echo "$title_md $text_info ### [ Network Route ] [ Route ipv4 ] ###"
-if [ "$command_ip" == "$NULL" ] ; then echo "$text_md $text_info [ install ip command ]"
-else $command_ip -4 route   ; fi
+if [ "$cmd_command_ip" == "$NULL" ] ; then echo "$text_md $text_info [ install ip command ]"
+else $cmd_command_ip -4 route   ; fi
 ####
 ####
 exit; fi 
@@ -2120,13 +2100,13 @@ exit; fi
 #### :rutina-inicial-route6:
 ####
 ####
-if [ "$first_option" == "route6" ]; then
+if [ "$cmd_first_option" == "route6" ]; then
 ####
 ####
 #### route table
 echo "$title_md $text_info ### [ Network Route ] [ Route ipv6 ] ###"
-if [ "$command_ip" == "$NULL" ]; then echo "$text_md $text_info [ install ip command ]"
-else $command_ip -6 route   ; fi
+if [ "$cmd_command_ip" == "$NULL" ]; then echo "$text_md $text_info [ install ip command ]"
+else $cmd_command_ip -6 route   ; fi
 ####
 ####
 exit; fi
@@ -2138,7 +2118,7 @@ exit; fi
 #### :rutina-inicial-ip:
 ####
 ####
-if [ "$first_option" == "ip" ]; then
+if [ "$cmd_first_option" == "ip" ]; then
 ####
 ####
 $cmd_internal ip4
@@ -2154,7 +2134,7 @@ exit ; fi
 #### :rutina-inicial-address:
 ####
 ####
-if [ "$first_option" == "address" ]; then
+if [ "$cmd_first_option" == "address" ]; then
 ####
 ####
 $cmd_internal net4-info
@@ -2170,19 +2150,19 @@ exit ; fi
 #### :rutina-inicial-ip4:
 ####
 ####
-if [ "$first_option" == "ip4" ]; then
+if [ "$cmd_first_option" == "ip4" ]; then
 ####
 ####
 echo "$title_md $text_info ### [ Private ip ] [ Address ipv4 ] ###"
-if [ "$command_ip" == "$NULL" ]
+if [ "$cmd_command_ip" == "$NULL" ]
 then echo "$title_md $text_info [ install ip command ]"
-else  $command_ip -4 address | grep -i "inet "; fi
+else  $cmd_command_ip -4 address | grep -i "inet "; fi
 ####
 ####
 echo "$title_md $text_info ### [ Public ip ] [ Address ipv4 ] ###"
-if [ "$command_curl" == "$NULL" ]; then
+if [ "$cmd_command_curl" == "$NULL" ]; then
 echo "$title_md $text_info [ install curl command ]" ;
-else public_ip4="$($command_curl -k -s -4 $serverip_discover_ipv4 -w '\n'| head -1)"
+else public_ip4="$($cmd_command_curl -k -s -4 $cfg_server_ipdiscover_ipv4 -w '\n'| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ] || [ "$public_ip4" == "" ] ;
 then echo "fail: public ip hidden for dns server" ;
 else echo "$text_md   $public_ip4"; fi ; fi
@@ -2197,19 +2177,19 @@ exit; fi
 #### :rutina-inicial-ip6:
 ####
 ####
-if [ "$first_option" == "ip6" ]; then
+if [ "$cmd_first_option" == "ip6" ]; then
 ####
 ####
 echo "$title_md $text_info ### [ Private ip ] [ Address ipv6 ] ###"
-if [ "$command_ip" == "$NULL" ]
+if [ "$cmd_command_ip" == "$NULL" ]
 then echo "$title_md $text_info [ install ip command ]"
-else  $command_ip -6 address | grep -i "inet6 " ; fi
+else  $cmd_command_ip -6 address | grep -i "inet6 " ; fi
 ####
 ####
 echo "$title_md $text_info ### [ Public ip ] [ Address ipv6 ] ###"
-if [ "$command_curl" == "$NULL" ]; then
+if [ "$cmd_command_curl" == "$NULL" ]; then
 echo "$title_md $text_info [ install curl command ]" ;
-else public_ip6="$($command_curl -k -s -6 $serverip_discover_ipv4 -w '\n'| head -1)"
+else public_ip6="$($cmd_command_curl -k -s -6 $cfg_server_ipdiscover_ipv4 -w '\n'| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ] || [ "$public_ip4" == "" ] ;
 then echo "fail: public ip hidden for dns server" ;
 else echo "$text_md   $public_ip6"; fi; fi
@@ -2224,16 +2204,16 @@ exit; fi
 #### :rutina-inicial-sockets:
 ####
 ####
-if   [ "$first_option" == "sockets" ]; then
+if   [ "$cmd_first_option" == "sockets" ]; then
 ####
 ####
 echo "$title_md $text_info [ Show whith ss: LISTEN sockets ] "
-if [ "$command_ss" == "$NULL" ]; then 
+if [ "$cmd_command_ss" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Install ss command ]"; exit; fi
-if [ "$command_awk" == "$NULL" ]; then 
+if [ "$cmd_command_awk" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Install awk command ]"; exit; fi
-$command_ss -l -460  | $command_grep "\:\*" | \
-$command_awk '{print "     " $1 " " $2 " " $5}'
+$cmd_command_ss -l -460  | $cmd_command_grep "\:\*" | \
+$cmd_command_awk '{print "     " $1 " " $2 " " $5}'
 ####
 ####
 exit; fi
@@ -2245,7 +2225,7 @@ exit; fi
 #### :rutina-inicial-net4-info:
 ####
 ####
-if [ "$first_option" == "net4-info" ]; then
+if [ "$cmd_first_option" == "net4-info" ]; then
 ####
 ####
 echo "$title_md $text_info  [ show info about net address ip4 ]"
@@ -2264,7 +2244,7 @@ exit; fi
 #### :rutina-inicial-net6-info:
 ####
 ####
-if [ "$first_option" == "net6-info" ]; then
+if [ "$cmd_first_option" == "net6-info" ]; then
 ####
 ####
 echo "$title_md $text_info  [ show info about net address ip6 ]"
@@ -2285,36 +2265,36 @@ exit; fi
 #### :rutina-inicial-expert-confclientproxy
 ####
 ####
-if [ "$first_option" == "expert-conf-clientproxy" ]; then 
-if [ "$second_option" == "$NULL" ] ; then second_option="without-proxy" ; fi
+if [ "$cmd_first_option" == "expert-conf-clientproxy" ]; then 
+if [ "$cmd_second_option" == "$NULL" ] ; then second_option="without-proxy" ; fi
 ####
 ####
 echo "$title_md File generated by fwiptables \
 expert-conf-clientproxy user:pass@ip:port" \
-&> $default_directory_proxy/fwiptables-proxy-$second_option
-echo "$title_md This filename is $default_directory_proxy/fwiptables-proxy-$second_option" \
-&>> $default_directory_proxy/fwiptables-proxy-$second_option
+&> $cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option
+echo "$title_md This filename is $cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option" \
+&>> $cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option
 echo "declare -x all_proxy=$2" \
-&>> $default_directory_proxy/fwiptables-proxy-$second_option
+&>> $cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option
 echo "declare -x ftp_proxy=$2" \
-&>> $default_directory_proxy/fwiptables-proxy-$second_option
+&>> $cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option
 echo "declare -x http_proxy=$2" \
-&>> $default_directory_proxy/fwiptables-proxy-$second_option
+&>> $cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option
 echo "declare -x https_proxy=$2" \
-&>> $default_directory_proxy/fwiptables-proxy-$second_option
+&>> $cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option
 echo "declare -x ALL_PROXY=$2" \
-&>> $default_directory_proxy/fwiptables-proxy-$second_option
+&>> $cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option
 echo "declare -x FTP_PROXY=$2" \
-&>> $default_directory_proxy/fwiptables-proxy-$second_option
+&>> $cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option
 echo "declare -x HTTP_PROXY=$2" \
-&>> $default_directory_proxy/fwiptables-proxy-$second_option
+&>> $cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option
 echo "declare -x HTTPS_PROXY=$2" \
-&>> $default_directory_proxy/fwiptables-proxy-$second_option
+&>> $cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option
 echo
 ###
 ###
-if [ -f "$default_directory_proxy/fwiptables-proxy-$second_option" ]
-then $command_cat  "$default_directory_proxy/fwiptables-proxy-$second_option" ; fi
+if [ -f "$cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option" ]
+then $cmd_command_cat  "$cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option" ; fi
 ###
 ###
 exit ; fi
@@ -2326,7 +2306,7 @@ exit ; fi
 #### :rutina-inicial-expert-showclientproxy
 ####
 ####
-if [ "$first_option" == "expert-show-clientproxy" ]; then echo
+if [ "$cmd_first_option" == "expert-show-clientproxy" ]; then echo
 ####
 ####
 echo "$title_md $text_info ### [ Proxy tunnel ] [ Address proxy ] ###"
@@ -2342,14 +2322,14 @@ else export | grep -i "_PROXY" ; fi
 echo
 ####
 ####
-if [ ! -f "$default_directory_proxy/$second_option" ] ; then
+if [ ! -f "$cmd_default_directory_proxy/$cmd_second_option" ] ; then
 echo "$title_md Show file with: expert-show-clientproxy [second_option]" ;
 echo "$title_md Choose above one to second-option"; 
-ls $default_directory_proxy/ ; exit ; fi
+ls $cmd_default_directory_proxy/ ; exit ; fi
 ####
 ####
-if [ -f "$default_directory_proxy/$second_option" ] ; then
-echo ; $command_cat  "$default_directory_proxy/$second_option" ; exit ; fi
+if [ -f "$cmd_default_directory_proxy/$cmd_second_option" ] ; then
+echo ; $cmd_command_cat  "$cmd_default_directory_proxy/$cmd_second_option" ; exit ; fi
 ####
 ####
 exit ; fi
@@ -2361,17 +2341,17 @@ exit ; fi
 #### :rutina-inicial-expert-deactiveclientproxy
 ####
 ####
-if [ "$first_option" == "expert-active-clientproxy" ]; then echo
+if [ "$cmd_first_option" == "expert-active-clientproxy" ]; then echo
 ####
 ####
 echo "$title_md there is before "
 declare -x | grep -i \_PROXY
 ####
 ####
-if [ -f "$default_directory_proxy/$second_option" ]     ; 
-then source $default_directory_proxy/$second_option     ;
+if [ -f "$cmd_default_directory_proxy/$cmd_second_option" ]     ; 
+then source $cmd_default_directory_proxy/$cmd_second_option     ;
 else echo "$title_md Choose above one to second-option" ;
-ls $default_directory_proxy/                            ;
+ls $cmd_default_directory_proxy/                            ;
 fi
 ####
 ####
@@ -2388,7 +2368,7 @@ exit ; fi
 #### :rutina-inicial-expert-deactiveclientproxy
 ####
 ####
-if [ "$first_option" == "expert-deactive-clientproxy" ]; then echo
+if [ "$cmd_first_option" == "expert-deactive-clientproxy" ]; then echo
 ####
 ####
 echo "$title_md there is before "
@@ -2418,13 +2398,13 @@ exit ; fi
 #### :rutina-inicial-expert-showresolve
 ####
 ####
-if [ "$first_option" == "expert-show-resolve" ]; then echo
+if [ "$cmd_first_option" == "expert-show-resolve" ]; then echo
 ####
 ####
 echo "$title_md $text_info ### [ Domain resolve ] [ nameserver and search ] ###"
 if [ -f /etc/resolv.conf ]
 then echo "$title_md [ yes file ]      [ /etc/resolv.conf ]"
-$command_cat  /etc/resolv.conf | $command_grep -E "nameserver|search"      ; fi
+$cmd_command_cat  /etc/resolv.conf | $cmd_command_grep -E "nameserver|search"      ; fi
 if [ -f /etc/resolv.conf.head ]
 then echo "$title_md [ yes file ]      [ /etc/resolv.conf.head ]"; fi
 if [ -f /etc/resolv.conf.body ]
@@ -2444,18 +2424,18 @@ exit; fi
 #### :rutina-inicial-expert-tracetcp4:
 ####
 ####
-if   [ "$first_option" == "expert-trace-tcp4" ]; then
+if   [ "$cmd_first_option" == "expert-trace-tcp4" ]; then
 ####
 ####
 echo "$title_md $text_info  [ trace ip or host with tcp ipv4 ]"
-case $command_tracepath in "$NULL")
+case $cmd_command_tracepath in "$NULL")
 echo "$title_md $text_fail [ Install tracepath command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$title_md use: $cmd_internal $first_option host"; exit; fi
+echo "$title_md use: $cmd_internal $cmd_first_option host"; exit; fi
 $cmd_internal save before-trace-tcp4 
 $cmd_internal eraserules4
 echo "$duo_md $text_ok [ tracepath -4 $2 ] "
-$command_tracepath -4 $2
+$cmd_command_tracepath -4 $2
 $cmd_internal load before-trace-tcp4
 ####
 ####
@@ -2468,18 +2448,18 @@ exit; fi
 #### :rutina-inicial-expert-tracetcp6:
 ####
 ####
-if   [ "$first_option" == "expert-trace-tcp6" ]; then
+if   [ "$cmd_first_option" == "expert-trace-tcp6" ]; then
 ####
 ####
 echo "$title_md $text_info  [ trace ip or host with tcp ipv6 ]"
-case $command_tracepath in "$NULL")
+case $cmd_command_tracepath in "$NULL")
 echo "$title_md $text_fail [ Install tracepath command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$title_md use: $cmd_internal $first_option host"; exit; fi
+echo "$title_md use: $cmd_internal $cmd_first_option host"; exit; fi
 $cmd_internal save before-trace-ip6 
 $cmd_internal eraserules6
 echo "$duo_md $text_ok [ tracepath -6 $2 ] "
-$command_tracepath -6 $2
+$cmd_command_tracepath -6 $2
 $cmd_internal load before-trace-ip6
 ####
 ####
@@ -2492,18 +2472,18 @@ exit; fi
 #### :rutina-inicial-expert-trace-icmp4:
 ####
 ####
-if   [ "$first_option" == "expert-trace-icmp4" ]; then
+if   [ "$cmd_first_option" == "expert-trace-icmp4" ]; then
 ####
 ####
 echo "$title_md $text_info  [ trace ip or host with icmp ipv4 ]"
-case $command_traceroute in "$NULL")
+case $cmd_command_traceroute in "$NULL")
 echo "$title_md $text_fail [ Install traceroute command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$title_md use: $cmd_internal $first_option host"; exit ; fi
+echo "$title_md use: $cmd_internal $cmd_first_option host"; exit ; fi
 $cmd_internal save before-trace-icmp4 
 $cmd_internal eraserules4
 echo "$duo_md $text_ok [ traceroute -4 $2 ] "
-$command_traceroute -4 $2
+$cmd_command_traceroute -4 $2
 $cmd_internal load before-trace-icmp4
 ####
 ####
@@ -2516,18 +2496,18 @@ exit; fi
 #### :rutina-inicial-expert-trace-icmp6:
 ####
 ####
-if   [ "$first_option" == "expert-trace-icmp6" ]; then
+if   [ "$cmd_first_option" == "expert-trace-icmp6" ]; then
 ####
 ####
 echo "$title_md $text_info  [ trace ip or host with icmp ipv6 ]"
-case $command_traceroute in "$NULL")
+case $cmd_command_traceroute in "$NULL")
 echo "$title_md $text_fail [ Install traceroute command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$title_md use: $cmd_internal $first_option host"; exit ; fi
+echo "$title_md use: $cmd_internal $cmd_first_option host"; exit ; fi
 $cmd_internal save before-trace-icmp6 
 $cmd_internal eraserules6
 echo "$duo_md $text_ok [ traceroute -6 $2 ] "
-$command_traceroute -6 $2
+$cmd_command_traceroute -6 $2
 $cmd_internal load before-trace-icmp6
 ####
 ####
@@ -2540,15 +2520,15 @@ exit; fi
 #### :rutina-inicial-expert-myradio-install:
 ####
 ####
-if   [ "$first_option" == "expert-myradio-install" ]; then
+if   [ "$cmd_first_option" == "expert-myradio-install" ]; then
 ####
 ####
 echo "$title_md $text_info  [ myradio download ] [ expert-myradio-install md]"
-echo "$title_md Downloading myradio stable latest in $default_directory_radio/myradio-bash"
-$command_curl $web_download_myradio -s -L \
--o $default_directory_radio/myradio-bash || echo "Without internet" || exit \
-&& chmod ugo+x $default_directory_radio/myradio-bash &> /dev/null
-cp $default_directory_radio/myradio-bash /usr/bin/myradio-bash && \
+echo "$title_md Downloading myradio stable latest in $cmd_default_directory_radio/myradio-bash"
+$cmd_command_curl $cmd_web_download_myradio -s -L \
+-o $cmd_default_directory_radio/myradio-bash || echo "Without internet" || exit \
+&& chmod ugo+x $cmd_default_directory_radio/myradio-bash &> /dev/null
+cp $cmd_default_directory_radio/myradio-bash /usr/bin/myradio-bash && \
 echo "$title_md installed myradio-bash in /usr/bin/myradio-bash"
 ####
 ####
@@ -2561,13 +2541,13 @@ exit; fi
 #### :rutina-inicial-utils:
 ####
 ####
-if [ "$first_option" == "utils" ]; then
+if [ "$cmd_first_option" == "utils" ]; then
 ####
 ####
 echo "$title_md $text_info [ List for posible utils programs ] [ utils md ] "
 list_utils_possible="$($cmd_internal code possible-commands | \
-$command_grep -E '^command_' | $command_cut -d '=' -f 1 | \
-$command_sed 's/command_/ /g' )"
+$cmd_command_grep -E '^cmd_command_' | $cmd_command_cut -d '=' -f 1 | \
+$cmd_command_sed 's/cmd_command_/ /g' )"
 echo $list_utils_possible
 ####
 ####
@@ -2580,17 +2560,17 @@ exit ; fi
 #### :rutina-inicial-depends:
 ####
 ####
-if [ "$first_option" == "depends" ]; then
+if [ "$cmd_first_option" == "depends" ]; then
 ####
 ####
 echo "$title_md $text_md [ Configuration files ] $text_md"
-echo "$text_md $text_md Directory  data:         $directory_data_necesary $text_md"
-echo "$text_md $text_md Directory cache:         $directory_cache_basenecesary $text_md"
+echo "$text_md $text_md Directory  data:         $cmd_default_directory_necesary $text_md"
+echo "$text_md $text_md Directory cache:         $cmd_default_cache_basenecesary $text_md"
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ Log files ]           $text_md"
-echo "$text_md $text_md Folder log:              $default_directory_baselogs $text_md"
-echo "$text_md $text_md Folder pdf:              $default_directory_basepdf $text_md"
-echo "$text_md $text_md Folder logcmd:           $default_directory_baselogcmd $text_md"
+echo "$text_md $text_md Folder log:              $cmd_default_directory_baselogs $text_md"
+echo "$text_md $text_md Folder pdf:              $cmd_default_directory_basepdf $text_md"
+echo "$text_md $text_md Folder logcmd:           $cmd_default_directory_baselogcmd $text_md"
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ Preferences files ]   $text_md"
 echo "$text_md $text_md preferences:             $file_default_preferences"
@@ -2598,41 +2578,41 @@ echo "$text_md $text_md alias:                   $file_default_alias"
 echo "$text_md $text_md usernotes:               $file_default_usernotes"
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ optional output ]     $text_md"
-echo "$text_md $text_md dialog cli:              $command_dialog $text_md"
-echo "$text_md $text_md whiptail cli             $command_whiptail $text_md"
-echo "$text_md $text_md zenity gui:              $command_zenity $text_md"
-echo "$text_md $text_md yad gui:                 $command_yad $text_md"
-echo "$text_md $text_md convert pdf:             $command_convert $text_md"
+echo "$text_md $text_md dialog cli:              $cmd_command_dialog $text_md"
+echo "$text_md $text_md whiptail cli             $cmd_command_whiptail $text_md"
+echo "$text_md $text_md zenity gui:              $cmd_command_zenity $text_md"
+echo "$text_md $text_md yad gui:                 $cmd_command_yad $text_md"
+echo "$text_md $text_md convert pdf:             $cmd_command_convert $text_md"
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ Automatic iptables ]  $text_md"
-echo "$text_md $text_md iptables legacy:         $command_ip4tableslegacy $text_md"
-echo "$text_md $text_md iptables nft:            $command_ip4tablesnft $text_md"
-echo "$text_md $text_md ip6tables legacy:        $command_ip6tableslegacy $text_md"
-echo "$text_md $text_md ip6tables nft:           $command_ip6tablesnft $text_md"
-echo "$text_md $text_md arptables:               $command_arptables $text_md"
-echo "$text_md $text_md ebtables:                $command_ebtables $text_md"
+echo "$text_md $text_md iptables legacy:         $cmd_command_ip4tableslegacy $text_md"
+echo "$text_md $text_md iptables nft:            $cmd_command_ip4tablesnft $text_md"
+echo "$text_md $text_md ip6tables legacy:        $cmd_command_ip6tableslegacy $text_md"
+echo "$text_md $text_md ip6tables nft:           $cmd_command_ip6tablesnft $text_md"
+echo "$text_md $text_md arptables:               $cmd_command_arptables $text_md"
+echo "$text_md $text_md ebtables:                $cmd_command_ebtables $text_md"
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ Automatic favorites ] $text_md"
-echo "$text_md $text_md Automatic txt:           $command_bash $text_md"
-echo "$text_md $text_md Automatic cli:           $favorite_realpath_textdialog $text_md"
-echo "$text_md $text_md Automatic gui:           $favorite_realpath_graphicalldialog $text_md"
-echo "$text_md $text_md Automatic pdf:           $command_convert $text_md"
-echo "$text_md $text_md Automatic editor:        $favorite_text_editor $text_md"
-echo "$text_md $text_md Automatic browser:       $favorite_text_browser $text_md"
-echo "$text_md $text_md Automatic date:          $favorite_date_command $text_md"
+echo "$text_md $text_md Automatic txt:           $cmd_command_bash $text_md"
+echo "$text_md $text_md Automatic cli:           $cfg_favorite_realpath_textdialog $text_md"
+echo "$text_md $text_md Automatic gui:           $cfg_favorite_realpath_graphicalldialog $text_md"
+echo "$text_md $text_md Automatic pdf:           $cmd_command_convert $text_md"
+echo "$text_md $text_md Automatic editor:        $cfg_favorite_text_editor $text_md"
+echo "$text_md $text_md Automatic browser:       $cfg_favorite_text_browser $text_md"
+echo "$text_md $text_md Automatic date:          $cfg_favorite_date_command $text_md"
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ Necesary utils ]      $text_md"
-echo "$text_md $text_md iptables nft:            $command_ip4tablesnft $text_md"
-echo "$text_md $text_md iptables legacy:         $command_ip4tableslegacy $text_md"
-echo "$text_md $text_md iptables nft:            $command_ip6tablesnft $text_md"
-echo "$text_md $text_md iptables legacy:         $command_ip6tableslegacy $text_md"
-echo "$text_md $text_md   id command:            $command_id $text_md"
-echo "$text_md $text_md  awk command:            $command_awk $text_md"
-echo "$text_md $text_md  cat command:            $command_cat $text_md"
-echo "$text_md $text_md  cut command:            $command_cut $text_md"
-echo "$text_md $text_md date command:            $command_date $text_md"
-echo "$text_md $text_md file command:            $command_file $text_md"
-echo "$text_md $text_md  sed command:            $command_sed $text_md"
+echo "$text_md $text_md iptables nft:            $cmd_command_ip4tablesnft $text_md"
+echo "$text_md $text_md iptables legacy:         $cmd_command_ip4tableslegacy $text_md"
+echo "$text_md $text_md iptables nft:            $cmd_command_ip6tablesnft $text_md"
+echo "$text_md $text_md iptables legacy:         $cmd_command_ip6tableslegacy $text_md"
+echo "$text_md $text_md   id command:            $cmd_command_id $text_md"
+echo "$text_md $text_md  awk command:            $cmd_command_awk $text_md"
+echo "$text_md $text_md  cat command:            $cmd_command_cat $text_md"
+echo "$text_md $text_md  cut command:            $cmd_command_cut $text_md"
+echo "$text_md $text_md date command:            $cmd_command_date $text_md"
+echo "$text_md $text_md file command:            $cmd_command_file $text_md"
+echo "$text_md $text_md  sed command:            $cmd_command_sed $text_md"
 echo "$text_md $text_md $text_md"
 echo "$text_md $text_md Found all posible utils: fwiptables utils $text_md"
 ####
@@ -2647,7 +2627,7 @@ exit; fi
 #### :rutina-inicial-examples:
 ####
 ####
-if [ "$first_option" == "options-examples" ]; then
+if [ "$cmd_first_option" == "options-examples" ]; then
 ####
 ####
 echo "$title_md $text_md [ One example with input-established ]              $text_md"
@@ -2739,11 +2719,11 @@ exit; fi
 #### :rutina-inicial-expert-showweather:
 ####
 ####
-if   [ "$first_option" == "expert-show-weather" ]; then
+if   [ "$cmd_first_option" == "expert-show-weather" ]; then
 ####
 ####
-case $command_curl in "$NULL") echo "$title_md $text_fail [ Install a curl ]"; exit ;; esac
-$command_curl -s wttr.in/?3n?T
+case $cmd_command_curl in "$NULL") echo "$title_md $text_fail [ Install a curl ]"; exit ;; esac
+$cmd_command_curl -s wttr.in/?3n?T
 ####
 ####
 exit; fi
@@ -2755,14 +2735,14 @@ exit; fi
 #### :rutina-inicial-tree-conf:
 ####
 ####
-if   [ "$first_option" == "tree-conf" ];  then
+if   [ "$cmd_first_option" == "tree-conf" ];  then
 ####
 ####
-if   [ "$command_tree" == "$NULL" ] ; then 
+if   [ "$cmd_command_tree" == "$NULL" ] ; then 
 echo "$title_md $text_fail please install tree command" ; exit ; fi
 ####
 ####
-$command_tree $directory_data_necesary
+$cmd_command_tree $cmd_default_directory_necesary
 ####
 ####
 exit; fi
@@ -2774,14 +2754,14 @@ exit; fi
 #### :rutina-inicial-tree-cache:
 ####
 ####
-if   [ "$first_option" == "tree-cache" ]; then
+if   [ "$cmd_first_option" == "tree-cache" ]; then
 ####
 ####
-if   [ "$command_tree" == "$NULL" ] ; then 
+if   [ "$cmd_command_tree" == "$NULL" ] ; then 
 echo "$title_md $text_fail please install tree command" ; exit ; fi
 ####
 ####
-$command_tree $directory_cache_basenecesary
+$cmd_command_tree $cmd_default_cache_basenecesary
 ####
 ####
 exit; fi
@@ -2793,11 +2773,11 @@ exit; fi
 #### :rutina-inicial-clean-cache:
 ####
 ####
-if   [ "$first_option" == "clean-cache" ]; then
+if   [ "$cmd_first_option" == "clean-cache" ]; then
 ####
 ####
-echo "$title_md $text_ok clean cache: $directory_cache_basenecesary"
-rm -R $directory_cache_basenecesary/* &> /dev/null
+echo "$title_md $text_ok clean cache: $cmd_default_cache_basenecesary"
+rm -R $cmd_default_cache_basenecesary/* &> /dev/null
 ####
 ####
 exit; fi
@@ -2809,7 +2789,7 @@ exit; fi
 #### :rutina-inicial-notes:
 ####
 ####
-if [ "$first_option" == "notes" ]; then
+if [ "$cmd_first_option" == "notes" ]; then
 ####
 ####
 echo "$text_md                     Iptables firewall manage commands $text_md" 
@@ -2847,7 +2827,7 @@ exit; fi
 #### :rutina-inicial-templates-regen:
 ####
 ####
-if [ "$first_option" == "templates-regen" ]; then
+if [ "$cmd_first_option" == "templates-regen" ]; then
 ####
 ####
 $cmd_internal template-tiny-es &> $default_tinycfg_spa
@@ -2867,7 +2847,7 @@ exit; fi
 #### :rutina-inicial-template-tinyes:
 ####
 ####
-if [ "$first_option" == "template-tiny-es" ]; then
+if [ "$cmd_first_option" == "template-tiny-es" ]; then
 ####
 ####
 echo "$title_md"
@@ -2908,7 +2888,7 @@ exit; fi
 #### :rutina-inicial-template-tinyen:
 ####
 ####
-if [ "$first_option" == "template-tiny-en" ]; then
+if [ "$cmd_first_option" == "template-tiny-en" ]; then
 ####
 ####
 echo "$title_md"
@@ -2949,7 +2929,7 @@ exit; fi
 #### :rutina-inicial-template-minies:
 ####
 ####
-if [ "$first_option" == "template-mini-es" ]; then
+if [ "$cmd_first_option" == "template-mini-es" ]; then
 ####
 ####
 echo "$title_md $cmd_shortdescription from $cmd_internal version $cmd_version $title_md "
@@ -2983,9 +2963,9 @@ echo "$title_md LOG TO SERVER PORTS $title_md "
 echo "$title_md usar ULOG or LOG "
 echo "config_system_log=LOG"
 echo "$title_md logear para puertos de Servidor, añadir con ',' y poner rangos con : "
-echo "logserver_port_tcp= "
+echo "server_log_port_tcp= "
 echo "$title_md puertos tcp para logear servidor "
-echo "logserver_port_udp= "
+echo "server_log_port_udp= "
 echo "$title_md puertos udp para logear servidor "
 echo "$title_md ALLOW MAXTRIES SHIELD $title_md )"
 echo "$title_md Pone un escudo para los peuertos de nueva conexion, con maximo ip cada hora "
@@ -3016,7 +2996,7 @@ exit ; fi
 #### :rutina-inicial-template-fulles:
 ####
 ####
-if [ "$first_option" == "template-full-es" ]; then
+if [ "$cmd_first_option" == "template-full-es" ]; then
 ####
 ####
 #### english: basic options in configurations file cfg
@@ -3054,9 +3034,9 @@ echo "$title_md LOG TO SERVER PORTS $title_md "
 echo "$title_md usar ULOG or LOG "
 echo "config_system_log=LOG"
 echo "$title_md logear para puertos de Servidor, añadir con ',' y poner rangos con : "
-echo "logserver_port_tcp= "
+echo "server_log_port_tcp= "
 echo "$title_md puertos tcp para logear servidor "
-echo "logserver_port_udp= "
+echo "server_log_port_udp= "
 echo "$title_md puertos udp para logear servidor "
 echo "$title_md ALLOW MAXTRIES SHIELD $title_md )"
 echo "$title_md Pone un escudo para los peuertos de nueva conexion, con maximo ip cada hora "
@@ -3207,7 +3187,7 @@ exit ; fi
 #### :rutina-inicial-template-minien:
 ####
 ####
-if [ "$first_option" == "template-mini-en" ]; then
+if [ "$cmd_first_option" == "template-mini-en" ]; then
 ####
 ####
 echo "$title_md $cmd_shortdescription from $cmd_internal version $cmd_version $title_md "
@@ -3241,9 +3221,9 @@ echo "$title_md LOG TO SERVER PORTS $title_md "
 echo "$title_md or ULOG or LOG "
 echo "config_system_log=LOG"
 echo "$title_md Log to server ports, add with ',' and join ranges with : "
-echo "logserver_port_tcp= "
+echo "server_log_port_tcp= "
 echo "$title_md the tcp ports to log server "
-echo "logserver_port_udp= "
+echo "server_log_port_udp= "
 echo "$title_md the udp ports to log server "
 echo "$title_md ALLOW MAXTRIES SHIELD $title_md "
 echo "$title_md Put one shield for ports to new connecting, with max ip to each hour "
@@ -3274,7 +3254,7 @@ exit ; fi
 #### :rutina-inicial-template-fullen:
 ####
 ####
-if [ "$first_option" == "template-full-en" ]; then
+if [ "$cmd_first_option" == "template-full-en" ]; then
 ####
 ####
 echo "$title_md $cmd_shortdescription from $cmd_internal version $cmd_version $title_md "
@@ -3308,9 +3288,9 @@ echo "$title_md LOG TO SERVER PORTS $title_md "
 echo "$title_md or ULOG or LOG "
 echo "config_system_log=LOG"
 echo "$title_md Log to server ports, add with ',' and join ranges with : "
-echo "logserver_port_tcp= "
+echo "server_log_port_tcp= "
 echo "$title_md the tcp ports to log server "
-echo "logserver_port_udp= "
+echo "server_log_port_udp= "
 echo "$title_md the udp ports to log server "
 echo "$title_md ALLOW MAXTRIES SHIELD $title_md "
 echo "$title_md Put one shield for ports to new connecting, with max ip to each hour "
@@ -3469,7 +3449,7 @@ exit ; fi
 #### spanish: autoguardado con nombre autosave
 ####
 ####
-if [ "$first_option" == "autosave" ] && [ "$allow_autosave" == "$NULL" ]; then 
+if [ "$cmd_first_option" == "autosave" ] && [ "$cfg_allow_autosave" == "$NULL" ]; then 
 ####
 ####
 echo "$title_md [ autosave ] [ firewall saved ] [ autosave-fwiptables ]" ;
@@ -3485,7 +3465,7 @@ exit; fi
 #### :rutina-inicial-options:
 ####
 ####
-if [ "$first_option" == "options" ]; then 
+if [ "$cmd_first_option" == "options" ]; then 
 ####
 ####
 echo "$text_md $cmd_internal [optional-output] first_option [second_option] $text_md"
@@ -3534,7 +3514,7 @@ echo "$text_md license-lgpl-v2 license-gpl-v2 $text_md"
 ####
 ####  if expert commands
 ####
-if [ "$allow_expert_commands" == "no" ]
+if [ "$cfg_allow_expert_commands" == "no" ]
 then echo "$text_md $text_md $text_info $cmd_name $cmd_version with expert deactived $text_md"
 else echo "$text_md $text_md $text_info $cmd_name $cmd_version with expert actived $text_md"
 fi
@@ -3549,29 +3529,29 @@ exit ; fi
 #### :rutina-inicial-code:
 ####
 ####
-if   [ "$first_option" == "code" ];  then
+if   [ "$cmd_first_option" == "code" ];  then
 ####
 ####
 echo "$title_md $text_info  [ Show source code for each option ] "
 echo "$title_md $text_info [ code ] [ show source code for options from $cmd_internal ]"
 code_error="$title_md $text_info [ Usage ] [ $cmd_internal code option_choosed ]"
-if [ "$second_option" == "$NULL" ]; then echo "$code_error"
-salida_code="$($command_cat  $cmd_internal | $command_grep -i  rutina-inicial \
-| $command_grep -i -v $command_cat  | $command_sed -s s/####\ :rutina-inicial-//g | \
-sort | $command_sed -s s/://g )"
+if [ "$cmd_second_option" == "$NULL" ]; then echo "$code_error"
+salida_code="$($cmd_command_cat  $cmd_internal | $cmd_command_grep -i  rutina-inicial \
+| $cmd_command_grep -i -v $cmd_command_cat  | $cmd_command_sed -s s/####\ :rutina-inicial-//g | \
+sort | $cmd_command_sed -s s/://g )"
 echo $salida_code
 exit ; fi
-value_first="$($command_cat  -n $cmd_internal | $command_grep  :rutina-inicial-$2: | \
-$command_cut -d "#" -f 1 | head -1)"
-value_second="$($command_cat  -n $cmd_internal | $command_grep :rutina-final-$2:  | \
-$command_cut -d "#" -f 1 | head -1)"
+value_first="$($cmd_command_cat  -n $cmd_internal | $cmd_command_grep  :rutina-inicial-$2: | \
+$cmd_command_cut -d "#" -f 1 | head -1)"
+value_second="$($cmd_command_cat  -n $cmd_internal | $cmd_command_grep :rutina-final-$2:  | \
+$cmd_command_cut -d "#" -f 1 | head -1)"
 value_count="$(("$value_second"-"$value_first+1"))"
 if [ ! -n "$value_first" ];   then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_second" ];  then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_count" ];   then echo; echo "$code_error" ; exit ; fi
-echo "$title_md [ code ] [ option: "$second_option" ] [ show $value_count lines ] \
+echo "$title_md [ code ] [ option: "$cmd_second_option" ] [ show $value_count lines ] \
 [ from the "$value_first" line number to "$value_second" line number ]"
-$command_cat  $cmd_internal | head -n $value_second | tail -n $value_count
+$cmd_command_cat  $cmd_internal | head -n $value_second | tail -n $value_count
 ####
 ####
 exit; fi
@@ -3583,14 +3563,14 @@ exit; fi
 #### :rutina-inicial-names-custom:
 ####
 ####
-if [ "$first_option" == "names-custom" ];  then
+if [ "$cmd_first_option" == "names-custom" ];  then
 ####
 ####
 echo "$title_md $text_info [ List configs cfg ] "
 echo "$title_md $text_info [ list configs files in cfg format ]"
-echo "$title_md $text_info [ folder ] [ $default_directory_custom ]"
+echo "$title_md $text_info [ folder ] [ $cmd_default_directory_custom ]"
 echo "$title_md"
-$command_tree $default_directory_custom
+$cmd_command_tree $cmd_default_directory_custom
 echo "$title_md"
 echo "$title_md [ OK CFG FILES NAMES ] [ Use: $cmd_internal load-custom file ]"
 ####
@@ -3604,7 +3584,7 @@ exit; fi
 #### :rutina-inicial-text-pause:
 ####
 ####
-if [ "$first_option" == "text-pause" ]; then
+if [ "$cmd_first_option" == "text-pause" ]; then
 ####
 ####
 read -p '##### $text_ok ##### Press [enter] to continue now with the cli-menu ##### '
@@ -3619,11 +3599,11 @@ exit; fi
 #### :rutina-inicial-free:
 ####
 ####
-if   [ "$first_option" == "free" ]; then
+if   [ "$cmd_first_option" == "free" ]; then
 ####
 ####
 echo "$title_md $text_info [ freedom from innecesary ram ] [ free md ]"
-case $command_tee in "$NULL")
+case $cmd_command_tee in "$NULL")
 echo "$text_md $text_fail [ Install tee command ]"; exit ;; esac
 ####
 ####
@@ -3633,7 +3613,7 @@ free -hw
 ####
 echo "$title_md $text_info With: echo 3 over /proc/sys/vm/drop_caches"
 echo "$title_md $text_info Now with New Memory ram freedom .. Actual memory now .."
-echo 3 | $command_tee /proc/sys/vm/drop_caches &> /dev/null
+echo 3 | $cmd_command_tee /proc/sys/vm/drop_caches &> /dev/null
 free -hw
 ####
 ####
@@ -3646,7 +3626,7 @@ exit; fi
 #### :rutina-inicial-firewall-wallcontrol:
 ####
 ####
-if   [ "$first_option" == "firewall-wallcontrol" ]; then
+if   [ "$cmd_first_option" == "firewall-wallcontrol" ]; then
 ####
 ####
 echo "$title_md | firewall-wallcontrol | $cmd_internal firewall-wallcontrol | $text_md"
@@ -3682,7 +3662,7 @@ exit; fi
 #### :rutina-inicial-firewall-listconceptual:
 ####
 ####
-if   [ "$first_option" == "firewall-listconceptual" ]; then
+if   [ "$cmd_first_option" == "firewall-listconceptual" ]; then
 ####
 ####
 echo "$title_md | firewall-listconceptual | $cmd_internal firewall-listconceptual $text_md"
@@ -3715,7 +3695,7 @@ exit; fi
 #### :rutina-inicial-firewall-listnumeral:
 ####
 ####
-if   [ "$first_option" == "firewall-listnumeral" ]; then
+if   [ "$cmd_first_option" == "firewall-listnumeral" ]; then
 ####
 ####
 echo "$title_md | firewall-listnumeral | $cmd_internal firewall-listnumeral | $text_md"
@@ -3748,7 +3728,7 @@ exit; fi
 #### :rutina-inicial-firewall-wallcustom:
 ####
 ####
-if   [ "$first_option" == "firewall-wallcustom" ]; then
+if   [ "$cmd_first_option" == "firewall-wallcustom" ]; then
 ####
 ####
 echo "$title_md | firewall-wallcustom | $cmd_internal firewall-wallcustom | $text_md"
@@ -3779,7 +3759,7 @@ exit; fi
 #### :rutina-inicial-firewall-wallsystem:
 ####
 ####
-if   [ "$first_option" == "firewall-wallsystem" ]; then
+if   [ "$cmd_first_option" == "firewall-wallsystem" ]; then
 ####
 ####
 echo "$title_md | firewall-wallsystem | $cmd_internal firewall-wallsystem | $text_md"
@@ -3834,7 +3814,7 @@ exit; fi
 #### :rutina-inicial-easy:
 ####
 ####
-if   [ "$first_option" == "firewall-netsystem" ]; then
+if   [ "$cmd_first_option" == "firewall-netsystem" ]; then
 ####
 ####
 echo "$title_md | firewall-netsystem | $cmd_internal firewall-netsystem | $text_md"
@@ -3901,7 +3881,7 @@ exit; fi
 #### :rutina-inicial-expert:
 ####
 ####
-if   [ "$first_option" == "options-expert" ]; then
+if   [ "$cmd_first_option" == "options-expert" ]; then
 ####
 ####
 echo "$title_md | $cmd_internal expert | Each expert only works Without optional output $text_md "
@@ -3968,7 +3948,7 @@ exit; fi
 #### :rutina-inicial-info-options:
 ####
 ####
-if   [ "$first_option" == "info-options" ]; then
+if   [ "$cmd_first_option" == "info-options" ]; then
 ####
 ####
 echo "$title_md $text_info  [ info options ] [ info-options md]"
@@ -3993,7 +3973,7 @@ exit; fi
 #### :rutina-inicial-parametters:
 ####
 ####
-if   [ "$first_option" == "optional-output" ]; then
+if   [ "$cmd_first_option" == "optional-output" ]; then
 ####
 ####
 echo "$title_md | optional-output | $cmd_internal optional-ouptut | $text_md"
@@ -4034,7 +4014,7 @@ exit; fi
 #### :rutina-inicial-variables:
 ####
 ####
-if   [ "$first_option" == "variables" ]; then
+if   [ "$cmd_first_option" == "variables" ]; then
 ####
 ####
 echo "$title_md $text_info  [ list code variables-system ] [ variables md ]"
@@ -4050,7 +4030,7 @@ exit; fi
 #### :rutina-inicial-eraserules:
 ####
 ####
-if [ "$first_option" == "eraserules" ];  then 
+if [ "$cmd_first_option" == "eraserules" ];  then 
 echo "$title_md $text_info [ Deleting all iptables ipv4/ipv6 rules ]"
 ####
 ####
@@ -4059,18 +4039,18 @@ echo "$title_md $text_info [ Deleting all iptables ipv4/ipv6 rules ]"
 ####
 ####
 rule_table_policy="ACCEPT"
-$command_ip4tableslegacy   -t filter  -P INPUT    $rule_table_policy &> /dev/null
-$command_ip4tablesnft      -t filter  -P INPUT    $rule_table_policy &> /dev/null
-$command_ip6tableslegacy  -t filter  -P INPUT    $rule_table_policy &> /dev/null
-$command_ip6tablesnft     -t filter  -P INPUT    $rule_table_policy &> /dev/null
-$command_ip4tableslegacy   -t filter  -P FORWARD  $rule_table_policy &> /dev/null
-$command_ip4tablesnft      -t filter  -P FORWARD  $rule_table_policy &> /dev/null
-$command_ip6tableslegacy  -t filter  -P FORWARD  $rule_table_policy &> /dev/null
-$command_ip6tablesnft     -t filter  -P FORWARD  $rule_table_policy &> /dev/null
-$command_ip4tableslegacy   -t filter  -P OUTPUT   $rule_table_policy &> /dev/null
-$command_ip4tablesnft      -t filter  -P OUTPUT   $rule_table_policy &> /dev/null
-$command_ip6tableslegacy  -t filter  -P OUTPUT   $rule_table_policy &> /dev/null
-$command_ip6tablesnft     -t filter  -P OUTPUT   $rule_table_policy &> /dev/null
+$cmd_command_ip4tableslegacy   -t filter  -P INPUT    $rule_table_policy &> /dev/null
+$cmd_command_ip4tablesnft      -t filter  -P INPUT    $rule_table_policy &> /dev/null
+$cmd_command_ip6tableslegacy  -t filter  -P INPUT    $rule_table_policy &> /dev/null
+$cmd_command_ip6tablesnft     -t filter  -P INPUT    $rule_table_policy &> /dev/null
+$cmd_command_ip4tableslegacy   -t filter  -P FORWARD  $rule_table_policy &> /dev/null
+$cmd_command_ip4tablesnft      -t filter  -P FORWARD  $rule_table_policy &> /dev/null
+$cmd_command_ip6tableslegacy  -t filter  -P FORWARD  $rule_table_policy &> /dev/null
+$cmd_command_ip6tablesnft     -t filter  -P FORWARD  $rule_table_policy &> /dev/null
+$cmd_command_ip4tableslegacy   -t filter  -P OUTPUT   $rule_table_policy &> /dev/null
+$cmd_command_ip4tablesnft      -t filter  -P OUTPUT   $rule_table_policy &> /dev/null
+$cmd_command_ip6tableslegacy  -t filter  -P OUTPUT   $rule_table_policy &> /dev/null
+$cmd_command_ip6tablesnft     -t filter  -P OUTPUT   $rule_table_policy &> /dev/null
 ####
 ####
 #### english: erase the rules
@@ -4078,19 +4058,19 @@ $command_ip6tablesnft     -t filter  -P OUTPUT   $rule_table_policy &> /dev/null
 ####
 #### remove ebtables
 rule_table_policy="ACCEPT"
-$command_ebtables -t filter -P INPUT     $rule_table_policy  &> /dev/null
-$command_ebtables -t filter -P FORWARD   $rule_table_policy &> /dev/null 
-$command_ebtables -t filter -P OUTPUT    $rule_table_policy &> /dev/null
-$command_ebtables -t nat -P PREROUTING   $rule_table_policy &> /dev/null
-$command_ebtables -t nat -P OUTPUT       $rule_table_policy  &> /dev/null
-$command_ebtables -t nat -P POSTROUTING  $rule_table_policy &> /dev/null
+$cmd_command_ebtables -t filter -P INPUT     $rule_table_policy  &> /dev/null
+$cmd_command_ebtables -t filter -P FORWARD   $rule_table_policy &> /dev/null 
+$cmd_command_ebtables -t filter -P OUTPUT    $rule_table_policy &> /dev/null
+$cmd_command_ebtables -t nat -P PREROUTING   $rule_table_policy &> /dev/null
+$cmd_command_ebtables -t nat -P OUTPUT       $rule_table_policy  &> /dev/null
+$cmd_command_ebtables -t nat -P POSTROUTING  $rule_table_policy &> /dev/null
 ####
 ####
-$command_ebtables -t filter -F &> /dev/null
-$command_ebtables -t nat -F    &> /dev/null
+$cmd_command_ebtables -t filter -F &> /dev/null
+$cmd_command_ebtables -t nat -F    &> /dev/null
 ####
 #### remove arptables
-$command_arptables -F  &> /dev/null
+$cmd_command_arptables -F  &> /dev/null
 ####
 #### remove ip4
 $cmd_internal eraserules4 &> /dev/null
@@ -4111,7 +4091,7 @@ exit; fi
 #### :rutina-inicial-eraserules4:
 ####
 ####
-if [ "$first_option" == "eraserules4" ]; then  
+if [ "$cmd_first_option" == "eraserules4" ]; then  
 ####
 ####
 echo "$title_md $text_info [ Deleting ip4 iptables rules ] "
@@ -4122,72 +4102,72 @@ echo "$title_md $text_info [ Deleting ip4 iptables rules ] "
 ####
 ####
 rule_table_policy="ACCEPT"
-$command_ip4tableslegacy   -t filter  -P INPUT    $rule_table_policy
-$command_ip4tablesnft      -t filter  -P INPUT    $rule_table_policy
-$command_ip4tableslegacy   -t filter  -P FORWARD  $rule_table_policy
-$command_ip4tablesnft      -t filter  -P FORWARD  $rule_table_policy
-$command_ip4tableslegacy   -t filter  -P OUTPUT   $rule_table_policy
-$command_ip4tablesnft      -t filter  -P OUTPUT   $rule_table_policy
+$cmd_command_ip4tableslegacy   -t filter  -P INPUT    $rule_table_policy
+$cmd_command_ip4tablesnft      -t filter  -P INPUT    $rule_table_policy
+$cmd_command_ip4tableslegacy   -t filter  -P FORWARD  $rule_table_policy
+$cmd_command_ip4tablesnft      -t filter  -P FORWARD  $rule_table_policy
+$cmd_command_ip4tableslegacy   -t filter  -P OUTPUT   $rule_table_policy
+$cmd_command_ip4tablesnft      -t filter  -P OUTPUT   $rule_table_policy
 ####
 ####
 #### english: erase the rules
 #### spanish: borra las reglas
 ####
 ####
-$command_ebtables -t filter -F &> /dev/null
-$command_ebtables -t nat -F &> /dev/null
-$command_ip4tablesnft -t filter -F &> /dev/null
-$command_ip4tableslegacy -t filter -F &> /dev/null
-$command_ip4tablesnft -t nat -F &> /dev/null
-$command_ip4tableslegacy -t nat -F &> /dev/null
-$command_ip4tablesnft -t mangle -F &> /dev/null
-$command_ip4tableslegacy -t mangle -F &> /dev/null
-$command_ip4tablesnft -t raw -F &> /dev/null
-$command_ip4tableslegacy -t raw -F &> /dev/null
-$command_ip4tablesnft -t security -F &> /dev/null
-$command_ip4tableslegacy -t security -F &> /dev/null
+$cmd_command_ebtables -t filter -F &> /dev/null
+$cmd_command_ebtables -t nat -F &> /dev/null
+$cmd_command_ip4tablesnft -t filter -F &> /dev/null
+$cmd_command_ip4tableslegacy -t filter -F &> /dev/null
+$cmd_command_ip4tablesnft -t nat -F &> /dev/null
+$cmd_command_ip4tableslegacy -t nat -F &> /dev/null
+$cmd_command_ip4tablesnft -t mangle -F &> /dev/null
+$cmd_command_ip4tableslegacy -t mangle -F &> /dev/null
+$cmd_command_ip4tablesnft -t raw -F &> /dev/null
+$cmd_command_ip4tableslegacy -t raw -F &> /dev/null
+$cmd_command_ip4tablesnft -t security -F &> /dev/null
+$cmd_command_ip4tableslegacy -t security -F &> /dev/null
 ####
 ####
-$command_ebtables -t filter -P INPUT ACCEPT  &> /dev/null
-$command_ebtables -t filter -P FORWARD ACCEPT &> /dev/null 
-$command_ebtables -t filter -P OUTPUT ACCEPT &> /dev/null
-$command_ebtables -t nat -P PREROUTING ACCEPT &> /dev/null
-$command_ebtables -t nat -P OUTPUT ACCEPT  &> /dev/null
-$command_ebtables -t nat -P POSTROUTING ACCEPT &> /dev/null
-$command_ip4tablesnft -t filter -P INPUT ACCEPT &> /dev/null
-$command_ip4tablesnft -t filter -P FORWARD ACCEPT &> /dev/null
-$command_ip4tablesnft -t filter -P OUTPUT ACCEPT &> /dev/null
-$command_ip4tableslegacy -t filter -P INPUT ACCEPT &> /dev/null
-$command_ip4tableslegacy -t filter -P FORWARD ACCEPT &> /dev/null
-$command_ip4tableslegacy -t filter -P OUTPUT ACCEPT &> /dev/null
-$command_ip4tablesnft -t nat -P INPUT ACCEPT &> /dev/null
-$command_ip4tablesnft -t nat -P OUTPUT ACCEPT &> /dev/null
-$command_ip4tablesnft -t nat -P PREROUTING ACCEPT &> /dev/null
-$command_ip4tablesnft -t nat -P POSTROUTING ACCEPT &> /dev/null
-$command_ip4tableslegacy -t nat -P INPUT ACCEPT &> /dev/null
-$command_ip4tableslegacy -t nat -P OUTPUT ACCEPT &> /dev/null
-$command_ip4tableslegacy -t nat -P PREROUTING ACCEPT &> /dev/null
-$command_ip4tableslegacy -t nat -P POSTROUTING ACCEPT &> /dev/null
-$command_ip4tablesnft -t mangle -P INPUT ACCEPT &> /dev/null
-$command_ip4tablesnft -t mangle -P FORWARD ACCEPT &> /dev/null
-$command_ip4tablesnft -t mangle -P OUTPUT ACCEPT &> /dev/null
-$command_ip4tablesnft -t mangle -P PREROUTING ACCEPT &> /dev/null
-$command_ip4tablesnft -t mangle -P POSTROUTING ACCEPT &> /dev/null
-$command_ip4tableslegacy -t mangle -P INPUT ACCEPT &> /dev/null
-$command_ip4tableslegacy -t mangle -P FORWARD ACCEPT &> /dev/null
-$command_ip4tableslegacy -t mangle -P OUTPUT ACCEPT &> /dev/null
-$command_ip4tableslegacy -t mangle -P PREROUTING ACCEPT &> /dev/null
-$command_ip4tableslegacy -t mangle -P POSTROUTING ACCEPT &> /dev/null
-$command_ip4tablesnft -t raw -P OUTPUT ACCEPT &> /dev/null
-$command_ip4tablesnft -t raw -P PREROUTING ACCEPT &> /dev/null
-$command_ip4tableslegacy -t raw -P OUTPUT ACCEPT &> /dev/null
-$command_ip4tableslegacy -t raw -P PREROUTING ACCEPT &> /dev/null
-$command_ip4tablesnft -t security -P INPUT ACCEPT &> /dev/null
-$command_ip4tablesnft -t security -P FORWARD ACCEPT &> /dev/null
-$command_ip4tablesnft -t security -P OUTPUT ACCEPT &> /dev/null
-$command_ip4tableslegacy -t security -P INPUT ACCEPT &> /dev/null
-$command_ip4tableslegacy -t security -P FORWARD ACCEPT &> /dev/null
-$command_ip4tableslegacy -t security -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ebtables -t filter -P INPUT ACCEPT  &> /dev/null
+$cmd_command_ebtables -t filter -P FORWARD ACCEPT &> /dev/null 
+$cmd_command_ebtables -t filter -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ebtables -t nat -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ebtables -t nat -P OUTPUT ACCEPT  &> /dev/null
+$cmd_command_ebtables -t nat -P POSTROUTING ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t filter -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t filter -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t filter -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t filter -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t filter -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t filter -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t nat -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t nat -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t nat -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t nat -P POSTROUTING ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t nat -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t nat -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t nat -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t nat -P POSTROUTING ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t mangle -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t mangle -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t mangle -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t mangle -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t mangle -P POSTROUTING ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t mangle -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t mangle -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t mangle -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t mangle -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t mangle -P POSTROUTING ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t raw -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t raw -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t raw -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t raw -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t security -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t security -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t security -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t security -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t security -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t security -P OUTPUT ACCEPT &> /dev/null
 ####
 ####
 echo "$title_md $text_ok eraserules4 done"
@@ -4202,7 +4182,7 @@ exit; fi
 #### :rutina-inicial-eraserules6:
 ####
 ####
-if [ "$first_option" == "eraserules6" ]; then  
+if [ "$cmd_first_option" == "eraserules6" ]; then  
 ####
 ####
 echo "$title_md $text_info [ Deleting ip6 iptables rules ] "
@@ -4213,70 +4193,70 @@ echo "$title_md $text_info [ Deleting ip6 iptables rules ] "
 ####
 ####
 rule_table_policy="ACCEPT"
-$command_ip6tableslegacy   -t filter  -P INPUT    $rule_table_policy
-$command_ip6tablesnft      -t filter  -P INPUT    $rule_table_policy
-$command_ip6tableslegacy   -t filter  -P FORWARD  $rule_table_policy
-$command_ip6tablesnft      -t filter  -P FORWARD  $rule_table_policy
-$command_ip6tableslegacy   -t filter  -P OUTPUT   $rule_table_policy
-$command_ip6tablesnft      -t filter  -P OUTPUT   $rule_table_policy
+$cmd_command_ip6tableslegacy   -t filter  -P INPUT    $rule_table_policy
+$cmd_command_ip6tablesnft      -t filter  -P INPUT    $rule_table_policy
+$cmd_command_ip6tableslegacy   -t filter  -P FORWARD  $rule_table_policy
+$cmd_command_ip6tablesnft      -t filter  -P FORWARD  $rule_table_policy
+$cmd_command_ip6tableslegacy   -t filter  -P OUTPUT   $rule_table_policy
+$cmd_command_ip6tablesnft      -t filter  -P OUTPUT   $rule_table_policy
 ####
 ####
 #### english: erase the rules
 #### spanish: borra las reglas
 ####
 ####
-$command_ip6tablesnft -t filter -F &> /dev/null
-$command_ip6tableslegacy -t filter -F &> /dev/null
-$command_ip6tablesnft -t nat -F &> /dev/null
-$command_ip6tableslegacy -t nat -F &> /dev/null
-$command_ip6tablesnft -t mangle -F &> /dev/null
-$command_ip6tableslegacy -t mangle -F &> /dev/null
-$command_ip6tablesnft -t raw -F &> /dev/null
-$command_ip6tableslegacy -t raw -F &> /dev/null
-$command_ip6tablesnft -t security -F &> /dev/null
-$command_ip6tableslegacy -t security -F &> /dev/null
+$cmd_command_ip6tablesnft -t filter -F &> /dev/null
+$cmd_command_ip6tableslegacy -t filter -F &> /dev/null
+$cmd_command_ip6tablesnft -t nat -F &> /dev/null
+$cmd_command_ip6tableslegacy -t nat -F &> /dev/null
+$cmd_command_ip6tablesnft -t mangle -F &> /dev/null
+$cmd_command_ip6tableslegacy -t mangle -F &> /dev/null
+$cmd_command_ip6tablesnft -t raw -F &> /dev/null
+$cmd_command_ip6tableslegacy -t raw -F &> /dev/null
+$cmd_command_ip6tablesnft -t security -F &> /dev/null
+$cmd_command_ip6tableslegacy -t security -F &> /dev/null
 ####
 ####
-$command_ebtables -t filter -P INPUT ACCEPT  &> /dev/null
-$command_ebtables -t filter -P FORWARD ACCEPT &> /dev/null 
-$command_ebtables -t filter -P OUTPUT ACCEPT &> /dev/null
-$command_ebtables -t nat -P PREROUTING ACCEPT &> /dev/null
-$command_ebtables -t nat -P OUTPUT ACCEPT  &> /dev/null
-$command_ebtables -t nat -P POSTROUTING ACCEPT &> /dev/null
-$command_ip6tablesnft -t filter -P INPUT ACCEPT &> /dev/null
-$command_ip6tablesnft -t filter -P FORWARD ACCEPT &> /dev/null
-$command_ip6tablesnft -t filter -P OUTPUT ACCEPT &> /dev/null
-$command_ip6tableslegacy -t filter -P INPUT ACCEPT &> /dev/null
-$command_ip6tableslegacy -t filter -P FORWARD ACCEPT &> /dev/null
-$command_ip6tableslegacy -t filter -P OUTPUT ACCEPT &> /dev/null
-$command_ip6tablesnft -t nat -P INPUT ACCEPT &> /dev/null
-$command_ip6tablesnft -t nat -P OUTPUT ACCEPT &> /dev/null
-$command_ip6tablesnft -t nat -P PREROUTING ACCEPT &> /dev/null
-$command_ip6tablesnft -t nat -P POSTROUTING ACCEPT &> /dev/null
-$command_ip6tableslegacy -t nat -P INPUT ACCEPT &> /dev/null
-$command_ip6tableslegacy -t nat -P OUTPUT ACCEPT &> /dev/null
-$command_ip6tableslegacy -t nat -P PREROUTING ACCEPT &> /dev/null
-$command_ip6tableslegacy -t nat -P POSTROUTING ACCEPT &> /dev/null
-$command_ip6tablesnft -t mangle -P INPUT ACCEPT &> /dev/null
-$command_ip6tablesnft -t mangle -P FORWARD ACCEPT &> /dev/null
-$command_ip6tablesnft -t mangle -P OUTPUT ACCEPT &> /dev/null
-$command_ip6tablesnft -t mangle -P PREROUTING ACCEPT &> /dev/null
-$command_ip6tablesnft -t mangle -P POSTROUTING ACCEPT &> /dev/null
-$command_ip6tableslegacy -t mangle -P INPUT ACCEPT &> /dev/null
-$command_ip6tableslegacy -t mangle -P FORWARD ACCEPT &> /dev/null
-$command_ip6tableslegacy -t mangle -P OUTPUT ACCEPT &> /dev/null
-$command_ip6tableslegacy -t mangle -P PREROUTING ACCEPT &> /dev/null
-$command_ip6tableslegacy -t mangle -P POSTROUTING ACCEPT &> /dev/null
-$command_ip6tablesnft -t raw -P OUTPUT ACCEPT &> /dev/null
-$command_ip6tablesnft -t raw -P PREROUTING ACCEPT &> /dev/null
-$command_ip6tableslegacy -t raw -P OUTPUT ACCEPT &> /dev/null
-$command_ip6tableslegacy -t raw -P PREROUTING ACCEPT &> /dev/null
-$command_ip6tablesnft -t security -P INPUT ACCEPT &> /dev/null
-$command_ip6tablesnft -t security -P FORWARD ACCEPT &> /dev/null
-$command_ip6tablesnft -t security -P OUTPUT ACCEPT &> /dev/null
-$command_ip6tableslegacy -t security -P INPUT ACCEPT &> /dev/null
-$command_ip6tableslegacy -t security -P FORWARD ACCEPT &> /dev/null
-$command_ip6tableslegacy -t security -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ebtables -t filter -P INPUT ACCEPT  &> /dev/null
+$cmd_command_ebtables -t filter -P FORWARD ACCEPT &> /dev/null 
+$cmd_command_ebtables -t filter -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ebtables -t nat -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ebtables -t nat -P OUTPUT ACCEPT  &> /dev/null
+$cmd_command_ebtables -t nat -P POSTROUTING ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t filter -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t filter -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t filter -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t filter -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t filter -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t filter -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t nat -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t nat -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t nat -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t nat -P POSTROUTING ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t nat -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t nat -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t nat -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t nat -P POSTROUTING ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t mangle -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t mangle -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t mangle -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t mangle -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t mangle -P POSTROUTING ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t mangle -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t mangle -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t mangle -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t mangle -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t mangle -P POSTROUTING ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t raw -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t raw -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t raw -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t raw -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t security -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t security -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t security -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t security -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t security -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t security -P OUTPUT ACCEPT &> /dev/null
 ####
 ####
 echo "$title_md $text_ok eraserules6 done"
@@ -4291,7 +4271,7 @@ exit; fi
 #### :rutina-inicial-list-alltables:
 ####
 ####
-if [ "$first_option" == "list-alltables" ]; then
+if [ "$cmd_first_option" == "list-alltables" ]; then
 ####
 ####
 echo "$title_md $text_info [ List all rules ] "
@@ -4331,7 +4311,7 @@ exit; fi
 #### :rutina-inicial-listn-alltables:
 ####
 ####
-if [ "$first_option" == "listn-alltables" ]; then 
+if [ "$cmd_first_option" == "listn-alltables" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List all rules ] "
@@ -4372,15 +4352,15 @@ exit; fi
 #### :rutina-inicial-ls4:
 ####
 ####
-if [ "$first_option" == "list4" ]; then 
+if [ "$cmd_first_option" == "list4" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List filter ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
-legacycuatro=$("$command_ip4tableslegacy" -t filter -L INPUT 1 && \
-"$command_ip4tableslegacy" -t filter -L OUTPUT 1 ) &> /dev/null
-nftcuatro=$("$command_ip4tablesnft" -t filter -L INPUT 1 && \
-"$command_ip4tablesnft" -t filter -L OUTPUT 1 ) &> /dev/null
+legacycuatro=$("$cmd_command_ip4tableslegacy" -t filter -L INPUT 1 && \
+"$cmd_command_ip4tableslegacy" -t filter -L OUTPUT 1 ) &> /dev/null
+nftcuatro=$("$cmd_command_ip4tablesnft" -t filter -L INPUT 1 && \
+"$cmd_command_ip4tablesnft" -t filter -L OUTPUT 1 ) &> /dev/null
 fromrules="filter-ip4"
 echo
 case $legacycuatro in
@@ -4390,7 +4370,7 @@ case $legacycuatro in
 echo "$title_md $text_ok [ With rules xtables ] [ iptables-legacy ] \
 [ $fromrules ] [ listing rules .. ]"
 echo
-$command_ip4tableslegacy -t filter -v -L $list_rules_conceptual
+$cmd_command_ip4tableslegacy -t filter -v -L $cfg_config_listrules_conceptual
 ;;
 esac
 echo "$text_md"
@@ -4401,7 +4381,7 @@ case $nftcuatro in
 echo "$title_md $text_ok [ With rules nftables ] [ iptables-nft ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
-$command_ip4tablesnft -t filter -v -L $list_rules_conceptual
+$cmd_command_ip4tablesnft -t filter -v -L $cfg_config_listrules_conceptual
 ;;
 esac
 ####
@@ -4417,15 +4397,15 @@ exit; fi
 #### :rutina-inicial-ls6:
 ####
 ####
-if [ "$first_option" == "list6" ]; then  
+if [ "$cmd_first_option" == "list6" ]; then  
 ####
 ####
 echo "$title_md $text_info [ List filter ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
-legacyseis=$("$command_ip6tableslegacy" -t filter -L INPUT 1 && \
-"$command_ip6tableslegacy" -t filter -L OUTPUT 1 )
-nftseis=$("$command_ip6tablesnft" -t filter -L INPUT 1 && \
-"$command_ip6tablesnft" -t filter -L OUTPUT 1 )
+legacyseis=$("$cmd_command_ip6tableslegacy" -t filter -L INPUT 1 && \
+"$cmd_command_ip6tableslegacy" -t filter -L OUTPUT 1 )
+nftseis=$("$cmd_command_ip6tablesnft" -t filter -L INPUT 1 && \
+"$cmd_command_ip6tablesnft" -t filter -L OUTPUT 1 )
 fromrules="filter-ip6"
 echo
 case $legacyseis in
@@ -4435,7 +4415,7 @@ case $legacyseis in
 echo "$title_md $text_ok [ With rules xtables ] [ iptables-legacy ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
-$command_ip6tableslegacy -v -L $list_rules_conceptual
+$cmd_command_ip6tableslegacy -v -L $cfg_config_listrules_conceptual
 ;;
 esac
 echo $text_md
@@ -4446,7 +4426,7 @@ case $nftseis in
 echo "$title_md $text_ok [ With rules nftables ] [ iptables-nft ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
-$command_ip6tablesnft -v -L $list_rules_conceptual
+$cmd_command_ip6tablesnft -v -L $cfg_config_listrules_conceptual
 ;;
 esac
 ####
@@ -4461,15 +4441,15 @@ exit; fi
 #### :rutina-inicial-listn4:
 ####
 ####
-if [ "$first_option" == "listn4" ]; then  
+if [ "$cmd_first_option" == "listn4" ]; then  
 ####
 ####
 echo "$title_md $text_info [ List filter ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
-legacycuatro=$("$command_ip4tableslegacy" -t filter -L INPUT 1 && \
-"$command_ip4tableslegacy" -t filter -L OUTPUT 1 ) &> /dev/null
-nftcuatro=$("$command_ip4tablesnft" -t filter -L INPUT 1 && \
-"$command_ip4tablesnft" -t filter -L OUTPUT 1 ) &> /dev/null
+legacycuatro=$("$cmd_command_ip4tableslegacy" -t filter -L INPUT 1 && \
+"$cmd_command_ip4tableslegacy" -t filter -L OUTPUT 1 ) &> /dev/null
+nftcuatro=$("$cmd_command_ip4tablesnft" -t filter -L INPUT 1 && \
+"$cmd_command_ip4tablesnft" -t filter -L OUTPUT 1 ) &> /dev/null
 fromrules="filter-ip4"
 echo
 case $legacycuatro in
@@ -4479,7 +4459,7 @@ case $legacycuatro in
 echo "$title_md $text_ok [ With rules xtables ] [ iptables-legacy ] \
 [ $fromrules ] [ listing rules .. ]"
 echo
-$command_ip4tableslegacy -t filter -v -L -n
+$cmd_command_ip4tableslegacy -t filter -v -L -n
 ;;
 esac
 echo "$text_md"
@@ -4490,7 +4470,7 @@ case $nftcuatro in
 echo "$title_md $text_ok [ With rules nftables ] [ iptables-nft ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
-$command_ip4tablesnft -t filter -v -L -n
+$cmd_command_ip4tablesnft -t filter -v -L -n
 ;;
 esac
 ####
@@ -4504,15 +4484,15 @@ exit; fi
 #### :rutina-inicial-listn6:
 ####
 ####
-if [ "$first_option" == "listn6" ]; then  
+if [ "$cmd_first_option" == "listn6" ]; then  
 ####
 ####
 echo "$title_md $text_info [ List filter ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
-legacyseis=$("$command_ip6tableslegacy" -t filter -L INPUT 1 && \
-"$command_ip6tableslegacy" -t filter -L OUTPUT 1 )
-nftseis=$("$command_ip6tablesnft" -t filter -L INPUT 1 && \
-"$command_ip6tablesnft" -t filter -L OUTPUT 1 )
+legacyseis=$("$cmd_command_ip6tableslegacy" -t filter -L INPUT 1 && \
+"$cmd_command_ip6tableslegacy" -t filter -L OUTPUT 1 )
+nftseis=$("$cmd_command_ip6tablesnft" -t filter -L INPUT 1 && \
+"$cmd_command_ip6tablesnft" -t filter -L OUTPUT 1 )
 fromrules="filter-ip6"
 echo
 case $legacyseis in
@@ -4522,7 +4502,7 @@ case $legacyseis in
 echo "$title_md $text_ok [ With rules xtables ] [ iptables-legacy ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
-$command_ip6tableslegacy -v -L -n
+$cmd_command_ip6tableslegacy -v -L -n
 ;;
 esac
 echo $text_md
@@ -4533,7 +4513,7 @@ case $nftseis in
 echo "$title_md $text_ok [ With rules nftables ] [ iptables-nft ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
-$command_ip6tablesnft -v -L -n
+$cmd_command_ip6tablesnft -v -L -n
 ;;
 esac
 ####
@@ -4547,7 +4527,7 @@ exit; fi
 #### :rutina-inicial-status:
 ####
 ####
-if [ "$first_option" == "status" ]; then
+if [ "$cmd_first_option" == "status" ]; then
 ####
 ####
 $cmd_internal ls4
@@ -4565,7 +4545,7 @@ exit; fi
 #### :rutina-inicial-statusn:
 ####
 ####
-if [ "$first_option" == "statusn" ]; then
+if [ "$cmd_first_option" == "statusn" ]; then
 ####
 ####
 $cmd_internal listn4
@@ -4583,15 +4563,15 @@ exit; fi
 #### :rutina-inicial-listnum:
 ####
 ####
-if [ "$first_option" == "listnum" ]; then 
+if [ "$cmd_first_option" == "listnum" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List numerical filter ipv4 ] \
 [ it is only sufficent or with legacy or with nft ] "
-legacycuatro=$("$command_ip4tableslegacy" -t filter -L INPUT 1 && \
-"$command_ip4tableslegacy" -t filter -L OUTPUT 1 ) &> /dev/null
-nftcuatro=$("$command_ip4tablesnft" -t filter -L INPUT 1 && \
-"$command_ip4tablesnft" -t filter -L OUTPUT 1 ) &> /dev/null
+legacycuatro=$("$cmd_command_ip4tableslegacy" -t filter -L INPUT 1 && \
+"$cmd_command_ip4tableslegacy" -t filter -L OUTPUT 1 ) &> /dev/null
+nftcuatro=$("$cmd_command_ip4tablesnft" -t filter -L INPUT 1 && \
+"$cmd_command_ip4tablesnft" -t filter -L OUTPUT 1 ) &> /dev/null
 fromrules="filter-numerical-ip4"
 echo
 case $legacycuatro in
@@ -4602,7 +4582,7 @@ echo "$title_md $text_info [ Without rules xtables ] [ iptables-legacy ] \
 echo "$title_md $text_ok [ With rules xtables ] [ iptables-legacy ] \
 [ $fromrules ] [ listing rules .. ]"
 echo
-$command_ip4tableslegacy -t filter -v -L -n
+$cmd_command_ip4tableslegacy -t filter -v -L -n
 ;;
 esac
 echo "$text_md"
@@ -4613,7 +4593,7 @@ case $nftcuatro in
 echo "$title_md $text_ok [ With rules nftables ] [ iptables-nft ] \
 [ $fromrules ] [ listing rules .. ]" 
 echo
-$command_ip4tablesnft -t filter -v -L -n
+$cmd_command_ip4tablesnft -t filter -v -L -n
 ;;
 esac
 ####
@@ -4627,15 +4607,15 @@ exit; fi
 #### :rutina-inicial-listnum6:
 ####
 ####
-if [ "$first_option" == "listnum6" ]; then 
+if [ "$cmd_first_option" == "listnum6" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List numerical filter ipv6 ] \
 [ it is only sufficent or with legacy or with nft ] "
-legacycuatro=$("$command_ip6tableslegacy" -t filter -L INPUT 1 && \
-"$command_ip6tableslegacy" -t filter -L OUTPUT 1 ) &> /dev/null
-nftcuatro=$("$command_ip6tablesnft" -t filter -L INPUT 1 && \
-"$command_ip6tablesnft" -t filter -L OUTPUT 1 ) &> /dev/null
+legacycuatro=$("$cmd_command_ip6tableslegacy" -t filter -L INPUT 1 && \
+"$cmd_command_ip6tableslegacy" -t filter -L OUTPUT 1 ) &> /dev/null
+nftcuatro=$("$cmd_command_ip6tablesnft" -t filter -L INPUT 1 && \
+"$cmd_command_ip6tablesnft" -t filter -L OUTPUT 1 ) &> /dev/null
 fromrules="filter-numerical-ip6"
 echo
 case $legacycuatro in
@@ -4645,7 +4625,7 @@ case $legacycuatro in
 echo "$title_md $text_ok [ With rules xtables ] \
 [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip4tableslegacy -t filter -v -L -n
+$cmd_command_ip4tableslegacy -t filter -v -L -n
 ;;
 esac
 echo "$text_md"
@@ -4656,7 +4636,7 @@ case $nftcuatro in
 echo "$title_md $text_ok [ With rules nftables ] \
 [ iptables-nft ] [ $fromrules ]" 
 echo
-$command_ip4tablesnft -t filter -v -L -n
+$cmd_command_ip4tablesnft -t filter -v -L -n
 ;;
 esac
 ####
@@ -4670,7 +4650,7 @@ exit; fi
 #### :rutina-inicial-list-filter4:
 ####
 ####
-if [ "$first_option" == "list-filter4" ]; then 
+if [ "$cmd_first_option" == "list-filter4" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List filter ipv4 ] \
@@ -4680,12 +4660,12 @@ echo
 echo "$title_md $text_ok [ With rules xtables ] \
 [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip4tableslegacy -t filter -v -L $list_rules_conceptual
+$cmd_command_ip4tableslegacy -t filter -v -L $cfg_config_listrules_conceptual
 echo
 echo "$title_md $text_ok [ With rules nftables ] \
 [ iptables-nft ] [ $fromrules ]" 
 echo
-$command_ip4tablesnft -t filter -v -L $list_rules_conceptual
+$cmd_command_ip4tablesnft -t filter -v -L $cfg_config_listrules_conceptual
 ####
 ####
 exit; fi
@@ -4697,7 +4677,7 @@ exit; fi
 #### :rutina-inicial-list-forward:
 ####
 ####
-if [ "$first_option" == "list-forward" ]; then 
+if [ "$cmd_first_option" == "list-forward" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List filter forward ipv4 ] \
@@ -4706,11 +4686,11 @@ fromrules="filter-forward-ip4"
 echo
 echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip4tableslegacy -t filter -v -L FORWARD $list_rules_conceptual
+$cmd_command_ip4tableslegacy -t filter -v -L FORWARD $cfg_config_listrules_conceptual
 echo
 echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_ip4tablesnft -t filter -v -L FORWARD $list_rules_conceptual
+$cmd_command_ip4tablesnft -t filter -v -L FORWARD $cfg_config_listrules_conceptual
 ####
 ####
 exit; fi
@@ -4722,7 +4702,7 @@ exit; fi
 #### :rutina-inicial-list-filter6:
 ####
 ####
-if [ "$first_option" == "list-filter6" ]; then 
+if [ "$cmd_first_option" == "list-filter6" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List filter ipv6 ] \
@@ -4731,11 +4711,11 @@ fromrules="filter-ip6"
 echo
 echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
-$command_ip6tableslegacy -v -L $list_rules_conceptual
+$cmd_command_ip6tableslegacy -v -L $cfg_config_listrules_conceptual
 echo
 echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
-$command_ip6tablesnft -v -L $list_rules_conceptual
+$cmd_command_ip6tablesnft -v -L $cfg_config_listrules_conceptual
 ####
 ####
 exit; fi
@@ -4747,7 +4727,7 @@ exit; fi
 #### :rutina-inicial-list-forward6:
 ####
 ####
-if [ "$first_option" == "list-forward6" ]; then 
+if [ "$cmd_first_option" == "list-forward6" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List filter forward ipv6 ] \
@@ -4756,11 +4736,11 @@ fromrules="filter-forward-ip6"
 echo
 echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip6tableslegacy -t filter -v -L FORWARD $list_rules_conceptual
+$cmd_command_ip6tableslegacy -t filter -v -L FORWARD $cfg_config_listrules_conceptual
 echo
 echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_ip6tablesnft -t filter -v -L FORWARD $list_rules_conceptual
+$cmd_command_ip6tablesnft -t filter -v -L FORWARD $cfg_config_listrules_conceptual
 ####
 ####
 exit; fi
@@ -4772,7 +4752,7 @@ exit; fi
 #### :rutina-inicial-list-nat-4:
 ####
 ####
-if [ "$first_option" == "list-nat4" ]; then 
+if [ "$cmd_first_option" == "list-nat4" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List nat ipv4 ] \
@@ -4781,11 +4761,11 @@ fromrules="nat-ip4"
 echo
 echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip4tableslegacy -t nat -v -L $list_rules_conceptual
+$cmd_command_ip4tableslegacy -t nat -v -L $cfg_config_listrules_conceptual
 echo
 echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_ip4tablesnft -t nat -v -L $list_rules_conceptual
+$cmd_command_ip4tablesnft -t nat -v -L $cfg_config_listrules_conceptual
 ####
 ####
 exit; fi
@@ -4797,7 +4777,7 @@ exit; fi
 #### :rutina-inicial-list-nat6:
 ####
 ####
-if [ "$first_option" == "list-nat6" ]; then 
+if [ "$cmd_first_option" == "list-nat6" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List nat ipv6] \
@@ -4806,11 +4786,11 @@ fromrules="nat-ip6"
 echo
 echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip6tableslegacy -t nat -v -L $list_rules_conceptual
+$cmd_command_ip6tableslegacy -t nat -v -L $cfg_config_listrules_conceptual
 echo
 echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_ip6tablesnft -t nat -v -L $list_rules_conceptual 
+$cmd_command_ip6tablesnft -t nat -v -L $cfg_config_listrules_conceptual 
 ####
 ####
 exit; fi
@@ -4822,7 +4802,7 @@ exit; fi
 #### :rutina-inicial-listnum-filter4:
 ####
 ####
-if [ "$first_option" == "listnum-filter4" ]; then 
+if [ "$cmd_first_option" == "listnum-filter4" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List filter ipv4 in numerical ] \
@@ -4831,11 +4811,11 @@ fromrules="filter-ip4"
 echo
 echo "$title_md $text_info [ With rules netfilter ] [ iptables-nft ] [ $fromrules ]"  
 echo
-$command_ip4tableslegacy -v -L -n 
+$cmd_command_ip4tableslegacy -v -L -n 
 echo
 echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_ip4tablesnft -v -L -n
+$cmd_command_ip4tablesnft -v -L -n
 ####
 ####
 exit; fi
@@ -4847,7 +4827,7 @@ exit; fi
 #### :rutina-inicial-list-forwardnum:
 ####
 ####
-if [ "$first_option" == "list-forwardnum" ]; then 
+if [ "$cmd_first_option" == "list-forwardnum" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List filter forward ipv4 in numerical ] \
@@ -4856,11 +4836,11 @@ fromrules="filter-forward-ip4"
 echo
 echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip4tableslegacy -t filter -v -L FORWARD -n
+$cmd_command_ip4tableslegacy -t filter -v -L FORWARD -n
 echo
 echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_ip4tablesnft -t filter -v -L FORWARD -n
+$cmd_command_ip4tablesnft -t filter -v -L FORWARD -n
 ####
 ####
 exit; fi
@@ -4872,7 +4852,7 @@ exit; fi
 #### :rutina-inicial-listnum-filter6:
 ####
 ####
-if [ "$first_option" == "listnum-filter6" ]; then 
+if [ "$cmd_first_option" == "listnum-filter6" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List filter ipv6 in numerical ] \
@@ -4881,11 +4861,11 @@ fromrules="filter-ip6"
 echo
 echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
-$command_ip6tableslegacy -v -L -n
+$cmd_command_ip6tableslegacy -v -L -n
 echo
 echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
-$command_ip6tablesnft -v -L -n
+$cmd_command_ip6tablesnft -v -L -n
 ####
 ####
 exit; fi
@@ -4897,7 +4877,7 @@ exit; fi
 #### :rutina-inicial-list-forwardnum6:
 ####
 ####
-if [ "$first_option" == "list-forwardnum6" ]; then 
+if [ "$cmd_first_option" == "list-forwardnum6" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List filter forward ipv6 in numerical ] \
@@ -4906,11 +4886,11 @@ fromrules="filter-forward-ip6"
 echo
 echo "$title_md $text_info [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip6tableslegacy -t filter -v -L FORWARD -n
+$cmd_command_ip6tableslegacy -t filter -v -L FORWARD -n
 echo
 echo "$title_md $text_info [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_ip6tablesnft -t filter -v -L FORWARD -n
+$cmd_command_ip6tablesnft -t filter -v -L FORWARD -n
 ####
 ####
 exit; fi
@@ -4922,7 +4902,7 @@ exit; fi
 #### :rutina-inicial-list-mangle4:
 ####
 ####
-if [ "$first_option" == "list-mangle4" ]; then 
+if [ "$cmd_first_option" == "list-mangle4" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List mangle ipv4 ] \
@@ -4931,11 +4911,11 @@ fromrules="mangle-ip4"
 echo
 echo "$title_md $text_info [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip4tableslegacy -t mangle -v -L $list_rules_conceptual
+$cmd_command_ip4tableslegacy -t mangle -v -L $cfg_config_listrules_conceptual
 echo
 echo "$title_md $text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_ip4tablesnft -t mangle -v -L $list_rules_conceptual
+$cmd_command_ip4tablesnft -t mangle -v -L $cfg_config_listrules_conceptual
 echo
 ####
 ####
@@ -4948,7 +4928,7 @@ exit; fi
 #### :rutina-inicial-list-mangle6:
 ####
 ####
-if [ "$first_option" == "list-mangle6" ]; then 
+if [ "$cmd_first_option" == "list-mangle6" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List mangle ipv6 ] \
@@ -4957,11 +4937,11 @@ fromrules="mangle-ip6"
 echo
 echo "$title_md $text_info [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip6tableslegacy -t mangle -v -L $list_rules_conceptual
+$cmd_command_ip6tableslegacy -t mangle -v -L $cfg_config_listrules_conceptual
 echo
 echo "$title_md $text_info [ The nftables ] [iptables-nft ] [ $fromrules ]"
 echo
-$command_ip6tablesnft -t mangle -v -L $list_rules_conceptual
+$cmd_command_ip6tablesnft -t mangle -v -L $cfg_config_listrules_conceptual
 ####
 ####
 exit; fi
@@ -4973,7 +4953,7 @@ exit; fi
 #### :rutina-inicial-list-raw4:
 ####
 ####
-if [ "$first_option" == "list-raw4" ]; then 
+if [ "$cmd_first_option" == "list-raw4" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List raw ipv4 ] \
@@ -4982,11 +4962,11 @@ fromrules="raw-ip4"
 echo
 echo "$title_md $text_info [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip4tableslegacy -t raw -v -L $list_rules_conceptual
+$cmd_command_ip4tableslegacy -t raw -v -L $cfg_config_listrules_conceptual
 echo
 echo "$title_md $text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_ip4tablesnft -t raw -v -L $list_rules_conceptual
+$cmd_command_ip4tablesnft -t raw -v -L $cfg_config_listrules_conceptual
 ####
 ####
 exit; fi
@@ -4998,7 +4978,7 @@ exit; fi
 #### :rutina-inicial-list-raw6:
 ####
 ####
-if [ "$first_option" == "list-raw6" ]; then 
+if [ "$cmd_first_option" == "list-raw6" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List raw ipv6 ] \
@@ -5007,11 +4987,11 @@ fromrules="raw-ip6"
 echo
 echo "$title_md $text_info [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip6tableslegacy -t raw -v -L $list_rules_conceptual
+$cmd_command_ip6tableslegacy -t raw -v -L $cfg_config_listrules_conceptual
 echo
 echo "$title_md $text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_ip6tablesnft -t raw -v -L $list_rules_conceptual
+$cmd_command_ip6tablesnft -t raw -v -L $cfg_config_listrules_conceptual
 ####
 ####
 exit; fi
@@ -5023,7 +5003,7 @@ exit; fi
 #### :rutina-inicial-list-security4:
 ####
 ####
-if [ "$first_option" == "list-security4" ]; then 
+if [ "$cmd_first_option" == "list-security4" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List security ipv4 ] \
@@ -5032,11 +5012,11 @@ fromrules="security-ip4"
 echo
 echo "$title_md $text_info [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip4tableslegacy -t security -v -L $list_rules_conceptual
+$cmd_command_ip4tableslegacy -t security -v -L $cfg_config_listrules_conceptual
 echo
 echo "$title_md $text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_ip4tablesnft -t security -v -L $list_rules_conceptual
+$cmd_command_ip4tablesnft -t security -v -L $cfg_config_listrules_conceptual
 ####
 ####
 exit; fi
@@ -5048,7 +5028,7 @@ exit; fi
 #### :rutina-inicial-list-security6:
 ####
 ####
-if [ "$first_option" == "list-security6" ]; then 
+if [ "$cmd_first_option" == "list-security6" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List security ipv6 ] \
@@ -5057,11 +5037,11 @@ fromrules="security-ip6"
 echo
 echo "$title_md $text_info [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip6tableslegacy -t security -v -L $list_rules_conceptual
+$cmd_command_ip6tableslegacy -t security -v -L $cfg_config_listrules_conceptual
 echo
 echo "$title_md $text_info [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_ip6tablesnft -t security -v -L $list_rules_conceptual
+$cmd_command_ip6tablesnft -t security -v -L $cfg_config_listrules_conceptual
 ####
 ####
 exit; fi
@@ -5073,7 +5053,7 @@ exit; fi
 #### :rutina-inicial-list-ebtables:
 ####
 ####
-if [ "$first_option" == "list-ebtables" ]; then 
+if [ "$cmd_first_option" == "list-ebtables" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List ebtables ] "
@@ -5081,11 +5061,11 @@ fromrules="ebtables"
 echo
 echo "$title_md $text_info [ ebtables: filter ethernet ] [ $fromrules ]"
 echo
-$command_ebtables -L -t filter
+$cmd_command_ebtables -L -t filter
 echo
 echo "$title_md $text_info [ ebtables: nat ethernet ] [ $fromrules ]"
 echo
-$command_ebtables -L -t nat
+$cmd_command_ebtables -L -t nat
 ####
 ####
 exit; fi
@@ -5097,7 +5077,7 @@ exit; fi
 #### :rutina-inicial-list-arptables:
 ####
 ####
-if [ "$first_option" == "list-arptables" ]; then 
+if [ "$cmd_first_option" == "list-arptables" ]; then 
 ####
 ####
 echo "$title_md $text_info [ List arptables ipv4 ] "
@@ -5105,7 +5085,7 @@ fromrules="arptables"
 echo
 echo "$title_md $text_info [ arptables: filter arptables ] [ $fromrules ]"
 echo
-$command_arptables -L
+$cmd_command_arptables -L
 ####
 ####
 exit; fi
@@ -5117,27 +5097,27 @@ exit; fi
 #### :rutina-inicial-clone-wallsystem:
 ####
 ####
-if [ "$first_option" == "clone-wallsystem" ] && [ "$second_option" == "$NULL" ]  ; then 
+if [ "$cmd_first_option" == "clone-wallsystem" ] && [ "$cmd_second_option" == "$NULL" ]  ; then 
 ####
 ####
 echo "$text_md $text_info [ usage: ] [ $cmd_internal clone-wallsystem firewall ]"
 exit; fi
 ####
 ####
-if [ "$first_option" == "clone-wallsystem" ] && [ "$second_option" != "$NULL" ] ; then 
-archivo="$second_option"
+if [ "$cmd_first_option" == "clone-wallsystem" ] && [ "$cmd_second_option" != "$NULL" ] ; then 
+archivo="$cmd_second_option"
 case $archivo in shield-*);;client-*);; game-*);; games-*);; server-*);;
 *) echo "$title $text_fail choose a valid system firewall to clone" ; exit ;; esac
-$cmd_internal code $second_option | $command_grep -E "client_|server_|config_|allow_|net_" \
-&> $default_directory_custom/$archivo
+$cmd_internal code $cmd_second_option | $cmd_command_grep -E "client_|server_|config_|allow_|net_" \
+&> $cmd_default_directory_custom/$archivo
 ####
 ####
-if [ -s "$default_directory_custom/$archivo" ] ; then 
-$command_cat  $default_directory_custom/$archivo ;
+if [ -s "$cmd_default_directory_custom/$archivo" ] ; then 
+$cmd_command_cat  $cmd_default_directory_custom/$archivo ;
 echo "$title_md $text_ok Created custom : $archivo  "
 echo "$title_md $text_info Modify  : fwiptables modify-custom $archivo  "
 echo "$title_md $text_info Launch  : fwiptables load-custom $archivo  "
-else rm $default_directory_custom/$archivo
+else rm $cmd_default_directory_custom/$archivo
 echo "$title_md $text_info choose one valid wallsystem to clone to custom"
 echo "$title_md $text_fail config no done $archivo" ; fi
 ####
@@ -5151,17 +5131,17 @@ exit; fi
 #### :rutina-inicial-new-full-custom:
 ####
 ####
-if [ "$first_option" == "new-full-custom" ] && [ "$second_option" == "$NULL" ]  ; then 
+if [ "$cmd_first_option" == "new-full-custom" ] && [ "$cmd_second_option" == "$NULL" ]  ; then 
 ####
 ####
 echo "$text_md $text_info [ usage: ] [ $cmd_internal new-full-custom config-new ]"
 exit; fi
 ####
 ####
-if [ "$first_option" == "new-full-custom" ] && [ "$second_option" != "$NULL" ] ; then 
-archivo="$second_option"
-cp "$default_fullcfg_eng" "$default_directory_custom/$archivo"
-$favorite_text_editor $default_directory_custom/$archivo
+if [ "$cmd_first_option" == "new-full-custom" ] && [ "$cmd_second_option" != "$NULL" ] ; then 
+archivo="$cmd_second_option"
+cp "$default_fullcfg_eng" "$cmd_default_directory_custom/$archivo"
+$cfg_favorite_text_editor $cmd_default_directory_custom/$archivo
 echo " $text_ok created file $archivo"
 ####
 ####
@@ -5174,17 +5154,17 @@ exit; fi
 #### :rutina-inicial-nueva-completa-custom:
 ####
 ####
-if [ "$first_option" == "nueva-completa-custom" ] && [ "$second_option" == "$NULL" ]  ; then 
+if [ "$cmd_first_option" == "nueva-completa-custom" ] && [ "$cmd_second_option" == "$NULL" ]  ; then 
 ####
 ####
 echo "$text_md $text_info [ usage: ] [ $cmd_internal nueva-completa-custom config-nueva ]"
 exit; fi
 ####
 ####
-if [ "$first_option" == "nueva-completa-custom" ] && [ "$second_option" != "$NULL" ] ; then 
-archivo="$second_option"
-cp "$default_fullcfg_spa" "$default_directory_custom/$archivo"
-$favorite_text_editor $default_directory_custom/$archivo
+if [ "$cmd_first_option" == "nueva-completa-custom" ] && [ "$cmd_second_option" != "$NULL" ] ; then 
+archivo="$cmd_second_option"
+cp "$default_fullcfg_spa" "$cmd_default_directory_custom/$archivo"
+$cfg_favorite_text_editor $cmd_default_directory_custom/$archivo
 echo " $text_ok created file $archivo"
 ####
 ####
@@ -5197,17 +5177,17 @@ exit; fi
 #### :rutina-inicial-new-mini-custom:
 ####
 ####
-if [ "$first_option" == "new-mini-custom" ] && [ "$second_option" == "$NULL" ]  ; then 
+if [ "$cmd_first_option" == "new-mini-custom" ] && [ "$cmd_second_option" == "$NULL" ]  ; then 
 ####
 ####
 echo "$text_md $text_info [ usage: ] [ $cmd_internal new-mini-custom config-new ]"
 exit; fi
 ####
 ####
-if [ "$first_option" == "new-mini-custom" ] && [ "$second_option" != "$NULL" ] ; then 
-archivo="$second_option"
-cp "$default_minicfg_eng" "$default_directory_custom/$archivo"
-$favorite_text_editor $default_directory_custom/$archivo
+if [ "$cmd_first_option" == "new-mini-custom" ] && [ "$cmd_second_option" != "$NULL" ] ; then 
+archivo="$cmd_second_option"
+cp "$default_minicfg_eng" "$cmd_default_directory_custom/$archivo"
+$cfg_favorite_text_editor $cmd_default_directory_custom/$archivo
 echo " $text_ok created file $archivo"
 ####
 ####
@@ -5220,17 +5200,17 @@ exit; fi
 #### :rutina-inicial-nueva-mini-custom:
 ####
 ####
-if [ "$first_option" == "nueva-mini-custom" ] && [ "$second_option" == "$NULL" ]  ; then 
+if [ "$cmd_first_option" == "nueva-mini-custom" ] && [ "$cmd_second_option" == "$NULL" ]  ; then 
 ####
 ####
 echo "$text_md $text_info [ usage: ] [ $cmd_internal nueva-mini-custom config-nueva ]"
 exit; fi
 ####
 ####
-if [ "$first_option" == "nueva-mini-custom" ] && [ "$second_option" != "$NULL" ] ; then 
-archivo="$second_option"
-cp "$default_minicfg_spa" "$default_directory_custom/$archivo"
-$favorite_text_editor $default_directory_custom/$archivo
+if [ "$cmd_first_option" == "nueva-mini-custom" ] && [ "$cmd_second_option" != "$NULL" ] ; then 
+archivo="$cmd_second_option"
+cp "$default_minicfg_spa" "$cmd_default_directory_custom/$archivo"
+$cfg_favorite_text_editor $cmd_default_directory_custom/$archivo
 echo " $text_ok created file $archivo"
 ####
 ####
@@ -5243,17 +5223,17 @@ exit; fi
 #### :rutina-inicial-new-tiny-custom:
 ####
 ####
-if [ "$first_option" == "new-tiny-custom" ] && [ "$second_option" == "$NULL" ]  ; then 
+if [ "$cmd_first_option" == "new-tiny-custom" ] && [ "$cmd_second_option" == "$NULL" ]  ; then 
 ####
 ####
 echo "$text_md $text_info [ usage: ] [ $cmd_internal new-tiny-custom config-new ]"
 exit; fi
 ####
 ####
-if [ "$first_option" == "new-tiny-custom" ] && [ "$second_option" != "$NULL" ] ; then 
-archivo="$second_option"
-cp "$default_tinycfg_eng" "$default_directory_custom/$archivo"
-$favorite_text_editor $default_directory_custom/$archivo
+if [ "$cmd_first_option" == "new-tiny-custom" ] && [ "$cmd_second_option" != "$NULL" ] ; then 
+archivo="$cmd_second_option"
+cp "$default_tinycfg_eng" "$cmd_default_directory_custom/$archivo"
+$cfg_favorite_text_editor $cmd_default_directory_custom/$archivo
 echo " $text_ok created file $archivo"
 ####
 ####
@@ -5266,17 +5246,17 @@ exit; fi
 #### :rutina-inicial-nueva-diminuta-custom:
 ####
 ####
-if [ "$first_option" == "nueva-diminuta-custom" ] && [ "$second_option" == "$NULL" ]  ; then 
+if [ "$cmd_first_option" == "nueva-diminuta-custom" ] && [ "$cmd_second_option" == "$NULL" ]  ; then 
 ####
 ####
 echo "$text_md $text_info [ usage: ] [ $cmd_internal nueva-diminuta-custom config-nueva ]"
 exit; fi
 ####
 ####
-if [ "$first_option" == "nueva-diminuta-custom" ] && [ "$second_option" != "$NULL" ] ; then 
-archivo="$second_option"
-cp "$default_tinycfg_spa" "$default_directory_custom/$archivo"
-$favorite_text_editor $default_directory_custom/$archivo
+if [ "$cmd_first_option" == "nueva-diminuta-custom" ] && [ "$cmd_second_option" != "$NULL" ] ; then 
+archivo="$cmd_second_option"
+cp "$default_tinycfg_spa" "$cmd_default_directory_custom/$archivo"
+$cfg_favorite_text_editor $cmd_default_directory_custom/$archivo
 echo " $text_ok Archivo creado $archivo"
 ####
 ####
@@ -5289,19 +5269,19 @@ exit; fi
 #### :rutina-inicial-modify-custom:
 ####
 ####
-if [ "$first_option" == "modify-custom" ]; then 
+if [ "$cmd_first_option" == "modify-custom" ]; then 
 ####
 ###
-if [ ! -f "$default_directory_custom/$second_option" ] ; then
+if [ ! -f "$cmd_default_directory_custom/$cmd_second_option" ] ; then
 $cmd_internal names-custom
 echo "$text_md $text_info [ usage: ] [ $cmd_internal modify-custom config ]"
 exit; fi
 ####
 ####
-if [ -f "$default_directory_custom/$second_option" ] ; then
-cp "$default_directory_custom/$second_option" "$directory_cache_necesary/$second_option" &> /dev/null
-$favorite_text_editor "$default_directory_custom/$second_option"
-echo "$title_md $text_ok [ load-custom file $second_option ]"
+if [ -f "$cmd_default_directory_custom/$cmd_second_option" ] ; then
+cp "$cmd_default_directory_custom/$cmd_second_option" "$cmd_default_cache_necesary/$cmd_second_option" &> /dev/null
+$cfg_favorite_text_editor "$cmd_default_directory_custom/$cmd_second_option"
+echo "$title_md $text_ok [ load-custom file $cmd_second_option ]"
 clear; fi
 ####
 ####
@@ -5314,15 +5294,15 @@ clear ; exit ; fi
 #### :rutina-inicial-show-custom:
 ####
 ####
-if [ "$first_option" == "show-custom" ] ; then 
+if [ "$cmd_first_option" == "show-custom" ] ; then 
 ####
 ####
-if [ ! -f "$default_directory_custom"/"$second_option" ] ; then 
+if [ ! -f "$cmd_default_directory_custom"/"$cmd_second_option" ] ; then 
 echo "$title_md $text_info [ Usage: $cmd_internal show-custom config-cfg ]" ; exit; fi
 ####
 ####
-if [ -f "$default_directory_custom"/"$second_option" ] ; then 
-$command_cat  $default_directory_custom/$second_option ;
+if [ -f "$cmd_default_directory_custom"/"$cmd_second_option" ] ; then 
+$cmd_command_cat  $cmd_default_directory_custom/$cmd_second_option ;
 echo  ; exit ; fi
 ####
 ####
@@ -5335,17 +5315,17 @@ exit; fi
 #### :rutina-inicial-del-custom:
 ####
 ####
-if [ "$first_option" == "del-custom" ]; then 
+if [ "$cmd_first_option" == "del-custom" ]; then 
 ####
 ####
-if [ ! -f $default_directory_custom/$second_option ] ; then
+if [ ! -f $cmd_default_directory_custom/$cmd_second_option ] ; then
 echo "$title_md $text_info [ usage: ] [ $cmd_internal del-custom config-old ]"
 exit ; fi
 ####
 ####
-if [ -f $default_directory_custom/$second_option ] ; then
-rm $default_directory_custom/$second_option
-echo "$default_directory_custom/$second_option Deleted"
+if [ -f $cmd_default_directory_custom/$cmd_second_option ] ; then
+rm $cmd_default_directory_custom/$cmd_second_option
+echo "$cmd_default_directory_custom/$cmd_second_option Deleted"
 echo  ; exit ; fi
 ####
 ####
@@ -5358,17 +5338,17 @@ exit ; fi
 #### :rutina-inicial-names:
 ####
 ####
-if [ "$first_option" == "names" ]; then 
+if [ "$cmd_first_option" == "names" ]; then 
 ####
 ####
 echo "$title_md $text_info [ list configs files saved in standard format ]"
-echo "$title_md $folder [ $default_directory_control ]"
+echo "$title_md $folder [ $cmd_default_directory_control ]"
 echo 
 echo "$title_md $text_info [ Listing firewall names ]"
-$command_tree $default_directory_control | $command_sed s/\-legacy\-ipv6//g | \
-$command_sed s/\-nft\-ipv6//g | \
-$command_sed s/\-legacy\-ipv4//g | $command_sed s/\-nft\-ipv4//g | \
-$command_sed s/\-arptables//g | $command_sed s/\-ebtables//g 
+$cmd_command_tree $cmd_default_directory_control | $cmd_command_sed s/\-legacy\-ipv6//g | \
+$cmd_command_sed s/\-nft\-ipv6//g | \
+$cmd_command_sed s/\-legacy\-ipv4//g | $cmd_command_sed s/\-nft\-ipv4//g | \
+$cmd_command_sed s/\-arptables//g | $cmd_command_sed s/\-ebtables//g 
 echo
 echo "$title_md $text_ok [ Listed firewall names ]"
 ####
@@ -5382,7 +5362,7 @@ exit; fi
 #### :rutina-inicial-reset:
 ####
 ####
-if [ "$first_option" == "reset" ]; then 
+if [ "$cmd_first_option" == "reset" ]; then 
 ####
 ####
 echo "$title_md $text_info [ Reseting the firewall, stop-and-continue ]"
@@ -5400,7 +5380,7 @@ exit; fi
 #### :rutina-inicial-readme:
 ####
 ####
-if  [ "$first_option" == "readme" ];  then
+if  [ "$cmd_first_option" == "readme" ];  then
 ####
 ####
 echo "$text_md $text_md fwiptables. Firewall With iptables."
@@ -5431,8 +5411,8 @@ echo "$text_md $text_md $text_md"
 echo "$title_md $text_md  [ fwiptables location ]                          $text_md"
 echo "$text_md $text_md $text_md"
 echo "$text_md $text_md  File    Location:   $cmd_directory/$cmd_filename  $text_md"
-echo "$text_md $text_md  Config Directory:   $directory_data_necesary      $text_md"
-echo "$text_md $text_md  Cache  Directory:   $directory_cache_basenecesary $text_md "
+echo "$text_md $text_md  Config Directory:   $cmd_default_directory_necesary      $text_md"
+echo "$text_md $text_md  Cache  Directory:   $cmd_default_cache_basenecesary $text_md "
 echo "$text_md $text_md $text_md"
 echo "$title_md $text_md [ fwiptables install ]                      $text_md"
 echo "$text_md $text_md $text_md"
@@ -5454,7 +5434,7 @@ exit; fi
 #### :rutina-inicial-intro:
 ####
 ####
-if  [ "$first_option" == "intro" ]; then
+if  [ "$cmd_first_option" == "intro" ]; then
 ####
 ####
 echo "$text_md" "$text_md" "Readme"
@@ -5492,30 +5472,30 @@ exit; fi
 #### :rutina-inicial-ip-forward:
 ####
 ####
-if   [ "$first_option" == "ip-forward" ];  then
+if   [ "$cmd_first_option" == "ip-forward" ];  then
 ####
 ####
-if   [ "$second_option" == "$NULL" ]; then
-echo "$title_md [ $first_option ]"
+if   [ "$cmd_second_option" == "$NULL" ]; then
+echo "$title_md [ $cmd_first_option ]"
 echo "$title_md launch: fwiptables ip-forward [ list | on | off ]" ; exit ; fi
 ####
 ####
-if   [ "$second_option" == "list" ]; then
+if   [ "$cmd_second_option" == "list" ]; then
 echo "$title_md $text_info  [ Show ip forwading in kernel ] "
 echo "$title_md [ Actived 1 or deactived 0 ] [ ipforwading with sysctl ]"
-$command_sysctl -a | $command_grep -i  forwarding ; exit ; fi
+$cmd_command_sysctl -a | $cmd_command_grep -i  forwarding ; exit ; fi
 ####
 ####
-if   [ "$second_option" == "on" ]; then
+if   [ "$cmd_second_option" == "on" ]; then
 echo "$title_md $text_info  [ Activating.. ip forwading in kernel ]"
-for a in $($command_sysctl -a | $command_grep -i  forwarding | $command_cut -d " " -f 1)
-do $command_sysctl -w $a=1 ; done ; exit ; fi
+for a in $($cmd_command_sysctl -a | $cmd_command_grep -i  forwarding | $cmd_command_cut -d " " -f 1)
+do $cmd_command_sysctl -w $a=1 ; done ; exit ; fi
 ####
 ####
-if   [ "$second_option" == "off" ]; then
+if   [ "$cmd_second_option" == "off" ]; then
 echo "$header_ok $text_info  [ Deactivating.. ip forwading in kernel ]"
-for a in $($command_sysctl -a | $command_grep -i  forwarding | $command_cut -d " " -f 1)
-do $command_sysctl -w $a=0 ; done ; exit; fi
+for a in $($cmd_command_sysctl -a | $cmd_command_grep -i  forwarding | $cmd_command_cut -d " " -f 1)
+do $cmd_command_sysctl -w $a=0 ; done ; exit; fi
 ####
 ####
 echo "$title_md launch: fwiptables ip-forward [ list | on | off ]"
@@ -5530,7 +5510,7 @@ exit ; fi
 #### :rutina-inicial-download:
 ####
 ####
-if [ "$first_option" == "download" ] ; then
+if [ "$cmd_first_option" == "download" ] ; then
 ####
 ####
 echo "$title_md $text_info [ $cmd_internal download ] [ download md ] "
@@ -5538,13 +5518,13 @@ echo
 echo "$title_md the last version from fwiptables. Firewall With iptables"
 echo
 echo "$title_md [ Link ] [ Download web link from sourceforge.com ] "
-echo "$web_download_sourceforge"
+echo "$cmd_web_download_sourceforge"
 echo
 echo "$title_md [ Link ] [ Download web link from github.com ] "
-echo "$web_download_github"
+echo "$cmd_web_download_github"
 echo 
 echo "$title_md [ Link ] [ Download web link from git.devuan.org ] "
-echo "$web_download_devuan"
+echo "$cmd_web_download_devuan"
 echo 
 ####
 ####
@@ -5557,7 +5537,7 @@ exit; fi
 #### :rutina-inicial-uninstall:
 ####
 ####
-if [ "$first_option" == "uninstall" ] ; then
+if [ "$cmd_first_option" == "uninstall" ] ; then
 ####
 ####
 echo "$title_md $text_info [ uninstaller ] [ uninstall md ] "
@@ -5574,7 +5554,7 @@ exit; fi
 #### :rutina-inicial-install:
 ####
 ####
-if [ "$first_option" == "install" ]; then
+if [ "$cmd_first_option" == "install" ]; then
 ####
 ####
 #### message
@@ -5605,7 +5585,7 @@ echo "$text_md $text_fail Not update alias"
 #### templates-regen
 $cmd_notinstalled templates-regen &> /dev/null &&
 echo "$text_md $text_ok Updated templates $text_folder" &&
-echo "$text_md [$default_directory_template]" || 
+echo "$text_md [$cmd_default_directory_template]" || 
 echo "$text_md $text_fail Not update templates"
 ####
 ####
@@ -5630,22 +5610,22 @@ exit; fi
 #### :rutina-inicial-usernotes:
 ####
 ####
-if [ "$first_option" == "usernotes" ] ;  then
+if [ "$cmd_first_option" == "usernotes" ] ;  then
 ####
 ####
 #### add
-if [ "$second_option" == "add" ]
-then echo "$cmd_usernotes_date,$third_option," >> $file_default_usernotes
-echo "Content added: $third_option," ; exit; fi
+if [ "$cmd_second_option" == "add" ]
+then echo "$cmd_usernotes_date,$cmd_third_option," >> $file_default_usernotes
+echo "Content added: $cmd_third_option," ; exit; fi
 #### search
-if [ "$second_option" == "search" ] ; then echo "List searched" ; 
-$command_cat $file_default_usernotes | $command_grep -i $third_option ; exit; fi
+if [ "$cmd_second_option" == "search" ] ; then echo "List searched" ; 
+$cmd_command_cat $file_default_usernotes | $cmd_command_grep -i $cmd_third_option ; exit; fi
 #### list
-if [ "$second_option" == "list" ] ; then echo "List content:"; 
-$command_cat $file_default_usernotes; exit; fi
+if [ "$cmd_second_option" == "list" ] ; then echo "List content:"; 
+$cmd_command_cat $file_default_usernotes; exit; fi
 #### lines
-if [ "$second_option" == "lines" ] ; then echo "Lines numbers:"
-$command_cat $file_default_usernotes | $command_wc -l ; exit; fi
+if [ "$cmd_second_option" == "lines" ] ; then echo "Lines numbers:"
+$cmd_command_cat $file_default_usernotes | $cmd_command_wc -l ; exit; fi
 #### info
 echo " # Option: add|search|list|lines"
 echo " # $text_info Use without comma, and quote when spaces: to add, to search"
@@ -5661,17 +5641,17 @@ exit; fi
 #### :rutina-inicial-expert-gen-readme:
 ####
 ####
-if   [ "$first_option" == "expert-gen-readme" ];  then
+if   [ "$cmd_first_option" == "expert-gen-readme" ];  then
 ####
 ####
 #### text introduction
 echo "$title_md $text_info  [ generate actual file and readme from intro program ] "
 #### create file
-cp $0 $default_directory_readme/$cmd_name-$cmd_version-bash &&
-echo "$title_md $text_ok Created $default_directory_readme/$cmd_name-$cmd_version-bash"
+cp $0 $cmd_default_directory_readme/$cmd_name-$cmd_version-bash &&
+echo "$title_md $text_ok Created $cmd_default_directory_readme/$cmd_name-$cmd_version-bash"
 #### create readme
-$0 intro > $default_directory_readme/README.md &&
-echo "$title_md $text_ok Created $default_directory_readme/$cmd_name-$cmd_version-README.md"
+$0 intro > $cmd_default_directory_readme/README.md &&
+echo "$title_md $text_ok Created $cmd_default_directory_readme/$cmd_name-$cmd_version-README.md"
 ####
 ####
 exit; fi
@@ -5683,36 +5663,36 @@ exit; fi
 #### :rutina-inicial-expert-gen-deb:
 ####
 ####
-if   [ "$first_option" == "expert-gen-deb" ];  then
+if   [ "$cmd_first_option" == "expert-gen-deb" ];  then
 echo "$title_md $text_info  [ generate actual file debian ] "
 #### recreate the directories
-rm -R $default_directory_debian/deb/ &> /dev/null
-mkdir -p $default_directory_debian/deb/usr/bin &> /dev/null
-mkdir -p $default_directory_debian/deb/DEBIAN &> /dev/null
-cp $0 $default_directory_debian/deb/usr/bin/$cmd_name
+rm -R $cmd_default_directory_debian/deb/ &> /dev/null
+mkdir -p $cmd_default_directory_debian/deb/usr/bin &> /dev/null
+mkdir -p $cmd_default_directory_debian/deb/DEBIAN &> /dev/null
+cp $0 $cmd_default_directory_debian/deb/usr/bin/$cmd_name
 #### it are file modes
-chown root $default_directory_debian/* -R  &> /dev/null
-chmod 755 $default_directory_debian/* -R &> /dev/null
+chown root $cmd_default_directory_debian/* -R  &> /dev/null
+chmod 755 $cmd_default_directory_debian/* -R &> /dev/null
 #### create the control file
-echo "Package: fwiptables"      &>  $default_directory_debian/deb/DEBIAN/control
-echo "Priority: optional"       &>> $default_directory_debian/deb/DEBIAN/control
-echo "Section: misc"            &>> $default_directory_debian/deb/DEBIAN/control
-echo "Maintainer: f-iptables"   &>> $default_directory_debian/deb/DEBIAN/control
-echo "Architecture: all"        &>> $default_directory_debian/deb/DEBIAN/control
-echo "Version: $cmd_version"    &>> $default_directory_debian/deb/DEBIAN/control
-echo "Depends: "                &>> $default_directory_debian/deb/DEBIAN/control
-echo "Description: $cmd_longdescription" &>> $default_directory_debian/deb/DEBIAN/control
-#### echo " $cmd_longdescription ."  &>> $default_directory_debian/deb/DEBIAN/control
+echo "Package: fwiptables"      &>  $cmd_default_directory_debian/deb/DEBIAN/control
+echo "Priority: optional"       &>> $cmd_default_directory_debian/deb/DEBIAN/control
+echo "Section: misc"            &>> $cmd_default_directory_debian/deb/DEBIAN/control
+echo "Maintainer: f-iptables"   &>> $cmd_default_directory_debian/deb/DEBIAN/control
+echo "Architecture: all"        &>> $cmd_default_directory_debian/deb/DEBIAN/control
+echo "Version: $cmd_version"    &>> $cmd_default_directory_debian/deb/DEBIAN/control
+echo "Depends: "                &>> $cmd_default_directory_debian/deb/DEBIAN/control
+echo "Description: $cmd_longdescription" &>> $cmd_default_directory_debian/deb/DEBIAN/control
+#### echo " $cmd_longdescription ."  &>> $cmd_default_directory_debian/deb/DEBIAN/control
 #### architecture detect, only for shell script
 if [ "$cmd_format" != "Bourne-Again_shell_script," ]
 then echo "$title_md the $cmd_filename is not Bourne-Again_shell_script," ; exit ; fi
 #### it does the debian package noarch
-rm $default_directory_debian/$cmd_name-$cmd_version-noarch.deb &> /dev/null
-$command_dpkg -b $default_directory_debian/deb/ $default_directory_debian/$cmd_name-$cmd_version-noarch.deb && \
+rm $cmd_default_directory_debian/$cmd_name-$cmd_version-noarch.deb &> /dev/null
+$cmd_command_dpkg -b $cmd_default_directory_debian/deb/ $cmd_default_directory_debian/$cmd_name-$cmd_version-noarch.deb && \
 echo "$text_md $text_ok file write in \
-$default_directory_debian/$cmd_name-$cmd_version-noarch.deb"   
+$cmd_default_directory_debian/$cmd_name-$cmd_version-noarch.deb"   
 #### delete the directory temporal
-rm -R $default_directory_debian/deb/  &> /dev/null
+rm -R $cmd_default_directory_debian/deb/  &> /dev/null
 ####
 ####
 exit; fi
@@ -5724,17 +5704,17 @@ exit; fi
 #### :rutina-inicial-expert-show-geoip:
 ####
 ####
-if   [ "$first_option" == "expert-show-geoip" ]; then
+if   [ "$cmd_first_option" == "expert-show-geoip" ]; then
 ####
 ####
 echo "$title_md $text_info  [ resolve the location to one ip or host ] "
-echo ; case $command_geoiplookup in "$NULL")
+echo ; case $cmd_command_geoiplookup in "$NULL")
 echo "$text_md $text_fail [ Install geoiplookup command ]" ; exit  ;; esac
-case "$second_option" in "$NULL")
+case "$cmd_second_option" in "$NULL")
 echo "$title_md Selecting host geoip to fast.com for default"
-trazador="fast.com" ;; *) trazador="$second_option" ;; esac
+trazador="fast.com" ;; *) trazador="$cmd_second_option" ;; esac
 echo "$title_md $text_ok [ geoiplookup -i $trazador ]"
-$command_geoiplookup -i $trazador
+$cmd_command_geoiplookup -i $trazador
 echo 
 ####
 ####
@@ -5747,16 +5727,16 @@ exit; fi
 #### :rutina-inicial-nodes:
 ####
 ####
-if   [ "$first_option" == "nodes" ]; then
+if   [ "$cmd_first_option" == "nodes" ]; then
 ####
 ####
 echo "$title_md $text_info [ Show the list arp-scan in the lan ] "
-if [ "$command_arpscan" == "$NULL" ]; then
+if [ "$cmd_command_arpscan" == "$NULL" ]; then
 echo "$title_md $text_fail [ install arp-scan command ]" ; exit ; fi
 echo "$title_md $text_info [ local net: ip lan .. ]"
-$command_ip -4 route | $command_grep -i -v default
+$cmd_command_ip -4 route | $cmd_command_grep -i -v default
 echo "$title_md $text_info [ local scan: arp lan scan .. ]"
-$command_timeout -s SIGINT -v $time_server_waiting $command_arpscan -l -x
+$cmd_command_timeout -s SIGINT -v $cfg_server_time_waiting $cmd_command_arpscan -l -x
 ####
 ####
 exit; fi
@@ -5768,7 +5748,7 @@ exit; fi
 #### :rutina-inicial-donate:
 ####
 ####
-if   [ "$first_option" == "donate" ]; then
+if   [ "$cmd_first_option" == "donate" ]; then
 ####
 ####
 echo "$title_md $text_info [ donate to fwiptables project ] [ donate md ]"
@@ -5784,7 +5764,7 @@ exit; fi
 #### :rutina-inicial-about:
 ####
 ####
-if   [ "$first_option" == "about" ]; then
+if   [ "$cmd_first_option" == "about" ]; then
 ####
 ####
 echo "$text_md $text_md File:          fwiptables"
@@ -5803,20 +5783,20 @@ exit; fi
 #### :rutina-inicial-license-gpl-v3:
 ####
 #### 
-#### if [ "$first_option" == "license-gpl-v3" ];  then
+#### if [ "$cmd_first_option" == "license-gpl-v3" ];  then
 ####
 ####
 #### echo "$title_md $text_info \
 #### [ Show license from git sourceforge for $cmd_internal ] "
 ####
-#### if [ "$command_curl" == "$NULL" ]; then
+#### if [ "$cmd_command_curl" == "$NULL" ]; then
 #### echo "$title_md Install curl to download/install latest version"; fi
 ####
-#### echo "license text for $first_option downloading"
+#### echo "license text for $cmd_first_option downloading"
 #### echo
 #### echo ..................................................................
 #### echo
-#### $command_curl -s -L $content_license_gplv3 --stderr /dev/null
+#### $cmd_command_curl -s -L $cmd_web_license_gplv3 --stderr /dev/null
 ####
 ####
 #### exit;  fi
@@ -5828,20 +5808,20 @@ exit; fi
 #### :rutina-inicial-license-gpl-v2:
 ####
 ####
-if [ "$first_option" == "license-gpl-v2" ];  then
+if [ "$cmd_first_option" == "license-gpl-v2" ];  then
 ####
 ####
 echo "$title_md $text_info \
 [ Show license from git sourceforge for $cmd_internal ] "
 ####
-if [ "$command_curl" == "$NULL" ]; then
+if [ "$cmd_command_curl" == "$NULL" ]; then
 echo "$title_md Install curl to download/install latest version"; fi
 ####
-echo "license text for $first_option downloading"
+echo "license text for $cmd_first_option downloading"
 echo
 echo ..................................................................
 echo
-$command_curl -s -L $content_license_gplv2 --stderr /dev/null
+$cmd_command_curl -s -L $cmd_web_license_gplv2 --stderr /dev/null
 ####
 ####
 exit;  fi
@@ -5853,20 +5833,20 @@ exit;  fi
 #### :rutina-inicial-license-lgpl-v2:
 ####
 ####
-if [ "$first_option" == "license-lgpl-v2" ];  then
+if [ "$cmd_first_option" == "license-lgpl-v2" ];  then
 ####
 ####
 echo "$title_md $text_info \
 [ Show license from git sourceforge for $cmd_internal ] "
 ####
-if [ "$command_curl" == "$NULL" ]; then
+if [ "$cmd_command_curl" == "$NULL" ]; then
 echo "$title_md Install curl to download/install latest version"; fi
 ####
-echo "license text for $first_option downloading"
+echo "license text for $cmd_first_option downloading"
 echo
 echo ..................................................................
 echo
-$command_curl -s -L $content_license_lgplv2 --stderr /dev/null
+$cmd_command_curl -s -L $cmd_web_license_lgplv2 --stderr /dev/null
 ####
 ####
 exit;  fi
@@ -5878,18 +5858,18 @@ exit;  fi
 #### :rutina-inicial-license-bsd-v1:
 ####
 ####
-#### if [ "$first_option" == "license-bsd-v1" ]; then 
+#### if [ "$cmd_first_option" == "license-bsd-v1" ]; then 
 #### echo "$title_md $text_info \
 #### [ Show license from git sourceforge for $cmd_internal ] "
 ####
-#### if [ "$command_curl" == "$NULL" ]; then
+#### if [ "$cmd_command_curl" == "$NULL" ]; then
 #### echo "$title_md Install curl to download/install latest version"; fi
 ####
-#### echo "license text for $first_option downloading"
+#### echo "license text for $cmd_first_option downloading"
 #### echo
 #### echo ..................................................................
 #### echo
-#### $command_curl -L $content_license_bsd --stderr /dev/null
+#### $cmd_command_curl -L $content_license_bsd --stderr /dev/null
 #### exit;  fi
 ####
 ####
@@ -5899,22 +5879,22 @@ exit;  fi
 #### :rutina-inicial-expert-pc-halt:
 ####
 ####
-if   [ "$first_option" == "expert-pc-halt" ]; then
+if   [ "$cmd_first_option" == "expert-pc-halt" ]; then
 ####
 ####
 echo "$title_md $text_info [ power off computer ] [ control-c to cancel ]"
 echo "Halt to power off computer ... in 15 seconds"
-$command_sleep 5
+$cmd_command_sleep 5
 echo "Halt to power off computer ... in 10 seconds"
-$command_sleep 5
+$cmd_command_sleep 5
 echo "Halt to power off computer ... in 05 seconds"
-$command_sleep 5
+$cmd_command_sleep 5
 ####
 ####
-if [ $command_poweroff != "$NULL" ]; then $command_poweroff & exit ; fi
-if [ $command_init != "$NULL" ]; then $command_init 6 & exit ; fi
-if [ $command_systemctl != "$NULL" ]; then $command_systemctl poweroff -i & exit ; fi
-$command_halt & $command_init 0 & $command_systemctl halt -i
+if [ $cmd_command_poweroff != "$NULL" ]; then $cmd_command_poweroff & exit ; fi
+if [ $cmd_command_init != "$NULL" ]; then $cmd_command_init 6 & exit ; fi
+if [ $cmd_command_systemctl != "$NULL" ]; then $cmd_command_systemctl poweroff -i & exit ; fi
+$cmd_command_halt & $cmd_command_init 0 & $cmd_command_systemctl halt -i
 ####
 ####
 exit; fi
@@ -5926,21 +5906,21 @@ exit; fi
 #### :rutina-inicial-expert-pc-poweroff:
 ####
 ####
-if   [ "$first_option" == "expert-pc-poweroff" ]; then
+if   [ "$cmd_first_option" == "expert-pc-poweroff" ]; then
 ####
 ####
 echo "$title_md $text_info [ power off computer ] [ control-c to cancel ]"
 echo "Halt to power off computer ... in 15 seconds"
-$command_sleep 5
+$cmd_command_sleep 5
 echo "Halt to power off computer ... in 10 seconds"
-$command_sleep 5
+$cmd_command_sleep 5
 echo "Halt to power off computer ... in 05 seconds"
-$command_sleep 5
+$cmd_command_sleep 5
 ####
 ####
-if [ $command_poweroff != "$NULL" ]; then $command_poweroff & exit ; fi
-if [ $command_init != "$NULL" ]; then $command_init 6 & exit ; fi
-if [ $command_systemctl != "$NULL" ]; then $command_systemctl poweroff -i & exit ; fi
+if [ $cmd_command_poweroff != "$NULL" ]; then $cmd_command_poweroff & exit ; fi
+if [ $cmd_command_init != "$NULL" ]; then $cmd_command_init 6 & exit ; fi
+if [ $cmd_command_systemctl != "$NULL" ]; then $cmd_command_systemctl poweroff -i & exit ; fi
 ####
 ####
 exit; fi
@@ -5952,21 +5932,21 @@ exit; fi
 #### :rutina-inicial-expert-pc-shutdown:
 ####
 ####
-if   [ "$first_option" == "expert-pc-shutdown" ]; then
+if   [ "$cmd_first_option" == "expert-pc-shutdown" ]; then
 ####
 ####
 echo "$title_md $text_info [ power off computer ] [ control-c to cancel ]"
 echo "Halt to shutdown computer ... in 15 seconds"
-$command_sleep 5
+$cmd_command_sleep 5
 echo "Halt to shutdown computer ... in 10 seconds"
-$command_sleep 5
+$cmd_command_sleep 5
 echo "Halt to shutodwn computer ... in 05 seconds"
-$command_sleep 5
+$cmd_command_sleep 5
 ####
 ####
-if [ $command_shutdown != "$NULL" ]; then $command_shutdown -h now & exit ; fi
-if [ $command_init != "$NULL" ]; then $command_init 0 & exit ; fi
-if [ $command_systemctl != "$NULL" ]; then $command_systemctl poweroff -i & exit ; fi
+if [ $cmd_command_shutdown != "$NULL" ]; then $cmd_command_shutdown -h now & exit ; fi
+if [ $cmd_command_init != "$NULL" ]; then $cmd_command_init 0 & exit ; fi
+if [ $cmd_command_systemctl != "$NULL" ]; then $cmd_command_systemctl poweroff -i & exit ; fi
 ####
 ####
 exit; fi
@@ -5978,21 +5958,21 @@ exit; fi
 #### :rutina-inicial-expert-pc-reboot:
 ####
 ####
-if   [ "$first_option" == "expert-pc-reboot" ]; then
+if   [ "$cmd_first_option" == "expert-pc-reboot" ]; then
 ####
 ####
 echo "$title_md $text_info [ reboot computer ] [ control-c to cancel ]"
 echo "Halt to reboot computer ... in 15 seconds"
-$command_sleep 5
+$cmd_command_sleep 5
 echo "Halt to reboot computer ... in 10 seconds"
-$command_sleep 5
+$cmd_command_sleep 5
 echo "Halt to reboot computer ... in 05 seconds"
-$command_sleep 5
+$cmd_command_sleep 5
 ####
 ####
-if [ $command_reboot != "$NULL" ]; then $command_reboot &  exit ; fi
-if [ $command_init != "$NULL" ]; then $command_init 6 &  exit ; fi
-if [ $command_systemctl != "$NULL" ]; then $command_systemctl reboot -i &  exit ; fi
+if [ $cmd_command_reboot != "$NULL" ]; then $cmd_command_reboot &  exit ; fi
+if [ $cmd_command_init != "$NULL" ]; then $cmd_command_init 6 &  exit ; fi
+if [ $cmd_command_systemctl != "$NULL" ]; then $cmd_command_systemctl reboot -i &  exit ; fi
 ####
 ####
 exit; fi
@@ -6004,33 +5984,33 @@ exit; fi
 #### :rutina-inicial-expert-show-newversion:
 ####
 ####
-if   [ "$first_option" == "expert-show-newversion" ]; then
+if   [ "$cmd_first_option" == "expert-show-newversion" ]; then
 ####
 ####
-if [ "$command_curl" == "$NULL" ]; then
+if [ "$cmd_command_curl" == "$NULL" ]; then
 echo "$title_md Install curl to show stable latest version"; fi
 ####
 #### actually
 ####
 echo "$title_md Show the version for fwiptables actually installed:"
-$cmd_internal version | $command_grep -E -i "version"
+$cmd_internal version | $cmd_command_grep -E -i "version"
 ####
 #### latest stable
 ####
 echo "$title_md Show the version for fwiptables stable latest:"
-descarga="$directory_cache_basenecesary/$cmd_get_date-fwiptables-latest"
-$command_curl $web_download_sourceforge -s -L -o $descarga \
+descarga="$cmd_default_cache_basenecesary/$cmd_get_date-fwiptables-latest"
+$cmd_command_curl $cmd_web_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
-$command_grep -E -i "version"
+$cmd_command_grep -E -i "version"
 rm $descarga
 ####
 #### latest unstable
 ####
 echo "$title_md Show the version for fwiptables unstable latest:"
-descarga="$directory_cache_basenecesary/$cmd_get_date-fwiptables-stable"
-$command_curl $git_download_sourceforge -s -L -o $descarga \
+descarga="$cmd_default_cache_basenecesary/$cmd_get_date-fwiptables-stable"
+$cmd_command_curl $cmd_web_git_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
-$command_grep -E -i "version"
+$cmd_command_grep -E -i "version"
 rm $descarga
 ####
 ####
@@ -6043,17 +6023,17 @@ exit; fi
 #### :rutina-inicial-expert-upgrade-estable:
 ####
 ####
-if   [ "$first_option" == "expert-upgrade-estable" ] || [ "$first_option" == "upgrade" ];then
+if   [ "$cmd_first_option" == "expert-upgrade-estable" ] || [ "$cmd_first_option" == "upgrade" ];then
 ####
 ####
-if [ "$command_curl" == "$NULL" ]; then
+if [ "$cmd_command_curl" == "$NULL" ]; then
 echo "$title_md Install curl to download and to install stable latest version"; fi
 ####
 ####
 echo "$title_md Downloading fwiptables stable latest"
-descarga="$directory_cache_basenecesary/$cmd_get_date-fwiptables-latest"
+descarga="$cmd_default_cache_basenecesary/$cmd_get_date-fwiptables-latest"
 rm $descarga &> /dev/null
-$command_curl $web_download_sourceforge -s -L -o $descarga || echo "Without internet" \
+$cmd_command_curl $cmd_web_download_sourceforge -s -L -o $descarga || echo "Without internet" \
 && chmod ugo+x $descarga &> /dev/null && $descarga install
 exit; fi
 ####
@@ -6064,17 +6044,17 @@ exit; fi
 #### :rutina-inicial-expert-upgrade-unstable:
 ####
 ####
-if   [ "$first_option" == "expert-upgrade-unstable" ]; then
+if   [ "$cmd_first_option" == "expert-upgrade-unstable" ]; then
 ####
 ####
-if [ "$command_curl" == "$NULL" ]; then
+if [ "$cmd_command_curl" == "$NULL" ]; then
 echo "$title_md Install curl to download and to install unstable latest version"; fi
 ####
 ####
 echo "$title_md Downloading fwiptables development latest"
-descarga="$directory_cache_basenecesary/$cmd_get_date-fwiptables-unstable"
+descarga="$cmd_default_cache_basenecesary/$cmd_get_date-fwiptables-unstable"
 rm $descarga  &> /dev/null
-$command_curl $git_download_sourceforge -s -L -o $descarga || echo "Without internet" \
+$cmd_command_curl $cmd_web_git_sourceforge -s -L -o $descarga || echo "Without internet" \
 && chmod ugo+x $descarga &> /dev/null && $descarga install
 ####
 ####
@@ -6087,7 +6067,7 @@ exit; fi
 #### :rutina-inicial-compile:
 ####
 ####
-if   [ "$first_option" == "compile" ]; then
+if   [ "$cmd_first_option" == "compile" ]; then
 ####
 ####
 echo "$text_md $text_md BASH SCRIPT WORKS fully.    $text_md"
@@ -6106,21 +6086,21 @@ exit; fi
 #### :rutina-inicial-expert-gen-compile:
 ####
 ####
-if   [ "$first_option" == "expert-gen-compile" ]; then
+if   [ "$cmd_first_option" == "expert-gen-compile" ]; then
 ####
 ####
 echo "$title_md $text_info \
 [  optionally ] [ howto compile bash script with obash ] "
 echo "$title_md Compile $cmd_internal" ; echo
-if [ "$command_obash" == "$NULL" ]
+if [ "$cmd_command_obash" == "$NULL" ]
 then echo "$title_md install obash to compile"; exit ; fi
-if [ "$command_uuid" == "$NULL" ]
+if [ "$cmd_command_uuid" == "$NULL" ]
 then echo "$title_md install uuid to compile"; exit ; fi
 if [ "$cmd_format" != "Bourne-Again_shell_script," ]
 then echo "$title_md the $cmd_name is not Bourne-Again_shell_script," ; exit ; fi
-obash_file_update="$default_directory_obash/$cmd_name-$cmd_version"
+obash_file_update="$cmd_default_directory_obash/$cmd_name-$cmd_version"
 cp $0 $obash_file_update.bash
-$command_obash -r -c -o $obash_file_update.bin $obash_file_update.bash \
+$cmd_command_obash -r -c -o $obash_file_update.bin $obash_file_update.bash \
 && echo "$title_md $text_ok" || echo "$title_md $text_fail"
 echo ; echo "$title_md And now list:"
 file -L $obash_file_update.bash
@@ -6136,20 +6116,20 @@ exit; fi
 #### :rutina-inicial-expert-upgrade-adblock:
 ####
 ####
-if   [ "$first_option" == "expert-upgrade-adblock" ]; then
+if   [ "$cmd_first_option" == "expert-upgrade-adblock" ]; then
 ####
 ####
 echo "$title_md $text_info [ blacklist files / adblock files / hosts deny files ]"
 echo "$title_md $text_info [ Waiting a moment ]"
 echo "$title_md [ Step 1/4 ] [ downloading hosts fademind to $file_blacklist_fademind ]"
-$command_curl $web_blacklist_fademind -s -L -o $file_blacklist_fademind
+$cmd_command_curl $cmd_web_blacklist_fademind -s -L -o $file_blacklist_fademind
 echo "$title_md [ Step 2/4 ] [ downloading hosts mvps to $file_blacklist_mvps ]"
-$command_curl $web_blacklist_mvps -s -L -o $file_blacklist_mvps
+$cmd_command_curl $cmd_web_blacklist_mvps -s -L -o $file_blacklist_mvps
 echo "$title_md [ Step 3/4 ] [ downloading hosts adaway to $file_blacklist_adaway ]"
-$command_curl $web_blacklist_adaway -s -L -o $file_blacklist_adaway
+$cmd_command_curl $cmd_web_blacklist_adaway -s -L -o $file_blacklist_adaway
 echo "$title_md [ Step 4/4 ] [ downloading hosts stevenblack to $file_blacklist_stevenblack ]"
-$command_curl $web_blacklist_stevenblack -s -L -o $file_blacklist_stevenblack
-echo "$title_md $text_folder [ $default_directory_adblock ] "
+$cmd_command_curl $cmd_web_blacklist_stevenblack -s -L -o $file_blacklist_stevenblack
+echo "$title_md $text_folder [ $cmd_default_directory_adblock ] "
 ####
 ####
 exit; fi
@@ -6161,20 +6141,20 @@ exit; fi
 #### :rutina-inicial-info:
 ####
 ####
-if   [ "$first_option" == "info" ]; then
+if   [ "$cmd_first_option" == "info" ]; then
 ####
 ####
-echo "$title_md $text_info $text_md $text_info  [ info $second_option ] [ info md ]"
+echo "$title_md $text_info $text_md $text_info  [ info $cmd_second_option ] [ info md ]"
 echo "$title_md $text_info  Launch info search: $cmd_internal \
 [optional-output] info [pattern-to-search]"
 echo "$title_md $text_info Example info search: $cmd_internal \
 [optional-output] info ls"
 echo "$title_md $text_info    Show all options: $cmd_internal \
 [optional-output] info-options"
-if   [ "$second_option" == "$NULL" ]; then exit ; fi
-if   [ "$second_option" == "info-options" ]; then $cmd_internal info-options ; exit ; fi
-echo "$title_md $text_info  Waiting to info with: $second_option"
-$cmd_internal info-options | $command_grep -i "$second_option" | $command_grep -Ev "###" 
+if   [ "$cmd_second_option" == "$NULL" ]; then exit ; fi
+if   [ "$cmd_second_option" == "info-options" ]; then $cmd_internal info-options ; exit ; fi
+echo "$title_md $text_info  Waiting to info with: $cmd_second_option"
+$cmd_internal info-options | $cmd_command_grep -i "$cmd_second_option" | $cmd_command_grep -Ev "###" 
 ####
 ####
 exit ; fi
@@ -6186,14 +6166,14 @@ exit ; fi
 #### :rutina-inicial-expert-speed-glx:
 ####
 ####
-if   [ "$first_option" == "expert-speed-glx" ]; then
+if   [ "$cmd_first_option" == "expert-speed-glx" ]; then
 ####
 ####
 echo "$title_md $text_info  [ test gl mesa3D speed ] \
-[ for default max $time_server_waiting seconds ] "
-case $command_glxgears in "$NULL")
+[ for default max $cfg_server_time_waiting seconds ] "
+case $cmd_command_glxgears in "$NULL")
 echo "$text_md $text_fail [ Install mesa utils ]"; exit ;; esac
-vblank_mode=0 $command_timeout -s SIGINT -v $time_server_waiting $command_glxgears
+vblank_mode=0 $cmd_command_timeout -s SIGINT -v $cfg_server_time_waiting $cmd_command_glxgears
 echo 
 ####
 ####
@@ -6206,16 +6186,16 @@ exit; fi
 #### :rutina-inicial-expert-speed-disk:
 ####
 ####
-if   [ "$first_option" == "expert-speed-disk" ]; then
+if   [ "$cmd_first_option" == "expert-speed-disk" ]; then
 ####
 ####
 echo "$title_md $text_info  [ test disk speed benchamrk ] \
-[ for default max $time_server_waiting seconds ] [ 100Mb will be used to benchmark, while]"
-case $command_dd in "$NULL")
+[ for default max $cfg_server_time_waiting seconds ] [ 100Mb will be used to benchmark, while]"
+case $cmd_command_dd in "$NULL")
 echo "$text_md $text_fail [ Install dd ]"; exit ;; esac
-dd if=/dev/zero of=$default_directory_benchmarkdisk/speed.img \
+dd if=/dev/zero of=$cmd_default_directory_benchmarkdisk/speed.img \
 status=progress bs=10M count=10
-rm $default_directory_benchmarkdisk/speed.img &> /dev/null
+rm $cmd_default_directory_benchmarkdisk/speed.img &> /dev/null
 ####
 ####
 exit; fi
@@ -6227,18 +6207,18 @@ exit; fi
 #### :rutina-inicial-expert-speed-ram:
 ####
 ####
-if   [ "$first_option" == "expert-speed-ram" ]; then
+if   [ "$cmd_first_option" == "expert-speed-ram" ]; then
 ####
 ####
 echo "$title_md $text_info  [ test ram speed benchamrk ] \
-[ for default max $time_server_waiting seconds ] [ 100Mb will be used to benchmark, while]"
-case $command_dd in "$NULL")
+[ for default max $cfg_server_time_waiting seconds ] [ 100Mb will be used to benchmark, while]"
+case $cmd_command_dd in "$NULL")
 echo "$text_md $text_fail [ Install dd ]"; exit ;; esac
-mount -t tmpfs tmpfs $default_directory_benchmarkram
-dd if=/dev/zero of=$default_directory_benchmarkram/speed.img \
+mount -t tmpfs tmpfs $cmd_default_directory_benchmarkram
+dd if=/dev/zero of=$cmd_default_directory_benchmarkram/speed.img \
 status=progress bs=10M count=10
-rm $default_directory_benchmarkram/speed.img &> /dev/null
-umount $default_directory_benchmarkram
+rm $cmd_default_directory_benchmarkram/speed.img &> /dev/null
+umount $cmd_default_directory_benchmarkram
 ####
 ####
 exit; fi
@@ -6250,14 +6230,14 @@ exit; fi
 #### :rutina-inicial-expert-speed-cpu:
 ####
 ####
-if   [ "$first_option" == "expert-speed-cpu" ]; then
+if   [ "$cmd_first_option" == "expert-speed-cpu" ]; then
 ####
 ####
 echo "$header_ok $text_info  [ test cpu processor ] [ calcule pi with 2000 digits ]"
-case $command_bc in "$NULL") echo "$tab $text_fail [ Install bc command ]"; exit ;; esac
+case $cmd_command_bc in "$NULL") echo "$tab $text_fail [ Install bc command ]"; exit ;; esac
 echo "$duo_md $text_info [ Calculate pi with 2000 digits in only one cpu ]"
 echo "$duo_md $text_info [ For example with 2ghz/cpu is 5 seconds aprox. ] "
-time echo 'scale=2000; a(1)*4' | $command_bc -l | tail -0 
+time echo 'scale=2000; a(1)*4' | $cmd_command_bc -l | tail -0 
 ####
 ####
 exit; fi
@@ -6269,21 +6249,21 @@ exit; fi
 #### :rutina-inicial-date:
 ####
 ####
-if [ "$first_option" == "date" ]; then
+if [ "$cmd_first_option" == "date" ]; then
 ####
 ####
 echo "$title_md $text_info \
 [ update the computer time and date from internet ] "
-if [ "$favorite_date_command" == "$NULL" ]; then
+if [ "$cfg_favorite_date_command" == "$NULL" ]; then
 echo "$text_md $text_fail [ Install one ntp client ]" ; fi
-echo "$text_md Old date: $($command_date)"
+echo "$text_md Old date: $($cmd_command_date)"
 echo "$text_md [ Updating the time and the date .. ]"
 pool0="0.debian.pool.ntp.org"
 pool1="1.debian.pool.ntp.org"
 pool2="2.debian.pool.ntp.org"
 pool3="3.debian.pool.ntp.org"
-$favorite_date_command $pool0 && 
-echo "$text_md New date: $($command_date)" ||
+$cfg_favorite_date_command $pool0 && 
+echo "$text_md New date: $($cmd_command_date)" ||
 echo "$text_md $text_fail No connection to get date"
 ####
 ####
@@ -6296,7 +6276,7 @@ exit; fi
 #### :rutina-inicial-wizard:
 ####
 ####
-if [ "$first_option" == "wizard" ];  then
+if [ "$cmd_first_option" == "wizard" ];  then
 ####
 ####
 echo
@@ -6315,18 +6295,18 @@ exit; fi
 #### :rutina-inicial-wizard-tiny:
 ####
 ####
-if [ "$first_option" == "wizard-tiny" ]; then
+if [ "$cmd_first_option" == "wizard-tiny" ]; then
 ####
 ####
-archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-tiny" ; name_firewall="wizard-tiny"
+archivo="$cmd_first_option" ; allow_launchrules_firewall=yes ; type_firewall="wizard-tiny" ; name_firewall="wizard-tiny"
 $cmd_internal templates-regen
-cp "$default_tinycfg_eng" "$directory_cache_necesary/$cmd_filename-$archivo"
-$favorite_text_editor "$directory_cache_necesary/$cmd_filename-$archivo"
+cp "$default_tinycfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$archivo"
+$cfg_favorite_text_editor "$cmd_default_cache_necesary/$cmd_filename-$archivo"
 clear
-$favorite_realpath_textdialog --clear --title "Run this wizard" \
+$cfg_favorite_realpath_textdialog --clear --title "Run this wizard" \
 --yesno "Run this wizard" 0 0 && clear \
-&& cp "$directory_cache_necesary/$cmd_filename-$archivo" \
-"$default_directory_custom/$archivo" && $cmd_internal loadtiny-custom $archivo || clear
+&& cp "$cmd_default_cache_necesary/$cmd_filename-$archivo" \
+"$cmd_default_directory_custom/$archivo" && $cmd_internal loadtiny-custom $archivo || clear
 ####
 ####
 exit; fi
@@ -6338,18 +6318,18 @@ exit; fi
 #### :rutina-inicial-wizard-mini:
 ####
 ####
-if [ "$first_option" == "wizard-mini" ]; then
+if [ "$cmd_first_option" == "wizard-mini" ]; then
 ####
 ####
-archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
+archivo="$cmd_first_option" ; allow_launchrules_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
 $cmd_internal templates-regen
-cp "$default_minicfg_eng" "$directory_cache_necesary/$cmd_filename-$archivo"
-$favorite_text_editor "$directory_cache_necesary/$cmd_filename-$archivo"
+cp "$default_minicfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$archivo"
+$cfg_favorite_text_editor "$cmd_default_cache_necesary/$cmd_filename-$archivo"
 clear
-$favorite_realpath_textdialog --clear --title "Run this wizard" \
+$cfg_favorite_realpath_textdialog --clear --title "Run this wizard" \
 --yesno "Run this wizard" 0 0 && clear \
-&& cp "$directory_cache_necesary/$cmd_filename-$archivo" \
-"$default_directory_custom/$archivo" && $cmd_internal load-custom $archivo || clear
+&& cp "$cmd_default_cache_necesary/$cmd_filename-$archivo" \
+"$cmd_default_directory_custom/$archivo" && $cmd_internal load-custom $archivo || clear
 ####
 ####
 exit; fi
@@ -6361,17 +6341,17 @@ exit; fi
 #### :rutina-inicial-wizard-full:
 ####
 ####
-if [ "$first_option" == "wizard-full" ]; then
+if [ "$cmd_first_option" == "wizard-full" ]; then
 ####
 ####
-archivo="$first_option" ; launch_rules_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
+archivo="$cmd_first_option" ; allow_launchrules_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
 $cmd_internal templates-regen
-cp "$default_fullcfg_eng" "$directory_cache_necesary/$cmd_filename-$archivo"
-$favorite_text_editor "$directory_cache_necesary/$cmd_filename-$archivo"
+cp "$default_fullcfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$archivo"
+$cfg_favorite_text_editor "$cmd_default_cache_necesary/$cmd_filename-$archivo"
 clear
-$favorite_realpath_textdialog --clear --title "Run this wizard" --yesno \
+$cfg_favorite_realpath_textdialog --clear --title "Run this wizard" --yesno \
 "Run this wizard" 0 0 && clear && \
-cp "$directory_cache_necesary/$cmd_filename-$archivo" "$default_directory_custom/$archivo" \
+cp "$cmd_default_cache_necesary/$cmd_filename-$archivo" "$cmd_default_directory_custom/$archivo" \
 && $cmd_internal load-custom $archivo || clear 
 ####
 ####
@@ -6384,33 +6364,33 @@ exit; fi
 #### :rutina-inicial-load:
 ####
 ####
-if [ "$first_option" == "load" ]; then
+if [ "$cmd_first_option" == "load" ]; then
 ####
 ####
 if [ "second_option" == "$NULL" ]; then
 $cmd_internal names ; echo "$text_md $text_info \
 [ usage: $cmd_internal load fw-to-load ] \
 [ See: $cmd_internal names ]" ; exit ; fi
-echo "$title_md $text_info [ loading firewall control $second_option ]"
+echo "$title_md $text_info [ loading firewall control $cmd_second_option ]"
 ####
 ####
-if [ -f $default_directory_control/$second_option-nft-ipv4 ] && \
-[ -f $default_directory_control/$second_option-legacy-ipv4 ] ; then 
+if [ -f $cmd_default_directory_control/$cmd_second_option-nft-ipv4 ] && \
+[ -f $cmd_default_directory_control/$cmd_second_option-legacy-ipv4 ] ; then 
 $cmd_internal eraserules &> /dev/null
-if [ -f "$default_directory_control/$second_option-ebtables" ]; then
-$command_cat  $default_directory_control/$second_option-ebtables | \
-$command_ebtables-restore &> /dev/null; fi
-if [ -f "$default_directory_control/$second_option-arptables" ]; then
-cat $default_directory_control/$second_option-arptables | \
-$command_arptables-restore &> /dev/null; fi
+if [ -f "$cmd_default_directory_control/$cmd_second_option-ebtables" ]; then
+$cmd_command_cat  $cmd_default_directory_control/$cmd_second_option-ebtables | \
+$cmd_command_ebtables-restore &> /dev/null; fi
+if [ -f "$cmd_default_directory_control/$cmd_second_option-arptables" ]; then
+cat $cmd_default_directory_control/$cmd_second_option-arptables | \
+$cmd_command_arptables-restore &> /dev/null; fi
 ####
 #### 
-$command_cat  $default_directory_control/$second_option-nft-ipv4 |  $command_ip4tablesnft-restore       
-$command_cat  $default_directory_control/$second_option-legacy-ipv4 | $command_ip4tableslegacy-restore  
-$command_cat  $default_directory_control/$second_option-nft-ipv6 | $command_ip6tablesnft-restore       
-$command_cat  $default_directory_control/$second_option-legacy-ipv6 | $command_ip6tableslegacy-restore 
-#### echo "$title_md $text_ok [ firewall loaded ] [ name: $second_option ]"
-echo "$title_md $text_ok [ Launched: firewall ] [ Type: control ] [ Name: $second_option ]"
+$cmd_command_cat  $cmd_default_directory_control/$cmd_second_option-nft-ipv4 |  $cmd_command_ip4tablesnft-restore       
+$cmd_command_cat  $cmd_default_directory_control/$cmd_second_option-legacy-ipv4 | $cmd_command_ip4tableslegacy-restore  
+$cmd_command_cat  $cmd_default_directory_control/$cmd_second_option-nft-ipv6 | $cmd_command_ip6tablesnft-restore       
+$cmd_command_cat  $cmd_default_directory_control/$cmd_second_option-legacy-ipv6 | $cmd_command_ip6tableslegacy-restore 
+#### echo "$title_md $text_ok [ firewall loaded ] [ name: $cmd_second_option ]"
+echo "$title_md $text_ok [ Launched: firewall ] [ Type: control ] [ Name: $cmd_second_option ]"
 ####
 ####
 else
@@ -6429,30 +6409,30 @@ exit; fi
 #### :rutina-inicial-save:
 ####
 ####
-if [ "$first_option" == "save" ]; then
+if [ "$cmd_first_option" == "save" ]; then
 ####
 ####
-case "$second_option" in
+case "$cmd_second_option" in
 "$NULL") echo "$text_md $text_info [ Usage: $cmd_internal save fw-to-save ]"
 exit ;;
-*) archivofin="$second_option" ;; 
+*) archivofin="$cmd_second_option" ;; 
 esac
 ####
 ####
-if [ "$command_arptables" != "$NULL"  ]; then 
-$command_arptables-save &> $default_directory_control/$archivofin-arptables; fi
-if [ "$command_ebtables"  != "$NULL"  ]; then 
-$command_ebtables-save &> $default_directory_control/$archivofin-ebtables; fi
+if [ "$cmd_command_arptables" != "$NULL"  ]; then 
+$cmd_command_arptables-save &> $cmd_default_directory_control/$archivofin-arptables; fi
+if [ "$cmd_command_ebtables"  != "$NULL"  ]; then 
+$cmd_command_ebtables-save &> $cmd_default_directory_control/$archivofin-ebtables; fi
 ####
 ####
-if [ "$command_ip4tablesnft"    != "$NULL"  ]; then
-$command_ip4tablesnft-save      &> $default_directory_control/$archivofin-nft-ipv4 ; fi
-if [ "$command_ip6tablesnft"    != "$NULL"  ]; then
-$command_ip6tablesnft-save      &> $default_directory_control/$archivofin-nft-ipv6 ; fi
-if [ "$command_ip4tableslegacy" != "$NULL"  ]; then
-$command_ip4tableslegacy-save   &> $default_directory_control/$archivofin-legacy-ipv4 ; fi
-if [ "$command_ip6tableslegacy" != "$NULL"  ]; then
-$command_ip6tableslegacy-save   &> $default_directory_control/$archivofin-legacy-ipv6 ; fi
+if [ "$cmd_command_ip4tablesnft"    != "$NULL"  ]; then
+$cmd_command_ip4tablesnft-save      &> $cmd_default_directory_control/$archivofin-nft-ipv4 ; fi
+if [ "$cmd_command_ip6tablesnft"    != "$NULL"  ]; then
+$cmd_command_ip6tablesnft-save      &> $cmd_default_directory_control/$archivofin-nft-ipv6 ; fi
+if [ "$cmd_command_ip4tableslegacy" != "$NULL"  ]; then
+$cmd_command_ip4tableslegacy-save   &> $cmd_default_directory_control/$archivofin-legacy-ipv4 ; fi
+if [ "$cmd_command_ip6tableslegacy" != "$NULL"  ]; then
+$cmd_command_ip6tableslegacy-save   &> $cmd_default_directory_control/$archivofin-legacy-ipv6 ; fi
 ####
 ####
 echo "$title_md $text_ok [ firewall saved ] [ name: $archivofin ]"
@@ -6467,41 +6447,41 @@ exit; fi
 #### :rutina-inicial-show:
 ####
 ####
-if [ "$first_option" == "show" ]; then 
+if [ "$cmd_first_option" == "show" ]; then 
 ####
 ####
 echo "$title_md $text_info  [ show one firewall saved ] "
 echo 
-case "$second_option" in
+case "$cmd_second_option" in
 "$NULL") $cmd_internal names
 echo "$text_md $text_info [ Use: $cmd_internal show file-to-show ]" ; exit ;;
-*) archivofin=$($command_sed 's/\///g' <<< "$second_option") ;;
+*) archivofin=$($cmd_command_sed 's/\///g' <<< "$cmd_second_option") ;;
 esac
 ####
 ####
-if [ ! -f "$default_directory_control/$archivofin-nft-ipv4" ];
+if [ ! -f "$cmd_default_directory_control/$archivofin-nft-ipv4" ];
 then  $cmd_internal names ; exit ; fi
 ####
 ####
-$command_ls -l $default_directory_control/$archivofin-arptables
-$command_ls -l $default_directory_control/$archivofin-ebtables
-$command_ls -l $default_directory_control/$archivofin-nft-ipv4
-$command_ls -l $default_directory_control/$archivofin-nft-ipv6
-$command_ls -l $default_directory_control/$archivofin-legacy-ipv4
-$command_ls -l $default_directory_control/$archivofin-legacy-ipv6
+$cmd_command_ls -l $cmd_default_directory_control/$archivofin-arptables
+$cmd_command_ls -l $cmd_default_directory_control/$archivofin-ebtables
+$cmd_command_ls -l $cmd_default_directory_control/$archivofin-nft-ipv4
+$cmd_command_ls -l $cmd_default_directory_control/$archivofin-nft-ipv6
+$cmd_command_ls -l $cmd_default_directory_control/$archivofin-legacy-ipv4
+$cmd_command_ls -l $cmd_default_directory_control/$archivofin-legacy-ipv6
 echo "$title_md $text_ok [ FIREWALL LISTED ] [ $archivofin ]"
 echo "$title_md $archivofin-arptables"
-$command_cat  $default_directory_control/$archivofin-arptables
+$cmd_command_cat  $cmd_default_directory_control/$archivofin-arptables
 echo "$title_md $archivofin-ebtables"
-$command_cat  $default_directory_control/$archivofin-ebtables
+$cmd_command_cat  $cmd_default_directory_control/$archivofin-ebtables
 echo "$title_md $archivofin-nft-ipv4"
-$command_cat  $default_directory_control/$archivofin-nft-ipv4
+$cmd_command_cat  $cmd_default_directory_control/$archivofin-nft-ipv4
 echo "$title_md $archivofin-legacy-ipv4"
-$command_cat  $default_directory_control/$archivofin-legacy-ipv4
+$cmd_command_cat  $cmd_default_directory_control/$archivofin-legacy-ipv4
 echo "$title_md $archivofin-nft-ipv6"
-$command_cat  $default_directory_control/$archivofin-nft-ipv6
+$cmd_command_cat  $cmd_default_directory_control/$archivofin-nft-ipv6
 echo "$title_md archivofin-legacy-ipv6"
-$command_cat  $default_directory_control/$archivofin-legacy-ipv6
+$cmd_command_cat  $cmd_default_directory_control/$archivofin-legacy-ipv6
 echo "$title_md $text_ok [ firewall readed ] [ $archivofin ]"
 echo 
 ####
@@ -6515,29 +6495,29 @@ exit; fi
 #### :rutina-inicial-actual:
 ####
 ####
-if [ "$first_option" == "actual" ]; then
+if [ "$cmd_first_option" == "actual" ]; then
 ####
 ####
 echo "$title_md $text_info  [ show the last firewall saved ] "
 echo 
-$command_arptables-save          &> $default_directory_control/$cmd_filename-actual-arptables
-$command_ebtables-save           &> $default_directory_control/$cmd_filename-actual-ebtables   
-$command_ip4tablesnft-save       &> $default_directory_control/$cmd_filename-actual-nft-ipv4   
-$command_ip4tableslegacy-save    &> $default_directory_control/$cmd_filename-actual-legacy-ipv4
-$command_ip6tablesnft-save      &> $default_directory_control/$cmd_filename-actual-nft-ipv6   
-$command_ip6tableslegacy-save   &> $default_directory_control/$cmd_filename-actual-legacy-ipv6
+$cmd_command_arptables-save          &> $cmd_default_directory_control/$cmd_filename-actual-arptables
+$cmd_command_ebtables-save           &> $cmd_default_directory_control/$cmd_filename-actual-ebtables   
+$cmd_command_ip4tablesnft-save       &> $cmd_default_directory_control/$cmd_filename-actual-nft-ipv4   
+$cmd_command_ip4tableslegacy-save    &> $cmd_default_directory_control/$cmd_filename-actual-legacy-ipv4
+$cmd_command_ip6tablesnft-save      &> $cmd_default_directory_control/$cmd_filename-actual-nft-ipv6   
+$cmd_command_ip6tableslegacy-save   &> $cmd_default_directory_control/$cmd_filename-actual-legacy-ipv6
 echo "$title_md arptables $title_md"
-$command_cat  $default_directory_control/$cmd_filename-actual-arptables
+$cmd_command_cat  $cmd_default_directory_control/$cmd_filename-actual-arptables
 echo "$title_md ebtables $title_md"
-$command_cat  $default_directory_control/$cmd_filename-actual-ebtables
+$cmd_command_cat  $cmd_default_directory_control/$cmd_filename-actual-ebtables
 echo "$title_md nft with ipv4 $title_md"
-$command_cat  $default_directory_control/$cmd_filename-actual-nft-ipv4
+$cmd_command_cat  $cmd_default_directory_control/$cmd_filename-actual-nft-ipv4
 echo "$title_md legacy with ipv4 $title_md"
-$command_cat  $default_directory_control/$cmd_filename-actual-legacy-ipv4
+$cmd_command_cat  $cmd_default_directory_control/$cmd_filename-actual-legacy-ipv4
 echo "$title_md nft with ipv6 $title_md"
-$command_cat  $default_directory_control/$cmd_filename-actual-nft-ipv6
+$cmd_command_cat  $cmd_default_directory_control/$cmd_filename-actual-nft-ipv6
 echo "$title_md legacy with ipv6 $title_md"
-$command_cat  $default_directory_control/$cmd_filename-actual-legacy-ipv6
+$cmd_command_cat  $cmd_default_directory_control/$cmd_filename-actual-legacy-ipv6
 echo
 echo "  $text_ok [ readed firewall actual ]"
 ####
@@ -6551,7 +6531,7 @@ exit; fi
 #### :rutina-inicial-stop:
 ####
 ####
-if [ "$first_option" == "stop" ]; then
+if [ "$cmd_first_option" == "stop" ]; then
 ####
 ####
 echo "$title_md $text_info  [ Stop the firewall ] "
@@ -6560,12 +6540,12 @@ echo "$title_md $text_info  [ Stop the firewall ] "
 #### english: save actual fw #### spanish: guarda actual fw
 ####
 ####
-$command_arptables-save &> $default_directory_control/$cmd_filename-stoped-arptables
-$command_ebtables-save &> $default_directory_control/$cmd_filename-stoped-ebtables             
-$command_ip4tablesnft-save &> $default_directory_control/$cmd_filename-stoped-nft-ipv4         
-$command_ip4tableslegacy-save &> $default_directory_control/$cmd_filename-stoped-legacy-ipv4   
-$command_ip6tablesnft-save &> $default_directory_control/$cmd_filename-stoped-nft-ipv6        
-$command_ip6tableslegacy-save &> $default_directory_control/$cmd_filename-stoped-legacy-ipv6  
+$cmd_command_arptables-save &> $cmd_default_directory_control/$cmd_filename-stoped-arptables
+$cmd_command_ebtables-save &> $cmd_default_directory_control/$cmd_filename-stoped-ebtables             
+$cmd_command_ip4tablesnft-save &> $cmd_default_directory_control/$cmd_filename-stoped-nft-ipv4         
+$cmd_command_ip4tableslegacy-save &> $cmd_default_directory_control/$cmd_filename-stoped-legacy-ipv4   
+$cmd_command_ip6tablesnft-save &> $cmd_default_directory_control/$cmd_filename-stoped-nft-ipv6        
+$cmd_command_ip6tableslegacy-save &> $cmd_default_directory_control/$cmd_filename-stoped-legacy-ipv6  
 ####
 ####
 #### english: erase the rules #### spanish: borra las reglas
@@ -6585,7 +6565,7 @@ exit; fi
 #### :rutina-inicial-continue:
 ####
 ####
-if [ "$first_option" == "continue" ]; then
+if [ "$cmd_first_option" == "continue" ]; then
 ####
 ####
 echo "$title_md $text_info  [ Continue the stopped firewall ] "
@@ -6594,12 +6574,12 @@ echo "$title_md $text_info  [ Continue the stopped firewall ] "
 #### english: restore last fw #### spanish: restaura el ultimo fw
 ####
 ####
-$command_cat  $default_directory_control/$cmd_filename-stoped-arptables | $command_arptables-restore
-$command_cat  $default_directory_control/$cmd_filename-stoped-ebtables | $command_ebtables-restore
-$command_cat  $default_directory_control/$cmd_filename-stoped-nft-ipv4 | $command_ip4tablesnft-restore  
-$command_cat  $default_directory_control/$cmd_filename-stoped-legacy-ipv4 | $command_ip4tableslegacy-restore  
-$command_cat  $default_directory_control/$cmd_filename-stoped-nft-ipv6 | $command_ip6tablesnft-restore  
-$command_cat  $default_directory_control/$cmd_filename-stoped-legacy-ipv6 | $command_ip6tableslegacy-restore  
+$cmd_command_cat  $cmd_default_directory_control/$cmd_filename-stoped-arptables | $cmd_command_arptables-restore
+$cmd_command_cat  $cmd_default_directory_control/$cmd_filename-stoped-ebtables | $cmd_command_ebtables-restore
+$cmd_command_cat  $cmd_default_directory_control/$cmd_filename-stoped-nft-ipv4 | $cmd_command_ip4tablesnft-restore  
+$cmd_command_cat  $cmd_default_directory_control/$cmd_filename-stoped-legacy-ipv4 | $cmd_command_ip4tableslegacy-restore  
+$cmd_command_cat  $cmd_default_directory_control/$cmd_filename-stoped-nft-ipv6 | $cmd_command_ip6tablesnft-restore  
+$cmd_command_cat  $cmd_default_directory_control/$cmd_filename-stoped-legacy-ipv6 | $cmd_command_ip6tableslegacy-restore  
 echo "$title_md $text_info [ continue firewall  ]"
 echo "$title_md $text_ok [ firewall continued ]"
 exit; fi
@@ -6611,11 +6591,11 @@ exit; fi
 #### :rutina-inicial-config-eng:
 ####
 ####
-if [ "$first_option" == "config-eng" ]; then 
+if [ "$cmd_first_option" == "config-eng" ]; then 
 ####
 ####
 echo "$title_md $text_info [ show variables cfg from english configuration ] "
-$command_cat $default_fullcfg_eng
+$cmd_command_cat $default_fullcfg_eng
 ####
 ####
 exit; fi
@@ -6627,11 +6607,11 @@ exit; fi
 #### :rutina-inicial-config-spa:
 ####
 ####
-if [ "$first_option" == "config-spa" ]; then 
+if [ "$cmd_first_option" == "config-spa" ]; then 
 ####
 ####
 echo "$title_md $text_info [ show variables cfg from spanish configuration ] "
-$command_cat  $default_fullcfg_spa
+$cmd_command_cat  $default_fullcfg_spa
 ####
 ####
 exit; fi
@@ -6643,7 +6623,7 @@ exit; fi
 #### :rutina-inicial-add-wihtelist4
 ####
 ####
-if [ "$first_option" == "add-whitelist4" ] || [ "$first_option" == "expert-add-whitelist4" ]; then
+if [ "$cmd_first_option" == "add-whitelist4" ] || [ "$cmd_first_option" == "expert-add-whitelist4" ]; then
 ####
 ####
 if [ "$2" == "$NULL" ]; then echo "$title_md $text_fail type host ip4 or net ip4 to be in whitelist"; exit ; fi
@@ -6654,13 +6634,13 @@ for add in $host_ip ; do
 ####
 ####
 echo "$title_md [ Working ] ADD ipv4 rules whitelist: ACCEPT to $add"
-$command_ip4tablesnft    -t filter -I INPUT 2 -s $add   -m comment --comment "add-whitelist4"  \
+$cmd_command_ip4tablesnft    -t filter -I INPUT 2 -s $add   -m comment --comment "add-whitelist4"  \
 -j ACCEPT &> /dev/null && echo ok rule nft 1/4 with $add || echo without rule nft 1/4
-$command_ip4tablesnft    -t filter -I OUTPUT 2 -d $add  -m comment --comment "add-whitelist4"  \
+$cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -d $add  -m comment --comment "add-whitelist4"  \
 -j ACCEPT &> /dev/null && echo ok rule nft 2/4 with $add || echo without rule nft 2/4
-$command_ip4tableslegacy -t filter -I INPUT 2 -s $add   -m comment --comment "add-whitelist4"  \
+$cmd_command_ip4tableslegacy -t filter -I INPUT 2 -s $add   -m comment --comment "add-whitelist4"  \
 -j ACCEPT &> /dev/null && echo ok rule legacy 3/4 with $add || echo without rule legacy 3/4
-$command_ip4tableslegacy -t filter -I OUTPUT 2 -d $add  -m comment --comment "add-whitelist4"  \
+$cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -d $add  -m comment --comment "add-whitelist4"  \
 -j ACCEPT &> /dev/null && echo ok rule legacy 4/4 with $add || echo without rule legacy 4/4
 ####
 ####
@@ -6676,7 +6656,7 @@ exit; fi
 #### :rutina-inicial-add-wihtelist6
 ####
 ####
-if [ "$first_option" == "add-whitelist6" ] || [ "$first_option" == "expert-add-whitelist6" ]; then
+if [ "$cmd_first_option" == "add-whitelist6" ] || [ "$cmd_first_option" == "expert-add-whitelist6" ]; then
 ####
 ####
 if [ "$2" == "$NULL" ]; then echo "$title_md $text_fail type host ip6 or net ip6 to be in whitelist"; exit ; fi
@@ -6687,13 +6667,13 @@ for add in $host_ip;  do
 ####
 ####
 echo "$title_md [ Working ] ADD ipv6 rules whitelist: ACCEPT to $add"
-$command_ip6tablesnft    -t filter -I INPUT 2 -s $add   -m comment --comment "add-whitelist6"  \
+$cmd_command_ip6tablesnft    -t filter -I INPUT 2 -s $add   -m comment --comment "add-whitelist6"  \
 -j ACCEPT  &> /dev/null && echo ok rule nft 1/4 with $add    || echo without rule nft 1/4
-$command_ip6tablesnft    -t filter -I OUTPUT 2 -d $add  -m comment --comment "add-whitelist6"  \
+$cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -d $add  -m comment --comment "add-whitelist6"  \
 -j ACCEPT  &> /dev/null && echo ok rule nft 2/4 with $add    || echo without rule nft 2/4
-$command_ip6tableslegacy -t filter -I INPUT 2 -s $add   -m comment --comment "add-whitelist6"  \
+$cmd_command_ip6tableslegacy -t filter -I INPUT 2 -s $add   -m comment --comment "add-whitelist6"  \
 -j ACCEPT  &> /dev/null && echo ok rule legacy 3/4 with $add || echo without rule nft 3/4
-$command_ip6tableslegacy -t filter -I OUTPUT 2 -d $2  -m comment --comment "add-whitelist6"  \
+$cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -d $2  -m comment --comment "add-whitelist6"  \
 -j ACCEPT &> /dev/null && echo ok rule legacy 4/4 with $add  || echo without rule nft 4/4
 ####
 ####
@@ -6709,7 +6689,7 @@ exit; fi
 #### :rutina-inicial-add-blacklist4
 ####
 ####
-if [ "$first_option" == "add-blacklist4" ] || [ "$first_option" == "expert-add-blacklist4" ]; then
+if [ "$cmd_first_option" == "add-blacklist4" ] || [ "$cmd_first_option" == "expert-add-blacklist4" ]; then
 ####
 ####
 if [ "$2" == "$NULL" ]; then
@@ -6721,13 +6701,13 @@ for add in $host_ip ; do
 ####
 ####
 echo "$title_md [ Working ] ADD ipv4 rules blacklist: DROP to $add"
-$command_ip4tablesnft    -t filter -I INPUT 2 -s $add  -m comment --comment "add-blacklist4" \
+$cmd_command_ip4tablesnft    -t filter -I INPUT 2 -s $add  -m comment --comment "add-blacklist4" \
 -j DROP  &> /dev/null && echo ok rule nft 1/4 with $add    || echo without rule nft 1/4
-$command_ip4tablesnft    -t filter -I OUTPUT 2 -d $add -m comment --comment "add-blacklist4" \
+$cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -d $add -m comment --comment "add-blacklist4" \
 -j DROP  &> /dev/null && echo ok rule nft 2/4 with $add    || echo without rule nft 2/4
-$command_ip4tableslegacy -t filter -I INPUT 2 -s $add  -m comment --comment "add-blacklist4"  \
+$cmd_command_ip4tableslegacy -t filter -I INPUT 2 -s $add  -m comment --comment "add-blacklist4"  \
 -j DROP  &> /dev/null && echo ok rule legacy 3/4 with $add || echo without rule legacy 3/4
-$command_ip4tableslegacy -t filter -I OUTPUT 2 -d $add -m comment --comment "add-blacklist4" \
+$cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -d $add -m comment --comment "add-blacklist4" \
 -j DROP &> /dev/null  && echo ok rule legacy 4/4 with $add || echo without rule legacy 4/4
 ####
 ####
@@ -6743,7 +6723,7 @@ exit; fi
 #### :rutina-inicial-add-blacklist6
 ####
 ####
-if [ "$first_option" == "add-blacklist6" ] || [ "$first_option" == "expert-add-blacklist6" ]; then
+if [ "$cmd_first_option" == "add-blacklist6" ] || [ "$cmd_first_option" == "expert-add-blacklist6" ]; then
 ####
 ####
 if [ "$2" == "$NULL" ]; then 
@@ -6755,13 +6735,13 @@ for add in $host_ip ; do
 ####
 ####
 echo "$title_md [ Working ] ADD ipv6 rules blacklist: DROP to $add"
-$command_ip6tablesnft    -t filter -I INPUT 2 -s $add  -m comment --comment "add-blacklist6" \
+$cmd_command_ip6tablesnft    -t filter -I INPUT 2 -s $add  -m comment --comment "add-blacklist6" \
 -j DROP  &> /dev/null && echo ok rule nft 1/4 with $add   || echo without rule nft 1/4
-$command_ip6tablesnft    -t filter -I OUTPUT 2 -d $add -m comment --comment "add-blacklist6" \
+$cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -d $add -m comment --comment "add-blacklist6" \
 -j DROP  &> /dev/null && echo ok rule nft 2/4 with $add   || echo without rule nft 2/4
-$command_ip6tableslegacy -t filter -I INPUT 2 -s $add  -m comment --comment "add-blacklist6" \
+$cmd_command_ip6tableslegacy -t filter -I INPUT 2 -s $add  -m comment --comment "add-blacklist6" \
 -j DROP &> /dev/null && echo ok rule legacy 3/4 with $add || echo without rule legacy 3/4
-$command_ip6tableslegacy -t filter -I OUTPUT 2 -d $add -m comment --comment "add-blacklist6" \
+$cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -d $add -m comment --comment "add-blacklist6" \
 -j DROP &> /dev/null && echo ok rule legacy 4/4 with $add || echo without rule legacy 4/4
 ####
 ####
@@ -6777,22 +6757,22 @@ exit; fi
 #### :rutina-inicial-speed-ip4:
 ####
 ####
-if [ "$first_option" == "speed-ip4" ] || [ "$first_option" == "expert-speed-ip4" ]; then
+if [ "$cmd_first_option" == "speed-ip4" ] || [ "$cmd_first_option" == "expert-speed-ip4" ]; then
 ####
 ####
 echo "$title_md $text_info  [ test speed ipv4 with iperf ] "
 echo "$title_md $cmd_internal use or iperf or iperf3"
-if [ "$favorite_iperf_command" == "$NULL" ];
+if [ "$cfg_favorite_iperf_command" == "$NULL" ];
 then echo "$title_md $text_fail install iperf";
 else echo "$title_md $text_ok [ choosed iperf ]"; fi
 echo "$title_md"
 # echo "$title_md [ Working ] Saving firewall before speed-ip4"
 $cmd_internal save before-speed-ip4
-$cmd_internal add-whitelist4 $serverip_iperf_ipv4
+$cmd_internal add-whitelist4 $cfg_server_ip_iperf_ipv4
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
-echo "$title_md [ Working ] Conecting in ipv4 to $serverip_iperf_ipv4 ]"
-$favorite_iperf_command -4 -t 4 -c $serverip_iperf_ipv4 -p $serverport_iperf_ipv4
+echo "$title_md [ Working ] Conecting in ipv4 to $cfg_server_ip_iperf_ipv4 ]"
+$cfg_favorite_iperf_command -4 -t 4 -c $cfg_server_ip_iperf_ipv4 -p $cfg_server_port_iperf_ipv4
 echo "$title_md"
 echo "$title_md [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip4 
@@ -6808,20 +6788,20 @@ exit; fi
 #### :rutina-inicial-speed-ip6:
 ####
 ####
-if [ "$first_option" == "speed-ip6" ] || [ "$first_option" == "expert-speed-ip6" ]; then
+if [ "$cmd_first_option" == "speed-ip6" ] || [ "$cmd_first_option" == "expert-speed-ip6" ]; then
 ####
 ####
 echo "$title_md $text_info  [ test speed ipv6 with iperf ] "
 echo "$title_md $cmd_internal use or iperf or iperf3"
-if [ "$favorite_iperf_command" == "$NULL" ];
+if [ "$cfg_favorite_iperf_command" == "$NULL" ];
 then echo "$title_md $text_fail install iperf";
 else echo "$title_md $text_ok [ choosed iperf ]"; fi
 $cmd_internal save before-speed-ip6 
-$cmd_internal add-whitelist6 $serverip_iperf_ipv6
+$cmd_internal add-whitelist6 $cfg_server_ip_iperf_ipv6
 echo "$title_md"
 echo "$title_md [ Calculing speed .. ]"
-echo "$title_md [ Working ] Conecting in ipv6 to $serverip_iperf_ipv4 ]"
-$favorite_iperf_command -6 -t 4 -P 1 -c $serverip_iperf_ipv6 -p $serverport_iperf_ipv6 
+echo "$title_md [ Working ] Conecting in ipv6 to $cfg_server_ip_iperf_ipv4 ]"
+$cfg_favorite_iperf_command -6 -t 4 -P 1 -c $cfg_server_ip_iperf_ipv6 -p $cfg_server_port_iperf_ipv6 
 echo "$title_md"
 echo "$title_md [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip6 
@@ -6837,16 +6817,16 @@ exit; fi
 #### :rutina-inicial-sockets:
 ####
 ####
-if   [ "$first_option" == "sockets" ]; then
+if   [ "$cmd_first_option" == "sockets" ]; then
 ####
 ####
 echo "$title_md $text_info [ Show whith ss: LISTEN sockets ] "
-if [ "$command_ss" == "$NULL" ]; then 
+if [ "$cmd_command_ss" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Install ss command ]"; exit; fi
-if [ "$command_awk" == "$NULL" ]; then 
+if [ "$cmd_command_awk" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Install awk command ]"; exit; fi
-$command_ss -l -460  | $command_grep "\:\*" | \
-$command_awk '{print "     " $1 " " $2 " " $5}' ;
+$cmd_command_ss -l -460  | $cmd_command_grep "\:\*" | \
+$cmd_command_awk '{print "     " $1 " " $2 " " $5}' ;
 ####
 ####
 exit; fi
@@ -6858,13 +6838,13 @@ exit; fi
 #### :rutina-inicial-web:
 ####
 ####
-if   [ "$first_option" == "web" ]; then
+if   [ "$cmd_first_option" == "web" ]; then
 ####
 ####
 echo "$title_md $text_info [ Show one web with command text browser ]"
 ####
 ####
-if [ "$favorite_text_browser" == "$NULL" ]; then 
+if [ "$cfg_favorite_text_browser" == "$NULL" ]; then 
 echo "### install: or lynx, or links, or links2, or w3m"; exit ; fi
 ####
 ####
@@ -6874,12 +6854,12 @@ echo "### type a one link web"; exit ; fi
 ####
 url_browse_web="$2"
 echo "###"
-echo "### With the  browser: $favorite_text_browser"
+echo "### With the  browser: $cfg_favorite_text_browser"
 echo "### With the link web: $2"
 echo "###"
 ####
 ####
-$favorite_text_browser -dump $url_browse_web
+$cfg_favorite_text_browser -dump $url_browse_web
 ####
 ####
 exit; fi
@@ -6891,7 +6871,7 @@ exit; fi
 #### :rutina-inicial-expert-project-web:
 ####
 ####
-if   [ "$first_option" == "expert-project-web" ]; then
+if   [ "$cmd_first_option" == "expert-project-web" ]; then
 ####
 ####
 echo "$title_md $text_info [ version - date - size - downloaded last week ]"
@@ -6910,26 +6890,26 @@ exit; fi
 #### :rutina-inicial-expert-browser-web:
 ####
 ####
-if   [ "$first_option" == "expert-browser-web" ]; then
+if   [ "$cmd_first_option" == "expert-browser-web" ]; then
 ####
 ####
 echo "$title_md $text_info [ Show one web with command text browser ]"
 ####
 ####
-if [ "$favorite_text_browser" == "$NULL" ]; then 
+if [ "$cfg_favorite_text_browser" == "$NULL" ]; then 
 echo "#### install: or lynx, or links, or links2, or w3m"; fi
 ####
 ####
-if [ "$second_option" == "$NULL" ]; then 
+if [ "$cmd_second_option" == "$NULL" ]; then 
 echo "#### specify web choosed to browse the web, example kernel.org"; exit ; fi
 ####
 ####
 url_browse_web="$2"
-echo "#### browser: $favorite_text_browser"
+echo "#### browser: $cfg_favorite_text_browser"
 echo "####    link: $2"
 ####
 ####
-$favorite_text_browser -dump $url_browse_web
+$cfg_favorite_text_browser -dump $url_browse_web
 ####
 ####
 exit; fi
@@ -6941,20 +6921,20 @@ exit; fi
 #### :rutina-inicial-expert-sockets-ss:
 ####
 ####
-if   [ "$first_option" == "expert-sockets-ss" ]; then
+if   [ "$cmd_first_option" == "expert-sockets-ss" ]; then
 ####
 ####
 echo "$title_md $text_info [ Show whith ss: sockets ] "
-if [ "$command_ss" == "$NULL" ]; then 
+if [ "$cmd_command_ss" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Install ss command ]"; exit; fi
-#### if [ "$command_awk" == "$NULL" ]; then 
+#### if [ "$cmd_command_awk" == "$NULL" ]; then 
 #### echo "$title_md $text_fail [ Install awk command ]"; exit; fi
 echo "$title_md sockets ipv4"
-$command_ss -4
-$command_ss -l4
+$cmd_command_ss -4
+$cmd_command_ss -l4
 echo "$title_md sockets ipv6"
-$command_ss -6
-$command_ss -l6
+$cmd_command_ss -6
+$cmd_command_ss -l6
 ####
 ####
 exit; fi
@@ -6966,13 +6946,13 @@ exit; fi
 #### :rutina-inicial-expert-sockets-lsof:
 ####
 ####
-if   [ "$first_option" == "expert-sockets-lsof" ]; then
+if   [ "$cmd_first_option" == "expert-sockets-lsof" ]; then
 ####
 ####
 echo "$title_md $text_info [ Show whith lsof: sockets ] "
-if [ "$command_lsof" == "$NULL" ]; then 
+if [ "$cmd_command_lsof" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Install lsof command ]"; exit; fi
-$command_lsof -i
+$cmd_command_lsof -i
 ####
 ####
 exit; fi
@@ -6984,15 +6964,15 @@ exit; fi
 #### :rutina-inicial-expert-sockets-netstat:
 ####
 ####
-if   [ "$first_option" == "expert-sockets-netstat" ]; then
+if   [ "$cmd_first_option" == "expert-sockets-netstat" ]; then
 ####
 ####
 echo "$title_md $text_info [ Show whith lsof: sockets ] "
-if [ "$command_lsof" == "$NULL" ]; then 
+if [ "$cmd_command_lsof" == "$NULL" ]; then 
 echo "$title_md $text_fail [ Install lsof command ]"; exit; fi
-#### if [ "$command_awk" == "$NULL" ]; then 
+#### if [ "$cmd_command_awk" == "$NULL" ]; then 
 #### echo "$title_md $text_fail [ Install awk command ]"; exit; fi
-$command_netstat -l46
+$cmd_command_netstat -l46
 ####
 ####
 exit; fi
@@ -7004,21 +6984,21 @@ exit; fi
 #### :rutina-inicial-expert-show-webcert:
 ####
 ####
-if   [ "$first_option" == "expert-show-webcert" ] ; then
+if   [ "$cmd_first_option" == "expert-show-webcert" ] ; then
 ####
 ####
 echo "$title_md $text_info \
 [ get one web certifcate from one server with port 443]"
-case "$command_openssl"  in  $NULL)
+case "$cmd_command_openssl"  in  $NULL)
 echo "$text_md $text_fail [ install openssl ]"; exit ;; esac
 ####
 ####
-if [ "$second_option" == "$NULL" ]; then
+if [ "$cmd_second_option" == "$NULL" ]; then
 echo "[ get one web certifcate ] \
 [ Example: $cmd_internal webcert www.fast.com ]"; exit; fi
 echo
-$command_timeout -s SIGINT -v $time_server_waiting \
-$command_openssl s_client -connect $second_option:443
+$cmd_command_timeout -s SIGINT -v $cfg_server_time_waiting \
+$cmd_command_openssl s_client -connect $cmd_second_option:443
 ####
 ####
 exit; fi
@@ -7030,19 +7010,19 @@ exit; fi
 #### :rutina-inicial-expert-nmap-tcp:
 ####
 ####
-if   [ "$first_option" == "expert-nmap-tcp" ]; then
+if   [ "$cmd_first_option" == "expert-nmap-tcp" ]; then
 ####
 ####
 echo "$title_md $text_info  [ scan with nmap tcp ]"
-if [ "$command_nmap" == "$NULL" ];  then
+if [ "$cmd_command_nmap" == "$NULL" ];  then
 echo "$title_md Please install nmap to work"; exit; fi
-echo "$title_md $text_info [ Use: $cmd_internal $first_option ip/net ]"
+echo "$title_md $text_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Use: $cmd_internal $first_option ip/net ]"; exit ; fi
+echo "$title_md $text_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
 $cmd_internal save before-nmap-tcp 
 $cmd_internal add-whitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
-$command_nmap -sT $2
+$cmd_command_nmap -sT $2
 $cmd_internal load before-nmap-tcp 
 ####
 ####
@@ -7055,19 +7035,19 @@ exit; fi
 #### :rutina-inicial-expert-nmap-syn:
 ####
 ####
-if   [ "$first_option" == "expert-nmap-syn" ]; then
+if   [ "$cmd_first_option" == "expert-nmap-syn" ]; then
 ####
 ####
 echo "$title_md $text_info  [ scan with nmap syn ]"
-if [ "$command_nmap" == "$NULL" ];  then
+if [ "$cmd_command_nmap" == "$NULL" ];  then
 echo "$title_md Please install nmap to work"; exit; fi
-echo "$title_md $text_info [ Use: $cmd_internal $first_option ip/net ]"
+echo "$title_md $text_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Use: $cmd_internal $first_option ip/net ]"; exit ; fi
+echo "$title_md $text_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
 $cmd_internal save before-nmap-syn
 $cmd_internal add-whitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
-$command_nmap -sF $2
+$cmd_command_nmap -sF $2
 $cmd_internal load before-nmap-syn
 echo 
 ####
@@ -7081,19 +7061,19 @@ exit; fi
 #### :rutina-inicial-expert-nmap-fin:
 ####
 ####
-if   [ "$first_option" == "expert-nmap-fin" ] ; then
+if   [ "$cmd_first_option" == "expert-nmap-fin" ] ; then
 ####
 ####
 echo "$title_md $text_info  [ scan with nmap fin ]"
-if [ "$command_nmap" == "$NULL" ];  then
+if [ "$cmd_command_nmap" == "$NULL" ];  then
 echo "$title_md Please install nmap to work"; exit; fi
-echo "$title_md $text_info [ Use: $cmd_internal $first_option ip/net ]"
+echo "$title_md $text_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Use: $cmd_internal $first_option ip/net ]"; exit ; fi
+echo "$title_md $text_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
 $cmd_internal save before-nmap-fin 
 $cmd_internal add-whitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
-$command_nmap -sT $2
+$cmd_command_nmap -sT $2
 $cmd_internal load before-nmap-fin
 echo 
 ####
@@ -7107,19 +7087,19 @@ exit; fi
 #### :rutina-inicial-expert-nmap-udp:
 ####
 ####
-if   [ "$first_option" == "expert-nmap-udp" ]; then
+if   [ "$cmd_first_option" == "expert-nmap-udp" ]; then
 ####
 ####
 echo "$title_md $text_info  [ scan with nmap udp ]"
-if [ "$command_nmap" == "$NULL" ];  then
+if [ "$cmd_command_nmap" == "$NULL" ];  then
 echo "$title_md Please install nmap to work"; exit; fi
-echo "$title_md $text_info [ Use: $cmd_internal $first_option ip/net ]"
+echo "$title_md $text_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Use: $cmd_internal $first_option ip/net ]"; exit ; fi
+echo "$title_md $text_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
 $cmd_internal save before-nmap-udp
 $cmd_internal add-whitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
-$command_nmap -sU $2
+$cmd_command_nmap -sU $2
 $cmd_internal load before-nmap-udp
 echo 
 ####
@@ -7133,19 +7113,19 @@ exit; fi
 #### :rutina-inicial-expert-nmap-ping:
 ####
 ####
-if   [ "$first_option" == "expert-nmap-ping" ] ; then
+if   [ "$cmd_first_option" == "expert-nmap-ping" ] ; then
 ####
 ####
 echo "$title_md $text_info  [ scan with nmap ping ]"
-if [ "$command_nmap" == "$NULL" ];  then
+if [ "$cmd_command_nmap" == "$NULL" ];  then
 echo "$title_md Please install nmap to work"; exit; fi
-echo "$title_md $text_info [ Use: $cmd_internal $first_option ip/net ]"
+echo "$title_md $text_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
-echo "$title_md $text_fail [ Use: $cmd_internal $first_option ip/net ]"; exit ; fi
+echo "$title_md $text_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
 $cmd_internal save before-nmap-ping
 $cmd_internal add-whitelist4 $2
 echo "$title_md [ Working ] [ Doing nmap to $2 ]"
-$command_nmap -sn $2
+$cmd_command_nmap -sn $2
 $cmd_internal load before-nmap-ping
 ####
 ####
@@ -7161,179 +7141,179 @@ exit; fi
 #### spanish: con tercera opcion
 ####
 ####
-if [ "$first_option" == "gui" ] && [ "$third_option" != "$NULL" ]
+if [ "$cmd_first_option" == "gui" ] && [ "$cmd_third_option" != "$NULL" ]
 ####
 ####
 then echo $head_waiting_gui
 ####
 ####
-case $second_option in
+case $cmd_second_option in
 #### 
 #### 
 "new-tiny-custom")
-cp "$default_tinycfg_eng" "$directory_cache_necesary/$cmd_filename-$third_option"
-$favorite_realpath_graphicalldialog --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_cache_necesary/$cmd_filename-$third_option" \
---editable --title=NEW-TINY-CONFIG 1> "$default_directory_custom/$third_option" ;
-if [ -s "$default_directory_custom/$third_option" ]; then
-$favorite_realpath_graphicalldialog --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=OK-new-config-file-$third_option\
-ANDlaunch:$cmd_internal-load-custom-$third_option ; exit
-else rm "$default_directory_custom/$third_option" ; 
-$favorite_realpath_graphicalldialog --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=Canceled-new-file-$third_option ; exit; fi
+cp "$default_tinycfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+$cfg_favorite_realpath_graphicalldialog --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--filename="$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option" \
+--editable --title=NEW-TINY-CONFIG 1> "$cmd_default_directory_custom/$cmd_third_option" ;
+if [ -s "$cmd_default_directory_custom/$cmd_third_option" ]; then
+$cfg_favorite_realpath_graphicalldialog --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=OK-new-config-file-$cmd_third_option\
+ANDlaunch:$cmd_internal-load-custom-$cmd_third_option ; exit
+else rm "$cmd_default_directory_custom/$cmd_third_option" ; 
+$cfg_favorite_realpath_graphicalldialog --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=Canceled-new-file-$cmd_third_option ; exit; fi
 ;;
 #### 
 #### 
 "nueva-diminuta-custom")
-cp "$default_tinycfg_spa" "$directory_cache_necesary/$cmd_filename-$third_option"
-$favorite_realpath_graphicalldialog  --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_cache_necesary/$cmd_filename-$third_option" \
---editable --title=NUEVA-DIMINUTA-CONFIG 1> "$default_directory_custom/$third_option" ;
-if [ -s "$default_directory_custom/$third_option" ]; then
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=OK-new-config-file-$third_option-\
-AND-launch:$cmd_internal-loadtiny-custom-$third_option ; exit
-else rm $default_directory_custom/$third_option ; 
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=Canceled-new-file-$third_option ; exit; fi
+cp "$default_tinycfg_spa" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+$cfg_favorite_realpath_graphicalldialog  --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--filename="$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option" \
+--editable --title=NUEVA-DIMINUTA-CONFIG 1> "$cmd_default_directory_custom/$cmd_third_option" ;
+if [ -s "$cmd_default_directory_custom/$cmd_third_option" ]; then
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=OK-new-config-file-$cmd_third_option-\
+AND-launch:$cmd_internal-loadtiny-custom-$cmd_third_option ; exit
+else rm $cmd_default_directory_custom/$cmd_third_option ; 
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=Canceled-new-file-$cmd_third_option ; exit; fi
 ;;
 #### 
 ####
 "new-mini-custom")
-cp "$default_minicfg_eng" "$directory_cache_necesary/$cmd_filename-$third_option"
-$favorite_realpath_graphicalldialog --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_cache_necesary/$cmd_filename-$third_option" \
---editable --title=NEW-MINI-CONFIG 1> "$default_directory_custom/$third_option" ;
-if [ -s "$default_directory_custom/$third_option" ]; then
-$favorite_realpath_graphicalldialog --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=OK-new-config-file-$third_option\
-ANDlaunch:$cmd_internal-load-custom-$third_option ; exit
-else rm "$default_directory_custom/$third_option" ; 
-$favorite_realpath_graphicalldialog --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=Canceled-new-file-$third_option ; exit; fi
+cp "$default_minicfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+$cfg_favorite_realpath_graphicalldialog --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--filename="$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option" \
+--editable --title=NEW-MINI-CONFIG 1> "$cmd_default_directory_custom/$cmd_third_option" ;
+if [ -s "$cmd_default_directory_custom/$cmd_third_option" ]; then
+$cfg_favorite_realpath_graphicalldialog --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=OK-new-config-file-$cmd_third_option\
+ANDlaunch:$cmd_internal-load-custom-$cmd_third_option ; exit
+else rm "$cmd_default_directory_custom/$cmd_third_option" ; 
+$cfg_favorite_realpath_graphicalldialog --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=Canceled-new-file-$cmd_third_option ; exit; fi
 ;;
 #### 
 #### 
 "nueva-mini-custom")
-cp "$default_minicfg_spa" "$directory_cache_necesary/$cmd_filename-$third_option"
-$favorite_realpath_graphicalldialog  --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_cache_necesary/$cmd_filename-$third_option" \
---editable --title=NUEVA-MINI-CONFIG 1> "$default_directory_custom/$third_option" ;
-if [ -s "$default_directory_custom/$third_option" ]; then
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=OK-new-config-file-$third_option-\
-AND-launch:$cmd_internal-load-custom-$third_option ; exit
-else rm $default_directory_custom/$third_option ; 
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=Canceled-new-file-$third_option ; exit; fi
+cp "$default_minicfg_spa" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+$cfg_favorite_realpath_graphicalldialog  --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--filename="$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option" \
+--editable --title=NUEVA-MINI-CONFIG 1> "$cmd_default_directory_custom/$cmd_third_option" ;
+if [ -s "$cmd_default_directory_custom/$cmd_third_option" ]; then
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=OK-new-config-file-$cmd_third_option-\
+AND-launch:$cmd_internal-load-custom-$cmd_third_option ; exit
+else rm $cmd_default_directory_custom/$cmd_third_option ; 
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=Canceled-new-file-$cmd_third_option ; exit; fi
 ;;
 #### 
 #### 
 "new-full-custom")
-cp "$default_fullcfg_eng" "$directory_cache_necesary/$cmd_filename-$third_option"
-$favorite_realpath_graphicalldialog --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_cache_necesary/$cmd_filename-$third_option" \
---editable --title=NEW-FULL-CONFIG 1> "$default_directory_custom/$third_option" ;
-if [ -s "$default_directory_custom/$third_option" ]; then
-$favorite_realpath_graphicalldialog --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=OK-new-config-file-$third_option-\
-AND-launch:-$cmd_internal-load-custom-$third_option ; exit
-else rm $default_directory_custom/$third_option ; 
-$favorite_realpath_graphicalldialog --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=Canceled-new-file-$third_option ; exit; fi
+cp "$default_fullcfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+$cfg_favorite_realpath_graphicalldialog --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--filename="$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option" \
+--editable --title=NEW-FULL-CONFIG 1> "$cmd_default_directory_custom/$cmd_third_option" ;
+if [ -s "$cmd_default_directory_custom/$cmd_third_option" ]; then
+$cfg_favorite_realpath_graphicalldialog --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=OK-new-config-file-$cmd_third_option-\
+AND-launch:-$cmd_internal-load-custom-$cmd_third_option ; exit
+else rm $cmd_default_directory_custom/$cmd_third_option ; 
+$cfg_favorite_realpath_graphicalldialog --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=Canceled-new-file-$cmd_third_option ; exit; fi
 ;;
 #### 
 #### 
 "nueva-completa-custom")
-cp "$default_fullcfg_spa" "$directory_cache_necesary/$cmd_filename-$third_option"
-$favorite_realpath_graphicalldialog  --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
---filename=$directory_cache_necesary/$cmd_filename-$third_option \
---editable --title=NUEVA-COMPLETA-CONFIG 1> "$default_directory_custom/$third_option" ;
-if [ -s "$default_directory_custom/$third_option" ]; then
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=OK-new-config-file-$third_option-\
-AND-launch:$cmd_internal-load-custom-$third_option ; exit
-else rm "$default_directory_custom/$third_option" ; 
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=Canceled-new-file-$third_option ; exit; fi
+cp "$default_fullcfg_spa" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+$cfg_favorite_realpath_graphicalldialog  --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--filename=$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option \
+--editable --title=NUEVA-COMPLETA-CONFIG 1> "$cmd_default_directory_custom/$cmd_third_option" ;
+if [ -s "$cmd_default_directory_custom/$cmd_third_option" ]; then
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=OK-new-config-file-$cmd_third_option-\
+AND-launch:$cmd_internal-load-custom-$cmd_third_option ; exit
+else rm "$cmd_default_directory_custom/$cmd_third_option" ; 
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=Canceled-new-file-$cmd_third_option ; exit; fi
 ;;
 #### 
 #### 
 "modify-custom")
-if [ ! -f "$default_directory_custom/$third_option" ]
-then $favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=file-not-found:$third_option ; exit ; fi 
-cp "$default_directory_custom/$third_option" \
-"$directory_cache_necesary/$cmd_filename-$third_option"
-$favorite_realpath_graphicalldialog  --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
---filename="$directory_cache_necesary/$cmd_filename-$third_option" \
---editable --title=MODIFY-CONFIG 1> $default_directory_custom/$third_option
-if [ -s "$default_directory_custom/$third_option" ]; then
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=OK.file-$third_option
-else cp $directory_cache_necesary/$cmd_filename-$third_option \
-$default_directory_custom/$third_option
-$favorite_realpath_graphicalldialog --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=Canceled.file-$third_option; fi
+if [ ! -f "$cmd_default_directory_custom/$cmd_third_option" ]
+then $cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=file-not-found:$cmd_third_option ; exit ; fi 
+cp "$cmd_default_directory_custom/$cmd_third_option" \
+"$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+$cfg_favorite_realpath_graphicalldialog  --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--filename="$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option" \
+--editable --title=MODIFY-CONFIG 1> $cmd_default_directory_custom/$cmd_third_option
+if [ -s "$cmd_default_directory_custom/$cmd_third_option" ]; then
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=OK.file-$cmd_third_option
+else cp $cmd_default_cache_necesary/$cmd_filename-$cmd_third_option \
+$cmd_default_directory_custom/$cmd_third_option
+$cfg_favorite_realpath_graphicalldialog --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=Canceled.file-$cmd_third_option; fi
 ;;
 ####
 ####
 "expert-wpa-new")
 $cmd_internal expert-wpa-regen
-cp $default_directory_wpa/defaultwpa $default_directory_wpa/wpaconfig_$third_option
-$cmd_internal gui expert-wpa-modify $third_option
+cp $cmd_default_directory_wpa/defaultwpa $cmd_default_directory_wpa/wpaconfig_$cmd_third_option
+$cmd_internal gui expert-wpa-modify $cmd_third_option
 ;;
 ####
 ####
 "expert-wpa-modify")
-if [ ! -f "$default_directory_wpa/wpaconfig_$third_option" ]
-then $favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=file-not-found:-wpaconfig_$third_option ; exit ; fi 
-cp "$default_directory_wpa/wpaconfig_$third_option 
-"$directory_cache_necesary/$cmd_filename-$third_option
-$favorite_realpath_graphicalldialog  --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
---filename=$directory_cache_necesary/$cmd_filename-$third_option \
---editable --title=MODIFY-CONFIG 1> $default_directory_wpa/wpaconfig_$third_option
-if [ -s "$default_directory_wpa/wpaconfig_$third_option" ]; then  
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=OK.file-$third_option
-else cp $directory_cache_necesary/$cmd_filename-$third_option \
-$default_directory_wpa/wpaconfig_$third_option
-$favorite_realpath_graphicalldialog --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=Canceled.file-wpaconfig-$third_option; fi
+if [ ! -f "$cmd_default_directory_wpa/wpaconfig_$cmd_third_option" ]
+then $cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=file-not-found:-wpaconfig_$cmd_third_option ; exit ; fi 
+cp "$cmd_default_directory_wpa/wpaconfig_$cmd_third_option 
+"$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option
+$cfg_favorite_realpath_graphicalldialog  --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--filename=$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option \
+--editable --title=MODIFY-CONFIG 1> $cmd_default_directory_wpa/wpaconfig_$cmd_third_option
+if [ -s "$cmd_default_directory_wpa/wpaconfig_$cmd_third_option" ]; then  
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=OK.file-$cmd_third_option
+else cp $cmd_default_cache_necesary/$cmd_filename-$cmd_third_option \
+$cmd_default_directory_wpa/wpaconfig_$cmd_third_option
+$cfg_favorite_realpath_graphicalldialog --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=Canceled.file-wpaconfig-$cmd_third_option; fi
 ;;
 ####
 ####
-*)$cmd_internal "$second_option" "$third_option" "$quad_option" &> $file_output_cache
-$favorite_realpath_graphicalldialog  --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
+*)$cmd_internal "$cmd_second_option" "$cmd_third_option" "$cmd_quad_option" &> $file_output_cache
+$cfg_favorite_realpath_graphicalldialog  --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Gui-Output-$cmd_internal \
 --filename="$file_output_cache" --auto-scroll ;;
 #### 
@@ -7348,105 +7328,105 @@ exit; fi
 ##########    spanish: -gui: con segunda opcion    ##########
 ####
 ####
-if [ "$first_option" == "gui" ] && [ "$second_option" != "$NULL" ]
+if [ "$cmd_first_option" == "gui" ] && [ "$cmd_second_option" != "$NULL" ]
 ####
 ####
 then echo $head_waiting_gui
 ####
 ####
-case $second_option in
+case $cmd_second_option in
 #### 
 ####
-list*)$cmd_internal txt $second_option $third_option \
-$quad_option &> $file_output_cache
-$favorite_realpath_graphicalldialog  --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
+list*)$cmd_internal txt $cmd_second_option $cmd_third_option \
+$cmd_quad_option &> $file_output_cache
+$cfg_favorite_realpath_graphicalldialog  --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Gui-Output-$cmd_internal \
 --filename=$file_output_cache --auto-scroll ;;
 ####
 ####
 "wizard-tiny")
 archivo=wizard-tiny
-cp $default_tinycfg_eng $directory_cache_necesary/$cmd_filename-$archivo
-$favorite_realpath_graphicalldialog  --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
---filename=$directory_cache_necesary/$cmd_filename-$archivo \
---editable --title=WIZARD TINY 1> $default_directory_custom/$archivo
-if [  -s $default_directory_custom/$archivo ]; then
+cp $default_tinycfg_eng $cmd_default_cache_necesary/$cmd_filename-$archivo
+$cfg_favorite_realpath_graphicalldialog  --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--filename=$cmd_default_cache_necesary/$cmd_filename-$archivo \
+--editable --title=WIZARD TINY 1> $cmd_default_directory_custom/$archivo
+if [  -s $cmd_default_directory_custom/$archivo ]; then
 $cmd_internal -gui loadtiny-custom $archivo ; $cmd_internal -gui list4;
-else rm $default_directory_custom/$archivo ;
-$favorite_realpath_graphicalldialog --info \
---width=$config_graphicall_width --height=$config_graphicall_height \
+else rm $cmd_default_directory_custom/$archivo ;
+$cfg_favorite_realpath_graphicalldialog --info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text Ok-$archivo-canceled; fi
 ;;
 #### 
 #### 
 "wizard-mini")
 archivo=wizard-mini
-cp $default_minicfg_eng $directory_cache_necesary/$cmd_filename-$archivo
-$favorite_realpath_graphicalldialog  --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
---filename=$directory_cache_necesary/$cmd_filename-$archivo \
---editable --title=WIZARD MINI 1> $default_directory_custom/$archivo
-if [  -s $default_directory_custom/$archivo ]; then
+cp $default_minicfg_eng $cmd_default_cache_necesary/$cmd_filename-$archivo
+$cfg_favorite_realpath_graphicalldialog  --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--filename=$cmd_default_cache_necesary/$cmd_filename-$archivo \
+--editable --title=WIZARD MINI 1> $cmd_default_directory_custom/$archivo
+if [  -s $cmd_default_directory_custom/$archivo ]; then
 $cmd_internal -gui load-custom $archivo ; $cmd_internal -gui list4;
-else rm $default_directory_custom/$archivo ;
-$favorite_realpath_graphicalldialog --info \
---width=$config_graphicall_width --height=$config_graphicall_height \
+else rm $cmd_default_directory_custom/$archivo ;
+$cfg_favorite_realpath_graphicalldialog --info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text Ok-$archivo-canceled; fi
 ;;
 #### 
 #### 
 "wizard-full")
 archivo=wizard-full
-cp $default_fullcfg_eng $directory_cache_necesary/$cmd_filename-$archivo
-$favorite_realpath_graphicalldialog  --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
---filename=$directory_cache_necesary/$cmd_filename-$archivo \
---editable --title=WIZARD-FULL 1> $default_directory_custom/$archivo
-if [  -s $default_directory_custom/$archivo ]; then
+cp $default_fullcfg_eng $cmd_default_cache_necesary/$cmd_filename-$archivo
+$cfg_favorite_realpath_graphicalldialog  --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--filename=$cmd_default_cache_necesary/$cmd_filename-$archivo \
+--editable --title=WIZARD-FULL 1> $cmd_default_directory_custom/$archivo
+if [  -s $cmd_default_directory_custom/$archivo ]; then
 $cmd_internal -gui load-custom $archivo ; $cmd_internal -gui list4;
-else rm $default_directory_custom/$archivo ;
-$favorite_realpath_graphicalldialog  --info \
---width=$config_graphicall_width --height=$config_graphicall_height \
+else rm $cmd_default_directory_custom/$archivo ;
+$cfg_favorite_realpath_graphicalldialog  --info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text OK.$archivo-canceled; fi
 ;;
 #### 
 #### 
 "modify-custom")
-if [ ! -f "$default_directory_custom/$third_option" ] ; then
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=file-not-found:-$third_option ; exit ; fi 
-cp $default_directory_custom/$third_option \
-$directory_cache_necesary/$cmd_filename-$third_option
-$favorite_realpath_graphicalldialog  --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
---filename=$directory_cache_necesary/$cmd_filename-$third_option \
---editable --title=MODIFY-CONFIG $third_option 1> $default_directory_custom/$third_option
-if [ -s "$default_directory_custom/$third_option" ]; then
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=OK.file-$third_option
-else cp $directory_cache_necesary/$cmd_internal-$third_option \
-$default_directory_custom/$third_option
-$favorite_realpath_graphicalldialog --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
---text=Canceled.file-$third_option; fi
+if [ ! -f "$cmd_default_directory_custom/$cmd_third_option" ] ; then
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=file-not-found:-$cmd_third_option ; exit ; fi 
+cp $cmd_default_directory_custom/$cmd_third_option \
+$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option
+$cfg_favorite_realpath_graphicalldialog  --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--filename=$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option \
+--editable --title=MODIFY-CONFIG $cmd_third_option 1> $cmd_default_directory_custom/$cmd_third_option
+if [ -s "$cmd_default_directory_custom/$cmd_third_option" ]; then
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=OK.file-$cmd_third_option
+else cp $cmd_default_cache_necesary/$cmd_internal-$cmd_third_option \
+$cmd_default_directory_custom/$cmd_third_option
+$cfg_favorite_realpath_graphicalldialog --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--text=Canceled.file-$cmd_third_option; fi
 ;;
 #### 
 ####
 "preferences-edit")
 archivo="default"
 cp $file_default_preferences $file_default_preferences.old
-$favorite_realpath_graphicalldialog  --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --filename=$file_default_preferences.old \
 --editable --title=MODIFY-PREFERENCES 1> $file_default_preferences
 if [ ! -s "$file_default_preferences" ];
 then cp $file_default_preferences.old $file_default_preferences 
-$favorite_realpath_graphicalldialog  --info \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text OK.$archivo-canceled; fi
 ;;
 #### 
@@ -7454,22 +7434,22 @@ $favorite_realpath_graphicalldialog  --info \
 "alias-edit")
 archivo="default"
 cp $file_default_alias $file_default_alias.old
-$favorite_realpath_graphicalldialog  --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --filename=$file_default_alias.old \
 --editable --title=MODIFY-ALIAS 1> $file_default_alias
 if [ ! -s "$file_default_alias" ];
 then cp $file_default_alias.old $file_default_alias 
-$favorite_realpath_graphicalldialog  --info \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text OK.$archivo-canceled; fi
 ;;
 ####
 ####
-*)$cmd_internal txt $second_option $third_option \
-$quad_option &> $file_output_cache
-$favorite_realpath_graphicalldialog  --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
+*)$cmd_internal txt $cmd_second_option $cmd_third_option \
+$cmd_quad_option &> $file_output_cache
+$cfg_favorite_realpath_graphicalldialog  --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Gui-Output-$cmd_internal \
 --filename=$file_output_cache --auto-scroll
 ;;
@@ -7485,17 +7465,17 @@ exit; fi
 ##########    spanish: -gui: sin mas opcion          ##########
 ####
 ####
-if [ "$first_option" == "gui" ] && [ "$second_option" == "$NULL" ]
+if [ "$cmd_first_option" == "gui" ] && [ "$cmd_second_option" == "$NULL" ]
 then echo $head_waiting_gui
 ####
 ####
-if [ "$favorite_realpath_graphicalldialog" == "$NULL" ]; then 
+if [ "$cfg_favorite_realpath_graphicalldialog" == "$NULL" ]; then 
 echo "$title_md there is not graphicall dialog" ; exit ; fi
 ####
 ####
-$cmd_internal txt $second_option $third_option &> $file_output_cache
-$favorite_realpath_graphicalldialog  --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cmd_internal txt $cmd_second_option $cmd_third_option &> $file_output_cache
+$cfg_favorite_realpath_graphicalldialog  --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Gui-Output-$cmd_internal \
 --filename=$file_output_cache --auto-scroll 
 ####
@@ -7508,7 +7488,7 @@ exit; fi
 #### :rutina-inicial-gui-shell-zenity:
 ####
 ####
-if   [ "$first_option" == "gui-shell-zenity" ]
+if   [ "$cmd_first_option" == "gui-shell-zenity" ]
 ####
 ####
 then echo $head_waiting_gui
@@ -7519,15 +7499,15 @@ then echo $head_waiting_gui
 ####
 titulo="$cmd_internal gui-shell-zenity"
 untexto="$cmd_internal gui-shell-zenity"
-favorite_realpath_graphicalldialog="$command_zenity"
+favorite_realpath_graphicalldialog="$cmd_command_zenity"
 ####
 ####
-#### cd $default_directory_custom
+#### cd $cmd_default_directory_custom
 ####
 ####
-menugtk="$($command_zenity --entry \
+menugtk="$($cmd_command_zenity --entry \
 --title=Example:options \
---width=$config_graphicall_width --height=$config_graphicall_height )"
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height )"
 ####
 ####
 #### english: manage some configs    ####
@@ -7546,38 +7526,38 @@ $NULL) $cmd_internal gui-zenity options; exit ;;
 ####
 ####
 "new-full-custom")
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-completa-custom")
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "new-mini-custom")
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-mini-custom")
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-tiny-custom")
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-diminuta-custom")
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "modify-custom")
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 ####
@@ -7587,38 +7567,38 @@ $favorite_realpath_graphicalldialog  --forms \
 ####
 ####
 "new-full-custom" )
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-completa-custom" )
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "new-mini-custom" )
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-mini-custom" )
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-tiny-custom" )
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-diminuta-custom" )
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "modify-custom" )
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 ####
@@ -7628,46 +7608,46 @@ $favorite_realpath_graphicalldialog  --forms \
 ####
 ####
 new-full-custom*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-zenity new-full-custom $unarchivo
 ;;
 nueva-completa-custom*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-zenity nueva-completa-custom $unarchivo
 ;;
 new-mini-custom*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-zenity new-mini-custom $unarchivo
 ;;
 nueva-mini-custom*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-zenity nueva-mini-custom $unarchivo
 ;;
 new-tiny-custom*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-zenity new-tiny-custom $unarchivo
 ;;
 nueva-diminuta-custom*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-zenity nueva-diminuta-custom $unarchivo
 ;;
 modify-custom*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-zenity modify-custom $unarchivo
 ;;
 show-custom*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-zenity show-custom $unarchivo
 ;;
 wizard-full*) $cmd_internal -gui-zenity wizard-full ;;
 wizard-mini*) $cmd_internal -gui-zenity wizard-mini ;;
 wizard-tiny*) $cmd_internal -gui-zenity wizard-tiny ;;
 preferences-edit*) 
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-zenity preferences-edit 
 ;;
 alias-edit*) 
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-zenity alias-edit 
 ;;
 ####
@@ -7678,8 +7658,8 @@ $cmd_internal -gui-zenity alias-edit
 ####
 "$NULL")  exit ;;
 *) $cmd_internal $menugtk &> $file_output_cache
-$favorite_realpath_graphicalldialog  --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=$cmd_internal-gui-shell \
 --filename=$file_output_cache --auto-scroll
 ;;
@@ -7696,7 +7676,7 @@ exit ; fi
 #### :rutina-inicial-gui-shell-yad:
 ####
 ####
-if   [ "$first_option" == "gui-shell-yad" ]
+if   [ "$cmd_first_option" == "gui-shell-yad" ]
 ####
 ####
 then echo $head_waiting_gui
@@ -7707,15 +7687,15 @@ then echo $head_waiting_gui
 ####
 titulo="$cmd_internal gui-shell-yad"
 untexto="$cmd_internal gui-shell-yad"
-favorite_realpath_graphicalldialog="$command_yad"
+favorite_realpath_graphicalldialog="$cmd_command_yad"
 ####
 ####
-#### cd $default_directory_custom
+#### cd $cmd_default_directory_custom
 ####
 ####
-menugtk="$($command_yad --entry \
+menugtk="$($cmd_command_yad --entry \
 --title=Example:options \
---width=$config_graphicall_width --height=$config_graphicall_height )"
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height )"
 ####
 ####
 #### english: manage some configs    ####
@@ -7740,38 +7720,38 @@ $NULL) $cmd_internal gui-yad options; exit ;;
 ####
 ####
 "new-full-custom")
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-completa-custom")
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "new-mini-custom")
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-mini-custom")
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-tiny-custom")
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-diminuta-custom")
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "modify-custom")
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 ####
@@ -7781,38 +7761,38 @@ $favorite_realpath_graphicalldialog  --forms \
 ####
 ####
 "new-full-custom" )
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-completa-custom" )
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "new-mini-custom" )
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-mini-custom" )
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-tiny-custom" )
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "nueva-diminuta-custom" )
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 "modify-custom" )
-$favorite_realpath_graphicalldialog  --forms \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cfg_favorite_realpath_graphicalldialog  --forms \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=$text_md-info-use-one-custom-config.cfg
 ;;
 ####
@@ -7822,46 +7802,46 @@ $favorite_realpath_graphicalldialog  --forms \
 ####
 ####
 new-full-custom*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-yad new-full-custom $unarchivo
 ;;
 nueva-completa-custom*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-yad nueva-completa-custom $unarchivo
 ;;
 new-mini-custom*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-yad new-mini-custom $unarchivo
 ;;
 nueva-mini-custom*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-yad nueva-mini-custom $unarchivo
 ;;
 new-tiny-custom*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-yad new-tiny-custom $unarchivo
 ;;
 nueva-diminuta-custom*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-yad nueva-diminuta-custom $unarchivo
 ;;
 modify-custom*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-yad modify-custom $unarchivo
 ;;
 show-custom*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-yad show-custom $unarchivo 
 ;;
 wizard-full*) $cmd_internal -gui-yad wizard-full ;;
 wizard-mini*) $cmd_internal -gui-yad wizard-mini ;;
 wizard-tiny*) $cmd_internal -gui-yad wizard-tiny ;;
 preferences-edit*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-yad preferences-edit 
 ;;
 alias-edit*)
-unarchivo=$(echo $menugtk | $command_sed 's/\///g' | $command_cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-yad alias-edit 
 ;;
 ####
@@ -7871,8 +7851,8 @@ $cmd_internal -gui-yad alias-edit
 ####
 ####
 *) $cmd_internal $menugtk &> $file_output_cache
-$command_yad --text-info \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cmd_command_yad --text-info \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=$cmd_internal-gui-shelL-$menugtk \
 --filename=$file_output_cache --auto-scroll
 esac
@@ -7894,10 +7874,10 @@ exit ; fi
 #### english: dialog choosed #### spanish: dialogo elegido
 #### 
 ####
-if [ "$first_option" == "cli-menu" ]; then
+if [ "$cmd_first_option" == "cli-menu" ]; then
 ####
 ####
-if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
+if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
@@ -7907,8 +7887,8 @@ favorite_basename_textdialog="$(basename) $2"
 favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
-menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "$first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
+menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
+--title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001  "$text_md intro" \
 002  "$text_md info-options" \
 003  "$text_md firewall-listconceptual" \
@@ -7920,7 +7900,7 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
-onecli="$(basename "$favorite_realpath_textdialog")"
+onecli="$(basename "$cfg_favorite_realpath_textdialog")"
 ##########
 ##########
 case $menuprincipal in
@@ -7934,7 +7914,7 @@ case $menuprincipal in
 008) clear ; $cmd_internal cli-menu-netsystem     $onecli  ;;
 ################################################################################
 ################################################################################
-*) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+*) clear ; $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
 $cmd_internal text-pause clear ; exit ;;
 ################################################################################
 esac
@@ -7947,8 +7927,8 @@ exit; fi
 #### :rutina-inicial-cli-menu-listconceptual:
 ####
 ####
-if [ "$first_option" == "cli-menu-listconceptual" ]; then
-if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
+if [ "$cmd_first_option" == "cli-menu-listconceptual" ]; then
+if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
@@ -7958,8 +7938,8 @@ favorite_basename_textdialog="$(basename) $2"
 favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
-menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "$first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
+menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
+--title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
 002 "$title_md [ Info Options ] $title_md" \
 003 "$title_md [ Firewall List With Conceptual ] $title_md" \
@@ -7983,32 +7963,32 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
-onecli="$(basename "$favorite_realpath_textdialog")"
+onecli="$(basename "$cfg_favorite_realpath_textdialog")"
 ##########
 ##########
 case $menuprincipal in
 001) clear ; $cmd_internal cli-menu $onecli ;;
-002) clear ; $cmd_internal $outcli options ;;
-003) clear ; $cmd_internal $outcli firewall-listconceptual ;;
-004) clear ; $cmd_internal $outcli ls4 ;;
-005) clear ; $cmd_internal $outcli ls6 ;;
-006) clear ; $cmd_internal $outcli list-filter4 ;;
-007) clear ; $cmd_internal $outcli list-filter6 ;;
-008) clear ; $cmd_internal $outcli list-forward ;;
-009) clear ; $cmd_internal $outcli list-forward6 ;;
-010) clear ; $cmd_internal $outcli list-nat4 ;;
-011) clear ; $cmd_internal $outcli list-nat6 ;;
-012) clear ; $cmd_internal $outcli list-alltables ;;
-013) clear ; $cmd_internal $outcli list-raw4 ;;
-014) clear ; $cmd_internal $outcli list-raw6 ;;
-015) clear ; $cmd_internal $outcli list-mangle4 ;; 
-016) clear ; $cmd_internal $outcli list-mangle6 ;;
-017) clear ; $cmd_internal $outcli list-security4 ;;
-018) clear ; $cmd_internal $outcli list-security6 ;;
-019) clear ; $cmd_internal $outcli list-ebtables ;;
-020) clear ; $cmd_internal $outcli list-arptables ;;
+002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
+003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-listconceptual ;;
+004) clear ; $cmd_internal $cfg_favorite_out_cli ls4 ;;
+005) clear ; $cmd_internal $cfg_favorite_out_cli ls6 ;;
+006) clear ; $cmd_internal $cfg_favorite_out_cli list-filter4 ;;
+007) clear ; $cmd_internal $cfg_favorite_out_cli list-filter6 ;;
+008) clear ; $cmd_internal $cfg_favorite_out_cli list-forward ;;
+009) clear ; $cmd_internal $cfg_favorite_out_cli list-forward6 ;;
+010) clear ; $cmd_internal $cfg_favorite_out_cli list-nat4 ;;
+011) clear ; $cmd_internal $cfg_favorite_out_cli list-nat6 ;;
+012) clear ; $cmd_internal $cfg_favorite_out_cli list-alltables ;;
+013) clear ; $cmd_internal $cfg_favorite_out_cli list-raw4 ;;
+014) clear ; $cmd_internal $cfg_favorite_out_cli list-raw6 ;;
+015) clear ; $cmd_internal $cfg_favorite_out_cli list-mangle4 ;; 
+016) clear ; $cmd_internal $cfg_favorite_out_cli list-mangle6 ;;
+017) clear ; $cmd_internal $cfg_favorite_out_cli list-security4 ;;
+018) clear ; $cmd_internal $cfg_favorite_out_cli list-security6 ;;
+019) clear ; $cmd_internal $cfg_favorite_out_cli list-ebtables ;;
+020) clear ; $cmd_internal $cfg_favorite_out_cli list-arptables ;;
 ################################################################################
-*) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+*) clear ; $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
 $cmd_internal text-pause clear ; exit ;;
 ################################################################################
 esac
@@ -8021,8 +8001,8 @@ exit; fi
 #### :rutina-inicial-cli-menu-listnumeral:
 ####
 ####
-if [ "$first_option" == "cli-menu-listnumeral" ]; then
-if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
+if [ "$cmd_first_option" == "cli-menu-listnumeral" ]; then
+if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
@@ -8032,8 +8012,8 @@ favorite_basename_textdialog="$(basename) $2"
 favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
-menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "$first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
+menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
+--title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
 002 "$title_md [ Info Options     ] $title_md" \
 003 "$title_md [ Firewall Numeral ] $title_md" \
@@ -8059,34 +8039,34 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 ##########
 ##########
 ##########
-onecli="$(basename "$favorite_realpath_textdialog")"
+onecli="$(basename "$cfg_favorite_realpath_textdialog")"
 ##########
 ##########
 ##########
 ##########
 case $menuprincipal in
 001) clear ; $cmd_internal cli-menu $onecli ;;
-002) clear ; $cmd_internal $outcli options ;;
-003) clear ; $cmd_internal $outcli firewall-listnumeral ;;
-004) clear ; $cmd_internal $outcli lsn4 ;;
-005) clear ; $cmd_internal $outcli lsn6 ;;
-006) clear ; $cmd_internal $outcli listn-filter4 ;;
-007) clear ; $cmd_internal $outcli listn-filter6 ;;
-008) clear ; $cmd_internal $outcli listn-forward ;;
-009) clear ; $cmd_internal $outcli listn-forward6 ;;
-010) clear ; $cmd_internal $outcli listn-nat4 ;;
-011) clear ; $cmd_internal $outcli listn-nat6 ;;
-012) clear ; $cmd_internal $outcli listn-alltables ;;
-013) clear ; $cmd_internal $outcli listn-raw4 ;;
-014) clear ; $cmd_internal $outcli listn-raw6 ;;
-015) clear ; $cmd_internal $outcli listn-mangle4 ;; 
-016) clear ; $cmd_internal $outcli listn-mangle6 ;;
-017) clear ; $cmd_internal $outcli listn-security4 ;;
-018) clear ; $cmd_internal $outcli listn-security6 ;;
-019) clear ; $cmd_internal $outcli list-ebtables ;;
-020) clear ; $cmd_internal $outcli list-arptables ;;
+002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
+003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-listnumeral ;;
+004) clear ; $cmd_internal $cfg_favorite_out_cli lsn4 ;;
+005) clear ; $cmd_internal $cfg_favorite_out_cli lsn6 ;;
+006) clear ; $cmd_internal $cfg_favorite_out_cli listn-filter4 ;;
+007) clear ; $cmd_internal $cfg_favorite_out_cli listn-filter6 ;;
+008) clear ; $cmd_internal $cfg_favorite_out_cli listn-forward ;;
+009) clear ; $cmd_internal $cfg_favorite_out_cli listn-forward6 ;;
+010) clear ; $cmd_internal $cfg_favorite_out_cli listn-nat4 ;;
+011) clear ; $cmd_internal $cfg_favorite_out_cli listn-nat6 ;;
+012) clear ; $cmd_internal $cfg_favorite_out_cli listn-alltables ;;
+013) clear ; $cmd_internal $cfg_favorite_out_cli listn-raw4 ;;
+014) clear ; $cmd_internal $cfg_favorite_out_cli listn-raw6 ;;
+015) clear ; $cmd_internal $cfg_favorite_out_cli listn-mangle4 ;; 
+016) clear ; $cmd_internal $cfg_favorite_out_cli listn-mangle6 ;;
+017) clear ; $cmd_internal $cfg_favorite_out_cli listn-security4 ;;
+018) clear ; $cmd_internal $cfg_favorite_out_cli listn-security6 ;;
+019) clear ; $cmd_internal $cfg_favorite_out_cli list-ebtables ;;
+020) clear ; $cmd_internal $cfg_favorite_out_cli list-arptables ;;
 ################################################################################
-*) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+*) clear ; $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
 $cmd_internal text-pause clear ; exit ;;
 ################################################################################
 esac
@@ -8099,8 +8079,8 @@ exit; fi
 #### :rutina-inicial-cli-menu-wallcontrol:
 ####
 ####
-if [ "$first_option" == "cli-menu-wallcontrol" ]; then
-if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
+if [ "$cmd_first_option" == "cli-menu-wallcontrol" ]; then
+if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
@@ -8110,8 +8090,8 @@ favorite_basename_textdialog="$(basename) $2"
 favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
-menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "$first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
+menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
+--title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
 002 "$title_md [ Info Options     ] $title_md" \
 003 "$title_md [ Firewall Control ] $title_md" \
@@ -8138,43 +8118,43 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 ##########
 ##########
 ##########
-onecli="$(basename "$favorite_realpath_textdialog")"
+onecli="$(basename "$cfg_favorite_realpath_textdialog")"
 ##########
 ##########
 ################################################################################
 case $menuprincipal in
 001) clear ; $cmd_internal cli-menu $onecli ;;
-002) clear ; $cmd_internal $outcli options ;;
-003) clear ; $cmd_internal $outcli firewall-wallcontrol ;;
-004) clear ; $cmd_internal $outcli stop ;;
-005) clear ; $cmd_internal $outcli continue ;;
-006) clear ; $cmd_internal $outcli reset ;;
-007) clear ; $cmd_internal $outcli names ;;
+002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
+003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-wallcontrol ;;
+004) clear ; $cmd_internal $cfg_favorite_out_cli stop ;;
+005) clear ; $cmd_internal $cfg_favorite_out_cli continue ;;
+006) clear ; $cmd_internal $cfg_favorite_out_cli reset ;;
+007) clear ; $cmd_internal $cfg_favorite_out_cli names ;;
 008) clear ; $cmd_internal txt names ; echo "$title_md"
 read -p "Type the firewall name to read   " nombrecillo
-nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
+nombrecillo=$(echo $nombrecillo | $cmd_command_sed s/\\///g)
 $cmd_internal show $nombrecillo ;; 
-009)archivo="$($favorite_realpath_textdialog --stdout \
+009)archivo="$($cfg_favorite_realpath_textdialog --stdout \
 --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 clear ;  echo "$title_md saved $archivo" ; $cmd_internal save $archivo ;;
 010) clear ; $cmd_internal names ; echo "$title_md"
 read -p "| Type the firewall name to restore |   " nombrecillo
-nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
+nombrecillo=$(echo $nombrecillo | $cmd_command_sed s/\\///g)
 $cmd_internal load $nombrecillo ;;
-011) clear ; $cmd_internal $outcli actual ;;
-012) clear ; $cmd_internal $outcli eraserules ; $cmd_internal cli list4   ;;
-013) clear ; $cmd_internal $outcli wizard-tiny ; $cmd_internal cli list4  ;;
-014) clear ; $cmd_internal $outcli wizard-mini ; $cmd_internal cli list4  ;;
-015) clear ; $cmd_internal $outcli wizard-full ; $cmd_internal cli list4  ;;
-016) clear ; $cmd_internal $outcli without-connection ; $cmd_internal cli list4  ;;
-017) clear ; $cmd_internal $outcli input-permisive ; $cmd_internal cli list4   ;;
-018) clear ; $cmd_internal $outcli input-established ; $cmd_internal cli list4   ;;
-019) clear ; $cmd_internal $outcli eraserules4 ; $cmd_internal cli list4   ;;
-020) clear ; $cmd_internal $outcli eraserules6 ; $cmd_internal cli list6   ;;
-021) clear ; $cmd_internal $outcli eraserules ; $cmd_internal cli status   ;;
+011) clear ; $cmd_internal $cfg_favorite_out_cli actual ;;
+012) clear ; $cmd_internal $cfg_favorite_out_cli eraserules ; $cmd_internal cli list4   ;;
+013) clear ; $cmd_internal $cfg_favorite_out_cli wizard-tiny ; $cmd_internal cli list4  ;;
+014) clear ; $cmd_internal $cfg_favorite_out_cli wizard-mini ; $cmd_internal cli list4  ;;
+015) clear ; $cmd_internal $cfg_favorite_out_cli wizard-full ; $cmd_internal cli list4  ;;
+016) clear ; $cmd_internal $cfg_favorite_out_cli without-connection ; $cmd_internal cli list4  ;;
+017) clear ; $cmd_internal $cfg_favorite_out_cli input-permisive ; $cmd_internal cli list4   ;;
+018) clear ; $cmd_internal $cfg_favorite_out_cli input-established ; $cmd_internal cli list4   ;;
+019) clear ; $cmd_internal $cfg_favorite_out_cli eraserules4 ; $cmd_internal cli list4   ;;
+020) clear ; $cmd_internal $cfg_favorite_out_cli eraserules6 ; $cmd_internal cli list6   ;;
+021) clear ; $cmd_internal $cfg_favorite_out_cli eraserules ; $cmd_internal cli status   ;;
 ################################################################################
-*) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+*) clear ; $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
 $cmd_internal text-pause clear ; exit ;;
 ################################################################################
 esac
@@ -8187,8 +8167,8 @@ exit; fi
 #### :rutina-inicial-cli-menu-wallsystem:
 ####
 ####
-if [ "$first_option" == "cli-menu-wallsystem" ]; then
-if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
+if [ "$cmd_first_option" == "cli-menu-wallsystem" ]; then
+if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
@@ -8198,8 +8178,8 @@ favorite_basename_textdialog="$(basename) $2"
 favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
-menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "$first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
+menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
+--title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
 002 "$title_md [ Info Options        ] $title_md" \
 003 "$title_md [ Firewall Wallsystem ] $title_md" \
@@ -8239,7 +8219,7 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 ##########
 ##########
 ##########
-onecli="$(basename "$favorite_realpath_textdialog")"
+onecli="$(basename "$cfg_favorite_realpath_textdialog")"
 ##########
 ##########
 ################################################################################
@@ -8279,7 +8259,7 @@ case $menuprincipal in
 036) clear ; $cmd_internal txt server-sql ; $cmd_internal cli list4      ;;
 037) clear ; $cmd_internal txt server-asterisk ; $cmd_internal cli list4 ;;
 ################################################################################
-*) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+*) clear ; $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
 $cmd_internal text-pause clear ; exit ;;
 ################################################################################
 esac
@@ -8292,7 +8272,7 @@ exit; fi
 #### :rutina-inicial-cli-menu-wallcustom:
 ####
 ####
-if [ "$first_option" == "cli-menu-wallcustom" ]; then
+if [ "$cmd_first_option" == "cli-menu-wallcustom" ]; then
 ##########
 ##########
 if [ "$2" != "$NULL" ]; then
@@ -8300,8 +8280,8 @@ favorite_basename_textdialog="$(basename) $2"
 favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
-menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "$first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
+menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
+--title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
 002 "$title_md [ Info Options        ] $title_md" \
 003 "$title_md [ Firewall Wallcustom ] $title_md" \
@@ -8322,53 +8302,53 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 ##########
 ##########
 ##########
-onecli="$(basename "$favorite_realpath_textdialog")"
+onecli="$(basename "$cfg_favorite_realpath_textdialog")"
 ##########
 ##########
 ################################################################################
 case $menuprincipal in
 001) clear ; $cmd_internal cli-menu $onecli ;;
-002) clear ; $cmd_internal $outcli options ;;
-003) clear ; $cmd_internal $outcli firewall-wallsystem ;;
+002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
+003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-wallsystem ;;
 004) clear ; $cmd_internal txt names-custom
 read -p "Input the custom name to load # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal load-custom $archivo ;;
 005) clear ; read -p "Input the systemfw name to clone # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal clone-wallsystem $archivo ;;
 006) clear ; read -p "Input the new custom name to create # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal new-full-custom $archivo ;;
 007) clear ; read -p "Input the new custom name to create # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal nueva-completa-custom $archivo ;;
 008) clear ; read -p "Input the new custom name to create # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal new-mini-custom $archivo ;;
 009) clear ; read -p "Input the new custom name to create # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal nueva-mini-custom $archivo ;;
 010) clear ; read -p "Input the new custom name to create # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal new-tiny-custom $archivo ;;
 011) clear ; read -p "Input the new custom name to create # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal nueva-diminuta-custom $archivo ;;
 012) clear ; read -p "Input the custom to show config # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal show-custom $archivo ;;
 013) clear ; $cmd_internal names-custom
 read -p "Input the custom name to modify # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal modify-custom $archivo ;;
 014) clear ; $cmd_internal names-custom
 read -p "Input the custom name to delete # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal del-custom $archivo ;;
 015) clear ; $cmd_internal txt names-custom ;;
 ################################################################################
-*) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+*) clear ; $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
 $cmd_internal text-pause clear ; exit ;;
 ################################################################################
 esac
@@ -8383,10 +8363,10 @@ exit; fi
 #### :rutina-inicial-cli-menu-netsystem:
 ####
 ####
-if [ "$first_option" == "cli-menu-netsystem" ]; then
+if [ "$cmd_first_option" == "cli-menu-netsystem" ]; then
 ####
 ####
-if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
+if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
@@ -8396,8 +8376,8 @@ favorite_basename_textdialog="$(basename) $2"
 favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
-menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "$first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
+menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
+--title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$title_md $text_md [ principal menu ] $text_md $title_md" \
 002 "$title_md [ Info Options     ] $title_md" \
 003 "$title_md [ firewall netsystem ] $title_md" \
@@ -8442,57 +8422,57 @@ menuprincipal="$($favorite_realpath_textdialog --clear --notags \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
-onecli="$(basename "$favorite_realpath_textdialog")"
+onecli="$(basename "$cfg_favorite_realpath_textdialog")"
 ##########
 ##########
 case $menuprincipal in
 001) clear ; $cmd_internal cli-menu $onecli ;;
-002) clear ; $cmd_internal $outcli options ;;
-003) clear ; $cmd_internal $outcli firewall-listnumeral ;;
-011) clear ; $cmd_internal $outcli preferences-read ;;
+002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
+003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-listnumeral ;;
+011) clear ; $cmd_internal $cfg_favorite_out_cli preferences-read ;;
 012) clear ; $cmd_internal preferences-edit ;;
-013) clear ; $cmd_internal $outcli preferences-regen ;;
-014) clear ; $cmd_internal $outcli alias-read ;;
+013) clear ; $cmd_internal $cfg_favorite_out_cli preferences-regen ;;
+014) clear ; $cmd_internal $cfg_favorite_out_cli alias-read ;;
 015) clear ; $cmd_internal alias-edit ;;
-016) clear ; $cmd_internal $outcli alias-regen ;;
+016) clear ; $cmd_internal $cfg_favorite_out_cli alias-regen ;;
 017) clear ; $cmd_internal cat-logcmd ;;
 018) clear ; $cmd_internal tree-log ;;
 019) clear ; $cmd_internal tree-pdf ;;
 020) clear ; $cmd_internal tree-conf ;;
 021) clear ; $cmd_internal tree-cache ;;
-022) clear ; $cmd_internal $outcli clean-cache ;;
-023) clear ; $cmd_internal $outcli ip4 ;;
-024) clear ; $cmd_internal $outcli ip6 ;;
-025) clear ; $cmd_internal $outcli speed-ip4 ;;
-026) clear ; $cmd_internal $outcli speed-ip6 ;;
-027) clear ; $cmd_internal $outcli sockets ;;
-028) clear ; $cmd_internal $outcli notes ;;
-029) clear ; $cmd_internal $outcli license ;;
-030) clear ; $cmd_internal $outcli depends ;;
-031) clear ; $cmd_internal $outcli info ;;
-032) clear ; $cmd_internal $outcli version ;;
-033) clear ; $cmd_internal $outcli options ;;
-034) clear ; $cmd_internal $outcli info-options ;;
-035) clear ; $cmd_internal $outcli nodes ;;
-036) clear ; $cmd_internal $outcli date ;;
-037) clear ; $cmd_internal $outcli free ;;
-038) clear ; $cmd_internal $outcli expert ;;
-039) clear ; $cmd_internal $outcli tree-conf ;;
-040) clear ; $cmd_internal $outcli commands ;;
-041) clear ; $cmd_internal $outcli variables ;;
+022) clear ; $cmd_internal $cfg_favorite_out_cli clean-cache ;;
+023) clear ; $cmd_internal $cfg_favorite_out_cli ip4 ;;
+024) clear ; $cmd_internal $cfg_favorite_out_cli ip6 ;;
+025) clear ; $cmd_internal $cfg_favorite_out_cli speed-ip4 ;;
+026) clear ; $cmd_internal $cfg_favorite_out_cli speed-ip6 ;;
+027) clear ; $cmd_internal $cfg_favorite_out_cli sockets ;;
+028) clear ; $cmd_internal $cfg_favorite_out_cli notes ;;
+029) clear ; $cmd_internal $cfg_favorite_out_cli license ;;
+030) clear ; $cmd_internal $cfg_favorite_out_cli depends ;;
+031) clear ; $cmd_internal $cfg_favorite_out_cli info ;;
+032) clear ; $cmd_internal $cfg_favorite_out_cli version ;;
+033) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
+034) clear ; $cmd_internal $cfg_favorite_out_cli info-options ;;
+035) clear ; $cmd_internal $cfg_favorite_out_cli nodes ;;
+036) clear ; $cmd_internal $cfg_favorite_out_cli date ;;
+037) clear ; $cmd_internal $cfg_favorite_out_cli free ;;
+038) clear ; $cmd_internal $cfg_favorite_out_cli expert ;;
+039) clear ; $cmd_internal $cfg_favorite_out_cli tree-conf ;;
+040) clear ; $cmd_internal $cfg_favorite_out_cli commands ;;
+041) clear ; $cmd_internal $cfg_favorite_out_cli variables ;;
 042) clear ; read -p "Input host whitelist ip4 to add # " archivo
-$cmd_internal $outcli add-whitelist4 $archivo ;;
+$cmd_internal $cfg_favorite_out_cli add-whitelist4 $archivo ;;
 043) clear ; read -p "Input host whitelist ip6 to add # " archivo
-$cmd_internal $outcli add-whitelist6 $archivo ;;
+$cmd_internal $cfg_favorite_out_cli add-whitelist6 $archivo ;;
 044) clear ; read -p "Input host blacklist ip4 to add # " archivo
-$cmd_internal $outcli add-blacklist4 $archivo ;;
+$cmd_internal $cfg_favorite_out_cli add-blacklist4 $archivo ;;
 045) clear ; read -p "Input host blacklist ip6 to add # " archivo
-$cmd_internal $outcli add-blacklist6 $archivo ;;
-046) clear ; $cmd_internal $outcli intro ;;
-047) clear ; $cmd_internal $outcli download;;
-048) clear ; $cmd_internal $outcli install;;
+$cmd_internal $cfg_favorite_out_cli add-blacklist6 $archivo ;;
+046) clear ; $cmd_internal $cfg_favorite_out_cli intro ;;
+047) clear ; $cmd_internal $cfg_favorite_out_cli download;;
+048) clear ; $cmd_internal $cfg_favorite_out_cli install;;
 ################################################################################
-*) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+*) clear ; $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
 $cmd_internal text-pause clear ; exit ;;
 ################################################################################
 esac
@@ -8507,10 +8487,10 @@ exit; fi
 #### :rutina-inicial-cli-menu-compact:
 ####
 ####
-if [ "$first_option" == "cli-menu-compact" ]; then
+if [ "$cmd_first_option" == "cli-menu-compact" ]; then
 ####
 ####
-if [ "$favorite_realpath_textdialog" == "$NULL" ]; then
+if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$title_md $text_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
@@ -8520,8 +8500,8 @@ favorite_basename_textdialog="$(basename) $2"
 favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
-menuprincipal="$($favorite_realpath_textdialog --clear --notags \
---title "$first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
+menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
+--title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 0110 "$title_md [ intro ] $title_md $title_md" \
 0120 "$title_md [ info-options ] $title_md $title_md" \
 0200 "$title_md [ firewall-listconceptual ] $title_md" \
@@ -8682,184 +8662,184 @@ case $menuprincipal in
 0600) clear ; $cmd_internal cli firewall-wallcustom ;;
 0700) clear ; $cmd_internal cli firewall-netsystem ;;
 ################################################################################
-0201) clear ; $cmd_internal $outcli list4 ;;
-0202) clear ; $cmd_internal $outcli list6 ;;
-0203) clear ; $cmd_internal $outcli list-filter4 ;;
-0204) clear ; $cmd_internal $outcli list-filter6 ;;
-0205) clear ; $cmd_internal $outcli list-forward ;;
-0206) clear ; $cmd_internal $outcli list-forward6 ;;
-0207) clear ; $cmd_internal $outcli list-nat4 ;;
-0208) clear ; $cmd_internal $outcli list-nat6 ;;
-0209) clear ; $cmd_internal $outcli list-alltables ;;
-0214) clear ; $cmd_internal $outcli list-raw4 ;;
-0215) clear ; $cmd_internal $outcli list-raw6 ;;
-0216) clear ; $cmd_internal $outcli list-mangle4 ;; 
-0217) clear ; $cmd_internal $outcli list-mangle6 ;;
-0218) clear ; $cmd_internal $outcli list-security4 ;;
-0219) clear ; $cmd_internal $outcli list-security6 ;;
-0220) clear ; $cmd_internal $outcli list-ebtables ;;
-0221) clear ; $cmd_internal $outcli list-arptables ;;
+0201) clear ; $cmd_internal $cfg_favorite_out_cli list4 ;;
+0202) clear ; $cmd_internal $cfg_favorite_out_cli list6 ;;
+0203) clear ; $cmd_internal $cfg_favorite_out_cli list-filter4 ;;
+0204) clear ; $cmd_internal $cfg_favorite_out_cli list-filter6 ;;
+0205) clear ; $cmd_internal $cfg_favorite_out_cli list-forward ;;
+0206) clear ; $cmd_internal $cfg_favorite_out_cli list-forward6 ;;
+0207) clear ; $cmd_internal $cfg_favorite_out_cli list-nat4 ;;
+0208) clear ; $cmd_internal $cfg_favorite_out_cli list-nat6 ;;
+0209) clear ; $cmd_internal $cfg_favorite_out_cli list-alltables ;;
+0214) clear ; $cmd_internal $cfg_favorite_out_cli list-raw4 ;;
+0215) clear ; $cmd_internal $cfg_favorite_out_cli list-raw6 ;;
+0216) clear ; $cmd_internal $cfg_favorite_out_cli list-mangle4 ;; 
+0217) clear ; $cmd_internal $cfg_favorite_out_cli list-mangle6 ;;
+0218) clear ; $cmd_internal $cfg_favorite_out_cli list-security4 ;;
+0219) clear ; $cmd_internal $cfg_favorite_out_cli list-security6 ;;
+0220) clear ; $cmd_internal $cfg_favorite_out_cli list-ebtables ;;
+0221) clear ; $cmd_internal $cfg_favorite_out_cli list-arptables ;;
 ################################################################################
-0301) clear ; $cmd_internal $outcli listn4 ;;
-0302) clear ; $cmd_internal $outcli listn6 ;;
-0303) clear ; $cmd_internal $outcli listn-filter4 ;;
-0304) clear ; $cmd_internal $outcli listn-filter6 ;;
-0305) clear ; $cmd_internal $outcli listn-forward ;;
-0306) clear ; $cmd_internal $outcli listn-forward6 ;;
-0307) clear ; $cmd_internal $outcli listn-nat4 ;;
-0308) clear ; $cmd_internal $outcli listn-nat6 ;;
-0309) clear ; $cmd_internal $outcli listn-alltables ;;
-0314) clear ; $cmd_internal $outcli listn-raw4 ;;
-0315) clear ; $cmd_internal $outcli listn-raw6 ;;
-0316) clear ; $cmd_internal $outcli listn-mangle4 ;; 
-0317) clear ; $cmd_internal $outcli listn-mangle6 ;;
-0318) clear ; $cmd_internal $outcli listn-security4 ;;
-0319) clear ; $cmd_internal $outcli listn-security6 ;;
-0320) clear ; $cmd_internal $outcli list-ebtables ;;
-0321) clear ; $cmd_internal $outcli list-arptables ;;
+0301) clear ; $cmd_internal $cfg_favorite_out_cli listn4 ;;
+0302) clear ; $cmd_internal $cfg_favorite_out_cli listn6 ;;
+0303) clear ; $cmd_internal $cfg_favorite_out_cli listn-filter4 ;;
+0304) clear ; $cmd_internal $cfg_favorite_out_cli listn-filter6 ;;
+0305) clear ; $cmd_internal $cfg_favorite_out_cli listn-forward ;;
+0306) clear ; $cmd_internal $cfg_favorite_out_cli listn-forward6 ;;
+0307) clear ; $cmd_internal $cfg_favorite_out_cli listn-nat4 ;;
+0308) clear ; $cmd_internal $cfg_favorite_out_cli listn-nat6 ;;
+0309) clear ; $cmd_internal $cfg_favorite_out_cli listn-alltables ;;
+0314) clear ; $cmd_internal $cfg_favorite_out_cli listn-raw4 ;;
+0315) clear ; $cmd_internal $cfg_favorite_out_cli listn-raw6 ;;
+0316) clear ; $cmd_internal $cfg_favorite_out_cli listn-mangle4 ;; 
+0317) clear ; $cmd_internal $cfg_favorite_out_cli listn-mangle6 ;;
+0318) clear ; $cmd_internal $cfg_favorite_out_cli listn-security4 ;;
+0319) clear ; $cmd_internal $cfg_favorite_out_cli listn-security6 ;;
+0320) clear ; $cmd_internal $cfg_favorite_out_cli list-ebtables ;;
+0321) clear ; $cmd_internal $cfg_favorite_out_cli list-arptables ;;
 ################################################################################
-0401) clear ; $cmd_internal $outcli stop ;;
-0402) clear ; $cmd_internal $outcli continue ;;
-0403) clear ; $cmd_internal $outcli reset ;;
-0404) clear ; $cmd_internal $outcli names ;;
+0401) clear ; $cmd_internal $cfg_favorite_out_cli stop ;;
+0402) clear ; $cmd_internal $cfg_favorite_out_cli continue ;;
+0403) clear ; $cmd_internal $cfg_favorite_out_cli reset ;;
+0404) clear ; $cmd_internal $cfg_favorite_out_cli names ;;
 0405) clear ; $cmd_internal txt names ; echo "$title_md"
 read -p "Type the firewall name to read   " nombrecillo
-nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
+nombrecillo=$(echo $nombrecillo | $cmd_command_sed s/\\///g)
 $cmd_internal show $nombrecillo ;; 
-0406)archivo="$($favorite_realpath_textdialog --stdout \
+0406)archivo="$($cfg_favorite_realpath_textdialog --stdout \
 --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 clear ;  echo "$title_md saved $archivo" ; $cmd_internal save $archivo ;;
 0407) clear ; $cmd_internal names ; echo "$title_md"
 read -p "| Type the firewall name to restore |   " nombrecillo
-nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g)
+nombrecillo=$(echo $nombrecillo | $cmd_command_sed s/\\///g)
 $cmd_internal load $nombrecillo ;;
-0408) clear ; $cmd_internal $outcli actual ;;
-0409) clear ; $cmd_internal $outcli eraserules ; $cmd_internal cli list4   ;;
+0408) clear ; $cmd_internal $cfg_favorite_out_cli actual ;;
+0409) clear ; $cmd_internal $cfg_favorite_out_cli eraserules ; $cmd_internal cli list4   ;;
 0410) clear ; $cmd_internal txt wizard-tiny ; $cmd_internal cli list4  ;;
 0411) clear ; $cmd_internal txt wizard-mini ; $cmd_internal cli list4  ;;
 0412) clear ; $cmd_internal txt wizard-full ; $cmd_internal cli list4  ;;
-0413) clear ; $cmd_internal $outcli without-connection ; $cmd_internal cli list4  ;;
-0414) clear ; $cmd_internal $outcli input-permisive ; $cmd_internal cli list4   ;;
-0415) clear ; $cmd_internal $outcli input-established ; $cmd_internal cli list4   ;;
-0416) clear ; $cmd_internal $outcli eraserules4 ; $cmd_internal cli list4   ;;
-0417) clear ; $cmd_internal $outcli eraserules6 ; $cmd_internal cli list6   ;;
-0418) clear ; $cmd_internal $outcli eraserules ; $cmd_internal cli status   ;;
+0413) clear ; $cmd_internal $cfg_favorite_out_cli without-connection ; $cmd_internal cli list4  ;;
+0414) clear ; $cmd_internal $cfg_favorite_out_cli input-permisive ; $cmd_internal cli list4   ;;
+0415) clear ; $cmd_internal $cfg_favorite_out_cli input-established ; $cmd_internal cli list4   ;;
+0416) clear ; $cmd_internal $cfg_favorite_out_cli eraserules4 ; $cmd_internal cli list4   ;;
+0417) clear ; $cmd_internal $cfg_favorite_out_cli eraserules6 ; $cmd_internal cli list6   ;;
+0418) clear ; $cmd_internal $cfg_favorite_out_cli eraserules ; $cmd_internal cli status   ;;
 ################################################################################
-0507) clear ; $cmd_internal $outcli client-basic ; $cmd_internal cli list4    ;;
-0508) clear ; $cmd_internal $outcli client-web ; $cmd_internal cli list4    ;;
-0509) clear ; $cmd_internal $outcli client-ssh ; $cmd_internal cli list4    ;;
-0510) clear ; $cmd_internal $outcli client-telnet ; $cmd_internal cli list4    ;;
-0511) clear ; $cmd_internal $outcli client-git ; $cmd_internal cli list4    ;;
-0512) clear ; $cmd_internal $outcli games-shooter ; $cmd_internal cli list4   ;; 
-0513) clear ; $cmd_internal $outcli game-wesnoth ; $cmd_internal cli list4    ;;
-0514) clear ; $cmd_internal $outcli game-minetest ; $cmd_internal cli list4   ;;
-0515) clear ; $cmd_internal $outcli game-freeciv ; $cmd_internal cli list4    ;;
-0516) clear ; $cmd_internal $outcli game-widelands ; $cmd_internal cli list4  ;;
-0517) clear ; $cmd_internal $outcli client-web ; $cmd_internal cli list4      ;;
-0518) clear ; $cmd_internal $outcli client-vnc ; $cmd_internal cli list4      ;;
-0519) clear ; $cmd_internal $outcli client-tor ; $cmd_internal cli list4      ;;
-0520) clear ; $cmd_internal $outcli client-vpn ; $cmd_internal cli list4      ;;
-0521) clear ; $cmd_internal $outcli client-torrent ; $cmd_internal cli list4  ;;
-0522) clear ; $cmd_internal $outcli lan-tor ; $cmd_internal cli list4         ;;
-0523) clear ; $cmd_internal $outcli lan-vpn ; $cmd_internal cli list4         ;; 
-0524) clear ; $cmd_internal $outcli shield-ssh ; $cmd_internal cli list4      ;; 
-0525) clear ; $cmd_internal $outcli server-ssh ; $cmd_internal cli list4      ;;
-0526) clear ; $cmd_internal $outcli server-web ; $cmd_internal cli list4      ;;
-0527) clear ; $cmd_internal $outcli server-vnc ; $cmd_internal cli list4      ;;
-0528) clear ; $cmd_internal $outcli server-print ; $cmd_internal cli list4    ;;
-0529) clear ; $cmd_internal $outcli server-samba ; $cmd_internal cli list4    ;;
-0530) clear ; $cmd_internal $outcli server-lamp ; $cmd_internal cli list4     ;;
-0531) clear ; $cmd_internal $outcli server-mail ; $cmd_internal cli list4     ;;
-0532) clear ; $cmd_internal $outcli server-ftp ; $cmd_internal cli list4      ;;
-0533) clear ; $cmd_internal $outcli server-news ; $cmd_internal cli list4     ;;
-0534) clear ; $cmd_internal $outcli server-teamspeak ; $cmd_internal cli list4  ;;
-0535) clear ; $cmd_internal $outcli server-mumble ; $cmd_internal cli list4   ;;
-0536) clear ; $cmd_internal $outcli server-sql ; $cmd_internal cli list4      ;;
-0537) clear ; $cmd_internal $outcli server-asterisk ; $cmd_internal cli list4 ;;
+0507) clear ; $cmd_internal $cfg_favorite_out_cli client-basic ; $cmd_internal cli list4    ;;
+0508) clear ; $cmd_internal $cfg_favorite_out_cli client-web ; $cmd_internal cli list4    ;;
+0509) clear ; $cmd_internal $cfg_favorite_out_cli client-ssh ; $cmd_internal cli list4    ;;
+0510) clear ; $cmd_internal $cfg_favorite_out_cli client-telnet ; $cmd_internal cli list4    ;;
+0511) clear ; $cmd_internal $cfg_favorite_out_cli client-git ; $cmd_internal cli list4    ;;
+0512) clear ; $cmd_internal $cfg_favorite_out_cli games-shooter ; $cmd_internal cli list4   ;; 
+0513) clear ; $cmd_internal $cfg_favorite_out_cli game-wesnoth ; $cmd_internal cli list4    ;;
+0514) clear ; $cmd_internal $cfg_favorite_out_cli game-minetest ; $cmd_internal cli list4   ;;
+0515) clear ; $cmd_internal $cfg_favorite_out_cli game-freeciv ; $cmd_internal cli list4    ;;
+0516) clear ; $cmd_internal $cfg_favorite_out_cli game-widelands ; $cmd_internal cli list4  ;;
+0517) clear ; $cmd_internal $cfg_favorite_out_cli client-web ; $cmd_internal cli list4      ;;
+0518) clear ; $cmd_internal $cfg_favorite_out_cli client-vnc ; $cmd_internal cli list4      ;;
+0519) clear ; $cmd_internal $cfg_favorite_out_cli client-tor ; $cmd_internal cli list4      ;;
+0520) clear ; $cmd_internal $cfg_favorite_out_cli client-vpn ; $cmd_internal cli list4      ;;
+0521) clear ; $cmd_internal $cfg_favorite_out_cli client-torrent ; $cmd_internal cli list4  ;;
+0522) clear ; $cmd_internal $cfg_favorite_out_cli lan-tor ; $cmd_internal cli list4         ;;
+0523) clear ; $cmd_internal $cfg_favorite_out_cli lan-vpn ; $cmd_internal cli list4         ;; 
+0524) clear ; $cmd_internal $cfg_favorite_out_cli shield-ssh ; $cmd_internal cli list4      ;; 
+0525) clear ; $cmd_internal $cfg_favorite_out_cli server-ssh ; $cmd_internal cli list4      ;;
+0526) clear ; $cmd_internal $cfg_favorite_out_cli server-web ; $cmd_internal cli list4      ;;
+0527) clear ; $cmd_internal $cfg_favorite_out_cli server-vnc ; $cmd_internal cli list4      ;;
+0528) clear ; $cmd_internal $cfg_favorite_out_cli server-print ; $cmd_internal cli list4    ;;
+0529) clear ; $cmd_internal $cfg_favorite_out_cli server-samba ; $cmd_internal cli list4    ;;
+0530) clear ; $cmd_internal $cfg_favorite_out_cli server-lamp ; $cmd_internal cli list4     ;;
+0531) clear ; $cmd_internal $cfg_favorite_out_cli server-mail ; $cmd_internal cli list4     ;;
+0532) clear ; $cmd_internal $cfg_favorite_out_cli server-ftp ; $cmd_internal cli list4      ;;
+0533) clear ; $cmd_internal $cfg_favorite_out_cli server-news ; $cmd_internal cli list4     ;;
+0534) clear ; $cmd_internal $cfg_favorite_out_cli server-teamspeak ; $cmd_internal cli list4  ;;
+0535) clear ; $cmd_internal $cfg_favorite_out_cli server-mumble ; $cmd_internal cli list4   ;;
+0536) clear ; $cmd_internal $cfg_favorite_out_cli server-sql ; $cmd_internal cli list4      ;;
+0537) clear ; $cmd_internal $cfg_favorite_out_cli server-asterisk ; $cmd_internal cli list4 ;;
 ################################################################################
 0606) clear ; $cmd_internal txt names-custom
 read -p "Input the custom name to load # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal load-custom $archivo ;;
 0607) clear ; read -p "Input the systemfw name to clone # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal clone-wallsystem $archivo ;;
 0611) clear ; read -p "Input the new custom name to create # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal new-full-custom $archivo ;;
 0612) clear ; read -p "Input the new custom name to create # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal nueva-completa-custom $archivo ;;
 0613) clear ; read -p "Input the new custom name to create # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal new-mini-custom $archivo ;;
 0614) clear ; read -p "Input the new custom name to create # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal nueva-mini-custom $archivo ;;
 0615) clear ; read -p "Input the new custom name to create # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal new-tiny-custom $archivo ;;
 0616) clear ; read -p "Input the new custom name to create # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal nueva-diminuta-custom $archivo ;;
 0617) clear ; read -p "Input the custom to show config # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal show-custom $archivo ;;
 0618) clear ; $cmd_internal names-custom
 read -p "Input the custom name to modify # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal modify-custom $archivo ;;
 0619) clear ; $cmd_internal names-custom
 read -p "Input the custom name to delete # " archivo
-archivo=$(echo $archivo | $command_sed s/\\///g)
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal del-custom $archivo ;;
 0620) clear ; $cmd_internal txt names-custom ;;
 0621) clear ; $cmd_internal txt templates-regen ;;
 ################################################################################
-0701) clear ; $cmd_internal $outcli preferences-read ;;
+0701) clear ; $cmd_internal $cfg_favorite_out_cli preferences-read ;;
 0702) clear ; $cmd_internal preferences-edit ;;
-0703) clear ; $cmd_internal $outcli preferences-regen ;;
-0704) clear ; $cmd_internal $outcli alias-read ;;
+0703) clear ; $cmd_internal $cfg_favorite_out_cli preferences-regen ;;
+0704) clear ; $cmd_internal $cfg_favorite_out_cli alias-read ;;
 0705) clear ; $cmd_internal alias-edit ;;
-0706) clear ; $cmd_internal $outcli alias-regen ;;
+0706) clear ; $cmd_internal $cfg_favorite_out_cli alias-regen ;;
 0707) clear ; $cmd_internal cat-logcmd ;;
 0708) clear ; $cmd_internal tree-log ;;
 0709) clear ; $cmd_internal tree-pdf ;;
 0710) clear ; $cmd_internal tree-conf ;;
 0711) clear ; $cmd_internal tree-cache ;;
-0712) clear ; $cmd_internal $outcli clean-cache ;;
-0713) clear ; $cmd_internal $outcli ip4 ;;
-0714) clear ; $cmd_internal $outcli ip6 ;;
-0715) clear ; $cmd_internal $outcli speed-ip4 ;;
-0716) clear ; $cmd_internal $outcli speed-ip6 ;;
-0717) clear ; $cmd_internal $outcli sockets ;;
-0718) clear ; $cmd_internal $outcli notes ;;
-0719) clear ; $cmd_internal $outcli license ;;
-0720) clear ; $cmd_internal $outcli depends ;;
-0721) clear ; $cmd_internal $outcli info ;;
-0722) clear ; $cmd_internal $outcli version ;;
-0723) clear ; $cmd_internal $outcli options ;;
-0724) clear ; $cmd_internal $outcli info-options ;;
-0725) clear ; $cmd_internal $outcli nodes ;;
-0726) clear ; $cmd_internal $outcli date ;;
-0727) clear ; $cmd_internal $outcli free ;;
-0728) clear ; $cmd_internal $outcli expert ;;
-0729) clear ; $cmd_internal $outcli commands ;;
-0730) clear ; $cmd_internal $outcli variables ;;
+0712) clear ; $cmd_internal $cfg_favorite_out_cli clean-cache ;;
+0713) clear ; $cmd_internal $cfg_favorite_out_cli ip4 ;;
+0714) clear ; $cmd_internal $cfg_favorite_out_cli ip6 ;;
+0715) clear ; $cmd_internal $cfg_favorite_out_cli speed-ip4 ;;
+0716) clear ; $cmd_internal $cfg_favorite_out_cli speed-ip6 ;;
+0717) clear ; $cmd_internal $cfg_favorite_out_cli sockets ;;
+0718) clear ; $cmd_internal $cfg_favorite_out_cli notes ;;
+0719) clear ; $cmd_internal $cfg_favorite_out_cli license ;;
+0720) clear ; $cmd_internal $cfg_favorite_out_cli depends ;;
+0721) clear ; $cmd_internal $cfg_favorite_out_cli info ;;
+0722) clear ; $cmd_internal $cfg_favorite_out_cli version ;;
+0723) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
+0724) clear ; $cmd_internal $cfg_favorite_out_cli info-options ;;
+0725) clear ; $cmd_internal $cfg_favorite_out_cli nodes ;;
+0726) clear ; $cmd_internal $cfg_favorite_out_cli date ;;
+0727) clear ; $cmd_internal $cfg_favorite_out_cli free ;;
+0728) clear ; $cmd_internal $cfg_favorite_out_cli expert ;;
+0729) clear ; $cmd_internal $cfg_favorite_out_cli commands ;;
+0730) clear ; $cmd_internal $cfg_favorite_out_cli variables ;;
 0731) clear ; read -p "Input host whitelist ip4 to add # " archivo
-$cmd_internal $outcli add-whitelist4 $archivo ;;
+$cmd_internal $cfg_favorite_out_cli add-whitelist4 $archivo ;;
 0732) clear ; read -p "Input host whitelist ip6 to add # " archivo
-$cmd_internal $outcli add-whitelist6 $archivo ;;
+$cmd_internal $cfg_favorite_out_cli add-whitelist6 $archivo ;;
 0733) clear ; read -p "Input host blacklist ip4 to add # " archivo
-$cmd_internal $outcli add-blacklist4 $archivo ;;
+$cmd_internal $cfg_favorite_out_cli add-blacklist4 $archivo ;;
 0734) clear ; read -p "Input host blacklist ip6 to add # " archivo
-$cmd_internal $outcli add-blacklist6 $archivo ;;
-0735) clear ; $cmd_internal $outcli intro ;;
-0736) clear ; $cmd_internal $outcli download;;
-0737) clear ; $cmd_internal $outcli install;;
+$cmd_internal $cfg_favorite_out_cli add-blacklist6 $archivo ;;
+0735) clear ; $cmd_internal $cfg_favorite_out_cli intro ;;
+0736) clear ; $cmd_internal $cfg_favorite_out_cli download;;
+0737) clear ; $cmd_internal $cfg_favorite_out_cli install;;
 ################################################################################
-*) clear ; $favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+*) clear ; $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
 $cmd_internal text-pause clear ; exit ;;
 ################################################################################
 esac
@@ -8876,7 +8856,7 @@ exit; fi
 #### :rutina-inicial-text-pause:
 ####
 ####
-if [ "$first_option" == "text-pause" ]
+if [ "$cmd_first_option" == "text-pause" ]
 ####
 ####
 then read -p '$title_md $text_ok $title_md Press [enter] \
@@ -8892,10 +8872,10 @@ exit; fi
 #### :rutina-inicial-graphicall-pause:
 ####
 ####
-if [ "$first_option" == "graphicall-pause" ]
+if [ "$cmd_first_option" == "graphicall-pause" ]
 ####
 ####
-then $favorite_realpath_graphicalldialog --forms \
+then $cfg_favorite_realpath_graphicalldialog --forms \
 --text="wait a moment, usually 1 minute max."
 ####
 ####
@@ -8910,29 +8890,29 @@ exit; fi
 #### :rutina-inicial-gui-roll-zenity:
 ####
 ####
-if [ "$first_option" == "gui-roll-zenity" ] ;
+if [ "$cmd_first_option" == "gui-roll-zenity" ] ;
 ####
 ####
 then echo $head_waiting_gui ;
-if [ "$command_zenity" == "$NULL" ] ;
+if [ "$cmd_command_zenity" == "$NULL" ] ;
 then echo $message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="Info|Firewall-List-With-Conceptual|\
 Firewall-List-With-Numeral|firewall-wallcontrol|firewall-wallcustom|\
 firewall-wallsystem|firewall-netsystem"
-selection_menu="$($command_zenity --forms \
+selection_menu="$($cmd_command_zenity --forms \
 --text=gui-roll \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
---add-combo=$first_option \
+--add-combo=$cmd_first_option \
 --combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
-1) $command_zenity \
---width=$config_graphicall_width \
---height=$config_graphicall_height \
+1) $cmd_command_zenity \
+--width=$cfg_config_graphicall_width \
+--height=$cfg_config_graphicall_height \
 --info --text=good-bye ; exit ;;
 Info)	
 $cmd_internal gui-zenity info ; exit ;;
@@ -8962,11 +8942,11 @@ exit; fi
 #### :rutina-inicial-gui-roll-zenity-firewall-wallcontrol:
 ####
 ####
-if [ "$first_option" == "gui-roll-zenity-firewall-wallcontrol" ]
+if [ "$cmd_first_option" == "gui-roll-zenity-firewall-wallcontrol" ]
 ####
 ####
 then echo $head_waiting_gui ;
-if [ "$command_zenity" == "$NULL" ]
+if [ "$cmd_command_zenity" == "$NULL" ]
 then echo $message_without_guiroll ; exit ; fi
 ####
 ####
@@ -8975,18 +8955,18 @@ gui_menu="gui-principal-menu|gui-info-menu|\
 eraserules|eraserules4|eraserules6|wizard-tiny|wizard-mini|wizard-full|\
 without-connection|input-permisive|input-established|\
 tinyserver-tcp|tinyserver-udp|miniserver-tcp|miniserver-udp"
-selection_menu="$($command_zenity --forms \
+selection_menu="$($cmd_command_zenity --forms \
 --text=gui-roll-firewall-wallcontrol \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
---add-combo=$first_option \
+--add-combo=$cmd_first_option \
 --combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 #### 
 ####
 case "$selection_final" in
-1) $command_zenity \
---width=$config_graphicall_width \
---height=$config_graphicall_height \
+1) $cmd_command_zenity \
+--width=$cfg_config_graphicall_width \
+--height=$cfg_config_graphicall_height \
 --info --text=good-bye ; exit ;;
 gui-principal-menu)$cmd_internal gui-roll-zenity ;;
 gui-info-menu)$cmd_internal -gui-zenity firewall-wallcontrol ;;
@@ -8997,16 +8977,16 @@ $cmd_internal -gui-zenity list4;;
 reset)$cmd_internal -gui-zenity reset
 $cmd_internal -gui-zenity list4;;
 names)$cmd_internal -gui-zenity names ;;
-show)archivo="$($favorite_realpath_graphicalldialog  --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+show)archivo="$($cfg_favorite_realpath_graphicalldialog  --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Show-Firewall --entry-text=cfg-to-show)" ; 
 $cmd_internal -gui-zenity show $archivo ;;
-save)archivo="$($favorite_realpath_graphicalldialog  --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+save)archivo="$($cfg_favorite_realpath_graphicalldialog  --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall --entry-text=cfg-to-save)" ; 
 $cmd_internal -gui-zenity save $archivo ;;
-load)archivo="$($favorite_realpath_graphicalldialog  --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+load)archivo="$($cfg_favorite_realpath_graphicalldialog  --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Load-Firewall --entry-text=cfg-to-load)" ;
 $cmd_internal -gui-zenity load $archivo
 $cmd_internal -gui-zenity list4;;
@@ -9021,25 +9001,25 @@ without-connection)$cmd_internal -gui-zenity without-connection ; $cmd_internal 
 input-permisive)$cmd_internal -gui-zenity input-permisive ; $cmd_internal gui list4;;
 input-established)$cmd_internal -gui-zenity input-established ; $cmd_internal gui list4;;
 tinyserver-tcp)serverports="$(zenity --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-tcp)"                         ;
 $cmd_internal gui-zenity tinyserver-tcp $serverports    ; 
 $cmd_internal gui-zenity list4                         ;;
 tinyserver-udp)serverports="$(zenity --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-udp)"                         ;
 $cmd_internal gui-zenity tinyserver-udp $serverports    ; 
 $cmd_internal gui-zenity list4                         ;;
 miniserver-tcp)serverports="$(zenity --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-tcp)"                         ;
 $cmd_internal gui-zenity miniserver-tcp $serverports    ; 
 $cmd_internal gui-zenity list4                         ;;
 miniserver-udp)serverports="$(zenity --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-udp)"                         ;
 $cmd_internal gui-zenity miniserver-udp $serverports    ; 
@@ -9056,11 +9036,11 @@ exit; fi
 #### :rutina-inicial-gui-roll-zenity-firewall-listconceptual:
 ####
 ####
-if [ "$first_option" == "gui-roll-zenity-firewall-listconceptual" ]
+if [ "$cmd_first_option" == "gui-roll-zenity-firewall-listconceptual" ]
 ####
 ####
 then echo $head_waiting_gui ;
-if [ "$command_zenity" == "$NULL" ]
+if [ "$cmd_command_zenity" == "$NULL" ]
 then echo $message_without_guiroll ; exit ; fi
 ####
 ####
@@ -9069,18 +9049,18 @@ ls4|ls6|list-filter4|list-filter6|list-alltables|\
 list-nat4|list-nat6|list-mangle4|list-mangle6|\
 list-raw4|list-raw6|list-security4|list-security6|\
 list-ebtables|list-arptables"
-selection_menu="$($command_zenity --forms \
+selection_menu="$($cmd_command_zenity --forms \
 --text=gui-roll-firewall-listconceptual \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
---add-combo=$first_option \
+--add-combo=$cmd_first_option \
 --combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
-1) $command_zenity \
---width=$config_graphicall_width \
---height=$config_graphicall_height \
+1) $cmd_command_zenity \
+--width=$cfg_config_graphicall_width \
+--height=$cfg_config_graphicall_height \
 --info --text=good-bye ; exit ;;
 gui-principal-menu)$cmd_internal gui-roll-zenity ;;
 gui-info-menu)$cmd_internal -gui-zenity firewall-listconceptual ;;
@@ -9111,9 +9091,9 @@ exit; fi
 #### :rutina-inicial-gui-roll-zenity-firewall-listnumeral:
 ####
 ####
-if [ "$first_option" == "gui-roll-zenity-firewall-listnumeral" ]
+if [ "$cmd_first_option" == "gui-roll-zenity-firewall-listnumeral" ]
 then echo $head_waiting_gui ;
-if [ "$command_zenity" == "$NULL" ]
+if [ "$cmd_command_zenity" == "$NULL" ]
 then echo $message_without_guiroll ; exit ; fi
 ####
 ####
@@ -9122,18 +9102,18 @@ listn-filter4|listn-filter6|listn-alltables|\
 listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|\
 listn-raw4|listn-raw6|listn-security4|listn-security6|\
 list-ebtables|list-arptables"
-selection_menu="$($command_zenity --forms \
+selection_menu="$($cmd_command_zenity --forms \
 --text="gui-roll-firewall-listnumeral" \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
---add-combo=$first_option \
+--add-combo=$cmd_first_option \
 --combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
-1) $command_zenity \
---width=$config_graphicall_width \
---height=$config_graphicall_height \
+1) $cmd_command_zenity \
+--width=$cfg_config_graphicall_width \
+--height=$cfg_config_graphicall_height \
 --info --text=good-bye ; exit ;;
 gui-principal-menu)$cmd_internal gui-roll-zenity ;;
 gui-info-menu)$cmd_internal -gui-zenity firewall-listnumeral ;;
@@ -9164,9 +9144,9 @@ exit; fi
 #### :rutina-inicial-gui-roll-zenity-firewall-wallcustom:
 ####
 ####
-if [ "$first_option" == "gui-roll-zenity-firewall-wallcustom" ]
+if [ "$cmd_first_option" == "gui-roll-zenity-firewall-wallcustom" ]
 then echo $head_waiting_gui ;
-if [ "$command_zenity" == "$NULL" ]
+if [ "$cmd_command_zenity" == "$NULL" ]
 then echo $message_without_guiroll ; exit ; fi
 ####
 ####
@@ -9174,10 +9154,10 @@ gui_menu="gui-principal-menu|gui-info-menu|load-custom|\
 clone-wallsystem|new-full-custom|nueva-completa-custom|\
 new-mini-custom|nueva-mini-custom|new-tiny-custom|nueva-diminuta-custom|\
 names-custom|show-custom|modify-custom|del-custom|templates-regen"
-selection_menu="$($command_zenity --forms \
+selection_menu="$($cmd_command_zenity --forms \
 --text=gui-roll-firewall-wallcustom \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
---add-combo=$first_option \
+--add-combo=$cmd_first_option \
 --combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | sed 's/\|//g')"
 #### 
@@ -9186,66 +9166,66 @@ case "$selection_final" in
 1) exit ;;
 gui-principal-menu)$cmd_internal gui-roll-zenity ;;
 gui-info-menu)$cmd_internal -gui-zenity firewall-wallcustom ;;
-load-custom)archivo="$($command_zenity  --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+load-custom)archivo="$($cmd_command_zenity  --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Launch-Custom --entry-text=cfg_to_launch)" ; 
 $cmd_internal -gui-zenity load-custom $archivo ; $cmd_internal gui list4;;
-clone-wallsystem)archivo="$($command_zenity  --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+clone-wallsystem)archivo="$($cmd_command_zenity  --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Clone-firewall-static --entry-text=firewall_static_to_clone)" ; 
 $cmd_internal -gui-zenity clone-wallsystem $archivo ; $cmd_internal gui list4;;
 new-full-custom)
-archivo="$($command_zenity  --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+archivo="$($cmd_command_zenity  --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=new-full-custom \
 --entry-text=Input_file_name_to_new_full_configuration)" ;
 $cmd_internal -gui-zenity new-full-custom $archivo ;;
 nueva-completa-custom)
-archivo="$($command_zenity --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+archivo="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=nueva-completa-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
 $cmd_internal -gui-zenity nueva-completa-custom $archivo ;;
 new-mini-custom)
-archivo="$($command_zenity --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+archivo="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=new-mini-custom \
 --entry-text=Input_file_name_to_new_mini_configuration)" ;
 $cmd_internal -gui-zenity new-mini-custom $archivo ;;
 nueva-mini-custom)
-archivo="$($command_zenity --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+archivo="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=nueva-mini-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
 $cmd_internal -gui-zenity nueva-mini-custom $archivo ;;
 new-tiny-custom)
-archivo="$($command_zenity --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+archivo="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=new-tiny-custom \
 --entry-text=Input_file_name_to_new_mini_configuration)" ;
 $cmd_internal -gui-zenity new-tiny-custom $archivo ;;
 nueva-diminuta-custom)
-archivo="$($command_zenity --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+archivo="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=nueva-mini-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
 $cmd_internal -gui-zenity nueva-diminuta-custom $archivo ;;
 names-custom)
 $cmd_internal -gui-zenity names-custom ;;
 show-custom)
-archivo="$($command_zenity --entry \ 
---width=$config_graphicall_width --height=$config_graphicall_height \
+archivo="$($cmd_command_zenity --entry \ 
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Show-custom \
 --entry-text=cfg-to-show)" ;
 $cmd_internal -gui-zenity show-custom $archivo ;;
 modify-custom)
-archivo="$($command_zenity --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+archivo="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=modify-custom --entry-text=cfg-to-modify)" ;
 $cmd_internal -gui-zenity modify-custom $archivo ;;
 del-custom)
-archivo="$($command_zenity --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+archivo="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=del-custom --entry-text=cfg-to-delete)" ;
 $cmd_internal -gui-zenity del-custom $archivo ;;
 templates-regen)$cmd_internal -gui-zenity templates-regen ;;
@@ -9261,11 +9241,11 @@ exit ; fi
 #### :rutina-inicial-gui-roll-zenity-firewall-wallsystem:
 ####
 ####
-if [ "$first_option" == "gui-roll-zenity-firewall-wallsystem" ]
+if [ "$cmd_first_option" == "gui-roll-zenity-firewall-wallsystem" ]
 ####
 ####
 then echo $head_waiting_gui ;
-if [ "$command_zenity" == "$NULL" ]
+if [ "$cmd_command_zenity" == "$NULL" ]
 then echo $message_without_guiroll ; exit ; fi
 ####
 ####
@@ -9279,10 +9259,10 @@ game-widelands|server-proxy|server-web|server-vnc|\
 server-samba|server-ssh|server-print|server-lamp|\
 server-domain|server-news|server-mail|server-ftp|\
 server-teamspeak|server-mumble|server-sql|server-asterisk"
-selection="$($command_zenity --forms \
+selection="$($cmd_command_zenity --forms \
 --text=gui-roll-firewall-wallcustom \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
---add-combo=$first_option \
+--add-combo=$cmd_first_option \
 --combo-values=$menu)"
 #### 
 #### 
@@ -9375,11 +9355,11 @@ exit ; fi
 #### :rutina-inicial-gui-roll-zenity-firewall-netsystem:
 ####
 ####
-if [ "$first_option" == "gui-roll-zenity-firewall-netsystem" ] ;
+if [ "$cmd_first_option" == "gui-roll-zenity-firewall-netsystem" ] ;
 ####
 ####
 then echo $head_waiting_gui ;
-if [ "$command_zenity" == "$NULL" ] ;
+if [ "$cmd_command_zenity" == "$NULL" ] ;
 then echo $message_without_guiroll ; exit ; fi
 ####
 ####
@@ -9394,10 +9374,10 @@ add-whitelist4|add-whitelist6|add-blacklist4|add-blacklist6|\
 license-lgpl-v2|license-gpl-v2"
 ####
 ####
-selection="$($command_zenity --forms \
---text=$first_option \
+selection="$($cmd_command_zenity --forms \
+--text=$cmd_first_option \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
---add-combo=$first_option \
+--add-combo=$cmd_first_option \
 --combo-values=$gui_menu)"
 ####
 ####
@@ -9444,23 +9424,23 @@ license-gpl-v2) $cmd_internal -gui-zenity license-gpl-v2 ;;
 examples)$cmd_internal -gui-zenity examples ;;
 intro) $cmd_internal -gui-zenity intro ;;
 variables) $cmd_internal -gui-zenity variables ;;
-add-whitelist4) archivo="$($command_zenity --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+add-whitelist4) archivo="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=add-whitelist4 \
 --entry-text=host-to-add-to-whitelist-with-ip-v4)" 
 $cmd_internal gui-zenity add-whitelist4 $archivo ;;
-add-whitelist6) archivo="$($command_zenity --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+add-whitelist6) archivo="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=add-whitelist6 \
 --entry-text=host-to-add-to-whitelist-with-ip-v6)" 
 $cmd_internal gui-zenity add-whitelist6 $archivo ;;
-add-blacklist4) archivo="$($command_zenity --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+add-blacklist4) archivo="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=add-blacklist4 \
 --entry-text=host-to-add-to-blacklist-with-ip-v4)" 
 $cmd_internal gui-zenity add-blacklist4 $archivo ;;
-add-blacklist6) archivo="$($command_zenity --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+add-blacklist6) archivo="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=add-blacklist6 \
 --entry-text=host-to-add-to-blacklist-with-ip-v6)" 
 $cmd_internal gui-zenity add-blacklist6 $archivo ;;
@@ -9478,28 +9458,28 @@ exit; fi
 #### :rutina-inicial-gui-menu:
 ####
 ####
-if [ "$first_option" == "gui-menu" ] ;
+if [ "$cmd_first_option" == "gui-menu" ] ;
 ####
 ####
 then echo $head_waiting_gui ;
-if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
-echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md The used gui in $first_option is $second_option" ;
+if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
+echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
+echo "$title_md The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="Firewall-listconceptual|Firewall-listnumeral|firewall-wallcontrol|\
 Firewall-wallcustom|Firewall-wallsystem|firewall-netsystem|"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($second_option \
---width=$config_graphicall_width \
---height=$config_graphicall_height \
---column=$first_option \
---text=$first_option \
+selection_final="$($cmd_second_option \
+--width=$cfg_config_graphicall_width \
+--height=$cfg_config_graphicall_height \
+--column=$cmd_first_option \
+--text=$cmd_first_option \
 --title=Gui-menu-With-$cmd_internal-$cmd_version \
 --list $selection_menu)"
 ####
 ####
-if [ "$second_option" == "yad" ]; then
+if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | sed 's/|/ /g')"
 else final="$selection_final" ; fi
 echo ; echo "$title_md option selected: $final" ; echo ;
@@ -9508,17 +9488,17 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 case $final in
 1*) exit ;;
 Firewall-listconceptual*)
-$cmd_internal gui-menu-firewall-listconceptual $second_option ;;
+$cmd_internal gui-menu-firewall-listconceptual $cmd_second_option ;;
 Firewall-listnumeral*)
-$cmd_internal gui-menu-firewall-listnumeral $second_option ;;
+$cmd_internal gui-menu-firewall-listnumeral $cmd_second_option ;;
 firewall-wallcontrol*)
-$cmd_internal gui-menu-firewall-wallcontrol $second_option ;;
+$cmd_internal gui-menu-firewall-wallcontrol $cmd_second_option ;;
 Firewall-wallcustom*)
-$cmd_internal gui-menu-firewall-wallcustom $second_option ;;
+$cmd_internal gui-menu-firewall-wallcustom $cmd_second_option ;;
 Firewall-wallsystem*)
-$cmd_internal gui-menu-firewall-wallsystem $second_option ;;
+$cmd_internal gui-menu-firewall-wallsystem $cmd_second_option ;;
 firewall-netsystem*)
-$cmd_internal gui-menu-firewall-netsystem $second_option ;;
+$cmd_internal gui-menu-firewall-netsystem $cmd_second_option ;;
 esac
 ####
 ####
@@ -9531,11 +9511,11 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-wallcontrol:
 ####
 ####
-if   [ "$first_option" == "gui-menu-firewall-wallcontrol" ]
+if   [ "$cmd_first_option" == "gui-menu-firewall-wallcontrol" ]
 then echo $head_waiting_gui ;
-if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
-echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md The used gui in $first_option is $second_option" ;
+if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
+echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
+echo "$title_md The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -9545,16 +9525,16 @@ without-connection|input-permisive|input-established|\
 wizard-tiny|wizard-mini|wizard-full|\
 tinyserver-tcp|tinyserver-udp|miniserver-tcp|miniserver-udp|"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($second_option \
---width=$config_graphicall_width --height=$config_graphicall_height \
---column=$first_option \
---text=$first_option \
+selection_final="$($cmd_second_option \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--column=$cmd_first_option \
+--text=$cmd_first_option \
 --title=Gui-menu-With-$cmd_internal-$cmd_version \
 --list $selection_menu)"
 echo "$title_md The option selected:  $final" ;
 ####
 ####
-if [ "$second_option" == "yad" ]; then
+if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | sed 's/|/ /g')"
 else final="$selection_final" ; fi
 echo ; echo "$title_md option selected: $final" ; echo ;
@@ -9562,71 +9542,71 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 ####
 case "$final" in
 1*) exit ;;
-gui-principal-menu*) $cmd_internal gui-menu-$second_option  ;;
-gui-info-menu*)$cmd_internal gui-$second_option firewall-wallcontrol ;;
-stop*)$cmd_internal gui-$second_option stop ;
-$cmd_internal gui-$second_option list4 ;;
-continue*)$cmd_internal gui-$second_option continue ;
-$cmd_internal gui-$second_option list4 ;;
-reset*)$cmd_internal gui-$second_option reset ;
-$cmd_internal gui-$second_option list4 ;;
-names*)$cmd_internal gui-$second_option names ;;
-show*)archivo="$($favorite_basename_graphicalldialog --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+gui-principal-menu*) $cmd_internal gui-menu-$cmd_second_option  ;;
+gui-info-menu*)$cmd_internal gui-$cmd_second_option firewall-wallcontrol ;;
+stop*)$cmd_internal gui-$cmd_second_option stop ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+continue*)$cmd_internal gui-$cmd_second_option continue ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+reset*)$cmd_internal gui-$cmd_second_option reset ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+names*)$cmd_internal gui-$cmd_second_option names ;;
+show*)archivo="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-show)" 
-$cmd_internal gui-$second_option $archivo ;;
-save*)archivo="$($second_option--entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cmd_internal gui-$cmd_second_option $archivo ;;
+save*)archivo="$($cmd_second_option--entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-save)" 
-$cmd_internal gui-$second_option save $archivo ;;
-load*)archivo="$($favorite_realpath_graphicalldialog  --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cmd_internal gui-$cmd_second_option save $archivo ;;
+load*)archivo="$($cfg_favorite_realpath_graphicalldialog  --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=cfg-to-load)" 
-$cmd_internal gui-$second_option load $archivo ;
-$cmd_internal gui-$second_option list4 ;;
-actual*)$cmd_internal gui-$second_option actual ;;
-eraserules4*)$cmd_internal gui-$second_option eraserules4 ;;
-eraserules6*)$cmd_internal gui-$second_option eraserules6 ;;
-eraserules*)$cmd_internal gui-$second_option eraserules ;;
-wizard-full*)$cmd_internal gui-$second_option wizard-full ;
-$cmd_internal gui-$second_option list4 ;;
-wizard-mini*)$cmd_internal gui-$second_option wizard-mini ;
-$cmd_internal gui-$second_option list4 ;;
-wizard-tiny*)$cmd_internal gui-$second_option wizard-tiny ;
-$cmd_internal gui-$second_option list4 ;;
-without-connection*)$cmd_internal gui-$second_option without-connection ;
-$cmd_internal gui-$second_option list4 ;;
-input-permisive*)$cmd_internal gui-$second_option input-permisive ;
-$cmd_internal gui-$second_option list4 ;;
-input-established*)$cmd_internal gui-$second_option input-established ;
-$cmd_internal gui-$second_option list4 ;;
-tinyserver-tcp*)serverports="$($favorite_basename_graphicalldialog --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cmd_internal gui-$cmd_second_option load $archivo ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+actual*)$cmd_internal gui-$cmd_second_option actual ;;
+eraserules4*)$cmd_internal gui-$cmd_second_option eraserules4 ;;
+eraserules6*)$cmd_internal gui-$cmd_second_option eraserules6 ;;
+eraserules*)$cmd_internal gui-$cmd_second_option eraserules ;;
+wizard-full*)$cmd_internal gui-$cmd_second_option wizard-full ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+wizard-mini*)$cmd_internal gui-$cmd_second_option wizard-mini ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+wizard-tiny*)$cmd_internal gui-$cmd_second_option wizard-tiny ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+without-connection*)$cmd_internal gui-$cmd_second_option without-connection ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+input-permisive*)$cmd_internal gui-$cmd_second_option input-permisive ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+input-established*)$cmd_internal gui-$cmd_second_option input-established ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+tinyserver-tcp*)serverports="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-tcp)"                                 ;
-$cmd_internal gui-$second_option tinyserver-tcp $serverports    ; 
-$cmd_internal gui-$second_option list4                         ;;
-tinyserver-udp*)serverports="$($favorite_basename_graphicalldialog --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cmd_internal gui-$cmd_second_option tinyserver-tcp $serverports    ; 
+$cmd_internal gui-$cmd_second_option list4                         ;;
+tinyserver-udp*)serverports="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-udp)"                                 ;
-$cmd_internal gui-$second_option tinyserver-udp $serverports    ; 
-$cmd_internal gui-$second_option list4                         ;;
-miniserver-tcp*)serverports="$($favorite_basename_graphicalldialog --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cmd_internal gui-$cmd_second_option tinyserver-udp $serverports    ; 
+$cmd_internal gui-$cmd_second_option list4                         ;;
+miniserver-tcp*)serverports="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-tcp)"                                 ;
-$cmd_internal gui-$second_option miniserver-tcp $serverports    ; 
-$cmd_internal gui-$second_option list4                         ;;
-miniserver-udp*)serverports="$($favorite_basename_graphicalldialog --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cmd_internal gui-$cmd_second_option miniserver-tcp $serverports    ; 
+$cmd_internal gui-$cmd_second_option list4                         ;;
+miniserver-udp*)serverports="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-udp)"                                 ;
-$cmd_internal gui-$second_option miniserver-udp $serverports    ; 
-$cmd_internal gui-$second_option list4                         ;;
+$cmd_internal gui-$cmd_second_option miniserver-udp $serverports    ; 
+$cmd_internal gui-$cmd_second_option list4                         ;;
 esac
 ####
 ####
@@ -9639,13 +9619,13 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-listconceptual:
 ####
 ####
-if   [ "$first_option" == "gui-menu-firewall-listconceptual" ]
+if   [ "$cmd_first_option" == "gui-menu-firewall-listconceptual" ]
 ####
 ####
 then echo $head_waiting_gui ;
-if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
-echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md The used gui in $first_option is $second_option" ;
+if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
+echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
+echo "$title_md The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -9653,15 +9633,15 @@ ls4|ls6|list-filter4|list-filter6|list-alltables|\
 list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|\
 list-security4|list-security6|list-ebtables|list-arptables"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($second_option \
---width=$config_graphicall_width --height=$config_graphicall_height \
---column=$first_option \
---text=$first_option \
+selection_final="$($cmd_second_option \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--column=$cmd_first_option \
+--text=$cmd_first_option \
 --title=Gui-menu-With-$cmd_internal-$cmd_version \
 --list $selection_menu )"
 ####
 ####
-if [ "$second_option" == "yad" ]; then
+if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | sed 's/|/ /g')"
 else final="$selection_final" ; fi
 echo ; echo "$title_md option selected: $final" ; echo ;
@@ -9669,23 +9649,23 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 #### 
 case "$selection_final" in
 1*) exit ;;
-gui-principal-menu*) $cmd_internal gui-menu-$second_option ;;
-gui-info-menu*)$cmd_internal gui-$second_option firewall-listconceptual ;;
-ls4*)$cmd_internal gui-$second_option ls4 ;;
-ls6*)$cmd_internal gui-$second_option ls6 ;;
-list-alltables*)$cmd_internal gui-$second_option list-alltables ;;
-list-filter4*)$cmd_internal gui-$second_option list-filter4 ;;
-list-filter6*)$cmd_internal gui-$second_option list-filter6 ;;
-list-nat4*)$cmd_internal gui-$second_option list-nat4 ;;
-list-nat6*)$cmd_internal gui-$second_option list-nat6 ;;
-list-mangle4*)$cmd_internal gui-$second_option list-mangle4 ;;
-list-mangle6*)$cmd_internal gui-$second_option list-mangle6 ;;
-list-raw4*)$cmd_internal gui-$second_option list-raw4 ;;
-list-raw6*)$cmd_internal gui-$second_option list-raw6 ;;
-list-security4*)$cmd_internal gui-$second_option list-security4 ;;
-list-security6*)$cmd_internal gui-$second_option list-security6 ;;
-list-ebtables*)$cmd_internal gui-$second_option list-ebtables ;;
-list-arptables*)$cmd_internal gui-$second_option list-arptables ;;
+gui-principal-menu*) $cmd_internal gui-menu-$cmd_second_option ;;
+gui-info-menu*)$cmd_internal gui-$cmd_second_option firewall-listconceptual ;;
+ls4*)$cmd_internal gui-$cmd_second_option ls4 ;;
+ls6*)$cmd_internal gui-$cmd_second_option ls6 ;;
+list-alltables*)$cmd_internal gui-$cmd_second_option list-alltables ;;
+list-filter4*)$cmd_internal gui-$cmd_second_option list-filter4 ;;
+list-filter6*)$cmd_internal gui-$cmd_second_option list-filter6 ;;
+list-nat4*)$cmd_internal gui-$cmd_second_option list-nat4 ;;
+list-nat6*)$cmd_internal gui-$cmd_second_option list-nat6 ;;
+list-mangle4*)$cmd_internal gui-$cmd_second_option list-mangle4 ;;
+list-mangle6*)$cmd_internal gui-$cmd_second_option list-mangle6 ;;
+list-raw4*)$cmd_internal gui-$cmd_second_option list-raw4 ;;
+list-raw6*)$cmd_internal gui-$cmd_second_option list-raw6 ;;
+list-security4*)$cmd_internal gui-$cmd_second_option list-security4 ;;
+list-security6*)$cmd_internal gui-$cmd_second_option list-security6 ;;
+list-ebtables*)$cmd_internal gui-$cmd_second_option list-ebtables ;;
+list-arptables*)$cmd_internal gui-$cmd_second_option list-arptables ;;
 esac
 ####
 ####
@@ -9698,13 +9678,13 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-listnumeral:
 ####
 ####
-if   [ "$first_option" == "gui-menu-firewall-listnumeral" ]
+if   [ "$cmd_first_option" == "gui-menu-firewall-listnumeral" ]
 ####
 ####
 then echo $head_waiting_gui ;
-if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
-echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md The used gui in $first_option is $second_option" ;
+if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
+echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
+echo "$title_md The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|lsn4|lsn6|\
@@ -9713,15 +9693,15 @@ listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|\
 listn-raw4|listn-raw6|listn-security4|listn-security6|\
 list-ebtables|list-arptables"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($second_option \
---width=$config_graphicall_width --height=$config_graphicall_height \
---column=$first_option \
---text=$first_option \
+selection_final="$($cmd_second_option \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--column=$cmd_first_option \
+--text=$cmd_first_option \
 --title=Gui-menu-With-$cmd_internal-$cmd_version \
 --list $selection_menu )"
 ####
 ####
-if [ "$second_option" == "yad" ]; then
+if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | sed 's/|/ /g')"
 else final="$selection_final" ; fi
 echo ; echo "$title_md option selected: $final" ; echo ;
@@ -9729,23 +9709,23 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 #### 
 case "$selection_final" in
 1*) exit ;;
-gui-principal-menu*) $cmd_internal gui-menu-$second_option ;;
-gui-info-menu*)$cmd_internal gui-$second_option firewall-listnumeral ;;
-lsn4*)$cmd_internal gui-$second_option lsn4 ;;
-lsn6*)$cmd_internal gui-$second_option lsn6 ;;
-listn-alltables*)$cmd_internal gui-$second_option listn-alltables ;;
-listn-filter4*)$cmd_internal gui-$second_option listn-filter4 ;;
-listn-filter6*)$cmd_internal gui-$second_option listn-filter6 ;;
-listn-nat4*)$cmd_internal gui-$second_option listn-nat4 ;;
-listn-nat6*)$cmd_internal gui-$second_option listn-nat6 ;;
-listn-mangle4*)$cmd_internal gui-$second_option listn-mangle4 ;;
-listn-mangle6*)$cmd_internal gui-$second_option listn-mangle6 ;;
-listn-raw4*)$cmd_internal gui-$second_option listn-raw4 ;;
-listn-raw6*)$cmd_internal gui-$second_option listn-raw6 ;;
-listn-security4*)$cmd_internal gui-$second_option listn-security4 ;;
-listn-security6*)$cmd_internal gui-$second_option listn-security6 ;;
-list-ebtables*)$cmd_internal gui-$second_option list-ebtables ;;
-list-arptables*)$cmd_internal gui-$second_option list-arptables ;;
+gui-principal-menu*) $cmd_internal gui-menu-$cmd_second_option ;;
+gui-info-menu*)$cmd_internal gui-$cmd_second_option firewall-listnumeral ;;
+lsn4*)$cmd_internal gui-$cmd_second_option lsn4 ;;
+lsn6*)$cmd_internal gui-$cmd_second_option lsn6 ;;
+listn-alltables*)$cmd_internal gui-$cmd_second_option listn-alltables ;;
+listn-filter4*)$cmd_internal gui-$cmd_second_option listn-filter4 ;;
+listn-filter6*)$cmd_internal gui-$cmd_second_option listn-filter6 ;;
+listn-nat4*)$cmd_internal gui-$cmd_second_option listn-nat4 ;;
+listn-nat6*)$cmd_internal gui-$cmd_second_option listn-nat6 ;;
+listn-mangle4*)$cmd_internal gui-$cmd_second_option listn-mangle4 ;;
+listn-mangle6*)$cmd_internal gui-$cmd_second_option listn-mangle6 ;;
+listn-raw4*)$cmd_internal gui-$cmd_second_option listn-raw4 ;;
+listn-raw6*)$cmd_internal gui-$cmd_second_option listn-raw6 ;;
+listn-security4*)$cmd_internal gui-$cmd_second_option listn-security4 ;;
+listn-security6*)$cmd_internal gui-$cmd_second_option listn-security6 ;;
+list-ebtables*)$cmd_internal gui-$cmd_second_option list-ebtables ;;
+list-arptables*)$cmd_internal gui-$cmd_second_option list-arptables ;;
 esac
 ####
 ####
@@ -9758,13 +9738,13 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-wallcustom:
 ####
 ####
-if [ "$first_option" == "gui-menu-firewall-wallcustom" ]
+if [ "$cmd_first_option" == "gui-menu-firewall-wallcustom" ]
 ####
 ####
 then echo $head_waiting_gui ;
-if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
-echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md The used gui in $first_option is $second_option" ;
+if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
+echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
+echo "$title_md The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -9775,15 +9755,15 @@ new-tiny-custom|nueva-diminuta-custom|\
 names-custom|show-custom|modify-custom|\
 del-custom|templates-regen"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($second_option \
---width=$config_graphicall_width --height=$config_graphicall_height \
---column=$first_option \
---text=$first_option \
+selection_final="$($cmd_second_option \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--column=$cmd_first_option \
+--text=$cmd_first_option \
 --title=Gui-menu-With-$cmd_internal-$cmd_version \
 --list $selection_menu )"
 ####
 ####
-if [ "$second_option" == "yad" ]; then
+if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | sed 's/|/ /g')"
 else final="$selection_final" ; fi
 echo ; echo "$title_md option selected: $final" ; echo ;
@@ -9791,67 +9771,67 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 #### 
 case "$selection_final" in
 1*) exit ;;
-gui-principal-menu*) $cmd_internal gui-menu-$second_option ;;
-gui-info-menu*) $cmd_internal gui-$second_option firewall-wallcustom ;;
-load-custom*)archivo="$($second_option  --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+gui-principal-menu*) $cmd_internal gui-menu-$cmd_second_option ;;
+gui-info-menu*) $cmd_internal gui-$cmd_second_option firewall-wallcustom ;;
+load-custom*)archivo="$($cmd_second_option  --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Launch-Custom \
 --entry-text=cfg-to-launch)" ; 
-$cmd_internal gui-$second_option load-custom $archivo ;
-$cmd_internal gui-$second_option list4 ;;
-clone-wallsystem*)archivo="$($second_option --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cmd_internal gui-$cmd_second_option load-custom $archivo ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+clone-wallsystem*)archivo="$($cmd_second_option --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Clone-static \
 --entry-text=static-firewall-to-clone-config)" ; 
-$cmd_internal gui-$second_option clone-wallsystem $archivo ;
-$cmd_internal gui-$second_option list4;;
-new-full-custom*) archivo="$($second_option --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cmd_internal gui-$cmd_second_option clone-wallsystem $archivo ;
+$cmd_internal gui-$cmd_second_option list4;;
+new-full-custom*) archivo="$($cmd_second_option --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=new-full-custom \
 --entry-text=Input_file_name_to_new_full_configuration)" ;
-$cmd_internal -gui-$second_option new-full-custom $archivo ;;
-nueva-completa-custom*) archivo="$($second_option --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cmd_internal -gui-$cmd_second_option new-full-custom $archivo ;;
+nueva-completa-custom*) archivo="$($cmd_second_option --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=nueva-completa-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" 
-$cmd_internal gui-$second_option nueva-completa-custom $archivo ;;
-new-mini-custom*) archivo="$($second_option --entry \
---width=$config_graphicall_width --height=$config_graphicall_height --entry \
+$cmd_internal gui-$cmd_second_option nueva-completa-custom $archivo ;;
+new-mini-custom*) archivo="$($cmd_second_option --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height --entry \
 --title=new-mini-custom \
 --entry-text=Input_file_ name_ to_ new_ mini_configuration)" ;
-$cmd_internal gui-$second_option new-mini-custom $archivo ;;
-nueva-mini-custom*) archivo="$($second_option --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cmd_internal gui-$cmd_second_option new-mini-custom $archivo ;;
+nueva-mini-custom*) archivo="$($cmd_second_option --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=nueva-mini-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
-$cmd_internal gui-$second_option nueva-mini-custom $archivo ;;
-new-tiny-custom*) archivo="$($second_option --entry \
---width=$config_graphicall_width --height=$config_graphicall_height --entry \
+$cmd_internal gui-$cmd_second_option nueva-mini-custom $archivo ;;
+new-tiny-custom*) archivo="$($cmd_second_option --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height --entry \
 --title=new-tiny-custom \
 --entry-text=Input_file_ name_ to_ new_ mini_configuration)" ;
-$cmd_internal gui-$second_option new-tiny-custom $archivo ;;
-nueva-diminuta-custom*) archivo="$($second_option --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cmd_internal gui-$cmd_second_option new-tiny-custom $archivo ;;
+nueva-diminuta-custom*) archivo="$($cmd_second_option --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=nueva-diminuta-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
-$cmd_internal gui-$second_option nueva-diminuta-custom $archivo ;;
-names-custom*) $cmd_internal gui-menu-$second_option names-custom ;;
-show-custom*) archivo="$($second_option --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cmd_internal gui-$cmd_second_option nueva-diminuta-custom $archivo ;;
+names-custom*) $cmd_internal gui-menu-$cmd_second_option names-custom ;;
+show-custom*) archivo="$($cmd_second_option --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=show-custom \
 --entry-text=cfg-to-show)" ;
-$cmd_internal gui-$second_option show-custom $archivo ;;
-modify-custom*) archivo="$($second_option --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cmd_internal gui-$cmd_second_option show-custom $archivo ;;
+modify-custom*) archivo="$($cmd_second_option --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=modify-custom \
 --entry-text=cfg-to-modify)" ;
-$cmd_internal gui-$second_option modify-custom $archivo ;;
-del-custom*) archivo="$($second_option --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+$cmd_internal gui-$cmd_second_option modify-custom $archivo ;;
+del-custom*) archivo="$($cmd_second_option --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=del-custom \
 --entry-text=cfg-to-delete)";
-$cmd_internal gui-$second_option del-custom $archivo ;;
-templates-regen*)$cmd_internal gui-$second_option  templates-regen ;;
+$cmd_internal gui-$cmd_second_option del-custom $archivo ;;
+templates-regen*)$cmd_internal gui-$cmd_second_option  templates-regen ;;
 esac
 ####
 ####
@@ -9864,11 +9844,11 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-wallsystem:
 ####
 ####  
-if [ "$first_option" == "gui-menu-firewall-wallsystem" ]
+if [ "$cmd_first_option" == "gui-menu-firewall-wallsystem" ]
 then echo $head_waiting_gui ;
-if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
-echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md The used gui in $first_option is $second_option" ;
+if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
+echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
+echo "$title_md The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -9882,15 +9862,15 @@ server-print|server-lamp|server-domain|\
 server-news|server-mail|server-ftp|server-teamspeak|\
 server-mumble|server-sql|server-asterisk"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($second_option \
---width=$config_graphicall_width --height=$config_graphicall_height \
---column=$first_option \
---text=$first_option \
+selection_final="$($cmd_second_option \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--column=$cmd_first_option \
+--text=$cmd_first_option \
 --title=Gui-menu-With-$cmd_internal-$cmd_version \
 --list $selection_menu )"
 ####
 ####
-if [ "$second_option" == "yad" ]; then
+if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | sed 's/|/ /g')"
 else final="$selection_final" ; fi
 echo ; echo "$title_md option selected: $final" ; echo ;
@@ -9898,80 +9878,80 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 #### 
 case "$selection_final" in
 1*) exit ;;
-gui-principal-menu*) $cmd_internal gui-menu-$second_option ;;
-gui-info-menu*)$cmd_internal gui-$second_option firewall-wallsystem ;;
-client-basic*)$cmd_internal gui-$second_option client-basic ;
-$cmd_internal gui-$second_option list4 ;;
-client-web*)$cmd_internal gui-$second_option client-web ;
-$cmd_internal gui-$second_option list4 ;;
-client-ssh*)$cmd_internal gui-$second_option client-ssh ;
-$cmd_internal gui-$second_option list4 ;;
-client-telnet*)$cmd_internal gui-$second_option client-telnet ;
-$cmd_internal gui-$second_option list4 ;;
-client-ipp*)$cmd_internal gui-$second_option client-ipp ;
-$cmd_internal gui-$second_option list4 ;;
-client-irc*)$cmd_internal gui-$second_option client-irc ;
-$cmd_internal gui-$second_option list4 ;;
-client-mail*)$cmd_internal gui-$second_option client-mail ;
-$cmd_internal gui-$second_option list4 ;;
-client-news*)$cmd_internal gui-$second_option client-news ;
-$cmd_internal gui-$second_option list4 ;;
-client-ftp*)$cmd_internal gui-$second_option client-ftp ;
-$cmd_internal gui-$second_option list4 ;;
-client-git*)$cmd_internal gui-$second_option client-git ;
-$cmd_internal gui-$second_option list4 ;;
-client-vnc*)$cmd_internal gui-$second_option client-vnc ;
-$cmd_internal gui-$second_option list4 ;;
-client-torrent*)$cmd_internal gui-$second_option client-torrent ;
-$cmd_internal gui-$second_option list4 ;;
-client-vpn*)$cmd_internal gui-$second_option client-vpn ;
-$cmd_internal gui-$second_option list4 ;;
-client-tor*)$cmd_internal gui-$second_option client-tor ;
-$cmd_internal gui-$second_option list4 ;;
-games-shooter*)$cmd_internal gui-$second_option games-shooter ;
-$cmd_internal gui-$second_option list4 ;;
-game-wesnoth*)$cmd_internal gui-$second_option game-wesnoth ; 
-$cmd_internal gui-$second_option list4 ;;
-game-minetest*)$cmd_internal gui-$second_option game-minetest ;
-$cmd_internal gui-$second_option list4 ;;
-game-freeciv*)$cmd_internal gui-$second_option game-freeciv ;
-$cmd_internal gui-$second_option list4;;
-game-widelands*)$cmd_internal gui-$second_option game-widelands ;
-$cmd_internal gui-$second_option list4 ;;
-lan-tor*)$cmd_internal gui-$second_option lan-tor ;
-$cmd_internal gui-$second_option list4 ;;
-lan-vpn*)$cmd_internal gui-$second_option lan-vpn ;
-$cmd_internal gui-$second_option list4 ;;
-shield-ssh*)$cmd_internal gui-$second_option shield-ssh ;
- $cmd_internal gui-$second_option list4 ;;
-server-ssh*)$cmd_internal gui-$second_option server-ssh ;
-$cmd_internal gui-$second_option list4 ;;
-server-web*)$cmd_internal gui-$second_option server-web ;
- $cmd_internal gui-$second_option list4 ;;
-server-vnc*)$cmd_internal gui-$second_option server-vnc ;
-$cmd_internal gui-$second_option list4 ;;
-server-samba*)$cmd_internal gui-$second_option server-samba ;
-$cmd_internal gui-$second_option list4 ;;
-server-news*)$cmd_internal gui-$second_option server-news ;
-$cmd_internal gui-$second_option list4 ;;
-server-mail*)$cmd_internal gui-$second_option server-mail ;
-$cmd_internal gui-$second_option list4 ;;
-server-ftp*)$cmd_internal gui-$second_option server-ftp ;
-$cmd_internal gui-$second_option list4 ;;
-server-print*)$cmd_internal gui-$second_option server-print ;
-$cmd_internal gui-$second_option list4 ;;
-server-lamp*)$cmd_internal gui-$second_option server-lamp ;
-$cmd_internal gui-$second_option list4 ;;
-server-teamspeak*)$cmd_internal gui-$second_option server-teamspeak ;
-$cmd_internal gui-$second_option list4 ;;
-server-mumble*)$cmd_internal gui-$second_option server-mumble ;
-$cmd_internal gui-$second_option list4 ;;
-server-sql*)$cmd_internal gui-$second_option server-sql ;
-$cmd_internal gui-$second_option list4 ;;
-server-asterisk*)$cmd_internal gui-$second_option server-asterisk ;
-$cmd_internal gui-$second_option list4 ;;
-server-domain*)$cmd_internal gui-$second_option server-domain ;
-$cmd_internal gui-$second_option list4 ;;
+gui-principal-menu*) $cmd_internal gui-menu-$cmd_second_option ;;
+gui-info-menu*)$cmd_internal gui-$cmd_second_option firewall-wallsystem ;;
+client-basic*)$cmd_internal gui-$cmd_second_option client-basic ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+client-web*)$cmd_internal gui-$cmd_second_option client-web ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+client-ssh*)$cmd_internal gui-$cmd_second_option client-ssh ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+client-telnet*)$cmd_internal gui-$cmd_second_option client-telnet ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+client-ipp*)$cmd_internal gui-$cmd_second_option client-ipp ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+client-irc*)$cmd_internal gui-$cmd_second_option client-irc ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+client-mail*)$cmd_internal gui-$cmd_second_option client-mail ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+client-news*)$cmd_internal gui-$cmd_second_option client-news ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+client-ftp*)$cmd_internal gui-$cmd_second_option client-ftp ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+client-git*)$cmd_internal gui-$cmd_second_option client-git ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+client-vnc*)$cmd_internal gui-$cmd_second_option client-vnc ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+client-torrent*)$cmd_internal gui-$cmd_second_option client-torrent ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+client-vpn*)$cmd_internal gui-$cmd_second_option client-vpn ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+client-tor*)$cmd_internal gui-$cmd_second_option client-tor ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+games-shooter*)$cmd_internal gui-$cmd_second_option games-shooter ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+game-wesnoth*)$cmd_internal gui-$cmd_second_option game-wesnoth ; 
+$cmd_internal gui-$cmd_second_option list4 ;;
+game-minetest*)$cmd_internal gui-$cmd_second_option game-minetest ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+game-freeciv*)$cmd_internal gui-$cmd_second_option game-freeciv ;
+$cmd_internal gui-$cmd_second_option list4;;
+game-widelands*)$cmd_internal gui-$cmd_second_option game-widelands ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+lan-tor*)$cmd_internal gui-$cmd_second_option lan-tor ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+lan-vpn*)$cmd_internal gui-$cmd_second_option lan-vpn ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+shield-ssh*)$cmd_internal gui-$cmd_second_option shield-ssh ;
+ $cmd_internal gui-$cmd_second_option list4 ;;
+server-ssh*)$cmd_internal gui-$cmd_second_option server-ssh ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+server-web*)$cmd_internal gui-$cmd_second_option server-web ;
+ $cmd_internal gui-$cmd_second_option list4 ;;
+server-vnc*)$cmd_internal gui-$cmd_second_option server-vnc ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+server-samba*)$cmd_internal gui-$cmd_second_option server-samba ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+server-news*)$cmd_internal gui-$cmd_second_option server-news ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+server-mail*)$cmd_internal gui-$cmd_second_option server-mail ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+server-ftp*)$cmd_internal gui-$cmd_second_option server-ftp ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+server-print*)$cmd_internal gui-$cmd_second_option server-print ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+server-lamp*)$cmd_internal gui-$cmd_second_option server-lamp ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+server-teamspeak*)$cmd_internal gui-$cmd_second_option server-teamspeak ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+server-mumble*)$cmd_internal gui-$cmd_second_option server-mumble ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+server-sql*)$cmd_internal gui-$cmd_second_option server-sql ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+server-asterisk*)$cmd_internal gui-$cmd_second_option server-asterisk ;
+$cmd_internal gui-$cmd_second_option list4 ;;
+server-domain*)$cmd_internal gui-$cmd_second_option server-domain ;
+$cmd_internal gui-$cmd_second_option list4 ;;
 esac
 ####
 ####
@@ -9984,11 +9964,11 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-netsystem:
 ####
 ####
-if [ "$first_option" == "gui-menu-firewall-netsystem" ]
+if [ "$cmd_first_option" == "gui-menu-firewall-netsystem" ]
 then echo $head_waiting_gui ;
-if [ "$second_option" == "zenity" ] || [ "$second_option" == "yad" ]; then
-echo ; else second_option="$favorite_basename_graphicalldialog" ; echo ; fi
-echo "$title_md The used gui in $first_option is $second_option" ;
+if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
+echo ; else second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
+echo "$title_md The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
@@ -10001,15 +9981,15 @@ net4-info|net6-info|route4|route6||sockets|\
 add-whitelist4|add-whitelist6|add-blacklist4|add-blacklist6|\
 install|upgrade|examples|depends|variables|utils|about"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
-selection_final="$($second_option \
---width=$config_graphicall_width --height=$config_graphicall_height \
---column=$first_option \
---text=$first_option \
+selection_final="$($cmd_second_option \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--column=$cmd_first_option \
+--text=$cmd_first_option \
 --title=Gui-menu-With-$cmd_internal-$cmd_version \
 --list $selection_menu )"
 ####
 ####
-if [ "$second_option" == "yad" ]; then
+if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | sed 's/|/ /g')"
 else final="$selection_final" ; fi
 echo ; echo "$title_md option selected: $final" ; echo ;
@@ -10017,65 +9997,65 @@ echo ; echo "$title_md option selected: $final" ; echo ;
 ####
 case "$selection_final" in
 1*) exit ;;
-gui-principal-menu*) $cmd_internal gui-menu-$second_option ;;
-gui-info-menu*)$cmd_internal gui-$second_option firewall-netsystem ;;
-preferences-read*)$cmd_internal gui-$second_option preferences-read ;;
-preferences-edit*)$cmd_internal gui-$second_option preferences-edit ;;
-preferences-regen*)$cmd_internal gui-$second_option preferences-regen ;;
-alias-read*)$cmd_internal gui-$second_option alias-read ;;
-alias-edit*)$cmd_internal gui-$second_option alias-edit ;;
-alias-regen*)$cmd_internal gui-$second_option alias-regen ;;
-options*)$cmd_internal gui-$second_option options ;;
-clasic-options*)$cmd_internal gui-$second_option clasic-options ;;
-info-options*)$cmd_internal gui-$second_option info-options ;;
-expert*)$cmd_internal gui-$second_option expert ;;
-intro*)$cmd_internal gui-$second_option intro ;;
-download*)$cmd_internal gui-$second_option download ;;
-ip4*)$cmd_internal gui-$second_option ip4 ;;
-ip6*)$cmd_internal gui-$second_option ip6 ;;
-speed-ip4*)$cmd_internal gui-$second_option speed-ip4 ;;
-speed-ip6*)$cmd_internal gui-$second_option speed-ip6 ;;
-sockets*)$cmd_internal gui-$second_option sockets ;;
-cat-logcmd*)$cmd_internal gui-$second_option cat-logcmd ;;
-tree-log*)$cmd_internal gui-$second_option tree-log ;;
-tree-pdf*)$cmd_internal gui-$second_option tree-pdf ;;
-tree-conf*)$cmd_internal gui-$second_option tree-conf ;;
-tree-cache*)$cmd_internal gui-$second_option tree-cache ;;
-clean-cache*)$cmd_internal gui-$second_option clean-cache ;;
-examples*)$cmd_internal gui-$second_option examples ;;
-depends*)$cmd_internal gui-$second_option depends ;;
+gui-principal-menu*) $cmd_internal gui-menu-$cmd_second_option ;;
+gui-info-menu*)$cmd_internal gui-$cmd_second_option firewall-netsystem ;;
+preferences-read*)$cmd_internal gui-$cmd_second_option preferences-read ;;
+preferences-edit*)$cmd_internal gui-$cmd_second_option preferences-edit ;;
+preferences-regen*)$cmd_internal gui-$cmd_second_option preferences-regen ;;
+alias-read*)$cmd_internal gui-$cmd_second_option alias-read ;;
+alias-edit*)$cmd_internal gui-$cmd_second_option alias-edit ;;
+alias-regen*)$cmd_internal gui-$cmd_second_option alias-regen ;;
+options*)$cmd_internal gui-$cmd_second_option options ;;
+clasic-options*)$cmd_internal gui-$cmd_second_option clasic-options ;;
+info-options*)$cmd_internal gui-$cmd_second_option info-options ;;
+expert*)$cmd_internal gui-$cmd_second_option expert ;;
+intro*)$cmd_internal gui-$cmd_second_option intro ;;
+download*)$cmd_internal gui-$cmd_second_option download ;;
+ip4*)$cmd_internal gui-$cmd_second_option ip4 ;;
+ip6*)$cmd_internal gui-$cmd_second_option ip6 ;;
+speed-ip4*)$cmd_internal gui-$cmd_second_option speed-ip4 ;;
+speed-ip6*)$cmd_internal gui-$cmd_second_option speed-ip6 ;;
+sockets*)$cmd_internal gui-$cmd_second_option sockets ;;
+cat-logcmd*)$cmd_internal gui-$cmd_second_option cat-logcmd ;;
+tree-log*)$cmd_internal gui-$cmd_second_option tree-log ;;
+tree-pdf*)$cmd_internal gui-$cmd_second_option tree-pdf ;;
+tree-conf*)$cmd_internal gui-$cmd_second_option tree-conf ;;
+tree-cache*)$cmd_internal gui-$cmd_second_option tree-cache ;;
+clean-cache*)$cmd_internal gui-$cmd_second_option clean-cache ;;
+examples*)$cmd_internal gui-$cmd_second_option examples ;;
+depends*)$cmd_internal gui-$cmd_second_option depends ;;
 install*)$cmd_internal -gui-zenity install ;;
 upgrade*)$cmd_internal -gui-zenity upgrade ;;
-notes*)$cmd_internal gui-$second_option notes ;;
-net4-info*)$cmd_internal gui-$second_option net4-info ;;
-net6-info*)$cmd_internal gui-$second_option net6-info ;;
-route4*)$cmd_internal gui-$second_option route4 ;;
-route6*)$cmd_internal gui-$second_option route6 ;;
-license-lgpl-v2*)$cmd_internal gui-$second_option license-lgpl-v2 ;;
-license-gpl-v2*)$cmd_internal gui-$second_option license-gpl-v2 ;;
-variables*) $cmd_internal gui-$second_option variables ;;
-add-whitelist4*) archivo="$($command_zenity --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+notes*)$cmd_internal gui-$cmd_second_option notes ;;
+net4-info*)$cmd_internal gui-$cmd_second_option net4-info ;;
+net6-info*)$cmd_internal gui-$cmd_second_option net6-info ;;
+route4*)$cmd_internal gui-$cmd_second_option route4 ;;
+route6*)$cmd_internal gui-$cmd_second_option route6 ;;
+license-lgpl-v2*)$cmd_internal gui-$cmd_second_option license-lgpl-v2 ;;
+license-gpl-v2*)$cmd_internal gui-$cmd_second_option license-gpl-v2 ;;
+variables*) $cmd_internal gui-$cmd_second_option variables ;;
+add-whitelist4*) archivo="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=add-whitelist4 \
 --entry-text=host-to-add-to-whitelist-with-ip-v4)" 
 $cmd_internal gui-zenity add-whitelist4 $archivo ;;
-add-whitelist6*) archivo="$($command_zenity --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+add-whitelist6*) archivo="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=add-whitelist6 \
 --entry-text=host-to-add-to-whitelist-with-ip-v6)" 
 $cmd_internal gui-zenity add-whitelist6 $archivo ;;
-add-blacklist4*) archivo="$($command_zenity --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+add-blacklist4*) archivo="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=add-blacklist4 \
 --entry-text=host-to-add-to-blacklist-with-ip-v4)" 
 $cmd_internal gui-zenity add-blacklist4 $archivo ;;
-add-blacklist6*) archivo="$($command_zenity --entry \
---width=$config_graphicall_width --height=$config_graphicall_height \
+add-blacklist6*) archivo="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=add-blacklist6 \
 --entry-text=host-to-add-to-blacklist-with-ip-v6)" 
 $cmd_internal gui-zenity add-blacklist6 $archivo ;;
-utils*) $cmd_internal gui-$second_option commands ;;
-about*) $cmd_internal gui-$second_option about ;;
+utils*) $cmd_internal gui-$cmd_second_option commands ;;
+about*) $cmd_internal gui-$cmd_second_option about ;;
 esac
 ####
 ####
@@ -10102,24 +10082,24 @@ exit; fi
 #### :rutina-inicial-load-custom:
 ####
 ####
-if [ "$first_option" == "load-custom" ]
+if [ "$cmd_first_option" == "load-custom" ]
 ####
 ####
-then echo "$title_md $text_info [ loading firewall wallcustom $second_option ]"
-launch_rules_firewall="yes" ;
+then echo "$title_md $text_info [ loading firewall wallcustom $cmd_second_option ]"
+allow_launchrules_firewall="yes" ;
 type_firewall="wallcustom" ;
-name_firewall="$second_option" ;
+name_firewall="$cmd_second_option" ;
 ####
 ####
 #### english: configure load-custom variables if there are
 #### spanish: configura variables modificadas si estan ahi
 ####
 ####
-if [ -f "$default_directory_custom/$second_option" ]
-then source $default_directory_custom/$second_option ; fi
+if [ -f "$cmd_default_directory_custom/$cmd_second_option" ]
+then source $cmd_default_directory_custom/$cmd_second_option ; fi
 ####
 ####
-if [ ! -f "$default_directory_custom/$second_option" ]
+if [ ! -f "$cmd_default_directory_custom/$cmd_second_option" ]
 then  $cmd_internal names-custom ; exit; fi
 ####
 ####
@@ -10132,24 +10112,24 @@ fi
 #### :rutina-inicial-loadtiny-custom:
 ####
 ####
-if [ "$first_option" == "loadtiny-custom" ]
+if [ "$cmd_first_option" == "loadtiny-custom" ]
 ####
 ####
-then echo "$title_md $text_info [ loading firewall wallcustom $second_option ]"
-launch_rules_firewall="yes" ;
+then echo "$title_md $text_info [ loading firewall wallcustom $cmd_second_option ]"
+allow_launchrules_firewall="yes" ;
 type_firewall="tinycustom" ;
-name_firewall="$second_option" ;
+name_firewall="$cmd_second_option" ;
 ####
 ####
 #### english: configure load-custom variables if there are
 #### spanish: configura variables modificadas si estan ahi
 ####
 ####
-if [ -f "$default_directory_custom/$second_option" ]
-then source $default_directory_custom/$second_option ; fi
+if [ -f "$cmd_default_directory_custom/$cmd_second_option" ]
+then source $cmd_default_directory_custom/$cmd_second_option ; fi
 ####
 ####
-if [ ! -f "$default_directory_custom/$second_option" ]
+if [ ! -f "$cmd_default_directory_custom/$cmd_second_option" ]
 then  $cmd_internal names-custom ; exit; fi
 ####
 ####
@@ -10162,11 +10142,11 @@ fi
 #### :rutina-inicial-tinyserver-tcp:
 ####
 ####
-if [ "$first_option" == "tinyserver-tcp" ]
+if [ "$cmd_first_option" == "tinyserver-tcp" ]
 ####
 ####
 then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
-launch_rules_firewall="yes" ;
+allow_launchrules_firewall="yes" ;
 type_firewall="wallcontrol" ;
 name_firewall="tinyserver-tcp" ;
 first_option="loadtiny-custom" ;
@@ -10176,14 +10156,14 @@ server_port_tcp="$2"
 server_port_udp=""
 ####
 ####
-if [ "$third_option" != "$NULL" ] ;
+if [ "$cmd_third_option" != "$NULL" ] ;
 then 
 config_ipv4_netserver="$3" 
 config_ipv6_netserver="$3"
 fi
 ####
 ####
-if [ "$second_option" != "$NULL" ]; then
+if [ "$cmd_second_option" != "$NULL" ]; then
 echo "$title_md $text_info [ Server with ports tcp $2 for host $3 ]"
 echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
 else
@@ -10191,7 +10171,7 @@ echo "$text_info Introducction: Put the ports tcp servers"
 echo "$text_info Introducction: The tinyserver-udp configured like client for all protocols."
 echo "$text_info Example_1: $cmd_internal tinyserver-tcp 20:22,80"
 echo "$text_info Example_2: $cmd_internal tinyserver-tcp 20:22,80 12.168.0.0/24"
-echo "$text_fail fwiptables $first_option no loaded"
+echo "$text_fail fwiptables $cmd_first_option no loaded"
 exit ; fi
 ####
 ####
@@ -10204,11 +10184,11 @@ fi
 #### :rutina-inicial-tinyserver-udp:
 ####
 ####
-if [ "$first_option" == "tinyserver-udp" ]
+if [ "$cmd_first_option" == "tinyserver-udp" ]
 ####
 ####
 then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
-launch_rules_firewall="yes" ;
+allow_launchrules_firewall="yes" ;
 type_firewall="wallcontrol" ;
 name_firewall="tinyserver-udp" ;
 first_option="loadtiny-custom" ;
@@ -10218,14 +10198,14 @@ server_port_udp="$2"
 server_port_tcp=""
 ####
 ####
-if [ "$third_option" != "$NULL" ] ;
+if [ "$cmd_third_option" != "$NULL" ] ;
 then
 config_ipv4_netserver="$3"
 config_ipv6_netserver="$3"
 fi
 ####
 ####
-if [ "$second_option" != "$NULL" ]; then
+if [ "$cmd_second_option" != "$NULL" ]; then
 echo "$title_md $text_info [ Server with ports udp $2 for host $3 ]"
 echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
 else
@@ -10233,7 +10213,7 @@ echo "$text_info Introducction: Put the ports udp servers"
 echo "$text_info Introducction: The tinyserver-udp configured like client for all protocols."
 echo "$text_info Example_1: $cmd_internal tinyserver-udp 20:22,80"
 echo "$text_info Example_2: $cmd_internal tinyserver-udp 20:22,80 192.168.0.0/24"
-echo "$text_fail fwiptables $first_option no loaded"
+echo "$text_fail fwiptables $cmd_first_option no loaded"
 exit; fi
 ####
 ####
@@ -10246,27 +10226,27 @@ fi
 #### :rutina-inicial-miniserver-tcp:
 ####
 ####
-if [ "$first_option" == "miniserver-tcp" ]
+if [ "$cmd_first_option" == "miniserver-tcp" ]
 ####
 ####
 then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
-launch_rules_firewall="yes" ;
+allow_launchrules_firewall="yes" ;
 type_firewall="wallcontrol"    ; 
 name_firewall="miniserver-tcp" ;
 ####
 ####
 server_port_tcp="$2" ;
 server_port_udp="" ;
-client_port_tcp="$miniclient_port_tcp"
-client_port_udp="$miniclient_port_udp"
+client_port_tcp="$cfg_client_mini_port_tcp"
+client_port_udp="$cfg_client_mini_port_udp"
 ####
 ####
-if [ "$third_option" != "$NULL" ] ;
+if [ "$cmd_third_option" != "$NULL" ] ;
 then config_ipv4_netserver="$3" 
 config_ipv6_netserver="$3" ; fi
 ####
 ####
-if [ "$second_option" != "$NULL" ]; then
+if [ "$cmd_second_option" != "$NULL" ]; then
 echo "$title_md $text_info [ Server with ports tcp $2 for host $3 ]"
 echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
 else
@@ -10274,7 +10254,7 @@ echo "$text_info Introducction: Put the ports tcp servers"
 echo "$text_info Introducction: to client ports: see preferences-edit (miniclient ports)"
 echo "$text_info Example_1: $cmd_internal miniserver-tcp 20:22,80"
 echo "$text_info Example_2: $cmd_internal miniserver-tcp 20:22,80 192.168.0.0/24"
-echo "$text_fail fwiptables $first_option no loaded"
+echo "$text_fail fwiptables $cmd_first_option no loaded"
 exit ; fi
 ####
 ####
@@ -10287,27 +10267,27 @@ fi
 #### :rutina-inicial-miniserver-udp:
 ####
 ####
-if [ "$first_option" == "miniserver-udp" ]
+if [ "$cmd_first_option" == "miniserver-udp" ]
 ####
 ####
 then echo "$title_md $text_info [ loading firewall wallcustom $fist_option ]"
-launch_rules_firewall="yes" ;
+allow_launchrules_firewall="yes" ;
 type_firewall="wallcontrol"    ; 
 name_firewall="miniserver-udp" ;
 ####
 ####
 server_port_tcp="" ;
 server_port_udp="$2" ;
-client_port_tcp="$miniclient_port_tcp"
-client_port_udp="$miniclient_port_udp"
+client_port_tcp="$cfg_client_mini_port_tcp"
+client_port_udp="$cfg_client_mini_port_udp"
 ####
 ####
-if [ "$third_option" != "$NULL" ] ;
+if [ "$cmd_third_option" != "$NULL" ] ;
 then config_ipv4_netserver="$3" 
 config_ipv6_netserver="$3" ; fi
 ####
 ####
-if [ "$second_option" != "$NULL" ]; then
+if [ "$cmd_second_option" != "$NULL" ]; then
 echo "$title_md $text_info [ Server with ports udp $2 for host $3 ]"
 echo "$title_md $text_info [ Suggest: list rules with list numeral ]"
 else
@@ -10315,7 +10295,7 @@ echo "$text_info Introducction: Put the ports udp servers"
 echo "$text_info Introducction: to client ports: see preferences-edit (miniclient ports)"
 echo "$text_info Example_1: $cmd_internal mioniserver-udp 20:22,80"
 echo "$text_info Example_2: $cmd_internal mioniserver-udp 20:22,80 192.168.0.0/24"
-echo "$text_fail fwiptables $first_option no loaded"
+echo "$text_fail fwiptables $cmd_first_option no loaded"
 exit ; fi
 ####
 ####
@@ -10346,11 +10326,11 @@ fi
 ####   #### spanish: cortafuego del sistema without-connection:
 ####
 ####
-if [ "$first_option" == "without-connection" ]; then
+if [ "$cmd_first_option" == "without-connection" ]; then
 echo "$title_md $text_info [ loading firewall wallcontrol without-connection ]" ;
-launch_rules_firewall="yes" ;
+allow_launchrules_firewall="yes" ;
 type_firewall="without-connection";
-name_firewall="$first_option";
+name_firewall="$cmd_first_option";
 fi
 #### :rutina-final-before-without-connection:
 #### ##################################################
@@ -10362,13 +10342,13 @@ fi
 ####   #### spanish: cortafuego del sistema input-permisive:
 ####
 ####
-if [ "$first_option" == "input-permisive" ]; then
+if [ "$cmd_first_option" == "input-permisive" ]; then
 ####
 ####
 echo "$title_md $text_info [ loading firewall wallcontrol input-permisive ]" ;
-launch_rules_firewall="yes" ;
+allow_launchrules_firewall="yes" ;
 type_firewall="input-permisive" ;
-name_firewall="$first_option";
+name_firewall="$cmd_first_option";
 ####
 ####
 fi
@@ -10384,13 +10364,13 @@ fi
 ####   #### spanish: cortafuego del sistema input-established:
 ####
 ####
-if [ "$first_option" == "input-established" ]; then
+if [ "$cmd_first_option" == "input-established" ]; then
 ####
 ####
 echo "$title_md $text_info [ loading firewall wallcontrol input-established ]" ;
-launch_rules_firewall="yes" ;
+allow_launchrules_firewall="yes" ;
 type_firewall="input-established" ;
-name_firewall="$first_option";
+name_firewall="$cmd_first_option";
 ####
 ####
 fi
@@ -10405,11 +10385,11 @@ fi
 ####   #### spanish: cortafuego del sistema shield-ssh:
 ####
 ####
-if [ "$first_option" == "shield-ssh" ]; then
+if [ "$cmd_first_option" == "shield-ssh" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem shield-ssh ]" ;
-launch_rules_firewall="yes" ;
+allow_launchrules_firewall="yes" ;
 type_firewall="wallsystem"    ; 
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -10422,8 +10402,8 @@ allow_shield_maxtries="" ;
 config_shield_maxtries="30" ;
 config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh" ;
@@ -10500,11 +10480,11 @@ fi
 ####   #### spanish: cortafuego del sistema shield-ssh:
 ####
 ####
-if [ "$first_option" == "client-ssh" ]; then
+if [ "$cmd_first_option" == "client-ssh" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem client-ssh ]" ;
-launch_rules_firewall="yes" ;
+allow_launchrules_firewall="yes" ;
 type_firewall="wallsystem"    ; 
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -10517,8 +10497,8 @@ allow_shield_maxtries="no" ;
 config_shield_maxtries="20" ;
 config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh" ;
@@ -10595,11 +10575,11 @@ fi
 ####   #### spanish: cortafuego del sistema shield-ssh:
 ####
 ####
-if [ "$first_option" == "client-telnet" ]; then
+if [ "$cmd_first_option" == "client-telnet" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem client-telnet ]" ;
-launch_rules_firewall="yes" ;
+allow_launchrules_firewall="yes" ;
 type_firewall="wallsystem"    ; 
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -10612,8 +10592,8 @@ allow_shield_maxtries="no" ;
 config_shield_maxtries="20" ;
 config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,telnet" ;
@@ -10691,11 +10671,11 @@ fi
 ####   #### spanish: cortafuego del sistema client-basic:
 ####
 ####
-if [ "$first_option" == "client-basic" ]; then
+if [ "$cmd_first_option" == "client-basic" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem client-basic ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 # allow_use_legacy=""        
 # allow_use_nft="no"             
@@ -10707,8 +10687,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh" ;
@@ -10788,11 +10768,11 @@ fi
 ####   #### spanish: cortafuego del sistema client-web:
 ####
 ####
-if [ "$first_option" == "client-web" ]; then
+if [ "$cmd_first_option" == "client-web" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem client-web ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 # allow_use_legacy=""        
 # allow_use_nft="no"             
@@ -10804,8 +10784,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh" ;
@@ -10883,11 +10863,11 @@ fi
 ####   #### spanish: cortafuego del sistema client-git:
 ####
 ####
-if [ "$first_option" == "client-git" ]; then
+if [ "$cmd_first_option" == "client-git" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem client-git ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 # allow_use_legacy=""        
 # allow_use_nft="no"             
@@ -10899,8 +10879,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,git" ;
@@ -10978,11 +10958,11 @@ fi
 ####   #### spanish: cortafuego del sistema client-ipp:
 ####
 ####
-if [ "$first_option" == "client-ipp" ]; then
+if [ "$cmd_first_option" == "client-ipp" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem client-ipp ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 # allow_use_legacy=""        
 # allow_use_nft="no"             
@@ -10994,8 +10974,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ipp" ;
@@ -11073,11 +11053,11 @@ fi
 ####   #### spanish: cortafuego del sistema client-irc:
 ####
 ####
-if [ "$first_option" == "client-irc" ]; then
+if [ "$cmd_first_option" == "client-irc" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem client-irc ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 # allow_use_legacy=""        
 # allow_use_nft="no"             
@@ -11089,8 +11069,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
@@ -11228,11 +11208,11 @@ fi
 ####   #### spanish: cortafuego del sistema client-vnc:
 ####
 ####
-if [ "$first_option" == "client-vnc" ]; then
+if [ "$cmd_first_option" == "client-vnc" ]; then
 echo "$title_md $text_info [ loading firewall client-vnc ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -11245,8 +11225,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### you can connect normal web and vnc
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,5900:5910" ;
@@ -11324,11 +11304,11 @@ fi
 ####   #### spanish: cortafuego del sistema client-torrent:
 ####
 ####
-if [ "$first_option" == "client-torrent" ]; then
+if [ "$cmd_first_option" == "client-torrent" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem client-torrent ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -11341,8 +11321,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### you can connect web normal and bittorrent too
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -11420,11 +11400,11 @@ fi
 ####   #### spanish: cortafuego del sistema client-vpn:
 ####
 ####
-if [ "$first_option" == "client-vpn" ]; then
+if [ "$cmd_first_option" == "client-vpn" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem client-vpn ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -11437,8 +11417,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### you can connect web normal and web vpn
 server_port_udp="" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,500,1194,1701,4500" ; 
@@ -11516,11 +11496,11 @@ fi
 ####   #### spanish: cortafuego del sistema client-tor:
 ####
 ####
-if [ "$first_option" == "client-tor" ]; then
+if [ "$cmd_first_option" == "client-tor" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem client-tor ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -11533,8 +11513,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### you can connect web normal and web tor
 server_port_udp="" ; 
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -11612,11 +11592,11 @@ fi
 ####   #### spanish: cortafuego del sistema client-news:
 ####
 ####
-if [ "$first_option" == "client-news" ]; then
+if [ "$cmd_first_option" == "client-news" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem client-news ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -11629,8 +11609,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -11713,11 +11693,11 @@ fi
 ####   #### spanish: cortafuego del sistema client-mail:
 ####
 ####
-if [ "$first_option" == "client-mail" ]; then
+if [ "$cmd_first_option" == "client-mail" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem client-mail ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -11730,8 +11710,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -11825,11 +11805,11 @@ fi
 ####   #### spanish: cortafuego del sistema client-ftp:
 ####
 ####
-if [ "$first_option" == "client-ftp" ]; then
+if [ "$cmd_first_option" == "client-ftp" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem client-ftp ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -11842,8 +11822,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### client ftp:
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -11921,11 +11901,11 @@ fi
 ####   #### spanish: cortafuego del sistema client-proxy:
 ####
 ####
-if [ "$first_option" == "client-proxy" ]; then
+if [ "$cmd_first_option" == "client-proxy" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem client-proxy ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -11938,8 +11918,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -12017,11 +11997,11 @@ fi
 ####   #### spanish: cortafuego del sistema lan-vpn:
 ####
 ####
-if [ "$first_option" == "lan-vpn" ]; then
+if [ "$cmd_first_option" == "lan-vpn" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem lan-vpn ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -12034,8 +12014,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### vpn ports to connects ports vpn
 #### with necesary ports to connect gatway and date, domain for your ip
 server_port_udp="" ;
@@ -12114,11 +12094,11 @@ fi
 ####   #### spanish: cortafuego del sistema lan-tor:
 ####
 ####
-if [ "$first_option" == "lan-tor" ]; then
+if [ "$cmd_first_option" == "lan-tor" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem lan-tor ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -12131,8 +12111,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### lan tor, 9000:9170 for connect to tor
 #### with necesary ports to connect gatway and date, domain for your ip
 server_port_udp="" ;
@@ -12211,11 +12191,11 @@ fi
 ####   #### spanish: cortafuego del sistema games-shooter:
 ####
 ####
-if [ "$first_option" == "games-shooter" ]; then
+if [ "$cmd_first_option" == "games-shooter" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem games-shooter ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -12228,8 +12208,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -12307,11 +12287,11 @@ fi
 ####   #### spanish: cortafuego del sistema games-udp:
 ####
 ####
-if [ "$first_option" == "games-udp" ]; then
+if [ "$cmd_first_option" == "games-udp" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem games-udp ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -12324,8 +12304,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -12403,11 +12383,11 @@ fi
 ####   #### spanish: cortafuego del sistema game-wesnoth:
 ####
 ####
-if [ "$first_option" == "game-wesnoth" ]; then
+if [ "$cmd_first_option" == "game-wesnoth" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem game-wesnoth ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -12420,8 +12400,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers 
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### game wesnoth port 14999 and 15001 usually
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
 server_port_udp="" ;
@@ -12499,11 +12479,11 @@ fi
 ####   #### spanish: cortafuego del sistema game-minetest:
 ####
 ####
-if [ "$first_option" == "game-minetest" ]; then
+if [ "$cmd_first_option" == "game-minetest" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem game-minetest ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -12516,8 +12496,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### game minetest and minecraft porst 25k and 35k /udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,25000:35000" ; 
 server_port_udp="" ;
@@ -12595,11 +12575,11 @@ fi
 ####   #### spanish: cortafuego del sistema game-freeciv:
 ####
 ####
-if [ "$first_option" == "game-freeciv" ]; then
+if [ "$cmd_first_option" == "game-freeciv" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem game-freeciv ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -12612,8 +12592,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### for default 5556 port tcp perhaps 5555 too
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
 server_port_udp="" ;
@@ -12691,11 +12671,11 @@ fi
 ####   #### spanish: cortafuego del sistema game-widelands:
 ####
 ####
-if [ "$first_option" == "game-widelands" ]; then
+if [ "$cmd_first_option" == "game-widelands" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem game-widelands ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -12708,8 +12688,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### for default 7396 port tcp and 7396 udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,7396" ; 
 server_port_udp="7396" ;
@@ -12787,11 +12767,11 @@ fi
 ####   #### spanish: cortafuego del sistema 
 ####
 ####
-if [ "$first_option" == "client-uid-root" ]; then
+if [ "$cmd_first_option" == "client-uid-root" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem client-uid-root ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 # allow_use_legacy=""        
 # allow_use_nft="no"             
@@ -12803,8 +12783,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="" ;
@@ -12882,11 +12862,11 @@ fi
 ####   #### spanish: cortafuego del sistema
 ####
 ####
-if [ "$first_option" == "client-gid-users" ]; then
+if [ "$cmd_first_option" == "client-gid-users" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem client-gid-users ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 # allow_use_legacy=""        
 # allow_use_nft="no"             
@@ -12898,8 +12878,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers 
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="" ;
@@ -12977,11 +12957,11 @@ fi
 ####   #### spanish: cortafuego del sistema 
 ####
 ####
-if [ "$first_option" == "client-gid-net" ]; then
+if [ "$cmd_first_option" == "client-gid-net" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem client-gid-net ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 # allow_use_legacy=""        
 # allow_use_nft="no"             
@@ -12993,8 +12973,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="" ;
@@ -13072,11 +13052,11 @@ fi
 ####   #### spanish: cortafuego del sistema server-web:
 ####
 ####
-if [ "$first_option" == "server-web" ]; then
+if [ "$cmd_first_option" == "server-web" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem server-web ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -13089,8 +13069,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="https" ;
@@ -13168,11 +13148,11 @@ fi
 ####   #### spanish: cortafuego del sistema server-vnc:
 ####
 ####
-if [ "$first_option" == "server-vnc" ]; then
+if [ "$cmd_first_option" == "server-vnc" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem server-vnc ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -13185,8 +13165,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"      
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"      
 #### you can connect normal web and vnc
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,5900:5910" ;
@@ -13264,11 +13244,11 @@ fi
 ####   #### spanish: cortafuego del sistema server-ftp:
 ####
 ####
-if [ "$first_option" == "server-ftp" ]; then
+if [ "$cmd_first_option" == "server-ftp" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem server-ftp ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -13281,8 +13261,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -13360,11 +13340,11 @@ fi
 ####   #### spanish: cortafuego del sistema server-gateway:
 ####
 ####
-if [ "$first_option" == "server-gateway" ]; then
+if [ "$cmd_first_option" == "server-gateway" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem server-gateway ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -13377,8 +13357,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -13456,11 +13436,11 @@ fi
 ####   #### spanish: cortafuego del sistema server-proxy:
 ####
 ####
-if [ "$first_option" == "server-proxy" ]; then
+if [ "$cmd_first_option" == "server-proxy" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem server-proxy ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -13473,8 +13453,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -13552,11 +13532,11 @@ fi
 ####   #### spanish: cortafuego del sistema server-news:
 ####
 ####
-if [ "$first_option" == "server-news" ]; then
+if [ "$cmd_first_option" == "server-news" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem server-news ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -13569,8 +13549,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"       
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"       
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -13654,13 +13634,13 @@ fi
 ####   #### spanish: cortafuego del sistema server-mail:
 ####
 ####
-if [ "$first_option" == "server-mail" ]; then
+if [ "$cmd_first_option" == "server-mail" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem server-mail ]" ;
 ####
 ####
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -13673,8 +13653,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -13768,11 +13748,11 @@ fi
 ####   #### spanish: cortafuego del sistema server-samba:
 ####
 ####
-if [ "$first_option" == "server-samba" ]; then
+if [ "$cmd_first_option" == "server-samba" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem server-samba ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -13785,8 +13765,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### server samba and active directory
 client_port_tcp="http,https,http-alt,ssh,ldap,636,microsoft-ds" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,ldap,636,137:139" ;
@@ -13864,11 +13844,11 @@ fi
 ####   #### spanish: cortafuego del sistema server-print:
 ####
 ####
-if [ "$first_option" == "server-print" ]; then
+if [ "$cmd_first_option" == "server-print" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem server-print ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -13881,8 +13861,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### server ipp and printer
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -13960,11 +13940,11 @@ fi
 ####   #### spanish: cortafuego del sistema server-ssh:
 ####
 ####
-if [ "$first_option" == "server-ssh" ]; then
+if [ "$cmd_first_option" == "server-ssh" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem server-ssh ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -13977,8 +13957,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### server ssh 22/tcp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -14056,11 +14036,11 @@ fi
 ####   #### spanish: cortafuego del sistema server-telnet:
 ####
 ####
-if [ "$first_option" == "server-telnet" ]; then
+if [ "$cmd_first_option" == "server-telnet" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem server-telnet ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -14073,8 +14053,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### server ssh 22/tcp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -14152,11 +14132,11 @@ fi
 ####   #### spanish: cortafuego del sistema server-lamp:
 ####
 ####
-if [ "$first_option" == "server-lamp" ]; then
+if [ "$cmd_first_option" == "server-lamp" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem server-lamp ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -14169,8 +14149,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 ####  english: udp: 20 is ftp-data, 21 is ftp, 989 is ftps-data y 990 is ftps
 ####  english: tcp: 10000 is webmin, 3306 is mysql, 5432 is postgresql
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -14249,11 +14229,11 @@ fi
 ####   #### spanish: cortafuego del sistema server-asterisk:
 ####
 ####
-if [ "$first_option" == "server-asterisk" ]; then
+if [ "$cmd_first_option" == "server-asterisk" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem server-asterisk ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -14266,8 +14246,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 ####    UDP:5060 SIP (sip.conf), newer Versions support TCP:5060
 ####    UDP:10000-20000 RTP (rtp.conf) for the media stream, a higher Portrange
 ####    UDP:5036 IAX2
@@ -14347,11 +14327,11 @@ fi
 ####   #### spanish: cortafuego del sistema server-mumble:
 ####
 ####
-if [ "$first_option" == "server-mumble" ]; then
+if [ "$cmd_first_option" == "server-mumble" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem server-mumble ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -14364,8 +14344,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers 
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### mumble port 64738 tcp and 64738 udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,64738" ;
 server_port_udp="64738" ;
@@ -14443,11 +14423,11 @@ fi
 ####   #### spanish: cortafuego del sistema server-teamspeak:
 ####
 ####
-if [ "$first_option" == "server-teamspeak" ]; then
+if [ "$cmd_first_option" == "server-teamspeak" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem server-teamspeak ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -14460,8 +14440,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### Service	        Protocol	Local Port (Server)
 #### Voice	        UDP	9987
 #### Filetransfer	TCP	30033
@@ -14543,11 +14523,11 @@ fi
 ####   #### spanish: cortafuego del sistema server-sql:
 ####
 ####
-if [ "$first_option" == "server-sql" ]; then
+if [ "$cmd_first_option" == "server-sql" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem server-sql ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -14560,8 +14540,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 ####  POSTGRESQL 5432/tcp and 5432/udp
 ####  Technology	Default Port	Required
 ####  MySQL Client to Server - MySQL Protocol – 3306	3306/tcp	Optional - pick at least 1
@@ -14643,11 +14623,11 @@ fi
 ####   #### spanish: cortafuego del sistema server-irc:
 ####
 ####
-if [ "$first_option" == "server-irc" ]; then
+if [ "$cmd_first_option" == "server-irc" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem server-irc ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -14660,8 +14640,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,http-alt,ssh,ircs-u,ircd" ;
@@ -14739,11 +14719,11 @@ fi
 ####   #### spanish: cortafuego del sistema server-domain:
 ####
 ####
-if [ "$first_option" == "server-domain" ]; then
+if [ "$cmd_first_option" == "server-domain" ]; then
 echo "$title_md $text_info [ loading firewall wallsystem server-domain ]" ;
-launch_rules_firewall="yes" ; 
+allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
-name_firewall="$first_option" ;
+name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
 #### english: firewall capacities
 # allow_use_legacy=""        
@@ -14756,8 +14736,8 @@ name_firewall="$first_option" ;
 # config_shield_maxtries="12" ;
 # config_shield_port="22" ;
 #### english: log port servers
-# logserver_port_tcp="no"    
-# logserver_port_udp="no"    
+# server_log_port_tcp="no"    
+# server_log_port_udp="no"    
 #### server domain and domain-s
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https," ;
 server_port_udp="domain,domain-s" ;
@@ -14830,8 +14810,20 @@ fi
 #### :rutina-final-server-domain:
 ####################################################################
 ####################################################################
+#### :rutina-inicial-env:
 ####
 ####
+if [ "$cmd_first_option" == "env" ] ; then
+####
+####
+echo "$title_md $text_info variables saved in $cmd_name"
+declare -f | sort
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-env:
 ####################################################################
 ####################################################################
 ####
@@ -14840,11 +14832,11 @@ fi
 ############################	   spanish: default: sin otra valida opcion
 ####
 ####
-if [ "$launch_rules_firewall" != "yes" ] ; then
+if [ "$cfg_allow_launchrules_firewall" != "yes" ] ; then
 ####
 ####
-echo "### $text_fail [ Fail Option: $first_option ] [ List Option: options ]"
-first_option="options" ; $cmd_internal $first_option ; 
+echo "### $text_fail [ Fail Option: $cmd_first_option ] [ List Option: options ]"
+first_option="options" ; $cmd_internal $cmd_first_option ; 
 ####
 ####
 exit ; fi
@@ -14858,51 +14850,51 @@ exit ; fi
 #### sane variables
 #### 
 ####
-case "$allow_use_legacy"  in "no")   ;; *) allow_use_legacy=""    ;; esac
-case "$allow_use_nft"     in "no")   ;; *) allow_use_nft=""       ;; esac
-case "$allow_use_ipv4"    in "no")   ;; *) allow_use_ipv4=""      ;; esac
-case "$allow_use_ipv6"    in "no")   ;; *) allow_use_ipv6=""      ;; esac
+case "$cfg_allow_use_legacy"  in "no")   ;; *) allow_use_legacy=""    ;; esac
+case "$cfg_allow_use_nft"     in "no")   ;; *) allow_use_nft=""       ;; esac
+case "$cfg_allow_use_ipv4"    in "no")   ;; *) allow_use_ipv4=""      ;; esac
+case "$cfg_allow_use_ipv6"    in "no")   ;; *) allow_use_ipv6=""      ;; esac
 ####
 ####
-case "$config_string_algoritmo" in "bm"|"kmp") ;;
+case "$cfg_config_string_algoritmo" in "bm"|"kmp") ;;
 *) config_string_algoritmo="bm" ;; esac
-case "$config_close_deny" in "DROP"|"REJECT") ;;
+case "$cfg_config_close_deny" in "DROP"|"REJECT") ;;
 *) config_close_deny="DROP"  ;; esac
 ####
 ####
-case "$NULL" in "$allow_autosave")         ;;  *)  allow_autosave="no" ;;  esac
-case "$NULL" in "$allow_string_dropped")    ;;  *)  allow_string_dropped="no" ;;  esac
-case "$NULL" in "$allow_dmz_ip4")          ;;  *)  allow_dmz_ip4="no" ;; esac
-case "$NULL" in "$allow_dmz_ip6")          ;;  *)  allow_dmz_ip6="no" ;; esac
-case "$NULL" in "$allow_forward_ip4")      ;;  *)  allow_forward_ip4="no" ;; esac
-case "$NULL" in "$allow_forward_ip6")      ;;  *)  allow_forward_ip6="no" ;; esac
-case "$NULL" in "$allow_gateway_ip4")      ;;  *)  allow_gateway_ip4="no" ;; esac
-case "$NULL" in "$allow_gateway_ip6")      ;;  *)  allow_gateway_ip6="no" ;; esac
-case "$NULL" in "$allow_input_all")        ;;  *)  allow_input_all="no";; esac
-case "$NULL" in "$allow_input_bandwidth")  ;;  *)  allow_input_bandwidth="no";; esac
-case "$NULL" in "$allow_input_maxconnect") ;;  *)  allow_input_maxconnect="no";; esac
-case "$NULL" in "$allow_input_ping")       ;;  *)  allow_input_ping="no";; esac
-case "$NULL" in "$allow_input_state")      ;;  *)  allow_input_state="no";; esac
-case "$NULL" in "$allow_use_ipv4")         ;;  *)  allow_use_ipv4="no" ;; esac
-case "$NULL" in "$allow_use_ipv6")         ;;  *)  allow_use_ipv6="no" ;; esac
-case "$NULL" in "$allow_use_legacy")       ;;  *)  allow_use_legacy="no" ;; esac
-case "$NULL" in "$allow_mac_blacklist")    ;;  *)  allow_mac_blacklist="no" ;; esac
-case "$NULL" in "$allow_mac_whitelist")    ;;  *)  allow_mac_whitelist="no" ;; esac
-case "$NULL" in "$allow_shield_maxtries")  ;;  *)  allow_shield_maxtries="no" ;; esac
-case "$NULL" in "$allow_net_blacklist")    ;;  *)  allow_net_blacklist="no";; esac
-case "$NULL" in "$allow_net_whitelist")    ;;  *)  allow_net_whitelist="no";; esac
-case "$NULL" in "$allow_use_nft")          ;;  *)  allow_use_nft="no" ;; esac
-case "$NULL" in "$allow_only_output")      ;;  *)  allow_only_output="no" ;; esac
-case "$NULL" in "$allow_other_protocols")  ;;  *)  allow_other_protocols="no";; esac
-case "$NULL" in "$allow_others_protocols") ;;  *)  allow_others_protocols="no" ;; esac
-case "$NULL" in "$allow_output_all")       ;;  *)  allow_output_all="no";; esac
-case "$NULL" in "$allow_output_bandwidth") ;;  *)  allow_output_bandwidth="no";; esac
-case "$NULL" in "$allow_output_gid")       ;;  *)  allow_output_gid="no";; esac
-case "$NULL" in "$allow_output_maxconnect");;  *)  allow_output_maxconnect="no";; esac
-case "$NULL" in "$allow_output_ping")      ;;  *)  allow_output_ping="no";; esac
-case "$NULL" in "$allow_output_state")     ;;  *)  allow_output_state="no";; esac
-case "$NULL" in "$allow_output_uid")       ;;  *)  allow_output_uid="no";; esac
-case "$NULL" in "$config_system_log")      ;;  *)  config_system_log="log" ;; esac
+case "$NULL" in "$cfg_allow_autosave")         ;;  *)  allow_autosave="no" ;;  esac
+case "$NULL" in "$cfg_allow_string_dropped")    ;;  *)  allow_string_dropped="no" ;;  esac
+case "$NULL" in "$cfg_allow_dmz_ip4")          ;;  *)  allow_dmz_ip4="no" ;; esac
+case "$NULL" in "$cfg_allow_dmz_ip6")          ;;  *)  allow_dmz_ip6="no" ;; esac
+case "$NULL" in "$cfg_allow_forward_ip4")      ;;  *)  allow_forward_ip4="no" ;; esac
+case "$NULL" in "$cfg_allow_forward_ip6")      ;;  *)  allow_forward_ip6="no" ;; esac
+case "$NULL" in "$cfg_allow_gateway_ip4")      ;;  *)  allow_gateway_ip4="no" ;; esac
+case "$NULL" in "$cfg_allow_gateway_ip6")      ;;  *)  allow_gateway_ip6="no" ;; esac
+case "$NULL" in "$cfg_allow_input_all")        ;;  *)  allow_input_all="no";; esac
+case "$NULL" in "$cfg_allow_input_bandwidth")  ;;  *)  allow_input_bandwidth="no";; esac
+case "$NULL" in "$cfg_allow_input_maxconnect") ;;  *)  allow_input_maxconnect="no";; esac
+case "$NULL" in "$cfg_allow_input_ping")       ;;  *)  allow_input_ping="no";; esac
+case "$NULL" in "$cfg_allow_input_state")      ;;  *)  allow_input_state="no";; esac
+case "$NULL" in "$cfg_allow_use_ipv4")         ;;  *)  allow_use_ipv4="no" ;; esac
+case "$NULL" in "$cfg_allow_use_ipv6")         ;;  *)  allow_use_ipv6="no" ;; esac
+case "$NULL" in "$cfg_allow_use_legacy")       ;;  *)  allow_use_legacy="no" ;; esac
+case "$NULL" in "$cfg_allow_mac_blacklist")    ;;  *)  allow_mac_blacklist="no" ;; esac
+case "$NULL" in "$cfg_allow_mac_whitelist")    ;;  *)  allow_mac_whitelist="no" ;; esac
+case "$NULL" in "$cfg_allow_shield_maxtries")  ;;  *)  allow_shield_maxtries="no" ;; esac
+case "$NULL" in "$cfg_allow_net_blacklist")    ;;  *)  allow_net_blacklist="no";; esac
+case "$NULL" in "$cfg_allow_net_whitelist")    ;;  *)  allow_net_whitelist="no";; esac
+case "$NULL" in "$cfg_allow_use_nft")          ;;  *)  allow_use_nft="no" ;; esac
+case "$NULL" in "$cfg_allow_only_output")      ;;  *)  allow_only_output="no" ;; esac
+case "$NULL" in "$cfg_allow_other_protocols")  ;;  *)  allow_other_protocols="no";; esac
+case "$NULL" in "$cfg_allow_others_protocols") ;;  *)  allow_others_protocols="no" ;; esac
+case "$NULL" in "$cfg_allow_output_all")       ;;  *)  allow_output_all="no";; esac
+case "$NULL" in "$cfg_allow_output_bandwidth") ;;  *)  allow_output_bandwidth="no";; esac
+case "$NULL" in "$cfg_allow_output_gid")       ;;  *)  allow_output_gid="no";; esac
+case "$NULL" in "$cfg_allow_output_maxconnect");;  *)  allow_output_maxconnect="no";; esac
+case "$NULL" in "$cfg_allow_output_ping")      ;;  *)  allow_output_ping="no";; esac
+case "$NULL" in "$cfg_allow_output_state")     ;;  *)  allow_output_state="no";; esac
+case "$NULL" in "$cfg_allow_output_uid")       ;;  *)  allow_output_uid="no";; esac
+case "$NULL" in "$cfg_config_system_log")      ;;  *)  config_system_log="log" ;; esac
 ####
 ####
 ####
@@ -14911,7 +14903,7 @@ case "$NULL" in "$config_system_log")      ;;  *)  config_system_log="log" ;; es
 #################################################################
 #################################################################
 ####                                                                                            ###############
-#### Knowed now sure that:         launch_rules_firewall="yes"                              ###############
+#### Knowed now sure that:         allow_launchrules_firewall="yes"                              ###############
 ####                                                                                            ###############
 #################################################################
 #################################################################
@@ -14947,22 +14939,22 @@ if [ "$type_firewall" == "input-permisive" ]; then $cmd_internal eraserules &> /
 #### spanish: legacy ipv4 127.0.0.1 acepta y los otros legacy ipv4 acepta tambien
 ####
 ####
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
 -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A FORWARD \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A FORWARD \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A FORWARD \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A FORWARD \
 -j ACCEPT \
 -m comment --comment all-forward &> /dev/null
 ####
@@ -14971,22 +14963,22 @@ $allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A FORWARD \
 #### spanish: nft ipv4 127.0.0.1 acepta y los otros nft ipv4 acepta tambien
 ####
 ####
-$allow_use_nft  $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
 -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_nft $allow_use_ipv4   $command_ip4tablesnft -A OUTPUT \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4   $cmd_command_ip4tablesnft -A OUTPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv4   $command_ip4tablesnft -A OUTPUT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4   $cmd_command_ip4tablesnft -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
-$allow_use_nft  $allow_use_ipv4 $command_ip4tablesnft -A FORWARD \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A FORWARD \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A FORWARD \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A FORWARD \
 -j ACCEPT \
 -m comment --comment all-forward &> /dev/null
 ####
@@ -14999,22 +14991,22 @@ $allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A FORWARD \
 #### spanish: legacy ipv6 127.0.0.1 acepta y los otros legacy ipv6 acepta tambien
 ####
 ####
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A INPUT  \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A INPUT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT \
 -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT  \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT  \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A FORWARD \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A FORWARD \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A FORWARD \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A FORWARD \
 -j ACCEPT \
 -m comment --comment all-forward &> /dev/null
 ####
@@ -15023,22 +15015,22 @@ $allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A FORWARD \
 #### spanish: nft ipv6 127.0.0.1 acepta y los otros nft ipv6 acepta tambien
 ####
 ####
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A INPUT   \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT   \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A INPUT   \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT   \
 -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT   \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT   \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT  \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT  \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A FORWARD \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A FORWARD \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A FORWARD \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A FORWARD \
 -j ACCEPT \
 -m comment --comment all-forward &> /dev/null
 ####
@@ -15047,16 +15039,16 @@ $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A FORWARD \
 #### spanish: ipv6-icmp acepta en legacy y acepta en nft
 ####
 ####
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy \
 -A INPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment nexthop-ip6 &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy \
 -A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment nexthop-ip6 &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft \
 -A INPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment nexthop-ip6 &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft \
 -A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment nexthop-ip6 &> /dev/null
 ####
@@ -15065,43 +15057,43 @@ $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
 #### spanish: cierra con drop legacy y cierra con drop nft
 ####
 ####
-$allow_use_legacy $command_ip4tableslegacy \
--A INPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
+-A INPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip4tableslegacy \
--A OUTPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
+-A OUTPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip4tablesnft \
--A INPUT -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft \
+-A INPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip4tablesnft \
--A OUTPUT -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft \
+-A OUTPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy \
--A INPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
+-A INPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy \
--A OUTPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
+-A OUTPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip6tablesnft \
--A INPUT -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip6tablesnft \
+-A INPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip6tablesnft \
--A OUTPUT -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip6tablesnft \
+-A OUTPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
-$allow_use_legacy $command_ip4tableslegacy \
--A FORWARD -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
+-A FORWARD -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip4tablesnft \
--A FORWARD -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft \
+-A FORWARD -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy \
--A FORWARD -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
+-A FORWARD -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip6tablesnft \
--A FORWARD -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip6tablesnft \
+-A FORWARD -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
@@ -15126,20 +15118,20 @@ if [ "$type_firewall" == "input-established" ]; then $cmd_internal eraserules &>
 #### spanish: legacy ipv4 127.0.0.1 acepta y los otros legacy ipv4 acepta tambien
 ####
 ####
-$allow_use_legacy $allow_use_ipv4 $command_ip4tableslegacy -A INPUT \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_legacy $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A FORWARD \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A FORWARD \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
@@ -15147,20 +15139,20 @@ $allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A FORWARD \
 #### spanish: nft ipv4 127.0.0.1 acepta y los otros nft ipv4 acepta tambien
 ####
 ####
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
-$allow_use_nft   $allow_use_ipv4 $command_ip4tablesnft -A FORWARD \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_nft   $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A FORWARD \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
@@ -15172,17 +15164,17 @@ $allow_use_nft   $allow_use_ipv4 $command_ip4tablesnft -A FORWARD \
 #### spanish: legacy ipv6 127.0.0.1 acepta y los otros legacy ipv6 acepta tambien
 ####
 ####
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A INPUT  \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A INPUT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A FORWARD \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A FORWARD \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
@@ -15190,17 +15182,17 @@ $allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A FORWARD \
 #### spanish: nft ipv6 127.0.0.1 acepta y los otros nft ipv6 acepta tambien
 ####
 ####
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A INPUT   \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT   \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A INPUT   \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT   \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A FORWARD \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A FORWARD \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
@@ -15208,16 +15200,16 @@ $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A FORWARD \
 #### spanish: ipv6-icmp acepta en legacy y acepta en nft
 ####
 ####
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy \
 -A INPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment nexthop-ip6 &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy \
 -A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment nexthop-ip6 &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft \
 -A INPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment nexthop-ip6 &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft \
 -A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment nexthop-ip6 &> /dev/null
 ####
@@ -15226,10 +15218,10 @@ $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
 #### spanish: permite toda salida ipv6
 ####
 ####
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT  \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT  \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
 ####
@@ -15238,43 +15230,43 @@ $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT  \
 #### spanish: cierra con drop legacy y cierra con drop nft
 ####
 ####
-$allow_use_legacy $command_ip4tableslegacy \
--A INPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
+-A INPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip4tableslegacy \
--A OUTPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
+-A OUTPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip4tablesnft \
--A INPUT -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft \
+-A INPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip4tablesnft \
--A OUTPUT -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft \
+-A OUTPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy \
--A INPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
+-A INPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy \
--A OUTPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
+-A OUTPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip6tablesnft \
--A INPUT -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip6tablesnft \
+-A INPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip6tablesnft \
--A OUTPUT -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip6tablesnft \
+-A OUTPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
-$allow_use_legacy $command_ip4tableslegacy \
--A FORWARD -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
+-A FORWARD -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip4tablesnft \
--A FORWARD -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft \
+-A FORWARD -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy \
--A FORWARD -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
+-A FORWARD -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip6tablesnft \
--A FORWARD -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip6tablesnft \
+-A FORWARD -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
@@ -15300,14 +15292,14 @@ then $cmd_internal eraserules &> /dev/null ;
 #### spanish: legacy ipv4 127.0.0.1 acepta
 ####
 ####
-$allow_use_legacy $command_ip4tableslegacy -A INPUT  \
--s $config_ip4_localhost -d $config_ip4_localhost   -j ACCEPT \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy -A INPUT  \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost   -j ACCEPT \
 -m comment --comment host-localhost  &> /dev/null
-$allow_use_legacy $command_ip4tableslegacy -A OUTPUT \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy -A OUTPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $command_ip4tableslegacy -A FORWARD \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy -A FORWARD \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
@@ -15315,14 +15307,14 @@ $allow_use_legacy $command_ip4tableslegacy -A FORWARD \
 #### spanish: nft ipv4 127.0.0.1 acepta
 ####
 ####
-$allow_use_nft $command_ip4tablesnft -A INPUT \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft -A INPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $command_ip4tablesnft -A OUTPUT \
--s $config_ip4_localhost -d $config_ip4_localhost -j ACCEPT \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft -A OUTPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $command_ip4tablesnft -A FORWARD \
--s $config_ip4_localhost -d $config_ip4_localhost -j ACCEPT \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft -A FORWARD \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
@@ -15334,14 +15326,14 @@ $allow_use_nft $command_ip4tablesnft -A FORWARD \
 #### spanish: legacy ipv6 127.0.0.1 acepta
 ####
 ####
-$allow_use_legacy $command_ip6tableslegacy -A INPUT  \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A INPUT  \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy -A OUTPUT \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A OUTPUT \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy -A FORWARD \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A FORWARD \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
@@ -15349,14 +15341,14 @@ $allow_use_legacy $command_ip6tableslegacy -A FORWARD \
 #### spanish: nft ipv6 127.0.0.1 acepta
 ####
 ####
-$allow_use_nft $command_ip6tablesnft -A INPUT  \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cmd_command_ip6tablesnft -A INPUT  \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $command_ip6tablesnft -A OUTPUT \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cmd_command_ip6tablesnft -A OUTPUT \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $command_ip6tablesnft -A FORWARD \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cmd_command_ip6tablesnft -A FORWARD \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
@@ -15364,44 +15356,44 @@ $allow_use_nft $command_ip6tablesnft -A FORWARD \
 ########################################     spanish: cierra en without-connection
 ####
 ####
-$allow_use_legacy $command_ip4tableslegacy \
--A INPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
+-A INPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip4tableslegacy \
--A OUTPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
+-A OUTPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip4tableslegacy \
--A FORWARD -j $config_close_deny \
--m comment --comment close-rule &> /dev/null
-####
-$allow_use_nft $command_ip4tablesnft \
--A INPUT -j $config_close_deny \
--m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip4tablesnft \
--A OUTPUT -j $config_close_deny \
--m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip4tablesnft \
--A FORWARD -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
+-A FORWARD -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
-$allow_use_legacy $command_ip6tableslegacy \
--A INPUT -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft \
+-A INPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy \
--A OUTPUT -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft \
+-A OUTPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy \
--A FORWARD -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft \
+-A FORWARD -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
-$allow_use_nft $command_ip6tablesnft \
--A INPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
+-A INPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip6tablesnft \
--A OUTPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
+-A OUTPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip6tablesnft \
--A FORWARD -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
+-A FORWARD -j $cfg_config_close_deny \
+-m comment --comment close-rule &> /dev/null
+####
+$cfg_allow_use_nft $cmd_command_ip6tablesnft \
+-A INPUT -j $cfg_config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$cfg_allow_use_nft $cmd_command_ip6tablesnft \
+-A OUTPUT -j $cfg_config_close_deny \
+-m comment --comment close-rule &> /dev/null
+$cfg_allow_use_nft $cmd_command_ip6tablesnft \
+-A FORWARD -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
 ####  
@@ -15428,49 +15420,49 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" == "loadtiny-custom" ]; then $cmd_internal eraserules &> /dev/null ;
+if [ "$cmd_first_option" == "loadtiny-custom" ]; then $cmd_internal eraserules &> /dev/null ;
 ####
 ####
 #### LOCALHOST IS ALLOWED
 ####
 ####
-$allow_use_legacy $allow_use_ipv4 $command_ip4tableslegacy -A INPUT \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A INPUT  \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A INPUT   \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT   \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
-$allow_use_legacy $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A FORWARD \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A FORWARD \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft   $allow_use_ipv4 $command_ip4tablesnft -A FORWARD \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_nft   $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A FORWARD \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A FORWARD \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A FORWARD \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A FORWARD \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A FORWARD \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
@@ -15481,56 +15473,56 @@ $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A FORWARD \
 #### without separate rules
 ####
 ####
-if [ "$allow_separate_rules" != "$NULL" ]; then 
+if [ "$cfg_allow_separate_rules" != "$NULL" ]; then 
 ####
 ####
 #### ipv4 legacy
 ####
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT  \
--p tcp -m multiport --dports $server_port_tcp -s $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT  \
+-p tcp -m multiport --dports $cfg_server_port_tcp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
--p tcp -m multiport --sports $server_port_tcp -d $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
+-p tcp -m multiport --sports $cfg_server_port_tcp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 #### 
 #### ipv4 nft
 ####
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
--p tcp -m multiport --dports $server_port_tcp -s $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
+-p tcp -m multiport --dports $cfg_server_port_tcp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
--p tcp -m multiport --sports $server_port_tcp -d $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
+-p tcp -m multiport --sports $cfg_server_port_tcp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
 #### ipv6 legacy
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A INPUT  \
--p tcp -m multiport --dports $server_port_tcp -s $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
+-p tcp -m multiport --dports $cfg_server_port_tcp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
--p tcp -m multiport --sports $server_port_tcp -d $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
+-p tcp -m multiport --sports $cfg_server_port_tcp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
 #### ipv6 nft
 ####
 ####
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A INPUT  \
--p tcp -m multiport --dports $server_port_tcp -s $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT  \
+-p tcp -m multiport --dports $cfg_server_port_tcp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
--p tcp -m multiport --sports $server_port_tcp -d $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
+-p tcp -m multiport --sports $cfg_server_port_tcp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
@@ -15541,49 +15533,49 @@ fi
 ################ spanish: reglas para permitir puertos servidor udp #######################
 ####
 ####
-if [ "$allow_separate_rules" != "$NULL" ]; then 
+if [ "$cfg_allow_separate_rules" != "$NULL" ]; then 
 ####
 ####
 #### ipv4 legacy
 ####
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT  \
--p udp -m multiport --dports $server_port_udp -s $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT  \
+-p udp -m multiport --dports $cfg_server_port_udp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -d $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
+-p udp -m multiport --sports $cfg_server_port_udp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
 ####
 #### 
 #### ipv4 nft
 ####
 ####
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
--p udp -m multiport --dports $server_port_udp -s $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
+-p udp -m multiport --dports $cfg_server_port_udp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -d $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
+-p udp -m multiport --sports $cfg_server_port_udp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
 ####
 ####
 #### ipv6 legacy
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A INPUT  \
--p udp -m multiport --dports $server_port_udp -s $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
+-p udp -m multiport --dports $cfg_server_port_udp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -d $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
+-p udp -m multiport --sports $cfg_server_port_udp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
 ####
 ####
 #### ipv6 nft
 ####
 ####
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A INPUT  \
--p udp -m multiport --dports $server_port_udp -s $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT  \
+-p udp -m multiport --dports $cfg_server_port_udp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -d $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
+-p udp -m multiport --sports $cfg_server_port_udp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
 ####
 ####
@@ -15600,50 +15592,50 @@ fi
 #### with separate rules
 ####
 ####
-if [ "$allow_separate_rules" == "$NULL" ]; then 
-for one_tcp in $(echo $server_port_tcp | $command_sed 's/,/ /g') ;
+if [ "$cfg_allow_separate_rules" == "$NULL" ]; then 
+for one_tcp in $(echo $cfg_server_port_tcp | $cmd_command_sed 's/,/ /g') ;
 do
 ####
 ####
 #### ipv4 legacy
 ####
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT  \
--p tcp -m multiport --dports $one_tcp -s $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT  \
+-p tcp -m multiport --dports $one_tcp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
--p tcp -m multiport --sports $one_tcp -d $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
+-p tcp -m multiport --sports $one_tcp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 #### 
 #### ipv4 nft
 ####
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
--p tcp -m multiport --dports $one_tcp -s $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
+-p tcp -m multiport --dports $one_tcp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
--p tcp -m multiport --sports $one_tcp -d $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
+-p tcp -m multiport --sports $one_tcp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
 #### ipv6 legacy
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A INPUT  \
--p tcp -m multiport --dports $one_tcp -s $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
+-p tcp -m multiport --dports $one_tcp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
--p tcp -m multiport --sports $one_tcp -d $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
+-p tcp -m multiport --sports $one_tcp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
 #### ipv6 nft
 ####
 ####
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A INPUT  \
--p tcp -m multiport --dports $one_tcp -s $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT  \
+-p tcp -m multiport --dports $one_tcp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
--p tcp -m multiport --sports $one_tcp -d $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
+-p tcp -m multiport --sports $one_tcp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
@@ -15654,50 +15646,50 @@ done; fi
 ####################################### spanish: reglas para permitir puertos servidor udp
 ####
 ####
-if [ "$allow_separate_rules" == "$NULL" ]; then 
-for one_udp in $(echo $server_port_udp | $command_sed 's/,/ /g') ;
+if [ "$cfg_allow_separate_rules" == "$NULL" ]; then 
+for one_udp in $(echo $cfg_server_port_udp | $cmd_command_sed 's/,/ /g') ;
 do
 ####
 ####
 #### ipv4 legacy
 ####
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT  \
--p udp -m multiport --dports $one_udp -s $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT  \
+-p udp -m multiport --dports $one_udp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
--p udp -m multiport --sports $one_udp -d $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
+-p udp -m multiport --sports $one_udp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
 ####
 #### 
 #### ipv4 nft
 ####
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
--p udp -m multiport --dports $one_udp -s $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
+-p udp -m multiport --dports $one_udp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
--p udp -m multiport --sports $one_udp -d $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
+-p udp -m multiport --sports $one_udp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
 ####
 ####
 #### ipv6 legacy
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A INPUT  \
--p udp -m multiport --dports $one_udp -s $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
+-p udp -m multiport --dports $one_udp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
--p udp -m multiport --sports $one_udp -d $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
+-p udp -m multiport --sports $one_udp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
 ####
 ####
 #### ipv6 nft
 ####
 ####
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A INPUT  \
--p udp -m multiport --dports $one_udp -s $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT  \
+-p udp -m multiport --dports $one_udp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
--p udp -m multiport --sports $one_udp -d $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
+-p udp -m multiport --sports $one_udp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
 ####
 ####
@@ -15715,10 +15707,10 @@ done; fi
 #### spanish: legacy ipv4 127.0.0.1 acepta y los otros legacy ipv4 acepta tambien
 ####
 ####
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_legacy $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
 ####
@@ -15727,10 +15719,10 @@ $allow_use_legacy $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
 #### spanish: nft ipv4 127.0.0.1 acepta y los otros nft ipv4 acepta tambien
 ####
 ####
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
 ####
@@ -15743,10 +15735,10 @@ $allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
 #### spanish: legacy ipv6 acepta relatado,establecido
 ####
 ####
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A INPUT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A INPUT   \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT   \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
 ####
@@ -15755,16 +15747,16 @@ $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A INPUT   \
 #### spanish: ipv6-icmp acepta en legacy y acepta en nft
 ####
 ####
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy \
 -A INPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment nexthop-ip6 &> /dev/null
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy \
 -A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment nexthop-ip6 &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft \
 -A INPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment nexthop-ip6 &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft \
 -A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment nexthop-ip6 &> /dev/null
 ####
@@ -15773,10 +15765,10 @@ $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
 #### spanish: nft ipv6 127.0.0.1 acepta y los otros nft ipv6 acepta tambien
 ####
 ####
-$allow_use_legacy $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT  \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT  \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
 ####
@@ -15785,43 +15777,43 @@ $allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT  \
 #### spanish: cierra con drop legacy y cierra con drop nft
 ####
 ####
-$allow_use_legacy $command_ip4tableslegacy \
--A INPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
+-A INPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip4tableslegacy \
--A OUTPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
+-A OUTPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip4tablesnft \
--A INPUT -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft \
+-A INPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip4tablesnft \
--A OUTPUT -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft \
+-A OUTPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy \
--A INPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
+-A INPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy \
--A OUTPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
+-A OUTPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip6tablesnft \
--A INPUT -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip6tablesnft \
+-A INPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip6tablesnft \
--A OUTPUT -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip6tablesnft \
+-A OUTPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
-$allow_use_legacy $command_ip4tableslegacy \
--A FORWARD -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
+-A FORWARD -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip4tablesnft \
--A FORWARD -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft \
+-A FORWARD -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy \
--A FORWARD -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
+-A FORWARD -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip6tablesnft \
--A FORWARD -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip6tablesnft \
+-A FORWARD -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
@@ -15842,11 +15834,11 @@ exit; fi
 ##############################       spanish: sobreescribe las variables con la config cfg
 ####
 ####
-if [ "$first_option" == "load-custom" ]
+if [ "$cmd_first_option" == "load-custom" ]
 ####
 ####
-then if [ -f $default_directory_custom/$second_option ]
-then source $default_directory_custom/$second_option &> /dev/null
+then if [ -f $cmd_default_directory_custom/$cmd_second_option ]
+then source $cmd_default_directory_custom/$cmd_second_option &> /dev/null
 else echo "$text_md $text_fail [ Config file not found ]"
 ####
 ####
@@ -15857,20 +15849,20 @@ exit ; fi ; fi
 ##############################      spanish: estado selectivo de entrada/salida        
 ####
 ####
-if [ "$allow_input_state" != "$NULL" ]  ; then  config_input_state=""  ; fi
-if [ "$allow_output_state" != "$NULL" ] ; then  config_output_state="" ; fi 
+if [ "$cfg_allow_input_state" != "$NULL" ]  ; then  config_input_state=""  ; fi
+if [ "$cfg_allow_output_state" != "$NULL" ] ; then  config_output_state="" ; fi 
 ####
 ####
-if [ "$allow_input_state" == "$NULL" ]
+if [ "$cfg_allow_input_state" == "$NULL" ]
 then 
-connect_input_state="$config_input_state"
+connect_input_state="$cfg_config_input_state"
 config_input_state="-m state --state $connect_input_state"
 fi
 ####
 ####
-if [ "$allow_output_state" == "$NULL" ]
+if [ "$cfg_allow_output_state" == "$NULL" ]
 then 
-connect_output_state="$config_output_state"
+connect_output_state="$cfg_config_output_state"
 config_output_state="-m state --state $connect_output_state"
 fi
 ####
@@ -15882,9 +15874,9 @@ fi
 ####
 ####
 config_uid_gid=no
-if [ "$allow_output_uid" == "$NULL" ]
+if [ "$cfg_allow_output_uid" == "$NULL" ]
 then config_uid_gid="" ; fi
-if [ "$allow_output_gid" == "$NULL" ]
+if [ "$cfg_allow_output_gid" == "$NULL" ]
 then config_uid_gid="" ; fi
 ####
 ####
@@ -15912,18 +15904,18 @@ $cmd_internal eraserules &> /dev/null
 ######################### spanish: ebtables mac rules
 ####
 ####
-if [ "$allow_mac_whitelist" == "$NULL" ] ; then
+if [ "$cfg_allow_mac_whitelist" == "$NULL" ] ; then
 ####
-$command_ebtables -A INPUT  -s $config_mac_whitelist -j ACCEPT  &> /dev/null
-$command_ebtables -A OUTPUT -d $config_mac_whitelist -j ACCEPT  &> /dev/null
+$cmd_command_ebtables -A INPUT  -s $cfg_config_mac_whitelist -j ACCEPT  &> /dev/null
+$cmd_command_ebtables -A OUTPUT -d $cfg_config_mac_whitelist -j ACCEPT  &> /dev/null
 ####
 fi
 ####
 ####
-if [ "$allow_mac_blacklist" == "$NULL" ] ; then
+if [ "$cfg_allow_mac_blacklist" == "$NULL" ] ; then
 ####
-$command_ebtables -A INPUT  -s ! $config_mac_whitelist -j ACCEPT  &> /dev/null
-$command_ebtables -A OUTPUT -d ! $config_mac_whitelist -j ACCEPT  &> /dev/null
+$cmd_command_ebtables -A INPUT  -s ! $cfg_config_mac_whitelist -j ACCEPT  &> /dev/null
+$cmd_command_ebtables -A OUTPUT -d ! $cfg_config_mac_whitelist -j ACCEPT  &> /dev/null
 ####
 fi
 ####
@@ -15932,59 +15924,59 @@ fi
 #######################################        spanish: aceptar reglas localhost
 ####
 ####
-if [ "$config_ip4_localhost" != "$NULL" ]; then
+if [ "$cfg_config_ip4_localhost" != "$NULL" ]; then
 ####
-$allow_use_legacy $command_ip4tableslegacy -A INPUT \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy -A INPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $command_ip4tableslegacy -A OUTPUT \
--s $config_ip4_localhost -d $config_ip4_localhost -j ACCEPT \
--m comment --comment host-localhost &> /dev/null
-####
-####
-$allow_use_nft $command_ip4tablesnft -A INPUT \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
--m comment --comment host-localhost &> /dev/null
-$allow_use_nft $command_ip4tablesnft -A OUTPUT -s \
-$config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy -A OUTPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
-$allow_use_legacy $command_ip4tableslegacy -A FORWARD \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft -A INPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $command_ip4tablesnft -A FORWARD \
--s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft -A OUTPUT -s \
+$cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+####
+####
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy -A FORWARD \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$cfg_allow_use_nft $cmd_command_ip4tablesnft -A FORWARD \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
 fi
 ####
 ####
-if [ "$config_ip6_localhost" != "$NULL" ]; then
+if [ "$cfg_config_ip6_localhost" != "$NULL" ]; then
 ####
 ####
-$allow_use_legacy $command_ip6tableslegacy -A INPUT \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A INPUT \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy -A OUTPUT \
--s $config_ip6_localhost -d $config_ip6_localhost -j ACCEPT \
--m comment --comment host-localhost &> /dev/null
-####
-####
-$allow_use_nft $command_ip6tablesnft -A INPUT \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
--m comment --comment host-localhost &> /dev/null
-$allow_use_nft $command_ip6tablesnft -A OUTPUT \
--s $config_ip6_localhost -d $config_ip6_localhost -j ACCEPT \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A OUTPUT \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
-$allow_use_legacy $command_ip6tableslegacy -A FORWARD \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cmd_command_ip6tablesnft -A INPUT \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$allow_use_nft $command_ip6tablesnft -A FORWARD \
--s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
+$cfg_allow_use_nft $cmd_command_ip6tablesnft -A OUTPUT \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+####
+####
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A FORWARD \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
+-m comment --comment host-localhost &> /dev/null
+$cfg_allow_use_nft $cmd_command_ip6tablesnft -A FORWARD \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
@@ -15995,54 +15987,54 @@ fi
 ####################################### spanish: reglas de denegar para lista negra
 ####
 ####
-if [ "$allow_net_blacklist" == "$NULL" ]; then
+if [ "$cfg_allow_net_blacklist" == "$NULL" ]; then
 ####
-for one_blacklist in $(echo $config_net_blacklist | $command_sed 's/,/ /g'); do
+for one_blacklist in $(echo $cfg_config_net_blacklist | $cmd_command_sed 's/,/ /g'); do
 ####
 ####
 #### ipv4
 ####
 ####
-$allow_use_ipv4 $allow_use_legacy $command_ip4tableslegacy \
--A INPUT -s $one_blacklist -j $config_close_deny \
+$cfg_allow_use_ipv4 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
+-A INPUT -s $one_blacklist -j $cfg_config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_legacy $command_ip4tableslegacy \
--A OUTPUT -d $one_blacklist -j $config_close_deny \
+$cfg_allow_use_ipv4 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
+-A OUTPUT -d $one_blacklist -j $cfg_config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft  $command_ip4tablesnft \
--A INPUT -s $one_blacklist -j $config_close_deny \
+$cfg_allow_use_ipv4 $cfg_allow_use_nft  $cmd_command_ip4tablesnft \
+-A INPUT -s $one_blacklist -j $cfg_config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft  $command_ip4tablesnft \
--A OUTPUT -d $one_blacklist -j $config_close_deny \
+$cfg_allow_use_ipv4 $cfg_allow_use_nft  $cmd_command_ip4tablesnft \
+-A OUTPUT -d $one_blacklist -j $cfg_config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 #### ipv6
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $command_ip6tableslegacy \
--A INPUT -s $one_blacklist -j $config_close_deny \
+$cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
+-A INPUT -s $one_blacklist -j $cfg_config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $command_ip6tableslegacy \
--A OUTPUT -d $one_blacklist -j $config_close_deny \
+$cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
+-A OUTPUT -d $one_blacklist -j $cfg_config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft  $command_ip6tablesnft \
--A INPUT -s $one_blacklist -j $config_close_deny \
+$cfg_allow_use_ipv6 $cfg_allow_use_nft  $cmd_command_ip6tablesnft \
+-A INPUT -s $one_blacklist -j $cfg_config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft  $command_ip6tablesnft \
--A OUTPUT -d $one_blacklist -j $config_close_deny \
+$cfg_allow_use_ipv6 $cfg_allow_use_nft  $cmd_command_ip6tablesnft \
+-A OUTPUT -d $one_blacklist -j $cfg_config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 #### 
 done
@@ -16054,30 +16046,30 @@ fi
 ####################################### spanish: reglas de aceptar para vpn whitelist
 ####
 ####
-if [ "$allow_net_whitelist" == "$NULL" ]; then
+if [ "$cfg_allow_net_whitelist" == "$NULL" ]; then
 ####
-for one_vpn in $(echo $config_net_whitelist | $command_sed 's/,/ /g'); do
+for one_vpn in $(echo $cfg_config_net_whitelist | $cmd_command_sed 's/,/ /g'); do
 ####
 ####
 #### ipv4
 ####
 ####
-$allow_use_ipv4 $allow_use_legacy $command_ip4tableslegacy \
+$cfg_allow_use_ipv4 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A  INPUT -s $one_vpn -j ACCEPT -m comment \
 --comment "whitelist $one_vpn" &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_legacy $command_ip4tableslegacy \
+$cfg_allow_use_ipv4 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A  OUTPUT -d $one_vpn -j ACCEPT -m comment \
 --comment "whitelist $one_vpn" &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft  $command_ip4tablesnft \
+$cfg_allow_use_ipv4 $cfg_allow_use_nft  $cmd_command_ip4tablesnft \
 -A  INPUT -s $one_vpn -j ACCEPT -m comment \
 --comment "whitelist $one_vpn" &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft  $command_ip4tablesnft \
+$cfg_allow_use_ipv4 $cfg_allow_use_nft  $cmd_command_ip4tablesnft \
 -A  OUTPUT -d $one_vpn -j ACCEPT -m comment \
 --comment "whitelist $one_vpn" &> /dev/null
 ####
@@ -16085,22 +16077,22 @@ $allow_use_ipv4 $allow_use_nft  $command_ip4tablesnft \
 #### ipv6
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $command_ip6tableslegacy \
+$cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
 -A  INPUT -s $one_vpn -j ACCEPT -m comment \
 --comment "whitelist $one_vpn" &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $command_ip6tableslegacy \
+$cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
 -A  OUTPUT -d $one_vpn -j ACCEPT -m comment \
 --comment "whitelist $one_vpn" &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft $command_ip6tablesnft \
+$cfg_allow_use_ipv6 $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 -A  INPUT -s $one_vpn -j ACCEPT -m comment \
 --comment "whitelist $one_vpn" &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft  $command_ip6tablesnft \
+$cfg_allow_use_ipv6 $cfg_allow_use_nft  $cmd_command_ip6tablesnft \
 -A  OUTPUT -d $one_vpn -j ACCEPT -m comment \
 --comment "whitelist $one_vpn" &> /dev/null
 ####
@@ -16114,63 +16106,63 @@ fi
 ####################################### spanish: deniega para cadena in cabecera
 ####
 ####
-if [ "$allow_string_dropped" == "$NULL" ]; then
+if [ "$cfg_allow_string_dropped" == "$NULL" ]; then
 ####
-for string_close in $(echo $config_string_denied | $command_sed 's/,/ /g'); do
+for string_close in $(echo $cfg_config_string_denied | $cmd_command_sed 's/,/ /g'); do
 ####
 ####
 #### ipv4
 ####
 ####
-$allow_use_ipv4 $allow_use_legacy $command_ip4tableslegacy \
+$cfg_allow_use_ipv4 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A  INPUT -m string --string $string_close \
---algo $config_string_algoritmo \
--j $config_close_deny &> /dev/null
+--algo $cfg_config_string_algoritmo \
+-j $cfg_config_close_deny &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_legacy $command_ip4tableslegacy \
+$cfg_allow_use_ipv4 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A  OUTPUT -m string --string $string_close \
---algo $config_string_algoritmo \
--j $config_close_deny &> /dev/null
+--algo $cfg_config_string_algoritmo \
+-j $cfg_config_close_deny &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft $command_ip4tablesnft \
+$cfg_allow_use_ipv4 $cfg_allow_use_nft $cmd_command_ip4tablesnft \
 -A  INPUT -m string --string $string_close \
---algo $config_string_algoritmo \
--j $config_close_deny &> /dev/null
+--algo $cfg_config_string_algoritmo \
+-j $cfg_config_close_deny &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft  $command_ip4tablesnft \
+$cfg_allow_use_ipv4 $cfg_allow_use_nft  $cmd_command_ip4tablesnft \
 -A  OUTPUT -m string --string $string_close \
---algo $config_string_algoritmo \
--j $config_close_deny &> /dev/null
+--algo $cfg_config_string_algoritmo \
+-j $cfg_config_close_deny &> /dev/null
 ####
 ####
 #### ipv6
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $command_ip6tableslegacy \
+$cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
 -A  INPUT -m string --string $string_close \
---algo $config_string_algoritmo \
--j $config_close_deny &> /dev/null
+--algo $cfg_config_string_algoritmo \
+-j $cfg_config_close_deny &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $command_ip6tableslegacy \
+$cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
 -A  OUTPUT -m string --string $string_close \
---algo $config_string_algoritmo \
--j $config_close_deny &> /dev/null
+--algo $cfg_config_string_algoritmo \
+-j $cfg_config_close_deny &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft $command_ip6tablesnft \
+$cfg_allow_use_ipv6 $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 -A  INPUT -m string --string $string_close \
---algo $config_string_algoritmo \
--j $config_close_deny &> /dev/null
+--algo $cfg_config_string_algoritmo \
+-j $cfg_config_close_deny &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft $command_ip6tablesnft \
+$cfg_allow_use_ipv6 $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 -A  OUTPUT -m string --string $string_close \
---algo $config_string_algoritmo \
--j $config_close_deny &> /dev/null
+--algo $cfg_config_string_algoritmo \
+-j $cfg_config_close_deny &> /dev/null
 ####
 ####
 done
@@ -16182,59 +16174,59 @@ fi
 ####################################### spanish: permite para cadena in cabecera
 ####
 ####
-if [ "$allow_string_allowed" == "$NULL" ]; then
+if [ "$cfg_allow_string_allowed" == "$NULL" ]; then
 ####
-for string_allow in $(echo $config_string_allowed | $command_sed 's/,/ /g'); do
+for string_allow in $(echo $cfg_config_string_allowed | $cmd_command_sed 's/,/ /g'); do
 ####
 ####
 #### ipv4
 ####
 ####
-$allow_use_ipv4 $allow_use_legacy \
-$command_ip4tableslegacy  -A  INPUT  \
+$cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cmd_command_ip4tableslegacy  -A  INPUT  \
 -m string --string $string_allow \
---algo $config_string_algoritmo -j ACCEPT &> /dev/null
+--algo $cfg_config_string_algoritmo -j ACCEPT &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_legacy \
-$command_ip4tableslegacy  -A  OUTPUT \
+$cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cmd_command_ip4tableslegacy  -A  OUTPUT \
 -m string --string $string_allow \
---algo $config_string_algoritmo -j ACCEPT &> /dev/null
+--algo $cfg_config_string_algoritmo -j ACCEPT &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft  \
-$command_ip4tablesnft     -A  INPUT  \
+$cfg_allow_use_ipv4 $cfg_allow_use_nft  \
+$cmd_command_ip4tablesnft     -A  INPUT  \
 -m string --string $string_allow \
---algo $config_string_algoritmo -j ACCEPT &> /dev/null
+--algo $cfg_config_string_algoritmo -j ACCEPT &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft  \
-$command_ip4tablesnft     -A  OUTPUT \
+$cfg_allow_use_ipv4 $cfg_allow_use_nft  \
+$cmd_command_ip4tablesnft     -A  OUTPUT \
 -m string --string $string_allow \
---algo $config_string_algoritmo -j ACCEPT &> /dev/null
+--algo $cfg_config_string_algoritmo -j ACCEPT &> /dev/null
 ####
 ####
 #### ipv6
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $command_ip6tableslegacy -A  INPUT  \
+$cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A  INPUT  \
 -m string --string $string_allow \
---algo $config_string_algoritmo -j ACCEPT &> /dev/null
+--algo $cfg_config_string_algoritmo -j ACCEPT &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_legacy $command_ip6tableslegacy -A  OUTPUT \
+$cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A  OUTPUT \
 -m string --string $string_allow \
---algo $config_string_algoritmo -j ACCEPT &> /dev/null
+--algo $cfg_config_string_algoritmo -j ACCEPT &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft $command_ip6tablesnft    -A  INPUT  \
+$cfg_allow_use_ipv6 $cfg_allow_use_nft $cmd_command_ip6tablesnft    -A  INPUT  \
 -m string --string $string_allow \
---algo $config_string_algoritmo -j ACCEPT &> /dev/null
+--algo $cfg_config_string_algoritmo -j ACCEPT &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft  $command_ip6tablesnft    -A  OUTPUT \
+$cfg_allow_use_ipv6 $cfg_allow_use_nft  $cmd_command_ip6tablesnft    -A  OUTPUT \
 -m string --string $string_allow \
---algo $config_string_algoritmo -j ACCEPT &> /dev/null
+--algo $cfg_config_string_algoritmo -j ACCEPT &> /dev/null
 ####
 ####
 done
@@ -16246,41 +16238,41 @@ fi
 ####################################### spanish: reglas for max ties for ssh
 ####
 ####
-if [ "$allow_shield_maxtries" == "$NULL" ]; then
+if [ "$cfg_allow_shield_maxtries" == "$NULL" ]; then
 ####
-$allow_use_legacy  $allow_use_ipv4  $command_ip4tableslegacy -A INPUT \
--p tcp -m multiport --dports $config_shield_port -m state --state NEW -m recent \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4  $cmd_command_ip4tableslegacy -A INPUT \
+-p tcp -m multiport --dports $cfg_config_shield_port -m state --state NEW -m recent \
 --set --name count-tries-ssh \
 -m comment --comment "shield tries" &> /dev/null
-$allow_use_nft  $allow_use_ipv4  $command_ip4tablesnft -A INPUT \
--p tcp -m multiport --dports $config_shield_port -m state --state NEW -m recent \
+$cfg_allow_use_nft  $cfg_allow_use_ipv4  $cmd_command_ip4tablesnft -A INPUT \
+-p tcp -m multiport --dports $cfg_config_shield_port -m state --state NEW -m recent \
 --set --name count-tries-ssh \
 -m comment --comment "shield tries" &> /dev/null
-$allow_use_legacy  $allow_use_ipv6  $command_ip6tableslegacy -A INPUT \
--p tcp -m multiport --dports $config_shield_port -m state --state NEW -m recent \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6  $cmd_command_ip6tableslegacy -A INPUT \
+-p tcp -m multiport --dports $cfg_config_shield_port -m state --state NEW -m recent \
 --set --name count-tries-ssh \
 -m comment --comment "shield tries" &> /dev/null
-$allow_use_nft  $allow_use_ipv6  $command_ip6tablesnft -A INPUT \
--p tcp -m multiport --dport $config_shield_port -m state --state NEW -m recent \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6  $cmd_command_ip6tablesnft -A INPUT \
+-p tcp -m multiport --dport $cfg_config_shield_port -m state --state NEW -m recent \
 --set --name count-tries-ssh \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
-$allow_use_legacy  $allow_use_ipv4  $command_ip4tableslegacy -A INPUT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4  $cmd_command_ip4tableslegacy -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_shield_maxtries -j $config_close_deny \
+--hitcount $cfg_config_shield_maxtries -j $cfg_config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
-$allow_use_nft     $allow_use_ipv4  $command_ip4tablesnft -A INPUT \
+$cfg_allow_use_nft     $cfg_allow_use_ipv4  $cmd_command_ip4tablesnft -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_shield_maxtries -j $config_close_deny \
+--hitcount $cfg_config_shield_maxtries -j $cfg_config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
-$allow_use_legacy  $allow_use_ipv6  $command_ip6tableslegacy -A INPUT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6  $cmd_command_ip6tableslegacy -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_shield_maxtries -j $config_close_deny \
+--hitcount $cfg_config_shield_maxtries -j $cfg_config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
-$allow_use_nft     $allow_use_ipv6  $command_ip6tablesnft -A INPUT \
+$cfg_allow_use_nft     $cfg_allow_use_ipv6  $cmd_command_ip6tablesnft -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_shield_maxtries -j $config_close_deny \
+--hitcount $cfg_config_shield_maxtries -j $cfg_config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 ####
 fi
@@ -16294,38 +16286,38 @@ fi
 #### spanish: ipv4  ancho de banda
 ####
 ####
-if [ "$allow_input_bandwidth" == "$NULL" ] ; then
+if [ "$cfg_allow_input_bandwidth" == "$NULL" ] ; then
 ####
-$allow_use_ipv4 $allow_use_legacy $allow_input_bandwidth \
-$command_ip4tableslegacy -A  INPUT \
--m hashlimit --hashlimit-above   "$config_input_bandwidth"kb/sec \
---hashlimit-name maxinputlegacy  -j $config_close_deny \
+$cfg_allow_use_ipv4 $cfg_allow_use_legacy $cfg_allow_input_bandwidth \
+$cmd_command_ip4tableslegacy -A  INPUT \
+-m hashlimit --hashlimit-above   "$cfg_config_input_bandwidth"kb/sec \
+--hashlimit-name maxinputlegacy  -j $cfg_config_close_deny \
 -m comment --comment "input-bandwidth kb/s"  &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft $allow_input_bandwidth \
-$command_ip4tablesnft -A INPUT \
--m hashlimit    --hashlimit-above "$config_input_bandwidth"kb/sec  \
---hashlimit-name maxinputnft  -j $config_close_deny \
+$cfg_allow_use_ipv4 $cfg_allow_use_nft $cfg_allow_input_bandwidth \
+$cmd_command_ip4tablesnft -A INPUT \
+-m hashlimit    --hashlimit-above "$cfg_config_input_bandwidth"kb/sec  \
+--hashlimit-name maxinputnft  -j $cfg_config_close_deny \
 -m comment --comment "input-bandwidth kb/s"  &> /dev/null
 ####
 fi
 ####
-if [ "$allow_output_bandwidth" == "$NULL" ] ; then
+if [ "$cfg_allow_output_bandwidth" == "$NULL" ] ; then
 ####
 ####
-$allow_use_ipv4 $allow_use_legacy $allow_output_bandwidth \
-$command_ip4tableslegacy -A OUTPUT \
--m hashlimit --hashlimit-above  "$config_output_bandwidth"kb/sec \
---hashlimit-mode dstip --hashlimit-name maxoutputlegacy -j $config_close_deny \
+$cfg_allow_use_ipv4 $cfg_allow_use_legacy $cfg_allow_output_bandwidth \
+$cmd_command_ip4tableslegacy -A OUTPUT \
+-m hashlimit --hashlimit-above  "$cfg_config_output_bandwidth"kb/sec \
+--hashlimit-mode dstip --hashlimit-name maxoutputlegacy -j $cfg_config_close_deny \
 -m comment --comment "output-bandwidth kb/s"  &> /dev/null
 
 ####
 ####
-$allow_use_ipv4 $allow_use_nft $allow_output_bandwidth \
-$command_ip4tablesnft -A OUTPUT \
--m hashlimit  --hashlimit-above "$config_output_bandwidth"kb/sec \
---hashlimit-mode dstip  --hashlimit-name maxoutputnft -j $config_close_deny \
+$cfg_allow_use_ipv4 $cfg_allow_use_nft $cfg_allow_output_bandwidth \
+$cmd_command_ip4tablesnft -A OUTPUT \
+-m hashlimit  --hashlimit-above "$cfg_config_output_bandwidth"kb/sec \
+--hashlimit-mode dstip  --hashlimit-name maxoutputnft -j $cfg_config_close_deny \
 -m comment --comment "output-bandwidth kb/s"  &> /dev/null
 ####
 fi
@@ -16335,35 +16327,35 @@ fi
 #############        spanish: ipv6 ancho de banda
 ####
 ####
-if [ "$allow_input_bandwidth" == "$NULL" ] ; then
+if [ "$cfg_allow_input_bandwidth" == "$NULL" ] ; then
 ####
-$allow_use_ipv6 $allow_use_legacy $allow_input_bandwidth \
-$command_ip6tableslegacy -A INPUT \
--m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec \
---hashlimit-name maxinput  -j $config_close_deny \
+$cfg_allow_use_ipv6 $cfg_allow_use_legacy $cfg_allow_input_bandwidth \
+$cmd_command_ip6tableslegacy -A INPUT \
+-m hashlimit --hashlimit-above "$cfg_config_input_bandwidth"kb/sec \
+--hashlimit-name maxinput  -j $cfg_config_close_deny \
 -m comment --comment "input-bandwidth kb/s"  &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft $allow_input_bandwidth \
-$command_ip6tablesnft -A  INPUT \
--m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec \
---hashlimit-name maxinput  -j $config_close_deny \
+$cfg_allow_use_ipv6 $cfg_allow_use_nft $cfg_allow_input_bandwidth \
+$cmd_command_ip6tablesnft -A  INPUT \
+-m hashlimit --hashlimit-above "$cfg_config_input_bandwidth"kb/sec \
+--hashlimit-name maxinput  -j $cfg_config_close_deny \
 -m comment --comment "input-bandwidth kb/s"  &> /dev/null
 ####
 fi
 ####
 ####
-if [ "$allow_output_bandwidth" == "$NULL" ] ; then
+if [ "$cfg_allow_output_bandwidth" == "$NULL" ] ; then
 ####
-$allow_use_ipv6 $allow_use_legacy $allow_output_bandwidth \
-$command_ip6tableslegacy -A OUTPUT -m hashlimit --hashlimit-above \
-"$config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j $config_close_deny \
+$cfg_allow_use_ipv6 $cfg_allow_use_legacy $cfg_allow_output_bandwidth \
+$cmd_command_ip6tableslegacy -A OUTPUT -m hashlimit --hashlimit-above \
+"$cfg_config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j $cfg_config_close_deny \
 -m comment --comment "output-bandwidth kb/s"  &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft $allow_output_bandwidth \
-$command_ip6tablesnft -A OUTPUT -m hashlimit --hashlimit-above \
-"$config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j $config_close_deny \
+$cfg_allow_use_ipv6 $cfg_allow_use_nft $cfg_allow_output_bandwidth \
+$cmd_command_ip6tablesnft -A OUTPUT -m hashlimit --hashlimit-above \
+"$cfg_config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j $cfg_config_close_deny \
 -m comment --comment "output-bandwidth kb/s"  &> /dev/null
 ####
 fi
@@ -16377,35 +16369,35 @@ fi
 #### spanish: ipv4  ancho de banda
 ####
 ####
-if [ "$allow_input_maxconnect" == "$NULL" ]; then
+if [ "$cfg_allow_input_maxconnect" == "$NULL" ]; then
 ####
-$allow_use_ipv4 $allow_use_legacy $allow_input_maxconnect \
-$command_ip4tableslegacy -A INPUT -m connlimit --connlimit-above \
-$config_input_maxconnect   -j $config_close_deny  \
+$cfg_allow_use_ipv4 $cfg_allow_use_legacy $cfg_allow_input_maxconnect \
+$cmd_command_ip4tableslegacy -A INPUT -m connlimit --connlimit-above \
+$cfg_config_input_maxconnect   -j $cfg_config_close_deny  \
 -m comment --comment "max connect"  &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft $allow_input_maxconnect \
-$command_ip4tablesnft   -A INPUT -m connlimit --connlimit-above \
-$config_input_maxconnect       -j $config_close_deny \
+$cfg_allow_use_ipv4 $cfg_allow_use_nft $cfg_allow_input_maxconnect \
+$cmd_command_ip4tablesnft   -A INPUT -m connlimit --connlimit-above \
+$cfg_config_input_maxconnect       -j $cfg_config_close_deny \
 -m comment --comment "max connect"  &> /dev/null
 ####
 fi
 ####
 ####
-if [ "$allow_output_maxconnect" == "$NULL" ]; then
+if [ "$cfg_allow_output_maxconnect" == "$NULL" ]; then
 ####
-$allow_use_ipv4 $allow_use_legacy $allow_output_maxconnect \
-$command_ip4tableslegacy -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect \
--j $config_close_deny \
+$cfg_allow_use_ipv4 $cfg_allow_use_legacy $cfg_allow_output_maxconnect \
+$cmd_command_ip4tableslegacy -A OUTPUT \
+-m connlimit --connlimit-above $cfg_config_output_maxconnect \
+-j $cfg_config_close_deny \
 -m comment --comment "max connect"  &> /dev/null
 ####
 ####
-$allow_use_ipv4 $allow_use_nft $allow_output_maxconnect \
-$command_ip4tablesnft  -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect \
--j $config_close_deny \
+$cfg_allow_use_ipv4 $cfg_allow_use_nft $cfg_allow_output_maxconnect \
+$cmd_command_ip4tablesnft  -A OUTPUT \
+-m connlimit --connlimit-above $cfg_config_output_maxconnect \
+-j $cfg_config_close_deny \
 -m comment --comment "max connect"  &> /dev/null
 ####
 fi
@@ -16415,37 +16407,37 @@ fi
 #### spanish: ipv6 ancho de banda
 ####
 ####
-if [ "$allow_input_maxconnect" == "$NULL" ]; then
+if [ "$cfg_allow_input_maxconnect" == "$NULL" ]; then
 ####
-$allow_use_ipv6 $allow_use_legacy $allow_input_maxconnect \
-$command_ip6tableslegacy -A INPUT  \
--m connlimit --connlimit-above $config_input_maxconnect \
--j $config_close_deny \
+$cfg_allow_use_ipv6 $cfg_allow_use_legacy $cfg_allow_input_maxconnect \
+$cmd_command_ip6tableslegacy -A INPUT  \
+-m connlimit --connlimit-above $cfg_config_input_maxconnect \
+-j $cfg_config_close_deny \
 -m comment --comment "max connect"  &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft $allow_input_maxconnect \
-$command_ip6tablesnft   -A INPUT  \
--m connlimit --connlimit-above $config_input_maxconnect \
--j $config_close_deny \
+$cfg_allow_use_ipv6 $cfg_allow_use_nft $cfg_allow_input_maxconnect \
+$cmd_command_ip6tablesnft   -A INPUT  \
+-m connlimit --connlimit-above $cfg_config_input_maxconnect \
+-j $cfg_config_close_deny \
 -m comment --comment "max connect"  &> /dev/null
 ####
 fi
 ####
 ####
-if [ "$allow_output_maxconnect" == "$NULL" ]; then
+if [ "$cfg_allow_output_maxconnect" == "$NULL" ]; then
 ####
-$allow_use_ipv6 $allow_use_legacy $allow_output_maxconnect \
-$command_ip6tableslegacy -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect \
--j $config_close_deny \
+$cfg_allow_use_ipv6 $cfg_allow_use_legacy $cfg_allow_output_maxconnect \
+$cmd_command_ip6tableslegacy -A OUTPUT \
+-m connlimit --connlimit-above $cfg_config_output_maxconnect \
+-j $cfg_config_close_deny \
 -m comment --comment "max connect"  &> /dev/null
 ####
 ####
-$allow_use_ipv6 $allow_use_nft $allow_output_maxconnect \
-$command_ip6tablesnft  -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect \
--j $config_close_deny \
+$cfg_allow_use_ipv6 $cfg_allow_use_nft $cfg_allow_output_maxconnect \
+$cmd_command_ip6tablesnft  -A OUTPUT \
+-m connlimit --connlimit-above $cfg_config_output_maxconnect \
+-j $cfg_config_close_deny \
 -m comment --comment "max connect"  &> /dev/null
 ####
 fi
@@ -16455,57 +16447,57 @@ fi
 ####################################### spanish: reglas para permitir puertos cliente without separate rules
 ####
 ####
-if [ "$allow_separate_rules" == "no" ]; then 
+if [ "$cfg_allow_separate_rules" == "no" ]; then 
 ####
 ####
 ####    CLIENT  UDP
 ####
 #### ipv4 legacy udp
 ####
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT \
--p udp -m multiport $config_input_state --sports $client_port_udp \
--s $config_ipv4_netclient -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
+-p udp -m multiport $cfg_config_input_state --sports $cfg_client_port_udp \
+-s $cfg_config_ipv4_netclient -j ACCEPT \
 -m comment --comment client-udp  &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
--p udp -m multiport $config_output_state --dports $client_port_udp \
--d $config_ipv4_netclient -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
+-p udp -m multiport $cfg_config_output_state --dports $cfg_client_port_udp \
+-d $cfg_config_ipv4_netclient -j ACCEPT \
 -m comment --comment client-udp  &> /dev/null
 ####
 #### 
 #### ipv4 nft udp
 ####
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
--p udp -m multiport $config_input_state --sports $client_port_udp \
--s $config_ipv4_netclient -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
+-p udp -m multiport $cfg_config_input_state --sports $cfg_client_port_udp \
+-s $cfg_config_ipv4_netclient -j ACCEPT \
 -m comment --comment client-udp  &> /dev/null
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
--p udp -m multiport $config_output_state --dports $client_port_udp \
--d $config_ipv4_netclient -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
+-p udp -m multiport $cfg_config_output_state --dports $cfg_client_port_udp \
+-d $cfg_config_ipv4_netclient -j ACCEPT \
 -m comment --comment client-udp  &> /dev/null
 ####
 ####
 #### ipv6 legacy udp
 ####
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A INPUT \
--p udp -m multiport $config_input_state --sports $client_port_udp \
--s $config_ipv6_netclient -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT \
+-p udp -m multiport $cfg_config_input_state --sports $cfg_client_port_udp \
+-s $cfg_config_ipv6_netclient -j ACCEPT \
 -m comment --comment client-udp  &> /dev/null
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
--p udp -m multiport $config_output_state --dports $client_port_udp \
--d $config_ipv6_netclient -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
+-p udp -m multiport $cfg_config_output_state --dports $cfg_client_port_udp \
+-d $cfg_config_ipv6_netclient -j ACCEPT \
 -m comment --comment client-udp  &> /dev/null
 ####
 ####
 #### ipv6 nft udp
 ####
 ####
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A INPUT \
--p tcp -m multiport $config_input_state --sports $client_port_udp \
--s $config_ipv6_netclient -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT \
+-p tcp -m multiport $cfg_config_input_state --sports $cfg_client_port_udp \
+-s $cfg_config_ipv6_netclient -j ACCEPT \
 -m comment --comment client-udp  &> /dev/null
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $client_port_udp \
--d $config_ipv6_netclient -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
+-p tcp -m multiport $cfg_config_output_state --dports $cfg_client_port_udp \
+-d $cfg_config_ipv6_netclient -j ACCEPT \
 -m comment --comment client-udp  &> /dev/null
 ####
 ####
@@ -16513,50 +16505,50 @@ $allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
 ####
 #### ipv4 legacy tcp
 ####
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT \
--p tcp -m multiport $config_input_state --sports $client_port_tcp \
--s $config_ipv4_netclient -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
+-p tcp -m multiport $cfg_config_input_state --sports $cfg_client_port_tcp \
+-s $cfg_config_ipv4_netclient -j ACCEPT \
 -m comment --comment client-tcp  &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $client_port_tcp \
--d $config_ipv4_netclient -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
+-p tcp -m multiport $cfg_config_output_state --dports $cfg_client_port_tcp \
+-d $cfg_config_ipv4_netclient -j ACCEPT \
 -m comment --comment client-tcp  &> /dev/null
 ####
 #### 
 #### ipv4 nft tcp
 ####
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
--p tcp -m multiport $config_input_state --sports $client_port_tcp \
--s $config_ipv4_netclient -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
+-p tcp -m multiport $cfg_config_input_state --sports $cfg_client_port_tcp \
+-s $cfg_config_ipv4_netclient -j ACCEPT \
 -m comment --comment client-tcp  &> /dev/null
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $client_port_tcp \
--d $config_ipv4_netclient -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
+-p tcp -m multiport $cfg_config_output_state --dports $cfg_client_port_tcp \
+-d $cfg_config_ipv4_netclient -j ACCEPT \
 -m comment --comment client-tcp  &> /dev/null
 ####
 ####
 #### ipv6 legacy tcp
 ####
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A INPUT \
--p tcp -m multiport $config_input_state --sports $client_port_tcp \
--s $config_ipv6_netclient -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT \
+-p tcp -m multiport $cfg_config_input_state --sports $cfg_client_port_tcp \
+-s $cfg_config_ipv6_netclient -j ACCEPT \
 -m comment --comment client-tcp  &> /dev/null
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $client_port_tcp \
--d $config_ipv6_netclient -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
+-p tcp -m multiport $cfg_config_output_state --dports $cfg_client_port_tcp \
+-d $cfg_config_ipv6_netclient -j ACCEPT \
 -m comment --comment client-tcp  &> /dev/null
 ####
 ####
 #### ipv6 nft tcp
 ####
 ####
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A INPUT \
--p tcp -m multiport $config_input_state --sports $client_port_tcp \
--s $config_ipv6_netclient -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT \
+-p tcp -m multiport $cfg_config_input_state --sports $cfg_client_port_tcp \
+-s $cfg_config_ipv6_netclient -j ACCEPT \
 -m comment --comment client-tcp  &> /dev/null
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $client_port_tcp \
--d $config_ipv6_netclient -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
+-p tcp -m multiport $cfg_config_output_state --dports $cfg_client_port_tcp \
+-d $cfg_config_ipv6_netclient -j ACCEPT \
 -m comment --comment client-tcp  &> /dev/null
 ####
 ####
@@ -16567,8 +16559,8 @@ fi
 ####################################### spanish: reglas para permitir puertos cliente with separate rules
 ####
 ####
-if [ "$allow_separate_rules" == "$NULL" ]; then 
-for one_udp in $(echo $client_port_udp | $command_sed 's/,/ /g') ;
+if [ "$cfg_allow_separate_rules" == "$NULL" ]; then 
+for one_udp in $(echo $cfg_client_port_udp | $cmd_command_sed 's/,/ /g') ;
 do
 ####
 ####
@@ -16576,58 +16568,58 @@ do
 ####
 #### ipv4 legacy udp
 ####
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT \
--p udp -m multiport $config_input_state --sports $one_udp \
--s $config_ipv4_netclient -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
+-p udp -m multiport $cfg_config_input_state --sports $one_udp \
+-s $cfg_config_ipv4_netclient -j ACCEPT \
 -m comment --comment client-udp  &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
--p udp -m multiport $config_output_state --dports $one_udp \
--d $config_ipv4_netclient -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
+-p udp -m multiport $cfg_config_output_state --dports $one_udp \
+-d $cfg_config_ipv4_netclient -j ACCEPT \
 -m comment --comment client-udp  &> /dev/null
 ####
 #### 
 #### ipv4 nft udp
 ####
-$allow_use_nft $allow_use_ipv4     $command_ip4tablesnft -A INPUT \
--p udp -m multiport $config_input_state --sports $one_udp \
--s $config_ipv4_netclient -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4     $cmd_command_ip4tablesnft -A INPUT \
+-p udp -m multiport $cfg_config_input_state --sports $one_udp \
+-s $cfg_config_ipv4_netclient -j ACCEPT \
 -m comment --comment client-udp  &> /dev/null
-$allow_use_nft $allow_use_ipv4     $command_ip4tablesnft -A OUTPUT \
--p udp -m multiport $config_output_state --dports $one_udp \
--d $config_ipv4_netclient -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4     $cmd_command_ip4tablesnft -A OUTPUT \
+-p udp -m multiport $cfg_config_output_state --dports $one_udp \
+-d $cfg_config_ipv4_netclient -j ACCEPT \
 -m comment --comment client-udp  &> /dev/null
 ####
 ####
 #### ipv6 legacy udp
 ####
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A INPUT \
--p udp -m multiport $config_input_state --sports $one_udp \
--s $config_ipv6_netclient -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT \
+-p udp -m multiport $cfg_config_input_state --sports $one_udp \
+-s $cfg_config_ipv6_netclient -j ACCEPT \
 -m comment --comment client-udp  &> /dev/null
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
--p udp -m multiport $config_output_state --dports $one_udp \
--d $config_ipv6_netclient -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
+-p udp -m multiport $cfg_config_output_state --dports $one_udp \
+-d $cfg_config_ipv6_netclient -j ACCEPT \
 -m comment --comment client-udp  &> /dev/null
 ####
 ####
 #### ipv6 nft udp
 ####
 ####
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A INPUT \
--p tcp -m multiport $config_input_state --sports $one_udp \
--s $config_ipv6_netclient -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT \
+-p tcp -m multiport $cfg_config_input_state --sports $one_udp \
+-s $cfg_config_ipv6_netclient -j ACCEPT \
 -m comment --comment client-udp  &> /dev/null
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $one_udp \
--d $config_ipv6_netclient -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
+-p tcp -m multiport $cfg_config_output_state --dports $one_udp \
+-d $cfg_config_ipv6_netclient -j ACCEPT \
 -m comment --comment client-udp  &> /dev/null
 ####
 ####
 done; fi
 ####
 ####
-if [ "$allow_separate_rules" == "$NULL" ]; then 
-for one_tcp in $(echo $client_port_tcp | $command_sed 's/,/ /g') ;
+if [ "$cfg_allow_separate_rules" == "$NULL" ]; then 
+for one_tcp in $(echo $cfg_client_port_tcp | $cmd_command_sed 's/,/ /g') ;
 do
 ####
 ####
@@ -16635,50 +16627,50 @@ do
 ####
 #### ipv4 legacy tcp
 ####
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT \
--p tcp -m multiport $config_input_state --sports $one_tcp \
--s $config_ipv4_netclient -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
+-p tcp -m multiport $cfg_config_input_state --sports $one_tcp \
+-s $cfg_config_ipv4_netclient -j ACCEPT \
 -m comment --comment client-tcp  &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $one_tcp \
--d $config_ipv4_netclient -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
+-p tcp -m multiport $cfg_config_output_state --dports $one_tcp \
+-d $cfg_config_ipv4_netclient -j ACCEPT \
 -m comment --comment client-tcp  &> /dev/null
 ####
 #### 
 #### ipv4 nft tcp
 ####
-$allow_use_nft $allow_use_ipv4     $command_ip4tablesnft -A INPUT \
--p tcp -m multiport $config_input_state --sports $one_tcp \
--s $config_ipv4_netclient -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4     $cmd_command_ip4tablesnft -A INPUT \
+-p tcp -m multiport $cfg_config_input_state --sports $one_tcp \
+-s $cfg_config_ipv4_netclient -j ACCEPT \
 -m comment --comment client-tcp  &> /dev/null
-$allow_use_nft $allow_use_ipv4     $command_ip4tablesnft -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $one_tcp \
--d $config_ipv4_netclient -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4     $cmd_command_ip4tablesnft -A OUTPUT \
+-p tcp -m multiport $cfg_config_output_state --dports $one_tcp \
+-d $cfg_config_ipv4_netclient -j ACCEPT \
 -m comment --comment client-tcp  &> /dev/null
 ####
 ####
 #### ipv6 legacy tcp
 ####
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A INPUT \
--p tcp -m multiport $config_input_state --sports $one_tcp \
--s $config_ipv6_netclient -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT \
+-p tcp -m multiport $cfg_config_input_state --sports $one_tcp \
+-s $cfg_config_ipv6_netclient -j ACCEPT \
 -m comment --comment client-tcp  &> /dev/null
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $one_tcp \
--d $config_ipv6_netclient -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
+-p tcp -m multiport $cfg_config_output_state --dports $one_tcp \
+-d $cfg_config_ipv6_netclient -j ACCEPT \
 -m comment --comment client-tcp  &> /dev/null
 ####
 ####
 #### ipv6 nft tcp
 ####
 ####
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A INPUT \
--p tcp -m multiport $config_input_state --sports $one_tcp \
--s $config_ipv6_netclient -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT \
+-p tcp -m multiport $cfg_config_input_state --sports $one_tcp \
+-s $cfg_config_ipv6_netclient -j ACCEPT \
 -m comment --comment client-tcp  &> /dev/null
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
--p tcp -m multiport $config_output_state --dports $one_tcp \
--d $config_ipv6_netclient -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
+-p tcp -m multiport $cfg_config_output_state --dports $one_tcp \
+-d $cfg_config_ipv6_netclient -j ACCEPT \
 -m comment --comment client-tcp  &> /dev/null
 ####
 ####
@@ -16692,86 +16684,86 @@ done ; fi
 #### ipv4
 ####
 ####
-$allow_use_legacy  $allow_use_ipv4  $command_ip4tableslegacy -A INPUT  \
--p tcp  -m multiport --dports $logserver_port_tcp \
--j $config_system_log \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4  $cmd_command_ip4tableslegacy -A INPUT  \
+-p tcp  -m multiport --dports $cfg_server_log_port_tcp \
+-j $cfg_config_system_log \
 -m comment --comment logserver-tcp  &> /dev/null
-$allow_use_legacy  $allow_use_ipv4  $command_ip4tableslegacy -A INPUT  \
--p udp  -m multiport --dports $logserver_port_udp \
--j $config_system_log \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4  $cmd_command_ip4tableslegacy -A INPUT  \
+-p udp  -m multiport --dports $cfg_server_log_port_udp \
+-j $cfg_config_system_log \
 -m comment --comment logserver-udp  &> /dev/null
 ####
 ####
-$allow_use_legacy  $allow_use_ipv4  $command_ip4tableslegacy -A OUTPUT \
--p tcp -m multiport --sports $logserver_port_tcp \
--j $config_system_log \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4  $cmd_command_ip4tableslegacy -A OUTPUT \
+-p tcp -m multiport --sports $cfg_server_log_port_tcp \
+-j $cfg_config_system_log \
 -m comment --comment logserver-tcp  &> /dev/null
-$allow_use_legacy  $allow_use_ipv4  $command_ip4tableslegacy -A OUTPUT \
--p udp -m multiport --sports $logserver_port_udp \
--j $config_system_log \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4  $cmd_command_ip4tableslegacy -A OUTPUT \
+-p udp -m multiport --sports $cfg_server_log_port_udp \
+-j $cfg_config_system_log \
 -m comment --comment logserver-udp  &> /dev/null
 ####
 ####
-$allow_use_nft     $allow_use_ipv4  $command_ip4tablesnft    -A INPUT  \
--p tcp  -m multiport --dports $logserver_port_tcp \
--j $config_system_log \
+$cfg_allow_use_nft     $cfg_allow_use_ipv4  $cmd_command_ip4tablesnft    -A INPUT  \
+-p tcp  -m multiport --dports $cfg_server_log_port_tcp \
+-j $cfg_config_system_log \
 -m comment --comment logserver-tcp  &> /dev/null
-$allow_use_nft     $allow_use_ipv4  $command_ip4tablesnft    -A INPUT  \
--p udp  -m multiport --dports $logserver_port_udp \
--j $config_system_log \
+$cfg_allow_use_nft     $cfg_allow_use_ipv4  $cmd_command_ip4tablesnft    -A INPUT  \
+-p udp  -m multiport --dports $cfg_server_log_port_udp \
+-j $cfg_config_system_log \
 -m comment --comment logserver-udp  &> /dev/null
 ####
 ####
-$allow_use_nft     $allow_use_ipv4  $command_ip4tablesnft    -A OUTPUT \
--p tcp -m multiport --sports $logserver_port_tcp \
--j $config_system_log \
+$cfg_allow_use_nft     $cfg_allow_use_ipv4  $cmd_command_ip4tablesnft    -A OUTPUT \
+-p tcp -m multiport --sports $cfg_server_log_port_tcp \
+-j $cfg_config_system_log \
 -m comment --comment logserver-tcp  &> /dev/null
-$allow_use_nft     $allow_use_ipv4  $command_ip4tablesnft    -A OUTPUT \
--p udp -m multiport --sports $logserver_port_udp \
--j $config_system_log \
+$cfg_allow_use_nft     $cfg_allow_use_ipv4  $cmd_command_ip4tablesnft    -A OUTPUT \
+-p udp -m multiport --sports $cfg_server_log_port_udp \
+-j $cfg_config_system_log \
 -m comment --comment logserver-udp  &> /dev/null
 ####
 ####
 #### ipv6
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6   $command_ip6tableslegacy -A INPUT   \
--p tcp  -m multiport --dports $logserver_port_tcp \
--j $config_system_log \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6   $cmd_command_ip6tableslegacy -A INPUT   \
+-p tcp  -m multiport --dports $cfg_server_log_port_tcp \
+-j $cfg_config_system_log \
 -m comment --comment logserver-tcp  &> /dev/null
-$allow_use_legacy  $allow_use_ipv6   $command_ip6tableslegacy -A INPUT   \
--p udp  -m multiport --dports $logserver_port_udp \
--j $config_system_log \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6   $cmd_command_ip6tableslegacy -A INPUT   \
+-p udp  -m multiport --dports $cfg_server_log_port_udp \
+-j $cfg_config_system_log \
 -m comment --comment logserver-udp  &> /dev/null
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6   $command_ip6tableslegacy -A OUTPUT  \
--p tcp -m multiport --sports $logserver_port_tcp \
--j $config_system_log \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6   $cmd_command_ip6tableslegacy -A OUTPUT  \
+-p tcp -m multiport --sports $cfg_server_log_port_tcp \
+-j $cfg_config_system_log \
 -m comment --comment logserver-tcp  &> /dev/null
-$allow_use_legacy  $allow_use_ipv6   $command_ip6tableslegacy -A OUTPUT  \
--p udp -m multiport --sports $logserver_port_udp \
--j $config_system_log \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6   $cmd_command_ip6tableslegacy -A OUTPUT  \
+-p udp -m multiport --sports $cfg_server_log_port_udp \
+-j $cfg_config_system_log \
 -m comment --comment logserver-udp  &> /dev/null
 ####
 ####
-$allow_use_nft     $allow_use_ipv6   $command_ip6tablesnft    -A INPUT   \
--p tcp  -m multiport --dports $logserver_port_tcp \
--j $config_system_log \
+$cfg_allow_use_nft     $cfg_allow_use_ipv6   $cmd_command_ip6tablesnft    -A INPUT   \
+-p tcp  -m multiport --dports $cfg_server_log_port_tcp \
+-j $cfg_config_system_log \
 -m comment --comment logserver-tcp  &> /dev/null
-$allow_use_nft     $allow_use_ipv6   $command_ip6tablesnft    -A INPUT   \
--p udp  -m multiport --dports $logserver_port_udp \
--j $config_system_log \
+$cfg_allow_use_nft     $cfg_allow_use_ipv6   $cmd_command_ip6tablesnft    -A INPUT   \
+-p udp  -m multiport --dports $cfg_server_log_port_udp \
+-j $cfg_config_system_log \
 -m comment --comment logserver-udp  &> /dev/null
 ####
 ####
-$allow_use_nft     $allow_use_ipv6   $command_ip6tablesnft    -A OUTPUT  \
--p tcp -m multiport --sports $logserver_port_tcp \
--j $config_system_log \
+$cfg_allow_use_nft     $cfg_allow_use_ipv6   $cmd_command_ip6tablesnft    -A OUTPUT  \
+-p tcp -m multiport --sports $cfg_server_log_port_tcp \
+-j $cfg_config_system_log \
 -m comment --comment logserver-tcp  &> /dev/null
-$allow_use_nft     $allow_use_ipv6   $command_ip6tablesnft    -A OUTPUT  \
--p udp -m multiport --sports $logserver_port_udp \
--j $config_system_log \
+$cfg_allow_use_nft     $cfg_allow_use_ipv6   $cmd_command_ip6tablesnft    -A OUTPUT  \
+-p udp -m multiport --sports $cfg_server_log_port_udp \
+-j $cfg_config_system_log \
 -m comment --comment logserver-udp  &> /dev/null
 ####
 ####
@@ -16782,56 +16774,56 @@ $allow_use_nft     $allow_use_ipv6   $command_ip6tablesnft    -A OUTPUT  \
 #### without separate rules
 ####
 ####
-if [ "$allow_separate_rules" != "$NULL" ]; then 
+if [ "$cfg_allow_separate_rules" != "$NULL" ]; then 
 ####
 ####
 #### ipv4 legacy
 ####
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT  \
--p tcp -m multiport --dports $server_port_tcp -s $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT  \
+-p tcp -m multiport --dports $cfg_server_port_tcp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
--p tcp -m multiport --sports $server_port_tcp -d $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
+-p tcp -m multiport --sports $cfg_server_port_tcp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 #### 
 #### ipv4 nft
 ####
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
--p tcp -m multiport --dports $server_port_tcp -s $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
+-p tcp -m multiport --dports $cfg_server_port_tcp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
--p tcp -m multiport --sports $server_port_tcp -d $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
+-p tcp -m multiport --sports $cfg_server_port_tcp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
 #### ipv6 legacy
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A INPUT  \
--p tcp -m multiport --dports $server_port_tcp -s $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
+-p tcp -m multiport --dports $cfg_server_port_tcp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
--p tcp -m multiport --sports $server_port_tcp -d $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
+-p tcp -m multiport --sports $cfg_server_port_tcp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
 #### ipv6 nft
 ####
 ####
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A INPUT  \
--p tcp -m multiport --dports $server_port_tcp -s $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT  \
+-p tcp -m multiport --dports $cfg_server_port_tcp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
--p tcp -m multiport --sports $server_port_tcp -d $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
+-p tcp -m multiport --sports $cfg_server_port_tcp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
@@ -16842,49 +16834,49 @@ fi
 ################ spanish: reglas para permitir puertos servidor udp #######################
 ####
 ####
-if [ "$allow_separate_rules" != "$NULL" ]; then 
+if [ "$cfg_allow_separate_rules" != "$NULL" ]; then 
 ####
 ####
 #### ipv4 legacy
 ####
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT  \
--p udp -m multiport --dports $server_port_udp -s $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT  \
+-p udp -m multiport --dports $cfg_server_port_udp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -d $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
+-p udp -m multiport --sports $cfg_server_port_udp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
 ####
 #### 
 #### ipv4 nft
 ####
 ####
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
--p udp -m multiport --dports $server_port_udp -s $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
+-p udp -m multiport --dports $cfg_server_port_udp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -d $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
+-p udp -m multiport --sports $cfg_server_port_udp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
 ####
 ####
 #### ipv6 legacy
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A INPUT  \
--p udp -m multiport --dports $server_port_udp -s $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
+-p udp -m multiport --dports $cfg_server_port_udp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -d $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
+-p udp -m multiport --sports $cfg_server_port_udp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
 ####
 ####
 #### ipv6 nft
 ####
 ####
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A INPUT  \
--p udp -m multiport --dports $server_port_udp -s $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT  \
+-p udp -m multiport --dports $cfg_server_port_udp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -d $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
+-p udp -m multiport --sports $cfg_server_port_udp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
 ####
 ####
@@ -16901,50 +16893,50 @@ fi
 #### with separate rules
 ####
 ####
-if [ "$allow_separate_rules" == "$NULL" ]; then 
-for one_tcp in $(echo $server_port_tcp | $command_sed 's/,/ /g') ;
+if [ "$cfg_allow_separate_rules" == "$NULL" ]; then 
+for one_tcp in $(echo $cfg_server_port_tcp | $cmd_command_sed 's/,/ /g') ;
 do
 ####
 ####
 #### ipv4 legacy
 ####
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT  \
--p tcp -m multiport --dports $one_tcp -s $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT  \
+-p tcp -m multiport --dports $one_tcp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
--p tcp -m multiport --sports $one_tcp -d $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
+-p tcp -m multiport --sports $one_tcp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 #### 
 #### ipv4 nft
 ####
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
--p tcp -m multiport --dports $one_tcp -s $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
+-p tcp -m multiport --dports $one_tcp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
--p tcp -m multiport --sports $one_tcp -d $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
+-p tcp -m multiport --sports $one_tcp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
 #### ipv6 legacy
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A INPUT  \
--p tcp -m multiport --dports $one_tcp -s $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
+-p tcp -m multiport --dports $one_tcp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
--p tcp -m multiport --sports $one_tcp -d $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
+-p tcp -m multiport --sports $one_tcp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
 #### ipv6 nft
 ####
 ####
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A INPUT  \
--p tcp -m multiport --dports $one_tcp -s $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT  \
+-p tcp -m multiport --dports $one_tcp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
--p tcp -m multiport --sports $one_tcp -d $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
+-p tcp -m multiport --sports $one_tcp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-tcp &> /dev/null
 ####
 ####
@@ -16955,50 +16947,50 @@ done; fi
 ####################################### spanish: reglas para permitir puertos servidor udp
 ####
 ####
-if [ "$allow_separate_rules" == "$NULL" ]; then 
-for one_udp in $(echo $server_port_udp | $command_sed 's/,/ /g') ;
+if [ "$cfg_allow_separate_rules" == "$NULL" ]; then 
+for one_udp in $(echo $cfg_server_port_udp | $cmd_command_sed 's/,/ /g') ;
 do
 ####
 ####
 #### ipv4 legacy
 ####
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A INPUT  \
--p udp -m multiport --dports $one_udp -s $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT  \
+-p udp -m multiport --dports $one_udp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
-$allow_use_legacy  $allow_use_ipv4 $command_ip4tableslegacy -A OUTPUT \
--p udp -m multiport --sports $one_udp -d $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
+-p udp -m multiport --sports $one_udp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
 ####
 #### 
 #### ipv4 nft
 ####
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A INPUT \
--p udp -m multiport --dports $one_udp -s $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
+-p udp -m multiport --dports $one_udp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
-$allow_use_nft $allow_use_ipv4 $command_ip4tablesnft -A OUTPUT \
--p udp -m multiport --sports $one_udp -d $config_ipv4_netserver -j ACCEPT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
+-p udp -m multiport --sports $one_udp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
 ####
 ####
 #### ipv6 legacy
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A INPUT  \
--p udp -m multiport --dports $one_udp -s $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
+-p udp -m multiport --dports $one_udp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A OUTPUT \
--p udp -m multiport --sports $one_udp -d $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
+-p udp -m multiport --sports $one_udp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
 ####
 ####
 #### ipv6 nft
 ####
 ####
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A INPUT  \
--p udp -m multiport --dports $one_udp -s $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT  \
+-p udp -m multiport --dports $one_udp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
-$allow_use_nft  $allow_use_ipv6 $command_ip6tablesnft -A OUTPUT \
--p udp -m multiport --sports $one_udp -d $config_ipv6_netserver -j ACCEPT \
+$cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
+-p udp -m multiport --sports $one_udp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment server-udp &> /dev/null
 ####
 ####
@@ -17012,27 +17004,27 @@ done; fi
 ################## spanish: reglas de entrada de legacy ipv4 para ping, uid, gid y protocolos
 ####
 ####
-$allow_use_legacy  $allow_use_ipv4 $allow_output_ping \
-$command_ip4tableslegacy -A INPUT  \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_allow_output_ping \
+$cmd_command_ip4tableslegacy -A INPUT  \
 -p icmp --icmp-type echo-reply -j ACCEPT \
 -m comment --comment "icmp reply" &> /dev/null
 ####
 ####
-$allow_use_legacy  $allow_use_ipv4 $allow_input_ping \
-$command_ip4tableslegacy -A INPUT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_allow_input_ping \
+$cmd_command_ip4tableslegacy -A INPUT \
 -p icmp --icmp-type echo-request -j ACCEPT \
 -m comment --comment "icmp resquest" &> /dev/null
 ####
 ####
-$allow_use_legacy  $allow_use_ipv4 $config_uid_gid \
-$command_ip4tableslegacy -A INPUT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_config_uid_gid \
+$cmd_command_ip4tableslegacy -A INPUT \
 -m state --state related,established -j ACCEPT \
 -m comment --comment "uid-gid" &> /dev/null
 ####
 ####
-for one_protocol in $(echo $config_others_protocols | $command_sed 's/,/ /g')
-do $allow_use_legacy  $allow_use_ipv4 $allow_others_protocols \
-$command_ip4tableslegacy -A INPUT \
+for one_protocol in $(echo $cfg_config_others_protocols | $cmd_command_sed 's/,/ /g')
+do $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_allow_others_protocols \
+$cmd_command_ip4tableslegacy -A INPUT \
 -p $one_protocol -j ACCEPT \
 -m comment --comment "other protocols" &> /dev/null
 done
@@ -17042,37 +17034,37 @@ done
 ################# spanish: reglas de salida de legacy ipv4 para ping, uid, gid y protocolos
 ####
 ####
-$allow_use_legacy  $allow_use_ipv4 $allow_output_ping \
-$command_ip4tableslegacy   -A OUTPUT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_allow_output_ping \
+$cmd_command_ip4tableslegacy   -A OUTPUT \
 -p icmp --icmp-type echo-request -j ACCEPT \
 -m comment --comment "icmp request" &> /dev/null
 ####
 ####
-$allow_use_legacy  $allow_use_ipv4 $allow_input_ping \
-$command_ip4tableslegacy -A OUTPUT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_allow_input_ping \
+$cmd_command_ip4tableslegacy -A OUTPUT \
 -p icmp --icmp-type echo-reply -j ACCEPT \
 -m comment --comment "icmp reply" &> /dev/null
 ####
 ####
-for uid in $(echo $config_output_uid | $command_sed 's/,/ /g') ;
-do $allow_use_legacy  $allow_use_ipv4 $allow_output_uid \
-$command_ip4tableslegacy   -A OUTPUT \
+for uid in $(echo $cfg_config_output_uid | $cmd_command_sed 's/,/ /g') ;
+do $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_allow_output_uid \
+$cmd_command_ip4tableslegacy   -A OUTPUT \
 -m owner --gid-owner $uid -j ACCEPT \
 -m comment --comment "user-uid" &> /dev/null
 done
 ####
 ####
-for gid in $(echo $config_output_gid | $command_sed 's/,/ /g') ;
-do $allow_use_legacy  $allow_use_ipv4 $allow_output_gid \
-$command_ip4tableslegacy   -A OUTPUT \
+for gid in $(echo $cfg_config_output_gid | $cmd_command_sed 's/,/ /g') ;
+do $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_allow_output_gid \
+$cmd_command_ip4tableslegacy   -A OUTPUT \
 -m owner --gid-owner $gid -j ACCEPT \
 -m comment --comment "group-gid" &> /dev/null
 done
 ####
 ####
-for one_protocol in $(echo $config_others_protocols | $command_sed 's/,/ /g')
-do $allow_use_legacy  $allow_use_ipv4 $allow_others_protocols \
-$command_ip4tableslegacy -A OUTPUT \
+for one_protocol in $(echo $cfg_config_others_protocols | $cmd_command_sed 's/,/ /g')
+do $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_allow_others_protocols \
+$cmd_command_ip4tableslegacy -A OUTPUT \
 -p $one_protocol -j ACCEPT \
 -m comment --comment "other protocols" &> /dev/null
 done
@@ -17086,32 +17078,32 @@ done
 #### spanish: ipv6 filtros de legacy reglas de entrada
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $allow_output_ping \
-$command_ip6tableslegacy -A INPUT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cfg_allow_output_ping \
+$cmd_command_ip6tableslegacy -A INPUT \
 -p icmpv6 --icmpv6-type echo-reply -j ACCEPT \
 -m comment --comment "icmp nexthop" &> /dev/null
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $allow_input_ping \
-$command_ip6tableslegacy -A INPUT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cfg_allow_input_ping \
+$cmd_command_ip6tableslegacy -A INPUT \
 -p icmpv6 --icmpv6-type echo-request -j ACCEPT \
 -m comment --comment "icmp nexthop" &> /dev/null
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $config_uid_gid \
-$command_ip6tableslegacy -A INPUT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cfg_config_uid_gid \
+$cmd_command_ip6tableslegacy -A INPUT \
 -m state --state related,established -j ACCEPT \
 -m comment --comment "uid-gid" &> /dev/null
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy -A INPUT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT \
 -p ipv6-icmp -j ACCEPT \
 -m comment --comment "icmp nexthop" &> /dev/null
 ####
 ####
-for one_protocol in $(echo $config_others_protocols | $command_sed 's/,/ /g')
-do $allow_use_legacy  $allow_use_ipv6 $allow_others_protocols \
-$command_ip6tableslegacy -A INPUT \
+for one_protocol in $(echo $cfg_config_others_protocols | $cmd_command_sed 's/,/ /g')
+do $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cfg_allow_others_protocols \
+$cmd_command_ip6tableslegacy -A INPUT \
 -p $one_protocol -j ACCEPT \
 -m comment --comment "other protocols" &> /dev/null
 done
@@ -17121,42 +17113,42 @@ done
 #### spanish: ipv6 filtros legacy reglas de salida
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $allow_output_ping \
-$command_ip6tableslegacy   -A OUTPUT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cfg_allow_output_ping \
+$cmd_command_ip6tableslegacy   -A OUTPUT \
 -p icmpv6 --icmpv6-type echo-request -j ACCEPT \
 -m comment --comment "icmp request" &> /dev/null
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $allow_input_ping \
-$command_ip6tableslegacy -A OUTPUT \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cfg_allow_input_ping \
+$cmd_command_ip6tableslegacy -A OUTPUT \
 -p icmpv6 --icmpv6-type echo-reply -j ACCEPT \
 -m comment --comment "icmp reply" &> /dev/null
 ####
 ####
-for uid in $(echo $config_output_uid | $command_sed 's/,/ /g') ;
-do $allow_use_legacy  $allow_use_ipv6 $allow_output_uid \
-$command_ip6tableslegacy   -A OUTPUT \
+for uid in $(echo $cfg_config_output_uid | $cmd_command_sed 's/,/ /g') ;
+do $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cfg_allow_output_uid \
+$cmd_command_ip6tableslegacy   -A OUTPUT \
 -m owner --gid-owner $uid -j ACCEPT \
 -m comment --comment "user-uid" &> /dev/null
 done
 ####
 ####
-for gid in $(echo $config_output_gid | $command_sed 's/,/ /g') ;
-do $allow_use_legacy  $allow_use_ipv6 $allow_output_gid \
-$command_ip6tableslegacy   -A OUTPUT \
+for gid in $(echo $cfg_config_output_gid | $cmd_command_sed 's/,/ /g') ;
+do $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cfg_allow_output_gid \
+$cmd_command_ip6tableslegacy   -A OUTPUT \
 -m owner --gid-owner $gid -j ACCEPT \
 -m comment --comment "group-gid" &> /dev/null
 done
 ####
 ####
-$allow_use_legacy  $allow_use_ipv6 $command_ip6tableslegacy \
+$cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy \
 -A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "icmp nexthop" &> /dev/null
 ####
 ####
-for one_protocol in $(echo $others_protocols | $command_sed 's/,/ /g')
-do $allow_use_legacy6  $allow_use_ipv6 $allow_others_protocols \
-$command_ip6tableslegacy -A OUTPUT \
+for one_protocol in $(echo $others_protocols | $cmd_command_sed 's/,/ /g')
+do $cfg_allow_use_legacy6  $cfg_allow_use_ipv6 $cfg_allow_others_protocols \
+$cmd_command_ip6tableslegacy -A OUTPUT \
 -p $one_protocol -j ACCEPT \
 -m comment --comment "other protocols" &> /dev/null
 done
@@ -17170,27 +17162,27 @@ done
 #### spanish: ipv4 filter nft reglas de entrada
 ####
 ####
-$allow_use_nft $allow_use_ipv4 $allow_output_ping \
-$command_ip4tablesnft -A INPUT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_allow_output_ping \
+$cmd_command_ip4tablesnft -A INPUT \
 -p icmp --icmp-type echo-reply -j ACCEPT \
 -m comment --comment "icmp reply" &> /dev/null
 ####
 ####
-$allow_use_nft $allow_use_ipv4 $allow_input_ping \
-$command_ip4tablesnft -A INPUT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_allow_input_ping \
+$cmd_command_ip4tablesnft -A INPUT \
 -p icmp --icmp-type echo-request -j ACCEPT \
 -m comment --comment "icmp request" &> /dev/null
 ####
 ####
-$allow_use_nft $allow_use_ipv4 $config_uid_gid \
-$command_ip4tablesnft -A INPUT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_config_uid_gid \
+$cmd_command_ip4tablesnft -A INPUT \
 -m state --state related,established -j ACCEPT \
 -m comment --comment "uid-gid" &> /dev/null
 ####
 ####
-for one_protocol in $(echo $config_others_protocols | $command_sed 's/,/ /g')
-do $allow_use_nft $allow_use_ipv4 $allow_others_protocols \
-$command_ip4tablesnft -A INPUT \
+for one_protocol in $(echo $cfg_config_others_protocols | $cmd_command_sed 's/,/ /g')
+do $cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_allow_others_protocols \
+$cmd_command_ip4tablesnft -A INPUT \
 -p $one_protocol -j ACCEPT \
 -m comment --comment "other protocols" &> /dev/null
 done
@@ -17200,37 +17192,37 @@ done
 #### spanish: ipv4 filter nft reglas de salida
 ####
 ####
-$allow_use_nft $allow_use_ipv4 $allow_output_ping \
-$command_ip4tablesnft -A OUTPUT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_allow_output_ping \
+$cmd_command_ip4tablesnft -A OUTPUT \
 -p icmp --icmp-type echo-request -j ACCEPT \
 -m comment --comment "icmp request" &> /dev/null
 ####
 ####
-$allow_use_nft $allow_use_ipv4 $allow_input_ping \
-$command_ip4tablesnft -A OUTPUT \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_allow_input_ping \
+$cmd_command_ip4tablesnft -A OUTPUT \
 -p icmp --icmp-type echo-reply -j ACCEPT \
 -m comment --comment "icmp reply" &> /dev/null
 ####
 ####
-for uid in $(echo $config_output_uid | $command_sed 's/,/ /g') ;
-do $allow_use_nft $allow_use_ipv4 $allow_output_uid \
-$command_ip4tablesnft   -A OUTPUT \
+for uid in $(echo $cfg_config_output_uid | $cmd_command_sed 's/,/ /g') ;
+do $cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_allow_output_uid \
+$cmd_command_ip4tablesnft   -A OUTPUT \
 -m owner --uid-owner $uid -j ACCEPT \
 -m comment --comment "user-uid" &> /dev/null
 done
 ####
 ####
-for gid in $(echo $config_output_gid | $command_sed 's/,/ /g') ;
-do $allow_use_nft $allow_use_ipv4 $allow_output_gid \
-$command_ip4tablesnft   -A OUTPUT \
+for gid in $(echo $cfg_config_output_gid | $cmd_command_sed 's/,/ /g') ;
+do $cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_allow_output_gid \
+$cmd_command_ip4tablesnft   -A OUTPUT \
 -m owner --gid-owner $gid -j ACCEPT \
 -m comment --comment "group-gid" &> /dev/null
 done
 ####
 ####
-for one_protocol in $(echo $config_others_protocols | $command_sed 's/,/ /g')
-do $allow_use_nft $allow_use_ipv4 $allow_others_protocols \
-$command_ip4tablesnft -A OUTPUT \
+for one_protocol in $(echo $cfg_config_others_protocols | $cmd_command_sed 's/,/ /g')
+do $cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_allow_others_protocols \
+$cmd_command_ip4tablesnft -A OUTPUT \
 -p $one_protocol -j ACCEPT \
 -m comment --comment "other protocols" &> /dev/null
 done
@@ -17244,32 +17236,32 @@ done
 #### ipv6 filtros nft reglas d entrada
 ####
 ####
-$allow_use_nft $allow_use_ipv6 $allow_output_ping \
-$command_ip6tablesnft -A INPUT \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_output_ping \
+$cmd_command_ip6tablesnft -A INPUT \
 -p icmpv6 --icmpv6-type echo-reply -j ACCEPT \
 -m comment --comment "icmp reply" &> /dev/null
 ####
 ####
-$allow_use_nft $allow_use_ipv6 $allow_input_ping \
-$command_ip6tablesnft -A INPUT \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_input_ping \
+$cmd_command_ip6tablesnft -A INPUT \
 -p icmpv6 --icmpv6-type echo-request -j ACCEPT \
 -m comment --comment "imcp request" &> /dev/null
 ####
 ####
-$allow_use_nft $allow_use_ipv6 $config_uid_gid \
-$command_ip6tablesnft -A INPUT \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_config_uid_gid \
+$cmd_command_ip6tablesnft -A INPUT \
 -m state --state related,established -j ACCEPT \
 -m comment --comment "uid-gid" &> /dev/null
 ####
 ####
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft -A INPUT \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT \
 -p ipv6-icmp -j ACCEPT \
 -m comment --comment "icmp nexthop" &> /dev/null
 ####
 ####
-for one_protocol in $(echo $config_others_protocols | $command_sed 's/,/ /g')
-do $allow_use_nft $allow_use_ipv6 $allow_others_protocols \
-$command_ip6tablesnft -A INPUT \
+for one_protocol in $(echo $cfg_config_others_protocols | $cmd_command_sed 's/,/ /g')
+do $cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_others_protocols \
+$cmd_command_ip6tablesnft -A INPUT \
 -p $one_protocol -j ACCEPT \
 -m comment --comment "other protocols" &> /dev/null
 done
@@ -17279,42 +17271,42 @@ done
 #### spanish: ipv6 filtros nft reglas de salida
 ####
 ####
-$allow_use_nft $allow_use_ipv6 $allow_output_ping \
-$command_ip6tablesnft -A OUTPUT \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_output_ping \
+$cmd_command_ip6tablesnft -A OUTPUT \
 -p icmpv6 --icmpv6-type echo-request -j ACCEPT \
 -m comment --comment "icmp request" &> /dev/null
 ####
 ####
-$allow_use_nft $allow_use_ipv6 $allow_input_ping \
-$command_ip6tablesnft -A OUTPUT \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_input_ping \
+$cmd_command_ip6tablesnft -A OUTPUT \
 -p icmpv6 --icmpv6-type echo-reply -j ACCEPT \
 -m comment --comment "icmp reply" &> /dev/null
 ####
 ####
-for uid in $(echo $config_output_uid | $command_sed 's/,/ /g') ;
-do $allow_use_nft $allow_use_ipv6 $allow_output_uid \
-$command_ip6tablesnft -A OUTPUT \
+for uid in $(echo $cfg_config_output_uid | $cmd_command_sed 's/,/ /g') ;
+do $cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_output_uid \
+$cmd_command_ip6tablesnft -A OUTPUT \
 -m owner --uid-owner $uid -j ACCEPT \
 -m comment --comment "user-uid" &> /dev/null
 done
 ####
 ####
-for gid in $(echo $config_output_gid | $command_sed 's/,/ /g') ;
-do $allow_use_nft $allow_use_ipv6 $allow_output_gid \
-$command_ip6tablesnft -A OUTPUT \
+for gid in $(echo $cfg_config_output_gid | $cmd_command_sed 's/,/ /g') ;
+do $cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_output_gid \
+$cmd_command_ip6tablesnft -A OUTPUT \
 -m owner --gid-owner $gid -j ACCEPT \
 -m comment --comment "group-gid" &> /dev/null
 done
 ####
 ####
-$allow_use_nft $allow_use_ipv6 $command_ip6tablesnft \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft \
 -A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "icmp nexthop" &> /dev/null
 ####
 ####
-for one_protocol in $(echo $config_others_protocols | $command_sed 's/,/ /g')
-do $allow_use_nft $allow_use_ipv6 $allow_others_protocols \
-$command_ip6tablesnft -A OUTPUT \
+for one_protocol in $(echo $cfg_config_others_protocols | $cmd_command_sed 's/,/ /g')
+do $cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_others_protocols \
+$cmd_command_ip6tablesnft -A OUTPUT \
 -p $one_protocol -j ACCEPT \
 -m comment --comment "other protocols" &> /dev/null
 done
@@ -17334,51 +17326,51 @@ done
 #### spanish: hace nat masquerade ip4 y ip6 PERMITIR GATEWAY
 ####
 ####
-if [ "$allow_gateway_ip4" == "$NULL" ]; then 
+if [ "$cfg_allow_gateway_ip4" == "$NULL" ]; then 
 ####
 ####
-$allow_use_nft    $allow_use_ipv4    $allow_gateway_ip4 \
-$command_ip4tablesnft -t nat \
--A POSTROUTING -j MASQUERADE -s $config_gateway_ip4 \
+$cfg_allow_use_nft    $cfg_allow_use_ipv4    $cfg_allow_gateway_ip4 \
+$cmd_command_ip4tablesnft -t nat \
+-A POSTROUTING -j MASQUERADE -s $cfg_config_gateway_ip4 \
 -m comment --comment "ip gateway" &>/dev/null
-$allow_use_legacy $allow_use_ipv4 $allow_gateway_ip4 \
-$command_ip4tableslegacy -t nat \
--A POSTROUTING -j MASQUERADE -s $config_gateway_ip4 \
+$cfg_allow_use_legacy $cfg_allow_use_ipv4 $cfg_allow_gateway_ip4 \
+$cmd_command_ip4tableslegacy -t nat \
+-A POSTROUTING -j MASQUERADE -s $cfg_config_gateway_ip4 \
 -m comment --comment "ip gateway" &>/dev/null
 ####
 ####
-$allow_use_nft $allow_use_ipv4 \
-$allow_gateway_ip4 $command_ip4tablesnft -t nat \
--A PREROUTING -j ACCEPT -d $config_gateway_ip4 \
+$cfg_allow_use_nft $cfg_allow_use_ipv4 \
+$cfg_allow_gateway_ip4 $cmd_command_ip4tablesnft -t nat \
+-A PREROUTING -j ACCEPT -d $cfg_config_gateway_ip4 \
 -m comment --comment "ip gateway"  &>/dev/null
-$allow_use_legacy $allow_use_ipv4 \
-$allow_gateway_ip4 $command_ip4tableslegacy -t nat \
--A PREROUTING -j ACCEPT -d $config_gateway_ip4 \
+$cfg_allow_use_legacy $cfg_allow_use_ipv4 \
+$cfg_allow_gateway_ip4 $cmd_command_ip4tableslegacy -t nat \
+-A PREROUTING -j ACCEPT -d $cfg_config_gateway_ip4 \
 -m comment --comment "ip gateway" &>/dev/null
 ####
 fi
 ####
 ####
-if [ "$allow_gateway_ip6" == "$NULL" ]; then 
+if [ "$cfg_allow_gateway_ip6" == "$NULL" ]; then 
 ####
 ####
-$allow_use_nft $allow_use_ipv6 $allow_gateway_ip6 \
-$command_ip6tablesnft -t nat \
--A POSTROUTING -j MASQUERADE -s $config_gateway_ip6 \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_gateway_ip6 \
+$cmd_command_ip6tablesnft -t nat \
+-A POSTROUTING -j MASQUERADE -s $cfg_config_gateway_ip6 \
 -m comment --comment "ip gateway" &>/dev/null
-$allow_use_legacy $allow_use_ipv6 $allow_gateway_ip6 \
-$command_ip6tableslegacy -t nat \
--A POSTROUTING -j MASQUERADE -s $config_gateway_ip6 \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cfg_allow_gateway_ip6 \
+$cmd_command_ip6tableslegacy -t nat \
+-A POSTROUTING -j MASQUERADE -s $cfg_config_gateway_ip6 \
 -m comment --comment "ip gateway" &>/dev/null
 ####
 ####
-$allow_use_nft $allow_use_ipv6 $allow_gateway_ip6 \
-$command_ip6tablesnft -t nat \
--A PREROUTING -j ACCEPT -d $config_gateway_ip6 \
+$cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_gateway_ip6 \
+$cmd_command_ip6tablesnft -t nat \
+-A PREROUTING -j ACCEPT -d $cfg_config_gateway_ip6 \
 -m comment --comment "ip gateway" &>/dev/null
-$allow_use_legacy $allow_use_ipv6 $allow_gateway_ip6 \
-$command_ip6tableslegacy -t nat \
--A PREROUTING -j ACCEPT -d $config_gateway_ip6 \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cfg_allow_gateway_ip6 \
+$cmd_command_ip6tableslegacy -t nat \
+-A PREROUTING -j ACCEPT -d $cfg_config_gateway_ip6 \
 -m comment --comment "ip gatway" &>/dev/null
 ####
 fi
@@ -17388,31 +17380,31 @@ fi
 #### spanish: hace nat DMZ ip4 y ip6 PERMITIR GATEWAY SERVER IN LAN
 ####
 ####
-if [ "$config_dmz_ip4" == "$NULL" ]; then 
+if [ "$cfg_config_dmz_ip4" == "$NULL" ]; then 
 ####
 ####
-$allow_use_nft    $allow_use_ipv4    $allow_dmz_ip4 \
-$command_ip4tablesnft -t nat \
--A PREROUTING -j DNAT --to-destination $config_dmz_ip4 \
+$cfg_allow_use_nft    $cfg_allow_use_ipv4    $cfg_allow_dmz_ip4 \
+$cmd_command_ip4tablesnft -t nat \
+-A PREROUTING -j DNAT --to-destination $cfg_config_dmz_ip4 \
 -m comment --comment "ip dmz" &>/dev/null
-$allow_use_legacy $allow_use_ipv4    $allow_dmz_ip4 \
-$command_ip4tableslegacy -t nat \
--A PREROUTING -j DNAT --to-destination $config_dmz_ip4 \
+$cfg_allow_use_legacy $cfg_allow_use_ipv4    $cfg_allow_dmz_ip4 \
+$cmd_command_ip4tableslegacy -t nat \
+-A PREROUTING -j DNAT --to-destination $cfg_config_dmz_ip4 \
 -m comment --comment "ip dmz" &>/dev/null
 ####
 fi
 ####
 ####
-if [ "$config_dmz_ip6" == "$NULL" ]; then 
+if [ "$cfg_config_dmz_ip6" == "$NULL" ]; then 
 ####
 ####
-$allow_use_nft $allow_use_ipv6    $allow_dmz_ip6 \
-$command_ip6tablesnft -t nat \
--A PREROUTING -j DNAT --to-destination $config_dmz_ip6 \
+$cfg_allow_use_nft $cfg_allow_use_ipv6    $cfg_allow_dmz_ip6 \
+$cmd_command_ip6tablesnft -t nat \
+-A PREROUTING -j DNAT --to-destination $cfg_config_dmz_ip6 \
 -m comment --comment "ip dmz" &>/dev/null
-$allow_use_legacy $allow_use_ipv6 $allow_dmz_ip6 \
-$command_ip6tableslegacy -t nat \
--A PERROUTING -j DNAT --to-destination $config_dmz_ip6 \
+$cfg_allow_use_legacy $cfg_allow_use_ipv6 $cfg_allow_dmz_ip6 \
+$cmd_command_ip6tableslegacy -t nat \
+-A PERROUTING -j DNAT --to-destination $cfg_config_dmz_ip6 \
 -m comment --comment "ip dmz" &>/dev/null
 ####
 fi
@@ -17426,50 +17418,50 @@ fi
 #### spanish: desactiva por defecto con reenvio o sin reenvio
 ####
 ####
-$command_sysctl -w net.ipv4.conf.all.forwarding=0 &> /dev/null
-$command_sysctl -w net.ipv6.conf.all.forwarding=0 &> /dev/null
+$cmd_command_sysctl -w net.ipv4.conf.all.forwarding=0 &> /dev/null
+$cmd_command_sysctl -w net.ipv6.conf.all.forwarding=0 &> /dev/null
 ####
 ####
 ####   Active when there is forward
-$ipv4 $allow_forward $command_sysctl -w net.ipv4.conf.all.forwarding=1 &> /dev/null
-$ipv6 $allow_forward $command_sysctl -w net.ipv6.conf.all.forwarding=1 &> /dev/null
+$ipv4 $cfg_allow_forward $cmd_command_sysctl -w net.ipv4.conf.all.forwarding=1 &> /dev/null
+$ipv6 $cfg_allow_forward $cmd_command_sysctl -w net.ipv6.conf.all.forwarding=1 &> /dev/null
 ####
 ####
 ####   ipv4 filter legacy rules forward
-$allow_use_legacy $allow_forward_ip4 $command_ip4tableslegacy \
+$cfg_allow_use_legacy $cfg_allow_forward_ip4 $cmd_command_ip4tableslegacy \
 -m comment --comment allow-forward -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
 ####   ipv6 filter legacy rules forward
-$allow_use_legacy $allow_forward_ip6 $command_ip6tableslegacy \
+$cfg_allow_use_legacy $cfg_allow_forward_ip6 $cmd_command_ip6tableslegacy \
 -m comment --comment allow-forward -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
 ####   ipv4 filter nft rules forward
-$allow_use_nft $allow_forward_ip4 $command_ip4tablesnft \
+$cfg_allow_use_nft $cfg_allow_forward_ip4 $cmd_command_ip4tablesnft \
 -m comment --comment allow-forward -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
 ####   ipv6 filter nft rules forward
-$allow_use_nft $allow_forward_ip6 $command_ip6tablesnft \
+$cfg_allow_use_nft $cfg_allow_forward_ip6 $cmd_command_ip6tablesnft \
 -m comment --comment allow-forward -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
 ######################### input log close
 ####
 ####
-if [ "$allow_close_log" == "$NULL" ]; then
+if [ "$cfg_allow_close_log" == "$NULL" ]; then
 ####
 ####
 #### english: nft INPUT LOG CLOSE
 #### spanish: nft INPUT LOG CLOSE
 ####
 ####
-$launch_custom $allow_use_ipv4 $allow_use_nft \
-$command_ip4tablesnft -t filter -A INPUT   -j $config_system_log \
+$launch_custom $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cmd_command_ip4tablesnft -t filter -A INPUT   -j $cfg_config_system_log \
 -m comment --comment close-log &> /dev/null
-$launch_custom $allow_use_ipv6 $allow_use_nft \
-$command_ip6tablesnft -t filter -A INPUT  -j $config_system_log \
+$launch_custom $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cmd_command_ip6tablesnft -t filter -A INPUT  -j $cfg_config_system_log \
 -m comment --comment close-log &> /dev/null
 ####
 ####
@@ -17477,11 +17469,11 @@ $command_ip6tablesnft -t filter -A INPUT  -j $config_system_log \
 #### spanish: legacy INPUT LOG CLOSE 
 ####
 ####
-$launch_custom $allow_use_ipv4 $allow_use_legacy \
-$command_ip4tableslegacy  -t filter -A INPUT  -j $config_system_log \
+$launch_custom $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cmd_command_ip4tableslegacy  -t filter -A INPUT  -j $cfg_config_system_log \
 -m comment --comment close-log &> /dev/null
-$launch_custom $allow_use_ipv6 $allow_use_legacy \
-$command_ip6tableslegacy -t filter -A INPUT  -j $config_system_log \
+$launch_custom $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cmd_command_ip6tableslegacy -t filter -A INPUT  -j $cfg_config_system_log \
 -m comment --comment close-log &> /dev/null
 ####
 ####
@@ -17491,18 +17483,18 @@ fi
 ######################### output log close
 ####
 ####
-if [ "$allow_close_log" == "$NULL" ]; then
+if [ "$cfg_allow_close_log" == "$NULL" ]; then
 ####
 ####
 #### english: nft OUPUT LOG CLOSE
 #### spanish: nft OUPUT LOG CLOSE
 ####
 ####
-$launch_custom $allow_use_ipv4 $allow_use_nft \
-$command_ip4tablesnft -t filter -A OUTPUT  -j $config_system_log \
+$launch_custom $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cmd_command_ip4tablesnft -t filter -A OUTPUT  -j $cfg_config_system_log \
 -m comment --comment close-log &> /dev/null
-$launch_custom $allow_use_ipv6 $allow_use_nft \
-$command_ip6tablesnft -t filter -A OUTPUT  -j $config_system_log \
+$launch_custom $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cmd_command_ip6tablesnft -t filter -A OUTPUT  -j $cfg_config_system_log \
 -m comment --comment close-log &> /dev/null
 ####
 ####
@@ -17510,11 +17502,11 @@ $command_ip6tablesnft -t filter -A OUTPUT  -j $config_system_log \
 #### spanish: legacy OUPUT LOG CLOSE 
 ####
 ####
-$launch_custom $allow_use_ipv4 $allow_use_legacy \
-$command_ip4tableslegacy  -t filter -A OUTPUT  -j $config_system_log \
+$launch_custom $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cmd_command_ip4tableslegacy  -t filter -A OUTPUT  -j $cfg_config_system_log \
 -m comment --comment close-log &> /dev/null
-$launch_custom $allow_use_ipv6 $allow_use_legacy \
-$command_ip6tableslegacy -t filter -A OUTPUT  -j $config_system_log \
+$launch_custom $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cmd_command_ip6tableslegacy -t filter -A OUTPUT  -j $cfg_config_system_log \
 -m comment --comment close-log &> /dev/null
 ####
 ####
@@ -17527,41 +17519,41 @@ fi
 ####                  reemvio y salida con reglas de dropeo
 ####
 ####
-if [ "$config_close_deny" != "$NULL" ]; then 
+if [ "$cfg_config_close_deny" != "$NULL" ]; then 
 ####
 ####
 #### ipv4 drop rules iptables-legacy
-$allow_use_legacy $command_ip4tableslegacy -A INPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy -A INPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip4tableslegacy -A OUTPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy -A OUTPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip4tableslegacy -A FORWARD -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy -A FORWARD -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
 #### ipv6 drop rules iptables-legacy
-$allow_use_legacy $command_ip6tableslegacy -A INPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A INPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy -A OUTPUT -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A OUTPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_legacy $command_ip6tableslegacy -A FORWARD -j $config_close_deny \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A FORWARD -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
 #### ipv4 drop rules iptables-nft
-$allow_use_nft $command_ip4tablesnft -A INPUT -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft -A INPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip4tablesnft -A OUTPUT -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft -A OUTPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip4tablesnft -A FORWARD -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft -A FORWARD -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
 #### ipv6 drop rules iptables-nft
-$allow_use_nft $command_ip6tablesnft -A INPUT -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip6tablesnft -A INPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip6tablesnft -A OUTPUT -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip6tablesnft -A OUTPUT -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$allow_use_nft $command_ip6tablesnft -A FORWARD -j $config_close_deny \
+$cfg_allow_use_nft $cmd_command_ip6tablesnft -A FORWARD -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
 fi
@@ -17571,40 +17563,40 @@ fi
 #################### english: iptables ipv4 y ipv6 con variable input_all
 ####
 ####
-if [ "$allow_input_all" == "$NULL" ]; then 
+if [ "$cfg_allow_input_all" == "$NULL" ]; then 
 ####
 ####
 #### english: nft INPUT deleted
 #### spanish: nft INPUT borradas
 ####
 ####
-$launch_custom $allow_input_all $allow_use_ipv4 $allow_use_nft \
-$command_ip4tablesnft -t filter -F INPUT  &> /dev/null
-$launch_custom $allow_input_all $allow_use_ipv6 $allow_use_nft \
-$command_ip6tablesnft -t filter -F INPUT  &> /dev/null
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cmd_command_ip4tablesnft -t filter -F INPUT  &> /dev/null
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cmd_command_ip6tablesnft -t filter -F INPUT  &> /dev/null
 ####
 ####
 #### english: legacy INPUT deleted
 #### spanish: legacy INPUT borradas
 ####
 ####
-$launch_custom $allow_input_all $allow_use_ipv4 $allow_use_legacy \
-$command_ip4tableslegacy -t filter -F INPUT  &> /dev/null
-$launch_custom $allow_input_all $allow_use_ipv6 $allow_use_legacy \
-$command_ip6tableslegacy -t filter -F INPUT  &> /dev/null
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cmd_command_ip4tableslegacy -t filter -F INPUT  &> /dev/null
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cmd_command_ip6tableslegacy -t filter -F INPUT  &> /dev/null
 ####
 ####
 #### english: nft INPUT 127.0.0.1 accept
 #### spanish: nft INPUT ::1 acepta
 ####
 ####
-$launch_custom $allow_input_all $allow_use_ipv4 $allow_use_nft \
-$command_ip4tablesnft -t filter -A INPUT \
--s $config_ip4_localhost -d $config_ip4_localhost -j ACCEPT \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cmd_command_ip4tablesnft -t filter -A INPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$launch_custom $allow_input_all $allow_use_ipv6 $allow_use_nft \
-$command_ip6tablesnft -t filter -A INPUT \
--s $config_ip6_localhost -d $config_ip6_localhost -j ACCEPT \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cmd_command_ip6tablesnft -t filter -A INPUT \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
@@ -17612,13 +17604,13 @@ $command_ip6tablesnft -t filter -A INPUT \
 #### spanish: legacy INPUT ::1 acepta
 ####
 ####
-$launch_custom $allow_input_all $allow_use_ipv4 $allow_use_legacy \
-$command_ip4tableslegacy -t filter -A INPUT \
--s $config_ip4_localhost -d $config_ip4_localhost -j ACCEPT \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cmd_command_ip4tableslegacy -t filter -A INPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost -j ACCEPT \
 -m comment --comment close-rule &> /dev/null
-$launch_custom $allow_input_all $allow_use_ipv6 $allow_use_legacy \
-$command_ip6tableslegacy -t filter -A INPUT \
--s $config_ip6_localhost -d $config_ip6_localhost -j ACCEPT \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cmd_command_ip6tableslegacy -t filter -A INPUT \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost -j ACCEPT \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
@@ -17626,15 +17618,15 @@ $command_ip6tableslegacy -t filter -A INPUT \
 #### spanish: legacy6 INPUT limita ancho de banda
 ####
 ####
-$launch_custom $allow_input_all $allow_use_ipv4 $allow_use_legacy \
-$allow_input_bandwidth iptables-legacy -A  INPUT \
--m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec \
---hashlimit-name maxinput  -j $config_close_deny \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cfg_allow_input_bandwidth iptables-legacy -A  INPUT \
+-m hashlimit --hashlimit-above "$cfg_config_input_bandwidth"kb/sec \
+--hashlimit-name maxinput  -j $cfg_config_close_deny \
 -m comment --comment "input-bandwidth kb/s" &> /dev/null
-$launch_custom $allow_input_all $allow_use_ipv6 $allow_use_legacy \
-$allow_input_bandwidth ip6tables-legacy -A  INPUT \
--m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec \
---hashlimit-name maxinput  -j $config_close_deny \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cfg_allow_input_bandwidth ip6tables-legacy -A  INPUT \
+-m hashlimit --hashlimit-above "$cfg_config_input_bandwidth"kb/sec \
+--hashlimit-name maxinput  -j $cfg_config_close_deny \
 -m comment --comment "input-bandwidth kb/s" &> /dev/null
 ####
 ####
@@ -17642,15 +17634,15 @@ $allow_input_bandwidth ip6tables-legacy -A  INPUT \
 #### spanish: nft6 INPUT limita ancho de banda
 ####
 ####
-$launch_custom $allow_input_all $allow_use_ipv4 $allow_use_nft \
-$allow_input_bandwidth iptables-nft -A  INPUT \
--m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec \
---hashlimit-name maxinput  -j $config_close_deny \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cfg_allow_input_bandwidth iptables-nft -A  INPUT \
+-m hashlimit --hashlimit-above "$cfg_config_input_bandwidth"kb/sec \
+--hashlimit-name maxinput  -j $cfg_config_close_deny \
 -m comment --comment "input-bandwidth kb/s" &> /dev/null
-$launch_custom $allow_input_all $allow_use_ipv6 $allow_use_nft \
-$allow_input_bandwidth ip6tables-nft -A  INPUT \
--m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec \
---hashlimit-name maxinput  -j $config_close_deny \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cfg_allow_input_bandwidth ip6tables-nft -A  INPUT \
+-m hashlimit --hashlimit-above "$cfg_config_input_bandwidth"kb/sec \
+--hashlimit-name maxinput  -j $cfg_config_close_deny \
 -m comment --comment "input-bandwidth kb/s" &> /dev/null
 ####
 ####
@@ -17658,15 +17650,15 @@ $allow_input_bandwidth ip6tables-nft -A  INPUT \
 #### spanish: ipv4  limita numero de conexiones
 ####
 ####
-$launch_custom $allow_input_all $allow_use_ipv4 $allow_use_legacy \
-$allow_input_maxconnect  $command_ip4tableslegacy -A INPUT \
--m connlimit --connlimit-above $config_input_maxconnect \
--j $config_close_deny \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cfg_allow_input_maxconnect  $cmd_command_ip4tableslegacy -A INPUT \
+-m connlimit --connlimit-above $cfg_config_input_maxconnect \
+-j $cfg_config_close_deny \
 -m comment --comment "input maxconnect"  &> /dev/null
-$launch_custom $allow_input_all $allow_use_ipv4 $allow_use_nft \
-$allow_input_maxconnect $command_ip4tablesnft   -A INPUT \
--m connlimit --connlimit-above $config_input_maxconnect \
--j $config_close_deny \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cfg_allow_input_maxconnect $cmd_command_ip4tablesnft   -A INPUT \
+-m connlimit --connlimit-above $cfg_config_input_maxconnect \
+-j $cfg_config_close_deny \
 -m comment --comment "input maxconnect"  &> /dev/null
 ####
 ####
@@ -17674,13 +17666,13 @@ $allow_input_maxconnect $command_ip4tablesnft   -A INPUT \
 #### spanish: ipv6 limita numero de conexiones
 ####
 ####
-$launch_custom $allow_input_all $allow_use_ipv6 $allow_use_legacy \
-$allow_input_maxconnect  $command_ip6tableslegacy -A INPUT \
--m connlimit --connlimit-above $config_input_maxconnect -j $config_close_deny \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cfg_allow_input_maxconnect  $cmd_command_ip6tableslegacy -A INPUT \
+-m connlimit --connlimit-above $cfg_config_input_maxconnect -j $cfg_config_close_deny \
 -m comment --comment "input maxconnect"  &> /dev/null
-$launch_custom $allow_input_all $allow_use_ipv6 $allow_use_nft \
-$allow_input_maxconnect $command_ip6tablesnft   -A INPUT \
--m connlimit --connlimit-above $config_input_maxconnect -j $config_close_deny \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cfg_allow_input_maxconnect $cmd_command_ip6tablesnft   -A INPUT \
+-m connlimit --connlimit-above $cfg_config_input_maxconnect -j $cfg_config_close_deny \
 -m comment --comment "input maxconnect"  &> /dev/null
 ####
 ####
@@ -17688,11 +17680,11 @@ $allow_input_maxconnect $command_ip6tablesnft   -A INPUT \
 #### spanish: nft INPUT acepta todo o estado de entrada
 ####
 ####
-$launch_custom $allow_input_all $allow_use_ipv4 $allow_use_nft $command_ip4tablesnft -t filter -A INPUT \
-$config_input_state -j ACCEPT \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft $cmd_command_ip4tablesnft -t filter -A INPUT \
+$cfg_config_input_state -j ACCEPT \
 -m comment --comment "input-state"  &> /dev/null
-$launch_custom $allow_input_all $allow_use_ipv6 $allow_use_nft $command_ip6tablesnft -t filter -A INPUT \
-$config_input_state -j ACCEPT \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft $cmd_command_ip6tablesnft -t filter -A INPUT \
+$cfg_config_input_state -j ACCEPT \
 -m comment --comment "input-state"  &> /dev/null
 ####
 ####
@@ -17700,13 +17692,13 @@ $config_input_state -j ACCEPT \
 #### spanish: entrada acepta todo o estado de entrada
 ####
 ####
-$launch_custom $allow_input_all $allow_use_ipv4 $allow_use_legacy \
-$command_ip4tableslegacy -t filter -A INPUT \
-$config_input_state -j ACCEPT \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cmd_command_ip4tableslegacy -t filter -A INPUT \
+$cfg_config_input_state -j ACCEPT \
 -m comment --comment "input-state"  &> /dev/null
-$launch_custom $allow_input_all $allow_use_ipv6 $allow_use_legacy \
-$command_ip6tableslegacy -t filter -A INPUT \
-$config_input_state -j ACCEPT \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cmd_command_ip6tableslegacy -t filter -A INPUT \
+$cfg_config_input_state -j ACCEPT \
 -m comment --comment "input-state"  &> /dev/null
 ####
 ####
@@ -17716,13 +17708,13 @@ $config_input_state -j ACCEPT \
 #### spanish: nft INPUT deniega todo
 ####
 ####
-$launch_custom $allow_input_all $allow_use_ipv4 $allow_use_nft \
-$allow_use_ipv4 $command_ip4tablesnft -t filter -A INPUT \
--j $config_close_deny \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -t filter -A INPUT \
+-j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$launch_custom $allow_input_all $allow_use_ipv6 $allow_use_nft \
-$command_ip6tablesnft -t filter -A INPUT \
--j $config_close_deny \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cmd_command_ip6tablesnft -t filter -A INPUT \
+-j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
@@ -17730,13 +17722,13 @@ $command_ip6tablesnft -t filter -A INPUT \
 #### spanish: legacy INPUT deniega todo
 ####
 ####
-$launch_custom $allow_input_all $allow_use_ipv4 $allow_use_legacy \
-$command_ip4tableslegacy -t filter -A INPUT \
--j $config_close_deny \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cmd_command_ip4tableslegacy -t filter -A INPUT \
+-j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$launch_custom $allow_input_all $allow_use_ipv6 $allow_use_legacy \
-$command_ip6tableslegacy -t filter -A INPUT \
--j $config_close_deny \
+$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cmd_command_ip6tableslegacy -t filter -A INPUT \
+-j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
@@ -17747,7 +17739,7 @@ fi
 ############### english: iptables ipv4 y ipv6 con variable output_all
 ####
 ####
-if [ "$allow_output_all" == "$NULL" ]; then 
+if [ "$cfg_allow_output_all" == "$NULL" ]; then 
 ####
 ####
 ####
@@ -17755,33 +17747,33 @@ if [ "$allow_output_all" == "$NULL" ]; then
 #### spanish: nft OUTPUT borradas
 ####
 ####
-$launch_custom $allow_output_all $allow_use_ipv4 \
-$allow_use_nft $command_ip4tablesnft -t filter -F OUTPUT  &> /dev/null
-$launch_custom $allow_output_all $allow_use_ipv6 \
-$allow_use_nft $command_ip6tablesnft -t filter -F OUTPUT  &> /dev/null
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 \
+$cfg_allow_use_nft $cmd_command_ip4tablesnft -t filter -F OUTPUT  &> /dev/null
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 \
+$cfg_allow_use_nft $cmd_command_ip6tablesnft -t filter -F OUTPUT  &> /dev/null
 ####
 ####
 #### english: legacy OUTPUT deleted
 #### spanish: legacy OUTPUT borradas
 ####
 ####
-$launch_custom $allow_output_all $allow_use_ipv4 \
-$allow_use_legacy $command_ip4tableslegacy -t filter -F OUTPUT  &> /dev/null
-$launch_custom $allow_output_all $allow_use_ipv6 \
-$allow_use_legacy $command_ip6tableslegacy -t filter -F OUTPUT  &> /dev/null
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 \
+$cfg_allow_use_legacy $cmd_command_ip4tableslegacy -t filter -F OUTPUT  &> /dev/null
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 \
+$cfg_allow_use_legacy $cmd_command_ip6tableslegacy -t filter -F OUTPUT  &> /dev/null
 ####
 ####
 #### english: nft OUTPUT 127.0.0.1 accept
 #### spanish: nft OUTPUT ::1 acepta
 ####
 ####
-$launch_custom $allow_output_all $allow_use_ipv4 $allow_use_nft \
-$command_ip4tablesnft -t filter -A OUTPUT \
--s $config_ip4_localhost -d $config_ip4_localhost -j ACCEPT \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cmd_command_ip4tablesnft -t filter -A OUTPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$launch_custom $allow_output_all $allow_use_ipv6 \
-$allow_use_nft $command_ip6tablesnft -t filter -A OUTPUT \
--s $config_ip6_localhost -d $config_ip6_localhost -j ACCEPT \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 \
+$cfg_allow_use_nft $cmd_command_ip6tablesnft -t filter -A OUTPUT \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
@@ -17789,13 +17781,13 @@ $allow_use_nft $command_ip6tablesnft -t filter -A OUTPUT \
 #### spanish: legacy OUTPUT ::1 acepta
 ####
 ####
-$launch_custom $allow_output_all $allow_use_ipv4 $allow_use_legacy \
- $command_ip4tableslegacy -t filter -A OUTPUT \
--s $config_ip4_localhost -d $config_ip4_localhost -j ACCEPT \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+ $cmd_command_ip4tableslegacy -t filter -A OUTPUT \
+-s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$launch_custom $allow_output_all $allow_use_ipv6 $allow_use_legacy \
-$command_ip6tableslegacy -t filter -A OUTPUT \
--s $config_ip6_localhost -d $config_ip6_localhost -j ACCEPT \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cmd_command_ip6tableslegacy -t filter -A OUTPUT \
+-s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
 ####
 fi
@@ -17805,22 +17797,22 @@ fi
 ########### spanish: acepta velocidad de conexiones de salida
 ####
 ####
-if [ "$allow_output_bandwidth" == "$NULL" ]; then 
+if [ "$cfg_allow_output_bandwidth" == "$NULL" ]; then 
 ####
 ####
 #### english: legacy4 OUTPUT limit bandwidth
 #### spanish: legacy6 OUTPUT limita ancho de banda
 ####
 #### 
-$launch_custom $allow_output_all $allow_use_ipv4 \
-$allow_use_legacy $allow_output_bandwidth iptables-legacy -A OUTPUT \
--m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec \
---hashlimit-name maxoutput  -j $config_close_deny \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 \
+$cfg_allow_use_legacy $cfg_allow_output_bandwidth iptables-legacy -A OUTPUT \
+-m hashlimit --hashlimit-above "$cfg_config_output_bandwidth"kb/sec \
+--hashlimit-name maxoutput  -j $cfg_config_close_deny \
 -m comment --comment "output-bandwidth kb/s" &> /dev/null
-$launch_custom $allow_output_all $allow_use_ipv6 $allow_use_legacy \
-$allow_output_bandwidth ip6tables-legacy -A  OUTPUT \
--m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec \
---hashlimit-name maxoutput  -j $config_close_deny \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cfg_allow_output_bandwidth ip6tables-legacy -A  OUTPUT \
+-m hashlimit --hashlimit-above "$cfg_config_output_bandwidth"kb/sec \
+--hashlimit-name maxoutput  -j $cfg_config_close_deny \
 -m comment --comment "output-bandwidth kb/s" &> /dev/null
 ####
 ####
@@ -17828,15 +17820,15 @@ $allow_output_bandwidth ip6tables-legacy -A  OUTPUT \
 #### spanish: nft6 OUTPUT limita ancho de banda
 ####
 ####
-$launch_custom $allow_output_all $allow_use_ipv4 $allow_use_nft \
-$allow_output_bandwidth iptables-nft -A OUTPUT \
--m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec \
---hashlimit-name maxoutput  -j $config_close_deny \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cfg_allow_output_bandwidth iptables-nft -A OUTPUT \
+-m hashlimit --hashlimit-above "$cfg_config_output_bandwidth"kb/sec \
+--hashlimit-name maxoutput  -j $cfg_config_close_deny \
 -m comment --comment "output-bandwidth kb/s" &> /dev/null
-$launch_custom $allow_output_all $allow_use_ipv6 $allow_use_nft \
-$allow_output_bandwidth ip6tables-nft -A OUTPUT \
--m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec \
---hashlimit-name maxoutput  -j $config_close_deny \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cfg_allow_output_bandwidth ip6tables-nft -A OUTPUT \
+-m hashlimit --hashlimit-above "$cfg_config_output_bandwidth"kb/sec \
+--hashlimit-name maxoutput  -j $cfg_config_close_deny \
 -m comment --comment "output-bandwidth kb/s" &> /dev/null
 ####
 fi
@@ -17846,20 +17838,20 @@ fi
 ################### spanish: acepta maximo de conexiones de salida
 ####
 ####
-if [ "$allow_output_maxconnect" == "$NULL" ]; then 
+if [ "$cfg_allow_output_maxconnect" == "$NULL" ]; then 
 ####
 ####
 #### english: ipv4  limit conections numbers
 #### spanish: ipv4  limita numero de conexiones
 ####
 ####
-$launch_custom $allow_output_all $allow_use_ipv4 \
-$allow_use_legacy $allow_output_maxconnect  $command_ip4tableslegacy -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect  -j $config_close_deny \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 \
+$cfg_allow_use_legacy $cfg_allow_output_maxconnect  $cmd_command_ip4tableslegacy -A OUTPUT \
+-m connlimit --connlimit-above $cfg_config_output_maxconnect  -j $cfg_config_close_deny \
 -m comment --comment "output maxconnect" &> /dev/null
-$launch_custom $allow_output_all $allow_use_ipv4 \
-$allow_use_nft $allow_output_maxconnect $command_ip4tablesnft   -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect  -j $config_close_deny \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 \
+$cfg_allow_use_nft $cfg_allow_output_maxconnect $cmd_command_ip4tablesnft   -A OUTPUT \
+-m connlimit --connlimit-above $cfg_config_output_maxconnect  -j $cfg_config_close_deny \
 -m comment --comment "output maxconnect" &> /dev/null
 ####
 ####
@@ -17867,13 +17859,13 @@ $allow_use_nft $allow_output_maxconnect $command_ip4tablesnft   -A OUTPUT \
 #### spanish: ipv6 limita numero de conexiones
 ####
 ####
-$launch_custom $allow_output_all $allow_use_ipv6 \
-$allow_use_legacy $allow_output_maxconnect  $command_ip6tableslegacy -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect  -j $config_close_deny \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 \
+$cfg_allow_use_legacy $cfg_allow_output_maxconnect  $cmd_command_ip6tableslegacy -A OUTPUT \
+-m connlimit --connlimit-above $cfg_config_output_maxconnect  -j $cfg_config_close_deny \
 -m comment --comment "output maxconnect" &> /dev/null
-$launch_custom $allow_output_all $allow_use_ipv6 \
-$allow_use_nft $allow_output_maxconnect $command_ip6tablesnft   -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect  -j $config_close_deny \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 \
+$cfg_allow_use_nft $cfg_allow_output_maxconnect $cmd_command_ip6tablesnft   -A OUTPUT \
+-m connlimit --connlimit-above $cfg_config_output_maxconnect  -j $cfg_config_close_deny \
 -m comment --comment "output maxconnect" &> /dev/null
 ####
 fi
@@ -17883,19 +17875,19 @@ fi
 ################### spanish: acepta toda salida
 ####
 ####
-if [ "$allow_output_all" == "$NULL" ]; then 
+if [ "$cfg_allow_output_all" == "$NULL" ]; then 
 ####
 ####
 #### english: nft OUTPUT ACCEPT all or input_state
 #### spanish: nft OUTPUT acepta todo o estado de entrada
 ####
 ####
-$launch_custom $allow_output_all $allow_use_ipv4 $allow_use_nft \
-$command_ip4tablesnft -t filter -A OUTPUT \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cmd_command_ip4tablesnft -t filter -A OUTPUT \
 $input_state -j ACCEPT \
 -m comment --comment "output-state" &> /dev/null
-$launch_custom $allow_output_all $allow_use_ipv6 $allow_use_nft \
-$command_ip6tablesnft -t filter -A OUTPUT \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cmd_command_ip6tablesnft -t filter -A OUTPUT \
 $input_state -j ACCEPT \
 -m comment --comment "output-state" &> /dev/null
 ####
@@ -17904,12 +17896,12 @@ $input_state -j ACCEPT \
 #### spanish: entrada acepta todo o estado de entrada
 ####
 ####
-$launch_custom $allow_output_all $allow_use_ipv4 $allow_use_legacy \
-$command_ip4tableslegacy -t filter  -A OUTPUT \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cmd_command_ip4tableslegacy -t filter  -A OUTPUT \
 $input_state -j ACCEPT \
 -m comment --comment "output-state" &> /dev/null
-$launch_custom $allow_output_all $allow_use_ipv6 $allow_use_legacy \
-$command_ip6tableslegacy -t filter -A OUTPUT \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cmd_command_ip6tableslegacy -t filter -A OUTPUT \
 $input_state -j ACCEPT \
 -m comment --comment "output-state" &> /dev/null
 ####
@@ -17922,11 +17914,11 @@ fi
 #### spanish: nft INPUT deniega todo
 ####
 ####
-$launch_custom $allow_output_all $allow_use_ipv4 $allow_use_nft \
-$command_ip4tablesnft -t filter -A OUTPUT  -j $config_close_deny \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cmd_command_ip4tablesnft -t filter -A OUTPUT  -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$launch_custom $allow_output_all $allow_use_ipv6 $allow_use_nft \
-$command_ip6tablesnft -t filter -A OUTPUT  -j $config_close_deny \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cmd_command_ip6tablesnft -t filter -A OUTPUT  -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
@@ -17934,11 +17926,11 @@ $command_ip6tablesnft -t filter -A OUTPUT  -j $config_close_deny \
 #### spanish: legacy INPUT deniega todo
 ####
 ####
-$launch_custom $allow_output_all $allow_use_ipv4 $allow_use_legacy \
-$command_ip4tableslegacy  -t filter -A OUTPUT  -j $config_close_deny \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cmd_command_ip4tableslegacy  -t filter -A OUTPUT  -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$launch_custom $allow_output_all $allow_use_ipv6 $allow_use_legacy \
-$command_ip6tableslegacy -t filter -A OUTPUT  -j $config_close_deny \
+$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cmd_command_ip6tableslegacy -t filter -A OUTPUT  -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
