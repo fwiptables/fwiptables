@@ -5369,25 +5369,28 @@ exit; fi
 ####
 ####
 #### :rutina-final-reset:
-##########    english: dev-changes: developer changes       ##########
-##########    spanish: dev-changes: cambios de desarrollo   ##########
-#### :rutina-inicial-dev-changes:
+##########    english: changes: developer changes       ##########
+##########    spanish: changes: cambios de desarrollo   ##########
+#### :rutina-inicial-changes:
 ####
 ####
-if [ "$cmd_first_option" == "dev-changes" ]; then 
+if [ "$cmd_first_option" == "changes" ]; then 
 ####
 ####
-echo "$txt_text_title $txt_text_info [ changes in $cmd_version ]"
-echo "$txt_text_md whitelist: better in whitelist options now comments"
-echo "$txt_text_md whitelist: better in whitelist options now only in the used tables"
-echo "$txt_text_md variables: Changes in all variables enviroment name to cfg_ | txt_ | cmd_ "
-echo "$txt_text_md custom files: no retro compability"
+echo "$txt_text_md [ changes in 24-11-E ]"
+echo "$txt_text_md dev-changes now is changes"
+echo "$txt_text_md  "
+echo "$txt_text_md [ changes in 24-11-D ]"
+echo "$txt_text_md whitelist: better in whitelist options now comments $txt_text_md" 
+echo "$txt_text_md whitelist: better in whitelist options now only in the used tables $txt_text_md"
+echo "$txt_text_md variables: Changes in all enviroment name to cfg_ | txt_ | cmd_ $txt_text_md"
+echo "$txt_text_md custom files: no retro compability from 24-11-D $txt_text_md"
 ####
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-dev-changes:
+#### :rutina-final-changes:
 ##########   english: readme: show intro      ##########
 ##########   spanish: readme: muestra intro   ##########
 #### :rutina-inicial-readme:
