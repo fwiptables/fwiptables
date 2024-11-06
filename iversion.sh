@@ -4029,32 +4029,32 @@ echo "$txt_text_title $txt_text_info [ Deleting all iptables ipv4/ipv6 rules ]"
 #### spanish: table policy
 ####
 ####
-rule_table_policy="ACCEPT"
-$cmd_command_ip4tableslegacy   -t filter  -P INPUT    $rule_table_policy &> /dev/null
-$cmd_command_ip4tablesnft      -t filter  -P INPUT    $rule_table_policy &> /dev/null
-$cmd_command_ip6tableslegacy  -t filter  -P INPUT    $rule_table_policy &> /dev/null
-$cmd_command_ip6tablesnft     -t filter  -P INPUT    $rule_table_policy &> /dev/null
-$cmd_command_ip4tableslegacy   -t filter  -P FORWARD  $rule_table_policy &> /dev/null
-$cmd_command_ip4tablesnft      -t filter  -P FORWARD  $rule_table_policy &> /dev/null
-$cmd_command_ip6tableslegacy  -t filter  -P FORWARD  $rule_table_policy &> /dev/null
-$cmd_command_ip6tablesnft     -t filter  -P FORWARD  $rule_table_policy &> /dev/null
-$cmd_command_ip4tableslegacy   -t filter  -P OUTPUT   $rule_table_policy &> /dev/null
-$cmd_command_ip4tablesnft      -t filter  -P OUTPUT   $rule_table_policy &> /dev/null
-$cmd_command_ip6tableslegacy  -t filter  -P OUTPUT   $rule_table_policy &> /dev/null
-$cmd_command_ip6tablesnft     -t filter  -P OUTPUT   $rule_table_policy &> /dev/null
+cfg_rule_table_policy="ACCEPT"
+$cmd_command_ip4tableslegacy   -t filter  -P INPUT    $cfg_rule_table_policy &> /dev/null
+$cmd_command_ip4tablesnft      -t filter  -P INPUT    $cfg_rule_table_policy &> /dev/null
+$cmd_command_ip6tableslegacy  -t filter  -P INPUT    $cfg_rule_table_policy &> /dev/null
+$cmd_command_ip6tablesnft     -t filter  -P INPUT    $cfg_rule_table_policy &> /dev/null
+$cmd_command_ip4tableslegacy   -t filter  -P FORWARD  $cfg_rule_table_policy &> /dev/null
+$cmd_command_ip4tablesnft      -t filter  -P FORWARD  $cfg_rule_table_policy &> /dev/null
+$cmd_command_ip6tableslegacy  -t filter  -P FORWARD  $cfg_rule_table_policy &> /dev/null
+$cmd_command_ip6tablesnft     -t filter  -P FORWARD  $cfg_rule_table_policy &> /dev/null
+$cmd_command_ip4tableslegacy   -t filter  -P OUTPUT   $cfg_rule_table_policy &> /dev/null
+$cmd_command_ip4tablesnft      -t filter  -P OUTPUT   $cfg_rule_table_policy &> /dev/null
+$cmd_command_ip6tableslegacy  -t filter  -P OUTPUT   $cfg_rule_table_policy &> /dev/null
+$cmd_command_ip6tablesnft     -t filter  -P OUTPUT   $cfg_rule_table_policy &> /dev/null
 ####
 ####
 #### english: erase the rules
 #### spanish: borra las reglas
 ####
 #### remove ebtables
-rule_table_policy="ACCEPT"
-$cmd_command_ebtables -t filter -P INPUT     $rule_table_policy  &> /dev/null
-$cmd_command_ebtables -t filter -P FORWARD   $rule_table_policy &> /dev/null 
-$cmd_command_ebtables -t filter -P OUTPUT    $rule_table_policy &> /dev/null
-$cmd_command_ebtables -t nat -P PREROUTING   $rule_table_policy &> /dev/null
-$cmd_command_ebtables -t nat -P OUTPUT       $rule_table_policy  &> /dev/null
-$cmd_command_ebtables -t nat -P POSTROUTING  $rule_table_policy &> /dev/null
+cfg_rule_table_policy="ACCEPT"
+$cmd_command_ebtables -t filter -P INPUT     $cfg_rule_table_policy  &> /dev/null
+$cmd_command_ebtables -t filter -P FORWARD   $cfg_rule_table_policy &> /dev/null 
+$cmd_command_ebtables -t filter -P OUTPUT    $cfg_rule_table_policy &> /dev/null
+$cmd_command_ebtables -t nat -P PREROUTING   $cfg_rule_table_policy &> /dev/null
+$cmd_command_ebtables -t nat -P OUTPUT       $cfg_rule_table_policy  &> /dev/null
+$cmd_command_ebtables -t nat -P POSTROUTING  $cfg_rule_table_policy &> /dev/null
 ####
 ####
 $cmd_command_ebtables -t filter -F &> /dev/null
@@ -4092,13 +4092,13 @@ echo "$txt_text_title $txt_text_info [ Deleting ip4 iptables rules ] "
 #### spanish: table policy
 ####
 ####
-rule_table_policy="ACCEPT"
-$cmd_command_ip4tableslegacy   -t filter  -P INPUT    $rule_table_policy
-$cmd_command_ip4tablesnft      -t filter  -P INPUT    $rule_table_policy
-$cmd_command_ip4tableslegacy   -t filter  -P FORWARD  $rule_table_policy
-$cmd_command_ip4tablesnft      -t filter  -P FORWARD  $rule_table_policy
-$cmd_command_ip4tableslegacy   -t filter  -P OUTPUT   $rule_table_policy
-$cmd_command_ip4tablesnft      -t filter  -P OUTPUT   $rule_table_policy
+cfg_rule_table_policy="ACCEPT"
+$cmd_command_ip4tableslegacy   -t filter  -P INPUT    $cfg_rule_table_policy
+$cmd_command_ip4tablesnft      -t filter  -P INPUT    $cfg_rule_table_policy
+$cmd_command_ip4tableslegacy   -t filter  -P FORWARD  $cfg_rule_table_policy
+$cmd_command_ip4tablesnft      -t filter  -P FORWARD  $cfg_rule_table_policy
+$cmd_command_ip4tableslegacy   -t filter  -P OUTPUT   $cfg_rule_table_policy
+$cmd_command_ip4tablesnft      -t filter  -P OUTPUT   $cfg_rule_table_policy
 ####
 ####
 #### english: erase the rules
@@ -4183,13 +4183,13 @@ echo "$txt_text_title $txt_text_info [ Deleting ip6 iptables rules ] "
 #### spanish: table policy
 ####
 ####
-rule_table_policy="ACCEPT"
-$cmd_command_ip6tableslegacy   -t filter  -P INPUT    $rule_table_policy
-$cmd_command_ip6tablesnft      -t filter  -P INPUT    $rule_table_policy
-$cmd_command_ip6tableslegacy   -t filter  -P FORWARD  $rule_table_policy
-$cmd_command_ip6tablesnft      -t filter  -P FORWARD  $rule_table_policy
-$cmd_command_ip6tableslegacy   -t filter  -P OUTPUT   $rule_table_policy
-$cmd_command_ip6tablesnft      -t filter  -P OUTPUT   $rule_table_policy
+cfg_rule_table_policy="ACCEPT"
+$cmd_command_ip6tableslegacy   -t filter  -P INPUT    $cfg_rule_table_policy
+$cmd_command_ip6tablesnft      -t filter  -P INPUT    $cfg_rule_table_policy
+$cmd_command_ip6tableslegacy   -t filter  -P FORWARD  $cfg_rule_table_policy
+$cmd_command_ip6tablesnft      -t filter  -P FORWARD  $cfg_rule_table_policy
+$cmd_command_ip6tableslegacy   -t filter  -P OUTPUT   $cfg_rule_table_policy
+$cmd_command_ip6tablesnft      -t filter  -P OUTPUT   $cfg_rule_table_policy
 ####
 ####
 #### english: erase the rules
@@ -7897,8 +7897,8 @@ exit ; fi
 ##########
 ##########
 if [ "$2" != "$NULL" ]; then
-favorite_basename_textdialog="$(basename) $2"
-favorite_realpath_textdialog="$(realpath) $2" ; fi
+cfg_favorite_basename_textdialog="$(basename) $2"
+cfg_favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
@@ -7948,8 +7948,8 @@ exit ; fi
 ##########
 ##########
 if [ "$2" != "$NULL" ]; then
-favorite_basename_textdialog="$(basename) $2"
-favorite_realpath_textdialog="$(realpath) $2" ; fi
+cfg_favorite_basename_textdialog="$(basename) $2"
+cfg_favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
@@ -8022,8 +8022,8 @@ exit ; fi
 ##########
 ##########
 if [ "$2" != "$NULL" ]; then
-favorite_basename_textdialog="$(basename) $2"
-favorite_realpath_textdialog="$(realpath) $2" ; fi
+cfg_favorite_basename_textdialog="$(basename) $2"
+cfg_favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
@@ -8100,8 +8100,8 @@ exit ; fi
 ##########
 ##########
 if [ "$2" != "$NULL" ]; then
-favorite_basename_textdialog="$(basename) $2"
-favorite_realpath_textdialog="$(realpath) $2" ; fi
+cfg_favorite_basename_textdialog="$(basename) $2"
+cfg_favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
@@ -8188,8 +8188,8 @@ exit ; fi
 ##########
 ##########
 if [ "$2" != "$NULL" ]; then
-favorite_basename_textdialog="$(basename) $2"
-favorite_realpath_textdialog="$(realpath) $2" ; fi
+cfg_favorite_basename_textdialog="$(basename) $2"
+cfg_favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
@@ -8290,8 +8290,8 @@ if [ "$cmd_first_option" == "cli-menu-wallcustom" ]; then
 ##########
 ##########
 if [ "$2" != "$NULL" ]; then
-favorite_basename_textdialog="$(basename) $2"
-favorite_realpath_textdialog="$(realpath) $2" ; fi
+cfg_favorite_basename_textdialog="$(basename) $2"
+cfg_favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
@@ -8386,8 +8386,8 @@ exit ; fi
 ##########
 ##########
 if [ "$2" != "$NULL" ]; then
-favorite_basename_textdialog="$(basename) $2"
-favorite_realpath_textdialog="$(realpath) $2" ; fi
+cfg_favorite_basename_textdialog="$(basename) $2"
+cfg_favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
@@ -8510,8 +8510,8 @@ exit ; fi
 ##########
 ##########
 if [ "$2" != "$NULL" ]; then
-favorite_basename_textdialog="$(basename) $2"
-favorite_realpath_textdialog="$(realpath) $2" ; fi
+cfg_favorite_basename_textdialog="$(basename) $2"
+cfg_favorite_realpath_textdialog="$(realpath) $2" ; fi
 ##########
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
@@ -10172,8 +10172,8 @@ cfg_server_port_udp=""
 ####
 if [ "$cmd_third_option" != "$NULL" ] ;
 then 
-config_ipv4_netserver="$3" 
-config_ipv6_netserver="$3"
+cfg_config_ipv4_netserver="$3" 
+cfg_config_ipv6_netserver="$3"
 fi
 ####
 ####
@@ -10214,8 +10214,8 @@ cfg_server_port_tcp=""
 ####
 if [ "$cmd_third_option" != "$NULL" ] ;
 then
-config_ipv4_netserver="$3"
-config_ipv6_netserver="$3"
+cfg_config_ipv4_netserver="$3"
+cfg_config_ipv6_netserver="$3"
 fi
 ####
 ####
@@ -10256,8 +10256,8 @@ cfg_client_port_udp="$cfg_client_mini_port_udp"
 ####
 ####
 if [ "$cmd_third_option" != "$NULL" ] ;
-then config_ipv4_netserver="$3" 
-config_ipv6_netserver="$3" ; fi
+then cfg_config_ipv4_netserver="$3" 
+cfg_config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$cmd_second_option" != "$NULL" ]; then
@@ -10297,8 +10297,8 @@ cfg_client_port_udp="$cfg_client_mini_port_udp"
 ####
 ####
 if [ "$cmd_third_option" != "$NULL" ] ;
-then config_ipv4_netserver="$3" 
-config_ipv6_netserver="$3" ; fi
+then cfg_config_ipv4_netserver="$3" 
+cfg_config_ipv6_netserver="$3" ; fi
 ####
 ####
 if [ "$cmd_second_option" != "$NULL" ]; then
@@ -10435,9 +10435,9 @@ cfg_name_firewall="$cmd_first_option" ;
 # cfg_allow_use_ipv6=""           
 # cfg_allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="" ;
-config_shield_maxtries="30" ;
-config_shield_port="22" ;
+cfg_allow_shield_maxtries="" ;
+cfg_config_shield_maxtries="30" ;
+cfg_config_shield_port="22" ;
 #### english: log port servers
 # cfg_server_log_port_tcp="no"    
 # cfg_server_log_port_udp="no"    
@@ -10530,9 +10530,9 @@ cfg_name_firewall="$cmd_first_option" ;
 # cfg_allow_use_ipv6=""           
 # cfg_allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="20" ;
-config_shield_port="22" ;
+cfg_allow_shield_maxtries="no" ;
+cfg_config_shield_maxtries="20" ;
+cfg_config_shield_port="22" ;
 #### english: log port servers
 # cfg_server_log_port_tcp="no"    
 # cfg_server_log_port_udp="no"    
@@ -10625,9 +10625,9 @@ cfg_name_firewall="$cmd_first_option" ;
 # cfg_allow_use_ipv6=""           
 # cfg_allow_separate_rules=""
 #### english: max tries for each hour 
-allow_shield_maxtries="no" ;
-config_shield_maxtries="20" ;
-config_shield_port="22" ;
+cfg_allow_shield_maxtries="no" ;
+cfg_config_shield_maxtries="20" ;
+cfg_config_shield_port="22" ;
 #### english: log port servers
 # cfg_server_log_port_tcp="no"    
 # cfg_server_log_port_udp="no"    
@@ -12856,7 +12856,7 @@ cfg_server_port_tcp="" ;
 # cfg_allow_mac_blacklist=no 
 # cfg_allow_net_whitelist=no 
 # cfg_allow_net_blacklist=no 
-allow_output_uid= 
+cfg_allow_output_uid= 
 # cfg_allow_output_gid=no  
 # cfg_allow_others_protocols=no 
 ####
@@ -12881,7 +12881,7 @@ allow_output_uid=
 # cfg_config_output_bandwidth=512 
 # cfg_config_input_maxconnect=72 
 # cfg_config_output_maxconnect=72 
-config_output_uid=root
+cfg_config_output_uid=root
 # cfg_config_output_gid=root 
 # cfg_config_others_protocols=icmp,igmp 
 # cfg_config_ipv4_netclient=0/0 
@@ -12952,7 +12952,7 @@ cfg_server_port_tcp="" ;
 # cfg_allow_net_whitelist=no 
 # cfg_allow_net_blacklist=no 
 # cfg_allow_output_uid=no  
-allow_output_gid=  
+cfg_allow_output_gid=  
 # cfg_allow_others_protocols=no 
 ####
 ####
@@ -12977,7 +12977,7 @@ allow_output_gid=
 # cfg_config_input_maxconnect=72 
 # cfg_config_output_maxconnect=72 
 # cfg_config_output_uid=root 
-config_output_gid=users 
+cfg_config_output_gid=users 
 # cfg_config_others_protocols=icmp,igmp 
 # cfg_config_ipv4_netclient=0/0 
 # cfg_config_ipv4_netserver=0/0 
@@ -13047,7 +13047,7 @@ cfg_server_port_tcp="" ;
 # cfg_allow_net_whitelist=no 
 # cfg_allow_net_blacklist=no 
 # cfg_allow_output_uid=no  
-allow_output_gid=  
+cfg_allow_output_gid=  
 # cfg_allow_others_protocols=no 
 ####
 ####
@@ -13072,7 +13072,7 @@ allow_output_gid=
 # cfg_config_input_maxconnect=72 
 # cfg_config_output_maxconnect=72 
 # cfg_config_output_uid=root 
-config_output_gid=net 
+cfg_config_output_gid=net 
 # cfg_config_others_protocols=icmp,igmp 
 # cfg_config_ipv4_netclient=0/0 
 # cfg_config_ipv4_netserver=0/0 
@@ -13410,9 +13410,9 @@ cfg_server_port_tcp="ssh,http,https,http-alt" ;
 ####
 # cfg_allow_string_dropped=no 
 # cfg_allow_string_allowed=no 
-allow_forward_ip4=
+cfg_allow_forward_ip4=
 # cfg_allow_forward_ip6= 
-allow_gateway_ip4= 
+cfg_allow_gateway_ip4= 
 # cfg_allow_gateway_ip6= 
 # cfg_allow_dmz_ip4=no 
 # cfg_allow_dmz_ip6=no 
@@ -13445,7 +13445,7 @@ allow_gateway_ip4=
 # cfg_config_mac_blacklist=d4:12:43:01:36:2e 
 # cfg_config_net_whitelist=wesnoth.org,sf.net,deb.debian.org 
 # cfg_config_net_blacklist=facebook.com,www.facebook.com 
-config_gateway_ip4=192.168.0.1/24
+cfg_config_gateway_ip4=192.168.0.1/24
 # cfg_config_gateway_ip6=::1
 # cfg_config_dmz_ip4=192.168.1.7
 # cfg_config_dmz_ip6=d4:12:43:01:36:2e 
@@ -14874,9 +14874,9 @@ case "$cfg_allow_use_ipv6"    in "no")   ;; *) cfg_allow_use_ipv6=""      ;; esa
 ####
 ####
 case "$cfg_config_string_algoritmo" in "bm"|"kmp") ;;
-*) config_string_algoritmo="bm" ;; esac
+*) cfg_config_string_algoritmo="bm" ;; esac
 case "$cfg_config_close_deny" in "DROP"|"REJECT") ;;
-*) config_close_deny="DROP"  ;; esac
+*) cfg_config_close_deny="DROP"  ;; esac
 ####
 ####
 case "$NULL" in "$cfg_allow_autosave")         ;;  *)  cfg_allow_autosave="no" ;;  esac
