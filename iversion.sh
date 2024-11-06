@@ -3494,6 +3494,7 @@ echo "$txt_text_md stop continue reset show save load names actual eraserules $t
 echo "$txt_text_md eraserules4 eraserules6 without-connection input-permisive $txt_text_md"
 echo "$txt_text_md input-established wizard-tiny wizard-mini wizard-full $txt_text_md"
 echo "$txt_text_md tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp $txt_text_md"
+echo "$txt_text_md add-whitelist4 add-whitelist6 add-blacklist4 add-blacklist6 $txt_text_md" 
 echo "$txt_text_title    <firewall-wallcustom> $txt_text_md"
 echo "$txt_text_md new-full-custom nueva-completa-custom new-mini-custom $txt_text_md"
 echo "$txt_text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom $txt_text_md"
@@ -3516,7 +3517,6 @@ echo "$txt_text_md ip4 ip6 route4 route6 net4-info net6-info sockets nodes $txt_
 echo "$txt_text_md free ip-forward utils date resolve speed-ip4 speed-ip6 $txt_text_md"
 echo "$txt_text_md log-stat web intro depends uninstall install upgrade notes $txt_text_md"
 echo "$txt_text_md variables examples info code expert donate about version $txt_text_md"
-echo "$txt_text_md add-whitelist4 add-whitelist6 add-blacklist4 add-blacklist6 $txt_text_md" 
 echo "$txt_text_md license-lgpl-v2 license-gpl-v2 $txt_text_md"
 ####
 ####  if expert commands
@@ -3660,6 +3660,10 @@ echo "$txt_text_md $txt_text_md tinyserver-tcp . launch a one firewall with serv
 echo "$txt_text_md $txt_text_md tinyserver-udp . launch a one firewall with server ports udp [ with optional host clients ] $txt_text_md"
 echo "$txt_text_md $txt_text_md miniserver-tcp . launch a one firewall with server ports tcp [ with optional host clients ] $txt_text_md"
 echo "$txt_text_md $txt_text_md miniserver-udp . launch a one firewall with server ports udp [ with optional host clients ] $txt_text_md"
+echo "$txt_text_md $txt_text_md add-whitelist4 . add host ip4 to allowed, several comma seperated $txt_text_md"
+echo "$txt_text_md $txt_text_md add-whitelist6 . add host ip6 to allowed, several comma seperated $txt_text_md"
+echo "$txt_text_md $txt_text_md add-blacklist4 . add host ip4 to droped, several comma seperated $txt_text_md"
+echo "$txt_text_md $txt_text_md add-blacklist6 . add host ip6 to droped, several comma seperated $txt_text_md"
 ####
 ####
 exit; fi
@@ -3870,10 +3874,6 @@ echo "$txt_text_md $txt_text_md variables . possible variables $txt_text_md"
 echo "$txt_text_md $txt_text_md intro . intro $txt_text_md"
 echo "$txt_text_md $txt_text_md install . install fwiptables $txt_text_md"
 echo "$txt_text_md $txt_text_md uninstall . uninstall fwiptables $txt_text_md"
-echo "$txt_text_md $txt_text_md add-whitelist4 . add host ip4 to allowed, several comma seperated $txt_text_md"
-echo "$txt_text_md $txt_text_md add-whitelist6 . add host ip6 to allowed, several comma seperated $txt_text_md"
-echo "$txt_text_md $txt_text_md add-blacklist4 . add host ip4 to droped, several comma seperated $txt_text_md"
-echo "$txt_text_md $txt_text_md add-blacklist6 . add host ip6 to droped, several comma seperated $txt_text_md"
 echo "$txt_text_md $txt_text_md license-gpl-v2 . license gpl v2 $txt_text_md"
 echo "$txt_text_md $txt_text_md license-lgpl-v2 . license lgpl v2 $txt_text_md"
 echo "$txt_text_md "
@@ -3890,7 +3890,7 @@ exit; fi
 #### :rutina-inicial-expert:
 ####
 ####
-if [ "$cmd_first_option" == "expert" ] && \
+if [ "$cmd_first_option" == "expert" ] || \
 [ "$cmd_first_option" == "options-expert" ]; then
 ####
 ####
@@ -5377,10 +5377,11 @@ exit; fi
 if [ "$cmd_first_option" == "changes" ]; then 
 ####
 ####
-echo "$txt_text_md [ changes in 24-11-E ]"
-echo "$txt_text_md dev-changes now is changes"
-echo "$txt_text_md  "
-echo "$txt_text_md [ changes in 24-11-D ]"
+echo "$txt_text_md [ changes in 24-11-E ] $txt_text_md" 
+echo "$txt_text_md dev-changes: dev-changes now is changes and new format util $txt_text_md" 
+echo "$txt_text_md add-whitelist: add-whitelist moved to firewall-wallcontrol $txt_text_md" 
+echo "$txt_text_md expert: fixed in expert option $txt_text_md" 
+echo "$txt_text_md [ changes in 24-11-D ] $txt_text_md" 
 echo "$txt_text_md whitelist: better in whitelist options now comments $txt_text_md" 
 echo "$txt_text_md whitelist: better in whitelist options now only in the used tables $txt_text_md"
 echo "$txt_text_md variables: Changes in all enviroment name to cfg_ | txt_ | cmd_ $txt_text_md"
