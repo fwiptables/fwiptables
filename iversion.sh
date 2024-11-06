@@ -1990,7 +1990,7 @@ echo "cfg_allow_use_ipv4=                                 ## or void for yes or 
 echo "cfg_allow_use_ipv6=                                 ## or void for yes or no"
 echo "$txt_text_title"
 echo "cfg_allow_separate_rules=                           ## or void for yes or no"
-echo "cfg_allow_close_log=                                ## or void for yes or no"
+echo "cfg_allow_close_log=no                              ## or void for yes or no"
 echo "cfg_config_system_log=LOG                           ## or LOG or ULOG"
 echo "cfg_config_close_deny=DROP                          ## or DROP or REJECT"
 echo "$txt_text_title"
@@ -5366,6 +5366,25 @@ exit; fi
 ####
 ####
 #### :rutina-final-reset:
+##########    english: dev-changes: developer changes       ##########
+##########    spanish: dev-changes: cambios de desarrollo   ##########
+#### :rutina-inicial-dev-changes:
+####
+####
+if [ "$cmd_first_option" == "dev-changes" ]; then 
+####
+####
+echo "$txt_text_title $txt_text_info [ changes in $cmd_version ]"
+echo "$txt_text_md whitelist: better in whitelist options now comments"
+echo "$txt_text_md whitelist: better in whitelist options now only in the used tables"
+echo "$txt_text_md variables: Changes in all variables enviroment name to cfg_ | txt_ | cmd_ "
+echo "$txt_text_md custom files: no retro compability"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-dev-changes:
 ##########   english: readme: show intro      ##########
 ##########   spanish: readme: muestra intro   ##########
 #### :rutina-inicial-readme:
@@ -5428,6 +5447,8 @@ exit; fi
 if  [ "$cmd_first_option" == "intro" ]; then
 ####
 ####
+echo "$txt_text_md"
+echo "$txt_text_md" "$txt_text_md" "dev-changes"
 echo "$txt_text_md" "$txt_text_md" "Readme"
 echo "$txt_text_md" "$txt_text_md" "Version"
 echo "$txt_text_md" "$txt_text_md" "About"
@@ -5436,6 +5457,8 @@ echo "$txt_text_md" "$txt_text_md" "Compile"
 echo "$txt_text_md" "$txt_text_md" "Depends"
 echo "$txt_text_md" "$txt_text_md" "Examples"
 echo "$txt_text_md" "$txt_text_md" "Options"
+echo "$txt_text_md"
+$cmd_internal dev-changes
 echo "$txt_text_md"
 $cmd_internal readme
 echo "$txt_text_md"
