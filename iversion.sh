@@ -17673,10 +17673,12 @@ $cfg_allow_input_maxconnect $cmd_command_ip6tablesnft   -A INPUT \
 #### spanish: nft INPUT acepta todo o estado de entrada
 ####
 ####
-$cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft $cmd_command_ip4tablesnft -t filter -A INPUT \
+$cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cmd_command_ip4tablesnft -t filter -A INPUT \
 $cfg_config_input_state -j ACCEPT \
 -m comment --comment "input-state"  &> /dev/null
-$cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft $cmd_command_ip6tablesnft -t filter -A INPUT \
+$cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cmd_command_ip6tablesnft -t filter -A INPUT \
 $cfg_config_input_state -j ACCEPT \
 -m comment --comment "input-state"  &> /dev/null
 ####
