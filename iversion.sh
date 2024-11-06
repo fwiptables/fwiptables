@@ -681,7 +681,7 @@ cfg_option_alias_destino="$(echo $cfg_option_with_alias | $cmd_command_cut -d "=
 ####
 ####
 #### load alias
-if [ "$option_with_alias" != "$NULL" ] && [ "$cfg_option_alias_origen" != "$cfg_option_alias_destino" ]
+if [ "$cfg_option_with_alias" != "$NULL" ] && [ "$cfg_option_alias_origen" != "$cfg_option_alias_destino" ]
 then echo "### < alias > from $cfg_option_alias_origen to $cfg_option_alias_destino"
 $cmd_internal $cfg_option_alias_destino $2 $3 $4
 exit; fi 
@@ -1870,6 +1870,7 @@ if [ "$cmd_first_option" == "alias-example" ] ; then
 ####
 echo "####  program: $cmd_internal $cmd_version"
 echo "####  file: $cmd_file_default_alias"
+echo "####  All lines have to be commenteds"
 echo "#output=optional-output"
 echo "#control=firewall-wallcontrol"
 echo "#listconceptual=firewall-listconceptual"
@@ -3886,7 +3887,7 @@ exit; fi
 #### :rutina-inicial-expert:
 ####
 ####
-if   [ "$cmd_first_option" == "options-expert" ]; then
+if [ "$cmd_first_option" == "options-expert" ]; then
 ####
 ####
 echo "$txt_text_title | $cmd_internal expert | Each expert only works Without optional output $txt_text_md "
@@ -5097,7 +5098,7 @@ if [ "$cmd_first_option" == "clone-wallsystem" ] && [ "$cmd_second_option" != "$
 archivo="$cmd_second_option"
 case $archivo in shield-*);;client-*);; game-*);; games-*);; server-*);;
 *) echo "$title $txt_text_fail choose a valid system firewall to clone" ; exit ;; esac
-$cmd_internal code $cmd_second_option | $cmd_command_grep -E "cfg_client_|server_|config_|allow_|net_" \
+$cmd_internal code $cmd_second_option | $cmd_command_grep "cfg_" \
 &> $cmd_default_directory_custom/$archivo
 ####
 ####
@@ -14828,7 +14829,7 @@ if [ "$cfg_allow_launchrules_firewall" != "yes" ] ; then
 ####
 ####
 echo "### $txt_text_fail [ Fail Option: $cmd_first_option ] [ List Option: options ]"
-first_option="options" ; $cmd_internal $cmd_first_option ; 
+cmd_first_option="options" ; $cmd_internal $cmd_first_option ; 
 ####
 ####
 exit ; fi
@@ -14842,10 +14843,10 @@ exit ; fi
 #### sane variables
 #### 
 ####
-case "$cfg_allow_use_legacy"  in "no")   ;; *) allow_use_legacy=""    ;; esac
-case "$cfg_allow_use_nft"     in "no")   ;; *) allow_use_nft=""       ;; esac
-case "$cfg_allow_use_ipv4"    in "no")   ;; *) allow_use_ipv4=""      ;; esac
-case "$cfg_allow_use_ipv6"    in "no")   ;; *) allow_use_ipv6=""      ;; esac
+case "$cfg_allow_use_legacy"  in "no")   ;; *) cfg_allow_use_legacy=""    ;; esac
+case "$cfg_allow_use_nft"     in "no")   ;; *) cfg_allow_use_nft=""       ;; esac
+case "$cfg_allow_use_ipv4"    in "no")   ;; *) cfg_allow_use_ipv4=""      ;; esac
+case "$cfg_allow_use_ipv6"    in "no")   ;; *) cfg_allow_use_ipv6=""      ;; esac
 ####
 ####
 case "$cfg_config_string_algoritmo" in "bm"|"kmp") ;;
@@ -14854,39 +14855,39 @@ case "$cfg_config_close_deny" in "DROP"|"REJECT") ;;
 *) config_close_deny="DROP"  ;; esac
 ####
 ####
-case "$NULL" in "$cfg_allow_autosave")         ;;  *)  allow_autosave="no" ;;  esac
-case "$NULL" in "$cfg_allow_string_dropped")    ;;  *)  allow_string_dropped="no" ;;  esac
-case "$NULL" in "$cfg_allow_dmz_ip4")          ;;  *)  allow_dmz_ip4="no" ;; esac
-case "$NULL" in "$cfg_allow_dmz_ip6")          ;;  *)  allow_dmz_ip6="no" ;; esac
-case "$NULL" in "$cfg_allow_forward_ip4")      ;;  *)  allow_forward_ip4="no" ;; esac
-case "$NULL" in "$cfg_allow_forward_ip6")      ;;  *)  allow_forward_ip6="no" ;; esac
-case "$NULL" in "$cfg_allow_gateway_ip4")      ;;  *)  allow_gateway_ip4="no" ;; esac
-case "$NULL" in "$cfg_allow_gateway_ip6")      ;;  *)  allow_gateway_ip6="no" ;; esac
-case "$NULL" in "$cfg_allow_input_all")        ;;  *)  allow_input_all="no";; esac
-case "$NULL" in "$cfg_allow_input_bandwidth")  ;;  *)  allow_input_bandwidth="no";; esac
-case "$NULL" in "$cfg_allow_input_maxconnect") ;;  *)  allow_input_maxconnect="no";; esac
-case "$NULL" in "$cfg_allow_input_ping")       ;;  *)  allow_input_ping="no";; esac
-case "$NULL" in "$cfg_allow_input_state")      ;;  *)  allow_input_state="no";; esac
-case "$NULL" in "$cfg_allow_use_ipv4")         ;;  *)  allow_use_ipv4="no" ;; esac
-case "$NULL" in "$cfg_allow_use_ipv6")         ;;  *)  allow_use_ipv6="no" ;; esac
-case "$NULL" in "$cfg_allow_use_legacy")       ;;  *)  allow_use_legacy="no" ;; esac
-case "$NULL" in "$cfg_allow_mac_blacklist")    ;;  *)  allow_mac_blacklist="no" ;; esac
-case "$NULL" in "$cfg_allow_mac_whitelist")    ;;  *)  allow_mac_whitelist="no" ;; esac
-case "$NULL" in "$cfg_allow_shield_maxtries")  ;;  *)  allow_shield_maxtries="no" ;; esac
-case "$NULL" in "$cfg_allow_net_blacklist")    ;;  *)  allow_net_blacklist="no";; esac
-case "$NULL" in "$cfg_allow_net_whitelist")    ;;  *)  allow_net_whitelist="no";; esac
-case "$NULL" in "$cfg_allow_use_nft")          ;;  *)  allow_use_nft="no" ;; esac
-case "$NULL" in "$cfg_allow_only_output")      ;;  *)  allow_only_output="no" ;; esac
-case "$NULL" in "$cfg_allow_other_protocols")  ;;  *)  allow_other_protocols="no";; esac
-case "$NULL" in "$cfg_allow_others_protocols") ;;  *)  allow_others_protocols="no" ;; esac
-case "$NULL" in "$cfg_allow_output_all")       ;;  *)  allow_output_all="no";; esac
-case "$NULL" in "$cfg_allow_output_bandwidth") ;;  *)  allow_output_bandwidth="no";; esac
-case "$NULL" in "$cfg_allow_output_gid")       ;;  *)  allow_output_gid="no";; esac
-case "$NULL" in "$cfg_allow_output_maxconnect");;  *)  allow_output_maxconnect="no";; esac
-case "$NULL" in "$cfg_allow_output_ping")      ;;  *)  allow_output_ping="no";; esac
-case "$NULL" in "$cfg_allow_output_state")     ;;  *)  allow_output_state="no";; esac
-case "$NULL" in "$cfg_allow_output_uid")       ;;  *)  allow_output_uid="no";; esac
-case "$NULL" in "$cfg_config_system_log")      ;;  *)  config_system_log="log" ;; esac
+case "$NULL" in "$cfg_allow_autosave")         ;;  *)  cfg_allow_autosave="no" ;;  esac
+case "$NULL" in "$cfg_allow_string_dropped")   ;;  *)  cfg_allow_string_dropped="no" ;;  esac
+case "$NULL" in "$cfg_allow_dmz_ip4")          ;;  *)  cfg_allow_dmz_ip4="no" ;; esac
+case "$NULL" in "$cfg_allow_dmz_ip6")          ;;  *)  cfg_allow_dmz_ip6="no" ;; esac
+case "$NULL" in "$cfg_allow_forward_ip4")      ;;  *)  cfg_allow_forward_ip4="no" ;; esac
+case "$NULL" in "$cfg_allow_forward_ip6")      ;;  *)  cfg_allow_forward_ip6="no" ;; esac
+case "$NULL" in "$cfg_allow_gateway_ip4")      ;;  *)  cfg_allow_gateway_ip4="no" ;; esac
+case "$NULL" in "$cfg_allow_gateway_ip6")      ;;  *)  cfg_allow_gateway_ip6="no" ;; esac
+case "$NULL" in "$cfg_allow_input_all")        ;;  *)  cfg_allow_input_all="no";; esac
+case "$NULL" in "$cfg_allow_input_bandwidth")  ;;  *)  cfg_allow_input_bandwidth="no";; esac
+case "$NULL" in "$cfg_allow_input_maxconnect") ;;  *)  cfg_allow_input_maxconnect="no";; esac
+case "$NULL" in "$cfg_allow_input_ping")       ;;  *)  cfg_allow_input_ping="no";; esac
+case "$NULL" in "$cfg_allow_input_state")      ;;  *)  cfg_allow_input_state="no";; esac
+case "$NULL" in "$cfg_allow_use_ipv4")         ;;  *)  cfg_allow_use_ipv4="no" ;; esac
+case "$NULL" in "$cfg_allow_use_ipv6")         ;;  *)  cfg_allow_use_ipv6="no" ;; esac
+case "$NULL" in "$cfg_allow_use_legacy")       ;;  *)  cfg_allow_use_legacy="no" ;; esac
+case "$NULL" in "$cfg_allow_mac_blacklist")    ;;  *)  cfg_allow_mac_blacklist="no" ;; esac
+case "$NULL" in "$cfg_allow_mac_whitelist")    ;;  *)  cfg_allow_mac_whitelist="no" ;; esac
+case "$NULL" in "$cfg_allow_shield_maxtries")  ;;  *)  cfg_allow_shield_maxtries="no" ;; esac
+case "$NULL" in "$cfg_allow_net_blacklist")    ;;  *)  cfg_allow_net_blacklist="no";; esac
+case "$NULL" in "$cfg_allow_net_whitelist")    ;;  *)  cfg_allow_net_whitelist="no";; esac
+case "$NULL" in "$cfg_allow_use_nft")          ;;  *)  cfg_allow_use_nft="no" ;; esac
+case "$NULL" in "$cfg_allow_only_output")      ;;  *)  cfg_allow_only_output="no" ;; esac
+case "$NULL" in "$cfg_allow_other_protocols")  ;;  *)  cfg_allow_other_protocols="no";; esac
+case "$NULL" in "$cfg_allow_others_protocols") ;;  *)  cfg_allow_others_protocols="no" ;; esac
+case "$NULL" in "$cfg_allow_output_all")       ;;  *)  cfg_allow_output_all="no";; esac
+case "$NULL" in "$cfg_allow_output_bandwidth") ;;  *)  cfg_allow_output_bandwidth="no";; esac
+case "$NULL" in "$cfg_allow_output_gid")       ;;  *)  cfg_allow_output_gid="no";; esac
+case "$NULL" in "$cfg_allow_output_maxconnect");;  *)  cfg_allow_output_maxconnect="no";; esac
+case "$NULL" in "$cfg_allow_output_ping")      ;;  *)  cfg_allow_output_ping="no";; esac
+case "$NULL" in "$cfg_allow_output_state")     ;;  *)  cfg_allow_output_state="no";; esac
+case "$NULL" in "$cfg_allow_output_uid")       ;;  *)  cfg_allow_output_uid="no";; esac
+case "$NULL" in "$cfg_config_system_log")      ;;  *)  cfg_config_system_log="log" ;; esac
 ####
 ####
 ####
@@ -14924,7 +14925,7 @@ case "$NULL" in "$cfg_config_system_log")      ;;  *)  config_system_log="log" ;
 #### legacy ip4
 ####
 ####
-if [ "$type_firewall" == "input-permisive" ]; then $cmd_internal eraserules &> /dev/null ;
+if [ "$cfg_type_firewall" == "input-permisive" ]; then $cmd_internal eraserules &> /dev/null ;
 ####
 ####
 #### english: legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
@@ -15090,7 +15091,7 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 ####
 ####
 echo "$txt_text_title $txt_text_ok [ Launched: firewall ] \
-[ Type: $type_firewall ] [ Name: $name_firewall ]"
+[ Type: $cfg_type_firewall ] [ Name: $cfg_name_firewall ]"
 exit; fi
 ####
 ####
@@ -15103,7 +15104,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$type_firewall" == "input-established" ]; then $cmd_internal eraserules &> /dev/null ;
+if [ "$cfg_type_firewall" == "input-established" ]; then $cmd_internal eraserules &> /dev/null ;
 ####
 ####
 #### english: legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
@@ -15263,7 +15264,7 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 ####
 ####
 echo "$txt_text_title $txt_text_ok [ Launched: firewall ] \
-[ Type: $type_firewall ] [ Name: $name_firewall ]"
+[ Type: $cfg_type_firewall ] [ Name: $cfg_name_firewall ]"
 exit; fi
 ####
 ####
@@ -15276,7 +15277,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$type_firewall" == "without-connection" ]
+if [ "$cfg_type_firewall" == "without-connection" ]
 then $cmd_internal eraserules &> /dev/null ;
 ####
 ####
@@ -15390,7 +15391,7 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 ####
 ####  
 echo "$txt_text_title $txt_text_ok [ Launched: firewall ] \
-[ Type: $type_firewall ] [ Name: $name_firewall ]"
+[ Type: $cfg_type_firewall ] [ Name: $cfg_name_firewall ]"
 exit; fi
 ####
 ####
@@ -15810,7 +15811,7 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 ####
 ####
 echo "$txt_text_title $txt_text_ok [ Launched: firewall ] \
-[ Type: $type_firewall ] [ Name: $name_firewall ]"
+[ Type: $cfg_type_firewall ] [ Name: $cfg_name_firewall ]"
 exit; fi
 ####
 ####
@@ -15841,21 +15842,21 @@ exit ; fi ; fi
 ##############################      spanish: estado selectivo de entrada/salida        
 ####
 ####
-if [ "$cfg_allow_input_state" != "$NULL" ]  ; then  config_input_state=""  ; fi
-if [ "$cfg_allow_output_state" != "$NULL" ] ; then  config_output_state="" ; fi 
+if [ "$cfg_allow_input_state" != "$NULL" ]  ; then  cfg_config_input_state=""  ; fi
+if [ "$cfg_allow_output_state" != "$NULL" ] ; then  cfg_config_output_state="" ; fi 
 ####
 ####
 if [ "$cfg_allow_input_state" == "$NULL" ]
 then 
-connect_input_state="$cfg_config_input_state"
-config_input_state="-m state --state $connect_input_state"
+cfg_connect_input_state="$cfg_config_input_state"
+cfg_config_input_state="-m state --state $connect_input_state"
 fi
 ####
 ####
 if [ "$cfg_allow_output_state" == "$NULL" ]
 then 
-connect_output_state="$cfg_config_output_state"
-config_output_state="-m state --state $connect_output_state"
+cfg_connect_output_state="$cfg_config_output_state"
+cfg_config_output_state="-m state --state $cfg_connect_output_state"
 fi
 ####
 ####
@@ -17449,10 +17450,10 @@ if [ "$cfg_allow_close_log" == "$NULL" ]; then
 #### spanish: nft INPUT LOG CLOSE
 ####
 ####
-$launch_custom $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cmd_command_ip4tablesnft -t filter -A INPUT   -j $cfg_config_system_log \
 -m comment --comment close-log &> /dev/null
-$launch_custom $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cfg_allow_use_ipv6 $cfg_allow_use_nft \
 $cmd_command_ip6tablesnft -t filter -A INPUT  -j $cfg_config_system_log \
 -m comment --comment close-log &> /dev/null
 ####
@@ -17461,10 +17462,10 @@ $cmd_command_ip6tablesnft -t filter -A INPUT  -j $cfg_config_system_log \
 #### spanish: legacy INPUT LOG CLOSE 
 ####
 ####
-$launch_custom $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy  -t filter -A INPUT  -j $cfg_config_system_log \
 -m comment --comment close-log &> /dev/null
-$launch_custom $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cfg_allow_use_ipv6 $cfg_allow_use_legacy \
 $cmd_command_ip6tableslegacy -t filter -A INPUT  -j $cfg_config_system_log \
 -m comment --comment close-log &> /dev/null
 ####
@@ -17482,10 +17483,10 @@ if [ "$cfg_allow_close_log" == "$NULL" ]; then
 #### spanish: nft OUPUT LOG CLOSE
 ####
 ####
-$launch_custom $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cmd_command_ip4tablesnft -t filter -A OUTPUT  -j $cfg_config_system_log \
 -m comment --comment close-log &> /dev/null
-$launch_custom $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cfg_allow_use_ipv6 $cfg_allow_use_nft \
 $cmd_command_ip6tablesnft -t filter -A OUTPUT  -j $cfg_config_system_log \
 -m comment --comment close-log &> /dev/null
 ####
@@ -17494,10 +17495,10 @@ $cmd_command_ip6tablesnft -t filter -A OUTPUT  -j $cfg_config_system_log \
 #### spanish: legacy OUPUT LOG CLOSE 
 ####
 ####
-$launch_custom $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy  -t filter -A OUTPUT  -j $cfg_config_system_log \
 -m comment --comment close-log &> /dev/null
-$launch_custom $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cfg_allow_use_ipv6 $cfg_allow_use_legacy \
 $cmd_command_ip6tableslegacy -t filter -A OUTPUT  -j $cfg_config_system_log \
 -m comment --comment close-log &> /dev/null
 ####
@@ -17562,9 +17563,9 @@ if [ "$cfg_allow_input_all" == "$NULL" ]; then
 #### spanish: nft INPUT borradas
 ####
 ####
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cmd_command_ip4tablesnft -t filter -F INPUT  &> /dev/null
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
 $cmd_command_ip6tablesnft -t filter -F INPUT  &> /dev/null
 ####
 ####
@@ -17572,9 +17573,9 @@ $cmd_command_ip6tablesnft -t filter -F INPUT  &> /dev/null
 #### spanish: legacy INPUT borradas
 ####
 ####
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy -t filter -F INPUT  &> /dev/null
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
 $cmd_command_ip6tableslegacy -t filter -F INPUT  &> /dev/null
 ####
 ####
@@ -17582,11 +17583,11 @@ $cmd_command_ip6tableslegacy -t filter -F INPUT  &> /dev/null
 #### spanish: nft INPUT ::1 acepta
 ####
 ####
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cmd_command_ip4tablesnft -t filter -A INPUT \
 -s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
 $cmd_command_ip6tablesnft -t filter -A INPUT \
 -s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
@@ -17596,11 +17597,11 @@ $cmd_command_ip6tablesnft -t filter -A INPUT \
 #### spanish: legacy INPUT ::1 acepta
 ####
 ####
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy -t filter -A INPUT \
 -s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost -j ACCEPT \
 -m comment --comment close-rule &> /dev/null
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
 $cmd_command_ip6tableslegacy -t filter -A INPUT \
 -s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost -j ACCEPT \
 -m comment --comment close-rule &> /dev/null
@@ -17610,12 +17611,12 @@ $cmd_command_ip6tableslegacy -t filter -A INPUT \
 #### spanish: legacy6 INPUT limita ancho de banda
 ####
 ####
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cfg_allow_input_bandwidth iptables-legacy -A  INPUT \
 -m hashlimit --hashlimit-above "$cfg_config_input_bandwidth"kb/sec \
 --hashlimit-name maxinput  -j $cfg_config_close_deny \
 -m comment --comment "input-bandwidth kb/s" &> /dev/null
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
 $cfg_allow_input_bandwidth ip6tables-legacy -A  INPUT \
 -m hashlimit --hashlimit-above "$cfg_config_input_bandwidth"kb/sec \
 --hashlimit-name maxinput  -j $cfg_config_close_deny \
@@ -17626,12 +17627,12 @@ $cfg_allow_input_bandwidth ip6tables-legacy -A  INPUT \
 #### spanish: nft6 INPUT limita ancho de banda
 ####
 ####
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cfg_allow_input_bandwidth iptables-nft -A  INPUT \
 -m hashlimit --hashlimit-above "$cfg_config_input_bandwidth"kb/sec \
 --hashlimit-name maxinput  -j $cfg_config_close_deny \
 -m comment --comment "input-bandwidth kb/s" &> /dev/null
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
 $cfg_allow_input_bandwidth ip6tables-nft -A  INPUT \
 -m hashlimit --hashlimit-above "$cfg_config_input_bandwidth"kb/sec \
 --hashlimit-name maxinput  -j $cfg_config_close_deny \
@@ -17642,12 +17643,12 @@ $cfg_allow_input_bandwidth ip6tables-nft -A  INPUT \
 #### spanish: ipv4  limita numero de conexiones
 ####
 ####
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cfg_allow_input_maxconnect  $cmd_command_ip4tableslegacy -A INPUT \
 -m connlimit --connlimit-above $cfg_config_input_maxconnect \
 -j $cfg_config_close_deny \
 -m comment --comment "input maxconnect"  &> /dev/null
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cfg_allow_input_maxconnect $cmd_command_ip4tablesnft   -A INPUT \
 -m connlimit --connlimit-above $cfg_config_input_maxconnect \
 -j $cfg_config_close_deny \
@@ -17658,11 +17659,11 @@ $cfg_allow_input_maxconnect $cmd_command_ip4tablesnft   -A INPUT \
 #### spanish: ipv6 limita numero de conexiones
 ####
 ####
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
 $cfg_allow_input_maxconnect  $cmd_command_ip6tableslegacy -A INPUT \
 -m connlimit --connlimit-above $cfg_config_input_maxconnect -j $cfg_config_close_deny \
 -m comment --comment "input maxconnect"  &> /dev/null
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
 $cfg_allow_input_maxconnect $cmd_command_ip6tablesnft   -A INPUT \
 -m connlimit --connlimit-above $cfg_config_input_maxconnect -j $cfg_config_close_deny \
 -m comment --comment "input maxconnect"  &> /dev/null
@@ -17672,10 +17673,10 @@ $cfg_allow_input_maxconnect $cmd_command_ip6tablesnft   -A INPUT \
 #### spanish: nft INPUT acepta todo o estado de entrada
 ####
 ####
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft $cmd_command_ip4tablesnft -t filter -A INPUT \
+$cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft $cmd_command_ip4tablesnft -t filter -A INPUT \
 $cfg_config_input_state -j ACCEPT \
 -m comment --comment "input-state"  &> /dev/null
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft $cmd_command_ip6tablesnft -t filter -A INPUT \
+$cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft $cmd_command_ip6tablesnft -t filter -A INPUT \
 $cfg_config_input_state -j ACCEPT \
 -m comment --comment "input-state"  &> /dev/null
 ####
@@ -17684,11 +17685,11 @@ $cfg_config_input_state -j ACCEPT \
 #### spanish: entrada acepta todo o estado de entrada
 ####
 ####
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy -t filter -A INPUT \
 $cfg_config_input_state -j ACCEPT \
 -m comment --comment "input-state"  &> /dev/null
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
 $cmd_command_ip6tableslegacy -t filter -A INPUT \
 $cfg_config_input_state -j ACCEPT \
 -m comment --comment "input-state"  &> /dev/null
@@ -17700,11 +17701,11 @@ $cfg_config_input_state -j ACCEPT \
 #### spanish: nft INPUT deniega todo
 ####
 ####
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -t filter -A INPUT \
 -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
 $cmd_command_ip6tablesnft -t filter -A INPUT \
 -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
@@ -17714,11 +17715,11 @@ $cmd_command_ip6tablesnft -t filter -A INPUT \
 #### spanish: legacy INPUT deniega todo
 ####
 ####
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy -t filter -A INPUT \
 -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$launch_custom $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
 $cmd_command_ip6tableslegacy -t filter -A INPUT \
 -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
@@ -17739,9 +17740,9 @@ if [ "$cfg_allow_output_all" == "$NULL" ]; then
 #### spanish: nft OUTPUT borradas
 ####
 ####
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 \
+$cfg_allow_output_all $cfg_allow_use_ipv4 \
 $cfg_allow_use_nft $cmd_command_ip4tablesnft -t filter -F OUTPUT  &> /dev/null
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 \
+$cfg_allow_output_all $cfg_allow_use_ipv6 \
 $cfg_allow_use_nft $cmd_command_ip6tablesnft -t filter -F OUTPUT  &> /dev/null
 ####
 ####
@@ -17749,9 +17750,9 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft -t filter -F OUTPUT  &> /dev/null
 #### spanish: legacy OUTPUT borradas
 ####
 ####
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 \
+$cfg_allow_output_all $cfg_allow_use_ipv4 \
 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy -t filter -F OUTPUT  &> /dev/null
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 \
+$cfg_allow_output_all $cfg_allow_use_ipv6 \
 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy -t filter -F OUTPUT  &> /dev/null
 ####
 ####
@@ -17759,11 +17760,11 @@ $cfg_allow_use_legacy $cmd_command_ip6tableslegacy -t filter -F OUTPUT  &> /dev/
 #### spanish: nft OUTPUT ::1 acepta
 ####
 ####
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cmd_command_ip4tablesnft -t filter -A OUTPUT \
 -s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 \
+$cfg_allow_output_all $cfg_allow_use_ipv6 \
 $cfg_allow_use_nft $cmd_command_ip6tablesnft -t filter -A OUTPUT \
 -s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
@@ -17773,11 +17774,11 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft -t filter -A OUTPUT \
 #### spanish: legacy OUTPUT ::1 acepta
 ####
 ####
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
  $cmd_command_ip4tableslegacy -t filter -A OUTPUT \
 -s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
 $cmd_command_ip6tableslegacy -t filter -A OUTPUT \
 -s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost -j ACCEPT \
 -m comment --comment host-localhost &> /dev/null
@@ -17796,12 +17797,12 @@ if [ "$cfg_allow_output_bandwidth" == "$NULL" ]; then
 #### spanish: legacy6 OUTPUT limita ancho de banda
 ####
 #### 
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 \
+$cfg_allow_output_all $cfg_allow_use_ipv4 \
 $cfg_allow_use_legacy $cfg_allow_output_bandwidth iptables-legacy -A OUTPUT \
 -m hashlimit --hashlimit-above "$cfg_config_output_bandwidth"kb/sec \
 --hashlimit-name maxoutput  -j $cfg_config_close_deny \
 -m comment --comment "output-bandwidth kb/s" &> /dev/null
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
 $cfg_allow_output_bandwidth ip6tables-legacy -A  OUTPUT \
 -m hashlimit --hashlimit-above "$cfg_config_output_bandwidth"kb/sec \
 --hashlimit-name maxoutput  -j $cfg_config_close_deny \
@@ -17812,12 +17813,12 @@ $cfg_allow_output_bandwidth ip6tables-legacy -A  OUTPUT \
 #### spanish: nft6 OUTPUT limita ancho de banda
 ####
 ####
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cfg_allow_output_bandwidth iptables-nft -A OUTPUT \
 -m hashlimit --hashlimit-above "$cfg_config_output_bandwidth"kb/sec \
 --hashlimit-name maxoutput  -j $cfg_config_close_deny \
 -m comment --comment "output-bandwidth kb/s" &> /dev/null
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
 $cfg_allow_output_bandwidth ip6tables-nft -A OUTPUT \
 -m hashlimit --hashlimit-above "$cfg_config_output_bandwidth"kb/sec \
 --hashlimit-name maxoutput  -j $cfg_config_close_deny \
@@ -17837,11 +17838,11 @@ if [ "$cfg_allow_output_maxconnect" == "$NULL" ]; then
 #### spanish: ipv4  limita numero de conexiones
 ####
 ####
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 \
+$cfg_allow_output_all $cfg_allow_use_ipv4 \
 $cfg_allow_use_legacy $cfg_allow_output_maxconnect  $cmd_command_ip4tableslegacy -A OUTPUT \
 -m connlimit --connlimit-above $cfg_config_output_maxconnect  -j $cfg_config_close_deny \
 -m comment --comment "output maxconnect" &> /dev/null
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 \
+$cfg_allow_output_all $cfg_allow_use_ipv4 \
 $cfg_allow_use_nft $cfg_allow_output_maxconnect $cmd_command_ip4tablesnft   -A OUTPUT \
 -m connlimit --connlimit-above $cfg_config_output_maxconnect  -j $cfg_config_close_deny \
 -m comment --comment "output maxconnect" &> /dev/null
@@ -17851,11 +17852,11 @@ $cfg_allow_use_nft $cfg_allow_output_maxconnect $cmd_command_ip4tablesnft   -A O
 #### spanish: ipv6 limita numero de conexiones
 ####
 ####
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 \
+$cfg_allow_output_all $cfg_allow_use_ipv6 \
 $cfg_allow_use_legacy $cfg_allow_output_maxconnect  $cmd_command_ip6tableslegacy -A OUTPUT \
 -m connlimit --connlimit-above $cfg_config_output_maxconnect  -j $cfg_config_close_deny \
 -m comment --comment "output maxconnect" &> /dev/null
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 \
+$cfg_allow_output_all $cfg_allow_use_ipv6 \
 $cfg_allow_use_nft $cfg_allow_output_maxconnect $cmd_command_ip6tablesnft   -A OUTPUT \
 -m connlimit --connlimit-above $cfg_config_output_maxconnect  -j $cfg_config_close_deny \
 -m comment --comment "output maxconnect" &> /dev/null
@@ -17874,11 +17875,11 @@ if [ "$cfg_allow_output_all" == "$NULL" ]; then
 #### spanish: nft OUTPUT acepta todo o estado de entrada
 ####
 ####
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cmd_command_ip4tablesnft -t filter -A OUTPUT \
 $input_state -j ACCEPT \
 -m comment --comment "output-state" &> /dev/null
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
 $cmd_command_ip6tablesnft -t filter -A OUTPUT \
 $input_state -j ACCEPT \
 -m comment --comment "output-state" &> /dev/null
@@ -17888,11 +17889,11 @@ $input_state -j ACCEPT \
 #### spanish: entrada acepta todo o estado de entrada
 ####
 ####
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy -t filter  -A OUTPUT \
 $input_state -j ACCEPT \
 -m comment --comment "output-state" &> /dev/null
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
 $cmd_command_ip6tableslegacy -t filter -A OUTPUT \
 $input_state -j ACCEPT \
 -m comment --comment "output-state" &> /dev/null
@@ -17906,10 +17907,10 @@ fi
 #### spanish: nft INPUT deniega todo
 ####
 ####
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
+$cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cmd_command_ip4tablesnft -t filter -A OUTPUT  -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
+$cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
 $cmd_command_ip6tablesnft -t filter -A OUTPUT  -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
@@ -17918,10 +17919,10 @@ $cmd_command_ip6tablesnft -t filter -A OUTPUT  -j $cfg_config_close_deny \
 #### spanish: legacy INPUT deniega todo
 ####
 ####
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
+$cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy  -t filter -A OUTPUT  -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
-$launch_custom $cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
+$cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
 $cmd_command_ip6tableslegacy -t filter -A OUTPUT  -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
@@ -17931,7 +17932,7 @@ $cmd_command_ip6tableslegacy -t filter -A OUTPUT  -j $cfg_config_close_deny \
 ####
 ####  
 echo "$txt_text_title $txt_text_ok [ Launched: firewall ] \
-[ Type: $type_firewall ] [ Name: $name_firewall ]"
+[ Type: $cfg_type_firewall ] [ Name: $cfg_name_firewall ]"
 ####
 ####
 #### :rutina-final-code-wizard:
