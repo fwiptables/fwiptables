@@ -349,7 +349,8 @@ cfg_client_port_tcp="ssh,http,https"
 cfg_client_port_udp="domain,domain-s,bootpc,bootps,ntp,https"     
 cfg_config_close_deny="DROP"
 cfg_config_dmz_ip4=""     
-cfg_config_dmz_ip6=""     
+cfg_config_dmz_ip6=""
+cfg_config_uid_gid="no"
 cfg_config_gateway_ip4="0/0"    
 cfg_config_gateway_ip6="::/0"    
 cfg_config_graphicall_height="550"
@@ -1879,7 +1880,6 @@ echo "#wallcustom=firewall-wallcustom"
 echo "#wallsystem=firewall-wallsystem"
 echo "#netsystem=firewall-netsystem"
 echo "#easy=firewall-netsystem"
-echo "#expert=options-expert"
 echo "#examples=options-examples"
 echo "#ntpdate-client=date"
 echo "#list-allrules=list-alltables"
@@ -3887,7 +3887,8 @@ exit; fi
 #### :rutina-inicial-expert:
 ####
 ####
-if [ "$cmd_first_option" == "options-expert" ]; then
+if [ "$cmd_first_option" == "expert" ] && \
+[ "$cmd_first_option" == "options-expert" ]; then
 ####
 ####
 echo "$txt_text_title | $cmd_internal expert | Each expert only works Without optional output $txt_text_md "
@@ -15866,11 +15867,10 @@ fi
 #### usuario o grupo para establecidos de entrada de estado       #####################
 ####
 ####
-config_uid_gid=no
 if [ "$cfg_allow_output_uid" == "$NULL" ]
-then config_uid_gid="" ; fi
+then cfg_config_uid_gid="" ; fi
 if [ "$cfg_allow_output_gid" == "$NULL" ]
-then config_uid_gid="" ; fi
+then cfg_config_uid_gid="" ; fi
 ####
 ####
 ###################################################################
