@@ -96,7 +96,7 @@ fi
 #### The number version firewall
 cmd_year="24"                                                 # Number year version
 cmd_month="11"                                                # Number mouth version
-cmd_letter="E"                                                # Number letter version
+cmd_letter="D"                                                # Number letter version
 cmd_version="$cmd_year-$cmd_month-$cmd_letter"                # Final date version
 cmd_released="Year 20$cmd_year / Month $cmd_month"            # Source date version
 #### The data version firewall

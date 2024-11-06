@@ -1,4 +1,6 @@
 ### fwiptables intro   
+  
+      dev-changes
       Readme
       Version
       About
@@ -7,6 +9,13 @@
       Depends
       Examples
       Options
+  
+### fwiptables dev-changes   
+###  < info > [ changes in 24-11-D ]
+   whitelist: better in whitelist options now comments
+   whitelist: better in whitelist options now only in the used tables
+   variables: Changes in all variables enviroment name to cfg_ | txt_ | cmd_ 
+   custom files: no retro compability
   
 ### fwiptables readme   
       fwiptables. Firewall With iptables.
@@ -53,7 +62,7 @@
 ### fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-11-C                
+         Version Firewall: 24-11-D                
         Released Firewall: Year 2024 / Month 11               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
@@ -68,8 +77,8 @@
            Automatic Edit: /usr/bin/nano       
             Automatic cli: /usr/bin/whiptail         
             Automatic gui: /usr/bin/yad   
-            Automatic pdf: /usr/bin/convert            
-          Configured PATH: /usr/bin:/usr/sbin:/bin:/sbin                       
+            Automatic pdf: /usr/bin/convert        
+          Configured PATH: /usr/bin:/usr/sbin:/bin:/sbin                   
               File Format: Bourne-Again_shell_script,                 
          Developer Actual: Francisco Garcia              
              Email Report: fwiptables@gmx.com                
@@ -126,8 +135,8 @@
       Folder logcmd:           /root/.config/fwiptables/fwiptables-logcmd   
         
 ###     [ Preferences files ]     
-      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-C.conf
-      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-C.conf
+      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-D.conf
+      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-D.conf
       usernotes:               /root/.config/fwiptables/fwiptables-preferences/default-usernotes-all-versions.txt
         
 ###     [ optional output ]       
@@ -171,13 +180,13 @@
   
 ### < alias > from examples to options-examples
 ### fwiptables options-examples   
-###     [ One example with input-established ]                
+###     [ One example with input-established ]              
          
        Launch: input-stablished                              
        /usr/bin/fwiptables input-stablished                        
        Explain: Client for all ports without servers ports   
          
-###     [ Several examples with tiny server ]                 
+###     [ Several examples with tiny server ]               
          
        Launch: wizard tiny                                   
        /usr/bin/fwiptables wizard-tiny                             
@@ -187,7 +196,7 @@
        /usr/bin/fwiptables tinyserver-udp 67:68,443                
        Explain: Client for all ports                         
          
-###     [ Several examples with mini server ]                 
+###     [ Several examples with mini server ]               
          
        Launch: wizard mini                                   
        /usr/bin/fwiptables wizard-mini                             
@@ -197,10 +206,15 @@
        /usr/bin/fwiptables miniserver-tcp 21:25,80                 
        Launch: miniserver-udp ports                          
        /usr/bin/fwiptables miniserver-udp 67:68,443                
-       Explain: Read miniserver clients ports in preferences file   
+       Explain: Read miniserver in preferences file          
+         
+###     [ Example with add-whitelist4 ]                     
+         
+       Launch: add-whitelist4                                
+       /usr/bin/fwiptables add-whitelist4 192.168.0.2,sf.net       
          
          
-###     [ Without optional output ]         
+###     [ Without optional output ]       
          
        Explain: depends                    
        /usr/bin/fwiptables depends               
@@ -215,9 +229,9 @@
        Explain: List last options          
        /usr/bin/fwiptables logcmd                
        Explain: modify default variables   
-       /usr/bin/fwiptables preferences-edit    
+       /usr/bin/fwiptables preferences-edit      
      
-###     [ With optional output ]            
+###     [ With optional output ]          
          
        Example with info
        /usr/bin/fwiptables info list             
@@ -251,30 +265,30 @@
   
 ### fwiptables options   
    /usr/bin/fwiptables [optional-output] first_option [second_option]   
-###     optional-output   
+###     <optional-output>   
    [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]   
    [ cli-dialog cli-whiptail cli-menu cli-menu-compact ]   
    [ gui-zenity gui-yad gui-menu gui-menu-zenity gui-menu-yad ]   
    [ gui-roll-zenity gui-shell gui-shell-zenity gui-shell-yad ]   
-###     firewall-listconceptual   
+###     <firewall-listconceptual>   
    ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6   
    list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4   
    list-security6 list-ebtables list-arptables list-alltables   
-###     firewall-listnumeral   
+###     <firewall-listnumeral>   
    lsn4 lsn6 statusn listn-filter4 listn-filter6 listn-nat4   
    listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6   
    listn-security4 listn-security6 listn-alltables   
-###     firewall-wallcontrol   
+###     <firewall-wallcontrol>   
    stop continue reset show save load names actual eraserules   
    eraserules4 eraserules6 without-connection input-permisive   
    input-established wizard-tiny wizard-mini wizard-full   
    tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp   
-###     firewall-wallcustom   
+###     <firewall-wallcustom>   
    new-full-custom nueva-completa-custom new-mini-custom   
    nueva-mini-custom new-tiny-custom nueva-diminuta-custom   
    clone-wallsystem load-custom loadtiny-custom   
    show-custom modify-custom del-custom names-custom   
-###     firewall-wallsystem   
+###     <firewall-wallsystem>   
    client-basic client-web client-ssh client-telnet client-ipp   
    client-irc client-git client-vnc client-news client-vpn   
    client-torrent client-vpn client-ftp client-proxy client-mail   
@@ -284,7 +298,7 @@
    server-lamp server-news server-ftp server-mail server-teamspeak   
    server-mumble server-gateway server-sql server-samba server-proxy   
    server-asterisk client-uid-root client-gid-users client-gid-net    
-###     firewall-netsystem   
+###     <firewall-netsystem>   
    preferences-edit alias-edit options info-options usernotes  
    cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache   
    ip4 ip6 route4 route6 net4-info net6-info sockets nodes   
@@ -293,6 +307,4 @@
    variables examples info code expert donate about version   
    add-whitelist4 add-whitelist6 add-blacklist4 add-blacklist6   
    license-lgpl-v2 license-gpl-v2   
-       | Program: /usr/bin/fwiptables 24-11-C   
-       | Description: iptables templates in one script   
-       | Expert: expert is allowed in preferences file   
+      < info > fwiptables 24-11-D with expert actived   
