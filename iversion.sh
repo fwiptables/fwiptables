@@ -6282,7 +6282,7 @@ exit; fi
 if [ "$cmd_first_option" == "wizard-tiny" ]; then
 ####
 ####
-archivo="$cmd_first_option" ; allow_launchrules_firewall=yes ; type_firewall="wizard-tiny" ; name_firewall="wizard-tiny"
+archivo="$cmd_first_option" ; cfg_allow_launchrules_firewall=yes ; type_firewall="wizard-tiny" ; name_firewall="wizard-tiny"
 $cmd_internal templates-regen
 cp "$cmd_default_tinycfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$archivo"
 $cfg_favorite_text_editor "$cmd_default_cache_necesary/$cmd_filename-$archivo"
@@ -6305,7 +6305,7 @@ exit; fi
 if [ "$cmd_first_option" == "wizard-mini" ]; then
 ####
 ####
-archivo="$cmd_first_option" ; allow_launchrules_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
+archivo="$cmd_first_option" ; cfg_allow_launchrules_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
 $cmd_internal templates-regen
 cp "$cmd_default_minicfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$archivo"
 $cfg_favorite_text_editor "$cmd_default_cache_necesary/$cmd_filename-$archivo"
@@ -6328,7 +6328,7 @@ exit; fi
 if [ "$cmd_first_option" == "wizard-full" ]; then
 ####
 ####
-archivo="$cmd_first_option" ; allow_launchrules_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
+archivo="$cmd_first_option" ; cfg_allow_launchrules_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
 $cmd_internal templates-regen
 cp "$cmd_default_fullcfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$archivo"
 $cfg_favorite_text_editor "$cmd_default_cache_necesary/$cmd_filename-$archivo"
@@ -10070,7 +10070,7 @@ if [ "$cmd_first_option" == "load-custom" ]
 ####
 ####
 then echo "$txt_text_title $txt_text_info [ loading firewall wallcustom $cmd_second_option ]"
-allow_launchrules_firewall="yes" ;
+cfg_allow_launchrules_firewall="yes" ;
 type_firewall="wallcustom" ;
 name_firewall="$cmd_second_option" ;
 ####
@@ -10100,7 +10100,7 @@ if [ "$cmd_first_option" == "loadtiny-custom" ]
 ####
 ####
 then echo "$txt_text_title $txt_text_info [ loading firewall wallcustom $cmd_second_option ]"
-allow_launchrules_firewall="yes" ;
+cfg_allow_launchrules_firewall="yes" ;
 type_firewall="tinycustom" ;
 name_firewall="$cmd_second_option" ;
 ####
@@ -10130,7 +10130,7 @@ if [ "$cmd_first_option" == "tinyserver-tcp" ]
 ####
 ####
 then echo "$txt_text_title $txt_text_info [ loading firewall wallcustom $fist_option ]"
-allow_launchrules_firewall="yes" ;
+cfg_allow_launchrules_firewall="yes" ;
 type_firewall="wallcontrol" ;
 name_firewall="tinyserver-tcp" ;
 cfg_first_option="loadtiny-custom" ;
@@ -10172,7 +10172,7 @@ if [ "$cmd_first_option" == "tinyserver-udp" ]
 ####
 ####
 then echo "$txt_text_title $txt_text_info [ loading firewall wallcustom $fist_option ]"
-allow_launchrules_firewall="yes" ;
+cfg_allow_launchrules_firewall="yes" ;
 type_firewall="wallcontrol" ;
 name_firewall="tinyserver-udp" ;
 first_option="loadtiny-custom" ;
@@ -10214,7 +10214,7 @@ if [ "$cmd_first_option" == "miniserver-tcp" ]
 ####
 ####
 then echo "$txt_text_title $txt_text_info [ loading firewall wallcustom $fist_option ]"
-allow_launchrules_firewall="yes" ;
+cfg_allow_launchrules_firewall="yes" ;
 type_firewall="wallcontrol"    ; 
 name_firewall="miniserver-tcp" ;
 ####
@@ -10255,7 +10255,7 @@ if [ "$cmd_first_option" == "miniserver-udp" ]
 ####
 ####
 then echo "$txt_text_title $txt_text_info [ loading firewall wallcustom $fist_option ]"
-allow_launchrules_firewall="yes" ;
+cfg_allow_launchrules_firewall="yes" ;
 type_firewall="wallcontrol"    ; 
 name_firewall="miniserver-udp" ;
 ####
@@ -10335,7 +10335,7 @@ exit ; fi
 ####
 if [ "$cmd_first_option" == "without-connection" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallcontrol without-connection ]" ;
-allow_launchrules_firewall="yes" ;
+cfg_allow_launchrules_firewall="yes" ;
 type_firewall="without-connection";
 name_firewall="$cmd_first_option";
 fi
@@ -10353,7 +10353,7 @@ if [ "$cmd_first_option" == "input-permisive" ]; then
 ####
 ####
 echo "$txt_text_title $txt_text_info [ loading firewall wallcontrol input-permisive ]" ;
-allow_launchrules_firewall="yes" ;
+cfg_allow_launchrules_firewall="yes" ;
 type_firewall="input-permisive" ;
 name_firewall="$cmd_first_option";
 ####
@@ -10375,7 +10375,7 @@ if [ "$cmd_first_option" == "input-established" ]; then
 ####
 ####
 echo "$txt_text_title $txt_text_info [ loading firewall wallcontrol input-established ]" ;
-allow_launchrules_firewall="yes" ;
+cfg_allow_launchrules_firewall="yes" ;
 type_firewall="input-established" ;
 name_firewall="$cmd_first_option";
 ####
@@ -10394,7 +10394,7 @@ fi
 ####
 if [ "$cmd_first_option" == "shield-ssh" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem shield-ssh ]" ;
-allow_launchrules_firewall="yes" ;
+cfg_allow_launchrules_firewall="yes" ;
 type_firewall="wallsystem"    ; 
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -10489,7 +10489,7 @@ fi
 ####
 if [ "$cmd_first_option" == "client-ssh" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-ssh ]" ;
-allow_launchrules_firewall="yes" ;
+cfg_allow_launchrules_firewall="yes" ;
 type_firewall="wallsystem"    ; 
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -10584,7 +10584,7 @@ fi
 ####
 if [ "$cmd_first_option" == "client-telnet" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-telnet ]" ;
-allow_launchrules_firewall="yes" ;
+cfg_allow_launchrules_firewall="yes" ;
 type_firewall="wallsystem"    ; 
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -10680,7 +10680,7 @@ fi
 ####
 if [ "$cmd_first_option" == "client-basic" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-basic ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -10777,7 +10777,7 @@ fi
 ####
 if [ "$cmd_first_option" == "client-web" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-web ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -10872,7 +10872,7 @@ fi
 ####
 if [ "$cmd_first_option" == "client-git" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-git ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -10967,7 +10967,7 @@ fi
 ####
 if [ "$cmd_first_option" == "client-ipp" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-ipp ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -11062,7 +11062,7 @@ fi
 ####
 if [ "$cmd_first_option" == "client-irc" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-irc ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -11217,7 +11217,7 @@ fi
 ####
 if [ "$cmd_first_option" == "client-vnc" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall client-vnc ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -11313,7 +11313,7 @@ fi
 ####
 if [ "$cmd_first_option" == "client-torrent" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-torrent ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -11409,7 +11409,7 @@ fi
 ####
 if [ "$cmd_first_option" == "client-vpn" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-vpn ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -11505,7 +11505,7 @@ fi
 ####
 if [ "$cmd_first_option" == "client-tor" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-tor ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -11601,7 +11601,7 @@ fi
 ####
 if [ "$cmd_first_option" == "client-news" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-news ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -11702,7 +11702,7 @@ fi
 ####
 if [ "$cmd_first_option" == "client-mail" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-mail ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -11814,7 +11814,7 @@ fi
 ####
 if [ "$cmd_first_option" == "client-ftp" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-ftp ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -11910,7 +11910,7 @@ fi
 ####
 if [ "$cmd_first_option" == "client-proxy" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-proxy ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -12006,7 +12006,7 @@ fi
 ####
 if [ "$cmd_first_option" == "lan-vpn" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem lan-vpn ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -12103,7 +12103,7 @@ fi
 ####
 if [ "$cmd_first_option" == "lan-tor" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem lan-tor ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -12200,7 +12200,7 @@ fi
 ####
 if [ "$cmd_first_option" == "games-shooter" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem games-shooter ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -12296,7 +12296,7 @@ fi
 ####
 if [ "$cmd_first_option" == "games-udp" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem games-udp ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -12392,7 +12392,7 @@ fi
 ####
 if [ "$cmd_first_option" == "game-wesnoth" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem game-wesnoth ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -12488,7 +12488,7 @@ fi
 ####
 if [ "$cmd_first_option" == "game-minetest" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem game-minetest ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -12584,7 +12584,7 @@ fi
 ####
 if [ "$cmd_first_option" == "game-freeciv" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem game-freeciv ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -12680,7 +12680,7 @@ fi
 ####
 if [ "$cmd_first_option" == "game-widelands" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem game-widelands ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -12776,7 +12776,7 @@ fi
 ####
 if [ "$cmd_first_option" == "client-uid-root" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-uid-root ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -12871,7 +12871,7 @@ fi
 ####
 if [ "$cmd_first_option" == "client-gid-users" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-gid-users ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -12966,7 +12966,7 @@ fi
 ####
 if [ "$cmd_first_option" == "client-gid-net" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem client-gid-net ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -13061,7 +13061,7 @@ fi
 ####
 if [ "$cmd_first_option" == "server-web" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-web ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -13157,7 +13157,7 @@ fi
 ####
 if [ "$cmd_first_option" == "server-vnc" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-vnc ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -13253,7 +13253,7 @@ fi
 ####
 if [ "$cmd_first_option" == "server-ftp" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-ftp ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -13349,7 +13349,7 @@ fi
 ####
 if [ "$cmd_first_option" == "server-gateway" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-gateway ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -13445,7 +13445,7 @@ fi
 ####
 if [ "$cmd_first_option" == "server-proxy" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-proxy ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -13541,7 +13541,7 @@ fi
 ####
 if [ "$cmd_first_option" == "server-news" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-news ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -13645,7 +13645,7 @@ if [ "$cmd_first_option" == "server-mail" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-mail ]" ;
 ####
 ####
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -13757,7 +13757,7 @@ fi
 ####
 if [ "$cmd_first_option" == "server-samba" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-samba ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -13853,7 +13853,7 @@ fi
 ####
 if [ "$cmd_first_option" == "server-print" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-print ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ; 
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -13949,7 +13949,7 @@ fi
 ####
 if [ "$cmd_first_option" == "server-ssh" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-ssh ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -14045,7 +14045,7 @@ fi
 ####
 if [ "$cmd_first_option" == "server-telnet" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-telnet ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -14141,7 +14141,7 @@ fi
 ####
 if [ "$cmd_first_option" == "server-lamp" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-lamp ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -14238,7 +14238,7 @@ fi
 ####
 if [ "$cmd_first_option" == "server-asterisk" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-asterisk ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -14336,7 +14336,7 @@ fi
 ####
 if [ "$cmd_first_option" == "server-mumble" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-mumble ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -14432,7 +14432,7 @@ fi
 ####
 if [ "$cmd_first_option" == "server-teamspeak" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-teamspeak ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -14532,7 +14532,7 @@ fi
 ####
 if [ "$cmd_first_option" == "server-sql" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-sql ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -14632,7 +14632,7 @@ fi
 ####
 if [ "$cmd_first_option" == "server-irc" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-irc ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -14728,7 +14728,7 @@ fi
 ####
 if [ "$cmd_first_option" == "server-domain" ]; then
 echo "$txt_text_title $txt_text_info [ loading firewall wallsystem server-domain ]" ;
-allow_launchrules_firewall="yes" ; 
+cfg_allow_launchrules_firewall="yes" ; 
 type_firewall="wallsystem" ;
 name_firewall="$cmd_first_option" ;
 #### english: firewall capacities
@@ -14890,7 +14890,7 @@ case "$NULL" in "$cfg_config_system_log")      ;;  *)  config_system_log="log" ;
 #################################################################
 #################################################################
 ####                                                                                            ###############
-#### Knowed now sure that:         allow_launchrules_firewall="yes"                              ###############
+#### Knowed now sure that:         cfg_allow_launchrules_firewall="yes"                              ###############
 ####                                                                                            ###############
 #################################################################
 #################################################################
