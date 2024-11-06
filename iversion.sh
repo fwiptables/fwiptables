@@ -5455,7 +5455,7 @@ if  [ "$cmd_first_option" == "intro" ]; then
 ####
 ####
 echo "$txt_text_md"
-echo "$txt_text_md" "$txt_text_md" "dev-changes"
+echo "$txt_text_md" "$txt_text_md" "Changes"
 echo "$txt_text_md" "$txt_text_md" "Readme"
 echo "$txt_text_md" "$txt_text_md" "Version"
 echo "$txt_text_md" "$txt_text_md" "About"
@@ -5465,7 +5465,7 @@ echo "$txt_text_md" "$txt_text_md" "Depends"
 echo "$txt_text_md" "$txt_text_md" "Examples"
 echo "$txt_text_md" "$txt_text_md" "Options"
 echo "$txt_text_md"
-$cmd_internal dev-changes
+$cmd_internal changes
 echo "$txt_text_md"
 $cmd_internal readme
 echo "$txt_text_md"
