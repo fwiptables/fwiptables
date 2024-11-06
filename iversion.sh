@@ -2624,22 +2624,21 @@ exit; fi
 ####
 ####
 #### :rutina-final-depends:
-##########    english: examples: some example    ##########
-##########    spanish: examples: algun ejemplo   ##########
+##########    english: options-examples: some example    ##########
+##########    spanish: options-examples: algun ejemplo   ##########
 #### :rutina-inicial-options-examples:
-#### :rutina-inicial-examples:
 ####
 ####
 if [ "$cmd_first_option" == "options-examples" ]; then
 ####
 ####
-echo "$txt_text_title $txt_text_md [ One example with input-established ]              $txt_text_md"
+echo "$txt_text_title $txt_text_md [ One example with input-established ]            $txt_text_md"
 echo "$txt_text_md $txt_text_md  $txt_text_md"  
 echo "$txt_text_md $txt_text_md  Launch: input-stablished                            $txt_text_md"
 echo "$txt_text_md $txt_text_md  $cmd_internal input-stablished                      $txt_text_md"  
 echo "$txt_text_md $txt_text_md  Explain: Client for all ports without servers ports $txt_text_md"
 echo "$txt_text_md $txt_text_md  $txt_text_md"  
-echo "$txt_text_title $txt_text_md [ Several examples with tiny server ]               $txt_text_md"
+echo "$txt_text_title $txt_text_md [ Several examples with tiny server ]             $txt_text_md"
 echo "$txt_text_md $txt_text_md  $txt_text_md"  
 echo "$txt_text_md $txt_text_md  Launch: wizard tiny                                 $txt_text_md"
 echo "$txt_text_md $txt_text_md  $cmd_internal wizard-tiny                           $txt_text_md"  
@@ -2649,7 +2648,7 @@ echo "$txt_text_md $txt_text_md  Launch: tinyserver-udp ports                   
 echo "$txt_text_md $txt_text_md  $cmd_internal tinyserver-udp 67:68,443              $txt_text_md"  
 echo "$txt_text_md $txt_text_md  Explain: Client for all ports                       $txt_text_md"
 echo "$txt_text_md $txt_text_md  $txt_text_md" 
-echo "$txt_text_title $txt_text_md [ Several examples with mini server ]               $txt_text_md"
+echo "$txt_text_title $txt_text_md [ Several examples with mini server ]             $txt_text_md"
 echo "$txt_text_md $txt_text_md  $txt_text_md"
 echo "$txt_text_md $txt_text_md  Launch: wizard mini                                 $txt_text_md"
 echo "$txt_text_md $txt_text_md  $cmd_internal wizard-mini                           $txt_text_md"  
@@ -2659,10 +2658,15 @@ echo "$txt_text_md $txt_text_md  Launch: miniserver-tcp ports                   
 echo "$txt_text_md $txt_text_md  $cmd_internal miniserver-tcp 21:25,80               $txt_text_md"  
 echo "$txt_text_md $txt_text_md  Launch: miniserver-udp ports                        $txt_text_md"
 echo "$txt_text_md $txt_text_md  $cmd_internal miniserver-udp 67:68,443              $txt_text_md"  
-echo "$txt_text_md $txt_text_md  Explain: Read miniserver clients ports in preferences file $txt_text_md"
+echo "$txt_text_md $txt_text_md  Explain: Read miniserver in preferences file        $txt_text_md"
+echo "$txt_text_md $txt_text_md  $txt_text_md"
+echo "$txt_text_title $txt_text_md [ Example with add-whitelist4 ]                   $txt_text_md"
+echo "$txt_text_md $txt_text_md  $txt_text_md"  
+echo "$txt_text_md $txt_text_md  Launch: add-whitelist4                              $txt_text_md"
+echo "$txt_text_md $txt_text_md  $cmd_internal add-whitelist4 192.168.0.2,sf.net     $txt_text_md"
 echo "$txt_text_md $txt_text_md  $txt_text_md"
 echo "$txt_text_md $txt_text_md  $txt_text_md"
-echo "$txt_text_title $txt_text_md [ Without optional output ]       $txt_text_md"  
+echo "$txt_text_title $txt_text_md [ Without optional output ]     $txt_text_md"  
 echo "$txt_text_md $txt_text_md  $txt_text_md"  
 echo "$txt_text_md $txt_text_md  Explain: depends                  $txt_text_md"
 echo "$txt_text_md $txt_text_md  $cmd_internal depends             $txt_text_md"  
@@ -2715,7 +2719,6 @@ echo "$txt_text_md $txt_text_md  $cmd_internal gui-shell-yad       $txt_text_md"
 exit; fi
 ####
 ####
-#### :rutina-final-examples:
 #### :rutina-inicial-options-examples:
 ##########    english: weather: show the weather with wttr.in     ##########
 ##########    spanish: el tiempo: muestra el tiempo con wttr.in   ##########
