@@ -1,6 +1,6 @@
 ### fwiptables intro   
   
-      dev-changes
+      Changes
       Readme
       Version
       About
@@ -10,12 +10,16 @@
       Examples
       Options
   
-### fwiptables dev-changes   
-###  < info > [ changes in 24-11-D ]
-   whitelist: better in whitelist options now comments
-   whitelist: better in whitelist options now only in the used tables
-   variables: Changes in all variables enviroment name to cfg_ | txt_ | cmd_ 
-   custom files: no retro compability
+### fwiptables changes   
+   [ changes in 24-11-E ]   
+   dev-changes: dev-changes now is changes and new format util   
+   add-whitelist: add-whitelist moved to firewall-wallcontrol   
+   expert: fixed in expert option   
+   [ changes in 24-11-D ]   
+   whitelist: better in whitelist options now comments   
+   whitelist: better in whitelist options now only in the used tables   
+   variables: Changes in all enviroment name to cfg_ | txt_ | cmd_   
+   custom files: no retro compability from 24-11-D   
   
 ### fwiptables readme   
       fwiptables. Firewall With iptables.
@@ -62,7 +66,7 @@
 ### fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-11-D                
+         Version Firewall: 24-11-E                
         Released Firewall: Year 2024 / Month 11               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
@@ -135,8 +139,8 @@
       Folder logcmd:           /root/.config/fwiptables/fwiptables-logcmd   
         
 ###     [ Preferences files ]     
-      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-D.conf
-      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-D.conf
+      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-E.conf
+      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-E.conf
       usernotes:               /root/.config/fwiptables/fwiptables-preferences/default-usernotes-all-versions.txt
         
 ###     [ optional output ]       
@@ -283,6 +287,7 @@
    eraserules4 eraserules6 without-connection input-permisive   
    input-established wizard-tiny wizard-mini wizard-full   
    tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp   
+   add-whitelist4 add-whitelist6 add-blacklist4 add-blacklist6   
 ###     <firewall-wallcustom>   
    new-full-custom nueva-completa-custom new-mini-custom   
    nueva-mini-custom new-tiny-custom nueva-diminuta-custom   
@@ -305,6 +310,5 @@
    free ip-forward utils date resolve speed-ip4 speed-ip6   
    log-stat web intro depends uninstall install upgrade notes   
    variables examples info code expert donate about version   
-   add-whitelist4 add-whitelist6 add-blacklist4 add-blacklist6   
    license-lgpl-v2 license-gpl-v2   
-      < info > fwiptables 24-11-D with expert actived   
+      < info > fwiptables 24-11-E with expert actived   
