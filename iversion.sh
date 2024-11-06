@@ -446,15 +446,15 @@ exit; fi ; done
 #### #### Prepare directory data/cache: config for root 
 ####
 ####
-if [ "$HOME" == "$NULL" ] ; then cfg_default_root_home="/root" 
-else cfg_default_root_home="$HOME"; fi
+if [ "$HOME" == "$NULL" ] ; then cmd_default_root_home="/root" 
+else cmd_default_root_home="$HOME"; fi
 ####
 ####
 #### Prepare directory cache: OR run OR /root/.cache/$cmd_filename
 ####
 ####
-cmd_default_cache_run="/run/$cmd_filename"                               ### ununsed
-cmd_default_cache_home="$cfg_default_root_home/.cache/$cmd_name"             ### used
+cmd_default_cache_run="/run/$cmd_name"                               ### ununsed
+cmd_default_cache_home="$cmd_default_root_home/.cache/$cmd_name"     ### used
 ####
 ####
 #### #### variables tree and .cache ####
@@ -466,7 +466,7 @@ cmd_default_cache_necesary="$cmd_default_cache_home/$cmd_archive_date"
 ####
 ####
 #### config
-cmd_default_directory_necesary="$default_root_home/.config/$cmd_name"
+cmd_default_directory_necesary="$cmd_default_root_home/.config/$cmd_name"
 ####
 ####
 #### config
