@@ -449,7 +449,7 @@ exit; fi ; done
 ####
 #### $HOME when not null
 if [ "$HOME" != "$NULL" ] 
-then echo  cmd_default_root_home="$HOME"  ; fi
+then cmd_default_root_home="$HOME"  ; fi
 ####
 ####
 #### if try again with sudo to get $HOME
