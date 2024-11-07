@@ -3678,10 +3678,10 @@ echo "$txt_text_md_md tinyserver-tcp . launch a one firewall with server ports t
 echo "$txt_text_md_md tinyserver-udp . launch a one firewall with server ports udp [ with optional host clients ] $txt_text_md"
 echo "$txt_text_md_md miniserver-tcp . launch a one firewall with server ports tcp [ with optional host clients ] $txt_text_md"
 echo "$txt_text_md_md miniserver-udp . launch a one firewall with server ports udp [ with optional host clients ] $txt_text_md"
-echo "$txt_text_md_md add-whitelist4 . add host ip4 to allowed, several comma seperated $txt_text_md"
-echo "$txt_text_md_md add-whitelist6 . add host ip6 to allowed, several comma seperated $txt_text_md"
-echo "$txt_text_md_md add-blacklist4 . add host ip4 to droped, several comma seperated $txt_text_md"
-echo "$txt_text_md_md add-blacklist6 . add host ip6 to droped, several comma seperated $txt_text_md"
+echo "$txt_text_md_md add-whitelist4 . add host ip4 to allowed, at several comma seperated $txt_text_md"
+echo "$txt_text_md_md add-whitelist6 . add host ip6 to allowed, at several comma seperated $txt_text_md"
+echo "$txt_text_md_md add-blacklist4 . add host ip4 to droped, at several comma seperated $txt_text_md"
+echo "$txt_text_md_md add-blacklist6 . add host ip6 to droped, at several comma seperated $txt_text_md"
 ####
 ####
 exit; fi
