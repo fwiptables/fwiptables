@@ -444,11 +444,24 @@ exit; fi ; done
 #### :rutina-inicial-config-folders:
 ####
 ####
-#### #### Prepare directory data/cache: config for root 
+#### #### Prepare directory data/cache: $HOME root
 ####
 ####
-if [ "$HOME" == "$NULL" ] ; then cmd_default_root_home="/root" 
-else cmd_default_root_home="$HOME"; fi
+#### $HOME when not null
+if [ "$HOME" != "$NULL" ] 
+then echo  cmd_default_root_home="$HOME"  ; fi
+####
+####
+#### if try again with sudo to get $HOME
+if [ "$cmd_default_root_home" == "$NULL" ] && \
+[ "$cmd_command_sudo" != "$NULL" ] && \
+[ "$($cmd_command_sudo echo $HOME)" != "$NULL" ]
+then cmd_default_root_home="$HOME" ; fi
+####
+####
+#### $HOME no way, then go to /root
+if [ "$cmd_default_root_home" == "$NULL" ]
+then cmd_default_root_home="/root" ; fi
 ####
 ####
 #### Prepare directory cache: OR run OR /root/.cache/$cmd_filename
