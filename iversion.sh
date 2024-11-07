@@ -10366,9 +10366,15 @@ declare | $cmd_command_grep -E ^"cmd_|cfg_|txt_" | $cmd_command_sort
 ####
 ####
 #### numbers variables
-echo "$txt_text_title variables cmd_ : $(declare | $cmd_command_grep -E ^"cmd_" | wc -l)"
-echo "$txt_text_title variables cfg_ : $(declare | $cmd_command_grep -E ^"cfg_" | wc -l)"
-echo "$txt_text_title variables txt_ : $(declare | $cmd_command_grep -E ^"txt_" | wc -l)"
+echo "$txt_text_title the statidist variables"
+echo "$txt_text_title variables cfg_  : $(declare | \
+$cmd_command_grep -E ^"cfg_" | wc -l)"
+echo "$txt_text_title variables cmd_  : $(declare | \
+$cmd_command_grep -E ^"cmd_" | wc -l)"
+echo "$txt_text_title variables txt_  : $(declare | \
+$cmd_command_grep -E ^"txt_" | wc -l)"
+echo "$txt_text_title total variables : $(declare | \
+$cmd_command_grep -E ^"txt_|cfg_|cmd_" | wc -l)"
 ####
 ####
 exit ; fi
