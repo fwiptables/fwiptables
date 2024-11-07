@@ -448,11 +448,11 @@ exit; fi ; done
 ####
 ####
 #### $HOME when not null
-if [ "$HOME" != "$NULL" ] 
+if [ "$(echo $HOME)" != "$NULL" ] 
 then cmd_default_root_home="$HOME"  ; fi
 ####
 ####
-#### if try again with sudo to get $HOME
+#### if try again with sudo to get $HOME when before null
 if [ "$cmd_default_root_home" == "$NULL" ] && \
 [ "$cmd_command_sudo" != "$NULL" ] && \
 [ "$($cmd_command_sudo echo $HOME)" != "$NULL" ]
