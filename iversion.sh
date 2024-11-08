@@ -447,9 +447,9 @@ exit; fi ; done
 #### #### Prepare directory data/cache: $HOME root
 ####
 ####
-#### $HOME when not null
+#### $HOME usuall
 if [ "$(echo $HOME)" != "$NULL" ] 
-then cmd_default_root_home="$(echo $HOME)" ; fi
+then cmd_default_root_home="$(echo $HOME)"  ; fi
 ####
 ####
 #### if try again with sudo to get $HOME when before null
@@ -461,7 +461,7 @@ then cmd_default_root_home="$(echo $HOME)"  ; fi
 ####
 #### $HOME no way, then go to /root
 if [ "$cmd_default_root_home" == "$NULL" ]
-then cmd_default_root_home="/root" ; fi
+then cmd_default_root_home="/root"          ; fi
 ####
 ####
 #### Prepare directory cache: OR run OR /root/.cache/$cmd_filename
@@ -1920,8 +1920,8 @@ echo "#logcmd=cat-logcmd"
 echo "#autolog=cat-logcmd"
 echo "#ver=version"
 echo "#all-names=names"
-echo "#address4=net4-info"
-echo "#address6=net6-info"
+echo "#address4=info-ip4"
+echo "#address6=info-ip6"
 echo "#ram-free=free"
 echo "#free-ram=free"
 echo "#ram=free"
@@ -2076,9 +2076,8 @@ if [ "$cmd_first_option" == "resolve" ]; then
 ####
 echo "$txt_text_title_info $txt_text_title [ Domain resolve ] [ nameserver and search ] $txt_text_title"
 if [ -f /etc/resolv.conf ]
-then echo "$txt_text_md_md File: /etc/resolv.conf"
-$cmd_command_cat  /etc/resolv.conf | $cmd_command_grep -E "nameserver|search" | \
-$cmd_command_awk '{print "     " $1 " " $2}' ; fi
+then echo "$txt_text_md_md Content from file: /etc/resolv.conf"
+$cmd_command_cat  /etc/resolv.conf                     ; fi
 if [ -f /etc/resolv.conf.head ]
 then echo "$txt_text_md_md File: /etc/resolv.conf.head"; fi
 if [ -f /etc/resolv.conf.body ]
@@ -2169,8 +2168,8 @@ exit ; fi
 if [ "$cmd_first_option" == "address" ]; then
 ####
 ####
-$cmd_internal net4-info
-$cmd_internal net6-info
+$cmd_internal info-ip4
+$cmd_internal info-ip6
 ####
 ####
 exit ; fi
@@ -2252,12 +2251,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-sockets:
-##########    english: net4-info : get net info               ##########
-##########    spanish: net4-info : da informacion de la red   ##########
-#### :rutina-inicial-net4-info:
+##########    english: info-ip4 : get net info               ##########
+##########    spanish: info-ip4 : da informacion de la red   ##########
+#### :rutina-inicial-info-ip4:
 ####
 ####
-if [ "$cmd_first_option" == "net4-info" ]; then
+if [ "$cmd_first_option" == "info-ip4" ]; then
 ####
 ####
 echo "$txt_text_title_info  [ show info about net address ip4 ]"
@@ -2270,13 +2269,13 @@ $cmd_internal sockets
 exit; fi
 ####
 ####
-#### :rutina-final-net4-info:
-##########    english: net6-info : get net info               ##########
-##########    spanish: net6-info : da informacion de la red   ##########
-#### :rutina-inicial-net6-info:
+#### :rutina-final-info-ip4:
+##########    english: info-ip6 : get net info               ##########
+##########    spanish: info-ip6 : da informacion de la red   ##########
+#### :rutina-inicial-info-ip6:
 ####
 ####
-if [ "$cmd_first_option" == "net6-info" ]; then
+if [ "$cmd_first_option" == "info-ip6" ]; then
 ####
 ####
 echo "$txt_text_title_info  [ show info about net address ip6 ]"
@@ -2291,7 +2290,7 @@ exit; fi
 ####
 ####
 ####
-#### :rutina-final-net6-info:
+#### :rutina-final-info-ip6:
 ##########    english: expert-conf-clientproxy: get net info               ##########
 ##########    spanish: expert-conf-clientproxy: da informacion de la red   ##########
 #### :rutina-inicial-expert-confclientproxy
@@ -3544,7 +3543,7 @@ echo "$txt_text_md server-asterisk client-uid-root client-gid-users client-gid-n
 echo "$txt_text_title    <firewall-netsystem> $txt_text_md"
 echo "$txt_text_md preferences-edit alias-edit options info-options usernotes$txt_text_md"
 echo "$txt_text_md cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $txt_text_md"
-echo "$txt_text_md ip4 ip6 route4 route6 net4-info net6-info sockets nodes $txt_text_md"
+echo "$txt_text_md ip4 ip6 route4 route6 info-ip4 info-ip6 sockets nodes $txt_text_md"
 echo "$txt_text_md free ip-forward utils date resolve speed-ip4 speed-ip6 $txt_text_md"
 echo "$txt_text_md log-stat web intro depends uninstall install upgrade notes $txt_text_md"
 echo "$txt_text_md variables examples info code expert donate about version $txt_text_md"
@@ -3878,8 +3877,8 @@ echo "$txt_text_md_md ip4 . show ip address from connection ipv4 $txt_text_md"
 echo "$txt_text_md_md ip6 . show ip address from connection ipv6 $txt_text_md"
 echo "$txt_text_md_md ip4 . show ip route from connection ipv4 $txt_text_md"
 echo "$txt_text_md_md ip6 . show ip route from connection ipv6 $txt_text_md"
-echo "$txt_text_md_md net4-info . show details from connection ipv4 $txt_text_md"
-echo "$txt_text_md_md net6-info . show details from connection ipv6 $txt_text_md"
+echo "$txt_text_md_md info-ip4 . show details from connection ipv4 $txt_text_md"
+echo "$txt_text_md_md info-ip6 . show details from connection ipv6 $txt_text_md"
 echo "$txt_text_md_md address . show details from connection ipv4, ipv6 $txt_text_md"
 echo "$txt_text_md_md speed-ip4 . calculate bandwith ipv4 $txt_text_md"
 echo "$txt_text_md_md speed-ip6 . calculate bandwith ipv6 $txt_text_md"
@@ -9429,7 +9428,7 @@ then echo $txt_message_without_guiroll ; exit ; fi
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-edit|preferences-regen|alias-edit|alias-regen|\
 alias-read|options|info-options|expert|\
-net4-info|net6-info|route4|route6||sockets|tree-pdf|tree-conf\
+info-ip4|info-ip6|route4|route6||sockets|tree-pdf|tree-conf\
 tree-log|cat-logcmd|ip4|ip6|notes|speed-ip4|speed-ip6|\
 nodes|date|free|version|tree-conf|tree-cache|clean-cache|\
 depends|utils|about|variables|examples|intro|install|upgrade|\
@@ -9476,8 +9475,8 @@ tree-conf)$cmd_internal -gui-zenity tree-conf ;;
 tree-cache)$cmd_internal -gui-zenity tree-cache ;;
 clean-cache) $cmd_internal -gui-zenity clean-cache ;;
 depends)$cmd_internal -gui-zenity depends ;;
-net4-info)$cmd_internal gui-zenity net4-info ;;
-net6-info)$cmd_internal gui-zenity net6-info ;;
+info-ip4)$cmd_internal gui-zenity info-ip4 ;;
+info-ip6)$cmd_internal gui-zenity info-ip6 ;;
 route4)$cmd_internal gui-zenity route4 ;;
 route6)$cmd_internal gui-zenity route6 ;;
 install)$cmd_internal -gui-zenity install ;;
@@ -10040,7 +10039,7 @@ options|clasic-options|info-options|expert|download|intro|\
 cat-logcmd|tree-log|tree-pdf|tree-conf|tree-cache|clean-cache|
 ip4|ip6|speed-ip4|speed-ip6|notes|\
 license-lgpl-v2|license-gpl-v2|\
-net4-info|net6-info|route4|route6||sockets|\
+info-ip4|info-ip6|route4|route6||sockets|\
 add-whitelist4|add-whitelist6|add-blacklist4|add-blacklist6|\
 install|upgrade|examples|depends|variables|utils|about"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
@@ -10090,8 +10089,8 @@ depends*)$cmd_internal gui-$cmd_second_option depends ;;
 install*)$cmd_internal -gui-zenity install ;;
 upgrade*)$cmd_internal -gui-zenity upgrade ;;
 notes*)$cmd_internal gui-$cmd_second_option notes ;;
-net4-info*)$cmd_internal gui-$cmd_second_option net4-info ;;
-net6-info*)$cmd_internal gui-$cmd_second_option net6-info ;;
+info-ip4*)$cmd_internal gui-$cmd_second_option info-ip4 ;;
+info-ip6*)$cmd_internal gui-$cmd_second_option info-ip6 ;;
 route4*)$cmd_internal gui-$cmd_second_option route4 ;;
 route6*)$cmd_internal gui-$cmd_second_option route6 ;;
 license-lgpl-v2*)$cmd_internal gui-$cmd_second_option license-lgpl-v2 ;;
