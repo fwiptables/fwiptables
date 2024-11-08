@@ -401,7 +401,7 @@ cfg_server_port_iperf_ipv6="5200"
 cfg_server_port_tcp=""     
 cfg_server_port_udp=""     
 cfg_server_radio_online="https://www.tdtchannels.com/lists/radio.m3u8"
-cfg_server_time_waiting="9s"  
+cfg_server_time_waiting="12s"  
 ####
 ####
 #### :rutina-final-variables-system:
@@ -1925,6 +1925,7 @@ echo "#address6=info-ip6"
 echo "#ram-free=free"
 echo "#free-ram=free"
 echo "#ram=free"
+echo "#nodes=info-nodes"
 ####
 ####
 exit ; fi
@@ -2723,8 +2724,8 @@ echo "$txt_text_md_md  Example with code ip4"
 echo "$txt_text_md_md  $cmd_internal cli code ip4        $txt_text_md"  
 echo "$txt_text_md_md  Example with list rules"  
 echo "$txt_text_md_md  $cmd_internal cli lsn4            $txt_text_md"  
-echo "$txt_text_md_md  Example with nodes"       
-echo "$txt_text_md_md  $cmd_internal gui nodes           $txt_text_md"  
+echo "$txt_text_md_md  Example with info-nodes"       
+echo "$txt_text_md_md  $cmd_internal gui info-nodes           $txt_text_md"  
 echo "$txt_text_md_md  Example with web browser "
 echo "$txt_text_md_md  $cmd_internal gui web kernel.org  $txt_text_md"  
 echo "$txt_text_md_md  $txt_text_md "
@@ -3543,8 +3544,8 @@ echo "$txt_text_md server-asterisk client-uid-root client-gid-users client-gid-n
 echo "$txt_text_title    <firewall-netsystem> $txt_text_md"
 echo "$txt_text_md preferences-edit alias-edit options info-options usernotes$txt_text_md"
 echo "$txt_text_md cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $txt_text_md"
-echo "$txt_text_md ip4 ip6 route4 route6 info-ip4 info-ip6 sockets nodes $txt_text_md"
-echo "$txt_text_md free ip-forward utils date resolve speed-ip4 speed-ip6 $txt_text_md"
+echo "$txt_text_md ip4 ip6 route4 route6 info-ip4 info-ip6 info-nodes sockets $txt_text_md"
+echo "$txt_text_md lsof free ip-forward utils date resolve speed-ip4 speed-ip6 $txt_text_md"
 echo "$txt_text_md log-stat web intro depends uninstall install upgrade notes $txt_text_md"
 echo "$txt_text_md variables examples info code expert donate about version $txt_text_md"
 echo "$txt_text_md license-lgpl-v2 license-gpl-v2 $txt_text_md"
@@ -3883,7 +3884,7 @@ echo "$txt_text_md_md address . show details from connection ipv4, ipv6 $txt_tex
 echo "$txt_text_md_md speed-ip4 . calculate bandwith ipv4 $txt_text_md"
 echo "$txt_text_md_md speed-ip6 . calculate bandwith ipv6 $txt_text_md"
 echo "$txt_text_md_md sockets . show the sockets listening $txt_text_md"
-echo "$txt_text_md_md nodes . show computers connected to lan $txt_text_md"
+echo "$txt_text_md_md info-nodes . show computers connected to lan $txt_text_md"
 echo "$txt_text_md_md web . browse web page $txt_text_md"
 echo "$txt_text_md_md date . update the time and date from internet $txt_text_md"
 echo "$txt_text_md_md free . freedom innecesary ram $txt_text_md"
@@ -5410,6 +5411,8 @@ if [ "$cmd_first_option" == "changes" ]; then
 echo "$txt_text_md_md \
 [ changes in 24-11-F ]"
 echo "$txt_text_md_md \
+info-net: changed names option | variables: simplify. | "
+echo "$txt_text_md_md \
 [ changes in 24-11-E ]" 
 echo "$txt_text_md_md \
 changes: dev-changes now is changes and new format util $txt_text_md" 
@@ -5784,12 +5787,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-show-geoip:
-##########    english: nodes: listen at dump from conexiones arp    ##########
-##########    spanish: nodes: escucha al volcado de conexiones arp  ##########
-#### :rutina-inicial-nodes:
+##########    english: info-nodes: listen at dump from conexiones arp    ##########
+##########    spanish: info-nodes: escucha al volcado de conexiones arp  ##########
+#### :rutina-inicial-info-nodes:
 ####
 ####
-if   [ "$cmd_first_option" == "nodes" ]; then
+if   [ "$cmd_first_option" == "info-nodes" ]; then
 ####
 ####
 echo "$txt_text_title_info [ Show the list arp-scan in the lan ] "
@@ -5804,7 +5807,7 @@ $cmd_command_timeout -s SIGINT -v $cfg_server_time_waiting $cmd_command_arpscan 
 exit; fi
 ####
 ####
-#### :rutina-final-nodes:
+#### :rutina-final-info-nodes:
 ##########    english: donate: link donate    ##########
 ##########    spanish: donate: link donate  ##########
 #### :rutina-inicial-donate:
@@ -7008,7 +7011,8 @@ exit; fi
 #### :rutina-inicial-expert-sockets-lsof:
 ####
 ####
-if   [ "$cmd_first_option" == "expert-sockets-lsof" ]; then
+if [ "$cmd_first_option" == "lsof" ] || \
+[ "$cmd_first_option" == "expert-sockets-lsof" ]; then
 ####
 ####
 echo "$txt_text_title_info [ Show whith lsof: sockets ] "
@@ -8467,7 +8471,7 @@ menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 032  "$txt_text_md version" \
 033  "$txt_text_md options" \
 034  "$txt_text_md info-options" \
-035  "$txt_text_md nodes" \
+035  "$txt_text_md info-nodes" \
 036  "$txt_text_md date" \
 037  "$txt_text_md free" \
 038  "$txt_text_md expert" \
@@ -8515,7 +8519,7 @@ case $menuprincipal in
 032) clear ; $cmd_internal $cfg_favorite_out_cli version ;;
 033) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
 034) clear ; $cmd_internal $cfg_favorite_out_cli info-options ;;
-035) clear ; $cmd_internal $cfg_favorite_out_cli nodes ;;
+035) clear ; $cmd_internal $cfg_favorite_out_cli info-nodes ;;
 036) clear ; $cmd_internal $cfg_favorite_out_cli date ;;
 037) clear ; $cmd_internal $cfg_favorite_out_cli free ;;
 038) clear ; $cmd_internal $cfg_favorite_out_cli expert ;;
@@ -8692,7 +8696,7 @@ menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 0722  "$txt_text_md version" \
 0723  "$txt_text_md options" \
 0724  "$txt_text_md info-options" \
-0725  "$txt_text_md nodes" \
+0725  "$txt_text_md info-nodes" \
 0726  "$txt_text_md date" \
 0727  "$txt_text_md free" \
 0728  "$txt_text_md expert" \
@@ -8883,7 +8887,7 @@ $cmd_internal del-custom $archivo ;;
 0722) clear ; $cmd_internal $cfg_favorite_out_cli version ;;
 0723) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
 0724) clear ; $cmd_internal $cfg_favorite_out_cli info-options ;;
-0725) clear ; $cmd_internal $cfg_favorite_out_cli nodes ;;
+0725) clear ; $cmd_internal $cfg_favorite_out_cli info-nodes ;;
 0726) clear ; $cmd_internal $cfg_favorite_out_cli date ;;
 0727) clear ; $cmd_internal $cfg_favorite_out_cli free ;;
 0728) clear ; $cmd_internal $cfg_favorite_out_cli expert ;;
@@ -9430,7 +9434,7 @@ preferences-edit|preferences-regen|alias-edit|alias-regen|\
 alias-read|options|info-options|expert|\
 info-ip4|info-ip6|route4|route6||sockets|tree-pdf|tree-conf\
 tree-log|cat-logcmd|ip4|ip6|notes|speed-ip4|speed-ip6|\
-nodes|date|free|version|tree-conf|tree-cache|clean-cache|\
+info-nodes|date|free|version|tree-conf|tree-cache|clean-cache|\
 depends|utils|about|variables|examples|intro|install|upgrade|\
 add-whitelist4|add-whitelist6|add-blacklist4|add-blacklist6|\
 license-lgpl-v2|license-gpl-v2"
@@ -9467,7 +9471,7 @@ notes)$cmd_internal -gui-zenity notes ;;
 speed-ip4)$cmd_internal -gui-zenity speed-ip4 ;;
 speed-ip6)$cmd_internal -gui-zenity speed-ip6 ;;
 sockets)$cmd_internal -gui-zenity sockets ;;
-nodes) $cmd_internal -gui-zenity nodes ;;
+info-nodes) $cmd_internal -gui-zenity info-nodes ;;
 date) $cmd_internal -gui-zenity date ;;
 free) $cmd_internal -gui-zenity free ;;
 version) $cmd_internal -gui-zenity version ;;
