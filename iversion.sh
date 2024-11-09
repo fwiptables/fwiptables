@@ -694,8 +694,8 @@ fi
 ####
 ####
 #### :rutina-final-xhost:
-##########    english: Update variables             ##########
-##########    spanish: Actualiza variables          ##########
+##########                english: Update variables             ##########
+##########                spanish: Actualiza variables          ##########
 #### :rutina-inicial-variables-updated:
 ####
 ####
@@ -1094,6 +1094,26 @@ cmd_first_option="gui"
 cfg_favorite_basename_textdialog="$(basename $cfg_favorite_realpath_textdialog)" ;
 cmd_first_option="cli-menu"
 ;;
+"cli-menu-dialog")
+cfg_favorite_realpath_textdialog="$cmd_command_dialog" ; 
+cfg_favorite_basename_textdialog="$(basename $cmd_command_dialog)" ;
+cmd_first_option="cli-menu"
+;;
+"cli-menu-whiptail")
+cfg_favorite_realpath_textdialog="$cmd_command_whiptail" ; 
+cfg_favorite_basename_textdialog="$(basename $cmd_command_whiptail)" ;
+cmd_first_option="cli-menu"
+;;
+"cli-menu-compact-dialog")
+cfg_favorite_realpath_textdialog="$cmd_command_dialog" ; 
+cfg_favorite_basename_textdialog="$(basename $cmd_command_dialog)" ;
+cmd_first_option="cli-menu-compact"
+;;
+"cli-menu-compact-whiptail")
+cfg_favorite_realpath_textdialog="$cmd_command_whiptail" ; 
+cfg_favorite_basename_textdialog="$(basename $cmd_command_whiptail)" ;
+cmd_first_option="cli-menu-compact"
+;;
 "cli-dialog")
 cfg_favorite_realpath_textdialog="$cmd_command_dialog" ; 
 cfg_favorite_basename_textdialog="$(basename $cfg_favorite_realpath_textdialog)" ;
@@ -1150,6 +1170,12 @@ cmd_second_option="$cfg_favorite_basename_graphicalldialog"
 ####
 ####
 esac
+##########
+##########
+cfg_favorite_out_cli="cli-$(basename $cfg_favorite_realpath_textdialog)"
+cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
+##########
+##########
 ####
 ####
 #### :rutina-final-alias-system-interface:
@@ -3510,6 +3536,8 @@ echo "$txt_text_md $cmd_internal [optional-output] first_option [second_option] 
 echo "$txt_text_title    <optional-output> $txt_text_md"
 echo "$txt_text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ] $txt_text_md"
 echo "$txt_text_md [ cli-dialog cli-whiptail cli-menu cli-menu-compact ] $txt_text_md"
+echo "$txt_text_md [ cli-menu-dialog cli-menu-compact-dialog  ] $txt_text_md"
+echo "$txt_text_md [ cli-menu-whiptail cli-menu-compact-whiptail ] $txt_text_md"
 echo "$txt_text_md [ gui-zenity gui-yad gui-menu gui-menu-zenity gui-menu-yad ] $txt_text_md"
 echo "$txt_text_md [ gui-roll-zenity gui-shell gui-shell-zenity gui-shell-yad ] $txt_text_md"
 echo "$txt_text_title    <firewall-listconceptual> $txt_text_md"
@@ -3627,7 +3655,7 @@ exit; fi
 if [ "$cmd_first_option" == "text-pause" ]; then
 ####
 ####
-read -p '##### $txt_text_ok ##### Press [enter] to continue now with the cli-menu ##### '
+read -p '##### ok ##### Press [enter] to continue now with the cli-menu ##### '
 ####
 ####
 exit; fi
@@ -7954,10 +7982,11 @@ cfg_favorite_realpath_textdialog="$(realpath) $2"
 fi
 ##########
 ##########
-cfg_favorite_out_cli="$(basename "$cfg_favorite_realpath_textdialog")"
+cfg_favorite_out_cli="cli-$(basename $cfg_favorite_realpath_textdialog)"
+cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 ##########
-menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
+menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001  "$txt_text_md intro" \
 002  "$txt_text_md info-options" \
@@ -7971,20 +8000,21 @@ menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 ##########
 ##########
 case $menuprincipal in
-001) clear ; $cmd_internal $cfg_favorite_out_cli intro  ;;
-002) clear ; $cmd_internal $cfg_favorite_out_cli info-options ;;
-003) clear ; $cmd_internal cli-menu-listconceptual $cfg_favorite_out_cli ;;
-004) clear ; $cmd_internal cli-menu-listnumeral $cfg_favorite_out_cli $onecli  ;;
-005) clear ; $cmd_internal cli-menu-wallcontrol $cfg_favorite_out_cli $onecli  ;;
-006) clear ; $cmd_internal cli-menu-wallcustom  $cfg_favorite_out_cli $onecli  ;;
-007) clear ; $cmd_internal cli-menu-wallsystem  $cfg_favorite_out_cli $onecli  ;;
-008) clear ; $cmd_internal cli-menu-netsystem   $cfg_favorite_out_cli $onecli  ;;
-################################################################################
-################################################################################
-*) clear ; $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-$cmd_internal text-pause clear ; exit ;;
-################################################################################
+001) clear ; $cmd_internal $cfg_favorite_out_cli intro                    ;;
+002) clear ; $cmd_internal $cfg_favorite_out_cli info-options             ;;
+003) clear ; $cmd_internal cli-menu-listconceptual $cfg_favorite_base_cli ;;
+004) clear ; $cmd_internal cli-menu-listnumeral    $cfg_favorite_base_cli ;;
+005) clear ; $cmd_internal cli-menu-wallcontrol    $cfg_favorite_base_cli ;;
+006) clear ; $cmd_internal cli-menu-wallcustom     $cfg_favorite_base_cli ;;
+007) clear ; $cmd_internal cli-menu-wallsystem     $cfg_favorite_base_cli ;;
+008) clear ; $cmd_internal cli-menu-netsystem      $cfg_favorite_base_cli ;;
+*)        ;;
 esac
+################################################################################
+################################################################################
+#### $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+$cmd_internal text-pause ; clear
+################################################################################
 exit; fi
 ####
 ####
@@ -8006,10 +8036,11 @@ cfg_favorite_realpath_textdialog="$(realpath) $2"
 fi
 ##########
 ##########
-cfg_favorite_out_cli="$(basename "$cfg_favorite_realpath_textdialog")"
+cfg_favorite_out_cli="cli-$(basename $cfg_favorite_realpath_textdialog)"
+cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 ##########
-menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
+menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$txt_text_title_md [ principal menu ] $txt_text_md $txt_text_title" \
 002 "$txt_text_title [ Info Options ] $txt_text_title" \
@@ -8034,11 +8065,8 @@ menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
-onecli="$(basename "$cfg_favorite_realpath_textdialog")"
-##########
-##########
 case $menuprincipal in
-001) clear ; $cmd_internal cli-menu $cfg_favorite_out_cli ;;
+001) clear ; $cmd_internal cli-menu $cfg_favorite_base_cli ;;
 002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
 003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-listconceptual ;;
 004) clear ; $cmd_internal $cfg_favorite_out_cli ls4 ;;
@@ -8058,12 +8086,14 @@ case $menuprincipal in
 018) clear ; $cmd_internal $cfg_favorite_out_cli list-security6 ;;
 019) clear ; $cmd_internal $cfg_favorite_out_cli list-ebtables ;;
 020) clear ; $cmd_internal $cfg_favorite_out_cli list-arptables ;;
-################################################################################
-*) clear ; $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-$cmd_internal text-pause clear ; exit ;;
-################################################################################
+*)        ;;
 esac
-$cmd_internal cli-menu $cfg_favorite_out_cli
+################################################################################
+################################################################################
+#### $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+$cmd_internal text-pause ; clear
+################################################################################
+$cmd_internal cli-menu $cfg_favorite_base_cli
 exit; fi
 ####
 ####
@@ -8085,10 +8115,11 @@ cfg_favorite_realpath_textdialog="$(realpath) $2"
 fi
 ##########
 ##########
-cfg_favorite_out_cli="$(basename "$cfg_favorite_realpath_textdialog")"
+cfg_favorite_out_cli="cli-$(basename $cfg_favorite_realpath_textdialog)"
+cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 ##########
-menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
+menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$txt_text_title_md [ principal menu ] $txt_text_md $txt_text_title" \
 002 "$txt_text_title [ Info Options     ] $txt_text_title" \
@@ -8114,7 +8145,7 @@ menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 ##########
 ##########
 case $menuprincipal in
-001) clear ; $cmd_internal cli-menu $cfg_favorite_out_cli ;;
+001) clear ; $cmd_internal cli-menu $cfg_favorite_base_cli ;;
 002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
 003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-listnumeral ;;
 004) clear ; $cmd_internal $cfg_favorite_out_cli lsn4 ;;
@@ -8134,12 +8165,14 @@ case $menuprincipal in
 018) clear ; $cmd_internal $cfg_favorite_out_cli listn-security6 ;;
 019) clear ; $cmd_internal $cfg_favorite_out_cli list-ebtables ;;
 020) clear ; $cmd_internal $cfg_favorite_out_cli list-arptables ;;
-################################################################################
-*) clear ; $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-$cmd_internal text-pause clear ; exit ;;
-################################################################################
+*)        ;;
 esac
-$cmd_internal cli-menu $cfg_favorite_out_cli
+################################################################################
+################################################################################
+#### $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+$cmd_internal text-pause ; clear
+################################################################################
+$cmd_internal cli-menu $cfg_favorite_base_cli
 exit; fi
 ####
 ####
@@ -8161,10 +8194,11 @@ cfg_favorite_realpath_textdialog="$(realpath) $2"
 fi
 ##########
 ##########
-cfg_favorite_out_cli="$(basename "$cfg_favorite_realpath_textdialog")"
+cfg_favorite_out_cli="cli-$(basename $cfg_favorite_realpath_textdialog)"
+cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 ##########
-menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
+menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$txt_text_title_md [ principal menu ] $txt_text_md $txt_text_title" \
 002 "$txt_text_title [ Info Options     ] $txt_text_title" \
@@ -8191,7 +8225,7 @@ menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 ##########
 ##########
 case $menuprincipal in
-001) clear ; $cmd_internal cli-menu $onecli ;;
+001) clear ; $cmd_internal cli-menu $cfg_favorite_base_cli ;;
 002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
 003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-wallcontrol ;;
 004) clear ; $cmd_internal $cfg_favorite_out_cli stop ;;
@@ -8221,12 +8255,14 @@ $cmd_internal load $nombrecillo ;;
 019) clear ; $cmd_internal $cfg_favorite_out_cli eraserules4 ; $cmd_internal cli list4   ;;
 020) clear ; $cmd_internal $cfg_favorite_out_cli eraserules6 ; $cmd_internal cli list6   ;;
 021) clear ; $cmd_internal $cfg_favorite_out_cli eraserules ; $cmd_internal cli status   ;;
-################################################################################
-*) clear ; $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-$cmd_internal text-pause clear ; exit ;;
-################################################################################
+*)        ;;
 esac
-$cmd_internal cli-menu $cfg_favorite_out_cli
+################################################################################
+################################################################################
+#### $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+$cmd_internal text-pause ; clear
+################################################################################
+$cmd_internal cli-menu $cfg_favorite_base_cli
 exit; fi
 ####
 ####
@@ -8248,10 +8284,11 @@ cfg_favorite_realpath_textdialog="$(realpath) $2"
 fi
 ##########
 ##########
-cfg_favorite_out_cli="$(basename "$cfg_favorite_realpath_textdialog")"
+cfg_favorite_out_cli="cli-$(basename $cfg_favorite_realpath_textdialog)"
+cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 ##########
-menuprincipal="$($cfg_favorite_out_cli --clear --notags \
+menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$txt_text_title_md [ principal menu ] $txt_text_md $txt_text_title" \
 002 "$txt_text_title [ Info Options        ] $txt_text_title" \
@@ -8290,14 +8327,10 @@ menuprincipal="$($cfg_favorite_out_cli --clear --notags \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
-
-##########
-##########
-################################################################################
 case $menuprincipal in
-001) clear ; $cmd_internal cli-menu $cfg_favorite_out_cli ;;
-002) clear ; $cmd_internal cli options ;;
-003) clear ; $cmd_internal cli firewall-wallsystem ;;
+001) clear ; $cmd_internal cli-menu $cfg_favorite_base_cli ;;
+002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
+003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-wallsystem ;;
 007) clear ; $cmd_internal txt client-basic ; $cmd_internal  $cfg_favorite_out_cli list4   ;;
 008) clear ; $cmd_internal txt client-web ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
 009) clear ; $cmd_internal txt client-ssh ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
@@ -8329,12 +8362,14 @@ case $menuprincipal in
 035) clear ; $cmd_internal txt server-mumble ; $cmd_internal  $cfg_favorite_out_cli list4     ;;
 036) clear ; $cmd_internal txt server-sql ; $cmd_internal  $cfg_favorite_out_cli list4        ;;
 037) clear ; $cmd_internal txt server-asterisk ; $cmd_internal  $cfg_favorite_out_cli list4   ;;
-################################################################################
-*) clear ; $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-$cmd_internal text-pause clear ; exit ;;
-################################################################################
+*)        ;;
 esac
-$cmd_internal cli-menu $cfg_favorite_out_cli
+################################################################################
+################################################################################
+#### $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+$cmd_internal text-pause ; clear
+################################################################################
+$cmd_internal cli-menu $cfg_favorite_base_cli
 exit; fi
 ####
 ####
@@ -8353,10 +8388,11 @@ cfg_favorite_realpath_textdialog="$(realpath) $2"
 fi
 ##########
 ##########
-cfg_favorite_out_cli="$(basename "$cfg_favorite_realpath_textdialog")"
+cfg_favorite_out_cli="cli-$(basename $cfg_favorite_realpath_textdialog)"
+cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 ##########
-menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
+menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$txt_text_title_md [ principal menu ] $txt_text_md $txt_text_title" \
 002 "$txt_text_title [ Info Options        ] $txt_text_title" \
@@ -8377,7 +8413,7 @@ menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 ##########
 ##########
 case $menuprincipal in
-001) clear ; $cmd_internal cli-menu $onecli ;;
+001) clear ; $cmd_internal cli-menu $cfg_favorite_base_cli ;;
 002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
 003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-wallsystem ;;
 004) clear ; $cmd_internal txt names-custom
@@ -8417,12 +8453,14 @@ read -p "Input the custom name to delete # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal del-custom $archivo ;;
 015) clear ; $cmd_internal txt names-custom ;;
-################################################################################
-*) clear ; $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-$cmd_internal text-pause clear ; exit ;;
-################################################################################
+*)        ;;
 esac
-$cmd_internal cli-menu $cfg_favorite_out_cli
+################################################################################
+################################################################################
+#### $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+$cmd_internal text-pause ; clear
+################################################################################
+$cmd_internal cli-menu $cfg_favorite_base_cli
 exit; fi
 ####
 ####
@@ -8446,10 +8484,11 @@ cfg_favorite_realpath_textdialog="$(realpath) $2"
 fi
 ##########
 ##########
-cfg_favorite_out_cli="$(basename "$cfg_favorite_realpath_textdialog")"
+cfg_favorite_out_cli="cli-$(basename $cfg_favorite_realpath_textdialog)"
+cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 ##########
-menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
+menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$txt_text_title_md [ principal menu ] $txt_text_md $txt_text_title" \
 002 "$txt_text_title [ Info Options     ] $txt_text_title" \
@@ -8496,7 +8535,7 @@ menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 ##########
 ##########
 case $menuprincipal in
-001) clear ; $cmd_internal cli-menu $cfg_favorite_out_cli ;;
+001) clear ; $cmd_internal cli-menu $cfg_favorite_base_cli ;;
 002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
 003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-listnumeral ;;
 011) clear ; $cmd_internal $cfg_favorite_out_cli preferences-read ;;
@@ -8541,12 +8580,14 @@ $cmd_internal $cfg_favorite_out_cli add-blacklist6 $archivo ;;
 046) clear ; $cmd_internal $cfg_favorite_out_cli intro ;;
 047) clear ; $cmd_internal $cfg_favorite_out_cli download;;
 048) clear ; $cmd_internal $cfg_favorite_out_cli install;;
-################################################################################
-*) clear ; $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-$cmd_internal text-pause clear ; exit ;;
-################################################################################
+*)        ;;
 esac
-$cmd_internal cli-menu $cfg_favorite_out_cli
+################################################################################
+################################################################################
+#### $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+$cmd_internal text-pause ; clear
+################################################################################
+$cmd_internal cli-menu $cfg_favorite_base_cli
 exit; fi
 ####
 ####
@@ -8566,10 +8607,15 @@ exit ; fi
 ##########
 if [ "$2" != "$NULL" ]; then
 cfg_favorite_basename_textdialog="$(basename) $2"
-cfg_favorite_realpath_textdialog="$(realpath) $2" ; fi
+cfg_favorite_realpath_textdialog="$(realpath) $2"
+fi
 ##########
 ##########
-menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
+cfg_favorite_out_cli="cli-$(basename $cfg_favorite_realpath_textdialog)"
+cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
+##########
+##########
+menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 0110 "$txt_text_title [ intro ] $txt_text_title $txt_text_title" \
 0120 "$txt_text_title [ info-options ] $txt_text_title $txt_text_title" \
@@ -8912,7 +8958,7 @@ $cmd_internal $cfg_favorite_out_cli add-blacklist6 $archivo ;;
 $cmd_internal text-pause clear ; exit ;;
 ################################################################################
 esac
-$cmd_internal text-pause
+$cmd_internal text-pause ; clear
 $cmd_internal cli-menu-compact
 ####
 ####
@@ -8928,7 +8974,7 @@ exit; fi
 if [ "$cmd_first_option" == "text-pause" ]
 ####
 ####
-then read -p '$txt_text_title_ok $txt_text_title Press [enter] \
+then read -p '$txt_text_title_ok Press [enter] \
 to continue now with the cli-menu $txt_text_title'
 ####
 ####
