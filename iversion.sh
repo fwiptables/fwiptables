@@ -96,7 +96,7 @@ fi
 #### The number version firewall
 cmd_year="24"                                                 # Number year version
 cmd_month="11"                                                # Number mouth version
-cmd_letter="F"                                                # Number letter version
+cmd_letter="G"                                                # Number letter version
 cmd_version="$cmd_year-$cmd_month-$cmd_letter"                # Final date version
 cmd_released="Year 20$cmd_year / Month $cmd_month"            # Source date version
 #### The data version firewall
@@ -636,6 +636,12 @@ txt_text_file="< file >"
 txt_text_done="< done >"
 txt_text_folder="<folder>"
 txt_text_md_md="$txt_text_md $txt_text_md"
+txt_text_md_ok="$txt_text_md $txt_text_ok"
+txt_text_md_info="$txt_text_md $txt_text_info"
+txt_text_md_done="$txt_text_md $txt_text_done"
+txt_text_md_folder="$txt_text_md $txt_text_folder"
+txt_text_md_file="$txt_text_md $txt_text_file"
+txt_text_md_fail="$txt_text_md $txt_text_fail"
 txt_text_title_md="$txt_text_title $txt_text_md"
 txt_text_title_ok="$txt_text_title $txt_text_ok"
 txt_text_title_info="$txt_text_title $txt_text_info"
@@ -5659,40 +5665,41 @@ echo "$txt_text_title Waiting several seconds, while create new configuration"
 ####  copy
 cp $cmd_notinstalled $cmd_installed && 
 chmod 755 $cmd_installed &> /dev/null &&
-echo "$txt_text_md $txt_text_ok Installed $cmd_name $txt_text_md $txt_text_file [$cmd_installed]" ||
-echo "$txt_text_md $txt_text_fail Not installed"
+echo "$txt_text_md_ok Installed $cmd_name $txt_text_md_file [$cmd_installed]" \
+version $cmd_version ||
+echo "$txt_text_md_fail Not installed"
 ####
 ####
 #### preferences-regen
 $cmd_notinstalled preferences-regen &> /dev/null &&
-echo "$txt_text_md $txt_text_ok Updated preferences $txt_text_file" &&
+echo "$txt_text_md_ok Updated preferences $txt_text_file" &&
 echo "$txt_text_md [$cmd_file_default_preferences]" ||
-echo "$txt_text_md $txt_text_fail Not update preferences"
+echo "$txt_text_md_fail Not update preferences"
 ####
 ####
 #### alias-regen
 $cmd_notinstalled alias-regen &> /dev/null &&
-echo "$txt_text_md $txt_text_ok Updated alias $txt_text_file" &&
+echo "$txt_text_md_ok Updated alias $txt_text_file" &&
 echo "$txt_text_md [$cmd_file_default_alias]" ||
-echo "$txt_text_md $txt_text_fail Not update alias"
+echo "$txt_text_md_fail Not update alias"
 ####
 ####
 #### templates-regen
 $cmd_notinstalled templates-regen &> /dev/null &&
-echo "$txt_text_md $txt_text_ok Updated templates $txt_text_folder" &&
+echo "$txt_text_md_ok Updated templates $txt_text_folder" &&
 echo "$txt_text_md [$cmd_default_directory_template]" || 
-echo "$txt_text_md $txt_text_fail Not update templates"
+echo "$txt_text_md_fail Not update templates"
 ####
 ####
 #### fonts
-echo "$txt_text_md $txt_text_info Source install: $cmd_notinstalled"
-echo "$txt_text_md $txt_text_info Final  install: $cmd_installed"
+echo "$txt_text_md_info Source install: $cmd_notinstalled"
+echo "$txt_text_md_info Final  install: $cmd_installed"
 ####
 ####
 #### comprobe
 if [ -f "$cmd_installed" ]
-then echo "$txt_text_md $txt_text_ok Installed $cmd_name"
-else echo "$txt_text_md $txt_text_fail Not installed $cmd_name"
+then echo "$txt_text_md_ok Installed $cmd_name"
+else echo "$txt_text_md_fail Not installed $cmd_name"
 fi
 #### 
 ####
