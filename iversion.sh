@@ -5411,7 +5411,7 @@ if [ "$cmd_first_option" == "changes" ]; then
 echo "$txt_text_md_md \
 [ changes in 24-11-F ]"
 echo "$txt_text_md_md \
-info-net: changed names option | variables: simplify. | "
+info-net: changed names option | variables: simplify | improvements in cli-menu"
 echo "$txt_text_md_md \
 [ changes in 24-11-E ]" 
 echo "$txt_text_md_md \
@@ -7950,7 +7950,11 @@ exit ; fi
 ##########
 if [ "$2" != "$NULL" ]; then
 cfg_favorite_basename_textdialog="$(basename) $2"
-cfg_favorite_realpath_textdialog="$(realpath) $2" ; fi
+cfg_favorite_realpath_textdialog="$(realpath) $2"
+fi
+##########
+##########
+cfg_favorite_out_cli="$(basename "$cfg_favorite_realpath_textdialog")"
 ##########
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
@@ -7966,18 +7970,15 @@ menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
-onecli="$(basename "$cfg_favorite_realpath_textdialog")"
-##########
-##########
 case $menuprincipal in
-001) clear ; $cmd_internal cli intro  ;;
-002) clear ; $cmd_internal cli info-options ;;
-003) clear ; $cmd_internal cli-menu-listconceptual $onecli ;;
-004) clear ; $cmd_internal cli-menu-listnumeral $onecli  ;;
-005) clear ; $cmd_internal cli-menu-wallcontrol $onecli  ;;
-006) clear ; $cmd_internal cli-menu-wallcustom  $onecli  ;;
-007) clear ; $cmd_internal cli-menu-wallsystem  $onecli  ;;
-008) clear ; $cmd_internal cli-menu-netsystem     $onecli  ;;
+001) clear ; $cmd_internal $cfg_favorite_out_cli intro  ;;
+002) clear ; $cmd_internal $cfg_favorite_out_cli info-options ;;
+003) clear ; $cmd_internal cli-menu-listconceptual $cfg_favorite_out_cli ;;
+004) clear ; $cmd_internal cli-menu-listnumeral $cfg_favorite_out_cli $onecli  ;;
+005) clear ; $cmd_internal cli-menu-wallcontrol $cfg_favorite_out_cli $onecli  ;;
+006) clear ; $cmd_internal cli-menu-wallcustom  $cfg_favorite_out_cli $onecli  ;;
+007) clear ; $cmd_internal cli-menu-wallsystem  $cfg_favorite_out_cli $onecli  ;;
+008) clear ; $cmd_internal cli-menu-netsystem   $cfg_favorite_out_cli $onecli  ;;
 ################################################################################
 ################################################################################
 *) clear ; $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
@@ -8001,7 +8002,11 @@ exit ; fi
 ##########
 if [ "$2" != "$NULL" ]; then
 cfg_favorite_basename_textdialog="$(basename) $2"
-cfg_favorite_realpath_textdialog="$(realpath) $2" ; fi
+cfg_favorite_realpath_textdialog="$(realpath) $2"
+fi
+##########
+##########
+cfg_favorite_out_cli="$(basename "$cfg_favorite_realpath_textdialog")"
 ##########
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
@@ -8033,7 +8038,7 @@ onecli="$(basename "$cfg_favorite_realpath_textdialog")"
 ##########
 ##########
 case $menuprincipal in
-001) clear ; $cmd_internal cli-menu $onecli ;;
+001) clear ; $cmd_internal cli-menu $cfg_favorite_out_cli ;;
 002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
 003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-listconceptual ;;
 004) clear ; $cmd_internal $cfg_favorite_out_cli ls4 ;;
@@ -8058,6 +8063,7 @@ case $menuprincipal in
 $cmd_internal text-pause clear ; exit ;;
 ################################################################################
 esac
+$cmd_internal cli-menu $cfg_favorite_out_cli
 exit; fi
 ####
 ####
@@ -8075,7 +8081,11 @@ exit ; fi
 ##########
 if [ "$2" != "$NULL" ]; then
 cfg_favorite_basename_textdialog="$(basename) $2"
-cfg_favorite_realpath_textdialog="$(realpath) $2" ; fi
+cfg_favorite_realpath_textdialog="$(realpath) $2"
+fi
+##########
+##########
+cfg_favorite_out_cli="$(basename "$cfg_favorite_realpath_textdialog")"
 ##########
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
@@ -8103,15 +8113,8 @@ menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
-##########
-##########
-onecli="$(basename "$cfg_favorite_realpath_textdialog")"
-##########
-##########
-##########
-##########
 case $menuprincipal in
-001) clear ; $cmd_internal cli-menu $onecli ;;
+001) clear ; $cmd_internal cli-menu $cfg_favorite_out_cli ;;
 002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
 003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-listnumeral ;;
 004) clear ; $cmd_internal $cfg_favorite_out_cli lsn4 ;;
@@ -8136,6 +8139,7 @@ case $menuprincipal in
 $cmd_internal text-pause clear ; exit ;;
 ################################################################################
 esac
+$cmd_internal cli-menu $cfg_favorite_out_cli
 exit; fi
 ####
 ####
@@ -8153,7 +8157,11 @@ exit ; fi
 ##########
 if [ "$2" != "$NULL" ]; then
 cfg_favorite_basename_textdialog="$(basename) $2"
-cfg_favorite_realpath_textdialog="$(realpath) $2" ; fi
+cfg_favorite_realpath_textdialog="$(realpath) $2"
+fi
+##########
+##########
+cfg_favorite_out_cli="$(basename "$cfg_favorite_realpath_textdialog")"
 ##########
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
@@ -8182,12 +8190,6 @@ menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
-##########
-##########
-onecli="$(basename "$cfg_favorite_realpath_textdialog")"
-##########
-##########
-################################################################################
 case $menuprincipal in
 001) clear ; $cmd_internal cli-menu $onecli ;;
 002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
@@ -8224,6 +8226,7 @@ $cmd_internal load $nombrecillo ;;
 $cmd_internal text-pause clear ; exit ;;
 ################################################################################
 esac
+$cmd_internal cli-menu $cfg_favorite_out_cli
 exit; fi
 ####
 ####
@@ -8241,10 +8244,14 @@ exit ; fi
 ##########
 if [ "$2" != "$NULL" ]; then
 cfg_favorite_basename_textdialog="$(basename) $2"
-cfg_favorite_realpath_textdialog="$(realpath) $2" ; fi
+cfg_favorite_realpath_textdialog="$(realpath) $2"
+fi
 ##########
 ##########
-menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
+cfg_favorite_out_cli="$(basename "$cfg_favorite_realpath_textdialog")"
+##########
+##########
+menuprincipal="$($cfg_favorite_out_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$txt_text_title_md [ principal menu ] $txt_text_md $txt_text_title" \
 002 "$txt_text_title [ Info Options        ] $txt_text_title" \
@@ -8283,52 +8290,51 @@ menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
-##########
-##########
-onecli="$(basename "$cfg_favorite_realpath_textdialog")"
+
 ##########
 ##########
 ################################################################################
 case $menuprincipal in
-001) clear ; $cmd_internal cli-menu $onecli ;;
+001) clear ; $cmd_internal cli-menu $cfg_favorite_out_cli ;;
 002) clear ; $cmd_internal cli options ;;
 003) clear ; $cmd_internal cli firewall-wallsystem ;;
-007) clear ; $cmd_internal txt client-basic ; $cmd_internal cli list4    ;;
-008) clear ; $cmd_internal txt client-web ; $cmd_internal cli list4    ;;
-009) clear ; $cmd_internal txt client-ssh ; $cmd_internal cli list4    ;;
-010) clear ; $cmd_internal txt client-telnet ; $cmd_internal cli list4    ;;
-011) clear ; $cmd_internal txt client-git ; $cmd_internal cli list4    ;;
-012) clear ; $cmd_internal txt games-shooter ; $cmd_internal cli list4   ;; 
-013) clear ; $cmd_internal txt game-wesnoth ; $cmd_internal cli list4    ;;
-014) clear ; $cmd_internal txt game-minetest ; $cmd_internal cli list4   ;;
-015) clear ; $cmd_internal txt game-freeciv ; $cmd_internal cli list4    ;;
-016) clear ; $cmd_internal txt game-widelands ; $cmd_internal cli list4  ;;
-017) clear ; $cmd_internal txt client-web ; $cmd_internal cli list4      ;;
-018) clear ; $cmd_internal txt client-vnc ; $cmd_internal cli list4      ;;
-019) clear ; $cmd_internal txt client-tor ; $cmd_internal cli list4      ;;
-020) clear ; $cmd_internal txt client-vpn ; $cmd_internal cli list4      ;;
-021) clear ; $cmd_internal txt client-torrent ; $cmd_internal cli list4  ;;
-022) clear ; $cmd_internal txt lan-tor ; $cmd_internal cli list4         ;;
-023) clear ; $cmd_internal txt lan-vpn ; $cmd_internal cli list4         ;; 
-024) clear ; $cmd_internal txt shield-ssh ; $cmd_internal cli list4      ;; 
-025) clear ; $cmd_internal txt server-ssh ; $cmd_internal cli list4      ;;
-026) clear ; $cmd_internal txt server-web ; $cmd_internal cli list4      ;;
-027) clear ; $cmd_internal txt server-vnc ; $cmd_internal cli list4      ;;
-028) clear ; $cmd_internal txt server-print ; $cmd_internal cli list4    ;;
-029) clear ; $cmd_internal txt server-samba ; $cmd_internal cli list4    ;;
-030) clear ; $cmd_internal txt server-lamp ; $cmd_internal cli list4     ;;
-031) clear ; $cmd_internal txt server-mail ; $cmd_internal cli list4     ;;
-032) clear ; $cmd_internal txt server-ftp ; $cmd_internal cli list4      ;;
-033) clear ; $cmd_internal txt server-news ; $cmd_internal cli list4     ;;
-034) clear ; $cmd_internal txt server-teamspeak ; $cmd_internal cli list4  ;;
-035) clear ; $cmd_internal txt server-mumble ; $cmd_internal cli list4   ;;
-036) clear ; $cmd_internal txt server-sql ; $cmd_internal cli list4      ;;
-037) clear ; $cmd_internal txt server-asterisk ; $cmd_internal cli list4 ;;
+007) clear ; $cmd_internal txt client-basic ; $cmd_internal  $cfg_favorite_out_cli list4   ;;
+008) clear ; $cmd_internal txt client-web ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
+009) clear ; $cmd_internal txt client-ssh ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
+010) clear ; $cmd_internal txt client-telnet ; $cmd_internal $cfg_favorite_out_cli list4   ;;
+011) clear ; $cmd_internal txt client-git ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
+012) clear ; $cmd_internal txt games-shooter ; $cmd_internal $cfg_favorite_out_cli list4   ;; 
+013) clear ; $cmd_internal txt game-wesnoth ; $cmd_internal  $cfg_favorite_out_cli list4   ;;
+014) clear ; $cmd_internal txt game-minetest ; $cmd_internal $cfg_favorite_out_cli list4   ;;
+015) clear ; $cmd_internal txt game-freeciv ; $cmd_internal  $cfg_favorite_out_cli list4   ;;
+016) clear ; $cmd_internal txt game-widelands ; $cmd_internal  $cfg_favorite_out_cli list4 ;;
+017) clear ; $cmd_internal txt client-web ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
+018) clear ; $cmd_internal txt client-vnc ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
+019) clear ; $cmd_internal txt client-tor ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
+020) clear ; $cmd_internal txt client-vpn ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
+021) clear ; $cmd_internal txt client-torrent ; $cmd_internal $cfg_favorite_out_cli list4  ;;
+022) clear ; $cmd_internal txt lan-tor ; $cmd_internal       $cfg_favorite_out_cli list4   ;;
+023) clear ; $cmd_internal txt lan-vpn ; $cmd_internal       $cfg_favorite_out_cli list4   ;; 
+024) clear ; $cmd_internal txt shield-ssh ; $cmd_internal    $cfg_favorite_out_cli list4   ;; 
+025) clear ; $cmd_internal txt server-ssh ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
+026) clear ; $cmd_internal txt server-web ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
+027) clear ; $cmd_internal txt server-vnc ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
+028) clear ; $cmd_internal txt server-print ; $cmd_internal  $cfg_favorite_out_cli list4   ;;
+029) clear ; $cmd_internal txt server-samba ; $cmd_internal  $cfg_favorite_out_cli list4   ;;
+030) clear ; $cmd_internal txt server-lamp ; $cmd_internal  $cfg_favorite_out_cli list4    ;;
+031) clear ; $cmd_internal txt server-mail ; $cmd_internal  $cfg_favorite_out_cli list4    ;;
+032) clear ; $cmd_internal txt server-ftp ; $cmd_internal  $cfg_favorite_out_cli list4     ;;
+033) clear ; $cmd_internal txt server-news ; $cmd_internal  $cfg_favorite_out_cli list4    ;;
+034) clear ; $cmd_internal txt server-teamspeak ; $cmd_internal  $cfg_favorite_out_cli list4  ;;
+035) clear ; $cmd_internal txt server-mumble ; $cmd_internal  $cfg_favorite_out_cli list4     ;;
+036) clear ; $cmd_internal txt server-sql ; $cmd_internal  $cfg_favorite_out_cli list4        ;;
+037) clear ; $cmd_internal txt server-asterisk ; $cmd_internal  $cfg_favorite_out_cli list4   ;;
 ################################################################################
 *) clear ; $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
 $cmd_internal text-pause clear ; exit ;;
 ################################################################################
 esac
+$cmd_internal cli-menu $cfg_favorite_out_cli
 exit; fi
 ####
 ####
@@ -8343,7 +8349,11 @@ if [ "$cmd_first_option" == "cli-menu-wallcustom" ]; then
 ##########
 if [ "$2" != "$NULL" ]; then
 cfg_favorite_basename_textdialog="$(basename) $2"
-cfg_favorite_realpath_textdialog="$(realpath) $2" ; fi
+cfg_favorite_realpath_textdialog="$(realpath) $2"
+fi
+##########
+##########
+cfg_favorite_out_cli="$(basename "$cfg_favorite_realpath_textdialog")"
 ##########
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
@@ -8366,12 +8376,6 @@ menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
-##########
-##########
-onecli="$(basename "$cfg_favorite_realpath_textdialog")"
-##########
-##########
-################################################################################
 case $menuprincipal in
 001) clear ; $cmd_internal cli-menu $onecli ;;
 002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
@@ -8418,8 +8422,7 @@ $cmd_internal del-custom $archivo ;;
 $cmd_internal text-pause clear ; exit ;;
 ################################################################################
 esac
-####
-####
+$cmd_internal cli-menu $cfg_favorite_out_cli
 exit; fi
 ####
 ####
@@ -8439,7 +8442,11 @@ exit ; fi
 ##########
 if [ "$2" != "$NULL" ]; then
 cfg_favorite_basename_textdialog="$(basename) $2"
-cfg_favorite_realpath_textdialog="$(realpath) $2" ; fi
+cfg_favorite_realpath_textdialog="$(realpath) $2"
+fi
+##########
+##########
+cfg_favorite_out_cli="$(basename "$cfg_favorite_realpath_textdialog")"
 ##########
 ##########
 menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
@@ -8488,11 +8495,8 @@ menuprincipal="$($cfg_favorite_realpath_textdialog --clear --notags \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
-onecli="$(basename "$cfg_favorite_realpath_textdialog")"
-##########
-##########
 case $menuprincipal in
-001) clear ; $cmd_internal cli-menu $onecli ;;
+001) clear ; $cmd_internal cli-menu $cfg_favorite_out_cli ;;
 002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
 003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-listnumeral ;;
 011) clear ; $cmd_internal $cfg_favorite_out_cli preferences-read ;;
@@ -8542,8 +8546,7 @@ $cmd_internal $cfg_favorite_out_cli add-blacklist6 $archivo ;;
 $cmd_internal text-pause clear ; exit ;;
 ################################################################################
 esac
-####
-####
+$cmd_internal cli-menu $cfg_favorite_out_cli
 exit; fi
 ####
 ####
