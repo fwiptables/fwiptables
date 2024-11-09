@@ -33,6 +33,7 @@ opt_second="$2"
 conf_agent="curl" # the preferences
 conf_player="vlc -I dummy" # the preferences
 conf_kill="vlc" # the preferences
+conf_proxy=""
 conf_radio="https://www.tdtchannels.com/lists/radio.m3u8" # the preferences
 conf_folder="$HOME/.config/myradio-bash" # the preferences
 conf_complete="$conf_folder/myradio-list.m3u8" # the preferences
@@ -82,7 +83,10 @@ if [ "$opt_second" == "$NULL" ]; then echo "# choose a name for one radio"; exit
 $opt_bin stop
 grep -i $opt_second $conf_complete > $conf_choosed
 if [ ! -s "$conf_choosed" ]; then echo "# radio not found" ; exit; fi
-$conf_player -d $conf_choosed &> /dev/null
+if [ "$conf_proxy" == "$NULL" ]
+then $conf_player -d $conf_choosed &> /dev/null
+else $conf_player --socks $conf_proxy -d $conf_choosed &> /dev/null
+fi
 echo "# now playing radio: $opt_second"
 exit; fi
 ### link radio
