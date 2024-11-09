@@ -5439,7 +5439,9 @@ if [ "$cmd_first_option" == "changes" ]; then
 echo "$txt_text_md_md \
 [ changes in 24-11-F ]"
 echo "$txt_text_md_md \
-info-net: changed names option | variables: simplify | improvements in cli-menu"
+info-net: changed names option | variables: simplify"
+echo "$txt_text_md_md \
+cli-menu and cli-menu-compact: changes, updated, fixed"
 echo "$txt_text_md_md \
 [ changes in 24-11-E ]" 
 echo "$txt_text_md_md \
