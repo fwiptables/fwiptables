@@ -5665,8 +5665,8 @@ echo "$txt_text_title Waiting several seconds, while create new configuration"
 ####  copy
 cp $cmd_notinstalled $cmd_installed && 
 chmod 755 $cmd_installed &> /dev/null &&
-echo "$txt_text_md_ok Installed $cmd_name $txt_text_md_file [$cmd_installed]" \
-version $cmd_version ||
+echo "$txt_text_md_ok Installed $cmd_name $txt_text_md_file [$cmd_installed] \
+<version>  [$cmd_version]" ||
 echo "$txt_text_md_fail Not installed"
 ####
 ####
