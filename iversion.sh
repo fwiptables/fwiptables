@@ -96,7 +96,7 @@ fi
 #### The number version firewall
 cmd_year="24"                                                 # Number year version
 cmd_month="11"                                                # Number mouth version
-cmd_letter="G"                                                # Number letter version
+cmd_letter="G-dev"                                            # Number letter version
 cmd_version="$cmd_year-$cmd_month-$cmd_letter"                # Final date version
 cmd_released="Year 20$cmd_year / Month $cmd_month"            # Source date version
 #### The data version firewall
@@ -646,8 +646,8 @@ txt_text_title_md="$txt_text_title $txt_text_md"
 txt_text_title_ok="$txt_text_title $txt_text_ok"
 txt_text_title_info="$txt_text_title $txt_text_info"
 txt_text_title_fail="$txt_text_title $txt_text_fail"
-txt_text_tile_file="$txt_text_title $txt_text_file"
-txt_text_tile_done="$txt_text_title $txt_text_done"
+txt_text_title_file="$txt_text_title $txt_text_file"
+txt_text_title_done="$txt_text_title $txt_text_done"
 txt_text_title_folder="$txt_text_title $txt_text_folder"
 txt_text_ok_md="$txt_text_ok $txt_text_md"
 txt_text_title_md="$txt_txt_title $txt_text_md"
@@ -6877,7 +6877,7 @@ echo "$txt_text_title [ Working ] Conecting in ipv4 to $cfg_server_ip_iperf_ipv4
 $cfg_favorite_iperf_command -4 -t 4 -c $cfg_server_ip_iperf_ipv4 -p $cfg_server_port_iperf_ipv4
 echo "$txt_text_title"
 echo "$txt_text_title [ Working ] [ Restoring firewall ]"
-$cmd_internal load before-speed-ip4 
+$cmd_internal load before-speed-ip4
 echo "$txt_text_title_done $cmd_internal speed-ip4"
 ####
 ####
