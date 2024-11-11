@@ -1439,6 +1439,23 @@ exit ; fi
 ####
 ####
 #### :rutina-final-alias-silent:
+##########    ALIAS CONFIG DEV
+##########    ALIAS CONFIG DEV
+#### :rutina-inicial-alias-dev:
+####
+####
+if [ "$cmd_first_option" == "dev" ]
+####
+####
+then cmd_variables_launch="yes"
+echo "Silent, and the Variables, work in progress.."
+$cmd_internal "$cmd_second_option" "$cmd_third_option" "$cmd_quad_option" &> /dev/null
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-alias-silent:
 ##########     english: allow-logcmd:       ##########
 ##########     spanish: autoguardado        ##########
 #### :rutina-inicial-allow-logcmd:
@@ -3540,7 +3557,7 @@ if [ "$cmd_first_option" == "options" ]; then
 ####
 echo "$txt_text_md $cmd_internal [optional-output] first_option [second_option] $txt_text_md"
 echo "$txt_text_title    <optional-output> $txt_text_md"
-echo "$txt_text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ] $txt_text_md"
+echo "$txt_text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info d|dev ] $txt_text_md"
 echo "$txt_text_md [ cli-dialog cli-whiptail cli-menu cli-menu-compact ] $txt_text_md"
 echo "$txt_text_md [ cli-menu-dialog cli-menu-compact-dialog  ] $txt_text_md"
 echo "$txt_text_md [ cli-menu-whiptail cli-menu-compact-whiptail ] $txt_text_md"
