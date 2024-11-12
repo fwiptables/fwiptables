@@ -1464,7 +1464,6 @@ cfg_config_show_variables="yes"
 cmd_first_option="$cmd_second_option"
 cmd_second_option="$cmd_third_option"
 cmd_quad_option="$cmd_quad_option"
-echo "Save Variables, work in progress.."
 ####
 ####
 fi
@@ -1551,12 +1550,6 @@ $cmd_command_cat   "$cmd_file_default_logcmd" | tail -50
 echo
 echo "$txt_text_title_info latest 50 lines from this file"
 echo "$txt_text_title_info [$cmd_file_default_logcmd]"
-####
-####
-if [ "$cfg_config_show_variables"="yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
 ####
 ####
 if [ "$cfg_config_show_variables"="yes" ]; then
