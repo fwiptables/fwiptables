@@ -405,6 +405,64 @@ cfg_server_time_waiting="12s"
 ####
 ####
 #### :rutina-final-variables-system:
+##########  english: variables-header: variables to declare in header      ##########
+##########  spanish: variables-header: variables para declarar en cabecera ##########
+#### :rutina-inicial-variables-header:
+####
+####
+#### text 
+txt_text_md="  "
+txt_text_title="### "
+txt_text_ok="<  ok  >"
+txt_text_info="< info >"
+txt_text_fail="< fail >"
+txt_text_file="< file >"
+txt_text_done="< done >"
+txt_text_folder="<folder>"
+txt_text_md_md="$txt_text_md $txt_text_md"
+txt_text_md_ok="$txt_text_md $txt_text_ok"
+txt_text_md_info="$txt_text_md $txt_text_info"
+txt_text_md_done="$txt_text_md $txt_text_done"
+txt_text_md_folder="$txt_text_md $txt_text_folder"
+txt_text_md_file="$txt_text_md $txt_text_file"
+txt_text_md_fail="$txt_text_md $txt_text_fail"
+txt_text_title_md="$txt_text_title $txt_text_md"
+txt_text_title_ok="$txt_text_title $txt_text_ok"
+txt_text_title_info="$txt_text_title $txt_text_info"
+txt_text_title_fail="$txt_text_title $txt_text_fail"
+txt_text_title_file="$txt_text_title $txt_text_file"
+txt_text_title_done="$txt_text_title $txt_text_done"
+txt_text_title_folder="$txt_text_title $txt_text_folder"
+txt_text_ok_md="$txt_text_ok $txt_text_md"
+txt_text_title_md="$txt_txt_title $txt_text_md"
+txt_text_info_md="$txt_text_info $txt_text_md"
+txt_text_fail_md="$txt_text_fail $txt_text_md"
+txt_text_file_md="$txt_text_file $txt_text_md"
+txt_text_done_md="$txt_text_done $txt_text_md"
+txt_text_folder_md="$txt_text_folder $txt_text_md"
+#### head 
+txt_head_waiting_all=" [ Wait several seconds.. ]  [ press control-c to cancel ] "
+txt_head_waiting_txt="$txt_text_title_info [ txt ] $txt_head_waiting_all "
+txt_head_waiting_narrow="$txt_text_title_info [ narrow ] $txt_head_waiting_all "
+txt_head_waiting_cli="$txt_text_title_info [ cli ] $txt_head_waiting_all "
+txt_head_waiting_gui="$txt_text_title_info [ gui ] $txt_head_waiting_all "
+txt_head_waiting_log="$txt_text_title_info [ log ] $txt_head_waiting_all "
+txt_head_waiting_pdf="$txt_text_title_info [ pdf ] $txt_head_waiting_all "
+#### message 
+txt_message_without_support="[ Without support for output cli for this option ]"
+txt_message_without_narrow="$txt_text_title_fail [ narrow ] $txt_message_without_support"
+txt_message_without_txt="$txt_text_title_fail [ txt ] $txt_message_without_support"
+txt_message_without_cli="$txt_text_title_fail [ cli ] $txt_message_without_support"
+txt_message_without_gui="$txt_text_title_fail [ gui ] $txt_message_without_support"
+txt_message_without_info="$txt_text_title_fail [ log ] $txt_message_without_support"
+txt_message_without_null="$txt_text_title_fail [ null ] $txt_message_without_support"
+txt_message_without_pdf="$txt_text_title_fail [ pdf ] $txt_message_without_support"
+txt_message_without_climenu="$txt_text_title_fail [ install or dialog or wiptail]"
+txt_message_without_guimenu="$txt_text_title_fail [ install or zenity or yad ]"
+txt_message_without_guiroll="$txt_text_title_fail [ install zenity ]"
+####
+####
+#### :rutina-final-variables-header:
 ##########   english: necesary programs: programs path           ##########
 ##########   spanish: necesarios programas: ruta de programas    ##########
 #### :rutina-inicial-necesary-commands:
@@ -491,6 +549,7 @@ cmd_default_directory_preferences="$cmd_default_directory_necesary/fwiptables-pr
 cmd_default_directory_baselogcmd="$cmd_default_directory_necesary/fwiptables-logcmd"
 cmd_default_directory_baselogs="$cmd_default_directory_necesary/fwiptables-log"
 cmd_default_directory_basepdf="$cmd_default_directory_necesary/fwiptables-pdf"
+cmd_default_directory_var="$cmd_default_directory_necesary/fwiptables-var/$cmd_archive_date"
 cmd_default_directory_logs="$cmd_default_directory_necesary/fwiptables-log/$cmd_archive_date"
 cmd_default_directory_pdf="$cmd_default_directory_necesary/fwiptables-pdf/$cmd_archive_date"
 cmd_default_directory_logcmd="$cmd_default_directory_necesary/fwiptables-logcmd/$cmd_archive_date"
@@ -551,6 +610,8 @@ if [ ! -d "$cmd_default_directory_wpa" ]; then
 $cmd_command_mkdir -p "$cmd_default_directory_wpa" &> /dev/null ; fi
 if [ ! -d "$cmd_default_directory_pdf" ]; then
 $cmd_command_mkdir -p "$cmd_default_directory_pdf" &> /dev/null ; fi
+if [ ! -d "$cmd_default_directory_var" ]; then
+$cmd_command_mkdir -p "$cmd_default_directory_var" &> /dev/null ; fi
 if [ ! -d "$cmd_default_directory_benchmarkram" ]; then
 $cmd_command_mkdir -p "$cmd_default_directory_benchmarkram" &> /dev/null ; fi
 if [ ! -d "$cmd_default_directory_benchmarkdisk" ]; then
@@ -607,6 +668,8 @@ cmd_file_output_log=\
 "$cmd_default_directory_logs/$cmd_log_date-$cmd_guided_full.log"
 cmd_file_output_cache=\
 "$cmd_default_cache_necesary/$cmd_cache_date-$cmd_guided_full.txt"
+cmd_file_output_var=\
+"$cmd_default_directory_var/$cmd_log_date-$cmd_guided_full.txt"
 ####
 ####
 #### config file adblock
@@ -621,64 +684,6 @@ cmd_file_blacklist_stevenblack=\
 ####
 ####
 #### :rutina-final-config-files:
-##########  english: variables-header: variables to declare in header      ##########
-##########  spanish: variables-header: variables para declarar en cabecera ##########
-#### :rutina-inicial-variables-header:
-####
-####
-#### text 
-txt_text_md="  "
-txt_text_title="### "
-txt_text_ok="<  ok  >"
-txt_text_info="< info >"
-txt_text_fail="< fail >"
-txt_text_file="< file >"
-txt_text_done="< done >"
-txt_text_folder="<folder>"
-txt_text_md_md="$txt_text_md $txt_text_md"
-txt_text_md_ok="$txt_text_md $txt_text_ok"
-txt_text_md_info="$txt_text_md $txt_text_info"
-txt_text_md_done="$txt_text_md $txt_text_done"
-txt_text_md_folder="$txt_text_md $txt_text_folder"
-txt_text_md_file="$txt_text_md $txt_text_file"
-txt_text_md_fail="$txt_text_md $txt_text_fail"
-txt_text_title_md="$txt_text_title $txt_text_md"
-txt_text_title_ok="$txt_text_title $txt_text_ok"
-txt_text_title_info="$txt_text_title $txt_text_info"
-txt_text_title_fail="$txt_text_title $txt_text_fail"
-txt_text_title_file="$txt_text_title $txt_text_file"
-txt_text_title_done="$txt_text_title $txt_text_done"
-txt_text_title_folder="$txt_text_title $txt_text_folder"
-txt_text_ok_md="$txt_text_ok $txt_text_md"
-txt_text_title_md="$txt_txt_title $txt_text_md"
-txt_text_info_md="$txt_text_info $txt_text_md"
-txt_text_fail_md="$txt_text_fail $txt_text_md"
-txt_text_file_md="$txt_text_file $txt_text_md"
-txt_text_done_md="$txt_text_done $txt_text_md"
-txt_text_folder_md="$txt_text_folder $txt_text_md"
-#### head 
-txt_head_waiting_all=" [ Wait several seconds.. ]  [ press control-c to cancel ] "
-txt_head_waiting_txt="$txt_text_title_info [ txt ] $txt_head_waiting_all "
-txt_head_waiting_narrow="$txt_text_title_info [ narrow ] $txt_head_waiting_all "
-txt_head_waiting_cli="$txt_text_title_info [ cli ] $txt_head_waiting_all "
-txt_head_waiting_gui="$txt_text_title_info [ gui ] $txt_head_waiting_all "
-txt_head_waiting_log="$txt_text_title_info [ log ] $txt_head_waiting_all "
-txt_head_waiting_pdf="$txt_text_title_info [ pdf ] $txt_head_waiting_all "
-#### message 
-txt_message_without_support="[ Without support for output cli for this option ]"
-txt_message_without_narrow="$txt_text_title_fail [ narrow ] $txt_message_without_support"
-txt_message_without_txt="$txt_text_title_fail [ txt ] $txt_message_without_support"
-txt_message_without_cli="$txt_text_title_fail [ cli ] $txt_message_without_support"
-txt_message_without_gui="$txt_text_title_fail [ gui ] $txt_message_without_support"
-txt_message_without_info="$txt_text_title_fail [ log ] $txt_message_without_support"
-txt_message_without_null="$txt_text_title_fail [ null ] $txt_message_without_support"
-txt_message_without_pdf="$txt_text_title_fail [ pdf ] $txt_message_without_support"
-txt_message_without_climenu="$txt_text_title_fail [ install or dialog or wiptail]"
-txt_message_without_guimenu="$txt_text_title_fail [ install or zenity or yad ]"
-txt_message_without_guiroll="$txt_text_title_fail [ install zenity ]"
-####
-####
-#### :rutina-final-variables-header:
 ##########   english: profile y support X11 for root       ##########
 ##########   spanish: profile y soporte de X11 for root    ##########
 #### :rutina-inicial-xhost:
@@ -1038,6 +1043,8 @@ case "$cmd_first_option" in
 "--silent") cmd_first_option="silent" ;;
 "-pdf") cmd_first_option="pdf" ;;
 "--pdf") cmd_first_option="pdf" ;;
+"-dev") cmd_first_option="dev" ;;
+"--dev") cmd_first_option="dev" ;;
 "i") cmd_first_option="info" ;;
 "n") cmd_first_option="narrowtxt" ;;
 "t") cmd_first_option="txt" ;;
@@ -1046,6 +1053,7 @@ case "$cmd_first_option" in
 "l") cmd_first_option="log" ;;
 "s") cmd_first_option="silent" ;;
 "p") cmd_first_option="pdf" ;;
+"d") cmd_first_option="dev" ;;
 "-i") cmd_first_option="info" ;;
 "-n") cmd_first_option="narrowtxt" ;;
 "-t") cmd_first_option="txt" ;;
@@ -1054,6 +1062,7 @@ case "$cmd_first_option" in
 "-l") cmd_first_option="log" ;;
 "-s") cmd_first_option="silent" ;;
 "-p") cmd_first_option="pdf" ;;
+"-d") cmd_first_option="dev" ;;
 esac
 ####
 ####
@@ -1444,15 +1453,17 @@ exit ; fi
 #### :rutina-inicial-alias-dev:
 ####
 ####
-if [ "$cmd_first_option" == "dev" ]
+if [ "$cmd_first_option" == "dev" ]; then
 ####
 ####
-then cmd_variables_launch="yes"
-echo "Silent, and the Variables, work in progress.."
-$cmd_internal "$cmd_second_option" "$cmd_third_option" "$cmd_quad_option" &> /dev/null
+cfg_config_show_variables="yes"
+cmd_first_option="$cmd_second_option"
+cmd_second_option="$cmd_third_option"
+cmd_quad_option="$cmd_quad_option"
+echo "Save Variables, work in progress.."
 ####
 ####
-exit ; fi
+fi
 ####
 ####
 #### :rutina-final-alias-silent:
@@ -1485,6 +1496,12 @@ if [ "$cmd_first_option" == "tree-log" ] ; then
 $cmd_command_tree $cmd_default_directory_baselogs
 echo 
 echo "### ### [ folder: ] [ $cmd_default_directory_baselogs ]"
+####
+####
+if [ "$cfg_config_show_variables"="yes" ]; then
+$cmd_internal variables &> $cmd_file_output_var
+echo "$txt_text_title_file [$cmd_file_output_var]"
+fi
 ####
 ####
 exit; fi
