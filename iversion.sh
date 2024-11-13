@@ -96,7 +96,7 @@ fi
 #### The number version firewall
 cmd_year="24"                                                 # Number year version
 cmd_month="11"                                                # Number mouth version
-cmd_letter="G-dev"                                            # Number letter version
+cmd_letter="G"                                                # Number letter version
 cmd_version="$cmd_year-$cmd_month-$cmd_letter"                # Final date version
 cmd_released="Year 20$cmd_year / Month $cmd_month"            # Source date version
 #### The data version firewall
@@ -125,7 +125,6 @@ cmd_usernotes_date="$cmd_get_date"                            # format usernotes
 cmd_cache_date="CACHE_$cmd_get_date-_OPT_"                    # format cache date
 cmd_log_date="LOG_$cmd_get_date-_OPT_"                        # format opt date
 cmd_pdf_date="PDF_$cmd_get_date-_OPT_"                        # format opt date
-cmd_var_date="DEV_$cmd_get_date-_OPT_"                        # format opt var
 #### usual options
 cmd_zero_dir="$(pwd)"                                         # directory actual
 cmd_zero_option="$cmd_internal"                               # default option
@@ -306,8 +305,6 @@ cmd_command_wc="$($cmd_where wc)"
 #### :rutina-inicial-variables-system:
 ####
 ####
-####
-####
 cfg_allow_close_log="no"      
 cfg_allow_dmz_ip4="no"    
 cfg_allow_dmz_ip6="no"    
@@ -382,7 +379,6 @@ cfg_config_shield_maxtries="10"
 cfg_config_shield_maxtries="12"     
 cfg_config_shield_port="22"
 cfg_config_shield_port="22" 
-cfg_config_show_variables="no"
 cfg_config_show_time="### date $($cmd_command_date)"
 cfg_config_string_algoritmo="kpm"
 cfg_config_string_allowed="one-string-that-like-how-a-passord,sourceforge.net"  
@@ -424,18 +420,13 @@ txt_text_file="< file >"
 txt_text_done="< done >"
 txt_text_folder="<folder>"
 txt_text_md_md="$txt_text_md $txt_text_md"
-txt_text_md_ok="$txt_text_md $txt_text_ok"
-txt_text_md_info="$txt_text_md $txt_text_info"
-txt_text_md_done="$txt_text_md $txt_text_done"
-txt_text_md_folder="$txt_text_md $txt_text_folder"
-txt_text_md_file="$txt_text_md $txt_text_file"
-txt_text_md_fail="$txt_text_md $txt_text_fail"
 txt_text_title_md="$txt_text_title $txt_text_md"
 txt_text_title_ok="$txt_text_title $txt_text_ok"
 txt_text_title_info="$txt_text_title $txt_text_info"
 txt_text_title_fail="$txt_text_title $txt_text_fail"
-txt_text_title_file="$txt_text_title $txt_text_file"
-txt_text_title_done="$txt_text_title $txt_text_done"
+txt_text_title_done="$text_text_title $txt_text_done"
+txt_text_tile_file="$txt_text_title $txt_text_file"
+txt_text_tile_done="$txt_text_title $txt_text_done"
 txt_text_title_folder="$txt_text_title $txt_text_folder"
 txt_text_ok_md="$txt_text_ok $txt_text_md"
 txt_text_title_md="$txt_txt_title $txt_text_md"
@@ -553,10 +544,9 @@ cmd_default_directory_preferences="$cmd_default_directory_necesary/fwiptables-pr
 cmd_default_directory_baselogcmd="$cmd_default_directory_necesary/fwiptables-logcmd"
 cmd_default_directory_baselogs="$cmd_default_directory_necesary/fwiptables-log"
 cmd_default_directory_basepdf="$cmd_default_directory_necesary/fwiptables-pdf"
-cmd_default_directory_var="$cmd_default_directory_necesary/fwiptables-var/$cmd_var_date"
-cmd_default_directory_logs="$cmd_default_directory_necesary/fwiptables-log/$cmd_log_date"
-cmd_default_directory_pdf="$cmd_default_directory_necesary/fwiptables-pdf/$cmd_pdf_date"
-cmd_default_directory_logcmd="$cmd_default_directory_necesary/fwiptables-logcmd/$cmd_logcmd_date"
+cmd_default_directory_logs="$cmd_default_directory_necesary/fwiptables-log/$cmd_archive_date"
+cmd_default_directory_pdf="$cmd_default_directory_necesary/fwiptables-pdf/$cmd_archive_date"
+cmd_default_directory_logcmd="$cmd_default_directory_necesary/fwiptables-logcmd/$cmd_archive_date"
 cmd_default_directory_wpa="$cmd_default_directory_necesary/fwiptables-wpa"
 cmd_default_directory_benchmarkram="$cmd_default_directory_necesary/fwiptables-benchmarkram"
 cmd_default_directory_benchmarkdisk="$cmd_default_directory_necesary/fwiptables-benchmarkdisk"
@@ -575,29 +565,21 @@ cmd_default_directory_readme="$cmd_default_directory_necesary/fwiptables-readme"
 ####
 ####
 #### sane cache root
-####
-####
 if [ ! -d "$cmd_default_cache_necesary" ]; then
 $cmd_command_mkdir -p $cmd_default_cache_necesary &> /dev/null ; fi
 ####
 ####
 #### sane data root
-####
-####
 if [ ! -d "$default_cmd_default_directory_necesary" ]; then
 $cmd_command_mkdir -p $default_cmd_default_directory_necesary &> /dev/null ; fi
 ####
 ####
 #### sane default log
-####
-####
 if [ ! -f "$cmd_file_default_logcmd" ]
 then touch $cmd_file_default_logcmd &> /dev/null  ; fi
 ####
 ####
 #### sane data tree
-####
-####
 if [ ! -d "$cmd_default_directory_control" ]; then 
 $cmd_command_mkdir -p "$cmd_default_directory_control" &> /dev/null ; fi
 if [ ! -d "$cmd_default_directory_template" ]; then
@@ -614,8 +596,6 @@ if [ ! -d "$cmd_default_directory_wpa" ]; then
 $cmd_command_mkdir -p "$cmd_default_directory_wpa" &> /dev/null ; fi
 if [ ! -d "$cmd_default_directory_pdf" ]; then
 $cmd_command_mkdir -p "$cmd_default_directory_pdf" &> /dev/null ; fi
-if [ ! -d "$cmd_default_directory_var" ]; then
-$cmd_command_mkdir -p "$cmd_default_directory_var" &> /dev/null ; fi
 if [ ! -d "$cmd_default_directory_benchmarkram" ]; then
 $cmd_command_mkdir -p "$cmd_default_directory_benchmarkram" &> /dev/null ; fi
 if [ ! -d "$cmd_default_directory_benchmarkdisk" ]; then
@@ -672,8 +652,6 @@ cmd_file_output_log=\
 "$cmd_default_directory_logs/$cmd_log_date-$cmd_guided_full.log"
 cmd_file_output_cache=\
 "$cmd_default_cache_necesary/$cmd_cache_date-$cmd_guided_full.txt"
-cmd_file_output_var=\
-"$cmd_default_directory_var/$cmd_var_date-$cmd_guided_full.txt"
 ####
 ####
 #### config file adblock
@@ -769,15 +747,6 @@ exit ;; esac ; fi
 ####
 ####
 #### :rutina-final-variables-updated:
-
-
-
-
-
-
-
-
-
 ##########      english: search favorite iperf: favorite iperf command        ##########
 ##########      spanish: busca preferida fecha: favorita comando de iperf     ##########
 #### :rutina-inicial-favorite-iperf:
@@ -977,133 +946,6 @@ fi
 ####
 ####
 #### :rutina-final-favorite-music:
-##########    ALIAS CONFIG
-##########    ALIAS CONFIG
-#### :rutina-inicial-drop-warning:
-####
-####
-#### supress error messages
-case $cmd_first_option in 
-"ls4") $cmd_internal list4   &> $cmd_file_output_cache
-$cmd_command_cat $cmd_file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
-"ls6") $cmd_internal list6   &> $cmd_file_output_cache
-$cmd_command_cat $cmd_file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
-"lsn4") $cmd_internal listn4 &> $cmd_file_output_cache
-$cmd_command_cat $cmd_file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
-"lsn6") $cmd_internal listn6 &> $cmd_file_output_cache
-$cmd_command_cat $cmd_file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
-esac ;
-####
-####
-#### supress error messages
-if [ "$cmd_first_option" == "dev" ]; then
-case $cmd_second_option in 
-"ls4") $cmd_internal dev list4   &> $cmd_file_output_cache
-$cmd_command_cat $cmd_file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
-"ls6") $cmd_internal dev list6   &> $cmd_file_output_cache
-$cmd_command_cat $cmd_file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
-"lsn4") $cmd_internal dev listn4 &> $cmd_file_output_cache
-$cmd_command_cat $cmd_file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
-"lsn6") $cmd_internal dev listn6 &> $cmd_file_output_cache
-$cmd_command_cat $cmd_file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
-esac ; fi
-####
-####
-#### :rutina-final-drop-warning:
-##########    ALIAS ESQUIVE CONFIG
-##########    ALIAS ESQUIVE CONFIG
-#### :rutina-inicial-alias-esquive:
-####
-####
-#### english:  alias esquive templates
-####
-####
-case "$cmd_first_option" in
-"wizard-full"|"wizard-mini"|"new-mini-custom"|"wizard-tiny"|\
-"new-full-custom"|"new-tiny-custom"|"new-mini-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom") 
-$cmd_internal templates-regen &> /dev/null ;; esac
-####
-####
-case "$cmd_second_option" in
-"wizard-full"|"wizard-mini"|"new-mini-custom"|"wizard-tiny"|\
-"new-full-custom"|"new-tiny-custom"|"new-mini-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom") 
-$cmd_internal templates-regen &> /dev/null ;; esac
-####
-####
-if [ "$cmd_first_option" == "txt" ]; then 
-case "$cmd_second_option" in
-expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
-"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
-"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
-"modify-custom") $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option ;
-exit ;; esac ; fi
-####
-####
-if [ "$cmd_first_option" == "narrowtxt" ]; then 
-case "$cmd_second_option" in
-expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
-"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
-"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
-"modify-custom") $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option ;
-exit ;; esac ; fi
-####
-####
-if [ "$cmd_first_option" == "cli" ]; then 
-case "$cmd_second_option" in
-expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
-"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
-"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
-"modify-custom") $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option ;
-exit ;; esac ; fi
-####
-####
-if [ "$cmd_first_option" == "gui" ]; then 
-case "$cmd_second_option" in
-expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
-esac ; fi
-####
-####
-if [ "$cmd_first_option" == "log" ]; then 
-case "$cmd_second_option" in
-expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
-"$NULL"|"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
-"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
-"modify-custom")
-echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in log optional-output." ;
-exit ;; esac ; fi
-####
-####
-if [ "$cmd_first_option" == "pdf" ]; then 
-case "$cmd_second_option" in
-expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
-"$NULL"|"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
-"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
-"modify-custom") 
-echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in pdf optional-output." ;
-exit ;; esac ; fi
-####
-####
-if [ "$cmd_first_option" == "silent" ]; then 
-case "$cmd_second_option" in
-expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
-"$NULL"|"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
-"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
-"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
-"modify-custom")
-echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in silent optional-output." ;
-exit ;; esac ; fi
-####
-####
-#### :rutina-final-alias-esquive:
-
-
 ##########    english: ALIAS  simple y firewall y campus       ##########
 ##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
 #### :rutina-inicial-alias-system-list:
@@ -1183,8 +1025,6 @@ case "$cmd_first_option" in
 "--silent") cmd_first_option="silent" ;;
 "-pdf") cmd_first_option="pdf" ;;
 "--pdf") cmd_first_option="pdf" ;;
-"-dev") cmd_first_option="dev" ;;
-"--dev") cmd_first_option="dev" ;;
 "i") cmd_first_option="info" ;;
 "n") cmd_first_option="narrowtxt" ;;
 "t") cmd_first_option="txt" ;;
@@ -1193,7 +1033,6 @@ case "$cmd_first_option" in
 "l") cmd_first_option="log" ;;
 "s") cmd_first_option="silent" ;;
 "p") cmd_first_option="pdf" ;;
-"d") cmd_first_option="dev" ;;
 "-i") cmd_first_option="info" ;;
 "-n") cmd_first_option="narrowtxt" ;;
 "-t") cmd_first_option="txt" ;;
@@ -1202,7 +1041,6 @@ case "$cmd_first_option" in
 "-l") cmd_first_option="log" ;;
 "-s") cmd_first_option="silent" ;;
 "-p") cmd_first_option="pdf" ;;
-"-d") cmd_first_option="dev" ;;
 esac
 ####
 ####
@@ -1334,6 +1172,117 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ####
 ####
 #### :rutina-final-alias-system-interface:
+##########    ALIAS CONFIG
+##########    ALIAS CONFIG
+#### :rutina-inicial-drop-warning:
+####
+####
+#### supress error messages
+case $cmd_first_option in 
+"ls4") $cmd_internal list4   &> $cmd_file_output_cache
+$cmd_command_cat $cmd_file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
+"ls6") $cmd_internal list6   &> $cmd_file_output_cache
+$cmd_command_cat $cmd_file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
+"lsn4") $cmd_internal listn4 &> $cmd_file_output_cache
+$cmd_command_cat $cmd_file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
+"lsn6") $cmd_internal listn6 &> $cmd_file_output_cache
+$cmd_command_cat $cmd_file_output_cache | $cmd_command_grep -E -v Warning: ; exit ;;
+esac ; 
+####
+####
+#### :rutina-final-drop-warning:
+##########    ALIAS ESQUIVE CONFIG
+##########    ALIAS ESQUIVE CONFIG
+#### :rutina-inicial-alias-esquive:
+####
+####
+#### english:  alias esquive templates
+####
+####
+case "$cmd_first_option" in
+"wizard-full"|"wizard-mini"|"new-mini-custom"|"wizard-tiny"|\
+"new-full-custom"|"new-tiny-custom"|"new-mini-custom"|"nueva-diminuta-custom"|\
+"nueva-mini-custom"|"nueva-completa-custom") 
+$cmd_internal templates-regen &> /dev/null ;; esac
+####
+####
+case "$cmd_second_option" in
+"wizard-full"|"wizard-mini"|"new-mini-custom"|"wizard-tiny"|\
+"new-full-custom"|"new-tiny-custom"|"new-mini-custom"|"nueva-diminuta-custom"|\
+"nueva-mini-custom"|"nueva-completa-custom") 
+$cmd_internal templates-regen &> /dev/null ;; esac
+####
+####
+if [ "$cmd_first_option" == "txt" ]; then 
+case "$cmd_second_option" in
+expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
+"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
+"modify-custom") $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option ;
+exit ;; esac ; fi
+####
+####
+if [ "$cmd_first_option" == "narrowtxt" ]; then 
+case "$cmd_second_option" in
+expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
+"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
+"modify-custom") $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option ;
+exit ;; esac ; fi
+####
+####
+if [ "$cmd_first_option" == "cli" ]; then 
+case "$cmd_second_option" in
+expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
+"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
+"modify-custom") $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option ;
+exit ;; esac ; fi
+####
+####
+if [ "$cmd_first_option" == "gui" ]; then 
+case "$cmd_second_option" in
+expert-*) echo "the commands expert works only wihtout optional-output." ; exit ;;
+esac ; fi
+####
+####
+if [ "$cmd_first_option" == "log" ]; then 
+case "$cmd_second_option" in
+expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
+"$NULL"|"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
+"modify-custom")
+echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in log optional-output." ;
+exit ;; esac ; fi
+####
+####
+if [ "$cmd_first_option" == "pdf" ]; then 
+case "$cmd_second_option" in
+expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
+"$NULL"|"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
+"modify-custom") 
+echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in pdf optional-output." ;
+exit ;; esac ; fi
+####
+####
+if [ "$cmd_first_option" == "silent" ]; then 
+case "$cmd_second_option" in
+expert-*) echo "the commands expert works only wihtout optional output." ; exit ;;
+"$NULL"|"wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
+"wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
+"nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
+"modify-custom")
+echo "the commands NULL|new*|nueva*|modify*|wizard* works does not work in silent optional-output." ;
+exit ;; esac ; fi
+####
+####
+#### :rutina-final-alias-esquive:
 ##########    ALIAS CONFIG NARROW
 ##########    ALIAS CONFIG NARROW
 #### :rutina-inicial-alias-narrowtxt:
@@ -1477,24 +1426,6 @@ exit ; fi
 ####
 ####
 #### :rutina-final-alias-silent:
-##########    ALIAS CONFIG DEV
-##########    ALIAS CONFIG DEV
-#### :rutina-inicial-alias-dev:
-####
-####
-if [ "$cmd_first_option" == "dev" ]; then
-####
-####
-cfg_config_show_variables="yes"
-cmd_first_option="$cmd_second_option"
-cmd_second_option="$cmd_third_option"
-cmd_quad_option="$cmd_quad_option"
-####
-####
-fi
-####
-####
-#### :rutina-final-alias-silent:
 ##########     english: allow-logcmd:       ##########
 ##########     spanish: autoguardado        ##########
 #### :rutina-inicial-allow-logcmd:
@@ -1526,12 +1457,6 @@ echo
 echo "### ### [ folder: ] [ $cmd_default_directory_baselogs ]"
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
 exit; fi
 ####
 ####
@@ -1547,12 +1472,6 @@ if [ "$cmd_first_option" == "tree-pdf" ] ; then
 $cmd_command_tree $cmd_default_directory_basepdf
 echo 
 echo "### ### [ folder: ] [ $cmd_default_directory_basepdf ]"
-####
-####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
 ####
 ####
 exit; fi
@@ -1575,12 +1494,6 @@ $cmd_command_cat   "$cmd_file_default_logcmd" | tail -50
 echo
 echo "$txt_text_title_info latest 50 lines from this file"
 echo "$txt_text_title_info [$cmd_file_default_logcmd]"
-####
-####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
 ####
 ####
 exit; fi
@@ -1612,12 +1525,6 @@ echo "$txt_text_md folder: $cmd_default_directory_logs"
 cfg_conteo="$($cmd_command_ls -1 $cmd_default_directory_pdf | $cmd_command_wc -l)"
 echo "$txt_text_md $cfg_conteo Commands output. Command log with output pdf"
 echo "$txt_text_md folder: $cmd_default_directory_pdf"
-####
-####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
 ####
 ####
 exit; fi
@@ -1664,13 +1571,7 @@ echo "$txt_text_md_md        Email Report: $cmd_contact              $txt_text_m
 echo "$txt_text_md_md     License Program: $cmd_license              $txt_text_md"
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
-exit; fi
+exit ; fi
 ####
 ####
 #### :rutina-final-version:
@@ -1686,12 +1587,6 @@ echo "$txt_text_title_info [ show cpu frequence info ]"
 if [ "$cmd_command_cpufreqinfo" == "$NULL" ]; then
 echo "$txt_text_title please install cpufreq-info"; fi
 $cmd_command_cpufreqinfo
-####
-####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
 ####
 ####
 exit; fi
@@ -1710,12 +1605,6 @@ echo "$txt_text_title_info [ show cpu frequence info ]"
 if [ "$cmd_command_cpupower" == "$NULL" ]; then
 echo "$txt_text_title please install cpupower"; fi
 $cmd_command_cpupower -c all frequency-info
-####
-####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
 ####
 ####
 exit; fi
@@ -1742,12 +1631,6 @@ echo "$txt_text_ok in-file-saved: $2.tar from-folder-saved: $cmd_default_directo
 echo "$txt_text_fail bad"
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
 exit; fi
 ####
 ####
@@ -1772,12 +1655,6 @@ echo "$txt_text_ok from-file-loaded: $2 in-folder-loaded: $cmd_default_directory
 echo "$txt_text_fail bad"
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
 exit; fi
 ####
 ####
@@ -1796,12 +1673,6 @@ echo "$txt_text_title_info [ Please, Install iw to work ]" ; exit ; fi
 for a in $($cmd_command_cat  /proc/net/dev | $cmd_command_grep -i  : | cut -d ":" -f 1)
 do $cmd_command_ifconfig $a up
 $cmd_command_iw $a scan | $cmd_command_grep -E -i "on $a|ssid" ; done
-####
-####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
 ####
 ####
 exit; fi
@@ -1846,12 +1717,6 @@ cp $cmd_default_directory_wpa/defaultwpa $cmd_default_directory_wpa/wpaconfig_$c
 editor $cmd_default_directory_wpa/wpaconfig_$cmd_second_option
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
 exit; fi
 ####
 ####
@@ -1888,12 +1753,6 @@ echo "$txt_text_title_fail use: $cmd_first_option nameconfig"; exit ; fi
 ####
 ####
 editor $cmd_default_directory_wpa/wpaconfig_$cmd_second_option
-####
-####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
 ####
 ####
 exit; fi
@@ -1934,12 +1793,6 @@ $cmd_command_cat  "$cmd_default_directory_wpa/wpaconnect_$cmd_second_option"
 else echo "$txt_text_title_fail use: $cmd_first_option nameconfig"; exit ; fi
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
 exit; fi
 ####
 ####
@@ -1977,12 +1830,6 @@ then echo "$txt_text_title_fail $wifi_wpa_dhcp not found"; exit; fi
 else echo "$txt_text_title_fail use: $cmd_first_option nameconfig"; exit ; fi
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
 exit; fi
 ####
 ####
@@ -2000,12 +1847,6 @@ then echo "$txt_text_title_fail Install wpa_passphrase"; fi
 if [ "$cmd_command_wpasupplicant" == "$NULL" ]
 then echo "$txt_text_title_fail Install wpa_passphrase"; fi
 $cmd_internal expert-wpa-example &> $cmd_default_directory_wpa/defaultwpa
-####
-####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
 ####
 ####
 exit; fi
@@ -2035,12 +1876,6 @@ echo "wifi_wpa_ip="
 echo "$txt_text_title wifi ip static:  if choose one static ip for this net"
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
 exit; fi
 ####
 ####
@@ -2057,13 +1892,7 @@ $cmd_internal alias-example | \
 grep -iv " alias-example" &> $cmd_file_default_alias
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
-exit; fi
+exit ; fi
 ####
 ####
 #### :rutina-final-alias-regen:
@@ -2078,7 +1907,7 @@ if [ "$cmd_first_option" == "alias" ] || [ "$cmd_first_option" == "alias-read" ]
 $cmd_command_cat $cmd_file_default_alias
 ####
 ####
-exit; fi
+exit ; fi
 ####
 ####
 #### :rutina-final-alias-read:
@@ -2118,13 +1947,7 @@ echo "#ram=free"
 echo "#nodes=info-nodes"
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
-exit; fi
+exit ; fi
 ####
 ####
 #### :rutina-final-alias-example:
@@ -2137,12 +1960,6 @@ if [ "$cmd_first_option" == "alias-edit" ]; then
 ####
 ####
 $cfg_favorite_text_editor $cmd_file_default_alias
-####
-####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
 ####
 ####
 exit; fi
@@ -2160,12 +1977,6 @@ if [ "$cmd_first_option" == "preferences-edit" ]; then
 $cfg_favorite_text_editor $cmd_file_default_preferences
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
 exit; fi
 ####
 ####
@@ -2179,12 +1990,6 @@ if [ "$cmd_first_option" == "preferences-read" ]; then
 ####
 ####
 $cmd_command_cat  $cmd_file_default_preferences
-####
-####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
 ####
 ####
 exit; fi
@@ -2201,12 +2006,6 @@ if [ "$cmd_first_option" == "preferences-regen" ] ; then
 ####
 $cmd_internal preferences-example | \
 grep -iv " preferences-example " &> $cmd_file_default_preferences
-####
-####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
 ####
 ####
 exit; fi
@@ -2283,13 +2082,7 @@ echo "cfg_config_graphicall_width=800                     ## default width 800"
 echo "cfg_config_graphicall_height=600                    ## default height 600"
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
-exit; fi
+exit ; fi
 ####
 ####
 #### :rutina-final-preferences-example:
@@ -2315,12 +2108,6 @@ if [ -d /etc/resolvconf ]
 then echo "$txt_text_md_md Directory: /etc/resolvconf" ; fi
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
 exit; fi
 ####
 ####
@@ -2335,12 +2122,6 @@ if [ "$cmd_first_option" == "route" ]; then
 ####
 $cmd_internal route4
 $cmd_internal route6
-####
-####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
 ####
 ####
 exit; fi
@@ -2395,13 +2176,7 @@ $cmd_internal ip4
 $cmd_internal ip6
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
-exit; fi
+exit ; fi
 ####
 ####
 #### :rutina-final-ip:
@@ -2417,13 +2192,7 @@ $cmd_internal info-ip4
 $cmd_internal info-ip6
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
-exit; fi
+exit ; fi
 ####
 ####
 #### :rutina-final-address:
@@ -2496,12 +2265,6 @@ if [ "$cmd_command_awk" == "$NULL" ]; then
 echo "$txt_text_title_fail [ Install awk command ]"; exit; fi
 $cmd_command_ss -l -460  | $cmd_command_grep "\:\*" | \
 $cmd_command_awk '{print "     " $1 " " $2 " " $5}'
-####
-####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
 ####
 ####
 exit; fi
@@ -2585,15 +2348,9 @@ echo
 if [ -f "$cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option" ]
 then $cmd_command_cat  \
 "$cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option" ; fi
-####
-####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
-exit; fi
+###
+###
+exit ; fi
 ####
 ####
 #### :rutina-final-expert-confclientproxy
@@ -2628,13 +2385,7 @@ if [ -f "$cmd_default_directory_proxy/$cmd_second_option" ] ; then
 echo ; $cmd_command_cat  "$cmd_default_directory_proxy/$cmd_second_option" ; exit ; fi
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
-exit; fi
+exit ; fi
 ####
 ####
 #### :rutina-final-expert-showclientproxy
@@ -2661,13 +2412,7 @@ echo "$txt_text_title there is after "
 declare -x | grep -i \_PROXY
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
-exit; fi
+exit ; fi
 ####
 ####
 #### :rutina-final-expert-activeclientproxy
@@ -2697,13 +2442,7 @@ echo "$txt_text_title there is after "
 declare -x | grep -i \_PROXY
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
-exit; fi
+exit ; fi
 ####
 ####
 #### :rutina-final-expert-deactiveclientproxy
@@ -2727,12 +2466,6 @@ if [ -f /etc/resolv.conf.tail ]
 then echo "$txt_text_title [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
 if [ -d /etc/resolvconf ]
 then echo "$txt_text_title [ yes directory ] [ /etc/resolvconf ]"      ; fi
-####
-####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
 ####
 ####
 exit; fi
@@ -2759,12 +2492,6 @@ $cmd_command_tracepath -4 $2
 $cmd_internal load before-trace-tcp4
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
 exit; fi
 ####
 ####
@@ -2787,12 +2514,6 @@ $cmd_internal eraserules6
 echo "$duo_md $txt_text_ok [ tracepath -6 $2 ] "
 $cmd_command_tracepath -6 $2
 $cmd_internal load before-trace-ip6
-####
-####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
 ####
 ####
 exit; fi
@@ -2819,12 +2540,6 @@ $cmd_command_traceroute -4 $2
 $cmd_internal load before-trace-icmp4
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
 exit; fi
 ####
 ####
@@ -2849,12 +2564,6 @@ $cmd_command_traceroute -6 $2
 $cmd_internal load before-trace-icmp6
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
 exit; fi
 ####
 ####
@@ -2876,12 +2585,6 @@ cp $cmd_default_directory_radio/myradio-bash /usr/bin/myradio-bash && \
 echo "$txt_text_title installed myradio-bash in /usr/bin/myradio-bash"
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
 exit; fi
 ####
 ####
@@ -2901,13 +2604,7 @@ $cmd_command_sed 's/cmd_command_/ /g' )"
 echo $list_utils_possible
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
-exit; fi
+exit ; fi
 ####
 ####
 #### :rutina-final-utils:
@@ -2971,12 +2668,6 @@ echo "$txt_text_md_md file command:            $cmd_command_file $txt_text_md"
 echo "$txt_text_md_md  sed command:            $cmd_command_sed $txt_text_md"
 echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_md_md Found all posible utils: fwiptables utils $txt_text_md"
-####
-####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
 ####
 ####
 exit; fi
@@ -3075,12 +2766,6 @@ echo "$txt_text_md_md  All options in window shell             "
 echo "$txt_text_md_md  $cmd_internal gui-shell-yad       $txt_text_md"
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
 exit; fi
 ####
 ####
@@ -3096,12 +2781,6 @@ if   [ "$cmd_first_option" == "expert-show-weather" ]; then
 case $cmd_command_curl in "$NULL") 
 echo "$txt_text_title_fail [ Install a curl ]"; exit ;; esac
 $cmd_command_curl -s wttr.in/?3n?T
-####
-####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
 ####
 ####
 exit; fi
@@ -3123,12 +2802,6 @@ echo "$txt_text_title_fail please install tree command" ; exit ; fi
 $cmd_command_tree $cmd_default_directory_necesary
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
 exit; fi
 ####
 ####
@@ -3148,12 +2821,6 @@ echo "$txt_text_title_fail please install tree command" ; exit ; fi
 $cmd_command_tree $cmd_default_cache_basenecesary
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
 exit; fi
 ####
 ####
@@ -3168,12 +2835,6 @@ if   [ "$cmd_first_option" == "clean-cache" ]; then
 ####
 echo "$txt_text_title_ok clean cache: $cmd_default_cache_basenecesary"
 rm -R $cmd_default_cache_basenecesary/* &> /dev/null
-####
-####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
 ####
 ####
 exit; fi
@@ -3214,13 +2875,10 @@ echo "$txt_text_md          ipv6-icmp: Necesary protocol in ipv6 $txt_text_md"
 echo "$txt_text_md         ipv4 ports: ipv6 works too with old ipv4 ports $txt_text_md"
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
 exit; fi
+####
+####
+#### :rutina-final-notes:
 ##########   english: templates-regen: templates-regen template wizard files       ##########
 ##########   spanish: templates-regen: templates-regenera template wizard archivos ##########
 #### :rutina-inicial-templates-regen:
@@ -3869,7 +3527,7 @@ if [ "$cmd_first_option" == "options" ]; then
 ####
 echo "$txt_text_md $cmd_internal [optional-output] first_option [second_option] $txt_text_md"
 echo "$txt_text_title    <optional-output> $txt_text_md"
-echo "$txt_text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info d|dev ] $txt_text_md"
+echo "$txt_text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ] $txt_text_md"
 echo "$txt_text_md [ cli-dialog cli-whiptail cli-menu cli-menu-compact ] $txt_text_md"
 echo "$txt_text_md [ cli-menu-dialog cli-menu-compact-dialog  ] $txt_text_md"
 echo "$txt_text_md [ cli-menu-whiptail cli-menu-compact-whiptail ] $txt_text_md"
@@ -3923,13 +3581,7 @@ $cmd_name $cmd_version with expert actived $txt_text_md"
 fi
 ####
 ####
-if [ "$cfg_config_show_variables" == "yes" ]; then
-$cmd_internal variables &> $cmd_file_output_var
-echo "$txt_text_title_file [$cmd_file_output_var]"
-fi
-####
-####
-exit; fi
+exit ; fi
 ####
 ####
 #### :rutina-final-options:
@@ -6000,41 +5652,40 @@ echo "$txt_text_title Waiting several seconds, while create new configuration"
 ####  copy
 cp $cmd_notinstalled $cmd_installed && 
 chmod 755 $cmd_installed &> /dev/null &&
-echo "$txt_text_md_ok Installed $cmd_name $txt_text_md_file [$cmd_installed] \
-<version>  [$cmd_version]" ||
-echo "$txt_text_md_fail Not installed"
+echo "$txt_text_md $txt_text_ok Installed $cmd_name $txt_text_md $txt_text_file [$cmd_installed]" ||
+echo "$txt_text_md $txt_text_fail Not installed"
 ####
 ####
 #### preferences-regen
 $cmd_notinstalled preferences-regen &> /dev/null &&
-echo "$txt_text_md_ok Updated preferences $txt_text_file" &&
+echo "$txt_text_md $txt_text_ok Updated preferences $txt_text_file" &&
 echo "$txt_text_md [$cmd_file_default_preferences]" ||
-echo "$txt_text_md_fail Not update preferences"
+echo "$txt_text_md $txt_text_fail Not update preferences"
 ####
 ####
 #### alias-regen
 $cmd_notinstalled alias-regen &> /dev/null &&
-echo "$txt_text_md_ok Updated alias $txt_text_file" &&
+echo "$txt_text_md $txt_text_ok Updated alias $txt_text_file" &&
 echo "$txt_text_md [$cmd_file_default_alias]" ||
-echo "$txt_text_md_fail Not update alias"
+echo "$txt_text_md $txt_text_fail Not update alias"
 ####
 ####
 #### templates-regen
 $cmd_notinstalled templates-regen &> /dev/null &&
-echo "$txt_text_md_ok Updated templates $txt_text_folder" &&
+echo "$txt_text_md $txt_text_ok Updated templates $txt_text_folder" &&
 echo "$txt_text_md [$cmd_default_directory_template]" || 
-echo "$txt_text_md_fail Not update templates"
+echo "$txt_text_md $txt_text_fail Not update templates"
 ####
 ####
 #### fonts
-echo "$txt_text_md_info Source install: $cmd_notinstalled"
-echo "$txt_text_md_info Final  install: $cmd_installed"
+echo "$txt_text_md $txt_text_info Source install: $cmd_notinstalled"
+echo "$txt_text_md $txt_text_info Final  install: $cmd_installed"
 ####
 ####
 #### comprobe
 if [ -f "$cmd_installed" ]
-then echo "$txt_text_md_ok Installed $cmd_name"
-else echo "$txt_text_md_fail Not installed $cmd_name"
+then echo "$txt_text_md $txt_text_ok Installed $cmd_name"
+else echo "$txt_text_md $txt_text_fail Not installed $cmd_name"
 fi
 #### 
 ####
@@ -7212,7 +6863,7 @@ echo "$txt_text_title [ Working ] Conecting in ipv4 to $cfg_server_ip_iperf_ipv4
 $cfg_favorite_iperf_command -4 -t 4 -c $cfg_server_ip_iperf_ipv4 -p $cfg_server_port_iperf_ipv4
 echo "$txt_text_title"
 echo "$txt_text_title [ Working ] [ Restoring firewall ]"
-$cmd_internal load before-speed-ip4
+$cmd_internal load before-speed-ip4 
 echo "$txt_text_title_done $cmd_internal speed-ip4"
 ####
 ####
