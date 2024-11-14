@@ -7972,8 +7972,8 @@ exit ; fi
 ##########
 ##########
 if [ "$2" != "$NULL" ]; then
-cfg_favorite_basename_textdialog="$(basename) $2"
-cfg_favorite_realpath_textdialog="$(realpath) $2"
+cfg_favorite_basename_textdialog="$(basename $2)"
+cfg_favorite_realpath_textdialog="$(realpath $2)"
 fi
 ##########
 ##########
@@ -8026,8 +8026,8 @@ exit ; fi
 ##########
 ##########
 if [ "$2" != "$NULL" ]; then
-cfg_favorite_basename_textdialog="$(basename) $2"
-cfg_favorite_realpath_textdialog="$(realpath) $2"
+cfg_favorite_basename_textdialog="$(basename $2)"
+cfg_favorite_realpath_textdialog="$(realpath $2)"
 fi
 ##########
 ##########
@@ -8105,8 +8105,8 @@ exit ; fi
 ##########
 ##########
 if [ "$2" != "$NULL" ]; then
-cfg_favorite_basename_textdialog="$(basename) $2"
-cfg_favorite_realpath_textdialog="$(realpath) $2"
+cfg_favorite_basename_textdialog="$(basename $2)"
+cfg_favorite_realpath_textdialog="$(realpath $2)"
 fi
 ##########
 ##########
@@ -8184,8 +8184,8 @@ exit ; fi
 ##########
 ##########
 if [ "$2" != "$NULL" ]; then
-cfg_favorite_basename_textdialog="$(basename) $2"
-cfg_favorite_realpath_textdialog="$(realpath) $2"
+cfg_favorite_basename_textdialog="$(basename $2)"
+cfg_favorite_realpath_textdialog="$(realpath $2)"
 fi
 ##########
 ##########
@@ -8274,8 +8274,8 @@ exit ; fi
 ##########
 ##########
 if [ "$2" != "$NULL" ]; then
-cfg_favorite_basename_textdialog="$(basename) $2"
-cfg_favorite_realpath_textdialog="$(realpath) $2"
+cfg_favorite_basename_textdialog="$(basename $2)"
+cfg_favorite_realpath_textdialog="$(realpath $2)"
 fi
 ##########
 ##########
@@ -8378,8 +8378,8 @@ if [ "$cmd_first_option" == "cli-menu-wallcustom" ]; then
 ##########
 ##########
 if [ "$2" != "$NULL" ]; then
-cfg_favorite_basename_textdialog="$(basename) $2"
-cfg_favorite_realpath_textdialog="$(realpath) $2"
+cfg_favorite_basename_textdialog="$(basename $2)"
+cfg_favorite_realpath_textdialog="$(realpath $2)"
 fi
 ##########
 ##########
@@ -8474,8 +8474,8 @@ exit ; fi
 ##########
 ##########
 if [ "$2" != "$NULL" ]; then
-cfg_favorite_basename_textdialog="$(basename) $2"
-cfg_favorite_realpath_textdialog="$(realpath) $2"
+cfg_favorite_basename_textdialog="$(basename $2)"
+cfg_favorite_realpath_textdialog="$(realpath $2)"
 fi
 ##########
 ##########
@@ -8601,8 +8601,8 @@ exit ; fi
 ##########
 ##########
 if [ "$2" != "$NULL" ]; then
-cfg_favorite_basename_textdialog="$(basename) $2"
-cfg_favorite_realpath_textdialog="$(realpath) $2"
+cfg_favorite_basename_textdialog="$(basename $2)"
+cfg_favorite_realpath_textdialog="$(realpath $2)"
 fi
 ##########
 ##########
@@ -8948,13 +8948,13 @@ $cmd_internal $cfg_favorite_out_cli add-blacklist6 $archivo ;;
 0735) clear ; $cmd_internal $cfg_favorite_out_cli intro ;;
 0736) clear ; $cmd_internal $cfg_favorite_out_cli download;;
 0737) clear ; $cmd_internal $cfg_favorite_out_cli install;;
+*) ;;
 ################################################################################
-*) clear ; $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
-$cmd_internal text-pause clear ; exit ;;
 ################################################################################
 esac
+####
+####
 $cmd_internal text-pause ; clear
-$cmd_internal cli-menu-compact
 ####
 ####
 exit; fi
@@ -8970,7 +8970,7 @@ if [ "$cmd_first_option" == "text-pause" ]
 ####
 ####
 then read -p '$txt_text_title_ok Press [enter] \
-to continue now with the cli-menu $txt_text_title'
+to continue now with the cli-menu $txt_text_title_ok'
 ####
 ####
 exit; fi
