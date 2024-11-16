@@ -11,6 +11,8 @@
       Options
   
 ### fwiptables changes   
+      [ changes in 24-11-G ]
+      cli-menu: minor changes
       [ changes in 24-11-F ]
       info-net: changed names option | variables: simplify
       cli-menu and cli-menu-compact: changes, updated, fixed
@@ -69,7 +71,7 @@
 ### fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-11-F                
+         Version Firewall: 24-11-G                
         Released Firewall: Year 2024 / Month 11               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
@@ -142,8 +144,8 @@
       Folder logcmd:           /root/.config/fwiptables/fwiptables-logcmd   
         
     [ Preferences files ]     
-      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-F.conf
-      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-F.conf
+      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-G.conf
+      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-G.conf
       usernotes:               /root/.config/fwiptables/fwiptables-preferences/default-usernotes-all-versions.txt
         
     [ optional output ]       
@@ -316,4 +318,4 @@
    log-stat web intro depends uninstall install upgrade notes   
    variables examples info code expert donate about version   
    license-lgpl-v2 license-gpl-v2   
-      < info > fwiptables 24-11-F with expert actived   
+      < info > fwiptables 24-11-G with expert actived   
