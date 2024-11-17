@@ -96,7 +96,7 @@ fi
 #### The number version firewall
 cmd_year="24"                                                 # Number year version
 cmd_month="11"                                                # Number mouth version
-cmd_letter="G"                                                # Number letter version
+cmd_letter="H"                                                # Number letter version
 cmd_version="$cmd_year-$cmd_month-$cmd_letter"                # Final date version
 cmd_released="Year 20$cmd_year / Month $cmd_month"            # Source date version
 #### The data version firewall
@@ -3575,9 +3575,9 @@ echo "$txt_text_md license-lgpl-v2 license-gpl-v2 $txt_text_md"
 ####
 if [ "$cfg_allow_expert_commands" == "no" ]
 then echo "$txt_text_md_md $txt_text_info \
-$cmd_name $cmd_version with expert deactived $txt_text_md"
+$cmd_name $cmd_version with expert option deactived $txt_text_md"
 else echo "$txt_text_md_md $txt_text_info \
-$cmd_name $cmd_version with expert actived $txt_text_md"
+$cmd_name $cmd_version with expert option actived $txt_text_md"
 fi
 ####
 ####
