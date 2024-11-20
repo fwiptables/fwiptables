@@ -1329,7 +1329,8 @@ exit ; fi
 #### output txt:      General text without warnings version list normal
 ####
 ####
-if [ "$cmd_first_option" == "txt" ]; then echo "$txt_head_waiting_txt"
+if [ "$cmd_first_option" == "txt" ]; then 
+#### echo "$txt_head_waiting_txt"
 ####
 ####
 case $cmd_second_option in 
