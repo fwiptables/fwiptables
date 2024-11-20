@@ -468,25 +468,25 @@ if [ "$cmd_command_tree" == "$NULL" ]; then cmd_command_tree="$cmd_command_ls"; 
 ####
 ####
 #### system requisite utils
-for txt_requisite in $(echo $cmd_requisite_program | sed 's/,/ /g') ; do 
-if [ "$($cmd_where $txt_requisite)" == "$NULL" ]; then
-echo "### program $txt_requisite is necesary to work $cmd_internal"
+for util_requisite in $(echo $cmd_requisite_program | sed 's/,/ /g') ; do 
+if [ "$($cmd_where $util_requisite)" == "$NULL" ]; then
+echo "### program $util_requisite is necesary to work $cmd_internal"
 echo "### the requiste are $cmd_requisite_program"
 exit; fi ; done
 ####
 ####
 #### system requisite firewall4
-for txt_requisite in $(echo $cmd_requisite_firewall4 | sed 's/,/ /g') ; do 
-if [ "$($cmd_where $txt_requisite)" == "$NULL" ]; then
-echo "### program $txt_requisite is necesary to work $cmd_internal"
+for firewall4_requisite in $(echo $cmd_requisite_firewall4 | sed 's/,/ /g') ; do 
+if [ "$($cmd_where $firewall4_requisite)" == "$NULL" ]; then
+echo "### program $firewall4_requisite is necesary to work $cmd_internal"
 echo "### the requiste are $cmd_requisite_firewall4"
 exit; fi ; done
 ####
 ####
 #### system requisite firewall6
-for txt_requisite in $(echo $cmd_requisite_firewall6 | sed 's/,/ /g') ; do 
-if [ "$($cmd_where $txt_requisite)" == "$NULL" ]; then
-echo "### program $txt_requisite is necesary to work $cmd_internal"
+for firewall6_requisite in $(echo $cmd_requisite_firewall6 | sed 's/,/ /g') ; do 
+if [ "$($cmd_where $firewall6_requisite)" == "$NULL" ]; then
+echo "### program $firewall6_requisite is necesary to work $cmd_internal"
 echo "### the requiste are $cmd_requisite_firewall6"
 exit; fi ; done
 ####
@@ -527,16 +527,16 @@ cmd_default_cache_home="$cmd_default_root_home/.cache/$cmd_name"     ### used
 #### #### variables tree and .cache ####
 ####
 ####
-#### cache 
+#### cache root
 cmd_default_cache_basenecesary="$cmd_default_cache_home"
 cmd_default_cache_necesary="$cmd_default_cache_home/$cmd_archive_date"
 ####
 ####
-#### config
+#### config root
 cmd_default_directory_necesary="$cmd_default_root_home/.config/$cmd_name"
 ####
 ####
-#### config
+#### directory base
 cmd_default_directory_template="$cmd_default_directory_necesary/fwiptables-templates"
 cmd_default_directory_control="$cmd_default_directory_necesary/fwiptables-control"
 cmd_default_directory_custom="$cmd_default_directory_necesary/fwiptables-custom"
@@ -544,9 +544,6 @@ cmd_default_directory_preferences="$cmd_default_directory_necesary/fwiptables-pr
 cmd_default_directory_baselogcmd="$cmd_default_directory_necesary/fwiptables-logcmd"
 cmd_default_directory_baselogs="$cmd_default_directory_necesary/fwiptables-log"
 cmd_default_directory_basepdf="$cmd_default_directory_necesary/fwiptables-pdf"
-cmd_default_directory_logs="$cmd_default_directory_necesary/fwiptables-log/$cmd_archive_date"
-cmd_default_directory_pdf="$cmd_default_directory_necesary/fwiptables-pdf/$cmd_archive_date"
-cmd_default_directory_logcmd="$cmd_default_directory_necesary/fwiptables-logcmd/$cmd_archive_date"
 cmd_default_directory_wpa="$cmd_default_directory_necesary/fwiptables-wpa"
 cmd_default_directory_benchmarkram="$cmd_default_directory_necesary/fwiptables-benchmarkram"
 cmd_default_directory_benchmarkdisk="$cmd_default_directory_necesary/fwiptables-benchmarkdisk"
@@ -556,6 +553,12 @@ cmd_default_directory_adblock="$cmd_default_directory_necesary/fwiptables-adbloc
 cmd_default_directory_obash="$cmd_default_directory_necesary/fwiptables-obash"
 cmd_default_directory_debian="$cmd_default_directory_necesary/fwiptables-debian"
 cmd_default_directory_readme="$cmd_default_directory_necesary/fwiptables-readme"
+cmd_default_directory_upgrade="$cmd_default_directory_necesary/fwiptables-upgrade"
+####
+#### directory date
+cmd_default_directory_logs="$cmd_default_directory_necesary/fwiptables-log/$cmd_archive_date"
+cmd_default_directory_pdf="$cmd_default_directory_necesary/fwiptables-pdf/$cmd_archive_date"
+cmd_default_directory_logcmd="$cmd_default_directory_necesary/fwiptables-logcmd/$cmd_archive_date"
 ####
 ####
 #### :rutina-final-config-folders:
@@ -612,6 +615,8 @@ if [ ! -d "$cmd_default_directory_debian" ]; then
 $cmd_command_mkdir -p "$cmd_default_directory_debian" &> /dev/null ; fi
 if [ ! -d "$cmd_default_directory_readme" ]; then
 $cmd_command_mkdir -p "$cmd_default_directory_readme" &> /dev/null ; fi
+if [ ! -d "$cmd_default_directory_upgrade" ]; then
+$cmd_command_mkdir -p "$cmd_default_directory_upgrade" &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-sane-folders:
@@ -620,7 +625,7 @@ $cmd_command_mkdir -p "$cmd_default_directory_readme" &> /dev/null ; fi
 #### :rutina-inicial-configs-files:
 ####
 ####
-#### config templates cfg
+#### files templates cfg
 cmd_default_tinycfg_eng=\
 "$cmd_default_directory_template/default-tiny-english.cfg"
 cmd_default_tinycfg_spa=\
@@ -635,7 +640,7 @@ cmd_default_fullcfg_spa=\
 "$cmd_default_directory_template/default-full-spanish.cfg"
 ####
 ####
-#### config files default
+#### files files default
 cmd_file_default_preferences=\
 "$cmd_default_directory_preferences/default-preferences-$cmd_version.conf"
 cmd_file_default_alias=\
@@ -645,7 +650,7 @@ cmd_file_default_logcmd=\
 cmd_file_default_usernotes=\
 "$cmd_default_directory_preferences/default-usernotes-all-versions.txt"
 ####
-#### config output files
+#### files output date
 cmd_file_output_pdf=\
 "$cmd_default_directory_pdf/$cmd_pdf_date-$cmd_guided_full.pdf"
 cmd_file_output_log=\
@@ -654,7 +659,7 @@ cmd_file_output_cache=\
 "$cmd_default_cache_necesary/$cmd_cache_date-$cmd_guided_full.txt"
 ####
 ####
-#### config file adblock
+#### files adblock text
 cmd_file_blacklist_fademind=\
 "$cmd_default_directory_adblock/hosts.blacklist_fademind.txt"
 cmd_file_blacklist_mvps=\
@@ -5430,13 +5435,11 @@ if [ "$cmd_first_option" == "changes" ]; then
 ####
 ####
 echo "$txt_text_md_md \
-[ changes in 24-11-G ]"
+[ changes in 24-11-H ] upgrade: minor changes"
 echo "$txt_text_md_md \
-cli-menu: minor changes"
+[ changes in 24-11-G ] cli-menu: minor changes"
 echo "$txt_text_md_md \
-[ changes in 24-11-F ]"
-echo "$txt_text_md_md \
-info-net: changed names option | variables: simplify"
+[ changes in 24-11-F ] info-net: changed names option | variables: simplify"
 echo "$txt_text_md_md \
 cli-menu and cli-menu-compact: changes, updated, fixed"
 echo "$txt_text_md_md \
@@ -5526,7 +5529,6 @@ if  [ "$cmd_first_option" == "intro" ]; then
 ####
 ####
 echo "$txt_text_md"
-echo "$txt_text_md" "$txt_text_md" "Changes"
 echo "$txt_text_md" "$txt_text_md" "Readme"
 echo "$txt_text_md" "$txt_text_md" "Version"
 echo "$txt_text_md" "$txt_text_md" "About"
@@ -5534,9 +5536,8 @@ echo "$txt_text_md" "$txt_text_md" "Notes"
 echo "$txt_text_md" "$txt_text_md" "Compile"
 echo "$txt_text_md" "$txt_text_md" "Depends"
 echo "$txt_text_md" "$txt_text_md" "Examples"
+echo "$txt_text_md" "$txt_text_md" "Changes"
 echo "$txt_text_md" "$txt_text_md" "Options"
-echo "$txt_text_md"
-$cmd_internal changes
 echo "$txt_text_md"
 $cmd_internal readme
 echo "$txt_text_md"
@@ -5551,6 +5552,8 @@ echo "$txt_text_md"
 $cmd_internal depends
 echo "$txt_text_md"
 $cmd_internal examples
+echo "$txt_text_md"
+$cmd_internal changes
 echo "$txt_text_md"
 $cmd_internal options
 ####
@@ -6123,7 +6126,7 @@ echo "$txt_text_title Install curl to download and to install stable latest vers
 ####
 ####
 echo "$txt_text_title Downloading fwiptables stable latest"
-descarga="$cmd_default_cache_basenecesary/$cmd_get_date-fwiptables-latest"
+descarga="$cmd_default_directory_upgrade/$cmd_get_date-fwiptables-stable-latest"
 rm $descarga &> /dev/null
 $cmd_command_curl $cmd_web_download_sourceforge -s -L -o $descarga || echo "Without internet" \
 && chmod ugo+x $descarga &> /dev/null && $descarga install
@@ -6144,7 +6147,7 @@ echo "$txt_text_title Install curl to download and to install unstable latest ve
 ####
 ####
 echo "$txt_text_title Downloading fwiptables development latest"
-descarga="$cmd_default_cache_basenecesary/$cmd_get_date-fwiptables-unstable"
+descarga="$cmd_default_directory_upgrade/$cmd_get_date-fwiptables-unstable-latest"
 rm $descarga  &> /dev/null
 $cmd_command_curl $cmd_web_git_sourceforge -s -L -o $descarga || echo "Without internet" \
 && chmod ugo+x $descarga &> /dev/null && $descarga install
