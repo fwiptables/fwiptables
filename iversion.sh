@@ -121,7 +121,7 @@ awk '{print $2 "_" $3 "_" $4}')                               # File format
 cmd_archive_date="$(date +YEAR-%Y-MONTH-%m)"                  # archive date year_month_
 cmd_get_date="$(date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"            # how format date
 cmd_logcmd_date="$cmd_get_date"                               # format pdf date
-cmd_my-note_date="$cmd_get_date"                            # format my-note date
+cmd_mynote_date="$cmd_get_date"                            # format my-note date
 cmd_cache_date="CACHE_$cmd_get_date-_OPT_"                    # format cache date
 cmd_log_date="LOG_$cmd_get_date-_OPT_"                        # format opt date
 cmd_pdf_date="PDF_$cmd_get_date-_OPT_"                        # format opt date
@@ -647,8 +647,8 @@ cmd_file_default_alias=\
 "$cmd_default_directory_preferences/default-alias-$cmd_version.conf"
 cmd_file_default_logcmd=\
 "$cmd_default_directory_logcmd/default-logcmd-$cmd_version-$cmd_archive_date.log"
-cmd_file_default_my-note=\
-"$cmd_default_directory_preferences/default-my-note-all-versions.txt"
+cmd_file_default_usernotes=\
+"$cmd_default_directory_preferences/default-usernotes-all-versions.txt"
 ####
 #### files output date
 cmd_file_output_pdf=\
@@ -1953,7 +1953,7 @@ echo "#free-ram=free"
 echo "#ram=free"
 echo "#nodes=info-nodes"
 echo "#notes=hints"
-echo "#usernotes=mynotes"
+echo "#usernotes=my-note"
 ####
 ####
 exit ; fi
@@ -5721,21 +5721,21 @@ if [ "$cmd_first_option" == "my-note" ] ;  then
 ####
 #### add
 if [ "$cmd_second_option" == "add" ]
-then echo "$cmd_my-note_date,$cmd_third_option," >> $cmd_file_default_my-note
+then echo "$cmd_mynote_date,$cmd_third_option," >> $cmd_file_default_usernotes
 echo "Content added: $cmd_third_option," ; exit; fi
 #### search
 if [ "$cmd_second_option" == "search" ] ; then echo "List searched" ; 
-$cmd_command_cat $cmd_file_default_my-note | $cmd_command_grep -i $cmd_third_option ; exit; fi
+$cmd_command_cat $cmd_file_default_usernotes | $cmd_command_grep -i $cmd_third_option ; exit; fi
 #### list
 if [ "$cmd_second_option" == "list" ] ; then echo "List content:"; 
-$cmd_command_cat $cmd_file_default_my-note; exit; fi
+$cmd_command_cat $cmd_file_default_usernotes; exit; fi
 #### lines
 if [ "$cmd_second_option" == "lines" ] ; then echo "Lines numbers:"
-$cmd_command_cat $cmd_file_default_my-note | $cmd_command_wc -l ; exit; fi
+$cmd_command_cat $cmd_file_default_usernotes | $cmd_command_wc -l ; exit; fi
 #### info
 echo " # Option: add|search|list|lines"
-echo " # $txt_text_info Use without comma, and quote when spaces: to add, to search"
-echo " # $txt_text_file [$cmd_file_default_my-note]"
+echo " # $txt_text_info Use with quote when spaces to add"
+echo " # $txt_text_file [$cmd_file_default_usernotes]"
 #### 
 ####
 exit; fi
