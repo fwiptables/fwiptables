@@ -2847,24 +2847,30 @@ exit; fi
 ####
 ####
 #### :rutina-final-clean-cache:
-##########    english: notes: notes to configure iptables      ##########
-##########    spanish: notes: notas para configurar iptables   ##########
-#### :rutina-inicial-notes:
+##########    english: hints: notes to configure iptables      ##########
+##########    spanish: hints: notas para configurar iptables   ##########
+#### :rutina-inicial-hints:
 ####
 ####
-if [ "$cmd_first_option" == "notes" ]; then
+if [ "$cmd_first_option" == "hints" ]; then
 ####
 ####
-echo "$txt_text_md                     Iptables firewall manage commands $txt_text_md" 
+echo "$txt_text_md"
+echo "$txt_text_md    [Iptables firewall manage commands] $txt_text_md" 
+echo "$txt_text_md"
 echo "$txt_text_md      Legacy or nft: whith one of them is sufficent $txt_text_md"   
 echo "$txt_text_md    iptables-legacy: support for xtables ipv4 $txt_text_md"    
 echo "$txt_text_md       iptables-nft: support for nftables ipv4 $txt_text_md" 
 echo "$txt_text_md   ip6tables-legacy: support for xtables ipv6 $txt_text_md"    
 echo "$txt_text_md      ip6tables-nft: support for nftables ipv6 $txt_text_md"
-echo "$txt_text_md                     Firewall recomendation with full client $txt_text_md" 
+echo "$txt_text_md"
+echo "$txt_text_md    [Firewall recomendation with full client] $txt_text_md"
+echo "$txt_text_md"
 echo "$txt_text_md    Client prefered: input-established $txt_text_md" 
-echo "$txt_text_md    Server prefered: tinyserver-tcp tcp-ports-server $txt_text_md" 
-echo "$txt_text_md                     Some options and sub-otions $txt_text_md" 
+echo "$txt_text_md    Server prefered: tinyserver-tcp tcp-ports-server $txt_text_md"
+echo "$txt_text_md"
+echo "$txt_text_md    [Some options and sub-otions] $txt_text_md"
+echo "$txt_text_md"
 echo "$txt_text_md    shield maxtries: limit against attack per bruteforce $txt_text_md"   
 echo "$txt_text_md          Blacklist: excepcionals hosts dropped in firewall $txt_text_md"   
 echo "$txt_text_md          whitelist: excepcionals hosts allowed in firewall $txt_text_md" 
@@ -2872,7 +2878,9 @@ echo "$txt_text_md         tinyserver: client in all allowed, and servers manual
 echo "$txt_text_md         miniserver: normal ports in client, and servers manually $txt_text_md"
 echo "$txt_text_md  input-established: the computer is only client $txt_text_md"   
 echo "$txt_text_md     output uid/gid: User and/or group with conection allowed $txt_text_md"   
-echo "$txt_text_md                     Necesary Ports perhaps if use it $txt_text_md"  
+echo "$txt_text_md"
+echo "$txt_text_md    [Necesary Ports perhaps if use it] $txt_text_md"  
+echo "$txt_text_md"
 echo "$txt_text_md                ntp: Port necesary to update the time and date $txt_text_md"   
 echo "$txt_text_md             bootpc: Port necesary to dhcp and get ip $txt_text_md"   
 echo "$txt_text_md             domain: This port is necesary to domain resolver $txt_text_md"   
@@ -2884,7 +2892,7 @@ echo "$txt_text_md         ipv4 ports: ipv6 works too with old ipv4 ports $txt_t
 exit; fi
 ####
 ####
-#### :rutina-final-notes:
+#### :rutina-final-hints:
 ##########   english: templates-regen: templates-regen template wizard files       ##########
 ##########   spanish: templates-regen: templates-regenera template wizard archivos ##########
 #### :rutina-inicial-templates-regen:
@@ -3573,7 +3581,7 @@ echo "$txt_text_md preferences-edit alias-edit options info-options usernotes$tx
 echo "$txt_text_md cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $txt_text_md"
 echo "$txt_text_md ip4 ip6 route4 route6 info-ip4 info-ip6 info-nodes sockets $txt_text_md"
 echo "$txt_text_md lsof free ip-forward utils date resolve speed-ip4 speed-ip6 $txt_text_md"
-echo "$txt_text_md log-stat web intro depends uninstall install upgrade notes $txt_text_md"
+echo "$txt_text_md log-stat web intro depends uninstall install upgrade hints $txt_text_md"
 echo "$txt_text_md variables examples info code expert donate about version $txt_text_md"
 echo "$txt_text_md license-lgpl-v2 license-gpl-v2 $txt_text_md"
 ####
@@ -3917,7 +3925,7 @@ echo "$txt_text_md_md date . update the time and date from internet $txt_text_md
 echo "$txt_text_md_md free . freedom innecesary ram $txt_text_md"
 echo "$txt_text_md_md log-stat . info stat about logs $txt_text_md"
 echo "$txt_text_md_md version . show version and path $txt_text_md"
-echo "$txt_text_md_md notes . several notes for internet $txt_text_md"
+echo "$txt_text_md_md hints . several hints for internet $txt_text_md"
 echo "$txt_text_md_md ip-forward . list or active or desactive forward variables $txt_text_md"
 echo "$txt_text_md_md depends . principal dependences $txt_text_md"
 echo "$txt_text_md_md license . license $txt_text_md"
@@ -5533,7 +5541,7 @@ echo "$txt_text_md"
 echo "$txt_text_md" "$txt_text_md" "Readme"
 echo "$txt_text_md" "$txt_text_md" "Version"
 echo "$txt_text_md" "$txt_text_md" "About"
-echo "$txt_text_md" "$txt_text_md" "Notes"
+echo "$txt_text_md" "$txt_text_md" "hints"
 echo "$txt_text_md" "$txt_text_md" "Compile"
 echo "$txt_text_md" "$txt_text_md" "Depends"
 echo "$txt_text_md" "$txt_text_md" "Examples"
@@ -5546,7 +5554,7 @@ $cmd_internal version
 echo "$txt_text_md"
 $cmd_internal about
 echo "$txt_text_md"
-$cmd_internal notes
+$cmd_internal hints
 echo "$txt_text_md"
 $cmd_internal compile
 echo "$txt_text_md"
@@ -8513,7 +8521,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 025  "$txt_text_md speed-ip4" \
 026  "$txt_text_md speed-ip6" \
 027  "$txt_text_md sockets" \
-028  "$txt_text_md notes" \
+028  "$txt_text_md hints" \
 029  "$txt_text_md license" \
 030  "$txt_text_md depends" \
 031  "$txt_text_md info" \
@@ -8558,7 +8566,7 @@ case $menuprincipal in
 025) clear ; $cmd_internal $cfg_favorite_out_cli speed-ip4 ;;
 026) clear ; $cmd_internal $cfg_favorite_out_cli speed-ip6 ;;
 027) clear ; $cmd_internal $cfg_favorite_out_cli sockets ;;
-028) clear ; $cmd_internal $cfg_favorite_out_cli notes ;;
+028) clear ; $cmd_internal $cfg_favorite_out_cli hints ;;
 029) clear ; $cmd_internal $cfg_favorite_out_cli license ;;
 030) clear ; $cmd_internal $cfg_favorite_out_cli depends ;;
 031) clear ; $cmd_internal $cfg_favorite_out_cli info ;;
@@ -8741,7 +8749,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 0715  "$txt_text_md speed-ip4" \
 0716  "$txt_text_md speed-ip6" \
 0717  "$txt_text_md sockets" \
-0718  "$txt_text_md notes" \
+0718  "$txt_text_md hints" \
 0719  "$txt_text_md license" \
 0720  "$txt_text_md depends" \
 0721  "$txt_text_md info" \
@@ -8932,7 +8940,7 @@ $cmd_internal del-custom $archivo ;;
 0715) clear ; $cmd_internal $cfg_favorite_out_cli speed-ip4 ;;
 0716) clear ; $cmd_internal $cfg_favorite_out_cli speed-ip6 ;;
 0717) clear ; $cmd_internal $cfg_favorite_out_cli sockets ;;
-0718) clear ; $cmd_internal $cfg_favorite_out_cli notes ;;
+0718) clear ; $cmd_internal $cfg_favorite_out_cli hints ;;
 0719) clear ; $cmd_internal $cfg_favorite_out_cli license ;;
 0720) clear ; $cmd_internal $cfg_favorite_out_cli depends ;;
 0721) clear ; $cmd_internal $cfg_favorite_out_cli info ;;
@@ -9485,7 +9493,7 @@ gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-edit|preferences-regen|alias-edit|alias-regen|\
 alias-read|options|info-options|expert|\
 info-ip4|info-ip6|route4|route6||sockets|tree-pdf|tree-conf\
-tree-log|cat-logcmd|ip4|ip6|notes|speed-ip4|speed-ip6|\
+tree-log|cat-logcmd|ip4|ip6|hints|speed-ip4|speed-ip6|\
 info-nodes|date|free|version|tree-conf|tree-cache|clean-cache|\
 depends|utils|about|variables|examples|intro|install|upgrade|\
 add-whitelist4|add-whitelist6|add-blacklist4|add-blacklist6|\
@@ -9519,7 +9527,7 @@ tree-conf) $cmd_internal -gui-zenity tree-conf ;;
 cat-logcmd) $cmd_internal -gui-zenity cat-logcmd ;;
 ip4)$cmd_internal -gui-zenity ip4 ;;
 ip6)$cmd_internal -gui-zenity ip6 ;;
-notes)$cmd_internal -gui-zenity notes ;;
+hints)$cmd_internal -gui-zenity hints ;;
 speed-ip4)$cmd_internal -gui-zenity speed-ip4 ;;
 speed-ip6)$cmd_internal -gui-zenity speed-ip6 ;;
 sockets)$cmd_internal -gui-zenity sockets ;;
@@ -10093,7 +10101,7 @@ gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-edit|preferences-regen|alias-read|alias-edit|alias-regen|\
 options|clasic-options|info-options|expert|download|intro|\
 cat-logcmd|tree-log|tree-pdf|tree-conf|tree-cache|clean-cache|
-ip4|ip6|speed-ip4|speed-ip6|notes|\
+ip4|ip6|speed-ip4|speed-ip6|hints|\
 license-lgpl-v2|license-gpl-v2|\
 info-ip4|info-ip6|route4|route6||sockets|\
 add-whitelist4|add-whitelist6|add-blacklist4|add-blacklist6|\
@@ -10144,7 +10152,7 @@ examples*)$cmd_internal gui-$cmd_second_option examples ;;
 depends*)$cmd_internal gui-$cmd_second_option depends ;;
 install*)$cmd_internal -gui-zenity install ;;
 upgrade*)$cmd_internal -gui-zenity upgrade ;;
-notes*)$cmd_internal gui-$cmd_second_option notes ;;
+hints*)$cmd_internal gui-$cmd_second_option hints ;;
 info-ip4*)$cmd_internal gui-$cmd_second_option info-ip4 ;;
 info-ip6*)$cmd_internal gui-$cmd_second_option info-ip6 ;;
 route4*)$cmd_internal gui-$cmd_second_option route4 ;;
