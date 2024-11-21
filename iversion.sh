@@ -121,7 +121,7 @@ awk '{print $2 "_" $3 "_" $4}')                               # File format
 cmd_archive_date="$(date +YEAR-%Y-MONTH-%m)"                  # archive date year_month_
 cmd_get_date="$(date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"            # how format date
 cmd_logcmd_date="$cmd_get_date"                               # format pdf date
-cmd_usernotes_date="$cmd_get_date"                            # format usernotes date
+cmd_my-note_date="$cmd_get_date"                            # format my-note date
 cmd_cache_date="CACHE_$cmd_get_date-_OPT_"                    # format cache date
 cmd_log_date="LOG_$cmd_get_date-_OPT_"                        # format opt date
 cmd_pdf_date="PDF_$cmd_get_date-_OPT_"                        # format opt date
@@ -647,8 +647,8 @@ cmd_file_default_alias=\
 "$cmd_default_directory_preferences/default-alias-$cmd_version.conf"
 cmd_file_default_logcmd=\
 "$cmd_default_directory_logcmd/default-logcmd-$cmd_version-$cmd_archive_date.log"
-cmd_file_default_usernotes=\
-"$cmd_default_directory_preferences/default-usernotes-all-versions.txt"
+cmd_file_default_my-note=\
+"$cmd_default_directory_preferences/default-my-note-all-versions.txt"
 ####
 #### files output date
 cmd_file_output_pdf=\
@@ -712,7 +712,8 @@ cfg_option_alias_destino="$(echo $cfg_option_with_alias | $cmd_command_cut -d "=
 ####
 #### load alias
 if [ "$cfg_option_with_alias" != "$NULL" ] && [ "$cfg_option_alias_origen" != "$cfg_option_alias_destino" ]
-then echo "### < alias > from $cfg_option_alias_origen to $cfg_option_alias_destino"
+then echo "### < alias from > $cfg_option_alias_origen \
+< alias to > $cfg_option_alias_destino"
 $cmd_internal $cfg_option_alias_destino $2 $3 $4
 exit; fi 
 ####
@@ -1951,6 +1952,8 @@ echo "#ram-free=free"
 echo "#free-ram=free"
 echo "#ram=free"
 echo "#nodes=info-nodes"
+echo "#notes=hints"
+echo "#usernotes=mynotes"
 ####
 ####
 exit ; fi
@@ -2634,7 +2637,7 @@ echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_title_md [ Preferences files ]   $txt_text_md"
 echo "$txt_text_md_md preferences:             $cmd_file_default_preferences"
 echo "$txt_text_md_md alias:                   $cmd_file_default_alias"             
-echo "$txt_text_md_md usernotes:               $cmd_file_default_usernotes"
+echo "$txt_text_md_md my-note:               $cmd_file_default_my-note"
 echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_title_md [ optional output ]     $txt_text_md"
 echo "$txt_text_md_md dialog cli:              $cmd_command_dialog $txt_text_md"
@@ -2855,7 +2858,6 @@ exit; fi
 if [ "$cmd_first_option" == "hints" ]; then
 ####
 ####
-echo "$txt_text_md"
 echo "$txt_text_md    [Iptables firewall manage commands] $txt_text_md" 
 echo "$txt_text_md"
 echo "$txt_text_md      Legacy or nft: whith one of them is sufficent $txt_text_md"   
@@ -3577,7 +3579,7 @@ echo "$txt_text_md server-lamp server-news server-ftp server-mail server-teamspe
 echo "$txt_text_md server-mumble server-gateway server-sql server-samba server-proxy $txt_text_md"
 echo "$txt_text_md server-asterisk client-uid-root client-gid-users client-gid-net  $txt_text_md"
 echo "$txt_text_title    <firewall-netsystem> $txt_text_md"
-echo "$txt_text_md preferences-edit alias-edit options info-options usernotes$txt_text_md"
+echo "$txt_text_md preferences-edit alias-edit options info-options my-note$txt_text_md"
 echo "$txt_text_md cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $txt_text_md"
 echo "$txt_text_md ip4 ip6 route4 route6 info-ip4 info-ip6 info-nodes sockets $txt_text_md"
 echo "$txt_text_md lsof free ip-forward utils date resolve speed-ip4 speed-ip6 $txt_text_md"
@@ -5709,37 +5711,37 @@ exit; fi
 ####
 ####
 #### :rutina-final-install:
-##########    english: usernotes: take notes   ##########
-##########    spanish: usernotes: toma notas   ##########
-#### :rutina-inicial-usernotes:
+##########    english: my-note: take notes   ##########
+##########    spanish: my-note: toma notas   ##########
+#### :rutina-inicial-my-note:
 ####
 ####
-if [ "$cmd_first_option" == "usernotes" ] ;  then
+if [ "$cmd_first_option" == "my-note" ] ;  then
 ####
 ####
 #### add
 if [ "$cmd_second_option" == "add" ]
-then echo "$cmd_usernotes_date,$cmd_third_option," >> $cmd_file_default_usernotes
+then echo "$cmd_my-note_date,$cmd_third_option," >> $cmd_file_default_my-note
 echo "Content added: $cmd_third_option," ; exit; fi
 #### search
 if [ "$cmd_second_option" == "search" ] ; then echo "List searched" ; 
-$cmd_command_cat $cmd_file_default_usernotes | $cmd_command_grep -i $cmd_third_option ; exit; fi
+$cmd_command_cat $cmd_file_default_my-note | $cmd_command_grep -i $cmd_third_option ; exit; fi
 #### list
 if [ "$cmd_second_option" == "list" ] ; then echo "List content:"; 
-$cmd_command_cat $cmd_file_default_usernotes; exit; fi
+$cmd_command_cat $cmd_file_default_my-note; exit; fi
 #### lines
 if [ "$cmd_second_option" == "lines" ] ; then echo "Lines numbers:"
-$cmd_command_cat $cmd_file_default_usernotes | $cmd_command_wc -l ; exit; fi
+$cmd_command_cat $cmd_file_default_my-note | $cmd_command_wc -l ; exit; fi
 #### info
 echo " # Option: add|search|list|lines"
 echo " # $txt_text_info Use without comma, and quote when spaces: to add, to search"
-echo " # $txt_text_file [$cmd_file_default_usernotes]"
+echo " # $txt_text_file [$cmd_file_default_my-note]"
 #### 
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-usernotes:
+#### :rutina-final-my-note:
 ##########    english: expert-gen-readme: generate installed respository   ##########
 ##########    spanish: expert-gen-readme: genera instalado respositorio    ##########
 #### :rutina-inicial-expert-gen-readme:
