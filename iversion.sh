@@ -3531,7 +3531,7 @@ exit; fi
 if [ "$cmd_first_option" == "options" ]; then 
 ####
 ####
-echo "$txt_text_md $cmd_internal [optional-output] first_option [second_option] $txt_text_md"
+echo "$txt_text_md $cmd_name [optional-output] first_option [second_option] $txt_text_md"
 echo "$txt_text_title    <optional-output> $txt_text_md"
 echo "$txt_text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ] $txt_text_md"
 echo "$txt_text_md [ cli-dialog cli-whiptail cli-menu cli-menu-compact ] $txt_text_md"
