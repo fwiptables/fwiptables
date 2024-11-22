@@ -5446,7 +5446,9 @@ if [ "$cmd_first_option" == "changes" ]; then
 ####
 ####
 echo "$txt_text_md_md \
-[ changes in 24-11-H ] upgrade: minor changes"
+[ changes in 24-11-H ] upgrade: minor changes | usernotes: renamed to my-note"
+echo "$txt_text_md_md \
+"
 echo "$txt_text_md_md \
 [ changes in 24-11-G ] cli-menu: minor changes"
 echo "$txt_text_md_md \
