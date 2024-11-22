@@ -79,8 +79,10 @@ cmd_directory="/usr/bin"                                      # Directory instal
 #### the path firewall and any command                        
 cmd_path="/usr/bin:/usr/sbin:/bin:/sbin"                      # Config for PATH
 PATH="$cmd_path"                                              # PATH for fwiptables
-#### find any command in system
-cmd_where="which"                                             # Find each command
+#### Program tofind any command in system
+cmd_which=$(which which)
+cmd_command=$(command -v command)
+cmd_where="$cmd_which"                                        # Find each command
 #### the source file command         
 cmd_basename="$(basename $0)"                                 # Only name filename
 cmd_realpath="$(realpath $0)"                                 # path name filename
@@ -5447,7 +5449,7 @@ if [ "$cmd_first_option" == "changes" ]; then
 echo "$txt_text_md_md \
 [ changes in 24-11-H ] upgrade: minor changes | usernotes: renamed to my-note"
 echo "$txt_text_md_md \
-"
+web: fixed | expert-project-web: deprecated"
 echo "$txt_text_md_md \
 [ changes in 24-11-G ] cli-menu: minor changes"
 echo "$txt_text_md_md \
