@@ -1339,7 +1339,7 @@ case $cmd_second_option in
 ####
 ls*|list*) $cmd_internal $cmd_second_option $cmd_third_option | \
 $cmd_command_grep -E -v Warning: ; exit ;;
-*) $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option ;
+*) $cmd_internal $2 $3 $4 ;
 exit ;; 
 ####
 ####
@@ -1370,7 +1370,7 @@ ls*|list*) $cfg_favorite_basename_textdialog --clear --notags \
 --msgbox "$($cmd_internal txt $cmd_second_option)" 0 0 ; exit ;;
 *) $cfg_favorite_basename_textdialog --clear --notags \
 --title "Cli Menu With $cmd_version" \
---msgbox "$($cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option)" 0 0 ; exit ;;
+--msgbox "$($cmd_internal $2 $3 $4)" 0 0 ; exit ;;
 esac ; fi
 ####
 ####
@@ -1426,7 +1426,7 @@ exit ; fi
 if [ "$cmd_first_option" == "silent" ]
 ####
 ####
-then $cmd_internal "$cmd_second_option" "$cmd_third_option" "$cmd_quad_option" &> /dev/null
+then $cmd_internal "$2" "$3" "$4" &> /dev/null
 ####
 ####
 exit ; fi
@@ -4010,7 +4010,6 @@ echo "$txt_text_md_md expert-pc-shutdown . shutdown computer with shutdown $txt_
 echo "$txt_text_md_md expert-pc-reboot . reboot computer with reboot $txt_text_md "
 echo "$txt_text_md_md expert-cpufreq-info . show cpu frecuence info $txt_text_md "
 echo "$txt_text_md_md expert-cpupower-info . show cpu frecuence info $txt_text_md "
-echo "$txt_text_md_md expert-project-web . site  downloaded web fwiptables $txt_text_md"
 echo "$txt_text_md_md expert-configs-save . save configs like backup from fwiptables in tar file $txt_text_md"
 echo "$txt_text_md_md expert-configs-load . load configs like backup from fwiptables in tar file $txt_text_md"
 echo "$txt_text_md_md expert-myradio-install . install radio text program $txt_text_md"
@@ -6946,25 +6945,26 @@ exit; fi
 #### :rutina-inicial-web:
 ####
 ####
-if   [ "$cmd_first_option" == "web" ]; then
+if   [ "$cmd_first_option" == "web" ] || \
+[ "$cmd_first_option" == "expert-browser-web" ] ; then
 ####
 ####
 echo "$txt_text_title_info [ Show one web with command text browser ]"
 ####
 ####
 if [ "$cfg_favorite_text_browser" == "$NULL" ]; then 
-echo "### install: or lynx, or links, or links2, or w3m"; exit ; fi
+echo "$title_md install: or lynx, or links, or links2, or w3m"; fi
 ####
 ####
 if [ "$2" == "$NULL" ]; then 
-echo "### type a one link web"; exit ; fi
+echo "$title_md specify web choosed to browse the web, example kernel.org";
+echo "$title_md Example: https://sourceforge.net/projects/f-iptables/files/"
+exit ; fi
 ####
 ####
 url_browse_web="$2"
-echo "###"
-echo "### With the  browser: $cfg_favorite_text_browser"
-echo "### With the link web: $2"
-echo "###"
+echo "$title_md browser: $cfg_favorite_text_browser"
+echo "$title_md    link: $2"
 ####
 ####
 $cfg_favorite_text_browser -dump $url_browse_web
@@ -6974,56 +6974,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-web:
-##########    english: expert-project-web: browse the   web project      ##########
-##########    spanish: expert-project-web: navega en la web del proyecto ##########
-#### :rutina-inicial-expert-project-web:
-####
-####
-if   [ "$cmd_first_option" == "expert-project-web" ]; then
-####
-####
-echo "$txt_text_title_info [ version - date - size - downloaded last week ]"
-####
-####
-$cmd_internal web "http://sourceforge.net/projects/f-iptables/files/" \
- | grep bash.sh | grep -i kb
-####
-####
-exit; fi
-####
-####
-#### :rutina-final-expert-project-web:
-##########    english: browser-web: browse the   web ##########
-##########    spanish: browser-web: navega en la web ##########
-#### :rutina-inicial-expert-browser-web:
-####
-####
-if   [ "$cmd_first_option" == "expert-browser-web" ]; then
-####
-####
-echo "$txt_text_title_info [ Show one web with command text browser ]"
-####
-####
-if [ "$cfg_favorite_text_browser" == "$NULL" ]; then 
-echo "#### install: or lynx, or links, or links2, or w3m"; fi
-####
-####
-if [ "$cmd_second_option" == "$NULL" ]; then 
-echo "#### specify web choosed to browse the web, example kernel.org"; exit ; fi
-####
-####
-url_browse_web="$2"
-echo "#### browser: $cfg_favorite_text_browser"
-echo "####    link: $2"
-####
-####
-$cfg_favorite_text_browser -dump $url_browse_web
-####
-####
-exit; fi
-####
-####
-#### :rutina-final-expert-browser-web:
 ##########    english: expert-sockets-ss: The sockets option  ##########
 ##########    spanish: expert-sockets-ss: La opcion sockets   ##########
 #### :rutina-inicial-expert-sockets-ss:
@@ -7420,7 +7370,7 @@ $cfg_favorite_realpath_graphicalldialog --forms \
 ;;
 ####
 ####
-*)$cmd_internal "$cmd_second_option" "$cmd_third_option" "$cmd_quad_option" &> $cmd_file_output_cache
+*)$cmd_internal "$2" "$3" "$4" &> $cmd_file_output_cache
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Gui-Output-$cmd_internal \
