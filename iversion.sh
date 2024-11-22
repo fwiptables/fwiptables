@@ -6957,8 +6957,9 @@ echo "$title_md install: or lynx, or links, or links2, or w3m"; fi
 ####
 ####
 if [ "$2" == "$NULL" ]; then 
-echo "$title_md specify web choosed to browse the web, example kernel.org";
-echo "$title_md Example: https://sourceforge.net/projects/f-iptables/files/"
+echo "$title_md specify web choosed to browse the web"
+echo "$title_md Example command: $cmd_name gui web www.kernel.org"
+echo "$title_md Example    link: https://sourceforge.net/projects/f-iptables/files/"
 exit ; fi
 ####
 ####
