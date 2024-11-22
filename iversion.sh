@@ -79,9 +79,10 @@ cmd_directory="/usr/bin"                                      # Directory instal
 #### the path firewall and any command                        
 cmd_path="/usr/bin:/usr/sbin:/bin:/sbin"                      # Config for PATH
 PATH="$cmd_path"                                              # PATH for fwiptables
-#### Program tofind any command in system
+#### Program to find any command in system
 cmd_which=$(which which)
 cmd_command=$(command -v command)
+#### Program chooesd to find any command
 cmd_where="$cmd_which"                                        # Find each command
 #### the source file command         
 cmd_basename="$(basename $0)"                                 # Only name filename
