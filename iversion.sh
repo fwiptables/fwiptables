@@ -6947,6 +6947,51 @@ exit; fi
 ####
 ####
 #### :rutina-final-drop-port-tcp
+
+
+
+
+
+##########    english: allow-port-udp: add port to tcp ip4      ##########
+##########    spanish: allow-port-udp: añade puerto to tcp ip4  ##########
+#### :rutina-inicial-allow-port-udp
+####
+####
+if [ "$cmd_first_option" == "allow-port-udp" ] ; then
+####
+####
+if [ "$2" == "$NULL" ]; then 
+echo "$txt_text_title_fail type ip4 port or example with 21,23:25"; exit ; fi
+####
+####
+$cmd_internal allow-port-udp4 $2
+$cmd_internal allow-port-udp6 $2
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-allow-port-udp
+##########    english: drop-port-udp: add port to tcp ip4      ##########
+##########    spanish: drop-port-udp: añade puerto to tcp ip4  ##########
+#### :rutina-inicial-allow-port-udp
+####
+####
+if [ "$cmd_first_option" == "drop-port-udp" ] ; then
+####
+####
+if [ "$2" == "$NULL" ]; then 
+echo "$txt_text_title_fail type ip4 port or example with 21,23:25"; exit ; fi
+####
+####
+$cmd_internal drop-port-udp4 $2
+$cmd_internal drop-port-udp6 $2
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-drop-port-udp
 ##########    english: allow-port-tcp4: add port to tcp ip4      ##########
 ##########    spanish: allow-port-tcp4: añade puerto to tcp ip4  ##########
 #### :rutina-inicial-allow-port-tcp4
@@ -7099,6 +7144,168 @@ exit; fi
 ####
 ####
 #### :rutina-final-drop-port-tcp6
+
+
+
+
+
+
+
+
+
+
+##########    english: allow-port-udp4: add port to tcp ip4      ##########
+##########    spanish: allow-port-udp4: añade puerto to tcp ip4  ##########
+#### :rutina-inicial-allow-port-udp4
+####
+####
+if [ "$cmd_first_option" == "allow-port-udp4" ] ; then
+####
+####
+if [ "$2" == "$NULL" ]; then 
+echo "$txt_text_title_fail type ip4 port or example with 21,23:25"; exit ; fi
+####
+####
+tcp_port_add="$(echo $2 | sed 's/,/ /g')"
+for add in $tcp_port_add ; do
+####
+####
+echo "$txt_text_title [ Working ] ADD ipv4 rules port server: port to $add"
+$cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p udp -m multiport --dports $add  \
+-m comment --comment "allow-port-udp4" -j ACCEPT  &> /dev/null && \
+echo "ok rule nft 1/4 with port $add"   || echo "without rule nft 1/4"
+$cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
+-m comment --comment "allow-port-udp4" -j ACCEPT  &> /dev/null && \
+echo "ok rule nft 1/4 with port $add"   || echo "without rule nft 1/4"
+$cmd_command_ip4tableslegacy -t filter -I INPUT  2 -p udp -m multiport --dports $add \
+-m comment --comment "allow-port-udp4" -j ACCEPT  &> /dev/null && \
+echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
+$cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
+-m comment --comment "allow-port-udp4" -j ACCEPT  &> /dev/null && \
+echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
+####
+####
+done
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-allow-port-udp4
+##########    english: allow-port-udp6: add port to tcp ip6      ##########
+##########    spanish: allow-port-udp6: añade puerto to tcp ip6  ##########
+#### :rutina-inicial-allow-port-udp6
+####
+####
+if [ "$cmd_first_option" == "allow-port-udp6" ] ; then
+####
+####
+if [ "$2" == "$NULL" ]; then 
+echo "$txt_text_title_fail type ip6 port or example with 21,23:25"; exit ; fi
+####
+####
+tcp_port_add="$(echo $2 | sed 's/,/ /g')"
+for add in $tcp_port_add ; do
+####
+####
+echo "$txt_text_title [ Working ] ADD ipv6 rules port server: port to $add"
+$cmd_command_ip6tablesnft    -t filter -I INPUT 2 -p udp  -m multiport --dports $add \
+-m comment --comment "allow-port-udp6" -j ACCEPT  &> /dev/null && \
+echo "ok rule nft 1/4 with port $add"   || echo "without rule nft 1/4"
+$cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
+-m comment --comment "allow-port-udp6" -j ACCEPT  &> /dev/null && \
+echo "ok rule nft 1/4 with port $add"   || echo "without rule nft 1/4"
+$cmd_command_ip6tableslegacy -t filter -I INPUT  2 -p udp -m multiport --dports $add \
+-m comment --comment "allow-port-udp6" -j ACCEPT  &> /dev/null && \
+echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
+$cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
+-m comment --comment "allow-port-udp6" -j ACCEPT  &> /dev/null && \
+echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
+####
+####
+done
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-allow-port-tcp6
+##########    english: drop-port-udp4: add port to tcp ip4      ##########
+##########    spanish: drop-port-udp4: añade puerto to tcp ip4  ##########
+#### :rutina-inicial-drop-port-udp4
+####
+####
+if [ "$cmd_first_option" == "drop-port-udp4" ] ; then
+####
+####
+if [ "$2" == "$NULL" ]; then 
+echo "$txt_text_title_fail type ip4 port or example with 21,23:25"; exit ; fi
+####
+####
+tcp_port_add="$(echo $2 | sed 's/,/ /g')"
+for add in $tcp_port_add ; do
+####
+####
+echo "$txt_text_title [ Working ] ADD ipv4 rules port server: port to $add"
+$cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p udp -m multiport --dports $add \
+-m comment --comment "drop-port-udp4" -j DROP  &> /dev/null && \
+echo "ok rule nft 1/4 with port $add"   || echo "without rule nft 1/4"
+$cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
+-m comment --comment "drop-port-udp4" -j DROP  &> /dev/null && \
+echo "ok rule nft 1/4 with port $add"   || echo "without rule nft 1/4"
+$cmd_command_ip4tableslegacy -t filter -I INPUT  2 -p udp -m multiport --dports $add \
+-m comment --comment "drop-port-udp4" -j DROP  &> /dev/null && \
+echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
+$cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
+-m comment --comment "drop-port-udp4" -j DROP  &> /dev/null && \
+echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
+####
+####
+done
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-drop-port-udp4
+##########    english: drop-port-udp6: add port to tcp ip6      ##########
+##########    spanish: drop-port-udp6: añade puerto to tcp ip6  ##########
+#### :rutina-inicial-drop-port-udp6
+####
+####
+if [ "$cmd_first_option" == "drop-port-udp6" ] ; then
+####
+####
+if [ "$2" == "$NULL" ]; then 
+echo "$txt_text_title_fail type ip6 port or example with 21,23:25"; exit ; fi
+####
+####
+tcp_port_add="$(echo $2 | sed 's/,/ /g')"
+for add in $tcp_port_add ; do
+####
+####
+echo "$txt_text_title [ Working ] ADD ipv6 rules port server: port to $add"
+$cmd_command_ip6tablesnft    -t filter -I INPUT 2 -p udp  -m multiport --dports $add \
+-m comment --comment "drop-port-udp6" -j DROP  &> /dev/null && \
+echo "ok rule nft 1/4 with port $add"   || echo "without rule nft 1/4"
+$cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
+-m comment --comment "drop-port-udp6" -j DROP  &> /dev/null && \
+echo "ok rule nft 1/4 with port $add"   || echo "without rule nft 1/4"
+$cmd_command_ip6tableslegacy -t filter -I INPUT  2 -p udp -m multiport --dports $add \
+-m comment --comment "drop-port-udp6" -j DROP  &> /dev/null && \
+echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
+$cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
+-m comment --comment "drop-port-udp6" -j DROP  &> /dev/null && \
+echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
+####
+####
+done
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-drop-port-udp6
 ##########    english: speed-ip4: speed from internet        ##########
 ##########    spanish: speed-ip4: velocidad desde internet   ##########
 #### :rutina-inicial-speed-ip4:
