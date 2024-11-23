@@ -3989,14 +3989,10 @@ echo "$txt_text_md_md expert-speed-disk . benchmark disk speed with 100Mb $txt_t
 echo "$txt_text_md_md expert-speed-ram . benchmark ram speed with 100Mb $txt_text_md "
 echo "$txt_text_md_md expert-speed-cpu . benchmark cpu speed with bc command aprox 5 seconds $txt_text_md "
 echo "$txt_text_md_md expert-speed-glx . benchmark glx speed with mesa3D $txt_text_md " 
-echo "$txt_text_md_md expert-add-whitelist4 . add white host for ip4 $txt_text_md "
-echo "$txt_text_md_md expert-add-whitelist6 . add white host for ip6 $txt_text_md "
-echo "$txt_text_md_md expert-add-blacklist4 . add drop host for ip4 $txt_text_md "
-echo "$txt_text_md_md expert-add-blacklist6 . add drop host for ip6 $txt_text_md "
 echo "$txt_text_md_md expert-upgrade-estable . Upgrade from web sourceforge fwiptables with curl $txt_text_md "
 echo "$txt_text_md_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables with curl $txt_text_md "
 echo "$txt_text_md_md expert-upgrade-adblock . Download blacklist to folder configuration program with curl $txt_text_md "
-echo "$txt_text_md_md expert-deb . generate actual version file in deb $txt_text_md "
+echo "$txt_text_md_md expert-gen-deb . generate actual version file in deb $txt_text_md "
 echo "$txt_text_md_md expert-gen-readme . generate actual version file in original with readme $txt_text_md "
 echo "$txt_text_md_md expert-gen-compile . Compile fwiptables from bash with program obash $txt_text_md "
 echo "$txt_text_md_md expert-alias-modify . modify alias for $cmd_name $txt_text_md"
@@ -5458,6 +5454,8 @@ echo "$txt_text_md_md \
 echo "$txt_text_md_md \
 web: fixed | expert-project-web: deprecated"
 echo "$txt_text_md_md \
+web: add port tcp4 to drop, to allow, add port tcp6 to drop to allow"
+echo "$txt_text_md_md \
 [ changes in 24-11-G ] cli-menu: minor changes"
 echo "$txt_text_md_md \
 [ changes in 24-11-F ] info-net: changed names option | variables: simplify"
@@ -6739,7 +6737,7 @@ exit; fi
 #### :rutina-inicial-add-wihtelist4
 ####
 ####
-if [ "$cmd_first_option" == "add-whitelist4" ] || [ "$cmd_first_option" == "expert-add-whitelist4" ]; then
+if [ "$cmd_first_option" == "add-whitelist4" ] ; then
 ####
 ####
 if [ "$2" == "$NULL" ]; then echo "$txt_text_title_fail type host ip4 or net ip4 to be in whitelist"; exit ; fi
@@ -6772,7 +6770,7 @@ exit; fi
 #### :rutina-inicial-add-wihtelist6
 ####
 ####
-if [ "$cmd_first_option" == "add-whitelist6" ] || [ "$cmd_first_option" == "expert-add-whitelist6" ]; then
+if [ "$cmd_first_option" == "add-whitelist6" ] ; then
 ####
 ####
 if [ "$2" == "$NULL" ]; then echo "$txt_text_title_fail type host ip6 or net ip6 to be in whitelist"; exit ; fi
@@ -6805,7 +6803,7 @@ exit; fi
 #### :rutina-inicial-add-blacklist4
 ####
 ####
-if [ "$cmd_first_option" == "add-blacklist4" ] || [ "$cmd_first_option" == "expert-add-blacklist4" ]; then
+if [ "$cmd_first_option" == "add-blacklist4" ] ; then
 ####
 ####
 if [ "$2" == "$NULL" ]; then
@@ -6839,7 +6837,7 @@ exit; fi
 #### :rutina-inicial-add-blacklist6
 ####
 ####
-if [ "$cmd_first_option" == "add-blacklist6" ] || [ "$cmd_first_option" == "expert-add-blacklist6" ]; then
+if [ "$cmd_first_option" == "add-blacklist6" ] ; then
 ####
 ####
 if [ "$2" == "$NULL" ]; then 
@@ -6868,11 +6866,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-add-blacklist6
-
-
-
-
-
 ##########    english: allow-port-tcp4: add port to tcp ip4      ##########
 ##########    spanish: allow-port-tcp4: añade puerto to tcp ip4  ##########
 #### :rutina-inicial-allow-port-tcp4
@@ -6949,13 +6942,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-allow-port-tcp6
-
-
-
-
-
-
-
 ##########    english: drop-port-tcp4: add port to tcp ip4      ##########
 ##########    spanish: drop-port-tcp4: añade puerto to tcp ip4  ##########
 #### :rutina-inicial-drop-port-tcp4
@@ -7032,21 +7018,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-drop-port-tcp6
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ##########    english: speed-ip4: speed from internet        ##########
 ##########    spanish: speed-ip4: velocidad desde internet   ##########
 #### :rutina-inicial-speed-ip4:

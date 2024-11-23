@@ -3,8 +3,8 @@
 Planed fixing bugs, Planed feacture adding .
 
 ## The planed fixed commit:     
-
-
+update: add port tcp to cli and to gui
+deprecated: language spanish
 
 ## The planed feature commit: 
 
