@@ -5289,7 +5289,7 @@ if [ "$cmd_first_option" == "changes" ]; then
 echo "$txt_text_md_md \
 [ changes in 24-11-H ] upgrade: minor changes | usernotes: renamed to my-note"
 echo "$txt_text_md_md \
-web: fixed | expert-project-web: deprecated"
+web: fixed | expert-project-web: deprecated | comments only in english"
 echo "$txt_text_md_md \
 web: add port tcp4 to drop, to allow, add port tcp6 to drop to allow"
 echo "$txt_text_md_md \
@@ -10516,8 +10516,7 @@ fi
 #### :rutina-inicial-before-input-permisive:
 ####
 ####
-####   #### english: firewall of system input-permisive:
-####   #### spanish: cortafuego del sistema input-permisive:
+####   #### firewall of system input-permisive:
 ####
 ####
 if [ "$cmd_first_option" == "input-permisive" ]; then
@@ -10538,8 +10537,7 @@ fi
 #### :rutina-inicial-before-input-established:
 ####
 ####
-####   #### english: firewall of system input-established:
-####   #### spanish: cortafuego del sistema input-established:
+####   ####  firewall of system input-established:
 ####
 ####
 if [ "$cmd_first_option" == "input-established" ]; then
@@ -10559,8 +10557,7 @@ fi
 #### ##################################################
 #### :rutina-inicial-shield-ssh:
 ####
-####   #### english: firewall of system shield-ssh:
-####   #### spanish: cortafuego del sistema shield-ssh:
+####   ####  firewall of system shield-ssh:
 ####
 ####
 if [ "$cmd_first_option" == "shield-ssh" ]; then
@@ -10590,8 +10587,7 @@ cfg_server_port_tcp="ssh" ;
 # cfg_config_close_deny=DROP  ## or DROP or REJECT"
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+#### advance options in configurations file cfg
 ####
 ####
 # cfg_allow_string_dropped=no 
@@ -10621,8 +10617,7 @@ cfg_server_port_tcp="ssh" ;
 # cfg_allow_others_protocols=no 
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+####  advance options in configurations file cfg
 ####
 ####
 # cfg_config_string_denied=.fb.com,.facebook.com,xxx.html 
@@ -10654,8 +10649,7 @@ fi
 #### ##################################################
 #### :rutina-inicial-client-ssh:
 ####
-####   #### english: firewall of system shield-ssh:
-####   #### spanish: cortafuego del sistema shield-ssh:
+####   ####  firewall of system shield-ssh:
 ####
 ####
 if [ "$cmd_first_option" == "client-ssh" ]; then
@@ -10685,8 +10679,7 @@ cfg_server_port_tcp="" ;
 # cfg_config_close_deny=DROP  ## or DROP or REJECT"
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+####  advance options in configurations file cfg
 ####
 ####
 # cfg_allow_string_dropped=no 
@@ -10716,8 +10709,7 @@ cfg_server_port_tcp="" ;
 # cfg_allow_others_protocols=no 
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+#### advance options in configurations file cfg
 ####
 ####
 # cfg_config_string_denied=.fb.com,.facebook.com,xxx.html 
@@ -10749,8 +10741,7 @@ fi
 #### ##################################################
 #### :rutina-inicial-client-telnet:
 ####
-####   #### english: firewall of system shield-ssh:
-####   #### spanish: cortafuego del sistema shield-ssh:
+####   ####  firewall of system shield-ssh:
 ####
 ####
 if [ "$cmd_first_option" == "client-telnet" ]; then
@@ -10780,8 +10771,7 @@ cfg_server_port_tcp="" ;
 # cfg_config_close_deny=DROP  ## or DROP or REJECT"
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+####  advance options in configurations file cfg
 ####
 ####
 # cfg_allow_string_dropped=no 
@@ -10811,8 +10801,7 @@ cfg_server_port_tcp="" ;
 # cfg_allow_others_protocols=no 
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+####  advance options in configurations file cfg
 ####
 ####
 # cfg_config_string_denied=.fb.com,.facebook.com,xxx.html 
@@ -10845,8 +10834,7 @@ fi
 #### :rutina-inicial-client-basic:
 ####
 ####
-####   #### english: firewall of system client-basic:
-####   #### spanish: cortafuego del sistema client-basic:
+####   ####  firewall of system client-basic:
 ####
 ####
 if [ "$cmd_first_option" == "client-basic" ]; then
@@ -10875,8 +10863,7 @@ cfg_server_port_tcp="" ;
 # cfg_config_close_deny=DROP  ## or DROP or REJECT"
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+#### advance options in configurations file cfg
 ####
 ####
 # cfg_allow_string_dropped=no 
