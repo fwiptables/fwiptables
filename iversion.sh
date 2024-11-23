@@ -169,6 +169,8 @@ cmd_web_blacklist_adaway=\
 "https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt" ;
 cmd_web_blacklist_stevenblack=\
 "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts" ;
+cmd_web_repository_wallinet=\
+"https://sourceforge.net/p/f-iptables/code/ci/main/tree/20241123-wallinet.tar?format=raw" ;
 ####
 ####
 #### :rutina-final-web-official:
@@ -415,6 +417,7 @@ txt_text_folder="<folder>"
 txt_text_md_md="$txt_text_md $txt_text_md"
 txt_text_title_md="$txt_text_title $txt_text_md"
 txt_text_title_ok="$txt_text_title $txt_text_ok"
+txt_text_title_title="$txt_text_title $txt_text_title"
 txt_text_title_info="$txt_text_title $txt_text_info"
 txt_text_title_fail="$txt_text_title $txt_text_fail"
 txt_text_title_done="$text_text_title $txt_text_done"
@@ -545,6 +548,7 @@ cmd_default_directory_obash="$cmd_default_directory_necesary/fwiptables-obash"
 cmd_default_directory_debian="$cmd_default_directory_necesary/fwiptables-debian"
 cmd_default_directory_readme="$cmd_default_directory_necesary/fwiptables-readme"
 cmd_default_directory_upgrade="$cmd_default_directory_necesary/fwiptables-upgrade"
+cmd_default_directory_wallinet="$cmd_default_directory_necesary/fwiptables-wallinet"
 ####
 #### directory date
 cmd_default_directory_logs="$cmd_default_directory_necesary/fwiptables-log/$cmd_archive_date"
@@ -607,6 +611,8 @@ if [ ! -d "$cmd_default_directory_readme" ]; then
 $cmd_command_mkdir -p "$cmd_default_directory_readme" &> /dev/null ; fi
 if [ ! -d "$cmd_default_directory_upgrade" ]; then
 $cmd_command_mkdir -p "$cmd_default_directory_upgrade" &> /dev/null ; fi
+if [ ! -d "$cmd_default_directory_wallinet" ]; then
+$cmd_command_mkdir -p "$cmd_default_directory_wallinet" &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-sane-folders:
@@ -632,8 +638,6 @@ cmd_default_fullcfg_spa=\
 #### files files default
 cmd_file_default_preferences=\
 "$cmd_default_directory_preferences/default-preferences-$cmd_version.conf"
-cmd_file_default_repository=\
-"$cmd_default_directory_preferences/default-repository-$cmd_version.conf"
 cmd_file_default_alias=\
 "$cmd_default_directory_preferences/default-alias-$cmd_version.conf"
 cmd_file_default_logcmd=\
@@ -1742,9 +1746,9 @@ if [ "$cmd_second_option" == "$NULL" ]
 then $cmd_internal expert-wpa-list
 echo "$txt_text_title_info use: $cmd_first_option nameconfig" ; exit ; fi
 if [ -f "$cmd_default_directory_wpa/wpaconfig_$cmd_second_option" ]; then
-echo "$txt_text_title $txt_text_title $txt_text_title $txt_text_title wpa config_:"
+echo "$txt_text_title_title $txt_text_title_title wpa config_:"
 $cmd_command_cat  "$cmd_default_directory_wpa/wpaconfig_$cmd_second_option"
-echo "$txt_text_title $txt_text_title $txt_text_title $txt_text_title wpa connect_:"
+echo "$txt_text_title_title $txt_text_title_title wpa connect_:"
 $cmd_command_cat  "$cmd_default_directory_wpa/wpaconnect_$cmd_second_option"
 else echo "$txt_text_title_fail use: $cmd_first_option nameconfig"; exit ; fi
 ####
@@ -1971,62 +1975,65 @@ echo "####  program: $cmd_internal $cmd_version"
 echo "####  file: $cmd_file_default_preferences"
 echo "$txt_text_title"
 echo "$txt_text_title"
-echo "$txt_text_title $txt_text_title default option when not option are there"
+echo "$txt_text_title_title default option when not option are there"
 echo "cfg_config_without_firstoption=options                    ## read below"
 echo "$txt_text_title type: void or one valid option required to works"
 echo "$txt_text_title example1:options example2:list4 example3:ip4"
 echo "$txt_text_title example4:speed-ip4 example5:sockets example6:gui-roll"
 echo "$txt_text_title example7:gui-menu-yad example8:gui-shell-yad"
 echo "$txt_text_title" 
-echo "$txt_text_title $txt_text_title Allow expert commands for default" 
-echo "cfg_allow_expert_commands=                          ## or void for yes or no"
+echo "$txt_text_title_title Allow expert commands for default" 
+echo "cfg_allow_expert_commands=                           ## or void for yes or no"
 echo "$txt_text_title" 
-echo "$txt_text_title $txt_text_title default firewall"
-echo "cfg_allow_use_legacy=no                             ## or void for yes or no"
-echo "cfg_allow_use_nft=                                  ## or void for yes or no"
-echo "cfg_allow_use_ipv4=                                 ## or void for yes or no"
-echo "cfg_allow_use_ipv6=                                 ## or void for yes or no"
+echo "$txt_text_title_title default firewall"
+echo "cfg_allow_use_legacy=no                              ## or void for yes or no"
+echo "cfg_allow_use_nft=                                   ## or void for yes or no"
+echo "cfg_allow_use_ipv4=                                  ## or void for yes or no"
+echo "cfg_allow_use_ipv6=                                  ## or void for yes or no"
 echo "$txt_text_title"
-echo "cfg_allow_separate_rules=                           ## or void for yes or no"
-echo "cfg_allow_close_log=no                              ## or void for yes or no"
-echo "cfg_config_system_log=LOG                           ## or LOG or ULOG"
-echo "cfg_config_close_deny=DROP                          ## or DROP or REJECT"
+echo "cfg_allow_separate_rules=                            ## or void for yes or no"
+echo "cfg_allow_close_log=no                               ## or void for yes or no"
+echo "cfg_config_system_log=LOG                            ## or LOG or ULOG"
+echo "cfg_config_close_deny=DROP                           ## or DROP or REJECT"
 echo "$txt_text_title"
-echo "$txt_text_title $txt_text_title default string"
-echo "cfg_config_string_algoritmo=kmp                     ## or kmp or bm"
+echo "$txt_text_title_title default string"
+echo "cfg_config_string_algoritmo=kmp                      ## or kmp or bm"
 echo "$txt_text_title"
-echo "$txt_text_title $txt_text_title default logcmd"
-echo "cfg_allow_save_logcmd=                              ## or void for yes or no"
-echo "$txt_text_title $txt_text_title header time"
-echo "cfg_allow_show_time=no                              ## or void for yes or no"
+echo "$txt_text_title_title default logcmd"
+echo "cfg_allow_save_logcmd=                               ## or void for yes or no"
+echo "$txt_text_title_title header time"
+echo "cfg_allow_show_time=no                               ## or void for yes or no"
 echo "$txt_text_title"  
-echo "$txt_text_title $txt_text_title mini client ports from side client: for miniserver tcp/udp"  
+echo "$txt_text_title_title mini client ports from side client: for miniserver tcp/udp"  
 echo "cfg_client_mini_port_tcp=ssh,http,https"
 echo "cfg_client_mini_port_udp=domain,domain-s,bootpc,bootps,ntp,https"
 echo "$txt_text_title"  
-echo "$txt_text_title $txt_text_title default programs"
-echo "cfg_favorite_iperf_command=                         ## or void for automatic or specify command"
-echo "cfg_favorite_text_editor=                           ## or void for automatic or specify command"
-echo "cfg_favorite_text_music=                            ## or void for automatic or specify command"
-echo "cfg_favorite_text_browser=                          ## or void for automatic or specify command"
-echo "cfg_favorite_date_command=                          ## or void for automatic or specify command"
+echo "$txt_text_title_title default programs"
+echo "cfg_favorite_iperf_command=                          ## or void for automatic or specify command"
+echo "cfg_favorite_text_editor=                            ## or void for automatic or specify command"
+echo "cfg_favorite_text_music=                             ## or void for automatic or specify command"
+echo "cfg_favorite_text_browser=                           ## or void for automatic or specify command"
+echo "cfg_favorite_date_command=                           ## or void for automatic or specify command"
 echo "$txt_text_title"
-echo "$txt_text_title $txt_text_title default text-cli and graphicall-gui"
-echo "cfg_favorite_realpath_textdialog=                   ## or void for automatic or specify command"
-echo "cfg_favorite_realpath_graphicalldialog=             ## or void for automatic or specify command"
+echo "$txt_text_title_title default text-cli and graphicall-gui"
+echo "cfg_favorite_realpath_textdialog=                    ## or void for automatic or specify command"
+echo "cfg_favorite_realpath_graphicalldialog=              ## or void for automatic or specify command"
 echo "$txt_text_title"
-echo "$txt_text_title $txt_text_title default discover ip and speed ip"
-echo "cfg_server_ipdiscover_ipv4=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
-echo "cfg_server_ipdiscover_ipv6=https://ifconfig.co/ip   ## default http://ifconfig.co/ip"
+echo "$txt_text_title_title default discover ip and speed ip"
+echo "cfg_server_ipdiscover_ipv4=https://ifconfig.co/ip    ## default http://ifconfig.co/ip"
+echo "cfg_server_ipdiscover_ipv6=https://ifconfig.co/ip    ## default http://ifconfig.co/ip"
 echo "cfg_server_ip_iperf_ipv4=ping.online.net             ## default ping.online.net"
 echo "cfg_server_port_iperf_ipv4=5200                      ## default 5200"
 echo "cfg_server_ip_iperf_ipv6=ping6.online.net            ## default ping6.online.net"
 echo "cfg_server_port_iperf_ipv6=5200                      ## default 5200"
 echo "cfg_server_radio_online=https://www.tdtchannels.com/lists/radio.m3u8" 
 echo "$txt_text_title"
-echo "$txt_text_title $txt_text_title default graphicall dimension"
-echo "cfg_config_graphicall_width=800                     ## default width 800"
-echo "cfg_config_graphicall_height=600                    ## default height 600"
+echo "$txt_text_title $text_text_title repository firewall-wallinet, with file in .tar"
+echo "cmd_web_repository_wallinet=$cmd_web_repository_wallinet "
+echo "$txt_text_title"
+echo "$txt_text_title_title default graphicall dimension"
+echo "cfg_config_graphicall_width=800                      ## default width 800"
+echo "cfg_config_graphicall_height=600                     ## default height 600"
 ####
 ####
 exit ; fi
@@ -3144,7 +3151,7 @@ echo "cfg_config_ipv6_netclient=::/0 "
 echo "$txt_text_title la red cual cliente ipv6, todos es ::/0 "
 echo "cfg_config_ipv6_netserver=::/0 "
 echo "$txt_text_title la red cual servidor ipv6, todos es ::/0 "
-echo "$txt_text_title $txt_text_title "
+echo "$txt_text_title_title "
 echo "$txt_text_title FINAL .......... Opciones opcionales .......... .......... $txt_text_title "
 ####
 ####
@@ -3390,7 +3397,7 @@ echo "cfg_config_ipv6_netclient=::/0 "
 echo "$txt_text_title the net to client ipv6, all is ::/0 "
 echo "cfg_config_ipv6_netserver=::/0 "
 echo "$txt_text_title the net to server ipv6, all is ::/0 "
-echo "$txt_text_title $txt_text_title "
+echo "$txt_text_title_title "
 echo "$txt_text_title .......... END Optional options .......... .......... $txt_text_title"
 ####
 ####
@@ -3878,7 +3885,11 @@ exit; fi
 if   [ "$cmd_first_option" == "repo-update" ]; then
 ####
 ####
-echo "work in progress $1"
+cmd_file_repository="$cmd_default_directory_upgrade/wallinet.tar"
+$cmd_command_curl $cmd_web_repository_wallinet -s -L \
+-o $cmd_file_repository || echo "Without connection" || exit \
+&& cd $cmd_default_directory_wallinet && tar -xf $cmd_file_repository \
+&& echo "ok updated"
 ####
 ####
 exit; fi
@@ -8728,8 +8739,8 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
-0110 "$txt_text_title [ intro ] $txt_text_title $txt_text_title" \
-0120 "$txt_text_title [ info-options ] $txt_text_title $txt_text_title" \
+0110 "$txt_text_title [ intro ] $txt_text_title_title" \
+0120 "$txt_text_title [ info-options ] $txt_text_title_title" \
 0200 "$txt_text_title [ firewall-listconceptual ] $txt_text_title" \
 0201  "$txt_text_md list4" \
 0202  "$txt_text_md list6"  \
