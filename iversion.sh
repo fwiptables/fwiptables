@@ -376,6 +376,7 @@ cfg_config_string_algoritmo="kpm"
 cfg_config_string_allowed="one-string-that-like-how-a-passord,sourceforge.net"  
 cfg_config_string_denied=".fb.com,.facebook.com,xxx.html" 
 cfg_config_without_firstoption="options"
+cfg_config_wallinet_repository=""
 cfg_favorite_date_command=""
 cfg_favorite_out_cli=""
 cfg_favorite_realpath_graphicalldialog=""
@@ -5068,6 +5069,20 @@ exit; fi
 ####
 ####
 #### :rutina-final-clone-wallsystem:
+##########    clone-wallinet: clone config file static static               ##########
+#### :rutina-inicial-clone-wallinet:
+####
+####
+if [ "$cmd_first_option" == "clone-wallinet" ] ; then 
+####
+####
+echo "work in progress"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-clone-wallinet:
 ##########    new-full-custom: new-full-custom option to create new configs   ##########
 #### :rutina-inicial-new-full-custom:
 ####
