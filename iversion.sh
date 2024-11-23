@@ -29,12 +29,7 @@
 ####
 ####
 ####                 ## fwiptables license in source program
-####   English: This program has the license GPL v2, LGPL v2.
-####
-####
-####                 ## fwiptables comments in source program
-####   English: The comments are in english language and spanish language
-####   Spanish: Los comentarios estan en idioma ingles y en idioma español
+####   This program has the license GPL v2, LGPL v2
 ####
 ####
 ####                 ## Report bugs and Sum ideas
@@ -45,8 +40,7 @@
 #####################################################################################
 ####
 ####
-##########    english: are you root: uid 0 ?                ##########
-##########    spanish: eres admnistrador: identificador 0 ? ##########
+##########    are you root: uid 0 ?                ##########
 #### :rutina-inicial-necesary-root:
 ####
 ####
@@ -764,7 +758,7 @@ fi
 ####
 ####
 #### :rutina-final-favorite-iperf:
-##########      English: search favorite date: favorite date command        ##########
+##########      search favorite date: favorite date command        ##########
 #### :rutina-inicial-favorite-date:
 ####
 ####
@@ -808,7 +802,7 @@ fi
 ####
 ####
 #### :rutina-final-favorite-editor:
-##########      english: Search favorite text dialog: favorite text dialog     ##########
+##########      Search favorite text dialog: favorite text dialog     ##########
 #### :rutina-inicial-favorite-dialog:
 ####
 ####
@@ -972,7 +966,7 @@ case "$cfg_config_listrules_conceptual" in
 #### :rutina-inicial-alias-system-output:
 ####
 ####
-#### english:  alias alias simple for output gui, -txt or -cli or -gui and more
+####  alias alias simple for output gui, -txt or -cli or -gui and more
 ####
 ####
 case "$cmd_first_option" in
@@ -1180,7 +1174,7 @@ esac ;
 #### :rutina-inicial-alias-esquive:
 ####
 ####
-#### english:  alias esquive templates
+####  alias esquive templates
 ####
 ####
 case "$cmd_first_option" in
@@ -2980,8 +2974,7 @@ exit ; fi
 if [ "$cmd_first_option" == "template-full-es" ]; then
 ####
 ####
-#### english: basic options in configurations file cfg
-#### spanish: basicas opciones in configuracion de archivo cfg
+#### basic options in configurations file cfg
 ####
 ####
 echo "$txt_text_title $cmd_shortdescription from $cmd_internal version $cmd_version $txt_text_title "
@@ -3039,7 +3032,7 @@ echo "$txt_text_title END NECESARY $txt_text_title "
 echo "$txt_text_title FINAL .......... Opciones Necesarias .......... .......... $txt_text_title "
 ####
 ####
-#### english: advance options in configurations file cfg
+#### advance options in configurations file cfg
 echo "$txt_text_title BEGIN OPTIONAL $txt_text_title "
 echo "$txt_text_title INICIO .......... Opciones opcionales .......... .......... $txt_text_title "
 echo "$txt_text_title choose void or no $txt_text_title "
@@ -3096,7 +3089,7 @@ echo "cfg_allow_others_protocols=no "
 echo "$txt_text_title vacio para permitir otro PROTOCOLO-IP excepcional o no "
 ####
 ####
-#### english: advance options in configurations file cfg
+#### advance options in configurations file cfg
 echo "$txt_text_title Begin Variables $txt_text_title.......... .......... $txt_text_title.......... "
 echo "$txt_text_title Rellena Variables "
 echo "$txt_text_title Options "
@@ -3285,7 +3278,7 @@ echo "$txt_text_title END NECESARY $txt_text_title "
 echo "$txt_text_title .......... END Necesary options .......... .......... $txt_text_title "
 ####
 ####
-#### english: advance options in configurations file cfg
+#### advance options in configurations file cfg
 echo "$txt_text_title BEGIN OPTIONAL $txt_text_title "
 echo "$txt_text_title .......... BEGIN Optional options .......... .......... $txt_text_title "
 echo "$txt_text_title choose void or no $txt_text_title "
@@ -3342,7 +3335,7 @@ echo "cfg_allow_others_protocols=no "
 echo "$txt_text_title void to allow other POTOCOL-IP excepcional or no"
 ####
 ####
-#### english: advance options in configurations file cfg
+####  advance options in configurations file cfg
 echo "$txt_text_title Begin Variables $txt_text_title.......... .......... $txt_text_title.......... "
 echo "$txt_text_title Fill Variables "
 echo "$txt_text_title Options "
@@ -3407,14 +3400,7 @@ exit ; fi
 #### :rutina-inicial-autosave:
 ####
 ####
-#### english: iptables saved
-#### spanish: iptables guardado
-####
-####
-#### english: autosave with name autosave
-#### spanish: autoguardado con nombre autosave
-####
-####
+#### autosave with name autosave
 if [ "$cmd_first_option" == "autosave" ] && [ "$cfg_allow_autosave" == "$NULL" ]; then 
 ####
 ####
@@ -3980,10 +3966,7 @@ if [ "$cmd_first_option" == "eraserules" ];  then
 echo "$txt_text_title_info [ Deleting all iptables ipv4/ipv6 rules ]"
 ####
 ####
-#### english: table policy 
-#### spanish: table policy
-####
-####
+#### table policy 
 cfg_rule_table_policy="ACCEPT"
 $cmd_command_ip4tableslegacy   -t filter  -P INPUT    $cfg_rule_table_policy &> /dev/null
 $cmd_command_ip4tablesnft      -t filter  -P INPUT    $cfg_rule_table_policy &> /dev/null
@@ -3998,9 +3981,6 @@ $cmd_command_ip4tablesnft      -t filter  -P OUTPUT   $cfg_rule_table_policy &> 
 $cmd_command_ip6tableslegacy  -t filter  -P OUTPUT   $cfg_rule_table_policy &> /dev/null
 $cmd_command_ip6tablesnft     -t filter  -P OUTPUT   $cfg_rule_table_policy &> /dev/null
 ####
-####
-#### english: erase the rules
-#### spanish: borra las reglas
 ####
 #### remove ebtables
 cfg_rule_table_policy="ACCEPT"
@@ -4042,10 +4022,7 @@ if [ "$cmd_first_option" == "eraserules4" ]; then
 echo "$txt_text_title_info [ Deleting ip4 iptables rules ] "
 ####
 ####
-#### english: table policy 
-#### spanish: table policy
-####
-####
+#### table policy 
 cfg_rule_table_policy="ACCEPT"
 $cmd_command_ip4tableslegacy   -t filter  -P INPUT    $cfg_rule_table_policy
 $cmd_command_ip4tablesnft      -t filter  -P INPUT    $cfg_rule_table_policy
@@ -4055,10 +4032,7 @@ $cmd_command_ip4tableslegacy   -t filter  -P OUTPUT   $cfg_rule_table_policy
 $cmd_command_ip4tablesnft      -t filter  -P OUTPUT   $cfg_rule_table_policy
 ####
 ####
-#### english: erase the rules
-#### spanish: borra las reglas
-####
-####
+#### erase the rules
 $cmd_command_ebtables -t filter -F &> /dev/null
 $cmd_command_ebtables -t nat -F &> /dev/null
 $cmd_command_ip4tablesnft -t filter -F &> /dev/null
@@ -4132,10 +4106,7 @@ if [ "$cmd_first_option" == "eraserules6" ]; then
 echo "$txt_text_title_info [ Deleting ip6 iptables rules ] "
 ####
 ####
-#### english: table policy 
-#### spanish: table policy
-####
-####
+#### table policy 
 cfg_rule_table_policy="ACCEPT"
 $cmd_command_ip6tableslegacy   -t filter  -P INPUT    $cfg_rule_table_policy
 $cmd_command_ip6tablesnft      -t filter  -P INPUT    $cfg_rule_table_policy
@@ -4145,10 +4116,7 @@ $cmd_command_ip6tableslegacy   -t filter  -P OUTPUT   $cfg_rule_table_policy
 $cmd_command_ip6tablesnft      -t filter  -P OUTPUT   $cfg_rule_table_policy
 ####
 ####
-#### english: erase the rules
-#### spanish: borra las reglas
-####
-####
+#### erase the rules
 $cmd_command_ip6tablesnft -t filter -F &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -F &> /dev/null
 $cmd_command_ip6tablesnft -t nat -F &> /dev/null
@@ -6402,7 +6370,7 @@ if [ "$cmd_first_option" == "stop" ]; then
 echo "$txt_text_title_info  [ Stop the firewall ] "
 ####
 ####
-#### english: save actual fw #### spanish: guarda actual fw
+#### save actual fw #### 
 ####
 ####
 $cmd_command_arptables-save &> $cmd_default_directory_control/$cmd_filename-stoped-arptables
@@ -6413,7 +6381,7 @@ $cmd_command_ip6tablesnft-save &> $cmd_default_directory_control/$cmd_filename-s
 $cmd_command_ip6tableslegacy-save &> $cmd_default_directory_control/$cmd_filename-stoped-legacy-ipv6  
 ####
 ####
-#### english: erase the rules #### spanish: borra las reglas
+####  erase the rules #### 
 ####
 ####
 $cmd_internal eraserules &> /dev/null
@@ -6435,7 +6403,7 @@ if [ "$cmd_first_option" == "continue" ]; then
 echo "$txt_text_title_info  [ Continue the stopped firewall ] "
 ####
 ####
-#### english: restore last fw #### spanish: restaura el ultimo fw
+####  restore last fw #### 
 ####
 ####
 $cmd_command_cat  $cmd_default_directory_control/$cmd_filename-stoped-arptables | $cmd_command_arptables-restore
@@ -7343,7 +7311,7 @@ exit; fi
 ##########    -gui: Manage gui con three options  ##########
 ####
 ####
-#### english: with third option
+#### with third option
 if [ "$cmd_first_option" == "gui" ] && [ "$cmd_third_option" != "$NULL" ]
 ####
 ####
@@ -7710,10 +7678,7 @@ menugtk="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height )"
 ####
 ####
-#### english: manage some configs    ####
-#### spanish: maneja algunas configs ####
-####
-####
+#### manage some configs    ####
 case "$menugtk" in
 ####
 ####
@@ -7721,7 +7686,7 @@ case "$menugtk" in
 $NULL) $cmd_internal gui-zenity options; exit ;;
 ####
 ####
-#### english: new-full-custom and nueva-completa-custom whithout parameters ####
+#### new-full-custom and nueva-completa-custom whithout parameters ####
 ####
 ####
 "new-full-custom")
@@ -7761,7 +7726,7 @@ $cfg_favorite_realpath_graphicalldialog  --forms \
 ;;
 ####
 ####
-#### english: new-full-custom and nueva-completa-custom whithout parameters ####
+#### new-full-custom and nueva-completa-custom whithout parameters ####
 "new-full-custom" )
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -7799,7 +7764,7 @@ $cfg_favorite_realpath_graphicalldialog  --forms \
 ;;
 ####
 ####
-#### english: several options con parametros
+#### several options con parametros
 new-full-custom*)
 unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-zenity new-full-custom $unarchivo
@@ -7845,7 +7810,7 @@ $cmd_internal -gui-zenity alias-edit
 ;;
 ####
 ####
-#### english: all other otpions    ####
+####  all other otpions    ####
 "$NULL")  exit ;;
 *) $cmd_internal $menugtk &> $cmd_file_output_cache
 $cfg_favorite_realpath_graphicalldialog  --text-info \
@@ -7887,10 +7852,7 @@ menugtk="$($cmd_command_yad --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height )"
 ####
 ####
-#### english: manage some configs    ####
-#### spanish: maneja algunas configs ####
-####
-####
+#### manage some configs    ####
 case "$menugtk" in
 ####
 ####
@@ -7898,7 +7860,7 @@ case "$menugtk" in
 $NULL) $cmd_internal gui-yad options; exit ;;
 ####
 ####
-#### english: new-full-custom and nueva-completa-custom whithout parameters ####
+####  new-full-custom and nueva-completa-custom whithout parameters ####
 "new-full-custom")
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -7936,7 +7898,7 @@ $cfg_favorite_realpath_graphicalldialog  --forms \
 ;;
 ####
 ####
-#### english: new-full-custom and nueva-completa-custom whithout parameters ####
+####  new-full-custom and nueva-completa-custom whithout parameters ####
 "new-full-custom" )
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -7974,7 +7936,7 @@ $cfg_favorite_realpath_graphicalldialog  --forms \
 ;;
 ####
 ####
-#### english: several options con parametros
+####  several options con parametros
 new-full-custom*)
 unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-yad new-full-custom $unarchivo
@@ -8020,7 +7982,7 @@ $cmd_internal -gui-yad alias-edit
 ;;
 ####
 ####
-#### english: all other otpions    ####
+####  all other otpions    ####
 *) $cmd_internal $menugtk &> $cmd_file_output_cache
 $cmd_command_yad --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -8034,15 +7996,14 @@ exit ; fi
 ####
 ####
 #### :rutina-final-gui-shell-yad:
-##########    english: cli-menu: Manage list rules with one text menu          ##########
-##########    spanish: cli-menu: Maneja lista de reglas con un menu de texto   ##########
+##########    cli-menu: Manage list rules with one text menu          ##########
 #### :rutina-inicial-cli-menu:
 ####
 ####
 ################################################################################
 #### 
 #### 
-#### english: dialog choosed 
+####  dialog choosed 
 if [ "$cmd_first_option" == "cli-menu" ]; then
 ####
 ####
@@ -8830,7 +8791,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 ################################################################################
 #### 
 #### 
-#### english: dialog choosed #### 
+####  dialog choosed #### 
 case $menuprincipal in
 ##########
 ##########
@@ -9064,7 +9025,7 @@ exit; fi
 #### :rutina-final-graphicall-pause:
 ##################################################################################
 ##################################################################################
-##########    english: gui-roll-zenity: gui roll general: gui with roll  #########
+##########    gui-roll-zenity: gui roll general: gui with roll  #########
 #### :rutina-inicial-gui-roll-zenity:
 ####
 ####
@@ -10252,10 +10213,7 @@ cfg_type_firewall="wallcustom" ;
 cfg_name_firewall="$cmd_second_option" ;
 ####
 ####
-#### english: configure load-custom variables if there are
-#### spanish: configura variables modificadas si estan ahi
-####
-####
+#### configure load-custom variables if there are
 if [ -f "$cmd_default_directory_custom/$cmd_second_option" ]
 then source $cmd_default_directory_custom/$cmd_second_option ; fi
 ####
@@ -10893,8 +10851,7 @@ cfg_server_port_tcp="" ;
 # cfg_allow_others_protocols=no 
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+#### advance options in configurations file cfg
 ####
 ####
 # cfg_config_string_denied=.fb.com,.facebook.com,xxx.html 
@@ -10929,8 +10886,7 @@ fi
 #### :rutina-inicial-client-web:
 ####
 ####
-####   #### english: firewall of system client-web:
-####   #### spanish: cortafuego del sistema client-web:
+####   #### firewall of system client-web:
 ####
 ####
 if [ "$cmd_first_option" == "client-web" ]; then
@@ -10959,8 +10915,7 @@ cfg_server_port_tcp="" ;
 # cfg_config_close_deny=DROP  ## or DROP or REJECT"
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+####  advance options in configurations file cfg
 ####
 ####
 # cfg_allow_string_dropped=no 
@@ -10991,7 +10946,6 @@ cfg_server_port_tcp="" ;
 ####
 ####
 #### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
 # cfg_config_string_denied=.fb.com,.facebook.com,xxx.html 
@@ -11024,8 +10978,7 @@ fi
 #### :rutina-inicial-client-git:
 ####
 ####
-####   #### english: firewall of system client-git:
-####   #### spanish: cortafuego del sistema client-git:
+####   ####  firewall of system client-git:
 ####
 ####
 if [ "$cmd_first_option" == "client-git" ]; then
@@ -11054,8 +11007,7 @@ cfg_server_port_tcp="" ;
 # cfg_config_close_deny=DROP  ## or DROP or REJECT"
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+####  advance options in configurations file cfg
 ####
 ####
 # cfg_allow_string_dropped=no 
@@ -11085,8 +11037,7 @@ cfg_server_port_tcp="" ;
 # cfg_allow_others_protocols=no 
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+#### advance options in configurations file cfg
 ####
 ####
 # cfg_config_string_denied=.fb.com,.facebook.com,xxx.html 
@@ -11119,8 +11070,7 @@ fi
 #### :rutina-inicial-client-ipp:
 ####
 ####
-####   #### english: firewall of system client-ipp:
-####   #### spanish: cortafuego del sistema client-ipp:
+####   ####  firewall of system client-ipp:
 ####
 ####
 if [ "$cmd_first_option" == "client-ipp" ]; then
@@ -11149,8 +11099,7 @@ cfg_server_port_tcp="" ;
 # cfg_config_close_deny=DROP  ## or DROP or REJECT"
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+####  advance options in configurations file cfg
 ####
 ####
 # cfg_allow_string_dropped=no 
@@ -11180,8 +11129,7 @@ cfg_server_port_tcp="" ;
 # cfg_allow_others_protocols=no 
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+#### advance options in configurations file cfg
 ####
 ####
 # cfg_config_string_denied=.fb.com,.facebook.com,xxx.html 
@@ -11214,8 +11162,7 @@ fi
 #### :rutina-inicial-client-irc:
 ####
 ####
-####   #### english: firewall of system client-irc:
-####   #### spanish: cortafuego del sistema client-irc:
+####   #### firewall of system client-irc:
 ####
 ####
 if [ "$cmd_first_option" == "client-irc" ]; then
@@ -11244,8 +11191,7 @@ cfg_server_port_tcp="" ;
 # cfg_config_close_deny=DROP  ## or DROP or REJECT"
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+####  advance options in configurations file cfg
 ####
 ####
 # cfg_allow_string_dropped=no 
@@ -11275,8 +11221,7 @@ cfg_server_port_tcp="" ;
 # cfg_allow_others_protocols=no 
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+####  advance options in configurations file cfg
 ####
 ####
 # cfg_config_string_denied=.fb.com,.facebook.com,xxx.html 
@@ -11304,8 +11249,7 @@ cfg_server_port_tcp="" ;
 # cfg_config_ipv6_netserver=::/0 
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+####  advance options in configurations file cfg
 ####
 ####
 # cfg_allow_string_dropped=no 
@@ -11335,8 +11279,7 @@ cfg_server_port_tcp="" ;
 # cfg_allow_others_protocols=no 
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+####  advance options in configurations file cfg
 ####
 ####
 # cfg_config_string_denied=.fb.com,.facebook.com,xxx.html 
@@ -11369,8 +11312,7 @@ fi
 #### :rutina-inicial-client-vnc:
 ####
 ####
-####   #### english: firewall of system client-vnc:
-####   #### spanish: cortafuego del sistema client-vnc:
+####    firewall of system client-vnc:
 ####
 ####
 if [ "$cmd_first_option" == "client-vnc" ]; then
@@ -11400,8 +11342,7 @@ cfg_server_port_tcp="" ;
 # cfg_config_close_deny=DROP  ## or DROP or REJECT"
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+#### advance options in configurations file cfg
 ####
 ####
 # cfg_allow_string_dropped=no 
@@ -11431,8 +11372,7 @@ cfg_server_port_tcp="" ;
 # cfg_allow_others_protocols=no 
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+#### advance options in configurations file cfg
 ####
 ####
 # cfg_config_string_denied=.fb.com,.facebook.com,xxx.html 
@@ -11465,8 +11405,7 @@ fi
 #### :rutina-inicial-client-torrent:
 ####
 ####
-####   #### english: firewall of system client-torrent:
-####   #### spanish: cortafuego del sistema client-torrent:
+####   #### firewall of system client-torrent:
 ####
 ####
 if [ "$cmd_first_option" == "client-torrent" ]; then
@@ -11496,8 +11435,7 @@ cfg_server_port_tcp="9091,51413" ;
 # cfg_config_close_deny=DROP  ## or DROP or REJECT"
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+####  advance options in configurations file cfg
 ####
 ####
 # cfg_allow_string_dropped=no 
@@ -11527,8 +11465,7 @@ cfg_server_port_tcp="9091,51413" ;
 # cfg_allow_others_protocols=no 
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+#### advance options in configurations file cfg
 ####
 ####
 # cfg_config_string_denied=.fb.com,.facebook.com,xxx.html 
@@ -11561,8 +11498,7 @@ fi
 #### :rutina-inicial-client-vpn:
 ####
 ####
-####   #### english: firewall of system client-vpn:
-####   #### spanish: cortafuego del sistema client-vpn:
+####   ####  firewall of system client-vpn:
 ####
 ####
 if [ "$cmd_first_option" == "client-vpn" ]; then
@@ -11592,8 +11528,7 @@ cfg_server_port_tcp="" ;
 # cfg_config_close_deny=DROP  ## or DROP or REJECT"
 ####
 ####
-#### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
+####  advance options in configurations file cfg
 ####
 ####
 # cfg_allow_string_dropped=no 
@@ -14973,8 +14908,7 @@ fi
 ####
 ####
 #### :rutina-final-server-domain:
-############################       english: default: without other valid options
-############################	   spanish: default: sin otra valida opcion
+############################       default: without other valid options
 ####
 ####
 if [ "$cfg_allow_launchrules_firewall" != "yes" ] ; then
@@ -14987,8 +14921,7 @@ cmd_first_option="options" ; $cmd_internal $cmd_first_option ;
 exit ; fi
 ####
 ####
-##########    english: Update variables             ##########
-##########    spanish: Actualiza variables          ##########
+##########    Update variables             ##########
 #### :rutina-inicial-sane-variables-firewall:
 ####
 ####
@@ -15061,16 +14994,13 @@ case "$NULL" in "$cfg_config_system_log")      ;;  *)  cfg_config_system_log="lo
 ####                                                                                            ###############
 ####                                                                                            ###############
 ####
-####  english: Options for launch rules:     
+####  		Options for launch rules:     
 ####           system firewall with designed previous
-####  spanish: Opciones para lanzar reglas:  
-####           firewall del sistema con diseño previo
 ####                                                                                            ###############
 ####                                                                                            ###############
 #################################################################
 #################################################################
-########################################     english: ipv4 iptables input-permisive:
-########################################     spanish: ipv4 iptables todo permisivo
+########################################     ipv4 iptables input-permisive:
 #### :rutina-inicial-code-input-permisive:
 ####
 ####
@@ -15080,8 +15010,7 @@ case "$NULL" in "$cfg_config_system_log")      ;;  *)  cfg_config_system_log="lo
 if [ "$cfg_type_firewall" == "input-permisive" ]; then $cmd_internal eraserules &> /dev/null ;
 ####
 ####
-#### english: legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
-#### spanish: legacy ipv4 127.0.0.1 acepta y los otros legacy ipv4 acepta tambien
+#### legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
 ####
 ####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
@@ -15104,8 +15033,7 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A FORWA
 -m comment --comment all-forward &> /dev/null
 ####
 ####
-#### english: nft ipv4 127.0.0.1 acept and the others nft ipv4 accept too
-#### spanish: nft ipv4 127.0.0.1 acepta y los otros nft ipv4 acepta tambien
+#### nft ipv4 127.0.0.1 acept and the others nft ipv4 accept too
 ####
 ####
 $cfg_allow_use_nft  $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
@@ -15128,12 +15056,10 @@ $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A FORWARD \
 -m comment --comment all-forward &> /dev/null
 ####
 ####
-########################################     english: ipv6 iptables input-permisive:
-########################################     spanish: ipv6 iptables todo permisivo
+########################################     ipv6 iptables input-permisive:
 ####
 ####
-#### english: legacy ipv6 127.0.0.1 acept and the others legacy ipv6 accept too
-#### spanish: legacy ipv6 127.0.0.1 acepta y los otros legacy ipv6 acepta tambien
+####  legacy ipv6 127.0.0.1 acept and the others legacy ipv6 accept too
 ####
 ####
 $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
@@ -15156,8 +15082,7 @@ $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A FORWAR
 -m comment --comment all-forward &> /dev/null
 ####
 ####
-#### english: nft ipv6 127.0.0.1 acept and the others nft ipv6 accept too
-#### spanish: nft ipv6 127.0.0.1 acepta y los otros nft ipv6 acepta tambien
+#### nft ipv6 127.0.0.1 acept and the others nft ipv6 accept too
 ####
 ####
 $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT   \
@@ -15180,8 +15105,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A FORWARD \
 -m comment --comment all-forward &> /dev/null
 ####
 ####
-#### english: ipv6-icmp accept in legacy and accept in nft
-#### spanish: ipv6-icmp acepta en legacy y acepta en nft
+#### ipv6-icmp accept in legacy and accept in nft
 ####
 ####
 $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy \
@@ -15198,8 +15122,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft \
 -m comment --comment nexthop-ip6 &> /dev/null
 ####
 ####
-#### english: close with drop legacy and close with drop nft
-#### spanish: cierra con drop legacy y cierra con drop nft
+#### close with drop legacy and close with drop nft
 ####
 ####
 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
@@ -15248,8 +15171,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-code-input-permisive:
-########################################     english: ipv4 iptables input-established:
-########################################     spanish: ipv4 iptables input-established
+########################################     ipv4 iptables input-established:
 #### :rutina-inicial-code-input-established:
 ####
 ####
@@ -15259,8 +15181,7 @@ exit; fi
 if [ "$cfg_type_firewall" == "input-established" ]; then $cmd_internal eraserules &> /dev/null ;
 ####
 ####
-#### english: legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
-#### spanish: legacy ipv4 127.0.0.1 acepta y los otros legacy ipv4 acepta tambien
+####  legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
 ####
 ####
 $cfg_allow_use_legacy $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
@@ -15280,8 +15201,7 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A FORWA
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
-#### english: nft ipv4 127.0.0.1 acept and the others nft ipv4 accept too
-#### spanish: nft ipv4 127.0.0.1 acepta y los otros nft ipv4 acepta tambien
+####  nft ipv4 127.0.0.1 acept and the others nft ipv4 accept too
 ####
 ####
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
@@ -15301,12 +15221,10 @@ $cfg_allow_use_nft   $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A FORWARD \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
-########################################     english: ipv6 iptables input-permisive:
-########################################     spanish: ipv6 iptables todo permisivo
+########################################     ipv6 iptables input-permisive:
 ####
 ####
-#### english: legacy ipv6 127.0.0.1 acept and the others legacy ipv6 accept too
-#### spanish: legacy ipv6 127.0.0.1 acepta y los otros legacy ipv6 acepta tambien
+####  legacy ipv6 127.0.0.1 acept and the others legacy ipv6 accept too
 ####
 ####
 $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
@@ -15323,8 +15241,7 @@ $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A FORWAR
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
-#### english: nft ipv6 127.0.0.1 acept and the others nft ipv6 accept too
-#### spanish: nft ipv6 127.0.0.1 acepta y los otros nft ipv6 acepta tambien
+####  nft ipv6 127.0.0.1 acept and the others nft ipv6 accept too
 ####
 ####
 $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT   \
@@ -15341,8 +15258,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A FORWARD \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
-#### english: ipv6-icmp accept in legacy and accept in nft
-#### spanish: ipv6-icmp acepta en legacy y acepta en nft
+####  ipv6-icmp accept in legacy and accept in nft
 ####
 ####
 $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy \
@@ -15359,8 +15275,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft \
 -m comment --comment nexthop-ip6 &> /dev/null
 ####
 ####
-#### english: allow all output ipv6
-#### spanish: permite toda salida ipv6
+####  allow all output ipv6
 ####
 ####
 $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
@@ -15371,8 +15286,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT  \
 -m comment --comment all-output &> /dev/null
 ####
 ####
-#### english: close with drop legacy and close with drop nft
-#### spanish: cierra con drop legacy y cierra con drop nft
+####  close with drop legacy and close with drop nft
 ####
 ####
 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
@@ -15421,8 +15335,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-code-input-established:
-########################################     english: ipv4 iptables without-connection:
-########################################     spanish: ipv4 iptables desconectado
+########################################   ipv4 iptables without-connection:
 #### :rutina-inicial-code-without-connection:
 ####
 ####
@@ -15433,8 +15346,7 @@ if [ "$cfg_type_firewall" == "without-connection" ]
 then $cmd_internal eraserules &> /dev/null ;
 ####
 ####
-#### english: legacy ipv4 127.0.0.1 acept
-#### spanish: legacy ipv4 127.0.0.1 acepta
+####  legacy ipv4 127.0.0.1 acept
 ####
 ####
 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy -A INPUT  \
@@ -15448,8 +15360,7 @@ $cfg_allow_use_legacy $cmd_command_ip4tableslegacy -A FORWARD \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
-#### english: legacy ipv4 127.0.0.1 acept
-#### spanish: nft ipv4 127.0.0.1 acepta
+####  legacy ipv4 127.0.0.1 acept
 ####
 ####
 $cfg_allow_use_nft $cmd_command_ip4tablesnft -A INPUT \
@@ -15463,12 +15374,10 @@ $cfg_allow_use_nft $cmd_command_ip4tablesnft -A FORWARD \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
-########################################     english: ipv6 iptables without-connection
-########################################     spanish: ipv6 iptables desconectado
+########################################     ipv6 iptables without-connection
 ####
 ####
-#### english: legacy ipv6 127.0.0.1 acept
-#### spanish: legacy ipv6 127.0.0.1 acepta
+####  legacy ipv6 127.0.0.1 acept
 ####
 ####
 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A INPUT  \
@@ -15482,8 +15391,7 @@ $cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A FORWARD \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
-#### english: nft ipv6 127.0.0.1 acept
-#### spanish: nft ipv6 127.0.0.1 acepta
+####  nft ipv6 127.0.0.1 acept
 ####
 ####
 $cfg_allow_use_nft $cmd_command_ip6tablesnft -A INPUT  \
@@ -15497,8 +15405,7 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft -A FORWARD \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
-########################################     english: close in without-connection
-########################################     spanish: cierra en without-connection
+########################################     close in without-connection
 ####
 ####
 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
@@ -15557,8 +15464,7 @@ exit; fi
 ###################################################################
 ####
 ####                                                                  ###############
-########################################     english: ipv4 iptables tinycustom:
-########################################     spanish: ipv4 iptables tinycustom
+########################################     ipv4 iptables tinycustom:
 #### :rutina-inicial-code-tinycustom:
 ####
 ####
@@ -15611,8 +15517,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A FORWARD \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
-####################################### english: rules allow server ports with tcp
-####################################### spanish: reglas para permitir puertos servidor tcp
+####################################### rules allow server ports with tcp
 ####
 ####
 #### without separate rules
@@ -15674,8 +15579,7 @@ $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
 fi
 ####
 ####
-################ english: rules allow server ports with udp         #######################
-################ spanish: reglas para permitir puertos servidor udp #######################
+################ rules allow server ports with udp         #######################
 ####
 ####
 if [ "$cfg_allow_separate_rules" != "$NULL" ]; then 
@@ -15730,8 +15634,7 @@ fi
 #### without separate rules 
 ####
 ####
-####################################### english: rules allow server ports with tcp
-####################################### spanish: reglas para permitir puertos servidor tcp
+####################################### rules allow server ports with tcp
 ####
 ####
 #### with separate rules
@@ -15787,8 +15690,7 @@ $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
 done; fi
 ####
 ####
-####################################### english: rules allow server ports with udp
-####################################### spanish: reglas para permitir puertos servidor udp
+#######################################  rules allow server ports with udp
 ####
 ####
 if [ "$cfg_allow_separate_rules" == "$NULL" ]; then 
@@ -15844,12 +15746,10 @@ done; fi
 #### with separate rules
 ####
 ####
-####################################### english: THE REST
-####################################### spanish: EL RESTO
+#######################################  THE REST
 ####
 ####
-#### english: legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
-#### spanish: legacy ipv4 127.0.0.1 acepta y los otros legacy ipv4 acepta tambien
+#### legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
 ####
 ####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
@@ -15860,8 +15760,7 @@ $cfg_allow_use_legacy $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT
 -m comment --comment all-output &> /dev/null
 ####
 ####
-#### english: nft ipv4 127.0.0.1 acept and the others nft ipv4 accept too
-#### spanish: nft ipv4 127.0.0.1 acepta y los otros nft ipv4 acepta tambien
+#### nft ipv4 127.0.0.1 acept and the others nft ipv4 accept too
 ####
 ####
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
@@ -15872,12 +15771,10 @@ $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
 -m comment --comment all-output &> /dev/null
 ####
 ####
-########################################     english: ipv6 iptables input-permisive:
-########################################     spanish: ipv6 iptables todo permisivo
+########################################     ipv6 iptables input-permisive:
 ####
 ####
-#### english: legacy ipv6 accept related,established
-#### spanish: legacy ipv6 acepta relatado,establecido
+####  legacy ipv6 accept related,established
 ####
 ####
 $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT \
@@ -15888,8 +15785,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT   \
 -m comment --comment state-input &> /dev/null
 ####
 ####
-#### english: ipv6-icmp accept in legacy and accept in nft
-#### spanish: ipv6-icmp acepta en legacy y acepta en nft
+####  ipv6-icmp accept in legacy and accept in nft
 ####
 ####
 $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy \
@@ -15906,8 +15802,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft \
 -m comment --comment nexthop-ip6 &> /dev/null
 ####
 ####
-#### english: nft ipv6 127.0.0.1 acept and the others nft ipv6 accept too
-#### spanish: nft ipv6 127.0.0.1 acepta y los otros nft ipv6 acepta tambien
+####  nft ipv6 127.0.0.1 acept and the others nft ipv6 accept too
 ####
 ####
 $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
@@ -15918,8 +15813,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT  \
 -m comment --comment all-output &> /dev/null
 ####
 ####
-#### english: close with drop legacy and close with drop nft
-#### spanish: cierra con drop legacy y cierra con drop nft
+####  close with drop legacy and close with drop nft
 ####
 ####
 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
@@ -15975,8 +15869,7 @@ exit; fi
 ####                                                                                            
 ###################################################################
 ###################################################################
-##############################       english: overwrite system varibles with the config cfg
-##############################       spanish: sobreescribe las variables con la config cfg
+##############################       overwrite system varibles with the config cfg
 ####
 ####
 if [ "$cmd_first_option" == "load-custom" ]
@@ -15990,8 +15883,7 @@ else echo "$txt_text_md $txt_text_fail [ Config file not found ]"
 exit ; fi ; fi
 ####
 ####
-##############################      english: selective state of intput/oputut          
-##############################      spanish: estado selectivo de entrada/salida        
+##############################      selective state of intput/oputut          
 ####
 ####
 if [ "$cfg_allow_input_state" != "$NULL" ]  ; then  cfg_config_input_state=""  ; fi
@@ -16012,10 +15904,8 @@ cfg_config_output_state="-m state --state $cfg_connect_output_state"
 fi
 ####
 ####
-##############################      english: 
+##############################      
 #### output_uid or output_gid for input established status        #####################
-##############################      spanish:
-#### usuario o grupo para establecidos de entrada de estado       #####################
 ####
 ####
 if [ "$cfg_allow_output_uid" == "$NULL" ]
@@ -16033,19 +15923,14 @@ then cfg_config_uid_gid="" ; fi
 ###################################################################
 ####
 ####
-######################### english: iptables rules ipv4  iptables-legacy
-######################### spanish: reglas de iptables ipv4   iptables-legacy
+#########################  iptables rules ipv4  iptables-legacy
 ####
 ####
-#### english: erase all rules
-#### spanish: borra todas las reglas
-####
-####
+#### erase all rules
 $cmd_internal eraserules &> /dev/null
 ####
 ####
-######################### english: ebtables mac rules
-######################### spanish: ebtables mac rules
+######################### ebtables mac rules
 ####
 ####
 if [ "$cfg_allow_mac_whitelist" == "$NULL" ] ; then
@@ -16064,8 +15949,7 @@ $cmd_command_ebtables -A OUTPUT -d ! $cfg_config_mac_whitelist -j ACCEPT  &> /de
 fi
 ####
 ####
-#######################################        english: Accept  localhost rules
-#######################################        spanish: aceptar reglas localhost
+#######################################         Accept  localhost rules
 ####
 ####
 if [ "$cfg_config_ip4_localhost" != "$NULL" ]; then
@@ -16127,8 +16011,7 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft -A FORWARD \
 fi
 ####
 ####
-####################################### english: Drop rules for blacklist
-####################################### spanish: reglas de denegar para lista negra
+#######################################  Drop rules for blacklist
 ####
 ####
 if [ "$cfg_allow_net_blacklist" == "$NULL" ]; then
@@ -16186,8 +16069,7 @@ done
 fi
 #### 
 ####
-####################################### english: Accept rules for vpn whitelist
-####################################### spanish: reglas de aceptar para vpn whitelist
+#######################################  Accept rules for vpn whitelist
 ####
 ####
 if [ "$cfg_allow_net_whitelist" == "$NULL" ]; then
@@ -16246,8 +16128,7 @@ done
 fi
 ####
 ####
-####################################### english: drop for string in header
-####################################### spanish: deniega para cadena in cabecera
+####################################### drop for string in header
 ####
 ####
 if [ "$cfg_allow_string_dropped" == "$NULL" ]; then
@@ -16314,8 +16195,7 @@ done
 fi
 ####
 ####
-####################################### english: allow for string in header
-####################################### spanish: permite para cadena in cabecera
+#######################################  allow for string in header
 ####
 ####
 if [ "$cfg_allow_string_allowed" == "$NULL" ]; then
@@ -16378,8 +16258,7 @@ done
 fi
 ####
 ####
-####################################### english: rules for max tries for ssh
-####################################### spanish: reglas for max ties for ssh
+####################################### rules for max tries for ssh
 ####
 ####
 if [ "$cfg_allow_shield_maxtries" == "$NULL" ]; then
@@ -16422,12 +16301,10 @@ $cfg_allow_use_nft     $cfg_allow_use_ipv6  $cmd_command_ip6tablesnft -A INPUT \
 fi
 ####
 ####
-#######################################        english: limit bandwidth in kb/s
-#######################################        spanish: limitar ancho de banda en kb/s
+#######################################        limit bandwidth in kb/s
 ####
 ####
-#### english: ipv4  bandwidth
-#### spanish: ipv4  ancho de banda
+####  ipv4  bandwidth
 ####
 ####
 if [ "$cfg_allow_input_bandwidth" == "$NULL" ] ; then
@@ -16467,8 +16344,7 @@ $cmd_command_ip4tablesnft -A OUTPUT \
 fi
 ####
 ####
-#############        english: ipv6 bandwidth
-#############        spanish: ipv6 ancho de banda
+#############        ipv6 bandwidth
 ####
 ####
 if [ "$cfg_allow_input_bandwidth" == "$NULL" ] ; then
@@ -16505,12 +16381,10 @@ $cmd_command_ip6tablesnft -A OUTPUT -m hashlimit --hashlimit-above \
 fi
 ####
 ####
-#######################################        english: limit number of all connections
-#######################################        spanish: limitar numero de conexiones totales
+#######################################         limit number of all connections
 ####
 ####
-#### english: ipv4  bandwidth
-#### spanish: ipv4  ancho de banda
+####  ipv4  bandwidth
 ####
 ####
 if [ "$cfg_allow_input_maxconnect" == "$NULL" ]; then
@@ -16547,8 +16421,7 @@ $cmd_command_ip4tablesnft  -A OUTPUT \
 fi
 ####
 ####
-#### english: ipv6 bandwidth
-#### spanish: ipv6 ancho de banda
+####  ipv6 bandwidth
 ####
 ####
 if [ "$cfg_allow_input_maxconnect" == "$NULL" ]; then
@@ -16587,8 +16460,8 @@ $cmd_command_ip6tablesnft  -A OUTPUT \
 fi
 ####
 ####
-####################################### english: rules to allow client ports with without separate rules
-####################################### spanish: reglas para permitir puertos cliente without separate rules
+######################### rules to allow client ports with without separate rules
+ rules
 ####
 ####
 if [ "$cfg_allow_separate_rules" == "no" ]; then 
@@ -16699,8 +16572,7 @@ $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
 fi
 ####
 ####
-####################################### english: rules to allow client ports with with separate rules
-####################################### spanish: reglas para permitir puertos cliente with separate rules
+####################################### rules to allow client ports with with separate rules
 ####
 ####
 if [ "$cfg_allow_separate_rules" == "$NULL" ]; then 
@@ -16821,8 +16693,7 @@ $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
 done ; fi
 ####
 ####
-####################################### english: rules to log servers
-####################################### spanish: reglas para logear servers
+#######################################  rules to log servers
 ####
 ####
 #### ipv4
@@ -16911,8 +16782,7 @@ $cfg_allow_use_nft     $cfg_allow_use_ipv6   $cmd_command_ip6tablesnft    -A OUT
 -m comment --comment logserver-udp  &> /dev/null
 ####
 ####
-####################################### english: rules allow server ports with tcp
-####################################### spanish: reglas para permitir puertos servidor tcp
+####################################### rules allow server ports with tcp
 ####
 ####
 #### without separate rules
@@ -16974,8 +16844,7 @@ $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
 fi
 ####
 ####
-################ english: rules allow server ports with udp         #######################
-################ spanish: reglas para permitir puertos servidor udp #######################
+################ rules allow server ports with udp      #######################
 ####
 ####
 if [ "$cfg_allow_separate_rules" != "$NULL" ]; then 
@@ -17030,8 +16899,7 @@ fi
 #### without separate rules 
 ####
 ####
-####################################### english: rules allow server ports with tcp
-####################################### spanish: reglas para permitir puertos servidor tcp
+####################################### rules allow server ports with tcp
 ####
 ####
 #### with separate rules
@@ -17087,8 +16955,7 @@ $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
 done; fi
 ####
 ####
-####################################### english: rules allow server ports with udp
-####################################### spanish: reglas para permitir puertos servidor udp
+####################################### rules allow server ports with udp
 ####
 ####
 if [ "$cfg_allow_separate_rules" == "$NULL" ]; then 
@@ -17144,8 +17011,7 @@ done; fi
 #### with separate rules
 ####
 ####
-################## english: rules from input of legacy ipv4 for ping, uid, gid and protocols
-################## spanish: reglas de entrada de legacy ipv4 para ping, uid, gid y protocolos
+################## rules from input of legacy ipv4 for ping, uid, gid and protocols
 ####
 ####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_allow_output_ping \
@@ -17174,8 +17040,7 @@ $cmd_command_ip4tableslegacy -A INPUT \
 done
 ####
 ####
-################# english: rules from output of legacy ipv4 for ping, uid, gid and protocols
-################# spanish: reglas de salida de legacy ipv4 para ping, uid, gid y protocolos
+################# rules from output of legacy ipv4 for ping, uid, gid and protocols
 ####
 ####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_allow_output_ping \
@@ -17214,12 +17079,10 @@ $cmd_command_ip4tableslegacy -A OUTPUT \
 done
 ####
 ####
-################# english: ipv6 filter legacy rules for ping, uid, gid and protocols
-################# spanish: ipv6 filtros legacy reglas para ping, uid, gid y protocolos
+################# ipv6 filter legacy rules for ping, uid, gid and protocols
 ####
 #### 
-#### english: ipv6 filter legacy rules input 
-#### spanish: ipv6 filtros de legacy reglas de entrada
+#### ipv6 filter legacy rules input 
 ####
 ####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cfg_allow_output_ping \
@@ -17253,8 +17116,7 @@ $cmd_command_ip6tableslegacy -A INPUT \
 done
 ####
 ####
-#### english: ipv6 filter legacy rules output
-#### spanish: ipv6 filtros legacy reglas de salida
+#### ipv6 filter legacy rules output
 ####
 ####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cfg_allow_output_ping \
@@ -17298,12 +17160,10 @@ $cmd_command_ip6tableslegacy -A OUTPUT \
 done
 ####
 ####
-############### english: iptables rules ipv4  iptables-nft for ping, uid, gid and protocols
-############### spanish: reglas de iptables ipv4 iptables-nft para ping, uid, gid y protocolos
+###############  iptables rules ipv4  iptables-nft for ping, uid, gid and protocols
 ####
 ####
-#### english: ipv4 filter nft rules input
-#### spanish: ipv4 filter nft reglas de entrada
+#### ipv4 filter nft rules input
 ####
 ####
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_allow_output_ping \
@@ -17332,8 +17192,7 @@ $cmd_command_ip4tablesnft -A INPUT \
 done
 ####
 ####
-#### english: ipv4 filter nft rules output
-#### spanish: ipv4 filter nft reglas de salida
+####  ipv4 filter nft rules output
 ####
 ####
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_allow_output_ping \
@@ -17372,8 +17231,7 @@ $cmd_command_ip4tablesnft -A OUTPUT \
 done
 ####
 ####
-########## english: ipv6 filter nft rules input and output for ping, uid, gid and protocols
-########## spanish: ipv6 filtros nft relgas de entrada y salida para ping, uid, gid y protocolos
+########## ipv6 filter nft rules input and output for ping, uid, gid and protocols
 ####
 ####
 #### ipv6 filter nft rules input
@@ -17411,8 +17269,7 @@ $cmd_command_ip6tablesnft -A INPUT \
 done
 ####
 ####
-#### english: ipv6 filter nft rules output
-#### spanish: ipv6 filtros nft reglas de salida
+####  ipv6 filter nft rules output
 ####
 ####
 $cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_output_ping \
@@ -17456,18 +17313,15 @@ $cmd_command_ip6tablesnft -A OUTPUT \
 done
 ####
 ####
-########################################## english: nat for ipv4 and ipv6
-########################################## spanish: nat para ipv4 y ipv6
+########################################## nat for ipv4 and ipv6
 ####
 ####
-#### english: nat DELETED
-#### spanish: borrado nat
+#### nat DELETED
 ####
 ####
 ####
 ####
-#### english: do masquerade nat ip4 and ip6 ALLOW GATEWAY
-#### spanish: hace nat masquerade ip4 y ip6 PERMITIR GATEWAY
+####  do masquerade nat ip4 and ip6 ALLOW GATEWAY
 ####
 ####
 if [ "$cfg_allow_gateway_ip4" == "$NULL" ]; then 
@@ -17520,8 +17374,7 @@ $cmd_command_ip6tableslegacy -t nat \
 fi
 ####
 ####
-#### english: do DMZ nat ip4 and ip6 ALLOW GATEWAY SERVER IN LAN
-#### spanish: hace nat DMZ ip4 y ip6 PERMITIR GATEWAY SERVER IN LAN
+#### do DMZ nat ip4 and ip6 ALLOW GATEWAY SERVER IN LAN
 ####
 ####
 if [ "$cfg_config_dmz_ip4" == "$NULL" ]; then 
@@ -17554,12 +17407,10 @@ $cmd_command_ip6tableslegacy -t nat \
 fi
 ####
 ####
-################# english: iptables ipv4 and ipv6 with forward rules ALLOW FORWARD
-################# spanish: iptables ipv4 y ipv6 con reglas de reenvio PERMITIR FORWARD
+#################  iptables ipv4 and ipv6 with forward rules ALLOW FORWARD
 ####
 ####
-#### english: deactive for default with forward or without forward
-#### spanish: desactiva por defecto con reenvio o sin reenvio
+#### deactive for default with forward or without forward
 ####
 ####
 $cmd_command_sysctl -w net.ipv4.conf.all.forwarding=0 &> /dev/null
@@ -17597,8 +17448,7 @@ $cfg_allow_use_nft $cfg_allow_forward_ip6 $cmd_command_ip6tablesnft \
 if [ "$cfg_allow_close_log" == "$NULL" ]; then
 ####
 ####
-#### english: nft INPUT LOG CLOSE
-#### spanish: nft INPUT LOG CLOSE
+#### nft INPUT LOG CLOSE
 ####
 ####
 $cfg_allow_use_ipv4 $cfg_allow_use_nft \
@@ -17609,8 +17459,7 @@ $cmd_command_ip6tablesnft -t filter -A INPUT  -j $cfg_config_system_log \
 -m comment --comment close-log &> /dev/null
 ####
 ####
-#### english: legacy INPUT LOG CLOSE
-#### spanish: legacy INPUT LOG CLOSE 
+#### legacy INPUT LOG CLOSE
 ####
 ####
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
@@ -17630,8 +17479,7 @@ fi
 if [ "$cfg_allow_close_log" == "$NULL" ]; then
 ####
 ####
-#### english: nft OUPUT LOG CLOSE
-#### spanish: nft OUPUT LOG CLOSE
+#### nft OUPUT LOG CLOSE
 ####
 ####
 $cfg_allow_use_ipv4 $cfg_allow_use_nft \
@@ -17642,8 +17490,7 @@ $cmd_command_ip6tablesnft -t filter -A OUTPUT  -j $cfg_config_system_log \
 -m comment --comment close-log &> /dev/null
 ####
 ####
-#### english: legacy OUPUT LOG CLOSE
-#### spanish: legacy OUPUT LOG CLOSE 
+#### legacy OUPUT LOG CLOSE
 ####
 ####
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
@@ -17659,8 +17506,6 @@ fi
 ####
 ##################### iptables ipv4 and ipv6 closed with drop input,
 ####                  and drop forward, and drop output rules
-##################### iptables ipv4 y ipv6 cierran la entrada,
-####                  reemvio y salida con reglas de dropeo
 ####
 ####
 if [ "$cfg_config_close_deny" != "$NULL" ]; then 
@@ -17703,15 +17548,13 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft -A FORWARD -j $cfg_config_close_den
 fi
 ####
 ####
-#################### english: iptables ipv4 and ipv6 with variable input_all
-#################### english: iptables ipv4 y ipv6 con variable input_all
+####################  iptables ipv4 and ipv6 with variable input_all
 ####
 ####
 if [ "$cfg_allow_input_all" == "$NULL" ]; then 
 ####
 ####
-#### english: nft INPUT deleted
-#### spanish: nft INPUT borradas
+#### nft INPUT deleted
 ####
 ####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
@@ -17720,8 +17563,7 @@ $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
 $cmd_command_ip6tablesnft -t filter -F INPUT  &> /dev/null
 ####
 ####
-#### english: legacy INPUT deleted
-#### spanish: legacy INPUT borradas
+#### legacy INPUT deleted
 ####
 ####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
@@ -17730,8 +17572,7 @@ $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
 $cmd_command_ip6tableslegacy -t filter -F INPUT  &> /dev/null
 ####
 ####
-#### english: nft INPUT 127.0.0.1 accept
-#### spanish: nft INPUT ::1 acepta
+#### nft INPUT 127.0.0.1 accept
 ####
 ####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
@@ -17744,8 +17585,7 @@ $cmd_command_ip6tablesnft -t filter -A INPUT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
-#### english: legacy INPUT 127.0.0.1 accept
-#### spanish: legacy INPUT ::1 acepta
+#### legacy INPUT 127.0.0.1 accept
 ####
 ####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
@@ -17758,8 +17598,7 @@ $cmd_command_ip6tableslegacy -t filter -A INPUT \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
-#### english: legacy4 INPUT  limit bandwidth
-#### spanish: legacy6 INPUT limita ancho de banda
+#### legacy4 INPUT  limit bandwidth
 ####
 ####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
@@ -17774,8 +17613,7 @@ $cfg_allow_input_bandwidth ip6tables-legacy -A  INPUT \
 -m comment --comment "input-bandwidth kb/s" &> /dev/null
 ####
 ####
-#### english: nft4 INPUT limit bandwidth
-#### spanish: nft6 INPUT limita ancho de banda
+#### nft4 INPUT limit bandwidth
 ####
 ####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
@@ -17790,8 +17628,8 @@ $cfg_allow_input_bandwidth ip6tables-nft -A  INPUT \
 -m comment --comment "input-bandwidth kb/s" &> /dev/null
 ####
 ####
-#### english: ipv4  limit conections numbers
-#### spanish: ipv4  limita numero de conexiones
+####  ipv4  limit conections numbers
+#### ipv4  limita numero de conexiones
 ####
 ####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
@@ -17806,8 +17644,7 @@ $cfg_allow_input_maxconnect $cmd_command_ip4tablesnft   -A INPUT \
 -m comment --comment "input maxconnect"  &> /dev/null
 ####
 ####
-#### english: ipv6 limit conections numbers
-#### spanish: ipv6 limita numero de conexiones
+#### ipv6 limit conections numbers
 ####
 ####
 $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
@@ -17820,8 +17657,7 @@ $cfg_allow_input_maxconnect $cmd_command_ip6tablesnft   -A INPUT \
 -m comment --comment "input maxconnect"  &> /dev/null
 ####
 ####
-#### english: nft INPUT ACCEPT all or input_state
-#### spanish: nft INPUT acepta todo o estado de entrada
+#### nft INPUT ACCEPT all or input_state
 ####
 ####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
@@ -17834,8 +17670,7 @@ $cfg_config_input_state -j ACCEPT \
 -m comment --comment "input-state"  &> /dev/null
 ####
 ####
-#### english: legacy INPUT ACCEPT all or input_state
-#### spanish: entrada acepta todo o estado de entrada
+#### legacy INPUT ACCEPT all or input_state
 ####
 ####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
@@ -17848,10 +17683,7 @@ $cfg_config_input_state -j ACCEPT \
 -m comment --comment "input-state"  &> /dev/null
 ####
 ####
-####
-####
-#### english: nft INPUT DROP all
-#### spanish: nft INPUT deniega todo
+#### nft INPUT DROP all
 ####
 ####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
@@ -17864,8 +17696,7 @@ $cmd_command_ip6tablesnft -t filter -A INPUT \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
-#### english: legacy INPUT DROP all
-#### spanish: legacy INPUT deniega todo
+####  legacy INPUT DROP all
 ####
 ####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
@@ -17881,16 +17712,15 @@ $cmd_command_ip6tableslegacy -t filter -A INPUT \
 fi
 ####
 ####
-############### english: iptables ipv4 and ipv6 with variable output_all
-############### english: iptables ipv4 y ipv6 con variable output_all
+###############  iptables ipv4 and ipv6 with variable output_all
+###############  iptables ipv4 y ipv6 con variable output_all
 ####
 ####
 if [ "$cfg_allow_output_all" == "$NULL" ]; then 
 ####
 ####
 ####
-#### english: nft OUTPUT deleted
-#### spanish: nft OUTPUT borradas
+####  nft OUTPUT deleted
 ####
 ####
 $cfg_allow_output_all $cfg_allow_use_ipv4 \
@@ -17899,8 +17729,7 @@ $cfg_allow_output_all $cfg_allow_use_ipv6 \
 $cfg_allow_use_nft $cmd_command_ip6tablesnft -t filter -F OUTPUT  &> /dev/null
 ####
 ####
-#### english: legacy OUTPUT deleted
-#### spanish: legacy OUTPUT borradas
+####  legacy OUTPUT deleted
 ####
 ####
 $cfg_allow_output_all $cfg_allow_use_ipv4 \
@@ -17909,8 +17738,7 @@ $cfg_allow_output_all $cfg_allow_use_ipv6 \
 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy -t filter -F OUTPUT  &> /dev/null
 ####
 ####
-#### english: nft OUTPUT 127.0.0.1 accept
-#### spanish: nft OUTPUT ::1 acepta
+####  nft OUTPUT 127.0.0.1 accept
 ####
 ####
 $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
@@ -17923,8 +17751,7 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft -t filter -A OUTPUT \
 -m comment --comment host-localhost &> /dev/null
 ####
 ####
-#### english: legacy OUTPUT 127.0.0.1 accept
-#### spanish: legacy OUTPUT ::1 acepta
+#### legacy OUTPUT 127.0.0.1 accept
 ####
 ####
 $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
@@ -17939,15 +17766,13 @@ $cmd_command_ip6tableslegacy -t filter -A OUTPUT \
 fi
 ####
 ####
-########### english: allow output bandwidth
-########### spanish: acepta velocidad de conexiones de salida
+########### allow output bandwidth
 ####
 ####
 if [ "$cfg_allow_output_bandwidth" == "$NULL" ]; then 
 ####
 ####
-#### english: legacy4 OUTPUT limit bandwidth
-#### spanish: legacy6 OUTPUT limita ancho de banda
+####  legacy4 OUTPUT limit bandwidth
 ####
 #### 
 $cfg_allow_output_all $cfg_allow_use_ipv4 \
@@ -17962,8 +17787,7 @@ $cfg_allow_output_bandwidth ip6tables-legacy -A  OUTPUT \
 -m comment --comment "output-bandwidth kb/s" &> /dev/null
 ####
 ####
-#### english: nft4 OUTPUT limit bandwidth
-#### spanish: nft6 OUTPUT limita ancho de banda
+####  nft4 OUTPUT limit bandwidth
 ####
 ####
 $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
@@ -17980,15 +17804,13 @@ $cfg_allow_output_bandwidth ip6tables-nft -A OUTPUT \
 fi
 ####
 ####
-################### english: allow output maxconnect
-################### spanish: acepta maximo de conexiones de salida
+###################  allow output maxconnect
 ####
 ####
 if [ "$cfg_allow_output_maxconnect" == "$NULL" ]; then 
 ####
 ####
-#### english: ipv4  limit conections numbers
-#### spanish: ipv4  limita numero de conexiones
+####  ipv4  limit conections numbers
 ####
 ####
 $cfg_allow_output_all $cfg_allow_use_ipv4 \
@@ -18001,8 +17823,7 @@ $cfg_allow_use_nft $cfg_allow_output_maxconnect $cmd_command_ip4tablesnft   -A O
 -m comment --comment "output maxconnect" &> /dev/null
 ####
 ####
-#### english: ipv6 limit conections numbers
-#### spanish: ipv6 limita numero de conexiones
+####  ipv6 limit conections numbers
 ####
 ####
 $cfg_allow_output_all $cfg_allow_use_ipv6 \
@@ -18017,15 +17838,13 @@ $cfg_allow_use_nft $cfg_allow_output_maxconnect $cmd_command_ip6tablesnft   -A O
 fi
 ####
 ####
-################### english: allow output all
-################### spanish: acepta toda salida
+################### allow output all
 ####
 ####
 if [ "$cfg_allow_output_all" == "$NULL" ]; then 
 ####
 ####
-#### english: nft OUTPUT ACCEPT all or input_state
-#### spanish: nft OUTPUT acepta todo o estado de entrada
+####  nft OUTPUT ACCEPT all or input_state
 ####
 ####
 $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
@@ -18038,8 +17857,7 @@ $input_state -j ACCEPT \
 -m comment --comment "output-state" &> /dev/null
 ####
 ####
-#### english: legacy INPUT ACCEPT all or input_state
-#### spanish: entrada acepta todo o estado de entrada
+####  legacy INPUT ACCEPT all or input_state
 ####
 ####
 $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
@@ -18056,8 +17874,7 @@ fi
 ######################### output close rule
 ####
 ####
-#### english: nft INPUT DROP all
-#### spanish: nft INPUT deniega todo
+####  nft INPUT DROP all
 ####
 ####
 $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
@@ -18068,8 +17885,7 @@ $cmd_command_ip6tablesnft -t filter -A OUTPUT  -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
-#### english: legacy INPUT DROP all
-#### spanish: legacy INPUT deniega todo
+#### legacy INPUT DROP all
 ####
 ####
 $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
@@ -18080,8 +17896,7 @@ $cmd_command_ip6tableslegacy -t filter -A OUTPUT  -j $cfg_config_close_deny \
 -m comment --comment close-rule &> /dev/null
 ####
 ####
-################ english: show text when active load-custom rules
-################ spanish: muestra texto cuando activas las load-custom reglas
+################  show text when active load-custom rules
 ####
 ####  
 echo "$txt_text_title_ok [ Launched: firewall ] \
@@ -18094,8 +17909,7 @@ echo "$txt_text_title_ok [ Launched: firewall ] \
 #######################
 ####
 ####
-#######################         english: End of script
-#######################         spanish: Fin del script
+#######################          End of script
 ####    
 ####
 ####    ### Git mini tutorial: with fwiptables.

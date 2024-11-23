@@ -5,6 +5,7 @@ Planed fixing bugs, Planed feacture adding .
 ## The planed fixed commit:     
 update: add port tcp to cli and to gui
 deprecated: language spanish
+separate: firewall-wallsystem
 
 ## The planed feature commit: 
 
