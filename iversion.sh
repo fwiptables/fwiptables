@@ -3461,7 +3461,7 @@ echo "$txt_text_md show-custom modify-custom del-custom names-custom $txt_text_m
 echo "$txt_text_stitle    <firewall-wallsystem> $txt_text_md"
 echo "$txt_text_md client-ssh client-mail games-udp server-samba shield-ssh $text_text_md"
 echo "$txt_text_stitle    <firewall-wallinet> $txt_text_md"
-echo "$txt_text_md wallinet-update wallinet-list wallinet-load wallinet-custom $txt_text_md"
+echo "$txt_text_md wallinet-update wallinet-list wallinet-load $txt_text_md"
 echo "$txt_text_stitle    <firewall-wallutils> $txt_text_md"
 echo "$txt_text_md preferences-edit alias-edit options info-options my-note$txt_text_md"
 echo "$txt_text_md cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $txt_text_md"
@@ -5093,11 +5093,11 @@ exit; fi
 ####
 ####
 #### :rutina-final-clone-wallsystem:
-##########    wallinet-custom: clone config file static static               ##########
-#### :rutina-inicial-wallinet-custom:
+##########    clone-wallinet: clone config file static static               ##########
+#### :rutina-inicial-clone-wallinet:
 ####
 ####
-if [ "$cmd_first_option" == "wallinet-custom" ] ; then 
+if [ "$cmd_first_option" == "clone-wallinet" ] ; then 
 ####
 ####
 #### prepare sane
@@ -5115,7 +5115,7 @@ fi
 exit; fi
 ####
 ####
-#### :rutina-final-wallinet-custom:
+#### :rutina-final-clone-wallinet:
 ##########    new-full-custom: new-full-custom option to create new configs   ##########
 #### :rutina-inicial-new-full-custom:
 ####
