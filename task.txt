@@ -7,5 +7,8 @@ update: add port tcp to cli and to gui
 deprecated: language spanish
 separate: firewall-wallsystem
 
+deprecate: old firewall wallsystem in cli, in gui.
+add: wallinet to cli and gui
+
 ## The planed feature commit: 
 
