@@ -3459,7 +3459,7 @@ echo "$txt_text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom $txt_
 echo "$txt_text_md clone-wallsystem clone-wallinet load-custom loadtiny-custom $txt_text_md"
 echo "$txt_text_md show-custom modify-custom del-custom names-custom $txt_text_md"
 echo "$txt_text_stitle    <firewall-wallsystem> $txt_text_md"
-echo "$txt_text_md client-ssh client-mail games-udp server-web server-samba shield-ssh $text_text_md"
+echo "$txt_text_md client-ssh client-mail games-udp server-samba shield-ssh $text_text_md"
 echo "$txt_text_stitle    <firewall-wallinet> $txt_text_md"
 echo "$txt_text_md wallinet-update wallinet-list wallinet-load wallinet-custom $txt_text_md"
 echo "$txt_text_stitle    <firewall-wallutils> $txt_text_md"
