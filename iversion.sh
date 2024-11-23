@@ -1876,8 +1876,8 @@ echo "#listconceptual=firewall-listconceptual"
 echo "#listnumeral=firewall-listnumeral"
 echo "#wallcustom=firewall-wallcustom"
 echo "#wallsystem=firewall-wallsystem"
-echo "#netsystem=firewall-netsystem"
-echo "#easy=firewall-netsystem"
+echo "#wallutils=firewall-wallutils"
+echo "#easy=firewall-wallutils"
 echo "#examples=options-examples"
 echo "#ntpdate-client=date"
 echo "#list-allrules=list-alltables"
@@ -3447,7 +3447,7 @@ echo "$txt_text_md allow-port-udp4 allow-port-udp6 drop-port-udp4 drop-port-udp6
 echo "$txt_text_stitle    <firewall-wallcustom> $txt_text_md"
 echo "$txt_text_md new-full-custom nueva-completa-custom new-mini-custom $txt_text_md"
 echo "$txt_text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom $txt_text_md"
-echo "$txt_text_md clone-wallsystem load-custom loadtiny-custom $txt_text_md"
+echo "$txt_text_md clone-wallsystem clone-wallinet load-custom loadtiny-custom $txt_text_md"
 echo "$txt_text_md show-custom modify-custom del-custom names-custom $txt_text_md"
 echo "$txt_text_stitle    <firewall-wallsystem> $txt_text_md"
 echo "$txt_text_md client-basic client-web client-ssh client-telnet client-ipp $txt_text_md"
@@ -3459,7 +3459,9 @@ echo "$txt_text_md server-telnet server-irc server-vnc server-print server-webse
 echo "$txt_text_md server-lamp server-news server-ftp server-mail server-teamspeak $txt_text_md"
 echo "$txt_text_md server-mumble server-gateway server-sql server-samba server-proxy $txt_text_md"
 echo "$txt_text_md server-asterisk client-uid-root client-gid-users client-gid-net  $txt_text_md"
-echo "$txt_text_stitle    <firewall-netsystem> $txt_text_md"
+echo "$txt_text_stitle    <firewall-wallinet> $txt_text_md"
+echo "$txt_text_md repo-config repo-update wall-list $txt_text_md"
+echo "$txt_text_stitle    <firewall-wallutils> $txt_text_md"
 echo "$txt_text_md preferences-edit alias-edit options info-options my-note$txt_text_md"
 echo "$txt_text_md cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $txt_text_md"
 echo "$txt_text_md ip4 ip6 route4 route6 info-ip4 info-ip6 info-nodes sockets $txt_text_md"
@@ -3771,14 +3773,14 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-wallsystem:
-##########    firewall-netsystem: options for fwiptables firewall      ##########
-#### :rutina-inicial-firewall-netsystem:
+##########    firewall-wallutils: options for fwiptables firewall      ##########
+#### :rutina-inicial-firewall-wallutils:
 ####
 ####
-if   [ "$cmd_first_option" == "firewall-netsystem" ]; then
+if   [ "$cmd_first_option" == "firewall-wallutils" ]; then
 ####
 ####
-echo "$txt_text_title | firewall-netsystem | $cmd_internal firewall-netsystem | $txt_text_md"
+echo "$txt_text_title | firewall-wallutils | $cmd_internal firewall-wallutils | $txt_text_md"
 echo "$txt_text_md_md preferences-read . show the preferences $txt_text_md"
 echo "$txt_text_md_md preferences-edit . modify the preferences $txt_text_md"
 echo "$txt_text_md_md preferences-regen . recover the initials preferences $txt_text_md"
@@ -3830,7 +3832,64 @@ echo "$txt_text_md "
 exit; fi
 ####
 ####
-#### :rutina-final-firewall-netsystem:
+#### :rutina-final-firewall-wallutils:
+##########    firewall-wallinet: options for fwiptables firewall      ##########
+#### :rutina-inicial-firewall-wallinet:
+####
+####
+if   [ "$cmd_first_option" == "firewall-wallinet" ]; then
+####
+####
+echo "$txt_text_md_md repository-config . configure one repository $txt_text_md"
+echo "$txt_text_md_md repository-update . update one firewall list $txt_text_md"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-firewall-wallinet:
+##########    repo-config: options for fwiptables firewall      ##########
+#### :rutina-inicial-repo-config:
+####
+####
+if   [ "$cmd_first_option" == "repo-config" ]; then
+####
+####
+echo "work in progress $1"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-repo-config:
+##########    repo-update: options for fwiptables firewall      ##########
+#### :rutina-inicial-repo-update:
+####
+####
+if   [ "$cmd_first_option" == "repo-update" ]; then
+####
+####
+echo "work in progress $1"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-repo-update:
+##########    list-wallinet: options for fwiptables firewall      ##########
+#### :rutina-inicial-list-wallinet:
+####
+####
+if   [ "$cmd_first_option" == "wall-list" ]; then
+####
+####
+echo "work in progress $1"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-list-wallinet:
 ##########    options-expert: options for fwiptables firewall      ##########
 #### :rutina-inicial-options-expert:
 #### :rutina-inicial-expert:
@@ -3909,7 +3968,7 @@ $cmd_internal firewall-listnumeral
 $cmd_internal firewall-wallcontrol
 $cmd_internal firewall-wallcustom
 $cmd_internal firewall-wallsystem
-$cmd_internal firewall-netsystem
+$cmd_internal firewall-wallutils
 $cmd_internal expert
 ####
 ####
@@ -8031,7 +8090,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 005  "$txt_text_md firewall-wallcontrol" \
 006  "$txt_text_md firewall-wallcustom" \
 007  "$txt_text_md firewall-wallsystem" \
-008  "$txt_text_md firewall-netsystem"  \
+008  "$txt_text_md firewall-wallutils"  \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
@@ -8043,7 +8102,7 @@ case $menuprincipal in
 005) clear ; $cmd_internal cli-menu-wallcontrol    $cfg_favorite_base_cli ;;
 006) clear ; $cmd_internal cli-menu-wallcustom     $cfg_favorite_base_cli ;;
 007) clear ; $cmd_internal cli-menu-wallsystem     $cfg_favorite_base_cli ;;
-008) clear ; $cmd_internal cli-menu-netsystem      $cfg_favorite_base_cli ;;
+008) clear ; $cmd_internal cli-menu-wallutils      $cfg_favorite_base_cli ;;
 *)        ;;
 esac
 ################################################################################
@@ -8496,11 +8555,11 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-wallcustom:
-##########    cli-menu-netsystem: Manage list rules with one text menu          ##########
-#### :rutina-inicial-cli-menu-netsystem:
+##########    cli-menu-wallutils: Manage list rules with one text menu          ##########
+#### :rutina-inicial-cli-menu-wallutils:
 ####
 ####
-if [ "$cmd_first_option" == "cli-menu-netsystem" ]; then
+if [ "$cmd_first_option" == "cli-menu-wallutils" ]; then
 ####
 ####
 if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
@@ -8522,7 +8581,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$txt_text_title_md [ principal menu ] $txt_text_md $txt_text_title" \
 002 "$txt_text_title [ Info Options     ] $txt_text_title" \
-003 "$txt_text_title [ firewall netsystem ] $txt_text_title" \
+003 "$txt_text_title [ firewall wallutils ] $txt_text_title" \
 011  "$txt_text_md preferences-read" \
 012  "$txt_text_md preferences-edit" \
 013  "$txt_text_md preferences-regen" \
@@ -8621,7 +8680,7 @@ $cmd_internal cli-menu $cfg_favorite_base_cli
 exit; fi
 ####
 ####
-#### :rutina-final-cli-menu-netsystem:
+#### :rutina-final-cli-menu-wallutils:
 ##########    cli-menu-compact: Manage list rules with one text menu          ##########
 #### :rutina-inicial-cli-menu-compact:
 ####
@@ -8749,7 +8808,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 0619  "$txt_text_md del-custom" \
 0620  "$txt_text_md names-custom" \
 0621  "$txt_text_md templates-regen" \
-0700 "$txt_text_title [ firewall-netsystem ] $txt_text_title" \
+0700 "$txt_text_title [ firewall-wallutils ] $txt_text_title" \
 0701  "$txt_text_md preferences-read" \
 0702  "$txt_text_md preferences-edit" \
 0703  "$txt_text_md preferences-regen" \
@@ -8802,7 +8861,7 @@ case $menuprincipal in
 0400) clear ; $cmd_internal cli firewall-wallcontrol ;;
 0500) clear ; $cmd_internal cli firewall-wallsystem ;;
 0600) clear ; $cmd_internal cli firewall-wallcustom ;;
-0700) clear ; $cmd_internal cli firewall-netsystem ;;
+0700) clear ; $cmd_internal cli firewall-wallutils ;;
 ################################################################################
 0201) clear ; $cmd_internal $cfg_favorite_out_cli list4 ;;
 0202) clear ; $cmd_internal $cfg_favorite_out_cli list6 ;;
@@ -9039,7 +9098,7 @@ then echo $txt_message_without_guiroll ; exit ; fi
 ####
 gui_menu="Info|Firewall-List-With-Conceptual|\
 Firewall-List-With-Numeral|firewall-wallcontrol|firewall-wallcustom|\
-firewall-wallsystem|firewall-netsystem"
+firewall-wallsystem|firewall-wallutils"
 selection_menu="$($cmd_command_zenity --forms \
 --text=gui-roll \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
@@ -9067,8 +9126,8 @@ firewall-wallcustom)
 $cmd_internal gui-roll-zenity-firewall-wallcustom ; exit ;;
 firewall-wallsystem)
 $cmd_internal gui-roll-zenity-firewall-wallsystem ; exit ;;
-firewall-netsystem)
-$cmd_internal gui-roll-zenity-firewall-netsystem ; exit ;;
+firewall-wallutils)
+$cmd_internal gui-roll-zenity-firewall-wallutils ; exit ;;
 esac
 ####
 ####
@@ -9484,11 +9543,11 @@ exit ; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-wallsystem:
-##########    gui-roll-zenity-firewall-netsystem: gui with roll  ##########
-#### :rutina-inicial-gui-roll-zenity-firewall-netsystem:
+##########    gui-roll-zenity-firewall-wallutils: gui with roll  ##########
+#### :rutina-inicial-gui-roll-zenity-firewall-wallutils:
 ####
 ####
-if [ "$cmd_first_option" == "gui-roll-zenity-firewall-netsystem" ] ;
+if [ "$cmd_first_option" == "gui-roll-zenity-firewall-wallutils" ] ;
 ####
 ####
 then echo $txt_head_waiting_gui ;
@@ -9518,7 +9577,7 @@ selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu)$cmd_internal gui-roll-zenity ;;
-gui-info-menu)$cmd_internal -gui-zenity firewall-netsystem ;;
+gui-info-menu)$cmd_internal -gui-zenity firewall-wallutils ;;
 preferences-read)$cmd_internal -gui-zenity preferences-read ;;
 preferences-edit)$cmd_internal -gui-zenity preferences-edit ;;
 preferences-regen)$cmd_internal -gui-zenity preferences-regen ;;
@@ -9585,7 +9644,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-zenity-firewall-netsystem:
+#### :rutina-final-gui-roll-zenity-firewall-wallutils:
 ##########    gui-menu: gui menu general: gui con menu  ##########
 #### :rutina-inicial-gui-menu:
 ####
@@ -9600,7 +9659,7 @@ echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="Firewall-listconceptual|Firewall-listnumeral|firewall-wallcontrol|\
-Firewall-wallcustom|Firewall-wallsystem|firewall-netsystem|"
+Firewall-wallcustom|Firewall-wallsystem|firewall-wallutils|"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width \
@@ -9629,8 +9688,8 @@ Firewall-wallcustom*)
 $cmd_internal gui-menu-firewall-wallcustom $cmd_second_option ;;
 Firewall-wallsystem*)
 $cmd_internal gui-menu-firewall-wallsystem $cmd_second_option ;;
-firewall-netsystem*)
-$cmd_internal gui-menu-firewall-netsystem $cmd_second_option ;;
+firewall-wallutils*)
+$cmd_internal gui-menu-firewall-wallutils $cmd_second_option ;;
 esac
 ####
 ####
@@ -10086,11 +10145,11 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-wallsystem:
-##########    gui-menu-firewall-netsystem: gui with menu   ##########
-#### :rutina-inicial-gui-menu-firewall-netsystem:
+##########    gui-menu-firewall-wallutils: gui with menu   ##########
+#### :rutina-inicial-gui-menu-firewall-wallutils:
 ####
 ####
-if [ "$cmd_first_option" == "gui-menu-firewall-netsystem" ]
+if [ "$cmd_first_option" == "gui-menu-firewall-wallutils" ]
 then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
 echo ; else cfg_second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
@@ -10124,7 +10183,7 @@ echo ; echo "$txt_text_title option selected: $final" ; echo ;
 case "$selection_final" in
 1*) exit ;;
 gui-principal-menu*) $cmd_internal gui-menu-$cmd_second_option ;;
-gui-info-menu*)$cmd_internal gui-$cmd_second_option firewall-netsystem ;;
+gui-info-menu*)$cmd_internal gui-$cmd_second_option firewall-wallutils ;;
 preferences-read*)$cmd_internal gui-$cmd_second_option preferences-read ;;
 preferences-edit*)$cmd_internal gui-$cmd_second_option preferences-edit ;;
 preferences-regen*)$cmd_internal gui-$cmd_second_option preferences-regen ;;
@@ -10188,7 +10247,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-firewall-netsystem:
+#### :rutina-final-gui-menu-firewall-wallutils:
 ##########    ready system rules con its option               ##########
 ####
 ####
