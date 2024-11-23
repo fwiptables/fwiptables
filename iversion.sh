@@ -376,7 +376,6 @@ cfg_config_string_algoritmo="kpm"
 cfg_config_string_allowed="one-string-that-like-how-a-passord,sourceforge.net"  
 cfg_config_string_denied=".fb.com,.facebook.com,xxx.html" 
 cfg_config_without_firstoption="options"
-cfg_config_wallinet_repository=""
 cfg_favorite_date_command=""
 cfg_favorite_out_cli=""
 cfg_favorite_realpath_graphicalldialog=""
@@ -633,6 +632,8 @@ cmd_default_fullcfg_spa=\
 #### files files default
 cmd_file_default_preferences=\
 "$cmd_default_directory_preferences/default-preferences-$cmd_version.conf"
+cmd_file_default_repository=\
+"$cmd_default_directory_preferences/default-repository-$cmd_version.conf"
 cmd_file_default_alias=\
 "$cmd_default_directory_preferences/default-alias-$cmd_version.conf"
 cmd_file_default_logcmd=\
@@ -3857,6 +3858,13 @@ if   [ "$cmd_first_option" == "repo-config" ]; then
 ####
 ####
 echo "work in progress $1"
+####
+####
+echo "$title_md default file repository"
+echo "$title_md file: $cmd_file_default_repository"
+####
+####
+cat $cmd_file_default_repository | xargs wget -c -
 ####
 ####
 exit; fi
