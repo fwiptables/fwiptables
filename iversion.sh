@@ -3469,7 +3469,7 @@ echo "$txt_text_md server-lamp server-news server-ftp server-mail server-teamspe
 echo "$txt_text_md server-mumble server-gateway server-sql server-samba server-proxy $txt_text_md"
 echo "$txt_text_md server-asterisk client-uid-root client-gid-users client-gid-net  $txt_text_md"
 echo "$txt_text_stitle    <firewall-wallinet> $txt_text_md"
-echo "$txt_text_md repo-config repo-update wall-list $txt_text_md"
+echo "$txt_text_md wallinet-update wallinet-list wallinet-load $txt_text_md"
 echo "$txt_text_stitle    <firewall-wallutils> $txt_text_md"
 echo "$txt_text_md preferences-edit alias-edit options info-options my-note$txt_text_md"
 echo "$txt_text_md cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $txt_text_md"
@@ -3849,67 +3849,78 @@ exit; fi
 if   [ "$cmd_first_option" == "firewall-wallinet" ]; then
 ####
 ####
-echo "$txt_text_md_md repository-config . configure one repository $txt_text_md"
-echo "$txt_text_md_md repository-update . update one firewall list $txt_text_md"
+echo "$txt_text_md_md wallinet-update . update firewall from repository $txt_text_md"
+echo "$txt_text_md_md wallinet-list   . list updated firewall $txt_text_md"
+echo "$txt_text_md_md wallinet-load   . load firewall $txt_text_md"
 ####
 ####
 exit; fi
 ####
 ####
 #### :rutina-final-firewall-wallinet:
-##########    repo-config: options for fwiptables firewall      ##########
-#### :rutina-inicial-repo-config:
+##########    wallinet-load: options for fwiptables firewall      ##########
+#### :rutina-inicial-wallinet-load:
 ####
 ####
-if   [ "$cmd_first_option" == "repo-config" ]; then
+if   [ "$cmd_first_option" == "wallinet-load" ]; then
 ####
 ####
-echo "work in progress $1"
 ####
 ####
-echo "$title_md default file repository"
-echo "$title_md file: $cmd_file_default_repository"
+echo "$txt_text_title_info [ loading firewall wallinet $cmd_second_option ]"
+cfg_allow_launchrules_firewall="yes" ;
+cfg_type_firewall="wallinet" ;
+cfg_name_firewall="$cmd_second_option" ;
 ####
 ####
-cat $cmd_file_default_repository | xargs wget -c -
+#### see it is sane
+if [ ! -f "$cmd_default_directory_wallinet/$cmd_second_option.txt" ]
+then $cmd_internal wallinet-list ; exit; fi
 ####
 ####
-exit; fi
+#### configure load variables if there are
+if [ -f "$cmd_default_directory_wallinet/$cmd_second_option.txt" ]
+then source $cmd_default_directory_wallinet/$cmd_second_option.txt ; fi
 ####
 ####
-#### :rutina-final-repo-config:
-##########    repo-update: options for fwiptables firewall      ##########
-#### :rutina-inicial-repo-update:
+fi
 ####
 ####
-if   [ "$cmd_first_option" == "repo-update" ]; then
+#### :rutina-final-wallinet-load:
+##########    wallinet-update: options for fwiptables firewall      ##########
+#### :rutina-inicial-wallinet-update:
+####
+####
+if   [ "$cmd_first_option" == "wallinet-update" ]; then
 ####
 ####
 cmd_file_repository="$cmd_default_directory_upgrade/wallinet.tar"
 $cmd_command_curl $cmd_web_repository_wallinet -s -L \
 -o $cmd_file_repository || echo "Without connection" || exit \
 && cd $cmd_default_directory_wallinet && tar -xf $cmd_file_repository \
-&& echo "ok updated"
+&& echo "ok updated wallinet, to list: $cmd_name wallinet-list"
 ####
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-repo-update:
-##########    list-wallinet: options for fwiptables firewall      ##########
-#### :rutina-inicial-list-wallinet:
+#### :rutina-final-wallinet-update:
+##########    wallinet-list: options for fwiptables firewall      ##########
+#### :rutina-inicial-wallinet-list:
 ####
 ####
-if   [ "$cmd_first_option" == "wall-list" ]; then
+if   [ "$cmd_first_option" == "wallinet-list" ]; then
 ####
 ####
-echo "work in progress $1"
+cd $cmd_default_directory_wallinet
+$cmd_command_find  | $cmd_command_sed 's/.txt//g' | $cmd_command_sed 's/.\///g'
+echo "to launch one firewall: $cmd_name wallinet-load firewall"
 ####
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-list-wallinet:
+#### :rutina-final-wallinet-list:
 ##########    options-expert: options for fwiptables firewall      ##########
 #### :rutina-inicial-options-expert:
 #### :rutina-inicial-expert:
@@ -16553,8 +16564,7 @@ $cmd_command_ip6tablesnft  -A OUTPUT \
 fi
 ####
 ####
-######################### rules to allow client ports with without separate rules
- rules
+############### rules to allow client ports with without separate rules
 ####
 ####
 if [ "$cfg_allow_separate_rules" == "no" ]; then 
