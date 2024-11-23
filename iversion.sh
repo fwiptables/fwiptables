@@ -3998,7 +3998,8 @@ $cmd_internal firewall-listconceptual
 $cmd_internal firewall-listnumeral
 $cmd_internal firewall-wallcontrol
 $cmd_internal firewall-wallcustom
-$cmd_internal firewall-wallsystem
+#### $cmd_internal firewall-wallsystem
+$cmd_internal firewall-wallinet
 $cmd_internal firewall-wallutils
 $cmd_internal expert
 ####
@@ -10317,13 +10318,14 @@ cfg_type_firewall="wallcustom" ;
 cfg_name_firewall="$cmd_second_option" ;
 ####
 ####
+#### prepare load-custom
+if [ ! -f "$cmd_default_directory_custom/$cmd_second_option" ]
+then  $cmd_internal names-custom ; exit; fi
+####
+####
 #### configure load-custom variables if there are
 if [ -f "$cmd_default_directory_custom/$cmd_second_option" ]
 then source $cmd_default_directory_custom/$cmd_second_option ; fi
-####
-####
-if [ ! -f "$cmd_default_directory_custom/$cmd_second_option" ]
-then  $cmd_internal names-custom ; exit; fi
 ####
 ####
 fi
