@@ -61,8 +61,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-necesary-root:
-##########     english name, description and version    ##########
-##########     spanish: nombre, descripcion y version   ##########
+##########     Name, description and version    ##########
 #### :rutina-inicial-cmd-env:
 ####
 ####
@@ -142,8 +141,7 @@ cmd_guided_full="$(echo $1-$2-$3-$4 | \
 $cmd_command_sed s/\ /\-/g - | $cmd_command_sed s/\\///g -)"  # all options
 ####
 ####
-##########     english name, description and version    ##########
-##########     spanish: nombre, descripcion y version   ##########
+##########      Name, description and version    ##########
 #### :rutina-inicial-web-official:
 ####
 ####
@@ -180,8 +178,7 @@ cmd_web_blacklist_stevenblack=\
 ####
 ####
 #### :rutina-final-web-official:
-##########   english: search programs: programs path           ##########
-##########   spanish: busca los programas: ruta de programas   ##########
+##########   Search programs: programs path           ##########
 #### :rutina-inicial-possible-commands:
 ####
 ####
@@ -302,8 +299,7 @@ cmd_command_wc="$($cmd_where wc)"
 ####
 ####
 #### :rutina-final-possible-commands:
-##########  english: variables: variables to declare     ##########
-##########  spanish: variables: variables para declarar  ##########
+##########  Variables: variables to declare     ##########
 #### :rutina-inicial-variables-system:
 ####
 ####
@@ -407,8 +403,7 @@ cfg_server_time_waiting="12s"
 ####
 ####
 #### :rutina-final-variables-system:
-##########  english: variables-header: variables to declare in header      ##########
-##########  spanish: variables-header: variables para declarar en cabecera ##########
+##########  Variables-header: variables to declare in header      ##########
 #### :rutina-inicial-variables-header:
 ####
 ####
@@ -462,8 +457,7 @@ txt_message_without_guiroll="$txt_text_title_fail [ install zenity ]"
 ####
 ####
 #### :rutina-final-variables-header:
-##########   english: necesary programs: programs path           ##########
-##########   spanish: necesarios programas: ruta de programas    ##########
+##########   Necesary programs: programs path           ##########
 #### :rutina-inicial-necesary-commands:
 ####
 ####
@@ -496,8 +490,7 @@ exit; fi ; done
 ####
 ####
 #### :rutina-final-necesary-commands:
-##########  english: files:    files and folders from fwiptables          ##########
-##########  spanish: archivos: archivos y carpetas desde fwiptables       ##########
+##########  Files: files and folders from fwiptables          ##########
 #### :rutina-inicial-config-folders:
 ####
 ####
@@ -566,8 +559,7 @@ cmd_default_directory_logcmd="$cmd_default_directory_necesary/fwiptables-logcmd/
 ####
 ####
 #### :rutina-final-config-folders:
-##########   english: if sane config directory                       ##########
-##########   spanish: comprobar sanos directorios de configuracion   ##########
+##########   If sane config directory                       ##########
 #### :rutina-inicial-sane-folders:
 ####
 ####
@@ -624,8 +616,7 @@ $cmd_command_mkdir -p "$cmd_default_directory_upgrade" &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-sane-folders:
-##########   english: if sane config directory                       ##########
-##########   spanish: comprobar sanos directorios de configuracion   ##########
+##########   If sane config directory                       ##########
 #### :rutina-inicial-configs-files:
 ####
 ####
@@ -675,8 +666,7 @@ cmd_file_blacklist_stevenblack=\
 ####
 ####
 #### :rutina-final-config-files:
-##########   english: profile y support X11 for root       ##########
-##########   spanish: profile y soporte de X11 for root    ##########
+##########   Profile y support X11 for root       ##########
 #### :rutina-inicial-xhost:
 ####
 ####
@@ -696,8 +686,7 @@ fi
 ####
 ####
 #### :rutina-final-xhost:
-##########                english: Update variables             ##########
-##########                spanish: Actualiza variables          ##########
+##########                Update variables             ##########
 #### :rutina-inicial-variables-updated:
 ####
 ####
@@ -757,8 +746,7 @@ exit ;; esac ; fi
 ####
 ####
 #### :rutina-final-variables-updated:
-##########      english: search favorite iperf: favorite iperf command        ##########
-##########      spanish: busca preferida fecha: favorita comando de iperf     ##########
+##########      Search favorite iperf: favorite iperf command        ##########
 #### :rutina-inicial-favorite-iperf:
 ####
 ####
@@ -776,8 +764,7 @@ fi
 ####
 ####
 #### :rutina-final-favorite-iperf:
-##########      english: search favorite date: favorite date command        ##########
-##########      spanish: busca preferida fecha: favorita comando de fecha   ##########
+##########      English: search favorite date: favorite date command        ##########
 #### :rutina-inicial-favorite-date:
 ####
 ####
@@ -797,8 +784,7 @@ fi
 ####
 ####
 #### :rutina-final-favorite-date:
-##########      english: search favorite text editor: favorite editor text     ##########
-##########      spanish: busca preferido editor: favorite editor de texto     ##########
+##########      Search favorite text editor: favorite editor text     ##########
 #### :rutina-inicial-favorite-editor:
 ####
 ####
@@ -822,8 +808,7 @@ fi
 ####
 ####
 #### :rutina-final-favorite-editor:
-##########      english: search favorite text dialog: favorite text dialog     ##########
-##########      spanish: busca preferido text dialogo: favorite text dialog    ##########
+##########      english: Search favorite text dialog: favorite text dialog     ##########
 #### :rutina-inicial-favorite-dialog:
 ####
 ####
@@ -847,8 +832,7 @@ fi
 ####
 ####
 #### :rutina-final-favorite-dialog:
-##########      english: search favorite dialog: favorite dialog     ##########
-##########      spanish: busca preferido dialogo: favorite dialog   ##########
+##########      Search favorite dialog: favorite dialog     ##########
 #### :rutina-inicial-favorite-graphicall:
 ####
 ####
@@ -872,8 +856,7 @@ fi
 ####
 ####
 #### :rutina-final-favorite-graphicall:
-##########      english: search favorite browser: favorite browser     ##########
-##########      spanish: busca preferido navegador: favorite browser   ##########
+##########      Search favorite browser: favorite browser     ##########
 #### :rutina-inicial-favorite-browser:
 ####
 ####
@@ -897,8 +880,7 @@ fi
 ####
 ####
 #### :rutina-final-favorite-browser:
-##########      english: search favorite dhcp Discover ip net     ##########
-##########      spanish: busca preferido dhcp Descubre la ip      ##########
+##########      Search favorite dhcp Discover ip net     ##########
 #### :rutina-inicial-favorite-dhcp:
 ####
 ####
@@ -918,8 +900,7 @@ fi
 ####
 ####
 #### :rutina-final-favorite-dhcp:
-##########      english: search favorite date: favorite date command        ##########
-##########      spanish: busca preferida fecha: favorita comando de fecha   ##########
+##########      Search favorite date: favorite date command        ##########
 #### :rutina-inicial-favorite-date-command:
 ####
 ####
@@ -939,8 +920,7 @@ fi
 ####
 ####
 #### :rutina-final-favorite-date:
-##########      english: search favorite text music player             ##########
-##########      spanish: busca preferida texto reproductor de musica   ##########
+##########      Search favorite text music player             ##########
 #### :rutina-inicial-favorite-music:
 ####
 ####
@@ -956,8 +936,7 @@ fi
 ####
 ####
 #### :rutina-final-favorite-music:
-##########    english: ALIAS  simple y firewall y campus       ##########
-##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
+##########    ALIAS  simple y firewall y campus       ##########
 #### :rutina-inicial-alias-system-list:
 ####
 ####
@@ -965,10 +944,8 @@ fi
 ##########     ALIAS SIMPLE
 ####
 ####
-#### english:  alias firewall-list with conceputal firewall-listconceptual:
-#### english:  alias firewall-list with numeral firewall-listnumeral:
-####
-####
+#### prepare alias firewall-list with conceputal firewall-listconceptual:
+#### prepare alias firewall-list with numeral firewall-listnumeral:
 case "$cmd_first_option" in
 list-*) cfg_config_listrules_conceptual="" ;;
 listn-filter4) cfg_config_listrules_conceptual="no" ; cmd_first_option="list-filter4" ;;
@@ -984,14 +961,14 @@ listn-mangle6) cfg_config_listrules_conceptual="no" ; cmd_first_option="list-man
 esac
 ####
 ####
+#### established alias
 case "$cfg_config_listrules_conceptual" in
 "$NULL") cfg_config_listrules_conceptual="" ;;
 *) cfg_config_listrules_conceptual=" -n"  ;; esac
 ####
 ####
 #### :rutina-final-alias-system-list:
-##########    english: ALIAS  simple y firewall y campus       ##########
-##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
+##########    ALIAS  simple y firewall y campus       ##########
 #### :rutina-inicial-alias-system-output:
 ####
 ####
@@ -1079,8 +1056,7 @@ esac
 ####
 ####
 #### :rutina-final-alias-system-output:
-##########    english: ALIAS  simple y firewall y campus       ##########
-##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
+##########    ALIAS  simple y firewall y campus       ##########
 #### :rutina-inicial-alias-system-interface:
 ####
 ####
@@ -1183,7 +1159,6 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ####
 #### :rutina-final-alias-system-interface:
 ##########    ALIAS CONFIG
-##########    ALIAS CONFIG
 #### :rutina-inicial-drop-warning:
 ####
 ####
@@ -1201,7 +1176,6 @@ esac ;
 ####
 ####
 #### :rutina-final-drop-warning:
-##########    ALIAS ESQUIVE CONFIG
 ##########    ALIAS ESQUIVE CONFIG
 #### :rutina-inicial-alias-esquive:
 ####
@@ -1294,7 +1268,6 @@ exit ;; esac ; fi
 ####
 #### :rutina-final-alias-esquive:
 ##########    ALIAS CONFIG NARROW
-##########    ALIAS CONFIG NARROW
 #### :rutina-inicial-alias-narrowtxt:
 ####
 ####
@@ -1327,7 +1300,6 @@ exit ; fi
 ####
 #### :rutina-final-alias-narrowtxt:
 ##########    ALIAS CONFIG TXT
-##########    ALIAS CONFIG TXT
 #### :rutina-inicial-alias-txt:
 ####
 ####
@@ -1352,13 +1324,10 @@ esac ; fi
 ####
 #### :rutina-final-alias-text:
 ##########    ALIAS CONFIG CLI
-##########    ALIAS CONFIG CLI
 #### :rutina-inicial-alias-cli:
 ####
 ####
 #### output cli:
-####
-####
 if [ "$cmd_first_option" == "cli" ] ; then echo "$txt_head_waiting_cli"
 ####
 ####
@@ -1380,13 +1349,10 @@ esac ; fi
 ####
 #### :rutina-final-alias-cli:
 ##########    ALIAS CONFIG LOG
-##########    ALIAS CONFIG LOG
 #### :rutina-inicial-alias-log:
 ####
 ####
 #### output log
-####
-####
 if [ "$cmd_first_option" == "log" ]
 ####
 ####
@@ -1399,7 +1365,6 @@ exit ; fi
 ####
 ####
 #### :rutina-final-alias-log:
-##########    ALIAS CONFIG PDF
 ##########    ALIAS CONFIG PDF
 #### :rutina-inicial-alias-pdf:
 ####
@@ -1423,7 +1388,6 @@ exit ; fi
 ####
 #### :rutina-final-alias-pdf:
 ##########    ALIAS CONFIG SILENT
-##########    ALIAS CONFIG SILENT
 #### :rutina-inicial-alias-silent:
 ####
 ####
@@ -1437,8 +1401,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-alias-silent:
-##########     english: allow-logcmd:       ##########
-##########     spanish: autoguardado        ##########
+##########     allow-logcmd:       ##########
 #### :rutina-inicial-allow-logcmd:
 ####
 ####
@@ -1455,8 +1418,7 @@ fi
 ####
 ####
 #### :rutina-final-allow-logcmd:
-##########   english: tree-log: list log   ##########
-##########   spanish: tree-log: lista log  ##########
+##########   tree-log: list log   ##########
 #### :rutina-inicial-list-tree-log:
 ####
 ####
@@ -1472,8 +1434,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-tree-log:
-##########   english: tree-pdf: list pdf   ##########
-##########   spanish: tree-pdf: lista pdf  ##########
+##########   tree-pdf: list pdf   ##########
 #### :rutina-inicial-list-tree-pdf:
 ####
 ####
@@ -1489,8 +1450,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-tree-pdf:
-##########    english: cat-logcmd: Read log  fwiptables-logcmd   ##########
-##########    spanish: cat-logcmd: Lee  log  fwiptables-logcmd   ##########
+##########    cat-logcmd: Read log  fwiptables-logcmd   ##########
 #### :rutina-inicial-cat-logcmd:
 ####
 ####
@@ -1511,8 +1471,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-cat-logcmd:
-##########    english: log-stat: Read stats log fwiptables-logcmd    ##########
-##########    spanish: log-stat: show stats log  fwiptables-logcmd   ##########
+##########    log-stat: Read stats log fwiptables-logcmd    ##########
 #### :rutina-inicial-log-stat:
 ####
 ####
@@ -1542,8 +1501,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-log-stat:
-##########    english: version: system script, the version option              ##########
-##########    spanish: version: script de sistema, la opcion mostrar version   ##########
+##########    version: system script, the version option              ##########
 #### :rutina-inicial-version:
 ####
 ####
@@ -1586,8 +1544,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-version:
-##########    english: expert-cpufreq-info: info cpu frequence                 ##########
-##########    spanish: expert-cpufreq-info: informacion de frecuencia de cpu   ##########
+##########    expert-cpufreq-info: info cpu frequence                 ##########
 #### :rutina-inicial-expert-cpufreq:
 ####
 ####
@@ -1604,8 +1561,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-cpufreq:
-##########    english: expert-cpupower-info: info cpu frequence                 ##########
-##########    spanish: expert-cpupower-info: informacion de frecuencia de cpu   ##########
+##########    expert-cpupower-info: info cpu frequence                 ##########
 #### :rutina-inicial-expert-cpupower:
 ####
 ####
@@ -1622,8 +1578,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-cpupower:
-##########    english: expert-configs-save: configurations backups in actual folder    ##########
-##########    spanish: expert-configs-save: copia de configuraciones en carpeta actual ##########
+##########    expert-configs-save: configurations backups in actual folder    ##########
 #### :rutina-inicial-expert-configs-save:
 ####
 ####
@@ -1646,8 +1601,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-configs-save:
-##########    english: expert-configs-load: configurations backups in actual folder    ##########
-##########    spanish: expert-configs-load: copia de configuraciones en carpeta actual ##########
+##########    expert-configs-load: configurations backups in actual folder    ##########
 #### :rutina-inicial-expert-configs-load:
 ####
 ####
@@ -1670,8 +1624,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-configs-load:
-##########    english: expert-wpa-scan: search essid wireless   ##########
-##########    spanish: expert-wpa-scan: buscar essid wireless   ##########
+##########    expert-wpa-scan: search essid wireless   ##########
 #### :rutina-inicial-expert-wpascan:
 ####
 ####
@@ -1690,8 +1643,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-wpascan:
-##########    english: expert-wpa-new: example from a file wpa_supplicant   ##########
-##########    spanish: expert-wpa-new: ejemplo de un archivo wpa_supplicant ##########
+##########    expert-wpa-new: example from a file wpa_supplicant   ##########
 #### :rutina-inicial-expert-wpanew:
 ####
 ####
@@ -1732,8 +1684,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-wpanew:
-##########    english: expert-wpa-modify: example from a file wpa_supplicant   ##########
-##########    spanish: expert-wpa-modify: ejemplo de un archivo wpa_supplicant ##########
+##########    expert-wpa-modify: example from a file wpa_supplicant   ##########
 #### :rutina-inicial-expert-wpa-modify:
 ####
 ####
@@ -1770,8 +1721,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-wpamodify:
-##########    english: expert-wpa-list: example from a file wpa_supplicant   ##########
-##########    spanish: expert-wpa-list: ejemplo de un archivo wpa_supplicant ##########
+##########    expert-wpa-list: example from a file wpa_supplicant   ##########
 #### :rutina-inicial-expert-wpalist:
 ####
 ####
@@ -1785,8 +1735,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-expert-wpalist:
-##########    english: expert-wpa-show: example from a file wpa_supplicant   ##########
-##########    spanish: expert-wpa-show: ejemplo de un archivo wpa_supplicant ##########
+##########    expert-wpa-show: example from a file wpa_supplicant   ##########
 #### :rutina-inicial-expert-wpashow:
 ####
 ####
@@ -1808,8 +1757,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-wpashow:
-##########    english: expert-wpa-connect: example from a file wpa_supplicant   ##########
-##########    spanish: expert-wpa-connect: ejemplo de un archivo wpa_supplicant ##########
+##########    expert-wpa-connect: example from a file wpa_supplicant   ##########
 #### :rutina-inicial-expert-wpaconnect:
 ####
 ####
@@ -1845,8 +1793,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-wpaconnect:
-##########    english: expert-wpa-regen: example from a file wpa_supplicant   ##########
-##########    spanish: expert-wpa-regen: ejemplo de un archivo wpa_supplicant ##########
+##########    expert-wpa-regen: example from a file wpa_supplicant   ##########
 #### :rutina-inicial-expert-wparegen:
 ####
 ####
@@ -1864,8 +1811,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-wparegen:
-##########    english: expert-wpa-example: example from a file wpa_supplicant   ##########
-##########    spanish: expert-wpa-example: ejemplo de un archivo wpa_supplicant ##########
+##########    expert-wpa-example: example from a file wpa_supplicant   ##########
 #### :rutina-inicial-expert-wpaexample:
 ####
 ####
@@ -1892,7 +1838,6 @@ exit; fi
 ####
 #### :rutina-final-expert-wpaexample:
 ##########    ALIAS CONFIG REGEN alias-regen:
-##########    ALIAS CONFIG REGEN alias-regen:
 #### :rutina-inicial-alias-regen:
 ####
 ####
@@ -1908,7 +1853,6 @@ exit ; fi
 ####
 #### :rutina-final-alias-regen:
 ##########    ALIAS CONFIG alias: alias-read:
-##########    ALIAS CONFIG alias: alias-read:
 #### :rutina-inicial-alias-read:
 ####
 ####
@@ -1922,7 +1866,6 @@ exit ; fi
 ####
 ####
 #### :rutina-final-alias-read:
-##########    ALIAS CONFIG EXAMPLE alias-example:
 ##########    ALIAS CONFIG EXAMPLE alias-example:
 #### :rutina-inicial-alias-example:
 ####
@@ -1964,8 +1907,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-alias-example:
-##########    english: alias-edit: modify preferences   ##########
-##########    spanish: alias-edit: modify preferences   ##########
+##########    alias-edit: modify preferences   ##########
 #### :rutina-inicial-alias-edit:
 ####
 ####
@@ -1979,8 +1921,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-alias-edit:
-##########    english: preferences-edit: modify preferences   ##########
-##########    spanish: preferences-edit: modify preferences   ##########
+##########    preferences-edit: modify preferences   ##########
 #### :rutina-inicial-preferences-edit:
 ####
 ####
@@ -1994,8 +1935,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-preferences-edit:
-##########    english: preferences-read: modify  preferences         ##########
-##########    spanish: preferences-read: modifica preferencias       ##########
+##########    preferences-read: modify  preferences         ##########
 #### :rutina-inicial-preferences-read:
 ####
 ####
@@ -2009,8 +1949,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-preferences-read:
-##########   english: preferences-regen:  regen preferences       ##########
-##########   spanish: preferences-regen:  regenera preferencias   ##########
+##########   preferences-regen:  regen preferences       ##########
 #### :rutina-inicial-preferences-regen:
 ####
 ####
@@ -2025,8 +1964,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-preferences-regen:
-##########   english: preferences-example:  regen preferences       ##########
-##########   spanish: preferences-example:  regenera preferencias   ##########
+##########   preferences-example:  regen preferences       ##########
 #### :rutina-inicial-preferences-example:
 ####
 ####
@@ -2099,8 +2037,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-preferences-example:
-##########    english: resolve : get net info               ##########
-##########    spanish: resolve : da informacion de la red   ##########
+##########    resolve : get net info               ##########
 #### :rutina-inicial-resolve:
 ####
 ####
@@ -2125,8 +2062,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-resolve:
-##########    english: route : get net info               ##########
-##########    spanish: route : da informacion de la red   ##########
+##########    route : get net info               ##########
 #### :rutina-inicial-route:
 ####
 ####
@@ -2141,8 +2077,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-network:
-##########    english: route4 : get net info               ##########
-##########    spanish: route4 : da informacion de la red   ##########
+##########    route4 : get net info               ##########
 #### :rutina-inicial-route4:
 ####
 ####
@@ -2159,8 +2094,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-route4:
-##########    english: route6 : get net info               ##########
-##########    spanish: route6 : da informacion de la red   ##########
+##########    route6 : get net info               ##########
 #### :rutina-inicial-route6:
 ####
 ####
@@ -2177,8 +2111,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-route6:
-##########    english: ip : get net info               ##########
-##########    spanish: ip : da informacion de la red   ##########
+##########    ip : get net info               ##########
 #### :rutina-inicial-ip:
 ####
 ####
@@ -2193,8 +2126,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-ip:
-##########    english: address : get net info               ##########
-##########    spanish: address : da informacion de la red   ##########
+##########    address : get net info               ##########
 #### :rutina-inicial-address:
 ####
 ####
@@ -2209,8 +2141,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-address:
-##########    english: ip4 : get net info               ##########
-##########    spanish: ip4 : da informacion de la red   ##########
+##########    ip4 : get net info               ##########
 #### :rutina-inicial-ip4:
 ####
 ####
@@ -2236,8 +2167,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-ip4:
-##########    english: ip6 : get net info               ##########
-##########    spanish: ip6 : da informacion de la red   ##########
+##########    ip6 : get net info               ##########
 #### :rutina-inicial-ip6:
 ####
 ####
@@ -2263,8 +2193,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-ip6:
-##########    english: sockets: The sockets option  ##########
-##########    spanish: sockets: La opcion sockets   ##########
+##########    sockets: The sockets option  ##########
 #### :rutina-inicial-sockets:
 ####
 ####
@@ -2284,8 +2213,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-sockets:
-##########    english: info-ip4 : get net info               ##########
-##########    spanish: info-ip4 : da informacion de la red   ##########
+##########    info-ip4 : get net info               ##########
 #### :rutina-inicial-info-ip4:
 ####
 ####
@@ -2303,8 +2231,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-info-ip4:
-##########    english: info-ip6 : get net info               ##########
-##########    spanish: info-ip6 : da informacion de la red   ##########
+##########    info-ip6 : get net info               ##########
 #### :rutina-inicial-info-ip6:
 ####
 ####
@@ -2324,8 +2251,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-info-ip6:
-##########    english: expert-conf-clientproxy: get net info               ##########
-##########    spanish: expert-conf-clientproxy: da informacion de la red   ##########
+##########    expert-conf-clientproxy: get net info               ##########
 #### :rutina-inicial-expert-confclientproxy
 ####
 ####
@@ -2367,8 +2293,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-expert-confclientproxy
-##########    english: expert-show-clientproxy: get net info               ##########
-##########    spanish: expert-show-clientproxy: da informacion de la red   ##########
+##########    expert-show-clientproxy: get net info               ##########
 #### :rutina-inicial-expert-showclientproxy
 ####
 ####
@@ -2402,8 +2327,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-expert-showclientproxy
-##########    english: expert-active-clientproxy: get net info               ##########
-##########    spanish: expert-active-clientproxy: da informacion de la red   ##########
+##########    expert-active-clientproxy: get net info               ##########
 #### :rutina-inicial-expert-deactiveclientproxy
 ####
 ####
@@ -2429,8 +2353,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-expert-activeclientproxy
-##########    english: expert-deactive-clientproxy: get net info               ##########
-##########    spanish: expert-deactive-clientproxy: da informacion de la red   ##########
+##########    expert-deactive-clientproxy: get net info               ##########
 #### :rutina-inicial-expert-deactiveclientproxy
 ####
 ####
@@ -2459,8 +2382,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-expert-deactiveclientproxy
-##########    english: expert-show-resolve : get net info               ##########
-##########    spanish: expert-show-resolve : da informacion de la red   ##########
+##########    expert-show-resolve : get net info               ##########
 #### :rutina-inicial-expert-showresolve
 ####
 ####
@@ -2485,8 +2407,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-showresolve
-##########    english: expert-trace-tcp4: traceroute with tcp and ipv4   ##########
-##########    spanish: expert-trace-tcp4: traceroute con tcp y ipv4      ##########
+##########    expert-trace-tcp4: traceroute with tcp and ipv4   ##########
 #### :rutina-inicial-expert-tracetcp4:
 ####
 ####
@@ -2509,8 +2430,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-tracetcp4:
-##########    english: expert-trace-tcp6: traceroute with tcp and ipv4   ##########
-##########    spanish: expert-trace-tcp6: traceroute con tcp y ipv4      ##########
+##########    expert-trace-tcp6: traceroute with tcp and ipv4   ##########
 #### :rutina-inicial-expert-tracetcp6:
 ####
 ####
@@ -2533,8 +2453,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-tracetcp6:
-##########    english: expert-trace-icmp4: traceroute with tcp and ipv4   ##########
-##########    spanish: expert-trace-icmp4: traceroute con tcp y ipv4      ##########
+##########    expert-trace-icmp4: traceroute with tcp and ipv4   ##########
 #### :rutina-inicial-expert-trace-icmp4:
 ####
 ####
@@ -2557,8 +2476,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-traceicmp4:
-##########    english: expert-trace-icmp6: traceroute with tcp and ipv4   ##########
-##########    spanish: expert-trace-icmp6: traceroute con tcp y ipv4      ##########
+##########    expert-trace-icmp6: traceroute with tcp and ipv4   ##########
 #### :rutina-inicial-expert-trace-icmp6:
 ####
 ####
@@ -2581,8 +2499,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-traceicmp6:
-##########    english: myradio program       ##########
-##########    spanish: myradio programa      ##########
+##########    myradio program       ##########
 #### :rutina-inicial-expert-myradio-install:
 ####
 ####
@@ -2602,8 +2519,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-myradio-install:
-##########    english: utils: posible util depends       ##########
-##########    spanish: utils: posible util dependencias  ##########
+##########    utils: posible util depends       ##########
 #### :rutina-inicial-utils:
 ####
 ####
@@ -2621,8 +2537,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-utils:
-##########    english: depends: depends            ##########
-##########    spanish: depends: dependencias  ##########
+##########    depends: depends            ##########
 #### :rutina-inicial-depends:
 ####
 ####
@@ -2687,8 +2602,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-depends:
-##########    english: options-examples: some example    ##########
-##########    spanish: options-examples: algun ejemplo   ##########
+##########    options-examples: some example    ##########
 #### :rutina-inicial-options-examples:
 ####
 ####
@@ -2783,8 +2697,7 @@ exit; fi
 ####
 ####
 #### :rutina-inicial-options-examples:
-##########    english: weather: show the weather with wttr.in     ##########
-##########    spanish: el tiempo: muestra el tiempo con wttr.in   ##########
+##########    weather: show the weather with wttr.in     ##########
 #### :rutina-inicial-expert-showweather:
 ####
 ####
@@ -2800,8 +2713,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-showweather:
-##########    english: tree-conf: tree configs in fwiptables     ##########
-##########    spanish: tree-conf: arbol de conf en fwiptables    ##########
+##########    tree-conf: tree configs in fwiptables     ##########
 #### :rutina-inicial-tree-conf:
 ####
 ####
@@ -2819,8 +2731,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-tree-conf:
-##########    english: tree-cache: tree configs in fwiptables     ##########
-##########    spanish: tree-cache: arbol de conf en fwiptables    ##########
+##########    tree-cache: tree configs in fwiptables     ##########
 #### :rutina-inicial-tree-cache:
 ####
 ####
@@ -2838,8 +2749,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-tree-cache:
-##########    english: clean-cache: clean cache        ##########
-##########    spanish: clean-cache: limpia la cache    ##########
+##########    clean-cache: clean cache        ##########
 #### :rutina-inicial-clean-cache:
 ####
 ####
@@ -2854,8 +2764,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-clean-cache:
-##########    english: hints: notes to configure iptables      ##########
-##########    spanish: hints: notas para configurar iptables   ##########
+##########    hints: notes to configure iptables      ##########
 #### :rutina-inicial-hints:
 ####
 ####
@@ -2899,8 +2808,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-hints:
-##########   english: templates-regen: templates-regen template wizard files       ##########
-##########   spanish: templates-regen: templates-regenera template wizard archivos ##########
+##########   templates-regen: templates-regen template wizard files       ##########
 #### :rutina-inicial-templates-regen:
 ####
 ####
@@ -2919,8 +2827,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-templates-regen:
-##########  english:  template-tiny-es: for working sane         ########## 
-##########  spanish:  template-tiny-es: para funcionamiento sano ##########
+##########  template-tiny-es: for working sane         ########## 
 #### :rutina-inicial-template-tinyes:
 ####
 ####
@@ -2960,8 +2867,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-template-tinyes:
-##########  english:  template-tiny-en: for working sane         ########## 
-##########  spanish:  template-tiny-en: para funcionamiento sano ##########
+##########  template-tiny-en: for working sane         ########## 
 #### :rutina-inicial-template-tinyen:
 ####
 ####
@@ -3001,8 +2907,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-template-tinyen:
-##########  english:  template-mini-es: for working sane         ########## 
-##########  spanish:  template-mini-es: para funcionamiento sano ##########
+##########   template-mini-es: for working sane         ########## 
 #### :rutina-inicial-template-minies:
 ####
 ####
@@ -3068,8 +2973,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-template-minies:
-##########  english:  template-full-es: for working sane         ########## 
-##########  spanish:  template-full-es: para funcionamiento sano ##########
+##########   template-full-es: for working sane         ########## 
 #### :rutina-inicial-template-fulles:
 ####
 ####
@@ -3136,9 +3040,6 @@ echo "$txt_text_title FINAL .......... Opciones Necesarias .......... ..........
 ####
 ####
 #### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
-####
-####
 echo "$txt_text_title BEGIN OPTIONAL $txt_text_title "
 echo "$txt_text_title INICIO .......... Opciones opcionales .......... .......... $txt_text_title "
 echo "$txt_text_title choose void or no $txt_text_title "
@@ -3196,9 +3097,6 @@ echo "$txt_text_title vacio para permitir otro PROTOCOLO-IP excepcional o no "
 ####
 ####
 #### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
-####
-####
 echo "$txt_text_title Begin Variables $txt_text_title.......... .......... $txt_text_title.......... "
 echo "$txt_text_title Rellena Variables "
 echo "$txt_text_title Options "
@@ -3259,8 +3157,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-template-fulles:
-##########  english:  template-mini-en: for working sane         ########## 
-##########  spanish:  template-mini-en: para funcionamiento sano ##########
+##########  template-mini-en: for working sane         ########## 
 #### :rutina-inicial-template-minien:
 ####
 ####
@@ -3326,8 +3223,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-template-minien:
-##########  english:  template-full-en: for working sane         ########## 
-##########  spanish:  template-full-en: para funcionamiento sano ##########
+##########  template-full-en: for working sane         ########## 
 #### :rutina-inicial-template-fullen:
 ####
 ####
@@ -3390,9 +3286,6 @@ echo "$txt_text_title .......... END Necesary options .......... .......... $txt
 ####
 ####
 #### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
-####
-####
 echo "$txt_text_title BEGIN OPTIONAL $txt_text_title "
 echo "$txt_text_title .......... BEGIN Optional options .......... .......... $txt_text_title "
 echo "$txt_text_title choose void or no $txt_text_title "
@@ -3450,9 +3343,6 @@ echo "$txt_text_title void to allow other POTOCOL-IP excepcional or no"
 ####
 ####
 #### english: advance options in configurations file cfg
-#### spanish: avanzadas opciones in configuracion de archivo cfg
-####
-####
 echo "$txt_text_title Begin Variables $txt_text_title.......... .......... $txt_text_title.......... "
 echo "$txt_text_title Fill Variables "
 echo "$txt_text_title Options "
@@ -3513,8 +3403,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-template-fullen:
-##########    english: autosave: autosave of firewall, standard rules   ##########
-##########    english: autosave: autoguardado de firewall,   estandar   ##########
+##########    autosave: autosave of firewall, standard rules   ##########
 #### :rutina-inicial-autosave:
 ####
 ####
@@ -3537,8 +3426,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-autosave:
-##########    english: options: wellcome with semi help    ##########
-##########    spanish: options: bienvenida con semi ayuda  ##########
+##########    options: wellcome with semi help    ##########
 #### :rutina-inicial-options:
 ####
 ####
@@ -3608,8 +3496,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-options:
-##########     english: code: source from loop     ##########
-##########     spanish: code: fuente de la rutina  ##########
+##########     code: source from loop     ##########
 #### :rutina-inicial-code:
 ####
 ####
@@ -3642,8 +3529,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-code:
-##########    english: names-custom: list some config       ##########
-##########    spanish: names-custom: lista alguna config    ##########
+##########    names-custom: list some config       ##########
 #### :rutina-inicial-names-custom:
 ####
 ####
@@ -3663,8 +3549,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-names-custom:
-##########    english: text-pause: do pause     ##########
-##########    spanish: text-pause: hace pausa   ##########
+##########    text-pause: do pause     ##########
 #### :rutina-inicial-text-pause:
 ####
 ####
@@ -3678,8 +3563,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-text-pause:
-##########    english: free: give one freedom to ram innecesary     ##########
-##########    spanish: free: limpia la memoria ram                  ##########
+##########    free: give one freedom to ram innecesary     ##########
 #### :rutina-inicial-free:
 ####
 ####
@@ -3705,8 +3589,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-free:
-##########    english: firewall-wallcontrol: options for fwiptables firewall      ##########
-##########    spanish: firewall-wallcontrol: opciones para fwiptables firewall    ##########
+##########    firewall-wallcontrol: options for fwiptables firewall      ##########
 #### :rutina-inicial-firewall-wallcontrol:
 ####
 ####
@@ -3755,8 +3638,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-wallcontrol:
-##########    english: firewall-listconceptual: options for fwiptables firewall      ##########
-##########    spanish: firewall-listconceptual: opciones para fwiptables firewall    ##########
+##########    firewall-listconceptual: options for fwiptables firewall      ##########
 #### :rutina-inicial-firewall-listconceptual:
 ####
 ####
@@ -3788,8 +3670,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-listconceptual:
-##########    english: firewall-listnumeral: options for fwiptables firewall      ##########
-##########    spanish: firewall-listnumeral: opciones para fwiptables firewall    ##########
+##########    firewall-listnumeral: options for fwiptables firewall      ##########
 #### :rutina-inicial-firewall-listnumeral:
 ####
 ####
@@ -3821,8 +3702,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-listnumeral:
-##########    english: firewall-wallcustom: options for fwiptables firewall      ##########
-##########    spanish: firewall-wallcustom: opciones para fwiptables firewall    ##########
+##########    firewall-wallcustom: options for fwiptables firewall      ##########
 #### :rutina-inicial-firewall-wallcustom:
 ####
 ####
@@ -3852,8 +3732,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-wallcustom:
-##########    english: firewall-wallsystem: options for fwiptables firewall      ##########
-##########    spanish: firewall-wallsystem: opciones para fwiptables firewall    ##########
+##########    firewall-wallsystem: options for fwiptables firewall      ##########
 #### :rutina-inicial-firewall-wallsystem:
 ####
 ####
@@ -3906,10 +3785,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-wallsystem:
-##########    english: firewall-netsystem: options for fwiptables firewall      ##########
-##########    spanish: firewall-netsystem: opciones para fwiptables firewall    ##########
+##########    firewall-netsystem: options for fwiptables firewall      ##########
 #### :rutina-inicial-firewall-netsystem:
-#### :rutina-inicial-easy:
 ####
 ####
 if   [ "$cmd_first_option" == "firewall-netsystem" ]; then
@@ -3967,10 +3844,8 @@ echo "$txt_text_md "
 exit; fi
 ####
 ####
-#### :rutina-final-easy:
 #### :rutina-final-firewall-netsystem:
-##########    english: options-expert: options for fwiptables firewall      ##########
-##########    spanish: options-expert: opciones para fwiptables firewall    ##########
+##########    options-expert: options for fwiptables firewall      ##########
 #### :rutina-inicial-options-expert:
 #### :rutina-inicial-expert:
 ####
@@ -4033,8 +3908,7 @@ exit; fi
 ####
 #### :rutina-final-expert:
 #### :rutina-final-options-expert:
-##########    english: info-options: options for fwiptables firewall      ##########
-##########    spanish: info-options: opciones para fwiptables firewall    ##########
+##########    info-options: options for fwiptables firewall      ##########
 #### :rutina-inicial-info-options:
 ####
 ####
@@ -4057,8 +3931,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-info-options:
-##########    english: optional-output: options for fwiptables firewall      ##########
-##########    spanish: optional-output: opciones para fwiptables firewall    ##########
+##########    optional-output: options for fwiptables firewall      ##########
 #### :rutina-inicial-optional-output:
 #### :rutina-inicial-parametters:
 ####
@@ -4099,8 +3972,7 @@ exit; fi
 ####
 #### :rutina-final-parametters:
 #### :rutina-final-optional-output:
-##########    english: eraserules: Erase rules option   ##########
-##########    spanish: eraserules: Opcion borra reglas  ##########
+##########    eraserules: Erase rules option   ##########
 #### :rutina-inicial-eraserules:
 ####
 ####
@@ -4160,8 +4032,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-eraserules:
-##########    english: eraserules4: Erase rules option   ##########
-##########    spanish: eraserules4: Opcion borra reglas  ##########
+##########    eraserules4: Erase rules option   ##########
 #### :rutina-inicial-eraserules4:
 ####
 ####
@@ -4251,8 +4122,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-eraserules4:
-##########    english: eraserules6: Erase rules option   ##########
-##########    spanish: eraserules6: Opcion borra reglas  ##########
+##########    eraserules6: Erase rules option   ##########
 #### :rutina-inicial-eraserules6:
 ####
 ####
@@ -4340,8 +4210,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-eraserules6:
-##########     english: list-alltables: list all rules         ##########
-##########     spanish: list-alltables: list todas las reglas  ##########
+##########     list-alltables: list all rules         ##########
 #### :rutina-inicial-list-alltables:
 ####
 ####
@@ -4380,8 +4249,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-alltables:
-##########     english: listn-alltables: list all rules         ##########
-##########     spanish: listn-alltables: list todas las reglas  ##########
+##########     listn-alltables: list all rules         ##########
 #### :rutina-inicial-listn-alltables:
 ####
 ####
@@ -4420,8 +4288,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-listn-alltables:
-##########    english: list4: The list option   ##########
-##########    spanish: list4: La opcion lista   ##########
+##########    list4: The list option   ##########
 #### :rutina-inicial-list4:
 #### :rutina-inicial-ls4:
 ####
@@ -4465,8 +4332,7 @@ exit; fi
 ####
 #### :rutina-final-ls4:
 #### :rutina-final-list4:
-##########    english: list6: list ipv6 rules filter           ##########
-##########    spanish: list6: lista reglas de filtros de ipv6  ##########
+##########    list6: list ipv6 rules filter           ##########
 #### :rutina-inicial-list6:
 #### :rutina-inicial-ls6:
 ####
@@ -4510,8 +4376,7 @@ exit; fi
 ####
 #### :rutina-final-ls6:
 #### :rutina-final-list6:
-##########    english: listn4: The list option   ##########
-##########    spanish: listn4: La opcion lista   ##########
+##########    listn4: The list option   ##########
 #### :rutina-inicial-listn4:
 ####
 ####
@@ -4553,8 +4418,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-listn4:
-##########    english: listn6: list ipv6 rules filter           ##########
-##########    spanish: listn6: lista reglas de filtros de ipv6  ##########
+##########    listn6: list ipv6 rules filter           ##########
 #### :rutina-inicial-listn6:
 ####
 ####
@@ -4596,8 +4460,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-listn6:
-##########    english: status: The list option ipv4 and ipv6    ##########
-##########    spanish: status: La opcion lista ipv4 y ipv6      ##########
+##########    status: The list option ipv4 and ipv6    ##########
 #### :rutina-inicial-status:
 ####
 ####
@@ -4614,8 +4477,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-satus:
-##########    english: statusn: The list option ipv4 and ipv6    ##########
-##########    spanish: statusn: La opcion lista ipv4 y ipv6      ##########
+##########    statusn: The list option ipv4 and ipv6    ##########
 #### :rutina-inicial-statusn:
 ####
 ####
@@ -4632,8 +4494,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-statusn:
-##########    english: listnum: The list option   ##########
-##########    spanish: listnum: La opcion lista   ##########
+##########    listnum: The list option   ##########
 #### :rutina-inicial-listnum:
 ####
 ####
@@ -4676,8 +4537,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-listnum:
-##########    english: listnum6: The list option   ##########
-##########    spanish: listnum6: La opcion lista   ##########
+##########    listnum6: The list option   ##########
 #### :rutina-inicial-listnum6:
 ####
 ####
@@ -4719,8 +4579,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-listnum6:
-##########    english: list-filter4: The list option   ##########
-##########    spanish: list-filter4: La opcion lista   ##########
+##########    list-filter4: The list option   ##########
 #### :rutina-inicial-list-filter4:
 ####
 ####
@@ -4746,8 +4605,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-filter4:
-##########    english: list-forward: List filter forward rules       ##########
-##########    spanish: list-forward: lista reglas de iptables filter forward  ##########
+##########    list-forward: List filter forward rules       ##########
 #### :rutina-inicial-list-forward:
 ####
 ####
@@ -4771,8 +4629,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-forward:
-##########    english: list-filter6: list ipv6 rules filter           ##########
-##########    spanish: list-filter6: lista reglas de filtros de ipv6  ##########
+##########    list-filter6: list ipv6 rules filter           ##########
 #### :rutina-inicial-list-filter6:
 ####
 ####
@@ -4796,8 +4653,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-filter6:
-##########    english: list-forward6: List filter forward rules ipv6        ##########
-##########    spanish: list-forward6: lista reglas de iptables filter forward ipv6   ##########
+##########    list-forward6: List filter forward rules ipv6        ##########
 #### :rutina-inicial-list-forward6:
 ####
 ####
@@ -4821,8 +4677,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-forward6:
-##########    english: list-nat4: list NAT rules of ipv4       ##########
-##########    spanish: list-nat4: lista reglas de NAT de ipv4  ##########
+##########    list-nat4: list NAT rules of ipv4       ##########
 #### :rutina-inicial-list-nat-4:
 ####
 ####
@@ -4846,8 +4701,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-nat-4:
-##########    english: list-nat6: list NAT rules of ipv6       ##########
-##########    spanish: list-nat6: lista reglas de NAT de ipv6  ##########
+##########    list-nat6: list NAT rules of ipv6       ##########
 #### :rutina-inicial-list-nat6:
 ####
 ####
@@ -4871,8 +4725,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-nat6:
-##########    english: listnum-filter4: list option numerical filter ipv4   ##########
-##########    spanish: listnum-filter4: lista numeral filter ipv4           ##########
+##########    listnum-filter4: list option numerical filter ipv4   ##########
 #### :rutina-inicial-listnum-filter4:
 ####
 ####
@@ -4896,8 +4749,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-listnum-filter4:
-##########    english: list-forwardnum: List filter forward rules in numerical     ##########
-##########    spanish: list-forwardnum: lista reglas de iptables filter forward in numeros  ##########
+##########    list-forwardnum: List filter forward rules in numerical     ##########
 #### :rutina-inicial-list-forwardnum:
 ####
 ####
@@ -4921,8 +4773,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-forwardnum:
-##########    english: listnum-filter6: list option numerical filter ipv6   ##########
-##########    spanish: listnum-filter6: lista numeral filter ipv6           ##########
+##########    listnum-filter6: list option numerical filter ipv6   ##########
 #### :rutina-inicial-listnum-filter6:
 ####
 ####
@@ -4946,8 +4797,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-listnum-filter6:
-##########    english: list-forwardnum6: List filter forward rules in numerical ipv6      ##########
-##########    spanish: list-forwardnum6: lista reglas de iptables filter forward in numeros ipv6   ##########
+##########    list-forwardnum6: List filter forward rules in numerical ipv6      ##########
 #### :rutina-inicial-list-forwardnum6:
 ####
 ####
@@ -4971,8 +4821,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-forwardnum6:
-##########    english: list-mangle4: list mangle rules from ipv4      ##########
-##########    spanish: list-mangle4: lista reglas de mangle de ipv4   ##########
+##########    list-mangle4: list mangle rules from ipv4      ##########
 #### :rutina-inicial-list-mangle4:
 ####
 ####
@@ -4997,8 +4846,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-mangle4:
-##########    english: list-mangle6: list mangle rules from ipv6     ##########
-##########    spanish: list-mangle6: lista reglas de mangle de ipv6  ##########
+##########    list-mangle6: list mangle rules from ipv6     ##########
 #### :rutina-inicial-list-mangle6:
 ####
 ####
@@ -5022,8 +4870,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-mangle6:
-##########    english: list-raw4: list raw rules from ipv4  ##########
-##########    spanish: list-raw4: lista reglas raw de ipv4  ##########
+##########    list-raw4: list raw rules from ipv4  ##########
 #### :rutina-inicial-list-raw4:
 ####
 ####
@@ -5047,8 +4894,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-raw4:
-##########    english: list-raw6: list raw rules from ipv6  ##########
-##########    spanish: list-raw6: lista reglas raw de ipv6  ##########
+##########    list-raw6: list raw rules from ipv6  ##########
 #### :rutina-inicial-list-raw6:
 ####
 ####
@@ -5072,8 +4918,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-raw6:
-##########    english: list-security4: list security rules from ipv4     ##########
-##########    spanish: list-security4: lista reglas de security de ipv4  ##########
+##########    list-security4: list security rules from ipv4     ##########
 #### :rutina-inicial-list-security4:
 ####
 ####
@@ -5097,8 +4942,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-security4:
-##########    english: list-security6: list security rules from ipv6     ##########
-##########    spanish: list-security6: lista reglas de security de ipv6  ##########
+##########    list-security6: list security rules from ipv6     ##########
 #### :rutina-inicial-list-security6:
 ####
 ####
@@ -5122,8 +4966,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-security6:
-##########    english: list-ebtables: list ebtables rules with mac adress       ##########
-##########    spanish: list-ebtables: lista reglas de ebtables with mac adress  ##########
+##########    list-ebtables: list ebtables rules with mac adress       ##########
 #### :rutina-inicial-list-ebtables:
 ####
 ####
@@ -5146,8 +4989,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-ebtables:
-##########    english: list-arptables: list rules arptables with arp        ##########
-##########    spanish: list-arptables: lista reglas de arptables with arp   ##########
+##########    list-arptables: list rules arptables with arp        ##########
 #### :rutina-inicial-list-arptables:
 ####
 ####
@@ -5166,8 +5008,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-arptables:
-##########    english: clone-wallsystem: clone config file static static               ##########
-##########    spanish: clone-wallsystem: clona archivo de configuracion prediseniado   ##########
+##########    clone-wallsystem: clone config file static static               ##########
 #### :rutina-inicial-clone-wallsystem:
 ####
 ####
@@ -5200,8 +5041,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-clone-wallsystem:
-##########    english: new-full-custom: new-full-custom option to create new configs   ##########
-##########    spanish: new-full-custom: new-full-custom para cear nuevas config        ##########
+##########    new-full-custom: new-full-custom option to create new configs   ##########
 #### :rutina-inicial-new-full-custom:
 ####
 ####
@@ -5223,8 +5063,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-new-full-custom:
-##########    english: nueva-completa-custom: create new configs                             ##########
-##########    spanish: nueva-completa-custom: nueva-completa-custom para cear nuevas config  ##########
+##########    nueva-completa-custom: create new configs                             ##########
 #### :rutina-inicial-nueva-completa-custom:
 ####
 ####
@@ -5246,8 +5085,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-nueva-completa-custom:
-##########    english: new-mini-custom: create new configs   ##########
-##########    spanish: new-mini config: cea nuevas config   ##########
+##########    new-mini-custom: create new configs   ##########
 #### :rutina-inicial-new-mini-custom:
 ####
 ####
@@ -5269,8 +5107,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-new-mini-custom:
-##########    english: nueva-mini-custom: create new configs   ##########
-##########    spanish: nueva-mini-custom: crea nuevas config   ##########
+##########    nueva-mini-custom: create new configs   ##########
 #### :rutina-inicial-nueva-mini-custom:
 ####
 ####
@@ -5292,8 +5129,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-nueva-mini-custom:
-##########    english: new-tiny-custom: create new configs   ##########
-##########    spanish: new-tiny-custom:  cea nuevas config   ##########
+##########    new-tiny-custom: create new configs   ##########
 #### :rutina-inicial-new-tiny-custom:
 ####
 ####
@@ -5315,8 +5151,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-new-tiny-custom:
-##########    english: nueva-diminuta-custom: create new configs   ##########
-##########    spanish: nueva-diminuta-custom: crea nuevas config   ##########
+##########    nueva-diminuta-custom: create new configs   ##########
 #### :rutina-inicial-nueva-diminuta-custom:
 ####
 ####
@@ -5338,8 +5173,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-nueva-diminuta-custom:
-##########    english: modify-custom: modify a one config.cfg        ##########
-##########    spanish: modify-custom: modify una configuracion.cfg   ##########
+##########    modify-custom: modify a one config.cfg        ##########
 #### :rutina-inicial-modify-custom:
 ####
 ####
@@ -5363,8 +5197,7 @@ clear ; exit ; fi
 ####
 ####
 #### :rutina-final-modify-custom:
-##########    english: show-custom: show a one config          ##########
-##########    spanish: show-custom: muestra una configuracion  ##########
+##########    show-custom: show a one config          ##########
 #### :rutina-inicial-show-custom:
 ####
 ####
@@ -5384,8 +5217,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-show-custom:
-##########    english: del-custom: delete a old config               ##########
-##########    spanish: del-custom: elimina una vieja configuracion   ##########
+##########    del-custom: delete a old config               ##########
 #### :rutina-inicial-del-custom:
 ####
 ####
@@ -5407,8 +5239,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-del-custom:
-##########    english: names: file list whith rules in iptables format          ##########
-##########    spanish: names: lista de archivos con reglas en formato iptables  ##########
+##########    names: file list whith rules in iptables format          ##########
 #### :rutina-inicial-names:
 ####
 ####
@@ -5431,8 +5262,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-names:
-##########    english: reset: reset counter rules            ##########
-##########    spanish: reset: resetea contadores de reglas   ##########
+##########    reset: reset counter rules            ##########
 #### :rutina-inicial-reset:
 ####
 ####
@@ -5449,8 +5279,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-reset:
-##########    english: changes: developer changes       ##########
-##########    spanish: changes: cambios de desarrollo   ##########
+##########    changes: developer changes       ##########
 #### :rutina-inicial-changes:
 ####
 ####
@@ -5493,8 +5322,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-changes:
-##########   english: readme: show intro      ##########
-##########   spanish: readme: muestra intro   ##########
+##########   readme: show intro      ##########
 #### :rutina-inicial-readme:
 ####
 ####
@@ -5547,8 +5375,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-readme:
-##########   english: intro: show intro      ##########
-##########   spanish: intro: muestra intro   ##########
+##########   intro: show intro      ##########
 #### :rutina-inicial-intro:
 ####
 ####
@@ -5589,8 +5416,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-intro:
-##########    english: ip-forward: the ipforwading option en english   ##########
-##########    spanish: ip-forward: la opcion de reenvios  en ingles    ##########
+##########    ip-forward: the ipforwading option en english   ##########
 #### :rutina-inicial-ip-forward:
 ####
 ####
@@ -5627,8 +5453,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-ip-forward:
-##########   english: download:   where download fwiptables    ##########
-##########   spanish: download:   donde descargar fwiptables   ##########
+##########   download:   where download fwiptables    ##########
 #### :rutina-inicial-download:
 ####
 ####
@@ -5654,8 +5479,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-download:
-##########   english: uninstall:      fwiptables uninstall      ##########
-##########   spanish: desinstalador:  fwiptables desistalador   ##########
+##########   uninstall:      fwiptables uninstall      ##########
 #### :rutina-inicial-uninstall:
 ####
 ####
@@ -5671,8 +5495,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-uninstall:
-##########       english: install:    fwiptables install          ##########
-##########       spanish: instalador: fwiptables instalador       ##########
+##########       install:    fwiptables install          ##########
 #### :rutina-inicial-install:
 ####
 ####
@@ -5727,8 +5550,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-install:
-##########    english: my-note: take notes   ##########
-##########    spanish: my-note: toma notas   ##########
+##########    my-note: take notes   ##########
 #### :rutina-inicial-my-note:
 ####
 ####
@@ -5758,8 +5580,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-my-note:
-##########    english: expert-gen-readme: generate installed respository   ##########
-##########    spanish: expert-gen-readme: genera instalado respositorio    ##########
+##########    expert-gen-readme: generate installed respository   ##########
 #### :rutina-inicial-expert-gen-readme:
 ####
 ####
@@ -5780,8 +5601,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-gen-readme:
-##########    english: expert-gen-deb: generate installed respository   ##########
-##########    spanish: expert-gen-deb: genera instalado respositorio    ##########
+##########    expert-gen-deb: generate installed respository   ##########
 #### :rutina-inicial-expert-gen-deb:
 ####
 ####
@@ -5821,8 +5641,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-gen-deb:
-##########    english: expert-show-geoip: host to resolve and locate       ##########
-##########    spanish: expert-show-geoip: host para resolver y localizar   ##########
+##########    expert-show-geoip: host to resolve and locate       ##########
 #### :rutina-inicial-expert-show-geoip:
 ####
 ####
@@ -5844,8 +5663,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-show-geoip:
-##########    english: info-nodes: listen at dump from conexiones arp    ##########
-##########    spanish: info-nodes: escucha al volcado de conexiones arp  ##########
+##########    info-nodes: listen at dump from conexiones arp    ##########
 #### :rutina-inicial-info-nodes:
 ####
 ####
@@ -5865,8 +5683,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-info-nodes:
-##########    english: donate: link donate    ##########
-##########    spanish: donate: link donate  ##########
+##########    donate: link donate    ##########
 #### :rutina-inicial-donate:
 ####
 ####
@@ -5881,8 +5698,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-donate:
-##########    english:  about: acerca de   ##########
-##########    spanish:  about: acerca de  ##########
+##########    about: acerca de   ##########
 #### :rutina-inicial-about:
 ####
 ####
@@ -5900,33 +5716,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-about:
-##########    english: license-gpl-v3: license gpl v3   ##########
-##########    spanish: license-gpl-v3: license gpl v3   ##########
-#### :rutina-inicial-license-gpl-v3:
-####
-#### 
-#### if [ "$cmd_first_option" == "license-gpl-v3" ];  then
-####
-####
-#### echo "$txt_text_title_info \
-#### [ Show license from git sourceforge for $cmd_internal ] "
-####
-#### if [ "$cmd_command_curl" == "$NULL" ]; then
-#### echo "$txt_text_title Install curl to download/install latest version"; fi
-####
-#### echo "license text for $cmd_first_option downloading"
-#### echo
-#### echo ..................................................................
-#### echo
-#### $cmd_command_curl -s -L $cmd_web_license_gplv3 --stderr /dev/null
-####
-####
-#### exit;  fi
-####
-####
-#### :rutina-final-license-gpl-v3:
-##########    english: license-gpl-v2: license gpl v2   ##########
-##########    spanish: license-gpl-v2: license gpl v2   ##########
+##########    license-gpl-v2: license gpl v2   ##########
 #### :rutina-inicial-license-gpl-v2:
 ####
 ####
@@ -5950,8 +5740,7 @@ exit;  fi
 ####
 ####
 #### :rutina-final-license-gpl-v2:
-##########    english: license-lgpl-v2: license gpl v2   ##########
-##########    spanish: license-lgpl-v2: license gpl v2   ##########
+##########    license-lgpl-v2: license gpl v2   ##########
 #### :rutina-inicial-license-lgpl-v2:
 ####
 ####
@@ -5975,29 +5764,7 @@ exit;  fi
 ####
 ####
 #### :rutina-final-license-lgpl-v2:
-##########    english: license-bsd-v1: license gpl v2   ##########
-##########    spanish: license-bsd-v1: license gpl v2   ##########
-#### :rutina-inicial-license-bsd-v1:
-####
-####
-#### if [ "$cmd_first_option" == "license-bsd-v1" ]; then 
-#### echo "$txt_text_title_info \
-#### [ Show license from git sourceforge for $cmd_internal ] "
-####
-#### if [ "$cmd_command_curl" == "$NULL" ]; then
-#### echo "$txt_text_title Install curl to download/install latest version"; fi
-####
-#### echo "license text for $cmd_first_option downloading"
-#### echo
-#### echo ..................................................................
-#### echo
-#### $cmd_command_curl -L $content_license_bsd --stderr /dev/null
-#### exit;  fi
-####
-####
-#### :rutina-final-license-bsd-v1:
-##########    english: expert-pc-halt: power off computer   ##########
-##########    spanish: expert-pc-halt: apaga el ordenador   ##########
+##########    expert-pc-halt: power off computer   ##########
 #### :rutina-inicial-expert-pc-halt:
 ####
 ####
@@ -6023,8 +5790,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-pc-halt:
-##########    english: expert-pc-poweroff: power off computer   ##########
-##########    spanish: expert-pc-poweroff: apaga el ordenador   ##########
+##########    expert-pc-poweroff: power off computer   ##########
 #### :rutina-inicial-expert-pc-poweroff:
 ####
 ####
@@ -6049,8 +5815,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-pc-poweroff:
-##########    english: expert-pc-shutdown: power off computer   ##########
-##########    spanish: expert-pc-shutdown: apaga el ordenador   ##########
+##########    expert-pc-shutdown: power off computer   ##########
 #### :rutina-inicial-expert-pc-shutdown:
 ####
 ####
@@ -6075,8 +5840,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-pc-shutdown:
-##########    english: expert-pc-reboot: reboot computer         ##########
-##########    spanish: expert-pc-reboot: reinicia el ordenador   ##########
+##########    expert-pc-reboot: reboot computer         ##########
 #### :rutina-inicial-expert-pc-reboot:
 ####
 ####
@@ -6101,8 +5865,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-pc-reboot:
-##########    english: expert-show-newversion: upgrade fwiptables    ##########
-##########    spanish: expert-show-newversion: upgrade fwiptables    ##########
+##########    expert-show-newversion: upgrade fwiptables    ##########
 #### :rutina-inicial-expert-show-newversion:
 ####
 ####
@@ -6140,8 +5903,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-show-newversion:
-##########    english: expert-upgrade-estable: upgrade fwiptables    ##########
-##########    spanish: expert-upgrade-estable: upgrade fwiptables    ##########
+##########    expert-upgrade-estable: upgrade fwiptables    ##########
 #### :rutina-inicial-expert-upgrade-estable:
 ####
 ####
@@ -6161,8 +5923,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-upgrade-estable:
-##########    english: expert-upgrade-unstable: upgrade fwiptables    ##########
-##########    spanish: expert-upgrade-unstable: upgrade fwiptables    ##########
+##########    expert-upgrade-unstable: upgrade fwiptables    ##########
 #### :rutina-inicial-expert-upgrade-unstable:
 ####
 ####
@@ -6184,8 +5945,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-upgrade-unstable:
-##########    english: compile: compile with obash      ##########
-##########    spanish: compile: compila with obash      ##########
+##########    compile: compile with obash      ##########
 #### :rutina-inicial-compile:
 ####
 ####
@@ -6203,8 +5963,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-compile:
-##########    english: expert-gen-compile: compile with obash      ##########
-##########    spanish: expert-gen-compile: compila with obash      ##########
+##########    expert-gen-compile: compile with obash      ##########
 #### :rutina-inicial-expert-gen-compile:
 ####
 ####
@@ -6233,8 +5992,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-gen-compile:
-##########    english: expert-upgrade-adblock: compile with obash      ##########
-##########    spanish: expert-upgrade-adblock: compila with obash      ##########
+##########    expert-upgrade-adblock: compile with obash      ##########
 #### :rutina-inicial-expert-upgrade-adblock:
 ####
 ####
@@ -6258,8 +6016,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-upgrade-adblock:
-##########    english: info: info of first option            ##########
-##########    spanish: info: info of primera opcion          ##########
+##########    info: info of first option            ##########
 #### :rutina-inicial-info:
 ####
 ####
@@ -6283,8 +6040,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-info:
-##########    english: expert-speed-glx: show frammes with mesa graphicall            ##########
-##########    spanish: expert-speed-glx: muestra los fotogramas con graphicos mesa    ##########
+##########    expert-speed-glx: show frammes with mesa graphicall            ##########
 #### :rutina-inicial-expert-speed-glx:
 ####
 ####
@@ -6303,8 +6059,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-speed-glx:
-##########    english: expert-speed-disk: benchmark ram with 100Mb    ##########
-##########    spanish: expert-speed-disk: benchmark ram con  100Mb    ##########
+##########    expert-speed-disk: benchmark ram with 100Mb    ##########
 #### :rutina-inicial-expert-speed-disk:
 ####
 ####
@@ -6324,8 +6079,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-speed-disk:
-##########    english: expert-speed-ram: benchmark ram with 100Mb    ##########
-##########    spanish: expert-speed-ram: benchmark ram con  100Mb    ##########
+##########    expert-speed-ram: benchmark ram with 100Mb    ##########
 #### :rutina-inicial-expert-speed-ram:
 ####
 ####
@@ -6347,8 +6101,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-speed-ram:
-##########    english: expert-speed-cpu: benchmark cpu        ##########
-##########    spanish: expert-speed-cpu: comparativa cpu      ##########
+##########    expert-speed-cpu: benchmark cpu        ##########
 #### :rutina-inicial-expert-speed-cpu:
 ####
 ####
@@ -6366,8 +6119,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-speed-cpu:
-##########    english: date: update the date and time    ##########
-##########    spanish: date: actualiza la fecha y hora   ##########
+##########    date: update the date and time    ##########
 #### :rutina-inicial-date:
 ####
 ####
@@ -6393,8 +6145,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-date:
-##########    english: wizard: wizard-mini      ##########
-##########    spanish: wizard: mini-asistente   ##########
+##########    wizard: choose wizard      ##########
 #### :rutina-inicial-wizard:
 ####
 ####
@@ -6412,8 +6163,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-wizard:
-##########    english: wizard-tiny: wizard-tiny      ##########
-##########    spanish: wizard-tiny: mini-asistente   ##########
+##########    wizard-tiny: wizard-tiny      ##########
 #### :rutina-inicial-wizard-tiny:
 ####
 ####
@@ -6435,8 +6185,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-wizard-tiny:
-##########    english: wizard-mini: wizard-mini      ##########
-##########    spanish: wizard-mini: mini-asistente   ##########
+##########    wizard-mini: wizard-mini      ##########
 #### :rutina-inicial-wizard-mini:
 ####
 ####
@@ -6458,8 +6207,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-wizard-mini:
-##########    english: wizard-full: wizard-full     ##########
-##########    spanish: wizard-full: asistente       ##########
+##########    wizard-full: wizard-full     ##########
 #### :rutina-inicial-wizard-full:
 ####
 ####
@@ -6481,8 +6229,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-wizard-full:
-##########    english: load: load the rules in iptables format      ##########
-##########    spanish: load: carga las reglas en formato iptables   ##########
+##########    load: load the rules in iptables format      ##########
 #### :rutina-inicial-load:
 ####
 ####
@@ -6526,8 +6273,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-load:
-##########    english: save: save the rules in iptables format      ##########
-##########    spanish: save: guarda las reglas en formato iptables  ##########
+##########    save: save the rules in iptables format      ##########
 #### :rutina-inicial-save:
 ####
 ####
@@ -6564,8 +6310,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-save:
-##########    english: show: show the rules from one firewall in iptables format    ##########
-##########    spanish: show: muestra las reglas de un firewall en formato iptables  ##########
+##########    show: show the rules from one firewall in iptables format    ##########
 #### :rutina-inicial-show:
 ####
 ####
@@ -6612,8 +6357,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-show:
-##########    english: actual: show actual firewall          ##########
-##########    spanish: actual: muestra las reglas actuales   ##########
+##########    actual: show actual firewall          ##########
 #### :rutina-inicial-actual:
 ####
 ####
@@ -6648,8 +6392,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-actual:
-##########    english: stop: stop firewall      ##########
-##########    spanish: stop: para el firewall   ##########
+##########    stop: stop firewall      ##########
 #### :rutina-inicial-stop:
 ####
 ####
@@ -6682,8 +6425,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-stop:
-##########    english: continue: continue the firewall      ##########
-##########    spanish: continue: continua el cortafuegos    ##########
+##########    continue: continue the firewall      ##########
 #### :rutina-inicial-continue:
 ####
 ####
@@ -6708,8 +6450,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-continue:
-##########    english: config-eng: several options to config in english        ##########
-##########    spanish: config-eng: varias opciones para configurar en ingles   ##########
+##########    config-eng: several options to config in english        ##########
 #### :rutina-inicial-config-eng:
 ####
 ####
@@ -6724,8 +6465,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-config-eng:
-##########    english: config-spa: several options to config in spanish         ##########
-##########    spanish: config-spa: varias opciones para configurar en spanish   ##########
+##########    config-spa: several options to config in spanish         ##########
 #### :rutina-inicial-config-spa:
 ####
 ####
@@ -6740,8 +6480,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-config-spa:
-##########    english: add-whitelist: whitelist ipv4      ##########
-##########    spanish: add-whitelist: lista blanca ipv4   ##########
+##########    add-whitelist: whitelist ipv4      ##########
 #### :rutina-inicial-add-whitelist
 ####
 ####
@@ -6759,8 +6498,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-add-wihtelist
-##########    english: add-blacklist: blacklist ipv4      ##########
-##########    spanish: add-blacklist: lista negra ipv4    ##########
+##########    add-blacklist: blacklist ipv4      ##########
 #### :rutina-inicial-add-blacklist
 ####
 ####
@@ -6779,8 +6517,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-add-blacklist
-##########    english: add-whitelist4: whitelist ipv4      ##########
-##########    spanish: add-whitelist4: lista blanca ipv4   ##########
+##########    add-whitelist4: whitelist ipv4      ##########
 #### :rutina-inicial-add-wihtelist4
 ####
 ####
@@ -6812,8 +6549,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-add-wihtelist4
-##########    english: add-whitelist6: whitelist ipv6    ##########
-##########    spanish: add-whitelist6: lista blanca ipv6   ##########
+##########    add-whitelist6: whitelist ipv6    ##########
 #### :rutina-inicial-add-wihtelist6
 ####
 ####
@@ -6845,8 +6581,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-add-wihtelist6
-##########    english: add-blacklist4: blacklist ipv4      ##########
-##########    spanish: add-blacklist4: lista negra ipv4    ##########
+##########    add-blacklist4: blacklist ipv4      ##########
 #### :rutina-inicial-add-blacklist4
 ####
 ####
@@ -6879,8 +6614,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-add-blacklist4
-##########    english: add-blacklist6: blacklist ipv6    ##########
-##########    spanish: add-blacklist6: lista negra ipv6   ##########
+##########    add-blacklist6: blacklist ipv6    ##########
 #### :rutina-inicial-add-blacklist6
 ####
 ####
@@ -6913,8 +6647,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-add-blacklist6
-##########    english: allow-port-tcp: add port to tcp ip4      ##########
-##########    spanish: allow-port-tcp: añade puerto to tcp ip4  ##########
+##########    allow-port-tcp: add port to tcp ip4      ##########
 #### :rutina-inicial-allow-port-tcp
 ####
 ####
@@ -6933,8 +6666,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-allow-port-tcp
-##########    english: drop-port-tcp: add port to tcp ip4      ##########
-##########    spanish: drop-port-tcp: añade puerto to tcp ip4  ##########
+##########    drop-port-tcp: add port to tcp ip4      ##########
 #### :rutina-inicial-allow-port-tcp
 ####
 ####
@@ -6953,13 +6685,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-drop-port-tcp
-
-
-
-
-
-##########    english: allow-port-udp: add port to tcp ip4      ##########
-##########    spanish: allow-port-udp: añade puerto to tcp ip4  ##########
+##########    allow-port-udp: add port to tcp ip4      ##########
 #### :rutina-inicial-allow-port-udp
 ####
 ####
@@ -6978,8 +6704,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-allow-port-udp
-##########    english: drop-port-udp: add port to tcp ip4      ##########
-##########    spanish: drop-port-udp: añade puerto to tcp ip4  ##########
+##########    drop-port-udp: add port to tcp ip4      ##########
 #### :rutina-inicial-allow-port-udp
 ####
 ####
@@ -6998,8 +6723,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-drop-port-udp
-##########    english: allow-port-tcp4: add port to tcp ip4      ##########
-##########    spanish: allow-port-tcp4: añade puerto to tcp ip4  ##########
+##########    allow-port-tcp4: add port to tcp ip4      ##########
 #### :rutina-inicial-allow-port-tcp4
 ####
 ####
@@ -7036,8 +6760,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-allow-port-tcp4
-##########    english: allow-port-tcp6: add port to tcp ip6      ##########
-##########    spanish: allow-port-tcp6: añade puerto to tcp ip6  ##########
+##########    allow-port-tcp6: add port to tcp ip6      ##########
 #### :rutina-inicial-allow-port-tcp6
 ####
 ####
@@ -7074,8 +6797,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-allow-port-tcp6
-##########    english: drop-port-tcp4: add port to tcp ip4      ##########
-##########    spanish: drop-port-tcp4: añade puerto to tcp ip4  ##########
+##########    drop-port-tcp4: add port to tcp ip4      ##########
 #### :rutina-inicial-drop-port-tcp4
 ####
 ####
@@ -7112,8 +6834,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-drop-port-tcp4
-##########    english: drop-port-tcp6: add port to tcp ip6      ##########
-##########    spanish: drop-port-tcp6: añade puerto to tcp ip6  ##########
+##########    drop-port-tcp6: add port to tcp ip6      ##########
 #### :rutina-inicial-drop-port-tcp6
 ####
 ####
@@ -7150,18 +6871,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-drop-port-tcp6
-
-
-
-
-
-
-
-
-
-
-##########    english: allow-port-udp4: add port to tcp ip4      ##########
-##########    spanish: allow-port-udp4: añade puerto to tcp ip4  ##########
+##########    allow-port-udp4: add port to tcp ip4      ##########
 #### :rutina-inicial-allow-port-udp4
 ####
 ####
@@ -7198,8 +6908,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-allow-port-udp4
-##########    english: allow-port-udp6: add port to tcp ip6      ##########
-##########    spanish: allow-port-udp6: añade puerto to tcp ip6  ##########
+##########    allow-port-udp6: add port to tcp ip6      ##########
 #### :rutina-inicial-allow-port-udp6
 ####
 ####
@@ -7236,8 +6945,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-allow-port-tcp6
-##########    english: drop-port-udp4: add port to tcp ip4      ##########
-##########    spanish: drop-port-udp4: añade puerto to tcp ip4  ##########
+##########    drop-port-udp4: add port to tcp ip4      ##########
 #### :rutina-inicial-drop-port-udp4
 ####
 ####
@@ -7274,8 +6982,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-drop-port-udp4
-##########    english: drop-port-udp6: add port to tcp ip6      ##########
-##########    spanish: drop-port-udp6: añade puerto to tcp ip6  ##########
+##########    drop-port-udp6: add port to tcp ip6      ##########
 #### :rutina-inicial-drop-port-udp6
 ####
 ####
@@ -7312,8 +7019,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-drop-port-udp6
-##########    english: speed-ip4: speed from internet        ##########
-##########    spanish: speed-ip4: velocidad desde internet   ##########
+##########    speed-ip4: speed from internet        ##########
 #### :rutina-inicial-speed-ip4:
 ####
 ####
@@ -7343,8 +7049,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-speed-ip4:
-##########    english: speed-ip6: speed from internet        ##########
-##########    spanish: speed-ip6: velocidad desde internet   ##########
+##########    speed-ip6: speed from internet        ##########
 #### :rutina-inicial-speed-ip6:
 ####
 ####
@@ -7372,8 +7077,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-speed-ip6:
-##########    english: sockets: The sockets option  ##########
-##########    spanish: sockets: La opcion sockets   ##########
+##########    sockets: The sockets option  ##########
 #### :rutina-inicial-sockets:
 ####
 ####
@@ -7393,8 +7097,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-sockets:
-##########    english: web: browse the   web ##########
-##########    spanish: web: navega en la web ##########
+##########    web: browse the   web ##########
 #### :rutina-inicial-web:
 ####
 ####
@@ -7428,8 +7131,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-web:
-##########    english: expert-sockets-ss: The sockets option  ##########
-##########    spanish: expert-sockets-ss: La opcion sockets   ##########
+##########    expert-sockets-ss: The sockets option  ##########
 #### :rutina-inicial-expert-sockets-ss:
 ####
 ####
@@ -7453,8 +7155,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-sockets-ss:
-##########    english: expert-sockets-lsof: The sockets option lsof  ##########
-##########    spanish: expert-sockets-lsof: La opcion sockets lsof   ##########
+##########    expert-sockets-lsof: The sockets option lsof  ##########
 #### :rutina-inicial-expert-sockets-lsof:
 ####
 ####
@@ -7472,8 +7173,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-sockets-lsof:
-##########    english: expert-sockets-netstat: The sockets option lsof  ##########
-##########    spanish: expert-sockets-netstat: La opcion sockets lsof   ##########
+##########    expert-sockets-netstat: The sockets option lsof  ##########
 #### :rutina-inicial-expert-sockets-netstat:
 ####
 ####
@@ -7492,8 +7192,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-sockets-netstat:
-##########    english: expert-show-webcert: get the certificate from one web       ##########
-##########    spanish: expert-show-webcert: obtiene el certificado de una web      ##########
+##########    expert-show-webcert: get the certificate from one web       ##########
 #### :rutina-inicial-expert-show-webcert:
 ####
 ####
@@ -7518,8 +7217,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-show-webcert:
-##########    english: expert-nmap-tcp: scan one net per tcp       ##########
-##########    spanish: expert-nmap-tcp: rastrea una red por tcp    ##########
+##########    expert-nmap-tcp: scan one net per tcp       ##########
 #### :rutina-inicial-expert-nmap-tcp:
 ####
 ####
@@ -7543,8 +7241,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-nmap-tcp:
-##########    english: expert-nmap-syn: scan one net per syn         ##########
-##########    spanish: expert-nmap-syn: rastrea una por peticiones   ##########
+##########    expert-nmap-syn: scan one net per syn         ##########
 #### :rutina-inicial-expert-nmap-syn:
 ####
 ####
@@ -7569,8 +7266,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-nmap-syn:
-##########    english: expert-nmap-fin: scan one net per conexiones      ##########
-##########    spanish: expert-nmap-fin: rastrea una red por conexiones   ##########
+##########    expert-nmap-fin: scan one net per conexiones      ##########
 #### :rutina-inicial-expert-nmap-fin:
 ####
 ####
@@ -7595,8 +7291,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-nmap-fin:
-##########    english: expert-nmap-udp: scan one net per udp       ##########
-##########    spanish: expert-nmap-udp: rastrea una red por udp    ##########
+##########    expert-nmap-udp: scan one net per udp       ##########
 #### :rutina-inicial-expert-nmap-udp:
 ####
 ####
@@ -7621,8 +7316,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-nmap-udp:
-##########    english: expert-nmap-ping: scan one net per ping     ##########
-##########    spanish: expert-nmap-ping: rastrea una red por ping  ##########
+##########    expert-nmap-ping: scan one net per ping     ##########
 #### :rutina-inicial-expert-nmap-ping:
 ####
 ####
@@ -7646,14 +7340,10 @@ exit; fi
 ####
 ####
 #### :rutina-final-nmap-ping:
-##########    english: -gui: Manage gui con three options  ##########
-##########    spanish: -gui: Maneja gui con tres opciones  ##########
+##########    -gui: Manage gui con three options  ##########
 ####
 ####
 #### english: with third option
-#### spanish: con tercera opcion
-####
-####
 if [ "$cmd_first_option" == "gui" ] && [ "$cmd_third_option" != "$NULL" ]
 ####
 ####
@@ -7837,8 +7527,7 @@ esac
 exit; fi
 ####
 ####
-##########    english: -gui: with second option    ##########
-##########    spanish: -gui: con segunda opcion    ##########
+##########    -gui: with second option    ##########
 ####
 ####
 if [ "$cmd_first_option" == "gui" ] && [ "$cmd_second_option" != "$NULL" ]
@@ -7974,8 +7663,7 @@ esac
 exit; fi
 ####
 ####
-##########    english: -gui: without more options    ##########
-##########    spanish: -gui: sin mas opcion          ##########
+##########    -gui: without more options    ##########
 ####
 ####
 if [ "$cmd_first_option" == "gui" ] && [ "$cmd_second_option" == "$NULL" ]
@@ -7996,8 +7684,7 @@ $cfg_favorite_realpath_graphicalldialog  --text-info \
 exit; fi
 ####
 ####
-##########    english: gui-shell-zenity: graphic enviroment            ##########
-##########    spanish: gui-shell-zenity: entorno de comandos grafico   ##########
+##########    gui-shell-zenity: graphic enviroment            ##########
 #### :rutina-inicial-gui-shell-zenity:
 ####
 ####
@@ -8007,7 +7694,7 @@ if   [ "$cmd_first_option" == "gui-shell-zenity" ]
 then echo $txt_head_waiting_gui
 ####
 ####
-####  english: principal gui  #### spanish: principal gui
+####  principal gui  #### 
 ####
 ####
 titulo="$cmd_internal gui-shell-zenity"
@@ -8035,7 +7722,6 @@ $NULL) $cmd_internal gui-zenity options; exit ;;
 ####
 ####
 #### english: new-full-custom and nueva-completa-custom whithout parameters ####
-#### spanish: new-full-custom and nueva-completa-custom sin parametros      ####
 ####
 ####
 "new-full-custom")
@@ -8076,9 +7762,6 @@ $cfg_favorite_realpath_graphicalldialog  --forms \
 ####
 ####
 #### english: new-full-custom and nueva-completa-custom whithout parameters ####
-#### spanish: new-full-custom and nueva-completa-custom sin parametros      ####
-####
-####
 "new-full-custom" )
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -8117,9 +7800,6 @@ $cfg_favorite_realpath_graphicalldialog  --forms \
 ####
 ####
 #### english: several options con parametros
-#### spanish: varias opciones con parametros
-####
-####
 new-full-custom*)
 unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-zenity new-full-custom $unarchivo
@@ -8166,9 +7846,6 @@ $cmd_internal -gui-zenity alias-edit
 ####
 ####
 #### english: all other otpions    ####
-#### spanish: las demas opciones   ####
-####
-####
 "$NULL")  exit ;;
 *) $cmd_internal $menugtk &> $cmd_file_output_cache
 $cfg_favorite_realpath_graphicalldialog  --text-info \
@@ -8184,8 +7861,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-gui-shell-zenity:
-##########    english: gui-shell-yad: graphic enviroment            ##########
-##########    spanish: gui-shell-yad: entorno de comandos grafico   ##########
+##########    gui-shell-yad: graphic enviroment            ##########
 #### :rutina-inicial-gui-shell-yad:
 ####
 ####
@@ -8195,7 +7871,7 @@ if   [ "$cmd_first_option" == "gui-shell-yad" ]
 then echo $txt_head_waiting_gui
 ####
 ####
-####  english: principal gui  #### spanish: principal gui
+####  principal gui  
 ####
 ####
 titulo="$cmd_internal gui-shell-yad"
@@ -8223,15 +7899,6 @@ $NULL) $cmd_internal gui-yad options; exit ;;
 ####
 ####
 #### english: new-full-custom and nueva-completa-custom whithout parameters ####
-#### spanish: new-full-custom and nueva-completa-custom sin parametros      ####
-####
-####
-####
-####
-#### english: new-full-custom and nueva-completa-custom whithout parameters ####
-#### spanish: new-full-custom and nueva-completa-custom sin parametros      ####
-####
-####
 "new-full-custom")
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -8270,9 +7937,6 @@ $cfg_favorite_realpath_graphicalldialog  --forms \
 ####
 ####
 #### english: new-full-custom and nueva-completa-custom whithout parameters ####
-#### spanish: new-full-custom and nueva-completa-custom sin parametros      ####
-####
-####
 "new-full-custom" )
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -8311,9 +7975,6 @@ $cfg_favorite_realpath_graphicalldialog  --forms \
 ####
 ####
 #### english: several options con parametros
-#### spanish: varias opciones con parametros
-####
-####
 new-full-custom*)
 unarchivo=$(echo $menugtk | $cmd_command_sed 's/\///g' | $cmd_command_cut -d " " -f 2)
 $cmd_internal -gui-yad new-full-custom $unarchivo
@@ -8360,9 +8021,6 @@ $cmd_internal -gui-yad alias-edit
 ####
 ####
 #### english: all other otpions    ####
-#### spanish: las demas opciones   ####
-####
-####
 *) $cmd_internal $menugtk &> $cmd_file_output_cache
 $cmd_command_yad --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -8384,9 +8042,7 @@ exit ; fi
 ################################################################################
 #### 
 #### 
-#### english: dialog choosed #### spanish: dialogo elegido
-#### 
-####
+#### english: dialog choosed 
 if [ "$cmd_first_option" == "cli-menu" ]; then
 ####
 ####
@@ -8438,8 +8094,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu:
-##########    english: cli-menu-listconceptual: Manage list rules with one text menu          ##########
-##########    spanish: cli-menu-listconceptual: Maneja lista de reglas con un menu de texto   ##########
+##########    cli-menu-listconceptual: Manage list rules with one text menu          ##########
 #### :rutina-inicial-cli-menu-listconceptual:
 ####
 ####
@@ -8517,8 +8172,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-listconceptual:
-##########    english: cli-menu-listnumeral: Manage list rules with one text menu          ##########
-##########    spanish: cli-menu-listnumeral: Maneja lista de reglas con un menu de texto   ##########
+##########    cli-menu-listnumeral: Manage list rules with one text menu          ##########
 #### :rutina-inicial-cli-menu-listnumeral:
 ####
 ####
@@ -8596,8 +8250,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-listnumeral:
-##########    english: cli-menu-wallcontrol: Manage list rules with one text menu          ##########
-##########    spanish: cli-menu-wallcontrol: Maneja lista de reglas con un menu de texto   ##########
+##########    cli-menu-wallcontrol: Manage list rules with one text menu          ##########
 #### :rutina-inicial-cli-menu-wallcontrol:
 ####
 ####
@@ -8686,8 +8339,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-wallcontrol:
-##########    english: cli-menu-wallsystem: Manage list rules with one text menu          ##########
-##########    spanish: cli-menu-wallsystem: Maneja lista de reglas con un menu de texto   ##########
+##########    cli-menu-wallsystem: Manage list rules with one text menu          ##########
 #### :rutina-inicial-cli-menu-wallsystem:
 ####
 ####
@@ -8793,8 +8445,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-wallsystem:
-##########    english: cli-menu-wallcustom: Manage list rules with one text menu          ##########
-##########    spanish: cli-menu-wallcustom: Maneja lista de reglas con un menu de texto   ##########
+##########    cli-menu-wallcustom: Manage list rules with one text menu          ##########
 #### :rutina-inicial-cli-menu-wallcustom:
 ####
 ####
@@ -8884,8 +8535,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-wallcustom:
-##########    english: cli-menu-netsystem: Manage list rules with one text menu          ##########
-##########    spanish: cli-menu-netsystem: Maneja lista de reglas con un menu de texto   ##########
+##########    cli-menu-netsystem: Manage list rules with one text menu          ##########
 #### :rutina-inicial-cli-menu-netsystem:
 ####
 ####
@@ -9011,8 +8661,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-netsystem:
-##########    english: cli-menu-compact: Manage list rules with one text menu          ##########
-##########    spanish: cli-menu-compact: Maneja lista de reglas con un menu de texto   ##########
+##########    cli-menu-compact: Manage list rules with one text menu          ##########
 #### :rutina-inicial-cli-menu-compact:
 ####
 ####
@@ -9181,9 +8830,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 ################################################################################
 #### 
 #### 
-#### english: dialog choosed #### spanish: dialogo elegido
-#### 
-####
+#### english: dialog choosed #### 
 case $menuprincipal in
 ##########
 ##########
@@ -9385,8 +9032,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-compact:
-##########    english: text-pause: do pause     ##########
-##########    spanish: text-pause: hace pausa   ##########
+##########    text-pause: do pause     ##########
 #### :rutina-inicial-text-pause:
 ####
 ####
@@ -9401,8 +9047,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-text-pause:
-##########    english: graphicall-pause: do pause     ##########
-##########    spanish: graphicall-pause: hace pausa   ##########
+##########    graphicall-pause: do pause     ##########
 #### :rutina-inicial-graphicall-pause:
 ####
 ####
@@ -9420,7 +9065,6 @@ exit; fi
 ##################################################################################
 ##################################################################################
 ##########    english: gui-roll-zenity: gui roll general: gui with roll  #########
-##########    spanish: gui-roll-zenity: gui roll general: gui con roll   #########
 #### :rutina-inicial-gui-roll-zenity:
 ####
 ####
@@ -9471,8 +9115,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity:
-##########    english: gui-roll-zenity-firewall-wallcontrol: gui with roll  ##########
-##########    spanish: gui-roll-zenity-firewall-wallcontrol: gui con roll   ##########
+##########    gui-roll-zenity-firewall-wallcontrol: gui with roll  ##########
 #### :rutina-inicial-gui-roll-zenity-firewall-wallcontrol:
 ####
 ####
@@ -9565,8 +9208,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-wallcontrol:
-##########    english: gui-roll-zenity-firewall-listconceptual: gui with roll  ##########
-##########    spanish: gui-roll-zenity-firewall-listconceptual: gui con roll   ##########
+##########    gui-roll-zenity-firewall-listconceptual: gui with roll  ##########
 #### :rutina-inicial-gui-roll-zenity-firewall-listconceptual:
 ####
 ####
@@ -9620,8 +9262,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-listconceptual:
-##########    english: gui-roll-zenity-firewall-listnumeral: gui roll ##########
-##########    spanish: gui-roll-zenity-firewall-listnumeral: gui roll ##########
+##########    gui-roll-zenity-firewall-listnumeral: gui roll ##########
 #### :rutina-inicial-gui-roll-zenity-firewall-listnumeral:
 ####
 ####
@@ -9673,8 +9314,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-listnumeral:
-##########    english: gui-roll-zenity-firewall-wallcustom: gui with roll  ##########
-##########    spanish: gui-roll-zenity-firewall-wallcustom: gui con roll   ##########
+##########    gui-roll-zenity-firewall-wallcustom: gui with roll  ##########
 #### :rutina-inicial-gui-roll-zenity-firewall-wallcustom:
 ####
 ####
@@ -9770,8 +9410,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-wallcustom:
-##########    english: gui-roll-zenity-firewall-wallsystem: gui-roll ##########
-##########    spanish: gui-roll-zenity-firewall-wallsystem: gui-roll ##########
+##########    gui-roll-zenity-firewall-wallsystem: gui-roll ##########
 #### :rutina-inicial-gui-roll-zenity-firewall-wallsystem:
 ####
 ####
@@ -9884,8 +9523,7 @@ exit ; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-wallsystem:
-##########    english: gui-roll-zenity-firewall-netsystem: gui with roll  ##########
-##########    spanish: gui-roll-zenity-firewall-netsystem: gui con roll   ##########
+##########    gui-roll-zenity-firewall-netsystem: gui with roll  ##########
 #### :rutina-inicial-gui-roll-zenity-firewall-netsystem:
 ####
 ####
@@ -9987,8 +9625,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-netsystem:
-##########    english: gui-menu: gui menu general: gui con menu  ##########
-##########    spanish: gui-menu: gui menu general: gui con menu  ##########
+##########    gui-menu: gui menu general: gui con menu  ##########
 #### :rutina-inicial-gui-menu:
 ####
 ####
@@ -10040,8 +9677,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu:
-##########    english: gui-menu-firewall-wallcontrol: gui with menu   ##########
-##########    spanish: gui-menu-firewall-wallcontrol: gui con menu    ##########
+##########    gui-menu-firewall-wallcontrol: gui with menu   ##########
 #### :rutina-inicial-gui-menu-firewall-wallcontrol:
 ####
 ####
@@ -10148,8 +9784,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-wallcontrol:
-##########    english: gui-menu-firewall-listconceptual: gui with menu   ##########
-##########    spanish: gui-menu-firewall-listconceptual: gui con menu    ##########
+##########    gui-menu-firewall-listconceptual: gui with menu   ##########
 #### :rutina-inicial-gui-menu-firewall-listconceptual:
 ####
 ####
@@ -10207,8 +9842,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-listconceptual:
-##########    english: gui-menu-firewall-listnumeral: gui with menu   ##########
-##########    spanish: gui-menu-firewall-listnumeral: gui con menu    ##########
+##########    gui-menu-firewall-listnumeral: gui with menu   ##########
 #### :rutina-inicial-gui-menu-firewall-listnumeral:
 ####
 ####
@@ -10267,8 +9901,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-listnumeral:
-##########    english: gui-menu-firewall-wallcustom: gui with menu   ##########
-##########    spanish: gui-menu-firewall-wallcustom: gui con menu    ##########
+##########    gui-menu-firewall-wallcustom: gui with menu   ##########
 #### :rutina-inicial-gui-menu-firewall-wallcustom:
 ####
 ####
@@ -10373,8 +10006,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-wallcustom:
-##########   english: gui-menu-firewall-wallsystem: gui with menu    ##########
-##########   spanish: gui-menu-firewall-wallsystem: gui con menu     ##########
+##########   gui-menu-firewall-wallsystem: gui with menu    ##########
 #### :rutina-inicial-gui-menu-firewall-wallsystem:
 ####
 ####  
@@ -10493,8 +10125,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-wallsystem:
-##########    english: gui-menu-firewall-netsystem: gui with menu   ##########
-##########    spanish: gui-menu-firewall-netsystem: gui con menu    ##########
+##########    gui-menu-firewall-netsystem: gui with menu   ##########
 #### :rutina-inicial-gui-menu-firewall-netsystem:
 ####
 ####
@@ -10597,22 +10228,18 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-netsystem:
-##########    english: ready system rules con its option               ##########
-##########    spanish: preprara reglas del sistema con sus opciones    ##########
+##########    ready system rules con its option               ##########
 ####
 ####
-####   #### english: The first        firewall of system  custom
-####   #### spanish: El primero       cortafuego del sistema custom
+####   #### The first        firewall of system  custom
 ####
 ####
 ####
 ####
-####   #### english: firewall of system custom:
-####   #### spanish: cortafuego del sistema custom:
+####   #### firewall of system custom:
 ####
 ####
-##########   english: load-custom: firewall      ##########
-##########   spanish: load-custom: cortafuegos   ##########
+##########   load-custom: firewall      ##########
 #### :rutina-inicial-load-custom:
 ####
 ####
@@ -10641,8 +10268,7 @@ fi
 ####
 ####
 #### :rutina-final-load-custom:
-##########   english: loadtiny-custom: firewall      ##########
-##########   spanish: loadtiny-custom: cortafuegos   ##########
+##########   loadtiny-custom: firewall      ##########
 #### :rutina-inicial-loadtiny-custom:
 ####
 ####
@@ -10655,10 +10281,7 @@ cfg_type_firewall="tinycustom" ;
 cfg_name_firewall="$cmd_second_option" ;
 ####
 ####
-#### english: configure load-custom variables if there are
-#### spanish: configura variables modificadas si estan ahi
-####
-####
+#### configure load-custom variables if there are
 if [ -f "$cmd_default_directory_custom/$cmd_second_option" ]
 then source $cmd_default_directory_custom/$cmd_second_option ; fi
 ####
@@ -10671,8 +10294,7 @@ fi
 ####
 ####
 #### :rutina-final-loadtiny-custom:
-##########   english: tinyserver-tcp: firewall      ##########
-##########   spanish: tinyserver-tcp: cortafuegos   ##########
+##########   tinyserver-tcp: firewall      ##########
 #### :rutina-inicial-tinyserver-tcp:
 ####
 ####
@@ -10713,8 +10335,7 @@ fi
 ####
 ####
 #### :rutina-final-tinyserver-tcp:
-##########   english: tinyserver-udp: firewall      ##########
-##########   spanish: tinyserver-udp: cortafuegos   ##########
+##########   tinyserver-udp: firewall      ##########
 #### :rutina-inicial-tinyserver-udp:
 ####
 ####
@@ -10755,8 +10376,7 @@ fi
 ####
 ####
 #### :rutina-final-tinyserver-udp:
-##########   english: miniserver-tcp: firewall      ##########
-##########   spanish: miniserver-tcp: cortafuegos   ##########
+##########   miniserver-tcp: firewall      ##########
 #### :rutina-inicial-miniserver-tcp:
 ####
 ####
@@ -10796,8 +10416,7 @@ fi
 ####
 ####
 #### :rutina-final-miniserver-tcp:
-##########   english: miniserver-udp: firewall      ##########
-##########   spanish: miniserver-udp: cortafuegos   ##########
+##########   miniserver-udp: firewall      ##########
 #### :rutina-inicial-miniserver-udp:
 ####
 ####
@@ -10867,27 +10486,22 @@ exit ; fi
 #### :rutina-final-variables:
 ###############  variables:
 ###############
-##########    english: ready system rules con its option               ##########
-##########    spanish: preprara reglas del sistema con sus opciones    ##########
+##########    ready system rules con its option               ##########
 ####
 ####
-####   #### english: The first        firewall of system  static
-####   #### spanish: El primero       cortafuego del sistema predesignado
+####   ####  The first        firewall of system  static
 ####
 ####
 ####
 ####
-####   #### english: firewall of system static:
-####   #### spanish: cortafuego del sistema static:
+####   ####  firewall of system static:
 ####
 ####
-##########   english: system firewall           ##########
-##########   spanish: cortafuegos del sistema   ##########
+##########    system firewall           ##########
 #### :rutina-inicial-before-without-connection:
 ####
 ####
-####   #### english: firewall of system without-connection:
-####   #### spanish: cortafuego del sistema without-connection:
+####   #### firewall of system without-connection:
 ####
 ####
 if [ "$cmd_first_option" == "without-connection" ]; then
