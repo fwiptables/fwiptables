@@ -3566,8 +3566,10 @@ echo "$txt_text_md stop continue reset show save load names actual eraserules $t
 echo "$txt_text_md eraserules4 eraserules6 without-connection input-permisive $txt_text_md"
 echo "$txt_text_md input-established wizard-tiny wizard-mini wizard-full $txt_text_md"
 echo "$txt_text_md tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp $txt_text_md"
+echo "$txt_text_md add-whitelist add-blacklist allow-port-tcp allow-port-udp $txt_text_md" 
 echo "$txt_text_md add-whitelist4 add-whitelist6 add-blacklist4 add-blacklist6 $txt_text_md" 
 echo "$txt_text_md allow-port-tcp4 allow-port-tcp6 drop-port-tcp4 drop-port-tcp6 $txt_text_md" 
+echo "$txt_text_md allow-port-udp4 allow-port-udp6 drop-port-udp4 drop-port-udp6 $txt_text_md" 
 echo "$txt_text_stitle    <firewall-wallcustom> $txt_text_md"
 echo "$txt_text_md new-full-custom nueva-completa-custom new-mini-custom $txt_text_md"
 echo "$txt_text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom $txt_text_md"
@@ -6732,6 +6734,45 @@ exit; fi
 ####
 ####
 #### :rutina-final-config-spa:
+##########    english: add-whitelist: whitelist ipv4      ##########
+##########    spanish: add-whitelist: lista blanca ipv4   ##########
+#### :rutina-inicial-add-whitelist
+####
+####
+if [ "$cmd_first_option" == "add-whitelist" ] ; then
+####
+####
+if [ "$2" == "$NULL" ]; then echo "$txt_text_title_fail type host to be in whitelist"; exit ; fi
+####
+####
+$cmd_internal add-whitelist4 $2
+$cmd_internal add-whitelist6 $2
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-add-wihtelist
+##########    english: add-blacklist: blacklist ipv4      ##########
+##########    spanish: add-blacklist: lista negra ipv4    ##########
+#### :rutina-inicial-add-blacklist
+####
+####
+if [ "$cmd_first_option" == "add-blacklist" ] ; then
+####
+####
+if [ "$2" == "$NULL" ]; then
+echo "$txt_text_title_fail type host ip4 or net ip4 to be in blacklist" ; exit ; fi
+####
+####
+$cmd_internal add-blacklist4 $2
+$cmd_internal add-blacklist6 $2
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-add-blacklist
 ##########    english: add-whitelist4: whitelist ipv4      ##########
 ##########    spanish: add-whitelist4: lista blanca ipv4   ##########
 #### :rutina-inicial-add-wihtelist4
@@ -6866,6 +6907,46 @@ exit; fi
 ####
 ####
 #### :rutina-final-add-blacklist6
+##########    english: allow-port-tcp: add port to tcp ip4      ##########
+##########    spanish: allow-port-tcp: añade puerto to tcp ip4  ##########
+#### :rutina-inicial-allow-port-tcp
+####
+####
+if [ "$cmd_first_option" == "allow-port-tcp" ] ; then
+####
+####
+if [ "$2" == "$NULL" ]; then 
+echo "$txt_text_title_fail type ip4 port or example with 21,23:25"; exit ; fi
+####
+####
+$cmd_internal allow-port-tcp4 $2
+$cmd_internal allow-port-tcp6 $2
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-allow-port-tcp
+##########    english: drop-port-tcp: add port to tcp ip4      ##########
+##########    spanish: drop-port-tcp: añade puerto to tcp ip4  ##########
+#### :rutina-inicial-allow-port-tcp
+####
+####
+if [ "$cmd_first_option" == "drop-port-tcp" ] ; then
+####
+####
+if [ "$2" == "$NULL" ]; then 
+echo "$txt_text_title_fail type ip4 port or example with 21,23:25"; exit ; fi
+####
+####
+$cmd_internal drop-port-tcp4 $2
+$cmd_internal drop-port-tcp6 $2
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-drop-port-tcp
 ##########    english: allow-port-tcp4: add port to tcp ip4      ##########
 ##########    spanish: allow-port-tcp4: añade puerto to tcp ip4  ##########
 #### :rutina-inicial-allow-port-tcp4
