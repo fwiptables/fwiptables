@@ -3456,12 +3456,10 @@ echo "$txt_text_md allow-port-udp4 allow-port-udp6 drop-port-udp4 drop-port-udp6
 echo "$txt_text_stitle    <firewall-wallcustom> $txt_text_md"
 echo "$txt_text_md new-full-custom nueva-completa-custom new-mini-custom $txt_text_md"
 echo "$txt_text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom $txt_text_md"
-echo "$txt_text_md clone-wallsystem clone-wallinet load-custom loadtiny-custom $txt_text_md"
+echo "$txt_text_md clone-wallinet load-custom loadtiny-custom $txt_text_md"
 echo "$txt_text_md show-custom modify-custom del-custom names-custom $txt_text_md"
-echo "$txt_text_stitle    <firewall-wallsystem> $txt_text_md"
-echo "$txt_text_md client-ssh client-mail games-udp server-samba shield-ssh $text_text_md"
 echo "$txt_text_stitle    <firewall-wallinet> $txt_text_md"
-echo "$txt_text_md wallinet-update wallinet-list wallinet-load $txt_text_md"
+echo "$txt_text_md wallinet-update wallinet-list wallinet-load wallinet-show $txt_text_md"
 echo "$txt_text_stitle    <firewall-wallutils> $txt_text_md"
 echo "$txt_text_md preferences-edit alias-edit options info-options my-note$txt_text_md"
 echo "$txt_text_md cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $txt_text_md"
@@ -3844,7 +3842,7 @@ if   [ "$cmd_first_option" == "firewall-wallinet" ]; then
 echo "$txt_text_md_md wallinet-update . update firewall from repository $txt_text_md"
 echo "$txt_text_md_md wallinet-list   . list updated firewall $txt_text_md"
 echo "$txt_text_md_md wallinet-load   . load firewall $txt_text_md"
-echo "$txt_text_md_md wallinet-custom . clone firewall to custom $txt_text_md"
+echo "$txt_text_md_md wallinet-show   . clone firewall to custom $txt_text_md"
 ####
 ####
 exit; fi
@@ -3887,11 +3885,15 @@ fi
 if   [ "$cmd_first_option" == "wallinet-update" ]; then
 ####
 ####
+if [ "$cmd_command_tar" == "$NULL" ] ; then 
+echo "$txt_text_title_fail please install tar command"; fi
+####
+####
 cmd_file_repository="$cmd_default_directory_upgrade/wallinet.tar"
 $cmd_command_curl $cmd_web_repository_wallinet -s -L \
 -o $cmd_file_repository || echo "Without connection" || exit \
 && cd $cmd_default_directory_wallinet && tar -xf $cmd_file_repository \
-&& echo "ok updated wallinet, to list: $cmd_name wallinet-list"
+&& echo "$txt_text_title_ok updated wallinet, to list with: $cmd_name wallinet-list"
 ####
 ####
 exit; fi
@@ -3907,13 +3909,35 @@ if   [ "$cmd_first_option" == "wallinet-list" ]; then
 ####
 cd $cmd_default_directory_wallinet
 $cmd_command_find  | $cmd_command_sed 's/.txt//g' | $cmd_command_sed 's/.\///g'
-echo "to launch one firewall: $cmd_name wallinet-load firewall"
+echo "$txt_text_title_ok to load firewall: $cmd_name wallinet-load firewall"
+
 ####
 ####
 exit; fi
 ####
 ####
 #### :rutina-final-wallinet-list:
+##########    wallinet-show: options for fwiptables firewall      ##########
+#### :rutina-inicial-wallinet-show:
+####
+####
+if   [ "$cmd_first_option" == "wallinet-show" ]; then
+####
+####
+cfg_file_select="$cmd_default_directory_wallinet/$cmd_second_option.txt"
+####
+if [ -f "$cfg_file_select" ]
+then cat $cfg_file_select
+else cd $cmd_default_directory_wallinet
+$cmd_command_find  | $cmd_command_sed 's/.txt//g' | $cmd_command_sed 's/.\///g'
+echo "to show one firewall: $cmd_name wallinet-show firewall"
+fi
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-wallinet-show:
 ##########    options-expert: options for fwiptables firewall      ##########
 #### :rutina-inicial-options-expert:
 #### :rutina-inicial-expert:
