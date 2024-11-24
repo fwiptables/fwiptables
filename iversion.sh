@@ -8161,7 +8161,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 004  "$txt_text_md firewall-listnumeral" \
 005  "$txt_text_md firewall-wallcontrol" \
 006  "$txt_text_md firewall-wallcustom" \
-007  "$txt_text_md firewall-wallsystem" \
+007  "$txt_text_md firewall-wallinet" \
 008  "$txt_text_md firewall-wallutils"  \
 3>&1 1>&2 2>&3 )"
 ##########
@@ -8173,7 +8173,7 @@ case $menuprincipal in
 004) clear ; $cmd_internal cli-menu-listnumeral    $cfg_favorite_base_cli ;;
 005) clear ; $cmd_internal cli-menu-wallcontrol    $cfg_favorite_base_cli ;;
 006) clear ; $cmd_internal cli-menu-wallcustom     $cfg_favorite_base_cli ;;
-007) clear ; $cmd_internal cli-menu-wallsystem     $cfg_favorite_base_cli ;;
+007) clear ; $cmd_internal cli-menu-wallinet       $cfg_favorite_base_cli ;;
 008) clear ; $cmd_internal cli-menu-wallutils      $cfg_favorite_base_cli ;;
 *)        ;;
 esac
@@ -8435,7 +8435,7 @@ exit; fi
 #### :rutina-inicial-cli-menu-wallsystem:
 ####
 ####
-if [ "$cmd_first_option" == "cli-menu-wallsystem" ]; then
+if [ "$cmd_first_option" == "cli-menu-wallinet" ]; then
 if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$txt_text_title_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
@@ -8455,76 +8455,28 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001 "$txt_text_title_md [ principal menu ] $txt_text_md $txt_text_title" \
 002 "$txt_text_title [ Info Options        ] $txt_text_title" \
-003 "$txt_text_title [ Firewall Wallsystem ] $txt_text_title" \
-007  "$txt_text_md client-basic" \
-008  "$txt_text_md client-web" \
-009  "$txt_text_md client-ssh" \
-010  "$txt_text_md client-telnet" \
-011  "$txt_text_md client-git" \
-012  "$txt_text_md games-shooter" \
-013  "$txt_text_md game-wesnoth" \
-014  "$txt_text_md game-minetest" \
-015  "$txt_text_md game-freeciv" \
-016  "$txt_text_md game-widelands" \
-017  "$txt_text_md client-web" \
-018  "$txt_text_md client-vnc" \
-019  "$txt_text_md client-tor" \
-020  "$txt_text_md client-vpn" \
-021  "$txt_text_md client-torrent" \
-022  "$txt_text_md lan-tor" \
-023  "$txt_text_md lan-vpn" \
-024  "$txt_text_md shield-ssh" \
-025  "$txt_text_md server-ssh" \
-026  "$txt_text_md server-web" \
-027  "$txt_text_md server-vnc" \
-028  "$txt_text_md server-print" \
-029  "$txt_text_md server-samba" \
-030  "$txt_text_md server-lamp" \
-031  "$txt_text_md server-mail" \
-032  "$txt_text_md server-ftp" \
-033  "$txt_text_md server-news" \
-034  "$txt_text_md server-teamspeak" \
-035  "$txt_text_md server-mumble" \
-036  "$txt_text_md server-sql" \
-037  "$txt_text_md server-asterisk" \
+003 "$txt_text_title [ Firewall Wallinet ] $txt_text_title" \
+010 "$txt_text_md wallinet-update" \
+011 "$txt_text_md wallinet-list" \
+012 "$txt_text_md wallinet-load" \
+013 "$txt_text_md wallinet-show" \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
 case $menuprincipal in
 001) clear ; $cmd_internal cli-menu $cfg_favorite_base_cli ;;
 002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
-003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-wallsystem ;;
-007) clear ; $cmd_internal txt client-basic ; $cmd_internal  $cfg_favorite_out_cli list4   ;;
-008) clear ; $cmd_internal txt client-web ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
-009) clear ; $cmd_internal txt client-ssh ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
-010) clear ; $cmd_internal txt client-telnet ; $cmd_internal $cfg_favorite_out_cli list4   ;;
-011) clear ; $cmd_internal txt client-git ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
-012) clear ; $cmd_internal txt games-shooter ; $cmd_internal $cfg_favorite_out_cli list4   ;; 
-013) clear ; $cmd_internal txt game-wesnoth ; $cmd_internal  $cfg_favorite_out_cli list4   ;;
-014) clear ; $cmd_internal txt game-minetest ; $cmd_internal $cfg_favorite_out_cli list4   ;;
-015) clear ; $cmd_internal txt game-freeciv ; $cmd_internal  $cfg_favorite_out_cli list4   ;;
-016) clear ; $cmd_internal txt game-widelands ; $cmd_internal  $cfg_favorite_out_cli list4 ;;
-017) clear ; $cmd_internal txt client-web ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
-018) clear ; $cmd_internal txt client-vnc ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
-019) clear ; $cmd_internal txt client-tor ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
-020) clear ; $cmd_internal txt client-vpn ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
-021) clear ; $cmd_internal txt client-torrent ; $cmd_internal $cfg_favorite_out_cli list4  ;;
-022) clear ; $cmd_internal txt lan-tor ; $cmd_internal       $cfg_favorite_out_cli list4   ;;
-023) clear ; $cmd_internal txt lan-vpn ; $cmd_internal       $cfg_favorite_out_cli list4   ;; 
-024) clear ; $cmd_internal txt shield-ssh ; $cmd_internal    $cfg_favorite_out_cli list4   ;; 
-025) clear ; $cmd_internal txt server-ssh ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
-026) clear ; $cmd_internal txt server-web ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
-027) clear ; $cmd_internal txt server-vnc ; $cmd_internal    $cfg_favorite_out_cli list4   ;;
-028) clear ; $cmd_internal txt server-print ; $cmd_internal  $cfg_favorite_out_cli list4   ;;
-029) clear ; $cmd_internal txt server-samba ; $cmd_internal  $cfg_favorite_out_cli list4   ;;
-030) clear ; $cmd_internal txt server-lamp ; $cmd_internal  $cfg_favorite_out_cli list4    ;;
-031) clear ; $cmd_internal txt server-mail ; $cmd_internal  $cfg_favorite_out_cli list4    ;;
-032) clear ; $cmd_internal txt server-ftp ; $cmd_internal  $cfg_favorite_out_cli list4     ;;
-033) clear ; $cmd_internal txt server-news ; $cmd_internal  $cfg_favorite_out_cli list4    ;;
-034) clear ; $cmd_internal txt server-teamspeak ; $cmd_internal  $cfg_favorite_out_cli list4  ;;
-035) clear ; $cmd_internal txt server-mumble ; $cmd_internal  $cfg_favorite_out_cli list4     ;;
-036) clear ; $cmd_internal txt server-sql ; $cmd_internal  $cfg_favorite_out_cli list4        ;;
-037) clear ; $cmd_internal txt server-asterisk ; $cmd_internal  $cfg_favorite_out_cli list4   ;;
+003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-wallinet ;;
+010) clear ; $cmd_internal wallinet-update ;;
+011) clear ; $cmd_internal wallinet-list   ;;
+012) clear ; $cmd_internal wallinet-list
+read -p "Input the wallinet name to load # " archivo
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
+$cmd_internal wallinet-load $archivo  ;;
+013) clear ; $cmd_internal wallinet-list
+read -p "Input the wallinet name to show # " archivo
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
+$cmd_internal wallinet-show $archivo  ;;
 *)        ;;
 esac
 ################################################################################
@@ -8834,38 +8786,11 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 0416  "$txt_text_md eraserules4" \
 0417  "$txt_text_md eraserules6" \
 0418  "$txt_text_md eraserules" \
-0500 "$txt_text_title [ firewall-wallsystem ] $txt_text_title" \
-0507  "$txt_text_md client-basic" \
-0508  "$txt_text_md client-web" \
-0509  "$txt_text_md client-ssh" \
-0510  "$txt_text_md client-telnet" \
-0511  "$txt_text_md client-git" \
-0512  "$txt_text_md games-shooter" \
-0513  "$txt_text_md game-wesnoth" \
-0514  "$txt_text_md game-minetest" \
-0515  "$txt_text_md game-freeciv" \
-0516  "$txt_text_md game-widelands" \
-0517  "$txt_text_md client-web" \
-0518  "$txt_text_md client-vnc" \
-0519  "$txt_text_md client-tor" \
-0520  "$txt_text_md client-vpn" \
-0521  "$txt_text_md client-torrent" \
-0522  "$txt_text_md lan-tor" \
-0523  "$txt_text_md lan-vpn" \
-0524  "$txt_text_md shield-ssh" \
-0525  "$txt_text_md server-ssh" \
-0526  "$txt_text_md server-web" \
-0527  "$txt_text_md server-vnc" \
-0528  "$txt_text_md server-print" \
-0529  "$txt_text_md server-samba" \
-0530  "$txt_text_md server-lamp" \
-0531  "$txt_text_md server-mail" \
-0532  "$txt_text_md server-ftp" \
-0533  "$txt_text_md server-news" \
-0534  "$txt_text_md server-teamspeak" \
-0535  "$txt_text_md server-mumble" \
-0536  "$txt_text_md server-sql" \
-0537  "$txt_text_md server-asterisk" \
+0500 "$txt_text_title [ firewall-wallinet ] $txt_text_title" \
+0501  "$txt_text_md wallinet-update" \
+0502  "$txt_text_md wallinet-list" \
+0503  "$txt_text_md wallinet-load" \
+0504  "$txt_text_md wallinet-show" \
 0600 "$txt_text_title [ firewall-wallcustom ] $txt_text_title" \
 0606  "$txt_text_md load-custom" \
 0607  "$txt_text_md clone-wallsystem" \
@@ -8999,37 +8924,16 @@ $cmd_internal load $nombrecillo ;;
 0417) clear ; $cmd_internal $cfg_favorite_out_cli eraserules6 ; $cmd_internal cli list6   ;;
 0418) clear ; $cmd_internal $cfg_favorite_out_cli eraserules ; $cmd_internal cli status   ;;
 ################################################################################
-0507) clear ; $cmd_internal $cfg_favorite_out_cli client-basic ; $cmd_internal cli list4    ;;
-0508) clear ; $cmd_internal $cfg_favorite_out_cli client-web ; $cmd_internal cli list4    ;;
-0509) clear ; $cmd_internal $cfg_favorite_out_cli client-ssh ; $cmd_internal cli list4    ;;
-0510) clear ; $cmd_internal $cfg_favorite_out_cli client-telnet ; $cmd_internal cli list4    ;;
-0511) clear ; $cmd_internal $cfg_favorite_out_cli client-git ; $cmd_internal cli list4    ;;
-0512) clear ; $cmd_internal $cfg_favorite_out_cli games-shooter ; $cmd_internal cli list4   ;; 
-0513) clear ; $cmd_internal $cfg_favorite_out_cli game-wesnoth ; $cmd_internal cli list4    ;;
-0514) clear ; $cmd_internal $cfg_favorite_out_cli game-minetest ; $cmd_internal cli list4   ;;
-0515) clear ; $cmd_internal $cfg_favorite_out_cli game-freeciv ; $cmd_internal cli list4    ;;
-0516) clear ; $cmd_internal $cfg_favorite_out_cli game-widelands ; $cmd_internal cli list4  ;;
-0517) clear ; $cmd_internal $cfg_favorite_out_cli client-web ; $cmd_internal cli list4      ;;
-0518) clear ; $cmd_internal $cfg_favorite_out_cli client-vnc ; $cmd_internal cli list4      ;;
-0519) clear ; $cmd_internal $cfg_favorite_out_cli client-tor ; $cmd_internal cli list4      ;;
-0520) clear ; $cmd_internal $cfg_favorite_out_cli client-vpn ; $cmd_internal cli list4      ;;
-0521) clear ; $cmd_internal $cfg_favorite_out_cli client-torrent ; $cmd_internal cli list4  ;;
-0522) clear ; $cmd_internal $cfg_favorite_out_cli lan-tor ; $cmd_internal cli list4         ;;
-0523) clear ; $cmd_internal $cfg_favorite_out_cli lan-vpn ; $cmd_internal cli list4         ;; 
-0524) clear ; $cmd_internal $cfg_favorite_out_cli shield-ssh ; $cmd_internal cli list4      ;; 
-0525) clear ; $cmd_internal $cfg_favorite_out_cli server-ssh ; $cmd_internal cli list4      ;;
-0526) clear ; $cmd_internal $cfg_favorite_out_cli server-web ; $cmd_internal cli list4      ;;
-0527) clear ; $cmd_internal $cfg_favorite_out_cli server-vnc ; $cmd_internal cli list4      ;;
-0528) clear ; $cmd_internal $cfg_favorite_out_cli server-print ; $cmd_internal cli list4    ;;
-0529) clear ; $cmd_internal $cfg_favorite_out_cli server-samba ; $cmd_internal cli list4    ;;
-0530) clear ; $cmd_internal $cfg_favorite_out_cli server-lamp ; $cmd_internal cli list4     ;;
-0531) clear ; $cmd_internal $cfg_favorite_out_cli server-mail ; $cmd_internal cli list4     ;;
-0532) clear ; $cmd_internal $cfg_favorite_out_cli server-ftp ; $cmd_internal cli list4      ;;
-0533) clear ; $cmd_internal $cfg_favorite_out_cli server-news ; $cmd_internal cli list4     ;;
-0534) clear ; $cmd_internal $cfg_favorite_out_cli server-teamspeak ; $cmd_internal cli list4  ;;
-0535) clear ; $cmd_internal $cfg_favorite_out_cli server-mumble ; $cmd_internal cli list4   ;;
-0536) clear ; $cmd_internal $cfg_favorite_out_cli server-sql ; $cmd_internal cli list4      ;;
-0537) clear ; $cmd_internal $cfg_favorite_out_cli server-asterisk ; $cmd_internal cli list4 ;;
+0501) clear ; $cmd_internal wallinet-update ;;
+0502) clear ; $cmd_internal wallinet-list   ;;
+0503) clear ; $cmd_internal wallinet-list
+read -p "Input the wallinet name to load # " archivo
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
+$cmd_internal wallinet-load $archivo  ;;
+0504) clear ; $cmd_internal wallinet-list
+read -p "Input the wallinet name to show # " archivo
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
+$cmd_internal wallinet-show $archivo  ;;
 ################################################################################
 0606) clear ; $cmd_internal txt names-custom
 read -p "Input the custom name to load # " archivo
