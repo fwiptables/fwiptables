@@ -1,30 +1,14 @@
 ### fwiptables intro   
   
-      Changes
       Readme
       Version
       About
-      Notes
+      hints
       Compile
       Depends
       Examples
+      Changes
       Options
-  
-### fwiptables changes   
-      [ changes in 24-11-G ]
-      cli-menu: minor changes
-      [ changes in 24-11-F ]
-      info-net: changed names option | variables: simplify
-      cli-menu and cli-menu-compact: changes, updated, fixed
-      [ changes in 24-11-E ]
-      changes: dev-changes now is changes and new format util   
-      add-whitelist: add-whitelist moved to firewall-wallcontrol   
-      expert: fixed in expert option   
-      [ changes in 24-11-D ]
-      whitelist: better in whitelist options now comments   
-      whitelist: better in whitelist options now only in the used tables   
-      variables: Changes in all enviroment name to cfg_ | txt_ | cmd_   
-      custom files: no retro compability from 24-11-D   
   
 ### fwiptables readme   
       fwiptables. Firewall With iptables.
@@ -71,7 +55,7 @@
 ### fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-11-G                
+         Version Firewall: 24-11-H                
         Released Firewall: Year 2024 / Month 11               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
@@ -100,17 +84,22 @@
       Copyright:     (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>
       launch:        /usr/bin/fwiptables license-lgpl-v2|license-gpl-v2
   
-### fwiptables notes   
-                       Iptables firewall manage commands   
+### fwiptables hints   
+      [Iptables firewall manage commands]   
+  
         Legacy or nft: whith one of them is sufficent   
       iptables-legacy: support for xtables ipv4   
          iptables-nft: support for nftables ipv4   
      ip6tables-legacy: support for xtables ipv6   
         ip6tables-nft: support for nftables ipv6   
-                       Firewall recomendation with full client   
+  
+      [Firewall recomendation with full client]   
+  
       Client prefered: input-established   
       Server prefered: tinyserver-tcp tcp-ports-server   
-                       Some options and sub-otions   
+  
+      [Some options and sub-otions]   
+  
       shield maxtries: limit against attack per bruteforce   
             Blacklist: excepcionals hosts dropped in firewall   
             whitelist: excepcionals hosts allowed in firewall   
@@ -118,7 +107,9 @@
            miniserver: normal ports in client, and servers manually   
     input-established: the computer is only client   
        output uid/gid: User and/or group with conection allowed   
-                       Necesary Ports perhaps if use it   
+  
+      [Necesary Ports perhaps if use it]   
+  
                   ntp: Port necesary to update the time and date   
                bootpc: Port necesary to dhcp and get ip   
                domain: This port is necesary to domain resolver   
@@ -144,9 +135,9 @@
       Folder logcmd:           /root/.config/fwiptables/fwiptables-logcmd   
         
     [ Preferences files ]     
-      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-G.conf
-      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-G.conf
-      usernotes:               /root/.config/fwiptables/fwiptables-preferences/default-usernotes-all-versions.txt
+      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-H.conf
+      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-H.conf
+      my-note:               -note
         
     [ optional output ]       
       dialog cli:              /usr/bin/dialog   
@@ -187,12 +178,12 @@
         
       Found all posible utils: fwiptables utils   
   
-### < alias > from examples to options-examples
+### < alias from > examples < alias to > options-examples
 ### fwiptables options-examples   
     [ One example with input-established ]              
          
-       Launch: input-stablished                              
-       /usr/bin/fwiptables input-stablished                        
+       Launch: input-established                              
+       /usr/bin/fwiptables input-established                        
        Explain: Client for all ports without servers ports   
          
     [ Several examples with tiny server ]               
@@ -272,50 +263,60 @@
        All options in window shell             
        /usr/bin/fwiptables gui-shell-yad         
   
+### fwiptables changes   
+      [ changes in 24-11-H ] upgrade: minor changes | usernotes: renamed to my-note
+      web: fixed | expert-project-web: deprecated | comments only in english
+      web: add port tcp4 to drop, to allow, add port tcp6 to drop to allow
+      [ changes in 24-11-G ] cli-menu: minor changes
+      [ changes in 24-11-F ] info-net: changed names option | variables: simplify
+      cli-menu and cli-menu-compact: changes, updated, fixed
+      [ changes in 24-11-E ]
+      changes: dev-changes now is changes and new format util   
+      add-whitelist: add-whitelist moved to firewall-wallcontrol   
+      expert: fixed in expert option   
+      [ changes in 24-11-D ]
+      whitelist: better in whitelist options now comments   
+      whitelist: better in whitelist options now only in the used tables   
+      variables: Changes in all enviroment name to cfg_ | txt_ | cmd_   
+      custom files: no retro compability from 24-11-D   
+  
 ### fwiptables options   
-   /usr/bin/fwiptables [optional-output] first_option [second_option]   
-###     <optional-output>   
+   fwiptables [optional-output] first_option [second_option]   
+##     <optional-output>   
    [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]   
    [ cli-dialog cli-whiptail cli-menu cli-menu-compact ]   
    [ cli-menu-dialog cli-menu-compact-dialog  ]   
    [ cli-menu-whiptail cli-menu-compact-whiptail ]   
    [ gui-zenity gui-yad gui-menu gui-menu-zenity gui-menu-yad ]   
    [ gui-roll-zenity gui-shell gui-shell-zenity gui-shell-yad ]   
-###     <firewall-listconceptual>   
+##     <firewall-listconceptual>   
    ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6   
    list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4   
    list-security6 list-ebtables list-arptables list-alltables   
-###     <firewall-listnumeral>   
+##     <firewall-listnumeral>   
    lsn4 lsn6 statusn listn-filter4 listn-filter6 listn-nat4   
    listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6   
    listn-security4 listn-security6 listn-alltables   
-###     <firewall-wallcontrol>   
+##     <firewall-wallcontrol>   
    stop continue reset show save load names actual eraserules   
    eraserules4 eraserules6 without-connection input-permisive   
    input-established wizard-tiny wizard-mini wizard-full   
    tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp   
-   add-whitelist4 add-whitelist6 add-blacklist4 add-blacklist6   
-###     <firewall-wallcustom>   
+   drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp   
+   add-whitelist add-blacklist   
+##     <firewall-wallcustom>   
    new-full-custom nueva-completa-custom new-mini-custom   
    nueva-mini-custom new-tiny-custom nueva-diminuta-custom   
-   clone-wallsystem load-custom loadtiny-custom   
+   clone-wallinet load-custom loadmini-custom loadtiny-custom   
    show-custom modify-custom del-custom names-custom   
-###     <firewall-wallsystem>   
-   client-basic client-web client-ssh client-telnet client-ipp   
-   client-irc client-git client-vnc client-news client-vpn   
-   client-torrent client-vpn client-ftp client-proxy client-mail   
-   client-tor game-widelands games-udp games-shooter game-wesnoth   
-   game-minetest game-freeciv lan-tor lan-vpn shield-ssh server-ssh   
-   server-telnet server-irc server-vnc server-print server-webserver   
-   server-lamp server-news server-ftp server-mail server-teamspeak   
-   server-mumble server-gateway server-sql server-samba server-proxy   
-   server-asterisk client-uid-root client-gid-users client-gid-net    
-###     <firewall-netsystem>   
-   preferences-edit alias-edit options info-options usernotes  
+##     <firewall-wallinet>   
+   wallinet-update wallinet-list wallinet-load wallinet-show   
+##     <firewall-wallutils>   
+   preferences-edit alias-edit options info-options my-note  
    cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache   
    ip4 ip6 route4 route6 info-ip4 info-ip6 info-nodes sockets   
    lsof free ip-forward utils date resolve speed-ip4 speed-ip6   
-   log-stat web intro depends uninstall install upgrade notes   
+   log-stat web intro depends uninstall install upgrade hints   
    variables examples info code expert donate about version   
    license-lgpl-v2 license-gpl-v2   
-      < info > fwiptables 24-11-G with expert actived   
+      < info > fwiptables 24-11-H with expert option actived   
