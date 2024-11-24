@@ -6,9 +6,10 @@ Planed fixing bugs, Planed feacture adding .
 update: add port tcp to cli and to gui
 deprecated: language spanish
 separate: firewall-wallsystem
-
 deprecate: old firewall wallsystem in cli, in gui.
-add: wallinet to gui
+add: new firewall wallinet
+
+modify: cli and gui in wallcustom
 
 ## The planed feature commit: 
 
