@@ -5132,7 +5132,7 @@ if [ -f "$cmd_default_directory_wallinet/$cmd_second_option.txt" ] ; then
 archivo_origen="$cmd_default_directory_wallinet/$cmd_second_option.txt"
 archivo_destino="$cmd_default_directory_custom/$cmd_second_option"
 cp $archivo_origen $archivo_destino &> /dev/null
-echo "ok to launch use: $cmd_name load-custom $cmd_second_option"
+echo "$txt_text_title_ok to launch: $cmd_name load-custom $cmd_second_option"
 fi
 ####
 ####
