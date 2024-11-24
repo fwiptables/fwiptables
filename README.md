@@ -266,7 +266,9 @@
 ### fwiptables changes   
       [ changes in 24-11-H ] upgrade: minor changes | usernotes: renamed to my-note
       web: fixed | expert-project-web: deprecated | comments only in english
-      web: add port tcp4 to drop, to allow, add port tcp6 to drop to allow
+      option: add port tcp4 to drop, to allow, add port tcp6 to drop to allow
+      option: whitelist and blacklist ip4 and ip6 | deprecated: spanish
+      wallcustom: now is with repository, with name wallinet
       [ changes in 24-11-G ] cli-menu: minor changes
       [ changes in 24-11-F ] info-net: changed names option | variables: simplify
       cli-menu and cli-menu-compact: changes, updated, fixed
