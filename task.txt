@@ -8,7 +8,7 @@ deprecated: language spanish
 separate: firewall-wallsystem
 
 deprecate: old firewall wallsystem in cli, in gui.
-add: wallinet to cli and gui
+add: wallinet to gui
 
 ## The planed feature commit: 
 

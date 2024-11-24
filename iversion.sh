@@ -9073,8 +9073,8 @@ then echo $txt_message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="Info|Firewall-List-With-Conceptual|\
-Firewall-List-With-Numeral|firewall-wallcontrol|firewall-wallcustom|\
-firewall-wallsystem|firewall-wallutils"
+Firewall-List-With-Numeral|firewall-wallcontrol|\
+firewall-wallcustom|firewall-wallinet|firewall-wallutils"
 selection_menu="$($cmd_command_zenity --forms \
 --text=gui-roll \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
@@ -9100,8 +9100,8 @@ firewall-wallcontrol)
 $cmd_internal gui-roll-zenity-firewall-wallcontrol ; exit ;;
 firewall-wallcustom)
 $cmd_internal gui-roll-zenity-firewall-wallcustom ; exit ;;
-firewall-wallsystem)
-$cmd_internal gui-roll-zenity-firewall-wallsystem ; exit ;;
+firewall-wallinet)
+$cmd_internal gui-roll-zenity-firewall-wallinet ; exit ;;
 firewall-wallutils)
 $cmd_internal gui-roll-zenity-firewall-wallutils ; exit ;;
 esac
@@ -9406,11 +9406,11 @@ exit ; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-wallcustom:
-##########    gui-roll-zenity-firewall-wallsystem: gui-roll ##########
-#### :rutina-inicial-gui-roll-zenity-firewall-wallsystem:
+##########    gui-roll-zenity-firewall-wallinet: gui-roll ##########
+#### :rutina-inicial-gui-roll-zenity-firewall-wallinet:
 ####
 ####
-if [ "$cmd_first_option" == "gui-roll-zenity-firewall-wallsystem" ]
+if [ "$cmd_first_option" == "gui-roll-zenity-firewall-wallinet" ]
 ####
 ####
 then echo $txt_head_waiting_gui ;
@@ -9419,15 +9419,7 @@ then echo $txt_message_without_guiroll ; exit ; fi
 ####
 ####
 menu="gui-principal-menu|gui-info-menu|\
-client-basic|client-web|client-ssh|client-telnet|client-ipp|client-irc|\
-client-vpn|client-torrent|client-mail|client-news|\
-client-ftp|client-git|client-vnc|client-torrent|\
-client-vpn|client-tor|lan-tor|lan-vpn|shield-ssh|\
-games-shooter|game-wesnoth|game-minetest|game-freeciv|\
-game-widelands|server-proxy|server-web|server-vnc|\
-server-samba|server-ssh|server-print|server-lamp|\
-server-domain|server-news|server-mail|server-ftp|\
-server-teamspeak|server-mumble|server-sql|server-asterisk"
+wallinet-update|wallinet-list|wallinet-load|wallinet-show"
 selection="$($cmd_command_zenity --forms \
 --text=gui-roll-firewall-wallcustom \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
@@ -9438,87 +9430,27 @@ selection="$($cmd_command_zenity --forms \
 selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1) exit ;;
-gui-principal-menu)$cmd_internal gui-roll-zenity ;;
+gui-principal-menu)$cmd_internal gui-roll-zenity           ;;
 gui-info-menu)$cmd_internal gui-zenity firewall-wallsystem ;;
-client-basic)$cmd_internal gui-zenity client-basic     ;
-$cmd_internal gui-zenity list4 ;;
-client-web)$cmd_internal gui-zenity client-web         ;
-$cmd_internal gui-zenity list4 ;;
-client-ssh)$cmd_internal gui-zenity client-ssh         ;
-$cmd_internal gui-zenity list4 ;;
-client-telnet)$cmd_internal gui-zenity client-telnet   ;
-$cmd_internal gui-zenity list4 ;;
-client-ipp)$cmd_internal gui-zenity client-ipp         ;
-$cmd_internal gui-zenity list4 ;;
-client-irc)$cmd_internal gui-zenity client-irc         ;
-$cmd_internal gui-zenity list4 ;;
-client-mail)$cmd_internal gui-zenity client-mail       ;
-$cmd_internal gui-zenity list4 ;;
-client-news)$cmd_internal gui-zenity client-news       ;
-$cmd_internal gui-zenity list4 ;;
-client-ftp)$cmd_internal gui-zenity client-ftp         ;
-$cmd_internal gui-zenity list4 ;;
-client-git)$cmd_internal gui-zenity client-git         ;
-$cmd_internal gui-zenity list4 ;;
-client-vnc)$cmd_internal gui-zenity client-vnc         ;
-$cmd_internal gui-zenity list4 ;;
-client-torrent)$cmd_internal gui-zenity client-torrent ;
-$cmd_internal gui-zenity list4 ;;
-client-vpn)$cmd_internal gui-zenity client-vpn         ;
-$cmd_internal gui-zenity list4 ;;
-client-tor)$cmd_internal gui-zenity client-tor         ;
-$cmd_internal gui-zenity list4 ;;
-games-shooter)$cmd_internal gui-zenity games-shooter   ;
-$cmd_internal gui-zenity list4 ;;
-game-wesnoth)$cmd_internal gui-zenity game-wesnoth     ;
-$cmd_internal gui-zenity list4 ;;
-game-minetest)$cmd_internal gui-zenity game-minetest   ;
-$cmd_internal gui-zenity list4 ;;
-game-freeciv)$cmd_internal gui-zenity game-freeciv     ;
-$cmd_internal gui-zenity list4 ;;
-game-widelands)$cmd_internal gui-zenity game-widelands ;
-$cmd_internal gui-zenity list4 ;;
-lan-tor)$cmd_internal gui-zenity lan-tor               ;
-$cmd_internal gui-zenity list4 ;;
-lan-vpn)$cmd_internal gui-zenity lan-vpn               ;
-$cmd_internal gui-zenity list4 ;;
-server-ssh)$cmd_internal gui-zenity server-ssh         ;
-$cmd_internal gui-zenity list4 ;;
-server-web)$cmd_internal gui-zenity server-web         ;
-$cmd_internal gui-zenity list4 ;;
-server-proxy)$cmd_internal gui-zenity server-proxy     ;
-$cmd_internal gui-zenity list4 ;;
-server-vnc)$cmd_internal gui-zenity server-vnc         ;
-$cmd_internal gui-zenity list4 ;;
-server-samba)$cmd_internal gui-zenity server-samba     ;
-$cmd_internal gui-zenity list4 ;;
-server-news)$cmd_internal gui-zenity server-news       ;
-$cmd_internal gui-zenity list4 ;;
-server-mail)$cmd_internal gui-zenity server-mail       ;
-$cmd_internal gui-zenity list4 ;;
-server-ftp)$cmd_internal gui-zenity server-ftp         ;
-$cmd_internal gui-zenity list4 ;;
-server-print)$cmd_internal gui-zenity server-print     ;
-$cmd_internal gui-zenity list4 ;;
-server-lamp)$cmd_internal gui-zenity server-lamp       ;
-$cmd_internal gui-zenity list4 ;;
-server-teamspeak)$cmd_internal gui-zenity server-teamspeak ;
-$cmd_internal gui-zenity list4 ;;
-server-mumble)$cmd_internal gui-zenity server-mumble       ;
-$cmd_internal gui-zenity list4 ;;
-server-sql)$cmd_internal gui-zenity server-sql             ;
-$cmd_internal gui-zenity list4 ;;
-server-asterisk)$cmd_internal gui-zenity server-asterisk   ;
-$cmd_internal gui-zenity list4 ;;
-server-domain)$cmd_internal gui-zenity server-domain       ;
-$cmd_internal gui-zenity list4 ;;
+wallinet-update)$cmd_internal gui-zenity wallinet-update   ;;
+wallinet-list)$cmd_internal gui-zenity wallinet-list       ;;
+wallinet-load)$cmd_internal gui-zenity wallinet-list
+archivo="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=load-firewall --entry-text=firewall-to-load)" 
+$cmd_internal gui-zenity wallinet-load $archivo            ;;
+wallinet-show)$cmd_internal gui-zenity wallinet-list
+archivo="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=show-firewall --entry-text=firewall-to-show)" 
+$cmd_internal gui-zenity wallinet-show $archivo            ;;
 esac
 ####
 ####
 exit ; fi
 ####
 ####
-#### :rutina-final-gui-roll-zenity-firewall-wallsystem:
+#### :rutina-final-gui-roll-zenity-firewall-wallinet:
 ##########    gui-roll-zenity-firewall-wallutils: gui with roll  ##########
 #### :rutina-inicial-gui-roll-zenity-firewall-wallutils:
 ####
@@ -9635,7 +9567,7 @@ echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="Firewall-listconceptual|Firewall-listnumeral|firewall-wallcontrol|\
-Firewall-wallcustom|Firewall-wallsystem|firewall-wallutils|"
+Firewall-wallcustom|Firewall-wallinet|firewall-wallutils|"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width \
@@ -9662,8 +9594,8 @@ firewall-wallcontrol*)
 $cmd_internal gui-menu-firewall-wallcontrol $cmd_second_option ;;
 Firewall-wallcustom*)
 $cmd_internal gui-menu-firewall-wallcustom $cmd_second_option ;;
-Firewall-wallsystem*)
-$cmd_internal gui-menu-firewall-wallsystem $cmd_second_option ;;
+Firewall-wallinet*)
+$cmd_internal gui-menu-firewall-wallinet $cmd_second_option ;;
 firewall-wallutils*)
 $cmd_internal gui-menu-firewall-wallutils $cmd_second_option ;;
 esac
@@ -10002,11 +9934,11 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-wallcustom:
-##########   gui-menu-firewall-wallsystem: gui with menu    ##########
-#### :rutina-inicial-gui-menu-firewall-wallsystem:
+##########   gui-menu-firewall-inet: gui with menu    ##########
+#### :rutina-inicial-gui-menu-firewall-wallinet:
 ####
 ####  
-if [ "$cmd_first_option" == "gui-menu-firewall-wallsystem" ]
+if [ "$cmd_first_option" == "gui-menu-firewall-wallinet" ]
 then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
 echo ; else cfg_second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
@@ -10014,15 +9946,7 @@ echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
-client-basic|client-web|client-ssh|client-telnet|client-ipp|client-irc|\
-client-mail|client-news|client-ftp|\
-client-git|client-vnc|client-torrent|client-vpn|\
-client-tor|lan-tor|lan-vpn|shield-ssh|\
-games-shooter|game-wesnoth|game-minetest|game-freeciv|game-widelands|\
-server-web|server-vnc|server-samba|server-ssh|\
-server-print|server-lamp|server-domain|\
-server-news|server-mail|server-ftp|server-teamspeak|\
-server-mumble|server-sql|server-asterisk"
+wallinet-update|wallinet-list|wallinet-load|wallinet-show"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -10040,87 +9964,27 @@ echo ; echo "$txt_text_title option selected: $final" ; echo ;
 #### 
 case "$selection_final" in
 1*) exit ;;
-gui-principal-menu*) $cmd_internal gui-menu-$cmd_second_option ;;
+gui-principal-menu*) $cmd_internal gui-menu-$cmd_second_option          ;;
 gui-info-menu*)$cmd_internal gui-$cmd_second_option firewall-wallsystem ;;
-client-basic*)$cmd_internal gui-$cmd_second_option client-basic ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-client-web*)$cmd_internal gui-$cmd_second_option client-web ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-client-ssh*)$cmd_internal gui-$cmd_second_option client-ssh ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-client-telnet*)$cmd_internal gui-$cmd_second_option client-telnet ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-client-ipp*)$cmd_internal gui-$cmd_second_option client-ipp ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-client-irc*)$cmd_internal gui-$cmd_second_option client-irc ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-client-mail*)$cmd_internal gui-$cmd_second_option client-mail ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-client-news*)$cmd_internal gui-$cmd_second_option client-news ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-client-ftp*)$cmd_internal gui-$cmd_second_option client-ftp ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-client-git*)$cmd_internal gui-$cmd_second_option client-git ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-client-vnc*)$cmd_internal gui-$cmd_second_option client-vnc ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-client-torrent*)$cmd_internal gui-$cmd_second_option client-torrent ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-client-vpn*)$cmd_internal gui-$cmd_second_option client-vpn ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-client-tor*)$cmd_internal gui-$cmd_second_option client-tor ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-games-shooter*)$cmd_internal gui-$cmd_second_option games-shooter ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-game-wesnoth*)$cmd_internal gui-$cmd_second_option game-wesnoth ; 
-$cmd_internal gui-$cmd_second_option list4 ;;
-game-minetest*)$cmd_internal gui-$cmd_second_option game-minetest ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-game-freeciv*)$cmd_internal gui-$cmd_second_option game-freeciv ;
-$cmd_internal gui-$cmd_second_option list4;;
-game-widelands*)$cmd_internal gui-$cmd_second_option game-widelands ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-lan-tor*)$cmd_internal gui-$cmd_second_option lan-tor ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-lan-vpn*)$cmd_internal gui-$cmd_second_option lan-vpn ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-shield-ssh*)$cmd_internal gui-$cmd_second_option shield-ssh ;
- $cmd_internal gui-$cmd_second_option list4 ;;
-server-ssh*)$cmd_internal gui-$cmd_second_option server-ssh ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-server-web*)$cmd_internal gui-$cmd_second_option server-web ;
- $cmd_internal gui-$cmd_second_option list4 ;;
-server-vnc*)$cmd_internal gui-$cmd_second_option server-vnc ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-server-samba*)$cmd_internal gui-$cmd_second_option server-samba ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-server-news*)$cmd_internal gui-$cmd_second_option server-news ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-server-mail*)$cmd_internal gui-$cmd_second_option server-mail ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-server-ftp*)$cmd_internal gui-$cmd_second_option server-ftp ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-server-print*)$cmd_internal gui-$cmd_second_option server-print ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-server-lamp*)$cmd_internal gui-$cmd_second_option server-lamp ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-server-teamspeak*)$cmd_internal gui-$cmd_second_option server-teamspeak ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-server-mumble*)$cmd_internal gui-$cmd_second_option server-mumble ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-server-sql*)$cmd_internal gui-$cmd_second_option server-sql ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-server-asterisk*)$cmd_internal gui-$cmd_second_option server-asterisk ;
-$cmd_internal gui-$cmd_second_option list4 ;;
-server-domain*)$cmd_internal gui-$cmd_second_option server-domain ;
-$cmd_internal gui-$cmd_second_option list4 ;;
+wallinet-update*)$cmd_internal gui-$cmd_second_option wallinet-update   ;;
+wallinet-list*)$cmd_internal gui-$cmd_second_option wallinet-list       ;;
+wallinet-load*)$cmd_internal gui-$cmd_second_option wallinet-list
+archivo="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=load-firewall --entry-text=firewall-to-load)" 
+$cmd_internal gui-zenity wallinet-load $archivo                         ;;
+wallinet-show*)$cmd_internal gui-$cmd_second_option wallinet-list
+archivo="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=show-firewall --entry-text=firewall-to-show)" 
+$cmd_internal gui-$cmd_second_option wallinet-show $archivo              ;;
 esac
 ####
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-firewall-wallsystem:
+#### :rutina-final-gui-menu-firewall-wallinet:
 ##########    gui-menu-firewall-wallutils: gui with menu   ##########
 #### :rutina-inicial-gui-menu-firewall-wallutils:
 ####
