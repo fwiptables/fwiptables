@@ -5084,39 +5084,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-arptables:
-##########    clone-wallsystem: clone config file static static               ##########
-#### :rutina-inicial-clone-wallsystem:
-####
-####
-if [ "$cmd_first_option" == "clone-wallsystem" ] && [ "$cmd_second_option" == "$NULL" ]  ; then 
-####
-####
-echo "$txt_text_md $txt_text_info [ usage: ] [ $cmd_internal clone-wallsystem firewall ]"
-exit; fi
-####
-####
-if [ "$cmd_first_option" == "clone-wallsystem" ] && [ "$cmd_second_option" != "$NULL" ] ; then 
-archivo="$cmd_second_option"
-case $archivo in shield-*);;client-*);; game-*);; games-*);; server-*);;
-*) echo "$title $txt_text_fail choose a valid system firewall to clone" ; exit ;; esac
-$cmd_internal code $cmd_second_option | $cmd_command_grep "cfg_" \
-&> $cmd_default_directory_custom/$archivo
-####
-####
-if [ -s "$cmd_default_directory_custom/$archivo" ] ; then 
-$cmd_command_cat  $cmd_default_directory_custom/$archivo ;
-echo "$txt_text_title_ok Created custom : $archivo  "
-echo "$txt_text_title_info Modify  : fwiptables modify-custom $archivo  "
-echo "$txt_text_title_info Launch  : fwiptables load-custom $archivo  "
-else rm $cmd_default_directory_custom/$archivo
-echo "$txt_text_title_info choose one valid wallsystem to clone to custom"
-echo "$txt_text_title_fail config no done $archivo" ; fi
-####
-####
-exit; fi
-####
-####
-#### :rutina-final-clone-wallsystem:
 ##########    clone-wallinet: clone config file static static               ##########
 #### :rutina-inicial-clone-wallinet:
 ####
@@ -8431,8 +8398,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-wallcontrol:
-##########    cli-menu-wallsystem: Manage list rules with one text menu          ##########
-#### :rutina-inicial-cli-menu-wallsystem:
+##########    cli-menu-wallinet: Manage list rules with one text menu          ##########
+#### :rutina-inicial-cli-menu-wallinet:
 ####
 ####
 if [ "$cmd_first_option" == "cli-menu-wallinet" ]; then
@@ -8467,16 +8434,16 @@ case $menuprincipal in
 001) clear ; $cmd_internal cli-menu $cfg_favorite_base_cli ;;
 002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
 003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-wallinet ;;
-010) clear ; $cmd_internal wallinet-update ;;
-011) clear ; $cmd_internal wallinet-list   ;;
-012) clear ; $cmd_internal wallinet-list
-read -p "Input the wallinet name to load # " archivo
+010) clear ; $cmd_internal $cfg_favorite_out_cli wallinet-update ;;
+011) clear ; $cmd_internal $cfg_favorite_out_cli wallinet-list   ;;
+012) clear ; $cmd_internal $cfg_favorite_out_cli wallinet-list
+clear ; read -p "Input the wallinet name to load # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
-$cmd_internal wallinet-load $archivo  ;;
-013) clear ; $cmd_internal wallinet-list
-read -p "Input the wallinet name to show # " archivo
+$cmd_internal $cfg_favorite_out_cli wallinet-load $archivo  ;;
+013) clear ; $cmd_internal $cfg_favorite_out_cli wallinet-list
+clear ; read -p "Input the wallinet name to show # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
-$cmd_internal wallinet-show $archivo  ;;
+$cmd_internal $cfg_favorite_out_cli wallinet-show $archivo  ;;
 *)        ;;
 esac
 ################################################################################
@@ -8488,7 +8455,7 @@ $cmd_internal cli-menu $cfg_favorite_base_cli
 exit; fi
 ####
 ####
-#### :rutina-final-cli-menu-wallsystem:
+#### :rutina-final-cli-menu-wallinet:
 ##########    cli-menu-wallcustom: Manage list rules with one text menu          ##########
 #### :rutina-inicial-cli-menu-wallcustom:
 ####
@@ -8512,7 +8479,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 002 "$txt_text_title [ Info Options        ] $txt_text_title" \
 003 "$txt_text_title [ Firewall Wallcustom ] $txt_text_title" \
 004  "$txt_text_md load-custom" \
-005  "$txt_text_md clone-wallsystem" \
+005  "$txt_text_md clone-wallinet" \
 006  "$txt_text_md new-full-custom" \
 007  "$txt_text_md nueva-completa-custom" \
 008  "$txt_text_md new-mini-custom" \
@@ -8534,9 +8501,9 @@ case $menuprincipal in
 read -p "Input the custom name to load # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal load-custom $archivo ;;
-005) clear ; read -p "Input the systemfw name to clone # " archivo
+005) clear ; read -p "Input the wallinet name to clone # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
-$cmd_internal clone-wallsystem $archivo ;;
+$cmd_internal clone-wallinet $archivo ;;
 006) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal new-full-custom $archivo ;;
@@ -8793,7 +8760,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 0504  "$txt_text_md wallinet-show" \
 0600 "$txt_text_title [ firewall-wallcustom ] $txt_text_title" \
 0606  "$txt_text_md load-custom" \
-0607  "$txt_text_md clone-wallsystem" \
+0607  "$txt_text_md clone-wallinet" \
 0611  "$txt_text_md new-full-custom" \
 0612  "$txt_text_md nueva-completa-custom" \
 0613  "$txt_text_md new-mini-custom" \
@@ -8924,24 +8891,24 @@ $cmd_internal load $nombrecillo ;;
 0417) clear ; $cmd_internal $cfg_favorite_out_cli eraserules6 ; $cmd_internal cli list6   ;;
 0418) clear ; $cmd_internal $cfg_favorite_out_cli eraserules ; $cmd_internal cli status   ;;
 ################################################################################
-0501) clear ; $cmd_internal wallinet-update ;;
-0502) clear ; $cmd_internal wallinet-list   ;;
-0503) clear ; $cmd_internal wallinet-list
-read -p "Input the wallinet name to load # " archivo
+0501) clear ; $cmd_internal $cfg_favorite_out_cli wallinet-update ;;
+0502) clear ; $cmd_internal $cfg_favorite_out_cli wallinet-list   ;;
+0503) clear ; $cmd_internal $cfg_favorite_out_cli wallinet-list
+clear ; read -p "Input the wallinet name to load # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
-$cmd_internal wallinet-load $archivo  ;;
-0504) clear ; $cmd_internal wallinet-list
-read -p "Input the wallinet name to show # " archivo
+$cmd_internal $cfg_favorite_out_cli wallinet-load $archivo  ;;
+0504) clear ; $cmd_internal $cfg_favorite_out_cli wallinet-list
+clear ; read -p "Input the wallinet name to show # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
-$cmd_internal wallinet-show $archivo  ;;
+$cmd_internal $cfg_favorite_out_cli wallinet-show $archivo  ;;
 ################################################################################
 0606) clear ; $cmd_internal txt names-custom
 read -p "Input the custom name to load # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal load-custom $archivo ;;
-0607) clear ; read -p "Input the systemfw name to clone # " archivo
+0607) clear ; read -p "Input the wallinet name to clone # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
-$cmd_internal clone-wallsystem $archivo ;;
+$cmd_internal clone-wallinet $archivo ;;
 0611) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal new-full-custom $archivo ;;
@@ -9321,7 +9288,7 @@ then echo $txt_message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|load-custom|\
-clone-wallsystem|new-full-custom|nueva-completa-custom|\
+clone-wallinet|new-full-custom|nueva-completa-custom|\
 new-mini-custom|nueva-mini-custom|new-tiny-custom|nueva-diminuta-custom|\
 names-custom|show-custom|modify-custom|del-custom|templates-regen"
 selection_menu="$($cmd_command_zenity --forms \
@@ -9340,10 +9307,10 @@ load-custom)archivo="$($cmd_command_zenity  --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Launch-Custom --entry-text=cfg_to_launch)" ; 
 $cmd_internal -gui-zenity load-custom $archivo ; $cmd_internal gui list4;;
-clone-wallsystem)archivo="$($cmd_command_zenity  --entry \
+clone-wallinet)archivo="$($cmd_command_zenity  --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---title=Clone-firewall-static --entry-text=firewall_static_to_clone)" ; 
-$cmd_internal -gui-zenity clone-wallsystem $archivo ; $cmd_internal gui list4;;
+--title=clone-wallinet-firewall --entry-text=firewall_wallinet_to_clone)" ; 
+$cmd_internal -gui-zenity clone-wallinet $archivo ; $cmd_internal gui list4;;
 new-full-custom)
 archivo="$($cmd_command_zenity  --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -9843,7 +9810,7 @@ echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
-load-custom|clone-wallsystem|\
+load-custom|clone-wallinet|\
 new-full-custom|nueva-completa-custom|\
 new-mini-custom|nueva-mini-custom|\
 new-tiny-custom|nueva-diminuta-custom|\
@@ -9874,11 +9841,11 @@ load-custom*)archivo="$($cmd_second_option  --entry \
 --entry-text=cfg-to-launch)" ; 
 $cmd_internal gui-$cmd_second_option load-custom $archivo ;
 $cmd_internal gui-$cmd_second_option list4 ;;
-clone-wallsystem*)archivo="$($cmd_second_option --entry \
+clone-wallinet*)archivo="$($cmd_second_option --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---title=Clone-static \
---entry-text=static-firewall-to-clone-config)" ; 
-$cmd_internal gui-$cmd_second_option clone-wallsystem $archivo ;
+--title=clone-wallinet \
+--entry-text=wallinet-firewall-to-clone-config)" ; 
+$cmd_internal gui-$cmd_second_option clone-wallinet $archivo ;
 $cmd_internal gui-$cmd_second_option list4;;
 new-full-custom*) archivo="$($cmd_second_option --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
