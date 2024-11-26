@@ -91,7 +91,7 @@ fi
 #### The number version firewall
 cmd_year="24"                                                 # Number year version
 cmd_month="11"                                                # Number mouth version
-cmd_letter="H"                                                # Number letter version
+cmd_letter="I"                                                # Number letter version
 cmd_version="$cmd_year-$cmd_month-$cmd_letter"                # Final date version
 cmd_released="Year 20$cmd_year / Month $cmd_month"            # Source date version
 #### The data version firewall
@@ -3854,17 +3854,16 @@ exit; fi
 if   [ "$cmd_first_option" == "wallinet-load" ]; then
 ####
 ####
+#### see it is sane
+if [ ! -f "$cmd_default_directory_wallinet/$cmd_second_option.txt" ]
+then $cmd_internal wallinet-list ; exit; fi
 ####
 ####
+#### prepare variables
 echo "$txt_text_title_info [ loading firewall wallinet $cmd_second_option ]"
 cfg_allow_launchrules_firewall="yes" ;
 cfg_type_firewall="wallinet" ;
 cfg_name_firewall="$cmd_second_option" ;
-####
-####
-#### see it is sane
-if [ ! -f "$cmd_default_directory_wallinet/$cmd_second_option.txt" ]
-then $cmd_internal wallinet-list ; exit; fi
 ####
 ####
 #### configure load variables if there are
@@ -3883,10 +3882,12 @@ fi
 if   [ "$cmd_first_option" == "wallinet-update" ]; then
 ####
 ####
+#### sane
 if [ "$cmd_command_tar" == "$NULL" ] ; then 
 echo "$txt_text_title_fail please install tar command"; fi
 ####
 ####
+#### load
 cmd_file_repository="$cmd_default_directory_upgrade/wallinet.tar"
 $cmd_command_curl $cmd_web_repository_wallinet -s -L \
 -o $cmd_file_repository || echo "Without connection" || exit \
@@ -3905,10 +3906,10 @@ exit; fi
 if   [ "$cmd_first_option" == "wallinet-list" ]; then
 ####
 ####
+#### list
 cd $cmd_default_directory_wallinet
 $cmd_command_find  | $cmd_command_sed 's/.txt//g' | $cmd_command_sed 's/.\///g'
 echo "$txt_text_title_ok to load firewall: $cmd_name wallinet-load firewall"
-
 ####
 ####
 exit; fi
@@ -3922,8 +3923,11 @@ exit; fi
 if   [ "$cmd_first_option" == "wallinet-show" ]; then
 ####
 ####
+#### simplify
 cfg_file_select="$cmd_default_directory_wallinet/$cmd_second_option.txt"
 ####
+####
+#### show
 if [ -f "$cfg_file_select" ]
 then cat $cfg_file_select
 else cd $cmd_default_directory_wallinet
@@ -6715,6 +6719,52 @@ exit; fi
 ####
 ####
 #### :rutina-final-add-blacklist6
+##########    allow-port-shield: add port shield to tcp ip4     ##########
+#### :rutina-inicial-allow-port-shield
+####
+####
+if [ "$cmd_first_option" == "allow-port-shield" ] ; then
+####
+####
+#### with null example
+if [ "$2" == "$NULL" ]; then 
+echo "$txt_text_title_fail Type shield tcp port or example with: 21,23:25"; exit ; fi
+####
+####
+#### variables configured
+add="$2"
+cfg_config_shield_seconds="3600"
+cfg_config_shield_maxtries="20"
+cfg_config_close_deny="DROP"
+####
+####
+#### rules
+$cmd_command_ip4tableslegacy  -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
+-m recent --name count-tries-ssh --update --seconds $cfg_config_shield_seconds \
+--hitcount $cfg_config_shield_maxtries -j $cfg_config_close_deny \
+-m comment --comment "shield: $cfg_config_shield_maxtries-tries 1-hour" &> /dev/null && \
+echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy ip4 1/4" 
+$cmd_command_ip4tablesnft  -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
+-m recent --name count-tries-ssh --update --seconds $cfg_config_shield_seconds \
+--hitcount $cfg_config_shield_maxtries -j $cfg_config_close_deny \
+-m comment --comment "shield: $cfg_config_shield_maxtries-tries 1-hour" &> /dev/null && \
+echo "ok rule nft 1/4 with port $add"   || echo "without rule nft ip4 2/4"
+$cmd_command_ip6tableslegacy  -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
+-m recent --name count-tries-ssh --update --seconds $cfg_config_shield_seconds \
+--hitcount $cfg_config_shield_maxtries -j $cfg_config_close_deny \
+-m comment --comment "shield: $cfg_config_shield_maxtries-tries 1-hour" &> /dev/null && \
+echo "ok rule legacy ip6 3/4 with port $add"   || echo "without rule legacy ip6 1/4" 
+$cmd_command_ip6tablesnft  -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
+-m recent --name count-tries-ssh --update --seconds $cfg_config_shield_seconds \
+--hitcount $cfg_config_shield_maxtries -j $cfg_config_close_deny \
+-m comment --comment "shield: $cfg_config_shield_maxtries-tries 1-hour" &> /dev/null && \
+echo "ok rule nft ip6 4/4 with port $add"   || echo "without rule nft ip6 2/4"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-allow-port-tcp
 ##########    allow-port-tcp: add port to tcp ip4      ##########
 #### :rutina-inicial-allow-port-tcp
 ####
@@ -6802,8 +6852,7 @@ if [ "$2" == "$NULL" ]; then
 echo "$txt_text_title_fail type ip4 port or example with 21,23:25"; exit ; fi
 ####
 ####
-tcp_port_add="$(echo $2 | sed 's/,/ /g')"
-for add in $tcp_port_add ; do
+add="$2"
 ####
 ####
 echo "$txt_text_title [ Working ] ADD ipv4 rules port server: port to $add"
@@ -6819,9 +6868,6 @@ echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
 $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -p tcp -m multiport --sports $add \
 -m comment --comment "allow-port-tcp4" -j ACCEPT  &> /dev/null && \
 echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
-####
-####
-done
 ####
 ####
 exit; fi
@@ -6839,8 +6885,7 @@ if [ "$2" == "$NULL" ]; then
 echo "$txt_text_title_fail type ip6 port or example with 21,23:25"; exit ; fi
 ####
 ####
-tcp_port_add="$(echo $2 | sed 's/,/ /g')"
-for add in $tcp_port_add ; do
+add="$2"
 ####
 ####
 echo "$txt_text_title [ Working ] ADD ipv6 rules port server: port to $add"
@@ -6856,9 +6901,6 @@ echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
 $cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -p tcp -m multiport --sports $add \
 -m comment --comment "allow-port-tcp6" -j ACCEPT  &> /dev/null && \
 echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
-####
-####
-done
 ####
 ####
 exit; fi
@@ -6876,8 +6918,7 @@ if [ "$2" == "$NULL" ]; then
 echo "$txt_text_title_fail type ip4 port or example with 21,23:25"; exit ; fi
 ####
 ####
-tcp_port_add="$(echo $2 | sed 's/,/ /g')"
-for add in $tcp_port_add ; do
+add="$2"
 ####
 ####
 echo "$txt_text_title [ Working ] ADD ipv4 rules port server: port to $add"
@@ -6895,9 +6936,6 @@ $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -p tcp -m multiport --sports 
 echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
 ####
 ####
-done
-####
-####
 exit; fi
 ####
 ####
@@ -6913,8 +6951,7 @@ if [ "$2" == "$NULL" ]; then
 echo "$txt_text_title_fail type ip6 port or example with 21,23:25"; exit ; fi
 ####
 ####
-tcp_port_add="$(echo $2 | sed 's/,/ /g')"
-for add in $tcp_port_add ; do
+add="$2"
 ####
 ####
 echo "$txt_text_title [ Working ] ADD ipv6 rules port server: port to $add"
@@ -6932,9 +6969,6 @@ $cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -p tcp -m multiport --sports 
 echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
 ####
 ####
-done
-####
-####
 exit; fi
 ####
 ####
@@ -6950,8 +6984,7 @@ if [ "$2" == "$NULL" ]; then
 echo "$txt_text_title_fail type ip4 port or example with 21,23:25"; exit ; fi
 ####
 ####
-tcp_port_add="$(echo $2 | sed 's/,/ /g')"
-for add in $tcp_port_add ; do
+add="$2"
 ####
 ####
 echo "$txt_text_title [ Working ] ADD ipv4 rules port server: port to $add"
@@ -6969,9 +7002,6 @@ $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -p udp -m multiport --sports 
 echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
 ####
 ####
-done
-####
-####
 exit; fi
 ####
 ####
@@ -6987,8 +7017,7 @@ if [ "$2" == "$NULL" ]; then
 echo "$txt_text_title_fail type ip6 port or example with 21,23:25"; exit ; fi
 ####
 ####
-tcp_port_add="$(echo $2 | sed 's/,/ /g')"
-for add in $tcp_port_add ; do
+add="$2"
 ####
 ####
 echo "$txt_text_title [ Working ] ADD ipv6 rules port server: port to $add"
@@ -7004,9 +7033,6 @@ echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
 $cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
 -m comment --comment "allow-port-udp6" -j ACCEPT  &> /dev/null && \
 echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
-####
-####
-done
 ####
 ####
 exit; fi
@@ -7024,8 +7050,7 @@ if [ "$2" == "$NULL" ]; then
 echo "$txt_text_title_fail type ip4 port or example with 21,23:25"; exit ; fi
 ####
 ####
-tcp_port_add="$(echo $2 | sed 's/,/ /g')"
-for add in $tcp_port_add ; do
+add="$2"
 ####
 ####
 echo "$txt_text_title [ Working ] ADD ipv4 rules port server: port to $add"
@@ -7043,9 +7068,6 @@ $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -p udp -m multiport --sports 
 echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
 ####
 ####
-done
-####
-####
 exit; fi
 ####
 ####
@@ -7061,8 +7083,7 @@ if [ "$2" == "$NULL" ]; then
 echo "$txt_text_title_fail type ip6 port or example with 21,23:25"; exit ; fi
 ####
 ####
-tcp_port_add="$(echo $2 | sed 's/,/ /g')"
-for add in $tcp_port_add ; do
+add="$2"
 ####
 ####
 echo "$txt_text_title [ Working ] ADD ipv6 rules port server: port to $add"
@@ -7078,9 +7099,6 @@ echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
 $cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
 -m comment --comment "drop-port-udp6" -j DROP  &> /dev/null && \
 echo "ok rule nft 1/4 with port $add"   || echo "without rule legacy 1/4"
-####
-####
-done
 ####
 ####
 exit; fi
