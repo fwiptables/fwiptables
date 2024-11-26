@@ -85,9 +85,11 @@ if [ "$opt_first" == "musica" ]; then
 echo "# play musica: $conf_musica"
 $opt_bin stop
 if [ "$opt_second" == "$NULL" ]; 
-then $conf_player -d $conf_musica &> /dev/null
-else $conf_player -d $conf_musica/*$opt_second* &> /dev/null
-fi
+then echo "# play musica: $conf_musica"
+$conf_player -d $conf_musica &> /dev/null
+else echo "# play musica: $conf_musica/*$opt_second*"
+for a in $(ls -1 $conf_musica | grep -i $opt_second
+$conf_player -d $a &> /dev/null ; done ; fi
 exit; fi
 ### play radio
 if [ "$opt_first" == "play" ]; then
