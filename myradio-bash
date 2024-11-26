@@ -34,6 +34,7 @@ conf_agent="curl" # the preferences
 conf_player="vlc -I dummy" # the preferences
 conf_kill="vlc" # the preferences
 conf_proxy=""
+conf_musica="$HOME/musica"
 conf_radio="https://www.tdtchannels.com/lists/radio.m3u8" # the preferences
 conf_folder="$HOME/.config/myradio-bash" # the preferences
 conf_complete="$conf_folder/myradio-list.m3u8" # the preferences
@@ -76,6 +77,12 @@ exit; fi
 if [ "$opt_first" == "search" ]; then
 echo "# searching radio: $opt_second"
 grep -i $2 $conf_complete
+exit; fi
+### play musica
+if [ "$opt_first" == "musica" ]; then
+echo "# play musica: $conf_musica"
+$opt_bin stop
+$conf_player -d $conf_musica &> /dev/null
 exit; fi
 ### play radio
 if [ "$opt_first" == "play" ]; then
