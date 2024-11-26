@@ -1881,7 +1881,7 @@ echo "#control=firewall-wallcontrol"
 echo "#listconceptual=firewall-listconceptual"
 echo "#listnumeral=firewall-listnumeral"
 echo "#wallcustom=firewall-wallcustom"
-echo "#wallsystem=firewall-wallsystem"
+echo "#wallinet=firewall-wallinet"
 echo "#wallutils=firewall-wallutils"
 echo "#easy=firewall-wallutils"
 echo "#examples=options-examples"
@@ -2509,13 +2509,18 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-myradio-install" ]; then
 ####
 ####
-echo "$txt_text_title_info  [ myradio download ] [ expert-myradio-install md]"
-echo "$txt_text_title Downloading myradio stable latest in $cmd_default_directory_radio/myradio-bash"
+#### install radio
+cmd_radio_name_install="rradio"
+cmd_radio_path_install="/usr/bin"
+cmd_radio_complete_install="$cmd_radio_path_install/$cmd_radio_name_install"
+cmd_radio_path_download="$cmd_default_directory_radio/$cmd_radio_name_install"
+echo "$txt_text_title_info [ expert-myradio-install md]"
+echo "$txt_text_title Downloading $cmd_radio_name_install in $cmd_radio_path_download"
 $cmd_command_curl $cmd_web_download_myradio -s -L \
--o $cmd_default_directory_radio/myradio-bash || echo "Without internet" || exit \
-&& chmod ugo+x $cmd_default_directory_radio/myradio-bash &> /dev/null
-cp $cmd_default_directory_radio/myradio-bash /usr/bin/myradio-bash && \
-echo "$txt_text_title installed myradio-bash in /usr/bin/myradio-bash"
+-o $cmd_radio_path_download || echo "Without internet" || exit \
+&& chmod ugo+x $cmd_radio_path_download &> /dev/null
+cp $cmd_radio_path_download $cmd_radio_complete_install  && \
+echo "$txt_text_title installed $cmd_radio_name_install in cmd_radio_complete_install"
 ####
 ####
 exit; fi
@@ -2878,7 +2883,7 @@ if [ "$cmd_first_option" == "template-tiny-en" ]; then
 ####
 ####
 echo "$txt_text_title"
-echo "$txt_text_title Tiny firewall is allowed like *client* for all protocols and ports"
+echo "$txt_text_title Tiny firewall is allowed like client for all protocols and ports"
 echo "$txt_text_title"
 echo "$txt_text_title NETFILTER $txt_text_title "
 echo "$txt_text_title The iptables firewall netfilter, choose one or both  "
@@ -2902,7 +2907,7 @@ echo "$txt_text_title GENERAL RULES $txt_text_title "
 echo "$txt_text_title General rules in table "
 echo "cfg_allow_separate_rules= "
 echo "$txt_text_title"
-echo "$txt_text_title Tiny firewall is allowed like *client* for all protocols and ports"
+echo "$txt_text_title Tiny firewall is allowed like client for all protocols and ports"
 echo "$txt_text_title"
 ####
 ####
@@ -3711,7 +3716,7 @@ echo "$txt_text_md_md tinyserver-tcp . all client and selected servers tcp in co
 echo "$txt_text_md_md tinyserver-udp . all client and selected servers udp in command $txt_text_md"
 echo "$txt_text_md_md miniserver-tcp . usual clients and selected servers tcp in command $txt_text_md"
 echo "$txt_text_md_md miniserver-udp . usual clients and selected servers udp in command $txt_text_md"
-echo "$txt_text_md_md clone-wallsystem . clone a static firewall predesignated $txt_text_md"
+echo "$txt_text_md_md clone-wallinet . clone a static firewall predesignated $txt_text_md"
 echo "$txt_text_md_md show-custom . show config-file choosed $txt_text_md"
 echo "$txt_text_md_md modify-custom . modify config-file choosed $txt_text_md"
 echo "$txt_text_md_md load-custom . launch a one one-file saved custom $txt_text_md" 
@@ -3723,59 +3728,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-wallcustom:
-##########    firewall-wallsystem: options for fwiptables firewall      ##########
-#### :rutina-inicial-firewall-wallsystem:
-####
-####
-if   [ "$cmd_first_option" == "firewall-wallsystem" ]; then
-####
-####
-echo "$txt_text_title | firewall-wallsystem | $cmd_internal firewall-wallsystem | $txt_text_md"
-echo "$txt_text_md_md client-basic . launch a one firewall basic client $txt_text_md"
-echo "$txt_text_md_md client-web . launch a one firewall web client $txt_text_md"
-echo "$txt_text_md_md client-ssh . launch a one firewall ssh client $txt_text_md"
-echo "$txt_text_md_md client-telnet . launch a one firewall telnet client $txt_text_md" 
-echo "$txt_text_md_md client-git . launch a one firewall git client $txt_text_md"
-echo "$txt_text_md_md client-ipp . launch a one firewall ipp client $txt_text_md"
-echo "$txt_text_md_md client-vnc . launch a one firewall vnc client $txt_text_md"
-echo "$txt_text_md_md client-mail . launch a one firewall mail client $txt_text_md"
-echo "$txt_text_md_md client-news . launch a one firewall news client $txt_text_md"
-echo "$txt_text_md_md client-vpn . launch a one firewall vpn client $txt_text_md"
-echo "$txt_text_md_md client-proxy . launch a one firewall proxy client $txt_text_md"
-echo "$txt_text_md_md games-udp . launch a one firewall udp client $txt_text_md"
-echo "$txt_text_md_md games-shooter . launch a one firewall shooter client $txt_text_md"
-echo "$txt_text_md_md games-wesnoth . launch a one firewall wesnoth client $txt_text_md"
-echo "$txt_text_md_md games-minetest . launch a one firewall minetest client $txt_text_md"
-echo "$txt_text_md_md games-freeciv . launch a one firewall freeciv client $txt_text_md"
-echo "$txt_text_md_md lan-tor . launch a one firewall only tor client $txt_text_md"
-echo "$txt_text_md_md lan-vpn . launch a one firewall only vpn client $txt_text_md"
-echo "$txt_text_md_md shield-ssh . launch a one firewall basic server with shield ssh $txt_text_md"
-echo "$txt_text_md_md server-ssh . launch a one firewall basic server $txt_text_md"
-echo "$txt_text_md_md server-telnet . launch a one firewall basic server $txt_text_md"
-echo "$txt_text_md_md server-samba . launch a one firewall basic server $txt_text_md"
-echo "$txt_text_md_md server-vnc . launch a one firewall basic server $txt_text_md"
-echo "$txt_text_md_md server-webserver . launch a one firewall basic server $txt_text_md" 
-echo "$txt_text_md_md server-print . launch a one firewall basic server $txt_text_md"
-echo "$txt_text_md_md server-lamp . launch a one firewall basic server $txt_text_md"
-echo "$txt_text_md_md server-news . launch a one firewall basic server $txt_text_md"
-echo "$txt_text_md_md server-ftp . launch a one firewall basic server $txt_text_md"
-echo "$txt_text_md_md server-mail . launch a one firewall basic server $txt_text_md"
-echo "$txt_text_md_md server-teamspeak . launch a one firewall basic server $txt_text_md"
-echo "$txt_text_md_md server-mumble . launch a one firewall basic server $txt_text_md"
-echo "$txt_text_md_md server-sql . launch a one firewall basic server $txt_text_md"
-echo "$txt_text_md_md server-asterisk . launch a one firewall basic server $txt_text_md"
-echo "$txt_text_md_md server-domain . launch a one firewall basic server $txt_text_md"
-echo "$txt_text_md_md server-proxy . launch a one firewall basic server $txt_text_md"
-echo "$txt_text_md_md server-gateway . launch a one firewall nat gateway and web/ssh server $txt_text_md"
-echo "$txt_text_md_md client-uid-root . launch a one firewall for only allow at user root $txt_text_md"
-echo "$txt_text_md_md client-gid-users . launch a one firewall for only allow at group users $txt_text_md"
-echo "$txt_text_md_md client-gid-net . launch a one firewall for only allow at group net $txt_text_md"
-####
-####
-exit; fi
-####
-####
-#### :rutina-final-firewall-wallsystem:
 ##########    firewall-wallutils: options for fwiptables firewall      ##########
 #### :rutina-inicial-firewall-wallutils:
 ####
@@ -4023,7 +3975,6 @@ $cmd_internal firewall-listconceptual
 $cmd_internal firewall-listnumeral
 $cmd_internal firewall-wallcontrol
 $cmd_internal firewall-wallcustom
-#### $cmd_internal firewall-wallsystem
 $cmd_internal firewall-wallinet
 $cmd_internal firewall-wallutils
 $cmd_internal expert
@@ -8522,7 +8473,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 case $menuprincipal in
 001) clear ; $cmd_internal cli-menu $cfg_favorite_base_cli ;;
 002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
-003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-wallsystem ;;
+003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-wallcustom ;;
 004) clear ; $cmd_internal txt names-custom
 read -p "Input the custom name to load # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
@@ -8849,7 +8800,7 @@ case $menuprincipal in
 0200) clear ; $cmd_internal cli firewall-listconceptual ;;
 0300) clear ; $cmd_internal cli firewall-listnumeral ;;
 0400) clear ; $cmd_internal cli firewall-wallcontrol ;;
-0500) clear ; $cmd_internal cli firewall-wallsystem ;;
+0500) clear ; $cmd_internal cli firewall-wallinet ;;
 0600) clear ; $cmd_internal cli firewall-wallcustom ;;
 0700) clear ; $cmd_internal cli firewall-wallutils ;;
 ################################################################################
@@ -9424,7 +9375,7 @@ selection_final="$(echo $selection | sed 's/\|//g')"
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu)$cmd_internal gui-roll-zenity           ;;
-gui-info-menu)$cmd_internal gui-zenity firewall-wallsystem ;;
+gui-info-menu)$cmd_internal gui-zenity firewall-wallinet   ;;
 wallinet-update)$cmd_internal gui-zenity wallinet-update   ;;
 wallinet-list)$cmd_internal gui-zenity wallinet-list       ;;
 wallinet-load)$cmd_internal gui-zenity wallinet-list
@@ -9958,7 +9909,7 @@ echo ; echo "$txt_text_title option selected: $final" ; echo ;
 case "$selection_final" in
 1*) exit ;;
 gui-principal-menu*) $cmd_internal gui-menu-$cmd_second_option          ;;
-gui-info-menu*)$cmd_internal gui-$cmd_second_option firewall-wallsystem ;;
+gui-info-menu*)$cmd_internal gui-$cmd_second_option firewall-wallinet   ;;
 wallinet-update*)$cmd_internal gui-$cmd_second_option wallinet-update   ;;
 wallinet-list*)$cmd_internal gui-$cmd_second_option wallinet-list       ;;
 wallinet-load*)$cmd_internal gui-$cmd_second_option wallinet-list
