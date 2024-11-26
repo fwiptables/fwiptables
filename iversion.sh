@@ -3450,7 +3450,7 @@ echo "$txt_text_md eraserules4 eraserules6 without-connection input-permisive $t
 echo "$txt_text_md input-established wizard-tiny wizard-mini wizard-full $txt_text_md"
 echo "$txt_text_md tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp $txt_text_md"
 echo "$txt_text_md drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp $txt_text_md" 
-echo "$txt_text_md add-shield-port add-whitelist add-blacklist $txt_text_md" 
+echo "$txt_text_md add-shield-tcp add-whitelist add-blacklist $txt_text_md" 
 echo "$txt_text_stitle    <firewall-wallcustom> $txt_text_md"
 echo "$txt_text_md new-full-custom nueva-completa-custom new-mini-custom $txt_text_md"
 echo "$txt_text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom $txt_text_md"
@@ -3488,6 +3488,7 @@ exit ; fi
 if   [ "$cmd_first_option" == "code" ];  then
 ####
 ####
+#### show code 
 echo "$txt_text_title_info  [ Show source code for each option ] "
 echo "$txt_text_title_info [ code ] [ show source code for options from $cmd_internal ]"
 code_error="$txt_text_title_info [ Usage ] [ $cmd_internal code option_choosed ]"
@@ -3521,6 +3522,7 @@ exit; fi
 if [ "$cmd_first_option" == "names-custom" ];  then
 ####
 ####
+#### show names
 echo "$txt_text_title_info [ List configs cfg ] "
 echo "$txt_text_title_info [ list configs files in cfg format ]"
 echo "$txt_text_title_info [ folder ] [ $cmd_default_directory_custom ]"
@@ -3541,6 +3543,7 @@ exit; fi
 if [ "$cmd_first_option" == "text-pause" ]; then
 ####
 ####
+#### pause
 read -p '##### ok ##### Press [enter] to continue now with the cli-menu ##### '
 ####
 ####
