@@ -81,7 +81,7 @@ echo "# play musica: $conf_musica"
 $opt_bin stop
 if [ "$opt_second" == "$NULL" ]; 
 then $conf_player -d $conf_musica &> /dev/null
-else $conf_player -d $conf_musica/$opt_second &> /dev/null
+else $conf_player -d $conf_musica/*$opt_second* &> /dev/null
 fi
 exit; fi
 ### play radio
