@@ -125,7 +125,7 @@ echo
 echo "$opt_name $opt_version"
 exit; fi
 ### about
-if [ "$opt_first" == "info" ]; then
+if [ "$opt_first" == "help" ]; then
 echo "# Option:  info"
 echo "# -------  ----"
 echo "# info:    this help"
@@ -142,8 +142,8 @@ echo "# link:    choose una link to play"
 exit; fi
 ### invalid options
 echo "# option no valid # choose one option to launch"
-echo "# $opt_base info|about|reset|config|stop|\
-update|search|play|musica|link choosed-radio"
+echo "# $opt_base help|about|reset|config|stop|\
+update|search|busca|play|musica|link choosed-radio"
 ##################################################### exit options
 exit
 

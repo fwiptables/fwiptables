@@ -2510,7 +2510,7 @@ if   [ "$cmd_first_option" == "expert-myradio-install" ]; then
 ####
 ####
 #### install radio
-cmd_radio_name_install="rradio"
+cmd_radio_name_install="mradio"
 cmd_radio_path_install="/usr/bin"
 cmd_radio_complete_install="$cmd_radio_path_install/$cmd_radio_name_install"
 cmd_radio_path_download="$cmd_default_directory_radio/$cmd_radio_name_install"
