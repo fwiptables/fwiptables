@@ -78,18 +78,18 @@ exit; fi
 ### busca musica
 if [ "$opt_first" == "busca" ]; then
 echo "# searching musica: $opt_second"
-ls -1 $conf_musica | grep -i $2 
+ls -1 $conf_musica | grep -i $2
 exit; fi
 ### play musica
 if [ "$opt_first" == "musica" ]; then
 echo "# play musica: $conf_musica"
 $opt_bin stop
-if [ "$opt_second" == "$NULL" ]; 
+if [ "$opt_second" == "$NULL" ];
 then echo "# play musica: $conf_musica"
 $conf_player -d $conf_musica &> /dev/null
 else echo "# play musica: $conf_musica/*$opt_second*"
-for a in $(ls -1 $conf_musica | grep -i $opt_second
-$conf_player -d $a &> /dev/null ; done ; fi
+for a in $(ls -1 $conf_musica | grep -i $opt_second)
+echo $a ; $conf_player -d $a &> /dev/null ; done ; fi
 exit; fi
 ### play radio
 if [ "$opt_first" == "play" ]; then
