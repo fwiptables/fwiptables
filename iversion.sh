@@ -2520,7 +2520,7 @@ $cmd_command_curl $cmd_web_download_myradio -s -L \
 -o $cmd_radio_path_download || echo "Without internet" || exit \
 && chmod ugo+x $cmd_radio_path_download &> /dev/null
 cp $cmd_radio_path_download $cmd_radio_complete_install  && \
-echo "$txt_text_title installed $cmd_radio_name_install in cmd_radio_complete_install"
+echo "$txt_text_title installed $cmd_radio_name_install in $cmd_radio_complete_install"
 ####
 ####
 exit; fi

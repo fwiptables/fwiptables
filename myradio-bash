@@ -40,12 +40,8 @@ conf_folder="$HOME/.config/myradio-bash" # the preferences
 conf_complete="$conf_folder/myradio-list.m3u8" # the preferences
 conf_choosed="$conf_folder/myradio-choosed.m3u8" # the preferences
 conf_config="$conf_folder/myradio-config.txt" # the preferences
-### without option
-### if [ "$opt_first" == "$NULL" ]; then
-### echo "# without option # choose one option to launch"
-### echo "# Launch: $opt_base install|config|reset|stop|update|\
-### search|play|random|link choosed-radio" ; exit ; fi
-### update config
+###
+##################################################### update config
 if [ ! -d "$conf_folder" ]; then mkdir -p $conf_folder ; fi
 if [ ! -f "$conf_config" ]; then 
 cat $0 | grep "the preferences" | grep -iv conf_config > $conf_config
@@ -53,6 +49,7 @@ echo "# config created $conf_config"  ; fi
 if [ ! -f "$conf_complete" ]; then  $opt_bin update ; fi
 ### load config
 source $conf_config
+###
 ##################################################### options list
 ### reset config
 if [ "$opt_first" == "reset" ]; then
@@ -82,7 +79,10 @@ exit; fi
 if [ "$opt_first" == "musica" ]; then
 echo "# play musica: $conf_musica"
 $opt_bin stop
-$conf_player -d $conf_musica &> /dev/null
+if [ "$opt_second" == "$NULL" ]; 
+then $conf_player -d $conf_musica &> /dev/null
+else $conf_player -d $conf_musica/$opt_second &> /dev/null
+fi
 exit; fi
 ### play radio
 if [ "$opt_first" == "play" ]; then
@@ -129,12 +129,13 @@ echo "# stop:    stop the player"
 echo "# update:  update the file m3u8 to play radio"
 echo "# search:  search in the file m3u8 to play radio"
 echo "# play:    play one radio with pattern"
+echo "# musica:  play folder music in $conf_musica"
 echo "# link:    choose una link to play"
 exit; fi
 ### invalid options
 echo "# option no valid # choose one option to launch"
 echo "# $opt_base info|about|reset|config|stop|\
-update|search|play|link choosed-radio"
+update|search|play|musica|link choosed-radio"
 ##################################################### exit options
 exit
 
