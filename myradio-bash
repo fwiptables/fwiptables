@@ -86,11 +86,11 @@ $opt_bin stop
 if [ "$opt_second" == "$NULL" ];
 then echo "# play musica: $conf_musica"
 $conf_player -d $conf_musica &> /dev/null
-else for a in $(ls -1 $conf_musica | grep -i $opt_second)
-do echo $a ; $conf_player -d $a &> /dev/null ; done ; fi
+else for a in "$(ls -1 $conf_musica | grep -i $opt_second)"
+do echo $a ; $conf_player $conf_musica/$a &> /dev/null ; done ; fi
 exit; fi
 ### play radio
-if [ "$opt_first" == "play" ]; then
+if [ "$opt_first" == "radio" ]; then
 if [ "$opt_second" == "$NULL" ]; then echo "# choose a name for one radio"; exit; fi
 $opt_bin stop
 grep -i $opt_second $conf_complete > $conf_choosed
@@ -134,14 +134,14 @@ echo "# stop:    stop the player"
 echo "# update:  update the file m3u8 to play radio"
 echo "# search:  search in the file m3u8 to play radio"
 echo "# busca:   search in the musica folder" 
-echo "# play:    play one radio with pattern"
+echo "# radio:   play one radio with pattern"
 echo "# musica:  play folder music in $conf_musica"
 echo "# link:    choose una link to play"
 exit; fi
 ### invalid options
 echo "# option no valid # choose one option to launch"
 echo "# $opt_base help|about|reset|config|stop|\
-update|search|busca|play|musica|link choosed-radio"
+update|search|busca|radio|musica|link choosed-radio"
 ##################################################### exit options
 exit
 
