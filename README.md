@@ -55,7 +55,7 @@
 ### fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-11-H                
+         Version Firewall: 24-11-I                
         Released Firewall: Year 2024 / Month 11               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
@@ -135,8 +135,8 @@
       Folder logcmd:           /root/.config/fwiptables/fwiptables-logcmd   
         
     [ Preferences files ]     
-      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-H.conf
-      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-H.conf
+      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-I.conf
+      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-I.conf
       my-note:               -note
         
     [ optional output ]       
@@ -263,25 +263,6 @@
        All options in window shell             
        /usr/bin/fwiptables gui-shell-yad         
   
-### fwiptables changes   
-      [ changes in 24-11-H ] upgrade: minor changes | usernotes: renamed to my-note
-      web: fixed | expert-project-web: deprecated | comments only in english
-      option: add port tcp4 to drop, to allow, add port tcp6 to drop to allow
-      option: whitelist and blacklist ip4 and ip6 | deprecated: spanish
-      wallcustom: now is with repository, with name wallinet
-      [ changes in 24-11-G ] cli-menu: minor changes
-      [ changes in 24-11-F ] info-net: changed names option | variables: simplify
-      cli-menu and cli-menu-compact: changes, updated, fixed
-      [ changes in 24-11-E ]
-      changes: dev-changes now is changes and new format util   
-      add-whitelist: add-whitelist moved to firewall-wallcontrol   
-      expert: fixed in expert option   
-      [ changes in 24-11-D ]
-      whitelist: better in whitelist options now comments   
-      whitelist: better in whitelist options now only in the used tables   
-      variables: Changes in all enviroment name to cfg_ | txt_ | cmd_   
-      custom files: no retro compability from 24-11-D   
-  
 ### fwiptables options   
    fwiptables [optional-output] first_option [second_option]   
 ##     <optional-output>   
@@ -305,7 +286,7 @@
    input-established wizard-tiny wizard-mini wizard-full   
    tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp   
    drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp   
-   add-whitelist add-blacklist   
+   add-shield-port add-whitelist add-blacklist   
 ##     <firewall-wallcustom>   
    new-full-custom nueva-completa-custom new-mini-custom   
    nueva-mini-custom new-tiny-custom nueva-diminuta-custom   
@@ -321,4 +302,4 @@
    log-stat web intro depends uninstall install upgrade hints   
    variables examples info code expert donate about version   
    license-lgpl-v2 license-gpl-v2   
-      < info > fwiptables 24-11-H with expert option actived   
+      < info > fwiptables 24-11-I with expert option actived   
