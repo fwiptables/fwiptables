@@ -75,6 +75,11 @@ if [ "$opt_first" == "search" ]; then
 echo "# searching radio: $opt_second"
 grep -i $2 $conf_complete
 exit; fi
+### busca musica
+if [ "$opt_first" == "busca" ]; then
+echo "# searching musica: $opt_second"
+ls -1 $conf_musica | grep -i $2 
+exit; fi
 ### play musica
 if [ "$opt_first" == "musica" ]; then
 echo "# play musica: $conf_musica"
@@ -128,6 +133,7 @@ echo "# reset:   reset the user config for my radio-bash"
 echo "# stop:    stop the player"
 echo "# update:  update the file m3u8 to play radio"
 echo "# search:  search in the file m3u8 to play radio"
+echo "# busca:   search in the musica folder" 
 echo "# play:    play one radio with pattern"
 echo "# musica:  play folder music in $conf_musica"
 echo "# link:    choose una link to play"
