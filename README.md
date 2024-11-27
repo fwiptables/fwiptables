@@ -7,7 +7,6 @@
       Compile
       Depends
       Examples
-      Changes
       Options
   
 ### fwiptables readme   
@@ -55,7 +54,7 @@
 ### fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-11-I                
+         Version Firewall: 24-11-J                
         Released Firewall: Year 2024 / Month 11               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
@@ -135,9 +134,9 @@
       Folder logcmd:           /root/.config/fwiptables/fwiptables-logcmd   
         
     [ Preferences files ]     
-      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-I.conf
-      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-I.conf
-      my-note:               -note
+      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-J.conf
+      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-J.conf
+      my-note:                 /root/.config/fwiptables/fwiptables-preferences/default-usernotes-all-versions.txt
         
     [ optional output ]       
       dialog cli:              /usr/bin/dialog   
@@ -286,7 +285,7 @@
    input-established wizard-tiny wizard-mini wizard-full   
    tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp   
    drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp   
-   add-shield-port add-whitelist add-blacklist   
+   add-shield-tcp add-whitelist add-blacklist   
 ##     <firewall-wallcustom>   
    new-full-custom nueva-completa-custom new-mini-custom   
    nueva-mini-custom new-tiny-custom nueva-diminuta-custom   
@@ -302,4 +301,4 @@
    log-stat web intro depends uninstall install upgrade hints   
    variables examples info code expert donate about version   
    license-lgpl-v2 license-gpl-v2   
-      < info > fwiptables 24-11-I with expert option actived   
+      < info > fwiptables 24-11-J with expert option actived   

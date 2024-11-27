@@ -636,12 +636,12 @@ cmd_default_fullcfg_spa=\
 ####
 ####
 #### files files default
+cmd_file_default_logcmd=\
+"$cmd_default_directory_logcmd/default-logcmd-$cmd_version-$cmd_archive_date.log"
 cmd_file_default_preferences=\
 "$cmd_default_directory_preferences/default-preferences-$cmd_version.conf"
 cmd_file_default_alias=\
 "$cmd_default_directory_preferences/default-alias-$cmd_version.conf"
-cmd_file_default_logcmd=\
-"$cmd_default_directory_logcmd/default-logcmd-$cmd_version-$cmd_archive_date.log"
 cmd_file_default_usernotes=\
 "$cmd_default_directory_preferences/default-usernotes-all-versions.txt"
 ####
@@ -1901,6 +1901,7 @@ echo "#ram=free"
 echo "#nodes=info-nodes"
 echo "#notes=hints"
 echo "#usernotes=my-note"
+echo "#clone-wallinet=wallinet-clone"
 ####
 ####
 exit ; fi
@@ -2564,7 +2565,7 @@ echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_title_md [ Preferences files ]   $txt_text_md"
 echo "$txt_text_md_md preferences:             $cmd_file_default_preferences"
 echo "$txt_text_md_md alias:                   $cmd_file_default_alias"             
-echo "$txt_text_md_md my-note:               $cmd_file_default_my-note"
+echo "$txt_text_md_md my-note:                 $cmd_file_default_usernotes"
 echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_title_md [ optional output ]     $txt_text_md"
 echo "$txt_text_md_md dialog cli:              $cmd_command_dialog $txt_text_md"
@@ -3459,7 +3460,7 @@ echo "$txt_text_md add-shield-tcp add-whitelist add-blacklist $txt_text_md"
 echo "$txt_text_stitle    <firewall-wallcustom> $txt_text_md"
 echo "$txt_text_md new-full-custom nueva-completa-custom new-mini-custom $txt_text_md"
 echo "$txt_text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom $txt_text_md"
-echo "$txt_text_md clone-wallinet load-custom loadmini-custom loadtiny-custom $txt_text_md"
+echo "$txt_text_md wallinet-clone load-custom loadmini-custom loadtiny-custom $txt_text_md"
 echo "$txt_text_md show-custom modify-custom del-custom names-custom $txt_text_md"
 echo "$txt_text_stitle    <firewall-wallinet> $txt_text_md"
 echo "$txt_text_md wallinet-update wallinet-list wallinet-load wallinet-show $txt_text_md"
@@ -3716,7 +3717,7 @@ echo "$txt_text_md_md tinyserver-tcp . all client and selected servers tcp in co
 echo "$txt_text_md_md tinyserver-udp . all client and selected servers udp in command $txt_text_md"
 echo "$txt_text_md_md miniserver-tcp . usual clients and selected servers tcp in command $txt_text_md"
 echo "$txt_text_md_md miniserver-udp . usual clients and selected servers udp in command $txt_text_md"
-echo "$txt_text_md_md clone-wallinet . clone a static firewall predesignated $txt_text_md"
+echo "$txt_text_md_md wallinet-clone . clone a static firewall predesignated $txt_text_md"
 echo "$txt_text_md_md show-custom . show config-file choosed $txt_text_md"
 echo "$txt_text_md_md modify-custom . modify config-file choosed $txt_text_md"
 echo "$txt_text_md_md load-custom . launch a one one-file saved custom $txt_text_md" 
@@ -3867,7 +3868,8 @@ if   [ "$cmd_first_option" == "wallinet-list" ]; then
 #### list
 cd $cmd_default_directory_wallinet
 $cmd_command_find  | $cmd_command_sed 's/.txt//g' | $cmd_command_sed 's/.\///g'
-echo "$txt_text_title_ok to load firewall: $cmd_name wallinet-load firewall"
+echo "$txt_text_title_ok to clone firewall: $cmd_name wallinet-clone firewall"
+echo "$txt_text_title_ok to load  firewall: $cmd_name wallinet-load  firewall"
 ####
 ####
 exit; fi
@@ -5043,17 +5045,19 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-arptables:
-##########    clone-wallinet: clone config file static static               ##########
-#### :rutina-inicial-clone-wallinet:
+##########    wallinet-clone: clone config file static static               ##########
+#### :rutina-inicial-wallinet-clone:
 ####
 ####
-if [ "$cmd_first_option" == "clone-wallinet" ] ; then 
+if [ "$cmd_first_option" == "wallinet-clone" ] ; then 
 ####
 ####
-#### prepare sane
-if [ "$cmd_second_option" == "$NULL" ] ; then exit; fi
+#### sane
+if [ ! -f "$cmd_default_directory_wallinet/$cmd_second_option.txt" ]
+then $cmd_internal wallinet-list ; exit; fi
 ####
 ####
+#### clone
 if [ -f "$cmd_default_directory_wallinet/$cmd_second_option.txt" ] ; then
 archivo_origen="$cmd_default_directory_wallinet/$cmd_second_option.txt"
 archivo_destino="$cmd_default_directory_custom/$cmd_second_option"
@@ -5065,7 +5069,7 @@ fi
 exit; fi
 ####
 ####
-#### :rutina-final-clone-wallinet:
+#### :rutina-final-wallinet-clone:
 ##########    new-full-custom: new-full-custom option to create new configs   ##########
 #### :rutina-inicial-new-full-custom:
 ####
@@ -5372,7 +5376,6 @@ echo "$txt_text_md" "$txt_text_md" "hints"
 echo "$txt_text_md" "$txt_text_md" "Compile"
 echo "$txt_text_md" "$txt_text_md" "Depends"
 echo "$txt_text_md" "$txt_text_md" "Examples"
-echo "$txt_text_md" "$txt_text_md" "Changes"
 echo "$txt_text_md" "$txt_text_md" "Options"
 echo "$txt_text_md"
 $cmd_internal readme
@@ -8456,7 +8459,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 002 "$txt_text_title [ Info Options        ] $txt_text_title" \
 003 "$txt_text_title [ Firewall Wallcustom ] $txt_text_title" \
 004  "$txt_text_md load-custom" \
-005  "$txt_text_md clone-wallinet" \
+005  "$txt_text_md wallinet-clone" \
 006  "$txt_text_md new-full-custom" \
 007  "$txt_text_md nueva-completa-custom" \
 008  "$txt_text_md new-mini-custom" \
@@ -8480,7 +8483,7 @@ archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal load-custom $archivo ;;
 005) clear ; read -p "Input the wallinet name to clone # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
-$cmd_internal clone-wallinet $archivo ;;
+$cmd_internal wallinet-clone $archivo ;;
 006) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal new-full-custom $archivo ;;
@@ -8737,7 +8740,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 0504  "$txt_text_md wallinet-show" \
 0600 "$txt_text_title [ firewall-wallcustom ] $txt_text_title" \
 0606  "$txt_text_md load-custom" \
-0607  "$txt_text_md clone-wallinet" \
+0607  "$txt_text_md wallinet-clone" \
 0611  "$txt_text_md new-full-custom" \
 0612  "$txt_text_md nueva-completa-custom" \
 0613  "$txt_text_md new-mini-custom" \
@@ -8885,7 +8888,7 @@ archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal load-custom $archivo ;;
 0607) clear ; read -p "Input the wallinet name to clone # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
-$cmd_internal clone-wallinet $archivo ;;
+$cmd_internal wallinet-clone $archivo ;;
 0611) clear ; read -p "Input the new custom name to create # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal new-full-custom $archivo ;;
@@ -9265,7 +9268,7 @@ then echo $txt_message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|load-custom|\
-clone-wallinet|new-full-custom|nueva-completa-custom|\
+wallinet-clone|new-full-custom|nueva-completa-custom|\
 new-mini-custom|nueva-mini-custom|new-tiny-custom|nueva-diminuta-custom|\
 names-custom|show-custom|modify-custom|del-custom|templates-regen"
 selection_menu="$($cmd_command_zenity --forms \
@@ -9284,10 +9287,10 @@ load-custom)archivo="$($cmd_command_zenity  --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Launch-Custom --entry-text=cfg_to_launch)" ; 
 $cmd_internal -gui-zenity load-custom $archivo ; $cmd_internal gui list4;;
-clone-wallinet)archivo="$($cmd_command_zenity  --entry \
+wallinet-clone)archivo="$($cmd_command_zenity  --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---title=clone-wallinet-firewall --entry-text=firewall_wallinet_to_clone)" ; 
-$cmd_internal -gui-zenity clone-wallinet $archivo ; $cmd_internal gui list4;;
+--title=wallinet-clone-firewall --entry-text=firewall_wallinet_to_clone)" ; 
+$cmd_internal -gui-zenity wallinet-clone $archivo ; $cmd_internal gui list4;;
 new-full-custom)
 archivo="$($cmd_command_zenity  --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -9787,7 +9790,7 @@ echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
-load-custom|clone-wallinet|\
+load-custom|wallinet-clone|\
 new-full-custom|nueva-completa-custom|\
 new-mini-custom|nueva-mini-custom|\
 new-tiny-custom|nueva-diminuta-custom|\
@@ -9818,11 +9821,11 @@ load-custom*)archivo="$($cmd_second_option  --entry \
 --entry-text=cfg-to-launch)" ; 
 $cmd_internal gui-$cmd_second_option load-custom $archivo ;
 $cmd_internal gui-$cmd_second_option list4 ;;
-clone-wallinet*)archivo="$($cmd_second_option --entry \
+wallinet-clone*)archivo="$($cmd_second_option --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---title=clone-wallinet \
+--title=wallinet-clone \
 --entry-text=wallinet-firewall-to-clone-config)" ; 
-$cmd_internal gui-$cmd_second_option clone-wallinet $archivo ;
+$cmd_internal gui-$cmd_second_option wallinet-clone $archivo ;
 $cmd_internal gui-$cmd_second_option list4;;
 new-full-custom*) archivo="$($cmd_second_option --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
