@@ -54,7 +54,7 @@
 ### fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-11-J                
+         Version Firewall: 24-11-K                
         Released Firewall: Year 2024 / Month 11               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
@@ -134,8 +134,8 @@
       Folder logcmd:           /root/.config/fwiptables/fwiptables-logcmd   
         
     [ Preferences files ]     
-      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-J.conf
-      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-J.conf
+      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-K.conf
+      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-K.conf
       my-note:                 /root/.config/fwiptables/fwiptables-preferences/default-usernotes-all-versions.txt
         
     [ optional output ]       
@@ -289,7 +289,7 @@
 ##     <firewall-wallcustom>   
    new-full-custom nueva-completa-custom new-mini-custom   
    nueva-mini-custom new-tiny-custom nueva-diminuta-custom   
-   clone-wallinet load-custom loadmini-custom loadtiny-custom   
+   wallinet-clone load-custom loadmini-custom loadtiny-custom   
    show-custom modify-custom del-custom names-custom   
 ##     <firewall-wallinet>   
    wallinet-update wallinet-list wallinet-load wallinet-show   
@@ -301,4 +301,4 @@
    log-stat web intro depends uninstall install upgrade hints   
    variables examples info code expert donate about version   
    license-lgpl-v2 license-gpl-v2   
-      < info > fwiptables 24-11-J with expert option actived   
+      < info > fwiptables 24-11-K with expert option actived   
