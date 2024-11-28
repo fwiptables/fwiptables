@@ -6804,12 +6804,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-drop-port-udp
-
-
-
-
-
-
 ##########    return-port-tcp4: return port to tcp ip4      ##########
 #### :rutina-inicial-return-port-tcp4
 ####
@@ -6845,8 +6839,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-return-port-tcp4
-
-
 ##########    return-port-tcp6: return port to tcp ip6      ##########
 #### :rutina-inicial-return-port-tcp6
 ####
@@ -6882,17 +6874,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-return-port-tcp6
-
-
-
-
-
-
-
-
-
-
-
 ##########    allow-port-tcp4: add port to tcp ip4      ##########
 #### :rutina-inicial-allow-port-tcp4
 ####
