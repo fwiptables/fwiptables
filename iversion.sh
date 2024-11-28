@@ -3614,24 +3614,27 @@ echo "$txt_text_md_md miniserver-tcp . firewall server ports tcp, with optional 
 echo "$txt_text_md_md miniserver-udp . firewall server ports udp, with optional clients $txt_text_md"
 echo "$txt_text_md_md add-whitelist . add host to allowed, at several comma seperated $txt_text_md"
 echo "$txt_text_md_md add-blacklist . add host to drop, at several comma seperated $txt_text_md"
-echo "$txt_text_md_md add-shield-tcp . add shield tries tcp 4/6, permited range and comma $txt_text_md"
-echo "$txt_text_md_md allow-port-tcp . add port tcp to allow, permited range and comma $txt_text_md"
-echo "$txt_text_md_md allow-port-udp . add port udp to allow, permited range and comma $txt_text_md"
-echo "$txt_text_md_md drop-port-tcp . add port tcp to drop, permited range and comma $txt_text_md"
-echo "$txt_text_md_md drop-port-udp . add port udp to drop, permited range and comma $txt_text_md"
-echo "$txt_text_md_md return-port-tcp . continue at next rule, permited range and comma $txt_text_md"
+echo "$txt_text_md_md add-shield-tcp . add shield tries tcp 4/6, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md allow-port-tcp . add port tcp to allow, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md allow-port-udp . add port udp to allow, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md drop-port-tcp . add port tcp to drop, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md drop-port-udp . add port udp to drop, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md return-port-tcp . continue at next rule, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md return-port-udp . continue at next rule, allowed range and comma $txt_text_md"
 echo "$txt_text_md_md add-whitelist4 . add host ip4 to allowed, at several comma seperated $txt_text_md"
 echo "$txt_text_md_md add-whitelist6 . add host ip6 to allowed, at several comma seperated $txt_text_md"
 echo "$txt_text_md_md add-blacklist4 . add host ip4 to droped, at several comma seperated $txt_text_md"
 echo "$txt_text_md_md add-blacklist6 . add host ip6 to droped, at several comma seperated $txt_text_md"
-echo "$txt_text_md_md allow-port-tcp4 . add port ip4 to allow, permited range and comma $txt_text_md"
-echo "$txt_text_md_md allow-port-tcp6 . add port ip6 to allow, permited range and comma $txt_text_md"
-echo "$txt_text_md_md drop-port-tcp4 . add port ip4 to drop, permited range and comma $txt_text_md"
-echo "$txt_text_md_md drop-port-tcp6 . add port ip6 to drop, permited range and comma $txt_text_md"
-echo "$txt_text_md_md add-shield-tcp4 . add shield tries tcp4, permited range and comma $txt_text_md"
-echo "$txt_text_md_md add-shield-tcp6 . add shield tries tcp6, permited range and comma $txt_text_md"
-echo "$txt_text_md_md return-port-tcp4 . continue at next rule, permited range and comma $txt_text_md"
-echo "$txt_text_md_md return-port-tcp6 . continue at next rule, permited range and comma $txt_text_md"
+echo "$txt_text_md_md allow-port-tcp4 . add port ip4 to allow, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md allow-port-tcp6 . add port ip6 to allow, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md drop-port-tcp4 . add port ip4 to drop, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md drop-port-tcp6 . add port ip6 to drop, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md add-shield-tcp4 . add shield tries tcp4, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md add-shield-tcp6 . add shield tries tcp6, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md return-port-tcp4 . continue at next rule, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md return-port-tcp6 . continue at next rule, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md return-port-udp4 . continue at next rule, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md return-port-udp6 . continue at next rule, allowed range and comma $txt_text_md"
 ####
 ####
 exit; fi
@@ -6721,6 +6724,22 @@ exit; fi
 ####
 ####
 #### :rutina-final-return-port-tcp
+##########    return-port-udp: add port to tcp ip4      ##########
+#### :rutina-inicial-return-port-udp
+####
+####
+if [ "$cmd_first_option" == "return-port-udp" ] ; then
+####
+####
+#### rules
+$cmd_internal return-port-udp4 $2
+$cmd_internal return-port-udp6 $2
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-return-port-udp
 ##########    add-shield-tcp: add port shield to tcp ip4     ##########
 #### :rutina-inicial-add-shield-tcp
 ####
@@ -6874,6 +6893,76 @@ exit; fi
 ####
 ####
 #### :rutina-final-return-port-tcp6
+##########    return-port-udp4: return port to udp ip4      ##########
+#### :rutina-inicial-return-port-udp4
+####
+####
+if [ "$cmd_first_option" == "return-port-udp4" ] ; then
+####
+####
+if [ "$2" == "$NULL" ]; then 
+echo "$txt_text_title_fail type ip4 port or example with 21,23:25"; exit ; fi
+####
+####
+#### ports
+add="$2"
+####
+####
+#### rules
+echo "$txt_text_title [ Working ] ADD ipv4 rules port server: port to $add"
+$cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p udp -m multiport --dports $add \
+-m comment --comment "return-port-udp4" -j RETURN  &> /dev/null && \
+echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
+$cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
+-m comment --comment "return-port-udp4" -j RETURN  &> /dev/null && \
+echo "ok output nft 2/4 with port $add"   || echo "without output nft 2/4"
+$cmd_command_ip4tableslegacy -t filter -I INPUT  2 -p udp -m multiport --dports $add \
+-m comment --comment "return-port-udp4" -j RETURN  &> /dev/null && \
+echo "ok input legacy 3/4 with port $add"   || echo "without input legacy 3/4"
+$cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
+-m comment --comment "return-port-udp4" -j RETURN  &> /dev/null && \
+echo "ok output legacy 4/4 with port $add"   || echo "without output legacy 4/4"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-return-port-udp4
+##########    return-port-udp6: return port to udp ip6      ##########
+#### :rutina-inicial-return-port-udp6
+####
+####
+if [ "$cmd_first_option" == "return-port-udp6" ] ; then
+####
+####
+if [ "$2" == "$NULL" ]; then 
+echo "$txt_text_title_fail type ip6 port or example with 21,23:25"; exit ; fi
+####
+####
+#### ports
+add="$2"
+####
+####
+#### rules
+echo "$txt_text_title [ Working ] ADD ipv6 rules port server: port to $add"
+$cmd_command_ip6tablesnft    -t filter -I INPUT 2 -p udp -m multiport --dports $add \
+-m comment --comment "return-port-udp6" -j RETURN  &> /dev/null && \
+echo "ok input nft 1/4 with port $add"   || echo "without rule nft 1/4"
+$cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
+-m comment --comment "return-port-udp6" -j RETURN  &> /dev/null && \
+echo "ok output nft 1/4 with port $add"   || echo "without rule nft 1/4"
+$cmd_command_ip6tableslegacy -t filter -I INPUT  2 -p udp -m multiport --dports $add \
+-m comment --comment "return-port-udp6" -j RETURN  &> /dev/null && \
+echo "ok input legacy 1/4 with port $add"   || echo "without rule legacy 1/4"
+$cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
+-m comment --comment "return-port-udp6" -j RETURN  &> /dev/null && \
+echo "ok output legacy 1/4 with port $add"   || echo "without rule legacy 1/4"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-return-port-udp6
 ##########    allow-port-tcp4: add port to tcp ip4      ##########
 #### :rutina-inicial-allow-port-tcp4
 ####
