@@ -30,16 +30,16 @@ opt_base="$(basename $0)"
 opt_first="$1"
 opt_second="$2"
 ### variables secondary list
-conf_agent="curl" # the preferences
+conf_agent="curl"          # the preferences
 conf_player="vlc -I dummy" # the preferences
-conf_kill="vlc" # the preferences
-conf_proxy=""
-conf_musica="$HOME/musica"
+conf_kill="vlc"            # the preferences
+conf_proxy=""              # the preferences
+conf_musica="$HOME/musica" # the preferences
 conf_radio="https://www.tdtchannels.com/lists/radio.m3u8" # the preferences
-conf_folder="$HOME/.config/myradio-bash" # the preferences
-conf_complete="$conf_folder/myradio-list.m3u8" # the preferences
-conf_choosed="$conf_folder/myradio-choosed.m3u8" # the preferences
-conf_config="$conf_folder/myradio-config.txt" # the preferences
+conf_folder="$HOME/.config/myradio-bash"                  # the preferences
+conf_complete="$conf_folder/myradio-list.m3u8"            # the preferences
+conf_choosed="$conf_folder/myradio-choosed.m3u8"          # the preferences
+conf_config="$conf_folder/myradio-config.txt"             # the preferences
 ###
 ##################################################### update config
 if [ ! -d "$conf_folder" ]; then mkdir -p $conf_folder ; fi
@@ -136,12 +136,12 @@ echo "# search:  search in the file m3u8 to play radio"
 echo "# busca:   search in the musica folder" 
 echo "# radio:   play one radio with pattern"
 echo "# musica:  play folder music in $conf_musica"
-echo "# link:    choose una link to play"
+echo "# link:    choose una web link to play"
 exit; fi
 ### invalid options
 echo "# option no valid # choose one option to launch"
 echo "# $opt_base help|about|reset|config|stop|\
-update|search|busca|radio|musica|link choosed-radio"
+update|search|busca|radio|musica|link [music]"
 ##################################################### exit options
 exit
 
