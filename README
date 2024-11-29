@@ -54,7 +54,7 @@
 ### fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-11-K                
+         Version Firewall: 24-11-L                
         Released Firewall: Year 2024 / Month 11               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
@@ -134,8 +134,8 @@
       Folder logcmd:           /root/.config/fwiptables/fwiptables-logcmd   
         
     [ Preferences files ]     
-      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-K.conf
-      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-K.conf
+      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-L.conf
+      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-L.conf
       my-note:                 /root/.config/fwiptables/fwiptables-preferences/default-usernotes-all-versions.txt
         
     [ optional output ]       
@@ -264,36 +264,36 @@
   
 ### fwiptables options   
    fwiptables [optional-output] first_option [second_option]   
-##     <optional-output>   
+      <optional-output>   
    [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]   
    [ cli-dialog cli-whiptail cli-menu cli-menu-compact ]   
    [ cli-menu-dialog cli-menu-compact-dialog  ]   
    [ cli-menu-whiptail cli-menu-compact-whiptail ]   
    [ gui-zenity gui-yad gui-menu gui-menu-zenity gui-menu-yad ]   
    [ gui-roll-zenity gui-shell gui-shell-zenity gui-shell-yad ]   
-##     <firewall-listconceptual>   
+      <firewall-listconceptual>   
    ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6   
    list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4   
    list-security6 list-ebtables list-arptables list-alltables   
-##     <firewall-listnumeral>   
+      <firewall-listnumeral>   
    lsn4 lsn6 statusn listn-filter4 listn-filter6 listn-nat4   
    listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6   
    listn-security4 listn-security6 listn-alltables   
-##     <firewall-wallcontrol>   
+      <firewall-wallcontrol>   
    stop continue reset show save load names actual eraserules   
    eraserules4 eraserules6 without-connection input-permisive   
    input-established wizard-tiny wizard-mini wizard-full   
    tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp   
    drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp   
-   add-shield-tcp add-whitelist add-blacklist   
-##     <firewall-wallcustom>   
+   return-port-tcp add-shield-tcp add-whitelist add-blacklist   
+      <firewall-wallcustom>   
    new-full-custom nueva-completa-custom new-mini-custom   
    nueva-mini-custom new-tiny-custom nueva-diminuta-custom   
    wallinet-clone load-custom loadmini-custom loadtiny-custom   
    show-custom modify-custom del-custom names-custom   
-##     <firewall-wallinet>   
+      <firewall-wallinet>   
    wallinet-update wallinet-list wallinet-load wallinet-show   
-##     <firewall-wallutils>   
+      <firewall-wallutils>   
    preferences-edit alias-edit options info-options my-note  
    cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache   
    ip4 ip6 route4 route6 info-ip4 info-ip6 info-nodes sockets   
@@ -301,4 +301,4 @@
    log-stat web intro depends uninstall install upgrade hints   
    variables examples info code expert donate about version   
    license-lgpl-v2 license-gpl-v2   
-      < info > fwiptables 24-11-K with expert option actived   
+      < info > fwiptables 24-11-L with expert option actived   
