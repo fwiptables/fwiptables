@@ -25,8 +25,8 @@ if [ "$(id -u)" == "0" ]; then echo "# launch as user, not root allowed"; exit; 
 ### variables principal list
 opt_name="myradio-bash"
 opt_version="24-11-J"
-opt_bin="$(realpath $0)"
-opt_base="$(basename $0)"
+opt_realpath="$(realpath $0)"
+opt_basename="$(basename $0)"
 opt_first="$1"
 opt_second="$2"
 ### variables secondary list
@@ -46,7 +46,7 @@ if [ ! -d "$conf_folder" ]; then mkdir -p $conf_folder ; fi
 if [ ! -f "$conf_config" ]; then 
 cat $0 | grep "the preferences" | grep -iv conf_config > $conf_config
 echo "# config created $conf_config"  ; fi
-if [ ! -f "$conf_complete" ]; then  $opt_bin update ; fi
+if [ ! -f "$conf_complete" ]; then  $opt_realpath update ; fi
 ### load config
 source $conf_config
 ###
@@ -82,7 +82,7 @@ ls -1 $conf_musica | grep -i $2
 exit; fi
 ### play musica
 if [ "$opt_first" == "musica" ]; then
-$opt_bin stop
+$opt_realpath stop
 if [ "$opt_second" == "$NULL" ];
 then echo "# play musica: $conf_musica"
 $conf_player -d $conf_musica &> /dev/null
@@ -92,7 +92,7 @@ exit; fi
 ### play radio
 if [ "$opt_first" == "radio" ]; then
 if [ "$opt_second" == "$NULL" ]; then echo "# choose a name for one radio"; exit; fi
-$opt_bin stop
+$opt_realpath stop
 grep -i $opt_second $conf_complete > $conf_choosed
 if [ ! -s "$conf_choosed" ]; then echo "# radio not found" ; exit; fi
 if [ "$conf_proxy" == "$NULL" ]
@@ -103,14 +103,14 @@ echo "# now playing radio: $opt_second"
 exit; fi
 ### link radio
 if [ "$opt_first" == "link" ]; then
-$opt_bin stop
+$opt_realpath stop
 echo "# playing: $opt_second" ;
 $conf_player -d $opt_second
 exit; fi
 ### code program
 if [ "$opt_first" == "code" ]; then
 echo "# source code script"
-cat $opt_bin
+cat $opt_realpath
 exit; fi
 ### about
 if [ "$opt_first" == "about" ]; then
@@ -140,7 +140,7 @@ echo "# link:    choose una web link to play"
 exit; fi
 ### invalid options
 echo "# option no valid # choose one option to launch"
-echo "# $opt_base help|about|reset|config|stop|\
+echo "# $opt_basename help|about|reset|config|stop|\
 update|search|busca|radio|musica|link [music]"
 ##################################################### exit options
 exit
