@@ -3,7 +3,7 @@
 Planed fixing bugs, Planed feacture adding .
 
 ## The planed fixed commit:     
-
+cli-menu-compact: update
 
 ## The planed feature commit: 
 
