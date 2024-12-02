@@ -90,9 +90,10 @@ else cmd_internal="$cmd_notinstalled"
 fi
 #### The number version firewall
 cmd_year="24"                                                 # Number year version
-cmd_month="11"                                                # Number mouth version
-cmd_letter="L"                                                # Number letter version
-cmd_version="$cmd_year-$cmd_month-$cmd_letter"                # Final date version
+cmd_month="12"                                                # Number mouth version
+cmd_letter="A"                                                # Number letter version
+cmd_devel="dev"
+cmd_version="$cmd_year-$cmd_month-$cmd_letter-$cmd_devel"     # Final date version
 cmd_released="Year 20$cmd_year / Month $cmd_month"            # Source date version
 #### The data version firewall
 cmd_developer="Francisco Garcia"                              # Actual developer
@@ -746,24 +747,6 @@ exit ;; esac ; fi
 ####
 ####
 #### :rutina-final-variables-updated:
-##########      Search favorite iperf: favorite iperf command        ##########
-#### :rutina-inicial-favorite-iperf:
-####
-####
-#### choose iperf3 and the iperf to speed ip
-if [ "$cfg_favorite_iperf_command" == "$NULL" ]; then
-####
-####
-if [ "$cmd_command_iperf3"    != "$NULL" ]; then
-cfg_favorite_iperf_command="$cmd_command_iperf3" ; fi
-if [ "$cmd_command_iperf"   != "$NULL" ]; then
-cfg_favorite_iperf_command="$cmd_command_iperf" ; fi
-####
-####
-fi
-####
-####
-#### :rutina-final-favorite-iperf:
 ##########      search favorite date: favorite date command        ##########
 #### :rutina-inicial-favorite-date:
 ####
@@ -3927,11 +3910,9 @@ echo "$txt_text_md_md expert-show-webcert . show web certificate ssl from one we
 echo "$txt_text_md_md expert-show-newversion . Show version fwiptables stable/unstable with curl $txt_text_md "
 echo "$txt_text_md_md expert-show-clientproxy . show proxy variables in the system stablished $txt_text_md "
 echo "$txt_text_md_md expert-conf-clientproxy . File /etc/proxy.fwiptables for proxy launched with source $txt_text_md "
-echo "$txt_text_md_md expert-speed-ip4 . benchmark internet speed ipv4 with 4seconds $txt_text_md "
-echo "$txt_text_md_md expert-speed-ip6 . benchmark internet speed ipv6 with 4seconds $txt_text_md "
 echo "$txt_text_md_md expert-speed-disk . benchmark disk speed with 100Mb $txt_text_md "
 echo "$txt_text_md_md expert-speed-ram . benchmark ram speed with 100Mb $txt_text_md "
-echo "$txt_text_md_md expert-speed-cpu . benchmark cpu speed with bc command aprox 5 seconds $txt_text_md "
+echo "$txt_text_md_md expert-speed-cpu . benchmark cpu speed in complete 5 seconds $txt_text_md "
 echo "$txt_text_md_md expert-speed-glx . benchmark glx speed with mesa3D $txt_text_md " 
 echo "$txt_text_md_md expert-upgrade-estable . Upgrade from web sourceforge fwiptables with curl $txt_text_md "
 echo "$txt_text_md_md expert-upgrade-unstable . Upgrade from git sourceforge fwiptables with curl $txt_text_md "
@@ -5321,11 +5302,13 @@ exit; fi
 if  [ "$cmd_first_option" == "readme" ];  then
 ####
 ####
-echo "$txt_text_md_md fwiptables. Firewall With iptables."
+echo "$txt_text_title_md  [ fwiptables readme ]                $txt_text_md"
+echo "$txt_text_md_md $txt_text_md"
+echo "$txt_text_md_md fwiptables. Firewall With iptables."     $txt_text_md
 echo "$txt_text_md_md Intro content information                          $txt_text_md"
 echo "$txt_text_md_md Readme: description, location, install, uninstall. $txt_text_md"
 echo "$txt_text_md_md $txt_text_md"
-echo "$txt_text_title_md  [ fwiptables description ]             $txt_text_md"
+echo "$txt_text_title_md  [ fwiptables description ]           $txt_text_md"
 echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_md_md The fwiptables is a one-file WIZARD,     $txt_text_md"
 echo "$txt_text_md_md for iptables, with COMMAND-LINE,         $txt_text_md"
@@ -5346,19 +5329,19 @@ echo "$txt_text_md_md with limit bandwidth, string word,                 $txt_te
 echo "$txt_text_md_md with host whitelist, host blacklist,               $txt_text_md"
 echo "$txt_text_md_md with other more capabilities of firewall.          $txt_text_md"
 echo "$txt_text_md_md $txt_text_md"
-echo "$txt_text_title_md  [ fwiptables location ]                          $txt_text_md"
+echo "$txt_text_title_md  [ fwiptables location ]                               $txt_text_md"
 echo "$txt_text_md_md $txt_text_md"
-echo "$txt_text_md_md  File    Location:   $cmd_directory/$cmd_filename  $txt_text_md"
+echo "$txt_text_md_md  File    Location:   $cmd_directory/$cmd_filename         $txt_text_md"
 echo "$txt_text_md_md  Config Directory:   $cmd_default_directory_necesary      $txt_text_md"
-echo "$txt_text_md_md  Cache  Directory:   $cmd_default_cache_basenecesary $txt_text_md "
+echo "$txt_text_md_md  Cache  Directory:   $cmd_default_cache_basenecesary      $txt_text_md "
 echo "$txt_text_md_md $txt_text_md"
-echo "$txt_text_title_md [ fwiptables install ]                      $txt_text_md"
+echo "$txt_text_title_md [ fwiptables install ]                    $txt_text_md"
 echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_md_md  su root TYPE: su root                       $txt_text_md"    
 echo "$txt_text_md_md  put bit TYPE: chmod 755 $cmd_internal       $txt_text_md"
 echo "$txt_text_md_md  install TYPE: $cmd_internal install         $txt_text_md" 
 echo "$txt_text_md_md $txt_text_md"
-echo "$txt_text_title_md [ fwiptables uninstall ]                    $txt_text_md"
+echo "$txt_text_title_md [ fwiptables uninstall ]                  $txt_text_md"
 echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_md_md uninstall TYPE: $cmd_internal uninstall      $txt_text_md"
 ####
@@ -7247,14 +7230,13 @@ exit; fi
 #### :rutina-inicial-speed-ip4:
 ####
 ####
-if [ "$cmd_first_option" == "speed-ip4" ] || [ "$cmd_first_option" == "expert-speed-ip4" ]; then
+if [ "$cmd_first_option" == "speed-ip4" ] ; then
 ####
 ####
 echo "$txt_text_title_info  [ test speed ipv4 with iperf ] "
-echo "$txt_text_title $cmd_internal use or iperf or iperf3"
-if [ "$cfg_favorite_iperf_command" == "$NULL" ];
-then echo "$txt_text_title_fail install iperf";
-else echo "$txt_text_title_ok [ choosed iperf ]"; fi
+echo "$txt_text_title $cmd_internal use iperf3"
+if [ "$cmd_command_iperf3" == "$NULL" ];
+then echo "$txt_text_title_fail install iperf3"; fi
 echo "$txt_text_title"
 # echo "$txt_text_title [ Working ] Saving firewall before speed-ip4"
 $cmd_internal save before-speed-ip4
@@ -7262,7 +7244,8 @@ $cmd_internal add-whitelist4 $cfg_server_ip_iperf_ipv4
 echo "$txt_text_title"
 echo "$txt_text_title [ Calculing speed .. ]"
 echo "$txt_text_title [ Working ] Conecting in ipv4 to $cfg_server_ip_iperf_ipv4 ]"
-$cfg_favorite_iperf_command -4 -t 4 -c $cfg_server_ip_iperf_ipv4 -p $cfg_server_port_iperf_ipv4
+$cmd_command_iperf3 -4 -t 5 --connect-timeout 5 \
+ -p $cfg_server_port_iperf_ipv4 $cfg_server_ip_iperf_ipv4
 echo "$txt_text_title"
 echo "$txt_text_title [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip4 
@@ -7277,20 +7260,20 @@ exit; fi
 #### :rutina-inicial-speed-ip6:
 ####
 ####
-if [ "$cmd_first_option" == "speed-ip6" ] || [ "$cmd_first_option" == "expert-speed-ip6" ]; then
+if [ "$cmd_first_option" == "speed-ip6" ] ; then
 ####
 ####
-echo "$txt_text_title_info  [ test speed ipv6 with iperf ] "
-echo "$txt_text_title $cmd_internal use or iperf or iperf3"
-if [ "$cfg_favorite_iperf_command" == "$NULL" ];
-then echo "$txt_text_title_fail install iperf";
-else echo "$txt_text_title_ok [ choosed iperf ]"; fi
+echo "$txt_text_title_info  [ test speed ipv6 with iperf3 ] "
+echo "$txt_text_title $cmd_internal use iperf3"
+if [ "$cmd_command_iperf3" == "$NULL" ];
+then echo "$txt_text_title_fail install iperf3"; fi
 $cmd_internal save before-speed-ip6 
 $cmd_internal add-whitelist6 $cfg_server_ip_iperf_ipv6
 echo "$txt_text_title"
 echo "$txt_text_title [ Calculing speed .. ]"
 echo "$txt_text_title [ Working ] Conecting in ipv6 to $cfg_server_ip_iperf_ipv4 ]"
-$cfg_favorite_iperf_command -6 -t 4 -P 1 -c $cfg_server_ip_iperf_ipv6 -p $cfg_server_port_iperf_ipv6 
+$cmd_command_iperf3 -6 -t 5 --connect-timeout 5 \
+-p $cfg_server_port_iperf_ipv6 $cfg_server_ip_iperf_ipv6
 echo "$txt_text_title"
 echo "$txt_text_title [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip6 
@@ -8510,6 +8493,15 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 019  "$txt_text_md eraserules4" \
 020  "$txt_text_md eraserules6" \
 021  "$txt_text_md eraserules" \
+022  "$txt_text_md return-port-tcp" \
+023  "$txt_text_md return-port-udp" \
+024  "$txt_text_md allow-port-tcp" \
+025  "$txt_text_md allow-port-udp" \
+026  "$txt_text_md drop-port-tcp" \
+027  "$txt_text_md drop-port-udp" \
+028  "$txt_text_md add-whitelist" \
+029  "$txt_text_md add-blacklist" \
+030  "$txt_text_md add-shield-tcp" \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
@@ -8544,6 +8536,42 @@ $cmd_internal load $nombrecillo ;;
 019) clear ; $cmd_internal $cfg_favorite_out_cli eraserules4 ; $cmd_internal cli list4   ;;
 020) clear ; $cmd_internal $cfg_favorite_out_cli eraserules6 ; $cmd_internal cli list6   ;;
 021) clear ; $cmd_internal $cfg_favorite_out_cli eraserules ; $cmd_internal cli status   ;;
+022) clear ; read -p "Input port # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli return-port-tcp $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+023) clear ; read -p "Input port # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli return-port-udp $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+024) clear ; read -p "Input port # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli allow-port-tcp $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+025) clear ; read -p "Input port # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli allow-port-udp $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+026) clear ; read -p "Input port # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli drop-port-tcp $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+027) clear ; read -p "Input port # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli drop-port-udp $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+028) clear ; read -p "Input host # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli add-whitelist $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+029) clear ; read -p "Input host # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli add-blacklist $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+030) clear ; read -p "Input port # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli add-shield-tcp $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
 *)        ;;
 esac
 ################################################################################
