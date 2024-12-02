@@ -8674,13 +8674,15 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 021  "$txt_text_md eraserules" \
 022  "$txt_text_md return-port-tcp" \
 023  "$txt_text_md return-port-udp" \
-024  "$txt_text_md allow-port-tcp" \
-025  "$txt_text_md allow-port-udp" \
-026  "$txt_text_md drop-port-tcp" \
-027  "$txt_text_md drop-port-udp" \
-028  "$txt_text_md add-whitelist" \
-029  "$txt_text_md add-blacklist" \
-030  "$txt_text_md add-shield-tcp" \
+024  "$txt_text_md log-port-tcp" \
+025  "$txt_text_md log-port-udp" \
+026  "$txt_text_md allow-port-tcp" \
+027  "$txt_text_md allow-port-udp" \
+028  "$txt_text_md drop-port-tcp" \
+029  "$txt_text_md drop-port-udp" \
+030  "$txt_text_md add-whitelist" \
+031  "$txt_text_md add-blacklist" \
+032  "$txt_text_md add-shield-tcp" \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
@@ -8725,29 +8727,37 @@ $cmd_internal $cfg_favorite_out_cli return-port-udp $archivo
 $cmd_internal $cfg_favorite_out_cli ls4                      ;;
 024) clear ; read -p "Input port # " archivo
 archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
-$cmd_internal $cfg_favorite_out_cli allow-port-tcp $archivo
+$cmd_internal $cfg_favorite_out_cli log-port-tcp $archivo
 $cmd_internal $cfg_favorite_out_cli ls4                      ;;
 025) clear ; read -p "Input port # " archivo
 archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
-$cmd_internal $cfg_favorite_out_cli allow-port-udp $archivo
+$cmd_internal $cfg_favorite_out_cli log-port-udp $archivo
 $cmd_internal $cfg_favorite_out_cli ls4                      ;;
 026) clear ; read -p "Input port # " archivo
 archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
-$cmd_internal $cfg_favorite_out_cli drop-port-tcp $archivo
+$cmd_internal $cfg_favorite_out_cli allow-port-tcp $archivo
 $cmd_internal $cfg_favorite_out_cli ls4                      ;;
 027) clear ; read -p "Input port # " archivo
 archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli allow-port-udp $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+028) clear ; read -p "Input port # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli drop-port-tcp $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+029) clear ; read -p "Input port # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
 $cmd_internal $cfg_favorite_out_cli drop-port-udp $archivo
 $cmd_internal $cfg_favorite_out_cli ls4                      ;;
-028) clear ; read -p "Input host # " archivo
+030) clear ; read -p "Input host # " archivo
 archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
 $cmd_internal $cfg_favorite_out_cli add-whitelist $archivo
 $cmd_internal $cfg_favorite_out_cli ls4                      ;;
-029) clear ; read -p "Input host # " archivo
+031) clear ; read -p "Input host # " archivo
 archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
 $cmd_internal $cfg_favorite_out_cli add-blacklist $archivo
 $cmd_internal $cfg_favorite_out_cli ls4                      ;;
-030) clear ; read -p "Input port # " archivo
+032) clear ; read -p "Input port # " archivo
 archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
 $cmd_internal $cfg_favorite_out_cli add-shield-tcp $archivo
 $cmd_internal $cfg_favorite_out_cli ls4                      ;;
