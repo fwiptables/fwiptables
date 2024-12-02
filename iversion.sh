@@ -9331,74 +9331,74 @@ wizard-tiny)$cmd_internal -gui-zenity wizard-tiny ; $cmd_internal gui list4;;
 without-connection)$cmd_internal -gui-zenity without-connection ; $cmd_internal gui list4;;
 input-permisive)$cmd_internal -gui-zenity input-permisive ; $cmd_internal gui list4;;
 input-established)$cmd_internal -gui-zenity input-established ; $cmd_internal gui list4;;
-tinyserver-tcp)serverports="$(cmd_command_zenity --entry \
+tinyserver-tcp)serverports="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-tcp)"                         
 $cmd_internal gui-zenity tinyserver-tcp $serverports    
 $cmd_internal gui-zenity list4                         ;;
-tinyserver-udp)serverports="$(cmd_command_zenity --entry \
+tinyserver-udp)serverports="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-udp)"                         
 $cmd_internal gui-zenity tinyserver-udp $serverports    
 $cmd_internal gui-zenity list4                         ;;
-miniserver-tcp)serverports="$(cmd_command_zenity --entry \
+miniserver-tcp)serverports="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-tcp)"                         
 $cmd_internal gui-zenity miniserver-tcp $serverports     
 $cmd_internal gui-zenity list4                         ;;
-miniserver-udp)serverports="$(cmd_command_zenity --entry \
+miniserver-udp)serverports="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
 --entry-text=server-ports-udp)"                         
 $cmd_internal gui-zenity miniserver-udp $serverports     
 $cmd_internal gui-zenity list4                         ;;
 return-port-tcp)
-port="$(cmd_command_zenity --entry \
+port="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=port \
 --entry-text=port)"
 $cmd_internal gui-zenity return-port-tcp $port           
 $cmd_internal gui-zenity list4                         ;;
 return-port-udp)
-port="$(cmd_command_zenity --entry \
+port="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=port \
 --entry-text=port)"
 $cmd_internal gui-zenity return-port-udp $port          
 $cmd_internal gui-zenity list4                        ;;    
 allow-port-tcp)
-port="$(cmd_command_zenity --entry \
+port="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=port \
 --entry-text=port)"
 $cmd_internal gui-zenity allow-port-tcp $port           
 $cmd_internal gui-zenity list4                        ;;    
 allow-port-udp)
-port="$(cmd_command_zenity --entry \
+port="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=port \
 --entry-text=port)"
 $cmd_internal gui-zenity allow-port-tcp $port           
 $cmd_internal gui-zenity list4                        ;;    
 drop-port-tcp)
-port="$(cmd_command_zenity --entry \
+port="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=port \
 --entry-text=port)"
 $cmd_internal gui-zenity drop-port-tcp $port            
 $cmd_internal gui-zenity list4                        ;;    
 drop-port-udp)
-port="$(cmd_command_zenity --entry \
+port="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=port \
 --entry-text=port)"
 $cmd_internal gui-zenity drop-port-tcp $port            
 $cmd_internal gui-zenity list4                        ;;    
 add-whitelist)
-host="$(cmd_command_zenity --entry \
+host="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=host \
 --entry-text=host)"
@@ -9412,7 +9412,7 @@ host="$($zenity --entry \
 $cmd_internal gui-zenity add-blacklist  $host          
 $cmd_internal gui-zenity list4                        ;;    
 add-shield-tcp)
-port="$(cmd_command_zenity --entry \
+port="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=port \
 --entry-text=port)"
