@@ -3440,7 +3440,7 @@ echo "$txt_text_md input-established wizard-tiny wizard-mini wizard-full $txt_te
 echo "$txt_text_md tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp $txt_text_md"
 echo "$txt_text_md drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp $txt_text_md" 
 echo "$txt_text_md return-port-tcp return-por-udp add-shield-tcp  $txt_text_md"
-echo "$txt_text_md  add-whitelist add-blacklist $txt_text_md" 
+echo "$txt_text_md add-whitelist add-blacklist $txt_text_md" 
 echo "$txt_text_md    <firewall-wallcustom> $txt_text_md"
 echo "$txt_text_md new-full-custom nueva-completa-custom new-mini-custom $txt_text_md"
 echo "$txt_text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom $txt_text_md"
