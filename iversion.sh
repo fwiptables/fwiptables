@@ -9466,11 +9466,11 @@ then echo $txt_message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
-|stop|continue|reset|names|show|save|load|actual|\
+stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|wizard-tiny|wizard-mini|wizard-full|\
 without-connection|input-permisive|input-established|\
 tinyserver-tcp|tinyserver-udp|miniserver-tcp|miniserver-udp|\
-return-port-tcp|return-port-udp|\
+return-port-tcp|return-port-udp|log-port-tcp|log-port-udp|\
 allow-port-tcp|allow-port-udp|\
 drop-port-tcp|drop-port-udp|\
 add-whitelist|add-blacklist|add-shield-tcp"
@@ -9557,6 +9557,20 @@ port="$($cmd_command_zenity --entry \
 --entry-text=port)"
 $cmd_internal gui-zenity return-port-udp $port          
 $cmd_internal gui-zenity list4                        ;;    
+log-port-tcp)
+port="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=port)"
+$cmd_internal gui-zenity log-port-tcp $port           
+$cmd_internal gui-zenity list4                         ;;
+log-port-udp)
+port="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=port)"
+$cmd_internal gui-zenity log-port-udp $port          
+$cmd_internal gui-zenity list4                        ;;  
 allow-port-tcp)
 port="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -10030,7 +10044,7 @@ eraserules|eraserules4|eraserules6|\
 without-connection|input-permisive|input-established|\
 wizard-tiny|wizard-mini|wizard-full|\
 tinyserver-tcp|tinyserver-udp|miniserver-tcp|miniserver-udp|\
-return-port-tcp|return-port-udp|\
+return-port-tcp|return-port-udp|log-port-tcp|log-port-udp|\
 allow-port-tcp|allow-port-udp|\
 drop-port-tcp|drop-port-udp|\
 add-whitelist|add-blacklist|add-shield-tcp"
@@ -10130,6 +10144,20 @@ port="$($cfg_favorite_basename_graphicalldialog --entry \
 --title=port \
 --entry-text=port)"
 $cmd_internal gui-$cmd_second_option return-port-udp $port          
+$cmd_internal gui-$cmd_second_option list4                        ;;    
+log-port-tcp*)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=port)"
+$cmd_internal gui-$cmd_second_option log-port-tcp $port           
+$cmd_internal gui-$cmd_second_option list4                         ;;
+log-port-udp*)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=port)"
+$cmd_internal gui-$cmd_second_option log-port-udp $port          
 $cmd_internal gui-$cmd_second_option list4                        ;;    
 allow-port-tcp*)
 port="$($cfg_favorite_basename_graphicalldialog --entry \
