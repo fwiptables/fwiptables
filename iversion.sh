@@ -3461,9 +3461,9 @@ echo "$txt_text_md license-lgpl-v2 license-gpl-v2 $txt_text_md"
 ####
 if [ "$cfg_allow_expert_commands" == "no" ]
 then echo "$txt_text_md_md $txt_text_info \
-$cmd_name $cmd_version with expert option deactived $txt_text_md"
+$cmd_name $cmd_version with expert deactived $txt_text_md"
 else echo "$txt_text_md_md $txt_text_info \
-$cmd_name $cmd_version with expert option actived $txt_text_md"
+$cmd_name $cmd_version with expert actived $txt_text_md"
 fi
 ####
 ####
@@ -9281,7 +9281,11 @@ gui_menu="gui-principal-menu|gui-info-menu|\
 |stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|wizard-tiny|wizard-mini|wizard-full|\
 without-connection|input-permisive|input-established|\
-tinyserver-tcp|tinyserver-udp|miniserver-tcp|miniserver-udp"
+tinyserver-tcp|tinyserver-udp|miniserver-tcp|miniserver-udp|\
+return-port-tcp|return-port-udp|\
+allow-port-tcp|allow-port-udp|\
+drop-port-tcp|drop-port-udp|\
+add-whitelist|add-blacklist|add-shield-tcp"
 selection_menu="$($cmd_command_zenity --forms \
 --text=gui-roll-firewall-wallcontrol \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
@@ -9330,27 +9334,90 @@ input-established)$cmd_internal -gui-zenity input-established ; $cmd_internal gu
 tinyserver-tcp)serverports="$(zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
---entry-text=server-ports-tcp)"                         ;
-$cmd_internal gui-zenity tinyserver-tcp $serverports    ; 
+--entry-text=server-ports-tcp)"                         
+$cmd_internal gui-zenity tinyserver-tcp $serverports    
 $cmd_internal gui-zenity list4                         ;;
 tinyserver-udp)serverports="$(zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
---entry-text=server-ports-udp)"                         ;
-$cmd_internal gui-zenity tinyserver-udp $serverports    ; 
+--entry-text=server-ports-udp)"                         
+$cmd_internal gui-zenity tinyserver-udp $serverports    
 $cmd_internal gui-zenity list4                         ;;
 miniserver-tcp)serverports="$(zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
---entry-text=server-ports-tcp)"                         ;
-$cmd_internal gui-zenity miniserver-tcp $serverports    ; 
+--entry-text=server-ports-tcp)"                         
+$cmd_internal gui-zenity miniserver-tcp $serverports     
 $cmd_internal gui-zenity list4                         ;;
 miniserver-udp)serverports="$(zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
---entry-text=server-ports-udp)"                         ;
-$cmd_internal gui-zenity miniserver-udp $serverports    ; 
+--entry-text=server-ports-udp)"                         
+$cmd_internal gui-zenity miniserver-udp $serverports     
 $cmd_internal gui-zenity list4                         ;;
+return-port-tcp)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=port)"
+$cmd_internal gui-$cmd_second_option return-port-tcp $port           
+$cmd_internal gui-$cmd_second_option list4                         ;;
+return-port-udp)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=port)"
+$cmd_internal gui-$cmd_second_option return-port-udp $port          
+$cmd_internal gui-$cmd_second_option list4                        ;;    
+allow-port-tcp)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=port)"
+$cmd_internal gui-$cmd_second_option allow-port-tcp $port           
+$cmd_internal gui-$cmd_second_option list4                        ;;    
+allow-port-udp)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=port)"
+$cmd_internal gui-$cmd_second_option allow-port-tcp $port           
+$cmd_internal gui-$cmd_second_option list4                        ;;    
+drop-port-tcp)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=port)"
+$cmd_internal gui-$cmd_second_option drop-port-tcp $port            
+$cmd_internal gui-$cmd_second_option list4                        ;;    
+drop-port-udp)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=port)"
+$cmd_internal gui-$cmd_second_option drop-port-tcp $port            
+$cmd_internal gui-$cmd_second_option list4                        ;;    
+add-whitelist)
+host="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=host \
+--entry-text=host)"
+$cmd_internal gui-$cmd_second_option add-whitelist $host            
+$cmd_internal gui-$cmd_second_option list4                        ;;    
+add-blacklist)
+host="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=host \
+--entry-text=host)"
+$cmd_internal gui-$cmd_second_option add-blacklist  $host          
+$cmd_internal gui-$cmd_second_option list4                        ;;    
+add-shield-tcp)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=port)"
+$cmd_internal gui-$cmd_second_option add-shield-tcp $port           
+$cmd_internal gui-$cmd_second_option list4                        ;; 
 esac
 ####
 ####
@@ -9775,7 +9842,7 @@ stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|\
 without-connection|input-permisive|input-established|\
 wizard-tiny|wizard-mini|wizard-full|\
-tinyserver-tcp|tinyserver-udp|miniserver-tcp|miniserver-udp|
+tinyserver-tcp|tinyserver-udp|miniserver-tcp|miniserver-udp|\
 return-port-tcp|return-port-udp|\
 allow-port-tcp|allow-port-udp|\
 drop-port-tcp|drop-port-udp|\
