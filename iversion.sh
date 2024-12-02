@@ -464,7 +464,7 @@ if [ "$cmd_command_tree" == "$NULL" ]; then cmd_command_tree="$cmd_command_ls"; 
 ####
 ####
 #### system requisite utils
-for util_requisite in $(echo $cmd_requisite_program | sed 's/,/ /g') ; do 
+for util_requisite in $(echo $cmd_requisite_program | $cmd_command_sed 's/,/ /g') ; do 
 if [ "$($cmd_where $util_requisite)" == "$NULL" ]; then
 echo "### program $util_requisite is necesary to work $cmd_internal"
 echo "### the requiste are $cmd_requisite_program"
@@ -472,7 +472,7 @@ exit; fi ; done
 ####
 ####
 #### system requisite firewall4
-for firewall4_requisite in $(echo $cmd_requisite_firewall4 | sed 's/,/ /g') ; do 
+for firewall4_requisite in $(echo $cmd_requisite_firewall4 | $cmd_command_sed 's/,/ /g') ; do 
 if [ "$($cmd_where $firewall4_requisite)" == "$NULL" ]; then
 echo "### program $firewall4_requisite is necesary to work $cmd_internal"
 echo "### the requiste are $cmd_requisite_firewall4"
@@ -480,7 +480,7 @@ exit; fi ; done
 ####
 ####
 #### system requisite firewall6
-for firewall6_requisite in $(echo $cmd_requisite_firewall6 | sed 's/,/ /g') ; do 
+for firewall6_requisite in $(echo $cmd_requisite_firewall6 | $cmd_command_sed 's/,/ /g') ; do 
 if [ "$($cmd_where $firewall6_requisite)" == "$NULL" ]; then
 echo "### program $firewall6_requisite is necesary to work $cmd_internal"
 echo "### the requiste are $cmd_requisite_firewall6"
@@ -1359,7 +1359,7 @@ then case $cmd_command_convert in "$NULL")
 echo "$txt_text_title install imagemagick to print pdf to $cmd_default_directory_pdf" ; exit ;; esac
 #### allow print to PDF policy
 echo "$txt_head_waiting_pdf"
-sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &> /dev/null
+$cmd_command_sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &> /dev/null
 #### send print to home output fwiptables.pdf
 $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option | \
 $cmd_command_convert -page A3 text:- $cmd_file_output_pdf
@@ -6506,7 +6506,7 @@ if [ "$cmd_first_option" == "add-whitelist4" ] ; then
 if [ "$2" == "$NULL" ]; then echo "$txt_text_title_fail type host ip4 or net ip4 to be in whitelist"; exit ; fi
 ####
 ####
-host_ip="$(echo $2 | sed 's/,/ /g')"
+host_ip="$(echo $2 | $cmd_command_sed 's/,/ /g')"
 for add in $host_ip ; do
 ####
 ####
@@ -6538,7 +6538,7 @@ if [ "$cmd_first_option" == "add-whitelist6" ] ; then
 if [ "$2" == "$NULL" ]; then echo "$txt_text_title_fail type host ip6 or net ip6 to be in whitelist"; exit ; fi
 ####
 ####
-host_ip="$(echo $2 | sed 's/,/ /g')"
+host_ip="$(echo $2 | $cmd_command_sed 's/,/ /g')"
 for add in $host_ip;  do
 ####
 ####
@@ -6571,7 +6571,7 @@ if [ "$2" == "$NULL" ]; then
 echo "$txt_text_title_fail type host ip4 or net ip4 to be in blacklist" ; exit ; fi
 ####
 ####
-host_ip="$(echo $2 | sed 's/,/ /g')"
+host_ip="$(echo $2 | $cmd_command_sed 's/,/ /g')"
 for add in $host_ip ; do
 ####
 ####
@@ -6604,7 +6604,7 @@ if [ "$2" == "$NULL" ]; then
 echo "$txt_text_title_fail type host ip6 or net ip6 to be in blacklist"; exit ; fi
 ####
 ####
-host_ip="$(echo $2 | sed 's/,/ /g')"
+host_ip="$(echo $2 | $cmd_command_sed 's/,/ /g')"
 for add in $host_ip ; do
 ####
 ####
@@ -9422,7 +9422,7 @@ selection_menu="$($cmd_command_zenity --forms \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
 --add-combo=$cmd_first_option \
 --combo-values=$gui_menu)"
-selection_final="$(echo $selection_menu | sed 's/\|//g')"
+selection_final="$(echo $selection_menu | $cmd_command_sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
@@ -9479,7 +9479,7 @@ selection_menu="$($cmd_command_zenity --forms \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
 --add-combo=$cmd_first_option \
 --combo-values=$gui_menu)"
-selection_final="$(echo $selection_menu | sed 's/\|//g')"
+selection_final="$(echo $selection_menu | $cmd_command_sed 's/\|//g')"
 #### 
 ####
 case "$selection_final" in
@@ -9648,7 +9648,7 @@ selection_menu="$($cmd_command_zenity --forms \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
 --add-combo=$cmd_first_option \
 --combo-values=$gui_menu)"
-selection_final="$(echo $selection_menu | sed 's/\|//g')"
+selection_final="$(echo $selection_menu | $cmd_command_sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
@@ -9700,7 +9700,7 @@ selection_menu="$($cmd_command_zenity --forms \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
 --add-combo=$cmd_first_option \
 --combo-values=$gui_menu)"
-selection_final="$(echo $selection_menu | sed 's/\|//g')"
+selection_final="$(echo $selection_menu | $cmd_command_sed 's/\|//g')"
 ####
 ####
 case "$selection_final" in
@@ -9751,7 +9751,7 @@ selection_menu="$($cmd_command_zenity --forms \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
 --add-combo=$cmd_first_option \
 --combo-values=$gui_menu)"
-selection_final="$(echo $selection_menu | sed 's/\|//g')"
+selection_final="$(echo $selection_menu | $cmd_command_sed 's/\|//g')"
 #### 
 #### 
 case "$selection_final" in
@@ -9849,7 +9849,7 @@ selection="$($cmd_command_zenity --forms \
 --combo-values=$menu)"
 #### 
 #### 
-selection_final="$(echo $selection | sed 's/\|//g')"
+selection_final="$(echo $selection | $cmd_command_sed 's/\|//g')"
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu)$cmd_internal gui-roll-zenity           ;;
@@ -9903,7 +9903,7 @@ selection="$($cmd_command_zenity --forms \
 --combo-values=$gui_menu)"
 ####
 ####
-selection_final="$(echo $selection | sed 's/\|//g')"
+selection_final="$(echo $selection | $cmd_command_sed 's/\|//g')"
 case "$selection_final" in
 1) exit ;;
 gui-principal-menu)$cmd_internal gui-roll-zenity ;;
@@ -9990,7 +9990,7 @@ echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 gui_menu="Firewall-listconceptual|Firewall-listnumeral|firewall-wallcontrol|\
 Firewall-wallcustom|Firewall-wallinet|firewall-wallutils|"
-selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_menu="$(echo $gui_menu | $cmd_command_sed 's/|/ /g')"
 selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width \
 --height=$cfg_config_graphicall_height \
@@ -10001,7 +10001,7 @@ selection_final="$($cmd_second_option \
 ####
 ####
 if [ "$cmd_second_option" == "yad" ]; then
-final="$(echo $selection_final | sed 's/|/ /g')"
+final="$(echo $selection_final | $cmd_command_sed 's/|/ /g')"
 else final="$selection_final" ; fi
 echo ; echo "$txt_text_title option selected: $final" ; echo ;
 #### 
@@ -10048,7 +10048,7 @@ return-port-tcp|return-port-udp|log-port-tcp|log-port-udp|\
 allow-port-tcp|allow-port-udp|\
 drop-port-tcp|drop-port-udp|\
 add-whitelist|add-blacklist|add-shield-tcp"
-selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_menu="$(echo $gui_menu | $cmd_command_sed 's/|/ /g')"
 selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --column=$cmd_first_option \
@@ -10059,7 +10059,7 @@ echo "$txt_text_title The option selected:  $final" ;
 ####
 ####
 if [ "$cmd_second_option" == "yad" ]; then
-final="$(echo $selection_final | sed 's/|/ /g')"
+final="$(echo $selection_final | $cmd_command_sed 's/|/ /g')"
 else final="$selection_final" ; fi
 echo ; echo "$txt_text_title option selected: $final" ; echo ;
 #### 
@@ -10232,7 +10232,7 @@ gui_menu="gui-principal-menu|gui-info-menu|\
 ls4|ls6|list-filter4|list-filter6|list-alltables|\
 list-nat4|list-nat6|list-mangle4|list-mangle6|list-raw4|list-raw6|\
 list-security4|list-security6|list-ebtables|list-arptables"
-selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_menu="$(echo $gui_menu | $cmd_command_sed 's/|/ /g')"
 selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --column=$cmd_first_option \
@@ -10242,7 +10242,7 @@ selection_final="$($cmd_second_option \
 ####
 ####
 if [ "$cmd_second_option" == "yad" ]; then
-final="$(echo $selection_final | sed 's/|/ /g')"
+final="$(echo $selection_final | $cmd_command_sed 's/|/ /g')"
 else final="$selection_final" ; fi
 echo ; echo "$txt_text_title option selected: $final" ; echo ;
 #### 
@@ -10291,7 +10291,7 @@ listn-filter4|listn-filter6|listn-alltables|\
 listn-nat4|listn-nat6|listn-mangle4|listn-mangle6|\
 listn-raw4|listn-raw6|listn-security4|listn-security6|\
 list-ebtables|list-arptables"
-selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_menu="$(echo $gui_menu | $cmd_command_sed 's/|/ /g')"
 selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --column=$cmd_first_option \
@@ -10301,7 +10301,7 @@ selection_final="$($cmd_second_option \
 ####
 ####
 if [ "$cmd_second_option" == "yad" ]; then
-final="$(echo $selection_final | sed 's/|/ /g')"
+final="$(echo $selection_final | $cmd_command_sed 's/|/ /g')"
 else final="$selection_final" ; fi
 echo ; echo "$txt_text_title option selected: $final" ; echo ;
 #### 
@@ -10352,7 +10352,7 @@ new-mini-custom|nueva-mini-custom|\
 new-tiny-custom|nueva-diminuta-custom|\
 names-custom|show-custom|modify-custom|\
 del-custom|templates-regen"
-selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_menu="$(echo $gui_menu | $cmd_command_sed 's/|/ /g')"
 selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --column=$cmd_first_option \
@@ -10362,7 +10362,7 @@ selection_final="$($cmd_second_option \
 ####
 ####
 if [ "$cmd_second_option" == "yad" ]; then
-final="$(echo $selection_final | sed 's/|/ /g')"
+final="$(echo $selection_final | $cmd_command_sed 's/|/ /g')"
 else final="$selection_final" ; fi
 echo ; echo "$txt_text_title option selected: $final" ; echo ;
 #### 
@@ -10450,7 +10450,7 @@ echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
 wallinet-update|wallinet-list|wallinet-load|wallinet-show"
-selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_menu="$(echo $gui_menu | $cmd_command_sed 's/|/ /g')"
 selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --column=$cmd_first_option \
@@ -10460,7 +10460,7 @@ selection_final="$($cmd_second_option \
 ####
 ####
 if [ "$cmd_second_option" == "yad" ]; then
-final="$(echo $selection_final | sed 's/|/ /g')"
+final="$(echo $selection_final | $cmd_command_sed 's/|/ /g')"
 else final="$selection_final" ; fi
 echo ; echo "$txt_text_title option selected: $final" ; echo ;
 #### 
@@ -10508,7 +10508,7 @@ license-lgpl-v2|license-gpl-v2|\
 info-ip4|info-ip6|route4|route6||sockets|\
 add-whitelist4|add-whitelist6|add-blacklist4|add-blacklist6|\
 install|upgrade|examples|depends|variables|utils|about"
-selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
+selection_menu="$(echo $gui_menu | $cmd_command_sed 's/|/ /g')"
 selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --column=$cmd_first_option \
@@ -10518,7 +10518,7 @@ selection_final="$($cmd_second_option \
 ####
 ####
 if [ "$cmd_second_option" == "yad" ]; then
-final="$(echo $selection_final | sed 's/|/ /g')"
+final="$(echo $selection_final | $cmd_command_sed 's/|/ /g')"
 else final="$selection_final" ; fi
 echo ; echo "$txt_text_title option selected: $final" ; echo ;
 #### 
