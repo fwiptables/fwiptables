@@ -9414,8 +9414,7 @@ $cmd_internal gui-zenity list4                        ;;
 add-shield-tcp)
 port="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---title=port \
---entry-text=port)"
+--title=port --entry-text=port)"
 $cmd_internal gui-zenity add-shield-tcp $port           
 $cmd_internal gui-zenity list4                        ;; 
 esac
