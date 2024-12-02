@@ -3439,7 +3439,8 @@ echo "$txt_text_md eraserules4 eraserules6 without-connection input-permisive $t
 echo "$txt_text_md input-established wizard-tiny wizard-mini wizard-full $txt_text_md"
 echo "$txt_text_md tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp $txt_text_md"
 echo "$txt_text_md drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp $txt_text_md" 
-echo "$txt_text_md return-port-tcp add-shield-tcp add-whitelist add-blacklist $txt_text_md" 
+echo "$txt_text_md return-port-tcp return-por-udp add-shield-tcp  $txt_text_md"
+echo "$txt_text_md  add-whitelist add-blacklist $txt_text_md" 
 echo "$txt_text_md    <firewall-wallcustom> $txt_text_md"
 echo "$txt_text_md new-full-custom nueva-completa-custom new-mini-custom $txt_text_md"
 echo "$txt_text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom $txt_text_md"
@@ -9774,7 +9775,11 @@ stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|\
 without-connection|input-permisive|input-established|\
 wizard-tiny|wizard-mini|wizard-full|\
-tinyserver-tcp|tinyserver-udp|miniserver-tcp|miniserver-udp|"
+tinyserver-tcp|tinyserver-udp|miniserver-tcp|miniserver-udp|
+return-port-tcp|return-port-udp|\
+allow-port-tcp|allow-port-udp|\
+drop-port-tcp|drop-port-udp|\
+add-whitelist|add-blacklist|add-shield-tcp"
 selection_menu="$(echo $gui_menu | sed 's/|/ /g')"
 selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -9837,27 +9842,90 @@ $cmd_internal gui-$cmd_second_option list4 ;;
 tinyserver-tcp*)serverports="$($cfg_favorite_basename_graphicalldialog --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
---entry-text=server-ports-tcp)"                                 ;
-$cmd_internal gui-$cmd_second_option tinyserver-tcp $serverports    ; 
+--entry-text=server-ports-tcp)"                                 
+$cmd_internal gui-$cmd_second_option tinyserver-tcp $serverports     
 $cmd_internal gui-$cmd_second_option list4                         ;;
 tinyserver-udp*)serverports="$($cfg_favorite_basename_graphicalldialog --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
---entry-text=server-ports-udp)"                                 ;
-$cmd_internal gui-$cmd_second_option tinyserver-udp $serverports    ; 
+--entry-text=server-ports-udp)"                                 
+$cmd_internal gui-$cmd_second_option tinyserver-udp $serverports     
 $cmd_internal gui-$cmd_second_option list4                         ;;
 miniserver-tcp*)serverports="$($cfg_favorite_basename_graphicalldialog --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
---entry-text=server-ports-tcp)"                                 ;
-$cmd_internal gui-$cmd_second_option miniserver-tcp $serverports    ; 
+--entry-text=server-ports-tcp)"                                 
+$cmd_internal gui-$cmd_second_option miniserver-tcp $serverports     
 $cmd_internal gui-$cmd_second_option list4                         ;;
 miniserver-udp*)serverports="$($cfg_favorite_basename_graphicalldialog --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=Save-Firewall \
---entry-text=server-ports-udp)"                                 ;
-$cmd_internal gui-$cmd_second_option miniserver-udp $serverports    ; 
+--entry-text=server-ports-udp)"                                 
+$cmd_internal gui-$cmd_second_option miniserver-udp $serverports     
 $cmd_internal gui-$cmd_second_option list4                         ;;
+return-port-tcp*)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=port)"
+$cmd_internal gui-$cmd_second_option return-port-tcp $port           
+$cmd_internal gui-$cmd_second_option list4                         ;;
+return-port-udp*)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=port)"
+$cmd_internal gui-$cmd_second_option return-port-udp $port          
+$cmd_internal gui-$cmd_second_option list4                        ;;    
+allow-port-tcp*)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=port)"
+$cmd_internal gui-$cmd_second_option allow-port-tcp $port           
+$cmd_internal gui-$cmd_second_option list4                        ;;    
+allow-port-udp*)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=port)"
+$cmd_internal gui-$cmd_second_option allow-port-tcp $port           
+$cmd_internal gui-$cmd_second_option list4                        ;;    
+drop-port-tcp*)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=port)"
+$cmd_internal gui-$cmd_second_option drop-port-tcp $port            
+$cmd_internal gui-$cmd_second_option list4                        ;;    
+drop-port-udp*)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=port)"
+$cmd_internal gui-$cmd_second_option drop-port-tcp $port            
+$cmd_internal gui-$cmd_second_option list4                        ;;    
+add-whitelist*)
+host="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=host \
+--entry-text=host)"
+$cmd_internal gui-$cmd_second_option add-whitelist $host            
+$cmd_internal gui-$cmd_second_option list4                        ;;    
+add-blacklist*)
+host="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=host \
+--entry-text=host)"
+$cmd_internal gui-$cmd_second_option add-blacklist  $host          
+$cmd_internal gui-$cmd_second_option list4                        ;;    
+add-shield-tcp*)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=port)"
+$cmd_internal gui-$cmd_second_option add-shield-tcp $port           
+$cmd_internal gui-$cmd_second_option list4                        ;;    
 esac
 ####
 ####
