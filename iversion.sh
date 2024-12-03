@@ -7427,8 +7427,7 @@ $cmd_internal add-whitelist4 $cfg_server_ip_iperf_ipv4
 echo "$txt_text_title"
 echo "$txt_text_title [ Calculing speed .. ]"
 echo "$txt_text_title [ Working ] Conecting in ipv4 to $cfg_server_ip_iperf_ipv4 ]"
-$cmd_command_iperf3 -4 -t 5 --connect-timeout 5 \
- -p $cfg_server_port_iperf_ipv4 $cfg_server_ip_iperf_ipv4
+$cmd_command_iperf3 -c $cfg_server_ip_iperf_ipv4 -p $cfg_server_port_iperf_ipv4 -4 -t 5
 echo "$txt_text_title"
 echo "$txt_text_title [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip4 
@@ -7455,8 +7454,7 @@ $cmd_internal add-whitelist6 $cfg_server_ip_iperf_ipv6
 echo "$txt_text_title"
 echo "$txt_text_title [ Calculing speed .. ]"
 echo "$txt_text_title [ Working ] Conecting in ipv6 to $cfg_server_ip_iperf_ipv4 ]"
-$cmd_command_iperf3 -6 -t 5 --connect-timeout 5 \
--p $cfg_server_port_iperf_ipv6 $cfg_server_ip_iperf_ipv6
+$cmd_command_iperf3 -c $cfg_server_ip_iperf_ipv6 -p $cfg_server_port_iperf_ipv6 -6 -t 5
 echo "$txt_text_title"
 echo "$txt_text_title [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip6 
