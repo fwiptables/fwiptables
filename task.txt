@@ -6,4 +6,4 @@ Planed fixing bugs, Planed feacture adding .
 cli-menu-compact: update
 
 ## The planed feature commit: 
-
+del-rule-comment: commit
