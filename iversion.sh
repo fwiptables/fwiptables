@@ -91,9 +91,9 @@ fi
 #### The number version firewall
 cmd_year="24"                                                 # Number year version
 cmd_month="12"                                                # Number mouth version
-cmd_letter="A"                                                # Number letter version
-cmd_devel="dev"
-cmd_version="$cmd_year-$cmd_month-$cmd_letter-$cmd_devel"     # Final date version
+cmd_letter="B"                                                # Number letter version
+cmd_devel="-dev"
+cmd_version="$cmd_year-$cmd_month-$cmd_letter$cmd_devel"      # Final date version
 cmd_released="Year 20$cmd_year / Month $cmd_month"            # Source date version
 #### The data version firewall
 cmd_developer="Francisco Garcia"                              # Actual developer
@@ -1967,7 +1967,7 @@ echo "$txt_text_title example4:speed-ip4 example5:sockets example6:gui-roll"
 echo "$txt_text_title example7:gui-menu-yad example8:gui-shell-yad"
 echo "$txt_text_title" 
 echo "$txt_text_title_title Allow expert commands for default" 
-echo "cfg_allow_expert_commands=                           ## or void for yes or no"
+echo "cfg_allow_expert_commands=no                         ## or void for yes or no"
 echo "$txt_text_title" 
 echo "$txt_text_title_title default firewall"
 echo "cfg_allow_use_legacy=no                              ## or void for yes or no"

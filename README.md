@@ -10,11 +10,13 @@
       Options
   
 ### fwiptables readme   
+     [ fwiptables readme ]                  
+        
       fwiptables. Firewall With iptables.
       Intro content information                            
       Readme: description, location, install, uninstall.   
         
-     [ fwiptables description ]               
+     [ fwiptables description ]             
         
       The fwiptables is a one-file WIZARD,       
       for iptables, with COMMAND-LINE,           
@@ -35,27 +37,27 @@
       with host whitelist, host blacklist,                 
       with other more capabilities of firewall.            
         
-     [ fwiptables location ]                            
+     [ fwiptables location ]                                 
         
-       File    Location:   /usr/bin/fwiptables    
+       File    Location:   /usr/bin/fwiptables           
        Config Directory:   /root/.config/fwiptables        
-       Cache  Directory:   /root/.cache/fwiptables    
+       Cache  Directory:   /root/.cache/fwiptables         
         
-    [ fwiptables install ]                        
+    [ fwiptables install ]                      
         
        su root TYPE: su root                         
        put bit TYPE: chmod 755 /usr/bin/fwiptables         
        install TYPE: /usr/bin/fwiptables install           
         
-    [ fwiptables uninstall ]                      
+    [ fwiptables uninstall ]                    
         
       uninstall TYPE: /usr/bin/fwiptables uninstall        
   
 ### fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-11-L                
-        Released Firewall: Year 2024 / Month 11               
+         Version Firewall: 24-12-A                
+        Released Firewall: Year 2024 / Month 12               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
         Short Description: FireWall With iptables       
@@ -134,8 +136,8 @@
       Folder logcmd:           /root/.config/fwiptables/fwiptables-logcmd   
         
     [ Preferences files ]     
-      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-11-L.conf
-      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-11-L.conf
+      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-12-A.conf
+      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-12-A.conf
       my-note:                 /root/.config/fwiptables/fwiptables-preferences/default-usernotes-all-versions.txt
         
     [ optional output ]       
@@ -285,7 +287,8 @@
    input-established wizard-tiny wizard-mini wizard-full   
    tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp   
    drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp   
-   return-port-tcp add-shield-tcp add-whitelist add-blacklist   
+   return-port-tcp return-por-udp log-port-tcp log-port-udp   
+   add-whitelist add-blacklist add-shield-tcp   
       <firewall-wallcustom>   
    new-full-custom nueva-completa-custom new-mini-custom   
    nueva-mini-custom new-tiny-custom nueva-diminuta-custom   
@@ -301,4 +304,4 @@
    log-stat web intro depends uninstall install upgrade hints   
    variables examples info code expert donate about version   
    license-lgpl-v2 license-gpl-v2   
-      < info > fwiptables 24-11-L with expert option actived   
+      < info > fwiptables 24-12-A with expert deactived   
