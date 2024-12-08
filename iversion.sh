@@ -6804,7 +6804,7 @@ cat $archivoini-legacy-ipv6 | grep -iv \
 "comment $cmd_second_option" &> $archivofin-legacy-ipv6
 #### load archivo-fin
 $cmd_internal load without-del-commented-$cmd_second_option &> /dev/null
-echo "$txt_text_title_ok [ deleted rules with commeted $second_option ]"
+echo "$txt_text_title_ok [ deleted rules with commeted $cmd_second_option ]"
 ####
 ####
 #### without rule
