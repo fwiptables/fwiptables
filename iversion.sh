@@ -117,7 +117,7 @@ awk '{print $2 "_" $3 "_" $4}')                               # File format
 cmd_archive_date="$(date +YEAR-%Y-MONTH-%m)"                  # archive date year_month_
 cmd_get_date="$(date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"            # how format date
 cmd_logcmd_date="$cmd_get_date"                               # format pdf date
-cmd_mynote_date="$cmd_get_date"                            # format my-note date
+cmd_mynote_date="$cmd_get_date"                            # format my-own-notes date
 cmd_cache_date="CACHE_$cmd_get_date-_OPT_"                    # format cache date
 cmd_log_date="LOG_$cmd_get_date-_OPT_"                        # format opt date
 cmd_pdf_date="PDF_$cmd_get_date-_OPT_"                        # format opt date
@@ -1884,7 +1884,8 @@ echo "#free-ram=free"
 echo "#ram=free"
 echo "#nodes=info-nodes"
 echo "#notes=hints"
-echo "#usernotes=my-note"
+echo "#my-note=my-own-notes"
+echo "#usernotes=my-own-notes"
 echo "#clone-wallinet=wallinet-clone"
 ####
 ####
@@ -2549,7 +2550,7 @@ echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_title_md [ Preferences files ]   $txt_text_md"
 echo "$txt_text_md_md preferences:             $cmd_file_default_preferences"
 echo "$txt_text_md_md alias:                   $cmd_file_default_alias"             
-echo "$txt_text_md_md my-note:                 $cmd_file_default_usernotes"
+echo "$txt_text_md_md my-own-notes:                 $cmd_file_default_usernotes"
 echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_title_md [ optional output ]     $txt_text_md"
 echo "$txt_text_md_md dialog cli:              $cmd_command_dialog $txt_text_md"
@@ -3450,7 +3451,7 @@ echo "$txt_text_md show-custom modify-custom del-custom names-custom $txt_text_m
 echo "$txt_text_md    <firewall-wallinet> $txt_text_md"
 echo "$txt_text_md wallinet-update wallinet-list wallinet-load wallinet-show $txt_text_md"
 echo "$txt_text_md    <firewall-wallutils> $txt_text_md"
-echo "$txt_text_md preferences-edit alias-edit options info-options my-note$txt_text_md"
+echo "$txt_text_md preferences-edit alias-edit options info-options my-own-notes$txt_text_md"
 echo "$txt_text_md tree-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $txt_text_md"
 echo "$txt_text_md ip4 ip6 route4 route6 info-ip4 info-ip6 info-nodes sockets $txt_text_md"
 echo "$txt_text_md lsof free ip-forward utils date resolve speed-ip4 speed-ip6 $txt_text_md"
@@ -5534,11 +5535,11 @@ exit; fi
 ####
 ####
 #### :rutina-final-install:
-##########    my-note: take notes   ##########
-#### :rutina-inicial-my-note:
+##########    my-own-notes: take notes   ##########
+#### :rutina-inicial-my-own-notes:
 ####
 ####
-if [ "$cmd_first_option" == "my-note" ] ;  then
+if [ "$cmd_first_option" == "my-own-notes" ] ;  then
 ####
 ####
 #### add
@@ -5565,7 +5566,7 @@ echo " # $txt_text_file [$cmd_file_default_usernotes]"
 exit; fi
 ####
 ####
-#### :rutina-final-my-note:
+#### :rutina-final-my-own-notes:
 ##########    expert-gen-readme: generate installed respository   ##########
 #### :rutina-inicial-expert-gen-readme:
 ####
