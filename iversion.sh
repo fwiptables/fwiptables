@@ -3632,6 +3632,7 @@ echo "$txt_text_md_md log-port-udp4 . log rule, allowed range and comma $txt_tex
 echo "$txt_text_md_md log-port-udp6 . log rule, allowed range and comma $txt_text_md"
 echo "$txt_text_md_md add-shield-tcp4 . add shield tries tcp4, allowed range and comma $txt_text_md"
 echo "$txt_text_md_md add-shield-tcp6 . add shield tries tcp6, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md del-commented . del rules con one commented choosed $txt_text_md"
 ####
 ####
 exit; fi
@@ -5279,8 +5280,8 @@ if [ "$cmd_first_option" == "names" ]; then
 echo "$txt_text_title_info [ list configs files saved in standard format ]"
 echo "$txt_text_title $folder [ $cmd_default_directory_control ]"
 echo 
-echo "$txt_text_title_info [ Listing firewall names, each with 6 files    ]"
-echo "$txt_text_title_info [ ebtables-arptables-legacy4-legacy6-nft4-nft6 ]"
+echo "$txt_text_title_info [ Listing firewall names, each one with 6 files ]"
+echo "$txt_text_title_info [ ebtables-arptables-legacy4-legacy6-nft4-nft6  ]"
 $cmd_command_tree $cmd_default_directory_control | $cmd_command_sed s/\-legacy\-ipv6//g | \
 $cmd_command_sed s/\-nft\-ipv6//g | \
 $cmd_command_sed s/\-legacy\-ipv4//g | $cmd_command_sed s/\-nft\-ipv4//g | \
@@ -6788,8 +6789,6 @@ then
 $cmd_internal save with-del-commented-$cmd_second_option &> /dev/null
 archivoini="$cmd_default_directory_control/with-del-commented-$cmd_second_option"
 archivofin="$cmd_default_directory_control/without-del-commented-$cmd_second_option"
-####
-####
 #### get archivofin
 cat $archivoini-arptables   | grep -iv \
 "comment $cmd_second_option" &> $archivofin-arptables
@@ -6803,16 +6802,15 @@ cat $archivoini-legacy-ipv4 | grep -iv \
 "comment $cmd_second_option" &> $archivofin-legacy-ipv4
 cat $archivoini-legacy-ipv6 | grep -iv \
 "comment $cmd_second_option" &> $archivofin-legacy-ipv6
-####
-####
 #### load archivo-fin
-$cmd_internal load without-del-commented-$cmd_second_option
+$cmd_internal load without-del-commented-$cmd_second_option &> /dev/null
+echo "$txt_text_title_ok [ deleted rules with commeted $second_option ]"
 ####
 ####
 #### without rule
 else
-echo "it option delete the rules wich one comment:"
-echo "Launch $cmd_internal del-commented commented-in-rule"
+echo "$txt_text_title_info [Delete the rules wich one comment]"
+echo "$txt_text_title_info Launch: [$cmd_internal del-commented commented-in-rule]"
 ####
 ####
 fi
