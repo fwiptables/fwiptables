@@ -3852,7 +3852,7 @@ cmd_file_repository="$cmd_default_directory_upgrade/wallinet.tar"
 $cmd_command_curl $cmd_web_repository_wallinet -s -L \
 -o $cmd_file_repository || echo "Without connection" || exit \
 && cd $cmd_default_directory_wallinet && tar -xf $cmd_file_repository \
-&& echo "$txt_text_title_ok updated wallinet, to list with: $cmd_name wallinet-list"
+&& echo "$txt_text_title_ok updated wallinet" && $cmd_internal wallinet-list
 ####
 ####
 exit; fi
