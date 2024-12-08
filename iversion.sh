@@ -9130,6 +9130,17 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 0416  "$txt_text_md eraserules4" \
 0417  "$txt_text_md eraserules6" \
 0418  "$txt_text_md eraserules" \
+0419  "$txt_text_md return-port-tcp" \
+0420  "$txt_text_md return-port-udp" \
+0421  "$txt_text_md log-port-tcp" \
+0422  "$txt_text_md log-port-udp" \
+0423  "$txt_text_md allow-port-tcp" \
+0424  "$txt_text_md allow-port-udp" \
+0425  "$txt_text_md drop-port-tcp" \
+0426  "$txt_text_md drop-port-udp" \
+0427  "$txt_text_md add-whitelist" \
+0428  "$txt_text_md add-blacklist" \
+0429  "$txt_text_md add-shield-tcp" \
 0500 "$txt_text_title [ firewall-wallinet ] $txt_text_title" \
 0501  "$txt_text_md wallinet-update" \
 0502  "$txt_text_md wallinet-list" \
@@ -9248,7 +9259,8 @@ case $menuprincipal in
 read -p "Type the firewall name to read   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $cmd_command_sed s/\\///g)
 $cmd_internal show $nombrecillo ;; 
-0406)archivo="$($cfg_favorite_realpath_textdialog --stdout \
+0406) clear ;
+archivo="$($cfg_favorite_realpath_textdialog --stdout \
 --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 clear ;  echo "$txt_text_title saved $archivo" ; $cmd_internal save $archivo ;;
@@ -9258,15 +9270,59 @@ nombrecillo=$(echo $nombrecillo | $cmd_command_sed s/\\///g)
 $cmd_internal load $nombrecillo ;;
 0408) clear ; $cmd_internal $cfg_favorite_out_cli actual ;;
 0409) clear ; $cmd_internal $cfg_favorite_out_cli eraserules ; $cmd_internal cli list4   ;;
-0410) clear ; $cmd_internal txt wizard-tiny ; $cmd_internal cli list4  ;;
-0411) clear ; $cmd_internal txt wizard-mini ; $cmd_internal cli list4  ;;
-0412) clear ; $cmd_internal txt wizard-full ; $cmd_internal cli list4  ;;
+0410) clear ; $cmd_internal $cfg_favorite_out_cli wizard-tiny ; $cmd_internal cli list4  ;;
+0411) clear ; $cmd_internal $cfg_favorite_out_cli wizard-mini ; $cmd_internal cli list4  ;;
+0412) clear ; $cmd_internal $cfg_favorite_out_cli wizard-full ; $cmd_internal cli list4  ;;
 0413) clear ; $cmd_internal $cfg_favorite_out_cli without-connection ; $cmd_internal cli list4  ;;
 0414) clear ; $cmd_internal $cfg_favorite_out_cli input-permisive ; $cmd_internal cli list4   ;;
 0415) clear ; $cmd_internal $cfg_favorite_out_cli input-established ; $cmd_internal cli list4   ;;
 0416) clear ; $cmd_internal $cfg_favorite_out_cli eraserules4 ; $cmd_internal cli list4   ;;
 0417) clear ; $cmd_internal $cfg_favorite_out_cli eraserules6 ; $cmd_internal cli list6   ;;
 0418) clear ; $cmd_internal $cfg_favorite_out_cli eraserules ; $cmd_internal cli status   ;;
+0419) clear ; read -p "Input port # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli return-port-tcp $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+0420) clear ; read -p "Input port # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli return-port-udp $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+0421) clear ; read -p "Input port # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli log-port-tcp $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+0422) clear ; read -p "Input port # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli log-port-udp $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+0423) clear ; read -p "Input port # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli allow-port-tcp $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+0424) clear ; read -p "Input port # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli allow-port-udp $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+0425) clear ; read -p "Input port # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli drop-port-tcp $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+0426) clear ; read -p "Input port # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli drop-port-udp $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+0427) clear ; read -p "Input host # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli add-whitelist $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+0428) clear ; read -p "Input host # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli add-blacklist $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+0429) clear ; read -p "Input port # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli add-shield-tcp $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
 ################################################################################
 0501) clear ; $cmd_internal $cfg_favorite_out_cli wallinet-update ;;
 0502) clear ; $cmd_internal $cfg_favorite_out_cli wallinet-list   ;;
