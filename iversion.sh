@@ -3443,7 +3443,7 @@ echo "$txt_text_md input-established wizard-tiny wizard-mini wizard-full $txt_te
 echo "$txt_text_md tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp $txt_text_md"
 echo "$txt_text_md drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp $txt_text_md" 
 echo "$txt_text_md return-port-tcp return-por-udp log-port-tcp log-port-udp $txt_text_md"
-echo "$txt_text_md add-whitelist add-blacklist add-shield-tcp $txt_text_md" 
+echo "$txt_text_md del-commented add-whitelist add-blacklist add-shield-tcp $txt_text_md" 
 echo "$txt_text_md    <firewall-wallcustom> $txt_text_md"
 echo "$txt_text_md new-full-custom nueva-completa-custom new-mini-custom $txt_text_md"
 echo "$txt_text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom $txt_text_md"
@@ -6771,6 +6771,45 @@ exit; fi
 ####
 ####
 #### :rutina-final-return-port-udp
+##########    del-commented: del rule for commented     ##########
+#### :rutina-inicial-add-shield-tcp
+####
+####
+if [ "$cmd_first_option" == "del-commented" ] ; then
+####
+####
+#### rules
+if [ "$cmd_second_option" != "$NULL" ]
+####
+####
+then
+$cmd_internal save with-del-commented-$cmd_second_option
+archivoini="$cmd_default_directory_control/with-del-commented-$cmd_second_option"
+archivofin="$cmd_default_directory_control/without-del-commented-$cmd_second_option"
+####
+####
+####
+cat $archivoini-arptables   | grep -i comment | grep -iv $second_option &> $archivofin-arptables
+cat $archivoini-ebtables    | grep -i comment | grep -iv $second_option &> $archivofin-ebtables
+cat $archivoini-nft-ipv4    | grep -i comment | grep -iv $second_option &> $archivofin-nft-ipv4
+cat $archivoini-nft-ipv6    | grep -i comment | grep -iv $second_option &> $archivofin-nft-ipv6
+cat $archivoini-legacy-ipv4 | grep -i comment | grep -iv $second_option &> $archivofin-legacy-ipv4
+cat $archivoini-legacy-ipv6 | grep -i comment | grep -iv $second_option &> $archivofin-legacy-ip6
+####
+####
+#### NO RULE OPTION
+else
+echo "it option delete the rules wich one comment:"
+echo "Launch $cmd_internal del-commented commented-in-rule"
+####
+####
+fi
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-del-commented
 ##########    add-shield-tcp: add port shield to tcp ip4     ##########
 #### :rutina-inicial-add-shield-tcp
 ####
