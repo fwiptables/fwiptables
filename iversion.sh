@@ -5279,11 +5279,12 @@ if [ "$cmd_first_option" == "names" ]; then
 echo "$txt_text_title_info [ list configs files saved in standard format ]"
 echo "$txt_text_title $folder [ $cmd_default_directory_control ]"
 echo 
-echo "$txt_text_title_info [ Listing firewall names ]"
+echo "$txt_text_title_info [ Listing firewall names, each with 6 files    ]"
+echo "$txt_text_title_info [ ebtables-arptables-legacy4-legacy6-nft4-nft6 ]"
 $cmd_command_tree $cmd_default_directory_control | $cmd_command_sed s/\-legacy\-ipv6//g | \
 $cmd_command_sed s/\-nft\-ipv6//g | \
 $cmd_command_sed s/\-legacy\-ipv4//g | $cmd_command_sed s/\-nft\-ipv4//g | \
-$cmd_command_sed s/\-arptables//g | $cmd_command_sed s/\-ebtables//g 
+$cmd_command_sed s/\-arptables//g | $cmd_command_sed s/\-ebtables//g
 echo
 echo "$txt_text_title_ok [ Listed firewall names ]"
 ####
@@ -6783,21 +6784,32 @@ if [ "$cmd_second_option" != "$NULL" ]
 ####
 ####
 then
-$cmd_internal save with-del-commented-$cmd_second_option
+#### save archivini
+$cmd_internal save with-del-commented-$cmd_second_option &> /dev/null
 archivoini="$cmd_default_directory_control/with-del-commented-$cmd_second_option"
 archivofin="$cmd_default_directory_control/without-del-commented-$cmd_second_option"
 ####
 ####
+#### get archivofin
+cat $archivoini-arptables   | grep -iv \
+"comment $cmd_second_option" &> $archivofin-arptables
+cat $archivoini-ebtables    | grep -iv \
+"comment $cmd_second_option" &> $archivofin-ebtables
+cat $archivoini-nft-ipv4    | grep -iv \
+"comment $cmd_second_option" &> $archivofin-nft-ipv4
+cat $archivoini-nft-ipv6    | grep -iv \
+"comment $cmd_second_option" &> $archivofin-nft-ipv6
+cat $archivoini-legacy-ipv4 | grep -iv \
+"comment $cmd_second_option" &> $archivofin-legacy-ipv4
+cat $archivoini-legacy-ipv6 | grep -iv \
+"comment $cmd_second_option" &> $archivofin-legacy-ipv6
 ####
-cat $archivoini-arptables   | grep -i comment | grep -iv $second_option &> $archivofin-arptables
-cat $archivoini-ebtables    | grep -i comment | grep -iv $second_option &> $archivofin-ebtables
-cat $archivoini-nft-ipv4    | grep -i comment | grep -iv $second_option &> $archivofin-nft-ipv4
-cat $archivoini-nft-ipv6    | grep -i comment | grep -iv $second_option &> $archivofin-nft-ipv6
-cat $archivoini-legacy-ipv4 | grep -i comment | grep -iv $second_option &> $archivofin-legacy-ipv4
-cat $archivoini-legacy-ipv6 | grep -i comment | grep -iv $second_option &> $archivofin-legacy-ip6
+####
+#### load archivo-fin
+$cmd_internal load without-del-commented-$cmd_second_option
 ####
 ####
-#### NO RULE OPTION
+#### without rule
 else
 echo "it option delete the rules wich one comment:"
 echo "Launch $cmd_internal del-commented commented-in-rule"
