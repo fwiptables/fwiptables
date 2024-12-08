@@ -117,7 +117,7 @@ awk '{print $2 "_" $3 "_" $4}')                               # File format
 cmd_archive_date="$(date +YEAR-%Y-MONTH-%m)"                  # archive date year_month_
 cmd_get_date="$(date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"            # how format date
 cmd_logcmd_date="$cmd_get_date"                               # format pdf date
-cmd_mynote_date="$cmd_get_date"                            # format my-own-notes date
+cmd_mynote_date="$cmd_get_date"                            # format own-notes date
 cmd_cache_date="CACHE_$cmd_get_date-_OPT_"                    # format cache date
 cmd_log_date="LOG_$cmd_get_date-_OPT_"                        # format opt date
 cmd_pdf_date="PDF_$cmd_get_date-_OPT_"                        # format opt date
@@ -131,6 +131,8 @@ cmd_second_option="$(echo $2 | $cmd_command_sed s/\\///g -)"  # second option
 cmd_third_option="$(echo $3 | $cmd_command_sed s/\\///g -)"   # third option
 cmd_quad_option="$(echo $4 | $cmd_command_sed s/\\///g -)"    # quad option
 cmd_list_option="### $cmd_name $1 $2 $3 $4"                   # option label
+cmd_all_option="$@"                                           # all options
+cmd_sub_option="$2 $3 $4 $5 $6 $7 $8 $9"                      # almost options
 #### variable without "/", without spaces
 cmd_guided_full="$(echo $1-$2-$3-$4 | \
 $cmd_command_sed s/\ /\-/g - | $cmd_command_sed s/\\///g -)"  # all options
@@ -1186,7 +1188,7 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
-"modify-custom") $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option ;
+"modify-custom") $cmd_internal $cmd_sub_option ;
 exit ;; esac ; fi
 ####
 ####
@@ -1196,7 +1198,7 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
-"modify-custom") $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option ;
+"modify-custom") $cmd_internal $cmd_sub_option ;
 exit ;; esac ; fi
 ####
 ####
@@ -1206,7 +1208,7 @@ expert-*) echo "the commands expert works only wihtout optional-output." ; exit 
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"new-full-custom"|\
 "wizard-tiny"|"new-tiny-custom"|"nueva-diminuta-custom"|\
 "nueva-mini-custom"|"nueva-completa-custom"|"preferences-edit"|"alias-edit"|\
-"modify-custom") $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option ;
+"modify-custom") $cmd_internal $cmd_sub_option ;
 exit ;; esac ; fi
 ####
 ####
@@ -1290,7 +1292,6 @@ exit ; fi
 ####
 ####
 if [ "$cmd_first_option" == "txt" ]; then 
-#### echo "$txt_head_waiting_txt"
 ####
 ####
 case $cmd_second_option in 
@@ -1298,7 +1299,7 @@ case $cmd_second_option in
 ####
 ls*|list*) $cmd_internal $cmd_second_option $cmd_third_option | \
 $cmd_command_grep -E -v Warning: ; exit ;;
-*) $cmd_internal $2 $3 $4 ;
+*) $cmd_internal $cmd_sub_option ;
 exit ;; 
 ####
 ####
@@ -1326,12 +1327,12 @@ ls*|list*) $cfg_favorite_basename_textdialog --clear --notags \
 --msgbox "$($cmd_internal txt $cmd_second_option)" 0 0 ; exit ;;
 *) $cfg_favorite_basename_textdialog --clear --notags \
 --title "Cli Menu With $cmd_version" \
---msgbox "$($cmd_internal $2 $3 $4)" 0 0 ; exit ;;
+--msgbox "$($cmd_internal $cmd_sub_option)" 0 0 ; exit ;;
 esac ; fi
 ####
 ####
 #### :rutina-final-alias-cli:
-##########    ALIAS CONFIG LOG
+##########    ALIAS CONFIG LOG prueba1
 #### :rutina-inicial-alias-log:
 ####
 ####
@@ -1884,8 +1885,8 @@ echo "#free-ram=free"
 echo "#ram=free"
 echo "#nodes=info-nodes"
 echo "#notes=hints"
-echo "#my-note=my-own-notes"
-echo "#usernotes=my-own-notes"
+echo "#my-note=own-notes"
+echo "#usernotes=own-notes"
 echo "#clone-wallinet=wallinet-clone"
 ####
 ####
@@ -2550,7 +2551,7 @@ echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_title_md [ Preferences files ]   $txt_text_md"
 echo "$txt_text_md_md preferences:             $cmd_file_default_preferences"
 echo "$txt_text_md_md alias:                   $cmd_file_default_alias"             
-echo "$txt_text_md_md my-own-notes:                 $cmd_file_default_usernotes"
+echo "$txt_text_md_md own-notes:               $cmd_file_default_usernotes"
 echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_title_md [ optional output ]     $txt_text_md"
 echo "$txt_text_md_md dialog cli:              $cmd_command_dialog $txt_text_md"
@@ -3451,7 +3452,7 @@ echo "$txt_text_md show-custom modify-custom del-custom names-custom $txt_text_m
 echo "$txt_text_md    <firewall-wallinet> $txt_text_md"
 echo "$txt_text_md wallinet-update wallinet-list wallinet-load wallinet-show $txt_text_md"
 echo "$txt_text_md    <firewall-wallutils> $txt_text_md"
-echo "$txt_text_md preferences-edit alias-edit options info-options my-own-notes$txt_text_md"
+echo "$txt_text_md preferences-edit alias-edit options info-options own-notes$txt_text_md"
 echo "$txt_text_md tree-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $txt_text_md"
 echo "$txt_text_md ip4 ip6 route4 route6 info-ip4 info-ip6 info-nodes sockets $txt_text_md"
 echo "$txt_text_md lsof free ip-forward utils date resolve speed-ip4 speed-ip6 $txt_text_md"
@@ -5535,17 +5536,17 @@ exit; fi
 ####
 ####
 #### :rutina-final-install:
-##########    my-own-notes: take notes   ##########
-#### :rutina-inicial-my-own-notes:
+##########    own-notes: take notes   ##########
+#### :rutina-inicial-own-notes:
 ####
 ####
-if [ "$cmd_first_option" == "my-own-notes" ] ;  then
+if [ "$cmd_first_option" == "own-notes" ] ;  then
 ####
 ####
 #### add
 if [ "$cmd_second_option" == "add" ] && [ "$3" != "$NULL" ]
-then echo "$cmd_mynote_date,$cmd_third_option," >> "$cmd_file_default_usernotes"
-echo "Content added: $cmd_third_option," ; exit; fi
+then echo "$cmd_mynote_date,$cmd_sub_option," >> "$cmd_file_default_usernotes"
+echo "Content added: $cmd_sub_option," ; exit; fi
 #### search
 if [ "$cmd_second_option" == "search" ]  && [ "$3" != "$NULL" ]
 then echo "List searched"
@@ -5566,7 +5567,7 @@ echo " # $txt_text_file [$cmd_file_default_usernotes]"
 exit; fi
 ####
 ####
-#### :rutina-final-my-own-notes:
+#### :rutina-final-own-notes:
 ##########    expert-gen-readme: generate installed respository   ##########
 #### :rutina-inicial-expert-gen-readme:
 ####
