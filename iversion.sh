@@ -706,8 +706,8 @@ cfg_option_alias_destino="$(echo $cfg_option_with_alias | $cmd_command_cut -d "=
 ####
 #### load alias
 if [ "$cfg_option_with_alias" != "$NULL" ] && [ "$cfg_option_alias_origen" != "$cfg_option_alias_destino" ]
-then echo "### < alias from > $cfg_option_alias_origen \
-< alias to > $cfg_option_alias_destino"
+then echo "### <alias-from> $cfg_option_alias_origen \
+<alias-to> $cfg_option_alias_destino"
 $cmd_internal $cfg_option_alias_destino $2 $3 $4
 exit; fi 
 ####
@@ -1433,11 +1433,11 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-tree-pdf:
-##########    cat-logcmd: Read log  fwiptables-logcmd   ##########
-#### :rutina-inicial-cat-logcmd:
+##########    tree-logcmd: Read log  fwiptables-logcmd   ##########
+#### :rutina-inicial-tree-logcmd:
 ####
 ####
-if [ "$cmd_first_option" == "cat-logcmd" ] ; then
+if [ "$cmd_first_option" == "tree-logcmd" ] ; then
 ####
 ####
 if [ ! -f $cmd_file_default_logcmd ]; then touch $cmd_file_default_logcmd ; fi
@@ -1453,7 +1453,7 @@ echo "$txt_text_title_info [$cmd_file_default_logcmd]"
 exit; fi
 ####
 ####
-#### :rutina-final-cat-logcmd:
+#### :rutina-final-tree-logcmd:
 ##########    log-stat: Read stats log fwiptables-logcmd    ##########
 #### :rutina-inicial-log-stat:
 ####
@@ -1872,10 +1872,11 @@ echo "#ntpdate-client=date"
 echo "#list-allrules=list-alltables"
 echo "#preferences-modify=preferences-edit"
 echo "#alias-modify=alias-edit"
-echo "#logcmd=cat-logcmd"
-echo "#autolog=cat-logcmd"
+echo "#logcmd=tree-logcmd"
+echo "#autolog=tree-logcmd"
 echo "#ver=version"
 echo "#all-names=names"
+echo "#cat-logcmd=tree-logcmd"
 echo "#address4=info-ip4"
 echo "#address6=info-ip6"
 echo "#ram-free=free"
@@ -3450,7 +3451,7 @@ echo "$txt_text_md    <firewall-wallinet> $txt_text_md"
 echo "$txt_text_md wallinet-update wallinet-list wallinet-load wallinet-show $txt_text_md"
 echo "$txt_text_md    <firewall-wallutils> $txt_text_md"
 echo "$txt_text_md preferences-edit alias-edit options info-options my-note$txt_text_md"
-echo "$txt_text_md cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $txt_text_md"
+echo "$txt_text_md tree-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache $txt_text_md"
 echo "$txt_text_md ip4 ip6 route4 route6 info-ip4 info-ip6 info-nodes sockets $txt_text_md"
 echo "$txt_text_md lsof free ip-forward utils date resolve speed-ip4 speed-ip6 $txt_text_md"
 echo "$txt_text_md log-stat web intro depends uninstall install upgrade hints $txt_text_md"
@@ -3747,7 +3748,7 @@ echo "$txt_text_md_md options . list options $txt_text_md"
 echo "$txt_text_md_md info-options . list details for all options $txt_text_md"
 echo "$txt_text_md_md info . details from one first option from one pattern $txt_text_md"
 echo "$txt_text_md_md tree-log . show the result for -l|-log $txt_text_md"
-echo "$txt_text_md_md cat-logcmd . list the commands launched $txt_text_md"
+echo "$txt_text_md_md tree-logcmd . list the commands launched $txt_text_md"
 echo "$txt_text_md_md ip . show details from connection ipv4, ipv6 $txt_text_md"
 echo "$txt_text_md_md ip4 . show ip address from connection ipv4 $txt_text_md"
 echo "$txt_text_md_md ip6 . show ip address from connection ipv6 $txt_text_md"
@@ -5541,12 +5542,14 @@ if [ "$cmd_first_option" == "my-note" ] ;  then
 ####
 ####
 #### add
-if [ "$cmd_second_option" == "add" ]
-then echo "$cmd_mynote_date,$cmd_third_option," >> $cmd_file_default_usernotes
+if [ "$cmd_second_option" == "add" ] && [ "$3" != "$NULL" ]
+then echo "$cmd_mynote_date,$cmd_third_option," >> "$cmd_file_default_usernotes"
 echo "Content added: $cmd_third_option," ; exit; fi
 #### search
-if [ "$cmd_second_option" == "search" ] ; then echo "List searched" ; 
-$cmd_command_cat $cmd_file_default_usernotes | $cmd_command_grep -i $cmd_third_option ; exit; fi
+if [ "$cmd_second_option" == "search" ]  && [ "$3" != "$NULL" ]
+then echo "List searched"
+$cmd_command_cat $cmd_file_default_usernotes \
+| $cmd_command_grep -i $cmd_third_option ; exit; fi
 #### list
 if [ "$cmd_second_option" == "list" ] ; then echo "List content:"; 
 $cmd_command_cat $cmd_file_default_usernotes; exit; fi
@@ -8956,7 +8959,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 014  "$txt_text_md alias-read" \
 015  "$txt_text_md alias-edit" \
 016  "$txt_text_md alias-regen" \
-017  "$txt_text_md cat-logcmd" \
+017  "$txt_text_md tree-logcmd" \
 018  "$txt_text_md tree-log" \
 019  "$txt_text_md tree-pdf" \
 020  "$txt_text_md tree-conf" \
@@ -9001,7 +9004,7 @@ case $menuprincipal in
 014) clear ; $cmd_internal $cfg_favorite_out_cli alias-read ;;
 015) clear ; $cmd_internal alias-edit ;;
 016) clear ; $cmd_internal $cfg_favorite_out_cli alias-regen ;;
-017) clear ; $cmd_internal cat-logcmd ;;
+017) clear ; $cmd_internal tree-logcmd ;;
 018) clear ; $cmd_internal tree-log ;;
 019) clear ; $cmd_internal tree-pdf ;;
 020) clear ; $cmd_internal tree-conf ;;
@@ -9167,7 +9170,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 0704  "$txt_text_md alias-read" \
 0705  "$txt_text_md alias-edit" \
 0706  "$txt_text_md alias-regen" \
-0707  "$txt_text_md cat-logcmd" \
+0707  "$txt_text_md tree-logcmd" \
 0708  "$txt_text_md tree-log" \
 0709  "$txt_text_md tree-pdf" \
 0710  "$txt_text_md tree-conf" \
@@ -9380,7 +9383,7 @@ $cmd_internal del-custom $archivo ;;
 0704) clear ; $cmd_internal $cfg_favorite_out_cli alias-read ;;
 0705) clear ; $cmd_internal alias-edit ;;
 0706) clear ; $cmd_internal $cfg_favorite_out_cli alias-regen ;;
-0707) clear ; $cmd_internal cat-logcmd ;;
+0707) clear ; $cmd_internal tree-logcmd ;;
 0708) clear ; $cmd_internal tree-log ;;
 0709) clear ; $cmd_internal tree-pdf ;;
 0710) clear ; $cmd_internal tree-conf ;;
@@ -9947,7 +9950,7 @@ gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-edit|preferences-regen|alias-edit|alias-regen|\
 alias-read|options|info-options|expert|\
 info-ip4|info-ip6|route4|route6||sockets|tree-pdf|tree-conf\
-tree-log|cat-logcmd|ip4|ip6|hints|speed-ip4|speed-ip6|\
+tree-log|tree-logcmd|ip4|ip6|hints|speed-ip4|speed-ip6|\
 info-nodes|date|free|version|tree-conf|tree-cache|clean-cache|\
 depends|utils|about|variables|examples|intro|install|upgrade|\
 add-whitelist4|add-whitelist6|add-blacklist4|add-blacklist6|\
@@ -9978,7 +9981,7 @@ expert)$cmd_internal -gui-zenity expert ;;
 tree-log) $cmd_internal -gui-zenity tree-log ;; 
 tree-pdf) $cmd_internal -gui-zenity tree-pdf ;; 
 tree-conf) $cmd_internal -gui-zenity tree-conf ;;
-cat-logcmd) $cmd_internal -gui-zenity cat-logcmd ;;
+tree-logcmd) $cmd_internal -gui-zenity tree-logcmd ;;
 ip4)$cmd_internal -gui-zenity ip4 ;;
 ip6)$cmd_internal -gui-zenity ip6 ;;
 hints)$cmd_internal -gui-zenity hints ;;
@@ -10560,7 +10563,7 @@ echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
 preferences-edit|preferences-regen|alias-read|alias-edit|alias-regen|\
 options|clasic-options|info-options|expert|download|intro|\
-cat-logcmd|tree-log|tree-pdf|tree-conf|tree-cache|clean-cache|
+tree-logcmd|tree-log|tree-pdf|tree-conf|tree-cache|clean-cache|
 ip4|ip6|speed-ip4|speed-ip6|hints|\
 license-lgpl-v2|license-gpl-v2|\
 info-ip4|info-ip6|route4|route6||sockets|\
@@ -10602,7 +10605,7 @@ ip6*)$cmd_internal gui-$cmd_second_option ip6 ;;
 speed-ip4*)$cmd_internal gui-$cmd_second_option speed-ip4 ;;
 speed-ip6*)$cmd_internal gui-$cmd_second_option speed-ip6 ;;
 sockets*)$cmd_internal gui-$cmd_second_option sockets ;;
-cat-logcmd*)$cmd_internal gui-$cmd_second_option cat-logcmd ;;
+tree-logcmd*)$cmd_internal gui-$cmd_second_option tree-logcmd ;;
 tree-log*)$cmd_internal gui-$cmd_second_option tree-log ;;
 tree-pdf*)$cmd_internal gui-$cmd_second_option tree-pdf ;;
 tree-conf*)$cmd_internal gui-$cmd_second_option tree-conf ;;
