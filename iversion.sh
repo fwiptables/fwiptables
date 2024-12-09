@@ -12300,22 +12300,22 @@ for one_vpn in $(echo $cfg_config_net_whitelist | $cmd_command_sed 's/,/ /g'); d
 ####
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A  INPUT -s $one_vpn -j ACCEPT -m comment \
---comment "whitelist $one_vpn" &> /dev/null
+--comment "whitelist:$one_vpn" &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A  OUTPUT -d $one_vpn -j ACCEPT -m comment \
---comment "whitelist $one_vpn" &> /dev/null
+--comment "whitelist:$one_vpn" &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv4 $cfg_allow_use_nft  $cmd_command_ip4tablesnft \
 -A  INPUT -s $one_vpn -j ACCEPT -m comment \
---comment "whitelist $one_vpn" &> /dev/null
+--comment "whitelist:$one_vpn" &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv4 $cfg_allow_use_nft  $cmd_command_ip4tablesnft \
 -A  OUTPUT -d $one_vpn -j ACCEPT -m comment \
---comment "whitelist $one_vpn" &> /dev/null
+--comment "whitelist:$one_vpn" &> /dev/null
 ####
 ####
 #### ipv6
@@ -12323,22 +12323,22 @@ $cfg_allow_use_ipv4 $cfg_allow_use_nft  $cmd_command_ip4tablesnft \
 ####
 $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
 -A  INPUT -s $one_vpn -j ACCEPT -m comment \
---comment "whitelist $one_vpn" &> /dev/null
+--comment "whitelist:$one_vpn" &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
 -A  OUTPUT -d $one_vpn -j ACCEPT -m comment \
---comment "whitelist $one_vpn" &> /dev/null
+--comment "whitelist:$one_vpn" &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv6 $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 -A  INPUT -s $one_vpn -j ACCEPT -m comment \
---comment "whitelist $one_vpn" &> /dev/null
+--comment "whitelist:$one_vpn" &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv6 $cfg_allow_use_nft  $cmd_command_ip6tablesnft \
 -A  OUTPUT -d $one_vpn -j ACCEPT -m comment \
---comment "whitelist $one-vpn" &> /dev/null
+--comment "whitelist:$one_vpn" &> /dev/null
 ####
 ####
 done
@@ -12360,25 +12360,29 @@ for string_close in $(echo $cfg_config_string_denied | $cmd_command_sed 's/,/ /g
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A  INPUT -m string --string $string_close \
 --algo $cfg_config_string_algoritmo \
--j $cfg_config_close_deny &> /dev/null
+-j $cfg_config_close_deny \
+-m comment --comment "drop-string" &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A  OUTPUT -m string --string $string_close \
 --algo $cfg_config_string_algoritmo \
--j $cfg_config_close_deny &> /dev/null
+-j $cfg_config_close_deny \
+-m comment --comment "drop-string" &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv4 $cfg_allow_use_nft $cmd_command_ip4tablesnft \
 -A  INPUT -m string --string $string_close \
 --algo $cfg_config_string_algoritmo \
--j $cfg_config_close_deny &> /dev/null
+-j $cfg_config_close_deny \
+-m comment --comment "drop-string" &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv4 $cfg_allow_use_nft  $cmd_command_ip4tablesnft \
 -A  OUTPUT -m string --string $string_close \
 --algo $cfg_config_string_algoritmo \
--j $cfg_config_close_deny &> /dev/null
+-j $cfg_config_close_deny \
+-m comment --comment "drop-string" &> /dev/null
 ####
 ####
 #### ipv6
@@ -12387,25 +12391,29 @@ $cfg_allow_use_ipv4 $cfg_allow_use_nft  $cmd_command_ip4tablesnft \
 $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
 -A  INPUT -m string --string $string_close \
 --algo $cfg_config_string_algoritmo \
--j $cfg_config_close_deny &> /dev/null
+-j $cfg_config_close_deny \
+-m comment --comment "drop-string" &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
 -A  OUTPUT -m string --string $string_close \
 --algo $cfg_config_string_algoritmo \
--j $cfg_config_close_deny &> /dev/null
+-j $cfg_config_close_deny \
+-m comment --comment "drop-string" &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv6 $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 -A  INPUT -m string --string $string_close \
 --algo $cfg_config_string_algoritmo \
--j $cfg_config_close_deny &> /dev/null
+-j $cfg_config_close_deny \
+-m comment --comment "drop-string" &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv6 $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 -A  OUTPUT -m string --string $string_close \
 --algo $cfg_config_string_algoritmo \
--j $cfg_config_close_deny &> /dev/null
+-j $cfg_config_close_deny  \
+-m comment --comment "drop-string" &> /dev/null
 ####
 ####
 done
@@ -12427,25 +12435,29 @@ for string_allow in $(echo $cfg_config_string_allowed | $cmd_command_sed 's/,/ /
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy  -A  INPUT  \
 -m string --string $string_allow \
---algo $cfg_config_string_algoritmo -j ACCEPT &> /dev/null
+--algo $cfg_config_string_algoritmo -j ACCEPT  \
+-m comment --comment "allow-string" &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy  -A  OUTPUT \
 -m string --string $string_allow \
---algo $cfg_config_string_algoritmo -j ACCEPT &> /dev/null
+--algo $cfg_config_string_algoritmo -j ACCEPT  \
+-m comment --comment "allow-string" &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv4 $cfg_allow_use_nft  \
 $cmd_command_ip4tablesnft     -A  INPUT  \
 -m string --string $string_allow \
---algo $cfg_config_string_algoritmo -j ACCEPT &> /dev/null
+--algo $cfg_config_string_algoritmo -j ACCEPT  \
+-m comment --comment "allow-string" &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv4 $cfg_allow_use_nft  \
 $cmd_command_ip4tablesnft     -A  OUTPUT \
 -m string --string $string_allow \
---algo $cfg_config_string_algoritmo -j ACCEPT &> /dev/null
+--algo $cfg_config_string_algoritmo -j ACCEPT  \
+-m comment --comment "allow-string" &> /dev/null
 ####
 ####
 #### ipv6
@@ -12453,22 +12465,26 @@ $cmd_command_ip4tablesnft     -A  OUTPUT \
 ####
 $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A  INPUT  \
 -m string --string $string_allow \
---algo $cfg_config_string_algoritmo -j ACCEPT &> /dev/null
+--algo $cfg_config_string_algoritmo -j ACCEPT  \
+-m comment --comment "allow-string" &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A  OUTPUT \
 -m string --string $string_allow \
---algo $cfg_config_string_algoritmo -j ACCEPT &> /dev/null
+--algo $cfg_config_string_algoritmo -j ACCEPT  \
+-m comment --comment "allow-string" &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv6 $cfg_allow_use_nft $cmd_command_ip6tablesnft    -A  INPUT  \
 -m string --string $string_allow \
---algo $cfg_config_string_algoritmo -j ACCEPT &> /dev/null
+--algo $cfg_config_string_algoritmo -j ACCEPT \
+-m comment --comment "allow-string" &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv6 $cfg_allow_use_nft  $cmd_command_ip6tablesnft    -A  OUTPUT \
 -m string --string $string_allow \
---algo $cfg_config_string_algoritmo -j ACCEPT &> /dev/null
+--algo $cfg_config_string_algoritmo -j ACCEPT \
+-m comment --comment "allow-string" &> /dev/null
 ####
 ####
 done
@@ -12531,14 +12547,14 @@ $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cfg_allow_input_bandwidth \
 $cmd_command_ip4tableslegacy -A  INPUT \
 -m hashlimit --hashlimit-above   "$cfg_config_input_bandwidth"kb/sec \
 --hashlimit-name maxinputlegacy  -j $cfg_config_close_deny \
--m comment --comment "bandwidth:kb-seg"  &> /dev/null
+-m comment --comment "output-bandwidth"  &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv4 $cfg_allow_use_nft $cfg_allow_input_bandwidth \
 $cmd_command_ip4tablesnft -A INPUT \
 -m hashlimit    --hashlimit-above "$cfg_config_input_bandwidth"kb/sec  \
 --hashlimit-name maxinputnft  -j $cfg_config_close_deny \
--m comment --comment "bandwidth:kb-seg"  &> /dev/null
+-m comment --comment "output-bandwidth"  &> /dev/null
 ####
 fi
 ####
@@ -12549,7 +12565,7 @@ $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cfg_allow_output_bandwidth \
 $cmd_command_ip4tableslegacy -A OUTPUT \
 -m hashlimit --hashlimit-above  "$cfg_config_output_bandwidth"kb/sec \
 --hashlimit-mode dstip --hashlimit-name maxoutputlegacy -j $cfg_config_close_deny \
--m comment --comment "bandwidth:kb-seg"  &> /dev/null
+-m comment --comment "output-bandwidth"  &> /dev/null
 
 ####
 ####
@@ -12557,7 +12573,7 @@ $cfg_allow_use_ipv4 $cfg_allow_use_nft $cfg_allow_output_bandwidth \
 $cmd_command_ip4tablesnft -A OUTPUT \
 -m hashlimit  --hashlimit-above "$cfg_config_output_bandwidth"kb/sec \
 --hashlimit-mode dstip  --hashlimit-name maxoutputnft -j $cfg_config_close_deny \
--m comment --comment "bandwidth:kb-seg"  &> /dev/null
+-m comment --comment "output-bandwidth"  &> /dev/null
 ####
 fi
 ####
@@ -12571,14 +12587,14 @@ $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cfg_allow_input_bandwidth \
 $cmd_command_ip6tableslegacy -A INPUT \
 -m hashlimit --hashlimit-above "$cfg_config_input_bandwidth"kb/sec \
 --hashlimit-name maxinput  -j $cfg_config_close_deny \
--m comment --comment "bandwidth:kb-seg"  &> /dev/null
+-m comment --comment "output-bandwidth"  &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv6 $cfg_allow_use_nft $cfg_allow_input_bandwidth \
 $cmd_command_ip6tablesnft -A  INPUT \
 -m hashlimit --hashlimit-above "$cfg_config_input_bandwidth"kb/sec \
 --hashlimit-name maxinput  -j $cfg_config_close_deny \
--m comment --comment "bandwidth:kb-seg"  &> /dev/null
+-m comment --comment "output-bandwidth"  &> /dev/null
 ####
 fi
 ####
@@ -12588,13 +12604,13 @@ if [ "$cfg_allow_output_bandwidth" == "$NULL" ] ; then
 $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cfg_allow_output_bandwidth \
 $cmd_command_ip6tableslegacy -A OUTPUT -m hashlimit --hashlimit-above \
 "$cfg_config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j $cfg_config_close_deny \
--m comment --comment "bandwidth:kb/s"  &> /dev/null
+-m comment --comment "output-bandwidth"  &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv6 $cfg_allow_use_nft $cfg_allow_output_bandwidth \
 $cmd_command_ip6tablesnft -A OUTPUT -m hashlimit --hashlimit-above \
 "$cfg_config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j $cfg_config_close_deny \
--m comment --comment "bandwidth:kb-seg"  &> /dev/null
+-m comment --comment "ouptput-bandwidth"  &> /dev/null
 ####
 fi
 ####
@@ -13996,12 +14012,12 @@ $cfg_allow_output_all $cfg_allow_use_ipv4 \
 $cfg_allow_use_legacy $cfg_allow_output_bandwidth iptables-legacy -A OUTPUT \
 -m hashlimit --hashlimit-above "$cfg_config_output_bandwidth"kb/sec \
 --hashlimit-name maxoutput  -j $cfg_config_close_deny \
--m comment --comment "output-bandwidth kb/s" &> /dev/null
+-m comment --comment "output-bandwidth" &> /dev/null
 $cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
 $cfg_allow_output_bandwidth ip6tables-legacy -A  OUTPUT \
 -m hashlimit --hashlimit-above "$cfg_config_output_bandwidth"kb/sec \
 --hashlimit-name maxoutput  -j $cfg_config_close_deny \
--m comment --comment "output-bandwidth kb/s" &> /dev/null
+-m comment --comment "output-bandwidth" &> /dev/null
 ####
 ####
 ####  nft4 OUTPUT limit bandwidth
@@ -14011,12 +14027,12 @@ $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cfg_allow_output_bandwidth iptables-nft -A OUTPUT \
 -m hashlimit --hashlimit-above "$cfg_config_output_bandwidth"kb/sec \
 --hashlimit-name maxoutput  -j $cfg_config_close_deny \
--m comment --comment "output-bandwidth kb/s" &> /dev/null
+-m comment --comment "output-bandwidth" &> /dev/null
 $cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
 $cfg_allow_output_bandwidth ip6tables-nft -A OUTPUT \
 -m hashlimit --hashlimit-above "$cfg_config_output_bandwidth"kb/sec \
 --hashlimit-name maxoutput  -j $cfg_config_close_deny \
--m comment --comment "output-bandwidth kb/s" &> /dev/null
+-m comment --comment "output-bandwidth" &> /dev/null
 ####
 fi
 ####
