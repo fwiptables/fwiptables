@@ -3,7 +3,4 @@
 Planed fixing bugs, Planed feacture adding .
 
 ## The planed fixed commit:     
-commments: fix
-cli-menu: update
 gui-menu: update
-new-rules: comprobe leyends, comprobe void, comprobe comments
