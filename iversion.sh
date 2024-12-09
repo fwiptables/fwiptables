@@ -3445,7 +3445,7 @@ echo "$txt_text_md tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp $
 echo "$txt_text_md drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp $txt_text_md" 
 echo "$txt_text_md return-port-tcp return-por-udp log-port-tcp log-port-udp $txt_text_md"
 echo "$txt_text_md del-commented add-whitelist add-blacklist add-shield-tcp $txt_text_md" 
-echo "$txt_text_md drop-string net-limit-1minute net-limit-1hour $txt_text_md" 
+echo "$txt_text_md drop-string limit-mb-minute limit-mb-hour $txt_text_md" 
 echo "$txt_text_md    firewall-wallcustom $txt_text_md"
 echo "$txt_text_md new-full-custom nueva-completa-custom new-mini-custom $txt_text_md"
 echo "$txt_text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom $txt_text_md"
@@ -6830,7 +6830,7 @@ if [ "$cmd_first_option" == "drop-string" ] ; then
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD drop string to $2"
+echo "$txt_text_title [ Working ] ADD drop string to $2 in ip4"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 \
 -m string --string "$2" --algo "$cfg_config_string_algoritmo" \
 -m comment --comment "drop-string" -j DROP  &> /dev/null && \
@@ -6849,10 +6849,77 @@ $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 \
 echo "ok output legacy 4/4 with port $2"   || echo "without output legacy 4/4"
 ####
 ####
+echo "$txt_text_title [ Working ] ADD drop string to $2 in ip6"
+$cmd_command_ip6tablesnft    -t filter -I INPUT 2 \
+-m string --string "$2" --algo "$cfg_config_string_algoritmo" \
+-m comment --comment "drop-string" -j DROP  &> /dev/null && \
+echo "ok input nft 1/4 with port $2"   || echo "without input nft 1/4"
+$cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 \
+-m string --string "$2" --algo "$cfg_config_string_algoritmo" \
+-m comment --comment "drop-string" -j DROP  &> /dev/null && \
+echo "ok output nft 2/4 with port $2"   || echo "without output nft 2/4"
+$cmd_command_ip6tableslegacy -t filter -I INPUT  2 \
+-m string --string "$2" --algo "$cfg_config_string_algoritmo" \
+-m comment --comment "drop-string" -j DROP  &> /dev/null && \
+echo "ok input legacy 3/4 with port $2"   || echo "without input legacy 3/4"
+$cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 \
+-m string --string "$2" --algo "$cfg_config_string_algoritmo" \
+-m comment --comment "drop-string" -j DROP  &> /dev/null && \
+echo "ok output legacy 4/4 with port $2"   || echo "without output legacy 4/4"
 exit; fi
 ####
 ####
 #### :rutina-final-drop-string
+##########    limit-m-minute: limit net each minute in megabytes     ##########
+#### :rutina-inicial-limit-mb-minute
+####
+####
+if [ "$cmd_first_option" == "limit-mb-minute" ] ; then
+####
+####
+#### rules
+echo "$txt_text_title [ Working ] ADD drop string to $2 in kb/s ip4"
+$cmd_command_ip4tablesnft    -t filter -I INPUT 2 \
+-m hashlimit --hashlimit-above "$2"mb/min --hashlimit-name bandwidth \
+-m comment --comment "drop-string" -j DROP  &> /dev/null && \
+echo "ok input nft 1/4 with port $2"   || echo "without input nft 1/4"
+$cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 \
+-m hashlimit --hashlimit-above "$2"mb/min --hashlimit-name bandwidth \
+-m comment --comment "drop-string" -j DROP  &> /dev/null && \
+echo "ok output nft 2/4 with port $2"   || echo "without output nft 2/4"
+$cmd_command_ip4tableslegacy -t filter -I INPUT  2 \
+-m hashlimit --hashlimit-above "$2"mb/min --hashlimit-name bandwidth \
+-m comment --comment "drop-string" -j DROP  &> /dev/null && \
+echo "ok input legacy 3/4 with port $2"   || echo "without input legacy 3/4"
+$cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 \
+-m hashlimit --hashlimit-above "$2"mb/min --hashlimit-name bandwidth \
+-m comment --comment "drop-string" -j DROP  &> /dev/null && \
+echo "ok output legacy 4/4 with port $2"   || echo "without output legacy 4/4"
+####
+####
+echo "$txt_text_title [ Working ] ADD drop string to $2 in kb/s in ip6"
+$cmd_command_ip6tablesnft    -t filter -I INPUT 2 \
+-m hashlimit --hashlimit-above "$2"mb/min --hashlimit-name bandwidth \
+-m comment --comment "drop-string" -j DROP  &> /dev/null && \
+echo "ok input nft 1/4 with port $2"   || echo "without input nft 1/4"
+$cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 \
+-m hashlimit --hashlimit-above "$2"mb/min --hashlimit-name bandwidth \
+-m comment --comment "drop-string" -j DROP  &> /dev/null && \
+echo "ok output nft 2/4 with port $2"   || echo "without output nft 2/4"
+$cmd_command_ip6tableslegacy -t filter -I INPUT  2 \
+-m hashlimit --hashlimit-above "$2"mb/min --hashlimit-name bandwidth \
+-m comment --comment "drop-string" -j DROP  &> /dev/null && \
+echo "ok input legacy 3/4 with port $2"   || echo "without input legacy 3/4"
+$cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 \
+-m hashlimit --hashlimit-above "$2"mb/min --hashlimit-name bandwidth \
+-m comment --comment "drop-string" -j DROP  &> /dev/null && \
+echo "ok output legacy 4/4 with port $2"   || echo "without output legacy 4/4"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-limit-mb-minute
 ##########    add-shield-tcp: add port shield to tcp ip4     ##########
 #### :rutina-inicial-add-shield-tcp
 ####
@@ -12464,14 +12531,14 @@ $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cfg_allow_input_bandwidth \
 $cmd_command_ip4tableslegacy -A  INPUT \
 -m hashlimit --hashlimit-above   "$cfg_config_input_bandwidth"kb/sec \
 --hashlimit-name maxinputlegacy  -j $cfg_config_close_deny \
--m comment --comment "input-bandwidth kb/s"  &> /dev/null
+-m comment --comment "bandwidth:kb-seg"  &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv4 $cfg_allow_use_nft $cfg_allow_input_bandwidth \
 $cmd_command_ip4tablesnft -A INPUT \
 -m hashlimit    --hashlimit-above "$cfg_config_input_bandwidth"kb/sec  \
 --hashlimit-name maxinputnft  -j $cfg_config_close_deny \
--m comment --comment "input-bandwidth kb/s"  &> /dev/null
+-m comment --comment "bandwidth:kb-seg"  &> /dev/null
 ####
 fi
 ####
@@ -12482,7 +12549,7 @@ $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cfg_allow_output_bandwidth \
 $cmd_command_ip4tableslegacy -A OUTPUT \
 -m hashlimit --hashlimit-above  "$cfg_config_output_bandwidth"kb/sec \
 --hashlimit-mode dstip --hashlimit-name maxoutputlegacy -j $cfg_config_close_deny \
--m comment --comment "output-bandwidth kb/s"  &> /dev/null
+-m comment --comment "bandwidth:kb-seg"  &> /dev/null
 
 ####
 ####
@@ -12490,7 +12557,7 @@ $cfg_allow_use_ipv4 $cfg_allow_use_nft $cfg_allow_output_bandwidth \
 $cmd_command_ip4tablesnft -A OUTPUT \
 -m hashlimit  --hashlimit-above "$cfg_config_output_bandwidth"kb/sec \
 --hashlimit-mode dstip  --hashlimit-name maxoutputnft -j $cfg_config_close_deny \
--m comment --comment "output-bandwidth kb/s"  &> /dev/null
+-m comment --comment "bandwidth:kb-seg"  &> /dev/null
 ####
 fi
 ####
@@ -12504,14 +12571,14 @@ $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cfg_allow_input_bandwidth \
 $cmd_command_ip6tableslegacy -A INPUT \
 -m hashlimit --hashlimit-above "$cfg_config_input_bandwidth"kb/sec \
 --hashlimit-name maxinput  -j $cfg_config_close_deny \
--m comment --comment "input-bandwidth kb/s"  &> /dev/null
+-m comment --comment "bandwidth:kb-seg"  &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv6 $cfg_allow_use_nft $cfg_allow_input_bandwidth \
 $cmd_command_ip6tablesnft -A  INPUT \
 -m hashlimit --hashlimit-above "$cfg_config_input_bandwidth"kb/sec \
 --hashlimit-name maxinput  -j $cfg_config_close_deny \
--m comment --comment "input-bandwidth kb/s"  &> /dev/null
+-m comment --comment "bandwidth:kb-seg"  &> /dev/null
 ####
 fi
 ####
@@ -12521,13 +12588,13 @@ if [ "$cfg_allow_output_bandwidth" == "$NULL" ] ; then
 $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cfg_allow_output_bandwidth \
 $cmd_command_ip6tableslegacy -A OUTPUT -m hashlimit --hashlimit-above \
 "$cfg_config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j $cfg_config_close_deny \
--m comment --comment "output-bandwidth kb/s"  &> /dev/null
+-m comment --comment "bandwidth:kb/s"  &> /dev/null
 ####
 ####
 $cfg_allow_use_ipv6 $cfg_allow_use_nft $cfg_allow_output_bandwidth \
 $cmd_command_ip6tablesnft -A OUTPUT -m hashlimit --hashlimit-above \
 "$cfg_config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j $cfg_config_close_deny \
--m comment --comment "output-bandwidth kb/s"  &> /dev/null
+-m comment --comment "bandwidth:kb-seg"  &> /dev/null
 ####
 fi
 ####
