@@ -3431,7 +3431,7 @@ echo "$txt_text_md stop continue reset show save load names actual eraserules $t
 echo "$txt_text_md eraserules4 eraserules6 without-connection input-permisive $txt_text_md"
 echo "$txt_text_md input-established wizard-tiny wizard-mini wizard-full $txt_text_md"
 echo "$txt_text_md tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp $txt_text_md"
-echo "$txt_text_md ..   firewall-wallrule $txt_text_md"
+echo "$txt_text_md ...   firewall-wallrule $txt_text_md"
 echo "$txt_text_md drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp $txt_text_md" 
 echo "$txt_text_md return-port-tcp return-por-udp log-port-tcp log-port-udp $txt_text_md"
 echo "$txt_text_md del-commented add-whitelist add-blacklist add-shield-tcp $txt_text_md" 
