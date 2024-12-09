@@ -130,7 +130,7 @@ cmd_first_option="$(echo $1 | $cmd_command_sed s/\\///g -)"   # first option
 cmd_second_option="$(echo $2 | $cmd_command_sed s/\\///g -)"  # second option
 cmd_third_option="$(echo $3 | $cmd_command_sed s/\\///g -)"   # third option
 cmd_quad_option="$(echo $4 | $cmd_command_sed s/\\///g -)"    # quad option
-cmd_list_option="### $cmd_name $1 $2 $3 $4"                   # option label
+cmd_list_option="## $cmd_name $1 $2 $3 $4"                   # option label
 cmd_all_option="$@"                                           # all options
 cmd_sub_option="$2 $3 $4 $5 $6 $7 $8 $9"                      # almost options
 #### variable without "/", without spaces
@@ -411,7 +411,8 @@ cfg_server_time_waiting="12s"
 txt_text_md="  "
 txt_text_htitle="# "
 txt_text_stitle="## "
-txt_text_title="### "
+txt_text_ttitle="### "
+txt_text_title="$txt_text_stitble"
 txt_text_ok="<  ok  >"
 txt_text_info="< info >"
 txt_text_fail="< fail >"
@@ -419,15 +420,15 @@ txt_text_file="< file >"
 txt_text_done="< done >"
 txt_text_folder="<folder>"
 txt_text_md_md="$txt_text_md $txt_text_md"
-txt_text_title_md="$txt_text_title $txt_text_md"
-txt_text_title_ok="$txt_text_title $txt_text_ok"
-txt_text_title_title="$txt_text_title $txt_text_title"
-txt_text_title_info="$txt_text_title $txt_text_info"
-txt_text_title_fail="$txt_text_title $txt_text_fail"
+txt_text_title_md="$txt_text_stitle $txt_text_md"
+txt_text_title_ok="$txt_text_stitle $txt_text_ok"
+txt_text_title_title="$txt_text_stitle $txt_text_title"
+txt_text_title_info="$txt_text_stitle $txt_text_info"
+txt_text_title_fail="$txt_text_stitle $txt_text_fail"
 txt_text_title_done="$text_text_title $txt_text_done"
-txt_text_tile_file="$txt_text_title $txt_text_file"
-txt_text_tile_done="$txt_text_title $txt_text_done"
-txt_text_title_folder="$txt_text_title $txt_text_folder"
+txt_text_tile_file="$txt_text_stitle $txt_text_file"
+txt_text_tile_done="$txt_text_stitle $txt_text_done"
+txt_text_title_folder="$txt_text_stitle $txt_text_folder"
 txt_text_ok_md="$txt_text_ok $txt_text_md"
 txt_text_title_md="$txt_txt_title $txt_text_md"
 txt_text_info_md="$txt_text_info $txt_text_md"
@@ -731,7 +732,6 @@ cmd_first_option="$cfg_config_without_firstoption" ; fi
 ####
 ####
 #### label option
-#### if [ "$cfg_allow_show_option" == "" ] ; then echo "$cmd_list_option" ; fi
 echo "$cmd_list_option"
 ####
 ####
@@ -742,10 +742,10 @@ if [ "$cfg_allow_show_time" == "" ] ; then echo "$cfg_config_show_time" ; fi
 #### configure expert
 if [ "$cfg_allow_expert_commands" == "no" ]; then
 case "$cmd_first_option" in 
-exper*) echo "$txt_text_title See in preferences allow_expert_commands to active it option"
+exper*) echo "$txt_text_stitle See in preferences allow_expert_commands to active it option"
 exit ;; esac
 case "$cmd_second_option" in
-exper*) echo "$txt_text_title See in preferences allow_expert_commands to active it option"
+exper*) echo "$txt_text_stitle See in preferences allow_expert_commands to active it option"
 exit ;; esac ; fi
 ####
 ####
@@ -1348,7 +1348,7 @@ if [ "$cmd_first_option" == "pdf" ]
 ####
 ####
 then case $cmd_command_convert in "$NULL") 
-echo "$txt_text_title install imagemagick to print pdf to $cmd_default_directory_pdf" ; exit ;; esac
+echo "$txt_text_stitle install imagemagick to print pdf to $cmd_default_directory_pdf" ; exit ;; esac
 #### allow print to PDF policy
 echo "$txt_head_waiting_pdf"
 $cmd_command_sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-*/policy.xml &> /dev/null
@@ -1435,7 +1435,7 @@ if [ "$cmd_first_option" == "tree-cmd" ] ; then
 if [ ! -f $cmd_file_default_logcmd ]; then touch $cmd_file_default_logcmd ; fi
 echo "$txt_text_title_md list all month"
 $cmd_command_tree $cmd_default_directory_baselogcmd
-echo "$txt_text_title $cmd_file_default_logcmd"
+echo "$txt_text_stitle $cmd_file_default_logcmd"
 $cmd_command_cat   "$cmd_file_default_logcmd" | tail -50
 echo
 echo "$txt_text_title_info latest 50 lines from this file"
@@ -1528,7 +1528,7 @@ if [ "$cmd_first_option" == "expert-cpufreq-info" ] ; then
 ####
 echo "$txt_text_title_info [ show cpu frequence info ]"
 if [ "$cmd_command_cpufreqinfo" == "$NULL" ]; then
-echo "$txt_text_title please install cpufreq-info"; fi
+echo "$txt_text_stitle please install cpufreq-info"; fi
 $cmd_command_cpufreqinfo
 ####
 ####
@@ -1545,7 +1545,7 @@ if [ "$cmd_first_option" == "expert-cpupower-info" ] ; then
 ####
 echo "$txt_text_title_info [ show cpu frequence info ]"
 if [ "$cmd_command_cpupower" == "$NULL" ]; then
-echo "$txt_text_title please install cpupower"; fi
+echo "$txt_text_stitle please install cpupower"; fi
 $cmd_command_cpupower -c all frequency-info
 ####
 ####
@@ -1562,9 +1562,9 @@ if [ "$cmd_first_option" == "expert-configs-save" ] ; then
 ####
 echo "$txt_text_title_info [ save backups confiurations to choosed filename ]"
 if [ "$cmd_command_tar" == "$NULL" ]; then
-echo "$txt_text_title Please install tar command"; exit ; fi
+echo "$txt_text_stitle Please install tar command"; exit ; fi
 if [ "$2" == "$NULL" ]; then
-echo "$txt_text_title Please choose the backup file to save"; exit; fi
+echo "$txt_text_stitle Please choose the backup file to save"; exit; fi
 ####
 ####
 tar vcf $2.tar -C $cmd_default_directory_necesary . && \
@@ -1585,9 +1585,9 @@ if [ "$cmd_first_option" == "expert-configs-load" ] ; then
 ####
 echo "$txt_text_title_info [ load backups confiurations from choosed filename ]"
 if [ "$cmd_command_tar" == "$NULL" ]; then
-echo "$txt_text_title Please install tar command"; exit ; fi
+echo "$txt_text_stitle Please install tar command"; exit ; fi
 if [ "$2" == "$NULL" ]; then
-echo "$txt_text_title Please choose the backup file to load"; exit; fi
+echo "$txt_text_stitle Please choose the backup file to load"; exit; fi
 ####
 ####
 tar vxf $2 -C $cmd_default_directory_necesary . && \
@@ -1793,19 +1793,19 @@ exit; fi
 if [ "$cmd_first_option" == "expert-wpa-example" ]; then
 ####
 ####
-echo "$txt_text_title data necesary to get wifi access"
+echo "$txt_text_stitle data necesary to get wifi access"
 echo "wifi_wpa_driver=nl80211"
-echo "$txt_text_title wifi driver:     nl80211 or wext"
+echo "$txt_text_stitle wifi driver:     nl80211 or wext"
 echo "wifi_wpa_device=wlan0"
-echo "$txt_text_title wifi device:     type wifi device"
+echo "$txt_text_stitle wifi device:     type wifi device"
 echo "wifi_wpa_ssid=none"
-echo "$txt_text_title wifi net:        type name for wireless net"
+echo "$txt_text_stitle wifi net:        type name for wireless net"
 echo "wifi_wpa_password=none"
-echo "$txt_text_title wifi password:   type password to wireless"
+echo "$txt_text_stitle wifi password:   type password to wireless"
 echo "wifi_wpa_dhcp="
-echo "$txt_text_title wifi ip dinamic: if program for dhcp"
+echo "$txt_text_stitle wifi ip dinamic: if program for dhcp"
 echo "wifi_wpa_ip="
-echo "$txt_text_title wifi ip static:  if choose one static ip for this net"
+echo "$txt_text_stitle wifi ip static:  if choose one static ip for this net"
 ####
 ####
 exit; fi
@@ -1955,10 +1955,10 @@ echo "$txt_text_title"
 echo "$txt_text_title"
 echo "$txt_text_title_title default option when not option are there"
 echo "cfg_config_without_firstoption=options                    ## read below"
-echo "$txt_text_title type: void or one valid option required to works"
-echo "$txt_text_title example1:options example2:list4 example3:ip4"
-echo "$txt_text_title example4:speed-ip4 example5:sockets example6:gui-roll"
-echo "$txt_text_title example7:gui-menu-yad example8:gui-shell-yad"
+echo "$txt_text_stitle type: void or one valid option required to works"
+echo "$txt_text_stitle example1:options example2:list4 example3:ip4"
+echo "$txt_text_stitle example4:speed-ip4 example5:sockets example6:gui-roll"
+echo "$txt_text_stitle example7:gui-menu-yad example8:gui-shell-yad"
 echo "$txt_text_title" 
 echo "$txt_text_title_title Allow expert commands for default" 
 echo "cfg_allow_expert_commands=no                         ## or void for yes or no"
@@ -2006,7 +2006,7 @@ echo "cfg_server_ip_iperf_ipv6=ping6.online.net            ## default ping6.onli
 echo "cfg_server_port_iperf_ipv6=5200                      ## default 5200"
 echo "cfg_server_radio_online=https://www.tdtchannels.com/lists/radio.m3u8" 
 echo "$txt_text_title"
-echo "$txt_text_title $text_text_title repository firewall-wallinet, with file in .tar"
+echo "$txt_text_stitle $text_text_title repository firewall-wallinet, with file in .tar"
 echo "cmd_web_repository_wallinet=$cmd_web_repository_wallinet "
 echo "$txt_text_title"
 echo "$txt_text_title_title default graphicall dimension"
@@ -2025,7 +2025,7 @@ exit ; fi
 if [ "$cmd_first_option" == "resolve" ]; then
 ####
 ####
-echo "$txt_text_title_info $txt_text_title [ Domain resolve ] [ nameserver and search ] $txt_text_title"
+echo "$txt_text_title_info $txt_text_stitle [ Domain resolve ] [ nameserver and search ] $txt_text_title"
 if [ -f /etc/resolv.conf ]
 then echo "$txt_text_md_md Content from file: /etc/resolv.conf"
 $cmd_command_cat  /etc/resolv.conf                     ; fi
@@ -2240,10 +2240,10 @@ if [ "$cmd_first_option" == "expert-conf-clientproxy" ]; then
 if [ "$cmd_second_option" == "$NULL" ] ; then cfg_second_option="without-proxy" ; fi
 ####
 ####
-echo "$txt_text_title File generated by fwiptables \
+echo "$txt_text_stitle File generated by fwiptables \
 expert-conf-clientproxy user:pass@ip:port" \
 &> $cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option
-echo "$txt_text_title This filename is \
+echo "$txt_text_stitle This filename is \
 $cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option" \
 &>> $cmd_default_directory_proxy/fwiptables-proxy-$cmd_second_option
 echo "declare -x all_proxy=$2" \
@@ -2282,21 +2282,21 @@ if [ "$cmd_first_option" == "expert-show-clientproxy" ]; then echo
 ####
 ####
 echo "$txt_text_title_info ### [ Proxy tunnel ] [ Address proxy ] ###"
-echo "$txt_text_title [ Necesary:  ] WHITHOUT script shell and WHITHOUT exit command ]"
-echo "$txt_text_title [ Editable:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
-echo "$txt_text_title [ configure: ] $cmd_internal expert-conf-clientproxy user:pass@ip:port"
+echo "$txt_text_stitle [ Necesary:  ] WHITHOUT script shell and WHITHOUT exit command ]"
+echo "$txt_text_stitle [ Editable:  ] declare -x HTTPS_PROXY=https://127.0.0.1:8080"
+echo "$txt_text_stitle [ configure: ] $cmd_internal expert-conf-clientproxy user:pass@ip:port"
 ####
 ####
 cfg_listado_proxy="$(export | grep -i \_PROXY | wc -l)"
 if [ "$cfg_listado_proxy" -eq "0" ]; then
-echo "$txt_text_title [ Actually: ] Without proxy in export variables"
+echo "$txt_text_stitle [ Actually: ] Without proxy in export variables"
 else export | grep -i "_PROXY" ; fi
 echo
 ####
 ####
 if [ ! -f "$cmd_default_directory_proxy/$cmd_second_option" ] ; then
-echo "$txt_text_title Show file with: expert-show-clientproxy [second_option]" ;
-echo "$txt_text_title Choose above one to second-option"; 
+echo "$txt_text_stitle Show file with: expert-show-clientproxy [second_option]" ;
+echo "$txt_text_stitle Choose above one to second-option"; 
 ls $cmd_default_directory_proxy/ ; exit ; fi
 ####
 ####
@@ -2315,18 +2315,18 @@ exit ; fi
 if [ "$cmd_first_option" == "expert-active-clientproxy" ]; then echo
 ####
 ####
-echo "$txt_text_title there is before "
+echo "$txt_text_stitle there is before "
 declare -x | grep -i \_PROXY
 ####
 ####
 if [ -f "$cmd_default_directory_proxy/$cmd_second_option" ]     ; 
 then source $cmd_default_directory_proxy/$cmd_second_option     ;
-else echo "$txt_text_title Choose above one to second-option" ;
+else echo "$txt_text_stitle Choose above one to second-option" ;
 ls $cmd_default_directory_proxy/                            ;
 fi
 ####
 ####
-echo "$txt_text_title there is after "
+echo "$txt_text_stitle there is after "
 declare -x | grep -i \_PROXY
 ####
 ####
@@ -2341,7 +2341,7 @@ exit ; fi
 if [ "$cmd_first_option" == "expert-deactive-clientproxy" ]; then echo
 ####
 ####
-echo "$txt_text_title there is before "
+echo "$txt_text_stitle there is before "
 declare -x | grep -i \_PROXY
 ####
 ####
@@ -2355,7 +2355,7 @@ export -n HTTP_PROXY
 export -n HTTPS_PROXY
 ####
 ####
-echo "$txt_text_title there is after "
+echo "$txt_text_stitle there is after "
 declare -x | grep -i \_PROXY
 ####
 ####
@@ -2372,16 +2372,16 @@ if [ "$cmd_first_option" == "expert-show-resolve" ]; then echo
 ####
 echo "$txt_text_title_info ### [ Domain resolve ] [ nameserver and search ] ###"
 if [ -f /etc/resolv.conf ]
-then echo "$txt_text_title [ yes file ]      [ /etc/resolv.conf ]"
+then echo "$txt_text_stitle [ yes file ]      [ /etc/resolv.conf ]"
 $cmd_command_cat  /etc/resolv.conf | $cmd_command_grep -E "nameserver|search"      ; fi
 if [ -f /etc/resolv.conf.head ]
-then echo "$txt_text_title [ yes file ]      [ /etc/resolv.conf.head ]"; fi
+then echo "$txt_text_stitle [ yes file ]      [ /etc/resolv.conf.head ]"; fi
 if [ -f /etc/resolv.conf.body ]
-then echo "$txt_text_title [ yes file ]      [ /etc/resolv.conf.body ]"; fi
+then echo "$txt_text_stitle [ yes file ]      [ /etc/resolv.conf.body ]"; fi
 if [ -f /etc/resolv.conf.tail ]
-then echo "$txt_text_title [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
+then echo "$txt_text_stitle [ yes file ]      [ /etc/resolv.conf.tail ]"; fi
 if [ -d /etc/resolvconf ]
-then echo "$txt_text_title [ yes directory ] [ /etc/resolvconf ]"      ; fi
+then echo "$txt_text_stitle [ yes directory ] [ /etc/resolvconf ]"      ; fi
 ####
 ####
 exit; fi
@@ -2399,7 +2399,7 @@ echo "$txt_text_title_info  [ trace ip or host with tcp ipv4 ]"
 case $cmd_command_tracepath in "$NULL")
 echo "$txt_text_title_fail [ Install tracepath command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$txt_text_title use: $cmd_internal $cmd_first_option host"; exit; fi
+echo "$txt_text_stitle use: $cmd_internal $cmd_first_option host"; exit; fi
 $cmd_internal save before-trace-tcp4 
 $cmd_internal eraserules4
 echo "$duo_md $txt_text_ok [ tracepath -4 $2 ] "
@@ -2422,7 +2422,7 @@ echo "$txt_text_title_info  [ trace ip or host with tcp ipv6 ]"
 case $cmd_command_tracepath in "$NULL")
 echo "$txt_text_title_fail [ Install tracepath command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$txt_text_title use: $cmd_internal $cmd_first_option host"; exit; fi
+echo "$txt_text_stitle use: $cmd_internal $cmd_first_option host"; exit; fi
 $cmd_internal save before-trace-ip6 
 $cmd_internal eraserules6
 echo "$duo_md $txt_text_ok [ tracepath -6 $2 ] "
@@ -2445,7 +2445,7 @@ echo "$txt_text_title_info  [ trace ip or host with icmp ipv4 ]"
 case $cmd_command_traceroute in "$NULL")
 echo "$txt_text_title_fail [ Install traceroute command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$txt_text_title use: $cmd_internal $cmd_first_option host"; exit ; fi
+echo "$txt_text_stitle use: $cmd_internal $cmd_first_option host"; exit ; fi
 $cmd_internal save before-trace-icmp4 
 $cmd_internal eraserules4
 echo "$duo_md $txt_text_ok [ traceroute -4 $2 ] "
@@ -2468,7 +2468,7 @@ echo "$txt_text_title_info  [ trace ip or host with icmp ipv6 ]"
 case $cmd_command_traceroute in "$NULL")
 echo "$txt_text_title_fail [ Install traceroute command ]" ; exit ;;  esac
 if [ "$2" == "$NULL" ]; then
-echo "$txt_text_title use: $cmd_internal $cmd_first_option host"; exit ; fi
+echo "$txt_text_stitle use: $cmd_internal $cmd_first_option host"; exit ; fi
 $cmd_internal save before-trace-icmp6 
 $cmd_internal eraserules6
 echo "$duo_md $txt_text_ok [ traceroute -6 $2 ] "
@@ -2493,12 +2493,12 @@ cmd_radio_path_install="/usr/bin"
 cmd_radio_complete_install="$cmd_radio_path_install/$cmd_radio_name_install"
 cmd_radio_path_download="$cmd_default_directory_radio/$cmd_radio_name_install"
 echo "$txt_text_title_info [ expert-myradio-install md]"
-echo "$txt_text_title Downloading $cmd_radio_name_install in $cmd_radio_path_download"
+echo "$txt_text_stitle Downloading $cmd_radio_name_install in $cmd_radio_path_download"
 $cmd_command_curl $cmd_web_download_myradio -s -L \
 -o $cmd_radio_path_download || echo "Without internet" || exit \
 && chmod ugo+x $cmd_radio_path_download &> /dev/null
 cp $cmd_radio_path_download $cmd_radio_complete_install  && \
-echo "$txt_text_title installed $cmd_radio_name_install in $cmd_radio_complete_install"
+echo "$txt_text_stitle installed $cmd_radio_name_install in $cmd_radio_complete_install"
 ####
 ####
 exit; fi
@@ -2821,31 +2821,31 @@ if [ "$cmd_first_option" == "template-tiny-es" ]; then
 ####
 ####
 echo "$txt_text_title"
-echo "$txt_text_title Tiny firewall esta permitido como *cliente* para todos los protocolos y puertos"
+echo "$txt_text_stitle Tiny firewall esta permitido como *cliente* para todos los protocolos y puertos"
 echo "$txt_text_title"
-echo "$txt_text_title NETFILTER $txt_text_title "
-echo "$txt_text_title el iptables firewall netfilter, elige uno o dos "
+echo "$txt_text_stitle NETFILTER $txt_text_stitle "
+echo "$txt_text_stitle el iptables firewall netfilter, elige uno o dos "
 echo "cfg_allow_use_legacy=no "
-echo "$txt_text_title lanza xtables, vacio para si, o escribe no "
+echo "$txt_text_stitle lanza xtables, vacio para si, o escribe no "
 echo "cfg_allow_use_nft= "
-echo "$txt_text_title lanza nftables, vacio para si, o escribe no "
-echo "$txt_text_title PROTOCOL IP $txt_text_title "
-echo "$txt_text_title procolo ip, modificar con vacio o no "
+echo "$txt_text_stitle lanza nftables, vacio para si, o escribe no "
+echo "$txt_text_stitle PROTOCOL IP $txt_text_stitle "
+echo "$txt_text_stitle procolo ip, modificar con vacio o no "
 echo "cfg_allow_use_ipv4= "
-echo "$txt_text_title varcio para ejecutar el firewall con ipv4 o no para no "
+echo "$txt_text_stitle varcio para ejecutar el firewall con ipv4 o no para no "
 echo "cfg_allow_use_ipv6= "
-echo "$txt_text_title varcio para ejecutar el firewall con ipv6 o no para no "
-echo "$txt_text_title SERVER PORTS $txt_text_title "
-echo "$txt_text_title Puertos Servidor, añadir con ',' y poner rangos con  :"
+echo "$txt_text_stitle varcio para ejecutar el firewall con ipv6 o no para no "
+echo "$txt_text_stitle SERVER PORTS $txt_text_stitle "
+echo "$txt_text_stitle Puertos Servidor, añadir con ',' y poner rangos con  :"
 echo "cfg_server_port_tcp=ssh "
-echo "$txt_text_title puertos tcp para servidor "
+echo "$txt_text_stitle puertos tcp para servidor "
 echo "cfg_server_port_udp= "
-echo "$txt_text_title puertos udp para servidor "
-echo "$txt_text_title REGLAS GENERALES $txt_text_title "
-echo "$txt_text_title Regla general en tabla "
+echo "$txt_text_stitle puertos udp para servidor "
+echo "$txt_text_stitle REGLAS GENERALES $txt_text_stitle "
+echo "$txt_text_stitle Regla general en tabla "
 echo "cfg_allow_separate_rules= "
 echo "$txt_text_title"
-echo "$txt_text_title Tiny firewall esta permitido como *cliente* para todos los protocolos y puertos"
+echo "$txt_text_stitle Tiny firewall esta permitido como *cliente* para todos los protocolos y puertos"
 echo "$txt_text_title"
 ####
 ####
@@ -2861,31 +2861,31 @@ if [ "$cmd_first_option" == "template-tiny-en" ]; then
 ####
 ####
 echo "$txt_text_title"
-echo "$txt_text_title Tiny firewall is allowed like client for all protocols and ports"
+echo "$txt_text_stitle Tiny firewall is allowed like client for all protocols and ports"
 echo "$txt_text_title"
-echo "$txt_text_title NETFILTER $txt_text_title "
-echo "$txt_text_title The iptables firewall netfilter, choose one or both  "
+echo "$txt_text_stitle NETFILTER $txt_text_stitle "
+echo "$txt_text_stitle The iptables firewall netfilter, choose one or both  "
 echo "cfg_allow_use_legacy=no "
-echo "$txt_text_title xtables, void for yes, or no "
+echo "$txt_text_stitle xtables, void for yes, or no "
 echo "cfg_allow_use_nft= "
-echo "$txt_text_title neftables, void for yes, or no "
-echo "$txt_text_title PROTOCOL IP $txt_text_title "
-echo "$txt_text_title procol ip, void for yes, or no "
+echo "$txt_text_stitle neftables, void for yes, or no "
+echo "$txt_text_stitle PROTOCOL IP $txt_text_stitle "
+echo "$txt_text_stitle procol ip, void for yes, or no "
 echo "cfg_allow_use_ipv4= "
-echo "$txt_text_title void for yes, or no "
+echo "$txt_text_stitle void for yes, or no "
 echo "cfg_allow_use_ipv6= "
-echo "$txt_text_title void for yes, or no "
-echo "$txt_text_title SERVER PORTS $txt_text_title "
-echo "$txt_text_title server ports, add with , or ranges with :"
+echo "$txt_text_stitle void for yes, or no "
+echo "$txt_text_stitle SERVER PORTS $txt_text_stitle "
+echo "$txt_text_stitle server ports, add with , or ranges with :"
 echo "cfg_server_port_tcp=ssh "
-echo "$txt_text_title tcp port to server"
+echo "$txt_text_stitle tcp port to server"
 echo "cfg_server_port_udp= "
-echo "$txt_text_title udp port to server"
-echo "$txt_text_title GENERAL RULES $txt_text_title "
-echo "$txt_text_title General rules in table "
+echo "$txt_text_stitle udp port to server"
+echo "$txt_text_stitle GENERAL RULES $txt_text_stitle "
+echo "$txt_text_stitle General rules in table "
 echo "cfg_allow_separate_rules= "
 echo "$txt_text_title"
-echo "$txt_text_title Tiny firewall is allowed like client for all protocols and ports"
+echo "$txt_text_stitle Tiny firewall is allowed like client for all protocols and ports"
 echo "$txt_text_title"
 ####
 ####
@@ -2900,59 +2900,59 @@ exit; fi
 if [ "$cmd_first_option" == "template-mini-es" ]; then
 ####
 ####
-echo "$txt_text_title $cmd_shortdescription from $cmd_internal version $cmd_version $txt_text_title "
-echo "$txt_text_title BEGIN NECESARY $txt_text_title "
-echo "$txt_text_title INICIO .......... Opciones Necesarias .......... .......... $txt_text_title "
-echo "$txt_text_title NETFILTER $txt_text_title "
-echo "$txt_text_title el iptables firewall netfilter, elige uno o dos "
+echo "$txt_text_stitle $cmd_shortdescription from $cmd_internal version $cmd_version $txt_text_stitle "
+echo "$txt_text_stitle BEGIN NECESARY $txt_text_stitle "
+echo "$txt_text_stitle INICIO .......... Opciones Necesarias .......... .......... $txt_text_stitle "
+echo "$txt_text_stitle NETFILTER $txt_text_stitle "
+echo "$txt_text_stitle el iptables firewall netfilter, elige uno o dos "
 echo "cfg_allow_use_legacy=no "
-echo "$txt_text_title lanza xtables, vacio para si, o escribe no "
+echo "$txt_text_stitle lanza xtables, vacio para si, o escribe no "
 echo "cfg_allow_use_nft= "
-echo "$txt_text_title lanza nftables, vacio para si, o escribe no "
-echo "$txt_text_title PROTOCOL IP $txt_text_title "
-echo "$txt_text_title procolo ip, modificar con vacio o no "
+echo "$txt_text_stitle lanza nftables, vacio para si, o escribe no "
+echo "$txt_text_stitle PROTOCOL IP $txt_text_stitle "
+echo "$txt_text_stitle procolo ip, modificar con vacio o no "
 echo "cfg_allow_use_ipv4= "
-echo "$txt_text_title varcio para ejecutar el firewall con ipv4 o no para no "
+echo "$txt_text_stitle varcio para ejecutar el firewall con ipv4 o no para no "
 echo "cfg_allow_use_ipv6= "
-echo "$txt_text_title varcio para ejecutar el firewall con ipv6 o no para no "
-echo "$txt_text_title CLIENT PORTS $txt_text_title "
-echo "$txt_text_title puertos Cliente, añadir con ',' y poner rangos con : "
+echo "$txt_text_stitle varcio para ejecutar el firewall con ipv6 o no para no "
+echo "$txt_text_stitle CLIENT PORTS $txt_text_stitle "
+echo "$txt_text_stitle puertos Cliente, añadir con ',' y poner rangos con : "
 echo "cfg_client_port_tcp=http,https,http-alt,ssh "
-echo "$txt_text_title puertos tcp para ser cliente "
+echo "$txt_text_stitle puertos tcp para ser cliente "
 echo "cfg_client_port_udp=domain,domain-s,bootpc,bootps,ntp,https "
-echo "$txt_text_title puertos udp para ser cliente "
-echo "$txt_text_title SERVER PORTS $txt_text_title "
-echo "$txt_text_title Puertos Servidor, añadir con ',' y poner rangos con  :"
+echo "$txt_text_stitle puertos udp para ser cliente "
+echo "$txt_text_stitle SERVER PORTS $txt_text_stitle "
+echo "$txt_text_stitle Puertos Servidor, añadir con ',' y poner rangos con  :"
 echo "cfg_server_port_tcp=ssh "
-echo "$txt_text_title puertos tcp para servidor "
+echo "$txt_text_stitle puertos tcp para servidor "
 echo "cfg_server_port_udp= "
-echo "$txt_text_title puertos udp para servidor "
-echo "$txt_text_title LOG TO SERVER PORTS $txt_text_title "
-echo "$txt_text_title usar ULOG or LOG "
+echo "$txt_text_stitle puertos udp para servidor "
+echo "$txt_text_stitle LOG TO SERVER PORTS $txt_text_stitle "
+echo "$txt_text_stitle usar ULOG or LOG "
 echo "cfg_config_system_log=LOG"
-echo "$txt_text_title logear para puertos de Servidor, añadir con ',' y poner rangos con : "
+echo "$txt_text_stitle logear para puertos de Servidor, añadir con ',' y poner rangos con : "
 echo "cfg_server_log_port_tcp= "
-echo "$txt_text_title puertos tcp para logear servidor "
+echo "$txt_text_stitle puertos tcp para logear servidor "
 echo "cfg_server_log_port_udp= "
-echo "$txt_text_title puertos udp para logear servidor "
-echo "$txt_text_title ALLOW MAXTRIES SHIELD $txt_text_title )"
-echo "$txt_text_title Pone un escudo para los peuertos de nueva conexion, con maximo ip cada hora "
+echo "$txt_text_stitle puertos udp para logear servidor "
+echo "$txt_text_stitle ALLOW MAXTRIES SHIELD $txt_text_stitle )"
+echo "$txt_text_stitle Pone un escudo para los peuertos de nueva conexion, con maximo ip cada hora "
 echo "cfg_allow_shield_maxtries=no "
-echo "$txt_text_title vacio para permitir un escudo con los intentos maximos de logins por ip cada hora o no "
+echo "$txt_text_stitle vacio para permitir un escudo con los intentos maximos de logins por ip cada hora o no "
 echo "cfg_config_shield_maxtries=12 "
-echo "$txt_text_title escudo con los maximos intentos de logeo a nuestro servidor por ip a cada hora "
+echo "$txt_text_stitle escudo con los maximos intentos de logeo a nuestro servidor por ip a cada hora "
 echo "cfg_config_shield_port=22 "
-echo "$txt_text_title escudo cambiando puerto de intentos ssh o varios puertos separados por comas"
-echo "$txt_text_title GENERAL RULES $txt_text_title "
-echo "$txt_text_title Regla general en tabla "
+echo "$txt_text_stitle escudo cambiando puerto de intentos ssh o varios puertos separados por comas"
+echo "$txt_text_stitle GENERAL RULES $txt_text_stitle "
+echo "$txt_text_stitle Regla general en tabla "
 echo "cfg_allow_separate_rules= "
-echo "$txt_text_title Vacio para separar reglas por cada puerto o no "
+echo "$txt_text_stitle Vacio para separar reglas por cada puerto o no "
 echo "cfg_allow_close_log=no"
-echo "$txt_text_title Vacio para guardar logs antes de cerrar o no"
+echo "$txt_text_stitle Vacio para guardar logs antes de cerrar o no"
 echo "cfg_config_close_deny=DROP "
-echo "$txt_text_title Elige cerrar denegacion con o DROP or REJECT "
-echo "$txt_text_title END NECESARY $txt_text_title "
-echo "$txt_text_title FINAL .......... Opciones Necesarias .......... .......... $txt_text_title "
+echo "$txt_text_stitle Elige cerrar denegacion con o DROP or REJECT "
+echo "$txt_text_stitle END NECESARY $txt_text_stitle "
+echo "$txt_text_stitle FINAL .......... Opciones Necesarias .......... .......... $txt_text_stitle "
 ####
 ####
 exit ; fi
@@ -2969,173 +2969,173 @@ if [ "$cmd_first_option" == "template-full-es" ]; then
 #### basic options in configurations file cfg
 ####
 ####
-echo "$txt_text_title $cmd_shortdescription from $cmd_internal version $cmd_version $txt_text_title "
-echo "$txt_text_title BEGIN NECESARY $txt_text_title "
-echo "$txt_text_title INICIO .......... Opciones Necesarias .......... .......... $txt_text_title "
-echo "$txt_text_title NETFILTER $txt_text_title "
-echo "$txt_text_title el iptables firewall netfilter, elige uno o dos "
+echo "$txt_text_stitle $cmd_shortdescription from $cmd_internal version $cmd_version $txt_text_stitle "
+echo "$txt_text_stitle BEGIN NECESARY $txt_text_stitle "
+echo "$txt_text_stitle INICIO .......... Opciones Necesarias .......... .......... $txt_text_stitle "
+echo "$txt_text_stitle NETFILTER $txt_text_stitle "
+echo "$txt_text_stitle el iptables firewall netfilter, elige uno o dos "
 echo "cfg_allow_use_legacy=no "
-echo "$txt_text_title lanza xtables, vacio para si, o escribe no "
+echo "$txt_text_stitle lanza xtables, vacio para si, o escribe no "
 echo "cfg_allow_use_nft= "
-echo "$txt_text_title lanza nftables, vacio para si, o escribe no "
-echo "$txt_text_title PROTOCOL IP $txt_text_title "
-echo "$txt_text_title procolo ip, modificar con vacio o no "
+echo "$txt_text_stitle lanza nftables, vacio para si, o escribe no "
+echo "$txt_text_stitle PROTOCOL IP $txt_text_stitle "
+echo "$txt_text_stitle procolo ip, modificar con vacio o no "
 echo "cfg_allow_use_ipv4= "
-echo "$txt_text_title varcio para ejecutar el firewall con ipv4 o no para no "
+echo "$txt_text_stitle varcio para ejecutar el firewall con ipv4 o no para no "
 echo "cfg_allow_use_ipv6= "
-echo "$txt_text_title varcio para ejecutar el firewall con ipv6 o no para no "
-echo "$txt_text_title CLIENT PORTS $txt_text_title "
-echo "$txt_text_title puertos Cliente, añadir con ',' y poner rangos con : "
+echo "$txt_text_stitle varcio para ejecutar el firewall con ipv6 o no para no "
+echo "$txt_text_stitle CLIENT PORTS $txt_text_stitle "
+echo "$txt_text_stitle puertos Cliente, añadir con ',' y poner rangos con : "
 echo "cfg_client_port_tcp=http,https,http-alt,ssh "
-echo "$txt_text_title puertos tcp para ser cliente "
+echo "$txt_text_stitle puertos tcp para ser cliente "
 echo "cfg_client_port_udp=domain,domain-s,bootpc,bootps,ntp,https "
-echo "$txt_text_title puertos udp para ser cliente "
-echo "$txt_text_title SERVER PORTS $txt_text_title "
-echo "$txt_text_title Puertos Servidor, añadir con ',' y poner rangos con  :"
+echo "$txt_text_stitle puertos udp para ser cliente "
+echo "$txt_text_stitle SERVER PORTS $txt_text_stitle "
+echo "$txt_text_stitle Puertos Servidor, añadir con ',' y poner rangos con  :"
 echo "cfg_server_port_tcp=ssh "
-echo "$txt_text_title puertos tcp para servidor "
+echo "$txt_text_stitle puertos tcp para servidor "
 echo "cfg_server_port_udp= "
-echo "$txt_text_title puertos udp para servidor "
-echo "$txt_text_title LOG TO SERVER PORTS $txt_text_title "
-echo "$txt_text_title usar ULOG or LOG "
+echo "$txt_text_stitle puertos udp para servidor "
+echo "$txt_text_stitle LOG TO SERVER PORTS $txt_text_stitle "
+echo "$txt_text_stitle usar ULOG or LOG "
 echo "cfg_config_system_log=LOG"
-echo "$txt_text_title logear para puertos de Servidor, añadir con ',' y poner rangos con : "
+echo "$txt_text_stitle logear para puertos de Servidor, añadir con ',' y poner rangos con : "
 echo "cfg_server_log_port_tcp= "
-echo "$txt_text_title puertos tcp para logear servidor "
+echo "$txt_text_stitle puertos tcp para logear servidor "
 echo "cfg_server_log_port_udp= "
-echo "$txt_text_title puertos udp para logear servidor "
-echo "$txt_text_title ALLOW MAXTRIES SHIELD $txt_text_title )"
-echo "$txt_text_title Pone un escudo para los peuertos de nueva conexion, con maximo ip cada hora "
+echo "$txt_text_stitle puertos udp para logear servidor "
+echo "$txt_text_stitle ALLOW MAXTRIES SHIELD $txt_text_stitle )"
+echo "$txt_text_stitle Pone un escudo para los peuertos de nueva conexion, con maximo ip cada hora "
 echo "cfg_allow_shield_maxtries=no "
-echo "$txt_text_title vacio para permitir un escudo con los intentos maximos de logins por ip cada hora o no "
+echo "$txt_text_stitle vacio para permitir un escudo con los intentos maximos de logins por ip cada hora o no "
 echo "cfg_config_shield_maxtries=12 "
-echo "$txt_text_title escudo con los maximos intentos de logeo a nuestro servidor por ip a cada hora "
+echo "$txt_text_stitle escudo con los maximos intentos de logeo a nuestro servidor por ip a cada hora "
 echo "cfg_config_shield_port=22 "
-echo "$txt_text_title escudo cambiando puerto de intentos ssh o varios puertos separados por comas"
-echo "$txt_text_title GENERAL RULES $txt_text_title "
-echo "$txt_text_title Regla general en tabla "
+echo "$txt_text_stitle escudo cambiando puerto de intentos ssh o varios puertos separados por comas"
+echo "$txt_text_stitle GENERAL RULES $txt_text_stitle "
+echo "$txt_text_stitle Regla general en tabla "
 echo "cfg_allow_separate_rules= "
-echo "$txt_text_title Vacio para separar reglas por cada puerto o no "
+echo "$txt_text_stitle Vacio para separar reglas por cada puerto o no "
 echo "cfg_allow_close_log=no"
-echo "$txt_text_title Vacio para guardar logs antes de cerrar o no"
+echo "$txt_text_stitle Vacio para guardar logs antes de cerrar o no"
 echo "cfg_config_close_deny=DROP "
-echo "$txt_text_title Elige cerrar denegacion con o DROP or REJECT "
-echo "$txt_text_title END NECESARY $txt_text_title "
-echo "$txt_text_title FINAL .......... Opciones Necesarias .......... .......... $txt_text_title "
+echo "$txt_text_stitle Elige cerrar denegacion con o DROP or REJECT "
+echo "$txt_text_stitle END NECESARY $txt_text_stitle "
+echo "$txt_text_stitle FINAL .......... Opciones Necesarias .......... .......... $txt_text_stitle "
 ####
 ####
 #### advance options in configurations file cfg
-echo "$txt_text_title BEGIN OPTIONAL $txt_text_title "
-echo "$txt_text_title INICIO .......... Opciones opcionales .......... .......... $txt_text_title "
-echo "$txt_text_title choose void or no $txt_text_title "
-echo "$txt_text_title Permitir Otras Opciones, modificar con vacio o no "
+echo "$txt_text_stitle BEGIN OPTIONAL $txt_text_stitle "
+echo "$txt_text_stitle INICIO .......... Opciones opcionales .......... .......... $txt_text_stitle "
+echo "$txt_text_stitle choose void or no $txt_text_stitle "
+echo "$txt_text_stitle Permitir Otras Opciones, modificar con vacio o no "
 echo "cfg_allow_string_dropped=no "
-echo "$txt_text_title vacio para denegar cadena de cabecera, o no para no "
+echo "$txt_text_stitle vacio para denegar cadena de cabecera, o no para no "
 echo "cfg_allow_string_allowed=no "
-echo "$txt_text_title vacio para permitir cadena, o no para no "
+echo "$txt_text_stitle vacio para permitir cadena, o no para no "
 echo "cfg_allow_mac_whitelist=no "
-echo "$txt_text_title vacio para permitir DIRECCION-MAC excepcionales o no "
+echo "$txt_text_stitle vacio para permitir DIRECCION-MAC excepcionales o no "
 echo "cfg_allow_mac_blacklist=no "
-echo "$txt_text_title vacio para denegar DIRECCION-MAC excepcionales o no "
+echo "$txt_text_stitle vacio para denegar DIRECCION-MAC excepcionales o no "
 echo "cfg_allow_net_whitelist=no "
-echo "$txt_text_title vacio para permitir HOST/IP excepcionales o no"
+echo "$txt_text_stitle vacio para permitir HOST/IP excepcionales o no"
 echo "cfg_allow_net_blacklist=no "
-echo "$txt_text_title vacio para denegar HOST/IP excepcionales o no "
+echo "$txt_text_stitle vacio para denegar HOST/IP excepcionales o no "
 echo "cfg_allow_input_bandwidth=no "
-echo "$txt_text_title vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no "
+echo "$txt_text_stitle vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no "
 echo "cfg_allow_output_bandwidth=no "
-echo "$txt_text_title vacio limitar ancho de banda de salida en kbits/sec por cada destino o no "
+echo "$txt_text_stitle vacio limitar ancho de banda de salida en kbits/sec por cada destino o no "
 echo "cfg_allow_input_maxconnect=no "
-echo "$txt_text_title vacio para limitar numero de conexiones simultaneas de entrada o no "
+echo "$txt_text_stitle vacio para limitar numero de conexiones simultaneas de entrada o no "
 echo "cfg_allow_output_maxconnect=no "
-echo "$txt_text_title vacio para limitar numero de conexiones simultaneas de salida o no "
+echo "$txt_text_stitle vacio para limitar numero de conexiones simultaneas de salida o no "
 echo "cfg_allow_input_ping=no "
-echo "$txt_text_title vacio para permitir RECIVIR PING o no "
+echo "$txt_text_stitle vacio para permitir RECIVIR PING o no "
 echo "cfg_allow_output_ping=no "
-echo "$txt_text_title vacio para permitir ENVIAR PING o no "
+echo "$txt_text_stitle vacio para permitir ENVIAR PING o no "
 echo "cfg_allow_forward_ip4=no "
-echo "$txt_text_title vacio para reenvios ip4, o no para no "
+echo "$txt_text_stitle vacio para reenvios ip4, o no para no "
 echo "cfg_allow_forward_ip6=no "
-echo "$txt_text_title vacio para permitir reenvio ip6, o no "
+echo "$txt_text_stitle vacio para permitir reenvio ip6, o no "
 echo "cfg_allow_gateway_ip4=no "
-echo "$txt_text_title vacio para permitir gateway ip4  a otras redes, o no "
+echo "$txt_text_stitle vacio para permitir gateway ip4  a otras redes, o no "
 echo "cfg_allow_gateway_ip6=no "
-echo "$txt_text_title vacio para hacer gateway ip6 a otras redes o no "
+echo "$txt_text_stitle vacio para hacer gateway ip6 a otras redes o no "
 echo "cfg_allow_dmz_ip4=no "
-echo "$txt_text_title vacio para permitir dmz ip4  a una host local, o no "
+echo "$txt_text_stitle vacio para permitir dmz ip4  a una host local, o no "
 echo "cfg_allow_dmz_ip6=no "
-echo "$txt_text_title vacio para hacer dmz ip6 a una host local o no "
+echo "$txt_text_stitle vacio para hacer dmz ip6 a una host local o no "
 echo "cfg_allow_input_all=no "
-echo "$txt_text_title vacio, reglas para permitir toda entrada o no "
+echo "$txt_text_stitle vacio, reglas para permitir toda entrada o no "
 echo "cfg_allow_output_all=no "
-echo "$txt_text_title vacio, reglas para permitir toda salida o no "
+echo "$txt_text_stitle vacio, reglas para permitir toda salida o no "
 echo "cfg_allow_input_state=no "
-echo "$txt_text_title Estado de entrada selectivo con vacio o no "
+echo "$txt_text_stitle Estado de entrada selectivo con vacio o no "
 echo "cfg_allow_output_state=no "
-echo "$txt_text_title Estado de salida selectivo con vacio o no "
+echo "$txt_text_stitle Estado de salida selectivo con vacio o no "
 echo "cfg_allow_output_uid=no"
-echo "$txt_text_title vacio permite salida de paquetes de un USUARIO excepcional o no "
+echo "$txt_text_stitle vacio permite salida de paquetes de un USUARIO excepcional o no "
 echo "cfg_allow_output_gid=no"
-echo "$txt_text_title vacio permite salida de paquetes de un GRUPO excepcional o no "
+echo "$txt_text_stitle vacio permite salida de paquetes de un GRUPO excepcional o no "
 echo "cfg_allow_others_protocols=no "
-echo "$txt_text_title vacio para permitir otro PROTOCOLO-IP excepcional o no "
+echo "$txt_text_stitle vacio para permitir otro PROTOCOLO-IP excepcional o no "
 ####
 ####
 #### advance options in configurations file cfg
-echo "$txt_text_title Begin Variables $txt_text_title.......... .......... $txt_text_title.......... "
-echo "$txt_text_title Rellena Variables "
-echo "$txt_text_title Options "
-echo "$txt_text_title Otras Opciones, añadir con , y poner rangos con : "
+echo "$txt_text_stitle Begin Variables $txt_text_title.......... .......... $txt_text_title.......... "
+echo "$txt_text_stitle Rellena Variables "
+echo "$txt_text_stitle Options "
+echo "$txt_text_stitle Otras Opciones, añadir con , y poner rangos con : "
 echo "cfg_config_string_denied=.fb.com,.facebook.com,xxx.html "
-echo "$txt_text_title bloquea conexion con cadena de cabecera, si hay varios, seperados por comas "
+echo "$txt_text_stitle bloquea conexion con cadena de cabecera, si hay varios, seperados por comas "
 echo "cfg_config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net "
-echo "$txt_text_title permite conexion con cadena de cabecera, si hay varios, seperados por comas "
+echo "$txt_text_stitle permite conexion con cadena de cabecera, si hay varios, seperados por comas "
 echo "cfg_config_mac_whitelist=d4:12:43:01:36:2e "
-echo "$txt_text_title permitir estos MAC-ADDRESS excepcionales "
+echo "$txt_text_stitle permitir estos MAC-ADDRESS excepcionales "
 echo "cfg_config_mac_blacklist=d4:12:43:01:36:2e "
-echo "$txt_text_title deniega estos MAC-ADDRESS excepcionales "
+echo "$txt_text_stitle deniega estos MAC-ADDRESS excepcionales "
 echo "cfg_config_net_whitelist=wesnoth.org,sf.net,deb.debian.org "
-echo "$txt_text_title permitir estos HOST/IP excepcionales "
+echo "$txt_text_stitle permitir estos HOST/IP excepcionales "
 echo "cfg_config_net_blacklist=facebook.com,www.facebook.com "
-echo "$txt_text_title deniega estos HOST/IP excepcionales "
+echo "$txt_text_stitle deniega estos HOST/IP excepcionales "
 echo "cfg_config_input_bandwidth=12512 "
-echo "$txt_text_title maximo entrada de ancho de banda en kbit/sec para todos "
+echo "$txt_text_stitle maximo entrada de ancho de banda en kbit/sec para todos "
 echo "cfg_config_output_bandwidth=512 "
-echo "$txt_text_title maximo salida de ancho de banda en kbits/sec para cada ip "
+echo "$txt_text_stitle maximo salida de ancho de banda en kbits/sec para cada ip "
 echo "cfg_config_input_maxconnect=72 "
-echo "$txt_text_title maximo numero de conexiones simultaneas de entrada "
+echo "$txt_text_stitle maximo numero de conexiones simultaneas de entrada "
 echo "cfg_config_output_maxconnect=72 "
-echo "$txt_text_title maximo numero de conexiones simultaneas de salida "
+echo "$txt_text_stitle maximo numero de conexiones simultaneas de salida "
 echo "cfg_config_gateway_ip4=0/0"
-echo "$txt_text_title servidor puerta de enlace para tu red. Ejemplo: 192.168.0.0/24"
+echo "$txt_text_stitle servidor puerta de enlace para tu red. Ejemplo: 192.168.0.0/24"
 echo "cfg_config_gateway_ip6=::/0"
-echo "$txt_text_title server gateway for lan example: ::1"
+echo "$txt_text_stitle server gateway for lan example: ::1"
 echo "cfg_config_dmz_ip4=192.168.1.7 "
-echo "$txt_text_title servidor ip lan para otras redes esternas, nat prerouting "
+echo "$txt_text_stitle servidor ip lan para otras redes esternas, nat prerouting "
 echo "cfg_config_dmz_ip6=d4:12:43:01:36:2e "
-echo "$txt_text_title servidor ip lan para otras redes esternas, nat prerouting "
+echo "$txt_text_stitle servidor ip lan para otras redes esternas, nat prerouting "
 echo "cfg_config_input_state=new,related,established "
-echo "$txt_text_title modificar con vacio o new,related,established,untracked,invalid "
+echo "$txt_text_stitle modificar con vacio o new,related,established,untracked,invalid "
 echo "cfg_config_output_state=new,related,established "
-echo "$txt_text_title modificar con vacio o new,related,established,untracked,invalid "
+echo "$txt_text_stitle modificar con vacio o new,related,established,untracked,invalid "
 echo "cfg_config_output_uid=root "
-echo "$txt_text_title permite salida de paquetes de este USUARIO excepcional "
+echo "$txt_text_stitle permite salida de paquetes de este USUARIO excepcional "
 echo "cfg_config_output_gid=root "
-echo "$txt_text_title permite salida de paquetes de este GRUPO excepcional "
+echo "$txt_text_stitle permite salida de paquetes de este GRUPO excepcional "
 echo "cfg_config_others_protocols=icmp,igmp "
-echo "$txt_text_title permitir otros protocolos desde /etc/protocols "
-echo "$txt_text_title NET CLIENT AND NET SERVER $txt_text_title "
-echo "$txt_text_title Red para conectar como cliente o server "
+echo "$txt_text_stitle permitir otros protocolos desde /etc/protocols "
+echo "$txt_text_stitle NET CLIENT AND NET SERVER $txt_text_stitle "
+echo "$txt_text_stitle Red para conectar como cliente o server "
 echo "cfg_config_ipv4_netclient=0/0 "
-echo "$txt_text_title la red cual cliente ipv4, todos es 0/0 "
+echo "$txt_text_stitle la red cual cliente ipv4, todos es 0/0 "
 echo "cfg_config_ipv4_netserver=0/0 "
-echo "$txt_text_title la red cual servidor ipv4, todos es 0/0 "
+echo "$txt_text_stitle la red cual servidor ipv4, todos es 0/0 "
 echo "cfg_config_ipv6_netclient=::/0 "
-echo "$txt_text_title la red cual cliente ipv6, todos es ::/0 "
+echo "$txt_text_stitle la red cual cliente ipv6, todos es ::/0 "
 echo "cfg_config_ipv6_netserver=::/0 "
-echo "$txt_text_title la red cual servidor ipv6, todos es ::/0 "
+echo "$txt_text_stitle la red cual servidor ipv6, todos es ::/0 "
 echo "$txt_text_title_title "
-echo "$txt_text_title FINAL .......... Opciones opcionales .......... .......... $txt_text_title "
+echo "$txt_text_stitle FINAL .......... Opciones opcionales .......... .......... $txt_text_stitle "
 ####
 ####
 exit ; fi
@@ -3149,59 +3149,59 @@ exit ; fi
 if [ "$cmd_first_option" == "template-mini-en" ]; then
 ####
 ####
-echo "$txt_text_title $cmd_shortdescription from $cmd_internal version $cmd_version $txt_text_title "
-echo "$txt_text_title BEGIN NECESARY $txt_text_title "
-echo "$txt_text_title  .......... BEGIN Necesary options .......... .......... $txt_text_title "
-echo "$txt_text_title NETFILTER $txt_text_title "
-echo "$txt_text_title the iptables firewall netfilter, choose one or two "
+echo "$txt_text_stitle $cmd_shortdescription from $cmd_internal version $cmd_version $txt_text_stitle "
+echo "$txt_text_stitle BEGIN NECESARY $txt_text_stitle "
+echo "$txt_text_stitle  .......... BEGIN Necesary options .......... .......... $txt_text_stitle "
+echo "$txt_text_stitle NETFILTER $txt_text_stitle "
+echo "$txt_text_stitle the iptables firewall netfilter, choose one or two "
 echo "cfg_allow_use_legacy=no "
-echo "$txt_text_title launch xtables, void to yes or type no "
+echo "$txt_text_stitle launch xtables, void to yes or type no "
 echo "cfg_allow_use_nft= "
-echo "$txt_text_title launch nftables, void to yes or type no "
-echo "$txt_text_title PROTOCOL IP $txt_text_title "
-echo "$txt_text_title ip protocol, modify with void or no "
+echo "$txt_text_stitle launch nftables, void to yes or type no "
+echo "$txt_text_stitle PROTOCOL IP $txt_text_stitle "
+echo "$txt_text_stitle ip protocol, modify with void or no "
 echo "cfg_allow_use_ipv4= "
-echo "$txt_text_title void to config firewall with ipv4 or no to dont configure ipv4 "
+echo "$txt_text_stitle void to config firewall with ipv4 or no to dont configure ipv4 "
 echo "cfg_allow_use_ipv6= "
-echo "$txt_text_title void to config firewall with ipv6 or no to dont configure ipv6 "
-echo "$txt_text_title CLIENT PORTS $txt_text_title "
-echo "$txt_text_title Client ports, add with ',' and join ranges with  : "
+echo "$txt_text_stitle void to config firewall with ipv6 or no to dont configure ipv6 "
+echo "$txt_text_stitle CLIENT PORTS $txt_text_stitle "
+echo "$txt_text_stitle Client ports, add with ',' and join ranges with  : "
 echo "cfg_client_port_tcp=http,https,http-alt,ssh "
-echo "$txt_text_title tcp ports for client "
+echo "$txt_text_stitle tcp ports for client "
 echo "cfg_client_port_udp=domain,domain-s,bootpc,bootps,ntp,https "
-echo "$txt_text_title udp ports for client "
-echo "$txt_text_title SERVER PORTS $txt_text_title "
-echo "$txt_text_title Server ports, add with ',' and join ranges with : "
+echo "$txt_text_stitle udp ports for client "
+echo "$txt_text_stitle SERVER PORTS $txt_text_stitle "
+echo "$txt_text_stitle Server ports, add with ',' and join ranges with : "
 echo "cfg_server_port_tcp=ssh "
-echo "$txt_text_title tcp ports for server "
+echo "$txt_text_stitle tcp ports for server "
 echo "cfg_server_port_udp= "
-echo "$txt_text_title udp ports for server "
-echo "$txt_text_title LOG TO SERVER PORTS $txt_text_title "
-echo "$txt_text_title or ULOG or LOG "
+echo "$txt_text_stitle udp ports for server "
+echo "$txt_text_stitle LOG TO SERVER PORTS $txt_text_stitle "
+echo "$txt_text_stitle or ULOG or LOG "
 echo "cfg_config_system_log=LOG"
-echo "$txt_text_title Log to server ports, add with ',' and join ranges with : "
+echo "$txt_text_stitle Log to server ports, add with ',' and join ranges with : "
 echo "cfg_server_log_port_tcp= "
-echo "$txt_text_title the tcp ports to log server "
+echo "$txt_text_stitle the tcp ports to log server "
 echo "cfg_server_log_port_udp= "
-echo "$txt_text_title the udp ports to log server "
-echo "$txt_text_title ALLOW MAXTRIES SHIELD $txt_text_title "
-echo "$txt_text_title Put one shield for ports to new connecting, with max ip to each hour "
+echo "$txt_text_stitle the udp ports to log server "
+echo "$txt_text_stitle ALLOW MAXTRIES SHIELD $txt_text_stitle "
+echo "$txt_text_stitle Put one shield for ports to new connecting, with max ip to each hour "
 echo "cfg_allow_shield_maxtries=no "
-echo "$txt_text_title void to allow one shield with max tries login in ssh for ip to each hour or no "
+echo "$txt_text_stitle void to allow one shield with max tries login in ssh for ip to each hour or no "
 echo "cfg_config_shield_maxtries=12 "
-echo "$txt_text_title modify shield with number max of tries to log in us ssh server for ip at each hour "
+echo "$txt_text_stitle modify shield with number max of tries to log in us ssh server for ip at each hour "
 echo "cfg_config_shield_port=22 "
-echo "$txt_text_title modify shield ssh chaging maxtries port ssh o several ports with comma separate "
-echo "$txt_text_title GENERAL RULES $txt_text_title "
-echo "$txt_text_title General rules in table "
+echo "$txt_text_stitle modify shield ssh chaging maxtries port ssh o several ports with comma separate "
+echo "$txt_text_stitle GENERAL RULES $txt_text_stitle "
+echo "$txt_text_stitle General rules in table "
 echo "cfg_allow_separate_rules= "
-echo "$txt_text_title Void to separate the rules for each port or no "
+echo "$txt_text_stitle Void to separate the rules for each port or no "
 echo "cfg_allow_close_log=no"
-echo "$txt_text_title Void to log save before close rule or no"
+echo "$txt_text_stitle Void to log save before close rule or no"
 echo "cfg_config_close_deny=DROP "
-echo "$txt_text_title choose close deny with or DROP or REJECT "
-echo "$txt_text_title END NECESARY $txt_text_title "
-echo "$txt_text_title .......... END Necesary options .......... .......... $txt_text_title "
+echo "$txt_text_stitle choose close deny with or DROP or REJECT "
+echo "$txt_text_stitle END NECESARY $txt_text_stitle "
+echo "$txt_text_stitle .......... END Necesary options .......... .......... $txt_text_stitle "
 ####
 ####
 exit ; fi
@@ -3215,173 +3215,173 @@ exit ; fi
 if [ "$cmd_first_option" == "template-full-en" ]; then
 ####
 ####
-echo "$txt_text_title $cmd_shortdescription from $cmd_internal version $cmd_version $txt_text_title "
-echo "$txt_text_title BEGIN NECESARY $txt_text_title "
-echo "$txt_text_title  .......... BEGIN Necesary options .......... .......... $txt_text_title "
-echo "$txt_text_title NETFILTER $txt_text_title "
-echo "$txt_text_title the iptables firewall netfilter, choose one or two "
+echo "$txt_text_stitle $cmd_shortdescription from $cmd_internal version $cmd_version $txt_text_stitle "
+echo "$txt_text_stitle BEGIN NECESARY $txt_text_stitle "
+echo "$txt_text_stitle  .......... BEGIN Necesary options .......... .......... $txt_text_stitle "
+echo "$txt_text_stitle NETFILTER $txt_text_stitle "
+echo "$txt_text_stitle the iptables firewall netfilter, choose one or two "
 echo "cfg_allow_use_legacy=no "
-echo "$txt_text_title launch xtables, void to yes or type no "
+echo "$txt_text_stitle launch xtables, void to yes or type no "
 echo "cfg_allow_use_nft= "
-echo "$txt_text_title launch nftables, void to yes or type no "
-echo "$txt_text_title PROTOCOL IP $txt_text_title "
-echo "$txt_text_title ip protocol, modify with void or no "
+echo "$txt_text_stitle launch nftables, void to yes or type no "
+echo "$txt_text_stitle PROTOCOL IP $txt_text_stitle "
+echo "$txt_text_stitle ip protocol, modify with void or no "
 echo "cfg_allow_use_ipv4= "
-echo "$txt_text_title void to config firewall with ipv4 or no to dont configure ipv4 "
+echo "$txt_text_stitle void to config firewall with ipv4 or no to dont configure ipv4 "
 echo "cfg_allow_use_ipv6= "
-echo "$txt_text_title void to config firewall with ipv6 or no to dont configure ipv6 "
-echo "$txt_text_title CLIENT PORTS $txt_text_title "
-echo "$txt_text_title Client ports, add with ',' and join ranges with  : "
+echo "$txt_text_stitle void to config firewall with ipv6 or no to dont configure ipv6 "
+echo "$txt_text_stitle CLIENT PORTS $txt_text_stitle "
+echo "$txt_text_stitle Client ports, add with ',' and join ranges with  : "
 echo "cfg_client_port_tcp=http,https,http-alt,ssh "
-echo "$txt_text_title tcp ports for client "
+echo "$txt_text_stitle tcp ports for client "
 echo "cfg_client_port_udp=domain,domain-s,bootpc,bootps,ntp,https "
-echo "$txt_text_title udp ports for client "
-echo "$txt_text_title SERVER PORTS $txt_text_title "
-echo "$txt_text_title Server ports, add with ',' and join ranges with : "
+echo "$txt_text_stitle udp ports for client "
+echo "$txt_text_stitle SERVER PORTS $txt_text_stitle "
+echo "$txt_text_stitle Server ports, add with ',' and join ranges with : "
 echo "cfg_server_port_tcp=ssh "
-echo "$txt_text_title tcp ports for server "
+echo "$txt_text_stitle tcp ports for server "
 echo "cfg_server_port_udp= "
-echo "$txt_text_title udp ports for server "
-echo "$txt_text_title LOG TO SERVER PORTS $txt_text_title "
-echo "$txt_text_title or ULOG or LOG "
+echo "$txt_text_stitle udp ports for server "
+echo "$txt_text_stitle LOG TO SERVER PORTS $txt_text_stitle "
+echo "$txt_text_stitle or ULOG or LOG "
 echo "cfg_config_system_log=LOG"
-echo "$txt_text_title Log to server ports, add with ',' and join ranges with : "
+echo "$txt_text_stitle Log to server ports, add with ',' and join ranges with : "
 echo "cfg_server_log_port_tcp= "
-echo "$txt_text_title the tcp ports to log server "
+echo "$txt_text_stitle the tcp ports to log server "
 echo "cfg_server_log_port_udp= "
-echo "$txt_text_title the udp ports to log server "
-echo "$txt_text_title ALLOW MAXTRIES SHIELD $txt_text_title "
-echo "$txt_text_title Put one shield for ports to new connecting, with max ip to each hour "
+echo "$txt_text_stitle the udp ports to log server "
+echo "$txt_text_stitle ALLOW MAXTRIES SHIELD $txt_text_stitle "
+echo "$txt_text_stitle Put one shield for ports to new connecting, with max ip to each hour "
 echo "cfg_allow_shield_maxtries=no "
-echo "$txt_text_title void to allow one shield with max tries login in ssh for ip to each hour or no "
+echo "$txt_text_stitle void to allow one shield with max tries login in ssh for ip to each hour or no "
 echo "cfg_config_shield_maxtries=12 "
-echo "$txt_text_title modify shield with number max of tries to log in us ssh server for ip at each hour "
+echo "$txt_text_stitle modify shield with number max of tries to log in us ssh server for ip at each hour "
 echo "cfg_config_shield_port=22 "
-echo "$txt_text_title modify shield ssh chaging maxtries port ssh o several ports with comma separate "
-echo "$txt_text_title GENERAL RULES $txt_text_title "
-echo "$txt_text_title General rules in table "
+echo "$txt_text_stitle modify shield ssh chaging maxtries port ssh o several ports with comma separate "
+echo "$txt_text_stitle GENERAL RULES $txt_text_stitle "
+echo "$txt_text_stitle General rules in table "
 echo "cfg_allow_separate_rules= "
-echo "$txt_text_title Void to separate the rules for each port or no "
+echo "$txt_text_stitle Void to separate the rules for each port or no "
 echo "cfg_allow_close_log=no"
-echo "$txt_text_title Void to log save before close rule or no"
+echo "$txt_text_stitle Void to log save before close rule or no"
 echo "cfg_config_close_deny=DROP "
-echo "$txt_text_title choose close deny with or DROP or REJECT "
-echo "$txt_text_title END NECESARY $txt_text_title "
-echo "$txt_text_title .......... END Necesary options .......... .......... $txt_text_title "
+echo "$txt_text_stitle choose close deny with or DROP or REJECT "
+echo "$txt_text_stitle END NECESARY $txt_text_stitle "
+echo "$txt_text_stitle .......... END Necesary options .......... .......... $txt_text_stitle "
 ####
 ####
 #### advance options in configurations file cfg
-echo "$txt_text_title BEGIN OPTIONAL $txt_text_title "
-echo "$txt_text_title .......... BEGIN Optional options .......... .......... $txt_text_title "
-echo "$txt_text_title choose void or no $txt_text_title "
-echo "$txt_text_title Allow Other Options,  modify with void, or no "
+echo "$txt_text_stitle BEGIN OPTIONAL $txt_text_stitle "
+echo "$txt_text_stitle .......... BEGIN Optional options .......... .......... $txt_text_stitle "
+echo "$txt_text_stitle choose void or no $txt_text_stitle "
+echo "$txt_text_stitle Allow Other Options,  modify with void, or no "
 echo "cfg_allow_string_dropped=no "
-echo "$txt_text_title void to if drop string, or no to no "
+echo "$txt_text_stitle void to if drop string, or no to no "
 echo "cfg_allow_string_allowed=no "
-echo "$txt_text_title void to if allow string, or no to no "
+echo "$txt_text_stitle void to if allow string, or no to no "
 echo "cfg_allow_mac_whitelist=no "
-echo "$txt_text_title void to allow some exceptional MAC-ADDRESS or no "
+echo "$txt_text_stitle void to allow some exceptional MAC-ADDRESS or no "
 echo "cfg_allow_mac_blacklist=no "
-echo "$txt_text_title void to drop some excepcional MAC-ADDRESS or no "
+echo "$txt_text_stitle void to drop some excepcional MAC-ADDRESS or no "
 echo "cfg_allow_net_whitelist=no "
-echo "$txt_text_title void to allow some exceptional HOST/IP or no "
+echo "$txt_text_stitle void to allow some exceptional HOST/IP or no "
 echo "cfg_allow_net_blacklist=no "
-echo "$txt_text_title void to drop some excepcional HOST/IP or no "
+echo "$txt_text_stitle void to drop some excepcional HOST/IP or no "
 echo "cfg_allow_input_bandwidth=no "
-echo "$txt_text_title void to limit bandwidth input in kbits/sec for all sources or no "
+echo "$txt_text_stitle void to limit bandwidth input in kbits/sec for all sources or no "
 echo "cfg_allow_output_bandwidth=no "
-echo "$txt_text_title void to limit bandwidth output in kbits/sec for each destination or no "
+echo "$txt_text_stitle void to limit bandwidth output in kbits/sec for each destination or no "
 echo "cfg_allow_input_maxconnect=no "
-echo "$txt_text_title void to limit max number for input simultaneous connections or no "
+echo "$txt_text_stitle void to limit max number for input simultaneous connections or no "
 echo "cfg_allow_output_maxconnect=no "
-echo "$txt_text_title void to limit max number for output simultaneous connections or no "
+echo "$txt_text_stitle void to limit max number for output simultaneous connections or no "
 echo "cfg_allow_input_ping=no "
-echo "$txt_text_title void to allow RECIVE PING or no "
+echo "$txt_text_stitle void to allow RECIVE PING or no "
 echo "cfg_allow_output_ping=no "
-echo "$txt_text_title void to allow SEND PING or no "
+echo "$txt_text_stitle void to allow SEND PING or no "
 echo "cfg_allow_forward_ip4=no "
-echo "$txt_text_title void to yes to forward ip4, or no to no "
+echo "$txt_text_stitle void to yes to forward ip4, or no to no "
 echo "cfg_allow_forward_ip6=no "
-echo "$txt_text_title void to allow ip forward ip6 or no "
+echo "$txt_text_stitle void to allow ip forward ip6 or no "
 echo "cfg_allow_gateway_ip4=no "
-echo "$txt_text_title void to allow gateway ip4 to others nets or no "
+echo "$txt_text_stitle void to allow gateway ip4 to others nets or no "
 echo "cfg_allow_gateway_ip6=no "
-echo "$txt_text_title void to allow gateway ip6 to other nets or no "
+echo "$txt_text_stitle void to allow gateway ip6 to other nets or no "
 echo "cfg_allow_dmz_ip4=no "
-echo "$txt_text_title void to allow dmz ip4 to one host local or no "
+echo "$txt_text_stitle void to allow dmz ip4 to one host local or no "
 echo "cfg_allow_dmz_ip6=no "
-echo "$txt_text_title void to allow dmz ip6 to one host local or no "
+echo "$txt_text_stitle void to allow dmz ip6 to one host local or no "
 echo "cfg_allow_input_all=no "
-echo "$txt_text_title void when the rules are to allow input to all or no "
+echo "$txt_text_stitle void when the rules are to allow input to all or no "
 echo "cfg_allow_output_all=no "
-echo "$txt_text_title void when the rules are to allow output to all or no "
+echo "$txt_text_stitle void when the rules are to allow output to all or no "
 echo "cfg_allow_input_state=no "
-echo "$txt_text_title Selective Input state with void or no "
+echo "$txt_text_stitle Selective Input state with void or no "
 echo "cfg_allow_output_state=no "
-echo "$txt_text_title Selective Output state with void or no "
+echo "$txt_text_stitle Selective Output state with void or no "
 echo "cfg_allow_output_uid=no "
-echo "$txt_text_title void to allow excepcional USER or no "
+echo "$txt_text_stitle void to allow excepcional USER or no "
 echo "cfg_allow_output_gid=no "
-echo "$txt_text_title void to allow excepcional GROUP or no "
+echo "$txt_text_stitle void to allow excepcional GROUP or no "
 echo "cfg_allow_others_protocols=no "
-echo "$txt_text_title void to allow other POTOCOL-IP excepcional or no"
+echo "$txt_text_stitle void to allow other POTOCOL-IP excepcional or no"
 ####
 ####
 ####  advance options in configurations file cfg
-echo "$txt_text_title Begin Variables $txt_text_title.......... .......... $txt_text_title.......... "
-echo "$txt_text_title Fill Variables "
-echo "$txt_text_title Options "
-echo "$txt_text_title Other Options, add with , and join ranges with : "
+echo "$txt_text_stitle Begin Variables $txt_text_title.......... .......... $txt_text_title.......... "
+echo "$txt_text_stitle Fill Variables "
+echo "$txt_text_stitle Options "
+echo "$txt_text_stitle Other Options, add with , and join ranges with : "
 echo "cfg_config_string_denied=.fb.com,.facebook.com,xxx.html "
-echo "$txt_text_title drop connection with header string, if several, comma separate "
+echo "$txt_text_stitle drop connection with header string, if several, comma separate "
 echo "cfg_config_string_allowed=one-string-that-like-how-a-passord,sourceforge.net "
-echo "$txt_text_title allow connection with header string, if several, comma separate "
+echo "$txt_text_stitle allow connection with header string, if several, comma separate "
 echo "cfg_config_input_bandwidth=12512 "
-echo "$txt_text_title max input bandwidth in kbits/sec for all "
+echo "$txt_text_stitle max input bandwidth in kbits/sec for all "
 echo "cfg_config_output_bandwidth=512 "
-echo "$txt_text_title max output bandwidh in kbits/sec for each ip "
+echo "$txt_text_stitle max output bandwidh in kbits/sec for each ip "
 echo "cfg_config_input_maxconnect=72 "
-echo "$txt_text_title max number for input simultaneous connections "
+echo "$txt_text_stitle max number for input simultaneous connections "
 echo "cfg_config_output_maxconnect=72 "
-echo "$txt_text_title max number for output simultaneous connections "
+echo "$txt_text_stitle max number for output simultaneous connections "
 echo "cfg_config_mac_whitelist=d4:12:43:01:36:2e "
-echo "$txt_text_title allow this excepcitonal MAC-ADRESS "
+echo "$txt_text_stitle allow this excepcitonal MAC-ADRESS "
 echo "cfg_config_mac_blacklist=d4:12:43:01:36:2e "
-echo "$txt_text_title drop this excepcional MAC-ADDRESS "
+echo "$txt_text_stitle drop this excepcional MAC-ADDRESS "
 echo "cfg_config_net_whitelist=wesnoth.org,sf.net,deb.debian.org "
-echo "$txt_text_title allow this excepcitonal HOST/IP "
+echo "$txt_text_stitle allow this excepcitonal HOST/IP "
 echo "cfg_config_net_blacklist=facebook.com,www.facebook.com "
-echo "$txt_text_title drop this excepcional HOST/IP )"
+echo "$txt_text_stitle drop this excepcional HOST/IP )"
 echo "cfg_config_gateway_ip4=0/0"
-echo "$txt_text_title server gateway for lan example: 192.168.0.0/24"
+echo "$txt_text_stitle server gateway for lan example: 192.168.0.0/24"
 echo "cfg_config_gateway_ip6=::/0"
-echo "$txt_text_title server gateway for lan example: ::1"
+echo "$txt_text_stitle server gateway for lan example: ::1"
 echo "cfg_config_dmz_ip4=192.168.1.7 "
-echo "$txt_text_title ip server ip lan to other external nets, nat prerouting "
+echo "$txt_text_stitle ip server ip lan to other external nets, nat prerouting "
 echo "cfg_config_dmz_ip6=d4:12:43:01:36:2e "
-echo "$txt_text_title ip server ip lan to other external nets, nat prerouting "
+echo "$txt_text_stitle ip server ip lan to other external nets, nat prerouting "
 echo "cfg_config_input_state=new,related,established "
-echo "$txt_text_title void for all or new,related,established,untracked,invalid "
+echo "$txt_text_stitle void for all or new,related,established,untracked,invalid "
 echo "cfg_config_output_state=new,related,established "
-echo "$txt_text_title void for all or new,related,established,untracked,invalid "
+echo "$txt_text_stitle void for all or new,related,established,untracked,invalid "
 echo "cfg_config_output_uid=root "
-echo "$txt_text_title allow out packages excepcional from this USER excepcional "
+echo "$txt_text_stitle allow out packages excepcional from this USER excepcional "
 echo "cfg_config_output_gid=root "
-echo "$txt_text_title allow out packages excepcional from this GROUP excepcional "
+echo "$txt_text_stitle allow out packages excepcional from this GROUP excepcional "
 echo "cfg_config_others_protocols=icmp,igmp "
-echo "$txt_text_title allow others protocols from /etc/protocolos "
-echo "$txt_text_title NET CLIENT AND NET SERVER $txt_text_title "
-echo "$txt_text_title Net to connect likes client or server "
+echo "$txt_text_stitle allow others protocols from /etc/protocolos "
+echo "$txt_text_stitle NET CLIENT AND NET SERVER $txt_text_stitle "
+echo "$txt_text_stitle Net to connect likes client or server "
 echo "cfg_config_ipv4_netclient=0/0 "
-echo "$txt_text_title the net to client ipv4, all is 0/0 "
+echo "$txt_text_stitle the net to client ipv4, all is 0/0 "
 echo "cfg_config_ipv4_netserver=0/0 "
-echo "$txt_text_title the net to server ipv4, all is 0/0 "
+echo "$txt_text_stitle the net to server ipv4, all is 0/0 "
 echo "cfg_config_ipv6_netclient=::/0 "
-echo "$txt_text_title the net to client ipv6, all is ::/0 "
+echo "$txt_text_stitle the net to client ipv6, all is ::/0 "
 echo "cfg_config_ipv6_netserver=::/0 "
-echo "$txt_text_title the net to server ipv6, all is ::/0 "
+echo "$txt_text_stitle the net to server ipv6, all is ::/0 "
 echo "$txt_text_title_title "
-echo "$txt_text_title .......... END Optional options .......... .......... $txt_text_title"
+echo "$txt_text_stitle .......... END Optional options .......... .......... $txt_text_title"
 ####
 ####
 exit ; fi
@@ -3396,7 +3396,7 @@ exit ; fi
 if [ "$cmd_first_option" == "autosave" ] && [ "$cfg_allow_autosave" == "$NULL" ]; then 
 ####
 ####
-echo "$txt_text_title [ autosave ] [ firewall saved ] [ autosave-fwiptables ]" ;
+echo "$txt_text_stitle [ autosave ] [ firewall saved ] [ autosave-fwiptables ]" ;
 $cmd_internal save autosave-fwiptables &> /dev/null
 ####
 ####
@@ -3489,7 +3489,7 @@ value_count="$(("$value_second"-"$value_first+1"))"
 if [ ! -n "$value_first" ];   then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_second" ];  then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_count" ];   then echo; echo "$code_error" ; exit ; fi
-echo "$txt_text_title [ code ] [ option: "$cmd_second_option" ] [ show $value_count lines ] \
+echo "$txt_text_stitle [ code ] [ option: "$cmd_second_option" ] [ show $value_count lines ] \
 [ from the "$value_first" line number to "$value_second" line number ]"
 $cmd_command_cat  $cmd_internal | head -n $value_second | tail -n $value_count
 ####
@@ -3512,7 +3512,7 @@ echo "$txt_text_title_info [ folder ] [ $cmd_default_directory_custom ]"
 echo "$txt_text_title"
 $cmd_command_tree $cmd_default_directory_custom
 echo "$txt_text_title"
-echo "$txt_text_title [ OK CFG FILES NAMES ] [ Use: $cmd_internal load-custom file ]"
+echo "$txt_text_stitle [ OK CFG FILES NAMES ] [ Use: $cmd_internal load-custom file ]"
 ####
 ####
 exit; fi
@@ -3594,7 +3594,7 @@ exit; fi
 if   [ "$cmd_first_option" == "firewall-wallcontrol" ]; then
 ####
 ####
-echo "$txt_text_title | firewall-wallcontrol | $cmd_internal firewall-wallcontrol | $txt_text_md"
+echo "$txt_text_stitle | firewall-wallcontrol | $cmd_internal firewall-wallcontrol | $txt_text_md"
 echo "$txt_text_md_md stop . remove the rules iptables, and save it to then if continue $txt_text_md"
 echo "$txt_text_md_md continue. reset and load latest rules iptables loaded $txt_text_md"
 echo "$txt_text_md_md load . reset rules iptables actually $txt_text_md"
@@ -3629,7 +3629,7 @@ exit; fi
 if   [ "$cmd_first_option" == "firewall-listconceptual" ]; then
 ####
 ####
-echo "$txt_text_title | firewall-listconceptual | $cmd_internal firewall-listconceptual $txt_text_md"
+echo "$txt_text_stitle | firewall-listconceptual | $cmd_internal firewall-listconceptual $txt_text_md"
 echo "$txt_text_md_md ls4 . list filter rules ipv4 $txt_text_md"
 echo "$txt_text_md_md ls6 . list filter rules ipv6 $txt_text_md"
 echo "$txt_text_md_md list4 . list filter rules ipv4 $txt_text_md"
@@ -3661,7 +3661,7 @@ exit; fi
 if   [ "$cmd_first_option" == "firewall-listnumeral" ]; then
 ####
 ####
-echo "$txt_text_title | firewall-listnumeral | $cmd_internal firewall-listnumeral | $txt_text_md"
+echo "$txt_text_stitle | firewall-listnumeral | $cmd_internal firewall-listnumeral | $txt_text_md"
 echo "$txt_text_md_md lsn4 . list filter rules ipv4 with numbers $txt_text_md"
 echo "$txt_text_md_md lsn6 . list filter rules ipv6 with numbers $txt_text_md"
 echo "$txt_text_md_md listn4 . list filter rules ipv4 with numbers $txt_text_md"
@@ -3693,7 +3693,7 @@ exit; fi
 if   [ "$cmd_first_option" == "firewall-wallcustom" ]; then
 ####
 ####
-echo "$txt_text_title | firewall-wallcustom | $cmd_internal firewall-wallcustom | $txt_text_md"
+echo "$txt_text_stitle | firewall-wallcustom | $cmd_internal firewall-wallcustom | $txt_text_md"
 echo "$txt_text_md_md new-full-custom . create new full config in english $txt_text_md"
 echo "$txt_text_md_md new-mini-custom . create new mini config in english $txt_text_md"
 echo "$txt_text_md_md new-tiny-custom . create new tiny config in english $txt_text_md"
@@ -3723,7 +3723,7 @@ exit; fi
 if   [ "$cmd_first_option" == "firewall-wallutils" ]; then
 ####
 ####
-echo "$txt_text_title | firewall-wallutils | $cmd_internal firewall-wallutils | $txt_text_md"
+echo "$txt_text_stitle | firewall-wallutils | $cmd_internal firewall-wallutils | $txt_text_md"
 echo "$txt_text_md_md preferences-read . show the preferences $txt_text_md"
 echo "$txt_text_md_md preferences-edit . modify the preferences $txt_text_md"
 echo "$txt_text_md_md preferences-regen . recover the initials preferences $txt_text_md"
@@ -3896,7 +3896,7 @@ if [ "$cmd_first_option" == "expert" ] || \
 [ "$cmd_first_option" == "options-expert" ]; then
 ####
 ####
-echo "$txt_text_title | $cmd_internal expert | Each expert only works Without optional output $txt_text_md "
+echo "$txt_text_stitle | $cmd_internal expert | Each expert only works Without optional output $txt_text_md "
 echo "$txt_text_md_md expert-browser-web . browse one link web $txt_text_md "
 echo "$txt_text_md_md expert-sockets-ss . show sockets with ss $txt_text_md "
 echo "$txt_text_md_md expert-sockets-netstat . show sockets with netstat $txt_text_md "
@@ -3980,7 +3980,7 @@ exit; fi
 if   [ "$cmd_first_option" == "optional-output" ]; then
 ####
 ####
-echo "$txt_text_title | optional-output | $cmd_internal optional-ouptut | $txt_text_md"
+echo "$txt_text_stitle | optional-output | $cmd_internal optional-ouptut | $txt_text_md"
 echo "$txt_text_md_md i . output in info text $txt_text_md"
 echo "$txt_text_md_md t . output in terminal text $txt_text_md"
 echo "$txt_text_md_md n . output in terminal text narrowtxt (compresed spaces) $txt_text_md"
@@ -4240,29 +4240,29 @@ if [ "$cmd_first_option" == "list-alltables" ]; then
 ####
 ####
 echo "$txt_text_title_info [ List all rules ] "
-echo; echo; echo "$txt_text_title LIST ARPTABLES ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST ARPTABLES ###" ; echo
 $cmd_internal list-arptables 
-echo; echo; echo "$txt_text_title LIST EBTABLES ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST EBTABLES ###" ; echo
 $cmd_internal list-ebtables
-echo; echo; echo "$txt_text_title LIST FILTER IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST FILTER IP4 TABLE ###" ; echo
 $cmd_internal list-filter4
-echo; echo; echo "$txt_text_title LIST FILTER IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST FILTER IP6 TABLE ###" ; echo
 $cmd_internal list-filter6
-echo; echo; echo "$txt_text_title LIST NAT IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST NAT IP4 TABLE ###" ; echo
 $cmd_internal list-nat4
-echo; echo; echo "$txt_text_title LIST NAT IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST NAT IP6 TABLE ###" ; echo
 $cmd_internal list-nat6
-echo; echo; echo "$txt_text_title LIST SECURITY IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST SECURITY IP4 TABLE ###" ; echo
 $cmd_internal list-security4
-echo; echo; echo "$txt_text_title LIST SECURITY IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST SECURITY IP6 TABLE ###" ; echo
 $cmd_internal list-security6
-echo; echo; echo "$txt_text_title LIST RAW IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST RAW IP4 TABLE ###" ; echo
 $cmd_internal list-raw4
-echo; echo; echo "$txt_text_title LIST RAW IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST RAW IP6 TABLE ###" ; echo
 $cmd_internal list-raw6
-echo; echo; echo "$txt_text_title LIST MANGLE IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST MANGLE IP4 TABLE ###" ; echo
 $cmd_internal list-mangle4
-echo; echo; echo "$txt_text_title LIST MANGLE IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST MANGLE IP6 TABLE ###" ; echo
 $cmd_internal list-mangle6
 echo 
 ####
@@ -4279,29 +4279,29 @@ if [ "$cmd_first_option" == "listn-alltables" ]; then
 ####
 ####
 echo "$txt_text_title_info [ List all rules ] "
-echo; echo; echo "$txt_text_title LIST EBTABLES ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST EBTABLES ###" ; echo
 $cmd_internal list-ebtables
-echo; echo; echo "$txt_text_title LIST ARPTABLES ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST ARPTABLES ###" ; echo
 $cmd_internal list-arptables
-echo; echo; echo "$txt_text_title LIST FILTER IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST FILTER IP4 TABLE ###" ; echo
 $cmd_internal listn-filter4
-echo; echo; echo "$txt_text_title LIST FILTER IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST FILTER IP6 TABLE ###" ; echo
 $cmd_internal listn-filter6
-echo; echo; echo "$txt_text_title LIST NAT IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST NAT IP4 TABLE ###" ; echo
 $cmd_internal listn-nat4
-echo; echo; echo "$txt_text_title LIST NAT IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST NAT IP6 TABLE ###" ; echo
 $cmd_internal listn-nat6
-echo; echo; echo "$txt_text_title LIST SECURITY IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST SECURITY IP4 TABLE ###" ; echo
 $cmd_internal listn-security4
-echo; echo; echo "$txt_text_title LIST SECURITY IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST SECURITY IP6 TABLE ###" ; echo
 $cmd_internal listn-security6
-echo; echo; echo "$txt_text_title LIST RAW IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST RAW IP4 TABLE ###" ; echo
 $cmd_internal listn-raw4
-echo; echo; echo "$txt_text_title LIST RAW IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST RAW IP6 TABLE ###" ; echo
 $cmd_internal listn-raw6
-echo; echo; echo "$txt_text_title LIST MANGLE IP4 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST MANGLE IP4 TABLE ###" ; echo
 $cmd_internal listn-mangle4
-echo; echo; echo "$txt_text_title LIST MANGLE IP6 TABLE ###" ; echo
+echo; echo; echo "$txt_text_stitle LIST MANGLE IP6 TABLE ###" ; echo
 $cmd_internal listn-mangle6
 echo
 ####
@@ -5261,7 +5261,7 @@ if [ "$cmd_first_option" == "names" ]; then
 ####
 ####
 echo "$txt_text_title_info [ list configs files saved in standard format ]"
-echo "$txt_text_title $folder [ $cmd_default_directory_control ]"
+echo "$txt_text_stitle $folder [ $cmd_default_directory_control ]"
 echo 
 echo "$txt_text_title_info [ Listing firewall names, each one with 6 files ]"
 echo "$txt_text_title_info [ ebtables-arptables-legacy4-legacy6-nft4-nft6  ]"
@@ -5395,13 +5395,13 @@ if   [ "$cmd_first_option" == "ip-forward" ];  then
 ####
 ####
 if   [ "$cmd_second_option" == "$NULL" ]; then
-echo "$txt_text_title [ $cmd_first_option ]"
-echo "$txt_text_title launch: fwiptables ip-forward [ list | on | off ]" ; exit ; fi
+echo "$txt_text_stitle [ $cmd_first_option ]"
+echo "$txt_text_stitle launch: fwiptables ip-forward [ list | on | off ]" ; exit ; fi
 ####
 ####
 if   [ "$cmd_second_option" == "list" ]; then
 echo "$txt_text_title_info  [ Show ip forwading in kernel ] "
-echo "$txt_text_title [ Actived 1 or deactived 0 ] [ ipforwading with sysctl ]"
+echo "$txt_text_stitle [ Actived 1 or deactived 0 ] [ ipforwading with sysctl ]"
 $cmd_command_sysctl -a | $cmd_command_grep -i  forwarding ; exit ; fi
 ####
 ####
@@ -5417,7 +5417,7 @@ for a in $($cmd_command_sysctl -a | $cmd_command_grep -i  forwarding | $cmd_comm
 do $cmd_command_sysctl -w $a=0 ; done ; exit; fi
 ####
 ####
-echo "$txt_text_title launch: fwiptables ip-forward [ list | on | off ]"
+echo "$txt_text_stitle launch: fwiptables ip-forward [ list | on | off ]"
 ####
 ####
 exit ; fi
@@ -5433,15 +5433,15 @@ if [ "$cmd_first_option" == "download" ] ; then
 ####
 echo "$txt_text_title_info [ $cmd_internal download ] [ download md ] "
 echo
-echo "$txt_text_title the last version from fwiptables. Firewall With iptables"
+echo "$txt_text_stitle the last version from fwiptables. Firewall With iptables"
 echo
-echo "$txt_text_title [ Link ] [ Download web link from sourceforge.com ] "
+echo "$txt_text_stitle [ Link ] [ Download web link from sourceforge.com ] "
 echo "$cmd_web_download_sourceforge"
 echo
-echo "$txt_text_title [ Link ] [ Download web link from github.com ] "
+echo "$txt_text_stitle [ Link ] [ Download web link from github.com ] "
 echo "$cmd_web_download_github"
 echo 
-echo "$txt_text_title [ Link ] [ Download web link from git.devuan.org ] "
+echo "$txt_text_stitle [ Link ] [ Download web link from git.devuan.org ] "
 echo "$cmd_web_download_devuan"
 echo 
 ####
@@ -5474,7 +5474,7 @@ if [ "$cmd_first_option" == "install" ]; then
 ####
 ####
 #### message
-echo "$txt_text_title Waiting several seconds, while create new configuration"
+echo "$txt_text_stitle Waiting several seconds, while create new configuration"
 #### 
 #### 
 ####  copy
@@ -5600,7 +5600,7 @@ echo "Description: $cmd_longdescription" &>> $cmd_default_directory_debian/deb/D
 #### echo " $cmd_longdescription ."  &>> $cmd_default_directory_debian/deb/DEBIAN/control
 #### architecture detect, only for shell script
 if [ "$cmd_format" != "Bourne-Again_shell_script," ]
-then echo "$txt_text_title the $cmd_filename is not Bourne-Again_shell_script," ; exit ; fi
+then echo "$txt_text_stitle the $cmd_filename is not Bourne-Again_shell_script," ; exit ; fi
 #### it does the debian package noarch
 rm $cmd_default_directory_debian/$cmd_name-$cmd_version-noarch.deb &> /dev/null
 $cmd_command_dpkg -b $cmd_default_directory_debian/deb/ $cmd_default_directory_debian/$cmd_name-$cmd_version-noarch.deb && \
@@ -5625,7 +5625,7 @@ echo "$txt_text_title_info  [ resolve the location to one ip or host ] "
 echo ; case $cmd_command_geoiplookup in "$NULL")
 echo "$txt_text_md $txt_text_fail [ Install geoiplookup command ]" ; exit  ;; esac
 case "$cmd_second_option" in "$NULL")
-echo "$txt_text_title Selecting host geoip to fast.com for default"
+echo "$txt_text_stitle Selecting host geoip to fast.com for default"
 trazador="fast.com" ;; *) trazador="$cmd_second_option" ;; esac
 echo "$txt_text_title_ok [ geoiplookup -i $trazador ]"
 $cmd_command_geoiplookup -i $trazador
@@ -5700,7 +5700,7 @@ echo "$txt_text_title_info \
 [ Show license from git sourceforge for $cmd_internal ] "
 ####
 if [ "$cmd_command_curl" == "$NULL" ]; then
-echo "$txt_text_title Install curl to download/install latest version"; fi
+echo "$txt_text_stitle Install curl to download/install latest version"; fi
 ####
 echo "license text for $cmd_first_option downloading"
 echo
@@ -5724,7 +5724,7 @@ echo "$txt_text_title_info \
 [ Show license from git sourceforge for $cmd_internal ] "
 ####
 if [ "$cmd_command_curl" == "$NULL" ]; then
-echo "$txt_text_title Install curl to download/install latest version"; fi
+echo "$txt_text_stitle Install curl to download/install latest version"; fi
 ####
 echo "license text for $cmd_first_option downloading"
 echo
@@ -5846,16 +5846,16 @@ if   [ "$cmd_first_option" == "expert-show-newversion" ]; then
 ####
 ####
 if [ "$cmd_command_curl" == "$NULL" ]; then
-echo "$txt_text_title Install curl to show stable latest version"; fi
+echo "$txt_text_stitle Install curl to show stable latest version"; fi
 ####
 #### actually
 ####
-echo "$txt_text_title Show the version for fwiptables actually installed:"
+echo "$txt_text_stitle Show the version for fwiptables actually installed:"
 $cmd_internal version | $cmd_command_grep -E -i "version"
 ####
 #### latest stable
 ####
-echo "$txt_text_title Show the version for fwiptables stable latest:"
+echo "$txt_text_stitle Show the version for fwiptables stable latest:"
 descarga="$cmd_default_cache_basenecesary/$cmd_get_date-fwiptables-latest"
 $cmd_command_curl $cmd_web_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
@@ -5864,7 +5864,7 @@ rm $descarga
 ####
 #### latest unstable
 ####
-echo "$txt_text_title Show the version for fwiptables unstable latest:"
+echo "$txt_text_stitle Show the version for fwiptables unstable latest:"
 descarga="$cmd_default_cache_basenecesary/$cmd_get_date-fwiptables-stable"
 $cmd_command_curl $cmd_web_git_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
@@ -5884,10 +5884,10 @@ if   [ "$cmd_first_option" == "expert-upgrade-estable" ] || [ "$cmd_first_option
 ####
 ####
 if [ "$cmd_command_curl" == "$NULL" ]; then
-echo "$txt_text_title Install curl to download and to install stable latest version"; fi
+echo "$txt_text_stitle Install curl to download and to install stable latest version"; fi
 ####
 ####
-echo "$txt_text_title Downloading fwiptables stable latest"
+echo "$txt_text_stitle Downloading fwiptables stable latest"
 descarga="$cmd_default_directory_upgrade/$cmd_get_date-fwiptables-stable-latest"
 rm $descarga &> /dev/null
 $cmd_command_curl $cmd_web_download_sourceforge -s -L -o $descarga || echo "Without internet" \
@@ -5904,10 +5904,10 @@ if   [ "$cmd_first_option" == "expert-upgrade-unstable" ]; then
 ####
 ####
 if [ "$cmd_command_curl" == "$NULL" ]; then
-echo "$txt_text_title Install curl to download and to install unstable latest version"; fi
+echo "$txt_text_stitle Install curl to download and to install unstable latest version"; fi
 ####
 ####
-echo "$txt_text_title Downloading fwiptables development latest"
+echo "$txt_text_stitle Downloading fwiptables development latest"
 descarga="$cmd_default_directory_upgrade/$cmd_get_date-fwiptables-unstable-latest"
 rm $descarga  &> /dev/null
 $cmd_command_curl $cmd_web_git_sourceforge -s -L -o $descarga || echo "Without internet" \
@@ -5945,18 +5945,18 @@ if   [ "$cmd_first_option" == "expert-gen-compile" ]; then
 ####
 echo "$txt_text_title_info \
 [  optionally ] [ howto compile bash script with obash ] "
-echo "$txt_text_title Compile $cmd_internal" ; echo
+echo "$txt_text_stitle Compile $cmd_internal" ; echo
 if [ "$cmd_command_obash" == "$NULL" ]
-then echo "$txt_text_title install obash to compile"; exit ; fi
+then echo "$txt_text_stitle install obash to compile"; exit ; fi
 if [ "$cmd_command_uuid" == "$NULL" ]
-then echo "$txt_text_title install uuid to compile"; exit ; fi
+then echo "$txt_text_stitle install uuid to compile"; exit ; fi
 if [ "$cmd_format" != "Bourne-Again_shell_script," ]
-then echo "$txt_text_title the $cmd_name is not Bourne-Again_shell_script," ; exit ; fi
+then echo "$txt_text_stitle the $cmd_name is not Bourne-Again_shell_script," ; exit ; fi
 obash_file_update="$cmd_default_directory_obash/$cmd_name-$cmd_version"
 cp $0 $obash_file_update.bash
 $cmd_command_obash -r -c -o $obash_file_update.bin $obash_file_update.bash \
 && echo "$txt_text_title_ok" || echo "$txt_text_title_fail"
-echo ; echo "$txt_text_title And now list:"
+echo ; echo "$txt_text_stitle And now list:"
 file -L $obash_file_update.bash
 file -L $obash_file_update.bin
 ####
@@ -5974,13 +5974,13 @@ if   [ "$cmd_first_option" == "expert-upgrade-adblock" ]; then
 ####
 echo "$txt_text_title_info [ blacklist files / adblock files / hosts deny files ]"
 echo "$txt_text_title_info [ Waiting a moment ]"
-echo "$txt_text_title [ Step 1/4 ] [ downloading hosts fademind to $cmd_file_blacklist_fademind ]"
+echo "$txt_text_stitle [ Step 1/4 ] [ downloading hosts fademind to $cmd_file_blacklist_fademind ]"
 $cmd_command_curl $cmd_web_blacklist_fademind -s -L -o $cmd_file_blacklist_fademind
-echo "$txt_text_title [ Step 2/4 ] [ downloading hosts mvps to $cmd_file_blacklist_mvps ]"
+echo "$txt_text_stitle [ Step 2/4 ] [ downloading hosts mvps to $cmd_file_blacklist_mvps ]"
 $cmd_command_curl $cmd_web_blacklist_mvps -s -L -o $cmd_file_blacklist_mvps
-echo "$txt_text_title [ Step 3/4 ] [ downloading hosts adaway to $cmd_file_blacklist_adaway ]"
+echo "$txt_text_stitle [ Step 3/4 ] [ downloading hosts adaway to $cmd_file_blacklist_adaway ]"
 $cmd_command_curl $cmd_web_blacklist_adaway -s -L -o $cmd_file_blacklist_adaway
-echo "$txt_text_title [ Step 4/4 ] [ downloading hosts stevenblack to $cmd_file_blacklist_stevenblack ]"
+echo "$txt_text_stitle [ Step 4/4 ] [ downloading hosts stevenblack to $cmd_file_blacklist_stevenblack ]"
 $cmd_command_curl $cmd_web_blacklist_stevenblack -s -L -o $cmd_file_blacklist_stevenblack
 echo "$txt_text_title_folder [ $cmd_default_directory_adblock ] "
 ####
@@ -6310,17 +6310,17 @@ $cmd_command_ls -l $cmd_default_directory_control/$archivofin-nft-ipv6
 $cmd_command_ls -l $cmd_default_directory_control/$archivofin-legacy-ipv4
 $cmd_command_ls -l $cmd_default_directory_control/$archivofin-legacy-ipv6
 echo "$txt_text_title_ok [ FIREWALL LISTED ] [ $archivofin ]"
-echo "$txt_text_title $archivofin-arptables"
+echo "$txt_text_stitle $archivofin-arptables"
 $cmd_command_cat  $cmd_default_directory_control/$archivofin-arptables
-echo "$txt_text_title $archivofin-ebtables"
+echo "$txt_text_stitle $archivofin-ebtables"
 $cmd_command_cat  $cmd_default_directory_control/$archivofin-ebtables
-echo "$txt_text_title $archivofin-nft-ipv4"
+echo "$txt_text_stitle $archivofin-nft-ipv4"
 $cmd_command_cat  $cmd_default_directory_control/$archivofin-nft-ipv4
-echo "$txt_text_title $archivofin-legacy-ipv4"
+echo "$txt_text_stitle $archivofin-legacy-ipv4"
 $cmd_command_cat  $cmd_default_directory_control/$archivofin-legacy-ipv4
-echo "$txt_text_title $archivofin-nft-ipv6"
+echo "$txt_text_stitle $archivofin-nft-ipv6"
 $cmd_command_cat  $cmd_default_directory_control/$archivofin-nft-ipv6
-echo "$txt_text_title archivofin-legacy-ipv6"
+echo "$txt_text_stitle archivofin-legacy-ipv6"
 $cmd_command_cat  $cmd_default_directory_control/$archivofin-legacy-ipv6
 echo "$txt_text_title_ok [ firewall readed ] [ $archivofin ]"
 echo 
@@ -6345,17 +6345,17 @@ $cmd_command_ip4tablesnft-save       &> $cmd_default_directory_control/$cmd_file
 $cmd_command_ip4tableslegacy-save    &> $cmd_default_directory_control/$cmd_filename-actual-legacy-ipv4
 $cmd_command_ip6tablesnft-save      &> $cmd_default_directory_control/$cmd_filename-actual-nft-ipv6   
 $cmd_command_ip6tableslegacy-save   &> $cmd_default_directory_control/$cmd_filename-actual-legacy-ipv6
-echo "$txt_text_title arptables $txt_text_title"
+echo "$txt_text_stitle arptables $txt_text_title"
 $cmd_command_cat  $cmd_default_directory_control/$cmd_filename-actual-arptables
-echo "$txt_text_title ebtables $txt_text_title"
+echo "$txt_text_stitle ebtables $txt_text_title"
 $cmd_command_cat  $cmd_default_directory_control/$cmd_filename-actual-ebtables
-echo "$txt_text_title nft with ipv4 $txt_text_title"
+echo "$txt_text_stitle nft with ipv4 $txt_text_title"
 $cmd_command_cat  $cmd_default_directory_control/$cmd_filename-actual-nft-ipv4
-echo "$txt_text_title legacy with ipv4 $txt_text_title"
+echo "$txt_text_stitle legacy with ipv4 $txt_text_title"
 $cmd_command_cat  $cmd_default_directory_control/$cmd_filename-actual-legacy-ipv4
-echo "$txt_text_title nft with ipv6 $txt_text_title"
+echo "$txt_text_stitle nft with ipv6 $txt_text_title"
 $cmd_command_cat  $cmd_default_directory_control/$cmd_filename-actual-nft-ipv6
-echo "$txt_text_title legacy with ipv6 $txt_text_title"
+echo "$txt_text_stitle legacy with ipv6 $txt_text_title"
 $cmd_command_cat  $cmd_default_directory_control/$cmd_filename-actual-legacy-ipv6
 echo
 echo "  $txt_text_ok [ readed firewall actual ]"
@@ -6504,7 +6504,7 @@ host_ip="$(echo $2 | $cmd_command_sed 's/,/ /g')"
 for add in $host_ip ; do
 ####
 ####
-echo "$txt_text_title [ Working ] ADD ipv4 rules whitelist: ACCEPT to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv4 rules whitelist: ACCEPT to $add"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 -s $add   -m comment --comment "add-whitelist4"  \
 -j ACCEPT &> /dev/null && echo "ok input nft 1/4 with $add"    || echo "without input nft 1/4"
 $cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -d $add  -m comment --comment "add-whitelist4"  \
@@ -6536,7 +6536,7 @@ host_ip="$(echo $2 | $cmd_command_sed 's/,/ /g')"
 for add in $host_ip;  do
 ####
 ####
-echo "$txt_text_title [ Working ] ADD ipv6 rules whitelist: ACCEPT to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv6 rules whitelist: ACCEPT to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -s $add   -m comment --comment "add-whitelist6"  \
 -j ACCEPT  &> /dev/null && echo "ok input nft 1/4 with $add"    || echo "without input nft 1/4"
 $cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -d $add  -m comment --comment "add-whitelist6"  \
@@ -6569,7 +6569,7 @@ host_ip="$(echo $2 | $cmd_command_sed 's/,/ /g')"
 for add in $host_ip ; do
 ####
 ####
-echo "$txt_text_title [ Working ] ADD ipv4 rules blacklist: DROP to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv4 rules blacklist: DROP to $add"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 -s $add  -m comment --comment "add-blacklist4" \
 -j DROP  &> /dev/null && echo "ok input nft 1/4 with $add"    || echo "without output nft 1/4"
 $cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -d $add -m comment --comment "add-blacklist4" \
@@ -6602,7 +6602,7 @@ host_ip="$(echo $2 | $cmd_command_sed 's/,/ /g')"
 for add in $host_ip ; do
 ####
 ####
-echo "$txt_text_title [ Working ] ADD ipv6 rules blacklist: DROP to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv6 rules blacklist: DROP to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -s $add  -m comment --comment "add-blacklist6" \
 -j DROP  &> /dev/null && echo "ok input nft 1/4 with $add"    || echo "without input nft 1/4"
 $cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -d $add -m comment --comment "add-blacklist6" \
@@ -6811,7 +6811,7 @@ if [ "$cmd_first_option" == "drop-string" ] ; then
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD drop string to $2 in ip4"
+echo "$txt_text_stitle [ Working ] ADD drop string to $2 in ip4"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 \
 -m string --string "$2" --algo "$cfg_config_string_algoritmo" \
 -m comment --comment "drop-string" -j DROP  &> /dev/null && \
@@ -6830,7 +6830,7 @@ $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 \
 echo "ok output legacy 4/4"   || echo "without output legacy 4/4"
 ####
 ####
-echo "$txt_text_title [ Working ] ADD drop string to $2 in ip6"
+echo "$txt_text_stitle [ Working ] ADD drop string to $2 in ip6"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 \
 -m string --string "$2" --algo "$cfg_config_string_algoritmo" \
 -m comment --comment "drop-string" -j DROP  &> /dev/null && \
@@ -6859,7 +6859,7 @@ if [ "$cmd_first_option" == "limit-minute" ] ; then
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD max packages in minutes with ip4"
+echo "$txt_text_stitle [ Working ] ADD max packages in minutes with ip4"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 \
 -m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
 -m comment --comment "limit-minute" -j DROP  &> /dev/null && \
@@ -6878,7 +6878,7 @@ $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 \
 echo "ok output legacy 4/4"   || echo "without output legacy 4/4"
 ####
 ####
-echo "$txt_text_title [ Working ] ADD max packages in minutes with ip6"
+echo "$txt_text_stitle [ Working ] ADD max packages in minutes with ip6"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 \
 -m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
 -m comment --comment "limit-minute" -j DROP  &> /dev/null && \
@@ -7000,7 +7000,7 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD ipv4 rules port server: port to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv4 rules port server: port to $add"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
 -m comment --comment "return-port" -j RETURN  &> /dev/null && \
 echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
@@ -7035,7 +7035,7 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD ipv6 rules port server: port to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv6 rules port server: port to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
 -m comment --comment "return-port" -j RETURN  &> /dev/null && \
 echo "ok input nft 1/4 with port $add"   || echo "without rule nft 1/4"
@@ -7070,7 +7070,7 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD ipv4 rules port server: port to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv4 rules port server: port to $add"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p udp -m multiport --dports $add \
 -m comment --comment "return-port" -j RETURN  &> /dev/null && \
 echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
@@ -7105,7 +7105,7 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD ipv6 rules port server: port to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv6 rules port server: port to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -p udp -m multiport --dports $add \
 -m comment --comment "return-port" -j RETURN  &> /dev/null && \
 echo "ok input nft 1/4 with port $add"   || echo "without rule nft 1/4"
@@ -7140,7 +7140,7 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD ipv4 rules port server: port to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv4 rules port server: port to $add"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
 -m comment --comment "log-port" -j LOG  &> /dev/null && \
 echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
@@ -7175,7 +7175,7 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD ipv6 rules port server: port to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv6 rules port server: port to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
 -m comment --comment "log-port" -j LOG  &> /dev/null && \
 echo "ok input nft 1/4 with port $add"   || echo "without rule nft 1/4"
@@ -7210,7 +7210,7 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD ipv4 rules port server: port to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv4 rules port server: port to $add"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p udp -m multiport --dports $add \
 -m comment --comment "log-port" -j LOG  &> /dev/null && \
 echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
@@ -7245,7 +7245,7 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD ipv6 rules port server: port to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv6 rules port server: port to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -p udp -m multiport --dports $add \
 -m comment --comment "log-port" -j LOG  &> /dev/null && \
 echo "ok input nft 1/4 with port $add"   || echo "without rule nft 1/4"
@@ -7280,7 +7280,7 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD ipv4 rules port server: port to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv4 rules port server: port to $add"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
 -m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
 echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
@@ -7315,7 +7315,7 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD ipv6 rules port server: port to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv6 rules port server: port to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
 -m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
 echo "ok input nft 1/4 with port $add"   || echo "without rule nft 1/4"
@@ -7350,7 +7350,7 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD ipv4 rules port server: port to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv4 rules port server: port to $add"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
 -m comment --comment "drop-port" -j DROP  &> /dev/null && \
 echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
@@ -7385,7 +7385,7 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD ipv6 rules port server: port to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv6 rules port server: port to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
 -m comment --comment "drop-port" -j DROP  &> /dev/null && \
 echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
@@ -7420,7 +7420,7 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD ipv4 rules port server: port to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv4 rules port server: port to $add"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p udp -m multiport --dports $add  \
 -m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
 echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
@@ -7455,7 +7455,7 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD ipv6 rules port server: port to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv6 rules port server: port to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -p udp  -m multiport --dports $add \
 -m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
 echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
@@ -7490,7 +7490,7 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD ipv4 rules port server: port to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv4 rules port server: port to $add"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p udp -m multiport --dports $add \
 -m comment --comment "drop-port" -j DROP  &> /dev/null && \
 echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
@@ -7525,7 +7525,7 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD ipv6 rules port server: port to $add"
+echo "$txt_text_stitle [ Working ] ADD ipv6 rules port server: port to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -p udp  -m multiport --dports $add \
 -m comment --comment "drop-port" -j DROP  &> /dev/null && \
 echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
@@ -7552,19 +7552,19 @@ if [ "$cmd_first_option" == "speed-ip4" ] ; then
 ####
 ####
 echo "$txt_text_title_info  [ test speed ipv4 with iperf ] "
-echo "$txt_text_title $cmd_internal use iperf3"
+echo "$txt_text_stitle $cmd_internal use iperf3"
 if [ "$cmd_command_iperf3" == "$NULL" ];
 then echo "$txt_text_title_fail install iperf3"; fi
 echo "$txt_text_title"
-# echo "$txt_text_title [ Working ] Saving firewall before speed-ip4"
+# echo "$txt_text_stitle [ Working ] Saving firewall before speed-ip4"
 $cmd_internal save before-speed-ip4
 $cmd_internal add-whitelist4 $cfg_server_ip_iperf_ipv4
 echo "$txt_text_title"
-echo "$txt_text_title [ Calculing speed .. ]"
-echo "$txt_text_title [ Working ] Conecting in ipv4 to $cfg_server_ip_iperf_ipv4 ]"
+echo "$txt_text_stitle [ Calculing speed .. ]"
+echo "$txt_text_stitle [ Working ] Conecting in ipv4 to $cfg_server_ip_iperf_ipv4 ]"
 $cmd_command_iperf3 -c $cfg_server_ip_iperf_ipv4 -p $cfg_server_port_iperf_ipv4 -4 -t 5
 echo "$txt_text_title"
-echo "$txt_text_title [ Working ] [ Restoring firewall ]"
+echo "$txt_text_stitle [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip4 
 echo "$txt_text_title_done $cmd_internal speed-ip4"
 ####
@@ -7581,17 +7581,17 @@ if [ "$cmd_first_option" == "speed-ip6" ] ; then
 ####
 ####
 echo "$txt_text_title_info  [ test speed ipv6 with iperf3 ] "
-echo "$txt_text_title $cmd_internal use iperf3"
+echo "$txt_text_stitle $cmd_internal use iperf3"
 if [ "$cmd_command_iperf3" == "$NULL" ];
 then echo "$txt_text_title_fail install iperf3"; fi
 $cmd_internal save before-speed-ip6 
 $cmd_internal add-whitelist6 $cfg_server_ip_iperf_ipv6
 echo "$txt_text_title"
-echo "$txt_text_title [ Calculing speed .. ]"
-echo "$txt_text_title [ Working ] Conecting in ipv6 to $cfg_server_ip_iperf_ipv4 ]"
+echo "$txt_text_stitle [ Calculing speed .. ]"
+echo "$txt_text_stitle [ Working ] Conecting in ipv6 to $cfg_server_ip_iperf_ipv4 ]"
 $cmd_command_iperf3 -c $cfg_server_ip_iperf_ipv6 -p $cfg_server_port_iperf_ipv6 -6 -t 5
 echo "$txt_text_title"
-echo "$txt_text_title [ Working ] [ Restoring firewall ]"
+echo "$txt_text_stitle [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip6 
 echo "$txt_text_title_done $cmd_internal speed-ip6"
 ####
@@ -7666,10 +7666,10 @@ if [ "$cmd_command_ss" == "$NULL" ]; then
 echo "$txt_text_title_fail [ Install ss command ]"; exit; fi
 #### if [ "$cmd_command_awk" == "$NULL" ]; then 
 #### echo "$txt_text_title_fail [ Install awk command ]"; exit; fi
-echo "$txt_text_title sockets ipv4"
+echo "$txt_text_stitle sockets ipv4"
 $cmd_command_ss -4
 $cmd_command_ss -l4
-echo "$txt_text_title sockets ipv6"
+echo "$txt_text_stitle sockets ipv6"
 $cmd_command_ss -6
 $cmd_command_ss -l6
 ####
@@ -7749,13 +7749,13 @@ if   [ "$cmd_first_option" == "expert-nmap-tcp" ]; then
 ####
 echo "$txt_text_title_info  [ scan with nmap tcp ]"
 if [ "$cmd_command_nmap" == "$NULL" ];  then
-echo "$txt_text_title Please install nmap to work"; exit; fi
+echo "$txt_text_stitle Please install nmap to work"; exit; fi
 echo "$txt_text_title_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$txt_text_title_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
 $cmd_internal save before-nmap-tcp 
 $cmd_internal add-whitelist4 $2
-echo "$txt_text_title [ Working ] [ Doing nmap to $2 ]"
+echo "$txt_text_stitle [ Working ] [ Doing nmap to $2 ]"
 $cmd_command_nmap -sT $2
 $cmd_internal load before-nmap-tcp 
 ####
@@ -7773,13 +7773,13 @@ if   [ "$cmd_first_option" == "expert-nmap-syn" ]; then
 ####
 echo "$txt_text_title_info  [ scan with nmap syn ]"
 if [ "$cmd_command_nmap" == "$NULL" ];  then
-echo "$txt_text_title Please install nmap to work"; exit; fi
+echo "$txt_text_stitle Please install nmap to work"; exit; fi
 echo "$txt_text_title_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$txt_text_title_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
 $cmd_internal save before-nmap-syn
 $cmd_internal add-whitelist4 $2
-echo "$txt_text_title [ Working ] [ Doing nmap to $2 ]"
+echo "$txt_text_stitle [ Working ] [ Doing nmap to $2 ]"
 $cmd_command_nmap -sF $2
 $cmd_internal load before-nmap-syn
 echo 
@@ -7798,13 +7798,13 @@ if   [ "$cmd_first_option" == "expert-nmap-fin" ] ; then
 ####
 echo "$txt_text_title_info  [ scan with nmap fin ]"
 if [ "$cmd_command_nmap" == "$NULL" ];  then
-echo "$txt_text_title Please install nmap to work"; exit; fi
+echo "$txt_text_stitle Please install nmap to work"; exit; fi
 echo "$txt_text_title_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$txt_text_title_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
 $cmd_internal save before-nmap-fin 
 $cmd_internal add-whitelist4 $2
-echo "$txt_text_title [ Working ] [ Doing nmap to $2 ]"
+echo "$txt_text_stitle [ Working ] [ Doing nmap to $2 ]"
 $cmd_command_nmap -sT $2
 $cmd_internal load before-nmap-fin
 echo 
@@ -7823,13 +7823,13 @@ if   [ "$cmd_first_option" == "expert-nmap-udp" ]; then
 ####
 echo "$txt_text_title_info  [ scan with nmap udp ]"
 if [ "$cmd_command_nmap" == "$NULL" ];  then
-echo "$txt_text_title Please install nmap to work"; exit; fi
+echo "$txt_text_stitle Please install nmap to work"; exit; fi
 echo "$txt_text_title_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$txt_text_title_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
 $cmd_internal save before-nmap-udp
 $cmd_internal add-whitelist4 $2
-echo "$txt_text_title [ Working ] [ Doing nmap to $2 ]"
+echo "$txt_text_stitle [ Working ] [ Doing nmap to $2 ]"
 $cmd_command_nmap -sU $2
 $cmd_internal load before-nmap-udp
 echo 
@@ -7848,13 +7848,13 @@ if   [ "$cmd_first_option" == "expert-nmap-ping" ] ; then
 ####
 echo "$txt_text_title_info  [ scan with nmap ping ]"
 if [ "$cmd_command_nmap" == "$NULL" ];  then
-echo "$txt_text_title Please install nmap to work"; exit; fi
+echo "$txt_text_stitle Please install nmap to work"; exit; fi
 echo "$txt_text_title_info [ Use: $cmd_internal $cmd_first_option ip/net ]"
 if [ "$2" == "$NULL" ]; then 
 echo "$txt_text_title_fail [ Use: $cmd_internal $cmd_first_option ip/net ]"; exit ; fi
 $cmd_internal save before-nmap-ping
 $cmd_internal add-whitelist4 $2
-echo "$txt_text_title [ Working ] [ Doing nmap to $2 ]"
+echo "$txt_text_stitle [ Working ] [ Doing nmap to $2 ]"
 $cmd_command_nmap -sn $2
 $cmd_internal load before-nmap-ping
 ####
@@ -8194,7 +8194,7 @@ then echo $txt_head_waiting_gui
 ####
 ####
 if [ "$cfg_favorite_realpath_graphicalldialog" == "$NULL" ]; then 
-echo "$txt_text_title there is not graphicall dialog" ; exit ; fi
+echo "$txt_text_stitle there is not graphicall dialog" ; exit ; fi
 ####
 ####
 $cmd_internal txt $cmd_second_option $cmd_third_option &> $cmd_file_output_cache
@@ -8938,7 +8938,7 @@ $cmd_internal show $nombrecillo ;;
 009)archivo="$($cfg_favorite_realpath_textdialog --stdout \
 --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
-clear ;  echo "$txt_text_title saved $archivo" ; $cmd_internal save $archivo ;;
+clear ;  echo "$txt_text_stitle saved $archivo" ; $cmd_internal save $archivo ;;
 010) clear ; $cmd_internal names ; echo "$txt_text_title"
 read -p "| Type the firewall name to restore |   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $cmd_command_sed s/\\///g)
@@ -9855,7 +9855,7 @@ if [ "$cmd_first_option" == "gui-menu" ] ;
 then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
 echo ; else cfg_second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
-echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
+echo "$txt_text_stitle The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="Firewall-listconceptual|Firewall-listnumeral|firewall-wallcontrol|\
@@ -9873,7 +9873,7 @@ selection_final="$($cmd_second_option \
 if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | $cmd_command_sed 's/|/ /g')"
 else final="$selection_final" ; fi
-echo ; echo "$txt_text_title option selected: $final" ; echo ;
+echo ; echo "$txt_text_stitle option selected: $final" ; echo ;
 #### 
 ####
 case $final in
@@ -9905,7 +9905,7 @@ if   [ "$cmd_first_option" == "gui-menu-firewall-wallcontrol" ]
 then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
 echo ; else cfg_second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
-echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
+echo "$txt_text_stitle The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -9925,13 +9925,13 @@ selection_final="$($cmd_second_option \
 --text=$cmd_first_option \
 --title=Gui-menu-With-$cmd_internal-$cmd_version \
 --list $selection_menu)"
-echo "$txt_text_title The option selected:  $final" ;
+echo "$txt_text_stitle The option selected:  $final" ;
 ####
 ####
 if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | $cmd_command_sed 's/|/ /g')"
 else final="$selection_final" ; fi
-echo ; echo "$txt_text_title option selected: $final" ; echo ;
+echo ; echo "$txt_text_stitle option selected: $final" ; echo ;
 #### 
 ####
 case "$final" in
@@ -10095,7 +10095,7 @@ if   [ "$cmd_first_option" == "gui-menu-firewall-listconceptual" ]
 then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
 echo ; else cfg_second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
-echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
+echo "$txt_text_stitle The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -10114,7 +10114,7 @@ selection_final="$($cmd_second_option \
 if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | $cmd_command_sed 's/|/ /g')"
 else final="$selection_final" ; fi
-echo ; echo "$txt_text_title option selected: $final" ; echo ;
+echo ; echo "$txt_text_stitle option selected: $final" ; echo ;
 #### 
 #### 
 case "$selection_final" in
@@ -10153,7 +10153,7 @@ if   [ "$cmd_first_option" == "gui-menu-firewall-listnumeral" ]
 then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
 echo ; else cfg_second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
-echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
+echo "$txt_text_stitle The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|lsn4|lsn6|\
@@ -10173,7 +10173,7 @@ selection_final="$($cmd_second_option \
 if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | $cmd_command_sed 's/|/ /g')"
 else final="$selection_final" ; fi
-echo ; echo "$txt_text_title option selected: $final" ; echo ;
+echo ; echo "$txt_text_stitle option selected: $final" ; echo ;
 #### 
 #### 
 case "$selection_final" in
@@ -10212,7 +10212,7 @@ if [ "$cmd_first_option" == "gui-menu-firewall-wallcustom" ]
 then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
 echo ; else cfg_second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
-echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
+echo "$txt_text_stitle The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -10234,7 +10234,7 @@ selection_final="$($cmd_second_option \
 if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | $cmd_command_sed 's/|/ /g')"
 else final="$selection_final" ; fi
-echo ; echo "$txt_text_title option selected: $final" ; echo ;
+echo ; echo "$txt_text_stitle option selected: $final" ; echo ;
 #### 
 #### 
 case "$selection_final" in
@@ -10315,7 +10315,7 @@ if [ "$cmd_first_option" == "gui-menu-firewall-wallinet" ]
 then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
 echo ; else cfg_second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
-echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
+echo "$txt_text_stitle The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
@@ -10332,7 +10332,7 @@ selection_final="$($cmd_second_option \
 if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | $cmd_command_sed 's/|/ /g')"
 else final="$selection_final" ; fi
-echo ; echo "$txt_text_title option selected: $final" ; echo ;
+echo ; echo "$txt_text_stitle option selected: $final" ; echo ;
 #### 
 #### 
 case "$selection_final" in
@@ -10366,7 +10366,7 @@ if [ "$cmd_first_option" == "gui-menu-firewall-wallutils" ]
 then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
 echo ; else cfg_second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
-echo "$txt_text_title The used gui in $cmd_first_option is $cmd_second_option" ;
+echo "$txt_text_stitle The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|preferences-read|\
@@ -10390,7 +10390,7 @@ selection_final="$($cmd_second_option \
 if [ "$cmd_second_option" == "yad" ]; then
 final="$(echo $selection_final | $cmd_command_sed 's/|/ /g')"
 else final="$selection_final" ; fi
-echo ; echo "$txt_text_title option selected: $final" ; echo ;
+echo ; echo "$txt_text_stitle option selected: $final" ; echo ;
 #### 
 ####
 case "$selection_final" in
@@ -10701,14 +10701,14 @@ declare | $cmd_command_grep -E ^"cmd_|cfg_|txt_" | $cmd_command_sort
 ####
 ####
 #### numbers variables
-echo "$txt_text_title the statidist variables"
-echo "$txt_text_title variables cfg_  : $(declare | \
+echo "$txt_text_stitle the statidist variables"
+echo "$txt_text_stitle variables cfg_  : $(declare | \
 $cmd_command_grep -E ^"cfg_" | wc -l)"
-echo "$txt_text_title variables cmd_  : $(declare | \
+echo "$txt_text_stitle variables cmd_  : $(declare | \
 $cmd_command_grep -E ^"cmd_" | wc -l)"
-echo "$txt_text_title variables txt_  : $(declare | \
+echo "$txt_text_stitle variables txt_  : $(declare | \
 $cmd_command_grep -E ^"txt_" | wc -l)"
-echo "$txt_text_title total variables : $(declare | \
+echo "$txt_text_stitle total variables : $(declare | \
 $cmd_command_grep -E ^"txt_|cfg_|cmd_" | wc -l)"
 ####
 ####
