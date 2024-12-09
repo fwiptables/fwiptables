@@ -3445,7 +3445,7 @@ echo "$txt_text_md tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp $
 echo "$txt_text_md drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp $txt_text_md" 
 echo "$txt_text_md return-port-tcp return-por-udp log-port-tcp log-port-udp $txt_text_md"
 echo "$txt_text_md del-commented add-whitelist add-blacklist add-shield-tcp $txt_text_md" 
-echo "$txt_text_md drop-string limit-mb-minute limit-mb-hour $txt_text_md" 
+echo "$txt_text_md drop-string limit-minute $txt_text_md" 
 echo "$txt_text_md    firewall-wallcustom $txt_text_md"
 echo "$txt_text_md new-full-custom nueva-completa-custom new-mini-custom $txt_text_md"
 echo "$txt_text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom $txt_text_md"
@@ -6870,56 +6870,56 @@ exit; fi
 ####
 ####
 #### :rutina-final-drop-string
-##########    limit-m-minute: limit net each minute in megabytes     ##########
-#### :rutina-inicial-limit-mb-minute
+##########    limit-minute: limit package with each minute     ##########
+#### :rutina-inicial-limit-minute
 ####
 ####
-if [ "$cmd_first_option" == "limit-mb-minute" ] ; then
+if [ "$cmd_first_option" == "limit-minute" ] ; then
 ####
 ####
 #### rules
-echo "$txt_text_title [ Working ] ADD drop string to $2 in kb/s ip4"
+echo "$txt_text_title [ Working ] ADD max packages in minutes with ip4"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 \
--m hashlimit --hashlimit-above "$2"mb/min --hashlimit-name bandwidth \
--m comment --comment "drop-string" -j DROP  &> /dev/null && \
+-m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
+-m comment --comment "bandwidth" -j DROP  &> /dev/null && \
 echo "ok input nft 1/4 with port $2"   || echo "without input nft 1/4"
 $cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 \
--m hashlimit --hashlimit-above "$2"mb/min --hashlimit-name bandwidth \
--m comment --comment "drop-string" -j DROP  &> /dev/null && \
+-m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
+-m comment --comment "bandwidth" -j DROP  &> /dev/null && \
 echo "ok output nft 2/4 with port $2"   || echo "without output nft 2/4"
 $cmd_command_ip4tableslegacy -t filter -I INPUT  2 \
--m hashlimit --hashlimit-above "$2"mb/min --hashlimit-name bandwidth \
--m comment --comment "drop-string" -j DROP  &> /dev/null && \
+-m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
+-m comment --comment "bandwidth" -j DROP  &> /dev/null && \
 echo "ok input legacy 3/4 with port $2"   || echo "without input legacy 3/4"
 $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 \
--m hashlimit --hashlimit-above "$2"mb/min --hashlimit-name bandwidth \
--m comment --comment "drop-string" -j DROP  &> /dev/null && \
+-m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
+-m comment --comment "bandwidth" -j DROP  &> /dev/null && \
 echo "ok output legacy 4/4 with port $2"   || echo "without output legacy 4/4"
 ####
 ####
-echo "$txt_text_title [ Working ] ADD drop string to $2 in kb/s in ip6"
+echo "$txt_text_title [ Working ] ADD max packages in minutes with ip6"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 \
--m hashlimit --hashlimit-above "$2"mb/min --hashlimit-name bandwidth \
--m comment --comment "drop-string" -j DROP  &> /dev/null && \
+-m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
+-m comment --comment "bandwidth" -j DROP  &> /dev/null && \
 echo "ok input nft 1/4 with port $2"   || echo "without input nft 1/4"
 $cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 \
--m hashlimit --hashlimit-above "$2"mb/min --hashlimit-name bandwidth \
--m comment --comment "drop-string" -j DROP  &> /dev/null && \
+-m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
+-m comment --comment "bandwidth" -j DROP  &> /dev/null && \
 echo "ok output nft 2/4 with port $2"   || echo "without output nft 2/4"
 $cmd_command_ip6tableslegacy -t filter -I INPUT  2 \
--m hashlimit --hashlimit-above "$2"mb/min --hashlimit-name bandwidth \
--m comment --comment "drop-string" -j DROP  &> /dev/null && \
+-m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
+-m comment --comment "bandwidth" -j DROP  &> /dev/null && \
 echo "ok input legacy 3/4 with port $2"   || echo "without input legacy 3/4"
 $cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 \
--m hashlimit --hashlimit-above "$2"mb/min --hashlimit-name bandwidth \
--m comment --comment "drop-string" -j DROP  &> /dev/null && \
+-m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
+-m comment --comment "bandwidth" -j DROP  &> /dev/null && \
 echo "ok output legacy 4/4 with port $2"   || echo "without output legacy 4/4"
 ####
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-limit-mb-minute
+#### :rutina-final-limit-minute
 ##########    add-shield-tcp: add port shield to tcp ip4     ##########
 #### :rutina-inicial-add-shield-tcp
 ####
