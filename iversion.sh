@@ -8576,8 +8576,8 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
-001  "$txt_text_md intro" \
-002  "$txt_text_md info-options" \
+001  "$txt_text_md [ intro ]" \
+002  "$txt_text_md [ info  ]" \
 003  "$txt_text_md firewall-listconceptual" \
 004  "$txt_text_md firewall-listnumeral" \
 005  "$txt_text_md firewall-wallcontrol" \
