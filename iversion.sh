@@ -6821,38 +6821,38 @@ echo "$txt_text_title [ Working ] ADD drop string to $2 in ip4"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 \
 -m string --string "$2" --algo "$cfg_config_string_algoritmo" \
 -m comment --comment "drop-string" -j DROP  &> /dev/null && \
-echo "ok input nft 1/4 with port $2"   || echo "without input nft 1/4"
+echo "ok input nft 1/4"   || echo "without input nft 1/4"
 $cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 \
 -m string --string "$2" --algo "$cfg_config_string_algoritmo" \
 -m comment --comment "drop-string" -j DROP  &> /dev/null && \
-echo "ok output nft 2/4 with port $2"   || echo "without output nft 2/4"
+echo "ok output nft 2/4"   || echo "without output nft 2/4"
 $cmd_command_ip4tableslegacy -t filter -I INPUT  2 \
 -m string --string "$2" --algo "$cfg_config_string_algoritmo" \
 -m comment --comment "drop-string" -j DROP  &> /dev/null && \
-echo "ok input legacy 3/4 with port $2"   || echo "without input legacy 3/4"
+echo "ok input legacy 3/4"   || echo "without input legacy 3/4"
 $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 \
 -m string --string "$2" --algo "$cfg_config_string_algoritmo" \
 -m comment --comment "drop-string" -j DROP  &> /dev/null && \
-echo "ok output legacy 4/4 with port $2"   || echo "without output legacy 4/4"
+echo "ok output legacy 4/4"   || echo "without output legacy 4/4"
 ####
 ####
 echo "$txt_text_title [ Working ] ADD drop string to $2 in ip6"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 \
 -m string --string "$2" --algo "$cfg_config_string_algoritmo" \
 -m comment --comment "drop-string" -j DROP  &> /dev/null && \
-echo "ok input nft 1/4 with port $2"   || echo "without input nft 1/4"
+echo "ok input nft 1/4"   || echo "without input nft 1/4"
 $cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 \
 -m string --string "$2" --algo "$cfg_config_string_algoritmo" \
 -m comment --comment "drop-string" -j DROP  &> /dev/null && \
-echo "ok output nft 2/4 with port $2"   || echo "without output nft 2/4"
+echo "ok output nft 2/4"   || echo "without output nft 2/4"
 $cmd_command_ip6tableslegacy -t filter -I INPUT  2 \
 -m string --string "$2" --algo "$cfg_config_string_algoritmo" \
 -m comment --comment "drop-string" -j DROP  &> /dev/null && \
-echo "ok input legacy 3/4 with port $2"   || echo "without input legacy 3/4"
+echo "ok input legacy 3/4"   || echo "without input legacy 3/4"
 $cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 \
 -m string --string "$2" --algo "$cfg_config_string_algoritmo" \
 -m comment --comment "drop-string" -j DROP  &> /dev/null && \
-echo "ok output legacy 4/4 with port $2"   || echo "without output legacy 4/4"
+echo "ok output legacy 4/4"   || echo "without output legacy 4/4"
 exit; fi
 ####
 ####
@@ -6869,38 +6869,38 @@ echo "$txt_text_title [ Working ] ADD max packages in minutes with ip4"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 \
 -m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
 -m comment --comment "limit-minute" -j DROP  &> /dev/null && \
-echo "ok input nft 1/4 with port $2"   || echo "without input nft 1/4"
+echo "ok input nft 1/4"   || echo "without input nft 1/4"
 $cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 \
 -m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
 -m comment --comment "limit-minute" -j DROP  &> /dev/null && \
-echo "ok output nft 2/4 with port $2"   || echo "without output nft 2/4"
+echo "ok output nft 2/4"   || echo "without output nft 2/4"
 $cmd_command_ip4tableslegacy -t filter -I INPUT  2 \
 -m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
 -m comment --comment "limit-minute" -j DROP  &> /dev/null && \
-echo "ok input legacy 3/4 with port $2"   || echo "without input legacy 3/4"
+echo "ok input legacy 3/4"   || echo "without input legacy 3/4"
 $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 \
 -m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
 -m comment --comment "limit-minute" -j DROP  &> /dev/null && \
-echo "ok output legacy 4/4 with port $2"   || echo "without output legacy 4/4"
+echo "ok output legacy 4/4"   || echo "without output legacy 4/4"
 ####
 ####
 echo "$txt_text_title [ Working ] ADD max packages in minutes with ip6"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 \
 -m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
 -m comment --comment "limit-minute" -j DROP  &> /dev/null && \
-echo "ok input nft 1/4 with port $2"   || echo "without input nft 1/4"
+echo "ok input nft 1/4"   || echo "without input nft 1/4"
 $cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 \
 -m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
 -m comment --comment "limit-minute" -j DROP  &> /dev/null && \
-echo "ok output nft 2/4 with port $2"   || echo "without output nft 2/4"
+echo "ok output nft 2/4"   || echo "without output nft 2/4"
 $cmd_command_ip6tableslegacy -t filter -I INPUT  2 \
 -m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
 -m comment --comment "limit-minute" -j DROP  &> /dev/null && \
-echo "ok input legacy 3/4 with port $2"   || echo "without input legacy 3/4"
+echo "ok input legacy 3/4"   || echo "without input legacy 3/4"
 $cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 \
 -m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
 -m comment --comment "limit-minute" -j DROP  &> /dev/null && \
-echo "ok output legacy 4/4 with port $2"   || echo "without output legacy 4/4"
+echo "ok output legacy 4/4"   || echo "without output legacy 4/4"
 ####
 ####
 exit; fi
@@ -8590,9 +8590,10 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 003  "$txt_text_md firewall-listconceptual" \
 004  "$txt_text_md firewall-listnumeral" \
 005  "$txt_text_md firewall-wallcontrol" \
-006  "$txt_text_md firewall-wallcustom" \
-007  "$txt_text_md firewall-wallinet" \
-008  "$txt_text_md firewall-wallutils"  \
+006  "$txt_text_md firewall-wallrule" \
+007  "$txt_text_md firewall-wallcustom" \
+008  "$txt_text_md firewall-wallinet" \
+009  "$txt_text_md firewall-wallutils"  \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
@@ -8602,9 +8603,10 @@ case $menuprincipal in
 003) clear ; $cmd_internal cli-menu-listconceptual $cfg_favorite_base_cli ;;
 004) clear ; $cmd_internal cli-menu-listnumeral    $cfg_favorite_base_cli ;;
 005) clear ; $cmd_internal cli-menu-wallcontrol    $cfg_favorite_base_cli ;;
-006) clear ; $cmd_internal cli-menu-wallcustom     $cfg_favorite_base_cli ;;
-007) clear ; $cmd_internal cli-menu-wallinet       $cfg_favorite_base_cli ;;
-008) clear ; $cmd_internal cli-menu-wallutils      $cfg_favorite_base_cli ;;
+006) clear ; $cmd_internal cli-menu-wallrule       $cfg_favorite_base_cli ;;
+007) clear ; $cmd_internal cli-menu-wallcustom     $cfg_favorite_base_cli ;;
+008) clear ; $cmd_internal cli-menu-wallinet       $cfg_favorite_base_cli ;;
+009) clear ; $cmd_internal cli-menu-wallutils      $cfg_favorite_base_cli ;;
 *)        ;;
 esac
 ################################################################################
@@ -8772,11 +8774,11 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-listnumeral:
-##########    cli-menu-wallcontrol: Manage list rules with one text menu          ##########
-#### :rutina-inicial-cli-menu-wallcontrol:
+##########    cli-menu-wallrule: Manage list rules with one text menu          ##########
+#### :rutina-inicial-cli-menu-wallrule:
 ####
 ####
-if [ "$cmd_first_option" == "cli-menu-wallcontrol" ]; then
+if [ "$cmd_first_option" == "cli-menu-wallrule" ]; then
 if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$txt_text_title_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
@@ -8794,27 +8796,9 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
-001 "$txt_text_title_md [ principal menu ] $txt_text_md $txt_text_title" \
-002 "$txt_text_title [ Info Options     ] $txt_text_title" \
-003 "$txt_text_title [ Firewall Control ] $txt_text_title" \
-004  "$txt_text_md stop" \
-005  "$txt_text_md continue" \
-006  "$txt_text_md reset" \
-007  "$txt_text_md names"  \
-008  "$txt_text_md show" \
-009  "$txt_text_md save" \
-010  "$txt_text_md load" \
-011  "$txt_text_md actual" \
-012  "$txt_text_md eraserules" \
-013  "$txt_text_md wizard-tiny" \
-014  "$txt_text_md wizard-mini" \
-015  "$txt_text_md wizard-full" \
-016  "$txt_text_md without-connection" \
-017  "$txt_text_md input-permisive" \
-018  "$txt_text_md input-established" \
-019  "$txt_text_md eraserules4" \
-020  "$txt_text_md eraserules6" \
-021  "$txt_text_md eraserules" \
+001  "$txt_text_md [ principal menu ] $txt_text_md $txt_text_title" \
+002  "$txt_text_md [ Info Options   ] $txt_text_title" \
+003  "$txt_text_md [ Firewall rule  ] $txt_text_title" \
 022  "$txt_text_md return-port-tcp" \
 023  "$txt_text_md return-port-udp" \
 024  "$txt_text_md log-port-tcp" \
@@ -8826,40 +8810,15 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 030  "$txt_text_md add-whitelist" \
 031  "$txt_text_md add-blacklist" \
 032  "$txt_text_md add-shield-tcp" \
+033  "$txt_text_md drop-string" \
+034  "$txt_text_md limit-minute" \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
 case $menuprincipal in
 001) clear ; $cmd_internal cli-menu $cfg_favorite_base_cli ;;
 002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
-003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-wallcontrol ;;
-004) clear ; $cmd_internal $cfg_favorite_out_cli stop ;;
-005) clear ; $cmd_internal $cfg_favorite_out_cli continue ;;
-006) clear ; $cmd_internal $cfg_favorite_out_cli reset ;;
-007) clear ; $cmd_internal $cfg_favorite_out_cli names ;;
-008) clear ; $cmd_internal txt names ; echo "$txt_text_title"
-read -p "Type the firewall name to read   " nombrecillo
-nombrecillo=$(echo $nombrecillo | $cmd_command_sed s/\\///g)
-$cmd_internal show $nombrecillo ;; 
-009)archivo="$($cfg_favorite_realpath_textdialog --stdout \
---title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
-archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
-clear ;  echo "$txt_text_title saved $archivo" ; $cmd_internal save $archivo ;;
-010) clear ; $cmd_internal names ; echo "$txt_text_title"
-read -p "| Type the firewall name to restore |   " nombrecillo
-nombrecillo=$(echo $nombrecillo | $cmd_command_sed s/\\///g)
-$cmd_internal load $nombrecillo ;;
-011) clear ; $cmd_internal $cfg_favorite_out_cli actual ;;
-012) clear ; $cmd_internal $cfg_favorite_out_cli eraserules ; $cmd_internal cli list4   ;;
-013) clear ; $cmd_internal $cfg_favorite_out_cli wizard-tiny ; $cmd_internal cli list4  ;;
-014) clear ; $cmd_internal $cfg_favorite_out_cli wizard-mini ; $cmd_internal cli list4  ;;
-015) clear ; $cmd_internal $cfg_favorite_out_cli wizard-full ; $cmd_internal cli list4  ;;
-016) clear ; $cmd_internal $cfg_favorite_out_cli without-connection ; $cmd_internal cli list4  ;;
-017) clear ; $cmd_internal $cfg_favorite_out_cli input-permisive ; $cmd_internal cli list4   ;;
-018) clear ; $cmd_internal $cfg_favorite_out_cli input-established ; $cmd_internal cli list4   ;;
-019) clear ; $cmd_internal $cfg_favorite_out_cli eraserules4 ; $cmd_internal cli list4   ;;
-020) clear ; $cmd_internal $cfg_favorite_out_cli eraserules6 ; $cmd_internal cli list6   ;;
-021) clear ; $cmd_internal $cfg_favorite_out_cli eraserules ; $cmd_internal cli status   ;;
+003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-wallrule ;;
 022) clear ; read -p "Input port # " archivo
 archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
 $cmd_internal $cfg_favorite_out_cli return-port-tcp $archivo
@@ -8904,6 +8863,103 @@ $cmd_internal $cfg_favorite_out_cli ls4                      ;;
 archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
 $cmd_internal $cfg_favorite_out_cli add-shield-tcp $archivo
 $cmd_internal $cfg_favorite_out_cli ls4                      ;;
+033) clear ; read -p "Input string # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli drop-string $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+034) clear ; read -p "Input packages for minute # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli limit-minute $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+*)        ;;
+esac
+################################################################################
+################################################################################
+#### $cfg_favorite_realpath_textdialog  --msgbox "fwiptables good bye" 0 0
+$cmd_internal text-pause ; clear
+################################################################################
+$cmd_internal cli-menu $cfg_favorite_base_cli
+exit; fi
+####
+####
+#### :rutina-final-cli-menu-wallrule:
+##########    cli-menu-wallcontrol: Manage list rules with one text menu          ##########
+#### :rutina-inicial-cli-menu-wallcontrol:
+####
+####
+if [ "$cmd_first_option" == "cli-menu-wallcontrol" ]; then
+if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
+echo "$txt_text_title_fail [ Install or dialog or whiptail to work ]"
+exit ; fi
+##########
+##########
+if [ "$2" != "$NULL" ]; then
+cfg_favorite_basename_textdialog="$(basename $2)"
+cfg_favorite_realpath_textdialog="$(realpath $2)"
+fi
+##########
+##########
+cfg_favorite_out_cli="cli-$(basename $cfg_favorite_realpath_textdialog)"
+cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
+##########
+##########
+menuprincipal="$($cfg_favorite_base_cli --clear --notags \
+--title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
+001 "$txt_text_title_md [ principal menu ] $txt_text_md $txt_text_title" \
+002 "$txt_text_title [ Info Options     ] $txt_text_title" \
+003 "$txt_text_title [ Firewall Control ] $txt_text_title" \
+004  "$txt_text_md stop" \
+005  "$txt_text_md continue" \
+006  "$txt_text_md reset" \
+007  "$txt_text_md names"  \
+008  "$txt_text_md show" \
+009  "$txt_text_md save" \
+010  "$txt_text_md load" \
+011  "$txt_text_md actual" \
+012  "$txt_text_md eraserules" \
+013  "$txt_text_md wizard-tiny" \
+014  "$txt_text_md wizard-mini" \
+015  "$txt_text_md wizard-full" \
+016  "$txt_text_md without-connection" \
+017  "$txt_text_md input-permisive" \
+018  "$txt_text_md input-established" \
+019  "$txt_text_md eraserules4" \
+020  "$txt_text_md eraserules6" \
+021  "$txt_text_md eraserules" \
+3>&1 1>&2 2>&3 )"
+##########
+##########
+case $menuprincipal in
+001) clear ; $cmd_internal cli-menu $cfg_favorite_base_cli ;;
+002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
+003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-wallcontrol ;;
+004) clear ; $cmd_internal $cfg_favorite_out_cli stop ;;
+005) clear ; $cmd_internal $cfg_favorite_out_cli continue ;;
+006) clear ; $cmd_internal $cfg_favorite_out_cli reset ;;
+007) clear ; $cmd_internal $cfg_favorite_out_cli names ;;
+008) clear ; $cmd_internal txt names ; echo "$txt_text_title"
+read -p "Type the firewall name to read   " nombrecillo
+nombrecillo=$(echo $nombrecillo | $cmd_command_sed s/\\///g)
+$cmd_internal show $nombrecillo ;; 
+009)archivo="$($cfg_favorite_realpath_textdialog --stdout \
+--title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
+archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
+clear ;  echo "$txt_text_title saved $archivo" ; $cmd_internal save $archivo ;;
+010) clear ; $cmd_internal names ; echo "$txt_text_title"
+read -p "| Type the firewall name to restore |   " nombrecillo
+nombrecillo=$(echo $nombrecillo | $cmd_command_sed s/\\///g)
+$cmd_internal load $nombrecillo ;;
+011) clear ; $cmd_internal $cfg_favorite_out_cli actual ;;
+012) clear ; $cmd_internal $cfg_favorite_out_cli eraserules ; $cmd_internal cli list4   ;;
+013) clear ; $cmd_internal $cfg_favorite_out_cli wizard-tiny ; $cmd_internal cli list4  ;;
+014) clear ; $cmd_internal $cfg_favorite_out_cli wizard-mini ; $cmd_internal cli list4  ;;
+015) clear ; $cmd_internal $cfg_favorite_out_cli wizard-full ; $cmd_internal cli list4  ;;
+016) clear ; $cmd_internal $cfg_favorite_out_cli without-connection ; $cmd_internal cli list4  ;;
+017) clear ; $cmd_internal $cfg_favorite_out_cli input-permisive ; $cmd_internal cli list4   ;;
+018) clear ; $cmd_internal $cfg_favorite_out_cli input-established ; $cmd_internal cli list4   ;;
+019) clear ; $cmd_internal $cfg_favorite_out_cli eraserules4 ; $cmd_internal cli list4   ;;
+020) clear ; $cmd_internal $cfg_favorite_out_cli eraserules6 ; $cmd_internal cli list6   ;;
+021) clear ; $cmd_internal $cfg_favorite_out_cli eraserules ; $cmd_internal cli status   ;;
 *)        ;;
 esac
 ################################################################################
