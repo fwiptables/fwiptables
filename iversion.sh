@@ -3445,6 +3445,7 @@ echo "$txt_text_md tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp $
 echo "$txt_text_md drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp $txt_text_md" 
 echo "$txt_text_md return-port-tcp return-por-udp log-port-tcp log-port-udp $txt_text_md"
 echo "$txt_text_md del-commented add-whitelist add-blacklist add-shield-tcp $txt_text_md" 
+echo "$txt_text_md drop-string net-limit-1minute net-limit-1hour $txt_text_md" 
 echo "$txt_text_md    firewall-wallcustom $txt_text_md"
 echo "$txt_text_md new-full-custom nueva-completa-custom new-mini-custom $txt_text_md"
 echo "$txt_text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom $txt_text_md"
@@ -6821,6 +6822,37 @@ exit; fi
 ####
 ####
 #### :rutina-final-del-commented
+##########    drop-string: drop package with string     ##########
+#### :rutina-inicial-drop-string
+####
+####
+if [ "$cmd_first_option" == "drop-string" ] ; then
+####
+####
+#### rules
+echo "$txt_text_title [ Working ] ADD drop string to $2"
+$cmd_command_ip4tablesnft    -t filter -I INPUT 2 \
+-m string --string "$2" --algo "$cfg_config_string_algoritmo" \
+-m comment --comment "drop-string" -j DROP  &> /dev/null && \
+echo "ok input nft 1/4 with port $2"   || echo "without input nft 1/4"
+$cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 \
+-m string --string "$2" --algo "$cfg_config_string_algoritmo" \
+-m comment --comment "drop-string" -j DROP  &> /dev/null && \
+echo "ok output nft 2/4 with port $2"   || echo "without output nft 2/4"
+$cmd_command_ip4tableslegacy -t filter -I INPUT  2 \
+-m string --string "$2" --algo "$cfg_config_string_algoritmo" \
+-m comment --comment "drop-string" -j DROP  &> /dev/null && \
+echo "ok input legacy 3/4 with port $2"   || echo "without input legacy 3/4"
+$cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 \
+-m string --string "$2" --algo "$cfg_config_string_algoritmo" \
+-m comment --comment "drop-string" -j DROP  &> /dev/null && \
+echo "ok output legacy 4/4 with port $2"   || echo "without output legacy 4/4"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-drop-string
 ##########    add-shield-tcp: add port shield to tcp ip4     ##########
 #### :rutina-inicial-add-shield-tcp
 ####
@@ -12239,7 +12271,7 @@ $cfg_allow_use_ipv6 $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 ####
 $cfg_allow_use_ipv6 $cfg_allow_use_nft  $cmd_command_ip6tablesnft \
 -A  OUTPUT -d $one_vpn -j ACCEPT -m comment \
---comment "whitelist $one_vpn" &> /dev/null
+--comment "whitelist $one-vpn" &> /dev/null
 ####
 ####
 done
@@ -13420,14 +13452,14 @@ done
 ####
 $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft \
 -A OUTPUT -p ipv6-icmp -j ACCEPT \
--m comment --comment "icmp nexthop" &> /dev/null
+-m comment --comment "icmp-nexthop" &> /dev/null
 ####
 ####
 for one_protocol in $(echo $cfg_config_others_protocols | $cmd_command_sed 's/,/ /g')
 do $cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_others_protocols \
 $cmd_command_ip6tablesnft -A OUTPUT \
 -p $one_protocol -j ACCEPT \
--m comment --comment "other protocols" &> /dev/null
+-m comment --comment "other-protocols" &> /dev/null
 done
 ####
 ####
@@ -13448,21 +13480,21 @@ if [ "$cfg_allow_gateway_ip4" == "$NULL" ]; then
 $cfg_allow_use_nft    $cfg_allow_use_ipv4    $cfg_allow_gateway_ip4 \
 $cmd_command_ip4tablesnft -t nat \
 -A POSTROUTING -j MASQUERADE -s $cfg_config_gateway_ip4 \
--m comment --comment "ip gateway" &>/dev/null
+-m comment --comment "ip-gateway" &>/dev/null
 $cfg_allow_use_legacy $cfg_allow_use_ipv4 $cfg_allow_gateway_ip4 \
 $cmd_command_ip4tableslegacy -t nat \
 -A POSTROUTING -j MASQUERADE -s $cfg_config_gateway_ip4 \
--m comment --comment "ip gateway" &>/dev/null
+-m comment --comment "ip-gateway" &>/dev/null
 ####
 ####
 $cfg_allow_use_nft $cfg_allow_use_ipv4 \
 $cfg_allow_gateway_ip4 $cmd_command_ip4tablesnft -t nat \
 -A PREROUTING -j ACCEPT -d $cfg_config_gateway_ip4 \
--m comment --comment "ip gateway"  &>/dev/null
+-m comment --comment "ip-gateway"  &>/dev/null
 $cfg_allow_use_legacy $cfg_allow_use_ipv4 \
 $cfg_allow_gateway_ip4 $cmd_command_ip4tableslegacy -t nat \
 -A PREROUTING -j ACCEPT -d $cfg_config_gateway_ip4 \
--m comment --comment "ip gateway" &>/dev/null
+-m comment --comment "ip-gateway" &>/dev/null
 ####
 fi
 ####
@@ -13473,21 +13505,21 @@ if [ "$cfg_allow_gateway_ip6" == "$NULL" ]; then
 $cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_gateway_ip6 \
 $cmd_command_ip6tablesnft -t nat \
 -A POSTROUTING -j MASQUERADE -s $cfg_config_gateway_ip6 \
--m comment --comment "ip gateway" &>/dev/null
+-m comment --comment "ip-gateway" &>/dev/null
 $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cfg_allow_gateway_ip6 \
 $cmd_command_ip6tableslegacy -t nat \
 -A POSTROUTING -j MASQUERADE -s $cfg_config_gateway_ip6 \
--m comment --comment "ip gateway" &>/dev/null
+-m comment --comment "ip-gateway" &>/dev/null
 ####
 ####
 $cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_gateway_ip6 \
 $cmd_command_ip6tablesnft -t nat \
 -A PREROUTING -j ACCEPT -d $cfg_config_gateway_ip6 \
--m comment --comment "ip gateway" &>/dev/null
+-m comment --comment "ip-gateway" &>/dev/null
 $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cfg_allow_gateway_ip6 \
 $cmd_command_ip6tableslegacy -t nat \
 -A PREROUTING -j ACCEPT -d $cfg_config_gateway_ip6 \
--m comment --comment "ip gatway" &>/dev/null
+-m comment --comment "ip-gatway" &>/dev/null
 ####
 fi
 ####
@@ -13501,11 +13533,11 @@ if [ "$cfg_config_dmz_ip4" == "$NULL" ]; then
 $cfg_allow_use_nft    $cfg_allow_use_ipv4    $cfg_allow_dmz_ip4 \
 $cmd_command_ip4tablesnft -t nat \
 -A PREROUTING -j DNAT --to-destination $cfg_config_dmz_ip4 \
--m comment --comment "ip dmz" &>/dev/null
+-m comment --comment "ip-dmz" &>/dev/null
 $cfg_allow_use_legacy $cfg_allow_use_ipv4    $cfg_allow_dmz_ip4 \
 $cmd_command_ip4tableslegacy -t nat \
 -A PREROUTING -j DNAT --to-destination $cfg_config_dmz_ip4 \
--m comment --comment "ip dmz" &>/dev/null
+-m comment --comment "ip-dmz" &>/dev/null
 ####
 fi
 ####
@@ -13516,11 +13548,11 @@ if [ "$cfg_config_dmz_ip6" == "$NULL" ]; then
 $cfg_allow_use_nft $cfg_allow_use_ipv6    $cfg_allow_dmz_ip6 \
 $cmd_command_ip6tablesnft -t nat \
 -A PREROUTING -j DNAT --to-destination $cfg_config_dmz_ip6 \
--m comment --comment "ip dmz" &>/dev/null
+-m comment --comment "ip-dmz" &>/dev/null
 $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cfg_allow_dmz_ip6 \
 $cmd_command_ip6tableslegacy -t nat \
 -A PERROUTING -j DNAT --to-destination $cfg_config_dmz_ip6 \
--m comment --comment "ip dmz" &>/dev/null
+-m comment --comment "ip-dmz" &>/dev/null
 ####
 fi
 ####
@@ -13934,11 +13966,11 @@ if [ "$cfg_allow_output_maxconnect" == "$NULL" ]; then
 $cfg_allow_output_all $cfg_allow_use_ipv4 \
 $cfg_allow_use_legacy $cfg_allow_output_maxconnect  $cmd_command_ip4tableslegacy -A OUTPUT \
 -m connlimit --connlimit-above $cfg_config_output_maxconnect  -j $cfg_config_close_deny \
--m comment --comment "output maxconnect" &> /dev/null
+-m comment --comment "output-maxconnect" &> /dev/null
 $cfg_allow_output_all $cfg_allow_use_ipv4 \
 $cfg_allow_use_nft $cfg_allow_output_maxconnect $cmd_command_ip4tablesnft   -A OUTPUT \
 -m connlimit --connlimit-above $cfg_config_output_maxconnect  -j $cfg_config_close_deny \
--m comment --comment "output maxconnect" &> /dev/null
+-m comment --comment "output-maxconnect" &> /dev/null
 ####
 ####
 ####  ipv6 limit conections numbers
@@ -13947,11 +13979,11 @@ $cfg_allow_use_nft $cfg_allow_output_maxconnect $cmd_command_ip4tablesnft   -A O
 $cfg_allow_output_all $cfg_allow_use_ipv6 \
 $cfg_allow_use_legacy $cfg_allow_output_maxconnect  $cmd_command_ip6tableslegacy -A OUTPUT \
 -m connlimit --connlimit-above $cfg_config_output_maxconnect  -j $cfg_config_close_deny \
--m comment --comment "output maxconnect" &> /dev/null
+-m comment --comment "output-maxconnect" &> /dev/null
 $cfg_allow_output_all $cfg_allow_use_ipv6 \
 $cfg_allow_use_nft $cfg_allow_output_maxconnect $cmd_command_ip6tablesnft   -A OUTPUT \
 -m connlimit --connlimit-above $cfg_config_output_maxconnect  -j $cfg_config_close_deny \
--m comment --comment "output maxconnect" &> /dev/null
+-m comment --comment "output-maxconnect" &> /dev/null
 ####
 fi
 ####
