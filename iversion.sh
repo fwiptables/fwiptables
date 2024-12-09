@@ -3455,10 +3455,8 @@ echo "$txt_text_md license-lgpl-v2 license-gpl-v2 $txt_text_md"
 ####  if expert commands
 ####
 if [ "$cfg_allow_expert_commands" == "no" ]
-then echo "$txt_text_md_md $txt_text_info \
-$cmd_name $cmd_version with expert deactived $txt_text_md"
-else echo "$txt_text_md_md $txt_text_info \
-$cmd_name $cmd_version with expert actived $txt_text_md"
+then echo "$txt_text_md .   #$cmd_name $cmd_version with expert deactived $txt_text_md"
+else echo "$txt_text_md .   #$cmd_name $cmd_version with expert actived $txt_text_md"
 fi
 ####
 ####
