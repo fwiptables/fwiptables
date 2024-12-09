@@ -222,8 +222,7 @@ cmd_command_ip4tableslegacy="$($cmd_where iptables-legacy)"
 cmd_command_ip4tablesnft="$($cmd_where iptables-nft)"
 cmd_command_ip6tableslegacy="$($cmd_where ip6tables-legacy)"
 cmd_command_ip6tablesnft="$($cmd_where ip6tables-nft)"
-cmd_command_iperf="$($cmd_where iperf)"
-cmd_command_iperf3="$($cmd_where iperf3)"
+cmd_command_iperf="$($cmd_where iperf3)"
 cmd_command_iw="$($cmd_where iw)"
 cmd_command_links="$($cmd_where links)"
 cmd_command_links2="$($cmd_where links2)"
@@ -425,7 +424,7 @@ txt_text_title_ok="$txt_text_stitle $txt_text_ok"
 txt_text_title_title="$txt_text_stitle $txt_text_title"
 txt_text_title_info="$txt_text_stitle $txt_text_info"
 txt_text_title_fail="$txt_text_stitle $txt_text_fail"
-txt_text_title_done="$text_text_title $txt_text_done"
+txt_text_title_done="$txt_text_stitle $txt_text_done"
 txt_text_tile_file="$txt_text_stitle $txt_text_file"
 txt_text_tile_done="$txt_text_stitle $txt_text_done"
 txt_text_title_folder="$txt_text_stitle $txt_text_folder"
@@ -7551,9 +7550,8 @@ exit; fi
 if [ "$cmd_first_option" == "speed-ip4" ] ; then
 ####
 ####
-echo "$txt_text_title_info  [ test speed ipv4 with iperf ] "
-echo "$txt_text_stitle $cmd_internal use iperf3"
-if [ "$cmd_command_iperf3" == "$NULL" ];
+echo "$txt_text_title_info  [ test speed ipv4 with iperf3 ] "
+if [ "$cmd_command_iperf" == "$NULL" ];
 then echo "$txt_text_title_fail install iperf3"; fi
 echo "$txt_text_title"
 # echo "$txt_text_stitle [ Working ] Saving firewall before speed-ip4"
@@ -7562,7 +7560,7 @@ $cmd_internal add-whitelist4 $cfg_server_ip_iperf_ipv4
 echo "$txt_text_title"
 echo "$txt_text_stitle [ Calculing speed .. ]"
 echo "$txt_text_stitle [ Working ] Conecting in ipv4 to $cfg_server_ip_iperf_ipv4 ]"
-$cmd_command_iperf3 -c $cfg_server_ip_iperf_ipv4 -p $cfg_server_port_iperf_ipv4 -4 -t 5
+$cmd_command_iperf -c "$cfg_server_ip_iperf_ipv4" -p "$cfg_server_port_iperf_ipv4" -4 -t 5 
 echo "$txt_text_title"
 echo "$txt_text_stitle [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip4 
@@ -7581,15 +7579,14 @@ if [ "$cmd_first_option" == "speed-ip6" ] ; then
 ####
 ####
 echo "$txt_text_title_info  [ test speed ipv6 with iperf3 ] "
-echo "$txt_text_stitle $cmd_internal use iperf3"
-if [ "$cmd_command_iperf3" == "$NULL" ];
+if [ "$cmd_command_iperf" == "$NULL" ];
 then echo "$txt_text_title_fail install iperf3"; fi
 $cmd_internal save before-speed-ip6 
 $cmd_internal add-whitelist6 $cfg_server_ip_iperf_ipv6
 echo "$txt_text_title"
 echo "$txt_text_stitle [ Calculing speed .. ]"
 echo "$txt_text_stitle [ Working ] Conecting in ipv6 to $cfg_server_ip_iperf_ipv4 ]"
-$cmd_command_iperf3 -c $cfg_server_ip_iperf_ipv6 -p $cfg_server_port_iperf_ipv6 -6 -t 5
+$cmd_command_iperf -c "$cfg_server_ip_iperf_ipv6" -p "$cfg_server_port_iperf_ipv6" -6 -t 5
 echo "$txt_text_title"
 echo "$txt_text_stitle [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip6 
