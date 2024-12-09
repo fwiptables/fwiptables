@@ -8640,9 +8640,9 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
-001 "$txt_text_title_md [ principal menu ] $txt_text_md $txt_text_title" \
-002 "$txt_text_title [ Info Options ] $txt_text_title" \
-003 "$txt_text_title [ Firewall List With Conceptual ] $txt_text_title" \
+001  "$txt_text_md [ Main menu       ]" \
+002  "$txt_text_md [ Info options    ]" \
+003  "$txt_text_md [ List conceptual ]" \
 004  "$txt_text_md ls4" \
 005  "$txt_text_md ls6"  \
 006  "$txt_text_md list-filter4" \
@@ -8718,9 +8718,9 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
-001 "$txt_text_title_md [ principal menu ] $txt_text_md $txt_text_title" \
-002 "$txt_text_title [ Info Options     ] $txt_text_title" \
-003 "$txt_text_title [ Firewall Numeral ] $txt_text_title" \
+001  "$txt_text_md [ main menu    ]" \
+002  "$txt_text_md [ Info options ]" \
+003  "$txt_text_md [ List numeral ]" \
 004  "$txt_text_md lsn4" \
 005  "$txt_text_md lsn6"  \
 006  "$txt_text_md listn-filter4" \
@@ -8796,9 +8796,9 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
-001  "$txt_text_md [ principal menu ] $txt_text_md $txt_text_title" \
-002  "$txt_text_md [ Info Options   ] $txt_text_title" \
-003  "$txt_text_md [ Firewall rule  ] $txt_text_title" \
+001  "$txt_text_md [ Main menu    ]" \
+002  "$txt_text_md [ Info options ]" \
+003  "$txt_text_md [ wallrule     ]" \
 022  "$txt_text_md return-port-tcp" \
 023  "$txt_text_md return-port-udp" \
 024  "$txt_text_md log-port-tcp" \
@@ -8905,9 +8905,9 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
-001 "$txt_text_title_md [ principal menu ] $txt_text_md $txt_text_title" \
-002 "$txt_text_title [ Info Options     ] $txt_text_title" \
-003 "$txt_text_title [ Firewall Control ] $txt_text_title" \
+001  "$txt_text_md [ Main menu    ]" \
+002  "$txt_text_md [ Info Options ]" \
+003  "$txt_text_md [ Wallcontrol  ]" \
 004  "$txt_text_md stop" \
 005  "$txt_text_md continue" \
 006  "$txt_text_md reset" \
@@ -8994,9 +8994,9 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
-001 "$txt_text_title_md [ principal menu ] $txt_text_md $txt_text_title" \
-002 "$txt_text_title [ Info Options        ] $txt_text_title" \
-003 "$txt_text_title [ Firewall Wallinet ] $txt_text_title" \
+001 "$txt_text_md [ Main menu    ]" \
+002 "$txt_text_md [ Info Options ]" \
+003 "$txt_text_md [ Wallinet     ]" \
 010 "$txt_text_md wallinet-update" \
 011 "$txt_text_md wallinet-list" \
 012 "$txt_text_md wallinet-load" \
@@ -9049,9 +9049,9 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
-001 "$txt_text_title_md [ principal menu ] $txt_text_md $txt_text_title" \
-002 "$txt_text_title [ Info Options        ] $txt_text_title" \
-003 "$txt_text_title [ Firewall Wallcustom ] $txt_text_title" \
+001  "$txt_text_md [ Main menu    ]" \
+002  "$txt_text_md [ Info options ]" \
+003  "$txt_text_md [ Wallcustom   ]" \
 004  "$txt_text_md load-custom" \
 005  "$txt_text_md wallinet-clone" \
 006  "$txt_text_md new-full-custom" \
@@ -9144,9 +9144,9 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
-001 "$txt_text_title_md [ principal menu ] $txt_text_md $txt_text_title" \
-002 "$txt_text_title [ Info Options     ] $txt_text_title" \
-003 "$txt_text_title [ firewall wallutils ] $txt_text_title" \
+001  "$txt_text_md [ Main menu    ]" \
+002  "$txt_text_md [ Info options ]" \
+003  "$txt_text_md [ Wallutils    ]" \
 011  "$txt_text_md preferences-read" \
 012  "$txt_text_md preferences-edit" \
 013  "$txt_text_md preferences-regen" \
