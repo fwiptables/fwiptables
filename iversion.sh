@@ -3560,6 +3560,33 @@ exit; fi
 ####
 ####
 #### :rutina-final-free:
+##########    firewall-wallrule: options for fwiptables firewall      ##########
+#### :rutina-inicial-firewall-wallrule:
+####
+####
+if   [ "$cmd_first_option" == "firewall-wallrule" ]; then
+####
+####
+echo "$txt_text_md_md add-whitelist . add host to allowed, at several comma seperated $txt_text_md"
+echo "$txt_text_md_md add-blacklist . add host to drop, at several comma seperated $txt_text_md"
+echo "$txt_text_md_md add-shield-tcp . add shield tries tcp 4/6, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md allow-port-tcp . add port tcp to allow, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md allow-port-udp . add port udp to allow, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md drop-port-tcp . add port tcp to drop, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md drop-port-udp . add port udp to drop, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md return-port-tcp . continue at next rule, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md return-port-udp . continue at next rule, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md log-port-tcp . log rule, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md log-port-udp . log rule, allowed range and comma $txt_text_md"
+echo "$txt_text_md_md del-commented . del rules con one commented choosed $txt_text_md"
+echo "$txt_text_md_md drop-string . drop packages with string choosed $txt_text_md"
+echo "$txt_text_md_md limit-minute . limit bandwidth with packages each minute $txt_text_md"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-firewall-wallrule:
 ##########    firewall-wallcontrol: options for fwiptables firewall      ##########
 #### :rutina-inicial-firewall-wallcontrol:
 ####
@@ -3589,40 +3616,6 @@ echo "$txt_text_md_md tinyserver-tcp . firewall server ports tcp, with optional 
 echo "$txt_text_md_md tinyserver-udp . firewall server ports udp, with optional clients $txt_text_md"
 echo "$txt_text_md_md miniserver-tcp . firewall server ports tcp, with optional clients $txt_text_md"
 echo "$txt_text_md_md miniserver-udp . firewall server ports udp, with optional clients $txt_text_md"
-echo "$txt_text_md_md add-whitelist . add host to allowed, at several comma seperated $txt_text_md"
-echo "$txt_text_md_md add-blacklist . add host to drop, at several comma seperated $txt_text_md"
-echo "$txt_text_md_md add-shield-tcp . add shield tries tcp 4/6, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md allow-port-tcp . add port tcp to allow, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md allow-port-udp . add port udp to allow, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md drop-port-tcp . add port tcp to drop, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md drop-port-udp . add port udp to drop, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md return-port-tcp . continue at next rule, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md return-port-udp . continue at next rule, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md log-port-tcp . log rule, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md log-port-udp . log rule, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md add-whitelist4 . add host ip4 to allowed, at several comma seperated $txt_text_md"
-echo "$txt_text_md_md add-whitelist6 . add host ip6 to allowed, at several comma seperated $txt_text_md"
-echo "$txt_text_md_md add-blacklist4 . add host ip4 to droped, at several comma seperated $txt_text_md"
-echo "$txt_text_md_md add-blacklist6 . add host ip6 to droped, at several comma seperated $txt_text_md"
-echo "$txt_text_md_md allow-port-tcp4 . add port ip4 to allow, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md allow-port-tcp6 . add port ip6 to allow, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md allow-port-udp4 . add port ip4 to allow, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md allow-port-udp6 . add port ip6 to allow, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md drop-port-tcp4 . add port ip4 to drop, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md drop-port-tcp6 . add port ip6 to drop, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md drop-port-udp4 . add port ip4 to drop, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md drop-port-udp6 . add port ip6 to drop, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md return-port-tcp4 . continue at next rule, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md return-port-tcp6 . continue at next rule, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md return-port-udp4 . continue at next rule, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md return-port-udp6 . continue at next rule, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md log-port-tcp4 . log rule, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md log-port-tcp6 . log rule, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md log-port-udp4 . log rule, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md log-port-udp6 . log rule, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md add-shield-tcp4 . add shield tries tcp4, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md add-shield-tcp6 . add shield tries tcp6, allowed range and comma $txt_text_md"
-echo "$txt_text_md_md del-commented . del rules con one commented choosed $txt_text_md"
 ####
 ####
 exit; fi
@@ -3968,6 +3961,7 @@ $cmd_internal optional-output
 $cmd_internal firewall-listconceptual
 $cmd_internal firewall-listnumeral
 $cmd_internal firewall-wallcontrol
+$cmd_internal firewall-wallrule
 $cmd_internal firewall-wallcustom
 $cmd_internal firewall-wallinet
 $cmd_internal firewall-wallutils
