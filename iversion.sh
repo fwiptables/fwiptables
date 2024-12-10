@@ -91,7 +91,7 @@ fi
 #### The number version firewall
 cmd_year="24"                                                 # Number year version
 cmd_month="12"                                                # Number mouth version
-cmd_letter="C"                                                # Number letter version
+cmd_letter="B"                                                # Number letter version
 cmd_devel="-dev"
 cmd_version="$cmd_year-$cmd_month-$cmd_letter$cmd_devel"      # Final date version
 cmd_released="Year 20$cmd_year / Month $cmd_month"            # Source date version
@@ -1867,7 +1867,6 @@ echo "#logcmd=tree-cmd"
 echo "#autolog=tree-cmd"
 echo "#ver=version"
 echo "#all-names=names"
-echo "#list-custom=names-custom"
 echo "#cat-logcmd=tree-cmd"
 echo "#address4=info-ip4"
 echo "#address6=info-ip6"
