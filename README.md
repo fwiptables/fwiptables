@@ -1,4 +1,4 @@
-### fwiptables intro   
+## fwiptables intro   
   
       Readme
       Version
@@ -9,7 +9,7 @@
       Examples
       Options
   
-### fwiptables readme   
+## fwiptables readme   
      [ fwiptables readme ]                  
         
       fwiptables. Firewall With iptables.
@@ -53,10 +53,10 @@
         
       uninstall TYPE: /usr/bin/fwiptables uninstall        
   
-### fwiptables version   
+## fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-12-A                
+         Version Firewall: 24-12-B                
         Released Firewall: Year 2024 / Month 12               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
@@ -78,14 +78,14 @@
              Email Report: fwiptables@gmx.com                
           License Program: LGPL v2, GPL v2                
   
-### fwiptables about   
+## fwiptables about   
       File:          fwiptables
       Description:   Command Fran FireWall fwiptables Generator
       Author:        Francisco Garcia <fwiptables@gmx.com>
       Copyright:     (c) 2020-2024 Francisco Garcia <fwiptables@gmx.com>
       launch:        /usr/bin/fwiptables license-lgpl-v2|license-gpl-v2
   
-### fwiptables hints   
+## fwiptables hints   
       [Iptables firewall manage commands]   
   
         Legacy or nft: whith one of them is sufficent   
@@ -118,14 +118,14 @@
             ipv6-icmp: Necesary protocol in ipv6   
            ipv4 ports: ipv6 works too with old ipv4 ports   
   
-### fwiptables compile   
+## fwiptables compile   
       BASH SCRIPT WORKS fully.      
       But if your desire is compiling...     
       Necesary fwiptables in source script bash   
       Download and install obash from oficial web internet   
       Run: obash -s -c -o ./destination.bin ./source-bash.sh   
   
-### fwiptables depends   
+## fwiptables depends   
     [ Configuration files ]   
       Directory  data:         /root/.config/fwiptables   
       Directory cache:         /root/.cache/fwiptables   
@@ -136,9 +136,9 @@
       Folder logcmd:           /root/.config/fwiptables/fwiptables-logcmd   
         
     [ Preferences files ]     
-      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-12-A.conf
-      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-12-A.conf
-      my-note:                 /root/.config/fwiptables/fwiptables-preferences/default-usernotes-all-versions.txt
+      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-12-B.conf
+      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-12-B.conf
+      own-notes:               /root/.config/fwiptables/fwiptables-preferences/default-usernotes-all-versions.txt
         
     [ optional output ]       
       dialog cli:              /usr/bin/dialog   
@@ -179,8 +179,8 @@
         
       Found all posible utils: fwiptables utils   
   
-### < alias from > examples < alias to > options-examples
-### fwiptables options-examples   
+### <alias-from> examples <alias-to> options-examples
+## fwiptables options-examples   
     [ One example with input-established ]              
          
        Launch: input-established                              
@@ -222,7 +222,7 @@
        Explain: List firewall saved        
        /usr/bin/fwiptables names                 
        Explain: List configs saved         
-       /usr/bin/fwiptables names-custom          
+       /usr/bin/fwiptables list-custom          
        Explain: Get info speed ipv4        
        /usr/bin/fwiptables speed-ip4             
        Explain: Show listen sockets        
@@ -264,44 +264,45 @@
        All options in window shell             
        /usr/bin/fwiptables gui-shell-yad         
   
-### fwiptables options   
+## fwiptables options   
    fwiptables [optional-output] first_option [second_option]   
-      <optional-output>   
+   ...   optional-output   
    [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]   
-   [ cli-dialog cli-whiptail cli-menu cli-menu-compact ]   
-   [ cli-menu-dialog cli-menu-compact-dialog  ]   
-   [ cli-menu-whiptail cli-menu-compact-whiptail ]   
-   [ gui-zenity gui-yad gui-menu gui-menu-zenity gui-menu-yad ]   
-   [ gui-roll-zenity gui-shell gui-shell-zenity gui-shell-yad ]   
-      <firewall-listconceptual>   
+   [ cli-dialog cli-whiptail gui-zenity gui-yad ]   
+   [ cli-menu cli-menu-dialog cli-menu-whiptail ]   
+   [ gui-menu gui-menu-zenity gui-menu-yad gui-roll-zenity ]   
+   [ gui-shell gui-shell-zenity gui-shell-yad ]   
+   ...   firewall-listconceptual   
    ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6   
    list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4   
    list-security6 list-ebtables list-arptables list-alltables   
-      <firewall-listnumeral>   
+   ...   firewall-listnumeral   
    lsn4 lsn6 statusn listn-filter4 listn-filter6 listn-nat4   
    listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6   
    listn-security4 listn-security6 listn-alltables   
-      <firewall-wallcontrol>   
+   ...   firewall-wallcontrol   
    stop continue reset show save load names actual eraserules   
    eraserules4 eraserules6 without-connection input-permisive   
    input-established wizard-tiny wizard-mini wizard-full   
    tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp   
+   ...   firewall-wallrule   
    drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp   
    return-port-tcp return-por-udp log-port-tcp log-port-udp   
-   add-whitelist add-blacklist add-shield-tcp   
-      <firewall-wallcustom>   
+   del-commented add-whitelist add-blacklist add-shield-tcp   
+   drop-string limit-minute   
+   ...   firewall-wallcustom   
    new-full-custom nueva-completa-custom new-mini-custom   
    nueva-mini-custom new-tiny-custom nueva-diminuta-custom   
    wallinet-clone load-custom loadmini-custom loadtiny-custom   
-   show-custom modify-custom del-custom names-custom   
-      <firewall-wallinet>   
+   show-custom modify-custom del-custom list-custom   
+   ...   firewall-wallinet   
    wallinet-update wallinet-list wallinet-load wallinet-show   
-      <firewall-wallutils>   
-   preferences-edit alias-edit options info-options my-note  
-   cat-logcmd tree-pdf tree-log tree-conf tree-cache clean-cache   
+   ...   firewall-wallutils   
+   preferences-edit alias-edit options info-options own-notes  
+   tree-cmd tree-pdf tree-log tree-conf tree-cache clean-cache   
    ip4 ip6 route4 route6 info-ip4 info-ip6 info-nodes sockets   
    lsof free ip-forward utils date resolve speed-ip4 speed-ip6   
    log-stat web intro depends uninstall install upgrade hints   
    variables examples info code expert donate about version   
    license-lgpl-v2 license-gpl-v2   
-      < info > fwiptables 24-12-A with expert deactived   
+   ...   #fwiptables 24-12-B with expert deactived   
