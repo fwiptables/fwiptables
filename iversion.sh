@@ -9281,9 +9281,8 @@ if [ "$cmd_command_zenity" == "$NULL" ] ;
 then echo $txt_message_without_guiroll ; exit ; fi
 ####
 ####
-gui_menu="Info|Firewall-List-With-Conceptual|\
-Firewall-List-With-Numeral|firewall-wallcontrol|\
-firewall-wallcustom|firewall-wallinet|firewall-wallutils"
+gui_menu="Info|List-conceptual|List-numeral|Wallcontrol|\
+Wallrule|Wallcustom|Wallinet|Wallutils"
 selection_menu="$($cmd_command_zenity --forms \
 --text=gui-roll \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
@@ -9301,17 +9300,19 @@ Info)
 $cmd_internal gui-zenity info ; exit ;;
 ####
 ####
-Firewall-List-With-Conceptual)
+List-conceptual)
 $cmd_internal gui-roll-zenity-firewall-listconceptual ; exit ;;
-Firewall-List-With-Numeral)
+List-numeral)
 $cmd_internal gui-roll-zenity-firewall-listnumeral ; exit ;;
-firewall-wallcontrol)
+Wallcontrol)
 $cmd_internal gui-roll-zenity-firewall-wallcontrol ; exit ;;
-firewall-wallcustom)
+Wallrule)
+$cmd_internal gui-roll-zenity-firewall-wallrule ; exit ;;
+Wallcustom)
 $cmd_internal gui-roll-zenity-firewall-wallcustom ; exit ;;
-firewall-wallinet)
+Wallinet)
 $cmd_internal gui-roll-zenity-firewall-wallinet ; exit ;;
-firewall-wallutils)
+Wallutils)
 $cmd_internal gui-roll-zenity-firewall-wallutils ; exit ;;
 esac
 ####
@@ -9336,11 +9337,7 @@ gui_menu="gui-principal-menu|gui-info-menu|\
 stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|wizard-tiny|wizard-mini|wizard-full|\
 without-connection|input-permisive|input-established|\
-tinyserver-tcp|tinyserver-udp|miniserver-tcp|miniserver-udp|\
-return-port-tcp|return-port-udp|log-port-tcp|log-port-udp|\
-allow-port-tcp|allow-port-udp|\
-drop-port-tcp|drop-port-udp|\
-add-whitelist|add-blacklist|add-shield-tcp"
+tinyserver-tcp|tinyserver-udp|miniserver-tcp|miniserver-udp"
 selection_menu="$($cmd_command_zenity --forms \
 --text=gui-roll-firewall-wallcontrol \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
@@ -9410,6 +9407,45 @@ miniserver-udp)serverports="$($cmd_command_zenity --entry \
 --entry-text=server-ports-udp)"                         
 $cmd_internal gui-zenity miniserver-udp $serverports     
 $cmd_internal gui-zenity list4                         ;;
+esac
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-gui-roll-zenity-firewall-wallcontrol:
+##########    gui-roll-zenity-firewall-wallrule: gui with roll  ##########
+#### :rutina-inicial-gui-roll-zenity-firewall-wallrule:
+####
+####
+if [ "$cmd_first_option" == "gui-roll-zenity-firewall-wallrule" ]
+####
+####
+then echo $txt_head_waiting_gui ;
+if [ "$cmd_command_zenity" == "$NULL" ]
+then echo $txt_message_without_guiroll ; exit ; fi
+####
+####
+gui_menu="gui-principal-menu|gui-info-menu|\
+return-port-tcp|return-port-udp|log-port-tcp|log-port-udp|\
+allow-port-tcp|allow-port-udp|drop-port-tcp|drop-port-udp|\
+add-whitelist|add-blacklist|add-shield-tcp|\
+del-commented|drop-string|limit-minute"
+selection_menu="$($cmd_command_zenity --forms \
+--text=gui-roll-firewall-wallcontrol \
+--title=Gui-roll-With-$cmd_internal-$cmd_version \
+--add-combo=$cmd_first_option \
+--combo-values=$gui_menu)"
+selection_final="$(echo $selection_menu | $cmd_command_sed 's/\|//g')"
+#### 
+####
+case "$selection_final" in
+1) $cmd_command_zenity \
+--width=$cfg_config_graphicall_width \
+--height=$cfg_config_graphicall_height \
+--info --text=good-bye ; exit ;;
+gui-principal-menu)$cmd_internal gui-roll-zenity ;;
+gui-info-menu)$cmd_internal -gui-zenity firewall-wallcontrol ;;
 return-port-tcp)
 port="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -9481,18 +9517,40 @@ host="$($zenity --entry \
 $cmd_internal gui-zenity add-blacklist  $host          
 $cmd_internal gui-zenity list4                        ;;    
 add-shield-tcp)
-port="$($cmd_command_zenity --entry \
+port="$($cfg_favorite_basename_graphicalldialog --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---title=port --entry-text=port)"
-$cmd_internal gui-zenity add-shield-tcp $port           
-$cmd_internal gui-zenity list4                        ;; 
+--title=port \
+--entry-text=port)"
+$cmd_internal gui-$cmd_second_option add-shield-tcp $port           
+$cmd_internal gui-$cmd_second_option list4                        ;;
+del-commented)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=comment)"
+$cmd_internal gui-$cmd_second_option del-commented $port           
+$cmd_internal gui-$cmd_second_option list4                        ;;
+drop-string)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=string)"
+$cmd_internal gui-$cmd_second_option drop-string $port           
+$cmd_internal gui-$cmd_second_option list4                        ;;
+limit-minute)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=limit)"
+$cmd_internal gui-$cmd_second_option limit-minute $port           
+$cmd_internal gui-$cmd_second_option list4                        ;;
 esac
 ####
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-zenity-firewall-wallcontrol:
+#### :rutina-final-gui-roll-zenity-firewall-wallrule:
 ##########    gui-roll-zenity-firewall-listconceptual: gui with roll  ##########
 #### :rutina-inicial-gui-roll-zenity-firewall-listconceptual:
 ####
@@ -9855,8 +9913,8 @@ echo ; else cfg_second_option="$cfg_favorite_basename_graphicalldialog" ; echo ;
 echo "$txt_text_stitle The used gui in $cmd_first_option is $cmd_second_option" ;
 ####
 ####
-gui_menu="Firewall-listconceptual|Firewall-listnumeral|firewall-wallcontrol|\
-Firewall-wallcustom|Firewall-wallinet|firewall-wallutils|"
+gui_menu="Firewall-listconceptual|Firewall-listnumeral|Firewall-wallcontrol|\
+Firewall-wallrule|Firewall-wallcustom|Firewall-wallinet|Firewall-wallutils|"
 selection_menu="$(echo $gui_menu | $cmd_command_sed 's/|/ /g')"
 selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width \
@@ -9879,13 +9937,15 @@ Firewall-listconceptual*)
 $cmd_internal gui-menu-firewall-listconceptual $cmd_second_option ;;
 Firewall-listnumeral*)
 $cmd_internal gui-menu-firewall-listnumeral $cmd_second_option ;;
-firewall-wallcontrol*)
+Firewall-wallcontrol*)
 $cmd_internal gui-menu-firewall-wallcontrol $cmd_second_option ;;
+Firewall-wallrule*)
+$cmd_internal gui-menu-firewall-wallrule $cmd_second_option ;;
 Firewall-wallcustom*)
 $cmd_internal gui-menu-firewall-wallcustom $cmd_second_option ;;
 Firewall-wallinet*)
 $cmd_internal gui-menu-firewall-wallinet $cmd_second_option ;;
-firewall-wallutils*)
+Firewall-wallutils*)
 $cmd_internal gui-menu-firewall-wallutils $cmd_second_option ;;
 esac
 ####
@@ -9998,6 +10058,49 @@ miniserver-udp*)serverports="$($cfg_favorite_basename_graphicalldialog --entry \
 --entry-text=server-ports-udp)"                                 
 $cmd_internal gui-$cmd_second_option miniserver-udp $serverports     
 $cmd_internal gui-$cmd_second_option list4                         ;;
+esac
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-gui-menu-firewall-wallcontrol:
+##########    gui-menu-firewall-wallrule: gui with menu   ##########
+#### :rutina-inicial-gui-menu-firewall-wallrule:
+####
+####
+if   [ "$cmd_first_option" == "gui-menu-firewall-wallrule" ]
+then echo $txt_head_waiting_gui ;
+if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
+echo ; else cfg_second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
+echo "$txt_text_stitle The used gui in $cmd_first_option is $cmd_second_option" ;
+####
+####
+gui_menu="gui-principal-menu|gui-info-menu|\
+return-port-tcp|return-port-udp|log-port-tcp|log-port-udp|\
+allow-port-tcp|allow-port-udp|drop-port-tcp|drop-port-udp|\
+del-commented|drop-string|limit-minute|\
+add-whitelist|add-blacklist|add-shield-tcp"
+selection_menu="$(echo $gui_menu | $cmd_command_sed 's/|/ /g')"
+selection_final="$($cmd_second_option \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--column=$cmd_first_option \
+--text=$cmd_first_option \
+--title=Gui-menu-With-$cmd_internal-$cmd_version \
+--list $selection_menu)"
+echo "$txt_text_stitle The option selected:  $final" ;
+####
+####
+if [ "$cmd_second_option" == "yad" ]; then
+final="$(echo $selection_final | $cmd_command_sed 's/|/ /g')"
+else final="$selection_final" ; fi
+echo ; echo "$txt_text_stitle option selected: $final" ; echo ;
+#### 
+####
+case "$final" in
+1*) exit ;;
+gui-principal-menu*) $cmd_internal gui-menu-$cmd_second_option  ;;
+gui-info-menu*)$cmd_internal gui-$cmd_second_option firewall-wallrule ;;
 return-port-tcp*)
 port="$($cfg_favorite_basename_graphicalldialog --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -10074,14 +10177,35 @@ port="$($cfg_favorite_basename_graphicalldialog --entry \
 --title=port \
 --entry-text=port)"
 $cmd_internal gui-$cmd_second_option add-shield-tcp $port           
-$cmd_internal gui-$cmd_second_option list4                        ;;    
+$cmd_internal gui-$cmd_second_option list4                        ;;
+del-commented*)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=comment)"
+$cmd_internal gui-$cmd_second_option del-commented $port           
+$cmd_internal gui-$cmd_second_option list4                        ;;
+drop-string*)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=string)"
+$cmd_internal gui-$cmd_second_option drop-string $port           
+$cmd_internal gui-$cmd_second_option list4                        ;;
+limit-minute*)
+port="$($cfg_favorite_basename_graphicalldialog --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=port \
+--entry-text=limit)"
+$cmd_internal gui-$cmd_second_option limit-minute $port           
+$cmd_internal gui-$cmd_second_option list4                        ;;
 esac
 ####
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-firewall-wallcontrol:
+#### :rutina-final-gui-menu-firewall-wallrule:
 ##########    gui-menu-firewall-listconceptual: gui with menu   ##########
 #### :rutina-inicial-gui-menu-firewall-listconceptual:
 ####

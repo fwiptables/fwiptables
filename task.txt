@@ -4,4 +4,3 @@ Planed fixing bugs, Planed feacture adding .
 
 ## The planed fixed commit:     
 gui-menu: update
-speed-ip4,speed-ip6: update
