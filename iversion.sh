@@ -92,7 +92,7 @@ fi
 cmd_year="24"                                                 # Number year version
 cmd_month="12"                                                # Number mouth version
 cmd_letter="B"                                                # Number letter version
-cmd_devel="-dev"
+cmd_devel=""
 cmd_version="$cmd_year-$cmd_month-$cmd_letter$cmd_devel"      # Final date version
 cmd_released="Year 20$cmd_year / Month $cmd_month"            # Source date version
 #### The data version firewall
@@ -1818,8 +1818,8 @@ exit; fi
 if [ "$cmd_first_option" == "alias-regen" ] ; then 
 ####
 ####
-$cmd_internal alias-example | \
-grep -iv " alias-example" &> $cmd_file_default_alias
+$cmd_internal alias-generator | \
+grep -iv " alias-generator" &> $cmd_file_default_alias
 ####
 ####
 exit ; fi
@@ -1840,11 +1840,11 @@ exit ; fi
 ####
 ####
 #### :rutina-final-alias-read:
-##########    ALIAS CONFIG EXAMPLE alias-example:
-#### :rutina-inicial-alias-example:
+##########    ALIAS CONFIG EXAMPLE alias-generator:
+#### :rutina-inicial-alias-generator:
 ####
 ####
-if [ "$cmd_first_option" == "alias-example" ] ; then 
+if [ "$cmd_first_option" == "alias-generator" ] ; then 
 ####
 ####
 echo "####  program: $cmd_internal $cmd_version"
@@ -1867,6 +1867,7 @@ echo "#logcmd=tree-cmd"
 echo "#autolog=tree-cmd"
 echo "#ver=version"
 echo "#all-names=names"
+echo "#list-custom=names-custom"
 echo "#cat-logcmd=tree-cmd"
 echo "#address4=info-ip4"
 echo "#address6=info-ip6"
@@ -1883,7 +1884,7 @@ echo "#clone-wallinet=wallinet-clone"
 exit ; fi
 ####
 ####
-#### :rutina-final-alias-example:
+#### :rutina-final-alias-generator:
 ##########    alias-edit: modify preferences   ##########
 #### :rutina-inicial-alias-edit:
 ####
@@ -1933,19 +1934,19 @@ exit; fi
 if [ "$cmd_first_option" == "preferences-regen" ] ; then
 ####
 ####
-$cmd_internal preferences-example | \
-grep -iv " preferences-example " &> $cmd_file_default_preferences
+$cmd_internal preferences-generator | \
+grep -iv " preferences-generator " &> $cmd_file_default_preferences
 ####
 ####
 exit; fi
 ####
 ####
 #### :rutina-final-preferences-regen:
-##########   preferences-example:  regen preferences       ##########
-#### :rutina-inicial-preferences-example:
+##########   preferences-generator:  regen preferences       ##########
+#### :rutina-inicial-preferences-generator:
 ####
 ####
-if [ "$cmd_first_option" == "preferences-example" ] ; then
+if [ "$cmd_first_option" == "preferences-generator" ] ; then
 ####
 ####
 echo "####  program: $cmd_internal $cmd_version"
@@ -2009,14 +2010,14 @@ echo "$txt_text_stitle $text_text_title repository firewall-wallinet, with file 
 echo "cmd_web_repository_wallinet=$cmd_web_repository_wallinet "
 echo "$txt_text_title"
 echo "$txt_text_title_title default graphicall dimension"
-echo "cfg_config_graphicall_width=800                      ## default width 800"
+echo "cfg_config_graphicall_width=800                      ## default width  800"
 echo "cfg_config_graphicall_height=600                     ## default height 600"
 ####
 ####
 exit ; fi
 ####
 ####
-#### :rutina-final-preferences-example:
+#### :rutina-final-preferences-generator:
 ##########    resolve : get net info               ##########
 #### :rutina-inicial-resolve:
 ####
@@ -2635,7 +2636,7 @@ echo "$txt_text_md_md  $cmd_internal depends             $txt_text_md"
 echo "$txt_text_md_md  Explain: List firewall saved      $txt_text_md"
 echo "$txt_text_md_md  $cmd_internal names               $txt_text_md"  
 echo "$txt_text_md_md  Explain: List configs saved       $txt_text_md"
-echo "$txt_text_md_md  $cmd_internal names-custom        $txt_text_md"  
+echo "$txt_text_md_md  $cmd_internal list-custom        $txt_text_md"  
 echo "$txt_text_md_md  Explain: Get info speed ipv4      $txt_text_md"
 echo "$txt_text_md_md  $cmd_internal speed-ip4           $txt_text_md"  
 echo "$txt_text_md_md  Explain: Show listen sockets      $txt_text_md"
@@ -3439,7 +3440,7 @@ echo "$txt_text_md ...   firewall-wallcustom $txt_text_md"
 echo "$txt_text_md new-full-custom nueva-completa-custom new-mini-custom $txt_text_md"
 echo "$txt_text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom $txt_text_md"
 echo "$txt_text_md wallinet-clone load-custom loadmini-custom loadtiny-custom $txt_text_md"
-echo "$txt_text_md show-custom modify-custom del-custom names-custom $txt_text_md"
+echo "$txt_text_md show-custom modify-custom del-custom list-custom $txt_text_md"
 echo "$txt_text_md ...   firewall-wallinet $txt_text_md"
 echo "$txt_text_md wallinet-update wallinet-list wallinet-load wallinet-show $txt_text_md"
 echo "$txt_text_md ...   firewall-wallutils $txt_text_md"
@@ -3497,11 +3498,11 @@ exit; fi
 ####
 ####
 #### :rutina-final-code:
-##########    names-custom: list some config       ##########
-#### :rutina-inicial-names-custom:
+##########    list-custom: list some config       ##########
+#### :rutina-inicial-list-custom:
 ####
 ####
-if [ "$cmd_first_option" == "names-custom" ];  then
+if [ "$cmd_first_option" == "list-custom" ];  then
 ####
 ####
 #### show names
@@ -3517,7 +3518,7 @@ echo "$txt_text_stitle [ OK CFG FILES NAMES ] [ Use: $cmd_internal load-custom f
 exit; fi
 ####
 ####
-#### :rutina-final-names-custom:
+#### :rutina-final-list-custom:
 ##########    text-pause: do pause     ##########
 #### :rutina-inicial-text-pause:
 ####
@@ -3708,7 +3709,7 @@ echo "$txt_text_md_md show-custom . show config-file choosed $txt_text_md"
 echo "$txt_text_md_md modify-custom . modify config-file choosed $txt_text_md"
 echo "$txt_text_md_md load-custom . launch a one one-file saved custom $txt_text_md" 
 echo "$txt_text_md_md del-custom . delete config-file choosed $txt_text_md"
-echo "$txt_text_md_md names-custom . show the names for all config-files $txt_text_md"
+echo "$txt_text_md_md list-custom . show the names for all config-files $txt_text_md"
 ####
 ####
 exit; fi
@@ -5194,7 +5195,7 @@ if [ "$cmd_first_option" == "modify-custom" ]; then
 ####
 ###
 if [ ! -f "$cmd_default_directory_custom/$cmd_second_option" ] ; then
-$cmd_internal names-custom
+$cmd_internal list-custom
 echo "$txt_text_md $txt_text_info [ usage: ] [ $cmd_internal modify-custom config ]"
 exit; fi
 ####
@@ -9056,7 +9057,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 012  "$txt_text_md show-custom" \
 013  "$txt_text_md modify-custom" \
 014  "$txt_text_md del-custom" \
-015  "$txt_text_md names-custom" \
+015  "$txt_text_md list-custom" \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
@@ -9064,7 +9065,7 @@ case $menuprincipal in
 001) clear ; $cmd_internal cli-menu $cfg_favorite_base_cli ;;
 002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
 003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-wallcustom ;;
-004) clear ; $cmd_internal txt names-custom
+004) clear ; $cmd_internal txt list-custom
 read -p "Input the custom name to load # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal load-custom $archivo ;;
@@ -9092,15 +9093,15 @@ $cmd_internal nueva-diminuta-custom $archivo ;;
 012) clear ; read -p "Input the custom to show config # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal show-custom $archivo ;;
-013) clear ; $cmd_internal names-custom
+013) clear ; $cmd_internal list-custom
 read -p "Input the custom name to modify # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal modify-custom $archivo ;;
-014) clear ; $cmd_internal names-custom
+014) clear ; $cmd_internal list-custom
 read -p "Input the custom name to delete # " archivo
 archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
 $cmd_internal del-custom $archivo ;;
-015) clear ; $cmd_internal txt names-custom ;;
+015) clear ; $cmd_internal txt list-custom ;;
 *)        ;;
 esac
 ################################################################################
@@ -9672,7 +9673,7 @@ then echo $txt_message_without_guiroll ; exit ; fi
 gui_menu="gui-principal-menu|gui-info-menu|load-custom|\
 wallinet-clone|new-full-custom|nueva-completa-custom|\
 new-mini-custom|nueva-mini-custom|new-tiny-custom|nueva-diminuta-custom|\
-names-custom|show-custom|modify-custom|del-custom|templates-regen"
+list-custom|show-custom|modify-custom|del-custom|templates-regen"
 selection_menu="$($cmd_command_zenity --forms \
 --text=gui-roll-firewall-wallcustom \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
@@ -9729,8 +9730,8 @@ archivo="$($cmd_command_zenity --entry \
 --title=nueva-mini-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
 $cmd_internal -gui-zenity nueva-diminuta-custom $archivo ;;
-names-custom)
-$cmd_internal -gui-zenity names-custom ;;
+list-custom)
+$cmd_internal -gui-zenity list-custom ;;
 show-custom)
 archivo="$($cmd_command_zenity --entry \ 
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -10343,7 +10344,7 @@ load-custom|wallinet-clone|\
 new-full-custom|nueva-completa-custom|\
 new-mini-custom|nueva-mini-custom|\
 new-tiny-custom|nueva-diminuta-custom|\
-names-custom|show-custom|modify-custom|\
+list-custom|show-custom|modify-custom|\
 del-custom|templates-regen"
 selection_menu="$(echo $gui_menu | $cmd_command_sed 's/|/ /g')"
 selection_final="$($cmd_second_option \
@@ -10406,7 +10407,7 @@ nueva-diminuta-custom*) archivo="$($cmd_second_option --entry \
 --title=nueva-diminuta-custom \
 --entry-text=Introduce_el_nombre_del_nuevo_archivo_cfg)" ;
 $cmd_internal gui-$cmd_second_option nueva-diminuta-custom $archivo ;;
-names-custom*) $cmd_internal gui-menu-$cmd_second_option names-custom ;;
+list-custom*) $cmd_internal gui-menu-$cmd_second_option list-custom ;;
 show-custom*) archivo="$($cmd_second_option --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=show-custom \
@@ -10611,7 +10612,7 @@ cfg_name_firewall="$cmd_second_option" ;
 ####
 #### prepare load-custom
 if [ ! -f "$cmd_default_directory_custom/$cmd_second_option" ]
-then  $cmd_internal names-custom ; exit; fi
+then  $cmd_internal list-custom ; exit; fi
 ####
 ####
 #### configure load-custom variables if there are
@@ -10642,7 +10643,7 @@ then source $cmd_default_directory_custom/$cmd_second_option ; fi
 ####
 ####
 if [ ! -f "$cmd_default_directory_custom/$cmd_second_option" ]
-then  $cmd_internal names-custom ; exit; fi
+then  $cmd_internal list-custom ; exit; fi
 ####
 ####
 fi
