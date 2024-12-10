@@ -9510,40 +9510,40 @@ host="$($cmd_command_zenity --entry \
 $cmd_internal gui-zenity add-whitelist $host            
 $cmd_internal gui-zenity list4                        ;;    
 add-blacklist)
-host="$($zenity --entry \
+host="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=host \
 --entry-text=host)"
 $cmd_internal gui-zenity add-blacklist  $host          
 $cmd_internal gui-zenity list4                        ;;    
 add-shield-tcp)
-port="$($cfg_favorite_basename_graphicalldialog --entry \
+port="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=port \
 --entry-text=port)"
-$cmd_internal gui-$cmd_second_option add-shield-tcp $port           
-$cmd_internal gui-$cmd_second_option list4                        ;;
+$cmd_internal gui-zenity add-shield-tcp $port           
+$cmd_internal gui-zenity list4                        ;;
 del-commented)
-port="$($cfg_favorite_basename_graphicalldialog --entry \
+port="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=port \
 --entry-text=comment)"
-$cmd_internal gui-$cmd_second_option del-commented $port           
-$cmd_internal gui-$cmd_second_option list4                        ;;
+$cmd_internal gui-zenity del-commented $port           
+$cmd_internal gui-zenity list4                        ;;
 drop-string)
-port="$($cfg_favorite_basename_graphicalldialog --entry \
+port="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=port \
 --entry-text=string)"
-$cmd_internal gui-$cmd_second_option drop-string $port           
-$cmd_internal gui-$cmd_second_option list4                        ;;
+$cmd_internal gui-zenity drop-string $port           
+$cmd_internal gui-zenity list4                        ;;
 limit-minute)
-port="$($cfg_favorite_basename_graphicalldialog --entry \
+port="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --title=port \
 --entry-text=limit)"
-$cmd_internal gui-$cmd_second_option limit-minute $port           
-$cmd_internal gui-$cmd_second_option list4                        ;;
+$cmd_internal gui-zenity limit-minute $port           
+$cmd_internal gui-zenity list4                        ;;
 esac
 ####
 ####
