@@ -393,8 +393,8 @@ cfg_server_ip_iperf_ipv4="ping.online.net"
 cfg_server_ip_iperf_ipv6="ping6.online.net"      
 cfg_server_log_port_tcp="no"     
 cfg_server_log_port_udp="no"     
-cfg_server_port_iperf_ipv4="5200"                
-cfg_server_port_iperf_ipv6="5200"
+cfg_server_port_iperf_ipv4="5201"                
+cfg_server_port_iperf_ipv6="5201"
 cfg_server_port_tcp=""     
 cfg_server_port_udp=""     
 cfg_server_radio_online="https://www.tdtchannels.com/lists/radio.m3u8"
@@ -2000,9 +2000,9 @@ echo "$txt_text_title_title default discover ip and speed ip"
 echo "cfg_server_ipdiscover_ipv4=https://ifconfig.co/ip    ## default http://ifconfig.co/ip"
 echo "cfg_server_ipdiscover_ipv6=https://ifconfig.co/ip    ## default http://ifconfig.co/ip"
 echo "cfg_server_ip_iperf_ipv4=ping.online.net             ## default ping.online.net"
-echo "cfg_server_port_iperf_ipv4=5200                      ## default 5200"
+echo "cfg_server_port_iperf_ipv4=5201                      ## default 5201"
 echo "cfg_server_ip_iperf_ipv6=ping6.online.net            ## default ping6.online.net"
-echo "cfg_server_port_iperf_ipv6=5200                      ## default 5200"
+echo "cfg_server_port_iperf_ipv6=5201                      ## default 5201"
 echo "cfg_server_radio_online=https://www.tdtchannels.com/lists/radio.m3u8" 
 echo "$txt_text_title"
 echo "$txt_text_stitle $text_text_title repository firewall-wallinet, with file in .tar"
@@ -7560,7 +7560,7 @@ $cmd_internal add-whitelist4 $cfg_server_ip_iperf_ipv4
 echo "$txt_text_title"
 echo "$txt_text_stitle [ Calculing speed .. ]"
 echo "$txt_text_stitle [ Working ] Conecting in ipv4 to $cfg_server_ip_iperf_ipv4 ]"
-$cmd_command_iperf -c "$cfg_server_ip_iperf_ipv4" -p "$cfg_server_port_iperf_ipv4" -4 -t 5 
+$cmd_command_iperf -c "$cfg_server_ip_iperf_ipv4" -p "$cfg_server_port_iperf_ipv4" -4 -u -t 7 
 echo "$txt_text_title"
 echo "$txt_text_stitle [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip4 
@@ -7586,7 +7586,7 @@ $cmd_internal add-whitelist6 $cfg_server_ip_iperf_ipv6
 echo "$txt_text_title"
 echo "$txt_text_stitle [ Calculing speed .. ]"
 echo "$txt_text_stitle [ Working ] Conecting in ipv6 to $cfg_server_ip_iperf_ipv4 ]"
-$cmd_command_iperf -c "$cfg_server_ip_iperf_ipv6" -p "$cfg_server_port_iperf_ipv6" -6 -t 5
+$cmd_command_iperf -c "$cfg_server_ip_iperf_ipv6" -p "$cfg_server_port_iperf_ipv6" -6 -u -t 7
 echo "$txt_text_title"
 echo "$txt_text_stitle [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip6 
