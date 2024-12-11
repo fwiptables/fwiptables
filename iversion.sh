@@ -3430,9 +3430,9 @@ echo "$txt_text_md stop continue reset show save load names actual eraserules $t
 echo "$txt_text_md eraserules4 eraserules6 without-connection input-permisive $txt_text_md"
 echo "$txt_text_md input-established wizard-tiny wizard-mini wizard-full $txt_text_md"
 echo "$txt_text_md tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp $txt_text_md"
-echo "$txt_text_md ...   firewall-wallrule $txt_text_md"
+echo "$txt_text_md ...   firewall-walladdrule $txt_text_md"
 echo "$txt_text_md drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp $txt_text_md" 
-echo "$txt_text_md return-port-tcp returnt-por-udp log-port-tcp log-port-udp $txt_text_md"
+echo "$txt_text_md return-port-tcp return-port-udp log-port-tcp log-port-udp $txt_text_md"
 echo "$txt_text_md add-whitelist add-blacklist add-shield-tcp drop-string $txt_text_md" 
 echo "$txt_text_md allow-ping drop-ping allow-protocol drop-protocol  $txt_text_md" 
 echo "$txt_text_md limit-minute del-commented $txt_text_md" 
@@ -3560,11 +3560,11 @@ exit; fi
 ####
 ####
 #### :rutina-final-free:
-##########    firewall-wallrule: options for fwiptables firewall      ##########
-#### :rutina-inicial-firewall-wallrule:
+##########    firewall-walladdrule: options for fwiptables firewall      ##########
+#### :rutina-inicial-firewall-walladdrule:
 ####
 ####
-if   [ "$cmd_first_option" == "firewall-wallrule" ]; then
+if   [ "$cmd_first_option" == "firewall-walladdrule" ]; then
 ####
 ####
 
@@ -3591,7 +3591,7 @@ echo "$txt_text_md_md limit-minute    . limit bandwidth with packages each minut
 exit; fi
 ####
 ####
-#### :rutina-final-firewall-wallrule:
+#### :rutina-final-firewall-walladdrule:
 ##########    firewall-wallcontrol: options for fwiptables firewall      ##########
 #### :rutina-inicial-firewall-wallcontrol:
 ####
@@ -3967,7 +3967,7 @@ $cmd_internal optional-output
 $cmd_internal firewall-listconceptual
 $cmd_internal firewall-listnumeral
 $cmd_internal firewall-wallcontrol
-$cmd_internal firewall-wallrule
+$cmd_internal firewall-walladdrule
 $cmd_internal firewall-wallcustom
 $cmd_internal firewall-wallinet
 $cmd_internal firewall-wallutils
@@ -8590,7 +8590,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 003  "$txt_text_md firewall-listconceptual" \
 004  "$txt_text_md firewall-listnumeral" \
 005  "$txt_text_md firewall-wallcontrol" \
-006  "$txt_text_md firewall-wallrule" \
+006  "$txt_text_md firewall-walladdrule" \
 007  "$txt_text_md firewall-wallcustom" \
 008  "$txt_text_md firewall-wallinet" \
 009  "$txt_text_md firewall-wallutils"  \
@@ -8603,7 +8603,7 @@ case $menuprincipal in
 003) clear ; $cmd_internal cli-menu-listconceptual $cfg_favorite_base_cli ;;
 004) clear ; $cmd_internal cli-menu-listnumeral    $cfg_favorite_base_cli ;;
 005) clear ; $cmd_internal cli-menu-wallcontrol    $cfg_favorite_base_cli ;;
-006) clear ; $cmd_internal cli-menu-wallrule       $cfg_favorite_base_cli ;;
+006) clear ; $cmd_internal cli-menu-walladdrule       $cfg_favorite_base_cli ;;
 007) clear ; $cmd_internal cli-menu-wallcustom     $cfg_favorite_base_cli ;;
 008) clear ; $cmd_internal cli-menu-wallinet       $cfg_favorite_base_cli ;;
 009) clear ; $cmd_internal cli-menu-wallutils      $cfg_favorite_base_cli ;;
@@ -8774,11 +8774,11 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu-listnumeral:
-##########    cli-menu-wallrule: Manage list rules with one text menu          ##########
-#### :rutina-inicial-cli-menu-wallrule:
+##########    cli-menu-walladdrule: Manage list rules with one text menu          ##########
+#### :rutina-inicial-cli-menu-walladdrule:
 ####
 ####
-if [ "$cmd_first_option" == "cli-menu-wallrule" ]; then
+if [ "$cmd_first_option" == "cli-menu-walladdrule" ]; then
 if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
 echo "$txt_text_title_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
@@ -8798,7 +8798,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001  "$txt_text_md [ Main menu    ]" \
 002  "$txt_text_md [ Info options ]" \
-003  "$txt_text_md [ wallrule     ]" \
+003  "$txt_text_md [ walladdrule     ]" \
 022  "$txt_text_md return-port-tcp" \
 023  "$txt_text_md return-port-udp" \
 024  "$txt_text_md log-port-tcp" \
@@ -8818,7 +8818,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 case $menuprincipal in
 001) clear ; $cmd_internal cli-menu $cfg_favorite_base_cli ;;
 002) clear ; $cmd_internal $cfg_favorite_out_cli options ;;
-003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-wallrule ;;
+003) clear ; $cmd_internal $cfg_favorite_out_cli firewall-walladdrule ;;
 022) clear ; read -p "Input port # " archivo
 archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
 $cmd_internal $cfg_favorite_out_cli return-port-tcp $archivo
@@ -8882,7 +8882,7 @@ $cmd_internal cli-menu $cfg_favorite_base_cli
 exit; fi
 ####
 ####
-#### :rutina-final-cli-menu-wallrule:
+#### :rutina-final-cli-menu-walladdrule:
 ##########    cli-menu-wallcontrol: Manage list rules with one text menu          ##########
 #### :rutina-inicial-cli-menu-wallcontrol:
 ####
@@ -9291,7 +9291,7 @@ then echo $txt_message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="Info|List-conceptual|List-numeral|Wallcontrol|\
-Wallrule|Wallcustom|Wallinet|Wallutils"
+walladdrule|Wallcustom|Wallinet|Wallutils"
 selection_menu="$($cmd_command_zenity --forms \
 --text=gui-roll \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
@@ -9315,8 +9315,8 @@ List-numeral)
 $cmd_internal gui-roll-zenity-firewall-listnumeral ; exit ;;
 Wallcontrol)
 $cmd_internal gui-roll-zenity-firewall-wallcontrol ; exit ;;
-Wallrule)
-$cmd_internal gui-roll-zenity-firewall-wallrule ; exit ;;
+walladdrule)
+$cmd_internal gui-roll-zenity-firewall-walladdrule ; exit ;;
 Wallcustom)
 $cmd_internal gui-roll-zenity-firewall-wallcustom ; exit ;;
 Wallinet)
@@ -9423,11 +9423,11 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-roll-zenity-firewall-wallcontrol:
-##########    gui-roll-zenity-firewall-wallrule: gui with roll  ##########
-#### :rutina-inicial-gui-roll-zenity-firewall-wallrule:
+##########    gui-roll-zenity-firewall-walladdrule: gui with roll  ##########
+#### :rutina-inicial-gui-roll-zenity-firewall-walladdrule:
 ####
 ####
-if [ "$cmd_first_option" == "gui-roll-zenity-firewall-wallrule" ]
+if [ "$cmd_first_option" == "gui-roll-zenity-firewall-walladdrule" ]
 ####
 ####
 then echo $txt_head_waiting_gui ;
@@ -9559,7 +9559,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-roll-zenity-firewall-wallrule:
+#### :rutina-final-gui-roll-zenity-firewall-walladdrule:
 ##########    gui-roll-zenity-firewall-listconceptual: gui with roll  ##########
 #### :rutina-inicial-gui-roll-zenity-firewall-listconceptual:
 ####
@@ -9923,7 +9923,7 @@ echo "$txt_text_stitle The used gui in $cmd_first_option is $cmd_second_option" 
 ####
 ####
 gui_menu="Firewall-listconceptual|Firewall-listnumeral|Firewall-wallcontrol|\
-Firewall-wallrule|Firewall-wallcustom|Firewall-wallinet|Firewall-wallutils|"
+Firewall-walladdrule|Firewall-wallcustom|Firewall-wallinet|Firewall-wallutils|"
 selection_menu="$(echo $gui_menu | $cmd_command_sed 's/|/ /g')"
 selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width \
@@ -9948,8 +9948,8 @@ Firewall-listnumeral*)
 $cmd_internal gui-menu-firewall-listnumeral $cmd_second_option ;;
 Firewall-wallcontrol*)
 $cmd_internal gui-menu-firewall-wallcontrol $cmd_second_option ;;
-Firewall-wallrule*)
-$cmd_internal gui-menu-firewall-wallrule $cmd_second_option ;;
+Firewall-walladdrule*)
+$cmd_internal gui-menu-firewall-walladdrule $cmd_second_option ;;
 Firewall-wallcustom*)
 $cmd_internal gui-menu-firewall-wallcustom $cmd_second_option ;;
 Firewall-wallinet*)
@@ -10074,11 +10074,11 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-wallcontrol:
-##########    gui-menu-firewall-wallrule: gui with menu   ##########
-#### :rutina-inicial-gui-menu-firewall-wallrule:
+##########    gui-menu-firewall-walladdrule: gui with menu   ##########
+#### :rutina-inicial-gui-menu-firewall-walladdrule:
 ####
 ####
-if   [ "$cmd_first_option" == "gui-menu-firewall-wallrule" ]
+if   [ "$cmd_first_option" == "gui-menu-firewall-walladdrule" ]
 then echo $txt_head_waiting_gui ;
 if [ "$cmd_second_option" == "zenity" ] || [ "$cmd_second_option" == "yad" ]; then
 echo ; else cfg_second_option="$cfg_favorite_basename_graphicalldialog" ; echo ; fi
@@ -10109,7 +10109,7 @@ echo ; echo "$txt_text_stitle option selected: $final" ; echo ;
 case "$final" in
 1*) exit ;;
 gui-principal-menu*) $cmd_internal gui-menu-$cmd_second_option  ;;
-gui-info-menu*)$cmd_internal gui-$cmd_second_option firewall-wallrule ;;
+gui-info-menu*)$cmd_internal gui-$cmd_second_option firewall-walladdrule ;;
 return-port-tcp*)
 port="$($cfg_favorite_basename_graphicalldialog --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -10214,7 +10214,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-firewall-wallrule:
+#### :rutina-final-gui-menu-firewall-walladdrule:
 ##########    gui-menu-firewall-listconceptual: gui with menu   ##########
 #### :rutina-inicial-gui-menu-firewall-listconceptual:
 ####
