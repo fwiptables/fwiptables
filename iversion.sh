@@ -9065,9 +9065,17 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 029  "$txt_text_md drop-port-udp" \
 030  "$txt_text_md add-whitelist" \
 031  "$txt_text_md add-blacklist" \
-032  "$txt_text_md add-shield-tcp" \
-033  "$txt_text_md drop-string" \
-034  "$txt_text_md limit-minute" \
+032  "$txt_text_md drop-send-ping" \
+033  "$txt_text_md drop-get-ping" \
+034  "$txt_text_md allow-send-ping" \
+035  "$txt_text_md allow-get-ping" \
+036  "$txt_text_md drop-string" \
+037  "$txt_text_md allow-protocol" \
+038  "$txt_text_md drop-protocol" \
+039  "$txt_text_md del-commented" \
+040  "$txt_text_md add-shield-tcp" \
+041  "$txt_text_md drop-string" \
+042  "$txt_text_md limit-minute" \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
@@ -9115,15 +9123,43 @@ $cmd_internal $cfg_favorite_out_cli ls4                      ;;
 archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
 $cmd_internal $cfg_favorite_out_cli add-blacklist $archivo
 $cmd_internal $cfg_favorite_out_cli ls4                      ;;
-032) clear ; read -p "Input port # " archivo
-archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
-$cmd_internal $cfg_favorite_out_cli add-shield-tcp $archivo
+032) clear
+$cmd_internal $cfg_favorite_out_cli drop-send-ping $archivo
 $cmd_internal $cfg_favorite_out_cli ls4                      ;;
-033) clear ; read -p "Input string # " archivo
+033) clear
+$cmd_internal $cfg_favorite_out_cli drop-get-ping $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+034) clear
+$cmd_internal $cfg_favorite_out_cli allow-send-ping $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+035) clear
+$cmd_internal $cfg_favorite_out_cli allow-get-ping $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+036) clear ; read -p "Input string # " archivo
 archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
 $cmd_internal $cfg_favorite_out_cli drop-string $archivo
 $cmd_internal $cfg_favorite_out_cli ls4                      ;;
-034) clear ; read -p "Input packages for minute # " archivo
+037) clear ; read -p "Input protocol # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli allow-protocol $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+038) clear ; read -p "Input protocol # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli drop-protocol $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+039) clear ; read -p "Input commented # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli del-commented $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+040) clear ; read -p "Input port # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli add-shield-tcp $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+041) clear ; read -p "Input string # " archivo
+archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
+$cmd_internal $cfg_favorite_out_cli drop-string $archivo
+$cmd_internal $cfg_favorite_out_cli ls4                      ;;
+042) clear ; read -p "Input packages for minute # " archivo
 archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
 $cmd_internal $cfg_favorite_out_cli limit-minute $archivo
 $cmd_internal $cfg_favorite_out_cli ls4                      ;;
