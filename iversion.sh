@@ -6157,7 +6157,7 @@ if [ "$cmd_first_option" == "wizard-tiny" ]; then
 ####
 archivo="$cmd_first_option" ; cfg_allow_launchrules_firewall=yes ; cfg_type_firewall="wizard-tiny" ; cfg_name_firewall="wizard-tiny"
 $cmd_internal templates-regen
-cmd_txt_wizardtiny="$cmd_default_cache_basenecesary/cache-txt--wizard-tiny-$cmd_version"
+cmd_txt_wizardtiny="$cmd_default_cache_basenecesary/cache-txt-wizard-tiny-$cmd_version"
 cp "$cmd_default_tinycfg_eng" "$cmd_txt_wizardtiny"
 $cfg_favorite_text_editor "$cmd_txt_wizardtiny"
 clear
@@ -6180,7 +6180,7 @@ if [ "$cmd_first_option" == "wizard-mini" ]; then
 ####
 archivo="$cmd_first_option" ; cfg_allow_launchrules_firewall=yes ; cfg_type_firewall="wizard-mini" ; cfg_name_firewall="wizard-mini"
 $cmd_internal templates-regen
-cmd_txt_wizardmini="$cmd_default_cache_basenecesary/cache-txt_wizard-mini-$cmd_version"
+cmd_txt_wizardmini="$cmd_default_cache_basenecesary/cache-txt-wizard-mini-$cmd_version"
 cp "$cmd_default_minicfg_eng" "$cmd_txt_wizardmini"
 $cfg_favorite_text_editor "$cmd_txt_wizardmini"
 clear
@@ -6203,7 +6203,7 @@ if [ "$cmd_first_option" == "wizard-full" ]; then
 ####
 archivo="$cmd_first_option" ; cfg_allow_launchrules_firewall=yes ; cfg_type_firewall="wizard-full" ; cfg_name_firewall="wizard-full"
 $cmd_internal templates-regen
-cmd_txt_wizardfull="$cmd_default_cache_basenecesary/cache-txt_wizard-full-$cmd_version"
+cmd_txt_wizardfull="$cmd_default_cache_basenecesary/cache-txt-wizard-full-$cmd_version"
 cp "$cmd_default_fullcfg_eng" "$cmd_txt_wizardfull"
 $cfg_favorite_text_editor "$cmd_txt_wizardfull"
 clear
@@ -8087,11 +8087,12 @@ $cfg_favorite_realpath_graphicalldialog  --text-info \
 ####
 "wizard-tiny")
 archivo=wizard-tiny
-cp $cmd_default_tinycfg_eng $cmd_default_cache_basenecesary/$cmd_filename-$archivo
+cmd_gui_wizardtiny="$cmd_default_cache_basenecesary/cache-gui-wizard-tiny-$cmd_version"
+cp $cmd_default_tinycfg_eng $cmd_gui_wizardtiny
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---filename=$cmd_default_cache_basenecesary/$cmd_filename-$archivo \
---editable --title=WIZARD TINY 1> $cmd_default_directory_custom/$archivo
+--filename=$cmd_gui_wizardtiny \
+--editable --title="wizard" 1> $cmd_default_directory_custom/$archivo
 if [  -s $cmd_default_directory_custom/$archivo ]; then
 $cmd_internal -gui loadtiny-custom $archivo ; $cmd_internal -gui list4;
 else rm $cmd_default_directory_custom/$archivo ;
@@ -8103,11 +8104,12 @@ $cfg_favorite_realpath_graphicalldialog --info \
 #### 
 "wizard-mini")
 archivo=wizard-mini
-cp $cmd_default_minicfg_eng $cmd_default_cache_basenecesary/$cmd_filename-$archivo
+cmd_gui_wizardmini="$cmd_default_cache_basenecesary/cache-gui-wizard-mini-$cmd_version"
+cp $cmd_default_minicfg_eng $cmd_gui_wizardmini
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---filename=$cmd_default_cache_basenecesary/$cmd_filename-$archivo \
---editable --title=WIZARD MINI 1> $cmd_default_directory_custom/$archivo
+--filename=$cmd_gui_wizardmini \
+--editable --title="wizard" 1> $cmd_default_directory_custom/$archivo
 if [  -s $cmd_default_directory_custom/$archivo ]; then
 $cmd_internal -gui load-custom $archivo ; $cmd_internal -gui list4;
 else rm $cmd_default_directory_custom/$archivo ;
@@ -8119,11 +8121,12 @@ $cfg_favorite_realpath_graphicalldialog --info \
 #### 
 "wizard-full")
 archivo=wizard-full
-cp $cmd_default_fullcfg_eng $cmd_default_cache_basenecesary/$cmd_filename-$archivo
+cmd_gui_wizardfull="$cmd_default_cache_basenecesary/cache-gui-wizard-full-$cmd_version"
+cp $cmd_default_fullcfg_eng $cmd_gui_wizardfull
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---filename=$cmd_default_cache_basenecesary/$cmd_filename-$archivo \
---editable --title=WIZARD-FULL 1> $cmd_default_directory_custom/$archivo
+--filename=$cmd_gui_wizardfull \
+--editable --title="wizard" 1> $cmd_default_directory_custom/$archivo
 if [  -s $cmd_default_directory_custom/$archivo ]; then
 $cmd_internal -gui load-custom $archivo ; $cmd_internal -gui list4;
 else rm $cmd_default_directory_custom/$archivo ;
