@@ -6003,7 +6003,7 @@ echo "$txt_text_title_info $txt_text_md $txt_text_info  [ info $cmd_second_optio
 echo "$txt_text_title_info  Launch info search: $cmd_internal info [pattern-to-search]"
 echo "$txt_text_title_info      Example search: $cmd_internal info ls"
 echo "$txt_text_title_info         all options: $cmd_internal info-options"
-if   [ "$cmd_second_option" == "$NULL" ]; then  $cmd_internal info-options ; fi
+if   [ "$cmd_second_option" == "$NULL" ]; then  $cmd_internal info-options ; exit ; fi
 echo "$txt_text_title_info  Waiting to info with string: $cmd_second_option"
 ####
 ####
@@ -6157,13 +6157,14 @@ if [ "$cmd_first_option" == "wizard-tiny" ]; then
 ####
 archivo="$cmd_first_option" ; cfg_allow_launchrules_firewall=yes ; cfg_type_firewall="wizard-tiny" ; cfg_name_firewall="wizard-tiny"
 $cmd_internal templates-regen
-cp "$cmd_default_tinycfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$archivo"
-$cfg_favorite_text_editor "$cmd_default_cache_necesary/$cmd_filename-$archivo"
+cmd_txt_wizardtiny="$cmd_default_cache_basenecesary/cache-txt--wizard-tiny-$cmd_version"
+cp "$cmd_default_tinycfg_eng" "$cmd_txt_wizardtiny"
+$cfg_favorite_text_editor "$cmd_txt_wizardtiny"
 clear
 $cfg_favorite_realpath_textdialog --clear --title "Run this wizard" \
 --yesno "Run this wizard" 0 0 && clear \
-&& cp "$cmd_default_cache_necesary/$cmd_filename-$archivo" \
-"$cmd_default_directory_custom/$archivo" && $cmd_internal loadtiny-custom $archivo || clear
+&& cp $cmd_txt_wizardtiny "$cmd_default_directory_custom/$archivo" \
+&& $cmd_internal loadtiny-custom $archivo || clear
 ####
 ####
 exit; fi
@@ -6179,13 +6180,14 @@ if [ "$cmd_first_option" == "wizard-mini" ]; then
 ####
 archivo="$cmd_first_option" ; cfg_allow_launchrules_firewall=yes ; cfg_type_firewall="wizard-mini" ; cfg_name_firewall="wizard-mini"
 $cmd_internal templates-regen
-cp "$cmd_default_minicfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$archivo"
-$cfg_favorite_text_editor "$cmd_default_cache_necesary/$cmd_filename-$archivo"
+cmd_txt_wizardmini="$cmd_default_cache_basenecesary/cache-txt_wizard-mini-$cmd_version"
+cp "$cmd_default_minicfg_eng" "$cmd_txt_wizardmini"
+$cfg_favorite_text_editor "$cmd_txt_wizardmini"
 clear
 $cfg_favorite_realpath_textdialog --clear --title "Run this wizard" \
 --yesno "Run this wizard" 0 0 && clear \
-&& cp "$cmd_default_cache_necesary/$cmd_filename-$archivo" \
-"$cmd_default_directory_custom/$archivo" && $cmd_internal load-custom $archivo || clear
+&& cp "$cmd_txt_wizardmini" "$cmd_default_directory_custom/$archivo" \
+&& $cmd_internal load-custom $archivo || clear
 ####
 ####
 exit; fi
@@ -6201,12 +6203,13 @@ if [ "$cmd_first_option" == "wizard-full" ]; then
 ####
 archivo="$cmd_first_option" ; cfg_allow_launchrules_firewall=yes ; cfg_type_firewall="wizard-full" ; cfg_name_firewall="wizard-full"
 $cmd_internal templates-regen
-cp "$cmd_default_fullcfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$archivo"
-$cfg_favorite_text_editor "$cmd_default_cache_necesary/$cmd_filename-$archivo"
+cmd_txt_wizardfull="$cmd_default_cache_basenecesary/cache-txt_wizard-full-$cmd_version"
+cp "$cmd_default_fullcfg_eng" "$cmd_txt_wizardfull"
+$cfg_favorite_text_editor "$cmd_txt_wizardfull"
 clear
 $cfg_favorite_realpath_textdialog --clear --title "Run this wizard" --yesno \
 "Run this wizard" 0 0 && clear && \
-cp "$cmd_default_cache_necesary/$cmd_filename-$archivo" "$cmd_default_directory_custom/$archivo" \
+cp "$cmd_txt_wizardfull" "$cmd_default_directory_custom/$archivo" \
 && $cmd_internal load-custom $archivo || clear 
 ####
 ####
@@ -8084,10 +8087,10 @@ $cfg_favorite_realpath_graphicalldialog  --text-info \
 ####
 "wizard-tiny")
 archivo=wizard-tiny
-cp $cmd_default_tinycfg_eng $cmd_default_cache_necesary/$cmd_filename-$archivo
+cp $cmd_default_tinycfg_eng $cmd_default_cache_basenecesary/$cmd_filename-$archivo
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---filename=$cmd_default_cache_necesary/$cmd_filename-$archivo \
+--filename=$cmd_default_cache_basenecesary/$cmd_filename-$archivo \
 --editable --title=WIZARD TINY 1> $cmd_default_directory_custom/$archivo
 if [  -s $cmd_default_directory_custom/$archivo ]; then
 $cmd_internal -gui loadtiny-custom $archivo ; $cmd_internal -gui list4;
@@ -8100,10 +8103,10 @@ $cfg_favorite_realpath_graphicalldialog --info \
 #### 
 "wizard-mini")
 archivo=wizard-mini
-cp $cmd_default_minicfg_eng $cmd_default_cache_necesary/$cmd_filename-$archivo
+cp $cmd_default_minicfg_eng $cmd_default_cache_basenecesary/$cmd_filename-$archivo
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---filename=$cmd_default_cache_necesary/$cmd_filename-$archivo \
+--filename=$cmd_default_cache_basenecesary/$cmd_filename-$archivo \
 --editable --title=WIZARD MINI 1> $cmd_default_directory_custom/$archivo
 if [  -s $cmd_default_directory_custom/$archivo ]; then
 $cmd_internal -gui load-custom $archivo ; $cmd_internal -gui list4;
@@ -8116,10 +8119,10 @@ $cfg_favorite_realpath_graphicalldialog --info \
 #### 
 "wizard-full")
 archivo=wizard-full
-cp $cmd_default_fullcfg_eng $cmd_default_cache_necesary/$cmd_filename-$archivo
+cp $cmd_default_fullcfg_eng $cmd_default_cache_basenecesary/$cmd_filename-$archivo
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---filename=$cmd_default_cache_necesary/$cmd_filename-$archivo \
+--filename=$cmd_default_cache_basenecesary/$cmd_filename-$archivo \
 --editable --title=WIZARD-FULL 1> $cmd_default_directory_custom/$archivo
 if [  -s $cmd_default_directory_custom/$archivo ]; then
 $cmd_internal -gui load-custom $archivo ; $cmd_internal -gui list4;
