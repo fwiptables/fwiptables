@@ -5998,14 +5998,27 @@ exit; fi
 if   [ "$cmd_first_option" == "info" ]; then
 ####
 ####
+#### show info help
 echo "$txt_text_title_info $txt_text_md $txt_text_info  [ info $cmd_second_option ] [ info md ]"
 echo "$txt_text_title_info  Launch info search: $cmd_internal info [pattern-to-search]"
 echo "$txt_text_title_info      Example search: $cmd_internal info ls"
 echo "$txt_text_title_info         all options: $cmd_internal info-options"
-if   [ "$cmd_second_option" == "$NULL" ]; then exit ; fi
-if   [ "$cmd_second_option" == "info-options" ]; then $cmd_internal info-options ; exit ; fi
+if   [ "$cmd_second_option" == "$NULL" ]; then  $cmd_internal info-options ; fi
 echo "$txt_text_title_info  Waiting to info with string: $cmd_second_option"
-$cmd_internal info-options | $cmd_command_grep -i "$cmd_second_option" | $cmd_command_grep -Ev "#" 
+####
+####
+#### create help complete
+cmd_info_cache="$cmd_default_cache_basenecesary/cache-info-list-$cmd_version"
+####
+if   [ ! -f "$cmd_info_cache" ];
+then 
+$cmd_internal info-options >> "$cmd_info_cache"
+fi
+####
+####
+#### searched in complete
+cat "$cmd_info_cache"  | $cmd_command_grep -i "$cmd_second_option" |\
+$cmd_command_grep -Ev "#"
 ####
 ####
 exit ; fi
