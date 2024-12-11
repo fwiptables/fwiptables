@@ -3567,7 +3567,11 @@ exit; fi
 if   [ "$cmd_first_option" == "firewall-walladdrule" ]; then
 ####
 ####
-
+echo "$txt_text_stitle | firewall-walladdrule | $cmd_internal firewall-walladdrule"
+echo "$txt_text_md_md drop-send-ping  . drop ping sender"
+echo "$txt_text_md_md drop-get-ping   . drop ping recept"
+echo "$txt_text_md_md allow-send-ping . allow ping sender"
+echo "$txt_text_md_md allow-get-ping  . allow ping recept"
 echo "$txt_text_md_md allow-port-tcp  . add port tcp to allow, allowed range and comma"
 echo "$txt_text_md_md allow-port-udp  . add port udp to allow, allowed range and comma"
 echo "$txt_text_md_md drop-port-tcp   . add port tcp to drop, allowed range and comma"
@@ -3579,9 +3583,7 @@ echo "$txt_text_md_md log-port-udp    . log rule, allowed range and comma"
 echo "$txt_text_md_md drop-string     . drop packages with string choosed"
 echo "$txt_text_md_md add-whitelist   . add host to allowed, at several comma seperated"
 echo "$txt_text_md_md add-blacklist   . add host to drop, at several comma seperated"
-echo "$txt_text_md_md add-shield-tcp  . add shield tries tcp 4/6, allowed range and comma"
-echo "$txt_text_md_md allow-ping      . allow ping icmp"
-echo "$txt_text_md_md drop-ping       . drop ping icmp"
+echo "$txt_text_md_md add-shield-tcp  . add shield tries tcp"
 echo "$txt_text_md_md allow-protocol  . allow protocol choosed"
 echo "$txt_text_md_md drop-protocol   . drop protocol choosed"
 echo "$txt_text_md_md del-commented   . del rules con one commented choosed"
