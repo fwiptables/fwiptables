@@ -8829,7 +8829,7 @@ echo "$txt_text_title_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
 ##########
-if [ "$2" != "$NULL" ]; then
+if [ "$2" == "whiptail" ] || [ "$2" == "dialog" ]; then
 cfg_favorite_basename_textdialog="$(basename $2)"
 cfg_favorite_realpath_textdialog="$(realpath $2)"
 fi
@@ -8854,12 +8854,14 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 ##########
 ##########
 case $menuprincipal in
-001) clear ; $cmd_internal $cfg_favorite_out_cli intro                    ;;
-002) clear ; $cmd_internal $cfg_favorite_out_cli info-options             ;;
+001) clear ; $cmd_internal $cfg_favorite_out_cli intro
+clear ;      $cmd_internal cli-menu                $cfg_favorite_base_cli ;;
+002) clear ; $cmd_internal $cfg_favorite_out_cli info-options
+clear ;      $cmd_internal cli-menu                $cfg_favorite_base_cli ;;
 003) clear ; $cmd_internal cli-menu-listconceptual $cfg_favorite_base_cli ;;
 004) clear ; $cmd_internal cli-menu-listnumeral    $cfg_favorite_base_cli ;;
 005) clear ; $cmd_internal cli-menu-wallcontrol    $cfg_favorite_base_cli ;;
-006) clear ; $cmd_internal cli-menu-walladdrule       $cfg_favorite_base_cli ;;
+006) clear ; $cmd_internal cli-menu-walladdrule    $cfg_favorite_base_cli ;;
 007) clear ; $cmd_internal cli-menu-wallcustom     $cfg_favorite_base_cli ;;
 008) clear ; $cmd_internal cli-menu-wallinet       $cfg_favorite_base_cli ;;
 009) clear ; $cmd_internal cli-menu-wallutils      $cfg_favorite_base_cli ;;
@@ -8884,7 +8886,7 @@ echo "$txt_text_title_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
 ##########
-if [ "$2" != "$NULL" ]; then
+if [ "$2" == "whiptail" ] || [ "$2" == "dialog" ]; then
 cfg_favorite_basename_textdialog="$(basename $2)"
 cfg_favorite_realpath_textdialog="$(realpath $2)"
 fi
@@ -8962,7 +8964,7 @@ echo "$txt_text_title_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
 ##########
-if [ "$2" != "$NULL" ]; then
+if [ "$2" == "whiptail" ] || [ "$2" == "dialog" ]; then
 cfg_favorite_basename_textdialog="$(basename $2)"
 cfg_favorite_realpath_textdialog="$(realpath $2)"
 fi
@@ -9040,7 +9042,7 @@ echo "$txt_text_title_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
 ##########
-if [ "$2" != "$NULL" ]; then
+if [ "$2" == "whiptail" ] || [ "$2" == "dialog" ]; then
 cfg_favorite_basename_textdialog="$(basename $2)"
 cfg_favorite_realpath_textdialog="$(realpath $2)"
 fi
@@ -9185,7 +9187,7 @@ echo "$txt_text_title_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
 ##########
-if [ "$2" != "$NULL" ]; then
+if [ "$2" == "whiptail" ] || [ "$2" == "dialog" ]; then
 cfg_favorite_basename_textdialog="$(basename $2)"
 cfg_favorite_realpath_textdialog="$(realpath $2)"
 fi
@@ -9274,7 +9276,7 @@ echo "$txt_text_title_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
 ##########
-if [ "$2" != "$NULL" ]; then
+if [ "$2" == "whiptail" ] || [ "$2" == "dialog" ]; then
 cfg_favorite_basename_textdialog="$(basename $2)"
 cfg_favorite_realpath_textdialog="$(realpath $2)"
 fi
@@ -9329,7 +9331,7 @@ exit; fi
 if [ "$cmd_first_option" == "cli-menu-wallcustom" ]; then
 ##########
 ##########
-if [ "$2" != "$NULL" ]; then
+if [ "$2" == "whiptail" ] || [ "$2" == "dialog" ]; then
 cfg_favorite_basename_textdialog="$(basename $2)"
 cfg_favorite_realpath_textdialog="$(realpath $2)"
 fi
@@ -9424,7 +9426,7 @@ echo "$txt_text_title_fail [ Install or dialog or whiptail to work ]"
 exit ; fi
 ##########
 ##########
-if [ "$2" != "$NULL" ]; then
+if [ "$2" == "whiptail" ] || [ "$2" == "dialog" ]; then
 cfg_favorite_basename_textdialog="$(basename $2)"
 cfg_favorite_realpath_textdialog="$(realpath $2)"
 fi
