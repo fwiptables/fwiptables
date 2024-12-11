@@ -3410,47 +3410,47 @@ exit; fi
 if [ "$cmd_first_option" == "options" ]; then 
 ####
 ####
-echo "$txt_text_md $cmd_name [optional-output] first_option [second_option] $txt_text_md"
-echo "$txt_text_md ...   optional-output $txt_text_md"
-echo "$txt_text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ] $txt_text_md"
-echo "$txt_text_md [ cli-dialog cli-whiptail gui-zenity gui-yad ] $txt_text_md"
-echo "$txt_text_md [ cli-menu cli-menu-dialog cli-menu-whiptail ] $txt_text_md"
-echo "$txt_text_md [ gui-menu gui-menu-zenity gui-menu-yad gui-roll-zenity ] $txt_text_md"
-echo "$txt_text_md [ gui-shell gui-shell-zenity gui-shell-yad ] $txt_text_md"
-echo "$txt_text_md ...   firewall-listconceptual $txt_text_md"
-echo "$txt_text_md ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6 $txt_text_md"
-echo "$txt_text_md list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4 $txt_text_md"
-echo "$txt_text_md list-security6 list-ebtables list-arptables list-alltables $txt_text_md"
-echo "$txt_text_md ...   firewall-listnumeral $txt_text_md"
-echo "$txt_text_md lsn4 lsn6 statusn listn-filter4 listn-filter6 listn-nat4 $txt_text_md"
-echo "$txt_text_md listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6 $txt_text_md"
-echo "$txt_text_md listn-security4 listn-security6 listn-alltables $txt_text_md"
-echo "$txt_text_md ...   firewall-wallcontrol $txt_text_md"
-echo "$txt_text_md stop continue reset show save load names actual eraserules $txt_text_md"
-echo "$txt_text_md eraserules4 eraserules6 without-connection input-permisive $txt_text_md"
-echo "$txt_text_md input-established wizard-tiny wizard-mini wizard-full $txt_text_md"
-echo "$txt_text_md tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp $txt_text_md"
-echo "$txt_text_md ...   firewall-walladdrule $txt_text_md"
-echo "$txt_text_md drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp $txt_text_md" 
-echo "$txt_text_md return-port-tcp return-port-udp log-port-tcp log-port-udp $txt_text_md"
-echo "$txt_text_md add-whitelist add-blacklist add-shield-tcp drop-string $txt_text_md" 
-echo "$txt_text_md allow-ping drop-ping allow-protocol drop-protocol  $txt_text_md" 
-echo "$txt_text_md limit-minute del-commented $txt_text_md" 
-echo "$txt_text_md ...   firewall-wallcustom $txt_text_md"
-echo "$txt_text_md new-full-custom nueva-completa-custom new-mini-custom $txt_text_md"
-echo "$txt_text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom $txt_text_md"
-echo "$txt_text_md wallinet-clone load-custom loadmini-custom loadtiny-custom $txt_text_md"
-echo "$txt_text_md show-custom modify-custom del-custom list-custom $txt_text_md"
-echo "$txt_text_md ...   firewall-wallinet $txt_text_md"
-echo "$txt_text_md wallinet-update wallinet-list wallinet-load wallinet-show $txt_text_md"
-echo "$txt_text_md ...   firewall-wallutils $txt_text_md"
-echo "$txt_text_md preferences-edit alias-edit options info-options own-notes$txt_text_md"
-echo "$txt_text_md tree-cmd tree-pdf tree-log tree-conf tree-cache clean-cache $txt_text_md"
-echo "$txt_text_md ip4 ip6 route4 route6 info-ip4 info-ip6 info-nodes sockets $txt_text_md"
-echo "$txt_text_md lsof free ip-forward utils date resolve speed-ip4 speed-ip6 $txt_text_md"
-echo "$txt_text_md log-stat web intro depends uninstall install upgrade hints $txt_text_md"
-echo "$txt_text_md variables examples info code expert donate about version $txt_text_md"
-echo "$txt_text_md license-lgpl-v2 license-gpl-v2 $txt_text_md"
+echo "$txt_text_md $cmd_name [optional-output] first_option [second_option]"
+echo "$txt_text_md ...   optional-output"
+echo "$txt_text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]"
+echo "$txt_text_md [ cli-dialog cli-whiptail gui-zenity gui-yad ]"
+echo "$txt_text_md [ cli-menu cli-menu-dialog cli-menu-whiptail ]"
+echo "$txt_text_md [ gui-menu gui-menu-zenity gui-menu-yad gui-roll-zenity ]"
+echo "$txt_text_md [ gui-shell gui-shell-zenity gui-shell-yad ]"
+echo "$txt_text_md ...   firewall-listconceptual"
+echo "$txt_text_md ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6"
+echo "$txt_text_md list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4"
+echo "$txt_text_md list-security6 list-ebtables list-arptables list-alltables"
+echo "$txt_text_md ...   firewall-listnumeral"
+echo "$txt_text_md lsn4 lsn6 statusn listn-filter4 listn-filter6 listn-nat4"
+echo "$txt_text_md listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6"
+echo "$txt_text_md listn-security4 listn-security6 listn-alltables"
+echo "$txt_text_md ...   firewall-wallcontrol"
+echo "$txt_text_md stop continue reset show save load names actual eraserules"
+echo "$txt_text_md eraserules4 eraserules6 without-connection input-permisive"
+echo "$txt_text_md input-established wizard-tiny wizard-mini wizard-full"
+echo "$txt_text_md tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp"
+echo "$txt_text_md ...   firewall-walladdrule"
+echo "$txt_text_md drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp" 
+echo "$txt_text_md return-port-tcp return-port-udp log-port-tcp log-port-udp"
+echo "$txt_text_md add-whitelist add-blacklist add-shield-tcp drop-string" 
+echo "$txt_text_md drop-send-ping drop-recv-ping allow-send-ping allow-recv-ping"
+echo "$txt_text_md drop-protocol allow-protocol limit-minute del-commented"
+echo "$txt_text_md ...   firewall-wallcustom"
+echo "$txt_text_md new-full-custom nueva-completa-custom new-mini-custom"
+echo "$txt_text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom"
+echo "$txt_text_md wallinet-clone load-custom loadmini-custom loadtiny-custom"
+echo "$txt_text_md show-custom modify-custom del-custom list-custom"
+echo "$txt_text_md ...   firewall-wallinet"
+echo "$txt_text_md wallinet-update wallinet-list wallinet-load wallinet-show"
+echo "$txt_text_md ...   firewall-wallutils"
+echo "$txt_text_md preferences-edit alias-edit options info-options own-notes"
+echo "$txt_text_md tree-cmd tree-pdf tree-log tree-conf tree-cache clean-cache"
+echo "$txt_text_md ip4 ip6 route4 route6 info-ip4 info-ip6 info-nodes sockets"
+echo "$txt_text_md lsof free ip-forward utils date resolve speed-ip4 speed-ip6"
+echo "$txt_text_md log-stat web intro depends uninstall install upgrade hints"
+echo "$txt_text_md variables examples info code expert donate about version"
+echo "$txt_text_md license-lgpl-v2 license-gpl-v2"
 ####
 ####  if expert commands
 ####
@@ -7559,6 +7559,115 @@ exit; fi
 ####
 ####
 #### :rutina-final-drop-port-udp6
+
+
+
+
+##########    allow-send-ping: allow send ping      ##########
+#### :rutina-inicial-allow-send-ping
+####
+####
+if [ "$cmd_first_option" == "allow-send-ping" ] ; then
+####
+####
+#### rules ping
+$cmd_command_ip4tableslegacy -I INPUT 2 \
+-p icmp --icmp-type echo-reply -j ACCEPT \
+-m comment --comment "send-ping" &> /dev/null
+$cmd_command_ip4tablesnft -I INPUT 2 \
+-p icmp --icmp-type echo-reply -j ACCEPT \
+-m comment --comment "send-ping" &> /dev/null
+$cmd_command_ip6tableslegacy -I INPUT 2 \
+-p icmp --icmp-type echo-reply -j ACCEPT \
+-m comment --comment "send-ping" &> /dev/null
+$cmd_command_ip6tablesnft -I INPUT 2 \
+-p icmp --icmp-type echo-reply -j ACCEPT \
+-m comment --comment "send-ping" &> /dev/null
+####
+####
+$cmd_command_ip4tableslegacy -I OUTPUT 2 \
+-p icmp --icmp-type echo-request -j ACCEPT \
+-m comment --comment "send-ping" &> /dev/null
+$cmd_command_ip4tablesnft -I OUTPUT 2 \
+-p icmp --icmp-type echo-request -j ACCEPT \
+-m comment --comment "send-ping" &> /dev/null
+$cmd_command_ip6tableslegacy -I OUTPUT 2 \
+-p icmp --icmp-type echo-request -j ACCEPT \
+-m comment --comment "send-ping" &> /dev/null
+$cmd_command_ip6tablesnft -I OUTPUT 2 \
+-p icmp --icmp-type echo-request -j ACCEPT \
+-m comment --comment "send-ping" &> /dev/null
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-allow-send-ping
+##########    allow-recv-ping: allow recv ping      ##########
+#### :rutina-inicial-allow-recv-ping
+####
+####
+if [ "$cmd_first_option" == "allow-recv-ping" ] ; then
+####
+####
+#### rules send ping
+$cmd_command_ip4tableslegacy -I INPUT 2 \
+-p icmp --icmp-type echo-request -j ACCEPT \
+-m comment --comment "send-ping" &> /dev/null
+$cmd_command_ip4tablesnft -I INPUT 2 \
+-p icmp --icmp-type echo-request -j ACCEPT \
+-m comment --comment "send-ping" &> /dev/null
+$cmd_command_ip6tableslegacy -I INPUT 2 \
+-p icmp --icmp-type echo-request -j ACCEPT \
+-m comment --comment "send-ping" &> /dev/null
+$cmd_command_ip6tablesnft -I INPUT 2 \
+-p icmp --icmp-type echo-request -j ACCEPT \
+-m comment --comment "send-ping" &> /dev/null
+####
+####
+$cmd_command_ip4tableslegacy -I OUTPUT 2 \
+-p icmp --icmp-type echo-reply -j ACCEPT \
+-m comment --comment "send-ping" &> /dev/null
+$cmd_command_ip4tablesnft -I OUTPUT 2 \
+-p icmp --icmp-type echo-reply -j ACCEPT \
+-m comment --comment "send-ping" &> /dev/null
+$cmd_command_ip6tableslegacy -I OUTPUT 2 \
+-p icmp --icmp-type echo-reply -j ACCEPT \
+-m comment --comment "send-ping" &> /dev/null
+$cmd_command_ip6tablesnft -I OUTPUT 2 \
+-p icmp --icmp-type echo-reply -j ACCEPT \
+-m comment --comment "send-ping" &> /dev/null
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-allow-recv-ping
+
+
+
+
+
+
+
+##########    allow-ping: drop ping      ##########
+#### :rutina-inicial-drop-ping
+####
+####
+if [ "$cmd_first_option" == "drop-ping" ] ; then
+####
+####
+#### rules
+
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-drop-ping
+
+
+
 ##########    speed-ip4: speed from internet        ##########
 #### :rutina-inicial-speed-ip4:
 ####
