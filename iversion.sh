@@ -9056,7 +9056,7 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 --title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
 001  "$txt_text_md [ Main menu    ]" \
 002  "$txt_text_md [ Info options ]" \
-003  "$txt_text_md [ walladdrule     ]" \
+003  "$txt_text_md [ walladdrule  ]" \
 022  "$txt_text_md return-port-tcp" \
 023  "$txt_text_md return-port-udp" \
 024  "$txt_text_md log-port-tcp" \
