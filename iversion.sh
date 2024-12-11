@@ -3705,10 +3705,6 @@ echo "$txt_text_md_md new-tiny-custom       . create new tiny config in english"
 echo "$txt_text_md_md nueva-completa-custom . create new full config in spanish" 
 echo "$txt_text_md_md nueva-mini-custom     . create new full config in spanish"
 echo "$txt_text_md_md nueva-diminuta-custom . create new tiny config in spanish"
-echo "$txt_text_md_md tinyserver-tcp        . all client and selected servers tcp in command"
-echo "$txt_text_md_md tinyserver-udp        . all client and selected servers udp in command"
-echo "$txt_text_md_md miniserver-tcp        . usual clients and selected servers tcp in command"
-echo "$txt_text_md_md miniserver-udp        . usual clients and selected servers udp in command"
 echo "$txt_text_md_md wallinet-clone        . clone a static firewall predesignated"
 echo "$txt_text_md_md show-custom           . show config-file choosed"
 echo "$txt_text_md_md modify-custom         . modify config-file choosed"
@@ -6003,16 +5999,13 @@ if   [ "$cmd_first_option" == "info" ]; then
 ####
 ####
 echo "$txt_text_title_info $txt_text_md $txt_text_info  [ info $cmd_second_option ] [ info md ]"
-echo "$txt_text_title_info  Launch info search: $cmd_internal \
-[optional-output] info [pattern-to-search]"
-echo "$txt_text_title_info Example info search: $cmd_internal \
-[optional-output] info ls"
-echo "$txt_text_title_info    Show all options: $cmd_internal \
-[optional-output] info-options"
+echo "$txt_text_title_info  Launch info search: $cmd_internal info [pattern-to-search]"
+echo "$txt_text_title_info      Example search: $cmd_internal info ls"
+echo "$txt_text_title_info         all options: $cmd_internal info-options"
 if   [ "$cmd_second_option" == "$NULL" ]; then exit ; fi
 if   [ "$cmd_second_option" == "info-options" ]; then $cmd_internal info-options ; exit ; fi
-echo "$txt_text_title_info  Waiting to info with: $cmd_second_option"
-$cmd_internal info-options | $cmd_command_grep -i "$cmd_second_option" | $cmd_command_grep -Ev "###" 
+echo "$txt_text_title_info  Waiting to info with string: $cmd_second_option"
+$cmd_internal info-options | $cmd_command_grep -i "$cmd_second_option" | $cmd_command_grep -Ev "#" 
 ####
 ####
 exit ; fi
