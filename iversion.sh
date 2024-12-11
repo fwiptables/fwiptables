@@ -7731,7 +7731,77 @@ exit; fi
 ####
 ####
 #### :rutina-final-drop-get-ping
-##########    speed-ip4: speed from internet        ##########
+##########    allow-protocol: allow protocol       ##########
+#### :rutina-inicial-allow-protocol
+####
+####
+if [ "$cmd_first_option" == "allow-protocol" ] ; then
+####
+####
+#### rules send ping
+$cmd_command_ip4tableslegacy -I INPUT 2 -p $2 -j ACCEPT \
+-m comment --comment "protocol" &> /dev/null
+$cmd_command_ip4tablesnft -I INPUT 2 -p $2 -j ACCEPT \
+-m comment --comment "protocol" &> /dev/null
+$cmd_command_ip6tableslegacy -I INPUT 2 -p $2 -j ACCEPT \
+-m comment --comment "protocol" &> /dev/null
+$cmd_command_ip6tablesnft -I INPUT 2 -p $2 -j ACCEPT \
+-m comment --comment "protocol" &> /dev/null
+####
+####
+$cmd_command_ip4tableslegacy -I OUTPUT 2 -p $2 -j ACCEPT \
+-m comment --comment "protocol" &> /dev/null
+$cmd_command_ip4tablesnft -I OUTPUT 2 -p $2 -j ACCEPT \
+-m comment --comment "protocol" &> /dev/null
+$cmd_command_ip6tableslegacy -I OUTPUT 2 -p $2 -j ACCEPT \
+-m comment --comment "protocol" &> /dev/null
+$cmd_command_ip6tablesnft -I OUTPUT 2 -p $2 -j ACCEPT \
+-m comment --comment "protocol" &> /dev/null
+####
+####
+echo "$txt_text_tile_done allow protocol"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-allow-protocol
+##########    drop-protocol: drop protocol       ##########
+#### :rutina-inicial-drop-protocol
+####
+####
+if [ "$cmd_first_option" == "drop-protocol" ] ; then
+####
+####
+#### rules send ping
+$cmd_command_ip4tableslegacy -I INPUT 2 -p $2 -j DROP \
+-m comment --comment "protocol" &> /dev/null
+$cmd_command_ip4tablesnft -I INPUT 2 -p $2 -j DROP \
+-m comment --comment "protocol" &> /dev/null
+$cmd_command_ip6tableslegacy -I INPUT 2 -p $2 -j DROP \
+-m comment --comment "protocol" &> /dev/null
+$cmd_command_ip6tablesnft -I INPUT 2 -p $2 -j DROP \
+-m comment --comment "protocol" &> /dev/null
+####
+####
+$cmd_command_ip4tableslegacy -I OUTPUT 2 -p $2 -j DROP \
+-m comment --comment "protocol" &> /dev/null
+$cmd_command_ip4tablesnft -I OUTPUT 2 -p $2 -j DROP \
+-m comment --comment "protocol" &> /dev/null
+$cmd_command_ip6tableslegacy -I OUTPUT 2 -p $2 -j DROP \
+-m comment --comment "protocol" &> /dev/null
+$cmd_command_ip6tablesnft -I OUTPUT 2 -p $2 -j DROP \
+-m comment --comment "protocol" &> /dev/null
+####
+####
+echo "$txt_text_tile_done drop protocol"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-drop-protocol
+##########    speed-ip4: speed from internet        #########
 #### :rutina-inicial-speed-ip4:
 ####
 ####
