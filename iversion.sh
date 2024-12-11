@@ -91,7 +91,7 @@ fi
 #### The number version firewall
 cmd_year="24"                                                 # Number year version
 cmd_month="12"                                                # Number mouth version
-cmd_letter="B"                                                # Number letter version
+cmd_letter="C"                                                # Number letter version
 cmd_devel="-dev"
 cmd_version="$cmd_year-$cmd_month-$cmd_letter$cmd_devel"      # Final date version
 cmd_released="Year 20$cmd_year / Month $cmd_month"            # Source date version
@@ -3432,9 +3432,10 @@ echo "$txt_text_md input-established wizard-tiny wizard-mini wizard-full $txt_te
 echo "$txt_text_md tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp $txt_text_md"
 echo "$txt_text_md ...   firewall-wallrule $txt_text_md"
 echo "$txt_text_md drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp $txt_text_md" 
-echo "$txt_text_md return-port-tcp return-por-udp log-port-tcp log-port-udp $txt_text_md"
-echo "$txt_text_md del-commented add-whitelist add-blacklist add-shield-tcp $txt_text_md" 
-echo "$txt_text_md drop-string limit-minute $txt_text_md" 
+echo "$txt_text_md return-port-tcp returnt-por-udp log-port-tcp log-port-udp $txt_text_md"
+echo "$txt_text_md add-whitelist add-blacklist add-shield-tcp drop-string $txt_text_md" 
+echo "$txt_text_md allow-ping drop-ping allow-protocol drop-protocol  $txt_text_md" 
+echo "$txt_text_md limit-minute del-commented $txt_text_md" 
 echo "$txt_text_md ...   firewall-wallcustom $txt_text_md"
 echo "$txt_text_md new-full-custom nueva-completa-custom new-mini-custom $txt_text_md"
 echo "$txt_text_md nueva-mini-custom new-tiny-custom nueva-diminuta-custom $txt_text_md"
