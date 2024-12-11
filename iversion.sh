@@ -3431,10 +3431,10 @@ echo "$txt_text_md eraserules4 eraserules6 without-connection input-permisive"
 echo "$txt_text_md input-established wizard-tiny wizard-mini wizard-full"
 echo "$txt_text_md tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp"
 echo "$txt_text_md ...   firewall-walladdrule"
+echo "$txt_text_md drop-send-ping drop-get-ping allow-send-ping allow-get-ping"
 echo "$txt_text_md drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp" 
 echo "$txt_text_md return-port-tcp return-port-udp log-port-tcp log-port-udp"
 echo "$txt_text_md add-whitelist add-blacklist add-shield-tcp drop-string" 
-echo "$txt_text_md drop-send-ping drop-recv-ping allow-send-ping allow-recv-ping"
 echo "$txt_text_md drop-protocol allow-protocol limit-minute del-commented"
 echo "$txt_text_md ...   firewall-wallcustom"
 echo "$txt_text_md new-full-custom nueva-completa-custom new-mini-custom"
@@ -7559,10 +7559,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-drop-port-udp6
-
-
-
-
 ##########    allow-send-ping: allow send ping      ##########
 #### :rutina-inicial-allow-send-ping
 ####
@@ -7599,75 +7595,142 @@ $cmd_command_ip6tablesnft -I OUTPUT 2 \
 -m comment --comment "send-ping" &> /dev/null
 ####
 ####
+echo "$txt_text_tile_done allow send ping"
+####
+####
 exit; fi
 ####
 ####
 #### :rutina-final-allow-send-ping
-##########    allow-recv-ping: allow recv ping      ##########
-#### :rutina-inicial-allow-recv-ping
+##########    allow-get-ping: allow recv ping      ##########
+#### :rutina-inicial-allow-get-ping
 ####
 ####
-if [ "$cmd_first_option" == "allow-recv-ping" ] ; then
+if [ "$cmd_first_option" == "allow-get-ping" ] ; then
 ####
 ####
 #### rules send ping
 $cmd_command_ip4tableslegacy -I INPUT 2 \
 -p icmp --icmp-type echo-request -j ACCEPT \
--m comment --comment "send-ping" &> /dev/null
+-m comment --comment "get-ping" &> /dev/null
 $cmd_command_ip4tablesnft -I INPUT 2 \
 -p icmp --icmp-type echo-request -j ACCEPT \
--m comment --comment "send-ping" &> /dev/null
+-m comment --comment "get-ping" &> /dev/null
 $cmd_command_ip6tableslegacy -I INPUT 2 \
 -p icmp --icmp-type echo-request -j ACCEPT \
--m comment --comment "send-ping" &> /dev/null
+-m comment --comment "get-ping" &> /dev/null
 $cmd_command_ip6tablesnft -I INPUT 2 \
 -p icmp --icmp-type echo-request -j ACCEPT \
--m comment --comment "send-ping" &> /dev/null
+-m comment --comment "get-ping" &> /dev/null
 ####
 ####
 $cmd_command_ip4tableslegacy -I OUTPUT 2 \
 -p icmp --icmp-type echo-reply -j ACCEPT \
--m comment --comment "send-ping" &> /dev/null
+-m comment --comment "get-ping" &> /dev/null
 $cmd_command_ip4tablesnft -I OUTPUT 2 \
 -p icmp --icmp-type echo-reply -j ACCEPT \
--m comment --comment "send-ping" &> /dev/null
+-m comment --comment "get-ping" &> /dev/null
 $cmd_command_ip6tableslegacy -I OUTPUT 2 \
 -p icmp --icmp-type echo-reply -j ACCEPT \
--m comment --comment "send-ping" &> /dev/null
+-m comment --comment "get-ping" &> /dev/null
 $cmd_command_ip6tablesnft -I OUTPUT 2 \
 -p icmp --icmp-type echo-reply -j ACCEPT \
+-m comment --comment "get-ping" &> /dev/null
+####
+####
+echo "$txt_text_tile_done allow recive ping"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-allow-get-ping
+##########    drop-send-ping: drop send ping      ##########
+#### :rutina-inicial-drop-send-ping
+####
+####
+if [ "$cmd_first_option" == "drop-send-ping" ] ; then
+####
+####
+#### rules ping
+$cmd_command_ip4tableslegacy -I INPUT 2 \
+-p icmp --icmp-type echo-reply -j DROP \
+-m comment --comment "send-ping" &> /dev/null
+$cmd_command_ip4tablesnft -I INPUT 2 \
+-p icmp --icmp-type echo-reply -j DROP \
+-m comment --comment "send-ping" &> /dev/null
+$cmd_command_ip6tableslegacy -I INPUT 2 \
+-p icmp --icmp-type echo-reply -j DROP \
+-m comment --comment "send-ping" &> /dev/null
+$cmd_command_ip6tablesnft -I INPUT 2 \
+-p icmp --icmp-type echo-reply -j DROP \
 -m comment --comment "send-ping" &> /dev/null
 ####
 ####
-exit; fi
+$cmd_command_ip4tableslegacy -I OUTPUT 2 \
+-p icmp --icmp-type echo-request -j DROP \
+-m comment --comment "send-ping" &> /dev/null
+$cmd_command_ip4tablesnft -I OUTPUT 2 \
+-p icmp --icmp-type echo-request -j DROP \
+-m comment --comment "send-ping" &> /dev/null
+$cmd_command_ip6tableslegacy -I OUTPUT 2 \
+-p icmp --icmp-type echo-request -j DROP \
+-m comment --comment "send-ping" &> /dev/null
+$cmd_command_ip6tablesnft -I OUTPUT 2 \
+-p icmp --icmp-type echo-request -j DROP \
+-m comment --comment "send-ping" &> /dev/null
 ####
 ####
-#### :rutina-final-allow-recv-ping
-
-
-
-
-
-
-
-##########    allow-ping: drop ping      ##########
-#### :rutina-inicial-drop-ping
-####
-####
-if [ "$cmd_first_option" == "drop-ping" ] ; then
-####
-####
-#### rules
-
+echo "$txt_text_tile_done drop send ping"
 ####
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-drop-ping
-
-
-
+#### :rutina-final-drop-send-ping
+##########    allow-drop-ping: drop recive ping      ##########
+#### :rutina-inicial-drop-get-ping
+####
+####
+if [ "$cmd_first_option" == "drop-get-ping" ] ; then
+####
+####
+#### rules send ping
+$cmd_command_ip4tableslegacy -I INPUT 2 \
+-p icmp --icmp-type echo-request -j DROP \
+-m comment --comment "get-ping" &> /dev/null
+$cmd_command_ip4tablesnft -I INPUT 2 \
+-p icmp --icmp-type echo-request -j DROP \
+-m comment --comment "get-ping" &> /dev/null
+$cmd_command_ip6tableslegacy -I INPUT 2 \
+-p icmp --icmp-type echo-request -j DROP \
+-m comment --comment "get-ping" &> /dev/null
+$cmd_command_ip6tablesnft -I INPUT 2 \
+-p icmp --icmp-type echo-request -j DROP \
+-m comment --comment "get-ping" &> /dev/null
+####
+####
+$cmd_command_ip4tableslegacy -I OUTPUT 2 \
+-p icmp --icmp-type echo-reply -j DROP \
+-m comment --comment "get-ping" &> /dev/null
+$cmd_command_ip4tablesnft -I OUTPUT 2 \
+-p icmp --icmp-type echo-reply -j DROP \
+-m comment --comment "get-ping" &> /dev/null
+$cmd_command_ip6tableslegacy -I OUTPUT 2 \
+-p icmp --icmp-type echo-reply -j DROP \
+-m comment --comment "get-ping" &> /dev/null
+$cmd_command_ip6tablesnft -I OUTPUT 2 \
+-p icmp --icmp-type echo-reply -j DROP \
+-m comment --comment "get-ping" &> /dev/null
+####
+####
+echo "$txt_text_tile_done drop recive ping"
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-drop-get-ping
 ##########    speed-ip4: speed from internet        ##########
 #### :rutina-inicial-speed-ip4:
 ####
