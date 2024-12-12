@@ -2010,8 +2010,8 @@ echo "cfg_server_ip_iperf_ipv6=ping6.online.net            ## default ping6.onli
 echo "cfg_server_port_iperf_ipv6=5201                      ## default 5201"
 echo "cfg_server_radio_online=https://www.tdtchannels.com/lists/radio.m3u8" 
 echo "$txt_text_title"
-echo "$txt_text_stitle $text_text_title repository firewall-wallinet, with file in .tar"
-echo "cmd_web_repository_wallinet=$cmd_web_repository_wallinet "
+echo "$txt_text_title_title repository wallinet .tar"
+echo "cmd_web_repository_wallinet=$cmd_web_repository_wallinet"
 echo "$txt_text_title"
 echo "$txt_text_title_title default graphicall dimension"
 echo "cfg_config_graphicall_width=800                      ## default width  800"
@@ -3411,7 +3411,7 @@ if [ "$cmd_first_option" == "options" ]; then
 ####
 #### list options
 echo "$txt_text_md $cmd_name [optional-output] first_option [second_option]"  
-echo "$txt_text_md       optional-output"  
+echo "$txt_text_md       optional-output  ..."  
 echo "$txt_text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]"  
 echo "$txt_text_md [ cli-dialog cli-whiptail gui-zenity gui-yad ]"  
 echo "$txt_text_md [ cli-menu cli-menu-dialog cli-menu-whiptail ]"  
@@ -3836,7 +3836,7 @@ echo "$txt_text_title_fail please install tar command"; fi
 ####
 ####
 #### load
-cmd_file_repository="$cmd_default_directory_upgrade/wallinet.tar"
+cmd_file_repository="$cmd_default_directory_custom/wallinet.tar"
 $cmd_command_curl $cmd_web_repository_wallinet -s -L \
 -o $cmd_file_repository || echo "Without connection" || exit \
 && cd $cmd_default_directory_wallinet && tar -xf $cmd_file_repository \
