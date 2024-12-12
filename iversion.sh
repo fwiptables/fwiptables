@@ -3410,6 +3410,7 @@ exit; fi
 if [ "$cmd_first_option" == "options" ]; then 
 ####
 ####
+#### list options
 echo "$txt_text_md $cmd_name [optional-output] first_option [second_option]"
 echo "$txt_text_md ...   optional-output"
 echo "$txt_text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]"
@@ -3452,11 +3453,11 @@ echo "$txt_text_md log-stat web intro depends uninstall install upgrade hints"
 echo "$txt_text_md variables examples info code expert donate about version"
 echo "$txt_text_md license-lgpl-v2 license-gpl-v2"
 ####
-####  if expert commands
 ####
+####  if expert commands
 if [ "$cfg_allow_expert_commands" == "no" ]
-then echo "$txt_text_md ...   #$cmd_name $cmd_version with expert deactived $txt_text_md"
-else echo "$txt_text_md ...   #$cmd_name $cmd_version with expert actived $txt_text_md"
+then echo "$txt_text_md       #$cmd_name $cmd_version with expert deactived $txt_text_md"
+else echo "$txt_text_md       #$cmd_name $cmd_version with expert actived $txt_text_md"
 fi
 ####
 ####
