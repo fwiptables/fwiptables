@@ -5267,10 +5267,13 @@ echo "$txt_text_stitle $folder [ $cmd_default_directory_control ]"
 echo 
 echo "$txt_text_title_info [ Listing firewall names, each one with 6 files ]"
 echo "$txt_text_title_info [ ebtables-arptables-legacy4-legacy6-nft4-nft6  ]"
-$cmd_command_tree $cmd_default_directory_control | $cmd_command_sed s/\-legacy\-ipv6//g | \
+cd $cmd_default_directory_control
+ls -1 | $cmd_command_sed s/\-legacy\-ipv6//g | \
 $cmd_command_sed s/\-nft\-ipv6//g | \
-$cmd_command_sed s/\-legacy\-ipv4//g | $cmd_command_sed s/\-nft\-ipv4//g | \
-$cmd_command_sed s/\-arptables//g | $cmd_command_sed s/\-ebtables//g | $cmd_command_sort -u
+$cmd_command_sed s/\-legacy\-ipv4//g | \
+$cmd_command_sed s/\-nft\-ipv4//g | \
+$cmd_command_sed s/\-arptables//g | \
+$cmd_command_sed s/\-ebtables//g | $cmd_command_sort -u
 echo
 echo "$txt_text_title_ok [ Listed firewall names ]"
 ####
