@@ -526,8 +526,9 @@ cmd_default_cache_home="$cmd_default_root_home/.cache/$cmd_name"     ### used
 ####
 ####
 #### cache root
-cmd_default_cache_basenecesary="$cmd_default_cache_home"
-cmd_default_cache_necesary="$cmd_default_cache_home/$cmd_archive_date"
+cmd_default_cache_base="$cmd_default_cache_home"
+cmd_default_cache_date="$cmd_default_cache_home/$cmd_archive_date"
+cmd_default_cache_atemp="$cmd_default_cache_home/ATEMP"
 ####
 ####
 #### config root
@@ -566,8 +567,10 @@ cmd_default_directory_logcmd="$cmd_default_directory_necesary/fwiptables-logcmd/
 ####
 ####
 #### sane cache root
-if [ ! -d "$cmd_default_cache_necesary" ]; then
-$cmd_command_mkdir -p $cmd_default_cache_necesary &> /dev/null ; fi
+if [ ! -d "$cmd_default_cache_date" ]; then
+$cmd_command_mkdir -p $cmd_default_cache_date  &> /dev/null
+$cmd_command_mkdir -p $cmd_default_cache_atemp &> /dev/null  
+fi
 ####
 ####
 #### sane data root
@@ -655,7 +658,7 @@ cmd_file_output_pdf=\
 cmd_file_output_log=\
 "$cmd_default_directory_logs/$cmd_log_date-$cmd_guided_full.log"
 cmd_file_output_cache=\
-"$cmd_default_cache_necesary/$cmd_cache_date-$cmd_guided_full.txt"
+"$cmd_default_cache_date/$cmd_cache_date-$cmd_guided_full.txt"
 ####
 ####
 #### files adblock text
@@ -1498,7 +1501,7 @@ echo "$txt_text_md_md   Internal Firewall: $cmd_internal             $txt_text_m
 echo "$txt_text_md_md   Short Description: $cmd_shortdescription     $txt_text_md"
 echo "$txt_text_md_md    Long Description: $cmd_longdescription      $txt_text_md"
 echo "$txt_text_md_md      Data Directory: $cmd_default_directory_necesary  $txt_text_md"
-echo "$txt_text_md_md     Cache Directory: $cmd_default_cache_basenecesary $txt_text_md"
+echo "$txt_text_md_md     Cache Directory: $cmd_default_cache_base $txt_text_md"
 echo "$txt_text_md_md      Finder Program: $cmd_where                $txt_text_md"
 echo "$txt_text_md_md   Requisite Program: $cmd_requisite_program    $txt_text_md"
 echo "$txt_text_md_md Requisite Firewall4: $cmd_requisite_firewall4  $txt_text_md"
@@ -2531,7 +2534,7 @@ if [ "$cmd_first_option" == "depends" ]; then
 ####
 echo "$txt_text_title_md [ Configuration files ] $txt_text_md"
 echo "$txt_text_md_md Directory  data:         $cmd_default_directory_necesary $txt_text_md"
-echo "$txt_text_md_md Directory cache:         $cmd_default_cache_basenecesary $txt_text_md"
+echo "$txt_text_md_md Directory cache:         $cmd_default_cache_base $txt_text_md"
 echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_title_md [ Log files ]           $txt_text_md"
 echo "$txt_text_md_md Folder log:              $cmd_default_directory_baselogs $txt_text_md"
@@ -2721,7 +2724,7 @@ if   [ "$cmd_command_tree" == "$NULL" ] ; then
 echo "$txt_text_title_fail please install tree command" ; exit ; fi
 ####
 ####
-$cmd_command_tree $cmd_default_cache_basenecesary
+$cmd_command_tree $cmd_default_cache_base
 ####
 ####
 exit; fi
@@ -2735,8 +2738,8 @@ exit; fi
 if   [ "$cmd_first_option" == "clean-cache" ]; then
 ####
 ####
-echo "$txt_text_title_ok clean cache: $cmd_default_cache_basenecesary"
-rm -R $cmd_default_cache_basenecesary/* &> /dev/null
+echo "$txt_text_title_ok clean cache: $cmd_default_cache_base"
+rm -R $cmd_default_cache_base/* &> /dev/null
 ####
 ####
 exit; fi
@@ -5198,7 +5201,7 @@ exit; fi
 ####
 ####
 if [ -f "$cmd_default_directory_custom/$cmd_second_option" ] ; then
-cp "$cmd_default_directory_custom/$cmd_second_option" "$cmd_default_cache_necesary/$cmd_second_option" &> /dev/null
+cp "$cmd_default_directory_custom/$cmd_second_option" "$cmd_default_cache_date/$cmd_second_option" &> /dev/null
 $cfg_favorite_text_editor "$cmd_default_directory_custom/$cmd_second_option"
 echo "$txt_text_title_ok [ load-custom file $cmd_second_option ]"
 clear; fi
@@ -5329,7 +5332,7 @@ echo "$txt_text_title_md  [ fwiptables location ]                               
 echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_md_md  File    Location:   $cmd_directory/$cmd_filename         $txt_text_md"
 echo "$txt_text_md_md  Config Directory:   $cmd_default_directory_necesary      $txt_text_md"
-echo "$txt_text_md_md  Cache  Directory:   $cmd_default_cache_basenecesary      $txt_text_md "
+echo "$txt_text_md_md  Cache  Directory:   $cmd_default_cache_base      $txt_text_md "
 echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_title_md [ fwiptables install ]                    $txt_text_md"
 echo "$txt_text_md_md $txt_text_md"
@@ -5851,7 +5854,7 @@ $cmd_internal version | $cmd_command_grep -E -i "version"
 #### latest stable
 ####
 echo "$txt_text_stitle Show the version for fwiptables stable latest:"
-descarga="$cmd_default_cache_basenecesary/$cmd_get_date-fwiptables-latest"
+descarga="$cmd_default_cache_base/$cmd_get_date-fwiptables-latest"
 $cmd_command_curl $cmd_web_download_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
 $cmd_command_grep -E -i "version"
@@ -5860,7 +5863,7 @@ rm $descarga
 #### latest unstable
 ####
 echo "$txt_text_stitle Show the version for fwiptables unstable latest:"
-descarga="$cmd_default_cache_basenecesary/$cmd_get_date-fwiptables-stable"
+descarga="$cmd_default_cache_base/$cmd_get_date-fwiptables-stable"
 $cmd_command_curl $cmd_web_git_sourceforge -s -L -o $descarga \
 && chmod ugo+x $descarga && $descarga version | \
 $cmd_command_grep -E -i "version"
@@ -6001,7 +6004,7 @@ echo "$txt_text_title_info  Waiting to info with string: $cmd_second_option"
 ####
 ####
 #### create help complete
-cmd_info_cache="$cmd_default_cache_basenecesary/cache-info-list-$cmd_version"
+cmd_info_cache="$cmd_default_cache_base/cache-info-list-$cmd_version"
 ####
 if   [ ! -f "$cmd_info_cache" ];
 then 
@@ -6150,7 +6153,7 @@ if [ "$cmd_first_option" == "wizard-tiny" ]; then
 ####
 archivo="$cmd_first_option" ; cfg_allow_launchrules_firewall=yes ; cfg_type_firewall="wizard-tiny" ; cfg_name_firewall="wizard-tiny"
 $cmd_internal templates-regen
-cmd_txt_wizardtiny="$cmd_default_cache_basenecesary/cache-txt-wizard-tiny-$cmd_version"
+cmd_txt_wizardtiny="$cmd_default_cache_atemp/cache-txt-wizard-tiny-$cmd_version"
 cp "$cmd_default_tinycfg_eng" "$cmd_txt_wizardtiny"
 $cfg_favorite_text_editor "$cmd_txt_wizardtiny"
 clear
@@ -6173,7 +6176,7 @@ if [ "$cmd_first_option" == "wizard-mini" ]; then
 ####
 archivo="$cmd_first_option" ; cfg_allow_launchrules_firewall=yes ; cfg_type_firewall="wizard-mini" ; cfg_name_firewall="wizard-mini"
 $cmd_internal templates-regen
-cmd_txt_wizardmini="$cmd_default_cache_basenecesary/cache-txt-wizard-mini-$cmd_version"
+cmd_txt_wizardmini="$cmd_default_cache_atemp/cache-txt-wizard-mini-$cmd_version"
 cp "$cmd_default_minicfg_eng" "$cmd_txt_wizardmini"
 $cfg_favorite_text_editor "$cmd_txt_wizardmini"
 clear
@@ -6196,7 +6199,7 @@ if [ "$cmd_first_option" == "wizard-full" ]; then
 ####
 archivo="$cmd_first_option" ; cfg_allow_launchrules_firewall=yes ; cfg_type_firewall="wizard-full" ; cfg_name_firewall="wizard-full"
 $cmd_internal templates-regen
-cmd_txt_wizardfull="$cmd_default_cache_basenecesary/cache-txt-wizard-full-$cmd_version"
+cmd_txt_wizardfull="$cmd_default_cache_atemp/cache-txt-wizard-full-$cmd_version"
 cp "$cmd_default_fullcfg_eng" "$cmd_txt_wizardfull"
 $cfg_favorite_text_editor "$cmd_txt_wizardfull"
 clear
@@ -8127,10 +8130,10 @@ case $cmd_second_option in
 #### 
 #### 
 "new-tiny-custom")
-cp "$cmd_default_tinycfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+cp "$cmd_default_tinycfg_eng" "$cmd_default_cache_date/$cmd_filename-$cmd_third_option"
 $cfg_favorite_realpath_graphicalldialog --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---filename="$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option" \
+--filename="$cmd_default_cache_date/$cmd_filename-$cmd_third_option" \
 --editable --title=NEW-TINY-CONFIG 1> "$cmd_default_directory_custom/$cmd_third_option" ;
 if [ -s "$cmd_default_directory_custom/$cmd_third_option" ]; then
 $cfg_favorite_realpath_graphicalldialog --forms \
@@ -8145,10 +8148,10 @@ $cfg_favorite_realpath_graphicalldialog --forms \
 #### 
 #### 
 "nueva-diminuta-custom")
-cp "$cmd_default_tinycfg_spa" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+cp "$cmd_default_tinycfg_spa" "$cmd_default_cache_date/$cmd_filename-$cmd_third_option"
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---filename="$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option" \
+--filename="$cmd_default_cache_date/$cmd_filename-$cmd_third_option" \
 --editable --title=NUEVA-DIMINUTA-CONFIG 1> "$cmd_default_directory_custom/$cmd_third_option" ;
 if [ -s "$cmd_default_directory_custom/$cmd_third_option" ]; then
 $cfg_favorite_realpath_graphicalldialog  --forms \
@@ -8163,10 +8166,10 @@ $cfg_favorite_realpath_graphicalldialog  --forms \
 #### 
 ####
 "new-mini-custom")
-cp "$cmd_default_minicfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+cp "$cmd_default_minicfg_eng" "$cmd_default_cache_date/$cmd_filename-$cmd_third_option"
 $cfg_favorite_realpath_graphicalldialog --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---filename="$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option" \
+--filename="$cmd_default_cache_date/$cmd_filename-$cmd_third_option" \
 --editable --title=NEW-MINI-CONFIG 1> "$cmd_default_directory_custom/$cmd_third_option" ;
 if [ -s "$cmd_default_directory_custom/$cmd_third_option" ]; then
 $cfg_favorite_realpath_graphicalldialog --forms \
@@ -8181,10 +8184,10 @@ $cfg_favorite_realpath_graphicalldialog --forms \
 #### 
 #### 
 "nueva-mini-custom")
-cp "$cmd_default_minicfg_spa" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+cp "$cmd_default_minicfg_spa" "$cmd_default_cache_date/$cmd_filename-$cmd_third_option"
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---filename="$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option" \
+--filename="$cmd_default_cache_date/$cmd_filename-$cmd_third_option" \
 --editable --title=NUEVA-MINI-CONFIG 1> "$cmd_default_directory_custom/$cmd_third_option" ;
 if [ -s "$cmd_default_directory_custom/$cmd_third_option" ]; then
 $cfg_favorite_realpath_graphicalldialog  --forms \
@@ -8199,10 +8202,10 @@ $cfg_favorite_realpath_graphicalldialog  --forms \
 #### 
 #### 
 "new-full-custom")
-cp "$cmd_default_fullcfg_eng" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+cp "$cmd_default_fullcfg_eng" "$cmd_default_cache_date/$cmd_filename-$cmd_third_option"
 $cfg_favorite_realpath_graphicalldialog --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---filename="$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option" \
+--filename="$cmd_default_cache_date/$cmd_filename-$cmd_third_option" \
 --editable --title=NEW-FULL-CONFIG 1> "$cmd_default_directory_custom/$cmd_third_option" ;
 if [ -s "$cmd_default_directory_custom/$cmd_third_option" ]; then
 $cfg_favorite_realpath_graphicalldialog --forms \
@@ -8217,10 +8220,10 @@ $cfg_favorite_realpath_graphicalldialog --forms \
 #### 
 #### 
 "nueva-completa-custom")
-cp "$cmd_default_fullcfg_spa" "$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+cp "$cmd_default_fullcfg_spa" "$cmd_default_cache_date/$cmd_filename-$cmd_third_option"
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---filename=$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option \
+--filename=$cmd_default_cache_date/$cmd_filename-$cmd_third_option \
 --editable --title=NUEVA-COMPLETA-CONFIG 1> "$cmd_default_directory_custom/$cmd_third_option" ;
 if [ -s "$cmd_default_directory_custom/$cmd_third_option" ]; then
 $cfg_favorite_realpath_graphicalldialog  --forms \
@@ -8240,16 +8243,16 @@ then $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=file-not-found:$cmd_third_option ; exit ; fi 
 cp "$cmd_default_directory_custom/$cmd_third_option" \
-"$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option"
+"$cmd_default_cache_date/$cmd_filename-$cmd_third_option"
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---filename="$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option" \
+--filename="$cmd_default_cache_date/$cmd_filename-$cmd_third_option" \
 --editable --title=MODIFY-CONFIG 1> $cmd_default_directory_custom/$cmd_third_option
 if [ -s "$cmd_default_directory_custom/$cmd_third_option" ]; then
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=OK.file-$cmd_third_option
-else cp $cmd_default_cache_necesary/$cmd_filename-$cmd_third_option \
+else cp $cmd_default_cache_date/$cmd_filename-$cmd_third_option \
 $cmd_default_directory_custom/$cmd_third_option
 $cfg_favorite_realpath_graphicalldialog --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -8270,16 +8273,16 @@ then $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=file-not-found:-wpaconfig_$cmd_third_option ; exit ; fi 
 cp "$cmd_default_directory_wpa/wpaconfig_$cmd_third_option 
-"$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option
+"$cmd_default_cache_date/$cmd_filename-$cmd_third_option
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---filename=$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option \
+--filename=$cmd_default_cache_date/$cmd_filename-$cmd_third_option \
 --editable --title=MODIFY-CONFIG 1> $cmd_default_directory_wpa/wpaconfig_$cmd_third_option
 if [ -s "$cmd_default_directory_wpa/wpaconfig_$cmd_third_option" ]; then  
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=OK.file-$cmd_third_option
-else cp $cmd_default_cache_necesary/$cmd_filename-$cmd_third_option \
+else cp $cmd_default_cache_date/$cmd_filename-$cmd_third_option \
 $cmd_default_directory_wpa/wpaconfig_$cmd_third_option
 $cfg_favorite_realpath_graphicalldialog --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -8322,7 +8325,7 @@ $cfg_favorite_realpath_graphicalldialog  --text-info \
 ####
 "wizard-tiny")
 archivo=wizard-tiny
-cmd_gui_wizardtiny="$cmd_default_cache_basenecesary/cache-gui-wizard-tiny-$cmd_version"
+cmd_gui_wizardtiny="$cmd_default_cache_atemp/cache-gui-wizard-tiny-$cmd_version"
 cp $cmd_default_tinycfg_eng $cmd_gui_wizardtiny
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -8339,7 +8342,7 @@ $cfg_favorite_realpath_graphicalldialog --info \
 #### 
 "wizard-mini")
 archivo=wizard-mini
-cmd_gui_wizardmini="$cmd_default_cache_basenecesary/cache-gui-wizard-mini-$cmd_version"
+cmd_gui_wizardmini="$cmd_default_cache_atemp/cache-gui-wizard-mini-$cmd_version"
 cp $cmd_default_minicfg_eng $cmd_gui_wizardmini
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -8356,7 +8359,7 @@ $cfg_favorite_realpath_graphicalldialog --info \
 #### 
 "wizard-full")
 archivo=wizard-full
-cmd_gui_wizardfull="$cmd_default_cache_basenecesary/cache-gui-wizard-full-$cmd_version"
+cmd_gui_wizardfull="$cmd_default_cache_atemp/cache-gui-wizard-full-$cmd_version"
 cp $cmd_default_fullcfg_eng $cmd_gui_wizardfull
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -8377,16 +8380,16 @@ $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=file-not-found:-$cmd_third_option ; exit ; fi 
 cp $cmd_default_directory_custom/$cmd_third_option \
-$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option
+$cmd_default_cache_date/$cmd_filename-$cmd_third_option
 $cfg_favorite_realpath_graphicalldialog  --text-info \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---filename=$cmd_default_cache_necesary/$cmd_filename-$cmd_third_option \
+--filename=$cmd_default_cache_date/$cmd_filename-$cmd_third_option \
 --editable --title=MODIFY-CONFIG $cmd_third_option 1> $cmd_default_directory_custom/$cmd_third_option
 if [ -s "$cmd_default_directory_custom/$cmd_third_option" ]; then
 $cfg_favorite_realpath_graphicalldialog  --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --text=OK.file-$cmd_third_option
-else cp $cmd_default_cache_necesary/$cmd_internal-$cmd_third_option \
+else cp $cmd_default_cache_date/$cmd_internal-$cmd_third_option \
 $cmd_default_directory_custom/$cmd_third_option
 $cfg_favorite_realpath_graphicalldialog --forms \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
