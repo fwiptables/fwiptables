@@ -339,8 +339,8 @@ cfg_allow_string_dropped="no"
 cfg_allow_system_ulog="no"   
 cfg_allow_use_ipv4=""                         
 cfg_allow_use_ipv6=""                         
-cfg_allow_use_legacy=""                       
-cfg_allow_use_nft="no"                        
+cfg_allow_use_legacy="no"                       
+cfg_allow_use_nft=""                        
 cfg_client_mini_port_tcp="ssh,http,https"     
 cfg_client_mini_port_udp="domain,domain-s,bootpc,bootps,ntp,https"     
 cfg_client_port_tcp="ssh,http,https"     
@@ -3452,8 +3452,8 @@ echo "$txt_text_md license-lgpl-v2 license-gpl-v2"
 ####
 ####  if expert commands
 if [ "$cfg_allow_expert_commands" == "no" ]
-then echo "$txt_text_md       #$cmd_name $cmd_version with expert deactived#  "
-else echo "$txt_text_md       #$cmd_name $cmd_version with expert actived#    "
+then echo "$txt_text_md       #$cmd_name $cmd_version#  #expert deactived#  "
+else echo "$txt_text_md       #$cmd_name $cmd_version#  #expert actived#    "
 fi
 ####
 ####
@@ -6352,12 +6352,12 @@ if [ "$cmd_first_option" == "actual" ]; then
 ####
 echo "$txt_text_title_info  [ show the last firewall saved ] "
 echo 
-$cmd_command_arptables-save          &> $cmd_default_directory_control/$cmd_filename-actual-arptables
-$cmd_command_ebtables-save           &> $cmd_default_directory_control/$cmd_filename-actual-ebtables   
-$cmd_command_ip4tablesnft-save       &> $cmd_default_directory_control/$cmd_filename-actual-nft-ipv4   
-$cmd_command_ip4tableslegacy-save    &> $cmd_default_directory_control/$cmd_filename-actual-legacy-ipv4
-$cmd_command_ip6tablesnft-save      &> $cmd_default_directory_control/$cmd_filename-actual-nft-ipv6   
-$cmd_command_ip6tableslegacy-save   &> $cmd_default_directory_control/$cmd_filename-actual-legacy-ipv6
+$cmd_command_arptables-save       &> $cmd_default_directory_control/$cmd_filename-actual-arptables
+$cmd_command_ebtables-save        &> $cmd_default_directory_control/$cmd_filename-actual-ebtables   
+$cmd_command_ip4tablesnft-save    &> $cmd_default_directory_control/$cmd_filename-actual-nft-ipv4   
+$cmd_command_ip4tableslegacy-save &> $cmd_default_directory_control/$cmd_filename-actual-legacy-ipv4
+$cmd_command_ip6tablesnft-save    &> $cmd_default_directory_control/$cmd_filename-actual-nft-ipv6   
+$cmd_command_ip6tableslegacy-save &> $cmd_default_directory_control/$cmd_filename-actual-legacy-ipv6
 echo "$txt_text_stitle arptables $txt_text_title"
 $cmd_command_cat  $cmd_default_directory_control/$cmd_filename-actual-arptables
 echo "$txt_text_stitle ebtables $txt_text_title"
@@ -6424,12 +6424,13 @@ echo "$txt_text_title_info  [ Continue the stopped firewall ] "
 ####  restore last fw #### 
 ####
 ####
-$cmd_command_cat  $cmd_default_directory_control/$cmd_filename-stoped-arptables | $cmd_command_arptables-restore
-$cmd_command_cat  $cmd_default_directory_control/$cmd_filename-stoped-ebtables | $cmd_command_ebtables-restore
-$cmd_command_cat  $cmd_default_directory_control/$cmd_filename-stoped-nft-ipv4 | $cmd_command_ip4tablesnft-restore  
-$cmd_command_cat  $cmd_default_directory_control/$cmd_filename-stoped-legacy-ipv4 | $cmd_command_ip4tableslegacy-restore  
-$cmd_command_cat  $cmd_default_directory_control/$cmd_filename-stoped-nft-ipv6 | $cmd_command_ip6tablesnft-restore  
-$cmd_command_cat  $cmd_default_directory_control/$cmd_filename-stoped-legacy-ipv6 | $cmd_command_ip6tableslegacy-restore  
+cmd_filename_continue="$cmd_default_directory_control/$cmd_filename"
+$cmd_command_cat $cmd_filename_continue-stoped-arptables   | $cmd_command_arptables-restore
+$cmd_command_cat $cmd_filename_continue-stoped-ebtables    | $cmd_command_ebtables-restore
+$cmd_command_cat $cmd_filename_continue-stoped-nft-ipv4    | $cmd_command_ip4tablesnft-restore
+$cmd_command_cat $cmd_filename_continue-stoped-legacy-ipv4 | $cmd_command_ip4tableslegacy-restore  
+$cmd_command_cat $cmd_filename_continue-stoped-nft-ipv6    | $cmd_command_ip6tablesnft-restore
+$cmd_command_cat $cmd_filename_continue-stoped-legacy-ipv6 | $cmd_command_ip6tableslegacy-restore
 echo "$txt_text_title_info [ continue firewall  ]"
 echo "$txt_text_title_ok [ firewall continued ]"
 exit; fi
@@ -6518,14 +6519,18 @@ for add in $host_ip ; do
 ####
 ####
 echo "$txt_text_stitle [ Working ] ADD ipv4 rules whitelist: ACCEPT to $add"
-$cmd_command_ip4tablesnft    -t filter -I INPUT 2 -s $add   -m comment --comment "add-whitelist4"  \
--j ACCEPT &> /dev/null && echo "ok input nft 1/4 with $add"    || echo "without input nft 1/4"
-$cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -d $add  -m comment --comment "add-whitelist4"  \
--j ACCEPT &> /dev/null && echo "ok output nft 2/4 with $add"    || echo "without output nft 2/4"
-$cmd_command_ip4tableslegacy -t filter -I INPUT 2 -s $add   -m comment --comment "add-whitelist4"  \
--j ACCEPT &> /dev/null && echo "ok input legacy 3/4 with $add" || echo "without input legacy 3/4"
-$cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -d $add  -m comment --comment "add-whitelist4"  \
--j ACCEPT &> /dev/null && echo "ok output legacy 4/4 with $add" || echo "without output legacy 4/4"
+$cmd_command_ip4tablesnft    -t filter -I INPUT 2 -s $add   \
+-m comment --comment "add-whitelist4"  \
+-j ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -d $add  \
+-m comment --comment "add-whitelist4"  \
+-j ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t filter -I INPUT 2 -s $add   \
+-m comment --comment "add-whitelist4"  \
+-j ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -d $add  \
+-m comment --comment "add-whitelist4"  \
+-j ACCEPT &> /dev/null
 ####
 ####
 done
@@ -6550,14 +6555,18 @@ for add in $host_ip;  do
 ####
 ####
 echo "$txt_text_stitle [ Working ] ADD ipv6 rules whitelist: ACCEPT to $add"
-$cmd_command_ip6tablesnft    -t filter -I INPUT 2 -s $add   -m comment --comment "add-whitelist6"  \
--j ACCEPT  &> /dev/null && echo "ok input nft 1/4 with $add"    || echo "without input nft 1/4"
-$cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -d $add  -m comment --comment "add-whitelist6"  \
--j ACCEPT  &> /dev/null && echo "ok output nft 2/4 with $add"    || echo "without output nft 2/4"
-$cmd_command_ip6tableslegacy -t filter -I INPUT 2 -s $add   -m comment --comment "add-whitelist6"  \
--j ACCEPT  &> /dev/null && echo "ok input legacy 3/4 with $add" || echo "without input nft 3/4"
-$cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -d $2  -m comment --comment "add-whitelist6"  \
--j ACCEPT &> /dev/null && echo  "ok output legacy 4/4 with $add" || echo "without output nft 4/4"
+$cmd_command_ip6tablesnft    -t filter -I INPUT 2 -s $add   \
+-m comment --comment "add-whitelist6"  \
+-j ACCEPT  &> /dev/null
+$cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -d $add  \
+-m comment --comment "add-whitelist6"  \
+-j ACCEPT  &> /dev/null
+$cmd_command_ip6tableslegacy -t filter -I INPUT 2 -s $add   \
+-m comment --comment "add-whitelist6"  \
+-j ACCEPT  &> /dev/null
+$cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -d $add  \
+-m comment --comment "add-whitelist6"  \
+-j ACCEPT &> /dev/null
 ####
 ####
 done
@@ -6583,14 +6592,18 @@ for add in $host_ip ; do
 ####
 ####
 echo "$txt_text_stitle [ Working ] ADD ipv4 rules blacklist: DROP to $add"
-$cmd_command_ip4tablesnft    -t filter -I INPUT 2 -s $add  -m comment --comment "add-blacklist4" \
--j DROP  &> /dev/null && echo "ok input nft 1/4 with $add"    || echo "without output nft 1/4"
-$cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -d $add -m comment --comment "add-blacklist4" \
--j DROP  &> /dev/null && echo "ok output nft 2/4 with $add"    || echo "without output nft 2/4"
-$cmd_command_ip4tableslegacy -t filter -I INPUT 2 -s $add  -m comment --comment "add-blacklist4"  \
--j DROP  &> /dev/null && echo "ok input legacy 3/4 with $add" || echo "without input legacy 3/4"
-$cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -d $add -m comment --comment "add-blacklist4" \
--j DROP &> /dev/null  && echo "ok output legacy 4/4 with $add" || echo "without output legacy 4/4"
+$cmd_command_ip4tablesnft    -t filter -I INPUT 2  -s $add  \
+-m comment --comment "add-blacklist4" \
+-j DROP  &> /dev/null
+$cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -d $add  \
+-m comment --comment "add-blacklist4" \
+-j DROP  &> /dev/null
+$cmd_command_ip4tableslegacy -t filter -I INPUT 2  -s $add  \
+-m comment --comment "add-blacklist4"  \
+-j DROP  &> /dev/null
+$cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -d $add  \
+-m comment --comment "add-blacklist4" \
+-j DROP  &> /dev/null
 ####
 ####
 done
@@ -6616,14 +6629,18 @@ for add in $host_ip ; do
 ####
 ####
 echo "$txt_text_stitle [ Working ] ADD ipv6 rules blacklist: DROP to $add"
-$cmd_command_ip6tablesnft    -t filter -I INPUT 2 -s $add  -m comment --comment "add-blacklist6" \
--j DROP  &> /dev/null && echo "ok input nft 1/4 with $add"    || echo "without input nft 1/4"
-$cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -d $add -m comment --comment "add-blacklist6" \
--j DROP  &> /dev/null && echo "ok output nft 2/4 with $add"    || echo "without output nft 2/4"
-$cmd_command_ip6tableslegacy -t filter -I INPUT 2 -s $add  -m comment --comment "add-blacklist6" \
--j DROP &> /dev/null  && echo "ok input legacy 3/4 with $add" || echo "without input legacy 3/4"
-$cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -d $add -m comment --comment "add-blacklist6" \
--j DROP &> /dev/null  && echo "ok output legacy 4/4 with $add" || echo "without output legacy 4/4"
+$cmd_command_ip6tablesnft    -t filter -I INPUT 2 -s $add  \
+-m comment --comment "add-blacklist6" \
+-j DROP  &> /dev/null 
+$cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -d $add \
+-m comment --comment "add-blacklist6" \
+-j DROP  &> /dev/null
+$cmd_command_ip6tableslegacy -t filter -I INPUT 2 -s $add  \
+-m comment --comment "add-blacklist6" \
+-j DROP &> /dev/null
+$cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -d $add \
+-m comment --comment "add-blacklist6" \
+-j DROP &> /dev/null 
 ####
 ####
 done
@@ -6656,13 +6673,11 @@ cfg_config_close_deny="DROP"
 $cmd_command_ip4tableslegacy  -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
 -m recent --name count-tries-ssh --update --seconds $cfg_config_shield_seconds \
 --hitcount $cfg_config_shield_maxtries -j $cfg_config_close_deny \
--m comment --comment "shield:tries-hour" &> /dev/null && \
-echo "ok rule nft 1/4 with port $add"   || echo "without input legacy ip4 1/2" 
+-m comment --comment "shield:tries-hour" &> /dev/null
 $cmd_command_ip4tablesnft  -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
 -m recent --name count-tries-ssh --update --seconds $cfg_config_shield_seconds \
 --hitcount $cfg_config_shield_maxtries -j $cfg_config_close_deny \
--m comment --comment "shield:tries-hour" &> /dev/null && \
-echo "ok rule nft 1/4 with port $add"   || echo "without input nft ip4 2/2"
+-m comment --comment "shield:tries-hour" &> /dev/null
 ####
 ####
 exit; fi
@@ -6692,13 +6707,11 @@ cfg_config_close_deny="DROP"
 $cmd_command_ip6tableslegacy  -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
 -m recent --name count-tries-ssh --update --seconds $cfg_config_shield_seconds \
 --hitcount $cfg_config_shield_maxtries -j $cfg_config_close_deny \
--m comment --comment "shield:tries-hour" &> /dev/null && \
-echo "ok rule legacy ip6 3/4 with port $add"   || echo "without input legacy ip6 1/2" 
+-m comment --comment "shield:tries-hour" &> /dev/null 
 $cmd_command_ip6tablesnft  -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
 -m recent --name count-tries-ssh --update --seconds $cfg_config_shield_seconds \
 --hitcount $cfg_config_shield_maxtries -j $cfg_config_close_deny \
--m comment --comment "shield:tries-hour" &> /dev/null && \
-echo "ok rule nft ip6 4/4 with port $add"   || echo "without input nft ip6 2/2"
+-m comment --comment "shield:tries-hour" &> /dev/null 
 ####
 ####
 exit; fi
@@ -6824,42 +6837,32 @@ if [ "$cmd_first_option" == "drop-string" ] ; then
 ####
 ####
 #### rules
-echo "$txt_text_stitle [ Working ] ADD drop string to $2 in ip4"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 \
 -m string --string "$2" --algo "$cfg_config_string_algoritmo" \
--m comment --comment "drop-string" -j DROP  &> /dev/null && \
-echo "ok input nft 1/4"   || echo "without input nft 1/4"
+-m comment --comment "drop-string" -j DROP  &> /dev/null
 $cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 \
 -m string --string "$2" --algo "$cfg_config_string_algoritmo" \
--m comment --comment "drop-string" -j DROP  &> /dev/null && \
-echo "ok output nft 2/4"   || echo "without output nft 2/4"
+-m comment --comment "drop-string" -j DROP  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I INPUT  2 \
 -m string --string "$2" --algo "$cfg_config_string_algoritmo" \
--m comment --comment "drop-string" -j DROP  &> /dev/null && \
-echo "ok input legacy 3/4"   || echo "without input legacy 3/4"
+-m comment --comment "drop-string" -j DROP  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 \
 -m string --string "$2" --algo "$cfg_config_string_algoritmo" \
--m comment --comment "drop-string" -j DROP  &> /dev/null && \
-echo "ok output legacy 4/4"   || echo "without output legacy 4/4"
+-m comment --comment "drop-string" -j DROP  &> /dev/null
 ####
 ####
-echo "$txt_text_stitle [ Working ] ADD drop string to $2 in ip6"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 \
 -m string --string "$2" --algo "$cfg_config_string_algoritmo" \
--m comment --comment "drop-string" -j DROP  &> /dev/null && \
-echo "ok input nft 1/4"   || echo "without input nft 1/4"
+-m comment --comment "drop-string" -j DROP  &> /dev/null
 $cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 \
 -m string --string "$2" --algo "$cfg_config_string_algoritmo" \
--m comment --comment "drop-string" -j DROP  &> /dev/null && \
-echo "ok output nft 2/4"   || echo "without output nft 2/4"
+-m comment --comment "drop-string" -j DROP  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I INPUT  2 \
 -m string --string "$2" --algo "$cfg_config_string_algoritmo" \
--m comment --comment "drop-string" -j DROP  &> /dev/null && \
-echo "ok input legacy 3/4"   || echo "without input legacy 3/4"
+-m comment --comment "drop-string" -j DROP  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 \
 -m string --string "$2" --algo "$cfg_config_string_algoritmo" \
--m comment --comment "drop-string" -j DROP  &> /dev/null && \
-echo "ok output legacy 4/4"   || echo "without output legacy 4/4"
+-m comment --comment "drop-string" -j DROP  &> /dev/null
 exit; fi
 ####
 ####
@@ -6872,42 +6875,33 @@ if [ "$cmd_first_option" == "limit-minute" ] ; then
 ####
 ####
 #### rules
-echo "$txt_text_stitle [ Working ] ADD max packages in minutes with ip4"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 \
 -m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
--m comment --comment "limit-minute" -j DROP  &> /dev/null && \
-echo "ok input nft 1/4"   || echo "without input nft 1/4"
+-m comment --comment "limit-minute" -j DROP  &> /dev/null
 $cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 \
 -m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
--m comment --comment "limit-minute" -j DROP  &> /dev/null && \
-echo "ok output nft 2/4"   || echo "without output nft 2/4"
+-m comment --comment "limit-minute" -j DROP  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I INPUT  2 \
 -m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
--m comment --comment "limit-minute" -j DROP  &> /dev/null && \
-echo "ok input legacy 3/4"   || echo "without input legacy 3/4"
+-m comment --comment "limit-minute" -j DROP  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 \
 -m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
--m comment --comment "limit-minute" -j DROP  &> /dev/null && \
-echo "ok output legacy 4/4"   || echo "without output legacy 4/4"
+-m comment --comment "limit-minute" -j DROP  &> /dev/null
 ####
 ####
 echo "$txt_text_stitle [ Working ] ADD max packages in minutes with ip6"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 \
 -m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
--m comment --comment "limit-minute" -j DROP  &> /dev/null && \
-echo "ok input nft 1/4"   || echo "without input nft 1/4"
+-m comment --comment "limit-minute" -j DROP  &> /dev/null
 $cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 \
 -m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
--m comment --comment "limit-minute" -j DROP  &> /dev/null && \
-echo "ok output nft 2/4"   || echo "without output nft 2/4"
+-m comment --comment "limit-minute" -j DROP  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I INPUT  2 \
 -m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
--m comment --comment "limit-minute" -j DROP  &> /dev/null && \
-echo "ok input legacy 3/4"   || echo "without input legacy 3/4"
+-m comment --comment "limit-minute" -j DROP  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 \
 -m hashlimit --hashlimit-above $2/minute --hashlimit-name bandwidth \
--m comment --comment "limit-minute" -j DROP  &> /dev/null && \
-echo "ok output legacy 4/4"   || echo "without output legacy 4/4"
+-m comment --comment "limit-minute" -j DROP  &> /dev/null
 ####
 ####
 exit; fi
@@ -7013,19 +7007,17 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_stitle [ Working ] ADD ipv4 rules port server: port to $add"
-$cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
--m comment --comment "return-port" -j RETURN  &> /dev/null && \
-echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
+$cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p tcp -m multiport --dports $add  \
+-m comment --comment "return-port" -j RETURN  &> /dev/null
 $cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -p tcp -m multiport --sports $add \
--m comment --comment "return-port" -j RETURN  &> /dev/null && \
-echo "ok output nft 2/4 with port $add"   || echo "without output nft 2/4"
+-m comment --comment "return-port" -j RETURN  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I INPUT  2 -p tcp -m multiport --dports $add \
--m comment --comment "return-port" -j RETURN  &> /dev/null && \
-echo "ok input legacy 3/4 with port $add"   || echo "without input legacy 3/4"
+-m comment --comment "return-port" -j RETURN  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -p tcp -m multiport --sports $add \
--m comment --comment "return-port" -j RETURN  &> /dev/null && \
-echo "ok output legacy 4/4 with port $add"   || echo "without output legacy 4/4"
+-m comment --comment "return-port" -j RETURN  &> /dev/null
+####
+####
+echo "$txt_text_tile_done return port tcp4"
 ####
 ####
 exit; fi
@@ -7048,19 +7040,17 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_stitle [ Working ] ADD ipv6 rules port server: port to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
--m comment --comment "return-port" -j RETURN  &> /dev/null && \
-echo "ok input nft 1/4 with port $add"   || echo "without rule nft 1/4"
+-m comment --comment "return-port" -j RETURN  &> /dev/null
 $cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -p tcp -m multiport --sports $add \
--m comment --comment "return-port" -j RETURN  &> /dev/null && \
-echo "ok output nft 1/4 with port $add"   || echo "without rule nft 1/4"
+-m comment --comment "return-port" -j RETURN  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I INPUT  2 -p tcp -m multiport --dports $add \
--m comment --comment "return-port" -j RETURN  &> /dev/null && \
-echo "ok input legacy 1/4 with port $add"   || echo "without rule legacy 1/4"
+-m comment --comment "return-port" -j RETURN  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -p tcp -m multiport --sports $add \
--m comment --comment "return-port" -j RETURN  &> /dev/null && \
-echo "ok output legacy 1/4 with port $add"   || echo "without rule legacy 1/4"
+-m comment --comment "return-port" -j RETURN  &> /dev/null
+####
+####
+echo "$txt_text_tile_done return port tcp6"
 ####
 ####
 exit; fi
@@ -7083,19 +7073,17 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_stitle [ Working ] ADD ipv4 rules port server: port to $add"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p udp -m multiport --dports $add \
--m comment --comment "return-port" -j RETURN  &> /dev/null && \
-echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
+-m comment --comment "return-port" -j RETURN  &> /dev/null
 $cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
--m comment --comment "return-port" -j RETURN  &> /dev/null && \
-echo "ok output nft 2/4 with port $add"   || echo "without output nft 2/4"
+-m comment --comment "return-port" -j RETURN  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I INPUT  2 -p udp -m multiport --dports $add \
--m comment --comment "return-port" -j RETURN  &> /dev/null && \
-echo "ok input legacy 3/4 with port $add"   || echo "without input legacy 3/4"
+-m comment --comment "return-port" -j RETURN  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
--m comment --comment "return-port" -j RETURN  &> /dev/null && \
-echo "ok output legacy 4/4 with port $add"   || echo "without output legacy 4/4"
+-m comment --comment "return-port" -j RETURN  &> /dev/null
+####
+####
+echo "$txt_text_tile_done return port udp4"
 ####
 ####
 exit; fi
@@ -7118,19 +7106,17 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_stitle [ Working ] ADD ipv6 rules port server: port to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -p udp -m multiport --dports $add \
--m comment --comment "return-port" -j RETURN  &> /dev/null && \
-echo "ok input nft 1/4 with port $add"   || echo "without rule nft 1/4"
+-m comment --comment "return-port" -j RETURN  &> /dev/null
 $cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
--m comment --comment "return-port" -j RETURN  &> /dev/null && \
-echo "ok output nft 1/4 with port $add"   || echo "without rule nft 1/4"
+-m comment --comment "return-port" -j RETURN  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I INPUT  2 -p udp -m multiport --dports $add \
--m comment --comment "return-port" -j RETURN  &> /dev/null && \
-echo "ok input legacy 1/4 with port $add"   || echo "without rule legacy 1/4"
+-m comment --comment "return-port" -j RETURN  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
--m comment --comment "return-port" -j RETURN  &> /dev/null && \
-echo "ok output legacy 1/4 with port $add"   || echo "without rule legacy 1/4"
+-m comment --comment "return-port" -j RETURN  &> /dev/null
+####
+####
+echo "$txt_text_tile_done return port udp6"
 ####
 ####
 exit; fi
@@ -7153,19 +7139,17 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_stitle [ Working ] ADD ipv4 rules port server: port to $add"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
--m comment --comment "log-port" -j LOG  &> /dev/null && \
-echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
+-m comment --comment "log-port" -j LOG  &> /dev/null
 $cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -p tcp -m multiport --sports $add \
--m comment --comment "log-port" -j LOG  &> /dev/null && \
-echo "ok output nft 2/4 with port $add"   || echo "without output nft 2/4"
+-m comment --comment "log-port" -j LOG  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I INPUT  2 -p tcp -m multiport --dports $add \
--m comment --comment "log-port" -j LOG  &> /dev/null && \
-echo "ok input legacy 3/4 with port $add"   || echo "without input legacy 3/4"
+-m comment --comment "log-port" -j LOG  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -p tcp -m multiport --sports $add \
--m comment --comment "log-port" -j LOG  &> /dev/null && \
-echo "ok output legacy 4/4 with port $add"   || echo "without output legacy 4/4"
+-m comment --comment "log-port" -j LOG  &> /dev/null
+####
+####
+echo "$txt_text_tile_done log port tcp4"
 ####
 ####
 exit; fi
@@ -7188,19 +7172,17 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_stitle [ Working ] ADD ipv6 rules port server: port to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
--m comment --comment "log-port" -j LOG  &> /dev/null && \
-echo "ok input nft 1/4 with port $add"   || echo "without rule nft 1/4"
+-m comment --comment "log-port" -j LOG  &> /dev/null
 $cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -p tcp -m multiport --sports $add \
--m comment --comment "log-port" -j LOG  &> /dev/null && \
-echo "ok output nft 1/4 with port $add"   || echo "without rule nft 1/4"
+-m comment --comment "log-port" -j LOG  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I INPUT  2 -p tcp -m multiport --dports $add \
--m comment --comment "log-port" -j LOG  &> /dev/null && \
-echo "ok input legacy 1/4 with port $add"   || echo "without rule legacy 1/4"
+-m comment --comment "log-port" -j LOG  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -p tcp -m multiport --sports $add \
--m comment --comment "log-port" -j LOG  &> /dev/null && \
-echo "ok output legacy 1/4 with port $add"   || echo "without rule legacy 1/4"
+-m comment --comment "log-port" -j LOG  &> /dev/null
+####
+####
+echo "$txt_text_tile_done log port tcp6"
 ####
 ####
 exit; fi
@@ -7223,30 +7205,28 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_stitle [ Working ] ADD ipv4 rules port server: port to $add"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p udp -m multiport --dports $add \
--m comment --comment "log-port" -j LOG  &> /dev/null && \
-echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
+-m comment --comment "log-port" -j LOG  &> /dev/null
 $cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
--m comment --comment "log-port" -j LOG  &> /dev/null && \
-echo "ok output nft 2/4 with port $add"   || echo "without output nft 2/4"
+-m comment --comment "log-port" -j LOG  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I INPUT  2 -p udp -m multiport --dports $add \
--m comment --comment "log-port" -j LOG  &> /dev/null && \
-echo "ok input legacy 3/4 with port $add"   || echo "without input legacy 3/4"
+-m comment --comment "log-port" -j LOG  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
--m comment --comment "log-port" -j LOG  &> /dev/null && \
-echo "ok output legacy 4/4 with port $add"   || echo "without output legacy 4/4"
+-m comment --comment "log-port" -j LOG  &> /dev/null
+####
+####
+echo "$txt_text_tile_done log port udp4"
 ####
 ####
 exit; fi
 ####
 ####
 #### :rutina-final-log-port-udp4
-##########    return-port-udp6: return port to udp ip6      ##########
+##########    log-port-udp6: return port to udp ip6      ##########
 #### :rutina-inicial-log-port-udp6
 ####
 ####
-if [ "$cmd_first_option" == "return-port-udp6" ] ; then
+if [ "$cmd_first_option" == "log-port-udp6" ] ; then
 ####
 ####
 if [ "$2" == "$NULL" ]; then 
@@ -7258,19 +7238,17 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_stitle [ Working ] ADD ipv6 rules port server: port to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -p udp -m multiport --dports $add \
--m comment --comment "log-port" -j LOG  &> /dev/null && \
-echo "ok input nft 1/4 with port $add"   || echo "without rule nft 1/4"
+-m comment --comment "log-port" -j LOG  &> /dev/null
 $cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
--m comment --comment "log-port" -j LOG  &> /dev/null && \
-echo "ok output nft 1/4 with port $add"   || echo "without rule nft 1/4"
+-m comment --comment "log-port" -j LOG  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I INPUT  2 -p udp -m multiport --dports $add \
--m comment --comment "log-port" -j LOG  &> /dev/null && \
-echo "ok input legacy 1/4 with port $add"   || echo "without rule legacy 1/4"
+-m comment --comment "log-port" -j LOG  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
--m comment --comment "log-port" -j LOG  &> /dev/null && \
-echo "ok output legacy 1/4 with port $add"   || echo "without rule legacy 1/4"
+-m comment --comment "log-port" -j LOG  &> /dev/null
+####
+####
+echo "$txt_text_tile_done log port udp6"
 ####
 ####
 exit; fi
@@ -7293,19 +7271,17 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_stitle [ Working ] ADD ipv4 rules port server: port to $add"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
--m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
-echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
+-m comment --comment "allow-port" -j ACCEPT  &> /dev/null
 $cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -p tcp -m multiport --sports $add \
--m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
-echo "ok output nft 2/4 with port $add"   || echo "without output nft 2/4"
+-m comment --comment "allow-port" -j ACCEPT  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I INPUT  2 -p tcp -m multiport --dports $add \
--m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
-echo "ok input legacy 3/4 with port $add"   || echo "without input legacy 3/4"
+-m comment --comment "allow-port" -j ACCEPT  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -p tcp -m multiport --sports $add \
--m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
-echo "ok output legacy 4/4 with port $add"   || echo "without output legacy 4/4"
+-m comment --comment "allow-port" -j ACCEPT  &> /dev/null
+####
+####
+echo "$txt_text_tile_done allow port tcp4"
 ####
 ####
 exit; fi
@@ -7328,19 +7304,17 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_stitle [ Working ] ADD ipv6 rules port server: port to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
--m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
-echo "ok input nft 1/4 with port $add"   || echo "without rule nft 1/4"
+-m comment --comment "allow-port" -j ACCEPT  &> /dev/null
 $cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -p tcp -m multiport --sports $add \
--m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
-echo "ok output nft 1/4 with port $add"   || echo "without rule nft 1/4"
+-m comment --comment "allow-port" -j ACCEPT  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I INPUT  2 -p tcp -m multiport --dports $add \
--m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
-echo "ok input legacy 1/4 with port $add"   || echo "without rule legacy 1/4"
+-m comment --comment "allow-port" -j ACCEPT  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -p tcp -m multiport --sports $add \
--m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
-echo "ok output legacy 1/4 with port $add"   || echo "without rule legacy 1/4"
+-m comment --comment "allow-port" -j ACCEPT  &> /dev/null
+####
+####
+echo "$txt_text_tile_done allow port tcp6"
 ####
 ####
 exit; fi
@@ -7363,19 +7337,17 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_stitle [ Working ] ADD ipv4 rules port server: port to $add"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
--m comment --comment "drop-port" -j DROP  &> /dev/null && \
-echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
+-m comment --comment "drop-port" -j DROP  &> /dev/null
 $cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -p tcp -m multiport --sports $add \
--m comment --comment "drop-port" -j DROP  &> /dev/null && \
-echo "ok output nft 2/4 with port $add"   || echo "without output nft 2/4"
+-m comment --comment "drop-port" -j DROP  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I INPUT  2 -p tcp -m multiport --dports $add \
--m comment --comment "drop-port" -j DROP  &> /dev/null && \
-echo "ok input legacy 3/4 with port $add"   || echo "without input legacy 3/4"
+-m comment --comment "drop-port" -j DROP  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -p tcp -m multiport --sports $add \
--m comment --comment "drop-port" -j DROP  &> /dev/null && \
-echo "ok input legacy 4/4 with port $add"   || echo "without output legacy 4/4"
+-m comment --comment "drop-port" -j DROP  &> /dev/null
+####
+####
+echo "$txt_text_tile_done drop port tcp4"
 ####
 ####
 exit; fi
@@ -7398,19 +7370,17 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_stitle [ Working ] ADD ipv6 rules port server: port to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -p tcp -m multiport --dports $add \
--m comment --comment "drop-port" -j DROP  &> /dev/null && \
-echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
+-m comment --comment "drop-port" -j DROP  &> /dev/null
 $cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -p tcp -m multiport --sports $add \
--m comment --comment "drop-port" -j DROP  &> /dev/null && \
-echo "ok output nft 2/4 with port $add"   || echo "without output nft 2/4"
+-m comment --comment "drop-port" -j DROP  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I INPUT  2 -p tcp -m multiport --dports $add \
--m comment --comment "drop-port" -j DROP  &> /dev/null && \
-echo "ok input legacy 3/4 with port $add"   || echo "without input legacy 3/4"
+-m comment --comment "drop-port" -j DROP  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -p tcp -m multiport --sports $add \
--m comment --comment "drop-port" -j DROP  &> /dev/null && \
-echo "ok output legacy 4/4 with port $add"   || echo "without output legacy 4/4"
+-m comment --comment "drop-port" -j DROP  &> /dev/null
+####
+####
+echo "$txt_text_tile_done drop port tcp6"
 ####
 ####
 exit; fi
@@ -7433,19 +7403,17 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_stitle [ Working ] ADD ipv4 rules port server: port to $add"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p udp -m multiport --dports $add  \
--m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
-echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
+-m comment --comment "allow-port" -j ACCEPT  &> /dev/null
 $cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
--m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
-echo "ok output nft 2/4 with port $add"   || echo "without output nft 2/4"
+-m comment --comment "allow-port" -j ACCEPT  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I INPUT  2 -p udp -m multiport --dports $add \
--m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
-echo "ok input legacy 3/4 with port $add"   || echo "without input legacy 3/4"
+-m comment --comment "allow-port" -j ACCEPT  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
--m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
-echo "ok output legacy 4/4 with port $add"   || echo "without output legacy 4/4"
+-m comment --comment "allow-port" -j ACCEPT  &> /dev/null
+####
+####
+echo "$txt_text_tile_done allow port udp4"
 ####
 ####
 exit; fi
@@ -7468,19 +7436,17 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_stitle [ Working ] ADD ipv6 rules port server: port to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -p udp  -m multiport --dports $add \
--m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
-echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
+-m comment --comment "allow-port" -j ACCEPT  &> /dev/null
 $cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
--m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
-echo "ok output nft 2/4 with port $add"   || echo "without output nft 2/4"
+-m comment --comment "allow-port" -j ACCEPT  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I INPUT  2 -p udp -m multiport --dports $add \
--m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
-echo "ok input legacy 3/4 with port $add"   || echo "without input legacy 3/4"
+-m comment --comment "allow-port" -j ACCEPT  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
--m comment --comment "allow-port" -j ACCEPT  &> /dev/null && \
-echo "ok output legacy 4/4 with port $add"   || echo "without output legacy 4/4"
+-m comment --comment "allow-port" -j ACCEPT  &> /dev/null
+####
+####
+echo "$txt_text_tile_done allow port udp6"
 ####
 ####
 exit; fi
@@ -7503,19 +7469,17 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_stitle [ Working ] ADD ipv4 rules port server: port to $add"
 $cmd_command_ip4tablesnft    -t filter -I INPUT 2 -p udp -m multiport --dports $add \
--m comment --comment "drop-port" -j DROP  &> /dev/null && \
-echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
+-m comment --comment "drop-port" -j DROP  &> /dev/null
 $cmd_command_ip4tablesnft    -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
--m comment --comment "drop-port" -j DROP  &> /dev/null && \
-echo "ok output nft 2/4 with port $add"   || echo "without output nft 2/4"
+-m comment --comment "drop-port" -j DROP  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I INPUT  2 -p udp -m multiport --dports $add \
--m comment --comment "drop-port" -j DROP  &> /dev/null && \
-echo "ok input legacy 3/4 with $add"   || echo "without input legacy 3/4"
+-m comment --comment "drop-port" -j DROP  &> /dev/null
 $cmd_command_ip4tableslegacy -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
--m comment --comment "drop-port" -j DROP  &> /dev/null && \
-echo "ok output legacy 4/4 with port $add"   || echo "without output legacy 4/4"
+-m comment --comment "drop-port" -j DROP  &> /dev/null
+####
+####
+echo "$txt_text_tile_done drop port udp4"
 ####
 ####
 exit; fi
@@ -7538,19 +7502,17 @@ add="$2"
 ####
 ####
 #### rules
-echo "$txt_text_stitle [ Working ] ADD ipv6 rules port server: port to $add"
 $cmd_command_ip6tablesnft    -t filter -I INPUT 2 -p udp  -m multiport --dports $add \
--m comment --comment "drop-port" -j DROP  &> /dev/null && \
-echo "ok input nft 1/4 with port $add"   || echo "without input nft 1/4"
+-m comment --comment "drop-port" -j DROP  &> /dev/null
 $cmd_command_ip6tablesnft    -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
--m comment --comment "drop-port" -j DROP  &> /dev/null && \
-echo "ok output nft 1/4 with port $add"   || echo "without output nft 2/4"
+-m comment --comment "drop-port" -j DROP  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I INPUT  2 -p udp -m multiport --dports $add \
--m comment --comment "drop-port" -j DROP  &> /dev/null && \
-echo "ok input legacy 1/4 with port $add"   || echo "without input legacy 3/4"
+-m comment --comment "drop-port" -j DROP  &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 -p udp -m multiport --sports $add \
--m comment --comment "drop-port" -j DROP  &> /dev/null && \
-echo "ok output legacy 1/4 with port $add"   || echo "without output legacy 4/4"
+-m comment --comment "drop-port" -j DROP  &> /dev/null
+####
+####
+echo "$txt_text_tile_done drop port udp6"
 ####
 ####
 exit; fi
@@ -7806,16 +7768,19 @@ exit; fi
 if [ "$cmd_first_option" == "speed-ip4" ] ; then
 ####
 ####
-echo "$txt_text_title_info  [ test speed ipv4 with iperf3 ] "
+#### sane
 if [ "$cmd_command_iperf" == "$NULL" ];
 then echo "$txt_text_title_fail install iperf3"; fi
+####
+####
+#### test
+echo "$txt_text_title_info  [ test speed ipv4 with iperf3 ] "
 echo "$txt_text_title"
-# echo "$txt_text_stitle [ Working ] Saving firewall before speed-ip4"
 $cmd_internal save before-speed-ip4
 $cmd_internal add-whitelist4 $cfg_server_ip_iperf_ipv4
 echo "$txt_text_title"
 echo "$txt_text_stitle [ Calculing speed .. ]"
-echo "$txt_text_stitle [ Working ] Conecting in ipv4 to $cfg_server_ip_iperf_ipv4 ]"
+echo "$txt_text_stitle [ Working ] Conecting in ipv4 to $cfg_server_ip_iperf_ipv4"
 $cmd_command_iperf -c "$cfg_server_ip_iperf_ipv4" \
 -p "$cfg_server_port_iperf_ipv4" -4 -u -t 3 --bidir
 echo "$txt_text_title"
@@ -7835,14 +7800,17 @@ exit; fi
 if [ "$cmd_first_option" == "speed-ip6" ] ; then
 ####
 ####
-echo "$txt_text_title_info  [ test speed ipv6 with iperf3 ] "
+#### sane
 if [ "$cmd_command_iperf" == "$NULL" ];
 then echo "$txt_text_title_fail install iperf3"; fi
+####
+####
+#### test
 $cmd_internal save before-speed-ip6 
 $cmd_internal add-whitelist6 $cfg_server_ip_iperf_ipv6
 echo "$txt_text_title"
 echo "$txt_text_stitle [ Calculing speed .. ]"
-echo "$txt_text_stitle [ Working ] Conecting in ipv6 to $cfg_server_ip_iperf_ipv4 ]"
+echo "$txt_text_stitle [ Working ] Conecting in ipv6 to $cfg_server_ip_iperf_ipv4"
 $cmd_command_iperf -c "$cfg_server_ip_iperf_ipv6" \
 -p "$cfg_server_port_iperf_ipv6" -6 -u -t 3 --bidir
 echo "$txt_text_title"
