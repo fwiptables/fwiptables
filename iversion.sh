@@ -5268,7 +5268,7 @@ echo
 echo "$txt_text_title_info [ Listing firewall names, each one with 6 files ]"
 echo "$txt_text_title_info [ ebtables-arptables-legacy4-legacy6-nft4-nft6  ]"
 cd $cmd_default_directory_control
-ls -1 | $cmd_command_sed s/\-legacy\-ipv6//g | \
+ls -1 * | $cmd_command_sed s/\-legacy\-ipv6//g | \
 $cmd_command_sed s/\-nft\-ipv6//g | \
 $cmd_command_sed s/\-legacy\-ipv4//g | \
 $cmd_command_sed s/\-nft\-ipv4//g | \
