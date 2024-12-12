@@ -100,7 +100,7 @@ cmd_developer="Francisco Garcia"                              # Actual developer
 cmd_contact="fwiptables@gmx.com"                              # Actual contact
 cmd_shortdescription="FireWall With iptables"                 # Description short
 cmd_longdescription="iptables templates in one script"        # Description long
-cmd_requisite_program="awk,cat,cut,date,file,id,sed"          # Program requisite
+cmd_requisite_program="awk,cat,cut,date,file,id,sed,sort"     # Program requisite
 cmd_requisite_firewall4="iptables-legacy,iptables-nft"        # Firewall requisite
 cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"      # Firewall requisite
 cmd_license="LGPL v2, GPL v2"                                 # Program license
@@ -280,6 +280,7 @@ cmd_command_traceroute="$($cmd_where traceroute)"
 cmd_command_tree="$($cmd_where tree)"
 cmd_command_txt2html="$($cmd_where txt2html)"
 cmd_command_uname="$($cmd_where uname)"
+cmd_command_uniq="$($cmd_where uniq)"
 cmd_command_uuid="$($cmd_where uuid)"
 cmd_command_vi="$($cmd_where vi)"
 cmd_command_vim="$($cmd_where vim)"
@@ -464,6 +465,7 @@ txt_message_without_guiroll="$txt_text_title_fail [ install zenity ]"
 ####
 #### system emulate command tree with command ls
 if [ "$cmd_command_tree" == "$NULL" ]; then cmd_command_tree="$cmd_command_ls"; fi
+if [ "$cmd_command_uniq" == "$NULL" ]; then cmd_command_uniq="$cmd_command_ls"; fi
 ####
 ####
 #### system requisite utils
@@ -5268,7 +5270,7 @@ echo "$txt_text_title_info [ ebtables-arptables-legacy4-legacy6-nft4-nft6  ]"
 $cmd_command_tree $cmd_default_directory_control | $cmd_command_sed s/\-legacy\-ipv6//g | \
 $cmd_command_sed s/\-nft\-ipv6//g | \
 $cmd_command_sed s/\-legacy\-ipv4//g | $cmd_command_sed s/\-nft\-ipv4//g | \
-$cmd_command_sed s/\-arptables//g | $cmd_command_sed s/\-ebtables//g
+$cmd_command_sed s/\-arptables//g | $cmd_command_sed s/\-ebtables//g | $cmd_command_sort -u
 echo
 echo "$txt_text_title_ok [ Listed firewall names ]"
 ####
