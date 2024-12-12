@@ -5532,8 +5532,8 @@ if [ "$cmd_first_option" == "own-notes" ] ;  then
 ####
 #### add
 if [ "$cmd_second_option" == "add" ] && [ "$3" != "$NULL" ]
-then echo "$cmd_mynote_date,$cmd_sub_option," >> "$cmd_file_default_usernotes"
-echo "Content added: $cmd_sub_option," ; exit; fi
+then echo "$cmd_mynote_date,$cmd_third_option," >> "$cmd_file_default_usernotes"
+echo "Content added: $cmd_third_option," ; exit; fi
 #### search
 if [ "$cmd_second_option" == "search" ]  && [ "$3" != "$NULL" ]
 then echo "List searched"
@@ -5546,8 +5546,8 @@ $cmd_command_cat $cmd_file_default_usernotes; exit; fi
 if [ "$cmd_second_option" == "lines" ] ; then echo "Lines numbers:"
 $cmd_command_cat $cmd_file_default_usernotes | $cmd_command_wc -l ; exit; fi
 #### info
-echo " # Option: add|search|list|lines"
-echo " # $txt_text_info Use with quote when spaces to add"
+echo " # $txt_text_info Type option: add|search|list|lines"
+echo " # $txt_text_info Use with quote when spaces to add note"
 echo " # $txt_text_file [$cmd_file_default_usernotes]"
 #### 
 ####
