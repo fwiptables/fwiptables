@@ -2616,12 +2616,6 @@ echo "$txt_text_md_md  Launch: wizard mini                                 $txt_
 echo "$txt_text_md_md  $cmd_internal wizard-mini                           $txt_text_md"  
 echo "$txt_text_md_md  Explain: Wizard firewall for clients and servers    $txt_text_md"
 echo "$txt_text_md_md  $txt_text_md"
-echo "$txt_text_md_md  Launch: miniserver-tcp ports                        $txt_text_md"
-echo "$txt_text_md_md  $cmd_internal miniserver-tcp 21:25,80               $txt_text_md"  
-echo "$txt_text_md_md  Launch: miniserver-udp ports                        $txt_text_md"
-echo "$txt_text_md_md  $cmd_internal miniserver-udp 67:68,443              $txt_text_md"  
-echo "$txt_text_md_md  Explain: Read miniserver in preferences file        $txt_text_md"
-echo "$txt_text_md_md  $txt_text_md"
 echo "$txt_text_title_md [ Example with add-whitelist4 ]                   $txt_text_md"
 echo "$txt_text_md_md  $txt_text_md"  
 echo "$txt_text_md_md  Launch: add-whitelist4                              $txt_text_md"
@@ -3430,7 +3424,7 @@ echo "$txt_text_md ...   firewall-wallcontrol"
 echo "$txt_text_md stop continue reset show save load names actual eraserules"  
 echo "$txt_text_md eraserules4 eraserules6 without-connection input-permisive"  
 echo "$txt_text_md input-established wizard-tiny wizard-mini wizard-full"  
-echo "$txt_text_md tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp"  
+echo "$txt_text_md tinyserver-tcp tinyserver-udp"  
 echo "$txt_text_md ...   firewall-walladdrule"  
 echo "$txt_text_md drop-send-ping drop-get-ping allow-send-ping allow-get-ping"  
 echo "$txt_text_md drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp"   
@@ -3622,8 +3616,6 @@ echo "$txt_text_md_md input-permisive    . launch a one firewall with all permis
 echo "$txt_text_md_md input-established  . firewall with input related,stablished"
 echo "$txt_text_md_md tinyserver-tcp     . firewall server ports tcp, with optional clients"
 echo "$txt_text_md_md tinyserver-udp     . firewall server ports udp, with optional clients"
-echo "$txt_text_md_md miniserver-tcp     . firewall server ports tcp, with optional clients"
-echo "$txt_text_md_md miniserver-udp     . firewall server ports udp, with optional clients"
 ####
 ####
 exit; fi
@@ -9209,7 +9201,6 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 009  "$txt_text_md save" \
 010  "$txt_text_md load" \
 011  "$txt_text_md actual" \
-012  "$txt_text_md eraserules" \
 013  "$txt_text_md wizard-tiny" \
 014  "$txt_text_md wizard-mini" \
 015  "$txt_text_md wizard-full" \
@@ -9243,7 +9234,6 @@ read -p "| Type the firewall name to restore |   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $cmd_command_sed s/\\///g)
 $cmd_internal load $nombrecillo ;;
 011) clear ; $cmd_internal $cfg_favorite_out_cli actual ;;
-012) clear ; $cmd_internal $cfg_favorite_out_cli eraserules ; $cmd_internal cli list4   ;;
 013) clear ; $cmd_internal $cfg_favorite_out_cli wizard-tiny ; $cmd_internal cli list4  ;;
 014) clear ; $cmd_internal $cfg_favorite_out_cli wizard-mini ; $cmd_internal cli list4  ;;
 015) clear ; $cmd_internal $cfg_favorite_out_cli wizard-full ; $cmd_internal cli list4  ;;
@@ -9252,7 +9242,7 @@ $cmd_internal load $nombrecillo ;;
 018) clear ; $cmd_internal $cfg_favorite_out_cli input-established ; $cmd_internal cli list4   ;;
 019) clear ; $cmd_internal $cfg_favorite_out_cli eraserules4 ; $cmd_internal cli list4   ;;
 020) clear ; $cmd_internal $cfg_favorite_out_cli eraserules6 ; $cmd_internal cli list6   ;;
-021) clear ; $cmd_internal $cfg_favorite_out_cli eraserules ; $cmd_internal cli status   ;;
+021) clear ; $cmd_internal $cfg_favorite_out_cli eraserules  ; $cmd_internal cli list4   ;;
 *)        ;;
 esac
 ################################################################################
@@ -9639,7 +9629,7 @@ gui_menu="gui-principal-menu|gui-info-menu|\
 stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|wizard-tiny|wizard-mini|wizard-full|\
 without-connection|input-permisive|input-established|\
-tinyserver-tcp|tinyserver-udp|miniserver-tcp|miniserver-udp"
+tinyserver-tcp|tinyserver-udp"
 selection_menu="$($cmd_command_zenity --forms \
 --text=gui-roll-firewall-wallcontrol \
 --title=Gui-roll-With-$cmd_internal-$cmd_version \
@@ -9696,18 +9686,6 @@ tinyserver-udp)serverports="$($cmd_command_zenity --entry \
 --title=Save-Firewall \
 --entry-text=server-ports-udp)"                         
 $cmd_internal gui-zenity tinyserver-udp $serverports    
-$cmd_internal gui-zenity list4                         ;;
-miniserver-tcp)serverports="$($cmd_command_zenity --entry \
---width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---title=Save-Firewall \
---entry-text=server-ports-tcp)"                         
-$cmd_internal gui-zenity miniserver-tcp $serverports     
-$cmd_internal gui-zenity list4                         ;;
-miniserver-udp)serverports="$($cmd_command_zenity --entry \
---width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---title=Save-Firewall \
---entry-text=server-ports-udp)"                         
-$cmd_internal gui-zenity miniserver-udp $serverports     
 $cmd_internal gui-zenity list4                         ;;
 esac
 ####
@@ -10300,7 +10278,7 @@ stop|continue|reset|names|show|save|load|actual|\
 eraserules|eraserules4|eraserules6|\
 without-connection|input-permisive|input-established|\
 wizard-tiny|wizard-mini|wizard-full|\
-tinyserver-tcp|tinyserver-udp|miniserver-tcp|miniserver-udp|\
+tinyserver-tcp|tinyserver-udp|\
 return-port-tcp|return-port-udp|log-port-tcp|log-port-udp|\
 allow-port-tcp|allow-port-udp|\
 drop-port-tcp|drop-port-udp|\
@@ -10375,18 +10353,6 @@ tinyserver-udp*)serverports="$($cfg_favorite_basename_graphicalldialog --entry \
 --title=Save-Firewall \
 --entry-text=server-ports-udp)"                                 
 $cmd_internal gui-$cmd_second_option tinyserver-udp $serverports     
-$cmd_internal gui-$cmd_second_option list4                         ;;
-miniserver-tcp*)serverports="$($cfg_favorite_basename_graphicalldialog --entry \
---width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---title=Save-Firewall \
---entry-text=server-ports-tcp)"                                 
-$cmd_internal gui-$cmd_second_option miniserver-tcp $serverports     
-$cmd_internal gui-$cmd_second_option list4                         ;;
-miniserver-udp*)serverports="$($cfg_favorite_basename_graphicalldialog --entry \
---width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
---title=Save-Firewall \
---entry-text=server-ports-udp)"                                 
-$cmd_internal gui-$cmd_second_option miniserver-udp $serverports     
 $cmd_internal gui-$cmd_second_option list4                         ;;
 esac
 ####
@@ -11087,86 +11053,6 @@ fi
 ####
 ####
 #### :rutina-final-tinyserver-udp:
-##########   miniserver-tcp: firewall      ##########
-#### :rutina-inicial-miniserver-tcp:
-####
-####
-if [ "$cmd_first_option" == "miniserver-tcp" ]
-####
-####
-then echo "$txt_text_title_info [ loading firewall wallcustom $fist_option ]"
-cfg_allow_launchrules_firewall="yes" ;
-cfg_type_firewall="wallcontrol"    ; 
-cfg_name_firewall="miniserver-tcp" ;
-####
-####
-cfg_server_port_tcp="$2" ;
-cfg_server_port_udp="" ;
-cfg_client_port_tcp="$cfg_client_mini_port_tcp"
-cfg_client_port_udp="$cfg_client_mini_port_udp"
-####
-####
-if [ "$cmd_third_option" != "$NULL" ] ;
-then cfg_config_ipv4_netserver="$3" 
-cfg_config_ipv6_netserver="$3" ; fi
-####
-####
-if [ "$cmd_second_option" != "$NULL" ]; then
-echo "$txt_text_title_info [ Server with ports tcp $2 for host $3 ]"
-echo "$txt_text_title_info [ Suggest: list rules with list numeral ]"
-else
-echo "$txt_text_info Introducction: Put the ports tcp servers"
-echo "$txt_text_info Introducction: to client ports: see preferences-edit (miniclient ports)"
-echo "$txt_text_info Example_1: $cmd_internal miniserver-tcp 20:22,80"
-echo "$txt_text_info Example_2: $cmd_internal miniserver-tcp 20:22,80 192.168.0.0/24"
-echo "$txt_text_fail fwiptables $cmd_first_option no loaded"
-exit ; fi
-####
-####
-fi
-####
-####
-#### :rutina-final-miniserver-tcp:
-##########   miniserver-udp: firewall      ##########
-#### :rutina-inicial-miniserver-udp:
-####
-####
-if [ "$cmd_first_option" == "miniserver-udp" ]
-####
-####
-then echo "$txt_text_title_info [ loading firewall wallcustom $fist_option ]"
-cfg_allow_launchrules_firewall="yes" ;
-cfg_type_firewall="wallcontrol"    ; 
-cfg_name_firewall="miniserver-udp" ;
-####
-####
-cfg_server_port_tcp="" ;
-cfg_server_port_udp="$2" ;
-cfg_client_port_tcp="$cfg_client_mini_port_tcp"
-cfg_client_port_udp="$cfg_client_mini_port_udp"
-####
-####
-if [ "$cmd_third_option" != "$NULL" ] ;
-then cfg_config_ipv4_netserver="$3" 
-cfg_config_ipv6_netserver="$3" ; fi
-####
-####
-if [ "$cmd_second_option" != "$NULL" ]; then
-echo "$txt_text_title_info [ Server with ports udp $2 for host $3 ]"
-echo "$txt_text_title_info [ Suggest: list rules with list numeral ]"
-else
-echo "$txt_text_info Introducction: Put the ports udp servers"
-echo "$txt_text_info Introducction: to client ports: see preferences-edit (miniclient ports)"
-echo "$txt_text_info Example_1: $cmd_internal mioniserver-udp 20:22,80"
-echo "$txt_text_info Example_2: $cmd_internal mioniserver-udp 20:22,80 192.168.0.0/24"
-echo "$txt_text_fail fwiptables $cmd_first_option no loaded"
-exit ; fi
-####
-####
-fi
-####
-####
-#### :rutina-final-miniserver-udp:
 ################ variables:
 ################
 #### :rutina-inicial-variables:
