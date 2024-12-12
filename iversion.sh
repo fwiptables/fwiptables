@@ -9730,6 +9730,8 @@ then echo $txt_message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
+drop-send-ping|drop-get-ping|allow-send-ping|allow-get-ping|\
+drop-protocol|allow-protocol|\
 return-port-tcp|return-port-udp|log-port-tcp|log-port-udp|\
 allow-port-tcp|allow-port-udp|drop-port-tcp|drop-port-udp|\
 add-whitelist|add-blacklist|add-shield-tcp|\
@@ -9846,6 +9848,32 @@ port="$($cmd_command_zenity --entry \
 --title=port \
 --entry-text=limit)"
 $cmd_internal gui-zenity limit-minute $port           
+$cmd_internal gui-zenity list4                        ;;
+drop-protocol)
+port="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=protocol \
+--entry-text=string)"
+$cmd_internal gui-zenity drop-protocol $port           
+$cmd_internal gui-zenity list4                        ;;
+allow-protocol)
+port="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=protocol \
+--entry-text=string)"
+$cmd_internal gui-zenity allow-protocol $port           
+$cmd_internal gui-zenity list4                        ;;
+drop-send-ping)
+$cmd_internal gui-zenity drop-send-ping $port           
+$cmd_internal gui-zenity list4                        ;;
+allow-send-ping)
+$cmd_internal gui-zenity allow-send-ping $port           
+$cmd_internal gui-zenity list4                        ;;
+drop-get-ping)
+$cmd_internal gui-zenity drop-get-ping $port           
+$cmd_internal gui-zenity list4                        ;;
+allow-get-ping)
+$cmd_internal gui-zenity allow-get-ping $port           
 $cmd_internal gui-zenity list4                        ;;
 esac
 ####
@@ -10380,6 +10408,8 @@ echo "$txt_text_stitle The used gui in $cmd_first_option is $cmd_second_option" 
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
+drop-send-ping|drop-get-ping|allow-send-ping|allow-get-ping|\
+drop-protocol|allow-protocol|\
 return-port-tcp|return-port-udp|log-port-tcp|log-port-udp|\
 allow-port-tcp|allow-port-udp|drop-port-tcp|drop-port-udp|\
 del-commented|drop-string|limit-minute|\
@@ -10502,6 +10532,32 @@ port="$($cfg_favorite_basename_graphicalldialog --entry \
 --entry-text=limit)"
 $cmd_internal gui-$cmd_second_option limit-minute $port           
 $cmd_internal gui-$cmd_second_option list4                        ;;
+drop-protocol*)
+port="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=protocol \
+--entry-text=string)"
+$cmd_internal gui-zenity drop-protocol $port           
+$cmd_internal gui-zenity list4                        ;;
+allow-protocol*)
+port="$($cmd_command_zenity --entry \
+--width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
+--title=protocol \
+--entry-text=string)"
+$cmd_internal gui-zenity allow-protocol $port           
+$cmd_internal gui-zenity list4                        ;;
+drop-send-ping*)
+$cmd_internal gui-zenity drop-send-ping $port           
+$cmd_internal gui-zenity list4                        ;;
+allow-send-ping*)
+$cmd_internal gui-zenity allow-send-ping $port           
+$cmd_internal gui-zenity list4                        ;;
+drop-get-ping*)
+$cmd_internal gui-zenity drop-get-ping $port           
+$cmd_internal gui-zenity list4                        ;;
+allow-get-ping*)
+$cmd_internal gui-zenity allow-get-ping $port           
+$cmd_internal gui-zenity list4                        ;;
 esac
 ####
 ####
