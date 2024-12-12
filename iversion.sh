@@ -2774,9 +2774,7 @@ echo "$txt_text_md    shield maxtries: limit against attack per bruteforce $txt_
 echo "$txt_text_md          Blacklist: excepcionals hosts dropped in firewall $txt_text_md"   
 echo "$txt_text_md          whitelist: excepcionals hosts allowed in firewall $txt_text_md" 
 echo "$txt_text_md         tinyserver: client in all allowed, and servers manually $txt_text_md"
-echo "$txt_text_md         miniserver: normal ports in client, and servers manually $txt_text_md"
 echo "$txt_text_md  input-established: the computer is only client $txt_text_md"   
-echo "$txt_text_md     output uid/gid: User and/or group with conection allowed $txt_text_md"   
 echo "$txt_text_md"
 echo "$txt_text_md    [Necesary Ports] $txt_text_md"  
 echo "$txt_text_md"
@@ -6001,17 +5999,17 @@ if   [ "$cmd_first_option" == "info" ]; then
 #### show info help
 echo "$txt_text_title_info $txt_text_md $txt_text_info  [ info $cmd_second_option ] [ info md ]"
 echo "$txt_text_title_info  Launch info search: $cmd_internal info [pattern-to-search]"
-echo "$txt_text_title_info      Example search: $cmd_internal info ls"
-echo "$txt_text_title_info         all options: $cmd_internal info-options"
-if   [ "$cmd_second_option" == "$NULL" ]; then  $cmd_internal info-options ; exit ; fi
-echo "$txt_text_title_info  Waiting to info with string: $cmd_second_option"
+#### echo "$txt_text_title_info      Example search: $cmd_internal info ls"
+#### echo "$txt_text_title_info         all options: $cmd_internal info-options"
+#### if   [ "$cmd_second_option" == "$NULL" ]; then  $cmd_internal info-options ; exit ; fi
 ####
 ####
 #### create help complete
 cmd_info_cache="$cmd_default_cache_base/cache-info-list-$cmd_version"
 ####
 if   [ ! -f "$cmd_info_cache" ];
-then 
+then
+echo "$txt_text_title_info Gen a list info cache"
 $cmd_internal info-options >> "$cmd_info_cache"
 fi
 ####
