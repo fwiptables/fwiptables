@@ -5384,8 +5384,6 @@ echo "$txt_text_md"
 $cmd_internal depends
 echo "$txt_text_md"
 $cmd_internal examples
-echo "$txt_text_md"
-$cmd_internal options
 ####
 ####
 exit; fi
