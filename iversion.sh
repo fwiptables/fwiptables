@@ -1985,10 +1985,10 @@ echo "$txt_text_title_title default logcmd"
 echo "cfg_allow_save_logcmd=                               ## or void for yes or no"
 echo "$txt_text_title_title header time"
 echo "cfg_allow_show_time=no                               ## or void for yes or no"
-echo "$txt_text_title"  
-echo "$txt_text_title_title mini client ports from side client: for miniserver tcp/udp"  
-echo "cfg_client_mini_port_tcp=ssh,http,https"
-echo "cfg_client_mini_port_udp=domain,domain-s,bootpc,bootps,ntp,https"
+#### echo "$txt_text_title"  
+#### echo "$txt_text_title_title mini custom side client tcp/udp"  
+#### echo "cfg_client_mini_port_tcp=ssh,http,https"
+#### echo "cfg_client_mini_port_udp=domain,domain-s,bootpc,bootps,ntp,https"
 echo "$txt_text_title"  
 echo "$txt_text_title_title default programs"
 echo "cfg_favorite_iperf_command=                          ## or void for automatic or specify command"
@@ -2004,18 +2004,17 @@ echo "$txt_text_title"
 echo "$txt_text_title_title default discover ip and speed ip"
 echo "cfg_server_ipdiscover_ipv4=https://ifconfig.co/ip    ## default http://ifconfig.co/ip"
 echo "cfg_server_ipdiscover_ipv6=https://ifconfig.co/ip    ## default http://ifconfig.co/ip"
-echo "cfg_server_ip_iperf_ipv4=ping.online.net             ## default ping.online.net"
+echo "cfg_server_ip_iperf_ipv4=iperf3.moji.fr              ## default ping.online.net"
 echo "cfg_server_port_iperf_ipv4=5201                      ## default 5201"
-echo "cfg_server_ip_iperf_ipv6=ping6.online.net            ## default ping6.online.net"
+echo "cfg_server_ip_iperf_ipv6=iperf3.moji.fr              ## default ping6.online.net"
 echo "cfg_server_port_iperf_ipv6=5201                      ## default 5201"
-echo "cfg_server_radio_online=https://www.tdtchannels.com/lists/radio.m3u8" 
-echo "$txt_text_title"
-echo "$txt_text_title_title repository wallinet .tar"
-echo "cmd_web_repository_wallinet=$cmd_web_repository_wallinet"
 echo "$txt_text_title"
 echo "$txt_text_title_title default graphicall dimension"
 echo "cfg_config_graphicall_width=800                      ## default width  800"
 echo "cfg_config_graphicall_height=600                     ## default height 600"
+echo "$txt_text_title"
+echo "$txt_text_title_title repository wallinet in tar file"
+echo "cmd_web_repository_wallinet=$cmd_web_repository_wallinet"
 ####
 ####
 exit ; fi
@@ -7782,7 +7781,7 @@ echo "$txt_text_title"
 echo "$txt_text_stitle [ Calculing speed .. ]"
 echo "$txt_text_stitle [ Working ] Conecting in ipv4 to $cfg_server_ip_iperf_ipv4"
 $cmd_command_iperf -c "$cfg_server_ip_iperf_ipv4" \
--p "$cfg_server_port_iperf_ipv4" -4 -u -t 3 --bidir
+-p "$cfg_server_port_iperf_ipv4" -4 -u -t 3 --bidir --connect-timeout 3000
 echo "$txt_text_title"
 echo "$txt_text_stitle [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip4 
@@ -7812,7 +7811,7 @@ echo "$txt_text_title"
 echo "$txt_text_stitle [ Calculing speed .. ]"
 echo "$txt_text_stitle [ Working ] Conecting in ipv6 to $cfg_server_ip_iperf_ipv4"
 $cmd_command_iperf -c "$cfg_server_ip_iperf_ipv6" \
--p "$cfg_server_port_iperf_ipv6" -6 -u -t 3 --bidir
+-p "$cfg_server_port_iperf_ipv6" -6 -u -t 3 --bidir --connect-timeout 3000
 echo "$txt_text_title"
 echo "$txt_text_stitle [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip6 
