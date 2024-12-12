@@ -91,8 +91,8 @@ fi
 #### The number version firewall
 cmd_year="24"                                                 # Number year version
 cmd_month="12"                                                # Number mouth version
-cmd_letter="C"                                                # Number letter version
-cmd_devel=""
+cmd_letter="D"                                                # Number letter version
+cmd_devel="-dev"
 cmd_version="$cmd_year-$cmd_month-$cmd_letter$cmd_devel"      # Final date version
 cmd_released="Year 20$cmd_year / Month $cmd_month"            # Source date version
 #### The data version firewall
@@ -3412,7 +3412,7 @@ if [ "$cmd_first_option" == "options" ]; then
 ####
 #### list options
 echo "$txt_text_md $cmd_name [optional-output] first_option [second_option]"
-echo "$txt_text_md ...   optional-output"
+echo "$txt_text_md       optional-output"
 echo "$txt_text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]"
 echo "$txt_text_md [ cli-dialog cli-whiptail gui-zenity gui-yad ]"
 echo "$txt_text_md [ cli-menu cli-menu-dialog cli-menu-whiptail ]"
