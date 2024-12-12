@@ -5547,7 +5547,7 @@ if [ "$cmd_second_option" == "lines" ] ; then echo "Lines numbers:"
 $cmd_command_cat $cmd_file_default_usernotes | $cmd_command_wc -l ; exit; fi
 #### info
 echo " # $txt_text_info Type option: add|search|list|lines"
-echo " # $txt_text_info Use with quote when spaces to add note"
+echo " # $txt_text_info Use add: with quote"
 echo " # $txt_text_file [$cmd_file_default_usernotes]"
 #### 
 ####
