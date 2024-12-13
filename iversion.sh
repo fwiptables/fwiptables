@@ -91,8 +91,8 @@ fi
 #### The number version firewall
 cmd_year="24"                                                 # Number year version
 cmd_month="12"                                                # Number mouth version
-cmd_letter="D"                                                # Number letter version
-cmd_devel=""
+cmd_letter="E"                                                # Number letter version
+cmd_devel="-dev"
 cmd_version="$cmd_year-$cmd_month-$cmd_letter$cmd_devel"      # Final date version
 cmd_released="Year 20$cmd_year / Month $cmd_month"            # Source date version
 #### The data version firewall
@@ -390,8 +390,8 @@ cfg_favorite_text_browser=""
 cfg_favorite_text_editor=""        
 cfg_server_ipdiscover_ipv4="http://httpbin.org/ip"
 cfg_server_ipdiscover_ipv6="http://httpbin.org/ip"
-cfg_server_ip_iperf_ipv4="ping.online.net"       
-cfg_server_ip_iperf_ipv6="ping6.online.net"      
+cfg_server_ip_iperf_ipv4="speedtest.ip-projects.de"       
+cfg_server_ip_iperf_ipv6="speedtest.ip-projects.de"      
 cfg_server_log_port_tcp="no"     
 cfg_server_log_port_udp="no"     
 cfg_server_port_iperf_ipv4="5201"                
@@ -2004,17 +2004,17 @@ echo "$txt_text_title"
 echo "$txt_text_title_title default discover ip and speed ip"
 echo "cfg_server_ipdiscover_ipv4=https://ifconfig.co/ip    ## default http://ifconfig.co/ip"
 echo "cfg_server_ipdiscover_ipv6=https://ifconfig.co/ip    ## default http://ifconfig.co/ip"
-echo "cfg_server_ip_iperf_ipv4=iperf3.moji.fr              ## default ping.online.net"
+echo "cfg_server_ip_iperf_ipv4=speedtest.ip-projects.de    ## default iperf3.moji.fr"
 echo "cfg_server_port_iperf_ipv4=5201                      ## default 5201"
-echo "cfg_server_ip_iperf_ipv6=iperf3.moji.fr              ## default ping6.online.net"
+echo "cfg_server_ip_iperf_ipv6=speedtest.ip-projects.de    ## default ping6.online.net"
 echo "cfg_server_port_iperf_ipv6=5201                      ## default 5201"
 echo "$txt_text_title"
 echo "$txt_text_title_title default graphicall dimension"
 echo "cfg_config_graphicall_width=800                      ## default width  800"
 echo "cfg_config_graphicall_height=600                     ## default height 600"
-echo "$txt_text_title"
-echo "$txt_text_title_title repository wallinet in tar file"
-echo "cmd_web_repository_wallinet=$cmd_web_repository_wallinet"
+#### echo "$txt_text_title"
+#### echo "$txt_text_title_title repository wallinet in tar file"
+#### echo "cmd_web_repository_wallinet=$cmd_web_repository_wallinet"
 ####
 ####
 exit ; fi
@@ -7769,11 +7769,17 @@ if [ "$cmd_first_option" == "speed-ip4" ] ; then
 ####
 #### sane
 if [ "$cmd_command_iperf" == "$NULL" ];
-then echo "$txt_text_title_fail install iperf3"; fi
+then echo "$txt_text_title_fail install iperf3"; exit ;  fi
+####
+####
+#### choosed
+if [ "$2" != "$NULL" ]; then cfg_server_ip_iperf_ipv4="$2" ; fi
+if [ "$3" != "$NULL" ]; then cfg_server_port_iperf_ipv4="$3" ; fi
 ####
 ####
 #### test
-echo "$txt_text_title_info  [ test speed ipv4 with iperf3 ] "
+echo "$txt_text_title_info  [iperf3 performace: ] \
+[$cfg_server_ip_iperf_ipv4 $cfg_server_port_iperf_ipv4]"
 echo "$txt_text_title"
 $cmd_internal save before-speed-ip4
 $cmd_internal add-whitelist4 $cfg_server_ip_iperf_ipv4
@@ -7781,7 +7787,7 @@ echo "$txt_text_title"
 echo "$txt_text_stitle [ Calculing speed .. ]"
 echo "$txt_text_stitle [ Working ] Conecting in ipv4 to $cfg_server_ip_iperf_ipv4"
 $cmd_command_iperf -c "$cfg_server_ip_iperf_ipv4" \
--p "$cfg_server_port_iperf_ipv4" -4 -u -t 3 --bidir --connect-timeout 3000
+-p "$cfg_server_port_iperf_ipv4" -4 -t 3 --bidir --connect-timeout 3000
 echo "$txt_text_title"
 echo "$txt_text_stitle [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip4 
@@ -7801,17 +7807,24 @@ if [ "$cmd_first_option" == "speed-ip6" ] ; then
 ####
 #### sane
 if [ "$cmd_command_iperf" == "$NULL" ];
-then echo "$txt_text_title_fail install iperf3"; fi
+then echo "$txt_text_title_fail install iperf3"; exit ;  fi
+####
+####
+#### choosed
+if [ "$2" != "$NULL" ]; then cfg_server_ip_iperf_ipv6="$2" ; fi
+if [ "$3" != "$NULL" ]; then cfg_server_port_iperf_ipv6="$3" ; fi
 ####
 ####
 #### test
+echo "$txt_text_title_info  [iperf3 performace: ] \
+[$cfg_server_ip_iperf_ipv6 $cfg_server_port_iperf_ipv6]"
 $cmd_internal save before-speed-ip6 
 $cmd_internal add-whitelist6 $cfg_server_ip_iperf_ipv6
 echo "$txt_text_title"
 echo "$txt_text_stitle [ Calculing speed .. ]"
-echo "$txt_text_stitle [ Working ] Conecting in ipv6 to $cfg_server_ip_iperf_ipv4"
+echo "$txt_text_stitle [ Working ] Conecting in ipv6 to $cfg_server_ip_iperf_ipv6"
 $cmd_command_iperf -c "$cfg_server_ip_iperf_ipv6" \
--p "$cfg_server_port_iperf_ipv6" -6 -u -t 3 --bidir --connect-timeout 3000
+-p "$cfg_server_port_iperf_ipv6" -6 -t 3 --bidir --connect-timeout 3000
 echo "$txt_text_title"
 echo "$txt_text_stitle [ Working ] [ Restoring firewall ]"
 $cmd_internal load before-speed-ip6 
