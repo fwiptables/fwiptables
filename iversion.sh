@@ -3451,8 +3451,8 @@ echo "$txt_text_md license-lgpl-v2 license-gpl-v2"
 ####
 ####  if expert commands
 if [ "$cfg_allow_expert_commands" == "no" ]
-then echo "$txt_text_md       #$cmd_name $cmd_version#  #expert deactived#  "
-else echo "$txt_text_md       #$cmd_name $cmd_version#  #expert actived#    "
+then echo "$txt_text_md       #$cmd_name-$cmd_version#  #expert-deactived#  "
+else echo "$txt_text_md       #$cmd_name-$cmd_version#  #expert-actived#    "
 fi
 ####
 ####
@@ -3735,8 +3735,9 @@ echo "$txt_text_md_md tree-cmd          . list the commands launched"
 echo "$txt_text_md_md ip                . show details from connection ipv4, ipv6"
 echo "$txt_text_md_md ip4               . show ip address from connection ipv4"
 echo "$txt_text_md_md ip6               . show ip address from connection ipv6"
-echo "$txt_text_md_md ip4               . show ip route from connection ipv4"
-echo "$txt_text_md_md ip6               . show ip route from connection ipv6"
+echo "$txt_text_md_md route             . show ip route from connection ipv4, ipv6"
+echo "$txt_text_md_md route4            . show ip route from connection ipv4"
+echo "$txt_text_md_md route6            . show ip route from connection ipv6"
 echo "$txt_text_md_md info-ip4          . show details from connection ipv4"
 echo "$txt_text_md_md info-ip6          . show details from connection ipv6"
 echo "$txt_text_md_md address           . show details from connection ipv4, ipv6"
