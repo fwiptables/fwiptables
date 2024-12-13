@@ -56,7 +56,7 @@
 ## fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-12-C                
+         Version Firewall: 24-12-D                
         Released Firewall: Year 2024 / Month 12               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
@@ -65,7 +65,7 @@
            Data Directory: /root/.config/fwiptables    
           Cache Directory: /root/.cache/fwiptables   
            Finder Program: which                  
-        Requisite Program: awk,cat,cut,date,file,id,sed      
+        Requisite Program: awk,cat,cut,date,file,id,sed,sort      
       Requisite Firewall4: iptables-legacy,iptables-nft    
       Requisite Firewall6: ip6tables-legacy,ip6tables-nft    
            Automatic Edit: /usr/bin/nano       
@@ -86,9 +86,9 @@
       launch:        /usr/bin/fwiptables license-lgpl-v2|license-gpl-v2
   
 ## fwiptables hints   
-      [Iptables firewall manage commands]   
+      [Iptables firewall]   
   
-        Legacy or nft: whith one of them is sufficent   
+        Legacy or nft: only one of them is sufficent   
       iptables-legacy: support for xtables ipv4   
          iptables-nft: support for nftables ipv4   
      ip6tables-legacy: support for xtables ipv6   
@@ -97,19 +97,17 @@
       [Firewall recomendation with full client]   
   
       Client prefered: input-established   
-      Server prefered: tinyserver-tcp tcp-ports-server   
+      Server prefered: tinyserver-tcp      
   
-      [Some options and sub-otions]   
+      [Some options]   
   
       shield maxtries: limit against attack per bruteforce   
             Blacklist: excepcionals hosts dropped in firewall   
             whitelist: excepcionals hosts allowed in firewall   
            tinyserver: client in all allowed, and servers manually   
-           miniserver: normal ports in client, and servers manually   
     input-established: the computer is only client   
-       output uid/gid: User and/or group with conection allowed   
   
-      [Necesary Ports perhaps if use it]   
+      [Necesary Ports]   
   
                   ntp: Port necesary to update the time and date   
                bootpc: Port necesary to dhcp and get ip   
@@ -136,8 +134,8 @@
       Folder logcmd:           /root/.config/fwiptables/fwiptables-logcmd   
         
     [ Preferences files ]     
-      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-12-C.conf
-      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-12-C.conf
+      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-12-D.conf
+      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-12-D.conf
       own-notes:               /root/.config/fwiptables/fwiptables-preferences/default-usernotes-all-versions.txt
         
     [ optional output ]       
@@ -203,12 +201,6 @@
        /usr/bin/fwiptables wizard-mini                             
        Explain: Wizard firewall for clients and servers      
          
-       Launch: miniserver-tcp ports                          
-       /usr/bin/fwiptables miniserver-tcp 21:25,80                 
-       Launch: miniserver-udp ports                          
-       /usr/bin/fwiptables miniserver-udp 67:68,443                
-       Explain: Read miniserver in preferences file          
-         
     [ Example with add-whitelist4 ]                     
          
        Launch: add-whitelist4                                
@@ -263,47 +255,3 @@
        /usr/bin/fwiptables gui-roll-zenity       
        All options in window shell             
        /usr/bin/fwiptables gui-shell-yad         
-  
-## fwiptables options   
-   fwiptables [optional-output] first_option [second_option]
-   ...   optional-output
-   [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]
-   [ cli-dialog cli-whiptail gui-zenity gui-yad ]
-   [ cli-menu cli-menu-dialog cli-menu-whiptail ]
-   [ gui-menu gui-menu-zenity gui-menu-yad gui-roll-zenity ]
-   [ gui-shell gui-shell-zenity gui-shell-yad ]
-   ...   firewall-listconceptual
-   ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6
-   list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4
-   list-security6 list-ebtables list-arptables list-alltables
-   ...   firewall-listnumeral
-   lsn4 lsn6 statusn listn-filter4 listn-filter6 listn-nat4
-   listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6
-   listn-security4 listn-security6 listn-alltables
-   ...   firewall-wallcontrol
-   stop continue reset show save load names actual eraserules
-   eraserules4 eraserules6 without-connection input-permisive
-   input-established wizard-tiny wizard-mini wizard-full
-   tinyserver-tcp tinyserver-udp miniserver-tcp miniserver-udp
-   ...   firewall-walladdrule
-   drop-send-ping drop-get-ping allow-send-ping allow-get-ping
-   drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp
-   return-port-tcp return-port-udp log-port-tcp log-port-udp
-   add-whitelist add-blacklist add-shield-tcp drop-string
-   drop-protocol allow-protocol limit-minute del-commented
-   ...   firewall-wallcustom
-   new-full-custom nueva-completa-custom new-mini-custom
-   nueva-mini-custom new-tiny-custom nueva-diminuta-custom
-   wallinet-clone load-custom loadmini-custom loadtiny-custom
-   list-custom show-custom modify-custom del-custom
-   ...   firewall-wallinet
-   wallinet-update wallinet-list wallinet-load wallinet-show
-   ...   firewall-wallutil
-   preferences-edit alias-edit options info-options own-notes
-   tree-cmd tree-pdf tree-log tree-conf tree-cache clean-cache
-   ip4 ip6 route4 route6 info-ip4 info-ip6 info-nodes sockets
-   lsof free ip-forward utils date resolve speed-ip4 speed-ip6
-   log-stat web intro depends uninstall install upgrade hints
-   variables examples info code expert donate about version
-   license-lgpl-v2 license-gpl-v2
-         #fwiptables 24-12-C with expert deactived#   
