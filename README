@@ -56,7 +56,7 @@
 ## fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-12-D                
+         Version Firewall: 24-12-E-bash                
         Released Firewall: Year 2024 / Month 12               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
@@ -134,8 +134,8 @@
       Folder logcmd:           /root/.config/fwiptables/fwiptables-logcmd   
         
     [ Preferences files ]     
-      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-24-12-D.conf
-      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-24-12-D.conf
+      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-fwiptables-24-12-E-bash.conf
+      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-fwiptables-24-12-E-bash.conf
       own-notes:               /root/.config/fwiptables/fwiptables-preferences/default-usernotes-all-versions.txt
         
     [ optional output ]       
