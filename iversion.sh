@@ -3569,6 +3569,10 @@ if   [ "$cmd_first_option" == "firewall-walladdrule" ]; then
 ####
 ####
 echo "$txt_text_stitle | firewall-walladdrule | $cmd_internal firewall-walladdrule"
+echo "$txt_text_md_md add-localhost   . add localhost to localhost like first rule"
+echo "$txt_text_md_md add-established . add input related established"
+echo "$txt_text_md_md all-output      . add all output rule"
+echo "$txt_text_md_md close-drop      . add all drop like latest rule"
 echo "$txt_text_md_md drop-send-ping  . drop ping sender"
 echo "$txt_text_md_md drop-get-ping   . drop ping recept"
 echo "$txt_text_md_md allow-send-ping . allow ping sender"
