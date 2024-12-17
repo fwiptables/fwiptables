@@ -9184,6 +9184,10 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 040  "$txt_text_md add-shield-tcp" \
 041  "$txt_text_md drop-string" \
 042  "$txt_text_md limit-minute" \
+043  "$txt_text_md add-localhost" \
+044  "$txt_text_md add-established" \
+045  "$txt_text_md all-output" \
+046  "$txt_text_md close-rule" \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
@@ -9232,16 +9236,16 @@ archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
 $cmd_internal $cfg_favorite_out_cli add-blacklist $archivo
 $cmd_internal $cfg_favorite_out_cli ls4                      ;;
 032) clear
-$cmd_internal $cfg_favorite_out_cli drop-send-ping $archivo
+$cmd_internal $cfg_favorite_out_cli drop-send-ping
 $cmd_internal $cfg_favorite_out_cli ls4                      ;;
 033) clear
-$cmd_internal $cfg_favorite_out_cli drop-get-ping $archivo
+$cmd_internal $cfg_favorite_out_cli drop-get-ping
 $cmd_internal $cfg_favorite_out_cli ls4                      ;;
 034) clear
-$cmd_internal $cfg_favorite_out_cli allow-send-ping $archivo
+$cmd_internal $cfg_favorite_out_cli allow-send-ping
 $cmd_internal $cfg_favorite_out_cli ls4                      ;;
 035) clear
-$cmd_internal $cfg_favorite_out_cli allow-get-ping $archivo
+$cmd_internal $cfg_favorite_out_cli allow-get-ping
 $cmd_internal $cfg_favorite_out_cli ls4                      ;;
 036) clear ; read -p "Input string # " archivo
 archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
@@ -9271,6 +9275,18 @@ $cmd_internal $cfg_favorite_out_cli ls4                      ;;
 archivo="$(echo $archivo | $cmd_command_sed s/\\///g)"
 $cmd_internal $cfg_favorite_out_cli limit-minute $archivo
 $cmd_internal $cfg_favorite_out_cli ls4                      ;;
+043) clear
+$cmd_internal $cfg_favorite_out_cli add-localhost
+$cmd_internal $cfg_favorite_out_cli ls4                      ;; 
+044) clear
+$cmd_internal $cfg_favorite_out_cli add-established
+$cmd_internal $cfg_favorite_out_cli ls4                      ;; 
+045) clear
+$cmd_internal $cfg_favorite_out_cli all-output
+$cmd_internal $cfg_favorite_out_cli ls4                      ;; 
+046) clear
+$cmd_internal $cfg_favorite_out_cli close-drop
+$cmd_internal $cfg_favorite_out_cli ls4                      ;; 
 *)        ;;
 esac
 ################################################################################
