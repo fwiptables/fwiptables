@@ -91,8 +91,8 @@ fi
 #### The number version firewall
 cmd_year="24"                                                 # Number year version
 cmd_month="12"                                                # Number mouth version
-cmd_letter="E"                                                # Number letter version
-cmd_devel=""                                                  # developer -dev_version
+cmd_letter="F"                                                # Number letter version
+cmd_devel="-dev"                                              # developer -dev_version
 cmd_shell="bash"                                              # shell script version
 cmd_vdate=$cmd_year-$cmd_month-$cmd_letter$cmd_devel          # final date  version 
 cmd_version="$cmd_vdate-$cmd_shell"                           # Final shell version
@@ -1504,13 +1504,14 @@ echo "$txt_text_md_md     Source Firewall: $cmd_notinstalled         $txt_text_m
 echo "$txt_text_md_md   Internal Firewall: $cmd_internal             $txt_text_md"
 echo "$txt_text_md_md   Short Description: $cmd_shortdescription     $txt_text_md"
 echo "$txt_text_md_md    Long Description: $cmd_longdescription      $txt_text_md"
-echo "$txt_text_md_md      Data Directory: $cmd_default_directory_necesary  $txt_text_md"
-echo "$txt_text_md_md     Cache Directory: $cmd_default_cache_base $txt_text_md"
+echo "$txt_text_md_md      Data Directory: $cmd_default_directory_necesary         $txt_text_md"
+echo "$txt_text_md_md     Cache Directory: $cmd_default_cache_base   $txt_text_md"
 echo "$txt_text_md_md      Finder Program: $cmd_where                $txt_text_md"
 echo "$txt_text_md_md   Requisite Program: $cmd_requisite_program    $txt_text_md"
 echo "$txt_text_md_md Requisite Firewall4: $cmd_requisite_firewall4  $txt_text_md"
 echo "$txt_text_md_md Requisite Firewall6: $cmd_requisite_firewall6  $txt_text_md"
-echo "$txt_text_md_md      Automatic Edit: $cfg_favorite_text_editor     $txt_text_md"
+echo "$txt_text_md_md          Auth xhost: $cmd_command_xhost        $txt_text_md"
+echo "$txt_text_md_md      Automatic edit: $cfg_favorite_text_editor $txt_text_md"
 echo "$txt_text_md_md       Automatic cli: $cfg_favorite_realpath_textdialog       $txt_text_md"
 echo "$txt_text_md_md       Automatic gui: $cfg_favorite_realpath_graphicalldialog $txt_text_md"
 echo "$txt_text_md_md       Automatic pdf: $cmd_command_convert      $txt_text_md"
@@ -2550,6 +2551,7 @@ echo "$txt_text_md_md alias:                   $cmd_file_default_alias"
 echo "$txt_text_md_md own-notes:               $cmd_file_default_usernotes"
 echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_title_md [ optional output ]     $txt_text_md"
+echo "$txt_text_md_md auth xhost:              $cmd_command_xhost  $txt_text_md"
 echo "$txt_text_md_md dialog cli:              $cmd_command_dialog $txt_text_md"
 echo "$txt_text_md_md whiptail cli             $cmd_command_whiptail $txt_text_md"
 echo "$txt_text_md_md zenity gui:              $cmd_command_zenity $txt_text_md"
@@ -3410,38 +3412,40 @@ if [ "$cmd_first_option" == "options" ]; then
 ####
 #### list options
 echo "$txt_text_md $cmd_name [optional-output] first_option [second_option]"  
-echo "$txt_text_md ...   optional-output           ...                   ..."  
+echo "$txt_text_md ......optional-output                 "  
 echo "$txt_text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]"  
 echo "$txt_text_md [ cli-dialog cli-whiptail gui-zenity gui-yad ]"  
 echo "$txt_text_md [ cli-menu cli-menu-dialog cli-menu-whiptail ]"  
 echo "$txt_text_md [ gui-menu gui-menu-zenity gui-menu-yad gui-roll-zenity ]"  
 echo "$txt_text_md [ gui-shell gui-shell-zenity gui-shell-yad ]"  
-echo "$txt_text_md ...   firewall-listconceptual   ...                   ..."  
+echo "$txt_text_md ......firewall-listconceptual         "  
 echo "$txt_text_md ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6"  
 echo "$txt_text_md list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4"  
 echo "$txt_text_md list-security6 list-ebtables list-arptables list-alltables"  
-echo "$txt_text_md ...   firewall-listnumeral      ...                   ..."  
+echo "$txt_text_md ......firewall-listnumeral            "  
 echo "$txt_text_md lsn4 lsn6 statusn listn-filter4 listn-filter6 listn-nat4"  
 echo "$txt_text_md listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6"  
 echo "$txt_text_md listn-security4 listn-security6 listn-alltables"  
-echo "$txt_text_md ...   firewall-wallcontrol      ...                   ..."  
+echo "$txt_text_md ......firewall-wallcontrol            "  
 echo "$txt_text_md stop continue reset show save load names actual eraserules"  
 echo "$txt_text_md eraserules4 eraserules6 without-connection input-permisive"  
 echo "$txt_text_md input-established wizard-tiny wizard-mini wizard-full"  
 echo "$txt_text_md tinyserver-tcp tinyserver-udp"  
-echo "$txt_text_md ...   firewall-walladdrule      ...                   ..."  
+echo "$txt_text_md ......firewall-walladdrule            "
+echo "$txt_text_md add-localhost add-established limit-minute del-commented"    
 echo "$txt_text_md drop-send-ping drop-get-ping allow-send-ping allow-get-ping"  
 echo "$txt_text_md drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp"   
 echo "$txt_text_md return-port-tcp return-port-udp log-port-tcp log-port-udp"  
 echo "$txt_text_md add-whitelist add-blacklist add-shield-tcp drop-string"   
 echo "$txt_text_md drop-protocol allow-protocol limit-minute del-commented"  
-echo "$txt_text_md ...   firewall-wallcustom       ...                   ..."  
+echo "$txt_text_md all-output close-drop"  
+echo "$txt_text_md ......firewall-wallcustom             "  
 echo "$txt_text_md new-full-custom new-mini-custom new-tiny-custom "  
 echo "$txt_text_md wallinet-clone load-custom loadmini-custom loadtiny-custom"  
 echo "$txt_text_md list-custom show-custom modify-custom del-custom"  
-echo "$txt_text_md ...   firewall-wallinet         ...                   ..."  
+echo "$txt_text_md ......firewall-wallinet               "  
 echo "$txt_text_md wallinet-update wallinet-list wallinet-load wallinet-show"  
-echo "$txt_text_md ...   firewall-wallutil         ...                   ..."
+echo "$txt_text_md ......firewall-wallutil               "
 echo "$txt_text_md preferences-edit alias-edit options info-options own-notes"  
 echo "$txt_text_md tree-cmd tree-pdf tree-log tree-conf tree-cache clean-cache"  
 echo "$txt_text_md ip4 ip6 route4 route6 info-ip4 info-ip6 info-nodes sockets"  
@@ -6652,6 +6656,130 @@ exit; fi
 ####
 ####
 #### :rutina-final-add-blacklist6
+##########    add-localhost: add localhost      ##########
+#### :rutina-inicial-add-localhost
+####
+####
+if [ "$cmd_first_option" == "add-localhost" ] ; then
+####
+####
+echo "$txt_text_stitle add localhost with localhost"
+####
+####
+#### add localhost
+$cmd_command_ip4tablesnft    -t filter -I INPUT 1 -s localhost -d localhost   \
+-m comment --comment "add-localhost" -j ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft    -t filter -I OUTPUT 1 -s localhost -d localhost   \
+-m comment --comment "add-localhost" -j ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t filter -I INPUT 1 -s localhost -d localhost   \
+-m comment --comment "add-localhost" -j ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t filter -I OUTPUT 1 -s localhost -d localhost   \
+-m comment --comment "add-localhost" -j ACCEPT &> /dev/null
+####
+####
+$cmd_command_ip6tablesnft    -t filter -I INPUT 1 -s localhost -d localhost   \
+-m comment --comment "add-localhost" -j ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft    -t filter -I OUTPUT 1 -s localhost -d localhost   \
+-m comment --comment "add-localhost" -j ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t filter -I INPUT 1 -s localhost -d localhost   \
+-m comment --comment "add-localhost" -j ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t filter -I OUTPUT 1 -s localhost -d localhost   \
+-m comment --comment "add-localhost" -j ACCEPT &> /dev/null
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-add-localhost
+##########    add-established: add stablished      ##########
+#### :rutina-inicial-add-established
+####
+####
+if [ "$cmd_first_option" == "add-established" ] ; then
+####
+####
+echo "$txt_text_stitle add input related,established"
+####
+####
+#### add established
+$cmd_command_ip4tablesnft    -t filter -A INPUT  -m state --state related,established   \
+-m comment --comment "add-established" -j ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t filter -A INPUT -m state --state related,established   \
+-m comment --comment "add-established" -j ACCEPT &> /dev/null
+####
+####
+$cmd_command_ip6tablesnft    -t filter -A INPUT  -m state --state related,established   \
+-m comment --comment "add-established" -j ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t filter -A INPUT  -m state --state related,established   \
+-m comment --comment "add-established" -j ACCEPT &> /dev/null
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-add-established
+##########    all-output: add all output      ##########
+#### :rutina-inicial-all-output
+####
+####
+if [ "$cmd_first_option" == "all-output" ] ; then
+####
+####
+echo "$txt_text_stitle add all output"
+####
+####
+#### add close drop
+$cmd_command_ip4tablesnft    -t filter -A OUTPUT \
+-m comment --comment "all-output" -j ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t filter -A OUTPUT \
+-m comment --comment "all-output" -j ACCEPT &> /dev/null
+####
+####
+$cmd_command_ip6tablesnft    -t filter -A OUTPUT \
+-m comment --comment "all-output" -j ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t filter -A OUTPUT \
+-m comment --comment "all-output" -j ACCEPT &> /dev/null
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-all-output
+##########    close-drop: add close drop      ##########
+#### :rutina-inicial-close-drop
+####
+####
+if [ "$cmd_first_option" == "close-drop" ] ; then
+####
+####
+echo "$txt_text_stitle add close-drop"
+####
+####
+#### add close drop
+$cmd_command_ip4tablesnft    -t filter -A INPUT  \
+-m comment --comment "close-drop" -j DROP &> /dev/null
+$cmd_command_ip4tablesnft    -t filter -A OUTPUT \
+-m comment --comment "close-drop" -j DROP &> /dev/null
+$cmd_command_ip4tableslegacy -t filter -A INPUT  \
+-m comment --comment "close-drop" -j DROP &> /dev/null
+$cmd_command_ip4tableslegacy -t filter -A OUTPUT \
+-m comment --comment "close-drop" -j DROP &> /dev/null
+####
+####
+$cmd_command_ip6tablesnft    -t filter -A INPUT  \
+-m comment --comment "close-drop" -j DROP &> /dev/null
+$cmd_command_ip6tablesnft    -t filter -A OUTPUT \
+-m comment --comment "close-drop" -j DROP &> /dev/null
+$cmd_command_ip6tableslegacy -t filter -A INPUT  \
+-m comment --comment "close-drop" -j DROP &> /dev/null
+$cmd_command_ip6tableslegacy -t filter -A OUTPUT \
+-m comment --comment "close-drop" -j DROP &> /dev/null
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-close-drop
 ##########    add-shield-tcp4: add port shield to tcp ip4     ##########
 #### :rutina-inicial-add-shield-tcp4
 ####
