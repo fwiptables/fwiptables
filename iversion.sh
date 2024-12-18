@@ -3863,7 +3863,8 @@ if   [ "$cmd_first_option" == "wallinet-list" ]; then
 ####
 #### list
 cd $cmd_default_directory_wallinet
-$cmd_command_find  | $cmd_command_sed 's/.txt//g' | $cmd_command_sed 's/.\///g'
+$cmd_command_ls -1 | $cmd_command_sort \
+| $cmd_command_sed 's/.txt//g' | $cmd_command_sed 's/.\///g'
 echo "$txt_text_title_ok to clone firewall: $cmd_name wallinet-clone firewall"
 echo "$txt_text_title_ok to load  firewall: $cmd_name wallinet-load  firewall"
 ####
