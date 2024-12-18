@@ -3888,7 +3888,8 @@ cfg_file_select="$cmd_default_directory_wallinet/$cmd_second_option.txt"
 if [ -f "$cfg_file_select" ]
 then cat $cfg_file_select
 else cd $cmd_default_directory_wallinet
-$cmd_command_find  | $cmd_command_sed 's/.txt//g' | $cmd_command_sed 's/.\///g'
+$cmd_command_ls | $cmd_command_sort \
+| $cmd_command_sed 's/.txt//g' | $cmd_command_sed 's/.\///g'
 echo "to show one firewall: $cmd_name wallinet-show firewall"
 fi
 ####
