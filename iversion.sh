@@ -9843,6 +9843,7 @@ then echo $txt_message_without_guiroll ; exit ; fi
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
+add-localhost|add-established|all-output|close-drop|\
 drop-send-ping|drop-get-ping|allow-send-ping|allow-get-ping|\
 drop-protocol|allow-protocol|\
 return-port-tcp|return-port-udp|log-port-tcp|log-port-udp|\
@@ -9864,6 +9865,18 @@ case "$selection_final" in
 --info --text=good-bye ; exit ;;
 gui-principal-menu)$cmd_internal gui-roll-zenity ;;
 gui-info-menu)$cmd_internal -gui-zenity firewall-wallcontrol ;;
+add-localhost)
+$cmd_internal gui-$cmd_second_option add-localhost
+$cmd_internal gui-$cmd_second_option list4                         ;;
+add-established)
+$cmd_internal gui-$cmd_second_option add-established
+$cmd_internal gui-$cmd_second_option list4                         ;;
+all-output)
+$cmd_internal gui-$cmd_second_option all-output
+$cmd_internal gui-$cmd_second_option list4                         ;;
+close-drop)
+$cmd_internal gui-$cmd_second_option close-drop
+$cmd_internal gui-$cmd_second_option list4                         ;;
 return-port-tcp)
 port="$($cmd_command_zenity --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
@@ -10509,6 +10522,7 @@ echo "$txt_text_stitle The used gui in $cmd_first_option is $cmd_second_option" 
 ####
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
+add-localhost|add-established|all-output|close-drop|\
 drop-send-ping|drop-get-ping|allow-send-ping|allow-get-ping|\
 drop-protocol|allow-protocol|\
 return-port-tcp|return-port-udp|log-port-tcp|log-port-udp|\
@@ -10535,6 +10549,18 @@ case "$final" in
 1*) exit ;;
 gui-principal-menu*) $cmd_internal gui-menu-$cmd_second_option  ;;
 gui-info-menu*)$cmd_internal gui-$cmd_second_option firewall-walladdrule ;;
+add-localhost*)
+$cmd_internal gui-$cmd_second_option add-localhost
+$cmd_internal gui-$cmd_second_option list4                         ;;
+add-established*)
+$cmd_internal gui-$cmd_second_option add-established
+$cmd_internal gui-$cmd_second_option list4                         ;;
+all-output*)
+$cmd_internal gui-$cmd_second_option all-output
+$cmd_internal gui-$cmd_second_option list4                         ;;
+close-drop*)
+$cmd_internal gui-$cmd_second_option close-drop
+$cmd_internal gui-$cmd_second_option list4                         ;;
 return-port-tcp*)
 port="$($cfg_favorite_basename_graphicalldialog --entry \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
