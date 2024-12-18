@@ -92,7 +92,7 @@ fi
 cmd_year="24"                                                 # Number year version
 cmd_month="12"                                                # Number mouth version
 cmd_letter="F"                                                # Number letter version
-cmd_devel="-dev"                                              # developer -dev_version
+cmd_devel=""                                                  # developer -dev_version
 cmd_shell="bash"                                              # shell script version
 cmd_vdate=$cmd_year-$cmd_month-$cmd_letter$cmd_devel          # final date  version 
 cmd_version="$cmd_vdate-$cmd_shell"                           # Final shell version
