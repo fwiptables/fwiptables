@@ -56,19 +56,20 @@
 ## fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-12-E-bash                
+         Version Firewall: 24-12-F-bash                
         Released Firewall: Year 2024 / Month 12               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
         Short Description: FireWall With iptables       
          Long Description: iptables templates in one script        
-           Data Directory: /root/.config/fwiptables    
-          Cache Directory: /root/.cache/fwiptables   
+           Data Directory: /root/.config/fwiptables           
+          Cache Directory: /root/.cache/fwiptables     
            Finder Program: which                  
         Requisite Program: awk,cat,cut,date,file,id,sed,sort      
       Requisite Firewall4: iptables-legacy,iptables-nft    
       Requisite Firewall6: ip6tables-legacy,ip6tables-nft    
-           Automatic Edit: /usr/bin/nano       
+               Auth xhost: /usr/bin/xhost          
+           Automatic edit: /usr/bin/nano   
             Automatic cli: /usr/bin/whiptail         
             Automatic gui: /usr/bin/yad   
             Automatic pdf: /usr/bin/convert        
@@ -134,11 +135,12 @@
       Folder logcmd:           /root/.config/fwiptables/fwiptables-logcmd   
         
     [ Preferences files ]     
-      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-fwiptables-24-12-E-bash.conf
-      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-fwiptables-24-12-E-bash.conf
+      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-fwiptables-24-12-F-bash.conf
+      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-fwiptables-24-12-F-bash.conf
       own-notes:               /root/.config/fwiptables/fwiptables-preferences/default-usernotes-all-versions.txt
         
     [ optional output ]       
+      auth xhost:              /usr/bin/xhost    
       dialog cli:              /usr/bin/dialog   
       whiptail cli             /usr/bin/whiptail   
       zenity gui:              /usr/bin/zenity   
@@ -209,12 +211,12 @@
          
     [ Without optional output ]       
          
-       Explain: depends                    
+       Explain: depends from firewall      
        /usr/bin/fwiptables depends               
        Explain: List firewall saved        
        /usr/bin/fwiptables names                 
        Explain: List configs saved         
-       /usr/bin/fwiptables list-custom          
+       /usr/bin/fwiptables list-custom           
        Explain: Get info speed ipv4        
        /usr/bin/fwiptables speed-ip4             
        Explain: Show listen sockets        
@@ -235,10 +237,9 @@
        Example with list rules
        /usr/bin/fwiptables cli lsn4              
        Example with info-nodes
-       /usr/bin/fwiptables gui info-nodes             
+       /usr/bin/fwiptables gui info-nodes        
        Example with web browser 
        /usr/bin/fwiptables gui web kernel.org    
-          
        Launch client web firewall in silent   
        /usr/bin/fwiptables silent client-web     
        List iptables rules with output txt    
