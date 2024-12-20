@@ -3,4 +3,4 @@
 Planed fixing bugs, Planed feacture adding .
 
 ## The planed fixed commit:     
-eraserules: update gui-menu, update gui-roll
+code: revise
