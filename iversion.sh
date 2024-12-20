@@ -91,7 +91,7 @@ fi
 #### The number version firewall
 cmd_year="24"                                                 # Number year version
 cmd_month="12"                                                # Number mouth version
-cmd_letter="F"                                                # Number letter version
+cmd_letter="G"                                                # Number letter version
 cmd_devel=""                                                  # developer -dev_version
 cmd_shell="bash"                                              # shell script version
 cmd_vdate=$cmd_year-$cmd_month-$cmd_letter$cmd_devel          # final date  version 
@@ -119,7 +119,7 @@ awk '{print $2 "_" $3 "_" $4}')                               # File format
 cmd_archive_date="$(date +YEAR-%Y-MONTH-%m)"                  # archive date year_month_
 cmd_get_date="$(date +DAY_%Y-%m-%d_HOUR_%H-%M-%S)"            # how format date
 cmd_logcmd_date="$cmd_get_date"                               # format pdf date
-cmd_mynote_date="$cmd_get_date"                            # format own-notes date
+cmd_mynote_date="$cmd_get_date"                               # format own-notes date
 cmd_cache_date="CACHE_$cmd_get_date-_OPT_"                    # format cache date
 cmd_log_date="LOG_$cmd_get_date-_OPT_"                        # format opt date
 cmd_pdf_date="PDF_$cmd_get_date-_OPT_"                        # format opt date
@@ -132,9 +132,9 @@ cmd_first_option="$(echo $1 | $cmd_command_sed s/\\///g -)"   # first option
 cmd_second_option="$(echo $2 | $cmd_command_sed s/\\///g -)"  # second option
 cmd_third_option="$(echo $3 | $cmd_command_sed s/\\///g -)"   # third option
 cmd_quad_option="$(echo $4 | $cmd_command_sed s/\\///g -)"    # quad option
-cmd_list_option="## $cmd_name $1 $2 $3 $4"                   # option label
-cmd_all_option="$@"                                           # all options
+cmd_list_option="## $cmd_name $1 $2 $3 $4"                    # option label
 cmd_sub_option="$2 $3 $4 $5 $6 $7 $8 $9"                      # almost options
+cmd_all_option="$@"                                           # all options
 #### variable without "/", without spaces
 cmd_guided_full="$(echo $1-$2-$3-$4 | \
 $cmd_command_sed s/\ /\-/g - | $cmd_command_sed s/\\///g -)"  # all options
