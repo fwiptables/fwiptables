@@ -3427,8 +3427,9 @@ echo "$txt_text_md listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6"
 echo "$txt_text_md listn-security4 listn-security6 listn-alltables"  
 echo "$txt_text_md ......firewall-wallcontrol            "  
 echo "$txt_text_md stop continue reset show save load names actual eraserules"  
-echo "$txt_text_md eraserules4 eraserules6 without-connection input-permisive"  
-echo "$txt_text_md input-established wizard-tiny wizard-mini wizard-full"  
+echo "$txt_text_md eraserules4 eraserules6 eraserules-nft eraserules-legacy"
+echo "$txt_text_md without-connection input-permisive input-established"  
+echo "$txt_text_md wizard-tiny wizard-mini wizard-full"  
 echo "$txt_text_md tinyserver-tcp tinyserver-udp"  
 echo "$txt_text_md ......firewall-walladdrule            "
 echo "$txt_text_md add-localhost add-established all-output close-drop"    
@@ -3619,6 +3620,8 @@ echo "$txt_text_md_md all-names          . list filenames saved in the iptables 
 echo "$txt_text_md_md eraserules         . remove all firewall rules: ipv4,ipv6,ebtables,arptables"
 echo "$txt_text_md_md eraserules4        . remove ipv4 firewall rules"
 echo "$txt_text_md_md eraserules6        . remove ipv6 firewall rules"
+echo "$txt_text_md_md eraserules-nft     . remove firewall rules nft"
+echo "$txt_text_md_md eraserules-legacy  . remove firewall rules legacy"
 echo "$txt_text_md_md wizard-tiny        . launch a one tiny wizard to run iptables rules"
 echo "$txt_text_md_md wizard-mini        . launch a one mini wizard to run iptables rules"
 echo "$txt_text_md_md wizard-full        . launch a one full wizard to run iptables rules"
@@ -4028,45 +4031,22 @@ exit; fi
 ####
 ####
 if [ "$cmd_first_option" == "eraserules" ];  then 
-echo "$txt_text_title_info [ Deleting all iptables ipv4/ipv6 rules ]"
+echo "$txt_text_title_info [ Erasing all rules ipv4/ipv6/ebtales/arptables ]"
 ####
 ####
-#### table policy 
-cfg_rule_table_policy="ACCEPT"
-$cmd_command_ip4tableslegacy   -t filter  -P INPUT    $cfg_rule_table_policy &> /dev/null
-$cmd_command_ip4tablesnft      -t filter  -P INPUT    $cfg_rule_table_policy &> /dev/null
-$cmd_command_ip6tableslegacy  -t filter  -P INPUT    $cfg_rule_table_policy &> /dev/null
-$cmd_command_ip6tablesnft     -t filter  -P INPUT    $cfg_rule_table_policy &> /dev/null
-$cmd_command_ip4tableslegacy   -t filter  -P FORWARD  $cfg_rule_table_policy &> /dev/null
-$cmd_command_ip4tablesnft      -t filter  -P FORWARD  $cfg_rule_table_policy &> /dev/null
-$cmd_command_ip6tableslegacy  -t filter  -P FORWARD  $cfg_rule_table_policy &> /dev/null
-$cmd_command_ip6tablesnft     -t filter  -P FORWARD  $cfg_rule_table_policy &> /dev/null
-$cmd_command_ip4tableslegacy   -t filter  -P OUTPUT   $cfg_rule_table_policy &> /dev/null
-$cmd_command_ip4tablesnft      -t filter  -P OUTPUT   $cfg_rule_table_policy &> /dev/null
-$cmd_command_ip6tableslegacy  -t filter  -P OUTPUT   $cfg_rule_table_policy &> /dev/null
-$cmd_command_ip6tablesnft     -t filter  -P OUTPUT   $cfg_rule_table_policy &> /dev/null
+#### erase arptables
+$cmd_internal eraserules-arptables &> /dev/null
 ####
 ####
-#### remove ebtables
-cfg_rule_table_policy="ACCEPT"
-$cmd_command_ebtables -t filter -P INPUT     $cfg_rule_table_policy  &> /dev/null
-$cmd_command_ebtables -t filter -P FORWARD   $cfg_rule_table_policy &> /dev/null 
-$cmd_command_ebtables -t filter -P OUTPUT    $cfg_rule_table_policy &> /dev/null
-$cmd_command_ebtables -t nat -P PREROUTING   $cfg_rule_table_policy &> /dev/null
-$cmd_command_ebtables -t nat -P OUTPUT       $cfg_rule_table_policy  &> /dev/null
-$cmd_command_ebtables -t nat -P POSTROUTING  $cfg_rule_table_policy &> /dev/null
+#### erase arptables
+$cmd_internal eraserules-ebtables &> /dev/null
 ####
 ####
-$cmd_command_ebtables -t filter -F &> /dev/null
-$cmd_command_ebtables -t nat -F    &> /dev/null
-####
-#### remove arptables
-$cmd_command_arptables -F  &> /dev/null
-####
-#### remove ip4
+#### erase ip4
 $cmd_internal eraserules4 &> /dev/null
 ####
-#### remove ip6
+####
+#### erase ip6
 $cmd_internal eraserules6 &> /dev/null
 ####
 ####
@@ -4077,6 +4057,244 @@ exit; fi
 ####
 ####
 #### :rutina-final-eraserules:
+##########    eraserules-ebtables: Erase rules option   ##########
+#### :rutina-inicial-eraserules-ebtables:
+####
+####
+if [ "$cmd_first_option" == "eraserules-ebtables" ]; then  
+####
+####
+echo "$txt_text_title_info [ Deleting iptables rules ebtables ] "
+####
+####
+#### ebtables
+####
+####
+#### policy rules
+$cmd_command_ebtables -t filter -P INPUT ACCEPT  &> /dev/null
+$cmd_command_ebtables -t filter -P FORWARD ACCEPT &> /dev/null 
+$cmd_command_ebtables -t filter -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ebtables -t nat -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ebtables -t nat -P OUTPUT ACCEPT  &> /dev/null
+$cmd_command_ebtables -t nat -P POSTROUTING ACCEPT &> /dev/null
+####
+####
+#### erase rules
+$cmd_command_ebtables -t filter -F &> /dev/null
+$cmd_command_ebtables -t nat -F    &> /dev/null
+####
+####
+#### :rutina-final-eraserules-ebtables:
+##########    eraserules-arptables: Erase rules option   ##########
+#### :rutina-inicial-eraserules-arptables:
+####
+####
+if [ "$cmd_first_option" == "eraserules-arptables" ]; then  
+####
+####
+echo "$txt_text_title_info [ Deleting iptables rules arptables ] "
+####
+####
+#### policy arptables
+####
+####
+#### erase arptables
+$cmd_command_arptables -F  &> /dev/null
+####
+####
+#### :rutina-final-eraserules-arptables:
+##########    eraserules-legacy: Erase rules option   ##########
+#### :rutina-inicial-eraserules-legacy:
+####
+####
+if [ "$cmd_first_option" == "eraserules-legacy" ]; then  
+####
+####
+echo "$txt_text_title_info [ Deleting iptables rules legacy ] "
+####
+####
+#### IPV4
+####
+####
+#### policy filter
+$cmd_command_ip4tableslegacy -t filter -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t filter -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t filter -P OUTPUT ACCEPT &> /dev/null
+####
+####
+#### policy nat
+$cmd_command_ip4tableslegacy -t nat -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t nat -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t nat -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t nat -P POSTROUTING ACCEPT &> /dev/null
+####
+####
+#### policy mangle
+$cmd_command_ip4tableslegacy -t mangle -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t mangle -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t mangle -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t mangle -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t mangle -P POSTROUTING ACCEPT &> /dev/null
+####
+####
+#### policy raw
+$cmd_command_ip4tableslegacy -t raw -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t raw -P PREROUTING ACCEPT &> /dev/null
+####
+####
+#### policy security
+$cmd_command_ip4tableslegacy -t security -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t security -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip4tableslegacy -t security -P OUTPUT ACCEPT &> /dev/null
+####
+####
+#### erase rules
+$cmd_command_ip4tableslegacy -t filter -F &> /dev/null
+$cmd_command_ip4tableslegacy -t nat -F &> /dev/null
+$cmd_command_ip4tableslegacy -t mangle -F &> /dev/null
+$cmd_command_ip4tableslegacy -t raw -F &> /dev/null
+$cmd_command_ip4tableslegacy -t security -F &> /dev/null
+####
+####
+#### IPV6
+####
+#### policy filter
+$cmd_command_ip6tableslegacy -t filter -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t filter -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t filter -P OUTPUT ACCEPT &> /dev/null
+####
+####
+#### policy nat
+$cmd_command_ip6tableslegacy -t nat -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t nat -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t nat -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t nat -P POSTROUTING ACCEPT &> /dev/null
+####
+####
+#### policy mangle
+$cmd_command_ip6tableslegacy -t mangle -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t mangle -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t mangle -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t mangle -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t mangle -P POSTROUTING ACCEPT &> /dev/null
+####
+####
+#### policy raw
+$cmd_command_ip6tableslegacy -t raw -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t raw -P PREROUTING ACCEPT &> /dev/null
+####
+####
+#### policy security
+$cmd_command_ip6tableslegacy -t security -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t security -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip6tableslegacy -t security -P OUTPUT ACCEPT &> /dev/null
+####
+####
+#### erase rules
+$cmd_command_ip6tableslegacy -t filter -F &> /dev/null
+$cmd_command_ip6tableslegacy -t nat -F &> /dev/null
+$cmd_command_ip6tableslegacy -t mangle -F &> /dev/null
+$cmd_command_ip6tableslegacy -t raw -F &> /dev/null
+$cmd_command_ip6tableslegacy -t security -F &> /dev/null
+####
+####
+#### :rutina-final-eraserules-legacy:
+##########    eraserules-nft: Erase rules option   ##########
+#### :rutina-inicial-eraserules-nft:
+####
+####
+if [ "$cmd_first_option" == "eraserules-nft" ]; then  
+####
+####
+echo "$txt_text_title_info [ Deleting iptables rules nft ] "
+####
+####
+#### IPV4
+####
+####
+#### policy filter
+$cmd_command_ip4tablesnft -t filter -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t filter -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t filter -P OUTPUT ACCEPT &> /dev/null
+####
+####
+#### policy nat
+$cmd_command_ip4tablesnft -t nat -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t nat -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t nat -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t nat -P POSTROUTING ACCEPT &> /dev/null
+####
+####
+#### policy mangle
+$cmd_command_ip4tablesnft -t mangle -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t mangle -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t mangle -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t mangle -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t mangle -P POSTROUTING ACCEPT &> /dev/null
+####
+####
+#### policy raw
+$cmd_command_ip4tablesnft -t raw -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t raw -P PREROUTING ACCEPT &> /dev/null
+####
+####
+#### policy security
+$cmd_command_ip4tablesnft -t security -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t security -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip4tablesnft -t security -P OUTPUT ACCEPT &> /dev/null
+####
+####
+#### erase rules
+$cmd_command_ip4tablesnft -t filter -F &> /dev/null
+$cmd_command_ip4tablesnft -t nat -F &> /dev/null
+$cmd_command_ip4tablesnft -t mangle -F &> /dev/null
+$cmd_command_ip4tablesnft -t raw -F &> /dev/null
+$cmd_command_ip4tablesnft -t security -F &> /dev/null
+####
+####
+#### IPV6
+####
+#### policy filter
+$cmd_command_ip6tablesnft -t filter -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t filter -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t filter -P OUTPUT ACCEPT &> /dev/null
+####
+####
+#### policy nat
+$cmd_command_ip6tablesnft -t nat -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t nat -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t nat -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t nat -P POSTROUTING ACCEPT &> /dev/null
+####
+####
+#### policy mangle
+$cmd_command_ip6tablesnft -t mangle -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t mangle -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t mangle -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t mangle -P PREROUTING ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t mangle -P POSTROUTING ACCEPT &> /dev/null
+####
+####
+#### policy raw
+$cmd_command_ip6tablesnft -t raw -P OUTPUT ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t raw -P PREROUTING ACCEPT &> /dev/null
+####
+####
+#### policy security
+$cmd_command_ip6tablesnft -t security -P INPUT ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t security -P FORWARD ACCEPT &> /dev/null
+$cmd_command_ip6tablesnft -t security -P OUTPUT ACCEPT &> /dev/null
+####
+####
+#### erase rules
+$cmd_command_ip6tablesnft -t filter -F &> /dev/null
+$cmd_command_ip6tablesnft -t nat -F &> /dev/null
+$cmd_command_ip6tablesnft -t mangle -F &> /dev/null
+$cmd_command_ip6tablesnft -t raw -F &> /dev/null
+$cmd_command_ip6tablesnft -t security -F &> /dev/null
+####
+####
+#### :rutina-final-eraserules-legacy:
 ##########    eraserules4: Erase rules option   ##########
 #### :rutina-inicial-eraserules4:
 ####
@@ -4087,17 +4305,7 @@ if [ "$cmd_first_option" == "eraserules4" ]; then
 echo "$txt_text_title_info [ Deleting ip4 iptables rules ] "
 ####
 ####
-#### table policy 
-cfg_rule_table_policy="ACCEPT"
-$cmd_command_ip4tableslegacy   -t filter  -P INPUT    $cfg_rule_table_policy
-$cmd_command_ip4tablesnft      -t filter  -P INPUT    $cfg_rule_table_policy
-$cmd_command_ip4tableslegacy   -t filter  -P FORWARD  $cfg_rule_table_policy
-$cmd_command_ip4tablesnft      -t filter  -P FORWARD  $cfg_rule_table_policy
-$cmd_command_ip4tableslegacy   -t filter  -P OUTPUT   $cfg_rule_table_policy
-$cmd_command_ip4tablesnft      -t filter  -P OUTPUT   $cfg_rule_table_policy
-####
-####
-#### erase the rules
+#### erase rules
 $cmd_command_ebtables -t filter -F &> /dev/null
 $cmd_command_ebtables -t nat -F &> /dev/null
 $cmd_command_ip4tablesnft -t filter -F &> /dev/null
@@ -4112,6 +4320,7 @@ $cmd_command_ip4tablesnft -t security -F &> /dev/null
 $cmd_command_ip4tableslegacy -t security -F &> /dev/null
 ####
 ####
+#### policy rules
 $cmd_command_ebtables -t filter -P INPUT ACCEPT  &> /dev/null
 $cmd_command_ebtables -t filter -P FORWARD ACCEPT &> /dev/null 
 $cmd_command_ebtables -t filter -P OUTPUT ACCEPT &> /dev/null
@@ -4171,17 +4380,7 @@ if [ "$cmd_first_option" == "eraserules6" ]; then
 echo "$txt_text_title_info [ Deleting ip6 iptables rules ] "
 ####
 ####
-#### table policy 
-cfg_rule_table_policy="ACCEPT"
-$cmd_command_ip6tableslegacy   -t filter  -P INPUT    $cfg_rule_table_policy
-$cmd_command_ip6tablesnft      -t filter  -P INPUT    $cfg_rule_table_policy
-$cmd_command_ip6tableslegacy   -t filter  -P FORWARD  $cfg_rule_table_policy
-$cmd_command_ip6tablesnft      -t filter  -P FORWARD  $cfg_rule_table_policy
-$cmd_command_ip6tableslegacy   -t filter  -P OUTPUT   $cfg_rule_table_policy
-$cmd_command_ip6tablesnft      -t filter  -P OUTPUT   $cfg_rule_table_policy
-####
-####
-#### erase the rules
+#### erase rules
 $cmd_command_ip6tablesnft -t filter -F &> /dev/null
 $cmd_command_ip6tableslegacy -t filter -F &> /dev/null
 $cmd_command_ip6tablesnft -t nat -F &> /dev/null
@@ -4194,6 +4393,7 @@ $cmd_command_ip6tablesnft -t security -F &> /dev/null
 $cmd_command_ip6tableslegacy -t security -F &> /dev/null
 ####
 ####
+#### policy rules
 $cmd_command_ebtables -t filter -P INPUT ACCEPT  &> /dev/null
 $cmd_command_ebtables -t filter -P FORWARD ACCEPT &> /dev/null 
 $cmd_command_ebtables -t filter -P OUTPUT ACCEPT &> /dev/null
