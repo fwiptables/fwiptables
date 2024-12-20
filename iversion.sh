@@ -4084,6 +4084,9 @@ $cmd_command_ebtables -t filter -F &> /dev/null
 $cmd_command_ebtables -t nat -F    &> /dev/null
 ####
 ####
+exit; fi
+####
+####
 #### :rutina-final-eraserules-ebtables:
 ##########    eraserules-arptables: Erase rules option   ##########
 #### :rutina-inicial-eraserules-arptables:
@@ -4100,6 +4103,9 @@ echo "$txt_text_title_info [ Deleting iptables rules arptables ] "
 ####
 #### erase arptables
 $cmd_command_arptables -F  &> /dev/null
+####
+####
+exit; fi
 ####
 ####
 #### :rutina-final-eraserules-arptables:
@@ -4198,6 +4204,9 @@ $cmd_command_ip6tableslegacy -t raw -F &> /dev/null
 $cmd_command_ip6tableslegacy -t security -F &> /dev/null
 ####
 ####
+exit; fi
+####
+####
 #### :rutina-final-eraserules-legacy:
 ##########    eraserules-nft: Erase rules option   ##########
 #### :rutina-inicial-eraserules-nft:
@@ -4292,6 +4301,9 @@ $cmd_command_ip6tablesnft -t nat -F &> /dev/null
 $cmd_command_ip6tablesnft -t mangle -F &> /dev/null
 $cmd_command_ip6tablesnft -t raw -F &> /dev/null
 $cmd_command_ip6tablesnft -t security -F &> /dev/null
+####
+####
+exit; fi
 ####
 ####
 #### :rutina-final-eraserules-legacy:
