@@ -3426,7 +3426,8 @@ echo "$txt_text_md lsn4 lsn6 statusn listn-filter4 listn-filter6 listn-nat4"
 echo "$txt_text_md listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6"  
 echo "$txt_text_md listn-security4 listn-security6 listn-alltables"  
 echo "$txt_text_md ......firewall-wallcontrol            "  
-echo "$txt_text_md stop continue reset show save load names actual eraserules"  
+echo "$txt_text_md stop continue reset show save load names actual"  
+echo "$txt_text_md eraserules-all eraserules-arp eraserules-ebtables"   
 echo "$txt_text_md eraserules4 eraserules6 eraserules-nft eraserules-legacy"
 echo "$txt_text_md without-connection input-permisive input-established"  
 echo "$txt_text_md wizard-tiny wizard-mini wizard-full"  
@@ -4026,11 +4027,11 @@ exit; fi
 ####
 #### :rutina-final-parametters:
 #### :rutina-final-optional-output:
-##########    eraserules: Erase rules option   ##########
-#### :rutina-inicial-eraserules:
+##########    eraserules-all: Erase rules option   ##########
+#### :rutina-inicial-eraserules-all:
 ####
 ####
-if [ "$cmd_first_option" == "eraserules" ];  then 
+if [ "$cmd_first_option" == "eraserules-all" ];  then 
 echo "$txt_text_title_info [ Erasing all rules ipv4/ipv6/ebtales/arptables ]"
 ####
 ####
@@ -4056,7 +4057,7 @@ echo "$txt_text_title_ok eraserules done"
 exit; fi
 ####
 ####
-#### :rutina-final-eraserules:
+#### :rutina-final-eraserules-all:
 ##########    eraserules-ebtables: Erase rules option   ##########
 #### :rutina-inicial-eraserules-ebtables:
 ####
@@ -9559,7 +9560,9 @@ menuprincipal="$($cfg_favorite_base_cli --clear --notags \
 018  "$txt_text_md input-established" \
 019  "$txt_text_md eraserules4" \
 020  "$txt_text_md eraserules6" \
-021  "$txt_text_md eraserules" \
+021  "$txt_text_md eraserules-nft" \
+022  "$txt_text_md eraserules-legacy" \
+023  "$txt_text_md eraserules-all" \
 3>&1 1>&2 2>&3 )"
 ##########
 ##########
@@ -9592,7 +9595,9 @@ $cmd_internal load $nombrecillo ;;
 018) clear ; $cmd_internal $cfg_favorite_out_cli input-established ; $cmd_internal cli list4   ;;
 019) clear ; $cmd_internal $cfg_favorite_out_cli eraserules4 ; $cmd_internal cli list4   ;;
 020) clear ; $cmd_internal $cfg_favorite_out_cli eraserules6 ; $cmd_internal cli list6   ;;
-021) clear ; $cmd_internal $cfg_favorite_out_cli eraserules  ; $cmd_internal cli list4   ;;
+021) clear ; $cmd_internal $cfg_favorite_out_cli eraserules-nft  ; $cmd_internal cli list4   ;;
+022) clear ; $cmd_internal $cfg_favorite_out_cli eraserules-legacy  ; $cmd_internal cli list4   ;;
+023) clear ; $cmd_internal $cfg_favorite_out_cli eraserules-all  ; $cmd_internal cli list4   ;;
 *)        ;;
 esac
 ################################################################################
@@ -9977,7 +9982,8 @@ then echo $txt_message_without_guiroll ; exit ; fi
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
 stop|continue|reset|names|show|save|load|actual|\
-eraserules|eraserules4|eraserules6|wizard-tiny|wizard-mini|wizard-full|\
+eraserules-all|eraserules-nft|eraserules-legacy|eraserules4|eraserules6|\
+wizard-tiny|wizard-mini|wizard-full|\
 without-connection|input-permisive|input-established|\
 tinyserver-tcp|tinyserver-udp"
 selection_menu="$($cmd_command_zenity --forms \
@@ -10016,9 +10022,11 @@ load)archivo="$($cfg_favorite_realpath_graphicalldialog  --entry \
 $cmd_internal -gui-zenity load $archivo
 $cmd_internal -gui-zenity list4;;
 actual)$cmd_internal -gui-zenity actual ;;
-eraserules4)$cmd_internal -gui-zenity eraserules ; $cmd_internal gui list4;;
-eraserules6)$cmd_internal -gui-zenity eraserules ; $cmd_internal gui list6;;
-eraserules)$cmd_internal -gui-zenity eraserules ; $cmd_internal gui list4;;
+eraserules-nft)$cmd_internal -gui-zenity eraserules-nft ; $cmd_internal gui list4;;
+eraserules-legacy)$cmd_internal -gui-zenity eraserules-legacy ; $cmd_internal gui list4;;
+eraserules4)$cmd_internal -gui-zenity eraserules4 ; $cmd_internal gui list4;;
+eraserules6)$cmd_internal -gui-zenity eraserules6 ; $cmd_internal gui list6;;
+eraserules-all)$cmd_internal -gui-zenity eraserules-all ; $cmd_internal gui list4;;
 wizard-full)$cmd_internal -gui-zenity wizard-full ; $cmd_internal gui list4;;
 wizard-mini)$cmd_internal -gui-zenity wizard-mini ; $cmd_internal gui list4;;
 wizard-tiny)$cmd_internal -gui-zenity wizard-tiny ; $cmd_internal gui list4;;
@@ -10638,7 +10646,7 @@ echo "$txt_text_stitle The used gui in $cmd_first_option is $cmd_second_option" 
 ####
 gui_menu="gui-principal-menu|gui-info-menu|\
 stop|continue|reset|names|show|save|load|actual|\
-eraserules|eraserules4|eraserules6|\
+eraserules-all|eraserules-nft|eraserules-legacy|eraserules4|eraserules6|\
 without-connection|input-permisive|input-established|\
 wizard-tiny|wizard-mini|wizard-full|\
 tinyserver-tcp|tinyserver-udp|\
@@ -10690,9 +10698,11 @@ load*)archivo="$($cfg_favorite_realpath_graphicalldialog  --entry \
 $cmd_internal gui-$cmd_second_option load $archivo ;
 $cmd_internal gui-$cmd_second_option list4 ;;
 actual*)$cmd_internal gui-$cmd_second_option actual ;;
+eraserules-nft*)$cmd_internal gui-$cmd_second_option eraserules-nft ;;
+eraserules-legacy*)$cmd_internal gui-$cmd_second_option eraserules-legacy ;;
 eraserules4*)$cmd_internal gui-$cmd_second_option eraserules4 ;;
 eraserules6*)$cmd_internal gui-$cmd_second_option eraserules6 ;;
-eraserules*)$cmd_internal gui-$cmd_second_option eraserules ;;
+eraserules-all*)$cmd_internal gui-$cmd_second_option eraserules-all ;;
 wizard-full*)$cmd_internal gui-$cmd_second_option wizard-full ;
 $cmd_internal gui-$cmd_second_option list4 ;;
 wizard-mini*)$cmd_internal gui-$cmd_second_option wizard-mini ;
