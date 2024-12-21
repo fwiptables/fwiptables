@@ -3610,27 +3610,29 @@ if   [ "$cmd_first_option" == "firewall-wallcontrol" ]; then
 ####
 ####
 echo "$txt_text_stitle | firewall-wallcontrol | $cmd_internal firewall-wallcontrol"
-echo "$txt_text_md_md stop               . remove the rules iptables, and save it to then if continue"
-echo "$txt_text_md_md continue           . reset and load latest rules iptables loaded"
-echo "$txt_text_md_md load               . reset rules iptables actually"
-echo "$txt_text_md_md actual             . show the rules iptables from actually"
-echo "$txt_text_md_md show               . show the rules iptables from selected file"
-echo "$txt_text_md_md load               . reset and load new rules iptables from selected file"
-echo "$txt_text_md_md save               . save in the file selected the rules iptables actually"
-echo "$txt_text_md_md all-names          . list filenames saved in the iptables rules"
-echo "$txt_text_md_md eraserules         . remove all firewall rules: ipv4,ipv6,ebtables,arptables"
-echo "$txt_text_md_md eraserules4        . remove ipv4 firewall rules"
-echo "$txt_text_md_md eraserules6        . remove ipv6 firewall rules"
-echo "$txt_text_md_md eraserules-nft     . remove firewall rules nft"
-echo "$txt_text_md_md eraserules-legacy  . remove firewall rules legacy"
-echo "$txt_text_md_md wizard-tiny        . launch a one tiny wizard to run iptables rules"
-echo "$txt_text_md_md wizard-mini        . launch a one mini wizard to run iptables rules"
-echo "$txt_text_md_md wizard-full        . launch a one full wizard to run iptables rules"
-echo "$txt_text_md_md without-connection . launch a one firewall only for localhost"
-echo "$txt_text_md_md input-permisive    . launch a one firewall with all permisive"
-echo "$txt_text_md_md input-established  . firewall with input related,stablished"
-echo "$txt_text_md_md tinyserver-tcp     . firewall server ports tcp, with optional clients"
-echo "$txt_text_md_md tinyserver-udp     . firewall server ports udp, with optional clients"
+echo "$txt_text_md_md stop                 . remove the rules iptables, and save it to then if continue"
+echo "$txt_text_md_md continue             . reset and load latest rules iptables loaded"
+echo "$txt_text_md_md load                 . reset rules iptables actually"
+echo "$txt_text_md_md actual               . show the rules iptables from actually"
+echo "$txt_text_md_md show                 . show the rules iptables from selected file"
+echo "$txt_text_md_md load                 . reset and load new rules iptables from selected file"
+echo "$txt_text_md_md save                 . save in the file selected the rules iptables actually"
+echo "$txt_text_md_md all-names            . list filenames saved in the iptables rules"
+echo "$txt_text_md_md eraserules-all       . remove all firewall rules: ipv4,ipv6,ebtables,arptables"
+echo "$txt_text_md_md eraserules-ebtables  . remove ebtables firewall rules"
+echo "$txt_text_md_md eraserules-arptables . remove arptables firewall rules"
+echo "$txt_text_md_md eraserules4          . remove ipv4 firewall rules"
+echo "$txt_text_md_md eraserules6          . remove ipv6 firewall rules"
+echo "$txt_text_md_md eraserules-nft       . remove firewall rules nft"
+echo "$txt_text_md_md eraserules-legacy    . remove firewall rules legacy"
+echo "$txt_text_md_md wizard-tiny          . launch a one tiny wizard to run iptables rules"
+echo "$txt_text_md_md wizard-mini          . launch a one mini wizard to run iptables rules"
+echo "$txt_text_md_md wizard-full          . launch a one full wizard to run iptables rules"
+echo "$txt_text_md_md without-connection   . launch a one firewall only for localhost"
+echo "$txt_text_md_md input-permisive      . launch a one firewall with all permisive"
+echo "$txt_text_md_md input-established    . firewall with input related,stablished"
+echo "$txt_text_md_md tinyserver-tcp       . firewall server ports tcp, with optional clients"
+echo "$txt_text_md_md tinyserver-udp       . firewall server ports udp, with optional clients"
 ####
 ####
 exit; fi
@@ -6456,7 +6458,7 @@ echo "$txt_text_title_info [ loading firewall control $cmd_second_option ]"
 ####
 if [ -f $cmd_default_directory_control/$cmd_second_option-nft-ipv4 ] && \
 [ -f $cmd_default_directory_control/$cmd_second_option-legacy-ipv4 ] ; then 
-$cmd_internal eraserules &> /dev/null
+$cmd_internal eraserules-all &> /dev/null
 if [ -f "$cmd_default_directory_control/$cmd_second_option-ebtables" ]; then
 $cmd_command_cat  $cmd_default_directory_control/$cmd_second_option-ebtables | \
 $cmd_command_ebtables-restore &> /dev/null; fi
@@ -6627,7 +6629,7 @@ $cmd_command_ip6tableslegacy-save &> $cmd_default_directory_control/$cmd_filenam
 ####  erase the rules #### 
 ####
 ####
-$cmd_internal eraserules &> /dev/null
+$cmd_internal eraserules-all &> /dev/null
 echo "$txt_text_title_info [ stopping firewall ]"
 echo "$txt_text_title_ok [ firewall stopped  ]"
 ####
@@ -11634,7 +11636,8 @@ case "$NULL" in "$cfg_config_system_log")      ;;  *)  cfg_config_system_log="lo
 #### legacy ip4
 ####
 ####
-if [ "$cfg_type_firewall" == "input-permisive" ]; then $cmd_internal eraserules &> /dev/null ;
+if [ "$cfg_type_firewall" == "input-permisive" ]
+then $cmd_internal eraserules-all &> /dev/null
 ####
 ####
 #### legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
@@ -11805,7 +11808,8 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$cfg_type_firewall" == "input-established" ]; then $cmd_internal eraserules &> /dev/null ;
+if [ "$cfg_type_firewall" == "input-established" ]
+then $cmd_internal eraserules-all &> /dev/null
 ####
 ####
 ####  legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
@@ -11970,7 +11974,7 @@ exit; fi
 ####
 ####
 if [ "$cfg_type_firewall" == "without-connection" ]
-then $cmd_internal eraserules &> /dev/null ;
+then $cmd_internal eraserulesa-all &> /dev/null ;
 ####
 ####
 ####  legacy ipv4 127.0.0.1 acept
@@ -12098,7 +12102,8 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$cmd_first_option" == "loadtiny-custom" ]; then $cmd_internal eraserules &> /dev/null ;
+if [ "$cmd_first_option" == "loadtiny-custom" ]
+then $cmd_internal eraserules-all &> /dev/null
 ####
 ####
 #### LOCALHOST IS ALLOWED
@@ -12554,7 +12559,7 @@ then cfg_config_uid_gid="" ; fi
 ####
 ####
 #### erase all rules
-$cmd_internal eraserules &> /dev/null
+$cmd_internal eraserules-all &> /dev/null
 ####
 ####
 ######################### ebtables mac rules
