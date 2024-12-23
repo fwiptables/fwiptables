@@ -56,7 +56,7 @@
 ## fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-12-F-bash                
+         Version Firewall: 24-12-G-bash                
         Released Firewall: Year 2024 / Month 12               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
@@ -68,7 +68,7 @@
         Requisite Program: awk,cat,cut,date,file,id,sed,sort      
       Requisite Firewall4: iptables-legacy,iptables-nft    
       Requisite Firewall6: ip6tables-legacy,ip6tables-nft    
-               Auth xhost: /usr/bin/xhost          
+          Xorg-Auth xhost: /usr/bin/xhost          
            Automatic edit: /usr/bin/nano   
             Automatic cli: /usr/bin/whiptail         
             Automatic gui: /usr/bin/yad   
@@ -135,12 +135,12 @@
       Folder logcmd:           /root/.config/fwiptables/fwiptables-logcmd   
         
     [ Preferences files ]     
-      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-fwiptables-24-12-F-bash.conf
-      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-fwiptables-24-12-F-bash.conf
+      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-fwiptables-24-12-G-bash.conf
+      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-fwiptables-24-12-G-bash.conf
       own-notes:               /root/.config/fwiptables/fwiptables-preferences/default-usernotes-all-versions.txt
         
     [ optional output ]       
-      auth xhost:              /usr/bin/xhost    
+      xhost Xorg-Auth:         /usr/bin/xhost    
       dialog cli:              /usr/bin/dialog   
       whiptail cli             /usr/bin/whiptail   
       zenity gui:              /usr/bin/zenity   
@@ -148,12 +148,12 @@
       convert pdf:             /usr/bin/convert   
         
     [ Automatic iptables ]    
+      arptables:               /usr/sbin/arptables   
+      ebtables:                /usr/sbin/ebtables   
       iptables legacy:         /usr/sbin/iptables-legacy   
       iptables nft:            /usr/sbin/iptables-nft   
       ip6tables legacy:        /usr/sbin/ip6tables-legacy   
       ip6tables nft:           /usr/sbin/ip6tables-nft   
-      arptables:               /usr/sbin/arptables   
-      ebtables:                /usr/sbin/ebtables   
         
     [ Automatic favorites ]   
       Automatic txt:           /usr/bin/bash   
