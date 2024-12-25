@@ -25,16 +25,16 @@ if [ "$(id -u)" == "0" ]; then echo "# launch as user, not root allowed"; exit; 
 ### variables principal list
 opt_name="myradio-bash"
 opt_version="24-11-J"
-opt_realpath="$(realpath $0)"
-opt_basename="$(basename $0)"
+opt_bin="$(realpath $0)"
+opt_base="$(basename $0)"
 opt_first="$1"
 opt_second="$2"
 ### variables secondary list
-conf_agent="curl"          # the preferences
-conf_player="vlc -I dummy" # the preferences
-conf_kill="vlc"            # the preferences
-conf_proxy=""              # the preferences
-conf_musica="$HOME/musica" # the preferences
+conf_agent="curl"                                         # the preferences
+conf_player="vlc"                                         # the preferences
+conf_kill="vlc"                                           # the preferences
+conf_proxy=""                                             # the preferences
+conf_musica="$HOME/musica"                                # the preferences
 conf_radio="https://www.tdtchannels.com/lists/radio.m3u8" # the preferences
 conf_folder="$HOME/.config/myradio-bash"                  # the preferences
 conf_complete="$conf_folder/myradio-list.m3u8"            # the preferences
@@ -45,8 +45,8 @@ conf_config="$conf_folder/myradio-config.txt"             # the preferences
 if [ ! -d "$conf_folder" ]; then mkdir -p $conf_folder ; fi
 if [ ! -f "$conf_config" ]; then
 cat $0 | grep "the preferences" | grep -iv conf_config > $conf_config
-echo "# config created $conf_config" ; fi
-if [ ! -f "$conf_complete" ]; then  $opt_realpath update ; fi
+echo "# config created $conf_config"  ; fi
+if [ ! -f "$conf_complete" ]; then  $opt_bin update ; fi
 ### load config
 source $conf_config
 ###
@@ -82,33 +82,35 @@ ls -1 $conf_musica | grep -i $2
 exit; fi
 ### play musica
 if [ "$opt_first" == "musica" ]; then
-$opt_realpath stop
-echo "# play musica: $conf_musica/*$opt_second*"
-if  [ "$opt_second" == "$NULL" ]; then opt_second="/"; fi
-find $conf_musica -iname  *$opt_second*
-find $conf_musica -iname  *$opt_second* -exec vlc {} \; &> /dev/null
+$opt_bin stop
+if [ "$opt_second" == "$NULL" ];
+then echo "# play musica: $conf_musica"
+$conf_player -d $conf_musica &> /dev/null
+else for a in "$(ls -1 $conf_musica | grep -i $opt_second)"
+do echo $a ; $conf_player $conf_musica/$a &> /dev/null ; done ; fi
 exit; fi
 ### play radio
-if [ "$opt_first" == "radio" ]; then if [ "$opt_second" == "$NULL" ];
-then echo "# choose a name for one radio" ; exit
-else $opt_realpath stop
+if [ "$opt_first" == "radio" ]; then
+if [ "$opt_second" == "$NULL" ]; then echo "# choose a name for one radio"; exit; fi
+$opt_bin stop
 grep -i $opt_second $conf_complete > $conf_choosed
 if [ ! -s "$conf_choosed" ]; then echo "# radio not found" ; exit; fi
 if [ "$conf_proxy" == "$NULL" ]
-then $conf_player -d $conf_choosed &> /dev/null
-else $conf_player --socks $conf_proxy -d $conf_choosed
-### echo "# now playing radio: $opt_second"
-fi; exit ; fi
+then $conf_player -I dummy $conf_choosed &> /dev/null &
+else $conf_player -I dummy $conf_choosed &> /dev/null &
+fi
+echo "# now playing radio: $opt_second"
+exit; fi
 ### link radio
 if [ "$opt_first" == "link" ]; then
-$opt_realpath stop
+$opt_bin stop
 echo "# playing: $opt_second" ;
 $conf_player -d $opt_second
 exit; fi
 ### code program
 if [ "$opt_first" == "code" ]; then
 echo "# source code script"
-cat $opt_realpath
+cat $opt_bin
 exit; fi
 ### about
 if [ "$opt_first" == "about" ]; then
@@ -131,15 +133,14 @@ echo "# reset:   reset the user config for my radio-bash"
 echo "# stop:    stop the player"
 echo "# update:  update the file m3u8 to play radio"
 echo "# search:  search in the file m3u8 to play radio"
-echo "# busca:   search in the musica folder"
+echo "# busca:   search in the musica folder" 
 echo "# radio:   play one radio with pattern"
 echo "# musica:  play folder music in $conf_musica"
-echo "# link:    choose una web link to play"
+echo "# link:    choose una link to play"
 exit; fi
 ### invalid options
-echo "# option no valid # choose one option to launch"
-echo "# $opt_basename help|about|reset|config|stop|\
-update|search|busca|radio|musica|link [music]"
+echo "# option no valid in $0 # choose one option to launch"
+echo "help|about|reset|config|update|stop|update|search|busca|radio|musica|link"
 ##################################################### exit options
 exit
 
