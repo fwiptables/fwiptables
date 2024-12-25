@@ -91,8 +91,8 @@ fi
 #### The number version firewall
 cmd_year="24"                                                 # Number year version
 cmd_month="12"                                                # Number mouth version
-cmd_letter="G"                                                # Number letter version
-cmd_devel=""                                                  # developer -dev_version
+cmd_letter="H"                                                # Number letter version
+cmd_devel="-devel"                                            # developer -dev_version
 cmd_shell="bash"                                              # shell script version
 cmd_vdate=$cmd_year-$cmd_month-$cmd_letter$cmd_devel          # final date  version 
 cmd_version="$cmd_vdate-$cmd_shell"                           # Final shell version
@@ -502,31 +502,14 @@ exit; fi ; done
 #### #### Prepare directory data/cache: $HOME root
 ####
 ####
-#### $HOME usuall
-if [ "$(echo $HOME)" != "$NULL" ] 
-then cmd_default_root_home="$(echo $HOME)"  ; fi
+#### Prepare directory config and directory cache
 ####
 ####
-#### if try again with sudo to get $HOME when before null
-if [ "$cmd_default_root_home" == "$NULL" ] && \
-[ "$cmd_command_sudo" != "$NULL" ] && \
-[ "$($cmd_command_sudo echo $HOME)" != "$NULL" ]
-then cmd_default_root_home="$(echo $HOME)"  ; fi
+cmd_default_root_home="/etc/fwiptables/config/$cmd_version"
+cmd_default_cache_home="/etc/fwiptables/cache/$cmd_version"
 ####
 ####
-#### $HOME no way, then go to /root
-if [ "$cmd_default_root_home" == "$NULL" ]
-then cmd_default_root_home="/root"          ; fi
-####
-####
-#### Prepare directory cache: OR run OR /root/.cache/$cmd_filename
-####
-####
-cmd_default_cache_run="/run/$cmd_name"                               ### ununsed
-cmd_default_cache_home="$cmd_default_root_home/.cache/$cmd_name"     ### used
-####
-####
-#### #### variables tree and .cache ####
+#### #### variables tree and cache ####
 ####
 ####
 #### cache root
@@ -536,7 +519,7 @@ cmd_default_cache_atemp="$cmd_default_cache_home/ATEMP"
 ####
 ####
 #### config root
-cmd_default_directory_necesary="$cmd_default_root_home/.config/$cmd_name"
+cmd_default_directory_necesary="$cmd_default_root_home"
 ####
 ####
 #### directory base
@@ -1504,13 +1487,13 @@ echo "$txt_text_md_md     Source Firewall: $cmd_notinstalled         $txt_text_m
 echo "$txt_text_md_md   Internal Firewall: $cmd_internal             $txt_text_md"
 echo "$txt_text_md_md   Short Description: $cmd_shortdescription     $txt_text_md"
 echo "$txt_text_md_md    Long Description: $cmd_longdescription      $txt_text_md"
-echo "$txt_text_md_md      Data Directory: $cmd_default_directory_necesary         $txt_text_md"
+echo "$txt_text_md_md    Config Directory: $cmd_default_directory_necesary         $txt_text_md"
 echo "$txt_text_md_md     Cache Directory: $cmd_default_cache_base   $txt_text_md"
 echo "$txt_text_md_md      Finder Program: $cmd_where                $txt_text_md"
 echo "$txt_text_md_md   Requisite Program: $cmd_requisite_program    $txt_text_md"
 echo "$txt_text_md_md Requisite Firewall4: $cmd_requisite_firewall4  $txt_text_md"
 echo "$txt_text_md_md Requisite Firewall6: $cmd_requisite_firewall6  $txt_text_md"
-echo "$txt_text_md_md     Xorg-Auth xhost: $cmd_command_xhost        $txt_text_md"
+echo "$txt_text_md_md     Automatic xhost: $cmd_command_xhost        $txt_text_md"
 echo "$txt_text_md_md      Automatic edit: $cfg_favorite_text_editor $txt_text_md"
 echo "$txt_text_md_md       Automatic cli: $cfg_favorite_realpath_textdialog       $txt_text_md"
 echo "$txt_text_md_md       Automatic gui: $cfg_favorite_realpath_graphicalldialog $txt_text_md"
@@ -1560,52 +1543,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert-cpupower:
-##########    expert-configs-save: configurations backups in actual folder    ##########
-#### :rutina-inicial-expert-configs-save:
-####
-####
-if [ "$cmd_first_option" == "expert-configs-save" ] ; then
-####
-####
-echo "$txt_text_title_info [ save backups confiurations to choosed filename ]"
-if [ "$cmd_command_tar" == "$NULL" ]; then
-echo "$txt_text_stitle Please install tar command"; exit ; fi
-if [ "$2" == "$NULL" ]; then
-echo "$txt_text_stitle Please choose the backup file to save"; exit; fi
-####
-####
-tar vcf $2.tar -C $cmd_default_directory_necesary . && \
-echo "$txt_text_ok in-file-saved: $2.tar from-folder-saved: $cmd_default_directory_necesary" || \
-echo "$txt_text_fail bad"
-####
-####
-exit; fi
-####
-####
-#### :rutina-final-expert-configs-save:
-##########    expert-configs-load: configurations backups in actual folder    ##########
-#### :rutina-inicial-expert-configs-load:
-####
-####
-if [ "$cmd_first_option" == "expert-configs-load" ] ; then
-####
-####
-echo "$txt_text_title_info [ load backups confiurations from choosed filename ]"
-if [ "$cmd_command_tar" == "$NULL" ]; then
-echo "$txt_text_stitle Please install tar command"; exit ; fi
-if [ "$2" == "$NULL" ]; then
-echo "$txt_text_stitle Please choose the backup file to load"; exit; fi
-####
-####
-tar vxf $2 -C $cmd_default_directory_necesary . && \
-echo "$txt_text_ok from-file-loaded: $2 in-folder-loaded: $cmd_default_directory_necesary" || \
-echo "$txt_text_fail bad"
-####
-####
-exit; fi
-####
-####
-#### :rutina-final-expert-configs-load:
 ##########    expert-wpa-scan: search essid wireless   ##########
 #### :rutina-inicial-expert-wpascan:
 ####
@@ -2551,7 +2488,7 @@ echo "$txt_text_md_md alias:                   $cmd_file_default_alias"
 echo "$txt_text_md_md own-notes:               $cmd_file_default_usernotes"
 echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_title_md [ optional output ]     $txt_text_md"
-echo "$txt_text_md_md xhost Xorg-Auth:         $cmd_command_xhost  $txt_text_md"
+echo "$txt_text_md_md xhost x11:               $cmd_command_xhost  $txt_text_md"
 echo "$txt_text_md_md dialog cli:              $cmd_command_dialog $txt_text_md"
 echo "$txt_text_md_md whiptail cli             $cmd_command_whiptail $txt_text_md"
 echo "$txt_text_md_md zenity gui:              $cmd_command_zenity $txt_text_md"
@@ -2760,32 +2697,32 @@ if [ "$cmd_first_option" == "hints" ]; then
 echo "$txt_text_md    [Iptables firewall] $txt_text_md" 
 echo "$txt_text_md"
 echo "$txt_text_md      Legacy or nft: only one of them is sufficent $txt_text_md"   
-echo "$txt_text_md    iptables-legacy: support for xtables ipv4 $txt_text_md"    
-echo "$txt_text_md       iptables-nft: support for nftables ipv4 $txt_text_md" 
-echo "$txt_text_md   ip6tables-legacy: support for xtables ipv6 $txt_text_md"    
-echo "$txt_text_md      ip6tables-nft: support for nftables ipv6 $txt_text_md"
+echo "$txt_text_md    iptables-legacy: support for xtables ipv4      $txt_text_md"    
+echo "$txt_text_md       iptables-nft: support for nftables ipv4     $txt_text_md" 
+echo "$txt_text_md   ip6tables-legacy: support for xtables ipv6      $txt_text_md"    
+echo "$txt_text_md      ip6tables-nft: support for nftables ipv6     $txt_text_md"
 echo "$txt_text_md"
-echo "$txt_text_md    [Firewall recomendation with full client] $txt_text_md"
+echo "$txt_text_md    [Firewall recomendation with full client]      $txt_text_md"
 echo "$txt_text_md"
-echo "$txt_text_md    Client prefered: input-established $txt_text_md" 
-echo "$txt_text_md    Server prefered: tinyserver-tcp    $txt_text_md"
+echo "$txt_text_md    Client prefered: input-established             $txt_text_md" 
+echo "$txt_text_md    Server prefered: tinyserver-tcp ports          $txt_text_md"
 echo "$txt_text_md"
 echo "$txt_text_md    [Some options] $txt_text_md"
 echo "$txt_text_md"
-echo "$txt_text_md    shield maxtries: limit against attack per bruteforce $txt_text_md"   
-echo "$txt_text_md          Blacklist: excepcionals hosts dropped in firewall $txt_text_md"   
-echo "$txt_text_md          whitelist: excepcionals hosts allowed in firewall $txt_text_md" 
+echo "$txt_text_md    shield maxtries: limit against attack per bruteforce         $txt_text_md"   
+echo "$txt_text_md          Blacklist: excepcionals hosts dropped in firewall      $txt_text_md"   
+echo "$txt_text_md          whitelist: excepcionals hosts allowed in firewall      $txt_text_md" 
 echo "$txt_text_md         tinyserver: client in all allowed, and servers manually $txt_text_md"
-echo "$txt_text_md  input-established: the computer is only client $txt_text_md"   
+echo "$txt_text_md  input-established: the computer is only client                 $txt_text_md"   
 echo "$txt_text_md"
 echo "$txt_text_md    [Necesary Ports] $txt_text_md"  
 echo "$txt_text_md"
-echo "$txt_text_md                ntp: Port necesary to update the time and date $txt_text_md"   
-echo "$txt_text_md             bootpc: Port necesary to dhcp and get ip $txt_text_md"   
-echo "$txt_text_md             domain: This port is necesary to domain resolver $txt_text_md"   
-echo "$txt_text_md              https: This port is necesary for udp named web html5$txt_text_md"   
-echo "$txt_text_md          ipv6-icmp: Necesary protocol in ipv6 $txt_text_md"   
-echo "$txt_text_md         ipv4 ports: ipv6 works too with old ipv4 ports $txt_text_md"
+echo "$txt_text_md                ntp: Port necesary to update the time and date     $txt_text_md"   
+echo "$txt_text_md             bootpc: Port necesary to dhcp and get ip              $txt_text_md"   
+echo "$txt_text_md             domain: This port is necesary to domain resolver      $txt_text_md"   
+echo "$txt_text_md              https: This port is necesary for udp named web html5 $txt_text_md"   
+echo "$txt_text_md          ipv6-icmp: Necesary protocol in ipv6                     $txt_text_md"   
+echo "$txt_text_md         ipv4 ports: ipv6 works too with old ipv4 ports            $txt_text_md"
 ####
 ####
 exit; fi
@@ -3955,8 +3892,6 @@ echo "$txt_text_md_md expert-pc-shutdown . shutdown computer with shutdown $txt_
 echo "$txt_text_md_md expert-pc-reboot . reboot computer with reboot $txt_text_md "
 echo "$txt_text_md_md expert-cpufreq-info . show cpu frecuence info $txt_text_md "
 echo "$txt_text_md_md expert-cpupower-info . show cpu frecuence info $txt_text_md "
-echo "$txt_text_md_md expert-configs-save . save configs like backup from fwiptables in tar file $txt_text_md"
-echo "$txt_text_md_md expert-configs-load . load configs like backup from fwiptables in tar file $txt_text_md"
 echo "$txt_text_md_md expert-myradio-install . install radio text program $txt_text_md"
 ####
 ####
