@@ -24,7 +24,7 @@ if [ "$(id -u)" == "0" ]; then echo "# launch as user, not root allowed"; exit; 
 ##################################################### configuration list
 ### variables principal list
 opt_name="myradio-bash"
-opt_version="24-11-J"
+opt_version="24-12-B"
 opt_bin="$(realpath $0)"
 opt_base="$(basename $0)"
 opt_first="$1"
@@ -107,6 +107,10 @@ $opt_bin stop
 echo "# playing: $opt_second" ;
 $conf_player -d $opt_second
 exit; fi
+### version program
+if [ "$opt_first" == "version" ]; then
+echo "# name $opt_name version $opt_version"
+exit; fi
 ### code program
 if [ "$opt_first" == "code" ]; then
 echo "# source code script"
@@ -135,8 +139,9 @@ echo "# update:  update the file m3u8 to play radio"
 echo "# search:  search in the file m3u8 to play radio"
 echo "# busca:   search in the musica folder" 
 echo "# radio:   play one radio with pattern"
-echo "# musica:  play folder music in $conf_musica"
+echo "# musica:  play folder music"
 echo "# link:    choose una link to play"
+echo "# version: show version"
 exit; fi
 ### invalid options
 echo "# option no valid in $0 # choose one option to launch"
