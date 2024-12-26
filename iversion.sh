@@ -5672,7 +5672,7 @@ echo "$txt_text_md $txt_text_fail Not update alias"
 ####
 ####
 #### fonts
-echo "$txt_text_md $txt_text_ok Source install: $cmd_notinstalled"
+echo "$txt_text_md $txt_text_ok Source install from $cmd_notinstalled"
 ####
 ####
 #### comprobe
