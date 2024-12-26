@@ -5659,16 +5659,16 @@ echo "$txt_text_md $txt_text_ok Updated preferences" ||
 echo "$txt_text_md $txt_text_fail Not update preferences"
 ####
 ####
-#### alias-regen
-$cmd_notinstalled alias-regen &> /dev/null &&
-echo "$txt_text_md $txt_text_ok Updated alias" ||
-echo "$txt_text_md $txt_text_fail Not update alias"
-####
-####
 #### templates-regen
 $cmd_notinstalled templates-regen &> /dev/null &&
 echo "$txt_text_md $txt_text_ok Updated templates" || 
 echo "$txt_text_md $txt_text_fail Not update templates"
+####
+####
+#### alias-regen
+$cmd_notinstalled alias-regen &> /dev/null &&
+echo "$txt_text_md $txt_text_ok Updated alias" ||
+echo "$txt_text_md $txt_text_fail Not update alias"
 ####
 ####
 #### fonts
