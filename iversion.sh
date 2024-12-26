@@ -92,7 +92,7 @@ fi
 cmd_year="24"                                                 # Number year version
 cmd_month="12"                                                # Number mouth version
 cmd_letter="H"                                                # Number letter version
-cmd_devel="-devel"                                            # developer -dev_version
+cmd_devel=""                                                  # developer -dev version
 cmd_shell="bash"                                              # shell script version
 cmd_vdate=$cmd_year-$cmd_month-$cmd_letter$cmd_devel          # final date  version 
 cmd_version="$cmd_vdate-$cmd_shell"                           # Final shell version
@@ -3396,8 +3396,8 @@ echo "$txt_text_md license-lgpl-v2 license-gpl-v2"
 ####
 ####  if expert commands
 if [ "$cfg_allow_expert_commands" == "no" ]
-then echo "$txt_text_md ......#$cmd_name-$cmd_version#  #expert-deactived#  "
-else echo "$txt_text_md ......#$cmd_name-$cmd_version#  #expert-actived#    "
+then echo "$txt_text_md ......#$cmd_name-$cmd_version#  #expert:deactived#  "
+else echo "$txt_text_md ......#$cmd_name-$cmd_version#  #expert:actived#    "
 fi
 ####
 ####
@@ -5636,45 +5636,48 @@ if [ "$cmd_first_option" == "install" ]; then
 ####
 ####
 #### message
-echo "$txt_text_stitle Waiting several seconds, while create new configuration"
+echo "$txt_text_stitle Waiting several seconds, while update configuration"
+#### echo "$txt_text_stitle Updating configurations in [$cmd_default_root_home]"
 #### 
 #### 
 ####  copy
 cp $cmd_notinstalled $cmd_installed && 
 chmod 755 $cmd_installed &> /dev/null &&
-echo "$txt_text_md $txt_text_ok Installed $cmd_name $txt_text_md $txt_text_file [$cmd_installed]" ||
+echo "$txt_text_md $txt_text_ok Install File $cmd_name" &&
+echo "$txt_text_md $txt_text_file [$cmd_installed]" ||
 echo "$txt_text_md $txt_text_fail Not installed"
+####
+####
+#### folder
+echo "$txt_text_md $txt_text_ok Update Folder $cmd_name" &&
+echo "$txt_text_md $txt_text_folder [$cmd_default_root_home]"
 ####
 ####
 #### preferences-regen
 $cmd_notinstalled preferences-regen &> /dev/null &&
-echo "$txt_text_md $txt_text_ok Updated preferences $txt_text_file" &&
-echo "$txt_text_md [$cmd_file_default_preferences]" ||
+echo "$txt_text_md $txt_text_ok Updated preferences" ||
 echo "$txt_text_md $txt_text_fail Not update preferences"
 ####
 ####
 #### alias-regen
 $cmd_notinstalled alias-regen &> /dev/null &&
-echo "$txt_text_md $txt_text_ok Updated alias $txt_text_file" &&
-echo "$txt_text_md [$cmd_file_default_alias]" ||
+echo "$txt_text_md $txt_text_ok Updated alias" ||
 echo "$txt_text_md $txt_text_fail Not update alias"
 ####
 ####
 #### templates-regen
 $cmd_notinstalled templates-regen &> /dev/null &&
-echo "$txt_text_md $txt_text_ok Updated templates $txt_text_folder" &&
-echo "$txt_text_md [$cmd_default_directory_template]" || 
+echo "$txt_text_md $txt_text_ok Updated templates" || 
 echo "$txt_text_md $txt_text_fail Not update templates"
 ####
 ####
 #### fonts
-echo "$txt_text_md $txt_text_info Source install: $cmd_notinstalled"
-echo "$txt_text_md $txt_text_info Final  install: $cmd_installed"
+echo "$txt_text_md $txt_text_ok Source install: $cmd_notinstalled"
 ####
 ####
 #### comprobe
 if [ -f "$cmd_installed" ]
-then echo "$txt_text_md $txt_text_ok Installed $cmd_name"
+then echo "$txt_text_md $txt_text_ok Installed $cmd_name in [$cmd_installed]"
 else echo "$txt_text_md $txt_text_fail Not installed $cmd_name"
 fi
 #### 
@@ -6235,7 +6238,7 @@ echo "$txt_text_title_info  [ test ram speed benchamrk ] \
 [ for default max $cfg_server_time_waiting seconds ] [ 100Mb will be used to benchmark, while]"
 case $cmd_command_dd in "$NULL")
 echo "$txt_text_md $txt_text_fail [ Install dd ]"; exit ;; esac
-mount -t tmpfs tmpfs $cmd_default_directory_benchmarkram
+mount -t tmpfs -o size=120M tmpfs $cmd_default_directory_benchmarkram
 dd if=/dev/zero of=$cmd_default_directory_benchmarkram/speed.img \
 status=progress bs=10M count=10
 rm $cmd_default_directory_benchmarkram/speed.img &> /dev/null
