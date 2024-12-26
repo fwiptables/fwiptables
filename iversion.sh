@@ -5658,10 +5658,9 @@ echo "$txt_text_stitle Waiting several seconds, while update configuration"
 #### 
 #### 
 #### copy
-rm $cmd_installed &&
 cp $cmd_notinstalled $cmd_installed && 
 chmod 755 $cmd_installed &> /dev/null &&
-echo "$txt_text_md $txt_text_ok Install File $cmd_name" ||
+echo "$txt_text_md $txt_text_ok Install $cmd_name" ||
 echo "$txt_text_md $txt_text_fail Not installed"
 ####
 ####
