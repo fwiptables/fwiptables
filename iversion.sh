@@ -102,7 +102,7 @@ cmd_developer="Francisco Garcia"                              # Actual developer
 cmd_contact="fwiptables@gmx.com"                              # Actual contact
 cmd_shortdescription="FireWall With iptables"                 # Description short
 cmd_longdescription="iptables templates in one script"        # Description long
-cmd_requisite_program="awk,cat,cut,date,file,id,sed,sort"     # Program requisite
+cmd_requisite_program="cat,cut,date,file,id,sed,sort"         # Program requisite
 cmd_requisite_firewall4="iptables-legacy,iptables-nft"        # Firewall requisite
 cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"      # Firewall requisite
 cmd_license="LGPL v2, GPL v2"                                 # Program license
@@ -140,6 +140,7 @@ cmd_guided_full="$(echo $1-$2-$3-$4 | \
 $cmd_command_sed s/\ /\-/g - | $cmd_command_sed s/\\///g -)"  # all options
 ####
 ####
+#### :rutina-final-cmd-env:
 ##########      Name, description and version    ##########
 #### :rutina-inicial-web-official:
 ####
@@ -1145,9 +1146,23 @@ esac ;
 #### :rutina-inicial-alias-esquive:
 ####
 ####
-####  alias esquive templates
+####  alias esquive to install
+if [ "$cmd_second_option" == "install" ] 
+then case $cmd_first_option in
+txt|"narrowtxt"|"cli"|"cli*"|"gui"|"gui*"|"pdf"|"silent")
+$cmd_notinstalled install ;;
+esac ; exit; fi
 ####
 ####
+####  alias esquive to upgrade
+if [ "$cmd_second_option" == "upgrade" ] 
+then case $cmd_first_option in
+txt|"narrowtxt"|"cli"|"cli*"|"gui"|"gui*"|"pdf"|"silent")
+$cmd_notinstalled upgrade ;;
+esac ; exit; fi
+####
+####
+####  alias esquive creating templates
 case "$cmd_first_option" in
 "wizard-full"|"wizard-mini"|"new-mini-custom"|"wizard-tiny"|\
 "new-full-custom"|"new-tiny-custom"|"new-mini-custom"|"nueva-diminuta-custom"|\
@@ -1242,6 +1257,12 @@ exit ;; esac ; fi
 if [ "$cmd_first_option" == "narrowtxt" ] ;then echo "$txt_head_waiting_narrow"
 ####
 ####
+#### requisite
+if   [ "$cmd_command_awk" == "$NULL" ]; then
+echo "$txt_text_title_fail [ Install awk command ]"; exit; fi
+####
+####
+#### rutine
 case $cmd_second_option in 
 ls*|list*) $cmd_internal $cmd_second_option | \
 $cmd_command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
@@ -2124,6 +2145,12 @@ exit; fi
 if   [ "$cmd_first_option" == "sockets" ]; then
 ####
 ####
+#### requisite
+if   [ "$cmd_command_awk" == "$NULL" ]; then
+echo "$txt_text_title_fail [ Install awk command ]"; exit; fi
+####
+####
+#### sockets
 echo "$txt_text_title_info [ Show whith ss: LISTEN sockets ] "
 if [ "$cmd_command_ss" == "$NULL" ]; then 
 echo "$txt_text_title_fail [ Install ss command ]"; exit; fi
@@ -2176,7 +2203,7 @@ exit; fi
 ####
 #### :rutina-final-info-ip6:
 ##########    expert-conf-clientproxy: get net info               ##########
-#### :rutina-inicial-expert-confclientproxy
+#### :rutina-inicial-expert-confclientproxy:
 ####
 ####
 if [ "$cmd_first_option" == "expert-conf-clientproxy" ]; then 
@@ -2216,9 +2243,9 @@ then $cmd_command_cat  \
 exit ; fi
 ####
 ####
-#### :rutina-final-expert-confclientproxy
+#### :rutina-final-expert-confclientproxy:
 ##########    expert-show-clientproxy: get net info               ##########
-#### :rutina-inicial-expert-showclientproxy
+#### :rutina-inicial-expert-showclientproxy:
 ####
 ####
 if [ "$cmd_first_option" == "expert-show-clientproxy" ]; then echo
@@ -2250,9 +2277,9 @@ echo ; $cmd_command_cat  "$cmd_default_directory_proxy/$cmd_second_option" ; exi
 exit ; fi
 ####
 ####
-#### :rutina-final-expert-showclientproxy
+#### :rutina-final-expert-showclientproxy:
 ##########    expert-active-clientproxy: get net info               ##########
-#### :rutina-inicial-expert-deactiveclientproxy
+#### :rutina-inicial-expert-deactiveclientproxy:
 ####
 ####
 if [ "$cmd_first_option" == "expert-active-clientproxy" ]; then echo
@@ -2276,9 +2303,9 @@ declare -x | grep -i \_PROXY
 exit ; fi
 ####
 ####
-#### :rutina-final-expert-activeclientproxy
+#### :rutina-final-expert-activeclientproxy:
 ##########    expert-deactive-clientproxy: get net info               ##########
-#### :rutina-inicial-expert-deactiveclientproxy
+#### :rutina-inicial-expert-deactiveclientproxy:
 ####
 ####
 if [ "$cmd_first_option" == "expert-deactive-clientproxy" ]; then echo
@@ -2305,9 +2332,9 @@ declare -x | grep -i \_PROXY
 exit ; fi
 ####
 ####
-#### :rutina-final-expert-deactiveclientproxy
+#### :rutina-final-expert-deactiveclientproxy:
 ##########    expert-show-resolve : get net info               ##########
-#### :rutina-inicial-expert-showresolve
+#### :rutina-inicial-expert-showresolve:
 ####
 ####
 if [ "$cmd_first_option" == "expert-show-resolve" ]; then echo
@@ -2330,7 +2357,7 @@ then echo "$txt_text_stitle [ yes directory ] [ /etc/resolvconf ]"      ; fi
 exit; fi
 ####
 ####
-#### :rutina-final-expert-showresolve
+#### :rutina-final-expert-showresolve:
 ##########    expert-trace-tcp4: traceroute with tcp and ipv4   ##########
 #### :rutina-inicial-expert-tracetcp4:
 ####
@@ -2619,7 +2646,7 @@ echo "$txt_text_md_md  $cmd_internal gui-shell-yad       $txt_text_md"
 exit; fi
 ####
 ####
-#### :rutina-inicial-options-examples:
+#### :rutina-final-options-examples:
 ##########    weather: show the weather with wttr.in     ##########
 #### :rutina-inicial-expert-showweather:
 ####
@@ -3348,28 +3375,28 @@ if [ "$cmd_first_option" == "options" ]; then
 ####
 #### list options
 echo "$txt_text_md $cmd_name [optional-output] first_option [second_option]"  
-echo "$txt_text_md ......optional-output                 "  
+echo "$txt_text_md ......optional-output"  
 echo "$txt_text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]"  
 echo "$txt_text_md [ cli-dialog cli-whiptail gui-zenity gui-yad ]"  
 echo "$txt_text_md [ cli-menu cli-menu-dialog cli-menu-whiptail ]"  
 echo "$txt_text_md [ gui-menu gui-menu-zenity gui-menu-yad gui-roll-zenity ]"  
 echo "$txt_text_md [ gui-shell gui-shell-zenity gui-shell-yad ]"  
-echo "$txt_text_md ......firewall-listconceptual         "  
+echo "$txt_text_md ......firewall-listconceptual"  
 echo "$txt_text_md ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6"  
 echo "$txt_text_md list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4"  
 echo "$txt_text_md list-security6 list-ebtables list-arptables list-alltables"  
-echo "$txt_text_md ......firewall-listnumeral            "  
+echo "$txt_text_md ......firewall-listnumeral"  
 echo "$txt_text_md lsn4 lsn6 statusn listn-filter4 listn-filter6 listn-nat4"  
 echo "$txt_text_md listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6"  
 echo "$txt_text_md listn-security4 listn-security6 listn-alltables"  
-echo "$txt_text_md ......firewall-wallcontrol            "  
+echo "$txt_text_md ......firewall-wallcontrol"  
 echo "$txt_text_md stop continue reset show save load names actual"  
 echo "$txt_text_md eraserules-all eraserules-arp eraserules-ebtables"   
 echo "$txt_text_md eraserules4 eraserules6 eraserules-nft eraserules-legacy"
 echo "$txt_text_md without-connection input-permisive input-established"  
 echo "$txt_text_md wizard-tiny wizard-mini wizard-full"  
 echo "$txt_text_md tinyserver-tcp tinyserver-udp"  
-echo "$txt_text_md ......firewall-walladdrule            "
+echo "$txt_text_md ......firewall-walladdrule"  
 echo "$txt_text_md add-localhost add-established all-output close-drop"    
 echo "$txt_text_md drop-send-ping drop-get-ping allow-send-ping allow-get-ping"  
 echo "$txt_text_md drop-port-tcp drop-port-udp allow-port-tcp allow-port-udp"   
@@ -3378,13 +3405,13 @@ echo "$txt_text_md drop-protocol allow-protocol add-shield-tcp drop-string"
 echo "$txt_text_md add-whitelist add-whitelist4 add-whitelist6"
 echo "$txt_text_md add-blacklist add-blacklist6 add-blacklist6"
 echo "$txt_text_md limit-minute del-commented"  
-echo "$txt_text_md ......firewall-wallcustom             "  
+echo "$txt_text_md ......firewall-wallcustom"  
 echo "$txt_text_md new-full-custom new-mini-custom new-tiny-custom "  
 echo "$txt_text_md wallinet-clone load-custom loadmini-custom loadtiny-custom"  
 echo "$txt_text_md list-custom show-custom modify-custom del-custom"  
-echo "$txt_text_md ......firewall-wallinet               "  
+echo "$txt_text_md ......firewall-wallinet"  
 echo "$txt_text_md wallinet-update wallinet-list wallinet-load wallinet-show"  
-echo "$txt_text_md ......firewall-wallutil               "
+echo "$txt_text_md ......firewall-wallutil"  
 echo "$txt_text_md preferences-edit alias-edit options info-options own-notes"  
 echo "$txt_text_md tree-cmd tree-pdf tree-log tree-conf tree-cache clean-cache"  
 echo "$txt_text_md ip4 ip6 route4 route6 info-ip4 info-ip6 info-nodes sockets"  
@@ -3842,7 +3869,6 @@ exit; fi
 ####
 #### :rutina-final-wallinet-show:
 ##########    options-expert: options for fwiptables firewall      ##########
-#### :rutina-inicial-options-expert:
 #### :rutina-inicial-expert:
 ####
 ####
@@ -3899,7 +3925,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-expert:
-#### :rutina-final-options-expert:
 ##########    info-options: options for fwiptables firewall      ##########
 #### :rutina-inicial-info-options:
 ####
@@ -3926,7 +3951,6 @@ exit; fi
 #### :rutina-final-info-options:
 ##########    optional-output: options for fwiptables firewall      ##########
 #### :rutina-inicial-optional-output:
-#### :rutina-inicial-parametters:
 ####
 ####
 if   [ "$cmd_first_option" == "optional-output" ]; then
@@ -3962,7 +3986,6 @@ echo "$txt_text_md_md gui-roll-zenity . output in grapicall roll with zenity $tx
 exit; fi
 ####
 ####
-#### :rutina-final-parametters:
 #### :rutina-final-optional-output:
 ##########    eraserules-all: Erase rules option   ##########
 #### :rutina-inicial-eraserules-all:
@@ -4473,7 +4496,6 @@ exit; fi
 #### :rutina-final-listn-alltables:
 ##########    list4: The list option   ##########
 #### :rutina-inicial-list4:
-#### :rutina-inicial-ls4:
 ####
 ####
 if [ "$cmd_first_option" == "list4" ]; then 
@@ -4513,11 +4535,9 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-ls4:
 #### :rutina-final-list4:
 ##########    list6: list ipv6 rules filter           ##########
 #### :rutina-inicial-list6:
-#### :rutina-inicial-ls6:
 ####
 ####
 if [ "$cmd_first_option" == "list6" ]; then  
@@ -4557,7 +4577,6 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-ls6:
 #### :rutina-final-list6:
 ##########    listn4: The list option   ##########
 #### :rutina-inicial-listn4:
@@ -5637,20 +5656,14 @@ if [ "$cmd_first_option" == "install" ]; then
 ####
 #### message
 echo "$txt_text_stitle Waiting several seconds, while update configuration"
-#### echo "$txt_text_stitle Updating configurations in [$cmd_default_root_home]"
 #### 
 #### 
-####  copy
+#### copy
+rm $cmd_installed &&
 cp $cmd_notinstalled $cmd_installed && 
 chmod 755 $cmd_installed &> /dev/null &&
-echo "$txt_text_md $txt_text_info Install File $cmd_name" &&
-echo "$txt_text_md $txt_text_file [$cmd_installed]" ||
+echo "$txt_text_md $txt_text_ok Install File $cmd_name" ||
 echo "$txt_text_md $txt_text_fail Not installed"
-####
-####
-#### folder
-echo "$txt_text_md $txt_text_info Update Folder $cmd_name" &&
-echo "$txt_text_md $txt_text_folder [$cmd_default_root_home]"
 ####
 ####
 #### preferences-regen
@@ -5671,15 +5684,19 @@ echo "$txt_text_md $txt_text_ok Updated alias" ||
 echo "$txt_text_md $txt_text_fail Not update alias"
 ####
 ####
-#### fonts
+#### source
 echo "$txt_text_md $txt_text_ok Source install from $cmd_notinstalled"
 ####
 ####
 #### comprobe
 if [ -f "$cmd_installed" ]
-then echo "$txt_text_md $txt_text_ok Installed $cmd_name in [$cmd_installed]"
+then echo "$txt_text_md $txt_text_file [$cmd_installed]"
 else echo "$txt_text_md $txt_text_fail Not installed $cmd_name"
 fi
+####
+####
+#### folder
+echo "$txt_text_md $txt_text_folder [$cmd_default_root_home]"
 #### 
 ####
 exit; fi
@@ -6633,7 +6650,7 @@ exit; fi
 ####
 #### :rutina-final-config-spa:
 ##########    add-whitelist: whitelist ipv4      ##########
-#### :rutina-inicial-add-whitelist
+#### :rutina-inicial-add-whitelist:
 ####
 ####
 if [ "$cmd_first_option" == "add-whitelist" ] ; then
@@ -6649,9 +6666,9 @@ $cmd_internal add-whitelist6 $2
 exit; fi
 ####
 ####
-#### :rutina-final-add-wihtelist
+#### :rutina-final-add-wihtelist:
 ##########    add-blacklist: blacklist ipv4      ##########
-#### :rutina-inicial-add-blacklist
+#### :rutina-inicial-add-blacklist:
 ####
 ####
 if [ "$cmd_first_option" == "add-blacklist" ] ; then
@@ -6668,9 +6685,9 @@ $cmd_internal add-blacklist6 $2
 exit; fi
 ####
 ####
-#### :rutina-final-add-blacklist
+#### :rutina-final-add-blacklist:
 ##########    add-whitelist4: whitelist ipv4      ##########
-#### :rutina-inicial-add-wihtelist4
+#### :rutina-inicial-add-wihtelist4:
 ####
 ####
 if [ "$cmd_first_option" == "add-whitelist4" ] ; then
@@ -6704,9 +6721,9 @@ done
 exit; fi
 ####
 ####
-#### :rutina-final-add-wihtelist4
+#### :rutina-final-add-wihtelist4:
 ##########    add-whitelist6: whitelist ipv6    ##########
-#### :rutina-inicial-add-wihtelist6
+#### :rutina-inicial-add-wihtelist6:
 ####
 ####
 if [ "$cmd_first_option" == "add-whitelist6" ] ; then
@@ -6740,9 +6757,9 @@ done
 exit; fi
 ####
 ####
-#### :rutina-final-add-wihtelist6
+#### :rutina-final-add-wihtelist6:
 ##########    add-blacklist4: blacklist ipv4      ##########
-#### :rutina-inicial-add-blacklist4
+#### :rutina-inicial-add-blacklist4:
 ####
 ####
 if [ "$cmd_first_option" == "add-blacklist4" ] ; then
@@ -6777,9 +6794,9 @@ done
 exit; fi
 ####
 ####
-#### :rutina-final-add-blacklist4
+#### :rutina-final-add-blacklist4:
 ##########    add-blacklist6: blacklist ipv6    ##########
-#### :rutina-inicial-add-blacklist6
+#### :rutina-inicial-add-blacklist6:
 ####
 ####
 if [ "$cmd_first_option" == "add-blacklist6" ] ; then
@@ -6814,9 +6831,9 @@ done
 exit; fi
 ####
 ####
-#### :rutina-final-add-blacklist6
+#### :rutina-final-add-blacklist6:
 ##########    add-localhost: add localhost      ##########
-#### :rutina-inicial-add-localhost
+#### :rutina-inicial-add-localhost:
 ####
 ####
 if [ "$cmd_first_option" == "add-localhost" ] ; then
@@ -6849,9 +6866,9 @@ $cmd_command_ip6tableslegacy -t filter -I OUTPUT 1 -s localhost -d localhost   \
 exit; fi
 ####
 ####
-#### :rutina-final-add-localhost
+#### :rutina-final-add-localhost:
 ##########    add-established: add stablished      ##########
-#### :rutina-inicial-add-established
+#### :rutina-inicial-add-established:
 ####
 ####
 if [ "$cmd_first_option" == "add-established" ] ; then
@@ -6876,9 +6893,9 @@ $cmd_command_ip6tableslegacy -t filter -A INPUT  -m state --state related,establ
 exit; fi
 ####
 ####
-#### :rutina-final-add-established
+#### :rutina-final-add-established:
 ##########    all-output: add all output      ##########
-#### :rutina-inicial-all-output
+#### :rutina-inicial-all-output:
 ####
 ####
 if [ "$cmd_first_option" == "all-output" ] ; then
@@ -6903,9 +6920,9 @@ $cmd_command_ip6tableslegacy -t filter -A OUTPUT \
 exit; fi
 ####
 ####
-#### :rutina-final-all-output
+#### :rutina-final-all-output:
 ##########    close-drop: add close drop      ##########
-#### :rutina-inicial-close-drop
+#### :rutina-inicial-close-drop:
 ####
 ####
 if [ "$cmd_first_option" == "close-drop" ] ; then
@@ -6938,9 +6955,9 @@ $cmd_command_ip6tableslegacy -t filter -A OUTPUT \
 exit; fi
 ####
 ####
-#### :rutina-final-close-drop
+#### :rutina-final-close-drop:
 ##########    add-shield-tcp4: add port shield to tcp ip4     ##########
-#### :rutina-inicial-add-shield-tcp4
+#### :rutina-inicial-add-shield-tcp4:
 ####
 ####
 if [ "$cmd_first_option" == "add-shield-tcp4" ] ; then
@@ -6972,9 +6989,9 @@ $cmd_command_ip4tablesnft  -t filter -I INPUT 2 -p tcp -m multiport --dports $ad
 exit; fi
 ####
 ####
-#### :rutina-final-add-shield-tcp4
+#### :rutina-final-add-shield-tcp4:
 ##########    add-shield-tcp6: add port shield to tcp ip4     ##########
-#### :rutina-inicial-add-shield-tcp6
+#### :rutina-inicial-add-shield-tcp6:
 ####
 ####
 if [ "$cmd_first_option" == "add-shield-tcp6" ] ; then
@@ -7006,9 +7023,9 @@ $cmd_command_ip6tablesnft  -t filter -I INPUT 2 -p tcp -m multiport --dports $ad
 exit; fi
 ####
 ####
-#### :rutina-final-add-shield-tcp6
+#### :rutina-final-add-shield-tcp6:
 ##########    return-port-tcp: add port to tcp ip4      ##########
-#### :rutina-inicial-return-port-tcp
+#### :rutina-inicial-return-port-tcp:
 ####
 ####
 if [ "$cmd_first_option" == "return-port-tcp" ] ; then
@@ -7022,9 +7039,9 @@ $cmd_internal return-port-tcp6 $2
 exit; fi
 ####
 ####
-#### :rutina-final-return-port-tcp
+#### :rutina-final-return-port-tcp:
 ##########    log-port-tcp: add port to tcp ip4      ##########
-#### :rutina-inicial-log-port-tcp
+#### :rutina-inicial-log-port-tcp:
 ####
 ####
 if [ "$cmd_first_option" == "log-port-tcp" ] ; then
@@ -7038,9 +7055,9 @@ $cmd_internal log-port-tcp6 $2
 exit; fi
 ####
 ####
-#### :rutina-final-return-log-tcp
+#### :rutina-final-return-log-tcp:
 ##########    log-port-udp: add port to udp ip4      ##########
-#### :rutina-inicial-log-port-udp
+#### :rutina-inicial-log-port-udp:
 ####
 ####
 if [ "$cmd_first_option" == "log-port-udp" ] ; then
@@ -7054,9 +7071,9 @@ $cmd_internal log-port-udp6 $2
 exit; fi
 ####
 ####
-#### :rutina-final-return-log-tcp
+#### :rutina-final-log-port-udp:
 ##########    return-port-udp: add port to tcp ip4      ##########
-#### :rutina-inicial-return-port-udp
+#### :rutina-inicial-return-port-udp:
 ####
 ####
 if [ "$cmd_first_option" == "return-port-udp" ] ; then
@@ -7070,9 +7087,9 @@ $cmd_internal return-port-udp6 $2
 exit; fi
 ####
 ####
-#### :rutina-final-return-port-udp
+#### :rutina-final-return-port-udp:
 ##########    del-commented: del rule for commented     ##########
-#### :rutina-inicial-add-shield-tcp
+#### :rutina-inicial-del-commented:
 ####
 ####
 if [ "$cmd_first_option" == "del-commented" ] ; then
@@ -7117,9 +7134,9 @@ fi
 exit; fi
 ####
 ####
-#### :rutina-final-del-commented
+#### :rutina-final-del-commented:
 ##########    drop-string: drop package with string     ##########
-#### :rutina-inicial-drop-string
+#### :rutina-inicial-drop-string:
 ####
 ####
 if [ "$cmd_first_option" == "drop-string" ] ; then
@@ -7155,9 +7172,9 @@ $cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 \
 exit; fi
 ####
 ####
-#### :rutina-final-drop-string
+#### :rutina-final-drop-string:
 ##########    limit-minute: limit package with each minute     ##########
-#### :rutina-inicial-limit-minute
+#### :rutina-inicial-limit-minute:
 ####
 ####
 if [ "$cmd_first_option" == "limit-minute" ] ; then
@@ -7196,9 +7213,9 @@ $cmd_command_ip6tableslegacy -t filter -I OUTPUT 2 \
 exit; fi
 ####
 ####
-#### :rutina-final-limit-minute
+#### :rutina-final-limit-minute:
 ##########    add-shield-tcp: add port shield to tcp ip4     ##########
-#### :rutina-inicial-add-shield-tcp
+#### :rutina-inicial-add-shield-tcp:
 ####
 ####
 if [ "$cmd_first_option" == "add-shield-tcp" ] ; then
@@ -7212,9 +7229,9 @@ $cmd_internal add-shield-tcp6 $2
 exit; fi
 ####
 ####
-#### :rutina-final-add-shield-tcp
+#### :rutina-final-add-shield-tcp:
 ##########    allow-port-tcp: add port to tcp ip4      ##########
-#### :rutina-inicial-allow-port-tcp
+#### :rutina-inicial-allow-port-tcp:
 ####
 ####
 if [ "$cmd_first_option" == "allow-port-tcp" ] ; then
@@ -7228,9 +7245,9 @@ $cmd_internal allow-port-tcp6 $2
 exit; fi
 ####
 ####
-#### :rutina-final-allow-port-tcp
+#### :rutina-final-allow-port-tcp:
 ##########    drop-port-tcp: add port to tcp ip4      ##########
-#### :rutina-inicial-allow-port-tcp
+#### :rutina-inicial-drop-port-tcp:
 ####
 ####
 if [ "$cmd_first_option" == "drop-port-tcp" ] ; then
@@ -7244,9 +7261,9 @@ $cmd_internal drop-port-tcp6 $2
 exit; fi
 ####
 ####
-#### :rutina-final-drop-port-tcp
+#### :rutina-final-drop-port-tcp:
 ##########    allow-port-udp: add port to tcp ip4      ##########
-#### :rutina-inicial-allow-port-udp
+#### :rutina-inicial-allow-port-udp:
 ####
 ####
 if [ "$cmd_first_option" == "allow-port-udp" ] ; then
@@ -7263,9 +7280,9 @@ $cmd_internal allow-port-udp6 $2
 exit; fi
 ####
 ####
-#### :rutina-final-allow-port-udp
+#### :rutina-final-allow-port-udp:
 ##########    drop-port-udp: add port to tcp ip4      ##########
-#### :rutina-inicial-allow-port-udp
+#### :rutina-inicial-drop-port-udp:
 ####
 ####
 if [ "$cmd_first_option" == "drop-port-udp" ] ; then
@@ -7279,9 +7296,9 @@ $cmd_internal drop-port-udp6 $2
 exit; fi
 ####
 ####
-#### :rutina-final-drop-port-udp
+#### :rutina-final-drop-port-udp:
 ##########    return-port-tcp4: return port to tcp ip4      ##########
-#### :rutina-inicial-return-port-tcp4
+#### :rutina-inicial-return-port-tcp4:
 ####
 ####
 if [ "$cmd_first_option" == "return-port-tcp4" ] ; then
@@ -7312,9 +7329,9 @@ echo "$txt_text_tile_done return port tcp4"
 exit; fi
 ####
 ####
-#### :rutina-final-return-port-tcp4
+#### :rutina-final-return-port-tcp4:
 ##########    return-port-tcp6: return port to tcp ip6      ##########
-#### :rutina-inicial-return-port-tcp6
+#### :rutina-inicial-return-port-tcp6:
 ####
 ####
 if [ "$cmd_first_option" == "return-port-tcp6" ] ; then
@@ -7345,9 +7362,9 @@ echo "$txt_text_tile_done return port tcp6"
 exit; fi
 ####
 ####
-#### :rutina-final-return-port-tcp6
+#### :rutina-final-return-port-tcp6:
 ##########    return-port-udp4: return port to udp ip4      ##########
-#### :rutina-inicial-return-port-udp4
+#### :rutina-inicial-return-port-udp4:
 ####
 ####
 if [ "$cmd_first_option" == "return-port-udp4" ] ; then
@@ -7378,9 +7395,9 @@ echo "$txt_text_tile_done return port udp4"
 exit; fi
 ####
 ####
-#### :rutina-final-return-port-udp4
+#### :rutina-final-return-port-udp4:
 ##########    return-port-udp6: return port to udp ip6      ##########
-#### :rutina-inicial-return-port-udp6
+#### :rutina-inicial-return-port-udp6:
 ####
 ####
 if [ "$cmd_first_option" == "return-port-udp6" ] ; then
@@ -7411,9 +7428,9 @@ echo "$txt_text_tile_done return port udp6"
 exit; fi
 ####
 ####
-#### :rutina-final-return-port-udp6
+#### :rutina-final-return-port-udp6:
 ##########    log-port-tcp4: log port to tcp ip4      ##########
-#### :rutina-inicial-log-port-tcp4
+#### :rutina-inicial-log-port-tcp4:
 ####
 ####
 if [ "$cmd_first_option" == "log-port-tcp4" ] ; then
@@ -7444,9 +7461,9 @@ echo "$txt_text_tile_done log port tcp4"
 exit; fi
 ####
 ####
-#### :rutina-final-log-port-tcp4
+#### :rutina-final-log-port-tcp4:
 ##########    log-port-tcp6: log port to tcp ip6      ##########
-#### :rutina-inicial-log-port-tcp6
+#### :rutina-inicial-log-port-tcp6:
 ####
 ####
 if [ "$cmd_first_option" == "log-port-tcp6" ] ; then
@@ -7477,9 +7494,9 @@ echo "$txt_text_tile_done log port tcp6"
 exit; fi
 ####
 ####
-#### :rutina-final-log-port-tcp6
+#### :rutina-final-log-port-tcp6:
 ##########    log-port-udp4: log port to udp ip4      ##########
-#### :rutina-inicial-log-port-udp4
+#### :rutina-inicial-log-port-udp4:
 ####
 ####
 if [ "$cmd_first_option" == "log-port-udp4" ] ; then
@@ -7510,9 +7527,9 @@ echo "$txt_text_tile_done log port udp4"
 exit; fi
 ####
 ####
-#### :rutina-final-log-port-udp4
+#### :rutina-final-log-port-udp4:
 ##########    log-port-udp6: return port to udp ip6      ##########
-#### :rutina-inicial-log-port-udp6
+#### :rutina-inicial-log-port-udp6:
 ####
 ####
 if [ "$cmd_first_option" == "log-port-udp6" ] ; then
@@ -7543,9 +7560,9 @@ echo "$txt_text_tile_done log port udp6"
 exit; fi
 ####
 ####
-#### :rutina-final-log-port-udp6
+#### :rutina-final-log-port-udp6:
 ##########    allow-port-tcp4: add port to tcp ip4      ##########
-#### :rutina-inicial-allow-port-tcp4
+#### :rutina-inicial-allow-port-tcp4:
 ####
 ####
 if [ "$cmd_first_option" == "allow-port-tcp4" ] ; then
@@ -7576,9 +7593,9 @@ echo "$txt_text_tile_done allow port tcp4"
 exit; fi
 ####
 ####
-#### :rutina-final-allow-port-tcp4
+#### :rutina-final-allow-port-tcp4:
 ##########    allow-port-tcp6: add port to tcp ip6      ##########
-#### :rutina-inicial-allow-port-tcp6
+#### :rutina-inicial-allow-port-tcp6:
 ####
 ####
 if [ "$cmd_first_option" == "allow-port-tcp6" ] ; then
@@ -7609,9 +7626,9 @@ echo "$txt_text_tile_done allow port tcp6"
 exit; fi
 ####
 ####
-#### :rutina-final-allow-port-tcp6
+#### :rutina-final-allow-port-tcp6:
 ##########    drop-port-tcp4: add port to tcp ip4      ##########
-#### :rutina-inicial-drop-port-tcp4
+#### :rutina-inicial-drop-port-tcp4:
 ####
 ####
 if [ "$cmd_first_option" == "drop-port-tcp4" ] ; then
@@ -7642,9 +7659,9 @@ echo "$txt_text_tile_done drop port tcp4"
 exit; fi
 ####
 ####
-#### :rutina-final-drop-port-tcp4
+#### :rutina-final-drop-port-tcp4:
 ##########    drop-port-tcp6: add port to tcp ip6      ##########
-#### :rutina-inicial-drop-port-tcp6
+#### :rutina-inicial-drop-port-tcp6:
 ####
 ####
 if [ "$cmd_first_option" == "drop-port-tcp6" ] ; then
@@ -7675,9 +7692,9 @@ echo "$txt_text_tile_done drop port tcp6"
 exit; fi
 ####
 ####
-#### :rutina-final-drop-port-tcp6
+#### :rutina-final-drop-port-tcp6:
 ##########    allow-port-udp4: add port to tcp ip4      ##########
-#### :rutina-inicial-allow-port-udp4
+#### :rutina-inicial-allow-port-udp4:
 ####
 ####
 if [ "$cmd_first_option" == "allow-port-udp4" ] ; then
@@ -7708,9 +7725,9 @@ echo "$txt_text_tile_done allow port udp4"
 exit; fi
 ####
 ####
-#### :rutina-final-allow-port-udp4
+#### :rutina-final-allow-port-udp4:
 ##########    allow-port-udp6: add port to tcp ip6      ##########
-#### :rutina-inicial-allow-port-udp6
+#### :rutina-inicial-allow-port-udp6:
 ####
 ####
 if [ "$cmd_first_option" == "allow-port-udp6" ] ; then
@@ -7741,9 +7758,9 @@ echo "$txt_text_tile_done allow port udp6"
 exit; fi
 ####
 ####
-#### :rutina-final-allow-port-tcp6
+#### :rutina-final-allow-port-udp6:
 ##########    drop-port-udp4: add port to tcp ip4      ##########
-#### :rutina-inicial-drop-port-udp4
+#### :rutina-inicial-drop-port-udp4:
 ####
 ####
 if [ "$cmd_first_option" == "drop-port-udp4" ] ; then
@@ -7774,9 +7791,9 @@ echo "$txt_text_tile_done drop port udp4"
 exit; fi
 ####
 ####
-#### :rutina-final-drop-port-udp4
+#### :rutina-final-drop-port-udp4:
 ##########    drop-port-udp6: add port to tcp ip6      ##########
-#### :rutina-inicial-drop-port-udp6
+#### :rutina-inicial-drop-port-udp6:
 ####
 ####
 if [ "$cmd_first_option" == "drop-port-udp6" ] ; then
@@ -7807,9 +7824,9 @@ echo "$txt_text_tile_done drop port udp6"
 exit; fi
 ####
 ####
-#### :rutina-final-drop-port-udp6
+#### :rutina-final-drop-port-udp6:
 ##########    allow-send-ping: allow send ping      ##########
-#### :rutina-inicial-allow-send-ping
+#### :rutina-inicial-allow-send-ping:
 ####
 ####
 if [ "$cmd_first_option" == "allow-send-ping" ] ; then
@@ -7850,9 +7867,9 @@ echo "$txt_text_tile_done allow send ping"
 exit; fi
 ####
 ####
-#### :rutina-final-allow-send-ping
+#### :rutina-final-allow-send-ping:
 ##########    allow-get-ping: allow recv ping      ##########
-#### :rutina-inicial-allow-get-ping
+#### :rutina-inicial-allow-get-ping:
 ####
 ####
 if [ "$cmd_first_option" == "allow-get-ping" ] ; then
@@ -7893,9 +7910,9 @@ echo "$txt_text_tile_done allow recive ping"
 exit; fi
 ####
 ####
-#### :rutina-final-allow-get-ping
+#### :rutina-final-allow-get-ping:
 ##########    drop-send-ping: drop send ping      ##########
-#### :rutina-inicial-drop-send-ping
+#### :rutina-inicial-drop-send-ping:
 ####
 ####
 if [ "$cmd_first_option" == "drop-send-ping" ] ; then
@@ -7936,9 +7953,9 @@ echo "$txt_text_tile_done drop send ping"
 exit; fi
 ####
 ####
-#### :rutina-final-drop-send-ping
+#### :rutina-final-drop-send-ping:
 ##########    allow-drop-ping: drop recive ping      ##########
-#### :rutina-inicial-drop-get-ping
+#### :rutina-inicial-drop-get-ping:
 ####
 ####
 if [ "$cmd_first_option" == "drop-get-ping" ] ; then
@@ -7979,9 +7996,9 @@ echo "$txt_text_tile_done drop recive ping"
 exit; fi
 ####
 ####
-#### :rutina-final-drop-get-ping
+#### :rutina-final-drop-get-ping:
 ##########    allow-protocol: allow protocol       ##########
-#### :rutina-inicial-allow-protocol
+#### :rutina-inicial-allow-protocol:
 ####
 ####
 if [ "$cmd_first_option" == "allow-protocol" ] ; then
@@ -8014,9 +8031,9 @@ echo "$txt_text_tile_done allow protocol"
 exit; fi
 ####
 ####
-#### :rutina-final-allow-protocol
+#### :rutina-final-allow-protocol:
 ##########    drop-protocol: drop protocol       ##########
-#### :rutina-inicial-drop-protocol
+#### :rutina-inicial-drop-protocol:
 ####
 ####
 if [ "$cmd_first_option" == "drop-protocol" ] ; then
@@ -8049,7 +8066,7 @@ echo "$txt_text_tile_done drop protocol"
 exit; fi
 ####
 ####
-#### :rutina-final-drop-protocol
+#### :rutina-final-drop-protocol:
 ##########    speed-ip4: speed from internet        #########
 #### :rutina-inicial-speed-ip4:
 ####
@@ -8125,26 +8142,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-speed-ip6:
-##########    sockets: The sockets option  ##########
-#### :rutina-inicial-sockets:
-####
-####
-if   [ "$cmd_first_option" == "sockets" ]; then
-####
-####
-echo "$txt_text_title_info [ Show whith ss: LISTEN sockets ] "
-if [ "$cmd_command_ss" == "$NULL" ]; then 
-echo "$txt_text_title_fail [ Install ss command ]"; exit; fi
-if [ "$cmd_command_awk" == "$NULL" ]; then 
-echo "$txt_text_title_fail [ Install awk command ]"; exit; fi
-$cmd_command_ss -l -460  | $cmd_command_grep "\:\*" | \
-$cmd_command_awk '{print "     " $1 " " $2 " " $5}' ;
-####
-####
-exit; fi
-####
-####
-#### :rutina-final-sockets:
 ##########    web: browse the   web ##########
 #### :rutina-inicial-web:
 ####
@@ -8189,8 +8186,6 @@ if   [ "$cmd_first_option" == "expert-sockets-ss" ]; then
 echo "$txt_text_title_info [ Show whith ss: sockets ] "
 if [ "$cmd_command_ss" == "$NULL" ]; then 
 echo "$txt_text_title_fail [ Install ss command ]"; exit; fi
-#### if [ "$cmd_command_awk" == "$NULL" ]; then 
-#### echo "$txt_text_title_fail [ Install awk command ]"; exit; fi
 echo "$txt_text_stitle sockets ipv4"
 $cmd_command_ss -4
 $cmd_command_ss -l4
@@ -8231,8 +8226,6 @@ if   [ "$cmd_first_option" == "expert-sockets-netstat" ]; then
 echo "$txt_text_title_info [ Show whith lsof: sockets ] "
 if [ "$cmd_command_lsof" == "$NULL" ]; then 
 echo "$txt_text_title_fail [ Install lsof command ]"; exit; fi
-#### if [ "$cmd_command_awk" == "$NULL" ]; then 
-#### echo "$txt_text_title_fail [ Install awk command ]"; exit; fi
 $cmd_command_netstat -l46
 ####
 ####
