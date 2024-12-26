@@ -3442,21 +3442,20 @@ if   [ "$cmd_first_option" == "code" ];  then
 #### show code 
 echo "$txt_text_title_info  [ Show source code for each option ] "
 echo "$txt_text_title_info [ code ] [ show source code for options from $cmd_internal ]"
-code_error="$txt_text_title_info [ Usage ] [ $cmd_internal code option_choosed ]"
-if [ "$cmd_second_option" == "$NULL" ]; then echo "$code_error"
-salida_code="$($cmd_command_cat  $cmd_internal | $cmd_command_grep -i  rutina-inicial \
-| $cmd_command_grep -i -v $cmd_command_cat  | $cmd_command_sed -s s/####\ :rutina-inicial-//g | \
-sort | $cmd_command_sed -s s/://g )"
-echo $salida_code
+value_error="$txt_text_title_info [ Usage ] [ $cmd_internal code option_choosed ]"
+if [ "$cmd_second_option" == "$NULL" ]; then echo "$value_error"
+value_code="$($cmd_command_cat $cmd_internal | $cmd_command_grep -i rutina-inicial | \
+$cmd_command_sed 's/####\ :rutina-inicial-//g' | sort | $cmd_command_sed -s s/://g | grep -iv value_)"
+echo $value_code
 exit ; fi
 value_first="$($cmd_command_cat  -n $cmd_internal | $cmd_command_grep  :rutina-inicial-$2: | \
 $cmd_command_cut -d "#" -f 1 | head -1)"
 value_second="$($cmd_command_cat  -n $cmd_internal | $cmd_command_grep :rutina-final-$2:  | \
 $cmd_command_cut -d "#" -f 1 | head -1)"
 value_count="$(("$value_second"-"$value_first+1"))"
-if [ ! -n "$value_first" ];   then echo; echo "$code_error" ; exit ; fi
-if [ ! -n "$value_second" ];  then echo; echo "$code_error" ; exit ; fi
-if [ ! -n "$value_count" ];   then echo; echo "$code_error" ; exit ; fi
+if [ ! -n "$value_first" ];   then echo; echo "$value_error" ; exit ; fi
+if [ ! -n "$value_second" ];  then echo; echo "$value_error" ; exit ; fi
+if [ ! -n "$value_count" ];   then echo; echo "$value_error" ; exit ; fi
 echo "$txt_text_stitle [ code ] [ option: "$cmd_second_option" ] [ show $value_count lines ] \
 [ from the "$value_first" line number to "$value_second" line number ]"
 $cmd_command_cat  $cmd_internal | head -n $value_second | tail -n $value_count
