@@ -1098,18 +1098,23 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ####
 #### :rutina-final-alias-system-interface:
 ##########    LABEL
-#### :rutina-inicial-label:
+#### :rutina-inicial-show-label:
 ####
 ####
 #### label option
 if [ "$cfg_allow_show_label" == "$NULL" ] ; then echo "$cmd_list_option" ; fi
 ####
 ####
-#### label time
+#### :rutina-final-show-label:
+##########    TIME
+#### :rutina-inicial-show-time:
+####
+####
+#### show time
 if [ "$cfg_allow_show_time" == "$NULL" ] ; then echo "$cfg_config_show_time" ; fi
 ####
 ####
-#### :rutina-final-label:
+#### :rutina-final-show-time:
 ##########    ALIAS CONFIG
 #### :rutina-inicial-drop-warning:
 ####
