@@ -506,11 +506,11 @@ exit; fi ; done
 #### Prepare directory config and directory cache
 ####
 ####
-cmd_default_root_home="/etc/fwiptables/config/$cmd_version"
+cmd_default_config_home="/etc/fwiptables/config/$cmd_version"
 cmd_default_cache_home="/etc/fwiptables/cache/$cmd_version"
 ####
 ####
-#### #### variables tree and cache ####
+#### #### variables tree and variables cache ####
 ####
 ####
 #### cache root
@@ -520,10 +520,10 @@ cmd_default_cache_atemp="$cmd_default_cache_home/ATEMP"
 ####
 ####
 #### config root
-cmd_default_directory_necesary="$cmd_default_root_home"
+cmd_default_directory_necesary="$cmd_default_config_home"
 ####
 ####
-#### directory base
+#### config base
 cmd_default_directory_template="$cmd_default_directory_necesary/fwiptables-templates"
 cmd_default_directory_control="$cmd_default_directory_necesary/fwiptables-control"
 cmd_default_directory_custom="$cmd_default_directory_necesary/fwiptables-custom"
@@ -5694,7 +5694,8 @@ fi
 ####
 ####
 #### folder
-echo "$txt_text_md $txt_text_folder [$cmd_default_root_home]"
+echo "$txt_text_md $txt_text_folder [$cmd_default_config_home]"
+echo "$txt_text_md $txt_text_folder [$cmd_default_cache_home]"
 #### 
 ####
 exit; fi
