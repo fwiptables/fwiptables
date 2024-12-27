@@ -47,6 +47,7 @@
 if [ "$(id -u)" != "0" ] ; then echo ; echo
 ####
 ####
+#### root needed
 echo "### $txt_text_fail [ fwiptables needs root to work ]"
 echo "### $txt_text_info [ Try with root user ]" ; echo
 ####
@@ -100,8 +101,8 @@ cmd_released="Year 20$cmd_year / Month $cmd_month"            # Source date vers
 #### The data version firewall
 cmd_developer="Francisco Garcia"                              # Actual developer
 cmd_contact="fwiptables@gmx.com"                              # Actual contact
-cmd_shortdescription="FireWall With iptables"                 # Description short
-cmd_longdescription="iptables templates in one script"        # Description long
+cmd_shortdescription="FireWall With IPTABLES"                 # Description short
+cmd_longdescription="Iptables templates in one script"        # Description long
 cmd_requisite_program="cat,cut,date,file,id,sed,sort"         # Program requisite
 cmd_requisite_firewall4="iptables-legacy,iptables-nft"        # Firewall requisite
 cmd_requisite_firewall6="ip6tables-legacy,ip6tables-nft"      # Firewall requisite
