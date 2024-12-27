@@ -418,6 +418,7 @@ txt_text_ok="<  ok  >"
 txt_text_info="< info >"
 txt_text_fail="< fail >"
 txt_text_file="< file >"
+txt_text_exec="< exec >"
 txt_text_done="< done >"
 txt_text_folder="<folder>"
 txt_text_md_md="$txt_text_md $txt_text_md"
@@ -5680,14 +5681,14 @@ echo "$txt_text_md $txt_text_fail Not update alias"
 echo "$txt_text_md $txt_text_ok Source install from $cmd_notinstalled"
 ####
 ####
-#### comprobe
+#### show exec
 if [ -f "$cmd_installed" ]
-then echo "$txt_text_md $txt_text_file [$cmd_installed]"
+then echo "$txt_text_md $txt_text_exec [$cmd_installed]"
 else echo "$txt_text_md $txt_text_fail Not installed $cmd_name"
 fi
 ####
 ####
-#### folder
+#### show each folder
 echo "$txt_text_md $txt_text_folder [$cmd_default_config_home]"
 echo "$txt_text_md $txt_text_folder [$cmd_default_cache_home]"
 #### 
