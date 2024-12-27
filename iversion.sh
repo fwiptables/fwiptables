@@ -14487,15 +14487,9 @@ echo "$txt_text_title_ok [ Launched: firewall ] \
 ####
 #### :rutina-final-code-wizard:
 #######################
-####     left script
-#######################
-####
-####
 #######################          End of script
 ####    
-####
-####    ### Git mini tutorial: with fwiptables.
-####
+####    ##### Git mini tutorial: with fwiptables.
 ####
 ####    # Download repository: With clone/pull/fetch https:// or ssh://
 ####
@@ -14512,16 +14506,16 @@ echo "$txt_text_title_ok [ Launched: firewall ] \
 ####    git commit -a OR git commit -a -m change-done
 ####    Upload files to repository from local repository:
 ####    git push ssh://f-iptables@git.code.sf.net/p/f-iptables/code
-####
+####    git push http://f-iptables@git.code.sf.net/p/f-iptables/code
 ####
 ####    # Create repository local: with folder /var/git/repository.localhost
 ####
-####    mkdir /var/git/repository.localhost
-####    cd /var/git/repository.localhost
+####    mkdir /var/git/repository-localhost
+####    cd /var/git/repository-localhost
 ####    git init --bare
-####    chmod user /var/git/repository.localhost -R
+####    chmod user:group /var/git/repository-localhost -R
+####    chown 744 /var/git/repository-localhost -R
 ####    service ssh start or systemctl restart ssh
-####
 ####
 #######################
 #######################
