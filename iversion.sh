@@ -330,7 +330,8 @@ cfg_allow_output_state="no"
 cfg_allow_output_uid="no"     
 cfg_allow_save_logcmd=""          
 cfg_allow_separate_rules=""        
-cfg_allow_shield_maxtries="no"    
+cfg_allow_shield_maxtries="no"
+cfg_allow_show_label=""
 cfg_allow_show_option="no"  
 cfg_allow_show_time="no"
 cfg_allow_string_allowed="no"   
@@ -713,14 +714,7 @@ cmd_first_option="$cfg_config_without_firstoption" ; fi
 if [ "$cmd_first_option" = "$NULL" ] && [ "$cfg_config_without_firstoption" != "options" ]; then
 echo "### $txt_text_info [ Default Option: $cfg_config_without_firstoption ] [ List Options: options ]"
 cmd_first_option="$cfg_config_without_firstoption" ; fi
-####
-####
-#### label option
-echo "$cmd_list_option"
-####
-####
-#### label time
-if [ "$cfg_allow_show_time" == "" ] ; then echo "$cfg_config_show_time" ; fi
+
 ####
 ####
 #### configure expert
@@ -1103,6 +1097,19 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ####
 ####
 #### :rutina-final-alias-system-interface:
+##########    LABEL
+#### :rutina-inicial-label:
+####
+####
+#### label option
+if [ "$cfg_allow_show_label" == "$NULL" ] ; then echo "$cmd_list_option" ; fi
+####
+####
+#### label time
+if [ "$cfg_allow_show_time" == "$NULL" ] ; then echo "$cfg_config_show_time" ; fi
+####
+####
+#### :rutina-final-label:
 ##########    ALIAS CONFIG
 #### :rutina-inicial-drop-warning:
 ####
