@@ -5,7 +5,7 @@
 #### #### #### #### #!/usr/bin/bash
 ####
 #### #### #### #### for shell zsh:
-#### #### #### #### #!/bin/zsh
+#### #### #### #### #!/usr/bin/zsh
 #### #### #### #### emulate -L bash
 ####
 #### File:        fwiptables
@@ -283,11 +283,9 @@ cmd_command_traceroute="$($cmd_where traceroute)"
 cmd_command_tree="$($cmd_where tree)"
 cmd_command_txt2html="$($cmd_where txt2html)"
 cmd_command_uname="$($cmd_where uname)"
-cmd_command_uniq="$($cmd_where uniq)"
 cmd_command_uuid="$($cmd_where uuid)"
 cmd_command_vi="$($cmd_where vi)"
 cmd_command_vim="$($cmd_where vim)"
-cmd_command_vlc="$($cmd_where vlc) -I dummy -d"
 cmd_command_w3m="$($cmd_where w3m)"
 cmd_command_wget="$($cmd_where wget)"
 cmd_command_whiptail="$($cmd_where whiptail)"
@@ -468,7 +466,6 @@ txt_message_without_guiroll="$txt_text_title_fail [ install zenity ]"
 ####
 #### system emulate command tree with command ls
 if [ "$cmd_command_tree" == "$NULL" ]; then cmd_command_tree="$cmd_command_ls"; fi
-if [ "$cmd_command_uniq" == "$NULL" ]; then cmd_command_uniq="$cmd_command_ls"; fi
 ####
 ####
 #### system requisite utils
@@ -510,7 +507,7 @@ cmd_default_config_home="/etc/fwiptables/config/$cmd_version"
 cmd_default_cache_home="/etc/fwiptables/cache/$cmd_version"
 ####
 ####
-#### #### variables tree and variables cache ####
+#### #### directory tree and directory cache ####
 ####
 ####
 #### cache root
@@ -543,7 +540,7 @@ cmd_default_directory_readme="$cmd_default_directory_necesary/fwiptables-readme"
 cmd_default_directory_upgrade="$cmd_default_directory_necesary/fwiptables-upgrade"
 cmd_default_directory_wallinet="$cmd_default_directory_necesary/fwiptables-wallinet"
 ####
-#### directory date
+#### config dated
 cmd_default_directory_logs="$cmd_default_directory_necesary/fwiptables-log/$cmd_archive_date"
 cmd_default_directory_pdf="$cmd_default_directory_necesary/fwiptables-pdf/$cmd_archive_date"
 cmd_default_directory_logcmd="$cmd_default_directory_necesary/fwiptables-logcmd/$cmd_archive_date"
@@ -665,12 +662,10 @@ cmd_file_blacklist_stevenblack=\
 #### :rutina-inicial-xhost:
 ####
 ####
-#### allow root launch gui graphical in X11 with xhost
-####
-####
 if [ "$(logname)" != "$NULL" ] && [ "$(id -u)" == 0 ]; then
 ####
 ####
+#### allow root launch gui graphical in X11 with the auth from xhost
 if [ "$cmd_command_sudo" != "$NULL" ]; then
 $cmd_command_sudo -u "$(logname)" $cmd_command_xhost +SI:localuser:root &> /dev/null
 else $cmd_command_sudo -u 0 $cmd_command_xhost +SI:localuser:root &> /dev/null
@@ -744,10 +739,10 @@ exit ;; esac ; fi
 #### :rutina-inicial-favorite-date:
 ####
 ####
-#### configure favorite date
 if [ "$cfg_favorite_date_command" == "$NULL" ]; then
 ####
 ####
+#### configure favorite date
 if [ "$cmd_command_rdate"   != "$NULL" ]; then
 cfg_favorite_date_command="$cmd_command_rdate -4 -a -n"  ; fi
 if [ "$cmd_command_sntp"    != "$NULL" ]; then
@@ -764,10 +759,10 @@ fi
 #### :rutina-inicial-favorite-editor:
 ####
 ####
-#### configure text editor
 if [ "$cfg_favorite_text_editor" == "$NULL" ]; then
 ####
 ####
+#### configure text editor
 if [ "$cmd_command_vi"  != "$NULL" ]  ; then    
 cfg_favorite_text_editor="$cmd_command_vi"      ; fi
 if [ "$cmd_command_vim"  != "$NULL" ]  ; then   
@@ -788,16 +783,17 @@ fi
 #### :rutina-inicial-favorite-dialog:
 ####
 ####
-#### configure favorite dialog cli text
 if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then
 ####
 ####
+#### configure favorite dialog cli text
 if [ "$cmd_command_dialog"  != "$NULL" ]  ; then  
 cfg_favorite_realpath_textdialog="$cmd_command_dialog"
 cfg_favorite_basename_textdialog="$(basename $cmd_command_dialog)"
 fi
 ####
 ####
+#### configure favorite dialog cli text
 if [ "$cmd_command_whiptail" != "$NULL" ] ; then  
 cfg_favorite_realpath_textdialog="$cmd_command_whiptail"
 cfg_favorite_basename_textdialog="$(basename $cmd_command_whiptail)"
@@ -812,16 +808,17 @@ fi
 #### :rutina-inicial-favorite-graphicall:
 ####
 ####
-#### configure favorite graphicall gui
 if [ "$cfg_favorite_realpath_graphicalldialog" == "$NULL" ]; then
 ####
 ####
+#### configure favorite graphicall gui
 if [ "$cmd_command_zenity"  != "$NULL" ] ; then  
 cfg_favorite_realpath_graphicalldialog="$cmd_command_zenity"
 cfg_favorite_basename_graphicalldialog="$(basename $cmd_command_zenity)"
 fi
 ####
 ####
+#### configure favorite graphicall gui
 if [ "$cmd_command_yad"     != "$NULL" ] ; then  
 cfg_favorite_realpath_graphicalldialog="$cmd_command_yad"
 cfg_favorite_basename_graphicalldialog="$(basename $cmd_command_yad)"
@@ -836,10 +833,10 @@ fi
 #### :rutina-inicial-favorite-browser:
 ####
 ####
-#### configure favorite browser text
 if [ "$cfg_favorite_text_browser" == "$NULL" ]; then
 ####
 ####
+#### configure favorite browser text
 if [ "$cmd_command_lynx"   != "$NULL" ] ; then  
 cfg_favorite_text_browser="$cmd_command_lynx"    ; fi
 if [ "$cmd_command_links"  != "$NULL" ] ; then  
@@ -860,10 +857,10 @@ fi
 #### :rutina-inicial-favorite-dhcp:
 ####
 ####
-#### configure favorite dhcp command
 if [ "$cfg_favorite_dhcp_command" == "$NULL" ]; then
 ####
 ####
+#### configure favorite dhcp command
 if [ "$cmd_command_dhcpcd"  != "$NULL" ]         ; then
 cfg_favorite_dhcp_command="$cmd_command_dhcpcd"           ; fi
 if [ "$cmd_command_dhclientscript" != "$NULL" ] ; then  
@@ -880,10 +877,10 @@ fi
 #### :rutina-inicial-favorite-date-command:
 ####
 ####
-#### configure favorite dialog update time
 if [ "$cfg_favorite_date_command" == "$NULL" ]; then
 ####
 ####
+#### configure favorite dialog update time
 if [ "$cmd_command_rdate"   != "$NULL" ]; then  
 cfg_favorite_date_command="$cmd_command_rdate -4 -a -n"  ; fi
 if [ "$cmd_command_sntp"    != "$NULL" ]; then  
@@ -896,22 +893,6 @@ fi
 ####
 ####
 #### :rutina-final-favorite-date:
-##########      Search favorite text music player             ##########
-#### :rutina-inicial-favorite-music:
-####
-####
-#### configure favorite player
-if [ "$cfg_favorite_text_music" == "$NULL" ]; then
-####
-####
-if [ "$cmd_command_vlc" != "$NULL" ]; then  
-cfg_favorite_text_music="$cmd_command_vlc"      ; fi
-####
-####
-fi
-####
-####
-#### :rutina-final-favorite-music:
 ##########    ALIAS  simple y firewall y campus       ##########
 #### :rutina-inicial-alias-system-list:
 ####
@@ -920,7 +901,6 @@ fi
 ##########     ALIAS SIMPLE
 ####
 ####
-#### prepare alias firewall-list with conceputal firewall-listconceptual:
 #### prepare alias firewall-list with numeral firewall-listnumeral:
 case "$cmd_first_option" in
 list-*) cfg_config_listrules_conceptual="" ;;
@@ -1036,6 +1016,7 @@ esac
 #### :rutina-inicial-alias-system-interface:
 ####
 ####
+#### config cli and gui
 case "$cmd_first_option" in
 "cli")
 cfg_favorite_basename_textdialog="$(basename $cfg_favorite_realpath_textdialog)" ;
@@ -1115,12 +1096,11 @@ cmd_second_option="$cfg_favorite_basename_graphicalldialog"
 ####
 ####
 esac
-##########
-##########
+####
+####
+#### config out cli
 cfg_favorite_out_cli="cli-$(basename $cfg_favorite_realpath_textdialog)"
 cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
-##########
-##########
 ####
 ####
 #### :rutina-final-alias-system-interface:
@@ -1251,9 +1231,6 @@ exit ;; esac ; fi
 #### :rutina-inicial-alias-narrowtxt:
 ####
 ####
-#### output narrow:      General text without warnings version list narrow
-####
-####
 if [ "$cmd_first_option" == "narrowtxt" ] ;then echo "$txt_head_waiting_narrow"
 ####
 ####
@@ -1262,7 +1239,7 @@ if   [ "$cmd_command_awk" == "$NULL" ]; then
 echo "$txt_text_title_fail [ Install awk command ]"; exit; fi
 ####
 ####
-#### rutine
+#### output narrow:      General text without warnings version list narrow
 case $cmd_second_option in 
 ls*|list*) $cmd_internal $cmd_second_option | \
 $cmd_command_awk '{ print $1 " " $2 " " $3 " " $4 " " \
@@ -1289,15 +1266,11 @@ exit ; fi
 #### :rutina-inicial-alias-txt:
 ####
 ####
-#### output txt:      General text without warnings version list normal
-####
-####
 if [ "$cmd_first_option" == "txt" ]; then 
 ####
 ####
+#### output txt:      General text without warnings version list normal
 case $cmd_second_option in 
-####
-####
 ls*|list*) $cmd_internal $cmd_second_option $cmd_third_option | \
 $cmd_command_grep -E -v Warning: ; exit ;;
 *) $cmd_internal $cmd_sub_option ;
@@ -1312,10 +1285,10 @@ esac ; fi
 #### :rutina-inicial-alias-cli:
 ####
 ####
-#### output cli:
 if [ "$cmd_first_option" == "cli" ] ; then echo "$txt_head_waiting_cli"
 ####
 ####
+#### requisite
 if [ "$cfg_favorite_realpath_textdialog" == "$NULL" ]; then 
 echo "$txt_text_md $txt_text_info Please install or dialog or whiptail to work with cli"
 exit; fi
@@ -1337,10 +1310,10 @@ esac ; fi
 #### :rutina-inicial-alias-log:
 ####
 ####
-#### output log
 if [ "$cmd_first_option" == "log" ]
 ####
 ####
+#### output log
 then echo "$txt_head_waiting_log"
 $cmd_internal $cmd_second_option $cmd_third_option $cmd_quad_option &> $cmd_file_output_log
 echo "$txt_text_title_file [$cmd_file_output_log]"
@@ -1357,6 +1330,7 @@ exit ; fi
 if [ "$cmd_first_option" == "pdf" ]
 ####
 ####
+#### output pdf
 then case $cmd_command_convert in "$NULL") 
 echo "$txt_text_stitle install imagemagick to print pdf to $cmd_default_directory_pdf" ; exit ;; esac
 #### allow print to PDF policy
@@ -1379,7 +1353,8 @@ exit ; fi
 if [ "$cmd_first_option" == "silent" ]
 ####
 ####
-then $cmd_internal "$2" "$3" "$4" &> /dev/null
+#### silent with variables from $2 to $9
+then $cmd_internal $cmd_sub_option &> /dev/null
 ####
 ####
 exit ; fi
@@ -1393,9 +1368,9 @@ exit ; fi
 if [ "$cfg_allow_save_logcmd" != "no" ]
 ####
 ####
+#### save historial
 then txt_head_format_logcmd="date: $cmd_logcmd_date path: $cmd_internal \
 ver: $cmd_version opt: $cmd_guided_full"
-####
 echo $txt_head_format_logcmd >> $cmd_file_default_logcmd
 ####
 ####
@@ -1410,6 +1385,7 @@ fi
 if [ "$cmd_first_option" == "tree-log" ] ; then
 ####
 ####
+#### show log files
 $cmd_command_tree $cmd_default_directory_baselogs
 echo 
 echo "### ### [ folder: ] [ $cmd_default_directory_baselogs ]"
@@ -1426,6 +1402,7 @@ exit; fi
 if [ "$cmd_first_option" == "tree-pdf" ] ; then
 ####
 ####
+#### show pdf files
 $cmd_command_tree $cmd_default_directory_basepdf
 echo 
 echo "### ### [ folder: ] [ $cmd_default_directory_basepdf ]"
@@ -1442,6 +1419,7 @@ exit; fi
 if [ "$cmd_first_option" == "tree-cmd" ] ; then
 ####
 ####
+#### show historial registred
 if [ ! -f $cmd_file_default_logcmd ]; then touch $cmd_file_default_logcmd ; fi
 echo "$txt_text_title_md list all month"
 $cmd_command_tree $cmd_default_directory_baselogcmd
@@ -1463,20 +1441,24 @@ exit; fi
 if [ "$cmd_first_option" == "log-stat" ] ; then
 ####
 ####
+#### requisite
 if [ "$cmd_command_wc" == "$NULL" ] ; then
 echo "$txt_text_info Please install wc command"; exit; fi
 ####
 ####
+#### stats
 cfg_conteo="$($cmd_command_cat $cmd_file_default_logcmd | $cmd_command_wc -l)"
 echo "$txt_text_md $cfg_conteo Commands launched. Commands log with allowed logcmd"
 echo "$txt_text_md file: $cmd_file_default_logcmd"
 ####
 ####
+#### stats
 cfg_conteo="$($cmd_command_ls -1 $cmd_default_directory_logs | $cmd_command_wc -l)"
 echo "$txt_text_md $cfg_conteo Commands output. Commands log with output log"
 echo "$txt_text_md folder: $cmd_default_directory_logs"
 ####
 ####
+#### stats
 cfg_conteo="$($cmd_command_ls -1 $cmd_default_directory_pdf | $cmd_command_wc -l)"
 echo "$txt_text_md $cfg_conteo Commands output. Command log with output pdf"
 echo "$txt_text_md folder: $cmd_default_directory_pdf"
@@ -1493,14 +1475,17 @@ exit; fi
 if [ "$cmd_first_option" == "version" ]; then
 ####
 ####
+#### title version
 echo "$txt_text_md_md     Detail Firewall: Detail Version            $txt_text_md"
 ####
 ####
+#### optionally if xdg
 if [ "$(echo $XDG_SESSION_TYPE)" != "$NULL" ]; then
 echo "$txt_text_md_md         Session XDG: $XDG_SESSION_TYPE         $txt_text_md"
 fi
 ####
 ####
+#### show version
 echo "$txt_text_md_md       Name Firewall: $cmd_name                 $txt_text_md"
 echo "$txt_text_md_md    Version Firewall: $cmd_version              $txt_text_md"
 echo "$txt_text_md_md   Released Firewall: $cmd_released             $txt_text_md"
@@ -1537,6 +1522,7 @@ exit ; fi
 if [ "$cmd_first_option" == "expert-cpufreq-info" ] ; then
 ####
 ####
+#### cpufreq info
 echo "$txt_text_title_info [ show cpu frequence info ]"
 if [ "$cmd_command_cpufreqinfo" == "$NULL" ]; then
 echo "$txt_text_stitle please install cpufreq-info"; fi
@@ -1554,6 +1540,7 @@ exit; fi
 if [ "$cmd_first_option" == "expert-cpupower-info" ] ; then
 ####
 ####
+#### cpupower info
 echo "$txt_text_title_info [ show cpu frequence info ]"
 if [ "$cmd_command_cpupower" == "$NULL" ]; then
 echo "$txt_text_stitle please install cpupower"; fi
@@ -1571,9 +1558,16 @@ exit; fi
 if   [ "$cmd_first_option" == "expert-wpa-scan" ]; then
 ####
 ####
+#### title
 echo "$txt_text_title_info  [ Show SSID from net wifi ] "
+####
+####
+#### requisite
 if   [ "$cmd_command_iw" == "$NULL" ]; then 
 echo "$txt_text_title_info [ Please, Install iw to work ]" ; exit ; fi
+####
+####
+#### scan
 for a in $($cmd_command_cat  /proc/net/dev | $cmd_command_grep -i  : | cut -d ":" -f 1)
 do $cmd_command_ifconfig $a up
 $cmd_command_iw $a scan | $cmd_command_grep -E -i "on $a|ssid" ; done
