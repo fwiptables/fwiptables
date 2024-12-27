@@ -1,6 +1,5 @@
 # Notes to Working in progress actually:
 
-Planed fixing bugs, Planed feacture adding .
+Planed fixing bugs, Planed feacture adding ..
 
 ## The planed fixed commit:     
-code: revise
