@@ -9528,16 +9528,14 @@ case $menuprincipal in
 006) clear ; $cmd_internal $cfg_favorite_out_cli reset ;;
 007) clear ; $cmd_internal $cfg_favorite_out_cli names ;;
 008) clear ; $cmd_internal txt names ; echo "$txt_text_title"
-read -p "Type the firewall name to read   " nombrecillo
-nombrecillo=$(echo $nombrecillo | $cmd_command_sed s/\\///g)
-$cmd_internal show $nombrecillo ;; 
-009)archivo="$($cfg_favorite_realpath_textdialog --stdout \
---title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
-archivo=$(echo $archivo | $cmd_command_sed s/\\///g)
-clear ;  echo "$txt_text_stitle saved $archivo" ; $cmd_internal save $archivo ;;
-010) clear ; $cmd_internal names ; echo "$txt_text_title"
-read -p "| Type the firewall name to restore |   " nombrecillo
-nombrecillo=$(echo $nombrecillo | $cmd_command_sed s/\\///g)
+read -p firewall-to-read: nombrecillo
+$cmd_internal $cfg_favorite_out_cli show $nombrecillo ;; 
+009) clear ; read -p firewall-to-save: nombrecillo
+echo "$txt_text_stitle saved $nombrecillo"
+$cmd_internal save $nombrecillo ;;
+010) clear ; $cmd_internal names
+echo "$txt_text_title"
+read -p firewall-to-load: nombrecillo
 $cmd_internal load $nombrecillo ;;
 011) clear ; $cmd_internal $cfg_favorite_out_cli actual ;;
 013) clear ; $cmd_internal $cfg_favorite_out_cli wizard-tiny ; $cmd_internal cli list4  ;;
