@@ -90,10 +90,10 @@ then cmd_internal="$cmd_installed"
 else cmd_internal="$cmd_notinstalled"
 fi
 #### The number version firewall
-cmd_year="24"                                                 # Number year version
-cmd_month="12"                                                # Number mouth version
-cmd_letter="H"                                                # Number letter version
-cmd_devel=""                                                  # developer -dev version
+cmd_year="25"                                                 # Number year version
+cmd_month="01"                                                # Number mouth version
+cmd_letter="A"                                                # Number letter version
+cmd_devel="-dev"                                              # developer -dev version
 cmd_shell="bash"                                              # shell script version
 cmd_vdate=$cmd_year-$cmd_month-$cmd_letter$cmd_devel          # final date  version 
 cmd_version="$cmd_vdate-$cmd_shell"                           # Final shell version
@@ -5716,7 +5716,7 @@ fi
 ####
 #### show each folder
 echo "$txt_text_md $txt_text_folder [$cmd_default_config_home]"
-echo "$txt_text_md $txt_text_folder [$cmd_default_cache_home]"
+#### echo "$txt_text_md $txt_text_folder [$cmd_default_cache_home]"
 #### 
 ####
 exit; fi

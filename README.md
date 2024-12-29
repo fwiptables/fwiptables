@@ -40,8 +40,8 @@
      [ fwiptables location ]                                 
         
        File    Location:   /usr/bin/fwiptables           
-       Config Directory:   /root/.config/fwiptables        
-       Cache  Directory:   /root/.cache/fwiptables         
+       Config Directory:   /etc/fwiptables/config/24-12-H-bash        
+       Cache  Directory:   /etc/fwiptables/cache/24-12-H-bash         
         
     [ fwiptables install ]                      
         
@@ -56,24 +56,24 @@
 ## fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-12-G-bash                
+         Version Firewall: 24-12-H-bash                
         Released Firewall: Year 2024 / Month 12               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
-        Short Description: FireWall With iptables       
-         Long Description: iptables templates in one script        
-           Data Directory: /root/.config/fwiptables           
-          Cache Directory: /root/.cache/fwiptables     
+        Short Description: FireWall With IPTABLES       
+         Long Description: Iptables templates in one script        
+         Config Directory: /etc/fwiptables/config/24-12-H-bash           
+          Cache Directory: /etc/fwiptables/cache/24-12-H-bash     
            Finder Program: which                  
-        Requisite Program: awk,cat,cut,date,file,id,sed,sort      
+        Requisite Program: cat,cut,date,file,id,sed,sort      
       Requisite Firewall4: iptables-legacy,iptables-nft    
       Requisite Firewall6: ip6tables-legacy,ip6tables-nft    
-          Xorg-Auth xhost: /usr/bin/xhost          
+          Automatic xhost: /usr/bin/xhost          
            Automatic edit: /usr/bin/nano   
             Automatic cli: /usr/bin/whiptail         
             Automatic gui: /usr/bin/yad   
             Automatic pdf: /usr/bin/convert        
-          Configured PATH: /usr/bin:/usr/sbin:/bin:/sbin                   
+            Internal PATH: /usr/bin:/usr/sbin:/bin:/sbin                   
               File Format: Bourne-Again_shell_script,                 
          Developer Actual: Francisco Garcia              
              Email Report: fwiptables@gmx.com                
@@ -90,32 +90,32 @@
       [Iptables firewall]   
   
         Legacy or nft: only one of them is sufficent   
-      iptables-legacy: support for xtables ipv4   
-         iptables-nft: support for nftables ipv4   
-     ip6tables-legacy: support for xtables ipv6   
-        ip6tables-nft: support for nftables ipv6   
+      iptables-legacy: support for xtables ipv4        
+         iptables-nft: support for nftables ipv4       
+     ip6tables-legacy: support for xtables ipv6        
+        ip6tables-nft: support for nftables ipv6       
   
-      [Firewall recomendation with full client]   
+      [Firewall recomendation with full client]        
   
-      Client prefered: input-established   
-      Server prefered: tinyserver-tcp      
+      Client prefered: input-established               
+      Server prefered: tinyserver-tcp ports            
   
       [Some options]   
   
-      shield maxtries: limit against attack per bruteforce   
-            Blacklist: excepcionals hosts dropped in firewall   
-            whitelist: excepcionals hosts allowed in firewall   
+      shield maxtries: limit against attack per bruteforce           
+            Blacklist: excepcionals hosts dropped in firewall        
+            whitelist: excepcionals hosts allowed in firewall        
            tinyserver: client in all allowed, and servers manually   
-    input-established: the computer is only client   
+    input-established: the computer is only client                   
   
       [Necesary Ports]   
   
-                  ntp: Port necesary to update the time and date   
-               bootpc: Port necesary to dhcp and get ip   
-               domain: This port is necesary to domain resolver   
-                https: This port is necesary for udp named web html5  
-            ipv6-icmp: Necesary protocol in ipv6   
-           ipv4 ports: ipv6 works too with old ipv4 ports   
+                  ntp: Port necesary to update the time and date       
+               bootpc: Port necesary to dhcp and get ip                
+               domain: This port is necesary to domain resolver        
+                https: This port is necesary for udp named web html5   
+            ipv6-icmp: Necesary protocol in ipv6                       
+           ipv4 ports: ipv6 works too with old ipv4 ports              
   
 ## fwiptables compile   
       BASH SCRIPT WORKS fully.      
@@ -126,21 +126,21 @@
   
 ## fwiptables depends   
     [ Configuration files ]   
-      Directory  data:         /root/.config/fwiptables   
-      Directory cache:         /root/.cache/fwiptables   
+      Directory  data:         /etc/fwiptables/config/24-12-H-bash   
+      Directory cache:         /etc/fwiptables/cache/24-12-H-bash   
         
     [ Log files ]             
-      Folder log:              /root/.config/fwiptables/fwiptables-log   
-      Folder pdf:              /root/.config/fwiptables/fwiptables-pdf   
-      Folder logcmd:           /root/.config/fwiptables/fwiptables-logcmd   
+      Folder log:              /etc/fwiptables/config/24-12-H-bash/fwiptables-log   
+      Folder pdf:              /etc/fwiptables/config/24-12-H-bash/fwiptables-pdf   
+      Folder logcmd:           /etc/fwiptables/config/24-12-H-bash/fwiptables-logcmd   
         
     [ Preferences files ]     
-      preferences:             /root/.config/fwiptables/fwiptables-preferences/default-preferences-fwiptables-24-12-G-bash.conf
-      alias:                   /root/.config/fwiptables/fwiptables-preferences/default-alias-fwiptables-24-12-G-bash.conf
-      own-notes:               /root/.config/fwiptables/fwiptables-preferences/default-usernotes-all-versions.txt
+      preferences:             /etc/fwiptables/config/24-12-H-bash/fwiptables-preferences/default-preferences-fwiptables-24-12-H-bash.conf
+      alias:                   /etc/fwiptables/config/24-12-H-bash/fwiptables-preferences/default-alias-fwiptables-24-12-H-bash.conf
+      own-notes:               /etc/fwiptables/config/24-12-H-bash/fwiptables-preferences/default-usernotes-all-versions.txt
         
     [ optional output ]       
-      xhost Xorg-Auth:         /usr/bin/xhost    
+      xhost x11:               /usr/bin/xhost    
       dialog cli:              /usr/bin/dialog   
       whiptail cli             /usr/bin/whiptail   
       zenity gui:              /usr/bin/zenity   
@@ -181,78 +181,93 @@
   
 ### <alias-from> examples <alias-to> options-examples
 ## fwiptables options-examples   
-    [ One example with input-established ]              
+    [ One example with input-established ]               
          
-       Launch: input-established                              
-       /usr/bin/fwiptables input-established                        
-       Explain: Client for all ports without servers ports   
+       Launch : /usr/bin/fwiptables input-established               
+       Explain: Client for all ports without servers ports    
          
-    [ Several examples with tiny server ]               
+    [ Several examples with tiny server ]                
          
-       Launch: wizard tiny                                   
-       /usr/bin/fwiptables wizard-tiny                             
-       Launch: tinyserver-tcp ports                          
-       /usr/bin/fwiptables tinyserver-tcp 21:25,80                 
-       Launch: tinyserver-udp ports                          
-       /usr/bin/fwiptables tinyserver-udp 67:68,443                
-       Explain: Client for all ports                         
+       Launch :/usr/bin/fwiptables wizard-tiny                      
+       Explain: wizard template tiny with few options         
          
-    [ Several examples with mini server ]               
+       Launch :/usr/bin/fwiptables tinyserver-udp 67:68,443         
+       Explain: Client for all and server tcp 66:68,443       
          
-       Launch: wizard mini                                   
-       /usr/bin/fwiptables wizard-mini                             
-       Explain: Wizard firewall for clients and servers      
+    [ Several examples with mini server ]                
          
-    [ Example with add-whitelist4 ]                     
+       Launch /usr/bin/fwiptables wizard-mini                       
+       Explain: Wizard firewall for clients and servers       
          
-       Launch: add-whitelist4                                
-       /usr/bin/fwiptables add-whitelist4 192.168.0.2,sf.net       
+    [ Example with add-whitelist4 ]                      
+         
+       launch : /usr/bin/fwiptables add-whitelist4 gmx.com,sf.net   
+       Explain: white list for gmx.com and sf.net in ipv4     
          
          
-    [ Without optional output ]       
+    [ Without optional output ]                
          
-       Explain: depends from firewall      
-       /usr/bin/fwiptables depends               
-       Explain: List firewall saved        
-       /usr/bin/fwiptables names                 
-       Explain: List configs saved         
-       /usr/bin/fwiptables list-custom           
-       Explain: Get info speed ipv4        
-       /usr/bin/fwiptables speed-ip4             
-       Explain: Show listen sockets        
-       /usr/bin/fwiptables sockets               
-       Explain: List last options          
-       /usr/bin/fwiptables logcmd                
-       Explain: modify default variables   
-       /usr/bin/fwiptables preferences-edit      
+       Explain: depends from firewall               
+       Launch : /usr/bin/fwiptables depends               
+         
+       Explain: List firewall saved                 
+       Launch : /usr/bin/fwiptables names                 
+         
+       Explain: List configs saved                  
+       Launch : /usr/bin/fwiptables list-custom           
+         
+       Explain: Get info speed ipv4                 
+       Launch : /usr/bin/fwiptables speed-ip4             
+         
+       Explain: Show listen sockets                 
+       Launch : /usr/bin/fwiptables sockets               
+         
+       Explain: List last options                   
+       Launch : /usr/bin/fwiptables logcmd                
+         
+       Explain: modify default variables            
+       Launch : /usr/bin/fwiptables preferences-edit      
      
-    [ With optional output ]          
+    [ With optional output ]               
          
-       Example with info
-       /usr/bin/fwiptables info list             
-       Example with expert
-       /usr/bin/fwiptables txt expert            
-       Example with code ip4
-       /usr/bin/fwiptables cli code ip4          
-       Example with list rules
-       /usr/bin/fwiptables cli lsn4              
-       Example with info-nodes
-       /usr/bin/fwiptables gui info-nodes        
-       Example with web browser 
-       /usr/bin/fwiptables gui web kernel.org    
-       Launch client web firewall in silent   
-       /usr/bin/fwiptables silent client-web     
-       List iptables rules with output txt    
-       /usr/bin/fwiptables txt ls4               
-       List firewall with output cli whiptail 
-       /usr/bin/fwiptables cli-wiptail names     
-       List sockets ip with output gui yad    
-       /usr/bin/fwiptables gui-yad sockets       
-       All options in text menu               
-       /usr/bin/fwiptables cli-menu              
-       All options in window menu             
-       /usr/bin/fwiptables gui-menu-yad          
-       All options in window roll             
-       /usr/bin/fwiptables gui-roll-zenity       
-       All options in window shell             
-       /usr/bin/fwiptables gui-shell-yad         
+       info list commands                       
+       /usr/bin/fwiptables info list                  
+         
+       experts commands                         
+       /usr/bin/fwiptables txt expert                 
+         
+       source code ip4                          
+       /usr/bin/fwiptables cli code ip4               
+         
+       list rules with numeral ipv4 filter      
+       /usr/bin/fwiptables cli lsn4                   
+         
+       scan nodes in local lan lan              
+       /usr/bin/fwiptables gui info-nodes             
+         
+       viewer web browser with gui              
+       /usr/bin/fwiptables gui web kernel.org         
+         
+       Launch client web firewall in silent     
+       /usr/bin/fwiptables silent client-web          
+         
+       List iptables rules with output txt      
+       /usr/bin/fwiptables txt ls4                    
+         
+       List firewall with output cli whiptail   
+       /usr/bin/fwiptables cli-wiptail names          
+         
+       show listen sockets with output gui      
+       /usr/bin/fwiptables gui-yad sockets            
+         
+       All options in text menu                 
+       /usr/bin/fwiptables cli-menu                   
+         
+       All options in window menu               
+       /usr/bin/fwiptables gui-menu-yad               
+         
+       All options in window roll               
+       /usr/bin/fwiptables gui-roll-zenity            
+         
+       All options in window shell              
+       /usr/bin/fwiptables gui-shell-yad              
