@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 ####
 ####
 #### #### #### #### for shell bash:
@@ -101,7 +101,7 @@ cmd_released="Year 20$cmd_year / Month $cmd_month"            # Source date vers
 #### The data version firewall
 cmd_developer="Francisco Garcia"                              # Actual developer
 cmd_contact="fwiptables@gmx.com"                              # Actual contact
-cmd_shortdescription="FireWall With IPTABLES"                 # Description short
+cmd_shortdescription="Firewall With IPTABLES"                 # Description short
 cmd_longdescription="Iptables templates in one script"        # Description long
 cmd_requisite_program="cat,cut,date,file,id,sed,sort"         # Program requisite
 cmd_requisite_firewall4="iptables-legacy,iptables-nft"        # Firewall requisite
@@ -1512,11 +1512,10 @@ echo "$txt_text_md_md   Requisite Program: $cmd_requisite_program    $txt_text_m
 echo "$txt_text_md_md Requisite Firewall4: $cmd_requisite_firewall4  $txt_text_md"
 echo "$txt_text_md_md Requisite Firewall6: $cmd_requisite_firewall6  $txt_text_md"
 echo "$txt_text_md_md     Automatic xhost: $cmd_command_xhost        $txt_text_md"
-echo "$txt_text_md_md      Automatic edit: $cfg_favorite_text_editor $txt_text_md"
+echo "$txt_text_md_md    Automatic editor: $cfg_favorite_text_editor $txt_text_md"
 echo "$txt_text_md_md       Automatic cli: $cfg_favorite_realpath_textdialog       $txt_text_md"
 echo "$txt_text_md_md       Automatic gui: $cfg_favorite_realpath_graphicalldialog $txt_text_md"
 echo "$txt_text_md_md       Automatic pdf: $cmd_command_convert      $txt_text_md"
-echo "$txt_text_md_md       Internal PATH: $cmd_path                 $txt_text_md"
 echo "$txt_text_md_md         File Format: $cmd_format               $txt_text_md"
 echo "$txt_text_md_md    Developer Actual: $cmd_developer            $txt_text_md"
 echo "$txt_text_md_md        Email Report: $cmd_contact              $txt_text_md"
@@ -5707,16 +5706,15 @@ echo "$txt_text_md $txt_text_fail Not update alias"
 echo "$txt_text_md $txt_text_ok Source install from $cmd_notinstalled"
 ####
 ####
+#### show each folder
+echo "$txt_text_md $txt_text_folder [$cmd_default_config_home]"
+####
+####
 #### show exec
 if [ -f "$cmd_installed" ]
 then echo "$txt_text_md $txt_text_exec [$cmd_installed]"
 else echo "$txt_text_md $txt_text_fail Not installed $cmd_name"
 fi
-####
-####
-#### show each folder
-echo "$txt_text_md $txt_text_folder [$cmd_default_config_home]"
-#### echo "$txt_text_md $txt_text_folder [$cmd_default_cache_home]"
 #### 
 ####
 exit; fi
@@ -9119,7 +9117,7 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 ##########
 menuprincipal="$($cfg_favorite_base_cli --clear --notags \
---title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
+--title $cmd_first_option-with-$cmd_name-$cmd_version --menu Select 0 0 0 \
 001  "$txt_text_md [ intro ]" \
 002  "$txt_text_md [ info  ]" \
 003  "$txt_text_md firewall-listconceptual" \
@@ -9254,7 +9252,7 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 ##########
 menuprincipal="$($cfg_favorite_base_cli --clear --notags \
---title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
+--title $cmd_first_option-with-$cmd_name-$cmd_version --menu Select 0 0 0 \
 001  "$txt_text_md [ main menu    ]" \
 002  "$txt_text_md [ Info options ]" \
 003  "$txt_text_md [ List numeral ]" \
@@ -9332,7 +9330,7 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 ##########
 menuprincipal="$($cfg_favorite_base_cli --clear --notags \
---title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
+--title $cmd_first_option-with-$cmd_name-$cmd_version --menu Select 0 0 0 \
 001  "$txt_text_md [ Main menu    ]" \
 002  "$txt_text_md [ Info options ]" \
 003  "$txt_text_md [ walladdrule  ]" \
@@ -9493,7 +9491,7 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 ##########
 menuprincipal="$($cfg_favorite_base_cli --clear --notags \
---title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
+--title $cmd_first_option-with-$cmd_name-$cmd_version --menu Select 0 0 0 \
 001  "$txt_text_md [ Main menu    ]" \
 002  "$txt_text_md [ Info Options ]" \
 003  "$txt_text_md [ Wallcontrol  ]" \
@@ -9582,7 +9580,7 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 ##########
 menuprincipal="$($cfg_favorite_base_cli --clear --notags \
---title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
+--title $cmd_first_option-with-$cmd_name-$cmd_version --menu Select 0 0 0 \
 001 "$txt_text_md [ Main menu    ]" \
 002 "$txt_text_md [ Info Options ]" \
 003 "$txt_text_md [ Wallinet     ]" \
@@ -9637,7 +9635,7 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 ##########
 menuprincipal="$($cfg_favorite_base_cli --clear --notags \
---title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
+--title $cmd_first_option-with-$cmd_name-$cmd_version --menu Select 0 0 0 \
 001  "$txt_text_md [ Main menu    ]" \
 002  "$txt_text_md [ Info options ]" \
 003  "$txt_text_md [ Wallcustom   ]" \
@@ -9732,7 +9730,7 @@ cfg_favorite_base_cli="$(basename $cfg_favorite_realpath_textdialog)"
 ##########
 ##########
 menuprincipal="$($cfg_favorite_base_cli --clear --notags \
---title "$cmd_first_option With $cmd_name $cmd_version" --menu "Select" 0 0 0 \
+--title $cmd_first_option-with-$cmd_name-$cmd_version --menu Select 0 0 0 \
 001  "$txt_text_md [ Main menu    ]" \
 002  "$txt_text_md [ Info options ]" \
 003  "$txt_text_md [ wallutil    ]" \
