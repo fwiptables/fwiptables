@@ -8768,7 +8768,7 @@ favorite_realpath_graphicalldialog="$cmd_command_zenity"
 ####
 ####
 menugtk="$($cmd_command_zenity --entry \
---title=Example:options \
+--title=Gui-shell-zenity-with-$cmd_name-$cmd_version-EXAMPLE:options \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height )"
 ####
 ####
@@ -8942,7 +8942,7 @@ favorite_realpath_graphicalldialog="$cmd_command_yad"
 ####
 ####
 menugtk="$($cmd_command_yad --entry \
---title=Example:options \
+--title=Gui-shell-yad-with-$cmd_name-$cmd_version-EXAMPLE:options \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height )"
 ####
 ####
@@ -9881,7 +9881,7 @@ gui_menu="Info|List-conceptual|List-numeral|Wallcontrol|\
 walladdrule|Wallcustom|Wallinet|wallutil"
 selection_menu="$($cmd_command_zenity --forms \
 --text=gui-roll \
---title=Gui-roll-With-$cmd_internal-$cmd_version \
+--title=Gui-roll-with-$cmd_name-$cmd_version \
 --add-combo=$cmd_first_option \
 --combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | $cmd_command_sed 's/\|//g')"
@@ -9937,7 +9937,7 @@ without-connection|input-permisive|input-established|\
 tinyserver-tcp|tinyserver-udp"
 selection_menu="$($cmd_command_zenity --forms \
 --text=gui-roll-firewall-wallcontrol \
---title=Gui-roll-With-$cmd_internal-$cmd_version \
+--title=Gui-roll-with-$cmd_name-$cmd_version \
 --add-combo=$cmd_first_option \
 --combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | $cmd_command_sed 's/\|//g')"
@@ -10023,7 +10023,7 @@ add-whitelist|add-blacklist|add-shield-tcp|\
 del-commented|drop-string|limit-minute"
 selection_menu="$($cmd_command_zenity --forms \
 --text=gui-roll-firewall-wallcontrol \
---title=Gui-roll-With-$cmd_internal-$cmd_version \
+--title=Gui-roll-with-$cmd_name-$cmd_version \
 --add-combo=$cmd_first_option \
 --combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | $cmd_command_sed 's/\|//g')"
@@ -10198,7 +10198,7 @@ list-raw4|list-raw6|list-security4|list-security6|\
 list-ebtables|list-arptables"
 selection_menu="$($cmd_command_zenity --forms \
 --text=gui-roll-firewall-listconceptual \
---title=Gui-roll-With-$cmd_internal-$cmd_version \
+--title=Gui-roll-with-$cmd_name-$cmd_version \
 --add-combo=$cmd_first_option \
 --combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | $cmd_command_sed 's/\|//g')"
@@ -10250,7 +10250,7 @@ listn-raw4|listn-raw6|listn-security4|listn-security6|\
 list-ebtables|list-arptables"
 selection_menu="$($cmd_command_zenity --forms \
 --text="gui-roll-firewall-listnumeral" \
---title=Gui-roll-With-$cmd_internal-$cmd_version \
+--title=Gui-roll-with-$cmd_name-$cmd_version \
 --add-combo=$cmd_first_option \
 --combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | $cmd_command_sed 's/\|//g')"
@@ -10301,7 +10301,7 @@ new-mini-custom|nueva-mini-custom|new-tiny-custom|nueva-diminuta-custom|\
 list-custom|show-custom|modify-custom|del-custom|templates-regen"
 selection_menu="$($cmd_command_zenity --forms \
 --text=gui-roll-firewall-wallcustom \
---title=Gui-roll-With-$cmd_internal-$cmd_version \
+--title=Gui-roll-with-$cmd_name-$cmd_version \
 --add-combo=$cmd_first_option \
 --combo-values=$gui_menu)"
 selection_final="$(echo $selection_menu | $cmd_command_sed 's/\|//g')"
@@ -10397,7 +10397,7 @@ menu="gui-principal-menu|gui-info-menu|\
 wallinet-update|wallinet-list|wallinet-load|wallinet-show"
 selection="$($cmd_command_zenity --forms \
 --text=gui-roll-firewall-wallcustom \
---title=Gui-roll-With-$cmd_internal-$cmd_version \
+--title=Gui-roll-with-$cmd_name-$cmd_version \
 --add-combo=$cmd_first_option \
 --combo-values=$menu)"
 #### 
@@ -10451,7 +10451,7 @@ license-lgpl-v2|license-gpl-v2"
 ####
 selection="$($cmd_command_zenity --forms \
 --text=$cmd_first_option \
---title=Gui-roll-With-$cmd_internal-$cmd_version \
+--title=Gui-roll-with-$cmd_name-$cmd_version \
 --add-combo=$cmd_first_option \
 --combo-values=$gui_menu)"
 ####
@@ -10549,7 +10549,7 @@ selection_final="$($cmd_second_option \
 --height=$cfg_config_graphicall_height \
 --column=$cmd_first_option \
 --text=$cmd_first_option \
---title=Gui-menu-With-$cmd_internal-$cmd_version \
+--title=Gui-menu-with-$cmd_name-$cmd_version \
 --list $selection_menu)"
 ####
 ####
@@ -10608,7 +10608,7 @@ selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --column=$cmd_first_option \
 --text=$cmd_first_option \
---title=Gui-menu-With-$cmd_internal-$cmd_version \
+--title=Gui-menu-with-$cmd_name-$cmd_version \
 --list $selection_menu)"
 echo "$txt_text_stitle The option selected:  $final" ;
 ####
@@ -10707,7 +10707,7 @@ selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --column=$cmd_first_option \
 --text=$cmd_first_option \
---title=Gui-menu-With-$cmd_internal-$cmd_version \
+--title=Gui-menu-with-$cmd_name-$cmd_version \
 --list $selection_menu)"
 echo "$txt_text_stitle The option selected:  $final" ;
 ####
@@ -10887,7 +10887,7 @@ selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --column=$cmd_first_option \
 --text=$cmd_first_option \
---title=Gui-menu-With-$cmd_internal-$cmd_version \
+--title=Gui-menu-with-$cmd_name-$cmd_version \
 --list $selection_menu )"
 ####
 ####
@@ -10946,7 +10946,7 @@ selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --column=$cmd_first_option \
 --text=$cmd_first_option \
---title=Gui-menu-With-$cmd_internal-$cmd_version \
+--title=Gui-menu-with-$cmd_name-$cmd_version \
 --list $selection_menu )"
 ####
 ####
@@ -11007,7 +11007,7 @@ selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --column=$cmd_first_option \
 --text=$cmd_first_option \
---title=Gui-menu-With-$cmd_internal-$cmd_version \
+--title=Gui-menu-with-$cmd_name-$cmd_version \
 --list $selection_menu )"
 ####
 ####
@@ -11105,7 +11105,7 @@ selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --column=$cmd_first_option \
 --text=$cmd_first_option \
---title=Gui-menu-With-$cmd_internal-$cmd_version \
+--title=Gui-menu-with-$cmd_name-$cmd_version \
 --list $selection_menu )"
 ####
 ####
@@ -11163,7 +11163,7 @@ selection_final="$($cmd_second_option \
 --width=$cfg_config_graphicall_width --height=$cfg_config_graphicall_height \
 --column=$cmd_first_option \
 --text=$cmd_first_option \
---title=Gui-menu-With-$cmd_internal-$cmd_version \
+--title=Gui-menu-with-$cmd_name-$cmd_version \
 --list $selection_menu )"
 ####
 ####
