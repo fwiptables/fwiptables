@@ -636,7 +636,7 @@ cmd_file_default_preferences=\
 cmd_file_default_alias=\
 "$cmd_default_directory_preferences/default-alias-$cmd_name-$cmd_version.conf"
 cmd_file_default_usernotes=\
-"$cmd_default_directory_preferences/default-usernotes-all-versions.txt"
+"$cmd_default_directory_preferences/default-own-notes-$cmd_name-$cmd_version.conf"
 ####
 #### files output date
 cmd_file_output_pdf=\
@@ -5728,22 +5728,26 @@ exit; fi
 if [ "$cmd_first_option" == "own-notes" ] ;  then
 ####
 ####
-#### add
+#### sane file
+if [ ! -f "$cmd_file_default_usernotes" ]; then touch $cmd_file_default_usernotes; fi
+####
+####
+#### add notes
 if [ "$cmd_second_option" == "add" ] && [ "$3" != "$NULL" ]
 then echo "$cmd_mynote_date,$cmd_third_option," >> "$cmd_file_default_usernotes"
 echo "Content added: $cmd_third_option," ; exit; fi
-#### search
+#### search notes
 if [ "$cmd_second_option" == "search" ]  && [ "$3" != "$NULL" ]
 then echo "List searched"
 $cmd_command_cat $cmd_file_default_usernotes \
 | $cmd_command_grep -i $cmd_third_option ; exit; fi
-#### list
+#### list notes
 if [ "$cmd_second_option" == "list" ] ; then echo "List content:"; 
 $cmd_command_cat $cmd_file_default_usernotes; exit; fi
-#### lines
+#### lines notes
 if [ "$cmd_second_option" == "lines" ] ; then echo "Lines numbers:"
 $cmd_command_cat $cmd_file_default_usernotes | $cmd_command_wc -l ; exit; fi
-#### info
+#### info notes
 echo " # $txt_text_info Type option: add|search|list|lines"
 echo " # $txt_text_info Use add: with quote"
 echo " # $txt_text_file [$cmd_file_default_usernotes]"
