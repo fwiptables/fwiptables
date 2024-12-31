@@ -1919,16 +1919,16 @@ exit; fi
 if [ "$cmd_first_option" == "preferences-generator" ] ; then
 ####
 ####
-echo "####  program: $cmd_internal $cmd_version"
-echo "####  file: $cmd_file_default_preferences"
+echo "####  Exec program: $cmd_internal $cmd_version"
+echo "####  Config  file: $cmd_file_default_preferences"
 echo "$txt_text_title"
 echo "$txt_text_title"
 echo "$txt_text_title_title default option when not option are there"
-echo "cfg_config_without_firstoption=options                    ## read below"
-echo "$txt_text_stitle type: void or one valid option required to works"
+echo "$txt_text_stitle void for automatic or one valid option required to works"
 echo "$txt_text_stitle example1:options example2:list4 example3:ip4"
 echo "$txt_text_stitle example4:speed-ip4 example5:sockets example6:gui-roll"
 echo "$txt_text_stitle example7:gui-menu-yad example8:gui-shell-yad"
+echo "cfg_config_without_firstoption=options                    ## read"
 echo "$txt_text_title" 
 echo "$txt_text_title_title Allow expert commands for default" 
 echo "cfg_allow_expert_commands=no                         ## or void for yes or no"
