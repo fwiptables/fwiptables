@@ -93,10 +93,10 @@ fi
 cmd_year="25"                                                 # Number year version
 cmd_month="01"                                                # Number mouth version
 cmd_letter="A"                                                # Number letter version
-cmd_devel="-dev"                                              # developer -dev version
-cmd_shell="bash"                                              # shell script version
+cmd_devel=""                                                  # developer -dev version
+cmd_shell="-bash"                                             # script -shell version
 cmd_vdate=$cmd_year-$cmd_month-$cmd_letter$cmd_devel          # final date  version 
-cmd_version="$cmd_vdate-$cmd_shell"                           # Final shell version
+cmd_version="$cmd_vdate$cmd_shell"                            # Final shell version
 cmd_released="Year 20$cmd_year / Month $cmd_month"            # Source date version
 #### The data version firewall
 cmd_developer="Francisco Garcia"                              # Actual developer
