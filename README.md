@@ -1,7 +1,7 @@
 ## fwiptables intro   
   
       Readme
-      Version
+      Versionhttps://github.com/fwiptables/fwiptables/blob/main/README.md
       About
       hints
       Compile
@@ -272,49 +272,49 @@
        /usr/bin/fwiptables gui-shell-yad              
   
 ## fwiptables options   
-   fwiptables [optional-output] first_option [second_option]
-   ......  optional-output:
-   [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]
-   [ gui-menu  gui-menu-zenity   gui-menu-yad  gui-roll-zenity ]
-   [ gui-shell  gui-shell-zenity  gui-shell-yad ]
-   [ gui-zenity gui-yad cli-dialog cli-whiptail ]
-   [ cli-menu cli-menu-dialog cli-menu-whiptail ]
-   ......  firewall-listconceptual:
-   ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6
-   list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4
-   list-security6 list-ebtables  list-arptables  list-alltables
-   ......  firewall-listnumeral:
-   lsn4 lsn6  statusn  listn-filter4  listn-filter6  listn-nat4
-   listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6
-   listn-security4 listn-security6 listn-alltables
-   ......  firewall-wallcontrol:
-   stop    continue   reset  show  save  load   names    actual
-   eraserules-all        eraserules-arp     eraserules-ebtables
-   eraserules4   eraserules6  eraserules-nft  eraserules-legacy
-   without-connection      input-permisive    input-established
-   wizard-tiny wizard-mini wizard-full
-   tinyserver-tcp tinyserver-udp
-   ......  firewall-walladdrule:
-   add-localhost    add-established    all-output    close-drop
-   drop-send-ping  drop-get-ping allow-send-ping allow-get-ping
-   drop-port-tcp  drop-port-udp  allow-port-tcp  allow-port-udp
-   log-port-tcp  log-port-udp  return-port-tcp  return-port-udp
-   drop-string   add-shield-tcp  drop-protocol   allow-protocol
-   add-whitelist  add-whitelist4  add-whitelist6
-   add-blacklist  add-blacklist4  add-blacklist6
-   limit-minute   del-commented
-   ......  firewall-wallcustom:
-   new-full-custom        new-mini-custom       new-tiny-custom
-   wallinet-clone loadmini-custom  load-custom  loadtiny-custom
-   list-custom      show-custom     modify-custom    del-custom
-   ......  firewall-wallinet:
-   wallinet-update  wallinet-list  wallinet-load  wallinet-show
-   ......  firewall-wallutil:
-   preferences-edit alias-edit  options info-options  own-notes
-   tree-cmd  tree-pdf tree-log tree-conf tree-cache clean-cache
-   ip4 ip6  route4 route6 info-ip4 info-ip6 info-nodes  sockets
-   lsof  free ip-forward utils date resolve speed-ip4 speed-ip6
-   log-stat  web intro depends uninstall install upgrade  hints
-   variables  examples info code expert  donate  about  version
-   license-lgpl-v2 license-gpl-v2
-   ......#fwiptables-25-01-A-bash#  #expert:deactived#  
+      fwiptables [optional-output] first_option [second_option]
+      ......  optional-output:
+      [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]
+      [ gui-menu  gui-menu-zenity   gui-menu-yad  gui-roll-zenity ]
+      [ gui-shell  gui-shell-zenity  gui-shell-yad ]
+      [ gui-zenity gui-yad cli-dialog cli-whiptail ]
+      [ cli-menu cli-menu-dialog cli-menu-whiptail ]
+      ......  firewall-listconceptual:
+      ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6
+      list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4
+      list-security6 list-ebtables  list-arptables  list-alltables
+      ......  firewall-listnumeral:
+      lsn4 lsn6  statusn  listn-filter4  listn-filter6  listn-nat4
+      listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6
+      listn-security4 listn-security6 listn-alltables
+      ......  firewall-wallcontrol:
+      stop    continue   reset  show  save  load   names    actual
+      eraserules-all        eraserules-arp     eraserules-ebtables
+      eraserules4   eraserules6  eraserules-nft  eraserules-legacy
+      without-connection      input-permisive    input-established
+      wizard-tiny wizard-mini wizard-full
+      tinyserver-tcp tinyserver-udp
+      ......  firewall-walladdrule:
+      add-localhost    add-established    all-output    close-drop
+      drop-send-ping  drop-get-ping allow-send-ping allow-get-ping
+      drop-port-tcp  drop-port-udp  allow-port-tcp  allow-port-udp
+      log-port-tcp  log-port-udp  return-port-tcp  return-port-udp
+      drop-string   add-shield-tcp  drop-protocol   allow-protocol
+      add-whitelist  add-whitelist4  add-whitelist6
+      add-blacklist  add-blacklist4  add-blacklist6
+      limit-minute   del-commented
+      ......  firewall-wallcustom:
+      new-full-custom        new-mini-custom       new-tiny-custom
+      wallinet-clone loadmini-custom  load-custom  loadtiny-custom
+      list-custom      show-custom     modify-custom    del-custom
+      ......  firewall-wallinet:
+      wallinet-update  wallinet-list  wallinet-load  wallinet-show
+      ......  firewall-wallutil:
+      preferences-edit alias-edit  options info-options  own-notes
+      tree-cmd  tree-pdf tree-log tree-conf tree-cache clean-cache
+      ip4 ip6  route4 route6 info-ip4 info-ip6 info-nodes  sockets
+      lsof  free ip-forward utils date resolve speed-ip4 speed-ip6
+      log-stat  web intro depends uninstall install upgrade  hints
+      variables  examples info code expert  donate  about  version
+      license-lgpl-v2 license-gpl-v2
+      ......#fwiptables-25-01-A-bash#  #expert:deactived#  
