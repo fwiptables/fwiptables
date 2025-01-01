@@ -92,8 +92,8 @@ fi
 #### The number version firewall
 cmd_year="25"                                                 # Number year version
 cmd_month="01"                                                # Number mouth version
-cmd_letter="A"                                                # Number letter version
-cmd_devel=""                                                  # developer -dev version
+cmd_letter="B"                                                # Number letter version
+cmd_devel="-dev"                                              # developer -dev version
 cmd_shell="-bash"                                             # script -shell version
 cmd_vdate=$cmd_year-$cmd_month-$cmd_letter$cmd_devel          # final date  version 
 cmd_version="$cmd_vdate$cmd_shell"                            # Final shell version
@@ -715,7 +715,6 @@ cmd_first_option="$cfg_config_without_firstoption" ; fi
 if [ "$cmd_first_option" = "$NULL" ] && [ "$cfg_config_without_firstoption" != "options" ]; then
 echo "### $txt_text_info [ Default Option: $cfg_config_without_firstoption ] [ List Options: options ]"
 cmd_first_option="$cfg_config_without_firstoption" ; fi
-
 ####
 ####
 #### configure expert
@@ -3394,57 +3393,57 @@ if [ "$cmd_first_option" == "options" ]; then
 ####
 ####
 #### list options
-echo "$txt_text_md $cmd_name [optional-output] first_option [second_option]"  
-echo "$txt_text_md ......  optional-output:"  
-echo "$txt_text_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]"  
-echo "$txt_text_md [ gui-menu  gui-menu-zenity   gui-menu-yad  gui-roll-zenity ]"  
-echo "$txt_text_md [ gui-shell  gui-shell-zenity  gui-shell-yad ]"  
-echo "$txt_text_md [ gui-zenity gui-yad cli-dialog cli-whiptail ]"  
-echo "$txt_text_md [ cli-menu cli-menu-dialog cli-menu-whiptail ]"  
-echo "$txt_text_md ......  firewall-listconceptual:"  
-echo "$txt_text_md ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6"  
-echo "$txt_text_md list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4"  
-echo "$txt_text_md list-security6 list-ebtables  list-arptables  list-alltables"  
-echo "$txt_text_md ......  firewall-listnumeral:"  
-echo "$txt_text_md lsn4 lsn6  statusn  listn-filter4  listn-filter6  listn-nat4"  
-echo "$txt_text_md listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6"  
-echo "$txt_text_md listn-security4 listn-security6 listn-alltables"  
-echo "$txt_text_md ......  firewall-wallcontrol:"  
-echo "$txt_text_md stop    continue   reset  show  save  load   names    actual"  
-echo "$txt_text_md eraserules-all        eraserules-arp     eraserules-ebtables"   
-echo "$txt_text_md eraserules4   eraserules6  eraserules-nft  eraserules-legacy"
-echo "$txt_text_md without-connection      input-permisive    input-established"  
-echo "$txt_text_md wizard-tiny wizard-mini wizard-full"  
-echo "$txt_text_md tinyserver-tcp tinyserver-udp"  
-echo "$txt_text_md ......  firewall-walladdrule:"  
-echo "$txt_text_md add-localhost    add-established    all-output    close-drop"    
-echo "$txt_text_md drop-send-ping  drop-get-ping allow-send-ping allow-get-ping"  
-echo "$txt_text_md drop-port-tcp  drop-port-udp  allow-port-tcp  allow-port-udp"   
-echo "$txt_text_md log-port-tcp  log-port-udp  return-port-tcp  return-port-udp"  
-echo "$txt_text_md drop-string   add-shield-tcp  drop-protocol   allow-protocol"   
-echo "$txt_text_md add-whitelist  add-whitelist4  add-whitelist6"
-echo "$txt_text_md add-blacklist  add-blacklist4  add-blacklist6"
-echo "$txt_text_md limit-minute   del-commented"  
-echo "$txt_text_md ......  firewall-wallcustom:"  
-echo "$txt_text_md new-full-custom        new-mini-custom       new-tiny-custom"  
-echo "$txt_text_md wallinet-clone loadmini-custom  load-custom  loadtiny-custom"  
-echo "$txt_text_md list-custom      show-custom     modify-custom    del-custom"  
-echo "$txt_text_md ......  firewall-wallinet:"  
-echo "$txt_text_md wallinet-update  wallinet-list  wallinet-load  wallinet-show"  
-echo "$txt_text_md ......  firewall-wallutil:"  
-echo "$txt_text_md preferences-edit alias-edit  options info-options  own-notes"  
-echo "$txt_text_md tree-cmd  tree-pdf tree-log tree-conf tree-cache clean-cache"  
-echo "$txt_text_md ip4 ip6  route4 route6 info-ip4 info-ip6 info-nodes  sockets"  
-echo "$txt_text_md lsof  free ip-forward utils date resolve speed-ip4 speed-ip6"  
-echo "$txt_text_md log-stat  web intro depends uninstall install upgrade  hints"  
-echo "$txt_text_md variables  examples info code expert  donate  about  version"  
-echo "$txt_text_md license-lgpl-v2 license-gpl-v2"  
+echo "$txt_text_md_md $cmd_name [optional-output] first_option [second_option]"  
+echo "$txt_text_md_md ......  optional-output:"  
+echo "$txt_text_md_md [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]"  
+echo "$txt_text_md_md [ gui-menu  gui-menu-zenity   gui-menu-yad  gui-roll-zenity ]"  
+echo "$txt_text_md_md [ gui-shell  gui-shell-zenity  gui-shell-yad ]"  
+echo "$txt_text_md_md [ gui-zenity gui-yad cli-dialog cli-whiptail ]"  
+echo "$txt_text_md_md [ cli-menu cli-menu-dialog cli-menu-whiptail ]"  
+echo "$txt_text_md_md ......  firewall-listconceptual:"  
+echo "$txt_text_md_md ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6"  
+echo "$txt_text_md_md list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4"  
+echo "$txt_text_md_md list-security6 list-ebtables  list-arptables  list-alltables"  
+echo "$txt_text_md_md ......  firewall-listnumeral:"  
+echo "$txt_text_md_md lsn4 lsn6  statusn  listn-filter4  listn-filter6  listn-nat4"  
+echo "$txt_text_md_md listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6"  
+echo "$txt_text_md_md listn-security4 listn-security6 listn-alltables"  
+echo "$txt_text_md_md ......  firewall-wallcontrol:"  
+echo "$txt_text_md_md stop    continue   reset  show  save  load   names    actual"  
+echo "$txt_text_md_md eraserules-all        eraserules-arp     eraserules-ebtables"   
+echo "$txt_text_md_md eraserules4   eraserules6  eraserules-nft  eraserules-legacy"
+echo "$txt_text_md_md without-connection      input-permisive    input-established"  
+echo "$txt_text_md_md wizard-tiny wizard-mini wizard-full"  
+echo "$txt_text_md_md tinyserver-tcp tinyserver-udp"  
+echo "$txt_text_md_md ......  firewall-walladdrule:"  
+echo "$txt_text_md_md add-localhost    add-established    all-output    close-drop"    
+echo "$txt_text_md_md drop-send-ping  drop-get-ping allow-send-ping allow-get-ping"  
+echo "$txt_text_md_md drop-port-tcp  drop-port-udp  allow-port-tcp  allow-port-udp"   
+echo "$txt_text_md_md log-port-tcp  log-port-udp  return-port-tcp  return-port-udp"  
+echo "$txt_text_md_md drop-string   add-shield-tcp  drop-protocol   allow-protocol"   
+echo "$txt_text_md_md add-whitelist  add-whitelist4  add-whitelist6"
+echo "$txt_text_md_md add-blacklist  add-blacklist4  add-blacklist6"
+echo "$txt_text_md_md limit-minute   del-commented"  
+echo "$txt_text_md_md ......  firewall-wallcustom:"  
+echo "$txt_text_md_md new-full-custom        new-mini-custom       new-tiny-custom"  
+echo "$txt_text_md_md wallinet-clone loadmini-custom  load-custom  loadtiny-custom"  
+echo "$txt_text_md_md list-custom      show-custom     modify-custom    del-custom"  
+echo "$txt_text_md_md ......  firewall-wallinet:"  
+echo "$txt_text_md_md wallinet-update  wallinet-list  wallinet-load  wallinet-show"  
+echo "$txt_text_md_md ......  firewall-wallutil:"  
+echo "$txt_text_md_md preferences-edit alias-edit  options info-options  own-notes"  
+echo "$txt_text_md_md tree-cmd  tree-pdf tree-log tree-conf tree-cache clean-cache"  
+echo "$txt_text_md_md ip4 ip6  route4 route6 info-ip4 info-ip6 info-nodes  sockets"  
+echo "$txt_text_md_md lsof  free ip-forward utils date resolve speed-ip4 speed-ip6"  
+echo "$txt_text_md_md log-stat  web intro depends uninstall install upgrade  hints"  
+echo "$txt_text_md_md variables  examples info code expert  donate  about  version"  
+echo "$txt_text_md_md license-lgpl-v2 license-gpl-v2"  
 ####
 ####
 ####  if expert commands
 if [ "$cfg_allow_expert_commands" == "no" ]
-then echo "$txt_text_md ......#$cmd_name-$cmd_version#  #expert:deactived#  "
-else echo "$txt_text_md ......#$cmd_name-$cmd_version#  #expert:actived#    "
+then echo "$txt_text_md_md ......#$cmd_name-$cmd_version#  #expert:deactived#  "
+else echo "$txt_text_md_md ......#$cmd_name-$cmd_version#  #expert:actived#    "
 fi
 ####
 ####
@@ -5512,9 +5511,9 @@ echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_title_md  [ fwiptables description ]                     $txt_text_md"
 echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_md_md The fwiptables is a one-file WIZARD,               $txt_text_md"
-echo "$txt_text_md_md for iptables, with     COMMAND-LINE,               $txt_text_md"
-echo "$txt_text_md_md and CLI-MENU, and          GUI-MENU,               $txt_text_md"
-echo "$txt_text_md_md and GUI-ROLL, and         GUI-SHELL.               $txt_text_md"
+echo "$txt_text_md_md for iptables,     with COMMAND-LINE,               $txt_text_md"
+echo "$txt_text_md_md with CLI-MENU,        with GUI-MENU,               $txt_text_md"
+echo "$txt_text_md_md with GUI-ROLL,       with GUI-SHELL.               $txt_text_md"
 echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_md_md From one system firewall to choose one,            $txt_text_md"
 echo "$txt_text_md_md with eraserules,  or  template  custom,            $txt_text_md"
@@ -5539,12 +5538,12 @@ echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_title_md [ fwiptables install ]                          $txt_text_md"
 echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_md_md  su root, TYPE: su root                            $txt_text_md"    
-echo "$txt_text_md_md  put bit, TYPE: chmod 755 $cmd_internal            $txt_text_md"
-echo "$txt_text_md_md  install, TYPE: $cmd_internal install              $txt_text_md" 
+echo "$txt_text_md_md  put bit, TYPE: chmod 755 $cmd_name                $txt_text_md"
+echo "$txt_text_md_md  install, TYPE: $cmd_name install                  $txt_text_md" 
 echo "$txt_text_md_md $txt_text_md"
 echo "$txt_text_title_md [ fwiptables uninstall ]                        $txt_text_md"
 echo "$txt_text_md_md $txt_text_md"
-echo "$txt_text_md_md uninstall TYPE: $cmd_internal uninstall            $txt_text_md"
+echo "$txt_text_md_md uninstall TYPE: $cmd_name uninstall                $txt_text_md"
 ####
 ####
 exit; fi
@@ -6205,17 +6204,13 @@ if   [ "$cmd_first_option" == "info" ]; then
 #### show info help
 echo "$txt_text_title_info $txt_text_md $txt_text_info  [ info $cmd_second_option ] [ info md ]"
 echo "$txt_text_title_info  Launch info search: $cmd_internal info [pattern-to-search]"
-#### echo "$txt_text_title_info      Example search: $cmd_internal info ls"
-#### echo "$txt_text_title_info         all options: $cmd_internal info-options"
-#### if   [ "$cmd_second_option" == "$NULL" ]; then  $cmd_internal info-options ; exit ; fi
 ####
 ####
 #### create help complete
 cmd_info_cache="$cmd_default_cache_base/cache-info-list-$cmd_version"
 ####
-if   [ ! -f "$cmd_info_cache" ];
-then
-echo "$txt_text_title_info Gen a list info cache"
+if   [ ! -f "$cmd_info_cache" ]
+then echo "$txt_text_title_info Gen a list info cache"
 $cmd_internal info-options >> "$cmd_info_cache"
 fi
 ####
