@@ -10,70 +10,69 @@
       Options
   
 ## fwiptables readme   
-     [ fwiptables readme ]                  
+     [ fwiptables readme ]                            
         
       fwiptables. Firewall With iptables.
       Intro content information                            
-      Readme: description, location, install, uninstall.   
+      Description | Location | Install | Uninstall.        
         
-     [ fwiptables description ]             
+     [ fwiptables description ]                       
         
-      The fwiptables is a one-file WIZARD,       
-      for iptables, with COMMAND-LINE,           
-      and CLI-MENU, and GUI-MENU,                
-      and GUI-ROLL, and GUI-SHELL.               
+      The fwiptables is a one-file WIZARD,                 
+      for iptables, with     COMMAND-LINE,                 
+      and CLI-MENU, and          GUI-MENU,                 
+      and GUI-ROLL, and         GUI-SHELL.                 
         
-      From one system firewall to choose one,    
-      with eraserules, or template custom,       
-      with wizards: tiny, mini, and full,        
-      with added comments rules in firewall.     
+      From one system firewall to choose one,              
+      with eraserules,  or  template  custom,              
+      with wizards:  tiny,  mini,  and  full,              
+      with added comments rules in  firewall.              
         
-      With rules ipv4, rules ipv6, ebtables, arptables,    
-      with netfilter neftables, netfilter xtables,         
-      with tools ip, wizards for generate new rules,       
+      With rules ipv4, rules ipv6, ebtables,  arptables,   
+      with netfilter   neftables,   netfilter   xtables,   
+      with tools ip, wizards for  generate  new   rules,   
       with save/load rules with files standard iptables,   
-      with shield to ssh or other servers choosed,         
-      with limit bandwidth, string word,                   
-      with host whitelist, host blacklist,                 
-      with other more capabilities of firewall.            
+      with shield  to  ssh  or  other  servers  choosed,   
+      with limit        bandwidth,      string     word,   
+      with host      whitelist,     host      blacklist,   
+      with other more capabilities of firewall iptables.   
         
-     [ fwiptables location ]                                 
+     [ fwiptables location ]                          
         
-       File    Location:   /usr/bin/fwiptables           
-       Config Directory:   /etc/fwiptables/config/24-12-H-bash        
-       Cache  Directory:   /etc/fwiptables/cache/24-12-H-bash         
+       File    Location: /usr/bin/fwiptables      
+       Config Directory: /etc/fwiptables/config/25-01-A-bash   
+       Cache  Directory: /etc/fwiptables/cache/25-01-A-bash           
         
-    [ fwiptables install ]                      
+    [ fwiptables install ]                            
         
-       su root TYPE: su root                         
-       put bit TYPE: chmod 755 /usr/bin/fwiptables         
-       install TYPE: /usr/bin/fwiptables install           
+       su root, TYPE: su root                              
+       put bit, TYPE: chmod 755 /usr/bin/fwiptables              
+       install, TYPE: /usr/bin/fwiptables install                
         
-    [ fwiptables uninstall ]                    
+    [ fwiptables uninstall ]                          
         
-      uninstall TYPE: /usr/bin/fwiptables uninstall        
+      uninstall TYPE: /usr/bin/fwiptables uninstall              
   
 ## fwiptables version   
           Detail Firewall: Detail Version              
             Name Firewall: fwiptables                   
-         Version Firewall: 24-12-H-bash                
-        Released Firewall: Year 2024 / Month 12               
+         Version Firewall: 25-01-A-bash                
+        Released Firewall: Year 2025 / Month 01               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
-        Short Description: FireWall With IPTABLES       
+        Short Description: Firewall With IPTABLES       
          Long Description: Iptables templates in one script        
-         Config Directory: /etc/fwiptables/config/24-12-H-bash           
-          Cache Directory: /etc/fwiptables/cache/24-12-H-bash     
+         Config Directory: /etc/fwiptables/config/25-01-A-bash           
+          Cache Directory: /etc/fwiptables/cache/25-01-A-bash     
            Finder Program: which                  
         Requisite Program: cat,cut,date,file,id,sed,sort      
       Requisite Firewall4: iptables-legacy,iptables-nft    
       Requisite Firewall6: ip6tables-legacy,ip6tables-nft    
           Automatic xhost: /usr/bin/xhost          
-           Automatic edit: /usr/bin/nano   
+         Automatic editor: /usr/bin/nano   
             Automatic cli: /usr/bin/whiptail         
             Automatic gui: /usr/bin/yad   
             Automatic pdf: /usr/bin/convert        
-            Internal PATH: /usr/bin:/usr/sbin:/bin:/sbin                   
               File Format: Bourne-Again_shell_script,                 
          Developer Actual: Francisco Garcia              
              Email Report: fwiptables@gmx.com                
@@ -126,18 +125,18 @@
   
 ## fwiptables depends   
     [ Configuration files ]   
-      Directory  data:         /etc/fwiptables/config/24-12-H-bash   
-      Directory cache:         /etc/fwiptables/cache/24-12-H-bash   
+      Directory  data:         /etc/fwiptables/config/25-01-A-bash   
+      Directory cache:         /etc/fwiptables/cache/25-01-A-bash   
         
     [ Log files ]             
-      Folder log:              /etc/fwiptables/config/24-12-H-bash/fwiptables-log   
-      Folder pdf:              /etc/fwiptables/config/24-12-H-bash/fwiptables-pdf   
-      Folder logcmd:           /etc/fwiptables/config/24-12-H-bash/fwiptables-logcmd   
+      Folder log:              /etc/fwiptables/config/25-01-A-bash/fwiptables-log   
+      Folder pdf:              /etc/fwiptables/config/25-01-A-bash/fwiptables-pdf   
+      Folder logcmd:           /etc/fwiptables/config/25-01-A-bash/fwiptables-logcmd   
         
     [ Preferences files ]     
-      preferences:             /etc/fwiptables/config/24-12-H-bash/fwiptables-preferences/default-preferences-fwiptables-24-12-H-bash.conf
-      alias:                   /etc/fwiptables/config/24-12-H-bash/fwiptables-preferences/default-alias-fwiptables-24-12-H-bash.conf
-      own-notes:               /etc/fwiptables/config/24-12-H-bash/fwiptables-preferences/default-usernotes-all-versions.txt
+      preferences:             /etc/fwiptables/config/25-01-A-bash/fwiptables-preferences/default-preferences-fwiptables-25-01-A-bash.conf
+      alias:                   /etc/fwiptables/config/25-01-A-bash/fwiptables-preferences/default-alias-fwiptables-25-01-A-bash.conf
+      own-notes:               /etc/fwiptables/config/25-01-A-bash/fwiptables-preferences/default-own-notes-fwiptables-25-01-A-bash.conf
         
     [ optional output ]       
       xhost x11:               /usr/bin/xhost    
@@ -271,3 +270,51 @@
          
        All options in window shell              
        /usr/bin/fwiptables gui-shell-yad              
+  
+## fwiptables options   
+   fwiptables [optional-output] first_option [second_option]
+   ......  optional-output:
+   [ t|txt n|narrowtxt l|log c|cli g|gui p|pdf s|silent i|info ]
+   [ gui-menu  gui-menu-zenity   gui-menu-yad  gui-roll-zenity ]
+   [ gui-shell  gui-shell-zenity  gui-shell-yad ]
+   [ gui-zenity gui-yad cli-dialog cli-whiptail ]
+   [ cli-menu cli-menu-dialog cli-menu-whiptail ]
+   ......  firewall-listconceptual:
+   ls4 ls6 status list-filter4 list-filter6 list-nat4 list-nat6
+   list-raw4 list-raw6 list-mangle4 list-mangle6 list-security4
+   list-security6 list-ebtables  list-arptables  list-alltables
+   ......  firewall-listnumeral:
+   lsn4 lsn6  statusn  listn-filter4  listn-filter6  listn-nat4
+   listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6
+   listn-security4 listn-security6 listn-alltables
+   ......  firewall-wallcontrol:
+   stop    continue   reset  show  save  load   names    actual
+   eraserules-all        eraserules-arp     eraserules-ebtables
+   eraserules4   eraserules6  eraserules-nft  eraserules-legacy
+   without-connection      input-permisive    input-established
+   wizard-tiny wizard-mini wizard-full
+   tinyserver-tcp tinyserver-udp
+   ......  firewall-walladdrule:
+   add-localhost    add-established    all-output    close-drop
+   drop-send-ping  drop-get-ping allow-send-ping allow-get-ping
+   drop-port-tcp  drop-port-udp  allow-port-tcp  allow-port-udp
+   log-port-tcp  log-port-udp  return-port-tcp  return-port-udp
+   drop-string   add-shield-tcp  drop-protocol   allow-protocol
+   add-whitelist  add-whitelist4  add-whitelist6
+   add-blacklist  add-blacklist4  add-blacklist6
+   limit-minute   del-commented
+   ......  firewall-wallcustom:
+   new-full-custom        new-mini-custom       new-tiny-custom
+   wallinet-clone loadmini-custom  load-custom  loadtiny-custom
+   list-custom      show-custom     modify-custom    del-custom
+   ......  firewall-wallinet:
+   wallinet-update  wallinet-list  wallinet-load  wallinet-show
+   ......  firewall-wallutil:
+   preferences-edit alias-edit  options info-options  own-notes
+   tree-cmd  tree-pdf tree-log tree-conf tree-cache clean-cache
+   ip4 ip6  route4 route6 info-ip4 info-ip6 info-nodes  sockets
+   lsof  free ip-forward utils date resolve speed-ip4 speed-ip6
+   log-stat  web intro depends uninstall install upgrade  hints
+   variables  examples info code expert  donate  about  version
+   license-lgpl-v2 license-gpl-v2
+   ......#fwiptables-25-01-A-bash#  #expert:deactived#  
