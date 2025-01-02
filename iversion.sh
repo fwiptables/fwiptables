@@ -11503,20 +11503,20 @@ exit ; fi
 ####
 ####
 #### sane variables
-#### 
-####
 case "$cfg_allow_use_legacy"  in "no")   ;; *) cfg_allow_use_legacy=""    ;; esac
 case "$cfg_allow_use_nft"     in "no")   ;; *) cfg_allow_use_nft=""       ;; esac
 case "$cfg_allow_use_ipv4"    in "no")   ;; *) cfg_allow_use_ipv4=""      ;; esac
 case "$cfg_allow_use_ipv6"    in "no")   ;; *) cfg_allow_use_ipv6=""      ;; esac
 ####
 ####
+#### algoritmo
 case "$cfg_config_string_algoritmo" in "bm"|"kmp") ;;
 *) cfg_config_string_algoritmo="bm" ;; esac
 case "$cfg_config_close_deny" in "DROP"|"REJECT") ;;
 *) cfg_config_close_deny="DROP"  ;; esac
 ####
 ####
+#### values
 case "$NULL" in "$cfg_allow_autosave")         ;;  *)  cfg_allow_autosave="no" ;;  esac
 case "$NULL" in "$cfg_allow_string_dropped")   ;;  *)  cfg_allow_string_dropped="no" ;;  esac
 case "$NULL" in "$cfg_allow_dmz_ip4")          ;;  *)  cfg_allow_dmz_ip4="no" ;; esac
@@ -11591,6 +11591,7 @@ then $cmd_internal eraserules-all &> /dev/null
 #### legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
 ####
 ####
+#### input related established
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
 -s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
@@ -11614,6 +11615,7 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A FORWA
 #### nft ipv4 127.0.0.1 acept and the others nft ipv4 accept too
 ####
 ####
+#### input related established
 $cfg_allow_use_nft  $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
 -s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
@@ -11640,6 +11642,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A FORWARD \
 ####  legacy ipv6 127.0.0.1 acept and the others legacy ipv6 accept too
 ####
 ####
+#### localhost
 $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
 -s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
@@ -11663,6 +11666,7 @@ $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A FORWAR
 #### nft ipv6 127.0.0.1 acept and the others nft ipv6 accept too
 ####
 ####
+#### localhost
 $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT   \
 -s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
@@ -11686,6 +11690,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A FORWARD \
 #### ipv6-icmp accept in legacy and accept in nft
 ####
 ####
+#### nexthop ipv6
 $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy \
 -A INPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment nexthop-ip6 &> /dev/null
@@ -11703,6 +11708,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft \
 #### close with drop legacy and close with drop nft
 ####
 ####
+#### close
 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A INPUT -j $cfg_config_close_deny \
 -m comment --comment "close-rule" &> /dev/null
@@ -11729,6 +11735,7 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 -m comment --comment "close-rule" &> /dev/null
 ####
 ####
+#### close
 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A FORWARD -j $cfg_config_close_deny \
 -m comment --comment "close-rule" &> /dev/null
@@ -11763,6 +11770,7 @@ then $cmd_internal eraserules-all &> /dev/null
 ####  legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
 ####
 ####
+#### legacy ipv4
 $cfg_allow_use_legacy $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
 -s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
@@ -11783,6 +11791,7 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A FORWA
 ####  nft ipv4 127.0.0.1 acept and the others nft ipv4 accept too
 ####
 ####
+#### nft ipv4
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
 -s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
@@ -11806,6 +11815,7 @@ $cfg_allow_use_nft   $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A FORWARD \
 ####  legacy ipv6 127.0.0.1 acept and the others legacy ipv6 accept too
 ####
 ####
+#### input estate related,established
 $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
 -s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
@@ -11823,6 +11833,7 @@ $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A FORWAR
 ####  nft ipv6 127.0.0.1 acept and the others nft ipv6 accept too
 ####
 ####
+#### localhost
 $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT   \
 -s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
@@ -11840,6 +11851,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A FORWARD \
 ####  ipv6-icmp accept in legacy and accept in nft
 ####
 ####
+#### nexthop ipv6
 $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy \
 -A INPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment nexthop-ip6 &> /dev/null
@@ -11857,6 +11869,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft \
 ####  allow all output ipv6
 ####
 ####
+#### all output
 $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
@@ -11868,6 +11881,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT  \
 ####  close with drop legacy and close with drop nft
 ####
 ####
+#### close
 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A INPUT -j $cfg_config_close_deny \
 -m comment --comment "close-rule" &> /dev/null
@@ -11894,6 +11908,7 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 -m comment --comment "close-rule" &> /dev/null
 ####
 ####
+#### close
 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A FORWARD -j $cfg_config_close_deny \
 -m comment --comment "close-rule" &> /dev/null
@@ -11908,6 +11923,7 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 -m comment --comment "close-rule" &> /dev/null
 ####
 ####
+#### info
 echo "$txt_text_title_ok [ Launched: firewall ] \
 [ Type: $cfg_type_firewall ] [ Name: $cfg_name_firewall ]"
 exit; fi
@@ -11922,12 +11938,16 @@ exit; fi
 ####
 ####
 if [ "$cfg_type_firewall" == "without-connection" ]
-then $cmd_internal eraserulesa-all &> /dev/null ;
+####
+####
+#### eraserules
+then $cmd_internal eraserulesa-all &> /dev/null
 ####
 ####
 ####  legacy ipv4 127.0.0.1 acept
 ####
 ####
+#### localhost
 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy -A INPUT  \
 -s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost   -j ACCEPT \
 -m comment --comment "host-localhost"  &> /dev/null
@@ -11942,6 +11962,7 @@ $cfg_allow_use_legacy $cmd_command_ip4tableslegacy -A FORWARD \
 ####  legacy ipv4 127.0.0.1 acept
 ####
 ####
+#### localhost
 $cfg_allow_use_nft $cmd_command_ip4tablesnft -A INPUT \
 -s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
@@ -11959,6 +11980,7 @@ $cfg_allow_use_nft $cmd_command_ip4tablesnft -A FORWARD \
 ####  legacy ipv6 127.0.0.1 acept
 ####
 ####
+#### localhost
 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A INPUT  \
 -s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
@@ -11973,6 +11995,7 @@ $cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A FORWARD \
 ####  nft ipv6 127.0.0.1 acept
 ####
 ####
+#### localhost
 $cfg_allow_use_nft $cmd_command_ip6tablesnft -A INPUT  \
 -s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
@@ -11987,6 +12010,7 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft -A FORWARD \
 ########################################     close in without-connection
 ####
 ####
+#### ipv4 legacy
 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A INPUT -j $cfg_config_close_deny \
 -m comment --comment "close-rule" &> /dev/null
@@ -11997,6 +12021,8 @@ $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A FORWARD -j $cfg_config_close_deny \
 -m comment --comment "close-rule" &> /dev/null
 ####
+####
+#### ipv4 nft
 $cfg_allow_use_nft $cmd_command_ip4tablesnft \
 -A INPUT -j $cfg_config_close_deny \
 -m comment --comment "close-rule" &> /dev/null
@@ -12007,6 +12033,8 @@ $cfg_allow_use_nft $cmd_command_ip4tablesnft \
 -A FORWARD -j $cfg_config_close_deny \
 -m comment --comment "close-rule" &> /dev/null
 ####
+####
+#### ipv6 legacy
 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
 -A INPUT -j $cfg_config_close_deny \
 -m comment --comment "close-rule" &> /dev/null
@@ -12017,6 +12045,8 @@ $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
 -A FORWARD -j $cfg_config_close_deny \
 -m comment --comment "close-rule" &> /dev/null
 ####
+####
+#### ipv6 nft
 $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 -A INPUT -j $cfg_config_close_deny \
 -m comment --comment "close-rule" &> /dev/null
@@ -12057,6 +12087,7 @@ then $cmd_internal eraserules-all &> /dev/null
 #### LOCALHOST IS ALLOWED
 ####
 ####
+#### ipv4 localhost
 $cfg_allow_use_legacy $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
 -s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
@@ -12071,6 +12102,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT   \
 -m comment --comment "host-localhost" &> /dev/null
 ####
 ####
+#### ipv4 localhost
 $cfg_allow_use_legacy $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
 -s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
@@ -12107,50 +12139,48 @@ if [ "$cfg_allow_separate_rules" != "$NULL" ]; then
 ####
 ####
 #### ipv4 legacy
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT  \
 -p tcp -m multiport --dports $cfg_server_port_tcp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
 ####
 ####
+#### ipv4 legacy
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
 -p tcp -m multiport --sports $cfg_server_port_tcp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
 ####
 #### 
 #### ipv4 nft
-####
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
 -p tcp -m multiport --dports $cfg_server_port_tcp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
 ####
 ####
+#### ipv4 nft
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
 -p tcp -m multiport --sports $cfg_server_port_tcp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
 ####
 ####
 #### ipv6 legacy
-####
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
 -p tcp -m multiport --dports $cfg_server_port_tcp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
 ####
 ####
+#### ipv6 legacy
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
 -p tcp -m multiport --sports $cfg_server_port_tcp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
 ####
 ####
 #### ipv6 nft
-####
-####
 $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT  \
 -p tcp -m multiport --dports $cfg_server_port_tcp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
 ####
 ####
+#### ipv6 nft
 $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
 -p tcp -m multiport --sports $cfg_server_port_tcp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
@@ -12166,7 +12196,6 @@ if [ "$cfg_allow_separate_rules" != "$NULL" ]; then
 ####
 ####
 #### ipv4 legacy
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT  \
 -p udp -m multiport --dports $cfg_server_port_udp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-udp" &> /dev/null
@@ -12176,8 +12205,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPU
 ####
 #### 
 #### ipv4 nft
-####
-####
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
 -p udp -m multiport --dports $cfg_server_port_udp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-udp" &> /dev/null
@@ -12187,8 +12214,6 @@ $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
 ####
 ####
 #### ipv6 legacy
-####
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
 -p udp -m multiport --dports $cfg_server_port_udp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-udp" &> /dev/null
@@ -12198,8 +12223,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPU
 ####
 ####
 #### ipv6 nft
-####
-####
 $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT  \
 -p udp -m multiport --dports $cfg_server_port_udp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-udp" &> /dev/null
@@ -12221,12 +12244,13 @@ fi
 ####
 ####
 if [ "$cfg_allow_separate_rules" == "$NULL" ]; then 
+####
+####
 for one_tcp in $(echo $cfg_server_port_tcp | $cmd_command_sed 's/,/ /g') ;
 do
 ####
 ####
 #### ipv4 legacy
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT  \
 -p tcp -m multiport --dports $one_tcp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
@@ -12236,7 +12260,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPU
 ####
 #### 
 #### ipv4 nft
-####
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
 -p tcp -m multiport --dports $one_tcp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
@@ -12246,8 +12269,6 @@ $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
 ####
 ####
 #### ipv6 legacy
-####
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
 -p tcp -m multiport --dports $one_tcp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
@@ -12257,8 +12278,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPU
 ####
 ####
 #### ipv6 nft
-####
-####
 $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT  \
 -p tcp -m multiport --dports $one_tcp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
@@ -12273,13 +12292,14 @@ done; fi
 #######################################  rules allow server ports with udp
 ####
 ####
-if [ "$cfg_allow_separate_rules" == "$NULL" ]; then 
+if [ "$cfg_allow_separate_rules" == "$NULL" ]; then
+####
+#### 
 for one_udp in $(echo $cfg_server_port_udp | $cmd_command_sed 's/,/ /g') ;
 do
 ####
 ####
 #### ipv4 legacy
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT  \
 -p udp -m multiport --dports $one_udp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-udp" &> /dev/null
@@ -12289,7 +12309,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPU
 ####
 #### 
 #### ipv4 nft
-####
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
 -p udp -m multiport --dports $one_udp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-udp" &> /dev/null
@@ -12299,8 +12318,6 @@ $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
 ####
 ####
 #### ipv6 legacy
-####
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
 -p udp -m multiport --dports $one_udp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-udp" &> /dev/null
@@ -12310,8 +12327,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPU
 ####
 ####
 #### ipv6 nft
-####
-####
 $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT  \
 -p udp -m multiport --dports $one_udp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-udp" &> /dev/null
@@ -12332,6 +12347,7 @@ done; fi
 #### legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
 ####
 ####
+#### state
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
@@ -12343,6 +12359,7 @@ $cfg_allow_use_legacy $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT
 #### nft ipv4 127.0.0.1 acept and the others nft ipv4 accept too
 ####
 ####
+#### state
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
@@ -12357,6 +12374,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
 ####  legacy ipv6 accept related,established
 ####
 ####
+#### status related,established
 $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT \
 -m state --state RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment state-input &> /dev/null
@@ -12368,6 +12386,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT   \
 ####  ipv6-icmp accept in legacy and accept in nft
 ####
 ####
+#### nexthop ipv6
 $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy \
 -A INPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment nexthop-ip6 &> /dev/null
@@ -12385,6 +12404,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft \
 ####  nft ipv6 127.0.0.1 acept and the others nft ipv6 accept too
 ####
 ####
+#### all output
 $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
 -j ACCEPT \
 -m comment --comment all-output &> /dev/null
@@ -12396,6 +12416,7 @@ $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT  \
 ####  close with drop legacy and close with drop nft
 ####
 ####
+#### close rule
 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A INPUT -j $cfg_config_close_deny \
 -m comment --comment "close-rule" &> /dev/null
@@ -12422,6 +12443,7 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 -m comment --comment "close-rule" &> /dev/null
 ####
 ####
+#### close rule
 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A FORWARD -j $cfg_config_close_deny \
 -m comment --comment "close-rule" &> /dev/null
@@ -12471,6 +12493,8 @@ if [ "$cfg_allow_output_state" != "$NULL" ] ; then  cfg_config_output_state="" ;
 ####
 ####
 if [ "$cfg_allow_input_state" == "$NULL" ]
+####
+####
 then 
 cfg_connect_input_state="$cfg_config_input_state"
 cfg_config_input_state="-m state --state $connect_input_state"
@@ -12515,16 +12539,22 @@ $cmd_internal eraserules-all &> /dev/null
 ####
 if [ "$cfg_allow_mac_whitelist" == "$NULL" ] ; then
 ####
+####
+#### ebtables whitelist
 $cmd_command_ebtables -A INPUT  -s $cfg_config_mac_whitelist -j ACCEPT  &> /dev/null
 $cmd_command_ebtables -A OUTPUT -d $cfg_config_mac_whitelist -j ACCEPT  &> /dev/null
+####
 ####
 fi
 ####
 ####
 if [ "$cfg_allow_mac_blacklist" == "$NULL" ] ; then
 ####
+####
+#### ebtables blacklist
 $cmd_command_ebtables -A INPUT  -s ! $cfg_config_mac_whitelist -j ACCEPT  &> /dev/null
 $cmd_command_ebtables -A OUTPUT -d ! $cfg_config_mac_whitelist -j ACCEPT  &> /dev/null
+####
 ####
 fi
 ####
@@ -12534,6 +12564,8 @@ fi
 ####
 if [ "$cfg_config_ip4_localhost" != "$NULL" ]; then
 ####
+####
+#### localhost
 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy -A INPUT \
 -s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
@@ -12542,6 +12574,7 @@ $cfg_allow_use_legacy $cmd_command_ip4tableslegacy -A OUTPUT \
 -m comment --comment "host-localhost" &> /dev/null
 ####
 ####
+#### localhost
 $cfg_allow_use_nft $cmd_command_ip4tablesnft -A INPUT \
 -s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
@@ -12550,6 +12583,7 @@ $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
 ####
 ####
+#### localhost
 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy -A FORWARD \
 -s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
@@ -12564,6 +12598,7 @@ fi
 if [ "$cfg_config_ip6_localhost" != "$NULL" ]; then
 ####
 ####
+#### localhost
 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A INPUT \
 -s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
@@ -12572,6 +12607,7 @@ $cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A OUTPUT \
 -m comment --comment "host-localhost" &> /dev/null
 ####
 ####
+#### localhost
 $cfg_allow_use_nft $cmd_command_ip6tablesnft -A INPUT \
 -s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
@@ -12580,6 +12616,7 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft -A OUTPUT \
 -m comment --comment "host-localhost" &> /dev/null
 ####
 ####
+#### localhost
 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A FORWARD \
 -s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost  -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
@@ -12602,21 +12639,25 @@ for one_blacklist in $(echo $cfg_config_net_blacklist | $cmd_command_sed 's/,/ /
 #### ipv4
 ####
 ####
+#### blacklist
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A INPUT -s $one_blacklist -j $cfg_config_close_deny \
 -m comment --comment "blacklist:$one_blacklist" &> /dev/null
 ####
 ####
+#### blacklist
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A OUTPUT -d $one_blacklist -j $cfg_config_close_deny \
 -m comment --comment "blacklist:$one_blacklist" &> /dev/null
 ####
 ####
+#### blacklist
 $cfg_allow_use_ipv4 $cfg_allow_use_nft  $cmd_command_ip4tablesnft \
 -A INPUT -s $one_blacklist -j $cfg_config_close_deny \
 -m comment --comment "blacklist:$one_blacklist" &> /dev/null
 ####
 ####
+#### blacklist
 $cfg_allow_use_ipv4 $cfg_allow_use_nft  $cmd_command_ip4tablesnft \
 -A OUTPUT -d $one_blacklist -j $cfg_config_close_deny \
 -m comment --comment "blacklist:$one_blacklist" &> /dev/null
@@ -12625,21 +12666,25 @@ $cfg_allow_use_ipv4 $cfg_allow_use_nft  $cmd_command_ip4tablesnft \
 #### ipv6
 ####
 ####
+#### blacklist
 $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
 -A INPUT -s $one_blacklist -j $cfg_config_close_deny \
 -m comment --comment "blacklist:$one_blacklist" &> /dev/null
 ####
 ####
+#### blacklist
 $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
 -A OUTPUT -d $one_blacklist -j $cfg_config_close_deny \
 -m comment --comment "blacklist:$one_blacklist" &> /dev/null
 ####
 ####
+#### blacklist
 $cfg_allow_use_ipv6 $cfg_allow_use_nft  $cmd_command_ip6tablesnft \
 -A INPUT -s $one_blacklist -j $cfg_config_close_deny \
 -m comment --comment "blacklist:$one_blacklist" &> /dev/null
 ####
 ####
+#### blacklist
 $cfg_allow_use_ipv6 $cfg_allow_use_nft  $cmd_command_ip6tablesnft \
 -A OUTPUT -d $one_blacklist -j $cfg_config_close_deny \
 -m comment --comment "blacklist:$one_blacklist" &> /dev/null
@@ -12660,21 +12705,25 @@ for one_vpn in $(echo $cfg_config_net_whitelist | $cmd_command_sed 's/,/ /g'); d
 #### ipv4
 ####
 ####
+#### vpn
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A  INPUT -s $one_vpn -j ACCEPT -m comment \
 --comment "whitelist:$one_vpn" &> /dev/null
 ####
 ####
+#### vpn
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A  OUTPUT -d $one_vpn -j ACCEPT -m comment \
 --comment "whitelist:$one_vpn" &> /dev/null
 ####
 ####
+#### vpn
 $cfg_allow_use_ipv4 $cfg_allow_use_nft  $cmd_command_ip4tablesnft \
 -A  INPUT -s $one_vpn -j ACCEPT -m comment \
 --comment "whitelist:$one_vpn" &> /dev/null
 ####
 ####
+#### vpn
 $cfg_allow_use_ipv4 $cfg_allow_use_nft  $cmd_command_ip4tablesnft \
 -A  OUTPUT -d $one_vpn -j ACCEPT -m comment \
 --comment "whitelist:$one_vpn" &> /dev/null
@@ -12688,22 +12737,26 @@ $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
 --comment "whitelist:$one_vpn" &> /dev/null
 ####
 ####
+#### vpn
 $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
 -A  OUTPUT -d $one_vpn -j ACCEPT -m comment \
 --comment "whitelist:$one_vpn" &> /dev/null
 ####
 ####
+#### vpn
 $cfg_allow_use_ipv6 $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 -A  INPUT -s $one_vpn -j ACCEPT -m comment \
 --comment "whitelist:$one_vpn" &> /dev/null
 ####
 ####
+#### vpn
 $cfg_allow_use_ipv6 $cfg_allow_use_nft  $cmd_command_ip6tablesnft \
 -A  OUTPUT -d $one_vpn -j ACCEPT -m comment \
 --comment "whitelist:$one_vpn" &> /dev/null
 ####
 ####
 done
+####
 ####
 fi
 ####
@@ -12719,6 +12772,7 @@ for string_close in $(echo $cfg_config_string_denied | $cmd_command_sed 's/,/ /g
 #### ipv4
 ####
 ####
+#### string
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A  INPUT -m string --string $string_close \
 --algo $cfg_config_string_algoritmo \
@@ -12726,6 +12780,7 @@ $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -m comment --comment "drop-string" &> /dev/null
 ####
 ####
+#### string
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -A  OUTPUT -m string --string $string_close \
 --algo $cfg_config_string_algoritmo \
@@ -12733,6 +12788,7 @@ $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy \
 -m comment --comment "drop-string" &> /dev/null
 ####
 ####
+#### string
 $cfg_allow_use_ipv4 $cfg_allow_use_nft $cmd_command_ip4tablesnft \
 -A  INPUT -m string --string $string_close \
 --algo $cfg_config_string_algoritmo \
@@ -12740,6 +12796,7 @@ $cfg_allow_use_ipv4 $cfg_allow_use_nft $cmd_command_ip4tablesnft \
 -m comment --comment "drop-string" &> /dev/null
 ####
 ####
+#### string
 $cfg_allow_use_ipv4 $cfg_allow_use_nft  $cmd_command_ip4tablesnft \
 -A  OUTPUT -m string --string $string_close \
 --algo $cfg_config_string_algoritmo \
@@ -12750,6 +12807,7 @@ $cfg_allow_use_ipv4 $cfg_allow_use_nft  $cmd_command_ip4tablesnft \
 #### ipv6
 ####
 ####
+#### string
 $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
 -A  INPUT -m string --string $string_close \
 --algo $cfg_config_string_algoritmo \
@@ -12757,6 +12815,7 @@ $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
 -m comment --comment "drop-string" &> /dev/null
 ####
 ####
+#### string
 $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
 -A  OUTPUT -m string --string $string_close \
 --algo $cfg_config_string_algoritmo \
@@ -12764,6 +12823,7 @@ $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy \
 -m comment --comment "drop-string" &> /dev/null
 ####
 ####
+#### string
 $cfg_allow_use_ipv6 $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 -A  INPUT -m string --string $string_close \
 --algo $cfg_config_string_algoritmo \
@@ -12771,6 +12831,7 @@ $cfg_allow_use_ipv6 $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 -m comment --comment "drop-string" &> /dev/null
 ####
 ####
+#### string
 $cfg_allow_use_ipv6 $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 -A  OUTPUT -m string --string $string_close \
 --algo $cfg_config_string_algoritmo \
@@ -12779,6 +12840,7 @@ $cfg_allow_use_ipv6 $cfg_allow_use_nft $cmd_command_ip6tablesnft \
 ####
 ####
 done
+####
 ####
 fi
 ####
@@ -12794,6 +12856,7 @@ for string_allow in $(echo $cfg_config_string_allowed | $cmd_command_sed 's/,/ /
 #### ipv4
 ####
 ####
+#### string
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy  -A  INPUT  \
 -m string --string $string_allow \
@@ -12801,6 +12864,7 @@ $cmd_command_ip4tableslegacy  -A  INPUT  \
 -m comment --comment "allow-string" &> /dev/null
 ####
 ####
+#### string
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy  -A  OUTPUT \
 -m string --string $string_allow \
@@ -12808,6 +12872,7 @@ $cmd_command_ip4tableslegacy  -A  OUTPUT \
 -m comment --comment "allow-string" &> /dev/null
 ####
 ####
+#### string
 $cfg_allow_use_ipv4 $cfg_allow_use_nft  \
 $cmd_command_ip4tablesnft     -A  INPUT  \
 -m string --string $string_allow \
@@ -12815,6 +12880,7 @@ $cmd_command_ip4tablesnft     -A  INPUT  \
 -m comment --comment "allow-string" &> /dev/null
 ####
 ####
+#### string
 $cfg_allow_use_ipv4 $cfg_allow_use_nft  \
 $cmd_command_ip4tablesnft     -A  OUTPUT \
 -m string --string $string_allow \
@@ -12831,18 +12897,21 @@ $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A  INPUT
 -m comment --comment "allow-string" &> /dev/null
 ####
 ####
+#### string
 $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cmd_command_ip6tableslegacy -A  OUTPUT \
 -m string --string $string_allow \
 --algo $cfg_config_string_algoritmo -j ACCEPT  \
 -m comment --comment "allow-string" &> /dev/null
 ####
 ####
+#### string
 $cfg_allow_use_ipv6 $cfg_allow_use_nft $cmd_command_ip6tablesnft    -A  INPUT  \
 -m string --string $string_allow \
 --algo $cfg_config_string_algoritmo -j ACCEPT \
 -m comment --comment "allow-string" &> /dev/null
 ####
 ####
+#### string
 $cfg_allow_use_ipv6 $cfg_allow_use_nft  $cmd_command_ip6tablesnft    -A  OUTPUT \
 -m string --string $string_allow \
 --algo $cfg_config_string_algoritmo -j ACCEPT \
@@ -12859,6 +12928,8 @@ fi
 ####
 if [ "$cfg_allow_shield_maxtries" == "$NULL" ]; then
 ####
+####
+#### shield
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4  $cmd_command_ip4tableslegacy -A INPUT \
 -p tcp -m multiport --dports $cfg_config_shield_port -m state --state NEW -m recent \
 --set --name count-tries-ssh \
@@ -12877,6 +12948,7 @@ $cfg_allow_use_nft  $cfg_allow_use_ipv6  $cmd_command_ip6tablesnft -A INPUT \
 -m comment --comment "shield:tries-hour" &> /dev/null
 ####
 ####
+#### shield
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4  $cmd_command_ip4tableslegacy -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
 --hitcount $cfg_config_shield_maxtries -j $cfg_config_close_deny \
@@ -12894,6 +12966,7 @@ $cfg_allow_use_nft     $cfg_allow_use_ipv6  $cmd_command_ip6tablesnft -A INPUT \
 --hitcount $cfg_config_shield_maxtries -j $cfg_config_close_deny \
 -m comment --comment "shield:tries-hour" &> /dev/null
 ####
+####
 fi
 ####
 ####
@@ -12905,6 +12978,8 @@ fi
 ####
 if [ "$cfg_allow_input_bandwidth" == "$NULL" ] ; then
 ####
+####
+#### bandwidth
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cfg_allow_input_bandwidth \
 $cmd_command_ip4tableslegacy -A  INPUT \
 -m hashlimit --hashlimit-above   "$cfg_config_input_bandwidth"kb/sec \
@@ -12912,6 +12987,7 @@ $cmd_command_ip4tableslegacy -A  INPUT \
 -m comment --comment "output-bandwidth"  &> /dev/null
 ####
 ####
+#### bandwidth
 $cfg_allow_use_ipv4 $cfg_allow_use_nft $cfg_allow_input_bandwidth \
 $cmd_command_ip4tablesnft -A INPUT \
 -m hashlimit    --hashlimit-above "$cfg_config_input_bandwidth"kb/sec  \
@@ -12923,14 +12999,15 @@ fi
 if [ "$cfg_allow_output_bandwidth" == "$NULL" ] ; then
 ####
 ####
+#### bandwidth
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cfg_allow_output_bandwidth \
 $cmd_command_ip4tableslegacy -A OUTPUT \
 -m hashlimit --hashlimit-above  "$cfg_config_output_bandwidth"kb/sec \
 --hashlimit-mode dstip --hashlimit-name maxoutputlegacy -j $cfg_config_close_deny \
 -m comment --comment "output-bandwidth"  &> /dev/null
-
 ####
 ####
+#### bandwidth
 $cfg_allow_use_ipv4 $cfg_allow_use_nft $cfg_allow_output_bandwidth \
 $cmd_command_ip4tablesnft -A OUTPUT \
 -m hashlimit  --hashlimit-above "$cfg_config_output_bandwidth"kb/sec \
@@ -12945,6 +13022,8 @@ fi
 ####
 if [ "$cfg_allow_input_bandwidth" == "$NULL" ] ; then
 ####
+####
+#### bandwidth
 $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cfg_allow_input_bandwidth \
 $cmd_command_ip6tableslegacy -A INPUT \
 -m hashlimit --hashlimit-above "$cfg_config_input_bandwidth"kb/sec \
@@ -12952,23 +13031,28 @@ $cmd_command_ip6tableslegacy -A INPUT \
 -m comment --comment "output-bandwidth"  &> /dev/null
 ####
 ####
+#### bandwidth
 $cfg_allow_use_ipv6 $cfg_allow_use_nft $cfg_allow_input_bandwidth \
 $cmd_command_ip6tablesnft -A  INPUT \
 -m hashlimit --hashlimit-above "$cfg_config_input_bandwidth"kb/sec \
 --hashlimit-name maxinput  -j $cfg_config_close_deny \
 -m comment --comment "output-bandwidth"  &> /dev/null
 ####
+####
 fi
 ####
 ####
 if [ "$cfg_allow_output_bandwidth" == "$NULL" ] ; then
 ####
+####
+#### bandwidth
 $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cfg_allow_output_bandwidth \
 $cmd_command_ip6tableslegacy -A OUTPUT -m hashlimit --hashlimit-above \
 "$cfg_config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j $cfg_config_close_deny \
 -m comment --comment "output-bandwidth"  &> /dev/null
 ####
 ####
+#### bandwidth
 $cfg_allow_use_ipv6 $cfg_allow_use_nft $cfg_allow_output_bandwidth \
 $cmd_command_ip6tablesnft -A OUTPUT -m hashlimit --hashlimit-above \
 "$cfg_config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j $cfg_config_close_deny \
@@ -12985,22 +13069,28 @@ fi
 ####
 if [ "$cfg_allow_input_maxconnect" == "$NULL" ]; then
 ####
+####
+#### maxconnect
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cfg_allow_input_maxconnect \
 $cmd_command_ip4tableslegacy -A INPUT -m connlimit --connlimit-above \
 $cfg_config_input_maxconnect   -j $cfg_config_close_deny  \
 -m comment --comment "max-connect"  &> /dev/null
 ####
 ####
+#### maxconnect
 $cfg_allow_use_ipv4 $cfg_allow_use_nft $cfg_allow_input_maxconnect \
 $cmd_command_ip4tablesnft   -A INPUT -m connlimit --connlimit-above \
 $cfg_config_input_maxconnect       -j $cfg_config_close_deny \
 -m comment --comment "max-connect"  &> /dev/null
+####
 ####
 fi
 ####
 ####
 if [ "$cfg_allow_output_maxconnect" == "$NULL" ]; then
 ####
+####
+#### maxconnect
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy $cfg_allow_output_maxconnect \
 $cmd_command_ip4tableslegacy -A OUTPUT \
 -m connlimit --connlimit-above $cfg_config_output_maxconnect \
@@ -13008,6 +13098,7 @@ $cmd_command_ip4tableslegacy -A OUTPUT \
 -m comment --comment "max-connect"  &> /dev/null
 ####
 ####
+#### maxconnect
 $cfg_allow_use_ipv4 $cfg_allow_use_nft $cfg_allow_output_maxconnect \
 $cmd_command_ip4tablesnft  -A OUTPUT \
 -m connlimit --connlimit-above $cfg_config_output_maxconnect \
@@ -13022,6 +13113,8 @@ fi
 ####
 if [ "$cfg_allow_input_maxconnect" == "$NULL" ]; then
 ####
+####
+#### bandwidth
 $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cfg_allow_input_maxconnect \
 $cmd_command_ip6tableslegacy -A INPUT  \
 -m connlimit --connlimit-above $cfg_config_input_maxconnect \
@@ -13029,6 +13122,7 @@ $cmd_command_ip6tableslegacy -A INPUT  \
 -m comment --comment "max-connect"  &> /dev/null
 ####
 ####
+#### bandwidth
 $cfg_allow_use_ipv6 $cfg_allow_use_nft $cfg_allow_input_maxconnect \
 $cmd_command_ip6tablesnft   -A INPUT  \
 -m connlimit --connlimit-above $cfg_config_input_maxconnect \
@@ -13040,6 +13134,8 @@ fi
 ####
 if [ "$cfg_allow_output_maxconnect" == "$NULL" ]; then
 ####
+####
+#### maxconnect
 $cfg_allow_use_ipv6 $cfg_allow_use_legacy $cfg_allow_output_maxconnect \
 $cmd_command_ip6tableslegacy -A OUTPUT \
 -m connlimit --connlimit-above $cfg_config_output_maxconnect \
@@ -13047,11 +13143,13 @@ $cmd_command_ip6tableslegacy -A OUTPUT \
 -m comment --comment "max-connect"  &> /dev/null
 ####
 ####
+#### maxconnect
 $cfg_allow_use_ipv6 $cfg_allow_use_nft $cfg_allow_output_maxconnect \
 $cmd_command_ip6tablesnft  -A OUTPUT \
 -m connlimit --connlimit-above $cfg_config_output_maxconnect \
 -j $cfg_config_close_deny \
 -m comment --comment "max-connect"  &> /dev/null
+####
 ####
 fi
 ####
@@ -13065,7 +13163,6 @@ if [ "$cfg_allow_separate_rules" == "no" ]; then
 ####    CLIENT  UDP
 ####
 #### ipv4 legacy udp
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
 -p udp -m multiport $cfg_config_input_state --sports $cfg_client_port_udp \
 -s $cfg_config_ipv4_netclient -j ACCEPT \
@@ -13077,7 +13174,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPU
 ####
 #### 
 #### ipv4 nft udp
-####
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
 -p udp -m multiport $cfg_config_input_state --sports $cfg_client_port_udp \
 -s $cfg_config_ipv4_netclient -j ACCEPT \
@@ -13089,7 +13185,6 @@ $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
 ####
 ####
 #### ipv6 legacy udp
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT \
 -p udp -m multiport $cfg_config_input_state --sports $cfg_client_port_udp \
 -s $cfg_config_ipv6_netclient -j ACCEPT \
@@ -13101,8 +13196,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPU
 ####
 ####
 #### ipv6 nft udp
-####
-####
 $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT \
 -p tcp -m multiport $cfg_config_input_state --sports $cfg_client_port_udp \
 -s $cfg_config_ipv6_netclient -j ACCEPT \
@@ -13116,7 +13209,6 @@ $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
 ####    CLIENT  TCP
 ####
 #### ipv4 legacy tcp
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
 -p tcp -m multiport $cfg_config_input_state --sports $cfg_client_port_tcp \
 -s $cfg_config_ipv4_netclient -j ACCEPT \
@@ -13128,7 +13220,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPU
 ####
 #### 
 #### ipv4 nft tcp
-####
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
 -p tcp -m multiport $cfg_config_input_state --sports $cfg_client_port_tcp \
 -s $cfg_config_ipv4_netclient -j ACCEPT \
@@ -13140,7 +13231,6 @@ $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
 ####
 ####
 #### ipv6 legacy tcp
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT \
 -p tcp -m multiport $cfg_config_input_state --sports $cfg_client_port_tcp \
 -s $cfg_config_ipv6_netclient -j ACCEPT \
@@ -13152,8 +13242,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPU
 ####
 ####
 #### ipv6 nft tcp
-####
-####
 $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT \
 -p tcp -m multiport $cfg_config_input_state --sports $cfg_client_port_tcp \
 -s $cfg_config_ipv6_netclient -j ACCEPT \
@@ -13178,7 +13266,6 @@ do
 ####    CLIENT  UDP
 ####
 #### ipv4 legacy udp
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
 -p udp -m multiport $cfg_config_input_state --sports $one_udp \
 -s $cfg_config_ipv4_netclient -j ACCEPT \
@@ -13190,7 +13277,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPU
 ####
 #### 
 #### ipv4 nft udp
-####
 $cfg_allow_use_nft $cfg_allow_use_ipv4     $cmd_command_ip4tablesnft -A INPUT \
 -p udp -m multiport $cfg_config_input_state --sports $one_udp \
 -s $cfg_config_ipv4_netclient -j ACCEPT \
@@ -13202,7 +13288,6 @@ $cfg_allow_use_nft $cfg_allow_use_ipv4     $cmd_command_ip4tablesnft -A OUTPUT \
 ####
 ####
 #### ipv6 legacy udp
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT \
 -p udp -m multiport $cfg_config_input_state --sports $one_udp \
 -s $cfg_config_ipv6_netclient -j ACCEPT \
@@ -13214,8 +13299,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPU
 ####
 ####
 #### ipv6 nft udp
-####
-####
 $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT \
 -p tcp -m multiport $cfg_config_input_state --sports $one_udp \
 -s $cfg_config_ipv6_netclient -j ACCEPT \
@@ -13237,7 +13320,6 @@ do
 ####    CLIENT TCP
 ####
 #### ipv4 legacy tcp
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT \
 -p tcp -m multiport $cfg_config_input_state --sports $one_tcp \
 -s $cfg_config_ipv4_netclient -j ACCEPT \
@@ -13249,7 +13331,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPU
 ####
 #### 
 #### ipv4 nft tcp
-####
 $cfg_allow_use_nft $cfg_allow_use_ipv4     $cmd_command_ip4tablesnft -A INPUT \
 -p tcp -m multiport $cfg_config_input_state --sports $one_tcp \
 -s $cfg_config_ipv4_netclient -j ACCEPT \
@@ -13261,7 +13342,6 @@ $cfg_allow_use_nft $cfg_allow_use_ipv4     $cmd_command_ip4tablesnft -A OUTPUT \
 ####
 ####
 #### ipv6 legacy tcp
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT \
 -p tcp -m multiport $cfg_config_input_state --sports $one_tcp \
 -s $cfg_config_ipv6_netclient -j ACCEPT \
@@ -13273,8 +13353,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPU
 ####
 ####
 #### ipv6 nft tcp
-####
-####
 $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT \
 -p tcp -m multiport $cfg_config_input_state --sports $one_tcp \
 -s $cfg_config_ipv6_netclient -j ACCEPT \
@@ -13294,6 +13372,7 @@ done ; fi
 #### ipv4
 ####
 ####
+#### ipv4 log
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4  $cmd_command_ip4tableslegacy -A INPUT  \
 -p tcp  -m multiport --dports $cfg_server_log_port_tcp \
 -j $cfg_config_system_log \
@@ -13304,6 +13383,7 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv4  $cmd_command_ip4tableslegacy -A INPU
 -m comment --comment "logserver-udp"  &> /dev/null
 ####
 ####
+#### ipv4 log
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4  $cmd_command_ip4tableslegacy -A OUTPUT \
 -p tcp -m multiport --sports $cfg_server_log_port_tcp \
 -j $cfg_config_system_log \
@@ -13314,6 +13394,7 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv4  $cmd_command_ip4tableslegacy -A OUTP
 -m comment --comment "logserver-udp"  &> /dev/null
 ####
 ####
+#### ipv4 log
 $cfg_allow_use_nft     $cfg_allow_use_ipv4  $cmd_command_ip4tablesnft    -A INPUT  \
 -p tcp  -m multiport --dports $cfg_server_log_port_tcp \
 -j $cfg_config_system_log \
@@ -13324,6 +13405,7 @@ $cfg_allow_use_nft     $cfg_allow_use_ipv4  $cmd_command_ip4tablesnft    -A INPU
 -m comment --comment "logserver-udp"  &> /dev/null
 ####
 ####
+#### ipv4 log
 $cfg_allow_use_nft     $cfg_allow_use_ipv4  $cmd_command_ip4tablesnft    -A OUTPUT \
 -p tcp -m multiport --sports $cfg_server_log_port_tcp \
 -j $cfg_config_system_log \
@@ -13334,9 +13416,7 @@ $cfg_allow_use_nft     $cfg_allow_use_ipv4  $cmd_command_ip4tablesnft    -A OUTP
 -m comment --comment "logserver-udp"  &> /dev/null
 ####
 ####
-#### ipv6
-####
-####
+#### ipv6 log
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6   $cmd_command_ip6tableslegacy -A INPUT   \
 -p tcp  -m multiport --dports $cfg_server_log_port_tcp \
 -j $cfg_config_system_log \
@@ -13347,6 +13427,7 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv6   $cmd_command_ip6tableslegacy -A INP
 -m comment --comment "logserver-udp"  &> /dev/null
 ####
 ####
+#### ipv6 log
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6   $cmd_command_ip6tableslegacy -A OUTPUT  \
 -p tcp -m multiport --sports $cfg_server_log_port_tcp \
 -j $cfg_config_system_log \
@@ -13357,6 +13438,7 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv6   $cmd_command_ip6tableslegacy -A OUT
 -m comment --comment "logserver-udp"  &> /dev/null
 ####
 ####
+#### ipv6 log
 $cfg_allow_use_nft     $cfg_allow_use_ipv6   $cmd_command_ip6tablesnft    -A INPUT   \
 -p tcp  -m multiport --dports $cfg_server_log_port_tcp \
 -j $cfg_config_system_log \
@@ -13367,6 +13449,7 @@ $cfg_allow_use_nft     $cfg_allow_use_ipv6   $cmd_command_ip6tablesnft    -A INP
 -m comment --comment "logserver-udp"  &> /dev/null
 ####
 ####
+#### ipv6 log
 $cfg_allow_use_nft     $cfg_allow_use_ipv6   $cmd_command_ip6tablesnft    -A OUTPUT  \
 -p tcp -m multiport --sports $cfg_server_log_port_tcp \
 -j $cfg_config_system_log \
@@ -13387,50 +13470,48 @@ if [ "$cfg_allow_separate_rules" != "$NULL" ]; then
 ####
 ####
 #### ipv4 legacy
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT  \
 -p tcp -m multiport --dports $cfg_server_port_tcp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
 ####
 ####
+#### ipv4 legacy
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPUT \
 -p tcp -m multiport --sports $cfg_server_port_tcp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
 ####
 #### 
 #### ipv4 nft
-####
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
 -p tcp -m multiport --dports $cfg_server_port_tcp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
 ####
 ####
+#### ipv4 nft
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
 -p tcp -m multiport --sports $cfg_server_port_tcp -d $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
 ####
 ####
 #### ipv6 legacy
-####
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
 -p tcp -m multiport --dports $cfg_server_port_tcp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
 ####
 ####
+#### ipv6 legacy
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPUT \
 -p tcp -m multiport --sports $cfg_server_port_tcp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
 ####
 ####
 #### ipv6 nft
-####
-####
 $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT  \
 -p tcp -m multiport --dports $cfg_server_port_tcp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
 ####
 ####
+#### ipv6 nft
 $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A OUTPUT \
 -p tcp -m multiport --sports $cfg_server_port_tcp -d $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
@@ -13446,7 +13527,6 @@ if [ "$cfg_allow_separate_rules" != "$NULL" ]; then
 ####
 ####
 #### ipv4 legacy
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT  \
 -p udp -m multiport --dports $cfg_server_port_udp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-udp" &> /dev/null
@@ -13456,8 +13536,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPU
 ####
 #### 
 #### ipv4 nft
-####
-####
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
 -p udp -m multiport --dports $cfg_server_port_udp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-udp" &> /dev/null
@@ -13467,8 +13545,6 @@ $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
 ####
 ####
 #### ipv6 legacy
-####
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
 -p udp -m multiport --dports $cfg_server_port_udp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-udp" &> /dev/null
@@ -13478,8 +13554,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPU
 ####
 ####
 #### ipv6 nft
-####
-####
 $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT  \
 -p udp -m multiport --dports $cfg_server_port_udp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-udp" &> /dev/null
@@ -13506,7 +13580,6 @@ do
 ####
 ####
 #### ipv4 legacy
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT  \
 -p tcp -m multiport --dports $one_tcp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
@@ -13516,7 +13589,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPU
 ####
 #### 
 #### ipv4 nft
-####
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
 -p tcp -m multiport --dports $one_tcp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
@@ -13526,8 +13598,6 @@ $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
 ####
 ####
 #### ipv6 legacy
-####
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
 -p tcp -m multiport --dports $one_tcp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
@@ -13537,8 +13607,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPU
 ####
 ####
 #### ipv6 nft
-####
-####
 $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT  \
 -p tcp -m multiport --dports $one_tcp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-tcp" &> /dev/null
@@ -13553,13 +13621,14 @@ done; fi
 ####################################### rules allow server ports with udp
 ####
 ####
-if [ "$cfg_allow_separate_rules" == "$NULL" ]; then 
+if [ "$cfg_allow_separate_rules" == "$NULL" ]; then
+####
+####
 for one_udp in $(echo $cfg_server_port_udp | $cmd_command_sed 's/,/ /g') ;
 do
 ####
 ####
 #### ipv4 legacy
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A INPUT  \
 -p udp -m multiport --dports $one_udp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-udp" &> /dev/null
@@ -13569,7 +13638,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cmd_command_ip4tableslegacy -A OUTPU
 ####
 #### 
 #### ipv4 nft
-####
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A INPUT \
 -p udp -m multiport --dports $one_udp -s $cfg_config_ipv4_netserver -j ACCEPT \
 -m comment --comment "server-udp" &> /dev/null
@@ -13579,8 +13647,6 @@ $cfg_allow_use_nft $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -A OUTPUT \
 ####
 ####
 #### ipv6 legacy
-####
-####
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT  \
 -p udp -m multiport --dports $one_udp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-udp" &> /dev/null
@@ -13590,8 +13656,6 @@ $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A OUTPU
 ####
 ####
 #### ipv6 nft
-####
-####
 $cfg_allow_use_nft  $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT  \
 -p udp -m multiport --dports $one_udp -s $cfg_config_ipv6_netserver -j ACCEPT \
 -m comment --comment "server-udp" &> /dev/null
@@ -13609,24 +13673,28 @@ done; fi
 ################## rules from input of legacy ipv4 for ping, uid, gid and protocols
 ####
 ####
+#### allow echo reply input
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_allow_output_ping \
 $cmd_command_ip4tableslegacy -A INPUT  \
 -p icmp --icmp-type echo-reply -j ACCEPT \
 -m comment --comment "icmp-reply" &> /dev/null
 ####
 ####
+#### allow echo request input
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_allow_input_ping \
 $cmd_command_ip4tableslegacy -A INPUT \
 -p icmp --icmp-type echo-request -j ACCEPT \
 -m comment --comment "icmp-resquest" &> /dev/null
 ####
 ####
+#### allow related,established in uid gid input
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_config_uid_gid \
 $cmd_command_ip4tableslegacy -A INPUT \
 -m state --state related,established -j ACCEPT \
 -m comment --comment "uid-gid" &> /dev/null
 ####
 ####
+#### allow protocol input
 for one_protocol in $(echo $cfg_config_others_protocols | $cmd_command_sed 's/,/ /g')
 do $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_allow_others_protocols \
 $cmd_command_ip4tableslegacy -A INPUT \
@@ -13638,18 +13706,21 @@ done
 ################# rules from output of legacy ipv4 for ping, uid, gid and protocols
 ####
 ####
+#### allow echo reply request
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_allow_output_ping \
 $cmd_command_ip4tableslegacy   -A OUTPUT \
 -p icmp --icmp-type echo-request -j ACCEPT \
 -m comment --comment "icmp-request" &> /dev/null
 ####
 ####
+#### allow echo reply output
 $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_allow_input_ping \
 $cmd_command_ip4tableslegacy -A OUTPUT \
 -p icmp --icmp-type echo-reply -j ACCEPT \
 -m comment --comment "icmp-reply" &> /dev/null
 ####
 ####
+#### allow gid output
 for uid in $(echo $cfg_config_output_uid | $cmd_command_sed 's/,/ /g') ;
 do $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_allow_output_uid \
 $cmd_command_ip4tableslegacy   -A OUTPUT \
@@ -13658,6 +13729,7 @@ $cmd_command_ip4tableslegacy   -A OUTPUT \
 done
 ####
 ####
+#### allow gid output
 for gid in $(echo $cfg_config_output_gid | $cmd_command_sed 's/,/ /g') ;
 do $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_allow_output_gid \
 $cmd_command_ip4tableslegacy   -A OUTPUT \
@@ -13666,6 +13738,7 @@ $cmd_command_ip4tableslegacy   -A OUTPUT \
 done
 ####
 ####
+#### allow protocol output
 for one_protocol in $(echo $cfg_config_others_protocols | $cmd_command_sed 's/,/ /g')
 do $cfg_allow_use_legacy  $cfg_allow_use_ipv4 $cfg_allow_others_protocols \
 $cmd_command_ip4tableslegacy -A OUTPUT \
@@ -13680,29 +13753,34 @@ done
 #### ipv6 filter legacy rules input 
 ####
 ####
+#### allow icmp ip6 reply input
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cfg_allow_output_ping \
 $cmd_command_ip6tableslegacy -A INPUT \
 -p icmpv6 --icmpv6-type echo-reply -j ACCEPT \
 -m comment --comment "icmp-nexthop" &> /dev/null
 ####
 ####
+#### allow icmp ip6 request input
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cfg_allow_input_ping \
 $cmd_command_ip6tableslegacy -A INPUT \
 -p icmpv6 --icmpv6-type echo-request -j ACCEPT \
 -m comment --comment "icmp-nexthop" &> /dev/null
 ####
 ####
+#### allow gid input
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cfg_config_uid_gid \
 $cmd_command_ip6tableslegacy -A INPUT \
 -m state --state related,established -j ACCEPT \
 -m comment --comment "uid-gid" &> /dev/null
 ####
 ####
+#### allow icmp-v6 input
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy -A INPUT \
 -p ipv6-icmp -j ACCEPT \
 -m comment --comment "icmp-nexthop" &> /dev/null
 ####
 ####
+#### allow protocol input
 for one_protocol in $(echo $cfg_config_others_protocols | $cmd_command_sed 's/,/ /g')
 do $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cfg_allow_others_protocols \
 $cmd_command_ip6tableslegacy -A INPUT \
@@ -13720,12 +13798,14 @@ $cmd_command_ip6tableslegacy   -A OUTPUT \
 -m comment --comment "icmp-request" &> /dev/null
 ####
 ####
+#### allow icmp-v6 output
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cfg_allow_input_ping \
 $cmd_command_ip6tableslegacy -A OUTPUT \
 -p icmpv6 --icmpv6-type echo-reply -j ACCEPT \
 -m comment --comment "icmp-reply" &> /dev/null
 ####
 ####
+#### allow uid output
 for uid in $(echo $cfg_config_output_uid | $cmd_command_sed 's/,/ /g') ;
 do $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cfg_allow_output_uid \
 $cmd_command_ip6tableslegacy   -A OUTPUT \
@@ -13734,6 +13814,7 @@ $cmd_command_ip6tableslegacy   -A OUTPUT \
 done
 ####
 ####
+#### allow gid output
 for gid in $(echo $cfg_config_output_gid | $cmd_command_sed 's/,/ /g') ;
 do $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cfg_allow_output_gid \
 $cmd_command_ip6tableslegacy   -A OUTPUT \
@@ -13742,11 +13823,13 @@ $cmd_command_ip6tableslegacy   -A OUTPUT \
 done
 ####
 ####
+#### allow icmp-v6 output
 $cfg_allow_use_legacy  $cfg_allow_use_ipv6 $cmd_command_ip6tableslegacy \
 -A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "icmp-nexthop" &> /dev/null
 ####
 ####
+#### allow protocol output
 for one_protocol in $(echo $others_protocols | $cmd_command_sed 's/,/ /g')
 do $cfg_allow_use_legacy6  $cfg_allow_use_ipv6 $cfg_allow_others_protocols \
 $cmd_command_ip6tableslegacy -A OUTPUT \
@@ -14158,6 +14241,7 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft -A OUTPUT -j $cfg_config_close_deny
 $cfg_allow_use_nft $cmd_command_ip6tablesnft -A FORWARD -j $cfg_config_close_deny \
 -m comment --comment "close-rule" &> /dev/null
 ####
+####
 fi
 ####
 ####
@@ -14230,7 +14314,6 @@ $cfg_allow_input_bandwidth ip6tables-nft -A  INPUT \
 ####
 ####
 #### ipv4  limit conections numbers
-#### ipv4  limita numero de conexiones
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cfg_allow_input_maxconnect  $cmd_command_ip4tableslegacy -A INPUT \
 -m connlimit --connlimit-above $cfg_config_input_maxconnect \
@@ -14308,7 +14391,6 @@ fi
 if [ "$cfg_allow_output_all" == "$NULL" ]; then 
 ####
 ####
-####
 ####  nft OUTPUT deleted
 $cfg_allow_output_all $cfg_allow_use_ipv4 \
 $cfg_allow_use_nft $cmd_command_ip4tablesnft -t filter -F OUTPUT  &> /dev/null
@@ -14343,6 +14425,7 @@ $cfg_allow_output_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
 $cmd_command_ip6tableslegacy -t filter -A OUTPUT \
 -s $cfg_config_ip6_localhost -d $cfg_config_ip6_localhost -j ACCEPT \
 -m comment --comment "host-localhost" &> /dev/null
+####
 ####
 fi
 ####
