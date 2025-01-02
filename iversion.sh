@@ -8108,13 +8108,15 @@ echo "$txt_text_title_info  [iperf3 performace: ] \
 [$cfg_server_ip_iperf_ipv4 $cfg_server_port_iperf_ipv4]"
 echo "$txt_text_title"
 $cmd_internal save before-speed-ip4
+echo "$txt_text_title"
 $cmd_internal add-whitelist4 $cfg_server_ip_iperf_ipv4
 echo "$txt_text_title"
 echo "$txt_text_stitle [ Working ] Conecting in ipv4 to $cfg_server_ip_iperf_ipv4"
 $cmd_command_iperf -c "$cfg_server_ip_iperf_ipv4" \
 -p "$cfg_server_port_iperf_ipv4" -4 -t 3 --bidir --connect-timeout 3000
 echo "$txt_text_title"
-$cmd_internal load before-speed-ip4 
+$cmd_internal load before-speed-ip4
+echo "$txt_text_title"
 echo "$txt_text_title_done $cmd_internal speed-ip4"
 ####
 ####
@@ -8142,14 +8144,16 @@ if [ "$3" != "$NULL" ]; then cfg_server_port_iperf_ipv6="$3" ; fi
 #### test
 echo "$txt_text_title_info  [iperf3 performace: ] \
 [$cfg_server_ip_iperf_ipv6 $cfg_server_port_iperf_ipv6]"
-$cmd_internal save before-speed-ip6 
+$cmd_internal save before-speed-ip6
+echo "$txt_text_title"
 $cmd_internal add-whitelist6 $cfg_server_ip_iperf_ipv6
 echo "$txt_text_title"
 echo "$txt_text_stitle [ Working ] Conecting in ipv6 to $cfg_server_ip_iperf_ipv6"
 $cmd_command_iperf -c "$cfg_server_ip_iperf_ipv6" \
 -p "$cfg_server_port_iperf_ipv6" -6 -t 3 --bidir --connect-timeout 3000
 echo "$txt_text_title"
-$cmd_internal load before-speed-ip6 
+$cmd_internal load before-speed-ip6
+echo "$txt_text_title" 
 echo "$txt_text_title_done $cmd_internal speed-ip6"
 ####
 ####
