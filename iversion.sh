@@ -13761,24 +13761,28 @@ done
 #### ipv4 filter nft rules input
 ####
 ####
+#### allow ping reply
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_allow_output_ping \
 $cmd_command_ip4tablesnft -A INPUT \
 -p icmp --icmp-type echo-reply -j ACCEPT \
 -m comment --comment "icmp-reply" &> /dev/null
 ####
 ####
+#### allow ping request
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_allow_input_ping \
 $cmd_command_ip4tablesnft -A INPUT \
 -p icmp --icmp-type echo-request -j ACCEPT \
 -m comment --comment "icmp-request" &> /dev/null
 ####
 ####
+#### allow related,established
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_config_uid_gid \
 $cmd_command_ip4tablesnft -A INPUT \
 -m state --state related,established -j ACCEPT \
 -m comment --comment "uid-gid" &> /dev/null
 ####
 ####
+#### allow protocol input
 for one_protocol in $(echo $cfg_config_others_protocols | $cmd_command_sed 's/,/ /g')
 do $cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_allow_others_protocols \
 $cmd_command_ip4tablesnft -A INPUT \
@@ -13790,18 +13794,21 @@ done
 ####  ipv4 filter nft rules output
 ####
 ####
+#### allow ping request output
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_allow_output_ping \
 $cmd_command_ip4tablesnft -A OUTPUT \
 -p icmp --icmp-type echo-request -j ACCEPT \
 -m comment --comment "icmp-request" &> /dev/null
 ####
 ####
+#### allow ping reply output
 $cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_allow_input_ping \
 $cmd_command_ip4tablesnft -A OUTPUT \
 -p icmp --icmp-type echo-reply -j ACCEPT \
 -m comment --comment "icmp-reply" &> /dev/null
 ####
 ####
+#### allow uid output
 for uid in $(echo $cfg_config_output_uid | $cmd_command_sed 's/,/ /g') ;
 do $cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_allow_output_uid \
 $cmd_command_ip4tablesnft   -A OUTPUT \
@@ -13810,6 +13817,7 @@ $cmd_command_ip4tablesnft   -A OUTPUT \
 done
 ####
 ####
+#### allow gid output
 for gid in $(echo $cfg_config_output_gid | $cmd_command_sed 's/,/ /g') ;
 do $cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_allow_output_gid \
 $cmd_command_ip4tablesnft   -A OUTPUT \
@@ -13818,6 +13826,7 @@ $cmd_command_ip4tablesnft   -A OUTPUT \
 done
 ####
 ####
+#### allow protocol output
 for one_protocol in $(echo $cfg_config_others_protocols | $cmd_command_sed 's/,/ /g')
 do $cfg_allow_use_nft $cfg_allow_use_ipv4 $cfg_allow_others_protocols \
 $cmd_command_ip4tablesnft -A OUTPUT \
@@ -13833,29 +13842,34 @@ done
 #### ipv6 filtros nft reglas d entrada
 ####
 ####
+#### ip6 accept input ping reply
 $cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_output_ping \
 $cmd_command_ip6tablesnft -A INPUT \
 -p icmpv6 --icmpv6-type echo-reply -j ACCEPT \
 -m comment --comment "icmp-reply" &> /dev/null
 ####
 ####
+#### ip6 accept input ping request
 $cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_input_ping \
 $cmd_command_ip6tablesnft -A INPUT \
 -p icmpv6 --icmpv6-type echo-request -j ACCEPT \
 -m comment --comment "imcp-request" &> /dev/null
 ####
 ####
+#### accept related,established input
 $cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_config_uid_gid \
 $cmd_command_ip6tablesnft -A INPUT \
 -m state --state related,established -j ACCEPT \
 -m comment --comment "uid-gid" &> /dev/null
 ####
 ####
+#### accept ipv6-icmp nexthop input
 $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft -A INPUT \
 -p ipv6-icmp -j ACCEPT \
 -m comment --comment "icmp-nexthop" &> /dev/null
 ####
 ####
+#### accept other protocol input
 for one_protocol in $(echo $cfg_config_others_protocols | $cmd_command_sed 's/,/ /g')
 do $cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_others_protocols \
 $cmd_command_ip6tablesnft -A INPUT \
@@ -13865,20 +13879,20 @@ done
 ####
 ####
 ####  ipv6 filter nft rules output
-####
-####
 $cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_output_ping \
 $cmd_command_ip6tablesnft -A OUTPUT \
 -p icmpv6 --icmpv6-type echo-request -j ACCEPT \
 -m comment --comment "icmp-request" &> /dev/null
 ####
 ####
+#### accept ipv6-icmp output echo-reply
 $cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_input_ping \
 $cmd_command_ip6tablesnft -A OUTPUT \
 -p icmpv6 --icmpv6-type echo-reply -j ACCEPT \
 -m comment --comment "icmp-reply" &> /dev/null
 ####
 ####
+#### uid output allow
 for uid in $(echo $cfg_config_output_uid | $cmd_command_sed 's/,/ /g') ;
 do $cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_output_uid \
 $cmd_command_ip6tablesnft -A OUTPUT \
@@ -13887,6 +13901,7 @@ $cmd_command_ip6tablesnft -A OUTPUT \
 done
 ####
 ####
+#### gid output allow
 for gid in $(echo $cfg_config_output_gid | $cmd_command_sed 's/,/ /g') ;
 do $cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_output_gid \
 $cmd_command_ip6tablesnft -A OUTPUT \
@@ -13895,11 +13910,13 @@ $cmd_command_ip6tablesnft -A OUTPUT \
 done
 ####
 ####
+#### accept ipv6-icmp output nexthop
 $cfg_allow_use_nft $cfg_allow_use_ipv6 $cmd_command_ip6tablesnft \
 -A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "icmp-nexthop" &> /dev/null
 ####
 ####
+#### allow other protocols output
 for one_protocol in $(echo $cfg_config_others_protocols | $cmd_command_sed 's/,/ /g')
 do $cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_others_protocols \
 $cmd_command_ip6tablesnft -A OUTPUT \
@@ -13922,6 +13939,7 @@ done
 if [ "$cfg_allow_gateway_ip4" == "$NULL" ]; then 
 ####
 ####
+#### gateway ip4 postrouting
 $cfg_allow_use_nft    $cfg_allow_use_ipv4    $cfg_allow_gateway_ip4 \
 $cmd_command_ip4tablesnft -t nat \
 -A POSTROUTING -j MASQUERADE -s $cfg_config_gateway_ip4 \
@@ -13932,6 +13950,7 @@ $cmd_command_ip4tableslegacy -t nat \
 -m comment --comment "ip-gateway" &>/dev/null
 ####
 ####
+#### gateway ip4 prerouting
 $cfg_allow_use_nft $cfg_allow_use_ipv4 \
 $cfg_allow_gateway_ip4 $cmd_command_ip4tablesnft -t nat \
 -A PREROUTING -j ACCEPT -d $cfg_config_gateway_ip4 \
@@ -13941,12 +13960,14 @@ $cfg_allow_gateway_ip4 $cmd_command_ip4tableslegacy -t nat \
 -A PREROUTING -j ACCEPT -d $cfg_config_gateway_ip4 \
 -m comment --comment "ip-gateway" &>/dev/null
 ####
+####
 fi
 ####
 ####
 if [ "$cfg_allow_gateway_ip6" == "$NULL" ]; then 
 ####
 ####
+#### gateway postrouting ip6
 $cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_gateway_ip6 \
 $cmd_command_ip6tablesnft -t nat \
 -A POSTROUTING -j MASQUERADE -s $cfg_config_gateway_ip6 \
@@ -13957,6 +13978,7 @@ $cmd_command_ip6tableslegacy -t nat \
 -m comment --comment "ip-gateway" &>/dev/null
 ####
 ####
+#### gateway prerouting ip6
 $cfg_allow_use_nft $cfg_allow_use_ipv6 $cfg_allow_gateway_ip6 \
 $cmd_command_ip6tablesnft -t nat \
 -A PREROUTING -j ACCEPT -d $cfg_config_gateway_ip6 \
@@ -13965,6 +13987,7 @@ $cfg_allow_use_legacy $cfg_allow_use_ipv6 $cfg_allow_gateway_ip6 \
 $cmd_command_ip6tableslegacy -t nat \
 -A PREROUTING -j ACCEPT -d $cfg_config_gateway_ip6 \
 -m comment --comment "ip-gatway" &>/dev/null
+####
 ####
 fi
 ####
@@ -13975,6 +13998,7 @@ fi
 if [ "$cfg_config_dmz_ip4" == "$NULL" ]; then 
 ####
 ####
+#### dmz ip4
 $cfg_allow_use_nft    $cfg_allow_use_ipv4    $cfg_allow_dmz_ip4 \
 $cmd_command_ip4tablesnft -t nat \
 -A PREROUTING -j DNAT --to-destination $cfg_config_dmz_ip4 \
@@ -13990,6 +14014,7 @@ fi
 if [ "$cfg_config_dmz_ip6" == "$NULL" ]; then 
 ####
 ####
+#### dmz ip6
 $cfg_allow_use_nft $cfg_allow_use_ipv6    $cfg_allow_dmz_ip6 \
 $cmd_command_ip6tablesnft -t nat \
 -A PREROUTING -j DNAT --to-destination $cfg_config_dmz_ip6 \
@@ -14044,8 +14069,6 @@ if [ "$cfg_allow_close_log" == "$NULL" ]; then
 ####
 ####
 #### nft INPUT LOG CLOSE
-####
-####
 $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cmd_command_ip4tablesnft -t filter -A INPUT   -j $cfg_config_system_log \
 -m comment --comment "close-log" &> /dev/null
@@ -14055,8 +14078,6 @@ $cmd_command_ip6tablesnft -t filter -A INPUT  -j $cfg_config_system_log \
 ####
 ####
 #### legacy INPUT LOG CLOSE
-####
-####
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy  -t filter -A INPUT  -j $cfg_config_system_log \
 -m comment --comment "close-log" &> /dev/null
@@ -14075,8 +14096,6 @@ if [ "$cfg_allow_close_log" == "$NULL" ]; then
 ####
 ####
 #### nft OUPUT LOG CLOSE
-####
-####
 $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cmd_command_ip4tablesnft -t filter -A OUTPUT  -j $cfg_config_system_log \
 -m comment --comment "close-log" &> /dev/null
@@ -14086,8 +14105,6 @@ $cmd_command_ip6tablesnft -t filter -A OUTPUT  -j $cfg_config_system_log \
 ####
 ####
 #### legacy OUPUT LOG CLOSE
-####
-####
 $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy  -t filter -A OUTPUT  -j $cfg_config_system_log \
 -m comment --comment "close-log" &> /dev/null
@@ -14132,6 +14149,7 @@ $cfg_allow_use_nft $cmd_command_ip4tablesnft -A OUTPUT -j $cfg_config_close_deny
 $cfg_allow_use_nft $cmd_command_ip4tablesnft -A FORWARD -j $cfg_config_close_deny \
 -m comment --comment "close-rule" &> /dev/null
 ####
+####
 #### ipv6 drop rules iptables-nft
 $cfg_allow_use_nft $cmd_command_ip6tablesnft -A INPUT -j $cfg_config_close_deny \
 -m comment --comment "close-rule" &> /dev/null
@@ -14150,8 +14168,6 @@ if [ "$cfg_allow_input_all" == "$NULL" ]; then
 ####
 ####
 #### nft INPUT deleted
-####
-####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cmd_command_ip4tablesnft -t filter -F INPUT  &> /dev/null
 $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_nft \
@@ -14159,8 +14175,6 @@ $cmd_command_ip6tablesnft -t filter -F INPUT  &> /dev/null
 ####
 ####
 #### legacy INPUT deleted
-####
-####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy -t filter -F INPUT  &> /dev/null
 $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
@@ -14168,8 +14182,6 @@ $cmd_command_ip6tableslegacy -t filter -F INPUT  &> /dev/null
 ####
 ####
 #### nft INPUT 127.0.0.1 accept
-####
-####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cmd_command_ip4tablesnft -t filter -A INPUT \
 -s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost -j ACCEPT \
@@ -14181,8 +14193,6 @@ $cmd_command_ip6tablesnft -t filter -A INPUT \
 ####
 ####
 #### legacy INPUT 127.0.0.1 accept
-####
-####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy -t filter -A INPUT \
 -s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost -j ACCEPT \
@@ -14194,8 +14204,6 @@ $cmd_command_ip6tableslegacy -t filter -A INPUT \
 ####
 ####
 #### legacy4 INPUT  limit bandwidth
-####
-####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cfg_allow_input_bandwidth iptables-legacy -A  INPUT \
 -m hashlimit --hashlimit-above "$cfg_config_input_bandwidth"kb/sec \
@@ -14209,8 +14217,6 @@ $cfg_allow_input_bandwidth ip6tables-legacy -A  INPUT \
 ####
 ####
 #### nft4 INPUT limit bandwidth
-####
-####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cfg_allow_input_bandwidth iptables-nft -A  INPUT \
 -m hashlimit --hashlimit-above "$cfg_config_input_bandwidth"kb/sec \
@@ -14223,10 +14229,8 @@ $cfg_allow_input_bandwidth ip6tables-nft -A  INPUT \
 -m comment --comment "input-bandwidth kb/s" &> /dev/null
 ####
 ####
-####  ipv4  limit conections numbers
+#### ipv4  limit conections numbers
 #### ipv4  limita numero de conexiones
-####
-####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cfg_allow_input_maxconnect  $cmd_command_ip4tableslegacy -A INPUT \
 -m connlimit --connlimit-above $cfg_config_input_maxconnect \
@@ -14240,8 +14244,6 @@ $cfg_allow_input_maxconnect $cmd_command_ip4tablesnft   -A INPUT \
 ####
 ####
 #### ipv6 limit conections numbers
-####
-####
 $cfg_allow_input_all $cfg_allow_use_ipv6 $cfg_allow_use_legacy \
 $cfg_allow_input_maxconnect  $cmd_command_ip6tableslegacy -A INPUT \
 -m connlimit --connlimit-above $cfg_config_input_maxconnect -j $cfg_config_close_deny \
@@ -14253,8 +14255,6 @@ $cfg_allow_input_maxconnect $cmd_command_ip6tablesnft   -A INPUT \
 ####
 ####
 #### nft INPUT ACCEPT all or input_state
-####
-####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cmd_command_ip4tablesnft -t filter -A INPUT \
 $cfg_config_input_state -j ACCEPT \
@@ -14266,8 +14266,6 @@ $cfg_config_input_state -j ACCEPT \
 ####
 ####
 #### legacy INPUT ACCEPT all or input_state
-####
-####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy -t filter -A INPUT \
 $cfg_config_input_state -j ACCEPT \
@@ -14279,8 +14277,6 @@ $cfg_config_input_state -j ACCEPT \
 ####
 ####
 #### nft INPUT DROP all
-####
-####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cfg_allow_use_ipv4 $cmd_command_ip4tablesnft -t filter -A INPUT \
 -j $cfg_config_close_deny \
@@ -14292,8 +14288,6 @@ $cmd_command_ip6tablesnft -t filter -A INPUT \
 ####
 ####
 ####  legacy INPUT DROP all
-####
-####
 $cfg_allow_input_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy -t filter -A INPUT \
 -j $cfg_config_close_deny \
@@ -14316,8 +14310,6 @@ if [ "$cfg_allow_output_all" == "$NULL" ]; then
 ####
 ####
 ####  nft OUTPUT deleted
-####
-####
 $cfg_allow_output_all $cfg_allow_use_ipv4 \
 $cfg_allow_use_nft $cmd_command_ip4tablesnft -t filter -F OUTPUT  &> /dev/null
 $cfg_allow_output_all $cfg_allow_use_ipv6 \
@@ -14325,8 +14317,6 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft -t filter -F OUTPUT  &> /dev/null
 ####
 ####
 ####  legacy OUTPUT deleted
-####
-####
 $cfg_allow_output_all $cfg_allow_use_ipv4 \
 $cfg_allow_use_legacy $cmd_command_ip4tableslegacy -t filter -F OUTPUT  &> /dev/null
 $cfg_allow_output_all $cfg_allow_use_ipv6 \
@@ -14334,8 +14324,6 @@ $cfg_allow_use_legacy $cmd_command_ip6tableslegacy -t filter -F OUTPUT  &> /dev/
 ####
 ####
 ####  nft OUTPUT 127.0.0.1 accept
-####
-####
 $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cmd_command_ip4tablesnft -t filter -A OUTPUT \
 -s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost -j ACCEPT \
@@ -14347,8 +14335,6 @@ $cfg_allow_use_nft $cmd_command_ip6tablesnft -t filter -A OUTPUT \
 ####
 ####
 #### legacy OUTPUT 127.0.0.1 accept
-####
-####
 $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
  $cmd_command_ip4tableslegacy -t filter -A OUTPUT \
 -s $cfg_config_ip4_localhost -d $cfg_config_ip4_localhost -j ACCEPT \
@@ -14368,8 +14354,6 @@ if [ "$cfg_allow_output_bandwidth" == "$NULL" ]; then
 ####
 ####
 ####  legacy4 OUTPUT limit bandwidth
-####
-#### 
 $cfg_allow_output_all $cfg_allow_use_ipv4 \
 $cfg_allow_use_legacy $cfg_allow_output_bandwidth iptables-legacy -A OUTPUT \
 -m hashlimit --hashlimit-above "$cfg_config_output_bandwidth"kb/sec \
@@ -14383,8 +14367,6 @@ $cfg_allow_output_bandwidth ip6tables-legacy -A  OUTPUT \
 ####
 ####
 ####  nft4 OUTPUT limit bandwidth
-####
-####
 $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cfg_allow_output_bandwidth iptables-nft -A OUTPUT \
 -m hashlimit --hashlimit-above "$cfg_config_output_bandwidth"kb/sec \
@@ -14406,8 +14388,6 @@ if [ "$cfg_allow_output_maxconnect" == "$NULL" ]; then
 ####
 ####
 ####  ipv4  limit conections numbers
-####
-####
 $cfg_allow_output_all $cfg_allow_use_ipv4 \
 $cfg_allow_use_legacy $cfg_allow_output_maxconnect  $cmd_command_ip4tableslegacy -A OUTPUT \
 -m connlimit --connlimit-above $cfg_config_output_maxconnect  -j $cfg_config_close_deny \
@@ -14419,8 +14399,6 @@ $cfg_allow_use_nft $cfg_allow_output_maxconnect $cmd_command_ip4tablesnft   -A O
 ####
 ####
 ####  ipv6 limit conections numbers
-####
-####
 $cfg_allow_output_all $cfg_allow_use_ipv6 \
 $cfg_allow_use_legacy $cfg_allow_output_maxconnect  $cmd_command_ip6tableslegacy -A OUTPUT \
 -m connlimit --connlimit-above $cfg_config_output_maxconnect  -j $cfg_config_close_deny \
@@ -14440,8 +14418,6 @@ if [ "$cfg_allow_output_all" == "$NULL" ]; then
 ####
 ####
 ####  nft OUTPUT ACCEPT all or input_state
-####
-####
 $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cmd_command_ip4tablesnft -t filter -A OUTPUT \
 $input_state -j ACCEPT \
@@ -14453,8 +14429,6 @@ $input_state -j ACCEPT \
 ####
 ####
 ####  legacy INPUT ACCEPT all or input_state
-####
-####
 $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy -t filter  -A OUTPUT \
 $input_state -j ACCEPT \
@@ -14470,8 +14444,6 @@ fi
 ####
 ####
 ####  nft INPUT DROP all
-####
-####
 $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_nft \
 $cmd_command_ip4tablesnft -t filter -A OUTPUT  -j $cfg_config_close_deny \
 -m comment --comment "close-rule" &> /dev/null
@@ -14481,8 +14453,6 @@ $cmd_command_ip6tablesnft -t filter -A OUTPUT  -j $cfg_config_close_deny \
 ####
 ####
 #### legacy INPUT DROP all
-####
-####
 $cfg_allow_output_all $cfg_allow_use_ipv4 $cfg_allow_use_legacy \
 $cmd_command_ip4tableslegacy  -t filter -A OUTPUT  -j $cfg_config_close_deny \
 -m comment --comment "close-rule" &> /dev/null
