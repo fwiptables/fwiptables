@@ -23,25 +23,25 @@
       with CLI-MENU,        with GUI-MENU,                 
       with GUI-ROLL,       with GUI-SHELL.                 
         
-      From one system firewall to choose one,              
-      with eraserules,  or  template  custom,              
-      with wizards:  tiny,  mini,  and  full,              
-      with added comments rules in  firewall.              
+      From one system firewall to select one  fw,          
+      with eraserules, with template with custom,          
+      from wizard and custom: tiny,  mini,  full,          
+      with added comments rule in firewall table.          
         
       With rules ipv4, rules ipv6, ebtables,  arptables,   
       with netfilter   neftables,   netfilter   xtables,   
       with tools ip, wizards for  generate  new   rules,   
       with save/load rules with files standard iptables,   
       with shield  to  ssh  or  other  servers  choosed,   
-      with limit        bandwidth,      string     word,   
-      with host      whitelist,     host      blacklist,   
+      with limit  the   bandwidth,   the  string   word,   
+      with the   host  whitelist, the  host   blacklist,   
       with other more capabilities of firewall iptables.   
         
      [ fwiptables location ]                          
         
        File    Location: /usr/bin/fwiptables      
-       Config Directory: /etc/fwiptables/config/25-01-B-dev-bash   
-       Cache  Directory: /etc/fwiptables/cache/25-01-B-dev-bash           
+       Config Directory: /etc/fwiptables/config/25-01-B-bash   
+       Cache  Directory: /etc/fwiptables/cache/25-01-B-bash           
         
     [ fwiptables install ]                            
         
@@ -57,14 +57,14 @@
           Detail Firewall: Detail Version              
               Session XDG: x11           
             Name Firewall: fwiptables                   
-         Version Firewall: 25-01-B-dev-bash                
+         Version Firewall: 25-01-B-bash                
         Released Firewall: Year 2025 / Month 01               
           Source Firewall: /usr/bin/fwiptables           
         Internal Firewall: /usr/bin/fwiptables               
         Short Description: Firewall With IPTABLES       
          Long Description: Iptables templates in one script        
-         Config Directory: /etc/fwiptables/config/25-01-B-dev-bash           
-          Cache Directory: /etc/fwiptables/cache/25-01-B-dev-bash     
+         Config Directory: /etc/fwiptables/config/25-01-B-bash           
+          Cache Directory: /etc/fwiptables/cache/25-01-B-bash     
            Finder Program: which                  
         Requisite Program: cat,cut,date,file,id,sed,sort      
       Requisite Firewall4: iptables-legacy,iptables-nft    
@@ -126,18 +126,18 @@
   
 ## fwiptables depends   
     [ Configuration files ]   
-      Directory  data:         /etc/fwiptables/config/25-01-B-dev-bash   
-      Directory cache:         /etc/fwiptables/cache/25-01-B-dev-bash   
+      Directory  data:         /etc/fwiptables/config/25-01-B-bash   
+      Directory cache:         /etc/fwiptables/cache/25-01-B-bash   
         
     [ Log files ]             
-      Folder log:              /etc/fwiptables/config/25-01-B-dev-bash/fwiptables-log   
-      Folder pdf:              /etc/fwiptables/config/25-01-B-dev-bash/fwiptables-pdf   
-      Folder logcmd:           /etc/fwiptables/config/25-01-B-dev-bash/fwiptables-logcmd   
+      Folder log:              /etc/fwiptables/config/25-01-B-bash/fwiptables-log   
+      Folder pdf:              /etc/fwiptables/config/25-01-B-bash/fwiptables-pdf   
+      Folder logcmd:           /etc/fwiptables/config/25-01-B-bash/fwiptables-logcmd   
         
     [ Preferences files ]     
-      preferences:             /etc/fwiptables/config/25-01-B-dev-bash/fwiptables-preferences/default-preferences-fwiptables-25-01-B-dev-bash.conf
-      alias:                   /etc/fwiptables/config/25-01-B-dev-bash/fwiptables-preferences/default-alias-fwiptables-25-01-B-dev-bash.conf
-      own-notes:               /etc/fwiptables/config/25-01-B-dev-bash/fwiptables-preferences/default-own-notes-fwiptables-25-01-B-dev-bash.conf
+      preferences:             /etc/fwiptables/config/25-01-B-bash/fwiptables-preferences/default-preferences-fwiptables-25-01-B-bash.conf
+      alias:                   /etc/fwiptables/config/25-01-B-bash/fwiptables-preferences/default-alias-fwiptables-25-01-B-bash.conf
+      own-notes:               /etc/fwiptables/config/25-01-B-bash/fwiptables-preferences/default-own-notes-fwiptables-25-01-B-bash.conf
         
     [ optional output ]       
       xhost x11:               /usr/bin/xhost    
@@ -306,7 +306,7 @@
       limit-minute   del-commented
       ......  firewall-wallcustom:
       new-full-custom        new-mini-custom       new-tiny-custom
-      wallinet-clone loadmini-custom  load-custom  loadtiny-custom
+      wallinet-clone loadmini-custom  loadtiny-custom  load-custom
       list-custom      show-custom     modify-custom    del-custom
       ......  firewall-wallinet:
       wallinet-update  wallinet-list  wallinet-load  wallinet-show
@@ -318,4 +318,4 @@
       log-stat  web intro depends uninstall install upgrade  hints
       variables  examples info code expert  donate  about  version
       license-lgpl-v2 license-gpl-v2
-      ......#fwiptables-25-01-B-dev-bash#  #expert:deactived#  
+      ......#fwiptables-25-01-B-bash#  #expert:deactived#  
